@@ -5,7 +5,7 @@
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="13"/>
         <source>Add Display Type</source>
-        <translation type="unfinished">添加显示类型</translation>
+        <translation type="unfinished">添加显示模式</translation>
     </message>
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="19"/>
@@ -43,7 +43,7 @@
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="161"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">环</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="181"/>
@@ -53,7 +53,7 @@
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="208"/>
         <source>Save as .avi...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存为.avi文件...</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,12 @@ Left Mouse: <byte value="x9"/>Select up to two atoms.
 <byte value="x9"/>The first atom is centered at the origin.
 <byte value="x9"/>The second atom is aligned to the selected axis.
 Right Mouse: <byte value="x9"/>Reset alignment.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">对齐分子
+
+鼠标左键：<byte value="x9"/> 选定两个原子。
+<byte value="x9"/> 第一个原子被放置在原点。
+<byte value="x9"/> 第二个原子对齐到选中的轴上。
+鼠标右键：<byte value="x9"/> 重置对齐。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.cpp" line="252"/>
@@ -279,7 +284,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="281"/>
         <source>Steepest Descent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最速下降法</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="282"/>
@@ -304,22 +309,22 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="380"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="289"/>
         <source>Fixed atoms are movable</source>
-        <translation type="unfinished">修正过的原子设为可移动的</translation>
+        <translation type="unfinished">设置固定的原子为可移动的</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="290"/>
         <source>Ignored atoms are movable</source>
-        <translation type="unfinished">被忽略的原子设为可移动的</translation>
+        <translation type="unfinished">设置已忽略的原子为可移动的</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="347"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">停止</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.h" line="94"/>
@@ -342,12 +347,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="220"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">停止</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="291"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="245"/>
@@ -382,7 +387,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="292"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.h" line="53"/>
@@ -447,7 +452,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="792"/>
         <source>Bond Length: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">键长: </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1595"/>
@@ -457,12 +462,12 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1598"/>
         <source> Snap-to Bonds</source>
-        <translation type="unfinished"> 抓图到键上</translation>
+        <translation type="unfinished"> 对齐至化学键</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="1601"/>
         <source>Snap-to Threshold: </source>
-        <translation type="unfinished">在界限内抓图: </translation>
+        <translation type="unfinished">对齐至起点: </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.h" line="65"/>
@@ -506,7 +511,12 @@ Left Mouse: <byte value="x9"/>Select up to three Atoms.
 <byte value="x9"/>Distances are measured between 1-2 and 2-3
 <byte value="x9"/>Angle is measured between 1-3 using 2 as the common point
 Right Mouse: Reset the measurements.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">点击以测量(F12)
+
+鼠标左键： <byte value="x9"/> 选定三个原子。
+<byte value="x9"/> 1-2 和2-3 的距离将被测量
+<byte value="x9"/> 以2作为顶点，1-3之间的角度将被测量
+鼠标右键：重置测量。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.cpp" line="146"/>
@@ -591,27 +601,27 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.cpp" line="380"/>
         <source>Add constraint</source>
-        <translation type="unfinished">增加限制条件</translation>
+        <translation type="unfinished">添加限制条件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.cpp" line="339"/>
         <source>Your molecule must contain at least one atom to add a constraint</source>
-        <translation type="unfinished">您的分子必须包含至少一个原子才能增加限制条件</translation>
+        <translation type="unfinished">您的分子必须包含至少一个原子才能添加限制条件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.cpp" line="362"/>
         <source>Your molecule must contain at least two atoms to add a bond constraint</source>
-        <translation type="unfinished">您的分子必须包含至少两个原子以增加化学键限制条件</translation>
+        <translation type="unfinished">您的分子必须包含至少两个原子以添加化学键限制条件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.cpp" line="371"/>
         <source>Your molecule must contain at least three atoms to add an angle constraint</source>
-        <translation type="unfinished">您的分子必须包含至少三个原子以增加键角限制条件</translation>
+        <translation type="unfinished">您的分子必须包含至少三个原子以添加键角限制条件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.cpp" line="381"/>
         <source>Your molecule must contain at least four atoms to add a torsion constraint</source>
-        <translation type="unfinished">您的分子必须包含至少四个原子以增加扭转限制条件</translation>
+        <translation type="unfinished">您的分子必须包含至少四个原子以添加扭转限制条件</translation>
     </message>
 </context>
 <context>
@@ -635,7 +645,10 @@ Right Mouse: Reset the measurements.</source>
 
 Left Mouse: <byte value="x9"/>Click and Drag to create Atoms and Bonds
 Right Mouse: Delete Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">绘制工具(F8)
+
+鼠标左键：<byte value="x9"/> 点击并拖动以创建原子和化学键
+鼠标右键：删除原子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="402"/>
@@ -655,7 +668,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="450"/>
         <source>Change Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">更改键级</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="652"/>
@@ -665,7 +678,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="679"/>
         <source>Other...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">其它...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="683"/>
@@ -690,7 +703,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="705"/>
         <source>Adjust Hydrogens</source>
-        <translation type="unfinished">调整氢键</translation>
+        <translation type="unfinished">调整氢原子数目</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.cpp" line="709"/>
@@ -1496,7 +1509,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location filename="../libavogadro/src/glwidget.cpp" line="1099"/>
         <source>Debug Information</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">调试信息</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/glwidget.cpp" line="1100"/>
@@ -1536,8 +1549,8 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <name>Avogadro::GamessExtension</name>
     <message>
         <location filename="../libavogadro/src/extensions/gamessextension.cpp" line="64"/>
-        <source>Input Deck Generator...</source>
-        <translation type="unfinished">输入卡片生成器</translation>
+        <source>Input Generator...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessextension.cpp" line="69"/>
@@ -1692,19 +1705,14 @@ All changes will be lost!</source>
         <translation type="unfinished">Q-Chem输入t...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="80"/>
-        <source>&amp;Extensions</source>
-        <translation type="unfinished">&amp;扩展</translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/gaussianextension.h" line="40"/>
-        <source>Gaussian Input Deck</source>
-        <translation type="unfinished">Gaussian输入卡片</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="54"/>
         <source>MOPAC Input...</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="80"/>
+        <source>&amp;Extensions</source>
+        <translation type="unfinished">&amp;扩展</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="147"/>
@@ -1720,6 +1728,11 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="148"/>
         <source>Cannot read file %1.</source>
         <translation type="unfinished">不能读取文件 %1。</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/gaussianextension.h" line="40"/>
+        <source>Gaussian Input Deck</source>
+        <translation type="unfinished">Gaussian输入卡片</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.h" line="41"/>
@@ -1786,14 +1799,14 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::HBondEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/hbondengine.h" line="43"/>
-        <source>Renders hydrogen bonds</source>
-        <translation type="unfinished">渲染氢键</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="42"/>
         <source>Hydrogen Bond</source>
         <translation type="unfinished">氢键</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/engines/hbondengine.h" line="43"/>
+        <source>Renders hydrogen bonds</source>
+        <translation type="unfinished">渲染氢键</translation>
     </message>
 </context>
 <context>
@@ -1806,7 +1819,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.cpp" line="46"/>
         <source>Add Hydrogens for pH...</source>
-        <translation type="unfinished">增加pH为...时的氢键</translation>
+        <translation type="unfinished">添加pH为...时的氢键</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.cpp" line="50"/>
@@ -1885,12 +1898,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="219"/>
         <source>Click to insert the fragment at that position.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">点击以在该位置插入片段</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="224"/>
         <source>Insert Fragment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插入片段</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="247"/>
@@ -1916,7 +1929,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="63"/>
         <source>Open ligand file</source>
-        <translation type="unfinished">打开配文件</translation>
+        <translation type="unfinished">打开配体文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="63"/>
@@ -1977,7 +1990,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphextension.cpp" line="45"/>
         <source>Lin Morph...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lin Morph...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphextension.cpp" line="324"/>
@@ -2007,7 +2020,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphextension.cpp" line="240"/>
         <source>GL widget was not correctly initialized in order to save snapshots</source>
-        <translation type="unfinished">GL小工具未能正确初始化并保存截图</translation>
+        <translation type="unfinished">GL小工具未能正确初始化并保存快照</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphextension.cpp" line="251"/>
@@ -2058,72 +2071,77 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::MOPACInputDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="119"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="134"/>
         <source>MOPAC Input Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="120"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="135"/>
         <source>Would you like to update the preview text, losing all changes made in the MOPAC input deck preview pane?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="160"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="175"/>
         <source>MOPAC Running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="161"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="176"/>
         <source>MOPAC is already running. Wait until the previous calculation is finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="175"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="184"/>
         <source>MOPAC Not Installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="176"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="185"/>
         <source>The MOPAC executable, cannot be found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="190"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="199"/>
         <source>MOPAC failed to start.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="191"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="200"/>
         <source>MOPAC did not start. Perhaps it is not installed correctly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="203"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="205"/>
+        <source>Running MOPAC calculation...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="240"/>
         <source>MOPAC Crashed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="204"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="241"/>
         <source>MOPAC did not run correctly. Perhaps it is not installed correctly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="224"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="261"/>
         <source>Show Preview</source>
         <translation type="unfinished">显示预览</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="228"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="265"/>
         <source>Hide Preview</source>
         <translation type="unfinished">隐藏预览</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="253"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="291"/>
         <source>Save MOPAC Input Deck</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="254"/>
+        <location filename="../libavogadro/src/extensions/mopacinputdialog.cpp" line="292"/>
         <source>MOPAC Input Deck (*.mop)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2164,6 +2182,11 @@ All changes will be lost!</source>
         <location filename="../avogadro/src/mainwindow.cpp" line="562"/>
         <source>Tool Settings</source>
         <translation type="unfinished">工具设置</translation>
+    </message>
+    <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="915"/>
+        <source>Navigate</source>
+        <translation type="unfinished">导航</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="976"/>
@@ -2231,15 +2254,10 @@ All changes will be lost!</source>
         <translation type="unfinished">打开文件</translation>
     </message>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="2068"/>
-        <source>untitled</source>
-        <translation type="unfinished">未命名</translation>
-    </message>
-    <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="762"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
-        <translation type="unfinished">读取 %1...</translation>
+        <translation type="unfinished">载入 %1...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2564"/>
@@ -2266,7 +2284,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="808"/>
         <source>Loading %1...</source>
-        <translation type="unfinished">读取 %1...</translation>
+        <translation type="unfinished">载入 %1...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="816"/>
@@ -2301,12 +2319,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="914"/>
         <source>File Loaded...</source>
-        <translation type="unfinished">文件已读取...</translation>
-    </message>
-    <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="915"/>
-        <source>Navigate</source>
-        <translation type="unfinished">导航</translation>
+        <translation type="unfinished">文件已载入...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="982"/>
@@ -2468,6 +2481,11 @@ Do you want to save your changes?</source>
         <translation type="unfinished">全屏</translation>
     </message>
     <message>
+        <location filename="../avogadro/src/mainwindow.cpp" line="2068"/>
+        <source>untitled</source>
+        <translation type="unfinished">未命名</translation>
+    </message>
+    <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2116"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
@@ -2501,17 +2519,17 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2556"/>
         <source>No tools or engines loaded.</source>
-        <translation type="unfinished">没有工具或引擎被调用。</translation>
+        <translation type="unfinished">没有工具或引擎被载入。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2558"/>
         <source>No engines loaded.</source>
-        <translation type="unfinished">没有引擎被调用。</translation>
+        <translation type="unfinished">没有引擎被载入。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2560"/>
         <source>No tools loaded.</source>
-        <translation type="unfinished">没有工具被调用。</translation>
+        <translation type="unfinished">没有工具被载入。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="2561"/>
@@ -2622,7 +2640,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="62"/>
         <source>Create Surfaces...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">创建表面...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="93"/>
@@ -2642,32 +2660,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="302"/>
         <source>Calculating MO </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算分子轨道 </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="480"/>
         <source>Electron Density</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">电子密度</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="497"/>
         <source>Calculating Electron Density</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算电子密度</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="733"/>
         <source>VdW Cube</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">VdW立方体</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.cpp" line="746"/>
         <source>Calculating VdW Cube</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算VdW立方体</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.h" line="48"/>
         <source>Surfaces</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">表面</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitalextension.h" line="49"/>
@@ -2693,12 +2711,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.cpp" line="151"/>
         <source>Save POV-Ray rendered image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存用POV-Ray渲染的图像</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.cpp" line="152"/>
         <source>Image files (*.png *.pbm)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">图像文件 (*.png *.pbm)</translation>
     </message>
 </context>
 <context>
@@ -2706,7 +2724,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="49"/>
         <source>POV-Ray...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="69"/>
@@ -2721,37 +2739,37 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="135"/>
         <source>No filename supplied.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有提供文件名。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="136"/>
         <source>No valid filename was supplied.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有提供有效的文件名。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="141"/>
         <source>Does not compute.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">没有计算。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="142"/>
         <source>You requested no direct rendering using POV-Ray and not to keep the POV-Ray file. This will result in no output being saved. Are you sure that is what you want?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">你要求不要直接用POV-Ray渲染，并且不保存POV-Ray文件。这会导致没有任何输出被保存。你确定这是你希望的么？</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="168"/>
         <source>POV-Ray failed to start.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray启动失败。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="169"/>
         <source>POV-Ray failed to start. May be the path to the executable is not set correctly.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray未能启动。可能是因为可执行文件的路径设置不正确。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.h" line="40"/>
         <source>POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.h" line="41"/>
@@ -2764,28 +2782,29 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="55"/>
         <source>Name: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名称: </translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="56"/>
         <source>File: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">文件: </translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="57"/>
         <source>Description:
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述:
+</translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="91"/>
         <source>Plugin Manager</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插件管理器</translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="92"/>
         <source>Avogadro needs to be restarted in order for the changes to take effect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro需要重启以使改动生效。</translation>
     </message>
 </context>
 <context>
@@ -2811,17 +2830,17 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="266"/>
         <source>Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="271"/>
         <source>Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">键</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="295"/>
         <source>Residue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="310"/>
@@ -2970,7 +2989,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.h" line="54"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">属性</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.h" line="55"/>
@@ -2983,7 +3002,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="236"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">类型</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="238"/>
@@ -2993,7 +3012,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="240"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部分电荷</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="242"/>
@@ -3001,7 +3020,7 @@ Right Mouse:  Click and drag to move the view</source>
         <translation type="unfinished">化合价</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="304"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="301"/>
         <source>Atom %1</source>
         <translation type="unfinished">原子 %1</translation>
     </message>
@@ -3051,42 +3070,42 @@ Right Mouse:  Click and drag to move the view</source>
         <translation type="unfinished">角度 %1</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="287"/>
-        <source>Atom Index</source>
-        <translation type="unfinished">原子索引</translation>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="284"/>
+        <source>Atom Index %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="289"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="286"/>
         <source>Torsion (&#xc2;&#xb0;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="292"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="289"/>
         <source>Torsion %1</source>
         <translation type="unfinished">扭转 %1</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="297"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="294"/>
         <source>X (&#xc3;&#x85;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="299"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="296"/>
         <source>Y (&#xc3;&#x85;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="301"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="298"/>
         <source>Z (&#xc3;&#x85;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="309"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="306"/>
         <source>Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">能量</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="312"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="309"/>
         <source>Conformer %1</source>
         <translation type="unfinished">构象异构体%1</translation>
     </message>
@@ -3096,17 +3115,17 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="237"/>
         <source>Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="240"/>
         <source>Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">键</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="243"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">键角</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="246"/>
@@ -3116,7 +3135,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="249"/>
         <source>Cartesian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">笛卡尔</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="252"/>
@@ -3126,7 +3145,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="257"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">属性</translation>
     </message>
 </context>
 <context>
@@ -3200,24 +3219,16 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminal.h" line="52"/>
         <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python终端</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminal.cpp" line="73"/>
         <source>pythonTerminalDock</source>
         <translation type="unfinished">python终端托盘</translation>
     </message>
-</context>
-<context>
-    <name>Avogadro::PythonTerminalFactory</name>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonterminal.h" line="113"/>
-        <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../libavogadro/src/extensions/pythonterminal.h" line="114"/>
-        <source>Extension to provide an interactive python terminal.</source>
+        <location filename="../libavogadro/src/extensions/pythonterminal.h" line="53"/>
+        <source>Interactive python scripting terminal</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3369,7 +3380,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="112"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;选择</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="168"/>
@@ -3389,7 +3400,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="228"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="291"/>
@@ -3424,7 +3435,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.h" line="41"/>
         <source>Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.h" line="42"/>
@@ -3458,7 +3469,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="416"/>
         <source>Residue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.cpp" line="417"/>
@@ -3468,7 +3479,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="51"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="52"/>
@@ -3538,7 +3549,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="168"/>
         <source>GLSL Shaders...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GLSL着色器...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="189"/>
@@ -3548,55 +3559,55 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="325"/>
         <source>Open a vertex shader source file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">打开顶点着色器源文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="326"/>
         <source>Vertex shader files (*.vert)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顶点着色器文件 (*.vert)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="346"/>
         <source>Open a fragment shader source file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">打开片段着色器源文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="347"/>
         <source>Fragment shader files (*.frag)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">片段着色器文件 (*.frag)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="357"/>
         <source>Open a shader parameters file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">打开着色器参数文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.cpp" line="358"/>
         <source>Shader parameters files (*.params)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">着色器参数文件 (*.params)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.h" line="41"/>
         <source>GLSL Shaders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GLSL着色器</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderextension.h" line="42"/>
         <source>Load and use OpenGL 2.0 GLSL shaders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">载入并使用OpenGL 2.0 GLSL着色器</translation>
     </message>
 </context>
 <context>
     <name>Avogadro::SphereEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/sphereengine.h" line="45"/>
-        <source>Renders atoms as Van der Waals spheres</source>
-        <translation type="unfinished">将原子渲染为Van der Waals球体</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/engines/sphereengine.h" line="44"/>
         <source>Van der Waals Spheres</source>
         <translation type="unfinished">Van der Waals球体</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/engines/sphereengine.h" line="45"/>
+        <source>Renders atoms as Van der Waals spheres</source>
+        <translation type="unfinished">将原子渲染为Van der Waals球体</translation>
     </message>
 </context>
 <context>
@@ -3650,7 +3661,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.cpp" line="73"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;编辑</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.h" line="34"/>
@@ -3713,7 +3724,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.cpp" line="99"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应用</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.cpp" line="97"/>
@@ -3729,22 +3740,22 @@ Do you want to create a crystal unit cell?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="74"/>
+        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="73"/>
         <source>&amp;Extensions</source>
         <translation type="unfinished">&amp;扩展</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="130"/>
+        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="131"/>
         <source>Vibrational Analysis</source>
         <translation type="unfinished">振动分析</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="113"/>
+        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="114"/>
         <source>No vibrational displacements exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="130"/>
+        <location filename="../libavogadro/src/extensions/vibrationextension.cpp" line="131"/>
         <source>No vibrations have been computed for this molecule.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3779,7 +3790,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.cpp" line="83"/>
         <source>&amp;WiiTrack</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Wii轨迹</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.h" line="40"/>
@@ -3820,12 +3831,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="76"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不透明度：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="119"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示多重键</translation>
     </message>
 </context>
 <context>
@@ -3838,7 +3849,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="19"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选项</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="25"/>
@@ -3858,7 +3869,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="60"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="66"/>
@@ -3886,12 +3897,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="26"/>
         <source>Add Constraints</source>
-        <translation type="unfinished">增加限制</translation>
+        <translation type="unfinished">添加限制</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="40"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">类型</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="48"/>
@@ -3926,7 +3937,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="78"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">键角</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="83"/>
@@ -3951,7 +3962,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="132"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选项</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="143"/>
@@ -3961,7 +3972,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="153"/>
         <source>Load</source>
-        <translation type="unfinished">读取</translation>
+        <translation type="unfinished">载入</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="185"/>
@@ -3984,22 +3995,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/dipolesettingswidget.ui" line="22"/>
         <source>Dipole:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">偶极:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/dipolesettingswidget.ui" line="54"/>
         <source>Dipole Moment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">偶极矩</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/dipolesettingswidget.ui" line="59"/>
         <source>Custom Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自定义值</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/dipolesettingswidget.ui" line="70"/>
         <source>Custom:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自定义:</translation>
     </message>
 </context>
 <context>
@@ -4007,12 +4018,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/enginecolorswidget.ui" line="13"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">表单</translation>
     </message>
     <message>
         <location filename="../avogadro/src/enginecolorswidget.ui" line="24"/>
         <source>Color by:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">着色方式按:</translation>
     </message>
 </context>
 <context>
@@ -4048,32 +4059,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="19"/>
         <source>File Import...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入文件...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="25"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">文件名:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="58"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">浏览...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="46"/>
         <source>Par File:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Par文件:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="67"/>
         <source>Attempt to perceive bonds?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">尝试检测化学键？</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportdialog.ui" line="70"/>
         <source>Perceive bonds?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">检测化学键？</translation>
     </message>
 </context>
 <context>
@@ -4096,7 +4107,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="59"/>
         <source>Geometry Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">几何优化</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="65"/>
@@ -4111,7 +4122,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="90"/>
         <source>Steepest Descent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最速下降法</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="95"/>
@@ -4150,1439 +4161,1439 @@ Do you want to create a crystal unit cell?</source>
         <translation type="unfinished">GAMESS输入</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="37"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="23"/>
         <source>&amp;Basic Setup</source>
         <translation type="unfinished">基本设置(&amp;B)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="64"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="38"/>
         <source>megabytes</source>
         <translation type="unfinished">兆字节</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="844"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="742"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="849"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="747"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1157"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1029"/>
         <source>RHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RHF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2692"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2360"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="536"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="466"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1350"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1216"/>
         <source>CCSD(T)</source>
         <translation type="unfinished">CCSD(T)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="759"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="657"/>
         <source>STO-3G</source>
-        <translation type="unfinished">STO-6G {3G?}</translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="744"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="642"/>
         <source>MINI</source>
         <translation type="unfinished">MINI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="779"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="677"/>
         <source>3-21G</source>
-        <translation type="unfinished">6-311G {3-21G?}</translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="144"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="112"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="149"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="117"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="154"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="122"/>
         <source>6-31+G(d,p)</source>
         <translation type="unfinished">6-31+G(d,p)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="159"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="127"/>
         <source>6-31+G(2d,p)</source>
         <translation type="unfinished">6-31+G(2d,p)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="164"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="132"/>
         <source>6-311++G(2d,p)</source>
         <translation type="unfinished">6-311++G(2d,p)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="169"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="137"/>
         <source>Core Potential</source>
         <translation type="unfinished">核心势</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2899"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2541"/>
         <source>Memory:</source>
         <translation type="unfinished">内存：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="211"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="173"/>
         <source>Singlet</source>
         <translation type="unfinished">单线态</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="216"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="178"/>
         <source>Doublet</source>
         <translation type="unfinished">双线态</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="221"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="183"/>
         <source>Triplet</source>
         <translation type="unfinished">三线态</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="230"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="192"/>
         <source>Dication</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">双阳离子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="235"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="197"/>
         <source>Cation</source>
         <translation type="unfinished">阳离子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="240"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="202"/>
         <source>Neutral</source>
         <translation type="unfinished">中性</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="245"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="207"/>
         <source>Anion</source>
         <translation type="unfinished">阴离子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="250"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="212"/>
         <source>Dianion</source>
         <translation type="unfinished">二价阴离子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="273"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="235"/>
         <source>On:</source>
         <translation type="unfinished">On:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="295"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="251"/>
         <source>Single Point Entry</source>
         <translation type="unfinished">单点进入</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="300"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="256"/>
         <source>Equilibrium Geometry</source>
         <translation type="unfinished">平衡态几何体</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="305"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="261"/>
         <source>Transition State</source>
         <translation type="unfinished">过渡态</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="310"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="266"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">频率</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="342"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="292"/>
         <source>Gas</source>
         <translation type="unfinished">气体</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="347"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="297"/>
         <source>Water</source>
         <translation type="unfinished">水</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3160"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2756"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="380"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="330"/>
         <source>With:</source>
         <translation type="unfinished">为：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="390"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="340"/>
         <source>In:</source>
         <translation type="unfinished">输入：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2192"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1952"/>
         <source>Time Limit:</source>
         <translation type="unfinished">时间限制</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="428"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="372"/>
         <source>hour(s)</source>
         <translation type="unfinished">小时</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="472"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="408"/>
         <source>&amp;Advanced Setup</source>
         <translation type="unfinished">高级设置(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="512"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="442"/>
         <source>Advanced</source>
         <translation type="unfinished">高级</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="517"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="447"/>
         <source>Basis</source>
         <translation type="unfinished">基准</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="522"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="452"/>
         <source>Control</source>
         <translation type="unfinished">控制</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="526"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="456"/>
         <source>SCF</source>
         <translation type="unfinished">SCF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="531"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="461"/>
         <source>DFT</source>
         <translation type="unfinished">DFT</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1030"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="908"/>
         <source>Hessian</source>
         <translation type="unfinished">Hessian</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="546"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="476"/>
         <source>Stat Point</source>
         <translation type="unfinished">起始点</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="552"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="482"/>
         <source>Data</source>
         <translation type="unfinished">数据</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="557"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="487"/>
         <source>System</source>
         <translation type="unfinished">系统</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="562"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="492"/>
         <source>MO Guess</source>
         <translation type="unfinished">分子轨道猜测</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="567"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="497"/>
         <source>Misc</source>
         <translation type="unfinished">其它</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="602"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="518"/>
         <source>#D Heavy Atom Polarization Functions:</source>
         <translation type="unfinished">#D 重原子极化函数:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2474"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2182"/>
         <source>None</source>
         <translation type="unfinished">无</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="626"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="536"/>
         <source>Read</source>
         <translation type="unfinished">读取</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="631"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="541"/>
         <source>SBKJC</source>
         <translation type="unfinished">SBKJC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="636"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="546"/>
         <source>Hay-Wadt</source>
         <translation type="unfinished">Hay-Wadt</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="667"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="571"/>
         <source>Diffuse S-Shell on Heavy Atoms</source>
         <translation type="unfinished">散射重原子的S壳层</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="674"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="578"/>
         <source>Diffuse L-Shell on Heavy Atoms</source>
         <translation type="unfinished">散射重原子的L壳层</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="730"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="628"/>
         <source>Basis Set:</source>
         <translation type="unfinished">基本集:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="749"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="647"/>
         <source>MIDI</source>
         <translation type="unfinished">MIDI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="754"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="652"/>
         <source>STO-2G</source>
         <translation type="unfinished">STO-2G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="764"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="662"/>
         <source>STO-4G</source>
         <translation type="unfinished">STO-4G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="769"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="667"/>
         <source>STO-5G</source>
         <translation type="unfinished">STO-5G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="774"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="672"/>
         <source>STO-6G</source>
         <translation type="unfinished">STO-6G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="784"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="682"/>
         <source>6-21G</source>
         <translation type="unfinished">6-21G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="789"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="687"/>
         <source>4-31G</source>
         <translation type="unfinished">4-31G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="794"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="692"/>
         <source>5-31G</source>
         <translation type="unfinished">5-31G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="799"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="697"/>
         <source>6-31G</source>
         <translation type="unfinished">6-31G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="804"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="702"/>
         <source>6-311G</source>
         <translation type="unfinished">6-311G</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="809"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="707"/>
         <source>Double Zeta Valence</source>
         <translation type="unfinished">双Zeta化合价</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="814"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="712"/>
         <source>Dunning/Hay DZ</source>
         <translation type="unfinished">Dunning/Hay DZ</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="819"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="717"/>
         <source>Triple Zeta Valence</source>
         <translation type="unfinished">三Zeta化合价</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="824"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="722"/>
         <source>McLean/Chandler</source>
         <translation type="unfinished">McLean/Chandler</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="829"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="727"/>
         <source>SBKJA Valence</source>
         <translation type="unfinished">SBKJA化合价</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="834"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="732"/>
         <source>Hay/Wadt Valence</source>
         <translation type="unfinished">Hay/Wadt 化合价</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="839"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="737"/>
         <source>MNDO</source>
         <translation type="unfinished">MNDO</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="886"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="784"/>
         <source>ECP Type:</source>
         <translation type="unfinished">ECP 类型:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2169"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1929"/>
         <source>Default</source>
         <translation type="unfinished">默认</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="905"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="803"/>
         <source>Pople</source>
         <translation type="unfinished">Pople</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="910"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="808"/>
         <source>Pople N311</source>
         <translation type="unfinished">Pople N311</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="915"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="813"/>
         <source>Dunning</source>
         <translation type="unfinished">Dunning</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="920"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="818"/>
         <source>Huzinaga</source>
         <translation type="unfinished">Huzinaga</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="925"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="823"/>
         <source>Hondo7</source>
         <translation type="unfinished">Hondo7</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="933"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="831"/>
         <source>#F Heavy Atom Polarization Functions:</source>
         <translation type="unfinished">#F 重原子极化函数:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="943"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="841"/>
         <source>#light Atom Polarization Functions:</source>
         <translation type="unfinished">#氢原子极化函数:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="960"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="858"/>
         <source>Polar:</source>
         <translation type="unfinished">极化:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1004"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="888"/>
         <source>Max SCF Iterations:</source>
         <translation type="unfinished">最大 SCF 迭代:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1020"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="898"/>
         <source>Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">能量</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1025"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="903"/>
         <source>Gradient</source>
         <translation type="unfinished">渐变</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1035"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="913"/>
         <source>Optimization</source>
         <translation type="unfinished">优化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1040"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="918"/>
         <source>Trudge</source>
         <translation type="unfinished">Trudge</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1045"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="923"/>
         <source>Saddle Point</source>
         <translation type="unfinished">马鞍点</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1050"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="928"/>
         <source>IRC</source>
         <translation type="unfinished">IRC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1055"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="933"/>
         <source>Gradient Extremal</source>
         <translation type="unfinished">渐变极值</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1060"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="938"/>
         <source>DRC</source>
         <translation type="unfinished">DRC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1065"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="943"/>
         <source>Energy Surface</source>
         <translation type="unfinished">能量面</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1070"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="948"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">属性</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1075"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="953"/>
         <source>Morokuma</source>
         <translation type="unfinished">Morokuma</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1080"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="958"/>
         <source>Radiative Transition mom.</source>
         <translation type="unfinished">放射性过渡力矩</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1085"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="963"/>
         <source>Spin Orbit</source>
         <translation type="unfinished">自旋轨道</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1090"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="968"/>
         <source>Finite Electric Field</source>
         <translation type="unfinished">有限电场</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1095"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="973"/>
         <source>TDHF</source>
         <translation type="unfinished">TDHF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1100"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="978"/>
         <source>Global Optimization</source>
         <translation type="unfinished">全局优化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1105"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="983"/>
         <source>VSCF</source>
         <translation type="unfinished">VSCF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1110"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="988"/>
         <source>FMO Optimization</source>
         <translation type="unfinished">FMO 优化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1115"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="993"/>
         <source>Raman Intensities</source>
         <translation type="unfinished">Raman强度</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1120"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="998"/>
         <source>NMR</source>
         <translation type="unfinished">NMR</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1125"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1003"/>
         <source>Make EFP</source>
         <translation type="unfinished">构建 EFP</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1162"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1034"/>
         <source>UHF</source>
         <translation type="unfinished">UHF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1167"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1039"/>
         <source>ROHF</source>
         <translation type="unfinished">ROHF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1172"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1044"/>
         <source>GVB</source>
         <translation type="unfinished">GVB</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1177"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1049"/>
         <source>MCSCF</source>
         <translation type="unfinished">MCSCF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1182"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1054"/>
         <source>None (CI)</source>
         <translation type="unfinished">无 (CI)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1219"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1085"/>
         <source>Foster-Boys</source>
         <translation type="unfinished">Foster-Boys</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1224"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1090"/>
         <source>Edmistron-Ruedenberg</source>
         <translation type="unfinished">Edmistron-Ruedenberg</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1229"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1095"/>
         <source>Pipek-Mezey</source>
         <translation type="unfinished">Pipek-Mezey</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1252"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1118"/>
         <source>SCF Type:</source>
         <translation type="unfinished">SCF 类型:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1259"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1125"/>
         <source>Localization Method:</source>
         <translation type="unfinished">本地化方式:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1269"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1135"/>
         <source>Exec Type:</source>
         <translation type="unfinished">执行类型:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1276"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1142"/>
         <source>CI:</source>
         <translation type="unfinished">CI:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1289"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1155"/>
         <source>GUGA</source>
         <translation type="unfinished">GUGA</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1294"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1160"/>
         <source>Ames Lab. Determinant</source>
         <translation type="unfinished">Ames Lab. Determinant</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1299"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1165"/>
         <source>Occupation Restricted Multiple Active Space</source>
         <translation type="unfinished">被限制占据的多重活动空间</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1304"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1170"/>
         <source>CI Singles</source>
         <translation type="unfinished">CI 单体</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1309"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1175"/>
         <source>Full Second Order CI</source>
         <translation type="unfinished">完全二级 CI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1314"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1180"/>
         <source>General CI</source>
         <translation type="unfinished">通用 CI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1322"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1188"/>
         <source>CC:</source>
         <translation type="unfinished">CC:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1335"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1201"/>
         <source>LCCD: Linearized CC</source>
         <translation type="unfinished">LCCD: 线性化CC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1340"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1206"/>
         <source>CCD: CC with Doubles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1345"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1211"/>
         <source>CCSD: CC with Singles and Doubles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1355"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1221"/>
         <source>R-CC</source>
         <translation type="unfinished">R-CC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1360"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1226"/>
         <source>CR-CC</source>
         <translation type="unfinished">CR-CC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1365"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1231"/>
         <source>EOM-CCSD</source>
         <translation type="unfinished">EOM-CCSD</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1370"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1236"/>
         <source>CR-EOM</source>
         <translation type="unfinished">CR-EOM</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1405"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1265"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">多重性：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1426"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1280"/>
         <source>Normal Run</source>
         <translation type="unfinished">正常运行</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1431"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1285"/>
         <source>Check</source>
         <translation type="unfinished">检查</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1436"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1290"/>
         <source>Debug</source>
         <translation type="unfinished">调试</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1441"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1295"/>
         <source>Other...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">其它...</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1465"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1319"/>
         <source>Molecule Charge:</source>
         <translation type="unfinished">分子电荷:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1477"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1331"/>
         <source>Run Type:</source>
         <translation type="unfinished">运行模式:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1505"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1353"/>
         <source>Use MP2</source>
         <translation type="unfinished">使用 MP2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1531"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1379"/>
         <source>Use DFT</source>
         <translation type="unfinished">使用 DFT</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1594"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1428"/>
         <source># of Z-Matrix Variables</source>
         <translation type="unfinished"># 个Z-矩阵变量</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1610"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1438"/>
         <source>Ǻngstrom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1615"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1443"/>
         <source>Bohr</source>
         <translation type="unfinished">玻尔</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1638"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1466"/>
         <source>Order of Principal Axis:</source>
         <translation type="unfinished">主轴级数:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1645"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1473"/>
         <source>Coordinate Type:</source>
         <translation type="unfinished">坐标类型:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1661"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1483"/>
         <source>C1</source>
         <translation type="unfinished">C1</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1666"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1488"/>
         <source>CS</source>
         <translation type="unfinished">CS</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1671"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1493"/>
         <source>CI</source>
         <translation type="unfinished">CI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1676"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1498"/>
         <source>CnH</source>
         <translation type="unfinished">CnH</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1681"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1503"/>
         <source>CnV</source>
         <translation type="unfinished">CnV</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1686"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1508"/>
         <source>Cn</source>
         <translation type="unfinished">Cn</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1691"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1513"/>
         <source>S2n</source>
         <translation type="unfinished">S2n</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1696"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1518"/>
         <source>DnD</source>
         <translation type="unfinished">DnD</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1701"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1523"/>
         <source>DnH</source>
         <translation type="unfinished">DnH</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1706"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1528"/>
         <source>Dn</source>
         <translation type="unfinished">Dn</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1711"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1533"/>
         <source>TD</source>
         <translation type="unfinished">TD</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1716"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1538"/>
         <source>TH</source>
         <translation type="unfinished">TH</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1721"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1543"/>
         <source>T</source>
         <translation type="unfinished">T</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1726"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1548"/>
         <source>OH</source>
         <translation type="unfinished">OH</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1731"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1553"/>
         <source>O</source>
         <translation type="unfinished">O</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1762"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1578"/>
         <source>Title</source>
         <translation type="unfinished">标题</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1793"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1603"/>
         <source>Unique cartesian Coords.</source>
         <translation type="unfinished">独立笛卡尔坐标.</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1798"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1608"/>
         <source>Hilderbrant internals</source>
         <translation type="unfinished">Hilderbrant internals</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1803"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1613"/>
         <source>Cartesian coordinates</source>
         <translation type="unfinished">笛卡尔坐标</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1808"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1618"/>
         <source>Z-Matrix</source>
         <translation type="unfinished">Z-矩阵</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1813"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1623"/>
         <source>MOPAC Z-Matrix</source>
         <translation type="unfinished">MOPAC Z-矩阵</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1836"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1646"/>
         <source>Use Symmetry During Calculation</source>
         <translation type="unfinished">计算中使用对称性</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1846"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1656"/>
         <source>Units:</source>
         <translation type="unfinished">单位：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1853"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1663"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标题:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1922"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1720"/>
         <source>Point Group:</source>
         <translation type="unfinished">点群:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1969"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1747"/>
         <source>Seconds</source>
         <translation type="unfinished">秒</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1974"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1752"/>
         <source>Minutes</source>
         <translation type="unfinished">分</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1979"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1757"/>
         <source>Hours</source>
         <translation type="unfinished">时</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1984"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1762"/>
         <source>Days</source>
         <translation type="unfinished">日</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1989"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1767"/>
         <source>Weeks</source>
         <translation type="unfinished">周</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1994"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1772"/>
         <source>Years</source>
         <translation type="unfinished">年</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1999"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1777"/>
         <source>Millenia</source>
         <translation type="unfinished">千年</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2084"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1850"/>
         <source>Words</source>
         <translation type="unfinished">词</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2089"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1855"/>
         <source>Bytes</source>
         <translation type="unfinished">字节</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2094"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1860"/>
         <source>MegaWords</source>
         <translation type="unfinished">百万词</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2099"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1865"/>
         <source>MegaBytes</source>
         <translation type="unfinished">兆字节</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2133"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1893"/>
         <source>Force Parallel Methods</source>
         <translation type="unfinished">力平行方式</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2156"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1916"/>
         <source>Produce &quot;core&quot; file upon abort</source>
         <translation type="unfinished">当取消时创建&quot;核心&quot;文件</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2174"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1934"/>
         <source>EVVRSP</source>
         <translation type="unfinished">EVVRSP</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2179"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1939"/>
         <source>GIVEIS</source>
         <translation type="unfinished">GIVEIS</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2184"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1944"/>
         <source>JACOBI</source>
         <translation type="unfinished">JACOBI</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2199"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1959"/>
         <source>MemDDI:</source>
         <translation type="unfinished">MemDDI:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2213"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1973"/>
         <source>Diagonalization Method:</source>
         <translation type="unfinished">可对角化方式:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2220"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1980"/>
         <source>Parallel Load Balance Type</source>
-        <translation type="unfinished">平行读取平衡类型</translation>
+        <translation type="unfinished">平行载入平衡类型</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2232"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1986"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">环</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2242"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="1996"/>
         <source>Next Value</source>
         <translation type="unfinished">下一个值</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2252"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2006"/>
         <source>Use External Data Representation for Messages</source>
         <translation type="unfinished">使用外部数据来表示信息</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2320"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2054"/>
         <source>Initial Guess:</source>
         <translation type="unfinished">初始猜测:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2331"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2065"/>
         <source>Huckel</source>
         <translation type="unfinished">Huckel</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2336"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2070"/>
         <source>HCore</source>
         <translation type="unfinished">H核</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2341"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2075"/>
         <source>MO Read ($VEC)</source>
         <translation type="unfinished">MO 读取 ($VEC)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2346"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2080"/>
         <source>MO Saved (DICTNRY)</source>
         <translation type="unfinished">MO 已保存 (DICTNRY)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2351"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2085"/>
         <source>Skip</source>
         <translation type="unfinished">跳过</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2374"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2108"/>
         <source>Rotate Alpha and Beta Orbitals</source>
         <translation type="unfinished">旋转Alpha和Beta轨道</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2381"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2115"/>
         <source>Print the Initial Guess</source>
         <translation type="unfinished">打印初始猜测</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2419"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2139"/>
         <source>GAMESS Interface to Other Codes</source>
         <translation type="unfinished">GAMESS界面到其它编码</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2431"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2145"/>
         <source>MolPlt</source>
         <translation type="unfinished">MolPlt</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2438"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2152"/>
         <source>PltOrb</source>
         <translation type="unfinished">PltOrb</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2445"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2159"/>
         <source>AIMPAC</source>
         <translation type="unfinished">AIMPAC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2452"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2166"/>
         <source>RPAC</source>
         <translation type="unfinished">RPAC</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2462"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2176"/>
         <source>Force a Check Run Type</source>
         <translation type="unfinished">强制检查运行类型</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2484"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2192"/>
         <source>Hondo 8.2</source>
         <translation type="unfinished">Hondo 8.2</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2491"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2199"/>
         <source>MELDF</source>
         <translation type="unfinished">MELDF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2498"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2206"/>
         <source>GAMESS (UK Version)</source>
         <translation type="unfinished">GAMESS (UK版)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2505"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2213"/>
         <source>Gaussian 9x</source>
         <translation type="unfinished">Gaussian 9x</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2512"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2220"/>
         <source>All</source>
         <translation type="unfinished">全部</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2543"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2245"/>
         <source>Solvate with Water</source>
         <translation type="unfinished">使用水进行溶剂化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2596"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2284"/>
         <source>Generate UHF Natural Orbitals</source>
         <translation type="unfinished">Generate UHF 自然轨道</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2603"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2291"/>
         <source>Direct SCF</source>
         <translation type="unfinished">直接 SCF</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2610"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2298"/>
         <source>Compute Only Changed in Fock Matrix</source>
         <translation type="unfinished">在Fock矩阵中仅计算改变项</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2657"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2325"/>
         <source>Slater exchange</source>
         <translation type="unfinished">Slater交换</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2662"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2330"/>
         <source>Becke 1988 exchange</source>
         <translation type="unfinished">Becke 1988 交换</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2667"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2335"/>
         <source>VWN: Vosko-Wilk-Nusair (VWN5) correlation</source>
         <translation type="unfinished">VWN: Vosko-Wilk-Nusair (VWN5) 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2672"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2340"/>
         <source>LYP: Lee-Yang-Parr correlation</source>
         <translation type="unfinished">LYP: Lee-Yang-Parr 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2677"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2345"/>
         <source>SVWN: Slater exhange + VWN correlation</source>
         <translation type="unfinished">SVWN: Slater 交换 + VWN 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2682"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2350"/>
         <source>BVWN: BECKE exchange + VWN5 correlation</source>
         <translation type="unfinished">BVWN: BECKE 交换 + VWN5 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2687"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2355"/>
         <source>BLYP: BECKE exchange + LYP correlation</source>
         <translation type="unfinished">BLYP: BECKE 交换 + LYP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2697"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2365"/>
         <source>Gill 1996 exchange</source>
         <translation type="unfinished">Gill 1996 交换</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2702"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2370"/>
         <source>Perdew-Burke-Ernzerhof (PBE) exchange</source>
         <translation type="unfinished">Perdew-Burke-Ernzerhof (PBE) 交换</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2707"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2375"/>
         <source>OP: One-parameter Progressive correlation</source>
         <translation type="unfinished">OP: One-parameter Progressive 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2712"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2380"/>
         <source>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</source>
         <translation type="unfinished">SLYP: SLATER + Lee-Yang-Parr (LYP) 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2717"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2385"/>
         <source>SOP: SLATER + OP correlation</source>
         <translation type="unfinished">SOP: SLATER + OP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2722"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2390"/>
         <source>BOP: BECKE exchange + OP correlation</source>
         <translation type="unfinished">BOP: BECKE 交换 + OP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2727"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2395"/>
         <source>BVWN: GILL exchange + VWN5 correlation</source>
         <translation type="unfinished">BVWN: GILL 交换 + VWN5 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2732"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2400"/>
         <source>GLYP: GILL exchange + LYP correlation</source>
         <translation type="unfinished">GLYP: GILL 交换 + LYP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2737"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2405"/>
         <source>PBEVWN: PBE exchange + VWN6 correlation</source>
         <translation type="unfinished">PBEVWN: PBE 交换 + VWN6 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2742"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2410"/>
         <source>PBELYP: PBE exchange +LYP correlation</source>
         <translation type="unfinished">PBELYP: PBE 交换 +LYP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2747"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2415"/>
         <source>PBEOP: PBE exchange + OP correlation</source>
         <translation type="unfinished">PBEOP: PBE 交换 + OP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2752"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2420"/>
         <source>BHHLYP: HF and BECKE exchange + LYP correlation</source>
         <translation type="unfinished">BHHLYP: HF and BECKE 交换 + LYP 相关</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2784"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2446"/>
         <source>Grid</source>
         <translation type="unfinished">网格</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2789"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2451"/>
         <source>Grid-Free</source>
         <translation type="unfinished">无网格</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2812"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2474"/>
         <source>DFT Functional:</source>
         <translation type="unfinished">DFT 功能性:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2819"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2481"/>
         <source>Method:</source>
         <translation type="unfinished">方式：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2857"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2505"/>
         <source>AO Integral Storage</source>
         <translation type="unfinished">AO 整合存储</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2872"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2514"/>
         <source>Duplicated on Each Node</source>
         <translation type="unfinished">在每个节点上复制</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2879"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2521"/>
         <source>Distributed Across All Nodes</source>
         <translation type="unfinished">穿过所有节点进行分布</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2892"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2534"/>
         <source>words</source>
         <translation type="unfinished">词</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2906"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2548"/>
         <source>Compute MP2 Properties</source>
         <translation type="unfinished">计算MP2属性</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2913"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2555"/>
         <source>Integral Retention Cutoff:</source>
         <translation type="unfinished">整合阻拦切断</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2926"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2568"/>
         <source>Use Localized Orbitals</source>
         <translation type="unfinished">使用定域轨道</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2933"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2575"/>
         <source># of Core Electrons:</source>
         <translation type="unfinished"># 个核心电子:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2940"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2582"/>
         <source>Transformation Method</source>
         <translation type="unfinished">变形方式</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2955"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2591"/>
         <source>Two Phase Bin Sort</source>
         <translation type="unfinished">两相贮存分类</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2962"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2598"/>
         <source>Segmented Transformation</source>
         <translation type="unfinished">片段化变形</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3009"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2631"/>
         <source>Vibrational Analysis</source>
         <translation type="unfinished">振动分析</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3019"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2641"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3031"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2647"/>
         <source>Analytic</source>
         <translation type="unfinished">分析</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3041"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2657"/>
         <source>Numeric</source>
         <translation type="unfinished">数值</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3051"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2667"/>
         <source>Double Differenced Hessian</source>
         <translation type="unfinished">双微分Hessian</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3058"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2674"/>
         <source>Print Internal Force Constants</source>
         <translation type="unfinished">打印内部力常数</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3065"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2681"/>
         <source>Displacement Size:</source>
         <translation type="unfinished">置换尺寸</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3072"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2688"/>
         <source>Purify Hessian</source>
         <translation type="unfinished">纯Hessian</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3079"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2695"/>
         <source>Frequency Scale Factor:</source>
         <translation type="unfinished">频率缩放因子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3086"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2702"/>
         <source>bohrs</source>
         <translation type="unfinished">玻尔</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3134"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2736"/>
         <source>Initial Hessian</source>
         <translation type="unfinished">初始Hessian</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3146"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2742"/>
         <source>Guess (+ define)</source>
         <translation type="unfinished">猜测 (+ 定义)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3153"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2749"/>
         <source>Read (from $HESS)</source>
         <translation type="unfinished">读取 (从 $HESS)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3170"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2766"/>
         <source>Update Step Size</source>
         <translation type="unfinished">更新步长</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3180"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2776"/>
         <source>Print Orbs at Each Iteration</source>
         <translation type="unfinished">每次迭代后打印轨道</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3187"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2783"/>
         <source>Gradient Convergence Criteria:</source>
         <translation type="unfinished">渐变聚合标准</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3216"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2812"/>
         <source>Jump Size:</source>
         <translation type="unfinished">跳转尺度:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3223"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2819"/>
         <source>Stationary Point</source>
         <translation type="unfinished">不动点</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3233"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2829"/>
         <source>Optimization Method:</source>
         <translation type="unfinished">优化方式:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3243"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2839"/>
         <source>Step Size</source>
         <translation type="unfinished">步长</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3255"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2845"/>
         <source>Maximum:</source>
         <translation type="unfinished">最大值：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3262"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2852"/>
         <source>Minimum:</source>
         <translation type="unfinished">最小值：</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3272"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2862"/>
         <source>Initial:</source>
         <translation type="unfinished">初始</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3316"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2906"/>
         <source>Newton-Raphson</source>
         <translation type="unfinished">Newton-Raphson</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3321"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2911"/>
         <source>Rational Function Optimization</source>
         <translation type="unfinished">有理函数优化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3326"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2916"/>
         <source>Quadratic Approximation</source>
         <translation type="unfinished">二次近似</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3331"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2921"/>
         <source>Schlegel (quasi-NR)</source>
         <translation type="unfinished">Schlegel (类-NR)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3336"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2926"/>
         <source>Constrained Optimization</source>
         <translation type="unfinished">限制性优化</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3355"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2939"/>
         <source>steps</source>
         <translation type="unfinished">步骤</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3377"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2961"/>
         <source>Recalculate Hessian Every:</source>
         <translation type="unfinished">重新计算Hessian在每:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3387"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2971"/>
         <source>Follow Mode:</source>
         <translation type="unfinished">跟随模式:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3397"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="2981"/>
         <source>Maximum Steps:</source>
         <translation type="unfinished">最大步数:</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3436"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3014"/>
         <source>Reset All</source>
         <translation type="unfinished">全部重置</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3443"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3021"/>
         <source>Defaults</source>
         <translation type="unfinished">默认</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3466"/>
-        <source>Generate</source>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3044"/>
+        <source>Generate...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3473"/>
+        <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="3051"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
 </context>
 <context>
@@ -5595,7 +5606,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="30"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标题:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="40"/>
@@ -5605,7 +5616,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="47"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="63"/>
@@ -5615,102 +5626,102 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="68"/>
         <source>Geometry Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">几何优化</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="73"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">频率</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="96"/>
         <source>Processors:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">处理器：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="133"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">理论:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="149"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="154"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="159"/>
         <source>RHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RHF</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="164"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="169"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="174"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="197"/>
         <source>Basis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">基准:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="213"/>
         <source>STO-3G</source>
-        <translation type="unfinished">STO-6G {3G?}</translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="218"/>
         <source>3-21G</source>
-        <translation type="unfinished">6-311G {3-21G?}</translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="223"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="228"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="233"/>
         <source>LANL2DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LANL2DZ</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="256"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">电荷:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="293"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">多重性：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="330"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输出：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="346"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标准</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="351"/>
@@ -5725,27 +5736,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="379"/>
         <source>Checkpoint:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">检查点:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="396"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">格式：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="415"/>
         <source>Cartesian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">笛卡尔</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="420"/>
         <source>Z-matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-矩阵</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="425"/>
         <source>Z-matrix (compact)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-矩阵 (致密的)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="469"/>
@@ -5755,22 +5766,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="498"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="508"/>
         <source>Use Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用表单</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="528"/>
-        <source>Generate</source>
+        <source>Generate...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="535"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
 </context>
 <context>
@@ -5806,37 +5817,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="13"/>
         <source>Import Molecule File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入分子文件</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="24"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">文件名:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="34"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="45"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">格式：</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="53"/>
         <source>Automatically detect from extension</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">根据扩展名自动检测</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="63"/>
         <source>Perceive bonding</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">检测成键状态</translation>
     </message>
     <message>
         <location filename="../avogadro/src/importdialog.ui" line="73"/>
         <source>Perceive bond orders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">检测键级</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../avogadro/src/importdialog.ui" line="83"/>
@@ -5869,7 +5880,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="99"/>
         <source>Insert Fragment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插入片段</translation>
     </message>
 </context>
 <context>
@@ -5902,7 +5913,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="74"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="79"/>
@@ -5912,12 +5923,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="84"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部分电荷</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="154"/>
         <source>Unique ID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">唯一D</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="94"/>
@@ -5955,7 +5966,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.ui" line="34"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.ui" line="38"/>
@@ -5975,12 +5986,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.ui" line="60"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.ui" line="79"/>
         <source>The residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
 </context>
 <context>
@@ -5988,27 +5999,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="13"/>
         <source>Linear Morph Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">线性形态轨迹</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="24"/>
         <source>Load a second confromation and computer a linear interpolation with the current conformation.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">载入第二个构象并和当前构象一起计算线性插值。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="27"/>
         <source>button to load a second conformation from a file.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">从文件中载入第二构象的按钮。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="30"/>
         <source>Load Second Conformation ...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">载入第二构象 ...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="41"/>
         <source>Num Frames</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">数值框</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="64"/>
@@ -6018,7 +6029,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="181"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">环</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="201"/>
@@ -6028,22 +6039,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="228"/>
         <source>Save snapshots of the trajectory as a series of POVRay files.  These can then be used to make a movie.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">将轨迹的快照保存为一系列POV-Ray文件。这些文件可以用于制作视频。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="231"/>
         <source>Button to save an .xyz trajectory.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存为.xyz轨迹的按钮。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="234"/>
         <source>Save trajectory...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存轨迹...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.ui" line="248"/>
         <source>Save movie...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存视频...</translation>
     </message>
 </context>
 <context>
@@ -6056,7 +6067,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="30"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标题:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="40"/>
@@ -6066,7 +6077,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="47"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="63"/>
@@ -6076,22 +6087,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="68"/>
         <source>Geometry Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">几何优化</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="73"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">频率</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="96"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">电荷:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="133"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">多重性：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="143"/>
@@ -6126,7 +6137,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="202"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="207"/>
@@ -6141,12 +6152,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="217"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="222"/>
         <source>PM6</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM6</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="227"/>
@@ -6156,17 +6167,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="250"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">格式：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="269"/>
         <source>Cartesian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">笛卡尔</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="274"/>
         <source>Z-matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-矩阵</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="307"/>
@@ -6176,12 +6187,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="347"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="357"/>
         <source>Use Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用表单</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="377"/>
@@ -6196,7 +6207,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/mopacinputdialog.ui" line="391"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
 </context>
 <context>
@@ -6254,7 +6265,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="115"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;编辑</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="128"/>
@@ -6264,7 +6275,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="133"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;选择</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="151"/>
@@ -6274,7 +6285,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="182"/>
         <source>Project Tree</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">项目树</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="215"/>
@@ -6284,7 +6295,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="227"/>
         <source>Display Types</source>
-        <translation type="unfinished">显示类型</translation>
+        <translation type="unfinished">显示模式</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="252"/>
@@ -6364,7 +6375,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="376"/>
         <source>&amp;Graphics...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;图像...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="385"/>
@@ -6499,7 +6510,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="551"/>
         <source>Debug Information</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">调试信息</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="559"/>
@@ -6529,32 +6540,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="584"/>
         <source>Plugin Manager...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插件管理器...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="589"/>
         <source>Project Tree Editor...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">项目树编辑器...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="594"/>
         <source>Detach View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">拆分视图</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="599"/>
         <source>Molecule File...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子文件...</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="610"/>
         <source>Use Quick Render</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用快速渲染器</translation>
     </message>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="615"/>
         <source>&amp;Vector Graphics...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;矢量图形...</translation>
     </message>
 </context>
 <context>
@@ -6562,32 +6573,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="19"/>
         <source>Surfaces</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">表面</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="29"/>
         <source>Cubes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">立方体</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="35"/>
         <source>Cube Dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">立方体维度</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="46"/>
         <source>x</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="59"/>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="72"/>
         <source>z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="87"/>
@@ -6597,7 +6608,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="129"/>
         <source>Max:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最大:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="171"/>
@@ -6607,47 +6618,47 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="213"/>
         <source>Step Size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">步长:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="303"/>
         <source>Calculate MO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算MO</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="330"/>
         <source>Calculate All MOs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算所有MO</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="357"/>
         <source>Calculate Electron Density</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算电子密度</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="384"/>
         <source>Calculate Van der Waals Cube</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算Van der Waals立方体</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="410"/>
         <source>Isosurfaces</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iso表面</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="632"/>
         <source>Cube:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">立方体:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="662"/>
         <source>Color By:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">着色按:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="480"/>
         <source>Iso Value:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iso值:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="492"/>
@@ -6657,7 +6668,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="514"/>
         <source>Cube Range:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">立方体范围:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="526"/>
@@ -6677,12 +6688,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="820"/>
         <source>Calculate Mesh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算网格</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="626"/>
         <source>Van der Waals Surface</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Van der Waals表面</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="678"/>
@@ -6697,7 +6708,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="706"/>
         <source>Distance:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距离：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="718"/>
@@ -6707,7 +6718,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/orbitaldialog.ui" line="740"/>
         <source>Range:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">范围:</translation>
     </message>
 </context>
 <context>
@@ -6720,27 +6731,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="29"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不透明度：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="74"/>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">填充</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="79"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">直线</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="84"/>
         <source>Points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">点</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="92"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">渲染:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="102"/>
@@ -6750,7 +6761,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="128"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">颜色:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="140"/>
@@ -6793,7 +6804,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="74"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="79"/>
@@ -6803,7 +6814,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="84"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部分电荷</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="92"/>
@@ -6831,87 +6842,87 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="19"/>
         <source>POV-Ray Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray导出</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="30"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="64"/>
         <source>povray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">povray</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="111"/>
         <source>Render</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">渲染</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="118"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="127"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">文件名:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="137"/>
         <source>Resolution:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分辨率：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="147"/>
         <source>Use full scene antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用全场景抗锯齿</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="150"/>
         <source>Antialias</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">抗锯齿</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="160"/>
         <source>Set the background color to be transparent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置背景色为透明</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="163"/>
         <source>Alpha transparency</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alpha透明</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="173"/>
         <source>Command:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">命令:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="183"/>
         <source>Render the molecule directly using command line POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用命令行POV-Ray直接渲染分子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="186"/>
         <source>Render using POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用POV-Ray渲染</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="196"/>
         <source>Keep the POV-Ray source after rendering has completed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">渲染完成后保留POV-Ray源文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="199"/>
         <source>Keep POV-Ray source after rendering</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">渲染后保留POV-Ray源文件</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="209"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">路径:</translation>
     </message>
 </context>
 <context>
@@ -6919,12 +6930,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/pluginsettings.ui" line="16"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插件</translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.ui" line="23"/>
         <source>Display types</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示模式</translation>
     </message>
     <message>
         <location filename="../avogadro/src/pluginsettings.ui" line="28"/>
@@ -6944,7 +6955,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/pluginsettings.ui" line="52"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">详情</translation>
     </message>
 </context>
 <context>
@@ -6957,7 +6968,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="34"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="38"/>
@@ -6972,12 +6983,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="55"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="74"/>
         <source>The residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">残基名称</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="85"/>
@@ -6995,82 +7006,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="174"/>
         <source>Tree Items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">树型图项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="213"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">类型</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="62"/>
         <source>New Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新建项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="65"/>
         <source>&amp;New Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新建项目(&amp;N)</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="76"/>
         <source>New Subitem</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新建子项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="79"/>
         <source>New &amp;Subitem</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新建子项目(&amp;S)</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="86"/>
         <source>Delete Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">删除项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="89"/>
         <source>&amp;Delete Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">删除项目(&amp;D)</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="113"/>
         <source>Move Item Left (before Parent Item)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">左移项目（在父项目之前）</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="116"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">L</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="127"/>
         <source>Move Item Right (as a First Subitem of the Next Sibling Item)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">右移项目（作为下一个姐妹项目的子项目）</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="130"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">R</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="143"/>
         <source>Move Item Up</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">上移项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="146"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">U</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="157"/>
         <source>Move Item Down</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">下移项目</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="160"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">D</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="178"/>
@@ -7085,7 +7096,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="199"/>
         <source>Alias</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">别名</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projecttreeeditor.ui" line="229"/>
@@ -7098,7 +7109,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/tools/pythonsettingswidget.ui" line="25"/>
         <source>Python Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python设置</translation>
     </message>
 </context>
 <context>
@@ -7106,7 +7117,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminalwidget.ui" line="13"/>
         <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python终端</translation>
     </message>
 </context>
 <context>
@@ -7114,12 +7125,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="19"/>
         <source>Q-Chem Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Q-Chem导入</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="30"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标题:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="40"/>
@@ -7129,7 +7140,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="47"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="63"/>
@@ -7139,97 +7150,97 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="68"/>
         <source>Geometry Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">几何优化</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="73"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">频率</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="113"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">理论:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="129"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="134"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="139"/>
         <source>RHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RHF</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="144"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="149"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="154"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="177"/>
         <source>Basis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">基准:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="193"/>
         <source>STO-3G</source>
-        <translation type="unfinished">STO-6G {3G?}</translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="198"/>
         <source>3-21G</source>
-        <translation type="unfinished">6-311G {3-21G?}</translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="203"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="208"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="213"/>
         <source>LANL2DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LANL2DZ</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="236"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">电荷:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="273"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">多重性：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="310"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输出：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="326"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标准</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="331"/>
@@ -7239,22 +7250,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="354"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">格式：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="373"/>
         <source>Cartesian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">笛卡尔</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="378"/>
         <source>Z-matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-矩阵</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="383"/>
         <source>Z-matrix (compact)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-矩阵 (致密的)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="427"/>
@@ -7264,22 +7275,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="456"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重置</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="466"/>
         <source>Use Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用表单</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="486"/>
-        <source>Generate</source>
+        <source>Generate...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="493"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
 </context>
 <context>
@@ -7390,11 +7401,6 @@ Do you want to create a crystal unit cell?</source>
         <translation type="unfinished">删除氢原子</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonterminal.h" line="60"/>
-        <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="146"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
@@ -7402,27 +7408,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="47"/>
         <source>GL widget was not correctly initialized in order to make a video</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GL小工具未能正确启动以制作视频</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="55"/>
         <source>GL widget has no molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GL小工具未包含任何分子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="61"/>
         <source>Building video </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">建构视频 </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="62"/>
         <source>cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="108"/>
         <source>Video file not written.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">视频文件没有写入。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="123"/>
@@ -7468,7 +7474,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="264"/>
         <source>Add Atom</source>
-        <translation type="unfinished">增加原子</translation>
+        <translation type="unfinished">添加原子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="362"/>
@@ -7478,7 +7484,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="514"/>
         <source>Add Bond</source>
-        <translation type="unfinished">增加键</translation>
+        <translation type="unfinished">添加键</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="635"/>
@@ -7493,12 +7499,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="806"/>
         <source>Change Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">更改键级</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="901"/>
         <source>Insert Fragment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插入片段</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="371"/>
@@ -7524,13 +7530,13 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/colors/residuecolorsettings.ui" line="37"/>
-        <source>Hydrophobicity</source>
+        <location filename="../libavogadro/src/colors/residuecolorsettings.ui" line="32"/>
+        <source>Shapely Colors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/colors/residuecolorsettings.ui" line="32"/>
-        <source>Shapely Colors</source>
+        <location filename="../libavogadro/src/colors/residuecolorsettings.ui" line="37"/>
+        <source>Hydrophobicity</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7549,12 +7555,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="29"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">直线</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="37"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">半径：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="91"/>
@@ -7567,7 +7573,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/ringsettingswidget.ui" line="16"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不透明度：</translation>
     </message>
 </context>
 <context>
@@ -7590,7 +7596,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="169"/>
         <source>Set the global rendering quality.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置全局渲染质量。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="85"/>
@@ -7600,7 +7606,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="105"/>
         <source>Enable the tabbed tool layout.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">允许标签式工具栏布局。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="108"/>
@@ -7610,32 +7616,32 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="122"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顶部</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="127"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">底部</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="132"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">左侧</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="137"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">右侧</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="151"/>
         <source>Tab Position</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标签位置</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="162"/>
         <source>Fog:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">雾效:</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="206"/>
@@ -7645,27 +7651,27 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="218"/>
         <source>Smooths animations of various functions where availabe.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">在允许的地方对各种功能的动画进行平滑处理。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="221"/>
         <source>Enables the use of transitional animations when performing automatic positioning of the GLWidget.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">在使用GL小工具的自动定位时允许使用过渡态动画。</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="224"/>
         <source>Smooth Transitions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">平滑过渡</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="321"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插件</translation>
     </message>
     <message>
         <location filename="../avogadro/src/settingsdialog.ui" line="330"/>
         <source>Project Tree</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">项目树</translation>
     </message>
 </context>
 <context>
@@ -7673,52 +7679,52 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="19"/>
         <source>GLSL Shaders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GLSL着色器</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="29"/>
         <source>Load Shaders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">载入着色器</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="35"/>
         <source>Shader Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">着色器名称:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="52"/>
         <source>Vertex Shader:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顶点着色器:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="115"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">浏览...</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="76"/>
         <source>Fragment Shader:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">片段着色器:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="100"/>
         <source>Parameters:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">参数：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="245"/>
         <source>Assign Shader</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">指定着色器</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="170"/>
         <source>Display Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示模式：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="190"/>
         <source>Shader Program:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">着色器程序：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/shaderdialog.ui" line="207"/>
@@ -7739,7 +7745,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/sticksettingswidget.ui" line="16"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">半径：</translation>
     </message>
 </context>
 <context>
@@ -7747,32 +7753,32 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="17"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不透明度：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="58"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">渲染:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="66"/>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">填充</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="71"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">直线</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="76"/>
         <source>Points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">点</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="84"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">颜色:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="95"/>
@@ -7901,7 +7907,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/wiresettingswidget.ui" line="31"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示多重键</translation>
     </message>
 </context>
 <context>

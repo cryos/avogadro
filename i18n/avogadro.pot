@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.1\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-02-23 21:27-0500\n"
+"POT-Creation-Date: 2009-02-24 16:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -589,11 +589,11 @@ msgstr ""
 #: libavogadro/src/engines/labelsettingswidget.ui:134
 #: libavogadro/src/engines/overlaysettingswidget.ui:54
 #: libavogadro/src/engines/overlaysettingswidget.ui:124
-#: libavogadro/src/extensions/gamessinputdialog.ui:621
-#: libavogadro/src/extensions/gamessinputdialog.ui:1214
-#: libavogadro/src/extensions/gamessinputdialog.ui:1284
-#: libavogadro/src/extensions/gamessinputdialog.ui:1330
-#: libavogadro/src/extensions/gamessinputdialog.ui:2474
+#: libavogadro/src/extensions/gamessinputdialog.ui:531
+#: libavogadro/src/extensions/gamessinputdialog.ui:1080
+#: libavogadro/src/extensions/gamessinputdialog.ui:1150
+#: libavogadro/src/extensions/gamessinputdialog.ui:1196
+#: libavogadro/src/extensions/gamessinputdialog.ui:2182
 #: libavogadro/src/extensions/orbitaldialog.ui:678
 #: libavogadro/src/extensions/shaderdialog.ui:207
 #: avogadro/src/settingsdialog.cpp:128
@@ -1289,7 +1289,7 @@ msgstr ""
 #: libavogadro/src/extensions/orbitalextension.cpp:93
 #: libavogadro/src/extensions/shaderextension.cpp:189
 #: libavogadro/src/extensions/templateextension.cpp:70
-#: libavogadro/src/extensions/vibrationextension.cpp:74
+#: libavogadro/src/extensions/vibrationextension.cpp:73
 #: libavogadro/src/extensions/wiitrackextension.cpp:83 rc.cpp:68
 msgid "&Extensions"
 msgstr ""
@@ -1502,7 +1502,7 @@ msgid "QM Matches"
 msgstr ""
 
 #: libavogadro/src/extensions/gamessextension.cpp:64
-msgid "Input Deck Generator..."
+msgid "Input Generator..."
 msgstr ""
 
 #: libavogadro/src/extensions/gamessextension.cpp:69
@@ -1576,7 +1576,7 @@ msgstr ""
 msgid "Create input files for the GAMESS quantum chemistry package"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1762
+#: libavogadro/src/extensions/gamessinputdialog.ui:1578
 #: libavogadro/src/extensions/gaussianinputdialog.ui:40
 #: libavogadro/src/extensions/mopacinputdialog.ui:40
 #: libavogadro/src/extensions/qcheminputdialog.ui:40
@@ -1663,7 +1663,7 @@ msgstr ""
 
 #: libavogadro/src/extensions/mopacinputdialog.ui:307
 #: libavogadro/src/extensions/gaussianinputdialog.cpp:212
-#: libavogadro/src/extensions/mopacinputdialog.cpp:224
+#: libavogadro/src/extensions/mopacinputdialog.cpp:261
 #: libavogadro/src/extensions/qcheminputdialog.cpp:173 rc.cpp:1344
 msgid "Show Preview"
 msgstr ""
@@ -1671,7 +1671,7 @@ msgstr ""
 #: libavogadro/src/extensions/gaussianinputdialog.ui:469
 #: libavogadro/src/extensions/qcheminputdialog.ui:427
 #: libavogadro/src/extensions/gaussianinputdialog.cpp:216
-#: libavogadro/src/extensions/mopacinputdialog.cpp:228
+#: libavogadro/src/extensions/mopacinputdialog.cpp:265
 #: libavogadro/src/extensions/qcheminputdialog.cpp:177 rc.cpp:1246 rc.cpp:1536
 msgid "Hide Preview"
 msgstr ""
@@ -1814,54 +1814,58 @@ msgstr ""
 msgid "Create linear interpolation for animations"
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:119
+#: libavogadro/src/extensions/mopacinputdialog.cpp:134
 msgid "MOPAC Input Warning"
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:120
+#: libavogadro/src/extensions/mopacinputdialog.cpp:135
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:160
+#: libavogadro/src/extensions/mopacinputdialog.cpp:175
 msgid "MOPAC Running."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:161
+#: libavogadro/src/extensions/mopacinputdialog.cpp:176
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:175
+#: libavogadro/src/extensions/mopacinputdialog.cpp:184
 msgid "MOPAC Not Installed."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:176
+#: libavogadro/src/extensions/mopacinputdialog.cpp:185
 msgid "The MOPAC executable, cannot be found."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:190
+#: libavogadro/src/extensions/mopacinputdialog.cpp:199
 msgid "MOPAC failed to start."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:191
+#: libavogadro/src/extensions/mopacinputdialog.cpp:200
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:203
+#: libavogadro/src/extensions/mopacinputdialog.cpp:205
+msgid "Running MOPAC calculation..."
+msgstr ""
+
+#: libavogadro/src/extensions/mopacinputdialog.cpp:240
 msgid "MOPAC Crashed."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:204
+#: libavogadro/src/extensions/mopacinputdialog.cpp:241
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:253
+#: libavogadro/src/extensions/mopacinputdialog.cpp:291
 msgid "Save MOPAC Input Deck"
 msgstr ""
 
-#: libavogadro/src/extensions/mopacinputdialog.cpp:254
+#: libavogadro/src/extensions/mopacinputdialog.cpp:292
 msgid "MOPAC Input Deck (*.mop)"
 msgstr ""
 
@@ -2033,7 +2037,7 @@ msgstr ""
 msgid "Conformer"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1070
+#: libavogadro/src/extensions/gamessinputdialog.ui:948
 #: libavogadro/src/extensions/propextension.cpp:257
 #: libavogadro/src/extensions/propextension.h:54 rc.cpp:766
 msgid "Properties"
@@ -2068,7 +2072,7 @@ msgid "Valence"
 msgstr ""
 
 #: libavogadro/src/extensions/propmodel.cpp:245
-#: libavogadro/src/extensions/propmodel.cpp:304
+#: libavogadro/src/extensions/propmodel.cpp:301
 #, qt-format
 msgid "Atom %1"
 msgstr ""
@@ -2113,49 +2117,45 @@ msgstr ""
 msgid "Angle %1"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:281
-#: libavogadro/src/extensions/propmodel.cpp:283
-#: libavogadro/src/extensions/propmodel.cpp:285
-#: libavogadro/src/extensions/propmodel.cpp:287
-msgid "Atom Index"
+#: libavogadro/src/extensions/propmodel.cpp:284
+#, qt-format
+msgid "Atom Index %1"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:289
+#: libavogadro/src/extensions/propmodel.cpp:286
 msgid "Torsion (°)"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:292
+#: libavogadro/src/extensions/propmodel.cpp:289
 #, qt-format
 msgid "Torsion %1"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:297
+#: libavogadro/src/extensions/propmodel.cpp:294
 msgid "X (Å)"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:299
+#: libavogadro/src/extensions/propmodel.cpp:296
 msgid "Y (Å)"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:301
+#: libavogadro/src/extensions/propmodel.cpp:298
 msgid "Z (Å)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1020
-#: libavogadro/src/extensions/propmodel.cpp:309 rc.cpp:746
+#: libavogadro/src/extensions/gamessinputdialog.ui:898
+#: libavogadro/src/extensions/propmodel.cpp:306 rc.cpp:746
 msgid "Energy"
 msgstr ""
 
-#: libavogadro/src/extensions/propmodel.cpp:312
+#: libavogadro/src/extensions/propmodel.cpp:309
 #, qt-format
 msgid "Conformer %1"
 msgstr ""
 
 #: libavogadro/src/extensions/pythonterminalwidget.ui:13
 #: libavogadro/src/extensions/pythonterminal.cpp:70
-#: libavogadro/src/extensions/pythonterminal.h:52
-#: libavogadro/src/extensions/pythonterminal.h:60
-#: libavogadro/src/extensions/pythonterminal.h:113 rc.cpp:1476
+#: libavogadro/src/extensions/pythonterminal.h:52 rc.cpp:1476
 msgid "Python Terminal"
 msgstr ""
 
@@ -2163,8 +2163,8 @@ msgstr ""
 msgid "pythonTerminalDock"
 msgstr ""
 
-#: libavogadro/src/extensions/pythonterminal.h:114
-msgid "Extension to provide an interactive python terminal."
+#: libavogadro/src/extensions/pythonterminal.h:53
+msgid "Interactive python scripting terminal"
 msgstr ""
 
 #: libavogadro/src/extensions/qcheminputdialog.cpp:118
@@ -2398,17 +2398,17 @@ msgstr ""
 msgid "Vibrations..."
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3009
-#: libavogadro/src/extensions/vibrationextension.cpp:113
-#: libavogadro/src/extensions/vibrationextension.cpp:130 rc.cpp:1108
+#: libavogadro/src/extensions/gamessinputdialog.ui:2631
+#: libavogadro/src/extensions/vibrationextension.cpp:114
+#: libavogadro/src/extensions/vibrationextension.cpp:131 rc.cpp:1108
 msgid "Vibrational Analysis"
 msgstr ""
 
-#: libavogadro/src/extensions/vibrationextension.cpp:113
+#: libavogadro/src/extensions/vibrationextension.cpp:114
 msgid "No vibrational displacements exist."
 msgstr ""
 
-#: libavogadro/src/extensions/vibrationextension.cpp:130
+#: libavogadro/src/extensions/vibrationextension.cpp:131
 msgid "No vibrations have been computed for this molecule."
 msgstr ""
 
@@ -2864,7 +2864,7 @@ msgstr ""
 msgid "Element:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1441
+#: libavogadro/src/extensions/gamessinputdialog.ui:1295
 #: libavogadro/src/tools/drawtool.cpp:679 rc.cpp:860
 msgid "Other..."
 msgstr ""
@@ -3826,7 +3826,7 @@ msgid "0/0"
 msgstr ""
 
 #: libavogadro/src/extensions/animationdialog.ui:161
-#: libavogadro/src/extensions/gamessinputdialog.ui:2232
+#: libavogadro/src/extensions/gamessinputdialog.ui:1986
 #: libavogadro/src/extensions/linmorphdialog.ui:181
 #: rc.cpp:456 rc.cpp:982 rc.cpp:1284
 msgid "Loop"
@@ -3870,7 +3870,7 @@ msgid "Number of conformers"
 msgstr ""
 
 #: libavogadro/src/extensions/conformersearchdialog.ui:60
-#: libavogadro/src/extensions/gamessinputdialog.ui:3019
+#: libavogadro/src/extensions/gamessinputdialog.ui:2641
 #: libavogadro/src/extensions/liganddialog.ui:21
 #: libavogadro/src/extensions/liganddialog.ui:34
 #: libavogadro/src/extensions/pocketdialog.ui:21
@@ -4047,18 +4047,18 @@ msgstr ""
 msgid "Group Label:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:37
+#: libavogadro/src/extensions/gamessinputdialog.ui:23
 #: rc.cpp:562
 msgid "&Basic Setup"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:64
+#: libavogadro/src/extensions/gamessinputdialog.ui:38
 #: rc.cpp:564
 msgid "megabytes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:95
-#: libavogadro/src/extensions/gamessinputdialog.ui:844
+#: libavogadro/src/extensions/gamessinputdialog.ui:63
+#: libavogadro/src/extensions/gamessinputdialog.ui:742
 #: libavogadro/src/extensions/gaussianinputdialog.ui:149
 #: libavogadro/src/extensions/mopacinputdialog.ui:202
 #: libavogadro/src/extensions/qcheminputdialog.ui:129
@@ -4066,8 +4066,8 @@ msgstr ""
 msgid "AM1"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:100
-#: libavogadro/src/extensions/gamessinputdialog.ui:849
+#: libavogadro/src/extensions/gamessinputdialog.ui:68
+#: libavogadro/src/extensions/gamessinputdialog.ui:747
 #: libavogadro/src/extensions/gaussianinputdialog.ui:154
 #: libavogadro/src/extensions/mopacinputdialog.ui:217
 #: libavogadro/src/extensions/qcheminputdialog.ui:134
@@ -4075,163 +4075,163 @@ msgstr ""
 msgid "PM3"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:105
-#: libavogadro/src/extensions/gamessinputdialog.ui:1157
+#: libavogadro/src/extensions/gamessinputdialog.ui:73
+#: libavogadro/src/extensions/gamessinputdialog.ui:1029
 #: libavogadro/src/extensions/gaussianinputdialog.ui:159
 #: libavogadro/src/extensions/qcheminputdialog.ui:139
 #: rc.cpp:570 rc.cpp:790 rc.cpp:1204 rc.cpp:1498
 msgid "RHF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:110
-#: libavogadro/src/extensions/gamessinputdialog.ui:2692
+#: libavogadro/src/extensions/gamessinputdialog.ui:78
+#: libavogadro/src/extensions/gamessinputdialog.ui:2360
 #: libavogadro/src/extensions/gaussianinputdialog.ui:164
 #: libavogadro/src/extensions/qcheminputdialog.ui:144
 #: rc.cpp:572 rc.cpp:1050 rc.cpp:1206 rc.cpp:1500
 msgid "B3LYP"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:115
-#: libavogadro/src/extensions/gamessinputdialog.ui:536
+#: libavogadro/src/extensions/gamessinputdialog.ui:83
+#: libavogadro/src/extensions/gamessinputdialog.ui:466
 #: libavogadro/src/extensions/gaussianinputdialog.ui:169
 #: libavogadro/src/extensions/qcheminputdialog.ui:149
 #: rc.cpp:574 rc.cpp:650 rc.cpp:1208 rc.cpp:1502
 msgid "MP2"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:120
-#: libavogadro/src/extensions/gamessinputdialog.ui:1350
+#: libavogadro/src/extensions/gamessinputdialog.ui:88
+#: libavogadro/src/extensions/gamessinputdialog.ui:1216
 #: rc.cpp:576 rc.cpp:842
 msgid "CCSD(T)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:129
-#: libavogadro/src/extensions/gamessinputdialog.ui:759
+#: libavogadro/src/extensions/gamessinputdialog.ui:97
+#: libavogadro/src/extensions/gamessinputdialog.ui:657
 #: libavogadro/src/extensions/gaussianinputdialog.ui:213
 #: libavogadro/src/extensions/qcheminputdialog.ui:193
 #: rc.cpp:578 rc.cpp:686 rc.cpp:1214 rc.cpp:1508
 msgid "STO-3G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:134
-#: libavogadro/src/extensions/gamessinputdialog.ui:744
+#: libavogadro/src/extensions/gamessinputdialog.ui:102
+#: libavogadro/src/extensions/gamessinputdialog.ui:642
 #: rc.cpp:580 rc.cpp:680
 msgid "MINI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:139
-#: libavogadro/src/extensions/gamessinputdialog.ui:779
+#: libavogadro/src/extensions/gamessinputdialog.ui:107
+#: libavogadro/src/extensions/gamessinputdialog.ui:677
 #: libavogadro/src/extensions/gaussianinputdialog.ui:218
 #: libavogadro/src/extensions/qcheminputdialog.ui:198
 #: rc.cpp:582 rc.cpp:694 rc.cpp:1216 rc.cpp:1510
 msgid "3-21G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:144
+#: libavogadro/src/extensions/gamessinputdialog.ui:112
 #: libavogadro/src/extensions/gaussianinputdialog.ui:223
 #: libavogadro/src/extensions/qcheminputdialog.ui:203
 #: rc.cpp:584 rc.cpp:1218 rc.cpp:1512
 msgid "6-31G(d)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:149
+#: libavogadro/src/extensions/gamessinputdialog.ui:117
 #: libavogadro/src/extensions/gaussianinputdialog.ui:228
 #: libavogadro/src/extensions/qcheminputdialog.ui:208
 #: rc.cpp:586 rc.cpp:1220 rc.cpp:1514
 msgid "6-31G(d,p)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:154
+#: libavogadro/src/extensions/gamessinputdialog.ui:122
 #: rc.cpp:588
 msgid "6-31+G(d,p)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:159
+#: libavogadro/src/extensions/gamessinputdialog.ui:127
 #: rc.cpp:590
 msgid "6-31+G(2d,p)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:164
+#: libavogadro/src/extensions/gamessinputdialog.ui:132
 #: rc.cpp:592
 msgid "6-311++G(2d,p)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:169
+#: libavogadro/src/extensions/gamessinputdialog.ui:137
 #: rc.cpp:594
 msgid "Core Potential"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:192
-#: libavogadro/src/extensions/gamessinputdialog.ui:2206
-#: libavogadro/src/extensions/gamessinputdialog.ui:2899
+#: libavogadro/src/extensions/gamessinputdialog.ui:160
+#: libavogadro/src/extensions/gamessinputdialog.ui:1966
+#: libavogadro/src/extensions/gamessinputdialog.ui:2541
 #: rc.cpp:596 rc.cpp:976 rc.cpp:1092
 msgid "Memory:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:211
+#: libavogadro/src/extensions/gamessinputdialog.ui:173
 #: libavogadro/src/extensions/mopacinputdialog.ui:143
 #: rc.cpp:598 rc.cpp:1314
 msgid "Singlet"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:216
+#: libavogadro/src/extensions/gamessinputdialog.ui:178
 #: libavogadro/src/extensions/mopacinputdialog.ui:148
 #: rc.cpp:600 rc.cpp:1316
 msgid "Doublet"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:221
+#: libavogadro/src/extensions/gamessinputdialog.ui:183
 #: libavogadro/src/extensions/mopacinputdialog.ui:153
 #: rc.cpp:602 rc.cpp:1318
 msgid "Triplet"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:230
+#: libavogadro/src/extensions/gamessinputdialog.ui:192
 #: rc.cpp:604
 msgid "Dication"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:235
+#: libavogadro/src/extensions/gamessinputdialog.ui:197
 #: rc.cpp:606
 msgid "Cation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:240
+#: libavogadro/src/extensions/gamessinputdialog.ui:202
 #: rc.cpp:608
 msgid "Neutral"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:245
+#: libavogadro/src/extensions/gamessinputdialog.ui:207
 #: rc.cpp:610
 msgid "Anion"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:250
+#: libavogadro/src/extensions/gamessinputdialog.ui:212
 #: rc.cpp:612
 msgid "Dianion"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:273
+#: libavogadro/src/extensions/gamessinputdialog.ui:235
 #: rc.cpp:614
 msgid "On:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:295
+#: libavogadro/src/extensions/gamessinputdialog.ui:251
 #: rc.cpp:616
 msgid "Single Point Entry"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:300
+#: libavogadro/src/extensions/gamessinputdialog.ui:256
 #: rc.cpp:618
 msgid "Equilibrium Geometry"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:305
+#: libavogadro/src/extensions/gamessinputdialog.ui:261
 #: rc.cpp:620
 msgid "Transition State"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:310
+#: libavogadro/src/extensions/gamessinputdialog.ui:266
 #: libavogadro/src/extensions/gaussianinputdialog.ui:73
 #: libavogadro/src/extensions/mopacinputdialog.ui:73
 #: libavogadro/src/extensions/qcheminputdialog.ui:73
@@ -4239,509 +4239,509 @@ msgstr ""
 msgid "Frequencies"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:342
+#: libavogadro/src/extensions/gamessinputdialog.ui:292
 #: rc.cpp:624
 msgid "Gas"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:347
+#: libavogadro/src/extensions/gamessinputdialog.ui:297
 #: rc.cpp:626
 msgid "Water"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:370
-#: libavogadro/src/extensions/gamessinputdialog.ui:3160
+#: libavogadro/src/extensions/gamessinputdialog.ui:320
+#: libavogadro/src/extensions/gamessinputdialog.ui:2756
 #: rc.cpp:628 rc.cpp:1134
 msgid "Calculate"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:380
+#: libavogadro/src/extensions/gamessinputdialog.ui:330
 #: rc.cpp:630
 msgid "With:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:390
+#: libavogadro/src/extensions/gamessinputdialog.ui:340
 #: libavogadro/src/extensions/orbitaldialog.ui:555
 #: libavogadro/src/extensions/orbitaldialog.ui:772
 #: rc.cpp:632 rc.cpp:1400 rc.cpp:1420
 msgid "In:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:403
-#: libavogadro/src/extensions/gamessinputdialog.ui:2192
+#: libavogadro/src/extensions/gamessinputdialog.ui:353
+#: libavogadro/src/extensions/gamessinputdialog.ui:1952
 #: rc.cpp:634 rc.cpp:972
 msgid "Time Limit:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:428
+#: libavogadro/src/extensions/gamessinputdialog.ui:372
 #: rc.cpp:636
 msgid "hour(s)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:472
+#: libavogadro/src/extensions/gamessinputdialog.ui:408
 #: rc.cpp:638
 msgid "&Advanced Setup"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:512
+#: libavogadro/src/extensions/gamessinputdialog.ui:442
 #: rc.cpp:640
 msgid "Advanced"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:517
+#: libavogadro/src/extensions/gamessinputdialog.ui:447
 #: rc.cpp:642
 msgid "Basis"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:522
+#: libavogadro/src/extensions/gamessinputdialog.ui:452
 #: rc.cpp:644
 msgid "Control"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:526
+#: libavogadro/src/extensions/gamessinputdialog.ui:456
 #: rc.cpp:646
 msgid "SCF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:531
+#: libavogadro/src/extensions/gamessinputdialog.ui:461
 #: rc.cpp:648
 msgid "DFT"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:541
-#: libavogadro/src/extensions/gamessinputdialog.ui:1030
+#: libavogadro/src/extensions/gamessinputdialog.ui:471
+#: libavogadro/src/extensions/gamessinputdialog.ui:908
 #: rc.cpp:652 rc.cpp:750
 msgid "Hessian"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:546
+#: libavogadro/src/extensions/gamessinputdialog.ui:476
 #: rc.cpp:654
 msgid "Stat Point"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:552
+#: libavogadro/src/extensions/gamessinputdialog.ui:482
 #: rc.cpp:656
 msgid "Data"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:557
+#: libavogadro/src/extensions/gamessinputdialog.ui:487
 #: rc.cpp:658
 msgid "System"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:562
+#: libavogadro/src/extensions/gamessinputdialog.ui:492
 #: rc.cpp:660
 msgid "MO Guess"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:567
+#: libavogadro/src/extensions/gamessinputdialog.ui:497
 #: rc.cpp:662
 msgid "Misc"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:602
+#: libavogadro/src/extensions/gamessinputdialog.ui:518
 #: rc.cpp:664
 msgid "#D Heavy Atom Polarization Functions:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:626
+#: libavogadro/src/extensions/gamessinputdialog.ui:536
 #: rc.cpp:668
 msgid "Read"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:631
+#: libavogadro/src/extensions/gamessinputdialog.ui:541
 #: rc.cpp:670
 msgid "SBKJC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:636
+#: libavogadro/src/extensions/gamessinputdialog.ui:546
 #: rc.cpp:672
 msgid "Hay-Wadt"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:667
+#: libavogadro/src/extensions/gamessinputdialog.ui:571
 #: rc.cpp:674
 msgid "Diffuse S-Shell on Heavy Atoms"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:674
+#: libavogadro/src/extensions/gamessinputdialog.ui:578
 #: rc.cpp:676
 msgid "Diffuse L-Shell on Heavy Atoms"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:730
+#: libavogadro/src/extensions/gamessinputdialog.ui:628
 #: rc.cpp:678
 msgid "Basis Set:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:749
+#: libavogadro/src/extensions/gamessinputdialog.ui:647
 #: rc.cpp:682
 msgid "MIDI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:754
+#: libavogadro/src/extensions/gamessinputdialog.ui:652
 #: rc.cpp:684
 msgid "STO-2G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:764
+#: libavogadro/src/extensions/gamessinputdialog.ui:662
 #: rc.cpp:688
 msgid "STO-4G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:769
+#: libavogadro/src/extensions/gamessinputdialog.ui:667
 #: rc.cpp:690
 msgid "STO-5G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:774
+#: libavogadro/src/extensions/gamessinputdialog.ui:672
 #: rc.cpp:692
 msgid "STO-6G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:784
+#: libavogadro/src/extensions/gamessinputdialog.ui:682
 #: rc.cpp:696
 msgid "6-21G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:789
+#: libavogadro/src/extensions/gamessinputdialog.ui:687
 #: rc.cpp:698
 msgid "4-31G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:794
+#: libavogadro/src/extensions/gamessinputdialog.ui:692
 #: rc.cpp:700
 msgid "5-31G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:799
+#: libavogadro/src/extensions/gamessinputdialog.ui:697
 #: rc.cpp:702
 msgid "6-31G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:804
+#: libavogadro/src/extensions/gamessinputdialog.ui:702
 #: rc.cpp:704
 msgid "6-311G"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:809
+#: libavogadro/src/extensions/gamessinputdialog.ui:707
 #: rc.cpp:706
 msgid "Double Zeta Valence"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:814
+#: libavogadro/src/extensions/gamessinputdialog.ui:712
 #: rc.cpp:708
 msgid "Dunning/Hay DZ"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:819
+#: libavogadro/src/extensions/gamessinputdialog.ui:717
 #: rc.cpp:710
 msgid "Triple Zeta Valence"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:824
+#: libavogadro/src/extensions/gamessinputdialog.ui:722
 #: rc.cpp:712
 msgid "McLean/Chandler"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:829
+#: libavogadro/src/extensions/gamessinputdialog.ui:727
 #: rc.cpp:714
 msgid "SBKJA Valence"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:834
+#: libavogadro/src/extensions/gamessinputdialog.ui:732
 #: rc.cpp:716
 msgid "Hay/Wadt Valence"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:839
+#: libavogadro/src/extensions/gamessinputdialog.ui:737
 #: libavogadro/src/extensions/mopacinputdialog.ui:207
 #: rc.cpp:718 rc.cpp:1328
 msgid "MNDO"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:886
+#: libavogadro/src/extensions/gamessinputdialog.ui:784
 #: rc.cpp:724
 msgid "ECP Type:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:900
-#: libavogadro/src/extensions/gamessinputdialog.ui:2169
+#: libavogadro/src/extensions/gamessinputdialog.ui:798
+#: libavogadro/src/extensions/gamessinputdialog.ui:1929
 #: rc.cpp:726 rc.cpp:964
 msgid "Default"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:905
+#: libavogadro/src/extensions/gamessinputdialog.ui:803
 #: rc.cpp:728
 msgid "Pople"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:910
+#: libavogadro/src/extensions/gamessinputdialog.ui:808
 #: rc.cpp:730
 msgid "Pople N311"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:915
+#: libavogadro/src/extensions/gamessinputdialog.ui:813
 #: rc.cpp:732
 msgid "Dunning"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:920
+#: libavogadro/src/extensions/gamessinputdialog.ui:818
 #: rc.cpp:734
 msgid "Huzinaga"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:925
+#: libavogadro/src/extensions/gamessinputdialog.ui:823
 #: rc.cpp:736
 msgid "Hondo7"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:933
+#: libavogadro/src/extensions/gamessinputdialog.ui:831
 #: rc.cpp:738
 msgid "#F Heavy Atom Polarization Functions:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:943
+#: libavogadro/src/extensions/gamessinputdialog.ui:841
 #: rc.cpp:740
 msgid "#light Atom Polarization Functions:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:960
+#: libavogadro/src/extensions/gamessinputdialog.ui:858
 #: rc.cpp:742
 msgid "Polar:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1004
+#: libavogadro/src/extensions/gamessinputdialog.ui:888
 #: rc.cpp:744
 msgid "Max SCF Iterations:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1025
+#: libavogadro/src/extensions/gamessinputdialog.ui:903
 #: rc.cpp:748
 msgid "Gradient"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1035
+#: libavogadro/src/extensions/gamessinputdialog.ui:913
 #: rc.cpp:752
 msgid "Optimization"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1040
+#: libavogadro/src/extensions/gamessinputdialog.ui:918
 #: rc.cpp:754
 msgid "Trudge"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1045
+#: libavogadro/src/extensions/gamessinputdialog.ui:923
 #: rc.cpp:756
 msgid "Saddle Point"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1050
+#: libavogadro/src/extensions/gamessinputdialog.ui:928
 #: rc.cpp:758
 msgid "IRC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1055
+#: libavogadro/src/extensions/gamessinputdialog.ui:933
 #: rc.cpp:760
 msgid "Gradient Extremal"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1060
+#: libavogadro/src/extensions/gamessinputdialog.ui:938
 #: rc.cpp:762
 msgid "DRC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1065
+#: libavogadro/src/extensions/gamessinputdialog.ui:943
 #: rc.cpp:764
 msgid "Energy Surface"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1075
+#: libavogadro/src/extensions/gamessinputdialog.ui:953
 #: rc.cpp:768
 msgid "Morokuma"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1080
+#: libavogadro/src/extensions/gamessinputdialog.ui:958
 #: rc.cpp:770
 msgid "Radiative Transition mom."
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1085
+#: libavogadro/src/extensions/gamessinputdialog.ui:963
 #: rc.cpp:772
 msgid "Spin Orbit"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1090
+#: libavogadro/src/extensions/gamessinputdialog.ui:968
 #: rc.cpp:774
 msgid "Finite Electric Field"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1095
+#: libavogadro/src/extensions/gamessinputdialog.ui:973
 #: rc.cpp:776
 msgid "TDHF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1100
+#: libavogadro/src/extensions/gamessinputdialog.ui:978
 #: rc.cpp:778
 msgid "Global Optimization"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1105
+#: libavogadro/src/extensions/gamessinputdialog.ui:983
 #: rc.cpp:780
 msgid "VSCF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1110
+#: libavogadro/src/extensions/gamessinputdialog.ui:988
 #: rc.cpp:782
 msgid "FMO Optimization"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1115
+#: libavogadro/src/extensions/gamessinputdialog.ui:993
 #: rc.cpp:784
 msgid "Raman Intensities"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1120
+#: libavogadro/src/extensions/gamessinputdialog.ui:998
 #: rc.cpp:786
 msgid "NMR"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1125
+#: libavogadro/src/extensions/gamessinputdialog.ui:1003
 #: rc.cpp:788
 msgid "Make EFP"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1162
+#: libavogadro/src/extensions/gamessinputdialog.ui:1034
 #: rc.cpp:792
 msgid "UHF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1167
+#: libavogadro/src/extensions/gamessinputdialog.ui:1039
 #: rc.cpp:794
 msgid "ROHF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1172
+#: libavogadro/src/extensions/gamessinputdialog.ui:1044
 #: rc.cpp:796
 msgid "GVB"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1177
+#: libavogadro/src/extensions/gamessinputdialog.ui:1049
 #: rc.cpp:798
 msgid "MCSCF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1182
+#: libavogadro/src/extensions/gamessinputdialog.ui:1054
 #: rc.cpp:800
 msgid "None (CI)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1219
+#: libavogadro/src/extensions/gamessinputdialog.ui:1085
 #: rc.cpp:804
 msgid "Foster-Boys"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1224
+#: libavogadro/src/extensions/gamessinputdialog.ui:1090
 #: rc.cpp:806
 msgid "Edmistron-Ruedenberg"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1229
+#: libavogadro/src/extensions/gamessinputdialog.ui:1095
 #: rc.cpp:808
 msgid "Pipek-Mezey"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1252
+#: libavogadro/src/extensions/gamessinputdialog.ui:1118
 #: rc.cpp:810
 msgid "SCF Type:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1259
+#: libavogadro/src/extensions/gamessinputdialog.ui:1125
 #: rc.cpp:812
 msgid "Localization Method:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1269
+#: libavogadro/src/extensions/gamessinputdialog.ui:1135
 #: rc.cpp:814
 msgid "Exec Type:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1276
+#: libavogadro/src/extensions/gamessinputdialog.ui:1142
 #: rc.cpp:816
 msgid "CI:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1289
+#: libavogadro/src/extensions/gamessinputdialog.ui:1155
 #: rc.cpp:820
 msgid "GUGA"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1294
+#: libavogadro/src/extensions/gamessinputdialog.ui:1160
 #: rc.cpp:822
 msgid "Ames Lab. Determinant"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1299
+#: libavogadro/src/extensions/gamessinputdialog.ui:1165
 #: rc.cpp:824
 msgid "Occupation Restricted Multiple Active Space"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1304
+#: libavogadro/src/extensions/gamessinputdialog.ui:1170
 #: rc.cpp:826
 msgid "CI Singles"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1309
+#: libavogadro/src/extensions/gamessinputdialog.ui:1175
 #: rc.cpp:828
 msgid "Full Second Order CI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1314
+#: libavogadro/src/extensions/gamessinputdialog.ui:1180
 #: rc.cpp:830
 msgid "General CI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1322
+#: libavogadro/src/extensions/gamessinputdialog.ui:1188
 #: rc.cpp:832
 msgid "CC:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1335
+#: libavogadro/src/extensions/gamessinputdialog.ui:1201
 #: rc.cpp:836
 msgid "LCCD: Linearized CC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1340
+#: libavogadro/src/extensions/gamessinputdialog.ui:1206
 #: rc.cpp:838
 msgid "CCD: CC with Doubles"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1345
+#: libavogadro/src/extensions/gamessinputdialog.ui:1211
 #: rc.cpp:840
 msgid "CCSD: CC with Singles and Doubles"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1355
+#: libavogadro/src/extensions/gamessinputdialog.ui:1221
 #: rc.cpp:844
 msgid "R-CC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1360
+#: libavogadro/src/extensions/gamessinputdialog.ui:1226
 #: rc.cpp:846
 msgid "CR-CC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1365
+#: libavogadro/src/extensions/gamessinputdialog.ui:1231
 #: rc.cpp:848
 msgid "EOM-CCSD"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1370
+#: libavogadro/src/extensions/gamessinputdialog.ui:1236
 #: rc.cpp:850
 msgid "CR-EOM"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1405
+#: libavogadro/src/extensions/gamessinputdialog.ui:1265
 #: libavogadro/src/extensions/gaussianinputdialog.ui:293
 #: libavogadro/src/extensions/mopacinputdialog.ui:133
 #: libavogadro/src/extensions/qcheminputdialog.ui:273
@@ -4749,177 +4749,177 @@ msgstr ""
 msgid "Multiplicity:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1426
+#: libavogadro/src/extensions/gamessinputdialog.ui:1280
 #: rc.cpp:854
 msgid "Normal Run"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1431
+#: libavogadro/src/extensions/gamessinputdialog.ui:1285
 #: rc.cpp:856
 msgid "Check"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1436
+#: libavogadro/src/extensions/gamessinputdialog.ui:1290
 #: rc.cpp:858
 msgid "Debug"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1465
+#: libavogadro/src/extensions/gamessinputdialog.ui:1319
 #: rc.cpp:862
 msgid "Molecule Charge:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1477
+#: libavogadro/src/extensions/gamessinputdialog.ui:1331
 #: rc.cpp:864
 msgid "Run Type:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1505
+#: libavogadro/src/extensions/gamessinputdialog.ui:1353
 #: rc.cpp:866
 msgid "Use MP2"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1531
+#: libavogadro/src/extensions/gamessinputdialog.ui:1379
 #: rc.cpp:868
 msgid "Use DFT"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1594
+#: libavogadro/src/extensions/gamessinputdialog.ui:1428
 #: rc.cpp:870
 msgid "# of Z-Matrix Variables"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1610
+#: libavogadro/src/extensions/gamessinputdialog.ui:1438
 #: rc.cpp:872
 msgid "Ǻngstrom"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1615
+#: libavogadro/src/extensions/gamessinputdialog.ui:1443
 #: rc.cpp:874
 msgid "Bohr"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1638
+#: libavogadro/src/extensions/gamessinputdialog.ui:1466
 #: rc.cpp:876
 msgid "Order of Principal Axis:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1645
+#: libavogadro/src/extensions/gamessinputdialog.ui:1473
 #: rc.cpp:878
 msgid "Coordinate Type:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1661
+#: libavogadro/src/extensions/gamessinputdialog.ui:1483
 #: rc.cpp:880
 msgid "C1"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1666
+#: libavogadro/src/extensions/gamessinputdialog.ui:1488
 #: rc.cpp:882
 msgid "CS"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1671
+#: libavogadro/src/extensions/gamessinputdialog.ui:1493
 #: rc.cpp:884
 msgid "CI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1676
+#: libavogadro/src/extensions/gamessinputdialog.ui:1498
 #: rc.cpp:886
 msgid "CnH"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1681
+#: libavogadro/src/extensions/gamessinputdialog.ui:1503
 #: rc.cpp:888
 msgid "CnV"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1686
+#: libavogadro/src/extensions/gamessinputdialog.ui:1508
 #: rc.cpp:890
 msgid "Cn"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1691
+#: libavogadro/src/extensions/gamessinputdialog.ui:1513
 #: rc.cpp:892
 msgid "S2n"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1696
+#: libavogadro/src/extensions/gamessinputdialog.ui:1518
 #: rc.cpp:894
 msgid "DnD"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1701
+#: libavogadro/src/extensions/gamessinputdialog.ui:1523
 #: rc.cpp:896
 msgid "DnH"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1706
+#: libavogadro/src/extensions/gamessinputdialog.ui:1528
 #: rc.cpp:898
 msgid "Dn"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1711
+#: libavogadro/src/extensions/gamessinputdialog.ui:1533
 #: rc.cpp:900
 msgid "TD"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1716
+#: libavogadro/src/extensions/gamessinputdialog.ui:1538
 #: rc.cpp:902
 msgid "TH"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1721
+#: libavogadro/src/extensions/gamessinputdialog.ui:1543
 #: rc.cpp:904
 msgid "T"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1726
+#: libavogadro/src/extensions/gamessinputdialog.ui:1548
 #: rc.cpp:906
 msgid "OH"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1731
+#: libavogadro/src/extensions/gamessinputdialog.ui:1553
 #: rc.cpp:908
 msgid "O"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1793
+#: libavogadro/src/extensions/gamessinputdialog.ui:1603
 #: rc.cpp:912
 msgid "Unique cartesian Coords."
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1798
+#: libavogadro/src/extensions/gamessinputdialog.ui:1608
 #: rc.cpp:914
 msgid "Hilderbrant internals"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1803
+#: libavogadro/src/extensions/gamessinputdialog.ui:1613
 #: rc.cpp:916
 msgid "Cartesian coordinates"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1808
+#: libavogadro/src/extensions/gamessinputdialog.ui:1618
 #: rc.cpp:918
 msgid "Z-Matrix"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1813
+#: libavogadro/src/extensions/gamessinputdialog.ui:1623
 #: rc.cpp:920
 msgid "MOPAC Z-Matrix"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1836
+#: libavogadro/src/extensions/gamessinputdialog.ui:1646
 #: rc.cpp:922
 msgid "Use Symmetry During Calculation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1846
+#: libavogadro/src/extensions/gamessinputdialog.ui:1656
 #: rc.cpp:924
 msgid "Units:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1853
+#: libavogadro/src/extensions/gamessinputdialog.ui:1663
 #: libavogadro/src/extensions/gaussianinputdialog.ui:30
 #: libavogadro/src/extensions/mopacinputdialog.ui:30
 #: libavogadro/src/extensions/qcheminputdialog.ui:30
@@ -4927,574 +4927,575 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1922
+#: libavogadro/src/extensions/gamessinputdialog.ui:1720
 #: rc.cpp:928
 msgid "Point Group:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1969
+#: libavogadro/src/extensions/gamessinputdialog.ui:1747
 #: rc.cpp:930
 msgid "Seconds"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1974
+#: libavogadro/src/extensions/gamessinputdialog.ui:1752
 #: rc.cpp:932
 msgid "Minutes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1979
+#: libavogadro/src/extensions/gamessinputdialog.ui:1757
 #: rc.cpp:934
 msgid "Hours"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1984
+#: libavogadro/src/extensions/gamessinputdialog.ui:1762
 #: rc.cpp:936
 msgid "Days"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1989
+#: libavogadro/src/extensions/gamessinputdialog.ui:1767
 #: rc.cpp:938
 msgid "Weeks"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1994
+#: libavogadro/src/extensions/gamessinputdialog.ui:1772
 #: rc.cpp:940
 msgid "Years"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:1999
+#: libavogadro/src/extensions/gamessinputdialog.ui:1777
 #: rc.cpp:942
 msgid "Millenia"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2034
-#: libavogadro/src/extensions/gamessinputdialog.ui:2084
+#: libavogadro/src/extensions/gamessinputdialog.ui:1806
+#: libavogadro/src/extensions/gamessinputdialog.ui:1850
 #: rc.cpp:944 rc.cpp:952
 msgid "Words"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2039
-#: libavogadro/src/extensions/gamessinputdialog.ui:2089
+#: libavogadro/src/extensions/gamessinputdialog.ui:1811
+#: libavogadro/src/extensions/gamessinputdialog.ui:1855
 #: rc.cpp:946 rc.cpp:954
 msgid "Bytes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2044
-#: libavogadro/src/extensions/gamessinputdialog.ui:2094
+#: libavogadro/src/extensions/gamessinputdialog.ui:1816
+#: libavogadro/src/extensions/gamessinputdialog.ui:1860
 #: rc.cpp:948 rc.cpp:956
 msgid "MegaWords"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2049
-#: libavogadro/src/extensions/gamessinputdialog.ui:2099
+#: libavogadro/src/extensions/gamessinputdialog.ui:1821
+#: libavogadro/src/extensions/gamessinputdialog.ui:1865
 #: rc.cpp:950 rc.cpp:958
 msgid "MegaBytes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2133
+#: libavogadro/src/extensions/gamessinputdialog.ui:1893
 #: rc.cpp:960
 msgid "Force Parallel Methods"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2156
+#: libavogadro/src/extensions/gamessinputdialog.ui:1916
 #: rc.cpp:962
 msgid "Produce \"core\" file upon abort"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2174
+#: libavogadro/src/extensions/gamessinputdialog.ui:1934
 #: rc.cpp:966
 msgid "EVVRSP"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2179
+#: libavogadro/src/extensions/gamessinputdialog.ui:1939
 #: rc.cpp:968
 msgid "GIVEIS"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2184
+#: libavogadro/src/extensions/gamessinputdialog.ui:1944
 #: rc.cpp:970
 msgid "JACOBI"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2199
+#: libavogadro/src/extensions/gamessinputdialog.ui:1959
 #: rc.cpp:974
 msgid "MemDDI:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2213
+#: libavogadro/src/extensions/gamessinputdialog.ui:1973
 #: rc.cpp:978
 msgid "Diagonalization Method:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2220
+#: libavogadro/src/extensions/gamessinputdialog.ui:1980
 #: rc.cpp:980
 msgid "Parallel Load Balance Type"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2242
+#: libavogadro/src/extensions/gamessinputdialog.ui:1996
 #: rc.cpp:984
 msgid "Next Value"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2252
+#: libavogadro/src/extensions/gamessinputdialog.ui:2006
 #: rc.cpp:986
 msgid "Use External Data Representation for Messages"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2320
+#: libavogadro/src/extensions/gamessinputdialog.ui:2054
 #: rc.cpp:988
 msgid "Initial Guess:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2331
+#: libavogadro/src/extensions/gamessinputdialog.ui:2065
 #: rc.cpp:990
 msgid "Huckel"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2336
+#: libavogadro/src/extensions/gamessinputdialog.ui:2070
 #: rc.cpp:992
 msgid "HCore"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2341
+#: libavogadro/src/extensions/gamessinputdialog.ui:2075
 #: rc.cpp:994
 msgid "MO Read ($VEC)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2346
+#: libavogadro/src/extensions/gamessinputdialog.ui:2080
 #: rc.cpp:996
 msgid "MO Saved (DICTNRY)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2351
+#: libavogadro/src/extensions/gamessinputdialog.ui:2085
 #: rc.cpp:998
 msgid "Skip"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2374
+#: libavogadro/src/extensions/gamessinputdialog.ui:2108
 #: rc.cpp:1000
 msgid "Rotate Alpha and Beta Orbitals"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2381
+#: libavogadro/src/extensions/gamessinputdialog.ui:2115
 #: rc.cpp:1002
 msgid "Print the Initial Guess"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2419
+#: libavogadro/src/extensions/gamessinputdialog.ui:2139
 #: rc.cpp:1004
 msgid "GAMESS Interface to Other Codes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2431
+#: libavogadro/src/extensions/gamessinputdialog.ui:2145
 #: rc.cpp:1006
 msgid "MolPlt"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2438
+#: libavogadro/src/extensions/gamessinputdialog.ui:2152
 #: rc.cpp:1008
 msgid "PltOrb"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2445
+#: libavogadro/src/extensions/gamessinputdialog.ui:2159
 #: rc.cpp:1010
 msgid "AIMPAC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2452
+#: libavogadro/src/extensions/gamessinputdialog.ui:2166
 #: rc.cpp:1012
 msgid "RPAC"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2462
+#: libavogadro/src/extensions/gamessinputdialog.ui:2176
 #: rc.cpp:1014
 msgid "Force a Check Run Type"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2484
+#: libavogadro/src/extensions/gamessinputdialog.ui:2192
 #: rc.cpp:1018
 msgid "Hondo 8.2"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2491
+#: libavogadro/src/extensions/gamessinputdialog.ui:2199
 #: rc.cpp:1020
 msgid "MELDF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2498
+#: libavogadro/src/extensions/gamessinputdialog.ui:2206
 #: rc.cpp:1022
 msgid "GAMESS (UK Version)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2505
+#: libavogadro/src/extensions/gamessinputdialog.ui:2213
 #: rc.cpp:1024
 msgid "Gaussian 9x"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2512
+#: libavogadro/src/extensions/gamessinputdialog.ui:2220
 #: rc.cpp:1026
 msgid "All"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2543
+#: libavogadro/src/extensions/gamessinputdialog.ui:2245
 #: rc.cpp:1028
 msgid "Solvate with Water"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2596
+#: libavogadro/src/extensions/gamessinputdialog.ui:2284
 #: rc.cpp:1030
 msgid "Generate UHF Natural Orbitals"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2603
+#: libavogadro/src/extensions/gamessinputdialog.ui:2291
 #: rc.cpp:1032
 msgid "Direct SCF"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2610
+#: libavogadro/src/extensions/gamessinputdialog.ui:2298
 #: rc.cpp:1034
 msgid "Compute Only Changed in Fock Matrix"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2657
+#: libavogadro/src/extensions/gamessinputdialog.ui:2325
 #: rc.cpp:1036
 msgid "Slater exchange"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2662
+#: libavogadro/src/extensions/gamessinputdialog.ui:2330
 #: rc.cpp:1038
 msgid "Becke 1988 exchange"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2667
+#: libavogadro/src/extensions/gamessinputdialog.ui:2335
 #: rc.cpp:1040
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2672
+#: libavogadro/src/extensions/gamessinputdialog.ui:2340
 #: rc.cpp:1042
 msgid "LYP: Lee-Yang-Parr correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2677
+#: libavogadro/src/extensions/gamessinputdialog.ui:2345
 #: rc.cpp:1044
 msgid "SVWN: Slater exhange + VWN correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2682
+#: libavogadro/src/extensions/gamessinputdialog.ui:2350
 #: rc.cpp:1046
 msgid "BVWN: BECKE exchange + VWN5 correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2687
+#: libavogadro/src/extensions/gamessinputdialog.ui:2355
 #: rc.cpp:1048
 msgid "BLYP: BECKE exchange + LYP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2697
+#: libavogadro/src/extensions/gamessinputdialog.ui:2365
 #: rc.cpp:1052
 msgid "Gill 1996 exchange"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2702
+#: libavogadro/src/extensions/gamessinputdialog.ui:2370
 #: rc.cpp:1054
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2707
+#: libavogadro/src/extensions/gamessinputdialog.ui:2375
 #: rc.cpp:1056
 msgid "OP: One-parameter Progressive correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2712
+#: libavogadro/src/extensions/gamessinputdialog.ui:2380
 #: rc.cpp:1058
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2717
+#: libavogadro/src/extensions/gamessinputdialog.ui:2385
 #: rc.cpp:1060
 msgid "SOP: SLATER + OP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2722
+#: libavogadro/src/extensions/gamessinputdialog.ui:2390
 #: rc.cpp:1062
 msgid "BOP: BECKE exchange + OP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2727
+#: libavogadro/src/extensions/gamessinputdialog.ui:2395
 #: rc.cpp:1064
 msgid "BVWN: GILL exchange + VWN5 correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2732
+#: libavogadro/src/extensions/gamessinputdialog.ui:2400
 #: rc.cpp:1066
 msgid "GLYP: GILL exchange + LYP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2737
+#: libavogadro/src/extensions/gamessinputdialog.ui:2405
 #: rc.cpp:1068
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2742
+#: libavogadro/src/extensions/gamessinputdialog.ui:2410
 #: rc.cpp:1070
 msgid "PBELYP: PBE exchange +LYP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2747
+#: libavogadro/src/extensions/gamessinputdialog.ui:2415
 #: rc.cpp:1072
 msgid "PBEOP: PBE exchange + OP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2752
+#: libavogadro/src/extensions/gamessinputdialog.ui:2420
 #: rc.cpp:1074
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2784
+#: libavogadro/src/extensions/gamessinputdialog.ui:2446
 #: rc.cpp:1076
 msgid "Grid"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2789
+#: libavogadro/src/extensions/gamessinputdialog.ui:2451
 #: rc.cpp:1078
 msgid "Grid-Free"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2812
+#: libavogadro/src/extensions/gamessinputdialog.ui:2474
 #: rc.cpp:1080
 msgid "DFT Functional:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2819
+#: libavogadro/src/extensions/gamessinputdialog.ui:2481
 #: libavogadro/src/extensions/mopacinputdialog.ui:186
 #: rc.cpp:1082 rc.cpp:1324
 msgid "Method:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2857
+#: libavogadro/src/extensions/gamessinputdialog.ui:2505
 #: rc.cpp:1084
 msgid "AO Integral Storage"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2872
+#: libavogadro/src/extensions/gamessinputdialog.ui:2514
 #: rc.cpp:1086
 msgid "Duplicated on Each Node"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2879
+#: libavogadro/src/extensions/gamessinputdialog.ui:2521
 #: rc.cpp:1088
 msgid "Distributed Across All Nodes"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2892
+#: libavogadro/src/extensions/gamessinputdialog.ui:2534
 #: rc.cpp:1090
 msgid "words"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2906
+#: libavogadro/src/extensions/gamessinputdialog.ui:2548
 #: rc.cpp:1094
 msgid "Compute MP2 Properties"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2913
+#: libavogadro/src/extensions/gamessinputdialog.ui:2555
 #: rc.cpp:1096
 msgid "Integral Retention Cutoff:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2926
+#: libavogadro/src/extensions/gamessinputdialog.ui:2568
 #: rc.cpp:1098
 msgid "Use Localized Orbitals"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2933
+#: libavogadro/src/extensions/gamessinputdialog.ui:2575
 #: rc.cpp:1100
 msgid "# of Core Electrons:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2940
+#: libavogadro/src/extensions/gamessinputdialog.ui:2582
 #: rc.cpp:1102
 msgid "Transformation Method"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2955
+#: libavogadro/src/extensions/gamessinputdialog.ui:2591
 #: rc.cpp:1104
 msgid "Two Phase Bin Sort"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:2962
+#: libavogadro/src/extensions/gamessinputdialog.ui:2598
 #: rc.cpp:1106
 msgid "Segmented Transformation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3031
+#: libavogadro/src/extensions/gamessinputdialog.ui:2647
 #: rc.cpp:1112
 msgid "Analytic"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3041
+#: libavogadro/src/extensions/gamessinputdialog.ui:2657
 #: rc.cpp:1114
 msgid "Numeric"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3051
+#: libavogadro/src/extensions/gamessinputdialog.ui:2667
 #: rc.cpp:1116
 msgid "Double Differenced Hessian"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3058
+#: libavogadro/src/extensions/gamessinputdialog.ui:2674
 #: rc.cpp:1118
 msgid "Print Internal Force Constants"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3065
+#: libavogadro/src/extensions/gamessinputdialog.ui:2681
 #: rc.cpp:1120
 msgid "Displacement Size:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3072
+#: libavogadro/src/extensions/gamessinputdialog.ui:2688
 #: rc.cpp:1122
 msgid "Purify Hessian"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3079
+#: libavogadro/src/extensions/gamessinputdialog.ui:2695
 #: rc.cpp:1124
 msgid "Frequency Scale Factor:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3086
+#: libavogadro/src/extensions/gamessinputdialog.ui:2702
 #: rc.cpp:1126
 msgid "bohrs"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3134
+#: libavogadro/src/extensions/gamessinputdialog.ui:2736
 #: rc.cpp:1128
 msgid "Initial Hessian"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3146
+#: libavogadro/src/extensions/gamessinputdialog.ui:2742
 #: rc.cpp:1130
 msgid "Guess (+ define)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3153
+#: libavogadro/src/extensions/gamessinputdialog.ui:2749
 #: rc.cpp:1132
 msgid "Read (from $HESS)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3170
+#: libavogadro/src/extensions/gamessinputdialog.ui:2766
 #: rc.cpp:1136
 msgid "Update Step Size"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3180
+#: libavogadro/src/extensions/gamessinputdialog.ui:2776
 #: rc.cpp:1138
 msgid "Print Orbs at Each Iteration"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3187
+#: libavogadro/src/extensions/gamessinputdialog.ui:2783
 #: rc.cpp:1140
 msgid "Gradient Convergence Criteria:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3216
+#: libavogadro/src/extensions/gamessinputdialog.ui:2812
 #: rc.cpp:1142
 msgid "Jump Size:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3223
+#: libavogadro/src/extensions/gamessinputdialog.ui:2819
 #: rc.cpp:1144
 msgid "Stationary Point"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3233
+#: libavogadro/src/extensions/gamessinputdialog.ui:2829
 #: rc.cpp:1146
 msgid "Optimization Method:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3243
+#: libavogadro/src/extensions/gamessinputdialog.ui:2839
 #: rc.cpp:1148
 msgid "Step Size"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3255
+#: libavogadro/src/extensions/gamessinputdialog.ui:2845
 #: rc.cpp:1150
 msgid "Maximum:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3262
+#: libavogadro/src/extensions/gamessinputdialog.ui:2852
 #: rc.cpp:1152
 msgid "Minimum:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3272
+#: libavogadro/src/extensions/gamessinputdialog.ui:2862
 #: rc.cpp:1154
 msgid "Initial:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3316
+#: libavogadro/src/extensions/gamessinputdialog.ui:2906
 #: rc.cpp:1156
 msgid "Newton-Raphson"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3321
+#: libavogadro/src/extensions/gamessinputdialog.ui:2911
 #: rc.cpp:1158
 msgid "Rational Function Optimization"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3326
+#: libavogadro/src/extensions/gamessinputdialog.ui:2916
 #: rc.cpp:1160
 msgid "Quadratic Approximation"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3331
+#: libavogadro/src/extensions/gamessinputdialog.ui:2921
 #: rc.cpp:1162
 msgid "Schlegel (quasi-NR)"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3336
+#: libavogadro/src/extensions/gamessinputdialog.ui:2926
 #: rc.cpp:1164
 msgid "Constrained Optimization"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3355
+#: libavogadro/src/extensions/gamessinputdialog.ui:2939
 #: rc.cpp:1166
 msgid "steps"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3377
+#: libavogadro/src/extensions/gamessinputdialog.ui:2961
 #: rc.cpp:1168
 msgid "Recalculate Hessian Every:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3387
+#: libavogadro/src/extensions/gamessinputdialog.ui:2971
 #: rc.cpp:1170
 msgid "Follow Mode:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3397
+#: libavogadro/src/extensions/gamessinputdialog.ui:2981
 #: rc.cpp:1172
 msgid "Maximum Steps:"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3436
+#: libavogadro/src/extensions/gamessinputdialog.ui:3014
 #: rc.cpp:1174
 msgid "Reset All"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3443
+#: libavogadro/src/extensions/gamessinputdialog.ui:3021
 #: rc.cpp:1176
 msgid "Defaults"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3466
+#: libavogadro/src/extensions/gamessinputdialog.ui:3044
 #: libavogadro/src/extensions/gaussianinputdialog.ui:528
+#: libavogadro/src/extensions/mopacinputdialog.ui:384
 #: libavogadro/src/extensions/qcheminputdialog.ui:486
-#: rc.cpp:1178 rc.cpp:1252 rc.cpp:1542
-msgid "Generate"
+#: rc.cpp:1178 rc.cpp:1252 rc.cpp:1352 rc.cpp:1542
+msgid "Generate..."
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.ui:3473
+#: libavogadro/src/extensions/gamessinputdialog.ui:3051
 #: libavogadro/src/extensions/gaussianinputdialog.ui:535
 #: libavogadro/src/extensions/mopacinputdialog.ui:391
 #: libavogadro/src/extensions/povraydialog.ui:118
@@ -5713,11 +5714,6 @@ msgstr ""
 #: libavogadro/src/extensions/mopacinputdialog.ui:377
 #: rc.cpp:1350
 msgid "Compute..."
-msgstr ""
-
-#: libavogadro/src/extensions/mopacinputdialog.ui:384
-#: rc.cpp:1352
-msgid "Generate..."
 msgstr ""
 
 #: libavogadro/src/extensions/orbitaldialog.ui:29
