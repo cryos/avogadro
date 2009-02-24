@@ -58,14 +58,30 @@ namespace Avogadro {
 		QModelIndex begin = createIndex(0, 0);
 		QModelIndex end = createIndex(row, 0);
 		emit dataChanged(begin, end);
+
+    connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
   }
 
-  void EngineItemModel::removeEngine(Engine *)
+  void EngineItemModel::removeEngine(Engine *engine)
   {
+    disconnect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
     // FIXME: hack to get remove working
     reset();
   }
 
+  void EngineItemModel::engineChanged()
+  {
+    Engine *engine = dynamic_cast<Engine *>(sender());
+    if(!engine)
+      return;
+
+    QList<Engine *> list = d->widget->engines();
+    int row = list.indexOf(engine);
+
+		QModelIndex begin = createIndex(row, 0);
+		QModelIndex end = createIndex(row, 0);
+		emit dataChanged(begin, end);    
+  }
 
   QModelIndex EngineItemModel::parent( const QModelIndex & ) const
   {

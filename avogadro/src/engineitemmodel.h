@@ -60,6 +60,7 @@ namespace Avogadro {
       void addEngine(Engine *engine);
       void removeEngine(Engine *engine);
 
+      void engineChanged();
   };
 
 } // end namespace Avogadro
