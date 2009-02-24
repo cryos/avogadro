@@ -48,7 +48,9 @@
     static QString staticName() { return t; }                \
     QString name() const { return t; }                       \
     static QString staticDescription() { return d; }         \
-    QString description() const { return d; }
+    QString description() const                              \
+    { if (m_description.isEmpty()) return d;                 \
+      else return m_description; }
 
 #define AVOGADRO_ENGINE_FACTORY(c)                           \
   public: \
