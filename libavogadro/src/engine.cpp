@@ -276,8 +276,8 @@ namespace Avogadro {
   void Engine::readSettings(QSettings &settings)
   {
     setEnabled(settings.value("enabled", false).toBool());
-    setAlias(settings.value("alias", "").toString());
-    setDescription(settings.value("description", "").toString());
+    setAlias(settings.value("alias", QString()).toString());
+    setDescription(settings.value("description", QString()).toString());
   }
 
   void Engine::setMolecule(const Molecule *mol)
