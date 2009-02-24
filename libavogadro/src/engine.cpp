@@ -66,6 +66,12 @@ namespace Avogadro {
   {
     m_customPrims = true;
     m_primitives = primitives;
+    m_atoms.clear();
+    foreach (Primitive *p, m_primitives.subList(Primitive::AtomType))
+      m_atoms.append(static_cast<Atom *>(p));
+    m_bonds.clear();
+    foreach (Primitive *p, m_primitives.subList(Primitive::BondType))
+      m_bonds.append(static_cast<Bond *>(p));
     emit changed();
   }
 
