@@ -210,9 +210,9 @@ namespace Avogadro
     m_glwidget = gl;
     ui.engineCombo->clear();
     foreach (Engine *engine, m_glwidget->engines()) {
-      if (engine->name() == "Orbitals")
+      if (engine->identifier() == "Orbitals")
         ui.engineCombo->addItem(engine->alias());
-      if (engine->name() == "Surface")
+      if (engine->identifier() == "Surface")
         ui.surfaceEngineCombo->addItem(engine->alias());
     }
   }
