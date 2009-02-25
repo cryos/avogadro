@@ -109,13 +109,18 @@ namespace Avogadro {
     if (m_mesh) {
       if (m_mesh->stable()) {
           if (m_colorMode)
-            pd->painter()->drawColorMesh(*m_mesh, m_renderMode);
+            pd->painter()->drawColorMesh(*m_mesh, renderMode);
           else {
             pd->painter()->setColor(&m_color);
-            pd->painter()->drawMesh(*m_mesh, m_renderMode);
+            pd->painter()->drawMesh(*m_mesh, renderMode);
           }
       }
     }
+    return true;
+  }
+
+  bool SurfaceEngine::renderPick(PainterDevice *)
+  {
     return true;
   }
 
