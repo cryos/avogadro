@@ -1,5 +1,5 @@
 /**********************************************************************
-  ChargeColor -  Map atom colors based on atom partial charge
+  DistanceColor - Color atoms by distance from atom 1
 
   Copyright (C) 2009 Geoffrey R. Hutchison
 
@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef CHARGECOLOR_H
-#define CHARGECOLOR_H
+#ifndef DISTANCECOLOR_H
+#define DISTANCECOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
@@ -32,21 +32,21 @@
 namespace Avogadro {
 
   /**
-   * @class ChargeColor chargecolor.h <avogadro/chargecolor.h>
-   * @brief Color by atomic partial charge
+   * @class DistanceColor distancecolor.h <avogadro/distancecolor.h>
+   * @brief Color by distance from the first atom
    * @author Geoff Hutchison
    *
-   * Map atom colors based on atom partial charge (blue = positive, red = neg.)
+   * Map atom colors based on atom distance from the first atom
    */
-  class ChargeColor: public Color
+  class DistanceColor: public Color
   {
     Q_OBJECT
-    AVOGADRO_COLOR("ChargeColor", tr("Color by Partial Charge"),
-                   tr("Color by atomic partial charge (blue = positive, red = negative."))
+    AVOGADRO_COLOR("DistanceColor", tr("Color by Distance"),
+                   tr("Color by distance from the first atom."))
 
   public:
-    ChargeColor();
-    virtual ~ChargeColor();
+    DistanceColor();
+    virtual ~DistanceColor();
 
     /**
      * Set the color based on the supplied Primitive
@@ -54,11 +54,11 @@ namespace Avogadro {
     void set(const Primitive *);
   };
 
-  class ChargeColorFactory : public QObject, public PluginFactory
+  class DistanceColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(ChargeColor)
+    AVOGADRO_COLOR_FACTORY(DistanceColor)
   };
 
 

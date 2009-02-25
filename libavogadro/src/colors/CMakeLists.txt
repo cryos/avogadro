@@ -41,3 +41,9 @@ add_library(chargecolor MODULE ${chargecolor_SRCS})
 target_link_libraries(chargecolor ${LINK_LIBS})
 install(TARGETS chargecolor DESTINATION ${DESTINATION_DIR})
 
+### distancecolor
+set(distancecolor_SRCS distancecolor.cpp)
+qt4_automoc(${distancecolor_SRCS})
+add_library(distancecolor MODULE ${distancecolor_SRCS})
+target_link_libraries(distancecolor ${LINK_LIBS})
+install(TARGETS distancecolor DESTINATION ${DESTINATION_DIR})
