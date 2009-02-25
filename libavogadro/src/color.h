@@ -173,10 +173,13 @@ namespace Avogadro {
     /**
      * @return the color as a QColor.
      */
-    inline QColor color() const { return QColor(static_cast<int>(m_channels[0]),
-                                                static_cast<int>(m_channels[1]),
-                                                static_cast<int>(m_channels[2]),
-                                                static_cast<int>(m_channels[3])); }
+    inline QColor color() const
+    { QColor returnColor;
+      returnColor.setRgbF(m_channels[0],
+                          m_channels[1],
+                          m_channels[2],
+                          m_channels[3]);
+        return returnColor; }
 
     /**
      * @return the red component of the color.

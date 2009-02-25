@@ -5,7 +5,6 @@ set (CPACK_PACKAGE_VERSION_MAJOR 0)
 set (CPACK_PACKAGE_VERSION_MINOR 9)
 set (CPACK_PACKAGE_VERSION_PATCH 1)
 set (CPACK_PACKAGE_INSTALL_DIRECTORY "Avogadro")
-set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/avogadro/src/icons/avogadro.ico")
 set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
 
 set (CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
@@ -60,7 +59,6 @@ if (WIN32)
     "${qt_BINDIR}/QtOpenGL4.dll")
   install(FILES ${qt_DEPS} DESTINATION bin)
 
-
   if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     # Python support - optionally enabled and installed
 
@@ -94,6 +92,10 @@ if (WIN32)
   endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 endif (WIN32)
+
+configure_file("${CMAKE_MODULE_PATH}/AvoCPackOptions.cmake.in"
+  "${CMAKE_BINARY_DIR}/AvoCPackOptions.cmake" @ONLY)
+set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/AvoCPackOptions.cmake")
 
 include(CPack)
 include(InstallRequiredSystemLibraries)

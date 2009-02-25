@@ -191,7 +191,7 @@ namespace Avogadro {
   {
     foreach(Tool *tool, d->tools)
     {
-      settings.beginGroup(tool->name());
+      settings.beginGroup(tool->identifier());
       tool->writeSettings(settings);
       settings.endGroup();
     }
@@ -201,7 +201,7 @@ namespace Avogadro {
   {
     foreach(Tool *tool, d->tools)
     {
-      settings.beginGroup(tool->name());
+      settings.beginGroup(tool->identifier());
       tool->readSettings(settings);
       settings.endGroup();
     }
