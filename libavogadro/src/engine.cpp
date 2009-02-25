@@ -277,7 +277,8 @@ namespace Avogadro {
     settings.setValue("enabled", isEnabled());
     if (!m_alias.isEmpty())
       settings.setValue("alias", alias());
-    settings.setValue("description", description());
+    if (!m_description.isEmpty())
+      settings.setValue("description", description());
   }
 
   void Engine::readSettings(QSettings &settings)
