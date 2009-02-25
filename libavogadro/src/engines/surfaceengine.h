@@ -88,6 +88,7 @@ namespace Avogadro {
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
+      void setDrawBox(int);
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
