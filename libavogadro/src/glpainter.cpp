@@ -1042,7 +1042,6 @@ namespace Avogadro
     else {
       for(unsigned int i = v.size(); i > 0; --i) {
         color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
-        color.apply();
         color.applyAsMaterials();
         Eigen::Vector3f tmp = n[i-1] * -1;
         glNormal3fv(tmp.data());
