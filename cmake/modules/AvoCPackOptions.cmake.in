@@ -1,0 +1,33 @@
+# This file is configured at cmake time, loaded at cpack time.
+
+# NSIS specific settings
+if(CPACK_GENERATOR MATCHES "NSIS")
+  set(CPACK_NSIS_MUI_ICON "@CMAKE_SOURCE_DIR@/avogadro/src/icons\\\\avogadro.ico")
+#  set(CPACK_PACKAGE_ICON "@CMAKE_SOURCE_DIR@/avogadro/src/icons\\\\avogadro.bmp")
+  set(CPACK_NSIS_HELP_LINK "http:\\\\avogadro.openmolecules.net")
+  set(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\avogadro.openmolecules.net")
+  set(CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
+  set(CPACK_CREATE_DESKTOP_LINKS "avogadro")
+  SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\Avogadro.exe")
+  SET(CPACK_NSIS_MENU_LINKS
+    "http://avogadro.openmolecules.net/wiki/Avogadro_@CPACK_PACKAGE_VERSION@" "Release Notes"
+    "http://avogadro.openmolecules.net/" "Avogadro Web Site")
+  SET(CPACK_NSIS_MODIFY_PATH ON)
+  
+  # Associate Avogadro with some file extensions
+  set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "
+	WriteRegStr HKCR '.cml' '' 'CML'
+	WriteRegStr HKCR 'CML' '' 'Chemical Markup Language'
+	WriteRegStr HKCR 'CML\\shell' '' 'open'
+	WriteRegStr HKCR 'CML\\DefaultIcon' '' '$INSTDIR\\bin\\avogadro.exe,0'
+	WriteRegStr HKCR 'CML\\shell\\open\\command' '' '$INSTDIR\\bin\\avogadro.exe \"%1\"'
+	WriteRegStr HKCR 'CML\\shell\\edit' '' 'Edit CML File With Avogadro'
+	WriteRegStr HKCR 'CML\\shell\\edit\\command' '' '$INSTDIR\\bin\\avogadro.exe \"%1\"'
+	System::Call \\
+	  'Shell32::SHChangeNotify(i 0x8000000, i 0, i 0, i 0)'
+  ")
+  set(CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "
+	DeleteRegKey HKCR '.cml'
+	DeleteRegKey HKCR 'CML'
+  ")
+endif(CPACK_GENERATOR MATCHES "NSIS")
