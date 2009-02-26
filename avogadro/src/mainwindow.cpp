@@ -187,7 +187,7 @@ namespace Avogadro
 
     QTimer *centerTimer;
     int centerTime;
-    
+
     PluginManager pluginManager;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
@@ -258,9 +258,9 @@ namespace Avogadro
 //    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
 
     // create messages widget
-    QWidget *messagesWidget = new QWidget();
+    QWidget *messagesWidget = new QWidget(this);
     QVBoxLayout *messagesVBox = new QVBoxLayout( messagesWidget );
-    d->messagesText = new QTextEdit();
+    d->messagesText = new QTextEdit(this);
     d->messagesText->setReadOnly( true );
 
 #ifdef ENABLE_PYTHON
@@ -406,7 +406,7 @@ namespace Avogadro
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
-    else if(event->type() == QEvent::ActivationChange 
+    else if(event->type() == QEvent::ActivationChange
             || event->type() == QEvent::WindowActivate) {
 #ifdef Q_WS_MAC
       updateWindowMenu();
@@ -746,7 +746,7 @@ namespace Avogadro
       openFile( action->data().toString() );
     }
   }
-  
+
   bool MainWindow::loadFile(const QString &fileName,
                             OBFormat *format,
                             const QString &options)
@@ -779,7 +779,7 @@ namespace Avogadro
     // set any options
     if (!options.isEmpty()) {
       foreach(const QString option, options.split('\n', QString::SkipEmptyParts)) {
-	conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
+    conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
       }
     }
 
@@ -1353,7 +1353,7 @@ namespace Avogadro
         raise();
     }
   }
-  
+
   bool windowComparison(const MainWindow *first, const MainWindow *second)
   {
     return first->windowTitle() > second->windowTitle();
@@ -2078,7 +2078,7 @@ namespace Avogadro
     if (newFileName.isEmpty()) {
       setWindowFilePath(tr("untitled") + ".cml");
     }
-    
+
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ), this, SLOT( documentWasModified() ) );
@@ -2497,7 +2497,7 @@ namespace Avogadro
     }
 
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ), gl, SLOT( setMolecule( Molecule * ) ) );
-    
+
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
     gl->setUndoStack( d->undoStack );
@@ -2688,7 +2688,7 @@ namespace Avogadro
         if(engine) {
           d->glWidget->removeEngine(engine);
           d->engineSettingsWindows.remove(engine);
-		  emit enableEngineSettingsButton(false);
+          emit enableEngineSettingsButton(false);
         }
         break;
       }
