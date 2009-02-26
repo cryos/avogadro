@@ -25,7 +25,6 @@
 #ifndef EXTENSION_H
 #define EXTENSION_H
 
-#include <avogadro/glwidget.h>
 #include "plugin.h"
 
 #include <QVector>
@@ -52,8 +51,12 @@
 class QDockWidget;
 class QUndoCommand;
 class QTextEdit;
+class QAction;
 
 namespace Avogadro {
+
+  class GLWidget;
+  class Molecule;
 
   /**
    * @class Extension extension.h <avogadro/extension.h>
@@ -76,22 +79,22 @@ namespace Avogadro {
    */
   class A_EXPORT Extension : public Plugin
   {
-    Q_OBJECT
+  Q_OBJECT
 
-    public:
-    Extension(QObject *parent) : Plugin(parent) {};
-    virtual ~Extension() {};
+  public:
+    Extension(QObject *parent = 0);
+    virtual ~Extension();
 
-    /** 
-     * Plugin Type 
+    /**
+     * Plugin Type
      */
     Plugin::Type type() const;
 
-    /** 
+    /**
      * Plugin Type Name (Extensions)
      */
     QString typeName() const;
- 
+
     /**
      * @return a list of actions which this widget can perform
      */
@@ -140,7 +143,7 @@ namespace Avogadro {
      * Can be used to notify the MainWindow to refresh the QActions for this extension.
      */
     void actionsChanged(Extension*);
-  
+
     /**
       * Can be used to notify the MainWindow to change the molecule to a new one.
       */
