@@ -1162,10 +1162,15 @@ namespace Avogadro
     qDebug() << "Exported filename:" << fileName;
 
     // render it (with alpha channel)
+    QImage exportImage;
     d->glWidget->raise();
     d->glWidget->repaint();
-    QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
-    QImage exportImage = pixmap.toImage();
+    if (QGLFramebufferObject::hasOpenGLFramebufferObjects()) {
+      exportImage = d->glWidget->grabFrameBuffer( true );
+    } else {
+      QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
+      exportImage = pixmap.toImage();
+    }
 
     // now we embed molecular information into the file, if possible
     OBConversion conv;
