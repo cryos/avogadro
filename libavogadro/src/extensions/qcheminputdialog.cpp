@@ -376,10 +376,10 @@ namespace Avogadro
 
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
-      vic.push_back((OBInternalCoord*)NULL);
+      vic.push_back((OpenBabel::OBInternalCoord*)NULL);
       OpenBabel::OBMol obmol = m_molecule->OBMol();
       FOR_ATOMS_OF_MOL(atom, &obmol)
-        vic.push_back(new OBInternalCoord);
+        vic.push_back(new OpenBabel::OBInternalCoord);
       CartesianToInternal(vic, obmol);
 
       FOR_ATOMS_OF_MOL(atom, &obmol)
@@ -430,6 +430,8 @@ namespace Avogadro
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << t << qSetFieldWidth(0) << "\n";
       }
+      foreach (OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
     else if (m_molecule && m_coordType == ZMATRIX_COMPACT)
     {
@@ -439,10 +441,10 @@ namespace Avogadro
 
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
-      vic.push_back((OBInternalCoord*)NULL);
+      vic.push_back((OpenBabel::OBInternalCoord*)NULL);
       OpenBabel::OBMol obmol = m_molecule->OBMol();
       FOR_ATOMS_OF_MOL(atom, &obmol)
-        vic.push_back(new OBInternalCoord);
+        vic.push_back(new OpenBabel::OBInternalCoord);
       CartesianToInternal(vic, obmol);
 
       FOR_ATOMS_OF_MOL(atom, &obmol)
@@ -478,6 +480,8 @@ namespace Avogadro
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
         mol << qSetFieldWidth(0) << "\n";
       }
+      foreach (OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
     mol << "$end\n\n";
 
