@@ -2,7 +2,7 @@
   MOPACInputDialog - Dialog for generating MOPAC input decks
 
   Copyright (C) 2009 Geoffrey Hutchison
-  Some portions Copyright (C) 2008-2009 Marcus Hanwell
+  Copyright (C) 2008-2009 Marcus Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -36,24 +36,24 @@
 #include <QMessageBox>
 #include <QDebug>
 
-using namespace OpenBabel;
-using namespace std;
-
 namespace Avogadro
 {
+  using OpenBabel::OBAtom;
+  using OpenBabel::OBInternalCoord;
+  using OpenBabel::OBMolAtomIter;
+  using OpenBabel::etab;
 
 #ifdef Q_WS_WIN
-    QString mopacPath("C:\Program Files\MOPAC\MOPAC2009.exe");
+  const QString MOPACInputDialog::mopacPath("C:\Program Files\MOPAC\MOPAC2009.exe");
 #else
-    QString mopacPath("/opt/mopac/MOPAC2009.exe");
+  const QString MOPACInputDialog::mopacPath("/opt/mopac/MOPAC2009.exe");
 #endif
 
   MOPACInputDialog::MOPACInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"),
-      m_calculationType(OPT),
-      m_theoryType(PM6), m_multiplicity(1), m_charge(0),
-      m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_process(0),
-      m_progress(0)
+      m_calculationType(OPT), m_theoryType(PM6), m_multiplicity(1), m_charge(0),
+      m_coordType(CARTESIAN), m_dirty(false), m_warned(false),
+      m_previewVisible(false), m_process(0), m_progress(0)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -84,13 +84,10 @@ namespace Avogadro
 
     // Generate an initial preview of the input deck
     updatePreviewText();
-    ui.previewText->hide();
   }
 
   MOPACInputDialog::~MOPACInputDialog()
   {
-    if (m_molecule)
-      disconnect(m_molecule, 0, this, 0);
   }
 
   void MOPACInputDialog::setMolecule(Molecule *molecule)
@@ -110,7 +107,7 @@ namespace Avogadro
     // Add atom coordinates
     updatePreviewText();
   }
-  
+
   void MOPACInputDialog::showEvent(QShowEvent *)
   {
     updatePreviewText();
@@ -138,7 +135,8 @@ namespace Avogadro
       switch (msgBox.exec()) {
       case QMessageBox::Yes:
         // yes was clicked
-        m_dirty = false;
+        deckDirty(false);
+        ui.previewText->setText(generateInputDeck());
         m_warned = false;
         break;
       case QMessageBox::No:
@@ -151,7 +149,7 @@ namespace Avogadro
       }
     }
 
-    if (!m_dirty) {
+    else if (!m_dirty) {
       ui.previewText->setText(generateInputDeck());
     }
   }
@@ -173,19 +171,21 @@ namespace Avogadro
   {
     if (m_process != 0) {
       QMessageBox::warning(this, tr("MOPAC Running."),
-                           tr("MOPAC is already running. Wait until the previous calculation is finished."));      
+                           tr("MOPAC is already running. Wait until the previous calculation is finished."));
       return;
     }
-    
+
     QString fileName = saveInputFile();
-    
+    if (fileName.isEmpty())
+      return;
+
     QFileInfo info(mopacPath);
     if (!info.exists() || !info.isExecutable()) {
       QMessageBox::warning(this, tr("MOPAC Not Installed."),
                            tr("The MOPAC executable, cannot be found."));
       return;
     }
-    
+
     m_process = new QProcess(this);
     QFileInfo input(fileName);
     m_process->setWorkingDirectory(input.absolutePath());
@@ -212,7 +212,7 @@ namespace Avogadro
     if (m_progress) {
       m_progress->deleteLater();
       m_progress = 0;
-    } 
+    }
 
     disconnect(m_process, 0, this, 0); // don't send a "finished" signal
     m_process->close();
@@ -226,7 +226,7 @@ namespace Avogadro
       m_progress->cancel();
       m_progress->deleteLater();
       m_progress = 0;
-    } 
+    }
 
     if (m_process) {
       disconnect(m_process, 0, this, 0);
@@ -241,7 +241,7 @@ namespace Avogadro
                            tr("MOPAC did not run correctly. Perhaps it is not installed correctly."));
      return;
     }
-    
+
     if (!m_molecule)
       return;
 
@@ -249,7 +249,7 @@ namespace Avogadro
     QFileInfo inputFile(m_inputFile);
     QString outputFile = inputFile.canonicalPath() + "/" + inputFile.baseName() + ".out";
     emit readOutput(outputFile);
-    
+
     close();
   }
 
@@ -259,10 +259,12 @@ namespace Avogadro
     if (ui.previewText->isVisible()) {
       ui.previewText->hide();
       ui.moreButton->setText(tr("Show Preview"));
+      m_previewVisible = false;
     }
     else {
       ui.previewText->show();
       ui.moreButton->setText(tr("Hide Preview"));
+      m_previewVisible = true;
     }
   }
 
@@ -279,25 +281,26 @@ namespace Avogadro
     else
       deckDirty(false);
   }
-  
+
   QString MOPACInputDialog::saveInputFile()
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
-    
+
     QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".mop";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
                                                     defaultFileName, tr("MOPAC Input Deck (*.mop)"));
+    if (!fileName.isEmpty()) {
     QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return "";
+      // FIXME This really should pop up a warning if the file cannot be opened
+      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return "";
 
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();
-    
+      QTextStream out(&file);
+      out << ui.previewText->toPlainText();
+    }
     return fileName;
   }
 
@@ -425,10 +428,10 @@ namespace Avogadro
           mol << qSetFieldWidth(4) << right
               << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
               << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
-              << fixed << right 
-              << atom->pos()->x() << optimizationFlag 
-              << atom->pos()->y() << optimizationFlag 
-              << atom->pos()->z() << optimizationFlag 
+              << fixed << right
+              << atom->pos()->x() << optimizationFlag
+              << atom->pos()->y() << optimizationFlag
+              << atom->pos()->z() << optimizationFlag
               << qSetFieldWidth(0) << "\n";
         }
       }
@@ -484,6 +487,8 @@ namespace Avogadro
 
             mol << ' ' << aIndex << ' ' << bIndex << ' ' << cIndex << '\n';
           }
+        foreach(OBInternalCoord *c, vic)
+          delete c;
       }
     mol << "\n\n";
 
@@ -543,6 +548,7 @@ namespace Avogadro
     settings.setValue("MOPACCalcType", ui.calculationCombo->currentIndex());
     settings.setValue("MOPACTheory", ui.theoryCombo->currentIndex());
     settings.setValue("MOPACCoord", ui.coordCombo->currentIndex());
+    settings.setValue("MOPACPreview", m_previewVisible);
   }
 
   void MOPACInputDialog::readSettings(QSettings &settings)
@@ -553,6 +559,7 @@ namespace Avogadro
     ui.theoryCombo->setCurrentIndex(m_theoryType);
     setCoords(settings.value("MOPACCoord", 0).toInt());
     ui.coordCombo->setCurrentIndex(m_coordType);
+    ui.previewText->setVisible(settings.value("MOPACPreview", false).toBool());
   }
 
 }
