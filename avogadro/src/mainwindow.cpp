@@ -97,6 +97,7 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <QTime>
+#include <QGLFramebufferObject>
 
 #include <QDebug>
 
@@ -576,7 +577,7 @@ namespace Avogadro
     }
 
     d->toolGroup->removeAllTools();
-    d->toolGroup->append(d->pluginManager.tools());
+    d->toolGroup->append(d->pluginManager.tools(this));
     if (d->molecule)
       d->toolGroup->setActiveTool(tr("Navigate"));
 
@@ -1537,10 +1538,15 @@ namespace Avogadro
   {
     QMimeData *mimeData = new QMimeData;
     // we also save an image for copy/paste to office programs, presentations, etc.
+    QImage clipboardImage;
     d->glWidget->raise();
     d->glWidget->repaint();
-    QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
-    QImage clipboardImage = pixmap.toImage();
+    if (QGLFramebufferObject::hasOpenGLFramebufferObjects()) {
+      clipboardImage = d->glWidget->grabFrameBuffer( true );
+    } else {
+      QPixmap pixmap = QPixmap::grabWindow( d->glWidget->winId() );
+      clipboardImage = pixmap.toImage();
+    }
 
     Molecule *moleculeCopy = d->molecule;
     if (!selectedItems.isEmpty()) { // we only want to copy the selected items
@@ -2222,7 +2228,7 @@ namespace Avogadro
     settings.endGroup();
 
     settings.beginGroup("extensions");
-    foreach(Extension *extension, d->pluginManager.extensions()) {
+    foreach(Extension *extension, d->pluginManager.extensions(this)) {
       extension->readSettings(settings);
     }
     settings.endGroup();
@@ -2289,7 +2295,7 @@ namespace Avogadro
     settings.endGroup();
 
     settings.beginGroup("extensions");
-    foreach(Extension *extension, d->pluginManager.extensions()) {
+    foreach(Extension *extension, d->pluginManager.extensions(this)) {
       extension->writeSettings(settings);
     }
     settings.endGroup();
@@ -2363,7 +2369,7 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    foreach(Extension *extension, d->pluginManager.extensions())
+    foreach(Extension *extension, d->pluginManager.extensions(this))
     {
       qDebug() << "Found Extension: " << extension->name() << " - "
                << extension->description();
