@@ -197,7 +197,7 @@ namespace Avogadro
     QString checkpointName = QFileInfo(fileName).baseName();
     checkpointName.prepend("%Chk=");
     checkpointName.append(".chk");
-    
+
     previewText.replace(QString("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
 
     QTextStream out(&file);
@@ -485,6 +485,8 @@ namespace Avogadro
               << t << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
+      foreach(OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
     else if (m_molecule && m_coordType == ZMATRIX_COMPACT)
     {
@@ -527,6 +529,8 @@ namespace Avogadro
         mol << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
+      foreach(OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
 
     return buffer;
