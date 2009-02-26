@@ -31,20 +31,18 @@
 namespace Avogadro {
 
   Plugin::Plugin(QObject *parent) : QObject(parent)
-  /*, d(new PluginPrivate)*/
   {
   }
 
   Plugin::~Plugin()
   {
-    //delete d;
   }
 
   QString Plugin::description() const
   {
     return QObject::tr("No Description");
   }
-  
+
   QWidget *Plugin::settingsWidget()
   {
     return NULL; // no settings widget
