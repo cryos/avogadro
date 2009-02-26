@@ -97,12 +97,12 @@ namespace Avogadro
       disconnect(m_molecule, 0, this, 0);
 
     m_molecule = molecule;
-    // Update the preview text whenever primitives are changed
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+    // Update the preview text whenever atoms are changed
+    connect(m_molecule, SIGNAL(atomRemoved(Atom *)),
             this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+    connect(m_molecule, SIGNAL(atomAdded(Atom *)),
             this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+    connect(m_molecule, SIGNAL(atomUpdated(Atom *)),
             this, SLOT(updatePreviewText()));
     // Add atom coordinates
     updatePreviewText();
