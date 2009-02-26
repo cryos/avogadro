@@ -89,7 +89,7 @@ namespace Avogadro {
     if (!m_animationDialog)
     {
       m_timeLine = new QTimeLine;
-      m_animationDialog = new AnimationDialog;
+      m_animationDialog = new AnimationDialog(static_cast<QWidget*>(parent()));
 
       connect(m_animationDialog, SIGNAL(fileName(QString)), this, SLOT(loadFile(QString)));
       connect(m_animationDialog, SIGNAL(sliderChanged(int)), this, SLOT(setFrame(int)));
@@ -210,7 +210,7 @@ namespace Avogadro {
 
     if (slashPos < 0) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "Invalid video filename.  Must include full directory path" ));
+                tr( "Invalid video filename.  Must include full directory path" ));
       return;
     }
 
@@ -218,7 +218,7 @@ namespace Avogadro {
     fileName = videoFileName.right(videoFileName.length() - (slashPos+1));
     if (fileName.isEmpty()) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
-			    tr( "Invalid video filename.  Must include full directory path and name, ending with .avi" ));
+                tr( "Invalid video filename.  Must include full directory path and name, ending with .avi" ));
       return;
     }
 

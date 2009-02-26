@@ -65,8 +65,6 @@ namespace Avogadro
 
   OrbitalExtension::~OrbitalExtension()
   {
-    delete m_orbitalDialog;
-    m_orbitalDialog = 0;
     delete m_basis;
     m_basis = 0;
     delete m_slater;

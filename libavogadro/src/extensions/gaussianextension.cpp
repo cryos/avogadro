@@ -63,12 +63,6 @@ namespace Avogadro
 
   GaussianExtension::~GaussianExtension()
   {
-    delete m_gaussianInputDialog;
-    m_gaussianInputDialog = 0;
-    delete m_qchemInputDialog;
-    m_qchemInputDialog = 0;
-    delete m_mopacInputDialog;
-    m_mopacInputDialog = 0;
   }
 
   QList<QAction *> GaussianExtension::actions() const
@@ -180,7 +174,7 @@ namespace Avogadro
       m_gaussianInputDialog->readSettings(settings);
     }
     else {
-      m_gaussianInputDialog = new GaussianInputDialog();
+      m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
       m_gaussianInputDialog->readSettings(settings);
       if (m_molecule) {
         m_gaussianInputDialog->setMolecule(m_molecule);
@@ -191,7 +185,7 @@ namespace Avogadro
       m_mopacInputDialog->readSettings(settings);
     }
     else {
-      m_mopacInputDialog = new MOPACInputDialog();
+      m_mopacInputDialog = new MOPACInputDialog(static_cast<QWidget*>(parent()));
       connect(m_mopacInputDialog, SIGNAL(readOutput(QString)),
         this, SLOT(readOutputFile(QString)));
       m_mopacInputDialog->readSettings(settings);
