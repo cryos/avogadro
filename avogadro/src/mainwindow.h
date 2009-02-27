@@ -65,6 +65,7 @@ namespace Avogadro {
       bool renderAxes() const;
       bool renderDebug() const;
       bool quickRender() const;
+      bool renderUnitCellAxes() const;
 
       /**
        * @param fileName fileName to load (defaults to loading a blank file)
@@ -136,6 +137,7 @@ namespace Avogadro {
       void setRenderAxes(bool render);
       void setRenderDebug(bool render);
       void setQuickRender(bool quick);
+      void setRenderUnitCellAxes(bool render);
 
       void undoStackClean(bool clean);
 

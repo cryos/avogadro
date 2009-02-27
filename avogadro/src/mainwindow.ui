@@ -23,7 +23,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>29</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -107,6 +107,7 @@
     <addaction name="actionSetBackgroundColor" />
     <addaction name="separator" />
     <addaction name="actionDisplayAxes" />
+    <addaction name="actionDisplayUnitCellAxes" />
     <addaction name="actionDebugInformation" />
     <addaction name="actionQuickRender" />
    </widget>
@@ -613,6 +614,14 @@
   <action name="actionExportGL2PS" >
    <property name="text" >
     <string>&amp;Vector Graphics...</string>
+   </property>
+  </action>
+  <action name="actionDisplayUnitCellAxes" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="text" >
+    <string>Display Unit Cell Axes</string>
    </property>
   </action>
  </widget>

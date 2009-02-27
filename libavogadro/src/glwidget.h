@@ -1,7 +1,7 @@
 /**********************************************************************
   GLWidget - general OpenGL display
 
-  Copyright (C) 2006,2007 Geoffrey R. Hutchison
+  Copyright (C) 2006-2009 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
   Copyright (C) 2007,2008 Marcus D. Hanwell
 
@@ -219,6 +219,16 @@ namespace Avogadro {
        * @return True if quick rendering is being used.
        */
       bool quickRender() const;
+      
+      /**
+      * @param enabled True if we should render the unit cell axes
+      */
+      void setRenderUnitCellAxes(bool enabled);
+      
+      /**
+       * @return True if unit cell axes are being rendered.
+       */
+      bool renderUnitCellAxes() const;
 
       /**
        * @return the width of the widget in pixels.

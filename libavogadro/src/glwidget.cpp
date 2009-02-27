@@ -1,7 +1,7 @@
 /**********************************************************************
   GLWidget - general OpenGL display
 
-  Copyright (C) 2006,2007 Geoffrey R. Hutchison
+  Copyright (C) 2006-2009 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
   Copyright (C) 2007      Benoit Jacob
   Copyright (C) 2007,2008 Marcus D. Hanwell
@@ -222,6 +222,7 @@ namespace Avogadro {
                         updateCache(true),
                         quickRender(false),
                         allowQuickRender(true),
+                        renderUnitCellAxes(false),
                         fogLevel(0),
                         renderAxes(false),
                         renderDebug(false),
@@ -292,6 +293,7 @@ namespace Avogadro {
     bool                   updateCache; // Update engine caches in quick render?
     bool                   quickRender; // Are we using quick render?
     bool                   allowQuickRender; // Are we allowed to use quick render?
+    bool                   renderUnitCellAxes; // Do we render the unit cell axes
     int                    fogLevel;    // The level of fog to use (0=none, 9=max)
     bool                   renderAxes;  // Should the x, y, z axes be rendered?
     bool                   renderDebug; // Should the debug information be shown?
@@ -928,7 +930,8 @@ namespace Avogadro {
       }
     } // end of for loops
 
-    renderCrystalAxes();
+    if (d->renderUnitCellAxes)
+      renderCrystalAxes();
   }
 
   // Render the unit cell axes, indicating the frame of the cell
@@ -2056,6 +2059,7 @@ namespace Avogadro {
     settings.setValue("renderAxes", d->renderAxes);
     settings.setValue("renderDebug", d->renderDebug);
     settings.setValue("allowQuickRender", d->allowQuickRender);
+    settings.setValue("renderUnitCellAxes", d->renderUnitCellAxes);
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
@@ -2078,6 +2082,7 @@ namespace Avogadro {
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
+    d->allowQuickRender = settings.value("renderUnitCellAxes", 1).value<bool>();
 
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++)
@@ -2131,6 +2136,16 @@ namespace Avogadro {
   bool GLWidget::quickRender() const
   {
     return d->allowQuickRender;
+  }
+
+  void GLWidget::setRenderUnitCellAxes(bool enabled)
+  {
+    d->renderUnitCellAxes = enabled;
+  }
+
+  bool GLWidget::renderUnitCellAxes() const
+  {
+    return d->renderUnitCellAxes;
   }
 
   void GLWidget::invalidateDLs()

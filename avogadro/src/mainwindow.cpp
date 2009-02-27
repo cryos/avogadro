@@ -503,6 +503,17 @@ namespace Avogadro
     d->glWidget->setQuickRender(quick);
   }
 
+  bool MainWindow::renderUnitCellAxes() const
+  {
+    // Is the current widget using quick render?
+    return d->glWidget->renderUnitCellAxes();
+  }
+
+  void MainWindow::setRenderUnitCellAxes(bool render)
+  {
+    d->glWidget->setRenderUnitCellAxes(render);
+  }
+
   void MainWindow::reloadPlugins()
   {
     qDebug() << "MainWindow::reloadPlugins";
@@ -894,6 +905,11 @@ namespace Avogadro
       }
 
       QApplication::restoreOverrideCursor();
+
+      if (QString(inFormat->GetID()).contains("PDB")) {
+        setRenderUnitCellAxes(false);
+        ui.actionDisplayUnitCellAxes->setChecked(false);        
+      }
 
       QString status;
       QTextStream( &status ) << tr("Atoms: ") << d->molecule->numAtoms() <<
@@ -1456,6 +1472,7 @@ namespace Avogadro
 //    d->engineConfigurationStacked->setCurrentIndex( index );
 //    d->enginePrimitivesStacked->setCurrentIndex( index );
     ui.actionDisplayAxes->setChecked(renderAxes());
+    ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
   }
@@ -1707,6 +1724,7 @@ namespace Avogadro
 
     d->centralTab->addTab(widget, tabName);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
+    ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
     ui.actionQuickRender->setChecked(gl->quickRender());
     writeSettings();
@@ -1737,6 +1755,7 @@ namespace Avogadro
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
+    ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
     ui.actionQuickRender->setChecked(gl->quickRender());
 
@@ -2033,6 +2052,8 @@ namespace Avogadro
     connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ), this, SLOT( setBackgroundColor() ) );
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
             this, SLOT(setRenderAxes(bool)));
+    connect(ui.actionDisplayUnitCellAxes, SIGNAL(triggered(bool)),
+            this, SLOT(setRenderUnitCellAxes(bool)));            
     connect(ui.actionDebugInformation, SIGNAL(triggered(bool)),
             this, SLOT(setRenderDebug(bool)));
     connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
@@ -2267,6 +2288,7 @@ namespace Avogadro
 
     // Set the view conditions for the initial view
     ui.actionDisplayAxes->setChecked(renderAxes());
+    ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
     ui.actionQuickRender->setChecked(quickRender());
 
