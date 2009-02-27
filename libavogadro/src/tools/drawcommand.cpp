@@ -326,10 +326,7 @@ namespace Avogadro {
 
     if (d->atom) { // initial creation
       if (d->adjustHydrogens != AdjustHydrogens::Never) {
-        QList<unsigned long> ids;
-        ids.append(d->id);
-        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
-        
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id);
         if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
           d->postCommand->redo();
       }
@@ -348,11 +345,8 @@ namespace Avogadro {
     atom->setAtomicNumber(d->element);
 
     if (d->adjustHydrogens != AdjustHydrogens::Never) {
-      if (!d->postCommand) {
-        QList<unsigned long> ids;
-        ids.append(d->id);
-        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, ids);
-      }
+      if (!d->postCommand)
+        d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id);
       if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
         d->postCommand->redo();
     }
@@ -616,12 +610,12 @@ namespace Avogadro {
         QList<unsigned long> ids;
         ids.append(d->bond->beginAtomId());
         
-        d->preCommandBegin = new AdjustHydrogensPreCommand(d->molecule, ids);
+        d->preCommandBegin = new AdjustHydrogensPreCommand(d->molecule, d->bond->beginAtomId());
         // remove hydrogens from begin and/or end atom 
         if (d->adjustHydrogensBegin & AdjustHydrogens::RemoveOnRedo)
           d->preCommandBegin->redo();
         
-        d->postCommandBegin = new AdjustHydrogensPostCommand(d->molecule, ids);
+        d->postCommandBegin = new AdjustHydrogensPostCommand(d->molecule, d->bond->beginAtomId());
         // add hydrogens again 
         if (d->adjustHydrogensBegin & AdjustHydrogens::AddOnRedo)
           d->postCommandBegin->redo();
@@ -629,15 +623,12 @@ namespace Avogadro {
 
       // adjust hydrogens on end atom if needed
       if (d->adjustHydrogensEnd != AdjustHydrogens::Never) {
-        QList<unsigned long> ids;
-        ids.append(d->bond->endAtomId());
-        
-        d->preCommandEnd = new AdjustHydrogensPreCommand(d->molecule, ids);
+        d->preCommandEnd = new AdjustHydrogensPreCommand(d->molecule, d->bond->endAtomId());
         // remove hydrogens from begin and/or end atom 
         if (d->adjustHydrogensEnd & AdjustHydrogens::RemoveOnRedo)
           d->preCommandEnd->redo();
         
-        d->postCommandEnd = new AdjustHydrogensPostCommand(d->molecule, ids);
+        d->postCommandEnd = new AdjustHydrogensPostCommand(d->molecule, d->bond->endAtomId());
         // add hydrogens again 
         if (d->adjustHydrogensEnd & AdjustHydrogens::AddOnRedo)
           d->postCommandEnd->redo();
@@ -649,24 +640,17 @@ namespace Avogadro {
       
     // adjust hydrogens on begin atom if needed
     if (d->adjustHydrogensBegin != AdjustHydrogens::Never) {
-      if (!d->preCommandBegin) {
-        QList<unsigned long> ids;
-        ids.append(d->beginAtomId);
-        d->preCommandBegin = new AdjustHydrogensPreCommand(d->molecule, ids);
-      }
+      if (!d->preCommandBegin)
+        d->preCommandBegin = new AdjustHydrogensPreCommand(d->molecule, d->beginAtomId);
       // remove hydrogens from begin and/or end atom 
       if (d->adjustHydrogensBegin & AdjustHydrogens::RemoveOnRedo)
         d->preCommandBegin->redo();
     }
       
- 
     // adjust hydrogens on end atom if needed
     if (d->adjustHydrogensEnd != AdjustHydrogens::Never) {
-      if (!d->preCommandEnd) {
-        QList<unsigned long> ids;
-        ids.append(d->endAtomId);
-        d->preCommandEnd = new AdjustHydrogensPreCommand(d->molecule, ids);
-      }
+      if (!d->preCommandEnd)
+        d->preCommandEnd = new AdjustHydrogensPreCommand(d->molecule, d->endAtomId);
       // remove hydrogens from begin and/or end atom 
       if (d->adjustHydrogensEnd & AdjustHydrogens::RemoveOnRedo)
         d->preCommandEnd->redo();
@@ -692,11 +676,8 @@ namespace Avogadro {
 
     // adjust hydrogens on begin atom if needed
     if (d->adjustHydrogensBegin != AdjustHydrogens::Never) {
-      if (!d->postCommandBegin) {
-        QList<unsigned long> ids;
-        ids.append(d->beginAtomId);
-        d->postCommandBegin = new AdjustHydrogensPostCommand(d->molecule, ids);
-      }
+      if (!d->postCommandBegin) 
+        d->postCommandBegin = new AdjustHydrogensPostCommand(d->molecule, d->beginAtomId);
       // remove hydrogens from begin and/or end atom 
       if (d->adjustHydrogensBegin & AdjustHydrogens::AddOnRedo)
         d->postCommandBegin->redo();
@@ -704,11 +685,8 @@ namespace Avogadro {
  
     // adjust hydrogens on end atom if needed
     if (d->adjustHydrogensEnd != AdjustHydrogens::Never) {
-      if (!d->postCommandEnd) {
-        QList<unsigned long> ids;
-        ids.append(d->endAtomId);
-        d->postCommandEnd = new AdjustHydrogensPostCommand(d->molecule, ids);
-      }
+      if (!d->postCommandEnd) 
+        d->postCommandEnd = new AdjustHydrogensPostCommand(d->molecule, d->endAtomId);
       // remove hydrogens from begin and/or end atom 
       if (d->adjustHydrogensEnd & AdjustHydrogens::AddOnRedo)
         d->postCommandEnd->redo();
