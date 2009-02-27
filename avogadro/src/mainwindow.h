@@ -39,7 +39,7 @@ class QStackedLayout;
 class QStandardItem;
 
 namespace OpenBabel{
-  class OBFormat;  
+  class OBFormat;
 }
 
 namespace Avogadro {
@@ -71,14 +71,14 @@ namespace Avogadro {
        * @return whether the loading process was successful
        */
       bool loadFile(const QString &fileName = QString(),
-		    OpenBabel::OBFormat *format = NULL,
-		    const QString &options = QString());
+            OpenBabel::OBFormat *format = NULL,
+            const QString &options = QString());
 
       /**
        * @param fileName the filename to save the currently loaded file to
        */
       bool saveFile(const QString &fileName,
-		    OpenBabel::OBFormat *format = NULL);
+            OpenBabel::OBFormat *format = NULL);
 
     protected:
       void closeEvent(QCloseEvent *event);
@@ -174,7 +174,7 @@ namespace Avogadro {
        * Add an extension's actions to the menu
        */
       void addActionsToMenu(Extension *extension);
-      
+
       /**
        * @param molecule set the current molecule and take ownership
        */
@@ -187,6 +187,7 @@ namespace Avogadro {
     private:
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
+      static const int m_configFileVersion;
 
       Ui::MainWindow ui;
 

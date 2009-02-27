@@ -193,6 +193,8 @@ namespace Avogadro
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
+  const int MainWindow::m_configFileVersion = 1;
+
   unsigned int getMainWindowCount()
   {
     unsigned int mainWindowCount = 0;
@@ -2191,9 +2193,15 @@ namespace Avogadro
   void MainWindow::readSettings()
   {
     QSettings settings;
+    // Check if the config file version exists and whether to the saved settings
+    if (settings.value("ConfigVersion", 0) != m_configFileVersion) {
+      qDebug() << "Unversioned configuration - clearing.";
+      settings.clear();
+    }
+    else
+      qDebug() << "Versioned config - loading.";
     // On Mac or Windows, the application should remember
     // window positions. On Linux, it's handled by the window manager
-#if defined (Q_WS_MAC) || defined (Q_WS_WIN)
     QPoint originalPosition = pos();
     QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
 
@@ -2203,7 +2211,7 @@ namespace Avogadro
     QDesktopWidget desktop;
     if (desktop.screenNumber(this) == -1) // it's not on a screen
       move(originalPosition);
-#endif
+
     QSize size = settings.value( "size", QSize(720,540) ).toSize();
     resize( size );
 
@@ -2268,9 +2276,10 @@ namespace Avogadro
   void MainWindow::writeSettings()
   {
     QSettings settings;
-#if defined (Q_WS_MAC) || defined (Q_WS_WIN)
+    // Save the version of the config file - bump if necessary
+    settings.setValue("ConfigVersion", m_configFileVersion);
     settings.setValue( "pos", pos() );
-#endif
+
     settings.setValue( "size", size() );
     settings.setValue( "state", saveState() );
 
