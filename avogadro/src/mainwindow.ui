@@ -75,9 +75,9 @@
     <addaction name="separator" />
     <addaction name="actionQuit" />
    </widget>
-   <widget class="QMenu" name="menuSettings" >
+   <widget class="QMenu" name="menuWindow" >
     <property name="title" >
-     <string>Settings</string>
+     <string>Window</string>
     </property>
     <widget class="QMenu" name="menuToolbars" >
      <property name="title" >
@@ -142,7 +142,7 @@
    <addaction name="menuBuild" />
    <addaction name="menuSelect" />
    <addaction name="menuExtensions" />
-   <addaction name="menuSettings" />
+   <addaction name="menuWindow" />
    <addaction name="menuHelp" />
   </widget>
   <widget class="QStatusBar" name="statusbar" />
