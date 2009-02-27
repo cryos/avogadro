@@ -102,7 +102,6 @@ namespace Avogadro
 
   void GaussianInputDialog::readSettings(QSettings &settings)
   {
-    qDebug() << "Read settings called in GaussianInputDialog.";
     setProcs(settings.value("gaussianProcs", 2).toInt());
     ui.procSpin->setValue(settings.value("gaussianProcs", 1).toInt());
     setCalculation(settings.value("gaussianCalcType", 1).toInt());

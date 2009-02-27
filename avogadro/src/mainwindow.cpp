@@ -2379,16 +2379,11 @@ namespace Avogadro
 
   void MainWindow::loadExtensions()
   {
-    foreach(Extension *extension, d->pluginManager.extensions(this))
-    {
-      qDebug() << "Found Extension: " << extension->name() << " - "
-               << extension->description();
-
+    foreach(Extension *extension, d->pluginManager.extensions(this)) {
       addActionsToMenu(extension);
 
       QDockWidget *dockWidget = extension->dockWidget();
-      if(dockWidget)
-      {
+      if(dockWidget) {
         addDockWidget(Qt::RightDockWidgetArea, dockWidget);
         dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
