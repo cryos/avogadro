@@ -8,7 +8,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/fragment.h>
 #include <avogadro/cube.h>
-
+#include <avogadro/glwidget.h>
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
