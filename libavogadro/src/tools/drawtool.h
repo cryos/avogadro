@@ -132,6 +132,7 @@ namespace Avogadro {
       int m_prevBondOrder;
 
       int m_addHydrogens;
+      QUndoCommand *m_hydrogenCommand;
 
       bool m_insertFragmentMode;
 
