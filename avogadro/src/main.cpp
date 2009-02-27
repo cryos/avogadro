@@ -76,6 +76,10 @@ int main(int argc, char *argv[])
 
   Application app(argc, argv);
 
+  // Output the untranslated application and library version - bug reports
+  qDebug() << "Avogadro version:\t" << VERSION
+           << "\nLibAvogadro version:\t" << Library::version();
+
 #ifdef WIN32
   // Need to add an environment variable to the current process in order
   // to load the forcefield parameters in OpenBabel.
@@ -140,7 +144,7 @@ int main(int argc, char *argv[])
     printHelp(arguments[0]);
     return 0;
   }
-  
+
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
         QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));
