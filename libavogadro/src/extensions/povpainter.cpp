@@ -186,7 +186,7 @@ namespace Avogadro
   {
   }
 
-  void POVPainter::drawMesh(const Mesh & mesh, int mode, bool normalWind)
+  void POVPainter::drawMesh(const Mesh & mesh, int mode)
   {
     // Now we draw the given mesh to the OpenGL widget
     switch (mode)
@@ -208,7 +208,6 @@ namespace Avogadro
       return;
     }
 
-    // Normal or reverse winding?
     QString vertsStr, ivertsStr, normsStr, inormsStr;
     QTextStream verts(&vertsStr);
     verts << "vertex_vectors{" << t.size() << ",\n";
@@ -216,54 +215,26 @@ namespace Avogadro
     iverts << "face_indices{" << t.size() / 3 << ",\n";
     QTextStream norms(&normsStr);
     norms << "normal_vectors{" << n.size() << ",\n";
-    if (normalWind) {
-      for(unsigned int i = 0; i < t.size(); ++i) {
-        verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
-        norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-        if (i != t.size()-1) {
-          verts << ", ";
-          norms << ", ";
-        }
-        if (i != 0 && i%3 == 0) {
-          verts << "\n";
-          norms << "\n";
-        }
+    for(unsigned int i = 0; i < t.size(); ++i) {
+      verts << "<" << t[i].x() << "," << t[i].y() << "," << t[i].z() << ">";
+      norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
+      if (i != t.size()-1) {
+        verts << ", ";
+        norms << ", ";
       }
-      // Now to write out the indices
-      for (unsigned int i = 0; i < t.size(); i += 3) {
-        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        if (i != t.size()-3) {
-          iverts << ", ";
-        }
-        if (i != 0 && ((i+1)/3)%3 == 0) {
-          iverts << "\n";
-        }
+      if (i != 0 && i%3 == 0) {
+        verts << "\n";
+        norms << "\n";
       }
     }
-    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
-    else {
-      for(unsigned int i = t.size(); i > 0; --i) {
-        Eigen::Vector3f tmp = n[i-1] * -1;
-        verts << "<" << t[i-1].x() << "," << t[i-1].y() << "," << t[i-1].z() << ">";
-        norms << "<" << tmp.x() << "," << tmp.y() << "," << tmp.z() << ">";
-        if (i != t.size()-1) {
-          verts << ", ";
-          norms << ", ";
-        }
-        if (i != 0 && i%3 == 0) {
-          verts << "\n";
-          norms << "\n";
-        }
+    // Now to write out the indices
+    for (unsigned int i = 0; i < t.size(); i += 3) {
+      iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
+      if (i != t.size()-3) {
+        iverts << ", ";
       }
-      // Now to write out the indices
-      for (unsigned int i = 0; i < t.size(); i += 3) {
-        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        if (i != t.size()-3) {
-          iverts << ", ";
-        }
-        if (i != 0 && ((i+1)/3)%3 == 0) {
-          iverts << "\n";
-        }
+      if (i != 0 && ((i+1)/3)%3 == 0) {
+        iverts << "\n";
       }
     }
     // Now to close off all the arrays
@@ -282,7 +253,7 @@ namespace Avogadro
 
   }
 
-  void POVPainter::drawColorMesh(const Mesh & mesh, int mode, bool normalWind)
+  void POVPainter::drawColorMesh(const Mesh & mesh, int mode)
   {
     // Now we draw the given mesh to the OpenGL widget
     switch (mode)
@@ -305,7 +276,6 @@ namespace Avogadro
       return;
     }
 
-    // Normal or reverse winding?
     QString vertsStr, ivertsStr, normsStr, texturesStr;
     QTextStream verts(&vertsStr);
     verts << "vertex_vectors{" << v.size() << ",\n";
@@ -315,61 +285,31 @@ namespace Avogadro
     norms << "normal_vectors{" << n.size() << ",\n";
     QTextStream textures(&texturesStr);
     textures << "texture_list{" << c.size() << ",\n";
-    if (normalWind) {
-      for(unsigned int i = 0; i < v.size(); ++i) {
-        verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
-        norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-        textures << "texture{pigment{rgbt<" << c[i].redF() << ","
-                 << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
-                 << ">}},\n";
-        if (i != v.size()-1) {
-          verts << ", ";
-          norms << ", ";
-        }
-        if (i != 0 && i%3 == 0) {
-          verts << "\n";
-          norms << "\n";
-        }
+    for(unsigned int i = 0; i < v.size(); ++i) {
+      verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
+      norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
+      textures << "texture{pigment{rgbt<" << c[i].redF() << ","
+               << c[i].greenF() << "," << c[i].blueF() << ","
+               << 1.0 - c[i].alphaF() << ">}}";
+      if (i != v.size()-1) {
+        verts << ", ";
+        norms << ", ";
+        textures << ",\n";
       }
-      // Now to write out the indices
-      for (unsigned int i = 0; i < v.size(); i += 3) {
-        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        iverts << "," << i << "," << i+1 << "," << i+2;
-        if (i != v.size()-3) {
-          iverts << ", ";
-        }
-        if (i != 0 && ((i+1)/3)%3 == 0) {
-          iverts << "\n";
-        }
+      if (i != 0 && i%3 == 0) {
+        verts << "\n";
+        norms << "\n";
       }
     }
-    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
-    else {
-      for(unsigned int i = v.size(); i > 0; --i) {
-        Eigen::Vector3f tmp = n[i-1] * -1;
-        verts << "<" << v[i-1].x() << "," << v[i-1].y() << "," << v[i-1].z() << ">";
-        norms << "<" << tmp.x() << "," << tmp.y() << "," << tmp.z() << ">";
-        textures << "texture{pigment{rgbt{" << c[i].redF() << ","
-                 << c[i].greenF() << "," << c[i].blueF() << "," << c[i].alphaF()
-                 << "}}}\n";
-        if (i != v.size()-1) {
-          verts << ", ";
-          norms << ", ";
-        }
-        if (i != 0 && i%3 == 0) {
-          verts << "\n";
-          norms << "\n";
-        }
+    // Now to write out the indices
+    for (unsigned int i = 0; i < v.size(); i += 3) {
+      iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
+      iverts << "," << i << "," << i+1 << "," << i+2;
+      if (i != v.size()-3) {
+        iverts << ", ";
       }
-      // Now to write out the indices
-      for (unsigned int i = 0; i < v.size(); i += 3) {
-        iverts << "<" << i << "," << i+1 << "," << i+2 << ">";
-        if (i != v.size()-3) {
-          iverts << ", ";
-        }
-        if (i != 0 && ((i+1)/3)%3 == 0) {
-          iverts << "\n";
-        }
+      if (i != 0 && ((i+1)/3)%3 == 0) {
+        iverts << "\n";
       }
     }
     // Now to close off all the arrays

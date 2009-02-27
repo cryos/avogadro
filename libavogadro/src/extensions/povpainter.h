@@ -281,17 +281,15 @@ namespace Avogadro
      * Draws a continuous mesh of triangles.
      * @param mesh the mesh to be drawn.
      * @param mode the mode to use. 0 = filled, 1 = lines and 2 = points.
-     * @param normalWind the winding and normal direction - false flips it.
      */
-    void drawMesh(const Mesh & mesh, int mode = 0, bool normalWind = true);
+    void drawMesh(const Mesh & mesh, int mode = 0);
 
     /**
      * Draws a continuous mesh of triangles and respects the colors stored.
      * @param mesh the mesh to be drawn.
      * @param mode the mode to use. 0 = filled, 1 = lines and 2 = points.
-     * @param normalWind the winding and normal direction - false flips it.
      */
-    void drawColorMesh(const Mesh & mesh, int mode = 0, bool normalWind = true);
+    void drawColorMesh(const Mesh & mesh, int mode = 0);
 
     int drawText (int x, int y, const QString &string) const;
     int drawText (const QPoint& pos, const QString &string) const;
