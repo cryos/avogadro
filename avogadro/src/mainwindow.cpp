@@ -2260,6 +2260,7 @@ namespace Avogadro
     // Set the view conditions for the initial view
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
+    ui.actionQuickRender->setChecked(quickRender());
 
     ui.actionCloseView->setEnabled(count > 1);
   }
