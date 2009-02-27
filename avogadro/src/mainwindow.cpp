@@ -322,28 +322,25 @@ namespace Avogadro
     ui.fileToolBar->hide();
 
     // Change the "Settings" menu to be Window
-    ui.menuSettings->setTitle(tr("Window"));
-    QAction *firstAction = ui.menuSettings->actions().first();
+    QAction *firstAction = ui.menuWindow->actions().first();
     QAction *minimizeAction = new QAction(this);
     minimizeAction->setText(tr("&Minimize"));
     minimizeAction->setShortcut(QKeySequence(tr("Ctrl+M")));
     connect(minimizeAction, SIGNAL(triggered()), this, SLOT(showMinimized()));
-    ui.menuSettings->insertAction(firstAction, minimizeAction);
+    ui.menuWindow->insertAction(firstAction, minimizeAction);
 
     QAction *zoomAction = new QAction(this);
     zoomAction->setText(tr("&Zoom"));
     connect(zoomAction, SIGNAL(triggered()), this, SLOT(zoom()));
-    ui.menuSettings->insertAction(firstAction, zoomAction);
-    ui.menuSettings->insertSeparator(firstAction);
+    ui.menuWindow->insertAction(firstAction, zoomAction);
+    ui.menuWindow->insertSeparator(firstAction);
 
-    ui.menuSettings->addSeparator();
+    ui.menuWindow->addSeparator();
     QAction *raiseAction = new QAction(this);
     raiseAction->setText(tr("Bring All to Front"));
     connect(raiseAction, SIGNAL(triggered()), this, SLOT(bringAllToFront()));
-    ui.menuSettings->addAction(raiseAction);
-    ui.menuSettings->addSeparator();
-
-    updateWindowMenu();
+    ui.menuWindow->addAction(raiseAction);
+    ui.menuWindow->addSeparator();
 
     // Remove all menu icons (violates Apple interface guidelines)
     // This is a not-quite-hidden Qt call on the Mac
@@ -360,6 +357,8 @@ namespace Avogadro
 
     // Disable the detach view option for now
     ui.actionDetachView->setVisible(false);
+    // Update the settings/window menu
+    updateWindowMenu();
   }
 
   bool MainWindow::event(QEvent *event)
@@ -410,9 +409,7 @@ namespace Avogadro
     }
     else if(event->type() == QEvent::ActivationChange
             || event->type() == QEvent::WindowActivate) {
-#ifdef Q_WS_MAC
       updateWindowMenu();
-#endif
     }
 
     return QMainWindow::event(event);
@@ -911,9 +908,8 @@ namespace Avogadro
 
     setFileName( fileName );
     setWindowFilePath(shownName);
-#ifdef Q_WS_MAC
     updateWindowMenu();
-#endif
+
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
     d->toolGroup->setActiveTool(tr("Navigate"));
     return true;
@@ -1366,7 +1362,7 @@ namespace Avogadro
     // first remove actions at end of Window menu
     bool removeItem = false;
     QList<QAction *> removeThese;
-    foreach (QAction *menuItem, ui.menuSettings->actions()) {
+    foreach (QAction *menuItem, ui.menuWindow->actions()) {
       if (menuItem->text() == tr("Bring All to Front")) {
         removeItem = true;
         continue;
@@ -1376,7 +1372,7 @@ namespace Avogadro
     }
 
     foreach (QAction *action, removeThese) {
-      ui.menuSettings->removeAction(action);
+      ui.menuWindow->removeAction(action);
     }
 
     QList<MainWindow *> mainWindowList;
@@ -1393,7 +1389,7 @@ namespace Avogadro
     qSort(mainWindowList.begin(), mainWindowList.end(), windowComparison);
 
     unsigned int untitledCount = 0;
-    ui.menuSettings->addSeparator();
+    ui.menuWindow->addSeparator();
     foreach (MainWindow *widget, mainWindowList) {
       QAction *windowAction = new QAction(widget);
       if (!widget->d->fileName.isEmpty())
@@ -1406,7 +1402,7 @@ namespace Avogadro
         windowAction->setChecked(true);
       }
       connect(windowAction, SIGNAL(triggered()), widget, SLOT(showAndActivate()));
-      ui.menuSettings->addAction(windowAction);
+      ui.menuWindow->addAction(windowAction);
     }
   }
 
@@ -2342,7 +2338,7 @@ namespace Avogadro
         if ( !path ) {
           // Gotta add a new root menu
           path = new QMenu(menuPath.at( 0 ));
-          menuBar()->insertMenu( ui.menuSettings->menuAction(), path);
+          menuBar()->insertMenu( ui.menuWindow->menuAction(), path);
         }
 
         // Now handle submenus
@@ -2432,10 +2428,10 @@ namespace Avogadro
   {
     // First remove the last menu item on the "Window" menu
     // i.e., the action which refers to this window
-    QAction *lastAction = ui.menuSettings->actions().last();
-    ui.menuSettings->removeAction(lastAction);
-    ui.menuSettings->actions().last(); // and last separator
-    ui.menuSettings->removeAction(lastAction);
+    QAction *lastAction = ui.menuWindow->actions().last();
+    ui.menuWindow->removeAction(lastAction);
+    ui.menuWindow->actions().last(); // and last separator
+    ui.menuWindow->removeAction(lastAction);
 
     d->menuItemStatus.clear();
     QVector<bool> status;
