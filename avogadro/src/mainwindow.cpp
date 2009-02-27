@@ -659,7 +659,7 @@ namespace Avogadro
     writeSettings();
     MainWindow *other = new MainWindow;
 #ifdef Q_WS_MAC
-    other->move( x() + 40, y() + 40 );
+    other->move( x() + 25, y() + 25 );
 #endif
     other->show();
   }
@@ -731,8 +731,8 @@ namespace Avogadro
           delete other;
           return;
         }
-#ifdef Q_WS_MAC
-        other->move( x() + 40, y() + 40 );
+#if defined (Q_WS_MAC) || defined (Q_WS_WIN)
+        other->move( x() + 25, y() + 25 );
 #endif
         other->show();
       }
@@ -2194,15 +2194,18 @@ namespace Avogadro
     // On Mac or Windows, the application should remember
     // window positions. On Linux, it's handled by the window manager
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
-    QPoint originalPosition = pos();
-    QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
-
-    // We'll try moving the window. If it moves off-screen, we'll move it back
-    // This solves PR#1903437
-    move(newPosition);
-    QDesktopWidget desktop;
-    if (desktop.screenNumber(this) == -1) // it's not on a screen
-      move(originalPosition);
+    // Only remember a window if it's the first one -- others will be offset
+    if (getMainWindowCount() == 1) {
+      QPoint originalPosition = pos();
+      QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
+      
+      // We'll try moving the window. If it moves off-screen, we'll move it back
+      // This solves PR#1903437
+      move(newPosition);
+      QDesktopWidget desktop;
+      if (desktop.screenNumber(this) == -1) // it's not on a screen
+        move(originalPosition);
+    }
 #endif
     QSize size = settings.value( "size", QSize(720,540) ).toSize();
     resize( size );
