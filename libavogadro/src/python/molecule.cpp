@@ -7,6 +7,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
 #include <avogadro/cube.h>
+#include <avogadro/mesh.h>
 
 #include <openbabel/mol.h>
 
@@ -36,8 +37,13 @@ void export_Molecule()
   void (Molecule::*removeBond_ptr1)(Bond*) = &Molecule::removeBond;
   void (Molecule::*removeBond_ptr2)(unsigned long) = &Molecule::removeBond;
   Cube* (Molecule::*addCube_ptr1)() = &Molecule::addCube;
+  Cube* (Molecule::*cube_ptr)(int) const = &Molecule::cube;
   void (Molecule::*removeCube_ptr1)(Cube*) = &Molecule::removeCube;
   void (Molecule::*removeCube_ptr2)(unsigned long) = &Molecule::removeCube;
+  Mesh* (Molecule::*addMesh_ptr1)() = &Molecule::addMesh;
+  Mesh* (Molecule::*mesh_ptr)(int) const = &Molecule::mesh;
+  void (Molecule::*removeMesh_ptr1)(Mesh*) = &Molecule::removeMesh;
+  void (Molecule::*removeMesh_ptr2)(unsigned long) = &Molecule::removeMesh;
   Residue* (Molecule::*addResidue_ptr1)() = &Molecule::addResidue;
   void (Molecule::*removeResidue_ptr1)(Residue*) = &Molecule::removeResidue;
   void (Molecule::*removeResidue_ptr2)(unsigned long) = &Molecule::removeResidue;
@@ -70,6 +76,7 @@ void export_Molecule()
     .add_property("atoms", &Molecule::atoms)
     .add_property("bonds", &Molecule::bonds)
     .add_property("cubes", &Molecule::cubes)
+    .add_property("meshes", &Molecule::meshes)
     .add_property("residues", &Molecule::residues)
     .add_property("rings", &Molecule::rings)
     .add_property("center", make_function(&Molecule::center, return_value_policy<return_by_value>()))
@@ -102,8 +109,16 @@ void export_Molecule()
     .def("removeBond", removeBond_ptr2)
     // cube functions
     .def("addCube", addCube_ptr1, return_value_policy<reference_existing_object>())
+    .def("cube", cube_ptr, return_value_policy<reference_existing_object>())
+    .def("cubeById", &Molecule::cubeById, return_value_policy<reference_existing_object>())
     .def("removeCube", removeCube_ptr1)
     .def("removeCube", removeCube_ptr2)
+    // mesh functions
+    .def("addMesh", addMesh_ptr1, return_value_policy<reference_existing_object>())
+    .def("mesh", mesh_ptr, return_value_policy<reference_existing_object>())
+    .def("meshById", &Molecule::meshById, return_value_policy<reference_existing_object>())
+    .def("removeMesh", removeMesh_ptr1)
+    .def("removeMesh", removeMesh_ptr2)
     // residue functions
     .def("addResidue", addResidue_ptr1, return_value_policy<reference_existing_object>())
     .def("residue", residue_ptr, return_value_policy<reference_existing_object>())

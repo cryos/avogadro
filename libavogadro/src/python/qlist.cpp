@@ -12,6 +12,7 @@
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
+#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
 using namespace boost::python;
