@@ -2,7 +2,7 @@
   MOPACInputDialog - Dialog for generating MOPAC input decks
 
   Copyright (C) 2009 Geoffrey Hutchison
-  Some portions Copyright (C) 2008-2009 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -82,6 +82,7 @@ namespace Avogadro
     coordType m_coordType;
     bool m_dirty;
     bool m_warned;
+    bool m_previewVisible;
     QProcess *m_process;
     QProgressDialog *m_progress;
     QString m_inputFile;
@@ -93,6 +94,8 @@ namespace Avogadro
     // Translate enums to strings
     QString getCalculationType(calculationType t);
     QString getTheoryType(theoryType t);
+
+    static const QString mopacPath;
 
     // Enable/disable form elements
     void deckDirty(bool);
@@ -111,7 +114,7 @@ namespace Avogadro
     void enableFormClicked();
     void moreClicked();
     void previewEdited();
-    
+
     void finished(int);
     void stopProcess();
 

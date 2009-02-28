@@ -38,7 +38,7 @@ namespace Avogadro {
    * @brief Interface for plugins
    * @author Tim Vandermeersch
    *
-   * This is a template class for plugins like tools, engines, 
+   * This is a template class for plugins like tools, engines,
    * extensions, colors, ...
    */
 
@@ -50,12 +50,12 @@ namespace Avogadro {
   /*}*/
 
   //class PluginPrivate;
-  class A_EXPORT Plugin: public QObject
+  class A_EXPORT Plugin : public QObject
   {
     Q_OBJECT
 
     public:
-      enum Type 
+      enum Type
       {
         EngineType = 0,
         ToolType,
@@ -64,7 +64,7 @@ namespace Avogadro {
         OtherType,
         TypeCount // this needs to be last always
       };
- 
+
     public:
       /**
        * Constructor
@@ -75,7 +75,7 @@ namespace Avogadro {
        * Destructor
        */
       virtual ~Plugin();
-    
+
       /**
        * @return the type of the plugin.
        */
@@ -134,7 +134,7 @@ namespace Avogadro {
        * @return pointer to a new instance of an Engine subclass object.
        */
       virtual Plugin *createInstance(QObject *parent=0) = 0;
-      
+
       /**
        * @return the type of the plugin.
        */
@@ -159,6 +159,6 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Plugin*)
-Q_DECLARE_INTERFACE(Avogadro::PluginFactory, "net.sourceforge.avogadro.pluginfactory/1.1")
+Q_DECLARE_INTERFACE(Avogadro::PluginFactory, "net.sourceforge.avogadro.pluginfactory/1.2")
 
 #endif

@@ -43,7 +43,7 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh(0), m_alpha(0.5), m_renderMode(0),
     m_colorMode(0), m_drawBox(false)
   {
-    m_color.set(1.0, 0.0, 0.0, m_alpha);
+    m_color.set(0.0, 1.0, 0.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -108,14 +108,15 @@ namespace Avogadro {
 
     if (m_mesh) {
       if (m_mesh->stable()) {
-          if (m_colorMode)
-            pd->painter()->drawColorMesh(*m_mesh, m_renderMode);
-          else {
-            pd->painter()->setColor(&m_color);
-            pd->painter()->drawMesh(*m_mesh, m_renderMode);
-          }
+        pd->painter()->setColor(&m_color);
+        pd->painter()->drawMesh(*m_mesh, renderMode);
       }
     }
+    return true;
+  }
+
+  bool SurfaceEngine::renderPick(PainterDevice *)
+  {
     return true;
   }
 
@@ -241,13 +242,20 @@ namespace Avogadro {
     Engine::removePrimitive(primitive);
   }
 
+  void SurfaceEngine::setDrawBox(int value)
+  {
+    if (value == 0) m_drawBox = false;
+    else m_drawBox = true;
+    emit changed();
+  }
+
   void SurfaceEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
     settings.setValue("opacity", 20*m_alpha);
     settings.setValue("renderMode", m_renderMode);
     settings.setValue("colorMode", m_colorMode);
-    settings.setValue("color", m_color.color());
+    settings.setValue("color", QVariant(m_color.color()));
     if (m_mesh)
       settings.setValue("meshId", static_cast<int>(m_mesh->id()));
   }
@@ -258,7 +266,8 @@ namespace Avogadro {
     setOpacity(settings.value("opacity", 20).toInt());
     setRenderMode(settings.value("renderMode", 0).toInt());
     setColorMode(settings.value("colorMode", 0).toInt());
-    m_color.set(settings.value("color").value<QColor>());
+    if (settings.contains("color"))
+      m_color.set(settings.value("color").value<QColor>());
     m_color.setAlpha(m_alpha);
 
     if (m_molecule)

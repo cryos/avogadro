@@ -275,8 +275,10 @@ namespace Avogadro {
   void Engine::writeSettings(QSettings &settings) const
   {
     settings.setValue("enabled", isEnabled());
-    settings.setValue("alias", alias());
-    settings.setValue("description", description());
+    if (!m_alias.isEmpty())
+      settings.setValue("alias", alias());
+    if (!m_description.isEmpty())
+      settings.setValue("description", description());
   }
 
   void Engine::readSettings(QSettings &settings)

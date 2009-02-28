@@ -33,3 +33,17 @@ qt4_automoc(${indexcolor_SRCS})
 add_library(indexcolor MODULE ${indexcolor_SRCS})
 target_link_libraries(indexcolor ${LINK_LIBS})
 install(TARGETS indexcolor DESTINATION ${DESTINATION_DIR})
+
+### chargecolor
+set(chargecolor_SRCS chargecolor.cpp)
+qt4_automoc(${chargecolor_SRCS})
+add_library(chargecolor MODULE ${chargecolor_SRCS})
+target_link_libraries(chargecolor ${LINK_LIBS})
+install(TARGETS chargecolor DESTINATION ${DESTINATION_DIR})
+
+### distancecolor
+set(distancecolor_SRCS distancecolor.cpp)
+qt4_automoc(${distancecolor_SRCS})
+add_library(distancecolor MODULE ${distancecolor_SRCS})
+target_link_libraries(distancecolor ${LINK_LIBS})
+install(TARGETS distancecolor DESTINATION ${DESTINATION_DIR})

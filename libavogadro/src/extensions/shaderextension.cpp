@@ -174,9 +174,6 @@ namespace Avogadro
     foreach(Shader *shader, m_shaders) {
       delete shader;
     }
-    if (m_shaderDialog) {
-      m_shaderDialog->deleteLater();
-    }
   }
 
   QList<QAction *> ShaderExtension::actions() const
@@ -205,7 +202,7 @@ namespace Avogadro
     }
 
     if (!m_shaderDialog) {
-      m_shaderDialog = new ShaderDialog();
+      m_shaderDialog = new ShaderDialog(static_cast<QWidget*>(parent()));
       populateEngineCombo();
       loadShaders();
       populateShaderCombo();

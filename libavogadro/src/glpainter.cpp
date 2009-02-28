@@ -942,7 +942,7 @@ namespace Avogadro
     glPopAttrib();
   }
 
-  void GLPainter::drawMesh(const Mesh & mesh, int mode, bool normalWind)
+  void GLPainter::drawMesh(const Mesh & mesh, int mode)
   {
     // Now we draw the given mesh to the OpenGL widget
     switch (mode)
@@ -975,20 +975,9 @@ namespace Avogadro
       return;
     }
 
-    // Normal or reverse winding?
-    if (normalWind) {
-      for(unsigned int i = 0; i < v.size(); ++i) {
-        glNormal3fv(n.at(i).data());
-        glVertex3fv(v.at(i).data());
-      }
-    }
-    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
-    else {
-      for(unsigned int i = v.size(); i > 0; --i) {
-        Eigen::Vector3f tmp = n.at(i-1) * -1;
-        glNormal3fv(tmp.data());
-        glVertex3fv(v.at(i-1).data());
-      }
+    for(unsigned int i = 0; i < v.size(); ++i) {
+      glNormal3fv(n.at(i).data());
+      glVertex3fv(v.at(i).data());
     }
     glEnd();
 
@@ -996,7 +985,7 @@ namespace Avogadro
     glEnable(GL_LIGHTING);
   }
 
-  void GLPainter::drawColorMesh(const Mesh & mesh, int mode, bool normalWind)
+  void GLPainter::drawColorMesh(const Mesh & mesh, int mode)
   {
     // Now we draw the given mesh to the OpenGL widget
     switch (mode)
@@ -1030,24 +1019,11 @@ namespace Avogadro
 
     // Normal or reverse winding?
     Color color;
-    if (normalWind) {
-      for(unsigned int i = 0; i < v.size(); ++i) {
-        color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
-        color.applyAsMaterials();
-        glNormal3fv(n[i].data());
-        glVertex3fv(v[i].data());
-      }
-    }
-    /// FIXME - this is a fudge to fix the negative windings right now - FIXME!
-    else {
-      for(unsigned int i = v.size(); i > 0; --i) {
-        color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
-        color.apply();
-        color.applyAsMaterials();
-        Eigen::Vector3f tmp = n[i-1] * -1;
-        glNormal3fv(tmp.data());
-        glVertex3fv(v[i-1].data());
-      }
+    for(unsigned int i = 0; i < v.size(); ++i) {
+      color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+      color.applyAsMaterials();
+      glNormal3fv(n[i].data());
+      glVertex3fv(v[i].data());
     }
     glEnd();
 

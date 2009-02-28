@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>445</width>
+    <width>600</width>
     <height>335</height>
    </rect>
   </property>
@@ -44,7 +44,8 @@
          <string>Add Selected Primitives</string>
         </property>
         <property name="icon" >
-         <iconset resource="avogadro.qrc" >:/icons/edit_add.png</iconset>
+         <iconset resource="avogadro.qrc" >
+          <normaloff>:/icons/edit_add.png</normaloff>:/icons/edit_add.png</iconset>
         </property>
        </widget>
       </item>
@@ -57,7 +58,8 @@
          <string>Remove Selected Primitives</string>
         </property>
         <property name="icon" >
-         <iconset resource="avogadro.qrc" >:/icons/edit_remove.png</iconset>
+         <iconset resource="avogadro.qrc" >
+          <normaloff>:/icons/edit_remove.png</normaloff>:/icons/edit_remove.png</iconset>
         </property>
        </widget>
       </item>
@@ -70,20 +72,22 @@
          <string>Add All Primitives</string>
         </property>
         <property name="icon" >
-         <iconset resource="avogadro.qrc" >:/icons/undo.png</iconset>
+         <iconset resource="avogadro.qrc" >
+          <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="fromSelectionButton" >
         <property name="toolTip" >
-         <string>Assign Engine to Selected Primitives</string>
+         <string>Display Only Selected Primitives</string>
         </property>
         <property name="text" >
          <string>Assign to Selection</string>
         </property>
         <property name="icon" >
-         <iconset resource="avogadro.qrc" >:/icons/selecttable.png</iconset>
+         <iconset resource="avogadro.qrc" >
+          <normaloff>:/icons/selecttable.png</normaloff>:/icons/selecttable.png</iconset>
         </property>
        </widget>
       </item>

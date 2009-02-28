@@ -52,11 +52,6 @@ namespace Avogadro
 
   POVRayExtension::~POVRayExtension()
   {
-    if (m_POVRayDialog)
-    {
-      delete m_POVRayDialog;
-      m_POVRayDialog = 0;
-    }
   }
 
   QList<QAction *> POVRayExtension::actions() const
@@ -74,7 +69,7 @@ namespace Avogadro
     m_glwidget = widget;
     if (!m_POVRayDialog)
     {
-      m_POVRayDialog = new POVRayDialog();
+      m_POVRayDialog = new POVRayDialog(static_cast<QWidget*>(parent()));
 //      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
       connect(m_POVRayDialog, SIGNAL(render()),
               this, SLOT(render()));
@@ -107,7 +102,7 @@ namespace Avogadro
       m_POVRayDialog->readSettings(settings);
     }
     else {
-      m_POVRayDialog = new POVRayDialog();
+      m_POVRayDialog = new POVRayDialog(static_cast<QWidget*>(parent()));
       m_POVRayDialog->readSettings(settings);
       connect(m_POVRayDialog, SIGNAL(render()),
               this, SLOT(render()));

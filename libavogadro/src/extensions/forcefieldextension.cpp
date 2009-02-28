@@ -51,7 +51,8 @@ namespace Avogadro
       SeparatorIndex
     };
 
-  ForceFieldExtension::ForceFieldExtension( QObject *parent ) : Extension( parent ), m_molecule(0)
+  ForceFieldExtension::ForceFieldExtension( QObject *parent ) :
+    Extension( parent ), m_molecule(0)
   {
     QAction *action;
     // If you change this, see forcefielddialog.cpp, where we need to set the popup menu
@@ -96,7 +97,7 @@ namespace Avogadro
       action = new QAction( this );
       action->setText( tr("Constraints..." ));
       action->setData(ConstraintsIndex);
-      m_actions.append( action ); 
+      m_actions.append( action );
 
       action = new QAction( this );
       action->setText( tr("Ignore Selection" ));
@@ -122,22 +123,8 @@ namespace Avogadro
 
   ForceFieldExtension::~ForceFieldExtension()
   {
-    if (m_dialog) {
-      delete m_dialog;
-      m_dialog = 0;
-    }
-    if (m_conformerDialog) {
-      delete m_conformerDialog;
-      m_conformerDialog = 0;
-    }
-    if (m_constraintsDialog) {
-      delete m_constraintsDialog;
-      m_constraintsDialog = 0;
-    }
-    if (m_constraints) {
-      delete m_constraints;
-      m_constraints = 0;
-    }
+    delete m_constraints;
+    m_constraints = 0;
   }
 
   QList<QAction *> ForceFieldExtension::actions() const
@@ -167,7 +154,7 @@ namespace Avogadro
     ostringstream buff;
 
     if (!m_dialog)
-      m_dialog = new ForceFieldDialog;
+      m_dialog = new ForceFieldDialog(static_cast<QWidget*>(parent()));
     if (!m_constraints)
       m_constraints = new ConstraintsModel;
 
@@ -216,9 +203,9 @@ namespace Avogadro
       }
 
       if (!m_conformerDialog)
-        m_conformerDialog = new ConformerSearchDialog;
+        m_conformerDialog = new ConformerSearchDialog(static_cast<QWidget*>(parent()));
 
-      m_conformerDialog->setup(m_molecule, m_forceField, m_constraints, 
+      m_conformerDialog->setup(m_molecule, m_forceField, m_constraints,
                                0, m_dialog->nSteps(), m_dialog->algorithm(), m_dialog->convergence());
       m_conformerDialog->show();
       break;
@@ -234,9 +221,9 @@ namespace Avogadro
           tr( "Cannot set up the force field for this molecule." ));
         break;
       }
-      
-      undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints, 
-                                    0, m_dialog->nSteps(), m_dialog->algorithm(), 
+
+      undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints,
+                                    0, m_dialog->nSteps(), m_dialog->algorithm(),
                                     m_dialog->convergence(), 0 );
 
       connect(undo, SIGNAL(message(QString)), this, SIGNAL(message(QString)));
@@ -245,7 +232,7 @@ namespace Avogadro
       break;
     case ConstraintsIndex: // show constraints dialog
       if (!m_constraintsDialog) {
-        m_constraintsDialog = new ConstraintsDialog;
+        m_constraintsDialog = new ConstraintsDialog(static_cast<QWidget*>(parent()));
         m_constraintsDialog->setModel(m_constraints);
       }
 
@@ -455,8 +442,8 @@ namespace Avogadro
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
-                                        ConstraintsModel* constraints, 
-                                        int forceFieldID, int nSteps, int algorithm, 
+                                        ConstraintsModel* constraints,
+                                        int forceFieldID, int nSteps, int algorithm,
                                         int convergence, int task ) :
     m_nSteps( nSteps ),
     m_task( task ),

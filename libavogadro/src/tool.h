@@ -187,6 +187,7 @@ namespace Avogadro {
       virtual void setMolecule(Molecule *molecule);
 
     protected:
+      QAction *m_activateAction;
       ToolPrivate *const d;
   };
 

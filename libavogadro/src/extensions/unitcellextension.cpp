@@ -20,6 +20,8 @@
  ***********************************************************************/
 
 #include "unitcellextension.h"
+
+#include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>

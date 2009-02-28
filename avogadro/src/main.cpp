@@ -50,6 +50,9 @@
 #include <X11/Xlib.h>
 #endif
 
+#ifdef WIN32
+#include <stdlib.h>
+#endif
 
 using namespace Avogadro;
 
@@ -73,6 +76,18 @@ int main(int argc, char *argv[])
 
   Application app(argc, argv);
 
+  // Output the untranslated application and library version - bug reports
+  qDebug() << "Avogadro version:\t" << VERSION
+           << "\nLibAvogadro version:\t" << Library::version();
+
+#ifdef WIN32
+  // Need to add an environment variable to the current process in order
+  // to load the forcefield parameters in OpenBabel.
+  QString babelDataDir = "BABEL_DATADIR=" + QCoreApplication::applicationDirPath();
+  qDebug() << babelDataDir;
+  _putenv(babelDataDir.toStdString().c_str());
+#endif
+
   // Before we do much else, load translations
   // This ensures help messages and debugging info will be translated
   QStringList translationPaths;
@@ -86,12 +101,7 @@ int main(int argc, char *argv[])
   }
 
   QString translationCode = QLocale::system().name();
-  #ifdef WIN32
-    QString prefixPath = QCoreApplication::applicationDirPath() + "/i18n/avogadro/";
-  #else
-    QString prefixPath = QString( INSTALL_PREFIX ) + "/share/avogadro/i18n/";
-  #endif
-
+  QString prefixPath = QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
   translationPaths << prefixPath;
 
   qDebug() << "Locale: " << translationCode;
@@ -110,7 +120,6 @@ int main(int argc, char *argv[])
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
-  
   foreach (QString translationPath, translationPaths) {
     qDebug() << "path = " << translationPath;
 
@@ -135,7 +144,7 @@ int main(int argc, char *argv[])
     printHelp(arguments[0]);
     return 0;
   }
-  
+
   if (!QGLFormat::hasOpenGL()) {
     QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
         QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));

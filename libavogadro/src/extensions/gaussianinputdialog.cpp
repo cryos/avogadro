@@ -102,7 +102,6 @@ namespace Avogadro
 
   void GaussianInputDialog::readSettings(QSettings &settings)
   {
-    qDebug() << "Read settings called in GaussianInputDialog.";
     setProcs(settings.value("gaussianProcs", 2).toInt());
     ui.procSpin->setValue(settings.value("gaussianProcs", 1).toInt());
     setCalculation(settings.value("gaussianCalcType", 1).toInt());
@@ -132,6 +131,13 @@ namespace Avogadro
     }
 
     m_molecule = molecule;
+    // Update the preview text whenever atoms are changed
+    connect(m_molecule, SIGNAL(atomRemoved(Atom *)),
+            this, SLOT(updatePreviewText()));
+    connect(m_molecule, SIGNAL(atomAdded(Atom *)),
+            this, SLOT(updatePreviewText()));
+    connect(m_molecule, SIGNAL(atomUpdated(Atom *)),
+            this, SLOT(updatePreviewText()));
     // Add atom coordinates
     updatePreviewText();
   }
@@ -197,7 +203,7 @@ namespace Avogadro
     QString checkpointName = QFileInfo(fileName).baseName();
     checkpointName.prepend("%Chk=");
     checkpointName.append(".chk");
-    
+
     previewText.replace(QString("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
 
     QTextStream out(&file);
@@ -226,16 +232,8 @@ namespace Avogadro
   void GaussianInputDialog::previewEdited()
   {
     // Determine if the preview text has changed from the form generated
-    if(ui.previewText->toPlainText() != generateInputDeck()) {
+    if(ui.previewText->toPlainText() != generateInputDeck())
       deckDirty(true);
-      // Update the preview text whenever primitives are changed
-      connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
-              this, SLOT(updatePreviewText()));
-      connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
-              this, SLOT(updatePreviewText()));
-      connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
-              this, SLOT(updatePreviewText()));
-    }
     else
       deckDirty(false);
   }
@@ -485,6 +483,8 @@ namespace Avogadro
               << t << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
+      foreach(OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
     else if (m_molecule && m_coordType == ZMATRIX_COMPACT)
     {
@@ -527,6 +527,8 @@ namespace Avogadro
         mol << qSetFieldWidth(0) << "\n";
       }
       mol << "\n";
+      foreach(OpenBabel::OBInternalCoord *c, vic)
+        delete c;
     }
 
     return buffer;

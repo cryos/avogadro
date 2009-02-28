@@ -26,24 +26,32 @@
 
 namespace Avogadro {
 
+  Extension::Extension(QObject *parent) : Plugin(parent)
+  {
+  }
+
+  Extension::~Extension()
+  {
+  }
+
   Plugin::Type Extension::type() const
-  { 
-    return Plugin::ExtensionType; 
+  {
+    return Plugin::ExtensionType;
   }
-  
+
   QString Extension::typeName() const
-  { 
-    return tr("Extensions"); 
+  {
+    return tr("Extensions");
   }
 
-  QString Extension::menuPath(QAction *action) const 
-  { 
-    Q_UNUSED(action); return QString(); 
+  QString Extension::menuPath(QAction *action) const
+  {
+    Q_UNUSED(action); return QString();
   }
 
-  QDockWidget * Extension::dockWidget() 
-  { 
-    return 0; 
+  QDockWidget * Extension::dockWidget()
+  {
+    return 0;
   }
 
   void Extension::setMolecule(Molecule *molecule)

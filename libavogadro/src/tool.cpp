@@ -33,21 +33,19 @@ namespace Avogadro {
   class ToolPrivate
   {
     public:
-      ToolPrivate() : activateAction(0) {}
-
-      QAction *activateAction;
+      ToolPrivate() {}
   };
 
   Tool::Tool(QObject *parent) : Plugin(parent), d(new ToolPrivate)
   {
-    d->activateAction = new QAction(this);
-    d->activateAction->setCheckable(true);
-    d->activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
+    m_activateAction = new QAction(this);
+    m_activateAction->setCheckable(true);
+    m_activateAction->setIcon(QIcon(QString::fromUtf8(":/icons/tool.png")));
   }
 
   Tool::~Tool()
   {
-    d->activateAction->deleteLater();
+    m_activateAction->deleteLater();
     delete d;
   }
 
@@ -63,13 +61,13 @@ namespace Avogadro {
 
   QAction* Tool::activateAction() const {
 
-    if(d->activateAction->toolTip().isEmpty())
-      d->activateAction->setToolTip(description());
+    if(m_activateAction->toolTip().isEmpty())
+      m_activateAction->setToolTip(description());
 
-    if(d->activateAction->text().isEmpty())
-      d->activateAction->setText(name());
+    if(m_activateAction->text().isEmpty())
+      m_activateAction->setText(name());
 
-    return d->activateAction;
+    return m_activateAction;
   }
 
   QWidget* Tool::settingsWidget()
@@ -107,7 +105,7 @@ namespace Avogadro {
 
   bool Tool::paint(GLWidget*)
   {
-	  return true;
+      return true;
   }
 
   void Tool::writeSettings(QSettings &settings) const

@@ -122,7 +122,7 @@ namespace Avogadro
   class ShaderDialog : public QDialog, public Ui::ShaderDialog
   {
     public:
-      ShaderDialog(QDialog *parent=0) : QDialog(parent) {
+      ShaderDialog(QWidget *parent=0) : QDialog(parent) {
         setupUi(this);
       }
   };

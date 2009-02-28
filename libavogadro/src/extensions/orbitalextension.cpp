@@ -65,10 +65,6 @@ namespace Avogadro
 
   OrbitalExtension::~OrbitalExtension()
   {
-    if (m_orbitalDialog) {
-      m_orbitalDialog->deleteLater();
-      m_orbitalDialog = 0;
-    }
     delete m_basis;
     m_basis = 0;
     delete m_slater;
@@ -127,7 +123,6 @@ namespace Avogadro
 
   void OrbitalExtension::setMolecule(Molecule *molecule)
   {
-    qDebug() << "Set molecule called.";
     m_molecule = molecule;
     delete m_slater;
     m_slater = 0;
