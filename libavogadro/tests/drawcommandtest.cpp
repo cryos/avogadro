@@ -43,6 +43,7 @@
       unsigned int bondOrder, int adjustValence);
 InsertFragmentCommand(Molecule *molecule, Molecule &generatedMolecule); 
 */
+using Avogadro::AdjustHydrogens;
 using Avogadro::AdjustHydrogensPreCommand;
 using Avogadro::AdjustHydrogensPostCommand;
 using Avogadro::AddAtomDrawCommand;
@@ -85,11 +86,11 @@ class DrawCommandTest : public QObject
     /**
      * Test the first AddAtom constructor by pushing a command to the stack.
      */
-    void pushAddAtom(int element, int adj);
+    void pushAddAtom(int element,  AdjustHydrogens::Options adj);
     /**
      * Test the second AddAtom constructor by pushing a command to the stack.
      */
-    void pushAddAtom(Atom *atom, int adj);
+    void pushAddAtom(Atom *atom, AdjustHydrogens::Options adj);
     /**
      * Test DeleteAtom by pushing a command to the stack.
      */
@@ -97,11 +98,13 @@ class DrawCommandTest : public QObject
     /**
      * Test the first AddBond constructor by pushing a command to the stack.
      */
-    void pushAddBond(Atom *beginAtom, Atom *endAtom, short order, int adj);
+    void pushAddBond(Atom *beginAtom, Atom *endAtom, short order, 
+        AdjustHydrogens::Options adjBegin, AdjustHydrogens::Options adjEnd);
     /**
      * Test the second AddBond constructor by pushing a command to the stack.
      */
-    void pushAddBond(Bond *bond, int adj);
+    void pushAddBond(Bond *bond, AdjustHydrogens::Options adjBegin, 
+        AdjustHydrogens::Options adjEnd);
     /**
      * Test DeleteBond by pushing a command to the stack.
      */
@@ -385,7 +388,7 @@ void DrawCommandTest::singleUndoRedo()
 
   
 // AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element, int adjustValence);
-void DrawCommandTest::pushAddAtom(int element, int adj)
+void DrawCommandTest::pushAddAtom(int element, AdjustHydrogens::Options adj)
 {
   unsigned int numAtoms = m_molecule->numAtoms();
   unsigned int numBonds = m_molecule->numBonds();
@@ -393,7 +396,7 @@ void DrawCommandTest::pushAddAtom(int element, int adj)
   m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), element, adj) );
 
   int nH = 0;
-  if (adj == 1) {
+  if (adj & AdjustHydrogens::AddOnRedo) {
     nH = numHydrogens(element);
     QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 1 + nH);
     QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + nH);
@@ -415,7 +418,7 @@ void DrawCommandTest::pushAddAtom(int element, int adj)
 }
   
 // AddAtomDrawCommand(Molecule *molecule, Atom *atom, int adjustValence);
-void DrawCommandTest::pushAddAtom(Atom *atom, int adj)
+void DrawCommandTest::pushAddAtom(Atom *atom, AdjustHydrogens::Options adj)
 {
   QVERIFY(atom);
   int element = atom->atomicNumber();
@@ -425,7 +428,7 @@ void DrawCommandTest::pushAddAtom(Atom *atom, int adj)
   m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom, adj) );
 
   int nH = 0;
-  if (adj == 1) {
+  if (adj & AdjustHydrogens::AddOnRedo) {
     nH = numHydrogens(element);
     QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + nH);
     QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + nH);
@@ -446,56 +449,56 @@ void DrawCommandTest::pushAddAtom(Atom *atom, int adj)
  
 void DrawCommandTest::testPushAddAtom1()
 {
-  pushAddAtom(6, 0);
-  pushAddAtom(6, 1);
-  pushAddAtom(6, 2);
-  
-  pushAddAtom(7, 0);
-  pushAddAtom(7, 1);
-  pushAddAtom(7, 2);
+  pushAddAtom(6, AdjustHydrogens::Never);
+  pushAddAtom(6, AdjustHydrogens::Always);
+  pushAddAtom(6, AdjustHydrogens::OnUndo);
 
-  pushAddAtom(8, 0);
-  pushAddAtom(8, 1);
-  pushAddAtom(8, 2);
+  pushAddAtom(7, AdjustHydrogens::Never);
+  pushAddAtom(7, AdjustHydrogens::Always);
+  pushAddAtom(7, AdjustHydrogens::OnUndo);
+ 
+  pushAddAtom(8, AdjustHydrogens::Never);
+  pushAddAtom(8, AdjustHydrogens::Always);
+  pushAddAtom(8, AdjustHydrogens::OnUndo);
 }
 
 void DrawCommandTest::testPushAddAtom2()
 {
   Atom *atom1 = m_molecule->addAtom();
   atom1->setAtomicNumber(6);
-  pushAddAtom(atom1, 0);
+  pushAddAtom(atom1, AdjustHydrogens::Never);
   
   Atom *atom2 = m_molecule->addAtom();
   atom2->setAtomicNumber(6);
-  pushAddAtom(atom2, 1);
+  pushAddAtom(atom2, AdjustHydrogens::Always);
 
   Atom *atom3 = m_molecule->addAtom();
   atom3->setAtomicNumber(6);
-  pushAddAtom(atom3, 2);
+  pushAddAtom(atom3, AdjustHydrogens::OnUndo);
 
   Atom *atom4 = m_molecule->addAtom();
   atom4->setAtomicNumber(7);
-  pushAddAtom(atom4, 0);
+  pushAddAtom(atom4, AdjustHydrogens::Never);
 
   Atom *atom5 = m_molecule->addAtom();
   atom5->setAtomicNumber(7);
-  pushAddAtom(atom5, 1);
+  pushAddAtom(atom5, AdjustHydrogens::Always);
 
   Atom *atom6 = m_molecule->addAtom();
   atom6->setAtomicNumber(7);
-  pushAddAtom(atom6, 2);
+  pushAddAtom(atom6, AdjustHydrogens::OnUndo);
 
   Atom *atom7 = m_molecule->addAtom();
   atom7->setAtomicNumber(8);
-  pushAddAtom(atom7, 0);
+  pushAddAtom(atom7, AdjustHydrogens::Never);
   
   Atom *atom8 = m_molecule->addAtom();
   atom8->setAtomicNumber(8);
-  pushAddAtom(atom8, 1);
+  pushAddAtom(atom8, AdjustHydrogens::Always);
 
   Atom *atom9 = m_molecule->addAtom();
   atom9->setAtomicNumber(8);
-  pushAddAtom(atom9, 2);
+  pushAddAtom(atom9, AdjustHydrogens::OnUndo);
 }
 
 // DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence);
@@ -545,33 +548,33 @@ void DrawCommandTest::testPushDeleteAtom()
 {
   Atom *atom1 = m_molecule->addAtom();
   atom1->setAtomicNumber(6);
-  pushAddAtom(atom1, 1);
+  pushAddAtom(atom1, AdjustHydrogens::Always);
 
   pushDeleteAtom(atom1->index(), 1);
 }
   
 // AddBondDrawCommand(Molecule *molecule, Atom *beginAtom, Atom *endAtom, unsigned int order, int adjustValence);
-void DrawCommandTest::pushAddBond(Atom *beginAtom, Atom *endAtom, short order, int adj)
+void DrawCommandTest::pushAddBond(Atom *beginAtom, Atom *endAtom, short order, 
+    AdjustHydrogens::Options adjBegin, AdjustHydrogens::Options adjEnd)
 {
   QVERIFY(beginAtom);
   QVERIFY(endAtom);
   unsigned int numAtoms = m_molecule->numAtoms();
   unsigned int numBonds = m_molecule->numBonds();
   
-  int deltaH = numHydrogens(beginAtom->atomicNumber()) + numHydrogens(endAtom->atomicNumber())  
-               - numNbrHydrogens(beginAtom) - numNbrHydrogens(endAtom) 
-               - heavyBOsum(beginAtom) - heavyBOsum(endAtom) - 2 * order ;
+  int deltaH = 0;
+  if (adjBegin & AdjustHydrogens::AddOnRedo)
+    deltaH += numHydrogens(beginAtom->atomicNumber()) - numNbrHydrogens(beginAtom) - 
+              heavyBOsum(beginAtom) - order ;
+  if (adjEnd & AdjustHydrogens::AddOnRedo)
+    deltaH += numHydrogens(endAtom->atomicNumber()) - numNbrHydrogens(endAtom) -
+                heavyBOsum(endAtom) - order ;
 
   // perform command
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, order, adj) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, order, adjBegin, adjEnd) );
  
-  if (adj) {
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + deltaH);
-    QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1 + deltaH);
-  } else {
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms);
-    QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1);
-  }
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + deltaH);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1 + deltaH);
 
   // undo/redo and check ids... 
   singleUndoRedo();
@@ -584,16 +587,17 @@ void DrawCommandTest::testPushAddBond1()
   Atom *atom2 = m_molecule->addAtom();
   atom2->setAtomicNumber(6);
 
-  pushAddBond(atom1, atom2, 1, 1);
+  pushAddBond(atom1, atom2, 1, AdjustHydrogens::Always, AdjustHydrogens::Always);
 
   Atom *atom3 = m_molecule->addAtom();
   atom3->setAtomicNumber(6);
 
-  pushAddBond(atom1, atom3, 2, 1);
+  pushAddBond(atom1, atom3, 2, AdjustHydrogens::Always, AdjustHydrogens::Always);
 }
 
 // AddBondDrawCommand(Molecule *molecule, Bond *bond, int adjustValence);
-void DrawCommandTest::pushAddBond(Bond *bond, int adj)
+void DrawCommandTest::pushAddBond(Bond *bond, AdjustHydrogens::Options adjBegin, 
+    AdjustHydrogens::Options adjEnd)
 {
   QVERIFY(bond);
   Atom *beginAtom = bond->beginAtom();
@@ -608,9 +612,9 @@ void DrawCommandTest::pushAddBond(Bond *bond, int adj)
                - heavyBOsum(beginAtom) - heavyBOsum(endAtom);
 
   // perform command
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, adj) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, adjBegin, adjEnd) );
  
-  if (adj) {
+  if (adjBegin || adjEnd) {
     QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + deltaH);
     QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + deltaH);
   } else {
@@ -631,14 +635,14 @@ void DrawCommandTest::testPushAddBond2()
 
   Bond *bond1 = m_molecule->addBond();
   bond1->setAtoms(atom1->id(), atom2->id(), 2);
-  pushAddBond(bond1, 1);
+  pushAddBond(bond1, AdjustHydrogens::Always, AdjustHydrogens::Always);
 
   Atom *atom3 = m_molecule->addAtom();
   atom3->setAtomicNumber(6);
 
   Bond *bond2 = m_molecule->addBond();
   bond2->setAtoms(atom1->id(), atom3->id(), 1);
-  pushAddBond(bond2, 1);
+  pushAddBond(bond2, AdjustHydrogens::Always, AdjustHydrogens::Always);
 }
 
 // DeleteBondDrawCommand(Molecule *molecule, int index, int adjustValence);
@@ -719,7 +723,7 @@ void DrawCommandTest::testPushChangeElement()
   Atom *atom1 = m_molecule->addAtom();
   atom1->setAtomicNumber(6);
   unsigned long int id1 = atom1->id();
-  pushAddAtom(atom1, 1);
+  pushAddAtom(atom1, AdjustHydrogens::Always);
 
   atom1 = m_molecule->atomById(id1);
   pushChangeElement(atom1, 7, 1);
@@ -745,7 +749,7 @@ void DrawCommandTest::testPushChangeElement()
 void DrawCommandTest::AddAtom_methane()
 {
   // Add crabon atom, adjust hydrogens on undo & redo
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   // we now have methane
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
@@ -780,7 +784,7 @@ void DrawCommandTest::AddAtom_ammonia()
   atom->setAtomicNumber(7);
 
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 4);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 3);
   QCOMPARE((int)m_molecule->atomById(0)->valence(), 3);
@@ -809,7 +813,7 @@ void DrawCommandTest::AddAtom_ammonia()
 void DrawCommandTest::AddAtom_water()
 {
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 8, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 8, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 3);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 2);
   QCOMPARE((int)m_molecule->atomById(0)->valence(), 2);
@@ -836,15 +840,16 @@ void DrawCommandTest::AddAtom_water()
 void DrawCommandTest::AddAtomDrawCommand_ethane()
 {
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
 
   Atom *beginAtom = m_molecule->atomById(0); // C1
   Atom *endAtom = m_molecule->atomById(5); // C2
 
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 
+        AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   
   loopUndoRedo();
@@ -853,15 +858,16 @@ void DrawCommandTest::AddAtomDrawCommand_ethane()
 void DrawCommandTest::AddAtomDrawCommand_methanol()
 {
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 8, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 8, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
 
   Atom *beginAtom = m_molecule->atomById(0); // C
   Atom *endAtom = m_molecule->atomById(5); // O
 
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 6);
   
   loopUndoRedo();
@@ -873,14 +879,14 @@ void DrawCommandTest::AddAtom_AddBond_DeleteAtom()
   unsigned int numBonds = m_molecule->numBonds();
   
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   unsigned long beginAtomId = numAtoms;
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 5);
   QCOMPARE(m_molecule->atomById(beginAtomId)->valence(), 4.);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 4);
 
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   unsigned long endAtomId = numAtoms + 5;
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 10);
   QCOMPARE((int)m_molecule->atomById(endAtomId)->valence(), 4);
@@ -889,7 +895,8 @@ void DrawCommandTest::AddAtom_AddBond_DeleteAtom()
   // Add C-C bond --> H3C--CH3
   Atom *beginAtom = m_molecule->atomById(beginAtomId); // C1
   Atom *endAtom = m_molecule->atomById(endAtomId); // C2
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 8);
   QCOMPARE((int)m_molecule->atomById(beginAtomId)->valence(), 4);
   QCOMPARE((int)m_molecule->atomById(endAtomId)->valence(), 4);
@@ -943,7 +950,7 @@ void DrawCommandTest::AddAtom_ChangeElement_DeleteAtom()
   unsigned int numBonds = m_molecule->numBonds();
   
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   unsigned long carbonId = numAtoms;
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 5);
   QCOMPARE((int)m_molecule->atomById(carbonId)->valence(), 4);
@@ -973,7 +980,6 @@ void DrawCommandTest::AddAtom_ChangeElement_DeleteAtom()
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
   
   m_undoStack->setIndex(cmdIndex); // redo all
-  debugMolecule();
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + 8);
   QCOMPARE((int)m_molecule->atomById(carbonId)->valence(), 4);
   QCOMPARE((int)m_molecule->atomById(hydrogenId)->valence(), 4);
@@ -1061,7 +1067,7 @@ void DrawCommandTest::AdjustHydrogensPostCommand_methane()
 void DrawCommandTest::ChangeElement_ethane()
 {
   // Add carbon --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
 
   Atom *hydrogen = m_molecule->atom(1); // first hydrogen
@@ -1107,7 +1113,7 @@ void DrawCommandTest::ChangeElement_ethane()
 void DrawCommandTest::ChangeElement_carbon()
 {
   // Add carbon
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 0) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Never) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
 
   Atom *carbon = m_molecule->atom(0); // first hydrogen
@@ -1137,7 +1143,7 @@ void DrawCommandTest::ChangeElement_carbon()
 void DrawCommandTest::DeleteAtom_methane()
 {
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
@@ -1183,11 +1189,12 @@ void DrawCommandTest::DeleteAtom_ethane()
   Bond *bond1 = m_molecule->addBond();
   bond1->setAtoms(atom1->id(), atom2->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, AdjustHydrogens::OnUndo) );
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 7);
   QCOMPARE((int)m_molecule->atomById(0)->valence(), 4);
@@ -1222,7 +1229,7 @@ void DrawCommandTest::DeleteAtom_ethane()
 void DrawCommandTest::DeleteAtom_carbon()
 {
   // redo will be called automatically, the index will also be increased
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 0) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Never) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 1);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 0);
   QCOMPARE((int)m_molecule->atomById(0)->valence(), 0);
@@ -1249,18 +1256,19 @@ void DrawCommandTest::DeleteAtom_carbon()
 void DrawCommandTest::AddBond_ethane()
 {
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
   // Add C-C bond --> H3C--CH3
   Atom *beginAtom = m_molecule->atomById(0); // C1
   Atom *endAtom = m_molecule->atomById(5); // C2
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE((int)beginAtom->valence(), 4);
   QCOMPARE((int)endAtom->valence(), 4);
@@ -1305,11 +1313,11 @@ void DrawCommandTest::AddBond_ethane()
 void DrawCommandTest::AddBond_ethane2()
 {
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
@@ -1320,7 +1328,8 @@ void DrawCommandTest::AddBond_ethane2()
   bond->setAtoms(0, 5, 1);
 
   // Add C-C bond --> H3C--CH3
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE((int)beginAtom->valence(), 4);
   QCOMPARE((int)endAtom->valence(), 4);
@@ -1364,18 +1373,19 @@ void DrawCommandTest::AddBond_ethane2()
 void DrawCommandTest::ChangeBondOrder_ethane()
 {
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
   // Add C-C bond --> H3C--CH3
   Atom *beginAtom = m_molecule->atomById(0); // C1
   Atom *endAtom = m_molecule->atomById(5); // C2
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE((int)beginAtom->valence(), 4);
   QCOMPARE((int)endAtom->valence(), 4);
@@ -1438,18 +1448,19 @@ void DrawCommandTest::ChangeBondOrder_ethane()
 void DrawCommandTest::ChangeBondOrder_ethene()
 {
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
   // Add C-C bond --> H3C--CH3
   Atom *beginAtom = m_molecule->atomById(0); // C1
   Atom *endAtom = m_molecule->atomById(5); // C2
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 2, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 2,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 6);
   QCOMPARE((int)beginAtom->valence(), 3);
   QCOMPARE((int)endAtom->valence(), 3);
@@ -1509,11 +1520,11 @@ void DrawCommandTest::ChangeBondOrder_ethene()
 void DrawCommandTest::DeleteBond_ethane()
 {
   // Add 1st C --> CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 5);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 4);
   // Add 2nd C --> CH4  CH4
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, 1) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), 6, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 10);
   QCOMPARE(m_molecule->numBonds(), (unsigned int) 8);
 
@@ -1528,7 +1539,8 @@ void DrawCommandTest::DeleteBond_ethane()
   // Add C-C bond --> H3C--CH3
   Atom *beginAtom = m_molecule->atomById(0); // C1
   Atom *endAtom = m_molecule->atomById(5); // C2
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1, 2) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, 1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) 8);
   QCOMPARE((int)beginAtom->valence(), 4);
   QCOMPARE((int)endAtom->valence(), 4);
@@ -1587,14 +1599,19 @@ void DrawCommandTest::crash1()
   bond->setAtoms(beginAtom->id(), endAtom->id(), 1);
   
   //AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, beginAtom, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, beginAtom, AdjustHydrogens::OnUndo) );
+  qDebug() << "numAtoms =" << m_molecule->numAtoms();
   //AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, endAtom, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, endAtom, AdjustHydrogens::OnUndo) );
+  qDebug() << "numAtoms =" << m_molecule->numAtoms();
   //AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 ) 
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
+  qDebug() << "numAtoms =" << m_molecule->numAtoms();
   //ChangeBondOrderDrawCommand(id= 0 , old= 1 , adj= 2 ) 
   bond->setOrder(2);
   m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, 1, 1) );
+  qDebug() << "numAtoms =" << m_molecule->numAtoms();
 
   //debugMolecule();
   loopUndoRedo();
@@ -1610,29 +1627,32 @@ void DrawCommandTest::crash2()
   Bond *bond1 = m_molecule->addBond();
   bond1->setAtoms(atom1->id(), atom2->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, AdjustHydrogens::OnUndo) );
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
  
   Atom *atom3 = m_molecule->addAtom();
   atom3->setAtomicNumber(6);
   Bond *bond2 = m_molecule->addBond();
   bond2->setAtoms(atom3->id(), atom2->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 8 , end= 1 , adj= 2 ) 
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
  
   Atom *atom4 = m_molecule->addAtom();
   atom4->setAtomicNumber(6);
   Bond *bond3 = m_molecule->addBond();
   bond3->setAtoms(atom2->id(), atom4->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom4, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom4, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 1 , end= 15 , adj= 2 )
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond3, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond3,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
 
   // ChangeBondOrderDrawCommand(id= 13 , old= 1 , adj= 2 )
   Bond *bond = m_molecule->bondById(13);
@@ -1663,11 +1683,12 @@ void DrawCommandTest::crash3()
   Bond *bond1 = m_molecule->addBond();
   bond1->setAtoms(atom1->id(), atom2->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom1, AdjustHydrogens::OnUndo) );
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom2, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 0 , end= 1 , adj= 2 )
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond1,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
   // ChangeBondOrderDrawCommand(id= 0 , old= 1 , adj= 2 ) 
   bond1->setOrder(2);
   m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond1, 1, 1) );
@@ -1680,9 +1701,10 @@ void DrawCommandTest::crash3()
   Bond *bond2 = m_molecule->addBond();
   bond2->setAtoms(atom1->id(), atom3->id(), 1);
   // AddAtomDrawCommand_ctor2(element= 6 , adj= 2 ) 
-  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, 2) );
+  m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom3, AdjustHydrogens::OnUndo) );
   // AddBondDrawCommand(begin= 14 , end= 0 , adj= 2 ) 
-  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2, 1) );
+  m_undoStack->push( new AddBondDrawCommand(m_molecule, bond2,
+      AdjustHydrogens::Always, AdjustHydrogens::Always) );
 
   //debugMolecule();
   loopUndoRedo();
