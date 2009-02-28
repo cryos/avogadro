@@ -2,7 +2,7 @@
   DrawCommand - Set of command classes for drawing.
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
   Copyright (C) 2008 Geoffrey Hutchison
 
   This file is part of the Avogadro molecular editor project.

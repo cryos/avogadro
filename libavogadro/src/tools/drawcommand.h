@@ -2,7 +2,7 @@
   DrawCommand - Set of command classes for drawing.
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2008 Tim Vandermeersch
+  Copyright (C) 2008,2009 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -96,12 +96,13 @@ namespace Avogadro {
    * 
    * AdjustHydrogens::AddOnRedo
    *
-   *   ::redo() : Add hydrogens to the atom after creating it and store the hydrogen
-   *              atom and C-H bond ids for later calls.
+   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom after 
+   *   creating it and store the hydrogen atom and C-H bond ids for later calls.
    *
    * AdjustHydrogens::RemoveOnUndo
    *
-   *   ::undo() : Remove the hydrogens before deleting the atom.
+   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before deleting 
+   *   the atom.
    */
   class AddAtomDrawCommand : public QUndoCommand
   {
@@ -139,11 +140,26 @@ namespace Avogadro {
    *
    * supported flags:
    * 
+   * AdjustHydrogens::RemoveOnRedo
+   *
+   *   AdjustHydrogensPreCommand::redo() : Remove the hydrogens before creating
+   *   the bond.
+   *
    * AdjustHydrogens::AddOnRedo
    *
-   *   ::redo() : Add hydrogens to the atom after creating it and store the hydrogen
-   *              atom and C-H bond ids for later calls.
-   *   ::undo() : Remove the hydrogens before deleting the atom.
+   *   AdjustHydrogensPostCommand::redo() : Add hydrogens to the atom(s) after 
+   *   creating the bond and store the hydrogen atom and C-H bond ids for later 
+   *   calls.
+   *
+   * AdjustHydrogens::RemoveOnUndo
+   *
+   *   AdjustHydrogensPostCommand::undo() : Remove the hydrogens before 
+   *   deleting the bond.
+   *
+   * AdjustHydrogens::AddOnUndo
+   *
+   *   AdjustHydrogensPreCommand::undo() : Add the hydrogens again to restore 
+   *   the atoms to their original state.
    */
   class AddBondDrawCommand : public QUndoCommand
   {

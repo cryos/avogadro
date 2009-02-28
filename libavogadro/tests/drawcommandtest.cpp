@@ -562,20 +562,19 @@ void DrawCommandTest::pushAddBond(Atom *beginAtom, Atom *endAtom, short order,
   unsigned int numAtoms = m_molecule->numAtoms();
   unsigned int numBonds = m_molecule->numBonds();
   
-  int deltaH = numHydrogens(beginAtom->atomicNumber()) + numHydrogens(endAtom->atomicNumber())  
-               - numNbrHydrogens(beginAtom) - numNbrHydrogens(endAtom) 
-               - heavyBOsum(beginAtom) - heavyBOsum(endAtom) - 2 * order ;
+  int deltaH = 0;
+  if (adjBegin & AdjustHydrogens::AddOnRedo)
+    deltaH += numHydrogens(beginAtom->atomicNumber()) - numNbrHydrogens(beginAtom) - 
+              heavyBOsum(beginAtom) - order ;
+  if (adjEnd & AdjustHydrogens::AddOnRedo)
+    deltaH += numHydrogens(endAtom->atomicNumber()) - numNbrHydrogens(endAtom) -
+                heavyBOsum(endAtom) - order ;
 
   // perform command
   m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, order, adjBegin, adjEnd) );
  
-  if (adjBegin || adjEnd) {
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + deltaH);
-    QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1 + deltaH);
-  } else {
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms);
-    QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1);
-  }
+  QCOMPARE(m_molecule->numAtoms(), (unsigned int) numAtoms + deltaH);
+  QCOMPARE(m_molecule->numBonds(), (unsigned int) numBonds + 1 + deltaH);
 
   // undo/redo and check ids... 
   singleUndoRedo();
