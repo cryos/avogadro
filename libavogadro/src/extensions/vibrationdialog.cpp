@@ -90,7 +90,7 @@ namespace Avogadro {
     hide();
   }
 
-  void VibrationDialog::cellClicked(int row, int column)
+  void VibrationDialog::cellClicked(int row, int)
   {
     emit selectedMode(row);
   }

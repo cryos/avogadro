@@ -1784,7 +1784,7 @@ namespace Avogadro {
     {
       case 0:
         // Make sure we can select this.
-        if ( (numElectrons + charge & 1) ) {
+        if ( (numElectrons + charge) & 1 ) {
           ui.basicOnLeftCombo->setCurrentIndex(1);
           scf = GAMESS_ROHF;
           mult = 2;
