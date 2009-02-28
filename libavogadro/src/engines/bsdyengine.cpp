@@ -306,7 +306,9 @@ namespace Avogadro
     // Render the bonds
     foreach(Bond *b, bonds()) {
       pd->painter()->setName(b);
-      pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), m_bondRadius);
+      // Add a slight slop factor to make it easier to pick
+      // (e.g., for bond-centric tool)
+      pd->painter()->drawCylinder(*b->beginPos(), *b->endPos(), m_bondRadius+0.05);
     }
 
     // Render the atoms
@@ -314,7 +316,11 @@ namespace Avogadro
       pd->painter()->setName(a);
       // add a slight "slop" factor to make it easier to pick
       // (e.g., during drawing)
-      pd->painter()->drawSphere(a->pos(), radius(a) + 0.05);
+      // heavy atoms get a bit more, hydrogens get a bit less
+      if (a->atomicNumber() > 1)
+        pd->painter()->drawSphere(a->pos(), radius(a) + 0.03);
+      else
+        pd->painter()->drawSphere(a->pos(), radius(a) - 0.06);
     }
     return true;
   }
