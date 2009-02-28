@@ -190,7 +190,11 @@ namespace Avogadro
   void GaussianInputDialog::generateClicked()
   {
     QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultFileName = defaultFile.canonicalPath() + "/" + defaultFile.baseName() + ".com";
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
+
+    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".com";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),
                                 defaultFileName, tr("Gaussian Input Deck (*.com)"));
 
