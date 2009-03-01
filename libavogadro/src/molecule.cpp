@@ -116,6 +116,7 @@ namespace Avogadro{
   {
     // Need to iterate through all atoms/bonds and destroy them
     //Q_D(Molecule);
+    disconnect(this, 0, 0, 0);
     clear();
     delete d_ptr;
   }
