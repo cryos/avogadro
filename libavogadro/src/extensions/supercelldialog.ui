@@ -109,49 +109,17 @@
  <connections>
   <connection>
    <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>SuperCellDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>422</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>99</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>SuperCellDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>422</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>99</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>clicked(QAbstractButton*)</signal>
-   <receiver>SuperCellDialog</receiver>
-   <slot>buttonClicked(QAbstractButton*)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>161</x>
-     <y>406</y>
+     <x>162</x>
+     <y>191</y>
     </hint>
     <hint type="destinationlabel">
      <x>162</x>
-     <y>211</y>
+     <y>104</y>
     </hint>
    </hints>
   </connection>
