@@ -101,8 +101,10 @@ int main(int argc, char *argv[])
   }
 
   QString translationCode = QLocale::system().name();
-  QString prefixPath = QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
-  translationPaths << prefixPath;
+  translationPaths << QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
+#ifdef Q_WS_MAC
+  translationPaths << QString(INSTALL_PREFIX) + "/share/avogadro/i18n/";
+#endif
 
   qDebug() << "Locale: " << translationCode;
   // Load Qt translations first
