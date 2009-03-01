@@ -28,6 +28,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
+#include <avogadro/glwidget.h>
 
 #include <openbabel/mol.h>
 
@@ -63,7 +64,26 @@ namespace Avogadro
 
   void VdWSurface::setAtoms(Molecule* mol)
   {
-    qDebug() << "Number of atoms" << mol->numAtoms();
+    // check if there is a selection in the current glwidget
+    GLWidget *glwidget = GLWidget::current();
+    if (glwidget) {
+      QList<Primitive*> atoms = glwidget->selectedPrimitives().subList(Primitive::AtomType);
+      if (!atoms.isEmpty()) {
+        qDebug() << "VdWSurface: Number of atoms" << atoms.size();
+        m_atomPos.resize(atoms.size());
+        m_atomRadius.resize(atoms.size());
+
+        for (unsigned int i = 0; i < m_atomPos.size(); ++i) {
+          Atom *atom = static_cast<Atom*>(atoms.at(i));
+          m_atomPos[i] = *atom->pos();
+          m_atomRadius[i] = OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+        }
+
+        return;
+      }
+    }
+
+    qDebug() << "VdWSurface: Number of atoms" << mol->numAtoms();
     m_atomPos.resize(mol->numAtoms());
     m_atomRadius.resize(mol->numAtoms());
 
@@ -114,7 +134,7 @@ namespace Avogadro
     // Now calculate the value at this point in space
     double tmp = -1.0E+10;
     for (unsigned int i = 0; i < size; ++i) {
-      double distance = fabs((pos - (*vdw.atomPos)[i]).norm()) - (*vdw.atomRadius)[i];
+      double distance = std::abs((pos - (*vdw.atomPos)[i]).norm()) - (*vdw.atomRadius)[i];
       if ((tmp < -1.0E+9) || (distance < tmp))
         tmp = distance;
     }
