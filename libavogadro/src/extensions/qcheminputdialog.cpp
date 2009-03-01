@@ -42,7 +42,7 @@ namespace Avogadro
   QChemInputDialog::QChemInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_output(""), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
+    m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -62,7 +62,7 @@ namespace Avogadro
         this, SLOT(setOutput(int)));
     connect(ui.coordCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCoords(int)));
-    connect(ui.previewText, SIGNAL(textChanged()),
+    connect(ui.previewText, SIGNAL(cursorPositionChanged()),
         this, SLOT(previewEdited()));
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
@@ -79,8 +79,6 @@ namespace Avogadro
 
   QChemInputDialog::~QChemInputDialog()
   {
-    if (m_molecule)
-      disconnect(m_molecule, 0, this, 0);
   }
 
   void QChemInputDialog::setMolecule(Molecule *molecule)
@@ -91,11 +89,11 @@ namespace Avogadro
 
     m_molecule = molecule;
     // Update the preview text whenever primitives are changed
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+    connect(m_molecule, SIGNAL(atomRemoved(Atom *)),
             this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+    connect(m_molecule, SIGNAL(atomAdded(Atom *)),
             this, SLOT(updatePreviewText()));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+    connect(m_molecule, SIGNAL(atomUpdated(Atom *)),
             this, SLOT(updatePreviewText()));
     // Add atom coordinates
     updatePreviewText();
@@ -115,14 +113,16 @@ namespace Avogadro
       m_warned = true;
       QMessageBox msgBox;
 
-      msgBox.setWindowTitle(tr("QChem Input Deck Generator Warning"));
-      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the QChem input deck preview pane?"));
+      msgBox.setWindowTitle(tr("Q-Chem Input Deck Generator Warning"));
+      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Q-Chem input deck preview pane?"));
       msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 
       switch (msgBox.exec()) {
         case QMessageBox::Yes:
           // yes was clicked
-          m_dirty = false;
+          deckDirty(false);
+          ui.previewText->setText(generateInputDeck());
+          ui.previewText->document()->setModified(false);
           m_warned = false;
           break;
         case QMessageBox::No:
@@ -134,9 +134,10 @@ namespace Avogadro
           break;
       }
     }
-
-    if (!m_dirty)
+    else if (!m_dirty) {
       ui.previewText->setText(generateInputDeck());
+      ui.previewText->document()->setModified(false);
+    }
   }
 
   void QChemInputDialog::resetClicked()
@@ -148,6 +149,8 @@ namespace Avogadro
     ui.basisCombo->setCurrentIndex(2);
     ui.multiplicitySpin->setValue(0);
     ui.chargeSpin->setValue(0);
+    ui.previewText->setText(generateInputDeck());
+    ui.previewText->document()->setModified(false);
   }
 
   void QChemInputDialog::generateClicked()
@@ -190,10 +193,8 @@ namespace Avogadro
   void QChemInputDialog::previewEdited()
   {
     // Determine if the preview text has changed from the form generated
-    if(ui.previewText->toPlainText() != generateInputDeck())
+    if(ui.previewText->document()->isModified())
       deckDirty(true);
-    else
-      deckDirty(false);
   }
 
   void QChemInputDialog::setTitle()

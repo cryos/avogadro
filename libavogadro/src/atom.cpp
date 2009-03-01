@@ -66,6 +66,7 @@ using Eigen::Vector3d;
   void Atom::setPos(const Eigen::Vector3d &vec)
   {
     m_molecule->setAtomPos(m_id, vec);
+    update();
   }
 
   void Atom::addBond(Bond* bond)
