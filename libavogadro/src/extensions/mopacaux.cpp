@@ -79,29 +79,22 @@ namespace Avogadro
       m_atomIndex = readArrayI(tmp.toInt());
       for (unsigned int i = 0; i < m_atomIndex.size(); ++i) {
         --m_atomIndex[i];
-        qDebug() << i << ":" << m_atomIndex[i];
       }
     }
     else if (key.contains("ATOM_SYMTYPE")) {
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of atomic orbital types =" << tmp.toInt();
       m_atomSym = readArraySym(tmp.toInt());
-      for (unsigned int i = 0; i < m_atomSym.size(); ++i)
-        qDebug() << i << ":" << m_atomSym[i];
     }
     else if (key.contains("AO_ZETA")) {
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of zeta values =" << tmp.toInt();
       m_zeta = readArrayD(tmp.toInt());
-      for (unsigned int i = 0; i < m_zeta.size(); ++i)
-        qDebug() << i << ":" << m_zeta[i];
     }
     else if (key.contains("ATOM_PQN")) {
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of PQN values =" << tmp.toInt();
       m_pqn = readArrayI(tmp.toInt());
-      for (unsigned int i = 0; i < m_pqn.size(); ++i)
-        qDebug() << i << ":" << m_pqn[i];
     }
     else if (key.contains("NUM_ELECTRONS")) {
       QString tmp = key.split("=").at(1);
@@ -112,62 +105,22 @@ namespace Avogadro
       QString tmp = key.mid(key.indexOf("[")+1, 4);
       qDebug() << "Number of atomic coordinates =" << tmp.toInt();
       m_atomPos = readArrayVec(tmp.toInt());
-      for (unsigned int i = 0; i < m_atomPos.size(); ++i)
-        qDebug() << i << ":" << m_atomPos[i].x() << m_atomPos[i].y() << m_atomPos[i].z();
     }
     else if (key.contains("OVERLAP_MATRIX")) {
       QString tmp = key.mid(key.indexOf("[")+1, 6);
       qDebug() << "Size of lower half triangle of overlap matrix =" << tmp.toInt();
-
       readOverlapMatrix(tmp.toInt());
-      for (unsigned int i = 0; i < m_zeta.size(); ++i)
-        qDebug() << i << ":" << m_overlap(i,0) << m_overlap(i,1) << m_overlap(i,2);
     }
     else if (key.contains("EIGENVECTORS")) {
       QString tmp = key.mid(key.indexOf("[")+1, 6);
       qDebug() << "Size of eigen vectors matrix =" << tmp.toInt();
-
       readEigenVectors(tmp.toInt());
-      for (unsigned int i = 0; i < m_zeta.size(); ++i)
-        qDebug() << i << ":" << m_eigenVectors(i,0) << m_eigenVectors(i,1) << m_eigenVectors(i,2);
     }
     else if (key.contains("TOTAL_DENSITY_MATRIX")) {
       QString tmp = key.mid(key.indexOf("[")+1, 6);
       qDebug() << "Size of lower half triangle of density matrix =" << tmp.toInt();
-
       readDensityMatrix(tmp.toInt());
-      for (unsigned int i = 0; i < m_zeta.size(); ++i)
-        qDebug() << i << ":" << m_density(i,0) << m_density(i,1) << m_density(i,2);
     }
-/*    else if (key == "Number of electrons")
-      m_electrons = list.at(1).toInt();
-    else if (key == "Number of basis functions")
-      qDebug() << "Number of basis functions =" << list.at(1).toInt();
-    else if (key == "Atomic numbers")
-      m_aNums = readArrayI(list.at(2).toInt());
-    // Now we get to the meat of it - coordinates of the atoms
-    else if (key == "Current cartesian coordinates")
-      m_aPos = readArrayD(list.at(2).toInt());
-    // The real meat is here - basis sets etc!
-    else if (key == "Shell types")
-      m_shellTypes = readArrayI(list.at(2).toInt());
-    else if (key == "Number of primitives per shell")
-      m_shellNums = readArrayI(list.at(2).toInt());
-    else if (key == "Shell to atom map")
-      m_shelltoAtom = readArrayI(list.at(2).toInt());
-    // Now to get the exponents and coefficients(
-    else if (key == "Primitive exponents")
-      m_a = readArrayD(list.at(2).toInt());
-    else if (key == "Contraction coefficients")
-      m_c = readArrayD(list.at(2).toInt());
-    else if (key == "P(S=P) Contraction coefficients")
-      m_csp = readArrayD(list.at(2).toInt());
-    else if (key == "Alpha MO coefficients")
-    {
-      m_MOcoeffs = readArrayD(list.at(2).toInt());
-      qDebug() << "MO coefficients, n =" << m_MOcoeffs.size();
-    }
-*/
   }
 
   void MopacAux::load(SlaterSet* basis)

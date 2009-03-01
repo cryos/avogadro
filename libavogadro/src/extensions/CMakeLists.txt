@@ -197,3 +197,10 @@ if(GLEW_FOUND)
           DESTINATION share/libavogadro/shaders)
 endif(GLEW_FOUND)
 
+### super cells
+set(supercellextension_SRCS supercellextension.cpp supercelldialog.cpp)
+qt4_wrap_ui(supercellextension_UIS_H supercelldialog.ui)
+qt4_automoc(${supercellextension_SRCS})
+add_library(supercellextension MODULE ${supercellextension_SRCS} ${supercellextension_UIS_H})
+target_link_libraries(supercellextension ${LINK_LIBS})
+install(TARGETS supercellextension DESTINATION ${DESTINATION_DIR})

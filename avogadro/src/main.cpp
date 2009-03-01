@@ -101,8 +101,10 @@ int main(int argc, char *argv[])
   }
 
   QString translationCode = QLocale::system().name();
-  QString prefixPath = QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
-  translationPaths << prefixPath;
+  translationPaths << QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
+#ifdef Q_WS_MAC
+  translationPaths << QString(INSTALL_PREFIX) + "/share/avogadro/i18n/";
+#endif
 
   qDebug() << "Locale: " << translationCode;
   // Load Qt translations first
@@ -112,11 +114,12 @@ int main(int argc, char *argv[])
     app.installTranslator(&qtTranslator);
   }
 
-  // Now load LibAvogadro and then Avogadro translations
-  QTranslator *libTranslator;
-  if((libTranslator = Library::createTranslator())) {
-    app.installTranslator(libTranslator);
-  }
+  // Now load LibAvogadro and then Avogadro translations - only application now.
+//  QTranslator *libTranslator;
+//  if((libTranslator = Library::createTranslator())) {
+//    app.installTranslator(libTranslator);
+//  }
+  // Load the Avogadro translations
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
