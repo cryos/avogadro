@@ -91,7 +91,7 @@ namespace Avogadro {
   void AnimationDialog::saveVideo()
   {
     QString sVideoFileName = QFileDialog::getSaveFileName(this, 
-							  tr("Save Vidoe File"),
+							  tr("Save Video File"),
 							  ui.videoFileLine->text(),
 							  tr("video files (*.avi)"));
 

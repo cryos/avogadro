@@ -1264,7 +1264,7 @@ msgid "%1/%2"
 msgstr ""
 
 #: libavogadro/src/extensions/animationdialog.cpp:94
-msgid "Save Vidoe File"
+msgid "Save Video File"
 msgstr ""
 
 #: libavogadro/src/extensions/animationdialog.cpp:96

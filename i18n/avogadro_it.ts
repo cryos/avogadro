@@ -141,8 +141,8 @@ Mouse destro: <byte value="x9"/>Azzera l&apos;allineamento.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="94"/>
-        <source>Save Vidoe File</source>
-        <translation type="unfinished">Salva il file Vidoe</translation>
+        <source>Save Video File</source>
+        <translation type="unfinished">Salva il file Video</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="96"/>

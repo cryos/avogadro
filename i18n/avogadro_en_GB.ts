@@ -141,7 +141,7 @@ Right Mouse: <byte value="x9"/>Reset alignment.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="94"/>
-        <source>Save Vidoe File</source>
+        <source>Save Video File</source>
         <translation type="unfinished">Save Video File</translation>
     </message>
     <message>

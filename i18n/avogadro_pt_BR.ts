@@ -141,7 +141,7 @@ Botão Direito do Mouse: <byte value="x9"/>Reseta o alinhamento.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="94"/>
-        <source>Save Vidoe File</source>
+        <source>Save Video File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

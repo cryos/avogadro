@@ -141,7 +141,7 @@ Botón derecho del ratón: <byte value="x9"/>Reiniciar alineación.</translation
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="94"/>
-        <source>Save Vidoe File</source>
+        <source>Save Video File</source>
         <translation type="unfinished">Guardar archivo de vídeo</translation>
     </message>
     <message>

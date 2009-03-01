@@ -141,7 +141,7 @@ Oikea hiiren painike: <byte value="x9"/>Aseta kohdennus alkutilaan.</translation
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="94"/>
-        <source>Save Vidoe File</source>
+        <source>Save Video File</source>
         <translation type="unfinished">Tallenna videotiedosto</translation>
     </message>
     <message>
