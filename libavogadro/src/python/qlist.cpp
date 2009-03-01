@@ -8,6 +8,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/fragment.h>
 #include <avogadro/cube.h>
+#include <avogadro/mesh.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>
@@ -319,6 +320,7 @@ void export_QList()
   export_ptr_list< QList<Bond*> >();
   export_ptr_list< QList<Residue*> >();
   export_ptr_list< QList<Cube*> >();
+  export_ptr_list< QList<Mesh*> >();
   export_ptr_list< QList<Fragment*> >();
   
   export_ptr_list< QList<PluginFactory*> >();
