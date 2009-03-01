@@ -2,11 +2,8 @@ project(avogadro) # the name of your project
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.6.0)
+cmake_minimum_required(VERSION 2.6.2)
 cmake_policy(SET CMP0003 NEW)
-
-# Use CPack to do some of our packaging
-include(AvoCPack)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
 # "release with debug info".
@@ -26,6 +23,7 @@ include (TestIfWeNeedFPermissive)
 # use mulithreaded dll runtime on windows when using MSVC
 if (MSVC)
   set(CMAKE_CXX_FLAGS "/MD ${CMAKE_CXX_FLAGS}")
+  # Do not generate manifests for the plugins - caused issues loading plugins
   set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 endif(MSVC)
 
@@ -35,7 +33,7 @@ endif(MSVC)
 ###########################################################
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} $ENV{CXXFLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags
   if (CMAKE_SYSTEM_NAME MATCHES Linux)
@@ -153,15 +151,44 @@ else(ENABLE_THREADEDGL MATCHES ON)
   message(STATUS "Threaded OpenGL rendering not enabled")
 endif(ENABLE_THREADEDGL MATCHES ON)
 
-# Default to using lib, other architectures can set alternate lib directories
-if(NOT LIB_INSTALL_DIR)
-  if(WIN32)
-    # The DLLs need to be in the same directory as the binary on Windows
-    set(LIB_INSTALL_DIR bin)
-  else(WIN32)
-    set(LIB_INSTALL_DIR lib)
-  endif(WIN32)
-endif(NOT LIB_INSTALL_DIR)
+# Set up our path handling, inspired by the path handling used in KDE
+set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
+set(SHARE_INSTALL_PREFIX "share"
+    CACHE PATH "Base directory for shared data")
+set(BIN_INSTALL_DIR      "bin"
+    CACHE PATH "Install dir for binaries")
+if(UNIX)
+  set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
+      CACHE PATH "Install dir for libraries")
+  set(PLUGIN_INSTALL_DIR   "${LIB_INSTALL_DIR}/avogadro"
+      CACHE PATH "Install dir for plugins")
+else(UNIX)
+  set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
+      CACHE PATH "Install dir for libraries")
+  set(PLUGIN_INSTALL_DIR   "lib${LIB_SUFFIX}/avogadro"
+      CACHE PATH "Install dir for plugins")
+endif(UNIX)
+set(INCLUDE_INSTALL_DIR  "include/avogadro"
+    CACHE PATH "Install dir for include files")
+set(I18N_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/avogadro/i18n"
+    CACHE PATH "Install dir for i18n files")
+set(XDG_APPS_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/applications"
+    CACHE PATH "Install dir for application files")
+set(XDG_ICON_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/pixmaps"
+    CACHE PATH "Install dir for application icons")
+
+# Some rpath handling for Linux and Mac
+if(UNIX)
+  if(APPLE)
+    set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
+  else(APPLE)
+    # Set a relative rpath on Linux - just testing right now...
+    #set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
+    set(CMAKE_SKIP_BUILD_RPATH FALSE)
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+  endif(APPLE)
+endif(UNIX)
 
 CONFIGURE_FILE(
   "${CMAKE_MODULE_PATH}/cmake_uninstall.cmake.in"
@@ -178,13 +205,19 @@ ADD_CUSTOM_TARGET(update-translations
     ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    CACHE STRING "Binary build output directory")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
+    CACHE STRING "Library build output directory")
+
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
 
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
-set(avogadro_FRAGMENTS share/avogadro)
+set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 if(APPLE)
   set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
 endif(APPLE)
@@ -193,7 +226,5 @@ endif(APPLE)
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin CACHE INTERNAL
-  "Where to put the executables for Avogadro")
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/${LIB_INSTALL_DIR} CACHE INTERNAL
-  "Where to put the libraries for Avogadro")
+# Use CPack to do some of our packaging
+include(AvoCPack)

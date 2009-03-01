@@ -39,16 +39,16 @@ if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
 endif( WIN32)
 
-FILE(GLOB avogadro_RCS "*.qrc")
+file(GLOB avogadro_RCS "*.qrc")
 
-FILE(GLOB avogadro_UIS "*.ui")
+file(GLOB avogadro_UIS "*.ui")
 
 # designer has some flaws.
 qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-FILE(GLOB avogadro_TS "${CMAKE_SOURCE_DIR}/i18n/*.ts")
+file(GLOB avogadro_TS "${CMAKE_SOURCE_DIR}/i18n/*.ts")
 
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
@@ -59,9 +59,9 @@ add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_QM}
 )
 
-SET_TARGET_PROPERTIES(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
+set_target_properties(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 
-TARGET_LINK_LIBRARIES(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro-lib)
 
 if(APPLE)
@@ -98,14 +98,16 @@ if(APPLE)
   INSTALL(CODE "EXECUTE_PROCESS(COMMAND mv /Applications/avogadro.app /Applications/Avogadro.app OUTPUT_QUIET)")
 endif(APPLE)
 
-if(UNIX AND NOT APPLE)
-  install(TARGETS avogadro-app DESTINATION bin)
-endif(UNIX AND NOT APPLE)
+if(NOT APPLE)
+  install(TARGETS avogadro-app DESTINATION ${BIN_INSTALL_DIR})
+endif(NOT APPLE)
 
-if(WIN32)
-  install(TARGETS avogadro-app DESTINATION bin)
-endif(WIN32)
+install(FILES ${avogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
-install(FILES ${avogadro_QM} DESTINATION share/avogadro/i18n)
+# Install a .desktop file and icon for Linux users
+if (CMAKE_SYSTEM_NAME MATCHES Linux)
+  install(FILES "avogadro.desktop" DESTINATION ${XDG_APPS_INSTALL_DIR})
+  install(FILES "icons/avogadro_icon.png" DESTINATION ${XDG_ICON_INSTALL_DIR})
+endif(CMAKE_SYSTEM_NAME MATCHES Linux)
 
 #add_subdirectory(projectplugins)

@@ -19,12 +19,12 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __CONFIG_H
-#define __CONFIG_H
+#ifndef AVOCONFIG_H
+#define AVOCONFIG_H
 
-#define INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}"
+#define INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
 
-#define INSTALL_LIBDIR "${LIB_INSTALL_DIR}"
+#define INSTALL_LIBDIR "lib@LIB_SUFFIX@"
 
 #define SVN_REVISION "@SVN_REVISION@"
 

@@ -1,7 +1,7 @@
 project(libavogadro)
 # Library versioning
 # We probably want to adopt the libtool scheme once we hit 1.0.0
-set(VERSION 0.9.1)
+set(VERSION 0.9.2)
 set(SOVERSION 0)
 
 if (WIN32)

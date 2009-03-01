@@ -98,13 +98,6 @@ endif(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
 
 qt4_automoc(${libavogadro_SRCS})
 
-#SET(libavogadro_TS
-#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_de.ts
-#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_fr.ts
-#  ${CMAKE_SOURCE_DIR}/i18n/avogadro_en_GB.ts
-#)
-#QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
-
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
@@ -133,8 +126,8 @@ endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
-install(FILES ${libavogadro_HDRS} DESTINATION include/avogadro)
-install(FILES ${libavogadro_QM} DESTINATION share/libavogadro/i18n)
+install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR})
+install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
 # Add the engiens, tools and extensions directories
 add_subdirectory(engines)
