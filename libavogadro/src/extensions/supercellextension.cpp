@@ -30,6 +30,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/neighborlist.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -225,6 +226,7 @@ namespace Avogadro {
     // covalent radii. FIXME - needs optimization, i.e. binning.
     vector<double> rad;
 //    vector<int> zsorted;
+    NeighborList nbrs(m_molecule, 5.0);
 
     rad.reserve(m_molecule->numAtoms());
 
@@ -241,7 +243,7 @@ namespace Avogadro {
 
     double d2,cutoff,zd;
     foreach (Atom *atom1, m_molecule->atoms()) {
-      foreach (Atom *atom2, m_molecule->atoms()) {
+      foreach (Atom *atom2, nbrs.nbrs(atom1)) {
         if (m_molecule->bond(atom1, atom2))
           continue;
         if (atom1->isHydrogen() && atom2->isHydrogen())
