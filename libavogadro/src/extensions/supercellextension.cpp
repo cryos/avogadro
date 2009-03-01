@@ -223,25 +223,15 @@ namespace Avogadro {
   void SuperCellExtension::connectTheDots()
   {
     // Add single bonds between all atoms closer than their combined atomic
-    // covalent radii. FIXME - needs optimization, i.e. binning.
+    // covalent radii.
     vector<double> rad;
-//    vector<int> zsorted;
     NeighborList nbrs(m_molecule, 5.0);
 
     rad.reserve(m_molecule->numAtoms());
 
-//    foreach (Atom *atom, m_molecule->atoms()) {
-//      pair<Atom*, double> entry(atom, atom->pos().x());
-//      xsortedAtoms.push_back(entry);
-//    }
-//    sort(zsortedAtoms.begin(), zsortedAtoms.end(), SortAtomZ);
-
-//    max = zsortedAtoms.size();
-
     foreach (Atom *atom, m_molecule->atoms())
       rad.push_back(OpenBabel::etab.GetCovalentRad(atom->atomicNumber()));
 
-    double d2,cutoff,zd;
     foreach (Atom *atom1, m_molecule->atoms()) {
       foreach (Atom *atom2, nbrs.nbrs(atom1)) {
         if (m_molecule->bond(atom1, atom2))
@@ -249,19 +239,12 @@ namespace Avogadro {
         if (atom1->isHydrogen() && atom2->isHydrogen())
           continue;
         // bonded if closer than elemental Rcov + tolerance
-        cutoff = (rad[atom1->index()] + rad[atom2->index()] + 0.45)
+        double cutoff = (rad[atom1->index()] + rad[atom2->index()] + 0.45)
                * (rad[atom1->index()] + rad[atom2->index()] + 0.45);
 
-        zd  = atom1->pos()->z() - atom1->pos()->z();
+        double d2  = ((*atom1->pos()) - (*atom2->pos())).squaredNorm();
 
-        if (zd > 25.0 )
-          break; // bigger than max cutoff
-
-        d2  = ((*atom1->pos()) - (*atom2->pos())).squaredNorm();
-
-        if (d2 > cutoff)
-          continue;
-        if (d2 < 0.40)
+        if (d2 > cutoff || d2 < 0.40)
           continue;
 
         Bond *bond = m_molecule->addBond();
