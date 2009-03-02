@@ -40,7 +40,10 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
-                                                            m_molecule(NULL)
+                                                            m_molecule(NULL),
+                                                            m_scale(1.0),
+                                                            m_displayForceVectors(true),
+                                                            m_animating(false)
   {
     QAction *action = new QAction( this );
     action->setSeparator(true);
@@ -54,6 +57,12 @@ namespace Avogadro {
     m_dialog = new VibrationDialog(m_widget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
+    connect(m_dialog, SIGNAL(scaleUpdated(double)),
+            this, SLOT(setScale(double)));
+    connect(m_dialog, SIGNAL(setEnabledForceVector(bool)),
+            this, SLOT(setDisplatForceVectors(bool)));
+    connect(m_dialog, SIGNAL(toggleAnimation()),
+            this, SLOT(toggleAnimation()));
   }
 
   VibrationExtension::~VibrationExtension()
@@ -146,6 +155,20 @@ namespace Avogadro {
       }
     }
     m_widget->update();
+  }
+
+  void VibrationExtension::setScale(double scale)
+  {
+    m_scale = scale;
+  }
+
+  void VibrationExtension::setDisplayForceVectors(bool enabled)
+  {
+    m_displayForceVectors = enabled;
+  }
+
+  void VibrationExtension::toggleAnimation()
+  {
   }
 
 } // end namespace Avogadro

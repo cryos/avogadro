@@ -47,10 +47,18 @@ namespace Avogadro {
 
     connect(ui.vibrationTable, SIGNAL(cellClicked(int, int)),
             this, SLOT(cellClicked(int, int)));
+
+    connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
+            this, SLOT(setScale(int)));
+    connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setDisplayForceVectors(bool)));
+    connect(ui.animationButton, SIGNAL(clicked(bool)),
+            this, SLOT(animateButtonClicked(bool)));
   }
 
   VibrationDialog::~VibrationDialog()
   {
+    // The real work is done in VibrationExtension
   }
 
   void VibrationDialog::setMolecule(Molecule *molecule)
@@ -100,7 +108,28 @@ namespace Avogadro {
     emit selectedMode(-1); // stop animating
     hide();
   }
-  
+
+  void VibrationDialog::setScale(int scale)
+  {
+    emit scaleUpdated(scale / 2.0);
+  }
+
+  void VibrationDialog::setDisplayForceVectors(bool checked)
+  {
+    emit setEnabledForceVector(checked);
+  }
+
+  void VibrationDialog::animateButtonClicked(bool)
+  {
+    if (ui.animationButton->text() == tr("Start Animation")) {
+      ui.animationButton->setText(tr("Stop Animation"));
+    } else {
+      ui.animationButton->setText(tr("Start Animation"));
+    }
+
+    emit toggleAnimation();
+  }
+
 }
 
 #include "vibrationdialog.moc"

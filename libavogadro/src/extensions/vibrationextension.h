@@ -62,6 +62,10 @@ namespace Avogadro {
     public slots:
       void updateMode(int mode);
 
+      void setScale(double scale);
+      void setDisplayForceVectors(bool enabled);
+      void toggleAnimation();
+
     private:
       QList<QAction *> m_actions;
 
@@ -69,6 +73,10 @@ namespace Avogadro {
       VibrationDialog *m_dialog;
       Molecule *m_molecule;
       GLWidget *m_widget;
+
+      double m_scale;
+      bool m_displayForceVectors;
+      bool m_animating;
   };
 
   class VibrationExtensionFactory : public QObject, public PluginFactory

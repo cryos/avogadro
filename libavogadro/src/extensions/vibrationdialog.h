@@ -53,8 +53,15 @@ namespace Avogadro {
       void reject();
       void cellClicked(int, int);
 
+      void setScale(int scale);
+      void setDisplayForceVectors(bool checked);
+      void animateButtonClicked(bool);
+
     signals:
       void selectedMode(int);
+      void scaleUpdated(double scale);
+      void setEnabledForceVector(bool enabled);
+      void toggleAnimation();
 
     private:
       Ui::VibrationDialog ui;
