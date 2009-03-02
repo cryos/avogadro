@@ -57,6 +57,8 @@ namespace Avogadro {
 
     m_widget =  static_cast<GLWidget*>(parent);
     m_animation = new Animation(parent);
+    m_animation->setLoopCount(0); // continual loopback
+
     m_dialog = new VibrationDialog(m_widget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
@@ -202,6 +204,7 @@ namespace Avogadro {
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
+    // need to update arrows and animation
   }
 
   void VibrationExtension::setDisplayForceVectors(bool enabled)

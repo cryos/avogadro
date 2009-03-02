@@ -34,8 +34,9 @@ using Eigen::Vector3d;
 namespace Avogadro {
 
   Animation::Animation(QObject *parent) : QObject(parent),
-    m_molecule(0), m_timeLine(0)
-  {   }
+                                          m_molecule(0), m_timeLine(new QTimeLine)
+  {
+  }
 
   Animation::~Animation()
   {
@@ -66,13 +67,9 @@ namespace Avogadro {
     m_timeLine->setDuration(duration);
   }
 
-  void Animation::setLoop(int state)
+  void Animation::setLoopCount(int loops)
   {
-    if (state == Qt::Checked) {
-      m_timeLine->setLoopCount(0);
-    } else {
-      m_timeLine->setLoopCount(1);
-    }
+    m_timeLine->setLoopCount(loops);
   }
 
   void Animation::setFrame(int i)
@@ -94,6 +91,9 @@ namespace Avogadro {
   {
     m_timeLine->stop();
     m_timeLine->setCurrentTime(0);
+    disconnect(m_timeLine, SIGNAL(frameChanged(int)),
+            this, SLOT(setFrame(int)));
+
     // restore original conformers
     m_molecule->setAllConformers(m_originalConformers);
     setFrame(1);
@@ -105,6 +105,8 @@ namespace Avogadro {
     m_molecule->setAllConformers(m_frames);
     setFrame(1);
 
+    connect(m_timeLine, SIGNAL(frameChanged(int)),
+            this, SLOT(setFrame(int)));
     m_timeLine->setCurrentTime(0);
     m_timeLine->start();
   }

@@ -47,7 +47,7 @@ namespace Avogadro {
 
    public Q_SLOTS:
       void setDuration(int i);
-      void setLoop(int state);
+      void setLoopCount(int loops);
       void setFrame(int i);
 
       void start();
