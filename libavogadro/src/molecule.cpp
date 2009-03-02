@@ -880,6 +880,16 @@ namespace Avogadro{
     }
   }
 
+  vector<Vector3d> * Molecule::conformer(unsigned int index)
+  {
+    if (index && index < m_atomConformers.size())
+      return m_atomConformers[index];
+    else if (index == 0)
+      return m_atomPos;
+    else 
+      return NULL;
+  }
+
   bool Molecule::setConformer(unsigned int index)
   {
     // If the index is higher than the size
@@ -891,6 +901,15 @@ namespace Avogadro{
       while (m_atomPos->size() < size)
         m_atomPos->push_back(Eigen::Vector3d::Zero());
       return true;
+    }
+  }
+
+  void Molecule::setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers)
+  {
+    //    clearConformers();
+    m_atomConformers.resize(1);
+    for (unsigned int i = 0; i < conformers.size(); ++ i) {
+      m_atomConformers.push_back(conformers[i]);
     }
   }
 

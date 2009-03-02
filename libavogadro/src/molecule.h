@@ -477,7 +477,8 @@ namespace Avogadro {
      * @param conformer A vector of Vector3d with all atom positions.
      * @param index The index of the conformer to add.
      */
-    bool addConformer(const std::vector<Eigen::Vector3d> &conformer, unsigned int index);
+    bool addConformer(const std::vector<Eigen::Vector3d> &conformer,
+                      unsigned int index);
 
     /**
      * Add a new conformer and return a pointer to it.
@@ -487,9 +488,23 @@ namespace Avogadro {
     std::vector<Eigen::Vector3d> * addConformer(unsigned int index);
 
     /**
+     * @param index The index of the conformer to retrieve.
+     * @return Pointer to an existing conformer, or NULL if the index doesn't exist.
+     */
+    std::vector<Eigen::Vector3d> * conformer(unsigned int index);
+    
+    /**
      * Change the conformer to the one at the specified index.
      */
     bool setConformer(unsigned int index);
+
+    /**
+     * Replace all conformers in the Molecule. The conformers are 
+     * mapped onto the unique ids of the atoms in the Molecule.
+     * This will first clear all conformers.
+     * @param conformer A vector of conformers (vector of Vector3d)
+     */
+    void setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers);
 
     /**
      * Clear all conformers from the molecule, leaving just conformer zero.

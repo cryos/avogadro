@@ -36,13 +36,15 @@
 
 using namespace std;
 using namespace OpenBabel;
+using namespace Eigen;
 
 namespace Avogadro {
 
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
                                                             m_molecule(NULL),
                                                             m_scale(1.0),
-                                                            m_displayForceVectors(true),
+                                                            m_framesPerStep(8),
+                                                            m_displayVectors(true),
                                                             m_animating(false)
   {
     QAction *action = new QAction( this );
@@ -54,6 +56,7 @@ namespace Avogadro {
     m_actions.append(action);
 
     m_widget =  static_cast<GLWidget*>(parent);
+    m_animation = new Animation(parent);
     m_dialog = new VibrationDialog(m_widget);
     connect(m_dialog, SIGNAL(selectedMode(int)),
             this, SLOT(updateMode(int)));
@@ -70,6 +73,11 @@ namespace Avogadro {
     if (m_dialog) {
       m_dialog->deleteLater();
     }
+    if (m_animation) {
+      m_animation->deleteLater();
+    }
+
+    clearAnimationFrames();
   }
 
   QList<QAction *> VibrationExtension::actions() const
@@ -87,10 +95,13 @@ namespace Avogadro {
     m_molecule = molecule;
     if (m_dialog)
       m_dialog->setMolecule(molecule);
+    if (m_animation)
+      m_animation->setMolecule(molecule);
 
     // update m_vibrations
     if (!m_molecule)
       m_vibrations = NULL;
+    clearAnimationFrames();
   }
 
   void VibrationExtension::updateMode(int mode)
@@ -108,15 +119,46 @@ namespace Avogadro {
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 
     if (m_vibrations->GetLx().size() != 0) {
-      enableForceDisplay();
 
       vector<vector3> displacementVectors = m_vibrations->GetLx()[mode];
-      vector3 displacement;
-      
-      foreach (Atom *atom, m_molecule->atoms()) {
-        displacement = displacementVectors[atom->index()];
-        atom->setForceVector(Eigen::Vector3d(displacement.x(), displacement.y(), displacement.z()));
+      // Sanity check
+      if (displacementVectors.size() != m_molecule->numAtoms()) {
+        QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
+        return;
       }
+
+      vector3 obDisplacement;
+      Eigen::Vector3d displacement, atomPos;
+      
+      // delete any old frames
+      clearAnimationFrames();
+      for (unsigned int frame = 0; frame < m_framesPerStep * 4; ++frame)
+        m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
+
+      if (m_displayVectors)
+        enableForceDisplay();
+
+      foreach (Atom *atom, m_molecule->atoms()) {
+        obDisplacement = displacementVectors[atom->index()];
+        displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());
+
+        if (m_displayVectors)
+          atom->setForceVector(displacement);
+
+        // We'll create frames for 4 "steps"
+        // 1) current coordinates -> + displacement
+        // 2)  + displacement -> original coords
+        // 3) original coords ->  - displacement
+        // 4)  - displacement -> original coords
+        for (unsigned int frame = 0; frame < m_framesPerStep; ++frame) {
+          atomPos = *(atom->pos());
+          m_animationFrames[frame]->at(atom->index()) = atomPos + displacement * (m_scale * frame/m_framesPerStep);
+          m_animationFrames[frame + 1*m_framesPerStep]->at(atom->index()) = atomPos + displacement * ( m_scale * (m_framesPerStep - frame) / m_framesPerStep);
+          m_animationFrames[frame + 2*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * frame / m_framesPerStep);
+          m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
+        }
+      }
+      m_animation->setFrames(m_animationFrames);
       m_molecule->update();
     } else {
       if (m_widget)
@@ -164,11 +206,24 @@ namespace Avogadro {
 
   void VibrationExtension::setDisplayForceVectors(bool enabled)
   {
-    m_displayForceVectors = enabled;
+    m_displayVectors = enabled;
   }
 
   void VibrationExtension::toggleAnimation()
   {
+    m_animating = !m_animating;
+    if (m_animating) {
+      m_animation->start();
+    }
+    else {
+      m_animation->stop();
+    }
+  }
+
+  void VibrationExtension::clearAnimationFrames()
+  {
+    for (unsigned int frame = 0; frame < m_animationFrames.size(); ++frame)
+      delete m_animationFrames[frame];
   }
 
 } // end namespace Avogadro

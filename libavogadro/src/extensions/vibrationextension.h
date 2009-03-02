@@ -26,6 +26,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
+#include <avogadro/animation.h>
 
 #include <QObject>
 #include <QList>
@@ -58,6 +59,7 @@ namespace Avogadro {
       virtual void setMolecule(Molecule *molecule);
 
       void enableForceDisplay();
+      void clearAnimationFrames();
 
     public slots:
       void updateMode(int mode);
@@ -73,10 +75,14 @@ namespace Avogadro {
       VibrationDialog *m_dialog;
       Molecule *m_molecule;
       GLWidget *m_widget;
+      Animation *m_animation;
 
       double m_scale;
-      bool m_displayForceVectors;
+      unsigned int m_framesPerStep;
+      bool m_displayVectors;
       bool m_animating;
+
+      std::vector< std::vector< Eigen::Vector3d> *> m_animationFrames;
   };
 
   class VibrationExtensionFactory : public QObject, public PluginFactory
