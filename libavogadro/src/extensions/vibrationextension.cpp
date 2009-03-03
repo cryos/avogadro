@@ -41,9 +41,10 @@ using namespace Eigen;
 namespace Avogadro {
 
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
+                                                            m_mode(0),
                                                             m_molecule(NULL),
                                                             m_scale(1.0),
-                                                            m_framesPerStep(8),
+                                                            m_framesPerStep(10),
                                                             m_displayVectors(true),
                                                             m_animating(false)
   {
@@ -101,78 +102,97 @@ namespace Avogadro {
       m_animation->setMolecule(molecule);
 
     // update m_vibrations
-    if (!m_molecule)
+    if (!m_molecule) {
       m_vibrations = NULL;
+      m_mode = 0;
+    }
     clearAnimationFrames();
   }
 
   void VibrationExtension::updateMode(int mode)
   {
-    qDebug() << " update Mode ";
-    // animate the mode, add force arrows, etc.
     if (!m_molecule)
-      return;
+      return; //nothing to do
 
     // stop animating
     if (m_animating)
       m_animation->stop();
 
     if (mode == -1) {
-      return;
+      return; // signal to end updates
     }
 
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+    if (m_vibrations == NULL)
+      return; // e.g., when destroying the molecule;
 
     if (m_vibrations->GetLx().size() != 0) {
-
-      vector<vector3> displacementVectors = m_vibrations->GetLx()[mode];
-      // Sanity check
-      if (displacementVectors.size() != m_molecule->numAtoms()) {
-        QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
-        return;
-      }
-
-      vector3 obDisplacement;
-      Eigen::Vector3d displacement, atomPos;
       
-      // delete any old frames
-      clearAnimationFrames();
-      for (unsigned int frame = 0; frame < m_framesPerStep * 4 - 1; ++frame)
-        m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
+      m_mode = mode;
+      updateForcesAndFrames();
 
-      if (m_displayVectors)
-        enableForceDisplay();
-
-      foreach (Atom *atom, m_molecule->atoms()) {
-        obDisplacement = displacementVectors[atom->index()];
-        displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());
-
-        if (m_displayVectors)
-          atom->setForceVector(displacement);
-
-        // We'll create frames for 4 "steps"
-        // 1) current coordinates -> + displacement
-        // 2)  + displacement -> original coords
-        // 3) original coords ->  - displacement
-        // 4)  - displacement -> original coords
-        for (unsigned int frame = 0; frame < m_framesPerStep; ++frame) {
-          atomPos = *(atom->pos());
-          m_animationFrames[frame]->at(atom->index()) = atomPos + displacement * (m_scale * frame/m_framesPerStep);
-          m_animationFrames[frame + 1*m_framesPerStep]->at(atom->index()) = atomPos + displacement * ( m_scale * (m_framesPerStep - frame) / m_framesPerStep);
-          m_animationFrames[frame + 2*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * frame / m_framesPerStep);
-          if (frame < m_framesPerStep - 1) // skip last frame here
-            m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
-        }
-      }
-      m_animation->setFrames(m_animationFrames);
-      if (m_animating)
-        m_animation->start();
-      m_molecule->update();
     } else {
       if (m_widget)
         QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("No vibrational displacements exist."));
     }
+  }
+
+  void VibrationExtension::updateForcesAndFrames()
+  {
+    if (m_vibrations == NULL || m_mode == 0 || m_vibrations->GetLx().size() == 0)
+      return;
+
+    qDebug() << " update Mode " << m_mode;
+    // animate the mode, add force arrows, etc.
+
+    vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
+    // Sanity check
+    if (displacementVectors.size() != m_molecule->numAtoms()) {
+      QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
+      return;
+    }
+
+    vector3 obDisplacement;
+    Eigen::Vector3d displacement, atomPos;
+      
+    // delete any old frames
+    clearAnimationFrames();
+    // We do 4 "phases" of vibrations
+    for (unsigned int frame = 0; frame < m_framesPerStep * 4; ++frame)
+      m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
+
+    if (m_displayVectors)
+      enableForceDisplay();
+    
+    foreach (Atom *atom, m_molecule->atoms()) {
+      obDisplacement = displacementVectors[atom->index()];
+      displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());
+
+      if (m_displayVectors)
+        atom->setForceVector(displacement);
+
+      // We'll create frames for 4 "steps"
+      // 1) current coordinates -> + displacement
+      // 2)  + displacement -> original coords
+      // 3) original coords ->  - displacement
+      // 4)  - displacement -> original coords
+      for (unsigned int frame = 0; frame < m_framesPerStep; ++frame) {
+        atomPos = *(atom->pos());
+        m_animationFrames[frame]->at(atom->index()) = atomPos + displacement * (m_scale * frame/m_framesPerStep);
+        m_animationFrames[frame + 1*m_framesPerStep]->at(atom->index()) = atomPos + displacement * ( m_scale * (m_framesPerStep - frame) / m_framesPerStep);
+        m_animationFrames[frame + 2*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * frame / m_framesPerStep);
+        m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
+      }
+
+      //      m_animationFrames.erase(m_animationFrames.begin() + m_framesPerStep);
+      // and we skip the first frame (duplicate)
+      m_animationFrames.erase(m_animationFrames.begin());
+    }
+    m_animation->setFrames(m_animationFrames);
+    if (m_animating)
+      m_animation->start();
+    m_molecule->update();
   }
 
   QUndoCommand* VibrationExtension::performAction( QAction *, GLWidget *widget )
@@ -211,12 +231,13 @@ namespace Avogadro {
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
-    // need to update arrows and animation
+    //    updateForcesAndFrames();
   }
 
   void VibrationExtension::setDisplayForceVectors(bool enabled)
   {
     m_displayVectors = enabled;
+    //    updateForcesAndFrames();
   }
 
   void VibrationExtension::toggleAnimation()

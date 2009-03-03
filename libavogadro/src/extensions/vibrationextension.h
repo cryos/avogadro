@@ -69,9 +69,12 @@ namespace Avogadro {
       void toggleAnimation();
 
     private:
+      void updateForcesAndFrames(); // helper when settings change
+
       QList<QAction *> m_actions;
 
       OpenBabel::OBVibrationData *m_vibrations;
+      int m_mode;
       VibrationDialog *m_dialog;
       Molecule *m_molecule;
       GLWidget *m_widget;
