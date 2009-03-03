@@ -7,6 +7,6 @@ Exec=avogadro %f
 Icon=avogadro-icon
 Terminal=false
 Type=Application
-Categories=Qt;Science;
+Categories=Qt;Science;Chemistry;Physics;Education;
 StartupNotify=true
 MimeType=chemical/x-cif;chemical/x-cml;chemical/x-daylight-smiles;chemical/x-gamess-input;chemical/x-gamess-output;chemical/x-gaussian-log;chemical/x-mopac-out;chemical/x-pdb;chemical/x-xyz;chemical/x-gaussian-checkpoint;chemical/x-gaussian-cube;chemical/x-qchem-output;

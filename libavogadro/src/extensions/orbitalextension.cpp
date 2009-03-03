@@ -438,6 +438,7 @@ namespace Avogadro
       cube->setName(QString(tr("Electron Density")));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
+      cube->setProperty("electronDensity", true);
       if (!m_timer) {
         m_timer = new QTime;
         m_timer->start();
@@ -475,6 +476,7 @@ namespace Avogadro
       cube->setName(QString(tr("Electron Density")));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
+      cube->setProperty("electronDensity", true);
       if (!m_timer) {
         m_timer = new QTime;
         m_timer->start();
@@ -788,7 +790,8 @@ namespace Avogadro
       disconnect(m_meshGen1, 0, this, 0);
       connect(m_meshGen1, SIGNAL(finished()), this, SLOT(VdWMeshGenerated()));
     }
-    m_meshGen1->initialize(cube, m_mesh1, isoValue, true);
+    m_meshGen1->initialize(cube, m_mesh1, isoValue,
+                           !cube->property("electronDensity").isValid());
     m_meshGen1->start();
     qDebug() << "Calculate Mesh called" << isoValue;
   }
