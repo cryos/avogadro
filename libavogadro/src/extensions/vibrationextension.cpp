@@ -130,10 +130,10 @@ namespace Avogadro {
 
     vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
     // Sanity check
-    if (displacementVectors.size() != m_molecule->numAtoms()) {
-      QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
-      return;
-    }
+    //    if (displacementVectors.size() != m_molecule->numAtoms()) {
+    //      QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
+    //      return;
+    //    }
 
     vector3 obDisplacement;
     Eigen::Vector3d displacement, atomPos;
