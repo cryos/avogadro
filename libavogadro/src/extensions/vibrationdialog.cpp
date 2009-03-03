@@ -45,6 +45,8 @@ namespace Avogadro {
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
 
+    connect(ui.vibrationTable, SIGNAL(currentCellChanged(int, int, int, int)),
+            this, SLOT(currentCellChanged(int, int, int, int)));
     connect(ui.vibrationTable, SIGNAL(cellClicked(int, int)),
             this, SLOT(cellClicked(int, int)));
 
@@ -96,6 +98,11 @@ namespace Avogadro {
   {
     emit selectedMode(-1); // stop animating
     hide();
+  }
+
+  void VibrationDialog::currentCellChanged(int, int, int row, int)
+  {
+    emit selectedMode(row);
   }
 
   void VibrationDialog::cellClicked(int row, int)

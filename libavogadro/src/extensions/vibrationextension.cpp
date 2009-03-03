@@ -65,7 +65,7 @@ namespace Avogadro {
     connect(m_dialog, SIGNAL(scaleUpdated(double)),
             this, SLOT(setScale(double)));
     connect(m_dialog, SIGNAL(setEnabledForceVector(bool)),
-            this, SLOT(setDisplatForceVectors(bool)));
+            this, SLOT(setDisplayForceVectors(bool)));
     connect(m_dialog, SIGNAL(toggleAnimation()),
             this, SLOT(toggleAnimation()));
   }
@@ -108,12 +108,16 @@ namespace Avogadro {
 
   void VibrationExtension::updateMode(int mode)
   {
+    qDebug() << " update Mode ";
     // animate the mode, add force arrows, etc.
     if (!m_molecule)
       return;
 
+    // stop animating
+    if (m_animating)
+      m_animation->stop();
+
     if (mode == -1) {
-      // stop animating
       return;
     }
 
@@ -134,7 +138,7 @@ namespace Avogadro {
       
       // delete any old frames
       clearAnimationFrames();
-      for (unsigned int frame = 0; frame < m_framesPerStep * 4; ++frame)
+      for (unsigned int frame = 0; frame < m_framesPerStep * 4 - 1; ++frame)
         m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
 
       if (m_displayVectors)
@@ -157,10 +161,13 @@ namespace Avogadro {
           m_animationFrames[frame]->at(atom->index()) = atomPos + displacement * (m_scale * frame/m_framesPerStep);
           m_animationFrames[frame + 1*m_framesPerStep]->at(atom->index()) = atomPos + displacement * ( m_scale * (m_framesPerStep - frame) / m_framesPerStep);
           m_animationFrames[frame + 2*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * frame / m_framesPerStep);
-          m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
+          if (frame < m_framesPerStep - 1) // skip last frame here
+            m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
         }
       }
       m_animation->setFrames(m_animationFrames);
+      if (m_animating)
+        m_animation->start();
       m_molecule->update();
     } else {
       if (m_widget)
@@ -214,6 +221,11 @@ namespace Avogadro {
 
   void VibrationExtension::toggleAnimation()
   {
+    if (m_animationFrames.size() == 0) {
+      m_dialog->animateButtonClicked(false);
+      return;
+    }
+
     m_animating = !m_animating;
     if (m_animating) {
       m_animation->start();
@@ -227,6 +239,7 @@ namespace Avogadro {
   {
     for (unsigned int frame = 0; frame < m_animationFrames.size(); ++frame)
       delete m_animationFrames[frame];
+    m_animationFrames.clear();
   }
 
 } // end namespace Avogadro

@@ -52,6 +52,7 @@ namespace Avogadro {
       void accept();
       void reject();
       void cellClicked(int, int);
+      void currentCellChanged(int, int, int, int);
 
       void setScale(int scale);
       void setDisplayForceVectors(bool checked);
