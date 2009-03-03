@@ -73,7 +73,7 @@ namespace Avogadro {
     Molecule *molecule = const_cast<Molecule *>(pd->molecule());
     OBMol mol = molecule->OBMol();
 
-    pd->painter()->setColor(1.0, 1.0, 1.0);
+    pd->painter()->setColor(1.0, 1.0, 0.3);
     int stipple = 0xF0F0; // pattern for lines
 
     NeighborList *nbrList = new NeighborList(molecule, m_radius, 1);

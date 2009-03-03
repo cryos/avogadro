@@ -41,7 +41,10 @@ using namespace Eigen;
 namespace Avogadro {
 
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
+                                                            m_dialog(0),
                                                             m_molecule(NULL),
+                                                            m_widget(0),
+                                                            m_animation(0),
                                                             m_scale(1.0),
                                                             m_framesPerStep(8),
                                                             m_displayVectors(true),
@@ -54,31 +57,10 @@ namespace Avogadro {
     action = new QAction(this);
     action->setText(tr("Vibrations..."));
     m_actions.append(action);
-
-    m_widget =  static_cast<GLWidget*>(parent);
-    m_animation = new Animation(parent);
-    m_animation->setLoopCount(0); // continual loopback
-
-    m_dialog = new VibrationDialog(m_widget);
-    connect(m_dialog, SIGNAL(selectedMode(int)),
-            this, SLOT(updateMode(int)));
-    connect(m_dialog, SIGNAL(scaleUpdated(double)),
-            this, SLOT(setScale(double)));
-    connect(m_dialog, SIGNAL(setEnabledForceVector(bool)),
-            this, SLOT(setDisplayForceVectors(bool)));
-    connect(m_dialog, SIGNAL(toggleAnimation()),
-            this, SLOT(toggleAnimation()));
   }
 
   VibrationExtension::~VibrationExtension()
   {
-    if (m_dialog) {
-      m_dialog->deleteLater();
-    }
-    if (m_animation) {
-      m_animation->deleteLater();
-    }
-
     clearAnimationFrames();
   }
 
@@ -185,8 +167,22 @@ namespace Avogadro {
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 
-    if (m_vibrations)
+    if (m_vibrations) {
+      if (!m_dialog) {
+        m_dialog = new VibrationDialog(qobject_cast<QWidget*>(parent()));
+        connect(m_dialog, SIGNAL(selectedMode(int)),
+                this, SLOT(updateMode(int)));
+        connect(m_dialog, SIGNAL(scaleUpdated(double)),
+                this, SLOT(setScale(double)));
+        connect(m_dialog, SIGNAL(setEnabledForceVector(bool)),
+                this, SLOT(setDisplayForceVectors(bool)));
+        connect(m_dialog, SIGNAL(toggleAnimation()),
+                this, SLOT(toggleAnimation()));
+        m_animation = new Animation(this);
+        m_animation->setLoopCount(0); // continual loopback
+      }
       m_dialog->show();
+    }
     else {
       QMessageBox::warning(widget, tr("Vibrational Analysis"), tr("No vibrations have been computed for this molecule."));
       // show a warning

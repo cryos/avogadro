@@ -1787,7 +1787,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 
         char atomicNumber = atom ->atomicNumber();
 
-        sprintf( Out, "%s   %5.1f  %10.5f  %10.5f  %10.5f",
+        sprintf( Out, "%s   %5.1f  %10.8f  %10.8f  %10.8f",
                   OpenBabel::etab.GetSymbol( atomicNumber ), ( float ) atomicNumber,
                   atom->pos()->x(), atom->pos()->y(), atom->pos()->z() );
         File << Out << endl;
@@ -1855,7 +1855,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
 
         char atomicNumber = atomIdx[i]->atomicNumber();
 
-        sprintf( Out, "%s%d    %10.5f  %10.5f  %10.5f",
+        sprintf( Out, "%s%d    %10.8f  %10.8f  %10.8f",
                   OpenBabel::etab.GetSymbol( atomicNumber ), i+1, 
                   atomIdx[i]->pos()->x(), atomIdx[i]->pos()->y(), atomIdx[i]->pos()->z() );
         File << Out << endl;
