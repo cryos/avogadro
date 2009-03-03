@@ -68,11 +68,23 @@ namespace Avogadro {
 
   bool ForceEngine::renderOpaque(PainterDevice *pd, const Atom *atom)
   {
-    const Vector3d &v1 = *atom->pos();
-    Vector3d v2 = v1 + atom->forceVector();
-    Vector3d v3 = v1 + 0.8 * atom->forceVector();
+    const Vector3d forceVector = atom->forceVector();
+    if (forceVector.norm() < 0.01) // too small to really show
+      return true;
 
-    pd->painter()->drawLine(v1, v2, 2);
+    const Vector3d &v1 = *atom->pos();
+
+    // Use the camera and painter device to "float" the arrows
+    // in front of the atom. This is similar to the label engine code
+    double renderRadius = pd->radius(atom) + 0.05;
+    Vector3d zAxis = pd->camera()->backTransformedZAxis();
+    Vector3d drawPos = v1 + zAxis * renderRadius;
+
+    // now based on our "drawing" position, we calculate a displacement
+    Vector3d v2 = drawPos + atom->forceVector();
+    Vector3d v3 = drawPos + 0.8 * atom->forceVector();
+
+    pd->painter()->drawLine(drawPos, v2, 2);
     pd->painter()->drawCone(v3, v2, 0.1);
 
     return true;
