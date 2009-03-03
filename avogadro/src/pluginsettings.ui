@@ -20,7 +20,7 @@
        <widget class="QComboBox" name="comboBox" >
         <item>
          <property name="text" >
-          <string>Display types</string>
+          <string>Display Types</string>
          </property>
         </item>
         <item>
