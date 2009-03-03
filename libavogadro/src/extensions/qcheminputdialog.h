@@ -97,7 +97,6 @@ namespace Avogadro
     void setBasis(int);
     void setMultiplicity(int);
     void setCharge(int);
-    void setOutput(int);
     void setCoords(int);
   };
 }

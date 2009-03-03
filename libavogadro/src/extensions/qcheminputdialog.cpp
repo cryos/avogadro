@@ -58,8 +58,6 @@ namespace Avogadro
         this, SLOT(setMultiplicity(int)));
     connect(ui.chargeSpin, SIGNAL(valueChanged(int)),
         this, SLOT(setCharge(int)));
-    connect(ui.outputCombo, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(setOutput(int)));
     connect(ui.coordCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCoords(int)));
     connect(ui.previewText, SIGNAL(cursorPositionChanged()),
@@ -227,31 +225,22 @@ namespace Avogadro
     switch (n)
     {
       case 0:
-        m_theoryType = AM1;
-        break;
-      case 1:
-        m_theoryType = PM3;
-        break;
-      case 2:
         m_theoryType = RHF;
         break;
-      case 3:
+      case 1:
         m_theoryType = B3LYP;
         break;
-      case 4:
+      case 2:
         m_theoryType = MP2;
         break;
-      case 5:
+      case 3:
         m_theoryType = CCSD;
         break;
       default:
-        m_theoryType = RHF;
+        m_theoryType = B3LYP;
     }
 
-    if (m_theoryType == AM1 || m_theoryType == PM3)
-      ui.basisCombo->setEnabled(false);
-    else
-      ui.basisCombo->setEnabled(true);
+    ui.basisCombo->setEnabled(true);
 
     updatePreviewText();
   }
@@ -292,18 +281,6 @@ namespace Avogadro
     updatePreviewText();
   }
 
-  void QChemInputDialog::setOutput(int n)
-  {
-    switch (n) {
-      case 1:
-        m_output = "   GUI=2\n";
-        break;
-      default:
-        m_output = "";
-    }
-    updatePreviewText();
-  }
-
   void QChemInputDialog::setCoords(int n)
   {
     switch (n)
@@ -335,15 +312,12 @@ namespace Avogadro
     // Now for the calculation type
     mol << "   JOBTYPE " << getCalculationType(m_calculationType) << "\n";
 
-    // Now specify the job type etc
+    // Now specify the job type and basis set
     mol << "   EXCHANGE " << getTheoryType(m_theoryType) << "\n";
-
-    // Not all theories have a basis set
-    if (m_theoryType != AM1 && m_theoryType != PM3)
-      mol << "   BASIS " << getBasisType(m_basisType) << "\n";
+    mol << "   BASIS " << getBasisType(m_basisType) << "\n";
 
     // Output parameters for some programs
-    mol << m_output;
+    mol << "   GUI=2\n";
 
     // End the job spec section
     mol << "$end\n\n";
@@ -503,7 +477,7 @@ namespace Avogadro
       case OPT:
         return "Opt";
       case FREQ:
-        return "Opt Freq";
+        return "Freq";
       default:
         return "SP";
     }
@@ -560,7 +534,6 @@ namespace Avogadro
     ui.basisCombo->setEnabled(!dirty);
     ui.multiplicitySpin->setEnabled(!dirty);
     ui.chargeSpin->setEnabled(!dirty);
-    ui.outputCombo->setEnabled(!dirty);
     ui.enableFormButton->setEnabled(dirty);
   }
 
