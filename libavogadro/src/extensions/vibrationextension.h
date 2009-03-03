@@ -58,7 +58,6 @@ namespace Avogadro {
 
       virtual void setMolecule(Molecule *molecule);
 
-      void enableForceDisplay();
       void clearAnimationFrames();
 
     public slots:

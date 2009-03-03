@@ -145,7 +145,7 @@ namespace Avogadro {
       m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
 
     if (m_displayVectors)
-      enableForceDisplay();
+      setDisplayForceVectors(true);
     
     foreach (Atom *atom, m_molecule->atoms()) {
       obDisplacement = displacementVectors[atom->index()];
@@ -214,19 +214,6 @@ namespace Avogadro {
     return NULL;
   }
 
-  void VibrationExtension::enableForceDisplay()
-  {
-    if (!m_widget)
-      return;
-
-    foreach (Engine *engine, m_widget->engines()) {
-      if (engine->identifier() == "Force") {
-        engine->setEnabled(true);
-      }
-    }
-    m_widget->update();
-  }
-
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
@@ -236,7 +223,16 @@ namespace Avogadro {
   void VibrationExtension::setDisplayForceVectors(bool enabled)
   {
     m_displayVectors = enabled;
-    //    updateForcesAndFrames();
+
+    if (!m_widget)
+      return;
+
+    foreach (Engine *engine, m_widget->engines()) {
+      if (engine->identifier() == "Force") {
+        engine->setEnabled(enabled);
+      }
+    }
+    m_widget->update();
   }
 
   void VibrationExtension::toggleAnimation()
