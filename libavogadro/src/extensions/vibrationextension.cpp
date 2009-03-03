@@ -41,13 +41,13 @@ using namespace Eigen;
 namespace Avogadro {
 
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
-                                                            m_mode(0),
+                                                            m_mode(-1),
                                                             m_dialog(0),
                                                             m_molecule(NULL),
                                                             m_widget(0),
                                                             m_animation(0),
                                                             m_scale(1.0),
-                                                            m_framesPerStep(10),
+                                                            m_framesPerStep(8),
                                                             m_displayVectors(true),
                                                             m_animating(false)
   {
@@ -86,7 +86,7 @@ namespace Avogadro {
     // update m_vibrations
     if (!m_molecule) {
       m_vibrations = NULL;
-      m_mode = 0;
+      m_mode = -1;
     }
     clearAnimationFrames();
   }
@@ -120,13 +120,13 @@ namespace Avogadro {
     }
   }
 
+  // animate the mode, add force arrows, etc.
   void VibrationExtension::updateForcesAndFrames()
   {
-    if (m_vibrations == NULL || m_mode == 0 || m_vibrations->GetLx().size() == 0)
+    if (m_mode == -1)
       return;
-
-    qDebug() << " update Mode " << m_mode;
-    // animate the mode, add force arrows, etc.
+    if (m_vibrations == NULL || m_vibrations->GetLx().size() == 0)
+      return;
 
     vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
     // Sanity check
@@ -165,12 +165,12 @@ namespace Avogadro {
         m_animationFrames[frame + 1*m_framesPerStep]->at(atom->index()) = atomPos + displacement * ( m_scale * (m_framesPerStep - frame) / m_framesPerStep);
         m_animationFrames[frame + 2*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * frame / m_framesPerStep);
         m_animationFrames[frame + 3*m_framesPerStep]->at(atom->index()) = atomPos - displacement * (m_scale * (m_framesPerStep - frame) / m_framesPerStep);
-      }
+      } // foreach frame set
 
-      //      m_animationFrames.erase(m_animationFrames.begin() + m_framesPerStep);
-      // and we skip the first frame (duplicate)
-      m_animationFrames.erase(m_animationFrames.begin());
-    }
+    } // foreach atom
+
+    // and we remove the first frame (duplicate)
+    m_animationFrames.erase(m_animationFrames.begin());
     m_animation->setFrames(m_animationFrames);
     if (m_animating)
       m_animation->start();
@@ -198,8 +198,11 @@ namespace Avogadro {
                 this, SLOT(setDisplayForceVectors(bool)));
         connect(m_dialog, SIGNAL(toggleAnimation()),
                 this, SLOT(toggleAnimation()));
+        m_dialog->setMolecule(m_molecule);
+
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
+        m_animation->setMolecule(m_molecule);
       }
       m_dialog->show();
     }
