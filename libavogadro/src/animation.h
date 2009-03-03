@@ -20,19 +20,24 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __ANIMATION_H
-#define __ANIMATION_H
+#ifndef ANIMATION_H
+#define ANIMATION_H
+
+#include "global.h"
 
 #include <QObject>
 
+#include <Eigen/Core>
+
 #include <vector>
-#include <avogadro/atom.h>
 
 class QTimeLine;
 
 namespace Avogadro {
 
- class Animation : public QObject
+  class Molecule;
+
+  class A_EXPORT Animation : public QObject
   {
     Q_OBJECT
 

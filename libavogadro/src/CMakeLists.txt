@@ -24,6 +24,7 @@ file(GLOB libavogadro_SRCS "*.cpp")
 
 # Only headers with exported symbols should actually be installed
 set(libavogadro_HDRS
+  animation.h
   atom.h
   bond.h
   camera.h
