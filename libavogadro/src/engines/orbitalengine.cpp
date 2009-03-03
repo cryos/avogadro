@@ -42,7 +42,7 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
-    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true)
+    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true), m_colored(false)
   {
     m_negColor.set(1.0, 0.0, 0.0, m_alpha);
     m_posColor.set(0.0, 0.0, 1.0, m_alpha);
@@ -74,14 +74,22 @@ namespace Avogadro {
 
       if (m_mesh1) {
         if (m_mesh1->stable()) {
-          pd->painter()->setColor(&m_posColor);
-          pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+          if (m_colored)
+            pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
+          else {
+            pd->painter()->setColor(&m_posColor);
+            pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+          }
         }
       }
       if (m_mesh2) {
         if (m_mesh2->stable()) {
-          pd->painter()->setColor(&m_negColor);
-          pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+          if (m_colored)
+            pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
+          else {
+            pd->painter()->setColor(&m_negColor);
+            pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+          }
         }
       }
 
@@ -101,15 +109,22 @@ namespace Avogadro {
 
       if (m_mesh1) {
         if (m_mesh1->stable()) {
-          pd->painter()->setColor(&m_posColor);
-          pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+          if (m_colored)
+            pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
+          else {
+            pd->painter()->setColor(&m_posColor);
+            pd->painter()->drawMesh(*m_mesh1, m_renderMode);
+          }
         }
       }
-
       if (m_mesh2) {
         if (m_mesh2->stable()) {
-          pd->painter()->setColor(&m_negColor);
-          pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+          if (m_colored)
+            pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
+          else {
+            pd->painter()->setColor(&m_negColor);
+            pd->painter()->drawMesh(*m_mesh2, m_renderMode);
+          }
         }
       }
 
@@ -414,6 +429,7 @@ namespace Avogadro {
     settings.setValue("alpha", m_alpha);
     settings.setValue("renderMode", m_renderMode);
     settings.setValue("drawBox", m_drawBox);
+    settings.setValue("colorMode", m_colored);
     if (m_mesh1)
       settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
     if (m_mesh2)
@@ -429,6 +445,7 @@ namespace Avogadro {
     m_posColor.setAlpha(m_alpha);
     m_negColor.setAlpha(m_alpha);
     m_renderMode = settings.value("renderMode", 0).toInt();
+    m_colored = settings.value("colorMode", false).toBool();
     m_drawBox = settings.value("drawBox", false).toBool();
     if (m_molecule) {
       m_mesh1 = m_molecule->meshById(settings.value("mesh1Id", 0).toInt());

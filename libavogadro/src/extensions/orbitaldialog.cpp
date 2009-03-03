@@ -175,7 +175,12 @@ namespace Avogadro
   {
     // Returns the cube to color by. 0 means none, 1 means estimated partial
     // charge and >1 means an actual cube (find by number returned -2)
-    return ui.surfaceColorCubeCombo->currentIndex();
+    if (ui.tabWidget->currentIndex() == 1)
+      return ui.colorCubeCombo->currentIndex();
+    else if (ui.tabWidget->currentIndex() == 2)
+      return ui.surfaceColorCubeCombo->currentIndex();
+    else
+      return 0;
   }
 
   void OrbitalDialog::calculate()

@@ -93,6 +93,7 @@ namespace Avogadro {
       int    m_renderMode;
       bool   m_drawBox;
       bool   m_update;
+      bool   m_colored;
 
       void updateSurfaces(PainterDevice *pd);
 

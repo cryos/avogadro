@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>OrbitalDialog</class>
- <widget class="QDialog" name="OrbitalDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="OrbitalDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,111 +10,111 @@
     <height>530</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy vsizetype="MinimumExpanding" hsizetype="Preferred" >
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Surfaces</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" >
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QTabWidget" name="tabWidget" >
-     <property name="currentIndex" >
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="cube" >
-      <attribute name="title" >
+     <widget class="QWidget" name="cube">
+      <attribute name="title">
        <string>Cubes</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout" >
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QGroupBox" name="groupBox" >
-         <property name="title" >
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
           <string>Cube Dimensions</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout" >
-          <item row="0" column="1" >
-           <layout class="QHBoxLayout" name="horizontalLayout_12" >
-            <property name="spacing" >
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <property name="spacing">
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_11" >
-              <property name="text" >
+             <widget class="QLabel" name="label_11">
+              <property name="text">
                <string>x</string>
               </property>
-              <property name="alignment" >
+              <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
               </property>
-              <property name="buddy" >
+              <property name="buddy">
                <cstring>originX</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_12" >
-              <property name="text" >
+             <widget class="QLabel" name="label_12">
+              <property name="text">
                <string>y</string>
               </property>
-              <property name="alignment" >
+              <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
               </property>
-              <property name="buddy" >
+              <property name="buddy">
                <cstring>originX</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_13" >
-              <property name="text" >
+             <widget class="QLabel" name="label_13">
+              <property name="text">
                <string>z</string>
               </property>
-              <property name="alignment" >
+              <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
               </property>
-              <property name="buddy" >
+              <property name="buddy">
                <cstring>originX</cstring>
               </property>
              </widget>
             </item>
            </layout>
           </item>
-          <item row="1" column="0" >
-           <widget class="QLabel" name="label" >
-            <property name="text" >
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
              <string>Origin:</string>
             </property>
-            <property name="alignment" >
+            <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>originX</cstring>
             </property>
            </widget>
           </item>
-          <item row="1" column="1" >
-           <layout class="QHBoxLayout" name="horizontalLayout_14" >
-            <property name="spacing" >
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <property name="spacing">
              <number>0</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="originX" />
+             <widget class="QLineEdit" name="originX"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="originY" />
+             <widget class="QLineEdit" name="originY"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="originZ" />
+             <widget class="QLineEdit" name="originZ"/>
             </item>
             <item>
-             <spacer name="horizontalSpacer" >
-              <property name="orientation" >
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -123,39 +124,39 @@
             </item>
            </layout>
           </item>
-          <item row="2" column="0" >
-           <widget class="QLabel" name="label_4" >
-            <property name="text" >
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
              <string>Max:</string>
             </property>
-            <property name="alignment" >
+            <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>stepsX</cstring>
             </property>
            </widget>
           </item>
-          <item row="2" column="1" >
-           <layout class="QHBoxLayout" name="horizontalLayout_16" >
-            <property name="spacing" >
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <property name="spacing">
              <number>0</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="maxX" />
+             <widget class="QLineEdit" name="maxX"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="maxY" />
+             <widget class="QLineEdit" name="maxY"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="maxZ" />
+             <widget class="QLineEdit" name="maxZ"/>
             </item>
             <item>
-             <spacer name="horizontalSpacer_3" >
-              <property name="orientation" >
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -165,39 +166,39 @@
             </item>
            </layout>
           </item>
-          <item row="3" column="0" >
-           <widget class="QLabel" name="label_3" >
-            <property name="text" >
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
              <string>Steps:</string>
             </property>
-            <property name="alignment" >
+            <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>stepsX</cstring>
             </property>
            </widget>
           </item>
-          <item row="3" column="1" >
-           <layout class="QHBoxLayout" name="horizontalLayout_13" >
-            <property name="spacing" >
+          <item row="3" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <property name="spacing">
              <number>0</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="stepsX" />
+             <widget class="QLineEdit" name="stepsX"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="stepsY" />
+             <widget class="QLineEdit" name="stepsY"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="stepsZ" />
+             <widget class="QLineEdit" name="stepsZ"/>
             </item>
             <item>
-             <spacer name="horizontalSpacer_3" >
-              <property name="orientation" >
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -207,30 +208,30 @@
             </item>
            </layout>
           </item>
-          <item row="4" column="0" >
-           <widget class="QLabel" name="label_2" >
-            <property name="text" >
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
              <string>Step Size:</string>
             </property>
-            <property name="alignment" >
+            <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-            <property name="buddy" >
+            <property name="buddy">
              <cstring>stepSize</cstring>
             </property>
            </widget>
           </item>
-          <item row="4" column="1" >
-           <layout class="QHBoxLayout" name="horizontalLayout_15" >
+          <item row="4" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
             <item>
-             <widget class="QLineEdit" name="stepSize" >
-              <property name="sizePolicy" >
-               <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <widget class="QLineEdit" name="stepSize">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>30</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="maximumSize" >
+              <property name="maximumSize">
                <size>
                 <width>90</width>
                 <height>16777215</height>
@@ -239,11 +240,11 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_2" >
-              <property name="orientation" >
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0" >
+              <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
                 <height>20</height>
@@ -253,15 +254,15 @@
             </item>
            </layout>
           </item>
-          <item row="5" column="1" >
-           <spacer name="verticalSpacer" >
-            <property name="orientation" >
+          <item row="5" column="1">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <property name="sizeType" >
+            <property name="sizeType">
              <enum>QSizePolicy::MinimumExpanding</enum>
             </property>
-            <property name="sizeHint" stdset="0" >
+            <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
               <height>0</height>
@@ -273,20 +274,20 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout" >
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QComboBox" name="orbitalCombo" >
-           <property name="enabled" >
+          <widget class="QComboBox" name="orbitalCombo">
+           <property name="enabled">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_6" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -295,11 +296,11 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculate" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculate">
+           <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate MO</string>
            </property>
           </widget>
@@ -307,13 +308,13 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_17" >
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
          <item>
-          <spacer name="horizontalSpacer_4" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -322,11 +323,11 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculateAll" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculateAll">
+           <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate All MOs</string>
            </property>
           </widget>
@@ -334,13 +335,13 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_22" >
+        <layout class="QHBoxLayout" name="horizontalLayout_22">
          <item>
-          <spacer name="horizontalSpacer_4" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -349,11 +350,11 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculateDensity" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculateDensity">
+           <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate Electron Density</string>
            </property>
           </widget>
@@ -361,13 +362,13 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_24" >
+        <layout class="QHBoxLayout" name="horizontalLayout_24">
          <item>
-          <spacer name="horizontalSpacer_4" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -376,11 +377,11 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculateVdW" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculateVdW">
+           <property name="enabled">
             <bool>true</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate Van der Waals Cube</string>
            </property>
           </widget>
@@ -388,14 +389,14 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_2" >
-         <property name="orientation" >
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeType" >
+         <property name="sizeType">
           <enum>QSizePolicy::MinimumExpanding</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>28</height>
@@ -405,32 +406,32 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="meshes" >
-      <attribute name="title" >
+     <widget class="QWidget" name="meshes">
+      <attribute name="title">
        <string>Isosurfaces</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4" >
-       <item row="0" column="0" >
-        <widget class="QLabel" name="label_14" >
-         <property name="text" >
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
           <string>Cube:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_3" >
+       <item row="0" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QComboBox" name="cubeCombo" />
+          <widget class="QComboBox" name="cubeCombo"/>
          </item>
          <item>
-          <spacer name="horizontalSpacer_7" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -440,31 +441,31 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="label_18" >
-         <property name="text" >
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
           <string>Color By:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="1" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_2" >
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QComboBox" name="colorCubeCombo" >
-           <property name="enabled" >
-            <bool>false</bool>
+          <widget class="QComboBox" name="colorCubeCombo">
+           <property name="enabled">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_9" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -474,31 +475,31 @@
          </item>
         </layout>
        </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="label_15" >
-         <property name="text" >
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
           <string>Iso Value:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="2" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_19" >
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
          <item>
-          <widget class="QLineEdit" name="isoValue" >
-           <property name="text" >
+          <widget class="QLineEdit" name="isoValue">
+           <property name="text">
             <string>0.02</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_5" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -508,68 +509,68 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="label_17" >
-         <property name="text" >
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
           <string>Cube Range:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="3" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_18" >
+       <item row="3" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
          <item>
-          <widget class="QLabel" name="cubeLow" >
-           <property name="text" >
+          <widget class="QLabel" name="cubeLow">
+           <property name="text">
             <string>0.000</string>
            </property>
-           <property name="alignment" >
+           <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="isoSlider" >
-           <property name="orientation" >
+          <widget class="QSlider" name="isoSlider">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="cubeHigh" >
-           <property name="text" >
+          <widget class="QLabel" name="cubeHigh">
+           <property name="text">
             <string>1.000</string>
            </property>
-           <property name="alignment" >
+           <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="label_16" >
-         <property name="text" >
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
           <string>In:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="4" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_4" >
+       <item row="4" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QComboBox" name="engineCombo" />
+          <widget class="QComboBox" name="engineCombo"/>
          </item>
          <item>
-          <spacer name="horizontalSpacer_8" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -579,14 +580,14 @@
          </item>
         </layout>
        </item>
-       <item row="5" column="0" colspan="2" >
-        <layout class="QHBoxLayout" name="horizontalLayout_20" >
+       <item row="5" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
          <item>
-          <spacer name="horizontalSpacer_4" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -595,23 +596,23 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculateMesh" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculateMesh">
+           <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate Mesh</string>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item row="6" column="1" >
-        <spacer name="verticalSpacer_3" >
-         <property name="orientation" >
+       <item row="6" column="1">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>141</height>
@@ -621,32 +622,32 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="VdW" >
-      <attribute name="title" >
+     <widget class="QWidget" name="VdW">
+      <attribute name="title">
        <string>Van der Waals Surface</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_3" >
-       <item row="0" column="0" >
-        <widget class="QLabel" name="label_28" >
-         <property name="text" >
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_28">
+         <property name="text">
           <string>Cube:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_9" >
+       <item row="0" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="QComboBox" name="surfaceCubeCombo" />
+          <widget class="QComboBox" name="surfaceCubeCombo"/>
          </item>
          <item>
-          <spacer name="horizontalSpacer_7" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -656,41 +657,41 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="label_29" >
-         <property name="text" >
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
           <string>Color By:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="1" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_10" >
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
-          <widget class="QComboBox" name="surfaceColorCubeCombo" >
-           <property name="enabled" >
+          <widget class="QComboBox" name="surfaceColorCubeCombo">
+           <property name="enabled">
             <bool>true</bool>
            </property>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>None</string>
             </property>
            </item>
            <item>
-            <property name="text" >
+            <property name="text">
              <string>ESP (approximate)</string>
             </property>
            </item>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_12" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_12">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -700,31 +701,31 @@
          </item>
         </layout>
        </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="label_31" >
-         <property name="text" >
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
           <string>Distance:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="2" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_11" >
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
          <item>
-          <widget class="QLineEdit" name="surfaceDistance" >
-           <property name="text" >
+          <widget class="QLineEdit" name="surfaceDistance">
+           <property name="text">
             <string>0.0</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_10" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -734,59 +735,59 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="label_27" >
-         <property name="text" >
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
           <string>Range:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="3" column="1" >
-        <widget class="QSlider" name="surfaceSlider" >
-         <property name="minimum" >
+       <item row="3" column="1">
+        <widget class="QSlider" name="surfaceSlider">
+         <property name="minimum">
           <number>-50</number>
          </property>
-         <property name="maximum" >
+         <property name="maximum">
           <number>50</number>
          </property>
-         <property name="value" >
+         <property name="value">
           <number>0</number>
          </property>
-         <property name="orientation" >
+         <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="tickPosition" >
+         <property name="tickPosition">
           <enum>QSlider::TicksAbove</enum>
          </property>
-         <property name="tickInterval" >
+         <property name="tickInterval">
           <number>25</number>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="label_30" >
-         <property name="text" >
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
           <string>In:</string>
          </property>
-         <property name="alignment" >
+         <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
-       <item row="4" column="1" >
-        <layout class="QHBoxLayout" name="horizontalLayout_36" >
+       <item row="4" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_36">
          <item>
-          <widget class="QComboBox" name="surfaceEngineCombo" />
+          <widget class="QComboBox" name="surfaceEngineCombo"/>
          </item>
          <item>
-          <spacer name="horizontalSpacer_13" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -796,14 +797,14 @@
          </item>
         </layout>
        </item>
-       <item row="5" column="0" colspan="2" >
-        <layout class="QHBoxLayout" name="horizontalLayout_37" >
+       <item row="5" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_37">
          <item>
-          <spacer name="horizontalSpacer_11" >
-           <property name="orientation" >
+          <spacer name="horizontalSpacer_11">
+           <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0" >
+           <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
              <height>20</height>
@@ -812,23 +813,23 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="calculateVdWMesh" >
-           <property name="enabled" >
+          <widget class="QPushButton" name="calculateVdWMesh">
+           <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="text" >
+           <property name="text">
             <string>Calculate Mesh</string>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item row="6" column="1" >
-        <spacer name="verticalSpacer_5" >
-         <property name="orientation" >
+       <item row="6" column="1">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0" >
+         <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
            <height>201</height>
@@ -841,11 +842,11 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="orientation" >
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="standardButtons" >
+     <property name="standardButtons">
       <set>QDialogButtonBox::Close</set>
      </property>
     </widget>
@@ -865,11 +866,11 @@
    <receiver>OrbitalDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>248</x>
      <y>254</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>157</x>
      <y>274</y>
     </hint>
@@ -881,11 +882,11 @@
    <receiver>OrbitalDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>316</x>
      <y>260</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
     </hint>

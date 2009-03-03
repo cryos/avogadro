@@ -701,6 +701,15 @@ namespace Avogadro
       engine->writeSettings(settings);
       settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
       settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
+      // If there is a color by and it is 1 then do ESP estimation
+      if (m_orbitalDialog->colorBy() == 1) {
+        qDebug() << "Calculating approximate ESP mapping...";
+        calculateESP(m_mesh1);
+        calculateESP(m_mesh2);
+        settings.setValue("colorMode", 1);
+      }
+      else
+        settings.setValue("colorMode", 0);
       engine->readSettings(settings);
       engine->setEnabled(true);
       m_molecule->update();
