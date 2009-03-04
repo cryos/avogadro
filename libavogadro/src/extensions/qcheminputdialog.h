@@ -44,8 +44,8 @@ namespace Avogadro
     void setMolecule(Molecule *molecule);
 
     enum calculationType{SP, OPT, FREQ};
-    enum theoryType{AM1, PM3, RHF, B3LYP, MP2, CCSD};
-    enum basisType{STO3G, B321G, B631Gd, B631Gdp, LANL2DZ};
+    enum theoryType{RHF, MP2, B3LYP, B3LYP5, EDF1, M062X, CCSD};
+    enum basisType{STO3G, B321G, B631Gd, B631Gdp, B631plusGd, B6311Gd, ccpVDZ, ccpVTZ, LANL2DZ, LACVP};
     enum coordType{CARTESIAN, ZMATRIX, ZMATRIX_COMPACT};
 
   protected:
