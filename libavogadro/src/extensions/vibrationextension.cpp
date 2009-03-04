@@ -130,6 +130,7 @@ namespace Avogadro {
 
     vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
     // Sanity check
+    // Currently disabled -- GAMESS does weird things.
     //    if (displacementVectors.size() != m_molecule->numAtoms()) {
     //      QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
     //      return;
