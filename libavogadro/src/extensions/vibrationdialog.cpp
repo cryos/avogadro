@@ -24,6 +24,9 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QDebug>
+#include <QFileDialog>
+#include <QFile>
+#include <QDir>
 
 #include <QHeaderView>
 
@@ -56,6 +59,8 @@ namespace Avogadro {
             this, SLOT(setDisplayForceVectors(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
+    connect(ui.exportButton, SIGNAL(clicked(bool)),
+	    this, SLOT(exportVibrationData(bool)));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -74,6 +79,7 @@ namespace Avogadro {
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
       ui.vibrationTable->setRowCount(0);
+      ui.exportButton->setEnabled(false);
       return;
     }
 
@@ -84,7 +90,7 @@ namespace Avogadro {
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
 
-    for (unsigned int row = 0; row <= frequencies.size(); ++row) {
+    for (unsigned int row = 0; row < frequencies.size(); ++row) {
       QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       QTableWidgetItem *newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
@@ -92,6 +98,8 @@ namespace Avogadro {
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
     }
+    // enable export button
+    ui.exportButton->setEnabled(true);
   }
 
   void VibrationDialog::accept()
@@ -102,11 +110,17 @@ namespace Avogadro {
 
   void VibrationDialog::currentCellChanged(int, int, int row, int)
   {
+    if (row != -1) {
+      ui.animationButton->setEnabled(true);
+    }
     emit selectedMode(row);
   }
 
   void VibrationDialog::cellClicked(int row, int)
   {
+    if (row != -1) {
+      ui.animationButton->setEnabled(true);
+    }
     emit selectedMode(row);
   }
 
@@ -136,7 +150,47 @@ namespace Avogadro {
 
     emit toggleAnimation();
   }
+  
+  void VibrationDialog::exportVibrationData(bool)
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
 
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Export Vibrational Data"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
+    
+    QFile file (filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+      qDebug() << "Cannot open file " << filename << " for writing!";
+      return;
+    }
+
+    OBMol obmol = m_molecule->OBMol();
+    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+    if (!m_vibrations) {
+      qDebug("No vibration data, but export button is enabled? Something is broken.");
+      return;
+    }
+
+    vector<double> frequencies = m_vibrations->GetFrequencies();
+
+    vector<double> intensities = m_vibrations->GetIntensities();
+
+    QTextStream out(&file);
+    QString format = "%1\t%2\n";
+
+    out << "Frequencies\tIntensities\n";
+
+    for (unsigned int line = 0; line < frequencies.size(); ++line) {
+      out << format.arg(frequencies[line], 0, 'f', 2).arg(intensities[line], 0, 'f', 2);
+    }
+    
+    file.close();
+
+    return;
+  }
 }
 
 #include "vibrationdialog.moc"

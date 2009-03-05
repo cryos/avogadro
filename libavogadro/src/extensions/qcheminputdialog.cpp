@@ -58,8 +58,6 @@ namespace Avogadro
         this, SLOT(setMultiplicity(int)));
     connect(ui.chargeSpin, SIGNAL(valueChanged(int)),
         this, SLOT(setCharge(int)));
-    connect(ui.outputCombo, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(setOutput(int)));
     connect(ui.coordCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCoords(int)));
     connect(ui.previewText, SIGNAL(cursorPositionChanged()),
@@ -205,79 +203,21 @@ namespace Avogadro
 
   void QChemInputDialog::setCalculation(int n)
   {
-    switch (n)
-    {
-      case 0:
-        m_calculationType = SP;
-        break;
-      case 1:
-        m_calculationType = OPT;
-        break;
-      case 2:
-        m_calculationType = FREQ;
-        break;
-      default:
-        m_calculationType = SP;
-    }
+    m_calculationType = (QChemInputDialog::calculationType) n;
     updatePreviewText();
   }
 
   void QChemInputDialog::setTheory(int n)
   {
-    switch (n)
-    {
-      case 0:
-        m_theoryType = AM1;
-        break;
-      case 1:
-        m_theoryType = PM3;
-        break;
-      case 2:
-        m_theoryType = RHF;
-        break;
-      case 3:
-        m_theoryType = B3LYP;
-        break;
-      case 4:
-        m_theoryType = MP2;
-        break;
-      case 5:
-        m_theoryType = CCSD;
-        break;
-      default:
-        m_theoryType = RHF;
-    }
-
-    if (m_theoryType == AM1 || m_theoryType == PM3)
-      ui.basisCombo->setEnabled(false);
-    else
-      ui.basisCombo->setEnabled(true);
+    m_theoryType = (QChemInputDialog::theoryType) n;
+    ui.basisCombo->setEnabled(true);
 
     updatePreviewText();
   }
 
   void QChemInputDialog::setBasis(int n)
   {
-    switch (n)
-    {
-      case 0:
-        m_basisType = STO3G;
-        break;
-      case 1:
-        m_basisType = B321G;
-        break;
-      case 2:
-        m_basisType = B631Gd;
-        break;
-      case 3:
-        m_basisType = B631Gdp;
-        break;
-      case 4:
-        m_basisType = LANL2DZ;
-        break;
-      default:
-        m_basisType = B631Gd;
-    }
+    m_basisType = (QChemInputDialog::basisType) n;
     updatePreviewText();
   }
 
@@ -292,34 +232,9 @@ namespace Avogadro
     updatePreviewText();
   }
 
-  void QChemInputDialog::setOutput(int n)
-  {
-    switch (n) {
-      case 1:
-        m_output = "   GUI=2\n";
-        break;
-      default:
-        m_output = "";
-    }
-    updatePreviewText();
-  }
-
   void QChemInputDialog::setCoords(int n)
   {
-    switch (n)
-    {
-      case 0:
-        m_coordType = CARTESIAN;
-        break;
-      case 1:
-        m_coordType = ZMATRIX;
-        break;
-      case 2:
-        m_coordType = ZMATRIX_COMPACT;
-        break;
-      default:
-        m_coordType = CARTESIAN;
-    }
+    m_coordType = (QChemInputDialog::coordType) n;
     updatePreviewText();
   }
 
@@ -335,15 +250,12 @@ namespace Avogadro
     // Now for the calculation type
     mol << "   JOBTYPE " << getCalculationType(m_calculationType) << "\n";
 
-    // Now specify the job type etc
+    // Now specify the job type and basis set
     mol << "   EXCHANGE " << getTheoryType(m_theoryType) << "\n";
-
-    // Not all theories have a basis set
-    if (m_theoryType != AM1 && m_theoryType != PM3)
-      mol << "   BASIS " << getBasisType(m_basisType) << "\n";
+    mol << "   " << getBasisType(m_basisType) << "\n";
 
     // Output parameters for some programs
-    mol << m_output;
+    mol << "   GUI=2\n";
 
     // End the job spec section
     mol << "$end\n\n";
@@ -503,7 +415,7 @@ namespace Avogadro
       case OPT:
         return "Opt";
       case FREQ:
-        return "Opt Freq";
+        return "Freq";
       default:
         return "SP";
     }
@@ -513,19 +425,21 @@ namespace Avogadro
   {
     // Translate the enum to text for the output generation
     switch (t)
-    {
-      case AM1:
-        return "AM1";
-      case PM3:
-        return "PM3";
+    {//   enum theoryType{RHF, B3LYP, B3LYP5, EDF1, M062X, MP2, CCSD}
       case RHF:
         return "RHF";
       case B3LYP:
         return "B3LYP";
+      case B3LYP5:
+        return "B3LYP5";
+      case EDF1:
+        return "EDF1";
+      case M062X:
+        return "M062X";
       case MP2:
-        return "MP2";
+        return "HF\n   CORRELATION MP2";
       case CCSD:
-        return "CCSD";
+        return "HF\n   CORRELATION CCSD";
       default:
         return "RHF";
     }
@@ -537,15 +451,25 @@ namespace Avogadro
     switch (t)
     {
       case STO3G:
-        return "STO-3G";
+        return "BASIS STO-3G";
       case B321G:
-        return "3-21G";
+        return "BASIS 3-21G";
       case B631Gd:
-        return "6-31G(d)";
+        return "BASIS 6-31G(d)";
       case B631Gdp:
-        return "6-31G(d,p)";
+        return "BASIS 6-31G(d,p)";
+      case B631plusGd:
+        return "BASIS 6-31+G(d)";
+      case B6311Gd:
+        return "BASIS 6-311G(d)";
+      case ccpVDZ:
+        return "BASIS cc-pVDZ";
+      case ccpVTZ:
+        return "BASIS cc-pVTZ";
       case LANL2DZ:
-        return "LANL2DZ";
+        return "ECP LANL2DZ";
+      case LACVP:
+        return "ECP LACVP";
       default:
         return "6-31G(d)";
     }
@@ -560,7 +484,6 @@ namespace Avogadro
     ui.basisCombo->setEnabled(!dirty);
     ui.multiplicitySpin->setEnabled(!dirty);
     ui.chargeSpin->setEnabled(!dirty);
-    ui.outputCombo->setEnabled(!dirty);
     ui.enableFormButton->setEnabled(dirty);
   }
 

@@ -131,7 +131,7 @@ namespace Avogadro
       model = new PropertiesModel(PropertiesModel::AtomType);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::AtomType);
+      view = new PropertiesView(PropertiesView::AtomType, widget);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       connect(m_molecule, SIGNAL( atomAdded(Atom*) ), model, SLOT( atomAdded(Atom*) ));
       connect(m_molecule, SIGNAL( atomRemoved(Atom*) ), model, SLOT( atomRemoved(Atom*) ));
@@ -146,7 +146,7 @@ namespace Avogadro
       model = new PropertiesModel(PropertiesModel::BondType);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::BondType);
+      view = new PropertiesView(PropertiesView::BondType, widget);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       connect(m_molecule, SIGNAL( bondAdded(Bond*) ), model, SLOT( bondAdded(Bond*) ));
       connect(m_molecule, SIGNAL( bondRemoved(Bond*) ), model, SLOT( bondRemoved(Bond*) ));
@@ -161,7 +161,7 @@ namespace Avogadro
       model = new PropertiesModel(PropertiesModel::AngleType);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::AngleType);
+      view = new PropertiesView(PropertiesView::AngleType, widget);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
       //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
@@ -176,7 +176,7 @@ namespace Avogadro
       model = new PropertiesModel(PropertiesModel::TorsionType);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::TorsionType);
+      view = new PropertiesView(PropertiesView::TorsionType, widget);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
       //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
@@ -191,7 +191,7 @@ namespace Avogadro
       model = new PropertiesModel(PropertiesModel::CartesianType);
       model->setMolecule( m_molecule );
       // m_view will delete itself in PropertiesView::hideEvent using deleteLater().
-      view = new PropertiesView(PropertiesView::CartesianType);
+      view = new PropertiesView(PropertiesView::CartesianType, widget);
       connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       connect(m_molecule, SIGNAL( atomAdded(Atom*) ), model, SLOT( atomAdded(Atom*) ));
       connect(m_molecule, SIGNAL( atomRemoved(Atom*) ), model, SLOT( atomRemoved(Atom*) ));
@@ -202,7 +202,7 @@ namespace Avogadro
       view->show();
       break;
     case ConformerIndex: // conformers
-      QDialog *dialog = new QDialog();
+      QDialog *dialog = new QDialog(widget);
       QVBoxLayout *layout = new QVBoxLayout(dialog);
       layout->setSpacing(0);
       layout->setContentsMargins(0,0,0,0);

@@ -23,7 +23,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -77,7 +77,7 @@
    </widget>
    <widget class="QMenu" name="menuSettings" >
     <property name="title" >
-     <string>Settings</string>
+     <string>Se&amp;ttings</string>
     </property>
     <widget class="QMenu" name="menuToolbars" >
      <property name="title" >
@@ -126,7 +126,7 @@
    </widget>
    <widget class="QMenu" name="menuExtensions" >
     <property name="title" >
-     <string>&amp;Extensions</string>
+     <string>E&amp;xtensions</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuSelect" >
@@ -172,8 +172,8 @@
   <widget class="QDockWidget" name="projectDock" >
    <property name="minimumSize" >
     <size>
-     <width>108</width>
-     <height>129</height>
+     <width>120</width>
+     <height>135</height>
     </size>
    </property>
    <property name="allowedAreas" >

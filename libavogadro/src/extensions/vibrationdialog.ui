@@ -104,8 +104,18 @@
     <layout class="QHBoxLayout" name="horizontalLayout" >
      <item>
       <widget class="QPushButton" name="animationButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
        <property name="text" >
         <string>Start Animation</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportButton" >
+       <property name="text" >
+        <string>Export...</string>
        </property>
       </widget>
      </item>

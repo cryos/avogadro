@@ -183,7 +183,7 @@ namespace Avogadro
 
   QString ShaderExtension::menuPath(QAction*) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   QUndoCommand* ShaderExtension::performAction(QAction *, GLWidget *widget)

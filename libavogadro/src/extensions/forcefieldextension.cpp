@@ -139,7 +139,7 @@ namespace Avogadro
     if (i == OptimizeGeometryIndex)
       return QString();
 
-    return tr("&Extensions") + '>' + tr("&Molecular Mechanics");
+    return tr("E&xtensions") + '>' + tr("&Molecular Mechanics");
   }
 
   void ForceFieldExtension::setMolecule(Molecule *molecule)
