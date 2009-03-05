@@ -90,7 +90,7 @@ namespace Avogadro {
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
 
-    for (unsigned int row = 0; row <= frequencies.size(); ++row) {
+    for (unsigned int row = 0; row < frequencies.size(); ++row) {
       QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       QTableWidgetItem *newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
