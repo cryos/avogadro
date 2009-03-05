@@ -72,7 +72,7 @@ namespace Avogadro
 
   QString GaussianExtension::menuPath(QAction*) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   QUndoCommand* GaussianExtension::performAction(QAction *action, GLWidget *widget)
