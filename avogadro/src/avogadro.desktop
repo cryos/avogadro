@@ -1,10 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Encoding=UTF-8
 Name=Avogadro
 Comment=Advanced molecular editor
 Exec=avogadro %f
-Icon=avogadro-icon
+Icon=avogadro_icon
 Terminal=false
 Type=Application
 Categories=Qt;Science;Chemistry;Physics;Education;
