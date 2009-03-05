@@ -110,11 +110,17 @@ namespace Avogadro {
 
   void VibrationDialog::currentCellChanged(int, int, int row, int)
   {
+    if (row != -1) {
+      ui.animationButton->setEnabled(true);
+    }
     emit selectedMode(row);
   }
 
   void VibrationDialog::cellClicked(int row, int)
   {
+    if (row != -1) {
+      ui.animationButton->setEnabled(true);
+    }
     emit selectedMode(row);
   }
 
