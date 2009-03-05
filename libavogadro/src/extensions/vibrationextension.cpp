@@ -72,7 +72,7 @@ namespace Avogadro {
 
   QString VibrationExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   void VibrationExtension::setMolecule(Molecule *molecule)

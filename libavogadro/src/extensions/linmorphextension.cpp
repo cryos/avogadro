@@ -100,7 +100,7 @@ namespace Avogadro
   // allows us to set the intended menu path for each action
   QString LinMorphExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
 

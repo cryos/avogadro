@@ -74,7 +74,7 @@ namespace Avogadro {
 
   QString AnimationExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   void AnimationExtension::setMolecule(Molecule *molecule)

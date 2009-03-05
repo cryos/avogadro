@@ -80,7 +80,7 @@ namespace Avogadro {
 
   QString WiiTrackExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions") + '>' + tr("&WiiTrack");
+    return tr("E&xtensions") + '>' + tr("&WiiTrack");
   }
 
   QUndoCommand* WiiTrackExtension::performAction(QAction *action,
