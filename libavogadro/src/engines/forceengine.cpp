@@ -25,17 +25,10 @@
 #include "forceengine.h"
 
 #include <config.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
-#include <avogadro/glwidget.h>
 #include <avogadro/painterdevice.h>
 
-#include <QMessageBox>
-#include <QString>
-#include <QDebug>
-
-using namespace std;
-using namespace Eigen;
+using Eigen::Vector3d;
 
 namespace Avogadro {
 
@@ -76,16 +69,15 @@ namespace Avogadro {
 
     // Use the camera and painter device to "float" the arrows
     // in front of the atom. This is similar to the label engine code
-    double renderRadius = pd->radius(atom) + 0.05;
-    Vector3d zAxis = pd->camera()->backTransformedZAxis();
-    Vector3d drawPos = v1 + zAxis * renderRadius;
+    double renderRadius = pd->radius(atom);
+    Vector3d drawPos = v1 + forceVector.normalized() * renderRadius;
 
     // now based on our "drawing" position, we calculate a displacement
-    Vector3d v2 = drawPos + atom->forceVector();
-    Vector3d v3 = drawPos + 0.8 * atom->forceVector();
+    Vector3d v2 = drawPos + forceVector;
+    Vector3d v3 = drawPos + 0.8 * forceVector;
 
-    pd->painter()->drawLine(drawPos, v2, 2);
-    pd->painter()->drawCone(v3, v2, 0.1);
+    pd->painter()->drawLine(drawPos, v3, 2);
+    pd->painter()->drawCone(v3, v2, 0.05);
 
     return true;
   }
