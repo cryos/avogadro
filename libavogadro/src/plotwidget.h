@@ -30,15 +30,14 @@
 #define PLOTWIDGET_H
 
 #include <avogadro/global.h>
+#include <avogadro/plotaxis.h>
+#include <avogadro/plotpoint.h>
+#include <avogadro/plotobject.h>
 
 #include <QtGui/QFrame>
 #include <QtCore/QList>
 
 namespace Avogadro {
-
-class PlotAxis;
-class PlotObject;
-class PlotPoint;
 
     /**
      *@class PlotWidget

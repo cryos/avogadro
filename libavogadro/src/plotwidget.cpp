@@ -150,11 +150,11 @@ namespace Avogadro {
 
   void PlotWidget::Private::calcDataRectLimits( double x1, double x2, double y1, double y2 )
   {
+    // Removed limit checking, since IR spectra need the x-axis to run
+    // from 4000 -> 400, not the other way around.
     double XA1, XA2, YA1, YA2;
-    if (x2<x1) { XA1=x2; XA2=x1; }
-    else { XA1=x1; XA2=x2; }
-    if ( y2<y1) { YA1=y2; YA2=y1; }
-    else { YA1=y1; YA2=y2; }
+    XA1=x1; XA2=x2;
+    YA1=y1; YA2=y2;
 
     if ( XA2 == XA1 ) {
       qDebug() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
@@ -177,11 +177,10 @@ namespace Avogadro {
   }
 
   void PlotWidget::setSecondaryLimits( double x1, double x2, double y1, double y2 ) {
+    // Again, removed limit checking. Just be careful with it ;)
     double XA1, XA2, YA1, YA2;
-    if (x2<x1) { XA1=x2; XA2=x1; }
-    else { XA1=x1; XA2=x2; }
-    if ( y2<y1) { YA1=y2; YA2=y1; }
-    else { YA1=y1; YA2=y2; }
+    XA1=x1; XA2=x2;
+    YA1=y1; YA2=y2;
 
     if ( XA2 == XA1 ) {
       qDebug() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
