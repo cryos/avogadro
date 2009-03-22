@@ -1,54 +1,61 @@
-/*  -*- C++ -*-
-    This file is part of the KDE libraries
-    Copyright (C) 2005 Andreas Nicolai <Andreas.Nicolai@gmx.net>
+/**********************************************************************
+  PlotAxis -- Part of the Avogadro 2D plotting interface
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+  Copyright (C) 2003 Jason Harris <kstars@30doradus.org> (KDE)
+  Copyright (C) 2008 David Lonie <loniedavid@gmail.com> (Avogadro)
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.openmolecules.net/>
 
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
-*/
+  This file is based on KPlotWidget from the KDE library. For more
+  information see <http://www.kde.org/>
 
-#ifndef KPLOTAXIS_H
-#define KPLOTAXIS_H
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-// Removed from avogadro
-// #include <kdeui_export.h>
+  Avogadro is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
+
+#ifndef PLOTAXIS_H
+#define PLOTAXIS_H
 
 #include <QtCore/QString>
 #include <QtCore/QList>
 
-/**
- * @short Axis for KPlotWidget
- *
- * Contains all data for drawing an axis including format specification axis labels.
- *
- * @author Andreas Nicolai
- * @version 1.0
- */
-// avogadro change
-//class KDEUI_EXPORT KPlotAxis {
-class KPlotAxis {
-public:
+#include <avogadro/global.h>
+
+namespace Avogadro {
+
+  /**
+   * @short Axis for PlotWidget
+   *
+   * Contains all data for drawing an axis including format specification axis labels.
+   *
+   * @author Andreas Nicolai
+   * @version 1.0
+   */
+  class A_EXPORT PlotAxis {
+  public:
 
     /**
      * Constructor, constructs an axis with the label @p label.
      */
-    explicit KPlotAxis( const QString& label = QString() );
+    explicit PlotAxis( const QString& label = QString() );
 
     /**
      * Destructor.
      */
-    ~KPlotAxis();
+    ~PlotAxis();
 
     /**
      * @return whether the axis is visible or not
@@ -57,7 +64,7 @@ public:
 
     /**
      * Sets the "visible" property of the axis.
-     * @param visible if true, this axis will be drawn on the KPlotWidget
+     * @param visible if true, this axis will be drawn on the PlotWidget
      */
     void setVisible( bool visible );
 
@@ -130,7 +137,7 @@ public:
 
     /**
      * Determine the positions of major and minor tickmarks for this axis.
-     * @note this function is called by KPlotWidget whenever the plot's 
+     * @note this function is called by PlotWidget whenever the plot's 
      * limits are modified.
      * @param x0 the minimum data coordinate of the axis.
      * @param length the range covered by the axis, in data units.
@@ -155,11 +162,13 @@ public:
      */
     QList< double > minorTickMarks() const;
 
-private:
+  private:
     class Private;
     Private * const d;
 
-    Q_DISABLE_COPY( KPlotAxis )
-};
+    Q_DISABLE_COPY( PlotAxis )
+  };
 
-#endif // KPLOTAXIS_H
+}
+
+#endif // PLOTAXIS_H

@@ -1,62 +1,70 @@
-/*  -*- C++ -*-
-    This file is part of the KDE libraries
-    Copyright (C) 2003 Jason Harris <kstars@30doradus.org>
+/**********************************************************************
+  PlotObject -- Part of the Avogadro 2D plotting interface
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+  Copyright (C) 2003 Jason Harris <kstars@30doradus.org> (KDE)
+  Copyright (C) 2008 David Lonie <loniedavid@gmail.com> (Avogadro)
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+  This file is part of the Avogadro molecular editor project.
+  For more information, see <http://avogadro.openmolecules.net/>
 
-    You should have received a copy of the GNU Library General Public License
-    along with this library; see the file COPYING.LIB.  If not, write to
-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1301, USA.
-*/
+  This file is based on KPlotWidget from the KDE library. For more
+  information see <http://www.kde.org/>
 
-#ifndef KPLOTOBJECT_H
-#define KPLOTOBJECT_H
+  Avogadro is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-// Removed from avogadro
-// #include <kdeui_export.h>
+  Avogadro is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
+
+#ifndef PLOTOBJECT_H
+#define PLOTOBJECT_H
 
 #include <QtCore/QString>
 #include <QtGui/QColor>
+
+#include <avogadro/global.h>
 
 class QBrush;
 class QPainter;
 class QPen;
 class QPointF;
-class KPlotWidget;
-class KPlotPoint;
 
-/**
- * @class KPlotObject
- * @short Encapsulates a data set to be plotted in a KPlotWidget.
- *
- * Think of a KPlotObject as a set of data displayed as a group in the plot.
- * Each KPlotObject consists of a list of KPlotPoints, a "type" controlling 
- * how the data points are displayed (some combination of Points, Lines, or
- * Bars), a color, and a size. There is also a parameter which controls the
- * shape of the points used to display the KPlotObject.
- *
- * @note KPlotObject will take care of the points added to it, so when clearing
- * the points list (eg with clearPoints()) any previous reference to a KPlotPoint
- * already added to a KPlotObject will be invalid.
- *
- * @author Jason Harris
- * @version 1.1
- */
-// avogadro change
-//class KDEUI_EXPORT KPlotObject{
-class KPlotObject{
-public:
+namespace Avogadro {
+
+class PlotWidget;
+class PlotPoint;
+
+  /**
+   * @class PlotObject
+   * @short Encapsulates a data set to be plotted in a PlotWidget.
+   *
+   * Think of a PlotObject as a set of data displayed as a group in the plot.
+   * Each PlotObject consists of a list of PlotPoints, a "type" controlling 
+   * how the data points are displayed (some combination of Points, Lines, or
+   * Bars), a color, and a size. There is also a parameter which controls the
+   * shape of the points used to display the PlotObject.
+   *
+   * @note PlotObject will take care of the points added to it, so when clearing
+   * the points list (eg with clearPoints()) any previous reference to a PlotPoint
+   * already added to a PlotObject will be invalid.
+   *
+   * @author Jason Harris
+   * @version 1.1
+   */
+  class A_EXPORT PlotObject{
+  public:
     /**
-     * The type classification of the KPlotObject.
+     * The type classification of the PlotObject.
      *
      * These are bitmask values that can be OR'd together, so that a set
      * of points can be represented in the plot in multiple ways.
@@ -65,12 +73,12 @@ public:
      * when using Bars.
      */
     enum PlotType
-    {
+      {
         UnknownType = 0,
-        Points = 1,       ///< each KPlotPoint is represented with a drawn point
-        Lines = 2,        ///< each KPlotPoint is connected with a line
-        Bars = 4          ///< each KPlotPoint is shown as a vertical bar
-    };
+        Points = 1,       ///< each PlotPoint is represented with a drawn point
+        Lines = 2,        ///< each PlotPoint is connected with a line
+        Bars = 4          ///< each PlotPoint is shown as a vertical bar
+      };
     Q_DECLARE_FLAGS( PlotTypes, PlotType )
 
     /**
@@ -78,16 +86,16 @@ public:
      */
     enum PointStyle
     {
-        NoPoints = 0,
-        Circle = 1,
-        Letter = 2,
-        Triangle = 3,
-        Square = 4,
-        Pentagon = 5,
-        Hexagon = 6,
-        Asterisk = 7,
-        Star = 8,
-        UnknwonPoint
+      NoPoints = 0,
+      Circle = 1,
+      Letter = 2,
+      Triangle = 3,
+      Square = 4,
+      Pentagon = 5,
+      Hexagon = 6,
+      Asterisk = 7,
+      Star = 8,
+      UnknwonPoint
     };
 
     /**
@@ -99,12 +107,12 @@ public:
      * @param size the size to use for plotted points, in pixels
      * @param ps The PointStyle describing the shape for plotted points
      */
-    explicit KPlotObject( const QColor &color = Qt::white, PlotType otype = Points, double size = 2, PointStyle ps = Circle );
+    explicit PlotObject( const QColor &color = Qt::white, PlotType otype = Points, double size = 2, PointStyle ps = Circle );
 
     /**
      * Destructor.
      */
-    ~KPlotObject();
+    ~PlotObject();
 
     /**
      * @return the plot flags of the object
@@ -220,36 +228,36 @@ public:
     void setBarBrush( const QBrush &b );
 
     /**
-     * @return the list of KPlotPoints that make up this object
+     * @return the list of PlotPoints that make up this object
      */
-    QList< KPlotPoint* > points() const;
+    QList< PlotPoint* > points() const;
 
     /**
-     * Add a point to the object's list of points, using input data to construct a KPlotPoint.
+     * Add a point to the object's list of points, using input data to construct a PlotPoint.
      * @param p the QPointF to add.
      * @param label the optional text label for this point
      * @param barWidth the width of the bar, if this object is to be drawn with bars
      * @note if @param barWidth is left at its default value of 0.0, then the width will be 
-		 * automatically set to the distance between this point and the one to its right.
+     * automatically set to the distance between this point and the one to its right.
      */
     void addPoint( const QPointF &p, const QString &label = QString(), double barWidth = 0.0 );
 
     /**
-     * Add a given KPlotPoint to the object's list of points.
+     * Add a given PlotPoint to the object's list of points.
      * @overload
-     * @param p pointer to the KPlotPoint to add.
+     * @param p pointer to the PlotPoint to add.
      */
-    void addPoint( KPlotPoint *p );
+    void addPoint( PlotPoint *p );
 
     /**
-     * Add a point to the object's list of points, using input data to construct a KPlotPoint.
+     * Add a point to the object's list of points, using input data to construct a PlotPoint.
      * @overload
      * @param x the X-coordinate of the point to add.
      * @param y the Y-coordinate of the point to add.
      * @param label the optional text label
      * @param barWidth the width of the bar, if this object is to be drawn with bars
      * @note if @param barWidth is left at its default value of 0.0, then the width will be 
-		 * automatically set to the distance between this point and the one to its right.
+     * automatically set to the distance between this point and the one to its right.
      */
     void addPoint( double x, double y, const QString &label = QString(), double barWidth = 0.0 );
 
@@ -265,19 +273,20 @@ public:
     void clearPoints();
 
     /**
-     * Draw this KPlotObject on the given QPainter
+     * Draw this PlotObject on the given QPainter
      * @param p The QPainter to draw on
-     * @param pw the KPlotWidget to draw on (this is needed 
-     * for the KPlotWidget::mapToWidget() function)
+     * @param pw the PlotWidget to draw on (this is needed 
+     * for the PlotWidget::mapToWidget() function)
      */
-    void draw( QPainter *p, KPlotWidget *pw );
+    void draw( QPainter *p, PlotWidget *pw );
 
-private:
+  private:
     class Private;
     Private * const d;
 
-    Q_DISABLE_COPY( KPlotObject )
-};
-Q_DECLARE_OPERATORS_FOR_FLAGS( KPlotObject::PlotTypes )
+    Q_DISABLE_COPY( PlotObject )
+  };
+  Q_DECLARE_OPERATORS_FOR_FLAGS( PlotObject::PlotTypes )
 
+}
 #endif

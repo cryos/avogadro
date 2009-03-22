@@ -40,10 +40,10 @@ set(libavogadro_HDRS
   glwidget.h
   global.h
   idlist.h
-  kplotaxis.h # dlonie: Are these necessary here?
-  kplotobject.h
-  kplotpoint.h
-  kplotwidget.h
+  plotaxis.h # dlonie: Are these necessary here?
+  plotobject.h
+  plotpoint.h
+  plotwidget.h
   line.h
   mesh.h
   meshgenerator.h
