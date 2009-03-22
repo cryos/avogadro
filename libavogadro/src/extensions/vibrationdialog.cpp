@@ -61,6 +61,8 @@ namespace Avogadro {
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
 	    this, SLOT(exportVibrationData(bool)));
+    connect(ui.plotButton, SIGNAL(clicked()),
+	    this, SLOT(plotVibrations()));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -135,6 +137,11 @@ namespace Avogadro {
     emit scaleUpdated(scale / 2.0);
   }
 
+  void VibrationDialog::setScale(double scale)
+  {
+    emit scaleUpdated(scale);
+  }
+
   void VibrationDialog::setDisplayForceVectors(bool checked)
   {
     emit setEnabledForceVector(checked);
@@ -191,6 +198,17 @@ namespace Avogadro {
 
     return;
   }
-}
+
+  void VibrationDialog::plotVibrations() {
+    qDebug("VibrationDialog: plotVibrations called");
+    qDebug("VibrationDialog: Calling vibrationplot Constructor");
+    m_plot = new VibrationPlot(this);
+    qDebug("VibrationDialog: Preparing to show plot dialog");
+    m_plot->show();
+    m_plot->raise();
+    m_plot->activateWindow();
+  }
+
+} // namespace Avogadro
 
 #include "vibrationdialog.moc"
