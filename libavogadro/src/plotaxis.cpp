@@ -27,7 +27,7 @@
  **********************************************************************/
 
 #include "plotaxis.h"
-
+#include <QDebug>
 #include <math.h> //for log10(), pow(), modf()
 
 namespace Avogadro {
@@ -126,9 +126,12 @@ namespace Avogadro {
     //s is the power-of-ten factor of length:
     //length = t * s; s = 10^(pwr).  e.g., length=350.0 then t=3.5, s = 100.0; pwr = 2.0
     double pwr = 0.0;
-    modf( log10( length ), &pwr );
+    if (length > 0)	modf( log10( length ), &pwr );
+    if (length < 0)	modf( log10(-length ), &pwr );
     double s = pow( 10.0, pwr );
-    double t = length / s;
+    double t = 0;
+    if (length > 0)	t = length / s;
+    if (length < 0)	t =-length / s;
 
     double TickDistance = 0.0; //The distance between major tickmarks
     int NumMajorTicks = 0; //will be between 3 and 5
@@ -169,17 +172,33 @@ namespace Avogadro {
       Tick0 -= TickDistance;
       NumMajorTicks++;
     }
-
+    
+    if (length < 0) {
+      TickDistance *= -1;
+    }
+    
+//     if (length < 0)
+//       qDebug() << "---NumMajorTicks " << NumMajorTicks;
+//       qDebug() << "NumMinorTicks " << NumMinorTicks;
+//       qDebug() << "TickDistance " << TickDistance;
+//       qDebug() << "Tick0 " << Tick0;
+//       qDebug() << "t " << t;
+//       qDebug() << "s " << s;
+//     }
+    
     for ( int i=0; i<NumMajorTicks+1; i++ ) {
       double xmaj = Tick0 + i*TickDistance;
-      if ( xmaj >= x0 && xmaj <= x0 + length ) {
+      if ( (length > 0 && xmaj >= x0 && xmaj <= x0 + length) || (length < 0 && xmaj <= x0 && xmaj >= x0 + length) ) {
 	d->m_MajorTickMarks.append( xmaj );
+	if (length < 0) qDebug() << "Major tick added: " << xmaj;
       }
 
       for ( int j=1; j<NumMinorTicks; j++ ) {
 	double xmin = xmaj + TickDistance*j/NumMinorTicks;
-	if ( xmin >= x0 && xmin <= x0 + length ) 
+	if ( (length > 0 && xmin >= x0 && xmin <= x0 + length) || (length < 0 && xmin <= x0 && xmin >= x0 + length) ) {
 	  d->m_MinorTickMarks.append( xmin );
+	  if (length < 0) qDebug() << "Minor tick added: " << xmin;
+	}
       }
     }
   }
