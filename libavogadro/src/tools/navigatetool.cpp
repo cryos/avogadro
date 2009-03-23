@@ -260,7 +260,7 @@ namespace Avogadro {
         if (event->modifiers() == Qt::NoModifier)
           Navigate::rotate(widget, m_referencePoint, 0, -5);
         else if (event->modifiers() & Qt::ShiftModifier)
-          Navigate::zoom(widget, m_referencePoint, -5);
+          Navigate::zoom(widget, m_referencePoint, -2);
         else if (event->modifiers() & Qt::ControlModifier)
           Navigate::translate(widget, m_referencePoint, 0, -5);
         event->accept();
@@ -269,7 +269,7 @@ namespace Avogadro {
         if (event->modifiers() == Qt::NoModifier)
           Navigate::rotate(widget, m_referencePoint, 0, 5);
         else if (event->modifiers() & Qt::ShiftModifier)
-          Navigate::zoom(widget, m_referencePoint, 5);
+          Navigate::zoom(widget, m_referencePoint, 2);
         else if (event->modifiers() & Qt::ControlModifier)
           Navigate::translate(widget, m_referencePoint, 0, 5);
         event->accept();

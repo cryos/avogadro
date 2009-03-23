@@ -151,71 +151,67 @@ namespace Avogadro {
     }
 
     const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
-    if (!sg) {
-      qDebug() << "No spacegroup found - fillCell() returning...";
-      return;
+    if (sg) {
+      // We operate on a copy of the Avogadro molecule
+      // For each atom, we loop through:
+      // * convert the coords back to inverse space
+      // * apply the transformations
+      // * create new (duplicate) atoms
+      OBMol mol = m_molecule->OBMol();
+      vector3 uniqueV, newV;
+      list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
+      list<vector3>::iterator transformIterator, duplicateIterator;
+      vector3 updatedCoordinate;
+      bool foundDuplicate;
+
+      OBAtom *addAtom;
+      QList<OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
+      list<vector3> coordinates; // all coordinates to prevent duplicates
+      FOR_ATOMS_OF_MOL(atom, mol)
+        atoms.push_back(&(*atom));
+
+      foreach(OBAtom *atom, atoms) {
+        uniqueV = atom->GetVector();
+        // Assert: won't crash because we already ensure uc != NULL
+        uniqueV *= uc->GetFractionalMatrix();
+        uniqueV = transformedFractionalCoordinate(uniqueV);
+        coordinates.push_back(uniqueV);
+
+        transformedVectors = sg->Transform(uniqueV);
+        for (transformIterator = transformedVectors.begin();
+             transformIterator != transformedVectors.end(); ++transformIterator) {
+          // coordinates are in reciprocal space -- check if it's in the unit cell
+          // if not, transform it in place
+          updatedCoordinate = transformedFractionalCoordinate(*transformIterator);
+          foundDuplicate = false;
+
+          // Check if the transformed coordinate is a duplicate of an atom
+          for (duplicateIterator = coordinates.begin();
+               duplicateIterator != coordinates.end(); ++duplicateIterator) {
+            if (duplicateIterator->distSq(updatedCoordinate) < 1.0e-4) {
+              foundDuplicate = true;
+              break;
+            }
+          }
+          if (foundDuplicate)
+            continue;
+
+          addAtom = mol.NewAtom();
+          addAtom->Duplicate(atom);
+          addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
+        } // end loop of transformed atoms
+
+        // Put the original atom into the proper space in the unit cell too
+        atom->SetVector(uc->GetOrthoMatrix() * uniqueV);
+      } // end loop of atoms
+
+      m_molecule->setOBMol(&mol);
+      qDebug() << "Spacegroups done...";
     }
 
-    // We operate on a copy of the Avogadro molecule
-    // For each atom, we loop through:
-    // * convert the coords back to inverse space
-    // * apply the transformations
-    // * create new (duplicate) atoms
-    OBMol mol = m_molecule->OBMol();
-    vector3 uniqueV, newV;
-    list<vector3> transformedVectors; // list of symmetry-defined copies of the atom
-    list<vector3>::iterator transformIterator, duplicateIterator;
-    vector3 updatedCoordinate;
-    bool foundDuplicate;
-
-    OBAtom *addAtom;
-    QList<OBAtom*> atoms; // keep the current list of unique atoms -- don't double-create
-    list<vector3>        coordinates; // all coordinates to prevent duplicates
-    FOR_ATOMS_OF_MOL(atom, mol)
-      atoms.push_back(&(*atom));
-
-    foreach(OBAtom *atom, atoms) {
-      uniqueV = atom->GetVector();
-      // Assert: won't crash because we already ensure uc != NULL
-      uniqueV *= uc->GetFractionalMatrix();
-      uniqueV = transformedFractionalCoordinate(uniqueV);
-      coordinates.push_back(uniqueV);
-
-      transformedVectors = sg->Transform(uniqueV);
-      for (transformIterator = transformedVectors.begin();
-           transformIterator != transformedVectors.end(); ++transformIterator) {
-        // coordinates are in reciprocal space -- check if it's in the unit cell
-        // if not, transform it in place
-        updatedCoordinate = transformedFractionalCoordinate(*transformIterator);
-        foundDuplicate = false;
-
-        // Check if the transformed coordinate is a duplicate of an atom
-        for (duplicateIterator = coordinates.begin();
-              duplicateIterator != coordinates.end(); ++duplicateIterator) {
-          if (duplicateIterator->distSq(updatedCoordinate) < 1.0e-4) {
-            foundDuplicate = true;
-            break;
-          }
-        }
-
-        if (foundDuplicate)
-          continue;
-
-        addAtom = mol.NewAtom();
-        addAtom->Duplicate(atom);
-        addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
-      } // end loop of transformed atoms
-
-      // Put the original atom into the proper space in the unit cell too
-      atom->SetVector(uc->GetOrthoMatrix() * uniqueV);
-    } // end loop of atoms
-
-    m_molecule->setOBMol(&mol);
     // Remove any bonds that may have snook in
     foreach(Bond *b, m_molecule->bonds())
       m_molecule->removeBond(b);
-
-    qDebug() << "Spacegroups done...";
 
     // Now duplicate the entire cell so that inter-cell bonding can be done
     duplicateUnitCell();
