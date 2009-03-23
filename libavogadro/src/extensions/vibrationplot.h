@@ -54,21 +54,22 @@ namespace Avogadro {
       void setMolecule(Molecule *molecule);
 
     public slots:
-      void accept();
-      void reject();
-
       void setScale(int scale);
       void setScale(double scale);
       void exportVibrationPlot(bool);
 
+    private slots:
+      void drawVibrationSpectra();
+      void updateScaleEdit();
+
     signals:
-      void scaleUpdated(double scale);
+      void scaleUpdated();
 
     private:
       Ui::VibrationPlot ui;
       
-      PlotObject *vibrationPlotObject;
-
+      PlotObject *m_vibrationPlotObject;
+      double m_scale;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
   };

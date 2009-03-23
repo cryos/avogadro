@@ -29,6 +29,7 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QDebug>
+#include <QDoubleValidator>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -45,15 +46,26 @@ namespace Avogadro {
   {
     qDebug("VibrationPlot: Constructor called");
     ui.setupUi(this);
-    qDebug("Are we getting this far?");
+    
+    //TODO link the scale here to vibrationdialog
+    m_scale = 1.0;
+    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
+    ui.scaleEdit->setValidator( new QDoubleValidator (0.5, 1.5, 2, ui.scaleEdit) );
+    ui.scaleSlider->setSliderPosition( static_cast<int>((m_scale - 0.5) * 100) );
+
     // setting the limits for the plot
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
+    ui.plot->setMinimumSize( 800, 500 );
+    ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel("Wavenumber (cm^(-1))");
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel("Transmittance");
-    //TODO: Set system colors
 
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
+    connect(this, SIGNAL(scaleUpdated()),
+	     this, SLOT(drawVibrationSpectra()));
+    connect(this, SIGNAL(scaleUpdated()),
+	    this, SLOT(updateScaleEdit()));
   }
 
   VibrationPlot::~VibrationPlot()
@@ -65,8 +77,39 @@ namespace Avogadro {
   {
     qDebug("VibrationPlot: setMolecule called");
     m_molecule = molecule;
+    
+    drawVibrationSpectra();
+  }
 
-    OBMol obmol = molecule->OBMol();
+  void VibrationPlot::setScale(int scale)
+  {
+    qDebug() << scale;
+    double newScale = scale / 100.0 + 0.5;
+    if (newScale == m_scale) {
+      return;
+    }
+    m_scale = newScale;
+    qDebug() << m_scale;
+    emit scaleUpdated();
+  }
+
+  void VibrationPlot::setScale(double scale)
+  {
+    if (scale == m_scale) {
+      return;
+    }
+    m_scale = scale;
+    emit scaleUpdated();
+  }
+  
+  void VibrationPlot::updateScaleEdit(){
+    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
+  }
+  
+  void VibrationPlot::drawVibrationSpectra()
+  {
+    qDebug() << "Drawing spectra...";
+    OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
       qWarning() << "No vibrations to plot!";
@@ -77,18 +120,20 @@ namespace Avogadro {
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
 
-#warning: dlonie: remove this!!
+#warning: dlonie: remove this!! Hack to get around bug in how open babel reads in QChem files
     // While openbabel is broken, remove indicies (n+3), where
     // n=0,1,2...
-    uint count = 0;
-    for (uint i = 0; i < intensities.size(); i++) {
-      if ((i+count)%3 == 0){
-	intensities.erase(intensities.begin()+i);
-	count++;
-	i--;
+    if (frequencies.size() == 0.75 * intensities.size()) {
+      uint count = 0;
+      for (uint i = 0; i < intensities.size(); i++) {
+	if ((i+count)%3 == 0){
+	  intensities.erase(intensities.begin()+i);
+	  count++;
+	  i--;
+	}
       }
     }
-    
+
     // Normalize intensities into transmittances
     double maxIntensity=0;
     vector<double> transmittances;
@@ -111,9 +156,10 @@ namespace Avogadro {
     }
 
     // Construct plot data
-    //TODO How to use system colors?    
-    vibrationPlotObject = new PlotObject( Qt::red, PlotObject::Lines, 2);
-    vibrationPlotObject->addPoint( 400, 1); // Initial point
+    ui.plot->removeAllPlotObjects();
+    m_vibrationPlotObject = new PlotObject( Qt::red, PlotObject::Lines, 2);
+    m_vibrationPlotObject->clearPoints();
+    m_vibrationPlotObject->addPoint( 400, 1); // Initial point
 
     // For now, lets just make singlet peaks. Maybe we can fit a
     // gaussian later?
@@ -130,35 +176,17 @@ namespace Avogadro {
       qDebug() << i << " " << frequencies.at(i);
     }
     for (uint i = 0; i < transmittances.size(); i++) {
-      double wavenumber = frequencies.at(i);
+      double wavenumber = frequencies.at(i) * m_scale;
       double transmittance = transmittances.at(i);
-      vibrationPlotObject->addPoint ( wavenumber, 1 );
-      vibrationPlotObject->addPoint ( wavenumber, transmittance );
-      vibrationPlotObject->addPoint ( wavenumber, 1 );
+      m_vibrationPlotObject->addPoint ( wavenumber, 1 );
+      m_vibrationPlotObject->addPoint ( wavenumber, transmittance );
+      m_vibrationPlotObject->addPoint ( wavenumber, 1 );
     }
 
-    vibrationPlotObject->addPoint( 4000, 1); // Final point
-    ui.plot->addPlotObject(vibrationPlotObject);
+    m_vibrationPlotObject->addPoint( 4000, 1); // Final point
+    ui.plot->addPlotObject(m_vibrationPlotObject);
     ui.plot->update();
 
-  }
-
-  void VibrationPlot::accept()
-  {
-    qDebug("VibrationPlot: accept called");
-    hide();
-  }
-
-  void VibrationPlot::reject()
-  {
-    qDebug("VibrationPlot: accept called");
-    hide();
-  }
-
-  void VibrationPlot::setScale(int scale)
-  {
-    qDebug("VibrationPlot: setScale(int) called");
-    emit scaleUpdated(scale / 2.0);
   }
 
 }
