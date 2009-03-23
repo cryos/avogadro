@@ -10,7 +10,7 @@
   For more information, see <http://openbabel.sourceforge.net/>
 
   The plotting interface is provided by a version of KPlotWidget that 
-  is included with avogadro. The KPlotWidget, etc, files are copied 
+  is included with avogadro. The PlotWidget, etc, files are copied 
   the kde tree with slight modifications.
   For more information, see <http://www.kde.org/>
 
@@ -31,6 +31,7 @@
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/plotwidget.h>
 
 #include "ui_vibrationplot.h"
 
@@ -65,6 +66,8 @@ namespace Avogadro {
 
     private:
       Ui::VibrationPlot ui;
+      
+      PlotObject *vibrationPlotObject;
 
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;

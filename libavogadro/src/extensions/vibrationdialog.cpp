@@ -88,6 +88,8 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
+    qDebug() << "size intensities   " << intensities.size();
+    qDebug() << "size frequencies   " << frequencies.size();
 
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
@@ -200,10 +202,9 @@ namespace Avogadro {
   }
 
   void VibrationDialog::plotVibrations() {
-    qDebug("VibrationDialog: plotVibrations called");
-    qDebug("VibrationDialog: Calling vibrationplot Constructor");
     m_plot = new VibrationPlot(this);
-    qDebug("VibrationDialog: Preparing to show plot dialog");
+    m_plot->setMolecule(m_molecule);
+
     m_plot->show();
     m_plot->raise();
     m_plot->activateWindow();

@@ -23,24 +23,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="3" >
-    <widget class="KPlotWidget" name="plot" >
-     <property name="backgroundColor" >
-      <color>
-       <red>255</red>
-       <green>255</green>
-       <blue>255</blue>
-      </color>
-     </property>
-     <property name="foregroundColor" >
-      <color>
-       <red>0</red>
-       <green>0</green>
-       <blue>0</blue>
-      </color>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
@@ -83,18 +65,24 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" colspan="3" >
+    <widget class="Avogadro::PlotWidget" name="plot" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
-  <zorder>buttonBox</zorder>
-  <zorder>plot</zorder>
-  <zorder>label</zorder>
-  <zorder>scaleEdit</zorder>
-  <zorder>scaleSlider</zorder>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KPlotWidget</class>
+   <class>Avogadro::PlotWidget</class>
    <extends>QFrame</extends>
-   <header>avogadro/kplotwidget.h</header>
+   <header location="global" >avogadro/plotwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

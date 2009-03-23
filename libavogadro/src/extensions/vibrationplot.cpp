@@ -31,6 +31,7 @@
 #include <QDebug>
 
 #include <avogadro/molecule.h>
+#include <avogadro/plotwidget.h>
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
@@ -47,6 +48,9 @@ namespace Avogadro {
     qDebug("Are we getting this far?");
     // setting the limits for the plot
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
+    ui.plot->axis(PlotWidget::BottomAxis)->setLabel("Wavenumber (cm^(-1))");
+    ui.plot->axis(PlotWidget::LeftAxis)->setLabel("Transmittance");
+    //TODO: Set system colors
 
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
@@ -54,8 +58,7 @@ namespace Avogadro {
 
   VibrationPlot::~VibrationPlot()
   {
-    qDebug("VibrationPlot: Destructor called");
-#warning dlonie: Do I need to delete anything?
+    //TODO Anything to delete?
   }
 
   void VibrationPlot::setMolecule(Molecule *molecule)
@@ -66,7 +69,7 @@ namespace Avogadro {
     OBMol obmol = molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
-      //TODO
+      qWarning() << "No vibrations to plot!";
       return;
     }
 
@@ -74,7 +77,70 @@ namespace Avogadro {
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
 
-    //TODO: Actually plot the vibrations...
+#warning: dlonie: remove this!!
+    // While openbabel is broken, remove indicies (n+3), where
+    // n=0,1,2...
+    uint count = 0;
+    for (uint i = 0; i < intensities.size(); i++) {
+      if ((i+count)%3 == 0){
+	intensities.erase(intensities.begin()+i);
+	count++;
+	i--;
+      }
+    }
+    
+    // Normalize intensities into transmittances
+    double maxIntensity=0;
+    vector<double> transmittances;
+    for (unsigned int i = 0; i < intensities.size(); i++) {
+      if (intensities.at(i) >= maxIntensity) {
+	maxIntensity = intensities.at(i);
+      }
+    }
+
+    if (maxIntensity == 0) {
+      qWarning() << "VibrationPlot::setMolecule: No intensities > 0 in dataset.";
+      return;
+    }
+
+    for (unsigned int i = 0; i < intensities.size(); i++) {
+      double t = intensities.at(i);
+      t = t / maxIntensity; 	// Normalize
+      t = 1 - t; 		// Simulate transmittance
+      transmittances.push_back(t);
+    }
+
+    // Construct plot data
+    //TODO How to use system colors?    
+    vibrationPlotObject = new PlotObject( Qt::red, PlotObject::Lines, 2);
+    vibrationPlotObject->addPoint( 400, 1); // Initial point
+
+    // For now, lets just make singlet peaks. Maybe we can fit a
+    // gaussian later?
+    qDebug() << "size transmittances" << transmittances.size();
+    qDebug() << "size intensities   " << intensities.size();
+    qDebug() << "size frequencies   " << frequencies.size();
+    for (uint i = 0; i < transmittances.size(); i++) {
+      qDebug() << i << " " << transmittances.at(i);
+    }
+    for (uint i = 0; i < intensities.size(); i++) {
+      qDebug() << i << " " << intensities.at(i);
+    }
+    for (uint i = 0; i < transmittances.size(); i++) {
+      qDebug() << i << " " << frequencies.at(i);
+    }
+    for (uint i = 0; i < transmittances.size(); i++) {
+      double wavenumber = frequencies.at(i);
+      double transmittance = transmittances.at(i);
+      vibrationPlotObject->addPoint ( wavenumber, 1 );
+      vibrationPlotObject->addPoint ( wavenumber, transmittance );
+      vibrationPlotObject->addPoint ( wavenumber, 1 );
+    }
+
+    vibrationPlotObject->addPoint( 4000, 1); // Final point
+    ui.plot->addPlotObject(vibrationPlotObject);
+    ui.plot->update();
+
   }
 
   void VibrationPlot::accept()
