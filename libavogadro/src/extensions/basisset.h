@@ -238,11 +238,13 @@ namespace Avogadro
                       const double &dr2, unsigned int indexMO);
     // Calculate the basis for the density
     static void pointS(BasisSet *set, const double &dr2, int basis,
-                         Eigen::MatrixXd &out);
+                       Eigen::MatrixXd &out);
     static void pointP(BasisSet *set, const Eigen::Vector3d &delta,
-                         const double &dr2, int basis, Eigen::MatrixXd &out);
+                       const double &dr2, int basis, Eigen::MatrixXd &out);
     static void pointD(BasisSet *set, const Eigen::Vector3d &delta,
-                         const double &dr2, int basis, Eigen::MatrixXd &out);
+                       const double &dr2, int basis, Eigen::MatrixXd &out);
+    static void pointD5(BasisSet *set, const Eigen::Vector3d &delta,
+                        const double &dr2, int basis, Eigen::MatrixXd &out);
   };
 
 } // End namespace Avogadro
