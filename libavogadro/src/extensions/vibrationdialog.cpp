@@ -61,6 +61,8 @@ namespace Avogadro {
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
 	    this, SLOT(exportVibrationData(bool)));
+    connect(ui.plotButton, SIGNAL(clicked()),
+	    this, SLOT(plotVibrations()));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -86,6 +88,8 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
+    qDebug() << "size intensities   " << intensities.size();
+    qDebug() << "size frequencies   " << frequencies.size();
 
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
@@ -133,6 +137,11 @@ namespace Avogadro {
   void VibrationDialog::setScale(int scale)
   {
     emit scaleUpdated(scale / 2.0);
+  }
+
+  void VibrationDialog::setScale(double scale)
+  {
+    emit scaleUpdated(scale);
   }
 
   void VibrationDialog::setDisplayForceVectors(bool checked)
@@ -191,6 +200,16 @@ namespace Avogadro {
 
     return;
   }
-}
+
+  void VibrationDialog::plotVibrations() {
+    m_plot = new VibrationPlot(this);
+    m_plot->setMolecule(m_molecule);
+
+    m_plot->show();
+    m_plot->raise();
+    m_plot->activateWindow();
+  }
+
+} // namespace Avogadro
 
 #include "vibrationdialog.moc"

@@ -106,8 +106,8 @@ target_link_libraries(orbitalextension ${LINK_LIBS})
 install(TARGETS orbitalextension DESTINATION ${DESTINATION_DIR})
 
 ### Vibrations
-set(vibrationextension_SRCS vibrationextension.cpp vibrationdialog.cpp)
-qt4_wrap_ui(vibrationextension_UIS_H vibrationdialog.ui)
+set(vibrationextension_SRCS vibrationextension.cpp vibrationdialog.cpp vibrationplot.cpp)
+qt4_wrap_ui(vibrationextension_UIS_H vibrationdialog.ui vibrationplot.ui)
 qt4_automoc(${vibrationextension_SRCS})
 add_library(vibrationextension MODULE ${vibrationextension_SRCS} ${vibrationextension_UIS_H})
 target_link_libraries(vibrationextension ${LINK_LIBS})

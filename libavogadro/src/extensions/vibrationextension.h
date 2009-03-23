@@ -23,6 +23,7 @@
 #define VIBRATIONEXTENSION_H
 
 #include "vibrationdialog.h"
+#include "vibrationplot.h"
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
@@ -78,6 +79,7 @@ namespace Avogadro {
       Molecule *m_molecule;
       GLWidget *m_widget;
       Animation *m_animation;
+      VibrationPlot *m_plot;
 
       double m_scale;
       unsigned int m_framesPerStep;
