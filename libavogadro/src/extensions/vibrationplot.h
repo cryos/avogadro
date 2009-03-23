@@ -1,13 +1,18 @@
 /**********************************************************************
-  VibrationDialog - Visualize and animate vibrational modes
+  VibrationPlot - Visualize vibrational modes graphically
 
-  Copyright (C) 2009 by Geoffrey Hutchison
+  Copyright (C) 2009 by David Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
   Some code is based on Open Babel
   For more information, see <http://openbabel.sourceforge.net/>
+
+  The plotting interface is provided by a version of KPlotWidget that 
+  is included with avogadro. The PlotWidget, etc, files are copied 
+  the kde tree with slight modifications.
+  For more information, see <http://www.kde.org/>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,17 +24,16 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONDIALOG_H
-#define VIBRATIONDIALOG_H
-
-#include "vibrationplot.h"
+#ifndef VIBRATIONPLOT_H
+#define VIBRATIONPLOT_H
 
 #include <QDialog>
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/plotwidget.h>
 
-#include "ui_vibrationdialog.h"
+#include "ui_vibrationplot.h"
 
 namespace OpenBabel {
   class OBVibrationData;
@@ -37,44 +41,34 @@ namespace OpenBabel {
 
 namespace Avogadro {
 
-  class VibrationDialog : public QDialog
+  class VibrationPlot : public QDialog
   {
       Q_OBJECT
 
     public:
       //! Constructor
-      explicit VibrationDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit VibrationPlot( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Deconstructor
-      ~VibrationDialog();
+      ~VibrationPlot();
 
       void setMolecule(Molecule *molecule);
-      void setWidget(GLWidget *widget) {m_widget = widget; }
 
     public slots:
       void accept();
       void reject();
-      void cellClicked(int, int);
-      void currentCellChanged(int, int, int, int);
 
       void setScale(int scale);
       void setScale(double scale);
-      void setDisplayForceVectors(bool checked);
-      void animateButtonClicked(bool);
-      void exportVibrationData(bool);
-      void plotVibrations();
+      void exportVibrationPlot(bool);
 
     signals:
-      void selectedMode(int);
       void scaleUpdated(double scale);
-      void setEnabledForceVector(bool enabled);
-      void toggleAnimation();
 
     private:
-      Ui::VibrationDialog ui;
+      Ui::VibrationPlot ui;
+      
+      PlotObject *vibrationPlotObject;
 
-      VibrationPlot *m_plot;
-
-      GLWidget *m_widget;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
   };
