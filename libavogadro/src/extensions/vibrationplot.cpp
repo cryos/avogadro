@@ -6,17 +6,15 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
-
   The plotting interface is provided by a version of KPlotWidget that 
   is included with avogadro. The KPlotWidget, etc, files are copied 
   the kde tree.
   For more information, see <http://www.kde.org/>
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation version 2 of the License.
+  This library is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Library General Public License as
+  published by the Free Software Foundation; either version 2.1 of the
+  License, or (at your option) any later version.
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -42,7 +40,7 @@ using namespace std;
 namespace Avogadro {
 
   VibrationPlot::VibrationPlot( QWidget *parent, Qt::WindowFlags f ) : 
-    QDialog( parent, f )
+      QDialog( parent, f )
   {
     qDebug("VibrationPlot: Constructor called");
     ui.setupUi(this);
@@ -63,9 +61,9 @@ namespace Avogadro {
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
     connect(this, SIGNAL(scaleUpdated()),
-	     this, SLOT(drawVibrationSpectra()));
+            this, SLOT(drawVibrationSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
-	    this, SLOT(updateScaleEdit()));
+            this, SLOT(updateScaleEdit()));
   }
 
   VibrationPlot::~VibrationPlot()
@@ -120,17 +118,17 @@ namespace Avogadro {
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
 
-#warning: dlonie: remove this!! Hack to get around bug in how open babel reads in QChem files
+    // FIXME: dlonie: remove this!! Hack to get around bug in how open babel reads in QChem files
     // While openbabel is broken, remove indicies (n+3), where
     // n=0,1,2...
     if (frequencies.size() == 0.75 * intensities.size()) {
       uint count = 0;
       for (uint i = 0; i < intensities.size(); i++) {
-	if ((i+count)%3 == 0){
-	  intensities.erase(intensities.begin()+i);
-	  count++;
-	  i--;
-	}
+        if ((i+count)%3 == 0){
+          intensities.erase(intensities.begin()+i);
+          count++;
+          i--;
+        }
       }
     }
 
@@ -139,7 +137,7 @@ namespace Avogadro {
     vector<double> transmittances;
     for (unsigned int i = 0; i < intensities.size(); i++) {
       if (intensities.at(i) >= maxIntensity) {
-	maxIntensity = intensities.at(i);
+        maxIntensity = intensities.at(i);
       }
     }
 
