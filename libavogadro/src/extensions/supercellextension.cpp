@@ -145,10 +145,16 @@ namespace Avogadro {
       return;
 
     OBUnitCell *uc = m_molecule->OBUnitCell();
-    if (!uc)
+    if (!uc) {
+      qDebug() << "No unit cell found - fillCell() returning...";
       return;
+    }
 
     const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
+    if (!sg) {
+      qDebug() << "No spacegroup found - fillCell() returning...";
+      return;
+    }
 
     // We operate on a copy of the Avogadro molecule
     // For each atom, we loop through:
@@ -225,7 +231,7 @@ namespace Avogadro {
     // Add single bonds between all atoms closer than their combined atomic
     // covalent radii.
     vector<double> rad;
-    NeighborList nbrs(m_molecule, 5.0);
+    NeighborList nbrs(m_molecule, 3.0);
 
     rad.reserve(m_molecule->numAtoms());
 
