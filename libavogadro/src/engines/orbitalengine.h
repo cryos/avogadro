@@ -1,7 +1,7 @@
 /**********************************************************************
   OrbitalEngine - Engine for display of molecular orbitals
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
   Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Tim Vandermeersch
 
@@ -39,9 +39,8 @@
 namespace Avogadro {
 
   class OrbitalSettingsWidget;
-  class Mesh;
 
-  //! Surface Engine class.
+  //! Orbital Engine class.
   class OrbitalEngine : public Engine
   {
     Q_OBJECT
@@ -51,7 +50,7 @@ namespace Avogadro {
     public:
       //! Constructor
       OrbitalEngine(QObject *parent=0);
-      //! Deconstructor
+      //! Destructor
       ~OrbitalEngine();
 
       //! \name Render Methods
@@ -81,6 +80,7 @@ namespace Avogadro {
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
+      void setMolecule(const Molecule *molecule);
 
     protected:
       OrbitalSettingsWidget *m_settingsWidget;
@@ -107,11 +107,7 @@ namespace Avogadro {
       /**
        * @param value orbital index
        */
-      void setOrbital1(int value);
-      /**
-       * @param value orbital index
-       */
-      void setOrbital2(int value);
+      void setOrbital(int value);
       /**
        * @param value opacity of the surface / 20
        */
