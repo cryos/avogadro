@@ -290,7 +290,7 @@ namespace Avogadro
       norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
       textures << "texture{pigment{rgbt<" << c[i].redF() << ","
                << c[i].greenF() << "," << c[i].blueF() << ","
-               << 1.0 - c[i].alphaF() << ">}}";
+               << 1.0 - d->color.alpha() << ">}}";
       if (i != v.size()-1) {
         verts << ", ";
         norms << ", ";

@@ -106,8 +106,10 @@ namespace Avogadro {
 
       if (m_mesh1) {
         if (m_mesh1->stable()) {
-          if (m_colored)
+          if (m_colored) {
+            pd->painter()->setColor(&m_posColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
+          }
           else {
             pd->painter()->setColor(&m_posColor);
             pd->painter()->drawMesh(*m_mesh1, m_renderMode);
@@ -116,8 +118,10 @@ namespace Avogadro {
       }
       if (m_mesh2) {
         if (m_mesh2->stable()) {
-          if (m_colored)
+          if (m_colored) {
+            pd->painter()->setColor(&m_negColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
+          }
           else {
             pd->painter()->setColor(&m_negColor);
             pd->painter()->drawMesh(*m_mesh2, m_renderMode);
