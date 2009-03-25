@@ -57,9 +57,10 @@ namespace Avogadro {
     Private( PlotWidget *qq )
       : q( qq ),
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
-        showGrid( false ), showObjectToolTip( true ), useAntialias( false )
+        showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
+	fontPointSize( 12 )
     {
-      // cr eate the axes and setting their default properties
+      // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
       leftAxis->setTickLabelsShown( true );
       axes.insert( LeftAxis, leftAxis );
@@ -109,6 +110,8 @@ namespace Avogadro {
     QRect pixRect;
     //Array holding the mask of "used" regions of the plot
     QImage plotMask;
+    //Font properties
+    int fontPointSize;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -317,6 +320,11 @@ namespace Avogadro {
   {
     d->cGrid = gc;
     update();
+  }
+  
+  void PlotWidget::setFontSize( int pointSize )
+  {
+    d->fontPointSize = pointSize;
   }
 
   bool PlotWidget::isGridShown() const
@@ -619,7 +627,13 @@ namespace Avogadro {
         
       ++iter;
     }
+    
+    //Set font size
+    QFont f = painter->font();
+    f.setPointSize( d->fontPointSize );
+    painter->setFont(f);
 
+    //Place label
     painter->drawText( bestRect, textFlags, pp->label() );
 
     //Is a line needed to connect the label to the point?
@@ -721,11 +735,10 @@ namespace Avogadro {
     p->setPen( foregroundColor() );
     p->setBrush( Qt::NoBrush );
 
-    //set small font for tick labels
+    //set font size
     QFont f = p->font();
-    int s = f.pointSize();
-    f.setPointSize( s - 2 );
-    p->setFont( f );
+    f.setPointSize( d->fontPointSize );
+    p->setFont(f);
 
     /*** BottomAxis ***/
     PlotAxis *a = axis(BottomAxis);

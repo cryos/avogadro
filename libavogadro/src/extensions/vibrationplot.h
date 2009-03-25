@@ -6,11 +6,6 @@
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
-  The plotting interface is provided by a version of KPlotWidget that 
-  is included with avogadro. The PlotWidget, etc, files are copied 
-  the kde tree with slight modifications.
-  For more information, see <http://www.kde.org/>
-
   This library is free software; you can redistribute it and/or modify
   it under the terms of the GNU Library General Public License as
   published by the Free Software Foundation; either version 2.1 of the
