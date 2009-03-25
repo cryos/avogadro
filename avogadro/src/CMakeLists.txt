@@ -52,6 +52,12 @@ file(GLOB avogadro_TS "${CMAKE_SOURCE_DIR}/i18n/*.ts")
 
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
+# Some relative rpath handling for Linux
+if(CMAKE_SYSTEM_NAME MATCHES Linux)
+  # Set a relative rpath on Linux - just testing right now...
+  set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
+endif(CMAKE_SYSTEM_NAME MATCHES Linux)
+
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_SRCS}
   ${avogadro_UIS_H}

@@ -185,8 +185,6 @@ if(UNIX)
   if(APPLE)
     set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
   else(APPLE)
-    # Set a relative rpath on Linux - just testing right now...
-    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
     set(CMAKE_SKIP_BUILD_RPATH FALSE)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
     set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
