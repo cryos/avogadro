@@ -177,27 +177,16 @@ namespace Avogadro {
       TickDistance *= -1;
     }
     
-//     if (length < 0)
-//       qDebug() << "---NumMajorTicks " << NumMajorTicks;
-//       qDebug() << "NumMinorTicks " << NumMinorTicks;
-//       qDebug() << "TickDistance " << TickDistance;
-//       qDebug() << "Tick0 " << Tick0;
-//       qDebug() << "t " << t;
-//       qDebug() << "s " << s;
-//     }
-    
     for ( int i=0; i<NumMajorTicks+1; i++ ) {
       double xmaj = Tick0 + i*TickDistance;
       if ( (length > 0 && xmaj >= x0 && xmaj <= x0 + length) || (length < 0 && xmaj <= x0 && xmaj >= x0 + length) ) {
 	d->m_MajorTickMarks.append( xmaj );
-	if (length < 0) qDebug() << "Major tick added: " << xmaj;
       }
 
       for ( int j=1; j<NumMinorTicks; j++ ) {
 	double xmin = xmaj + TickDistance*j/NumMinorTicks;
 	if ( (length > 0 && xmin >= x0 && xmin <= x0 + length) || (length < 0 && xmin <= x0 && xmin >= x0 + length) ) {
 	  d->m_MinorTickMarks.append( xmin );
-	  if (length < 0) qDebug() << "Minor tick added: " << xmin;
 	}
       }
     }

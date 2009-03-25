@@ -274,6 +274,12 @@ namespace Avogadro {
 	void setGridColor( const QColor &gc );
 
 	/**
+	 * Set the font size
+	 * @param pointSize the new font size in pt
+	 */
+	void setFontSize( int pointSize );
+
+	/**
 	 * @return whether the grid lines are shown
 	 * Grid lines are not shown by default.
 	 */
