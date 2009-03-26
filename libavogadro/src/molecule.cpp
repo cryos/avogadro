@@ -44,7 +44,6 @@
 #include <openbabel/generic.h>
 
 #include <QDir>
-#include <QReadWriteLock>
 #include <QDebug>
 #include <QVariant>
 
@@ -179,20 +178,6 @@ namespace Avogadro{
     if (vec) setAtomPos(id, *vec);
   }
 
-  const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
-  {
-    QReadLocker lock(m_lock);
-    if (!m_atomPos)
-      return 0;
-
-    if (id < m_atomPos->size()) {
-      return &m_atomPos->at(id);
-    }
-    else {
-      return 0;
-    }
-  }
-
   void Molecule::removeAtom(Atom *atom)
   {
     if(atom) {
@@ -219,33 +204,6 @@ namespace Avogadro{
   void Molecule::removeAtom(unsigned long id)
   {
     removeAtom(atomById(id));
-  }
-
-  Atom *Molecule::atom(int index)
-  {
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < m_atomList.size())
-      return m_atomList[index];
-    else
-      return 0;
-  }
-
-  const Atom *Molecule::atom(int index) const
-  {
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < m_atomList.size())
-      return m_atomList[index];
-    else
-      return 0;
-  }
-
-  Atom *Molecule::atomById(unsigned long id) const
-  {
-    QReadLocker lock(m_lock);
-    if(id < m_atoms.size())
-      return m_atoms[id];
-    else
-      return 0;
   }
 
   Bond *Molecule::addBond()
@@ -318,39 +276,6 @@ namespace Avogadro{
       disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
       emit bondRemoved(bond);
       bond->deleteLater();
-    }
-  }
-
-  Bond *Molecule::bond(int index)
-  {
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < m_bondList.size()) {
-      return m_bondList[index];
-    }
-    else {
-      return 0;
-    }
-  }
-
-  const Bond *Molecule::bond(int index) const
-  {
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < m_bondList.size()) {
-      return m_bondList[index];
-    }
-    else {
-      return 0;
-    }
-  }
-
-  Bond *Molecule::bondById(unsigned long id) const
-  {
-    QReadLocker lock(m_lock);
-    if(id < m_bonds.size()) {
-      return m_bonds[id];
-    }
-    else {
-      return 0;
     }
   }
 

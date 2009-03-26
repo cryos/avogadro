@@ -17,7 +17,7 @@ using namespace Avogadro;
 // defined in swig.cpp
 PyObject* Molecule_OBMol(Avogadro::Molecule &self);
 void Molecule_setOBMol(Molecule &self, PyObject *obj);
- 
+
 void copy(Molecule &self, const Molecule &from)
 {
   self = from;
@@ -50,13 +50,13 @@ void export_Molecule()
   Fragment* (Molecule::*addRing_ptr1)() = &Molecule::addRing;
   void (Molecule::*removeRing_ptr1)(Fragment*) = &Molecule::removeRing;
   void (Molecule::*removeRing_ptr2)(unsigned long) = &Molecule::removeRing;
-  Atom* (Molecule::*atom_ptr)(int) = &Molecule::atom;
-  Bond* (Molecule::*bond_ptr1)(int) = &Molecule::bond;
+  Atom* (Molecule::*atom_ptr)(int)const = &Molecule::atom;
+  Bond* (Molecule::*bond_ptr1)(int)const = &Molecule::bond;
   Bond* (Molecule::*bond_ptr2)(unsigned long, unsigned long) = &Molecule::bond;
   Bond* (Molecule::*bond_ptr3)(const Atom*, const Atom*) = &Molecule::bond;
   Residue* (Molecule::*residue_ptr)(int) = &Molecule::residue;
 
-  class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable, 
+  class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable,
       std::auto_ptr<Avogadro::Molecule> >("Molecule", no_init)
 
     // copy constructor
@@ -136,6 +136,6 @@ void export_Molecule()
     .def("clear", &Molecule::clear)
     .def("translate", &Molecule::translate)
     ;
-  
+
 }
 

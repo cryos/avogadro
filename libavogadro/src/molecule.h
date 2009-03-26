@@ -28,6 +28,9 @@
 
 #include <avogadro/primitive.h>
 
+// Used by the inline functions
+#include <QReadWriteLock>
+
 #include <vector>
 
 namespace OpenBabel {
@@ -137,8 +140,7 @@ namespace Avogadro {
      * @return The Atom at the supplied index.
      * @note Replaces GetAtom.
      */
-    Atom * atom(int index);
-    const Atom * atom(int index) const;
+    Atom * atom(int index) const;
 
     /**
      * @return The Atom at the supplied unqique id.
@@ -211,8 +213,7 @@ namespace Avogadro {
      * @return The Bond at the supplied index.
      * @note Replaces GetBond.
      */
-    Bond* bond(int index);
-    const Bond* bond(int index) const;
+    Bond* bond(int index) const;
 
     /**
      * @return The Bond at the supplied unique id.
@@ -725,6 +726,51 @@ namespace Avogadro {
      */
     void bondRemoved(Bond *bond);
   };
+
+  inline Atom * Molecule::atom(int index) const
+  {
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < m_atomList.size())
+      return m_atomList[index];
+    else
+      return 0;
+  }
+
+  inline Atom * Molecule::atomById(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if(id < m_atoms.size())
+      return m_atoms[id];
+    else
+      return 0;
+  }
+
+  inline const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if (id < m_atomPos->size())
+      return &(*m_atomPos)[id];
+    else
+      return 0;
+  }
+
+  inline Bond * Molecule::bond(int index) const
+  {
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < m_bondList.size())
+      return m_bondList[index];
+    else
+      return 0;
+  }
+
+  inline Bond * Molecule::bondById(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if(id < m_bonds.size())
+      return m_bonds[id];
+    else
+      return 0;
+  }
 
 } // End namespace Avogadro
 
