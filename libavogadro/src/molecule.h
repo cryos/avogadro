@@ -492,14 +492,14 @@ namespace Avogadro {
      * @return Pointer to an existing conformer, or NULL if the index doesn't exist.
      */
     std::vector<Eigen::Vector3d> * conformer(unsigned int index);
-    
+
     /**
      * Change the conformer to the one at the specified index.
      */
     bool setConformer(unsigned int index);
 
     /**
-     * Replace all conformers in the Molecule. The conformers are 
+     * Replace all conformers in the Molecule. The conformers are
      * mapped onto the unique ids of the atoms in the Molecule.
      * This will first clear all conformers.
      * @param conformer A vector of conformers (vector of Vector3d)
@@ -630,6 +630,11 @@ namespace Avogadro {
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;
     Q_DECLARE_PRIVATE(Molecule)
+
+    std::vector<Atom *>   m_atoms;
+    std::vector<Bond *>   m_bonds;
+    QList<Atom *>         m_atomList;
+    QList<Bond *>         m_bondList;
 
     /**
      * Compute all the geometry information for the Molecule. This allows

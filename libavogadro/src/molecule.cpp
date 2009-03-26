@@ -56,7 +56,7 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-			  invalidRings(true), obmol(0), obunitcell(0), obvibdata(0) {}
+              invalidRings(true), obmol(0), obunitcell(0), obvibdata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -69,16 +69,12 @@ namespace Avogadro{
       mutable std::vector<double>   energies;
 
       // std::vector used over QVector due to index issues, QVector uses ints
-      std::vector<Atom *>           atoms;
-      std::vector<Bond *>           bonds;
       std::vector<Cube *>           cubes;
       std::vector<Mesh *>           meshes;
       std::vector<Residue *>        residues;
       std::vector<Fragment *>       rings;
 
       // Used to store the index based list (not unique ids)
-      QList<Atom *>                 atomList;
-      QList<Bond *>                 bondList;
       QList<Cube *>                 cubeList;
       QList<Mesh *>                 meshList;
       QList<Residue *>              residueList;
@@ -95,7 +91,7 @@ namespace Avogadro{
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
-                                        d_ptr(new MoleculePrivate), 
+                                        d_ptr(new MoleculePrivate),
                                         m_fileName(""),
                                         m_atomPos(0), m_dipoleMoment(0),
     m_invalidPartialCharges(true), m_invalidAromaticity(true)
@@ -135,15 +131,13 @@ namespace Avogadro{
 
   Atom *Molecule::addAtom()
   {
-    Q_D(Molecule);
     // Add an atom with the next unique id
-    return addAtom(d->atoms.size());
+    return addAtom(m_atoms.size());
   }
 
     // do some fancy footwork when we add an atom previously created
   Atom *Molecule::addAtom(unsigned long id)
   {
-    Q_D(Molecule);
     Atom *atom = new Atom(this);
 
     m_lock->lockForWrite();
@@ -154,17 +148,17 @@ namespace Avogadro{
       m_atomPos->reserve(100);
     }
 
-    if(id >= d->atoms.size()) {
-      d->atoms.resize(id+1,0);
+    if(id >= m_atoms.size()) {
+      m_atoms.resize(id+1,0);
       m_atomPos->resize(id+1, Vector3d::Zero());
     }
-    d->atoms[id] = atom;
+    m_atoms[id] = atom;
     // Does this still want to have the same index as before somehow?
-    d->atomList.push_back(atom);
+    m_atomList.push_back(atom);
     m_lock->unlock();
 
     atom->setId(id);
-    atom->setIndex(d->atomList.size()-1);
+    atom->setIndex(m_atomList.size()-1);
     // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
     emit atomAdded(atom);
@@ -201,7 +195,6 @@ namespace Avogadro{
 
   void Molecule::removeAtom(Atom *atom)
   {
-    Q_D(Molecule);
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
@@ -209,12 +202,12 @@ namespace Avogadro{
       }
 
       m_lock->lockForWrite();
-      d->atoms[atom->id()] = 0;
+      m_atoms[atom->id()] = 0;
       // 1 based arrays stored/shown to user
       int index = atom->index();
-      d->atomList.removeAt(index);
-      for (int i = index; i < d->atomList.size(); ++i)
-        d->atomList[i]->setIndex(i);
+      m_atomList.removeAt(index);
+      for (int i = index; i < m_atomList.size(); ++i)
+        m_atomList[i]->setIndex(i);
       atom->deleteLater();
       m_lock->unlock();
 
@@ -230,38 +223,34 @@ namespace Avogadro{
 
   Atom *Molecule::atom(int index)
   {
-    Q_D(Molecule);
     QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->atomList.size())
-      return d->atomList[index];
+    if (index >= 0 && index < m_atomList.size())
+      return m_atomList[index];
     else
       return 0;
   }
 
   const Atom *Molecule::atom(int index) const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->atomList.size())
-      return d->atomList[index];
+    if (index >= 0 && index < m_atomList.size())
+      return m_atomList[index];
     else
       return 0;
   }
 
   Atom *Molecule::atomById(unsigned long id) const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    if(id < d->atoms.size())
-      return d->atoms[id];
+    if(id < m_atoms.size())
+      return m_atoms[id];
     else
       return 0;
   }
 
   Bond *Molecule::addBond()
   {
-    Q_D(Molecule);
-    return addBond(d->bonds.size());
+    return addBond(m_bonds.size());
   }
 
   Bond *Molecule::addBond(unsigned long id)
@@ -273,14 +262,14 @@ namespace Avogadro{
     d->invalidRings = true;
     m_invalidPartialCharges = true;
     m_invalidAromaticity = true;
-    if(id >= d->bonds.size())
-      d->bonds.resize(id+1,0);
-    d->bonds[id] = bond;
-    d->bondList.push_back(bond);
+    if(id >= m_bonds.size())
+      m_bonds.resize(id+1,0);
+    m_bonds[id] = bond;
+    m_bondList.push_back(bond);
     m_lock->unlock();
 
     bond->setId(id);
-    bond->setIndex(d->bondList.size()-1);
+    bond->setIndex(m_bondList.size()-1);
     // now that the id is correct, emit the signal
     connect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
     emit bondAdded(bond);
@@ -296,9 +285,9 @@ namespace Avogadro{
 
   void Molecule::removeBond(unsigned long id)
   {
-    Q_D(Molecule);
-    if (id < d->bonds.size()) {
-      if (d->bonds[id] == 0) {
+    if (id < m_bonds.size()) {
+      Q_D(Molecule);
+      if (m_bonds[id] == 0) {
         return;
       }
 
@@ -306,24 +295,24 @@ namespace Avogadro{
       d->invalidRings = true;
       m_invalidPartialCharges = true;
       m_invalidAromaticity = true;
-      Bond *bond = d->bonds[id];
-      d->bonds[id] = 0;
+      Bond *bond = m_bonds[id];
+      m_bonds[id] = 0;
       // Delete the bond from the list and reorder the remaining bonds
       int index = bond->index();
-      d->bondList.removeAt(index);
-      for (int i = index; i < d->bondList.size(); ++i) {
-        d->bondList[i]->setIndex(i);
+      m_bondList.removeAt(index);
+      for (int i = index; i < m_bondList.size(); ++i) {
+        m_bondList[i]->setIndex(i);
       }
       m_lock->unlock();
 
       // Also delete the bond from the attached atoms
-      if (d->atoms.size() > bond->beginAtomId()) {
-        if (d->atoms[bond->beginAtomId()])
-          d->atoms[bond->beginAtomId()]->removeBond(id);
+      if (m_atoms.size() > bond->beginAtomId()) {
+        if (m_atoms[bond->beginAtomId()])
+          m_atoms[bond->beginAtomId()]->removeBond(id);
       }
-      if (d->atoms.size() > bond->endAtomId()) {
-        if (d->atoms[bond->endAtomId()])
-          d->atoms[bond->endAtomId()]->removeBond(id);
+      if (m_atoms.size() > bond->endAtomId()) {
+        if (m_atoms[bond->endAtomId()])
+          m_atoms[bond->endAtomId()]->removeBond(id);
       }
 
       disconnect(bond, SIGNAL(updated()), this, SLOT(updateBond()));
@@ -334,10 +323,9 @@ namespace Avogadro{
 
   Bond *Molecule::bond(int index)
   {
-    Q_D(Molecule);
     QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->bondList.size()) {
-      return d->bondList[index];
+    if (index >= 0 && index < m_bondList.size()) {
+      return m_bondList[index];
     }
     else {
       return 0;
@@ -346,10 +334,9 @@ namespace Avogadro{
 
   const Bond *Molecule::bond(int index) const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->bondList.size()) {
-      return d->bondList[index];
+    if (index >= 0 && index < m_bondList.size()) {
+      return m_bondList[index];
     }
     else {
       return 0;
@@ -358,10 +345,9 @@ namespace Avogadro{
 
   Bond *Molecule::bondById(unsigned long id) const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    if(id < d->bonds.size()) {
-      return d->bonds[id];
+    if(id < m_bonds.size()) {
+      return m_bonds[id];
     }
     else {
       return 0;
@@ -695,8 +681,7 @@ namespace Avogadro{
     }
     // Delete all of the hydrogens
     else {
-      Q_D(Molecule);
-      foreach (Atom *atom, d->atomList) {
+      foreach (Atom *atom, m_atomList) {
         if (atom->isHydrogen()) {
           removeAtom(atom);
         }
@@ -754,16 +739,14 @@ namespace Avogadro{
 
   unsigned int Molecule::numAtoms() const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    return d->atomList.size();
+    return m_atomList.size();
   }
 
   unsigned int Molecule::numBonds() const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    return d->bondList.size();
+    return m_bondList.size();
   }
 
   unsigned int Molecule::numCubes() const
@@ -886,7 +869,7 @@ namespace Avogadro{
       return m_atomConformers[index];
     else if (index == 0)
       return m_atomPos;
-    else 
+    else
       return NULL;
   }
 
@@ -951,16 +934,14 @@ namespace Avogadro{
 
   QList<Atom *> Molecule::atoms() const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    return d->atomList;
+    return m_atomList;
   }
 
   QList<Bond *> Molecule::bonds() const
   {
-    Q_D(const Molecule);
     QReadLocker lock(m_lock);
-    return d->bondList;
+    return m_bondList;
   }
 
   QList<Cube *> Molecule::cubes() const
@@ -1015,12 +996,12 @@ namespace Avogadro{
     OpenBabel::OBMol obmol;
     obmol.BeginModify();
 
-    foreach (Atom *atom, d->atomList) {
+    foreach (Atom *atom, m_atomList) {
       OpenBabel::OBAtom *a = obmol.NewAtom();
       OpenBabel::OBAtom obatom = atom->OBAtom();
       *a = obatom;
     }
-    foreach (Bond *bond, d->bondList) {
+    foreach (Bond *bond, m_bondList) {
       Atom *beginAtom = atomById(bond->beginAtomId());
       if (!beginAtom)
         continue;
@@ -1170,7 +1151,7 @@ namespace Avogadro{
       // check for validity (i.e., we have some forces, one for each atom
       if (allForces.size() && allForces[0].size() == numAtoms()) {
         OpenBabel::vector3 force;
-        foreach (Atom *atom, d->atomList) { // loop through each atom
+        foreach (Atom *atom, m_atomList) { // loop through each atom
             force = allForces[0][atom->index()];
             qDebug() << " copying force " << force.x() << force.y() << force.z();
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
@@ -1244,12 +1225,11 @@ namespace Avogadro{
 
   void Molecule::translate(const Eigen::Vector3d& offset)
   {
-    Q_D(Molecule);
     m_lock->lockForWrite();
     if (!m_atomPos)
       return; // nothing to do
 
-    foreach (Atom *atom, d->atomList) {
+    foreach (Atom *atom, m_atomList) {
       (*m_atomPos)[atom->id()] += offset;
       emit atomUpdated(atom);
     }
@@ -1260,12 +1240,12 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     m_lock->lockForWrite();
-    d->atoms.resize(0);
-    foreach (Atom *atom, d->atomList) {
+    m_atoms.resize(0);
+    foreach (Atom *atom, m_atomList) {
       atom->deleteLater();
       emit primitiveRemoved(atom);
     }
-    d->atomList.clear();
+    m_atomList.clear();
     clearConformers();
     delete m_atomPos;
     m_atomPos = 0;
@@ -1274,12 +1254,12 @@ namespace Avogadro{
     delete d->obunitcell;
     d->obunitcell = 0;
 
-    d->bonds.resize(0);
-    foreach (Bond *bond, d->bondList) {
+    m_bonds.resize(0);
+    foreach (Bond *bond, m_bondList) {
       bond->deleteLater();
       emit primitiveRemoved(bond);
     }
-    d->bondList.clear();
+    m_bondList.clear();
 
     d->cubes.resize(0);
     foreach (Cube *cube, d->cubeList) {
@@ -1313,10 +1293,11 @@ namespace Avogadro{
 
   Molecule &Molecule::operator=(const Molecule& other)
   {
-    Q_D(Molecule);
+    // FIXME: Copy all the other stuff in the molecule!
+    //Q_D(Molecule);
     clear();
-    const MoleculePrivate *e = other.d_func();
-    d->atoms.resize(e->atoms.size(), 0);
+    //const MoleculePrivate *e = other.d_func();
+    m_atoms.resize(other.m_atoms.size(), 0);
     if (other.m_atomPos) {
       m_atomConformers.resize(1);
       m_atomConformers[0] = new vector<Vector3d>;
@@ -1329,29 +1310,31 @@ namespace Avogadro{
     else
       qDebug() << "Other atom has a position list of size zero!";
 
-    d->bonds.resize(e->bonds.size(), 0);
+    m_bonds.resize(other.m_bonds.size(), 0);
 
     // Copy the atoms and bonds over
-    for (unsigned int i = 0; i < e->atoms.size(); ++i) {
-      if (e->atoms.at(i) > 0) {
+    unsigned int size = other.m_atoms.size();
+    for (unsigned int i = 0; i < size; ++i) {
+      if (other.m_atoms.at(i) > 0) {
         Atom *atom = new Atom(this);
-        atom->setId(e->atoms[i]->id());
-        atom->setIndex(e->atoms[i]->index());
-        d->atoms[i] = atom;
-        d->atomList.push_back(atom);
-        *atom = *(e->atoms[i]);
+        atom->setId(other.m_atoms[i]->id());
+        atom->setIndex(other.m_atoms[i]->index());
+        m_atoms[i] = atom;
+        m_atomList.push_back(atom);
+        *atom = *(other.m_atoms[i]);
         emit primitiveAdded(atom);
       }
     }
 
-    for (unsigned int i = 0; i < e->bonds.size(); ++i) {
-      if (e->bonds.at(i)) {
+    size = other.m_bonds.size();
+    for (unsigned int i = 0; i < size; ++i) {
+      if (other.m_bonds.at(i)) {
         Bond *bond = new Bond(this);
-        *bond = *(e->bonds[i]);
-        bond->setId(e->bonds[i]->id());
-        bond->setIndex(e->bonds[i]->index());
-        d->bonds[i] = bond;
-        d->bondList.push_back(bond);
+        *bond = *(other.m_bonds[i]);
+        bond->setId(other.m_bonds[i]->id());
+        bond->setIndex(other.m_bonds[i]->index());
+        m_bonds[i] = bond;
+        m_bondList.push_back(bond);
         // Add the bond to it's atoms
         bond->beginAtom()->addBond(bond);
         bond->endAtom()->addBond(bond);
@@ -1364,16 +1347,17 @@ namespace Avogadro{
 
   Molecule &Molecule::operator+=(const Molecule& other)
   {
-    const MoleculePrivate *e = other.d_func();
+    // FIXME: Copy all the other stuff in the molecule!
+    //const MoleculePrivate *e = other.d_func();
     // Create a temporary map from the old indices to the new for bonding
     QList<int> map;
-    foreach (Atom *a, e->atomList) {
+    foreach (Atom *a, other.m_atomList) {
       Atom *atom = addAtom();
       *atom = *a;
       map.push_back(atom->id());
       emit primitiveAdded(atom);
     }
-    foreach (Bond *b, e->bondList) {
+    foreach (Bond *b, other.m_bondList) {
       Bond *bond = addBond();
       *bond = *b;
       bond->setBegin(atomById(map.at(other.atomById(b->beginAtomId())->index())));
@@ -1394,7 +1378,7 @@ namespace Avogadro{
     // In order to calculate many parameters we need at least two atoms
     if(numAtoms() > 1) {
       // compute center
-      foreach (Atom *atom, d->atomList)
+      foreach (Atom *atom, m_atomList)
         d->center += *atom->pos();
 
       d->center /= numAtoms();
@@ -1402,7 +1386,7 @@ namespace Avogadro{
       // compute the normal vector to the molecule's best-fitting plane
       int i = 0;
       Vector3d ** atomPositions = new Vector3d*[numAtoms()];
-      foreach (Atom *atom, d->atomList)
+      foreach (Atom *atom, m_atomList)
         atomPositions[i++] = &m_atomPos->at(atom->id());
 
       Eigen::Hyperplane<double, 3> planeCoeffs;
@@ -1412,7 +1396,7 @@ namespace Avogadro{
 
       // compute radius and the farthest atom
       d->radius = -1.0; // so that ( squaredDistanceToCenter > d->radius ) is true for at least one atom.
-      foreach (Atom *atom, d->atomList) {
+      foreach (Atom *atom, m_atomList) {
         double distanceToCenter = (*atom->pos() - d->center).norm();
         if(distanceToCenter > d->radius) {
           d->radius = distanceToCenter;
