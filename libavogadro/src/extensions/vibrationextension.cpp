@@ -56,7 +56,7 @@ namespace Avogadro {
     m_actions.append( action );
 
     action = new QAction(this);
-    action->setText(tr("Vibrations..."));
+    action->setText(tr("&Vibrations..."));
     m_actions.append(action);
   }
 
