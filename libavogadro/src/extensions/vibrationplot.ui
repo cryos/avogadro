@@ -16,27 +16,30 @@
    <item row="1" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
-      <string>Scale:</string>
+      <string>&amp;Scale:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>scaleSlider</cstring>
      </property>
     </widget>
    </item>
    <item row="1" column="3" >
     <widget class="QLineEdit" name="scaleEdit" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <sizepolicy vsizetype="Minimum" hsizetype="Ignored" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize" >
       <size>
-       <width>50</width>
+       <width>0</width>
        <height>0</height>
       </size>
      </property>
      <property name="maximumSize" >
       <size>
-       <width>50</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
@@ -71,10 +74,17 @@
    <item row="2" column="0" >
     <widget class="QCheckBox" name="cb_labelPeaks" >
      <property name="text" >
-      <string>Label peaks</string>
+      <string>&amp;Label peaks</string>
      </property>
      <property name="checked" >
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="pushButton" >
+     <property name="text" >
+      <string>&amp;Close</string>
      </property>
     </widget>
    </item>
@@ -89,5 +99,22 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>VibrationPlot</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>362</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
