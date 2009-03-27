@@ -63,6 +63,7 @@ set(libavogadro_HDRS
   tool.h
   toolgroup.h
   undosequence.h
+  zmatrix.h
 )
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})

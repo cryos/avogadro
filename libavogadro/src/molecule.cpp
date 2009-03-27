@@ -31,6 +31,7 @@
 #include "mesh.h"
 #include "fragment.h"
 #include "residue.h"
+#include "zmatrix.h"
 
 #include <Eigen/Geometry>
 #include <Eigen/LeastSquares>
@@ -72,12 +73,14 @@ namespace Avogadro{
       std::vector<Mesh *>           meshes;
       std::vector<Residue *>        residues;
       std::vector<Fragment *>       rings;
+      std::vector<ZMatrix *>        zMatrix;
 
       // Used to store the index based list (not unique ids)
       QList<Cube *>                 cubeList;
       QList<Mesh *>                 meshList;
       QList<Residue *>              residueList;
       QList<Fragment *>             ringList;
+      QList<ZMatrix *>              zMatrixList;
 
       // Our OpenBabel OBMol object
       OpenBabel::OBMol *            obmol;
@@ -543,7 +546,48 @@ namespace Avogadro{
       removeRing(d->rings[id]);
   }
 
-  void Molecule::addHydrogens(Atom *a, const QList<unsigned long> &atomIds, const QList<unsigned long> &bondIds)
+  ZMatrix * Molecule::addZMatrix()
+  {
+    Q_D(Molecule);
+    ZMatrix *zmatrix = new ZMatrix();
+    d->zMatrixList.push_back(zmatrix);
+
+    return zmatrix;
+  }
+
+  void Molecule::removeZMatrix(ZMatrix *zmatrix)
+  {
+    Q_D(Molecule);
+    if (zmatrix) {
+      d->zMatrixList.removeAll(zmatrix);
+      delete zmatrix;
+    }
+  }
+
+  ZMatrix * Molecule::zMatrix(int index) const
+  {
+    Q_D(const Molecule);
+    if (index < d->zMatrixList.size())
+      return d->zMatrixList.at(index);
+    else
+      return 0;
+  }
+
+  QList<ZMatrix *> Molecule::zMatrices() const
+  {
+    Q_D(const Molecule);
+    return d->zMatrixList;
+  }
+
+  unsigned int Molecule::numZMatrices() const
+  {
+    Q_D(const Molecule);
+    return d->zMatrixList.size();
+  }
+
+  void Molecule::addHydrogens(Atom *a,
+                              const QList<unsigned long> &atomIds,
+                              const QList<unsigned long> &bondIds)
   {
     if (atomIds.size() != bondIds.size()) {
       qDebug() << "Error, addHydrogens called with atom & bond id lists of different size!";
@@ -557,14 +601,19 @@ namespace Avogadro{
       obmol.AddHydrogens();
     // All new atoms in the OBMol must be the additional hydrogens
     unsigned int numberAtoms = numAtoms();
-    for (unsigned int i = numberAtoms+1, j = 0; i <= obmol.NumAtoms(); ++i, ++j) {
+    int j = 0;
+    for (unsigned int i = numberAtoms+1; i <= obmol.NumAtoms(); ++i, ++j) {
       if (obmol.GetAtom(i)->IsHydrogen()) {
         OpenBabel::OBAtom *obatom = obmol.GetAtom(i);
         Atom *atom;
         if (atomIds.isEmpty())
           atom = addAtom();
-        else
+        else if (j < atomIds.size())
           atom = addAtom(atomIds.at(j));
+        else {
+          qDebug() << "Error - not enough unique ids in addHydrogens.";
+          break;
+        }
         atom->setOBAtom(obatom);
         // Get the neighbor atom
         OpenBabel::OBBondIterator iter;
@@ -572,7 +621,7 @@ namespace Avogadro{
         Bond *bond;
         if (bondIds.isEmpty())
           bond = addBond();
-        else
+        else // Already confirmed by atom ids
           bond = addBond(bondIds.at(j));
         bond->setEnd(Molecule::atom(atom->index()));
         bond->setBegin(Molecule::atom(next->GetIdx()-1));

@@ -49,6 +49,7 @@ namespace Avogadro {
   class Cube;
   class Mesh;
   class Fragment;
+  class ZMatrix;
 
   /**
    * @class Molecule molecule.h <avogadro/molecule.h>
@@ -425,12 +426,48 @@ namespace Avogadro {
     unsigned int numMeshes() const;
     /** @} */
 
+    /** @name ZMatrix properties
+     * These functions are used to change and retrieve the properties of the
+     * ZMatrix objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new ZMatrix object and return a pointer to it.
+     * @note Do not delete the object, use removeZMatrix(unsigned long id).
+     */
+    ZMatrix * addZMatrix();
+
+    /**
+     * Remove the supplied ZMatrix.
+     */
+    void removeZMatrix(ZMatrix *zmatrix);
+
+    /**
+     * @return The ZMatrix at the supplied index.
+     */
+    ZMatrix * zMatrix(int index) const;
+
+    /**
+     * @return QList of all ZMatrix objects in the Molecule.
+     */
+    QList<ZMatrix *> zMatrices() const;
+
+    /**
+     * @return The total number of ZMatrix objects in the molecule.
+     */
+    unsigned int numZMatrices() const;
+    /** @} */
+
     /**
      * Add hydrogens to the molecule.
      * @param atom If supplied only add hydrogens to the specified atom.
+     * @param atomIds Unique Atom IDs when adding hydrogens in undo/redo.
+     * @param bondIds Unique Bond IDs when adding hydrogens in undo/redo.
      */
-    void addHydrogens(Atom *atom = 0, const QList<unsigned long> &atomIds = QList<unsigned long>(),
-        const QList<unsigned long> &bondIds = QList<unsigned long>());
+    void addHydrogens(Atom *atom = 0,
+                      const QList<unsigned long> &atomIds = QList<unsigned long>(),
+                      const QList<unsigned long> &bondIds = QList<unsigned long>());
 
     /**
      * Remove all hydrogens from the molecule.
