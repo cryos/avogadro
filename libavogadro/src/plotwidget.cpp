@@ -58,7 +58,7 @@ namespace Avogadro {
       : q( qq ),
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
         showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-	fontPointSize( 12 )
+        fontPointSize( 12 )
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();

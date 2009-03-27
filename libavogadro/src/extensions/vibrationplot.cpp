@@ -23,6 +23,11 @@
 #include <QButtonGroup>
 #include <QDebug>
 #include <QDoubleValidator>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QFile>
+#include <QDir>
+#include <QPixmap>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -52,26 +57,85 @@ namespace Avogadro {
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel("Wavenumber (cm^(-1))");
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel("Transmittance");
+    m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
+    m_importedSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2);
+    m_nullSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2); // Used to replace disabled plot objects
+    ui.plot->addPlotObject(m_calculatedSpectra);
+    ui.plot->addPlotObject(m_importedSpectra);
 
+    connect(ui.push_save, SIGNAL(clicked()),
+            this, SLOT(saveImage()));
+    connect(ui.cb_import, SIGNAL(toggled(bool)),
+            this, SLOT(toggleImport(bool)));
+    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
+            this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
+    connect(ui.push_import, SIGNAL(clicked()),
+            this, SLOT(importSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
-            this, SLOT(drawVibrationSpectra()));
+            this, SLOT(regenerateCalculatedSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
             this, SLOT(updateScaleEdit()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            this, SLOT(drawVibrationSpectra()));
   }
 
   VibrationPlot::~VibrationPlot()
   {
-    //TODO Anything to delete?
+    //TODO: Anything to delete?
   }
 
   void VibrationPlot::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    drawVibrationSpectra();
+    OBMol obmol = m_molecule->OBMol();
+
+    // Get intensities
+    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+    if (!m_vibrations) {
+      qWarning() << "VibrationPlot::setMolecule: No vibrations to plot!";
+      return;
+    }
+
+    // OK, we have valid vibrations, so store them
+    m_wavenumbers = m_vibrations->GetFrequencies();
+    vector<double> intensities = m_vibrations->GetIntensities();
+
+    // FIXME: dlonie: remove this when OB is fixed!! Hack to get around bug in how open babel reads in QChem files
+    // While openbabel is broken, remove indicies (n+3), where
+    // n=0,1,2...
+    if (m_wavenumbers.size() == 0.75 * intensities.size()) {
+      uint count = 0;
+      for (uint i = 0; i < intensities.size(); i++) {
+        if ((i+count)%3 == 0){
+          intensities.erase(intensities.begin()+i);
+          count++;
+          i--;
+        }
+      }
+    }
+
+    // Normalize intensities into transmittances
+    double maxIntensity=0;
+    for (unsigned int i = 0; i < intensities.size(); i++) {
+      if (intensities.at(i) >= maxIntensity) {
+        maxIntensity = intensities.at(i);
+      }
+    }
+
+    if (maxIntensity == 0) {
+      qWarning() << "VibrationPlot::setMolecule: No intensities > 0 in dataset.";
+      return;
+    }
+
+    for (unsigned int i = 0; i < intensities.size(); i++) {
+      double t = intensities.at(i);
+      t = t / maxIntensity; 	// Normalize
+      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+      t = 1 - t; 		// Simulate transmittance
+      m_transmittances.push_back(t);
+    }
+
+    regenerateCalculatedSpectra();
   }
 
   void VibrationPlot::setScale(int scale)
@@ -93,95 +157,116 @@ namespace Avogadro {
     emit scaleUpdated();
   }
   
-  void VibrationPlot::updateScaleEdit(){
+  void VibrationPlot::importSpectra()
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
+
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Text Files (*.txt);;All Files (*.*)"));
+
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+      qDebug() << "Error reading file " << filename;
+      return;
+    }
+    
+    QTextStream in(&file);
+    // Process each line
+    while (!in.atEnd()) {
+      QString line = in.readLine();
+
+      // the following assumes that the file is a tsv of wavenumber \t transmittance
+      QStringList data = line.split("\t");
+      if (data.at(0).toDouble() && data.at(1).toDouble()) {
+        m_imported_wavenumbers.push_back(data.at(0).toDouble());
+        m_imported_transmittances.push_back(data.at(1).toDouble());
+      }
+      else {
+        qDebug() << "VibrationPlot::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+      }
+    }
+    ui.cb_import->setEnabled(true);
+    ui.cb_import->setChecked(true);
+    getImportedSpectra(m_importedSpectra);
+    updatePlot();
+  }
+
+  void VibrationPlot::updateScaleEdit()
+  {
     ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
   }
-  
-  void VibrationPlot::drawVibrationSpectra()
+
+  void VibrationPlot::saveImage()
   {
-    OBMol obmol = m_molecule->OBMol();
-    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
-    if (!m_vibrations) {
-      qWarning() << "VibrationPlot::setMolecule: No vibrations to plot!";
-      return;
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
+
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".png";
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("PDF (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
+    QPixmap pix = QPixmap::grabWidget(ui.plot);
+    if (!pix.save(filename)) {
+      qWarning() << "VibrationPlot::saveImage Error saving plot to " << filename;
     }
+  }
 
-    // OK, we have valid vibrations, so plot them
-    vector<double> frequencies = m_vibrations->GetFrequencies();
-    vector<double> intensities = m_vibrations->GetIntensities();
-
-    // FIXME: dlonie: remove this when OB is fixed!! Hack to get around bug in how open babel reads in QChem files
-    // While openbabel is broken, remove indicies (n+3), where
-    // n=0,1,2...
-    if (frequencies.size() == 0.75 * intensities.size()) {
-      uint count = 0;
-      for (uint i = 0; i < intensities.size(); i++) {
-        if ((i+count)%3 == 0){
-          intensities.erase(intensities.begin()+i);
-          count++;
-          i--;
-        }
-      }
+  void VibrationPlot::toggleImport(bool state) {
+    if (state) {
+      ui.plot->replacePlotObject(1,m_importedSpectra);
     }
-
-    // Normalize intensities into transmittances
-    double maxIntensity=0;
-    vector<double> transmittances;
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      if (intensities.at(i) >= maxIntensity) {
-        maxIntensity = intensities.at(i);
-      }
+    else {
+      ui.plot->replacePlotObject(1,m_nullSpectra);
     }
+    updatePlot();
+  }
 
-    if (maxIntensity == 0) {
-      qWarning() << "VibrationPlot::setMolecule: No intensities > 0 in dataset.";
-      return;
-    }
+  void VibrationPlot::regenerateCalculatedSpectra() {
+    getCalculatedSpectra(m_calculatedSpectra);
+    updatePlot();
+  }
 
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      double t = intensities.at(i);
-      t = t / maxIntensity; 	// Normalize
-      t = 1 - t; 		// Simulate transmittance
-      transmittances.push_back(t);
-    }
+  void VibrationPlot::updatePlot()
+  {
+    ui.plot->update();
+  }
 
-    // Construct plot data
-    ui.plot->removeAllPlotObjects();
-    m_vibrationPlotObject = new PlotObject( Qt::red, PlotObject::Lines, 2);
-    m_vibrationPlotObject->clearPoints();
-    m_vibrationPlotObject->addPoint( 400, 1); // Initial point
-
-//     qDebug() << "size transmittances" << transmittances.size();
-//     qDebug() << "size intensities   " << intensities.size();
-//     qDebug() << "size frequencies   " << frequencies.size();
-//     for (uint i = 0; i < transmittances.size(); i++) {
-//       qDebug() << i << " " << transmittances.at(i);
-//     }
-//     for (uint i = 0; i < intensities.size(); i++) {
-//       qDebug() << i << " " << intensities.at(i);
-//     }
-//     for (uint i = 0; i < transmittances.size(); i++) {
-//       qDebug() << i << " " << frequencies.at(i);
-//    }
+  void VibrationPlot::getCalculatedSpectra(PlotObject *vibrationPlotObject)
+  {
+    vibrationPlotObject->clearPoints();
+    vibrationPlotObject->addPoint( 400, 1); // Initial point
 
     // For now, lets just make singlet peaks. Maybe we can fit a
     // gaussian later?
-    for (uint i = 0; i < transmittances.size(); i++) {
-      double wavenumber = frequencies.at(i) * m_scale;
-      double transmittance = transmittances.at(i);
-      m_vibrationPlotObject->addPoint ( wavenumber, 1 );
+    for (uint i = 0; i < m_transmittances.size(); i++) {
+      double wavenumber = m_wavenumbers.at(i) * m_scale;
+      double transmittance = m_transmittances.at(i);
+      vibrationPlotObject->addPoint ( wavenumber, 1 );
       if (ui.cb_labelPeaks->isChecked()) {
-        m_vibrationPlotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+        vibrationPlotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
       }
       else {
-       	m_vibrationPlotObject->addPoint ( wavenumber, transmittance );
+       	vibrationPlotObject->addPoint ( wavenumber, transmittance );
       }
-      m_vibrationPlotObject->addPoint ( wavenumber, 1 );
+      vibrationPlotObject->addPoint ( wavenumber, 1 );
     }
 
-    m_vibrationPlotObject->addPoint( 4000, 1); // Final point
-    ui.plot->addPlotObject(m_vibrationPlotObject);
-    ui.plot->update();
+    vibrationPlotObject->addPoint( 4000, 1); // Final point
+  }
+
+  void VibrationPlot::getImportedSpectra(PlotObject *vibrationPlotObject)
+  {
+    vibrationPlotObject->clearPoints();
+    // For now, lets just make singlet peaks. Maybe we can fit a
+    // gaussian later?
+    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
+      double wavenumber = m_imported_wavenumbers.at(i);
+      double transmittance = m_imported_transmittances.at(i);
+      vibrationPlotObject->addPoint ( wavenumber, transmittance );
+    }
   }
 }
 

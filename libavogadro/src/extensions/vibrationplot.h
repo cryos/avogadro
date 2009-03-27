@@ -26,11 +26,10 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/plotwidget.h>
 
-#include "ui_vibrationplot.h"
+#include <openbabel/mol.h>
+#include <openbabel/generic.h>
 
-namespace OpenBabel {
-  class OBVibrationData;
-}
+#include "ui_vibrationplot.h"
 
 namespace Avogadro {
 
@@ -51,8 +50,12 @@ namespace Avogadro {
     void setScale(double scale);
 
   private slots:
-    void drawVibrationSpectra();
     void updateScaleEdit();
+    void importSpectra();
+    void updatePlot();
+    void toggleImport(bool state);
+    void regenerateCalculatedSpectra();
+    void saveImage();
 
   signals:
     void scaleUpdated();
@@ -60,8 +63,17 @@ namespace Avogadro {
   private:
     Ui::VibrationPlot ui;
 
-    PlotObject *m_vibrationPlotObject;
+    void getCalculatedSpectra(PlotObject *vibrationPlotObject);
+    void getImportedSpectra(PlotObject *vibrationPlotObject);
+
     double m_scale;
+    PlotObject *m_calculatedSpectra;
+    PlotObject *m_importedSpectra;
+    PlotObject *m_nullSpectra;
+    std::vector<double> m_wavenumbers;
+    std::vector<double> m_transmittances;
+    std::vector<double> m_imported_wavenumbers;
+    std::vector<double> m_imported_transmittances;
     Molecule *m_molecule;
     OpenBabel::OBVibrationData *m_vibrations;
   };
