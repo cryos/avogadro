@@ -114,7 +114,7 @@ namespace Avogadro {
 
   void VibrationDialog::currentCellChanged(int, int, int row, int)
   {
-    if (row != -1) {
+    if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
     }
     emit selectedMode(row);
@@ -122,7 +122,7 @@ namespace Avogadro {
 
   void VibrationDialog::cellClicked(int row, int)
   {
-    if (row != -1) {
+    if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
     }
     emit selectedMode(row);
@@ -151,10 +151,10 @@ namespace Avogadro {
 
   void VibrationDialog::animateButtonClicked(bool)
   {
-    if (ui.animationButton->text() == tr("Start Animation")) {
-      ui.animationButton->setText(tr("Stop Animation"));
+    if (ui.animationButton->text() == tr("Start &Animation")) {
+      ui.animationButton->setText(tr("Stop &Animation"));
     } else {
-      ui.animationButton->setText(tr("Start Animation"));
+      ui.animationButton->setText(tr("Start &Animation"));
     }
 
     emit toggleAnimation();
