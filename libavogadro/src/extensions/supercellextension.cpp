@@ -36,6 +36,7 @@
 #include <openbabel/generic.h>
 
 #include <QMessageBox>
+#include <QCoreApplication>
 #include <QDebug>
 
 namespace Avogadro {
@@ -150,8 +151,10 @@ namespace Avogadro {
       return;
     }
 
+    m_molecule->blockSignals(true);
     const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
     if (sg) {
+      qDebug() << "Space group:" << sg->GetId();// << sg->GetHMName();
       // We operate on a copy of the Avogadro molecule
       // For each atom, we loop through:
       // * convert the coords back to inverse space
@@ -207,7 +210,11 @@ namespace Avogadro {
 
       m_molecule->setOBMol(&mol);
       qDebug() << "Spacegroups done...";
+      uc->SetSpaceGroup(1);
     }
+
+    m_molecule->update();
+    QCoreApplication::processEvents();
 
     // Remove any bonds that may have snook in
     foreach(Bond *b, m_molecule->bonds())
@@ -216,10 +223,13 @@ namespace Avogadro {
     // Now duplicate the entire cell so that inter-cell bonding can be done
     duplicateUnitCell();
     qDebug() << "Unit cell duplicated...";
+    m_molecule->update();
 
     // Simpler version of connect the dots
     connectTheDots();
     qDebug() << "Dots connected...";
+    m_molecule->blockSignals(false);
+    m_molecule->update();
   }
 
   void SuperCellExtension::connectTheDots()
@@ -227,7 +237,7 @@ namespace Avogadro {
     // Add single bonds between all atoms closer than their combined atomic
     // covalent radii.
     vector<double> rad;
-    NeighborList nbrs(m_molecule, 3.0);
+    NeighborList nbrs(m_molecule, 2.2);
 
     rad.reserve(m_molecule->numAtoms());
 
@@ -252,6 +262,7 @@ namespace Avogadro {
         Bond *bond = m_molecule->addBond();
         bond->setAtoms(atom1->id(), atom2->id(), 1);
       }
+      QCoreApplication::processEvents();
     }
   }
 
@@ -279,6 +290,7 @@ namespace Avogadro {
             newAtom->setPos((*atom->pos())+disp);
           }
         }
+        QCoreApplication::processEvents();
       }
     } // end of for loops
     // Update the length of the unit cell
