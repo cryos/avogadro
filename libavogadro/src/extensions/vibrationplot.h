@@ -50,7 +50,6 @@ namespace Avogadro {
     void setScale(double scale);
 
   private slots:
-    void drawVibrationSpectra();
     void updateScaleEdit();
     void importSpectra();
     void updatePlot();
