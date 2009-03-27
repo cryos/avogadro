@@ -27,28 +27,27 @@
 #ifndef DRAWTOOL_H
 #define DRAWTOOL_H
 
-#include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
-#include <avogadro/periodictableview.h>
-#include "insertfragmentdialog.h"
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QImage>
-#include <QAction>
-#include <QUndoCommand>
-#include <QCheckBox>
+class QCheckBox;
+class QVBoxLayout;
+class QPushButton;
+class QComboBox;
 
-#include <openbabel/forcefield.h>
+namespace OpenBabel {
+  class OBForceField;
+}
 
 namespace Avogadro {
 
+  class Atom;
+  class Bond;
+  class GLHit;
+
+  class InsertFragmentDialog;
+  class PeriodicTableView;
   class AddAtomCommand;
+
   class DrawTool : public Tool
   {
     Q_OBJECT
