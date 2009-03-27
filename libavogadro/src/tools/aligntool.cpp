@@ -38,6 +38,7 @@
 #include <cmath>
 
 #include <QDebug>
+#include <QAction>
 #include <QtPlugin>
 #include <QLabel>
 #include <QPushButton>
