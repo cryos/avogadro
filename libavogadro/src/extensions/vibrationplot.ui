@@ -5,15 +5,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>581</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Vibration Plot</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
-   <item row="1" column="6" >
+   <item row="1" column="7" >
     <widget class="QLineEdit" name="scaleEdit" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Minimum" hsizetype="Ignored" >
@@ -38,7 +38,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="5" >
+   <item row="1" column="1" colspan="6" >
     <widget class="QSlider" name="scaleSlider" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
@@ -51,7 +51,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="7" >
+   <item row="0" column="0" colspan="8" >
     <widget class="Avogadro::PlotWidget" name="plot" >
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
@@ -61,7 +61,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="6" >
+   <item row="2" column="7" >
     <widget class="QPushButton" name="pushButton" >
      <property name="text" >
       <string>&amp;Close</string>
@@ -93,7 +93,7 @@
       </sizepolicy>
      </property>
      <property name="text" >
-      <string>&amp;Scale:</string>
+      <string>Sc&amp;ale:</string>
      </property>
      <property name="buddy" >
       <cstring>scaleSlider</cstring>
@@ -130,6 +130,13 @@
      </property>
      <property name="checked" >
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="6" >
+    <widget class="QPushButton" name="push_save" >
+     <property name="text" >
+      <string>&amp;Save Image...</string>
      </property>
     </widget>
    </item>

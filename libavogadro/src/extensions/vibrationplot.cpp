@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
+#include <QPixmap>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -62,6 +63,8 @@ namespace Avogadro {
     ui.plot->addPlotObject(m_calculatedSpectra);
     ui.plot->addPlotObject(m_importedSpectra);
 
+    connect(ui.push_save, SIGNAL(clicked()),
+            this, SLOT(saveImage()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
             this, SLOT(toggleImport(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
@@ -194,6 +197,21 @@ namespace Avogadro {
   void VibrationPlot::updateScaleEdit()
   {
     ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
+  }
+
+  void VibrationPlot::saveImage()
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty())
+      defaultPath = QDir::homePath();
+
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".png";
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("PDF (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
+    QPixmap pix = QPixmap::grabWidget(ui.plot);
+    if (!pix.save(filename)) {
+      qWarning() << "VibrationPlot::saveImage Error saving plot to " << filename;
+    }
   }
 
   void VibrationPlot::toggleImport(bool state) {

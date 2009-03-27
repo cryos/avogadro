@@ -55,6 +55,7 @@ namespace Avogadro {
     void updatePlot();
     void toggleImport(bool state);
     void regenerateCalculatedSpectra();
+    void saveImage();
 
   signals:
     void scaleUpdated();
