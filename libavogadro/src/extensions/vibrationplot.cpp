@@ -58,8 +58,8 @@ namespace Avogadro {
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
     ui.plot->setMinimumSize( 800, 500 );
     ui.plot->setAntialiasing(true);
-    ui.plot->axis(PlotWidget::BottomAxis)->setLabel("Wavenumber (cm^(-1))");
-    ui.plot->axis(PlotWidget::LeftAxis)->setLabel("Transmittance");
+    ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
+    ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Transmittance"));
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
     m_importedSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2);
     m_nullSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2); // Used to replace disabled plot objects
@@ -229,11 +229,11 @@ namespace Avogadro {
 
   void VibrationPlot::toggleCustomize() {
     if (ui.gb_customize->isHidden()) {
-      ui.push_customize->setText("Customi&ze <<");
+      ui.push_customize->setText(tr("Customi&ze <<"));
       ui.gb_customize->show();
     }
     else {
-      ui.push_customize->setText("Customi&ze >>");
+      ui.push_customize->setText(tr("Customi&ze >>"));
       ui.gb_customize->hide();
     }
   }
