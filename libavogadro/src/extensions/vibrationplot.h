@@ -56,6 +56,7 @@ namespace Avogadro {
     void toggleImport(bool state);
     void regenerateCalculatedSpectra();
     void saveImage();
+    void toggleCustomize();
 
   signals:
     void scaleUpdated();

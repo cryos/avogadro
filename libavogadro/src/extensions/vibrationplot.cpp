@@ -50,6 +50,9 @@ namespace Avogadro {
     ui.scaleEdit->setValidator( new QDoubleValidator (0.5, 1.5, 2, ui.scaleEdit) );
     ui.scaleSlider->setSliderPosition( static_cast<int>((m_scale - 0.5) * 100) );
 
+    // Hide advanced options initially
+    ui.gb_customize->hide();
+
     // setting the limits for the plot
     ui.plot->setFontSize( 10);
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
@@ -63,8 +66,8 @@ namespace Avogadro {
     ui.plot->addPlotObject(m_calculatedSpectra);
     ui.plot->addPlotObject(m_importedSpectra);
 
-    connect(ui.push_save, SIGNAL(clicked()),
-            this, SLOT(saveImage()));
+    connect(ui.push_customize, SIGNAL(clicked()),
+            this, SLOT(toggleCustomize()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
             this, SLOT(toggleImport(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
@@ -222,6 +225,17 @@ namespace Avogadro {
       ui.plot->replacePlotObject(1,m_nullSpectra);
     }
     updatePlot();
+  }
+
+  void VibrationPlot::toggleCustomize() {
+    if (ui.gb_customize->isHidden()) {
+      ui.push_customize->setText("Customi&ze <<");
+      ui.gb_customize->show();
+    }
+    else {
+      ui.push_customize->setText("Customi&ze >>");
+      ui.gb_customize->hide();
+    }
   }
 
   void VibrationPlot::regenerateCalculatedSpectra() {
