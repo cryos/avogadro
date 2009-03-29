@@ -1022,6 +1022,7 @@ namespace Avogadro{
     qDebug() << "setOBMol called.";
     clear();
     // Copy all the parts of the OBMol to our Molecule
+    blockSignals(true);
 
     qDebug() << "Copying atoms...";
     // Begin by copying all of the atoms
@@ -1063,6 +1064,7 @@ namespace Avogadro{
 //      qDebug() << "Cube" << i << "added.";
     }
 
+    qDebug() << "Copying residues...";
     // Copy the residues across...
     std::vector<OpenBabel::OBResidue *> residues;
     OpenBabel::OBResidueIterator iResidue;
@@ -1092,15 +1094,7 @@ namespace Avogadro{
       }
     }
 
-    // Copy the rings across now
-    std::vector<OpenBabel::OBRing *> rings = obmol->GetSSSR();
-    foreach(OpenBabel::OBRing *r, rings) {
-      Fragment *ring = addRing();
-      foreach(int index, r->_path) {
-        ring->addAtom(atom(index-1)->id());
-      }
-    }
-
+    qDebug() << "Copying other data...";
     // Copy the dipole moment of the molecule
     OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
     if (vd) {
@@ -1148,6 +1142,7 @@ namespace Avogadro{
       property = static_cast<OpenBabel::OBPairData *>(*dIter);
       setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
     }
+    blockSignals(false);
     return true;
   }
 
