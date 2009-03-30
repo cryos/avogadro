@@ -19,7 +19,9 @@
 
 #include "vibrationplot.h"
 
-#include <QPushButton>
+#include <QPen>
+#include <QColor>
+#include <QColorDialog>
 #include <QButtonGroup>
 #include <QDebug>
 #include <QDoubleValidator>
@@ -50,19 +52,33 @@ namespace Avogadro {
     ui.scaleEdit->setValidator( new QDoubleValidator (0.5, 1.5, 2, ui.scaleEdit) );
     ui.scaleSlider->setSliderPosition( static_cast<int>((m_scale - 0.5) * 100) );
 
+    // Hide advanced options initially
+    ui.gb_customize->hide();
+
     // setting the limits for the plot
     ui.plot->setFontSize( 10);
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
-    ui.plot->setMinimumSize( 800, 500 );
     ui.plot->setAntialiasing(true);
-    ui.plot->axis(PlotWidget::BottomAxis)->setLabel("Wavenumber (cm^(-1))");
-    ui.plot->axis(PlotWidget::LeftAxis)->setLabel("Transmittance");
+    ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
+    ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Transmittance"));
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
     m_importedSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2);
     m_nullSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2); // Used to replace disabled plot objects
     ui.plot->addPlotObject(m_calculatedSpectra);
     ui.plot->addPlotObject(m_importedSpectra);
 
+    connect(ui.push_colorBackground, SIGNAL(clicked()),
+            this, SLOT(changeBackgroundColor()));
+    connect(ui.push_colorForeground, SIGNAL(clicked()),
+            this, SLOT(changeForegroundColor()));
+    connect(ui.push_colorCalculated, SIGNAL(clicked()),
+            this, SLOT(changeCalculatedSpectraColor()));
+    connect(ui.push_colorImported, SIGNAL(clicked()),
+            this, SLOT(changeImportedSpectraColor()));
+    connect(ui.spin_fontSize, SIGNAL(valueChanged(int)),
+            this, SLOT(changeFontSize(int)));
+    connect(ui.push_customize, SIGNAL(clicked()),
+            this, SLOT(toggleCustomize()));
     connect(ui.push_save, SIGNAL(clicked()),
             this, SLOT(saveImage()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
@@ -82,6 +98,62 @@ namespace Avogadro {
   VibrationPlot::~VibrationPlot()
   {
     //TODO: Anything to delete?
+  }
+
+  void VibrationPlot::changeBackgroundColor()
+  {
+    //TODO: Store color choices in config?
+    QColor current (ui.plot->backgroundColor());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      ui.plot->setBackgroundColor(color);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeForegroundColor()
+  {
+    //TODO: Store color choices in config?
+    QColor current (ui.plot->foregroundColor());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      ui.plot->setForegroundColor(color);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeCalculatedSpectraColor()
+  {
+    //TODO: Store color choices in config?
+    QPen currentPen = m_calculatedSpectra->linePen();
+    QColor current (currentPen.color());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      currentPen.setColor(color);
+      m_calculatedSpectra->setLinePen(currentPen);
+      updatePlot();
+    }
+  }
+
+
+  void VibrationPlot::changeImportedSpectraColor()
+  {
+    //TODO: Store color choices in config?
+    QPen currentPen (m_importedSpectra->linePen());
+    QColor current (currentPen.color());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      currentPen.setColor(color);
+      m_importedSpectra->setLinePen(currentPen);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeFontSize(int size)
+  {
+    //TODO: Need to be able to check the font settings of the plot
+    ui.plot->setFontSize(size);
+    updatePlot();
   }
 
   void VibrationPlot::setMolecule(Molecule *molecule)
@@ -188,6 +260,7 @@ namespace Avogadro {
         qDebug() << "VibrationPlot::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
       }
     }
+    ui.push_colorImported->setEnabled(true);
     ui.cb_import->setEnabled(true);
     ui.cb_import->setChecked(true);
     getImportedSpectra(m_importedSpectra);
@@ -222,6 +295,17 @@ namespace Avogadro {
       ui.plot->replacePlotObject(1,m_nullSpectra);
     }
     updatePlot();
+  }
+
+  void VibrationPlot::toggleCustomize() {
+    if (ui.gb_customize->isHidden()) {
+      ui.push_customize->setText(tr("Customi&ze <<"));
+      ui.gb_customize->show();
+    }
+    else {
+      ui.push_customize->setText(tr("Customi&ze >>"));
+      ui.gb_customize->hide();
+    }
   }
 
   void VibrationPlot::regenerateCalculatedSpectra() {

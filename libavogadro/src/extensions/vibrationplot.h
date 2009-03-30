@@ -51,11 +51,17 @@ namespace Avogadro {
 
   private slots:
     void updateScaleEdit();
+    void changeBackgroundColor();
+    void changeForegroundColor();
+    void changeCalculatedSpectraColor();
+    void changeImportedSpectraColor();
+    void changeFontSize(int size);
     void importSpectra();
     void updatePlot();
     void toggleImport(bool state);
     void regenerateCalculatedSpectra();
     void saveImage();
+    void toggleCustomize();
 
   signals:
     void scaleUpdated();
