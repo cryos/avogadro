@@ -82,7 +82,9 @@ namespace Avogadro {
     connect(ui.push_save, SIGNAL(clicked()),
             this, SLOT(saveImage()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
-            this, SLOT(toggleImport(bool)));
+            this, SLOT(toggleImported(bool)));
+    connect(ui.cb_calculate, SIGNAL(toggled(bool)),
+            this, SLOT(toggleCalculated(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
@@ -287,12 +289,22 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::toggleImport(bool state) {
+  void VibrationPlot::toggleImported(bool state) {
     if (state) {
       ui.plot->replacePlotObject(1,m_importedSpectra);
     }
     else {
       ui.plot->replacePlotObject(1,m_nullSpectra);
+    }
+    updatePlot();
+  }
+
+  void VibrationPlot::toggleCalculated(bool state) {
+    if (state) {
+      ui.plot->replacePlotObject(0,m_importedSpectra);
+    }
+    else {
+      ui.plot->replacePlotObject(0,m_calculatedSpectra);
     }
     updatePlot();
   }

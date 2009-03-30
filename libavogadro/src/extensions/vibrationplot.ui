@@ -272,6 +272,13 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="3" >
+       <widget class="QCheckBox" name="cb_calculate" >
+        <property name="text" >
+         <string>Show calculated spectra</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
