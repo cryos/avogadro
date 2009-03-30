@@ -105,10 +105,15 @@ namespace Avogadro {
     //TODO: Store color choices in config?
     QColor current (ui.plot->backgroundColor());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.cpp
     if (color.isValid() && color != current) {
       ui.plot->setBackgroundColor(color);
       updatePlot();
     }
+=======
+    ui.plot->setBackgroundColor(color);
+    updatePlot();
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.cpp
   }
 
   void VibrationPlot::changeForegroundColor()
@@ -116,10 +121,15 @@ namespace Avogadro {
     //TODO: Store color choices in config?
     QColor current (ui.plot->foregroundColor());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.cpp
     if (color.isValid() && color != current) {
       ui.plot->setForegroundColor(color);
       updatePlot();
     }
+=======
+    ui.plot->setForegroundColor(color);
+    updatePlot();
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.cpp
   }
 
   void VibrationPlot::changeCalculatedSpectraColor()
@@ -128,11 +138,17 @@ namespace Avogadro {
     QPen currentPen = m_calculatedSpectra->linePen();
     QColor current (currentPen.color());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.cpp
     if (color.isValid() && color != current) {
       currentPen.setColor(color);
       m_calculatedSpectra->setLinePen(currentPen);
       updatePlot();
     }
+=======
+    currentPen.setColor(color);
+    m_calculatedSpectra->setLinePen(currentPen);
+    updatePlot();
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.cpp
   }
 
 
@@ -142,16 +158,25 @@ namespace Avogadro {
     QPen currentPen (m_importedSpectra->linePen());
     QColor current (currentPen.color());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.cpp
     if (color.isValid() && color != current) {
       currentPen.setColor(color);
       m_importedSpectra->setLinePen(currentPen);
       updatePlot();
     }
+=======
+    currentPen.setColor(color);
+    m_importedSpectra->setLinePen(currentPen);
+    updatePlot();
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.cpp
   }
 
   void VibrationPlot::changeFontSize(int size)
   {
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.cpp
     //TODO: Need to be able to check the font settings of the plot
+=======
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.cpp
     ui.plot->setFontSize(size);
     updatePlot();
   }

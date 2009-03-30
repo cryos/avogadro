@@ -13,46 +13,13 @@
    <string>Vibration Plot</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
    <item row="1" column="4" >
     <widget class="QLineEdit" name="scaleEdit" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Minimum" hsizetype="Ignored" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="readOnly" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="3" >
-    <widget class="QSlider" name="scaleSlider" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
+=======
    <item row="0" column="0" colspan="5" >
     <widget class="Avogadro::PlotWidget" name="plot" >
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
        <horstretch>0</horstretch>
@@ -71,13 +38,7 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-    </widget>
-   </item>
-   <item row="2" column="4" >
-    <widget class="QPushButton" name="pushButton" >
-     <property name="text" >
-      <string>&amp;Close</string>
-     </property>
+     <zorder>gb_customize</zorder>
     </widget>
    </item>
    <item row="1" column="0" >
@@ -96,10 +57,69 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="3" >
-    <widget class="QPushButton" name="push_save" >
+   <item row="1" column="1" colspan="3" >
+    <widget class="QSlider" name="scaleSlider" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
+   <item row="0" column="0" colspan="5" >
+    <widget class="Avogadro::PlotWidget" name="plot" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="baseSize" >
+      <size>
+       <width>800</width>
+       <height>500</height>
+      </size>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+=======
+   <item row="1" column="4" >
+    <widget class="QLineEdit" name="scaleEdit" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Minimum" hsizetype="Ignored" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
+    </widget>
+   </item>
+   <item row="2" column="4" >
+    <widget class="QPushButton" name="pushButton" >
      <property name="text" >
-      <string>&amp;Save Image...</string>
+      <string>&amp;Close</string>
+=======
+     <property name="maximumSize" >
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
      </property>
     </widget>
    </item>
@@ -113,6 +133,52 @@
      </property>
      <property name="text" >
       <string>Customi&amp;ze >></string>
+     </property>
+    </widget>
+   </item>
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
+=======
+   <item row="2" column="2" >
+    <spacer name="horizontalSpacer_2" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="push_save" >
+     <property name="text" >
+      <string>&amp;Save Image...</string>
+     </property>
+    </widget>
+   </item>
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
+   <item row="2" column="0" colspan="2" >
+    <widget class="QPushButton" name="push_customize" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Customi&amp;ze >></string>
+=======
+   <item row="2" column="4" >
+    <widget class="QPushButton" name="pushButton" >
+     <property name="text" >
+      <string>&amp;Close</string>
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
      </property>
     </widget>
    </item>
@@ -167,9 +233,12 @@
       </item>
       <item row="4" column="1" >
        <widget class="QPushButton" name="push_colorImported" >
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
         <property name="enabled" >
          <bool>false</bool>
         </property>
+=======
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
         <property name="text" >
          <string>Set Color...</string>
         </property>
@@ -275,6 +344,7 @@
      </layout>
     </widget>
    </item>
+<<<<<<< HEAD:libavogadro/src/extensions/vibrationplot.ui
    <item row="2" column="2" >
     <spacer name="horizontalSpacer" >
      <property name="orientation" >
@@ -289,6 +359,19 @@
     </spacer>
    </item>
   </layout>
+=======
+  </layout>
+  <zorder>scaleEdit</zorder>
+  <zorder>scaleSlider</zorder>
+  <zorder>plot</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>label</zorder>
+  <zorder>push_save</zorder>
+  <zorder>push_customize</zorder>
+  <zorder>horizontalSpacer_2</zorder>
+  <zorder>tabWidget</zorder>
+  <zorder>gb_customize</zorder>
+>>>>>>> 4571442d1c0561311879670795e68464ad30ac2e:libavogadro/src/extensions/vibrationplot.ui
  </widget>
  <customwidgets>
   <customwidget>
