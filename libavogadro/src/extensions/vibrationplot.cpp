@@ -282,7 +282,7 @@ namespace Avogadro {
       defaultPath = QDir::homePath();
 
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".png";
-    QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("PDF (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("png (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
     QPixmap pix = QPixmap::grabWidget(ui.plot);
     if (!pix.save(filename)) {
       qWarning() << "VibrationPlot::saveImage Error saving plot to " << filename;
