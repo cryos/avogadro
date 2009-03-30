@@ -19,7 +19,9 @@
 
 #include "vibrationplot.h"
 
-#include <QPushButton>
+#include <QPen>
+#include <QColor>
+#include <QColorDialog>
 #include <QButtonGroup>
 #include <QDebug>
 #include <QDoubleValidator>
@@ -56,7 +58,6 @@ namespace Avogadro {
     // setting the limits for the plot
     ui.plot->setFontSize( 10);
     ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
-    ui.plot->setMinimumSize( 800, 500 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Transmittance"));
@@ -66,8 +67,20 @@ namespace Avogadro {
     ui.plot->addPlotObject(m_calculatedSpectra);
     ui.plot->addPlotObject(m_importedSpectra);
 
+    connect(ui.push_colorBackground, SIGNAL(clicked()),
+            this, SLOT(changeBackgroundColor()));
+    connect(ui.push_colorForeground, SIGNAL(clicked()),
+            this, SLOT(changeForegroundColor()));
+    connect(ui.push_colorCalculated, SIGNAL(clicked()),
+            this, SLOT(changeCalculatedSpectraColor()));
+    connect(ui.push_colorImported, SIGNAL(clicked()),
+            this, SLOT(changeImportedSpectraColor()));
+    connect(ui.spin_fontSize, SIGNAL(valueChanged(int)),
+            this, SLOT(changeFontSize(int)));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
+    connect(ui.push_save, SIGNAL(clicked()),
+            this, SLOT(saveImage()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
             this, SLOT(toggleImport(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
@@ -85,6 +98,62 @@ namespace Avogadro {
   VibrationPlot::~VibrationPlot()
   {
     //TODO: Anything to delete?
+  }
+
+  void VibrationPlot::changeBackgroundColor()
+  {
+    //TODO: Store color choices in config?
+    QColor current (ui.plot->backgroundColor());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      ui.plot->setBackgroundColor(color);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeForegroundColor()
+  {
+    //TODO: Store color choices in config?
+    QColor current (ui.plot->foregroundColor());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      ui.plot->setForegroundColor(color);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeCalculatedSpectraColor()
+  {
+    //TODO: Store color choices in config?
+    QPen currentPen = m_calculatedSpectra->linePen();
+    QColor current (currentPen.color());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      currentPen.setColor(color);
+      m_calculatedSpectra->setLinePen(currentPen);
+      updatePlot();
+    }
+  }
+
+
+  void VibrationPlot::changeImportedSpectraColor()
+  {
+    //TODO: Store color choices in config?
+    QPen currentPen (m_importedSpectra->linePen());
+    QColor current (currentPen.color());
+    QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    if (color.isValid() && color != current) {
+      currentPen.setColor(color);
+      m_importedSpectra->setLinePen(currentPen);
+      updatePlot();
+    }
+  }
+
+  void VibrationPlot::changeFontSize(int size)
+  {
+    //TODO: Need to be able to check the font settings of the plot
+    ui.plot->setFontSize(size);
+    updatePlot();
   }
 
   void VibrationPlot::setMolecule(Molecule *molecule)
@@ -191,6 +260,7 @@ namespace Avogadro {
         qDebug() << "VibrationPlot::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
       }
     }
+    ui.push_colorImported->setEnabled(true);
     ui.cb_import->setEnabled(true);
     ui.cb_import->setChecked(true);
     getImportedSpectra(m_importedSpectra);
