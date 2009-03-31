@@ -449,6 +449,21 @@ namespace Avogadro {
 	 */
 	virtual bool event( QEvent* );
 
+        /**
+         * Mouse handler.
+         */
+        virtual void mouseMoveEvent(QMouseEvent *event);
+
+        /**
+         * Mouse handler.
+         */
+        virtual void mousePressEvent(QMouseEvent *event);
+
+        /**
+         * Mouse handler.
+         */
+        virtual void mouseReleaseEvent(QMouseEvent *event);
+
 	/**
 	 * The paint event handler, executed when update() or repaint() is called.
 	 */
@@ -483,6 +498,8 @@ namespace Avogadro {
     private:
 	class Private;
 	Private * const d;
+
+        QPointF mouseSlideOrigin;
 
 	Q_DISABLE_COPY( PlotWidget )
     };

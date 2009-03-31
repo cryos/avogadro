@@ -73,7 +73,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="4" >
+   <item row="3" column="4" >
     <widget class="QPushButton" name="pushButton" >
      <property name="text" >
       <string>&amp;Close</string>
@@ -96,14 +96,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="3" >
+   <item row="3" column="3" >
     <widget class="QPushButton" name="push_save" >
      <property name="text" >
       <string>&amp;Save Image...</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="3" column="0" colspan="2" >
     <widget class="QPushButton" name="push_customize" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -116,7 +116,20 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="5" >
+   <item row="3" column="2" >
+    <spacer name="horizontalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" colspan="5" >
     <widget class="QGroupBox" name="gb_customize" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
@@ -197,14 +210,17 @@
          <bool>false</bool>
         </property>
         <property name="text" >
-         <string>S&amp;how imported data</string>
+         <string>Show imported data</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0" >
        <widget class="QLabel" name="label_5" >
         <property name="text" >
-         <string>Font size:</string>
+         <string>&amp;Font size:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>spin_fontSize</cstring>
         </property>
        </widget>
       </item>
@@ -270,23 +286,20 @@
         <property name="enabled" >
          <bool>false</bool>
         </property>
+        <property name="text" >
+         <string>TODO</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3" >
+       <widget class="QCheckBox" name="cb_calculate" >
+        <property name="text" >
+         <string>Show calculated spectra</string>
+        </property>
        </widget>
       </item>
      </layout>
     </widget>
-   </item>
-   <item row="2" column="2" >
-    <spacer name="horizontalSpacer" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
@@ -298,6 +311,23 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>scaleSlider</tabstop>
+  <tabstop>push_customize</tabstop>
+  <tabstop>push_save</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>push_colorBackground</tabstop>
+  <tabstop>push_colorForeground</tabstop>
+  <tabstop>push_colorCalculated</tabstop>
+  <tabstop>cb_labelPeaks</tabstop>
+  <tabstop>cb_calculate</tabstop>
+  <tabstop>push_colorImported</tabstop>
+  <tabstop>push_import</tabstop>
+  <tabstop>cb_import</tabstop>
+  <tabstop>spin_fontSize</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>scaleEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

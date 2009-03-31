@@ -58,7 +58,8 @@ namespace Avogadro {
     void changeFontSize(int size);
     void importSpectra();
     void updatePlot();
-    void toggleImport(bool state);
+    void toggleImported(bool state);
+    void toggleCalculated(bool state);
     void regenerateCalculatedSpectra();
     void saveImage();
     void toggleCustomize();
