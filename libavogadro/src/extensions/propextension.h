@@ -22,21 +22,10 @@
 #ifndef PROPEXTENSION_H
 #define PROPEXTENSION_H
 
-
 #include "propmodel.h"
 //#include "propdialog.h"
 
-#include <openbabel/mol.h>
-
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
-
-#include <QObject>
-#include <QList>
-#include <QString>
-#include <QUndoCommand>
-#include <QThread>
-#include <QMutex>
 
 #ifndef BUFF_SIZE
 #define BUFF_SIZE 256
@@ -93,7 +82,8 @@ namespace Avogadro {
 
        explicit PropertiesView(Type type, QWidget *parent = 0);
 
-       void selectionChanged(const QItemSelection &selected, const QItemSelection &previous);
+       void selectionChanged(const QItemSelection &selected,
+                             const QItemSelection &previous);
        void setMolecule (Molecule *molecule);
        void setWidget (GLWidget *widget);
        void hideEvent(QHideEvent *event);
@@ -103,14 +93,14 @@ namespace Avogadro {
        Molecule *m_molecule;
        GLWidget *m_widget;
   };
- 
+
   class PropertiesExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
     AVOGADRO_EXTENSION_FACTORY(PropertiesExtension)
   };
- 
+
 } // end namespace Avogadro
 
 #endif
