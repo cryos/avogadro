@@ -406,6 +406,36 @@ namespace Avogadro {
       return QFrame::event( e );
   }
 
+  void PlotWidget::mouseMoveEvent(QMouseEvent *event)
+  {
+    if (event->buttons() & Qt::LeftButton) {
+      QPointF frameDelta = event->posF() - mouseSlideOrigin; // How far the mouse has moved in QFrame coords.
+      QPointF axisPerFrame (-dataRect().width()/frameRect().width(), dataRect().height()/frameRect().height()); // get conversion factor
+      QPointF axisDelta (frameDelta.x() * axisPerFrame.x(), frameDelta.y() * axisPerFrame.y()); // How far the mouse has moved in axis coords
+      // New limits
+      float newX1 = dataRect().x() + axisDelta.x();
+      float newX2 = dataRect().x() + axisDelta.x() + dataRect().width();
+      float newY1 = dataRect().y() + axisDelta.y();
+      float newY2 = dataRect().y() + axisDelta.y() + dataRect().height();
+      setLimits(newX1, newX2, newY1, newY2);// Update axis
+
+      mouseSlideOrigin = event->posF();
+    }
+  }
+
+  void PlotWidget::mousePressEvent(QMouseEvent *event)
+  {
+    if (event->buttons() & Qt::LeftButton) {
+      mouseSlideOrigin = event->posF();
+    }
+  }
+
+  void PlotWidget::mouseReleaseEvent(QMouseEvent *event)
+  {
+    if (event->buttons() & Qt::LeftButton) {
+    }
+  }
+
   void PlotWidget::resizeEvent( QResizeEvent* e ) {
     QFrame::resizeEvent( e );
     setPixRect();
