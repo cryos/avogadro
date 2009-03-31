@@ -57,7 +57,7 @@ namespace Avogadro {
 
     // setting the limits for the plot
     ui.plot->setFontSize( 10);
-    ui.plot->setLimits( 4000.0, 400.0, 0.0, 1.0 );
+    ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 1.0 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Transmittance"));
