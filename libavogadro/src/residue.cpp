@@ -52,12 +52,14 @@ namespace Avogadro {
   void Residue::removeAtom(unsigned long id)
   {
     int index = m_atoms.indexOf(id);
-    if (index > -1) {
+    if (index != -1 ) {
       m_atoms.removeAt(index);
     }
     if (!m_molecule->atomById(id))
       return;
-    m_molecule->atomById(id)->setResidue(-1);
+
+    // don't use -1, this is unsigned
+    m_molecule->atomById(id)->setResidue(ULONG_MAX);
   }
 
   void Residue::setNumber(const QString& number)
@@ -94,7 +96,7 @@ namespace Avogadro {
   bool Residue::setAtomId(unsigned long id, QString atomId)
   {
     int index = m_atoms.indexOf(id);
-    if (index != -1) {
+    if (index != -1 ) {
       if (m_atomId.size() == index) {
         m_atomId.push_back(atomId);
         return true;
@@ -123,7 +125,7 @@ namespace Avogadro {
   QString Residue::atomId(unsigned long id)
   {
     int index = m_atoms.indexOf(id);
-    if (index != -1) {
+    if (index != -1 ) {
       if (m_atomId.size() < index + 1) {
         return "";
       }
