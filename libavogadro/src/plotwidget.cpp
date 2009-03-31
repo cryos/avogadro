@@ -409,14 +409,18 @@ namespace Avogadro {
   void PlotWidget::mouseMoveEvent(QMouseEvent *event)
   {
     if (event->buttons() & Qt::LeftButton) {
-      QPointF frameDelta = event->posF() - mouseSlideOrigin; // How far the mouse has moved in QFrame coords.
-      QPointF axisPerFrame (-dataRect().width()/frameRect().width(), dataRect().height()/frameRect().height()); // get conversion factor
-      QPointF axisDelta (frameDelta.x() * axisPerFrame.x(), frameDelta.y() * axisPerFrame.y()); // How far the mouse has moved in axis coords
+      QPointF pixelDelta = event->posF() - mouseSlideOrigin; // How far the mouse has moved in QFrame coords.
+      //FIXME: The following doesn't work quite right -- there is still a small problem with the translation. 
+      // Look into how the padding is determined a bit more closely.
+      float plotWidth_px = frameRect().width() - 4*XPADDING;
+      float plotHeight_px = frameRect().height() - 4*YPADDING;
+      QPointF unitPerPixel (-dataRect().width()/plotWidth_px, dataRect().height()/plotHeight_px); // get conversion factor
+      QPointF unitDelta (pixelDelta.x() * unitPerPixel.x(), pixelDelta.y() * unitPerPixel.y()); // How far the mouse has moved in axis coords
       // New limits
-      float newX1 = dataRect().x() + axisDelta.x();
-      float newX2 = dataRect().x() + axisDelta.x() + dataRect().width();
-      float newY1 = dataRect().y() + axisDelta.y();
-      float newY2 = dataRect().y() + axisDelta.y() + dataRect().height();
+      float newX1 = dataRect().x() + unitDelta.x();
+      float newX2 = dataRect().x() + unitDelta.x() + dataRect().width();
+      float newY1 = dataRect().y() + unitDelta.y();
+      float newY2 = dataRect().y() + unitDelta.y() + dataRect().height();
       setLimits(newX1, newX2, newY1, newY2);// Update axis
 
       mouseSlideOrigin = event->posF();
