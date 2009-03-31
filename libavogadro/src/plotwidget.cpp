@@ -105,7 +105,7 @@ namespace Avogadro {
     // List of PlotObjects
     QList<PlotObject*> objectList;
     // Limits of the plot area in data units
-    QRectF dataRect, secondDataRect;
+    QRectF dataRect, secondDataRect, defaultDataRect;
     // Limits of the plot area in pixel units
     QRect pixRect;
     //Array holding the mask of "used" regions of the plot
@@ -151,6 +151,27 @@ namespace Avogadro {
     update();
   }
 
+  void PlotWidget::setDefaultLimits( double x1, double x2, double y1, double y2 )
+  {
+    if ( x2 == x1 ) {
+      qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
+      x2 = x1 + 1.0;
+    }
+    if ( y2 == y1 ) {
+      qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
+      y2 = y1 + 1.0;
+    }
+    d->defaultDataRect = QRectF( x1, y1, x2 - x1, y2 - y1 );
+    setLimits( x1, x2, y1, y2 );
+  }
+
+  void PlotWidget::unsetDefaultLimits()
+  {
+    if (!defaultDataRect().isNull()) {
+      d->defaultDataRect = QRectF();
+    }
+  }
+
   void PlotWidget::Private::calcDataRectLimits( double x1, double x2, double y1, double y2 )
   {
     // Removed limit checking, since IR spectra need the x-axis to run
@@ -160,11 +181,11 @@ namespace Avogadro {
     YA1=y1; YA2=y2;
 
     if ( XA2 == XA1 ) {
-      qDebug() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
+      qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
       XA2 = XA1 + 1.0;
     }
     if ( YA2 == YA1 ) {
-      qDebug() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
+      qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
       YA2 = YA1 + 1.0;
     }
     dataRect = QRectF( XA1, YA1, XA2 - XA1, YA2 - YA1 );
@@ -212,6 +233,11 @@ namespace Avogadro {
   QRectF PlotWidget::dataRect() const
   {
     return d->dataRect;
+  }
+
+  QRectF PlotWidget::defaultDataRect() const
+  {
+    return d->defaultDataRect;
   }
 
   QRectF PlotWidget::secondaryDataRect() const
@@ -408,7 +434,7 @@ namespace Avogadro {
 
   void PlotWidget::mouseMoveEvent(QMouseEvent *event)
   {
-    if (event->buttons() & Qt::LeftButton) {
+    if (event->buttons() & Qt::RightButton) {
       QPointF pixelDelta = event->posF() - mouseSlideOrigin; // How far the mouse has moved in QFrame coords.
       //FIXME: The following doesn't work quite right -- there is still a small problem with the translation. 
       // Look into how the padding is determined a bit more closely.
@@ -429,14 +455,19 @@ namespace Avogadro {
 
   void PlotWidget::mousePressEvent(QMouseEvent *event)
   {
-    if (event->buttons() & Qt::LeftButton) {
+    if (event->buttons() & Qt::RightButton) {
       mouseSlideOrigin = event->posF();
     }
   }
 
-  void PlotWidget::mouseReleaseEvent(QMouseEvent *event)
+  void PlotWidget::mouseDoubleClickEvent(QMouseEvent *event)
   {
-    if (event->buttons() & Qt::LeftButton) {
+    if ((event->buttons() & Qt::LeftButton) && !defaultDataRect().isNull()) {
+      double x1 = defaultDataRect().x();
+      double x2 = x1 + defaultDataRect().width();
+      double y1 = defaultDataRect().y();
+      double y2 = y1 + defaultDataRect().height();
+      setLimits(x1, x2, y1, y2);
     }
   }
 
