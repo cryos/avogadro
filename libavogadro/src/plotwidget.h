@@ -62,12 +62,17 @@ namespace Avogadro {
      *PlotWidget wil figure out the optimal positions and labels for the 
      *tickmarks on the axes.
      *
+     *Use setDefaultLimits() to set the limits that a double click will restore. 
+     *This will also call setLimits() to update the plot. Not using 
+     *setDefaultLimits() or calling unsetDefaultLimits() will disable double
+     *click.restoration.
+     *
      *Example of usage:
      *
      * @code
      PlotWidget *kpw = new PlotWidget( parent );
      // setting our limits for the plot
-     kpw->setLimits( 1.0, 5.0, 1.0, 25.0 );
+     kpw->setDefaultLimits( 1.0, 5.0, 1.0, 25.0 );
 
      // creating a plot object whose points are connected by red lines ...
      PlotObject *kpo = new PlotObject( Qt::red, PlotObject::Lines );
@@ -137,8 +142,28 @@ namespace Avogadro {
 	 * @param x2 the maximum X value in data units
 	 * @param y1 the minimum Y value in data units
 	 * @param y2 the maximum Y value in data units
+         * @sa setDefaultLimits()
 	 */
 	void setLimits( double x1, double x2, double y1, double y2 );
+
+	/**
+	 * Set the default data limits for the plot. These are used for
+         * restoring the limits to a "normal" setting when the widget
+         * is double clicked. Calling this will also update the plot to
+         * the new limits specified.
+	 * @param x1 the minimum X value in data units
+	 * @param x2 the maximum X value in data units
+	 * @param y1 the minimum Y value in data units
+	 * @param y2 the maximum Y value in data units
+         * @sa setLimits() unsetDefaultLimits()
+	 */
+	void setDefaultLimits( double x1, double x2, double y1, double y2 );
+
+	/**
+         * Clears the default limits and disables double click restoration.
+         * @sa setLimits() setDefaultLimits()
+	 */
+	void unsetDefaultLimits();
 
 	/**
 	 * @short Reset the secondary data limits, which control the 
@@ -173,9 +198,16 @@ namespace Avogadro {
 	/**
 	 * @return the rectangle representing the boundaries of the current plot, 
 	 * in natural data units.
-	 * @sa setLimits()
+	 * @sa setLimits() defaultDataRect()
 	 */
 	QRectF dataRect() const;
+
+	/**
+	 * @return the rectangle representing the boundaries of the default plot, 
+	 * in natural data units.
+	 * @sa setLimits() dataRect()
+	 */
+	QRectF defaultDataRect() const;
 
 	/**
 	 * @return the rectangle representing the boundaries of the secondary 
@@ -462,7 +494,12 @@ namespace Avogadro {
         /**
          * Mouse handler.
          */
-        virtual void mouseReleaseEvent(QMouseEvent *event);
+        virtual void mouseDoubleClickEvent(QMouseEvent *event);
+
+        /**
+         * Wheel handler for zooming.
+         */
+        virtual void wheelEvent(QWheelEvent *event);
 
 	/**
 	 * The paint event handler, executed when update() or repaint() is called.
