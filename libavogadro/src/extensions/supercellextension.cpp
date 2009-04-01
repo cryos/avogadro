@@ -151,7 +151,6 @@ namespace Avogadro {
       return;
     }
 
-    m_molecule->blockSignals(true);
     const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
     if (sg) {
       qDebug() << "Space group:" << sg->GetId();// << sg->GetHMName();
@@ -216,6 +215,7 @@ namespace Avogadro {
     m_molecule->update();
     QCoreApplication::processEvents();
 
+    m_molecule->blockSignals(true);
     // Remove any bonds that may have snook in
     foreach(Bond *b, m_molecule->bonds())
       m_molecule->removeBond(b);
