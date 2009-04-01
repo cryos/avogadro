@@ -122,6 +122,11 @@ namespace Avogadro {
       void setDrawBox(int value);
 
       /**
+       * @param color render mode - 0 = selected colors, 1 = mapped colors
+       */
+      void setColorMode(int value);
+
+      /**
        * @param color the color for the positive iso surface
        */
       void setPosColor(const QColor& color);

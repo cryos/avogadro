@@ -240,9 +240,13 @@ namespace Avogadro {
     m_mesh1 = meshes[iMesh1];
     m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
     // Check whether mesh has multiple colors
-    if (m_colored)
-      if (m_mesh1->colors().size() < m_mesh1->vertices().size())
-        m_colored = false;
+    bool colorMesh = m_mesh1->colors().size() == m_mesh1->vertices().size();
+    if (m_settingsWidget) {
+      m_settingsWidget->colorCombo->setEnabled(colorMesh);
+      m_settingsWidget->colorCombo->setCurrentIndex(m_colored ? 1 : 0);
+    }
+    if (m_colored && !colorMesh)
+      m_colored = false;
 
     qDebug() << " Orbital 1 title: " << m_mesh1->name();
     qDebug() << " Orbital 2 title: " << m_mesh2->name();
@@ -333,6 +337,13 @@ namespace Avogadro {
     emit changed();
   }
 
+  void OrbitalEngine::setColorMode(int value)
+  {
+    m_colored = static_cast<bool>(value);
+    emit changed();
+  }
+
+
   void OrbitalEngine::setPosColor(const QColor& color)
   {
     m_posColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
@@ -358,6 +369,8 @@ namespace Avogadro {
               this, SLOT(setRenderMode(int)));
       connect(m_settingsWidget->drawBoxCheck, SIGNAL(stateChanged(int)),
               this, SLOT(setDrawBox(int)));
+      connect(m_settingsWidget->colorCombo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setColorMode(int)));
       connect(m_settingsWidget->posColor, SIGNAL(colorChanged(QColor)),
               this, SLOT(setPosColor(QColor)));
       connect(m_settingsWidget->negColor, SIGNAL(colorChanged(QColor)),
@@ -369,6 +382,7 @@ namespace Avogadro {
       m_settingsWidget->opacitySlider->setValue(static_cast<int>(m_alpha * 20));
       m_settingsWidget->renderCombo->setCurrentIndex(m_renderMode);
       m_settingsWidget->drawBoxCheck->setChecked(m_drawBox);
+      m_settingsWidget->colorCombo->setCurrentIndex(m_colored ? 1 : 0);
 
       // Initialise the colour buttons
       QColor initial;
