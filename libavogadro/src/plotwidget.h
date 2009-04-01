@@ -496,6 +496,11 @@ namespace Avogadro {
          */
         virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
+        /**
+         * Wheel handler for zooming.
+         */
+        virtual void wheelEvent(QWheelEvent *event);
+
 	/**
 	 * The paint event handler, executed when update() or repaint() is called.
 	 */

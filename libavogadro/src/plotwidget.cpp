@@ -471,6 +471,46 @@ namespace Avogadro {
     }
   }
 
+  void PlotWidget::wheelEvent(QWheelEvent * event)
+  {
+    // scroll deltas are in units of 1/8 degree
+    float delta = event->delta();
+    QPoint pos = event->pos();
+
+    // get current limits
+    double x1 = dataRect().x();
+    double x2 = x1 + dataRect().width();
+    double y1 = dataRect().y();
+    double y2 = y1 + dataRect().height();
+
+    // find conversion factor
+    //FIXME padding term is approximate here
+    float plotWidth_px = frameRect().width() - 4*XPADDING;
+    float plotHeight_px = frameRect().height() - 4*YPADDING;
+    QPointF unitPerPixel (dataRect().width()/plotWidth_px, dataRect().height()/plotHeight_px);
+
+    // find cursor position in plot units
+    QPointF center (x1 + (pos.x() * unitPerPixel.x()), y2 - (pos.y() * unitPerPixel.y()));
+
+    // change per 360 degree rotation (100% zoom on center)
+    double Dx1 = (center.x() - x1)/2;
+    double Dx2 =-(x2 - center.x())/2;
+    double Dy1 = (center.y() - y1)/2;
+    double Dy2 =-(y2 - center.y())/2;
+
+    // scaling factor
+    double scale = delta * (1.0/8.0) / 360.0;
+
+    // actual changes in limits
+    Dx1 *= scale;
+    Dx2 *= scale;
+    Dy1 *= scale;
+    Dy2 *= scale;
+
+    setLimits(x1 + Dx1, x2 + Dx2, y1 + Dy1, y2 + Dy2);
+    event->accept();
+  }
+
   void PlotWidget::resizeEvent( QResizeEvent* e ) {
     QFrame::resizeEvent( e );
     setPixRect();
