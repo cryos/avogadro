@@ -1,5 +1,5 @@
 project(avogadro)
-set(VERSION "0.9.2")
+set(VERSION "0.9.3")
 
 #execute_process(COMMAND cd ${CMAKE_SOURCE_DIR}; git rev-parse --sq --short HEAD
 #                OUTPUT_VARIABLE SVN_REVISION)

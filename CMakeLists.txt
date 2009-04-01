@@ -112,28 +112,28 @@ find_package(Eigen2 REQUIRED) # find and setup Eigen2
 # Subdirectories can use: ALL_PYTHON_FOUND                #
 ###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
-if(ENABLE_PYTHON MATCHES ON)
+if(ENABLE_PYTHON)
   include(PythonDeps)
   if (ALL_PYTHON_FOUND)
     message(STATUS "All python dependencies found - Python support enabled")
   endif (ALL_PYTHON_FOUND)
-else(ENABLE_PYTHON MATCHES ON)
+else(ENABLE_PYTHON)
   message(STATUS "Python support disabled.")
-endif(ENABLE_PYTHON MATCHES ON)
+endif(ENABLE_PYTHON)
 
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
-if(ENABLE_TESTS MATCHES ON)
+if(ENABLE_TESTS)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   include (CTest)
   include (AvoCTestConfig)
   message(STATUS "Unit testing enabled, run make test to run them")
-endif(ENABLE_TESTS MATCHES ON)
+endif(ENABLE_TESTS)
 
 # GLSL support is needed for OpenGL shaders
 option(ENABLE_GLSL "Enable GLSL support" OFF)
-if(ENABLE_GLSL MATCHES ON)
+if(ENABLE_GLSL)
   find_package(GLEW)
   if(GLEW_FOUND)
     message(STATUS "GLEW found and GLSL support enabled")
@@ -141,18 +141,18 @@ if(ENABLE_GLSL MATCHES ON)
   else(GLEW_FOUND)
     message(WARNING "GLEW not found, please install it if you require GLSL")
   endif(GLEW_FOUND)
-endif(ENABLE_GLSL MATCHES ON)
+endif(ENABLE_GLSL)
 
 # Multithreaded OpenGL. Seems mostly broken on Linux right now.
 option(ENABLE_THREADEDGL "Enable threaded OpenGL rendering" OFF)
-if(ENABLE_THREADEDGL MATCHES ON)
+if(ENABLE_THREADEDGL)
   add_definitions( -DENABLE_THREADED_GL )
   set(THREADED_GL true)
   message(STATUS "Threaded OpenGL rendering enabled - needs more testing")
-else(ENABLE_THREADEDGL MATCHES ON)
+else(ENABLE_THREADEDGL)
   set(THREADED_GL false)
   message(STATUS "Threaded OpenGL rendering not enabled")
-endif(ENABLE_THREADEDGL MATCHES ON)
+endif(ENABLE_THREADEDGL)
 
 # Set up our path handling, inspired by the path handling used in KDE
 set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
