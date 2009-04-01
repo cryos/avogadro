@@ -48,9 +48,9 @@ namespace Avogadro {
     
     //TODO link the scale here to vibrationdialog
     m_scale = 1.0;
-    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
-    ui.scaleEdit->setValidator( new QDoubleValidator (0.5, 1.5, 2, ui.scaleEdit) );
-    ui.scaleSlider->setSliderPosition( static_cast<int>((m_scale - 0.5) * 100) );
+    ui.spin_scale->setValue(m_scale);
+
+    m_yaxis = ui.combo_yaxis->currentText();
 
     // Hide advanced options initially
     ui.gb_customize->hide();
@@ -60,7 +60,7 @@ namespace Avogadro {
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 1.0 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
-    ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Transmittance"));
+    ui.plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
     m_importedSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2);
     m_nullSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2); // Used to replace disabled plot objects
@@ -87,19 +87,30 @@ namespace Avogadro {
             this, SLOT(toggleCalculated(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
             this, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
-            this, SLOT(setScale(int)));
     connect(ui.push_import, SIGNAL(clicked()),
             this, SLOT(importSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
             this, SLOT(regenerateCalculatedSpectra()));
-    connect(this, SIGNAL(scaleUpdated()),
-            this, SLOT(updateScaleEdit()));
+    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(setScale(double)));
+    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(updateYAxis(QString)));
   }
 
   VibrationPlot::~VibrationPlot()
   {
     //TODO: Anything to delete?
+  }
+
+  void VibrationPlot::updateYAxis(QString text)
+  {
+    if (m_yaxis == ui.combo_yaxis->currentText()) {
+      return;
+    }
+    ui.plot->axis(PlotWidget::LeftAxis)->setLabel(text);
+    m_yaxis = text;
+    regenerateCalculatedSpectra();
+    regenerateImportedSpectra();
   }
 
   void VibrationPlot::changeBackgroundColor()
@@ -212,16 +223,6 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
   }
 
-  void VibrationPlot::setScale(int scale)
-  {
-    double newScale = scale / 100.0 + 0.5;
-    if (newScale == m_scale) {
-      return;
-    }
-    m_scale = newScale;
-    emit scaleUpdated();
-  }
-
   void VibrationPlot::setScale(double scale)
   {
     if (scale == m_scale) {
@@ -230,7 +231,7 @@ namespace Avogadro {
     m_scale = scale;
     emit scaleUpdated();
   }
-  
+
   void VibrationPlot::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -267,11 +268,6 @@ namespace Avogadro {
     ui.cb_import->setChecked(true);
     getImportedSpectra(m_importedSpectra);
     updatePlot();
-  }
-
-  void VibrationPlot::updateScaleEdit()
-  {
-    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
   }
 
   void VibrationPlot::saveImage()
@@ -325,6 +321,11 @@ namespace Avogadro {
     updatePlot();
   }
 
+  void VibrationPlot::regenerateImportedSpectra() {
+    getImportedSpectra(m_importedSpectra);
+    updatePlot();
+  }
+
   void VibrationPlot::updatePlot()
   {
     ui.plot->update();
@@ -351,6 +352,13 @@ namespace Avogadro {
     }
 
     vibrationPlotObject->addPoint( 4000, 1); // Final point
+
+    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+      for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
+        double absorbance = 1 - vibrationPlotObject->points().at(i)->y();
+        vibrationPlotObject->points().at(i)->setY(absorbance);
+      }
+    }
   }
 
   void VibrationPlot::getImportedSpectra(PlotObject *vibrationPlotObject)
@@ -360,8 +368,11 @@ namespace Avogadro {
     // gaussian later?
     for (uint i = 0; i < m_imported_transmittances.size(); i++) {
       double wavenumber = m_imported_wavenumbers.at(i);
-      double transmittance = m_imported_transmittances.at(i);
-      vibrationPlotObject->addPoint ( wavenumber, transmittance );
+      double y = m_imported_transmittances.at(i);
+      if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+        y = 1 - y;
+      }
+      vibrationPlotObject->addPoint ( wavenumber, y );
     }
   }
 }

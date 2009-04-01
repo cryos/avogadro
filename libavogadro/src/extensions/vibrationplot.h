@@ -46,11 +46,9 @@ namespace Avogadro {
     void setMolecule(Molecule *molecule);
 
   public slots:
-    void setScale(int scale);
     void setScale(double scale);
 
   private slots:
-    void updateScaleEdit();
     void changeBackgroundColor();
     void changeForegroundColor();
     void changeCalculatedSpectraColor();
@@ -61,8 +59,10 @@ namespace Avogadro {
     void toggleImported(bool state);
     void toggleCalculated(bool state);
     void regenerateCalculatedSpectra();
+    void regenerateImportedSpectra();
     void saveImage();
     void toggleCustomize();
+    void updateYAxis(QString);
 
   signals:
     void scaleUpdated();
@@ -74,6 +74,7 @@ namespace Avogadro {
     void getImportedSpectra(PlotObject *vibrationPlotObject);
 
     double m_scale;
+    QString m_yaxis;
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
