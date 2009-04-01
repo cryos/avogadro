@@ -58,7 +58,7 @@ namespace Avogadro {
 
     // setting the limits for the plot
     ui.plot->setFontSize( 10);
-    ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 1.0 );
+    ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
@@ -222,6 +222,7 @@ namespace Avogadro {
       t = t / maxIntensity; 	// Normalize
       t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1 - t; 		// Simulate transmittance
+      t *= 100;			// Convert to percent
       m_transmittances.push_back(t);
     }
 
@@ -268,6 +269,21 @@ namespace Avogadro {
         qDebug() << "VibrationPlot::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
       }
     }
+
+    // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
+    bool convert = true;
+    for (int i = 0; i < m_imported_transmittances.size(); i++) {
+      if (m_imported_transmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
+        convert = false;
+        break;
+      }
+    }
+    if (convert) {
+      for (int i = 0; i < m_imported_transmittances.size(); i++) {
+        m_imported_transmittances.at(i) *= 100;
+      }
+    }
+
     ui.push_colorImported->setEnabled(true);
     ui.cb_import->setEnabled(true);
     ui.cb_import->setChecked(true);
@@ -339,28 +355,28 @@ namespace Avogadro {
   void VibrationPlot::getCalculatedSpectra(PlotObject *vibrationPlotObject)
   {
     vibrationPlotObject->clearPoints();
-    vibrationPlotObject->addPoint( 400, 1); // Initial point
+    vibrationPlotObject->addPoint( 400, 100); // Initial point
 
     // For now, lets just make singlet peaks. Maybe we can fit a
     // gaussian later?
     for (uint i = 0; i < m_transmittances.size(); i++) {
       double wavenumber = m_wavenumbers.at(i) * m_scale;
       double transmittance = m_transmittances.at(i);
-      vibrationPlotObject->addPoint ( wavenumber, 1 );
+      vibrationPlotObject->addPoint ( wavenumber, 100 );
       if (ui.cb_labelPeaks->isChecked()) {
         vibrationPlotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
       }
       else {
        	vibrationPlotObject->addPoint ( wavenumber, transmittance );
       }
-      vibrationPlotObject->addPoint ( wavenumber, 1 );
+      vibrationPlotObject->addPoint ( wavenumber, 100 );
     }
 
-    vibrationPlotObject->addPoint( 4000, 1); // Final point
+    vibrationPlotObject->addPoint( 4000, 100); // Final point
 
     if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
       for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
-        double absorbance = 1 - vibrationPlotObject->points().at(i)->y();
+        double absorbance = 100 - vibrationPlotObject->points().at(i)->y();
         vibrationPlotObject->points().at(i)->setY(absorbance);
       }
     }
@@ -375,7 +391,7 @@ namespace Avogadro {
       double wavenumber = m_imported_wavenumbers.at(i);
       double y = m_imported_transmittances.at(i);
       if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-        y = 1 - y;
+        y = 100 - y;
       }
       vibrationPlotObject->addPoint ( wavenumber, y );
     }
