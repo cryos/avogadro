@@ -436,17 +436,14 @@ namespace Avogadro {
   {
     if (event->buttons() & Qt::RightButton) {
       QPointF pixelDelta = event->posF() - mouseClickOrigin; // How far the mouse has moved in QFrame coords.
-      //FIXME: The following doesn't work quite right -- there is still a small problem with the translation. 
-      // use the mapTo* functions
-      float plotWidth_px = frameRect().width() - 4*XPADDING;
-      float plotHeight_px = frameRect().height() - 4*YPADDING;
-      QPointF unitPerPixel (-dataRect().width()/plotWidth_px, dataRect().height()/plotHeight_px); // get conversion factor
+      QPointF unitPerPixel (-dataRect().width() / pixRect().width(), dataRect().height() / pixRect().height()); // get conversion factor
       QPointF unitDelta (pixelDelta.x() * unitPerPixel.x(), pixelDelta.y() * unitPerPixel.y()); // How far the mouse has moved in axis coords
       // New limits
       float newX1 = dataRect().x() + unitDelta.x();
       float newX2 = dataRect().x() + unitDelta.x() + dataRect().width();
       float newY1 = dataRect().y() + unitDelta.y();
       float newY2 = dataRect().y() + unitDelta.y() + dataRect().height();
+
       setLimits(newX1, newX2, newY1, newY2);// Update axis
 
       mouseClickOrigin = event->posF();
@@ -532,22 +529,19 @@ namespace Avogadro {
     double y2 = y1 + dataRect().height();
 
     // find conversion factor
-    //FIXME padding term is approximate here
-    float plotWidth_px = frameRect().width() - 4*XPADDING;
-    float plotHeight_px = frameRect().height() - 4*YPADDING;
-    QPointF unitPerPixel (dataRect().width()/plotWidth_px, dataRect().height()/plotHeight_px);
+    QPointF unitPerPixel (dataRect().width()/pixRect().width(), dataRect().height()/pixRect().height());
 
     // find cursor position in plot units
     QPointF center (x1 + (pos.x() * unitPerPixel.x()), y2 - (pos.y() * unitPerPixel.y()));
 
-    // change per 360 degree rotation (100% zoom on center)
+    // change per 90 degree rotation (100% zoom on center)
     double Dx1 = (center.x() - x1)/2;
     double Dx2 =-(x2 - center.x())/2;
     double Dy1 = (center.y() - y1)/2;
     double Dy2 =-(y2 - center.y())/2;
 
     // scaling factor
-    double scale = delta * (1.0/8.0) / 360.0;
+    double scale = delta * (1.0/8.0) / 90;
 
     // actual changes in limits
     Dx1 *= scale;
@@ -902,6 +896,7 @@ namespace Avogadro {
       p.drawLine(x2, y1, x1, y1);
       p.setPen(oldPen);
     }
+
     p.end();
   }
 
