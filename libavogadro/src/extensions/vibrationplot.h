@@ -59,8 +59,10 @@ namespace Avogadro {
     void toggleImported(bool state);
     void toggleCalculated(bool state);
     void regenerateCalculatedSpectra();
+    void regenerateImportedSpectra();
     void saveImage();
     void toggleCustomize();
+    void updateYAxis(QString);
 
   signals:
     void scaleUpdated();
@@ -72,6 +74,7 @@ namespace Avogadro {
     void getImportedSpectra(PlotObject *vibrationPlotObject);
 
     double m_scale;
+    QString m_yaxis;
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
