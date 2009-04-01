@@ -435,9 +435,9 @@ namespace Avogadro {
   void PlotWidget::mouseMoveEvent(QMouseEvent *event)
   {
     if (event->buttons() & Qt::RightButton) {
-      QPointF pixelDelta = event->posF() - mouseSlideOrigin; // How far the mouse has moved in QFrame coords.
+      QPointF pixelDelta = event->posF() - mouseClickOrigin; // How far the mouse has moved in QFrame coords.
       //FIXME: The following doesn't work quite right -- there is still a small problem with the translation. 
-      // Look into how the padding is determined a bit more closely.
+      // use the mapTo* functions
       float plotWidth_px = frameRect().width() - 4*XPADDING;
       float plotHeight_px = frameRect().height() - 4*YPADDING;
       QPointF unitPerPixel (-dataRect().width()/plotWidth_px, dataRect().height()/plotHeight_px); // get conversion factor
@@ -449,14 +449,22 @@ namespace Avogadro {
       float newY2 = dataRect().y() + unitDelta.y() + dataRect().height();
       setLimits(newX1, newX2, newY1, newY2);// Update axis
 
-      mouseSlideOrigin = event->posF();
+      mouseClickOrigin = event->posF();
+    }
+
+    if (event->buttons() & Qt::MidButton) {
+      zoomPosF = event->pos();
+      update();
     }
   }
 
   void PlotWidget::mousePressEvent(QMouseEvent *event)
   {
     if (event->buttons() & Qt::RightButton) {
-      mouseSlideOrigin = event->posF();
+      mouseClickOrigin = event->posF();
+    }
+    if (event->buttons() & Qt::MidButton) {
+      mouseClickOrigin = event->posF();
     }
   }
 
@@ -468,6 +476,46 @@ namespace Avogadro {
       double y1 = defaultDataRect().y();
       double y2 = y1 + defaultDataRect().height();
       setLimits(x1, x2, y1, y2);
+    }
+  }
+
+  void PlotWidget::mouseReleaseEvent(QMouseEvent *event)
+  {
+    if (event->button() & Qt::MidButton) {
+      // map coords
+      QPointF p1 = mapFrameToData(event->posF());
+      QPointF p2 = mapFrameToData(mouseClickOrigin);
+
+      // get coords:
+      float x1 = p1.x();
+      float y1 = p1.y();
+      float x2 = p2.x();
+      float y2 = p2.y();
+
+      // Discard invalid selections
+      if (x1 == x2 || y1 == y2) {
+        zoomPosF = QPointF();
+        return;
+      }
+      
+      // Sort for limits
+      if (x1 > x2) {
+        float x = x1; x1 = x2; x2 = x;
+      }
+      if (y1 > y2) {
+        float y = y1; y1 = y2; y2 = y;
+      }
+      
+      // swap if width/height of current limits are negative
+      if (dataRect().width() < 0) {
+        float x = x1; x1 = x2; x2 = x;
+      }
+      if (dataRect().height() < 0) {
+        float y = y1; y1 = y2; y2 = y;
+      }
+      
+      setLimits(x1, x2, y1, y2);
+      zoomPosF = QPointF();
     }
   }
 
@@ -528,6 +576,20 @@ namespace Avogadro {
   {
     float px = d->pixRect.left() + d->pixRect.width() * ( p.x() - d->dataRect.x() ) / d->dataRect.width();
     float py = d->pixRect.top() + d->pixRect.height() * ( d->dataRect.y() + d->dataRect.height() - p.y() ) / d->dataRect.height();
+    return QPointF( px, py );
+  }
+
+  QPointF PlotWidget::mapToData( const QPointF& p ) const
+  {
+    float px = ( p.x() - d->pixRect.left() ) / d->pixRect.width() * d->dataRect.width() + d->dataRect.x();
+    float py = d->dataRect.y() + d->dataRect.height() - ( d->dataRect.height() / d->pixRect.height() ) * ( p.y() - d->pixRect.top() );
+    return QPointF( px, py );
+  }
+
+  QPointF PlotWidget::mapFrameToData( const QPointF& p ) const
+  {
+    float px = ( p.x() - leftPadding() ) / d->pixRect.width() * d->dataRect.width() + d->dataRect.x();
+    float py = d->dataRect.y() + d->dataRect.height() - ( d->dataRect.height() / d->pixRect.height() ) * ( p.y() - topPadding());
     return QPointF( px, py );
   }
 
@@ -816,7 +878,30 @@ namespace Avogadro {
 
     p.setClipping( false );
     drawAxes( &p );
+    
+    // Draw zoom rectangle
+    if (!zoomPosF.isNull()) {
+      // Prepare pen
+      QPen oldPen = p.pen();
+      QPen pen (Qt::red);
+      pen.setStyle(Qt::DotLine);
+      pen.setWidth(1);
+      p.setPen(pen);
+      
+      // get points
+      float x1 = zoomPosF.x();
+      float x2 = mouseClickOrigin.x();
+      float y1 = zoomPosF.y();
+      float y2 = mouseClickOrigin.y();
 
+      // draw rectangle
+      p.resetMatrix();
+      p.drawLine(x1, y1, x1, y2);
+      p.drawLine(x1, y2, x2, y2);
+      p.drawLine(x2, y2, x2, y1);
+      p.drawLine(x2, y1, x1, y1);
+      p.setPen(oldPen);
+    }
     p.end();
   }
 

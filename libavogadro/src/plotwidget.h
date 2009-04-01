@@ -408,6 +408,24 @@ namespace Avogadro {
 	QPointF mapToWidget( const QPointF& p ) const;
 
 	/**
+	 * @short Map a coordinate @param p from the physical pixel rect to the
+	 * data rect.
+	 * Used mainly when drawing.
+	 * @param p the point to be converted, in pixels
+	 * @return the coordinate in natural data units
+	 */
+	QPointF mapToData( const QPointF& p ) const;
+
+	/**
+	 * @short Map a coordinate @param p from the frame's pixel rect to the
+	 * data rect.
+	 * Used mainly when drawing.
+	 * @param p the point to be converted, in pixels
+	 * @return the coordinate in natural data units
+	 */
+	QPointF mapFrameToData( const QPointF& p ) const;
+
+	/**
 	 * Indicate that object labels should try to avoid the given 
 	 * rectangle in the plot.  The rectangle is in pixel coordinates.
 	 *
@@ -497,6 +515,11 @@ namespace Avogadro {
         virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
         /**
+         * Mouse handler.
+         */
+        virtual void mouseReleaseEvent(QMouseEvent *event);
+
+        /**
          * Wheel handler for zooming.
          */
         virtual void wheelEvent(QWheelEvent *event);
@@ -536,7 +559,7 @@ namespace Avogadro {
 	class Private;
 	Private * const d;
 
-        QPointF mouseSlideOrigin;
+        QPointF mouseClickOrigin, zoomPosF;
 
 	Q_DISABLE_COPY( PlotWidget )
     };
