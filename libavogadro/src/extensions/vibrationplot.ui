@@ -27,6 +27,13 @@
        <height>500</height>
       </size>
      </property>
+     <property name="toolTip" >
+      <string>Controls:
+Double left click: Restore default axis limits
+Right click + drag: Move plot
+Middle click + drag: Zoom to region
+Scroll wheel: Zoom to cursor</string>
+     </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
