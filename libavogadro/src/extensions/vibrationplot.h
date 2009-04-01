@@ -46,11 +46,9 @@ namespace Avogadro {
     void setMolecule(Molecule *molecule);
 
   public slots:
-    void setScale(int scale);
     void setScale(double scale);
 
   private slots:
-    void updateScaleEdit();
     void changeBackgroundColor();
     void changeForegroundColor();
     void changeCalculatedSpectraColor();

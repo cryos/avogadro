@@ -48,9 +48,7 @@ namespace Avogadro {
     
     //TODO link the scale here to vibrationdialog
     m_scale = 1.0;
-    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
-    ui.scaleEdit->setValidator( new QDoubleValidator (0.5, 1.5, 2, ui.scaleEdit) );
-    ui.scaleSlider->setSliderPosition( static_cast<int>((m_scale - 0.5) * 100) );
+    ui.spin_scale->setValue(m_scale);
 
     // Hide advanced options initially
     ui.gb_customize->hide();
@@ -87,14 +85,12 @@ namespace Avogadro {
             this, SLOT(toggleCalculated(bool)));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
             this, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
-            this, SLOT(setScale(int)));
     connect(ui.push_import, SIGNAL(clicked()),
             this, SLOT(importSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
             this, SLOT(regenerateCalculatedSpectra()));
-    connect(this, SIGNAL(scaleUpdated()),
-            this, SLOT(updateScaleEdit()));
+    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(setScale(double)));
   }
 
   VibrationPlot::~VibrationPlot()
@@ -212,16 +208,6 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
   }
 
-  void VibrationPlot::setScale(int scale)
-  {
-    double newScale = scale / 100.0 + 0.5;
-    if (newScale == m_scale) {
-      return;
-    }
-    m_scale = newScale;
-    emit scaleUpdated();
-  }
-
   void VibrationPlot::setScale(double scale)
   {
     if (scale == m_scale) {
@@ -230,7 +216,7 @@ namespace Avogadro {
     m_scale = scale;
     emit scaleUpdated();
   }
-  
+
   void VibrationPlot::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -267,11 +253,6 @@ namespace Avogadro {
     ui.cb_import->setChecked(true);
     getImportedSpectra(m_importedSpectra);
     updatePlot();
-  }
-
-  void VibrationPlot::updateScaleEdit()
-  {
-    ui.scaleEdit->setText(QString::number(m_scale, 'f', 2));
   }
 
   void VibrationPlot::saveImage()
