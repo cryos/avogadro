@@ -207,7 +207,7 @@ ADD_CUSTOM_TARGET(update-translations
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
 
-ADD_CUSTOM_COMMAND(create-translations
+ADD_CUSTOM_COMMAND(TARGET create-translations
      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create-translations.sh
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/i18n)
 
