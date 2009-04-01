@@ -33,6 +33,8 @@ namespace Avogadro {
 
   class ZMatrixModel : public QAbstractTableModel
   {
+    Q_OBJECT
+
   public:
     ZMatrixModel();
     ~ZMatrixModel();
