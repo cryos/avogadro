@@ -312,6 +312,12 @@ namespace Avogadro {
 	void setFontSize( int pointSize );
 
 	/**
+	 * Set the font
+	 * @param font the new font as QFont
+	 */
+	void setFont( QFont font );
+
+	/**
 	 * @return whether the grid lines are shown
 	 * Grid lines are not shown by default.
 	 */

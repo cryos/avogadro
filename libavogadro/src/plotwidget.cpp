@@ -38,6 +38,7 @@
 #include <QPixmap>
 #include <QToolTip>
 #include <QtAlgorithms>
+#include <QFont>
 
 #include "plotaxis.h"
 #include "plotpoint.h"
@@ -58,7 +59,7 @@ namespace Avogadro {
       : q( qq ),
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
         showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-        fontPointSize( 12 )
+        font( QFont() )
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -111,7 +112,7 @@ namespace Avogadro {
     //Array holding the mask of "used" regions of the plot
     QImage plotMask;
     //Font properties
-    int fontPointSize;
+    QFont font;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -120,12 +121,14 @@ namespace Avogadro {
     setAttribute( Qt::WA_OpaquePaintEvent );
     setAttribute( Qt::WA_NoSystemBackground );
 
+    d->font.setPointSize(10);
+
     d->secondDataRect = QRectF(); //default: no secondary data rect
     // sets the default limits
     d->calcDataRectLimits( 0.0, 1.0, 0.0, 1.0 );
 
     setDefaultPaddings();
-
+    
     setMinimumSize( 150, 150 );
     resize( minimumSizeHint() );
   }
@@ -350,7 +353,12 @@ namespace Avogadro {
   
   void PlotWidget::setFontSize( int pointSize )
   {
-    d->fontPointSize = pointSize;
+    d->font.setPointSize( pointSize );
+  }
+
+  void PlotWidget::setFont( QFont font )
+  {
+    d->font = font;
   }
 
   bool PlotWidget::isGridShown() const
@@ -789,11 +797,6 @@ namespace Avogadro {
       ++iter;
     }
     
-    //Set font size
-    QFont f = painter->font();
-    f.setPointSize( d->fontPointSize );
-    painter->setFont(f);
-
     //Place label
     painter->drawText( bestRect, textFlags, pp->label() );
 
@@ -854,6 +857,7 @@ namespace Avogadro {
     QPainter p;
 
     p.begin( this );
+    p.setFont(d->font);
     p.setRenderHint( QPainter::Antialiasing, d->useAntialias );
     p.fillRect( rect(), backgroundColor() );
     p.translate( leftPadding() + 0.5, topPadding() + 0.5 );
@@ -919,11 +923,6 @@ namespace Avogadro {
 
     p->setPen( foregroundColor() );
     p->setBrush( Qt::NoBrush );
-
-    //set font size
-    QFont f = p->font();
-    f.setPointSize( d->fontPointSize );
-    p->setFont(f);
 
     /*** BottomAxis ***/
     PlotAxis *a = axis(BottomAxis);
