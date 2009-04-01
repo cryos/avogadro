@@ -254,6 +254,10 @@ namespace Avogadro {
       return;
     }
     
+    // Clear out any old data
+    m_imported_wavenumbers.clear();
+    m_imported_transmittances.clear();
+
     QTextStream in(&file);
     // Process each line
     while (!in.atEnd()) {
