@@ -32,6 +32,8 @@
 
 namespace Avogadro {
 
+  class Molecule;
+
   /**
    * @class ZMatrix zmatrix.h <avogadro/zmatrix.h>
    * @brief Representation of an atom.
@@ -48,7 +50,7 @@ namespace Avogadro {
 
   public:
     /**
-     * Constructor.
+     * Constructor. Parent should always be a Molecule.
      */
     explicit ZMatrix(QObject *parent = 0);
 
@@ -69,19 +71,34 @@ namespace Avogadro {
     int rows();
 
     /**
+     * Set the atom that the z matrix item is bonded to.
+     * @param atom1 The first atom in the bond
+     * @param atom2 The second atom in the bond
+     */
+    void setBond(int atom1, int atom2);
+
+    /**
+     * Update the atoms of the z matrix according to the z matrix
+     */
+    void update();
+
+//  private:
+    /**
      * Struct storing a z-matrix
      */
     struct zItem
     {
       unsigned int atomIndex; // Unique ID of the atom
+      short atomicNumber;     // The atomic number of the entry
       double lengths[3];      // Length, angle, dihedral
       short indices[3];       // z-matrix reference to other atoms in the matrix
     };
 
     QList<zItem> m_items;
+    Molecule *m_molecule;
 
-    Q_SIGNALS:
-      void rowAdded(int row);
+  Q_SIGNALS:
+    void rowAdded(int row);
 
   };
 

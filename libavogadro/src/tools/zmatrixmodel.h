@@ -58,7 +58,7 @@ namespace Avogadro {
   private:
     ZMatrix *m_zMatrix;
 
-  private Q_SLOTS:
+  public Q_SLOTS:
     void addRow(int row);
   };
 

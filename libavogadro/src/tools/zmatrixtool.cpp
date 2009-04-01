@@ -53,19 +53,23 @@ namespace Avogadro {
   QUndoCommand * ZMatrixTool::mouseReleaseEvent(GLWidget *widget,
                                                 QMouseEvent *event)
   {
+    return 0;
   }
   QUndoCommand * ZMatrixTool::mouseMoveEvent(GLWidget *widget,
                                              QMouseEvent *event)
   {
+    return 0;
   }
   QUndoCommand * ZMatrixTool::wheelEvent(GLWidget *widget,
                                          QWheelEvent *event)
   {
+    return 0;
   }
 
   bool ZMatrixTool::paint(GLWidget *widget)
   {
     m_molecule = widget->molecule();
+    return true;
   }
 
   QWidget * ZMatrixTool::settingsWidget()

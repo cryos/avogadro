@@ -49,6 +49,10 @@ namespace Avogadro {
     Ui::ZMatrixDialog ui;
     ZMatrixModel *m_zMatrixModel;
     Molecule *m_molecule;
+
+  private Q_SLOTS:
+    void addAtom();
+    void removeAtom();
   };
 
 } // End namespace Avogadro

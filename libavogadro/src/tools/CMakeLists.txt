@@ -28,15 +28,18 @@ add_library(drawtool MODULE drawcommand.cpp
 target_link_libraries(drawtool ${LINK_LIBS})
 install(TARGETS drawtool DESTINATION ${DESTINATION_DIR})
 
-### zmatrixtool
-set(zmatrixtool_SRCS zmatrixtool.cpp zmatrixdialog.cpp zmatrixmodel.cpp)
-#qt4_add_resources(zmatrixtool_RC_SRCS zmatrixtool.qrc)
-qt4_automoc(${zmatrixtool_SRCS})
-qt4_wrap_ui(zmatrixtool_UIS_H zmatrixdialog.ui)
-add_library(zmatrixtool MODULE ${zmatrixtool_SRCS} ${zmatrixtool_UIS_H})
-#                    ${drawtool_RC_SRCS})
-target_link_libraries(zmatrixtool ${LINK_LIBS})
-install(TARGETS zmatrixtool DESTINATION ${DESTINATION_DIR})
+option(ENABLE_ZMATRIX_TOOL "Enable the z-matrix tool (experimental)" OFF)
+if(ENABLE_ZMATRIX_TOOL)
+  ### zmatrixtool
+  set(zmatrixtool_SRCS zmatrixtool.cpp zmatrixdialog.cpp zmatrixmodel.cpp)
+  #qt4_add_resources(zmatrixtool_RC_SRCS zmatrixtool.qrc)
+  qt4_automoc(${zmatrixtool_SRCS})
+  qt4_wrap_ui(zmatrixtool_UIS_H zmatrixdialog.ui)
+  add_library(zmatrixtool MODULE ${zmatrixtool_SRCS} ${zmatrixtool_UIS_H})
+  #                    ${drawtool_RC_SRCS})
+  target_link_libraries(zmatrixtool ${LINK_LIBS})
+  install(TARGETS zmatrixtool DESTINATION ${DESTINATION_DIR})
+endif(ENABLE_ZMATRIX_TOOL)
 
 ### bondcentrictool
 set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)

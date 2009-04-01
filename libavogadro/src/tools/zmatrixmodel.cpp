@@ -24,9 +24,14 @@
 
 #include "zmatrixmodel.h"
 
+#include <openbabel/data.h>
+#include <openbabel/mol.h>
+
 #include <QDebug>
 
 namespace Avogadro {
+
+  using OpenBabel::etab;
 
   ZMatrixModel::ZMatrixModel() : m_zMatrix(0)
   {
@@ -109,9 +114,10 @@ namespace Avogadro {
 
   QVariant ZMatrixModel::data(const QModelIndex &index, int role) const
   {
-    if (!index.isValid())
+    if (!index.isValid() || !m_zMatrix)
       return QVariant();
 
+    // Disable editing in the cells that have no meaning
     if (!index.isValid())
       return QVariant();
     if (index.row() == 0 && index.column() > 0)
@@ -120,12 +126,38 @@ namespace Avogadro {
       return QVariant();
     else if (index.row() == 2 && index.column() > 4)
       return QVariant();
-
-    if (index.row() >= 5 || index.column() >= 7)
+    else if (index.row() >= m_zMatrix->rows() || index.column() >= 7)
       return QVariant();
 
-    if (role == Qt::DisplayRole)
+    if (role == Qt::DisplayRole) {
+      // Main segment of the display - actually display the z matrix
+      switch (index.column()) {
+        case 0: // Element symbol
+          return etab.GetSymbol(m_zMatrix->m_items[index.row()].atomicNumber);
+          break;
+        case 1: // Connectivity element 0
+          return m_zMatrix->m_items[index.row()].indices[0] + 1;
+          break;
+        case 2: // Bond length
+          return m_zMatrix->m_items[index.row()].lengths[0];
+          break;
+        case 3: // Connectivity element 1
+          return m_zMatrix->m_items[index.row()].indices[1] + 1;
+          break;
+        case 4: // Bond angle
+          return m_zMatrix->m_items[index.row()].lengths[1];
+          break;
+        case 5: // Connectivity element 2
+          return m_zMatrix->m_items[index.row()].indices[2] + 1;
+          break;
+        case 6: // Dihedral angle
+          return m_zMatrix->m_items[index.row()].lengths[2];
+          break;
+        default: // Should never happen!
+          return QVariant();
+      }
       return QString("No worky!");
+    }
     else
       return QVariant();
   }
@@ -133,8 +165,55 @@ namespace Avogadro {
   bool ZMatrixModel::setData(const QModelIndex &index, const QVariant &value,
                              int role)
   {
+    if (!index.isValid() || !m_zMatrix)
+      return false;
+
+    if (index.row() >= m_zMatrix->rows() || index.column() > 6)
+      return false;
+
     if (index.isValid() && role == Qt::EditRole) {
+      int row = index.row();
       // do stuff
+      switch (index.column()) {
+        case 0: {// Element symbol - take symbol and get number
+          QByteArray element(value.toByteArray());
+          int aNum = etab.GetAtomicNum(element.data());
+          qDebug() << "Atomic num" << value << aNum;
+          m_zMatrix->m_items[index.row()].atomicNumber = aNum;
+          break;
+        }
+        case 1: {// Connectivity element 0 - bonding
+          int connection = value.toInt() - 1;
+          if (connection > 0 && connection < row)
+            m_zMatrix->setBond(index.row(), connection);
+          break;
+        }
+        case 2: // Bond length
+          if (value.toDouble() > 0.0)
+            m_zMatrix->m_items[index.row()].lengths[0] = value.toDouble();
+          break;
+        case 3: {// Connectivity element 1
+          int connection = value.toInt() - 1;
+          if (connection > 0 && connection < row)
+            m_zMatrix->m_items[index.row()].indices[1] = connection;
+          break;
+        }
+        case 4: // Bond angle
+          m_zMatrix->m_items[index.row()].lengths[1] = value.toDouble();
+          break;
+        case 5: {// Connectivity element 2
+          int connection = value.toInt() - 1;
+          if (connection > 0 && connection < row)
+            m_zMatrix->m_items[index.row()].indices[2] = connection;
+          break;
+        }
+        case 6: // Dihedral angle
+          m_zMatrix->m_items[index.row()].lengths[2] = value.toDouble();
+          break;
+        default: // Should never happen!
+          return false;
+      }
+      m_zMatrix->update();
       return true;
     }
     return false;
@@ -146,7 +225,8 @@ namespace Avogadro {
     if (m_zMatrix) {
       beginInsertRows(QModelIndex(), position, position+rows-1);
       for (int row = 0; row < rows; ++row) {
-        m_zMatrix->addRow(position+row);
+        // FIXME Currently just adding new rows to the end of the matrix
+        m_zMatrix->addRow();
       }
       endInsertRows();
       return true;

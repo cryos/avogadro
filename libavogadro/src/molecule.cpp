@@ -549,7 +549,7 @@ namespace Avogadro{
   ZMatrix * Molecule::addZMatrix()
   {
     Q_D(Molecule);
-    ZMatrix *zmatrix = new ZMatrix();
+    ZMatrix *zmatrix = new ZMatrix(this);
     d->zMatrixList.push_back(zmatrix);
 
     return zmatrix;

@@ -35,6 +35,10 @@ namespace Avogadro {
     setWindowFlags(Qt::Dialog | Qt::Tool);
     ui.setupUi(this);
     ui.tableView->setModel(m_zMatrixModel);
+
+    // Connect our signals and slots...
+    connect(ui.addButton, SIGNAL(clicked()), this, SLOT(addAtom()));
+    connect(ui.removeButton, SIGNAL(clicked()), this, SLOT(removeAtom()));
   }
 
   ZMatrixDialog::~ZMatrixDialog()
@@ -51,9 +55,18 @@ namespace Avogadro {
       m_zMatrixModel->setZMatrix(m_molecule->zMatrix(0));
     else {
       m_zMatrixModel->setZMatrix(m_molecule->addZMatrix());
-      m_zMatrixModel->zMatrix()->addRow();
-      m_zMatrixModel->zMatrix()->addRow();
     }
+  }
+
+  void ZMatrixDialog::addAtom()
+  {
+    m_zMatrixModel->insertRows(ui.tableView->currentIndex().row()+1, 1);
+
+  }
+
+  void ZMatrixDialog::removeAtom()
+  {
+
   }
 
 } // End namespace Avogadro
