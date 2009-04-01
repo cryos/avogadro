@@ -239,6 +239,11 @@ namespace Avogadro {
     // attribute is the text key for the Mesh
     m_mesh1 = meshes[iMesh1];
     m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+    // Check whether mesh has multiple colors
+    if (m_colored)
+      if (m_mesh1->colors().size() < m_mesh1->vertices().size())
+        m_colored = false;
+
     qDebug() << " Orbital 1 title: " << m_mesh1->name();
     qDebug() << " Orbital 2 title: " << m_mesh2->name();
 
