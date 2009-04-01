@@ -318,6 +318,11 @@ namespace Avogadro {
 	void setFont( QFont font );
 
 	/**
+	 * Get the current font
+         */
+	QFont getFont();
+
+	/**
 	 * @return whether the grid lines are shown
 	 * Grid lines are not shown by default.
 	 */

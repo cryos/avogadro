@@ -358,9 +358,17 @@ namespace Avogadro {
 
   void PlotWidget::setFont( QFont font )
   {
-    d->font = font;
+    if (d->font != font) {
+      d->font = font;
+      update();
+    }
   }
 
+  QFont PlotWidget::getFont()
+  {
+    return d->font;
+  }
+ 
   bool PlotWidget::isGridShown() const
   {
     return d->showGrid;
