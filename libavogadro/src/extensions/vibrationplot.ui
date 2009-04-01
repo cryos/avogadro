@@ -183,10 +183,7 @@ Scroll wheel: Zoom to cursor</string>
       <item row="5" column="0" >
        <widget class="QLabel" name="label_5" >
         <property name="text" >
-         <string>&amp;Font size:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>spin_fontSize</cstring>
+         <string>Font:</string>
         </property>
        </widget>
       </item>
@@ -207,19 +204,6 @@ Scroll wheel: Zoom to cursor</string>
         </property>
         <property name="text" >
          <string>Background:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1" >
-       <widget class="QSpinBox" name="spin_fontSize" >
-        <property name="minimum" >
-         <number>4</number>
-        </property>
-        <property name="maximum" >
-         <number>32</number>
-        </property>
-        <property name="value" >
-         <number>10</number>
         </property>
        </widget>
       </item>
@@ -261,6 +245,13 @@ Scroll wheel: Zoom to cursor</string>
        <widget class="QCheckBox" name="cb_calculate" >
         <property name="text" >
          <string>Show calculated spectra</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" >
+       <widget class="QPushButton" name="push_font" >
+        <property name="text" >
+         <string>Change Font...</string>
         </property>
        </widget>
       </item>
@@ -346,6 +337,8 @@ Scroll wheel: Zoom to cursor</string>
   <tabstop>push_customize</tabstop>
   <tabstop>push_save</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>spin_scale</tabstop>
+  <tabstop>combo_yaxis</tabstop>
   <tabstop>push_colorBackground</tabstop>
   <tabstop>push_colorForeground</tabstop>
   <tabstop>push_colorCalculated</tabstop>
@@ -354,7 +347,7 @@ Scroll wheel: Zoom to cursor</string>
   <tabstop>push_colorImported</tabstop>
   <tabstop>push_import</tabstop>
   <tabstop>cb_import</tabstop>
-  <tabstop>spin_fontSize</tabstop>
+  <tabstop>push_font</tabstop>
   <tabstop>lineEdit</tabstop>
  </tabstops>
  <resources/>

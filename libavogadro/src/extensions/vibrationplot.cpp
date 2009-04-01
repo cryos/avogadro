@@ -26,6 +26,7 @@
 #include <QDebug>
 #include <QDoubleValidator>
 #include <QFileDialog>
+#include <QFontDialog>
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
@@ -75,8 +76,8 @@ namespace Avogadro {
             this, SLOT(changeCalculatedSpectraColor()));
     connect(ui.push_colorImported, SIGNAL(clicked()),
             this, SLOT(changeImportedSpectraColor()));
-    connect(ui.spin_fontSize, SIGNAL(valueChanged(int)),
-            this, SLOT(changeFontSize(int)));
+    connect(ui.push_font, SIGNAL(clicked()),
+            this, SLOT(changeFont()));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
     connect(ui.push_save, SIGNAL(clicked()),
@@ -162,11 +163,15 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::changeFontSize(int size)
+  void VibrationPlot::changeFont()
   {
-    //TODO: Need to be able to check the font settings of the plot
-    ui.plot->setFontSize(size);
-    updatePlot();
+    bool ok;
+    QFont current (ui.plot->getFont());
+    QFont font = QFontDialog::getFont(&ok, current, this);
+    if (ok) {
+      ui.plot->setFont(font);
+      updatePlot();
+    } 
   }
 
   void VibrationPlot::setMolecule(Molecule *molecule)

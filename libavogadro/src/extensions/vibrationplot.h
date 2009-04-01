@@ -53,7 +53,7 @@ namespace Avogadro {
     void changeForegroundColor();
     void changeCalculatedSpectraColor();
     void changeImportedSpectraColor();
-    void changeFontSize(int size);
+    void changeFont();
     void importSpectra();
     void updatePlot();
     void toggleImported(bool state);
