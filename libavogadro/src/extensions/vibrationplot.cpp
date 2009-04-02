@@ -94,6 +94,8 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.spin_scale, SIGNAL(valueChanged(double)),
             this, SLOT(setScale(double)));
+    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
   }
@@ -276,14 +278,14 @@ namespace Avogadro {
 
     // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
     bool convert = true;
-    for (int i = 0; i < m_imported_transmittances.size(); i++) {
+    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
       if (m_imported_transmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
         convert = false;
         break;
       }
     }
     if (convert) {
-      for (int i = 0; i < m_imported_transmittances.size(); i++) {
+      for (uint i = 0; i < m_imported_transmittances.size(); i++) {
         m_imported_transmittances.at(i) *= 100;
       }
     }
@@ -359,10 +361,24 @@ namespace Avogadro {
   void VibrationPlot::getCalculatedSpectra(PlotObject *vibrationPlotObject)
   {
     vibrationPlotObject->clearPoints();
+    if (ui.spin_FWHM->value() == 0.0) {
+      getCalculatedSinglets(vibrationPlotObject);
+    } 
+    else {
+      getCalculatedGaussians(vibrationPlotObject);
+    }
+    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+      for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
+        double absorbance = 100 - vibrationPlotObject->points().at(i)->y();
+        vibrationPlotObject->points().at(i)->setY(absorbance);
+      }
+    }
+  }
+
+  void VibrationPlot::getCalculatedSinglets(PlotObject *vibrationPlotObject)
+  {
     vibrationPlotObject->addPoint( 400, 100); // Initial point
 
-    // For now, lets just make singlet peaks. Maybe we can fit a
-    // gaussian later?
     for (uint i = 0; i < m_transmittances.size(); i++) {
       double wavenumber = m_wavenumbers.at(i) * m_scale;
       double transmittance = m_transmittances.at(i);
@@ -375,15 +391,56 @@ namespace Avogadro {
       }
       vibrationPlotObject->addPoint ( wavenumber, 100 );
     }
-
     vibrationPlotObject->addPoint( 4000, 100); // Final point
+  }
 
-    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-      for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
-        double absorbance = 100 - vibrationPlotObject->points().at(i)->y();
-        vibrationPlotObject->points().at(i)->setY(absorbance);
-      }
+
+  void VibrationPlot::getCalculatedGaussians(PlotObject *vibrationPlotObject)
+  {
+    // convert FWHM to sigma squared
+    double FWHM = ui.spin_FWHM->value();
+    double s2	= pow( (FWHM / ( 2 * sqrt( 2 * log(2) ) ) ), 2);
+    
+    // determine range
+    // - find maximum and minimum
+    double min = 0.0 + 2*FWHM;
+    double max = 4000.0 - 2*FWHM;
+    for (uint i = 0; i < m_wavenumbers.size(); i++) {
+      double cur = m_wavenumbers.at(i);
+      if (cur > max) max = cur;
+      if (cur < min) min = cur;
     }
+    min -= 2*FWHM;
+    max += 2*FWHM;      
+    // - get resolution (TODO)
+    double res = 1.0;
+    // create points
+    for (double x = min; x < max; x += res) {
+      double y = 100;
+      for (uint i = 0; i < m_transmittances.size(); i++) {
+        double t = m_transmittances.at(i);
+        double w = m_wavenumbers.at(i) * m_scale;
+        y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+      }
+      vibrationPlotObject->addPoint(x,y);
+    }
+
+    // Normalization is probably screwed up, so renormalize the data
+    max = vibrationPlotObject->points().at(0)->y();
+    min = max;
+    for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
+      double cur = vibrationPlotObject->points().at(i)->y();
+      if (cur < min) min = cur;
+      if (cur > max) max = cur;
+    }
+    for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
+      double cur = vibrationPlotObject->points().at(i)->y();
+      // cur - min 		: Shift lowest point of plot to be at zero
+      // 100 / (max - min)	: Conversion factor for current spread -> percent
+      // * 0.97 + 3		: makes plot stay away from 0 transmittance 
+      //			: (easier to see multiple peaks on strong signals)
+      vibrationPlotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+    }    
   }
 
   void VibrationPlot::getImportedSpectra(PlotObject *vibrationPlotObject)

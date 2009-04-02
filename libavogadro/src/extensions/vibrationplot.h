@@ -71,6 +71,8 @@ namespace Avogadro {
     Ui::VibrationPlot ui;
 
     void getCalculatedSpectra(PlotObject *vibrationPlotObject);
+    void getCalculatedSinglets(PlotObject *vibrationPlotObject);
+    void getCalculatedGaussians(PlotObject *vibrationPlotObject);
     void getImportedSpectra(PlotObject *vibrationPlotObject);
 
     double m_scale;
