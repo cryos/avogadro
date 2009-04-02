@@ -60,7 +60,7 @@ namespace Avogadro {
     ui.plot->setFontSize( 10);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
     ui.plot->setAntialiasing(true);
-    ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm^(-1))"));
+    ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
     m_importedSpectra = new PlotObject (Qt::white, PlotObject::Lines, 2);
