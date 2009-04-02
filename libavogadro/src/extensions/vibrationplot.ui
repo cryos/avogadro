@@ -13,7 +13,7 @@
    <string>Vibration Plot</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" colspan="8" >
+   <item row="0" column="0" colspan="10" >
     <widget class="Avogadro::PlotWidget" name="plot" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -42,7 +42,7 @@ Scroll wheel: Zoom to cursor</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="7" >
+   <item row="3" column="9" >
     <widget class="QPushButton" name="pushButton" >
      <property name="text" >
       <string>&amp;Close</string>
@@ -60,9 +60,12 @@ Scroll wheel: Zoom to cursor</string>
      <property name="text" >
       <string>Sc&amp;ale:</string>
      </property>
+     <property name="buddy" >
+      <cstring>spin_scale</cstring>
+     </property>
     </widget>
    </item>
-   <item row="3" column="6" >
+   <item row="3" column="8" >
     <widget class="QPushButton" name="push_save" >
      <property name="text" >
       <string>&amp;Save Image...</string>
@@ -82,7 +85,7 @@ Scroll wheel: Zoom to cursor</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2" colspan="4" >
+   <item row="3" column="2" colspan="6" >
     <spacer name="horizontalSpacer" >
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -95,7 +98,7 @@ Scroll wheel: Zoom to cursor</string>
      </property>
     </spacer>
    </item>
-   <item row="2" column="0" colspan="8" >
+   <item row="2" column="0" colspan="10" >
     <widget class="QGroupBox" name="gb_customize" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
@@ -286,11 +289,14 @@ Scroll wheel: Zoom to cursor</string>
       </sizepolicy>
      </property>
      <property name="text" >
-      <string>Y Axis Units:</string>
+      <string>&amp;Y Axis Units:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>combo_yaxis</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="4" colspan="4" >
+   <item row="1" column="6" colspan="4" >
     <spacer name="horizontalSpacer_2" >
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -321,6 +327,35 @@ Scroll wheel: Zoom to cursor</string>
        <string>Absorbance (%)</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item row="1" column="4" >
+    <widget class="QLabel" name="label_9" >
+     <property name="text" >
+      <string>&amp;Gaussian Width:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>spin_FWHM</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5" >
+    <widget class="QDoubleSpinBox" name="spin_FWHM" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="decimals" >
+      <number>1</number>
+     </property>
+     <property name="maximum" >
+      <double>1000.000000000000000</double>
+     </property>
+     <property name="singleStep" >
+      <double>5.000000000000000</double>
+     </property>
     </widget>
    </item>
   </layout>
