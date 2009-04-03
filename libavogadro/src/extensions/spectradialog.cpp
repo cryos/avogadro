@@ -48,7 +48,7 @@ namespace Avogadro {
     ui.setupUi(this);
 
     // TODO: Set in constructor, and make persistent
-    if (!m_scale) {
+    if (m_scale < 0.5 || m_scale > 1.5) {
       m_scale = 1.0;
     }
     ui.spin_scale->setValue(m_scale);
@@ -327,10 +327,10 @@ namespace Avogadro {
 
   void SpectraDialog::toggleCalculated(bool state) {
     if (state) {
-      ui.plot->replacePlotObject(0,m_importedSpectra);
+      ui.plot->replacePlotObject(0,m_calculatedSpectra);
     }
     else {
-      ui.plot->replacePlotObject(0,m_calculatedSpectra);
+      ui.plot->replacePlotObject(0,m_nullSpectra);
     }
     updatePlot();
   }
@@ -347,6 +347,7 @@ namespace Avogadro {
   }
 
   void SpectraDialog::regenerateCalculatedSpectra() {
+    qDebug() << "Regenerating calc";
     getCalculatedSpectra(m_calculatedSpectra);
     updatePlot();
   }
