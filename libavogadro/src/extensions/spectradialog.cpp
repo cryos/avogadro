@@ -347,7 +347,6 @@ namespace Avogadro {
   }
 
   void SpectraDialog::regenerateCalculatedSpectra() {
-    qDebug() << "Regenerating calc";
     getCalculatedSpectra(m_calculatedSpectra);
     updatePlot();
   }
