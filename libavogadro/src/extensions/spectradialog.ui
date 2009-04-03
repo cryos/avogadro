@@ -16,6 +16,12 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="11">
     <widget class="QPushButton" name="pushButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>&amp;Close</string>
      </property>
@@ -23,6 +29,12 @@
    </item>
    <item row="3" column="10">
     <widget class="QPushButton" name="push_save">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>&amp;Save Image...</string>
      </property>
@@ -81,6 +93,12 @@
       </item>
       <item row="3" column="1">
        <widget class="QPushButton" name="push_colorCalculated">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Set Color...</string>
         </property>
@@ -88,6 +106,12 @@
       </item>
       <item row="3" column="2">
        <widget class="QCheckBox" name="cb_labelPeaks">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>&amp;Label peaks</string>
         </property>
@@ -107,6 +131,12 @@
        <widget class="QPushButton" name="push_colorImported">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="text">
          <string>Set Color...</string>
@@ -148,6 +178,12 @@
       </item>
       <item row="1" column="1">
        <widget class="QPushButton" name="push_colorBackground">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Set Color...</string>
         </property>
@@ -175,6 +211,12 @@
       </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="push_colorForeground">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Set Color...</string>
         </property>
@@ -202,6 +244,12 @@
       </item>
       <item row="3" column="3">
        <widget class="QCheckBox" name="cb_calculate">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Show calculated spectra</string>
         </property>
@@ -212,10 +260,29 @@
       </item>
       <item row="5" column="1">
        <widget class="QPushButton" name="push_font">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Change Font...</string>
         </property>
        </widget>
+      </item>
+      <item row="3" column="4">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -283,6 +350,12 @@ Scroll wheel: Zoom to cursor</string>
    </item>
    <item row="1" column="7">
     <widget class="QLabel" name="label_9">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>&amp;Gaussian Width:</string>
      </property>
@@ -294,7 +367,7 @@ Scroll wheel: Zoom to cursor</string>
    <item row="1" column="6">
     <widget class="QComboBox" name="combo_yaxis">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -329,6 +402,12 @@ Scroll wheel: Zoom to cursor</string>
    </item>
    <item row="1" column="4">
     <widget class="QDoubleSpinBox" name="spin_scale">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="decimals">
       <number>5</number>
      </property>
@@ -364,6 +443,12 @@ Scroll wheel: Zoom to cursor</string>
    </item>
    <item row="1" column="2">
     <widget class="QComboBox" name="comboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <item>
       <property name="text">
        <string>Infrared</string>
@@ -382,6 +467,10 @@ Scroll wheel: Zoom to cursor</string>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>spin_scale</tabstop>
+  <tabstop>combo_yaxis</tabstop>
+  <tabstop>spin_FWHM</tabstop>
   <tabstop>push_customize</tabstop>
   <tabstop>push_save</tabstop>
   <tabstop>pushButton</tabstop>
@@ -405,8 +494,8 @@ Scroll wheel: Zoom to cursor</string>
    <slot>hide()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>362</x>
-     <y>283</y>
+     <x>761</x>
+     <y>543</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
