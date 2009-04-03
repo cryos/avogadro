@@ -1,5 +1,5 @@
 /**********************************************************************
-  VibrationPlot - Visualize vibrational modes graphically
+  SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
 
@@ -14,34 +14,33 @@
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+  GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONPLOT_H
-#define VIBRATIONPLOT_H
+#ifndef SPECTRADIALOG_H
+#define SPECTRADIALOG_H
 
 #include <QDialog>
 
 #include <avogadro/primitive.h>
-#include <avogadro/glwidget.h>
 #include <avogadro/plotwidget.h>
+#include <avogadro/molecule.h>
+
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
-#include "ui_vibrationplot.h"
+#include "ui_spectradialog.h"
 
 namespace Avogadro {
 
-  class VibrationPlot : public QDialog
+  class SpectraDialog : public QDialog
   {
     Q_OBJECT
 
   public:
-    //! Constructor
-    explicit VibrationPlot( QWidget *parent = 0, Qt::WindowFlags f = 0 );
-    //! Destructor
-    ~VibrationPlot();
+    explicit SpectraDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+    ~SpectraDialog();
 
     void setMolecule(Molecule *molecule);
 
@@ -68,12 +67,12 @@ namespace Avogadro {
     void scaleUpdated();
 
   private:
-    Ui::VibrationPlot ui;
+    Ui::SpectraDialog ui;
 
-    void getCalculatedSpectra(PlotObject *vibrationPlotObject);
-    void getCalculatedSinglets(PlotObject *vibrationPlotObject);
-    void getCalculatedGaussians(PlotObject *vibrationPlotObject);
-    void getImportedSpectra(PlotObject *vibrationPlotObject);
+    void getCalculatedSpectra(PlotObject *plotObject);
+    void getCalculatedSinglets(PlotObject *plotObject);
+    void getCalculatedGaussians(PlotObject *plotObject);
+    void getImportedSpectra(PlotObject *plotObject);
 
     double m_scale;
     QString m_yaxis;

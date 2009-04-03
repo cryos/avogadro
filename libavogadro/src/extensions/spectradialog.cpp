@@ -1,5 +1,5 @@
 /**********************************************************************
-  VibrationPlot - Visualize vibrational modes graphically
+  SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
 
@@ -17,7 +17,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "vibrationplot.h"
+#include "spectradialog.h"
 
 #include <QPen>
 #include <QColor>
@@ -42,13 +42,15 @@ using namespace std;
 
 namespace Avogadro {
 
-  VibrationPlot::VibrationPlot( QWidget *parent, Qt::WindowFlags f ) : 
+  SpectraDialog::SpectraDialog( QWidget *parent, Qt::WindowFlags f ) : 
       QDialog( parent, f )
   {
     ui.setupUi(this);
-    
-    //TODO link the scale here to vibrationdialog
-    m_scale = 1.0;
+
+    // TODO: Set in constructor, and make persistent
+    if (!m_scale) {
+      m_scale = 1.0;
+    }
     ui.spin_scale->setValue(m_scale);
 
     m_yaxis = ui.combo_yaxis->currentText();
@@ -57,7 +59,8 @@ namespace Avogadro {
     ui.gb_customize->hide();
 
     // setting the limits for the plot
-    ui.plot->setFontSize( 10);
+    // TODO: Make persistent
+    ui.plot->setFontSize(10);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
@@ -100,12 +103,12 @@ namespace Avogadro {
             this, SLOT(updateYAxis(QString)));
   }
 
-  VibrationPlot::~VibrationPlot()
+  SpectraDialog::~SpectraDialog()
   {
     //TODO: Anything to delete?
   }
 
-  void VibrationPlot::updateYAxis(QString text)
+  void SpectraDialog::updateYAxis(QString text)
   {
     if (m_yaxis == ui.combo_yaxis->currentText()) {
       return;
@@ -116,7 +119,7 @@ namespace Avogadro {
     regenerateImportedSpectra();
   }
 
-  void VibrationPlot::changeBackgroundColor()
+  void SpectraDialog::changeBackgroundColor()
   {
     //TODO: Store color choices in config?
     QColor current (ui.plot->backgroundColor());
@@ -127,7 +130,7 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::changeForegroundColor()
+  void SpectraDialog::changeForegroundColor()
   {
     //TODO: Store color choices in config?
     QColor current (ui.plot->foregroundColor());
@@ -138,7 +141,7 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::changeCalculatedSpectraColor()
+  void SpectraDialog::changeCalculatedSpectraColor()
   {
     //TODO: Store color choices in config?
     QPen currentPen = m_calculatedSpectra->linePen();
@@ -152,7 +155,7 @@ namespace Avogadro {
   }
 
 
-  void VibrationPlot::changeImportedSpectraColor()
+  void SpectraDialog::changeImportedSpectraColor()
   {
     //TODO: Store color choices in config?
     QPen currentPen (m_importedSpectra->linePen());
@@ -165,7 +168,7 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::changeFont()
+  void SpectraDialog::changeFont()
   {
     bool ok;
     QFont current (ui.plot->getFont());
@@ -176,7 +179,7 @@ namespace Avogadro {
     } 
   }
 
-  void VibrationPlot::setMolecule(Molecule *molecule)
+  void SpectraDialog::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
     OBMol obmol = m_molecule->OBMol();
@@ -184,7 +187,7 @@ namespace Avogadro {
     // Get intensities
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
-      qWarning() << "VibrationPlot::setMolecule: No vibrations to plot!";
+      qWarning() << "SpectraDialog::setMolecule: No vibrations to plot!";
       return;
     }
 
@@ -215,7 +218,7 @@ namespace Avogadro {
     }
 
     if (maxIntensity == 0) {
-      qWarning() << "VibrationPlot::setMolecule: No intensities > 0 in dataset.";
+      qWarning() << "SpectraDialog::setMolecule: No intensities > 0 in dataset.";
       return;
     }
 
@@ -231,7 +234,7 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
   }
 
-  void VibrationPlot::setScale(double scale)
+  void SpectraDialog::setScale(double scale)
   {
     if (scale == m_scale) {
       return;
@@ -240,7 +243,7 @@ namespace Avogadro {
     emit scaleUpdated();
   }
 
-  void VibrationPlot::importSpectra()
+  void SpectraDialog::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
@@ -272,7 +275,7 @@ namespace Avogadro {
         m_imported_transmittances.push_back(data.at(1).toDouble());
       }
       else {
-        qDebug() << "VibrationPlot::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+        qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
       }
     }
 
@@ -297,7 +300,7 @@ namespace Avogadro {
     updatePlot();
   }
 
-  void VibrationPlot::saveImage()
+  void SpectraDialog::saveImage()
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
@@ -308,11 +311,11 @@ namespace Avogadro {
     QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("png (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
     QPixmap pix = QPixmap::grabWidget(ui.plot);
     if (!pix.save(filename)) {
-      qWarning() << "VibrationPlot::saveImage Error saving plot to " << filename;
+      qWarning() << "SpectraDialog::saveImage Error saving plot to " << filename;
     }
   }
 
-  void VibrationPlot::toggleImported(bool state) {
+  void SpectraDialog::toggleImported(bool state) {
     if (state) {
       ui.plot->replacePlotObject(1,m_importedSpectra);
     }
@@ -322,7 +325,7 @@ namespace Avogadro {
     updatePlot();
   }
 
-  void VibrationPlot::toggleCalculated(bool state) {
+  void SpectraDialog::toggleCalculated(bool state) {
     if (state) {
       ui.plot->replacePlotObject(0,m_importedSpectra);
     }
@@ -332,7 +335,7 @@ namespace Avogadro {
     updatePlot();
   }
 
-  void VibrationPlot::toggleCustomize() {
+  void SpectraDialog::toggleCustomize() {
     if (ui.gb_customize->isHidden()) {
       ui.push_customize->setText(tr("Customi&ze <<"));
       ui.gb_customize->show();
@@ -343,59 +346,59 @@ namespace Avogadro {
     }
   }
 
-  void VibrationPlot::regenerateCalculatedSpectra() {
+  void SpectraDialog::regenerateCalculatedSpectra() {
     getCalculatedSpectra(m_calculatedSpectra);
     updatePlot();
   }
 
-  void VibrationPlot::regenerateImportedSpectra() {
+  void SpectraDialog::regenerateImportedSpectra() {
     getImportedSpectra(m_importedSpectra);
     updatePlot();
   }
 
-  void VibrationPlot::updatePlot()
+  void SpectraDialog::updatePlot()
   {
     ui.plot->update();
   }
 
-  void VibrationPlot::getCalculatedSpectra(PlotObject *vibrationPlotObject)
+  void SpectraDialog::getCalculatedSpectra(PlotObject *plotObject)
   {
-    vibrationPlotObject->clearPoints();
+    plotObject->clearPoints();
     if (ui.spin_FWHM->value() == 0.0) {
-      getCalculatedSinglets(vibrationPlotObject);
+      getCalculatedSinglets(plotObject);
     } 
     else {
-      getCalculatedGaussians(vibrationPlotObject);
+      getCalculatedGaussians(plotObject);
     }
     if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-      for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
-        double absorbance = 100 - vibrationPlotObject->points().at(i)->y();
-        vibrationPlotObject->points().at(i)->setY(absorbance);
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double absorbance = 100 - plotObject->points().at(i)->y();
+        plotObject->points().at(i)->setY(absorbance);
       }
     }
   }
 
-  void VibrationPlot::getCalculatedSinglets(PlotObject *vibrationPlotObject)
+  void SpectraDialog::getCalculatedSinglets(PlotObject *plotObject)
   {
-    vibrationPlotObject->addPoint( 400, 100); // Initial point
+    plotObject->addPoint( 400, 100); // Initial point
 
     for (uint i = 0; i < m_transmittances.size(); i++) {
       double wavenumber = m_wavenumbers.at(i) * m_scale;
       double transmittance = m_transmittances.at(i);
-      vibrationPlotObject->addPoint ( wavenumber, 100 );
+      plotObject->addPoint ( wavenumber, 100 );
       if (ui.cb_labelPeaks->isChecked()) {
-        vibrationPlotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+        plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
       }
       else {
-       	vibrationPlotObject->addPoint ( wavenumber, transmittance );
+       	plotObject->addPoint ( wavenumber, transmittance );
       }
-      vibrationPlotObject->addPoint ( wavenumber, 100 );
+      plotObject->addPoint ( wavenumber, 100 );
     }
-    vibrationPlotObject->addPoint( 4000, 100); // Final point
+    plotObject->addPoint( 4000, 100); // Final point
   }
 
 
-  void VibrationPlot::getCalculatedGaussians(PlotObject *vibrationPlotObject)
+  void SpectraDialog::getCalculatedGaussians(PlotObject *plotObject)
   {
     // convert FWHM to sigma squared
     double FWHM = ui.spin_FWHM->value();
@@ -422,30 +425,30 @@ namespace Avogadro {
         double w = m_wavenumbers.at(i) * m_scale;
         y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
       }
-      vibrationPlotObject->addPoint(x,y);
+      plotObject->addPoint(x,y);
     }
 
     // Normalization is probably screwed up, so renormalize the data
-    max = vibrationPlotObject->points().at(0)->y();
+    max = plotObject->points().at(0)->y();
     min = max;
-    for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
-      double cur = vibrationPlotObject->points().at(i)->y();
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
       if (cur < min) min = cur;
       if (cur > max) max = cur;
     }
-    for(int i = 0; i< vibrationPlotObject->points().size(); i++) {
-      double cur = vibrationPlotObject->points().at(i)->y();
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
       // cur - min 		: Shift lowest point of plot to be at zero
       // 100 / (max - min)	: Conversion factor for current spread -> percent
       // * 0.97 + 3		: makes plot stay away from 0 transmittance 
       //			: (easier to see multiple peaks on strong signals)
-      vibrationPlotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+      plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
     }    
   }
 
-  void VibrationPlot::getImportedSpectra(PlotObject *vibrationPlotObject)
+  void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
   {
-    vibrationPlotObject->clearPoints();
+    plotObject->clearPoints();
     // For now, lets just make singlet peaks. Maybe we can fit a
     // gaussian later?
     for (uint i = 0; i < m_imported_transmittances.size(); i++) {
@@ -454,9 +457,9 @@ namespace Avogadro {
       if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
         y = 100 - y;
       }
-      vibrationPlotObject->addPoint ( wavenumber, y );
+      plotObject->addPoint ( wavenumber, y );
     }
   }
 }
 
-#include "vibrationplot.moc"
+#include "spectradialog.moc"
