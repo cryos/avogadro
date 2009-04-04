@@ -442,18 +442,13 @@ Scroll wheel: Zoom to cursor</string>
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="combo_spectra">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <item>
-      <property name="text">
-       <string>Infrared</string>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>
@@ -467,7 +462,7 @@ Scroll wheel: Zoom to cursor</string>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>comboBox</tabstop>
+  <tabstop>combo_spectra</tabstop>
   <tabstop>spin_scale</tabstop>
   <tabstop>combo_yaxis</tabstop>
   <tabstop>spin_FWHM</tabstop>

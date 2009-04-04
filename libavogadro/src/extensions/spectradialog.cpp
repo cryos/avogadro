@@ -186,8 +186,16 @@ namespace Avogadro {
 
     // Get intensities
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+    if (m_vibrations) {
+      //: Choice in a combo box to select infrared spectra
+      ui.combo_spectra->addItem(tr("Infrared"));
+    }
+
+    // Remove/change this when other methods are added
     if (!m_vibrations) {
+      QMessageBox::warning(this, tr("Spectra Visualization"), tr("No supported spectroscopic data present. Please file a bug report (with the molecule file attached) at http://avogadro.openmolecules.net if you believe this is an error."));
       qWarning() << "SpectraDialog::setMolecule: No vibrations to plot!";
+      ui.combo_spectra->addItem(tr("No data"));
       return;
     }
 
