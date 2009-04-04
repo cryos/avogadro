@@ -255,11 +255,12 @@ namespace Avogadro {
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
+    if (defaultPath.isEmpty()) {
       defaultPath = QDir::homePath();
+    }
 
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
-    QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Text Files (*.txt);;All Files (*.*)"));
+    QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*.jdx);;All Files (* *.*)"));
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -267,25 +268,66 @@ namespace Avogadro {
       return;
     }
     
+    // get file extension
+    QStringList tmp 	= filename.split(".");
+    QString ext 	= tmp.at(tmp.size()-1);
+    
     // Clear out any old data
     m_imported_wavenumbers.clear();
     m_imported_transmittances.clear();
 
     QTextStream in(&file);
-    // Process each line
-    while (!in.atEnd()) {
-      QString line = in.readLine();
 
-      // the following assumes that the file is a tsv of wavenumber \t transmittance
-      QStringList data = line.split("\t");
-      if (data.at(0).toDouble() && data.at(1).toDouble()) {
-        m_imported_wavenumbers.push_back(data.at(0).toDouble());
-        m_imported_transmittances.push_back(data.at(1).toDouble());
-      }
-      else {
-        qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+    if (!ext.compare("tsv") || !ext.compare("TSV")) {
+      qDebug() << ext.compare("tsv") << " " << ext.compare("TSV");
+      qDebug() << "tsv found";
+      while (!in.atEnd()) {
+        QString line = in.readLine();
+        if (line.trimmed().startsWith("#")) continue; 	//discard comments
+        QStringList data = line.split("\t");
+        if (data.at(0).toDouble() && data.at(1).toDouble()) {
+          m_imported_wavenumbers.push_back(data.at(0).toDouble());
+          m_imported_transmittances.push_back(data.at(1).toDouble());
+        }
+        else {
+          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+        }
       }
     }
+    else if (!ext.compare("csv") || !ext.compare("CSV")) {
+      qDebug() << "csv found";
+      while (!in.atEnd()) {
+        QString line = in.readLine();
+        if (line.trimmed().startsWith("#")) continue; 	//discard comments
+        QStringList data = line.split(",");
+        if (data.at(0).toDouble() && data.at(1).toDouble()) {
+          m_imported_wavenumbers.push_back(data.at(0).toDouble());
+          m_imported_transmittances.push_back(data.at(1).toDouble());
+        }
+        else {
+          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+        }
+      }
+    }
+    else if (!ext.compare("jdx") || !ext.compare("JDX")) {
+      qDebug() << "jdx found";
+      while (!in.atEnd()) {
+        QString line = in.readLine();
+        if (line.trimmed().startsWith("#")) continue; 	//discard comments
+        QStringList data = line.split(QRegExp("\\s+")); //regex finds whitespace
+        if (data.at(0).toDouble() && data.at(1).toDouble()) {
+          m_imported_wavenumbers.push_back(data.at(0).toDouble());
+          m_imported_transmittances.push_back(data.at(1).toDouble());
+        }
+        else {
+          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+        }
+      }
+    }
+    else {
+      QMessageBox::warning(this, tr("Spectra Import"), tr("Unknown extension: %1").arg(ext));
+      return;
+    }  
 
     // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
     bool convert = true;
@@ -457,8 +499,6 @@ namespace Avogadro {
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
   {
     plotObject->clearPoints();
-    // For now, lets just make singlet peaks. Maybe we can fit a
-    // gaussian later?
     for (uint i = 0; i < m_imported_transmittances.size(); i++) {
       double wavenumber = m_imported_wavenumbers.at(i);
       double y = m_imported_transmittances.at(i);
