@@ -404,12 +404,17 @@ namespace Avogadro {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
         QStringList data = line.split("\t");
+        if (data.size() < 2) {
+          qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
+          continue;
+        }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
           m_imported_wavenumbers.push_back(data.at(0).toDouble());
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          continue;
         }
       }
     }
@@ -418,12 +423,17 @@ namespace Avogadro {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
         QStringList data = line.split(",");
+        if (data.size() < 2) {
+          qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
+          continue;
+        }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
           m_imported_wavenumbers.push_back(data.at(0).toDouble());
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          continue;
         }
       }
     }
@@ -432,12 +442,17 @@ namespace Avogadro {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
         QStringList data = line.split(QRegExp("\\s+")); //regex finds whitespace
+        if (data.size() < 2) {
+          qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
+          continue;
+        }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
           m_imported_wavenumbers.push_back(data.at(0).toDouble());
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          continue;
         }
       }
     }
