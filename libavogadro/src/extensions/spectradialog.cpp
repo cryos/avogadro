@@ -337,7 +337,7 @@ namespace Avogadro {
       publication["name"] = tr("Publication");
       publication["backgroundColor"] = Qt::white;
       publication["foregroundColor"] = Qt::black;
-      publication["calculatedColor"] = Qt::Black;
+      publication["calculatedColor"] = Qt::black;
       publication["importedColor"] = Qt::gray;
       publication["font"] = QFont();
       new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
