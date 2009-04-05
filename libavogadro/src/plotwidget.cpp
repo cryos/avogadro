@@ -1090,8 +1090,8 @@ namespace Avogadro {
     // Draw BottomAxis Label
     a = axis(BottomAxis);
     if (a->isVisible() && !a->label().isEmpty() ) {
-      QRect r( 0, d->pixRect.height() + topPadding() + YPADDING, d->pixRect.width(), YPADDING );
-      //	p->drawText( r, Qt::AlignCenter, a->label() );
+      QRect r( 0, 0, d->pixRect.width(), 2*YPADDING );
+
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
@@ -1099,10 +1099,10 @@ namespace Avogadro {
 
       QPalette palette = textLabel.palette();
       palette.setColor(QPalette::Foreground, foregroundColor());
-      palette.setColor(QPalette::Background, backgroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
       textLabel.setPalette(palette);
 
-      QPoint offset (0, d->pixRect.height() + 2*YPADDING);
+      QPoint offset (0, d->pixRect.height() + YPADDING);
       textLabel.render(p, offset);
     } // BottomAxis Label
 
@@ -1116,8 +1116,8 @@ namespace Avogadro {
       p->translate( -3*XPADDING, d->pixRect.height() );
       p->rotate( -90.0 );
 
-      QRect r( 0, 0, d->pixRect.height(), XPADDING );
-      //      p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
+      QRect r( 0, 0, d->pixRect.height(), 2*XPADDING );
+
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
@@ -1125,7 +1125,7 @@ namespace Avogadro {
 
       QPalette palette = textLabel.palette();
       palette.setColor(QPalette::Foreground, foregroundColor());
-      palette.setColor(QPalette::Background, backgroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
       textLabel.setPalette(palette);
 
       QPoint offset (0, 0);
