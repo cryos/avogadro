@@ -1,9 +1,9 @@
 Requirements
 ============
  -- CMake 2.6.0 or later
- -- Qt 4.4.x or later
- -- OpenBabel 2.2.0 or later
- -- Eigen 2.0.0_beta6 or later
+ -- Qt 4.4.2 or later
+ -- OpenBabel 2.2.1 or later
+ -- Eigen 2.0.0 or later
 
 
 Basic Installation
@@ -56,8 +56,5 @@ For more information please consult the CMake documentation.
 Avogadro uses a few environment variables to find things at runtime. If Avogadro
 is installed to the location specified at compile time none of these variables
 need to be set.
-
-AVOGADRO_PLUGINS - the base location of Avogadro plugins, e.g. export
-AVOGADRO_PLUGINS="/usr/local/lib/avogadro:/home/user/build/avogadro/libavogadro/src"
 
 AVOGADRO_TRANSLATIONS - the location of the translation files.
