@@ -70,7 +70,7 @@ namespace Avogadro {
 
     connect(ui.push_newScheme, SIGNAL(clicked()),
             this, SLOT(addScheme()));
-.    connect(ui.push_renameScheme, SIGNAL(clicked()),
+    connect(ui.push_renameScheme, SIGNAL(clicked()),
             this, SLOT(renameScheme()));
     connect(ui.push_removeScheme, SIGNAL(clicked()),
             this, SLOT(removeScheme()));
