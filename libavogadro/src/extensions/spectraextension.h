@@ -1,7 +1,7 @@
 /**********************************************************************
-  VibrationExtension - Visualize vibrational modes from QM calculations
+  SpectraExtension - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by Geoffrey R. Hutchison
+  Copyright (C) 2009 by David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -19,79 +19,51 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONEXTENSION_H
-#define VIBRATIONEXTENSION_H
+#ifndef SPECTRAEXTENSION_H
+#define SPECTRAEXTENSION_H
 
-#include "vibrationdialog.h"
+#include "spectradialog.h"
 
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
-#include <avogadro/animation.h>
 
 #include <QObject>
 #include <QList>
 #include <QString>
 #include <QUndoCommand>
 
-namespace OpenBabel {
-  class OBVibrationData;
-}
-
 namespace Avogadro {
 
- class VibrationExtension : public Extension
+ class SpectraExtension : public Extension
   {
     Q_OBJECT
-    AVOGADRO_EXTENSION("Vibration", tr("Vibration"),
-                       tr("Visualize vibrational modes from quantum chemistry calculations"))
+    AVOGADRO_EXTENSION("Spectra", tr("Spectra"),
+                       tr("Visualize spectral data from quantum chemistry calculations"))
 
     public:
       //! Constructor
-      VibrationExtension(QObject *parent=0);
+      SpectraExtension(QObject *parent=0);
       //! Deconstructor
-      virtual ~VibrationExtension();
+      virtual ~SpectraExtension();
 
       //! Perform Action
       virtual QList<QAction *> actions() const;
       virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
       virtual QString menuPath(QAction *action) const;
-
       virtual void setMolecule(Molecule *molecule);
-
-      void clearAnimationFrames();
-
-    public slots:
-      void updateMode(int mode);
-
-      void setScale(double scale);
-      void setDisplayForceVectors(bool enabled);
-      void toggleAnimation();
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
 
     private:
-      void updateForcesAndFrames(); // helper when settings change
-
       QList<QAction *> m_actions;
-
-      OpenBabel::OBVibrationData *m_vibrations;
-      int m_mode;
-      VibrationDialog *m_dialog;
+      SpectraDialog *m_dialog;
       Molecule *m_molecule;
-      GLWidget *m_widget;
-      Animation *m_animation;
-
-      double m_scale;
-      unsigned int m_framesPerStep;
-      bool m_displayVectors;
-      bool m_animating;
-
-      std::vector< std::vector< Eigen::Vector3d> *> m_animationFrames;
   };
 
-  class VibrationExtensionFactory : public QObject, public PluginFactory
+  class SpectraExtensionFactory : public QObject, public PluginFactory
   {
       Q_OBJECT
       Q_INTERFACES(Avogadro::PluginFactory)
-      AVOGADRO_EXTENSION_FACTORY(VibrationExtension)
+      AVOGADRO_EXTENSION_FACTORY(SpectraExtension)
   };
 
 

@@ -39,6 +39,8 @@
 #include <QToolTip>
 #include <QtAlgorithms>
 #include <QFont>
+#include <QLabel>
+#include <QPalette>
 
 #include "plotaxis.h"
 #include "plotpoint.h"
@@ -961,12 +963,6 @@ namespace Avogadro {
 		       QPointF( px, double(d->pixRect.height() - SMALLTICKSIZE -TICKOFFSET)) );
 	}
       }
-
-      // Draw BottomAxis Label
-      if ( ! a->label().isEmpty() ) {
-	QRect r( 0, d->pixRect.height() + 2*YPADDING, d->pixRect.width(), YPADDING );
-	p->drawText( r, Qt::AlignCenter, a->label() );
-      }
     }  //End of BottomAxis
 
     /*** LeftAxis ***/
@@ -995,21 +991,6 @@ namespace Avogadro {
 	if ( py > 0 && py < d->pixRect.height() ) {
 	  p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + SMALLTICKSIZE), py ) );
 	}
-      }
-
-      //Draw LeftAxis Label.  We need to draw the text sideways.
-      if ( ! a->label().isEmpty() ) {
-	//store current painter translation/rotation state
-	p->save();
-    
-	//translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
-	p->translate( -3*XPADDING, d->pixRect.height() );
-	p->rotate( -90.0 );
-    
-	QRect r( 0, 0, d->pixRect.height(), XPADDING );
-	p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
-    
-	p->restore();  //restore translation/rotation state
       }
     }  //End of LeftAxis
 
@@ -1105,6 +1086,52 @@ namespace Avogadro {
 	p->restore();  //restore translation/rotation state
       }
     }  //End of RightAxis
+    
+    // Draw BottomAxis Label
+    a = axis(BottomAxis);
+    if (a->isVisible() && !a->label().isEmpty() ) {
+      QRect r( 0, d->pixRect.height() + topPadding() + YPADDING, d->pixRect.width(), YPADDING );
+      //	p->drawText( r, Qt::AlignCenter, a->label() );
+      QLabel textLabel (a->label(), this);
+      textLabel.setGeometry(r);
+      textLabel.setFont(d->font);
+      textLabel.setAlignment(Qt::AlignCenter);
+
+      QPalette palette = textLabel.palette();
+      palette.setColor(QPalette::Foreground, foregroundColor());
+      palette.setColor(QPalette::Background, backgroundColor());
+      textLabel.setPalette(palette);
+
+      QPoint offset (0, d->pixRect.height() + 2*YPADDING);
+      textLabel.render(p, offset);
+    } // BottomAxis Label
+
+    //Draw LeftAxis Label.  We need to draw the text sideways.
+    a = axis(LeftAxis);
+    if (a->isVisible() && !a->label().isEmpty() ) {
+      //store current painter translation/rotation state
+      p->save();
+
+      //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+      p->translate( -3*XPADDING, d->pixRect.height() );
+      p->rotate( -90.0 );
+
+      QRect r( 0, 0, d->pixRect.height(), XPADDING );
+      //      p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
+      QLabel textLabel (a->label(), this);
+      textLabel.setGeometry(r);
+      textLabel.setFont(d->font);
+      textLabel.setAlignment(Qt::AlignCenter);
+
+      QPalette palette = textLabel.palette();
+      palette.setColor(QPalette::Foreground, foregroundColor());
+      palette.setColor(QPalette::Background, backgroundColor());
+      textLabel.setPalette(palette);
+
+      QPoint offset (0, 0);
+      textLabel.render(p, offset);
+      p->restore();  //restore translation/rotation state
+    }// LeftAxis Label
   }
 
   int PlotWidget::leftPadding() const
