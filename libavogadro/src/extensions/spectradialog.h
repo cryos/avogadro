@@ -67,6 +67,11 @@ namespace Avogadro {
     void saveImage();
     void toggleCustomize();
     void updateYAxis(QString);
+    void schemeChanged();
+    void updateScheme(int scheme);
+    void addScheme();
+    void removeScheme();
+    void renameScheme();
 
   signals:
     void scaleUpdated();
