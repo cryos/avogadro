@@ -339,7 +339,7 @@ namespace Avogadro {
       publication["foregroundColor"] = Qt::black;
       publication["calculatedColor"] = Qt::black;
       publication["importedColor"] = Qt::gray;
-      publication["font"] = QFont();
+      publication["font"] = QFont("Century Schoolbook L", 13);
       new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
       schemes->append(publication);
 
