@@ -31,6 +31,7 @@
 #include <QFile>
 #include <QDir>
 #include <QPixmap>
+#include <QSettings>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -47,12 +48,7 @@ namespace Avogadro {
   {
     ui.setupUi(this);
 
-    // TODO: Set in constructor, and make persistent
-    if (m_scale < 0.5 || m_scale > 1.5) {
-      m_scale = 1.0;
-    }
-    ui.spin_scale->setValue(m_scale);
-
+    // Initialize vars
     m_yaxis = ui.combo_yaxis->currentText();
 
     // Hide advanced options initially
@@ -60,7 +56,6 @@ namespace Avogadro {
 
     // setting the limits for the plot
     // TODO: Make persistent
-    ui.plot->setFontSize(10);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
     ui.plot->setAntialiasing(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
@@ -101,11 +96,12 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
+    readSettings();
   }
 
   SpectraDialog::~SpectraDialog()
   {
-    //TODO: Anything to delete?
+    writeSettings();
   }
 
   void SpectraDialog::updateYAxis(QString text)
@@ -242,12 +238,77 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
   }
 
+  void SpectraDialog::writeSettings() const {
+    QSettings settings; // Already set up in avogadro/src/main.cpp
+    settings.setValue("spectra/scale", m_scale);
+    settings.setValue("spectra/currentScheme", m_scheme);
+    settings.setValue("spectra/gaussianWidth",ui.spin_FWHM->value());
+    settings.setValue("spectra/labelPeaks",ui.cb_labelPeaks->isChecked());
+    settings.beginWriteArray("spectra/schemes");
+    for (int i = 0; i < schemes->size(); ++i) {
+      settings.setArrayIndex(i);
+      settings.setValue("scheme", schemes->at(i));
+    }
+    settings.endArray();
+  }
+
+  void SpectraDialog::readSettings() {
+    QSettings settings; // Already set up in avogadro/src/main.cpp
+    setScale(settings.value("spectra/scale", 1.0).toDouble());
+    m_scheme = settings.value("spectra/currentScheme", 0).toInt();
+    ui.spin_FWHM->setValue(settings.value("spectra/gaussianWidth",0.0).toDouble());
+    ui.cb_labelPeaks->setChecked(settings.value("spectra/labelPeaks",false).toBool());
+    int size = settings.beginReadArray("schemes");
+    for (int i = 0; i < size; ++i) {
+      settings.setArrayIndex(i);
+      schemes->append(settings.value("scheme").value<QHash<QString, QVariant> >());
+    }
+    settings.endArray();
+
+    // create scheme list if it doesn't already exist
+    if (size == 0) {
+      schemes = new QList<QHash<QString, QVariant> >;
+      // dark
+      QHash<QString, QVariant> dark;
+      dark["name"] = "Dark";
+      dark["backgroundColor"] = Qt::black;
+      dark["foregroundColor"] = Qt::white;
+      dark["calculatedColor"] = Qt::red;
+      dark["importedColor"] = Qt::gray;
+      dark["font"] = QFont();
+      schemes->append(dark);
+
+      // light
+      QHash<QString, QVariant> light;
+      light["name"] = "Light";
+      light["backgroundColor"] = Qt::white;
+      light["foregroundColor"] = Qt::black;
+      light["calculatedColor"] = Qt::red;
+      light["importedColor"] = Qt::gray;
+      light["font"] = QFont();
+      schemes->append(light);
+    }
+    ui.plot->setBackgroundColor(schemes->at(m_scheme)["backgroundColor"].value<QColor>());
+    ui.plot->setForegroundColor(schemes->at(m_scheme)["foregroundColor"].value<QColor>());
+    ui.plot->setFont(schemes->at(m_scheme)["font"].value<QFont>());
+
+    QPen currentPen (m_importedSpectra->linePen());
+    currentPen.setColor(schemes->at(m_scheme)["importedColor"].value<QColor>());
+    m_importedSpectra->setLinePen(currentPen);
+
+    currentPen = (m_calculatedSpectra->linePen());
+    currentPen.setColor(schemes->at(m_scheme)["calculatedColor"].value<QColor>());
+    m_calculatedSpectra->setLinePen(currentPen);
+
+  }
+
   void SpectraDialog::setScale(double scale)
   {
     if (scale == m_scale) {
       return;
     }
     m_scale = scale;
+    ui.spin_scale->setValue(scale);
     emit scaleUpdated();
   }
 
@@ -264,7 +325,7 @@ namespace Avogadro {
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-      qDebug() << "Error reading file " << filename;
+      qWarning() << "Error reading file " << filename;
       return;
     }
     
@@ -279,8 +340,6 @@ namespace Avogadro {
     QTextStream in(&file);
 
     if (!ext.compare("tsv") || !ext.compare("TSV")) {
-      qDebug() << ext.compare("tsv") << " " << ext.compare("TSV");
-      qDebug() << "tsv found";
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -290,12 +349,11 @@ namespace Avogadro {
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
-          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
         }
       }
     }
     else if (!ext.compare("csv") || !ext.compare("CSV")) {
-      qDebug() << "csv found";
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -305,12 +363,11 @@ namespace Avogadro {
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
-          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
         }
       }
     }
     else if (!ext.compare("jdx") || !ext.compare("JDX")) {
-      qDebug() << "jdx found";
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -320,7 +377,7 @@ namespace Avogadro {
           m_imported_transmittances.push_back(data.at(1).toDouble());
         }
         else {
-          qDebug() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
+          qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
         }
       }
     }

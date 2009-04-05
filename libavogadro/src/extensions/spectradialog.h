@@ -21,6 +21,9 @@
 #define SPECTRADIALOG_H
 
 #include <QDialog>
+#include <QHash>
+#include <QVariant>
+#include <QSettings>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
@@ -43,6 +46,8 @@ namespace Avogadro {
     ~SpectraDialog();
 
     void setMolecule(Molecule *molecule);
+    void writeSettings() const;
+    void readSettings();
 
   public slots:
     void setScale(double scale);
@@ -76,6 +81,8 @@ namespace Avogadro {
 
     double m_scale;
     QString m_yaxis;
+    int m_scheme;
+    QList<QHash<QString, QVariant> > *schemes;
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;

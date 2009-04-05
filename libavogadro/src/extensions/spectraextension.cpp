@@ -29,6 +29,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QDebug>
+#include <QSettings>
 
 using namespace std;
 using namespace OpenBabel;
@@ -57,6 +58,19 @@ namespace Avogadro {
   QList<QAction *> SpectraExtension::actions() const
   {
     return m_actions;
+  }
+
+  void SpectraExtension::writeSettings(QSettings &settings) const
+  {
+    Extension::writeSettings(settings);
+    if (m_dialog) {
+      m_dialog->writeSettings();
+    }
+  }
+
+  void SpectraExtension::readSettings(QSettings &settings)
+  {
+    Extension::readSettings(settings);
   }
 
   QString SpectraExtension::menuPath(QAction *) const
