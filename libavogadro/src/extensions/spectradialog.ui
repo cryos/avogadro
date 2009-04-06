@@ -198,22 +198,6 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="6">
-          <widget class="QCheckBox" name="cb_labelPeaks">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>&amp;Label peaks</string>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
          <item row="4" column="6">
           <widget class="QPushButton" name="push_import">
            <property name="sizePolicy">
@@ -360,6 +344,13 @@
            </property>
           </widget>
          </item>
+         <item row="3" column="6">
+          <widget class="QPushButton" name="push_export">
+           <property name="text">
+            <string>Export...</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="tab_infrared">
@@ -451,7 +442,23 @@
            </item>
           </widget>
          </item>
-         <item row="2" column="4">
+         <item row="3" column="0">
+          <widget class="QCheckBox" name="cb_labelPeaks">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>&amp;Label peaks</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
           <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>

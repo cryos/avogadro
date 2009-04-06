@@ -96,6 +96,8 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.push_import, SIGNAL(clicked()),
             this, SLOT(importSpectra()));
+    connect(ui.push_export, SIGNAL(clicked()),
+            this, SLOT(exportSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.spin_scale, SIGNAL(valueChanged(double)),
@@ -393,6 +395,36 @@ namespace Avogadro {
     ui.spin_scale->setValue(scale);
     emit scaleUpdated();
   }
+
+  void SpectraDialog::exportSpectra()
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty()) {
+      defaultPath = QDir::homePath();
+    }
+
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Export Calculated Spectrum"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
+
+    QFile file (filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+      qWarning() << "Cannot open file " << filename << " for writing!";
+      return;
+    }
+
+    QTextStream out(&file);
+    QString format = "%1\t%2\n";
+
+    out << "Frequencies\tIntensities\n";
+
+    for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
+      out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+    }
+
+    file.close();
+  }
+
 
   void SpectraDialog::importSpectra()
   {
