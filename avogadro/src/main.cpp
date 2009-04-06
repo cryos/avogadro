@@ -77,8 +77,9 @@ int main(int argc, char *argv[])
   Application app(argc, argv);
 
   // Output the untranslated application and library version - bug reports
-  qDebug() << "Avogadro version:\t" << VERSION
-           << "\nLibAvogadro version:\t" << Library::version();
+  qDebug() << "Avogadro version:\t" << VERSION << "\tGit" << SCM_REVISION
+           << "\nLibAvogadro version:\t" << Library::version()
+           << "\tGit" << Library::scmRevision();
 
 #ifdef WIN32
   // Need to add an environment variable to the current process in order
@@ -196,9 +197,9 @@ void printVersion(const QString &)
   std::cout << "LibAvogadro: 0.8.0" << std::endl;
   std::cout << "Qt: \t\t4.3.4" << std::endl;
   #else
-  std::wcout << QCoreApplication::translate("main.cpp", "Avogadro: \t%1 (rev %2)\n"
-      "LibAvogadro: \t%3 (rev %4)\n"
-      "Qt: \t\t%5\n").arg(VERSION, SVN_REVISION, Library::version(), Library::svnRevision(), qVersion()).toStdWString();
+  std::wcout << QCoreApplication::translate("main.cpp", "Avogadro: \t%1 (Hash %2)\n"
+      "LibAvogadro: \t%3 (Hash %4)\n"
+      "Qt: \t\t%5\n").arg(VERSION, SCM_REVISION, Library::version(), Library::scmRevision(), qVersion()).toStdWString();
   #endif
 }
 

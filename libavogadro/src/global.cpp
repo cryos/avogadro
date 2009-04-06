@@ -59,9 +59,9 @@ namespace Avogadro
     return VERSION;
   }
 
-  QString Library::svnRevision()
+  QString Library::scmRevision()
   {
-    return SVN_REVISION;
+    return SCM_REVISION;
   }
 
   QString Library::prefix()

@@ -133,10 +133,9 @@ namespace Avogadro
       static QString version();
 
       /**
-       * The svn revision.
-       * @deprecated
+       * The source control management revision.
        */
-      static QString svnRevision();
+      static QString scmRevision();
 
       /**
        * The installation prefix that the Avogadro library was compiled into.
