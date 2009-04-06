@@ -61,8 +61,6 @@ namespace Avogadro {
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
 	    this, SLOT(exportVibrationData(bool)));
-    connect(ui.plotButton, SIGNAL(clicked()),
-	    this, SLOT(plotVibrations()));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -199,15 +197,6 @@ namespace Avogadro {
     file.close();
 
     return;
-  }
-
-  void VibrationDialog::plotVibrations() {
-    m_plot = new VibrationPlot(this);
-    m_plot->setMolecule(m_molecule);
-
-    m_plot->show();
-    m_plot->raise();
-    m_plot->activateWindow();
   }
 
 } // namespace Avogadro
