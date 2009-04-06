@@ -54,7 +54,7 @@ namespace Avogadro {
     m_yaxis = ui.combo_yaxis->currentText();
 
     // Hide advanced options initially
-    ui.gb_customize->hide();
+    ui.tab_widget->hide();
 
     // setting the limits for the plot
     // TODO: Make persistent
@@ -226,6 +226,8 @@ namespace Avogadro {
     if (m_vibrations) {
       //: Choice in a combo box to select infrared spectra
       ui.combo_spectra->addItem(tr("Infrared"));
+    } else {
+      ui.tab_widget->removeTab(1);// remove ui.tab_infrared
     }
 
     // Remove/change this when other methods are added
@@ -233,6 +235,11 @@ namespace Avogadro {
       QMessageBox::warning(this, tr("Spectra Visualization"), tr("No supported spectroscopic data present. Please file a bug report (with the molecule file attached) at http://avogadro.openmolecules.net if you believe this is an error."));
       qWarning() << "SpectraDialog::setMolecule: No vibrations to plot!";
       ui.combo_spectra->addItem(tr("No data"));
+      ui.push_colorCalculated->setEnabled(false);
+      ui.cb_calculate->setEnabled(false);
+      ui.cb_labelPeaks->setEnabled(false);
+      ui.cb_calculate->setChecked(false);
+      ui.cb_labelPeaks->setChecked(false);
       return;
     }
 
@@ -518,17 +525,27 @@ namespace Avogadro {
   }
 
   void SpectraDialog::toggleCustomize() {
-    if (ui.gb_customize->isHidden()) {
+    if (ui.tab_widget->isHidden()) {
       ui.push_customize->setText(tr("Customi&ze <<"));
-      ui.gb_customize->show();
+      ui.tab_widget->show();
     }
     else {
       ui.push_customize->setText(tr("Customi&ze >>"));
-      ui.gb_customize->hide();
+      ui.tab_widget->hide();
     }
   }
 
   void SpectraDialog::regenerateCalculatedSpectra() {
+    if (ui.spin_FWHM->value() != 0.0 && ui.cb_labelPeaks->isEnabled()) {
+      ui.cb_labelPeaks->setEnabled(false);
+      ui.cb_labelPeaks->setChecked(false);
+    }
+    if (ui.spin_FWHM->value() == 0.0 && !ui.cb_labelPeaks->isEnabled()) {
+      ui.cb_labelPeaks->setEnabled(true);
+    }
+    if (!ui.cb_labelPeaks->isEnabled()) {
+      ui.cb_labelPeaks->setChecked(false);
+    }
     getCalculatedSpectra(m_calculatedSpectra);
     updatePlot();
   }
