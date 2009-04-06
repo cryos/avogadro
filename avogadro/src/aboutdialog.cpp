@@ -52,6 +52,16 @@ namespace Avogadro {
 
       lbl->setWordWrap(true);
       lbl->setOpenExternalLinks(true);
+
+      // Build up the SCM revision numbers if present
+      QString scmVersion(SCM_REVISION);
+      QString appVersion(VERSION);
+      if (scmVersion.length())
+        appVersion += " (Git revision: " + scmVersion + ")";
+      QString libVersion(Library::version());
+      if (Library::scmRevision().length())
+        libVersion += " (Git revision: " + Library::scmRevision() + ")";
+
       lbl->setText(
           tr("<h3>%1</h3>"
             "<br/><br/>Application Version: %2"
@@ -60,7 +70,7 @@ namespace Avogadro {
             "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
             " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
             " PARTICULAR PURPOSE.<br/>"
-             ).arg(tr("Avogadro")).arg(VERSION).arg(Avogadro::Library::version()));
+             ).arg(tr("Avogadro")).arg(appVersion).arg(libVersion));
 
       cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       cmd->setDefault(true);
