@@ -218,22 +218,27 @@ namespace Avogadro {
 
   void SpectraDialog::setMolecule(Molecule *molecule)
   {
+    if (m_molecule == molecule) {
+      return;
+    }
+
     m_molecule = molecule;
     OBMol obmol = m_molecule->OBMol();
+
+    // Empty the tab widget when the molecule changes, only adding in the pages needed for the molecule.
+    ui.tab_widget->clear();
+    ui.tab_widget->addTab(ui.tab_appearance, tr("&Appearance"));
 
     // Get intensities
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (m_vibrations) {
-      //: Choice in a combo box to select infrared spectra
-      ui.combo_spectra->addItem(tr("Infrared"));
-    } else {
-      ui.tab_widget->removeTab(1);// remove ui.tab_infrared
+      ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
+      ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
     }
 
     // Remove/change this when other methods are added
-    if (!m_vibrations) {
-      QMessageBox::warning(this, tr("Spectra Visualization"), tr("No supported spectroscopic data present. Please file a bug report (with the molecule file attached) at http://avogadro.openmolecules.net if you believe this is an error."));
-      qWarning() << "SpectraDialog::setMolecule: No vibrations to plot!";
+    if (!m_vibrations) { // Actions if there are no spectra loaded
+      qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
       ui.cb_calculate->setEnabled(false);
@@ -241,7 +246,14 @@ namespace Avogadro {
       ui.cb_calculate->setChecked(false);
       ui.cb_labelPeaks->setChecked(false);
       return;
+    } else { // Actions for all spectra
+      ui.push_colorCalculated->setEnabled(true);
+      ui.cb_calculate->setEnabled(true);
+      ui.cb_labelPeaks->setEnabled(true);
+      ui.cb_calculate->setChecked(true);
     }
+    // Set the appearances tab to be opened by default
+    ui.tab_widget->setCurrentIndex(0);
 
     // OK, we have valid vibrations, so store them
     m_wavenumbers = m_vibrations->GetFrequencies();
@@ -273,6 +285,9 @@ namespace Avogadro {
       qWarning() << "SpectraDialog::setMolecule: No intensities > 0 in dataset.";
       return;
     }
+
+    // Clear out any old transmittance data
+    m_transmittances.clear();
 
     for (unsigned int i = 0; i < intensities.size(); i++) {
       double t = intensities.at(i);
