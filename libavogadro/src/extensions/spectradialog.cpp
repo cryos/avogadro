@@ -589,10 +589,13 @@ namespace Avogadro {
         break;
       case 1: // mm
         factor = 0.001;
+        break;
       case 2: // in
         factor = 0.0254;
+        break;
       case 4: // px
         factor = 1;
+        break;
     }
     w = factor * ui.spin_imageWidth->value();
     h = factor * ui.spin_imageHeight->value();
