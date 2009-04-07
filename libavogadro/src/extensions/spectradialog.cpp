@@ -325,6 +325,7 @@ namespace Avogadro {
     settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
     settings.setValue("spectra/image/units", ui.combo_imageUnits->currentIndex());
     settings.setValue("spectra/image/DPI", ui.spin_imageDPI->value());
+    settings.setValue("spectra/image/optimizeFontSize", ui.cb_imageFontAdjust->isChecked());
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < schemes->size(); ++i) {
       settings.setArrayIndex(i);
@@ -343,6 +344,7 @@ namespace Avogadro {
     ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 10).toInt());
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
     ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
+    ui.cb_imageFontAdjust->setChecked(settings.value("spectra/image/optimizeFontSize", true).toBool());
     int size = settings.beginReadArray("spectra/schemes");
     schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
@@ -600,7 +602,8 @@ namespace Avogadro {
     w = factor * ui.spin_imageWidth->value();
     h = factor * ui.spin_imageHeight->value();
     dpi = ui.spin_imageDPI->value();
-    if (!ui.plot->saveImage(filename, w, h, dpi)) {
+    bool opt = ui.cb_imageFontAdjust->isChecked();
+    if (!ui.plot->saveImage(filename, w, h, dpi, opt)) {
       qWarning() << "SpectraDialog::saveImage Error saving plot to " << filename;
       QMessageBox::warning(this, tr("Error"), tr("A problem occurred while writing file %1").arg(filename));
     } else {

@@ -510,8 +510,9 @@ namespace Avogadro {
          * @param width width of the image in meters
          * @param height height of the image in meters
          * @param dpi resolution of the image in dots per inch
+         * @param optimizeFontSize set this to true to automatically determine a appropriate font size
          */
-        bool saveImage(const QString &filename, double width, double height, double dpi );
+        bool saveImage(const QString &filename, double width, double height, double dpi, bool optimizeFontSize );
 
     protected:
 	/**

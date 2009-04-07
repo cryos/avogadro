@@ -452,7 +452,7 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="9" colspan="2">
+         <item row="1" column="10" colspan="2">
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -499,7 +499,7 @@
            </item>
           </widget>
          </item>
-         <item row="3" column="10">
+         <item row="3" column="11">
           <widget class="QPushButton" name="push_imageSave">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -512,7 +512,7 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="9">
+         <item row="3" column="10">
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -525,7 +525,7 @@
            </property>
           </spacer>
          </item>
-         <item row="2" column="10">
+         <item row="2" column="11">
           <spacer name="verticalSpacer_3">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -537,6 +537,19 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="1" column="9">
+          <widget class="QCheckBox" name="cb_imageFontAdjust">
+           <property name="toolTip">
+            <string>Use an optimized value for the font size instead of the scheme-specified value (screen to image point sizes don't translate well!)</string>
+           </property>
+           <property name="text">
+            <string>Auto-adjust F&amp;ont Size</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

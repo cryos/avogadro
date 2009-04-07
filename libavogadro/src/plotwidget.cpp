@@ -914,7 +914,7 @@ namespace Avogadro {
     p.end();
   }
 
-  bool PlotWidget::saveImage(const QString &filename, double width, double height, double dpi )
+  bool PlotWidget::saveImage(const QString &filename, double width, double height, double dpi, bool optimizeFontSize )
   {
     // dots per meter
     double dpm = 39.3700787 * dpi;
@@ -931,21 +931,26 @@ namespace Avogadro {
     int tickOffset		= 0;
     int bigTickSize		= pad * .01;
     int smallTickSize		= pad * .005;
-    qDebug() << "Width=" << width << " Height=" << height << " meters";
-    qDebug() << "Width=" << w << " Height=" << h << " pixels";
-    qDebug() << "DPI=" << dpi << " DPM=" << dpm;
-
 
     QImage im (w, h, QImage::Format_ARGB32);
     im.setDotsPerMeterX(dpm);
     im.setDotsPerMeterY(dpm);
-    qDebug() << "filling...";
     im.fill(0);
-    qDebug() << "filled.";
     QPainter p;
 
     p.begin( &im );
     p.setFont(d->font);
+    if (optimizeFontSize) {
+      int limHeight = imLeftPadding/2;
+      int fontHeight = limHeight;
+      QFont tmpFont = p.font();
+      do {
+        fontHeight -= 1;
+        tmpFont.setPixelSize(fontHeight);
+      } while (QFontMetrics(tmpFont).height() >= limHeight);
+      p.setFont(tmpFont);
+    }
+
     p.setRenderHint( QPainter::Antialiasing, d->useAntialias );
     p.fillRect( im.rect(), backgroundColor() );
     p.translate( imLeftPadding + 0.5, imTopPadding + 0.5 );
@@ -972,8 +977,8 @@ namespace Avogadro {
       //Grid lines are placed at locations of primary axes' major tickmarks
       //vertical grid lines
       foreach ( double xx, axis(BottomAxis)->majorTickMarks() ) {
-	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	p.drawLine( QPointF( px, 0.0 ), QPointF( px, double(imPixRect.height()) ) );
+        double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        p.drawLine( QPointF( px, 0.0 ), QPointF( px, double(imPixRect.height()) ) );
       }
       //horizontal grid lines
       foreach( double yy, axis(LeftAxis)->majorTickMarks() ) {
@@ -1136,7 +1141,7 @@ namespace Avogadro {
 
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
-      textLabel.setFont(d->font);
+      textLabel.setFont(p.font());
       textLabel.setAlignment(Qt::AlignCenter);
 
       QPalette palette = textLabel.palette();
@@ -1159,7 +1164,7 @@ namespace Avogadro {
 
             QLabel textLabel (a->tickLabel( xx ));
             textLabel.setGeometry(r);
-            textLabel.setFont(d->font);
+            textLabel.setFont(p.font());
             textLabel.setAlignment(Qt::AlignCenter);
 
             QPalette palette = textLabel.palette();
@@ -1187,7 +1192,7 @@ namespace Avogadro {
 
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
-      textLabel.setFont(d->font);
+      textLabel.setFont(p.font());
       textLabel.setAlignment(Qt::AlignCenter);
 
       QPalette palette = textLabel.palette();
@@ -1211,7 +1216,7 @@ namespace Avogadro {
 
             QLabel textLabel (a->tickLabel( yy ));
             textLabel.setGeometry(r);
-            textLabel.setFont(d->font);
+            textLabel.setFont(p.font());
             textLabel.setAlignment(Qt::AlignCenter);
 
             QPalette palette = textLabel.palette();
