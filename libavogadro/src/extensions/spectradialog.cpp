@@ -236,7 +236,9 @@ namespace Avogadro {
     }
     ui.edit_imageFilename->setText(defaultPath + '/' + defaultFile.baseName() + ".png");
 
-    // Empty the tab widget when the molecule changes, only adding in the pages needed for the molecule.
+    // Empty the tab widget and spectra combo box when the molecule changes, 
+    // only adding in the entries appropriate to the molecule as needed
+    ui.combo_spectra->clear();
     ui.tab_widget->clear();
     ui.tab_widget->addTab(ui.tab_appearance, tr("&Appearance"));
     ui.tab_widget->addTab(ui.tab_imageExport, tr("E&xport Image"));
