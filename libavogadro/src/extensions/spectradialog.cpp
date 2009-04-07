@@ -86,8 +86,10 @@ namespace Avogadro {
             this, SLOT(changeFont()));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
-    connect(ui.push_save, SIGNAL(clicked()),
+    connect(ui.push_imageSave, SIGNAL(clicked()),
             this, SLOT(saveImage()));
+    connect(ui.push_imageFilename, SIGNAL(clicked()),
+            this, SLOT(saveImageFileDialog()));
     connect(ui.cb_import, SIGNAL(toggled(bool)),
             this, SLOT(toggleImported(bool)));
     connect(ui.cb_calculate, SIGNAL(toggled(bool)),
@@ -96,6 +98,8 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.push_import, SIGNAL(clicked()),
             this, SLOT(importSpectra()));
+    connect(ui.push_export, SIGNAL(clicked()),
+            this, SLOT(exportSpectra()));
     connect(this, SIGNAL(scaleUpdated()),
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.spin_scale, SIGNAL(valueChanged(double)),
@@ -218,22 +222,37 @@ namespace Avogadro {
 
   void SpectraDialog::setMolecule(Molecule *molecule)
   {
+    if (m_molecule == molecule) {
+      return;
+    }
     m_molecule = molecule;
     OBMol obmol = m_molecule->OBMol();
+
+    // set the filename in the image export widget
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty()) {
+      defaultPath = QDir::homePath();
+    }
+    ui.edit_imageFilename->setText(defaultPath + '/' + defaultFile.baseName() + ".png");
+
+    // Empty the tab widget and spectra combo box when the molecule changes, 
+    // only adding in the entries appropriate to the molecule as needed
+    ui.combo_spectra->clear();
+    ui.tab_widget->clear();
+    ui.tab_widget->addTab(ui.tab_appearance, tr("&Appearance"));
+    ui.tab_widget->addTab(ui.tab_imageExport, tr("E&xport Image"));
 
     // Get intensities
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (m_vibrations) {
-      //: Choice in a combo box to select infrared spectra
-      ui.combo_spectra->addItem(tr("Infrared"));
-    } else {
-      ui.tab_widget->removeTab(1);// remove ui.tab_infrared
+      ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
+      ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
     }
 
     // Remove/change this when other methods are added
-    if (!m_vibrations) {
-      QMessageBox::warning(this, tr("Spectra Visualization"), tr("No supported spectroscopic data present. Please file a bug report (with the molecule file attached) at http://avogadro.openmolecules.net if you believe this is an error."));
-      qWarning() << "SpectraDialog::setMolecule: No vibrations to plot!";
+    if (!m_vibrations) { // Actions if there are no spectra loaded
+      qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
       ui.cb_calculate->setEnabled(false);
@@ -241,7 +260,14 @@ namespace Avogadro {
       ui.cb_calculate->setChecked(false);
       ui.cb_labelPeaks->setChecked(false);
       return;
+    } else { // Actions for all spectra
+      ui.push_colorCalculated->setEnabled(true);
+      ui.cb_calculate->setEnabled(true);
+      ui.cb_labelPeaks->setEnabled(true);
+      ui.cb_calculate->setChecked(true);
     }
+    // Set the appearances tab to be opened by default
+    ui.tab_widget->setCurrentIndex(0);
 
     // OK, we have valid vibrations, so store them
     m_wavenumbers = m_vibrations->GetFrequencies();
@@ -274,6 +300,9 @@ namespace Avogadro {
       return;
     }
 
+    // Clear out any old transmittance data
+    m_transmittances.clear();
+
     for (unsigned int i = 0; i < intensities.size(); i++) {
       double t = intensities.at(i);
       t = t / maxIntensity; 	// Normalize
@@ -290,8 +319,12 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     settings.setValue("spectra/scale", m_scale);
     settings.setValue("spectra/currentScheme", m_scheme);
-    settings.setValue("spectra/gaussianWidth",ui.spin_FWHM->value());
-    settings.setValue("spectra/labelPeaks",ui.cb_labelPeaks->isChecked());
+    settings.setValue("spectra/gaussianWidth", ui.spin_FWHM->value());
+    settings.setValue("spectra/labelPeaks", ui.cb_labelPeaks->isChecked());
+    settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
+    settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
+    settings.setValue("spectra/image/units", ui.combo_imageUnits->currentIndex());
+    settings.setValue("spectra/image/DPI", ui.spin_imageDPI->value());
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < schemes->size(); ++i) {
       settings.setArrayIndex(i);
@@ -306,6 +339,10 @@ namespace Avogadro {
     int scheme = settings.value("spectra/currentScheme", 0).toInt();
     ui.spin_FWHM->setValue(settings.value("spectra/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/labelPeaks",false).toBool());
+    ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
+    ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 13).toInt());
+    ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
+    ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 300).toInt());
     int size = settings.beginReadArray("spectra/schemes");
     schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
@@ -379,6 +416,36 @@ namespace Avogadro {
     emit scaleUpdated();
   }
 
+  void SpectraDialog::exportSpectra()
+  {
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty()) {
+      defaultPath = QDir::homePath();
+    }
+
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString filename 	= QFileDialog::getSaveFileName(this, tr("Export Calculated Spectrum"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
+
+    QFile file (filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+      qWarning() << "Cannot open file " << filename << " for writing!";
+      return;
+    }
+
+    QTextStream out(&file);
+    QString format = "%1\t%2\n";
+
+    out << "Frequencies\tIntensities\n";
+
+    for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
+      out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+    }
+
+    file.close();
+  }
+
+
   void SpectraDialog::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -406,7 +473,7 @@ namespace Avogadro {
 
     QTextStream in(&file);
 
-    if (!ext.compare("tsv") || !ext.compare("TSV")) {
+    if (ext == "tsv" || ext == "TSV") {
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -425,7 +492,7 @@ namespace Avogadro {
         }
       }
     }
-    else if (!ext.compare("csv") || !ext.compare("CSV")) {
+    else if (ext == "csv" || ext == "CSV") {
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -444,7 +511,7 @@ namespace Avogadro {
         }
       }
     }
-    else if (!ext.compare("jdx") || !ext.compare("JDX")) {
+    else if (ext == "jdx" || ext == "JDX") {
       while (!in.atEnd()) {
         QString line = in.readLine();
         if (line.trimmed().startsWith("#")) continue; 	//discard comments
@@ -489,18 +556,35 @@ namespace Avogadro {
     updatePlot();
   }
 
+  void SpectraDialog::saveImageFileDialog() {
+    QString filename   = QFileDialog::getSaveFileName(this, tr("Save Spectra Image"), ui.edit_imageFilename->text(), tr("Portable Network Graphics (*.png);;jpeg (*.jpg *.jpeg);;Tagged Image File Format (*.tiff);;Windows Bitmap (*.bmp);;Portable Pixmap (*.ppm);;X11 Bitmap (*.xbm);;X11 Pixmap (*.xpm);;All Files (*.*)"));
+    // get file extension
+    QStringList tmp 	= filename.split(".");
+    QString ext 	= tmp.at(tmp.size()-1);
+
+    if (ext != "png" && ext != "PNG" &&
+        ext != "jpg" && ext != "JPG" &&
+        ext != "bmp" && ext != "BMP" &&
+        ext != "ppm" && ext != "PPM" &&
+        ext != "xbm" && ext != "XBM" &&
+        ext != "xpm" && ext != "XPM" &&
+        ext != "tiff" && ext != "TIFF" ) {
+      qWarning() << "SpectraDialog::saveImageFileDialog Invalid file extension: " << ext;
+      QMessageBox::warning(this, tr("Invalid Filename"), tr("Unknown extension: %1").arg(ext));
+      return;
+    }
+    ui.edit_imageFilename->setText(filename);
+  }
+
   void SpectraDialog::saveImage()
   {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".png";
-    QString filename 	= QFileDialog::getSaveFileName(this, tr("Save Spectra"), defaultFileName, tr("png (*.png);;jpg (*.jpg);;bmp (*.bmp);;tiff (*.tiff);;All Files (*.*)"));
+    QString filename = ui.edit_imageFilename->text();
     QPixmap pix = QPixmap::grabWidget(ui.plot);
     if (!pix.save(filename)) {
       qWarning() << "SpectraDialog::saveImage Error saving plot to " << filename;
+      QMessageBox::warning(this, tr("Error"), tr("A problem occurred while writing file %1").arg(filename));
+    } else {
+      QMessageBox::information(this, tr("Success!"), tr("Image successfully written to %1").arg(filename));
     }
   }
 
