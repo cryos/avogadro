@@ -560,6 +560,9 @@ namespace Avogadro {
 
   void SpectraDialog::saveImageFileDialog() {
     QString filename   = QFileDialog::getSaveFileName(this, tr("Save Spectra Image"), ui.edit_imageFilename->text(), tr("Portable Network Graphics (*.png);;jpeg (*.jpg *.jpeg);;Tagged Image File Format (*.tiff);;Windows Bitmap (*.bmp);;Portable Pixmap (*.ppm);;X11 Bitmap (*.xbm);;X11 Pixmap (*.xpm);;All Files (*.*)"));
+    if (filename.isEmpty()) {
+      return;
+    }
     // get file extension
     QStringList tmp 	= filename.split(".");
     QString ext 	= tmp.at(tmp.size()-1);
