@@ -1200,28 +1200,31 @@ namespace Avogadro {
       p.restore();
     }
     if (a->isVisible()) {
+      p.save();
+      p.rotate( -90.0 );
       foreach( double yy, a->majorTickMarks() ) {
         double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
         if ( py > 0 && py < imPixRect.height() ) {
           if ( a->areTickLabelsShown() ) {
             p.setClipping(false);
-            QRect r( 0, 0, imLeftPadding/2, imPixRect.height());
+            QRect r( 0, 0, imPixRect.height(), imLeftPadding/2);
 
             QLabel textLabel (a->tickLabel( yy ));
             textLabel.setGeometry(r);
             textLabel.setFont(d->font);
-            textLabel.setAlignment(Qt::AlignVCenter);
+            textLabel.setAlignment(Qt::AlignCenter);
 
             QPalette palette = textLabel.palette();
             palette.setColor(QPalette::Foreground, foregroundColor());
             palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
             textLabel.setPalette(palette);
 
-            QPoint offset  (-imLeftPadding/2, int(py) - imPixRect.height()/2);
+            QPoint offset  (-( int(py) + imPixRect.height()/2 ), -imLeftPadding/2);
             textLabel.render(&p, offset);
           }
         }
       }
+      p.restore();
     }// LeftAxis
     p.end();
     return im.save(filename);
