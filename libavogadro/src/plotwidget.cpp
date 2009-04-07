@@ -922,15 +922,26 @@ namespace Avogadro {
     // pixel values from meter
     int w = static_cast<int>(width * dpm);
     int h = static_cast<int>(height * dpm);
-    int imTopPadding		= h * .01;
-    int imBottomPadding		= h * .08;
-    int imLeftPadding		= w * .08;
-    int imRightPadding		= w * .01;
+    // Find the largest dimension and use it to calculate padding, etc.
+    int pad = h>w ? h : w;
+    int imTopPadding		= pad * .01;
+    int imBottomPadding		= pad * .05;
+    int imLeftPadding		= pad * .05;
+    int imRightPadding		= pad * .01;
+    int tickOffset		= 0;
+    int bigTickSize		= pad * .01;
+    int smallTickSize		= pad * .005;
+    qDebug() << "Width=" << width << " Height=" << height << " meters";
+    qDebug() << "Width=" << w << " Height=" << h << " pixels";
+    qDebug() << "DPI=" << dpi << " DPM=" << dpm;
+
 
     QImage im (w, h, QImage::Format_ARGB32);
     im.setDotsPerMeterX(dpm);
     im.setDotsPerMeterY(dpm);
+    qDebug() << "filling...";
     im.fill(0);
+    qDebug() << "filled.";
     QPainter p;
 
     p.begin( &im );
@@ -948,17 +959,9 @@ namespace Avogadro {
     p.setClipRect( imPixRect );
     p.setClipping( true );
 
-    // modify resetPlotMask():
-    QImage imPlotMask ( imPixRect.size(), QImage::Format_ARGB32 );
-    QColor fillColor = Qt::black;
-    fillColor.setAlpha( 128 );
-    imPlotMask.fill( fillColor.rgb() );
-
-    foreach( PlotObject *po, d->objectList )
+    foreach( PlotObject *po, d->objectList ) {
       po->drawImage( &p, &imPixRect, &d->dataRect );
-
-    //DEBUG: Draw the plot mask
-    //    p.drawImage( 0, 0, d->plotMask );
+    }
 
     p.setClipping( false );
 
@@ -992,8 +995,8 @@ namespace Avogadro {
       foreach( double xx, a->majorTickMarks() ) {
 	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
 	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, double(imPixRect.height() - TICKOFFSET)), 
-                      QPointF( px, double(imPixRect.height() - BIGTICKSIZE - TICKOFFSET)) );
+	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
+                      QPointF( px, double(imPixRect.height() - bigTickSize - tickOffset)) );
         }
       }
 
@@ -1001,8 +1004,8 @@ namespace Avogadro {
       foreach ( double xx, a->minorTickMarks() ) {
 	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
 	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, double(imPixRect.height() - TICKOFFSET)), 
-		       QPointF( px, double(imPixRect.height() - SMALLTICKSIZE -TICKOFFSET)) );
+	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
+		       QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
 	}
       }
     }  //End of BottomAxis
@@ -1017,7 +1020,7 @@ namespace Avogadro {
       foreach( double yy, a->majorTickMarks() ) {
 	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
 	if ( py > 0 && py < imPixRect.height() ) {
-	  p.drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + BIGTICKSIZE), py ) );
+	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + bigTickSize), py ) );
 	}
       }
 
@@ -1025,7 +1028,7 @@ namespace Avogadro {
       foreach ( double yy, a->minorTickMarks() ) {
 	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
 	if ( py > 0 && py < imPixRect.height() ) {
-	  p.drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + SMALLTICKSIZE), py ) );
+	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + smallTickSize), py ) );
 	}
       }
     }  //End of LeftAxis
@@ -1052,11 +1055,11 @@ namespace Avogadro {
       foreach( double xx, a->majorTickMarks() ) {
 	double px = imPixRect.width() * (xx - x0) / dw;
 	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(BIGTICKSIZE + TICKOFFSET)) );
+	  p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(bigTickSize + tickOffset)) );
 
 	  //Draw ticklabel
 	  if ( a->areTickLabelsShown() ) {
-	    QRect r( int(px) - BIGTICKSIZE, (int)-1.5*BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
+	    QRect r( int(px) - bigTickSize, (int)-1.5*bigTickSize, 2*bigTickSize, bigTickSize );
 	    p.drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
 	  }
 	}
@@ -1066,15 +1069,15 @@ namespace Avogadro {
       foreach ( double xx, a->minorTickMarks() ) {
         double px = imPixRect.width() * (xx - x0) / dw;
         if ( px > 0 && px < imPixRect.width() ) {
-          p.drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(SMALLTICKSIZE + TICKOFFSET)) );
+          p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(smallTickSize + tickOffset)) );
         }
       }
 
       // Draw TopAxis Label
-      if ( ! a->label().isEmpty() ) {
+      /*      if ( ! a->label().isEmpty() ) {
         QRect r( 0, 0 - 3*YPADDING, imPixRect.width(), YPADDING );
         p.drawText( r, Qt::AlignCenter, a->label() );
-      }
+        }*/
     }  //End of TopAxis
 
     /*** RightAxis ***/
@@ -1087,12 +1090,12 @@ namespace Avogadro {
       foreach( double yy, a->majorTickMarks() ) {
         double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
         if ( py > 0 && py < imPixRect.height() ) {
-          p.drawLine( QPointF( double(imPixRect.width() - TICKOFFSET), py ), 
-                      QPointF( double(imPixRect.width() - TICKOFFSET - BIGTICKSIZE), py ) );
+          p.drawLine( QPointF( double(imPixRect.width() - tickOffset), py ), 
+                      QPointF( double(imPixRect.width() - tickOffset - bigTickSize), py ) );
 
           //Draw ticklabel
           if ( a->areTickLabelsShown() ) {
-	    QRect r( imPixRect.width() + SMALLTICKSIZE, int(py)-SMALLTICKSIZE, 2*BIGTICKSIZE, 2*SMALLTICKSIZE );
+	    QRect r( imPixRect.width() + smallTickSize, int(py)-smallTickSize, 2*bigTickSize, 2*smallTickSize );
             p.drawText( r, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
           }
         }
@@ -1103,12 +1106,12 @@ namespace Avogadro {
         double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
         if ( py > 0 && py < imPixRect.height() ) {
           p.drawLine( QPointF( double(imPixRect.width() - 0.0), py ), 
-                      QPointF( double(imPixRect.width() - 0.0 - SMALLTICKSIZE), py ) );
+                      QPointF( double(imPixRect.width() - 0.0 - smallTickSize), py ) );
         }
       }
 
       //Draw RightAxis Label.  We need to draw the text sideways.
-      if ( ! a->label().isEmpty() ) {
+      /*      if ( ! a->label().isEmpty() ) {
         //store current painter translation/rotation state
         p.save();
 
@@ -1120,7 +1123,7 @@ namespace Avogadro {
         p.drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
 
         p.restore();  //restore translation/rotation state
-      }
+        }*/
     }  //End of RightAxis
 
     // Since the following use QLabels to render their text, it is neccessary 
@@ -1216,10 +1219,6 @@ namespace Avogadro {
 
             QPoint offset  (-imLeftPadding/2, int(py) - imPixRect.height()/2);
             textLabel.render(&p, offset);
-            qDebug() << imPixRect;
-            qDebug() << r.size();
-            qDebug() << offset;
-            qDebug() << py;
           }
         }
       }

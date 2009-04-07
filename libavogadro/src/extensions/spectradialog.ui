@@ -54,7 +54,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab_appearance">
         <attribute name="title">
@@ -448,7 +448,7 @@
             <number>9999</number>
            </property>
            <property name="value">
-            <number>300</number>
+            <number>150</number>
            </property>
           </widget>
          </item>

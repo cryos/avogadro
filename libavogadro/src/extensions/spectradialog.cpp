@@ -340,9 +340,9 @@ namespace Avogadro {
     ui.spin_FWHM->setValue(settings.value("spectra/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/labelPeaks",false).toBool());
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
-    ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 13).toInt());
+    ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 10).toInt());
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
-    ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 300).toInt());
+    ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
     int size = settings.beginReadArray("spectra/schemes");
     schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
@@ -579,12 +579,20 @@ namespace Avogadro {
   void SpectraDialog::saveImage()
   {
     QString filename = ui.edit_imageFilename->text();
-    double w,h,factor;
+    double w,h,factor=1;
     int dpi;
 
-    // Replace with switch?
-    if (ui.combo_imageUnits->currentIndex() == 0) { // cm
-      factor = .01;
+    switch (ui.combo_imageUnits->currentIndex())
+      {
+      case 0: // cm
+        factor = 0.01;
+        break;
+      case 1: // mm
+        factor = 0.001;
+      case 2: // in
+        factor = 0.0254;
+      case 4: // px
+        factor = 1;
     }
     w = factor * ui.spin_imageWidth->value();
     h = factor * ui.spin_imageHeight->value();
