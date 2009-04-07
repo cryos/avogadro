@@ -3,22 +3,26 @@
 
   Copyright (C) 2006-2009 by Geoffrey R. Hutchison
   Copyright (C) 2006-2008 by Donald Ephraim Curtis
+  Copyright (C) 2008-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
 
-  Some code is based on Open Babel
-  For more information, see <http://openbabel.sourceforge.net/>
-
-  This program is free software; you can redistribute it and/or modify
+  Avogadro is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
-  the Free Software Foundation version 2 of the License.
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
+  Avogadro is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- ***********************************************************************/
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+ **********************************************************************/
 
 #include <avogadro/global.h>
 
@@ -62,8 +66,7 @@ void printHelp(const QString &appName);
 int main(int argc, char *argv[])
 {
 #ifdef Q_WS_X11
-  if(Library::threadedGL())
-  {
+  if(Library::threadedGL()) {
     std::cout << "Enabling Threads" << std::endl;
     XInitThreads();
   }
@@ -77,9 +80,10 @@ int main(int argc, char *argv[])
   Application app(argc, argv);
 
   // Output the untranslated application and library version - bug reports
-  qDebug() << "Avogadro version:\t" << VERSION << "\tGit" << SCM_REVISION
-           << "\nLibAvogadro version:\t" << Library::version()
-           << "\tGit" << Library::scmRevision();
+  QString versionInfo = "Avogadro version:\t" + QString(VERSION) + "\tGit:\t"
+                        + QString(SCM_REVISION) + "\nLibAvogadro version:\t"
+                        + Library::version() + "\tGit:\t" + Library::scmRevision();
+  qDebug() << versionInfo;
 
 #ifdef WIN32
   // Need to add an environment variable to the current process in order
@@ -115,18 +119,12 @@ int main(int argc, char *argv[])
     app.installTranslator(&qtTranslator);
   }
 
-  // Now load LibAvogadro and then Avogadro translations - only application now.
-//  QTranslator *libTranslator;
-//  if((libTranslator = Library::createTranslator())) {
-//    app.installTranslator(libTranslator);
-//  }
   // Load the Avogadro translations
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
   foreach (QString translationPath, translationPaths) {
     qDebug() << "path = " << translationPath;
-
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       break;
@@ -138,13 +136,11 @@ int main(int argc, char *argv[])
 
   // Check if we just need a version or help message
   QStringList arguments = app.arguments();
-  if(arguments.contains("-v") || arguments.contains("--version"))
-  {
+  if(arguments.contains("-v") || arguments.contains("--version")) {
     printVersion(arguments[0]);
     return 0;
   }
-  else if(arguments.contains("-h") || arguments.contains("--help"))
-  {
+  else if(arguments.contains("-h") || arguments.contains("--help")) {
     printHelp(arguments[0]);
     return 0;
   }
