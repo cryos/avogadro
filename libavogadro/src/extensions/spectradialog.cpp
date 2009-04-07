@@ -579,8 +579,17 @@ namespace Avogadro {
   void SpectraDialog::saveImage()
   {
     QString filename = ui.edit_imageFilename->text();
-    QPixmap pix = QPixmap::grabWidget(ui.plot);
-    if (!pix.save(filename)) {
+    double w,h,factor;
+    int dpi;
+
+    // Replace with switch?
+    if (ui.combo_imageUnits->currentIndex() == 0) { // cm
+      factor = .01;
+    }
+    w = factor * ui.spin_imageWidth->value();
+    h = factor * ui.spin_imageHeight->value();
+    dpi = ui.spin_imageDPI->value();
+    if (!ui.plot->saveImage(filename, w, h, dpi)) {
       qWarning() << "SpectraDialog::saveImage Error saving plot to " << filename;
       QMessageBox::warning(this, tr("Error"), tr("A problem occurred while writing file %1").arg(filename));
     } else {

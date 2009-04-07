@@ -38,6 +38,8 @@ class QBrush;
 class QPainter;
 class QPen;
 class QPointF;
+class QRect;
+class QRectF;
 
 namespace Avogadro {
 
@@ -279,6 +281,15 @@ class PlotPoint;
      * for the PlotWidget::mapToWidget() function)
      */
     void draw( QPainter *p, PlotWidget *pw );
+
+    /**
+     * Draw this PlotObject on the given QPainter
+     * @param p The QPainter to draw on
+     * @param pixRect the QRect that defines the actual plot area. Needed 
+     * conversion between data and image coordinates.
+     * @param dataRect QRect containing the plot limits in data units
+     */
+    void drawImage( QPainter *painter, QRect *pixRect, QRectF *dataRect);
 
   private:
     class Private;

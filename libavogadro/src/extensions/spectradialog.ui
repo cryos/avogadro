@@ -348,7 +348,7 @@
          <item row="0" column="1" colspan="7">
           <widget class="QLineEdit" name="edit_imageFilename">
            <property name="readOnly">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -381,7 +381,7 @@
          <item row="1" column="1">
           <widget class="QSpinBox" name="spin_imageWidth">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="maximum">
             <number>999999</number>
@@ -407,7 +407,7 @@
          <item row="1" column="3">
           <widget class="QSpinBox" name="spin_imageHeight">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="maximum">
             <number>999999</number>
@@ -427,7 +427,7 @@
          <item row="1" column="6" colspan="3">
           <widget class="QSpinBox" name="spin_imageDPI">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="maximum">
             <number>9999</number>
@@ -460,7 +460,7 @@
          <item row="1" column="4">
           <widget class="QComboBox" name="combo_imageUnits">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <item>
             <property name="text">
