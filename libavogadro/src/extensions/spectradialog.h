@@ -73,6 +73,7 @@ namespace Avogadro {
     void removeScheme();
     void renameScheme();
     void exportSpectra();
+    void saveImageFileDialog();
 
   signals:
     void scaleUpdated();
