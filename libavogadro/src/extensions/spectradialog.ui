@@ -54,7 +54,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_appearance">
         <attribute name="title">
@@ -327,14 +327,17 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Schemes:</string>
+            <string>&amp;Schemes:</string>
+           </property>
+           <property name="buddy">
+            <cstring>list_schemes</cstring>
            </property>
           </widget>
          </item>
          <item row="3" column="6">
           <widget class="QPushButton" name="push_export">
            <property name="text">
-            <string>Export...</string>
+            <string>&amp;Export...</string>
            </property>
           </widget>
          </item>
@@ -361,7 +364,10 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>DPI:</string>
+            <string>&amp;DPI:</string>
+           </property>
+           <property name="buddy">
+            <cstring>spin_imageDPI</cstring>
            </property>
           </widget>
          </item>
@@ -374,7 +380,10 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Width:</string>
+            <string>&amp;Width:</string>
+           </property>
+           <property name="buddy">
+            <cstring>spin_imageWidth</cstring>
            </property>
           </widget>
          </item>
@@ -400,7 +409,10 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Height</string>
+            <string>&amp;Height</string>
+           </property>
+           <property name="buddy">
+            <cstring>spin_imageHeight</cstring>
            </property>
           </widget>
          </item>
@@ -420,7 +432,10 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>Filename:</string>
+            <string>&amp;Filename:</string>
+           </property>
+           <property name="buddy">
+            <cstring>edit_imageFilename</cstring>
            </property>
           </widget>
          </item>
@@ -753,7 +768,35 @@ Scroll wheel: Zoom to cursor</string>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>combo_spectra</tabstop>
+  <tabstop>push_customize</tabstop>
+  <tabstop>spin_scale</tabstop>
+  <tabstop>tab_widget</tabstop>
+  <tabstop>list_schemes</tabstop>
+  <tabstop>push_newScheme</tabstop>
+  <tabstop>push_removeScheme</tabstop>
+  <tabstop>push_renameScheme</tabstop>
+  <tabstop>push_colorBackground</tabstop>
+  <tabstop>push_colorForeground</tabstop>
+  <tabstop>push_colorCalculated</tabstop>
+  <tabstop>cb_calculate</tabstop>
+  <tabstop>push_export</tabstop>
+  <tabstop>push_colorImported</tabstop>
+  <tabstop>cb_import</tabstop>
+  <tabstop>push_import</tabstop>
+  <tabstop>push_font</tabstop>
+  <tabstop>lineEdit</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>cb_labelPeaks</tabstop>
+  <tabstop>spin_FWHM</tabstop>
+  <tabstop>edit_imageFilename</tabstop>
+  <tabstop>push_imageFilename</tabstop>
+  <tabstop>spin_imageWidth</tabstop>
+  <tabstop>spin_imageHeight</tabstop>
+  <tabstop>combo_imageUnits</tabstop>
+  <tabstop>spin_imageDPI</tabstop>
+  <tabstop>push_imageSave</tabstop>
+  <tabstop>combo_yaxis</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -764,8 +807,8 @@ Scroll wheel: Zoom to cursor</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>761</x>
-     <y>543</y>
+     <x>827</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
