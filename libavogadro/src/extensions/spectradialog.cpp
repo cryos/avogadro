@@ -389,6 +389,17 @@ namespace Avogadro {
       new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
       schemes->append(publication);
 
+      // handdrawn
+      QHash<QString, QVariant> handdrawn;
+      handdrawn["name"] = tr("Handdrawn");
+      handdrawn["backgroundColor"] = Qt::white;
+      handdrawn["foregroundColor"] = Qt::gray;
+      handdrawn["calculatedColor"] = Qt::darkGray;
+      handdrawn["importedColor"] = Qt::lightGray;
+      handdrawn["font"] = QFont("Domestic Manners", 16);
+      new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
+      schemes->append(handdrawn);
+
     }
     updateScheme(scheme);
   }
