@@ -86,8 +86,6 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
-    qDebug() << "size intensities   " << intensities.size();
-    qDebug() << "size frequencies   " << frequencies.size();
 
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
@@ -170,14 +168,14 @@ namespace Avogadro {
     
     QFile file (filename);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-      qDebug() << "Cannot open file " << filename << " for writing!";
+      qWarning() << "Cannot open file " << filename << " for writing!";
       return;
     }
 
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
-      qDebug("No vibration data, but export button is enabled? Something is broken.");
+      qWarning("No vibration data, but export button is enabled? Something is broken.");
       return;
     }
 
