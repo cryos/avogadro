@@ -45,7 +45,7 @@ using namespace std;
 
 namespace Avogadro {
 
-  SpectraDialog::SpectraDialog( QWidget *parent, Qt::WindowFlags f ) : 
+  SpectraDialog::SpectraDialog( QWidget *parent, Qt::WindowFlags f ) :
       QDialog( parent, f )
   {
     ui.setupUi(this);
@@ -217,7 +217,7 @@ namespace Avogadro {
     if (ok) {
       (*schemes)[m_scheme]["font"] = font;
       schemeChanged();
-    } 
+    }
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -236,7 +236,7 @@ namespace Avogadro {
     }
     ui.edit_imageFilename->setText(defaultPath + '/' + defaultFile.baseName() + ".png");
 
-    // Empty the tab widget and spectra combo box when the molecule changes, 
+    // Empty the tab widget and spectra combo box when the molecule changes,
     // only adding in the entries appropriate to the molecule as needed
     ui.combo_spectra->clear();
     ui.tab_widget->clear();
@@ -479,11 +479,11 @@ namespace Avogadro {
       qWarning() << "Error reading file " << filename;
       return;
     }
-    
+
     // get file extension
     QStringList tmp 	= filename.split(".");
     QString ext 	= tmp.at(tmp.size()-1);
-    
+
     // Clear out any old data
     m_imported_wavenumbers.clear();
     m_imported_transmittances.clear();
@@ -550,7 +550,7 @@ namespace Avogadro {
     else {
       QMessageBox::warning(this, tr("Spectra Import"), tr("Unknown extension: %1").arg(ext));
       return;
-    }  
+    }
 
     // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
     bool convert = true;
@@ -690,7 +690,7 @@ namespace Avogadro {
     plotObject->clearPoints();
     if (ui.spin_FWHM->value() == 0.0) {
       getCalculatedSinglets(plotObject);
-    } 
+    }
     else {
       getCalculatedGaussians(plotObject);
     }
@@ -714,7 +714,7 @@ namespace Avogadro {
         plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
       }
       else {
-       	plotObject->addPoint ( wavenumber, transmittance );
+        plotObject->addPoint ( wavenumber, transmittance );
       }
       plotObject->addPoint ( wavenumber, 100 );
     }
@@ -727,7 +727,7 @@ namespace Avogadro {
     // convert FWHM to sigma squared
     double FWHM = ui.spin_FWHM->value();
     double s2	= pow( (FWHM / ( 2 * sqrt( 2 * log(2) ) ) ), 2);
-    
+
     // determine range
     // - find maximum and minimum
     double min = 0.0 + 2*FWHM;
@@ -738,7 +738,7 @@ namespace Avogadro {
       if (cur < min) min = cur;
     }
     min -= 2*FWHM;
-    max += 2*FWHM;      
+    max += 2*FWHM;
     // - get resolution (TODO)
     double res = 1.0;
     // create points
@@ -764,10 +764,10 @@ namespace Avogadro {
       double cur = plotObject->points().at(i)->y();
       // cur - min 		: Shift lowest point of plot to be at zero
       // 100 / (max - min)	: Conversion factor for current spread -> percent
-      // * 0.97 + 3		: makes plot stay away from 0 transmittance 
+      // * 0.97 + 3		: makes plot stay away from 0 transmittance
       //			: (easier to see multiple peaks on strong signals)
       plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
-    }    
+    }
   }
 
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)

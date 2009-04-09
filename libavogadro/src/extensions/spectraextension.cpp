@@ -91,7 +91,7 @@ namespace Avogadro {
     if (m_molecule == NULL) {
       return NULL;
     }
-    
+
     if (!m_dialog) {
       m_dialog = new SpectraDialog(qobject_cast<QWidget*>(parent()));
       m_dialog->setMolecule(m_molecule);
