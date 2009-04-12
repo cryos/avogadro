@@ -76,10 +76,11 @@ avogadro_plugin(spectraextension
 
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp
-  gaussianinputdialog.cpp qcheminputdialog.cpp mopacinputdialog.cpp)
+  gaussianinputdialog.cpp qcheminputdialog.cpp 
+  nwcheminputdialog.cpp mopacinputdialog.cpp)
 avogadro_plugin(gaussianextension
   "${gaussianextension_SRCS}"
-  "gaussianinputdialog.ui;qcheminputdialog.ui;mopacinputdialog.ui")
+  "gaussianinputdialog.ui;qcheminputdialog.ui;nwcheminputdialog.ui;mopacinputdialog.ui")
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
