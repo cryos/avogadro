@@ -245,22 +245,19 @@ namespace Avogadro
     QTextStream mol(&buffer);
 
     // Get the title and start the job
-    mol << "title \"" << m_title << "\"\n\n";
+    mol << "start avogadroGeneratedInput\n\n";
 
     // Now for the charge and multiplicity
     mol << "charge " << m_charge << "\n";
 
-    // Now for the charge and multiplicity
-    mol << "mult " << m_multiplicity << "\n\n";
-
     // Geometry specification
-    mol << "geometry\n";
+    mol << "geometry units angstroms print";
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
     if (m_molecule && m_coordType == CARTESIAN)
     {
       QTextStream mol(&buffer);
-      mol << " xyz\n";
+      mol << " xyz autosym\n";
       QList<Atom *> atoms = m_molecule->atoms();
       foreach (Atom *atom, atoms) {
         mol << qSetFieldWidth(4) << right
@@ -413,7 +410,8 @@ namespace Avogadro
           break;
       }
 
-    // Task directive
+    // Task directive and title
+    mol << "title \"" << m_title << "\"\n";
     mol << "task ";
 
     // Set theory level:
