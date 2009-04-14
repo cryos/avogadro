@@ -379,7 +379,7 @@ namespace Avogadro {
       light["calculatedColor"] = Qt::red;
       light["importedColor"] = Qt::gray;
       light["font"] = QFont();
-      new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
+      new QListWidgetItem(light["name"].toString(), ui.list_schemes);
       schemes->append(light);
 
       // publication
@@ -390,7 +390,7 @@ namespace Avogadro {
       publication["calculatedColor"] = Qt::black;
       publication["importedColor"] = Qt::gray;
       publication["font"] = QFont("Century Schoolbook L", 13);
-      new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
+      new QListWidgetItem(publication["name"].toString(), ui.list_schemes);
       schemes->append(publication);
 
       // handdrawn
@@ -401,7 +401,7 @@ namespace Avogadro {
       handdrawn["calculatedColor"] = Qt::darkGray;
       handdrawn["importedColor"] = Qt::lightGray;
       handdrawn["font"] = QFont("Domestic Manners", 16);
-      new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
+      new QListWidgetItem(handdrawn["name"].toString(), ui.list_schemes);
       schemes->append(handdrawn);
 
     }
