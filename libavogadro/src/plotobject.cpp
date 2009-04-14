@@ -400,4 +400,153 @@ namespace Avogadro {
 
   }
 
+  void PlotObject::drawImage( QPainter *painter, QRect *pixRect, QRectF *dataRect) {
+    //Order of drawing determines z-distance: Bars in the back, then lines, 
+    //then points, then labels.
+
+    if ( d->type & Bars ) {
+      painter->setPen( barPen() );
+      painter->setBrush( barBrush() );
+
+      for ( int i=0; i<d->pList.size(); ++i ) {
+	double w = 0;
+	if ( d->pList[i]->barWidth() == 0.0 ) {
+	  if ( i<d->pList.size()-1 ) 
+	    w = d->pList[i+1]->x() - d->pList[i]->x();
+	  //For the last bin, we'll just keep the previous width
+
+	} else {
+	  w = d->pList[i]->barWidth();
+	}
+
+	QPointF pp = d->pList[i]->position();
+	QPointF p1( pp.x() - 0.5*w, 0.0 );
+	QPointF p2( pp.x() + 0.5*w, pp.y() );
+        
+        QPointF sp1 (pixRect->left() + pixRect->width() * ( p1.x() - dataRect->x() ) / dataRect->width(),
+                     pixRect->top() + pixRect->height() * ( dataRect->y() + dataRect->height() - p1.y() ) / dataRect->height());
+        QPointF sp2 (pixRect->left() + pixRect->width() * ( p2.x() - dataRect->x() ) / dataRect->width(),
+                     pixRect->top() + pixRect->height() * ( dataRect->y() + dataRect->height() - p2.y() ) / dataRect->height());
+
+	QRectF barRect = QRectF( sp1.x(), sp1.y(), sp2.x()-sp1.x(), sp2.y()-sp1.y() ).normalized();
+	painter->drawRect( barRect );
+      }
+    }
+    
+    //Draw lines:
+    if ( d->type & Lines ) {
+      painter->setPen( linePen() );
+
+      QPointF Previous = QPointF();  //Initialize to null
+
+      foreach ( PlotPoint *pp, d->pList ) {
+	//q is the position of the point in screen pixel coordinates
+        QPointF ppp = pp->position();
+        QPointF q (pixRect->left() + pixRect->width() * ( ppp.x() - dataRect->x() ) / dataRect->width(),
+                   pixRect->top() + pixRect->height() * ( dataRect->y() + dataRect->height() - ppp.y() ) / dataRect->height());
+
+	if ( ! Previous.isNull() ) {
+	  painter->drawLine( Previous, q );
+        }
+            
+	Previous = q;
+      }
+    }
+
+    //Draw points:
+    if ( d->type & Points ) {
+
+      foreach( PlotPoint *pp, d->pList ) {
+	//q is the position of the point in screen pixel coordinates
+        QPointF q (pixRect->left() + pixRect->width() * ( pp->position().x() - dataRect->x() ) / dataRect->width(),
+                   pixRect->top() + pixRect->height() * ( dataRect->y() + dataRect->height() - pp->position().y() ) / dataRect->height());
+	if ( pixRect->contains( q.toPoint(), false ) ) {
+	  double x1 = q.x() - size();
+	  double y1 = q.y() - size();
+	  QRectF qr = QRectF( x1, y1, 2*size(), 2*size() );
+    
+	  painter->setPen( pen() );
+	  painter->setBrush( brush() );
+    
+	  switch ( pointStyle() ) {
+	  case Circle:
+	    painter->drawEllipse( qr );
+	    break;
+    
+	  case Letter:
+	    painter->drawText( qr, Qt::AlignCenter, pp->label().left(1) );
+	    break;
+    
+	  case Triangle:
+	    {
+	      QPolygonF tri;
+	      tri << QPointF( q.x() - size(), q.y() + size() ) 
+		  << QPointF( q.x(), q.y() - size() ) 
+		  << QPointF( q.x() + size(), q.y() + size() );
+	      painter->drawPolygon( tri );
+	      break;
+	    }
+    
+	  case Square:
+	    painter->drawRect( qr );
+	    break;
+    
+	  case Pentagon:
+	    {
+	      QPolygonF pent;
+	      pent << QPointF( q.x(), q.y() - size() ) 
+		   << QPointF( q.x() + size(), q.y() - 0.309*size() )
+		   << QPointF( q.x() + 0.588*size(), q.y() + size() )
+		   << QPointF( q.x() - 0.588*size(), q.y() + size() )
+		   << QPointF( q.x() - size(), q.y() - 0.309*size() );
+	      painter->drawPolygon( pent );
+	      break;
+	    }
+    
+	  case Hexagon:
+	    {
+	      QPolygonF hex;
+	      hex << QPointF( q.x(), q.y() + size() ) 
+		  << QPointF( q.x() + size(), q.y() + 0.5*size() )
+		  << QPointF( q.x() + size(), q.y() - 0.5*size() )
+		  << QPointF( q.x(), q.y() - size() )
+		  << QPointF( q.x() - size(), q.y() + 0.5*size() )
+		  << QPointF( q.x() - size(), q.y() - 0.5*size() );
+	      painter->drawPolygon( hex );
+	      break;
+	    }
+    
+	  case Asterisk:
+	    painter->drawLine( q, QPointF( q.x(), q.y() + size() ) );
+	    painter->drawLine( q, QPointF( q.x() + size(), q.y() + 0.5*size() ) );
+	    painter->drawLine( q, QPointF( q.x() + size(), q.y() - 0.5*size() ) );
+	    painter->drawLine( q, QPointF( q.x(), q.y() - size() ) );
+	    painter->drawLine( q, QPointF( q.x() - size(), q.y() + 0.5*size() ) );
+	    painter->drawLine( q, QPointF( q.x() - size(), q.y() - 0.5*size() ) );
+	    break;
+    
+	  case Star:
+	    {
+	      QPolygonF star;
+	      star << QPointF( q.x(), q.y() - size() ) 
+		   << QPointF( q.x() + 0.2245*size(), q.y() - 0.309*size() )
+		   << QPointF( q.x() + size(), q.y() - 0.309*size() )
+		   << QPointF( q.x() + 0.363*size(), q.y() + 0.118*size() )
+		   << QPointF( q.x() + 0.588*size(), q.y() + size() )
+		   << QPointF( q.x(), q.y() + 0.382*size() )
+		   << QPointF( q.x() - 0.588*size(), q.y() + size() )
+		   << QPointF( q.x() - 0.363*size(), q.y() + 0.118*size() )
+		   << QPointF( q.x() - size(), q.y() - 0.309*size() )
+		   << QPointF( q.x() - 0.2245*size(), q.y() - 0.309*size() );
+	      painter->drawPolygon( star );
+	      break;
+	    }
+    
+	  default:
+	    break;
+	  }
+	}
+      }
+    }
+  }
 }

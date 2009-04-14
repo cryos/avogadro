@@ -914,6 +914,328 @@ namespace Avogadro {
     p.end();
   }
 
+  bool PlotWidget::saveImage(const QString &filename, double width, double height, double dpi, bool optimizeFontSize )
+  {
+    // dots per meter
+    double dpm = 39.3700787 * dpi;
+
+    // pixel values from meter
+    int w = static_cast<int>(width * dpm);
+    int h = static_cast<int>(height * dpm);
+    // Find the largest dimension and use it to calculate padding, etc.
+    int pad = h>w ? h : w;
+    int imTopPadding		= pad * .01;
+    int imBottomPadding		= pad * .05;
+    int imLeftPadding		= pad * .05;
+    int imRightPadding		= pad * .01;
+    int tickOffset		= 0;
+    int bigTickSize		= pad * .01;
+    int smallTickSize		= pad * .005;
+
+    QImage im (w, h, QImage::Format_ARGB32);
+    im.setDotsPerMeterX(dpm);
+    im.setDotsPerMeterY(dpm);
+    im.fill(0);
+    QPainter p;
+
+    p.begin( &im );
+    p.setFont(d->font);
+    if (optimizeFontSize) {
+      int limHeight = imLeftPadding/2;
+      int fontHeight = limHeight;
+      QFont tmpFont = p.font();
+      do {
+        fontHeight -= 1;
+        tmpFont.setPixelSize(fontHeight);
+      } while (QFontMetrics(tmpFont).height() >= limHeight);
+      p.setFont(tmpFont);
+    }
+
+    p.setRenderHint( QPainter::Antialiasing, d->useAntialias );
+    p.fillRect( im.rect(), backgroundColor() );
+    p.translate( imLeftPadding + 0.5, imTopPadding + 0.5 );
+
+    // modify setPixRect():
+    int newWidth = im.rect().width() - imLeftPadding - imRightPadding;
+    int newHeight = im.rect().height() - imTopPadding - imBottomPadding;
+    // PixRect starts at (0,0) because we will translate by leftPadding, topPadding
+    QRect imPixRect = QRect( 0, 0, newWidth, newHeight );
+
+    p.setClipRect( imPixRect );
+    p.setClipping( true );
+
+    foreach( PlotObject *po, d->objectList ) {
+      po->drawImage( &p, &imPixRect, &d->dataRect );
+    }
+
+    p.setClipping( false );
+
+    // modified drawAxes( &p ):
+    if ( d->showGrid ) {
+      p.setPen( gridColor() );
+
+      //Grid lines are placed at locations of primary axes' major tickmarks
+      //vertical grid lines
+      foreach ( double xx, axis(BottomAxis)->majorTickMarks() ) {
+        double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        p.drawLine( QPointF( px, 0.0 ), QPointF( px, double(imPixRect.height()) ) );
+      }
+      //horizontal grid lines
+      foreach( double yy, axis(LeftAxis)->majorTickMarks() ) {
+	double py = imPixRect.height() * (yy - d->dataRect.y()) / d->dataRect.height();
+	p.drawLine( QPointF( 0.0, py ), QPointF( double(imPixRect.width()), py ) );
+      }
+    }
+
+    p.setPen( foregroundColor() );
+    p.setBrush( Qt::NoBrush );
+
+    /*** BottomAxis ***/
+    PlotAxis *a = axis(BottomAxis);
+    if (a->isVisible()) {
+      //Draw axis line
+      p.drawLine( 0, imPixRect.height(), imPixRect.width(), imPixRect.height() );
+
+      // Draw major tickmarks
+      foreach( double xx, a->majorTickMarks() ) {
+	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+	if ( px > 0 && px < imPixRect.width() ) {
+	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
+                      QPointF( px, double(imPixRect.height() - bigTickSize - tickOffset)) );
+        }
+      }
+
+      // Draw minor tickmarks
+      foreach ( double xx, a->minorTickMarks() ) {
+	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+	if ( px > 0 && px < imPixRect.width() ) {
+	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
+		       QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
+	}
+      }
+    }  //End of BottomAxis
+
+    /*** LeftAxis ***/
+    a = axis(LeftAxis);
+    if (a->isVisible()) {
+      //Draw axis line
+      p.drawLine( 0, 0, 0, imPixRect.height() );
+
+      // Draw major tickmarks
+      foreach( double yy, a->majorTickMarks() ) {
+	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+	if ( py > 0 && py < imPixRect.height() ) {
+	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + bigTickSize), py ) );
+	}
+      }
+
+      // Draw minor tickmarks
+      foreach ( double yy, a->minorTickMarks() ) {
+	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+	if ( py > 0 && py < imPixRect.height() ) {
+	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + smallTickSize), py ) );
+	}
+      }
+    }  //End of LeftAxis
+
+    //Prepare for top and right axes; we may need the secondary data rect
+    double x0 = d->dataRect.x();
+    double y0 = d->dataRect.y();
+    double dw = d->dataRect.width();
+    double dh = d->dataRect.height();
+    if ( secondaryDataRect().isValid() ) {
+      x0 = secondaryDataRect().x();
+      y0 = secondaryDataRect().y();
+      dw = secondaryDataRect().width();
+      dh = secondaryDataRect().height();
+    }
+
+    /*** TopAxis ***/
+    a = axis(TopAxis);
+    if (a->isVisible()) {
+      //Draw axis line
+      p.drawLine( 0, 0, imPixRect.width(), 0 );
+
+      // Draw major tickmarks
+      foreach( double xx, a->majorTickMarks() ) {
+	double px = imPixRect.width() * (xx - x0) / dw;
+	if ( px > 0 && px < imPixRect.width() ) {
+	  p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(bigTickSize + tickOffset)) );
+
+	  //Draw ticklabel
+	  if ( a->areTickLabelsShown() ) {
+	    QRect r( int(px) - bigTickSize, (int)-1.5*bigTickSize, 2*bigTickSize, bigTickSize );
+	    p.drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
+	  }
+	}
+      }
+
+      // Draw minor tickmarks
+      foreach ( double xx, a->minorTickMarks() ) {
+        double px = imPixRect.width() * (xx - x0) / dw;
+        if ( px > 0 && px < imPixRect.width() ) {
+          p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(smallTickSize + tickOffset)) );
+        }
+      }
+
+      // Draw TopAxis Label
+      /*      if ( ! a->label().isEmpty() ) {
+        QRect r( 0, 0 - 3*YPADDING, imPixRect.width(), YPADDING );
+        p.drawText( r, Qt::AlignCenter, a->label() );
+        }*/
+    }  //End of TopAxis
+
+    /*** RightAxis ***/
+    a = axis(RightAxis);
+    if (a->isVisible()) {
+      //Draw axis line
+      p.drawLine( imPixRect.width(), 0, imPixRect.width(), imPixRect.height() );
+
+      // Draw major tickmarks
+      foreach( double yy, a->majorTickMarks() ) {
+        double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
+        if ( py > 0 && py < imPixRect.height() ) {
+          p.drawLine( QPointF( double(imPixRect.width() - tickOffset), py ), 
+                      QPointF( double(imPixRect.width() - tickOffset - bigTickSize), py ) );
+
+          //Draw ticklabel
+          if ( a->areTickLabelsShown() ) {
+	    QRect r( imPixRect.width() + smallTickSize, int(py)-smallTickSize, 2*bigTickSize, 2*smallTickSize );
+            p.drawText( r, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
+          }
+        }
+      }
+
+      // Draw minor tickmarks
+      foreach ( double yy, a->minorTickMarks() ) {
+        double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
+        if ( py > 0 && py < imPixRect.height() ) {
+          p.drawLine( QPointF( double(imPixRect.width() - 0.0), py ), 
+                      QPointF( double(imPixRect.width() - 0.0 - smallTickSize), py ) );
+        }
+      }
+
+      //Draw RightAxis Label.  We need to draw the text sideways.
+      /*      if ( ! a->label().isEmpty() ) {
+        //store current painter translation/rotation state
+        p.save();
+
+	//translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+        p.translate( imPixRect.width() + 2*XPADDING, imPixRect.height() );
+        p.rotate( -90.0 );
+
+        QRect r( 0, 0, imPixRect.height(), XPADDING );
+        p.drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
+
+        p.restore();  //restore translation/rotation state
+        }*/
+    }  //End of RightAxis
+
+    // Since the following use QLabels to render their text, it is neccessary 
+    // to paint them after drawing to keep the painter from becoming invalid.
+
+    // Draw BottomAxis Label
+    a = axis(BottomAxis);
+    if (a->isVisible() && !a->label().isEmpty() ) {
+      QRect r( 0, 0, imPixRect.width(), imBottomPadding/2 );
+
+      QLabel textLabel (a->label(), this);
+      textLabel.setGeometry(r);
+      textLabel.setFont(p.font());
+      textLabel.setAlignment(Qt::AlignCenter);
+
+      QPalette palette = textLabel.palette();
+      palette.setColor(QPalette::Foreground, foregroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+      textLabel.setPalette(palette);
+
+      QPoint offset (0, imPixRect.height() + imBottomPadding/2);
+      textLabel.render(&p, offset);
+    }
+    // Tick Labels
+    if (a->isVisible()) {
+      foreach( double xx, a->majorTickMarks() ) {
+        double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        p.save();
+        if ( px > 0 && px < imPixRect.width() ) {
+          if ( a->areTickLabelsShown() ) {
+            p.setClipping(false);
+            QRect r( 0, 0, imPixRect.width(), imBottomPadding/2 );
+
+            QLabel textLabel (a->tickLabel( xx ));
+            textLabel.setGeometry(r);
+            textLabel.setFont(p.font());
+            textLabel.setAlignment(Qt::AlignCenter);
+
+            QPalette palette = textLabel.palette();
+            palette.setColor(QPalette::Foreground, foregroundColor());
+            palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+            textLabel.setPalette(palette);
+
+            QPoint offset  (int(px) - imPixRect.width()/2, imPixRect.height());
+            textLabel.render(&p, offset);
+          }
+        }
+        p.restore();
+      }
+    } // BottomAxis Label
+
+    //Draw LeftAxis Label.  We need to draw the text sideways.
+    a = axis(LeftAxis);
+    if (a->isVisible() && !a->label().isEmpty() ) {
+      p.save();
+      //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+      p.translate( -imLeftPadding, imPixRect.height() );
+      p.rotate( -90.0 );
+
+      QRect r( 0, 0, imPixRect.height(), imLeftPadding/2 );
+
+      QLabel textLabel (a->label(), this);
+      textLabel.setGeometry(r);
+      textLabel.setFont(p.font());
+      textLabel.setAlignment(Qt::AlignCenter);
+
+      QPalette palette = textLabel.palette();
+      palette.setColor(QPalette::Foreground, foregroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+      textLabel.setPalette(palette);
+
+      QPoint offset (0, 0);
+      textLabel.render(&p, offset);
+      p.restore();
+    }
+    if (a->isVisible()) {
+      p.save();
+      p.rotate( -90.0 );
+      foreach( double yy, a->majorTickMarks() ) {
+        double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < imPixRect.height() ) {
+          if ( a->areTickLabelsShown() ) {
+            p.setClipping(false);
+            QRect r( 0, 0, imPixRect.height(), imLeftPadding/2);
+
+            QLabel textLabel (a->tickLabel( yy ));
+            textLabel.setGeometry(r);
+            textLabel.setFont(p.font());
+            textLabel.setAlignment(Qt::AlignCenter);
+
+            QPalette palette = textLabel.palette();
+            palette.setColor(QPalette::Foreground, foregroundColor());
+            palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+            textLabel.setPalette(palette);
+
+            QPoint offset  (-( int(py) + imPixRect.height()/2 ), -imLeftPadding/2);
+            textLabel.render(&p, offset);
+          }
+        }
+      }
+      p.restore();
+    }// LeftAxis
+    p.end();
+    return im.save(filename);
+  }
+
+
   void PlotWidget::drawAxes( QPainter *p ) {
     if ( d->showGrid ) {
       p->setPen( gridColor() );
@@ -946,12 +1268,6 @@ namespace Avogadro {
 	if ( px > 0 && px < d->pixRect.width() ) {
 	  p->drawLine( QPointF( px, double(d->pixRect.height() - TICKOFFSET)), 
 		       QPointF( px, double(d->pixRect.height() - BIGTICKSIZE - TICKOFFSET)) );
-
-	  //Draw ticklabel
-	  if ( a->areTickLabelsShown() ) {
-	    QRect r( int(px) - BIGTICKSIZE, d->pixRect.height()+BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
-	    p->drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
-	  }
 	}
       }
 
@@ -976,12 +1292,6 @@ namespace Avogadro {
 	double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
 	if ( py > 0 && py < d->pixRect.height() ) {
 	  p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + BIGTICKSIZE), py ) );
-
-	  //Draw ticklabel
-	  if ( a->areTickLabelsShown() ) {
-	    QRect r( -2*BIGTICKSIZE-SMALLTICKSIZE, int(py)-SMALLTICKSIZE, 2*BIGTICKSIZE, 2*SMALLTICKSIZE );
-	    p->drawText( r, Qt::AlignRight | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
-	  }
 	}
       }
 
@@ -1086,12 +1396,16 @@ namespace Avogadro {
 	p->restore();  //restore translation/rotation state
       }
     }  //End of RightAxis
-    
+
+
+    // Since the following use QLabels to render their text, it is neccessary 
+    // to paint them after drawing to keep the painter from becoming invalid.
+
     // Draw BottomAxis Label
     a = axis(BottomAxis);
     if (a->isVisible() && !a->label().isEmpty() ) {
-      QRect r( 0, d->pixRect.height() + topPadding() + YPADDING, d->pixRect.width(), YPADDING );
-      //	p->drawText( r, Qt::AlignCenter, a->label() );
+      QRect r( 0, 0, d->pixRect.width(), bottomPadding()/2 );
+
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
@@ -1099,25 +1413,50 @@ namespace Avogadro {
 
       QPalette palette = textLabel.palette();
       palette.setColor(QPalette::Foreground, foregroundColor());
-      palette.setColor(QPalette::Background, backgroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
       textLabel.setPalette(palette);
 
-      QPoint offset (0, d->pixRect.height() + 2*YPADDING);
+      QPoint offset (0, d->pixRect.height() + bottomPadding()/2);
       textLabel.render(p, offset);
+    }
+    // Tick Labels
+    if (a->isVisible()) {
+      foreach( double xx, a->majorTickMarks() ) {
+        double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        p->save();
+        if ( px > 0 && px < d->pixRect.width() ) {
+          if ( a->areTickLabelsShown() ) {
+            p->setClipping(false);
+            QRect r( 0, 0, d->pixRect.width(), bottomPadding()/2 );
+
+            QLabel textLabel (a->tickLabel( xx ));
+            textLabel.setGeometry(r);
+            textLabel.setFont(d->font);
+            textLabel.setAlignment(Qt::AlignCenter);
+
+            QPalette palette = textLabel.palette();
+            palette.setColor(QPalette::Foreground, foregroundColor());
+            palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+            textLabel.setPalette(palette);
+
+            QPoint offset  (int(px) - d->pixRect.width()/2, d->pixRect.height());
+            textLabel.render(p, offset);
+          }
+        }
+        p->restore();
+      }
     } // BottomAxis Label
 
     //Draw LeftAxis Label.  We need to draw the text sideways.
     a = axis(LeftAxis);
     if (a->isVisible() && !a->label().isEmpty() ) {
-      //store current painter translation/rotation state
       p->save();
-
       //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
-      p->translate( -3*XPADDING, d->pixRect.height() );
+      p->translate( -leftPadding(), d->pixRect.height() );
       p->rotate( -90.0 );
 
-      QRect r( 0, 0, d->pixRect.height(), XPADDING );
-      //      p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
+      QRect r( 0, 0, d->pixRect.height(), leftPadding()/2 );
+
       QLabel textLabel (a->label(), this);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
@@ -1125,13 +1464,40 @@ namespace Avogadro {
 
       QPalette palette = textLabel.palette();
       palette.setColor(QPalette::Foreground, foregroundColor());
-      palette.setColor(QPalette::Background, backgroundColor());
+      palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
       textLabel.setPalette(palette);
 
       QPoint offset (0, 0);
       textLabel.render(p, offset);
-      p->restore();  //restore translation/rotation state
-    }// LeftAxis Label
+      p->restore();
+    }
+    if (a->isVisible()) {
+      p->save();
+      p->rotate( -90.0 );
+      foreach( double yy, a->majorTickMarks() ) {
+        double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < d->pixRect.height() ) {
+          if ( a->areTickLabelsShown() ) {
+            p->setClipping(false);
+            QRect r( 0, 0, d->pixRect.height(), leftPadding()/2);
+
+            QLabel textLabel (a->tickLabel( yy ));
+            textLabel.setGeometry(r);
+            textLabel.setFont(d->font);
+            textLabel.setAlignment(Qt::AlignCenter);
+
+            QPalette palette = textLabel.palette();
+            palette.setColor(QPalette::Foreground, foregroundColor());
+            palette.setColor(QPalette::Background, QColor(0,0,0,0)); // Transparent background
+            textLabel.setPalette(palette);
+
+            QPoint offset  (-( int(py) + d->pixRect.height()/2 ), -leftPadding()/2);
+            textLabel.render(p, offset);
+          }
+        }
+      }
+      p->restore();
+    }// LeftAxis
   }
 
   int PlotWidget::leftPadding() const
