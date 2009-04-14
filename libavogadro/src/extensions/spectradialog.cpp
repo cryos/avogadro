@@ -726,7 +726,7 @@ namespace Avogadro {
   {
     // convert FWHM to sigma squared
     double FWHM = ui.spin_FWHM->value();
-    double s2	= pow( (FWHM / ( 2 * sqrt( 2 * log(2) ) ) ), 2);
+    double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
     // determine range
     // - find maximum and minimum
