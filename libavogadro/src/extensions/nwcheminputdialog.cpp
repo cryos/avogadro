@@ -41,7 +41,7 @@ namespace Avogadro
 {
   NWChemInputDialog::NWChemInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    m_theoryType(B3LYP), m_basisType(STO3G), m_multiplicity(1), m_charge(0),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
