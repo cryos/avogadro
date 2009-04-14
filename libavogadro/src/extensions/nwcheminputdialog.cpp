@@ -2,6 +2,7 @@
   NWChemInputDialog - Dialog for generating NWChem input decks
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
+  Copyright (C) 2009 David C. Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -41,7 +42,7 @@ namespace Avogadro
 {
   NWChemInputDialog::NWChemInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    m_theoryType(B3LYP), m_basisType(STO3G), m_multiplicity(1), m_charge(0),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
@@ -212,6 +213,12 @@ namespace Avogadro
     m_theoryType = (NWChemInputDialog::theoryType) n;
     ui.basisCombo->setEnabled(true);
 
+    if (m_theoryType == B3LYP) {
+      ui.multiplicitySpin->setEnabled(true);
+    } else {
+      ui.multiplicitySpin->setEnabled(false);
+    }
+
     updatePreviewText();
   }
 
@@ -247,7 +254,7 @@ namespace Avogadro
     // Get the title and start the job
     mol << "start avogadroGeneratedInput\n\n";
 
-    // Now for the charge and multiplicity
+    // Now for the charge
     mol << "charge " << m_charge << "\n";
 
     // Geometry specification
@@ -394,10 +401,11 @@ namespace Avogadro
     mol << "  * library " << getBasisType(m_basisType) << "\n";
     mol << "end\n\n";
 
+    // theory directives (multiplicity, too)
     switch (m_theoryType)
       {
       case B3LYP:
-        mol << "dft\n  ao b3lyp\nend\n\n";
+        mol << "dft\n  ao b3lyp\n  mult " << m_multiplicity << "\nend\n\n";
         break;
       case CCSD:
         mol << "tce\n  ccsd\nend\n\n";
