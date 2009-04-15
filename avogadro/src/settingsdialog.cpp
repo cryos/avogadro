@@ -95,7 +95,7 @@ namespace Avogadro {
   void SettingsDialog::loadValues()
   {
     ui.qualitySlider->setValue(m_mainWindow->painterQuality());
-    ui.fogSlider->setValue(m_mainWindow->fogLevel());
+    fogChanged(m_mainWindow->fogLevel());
     qualityChanged(m_mainWindow->painterQuality());
     ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
     ui.animationsCheck->setChecked(m_mainWindow->animationsEnabled());
