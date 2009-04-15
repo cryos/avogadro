@@ -42,7 +42,7 @@ namespace Avogadro
 {
   NWChemInputDialog::NWChemInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(STO3G), m_multiplicity(1), m_charge(0),
+    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
@@ -252,10 +252,13 @@ namespace Avogadro
     QTextStream mol(&buffer);
 
     // Get the title and start the job
-    mol << "start avogadroGeneratedInput\n\n";
+    mol << "start molecule\n\n";
+
+    // Title
+    mol << "title \"" << m_title << "\"\n";
 
     // Now for the charge
-    mol << "charge " << m_charge << "\n";
+    mol << "charge " << m_charge << "\n\n";
 
     // Geometry specification
     mol << "geometry units angstroms print";
@@ -418,8 +421,7 @@ namespace Avogadro
           break;
       }
 
-    // Task directive and title
-    mol << "title \"" << m_title << "\"\n";
+    // Task directive
     mol << "task ";
 
     // Set theory level:
