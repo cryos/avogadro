@@ -22,8 +22,6 @@
 #ifndef VIBRATIONDIALOG_H
 #define VIBRATIONDIALOG_H
 
-#include "vibrationplot.h"
-
 #include <QDialog>
 
 #include <avogadro/primitive.h>
@@ -61,7 +59,6 @@ namespace Avogadro {
       void setDisplayForceVectors(bool checked);
       void animateButtonClicked(bool);
       void exportVibrationData(bool);
-      void plotVibrations();
 
     signals:
       void selectedMode(int);
@@ -71,8 +68,6 @@ namespace Avogadro {
 
     private:
       Ui::VibrationDialog ui;
-
-      VibrationPlot *m_plot;
 
       GLWidget *m_widget;
       Molecule *m_molecule;

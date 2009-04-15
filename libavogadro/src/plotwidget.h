@@ -504,6 +504,16 @@ namespace Avogadro {
 	 */
 	void setObjectToolTipShown( bool show );
 
+        /**
+         * Save the plot to an image.
+         * @param filename name of the file. Format will be guess from the file extension
+         * @param width width of the image in meters
+         * @param height height of the image in meters
+         * @param dpi resolution of the image in dots per inch
+         * @param optimizeFontSize set this to true to automatically determine a appropriate font size
+         */
+        bool saveImage(const QString &filename, double width, double height, double dpi, bool optimizeFontSize );
+
     protected:
 	/**
 	 * Generic event handler.
