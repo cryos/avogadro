@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "elementtranslate.h"
+#include "elementtranslator.h"
 
 namespace Avogadro {
 
@@ -401,6 +401,3 @@ namespace Avogadro {
   }
 
 }
-
-#include "elementtranslate.moc"
-

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
+    <width>545</width>
     <height>395</height>
    </rect>
   </property>
@@ -180,7 +180,7 @@
        <item>
         <widget class="QComboBox" name="basisCombo">
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <item>
           <property name="text">
