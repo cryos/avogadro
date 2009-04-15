@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
+    <width>545</width>
     <height>395</height>
    </rect>
   </property>
@@ -180,7 +180,7 @@
        <item>
         <widget class="QComboBox" name="basisCombo">
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <item>
           <property name="text">
@@ -284,7 +284,7 @@
      <item row="3" column="2">
       <widget class="QLabel" name="label_6">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Multiplicity:</string>
@@ -299,7 +299,7 @@
        <item>
         <widget class="QSpinBox" name="multiplicitySpin">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>1</number>
