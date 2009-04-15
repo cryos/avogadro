@@ -405,7 +405,7 @@ namespace Avogadro
     switch (m_theoryType)
       {
       case B3LYP:
-        mol << "dft\n  ao b3lyp\n  mult " << m_multiplicity << "\nend\n\n";
+        mol << "dft\n  xc b3lyp\n  mult " << m_multiplicity << "\nend\n\n";
         break;
       case CCSD:
         mol << "tce\n  ccsd\nend\n\n";
