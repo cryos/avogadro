@@ -25,7 +25,7 @@
 
 #include "periodictableview.h"
 
-#include <avogadro/elementtranslate.h>
+#include <avogadro/elementtranslator.h>
 
 #include <openbabel/data.h>
 

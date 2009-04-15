@@ -30,9 +30,7 @@
 
 namespace Avogadro {
 
-  class Bond;
-
-  //! Wireframe Engine class.
+  //! SimpleWireframe Engine class.
   class SimpleWireEngine : public Engine
   {
     Q_OBJECT
