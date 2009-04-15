@@ -690,7 +690,7 @@ namespace Avogadro
         + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
           " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
           " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-          " *.mpd *.mol2)"
+          " *.mpd *.mol2 *.nwo)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
@@ -700,6 +700,7 @@ namespace Avogadro
         << tr("HyperChem") + " (*.hin)"
         << tr("MDL Mol") + " (*.mdl *.mol *.sd *.sdf)"
         << tr("PDB") + " (*.pdb *.ent)"
+        << tr("NWChem Output") + " (*.nwo)"
         << tr("Sybyl Mol2") + " (*.mol2)"
         << tr("XYZ") + " (*.xyz)";
 
@@ -995,7 +996,7 @@ namespace Avogadro
                       + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
                         " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
                         " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-                        " *.mpd *.mol2)"
+                        " *.mpd *.mol2 *.nwo)"
 #endif
             << tr("CML") + " (*.cml)"
             << tr("GAMESS Input") + " (*.gamin)"
@@ -1003,6 +1004,7 @@ namespace Avogadro
             << tr("Gaussian Z-matrix Input") + " (*.gzmat)"
             << tr("MDL SDfile") + "(*.mol)"
             << tr("PDB") + " (*.pdb)"
+            << tr("NWChem Input") + " (*.nw)"
             << tr("Sybyl Mol2") + " (*.mol2)"
             << tr("XYZ") + " (*.xyz)";
 
