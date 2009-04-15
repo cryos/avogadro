@@ -1,7 +1,7 @@
 /**********************************************************************
-  WireEngine - Simple engine for fast wire frame display
+  ElementTranslator - Class to handle translation/i18n of element names
 
-  Copyright (C) 2009 Marcus D. Hanwell
+  Copyright (C) 2007 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -22,44 +22,41 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef SIMPLEWIREENGINE_H
-#define SIMPLEWIREENGINE_H
+#ifndef ELEMENTTRANSLATOR_H
+#define ELEMENTTRANSLATOR_H
 
 #include <avogadro/global.h>
-#include <avogadro/engine.h>
+#include <QObject>
 
 namespace Avogadro {
 
-  //! SimpleWireframe Engine class.
-  class SimpleWireEngine : public Engine
+  /**
+   * @class ElementTranslator elementtranslator.h <avogadro/elementtranslator.h>
+   * @brief Internationalization of element names
+   * @author Geoff Hutchison
+   *
+   * This class provides for translation of element names: e.g., tr("Carbon")
+   * To use the global translator:
+   * @code
+   * #include <avogadro/elementtranslator.h>
+   * ...
+   * Avogadro::elementTranslator.name(6); // Return "carbon" in English
+   * @endcode
+   */
+  class A_EXPORT ElementTranslator : public QObject
   {
-    Q_OBJECT
-    AVOGADRO_ENGINE("Simple Wireframe", tr("Simple Wireframe"),
-                    tr("Renders bonds as wires (lines), ideal for large molecules"))
+  public:
+    ElementTranslator();
+    ~ElementTranslator();
 
-    public:
-      //! Constructor
-      SimpleWireEngine(QObject *parent=0);
-      //! Destructor
-      ~SimpleWireEngine();
-
-      //! Copy
-      Engine *clone() const;
-
-      //! \name Render Methods
-      //@{
-      bool renderOpaque(PainterDevice *pd);
-      //@}
+    /**
+     * Translate element names.
+     * @param element The atomic number of the element to be translated
+     * @return a QString with the appropriate translation for the current locale
+     */
+    static QString name(int element);
   };
 
-  //! Generates instances of our WireEngine class
-  class SimpleWireEngineFactory : public QObject, public PluginFactory
-  {
-    Q_OBJECT
-    Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(SimpleWireEngine)
-  };
-
-} // end namespace Avogadro
+}
 
 #endif
