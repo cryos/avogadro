@@ -203,9 +203,10 @@ namespace Avogadro
       model->setMolecule( m_molecule );
       // m_view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::CartesianType, widget);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      connect(m_molecule, SIGNAL( atomAdded(Atom*) ), model, SLOT( atomAdded(Atom*) ));
-      connect(m_molecule, SIGNAL( atomRemoved(Atom*) ), model, SLOT( atomRemoved(Atom*) ));
+      connect(m_molecule, SIGNAL(updated()), model, SLOT(updateTable()));
+      connect(m_molecule, SIGNAL(atomAdded(Atom*)), model, SLOT( atomAdded(Atom*)));
+      connect(m_molecule, SIGNAL(atomRemoved(Atom*)), model, SLOT(atomRemoved(Atom*)));
+      connect(m_molecule, SIGNAL(moleculeChanged()), model, SLOT(moleculeChanged()));
       view->setMolecule( m_molecule );
       view->setWidget( widget );
       view->setModel( model );
@@ -229,8 +230,6 @@ namespace Avogadro
       view->sortByColumn(0, Qt::AscendingOrder);
       layout->addWidget(view);
       dialog->show();
-      // delete the dialog when we're done.
-      connect(dialog, SIGNAL(rejected()), dialog, SLOT(deleteLater()));
       break;
     }
 

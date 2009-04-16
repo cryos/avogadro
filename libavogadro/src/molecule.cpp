@@ -751,6 +751,14 @@ namespace Avogadro{
     return d->ringList.size();
   }
 
+  void Molecule::updateMolecule()
+  {
+    Q_D(Molecule);
+    d->invalidGeomInfo = true;
+    emit moleculeChanged();
+    emit updated();
+  }
+
   void Molecule::updatePrimitive()
   {
     Q_D(Molecule);

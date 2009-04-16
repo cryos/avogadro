@@ -43,7 +43,7 @@ namespace Avogadro {
  class PropertiesModel : public QAbstractTableModel
   {
     Q_OBJECT
-     
+
      public slots:
        void updateTable();
        //       void primitiveAdded(Primitive *primitive);
@@ -52,7 +52,7 @@ namespace Avogadro {
        void atomRemoved(Atom *atom);
        void bondAdded(Bond *bond);
        void bondRemoved(Bond *bond);
-
+       void moleculeChanged();
 
      public:
        enum Type {
@@ -65,28 +65,25 @@ namespace Avogadro {
          ConformerType
        };
 
-       explicit PropertiesModel(Type type, QObject *parent = 0) : QAbstractTableModel(parent) 
-       {
-         m_type = type;
-       }
+       explicit PropertiesModel(Type type, QObject *parent = 0);
 
        int rowCount(const QModelIndex &parent = QModelIndex()) const;
        int columnCount(const QModelIndex &parent = QModelIndex()) const;
        QVariant data(const QModelIndex &index, int role) const;
        Qt::ItemFlags flags(const QModelIndex &index) const;
-       bool setData(const QModelIndex &index, const QVariant &value, 
+       bool setData(const QModelIndex &index, const QVariant &value,
            int role = Qt::EditRole);
        QVariant headerData(int section, Qt::Orientation orientation,
            int role = Qt::DisplayRole) const;
-       
+
        void setMolecule (Molecule *molecule);
 
      private:
        int m_type;
-       int m_rowCount;
+       mutable int m_rowCount;
        Molecule *m_molecule;
  };
-  
+
 } // end namespace Avogadro
 
 #endif
