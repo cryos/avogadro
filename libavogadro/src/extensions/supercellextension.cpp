@@ -229,7 +229,7 @@ namespace Avogadro {
     connectTheDots();
     qDebug() << "Dots connected...";
     m_molecule->blockSignals(false);
-    m_molecule->update();
+    m_molecule->updateMolecule();
   }
 
   void SuperCellExtension::connectTheDots()
