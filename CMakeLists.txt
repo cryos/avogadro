@@ -39,6 +39,9 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   if (CMAKE_SYSTEM_NAME MATCHES Linux)
     set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
     set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_MODULE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
     set (CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_EXE_LINKER_FLAGS}")
   endif (CMAKE_SYSTEM_NAME MATCHES Linux)
   # Now check if we can use visibility to selectively export symbols
@@ -104,33 +107,54 @@ find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 
+# Check if we are building from a Git clone or a released version
+function(git_version dir version_var)
+  # Function to figure out the Git short version hash
+  if(EXISTS ${dir}/.git)
+    execute_process(COMMAND git rev-parse --short HEAD
+            WORKING_DIRECTORY ${dir}
+            OUTPUT_VARIABLE var)
+    string(REGEX REPLACE "\n" "" var "${var}")
+    message(STATUS "Git revision found to be ${var}")
+    set(${version_var} "${var}" PARENT_SCOPE)
+  endif(EXISTS ${dir}/.git)
+endfunction(git_version)
+
+git_version(${CMAKE_SOURCE_DIR} SCM_REVISION)
+message(STATUS "Found Git revision is: ${SCM_REVISION}")
+if(SCM_REVISION)
+  message(STATUS "Building development version from Git clone.")
+else(SCM_REVISION)
+  message(STATUS "Building released version.")
+endif(SCM_REVISION)
+
 ###########################################################
 # Python Support: Detect and report all stuff here.       #
 # Subdirectories can use: ALL_PYTHON_FOUND                #
 ###########################################################
 option(ENABLE_PYTHON "Enable python support" ON)
-if(ENABLE_PYTHON MATCHES ON)
+if(ENABLE_PYTHON)
   include(PythonDeps)
   if (ALL_PYTHON_FOUND)
     message(STATUS "All python dependencies found - Python support enabled")
   endif (ALL_PYTHON_FOUND)
-else(ENABLE_PYTHON MATCHES ON)
+else(ENABLE_PYTHON)
   message(STATUS "Python support disabled.")
-endif(ENABLE_PYTHON MATCHES ON)
+endif(ENABLE_PYTHON)
 
 # Unit testing, mainly useful for developers and so defaults to off
 option(ENABLE_TESTS "Enable unit testing" OFF)
-if(ENABLE_TESTS MATCHES ON)
+if(ENABLE_TESTS)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   include (CTest)
   include (AvoCTestConfig)
   message(STATUS "Unit testing enabled, run make test to run them")
-endif(ENABLE_TESTS MATCHES ON)
+endif(ENABLE_TESTS)
 
 # GLSL support is needed for OpenGL shaders
 option(ENABLE_GLSL "Enable GLSL support" OFF)
-if(ENABLE_GLSL MATCHES ON)
+if(ENABLE_GLSL)
   find_package(GLEW)
   if(GLEW_FOUND)
     message(STATUS "GLEW found and GLSL support enabled")
@@ -138,18 +162,18 @@ if(ENABLE_GLSL MATCHES ON)
   else(GLEW_FOUND)
     message(WARNING "GLEW not found, please install it if you require GLSL")
   endif(GLEW_FOUND)
-endif(ENABLE_GLSL MATCHES ON)
+endif(ENABLE_GLSL)
 
 # Multithreaded OpenGL. Seems mostly broken on Linux right now.
 option(ENABLE_THREADEDGL "Enable threaded OpenGL rendering" OFF)
-if(ENABLE_THREADEDGL MATCHES ON)
+if(ENABLE_THREADEDGL)
   add_definitions( -DENABLE_THREADED_GL )
   set(THREADED_GL true)
   message(STATUS "Threaded OpenGL rendering enabled - needs more testing")
-else(ENABLE_THREADEDGL MATCHES ON)
+else(ENABLE_THREADEDGL)
   set(THREADED_GL false)
   message(STATUS "Threaded OpenGL rendering not enabled")
-endif(ENABLE_THREADEDGL MATCHES ON)
+endif(ENABLE_THREADEDGL)
 
 # Set up our path handling, inspired by the path handling used in KDE
 set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
@@ -182,8 +206,6 @@ if(UNIX)
   if(APPLE)
     set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
   else(APPLE)
-    # Set a relative rpath on Linux - just testing right now...
-    #set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
     set(CMAKE_SKIP_BUILD_RPATH FALSE)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
     set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
@@ -205,6 +227,10 @@ ADD_CUSTOM_TARGET(update-translations
     ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
+
+ADD_CUSTOM_COMMAND(TARGET create-translations
+     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create-translations.sh
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/i18n)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     CACHE STRING "Binary build output directory")

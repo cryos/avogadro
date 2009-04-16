@@ -54,7 +54,7 @@ namespace Avogadro {
     DirectoryTreeModel *model;
 
     bool         insertMode;
-		bool         smilesMode;
+    bool         smilesMode;
 
     InsertFragmentPrivate() : insertMode(false)
     { }
@@ -69,20 +69,20 @@ namespace Avogadro {
 
   QStringList DefaultDirectoryList()
   {
-    QStringList _directoryList;
+    QStringList directoryList;
 #ifdef Q_WS_X11
-    _directoryList << QString( INSTALL_PREFIX ) + "/share/avogadro/fragments";
-    _directoryList << QDir::homePath() + "/.avogadro/fragments";
+    directoryList << QString( INSTALL_PREFIX ) + "/share/avogadro/fragments";
+    directoryList << QDir::homePath() + "/.avogadro/fragments";
 #endif
 #ifdef Q_WS_WIN
-	_directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
+    directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
 #endif
 #ifdef Q_WS_MAC
-    _directoryList << "/Library/Application Support/Avogadro/Fragments";
-    _directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
+    directoryList << "/Library/Application Support/Avogadro/Fragments";
+    directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
 #endif
 
-    return _directoryList;
+    return directoryList;
   }
 
   InsertFragmentDialog::InsertFragmentDialog(QWidget *parent, Qt::WindowFlags) : QDialog(parent)
@@ -94,8 +94,8 @@ namespace Avogadro {
     d = new InsertFragmentPrivate;
 
     // There has to be a better way to set this based on the installation prefix
-    _directoryList = DefaultDirectoryList();
-    d->model = new DirectoryTreeModel(_directoryList, this);
+    m_directoryList = DefaultDirectoryList();
+    d->model = new DirectoryTreeModel(m_directoryList, this);
 
     ui.setupUi(this);
     ui.directoryTreeView->setModel(d->model);
@@ -111,7 +111,7 @@ namespace Avogadro {
     connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
             this, SLOT(addDirectory(bool)));
     connect(ui.clearListButton, SIGNAL(clicked(bool)),
-      this, SLOT(clearDirectoryList(bool)));
+            this, SLOT(clearDirectoryList(bool)));
   }
 
   InsertFragmentDialog::~InsertFragmentDialog()
@@ -130,13 +130,13 @@ namespace Avogadro {
       // We should use the method because it will grab updates to the line edit
       std::string SmilesString(smilesString().toAscii());
       if(d->conv.SetInFormat("smi")
-         && d->conv.ReadString(&obfragment, SmilesString))
+        && d->conv.ReadString(&obfragment, SmilesString))
         {
-          d->builder.Build(obfragment);
-          d->fragment.setOBMol(&obfragment);
-          d->fragment.center();
-          d->fragment.addHydrogens();
-        }
+        d->builder.Build(obfragment);
+        d->fragment.setOBMol(&obfragment);
+        d->fragment.center();
+        d->fragment.addHydrogens();
+      }
     } else {
       QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
       if (selected.count() != 0) {
@@ -177,41 +177,41 @@ namespace Avogadro {
   const QString InsertFragmentDialog::smilesString()
   {
     if (!ui.smilesLineEdit->text().isEmpty()) {
-      _smilesString = ui.smilesLineEdit->text();
+      m_smilesString = ui.smilesLineEdit->text();
     }
-    return _smilesString;
+    return m_smilesString;
   }
 
   void InsertFragmentDialog::setSmilesString(const QString smiles)
   {
-    _smilesString = smiles;
-    ui.smilesLineEdit->setText(_smilesString);
+    m_smilesString = smiles;
+    ui.smilesLineEdit->setText(m_smilesString);
   }
 
   const QStringList InsertFragmentDialog::directoryList() const
   {
-    return _directoryList;
+    return m_directoryList;
   }
 
   void InsertFragmentDialog::setDirectoryList(const QStringList dirList)
   {
     if (dirList.size() != 0)
-      _directoryList = dirList;
+      m_directoryList = dirList;
     refresh();
   }
 
   void InsertFragmentDialog::refresh()
   {
-    d->model->setDirectoryList(_directoryList);
-		ui.directoryTreeView->update();
+    d->model->setDirectoryList(m_directoryList);
+    ui.directoryTreeView->update();
   }
 
   void InsertFragmentDialog::setupInsertMode(bool)
   {
     bool inserting = (ui.insertFragmentButton->text() == tr("Stop Inserting"));
 
-   if(!inserting) {
-     if (ui.smilesLineEdit->hasFocus()) {
+    if(!inserting) {
+      if (ui.smilesLineEdit->hasFocus()) {
         d->smilesMode = true;
       } else {
         d->smilesMode = false;
@@ -220,7 +220,7 @@ namespace Avogadro {
       ui.insertFragmentButton->setText(tr("Stop Inserting"));
       ui.smilesLineEdit->setEnabled(false);
       ui.directoryTreeView->setEnabled(false);
-   } else {
+    } else {
       ui.insertFragmentButton->setText(tr("Insert Fragment"));
       ui.toolTipLabel->setText(QString());
       ui.smilesLineEdit->setEnabled(true);
@@ -239,7 +239,7 @@ namespace Avogadro {
     // stop inserting
     if (ui.insertFragmentButton->text() == tr("Stop Inserting"))
       setupInsertMode(false);
-		event->accept();
+    event->accept();
   }
 
   void InsertFragmentDialog::addDirectory(bool)
@@ -248,16 +248,16 @@ namespace Avogadro {
                                                     "/home");
 
     // If this is a new directory, add it in
-    if (!_directoryList.contains(dir)) {
-      _directoryList << dir;
+    if (!m_directoryList.contains(dir)) {
+      m_directoryList << dir;
       refresh();
     }
   }
 
   void InsertFragmentDialog::clearDirectoryList(bool)
   {
-    _directoryList.clear();
-    _directoryList = DefaultDirectoryList();
+    m_directoryList.clear();
+    m_directoryList = DefaultDirectoryList();
     refresh();
   }
 

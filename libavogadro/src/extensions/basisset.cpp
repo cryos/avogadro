@@ -393,6 +393,9 @@ namespace Avogadro
         case D:
           pointD(shell.set, deltas[cAtom], dr2[cAtom], i, values);
           break;
+        case D5:
+          pointD5(shell.set, deltas[cAtom], dr2[cAtom], i, values);
+          break;
         default:
           // Not handled - return a zero contribution
           ;
@@ -508,7 +511,21 @@ namespace Avogadro
     // D type orbitals have five components and each component has a different
     // MO weighting. Many things can be cached to save time
     unsigned int baseIndex = set->m_moIndices[moIndex];
-    double tmp = 0.0;
+    double d0 = 0.0, d1p = 0.0, d1n = 0.0, d2p = 0.0, d2n = 0.0;
+
+    // Now iterate through the D type GTOs and sum their contributions
+    unsigned int cIndex = set->m_cIndices[moIndex];
+    for (unsigned int i = set->m_gtoIndices[moIndex];
+         i < set->m_gtoIndices[moIndex+1]; ++i) {
+      // Calculate the common factor
+      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      d0  += set->m_gtoCN[cIndex++] * tmpGTO;
+      d1p += set->m_gtoCN[cIndex++] * tmpGTO;
+      d1n += set->m_gtoCN[cIndex++] * tmpGTO;
+      d2p += set->m_gtoCN[cIndex++] * tmpGTO;
+      d2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    }
+
     // Calculate the prefactors
     double xx = delta.x() * delta.x();
     double yy = delta.y() * delta.y();
@@ -523,22 +540,11 @@ namespace Avogadro
     double D2p = set->m_moMatrix.coeffRef(baseIndex+3, indexMO) * (xx - yy);
     double D2n = set->m_moMatrix.coeffRef(baseIndex+4, indexMO) * xy;
 
-    // Not iterate through the GTOs
-    unsigned int cIndex = set->m_cIndices[moIndex];
-    for (unsigned int i = set->m_gtoIndices[moIndex];
-         i < set->m_gtoIndices[moIndex+1]; ++i) {
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
-      tmp += set->m_gtoCN[cIndex++] * D0 * tmpGTO;  // D0
-      tmp += set->m_gtoCN[cIndex++] * D1p * tmpGTO; // D1p
-      tmp += set->m_gtoCN[cIndex++] * D1n * tmpGTO; // D1n
-      tmp += set->m_gtoCN[cIndex++] * D2p * tmpGTO; // D2p
-      tmp += set->m_gtoCN[cIndex++] * D2n * tmpGTO; // D2n
-    }
-    return tmp;
+    return D0*d0 + D1p*d1p + D1n*d1n + D2p*d2p + D2n*d2n;
   }
 
   inline void BasisSet::pointS(BasisSet *set, const double &dr2, int basis,
-                                 Eigen::MatrixXd &out)
+                               Eigen::MatrixXd &out)
   {
     // S type orbitals - the simplest of the calculations with one component
     double tmp = 0.0;
@@ -551,8 +557,8 @@ namespace Avogadro
   }
 
   inline void BasisSet::pointP(BasisSet *set, const Vector3d &delta,
-                                 const double &dr2, int basis,
-                                 Eigen::MatrixXd &out)
+                               const double &dr2, int basis,
+                               Eigen::MatrixXd &out)
   {
     double x = 0.0, y = 0.0, z = 0.0;
 
@@ -574,8 +580,8 @@ namespace Avogadro
   }
 
   inline void BasisSet::pointD(BasisSet *set, const Eigen::Vector3d &delta,
-                                 const double &dr2, int basis,
-                                 Eigen::MatrixXd &out)
+                               const double &dr2, int basis,
+                               Eigen::MatrixXd &out)
   {
     // D type orbitals have six components and each component has a different
     // independent MO weighting. Many things can be cached to save time though
@@ -603,6 +609,44 @@ namespace Avogadro
     out.coeffRef(baseIndex+3, 0) = delta.x() * delta.y() * xy;
     out.coeffRef(baseIndex+4, 0) = delta.x() * delta.z() * xz;
     out.coeffRef(baseIndex+5, 0) = delta.y() * delta.z() * yz;
+  }
+
+  inline void BasisSet::pointD5(BasisSet *set, const Eigen::Vector3d &delta,
+                                const double &dr2, int basis,
+                                Eigen::MatrixXd &out)
+  {
+    // D type orbitals have six components and each component has a different
+    // independent MO weighting. Many things can be cached to save time though
+    double d0 = 0.0, d1p = 0.0, d1n = 0.0, d2p = 0.0, d2n = 0.0;
+
+    // Now iterate through the D type GTOs and sum their contributions
+    unsigned int cIndex = set->m_cIndices[basis];
+    for (unsigned int i = set->m_gtoIndices[basis];
+         i < set->m_gtoIndices[basis+1]; ++i) {
+      // Calculate the common factor
+      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      d0  += set->m_gtoCN[cIndex++] * tmpGTO;
+      d1p += set->m_gtoCN[cIndex++] * tmpGTO;
+      d1n += set->m_gtoCN[cIndex++] * tmpGTO;
+      d2p += set->m_gtoCN[cIndex++] * tmpGTO;
+      d2n += set->m_gtoCN[cIndex++] * tmpGTO;
+    }
+
+    // Calculate the prefactors
+    double xx = delta.x() * delta.x();
+    double yy = delta.y() * delta.y();
+    double zz = delta.z() * delta.z();
+    double xy = delta.x() * delta.y();
+    double xz = delta.x() * delta.z();
+    double yz = delta.y() * delta.z();
+
+    // Save values to the matrix
+    int baseIndex = set->m_moIndices[basis];
+    out.coeffRef(baseIndex  , 0) = (zz - dr2) * d0;
+    out.coeffRef(baseIndex+1, 0) = xz * d1p;
+    out.coeffRef(baseIndex+2, 0) = yz * d1n;
+    out.coeffRef(baseIndex+3, 0) = (xx - yy) * d2p;
+    out.coeffRef(baseIndex+4, 0) = xy * d2n;
   }
 
   int BasisSet::numMOs()

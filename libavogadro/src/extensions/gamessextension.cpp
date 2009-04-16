@@ -93,7 +93,7 @@ namespace Avogadro
 
   QString GamessExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions") + '>' + tr("&GAMESS");
+    return tr("E&xtensions") + '>' + tr("&GAMESS");
   }
 
   QDockWidget * GamessExtension::dockWidget()

@@ -27,7 +27,9 @@
 
 #include "drawtool.h"
 #include "drawcommand.h"
+#include "insertfragmentdialog.h"
 
+#include <avogadro/periodictableview.h>
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -36,15 +38,21 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
-#include <avogadro/elementtranslate.h>
+#include <avogadro/elementtranslator.h>
 
 #include <Eigen/Core>
 
+#include <openbabel/forcefield.h>
 #include <openbabel/obiter.h>
 #include <openbabel/obconversion.h>
 
 #include <QtPlugin>
 #include <QLabel>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QPushButton>
 #include <QDir>
 #include <QDebug>
 
@@ -230,13 +238,13 @@ namespace Avogadro {
             else if(!m_endAtom) {
               // we don't yet have an end atom but
               // hit another atom on screen -- bond to this
-              
+
               existingAtom = molecule->atom(m_hits[i].name());
               // if we're auto-adding hydrogens and we hit a hydrogen
               // look for another target
               // (unless we've selected hydrogen as our element of choice)
-              if (m_addHydrogens 
-                  && existingAtom->isHydrogen() 
+              if (m_addHydrogens
+                  && existingAtom->isHydrogen()
                   && m_element != 1) {
                 existingAtom = NULL;
                 continue;
@@ -245,8 +253,8 @@ namespace Avogadro {
             else if(m_hits[i].name() != m_endAtom->index()) {
               // hit a new atom which isn't our end atom
               existingAtom = molecule->atom(m_hits[i].name());
-              if (m_addHydrogens 
-                  && existingAtom->isHydrogen() 
+              if (m_addHydrogens
+                  && existingAtom->isHydrogen()
                   && m_element != 1) {
                 existingAtom = NULL;
                 continue;
@@ -279,7 +287,7 @@ namespace Avogadro {
         if (m_prevAtomElement) {
           // special case, dragging from hydrogen when adjust hydrogens is enabled....
           if (m_addHydrogens && (m_prevAtomElement == 1)) {
-            // do not adjust hydrogens, the AddBond command will do this 
+            // do not adjust hydrogens, the AddBond command will do this
             m_hydrogenCommand = new ChangeElementDrawCommand(widget->molecule(), m_beginAtom,
                 m_prevAtomElement, 0);
           } else {
@@ -417,10 +425,10 @@ namespace Avogadro {
         if(m_bond) {
           AdjustHydrogens::Options adjBegin = AdjustHydrogens::Never;
           AdjustHydrogens::Options adjEnd = AdjustHydrogens::Never;
-          
+
           if(m_addHydrogens) {
             if (m_hydrogenCommand) {
-              // don't try to remove/add hydrogens to the hydrogen which will be changed 
+              // don't try to remove/add hydrogens to the hydrogen which will be changed
               // by the ChangeElement command...
               adjBegin = AdjustHydrogens::AddOnRedo | AdjustHydrogens::RemoveOnUndo;
               adjEnd = AdjustHydrogens::Always;
@@ -593,9 +601,12 @@ namespace Avogadro {
     // Second case: we have a custom element "Other..."
     // Bring up the periodic table widget
     else {
-      if (m_periodicTable) {
-        m_periodicTable->show();
+      if (!m_periodicTable) {
+        m_periodicTable = new PeriodicTableView(m_settingsWidget);
+        connect(m_periodicTable, SIGNAL(elementChanged(int)),
+                this, SLOT(customElementChanged(int)));
       }
+      m_periodicTable->show();
     }
   }
 
@@ -733,6 +744,7 @@ namespace Avogadro {
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
 
+      // Fragment dialog button
       m_fragmentButton = new QPushButton(m_settingsWidget);
       m_fragmentButton->setText(tr("Fragment Library..."));
       QHBoxLayout* fragmentLayout = new QHBoxLayout;
@@ -741,14 +753,6 @@ namespace Avogadro {
       fragmentLayout->addStretch(1);
       connect(m_fragmentButton, SIGNAL(clicked(bool)),
               this, SLOT(showFragmentDialog(bool)));
-
-      m_fragmentDialog = new InsertFragmentDialog(m_settingsWidget);
-      connect(m_fragmentDialog, SIGNAL(setInsertMode(bool)),
-              this, SLOT(setInsertFragmentMode(bool)));
-
-      m_periodicTable = new PeriodicTableView(m_settingsWidget);
-      connect(m_periodicTable, SIGNAL(elementChanged(int)),
-              this, SLOT(customElementChanged(int)));
 
       m_layout = new QVBoxLayout();
       m_layout->addLayout(grid);
@@ -773,17 +777,24 @@ namespace Avogadro {
     return m_settingsWidget;
   }
 
-  void DrawTool::settingsWidgetDestroyed() {
+  void DrawTool::settingsWidgetDestroyed()
+  {
     m_settingsWidget = 0;
   }
 
-  void DrawTool::showFragmentDialog(bool) {
+  void DrawTool::showFragmentDialog(bool)
+  {
+    if (!m_fragmentDialog) {
+      m_fragmentDialog = new InsertFragmentDialog(m_settingsWidget);
+      connect(m_fragmentDialog, SIGNAL(setInsertMode(bool)),
+              this, SLOT(setInsertFragmentMode(bool)));
+    }
     if (m_fragmentDialog->isVisible()) {
       m_fragmentDialog->hide();
       m_insertFragmentMode = false;
-    } else {
-      m_fragmentDialog->show();
     }
+    else
+      m_fragmentDialog->show();
   }
 
   void DrawTool::writeSettings(QSettings &settings) const

@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>VibrationDialog</class>
- <widget class="QDialog" name="VibrationDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="VibrationDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,78 +10,81 @@
     <height>459</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Molecular Vibrations</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" >
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QTableWidget" name="vibrationTable" >
-     <property name="horizontalScrollBarPolicy" >
+    <widget class="QTableWidget" name="vibrationTable">
+     <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
-     <property name="editTriggers" >
+     <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
-     <property name="alternatingRowColors" >
+     <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
-     <property name="selectionMode" >
+     <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>
-     <property name="selectionBehavior" >
+     <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
-     <property name="gridStyle" >
+     <property name="gridStyle">
       <enum>Qt::SolidLine</enum>
      </property>
-     <property name="rowCount" >
+     <property name="rowCount">
       <number>0</number>
      </property>
-     <property name="columnCount" >
+     <property name="columnCount">
       <number>2</number>
      </property>
      <column>
-      <property name="text" >
+      <property name="text">
        <string>Frequency (cm-1)</string>
       </property>
      </column>
      <column>
-      <property name="text" >
+      <property name="text">
        <string>Intensity (a.u.)</string>
       </property>
      </column>
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
       <string>Options</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" >
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2" >
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Scale:</string>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&amp;Scale:</string>
+          </property>
+          <property name="buddy">
+           <cstring>scaleSlider</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="scaleSlider" >
-          <property name="maximum" >
+         <widget class="QSlider" name="scaleSlider">
+          <property name="maximum">
            <number>10</number>
           </property>
-          <property name="value" >
+          <property name="value">
            <number>2</number>
           </property>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="tickPosition" >
+          <property name="tickPosition">
            <enum>QSlider::TicksBelow</enum>
           </property>
-          <property name="tickInterval" >
+          <property name="tickInterval">
            <number>1</number>
           </property>
          </widget>
@@ -88,11 +92,11 @@
        </layout>
       </item>
       <item>
-       <widget class="QCheckBox" name="displayForcesCheckBox" >
-        <property name="text" >
-         <string>Display Force Vectors</string>
+       <widget class="QCheckBox" name="displayForcesCheckBox">
+        <property name="text">
+         <string>Display Force &amp;Vectors</string>
         </property>
-        <property name="checked" >
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
@@ -101,20 +105,30 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" >
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="animationButton" >
-       <property name="text" >
-        <string>Start Animation</string>
+      <widget class="QPushButton" name="animationButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Start &amp;Animation</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox" >
-       <property name="orientation" >
+      <widget class="QPushButton" name="exportButton">
+       <property name="text">
+        <string>E&amp;xport...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="standardButtons" >
+       <property name="standardButtons">
         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
@@ -131,11 +145,11 @@
    <receiver>VibrationDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>248</x>
      <y>254</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>157</x>
      <y>274</y>
     </hint>
@@ -147,11 +161,11 @@
    <receiver>VibrationDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>316</x>
      <y>260</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
     </hint>

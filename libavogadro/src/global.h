@@ -28,7 +28,7 @@
 
 #include <QTranslator>
 
-#define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5 
+#define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5
 
 #ifdef WIN32
 # ifndef NOMINMAX
@@ -86,30 +86,33 @@
 # define GL_TEXTURE_RECTANGLE_ARB 0x84F5
 #endif
 
-const double   ROTATION_SPEED                    = 0.005;
-const double   ZOOM_SPEED                        = 0.02;
-const double   MOUSE_WHEEL_SPEED                 = 0.1;
-const double   CAMERA_MOL_RADIUS_MARGIN          = 10.0;
-const double   CAMERA_NEAR_DISTANCE              = 2.0;
-const int      SEL_BUF_MAX_SIZE                  = 262144;
-const int      SEL_BUF_MARGIN                    = 128;
-const int      SEL_BOX_HALF_SIZE                 = 4;
-const int      SEL_BOX_SIZE                      = 2 * SEL_BOX_HALF_SIZE + 1;
-const double   SEL_ATOM_EXTRA_RADIUS             = 0.18;
-const double   SEL_BOND_EXTRA_RADIUS             = 0.07;
-
-const float    LIGHT_AMBIENT[4]                  = { 0.2f, 0.2f, 0.2f, 1.0f };
-
-const float    LIGHT0_DIFFUSE[4]                 = { 1.0f, 1.0f, 1.0f, 1.0f };
-const float    LIGHT0_SPECULAR[4]                = { 1.0f, 1.0f, 1.0f, 1.0f };
-const float    LIGHT0_POSITION[4]                = { 0.8f, 0.7f, 1.0f, 0.0f };
-
-const float    LIGHT1_DIFFUSE[4]                 = { 0.3f, 0.3f, 0.3f, 1.0f };
-const float    LIGHT1_SPECULAR[4]                = { 0.5f, 0.5f, 0.5f, 1.0f };
-const float    LIGHT1_POSITION[4]                = { -0.8f, 0.7f, -0.5f, 0.0f };
-
 namespace Avogadro
 {
+  const double   ROTATION_SPEED                    = 0.005;
+  const double   ZOOM_SPEED                        = 0.02;
+  const double   MOUSE_WHEEL_SPEED                 = 0.1;
+  const double   CAMERA_MOL_RADIUS_MARGIN          = 10.0;
+  const double   CAMERA_NEAR_DISTANCE              = 2.0;
+  const int      SEL_BUF_MAX_SIZE                  = 262144;
+  const int      SEL_BUF_MARGIN                    = 128;
+  const int      SEL_BOX_HALF_SIZE                 = 4;
+  const int      SEL_BOX_SIZE                      = 2 * SEL_BOX_HALF_SIZE + 1;
+  const double   SEL_ATOM_EXTRA_RADIUS             = 0.18;
+  const double   SEL_BOND_EXTRA_RADIUS             = 0.07;
+
+  const float    LIGHT_AMBIENT[4]                  = {0.2f, 0.2f, 0.2f, 1.0f};
+
+  const float    LIGHT0_DIFFUSE[4]                 = {1.0f, 1.0f, 1.0f, 1.0f};
+  const float    LIGHT0_SPECULAR[4]                = {1.0f, 1.0f, 1.0f, 1.0f};
+  const float    LIGHT0_POSITION[4]                = {0.8f, 0.7f, 1.0f, 0.0f};
+
+  const float    LIGHT1_DIFFUSE[4]                 = {0.3f, 0.3f, 0.3f, 1.0f};
+  const float    LIGHT1_SPECULAR[4]                = {0.5f, 0.5f, 0.5f, 1.0f};
+  const float    LIGHT1_POSITION[4]                = {-0.8f, 0.7f, -0.5f, 0.0f};
+
+  const double   cPi                               = 3.14159265358979323846;
+  const double   cDegToRad                         = cPi / 180.0;
+
   /**
    * @class Library global.h <avogadro/global.h>
    * @brief Interface for static calls for versions, installation prefix, and
@@ -130,10 +133,9 @@ namespace Avogadro
       static QString version();
 
       /**
-       * The svn revision.
-       * @deprecated
+       * The source control management revision.
        */
-      static QString svnRevision();
+      static QString scmRevision();
 
       /**
        * The installation prefix that the Avogadro library was compiled into.

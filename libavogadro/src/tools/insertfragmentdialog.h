@@ -40,41 +40,41 @@ namespace Avogadro {
 
   class InsertFragmentDialog : public QDialog
   {
-      Q_OBJECT
+    Q_OBJECT
 
-    public:
-      //! Constructor
-      explicit InsertFragmentDialog(QWidget *parent = 0, Qt::WindowFlags f = 0);
-      //! Desconstructor
-      ~InsertFragmentDialog();
+  public:
+    //! Constructor
+    explicit InsertFragmentDialog(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    //! Destructor
+    ~InsertFragmentDialog();
 
-      const Molecule *fragment();
+    const Molecule *fragment();
 
-			const QString smilesString();
-      void setSmilesString(const QString);
+    const QString smilesString();
+    void setSmilesString(const QString);
 
-      const QStringList directoryList() const;
-      void setDirectoryList(const QStringList);
+    const QStringList directoryList() const;
+    void setDirectoryList(const QStringList);
 
-			void closeEvent( QCloseEvent *event );
+    void closeEvent( QCloseEvent *event );
 
-    public slots:
-      void refresh();
-      void setupInsertMode(bool);
-      
-      void addDirectory(bool);
-      void clearDirectoryList(bool);
+  public slots:
+    void refresh();
+    void setupInsertMode(bool);
 
-    signals:
-      void setInsertMode(bool);
+    void addDirectory(bool);
+    void clearDirectoryList(bool);
 
-    private:
-      Ui::InsertFragmentDialog ui;
+  signals:
+    void setInsertMode(bool);
 
-      QStringList _directoryList;
-      QString     _smilesString;
+  private:
+    Ui::InsertFragmentDialog ui;
 
-      InsertFragmentPrivate *d;
+    QStringList m_directoryList;
+    QString     m_smilesString;
+
+    InsertFragmentPrivate *d;
   };
 
 } // End of Avogadro namespace

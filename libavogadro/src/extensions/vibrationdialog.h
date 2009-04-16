@@ -55,8 +55,10 @@ namespace Avogadro {
       void currentCellChanged(int, int, int, int);
 
       void setScale(int scale);
+      void setScale(double scale);
       void setDisplayForceVectors(bool checked);
       void animateButtonClicked(bool);
+      void exportVibrationData(bool);
 
     signals:
       void selectedMode(int);
@@ -66,7 +68,7 @@ namespace Avogadro {
 
     private:
       Ui::VibrationDialog ui;
-      
+
       GLWidget *m_widget;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;

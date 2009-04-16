@@ -45,7 +45,6 @@ namespace Avogadro {
 
   Tool::~Tool()
   {
-    m_activateAction->deleteLater();
     delete d;
   }
 

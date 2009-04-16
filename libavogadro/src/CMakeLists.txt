@@ -31,7 +31,7 @@ set(libavogadro_HDRS
   color.h
   colorbutton.h
   cube.h
-  elementtranslate.h
+  elementtranslator.h
   engine.h
   extension.h
   filetreeitem.h
@@ -40,6 +40,10 @@ set(libavogadro_HDRS
   glwidget.h
   global.h
   idlist.h
+  plotaxis.h # dlonie: Are these necessary here?
+  plotobject.h
+  plotpoint.h
+  plotwidget.h
   line.h
   mesh.h
   meshgenerator.h
@@ -59,6 +63,7 @@ set(libavogadro_HDRS
   tool.h
   toolgroup.h
   undosequence.h
+  zmatrix.h
 )
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})

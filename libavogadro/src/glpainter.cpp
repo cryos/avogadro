@@ -1020,7 +1020,7 @@ namespace Avogadro
     // Normal or reverse winding?
     Color color;
     for(unsigned int i = 0; i < v.size(); ++i) {
-      color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), c[i].alphaF());
+      color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), d->color.alpha());
       color.applyAsMaterials();
       glNormal3fv(n[i].data());
       glVertex3fv(v[i].data());

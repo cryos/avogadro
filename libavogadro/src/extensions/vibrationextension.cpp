@@ -56,7 +56,7 @@ namespace Avogadro {
     m_actions.append( action );
 
     action = new QAction(this);
-    action->setText(tr("Vibrations..."));
+    action->setText(tr("&Vibrations..."));
     m_actions.append(action);
   }
 
@@ -72,7 +72,7 @@ namespace Avogadro {
 
   QString VibrationExtension::menuPath(QAction *) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   void VibrationExtension::setMolecule(Molecule *molecule)
@@ -130,6 +130,7 @@ namespace Avogadro {
 
     vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
     // Sanity check
+    // Currently disabled -- GAMESS does weird things.
     //    if (displacementVectors.size() != m_molecule->numAtoms()) {
     //      QMessageBox::warning(m_widget, tr("Vibrational Analysis"), tr("The computed vibrations do not match this molecule."));
     //      return;

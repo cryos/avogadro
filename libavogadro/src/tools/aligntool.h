@@ -25,20 +25,16 @@
 #ifndef ALIGNTOOL_H
 #define ALIGNTOOL_H
 
-#include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
 #include <QVarLengthArray>
-#include <QImage>
-#include <QAction>
 #include <QPointer>
 
 namespace Avogadro {
 
- class AlignTool : public Tool
+  class Atom;
+
+  class AlignTool : public Tool
   {
     Q_OBJECT
       AVOGADRO_TOOL("Align", tr("Align"),

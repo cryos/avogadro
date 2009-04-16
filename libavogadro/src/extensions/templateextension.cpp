@@ -67,7 +67,7 @@ namespace Avogadro
 
     switch ( i ) {
       case FirstAction:
-        return tr("&Extensions") + '>' + tr("&Template");
+        return tr("E&xtensions") + '>' + tr("&Template");
         break;
       case SecondAction:
         return tr("&Edit") + '>' + tr("&Template");

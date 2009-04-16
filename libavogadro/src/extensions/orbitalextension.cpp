@@ -86,7 +86,7 @@ namespace Avogadro
 
   QString OrbitalExtension::menuPath(QAction*) const
   {
-    return tr("&Extensions");
+    return tr("E&xtensions");
   }
 
   QUndoCommand* OrbitalExtension::performAction(QAction *, GLWidget *widget)

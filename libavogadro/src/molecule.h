@@ -28,6 +28,9 @@
 
 #include <avogadro/primitive.h>
 
+// Used by the inline functions
+#include <QReadWriteLock>
+
 #include <vector>
 
 namespace OpenBabel {
@@ -46,6 +49,7 @@ namespace Avogadro {
   class Cube;
   class Mesh;
   class Fragment;
+  class ZMatrix;
 
   /**
    * @class Molecule molecule.h <avogadro/molecule.h>
@@ -137,8 +141,7 @@ namespace Avogadro {
      * @return The Atom at the supplied index.
      * @note Replaces GetAtom.
      */
-    Atom * atom(int index);
-    const Atom * atom(int index) const;
+    Atom * atom(int index) const;
 
     /**
      * @return The Atom at the supplied unqique id.
@@ -211,8 +214,7 @@ namespace Avogadro {
      * @return The Bond at the supplied index.
      * @note Replaces GetBond.
      */
-    Bond* bond(int index);
-    const Bond* bond(int index) const;
+    Bond* bond(int index) const;
 
     /**
      * @return The Bond at the supplied unique id.
@@ -424,12 +426,48 @@ namespace Avogadro {
     unsigned int numMeshes() const;
     /** @} */
 
+    /** @name ZMatrix properties
+     * These functions are used to change and retrieve the properties of the
+     * ZMatrix objects in the Molecule.
+     * @{
+     */
+
+    /**
+     * Create a new ZMatrix object and return a pointer to it.
+     * @note Do not delete the object, use removeZMatrix(unsigned long id).
+     */
+    ZMatrix * addZMatrix();
+
+    /**
+     * Remove the supplied ZMatrix.
+     */
+    void removeZMatrix(ZMatrix *zmatrix);
+
+    /**
+     * @return The ZMatrix at the supplied index.
+     */
+    ZMatrix * zMatrix(int index) const;
+
+    /**
+     * @return QList of all ZMatrix objects in the Molecule.
+     */
+    QList<ZMatrix *> zMatrices() const;
+
+    /**
+     * @return The total number of ZMatrix objects in the molecule.
+     */
+    unsigned int numZMatrices() const;
+    /** @} */
+
     /**
      * Add hydrogens to the molecule.
      * @param atom If supplied only add hydrogens to the specified atom.
+     * @param atomIds Unique Atom IDs when adding hydrogens in undo/redo.
+     * @param bondIds Unique Bond IDs when adding hydrogens in undo/redo.
      */
-    void addHydrogens(Atom *atom = 0, const QList<unsigned long> &atomIds = QList<unsigned long>(),
-        const QList<unsigned long> &bondIds = QList<unsigned long>());
+    void addHydrogens(Atom *atom = 0,
+                      const QList<unsigned long> &atomIds = QList<unsigned long>(),
+                      const QList<unsigned long> &bondIds = QList<unsigned long>());
 
     /**
      * Remove all hydrogens from the molecule.
@@ -492,14 +530,14 @@ namespace Avogadro {
      * @return Pointer to an existing conformer, or NULL if the index doesn't exist.
      */
     std::vector<Eigen::Vector3d> * conformer(unsigned int index);
-    
+
     /**
      * Change the conformer to the one at the specified index.
      */
     bool setConformer(unsigned int index);
 
     /**
-     * Replace all conformers in the Molecule. The conformers are 
+     * Replace all conformers in the Molecule. The conformers are
      * mapped onto the unique ids of the atoms in the Molecule.
      * This will first clear all conformers.
      * @param conformer A vector of conformers (vector of Vector3d)
@@ -631,12 +669,25 @@ namespace Avogadro {
     mutable bool m_invalidAromaticity;
     Q_DECLARE_PRIVATE(Molecule)
 
+    std::vector<Atom *>   m_atoms;
+    std::vector<Bond *>   m_bonds;
+    QList<Atom *>         m_atomList;
+    QList<Bond *>         m_bondList;
+
     /**
      * Compute all the geometry information for the Molecule. This allows
      * several relatively expensive calculations to be cached by the Molecule
      * instead of being recalculated every time the Molecule is drawn.
      */
     void computeGeomInfo() const;
+
+  public Q_SLOTS:
+    /**
+     * Signal that the molecule has been changed in some large way, emits the
+     * moleculeChanged and updated signals. This indicates that anything
+     * listening to this signal should tear town its cache/model and rebuild it.
+     */
+    void updateMolecule();
 
   private Q_SLOTS:
     /**
@@ -666,6 +717,13 @@ namespace Avogadro {
     void updateBond();
 
   Q_SIGNALS:
+    /**
+     * Emitted when the Molecule changes in a big way, e.g. thousands of atoms
+     * added/removed. Typically functions should respond by building up their
+     * interpretation of the Molecule from the beginning.
+     */
+    void moleculeChanged();
+
     /**
      * Emitted when a child primitive is added.
      * @param primitive pointer to the primitive that was added
@@ -720,6 +778,51 @@ namespace Avogadro {
      */
     void bondRemoved(Bond *bond);
   };
+
+  inline Atom * Molecule::atom(int index) const
+  {
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < m_atomList.size())
+      return m_atomList[index];
+    else
+      return 0;
+  }
+
+  inline Atom * Molecule::atomById(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if(id < m_atoms.size())
+      return m_atoms[id];
+    else
+      return 0;
+  }
+
+  inline const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if (id < m_atomPos->size())
+      return &(*m_atomPos)[id];
+    else
+      return 0;
+  }
+
+  inline Bond * Molecule::bond(int index) const
+  {
+    QReadLocker lock(m_lock);
+    if (index >= 0 && index < m_bondList.size())
+      return m_bondList[index];
+    else
+      return 0;
+  }
+
+  inline Bond * Molecule::bondById(unsigned long id) const
+  {
+    QReadLocker lock(m_lock);
+    if(id < m_bonds.size())
+      return m_bonds[id];
+    else
+      return 0;
+  }
 
 } // End namespace Avogadro
 
