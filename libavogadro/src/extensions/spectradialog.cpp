@@ -329,9 +329,15 @@ namespace Avogadro {
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < schemes->size(); ++i) {
       settings.setArrayIndex(i);
+      ////////////////////////////////////////////////////////////////
       // FIXME: When we bump to Qt 4.5, change the following
       //      settings.setValue("scheme", schemes->at(i));
-      settings.setValue("scheme", QVariant::fromValue(schemes->at(i)));
+      settings.beginGroup("hash");
+      QHashIterator<QString, QVariant> iter(schemes->at(i));
+      while (iter.hasNext())
+        settings.setValue(iter.key(), iter.value());
+      settings.endGroup();
+      ////////////////////////////////////////////////////////////////
     }
     settings.endArray();
   }
@@ -351,9 +357,17 @@ namespace Avogadro {
     schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex(i);
+      ////////////////////////////////////////////////////////////////
       // FIXME: QVariant::toHash() isn't around until Qt 4.5
       //      schemes->append(settings.value("scheme").toHash());
-      schemes->append(settings.value("scheme").value<QHash<QString, QVariant> >());
+      settings.beginGroup("hash");
+      QHash<QString, QVariant> hash;
+      QStringList keys = settings.allKeys();
+      foreach (const QString &key, settings.allKeys())
+        hash[key] = settings.value(key);
+      schemes->append(hash);
+      settings.endGroup();
+      ////////////////////////////////////////////////////////////////
       new QListWidgetItem(schemes->at(i)["name"].toString(), ui.list_schemes);
     }
     settings.endArray();
