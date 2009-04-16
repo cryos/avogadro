@@ -331,7 +331,7 @@ namespace Avogadro {
       settings.setArrayIndex(i);
       // FIXME: When we bump to Qt 4.5, change the following
       //      settings.setValue("scheme", schemes->at(i));
-      settings.setValue("scheme", static_cast<QVariant>(schemes->at(i)));
+      settings.setValue("scheme", QVariant::fromValue(schemes->at(i)));
     }
     settings.endArray();
   }
