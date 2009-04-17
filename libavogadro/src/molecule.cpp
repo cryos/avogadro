@@ -978,12 +978,12 @@ namespace Avogadro{
     OpenBabel::OBMol obmol;
     obmol.BeginModify();
 
-    foreach (Atom *atom, m_atomList) {
+    foreach(Atom *atom, m_atomList) {
       OpenBabel::OBAtom *a = obmol.NewAtom();
       OpenBabel::OBAtom obatom = atom->OBAtom();
       *a = obatom;
     }
-    foreach (Bond *bond, m_bondList) {
+    foreach(Bond *bond, m_bondList) {
       Atom *beginAtom = atomById(bond->beginAtomId());
       if (!beginAtom)
         continue;
@@ -995,6 +995,24 @@ namespace Avogadro{
       obmol.AddBond(beginAtom->index() + 1,
                     endAtom->index() + 1, bond->order());
     }
+    foreach(Cube *cube, d->cubeList) {
+      qDebug() << "Exporting cube" << cube->name();
+      OpenBabel::OBGridData *obgrid = new OpenBabel::OBGridData;
+      obgrid->SetOrigin(OpenBabel::fileformatInput);
+      obgrid->SetAttribute(cube->name().toLatin1().data());
+      obgrid->SetUnit(OpenBabel::OBGridData::ANGSTROM);
+      obgrid->SetNumberOfPoints(cube->dimensions().x(),
+                                cube->dimensions().y(),
+                                cube->dimensions().z());
+      OpenBabel::vector3 origin(cube->min().x(), cube->min().y(), cube->min().z());
+      OpenBabel::vector3 x(cube->spacing().x(), 0.0, 0.0);
+      OpenBabel::vector3 y(0.0, cube->spacing().y(), 0.0);
+      OpenBabel::vector3 z(0.0, 0.0, cube->spacing().z());
+      obgrid->SetLimits(origin, x, y, z);
+      obgrid->SetValues(cube->m_data);
+      obmol.SetData(obgrid);
+    }
+
     obmol.EndModify();
 
     // Copy unit cells
