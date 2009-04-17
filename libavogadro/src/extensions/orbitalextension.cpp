@@ -26,6 +26,7 @@
 
 #include "gaussianfchk.h"
 #include "slaterset.h"
+#include "molpro.h"
 #include "mopacaux.h"
 #include "vdwsurface.h"
 
@@ -223,6 +224,26 @@ namespace Avogadro
         }
         return true;
       }
+      else if (info.completeSuffix().compare("mpo", Qt::CaseInsensitive) == 0) {
+        if (m_slater) {
+          delete m_slater;
+          m_slater = 0;
+        }
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        m_basis = new BasisSet;
+        Molpro mpo(fullFileName, m_basis);
+	qDebug() << "numMOs: " << m_basis->numMOs();
+        m_orbitalDialog->setMOs(m_basis->numMOs());
+        for (int i = 0; i < m_basis->numMOs(); ++i) {
+          if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
+          else if (m_basis->LUMO(i)) m_orbitalDialog->setLUMO(i);
+        }
+        return true;
+      }
+        
     }
 
     // We didn't find an appropriate filetype

@@ -229,7 +229,7 @@ namespace Avogadro {
     connectTheDots();
     qDebug() << "Dots connected...";
     m_molecule->blockSignals(false);
-    m_molecule->update();
+    m_molecule->updateMolecule();
   }
 
   void SuperCellExtension::connectTheDots()
@@ -274,6 +274,8 @@ namespace Avogadro {
     for (int a = 0; a < m_dialog->aCells(); ++a) {
       for (int b = 0; b < m_dialog->bCells(); ++b)  {
         for (int c = 0; c < m_dialog->cCells(); ++c)  {
+          // Do not copy the unit cell onto itself
+          if (a == 0 && b == 0 && c == 0) continue;
           Eigen::Vector3d disp(
                        cellVectors[0].x() * a
                        + cellVectors[1].x() * b

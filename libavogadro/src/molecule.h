@@ -681,6 +681,14 @@ namespace Avogadro {
      */
     void computeGeomInfo() const;
 
+  public Q_SLOTS:
+    /**
+     * Signal that the molecule has been changed in some large way, emits the
+     * moleculeChanged and updated signals. This indicates that anything
+     * listening to this signal should tear town its cache/model and rebuild it.
+     */
+    void updateMolecule();
+
   private Q_SLOTS:
     /**
      * Function which handles when a child primitive has been
@@ -709,6 +717,13 @@ namespace Avogadro {
     void updateBond();
 
   Q_SIGNALS:
+    /**
+     * Emitted when the Molecule changes in a big way, e.g. thousands of atoms
+     * added/removed. Typically functions should respond by building up their
+     * interpretation of the Molecule from the beginning.
+     */
+    void moleculeChanged();
+
     /**
      * Emitted when a child primitive is added.
      * @param primitive pointer to the primitive that was added
