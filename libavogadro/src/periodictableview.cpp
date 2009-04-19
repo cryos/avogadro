@@ -367,7 +367,7 @@ namespace Avogadro {
 
     setScene(table);
     setRenderHint(QPainter::Antialiasing);
-    setWindowTitle("Periodic Table");
+    setWindowTitle(tr("Periodic Table"));
     resize(490, 270);
     setFixedSize(490, 270);
     connect(table, SIGNAL(elementChanged(int)),
