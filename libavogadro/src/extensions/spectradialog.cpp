@@ -108,6 +108,8 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
+    connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(updateCurrentSpectra(QString)));
     connect(ui.list_schemes, SIGNAL(currentRowChanged(int)),
             this, SLOT(updateScheme(int)));
 
@@ -129,6 +131,18 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
     regenerateImportedSpectra();
   }
+
+  void SpectraDialog::updateCurrentSpectra(QString text)
+  {
+    if (m_spectra == text) return;
+    m_spectra = text;
+    regenerateCalculatedSpectra();
+    regenerateImportedSpectra();
+  }
+
+  ///////////////////
+  // Color schemes //
+  ///////////////////
 
   void SpectraDialog::updateScheme(int scheme) {
     ui.list_schemes->setCurrentRow(scheme);
@@ -243,11 +257,52 @@ namespace Avogadro {
     ui.tab_widget->addTab(ui.tab_appearance, tr("&Appearance"));
     ui.tab_widget->addTab(ui.tab_imageExport, tr("E&xport Image"));
 
-    // Get intensities
+    // Check for IR data
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (m_vibrations) {
+      // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
       ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+
+      // OK, we have valid vibrations, so store them for later
+      m_IRwavenumbers = m_vibrations->GetFrequencies();
+      vector<double> intensities = m_vibrations->GetIntensities();
+
+      // FIXME: dlonie: remove this when OB is fixed!! Hack to get
+      // around bug in how open babel reads in QChem files.
+      // While openbabel is broken, remove indicies (n+3), where
+      // n=0,1,2...
+      if (m_IRwavenumbers.size() == 0.75 * intensities.size()) {
+        uint count = 0;
+        for (uint i = 0; i < intensities.size(); i++) {
+          if ((i+count)%3 == 0){
+            intensities.erase(intensities.begin()+i);
+            count++;
+            i--;
+          }
+        }
+      }
+      ///////////////////////////////////////////////////////////
+
+      // Normalize intensities into transmittances
+      double maxIntensity=0;
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        if (intensities.at(i) >= maxIntensity) {
+          maxIntensity = intensities.at(i);
+        }
+      }
+
+      // Clear out any old transmittance data
+      m_IRtransmittances.clear();
+
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        double t = intensities.at(i);
+        t = t / maxIntensity; 	// Normalize
+        t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+        t = 1 - t; 		// Simulate transmittance
+        t *= 100;		// Convert to percent
+        m_IRtransmittances.push_back(t);
+      }
     }
 
     // Remove/change this when other methods are added
@@ -268,50 +323,7 @@ namespace Avogadro {
     }
     // Set the appearances tab to be opened by default
     ui.tab_widget->setCurrentIndex(0);
-
-    // OK, we have valid vibrations, so store them
-    m_wavenumbers = m_vibrations->GetFrequencies();
-    vector<double> intensities = m_vibrations->GetIntensities();
-
-    // FIXME: dlonie: remove this when OB is fixed!! Hack to get around bug in how open babel reads in QChem files
-    // While openbabel is broken, remove indicies (n+3), where
-    // n=0,1,2...
-    if (m_wavenumbers.size() == 0.75 * intensities.size()) {
-      uint count = 0;
-      for (uint i = 0; i < intensities.size(); i++) {
-        if ((i+count)%3 == 0){
-          intensities.erase(intensities.begin()+i);
-          count++;
-          i--;
-        }
-      }
-    }
-
-    // Normalize intensities into transmittances
-    double maxIntensity=0;
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      if (intensities.at(i) >= maxIntensity) {
-        maxIntensity = intensities.at(i);
-      }
-    }
-
-    if (maxIntensity == 0) {
-      qWarning() << "SpectraDialog::setMolecule: No intensities > 0 in dataset.";
-      return;
-    }
-
-    // Clear out any old transmittance data
-    m_transmittances.clear();
-
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      double t = intensities.at(i);
-      t = t / maxIntensity; 	// Normalize
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
-      t = 1 - t; 		// Simulate transmittance
-      t *= 100;			// Convert to percent
-      m_transmittances.push_back(t);
-    }
-
+    m_spectra = ui.combo_spectra->currentText();
     regenerateCalculatedSpectra();
   }
 
@@ -467,16 +479,18 @@ namespace Avogadro {
     QTextStream out(&file);
     QString format = "%1\t%2\n";
 
-    out << "Frequencies\tIntensities\n";
-
-    for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
-      out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+    if (m_spectra == "Infrared") {
+      out << "Frequencies\tIntensities\n";
+      
+      for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
+        out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+      }
     }
-
+    
     file.close();
   }
-
-
+  
+  
   void SpectraDialog::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -484,7 +498,7 @@ namespace Avogadro {
     if (defaultPath.isEmpty()) {
       defaultPath = QDir::homePath();
     }
-
+    
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
     QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*.jdx);;All Files (* *.*)"));
 
@@ -493,14 +507,16 @@ namespace Avogadro {
       qWarning() << "Error reading file " << filename;
       return;
     }
-
+    
     // get file extension
     QStringList tmp 	= filename.split(".");
     QString ext 	= tmp.at(tmp.size()-1);
-
+    
     // Clear out any old data
-    m_imported_wavenumbers.clear();
-    m_imported_transmittances.clear();
+    if (m_spectra == "Infrared") {
+      m_imported_IRwavenumbers.clear();
+      m_imported_IRtransmittances.clear();
+    }
 
     QTextStream in(&file);
 
@@ -514,8 +530,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+            m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+            m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -533,8 +551,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+          m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+          m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -552,8 +572,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+            m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+            m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -567,16 +589,18 @@ namespace Avogadro {
     }
 
     // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
-    bool convert = true;
-    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-      if (m_imported_transmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
-        convert = false;
-        break;
+    if (m_spectra == "Infrared") {
+      bool convert = true;
+      for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+        if (m_imported_IRtransmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
+          convert = false;
+          break;
+        }
       }
-    }
-    if (convert) {
-      for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-        m_imported_transmittances.at(i) *= 100;
+      if (convert) {
+        for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+          m_imported_IRtransmittances.at(i) *= 100;
+        }
       }
     }
 
@@ -718,21 +742,24 @@ namespace Avogadro {
 
   void SpectraDialog::getCalculatedSinglets(PlotObject *plotObject)
   {
-    plotObject->addPoint( 400, 100); // Initial point
+    if (m_spectra == "Infrared") {
+      plotObject->addPoint( 400, 100); // Initial point
 
-    for (uint i = 0; i < m_transmittances.size(); i++) {
-      double wavenumber = m_wavenumbers.at(i) * m_scale;
-      double transmittance = m_transmittances.at(i);
-      plotObject->addPoint ( wavenumber, 100 );
-      if (ui.cb_labelPeaks->isChecked()) {
-        plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+      for (uint i = 0; i < m_IRtransmittances.size(); i++) {
+        double wavenumber = m_IRwavenumbers.at(i) * m_scale;
+        double transmittance = m_IRtransmittances.at(i);
+        plotObject->addPoint ( wavenumber, 100 );
+        if (ui.cb_labelPeaks->isChecked()) {
+          plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+        }
+        else {
+          plotObject->addPoint ( wavenumber, transmittance );
+        }
+        plotObject->addPoint ( wavenumber, 100 );
       }
-      else {
-        plotObject->addPoint ( wavenumber, transmittance );
-      }
-      plotObject->addPoint ( wavenumber, 100 );
+      plotObject->addPoint( 4000, 100); // Final point
+      return;
     }
-    plotObject->addPoint( 4000, 100); // Final point
   }
 
 
@@ -742,58 +769,62 @@ namespace Avogadro {
     double FWHM = ui.spin_FWHM->value();
     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
-    // determine range
-    // - find maximum and minimum
-    double min = 0.0 + 2*FWHM;
-    double max = 4000.0 - 2*FWHM;
-    for (uint i = 0; i < m_wavenumbers.size(); i++) {
-      double cur = m_wavenumbers.at(i);
-      if (cur > max) max = cur;
-      if (cur < min) min = cur;
-    }
-    min -= 2*FWHM;
-    max += 2*FWHM;
-    // - get resolution (TODO)
-    double res = 1.0;
-    // create points
-    for (double x = min; x < max; x += res) {
-      double y = 100;
-      for (uint i = 0; i < m_transmittances.size(); i++) {
-        double t = m_transmittances.at(i);
-        double w = m_wavenumbers.at(i) * m_scale;
-        y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+    if (m_spectra == "Infrared") {
+      // determine range
+      // - find maximum and minimum
+      double min = 0.0 + 2*FWHM;
+      double max = 4000.0 - 2*FWHM;
+      for (uint i = 0; i < m_IRwavenumbers.size(); i++) {
+        double cur = m_IRwavenumbers.at(i);
+        if (cur > max) max = cur;
+        if (cur < min) min = cur;
       }
-      plotObject->addPoint(x,y);
-    }
-
-    // Normalization is probably screwed up, so renormalize the data
-    max = plotObject->points().at(0)->y();
-    min = max;
-    for(int i = 0; i< plotObject->points().size(); i++) {
-      double cur = plotObject->points().at(i)->y();
-      if (cur < min) min = cur;
-      if (cur > max) max = cur;
-    }
-    for(int i = 0; i< plotObject->points().size(); i++) {
-      double cur = plotObject->points().at(i)->y();
-      // cur - min 		: Shift lowest point of plot to be at zero
-      // 100 / (max - min)	: Conversion factor for current spread -> percent
-      // * 0.97 + 3		: makes plot stay away from 0 transmittance
-      //			: (easier to see multiple peaks on strong signals)
-      plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+      min -= 2*FWHM;
+      max += 2*FWHM;
+      // - get resolution (TODO)
+      double res = 1.0;
+      // create points
+      for (double x = min; x < max; x += res) {
+        double y = 100;
+        for (uint i = 0; i < m_IRtransmittances.size(); i++) {
+          double t = m_IRtransmittances.at(i);
+          double w = m_IRwavenumbers.at(i) * m_scale;
+          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+        }
+        plotObject->addPoint(x,y);
+      }
+      
+      // Normalization is probably screwed up, so renormalize the data
+      max = plotObject->points().at(0)->y();
+      min = max;
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        if (cur < min) min = cur;
+        if (cur > max) max = cur;
+      }
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        // cur - min 		: Shift lowest point of plot to be at zero
+        // 100 / (max - min)	: Conversion factor for current spread -> percent
+        // * 0.97 + 3		: makes plot stay away from 0 transmittance
+        //			: (easier to see multiple peaks on strong signals)
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+      }
     }
   }
 
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
   {
     plotObject->clearPoints();
-    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-      double wavenumber = m_imported_wavenumbers.at(i);
-      double y = m_imported_transmittances.at(i);
-      if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-        y = 100 - y;
+    if (m_spectra == "Infrared") {
+      for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+        double wavenumber = m_imported_IRwavenumbers.at(i);
+        double y = m_imported_IRtransmittances.at(i);
+        if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+          y = 100 - y;
+        }
+        plotObject->addPoint ( wavenumber, y );
       }
-      plotObject->addPoint ( wavenumber, y );
     }
   }
 }

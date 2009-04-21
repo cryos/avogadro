@@ -69,6 +69,7 @@ namespace Avogadro {
     void updateYAxis(QString);
     void schemeChanged();
     void updateScheme(int scheme);
+    void updateCurrentSpectra(QString text);
     void addScheme();
     void removeScheme();
     void renameScheme();
@@ -93,10 +94,11 @@ namespace Avogadro {
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
-    std::vector<double> m_wavenumbers;
-    std::vector<double> m_transmittances;
-    std::vector<double> m_imported_wavenumbers;
-    std::vector<double> m_imported_transmittances;
+    QString m_spectra;
+    std::vector<double> m_IRwavenumbers;
+    std::vector<double> m_IRtransmittances;
+    std::vector<double> m_imported_IRwavenumbers;
+    std::vector<double> m_imported_IRtransmittances;
     Molecule *m_molecule;
     OpenBabel::OBVibrationData *m_vibrations;
   };
