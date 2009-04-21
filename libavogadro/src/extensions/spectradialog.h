@@ -90,7 +90,7 @@ namespace Avogadro {
     double m_scale;
     QString m_yaxis;
     int m_scheme;
-    QList<QHash<QString, QVariant> > *schemes;
+    QList<QHash<QString, QVariant> > *m_schemes;
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;

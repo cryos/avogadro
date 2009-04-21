@@ -52,6 +52,7 @@ namespace Avogadro {
 
     // Initialize vars
     m_yaxis = ui.combo_yaxis->currentText();
+    m_schemes = new QList<QHash<QString, QVariant> >;
 
     // Hide advanced options initially
     ui.tab_widget->hide();
@@ -153,18 +154,18 @@ namespace Avogadro {
   }
 
   void SpectraDialog::addScheme() {
-    QHash<QString, QVariant> newScheme = schemes->at(m_scheme);
+    QHash<QString, QVariant> newScheme = m_schemes->at(m_scheme);
     newScheme["name"] = tr("New Scheme");
     new QListWidgetItem(newScheme["name"].toString(), ui.list_schemes);
-    schemes->append(newScheme);
+    m_schemes->append(newScheme);
     schemeChanged();
   }
 
   void SpectraDialog::removeScheme() {
-    if (schemes->size() <= 1) return; // Don't delete the last scheme!
+    if (m_schemes->size() <= 1) return; // Don't delete the last scheme!
     int ret = QMessageBox::question(this, tr("Confirm Scheme Removal"), tr("Really remove current scheme?"));
     if (ret == QMessageBox::Ok) {
-      schemes->removeAt(m_scheme);
+      m_schemes->removeAt(m_scheme);
       delete (ui.list_schemes->takeItem(m_scheme));
     }
   }
@@ -174,51 +175,51 @@ namespace Avogadro {
     bool ok;
     QString text = QInputDialog::getText(this, tr("Change Scheme Name"),
                                          tr("Enter new name for current scheme:"), QLineEdit::Normal,
-                                         schemes->at(m_scheme)["name"].toString(), &ok);
+                                         m_schemes->at(m_scheme)["name"].toString(), &ok);
     if (ok) {
-      (*schemes)[idx]["name"] = text;
+      (*m_schemes)[idx]["name"] = text;
       delete (ui.list_schemes->takeItem(idx));
-      ui.list_schemes->insertItem(idx, schemes->at(idx)["name"].toString());
+      ui.list_schemes->insertItem(idx, m_schemes->at(idx)["name"].toString());
       updateScheme(idx);
     }
   }
 
   void SpectraDialog::changeBackgroundColor()
   {
-    QColor current (schemes->at(m_scheme)["backgroundColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["backgroundColor"] = color;
+      (*m_schemes)[m_scheme]["backgroundColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeForegroundColor()
   {
-    QColor current (schemes->at(m_scheme)["foregroundColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["foregroundColor"] = color;
+      (*m_schemes)[m_scheme]["foregroundColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeCalculatedSpectraColor()
   {
-    QColor current (schemes->at(m_scheme)["calculatedColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["calculatedColor"] = color;
+      (*m_schemes)[m_scheme]["calculatedColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeImportedSpectraColor()
   {
-    QColor current (schemes->at(m_scheme)["importedColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["importedColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["importedColor"] = color;
+      (*m_schemes)[m_scheme]["importedColor"] = color;
       schemeChanged();
     }
   }
@@ -226,10 +227,10 @@ namespace Avogadro {
   void SpectraDialog::changeFont()
   {
     bool ok;
-    QFont current (schemes->at(m_scheme)["font"].value<QFont>());
+    QFont current (m_schemes->at(m_scheme)["font"].value<QFont>());
     QFont font = QFontDialog::getFont(&ok, current, this);
     if (ok) {
-      (*schemes)[m_scheme]["font"] = font;
+      (*m_schemes)[m_scheme]["font"] = font;
       schemeChanged();
     }
   }
@@ -339,15 +340,17 @@ namespace Avogadro {
     settings.setValue("spectra/image/DPI", ui.spin_imageDPI->value());
     settings.setValue("spectra/image/optimizeFontSize", ui.cb_imageFontAdjust->isChecked());
     settings.beginWriteArray("spectra/schemes");
-    for (int i = 0; i < schemes->size(); ++i) {
+    for (int i = 0; i < m_schemes->size(); ++i) {
       settings.setArrayIndex(i);
       ////////////////////////////////////////////////////////////////
       // FIXME: When we bump to Qt 4.5, change the following
-      //      settings.setValue("scheme", schemes->at(i));
+      //      settings.setValue("scheme", m_schemes->at(i));
       settings.beginGroup("hash");
-      QHashIterator<QString, QVariant> iter(schemes->at(i));
-      while (iter.hasNext())
-        settings.setValue(iter.key(), iter.value());
+      QHashIterator<QString, QVariant> iter(m_schemes->at(i));
+      while (iter.hasNext()) {
+          iter.next();
+          settings.setValue(iter.key(), iter.value());
+        }
       settings.endGroup();
       ////////////////////////////////////////////////////////////////
     }
@@ -357,7 +360,6 @@ namespace Avogadro {
   void SpectraDialog::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     setScale(settings.value("spectra/scale", 1.0).toDouble());
-    int scheme = settings.value("spectra/currentScheme", 0).toInt();
     ui.spin_FWHM->setValue(settings.value("spectra/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/labelPeaks",false).toBool());
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
@@ -365,27 +367,28 @@ namespace Avogadro {
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
     ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
     ui.cb_imageFontAdjust->setChecked(settings.value("spectra/image/optimizeFontSize", true).toBool());
+    m_scheme = settings.value("spectra/currentScheme", 0).toInt();
     int size = settings.beginReadArray("spectra/schemes");
-    schemes = new QList<QHash<QString, QVariant> >;
+    m_schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex(i);
       ////////////////////////////////////////////////////////////////
       // FIXME: QVariant::toHash() isn't around until Qt 4.5
-      //      schemes->append(settings.value("scheme").toHash());
+      //      m_schemes->append(settings.value("scheme").toHash());
       settings.beginGroup("hash");
       QHash<QString, QVariant> hash;
       QStringList keys = settings.allKeys();
       foreach (const QString &key, settings.allKeys())
         hash[key] = settings.value(key);
-      schemes->append(hash);
+      m_schemes->append(hash);
       settings.endGroup();
       ////////////////////////////////////////////////////////////////
-      new QListWidgetItem(schemes->at(i)["name"].toString(), ui.list_schemes);
+      new QListWidgetItem(m_schemes->at(i)["name"].toString(), ui.list_schemes);
     }
     settings.endArray();
 
     // create scheme list if it doesn't already exist
-    if (size == 0) {
+    if (m_schemes->isEmpty()) {
       // dark
       QHash<QString, QVariant> dark;
       dark["name"] = tr("Dark");
@@ -395,7 +398,7 @@ namespace Avogadro {
       dark["importedColor"] = Qt::gray;
       dark["font"] = QFont();
       new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
-      schemes->append(dark);
+      m_schemes->append(dark);
 
       // light
       QHash<QString, QVariant> light;
@@ -406,7 +409,7 @@ namespace Avogadro {
       light["importedColor"] = Qt::gray;
       light["font"] = QFont();
       new QListWidgetItem(light["name"].toString(), ui.list_schemes);
-      schemes->append(light);
+      m_schemes->append(light);
 
       // publication
       QHash<QString, QVariant> publication;
@@ -417,7 +420,7 @@ namespace Avogadro {
       publication["importedColor"] = Qt::gray;
       publication["font"] = QFont("Century Schoolbook L", 13);
       new QListWidgetItem(publication["name"].toString(), ui.list_schemes);
-      schemes->append(publication);
+      m_schemes->append(publication);
 
       // handdrawn
       QHash<QString, QVariant> handdrawn;
@@ -428,23 +431,22 @@ namespace Avogadro {
       handdrawn["importedColor"] = Qt::lightGray;
       handdrawn["font"] = QFont("Domestic Manners", 16);
       new QListWidgetItem(handdrawn["name"].toString(), ui.list_schemes);
-      schemes->append(handdrawn);
-
+      m_schemes->append(handdrawn);
     }
-    updateScheme(scheme);
+    updateScheme(m_scheme);
   }
 
   void SpectraDialog::schemeChanged() {
-    ui.plot->setBackgroundColor(schemes->at(m_scheme)["backgroundColor"].value<QColor>());
-    ui.plot->setForegroundColor(schemes->at(m_scheme)["foregroundColor"].value<QColor>());
-    ui.plot->setFont(schemes->at(m_scheme)["font"].value<QFont>());
+    ui.plot->setBackgroundColor(m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
+    ui.plot->setForegroundColor(m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
+    ui.plot->setFont(m_schemes->at(m_scheme)["font"].value<QFont>());
 
     QPen currentPen (m_importedSpectra->linePen());
-    currentPen.setColor(schemes->at(m_scheme)["importedColor"].value<QColor>());
+    currentPen.setColor(m_schemes->at(m_scheme)["importedColor"].value<QColor>());
     m_importedSpectra->setLinePen(currentPen);
 
     currentPen = (m_calculatedSpectra->linePen());
-    currentPen.setColor(schemes->at(m_scheme)["calculatedColor"].value<QColor>());
+    currentPen.setColor(m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
     m_calculatedSpectra->setLinePen(currentPen);
 
   }
