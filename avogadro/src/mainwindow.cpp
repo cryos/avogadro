@@ -857,10 +857,11 @@ namespace Avogadro
             // Now check non-bonded pairs
             FOR_PAIRS_OF_MOL(p, obMolecule)
               {
-                OBAtom *a = mol.GetAtom((*p)[0]);
-                OBAtom *b = mol.GetAtom((*p)[1]);
+                OBAtom *a = obMolecule->GetAtom((*p)[0]);
+                OBAtom *b = obMolecule->GetAtom((*p)[1]);
                 if (fabs(a->GetDistance(b)) < 1.0e-6) {
-                  vector3 v1.randomUnitVector();
+                  vector3 v1;
+                  v1.randomUnitVector();
                   a->SetVector(a->GetVector() + v1);
                   b->SetVector(b->GetVector() - v1);
                 }
