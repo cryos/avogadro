@@ -47,8 +47,8 @@ namespace Avogadro
 
   PythonTerminal::~PythonTerminal()
   {
-    if (m_terminalDock)
-      m_terminalDock->deleteLater();
+    //if (m_terminalDock)
+      //m_terminalDock->deleteLater();
   }
 
   QList<QAction *> PythonTerminal::actions() const

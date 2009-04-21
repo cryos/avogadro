@@ -305,6 +305,7 @@ namespace Avogadro
       }
     }
     m_init = true;
+    outputAll();
   }
 
   /// This is the stuff we actually use right now - porting to new data structure
@@ -667,7 +668,57 @@ namespace Avogadro
 
   void BasisSet::outputAll()
   {
-
+    // Can be called to print out a summary of the basis set as read in
+    qDebug() << "\nGaussian Basis Set\nNumber of atoms:" << m_numAtoms;
+    for (uint i = 0; i < m_symmetry.size(); ++i) {
+      qDebug() << i
+          << "\tAtom Index:" << m_atomIndices[i]
+          << "\tSymmetry:" << m_symmetry[i]
+          << "\tMO Index:" << m_moIndices[i]
+          << "\tGTO Index:" << m_gtoIndices[i];
+    }
+    qDebug() << m_symmetry.size() << m_gtoIndices.size()
+        << m_gtoIndices[m_symmetry.size()];
+    for (uint i = 0; i < m_symmetry.size(); ++i) {
+      switch(m_symmetry[i]) {
+        case S:
+          qDebug() << "Shell" << i << "\tS\n  MO 1\t" << m_moMatrix(0, m_moIndices[i]);
+          break;
+        case P:
+          qDebug() << "Shell" << i << "\tP\n  MO 1\t"
+              << m_moMatrix(0, m_moIndices[i])
+              << "\t" << m_moMatrix(0, m_moIndices[i+1])
+              << "\t" << m_moMatrix(0, m_moIndices[i+2]);
+          break;
+        case D:
+          qDebug() << "Shell" << i << "\tD\n  MO 1\t"
+              << m_moMatrix(0, m_moIndices[i])
+              << "\t" << m_moMatrix(0, m_moIndices[i+1])
+              << "\t" << m_moMatrix(0, m_moIndices[i+2])
+              << "\t" << m_moMatrix(0, m_moIndices[i+3])
+              << "\t" << m_moMatrix(0, m_moIndices[i+4])
+              << "\t" << m_moMatrix(0, m_moIndices[i+5]);
+          break;
+        case D5:
+          qDebug() << "Shell" << i << "\tD\n  MO 1\t"
+              << m_moMatrix(0, m_moIndices[i])
+              << "\t" << m_moMatrix(0, m_moIndices[i+1])
+              << "\t" << m_moMatrix(0, m_moIndices[i+2])
+              << "\t" << m_moMatrix(0, m_moIndices[i+3])
+              << "\t" << m_moMatrix(0, m_moIndices[i+4]);
+          break;
+        default:
+          qDebug() << "Error: unhandled type...";
+      }
+      unsigned int cIndex = m_gtoIndices[i];
+      for (uint j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
+        qDebug() << cIndex
+          << "\tc:" << m_gtoC[cIndex]
+          << "\ta:" << m_gtoA[cIndex];
+        ++cIndex;
+      }
+    }
+    qDebug() << "\n";
   }
 
 }

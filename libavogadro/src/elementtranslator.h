@@ -22,30 +22,29 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef ELEMENTTRANSLATE_H
-#define ELEMENTTRANSLATE_H
+#ifndef ELEMENTTRANSLATOR_H
+#define ELEMENTTRANSLATOR_H
 
 #include <avogadro/global.h>
+#include <QObject>
 
 namespace Avogadro {
 
   /**
-   * @class ElementTranslator elementtranslate.h <avogadro/elementtranslate.h>
+   * @class ElementTranslator elementtranslator.h <avogadro/elementtranslator.h>
    * @brief Internationalization of element names
    * @author Geoff Hutchison
    *
    * This class provides for translation of element names: e.g., tr("Carbon")
    * To use the global translator:
    * @code
-   * #include <avogadro/elementtranslate.h>
+   * #include <avogadro/elementtranslator.h>
    * ...
    * Avogadro::elementTranslator.name(6); // Return "carbon" in English
    * @endcode
    */
-  class A_EXPORT ElementTranslator: public QObject
+  class A_EXPORT ElementTranslator : public QObject
   {
-    Q_OBJECT
-
   public:
     ElementTranslator();
     ~ElementTranslator();

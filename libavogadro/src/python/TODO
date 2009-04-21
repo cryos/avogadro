@@ -31,7 +31,7 @@ line.h
 point.h
 
 # later...
-elementtranslate.h
+elementtranslator.h
 navigate.h
 periodictableview.h
 undosequence.h

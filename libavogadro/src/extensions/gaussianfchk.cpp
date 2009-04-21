@@ -132,14 +132,19 @@ namespace Avogadro
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
     for (unsigned int i = 0; i < m_shellTypes.size(); ++i) {
+      // Handle the SP case separately - this should possibly be a distinct type
       if (m_shellTypes.at(i) == -1)  {
         // SP orbital type - actually have to add two shells
         int s = basis->addBasis(m_shelltoAtom.at(i) - 1, S);
-        int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
+        int tmpGTO = nGTO;
         for (int j = 0; j < m_shellNums.at(i); ++j) {
           basis->addGTO(s, m_c.at(nGTO), m_a.at(nGTO));
-          basis->addGTO(p, m_csp.at(nGTO), m_a.at(nGTO));
-          nGTO++;
+          ++nGTO;
+        }
+        int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
+        for (int j = 0; j < m_shellNums.at(i); ++j) {
+          basis->addGTO(p, m_csp.at(tmpGTO), m_a.at(tmpGTO));
+          ++tmpGTO;
         }
       }
       else {
@@ -169,7 +174,7 @@ namespace Avogadro
         int b = basis->addBasis(m_shelltoAtom.at(i) - 1, type);
         for (int j = 0; j < m_shellNums.at(i); ++j) {
           basis->addGTO(b, m_c.at(nGTO), m_a.at(nGTO));
-          nGTO++;
+          ++nGTO;
         }
       }
     }
@@ -194,7 +199,7 @@ namespace Avogadro
       QString line = m_in.readLine();
       if (line.isEmpty())
         return tmp;
-      
+
       QStringList list = line.split(" ", QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i) {
         if (tmp.size() >= n) {
@@ -285,7 +290,7 @@ namespace Avogadro
       QString line = m_in.readLine();
       if (line.isEmpty())
         return false;
-        
+
       if (width == 0) { // we can split by spaces
         QStringList list = line.split(" ", QString::SkipEmptyParts);
         for (int k = 0; k < list.size(); ++k) {

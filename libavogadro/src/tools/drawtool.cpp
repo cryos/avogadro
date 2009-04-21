@@ -38,7 +38,7 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
-#include <avogadro/elementtranslate.h>
+#include <avogadro/elementtranslator.h>
 
 #include <Eigen/Core>
 
