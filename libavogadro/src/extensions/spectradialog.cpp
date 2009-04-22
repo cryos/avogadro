@@ -237,7 +237,7 @@ namespace Avogadro {
 
   void SpectraDialog::setMolecule(Molecule *molecule)
   {
-    if (m_molecule == molecule) {
+    if (m_molecule == molecule || !molecule) {
       return;
     }
     m_molecule = molecule;
