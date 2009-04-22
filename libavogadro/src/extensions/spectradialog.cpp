@@ -367,7 +367,7 @@ namespace Avogadro {
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
     ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
     ui.cb_imageFontAdjust->setChecked(settings.value("spectra/image/optimizeFontSize", true).toBool());
-    m_scheme = settings.value("spectra/currentScheme", 0).toInt();
+    int scheme = settings.value("spectra/currentScheme", 0).toInt();
     int size = settings.beginReadArray("spectra/schemes");
     m_schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
@@ -433,7 +433,7 @@ namespace Avogadro {
       new QListWidgetItem(handdrawn["name"].toString(), ui.list_schemes);
       m_schemes->append(handdrawn);
     }
-    updateScheme(m_scheme);
+    updateScheme(scheme);
   }
 
   void SpectraDialog::schemeChanged() {
