@@ -25,8 +25,6 @@
   02110-1301, USA.
  **********************************************************************/
 
-// #include<config.h> gave me headaches because another config.h file
-// was getting included!
 // krazy:excludeall=includes
 #include "config.h"
 

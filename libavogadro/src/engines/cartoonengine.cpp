@@ -25,7 +25,6 @@
 
 #include "cartoonengine.h"
 
-#include <config.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/residue.h>
@@ -92,7 +91,7 @@ namespace Avogadro {
     int numTriangles = m_normals.size();
     glDisable( GL_CULL_FACE );
     for (int i = 0; i < numTriangles; ++i) {
-      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1), 
+      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1),
           m_triangles.at(i*3+2), m_normals.at(i));
     }
     glEnable( GL_CULL_FACE );
@@ -136,7 +135,7 @@ namespace Avogadro {
     int numTriangles = m_normals.size();
     glDisable( GL_CULL_FACE );
     for (int i = 0; i < numTriangles; ++i) {
-      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1), 
+      pd->painter()->drawTriangle(m_triangles.at(i*3), m_triangles.at(i*3+1),
           m_triangles.at(i*3+2), m_normals.at(i));
     }
     glEnable( GL_CULL_FACE );
@@ -200,13 +199,13 @@ namespace Avogadro {
 
 
     m_triangles.clear();
-    m_normals.clear(); 
+    m_normals.clear();
     // 4-turn helixes
     for (int i = 0; i < protein.num4turnHelixes(); ++i) {
       QList<Eigen::Vector3d> helixPoints;
       QList<Eigen::Vector3d> helixAxis;
       QList<Eigen::Vector3d> helixNormals;
- 
+
       // all N, CA, C, O atoms in that order
       QList<unsigned long> helix = protein.helix4BackboneAtoms(i);
       int numResidues = helix.size() / 4;
@@ -283,15 +282,15 @@ namespace Avogadro {
         m_triangles.append(helixPoints.at(i) + axis);
         m_triangles.append(helixPoints.at(i+1) - axis);
         m_triangles.append(helixPoints.at(i) - axis);
- 
+
         m_triangles.append(helixPoints.at(i) + axis);
         m_triangles.append(helixPoints.at(i+1) + axis);
         m_triangles.append(helixPoints.at(i+1) - axis);
-        
+
         m_normals.append(helixNormals.at(i));
         m_normals.append(helixNormals.at(i));
       }
-      
+
     }
     // 3-turn helixes
     for (int i = 0; i < protein.num3turnHelixes(); ++i) {

@@ -24,7 +24,6 @@
 
 #include "polygonengine.h"
 
-#include <config.h>
 #include <avogadro/color.h>
 #include <avogadro/painter.h>
 #include <avogadro/painterdevice.h>

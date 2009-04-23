@@ -23,7 +23,7 @@
 
 #include "mainwindow.h"
 
-#include <config.h>
+#include "config.h"
 
 #include "aboutdialog.h"
 #include "addenginedialog.h"

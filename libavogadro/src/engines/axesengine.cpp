@@ -23,7 +23,6 @@
  **********************************************************************/
 
 #include "axesengine.h"
-#include <config.h>
 
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

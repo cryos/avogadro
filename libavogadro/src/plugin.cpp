@@ -23,7 +23,6 @@
  **********************************************************************/
 
 #include "plugin.h"
-#include <config.h>
 
 #include <QAction>
 #include <QIcon>

@@ -42,7 +42,7 @@
 #include <iostream>
 
 // get the SVN revision string
-#include <config.h>
+#include "config.h"
 
 #include <avogadro/pluginmanager.h>
 

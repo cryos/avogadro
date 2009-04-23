@@ -25,7 +25,6 @@
 
 #include "stickengine.h"
 
-#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -49,13 +48,13 @@ using namespace Eigen;
 namespace Avogadro {
 
   StickEngine::StickEngine(QObject *parent) : Engine(parent), m_settingsWidget(0),
-		m_radius(0.25)
+        m_radius(0.25)
   {
   }
 
   StickEngine::~StickEngine()
   {
-	  // Delete the settings widget if it exists
+      // Delete the settings widget if it exists
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
   }
@@ -202,7 +201,7 @@ namespace Avogadro {
     return Engine::Opaque | Engine::Transparent;
   }
 
-	// **** Settings Widget ***
+    // **** Settings Widget ***
 
   void StickEngine::setRadius(int value)
   {
@@ -236,7 +235,7 @@ namespace Avogadro {
   void StickEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-		// default = 0.25 as far as m_radius
+        // default = 0.25 as far as m_radius
     setRadius(settings.value("radius", 5).toInt());
     if (m_settingsWidget) {
       m_settingsWidget->radiusSlider->setValue(SCALING_FACTOR*m_radius);

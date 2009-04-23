@@ -22,9 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
-#include <avogadro/camera.h>
-#include <avogadro/glwidget.h>
+#include "camera.h"
+#include "glwidget.h"
 #include <avogadro/molecule.h>
 
 using namespace Eigen;

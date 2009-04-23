@@ -24,7 +24,6 @@
 
 #include "ringengine.h"
 
-#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

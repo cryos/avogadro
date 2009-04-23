@@ -23,7 +23,6 @@
  **********************************************************************/
 
 #include "dipoleengine.h"
-#include <config.h>
 
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>

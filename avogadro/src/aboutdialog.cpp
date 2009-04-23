@@ -17,6 +17,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 #include "aboutdialog.h"
+#include "config.h"
 
 #include <QtCore/QVector>
 #include <QtGui/QMouseEvent>
@@ -29,7 +30,6 @@
 #include <QtGui/QStyleOption>
 
 #include <avogadro/global.h>
-#include <config.h>
 
 namespace Avogadro {
 

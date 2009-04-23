@@ -22,9 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
-#include <avogadro/primitive.h>
-#include <avogadro/idlist.h>
+#include "idlist.h"
+#include "primitive.h"
 
 namespace Avogadro {
 

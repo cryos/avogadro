@@ -24,7 +24,6 @@
 
 #include "ribbonengine.h"
 
-#include <config.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/residue.h>
@@ -155,7 +154,7 @@ namespace Avogadro {
 
   void RibbonEngine::updateChains(PainterDevice *pd)
   {
-    if (!isEnabled()) 
+    if (!isEnabled())
       return;
 
     m_chains.clear();
