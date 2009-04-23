@@ -1,4 +1,11 @@
-project(avogadro) # the name of your project
+project(Avogadro) # the name of your project
+
+# The Avogadro version number, currently used by the Avogadro library too
+set(Avogadro_VERSION_MAJOR 0)
+set(Avogadro_VERSION_MINOR 9)
+set(Avogadro_VERSION_PATCH 3)
+set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
+set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
@@ -22,6 +29,7 @@ include (TestIfWeNeedFPermissive)
 
 # use mulithreaded dll runtime on windows when using MSVC
 if (MSVC)
+  # FIXME From what I can tell this is really hackish - prevents Windows debug builds
   set(CMAKE_CXX_FLAGS "/MD ${CMAKE_CXX_FLAGS}")
   # Do not generate manifests for the plugins - caused issues loading plugins
   set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -148,7 +156,6 @@ if(ENABLE_TESTS)
   set(QT_USE_QTTEST TRUE)
   enable_testing()
   include (CTest)
-  include (AvoCTestConfig)
   message(STATUS "Unit testing enabled, run make test to run them")
 endif(ENABLE_TESTS)
 
@@ -212,26 +219,35 @@ if(UNIX)
   endif(APPLE)
 endif(UNIX)
 
-CONFIGURE_FILE(
+# Add support for an uninstall target
+configure_file(
   "${CMAKE_MODULE_PATH}/cmake_uninstall.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
   IMMEDIATE @ONLY)
 
-ADD_CUSTOM_TARGET(uninstall
+add_custom_target(uninstall
   "${CMAKE_COMMAND}" -P
   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
-FILE(GLOB_RECURSE avogadro_TS i18n/*.ts)
-ADD_CUSTOM_TARGET(update-translations
+file(GLOB_RECURSE avogadro_TS i18n/*.ts)
+add_custom_target(update-translations
     COMMAND ${QT_LUPDATE_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR})
 
-ADD_CUSTOM_COMMAND(TARGET create-translations
-     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create-translations.sh
+add_custom_command(TARGET create-translations
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create-translations.sh
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/i18n)
 
+# Configure and install an Avogadro CMake style configuration file
+#configure_file(
+#  "${CMAKE_MODULE_PATH}/AvogadroConfig.cmake.in"
+#  "${CMAKE_BINARY_DIR}/AvogadroConfig.cmake"
+#  IMMEDIATE @ONLY
+#)
+
+# Place binaries and libraries in the root of the build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     CACHE STRING "Binary build output directory")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"

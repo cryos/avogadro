@@ -64,6 +64,7 @@ namespace Avogadro {
 
   PythonEngine::~PythonEngine()
   {
+    delete d;
   }
 
   Engine* PythonEngine::clone() const

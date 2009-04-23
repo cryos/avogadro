@@ -139,8 +139,8 @@ namespace Avogadro
 
         inline const_iterator(QVector< QList<Primitive *> > *p) : vl(p)
         {
-          vit = vl->begin();
-          lit = (*vit).begin();
+          vit = vl->constBegin();
+          lit = (*vit).constBegin();
           while(lit == (*vit).constEnd())
           {
             vit++;

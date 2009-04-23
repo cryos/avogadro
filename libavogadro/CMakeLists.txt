@@ -29,6 +29,9 @@ function(avogadro_plugin plugin_name src_list)
               ${plugin_RC_SRCS})
   target_link_libraries(${plugin_name} ${LINK_LIBS})
   install(TARGETS ${plugin_name} DESTINATION ${DESTINATION_DIR})
+  set_target_properties(${plugin_name} PROPERTIES
+                        OUTPUT_NAME ${plugin_name}
+			PREFIX "")
 endfunction(avogadro_plugin)
 
 # tell cmake to process CMakeLists.txt in that subdirectory

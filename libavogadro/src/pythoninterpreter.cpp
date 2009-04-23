@@ -67,6 +67,7 @@ namespace Avogadro {
   PythonInterpreter::~PythonInterpreter()
   {
     //Py_Finalize();
+    delete d;
   }
 
   void PythonInterpreter::setMolecule(Molecule *molecule)
