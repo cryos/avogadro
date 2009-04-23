@@ -52,6 +52,7 @@ namespace Avogadro {
 
     // Initialize vars
     m_yaxis = ui.combo_yaxis->currentText();
+    m_schemes = new QList<QHash<QString, QVariant> >;
 
     // Hide advanced options initially
     ui.tab_widget->hide();
@@ -108,6 +109,8 @@ namespace Avogadro {
             this, SLOT(regenerateCalculatedSpectra()));
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
+    connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(updateCurrentSpectra(QString)));
     connect(ui.list_schemes, SIGNAL(currentRowChanged(int)),
             this, SLOT(updateScheme(int)));
 
@@ -130,6 +133,18 @@ namespace Avogadro {
     regenerateImportedSpectra();
   }
 
+  void SpectraDialog::updateCurrentSpectra(QString text)
+  {
+    if (m_spectra == text) return;
+    m_spectra = text;
+    regenerateCalculatedSpectra();
+    regenerateImportedSpectra();
+  }
+
+  ///////////////////
+  // Color schemes //
+  ///////////////////
+
   void SpectraDialog::updateScheme(int scheme) {
     ui.list_schemes->setCurrentRow(scheme);
     if (m_scheme != scheme) {
@@ -139,18 +154,18 @@ namespace Avogadro {
   }
 
   void SpectraDialog::addScheme() {
-    QHash<QString, QVariant> newScheme = schemes->at(m_scheme);
+    QHash<QString, QVariant> newScheme = m_schemes->at(m_scheme);
     newScheme["name"] = tr("New Scheme");
     new QListWidgetItem(newScheme["name"].toString(), ui.list_schemes);
-    schemes->append(newScheme);
+    m_schemes->append(newScheme);
     schemeChanged();
   }
 
   void SpectraDialog::removeScheme() {
-    if (schemes->size() <= 1) return; // Don't delete the last scheme!
+    if (m_schemes->size() <= 1) return; // Don't delete the last scheme!
     int ret = QMessageBox::question(this, tr("Confirm Scheme Removal"), tr("Really remove current scheme?"));
     if (ret == QMessageBox::Ok) {
-      schemes->removeAt(m_scheme);
+      m_schemes->removeAt(m_scheme);
       delete (ui.list_schemes->takeItem(m_scheme));
     }
   }
@@ -160,51 +175,51 @@ namespace Avogadro {
     bool ok;
     QString text = QInputDialog::getText(this, tr("Change Scheme Name"),
                                          tr("Enter new name for current scheme:"), QLineEdit::Normal,
-                                         schemes->at(m_scheme)["name"].toString(), &ok);
+                                         m_schemes->at(m_scheme)["name"].toString(), &ok);
     if (ok) {
-      (*schemes)[idx]["name"] = text;
+      (*m_schemes)[idx]["name"] = text;
       delete (ui.list_schemes->takeItem(idx));
-      ui.list_schemes->insertItem(idx, schemes->at(idx)["name"].toString());
+      ui.list_schemes->insertItem(idx, m_schemes->at(idx)["name"].toString());
       updateScheme(idx);
     }
   }
 
   void SpectraDialog::changeBackgroundColor()
   {
-    QColor current (schemes->at(m_scheme)["backgroundColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["backgroundColor"] = color;
+      (*m_schemes)[m_scheme]["backgroundColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeForegroundColor()
   {
-    QColor current (schemes->at(m_scheme)["foregroundColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["foregroundColor"] = color;
+      (*m_schemes)[m_scheme]["foregroundColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeCalculatedSpectraColor()
   {
-    QColor current (schemes->at(m_scheme)["calculatedColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["calculatedColor"] = color;
+      (*m_schemes)[m_scheme]["calculatedColor"] = color;
       schemeChanged();
     }
   }
 
   void SpectraDialog::changeImportedSpectraColor()
   {
-    QColor current (schemes->at(m_scheme)["importedColor"].value<QColor>());
+    QColor current (m_schemes->at(m_scheme)["importedColor"].value<QColor>());
     QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
     if (color.isValid() && color != current) {
-      (*schemes)[m_scheme]["importedColor"] = color;
+      (*m_schemes)[m_scheme]["importedColor"] = color;
       schemeChanged();
     }
   }
@@ -212,17 +227,17 @@ namespace Avogadro {
   void SpectraDialog::changeFont()
   {
     bool ok;
-    QFont current (schemes->at(m_scheme)["font"].value<QFont>());
+    QFont current (m_schemes->at(m_scheme)["font"].value<QFont>());
     QFont font = QFontDialog::getFont(&ok, current, this);
     if (ok) {
-      (*schemes)[m_scheme]["font"] = font;
+      (*m_schemes)[m_scheme]["font"] = font;
       schemeChanged();
     }
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
   {
-    if (m_molecule == molecule) {
+    if (m_molecule == molecule || !molecule) {
       return;
     }
     m_molecule = molecule;
@@ -243,11 +258,52 @@ namespace Avogadro {
     ui.tab_widget->addTab(ui.tab_appearance, tr("&Appearance"));
     ui.tab_widget->addTab(ui.tab_imageExport, tr("E&xport Image"));
 
-    // Get intensities
+    // Check for IR data
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (m_vibrations) {
+      // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
       ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+
+      // OK, we have valid vibrations, so store them for later
+      m_IRwavenumbers = m_vibrations->GetFrequencies();
+      vector<double> intensities = m_vibrations->GetIntensities();
+
+      // FIXME: dlonie: remove this when OB is fixed!! Hack to get
+      // around bug in how open babel reads in QChem files.
+      // While openbabel is broken, remove indicies (n+3), where
+      // n=0,1,2...
+      if (m_IRwavenumbers.size() == 0.75 * intensities.size()) {
+        uint count = 0;
+        for (uint i = 0; i < intensities.size(); i++) {
+          if ((i+count)%3 == 0){
+            intensities.erase(intensities.begin()+i);
+            count++;
+            i--;
+          }
+        }
+      }
+      ///////////////////////////////////////////////////////////
+
+      // Normalize intensities into transmittances
+      double maxIntensity=0;
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        if (intensities.at(i) >= maxIntensity) {
+          maxIntensity = intensities.at(i);
+        }
+      }
+
+      // Clear out any old transmittance data
+      m_IRtransmittances.clear();
+
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        double t = intensities.at(i);
+        t = t / maxIntensity; 	// Normalize
+        t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+        t = 1 - t; 		// Simulate transmittance
+        t *= 100;		// Convert to percent
+        m_IRtransmittances.push_back(t);
+      }
     }
 
     // Remove/change this when other methods are added
@@ -268,50 +324,7 @@ namespace Avogadro {
     }
     // Set the appearances tab to be opened by default
     ui.tab_widget->setCurrentIndex(0);
-
-    // OK, we have valid vibrations, so store them
-    m_wavenumbers = m_vibrations->GetFrequencies();
-    vector<double> intensities = m_vibrations->GetIntensities();
-
-    // FIXME: dlonie: remove this when OB is fixed!! Hack to get around bug in how open babel reads in QChem files
-    // While openbabel is broken, remove indicies (n+3), where
-    // n=0,1,2...
-    if (m_wavenumbers.size() == 0.75 * intensities.size()) {
-      uint count = 0;
-      for (uint i = 0; i < intensities.size(); i++) {
-        if ((i+count)%3 == 0){
-          intensities.erase(intensities.begin()+i);
-          count++;
-          i--;
-        }
-      }
-    }
-
-    // Normalize intensities into transmittances
-    double maxIntensity=0;
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      if (intensities.at(i) >= maxIntensity) {
-        maxIntensity = intensities.at(i);
-      }
-    }
-
-    if (maxIntensity == 0) {
-      qWarning() << "SpectraDialog::setMolecule: No intensities > 0 in dataset.";
-      return;
-    }
-
-    // Clear out any old transmittance data
-    m_transmittances.clear();
-
-    for (unsigned int i = 0; i < intensities.size(); i++) {
-      double t = intensities.at(i);
-      t = t / maxIntensity; 	// Normalize
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
-      t = 1 - t; 		// Simulate transmittance
-      t *= 100;			// Convert to percent
-      m_transmittances.push_back(t);
-    }
-
+    m_spectra = ui.combo_spectra->currentText();
     regenerateCalculatedSpectra();
   }
 
@@ -327,15 +340,17 @@ namespace Avogadro {
     settings.setValue("spectra/image/DPI", ui.spin_imageDPI->value());
     settings.setValue("spectra/image/optimizeFontSize", ui.cb_imageFontAdjust->isChecked());
     settings.beginWriteArray("spectra/schemes");
-    for (int i = 0; i < schemes->size(); ++i) {
+    for (int i = 0; i < m_schemes->size(); ++i) {
       settings.setArrayIndex(i);
       ////////////////////////////////////////////////////////////////
       // FIXME: When we bump to Qt 4.5, change the following
-      //      settings.setValue("scheme", schemes->at(i));
+      //      settings.setValue("scheme", m_schemes->at(i));
       settings.beginGroup("hash");
-      QHashIterator<QString, QVariant> iter(schemes->at(i));
-      while (iter.hasNext())
-        settings.setValue(iter.key(), iter.value());
+      QHashIterator<QString, QVariant> iter(m_schemes->at(i));
+      while (iter.hasNext()) {
+          iter.next();
+          settings.setValue(iter.key(), iter.value());
+        }
       settings.endGroup();
       ////////////////////////////////////////////////////////////////
     }
@@ -345,7 +360,6 @@ namespace Avogadro {
   void SpectraDialog::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     setScale(settings.value("spectra/scale", 1.0).toDouble());
-    int scheme = settings.value("spectra/currentScheme", 0).toInt();
     ui.spin_FWHM->setValue(settings.value("spectra/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/labelPeaks",false).toBool());
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
@@ -353,27 +367,28 @@ namespace Avogadro {
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
     ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
     ui.cb_imageFontAdjust->setChecked(settings.value("spectra/image/optimizeFontSize", true).toBool());
+    int scheme = settings.value("spectra/currentScheme", 0).toInt();
     int size = settings.beginReadArray("spectra/schemes");
-    schemes = new QList<QHash<QString, QVariant> >;
+    m_schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex(i);
       ////////////////////////////////////////////////////////////////
       // FIXME: QVariant::toHash() isn't around until Qt 4.5
-      //      schemes->append(settings.value("scheme").toHash());
+      //      m_schemes->append(settings.value("scheme").toHash());
       settings.beginGroup("hash");
       QHash<QString, QVariant> hash;
       QStringList keys = settings.allKeys();
       foreach (const QString &key, settings.allKeys())
         hash[key] = settings.value(key);
-      schemes->append(hash);
+      m_schemes->append(hash);
       settings.endGroup();
       ////////////////////////////////////////////////////////////////
-      new QListWidgetItem(schemes->at(i)["name"].toString(), ui.list_schemes);
+      new QListWidgetItem(m_schemes->at(i)["name"].toString(), ui.list_schemes);
     }
     settings.endArray();
 
     // create scheme list if it doesn't already exist
-    if (size == 0) {
+    if (m_schemes->isEmpty()) {
       // dark
       QHash<QString, QVariant> dark;
       dark["name"] = tr("Dark");
@@ -383,7 +398,7 @@ namespace Avogadro {
       dark["importedColor"] = Qt::gray;
       dark["font"] = QFont();
       new QListWidgetItem(dark["name"].toString(), ui.list_schemes);
-      schemes->append(dark);
+      m_schemes->append(dark);
 
       // light
       QHash<QString, QVariant> light;
@@ -394,7 +409,7 @@ namespace Avogadro {
       light["importedColor"] = Qt::gray;
       light["font"] = QFont();
       new QListWidgetItem(light["name"].toString(), ui.list_schemes);
-      schemes->append(light);
+      m_schemes->append(light);
 
       // publication
       QHash<QString, QVariant> publication;
@@ -405,7 +420,7 @@ namespace Avogadro {
       publication["importedColor"] = Qt::gray;
       publication["font"] = QFont("Century Schoolbook L", 13);
       new QListWidgetItem(publication["name"].toString(), ui.list_schemes);
-      schemes->append(publication);
+      m_schemes->append(publication);
 
       // handdrawn
       QHash<QString, QVariant> handdrawn;
@@ -416,23 +431,22 @@ namespace Avogadro {
       handdrawn["importedColor"] = Qt::lightGray;
       handdrawn["font"] = QFont("Domestic Manners", 16);
       new QListWidgetItem(handdrawn["name"].toString(), ui.list_schemes);
-      schemes->append(handdrawn);
-
+      m_schemes->append(handdrawn);
     }
     updateScheme(scheme);
   }
 
   void SpectraDialog::schemeChanged() {
-    ui.plot->setBackgroundColor(schemes->at(m_scheme)["backgroundColor"].value<QColor>());
-    ui.plot->setForegroundColor(schemes->at(m_scheme)["foregroundColor"].value<QColor>());
-    ui.plot->setFont(schemes->at(m_scheme)["font"].value<QFont>());
+    ui.plot->setBackgroundColor(m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
+    ui.plot->setForegroundColor(m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
+    ui.plot->setFont(m_schemes->at(m_scheme)["font"].value<QFont>());
 
     QPen currentPen (m_importedSpectra->linePen());
-    currentPen.setColor(schemes->at(m_scheme)["importedColor"].value<QColor>());
+    currentPen.setColor(m_schemes->at(m_scheme)["importedColor"].value<QColor>());
     m_importedSpectra->setLinePen(currentPen);
 
     currentPen = (m_calculatedSpectra->linePen());
-    currentPen.setColor(schemes->at(m_scheme)["calculatedColor"].value<QColor>());
+    currentPen.setColor(m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
     m_calculatedSpectra->setLinePen(currentPen);
 
   }
@@ -467,16 +481,18 @@ namespace Avogadro {
     QTextStream out(&file);
     QString format = "%1\t%2\n";
 
-    out << "Frequencies\tIntensities\n";
-
-    for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
-      out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+    if (m_spectra == "Infrared") {
+      out << "Frequencies\tIntensities\n";
+      
+      for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
+        out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
+      }
     }
-
+    
     file.close();
   }
-
-
+  
+  
   void SpectraDialog::importSpectra()
   {
     QFileInfo defaultFile(m_molecule->fileName());
@@ -484,7 +500,7 @@ namespace Avogadro {
     if (defaultPath.isEmpty()) {
       defaultPath = QDir::homePath();
     }
-
+    
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
     QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*.jdx);;All Files (* *.*)"));
 
@@ -493,14 +509,16 @@ namespace Avogadro {
       qWarning() << "Error reading file " << filename;
       return;
     }
-
+    
     // get file extension
     QStringList tmp 	= filename.split(".");
     QString ext 	= tmp.at(tmp.size()-1);
-
+    
     // Clear out any old data
-    m_imported_wavenumbers.clear();
-    m_imported_transmittances.clear();
+    if (m_spectra == "Infrared") {
+      m_imported_IRwavenumbers.clear();
+      m_imported_IRtransmittances.clear();
+    }
 
     QTextStream in(&file);
 
@@ -514,8 +532,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+            m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+            m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -533,8 +553,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+          m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+          m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -552,8 +574,10 @@ namespace Avogadro {
           continue;
         }
         if (data.at(0).toDouble() && data.at(1).toDouble()) {
-          m_imported_wavenumbers.push_back(data.at(0).toDouble());
-          m_imported_transmittances.push_back(data.at(1).toDouble());
+          if (m_spectra == "Infrared") {
+            m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
+            m_imported_IRtransmittances.push_back(data.at(1).toDouble());
+          }
         }
         else {
           qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\tWavenumber: " << data.at(0) << "\n\tTransmittance: " << data.at(1);
@@ -567,16 +591,18 @@ namespace Avogadro {
     }
 
     // Check to see if the transmittances are in fractions or percents by looking for any transmittances > 1.5
-    bool convert = true;
-    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-      if (m_imported_transmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
-        convert = false;
-        break;
+    if (m_spectra == "Infrared") {
+      bool convert = true;
+      for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+        if (m_imported_IRtransmittances.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
+          convert = false;
+          break;
+        }
       }
-    }
-    if (convert) {
-      for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-        m_imported_transmittances.at(i) *= 100;
+      if (convert) {
+        for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+          m_imported_IRtransmittances.at(i) *= 100;
+        }
       }
     }
 
@@ -718,21 +744,24 @@ namespace Avogadro {
 
   void SpectraDialog::getCalculatedSinglets(PlotObject *plotObject)
   {
-    plotObject->addPoint( 400, 100); // Initial point
+    if (m_spectra == "Infrared") {
+      plotObject->addPoint( 400, 100); // Initial point
 
-    for (uint i = 0; i < m_transmittances.size(); i++) {
-      double wavenumber = m_wavenumbers.at(i) * m_scale;
-      double transmittance = m_transmittances.at(i);
-      plotObject->addPoint ( wavenumber, 100 );
-      if (ui.cb_labelPeaks->isChecked()) {
-        plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+      for (uint i = 0; i < m_IRtransmittances.size(); i++) {
+        double wavenumber = m_IRwavenumbers.at(i) * m_scale;
+        double transmittance = m_IRtransmittances.at(i);
+        plotObject->addPoint ( wavenumber, 100 );
+        if (ui.cb_labelPeaks->isChecked()) {
+          plotObject->addPoint ( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+        }
+        else {
+          plotObject->addPoint ( wavenumber, transmittance );
+        }
+        plotObject->addPoint ( wavenumber, 100 );
       }
-      else {
-        plotObject->addPoint ( wavenumber, transmittance );
-      }
-      plotObject->addPoint ( wavenumber, 100 );
+      plotObject->addPoint( 4000, 100); // Final point
+      return;
     }
-    plotObject->addPoint( 4000, 100); // Final point
   }
 
 
@@ -742,58 +771,62 @@ namespace Avogadro {
     double FWHM = ui.spin_FWHM->value();
     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
-    // determine range
-    // - find maximum and minimum
-    double min = 0.0 + 2*FWHM;
-    double max = 4000.0 - 2*FWHM;
-    for (uint i = 0; i < m_wavenumbers.size(); i++) {
-      double cur = m_wavenumbers.at(i);
-      if (cur > max) max = cur;
-      if (cur < min) min = cur;
-    }
-    min -= 2*FWHM;
-    max += 2*FWHM;
-    // - get resolution (TODO)
-    double res = 1.0;
-    // create points
-    for (double x = min; x < max; x += res) {
-      double y = 100;
-      for (uint i = 0; i < m_transmittances.size(); i++) {
-        double t = m_transmittances.at(i);
-        double w = m_wavenumbers.at(i) * m_scale;
-        y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+    if (m_spectra == "Infrared") {
+      // determine range
+      // - find maximum and minimum
+      double min = 0.0 + 2*FWHM;
+      double max = 4000.0 - 2*FWHM;
+      for (uint i = 0; i < m_IRwavenumbers.size(); i++) {
+        double cur = m_IRwavenumbers.at(i);
+        if (cur > max) max = cur;
+        if (cur < min) min = cur;
       }
-      plotObject->addPoint(x,y);
-    }
-
-    // Normalization is probably screwed up, so renormalize the data
-    max = plotObject->points().at(0)->y();
-    min = max;
-    for(int i = 0; i< plotObject->points().size(); i++) {
-      double cur = plotObject->points().at(i)->y();
-      if (cur < min) min = cur;
-      if (cur > max) max = cur;
-    }
-    for(int i = 0; i< plotObject->points().size(); i++) {
-      double cur = plotObject->points().at(i)->y();
-      // cur - min 		: Shift lowest point of plot to be at zero
-      // 100 / (max - min)	: Conversion factor for current spread -> percent
-      // * 0.97 + 3		: makes plot stay away from 0 transmittance
-      //			: (easier to see multiple peaks on strong signals)
-      plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+      min -= 2*FWHM;
+      max += 2*FWHM;
+      // - get resolution (TODO)
+      double res = 1.0;
+      // create points
+      for (double x = min; x < max; x += res) {
+        double y = 100;
+        for (uint i = 0; i < m_IRtransmittances.size(); i++) {
+          double t = m_IRtransmittances.at(i);
+          double w = m_IRwavenumbers.at(i) * m_scale;
+          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+        }
+        plotObject->addPoint(x,y);
+      }
+      
+      // Normalization is probably screwed up, so renormalize the data
+      max = plotObject->points().at(0)->y();
+      min = max;
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        if (cur < min) min = cur;
+        if (cur > max) max = cur;
+      }
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        // cur - min 		: Shift lowest point of plot to be at zero
+        // 100 / (max - min)	: Conversion factor for current spread -> percent
+        // * 0.97 + 3		: makes plot stay away from 0 transmittance
+        //			: (easier to see multiple peaks on strong signals)
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+      }
     }
   }
 
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
   {
     plotObject->clearPoints();
-    for (uint i = 0; i < m_imported_transmittances.size(); i++) {
-      double wavenumber = m_imported_wavenumbers.at(i);
-      double y = m_imported_transmittances.at(i);
-      if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-        y = 100 - y;
+    if (m_spectra == "Infrared") {
+      for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
+        double wavenumber = m_imported_IRwavenumbers.at(i);
+        double y = m_imported_IRtransmittances.at(i);
+        if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+          y = 100 - y;
+        }
+        plotObject->addPoint ( wavenumber, y );
       }
-      plotObject->addPoint ( wavenumber, y );
     }
   }
 }
