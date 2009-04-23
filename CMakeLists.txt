@@ -241,11 +241,30 @@ add_custom_command(TARGET create-translations
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/i18n)
 
 # Configure and install an Avogadro CMake style configuration file
-#configure_file(
-#  "${CMAKE_MODULE_PATH}/AvogadroConfig.cmake.in"
-#  "${CMAKE_BINARY_DIR}/AvogadroConfig.cmake"
-#  IMMEDIATE @ONLY
-#)
+configure_file(
+  "${CMAKE_MODULE_PATH}/AvogadroConfig.cmake.in"
+  "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+  IMMEDIATE @ONLY
+)
+
+# Export our build settings and library dependencies
+include(CMakeExportBuildSettings)
+cmake_export_build_settings("${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake")
+export_library_dependencies("${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake")
+
+# Install the configuration files to help find Avogadro
+install(FILES
+  "${CMAKE_MODULE_PATH}/AvogadroUse.cmake"
+  "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+  "${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
+  "${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake"
+  DESTINATION "${PLUGIN_INSTALL_DIR}")
+
+# Install the find modules we require to be present
+install(FILES
+  "${CMAKE_MODULE_PATH}/FindEigen2.cmake"
+  "${CMAKE_MODULE_PATH}/FindGLEW.cmake"
+  DESTINATION "${PLUGIN_INSTALL_DIR}/cmake")
 
 # Place binaries and libraries in the root of the build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
