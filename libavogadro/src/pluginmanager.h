@@ -156,14 +156,9 @@ namespace Avogadro {
      *
      * You can set AVOGADRO_PLUGINS to designate a path at runtime to search.
      *
+     * @param dir Path of directory to search for plugins instead of the default paths
      */
-    static void loadFactories();
-
-    /**
-     * Load plugins from a specified directory.
-     * @param dir Path of directory to search for plugins
-     */
-    static void loadFactories(const QString& dir);
+    static void loadFactories(const QString& dir = "");
 
     /**
      * Get all the PluginFactory obacjects for a given type.

@@ -465,10 +465,17 @@ namespace Avogadro {
     return factories;
   }
 
-  void PluginManager::loadFactories()
+  void PluginManager::loadFactories(const QString& dir)
   {
     if (PluginManagerPrivate::factoriesLoaded)
       return;
+
+    if (!dir.isEmpty()) {
+      QSettings settings;
+      settings.beginGroup("ExtraPlugins");
+      loadPluginDir(dir, settings);
+      settings.endGroup(); // ExtraPlugins
+    }
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
 
@@ -572,14 +579,6 @@ namespace Avogadro {
 
     settings.endGroup(); // Plugins
     PluginManagerPrivate::factoriesLoaded = true;
-  }
-
-  void PluginManager::loadFactories(const QString& dir)
-  {
-    QSettings settings;
-    settings.beginGroup("ExtraPlugins");
-    loadPluginDir(dir, settings);
-    settings.endGroup(); // ExtraPlugins
   }
 
   void PluginManager::loadFactory(PluginFactory *factory, QFileInfo &fileInfo, QSettings &settings)
