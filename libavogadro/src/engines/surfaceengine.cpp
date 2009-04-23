@@ -26,7 +26,6 @@
 
 #include "surfaceengine.h"
 
-#include <config.h>
 #include <avogadro/mesh.h>
 #include <avogadro/molecule.h>
 #include <avogadro/painterdevice.h>

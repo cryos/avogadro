@@ -24,7 +24,6 @@
  **********************************************************************/
 
 #include "hbondengine.h"
-#include <config.h>
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -82,21 +81,21 @@ namespace Avogadro {
       bool atomIsH = atom->isHydrogen() ? true : false;
 
       if (!atomIsH && !isHbondAcceptor(atom))
-          continue;        
+          continue;
 
       QList<Atom*> nbrs = nbrList->nbrs(atom);
       foreach(Atom *nbr, nbrs) {
 
         double angle = 180.0;
         Atom *hydrogen, *acceptor, *donor = 0;
- 
+
         if (atomIsH) {
           if (!isHbondDonorH(atom) || !isHbondAcceptor(nbr))
             continue;
 
           hydrogen = atom;
           acceptor = nbr;
-          foreach (unsigned long id, atom->neighbors()) 
+          foreach (unsigned long id, atom->neighbors())
             donor = static_cast<Molecule*>(atom->parent())->atomById(id);
         } else {
            if (!isHbondDonorH(nbr) || !isHbondAcceptor(atom))
@@ -104,23 +103,23 @@ namespace Avogadro {
 
           hydrogen = nbr;
           acceptor = atom;
-          foreach (unsigned long id, nbr->neighbors()) 
+          foreach (unsigned long id, nbr->neighbors())
             donor = static_cast<Molecule*>(atom->parent())->atomById(id);
         }
-        
+
         if (donor) {
           Eigen::Vector3d ab = *donor->pos() - *hydrogen->pos();
           Eigen::Vector3d bc = *acceptor->pos() - *hydrogen->pos();
           angle = 180. * acos( ab.dot(bc) / (ab.norm() * bc.norm()) ) / M_PI;
         }
-        
+
         if (angle < m_angle)
           continue;
 
-        pd->painter()->drawMultiLine(*atom->pos(), *nbr->pos(), m_width, 1, stipple); 
+        pd->painter()->drawMultiLine(*atom->pos(), *nbr->pos(), m_width, 1, stipple);
       } // for each nbr
     } // for each atom
- 
+
     return true;
   }
 
@@ -196,7 +195,7 @@ namespace Avogadro {
       return true;
     if (atom->atomicNumber() == 7) {
       int boSum = 0;
-      foreach (unsigned long id, atom->bonds()) 
+      foreach (unsigned long id, atom->bonds())
         boSum += static_cast<Molecule*>(atom->parent())->bondById(id)->order();
       if (boSum != 4)
         return true;

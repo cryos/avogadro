@@ -25,8 +25,6 @@
 
 #include "wireengine.h"
 
-#include <config.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
@@ -181,7 +179,7 @@ namespace Avogadro {
       // For aromatic (dashed bonds)
       if (b->isAromatic()) {
         order = -1;
-	stipple = static_cast<short>(0xCCCC);
+    stipple = static_cast<short>(0xCCCC);
       }
     }
 

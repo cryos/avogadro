@@ -148,16 +148,17 @@ namespace Avogadro {
 
     /**
      * Find all plugins by looking through the search paths:
-     *    /usr/(local/)lib/avogadro/engines
-     *    /usr/(local/)lib/avogadro/tools
-     *    /usr/(local/)lib/avogadro/extensions
-     *    /usr/(local/)lib/avogadro/colors
+     *    <bin_location>/../<lib_dir>/avogadro/engines
+     *    <bin_location>/../<lib_dir>/avogadro/tools
+     *    <bin_location>/../<lib_dir>/avogadro/extensions
+     *    <bin_location>/../<lib_dir>/avogadro/colors
+     *    <bin_location>/../<lib_dir>/avogadro/contrib (external plugins)
      *
      * You can set AVOGADRO_PLUGINS to designate a path at runtime to search.
      *
-     * WIN32: look in the applications working dir ( ./engines, ...)
+     * @param dir Path of directory to search for plugins instead of the default paths
      */
-    static void loadFactories();
+    static void loadFactories(const QString& dir = "");
 
     /**
      * Get all the PluginFactory obacjects for a given type.

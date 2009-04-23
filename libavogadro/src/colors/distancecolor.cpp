@@ -24,7 +24,6 @@
 
 #include "distancecolor.h"
 
-#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -85,7 +84,7 @@ namespace Avogadro {
       m_channels[1] = 0.0;
       m_channels[2] = 1.0f - 2.5f * (distanceFraction - 0.8f);
     }
-    
+
     m_channels[3] = 1.0;
   }
 

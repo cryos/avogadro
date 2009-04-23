@@ -24,7 +24,6 @@
 
 #include "forceengine.h"
 
-#include <config.h>
 #include <avogadro/atom.h>
 #include <avogadro/painterdevice.h>
 

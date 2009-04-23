@@ -24,7 +24,6 @@
 
 #include "chargecolor.h"
 
-#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -66,7 +65,7 @@ namespace Avogadro {
       m_channels[1] = m_channels[0]; // green = red
       m_channels[2] = 1.0f; // blue
     }
-    
+
     m_channels[3] = 1.0;
   }
 

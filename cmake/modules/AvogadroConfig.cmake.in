@@ -1,0 +1,30 @@
+# Avogadro CMake configuration file - http://avogadro.openmolecules.net/
+
+# If this file was found, then Avogadro has been found
+set(Avogadro_FOUND 1)
+
+set(Avogadro_VERSION_MAJOR   "@Avogadro_VERSION_MAJOR@")
+set(Avogadro_VERSION_MINOR   "@Avogadro_VERSION_MINOR@")
+set(Avogadro_VERSION_PATCH   "@Avogadro_VERSION_PATCH@")
+set(Avogadro_VERSION         "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}.${Avogadro_VERSION_PATCH}")
+
+set(Avogadro_ENABLE_PYTHON   "@ENABLE_PYTHON@")
+set(Avogadro_ENABLE_GLSL     "@ENABLE_GLSL@")
+
+set(Avogadro_INSTALL_PREFIX  "@CMAKE_INSTALL_PREFIX@")
+set(Avogadro_INCLUDE_DIRS    "@CMAKE_INSTALL_PREFIX@/include")
+set(Avogadro_LIBRARY_DIRS    "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@")
+set(Avogadro_LIB_SUFFIX      "@LIB_SUFFIX@")
+set(Avogadro_PLUGIN_DIR      "@CMAKE_INSTALL_PREFIX@/@PLUGIN_INSTALL_DIR@")
+set(Avogadro_BIN_DIRS        "@CMAKE_INSTALL_PREFIX@/@BIN_INSTALL_DIR@")
+
+# Tell the user where to find our build settings and library deps
+set(Avogadro_BUILD_SETTINGS_FILE
+    "@CMAKE_INSTALL_PREFIX@/@PLUGIN_INSTALL_DIR@/AvogadroBuildSettings.cmake")
+
+include("@CMAKE_INSTALL_PREFIX@/@PLUGIN_INSTALL_DIR@/AvogadroLibraryDeps.cmake")
+
+# Now for the use file, which contains useful functions, sets up the project
+set(Avogadro_USE_FILE
+    "@CMAKE_INSTALL_PREFIX@/@PLUGIN_INSTALL_DIR@/AvogadroUse.cmake")
+

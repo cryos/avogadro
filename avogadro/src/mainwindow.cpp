@@ -23,7 +23,7 @@
 
 #include "mainwindow.h"
 
-#include <config.h>
+#include "config.h"
 
 #include "aboutdialog.h"
 #include "addenginedialog.h"
@@ -845,6 +845,28 @@ namespace Avogadro
             }
             obMolecule->Center();
 
+            // Check for pairs of atoms on top of each other
+            // e.g. "OH" or "COOH" labels in 2D files.
+            // First check bonding pairs
+            FOR_BONDS_OF_MOL(bond, obMolecule)
+              {
+                if (bond->GetLength() < 1.0e-6) {
+                  bond->SetLength(bond->GetEquibLength());
+                }
+              }
+            // Now check non-bonded pairs
+            FOR_PAIRS_OF_MOL(p, obMolecule)
+              {
+                OBAtom *a = obMolecule->GetAtom((*p)[0]);
+                OBAtom *b = obMolecule->GetAtom((*p)[1]);
+                if (fabs(a->GetDistance(b)) < 1.0e-6) {
+                  vector3 v1;
+                  v1.randomUnitVector();
+                  a->SetVector(a->GetVector() + v1);
+                  b->SetVector(b->GetVector() - v1);
+                }
+              }
+
             // place end atoms of wedge bonds at +1.0 Z
             // place end atoms of hash bonds at -1.0 Z
             FOR_ATOMS_OF_MOL (atom, obMolecule) {
@@ -863,7 +885,7 @@ namespace Avogadro
             OBForceField *ff = OBForceField::FindForceField("UFF");
             if (ff) {
               ff->Setup(*obMolecule);
-              ff->SteepestDescent(250);
+              ff->ConjugateGradients(250);
               ff->GetCoordinates(*obMolecule);
             }
           }

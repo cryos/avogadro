@@ -24,7 +24,6 @@
 
 #include "overlayengine.h"
 
-#include <config.h>
 #include <avogadro/camera.h>
 #include <avogadro/painter.h>
 #include <avogadro/painterdevice.h>

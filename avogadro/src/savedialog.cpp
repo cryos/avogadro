@@ -22,8 +22,6 @@
 #include "savedialog.h"
 #include "mainwindow.h"
 
-#include <config.h>
-
 using namespace std;
 
 namespace Avogadro

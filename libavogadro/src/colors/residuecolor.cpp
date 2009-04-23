@@ -23,8 +23,6 @@
  **********************************************************************/
 
 #include "residuecolor.h"
-#include <config.h>
-#include <avogadro/primitive.h>
 
 #include <QtPlugin>
 
@@ -286,7 +284,7 @@ namespace Avogadro {
       m_settingsWidget = new ResidueColorSettingsWidget();
       connect(m_settingsWidget->colorStyleComboBox, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setColorScheme(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), 
+      connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
     }
 

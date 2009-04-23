@@ -34,7 +34,7 @@
   #include <QGLWidget>
 #endif
 
-#include <avogadro/primitivelist.h>
+#include "primitivelist.h"
 #include "plugin.h"
 
 #include <QList>

@@ -24,7 +24,6 @@
 
 #include "pythontool.h"
 
-#include <config.h>
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -73,7 +72,7 @@ namespace Avogadro {
       try {
         prepareToCatchError();
         const char *toolTip = extract<const char*>(d->instance.attr("toolTip")());
-        action->setToolTip(QString(toolTip)); 
+        action->setToolTip(QString(toolTip));
       } catch(error_already_set const &) {
         catchError();
       }
@@ -93,7 +92,7 @@ namespace Avogadro {
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
       return "Python Tool";
-  
+
     try {
       prepareToCatchError();
       const char *name = extract<const char*>(d->instance.attr("identifier")());
@@ -108,7 +107,7 @@ namespace Avogadro {
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
       return tr("Unknown Python Tool");
-  
+
     try {
       prepareToCatchError();
       const char *name = extract<const char*>(d->instance.attr("name")());
@@ -118,7 +117,7 @@ namespace Avogadro {
       return tr("Unknown Python Tool");
     }
   }
-   
+
   QString PythonTool::description() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
@@ -133,7 +132,7 @@ namespace Avogadro {
       return tr("N/A");
     }
   }
- 
+
   QUndoCommand* PythonTool::mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event)
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), what.toStdString().c_str()))
@@ -144,16 +143,16 @@ namespace Avogadro {
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
-    
+
       boost::python::return_by_value::apply<QMouseEvent*>::type qconverter;
       PyObject *qobj = qconverter(event);
       object real_qobj = object(handle<>(qobj));
- 
+
       return extract<QUndoCommand*>(d->instance.attr(what.toStdString().c_str())(real_obj, real_qobj));
     } catch(error_already_set const &) {
       catchError();
     }
- 
+
     return 0;
   }
 
@@ -182,16 +181,16 @@ namespace Avogadro {
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
-    
+
       boost::python::return_by_value::apply<QWheelEvent*>::type qconverter;
       PyObject *qobj = qconverter(event);
       object real_qobj = object(handle<>(qobj));
- 
+
       return extract<QUndoCommand*>(d->instance.attr("wheelEvent")(real_obj, real_qobj));
     } catch(error_already_set const &) {
       catchError();
     }
- 
+
     return 0;
   }
 
@@ -205,7 +204,7 @@ namespace Avogadro {
       boost::python::reference_existing_object::apply<GLWidget*>::type converter;
       PyObject *obj = converter(widget);
       object real_obj = object(handle<>(obj));
- 
+
       d->instance.attr("paint")(real_obj);
     } catch(error_already_set const &) {
       catchError();
@@ -218,7 +217,7 @@ namespace Avogadro {
   {
     if (!d->script)
       return 0; // nothing we can do -- we don't have any real scripts
-            
+
     if(!d->settingsWidget)
     {
       d->settingsWidget = new QWidget();
@@ -237,7 +236,7 @@ namespace Avogadro {
 
       connect(d->settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
     }
-    
+
     return d->settingsWidget;
   }
 
@@ -252,7 +251,7 @@ namespace Avogadro {
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
       return;
 
@@ -275,7 +274,7 @@ namespace Avogadro {
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
       return;
 
@@ -296,7 +295,7 @@ namespace Avogadro {
   {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
-    
+
     PythonScript *script = new PythonScript(filename);
 
     if(script->module()) {
@@ -310,7 +309,7 @@ namespace Avogadro {
           if (d->settingsWidget) {
             if (PyObject_HasAttrString(d->instance.ptr(), "settingsWidget")) {
               QWidget *widget = extract<QWidget*>(d->instance.attr("settingsWidget")());
-              if (widget) 
+              if (widget)
                 d->settingsWidget->layout()->addWidget(widget);
             }
           }

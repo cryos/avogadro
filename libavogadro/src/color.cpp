@@ -23,12 +23,12 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
-
-#include <avogadro/color.h>
-#include <math.h> // for fabs()
+#include "color.h"
+#include <cmath> // for fabs()
 
 namespace Avogadro {
+
+  using std::fabs;
 
   class ColorPrivate {
   public:
@@ -46,7 +46,7 @@ namespace Avogadro {
       //delete d;
   }
 
-  Color::Color(const GLfloat red, const GLfloat green, 
+  Color::Color(const GLfloat red, const GLfloat green,
                const GLfloat blue, const GLfloat alpha ) : d(0)
   {
     m_channels[0] = red;
@@ -60,7 +60,7 @@ namespace Avogadro {
     set(p);
   }
 
-  void Color::set(const GLfloat red, const GLfloat green, 
+  void Color::set(const GLfloat red, const GLfloat green,
                   const GLfloat blue, const GLfloat alpha)
   {
     m_channels[0] = red;
@@ -95,7 +95,7 @@ namespace Avogadro {
     return;
   }
 
-  void Color::setGradient(const double, const double, 
+  void Color::setGradient(const double, const double,
            const double, const double)
   {
     return;
@@ -111,8 +111,9 @@ namespace Avogadro {
     GLfloat ambientColor [] = { m_channels[0] / 3, m_channels[1] / 3, m_channels[2] / 3,
       m_channels[3] };
 
-    float s = ( 0.5 + fabsf( m_channels[0] - m_channels[1] )
-        + fabsf( m_channels[2] - m_channels[1] ) + fabsf( m_channels[2] - m_channels[0] ) ) / 4.0;
+    float s = ( 0.5 + fabs( m_channels[0] - m_channels[1] )
+        + fabs( m_channels[2] - m_channels[1] )
+        + fabs( m_channels[2] - m_channels[0] ) ) / 4.0;
 
     float t = 1.0 - s;
 

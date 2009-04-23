@@ -1,5 +1,5 @@
 /**********************************************************************
-  PythonExtension - PythonExtension 
+  PythonExtension - PythonExtension
 
   Copyright (C) 2008 by Donald Ephraim Curtis
   Copyright (C) 2008,2009 by Tim Vandermeersch
@@ -25,7 +25,6 @@
 
 #include "pythonextension.h"
 
-#include <config.h>
 #include <avogadro/molecule.h>
 
 #include <QApplication>
@@ -52,8 +51,8 @@ namespace Avogadro
       boost::python::object  instance;
       QDockWidget           *dockWidget;
   };
- 
-  PythonExtension::PythonExtension(QObject *parent, const QString &filename) : 
+
+  PythonExtension::PythonExtension(QObject *parent, const QString &filename) :
       Extension(parent), d(new PythonExtensionPrivate)
   {
     loadScript(filename);
@@ -68,11 +67,11 @@ namespace Avogadro
     delete d;
   }
 
-  QString PythonExtension::identifier() const 
+  QString PythonExtension::identifier() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
       return "Unknown Python Extension";
-  
+
     try {
        prepareToCatchError();
        const char *name = extract<const char*>(d->instance.attr("identifier")());
@@ -80,15 +79,15 @@ namespace Avogadro
     } catch(error_already_set const &) {
        catchError();
     }
-       
+
     return "Unknown Python Extension";
   }
 
-  QString PythonExtension::name() const 
+  QString PythonExtension::name() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
       return tr("Unknown Python Extension");
-  
+
     try {
        prepareToCatchError();
        const char *name = extract<const char*>(d->instance.attr("name")());
@@ -96,15 +95,15 @@ namespace Avogadro
     } catch(error_already_set const &) {
        catchError();
     }
-       
+
     return tr("Unknown Python Extension");
   }
 
-  QString PythonExtension::description() const 
+  QString PythonExtension::description() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
       return tr("N/A");
-  
+
     try {
        prepareToCatchError();
        const char *name = extract<const char*>(d->instance.attr("description")());
@@ -112,7 +111,7 @@ namespace Avogadro
     } catch(error_already_set const &) {
        catchError();
     }
-       
+
     return tr("N/A");
   }
 
@@ -133,8 +132,8 @@ namespace Avogadro
 
     // this will make the MainWindow call performAction on this extension
     foreach (QAction *action, actions)
-      action->setParent( (PythonExtension*)this ); 
- 
+      action->setParent( (PythonExtension*)this );
+
     return actions;
   }
 
@@ -201,7 +200,7 @@ namespace Avogadro
   {
     if (!d->script)
       return 0;
-    
+
     // Let's just catch the exception and print the error...
     //if (!PyObject_HasAttrString(d->instance.ptr(), "performAction"))
     //  return 0;
@@ -266,7 +265,7 @@ namespace Avogadro
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
       return;
 
@@ -289,7 +288,7 @@ namespace Avogadro
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
       return;
 
@@ -310,7 +309,7 @@ namespace Avogadro
   {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
-      
+
     PythonScript *script = new PythonScript(filename);
 
     if (script->module()) {
@@ -331,7 +330,7 @@ namespace Avogadro
         }
 
         d->script = script;
-          
+
       } else {
         delete script;
         pythonError()->append(tr("PythonExtension: checking ") + filename + "...");

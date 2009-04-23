@@ -25,10 +25,7 @@
 
 #include "primitive.h"
 
-#include <config.h>
-
 #include <QReadWriteLock>
-
 #include <QDebug>
 
 namespace Avogadro {

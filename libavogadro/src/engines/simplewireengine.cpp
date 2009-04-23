@@ -24,7 +24,6 @@
 
 #include "simplewireengine.h"
 
-#include <config.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>

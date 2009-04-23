@@ -23,9 +23,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
-
-#include <avogadro/toolgroup.h>
+#include "toolgroup.h"
 #include "pluginmanager.h"
 
 #include <QActionGroup>
@@ -71,7 +69,7 @@ namespace Avogadro {
   void ToolGroup::removeAllTools()
   {
     d->activeTool = 0;
-    
+
     delete d->activateActions;
     d->activateActions = new QActionGroup(this);
 

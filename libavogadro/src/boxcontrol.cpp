@@ -24,8 +24,6 @@
 
 #include "boxcontrol.h"
 
-#include <config.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
 #include <avogadro/molecule.h>
@@ -53,11 +51,11 @@ namespace Avogadro {
     m_points.resize(8);
     for (int i = 0; i < 8; ++i) {
       m_points[i] = new Point;
-      connect(m_points[i], SIGNAL(mousePressEvent(Point*,QMouseEvent*)), 
+      connect(m_points[i], SIGNAL(mousePressEvent(Point*,QMouseEvent*)),
           this, SLOT(mousePressEvent(Point*,QMouseEvent*)));
-      connect(m_points[i], SIGNAL(mouseMoveEvent(Point*,QMouseEvent*)), 
+      connect(m_points[i], SIGNAL(mouseMoveEvent(Point*,QMouseEvent*)),
           this, SLOT(mouseMoveEvent(Point*,QMouseEvent*)));
-      connect(m_points[i], SIGNAL(mouseReleaseEvent(Point*,QMouseEvent*)), 
+      connect(m_points[i], SIGNAL(mouseReleaseEvent(Point*,QMouseEvent*)),
           this, SLOT(mouseReleaseEvent(Point*,QMouseEvent*)));
     }
 
@@ -66,10 +64,10 @@ namespace Avogadro {
     for (int i = 0; i < 12; ++i) {
       m_lines[i] = new Line;
     }
- 
+
   }
-  
-  BoxControl::~BoxControl() 
+
+  BoxControl::~BoxControl()
   {
 //    removePrimitives();
     foreach (Point *point, m_points) {
@@ -79,12 +77,12 @@ namespace Avogadro {
     foreach (Line *line, m_lines) {
       delete line;
       line = 0;
-    }  
+    }
   }
 
-  void BoxControl::addPrimitives() 
+  void BoxControl::addPrimitives()
   {
-    if (m_added) 
+    if (m_added)
       return;
     GLWidget *glwidget = GLWidget::current();
     if (!glwidget)
@@ -97,11 +95,11 @@ namespace Avogadro {
     foreach (Line *line, m_lines) {
       glwidget->addPrimitive( line );
     }
- 
+
     glwidget->update();
   }
 
-  void BoxControl::removePrimitives() 
+  void BoxControl::removePrimitives()
   {
     if (!m_added)
       return;
@@ -116,12 +114,12 @@ namespace Avogadro {
     foreach (Line *line, m_lines) {
       glwidget->removePrimitive( line );
     }
- 
+
     glwidget->update();
   }
-   
+
   void BoxControl::setOppositeCorners(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2)
-  { 
+  {
     // Make sure m_min has the smallest values and m_max the biggest
     if (p1.x() < p2.x()) {
       m_min.x() = p1.x();
@@ -146,8 +144,8 @@ namespace Avogadro {
     }
     updatePrimitives();
   }
-    
-  void BoxControl::updatePrimitives() 
+
+  void BoxControl::updatePrimitives()
   {
     /*
      *        4--------7
@@ -205,7 +203,7 @@ namespace Avogadro {
     // 7-4
     m_lines[11]->setBegin( Vector3d(m_max.x(), m_max.y(), m_max.z()) );
     m_lines[11]->setEnd  ( Vector3d(m_min.x(), m_max.y(), m_max.z()) );
- 
+
   }
 
 
@@ -213,14 +211,14 @@ namespace Avogadro {
   {
     m_lastDraggingPosition = event->pos();
   }
-  
-  void BoxControl::mouseMoveEvent(Point *point, QMouseEvent * event) 
+
+  void BoxControl::mouseMoveEvent(Point *point, QMouseEvent * event)
   {
     GLWidget *glwidget = GLWidget::current();
     Vector3d fromPos = glwidget->camera()->unProject(m_lastDraggingPosition, point->pos());
     Vector3d toPos = glwidget->camera()->unProject(event->pos(), point->pos());
     Vector3d pointTranslation = toPos - fromPos;
-    
+
     // Opposite corners in our box:  0-7  1-4  2-5  3-6
     switch (m_points.indexOf( point )) {
       case 0:
@@ -255,9 +253,9 @@ namespace Avogadro {
     glwidget->update();
   }
 
-  void BoxControl::mouseReleaseEvent(Point * /*point*/, QMouseEvent * /*event*/) 
+  void BoxControl::mouseReleaseEvent(Point * /*point*/, QMouseEvent * /*event*/)
   {
-    emit modified();  
+    emit modified();
   }
 
 }

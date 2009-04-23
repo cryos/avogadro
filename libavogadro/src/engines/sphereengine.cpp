@@ -26,7 +26,6 @@
 
 #include "sphereengine.h"
 
-#include <config.h>
 #include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>

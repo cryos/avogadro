@@ -24,8 +24,6 @@
 
 #include "pythonengine.h"
 
-#include <config.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
@@ -81,7 +79,7 @@ namespace Avogadro {
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
       return "Unknown Python Engine";
-  
+
     try {
       prepareToCatchError();
       const char *name = extract<const char*>(d->instance.attr("identifier")());
@@ -96,7 +94,7 @@ namespace Avogadro {
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
       return tr("Unknown Python Engine");
-  
+
     try {
       prepareToCatchError();
       const char *name = extract<const char*>(d->instance.attr("name")());
@@ -106,7 +104,7 @@ namespace Avogadro {
       return tr("Unknown Python Engine");
     }
   }
-   
+
   QString PythonEngine::description() const
   {
     if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
@@ -121,8 +119,8 @@ namespace Avogadro {
       return tr("N/A");
     }
   }
- 
- 
+
+
   bool PythonEngine::renderOpaque(PainterDevice *pd)
   {
     if (!d->script)
@@ -180,7 +178,7 @@ namespace Avogadro {
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
       return;
 
@@ -203,7 +201,7 @@ namespace Avogadro {
 
     if (!d->script)
       return;
-    
+
     if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
       return;
 
@@ -225,7 +223,7 @@ namespace Avogadro {
     QFileInfo info(filename);
     d->interpreter.addSearchPath(info.canonicalPath());
 
-    
+
     PythonScript *script = new PythonScript(filename);
 
     if(script->module()) {
@@ -277,7 +275,7 @@ namespace Avogadro {
   {
     if (!d->script)
       return 0.0; // nothing we can do
-    
+
     try {
       prepareToCatchError();
       // return transparencyDepth from python script if the function is defined

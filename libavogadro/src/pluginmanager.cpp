@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <config.h>
 #include "pluginmanager.h"
+#include "config.h"
 
 #ifdef ENABLE_PYTHON
   #include "pythontool.h"
@@ -465,10 +465,17 @@ namespace Avogadro {
     return factories;
   }
 
-  void PluginManager::loadFactories()
+  void PluginManager::loadFactories(const QString& dir)
   {
     if (PluginManagerPrivate::factoriesLoaded)
       return;
+
+    if (!dir.isEmpty()) {
+      QSettings settings;
+      settings.beginGroup("ExtraPlugins");
+      loadPluginDir(dir, settings);
+      settings.endGroup(); // ExtraPlugins
+    }
 
     QVector< QList<PluginFactory *> > &ef = PluginManagerPrivate::m_enabledFactories();
 
@@ -525,6 +532,7 @@ namespace Avogadro {
         loadPluginDir(path + "/avogadro/engines", settings);
         loadPluginDir(path + "/avogadro/extensions", settings);
         loadPluginDir(path + "/avogadro/tools", settings);
+        loadPluginDir(path + "/avogadro/contrib", settings);
       }
     }
 
@@ -581,7 +589,7 @@ namespace Avogadro {
     QVector< QList<PluginFactory *> > &df = PluginManagerPrivate::m_disabledFactories();
 
     // create the PluginItem
-    PluginItem *item = new PluginItem(factory->name(), factory->identifier(), 
+    PluginItem *item = new PluginItem(factory->name(), factory->identifier(),
                                       factory->description(),
         factory->type(), fileInfo.fileName(), fileInfo.absoluteFilePath(), factory);
     // add the factory to the correct list
