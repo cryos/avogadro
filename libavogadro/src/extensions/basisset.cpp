@@ -682,7 +682,9 @@ namespace Avogadro
     for (uint i = 0; i < m_symmetry.size(); ++i) {
       switch(m_symmetry[i]) {
         case S:
-          qDebug() << "Shell" << i << "\tS\n  MO 1\t" << m_moMatrix(0, m_moIndices[i]);
+          qDebug() << "Shell" << i << "\tS\n  MO 1\t"
+              << m_moMatrix(0, m_moIndices[i])
+              << m_moMatrix(m_moIndices[i], 0);
           break;
         case P:
           qDebug() << "Shell" << i << "\tP\n  MO 1\t"
