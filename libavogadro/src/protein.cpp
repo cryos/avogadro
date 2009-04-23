@@ -72,6 +72,7 @@ namespace Avogadro {
 
   Protein::~Protein()
   {
+    delete d;
   }
 
   QByteArray Protein::secondaryStructure() const
