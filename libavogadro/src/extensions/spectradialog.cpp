@@ -586,7 +586,21 @@ namespace Avogadro {
   }
 
   void SpectraDialog::saveImageFileDialog() {
-    QString filename   = QFileDialog::getSaveFileName(this, tr("Save Spectra Image"), ui.edit_imageFilename->text(), tr("Portable Network Graphics (*.png);;jpeg (*.jpg *.jpeg);;Tagged Image File Format (*.tiff);;Windows Bitmap (*.bmp);;Portable Pixmap (*.ppm);;X11 Bitmap (*.xbm);;X11 Pixmap (*.xpm);;All Files (*.*)"));
+    QStringList filters;
+    filters
+      << tr("Portable Network Graphics") + " (*.png)"
+      << tr("jpeg") + " (*.jpg *.jpeg)"
+      << tr("Tagged Image File Format") + " (*.tiff)"
+      << tr("Windows Bitmap") + " (*.bmp)"
+      << tr("Portable Pixmap") + " (*.ppm)"
+      << tr("X11 Bitmap") + " (*.xbm)"
+      << tr("X11 Pixmap") + " (*.xpm)"
+      << tr("All Files") + " (*.*)";
+
+
+    QString filename   = QFileDialog::getSaveFileName(this, tr("Save Spectra Image"),
+                                                      ui.edit_imageFilename->text(),
+                                                      filters.join(";;"));
     if (filename.isEmpty()) {
       return;
     }
