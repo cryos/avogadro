@@ -723,7 +723,7 @@ namespace Avogadro {
         }
       }
     } // End IR spectra
-  }// End getCalculatedData
+  }// End getCalculatedSpectra
 
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
   {
