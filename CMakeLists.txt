@@ -7,7 +7,7 @@ set(Avogadro_VERSION_PATCH 3)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+set(CMAKE_MODULE_PATH ${Avogadro_SOURCE_DIR}/cmake/modules)
 
 cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
@@ -191,15 +191,15 @@ set(BIN_INSTALL_DIR      "bin"
 if(UNIX)
   set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
       CACHE PATH "Install dir for libraries")
-  set(PLUGIN_INSTALL_DIR   "${LIB_INSTALL_DIR}/avogadro"
+  set(Avogadro_PLUGIN_INSTALL_DIR   "${LIB_INSTALL_DIR}/avogadro"
       CACHE PATH "Install dir for plugins")
 else(UNIX)
   set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
       CACHE PATH "Install dir for libraries")
-  set(PLUGIN_INSTALL_DIR   "lib${LIB_SUFFIX}/avogadro"
+  set(Avogadro_PLUGIN_INSTALL_DIR   "lib${LIB_SUFFIX}/avogadro"
       CACHE PATH "Install dir for plugins")
 endif(UNIX)
-set(INCLUDE_INSTALL_DIR  "include/avogadro"
+set(INCLUDE_INSTALL_DIR  "include"
     CACHE PATH "Install dir for include files")
 set(I18N_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/avogadro/i18n"
     CACHE PATH "Install dir for i18n files")
@@ -258,13 +258,13 @@ install(FILES
   "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake"
-  DESTINATION "${PLUGIN_INSTALL_DIR}")
+  DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
 
 # Install the find modules we require to be present
 install(FILES
   "${CMAKE_MODULE_PATH}/FindEigen2.cmake"
   "${CMAKE_MODULE_PATH}/FindGLEW.cmake"
-  DESTINATION "${PLUGIN_INSTALL_DIR}/cmake")
+  DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}/cmake")
 
 # Place binaries and libraries in the root of the build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
