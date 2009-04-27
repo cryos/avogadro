@@ -1370,20 +1370,19 @@ namespace Avogadro{
     d->center.setZero();
     d->normalVector.setZero();
     d->radius = 1.0;
+    unsigned int nAtoms = numAtoms();
     // In order to calculate many parameters we need at least two atoms
-    if(numAtoms() > 1) {
-      // compute center
-      foreach (Atom *atom, m_atomList)
-        d->center += *atom->pos();
-
-      d->center /= numAtoms();
-
-      // compute the normal vector to the molecule's best-fitting plane
+    if(nAtoms > 1) {
+      // Compute the normal vector to the molecule's best-fitting plane
       int i = 0;
-      Vector3d ** atomPositions = new Vector3d*[numAtoms()];
-      foreach (Atom *atom, m_atomList)
-        atomPositions[i++] = &m_atomPos->at(atom->id());
-
+      Vector3d ** atomPositions = new Vector3d*[nAtoms];
+      // Calculate the center of the molecule too
+      foreach (Atom *atom, m_atomList) {
+        const Vector3d *pos = atom->pos();
+        d->center += *pos;
+        atomPositions[i++] = pos;
+      }
+      d->center /= static_cast<double>(nAtoms);
       Eigen::Hyperplane<double, 3> planeCoeffs;
       Eigen::fitHyperplane(numAtoms(), atomPositions, &planeCoeffs);
       delete[] atomPositions;
