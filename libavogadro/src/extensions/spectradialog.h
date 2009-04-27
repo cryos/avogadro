@@ -50,7 +50,7 @@ namespace Avogadro {
     void readSettings();
 
   public slots:
-    void setScale(double scale);
+    void setScale_IR(double scale);
 
   private slots:
     void changeBackgroundColor();
@@ -66,7 +66,7 @@ namespace Avogadro {
     void regenerateImportedSpectra();
     void saveImage();
     void toggleCustomize();
-    void updateYAxis(QString);
+    void updateYAxis_IR(QString);
     void schemeChanged();
     void updateScheme(int scheme);
     void updateCurrentSpectra(QString text);
@@ -77,18 +77,18 @@ namespace Avogadro {
     void saveImageFileDialog();
 
   signals:
-    void scaleUpdated();
+    void scaleUpdated_IR();
 
   private:
     Ui::SpectraDialog ui;
 
     void getCalculatedSpectra(PlotObject *plotObject);
-    void getCalculatedSinglets(PlotObject *plotObject);
-    void getCalculatedGaussians(PlotObject *plotObject);
+    void getCalculatedSinglets_IR(PlotObject *plotObject);
+    void getCalculatedGaussians_IR(PlotObject *plotObject);
     void getImportedSpectra(PlotObject *plotObject);
 
-    double m_scale;
-    QString m_yaxis;
+    double m_IR_scale;
+    QString m_IR_yaxis;
     int m_scheme;
     QList<QHash<QString, QVariant> > *m_schemes;
     PlotObject *m_calculatedSpectra;

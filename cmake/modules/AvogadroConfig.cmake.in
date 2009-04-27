@@ -15,7 +15,7 @@ set(Avogadro_INSTALL_PREFIX  "@CMAKE_INSTALL_PREFIX@")
 set(Avogadro_INCLUDE_DIRS    "@CMAKE_INSTALL_PREFIX@/include")
 set(Avogadro_LIBRARY_DIRS    "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@")
 set(Avogadro_LIB_SUFFIX      "@LIB_SUFFIX@")
-set(Avogadro_PLUGIN_DIR      "@CMAKE_INSTALL_PREFIX@/@PLUGIN_INSTALL_DIR@")
+set(Avogadro_PLUGIN_DIR      "@CMAKE_INSTALL_PREFIX@/@Avogadro_PLUGIN_INSTALL_DIR@")
 set(Avogadro_BIN_DIRS        "@CMAKE_INSTALL_PREFIX@/@BIN_INSTALL_DIR@")
 
 # Tell the user where to find our build settings and library deps

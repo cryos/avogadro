@@ -1133,13 +1133,15 @@ namespace Avogadro {
 
     // Since the following use QLabels to render their text, it is neccessary 
     // to paint them after drawing to keep the painter from becoming invalid.
+    // Also, be sure NOT to name the plotwidget instance as the labels parent.
+    // That makes the widget redraw itself continuously.
 
     // Draw BottomAxis Label
     a = axis(BottomAxis);
     if (a->isVisible() && !a->label().isEmpty() ) {
       QRect r( 0, 0, imPixRect.width(), imBottomPadding/2 );
 
-      QLabel textLabel (a->label(), this);
+      QLabel textLabel (a->label(), NULL);
       textLabel.setGeometry(r);
       textLabel.setFont(p.font());
       textLabel.setAlignment(Qt::AlignCenter);
@@ -1190,7 +1192,7 @@ namespace Avogadro {
 
       QRect r( 0, 0, imPixRect.height(), imLeftPadding/2 );
 
-      QLabel textLabel (a->label(), this);
+      QLabel textLabel (a->label(), NULL);
       textLabel.setGeometry(r);
       textLabel.setFont(p.font());
       textLabel.setAlignment(Qt::AlignCenter);
@@ -1406,7 +1408,7 @@ namespace Avogadro {
     if (a->isVisible() && !a->label().isEmpty() ) {
       QRect r( 0, 0, d->pixRect.width(), bottomPadding()/2 );
 
-      QLabel textLabel (a->label(), this);
+      QLabel textLabel (a->label(), NULL);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
       textLabel.setAlignment(Qt::AlignCenter);
@@ -1457,7 +1459,7 @@ namespace Avogadro {
 
       QRect r( 0, 0, d->pixRect.height(), leftPadding()/2 );
 
-      QLabel textLabel (a->label(), this);
+      QLabel textLabel (a->label(), NULL);
       textLabel.setGeometry(r);
       textLabel.setFont(d->font);
       textLabel.setAlignment(Qt::AlignCenter);
@@ -1481,7 +1483,7 @@ namespace Avogadro {
             p->setClipping(false);
             QRect r( 0, 0, d->pixRect.height(), leftPadding()/2);
 
-            QLabel textLabel (a->tickLabel( yy ));
+            QLabel textLabel (a->tickLabel( yy ), NULL);
             textLabel.setGeometry(r);
             textLabel.setFont(d->font);
             textLabel.setAlignment(Qt::AlignCenter);

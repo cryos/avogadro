@@ -54,7 +54,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tab_appearance">
         <attribute name="title">
@@ -582,7 +582,7 @@
             <string>&amp;Y Axis Units:</string>
            </property>
            <property name="buddy">
-            <cstring>combo_yaxis</cstring>
+            <cstring>combo_IR_yaxis</cstring>
            </property>
           </widget>
          </item>
@@ -598,12 +598,12 @@
             <string>&amp;Gaussian Width:</string>
            </property>
            <property name="buddy">
-            <cstring>spin_FWHM</cstring>
+            <cstring>spin_IR_FWHM</cstring>
            </property>
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QDoubleSpinBox" name="spin_FWHM">
+          <widget class="QDoubleSpinBox" name="spin_IR_FWHM">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -635,7 +635,7 @@
           </spacer>
          </item>
          <item row="0" column="3">
-          <widget class="QComboBox" name="combo_yaxis">
+          <widget class="QComboBox" name="combo_IR_yaxis">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -655,7 +655,7 @@
           </widget>
          </item>
          <item row="6" column="0">
-          <widget class="QCheckBox" name="cb_labelPeaks">
+          <widget class="QCheckBox" name="cb_IR_labelPeaks">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -684,7 +684,7 @@
           </spacer>
          </item>
          <item row="1" column="3">
-          <widget class="QDoubleSpinBox" name="spin_scale">
+          <widget class="QDoubleSpinBox" name="spin_IR_scale">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -720,7 +720,7 @@
             <string>Sc&amp;ale:</string>
            </property>
            <property name="buddy">
-            <cstring>spin_scale</cstring>
+            <cstring>spin_IR_scale</cstring>
            </property>
           </widget>
          </item>
@@ -811,8 +811,8 @@ Scroll wheel: Zoom to cursor</string>
   <tabstop>push_font</tabstop>
   <tabstop>lineEdit</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>cb_labelPeaks</tabstop>
-  <tabstop>spin_FWHM</tabstop>
+  <tabstop>cb_IR_labelPeaks</tabstop>
+  <tabstop>spin_IR_FWHM</tabstop>
   <tabstop>edit_imageFilename</tabstop>
   <tabstop>push_imageFilename</tabstop>
   <tabstop>spin_imageWidth</tabstop>
@@ -820,7 +820,7 @@ Scroll wheel: Zoom to cursor</string>
   <tabstop>combo_imageUnits</tabstop>
   <tabstop>spin_imageDPI</tabstop>
   <tabstop>push_imageSave</tabstop>
-  <tabstop>combo_yaxis</tabstop>
+  <tabstop>combo_IR_yaxis</tabstop>
  </tabstops>
  <resources/>
  <connections>
