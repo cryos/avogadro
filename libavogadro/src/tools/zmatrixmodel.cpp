@@ -223,12 +223,10 @@ namespace Avogadro {
                                 const QModelIndex &index)
   {
     if (m_zMatrix) {
-      beginInsertRows(QModelIndex(), position, position+rows-1);
       for (int row = 0; row < rows; ++row) {
         // FIXME Currently just adding new rows to the end of the matrix
         m_zMatrix->addRow();
       }
-      endInsertRows();
       return true;
     }
     return false;
@@ -241,8 +239,8 @@ namespace Avogadro {
 
   void ZMatrixModel::addRow(int row)
   {
-    beginInsertRows(QModelIndex(), row, row+1);
-    endRemoveRows();
+    beginInsertRows(QModelIndex(), row, row);
+    endInsertRows();
   }
 
 } // End namespace Avogadro
