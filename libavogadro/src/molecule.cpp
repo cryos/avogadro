@@ -113,8 +113,8 @@ namespace Avogadro{
   Molecule::~Molecule()
   {
     // Need to iterate through all atoms/bonds and destroy them
-    disconnect(this, 0);
-    blockSignals(true);
+//    disconnect(this, 0);
+//    blockSignals(true);
     clear();
     delete d_ptr;
   }
@@ -1239,7 +1239,6 @@ namespace Avogadro{
     m_lock->lockForWrite();
     m_atoms.clear();
     foreach (Atom *atom, m_atomList) {
-      disconnect(atom, 0);
       atom->deleteLater();
       emit primitiveRemoved(atom);
     }

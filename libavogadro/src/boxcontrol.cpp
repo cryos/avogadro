@@ -24,11 +24,15 @@
 
 #include "boxcontrol.h"
 
+#include "point.h"
+#include "line.h"
+
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
 #include <avogadro/molecule.h>
 
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 
 #include <Eigen/Geometry>
 

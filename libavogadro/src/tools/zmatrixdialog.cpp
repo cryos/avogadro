@@ -26,6 +26,7 @@
 #include "zmatrixmodel.h"
 
 #include <avogadro/molecule.h>
+#include <avogadro/glwidget.h>
 
 namespace Avogadro {
 
@@ -58,6 +59,11 @@ namespace Avogadro {
     }
   }
 
+  void ZMatrixDialog::setGLWidget(GLWidget *widget)
+  {
+    m_glwidget = widget;
+  }
+
   void ZMatrixDialog::addAtom()
   {
     m_zMatrixModel->insertRows(ui.tableView->currentIndex().row()+1, 1);
@@ -66,6 +72,15 @@ namespace Avogadro {
 
   void ZMatrixDialog::removeAtom()
   {
+
+  }
+
+  void ZMatrixDialog::importSelectedAtoms()
+  {
+    // Only possible if we have a valid GLWidget to retrieve selected atoms from
+    if (!m_glwidget)
+      return;
+
 
   }
 

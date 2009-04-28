@@ -24,6 +24,10 @@
 
 #include "povpainter.h"
 
+#include <avogadro/color.h>
+#include <avogadro/engine.h>
+#include <avogadro/camera.h>
+
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/mesh.h>

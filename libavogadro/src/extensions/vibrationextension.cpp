@@ -26,6 +26,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
+#include <avogadro/engine.h>
 
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
@@ -110,7 +111,7 @@ namespace Avogadro {
       return; // e.g., when destroying the molecule;
 
     if (m_vibrations->GetLx().size() != 0) {
-      
+
       m_mode = mode;
       updateForcesAndFrames();
 
@@ -138,7 +139,7 @@ namespace Avogadro {
 
     vector3 obDisplacement;
     Eigen::Vector3d displacement, atomPos;
-      
+
     // delete any old frames
     clearAnimationFrames();
     // We do 4 "phases" of vibrations
@@ -147,7 +148,7 @@ namespace Avogadro {
 
     if (m_displayVectors)
       setDisplayForceVectors(true);
-    
+
     foreach (Atom *atom, m_molecule->atoms()) {
       obDisplacement = displacementVectors[atom->index()];
       displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());
@@ -184,7 +185,7 @@ namespace Avogadro {
       return NULL;
 
     m_widget = widget; // save for warnings in updateMode()
-    
+
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
 

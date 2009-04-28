@@ -26,17 +26,15 @@
 #define PYTHONTOOL_H
 
 #include <avogadro/global.h>
-#include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 #include <avogadro/pythoninterpreter.h>
 #include <avogadro/pythonscript.h>
 
-#include <QGLWidget>
 #include <QObject>
 #include <QAction>
 
 namespace Avogadro {
-  
+
   class PythonToolPrivate;
 
   class PythonTool : public Tool
@@ -53,7 +51,7 @@ namespace Avogadro {
       //@{
       QString identifier() const;
       QString name() const;
-      QString description() const; 
+      QString description() const;
       QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);
@@ -87,9 +85,9 @@ namespace Avogadro {
         m_name = tool.name();
         m_desc = tool.description();
       }
-      Plugin *createInstance(QObject *parent = 0) 
-      { 
-        return new PythonTool(parent, m_filename); 
+      Plugin *createInstance(QObject *parent = 0)
+      {
+        return new PythonTool(parent, m_filename);
       }
       Plugin::Type type() const { return Plugin::ToolType; }
       QString identifier() const { return m_identifier; }

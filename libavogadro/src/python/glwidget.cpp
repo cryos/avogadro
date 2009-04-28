@@ -1,7 +1,6 @@
 #include <Python.h>
 #include <boost/python.hpp>
 
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/fragment.h>
@@ -9,10 +8,13 @@
 #include <avogadro/cube.h>
 #include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painter.h>
 #include <avogadro/camera.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/tool.h>
 #include <avogadro/color.h>
+#include <avogadro/primitivelist.h>
+#include <avogadro/engine.h>
 
 #include <QWidget>
 #include <QUndoStack>

@@ -27,6 +27,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
+#include <avogadro/engine.h>
 
 #include <QFileDialog>
 #include <QString>

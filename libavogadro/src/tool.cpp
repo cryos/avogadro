@@ -103,7 +103,7 @@ namespace Avogadro {
 
   bool Tool::paint(GLWidget*)
   {
-      return true;
+    return true;
   }
 
   void Tool::writeSettings(QSettings &settings) const

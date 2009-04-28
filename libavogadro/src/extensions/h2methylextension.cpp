@@ -21,11 +21,10 @@
  ***********************************************************************/
 
 #include "h2methylextension.h"
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/obiter.h>
 
