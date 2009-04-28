@@ -29,6 +29,8 @@
 
 #include <Eigen/Core>
 
+#include <QCoreApplication>
+
 using Avogadro::Molecule;
 using Avogadro::Atom;
 using Avogadro::Bond;
@@ -74,7 +76,7 @@ private slots:
   void removeAtoms();
 
   /**
-   * Timing to add 10,000 atoms, set atomic number and position
+   * Timing to add 25,000 atoms, set atomic number and position
    */
   void addAtoms2();
 
@@ -92,6 +94,38 @@ private slots:
    * Construct the molecule again
    */
   void constructor2();
+
+  /**
+   * Destructor test 2, with 10,000 atoms in a new Molecule
+   */
+  void destructor2();
+
+  /**
+   * Destructor test 3, with 10,000 atoms in a new Molecule, updated positions
+   */
+  void destructor3();
+
+  /**
+   * Destructor test 4, with 10,000 atoms in a new Molecule, updated positions,
+   * removed, then added back.
+   */
+  void destructor4();
+
+  /**
+   * Destructor test 5, with 10,000 atoms in a new Molecule, updated positions,
+   * removed, then added back, then removed and added back again.
+   */
+  void destructor5();
+
+  /**
+   * Destructor test 6, with 30,000 atoms in a new Molecule, updated positions
+   */
+  void destructor6();
+
+  /**
+   * deleteLater test, with 30,000 atoms in a new Molecule, updated positions
+   */
+  void deleteLater();
 
 };
 
@@ -163,6 +197,108 @@ void MoleculeBench::constructor2()
   m_molecule = 0;
   QBENCHMARK{
     m_molecule = new Molecule;
+  }
+}
+
+void MoleculeBench::destructor2()
+{
+  for (int i = 0; i < 10000; ++i)
+    m_molecule->addAtom();
+  QBENCHMARK{
+    delete m_molecule;
+    m_molecule = 0;
+  }
+}
+
+void MoleculeBench::destructor3()
+{
+  m_molecule = new Molecule;
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  QBENCHMARK{
+    delete m_molecule;
+    m_molecule = 0;
+  }
+}
+
+void MoleculeBench::destructor4()
+{
+  m_molecule = new Molecule;
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  m_molecule->clear();
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  qDebug() << "Before:" << m_molecule->children().size();
+  QBENCHMARK{
+    delete m_molecule;
+    m_molecule = 0;
+  }
+}
+
+void MoleculeBench::destructor5()
+{
+  m_molecule = new Molecule;
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  m_molecule->clear();
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  m_molecule->clear();
+  for (int i = 0; i < 10000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  qDebug() << "Before:" << m_molecule->children().size();
+  QBENCHMARK{
+    delete m_molecule;
+    m_molecule = 0;
+  }
+}
+
+void MoleculeBench::destructor6()
+{
+  m_molecule = new Molecule;
+  for (int i = 0; i < 25000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  m_molecule->clear();
+  qDebug() << "Before:" << m_molecule->children().size();
+  QCoreApplication::processEvents();
+  QCoreApplication::sendPostedEvents();
+  QCoreApplication::processEvents();
+  qDebug() << "Thread:" << m_molecule->thread();
+  qDebug() << "Pending events:" << QCoreApplication::hasPendingEvents();
+  qDebug() << "After:" << m_molecule->children().size();
+  QBENCHMARK{
+    delete m_molecule;
+    m_molecule = 0;
+  }
+}
+
+void MoleculeBench::deleteLater()
+{
+  m_molecule = new Molecule;
+  for (int i = 0; i < 30000; ++i) {
+    Atom *a = m_molecule->addAtom();
+    a->setPos(Vector3d(1.0, 1.0, 1.0));
+  }
+  m_molecule->clear();
+  qDebug() << m_molecule->children().size();
+  QBENCHMARK{
+    m_molecule->deleteLater();
+    m_molecule = 0;
   }
 }
 
