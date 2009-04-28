@@ -48,10 +48,10 @@
 #include <QDebug>
 #include <QVariant>
 
-using std::vector;
-using Eigen::Vector3d;
-
 namespace Avogadro{
+
+  using std::vector;
+  using Eigen::Vector3d;
 
   class MoleculePrivate {
     public:
@@ -113,8 +113,8 @@ namespace Avogadro{
   Molecule::~Molecule()
   {
     // Need to iterate through all atoms/bonds and destroy them
-    //Q_D(Molecule);
-    disconnect(this, 0, 0, 0);
+    disconnect(this, 0);
+    blockSignals(true);
     clear();
     delete d_ptr;
   }
@@ -1224,6 +1224,8 @@ namespace Avogadro{
     if (!m_atomPos)
       return; // nothing to do
 
+    Q_D(const Molecule);
+    d->invalidGeomInfo = true;
     foreach (Atom *atom, m_atomList) {
       (*m_atomPos)[atom->id()] += offset;
       emit atomUpdated(atom);
@@ -1235,8 +1237,9 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     m_lock->lockForWrite();
-    m_atoms.resize(0);
+    m_atoms.clear();
     foreach (Atom *atom, m_atomList) {
+      disconnect(atom, 0);
       atom->deleteLater();
       emit primitiveRemoved(atom);
     }
@@ -1249,35 +1252,35 @@ namespace Avogadro{
     delete d->obunitcell;
     d->obunitcell = 0;
 
-    m_bonds.resize(0);
+    m_bonds.clear();
     foreach (Bond *bond, m_bondList) {
       bond->deleteLater();
       emit primitiveRemoved(bond);
     }
     m_bondList.clear();
 
-    d->cubes.resize(0);
+    d->cubes.clear();
     foreach (Cube *cube, d->cubeList) {
       cube->deleteLater();
       emit primitiveRemoved(cube);
     }
     d->cubeList.clear();
 
-    d->meshes.resize(0);
+    d->meshes.clear();
     foreach (Mesh *mesh, d->meshList) {
       mesh->deleteLater();
       emit primitiveRemoved(mesh);
     }
     d->meshList.clear();
 
-    d->residues.resize(0);
+    d->residues.clear();
     foreach (Residue *residue, d->residueList) {
       residue->deleteLater();
       emit primitiveRemoved(residue);
     }
     d->residueList.clear();
 
-    d->rings.resize(0);
+    d->rings.clear();
     foreach (Fragment *ring, d->ringList) {
       ring->deleteLater();
       emit primitiveRemoved(ring);
@@ -1378,7 +1381,7 @@ namespace Avogadro{
       Vector3d ** atomPositions = new Vector3d*[nAtoms];
       // Calculate the center of the molecule too
       foreach (Atom *atom, m_atomList) {
-        const Vector3d *pos = atom->pos();
+        Vector3d *pos = &(*m_atomPos)[atom->id()];
         d->center += *pos;
         atomPositions[i++] = pos;
       }
