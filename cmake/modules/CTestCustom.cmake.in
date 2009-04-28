@@ -1,0 +1,8 @@
+set(CTEST_CUSTOM_WARNING_EXCEPTION
+  ${CTEST_CUSTOM_WARNING_EXCEPTION}
+  #  "python" # Our Python bindings are too noisy to be useful right now
+  # This one may need more attention - can eigen.cpp be improved?
+  "avogadro/libavogadro/src/python/eigen.cpp" # Lots of compiler warnings
+  "C4305:" # Truncation from double to float
+  "C4291:" # Eigen errors - no matching delete found
+)

@@ -41,7 +41,7 @@ endif(MSVC)
 ###########################################################
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags
   if (CMAKE_SYSTEM_NAME MATCHES Linux)
@@ -265,6 +265,12 @@ install(FILES
   "${CMAKE_MODULE_PATH}/FindEigen2.cmake"
   "${CMAKE_MODULE_PATH}/FindGLEW.cmake"
   DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}/cmake")
+
+configure_file(
+  "${CMAKE_MODULE_PATH}/CTestCustom.cmake.in"
+  "${Avogadro_BINARY_DIR}/CTestCustom.cmake"
+  IMMEDIATE @ONLY
+)
 
 # Place binaries and libraries in the root of the build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
