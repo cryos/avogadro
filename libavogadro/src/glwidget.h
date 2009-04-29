@@ -27,12 +27,12 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
+#include <avogadro/global.h>
+
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
 #include <QGLWidget>
-
-#include <avogadro/global.h>
 
 #include <QThread>
 
