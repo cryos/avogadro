@@ -14,9 +14,12 @@ link_directories(
   ${OPENBABEL2_LIBRARY_DIRS}
 )
 
+# Ensure the Avogadro include directory is always first
+get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
+set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
+  "${libavogadro_BINARY_DIR}/include;${tmp_include_dirs}")
 include_directories(
-  ${libavogadro_SOURCE_DIR}/include
-  ${avogadro_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}

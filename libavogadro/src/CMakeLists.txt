@@ -7,9 +7,11 @@ configure_file(
 
 include(${QT_USE_FILE})
 
+# Ensure the Avogadro include directory is always first
+get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
+set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
+  "${libavogadro_BINARY_DIR}/include;${tmp_include_dirs}")
 include_directories(
-  ${libavogadro_SOURCE_DIR}/include
-  ${CMAKE_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
@@ -59,6 +61,7 @@ set(libavogadro_HDRS
   primitive.h
   primitiveitemmodel.h
   primitivelist.h
+  protein.h
   residue.h
   tool.h
   toolgroup.h
@@ -110,6 +113,15 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   link_directories(${Boost_LIBRARY_DIRS})
   qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+
+# Set up the include directory and copy all headers to it
+make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
+foreach(headerFile ${libavogadro_HDRS})
+  set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
+  set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
+  execute_process(
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${from}" "${to}")
+endforeach(headerFile ${libavogadro_HDRS})
 
 add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
