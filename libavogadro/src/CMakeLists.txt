@@ -114,13 +114,19 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
-# Set up the include directory and copy all headers to it
+# Set up the include directory and symlink/copy all headers to it.
+# Note: Windows lacks symlinks and so the files must be copied.
 make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
+if(UNIX)
+  set(header_cmd "create_symlink")
+else(UNIX)
+  set(header_cmd "copy_if_different")
+endif(UNIX)
 foreach(headerFile ${libavogadro_HDRS})
   set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
   set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
   execute_process(
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${from}" "${to}")
+    COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${libavogadro_HDRS})
 
 add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
