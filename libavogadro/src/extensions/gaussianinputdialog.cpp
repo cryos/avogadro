@@ -35,6 +35,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QShowEvent>
+#include <QSettings>
 #include <QDebug>
 
 using namespace OpenBabel;

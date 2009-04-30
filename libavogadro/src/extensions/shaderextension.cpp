@@ -32,6 +32,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/engine.h>
 
 #include <QAction>
 #include <QFileDialog>

@@ -25,6 +25,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/primitivelist.h>
 
 #include <QAbstractTableModel>
 #include <QHeaderView>

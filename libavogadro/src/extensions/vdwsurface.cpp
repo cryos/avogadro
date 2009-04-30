@@ -29,6 +29,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/mol.h>
 

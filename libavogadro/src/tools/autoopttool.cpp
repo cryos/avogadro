@@ -30,7 +30,9 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
+#include <avogadro/painter.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/obiter.h>
 #include <openbabel/mol.h>

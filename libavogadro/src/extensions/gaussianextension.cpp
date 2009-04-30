@@ -39,7 +39,7 @@ namespace Avogadro
 
   GaussianExtension::GaussianExtension(QObject* parent) : Extension(parent),
     m_gaussianInputDialog(0), m_qchemInputDialog(0), m_mopacInputDialog(0),
-    m_nwchemInputDialog(0), m_molecule(0)
+    m_nwchemInputDialog(0), m_molproInputDialog(0), m_molecule(0)
   {
     QAction* action = new QAction(this);
     action->setText(tr("Gaussian Input..."));
@@ -49,6 +49,11 @@ namespace Avogadro
     action = new QAction(this);
     action->setText(tr("Q-Chem Input..."));
     action->setData("QChem");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("MOLPRO Input..."));
+    action->setData("Molpro");
     m_actions.append(action);
 
     action = new QAction(this);
@@ -111,6 +116,15 @@ namespace Avogadro
       else
         m_nwchemInputDialog->show();
     }
+    else if (action->data() == "Molpro") {
+      if (!m_molproInputDialog) {
+        m_molproInputDialog = new MolproInputDialog(static_cast<QWidget*>(parent()));
+        m_molproInputDialog->setMolecule(m_molecule);
+        m_molproInputDialog->show();
+      }
+      else
+        m_molproInputDialog->show();
+    }
     else if (action->data() == "MOPAC") {
       if (!m_mopacInputDialog) {
         m_mopacInputDialog = new MOPACInputDialog(static_cast<QWidget*>(parent()));
@@ -135,6 +149,8 @@ namespace Avogadro
       m_qchemInputDialog->setMolecule(m_molecule);
     if (m_nwchemInputDialog)
       m_nwchemInputDialog->setMolecule(m_molecule);
+    if (m_molproInputDialog)
+      m_molproInputDialog->setMolecule(m_molecule);
     if (m_mopacInputDialog)
       m_mopacInputDialog->setMolecule(m_molecule);
   }

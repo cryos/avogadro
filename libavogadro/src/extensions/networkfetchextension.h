@@ -1,7 +1,7 @@
 /**********************************************************************
-  GaussianExtension - Extension for generating Gaussian input decks
+  NetworkFetchExtension - Extension for fetching molecules over the network
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -22,72 +22,82 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef GAUSSIANEXTENSION_H
-#define GAUSSIANEXTENSION_H
+#ifndef NETWORKFETCHEXTENSION_H
+#define NETWORKFETCHEXTENSION_H
 
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
-#include "gaussianinputdialog.h"
-#include "qcheminputdialog.h"
-#include "molproinputdialog.h"
-#include "nwcheminputdialog.h"
-#include "mopacinputdialog.h"
+class QNetworkAccessManager;
+class QNetworkReply;
+class QString;
 
 namespace Avogadro
 {
-  class GaussianExtension : public Extension
+  class NetworkFetchExtension : public Extension
   {
   Q_OBJECT
-    AVOGADRO_EXTENSION("Gaussian Input Deck", tr("Gaussian Input Deck"), 
-                       tr("Create input files for quantum chemistry packages like Gaussian"))
-  public:
-    GaussianExtension(QObject* parent = 0);
-    virtual ~GaussianExtension();
+    AVOGADRO_EXTENSION("NetworkFetch", tr("Network Fetch"),
+                       tr("Fetch molecule files over the network."))
 
+  public:
+    NetworkFetchExtension(QObject* parent = 0);
+    virtual ~NetworkFetchExtension();
+
+    /**
+     * @return a list of actions which this widget can perform
+     */
     virtual QList<QAction *> actions() const;
 
+    /**
+     * @return the menu path for the specified action
+     */
     virtual QString menuPath(QAction* action) const;
 
+    /**
+     * @param action The action that triggered the calls.
+     * @param widget The currently active GLWidget (feedback to the user).
+     * @return An undo command for this action.
+     */
     virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
-
-    void setMolecule(Molecule *molecule);
 
     /**
      * Save the settings for this extension.
      * @param settings Settings variable to write settings to.
      */
-    void writeSettings(QSettings &settings) const;
+    virtual void writeSettings(QSettings &settings) const;
 
     /**
      * Read the settings for this extension.
      * @param settings Settings variable to read settings from.
      */
-    void readSettings(QSettings &settings);
-    
-  public Q_SLOTS:
-    void readOutputFile(const QString filename);
+    virtual void readSettings(QSettings &settings);
+
+  public slots:
+
+    /**
+     * Slot to change the current molecule.
+     */
+    void setMolecule(Molecule *molecule);
 
   private:
-    GaussianInputDialog* m_gaussianInputDialog;
-    QChemInputDialog* m_qchemInputDialog;
-    MolproInputDialog* m_molproInputDialog;
-    MOPACInputDialog* m_mopacInputDialog;
-    NWChemInputDialog* m_nwchemInputDialog;
+    GLWidget* m_glwidget;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
-    
-    GLWidget *m_widget;
+    QNetworkAccessManager *m_network;
+    QString *m_pdbName;
+
+  private slots:
+    void replyFinished(QNetworkReply*);
 
   };
 
-  class GaussianExtensionFactory : public QObject, public PluginFactory
+  class NetworkFetchExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_EXTENSION_FACTORY(GaussianExtension) 
+    AVOGADRO_EXTENSION_FACTORY(NetworkFetchExtension)
   };
 
 } // End namespace Avogadro
 
-#endif
+#endif // NETWORKFETCHEXTENSION_H

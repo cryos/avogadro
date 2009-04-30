@@ -3,7 +3,7 @@
 
   Copyright (C) 2006-2009 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
-  Copyright (C) 2007,2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -28,26 +28,35 @@
 #define GLWIDGET_H
 
 #include <avogadro/global.h>
-#include <avogadro/engine.h>
-#include <avogadro/color.h>
-#include <avogadro/painter.h>
-#include <avogadro/camera.h>
+
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+#include <QGLWidget>
 
 #include <QThread>
 
-#include <vector>
+#include <Eigen/Core>
 
 class QUndoStack;
 class QMouseEvent;
 class QGLContext;
+class QSettings;
 
 namespace Avogadro {
 
+  class Primitive;
   class Atom;
   class Bond;
   class Molecule;
+  class Camera;
+  class Painter;
   class Tool;
   class ToolGroup;
+  class Color;
+  class Engine;
+  class Painter;
+  class PrimitiveList;
 
   /**
    * @class GLHit glwidget.h <avogadro/glwidget.h>
@@ -219,12 +228,12 @@ namespace Avogadro {
        * @return True if quick rendering is being used.
        */
       bool quickRender() const;
-      
+
       /**
       * @param enabled True if we should render the unit cell axes
       */
       void setRenderUnitCellAxes(bool enabled);
-      
+
       /**
        * @return True if unit cell axes are being rendered.
        */

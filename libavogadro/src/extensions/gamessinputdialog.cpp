@@ -29,10 +29,8 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QDebug>
-
 #include <QFileDialog>
 #include <QFile>
-
 #include <QMessageBox>
 
 namespace Avogadro {
@@ -1599,7 +1597,7 @@ namespace Avogadro {
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".inp";    
+    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".inp";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
         defaultFileName, tr("GAMESS Input Deck (*.inp)"));
 

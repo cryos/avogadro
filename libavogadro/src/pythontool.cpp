@@ -25,7 +25,6 @@
 #include "pythontool.h"
 
 #include <avogadro/navigate.h>
-#include <avogadro/primitive.h>
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>

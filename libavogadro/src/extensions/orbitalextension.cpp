@@ -37,7 +37,9 @@
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
 #include <avogadro/meshgenerator.h>
+#include <avogadro/engine.h>
 #include <avogadro/neighborlist.h>
+
 #include <Eigen/Core>
 
 #include <QProgressDialog>
@@ -235,7 +237,7 @@ namespace Avogadro
         }
         m_basis = new BasisSet;
         Molpro mpo(fullFileName, m_basis);
-	qDebug() << "numMOs: " << m_basis->numMOs();
+    qDebug() << "numMOs: " << m_basis->numMOs();
         m_orbitalDialog->setMOs(m_basis->numMOs());
         for (int i = 0; i < m_basis->numMOs(); ++i) {
           if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
@@ -243,7 +245,7 @@ namespace Avogadro
         }
         return true;
       }
-        
+
     }
 
     // We didn't find an appropriate filetype

@@ -1,5 +1,5 @@
 /**********************************************************************
-  BoxControl - 
+  BoxControl -
 
   Copyright (C) 2008 Tim Vandermeersch
 
@@ -26,82 +26,88 @@
 #define BOXCONTROL_H
 
 #include <avogadro/global.h>
-#include <avogadro/color.h>
-#include <avogadro/point.h>
-#include <avogadro/line.h>
+
+#include <QVector>
+#include <QPoint>
+
+#include <Eigen/Core>
+
+class QMouseEvent;
 
 namespace Avogadro {
 
+  class Line;
+  class Point;
+
   class A_EXPORT BoxControl : public QObject
   {
-    Q_OBJECT 
+    Q_OBJECT
 
-    public:
-      /**
-       * Constructor.
-       */
-      BoxControl();
-      /**
-       * Destructor.
-       */
-      ~BoxControl();
-      /**
-       * Add (show) the point & line primitives to the current GLWidget.
-       */
-      void addPrimitives();
-      /**
-       * Remove (hide) the point & line primitives to the current GLWidget.
-       */
-      void removePrimitives();
-      /**
-       * Return true if the user has modified the box by dragging 
-       * one of the points.
-       */
-      bool isModified() const { return m_modified; }
-      /**
-       * Set the modified flag to @p value.
-       */
-      void setModified(bool value) { m_modified = value; }
-      /**
-       * Set the box based on two opposite corners.
-       * @param p1 Corner one.
-       * @param p2 Corner two.
-       */
-      void setOppositeCorners(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2);
-      /**
-       * Get the minimum position (corner one).
-       */
-      Eigen::Vector3d min() { return m_min; }
-      /**
-       * Get the maximum position (corner two).
-       */
-      Eigen::Vector3d max() { return m_max; }
-    signals:
-      /**
-       * This signal is emitted when the user changes the box by dragging 
-       * one of the points.
-       */
-      void modified();
+  public:
+    /**
+     * Constructor.
+     */
+    BoxControl();
+    /**
+     * Destructor.
+     */
+    ~BoxControl();
+    /**
+     * Add (show) the point & line primitives to the current GLWidget.
+     */
+    void addPrimitives();
+    /**
+     * Remove (hide) the point & line primitives to the current GLWidget.
+     */
+    void removePrimitives();
+    /**
+     * Return true if the user has modified the box by dragging
+     * one of the points.
+     */
+    bool isModified() const { return m_modified; }
+    /**
+     * Set the modified flag to @p value.
+     */
+    void setModified(bool value) { m_modified = value; }
+    /**
+     * Set the box based on two opposite corners.
+     * @param p1 Corner one.
+     * @param p2 Corner two.
+     */
+    void setOppositeCorners(const Eigen::Vector3d &p1, const Eigen::Vector3d &p2);
+    /**
+     * Get the minimum position (corner one).
+     */
+    Eigen::Vector3d min() { return m_min; }
+    /**
+     * Get the maximum position (corner two).
+     */
+    Eigen::Vector3d max() { return m_max; }
+  signals:
+    /**
+     * This signal is emitted when the user changes the box by dragging
+     * one of the points.
+     */
+    void modified();
 
-    public slots:
-      // Handle points clicking...
-      void mousePressEvent(Point *point, QMouseEvent * event);
-      void mouseMoveEvent(Point *point, QMouseEvent * event);
-      void mouseReleaseEvent(Point *point, QMouseEvent * event);
+  public slots:
+    // Handle points clicking...
+    void mousePressEvent(Point *point, QMouseEvent * event);
+    void mouseMoveEvent(Point *point, QMouseEvent * event);
+    void mouseReleaseEvent(Point *point, QMouseEvent * event);
 
+  private:
+    /**
+     * Update the positions for the points & lines.
+     */
+    void updatePrimitives();
 
-    private:
-      /**
-       * Update the positions for the points & lines.
-       */
-      void updatePrimitives();
-      
-      Eigen::Vector3d m_min, m_max;
-      QVector<Point*> m_points;
-      QVector<Line*>  m_lines;
-      QPoint          m_lastDraggingPosition;
-      bool            m_modified;
-      bool            m_added;
+    Eigen::Vector3d m_min, m_max;
+    QVector<Point*> m_points;
+    QVector<Line*>  m_lines;
+    QPoint          m_lastDraggingPosition;
+    bool            m_modified;
+    bool            m_added;
   };
 
 } // end namespace Avogadro

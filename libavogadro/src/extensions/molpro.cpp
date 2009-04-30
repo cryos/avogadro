@@ -107,7 +107,7 @@ namespace Avogadro
             currentBasis = basis->addBasis(list.at(2).toInt()-1, P);
           } else if (type == "d" ) {
             ignoreShells = 4;
-            currentBasis = basis->addBasis(list.at(2).toInt()-1, D);
+            currentBasis = basis->addBasis(list.at(2).toInt()-1, D5);
           } else return;
           basis->addGTO(currentBasis, list.at(5).toDouble(),
                         list.at(4).toDouble());

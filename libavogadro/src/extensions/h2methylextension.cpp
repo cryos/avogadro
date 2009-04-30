@@ -21,12 +21,12 @@
  ***********************************************************************/
 
 #include "h2methylextension.h"
-#include <avogadro/primitive.h>
-#include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
+#include <avogadro/primitivelist.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/obiter.h>
 
 #include <QAction>
@@ -36,7 +36,8 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  H2MethylExtension::H2MethylExtension(QObject *parent) : Extension(parent), m_molecule(0)
+  H2MethylExtension::H2MethylExtension(QObject *parent) : Extension(parent),
+    m_molecule(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Change H to Methyl"));

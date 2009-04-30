@@ -34,6 +34,7 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSettings>
 #include <QDebug>
 
 namespace Avogadro
