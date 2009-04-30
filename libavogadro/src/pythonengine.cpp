@@ -23,6 +23,8 @@
  **********************************************************************/
 
 #include "pythonengine.h"
+#include "pythoninterpreter.h"
+#include "pythonscript.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>

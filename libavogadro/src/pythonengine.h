@@ -27,8 +27,6 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-#include <avogadro/pythoninterpreter.h>
-#include <avogadro/pythonscript.h>
 
 namespace Avogadro {
 
