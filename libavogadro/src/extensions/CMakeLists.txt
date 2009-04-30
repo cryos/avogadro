@@ -135,3 +135,5 @@ avogadro_plugin(supercellextension
   "supercellextension.cpp;supercelldialog.cpp"
   supercelldialog.ui)
 
+avogadro_plugin(networkfetchextension networkfetchextension.cpp)
+
