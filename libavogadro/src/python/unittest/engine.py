@@ -8,8 +8,8 @@ import sys
 class TestEngine(unittest.TestCase):
   def setUp(self):
     self.engines = []
-    for name in Avogadro.PluginManager.instance.names(Avogadro.PluginType.EngineType):
-      engine = Avogadro.PluginManager.instance.engine(name, None)
+    for identifier in Avogadro.PluginManager.instance.identifiers(Avogadro.PluginType.EngineType):
+      engine = Avogadro.PluginManager.instance.engine(identifier, None)
       self.engines.append(engine)
     
     self.assertNotEqual(len(self.engines), 0)
@@ -29,7 +29,6 @@ class TestEngine(unittest.TestCase):
 
   def test_alias(self):
     for engine in self.engines:
-      self.assertEqual(engine.alias, engine.name)
       engine.alias = "testing"
       self.assertEqual(engine.alias, "testing")
 
