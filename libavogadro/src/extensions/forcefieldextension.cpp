@@ -25,6 +25,7 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/atom.h>
+#include <avogadro/primitivelist.h>
 
 #include <QProgressDialog>
 #include <QWriteLocker>

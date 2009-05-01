@@ -12,6 +12,8 @@ void export_ToolGroup()
 {
   void (ToolGroup::*append_ptr1)(QList<Tool *>) = &ToolGroup::append;
   void (ToolGroup::*append_ptr2)(Tool *) = &ToolGroup::append;
+  
+  Tool* (ToolGroup::*activeTool_ptr)() const = &ToolGroup::activeTool;
   void (ToolGroup::*setActiveTool_ptr1)(int) = &ToolGroup::setActiveTool;
   void (ToolGroup::*setActiveTool_ptr2)(const QString&) = &ToolGroup::setActiveTool;
   void (ToolGroup::*setActiveTool_ptr3)(Tool *) = &ToolGroup::setActiveTool;
@@ -21,7 +23,7 @@ void export_ToolGroup()
 
   class_<Avogadro::ToolGroup, boost::noncopyable>("ToolGroup")
     // read/write properties
-    .add_property("activeTool", make_function(&ToolGroup::activeTool, return_value_policy<reference_existing_object>()), 
+    .add_property("activeTool", make_function(activeTool_ptr, return_value_policy<reference_existing_object>()), 
         setActiveTool_ptr3)
     .add_property("tools", make_function(&ToolGroup::tools, return_value_policy<return_by_value>()))
     // real functions

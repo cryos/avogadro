@@ -30,9 +30,6 @@
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-#include <avogadro/pythoninterpreter.h>
-#include <avogadro/pythonscript.h>
-
 #include <QWidget>
 #include <QList>
 #include <QDir>

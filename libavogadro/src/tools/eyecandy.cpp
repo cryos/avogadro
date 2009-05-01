@@ -25,6 +25,10 @@
 
 #include "eyecandy.h"
 
+#include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
+#include <avogadro/painter.h>
+#include <avogadro/color.h>
 #include <avogadro/atom.h>
 
 #define TESS_LEVEL 32
@@ -42,6 +46,15 @@
 using Eigen::Vector3d;
 
 namespace Avogadro {
+
+  Eyecandy::Eyecandy() : m_color(new Color(1.0, 1.0, 0.3, 1.0))
+  {
+  }
+
+  Eyecandy::~Eyecandy()
+  {
+    delete m_color;
+  }
 
   void Eyecandy::drawRotationHorizRibbon()
   {
@@ -167,7 +180,7 @@ namespace Avogadro {
     m_yAxis = widget->camera()->backTransformedYAxis();
     m_zAxis = widget->camera()->backTransformedZAxis();
 
-    m_color.applyAsMaterials();
+    m_color->applyAsMaterials();
 
     //draw back faces
     glCullFace(GL_FRONT);
@@ -214,7 +227,7 @@ namespace Avogadro {
                                  double size, double shift)
   {
     glDisable(GL_LIGHTING);
-    m_color.apply();
+    m_color->apply();
 
     // Set up the axes and some vectors to work with
     Vector3d xAxis = widget->camera()->backTransformedXAxis();
@@ -305,7 +318,7 @@ namespace Avogadro {
   void Eyecandy::drawZoom(GLWidget *widget, const Eigen::Vector3d *center,
                           double size)
   {
-    widget->painter()->setColor(&m_color);
+    widget->painter()->setColor(m_color);
     //   glEnable( GL_BLEND );
     //   widget->painter()->drawSphere(center, radius);
     //   glDisable( GL_BLEND );
@@ -314,7 +327,7 @@ namespace Avogadro {
 //    glDepthMask(GL_FALSE);
     //draw back faces
     glDisable(GL_CULL_FACE);
-    m_color.apply();
+    m_color->apply();
 
     // Set up the axes and some vectors to work with
     Vector3d xAxis = widget->camera()->backTransformedXAxis();
@@ -386,14 +399,14 @@ namespace Avogadro {
 //    glDepthMask(GL_TRUE);
   }
 
-  void Eyecandy::setColor(const double red, const double green, 
+  void Eyecandy::setColor(const double red, const double green,
                           const double blue, const double alpha)
   {
-    m_color.set(red, green, blue, alpha);
+    m_color->set(red, green, blue, alpha);
   }
 
   Color *Eyecandy::color()
   {
-    return &m_color;
+    return m_color;
   }
 }

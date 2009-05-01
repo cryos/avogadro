@@ -24,9 +24,9 @@
 
 #include "ringengine.h"
 
-#include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 #include <avogadro/painterdevice.h>
 #include <avogadro/molecule.h>
 #include <avogadro/fragment.h>

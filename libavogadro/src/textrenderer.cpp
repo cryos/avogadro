@@ -25,7 +25,8 @@
 
 #include "textrenderer.h"
 
-#include <avogadro/glwidget.h>
+#include "glwidget.h"
+#include "camera.h"
 
 #include <QPainter>
 #include <QHash>

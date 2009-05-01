@@ -25,19 +25,21 @@
 #ifndef EYECANDY_H
 #define EYECANDY_H
 
-#include <avogadro/glwidget.h>
-#include <avogadro/camera.h>
-#include <QPoint>
+#include <Eigen/Core>
 
 namespace Avogadro {
+
+  class GLWidget;
+  class Color;
+  class Atom;
 
   class Eyecandy
   {
     public:
-      Eyecandy() : m_color(1.0, 1.0, 0.3, 1.0) {}
-      ~Eyecandy() {}
+      Eyecandy();
+      ~Eyecandy();
 
-      void setColor(const double red, const double green, 
+      void setColor(const double red, const double green,
                     const double blue, const double alpha);
       Color *color();
 
@@ -68,7 +70,7 @@ namespace Avogadro {
       double m_yAngleStart, m_yAngleEnd, m_xAngleStart, m_xAngleEnd;
       double m_radius;
       Eigen::Vector3d m_center, m_xAxis, m_yAxis, m_zAxis;
-      Color m_color;
+      Color *m_color;
   };
 
 }

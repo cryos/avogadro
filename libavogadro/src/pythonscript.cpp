@@ -23,7 +23,7 @@
   02110-1301, USA.
  ***********************************************************************/
 
-#include <avogadro/pythonscript.h>
+#include "pythonscript.h"
 
 #include <QDebug>
 #include <QTextEdit>

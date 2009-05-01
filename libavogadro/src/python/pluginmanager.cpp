@@ -11,6 +11,10 @@
 using namespace boost::python;
 using namespace Avogadro;
 
+// thin wrappers to handle default arguments
+void loadFactories1() { PluginManager::loadFactories(); }
+void loadFactories2(const QString &dir) { PluginManager::loadFactories(dir); }
+
 void export_PluginManager()
 {
   class_<Avogadro::PluginManager, boost::noncopyable>("PluginManager", no_init)
@@ -19,7 +23,8 @@ void export_PluginManager()
           return_value_policy<reference_existing_object>()))
 
     // real functions
-    .def("loadFactories", &PluginManager::loadFactories)
+    .def("loadFactories", &loadFactories1)
+    .def("loadFactories", &loadFactories2)
     .staticmethod("loadFactories")
 
     //.def("factories", &PluginManager::factories)
@@ -32,6 +37,7 @@ void export_PluginManager()
     .def("color", &PluginManager::color, return_value_policy<manage_new_object>())
     .def("engine", &PluginManager::engine, return_value_policy<manage_new_object>())
     .def("names", &PluginManager::names)
+    .def("identifiers", &PluginManager::identifiers)
     .def("descriptions", &PluginManager::descriptions)
 
     .def("extensions", &PluginManager::extensions)

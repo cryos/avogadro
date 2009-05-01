@@ -38,6 +38,7 @@ void export_Engine()
   class_<Avogadro::Engine, bases<Avogadro::Plugin>, boost::noncopyable>("Engine", no_init)
     // read-only poperties 
     .add_property("typeName", &Engine::typeName)
+    .add_property("identifier", &Engine::identifier)
     .add_property("layers", &Engine::layers)
     .add_property("primitiveTypes", &Engine::primitiveTypes)
     .add_property("colorTypes", &Engine::colorTypes)

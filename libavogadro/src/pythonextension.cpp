@@ -24,6 +24,9 @@
  ***********************************************************************/
 
 #include "pythonextension.h"
+#include "pythoninterpreter.h"
+#include "pythonscript.h"
+
 
 #include <avogadro/molecule.h>
 

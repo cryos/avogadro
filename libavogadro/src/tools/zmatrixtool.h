@@ -37,7 +37,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_TOOL("Z-Matrix", tr("Z-Matrix"),
-                  tr("Create/edit z matrices"))
+                  tr("Create/edit a z-matrix"))
 
   public:
     //! Constructor
@@ -54,12 +54,13 @@ namespace Avogadro {
 
     virtual QWidget *settingsWidget();
 
-  private Q_SLOTS:
+  private slots:
     void showZMatrixDialog();
 
   private:
     // Guarded pointers, for storing pointers to things that might go poof...
     QPointer<Molecule>       m_molecule;
+    QPointer<GLWidget>       m_glwidget;
     QPointer<QWidget>        m_settingsWidget;
     QPointer<ZMatrixDialog>  m_zMatrixDialog;
 

@@ -14,6 +14,7 @@ void export_Tool()
     // read-only poperties
     .add_property("usefulness", &Tool::usefulness)
     .add_property("typeName", &Tool::typeName)
+    .add_property("identifier", &Tool::identifier)
     //.add_property("activateAction", &Tool::activateAction) // QAction
     // real functions
     

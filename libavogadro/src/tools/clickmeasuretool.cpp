@@ -31,6 +31,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/painter.h>
 
 #include <cmath>
 

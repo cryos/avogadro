@@ -43,3 +43,24 @@ foreach (test ${tests})
     avogadro-lib)
   add_test(${test}Test ${CMAKE_BINARY_DIR}/bin/${test}test)
 endforeach (test ${tests})
+
+set(benches
+  molecule
+)
+
+foreach (bench ${benches})
+  message(STATUS "Benchmark:  ${bench}")
+  set(bench_SRCS ${bench}bench.cpp)
+  qt4_wrap_cpp(bench_MOC_SRCS ${bench_SRCS})
+  add_custom_target(${bench}benchmoc ALL DEPENDS
+    ${bench_MOC_SRCS})
+  add_executable(${bench}bench ${bench_SRCS})
+  add_dependencies(${bench}bench ${bench}benchmoc)
+  target_link_libraries(${bench}bench
+    ${OPENBABEL2_LIBRARIES}
+    ${QT_LIBRARIES}
+    ${QT_QTTEST_LIBRARY}
+    avogadro-lib)
+  add_test(${bench}Bench
+  ${CMAKE_BINARY_DIR}/bin/${bench}bench)
+endforeach (bench ${benches})

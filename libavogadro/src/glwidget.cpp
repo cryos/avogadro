@@ -4,7 +4,7 @@
   Copyright (C) 2006-2009 Geoffrey R. Hutchison
   Copyright (C) 2006,2007 Donald Ephraim Curtis
   Copyright (C) 2007      Benoit Jacob
-  Copyright (C) 2007,2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -28,8 +28,10 @@
 // krazy:excludeall=includes
 #include "config.h"
 
-#include <avogadro/glwidget.h>
-#include <avogadro/glpainter.h>
+#include "glwidget.h"
+#include "camera.h"
+#include "glpainter.h"
+
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
 #include <avogadro/toolgroup.h>
@@ -53,7 +55,6 @@
 #include <QTime>
 #include <QReadWriteLock>
 #include <QMessageBox>
-#include <QObject>
 
 #ifdef ENABLE_THREADED_GL
 #include <QWaitCondition>
@@ -687,7 +688,7 @@ namespace Avogadro {
     d->renderMutex.lock();
 #endif
     d->background = background;
-		d->background.setAlphaF(0.0);
+        d->background.setAlphaF(0.0);
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
@@ -1421,8 +1422,8 @@ namespace Avogadro {
     Vector3d b(cellVectors[1].AsArray());
     Vector3d c(cellVectors[2].AsArray());
     Vector3d centerOffset = ( a * (d->aCells - 1)
-			      + b * (d->bCells - 1)
-			      + c * (d->cCells - 1) ) / 2.0;
+                  + b * (d->bCells - 1)
+                  + c * (d->cCells - 1) ) / 2.0;
     // the center is the center of the molecule translated by centerOffset
     d->center = d->molecule->center() + centerOffset;
     // the radius is the length of centerOffset plus the molecule radius
@@ -1448,11 +1449,11 @@ namespace Avogadro {
       d->farthestAtom = atoms.at(0);
       max_x = centerOffset.dot(*d->farthestAtom->pos());
       foreach (Atom *atom, atoms) {
-	x = centerOffset.dot(*atom->pos());
-	if (x > max_x) {
-	  max_x = x;
-	  d->farthestAtom = atom;
-	}
+    x = centerOffset.dot(*atom->pos());
+    if (x > max_x) {
+      max_x = x;
+      d->farthestAtom = atom;
+    }
       } // end foreach
     } // end general repeat (many atoms, multiple cells)
   }
@@ -1961,7 +1962,7 @@ namespace Avogadro {
   {
     for (int i = 0; i < d->namedSelections.size(); ++i)
       if (d->namedSelections.at(i).first == name) {
-	return namedSelectionPrimitives(i);
+    return namedSelectionPrimitives(i);
     }
 
     return PrimitiveList();

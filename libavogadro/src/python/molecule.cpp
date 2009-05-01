@@ -23,6 +23,17 @@ void copy(Molecule &self, const Molecule &from)
   self = from;
 }
 
+// thin wrappers to handle default arguments
+void addHydrogens1(Molecule &self) 
+{ 
+  self.addHydrogens(); 
+}
+void addHydrogens2(Molecule &self, Atom *atom) 
+{ 
+  self.addHydrogens(atom); 
+}
+
+
 void export_Molecule()
 {
 
@@ -130,7 +141,8 @@ void export_Molecule()
     .def("removeRing", removeRing_ptr1)
     .def("removeRing", removeRing_ptr2)
     // general functions
-    .def("addHydrogens", &Molecule::addHydrogens)
+    .def("addHydrogens", &addHydrogens1)
+    .def("addHydrogens", &addHydrogens2)
     .def("removeHydrogens", &Molecule::removeHydrogens)
     .def("calculatePartialCharges", &Molecule::calculatePartialCharges)
     .def("clear", &Molecule::clear)

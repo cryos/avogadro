@@ -59,9 +59,9 @@ namespace Avogadro {
   public:
     Private( PlotWidget *qq )
       : q( qq ),
-        cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
-        showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-        font( QFont() )
+      cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
+      showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
+      font( QFont() )
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -199,10 +199,10 @@ namespace Avogadro {
     q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
 
     if ( secondDataRect.isNull() )
-      {
-        q->axis( RightAxis )->setTickMarks( dataRect.y(), dataRect.height() );
-        q->axis( TopAxis )->setTickMarks( dataRect.x(), dataRect.width() );
-      }
+    {
+      q->axis( RightAxis )->setTickMarks( dataRect.y(), dataRect.height() );
+      q->axis( TopAxis )->setTickMarks( dataRect.x(), dataRect.width() );
+    }
   }
 
   void PlotWidget::setSecondaryLimits( double x1, double x2, double y1, double y2 ) {
@@ -266,9 +266,8 @@ namespace Avogadro {
       {
         if ( !o )
           continue;
-
-        d->objectList.append( o );
-        addedsome = true;
+	d->objectList.append( o );
+	addedsome = true;
       }
     if ( addedsome )
       update();
@@ -443,6 +442,7 @@ namespace Avogadro {
             QToolTip::showText( he->globalPos(), pts.front()->label(), this );
           }
         }
+      }
       e->accept();
       return true;
     }
@@ -1010,7 +1010,7 @@ namespace Avogadro {
         double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
         if ( px > 0 && px < imPixRect.width() ) {
           p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)),
-                       QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
+		      QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
         }
       }
     }  //End of BottomAxis
@@ -1121,6 +1121,7 @@ namespace Avogadro {
         p.save();
 
         //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+
         p.translate( imPixRect.width() + 2*XPADDING, imPixRect.height() );
         p.rotate( -90.0 );
 
@@ -1508,9 +1509,9 @@ namespace Avogadro {
       return d->leftPadding;
     const PlotAxis *a = axis( LeftAxis );
     if ( a && a->isVisible() && a->areTickLabelsShown() )
-      {
-        return !a->label().isEmpty() ? 3 * XPADDING : 2 * XPADDING;
-      }
+    {
+      return !a->label().isEmpty() ? 3 * XPADDING : 2 * XPADDING;
+    }
     return XPADDING;
   }
 
@@ -1520,9 +1521,9 @@ namespace Avogadro {
       return d->rightPadding;
     const PlotAxis *a = axis( RightAxis );
     if ( a && a->isVisible() && a->areTickLabelsShown() )
-      {
-        return !a->label().isEmpty() ? 3 * XPADDING : 2 * XPADDING;
-      }
+    {
+      return !a->label().isEmpty() ? 3 * XPADDING : 2 * XPADDING;
+    }
     return XPADDING;
   }
 
@@ -1532,9 +1533,9 @@ namespace Avogadro {
       return d->topPadding;
     const PlotAxis *a = axis( TopAxis );
     if ( a && a->isVisible() && a->areTickLabelsShown() )
-      {
-        return !a->label().isEmpty() ? 3 * YPADDING : 2 * YPADDING;
-      }
+    {
+      return !a->label().isEmpty() ? 3 * YPADDING : 2 * YPADDING;
+    }
     return YPADDING;
   }
 
@@ -1544,9 +1545,9 @@ namespace Avogadro {
       return d->bottomPadding;
     const PlotAxis *a = axis( BottomAxis );
     if ( a && a->isVisible() && a->areTickLabelsShown() )
-      {
-        return !a->label().isEmpty() ? 3 * YPADDING : 2 * YPADDING;
-      }
+    {
+      return !a->label().isEmpty() ? 3 * YPADDING : 2 * YPADDING;
+    }
     return YPADDING;
   }
 

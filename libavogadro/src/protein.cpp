@@ -22,7 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/protein.h>
+#include "protein.h"
+
 #include <avogadro/molecule.h>
 #include <avogadro/residue.h>
 #include <avogadro/atom.h>

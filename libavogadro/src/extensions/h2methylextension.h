@@ -23,15 +23,10 @@
 #ifndef H2METHYLEXTENSION_H
 #define H2METHYLEXTENSION_H
 
-
-#include <openbabel/mol.h>
-
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
-#include <QObject>
-#include <QList>
-#include <QString>
+#include <avogadro/primitivelist.h>
+
 #include <QUndoCommand>
 
 namespace Avogadro {
@@ -45,7 +40,7 @@ namespace Avogadro {
     public:
       //! Constructor
       H2MethylExtension(QObject *parent=0);
-      //! Deconstructor
+      //! Destructor
       virtual ~H2MethylExtension();
 
       //! Perform Action

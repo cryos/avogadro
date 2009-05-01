@@ -35,7 +35,7 @@
 
 namespace Avogadro {
 
-  ZMatrixTool::ZMatrixTool(QObject *parent) : Tool(parent),  m_molecule(0),
+  ZMatrixTool::ZMatrixTool(QObject *parent) : Tool(parent), m_molecule(0),
       m_settingsWidget(0), m_zMatrixDialog(0)
   {
   }
@@ -47,6 +47,7 @@ namespace Avogadro {
   QUndoCommand * ZMatrixTool::mousePressEvent(GLWidget *widget,
                                               QMouseEvent *event)
   {
+    m_glwidget = widget;
     m_molecule = widget->molecule();
   }
 
@@ -68,6 +69,7 @@ namespace Avogadro {
 
   bool ZMatrixTool::paint(GLWidget *widget)
   {
+    m_glwidget = widget;
     m_molecule = widget->molecule();
     return true;
   }

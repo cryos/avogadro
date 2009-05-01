@@ -30,6 +30,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/mol.h>
 

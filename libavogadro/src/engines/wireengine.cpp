@@ -30,6 +30,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/camera.h>
 #include <avogadro/painterdevice.h>
 
 #include <openbabel/mol.h>

@@ -25,6 +25,7 @@
 #include "engineitemmodel.h"
 
 #include <avogadro/glwidget.h>
+#include <avogadro/engine.h>
 
 #include <QString>
 #include <QDebug>
@@ -52,12 +53,12 @@ namespace Avogadro {
     beginInsertRows(QModelIndex(), row, row);
     endInsertRows();
 
-		// We need to indicate that the data has changed to re-sort the list
-		// (Honestly, the dataChanged signal should come from endInsertRows)
-		// But at least in Qt 4.4, we need to signal manually
-		QModelIndex begin = createIndex(0, 0);
-		QModelIndex end = createIndex(list.size() - 1, 0);
-		emit dataChanged(begin, end);
+        // We need to indicate that the data has changed to re-sort the list
+        // (Honestly, the dataChanged signal should come from endInsertRows)
+        // But at least in Qt 4.4, we need to signal manually
+        QModelIndex begin = createIndex(0, 0);
+        QModelIndex end = createIndex(list.size() - 1, 0);
+        emit dataChanged(begin, end);
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
   }
@@ -78,9 +79,9 @@ namespace Avogadro {
     QList<Engine *> list = d->widget->engines();
     int row = list.indexOf(engine);
 
-		QModelIndex begin = createIndex(row, 0);
-		QModelIndex end = createIndex(row, 0);
-		emit dataChanged(begin, end);    
+        QModelIndex begin = createIndex(row, 0);
+        QModelIndex end = createIndex(row, 0);
+        emit dataChanged(begin, end);
   }
 
   QModelIndex EngineItemModel::parent( const QModelIndex & ) const

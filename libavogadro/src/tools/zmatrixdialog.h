@@ -28,12 +28,14 @@
 #include <avogadro/global.h>
 
 #include <QDialog>
+#include <QPointer>
 
 #include "ui_zmatrixdialog.h"
 
 namespace Avogadro {
 
   class Molecule;
+  class GLWidget;
   class ZMatrixModel;
 
   class ZMatrixDialog : public QDialog
@@ -43,16 +45,20 @@ namespace Avogadro {
     ZMatrixDialog(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~ZMatrixDialog();
 
+  public slots:
     void setMolecule(Molecule *molecule);
+    void setGLWidget(GLWidget *widget);
 
   private:
     Ui::ZMatrixDialog ui;
     ZMatrixModel *m_zMatrixModel;
-    Molecule *m_molecule;
+    QPointer<Molecule> m_molecule;
+    QPointer<GLWidget> m_glwidget;
 
-  private Q_SLOTS:
+  private slots:
     void addAtom();
     void removeAtom();
+    void importSelectedAtoms();
   };
 
 } // End namespace Avogadro

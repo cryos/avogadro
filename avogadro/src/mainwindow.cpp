@@ -810,8 +810,8 @@ namespace Avogadro
       return false;
     }
 
-    ifstream     ifs;
-    ifs.open(( fileName.toAscii() ).data() );
+    ifstream ifs;
+    ifs.open(QFile::encodeName(fileName));
     if ( !ifs ) { // shouldn't happen, already checked file above
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -934,7 +934,7 @@ namespace Avogadro
 
       if (QString(inFormat->GetID()).contains("PDB")) {
         setRenderUnitCellAxes(false);
-        ui.actionDisplayUnitCellAxes->setChecked(false);        
+        ui.actionDisplayUnitCellAxes->setChecked(false);
       }
 
       QString status;
@@ -2081,7 +2081,7 @@ namespace Avogadro
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
             this, SLOT(setRenderAxes(bool)));
     connect(ui.actionDisplayUnitCellAxes, SIGNAL(triggered(bool)),
-            this, SLOT(setRenderUnitCellAxes(bool)));            
+            this, SLOT(setRenderUnitCellAxes(bool)));
     connect(ui.actionDebugInformation, SIGNAL(triggered(bool)),
             this, SLOT(setRenderDebug(bool)));
     connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
@@ -2252,7 +2252,7 @@ namespace Avogadro
     if (getMainWindowCount() == 1) {
       QPoint originalPosition = pos();
       QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
-      
+
       // We'll try moving the window. If it moves off-screen, we'll move it back
       // This solves PR#1903437
       move(newPosition);

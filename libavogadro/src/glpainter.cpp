@@ -26,6 +26,7 @@
 
 #include "glpainter.h"
 #include "glwidget.h"
+#include "camera.h"
 #include "sphere.h"
 #include "cylinder.h"
 #include "textrenderer.h"
@@ -34,6 +35,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
 #include <avogadro/mesh.h>
+#include <avogadro/color.h>
 
 #include <QDebug>
 #include <QColor>
