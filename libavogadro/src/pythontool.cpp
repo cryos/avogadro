@@ -23,6 +23,8 @@
  **********************************************************************/
 
 #include "pythontool.h"
+#include "pythoninterpreter.h"
+#include "pythonscript.h"
 
 #include <avogadro/navigate.h>
 #include <avogadro/atom.h>

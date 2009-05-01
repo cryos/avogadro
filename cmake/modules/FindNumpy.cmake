@@ -9,10 +9,9 @@
 #  set (NUMPY_FIND_QUIETLY TRUE)
 #endif (NUMPY_INCLUDE_DIR)
 
-EXEC_PROGRAM ("${PYTHON_EXECUTABLE}"
-  ARGS "-c 'import numpy; print numpy.get_include()'"
-  OUTPUT_VARIABLE NUMPY_INCLUDE_DIR
-  RETURN_VALUE NUMPY_NOT_FOUND)
+EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 
+    "import numpy; print numpy.get_include()"
+    OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
 
 if (NUMPY_INCLUDE_DIR MATCHES "Traceback")
 # Did not successfully include numpy

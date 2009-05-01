@@ -26,11 +26,12 @@ class TestToolGroup(unittest.TestCase):
 
   def test_activeTool(self):
     self.assertEqual(self.toolGroup.activeTool, None)
-    for tool in Avogadro.PluginManager.instance.tools(None):
-      if tool.name == "Navigate":
-        self.toolGroup.activeTool = tool
-    
+
+    tools = Avogadro.PluginManager.instance.tools(None)
+    self.assertNotEqual(len(tools), 0)
+    self.toolGroup.activeTool = tools[0]
     self.assertNotEqual(self.toolGroup.activeTool, None)
+    
 
   def test_tool(self):
     self.assertEqual(self.toolGroup.tool(99), None)

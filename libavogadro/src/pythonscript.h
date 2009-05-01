@@ -28,7 +28,8 @@
 
 #include <avogadro/global.h>
 #include <boost/python.hpp>
-#include <avogadro/pythonerror.h>
+
+#include "pythonerror.h"
 
 #include <QList>
 #include <QDir>

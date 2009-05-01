@@ -106,7 +106,8 @@ class TestGLWidget(unittest.TestCase):
 #    self.assertNotEqual(self.glwidget.farthestAtom, None)
 
   def test_tool(self):
-    tool = Avogadro.PluginManager.instance.tool("Navigate Tool", None)
+    tools = Avogadro.PluginManager.instance.identifiers(Avogadro.PluginType.ToolType)
+    tool = Avogadro.PluginManager.instance.tool(tools[0], None)
     self.assertNotEqual(tool, None)
     self.assertEqual(self.glwidget.tool, None)
     self.glwidget.tool = tool
@@ -168,8 +169,8 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.removePrimitive(self.molecule.atom(0))
 
   def test_engine(self):
-    engine = Avogadro.PluginManager.instance.engine("Label", Avogadro.toPyQt(self.glwidget))
-    #engine = Avogadro.PluginManager.instance.engine("foo", N)
+    engines = Avogadro.PluginManager.instance.identifiers(Avogadro.PluginType.EngineType)
+    engine = Avogadro.PluginManager.instance.engine(engines[0], Avogadro.toPyQt(self.glwidget))
     self.assertNotEqual(engine, None)
     self.glwidget.addEngine(engine)
     self.glwidget.removeEngine(engine)

@@ -69,6 +69,9 @@ set(libavogadro_HDRS
   undosequence.h
   zmatrix.h
 )
+if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+  set(libavogadro_HDRS ${libavogadro_HDRS} pythonerror.h)
+endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
