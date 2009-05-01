@@ -51,7 +51,7 @@ class PlotPoint;
    * @short Encapsulates a data set to be plotted in a PlotWidget.
    *
    * Think of a PlotObject as a set of data displayed as a group in the plot.
-   * Each PlotObject consists of a list of PlotPoints, a "type" controlling 
+   * Each PlotObject consists of a list of PlotPoints, a "type" controlling
    * how the data points are displayed (some combination of Points, Lines, or
    * Bars), a color, and a size. There is also a parameter which controls the
    * shape of the points used to display the PlotObject.
@@ -163,7 +163,7 @@ class PlotPoint;
 
     /**
      * @return the default pen for this Object.
-     * If no other pens are set, this pen will be used for 
+     * If no other pens are set, this pen will be used for
      * points, lines, bars and labels (this pen is always used for points).
      */
     const QPen& pen() const;
@@ -173,7 +173,7 @@ class PlotPoint;
      * @p The pen to use
      */
     void setPen( const QPen &p );
-    
+
     /**
      * @return the pen to use for drawing lines for this Object.
      */
@@ -184,7 +184,7 @@ class PlotPoint;
      * @p The pen to use
      */
     void setLinePen( const QPen &p );
-    
+
     /**
      * @return the pen to use for drawing bars for this Object.
      */
@@ -195,7 +195,7 @@ class PlotPoint;
      * @p The pen to use
      */
     void setBarPen( const QPen &p );
-    
+
     /**
      * @return the pen to use for drawing labels for this Object.
      */
@@ -206,7 +206,7 @@ class PlotPoint;
      * @p The pen to use
      */
     void setLabelPen( const QPen &p );
-    
+
     /**
      * @return the default Brush to use for this Object.
      */
@@ -239,7 +239,7 @@ class PlotPoint;
      * @param p the QPointF to add.
      * @param label the optional text label for this point
      * @param barWidth the width of the bar, if this object is to be drawn with bars
-     * @note if @param barWidth is left at its default value of 0.0, then the width will be 
+     * @note if @param barWidth is left at its default value of 0.0, then the width will be
      * automatically set to the distance between this point and the one to its right.
      */
     void addPoint( const QPointF &p, const QString &label = QString(), double barWidth = 0.0 );
@@ -258,7 +258,7 @@ class PlotPoint;
      * @param y the Y-coordinate of the point to add.
      * @param label the optional text label
      * @param barWidth the width of the bar, if this object is to be drawn with bars
-     * @note if @param barWidth is left at its default value of 0.0, then the width will be 
+     * @note if @param barWidth is left at its default value of 0.0, then the width will be
      * automatically set to the distance between this point and the one to its right.
      */
     void addPoint( double x, double y, const QString &label = QString(), double barWidth = 0.0 );
@@ -277,7 +277,7 @@ class PlotPoint;
     /**
      * Draw this PlotObject on the given QPainter
      * @param p The QPainter to draw on
-     * @param pw the PlotWidget to draw on (this is needed 
+     * @param pw the PlotWidget to draw on (this is needed
      * for the PlotWidget::mapToWidget() function)
      */
     void draw( QPainter *p, PlotWidget *pw );
@@ -285,7 +285,7 @@ class PlotPoint;
     /**
      * Draw this PlotObject on the given QPainter
      * @param p The QPainter to draw on
-     * @param pixRect the QRect that defines the actual plot area. Needed 
+     * @param pixRect the QRect that defines the actual plot area. Needed
      * conversion between data and image coordinates.
      * @param dataRect QRect containing the plot limits in data units
      */

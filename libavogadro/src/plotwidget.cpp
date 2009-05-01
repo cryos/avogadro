@@ -86,10 +86,10 @@ namespace Avogadro {
 
     void calcDataRectLimits( double x1, double x2, double y1, double y2 );
     /**
-     * @return a value indicating how well the given rectangle is 
-     * avoiding masked regions in the plot.  A higher returned value 
-     * indicates that the rectangle is intersecting a larger portion 
-     * of the masked region, or a portion of the masked region which 
+     * @return a value indicating how well the given rectangle is
+     * avoiding masked regions in the plot.  A higher returned value
+     * indicates that the rectangle is intersecting a larger portion
+     * of the masked region, or a portion of the masked region which
      * is weighted higher.
      * @param r The rectangle to be tested
      */
@@ -130,7 +130,7 @@ namespace Avogadro {
     d->calcDataRectLimits( 0.0, 1.0, 0.0, 1.0 );
 
     setDefaultPaddings();
-    
+
     setMinimumSize( 150, 150 );
     resize( minimumSizeHint() );
   }
@@ -194,7 +194,7 @@ namespace Avogadro {
       YA2 = YA1 + 1.0;
     }
     dataRect = QRectF( XA1, YA1, XA2 - XA1, YA2 - YA1 );
-    
+
     q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
     q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
 
@@ -265,7 +265,7 @@ namespace Avogadro {
     foreach ( PlotObject *o, objects )
       {
         if ( !o )
-	  continue;
+          continue;
 
         d->objectList.append( o );
         addedsome = true;
@@ -352,7 +352,7 @@ namespace Avogadro {
     d->cGrid = gc;
     update();
   }
-  
+
   void PlotWidget::setFontSize( int pointSize )
   {
     d->font.setPointSize( pointSize );
@@ -370,7 +370,7 @@ namespace Avogadro {
   {
     return d->font;
   }
- 
+
   bool PlotWidget::isGridShown() const
   {
     return d->showGrid;
@@ -424,8 +424,8 @@ namespace Avogadro {
     QList<PlotPoint*> pts;
     foreach ( PlotObject *po, d->objectList ) {
       foreach ( PlotPoint *pp, po->points() ) {
-	if ( ( p - mapToWidget( pp->position() ).toPoint() ).manhattanLength() <= 4 )
-	  pts << pp;
+        if ( ( p - mapToWidget( pp->position() ).toPoint() ).manhattanLength() <= 4 )
+          pts << pp;
       }
     }
 
@@ -437,11 +437,11 @@ namespace Avogadro {
     if ( e->type() == QEvent::ToolTip ) {
       if ( d->showObjectToolTip )
         {
-	  QHelpEvent *he = static_cast<QHelpEvent*>( e );
-	  QList<PlotPoint*> pts = pointsUnderPoint( he->pos() - QPoint( leftPadding(), topPadding() ) - contentsRect().topLeft() );
-	  if ( pts.count() > 0 ) {
-	    QToolTip::showText( he->globalPos(), pts.front()->label(), this );
-	  }
+          QHelpEvent *he = static_cast<QHelpEvent*>( e );
+          QList<PlotPoint*> pts = pointsUnderPoint( he->pos() - QPoint( leftPadding(), topPadding() ) - contentsRect().topLeft() );
+          if ( pts.count() > 0 ) {
+            QToolTip::showText( he->globalPos(), pts.front()->label(), this );
+          }
         }
       e->accept();
       return true;
@@ -512,7 +512,7 @@ namespace Avogadro {
         zoomPosF = QPointF();
         return;
       }
-      
+
       // Sort for limits
       if (x1 > x2) {
         float x = x1; x1 = x2; x2 = x;
@@ -520,7 +520,7 @@ namespace Avogadro {
       if (y1 > y2) {
         float y = y1; y1 = y2; y2 = y;
       }
-      
+
       // swap if width/height of current limits are negative
       if (dataRect().width() < 0) {
         float x = x1; x1 = x2; x2 = x;
@@ -528,7 +528,7 @@ namespace Avogadro {
       if (dataRect().height() < 0) {
         float y = y1; y1 = y2; y2 = y;
       }
-      
+
       setLimits(x1, x2, y1, y2);
       zoomPosF = QPointF();
     }
@@ -611,10 +611,10 @@ namespace Avogadro {
     QColor newColor;
     for ( int ix=r.left(); ix<r.right(); ++ix ) {
       for ( int iy=r.top(); iy<r.bottom(); ++iy ) {
-	newColor = QColor( d->plotMask.pixel(ix,iy) );
-	newColor.setAlpha( 200 );
-	newColor.setRed( qMin( newColor.red() + value, 255 ) );
-	d->plotMask.setPixel( ix, iy, newColor.rgba() );
+        newColor = QColor( d->plotMask.pixel(ix,iy) );
+        newColor.setAlpha( 200 );
+        newColor.setRed( qMin( newColor.red() + value, 255 ) );
+        d->plotMask.setPixel( ix, iy, newColor.rgba() );
       }
     }
 
@@ -624,9 +624,9 @@ namespace Avogadro {
     if ( ! d->pixRect.contains( p1.toPoint() ) && ! d->pixRect.contains( p2.toPoint() ) ) {
       return;
     }
-    
+
     int value = int( fvalue );
-    
+
     //Determine slope and zeropoint of line
     double m = (p2.y() - p1.y())/(p2.x() - p1.x());
     double y0 = p1.y() - m*p1.x();
@@ -637,36 +637,36 @@ namespace Avogadro {
       int y1 = int( p1.y() );
       int y2 = int( p2.y() );
       if ( y1 > y2 ) {
-	y1 = int( p2.y() );
-	y2 = int( p1.y() );
+        y1 = int( p2.y() );
+        y2 = int( p1.y() );
       }
 
       for ( int y=y1; y<=y2; ++y ) {
-	int x = int( (y - y0)/m );
-	if ( d->pixRect.contains( x, y ) ) {
-	  newColor = QColor( d->plotMask.pixel(x,y) );
-	  newColor.setAlpha( 100 );
-	  newColor.setRed( qMin( newColor.red() + value, 255 ) );
-	  d->plotMask.setPixel( x, y, newColor.rgba() );
-	}
+        int x = int( (y - y0)/m );
+        if ( d->pixRect.contains( x, y ) ) {
+          newColor = QColor( d->plotMask.pixel(x,y) );
+          newColor.setAlpha( 100 );
+          newColor.setRed( qMin( newColor.red() + value, 255 ) );
+          d->plotMask.setPixel( x, y, newColor.rgba() );
+        }
       }
 
     } else { //step in x-direction
       int x1 = int( p1.x() );
       int x2 = int( p2.x() );
       if ( x1 > x2 ) {
-	x1 = int( p2.x() ); 
-	x2 = int( p1.x() );
+        x1 = int( p2.x() );
+        x2 = int( p1.x() );
       }
 
       for ( int x=x1; x<=x2; ++x ) {
-	int y = int( y0 + m*x );
-	if ( d->pixRect.contains( x, y ) ) {
-	  newColor = QColor( d->plotMask.pixel(x,y) );
-	  newColor.setAlpha( 100 );
-	  newColor.setRed( qMin( newColor.red() + value, 255 ) );
-	  d->plotMask.setPixel( x, y, newColor.rgba() );
-	}
+        int y = int( y0 + m*x );
+        if ( d->pixRect.contains( x, y ) ) {
+          newColor = QColor( d->plotMask.pixel(x,y) );
+          newColor.setAlpha( 100 );
+          newColor.setRed( qMin( newColor.red() + value, 255 ) );
+          d->plotMask.setPixel( x, y, newColor.rgba() );
+        }
       }
     }
   }
@@ -701,8 +701,8 @@ namespace Avogadro {
     //beginning and select the next-best path.  The indices of
     //already-tried paths are stored in the TriedPathIndex list.
     //
-    //If we try all four first-step paths and still don't get below 
-    //maxCost, then we'll adopt the local minimum position with the 
+    //If we try all four first-step paths and still don't get below
+    //maxCost, then we'll adopt the local minimum position with the
     //best cost (designated as bestBadCost).
     int iter = 0;
     QList<int> TriedPathIndex;
@@ -713,7 +713,7 @@ namespace Avogadro {
     bool flagStop = false;
 
     while ( bestCost > maxCost ) {
-      //Displace the label up, down, left, right; determine which 
+      //Displace the label up, down, left, right; determine which
       //step provides the lowest cost
       QRectF upRect = bestRect;
       upRect.moveTop( upRect.top() + yStep );
@@ -727,86 +727,86 @@ namespace Avogadro {
       QRectF rightRect = bestRect;
       rightRect.moveLeft( rightRect.left() + xStep );
       float rightCost = d->rectCost( rightRect );
-        
+
       //which direction leads to the lowest cost?
       QList<float> costList;
       costList << upCost << downCost << leftCost << rightCost;
       int imin = -1;
       for ( int i=0; i<costList.size(); ++i ) {
-	if ( iter == 0 && TriedPathIndex.contains( i ) ) {
-	  continue; //Skip this first-step path, we already tried it!
-	}
-            
-	//If this first-step path doesn't improve the cost, 
-	//skip this direction from now on
-	if ( iter == 0 && costList[i] >= bestCost ) {
-	  TriedPathIndex.append( i );
-	  continue;
-	}
-            
-	if ( costList[i] < bestCost && (imin < 0 || costList[i] < costList[imin]) ) {
-                
-	  imin = i;
-	}
+        if ( iter == 0 && TriedPathIndex.contains( i ) ) {
+          continue; //Skip this first-step path, we already tried it!
+        }
+
+        //If this first-step path doesn't improve the cost,
+        //skip this direction from now on
+        if ( iter == 0 && costList[i] >= bestCost ) {
+          TriedPathIndex.append( i );
+          continue;
+        }
+
+        if ( costList[i] < bestCost && (imin < 0 || costList[i] < costList[imin]) ) {
+
+          imin = i;
+        }
       }
 
       //Make a note that we've tried the current first-step path
       if ( iter == 0 && imin >= 0 ) {
-	TriedPathIndex.append( imin );
+        TriedPathIndex.append( imin );
       }
 
       //Adopt the step that produced the best cost
       switch ( imin ) {
       case 0: //up
-	bestRect.moveTop( upRect.top() );
-	bestCost = upCost;
-	break;
+        bestRect.moveTop( upRect.top() );
+        bestCost = upCost;
+        break;
       case 1: //down
-	bestRect.moveTop( downRect.top() );
-	bestCost = downCost;
-	break;
+        bestRect.moveTop( downRect.top() );
+        bestCost = downCost;
+        break;
       case 2: //left
-	bestRect.moveLeft( leftRect.left() );
-	bestCost = leftCost;
-	break;
+        bestRect.moveLeft( leftRect.left() );
+        bestCost = leftCost;
+        break;
       case 3: //right
-	bestRect.moveLeft( rightRect.left() );
-	bestCost = rightCost;
-	break;
-      case -1: //no lower cost found!  
-	//We hit a local minimum.  Keep the best of these as bestBadRect
-	if ( bestCost < bestBadCost ) {
-	  bestBadCost = bestCost;
-	  bestBadRect = bestRect;
-	}
+        bestRect.moveLeft( rightRect.left() );
+        bestCost = rightCost;
+        break;
+      case -1: //no lower cost found!
+        //We hit a local minimum.  Keep the best of these as bestBadRect
+        if ( bestCost < bestBadCost ) {
+          bestBadCost = bestCost;
+          bestBadRect = bestRect;
+        }
 
-	//If all of the first-step paths have now been searched, we'll
-	//have to adopt the bestBadRect
-	if ( TriedPathIndex.size() == 4 ) {
-	  bestRect = bestBadRect;
-	  flagStop = true; //halt iteration
-	  break;
-	}
+        //If all of the first-step paths have now been searched, we'll
+        //have to adopt the bestBadRect
+        if ( TriedPathIndex.size() == 4 ) {
+          bestRect = bestBadRect;
+          flagStop = true; //halt iteration
+          break;
+        }
 
-	//If we haven't yet tried all of the first-step paths, start over
-	if ( TriedPathIndex.size() < 4 ) {
-	  iter = -1; //anticipating the ++iter below	    
-	  bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
-	  bestCost = d->rectCost( bestRect );
-	}
-	break;
+        //If we haven't yet tried all of the first-step paths, start over
+        if ( TriedPathIndex.size() < 4 ) {
+          iter = -1; //anticipating the ++iter below
+          bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
+          bestCost = d->rectCost( bestRect );
+        }
+        break;
       }
 
-      //Halt iteration, because we've tried all directions and 
-      //haven't gotten below maxCost (we'll adopt the best 
+      //Halt iteration, because we've tried all directions and
+      //haven't gotten below maxCost (we'll adopt the best
       //local minimum found)
       if ( flagStop ) {
-	break;
+        break;
       }
-        
+
       ++iter;
     }
-    
+
     //Place label
     painter->drawText( bestRect, textFlags, pp->label() );
 
@@ -815,7 +815,7 @@ namespace Avogadro {
     float deltay = pos.y() - bestRect.center().y();
     float rbest = sqrt( deltax*deltax + deltay*deltay );
     if ( rbest > 20.0 ) {
-      //Draw a rectangle around the label 
+      //Draw a rectangle around the label
       painter->setBrush( QBrush() );
       //QPen pen = painter->pen();
       //pen.setStyle( Qt::DotLine );
@@ -826,19 +826,19 @@ namespace Avogadro {
       //The line is drawn from the center of the near edge of the rectangle
       float xline = bestRect.center().x();
       if ( bestRect.left() > pos.x() )
-	xline = bestRect.left();
+        xline = bestRect.left();
       if ( bestRect.right() < pos.x() )
-	xline = bestRect.right();
+        xline = bestRect.right();
 
       float yline = bestRect.center().y();
       if ( bestRect.top() > pos.y() )
-	yline = bestRect.top();
+        yline = bestRect.top();
       if ( bestRect.bottom() < pos.y() )
-	yline = bestRect.bottom();
+        yline = bestRect.bottom();
 
       painter->drawLine( QPointF( xline, yline ), pos );
     }
-                                            
+
     //Mask the label's rectangle so other labels won't overlap it.
     maskRect( bestRect );
   }
@@ -848,16 +848,16 @@ namespace Avogadro {
     if ( ! plotMask.rect().contains( r.toRect() ) ) {
       return 10000.;
     }
-    
+
     //Compute sum of mask values in the rect r
     QImage subMask = plotMask.copy( r.toRect() );
     int cost = 0;
     for ( int ix=0; ix<subMask.width(); ++ix ) {
       for ( int iy=0; iy<subMask.height(); ++iy ) {
-	cost += QColor( subMask.pixel( ix, iy ) ).red();
+        cost += QColor( subMask.pixel( ix, iy ) ).red();
       }
     }
-    
+
     return float(cost);
   }
 
@@ -886,7 +886,7 @@ namespace Avogadro {
 
     p.setClipping( false );
     drawAxes( &p );
-    
+
     // Draw zoom rectangle
     if (!zoomPosF.isNull()) {
       // Prepare pen
@@ -895,7 +895,7 @@ namespace Avogadro {
       pen.setStyle(Qt::DotLine);
       pen.setWidth(1);
       p.setPen(pen);
-      
+
       // get points
       float x1 = zoomPosF.x();
       float x2 = mouseClickOrigin.x();
@@ -982,8 +982,8 @@ namespace Avogadro {
       }
       //horizontal grid lines
       foreach( double yy, axis(LeftAxis)->majorTickMarks() ) {
-	double py = imPixRect.height() * (yy - d->dataRect.y()) / d->dataRect.height();
-	p.drawLine( QPointF( 0.0, py ), QPointF( double(imPixRect.width()), py ) );
+        double py = imPixRect.height() * (yy - d->dataRect.y()) / d->dataRect.height();
+        p.drawLine( QPointF( 0.0, py ), QPointF( double(imPixRect.width()), py ) );
       }
     }
 
@@ -998,20 +998,20 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double xx, a->majorTickMarks() ) {
-	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
+        double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        if ( px > 0 && px < imPixRect.width() ) {
+          p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)),
                       QPointF( px, double(imPixRect.height() - bigTickSize - tickOffset)) );
         }
       }
 
       // Draw minor tickmarks
       foreach ( double xx, a->minorTickMarks() ) {
-	double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)), 
-		       QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
-	}
+        double px = imPixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        if ( px > 0 && px < imPixRect.width() ) {
+          p.drawLine( QPointF( px, double(imPixRect.height() - tickOffset)),
+                       QPointF( px, double(imPixRect.height() - smallTickSize -tickOffset)) );
+        }
       }
     }  //End of BottomAxis
 
@@ -1023,18 +1023,18 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double yy, a->majorTickMarks() ) {
-	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
-	if ( py > 0 && py < imPixRect.height() ) {
-	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + bigTickSize), py ) );
-	}
+        double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < imPixRect.height() ) {
+          p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + bigTickSize), py ) );
+        }
       }
 
       // Draw minor tickmarks
       foreach ( double yy, a->minorTickMarks() ) {
-	double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
-	if ( py > 0 && py < imPixRect.height() ) {
-	  p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + smallTickSize), py ) );
-	}
+        double py = imPixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < imPixRect.height() ) {
+          p.drawLine( QPointF( tickOffset, py ), QPointF( double(tickOffset + smallTickSize), py ) );
+        }
       }
     }  //End of LeftAxis
 
@@ -1058,16 +1058,16 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double xx, a->majorTickMarks() ) {
-	double px = imPixRect.width() * (xx - x0) / dw;
-	if ( px > 0 && px < imPixRect.width() ) {
-	  p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(bigTickSize + tickOffset)) );
+        double px = imPixRect.width() * (xx - x0) / dw;
+        if ( px > 0 && px < imPixRect.width() ) {
+          p.drawLine( QPointF( px, tickOffset ), QPointF( px, double(bigTickSize + tickOffset)) );
 
-	  //Draw ticklabel
-	  if ( a->areTickLabelsShown() ) {
-	    QRect r( int(px) - bigTickSize, (int)-1.5*bigTickSize, 2*bigTickSize, bigTickSize );
-	    p.drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
-	  }
-	}
+          //Draw ticklabel
+          if ( a->areTickLabelsShown() ) {
+            QRect r( int(px) - bigTickSize, (int)-1.5*bigTickSize, 2*bigTickSize, bigTickSize );
+            p.drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
+          }
+        }
       }
 
       // Draw minor tickmarks
@@ -1095,12 +1095,12 @@ namespace Avogadro {
       foreach( double yy, a->majorTickMarks() ) {
         double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
         if ( py > 0 && py < imPixRect.height() ) {
-          p.drawLine( QPointF( double(imPixRect.width() - tickOffset), py ), 
+          p.drawLine( QPointF( double(imPixRect.width() - tickOffset), py ),
                       QPointF( double(imPixRect.width() - tickOffset - bigTickSize), py ) );
 
           //Draw ticklabel
           if ( a->areTickLabelsShown() ) {
-	    QRect r( imPixRect.width() + smallTickSize, int(py)-smallTickSize, 2*bigTickSize, 2*smallTickSize );
+            QRect r( imPixRect.width() + smallTickSize, int(py)-smallTickSize, 2*bigTickSize, 2*smallTickSize );
             p.drawText( r, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
           }
         }
@@ -1110,7 +1110,7 @@ namespace Avogadro {
       foreach ( double yy, a->minorTickMarks() ) {
         double py = imPixRect.height() * ( 1.0 - (yy - y0) / dh );
         if ( py > 0 && py < imPixRect.height() ) {
-          p.drawLine( QPointF( double(imPixRect.width() - 0.0), py ), 
+          p.drawLine( QPointF( double(imPixRect.width() - 0.0), py ),
                       QPointF( double(imPixRect.width() - 0.0 - smallTickSize), py ) );
         }
       }
@@ -1120,7 +1120,7 @@ namespace Avogadro {
         //store current painter translation/rotation state
         p.save();
 
-	//translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+        //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
         p.translate( imPixRect.width() + 2*XPADDING, imPixRect.height() );
         p.rotate( -90.0 );
 
@@ -1131,7 +1131,7 @@ namespace Avogadro {
         }*/
     }  //End of RightAxis
 
-    // Since the following use QLabels to render their text, it is neccessary 
+    // Since the following use QLabels to render their text, it is neccessary
     // to paint them after drawing to keep the painter from becoming invalid.
     // Also, be sure NOT to name the plotwidget instance as the labels parent.
     // That makes the widget redraw itself continuously.
@@ -1245,13 +1245,13 @@ namespace Avogadro {
       //Grid lines are placed at locations of primary axes' major tickmarks
       //vertical grid lines
       foreach ( double xx, axis(BottomAxis)->majorTickMarks() ) {
-	double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	p->drawLine( QPointF( px, 0.0 ), QPointF( px, double(d->pixRect.height()) ) );
+        double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        p->drawLine( QPointF( px, 0.0 ), QPointF( px, double(d->pixRect.height()) ) );
       }
       //horizontal grid lines
       foreach( double yy, axis(LeftAxis)->majorTickMarks() ) {
-	double py = d->pixRect.height() * (yy - d->dataRect.y()) / d->dataRect.height();
-	p->drawLine( QPointF( 0.0, py ), QPointF( double(d->pixRect.width()), py ) );
+        double py = d->pixRect.height() * (yy - d->dataRect.y()) / d->dataRect.height();
+        p->drawLine( QPointF( 0.0, py ), QPointF( double(d->pixRect.width()), py ) );
       }
     }
 
@@ -1266,20 +1266,20 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double xx, a->majorTickMarks() ) {
-	double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	if ( px > 0 && px < d->pixRect.width() ) {
-	  p->drawLine( QPointF( px, double(d->pixRect.height() - TICKOFFSET)), 
-		       QPointF( px, double(d->pixRect.height() - BIGTICKSIZE - TICKOFFSET)) );
-	}
+        double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        if ( px > 0 && px < d->pixRect.width() ) {
+          p->drawLine( QPointF( px, double(d->pixRect.height() - TICKOFFSET)),
+                       QPointF( px, double(d->pixRect.height() - BIGTICKSIZE - TICKOFFSET)) );
+        }
       }
 
       // Draw minor tickmarks
       foreach ( double xx, a->minorTickMarks() ) {
-	double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
-	if ( px > 0 && px < d->pixRect.width() ) {
-	  p->drawLine( QPointF( px, double(d->pixRect.height() - TICKOFFSET)), 
-		       QPointF( px, double(d->pixRect.height() - SMALLTICKSIZE -TICKOFFSET)) );
-	}
+        double px = d->pixRect.width() * (xx - d->dataRect.x()) / d->dataRect.width();
+        if ( px > 0 && px < d->pixRect.width() ) {
+          p->drawLine( QPointF( px, double(d->pixRect.height() - TICKOFFSET)),
+                       QPointF( px, double(d->pixRect.height() - SMALLTICKSIZE -TICKOFFSET)) );
+        }
       }
     }  //End of BottomAxis
 
@@ -1291,18 +1291,18 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double yy, a->majorTickMarks() ) {
-	double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
-	if ( py > 0 && py < d->pixRect.height() ) {
-	  p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + BIGTICKSIZE), py ) );
-	}
+        double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < d->pixRect.height() ) {
+          p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + BIGTICKSIZE), py ) );
+        }
       }
 
       // Draw minor tickmarks
       foreach ( double yy, a->minorTickMarks() ) {
-	double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
-	if ( py > 0 && py < d->pixRect.height() ) {
-	  p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + SMALLTICKSIZE), py ) );
-	}
+        double py = d->pixRect.height() * ( 1.0 - (yy - d->dataRect.y()) / d->dataRect.height() );
+        if ( py > 0 && py < d->pixRect.height() ) {
+          p->drawLine( QPointF( TICKOFFSET, py ), QPointF( double(TICKOFFSET + SMALLTICKSIZE), py ) );
+        }
       }
     }  //End of LeftAxis
 
@@ -1326,30 +1326,30 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double xx, a->majorTickMarks() ) {
-	double px = d->pixRect.width() * (xx - x0) / dw;
-	if ( px > 0 && px < d->pixRect.width() ) {
-	  p->drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(BIGTICKSIZE + TICKOFFSET)) );
+        double px = d->pixRect.width() * (xx - x0) / dw;
+        if ( px > 0 && px < d->pixRect.width() ) {
+          p->drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(BIGTICKSIZE + TICKOFFSET)) );
 
-	  //Draw ticklabel
-	  if ( a->areTickLabelsShown() ) {
-	    QRect r( int(px) - BIGTICKSIZE, (int)-1.5*BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
-	    p->drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
-	  }
-	}
+          //Draw ticklabel
+          if ( a->areTickLabelsShown() ) {
+            QRect r( int(px) - BIGTICKSIZE, (int)-1.5*BIGTICKSIZE, 2*BIGTICKSIZE, BIGTICKSIZE );
+            p->drawText( r, Qt::AlignCenter | Qt::TextDontClip, a->tickLabel( xx ) );
+          }
+        }
       }
 
       // Draw minor tickmarks
       foreach ( double xx, a->minorTickMarks() ) {
-	double px = d->pixRect.width() * (xx - x0) / dw;
-	if ( px > 0 && px < d->pixRect.width() ) {
-	  p->drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(SMALLTICKSIZE + TICKOFFSET)) );
-	}
+        double px = d->pixRect.width() * (xx - x0) / dw;
+        if ( px > 0 && px < d->pixRect.width() ) {
+          p->drawLine( QPointF( px, TICKOFFSET ), QPointF( px, double(SMALLTICKSIZE + TICKOFFSET)) );
+        }
       }
 
       // Draw TopAxis Label
       if ( ! a->label().isEmpty() ) {
-	QRect r( 0, 0 - 3*YPADDING, d->pixRect.width(), YPADDING );
-	p->drawText( r, Qt::AlignCenter, a->label() );
+        QRect r( 0, 0 - 3*YPADDING, d->pixRect.width(), YPADDING );
+        p->drawText( r, Qt::AlignCenter, a->label() );
       }
     }  //End of TopAxis
 
@@ -1361,46 +1361,46 @@ namespace Avogadro {
 
       // Draw major tickmarks
       foreach( double yy, a->majorTickMarks() ) {
-	double py = d->pixRect.height() * ( 1.0 - (yy - y0) / dh );
-	if ( py > 0 && py < d->pixRect.height() ) {
-	  p->drawLine( QPointF( double(d->pixRect.width() - TICKOFFSET), py ), 
-		       QPointF( double(d->pixRect.width() - TICKOFFSET - BIGTICKSIZE), py ) );
+        double py = d->pixRect.height() * ( 1.0 - (yy - y0) / dh );
+        if ( py > 0 && py < d->pixRect.height() ) {
+          p->drawLine( QPointF( double(d->pixRect.width() - TICKOFFSET), py ),
+                       QPointF( double(d->pixRect.width() - TICKOFFSET - BIGTICKSIZE), py ) );
 
-	  //Draw ticklabel
-	  if ( a->areTickLabelsShown() ) {
-	    QRect r( d->pixRect.width() + SMALLTICKSIZE, int(py)-SMALLTICKSIZE, 2*BIGTICKSIZE, 2*SMALLTICKSIZE );
-	    p->drawText( r, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
-	  }
-	}
+          //Draw ticklabel
+          if ( a->areTickLabelsShown() ) {
+            QRect r( d->pixRect.width() + SMALLTICKSIZE, int(py)-SMALLTICKSIZE, 2*BIGTICKSIZE, 2*SMALLTICKSIZE );
+            p->drawText( r, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextDontClip, a->tickLabel( yy ) );
+          }
+        }
       }
 
       // Draw minor tickmarks
       foreach ( double yy, a->minorTickMarks() ) {
-	double py = d->pixRect.height() * ( 1.0 - (yy - y0) / dh );
-	if ( py > 0 && py < d->pixRect.height() ) {
-	  p->drawLine( QPointF( double(d->pixRect.width() - 0.0), py ), 
-		       QPointF( double(d->pixRect.width() - 0.0 - SMALLTICKSIZE), py ) );
-	}
+        double py = d->pixRect.height() * ( 1.0 - (yy - y0) / dh );
+        if ( py > 0 && py < d->pixRect.height() ) {
+          p->drawLine( QPointF( double(d->pixRect.width() - 0.0), py ),
+                       QPointF( double(d->pixRect.width() - 0.0 - SMALLTICKSIZE), py ) );
+        }
       }
 
       //Draw RightAxis Label.  We need to draw the text sideways.
       if ( ! a->label().isEmpty() ) {
-	//store current painter translation/rotation state
-	p->save();
-    
-	//translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
-	p->translate( d->pixRect.width() + 2*XPADDING, d->pixRect.height() );
-	p->rotate( -90.0 );
-    
-	QRect r( 0, 0, d->pixRect.height(), XPADDING );
-	p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
-    
-	p->restore();  //restore translation/rotation state
+        //store current painter translation/rotation state
+        p->save();
+
+        //translate coord sys to left corner of axis label rectangle, then rotate 90 degrees.
+        p->translate( d->pixRect.width() + 2*XPADDING, d->pixRect.height() );
+        p->rotate( -90.0 );
+
+        QRect r( 0, 0, d->pixRect.height(), XPADDING );
+        p->drawText( r, Qt::AlignCenter, a->label() ); //draw the label, now that we are sideways
+
+        p->restore();  //restore translation/rotation state
       }
     }  //End of RightAxis
 
 
-    // Since the following use QLabels to render their text, it is neccessary 
+    // Since the following use QLabels to render their text, it is neccessary
     // to paint them after drawing to keep the painter from becoming invalid.
 
     // Draw BottomAxis Label

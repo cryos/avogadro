@@ -165,29 +165,29 @@ namespace Avogadro {
     //We have determined the number of tickmarks and their separation
     //Now we determine their positions in the Data space.
 
-    //Tick0 is the position of a "virtual" tickmark; the first major tickmark 
+    //Tick0 is the position of a "virtual" tickmark; the first major tickmark
     //position beyond the "minimum" edge of the data range.
     double Tick0 = x0 - fmod( x0, TickDistance );
     if ( x0 < 0.0 ) {
       Tick0 -= TickDistance;
       NumMajorTicks++;
     }
-    
+
     if (length < 0) {
       TickDistance *= -1;
     }
-    
+
     for ( int i=0; i<NumMajorTicks+1; i++ ) {
       double xmaj = Tick0 + i*TickDistance;
       if ( (length > 0 && xmaj >= x0 && xmaj <= x0 + length) || (length < 0 && xmaj <= x0 && xmaj >= x0 + length) ) {
-	d->m_MajorTickMarks.append( xmaj );
+        d->m_MajorTickMarks.append( xmaj );
       }
 
       for ( int j=1; j<NumMinorTicks; j++ ) {
-	double xmin = xmaj + TickDistance*j/NumMinorTicks;
-	if ( (length > 0 && xmin >= x0 && xmin <= x0 + length) || (length < 0 && xmin <= x0 && xmin >= x0 + length) ) {
-	  d->m_MinorTickMarks.append( xmin );
-	}
+        double xmin = xmaj + TickDistance*j/NumMinorTicks;
+        if ( (length > 0 && xmin >= x0 && xmin <= x0 + length) || (length < 0 && xmin <= x0 && xmin >= x0 + length) ) {
+          d->m_MinorTickMarks.append( xmin );
+        }
       }
     }
   }
