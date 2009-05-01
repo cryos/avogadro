@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.3\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-01 12:45-0400\n"
+"POT-Creation-Date: 2009-05-01 12:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2808,62 +2808,62 @@ msgstr ""
 msgid "Residue"
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:58
+#: libavogadro/src/pythonengine.cpp:60
 msgid "Python script rendering"
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:96 libavogadro/src/pythonengine.cpp:104
+#: libavogadro/src/pythonengine.cpp:98 libavogadro/src/pythonengine.cpp:106
 msgid "Unknown Python Engine"
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:111 libavogadro/src/pythonengine.cpp:119
-#: libavogadro/src/pythonextension.cpp:105
-#: libavogadro/src/pythonextension.cpp:115 libavogadro/src/pythontool.cpp:123
-#: libavogadro/src/pythontool.cpp:131
+#: libavogadro/src/pythonengine.cpp:113 libavogadro/src/pythonengine.cpp:121
+#: libavogadro/src/pythonextension.cpp:108
+#: libavogadro/src/pythonextension.cpp:118 libavogadro/src/pythontool.cpp:125
+#: libavogadro/src/pythontool.cpp:133
 msgid "N/A"
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:246 libavogadro/src/pythonengine.cpp:251
+#: libavogadro/src/pythonengine.cpp:248 libavogadro/src/pythonengine.cpp:253
 msgid "PythonEngine: checking "
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:247
+#: libavogadro/src/pythonengine.cpp:249
 msgid "  - script has no 'Engine' class defined"
 msgstr ""
 
-#: libavogadro/src/pythonengine.cpp:252
-#: libavogadro/src/pythonextension.cpp:342 libavogadro/src/pythontool.cpp:330
+#: libavogadro/src/pythonengine.cpp:254
+#: libavogadro/src/pythonextension.cpp:345 libavogadro/src/pythontool.cpp:332
 msgid "  - no module"
 msgstr ""
 
-#: libavogadro/src/pythonextension.cpp:89
-#: libavogadro/src/pythonextension.cpp:99
+#: libavogadro/src/pythonextension.cpp:92
+#: libavogadro/src/pythonextension.cpp:102
 msgid "Unknown Python Extension"
 msgstr ""
 
-#: libavogadro/src/pythonextension.cpp:144
-#: libavogadro/src/pythonextension.cpp:158
+#: libavogadro/src/pythonextension.cpp:147
+#: libavogadro/src/pythonextension.cpp:161
 msgid "&Scripts"
 msgstr ""
 
-#: libavogadro/src/pythonextension.cpp:336
-#: libavogadro/src/pythonextension.cpp:341
+#: libavogadro/src/pythonextension.cpp:339
+#: libavogadro/src/pythonextension.cpp:344
 msgid "PythonExtension: checking "
 msgstr ""
 
-#: libavogadro/src/pythonextension.cpp:337
+#: libavogadro/src/pythonextension.cpp:340
 msgid "  - script has no 'Extension' class defined"
 msgstr ""
 
-#: libavogadro/src/pythontool.cpp:108 libavogadro/src/pythontool.cpp:116
+#: libavogadro/src/pythontool.cpp:110 libavogadro/src/pythontool.cpp:118
 msgid "Unknown Python Tool"
 msgstr ""
 
-#: libavogadro/src/pythontool.cpp:324 libavogadro/src/pythontool.cpp:329
+#: libavogadro/src/pythontool.cpp:326 libavogadro/src/pythontool.cpp:331
 msgid "PythonTool: checking "
 msgstr ""
 
-#: libavogadro/src/pythontool.cpp:325
+#: libavogadro/src/pythontool.cpp:327
 msgid "  - script has no 'Tool' class defined"
 msgstr ""
 
