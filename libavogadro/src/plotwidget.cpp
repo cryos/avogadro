@@ -442,7 +442,6 @@ namespace Avogadro {
             QToolTip::showText( he->globalPos(), pts.front()->label(), this );
           }
         }
-      }
       e->accept();
       return true;
     }
