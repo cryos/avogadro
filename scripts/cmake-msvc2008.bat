@@ -3,6 +3,9 @@
 SET build_system="NMake Makefiles"
 SET build_type="Release"
 
+REM requires NSIS (http://nsis.sourceforge.net)!
+SET cpack_options=-DCPACK_BINARY_NSIS:=ON -DCPACK_BINARY_ZIP:=OFF
+
 REM General
 
 SET PATH=%PATH%;C:\src\qt-4.5.1\bin

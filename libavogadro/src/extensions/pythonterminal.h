@@ -27,8 +27,8 @@
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-#include <avogadro/pythoninterpreter.h>
-#include <avogadro/pythonscript.h>
+#include "../pythoninterpreter.h"
+#include "../pythonscript.h"
 
 #include "ui_pythonterminalwidget.h"
 
