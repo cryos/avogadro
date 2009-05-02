@@ -209,7 +209,9 @@ set(XDG_ICON_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/pixmaps"
     CACHE PATH "Install dir for application icons")
 
 # Some rpath handling for Linux and Mac
-if(UNIX)
+option(ENABLE_RPATH "Enable rpath support on Linux and Mac" ON)
+if(UNIX AND ENABLE_RPATH)
+  message(STATUS "RPath support enabled for installed binaries and libraries")
   if(APPLE)
     set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
   else(APPLE)
@@ -217,7 +219,7 @@ if(UNIX)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
     set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
   endif(APPLE)
-endif(UNIX)
+endif(UNIX AND ENABLE_RPATH)
 
 # Add support for an uninstall target
 configure_file(
@@ -277,6 +279,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     CACHE STRING "Binary build output directory")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
     CACHE STRING "Library build output directory")
+mark_as_advanced(CMAKE_LIBRARY_OUTPUT_DIRECTORY
+  CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
