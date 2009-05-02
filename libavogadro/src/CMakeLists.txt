@@ -135,7 +135,8 @@ endforeach(headerFile ${libavogadro_HDRS})
 
 add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
-set_target_properties(avogadro-lib PROPERTIES VERSION ${VERSION} SOVERSION 0 )
+set_target_properties(avogadro-lib
+  PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 0 )
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   # The Python headers, only installed if Python is enabled

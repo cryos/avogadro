@@ -33,6 +33,6 @@
 
 #define SCM_REVISION "@SCM_REVISION@"
 
-#define VERSION "@VERSION@"
+#define VERSION "@Avogadro_VERSION_FULL@"
 
 #endif  // AVOCONFIG_H

@@ -32,7 +32,7 @@
 
 #define SCM_REVISION "@SCM_REVISION@"
 
-#define VERSION "@VERSION@"
+#define VERSION "@Avogadro_VERSION_FULL@"
 
 #define THREADED_GL @THREADED_GL@
 
