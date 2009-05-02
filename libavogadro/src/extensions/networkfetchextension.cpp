@@ -81,11 +81,12 @@ namespace Avogadro
 
     m_glwidget = widget;
 
-    if (!m_network)
+    if (!m_network) {
       m_network = new QNetworkAccessManager(this);
 
-    connect(m_network, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(replyFinished(QNetworkReply*)));
+      connect(m_network, SIGNAL(finished(QNetworkReply*)),
+              this, SLOT(replyFinished(QNetworkReply*)));
+    }
     // Hard coding the PDB download URL - this could be used for other services
     m_network->get(QNetworkRequest(QUrl("http://www.pdb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=" + *m_pdbName)));
 
@@ -111,6 +112,14 @@ namespace Avogadro
   void NetworkFetchExtension::replyFinished(QNetworkReply *reply)
   {
     // Read in all the data
+    if (!reply->isReadable()) {
+      QMessageBox::warning(qobject_cast<QWidget*>(parent()),
+                           tr("PDB Download Failed"),
+                           tr("Network timeout or other error."));
+      delete reply;
+      return;
+    }
+
     QByteArray data = reply->readAll();
 
     // Check if the PDB was successfully downloaded
