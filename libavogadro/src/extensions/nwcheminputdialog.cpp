@@ -46,6 +46,7 @@ namespace Avogadro
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
+
     // Connect the GUI elements to the correct slots
     connect(ui.titleLine, SIGNAL(editingFinished()),
         this, SLOT(setTitle()));
@@ -87,6 +88,11 @@ namespace Avogadro
       disconnect(m_molecule, 0, this, 0);
 
     m_molecule = molecule;
+
+    // Set multiplicity to the OB value
+    OpenBabel::OBMol obmol = m_molecule->OBMol();
+    setMultiplicity(obmol.GetTotalSpinMultiplicity());
+
     // Update the preview text whenever primitives are changed
     connect(m_molecule, SIGNAL(atomRemoved(Atom *)),
             this, SLOT(updatePreviewText()));
@@ -231,8 +237,12 @@ namespace Avogadro
   void NWChemInputDialog::setMultiplicity(int n)
   {
     m_multiplicity = n;
+    if (ui.multiplicitySpin->value() != n) {
+      ui.multiplicitySpin->setValue(n);
+    }
     updatePreviewText();
   }
+
   void NWChemInputDialog::setCharge(int n)
   {
     m_charge = n;
