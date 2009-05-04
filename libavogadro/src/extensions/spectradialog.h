@@ -75,6 +75,7 @@ namespace Avogadro {
     void renameScheme();
     void exportSpectra();
     void saveImageFileDialog();
+    void setNMRAtom(const QString & symbol);
 
   signals:
     void scaleUpdated_IR();
@@ -83,10 +84,14 @@ namespace Avogadro {
     Ui::SpectraDialog ui;
 
     void getCalculatedSpectra(PlotObject *plotObject);
-    void getCalculatedSinglets_IR(PlotObject *plotObject);
-    void getCalculatedGaussians_IR(PlotObject *plotObject);
     void getImportedSpectra(PlotObject *plotObject);
 
+    void getCalculatedSinglets_IR(PlotObject *plotObject);
+    void getCalculatedGaussians_IR(PlotObject *plotObject);
+
+    void getCalculatedSinglets_NMR(PlotObject *plotObject);
+
+    Molecule *m_molecule;
     double m_IR_scale;
     QString m_IR_yaxis;
     int m_scheme;
@@ -95,12 +100,16 @@ namespace Avogadro {
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
     QString m_spectra;
+    OpenBabel::OBVibrationData *m_vibrations;
     std::vector<double> m_IRwavenumbers;
     std::vector<double> m_IRtransmittances;
     std::vector<double> m_imported_IRwavenumbers;
     std::vector<double> m_imported_IRtransmittances;
-    Molecule *m_molecule;
-    OpenBabel::OBVibrationData *m_vibrations;
+    QHash<QString, QList<double> > *m_NMRdata;
+    QList<double> m_NMRshifts;
+    QList<double> m_NMRintensities;
+    QList<double> m_imported_NMRshifts;
+    QList<double> m_imported_NMRintensities;
   };
 }
 

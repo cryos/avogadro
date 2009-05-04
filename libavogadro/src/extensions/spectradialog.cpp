@@ -38,6 +38,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
 #include <openbabel/mol.h>
+#include <openbabel/obiter.h>
 #include <openbabel/generic.h>
 
 using namespace OpenBabel;
@@ -120,6 +121,10 @@ namespace Avogadro {
     connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis_IR(QString)));
 
+    // NMR specific connections
+    connect(ui.combo_NMR_type, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(setNMRAtom(QString)));
+
     readSettings();
   }
 
@@ -194,20 +199,55 @@ namespace Avogadro {
         double t = intensities.at(i);
         t = t / maxIntensity; 	// Normalize
         t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
-        t = 1 - t; 		// Simulate transmittance
-        t *= 100;		// Convert to percent
+        t = 1.0 - t; 		// Simulate transmittance
+        t *= 100.0;		// Convert to percent
         m_IRtransmittances.push_back(t);
       }
     }
 
+    // Check for NMR data
+    // First remove any old data
+    m_NMRdata = new QHash<QString, QList<double> >;
+    // Test for "NMR Isotropic Shift" in first atom
+    bool hasNMR = false;
+    if (obmol.NumAtoms() > 0)
+      if (obmol.GetFirstAtom()->HasData("NMR Isotropic Shift"))
+	hasNMR = true;
+
+    if (hasNMR) {
+      qDebug() << "NMR data found:";
+      // Setup GUI
+      ui.combo_spectra->addItem(tr("NMR", "NMR spectra option"));
+      ui.tab_widget->addTab(ui.tab_NMR, tr("&NMR Spectra Settings"));
+
+
+      // Extract data from obmol
+      FOR_ATOMS_OF_MOL(atom,obmol) {
+	QString symbol 		= QString(OpenBabel::etab.GetSymbol(atom->GetAtomicNum()));
+	double shift 		= QString(atom->GetData("NMR Isotropic Shift")->GetValue().c_str()).toFloat();
+	QList<double> list;
+	if (m_NMRdata->contains(symbol)) {
+	  list	= m_NMRdata->value(symbol);
+	}
+	else {
+	  // Dump symbol into NMR Type list
+	  ui.combo_NMR_type->addItem(symbol);
+	}
+	list.append(shift);
+	m_NMRdata->insert(symbol, list);
+      }
+      setNMRAtom(ui.combo_NMR_type->currentText());
+      qDebug() << *m_NMRdata;
+    } else { qDebug() << "No NMR data found..."; }
+
     // Change this when other spectra are added!!
-    if (!m_vibrations) { // Actions if there are no spectra loaded
+    if (!m_vibrations && !hasNMR) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
       ui.cb_calculate->setEnabled(false);
       ui.cb_calculate->setChecked(false);
-            return;
+      return;
     } else { // Actions for all spectra
       ui.push_colorCalculated->setEnabled(true);
       ui.cb_calculate->setEnabled(true);
@@ -451,6 +491,11 @@ namespace Avogadro {
       ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
       ui.plot->axis(PlotWidget::LeftAxis)->setLabel(m_IR_yaxis);
     }
+    else if (m_spectra == "NMR") {
+      ui.plot->setDefaultLimits( 10.0, 0.0, 0.0, 1.0 );
+      ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Shift (ppm)"));
+      ui.plot->axis(PlotWidget::LeftAxis)->setLabel("");
+    }
 
     // Regenerate spectra plot objects and redraw plot
     regenerateCalculatedSpectra();
@@ -484,6 +529,10 @@ namespace Avogadro {
     if (m_spectra == "Infrared") {
       out << "Frequencies\tIntensities\n";
     }
+    else if (m_spectra == "NMR") {
+      out << "Shift\tYvalue\n";
+    }
+  
 
     // Dump spectra
     for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
@@ -521,6 +570,10 @@ namespace Avogadro {
       m_imported_IRwavenumbers.clear();
       m_imported_IRtransmittances.clear();
     }
+    else if (m_spectra == "NMR") {
+      m_imported_NMRshifts.clear();
+      m_imported_NMRintensities.clear();
+    }
 
     // Prepare stream
     QTextStream in(&file);
@@ -549,6 +602,10 @@ namespace Avogadro {
           m_imported_IRwavenumbers.push_back(data.at(0).toDouble());
           m_imported_IRtransmittances.push_back(data.at(1).toDouble());
         }
+        else if (m_spectra == "NMR") {
+          m_imported_NMRshifts.push_back(data.at(0).toDouble());
+          m_imported_NMRintensities.push_back(data.at(1).toDouble());
+        }
       }
       else {
         qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
@@ -572,6 +629,22 @@ namespace Avogadro {
         for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
           m_imported_IRtransmittances.at(i) *= 100;
         }
+      }
+    }
+
+    //
+    // NMR cleanups:
+    //
+    // Normalize intensities
+    if (m_spectra == "NMR") {
+      double max = m_imported_NMRintensities.at(0);
+      for (int i = 0; i < m_imported_NMRintensities.size(); i++) {
+        if (m_imported_NMRintensities.at(i) > max) max = m_imported_NMRintensities.at(i);
+      }
+      for (int i = 0; i < m_imported_NMRintensities.size(); i++) {
+	double tmp = m_imported_NMRintensities.at(i);
+	tmp /= max;
+	m_imported_NMRintensities.replace(i,tmp);
       }
     }
 
@@ -737,6 +810,10 @@ namespace Avogadro {
         }
       }
     } // End IR spectra
+    if (m_spectra == "NMR") {
+      getCalculatedSinglets_NMR(plotObject);
+    } // End NMR spectra
+    
   }// End getCalculatedSpectra
 
   void SpectraDialog::getImportedSpectra(PlotObject *plotObject)
@@ -754,7 +831,15 @@ namespace Avogadro {
         }
         plotObject->addPoint ( wavenumber, y );
       }
-    }
+    }// End IR spectra
+    else if (m_spectra == "NMR") {
+      for (int i = 0; i < m_imported_NMRshifts.size(); i++) {
+        double shift = m_imported_NMRshifts.at(i);
+        double y = m_imported_NMRintensities.at(i);
+        plotObject->addPoint ( shift, y );
+      }
+    }// End NMR spectra
+
   }
 
   //////////////////
@@ -808,48 +893,144 @@ namespace Avogadro {
     double FWHM = ui.spin_IR_FWHM->value();
     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
-    if (m_spectra == "Infrared") {
-      // determine range
-      // - find maximum and minimum
-      double min = 0.0 + 2*FWHM;
-      double max = 4000.0 - 2*FWHM;
-      for (uint i = 0; i < m_IRwavenumbers.size(); i++) {
-        double cur = m_IRwavenumbers.at(i);
-        if (cur > max) max = cur;
-        if (cur < min) min = cur;
+    // determine range
+    // - find maximum and minimum
+    double min = 0.0 + 2*FWHM;
+    double max = 4000.0 - 2*FWHM;
+    for (uint i = 0; i < m_IRwavenumbers.size(); i++) {
+      double cur = m_IRwavenumbers.at(i);
+      if (cur > max) max = cur;
+      if (cur < min) min = cur;
+    }
+    min -= 2*FWHM;
+    max += 2*FWHM;
+    // - get resolution (TODO)
+    double res = 1.0;
+    // create points
+    for (double x = min; x < max; x += res) {
+      double y = 100;
+      for (uint i = 0; i < m_IRtransmittances.size(); i++) {
+	double t = m_IRtransmittances.at(i);
+	double w = m_IRwavenumbers.at(i) * m_IR_scale;
+	y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
       }
-      min -= 2*FWHM;
-      max += 2*FWHM;
-      // - get resolution (TODO)
-      double res = 1.0;
-      // create points
-      for (double x = min; x < max; x += res) {
-        double y = 100;
-        for (uint i = 0; i < m_IRtransmittances.size(); i++) {
-          double t = m_IRtransmittances.at(i);
-          double w = m_IRwavenumbers.at(i) * m_IR_scale;
-          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
-        }
-        plotObject->addPoint(x,y);
-      }
-      
-      // Normalization is probably screwed up, so renormalize the data
-      max = plotObject->points().at(0)->y();
-      min = max;
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        if (cur < min) min = cur;
-        if (cur > max) max = cur;
-      }
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        // cur - min 		: Shift lowest point of plot to be at zero
-        // 100 / (max - min)	: Conversion factor for current spread -> percent
-        // * 0.97 + 3		: makes plot stay away from 0 transmittance
-        //			: (easier to see multiple peaks on strong signals)
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
-      }
+      plotObject->addPoint(x,y);
+    }
+    
+    // Normalization is probably screwed up, so renormalize the data
+    max = plotObject->points().at(0)->y();
+    min = max;
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
+      if (cur < min) min = cur;
+      if (cur > max) max = cur;
+    }
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
+      // cur - min 		: Shift lowest point of plot to be at zero
+      // 100 / (max - min)	: Conversion factor for current spread -> percent
+      // * 0.97 + 3		: makes plot stay away from 0 transmittance
+      //			: (easier to see multiple peaks on strong signals)
+      plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
     }
   }
+
+  ///////////////////
+  // NMR Functions //
+  ///////////////////
+
+  void SpectraDialog::setNMRAtom(const QString & symbol)
+  {
+    if (!m_NMRdata->contains(symbol)) return;
+
+    m_NMRshifts = m_NMRdata->value(symbol);
+    qSort(m_NMRshifts);
+    if (m_NMRshifts.size() == 1) {
+      double center = m_NMRshifts.at(0);
+      ui.plot->setDefaultLimits( center +5, center - 5, 0.0, 1.0 );
+    }
+    else {
+      double min = m_NMRshifts.at(m_NMRshifts.size()-1);
+      double max = m_NMRshifts.at(0);
+      double ext = ( min - max ) * 0.5;
+      ui.plot->setDefaultLimits( min + ext, max - ext, 0.0, 1.0 );
+    }
+    regenerateCalculatedSpectra();
+  }
+
+  void SpectraDialog::getCalculatedSinglets_NMR(PlotObject *plotObject)
+  {
+    for (int i = 0; i < m_NMRshifts.size(); i++) {
+      double shift = m_NMRshifts.at(i);
+      //      double intensity = m_NMRintensities.at(i);
+      plotObject->addPoint ( shift, 0);
+      //      if (ui.cb_NMR_labelPeaks->isChecked()) {
+      //	plotObject->addPoint( shift, 1.0, QString::number(shift, 'f', 1));
+      //      }
+      //      else {
+      plotObject->addPoint( shift, 1.0 /* intensity */ );
+      //      }
+      plotObject->addPoint( shift, 0 );
+    }
+    return;
+  }
+
+//   void SpectraDialog::setScale_NMR(double scale)
+//   {
+//     if (scale == m_NMR_scale) {
+//       return;
+//     }
+//     m_NMR_scale = scale;
+//     ui.spin_NMR_scale->setValue(scale);
+//     emit scaleUpdated_NMR();
+//  }
+
+//   void SpectraDialog::getCalculatedGaussians_NMR(PlotObject *plotObject)
+//   {
+//     // convert FWHM to sigma squared
+//     double FWHM = ui.spin_NMR_FWHM->value();
+//     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+
+//     // determine range
+//     // - find maximum and minimum
+//     double min = m_NMRshifts.at(0) + 2*FWHM;
+//     double max = m_NMRshifts.at(0) - 2*FWHM;
+//     for (uint i = 0; i < m_NMRshifts.size(); i++) {
+//       double cur = m_NMRshifts.at(i);
+//       if (cur > max) max = cur;
+//       if (cur < min) min = cur;
+//     }
+//     min -= 2*FWHM;
+//     max += 2*FWHM;
+//     // - get resolution (TODO)
+//     double res = 1.0;
+//     // create points
+//     for (double x = min; x < max; x += res) {
+//       double y = 0
+//       for (uint i = 0; i < m_NMRshifts.size(); i++) {
+// 	double t = m_NMRshifts.at(i);
+// 	double w = m_NMRshifts.at(i);// * m_NMR_scale;
+// 	y += (t-1.0) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+//       }
+//       plotObject->addPoint(x,y);
+//     }
+    
+//     // Normalization is probably screwed up, so renormalize the data
+//     max = plotObject->points().at(0)->y();
+//     min = max;
+//     for(int i = 0; i< plotObject->points().size(); i++) {
+//       double cur = plotObject->points().at(i)->y();
+//       if (cur < min) min = cur;
+//       if (cur > max) max = cur;
+//     }
+//     for(int i = 0; i< plotObject->points().size(); i++) {
+//       double cur = plotObject->points().at(i)->y();
+//       // cur - min 		: Shift lowest point of plot to be at zero
+//       // 1.0 / (max - min)	: Conversion factor for current spread -> fraction of 1
+//       // * 0.97 + 3		: makes plot stay away from 0 transmittance
+//       //			: (easier to see multiple peaks on strong signals)
+//       plotObject->points().at(i)->setY( (cur - min) * 1.0 / (max - min) * 0.97 + 3);
+//     }
+//   }
 }
 #include "spectradialog.moc"
