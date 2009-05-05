@@ -93,6 +93,7 @@ namespace Avogadro {
     void getCalculatedGaussians_IR(PlotObject *plotObject);
 
     void getCalculatedSinglets_NMR(PlotObject *plotObject);
+    void getCalculatedGaussians_NMR(PlotObject *plotObject);
 
     Molecule *m_molecule;
     int m_scheme;

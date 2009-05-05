@@ -234,6 +234,8 @@ namespace Avogadro {
               this, SLOT(setReference_NMR(double)));
       connect(ui.push_NMR_resetAxes, SIGNAL(clicked()),
               this, SLOT(updatePlotAxes_NMR()));
+      connect(ui.spin_NMR_FWHM, SIGNAL(valueChanged(double)),
+              this, SLOT(regenerateCalculatedSpectra()));
 
       // Extract data from obmol
       FOR_ATOMS_OF_MOL(atom,obmol) {
@@ -250,8 +252,8 @@ namespace Avogadro {
         list.append(shift);
         m_NMRdata->insert(symbol, list);
       }
-      setNMRAtom(ui.combo_NMR_type->currentText());
       qDebug() << *m_NMRdata;
+      setNMRAtom(ui.combo_NMR_type->currentText());
     } else { qDebug() << "No NMR data found..."; }
 
     // Change this when other spectra are added!!
@@ -281,7 +283,7 @@ namespace Avogadro {
     settings.setValue("spectra/IR/labelPeaks", ui.cb_IR_labelPeaks->isChecked());
 
     settings.setValue("spectra/NMR/reference", m_NMR_ref);
-    //    settings.setValue("spectra/NMR/gaussianWidth", ui.spin_NMR_FWHM->value());
+    settings.setValue("spectra/NMR/gaussianWidth", ui.spin_NMR_FWHM->value());
     //    settings.setValue("spectra/NMR/labelPeaks", ui.cb_NMR_labelPeaks->isChecked());
 
     settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
@@ -316,7 +318,7 @@ namespace Avogadro {
     ui.cb_IR_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
 
     setReference_NMR(settings.value("spectra/NMR/reference", 0.0).toDouble());
-    //    ui.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
+    ui.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
     //    ui.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
 
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
@@ -664,7 +666,7 @@ namespace Avogadro {
     //
     // Normalize intensities
     if (m_spectra == "NMR") {
-      double max = m_imported_NMRintensities.at(0);
+      double max = m_imported_NMRintensities.first();
       for (int i = 0; i < m_imported_NMRintensities.size(); i++) {
         if (m_imported_NMRintensities.at(i) > max) max = m_imported_NMRintensities.at(i);
       }
@@ -838,7 +840,12 @@ namespace Avogadro {
       }
     } // End IR spectra
     if (m_spectra == "NMR") {
-      getCalculatedSinglets_NMR(plotObject);
+      if (ui.spin_NMR_FWHM->value() == 0.0) {
+        getCalculatedSinglets_NMR(plotObject);
+      }
+      else {
+        getCalculatedGaussians_NMR(plotObject);
+      }
     } // End NMR spectra
 
   }// End getCalculatedSpectra
@@ -932,7 +939,8 @@ namespace Avogadro {
     min -= 2*FWHM;
     max += 2*FWHM;
     // - get resolution (TODO)
-    double res = 1.0;
+    double res = (FWHM/10.0 < 10.0) ? FWHM/10.0 : 10.0;
+    if (res < 0.05) res = 0.05;
     // create points
     for (double x = min; x < max; x += res) {
       double y = 100;
@@ -945,7 +953,7 @@ namespace Avogadro {
     }
 
     // Normalization is probably screwed up, so renormalize the data
-    max = plotObject->points().at(0)->y();
+    max = plotObject->points().first()->y();
     min = max;
     for(int i = 0; i< plotObject->points().size(); i++) {
       double cur = plotObject->points().at(i)->y();
@@ -996,14 +1004,16 @@ namespace Avogadro {
   {
     QList<double> tmp (m_NMRshifts);
     qSort(tmp);
+    double FWHM = ui.spin_NMR_FWHM->value();
     if (tmp.size() == 1) {
-      double center = tmp.at(0) - m_NMR_ref;
-      ui.plot->setDefaultLimits( center + 5, center - 5, 0.0, 1.0 );
+      double center 	= tmp.first() - m_NMR_ref;
+      double ext	= 5 + FWHM;
+      ui.plot->setDefaultLimits( center + ext, center - ext, 0.0, 1.0 );
     }
     else {
-      double min = tmp.at(tmp.size()-1) - m_NMR_ref;
-      double max = tmp.at(0) - m_NMR_ref;
-      double ext = ( min - max ) * 0.1;
+      double min = tmp.last() - m_NMR_ref;
+      double max = tmp.first() - m_NMR_ref;
+      double ext = ( min - max ) * 0.1 + FWHM;
       ui.plot->setDefaultLimits( min + ext, max - ext, 0.0, 1.0 );
     }
   }
@@ -1018,52 +1028,55 @@ namespace Avogadro {
     emit refUpdated_NMR();
   }
 
-//   void SpectraDialog::getCalculatedGaussians_NMR(PlotObject *plotObject)
-//   {
-//     // convert FWHM to sigma squared
-//     double FWHM = ui.spin_NMR_FWHM->value();
-//     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+   void SpectraDialog::getCalculatedGaussians_NMR(PlotObject *plotObject)
+  {
+    if (m_NMRshifts.isEmpty()) return;
 
-//     // determine range
-//     // - find maximum and minimum
-//     double min = m_NMRshifts.at(0) + 2*FWHM - m_NMR_ref;
-//     double max = m_NMRshifts.at(0) - 2*FWHM - m_NMR_ref;
-//     for (uint i = 0; i < m_NMRshifts.size(); i++) {
-//       double cur = m_NMRshifts.at(i) - m_NMR_ref;
-//       if (cur > max) max = cur;
-//       if (cur < min) min = cur;
-//     }
-//     min -= 2*FWHM;
-//     max += 2*FWHM;
-//     // - get resolution (TODO)
-//     double res = 1.0;
-//     // create points
-//     for (double x = min; x < max; x += res) {
-//       double y = 0
-//       for (uint i = 0; i < m_NMRshifts.size(); i++) {
-// 	double t = m_NMRintensities.at(i);
-// 	double w = m_NMRshifts.at(i) - m_NMR_ref;
-// 	y += (t-1.0) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
-//       }
-//       plotObject->addPoint(x,y);
-//     }
+    // convert FWHM to sigma squared
+    double FWHM = ui.spin_NMR_FWHM->value();
+    double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
-//     // Normalization is probably screwed up, so renormalize the data
-//     max = plotObject->points().at(0)->y();
-//     min = max;
-//     for(int i = 0; i< plotObject->points().size(); i++) {
-//       double cur = plotObject->points().at(i)->y();
-//       if (cur < min) min = cur;
-//       if (cur > max) max = cur;
-//     }
-//     for(int i = 0; i< plotObject->points().size(); i++) {
-//       double cur = plotObject->points().at(i)->y();
-//       // cur - min 		: Shift lowest point of plot to be at zero
-//       // 1.0 / (max - min)	: Conversion factor for current spread -> fraction of 1
-//       // * 0.97 + 3		: makes plot stay away from 0 transmittance
-//       //			: (easier to see multiple peaks on strong signals)
-//       plotObject->points().at(i)->setY( (cur - min) * 1.0 / (max - min) * 0.97 + 3);
-//     }
-//   }
+    // determine range
+    // - find maximum and minimum
+    double min = m_NMRshifts.first() + 2*FWHM - m_NMR_ref;
+    double max = m_NMRshifts.first() - 2*FWHM - m_NMR_ref;
+    for (int i = 0; i < m_NMRshifts.size(); i++) {
+      double cur = m_NMRshifts.at(i) - m_NMR_ref;
+      if (cur > max) max = cur;
+      if (cur < min) min = cur;
+    }
+    min -= 2*FWHM;
+    max += 2*FWHM;
+    // - get resolution (TODO)
+    double res = (FWHM/10.0 < 0.01) ? FWHM/10.0 : 0.01;
+    if (res < 0.001) res = 0.001;
+    // create points
+    for (double x = min; x < max; x += res) {
+      double y = 0;
+      for (int i = 0; i < m_NMRshifts.size(); i++) {
+        double t = 1.0; //m_NMRintensities.at(i);
+	double w = m_NMRshifts.at(i) - m_NMR_ref;
+	y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+      }
+      plotObject->addPoint(x,y);
+    }
+
+    // Normalization is probably screwed up, so renormalize the data
+    max = plotObject->points().first()->y();
+    min = max;
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
+      if (cur < min) min = cur;
+      if (cur > max) max = cur;
+    }
+    for(int i = 0; i< plotObject->points().size(); i++) {
+      double cur = plotObject->points().at(i)->y();
+      // cur - min 		: Shift lowest point of plot to be at zero
+      // 1.0 / (max - min)	: Conversion factor for current spread -> fraction of 1
+      // * 0.97			: makes plot stay away from 0 transmittance
+      //			: (easier to see multiple peaks on strong signals)
+      plotObject->points().at(i)->setY( (cur - min) * 1.0 / (max - min) * 0.97);
+    }
+  }
 }
 #include "spectradialog.moc"
