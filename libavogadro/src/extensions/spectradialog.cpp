@@ -108,22 +108,6 @@ namespace Avogadro {
             this, SLOT(updateCurrentSpectra(QString)));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
-    
-    // IR specific connections
-    connect(this, SIGNAL(scaleUpdated_IR()),
-            this, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
-            this, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_IR_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(setScale_IR(double)));
-    connect(ui.spin_IR_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis_IR(QString)));
-
-    // NMR specific connections
-    connect(ui.combo_NMR_type, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(setNMRAtom(QString)));
 
     readSettings();
   }
@@ -162,6 +146,18 @@ namespace Avogadro {
       // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
       ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+
+      // Setup signals/slots
+      connect(this, SIGNAL(scaleUpdated_IR()),
+	      this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
+	      this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.spin_IR_scale, SIGNAL(valueChanged(double)),
+	      this, SLOT(setScale_IR(double)));
+      connect(ui.spin_IR_FWHM, SIGNAL(valueChanged(double)),
+	      this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
+	      this, SLOT(updateYAxis_IR(QString)));
 
       // OK, we have valid vibrations, so store them for later
       m_IRwavenumbers = m_vibrations->GetFrequencies();
@@ -229,6 +225,15 @@ namespace Avogadro {
       ui.combo_spectra->addItem(tr("NMR", "NMR spectra option"));
       ui.tab_widget->addTab(ui.tab_NMR, tr("&NMR Spectra Settings"));
 
+      // Setup signals/slots
+      connect(this, SIGNAL(refUpdated_NMR()),
+	      this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.combo_NMR_type, SIGNAL(currentIndexChanged(QString)),
+	      this, SLOT(setNMRAtom(QString)));
+      connect(ui.spin_NMR_ref, SIGNAL(valueChanged(double)),
+	      this, SLOT(setReference_NMR(double)));
+      connect(ui.push_NMR_resetAxes, SIGNAL(clicked()),
+	      this, SLOT(updatePlotAxes_NMR()));
 
       // Extract data from obmol
       FOR_ATOMS_OF_MOL(atom,obmol) {
@@ -270,15 +275,22 @@ namespace Avogadro {
 
   void SpectraDialog::writeSettings() const {
     QSettings settings; // Already set up in avogadro/src/main.cpp
-    settings.setValue("spectra/currentScheme", m_scheme);
+
     settings.setValue("spectra/IR/scale", m_IR_scale);
     settings.setValue("spectra/IR/gaussianWidth", ui.spin_IR_FWHM->value());
     settings.setValue("spectra/IR/labelPeaks", ui.cb_IR_labelPeaks->isChecked());
+
+    settings.setValue("spectra/NMR/reference", m_NMR_ref);
+    //    settings.setValue("spectra/NMR/gaussianWidth", ui.spin_NMR_FWHM->value());
+    //    settings.setValue("spectra/NMR/labelPeaks", ui.cb_NMR_labelPeaks->isChecked());
+
     settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
     settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
     settings.setValue("spectra/image/units", ui.combo_imageUnits->currentIndex());
     settings.setValue("spectra/image/DPI", ui.spin_imageDPI->value());
     settings.setValue("spectra/image/optimizeFontSize", ui.cb_imageFontAdjust->isChecked());
+
+    settings.setValue("spectra/currentScheme", m_scheme);
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < m_schemes->size(); ++i) {
       settings.setArrayIndex(i);
@@ -302,11 +314,17 @@ namespace Avogadro {
     setScale_IR(settings.value("spectra/IR/scale", 1.0).toDouble());
     ui.spin_IR_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
     ui.cb_IR_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
+
+    setReference_NMR(settings.value("spectra/NMR/reference", 0.0).toDouble());
+    //    ui.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
+    //    ui.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
+
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
     ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 10).toInt());
     ui.combo_imageUnits->setCurrentIndex(settings.value("spectra/image/units", 0).toInt());
     ui.spin_imageDPI->setValue(settings.value("spectra/image/DPI", 150).toInt());
     ui.cb_imageFontAdjust->setChecked(settings.value("spectra/image/optimizeFontSize", true).toBool());
+
     int scheme = settings.value("spectra/currentScheme", 0).toInt();
     int size = settings.beginReadArray("spectra/schemes");
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -953,24 +971,14 @@ namespace Avogadro {
     if (!m_NMRdata->contains(symbol)) return;
 
     m_NMRshifts = m_NMRdata->value(symbol);
-    qSort(m_NMRshifts);
-    if (m_NMRshifts.size() == 1) {
-      double center = m_NMRshifts.at(0);
-      ui.plot->setDefaultLimits( center +5, center - 5, 0.0, 1.0 );
-    }
-    else {
-      double min = m_NMRshifts.at(m_NMRshifts.size()-1);
-      double max = m_NMRshifts.at(0);
-      double ext = ( min - max ) * 0.5;
-      ui.plot->setDefaultLimits( min + ext, max - ext, 0.0, 1.0 );
-    }
+    updatePlotAxes_NMR();
     regenerateCalculatedSpectra();
   }
 
   void SpectraDialog::getCalculatedSinglets_NMR(PlotObject *plotObject)
   {
     for (int i = 0; i < m_NMRshifts.size(); i++) {
-      double shift = m_NMRshifts.at(i);
+      double shift = m_NMRshifts.at(i) - m_NMR_ref;
       //      double intensity = m_NMRintensities.at(i);
       plotObject->addPoint ( shift, 0);
       //      if (ui.cb_NMR_labelPeaks->isChecked()) {
@@ -984,15 +992,31 @@ namespace Avogadro {
     return;
   }
 
-//   void SpectraDialog::setScale_NMR(double scale)
-//   {
-//     if (scale == m_NMR_scale) {
-//       return;
-//     }
-//     m_NMR_scale = scale;
-//     ui.spin_NMR_scale->setValue(scale);
-//     emit scaleUpdated_NMR();
-//  }
+  void SpectraDialog::updatePlotAxes_NMR()
+  {
+    QList<double> tmp (m_NMRshifts);
+    qSort(tmp);
+    if (tmp.size() == 1) {
+      double center = tmp.at(0) - m_NMR_ref;
+      ui.plot->setDefaultLimits( center + 5, center - 5, 0.0, 1.0 );
+    }
+    else {
+      double min = tmp.at(tmp.size()-1) - m_NMR_ref;
+      double max = tmp.at(0) - m_NMR_ref;
+      double ext = ( min - max ) * 0.1;
+      ui.plot->setDefaultLimits( min + ext, max - ext, 0.0, 1.0 );
+    }
+  }
+
+  void SpectraDialog::setReference_NMR(double ref)
+  {
+    if (ref == m_NMR_ref) {
+      return;
+    }
+    m_NMR_ref = ref;
+    ui.spin_NMR_ref->setValue(ref);
+    emit refUpdated_NMR();
+  }
 
 //   void SpectraDialog::getCalculatedGaussians_NMR(PlotObject *plotObject)
 //   {
@@ -1002,10 +1026,10 @@ namespace Avogadro {
 
 //     // determine range
 //     // - find maximum and minimum
-//     double min = m_NMRshifts.at(0) + 2*FWHM;
-//     double max = m_NMRshifts.at(0) - 2*FWHM;
+//     double min = m_NMRshifts.at(0) + 2*FWHM - m_NMR_ref;
+//     double max = m_NMRshifts.at(0) - 2*FWHM - m_NMR_ref;
 //     for (uint i = 0; i < m_NMRshifts.size(); i++) {
-//       double cur = m_NMRshifts.at(i);
+//       double cur = m_NMRshifts.at(i) - m_NMR_ref;
 //       if (cur > max) max = cur;
 //       if (cur < min) min = cur;
 //     }
@@ -1017,8 +1041,8 @@ namespace Avogadro {
 //     for (double x = min; x < max; x += res) {
 //       double y = 0
 //       for (uint i = 0; i < m_NMRshifts.size(); i++) {
-// 	double t = m_NMRshifts.at(i);
-// 	double w = m_NMRshifts.at(i);// * m_NMR_scale;
+// 	double t = m_NMRintensities.at(i);
+// 	double w = m_NMRshifts.at(i) - m_NMR_ref;
 // 	y += (t-1.0) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
 //       }
 //       plotObject->addPoint(x,y);
