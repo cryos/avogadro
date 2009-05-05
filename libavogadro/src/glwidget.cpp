@@ -2062,13 +2062,10 @@ namespace Avogadro {
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
-    for(int i = 0; i< count; i++)
-      {
-        settings.setArrayIndex(i);
-        Engine *engine = d->engines.at(i);
-        settings.setValue("engineID", engine->identifier());
-        engine->writeSettings(settings);
-      }
+    for(int i = 0; i< count; i++) {
+      settings.setArrayIndex(i);
+      d->engines.at(i)->writeSettings(settings);
+    }
     settings.endArray();
   }
 
@@ -2084,23 +2081,14 @@ namespace Avogadro {
     d->allowQuickRender = settings.value("renderUnitCellAxes", 1).value<bool>();
 
     int count = settings.beginReadArray("engines");
-    for(int i=0; i<count; i++)
-    {
+    for(int i=0; i<count; i++) {
       settings.setArrayIndex(i);
       QString engineClass = settings.value("engineID", QString()).toString();
-
-      PluginFactory *factory;
-      if(!engineClass.isEmpty() && (factory = PluginManager::factory(engineClass, Plugin::EngineType)))
-      {
+      PluginFactory *factory = PluginManager::factory(engineClass,
+                                                      Plugin::EngineType);
+      if(!engineClass.isEmpty() && factory) {
         Engine *engine = static_cast<Engine *>(factory->createInstance(this));
         engine->readSettings(settings);
-
-        // eventually settings will store which has what but
-        // for now we ignore this.  (will need this when we
-        // copy the selected primitives also).
-//        if(!engine->primitives().size())
-//          engine->setPrimitives(primitives());
-
         addEngine(engine);
       }
     }
