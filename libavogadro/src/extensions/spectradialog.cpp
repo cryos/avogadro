@@ -167,6 +167,15 @@ namespace Avogadro {
       m_IRwavenumbers = m_vibrations->GetFrequencies();
       vector<double> intensities = m_vibrations->GetIntensities();
 
+      // Case where there are no intensities, set all intensities to an arbitrary value, i.e. 1.0
+      if (m_IRwavenumbers.size() > 0 && intensities.size() == 0) {
+	// Warn user
+	QMessageBox::information(this, tr("No intensities"), tr("The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization."));
+	for (uint i = 0; i < m_IRwavenumbers.size(); i++) {
+	  intensities.push_back(1.0);
+	}
+      }
+
       ////////////////////////////////////////////////////////////
       // FIXME: dlonie: remove this when OB is fixed!! Hack to get
       // around bug in how open babel reads in QChem files.
