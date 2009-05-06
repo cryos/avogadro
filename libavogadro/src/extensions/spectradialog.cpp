@@ -583,7 +583,15 @@ namespace Avogadro {
       defaultPath = QDir::homePath();
     }
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
-    QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"), defaultFileName, tr("Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*.jdx);;All Files (* *.*)"));
+    QStringList filters;
+    filters
+      << tr("Tab Separated Values") + " (*.tsv)"
+      << tr("Comma Separated Values") + " (*.csv)"
+      << tr("JCAMP-DX") + " (*.jdx)"
+      << tr("All Files") + " (* *.*)";
+
+    QString filename 	= QFileDialog::getOpenFileName(this, tr("Import Spectra"),
+                                                       defaultFileName, filters.join(";;"));
 
     // Open file
     QFile file(filename);
