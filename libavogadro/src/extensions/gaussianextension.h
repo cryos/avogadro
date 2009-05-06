@@ -71,9 +71,9 @@ namespace Avogadro
   private:
     GaussianInputDialog* m_gaussianInputDialog;
     QChemInputDialog* m_qchemInputDialog;
-    MolproInputDialog* m_molproInputDialog;
     MOPACInputDialog* m_mopacInputDialog;
     NWChemInputDialog* m_nwchemInputDialog;
+    MolproInputDialog* m_molproInputDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
     
