@@ -93,7 +93,14 @@ namespace Avogadro {
     for (unsigned int row = 0; row < frequencies.size(); ++row) {
       QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-      QTableWidgetItem *newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+      // Some codes don't provide intensity data. Display "-" in place of intensities.
+      QTableWidgetItem *newInten;
+      if (intensities.size() == 0) {
+	newInten = new QTableWidgetItem("-");
+      }
+      else {
+	newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+      }
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
