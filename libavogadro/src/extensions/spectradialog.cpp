@@ -236,6 +236,8 @@ namespace Avogadro {
               this, SLOT(updatePlotAxes_NMR()));
       connect(ui.spin_NMR_FWHM, SIGNAL(valueChanged(double)),
               this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.cb_NMR_labelPeaks, SIGNAL(toggled(bool)),
+              this, SLOT(regenerateCalculatedSpectra()));
 
       // Extract data from obmol
       FOR_ATOMS_OF_MOL(atom,obmol) {
@@ -284,7 +286,7 @@ namespace Avogadro {
 
     settings.setValue("spectra/NMR/reference", m_NMR_ref);
     settings.setValue("spectra/NMR/gaussianWidth", ui.spin_NMR_FWHM->value());
-    //    settings.setValue("spectra/NMR/labelPeaks", ui.cb_NMR_labelPeaks->isChecked());
+    settings.setValue("spectra/NMR/labelPeaks", ui.cb_NMR_labelPeaks->isChecked());
 
     settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
     settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
@@ -319,7 +321,7 @@ namespace Avogadro {
 
     setReference_NMR(settings.value("spectra/NMR/reference", 0.0).toDouble());
     ui.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
-    //    ui.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
+    ui.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
 
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
     ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 10).toInt());
@@ -791,17 +793,26 @@ namespace Avogadro {
   void SpectraDialog::regenerateCalculatedSpectra() {
 
     // IR spectra checks:
-    if (m_spectra == "Infrared") {
-      if (ui.spin_IR_FWHM->value() != 0.0 && ui.cb_IR_labelPeaks->isEnabled()) {
-        ui.cb_IR_labelPeaks->setEnabled(false);
-        ui.cb_IR_labelPeaks->setChecked(false);
-      }
-      if (ui.spin_IR_FWHM->value() == 0.0 && !ui.cb_IR_labelPeaks->isEnabled()) {
-        ui.cb_IR_labelPeaks->setEnabled(true);
-      }
-      if (!ui.cb_IR_labelPeaks->isEnabled()) {
-        ui.cb_IR_labelPeaks->setChecked(false);
-      }
+    if (ui.spin_IR_FWHM->value() != 0.0 && ui.cb_IR_labelPeaks->isEnabled()) {
+      ui.cb_IR_labelPeaks->setEnabled(false);
+      ui.cb_IR_labelPeaks->setChecked(false);
+    }
+    if (ui.spin_IR_FWHM->value() == 0.0 && !ui.cb_IR_labelPeaks->isEnabled()) {
+      ui.cb_IR_labelPeaks->setEnabled(true);
+    }
+    if (!ui.cb_IR_labelPeaks->isEnabled()) {
+      ui.cb_IR_labelPeaks->setChecked(false);
+    }
+    // NMR spectra checks:
+    if (ui.spin_NMR_FWHM->value() != 0.0 && ui.cb_NMR_labelPeaks->isEnabled()) {
+      ui.cb_NMR_labelPeaks->setEnabled(false);
+      ui.cb_NMR_labelPeaks->setChecked(false);
+    }
+    if (ui.spin_NMR_FWHM->value() == 0.0 && !ui.cb_NMR_labelPeaks->isEnabled()) {
+      ui.cb_NMR_labelPeaks->setEnabled(true);
+    }
+    if (!ui.cb_NMR_labelPeaks->isEnabled()) {
+      ui.cb_NMR_labelPeaks->setChecked(false);
     }
 
     // Update plot object and display changes
@@ -989,12 +1000,12 @@ namespace Avogadro {
       double shift = m_NMRshifts.at(i) - m_NMR_ref;
       //      double intensity = m_NMRintensities.at(i);
       plotObject->addPoint ( shift, 0);
-      //      if (ui.cb_NMR_labelPeaks->isChecked()) {
-      //	plotObject->addPoint( shift, 1.0, QString::number(shift, 'f', 1));
-      //      }
-      //      else {
-      plotObject->addPoint( shift, 1.0 /* intensity */ );
-      //      }
+            if (ui.cb_NMR_labelPeaks->isChecked()) {
+              plotObject->addPoint( shift, 1.0 /* intensity */, QString::number(shift, 'f', 2));
+            }
+            else {
+              plotObject->addPoint( shift, 1.0 /* intensity */ );
+            }
       plotObject->addPoint( shift, 0 );
     }
     return;
@@ -1013,7 +1024,13 @@ namespace Avogadro {
     else {
       double min = tmp.last() - m_NMR_ref;
       double max = tmp.first() - m_NMR_ref;
-      double ext = ( min - max ) * 0.1 + FWHM;
+      double ext;
+      if (fabs(min-max) < 0.1) { // If the spread of the peaks is less than 0.1, the nuclei are likely equivalent, so zoom out a bit.
+        ext = 5;
+      }
+      else {
+        ext = ( min - max ) * 0.1 + FWHM;
+      }
       ui.plot->setDefaultLimits( min + ext, max - ext, 0.0, 1.0 );
     }
   }

@@ -744,7 +744,7 @@
          <item row="0" column="1">
           <widget class="QComboBox" name="combo_NMR_type"/>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="3">
           <spacer name="horizontalSpacer_6">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -757,7 +757,7 @@
            </property>
           </spacer>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0">
           <spacer name="verticalSpacer_2">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -796,7 +796,7 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="6" column="0">
           <widget class="QPushButton" name="push_NMR_resetAxes">
            <property name="text">
             <string>Reset &amp;Plot Axes</string>
@@ -823,6 +823,13 @@
            </property>
            <property name="singleStep">
             <double>0.010000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="cb_NMR_labelPeaks">
+           <property name="text">
+            <string>Label Peaks:</string>
            </property>
           </widget>
          </item>
@@ -897,7 +904,6 @@ Scroll wheel: Zoom to cursor</string>
  <tabstops>
   <tabstop>combo_spectra</tabstop>
   <tabstop>push_customize</tabstop>
-  <tabstop>tab_widget</tabstop>
   <tabstop>list_schemes</tabstop>
   <tabstop>push_newScheme</tabstop>
   <tabstop>push_removeScheme</tabstop>
