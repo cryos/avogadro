@@ -58,7 +58,8 @@ namespace Avogadro {
     void changeCalculatedSpectraColor();
     void changeImportedSpectraColor();
     void changeFont();
-    void importSpectra();
+    void loadSpectra(); 	// Used to load calculated data from an external source
+    void importSpectra(); 	// Used to load experimental spectra
     void updatePlot();
     void toggleImported(bool state);
     void toggleCalculated(bool state);
@@ -104,7 +105,6 @@ namespace Avogadro {
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
 
-    OpenBabel::OBVibrationData *m_vibrations;
     std::vector<double> m_IRwavenumbers;
     std::vector<double> m_IRtransmittances;
     std::vector<double> m_imported_IRwavenumbers;

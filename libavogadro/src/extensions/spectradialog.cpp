@@ -104,10 +104,14 @@ namespace Avogadro {
             this, SLOT(importSpectra()));
     connect(ui.push_export, SIGNAL(clicked()),
             this, SLOT(exportSpectra()));
+
+    // Misc. connections
     connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateCurrentSpectra(QString)));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
+    connect(ui.push_loadSpectra, SIGNAL(clicked()),
+            this, SLOT(loadSpectra()));
 
     readSettings();
   }
@@ -141,8 +145,8 @@ namespace Avogadro {
     ui.tab_widget->addTab(ui.tab_imageExport, tr("E&xport Image"));
 
     // Check for IR data
-    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
-    if (m_vibrations) {
+    OpenBabel::OBVibrationData *vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
+    if (vibrations) {
       // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
       ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
@@ -160,8 +164,8 @@ namespace Avogadro {
               this, SLOT(updateYAxis_IR(QString)));
 
       // OK, we have valid vibrations, so store them for later
-      m_IRwavenumbers = m_vibrations->GetFrequencies();
-      vector<double> intensities = m_vibrations->GetIntensities();
+      m_IRwavenumbers = vibrations->GetFrequencies();
+      vector<double> intensities = vibrations->GetIntensities();
 
       // Case where there are no intensities, set all intensities to an arbitrary value, i.e. 1.0
       if (m_IRwavenumbers.size() > 0 && intensities.size() == 0) {
@@ -259,7 +263,7 @@ namespace Avogadro {
     } else { qDebug() << "No NMR data found..."; }
 
     // Change this when other spectra are added!!
-    if (!m_vibrations && !hasNMR) { // Actions if there are no spectra loaded
+    if (!vibrations && !hasNMR) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -275,6 +279,9 @@ namespace Avogadro {
     ui.tab_widget->setCurrentIndex(0);
     m_spectra = ui.combo_spectra->currentText();
     regenerateCalculatedSpectra();
+
+    // Clean up
+    delete vibrations;
   }
 
   void SpectraDialog::writeSettings() const {
@@ -513,7 +520,6 @@ namespace Avogadro {
 
   void SpectraDialog::updateCurrentSpectra(QString text)
   {
-    if (m_spectra == text) return;
     m_spectra = text;
 
     // Set up GUI changes (plot labels, etc) in this ladder:
@@ -564,7 +570,6 @@ namespace Avogadro {
       out << "Shift\tYvalue\n";
     }
 
-
     // Dump spectra
     for(int i = 0; i< m_calculatedSpectra->points().size(); i++) {
       out << format.arg(m_calculatedSpectra->points().at(i)->x(), 0, 'g').arg(m_calculatedSpectra->points().at(i)->y(), 0, 'g');
@@ -596,7 +601,7 @@ namespace Avogadro {
     // Open file
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-      qWarning() << "Error opening file \"" << filename << "\" for writing.";
+      qWarning() << "Error opening file \"" << filename << "\".";
       return;
     }
 
@@ -694,6 +699,136 @@ namespace Avogadro {
 
     // Update plot and plot objects
     getImportedSpectra(m_importedSpectra);
+    updatePlot();
+  }
+
+  void SpectraDialog::loadSpectra()
+  {
+    // Setup filename
+    QFileInfo defaultFile(m_molecule->fileName());
+    QString defaultPath = defaultFile.canonicalPath();
+    if (defaultPath.isEmpty()) {
+      defaultPath = QDir::homePath();
+    }
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QStringList types;
+    // Define data types here. Make sure to include "IR" for IR data and "NMR" for NMR data, etc. 
+    // Put the default file extension in (*.ext), i.e. (.out)
+    types
+      << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)'. Probably won't need to translate this anyway." );
+    bool ok;
+    QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
+                                         types, 0, false, &ok);
+    if (!ok) return;
+    
+    QStringList filters;
+    filters
+      << type
+      << tr("All Files") + " (* *.*)";
+
+    QString filename 	= QFileDialog::getOpenFileName(this, tr("Load Spectral Data"),
+                                                       defaultFileName, filters.join(";;"));
+
+    // Open file
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+      qWarning() << "Error opening file \"" << filename << "\".";
+      return;
+    }
+
+    // get file extension
+    QStringList tmp 	= filename.split(".");
+    QString ext 	= tmp.at(tmp.size()-1);
+
+    // Prepare stream
+    QTextStream in(&file);
+
+    if (type.contains("IR")) { // We have IR data loaded
+      // Set m_spectra
+      m_spectra = "Infrared";
+
+      // Clear out any old IR data
+      m_IRwavenumbers.clear();
+      m_IRtransmittances.clear();
+      
+      // Set up some info by data type:
+      QString delim;
+      QString cue; // Skip to this line before reading data in
+      int wavenumber_idx;
+      int intensity_idx;
+      if (type.contains("PWscf")) { // Plane wave self consistant field output
+        delim 	= "\\s+"; // finds all whitespace
+        cue	= "#  mode";
+        wavenumber_idx	= 2;
+        intensity_idx	= 4;
+      }
+
+      // Cue file
+      while (!in.atEnd())
+        if (in.readLine().contains(cue)) break;
+
+      // Iterate through file
+      int min = (wavenumber_idx < intensity_idx) ? wavenumber_idx : intensity_idx;
+      QList<double> intensities;
+      while (!in.atEnd()) {
+        QString line = in.readLine();
+        if (line.trimmed().startsWith("#")) continue; 	//discard comments
+        QStringList data = line.split(QRegExp(delim));
+        if (data.size() < min) {
+          qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+                     << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
+          continue;
+        }
+        if (data.at(wavenumber_idx).toDouble() && data.at(intensity_idx).toDouble()) { // Check for valid conversions and non-zero data
+          m_IRwavenumbers.push_back(data.at(wavenumber_idx).toDouble());
+          intensities.push_back(data.at(intensity_idx).toDouble());
+        }
+        else {
+          qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
+          continue;
+        }
+      }
+
+      // Convert intensities --> transmittances
+      double maxIntensity=0;
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        if (intensities.at(i) >= maxIntensity) {
+          maxIntensity = intensities.at(i);
+        }
+      }
+      for (unsigned int i = 0; i < intensities.size(); i++) {
+        double t = intensities.at(i);
+        t = t / maxIntensity; 	// Normalize
+        t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+        t = 1.0 - t; 		// Simulate transmittance
+        t *= 100.0;		// Convert to percent
+        m_IRtransmittances.push_back(t);
+      }
+      // Setup GUI
+      ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
+      ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+
+      // Setup signals/slots
+      connect(this, SIGNAL(scaleUpdated_IR()),
+              this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
+              this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.spin_IR_scale, SIGNAL(valueChanged(double)),
+              this, SLOT(setScale_IR(double)));
+      connect(ui.spin_IR_FWHM, SIGNAL(valueChanged(double)),
+              this, SLOT(regenerateCalculatedSpectra()));
+      connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
+              this, SLOT(updateYAxis_IR(QString)));
+    }
+
+    // Non-spectra-specific GUI changes
+    ui.push_colorCalculated->setEnabled(true);
+    ui.cb_calculate->setEnabled(true);
+    ui.cb_calculate->setChecked(true);
+
+    // Update plot and plot objects
+    getCalculatedSpectra(m_calculatedSpectra);
+    updateCurrentSpectra(m_spectra);
     updatePlot();
   }
 
