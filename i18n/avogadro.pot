@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro \n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-04 13:47-0400\n"
+"POT-Creation-Date: 2009-05-07 12:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -554,7 +554,7 @@ msgid "User Selections"
 msgstr ""
 
 #: avogadro/src/projecttreeeditor.cpp:123
-#: libavogadro/src/extensions/spectradialog.cpp:652
+#: libavogadro/src/extensions/spectradialog.cpp:754
 msgid "Error"
 msgstr ""
 
@@ -1141,7 +1141,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: libavogadro/src/engine.cpp:62
+#: libavogadro/src/engine.cpp:64
 msgid "Engines"
 msgstr ""
 
@@ -1153,7 +1153,7 @@ msgstr ""
 msgid "Renders the x, y, and z axes at the origin"
 msgstr ""
 
-#: libavogadro/src/engines/bsdyengine.h:41 libavogadro/src/glwidget.cpp:2124
+#: libavogadro/src/engines/bsdyengine.h:41 libavogadro/src/glwidget.cpp:2112
 msgid "Ball and Stick"
 msgstr ""
 
@@ -1418,14 +1418,14 @@ msgstr ""
 
 #: avogadro/src/mainwindow.ui:46
 #: libavogadro/src/extensions/fileimportextension.cpp:75
-#: libavogadro/src/extensions/networkfetchextension.cpp:65
+#: libavogadro/src/extensions/networkfetchextension.cpp:70
 #: libavogadro/src/extensions/povrayextension.cpp:64 rc.cpp:50
 msgid "&File"
 msgstr ""
 
 #: avogadro/src/mainwindow.ui:62
 #: libavogadro/src/extensions/fileimportextension.cpp:75
-#: libavogadro/src/extensions/networkfetchextension.cpp:65 rc.cpp:56
+#: libavogadro/src/extensions/networkfetchextension.cpp:70 rc.cpp:56
 msgid "Import"
 msgstr ""
 
@@ -1947,33 +1947,42 @@ msgstr ""
 msgid "Fetch from PDB..."
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:75
+#: libavogadro/src/extensions/networkfetchextension.cpp:53
+msgid "Fetch from URL..."
+msgstr ""
+
+#: libavogadro/src/extensions/networkfetchextension.cpp:88
 msgid "PDB Entry"
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:76
+#: libavogadro/src/extensions/networkfetchextension.cpp:89
 msgid "PDB entry to download."
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:117
-#: libavogadro/src/extensions/networkfetchextension.cpp:128
-msgid "PDB Download Failed"
+#: libavogadro/src/extensions/networkfetchextension.cpp:103
+msgid "URL"
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:118
+#: libavogadro/src/extensions/networkfetchextension.cpp:104
+msgid "URL of molecule to download."
+msgstr ""
+
+#: libavogadro/src/extensions/networkfetchextension.cpp:139
+#: libavogadro/src/extensions/networkfetchextension.cpp:150
+#: libavogadro/src/extensions/networkfetchextension.cpp:169
+msgid "Network Download Failed"
+msgstr ""
+
+#: libavogadro/src/extensions/networkfetchextension.cpp:140
 msgid "Network timeout or other error."
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:129
-msgid "Specified PDB could not be found: "
+#: libavogadro/src/extensions/networkfetchextension.cpp:151
+msgid "Specified molecule could not be found: "
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:147
-msgid "PDB Loading Failed"
-msgstr ""
-
-#: libavogadro/src/extensions/networkfetchextension.cpp:148
-msgid "Specified PDB could not be loaded: "
+#: libavogadro/src/extensions/networkfetchextension.cpp:170
+msgid "Specified molecule could not be loaded: "
 msgstr ""
 
 #: libavogadro/src/extensions/networkfetchextension.h:39
@@ -2425,166 +2434,191 @@ msgstr ""
 msgid "Load and use OpenGL 2.0 GLSL shaders"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:63
+#: libavogadro/src/extensions/spectradialog.cpp:64
 msgid "X Axis"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:64
+#: libavogadro/src/extensions/spectradialog.cpp:65
 msgid "Y Axis"
 msgstr ""
 
 #: libavogadro/src/extensions/spectradialog.ui:61
-#: libavogadro/src/extensions/spectradialog.cpp:151 rc.cpp:1720
+#: libavogadro/src/extensions/spectradialog.cpp:140 rc.cpp:1720
 msgid "&Appearance"
 msgstr ""
 
 #: libavogadro/src/extensions/spectradialog.ui:360
-#: libavogadro/src/extensions/spectradialog.cpp:152 rc.cpp:1764
+#: libavogadro/src/extensions/spectradialog.cpp:141 rc.cpp:1764
 msgid "E&xport Image"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:158
+#: libavogadro/src/extensions/spectradialog.cpp:147
 msgid "Infrared"
 msgstr ""
 
 #: libavogadro/src/extensions/spectradialog.ui:570
-#: libavogadro/src/extensions/spectradialog.cpp:159 rc.cpp:1790
+#: libavogadro/src/extensions/spectradialog.cpp:148 rc.cpp:1790
 msgid "&Infrared Spectra Settings"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:206
+#: libavogadro/src/extensions/spectradialog.cpp:169
+msgid "No intensities"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.cpp:169
+msgid ""
+"The vibration data in the molecule you have loaded does not have any "
+"intensity data. Intensities have been set to an arbitrary value for "
+"visualization."
+msgstr ""
+
+#: libavogadro/src/extensions/gamessinputdialog.ui:916
+#: libavogadro/src/extensions/spectradialog.cpp:225 rc.cpp:786
+msgid "NMR"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.ui:731
+#: libavogadro/src/extensions/spectradialog.cpp:226 rc.cpp:1806
+msgid "&NMR Spectra Settings"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.cpp:262
 msgid "No data"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:285
+#: libavogadro/src/extensions/spectradialog.cpp:354
 msgid "Dark"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:296
+#: libavogadro/src/extensions/spectradialog.cpp:365
 msgid "Light"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:307
+#: libavogadro/src/extensions/spectradialog.cpp:376
 msgid "Publication"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:318
+#: libavogadro/src/extensions/spectradialog.cpp:387
 msgid "Handdrawn"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:344
+#: libavogadro/src/extensions/spectradialog.cpp:413
 msgid "New Scheme"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:352
+#: libavogadro/src/extensions/spectradialog.cpp:421
 msgid "Confirm Scheme Removal"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:352
+#: libavogadro/src/extensions/spectradialog.cpp:421
 msgid "Really remove current scheme?"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:362
+#: libavogadro/src/extensions/spectradialog.cpp:431
 msgid "Change Scheme Name"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:363
+#: libavogadro/src/extensions/spectradialog.cpp:432
 msgid "Enter new name for current scheme:"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:451
+#: libavogadro/src/extensions/spectradialog.cpp:520
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:470
+#: libavogadro/src/extensions/spectradialog.cpp:525
+msgid "Shift (ppm)"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.cpp:544
 msgid "Export Calculated Spectrum"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:470
-#: libavogadro/src/extensions/vibrationdialog.cpp:167
+#: libavogadro/src/extensions/spectradialog.cpp:544
+#: libavogadro/src/extensions/vibrationdialog.cpp:174
 msgid "Tab Separated Values (*.tsv)"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:506
+#: libavogadro/src/extensions/spectradialog.cpp:584
 msgid "Import Spectra"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:506
+#: libavogadro/src/extensions/spectradialog.cpp:584
 msgid ""
 "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
 "jdx);;All Files (* *.*)"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:534
+#: libavogadro/src/extensions/spectradialog.cpp:616
 msgid "Spectra Import"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:534
-#: libavogadro/src/extensions/spectradialog.cpp:619
+#: libavogadro/src/extensions/spectradialog.cpp:616
+#: libavogadro/src/extensions/spectradialog.cpp:721
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:591
+#: libavogadro/src/extensions/spectradialog.cpp:693
 msgid "Portable Network Graphics"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:592
+#: libavogadro/src/extensions/spectradialog.cpp:694
 msgid "jpeg"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:593
+#: libavogadro/src/extensions/spectradialog.cpp:695
 msgid "Tagged Image File Format"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:594
+#: libavogadro/src/extensions/spectradialog.cpp:696
 msgid "Windows Bitmap"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:595
+#: libavogadro/src/extensions/spectradialog.cpp:697
 msgid "Portable Pixmap"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:596
+#: libavogadro/src/extensions/spectradialog.cpp:698
 msgid "X11 Bitmap"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:597
+#: libavogadro/src/extensions/spectradialog.cpp:699
 msgid "X11 Pixmap"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:598
+#: libavogadro/src/extensions/spectradialog.cpp:700
 msgid "All Files"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:601
+#: libavogadro/src/extensions/spectradialog.cpp:703
 msgid "Save Spectra Image"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:619
+#: libavogadro/src/extensions/spectradialog.cpp:721
 msgid "Invalid Filename"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:652
+#: libavogadro/src/extensions/spectradialog.cpp:754
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:654
+#: libavogadro/src/extensions/spectradialog.cpp:756
 msgid "Success!"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:654
+#: libavogadro/src/extensions/spectradialog.cpp:756
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.cpp:680
+#: libavogadro/src/extensions/spectradialog.cpp:782
 msgid "Customi&ze <<"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.ui:742
-#: libavogadro/src/extensions/spectradialog.cpp:684 rc.cpp:1806
+#: libavogadro/src/extensions/spectradialog.ui:844
+#: libavogadro/src/extensions/spectradialog.cpp:786 rc.cpp:1816
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2717,16 +2751,16 @@ msgid "Apply"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:115
-#: libavogadro/src/extensions/vibrationdialog.cpp:150
-#: libavogadro/src/extensions/vibrationdialog.cpp:153 rc.cpp:1870
+#: libavogadro/src/extensions/vibrationdialog.cpp:157
+#: libavogadro/src/extensions/vibrationdialog.cpp:160 rc.cpp:1880
 msgid "Start &Animation"
 msgstr ""
 
-#: libavogadro/src/extensions/vibrationdialog.cpp:151
+#: libavogadro/src/extensions/vibrationdialog.cpp:158
 msgid "Stop &Animation"
 msgstr ""
 
-#: libavogadro/src/extensions/vibrationdialog.cpp:167
+#: libavogadro/src/extensions/vibrationdialog.cpp:174
 msgid "Export Vibrational Data"
 msgstr ""
 
@@ -3150,7 +3184,7 @@ msgstr ""
 
 #: libavogadro/src/tools/zmatrixdialog.ui:45
 #: libavogadro/src/tools/drawcommand.cpp:274
-#: libavogadro/src/tools/drawcommand.cpp:288 rc.cpp:1890
+#: libavogadro/src/tools/drawcommand.cpp:288 rc.cpp:1900
 msgid "Add Atom"
 msgstr ""
 
@@ -3178,7 +3212,7 @@ msgstr ""
 
 #: libavogadro/src/tools/insertfragmentdialog.ui:99
 #: libavogadro/src/tools/drawcommand.cpp:980
-#: libavogadro/src/tools/insertfragmentdialog.cpp:224 rc.cpp:1882
+#: libavogadro/src/tools/insertfragmentdialog.cpp:224 rc.cpp:1892
 msgid "Insert Fragment"
 msgstr ""
 
@@ -4251,7 +4285,7 @@ msgstr ""
 #: libavogadro/src/extensions/conformersearchdialog.ui:19
 #: libavogadro/src/extensions/constraintsdialog.ui:132
 #: libavogadro/src/extensions/vibrationdialog.ui:58
-#: rc.cpp:472 rc.cpp:516 rc.cpp:1864
+#: rc.cpp:472 rc.cpp:516 rc.cpp:1874
 msgid "Options"
 msgstr ""
 
@@ -4991,11 +5025,6 @@ msgstr ""
 #: libavogadro/src/extensions/gamessinputdialog.ui:911
 #: rc.cpp:784
 msgid "Raman Intensities"
-msgstr ""
-
-#: libavogadro/src/extensions/gamessinputdialog.ui:916
-#: rc.cpp:786
-msgid "NMR"
 msgstr ""
 
 #: libavogadro/src/extensions/gamessinputdialog.ui:921
@@ -6675,8 +6704,28 @@ msgstr ""
 msgid "Sc&ale:"
 msgstr ""
 
-#: libavogadro/src/extensions/spectradialog.ui:775
+#: libavogadro/src/extensions/spectradialog.ui:737
 #: rc.cpp:1808
+msgid "NMR &Type:"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.ui:776
+#: rc.cpp:1810
+msgid "&Reference:"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.ui:802
+#: rc.cpp:1812
+msgid "Reset &Plot Axes"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.ui:809
+#: rc.cpp:1814
+msgid "Gaussian &Width:"
+msgstr ""
+
+#: libavogadro/src/extensions/spectradialog.ui:877
+#: rc.cpp:1818
 msgid ""
 "Controls:\n"
 "Double left click: Restore default axis limits\n"
@@ -6686,175 +6735,175 @@ msgid ""
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:14
-#: rc.cpp:1814
+#: rc.cpp:1824
 msgid "Super Cell Parameters"
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:22
-#: rc.cpp:1816
+#: rc.cpp:1826
 msgid "Super Cell Options"
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:28
 #: libavogadro/src/extensions/unitcellparamdialog.ui:34
-#: rc.cpp:1818 rc.cpp:1830
+#: rc.cpp:1828 rc.cpp:1840
 msgid "A repeat:"
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:42
 #: libavogadro/src/extensions/unitcellparamdialog.ui:48
-#: rc.cpp:1820 rc.cpp:1832
+#: rc.cpp:1830 rc.cpp:1842
 msgid "B repeat:"
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:56
 #: libavogadro/src/extensions/unitcellparamdialog.ui:62
-#: rc.cpp:1822 rc.cpp:1834
+#: rc.cpp:1832 rc.cpp:1844
 msgid "C repeat:"
 msgstr ""
 
 #: libavogadro/src/extensions/supercelldialog.ui:88
-#: rc.cpp:1824
+#: rc.cpp:1834
 msgid "Generate Cell"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:13
 #: libavogadro/src/extensions/unitcellparamdialog.ui:110
-#: rc.cpp:1826 rc.cpp:1840
+#: rc.cpp:1836 rc.cpp:1850
 msgid "Unit Cell Parameters"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:28
-#: rc.cpp:1828
+#: rc.cpp:1838
 msgid "Unit Cell Display Options"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:81
-#: rc.cpp:1836
+#: rc.cpp:1846
 msgid "Delete Unit Cell"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:101
-#: rc.cpp:1838
+#: rc.cpp:1848
 msgid "Fill Unit Cell"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:131
-#: rc.cpp:1842
+#: rc.cpp:1852
 msgid "Axes (Å)"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:151
-#: rc.cpp:1844
+#: rc.cpp:1854
 msgid "Angles (°)"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:175
-#: rc.cpp:1846
+#: rc.cpp:1856
 msgid "A:"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:192
-#: rc.cpp:1848
+#: rc.cpp:1858
 msgid "alpha:"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:212
-#: rc.cpp:1850
+#: rc.cpp:1860
 msgid "B:"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:229
-#: rc.cpp:1852
+#: rc.cpp:1862
 msgid "beta:"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:249
-#: rc.cpp:1854
+#: rc.cpp:1864
 msgid "C:"
 msgstr ""
 
 #: libavogadro/src/extensions/unitcellparamdialog.ui:266
-#: rc.cpp:1856
+#: rc.cpp:1866
 msgid "gamma:"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:14
-#: rc.cpp:1858
+#: rc.cpp:1868
 msgid "Molecular Vibrations"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:45
-#: rc.cpp:1860
+#: rc.cpp:1870
 msgid "Frequency (cm-1)"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:50
-#: rc.cpp:1862
+#: rc.cpp:1872
 msgid "Intensity (a.u.)"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:66
-#: rc.cpp:1866
+#: rc.cpp:1876
 msgid "&Scale:"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:97
-#: rc.cpp:1868
+#: rc.cpp:1878
 msgid "Display Force &Vectors"
 msgstr ""
 
 #: libavogadro/src/extensions/vibrationdialog.ui:122
-#: rc.cpp:1872
+#: rc.cpp:1882
 msgid "E&xport..."
 msgstr ""
 
 #: libavogadro/src/tools/insertfragmentdialog.ui:13
-#: rc.cpp:1874
+#: rc.cpp:1884
 msgid "Insert Fragment..."
 msgstr ""
 
 #: libavogadro/src/tools/insertfragmentdialog.ui:24
-#: rc.cpp:1876
+#: rc.cpp:1886
 msgid "Add Directory"
 msgstr ""
 
 #: libavogadro/src/tools/insertfragmentdialog.ui:31
-#: rc.cpp:1878
+#: rc.cpp:1888
 msgid "Reset List"
 msgstr ""
 
 #: libavogadro/src/tools/insertfragmentdialog.ui:60
-#: rc.cpp:1880
+#: rc.cpp:1890
 msgid "Generate from SMILES:"
 msgstr ""
 
 #: libavogadro/src/tools/pythonsettingswidget.ui:25
-#: rc.cpp:1884
+#: rc.cpp:1894
 msgid "Python Settings"
 msgstr ""
 
 #: libavogadro/src/tools/zmatrixdialog.ui:14
-#: rc.cpp:1886
+#: rc.cpp:1896
 msgid "Z Matrix Editor"
 msgstr ""
 
 #: libavogadro/src/tools/zmatrixdialog.ui:25
-#: rc.cpp:1888
+#: rc.cpp:1898
 msgid "Import Selected Atoms"
 msgstr ""
 
 #: libavogadro/src/tools/zmatrixdialog.ui:52
-#: rc.cpp:1892
+#: rc.cpp:1902
 msgid "Remove Atom"
 msgstr ""
 
-#: rc.cpp:1893
+#: rc.cpp:1903
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: rc.cpp:1894
+#: rc.cpp:1904
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
