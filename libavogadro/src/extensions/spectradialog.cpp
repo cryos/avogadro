@@ -710,12 +710,12 @@ namespace Avogadro {
     if (defaultPath.isEmpty()) {
       defaultPath = QDir::homePath();
     }
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName();
     QStringList types;
     // Define data types here. Make sure to include "IR" for IR data and "NMR" for NMR data, etc. 
     // Put the default file extension in (*.ext), i.e. (.out)
     types
-      << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)'. Probably won't need to translate this anyway." );
+      << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" );
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
