@@ -21,6 +21,7 @@
  ***********************************************************************/
 
 #include "gamessinputdialog.h"
+#include "gamesshighlighter.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -44,6 +45,8 @@ namespace Avogadro {
     ui.setupUi(this);
     ui.navigationTree->expandAll();
     ui.navigationTree->headerItem()->setHidden(true);
+
+    m_highlighter = new GamessHighlighter(ui.previewText->document());
 
     connectModes();
     connectBasic();

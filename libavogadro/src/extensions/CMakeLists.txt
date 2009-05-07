@@ -19,6 +19,7 @@ set(LINK_LIBS "avogadro-lib")
 set(gamessextension_SRCS gamessextension.cpp
   gamessinputdialog.cpp
   gamessinputdata.cpp
+  gamesshighlighter.cpp
   gamessefpmatchdialog.cpp)
 avogadro_plugin(gamessextension
   "${gamessextension_SRCS}"

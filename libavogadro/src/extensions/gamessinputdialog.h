@@ -31,6 +31,8 @@
 
 namespace Avogadro
 {
+  class GamessHighlighter;
+
   class GamessInputDialog : public QDialog
   {
       Q_OBJECT
@@ -67,6 +69,7 @@ namespace Avogadro
     private:
       Ui::GamessInputDialog ui;
       GamessInputData *m_inputData;
+      GamessHighlighter *m_highlighter;
 
       bool m_advancedChanged;
 

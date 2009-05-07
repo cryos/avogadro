@@ -140,6 +140,12 @@ namespace Avogadro {
       virtual ~Engine();
 
       /**
+       * Virtual unique identifier - needing for saving and loading state.
+       * \note This should not be manually overridden - the Engine macro does it.
+       */
+      virtual QString identifier() const = 0;
+
+      /**
        * Plugin Type
        */
       Plugin::Type type() const;

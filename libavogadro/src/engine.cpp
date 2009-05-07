@@ -31,6 +31,8 @@
 #include <avogadro/bond.h>
 #include <avogadro/color.h>
 
+#include <QDebug>
+
 namespace Avogadro {
 
   class EnginePrivate
@@ -274,6 +276,7 @@ namespace Avogadro {
 
   void Engine::writeSettings(QSettings &settings) const
   {
+    settings.setValue("engineID", identifier());
     settings.setValue("enabled", isEnabled());
     if (!m_alias.isEmpty())
       settings.setValue("alias", alias());
@@ -284,8 +287,12 @@ namespace Avogadro {
   void Engine::readSettings(QSettings &settings)
   {
     setEnabled(settings.value("enabled", false).toBool());
-    setAlias(settings.value("alias", QString()).toString());
-    setDescription(settings.value("description", QString()).toString());
+    QString engineID = settings.value("engineID", QString()).toString();
+    QString aliasSetting = settings.value("alias", QString()).toString();
+    if (engineID == identifier()) {
+      setAlias(settings.value("alias", QString()).toString());
+      setDescription(settings.value("description", QString()).toString());
+    }
   }
 
   void Engine::setMolecule(const Molecule *mol)
