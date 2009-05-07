@@ -45,6 +45,9 @@ namespace Avogadro {
    */
   class A_EXPORT ElementTranslator : public QObject
   {
+
+    Q_OBJECT
+
   public:
     ElementTranslator();
     ~ElementTranslator();

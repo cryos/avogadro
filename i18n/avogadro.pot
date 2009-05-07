@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 0.9.3\n"
+"Project-Id-Version: Avogadro \n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-01 12:49-0400\n"
+"POT-Creation-Date: 2009-05-04 13:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1618,46 +1618,46 @@ msgstr ""
 #: libavogadro/src/extensions/mopacinputdialog.ui:40
 #: libavogadro/src/extensions/nwcheminputdialog.ui:41
 #: libavogadro/src/extensions/qcheminputdialog.ui:41
-#: libavogadro/src/extensions/gamessinputdialog.cpp:616 rc.cpp:910 rc.cpp:1186
+#: libavogadro/src/extensions/gamessinputdialog.cpp:619 rc.cpp:910 rc.cpp:1186
 #: rc.cpp:1300 rc.cpp:1370 rc.cpp:1430 rc.cpp:1618
 msgid "Title"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1493
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1496
 msgid "Advanced Settings Changed"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1494
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1497
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1515
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1518
 msgid "Advanced Settings Reset"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1516
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1519
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1528
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1531
 msgid "Basic Settings Reset"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1529
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1532
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1601
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1604
 msgid "Export Input Deck"
 msgstr ""
 
-#: libavogadro/src/extensions/gamessinputdialog.cpp:1602
+#: libavogadro/src/extensions/gamessinputdialog.cpp:1605
 msgid "GAMESS Input Deck (*.inp)"
 msgstr ""
 
@@ -1711,7 +1711,7 @@ msgstr ""
 #: libavogadro/src/extensions/gaussianinputdialog.cpp:223
 #: libavogadro/src/extensions/molproinputdialog.cpp:178
 #: libavogadro/src/extensions/mopacinputdialog.cpp:262
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:179
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:185
 #: libavogadro/src/extensions/qcheminputdialog.cpp:178 rc.cpp:1414
 msgid "Show Preview"
 msgstr ""
@@ -1723,7 +1723,7 @@ msgstr ""
 #: libavogadro/src/extensions/gaussianinputdialog.cpp:227
 #: libavogadro/src/extensions/molproinputdialog.cpp:182
 #: libavogadro/src/extensions/mopacinputdialog.cpp:267
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:183
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:189
 #: libavogadro/src/extensions/qcheminputdialog.cpp:182 rc.cpp:1246 rc.cpp:1356
 #: rc.cpp:1482 rc.cpp:1678
 msgid "Hide Preview"
@@ -1955,19 +1955,24 @@ msgstr ""
 msgid "PDB entry to download."
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:119
+#: libavogadro/src/extensions/networkfetchextension.cpp:117
+#: libavogadro/src/extensions/networkfetchextension.cpp:128
 msgid "PDB Download Failed"
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:120
+#: libavogadro/src/extensions/networkfetchextension.cpp:118
+msgid "Network timeout or other error."
+msgstr ""
+
+#: libavogadro/src/extensions/networkfetchextension.cpp:129
 msgid "Specified PDB could not be found: "
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:138
+#: libavogadro/src/extensions/networkfetchextension.cpp:147
 msgid "PDB Loading Failed"
 msgstr ""
 
-#: libavogadro/src/extensions/networkfetchextension.cpp:139
+#: libavogadro/src/extensions/networkfetchextension.cpp:148
 msgid "Specified PDB could not be loaded: "
 msgstr ""
 
@@ -1979,21 +1984,21 @@ msgstr ""
 msgid "Fetch molecule files over the network."
 msgstr ""
 
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:115
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
 msgstr ""
 
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:116
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:122
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
 
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:163
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
 msgstr ""
 
-#: libavogadro/src/extensions/nwcheminputdialog.cpp:164
+#: libavogadro/src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
 msgstr ""
 

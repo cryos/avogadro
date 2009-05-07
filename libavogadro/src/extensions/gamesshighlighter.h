@@ -29,6 +29,7 @@
 
 #include <QTextCharFormat>
 #include <QRegExp>
+#include <QStringList>
 
 class QTextDocument;
 
@@ -51,12 +52,17 @@ namespace Avogadro {
     };
     QVector<HighlightingRule> m_highlightingRules;
 
+    QStringList m_keywords;
+
     QRegExp m_commentStartExpression;
     QRegExp m_commentEndExpression;
 
     QTextCharFormat m_keywordFormat;
     QTextCharFormat m_numberFormat;
     QTextCharFormat m_singleLineCommentFormat;
+    QTextCharFormat m_inDataBlockFormat;
+    QTextCharFormat m_errorFormat;
+
   };
 
 } // End namespace Avogadro
