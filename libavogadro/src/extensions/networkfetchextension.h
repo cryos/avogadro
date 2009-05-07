@@ -84,7 +84,7 @@ namespace Avogadro
     QList<QAction *> m_actions;
     Molecule *m_molecule;
     QNetworkAccessManager *m_network;
-    QString *m_pdbName;
+    QString *m_moleculeName;
 
   private slots:
     void replyFinished(QNetworkReply*);
