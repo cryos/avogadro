@@ -279,9 +279,6 @@ namespace Avogadro {
     ui.tab_widget->setCurrentIndex(0);
     m_spectra = ui.combo_spectra->currentText();
     regenerateCalculatedSpectra();
-
-    // Clean up
-    delete vibrations;
   }
 
   void SpectraDialog::writeSettings() const {
