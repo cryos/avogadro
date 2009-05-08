@@ -47,7 +47,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Intensity (a.u.)</string>
+       <string>Intensity (km/mol)</string>
       </property>
      </column>
     </widget>
