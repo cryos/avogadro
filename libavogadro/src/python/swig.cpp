@@ -155,9 +155,14 @@ void PySwigObject_dealloc(PyObject *v)
   PySwigObject *sobj = (PySwigObject *) v;
   PyObject *next = sobj->next;
   if (sobj->own == SWIG_POINTER_OWN) {
-    if (sobj->ptr)
-      delete sobj->ptr;
-    sobj->ptr = 0;
+    if (sobj->ptr) {
+      // for now, we only handle OBMol* objects
+      if (!strcmp(sobj->ty->str, "OpenBabel::OBMol *")) {
+        OpenBabel::OBMol *mol = static_cast<OpenBabel::OBMol*>(sobj->ptr);
+        delete mol;
+      }
+      sobj->ptr = 0;
+    }
     /*
     swig_type_info *ty = sobj->ty;
     PySwigClientData *data = ty ? (PySwigClientData *) ty->clientdata : 0;
