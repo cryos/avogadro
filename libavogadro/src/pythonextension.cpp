@@ -53,6 +53,7 @@ namespace Avogadro
       PythonScript          *script;
       boost::python::object  instance;
       QDockWidget           *dockWidget;
+      QString                identifier;
   };
 
   PythonExtension::PythonExtension(QObject *parent, const QString &filename) :
@@ -72,18 +73,7 @@ namespace Avogadro
 
   QString PythonExtension::identifier() const
   {
-    if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
-      return "Unknown Python Extension";
-
-    try {
-       prepareToCatchError();
-       const char *name = extract<const char*>(d->instance.attr("identifier")());
-       return QString(name);
-    } catch(error_already_set const &) {
-       catchError();
-    }
-
-    return "Unknown Python Extension";
+    return d->identifier;
   }
 
   QString PythonExtension::name() const
@@ -314,6 +304,7 @@ namespace Avogadro
     d->interpreter.addSearchPath(info.canonicalPath());
 
     PythonScript *script = new PythonScript(filename);
+    d->identifier = script->identifier();
 
     if (script->module()) {
       // make sure there is an Extension class defined
