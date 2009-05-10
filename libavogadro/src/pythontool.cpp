@@ -59,6 +59,7 @@ namespace Avogadro {
       PythonScript          *script;
       boost::python::object  instance;
       QWidget               *settingsWidget;
+      QString                identifier;
   };
 
   PythonTool::PythonTool(QObject *parent, const QString &filename) : Tool(parent), d(new PythonToolPrivate)
@@ -91,17 +92,7 @@ namespace Avogadro {
 
   QString PythonTool::identifier() const
   {
-    if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
-      return "Python Tool";
-
-    try {
-      prepareToCatchError();
-      const char *name = extract<const char*>(d->instance.attr("identifier")());
-      return QString(name);
-    } catch(error_already_set const &) {
-      catchError();
-      return "Python Tool";
-    }
+    return d->identifier;
   }
 
   QString PythonTool::name() const
@@ -298,6 +289,7 @@ namespace Avogadro {
     d->interpreter.addSearchPath(info.canonicalPath());
 
     PythonScript *script = new PythonScript(filename);
+    d->identifier = script->identifier();
 
     if(script->module()) {
       // make sure there is a Tool class defined

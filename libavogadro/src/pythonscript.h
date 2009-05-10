@@ -47,8 +47,24 @@ namespace Avogadro {
       PythonScript(const QString &fileName);
       ~PythonScript();
 
+      /**
+       * Get the module name.
+       */
       QString moduleName() const;
+      /**
+       * Get the python module object.
+       */
       boost::python::object module() const;
+      /**
+       * Get a QFile object for the script file.
+       */
+      const QString& fileName() const;
+      /**
+       * Get the identifier for this script. This is the Sha1 hash of the 
+       * script's contents.
+       */
+      QString identifier() const;
+
 
     private:
       QString m_moduleName;
