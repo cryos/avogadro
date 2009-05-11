@@ -30,7 +30,7 @@
 
 #include "glwidget.h"
 #include "camera.h"
-#include "glpainter.h"
+#include "glpainter_p.h"
 
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>

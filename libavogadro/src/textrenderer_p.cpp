@@ -23,7 +23,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "textrenderer.h"
+#include "textrenderer_p.h"
 
 #include "glwidget.h"
 #include "camera.h"

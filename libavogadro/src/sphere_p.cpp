@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "sphere.h"
+#include "sphere_p.h"
 
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>

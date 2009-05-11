@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "pythonengine.h"
+#include "pythonengine_p.h"
 #include "pythoninterpreter.h"
 #include "pythonscript.h"
 
@@ -293,4 +293,4 @@ namespace Avogadro {
 
 }
 
-#include "pythonengine.moc"
+#include "pythonengine_p.moc"

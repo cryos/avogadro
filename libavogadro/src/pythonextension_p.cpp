@@ -23,7 +23,7 @@
   02110-1301, USA.
  ***********************************************************************/
 
-#include "pythonextension.h"
+#include "pythonextension_p.h"
 #include "pythoninterpreter.h"
 #include "pythonscript.h"
 
@@ -348,4 +348,4 @@ namespace Avogadro
 
 }
 
-#include "pythonextension.moc"
+#include "pythonextension_p.moc"

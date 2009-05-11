@@ -28,9 +28,9 @@
 #include "config.h"
 
 #ifdef ENABLE_PYTHON
-  #include "pythontool.h"
-  #include "pythonengine.h"
-  #include "pythonextension.h"
+  #include "pythontool_p.h"
+  #include "pythonengine_p.h"
+  #include "pythonextension_p.h"
 #endif
 
 #include <avogadro/engine.h>
