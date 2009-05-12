@@ -2139,7 +2139,7 @@ namespace Avogadro
 
   void MainWindow::setupProjectTree()
   {
-    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    ProjectTreeModel *model = qobject_cast<ProjectTreeModel*>(ui.projectTreeView->model());
 
     ui.projectTreeView->setModel(new ProjectTreeModel( d->glWidget, this ));
 
@@ -2150,7 +2150,7 @@ namespace Avogadro
   void MainWindow::projectItemActivated(const QModelIndex& index)
   {
     // select the new primitives
-    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    ProjectTreeModel *model = qobject_cast<ProjectTreeModel*>(ui.projectTreeView->model());
     if (!model)
       return;
 
@@ -2460,7 +2460,7 @@ namespace Avogadro
   {
     QAction *action = qobject_cast<QAction *>( sender() );
     if ( action ) {
-      Extension *extension = dynamic_cast<Extension *>( action->parent() );
+      Extension *extension = qobject_cast<Extension *>( action->parent() );
 
       QUndoCommand *command = 0;
       command = extension->performAction( action, d->glWidget);

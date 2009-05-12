@@ -72,7 +72,7 @@ namespace Avogadro {
 
   void PluginSettings::loadValues()
   {
-    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    PluginItemModel *model = qobject_cast<PluginItemModel*>(ui.listView->model());
     if (model)
       delete model;
 
@@ -83,7 +83,7 @@ namespace Avogadro {
   
   void PluginSettings::saveValues()
   {
-    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    PluginItemModel *model = qobject_cast<PluginItemModel*>(ui.listView->model());
     if (!model)
       return;
     if (!model->changed())
