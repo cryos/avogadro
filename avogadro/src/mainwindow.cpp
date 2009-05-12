@@ -1954,7 +1954,7 @@ namespace Avogadro
 
     // use the rotation angle between the two orientations to calculate our animation time
     double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();
-    d->rotationTime = m*300;
+    d->rotationTime = int(m*300.0);
 
     if(d->rotationTime < 300 && d->deltaTrans.squaredNorm() > 1)
       d->rotationTime = 500;
@@ -2074,6 +2074,13 @@ namespace Avogadro
     connect( ui.actionCopy, SIGNAL( triggered() ), this, SLOT( copy() ) );
     connect( ui.actionPaste, SIGNAL( triggered() ), this, SLOT( paste() ) );
     connect( ui.actionClear, SIGNAL( triggered() ), this, SLOT( clear() ) );
+
+    // By default, the UI template defines backspace as the shortcut
+    // We'll add control-backspace (which was the default in prev. versions)
+    QList<QKeySequence> clearShortcuts =  ui.actionClear->shortcuts();
+    clearShortcuts << QKeySequence(tr("Ctrl+Backspace"));
+    ui.actionClear->setShortcuts(clearShortcuts);
+
     connect( ui.actionSelect_All, SIGNAL( triggered() ), this, SLOT( selectAll() ) );
     connect( ui.actionSelect_None, SIGNAL( triggered() ), this, SLOT( selectNone() ) );
 
