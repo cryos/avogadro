@@ -86,4 +86,9 @@ void ColorButton::paintEvent(QPaintEvent *)
   painter.drawRect(4,4, width()-8, height()-8);
 }
 
+bool ColorButton::event(QEvent *e)
+{
+  return QAbstractButton::event(e);
+}
+
 #include "colorbutton.moc"

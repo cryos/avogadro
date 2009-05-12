@@ -45,9 +45,9 @@
 
 class A_EXPORT ColorButton : public QAbstractButton
 {
-Q_OBJECT
+ Q_OBJECT
 
-public:
+ public:
   ColorButton(QWidget *parent = 0);
   explicit ColorButton(const QColor& initial, QWidget *parent = 0);
 
@@ -66,19 +66,25 @@ public:
    */
   QColor color() const;
 
-signals:
+ Q_SIGNALS:
   /**
    *  emit any time the color is changed, either by a user or by setColor()
    */
   void colorChanged(QColor);
 
-public slots:
+  public Q_SLOTS:
   /**
    * Call for a change in the current color
    */
   void changeColor();
 
-protected:
+ protected:
+  /**
+   * Generic event handler, currently defaults to calling parent class
+   * (included for future compatibility)
+   */
+  bool event(QEvent *e);
+
   QColor m_color; //!< The current color
 };
 

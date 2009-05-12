@@ -181,6 +181,12 @@ namespace Avogadro {
 
   protected:
     /**
+     * Generic event handler, currently defaults to calling parent class
+     * (included for future compatibility)
+     */
+    bool event(QEvent *e);
+
+    /**
      * Handles the mouse press events to change the active element.
      */
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
@@ -240,6 +246,12 @@ namespace Avogadro {
     int m_element;
 
   protected:
+    /**
+     * Generic event handler, currently defaults to calling parent class
+     * (included for future compatibility)
+     */
+    bool event(QEvent *e);
+
     /**
      * Double click event - select an element and hide the PeriodicTableView.
      */
