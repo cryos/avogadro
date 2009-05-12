@@ -76,6 +76,8 @@ namespace Avogadro {
       /*! Handle a scroll wheel (i.e., zooming in and out of the canvas)
       */
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
+
+      virtual QUndoCommand* keyPressEvent(GLWidget *widget, QKeyEvent *event);
       //@}
 
       /**

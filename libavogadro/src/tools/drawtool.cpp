@@ -555,6 +555,58 @@ namespace Avogadro {
     return 0;
   }
 
+  QUndoCommand* DrawTool::keyPressEvent(GLWidget *widget, QKeyEvent *event)
+  {
+    bool arrowKey = false;
+
+    switch (event->key()) {
+      case Qt::Key_Left: // Left arrow
+      case Qt::Key_Right: // Right arrow
+      case Qt::Key_Up: // Up arrow
+      case Qt::Key_Down: // Down arrow
+        arrowKey = true;
+        event->ignore(); // pass these all to the navigate tool
+        break;
+    case Qt::Key_H:
+      customElementChanged(1);
+      break;
+    case Qt::Key_B:
+      customElementChanged(5);
+      break;
+    case Qt::Key_C:
+      customElementChanged(6);
+      break;
+    case Qt::Key_N:
+      customElementChanged(7);
+      break;
+    case Qt::Key_O:
+      customElementChanged(8);
+      break;
+    case Qt::Key_F:
+      customElementChanged(9);
+      break;
+    case Qt::Key_P:
+      customElementChanged(15);
+      break;
+    case Qt::Key_S:
+      customElementChanged(16);
+      break;
+
+      default:
+        arrowKey = false; // Maybe we can set this as an element symbol
+        break;
+    }
+
+    if (arrowKey)
+      return 0;
+    
+    event->accept();
+    return 0;
+
+    // event->text();
+    // etab.GetAtomicNum(symbol);
+  }
+
   Atom *DrawTool::addAtom(GLWidget *widget, const QPoint& p)
   {
     Atom *atom = widget->molecule()->addAtom();
