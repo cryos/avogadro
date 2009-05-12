@@ -184,7 +184,7 @@ namespace Avogadro {
         }
         case 1: {// Connectivity element 0 - bonding
           int connection = value.toInt() - 1;
-          if (connection > 0 && connection < row)
+          if (connection >= 0 && connection < row)
             m_zMatrix->setBond(index.row(), connection);
           break;
         }
@@ -194,7 +194,7 @@ namespace Avogadro {
           break;
         case 3: {// Connectivity element 1
           int connection = value.toInt() - 1;
-          if (connection > 0 && connection < row)
+          if (connection >= 0 && connection < row)
             m_zMatrix->m_items[index.row()].indices[1] = connection;
           break;
         }
@@ -203,7 +203,7 @@ namespace Avogadro {
           break;
         case 5: {// Connectivity element 2
           int connection = value.toInt() - 1;
-          if (connection > 0 && connection < row)
+          if (connection >= 0 && connection < row)
             m_zMatrix->m_items[index.row()].indices[2] = connection;
           break;
         }

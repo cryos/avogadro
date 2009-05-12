@@ -62,11 +62,11 @@ namespace Avogadro {
       // general
       saveValues();
       // plugins
-      PluginSettings *plugins = dynamic_cast<PluginSettings*>(ui.stackedWidget->widget(1));
+      PluginSettings *plugins = qobject_cast<PluginSettings*>(ui.stackedWidget->widget(1));
       if (plugins)
         plugins->saveValues();
       // project tree
-      ProjectTreeEditor *editor = dynamic_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
+      ProjectTreeEditor *editor = qobject_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
       if (editor)
         editor->saveValues();
     }
@@ -77,7 +77,7 @@ namespace Avogadro {
       // plugins  
       // FIXME
       // project tree
-      ProjectTreeEditor *editor = dynamic_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
+      ProjectTreeEditor *editor = qobject_cast<ProjectTreeEditor*>(ui.stackedWidget->widget(2));
       if (editor)
         editor->loadValues();
     }

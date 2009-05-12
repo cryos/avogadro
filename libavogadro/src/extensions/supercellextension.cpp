@@ -129,10 +129,17 @@ namespace Avogadro {
     // ensure the fractional coordinate is entirely within the unit cell
     vector3 returnValue(originalCoordinate);
 
-    // So if we have -2.08, we take -2.08 - (-2) = -0.08 .... exactly what we want
-    returnValue.SetX(originalCoordinate.x() - static_cast<int>(originalCoordinate.x()));
-    returnValue.SetY(originalCoordinate.y() - static_cast<int>(originalCoordinate.y()));
-    returnValue.SetZ(originalCoordinate.z() - static_cast<int>(originalCoordinate.z()));
+    // So if we have -2.08, we take -2.08 - (-2) = -0.08 .... almost what we want
+    returnValue.SetX(originalCoordinate.x() - int(originalCoordinate.x()) );
+    returnValue.SetY(originalCoordinate.y() - int(originalCoordinate.y()) );
+    returnValue.SetZ(originalCoordinate.z() - int(originalCoordinate.z()) );
+
+    if (returnValue.x() < 0.0)
+      returnValue.SetX(returnValue.x() + 1.0);
+    if (returnValue.y() < 0.0)
+      returnValue.SetY(returnValue.y() + 1.0);
+    if (returnValue.z() < 0.0)
+      returnValue.SetZ(returnValue.z() + 1.0);
 
     return returnValue;
   }
@@ -198,6 +205,7 @@ namespace Avogadro {
           if (foundDuplicate)
             continue;
 
+          coordinates.push_back(updatedCoordinate); // make sure to check the new atom for dupes
           addAtom = mol.NewAtom();
           addAtom->Duplicate(atom);
           addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);

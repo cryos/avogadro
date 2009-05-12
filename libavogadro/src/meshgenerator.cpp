@@ -140,7 +140,7 @@ namespace Avogadro {
 
   inline float MeshGenerator::offset(float val1, float val2)
   {
-    if (val2 - val1 == 0.0f)
+    if (val2 - val1 < 1.0e-5f)
       return 0.5;
     return (m_iso - val1) / (val2 - val1);
   }

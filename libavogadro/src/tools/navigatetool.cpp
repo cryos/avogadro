@@ -33,6 +33,7 @@
 #include <avogadro/camera.h>
 
 #include <QtPlugin>
+#include <QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -237,9 +238,14 @@ namespace Avogadro {
   QUndoCommand* NavigateTool::keyPressEvent(GLWidget *widget, QKeyEvent *event)
   {
     computeReferencePoint(widget);
+
     switch (event->key()) {
       case Qt::Key_Left: // Left arrow
-        if (event->modifiers() == Qt::NoModifier)
+      case Qt::Key_H:    // Vi style left
+        // On Mac OS X, the arrow keys are considered part of the keypad!?
+        // http://doc.trolltech.com/4.4/qt.html#KeyboardModifier-enum
+        if (event->modifiers() == Qt::NoModifier
+            || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, -5, 0);
         else if (event->modifiers() & Qt::ShiftModifier)
           Navigate::tilt(widget, m_referencePoint, -5);
@@ -248,7 +254,9 @@ namespace Avogadro {
         event->accept();
         break;
       case Qt::Key_Right: // Right arrow
-        if (event->modifiers() == Qt::NoModifier)
+      case Qt::Key_L:     // Vi style right
+        if (event->modifiers() == Qt::NoModifier
+            || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 5, 0);
         else if ((event->modifiers() & Qt::ShiftModifier))
           Navigate::tilt(widget, m_referencePoint, 5);
@@ -257,7 +265,9 @@ namespace Avogadro {
         event->accept();
         break;
       case Qt::Key_Up: // Up arrow
-        if (event->modifiers() == Qt::NoModifier)
+      case Qt::Key_K:  // Vi style up
+        if (event->modifiers() == Qt::NoModifier
+            || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 0, -5);
         else if (event->modifiers() & Qt::ShiftModifier)
           Navigate::zoom(widget, m_referencePoint, -2);
@@ -266,7 +276,9 @@ namespace Avogadro {
         event->accept();
         break;
       case Qt::Key_Down: // Down arrow
-        if (event->modifiers() == Qt::NoModifier)
+      case Qt::Key_J:    // Vi style down
+        if (event->modifiers() == Qt::NoModifier
+            || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 0, 5);
         else if (event->modifiers() & Qt::ShiftModifier)
           Navigate::zoom(widget, m_referencePoint, 2);

@@ -1269,7 +1269,7 @@ namespace Avogadro {
     if (d->tool) {
       QUndoCommand *command;
       command = d->tool->keyPressEvent(this, event);
-      // If the mouse event is not accepted, pass it to the navigate tool
+      // If the key event is not accepted, pass it to the navigate tool
       if (!event->isAccepted() && m_navigateTool) {
         command = m_navigateTool->keyPressEvent(this, event);
       }

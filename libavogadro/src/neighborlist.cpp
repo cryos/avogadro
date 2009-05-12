@@ -174,9 +174,9 @@ namespace Avogadro
     }
 
     // set the dimentions
-    m_dim.x() = floor( (m_max.x() - m_min.x()) /  m_edgeLength) + 1;
-    m_dim.y() = floor( (m_max.y() - m_min.y()) /  m_edgeLength) + 1;
-    m_dim.z() = floor( (m_max.z() - m_min.z()) /  m_edgeLength) + 1;
+    m_dim.x() = int(floor( (m_max.x() - m_min.x()) /  m_edgeLength)) + 1;
+    m_dim.y() = int(floor( (m_max.y() - m_min.y()) /  m_edgeLength)) + 1;
+    m_dim.z() = int(floor( (m_max.z() - m_min.z()) /  m_edgeLength)) + 1;
     m_xyDim = m_dim.x() * m_dim.y();
 
     updateCells();

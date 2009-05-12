@@ -1908,21 +1908,8 @@ namespace Avogadro
       return;
     }
 
-    // if smooth transitions are disabled, center now and return
-    if( !d->animationsEnabled ) {
-      camera->initializeViewPoint();
-      d->glWidget->update();
-      //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
-      //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
-      return;
-    }
-
     // determine our goal matrix
     Matrix3d linearGoal;
-    //d->rotation = camera->modelview();
-    //goal.setRow(2, -d->glWidget->normalVector());
-    //goal.setRow(1, Vector3d(0,1,0));goal.row(2).unitOrthogonal());
-    //goal.setRow(0, goal.row(2).cross(goal.row(1)));
     linearGoal.row(2) = d->glWidget->normalVector();
     linearGoal.row(0) = linearGoal.row(2).unitOrthogonal();
     linearGoal.row(1) = linearGoal.row(2).cross(linearGoal.row(0));
@@ -1931,10 +1918,29 @@ namespace Avogadro
     Transform3d goal(linearGoal);
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
-    goal.translate( - d->glWidget->center() );
 
-    //cout << "Calculated Translation: " << goal.translationVector() << endl;
-    //cout << "Calculated Linear: " << goal.linearComponent() << endl << endl;
+    // Support centering on a selection
+    QList<Primitive*> selectedAtoms = d->glWidget->selectedPrimitives().subList(Primitive::AtomType);
+    if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
+      goal.translate( - d->glWidget->center() );
+    } else {
+      // Calculate the centroid of the selection
+      Vector3d selectedCenter(0.0, 0.0, 0.0);
+      foreach(Primitive *item, selectedAtoms) {
+        // Atom::pos() returns a pointer to the position
+        selectedCenter += *(static_cast<Atom*>(item)->pos());
+      }
+      selectedCenter /= double(selectedAtoms.size());
+      goal.translate( -selectedCenter);
+    }
+
+    // if smooth transitions are disabled, center now and return
+    if( !d->animationsEnabled ) {
+      //      camera->initializeViewPoint(); -- old method, doesn't handle seletions
+      camera->setModelview(goal);
+      d->glWidget->update();
+      return;
+    }
 
     d->startTrans = camera->modelview().translation();
     d->deltaTrans = goal.translation() - d->startTrans;
@@ -1947,7 +1953,7 @@ namespace Avogadro
 
     // use the rotation angle between the two orientations to calculate our animation time
     double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();
-    d->rotationTime = m*300;
+    d->rotationTime = int(m*300.0);
 
     if(d->rotationTime < 300 && d->deltaTrans.squaredNorm() > 1)
       d->rotationTime = 500;
@@ -2067,6 +2073,13 @@ namespace Avogadro
     connect( ui.actionCopy, SIGNAL( triggered() ), this, SLOT( copy() ) );
     connect( ui.actionPaste, SIGNAL( triggered() ), this, SLOT( paste() ) );
     connect( ui.actionClear, SIGNAL( triggered() ), this, SLOT( clear() ) );
+
+    // By default, the UI template defines backspace as the shortcut
+    // We'll add control-backspace (which was the default in prev. versions)
+    QList<QKeySequence> clearShortcuts =  ui.actionClear->shortcuts();
+    clearShortcuts << QKeySequence(tr("Ctrl+Backspace"));
+    ui.actionClear->setShortcuts(clearShortcuts);
+
     connect( ui.actionSelect_All, SIGNAL( triggered() ), this, SLOT( selectAll() ) );
     connect( ui.actionSelect_None, SIGNAL( triggered() ), this, SLOT( selectNone() ) );
 
@@ -2139,7 +2152,7 @@ namespace Avogadro
 
   void MainWindow::setupProjectTree()
   {
-    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    ProjectTreeModel *model = qobject_cast<ProjectTreeModel*>(ui.projectTreeView->model());
 
     ui.projectTreeView->setModel(new ProjectTreeModel( d->glWidget, this ));
 
@@ -2150,7 +2163,7 @@ namespace Avogadro
   void MainWindow::projectItemActivated(const QModelIndex& index)
   {
     // select the new primitives
-    ProjectTreeModel *model = dynamic_cast<ProjectTreeModel*>(ui.projectTreeView->model());
+    ProjectTreeModel *model = qobject_cast<ProjectTreeModel*>(ui.projectTreeView->model());
     if (!model)
       return;
 
@@ -2460,7 +2473,7 @@ namespace Avogadro
   {
     QAction *action = qobject_cast<QAction *>( sender() );
     if ( action ) {
-      Extension *extension = dynamic_cast<Extension *>( action->parent() );
+      Extension *extension = qobject_cast<Extension *>( action->parent() );
 
       QUndoCommand *command = 0;
       command = extension->performAction( action, d->glWidget);

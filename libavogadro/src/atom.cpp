@@ -45,7 +45,7 @@ using Eigen::Vector3d;
   };
 
   Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_atomicNumber(0),
-                                m_residue(-1), m_partialCharge(0.0),
+                                m_residue(FALSE_ID), m_partialCharge(0.0),
                                 m_forceVector(0.0, 0.0, 0.0)
   {
     if (!parent) {
