@@ -251,7 +251,8 @@ namespace Avogadro {
 
   class AddAtomDrawCommandPrivate {
     public:
-      AddAtomDrawCommandPrivate() : molecule(0), atom(0), id(-1), prevId(false), postCommand(0) {};
+      AddAtomDrawCommandPrivate() : molecule(0), atom(0), id(FALSE_ID),
+      prevId(false), postCommand(0) {}
 
       Molecule *molecule;
       Atom *atom;
