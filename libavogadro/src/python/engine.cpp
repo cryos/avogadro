@@ -1,3 +1,5 @@
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <Eigen/Core>
@@ -38,7 +40,6 @@ void export_Engine()
   class_<Avogadro::Engine, bases<Avogadro::Plugin>, boost::noncopyable>("Engine", no_init)
     // read-only poperties 
     .add_property("typeName", &Engine::typeName)
-    .add_property("identifier", &Engine::identifier)
     .add_property("layers", &Engine::layers)
     .add_property("primitiveTypes", &Engine::primitiveTypes)
     .add_property("colorTypes", &Engine::colorTypes)
@@ -50,15 +51,12 @@ void export_Engine()
     .add_property("enabled", &Engine::isEnabled, &Engine::setEnabled)
     .add_property("colorMap", make_function(&Engine::colorMap, return_value_policy<reference_existing_object>()),
         &Engine::setColorMap)
-
     // real functions
     .def("clearPrimitives", &Engine::clearPrimitives)
     .def("addPrimitive", &Engine::addPrimitive)
     .def("updatePrimitive", &Engine::updatePrimitive)
     .def("removePrimitive", &Engine::removePrimitive)
     .def("clone", &Engine::clone, return_value_policy<manage_new_object>())
-    .def("readSettings", &Engine::readSettings)
-    .def("writeSettings", &Engine::writeSettings)
     ;
    
 }

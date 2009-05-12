@@ -19,8 +19,6 @@ void export_ToolGroup()
   void (ToolGroup::*setActiveTool_ptr3)(Tool *) = &ToolGroup::setActiveTool;
 
 
-  // FIXME: Add activateActions?? (probably not need)
-
   class_<Avogadro::ToolGroup, boost::noncopyable>("ToolGroup")
     // read/write properties
     .add_property("activeTool", make_function(activeTool_ptr, return_value_policy<reference_existing_object>()), 
@@ -33,6 +31,9 @@ void export_ToolGroup()
     .def("setMolecule", &ToolGroup::setMolecule)
     .def("setActiveTool", setActiveTool_ptr1)
     .def("setActiveTool", setActiveTool_ptr2)
+    .def("removeAllTools", &ToolGroup::removeAllTools)
+    .def("writeSettings", &ToolGroup::writeSettings)
+    .def("readSettings", &ToolGroup::readSettings)
     ;
  
 }

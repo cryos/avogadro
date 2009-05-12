@@ -1,3 +1,5 @@
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/color.h>
@@ -6,8 +8,15 @@
 using namespace boost::python;
 using namespace Avogadro;
 
+// handle default arguments
+void set(Color &self, GLfloat r, GLfloat g, GLfloat b)
+{
+  self.set(r, g, b);
+}
+
 void export_Color()
 {
+  // handle overloaded function
   void (Color::*set_ptr1)(GLfloat, GLfloat, GLfloat, GLfloat) = &Color::set;
   void (Color::*set_ptr2)(const Primitive*) = &Color::set;
 
@@ -25,6 +34,8 @@ void export_Color()
     // real functions
     .def("set", set_ptr1)
     .def("set", set_ptr2)
+    .def("set", &set)
+    .def("setIndex", &Color::setIndex)
     .def("setToSelectionColor", &Color::setToSelectionColor)
     .def("apply", &Color::apply)
     .def("applyAsMaterials", &Color::applyAsMaterials)

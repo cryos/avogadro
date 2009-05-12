@@ -1,4 +1,5 @@
-#include <Python.h>
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/atom.h>
@@ -49,10 +50,9 @@ void export_GLWidget()
     .def(init<QWidget*>())
     .def(init<const QGLFormat&, QWidget*, const GLWidget*>())
     .def(init<Molecule*, const QGLFormat&, QWidget*, const GLWidget*>())
-
-
     // read/write properties
     .add_property("quickRender", &GLWidget::quickRender, &GLWidget::setQuickRender)
+    .add_property("renderUnitCellAxes", &GLWidget::renderUnitCellAxes, &GLWidget::setRenderUnitCellAxes)
     .add_property("colorMap", make_function(&GLWidget::colorMap, return_value_policy<reference_existing_object>()),
         &GLWidget::setColorMap)
     .add_property("molecule", make_function(molecule_ptr, return_value_policy<reference_existing_object>()),
@@ -68,7 +68,6 @@ void export_GLWidget()
     .add_property("background", &GLWidget::background, &GLWidget::setBackground)
     .add_property("undoStack", make_function(&GLWidget::undoStack, return_value_policy<return_by_value>()),
         &GLWidget::setUndoStack)
-
     // read-only properties
     .add_property("deviceWidth", &GLWidget::deviceWidth)
     .add_property("deviceHeight", &GLWidget::deviceHeight)
@@ -83,8 +82,6 @@ void export_GLWidget()
     .add_property("aCells", &GLWidget::aCells)
     .add_property("bCells", &GLWidget::bCells)
     .add_property("cCells", &GLWidget::cCells)
-
-
     // real functions
     .def("radius", radius_ptr1, return_value_policy<copy_const_reference>())
     .def("radius", radius_ptr2)
@@ -115,9 +112,16 @@ void export_GLWidget()
     .def("addPrimitive", &GLWidget::addPrimitive)
     .def("updatePrimitive", &GLWidget::updatePrimitive)
     .def("removePrimitive", &GLWidget::removePrimitive)
+    .def("addAtom", &GLWidget::addAtom)
+    .def("updateAtom", &GLWidget::updateAtom)
+    .def("removeAtom", &GLWidget::removeAtom)
+    .def("addBond", &GLWidget::addBond)
+    .def("updateBond", &GLWidget::updateBond)
+    .def("removeBond", &GLWidget::removeBond)
     .def("addEngine", &GLWidget::addEngine)
     .def("removeEngine", &GLWidget::removeEngine)
     .def("invalidateDLs", &GLWidget::invalidateDLs)
+    .def("toolsDestroyed", &GLWidget::toolsDestroyed)
     ;
 
 }
