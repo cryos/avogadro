@@ -20,6 +20,9 @@
  ***********************************************************************/
 
 #include "propmodel.h"
+// for recursively setting bond lengths, angles, etc.
+#include "../tools/skeletontree.h"
+
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -42,7 +45,8 @@ namespace Avogadro {
   using OpenBabel::OBAtom;
 
   PropertiesModel::PropertiesModel(Type type, QObject *parent)
-    : QAbstractTableModel(parent), m_type(type), m_rowCount(0), m_molecule(0)
+    : QAbstractTableModel(parent), m_type(type), m_rowCount(0), m_molecule(0),
+      m_validCache(false), m_cachedOBMol(0)
   {
   }
 
@@ -63,15 +67,17 @@ namespace Avogadro {
       return m_molecule->numConformers();
     }
     else if (m_type == AngleType) {
-      OBMol obmol = m_molecule->OBMol();
-      obmol.FindAngles();
-      OBAngleData *ad = static_cast<OBAngleData *>(obmol.GetData(AngleData));
+      if (!m_validCache)
+        cacheOBMol();
+      m_cachedOBMol->FindAngles();
+      OBAngleData *ad = static_cast<OBAngleData *>(m_cachedOBMol->GetData(AngleData));
       return ad->GetSize();
     }
     else if (m_type == TorsionType) {
-      OBMol obmol = m_molecule->OBMol();
-      obmol.FindTorsions();
-      OBTorsionData *td = static_cast<OBTorsionData *>(obmol.GetData(TorsionData));
+      if (!m_validCache)
+        cacheOBMol();
+      m_cachedOBMol->FindTorsions();
+      OBTorsionData *td = static_cast<OBTorsionData *>(m_cachedOBMol->GetData(TorsionData));
       vector<OBTorsion> torsions = td->GetData();
       vector<triple<OBAtom*,OBAtom*,double> > torsionADs;
       vector<OBTorsion>::iterator i;
@@ -123,14 +129,15 @@ namespace Avogadro {
       switch (index.column()) {
       case 0: // type
         {
-          OBMol obmol = m_molecule->OBMol();
-          OpenBabel::OBAtom *obatom = obmol.GetAtom(index.row() + 1);
+          if (!m_validCache)
+            cacheOBMol();
+          OpenBabel::OBAtom *obatom = m_cachedOBMol->GetAtom(index.row() + 1);
           return obatom->GetType();
         }
       case 1: // atomic number
         return atom->atomicNumber();
       case 2: // partial charge
-        return atom->partialCharge();
+        return QString::number(atom->partialCharge(), 'f', 3);
       case 3: // valence
         return atom->valence();
       }
@@ -139,48 +146,53 @@ namespace Avogadro {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numBonds())
         return QVariant();
 
-      OBMol obmol = m_molecule->OBMol();
-      OpenBabel::OBBond *bond = obmol.GetBond(index.row());
+      if (!m_validCache)
+        cacheOBMol();
+      OpenBabel::OBBond *bond = m_cachedOBMol->GetBond(index.row());
 
       if (role == Qt::DisplayRole)
         switch (index.column()) {
-      case 0: // atom 1
-        return bond->GetBeginAtomIdx();
-      case 1: // atom 2
-        return bond->GetEndAtomIdx();
-      case 2: // order
-        return bond->GetBondOrder();
-      case 3: // length
-        return bond->GetLength();
-      case 4: // rotatable
-        return bond->IsRotor();
-      }
+        case 0: // atom 1
+          return bond->GetBeginAtomIdx();
+        case 1: // atom 2
+          return bond->GetEndAtomIdx();
+        case 2: // order
+          return bond->GetBondOrder();
+        case 3: // length
+          return QString::number(bond->GetLength(), 'f', 4);
+        case 4: // rotatable
+          return bond->IsRotor();
+        }
     }
     else if (m_type == AngleType) {
-      OBMol obmol = m_molecule->OBMol();
-      obmol.FindAngles();
-      OBAngleData *ad = static_cast<OBAngleData *>(obmol.GetData(AngleData));
+      if (!m_validCache)
+        cacheOBMol();
+      m_cachedOBMol->FindAngles();
+      OBAngleData *ad = static_cast<OBAngleData *>(m_cachedOBMol->GetData(AngleData));
       vector<vector<unsigned int> > angles;
       ad->FillAngleArray(angles);
 
       if ((unsigned int) index.row() >= angles.size())
         return QVariant();
 
+      double angle;
       switch (index.column()) {
       case 0:
       case 1:
       case 2:
         return (angles[index.row()][index.column()] + 1);
       case 3:
-        return obmol.GetAngle(obmol.GetAtom(angles[index.row()][1] + 1),
-                              obmol.GetAtom(angles[index.row()][0] + 1),
-                              obmol.GetAtom(angles[index.row()][2] + 1));
+        angle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
+                                        m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
+                                        m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
+        return QString::number(angle, 'f', 4);
       }
     }
     else if (m_type == TorsionType) {
-      OBMol obmol = m_molecule->OBMol();
-      obmol.FindTorsions();
-      OBTorsionData *td = static_cast<OBTorsionData *>(obmol.GetData(TorsionData));
+      if (!m_validCache)
+        cacheOBMol();
+      m_cachedOBMol->FindTorsions();
+      OBTorsionData *td = static_cast<OBTorsionData *>(m_cachedOBMol->GetData(TorsionData));
       vector<OBTorsion> torsions = td->GetData();
       pair<OBAtom*,OBAtom*> torsionBC;
       vector<triple<OBAtom*,OBAtom*,double> > torsionADs;
@@ -188,6 +200,7 @@ namespace Avogadro {
       vector<triple<OBAtom*,OBAtom*,double> >::iterator j;
 
       int rowCount = 0;
+      double dihedralAngle;
       for (i = torsions.begin(); i != torsions.end(); ++i) {
         torsionBC = i->GetBC();
         torsionADs = i->GetADs();
@@ -203,8 +216,8 @@ namespace Avogadro {
             case 3:
               return j->second->GetIdx();
             case 4:
-              return obmol.GetTorsion(j->first, torsionBC.first, torsionBC.second, j->second);
-              //return j->third;
+              dihedralAngle = m_cachedOBMol->GetTorsion(j->first, torsionBC.first, torsionBC.second, j->second);
+              return QString::number(dihedralAngle, 'f', 4);
             }
           }
           rowCount++;
@@ -233,7 +246,7 @@ namespace Avogadro {
         if ((unsigned int) index.row() >= m_molecule->energies().size())
           return QVariant();
 
-        return m_molecule->energies().at(index.row());
+        return QString::number(m_molecule->energies().at(index.row()), 'f', 4);
       }
     }
 
@@ -344,13 +357,28 @@ namespace Avogadro {
       }
     }
     else if (m_type == BondType) {
-      return QAbstractItemModel::flags(index);
+      switch (index.column()) {
+      case 3: // bond length
+        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      default:
+        return QAbstractItemModel::flags(index);
+      }
     }
     else if (m_type == AngleType) {
-      return QAbstractItemModel::flags(index);
+      switch (index.column()) {
+        //      case 3: // angle
+        //        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      default:
+        return QAbstractItemModel::flags(index);
+      }
     }
     else if (m_type == TorsionType) {
-      return QAbstractItemModel::flags(index);
+      switch (index.column()) {
+        //      case 4: // dihedral
+        //        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      default:
+        return QAbstractItemModel::flags(index);
+      }
     }
     else if (m_type == CartesianType) {
       return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
@@ -362,7 +390,9 @@ namespace Avogadro {
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
   }
 
-  bool PropertiesModel::setData(const QModelIndex &index, const QVariant &value, int role)
+  bool PropertiesModel::setData(const QModelIndex &index, 
+                                const QVariant &value,
+                                int role)
   {
     if (!index.isValid())
       return false;
@@ -390,15 +420,6 @@ namespace Avogadro {
         return false;
       }
     }
-    else if (m_type == BondType) {
-      switch (index.column()) {
-      case 4: // length
-        return false;
-        break;
-      default:
-        return false;
-      }
-    }
     else if (m_type == CartesianType) {
       if (index.column() > 2)
         return false;
@@ -412,18 +433,57 @@ namespace Avogadro {
       emit dataChanged(index, index);
       return true;
     }
-    else if (m_type == AngleType) {
-            switch (index.column()) {
-      case 4: // angle
+    else if (m_type == BondType) {
+      Bond *bond = m_molecule->bond(index.row());
+      Eigen::Vector3d bondDirection = *(bond->beginPos()) - *(bond->endPos());
+      double lengthScale;
+      SkeletonTree zMatrixTree;
+
+      switch (index.column()) {
+      case 3: // length
+        lengthScale = (value.toDouble() - bond->length()) / bond->length();
+        // scale our bond vector to match the new length
+        bondDirection *= lengthScale;
+
+        zMatrixTree.populate(bond->beginAtom(), bond, m_molecule);
+        zMatrixTree.skeletonTranslate(bondDirection.x(),
+                                      bondDirection.y(),
+                                      bondDirection.z());
+        return true;
+
+        break;
+      default:
         return false;
+      }
+    }
+    else if (m_type == AngleType) {
+      OBAngleData *ad = static_cast<OBAngleData *>(m_cachedOBMol->GetData(AngleData));
+      vector<vector<unsigned int> > angles;
+      ad->FillAngleArray(angles);
+
+      Atom *startAtom = m_molecule->atom((angles[index.row()][0]));
+      Atom *vertex = m_molecule->atom((angles[index.row()][1]));
+      Atom *endAtom = m_molecule->atom((angles[index.row()][0]));
+      Bond *bond = startAtom->bond(vertex);
+      SkeletonTree zMatrixTree;
+
+      switch (index.column()) {
+      case 3: // angle
+        zMatrixTree.populate(vertex, bond, m_molecule);
+        zMatrixTree.skeletonRotate(value.toDouble() * cDegToRad, *(endAtom->pos()), *(vertex->pos()));
+        
+        return true;
         break;
       default:
         return false;
       }
     }
     else if (m_type == TorsionType) {
+      Bond *bond = m_molecule->bond(index.row());
+      SkeletonTree zMatrixTree;
+
       switch (index.column()) {
-      case 5: // dihedral angle
+      case 4: // dihedral angle
         return false;
         break;
       default:
@@ -436,6 +496,17 @@ namespace Avogadro {
   void PropertiesModel::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+    m_validCache = false;
+  }
+
+  void PropertiesModel::cacheOBMol() const
+  {
+    if (m_cachedOBMol)
+      delete m_cachedOBMol;
+
+    m_cachedOBMol = new OBMol(m_molecule->OBMol());
+
+    m_validCache = true;
   }
 
   void PropertiesModel::atomAdded(Atom *atom)
@@ -445,6 +516,7 @@ namespace Avogadro {
       beginInsertRows(QModelIndex(), atom->index(), atom->index());
       endInsertRows();
     }
+    m_validCache = false;
   }
 
   void PropertiesModel::atomRemoved(Atom *atom)
@@ -454,6 +526,7 @@ namespace Avogadro {
       beginRemoveRows(QModelIndex(), atom->index(), atom->index());
       endRemoveRows();
     }
+    m_validCache = false;
   }
 
   void PropertiesModel::bondAdded(Bond *bond)
@@ -463,6 +536,7 @@ namespace Avogadro {
       beginInsertRows(QModelIndex(), bond->index(), bond->index());
       endInsertRows();
     }
+    m_validCache = false;
   }
 
   void PropertiesModel::bondRemoved(Bond *bond)
@@ -472,6 +546,7 @@ namespace Avogadro {
       beginRemoveRows(QModelIndex(), bond->index(), bond->index());
       endRemoveRows();
     }
+    m_validCache = false;
   }
 
   void PropertiesModel::moleculeChanged()
@@ -487,46 +562,9 @@ namespace Avogadro {
     }
     beginInsertRows(QModelIndex(), 0, rowCount()-1);
     endInsertRows();
-  }
 
-  /*
-      if (primitive->type() == Primitive::BondType) { // when you delete an atom, its bond will be deleted too
-        m_molecule->FindAngles();
-        OBAngleData *ad = (OBAngleData *) m_molecule->GetData(OBGenericDataType::AngleData);
-        while (ad->GetSize() != m_rowCount) {
-          beginInsertRows(QModelIndex(), 0, 0);
-          endInsertRows();
-      m_rowCount++;
-    }
-    int numRows = ad->GetSize() - m_rowCount;
-    qDebug() << "PropertiesModel::primitiveAdded()" << endl;
-    qDebug() << "    ad->GetSize() = " << ad->GetSize() << endl;
-    qDebug() << "    rowCount() = " << rowCount() << endl;
-    qDebug() << "    m_rowCount = " << m_rowCount << endl;
-    qDebug() << "    numRows = " << numRows << endl;
-        updateTable();
-        m_rowCount = ad->GetSize();
-      }
-      */
-  /*
-      if (primitive->type() == Primitive::BondType) { // only new bonds can create new angles
-        m_molecule->FindAngles();
-        OBAngleData *ad = (OBAngleData *) m_molecule->GetData(OBGenericDataType::AngleData);
-        while (ad->GetSize() != m_rowCount) {
-          beginRemoveRows(QModelIndex(), 0, 0);
-          endRemoveRows();
-      m_rowCount--;
-    }
-    int numRows = m_rowCount - ad->GetSize();
-    qDebug() << "PropertiesModel::primitiveRemoved()" << endl;
-    qDebug() << "    ad->GetSize() = " << ad->GetSize() << endl;
-    qDebug() << "    rowCount() = " << rowCount() << endl;
-    qDebug() << "    m_rowCount = " << m_rowCount << endl;
-    qDebug() << "    numRows = " << numRows << endl;
-        updateTable();
-        m_rowCount = ad->GetSize();
-      }
-      */
+    m_validCache = false;
+  }
 
   void PropertiesModel::updateTable()
   {

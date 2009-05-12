@@ -77,11 +77,15 @@ namespace Avogadro {
            int role = Qt::DisplayRole) const;
 
        void setMolecule (Molecule *molecule);
+       void cacheOBMol() const;
 
      private:
        int m_type;
        mutable int m_rowCount;
        Molecule *m_molecule;
+
+       mutable bool m_validCache;
+       mutable OpenBabel::OBMol *m_cachedOBMol;
  };
 
 } // end namespace Avogadro

@@ -26,7 +26,8 @@ avogadro_plugin(gamessextension
   "gamessinputdialog.ui;gamessefpmatchdialog.ui")
 
 ### Properties
-avogadro_plugin(propextension "propmodel.cpp;propextension.cpp")
+avogadro_plugin(propextension
+   "../tools/skeletontree.cpp;../tools/quaternion.cpp;propmodel.cpp;propextension.cpp")
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
