@@ -58,8 +58,7 @@ namespace Avogadro {
     if (!m_molecule->atomById(id))
       return;
 
-    // don't use -1, this is unsigned
-    m_molecule->atomById(id)->setResidue(ULONG_MAX);
+    m_molecule->atomById(id)->setResidue(FALSE_ID);
   }
 
   void Residue::setNumber(const QString& number)
