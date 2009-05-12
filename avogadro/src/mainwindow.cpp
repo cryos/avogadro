@@ -1912,17 +1912,11 @@ namespace Avogadro
     if( !d->animationsEnabled ) {
       camera->initializeViewPoint();
       d->glWidget->update();
-      //cout << "Final Translation: " << camera->modelview().translationVector() << endl;
-      //cout << "Final Linear: " << camera->modelview().linearComponent() << endl << endl;
       return;
     }
 
     // determine our goal matrix
     Matrix3d linearGoal;
-    //d->rotation = camera->modelview();
-    //goal.setRow(2, -d->glWidget->normalVector());
-    //goal.setRow(1, Vector3d(0,1,0));goal.row(2).unitOrthogonal());
-    //goal.setRow(0, goal.row(2).cross(goal.row(1)));
     linearGoal.row(2) = d->glWidget->normalVector();
     linearGoal.row(0) = linearGoal.row(2).unitOrthogonal();
     linearGoal.row(1) = linearGoal.row(2).cross(linearGoal.row(0));
@@ -1931,7 +1925,20 @@ namespace Avogadro
     Transform3d goal(linearGoal);
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
-    goal.translate( - d->glWidget->center() );
+
+    QList<Primitive*> selectedAtoms = d->glWidget->selectedPrimitives().subList(Primitive::AtomType);
+    if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
+      goal.translate( - d->glWidget->center() );
+    } else {
+      // Calculate the centroid of the selection
+      Vector3d selectedCenter(0.0, 0.0, 0.0);
+      foreach(Primitive *item, selectedAtoms) {
+        // Atom::pos() returns a pointer to the position
+        selectedCenter += *(static_cast<Atom*>(item)->pos());
+      }
+      selectedCenter /= double(selectedAtoms.size());
+      goal.translate( -selectedCenter);
+    }
 
     //cout << "Calculated Translation: " << goal.translationVector() << endl;
     //cout << "Calculated Linear: " << goal.linearComponent() << endl << endl;
