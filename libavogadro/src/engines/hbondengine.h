@@ -73,7 +73,7 @@ namespace Avogadro {
 
     private:
       HBondSettingsWidget *m_settingsWidget;
-      double m_width;
+      int    m_width;
       double m_radius;
       double m_angle;
   
