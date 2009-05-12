@@ -146,6 +146,7 @@ namespace Avogadro
       view->setModel( model );
       layout->addWidget(view);
       dialog->resize(860, 400);
+      dialog->setWindowTitle(tr("Atoms"));
       dialog->show();
       break;
     case BondPropIndex: // bond properties
@@ -164,6 +165,7 @@ namespace Avogadro
       view->setModel( model );
       layout->addWidget(view);
       dialog->resize(550, 400);
+      dialog->setWindowTitle(tr("Bonds"));
       dialog->show();
       break;
     case AnglePropIndex: // angle properties
@@ -180,6 +182,7 @@ namespace Avogadro
       view->setModel( model );
       layout->addWidget(view);
       dialog->resize(550, 400);
+      dialog->setWindowTitle(tr("Angles"));
       dialog->show();
       break;
     case TorsionPropIndex: // torsion properties
@@ -196,6 +199,7 @@ namespace Avogadro
       view->setModel( model );
       layout->addWidget(view);
       dialog->resize(550, 400);
+      dialog->setWindowTitle(tr("Torsions"));
       dialog->show();
       break;
     case CartesianIndex: // cartesian editor
@@ -213,6 +217,7 @@ namespace Avogadro
       view->setModel( model );
       layout->addWidget(view);
       dialog->resize(550, 400);
+      dialog->setWindowTitle(tr("Coordinates"));
       dialog->show();
       break;
     case ConformerIndex: // conformers
@@ -230,6 +235,7 @@ namespace Avogadro
       view->resize(180, 500);
       view->sortByColumn(0, Qt::AscendingOrder);
       layout->addWidget(view);
+      dialog->setWindowTitle(tr("Conformers"));
       dialog->show();
       break;
     }
