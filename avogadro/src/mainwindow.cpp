@@ -1908,13 +1908,6 @@ namespace Avogadro
       return;
     }
 
-    // if smooth transitions are disabled, center now and return
-    if( !d->animationsEnabled ) {
-      camera->initializeViewPoint();
-      d->glWidget->update();
-      return;
-    }
-
     // determine our goal matrix
     Matrix3d linearGoal;
     linearGoal.row(2) = d->glWidget->normalVector();
@@ -1926,6 +1919,7 @@ namespace Avogadro
 
     goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
 
+    // Support centering on a selection
     QList<Primitive*> selectedAtoms = d->glWidget->selectedPrimitives().subList(Primitive::AtomType);
     if (selectedAtoms.isEmpty()) { // no selected atoms, we want the global center
       goal.translate( - d->glWidget->center() );
@@ -1940,8 +1934,13 @@ namespace Avogadro
       goal.translate( -selectedCenter);
     }
 
-    //cout << "Calculated Translation: " << goal.translationVector() << endl;
-    //cout << "Calculated Linear: " << goal.linearComponent() << endl << endl;
+    // if smooth transitions are disabled, center now and return
+    if( !d->animationsEnabled ) {
+      //      camera->initializeViewPoint(); -- old method, doesn't handle seletions
+      camera->setModelview(goal);
+      d->glWidget->update();
+      return;
+    }
 
     d->startTrans = camera->modelview().translation();
     d->deltaTrans = goal.translation() - d->startTrans;
