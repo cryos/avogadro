@@ -335,7 +335,7 @@ namespace Avogadro {
     }
 
     Atom *atom = 0;
-    if (d->id != static_cast<unsigned long>(-1)) {
+    if (d->id != static_cast<unsigned long>(ULONG_MAX)) {
       atom = d->molecule->addAtom(d->id);
     } else {
       atom = d->molecule->addAtom();
@@ -360,7 +360,7 @@ namespace Avogadro {
 
   class DeleteAtomDrawCommandPrivate {
     public:
-      DeleteAtomDrawCommandPrivate() : id(-1), preCommand(0), postCommand(0) {};
+      DeleteAtomDrawCommandPrivate() : id(ULONG_MAX), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       unsigned long id;
@@ -490,9 +490,11 @@ namespace Avogadro {
 
   class AddBondDrawCommandPrivate {
     public:
-      AddBondDrawCommandPrivate() : molecule(0), bond(0), id(-1), beginAtomId(-1), endAtomId(-1), 
-          prevId(false), preCommandBegin(0), postCommandBegin(0), preCommandEnd(0), 
-          postCommandEnd(0) {}
+      AddBondDrawCommandPrivate() : molecule(0), bond(0), id(ULONG_MAX), 
+                                    beginAtomId(ULONG_MAX), endAtomId(ULONG_MAX), 
+                                    prevId(false), preCommandBegin(0),
+                                    postCommandBegin(0), preCommandEnd(0), 
+                                    postCommandEnd(0) {}
 
       Molecule *molecule;
       Bond *bond;
@@ -663,7 +665,7 @@ namespace Avogadro {
       return;
       
     Bond *bond;
-    if (d->id != static_cast<unsigned long>(-1)) {
+    if (d->id != static_cast<unsigned long>(ULONG_MAX)) {
       bond = d->molecule->addBond(d->id);
     } else {
       bond = d->molecule->addBond();
@@ -701,7 +703,7 @@ namespace Avogadro {
 
   class DeleteBondDrawCommandPrivate {
     public:
-      DeleteBondDrawCommandPrivate() : id(-1) {};
+      DeleteBondDrawCommandPrivate() : id(ULONG_MAX) {};
 
       Molecule *molecule;
       Molecule moleculeCopy;
@@ -762,7 +764,7 @@ namespace Avogadro {
 
   class ChangeElementDrawCommandPrivate {
     public:
-      ChangeElementDrawCommandPrivate() : molecule(0), id(-1), preCommand(0), postCommand(0) {};
+      ChangeElementDrawCommandPrivate() : molecule(0), id(ULONG_MAX), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       unsigned int newElement, oldElement;
@@ -864,7 +866,7 @@ namespace Avogadro {
 
   class ChangeBondOrderDrawCommandPrivate {
     public:
-      ChangeBondOrderDrawCommandPrivate() : molecule(0), id(-1), preCommand(0), postCommand(0) {};
+      ChangeBondOrderDrawCommandPrivate() : molecule(0), id(ULONG_MAX), preCommand(0), postCommand(0) {};
 
       Molecule *molecule;
       unsigned long id;

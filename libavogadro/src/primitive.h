@@ -32,6 +32,7 @@
 #include <QMetaType>
 
 #include <Eigen/Core>
+#include <limits> // Declares ULONG_MAX
 
 // Forward declarations
 class QReadWriteLock;
@@ -39,7 +40,7 @@ class QReadWriteLock;
 namespace Avogadro {
 
 // Define the overflow resulting from long (-1) as the error/not found
-const unsigned long FALSE_ID = -1;
+const unsigned long FALSE_ID = ULONG_MAX;
 
   /**
    * @class Primitive primitive.h <avogadro/primitive.h>

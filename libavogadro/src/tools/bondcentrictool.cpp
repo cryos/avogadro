@@ -211,7 +211,7 @@ namespace Avogadro {
     m_clickedAtom = NULL;
     m_clickedBond = NULL;
 
-    unsigned int oldName = m_selectedBond ? m_selectedBond->index() : -1;
+    unsigned int oldName = m_selectedBond ? m_selectedBond->index() : UINT_MAX;
 
     // Check if the mouse clicked on any Atoms or Bonds.
     Primitive *clickedPrim = widget->computeClickedPrimitive(event->pos());
