@@ -9,10 +9,7 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/config.h
 )
 
-link_directories(
-  ${libavogadro_BINARY_DIR}/src
-  ${OPENBABEL2_LIBRARY_DIRS}
-)
+link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
@@ -51,7 +48,7 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-file(GLOB avogadro_TS "${CMAKE_SOURCE_DIR}/i18n/*.ts")
+file(GLOB avogadro_TS "${Avogadro_SOURCE_DIR}/i18n/*.ts")
 
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
@@ -74,44 +71,65 @@ target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro-lib)
 
 if(APPLE)
-  SET( MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${VERSION}" )
-  SET( MACOSX_BUNDLE_BUNDLE_VERSION ${VERSION} )
+  set(MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${Avogadro_VERSION_FULL}")
+  set(MACOSX_BUNDLE_BUNDLE_VERSION ${Avogadro_VERSION_FULL})
   # Change following line to point to actual icns file in bundle.
-  SET( MACOSX_BUNDLE_ICON_FILE "avogadro.icns" )
+  set(MACOSX_BUNDLE_ICON_FILE "avogadro.icns")
   # means bundle is set to be net.sourceforge.Avogadro
-  SET( MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge" )
-  SET( MACOSX_BUNDLE_BUNDLE_NAME "Avogadro" )
+  set(MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge")
+  set(MACOSX_BUNDLE_BUNDLE_NAME "Avogadro")
 
-  SET( MACOSX_DEST_CONTENTS_DIR /Applications/Avogadro.app/Contents )
-  SET( MACOSX_SRC_DIR ${avogadro_SOURCE_DIR}/src/mac )
+  set(CMAKE_INSTALL_DESTINATION_ARGS
+      BUNDLE DESTINATION "${CMAKE_BUNDLE_LOCATION}")
+  # This also sets the bundle name correctly
+  set_target_properties(avogadro-app
+    PROPERTIES OUTPUT_NAME "${CMAKE_BUNDLE_NAME}")
+
+  # Use relative paths for the executable to link to its libraries
+  set_target_properties(avogadro-app PROPERTIES
+    CMAKE_INSTALL_NAME_DIR "@executable_path/../lib")
+
+  set(MACOSX_SRC_DIR ${avogadro_SOURCE_DIR}/src/mac)
 
   # Overload the Info.plist default
-  SET( CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH} )
-  INSTALL(TARGETS avogadro-app DESTINATION /Applications)
-  INSTALL(
-          CODE "EXECUTE_PROCESS(COMMAND install_name_tool -change ${libavogadro_BINARY_DIR}/src/libavogadro.0.dylib ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/libavogadro.0.dylib /Applications/avogadro.app/Contents/MacOS/avogadro OUTPUT_QUIET)")
-  INSTALL(CODE "EXECUTE_PROCESS(COMMAND mv /Applications/avogadro.app /Applications/Avogadro.app OUTPUT_QUIET)")
+  set(CMAKE_MODULE_PATH ${avogadro_SOURCE_DIR}/src/mac ${CMAKE_MODULE_PATH})
 
-  install(FILES "mac/avogadro.icns" DESTINATION ${MACOSX_DEST_CONTENTS_DIR}/Resources)
-  install(FILES "mac/AvogadroDocument.icns" DESTINATION ${MACOSX_DEST_CONTENTS_DIR}/Resources)
+  # Do not install the bundle into the prefix - just everything else
+  set(Avogadro_INSTALL_DESTINATIONS_ARGS
+    BUNDLE DESTINATION "${CMAKE_BUNDLE_LOCATION}")
 
-  SET( TRANSLATIONS "ar;ca;cs;de;en;en_GB;es;fi;fr;it;pl;pt;pt_BR;ru;sv;uk;zh;zh_CN;zh_TW" )
-	FOREACH(lang ${TRANSLATIONS})
-    SET( MAC_LANG_DIR ${MACOSX_DEST_CONTENTS_DIR}/Resources/${lang}.lproj )
-    INSTALL(CODE	"EXECUTE_PROCESS(COMMAND
+  install(FILES "mac/avogadro.icns" DESTINATION Resources)
+  install(FILES "mac/AvogadroDocument.icns" DESTINATION Resources)
+
+  set(TRANSLATIONS "ar;ca;cs;de;en;en_GB;es;fi;fr;it;pl;pt;pt_BR;ru;sv;uk;zh;zh_CN;zh_TW")
+  foreach(lang ${TRANSLATIONS})
+    set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
+    install(CODE "EXECUTE_PROCESS(COMMAND
           mkdir ${MAC_LANG_DIR}
           ERROR_QUIET)")
-    INSTALL(CODE "EXECUTE_PROCESS(COMMAND
-          ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${VERSION} ${lang}
+    install(CODE "EXECUTE_PROCESS(COMMAND
+          ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${Avogadro_VERSION_FULL} ${lang}
           OUTPUT_QUIET)")
-	ENDFOREACH(lang ${TRANSLATIONS})
+  endforeach(lang ${TRANSLATIONS})
 endif(APPLE)
 
-if(NOT APPLE)
-  install(TARGETS avogadro-app DESTINATION ${BIN_INSTALL_DIR})
-endif(NOT APPLE)
+install(TARGETS avogadro-app RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+  ${Avogadro_INSTALL_DESTINATIONS_ARGS})
 
 install(FILES ${avogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
+
+if(APPLE)
+  set(OSX_MAKE_STANDALONE_BUNDLE_CMAKE_SCRIPT
+    "${CMAKE_BINARY_DIR}/Avogadro_OSX_MakeStandAloneBundle.cmake")
+  set(OSX_MAKE_STANDALONE_BUNDLE_BASH_SCRIPT
+    "${CMAKE_BINARY_DIR}/Avogadro_OSX_MakeStandAloneBundle.sh")
+  # Configure the cmake file and the shell script
+  configure_file("${MACOSX_SRC_DIR}/CompleteBundle.cmake.in"
+    "${OSX_MAKE_STANDALONE_BUNDLE_CMAKE_SCRIPT}" @ONLY IMMEDIATE)
+  configure_file("${MACOSX_SRC_DIR}/CreateBundle.sh.in"
+    "${OSX_MAKE_STANDALONE_BUNDLE_BASH_SCRIPT}" @ONLY IMMEDIATE)
+  install(SCRIPT "${OSX_MAKE_STANDALONE_BUNDLE_CMAKE_SCRIPT}")
+endif(APPLE)
 
 # Install a .desktop file and icon for Linux users
 if (CMAKE_SYSTEM_NAME MATCHES Linux)
@@ -120,3 +138,4 @@ if (CMAKE_SYSTEM_NAME MATCHES Linux)
 endif(CMAKE_SYSTEM_NAME MATCHES Linux)
 
 #add_subdirectory(projectplugins)
+

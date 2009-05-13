@@ -55,7 +55,10 @@
 #endif
 
 #ifdef WIN32
-#include <stdlib.h>
+  #include <stdlib.h>
+#endif
+#ifdef AVO_APP_BUNDLE
+  #include <cstdlib>
 #endif
 
 using namespace Avogadro;
@@ -92,6 +95,23 @@ int main(int argc, char *argv[])
   qDebug() << babelDataDir;
   _putenv(babelDataDir.toStdString().c_str());
 #endif
+#ifdef AVO_APP_BUNDLE
+  // Set up the babel data and plugin directories for Mac - relocatable
+  QByteArray babelDataDir(("BABEL_DATADIR="
+                           + QCoreApplication::applicationDirPath()
+                           + "/../share/openbabel/2.2.2").toAscii());
+  QByteArray babelLibDir(("BABEL_LIBDIR="
+                          + QCoreApplication::applicationDirPath()
+                          + "/../lib/openbabel").toAscii());
+  int res1 = putenv(babelDataDir.data());
+  int res2 = putenv(babelLibDir.data());
+
+  if (res1 != 0 || res2 != 0)
+    qDebug() << "Error: putenv failed." << res1 << res2;
+
+  QString env(getenv("BABEL_LIBDIR"));
+  qDebug() << "getenv(\"BABEL_LIBDIR\")=" << env;
+#endif
 
   // Before we do much else, load translations
   // This ensures help messages and debugging info will be translated
@@ -124,9 +144,10 @@ int main(int argc, char *argv[])
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
   foreach (QString translationPath, translationPaths) {
-    qDebug() << "path = " << translationPath;
+    qDebug() << "path = " << translationPath + avoFilename;
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
+      qDebug() << "Translation successfully loaded.";
       break;
     }
     else {

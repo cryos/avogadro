@@ -113,9 +113,20 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 set(QT_MIN_VERSION "4.4.0") # we need at least version 4.3 of Qt now
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
-find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
+
+# Avogadro can be built with OpenBabel and packaged together
+option(EMBED_OPENBABEL "Build an embedded OpenBabel library" OFF)
+if(EMBED_OPENBABEL)
+  # Set up the required variables from the included OpenBabel directory
+  set(OPENBABEL2_INCLUDE_DIR
+    ${openbabel_SOURCE_DIR}/include
+    ${openbabel_BINARY_DIR}/include)
+  set(OPENBABEL2_LIBRARIES openbabel)
+else(EMBED_OPENBABEL)
+  find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
+endif(EMBED_OPENBABEL)
 
 # Check if we are building from a Git clone or a released version
 function(git_version dir version_var)
@@ -214,12 +225,15 @@ set(XDG_ICON_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/pixmaps"
 option(ENABLE_RPATH "Enable rpath support on Linux and Mac" ON)
 if(UNIX AND ENABLE_RPATH)
   message(STATUS "RPath support enabled for installed binaries and libraries")
+  set(CMAKE_SKIP_BUILD_RPATH FALSE)
+  set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
   if(APPLE)
-    set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
-  else(APPLE)
-    set(CMAKE_SKIP_BUILD_RPATH FALSE)
-    set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+    # Funky path logic in order to get the Avogadro application bundle working
+    set(CMAKE_BUNDLE_LOCATION "/Applications")
+    set(CMAKE_BUNDLE_NAME "Avogadro${Avogadro_VERSION}")
+    set(CMAKE_INSTALL_PREFIX "/Applications/${CMAKE_BUNDLE_NAME}.app/Contents")
+    set(CMAKE_INSTALL_NAME_DIR "@executable_path/../${LIB_INSTALL_DIR}")
   endif(APPLE)
 endif(UNIX AND ENABLE_RPATH)
 
@@ -236,13 +250,13 @@ add_custom_target(uninstall
 file(GLOB_RECURSE avogadro_TS i18n/*.ts)
 add_custom_target(update-translations
     COMMAND ${QT_LUPDATE_EXECUTABLE}
-    ${CMAKE_CURRENT_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
+    ${Avogadro_SOURCE_DIR} -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    ${Avogadro_SOURCE_DIR})
 
 add_custom_command(TARGET create-translations
-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/create-translations.sh
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/i18n)
+    COMMAND ${Avogadro_SOURCE_DIR}/scripts/create-translations.sh
+    WORKING_DIRECTORY ${Avogadro_SOURCE_DIR}/i18n)
 
 # Configure and install an Avogadro CMake style configuration file
 configure_file(
@@ -291,9 +305,9 @@ add_subdirectory(doc)
 
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
-if(APPLE)
-  set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
-endif(APPLE)
+#if(APPLE)
+#  set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
+#endif(APPLE)
 
 # When installing, make sure to install some fragments
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"

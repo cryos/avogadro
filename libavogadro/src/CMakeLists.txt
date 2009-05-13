@@ -80,9 +80,9 @@ set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                      ${QT_LIBRARIES}
-                      ${OPENGL_LIBRARIES}
-                      )
+                       ${QT_LIBRARIES}
+                       ${OPENGL_LIBRARIES}
+                       )
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
