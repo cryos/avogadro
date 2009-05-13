@@ -512,9 +512,11 @@ namespace Avogadro {
       pluginPaths << QCoreApplication::applicationDirPath()
                      + "/../" + QString(INSTALL_LIBDIR);
 #ifndef AVO_APP_BUNDLE
+  #ifdef Q_WS_MAC
       QString prefixPath = QString(INSTALL_PREFIX) + '/'
                            + QString(INSTALL_LIBDIR);
       pluginPaths << prefixPath;
+  #endif
 #endif
     }
 
