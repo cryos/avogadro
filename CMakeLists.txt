@@ -195,6 +195,12 @@ else(ENABLE_THREADEDGL)
   message(STATUS "Threaded OpenGL rendering not enabled")
 endif(ENABLE_THREADEDGL)
 
+# Should a self-contained package be created?
+option(ENABLE_AVO_PACKAGE "Enable creation of a self-contained package" OFF)
+if(ENABLE_AVO_PACKAGE)
+  add_definitions(-DAVO_APP_BUNDLE)
+endif(ENABLE_AVO_PACKAGE)
+
 # Set up our path handling, inspired by the path handling used in KDE
 set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
 set(SHARE_INSTALL_PREFIX "share"
