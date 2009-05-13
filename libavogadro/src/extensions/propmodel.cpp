@@ -28,6 +28,7 @@
 #include <avogadro/bond.h>
 
 #include <openbabel/mol.h>
+#include <Eigen/Geometry>
 
 #include <QDebug>
 
@@ -211,10 +212,12 @@ namespace Avogadro {
 
       double angle;
       switch (index.column()) {
-      case 0:
-      case 1:
-      case 2:
-        return (angles[index.row()][index.column()] + 1);
+      case 0: // start atom
+        return (angles[index.row()][1] + 1);
+      case 1: // vertex -- yes, angles are filled by Open Babel with the vertex first
+        return (angles[index.row()][0] + 1);
+      case 2: // end atom
+        return (angles[index.row()][2] + 1);
       case 3:
         angle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
@@ -407,16 +410,16 @@ namespace Avogadro {
     }
     else if (m_type == AngleType) {
       switch (index.column()) {
-        //      case 3: // angle
-        //        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      case 3: // angle
+        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
       }
     }
     else if (m_type == TorsionType) {
       switch (index.column()) {
-        //      case 4: // dihedral
-        //        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+      case 4: // dihedral
+        return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
       }
@@ -440,6 +443,11 @@ namespace Avogadro {
 
     if (role != Qt::EditRole)
       return false;
+
+    // If an item is actually editable, we should invalidate the cached OBMol
+    // We can still use the cached molecule -- we just invalidate now
+    // So that we can call "return" and have the cache invalid when we leave
+    m_validCache = false;
 
     if (m_type == AtomType) {
       Atom *atom = m_molecule->atom(index.row());
@@ -490,6 +498,7 @@ namespace Avogadro {
         zMatrixTree.skeletonTranslate(bondDirection.x(),
                                       bondDirection.y(),
                                       bondDirection.z());
+        emit dataChanged(index, index);
         return true;
 
         break;
@@ -502,17 +511,31 @@ namespace Avogadro {
       vector<vector<unsigned int> > angles;
       ad->FillAngleArray(angles);
 
-      Atom *startAtom = m_molecule->atom((angles[index.row()][0]));
-      Atom *vertex = m_molecule->atom((angles[index.row()][1]));
-      Atom *endAtom = m_molecule->atom((angles[index.row()][0]));
+      Atom *startAtom = m_molecule->atom((angles[index.row()][1]));
+      Atom *vertex = m_molecule->atom((angles[index.row()][0]));
+      Atom *endAtom = m_molecule->atom((angles[index.row()][2]));
       Bond *bond = startAtom->bond(vertex);
       SkeletonTree zMatrixTree;
+      Eigen::Vector3d abVector, bcVector, crossProductVector;
+      double rotationAdjustment;
+      double initialAngle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
+                                      m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
+                                      m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
 
       switch (index.column()) {
       case 3: // angle
-        zMatrixTree.populate(vertex, bond, m_molecule);
-        zMatrixTree.skeletonRotate(value.toDouble() * cDegToRad, *(endAtom->pos()), *(vertex->pos()));
+        abVector = *(startAtom->pos()) - *(vertex->pos());
+        bcVector = *(endAtom->pos()) - *(vertex->pos());
+        crossProductVector = abVector.cross(bcVector);
         
+        rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
+        
+        qDebug() << " initial: " << initialAngle << " adjustment: " << rotationAdjustment / cDegToRad;
+        
+        zMatrixTree.populate(vertex, bond, m_molecule);
+        zMatrixTree.skeletonRotate(rotationAdjustment, crossProductVector, *(vertex->pos()));
+        
+        emit dataChanged(index, index);
         return true;
         break;
       default:
@@ -520,12 +543,38 @@ namespace Avogadro {
       }
     }
     else if (m_type == TorsionType) {
-      Bond *bond = m_molecule->bond(index.row());
+      OBTorsionData *td = static_cast<OBTorsionData *>(m_cachedOBMol->GetData(TorsionData));
+      vector<vector<unsigned int> > torsions;
+      td->FillTorsionArray(torsions);
+
+      // Dihedral angles (torsions) are defined like so:
+      // a
+      //  \b-c
+      //      \d
+
+      Atom *b = m_molecule->atom((torsions[index.row()][1]));
+      Atom *c = m_molecule->atom((torsions[index.row()][2]));
+      Bond *bond = b->bond(c);
       SkeletonTree zMatrixTree;
+      Eigen::Vector3d bcVector;
+      double rotationAdjustment;
+      double initialAngle = m_cachedOBMol->GetTorsion(m_cachedOBMol->GetAtom(torsions[index.row()][0] + 1),
+                                      m_cachedOBMol->GetAtom(torsions[index.row()][1] + 1),
+                                      m_cachedOBMol->GetAtom(torsions[index.row()][2] + 1),
+                                      m_cachedOBMol->GetAtom(torsions[index.row()][3] + 1));
 
       switch (index.column()) {
       case 4: // dihedral angle
-        return false;
+        bcVector = *(c->pos()) - *(b->pos());
+        rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
+
+        qDebug() << " initial: " << initialAngle << " adjustment: " << rotationAdjustment / cDegToRad;
+
+        zMatrixTree.populate(b, bond, m_molecule);
+        zMatrixTree.skeletonRotate(rotationAdjustment, bcVector, *(b->pos()));
+        
+        emit dataChanged(index, index);
+        return true;
         break;
       default:
         return false;
@@ -611,6 +660,8 @@ namespace Avogadro {
   {
     emit dataChanged(QAbstractItemModel::createIndex(0, 0),
                      QAbstractItemModel::createIndex(rowCount(), columnCount()));
+
+    m_validCache = false;
   }
 
 } // end namespace Avogadro
