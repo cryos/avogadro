@@ -183,9 +183,9 @@ namespace Avogadro {
   {
     int i, j, k;
     // Calculate how many steps each coordinate is along its axis
-    i = (pos.x() - m_min.x()) / m_spacing.x();
-    j = (pos.y() - m_min.y()) / m_spacing.y();
-    k = (pos.z() - m_min.z()) / m_spacing.z();
+    i = int((pos.x() - m_min.x()) / m_spacing.x());
+    j = int((pos.y() - m_min.y()) / m_spacing.y());
+    k = int((pos.z() - m_min.z()) / m_spacing.z());
     return i*m_points.y()*m_points.z() + j*m_points.z() + k;
   }
 
@@ -193,17 +193,17 @@ namespace Avogadro {
   {
     // Calculate how many steps each coordinate is along its axis
     int i, j, k;
-    i = (pos.x() - m_min.x()) / m_spacing.x();
-    j = (pos.y() - m_min.y()) / m_spacing.y();
-    k = (pos.z() - m_min.z()) / m_spacing.z();
+    i = int((pos.x() - m_min.x()) / m_spacing.x());
+    j = int((pos.y() - m_min.y()) / m_spacing.y());
+    k = int((pos.z() - m_min.z()) / m_spacing.z());
     return Vector3i(i, j, k);
   }
 
   Vector3d Cube::position(unsigned int index) const
   {
     int x, y, z;
-    x = static_cast<int>(index / (m_points.y()*m_points.z()));
-    y = static_cast<int>((index - (x*m_points.y()*m_points.z())) / m_points.z());
+    x = int(index / (m_points.y()*m_points.z()));
+    y = int((index - (x*m_points.y()*m_points.z())) / m_points.z());
     z = index % m_points.z();
     return Vector3d(x * m_spacing.x() + m_min.x(),
                     y * m_spacing.y() + m_min.y(),

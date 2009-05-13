@@ -146,7 +146,7 @@ namespace Avogadro {
 
   void HBondEngine::setWidth(int value)
   {
-    m_width = (double) value;
+    m_width = value;
     emit changed();
   }
 
@@ -179,7 +179,7 @@ namespace Avogadro {
   void HBondEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    setWidth(settings.value("width", 2.0).toDouble());
+    setWidth(settings.value("width", 2).toInt());
     setRadius(settings.value("radius", 2.0).toDouble());
     setAngle(settings.value("angle", 120.0).toDouble());
     if (m_settingsWidget) {

@@ -53,6 +53,7 @@ namespace Avogadro {
       PythonScript          *script;
       boost::python::object  instance;
       QWidget               *settingsWidget;
+      QString                identifier;
   };
 
   PythonEngine::PythonEngine(QObject *parent, const QString &filename) : Engine(parent), d(new PythonEnginePrivate)
@@ -79,17 +80,7 @@ namespace Avogadro {
 
   QString PythonEngine::identifier() const
   {
-    if (!PyObject_HasAttrString(d->instance.ptr(), "identifier"))
-      return "Unknown Python Engine";
-
-    try {
-      prepareToCatchError();
-      const char *name = extract<const char*>(d->instance.attr("identifier")());
-      return QString(name);
-    } catch(error_already_set const &) {
-      catchError();
-      return "Unknown Python Engine";
-    }
+    return d->identifier;
   }
 
   QString PythonEngine::name() const
@@ -227,6 +218,7 @@ namespace Avogadro {
 
 
     PythonScript *script = new PythonScript(filename);
+    d->identifier = script->identifier();
 
     if(script->module()) {
       // make sure there is an Engine class defined

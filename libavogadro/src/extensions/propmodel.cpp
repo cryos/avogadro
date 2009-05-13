@@ -386,11 +386,18 @@ namespace Avogadro {
         return true;
       case 0: // type
       case 3: // valence
+      default:
         return false;
       }
     }
     else if (m_type == BondType) {
-      return false;
+      switch (index.column()) {
+      case 4: // length
+        return false;
+        break;
+      default:
+        return false;
+      }
     }
     else if (m_type == CartesianType) {
       if (index.column() > 2)
@@ -404,6 +411,24 @@ namespace Avogadro {
       m_molecule->update();
       emit dataChanged(index, index);
       return true;
+    }
+    else if (m_type == AngleType) {
+            switch (index.column()) {
+      case 4: // angle
+        return false;
+        break;
+      default:
+        return false;
+      }
+    }
+    else if (m_type == TorsionType) {
+      switch (index.column()) {
+      case 5: // dihedral angle
+        return false;
+        break;
+      default:
+        return false;
+      }
     }
     return false;
   }

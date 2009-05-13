@@ -122,17 +122,17 @@ namespace Avogadro
 
       inline unsigned int cellIndex(const Eigen::Vector3d &pos) const
       {
-        return cellIndex( floor( (pos.x() - m_min.x()) / m_edgeLength ),
-                          floor( (pos.y() - m_min.y()) / m_edgeLength ),
-                          floor( (pos.z() - m_min.z()) / m_edgeLength ) );
+        return cellIndex( int(floor( (pos.x() - m_min.x()) / m_edgeLength )),
+                          int(floor( (pos.y() - m_min.y()) / m_edgeLength )),
+                          int(floor( (pos.z() - m_min.z()) / m_edgeLength )) );
       }
 
       inline Eigen::Vector3i cellIndexes(const Eigen::Vector3d *pos) const
       {
         Eigen::Vector3i index;
-        index.x() = floor( (pos->x() - m_min.x()) / m_edgeLength );
-        index.y() = floor( (pos->y() - m_min.y()) / m_edgeLength );
-        index.z() = floor( (pos->z() - m_min.z()) / m_edgeLength );
+        index.x() = int(floor( (pos->x() - m_min.x()) / m_edgeLength ));
+        index.y() = int(floor( (pos->y() - m_min.y()) / m_edgeLength ));
+        index.z() = int(floor( (pos->z() - m_min.z()) / m_edgeLength ));
         return index;
       }
 
@@ -185,7 +185,7 @@ namespace Avogadro
 
       Eigen::Vector3d                     m_min, m_max;
       Eigen::Vector3i                     m_dim;
-      double                              m_xyDim;
+      int                                 m_xyDim;
       std::vector<std::vector<Atom*> >    m_cells;
 
       std::vector<Eigen::Vector3i>        m_offsetMap;

@@ -72,7 +72,7 @@ namespace Avogadro {
 
   void EngineItemModel::engineChanged()
   {
-    Engine *engine = dynamic_cast<Engine *>(sender());
+    Engine *engine = qobject_cast<Engine *>(sender());
     if(!engine)
       return;
 
@@ -113,8 +113,7 @@ namespace Avogadro {
       return QVariant();
     }
 
-    // FIXME: Mac qobject_cast problem strikes again
-    Engine *engine = dynamic_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
+    Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(engine)
     {
       if(role == Qt::DisplayRole || role == Qt::EditRole) {
@@ -142,8 +141,7 @@ namespace Avogadro {
       return false;
     }
 
-    // FIXME: Geoff's Mac qobject_cast bug strikes again
-    Engine *engine = dynamic_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
+    Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(role == Qt::CheckStateRole) {
       if(value == Qt::Checked) {
         engine->setEnabled(true);

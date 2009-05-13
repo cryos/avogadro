@@ -115,8 +115,7 @@ namespace Avogadro {
   void ToolGroup::activateTool()
   {
     QAction *action = qobject_cast<QAction *>(sender());
-    // FIXME: based on mac osx error
-    Tool *tool = dynamic_cast<Tool *>(action->parent());
+    Tool *tool = qobject_cast<Tool *>(action->parent());
 
     if(tool) {
       setActiveTool(tool);

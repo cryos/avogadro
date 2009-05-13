@@ -66,7 +66,7 @@ namespace Avogadro {
                            double deltaX, double deltaY)
   {
     Vector3d fromPos = widget->camera()->unProject(QPoint(0, 0), what);
-    Vector3d toPos = widget->camera()->unProject(QPoint(deltaX, deltaY), what);
+    Vector3d toPos = widget->camera()->unProject(QPoint(int(deltaX), int(deltaY)), what);
     widget->camera()->translate(toPos - fromPos);
   }
 

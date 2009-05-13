@@ -53,6 +53,7 @@ namespace Avogadro {
     QString text;
 
     text  = tr("Name: ") + plugin->name() + '\n';
+    text  = tr("Identifier: ") + plugin->identifier() + '\n';
     text += tr("File: ") + plugin->fileName() + "\n\n";
     text += tr("Description:\n") + plugin->description() + '\n';
 
@@ -71,7 +72,7 @@ namespace Avogadro {
 
   void PluginSettings::loadValues()
   {
-    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    PluginItemModel *model = qobject_cast<PluginItemModel*>(ui.listView->model());
     if (model)
       delete model;
 
@@ -82,7 +83,7 @@ namespace Avogadro {
   
   void PluginSettings::saveValues()
   {
-    PluginItemModel *model = dynamic_cast<PluginItemModel*>(ui.listView->model());
+    PluginItemModel *model = qobject_cast<PluginItemModel*>(ui.listView->model());
     if (!model)
       return;
     if (!model->changed())

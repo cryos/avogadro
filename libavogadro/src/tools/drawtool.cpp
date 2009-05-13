@@ -55,6 +55,7 @@
 #include <QPushButton>
 #include <QDir>
 #include <QDebug>
+#include <QTimer>
 
 using Eigen::Vector3d;
 using OpenBabel::OBForceField;
@@ -555,6 +556,46 @@ namespace Avogadro {
     return 0;
   }
 
+  QUndoCommand* DrawTool::keyPressEvent(GLWidget *widget, QKeyEvent *event)
+  {
+    bool arrowKey = true;
+
+    switch (event->key()) {
+      case Qt::Key_Left: // Left arrow
+      case Qt::Key_Right: // Right arrow
+      case Qt::Key_Up: // Up arrow
+      case Qt::Key_Down: // Down arrow
+        break;
+      default:
+        arrowKey = false; // Maybe we can set this as an element symbol
+        break;
+    }
+
+    if (arrowKey || event->text().isEmpty()) {
+      event->ignore();
+      return 0;
+    }
+
+    if (m_keyPressBuffer.isEmpty()) // this is the first character typed
+      // wait for 2 seconds, then clear the buffer
+      // this ensures we can get multi-character elements
+      QTimer::singleShot(2000, this, SLOT(clearKeyPressBuffer()));
+
+    m_keyPressBuffer.append(event->text());
+    // try setting an element symbol from this string
+    int element = OpenBabel::etab.GetAtomicNum(m_keyPressBuffer.toAscii().data());
+    if (element == 0) {
+      clearKeyPressBuffer(); // not an element name
+      event->ignore();
+      return 0;
+    }
+
+    event->accept();
+    customElementChanged(element);
+
+    return 0;
+  }
+
   Atom *DrawTool::addAtom(GLWidget *widget, const QPoint& p)
   {
     Atom *atom = widget->molecule()->addAtom();
@@ -780,6 +821,11 @@ namespace Avogadro {
   void DrawTool::settingsWidgetDestroyed()
   {
     m_settingsWidget = 0;
+  }
+
+  void DrawTool::clearKeyPressBuffer()
+  {
+    m_keyPressBuffer.clear();
   }
 
   void DrawTool::showFragmentDialog(bool)

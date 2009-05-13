@@ -27,6 +27,7 @@
 
 #include <QDebug>
 #include <QTextEdit>
+#include <QCryptographicHash>
 
 using namespace std;
 using namespace boost::python;
@@ -87,6 +88,18 @@ namespace Avogadro
     return m_module;
   }
 
+  const QString& PythonScript::fileName() const
+  {
+    return m_fileName;
+  }
+      
+  QString PythonScript::identifier() const
+  {
+    QFile file(m_fileName);
+    file.open(QIODevice::ReadOnly);
+    QString identity = QCryptographicHash::hash(file.readAll(), QCryptographicHash::Sha1).toHex();
+    return identity;
+  }
 
 
 }

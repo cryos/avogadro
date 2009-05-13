@@ -333,6 +333,11 @@ namespace Avogadro {
     }
   }
 
+  bool PeriodicTableScene::event(QEvent *e)
+  {
+    return QGraphicsScene::event(e);
+  }
+
   void PeriodicTableScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
   {
     if (event->button() != Qt::LeftButton)
@@ -384,10 +389,16 @@ namespace Avogadro {
     emit(elementChanged(id));
   }
 
+  bool PeriodicTableView::event(QEvent *e)
+  {
+    return QGraphicsView::event(e);
+  }
+
   void PeriodicTableView::mouseDoubleClickEvent(QMouseEvent *)
   {
     close();
   }
+
 } // End namespace Avogadro
 
 #include "periodictableview.moc"

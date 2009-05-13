@@ -76,6 +76,8 @@ namespace Avogadro {
       /*! Handle a scroll wheel (i.e., zooming in and out of the canvas)
       */
       virtual QUndoCommand* wheelEvent(GLWidget *widget, QWheelEvent *event);
+
+      virtual QUndoCommand* keyPressEvent(GLWidget *widget, QKeyEvent *event);
       //@}
 
       /**
@@ -108,6 +110,8 @@ namespace Avogadro {
       void setBondOrder(int i);
       void setInsertFragmentMode( bool mode );
 
+      void clearKeyPressBuffer();
+
     private:
       Qt::MouseButtons    _buttons;
 
@@ -115,6 +119,8 @@ namespace Avogadro {
 
       QPoint              m_initialDraggingPosition;
       QPoint              m_lastDraggingPosition;
+
+      QString   m_keyPressBuffer;
 
       bool m_beginAtomAdded;
       bool m_endAtomAdded;
@@ -126,7 +132,7 @@ namespace Avogadro {
       int m_bondOrder;
 
       int m_prevAtomElement;
-
+ 
       Bond *m_prevBond;
       int m_prevBondOrder;
 

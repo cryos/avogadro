@@ -43,7 +43,7 @@
     m_beginAtomId(FALSE_ID), m_endAtomId(FALSE_ID), m_order(1)
   {
     m_molecule = static_cast<Molecule*>(parent);
-    m_id = 0l - 1;
+    m_id = ULONG_MAX;
   }
 
   Bond::~Bond()
