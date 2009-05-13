@@ -140,14 +140,12 @@ foreach(headerFile ${libavogadro_HDRS})
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${libavogadro_HDRS})
 
-add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
-set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
-set_target_properties(avogadro-lib
+add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
+set_target_properties(avogadro
   PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 0 )
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 
-target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
-
-install(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
 install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/avogadro)
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 

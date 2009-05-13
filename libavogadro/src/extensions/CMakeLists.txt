@@ -10,7 +10,7 @@ include_directories(
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro-lib")
+set(LINK_LIBS "avogadro")
 
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
@@ -57,7 +57,7 @@ avogadro_plugin(h2methylextension h2methylextension.cpp)
 #ADD_LIBRARY(wiitrackextension SHARED ${wiitrackextension_SRCS})
 #TARGET_LINK_LIBRARIES(wiitrackextension
 #        ${CWIID_LIBRARIES}
-#	avogadro-lib
+#	avogadro
 #)
 #INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
 
@@ -105,7 +105,7 @@ avogadro_plugin(animationextension
   animation.qrc)
 
 ### Lin Morph Animation
-#set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp 
+#set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp
 #  trajvideomaker.cpp)
 #avogadro_plugin(linmorphextension
 #  "${linmorphextension_SRCS}"
@@ -113,7 +113,7 @@ avogadro_plugin(animationextension
 #  linmorph.qrc)
 
 ### POV-Ray extension
-avogadro_plugin("povrayextension" 
+avogadro_plugin("povrayextension"
   "povrayextension.cpp;povpainter.cpp;povraydialog.cpp"
   "povraydialog.ui")
 

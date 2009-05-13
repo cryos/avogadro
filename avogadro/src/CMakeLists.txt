@@ -68,7 +68,7 @@ add_executable(avogadro-app WIN32 MACOSX_BUNDLE
 set_target_properties(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
 
 target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
-    avogadro-lib)
+    avogadro)
 
 if(APPLE)
   set(MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${Avogadro_VERSION_FULL}")
