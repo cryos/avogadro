@@ -1,4 +1,5 @@
-#include <Python.h>
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/plugin.h>
@@ -29,6 +30,9 @@ void export_Plugin()
     .add_property("settingsWidget", make_function(&Plugin::settingsWidget, 
           //return_value_policy<reference_existing_object>()))
           return_value_policy<return_by_value>())) // use the QClass_converters to give a real PyQt object
+    // functions
+    .def("readSettings", &Plugin::readSettings)
+    .def("writeSettings", &Plugin::writeSettings)
     ;
   
   class_<Avogadro::PluginFactory, boost::noncopyable>("PluginFactory", no_init)

@@ -4,7 +4,8 @@ from numpy import *
 
 class TestMesh(unittest.TestCase):
   def setUp(self):
-    self.mesh = Avogadro.Mesh()
+    self.molecule = Avogadro.molecules.addMolecule()
+    self.mesh = self.molecule.addMesh()
 
   def test_name(self):
     self.mesh.name = "testing"

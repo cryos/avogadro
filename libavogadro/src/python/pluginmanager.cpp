@@ -1,3 +1,5 @@
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/plugin.h>

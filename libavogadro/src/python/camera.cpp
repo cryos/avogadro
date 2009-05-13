@@ -1,4 +1,8 @@
-#include <Python.h>
+// Last update: timvdm 12 May 2009
+
+//#include <Python.h>
+// http://www.boost.org/doc/libs/1_39_0/libs/python/doc/building.html#include-issues
+#include <boost/python/detail/wrap_python.hpp>
 #include <boost/python.hpp>
 
 #include <avogadro/camera.h>
@@ -16,6 +20,8 @@ void export_Camera()
   Eigen::Vector3d (Camera::*unProject_ptr3)(const QPoint&) const = &Camera::unProject;
   
   class_<Avogadro::Camera, boost::noncopyable>("Camera")
+    .def(init<const GLWidget*, double>())
+    .def(init<const Camera*>())
     // read/write properties
     .add_property("angleOfViewY", &Camera::angleOfViewY, &Camera::setAngleOfViewY)
     .add_property("modelview", make_function(modelview_ptr, return_value_policy<return_by_value>()),

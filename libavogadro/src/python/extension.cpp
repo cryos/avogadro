@@ -1,3 +1,5 @@
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/extension.h>
@@ -13,6 +15,7 @@ using namespace Avogadro;
 
 void export_Extension()
 {
+  
   class_<Avogadro::Extension, bases<Avogadro::Plugin>, boost::noncopyable>("Extension", no_init)
     // read-only poperties
     .add_property("actions", &Extension::actions)

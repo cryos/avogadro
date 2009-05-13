@@ -50,6 +50,29 @@ struct std_vector_double_ptr_to_python_list
 
     return incref(pyList.ptr());
   }
+
+};
+  
+struct std_vector_double_ref_to_python_list
+{
+  //typedef typename std::vector<double>::const_iterator iter;
+  typedef std::vector<double>::const_iterator iter;
+
+  //
+  // example: const std::vector<double>& Molecule::energies()
+  //
+  static PyObject* convert(std::vector<double> const &list)
+  {
+    // the python list
+    boost::python::list pyList;
+
+    for (iter i = list.begin(); i != list.end(); ++i) {
+      pyList.append(*i);
+    }
+
+    return incref(pyList.ptr());
+  }
+
 };
 
 
@@ -191,8 +214,10 @@ void export_std_vector()
 {
   export_std_vector< std::vector<double> >(); // for Cube
   export_std_vector< std::vector<Eigen::Vector3f> >(); // for Mesh
+  export_std_vector< std::vector<Eigen::Vector3d> >(); // for Mesh
   
   to_python_converter<std::vector<double>*, std_vector_double_ptr_to_python_list >();
+  to_python_converter<std::vector<double>, std_vector_double_ref_to_python_list >();
 
   /*  
   class_<QListTest>("QListTest")
