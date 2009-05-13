@@ -56,7 +56,7 @@ namespace Avogadro {
    * @brief The molecule contains all of the molecular primitives.
    * @author Marcus D. Hanwell
    *
-   * The Molecule class contains the core data of the molecule. It is the cetral
+   * The Molecule class contains the core data of the molecule. It is the central
    * model, holding all information displayed by our various views and
    * manipulated by tools and extensions. It typically contains Atom and Bond
    * objects, but may also contain Cube, Mesh, Fragment, Residue and other

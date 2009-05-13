@@ -30,7 +30,7 @@
 
 #include "glwidget.h"
 #include "camera.h"
-#include "glpainter.h"
+#include "glpainter_p.h"
 
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
@@ -1364,6 +1364,7 @@ namespace Avogadro {
 
     // compute the molecule's geometric info
     updateGeometry();
+    invalidateDLs();
 
     // setup the camera to have a nice viewpoint on the molecule
     d->camera->initializeViewPoint();

@@ -10,7 +10,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro-lib")
+set(LINK_LIBS "avogadro")
 
 ### elementcolor
 # This is built statically by the main libavogadro -- we do not build it again

@@ -13,7 +13,7 @@ if(CPACK_GENERATOR MATCHES "NSIS")
     "http://avogadro.openmolecules.net/wiki/Avogadro_@CPACK_PACKAGE_VERSION@" "Release Notes"
     "http://avogadro.openmolecules.net/" "Avogadro Web Site")
   SET(CPACK_NSIS_MODIFY_PATH ON)
-  
+
   # Associate Avogadro with some file extensions
   set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "
 	WriteRegStr HKCR '.cml' '' 'CML'
@@ -31,3 +31,15 @@ if(CPACK_GENERATOR MATCHES "NSIS")
 	DeleteRegKey HKCR 'CML'
   ")
 endif(CPACK_GENERATOR MATCHES "NSIS")
+
+# New apple packaging stuff
+set(APPLE @APPLE@)
+
+if(APPLE)
+  set(CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
+  set(CPACK_SET_DESTDIR TRUE)
+endif(APPLE)
+
+if("${CPACK_GENERATOR}" STREQUAL "PackageMaker")
+  set(CPACK_PACKAGE_DEFAULT_LOCATION "/Applications")
+endif("${CPACK_GENERATOR}" STREQUAL "PackageMaker")

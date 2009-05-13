@@ -18,13 +18,13 @@ SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 if (WIN32)
   SET_TARGET_PROPERTIES(python-module PROPERTIES SUFFIX ".pyd")
-  TARGET_LINK_LIBRARIES(python-module avogadro-lib)
+  TARGET_LINK_LIBRARIES(python-module avogadro)
 else (WIN32)
-  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro-lib)
+  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro)
 endif (WIN32)
 
 # Let's try to use this instead:
-EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 
+EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c
     "from sys import stdout; from distutils import sysconfig; stdout.write(sysconfig.get_python_lib())"
     OUTPUT_VARIABLE PYTHON_LIB_PATH)
 

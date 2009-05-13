@@ -28,9 +28,9 @@
 #include "config.h"
 
 #ifdef ENABLE_PYTHON
-  #include "pythontool.h"
-  #include "pythonengine.h"
-  #include "pythonextension.h"
+  #include "pythontool_p.h"
+  #include "pythonengine_p.h"
+  #include "pythonextension_p.h"
 #endif
 
 #include <avogadro/engine.h>
@@ -511,10 +511,12 @@ namespace Avogadro {
       // Make it relative
       pluginPaths << QCoreApplication::applicationDirPath()
                      + "/../" + QString(INSTALL_LIBDIR);
-#ifdef Q_WS_MAC
-        QString prefixPath = QString(INSTALL_PREFIX) + '/'
-          + QString(INSTALL_LIBDIR);
-        pluginPaths << prefixPath;
+#ifndef AVO_APP_BUNDLE
+  #ifdef Q_WS_MAC
+      QString prefixPath = QString(INSTALL_PREFIX) + '/'
+                           + QString(INSTALL_LIBDIR);
+      pluginPaths << prefixPath;
+  #endif
 #endif
     }
 

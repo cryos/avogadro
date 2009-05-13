@@ -43,7 +43,7 @@ foreach (test ${tests})
     ${OPENBABEL2_LIBRARIES}
     ${QT_LIBRARIES}
     ${QT_QTTEST_LIBRARY}
-    avogadro-lib)
+    avogadro)
   add_test(${test}Test ${CMAKE_BINARY_DIR}/bin/${test}test)
 endforeach (test ${tests})
 
@@ -63,7 +63,7 @@ foreach (bench ${benches})
     ${OPENBABEL2_LIBRARIES}
     ${QT_LIBRARIES}
     ${QT_QTTEST_LIBRARY}
-    avogadro-lib)
+    avogadro)
   add_test(${bench}Bench
   ${CMAKE_BINARY_DIR}/bin/${bench}bench)
 endforeach (bench ${benches})

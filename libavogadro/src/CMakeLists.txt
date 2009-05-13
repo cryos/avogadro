@@ -16,8 +16,6 @@ include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${OPENBABEL2_INCLUDE_DIR}
-  ${BOOST_PYTHON_INCLUDES}
-  ${PYTHON_INCLUDE_PATH}
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
@@ -69,9 +67,6 @@ set(libavogadro_HDRS
   undosequence.h
   zmatrix.h
 )
-if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-  set(libavogadro_HDRS ${libavogadro_HDRS} pythonerror.h)
-endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 
@@ -85,9 +80,9 @@ set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                      ${QT_LIBRARIES}
-                      ${OPENGL_LIBRARIES}
-                      )
+                       ${QT_LIBRARIES}
+                       ${OPENGL_LIBRARIES}
+                       )
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
@@ -101,9 +96,9 @@ if(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
     ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythontool.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythontool_p.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine_p.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension_p.cpp)
   foreach(P_ITEM ${PYTHON_SRCS})
     list(REMOVE_ITEM libavogadro_SRCS "${P_ITEM}")
   endforeach(P_ITEM ${PYTHON_SRCS})
@@ -113,9 +108,21 @@ qt4_automoc(${libavogadro_SRCS})
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-  include_directories(${Boost_INCLUDE_DIRS})
-  link_directories(${Boost_LIBRARY_DIRS})
+  include_directories(
+    ${Boost_INCLUDE_DIRS}
+    ${PYTHON_INCLUDE_PATH})
   qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
+  # The Python headers, only installed if Python is enabled
+  set(python_HDRS
+    pythoninterpreter.h
+    pythonscript.h
+    pythonerror.h
+  )
+
+  message(STATUS "Setting new boost python libraries")
+  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
+                         ${Boost_LIBRARIES})
+  set(libavogadro_HDRS ${libavogadro_HDRS} ${python_HDRS})
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 # Set up the include directory and symlink/copy all headers to it.
@@ -133,28 +140,12 @@ foreach(headerFile ${libavogadro_HDRS})
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${libavogadro_HDRS})
 
-add_library(avogadro-lib SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
-set_target_properties(avogadro-lib PROPERTIES OUTPUT_NAME avogadro)
-set_target_properties(avogadro-lib
+add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
+set_target_properties(avogadro
   PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 0 )
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 
-if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-  # The Python headers, only installed if Python is enabled
-  set(python_HDRS
-    pythoninterpreter.h
-    pythonscript.h
-    pythonerror.h
-  )
-
-  message(STATUS "Setting new boost python libraries")
-  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
-                         ${Boost_LIBRARIES})
-  set(libavogadro_HDRS ${libavogadro_HDRS} ${python_HDRS})
-endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-
-target_link_libraries(avogadro-lib ${AVO_LINK_LIBRARIES})
-
-install(TARGETS avogadro-lib DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
 install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/avogadro)
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 

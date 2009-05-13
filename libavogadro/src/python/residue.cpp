@@ -1,4 +1,5 @@
-#include <Python.h>
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/primitive.h>
@@ -16,6 +17,7 @@ void export_Residue()
     // read/write properties
     .add_property("number", &Residue::number, &Residue::setNumber)
     .add_property("chainNumber", &Residue::chainNumber, &Residue::setChainNumber)
+    .add_property("chainID", &Residue::chainID, &Residue::setChainID)
     .add_property("atomIds", make_function(&Residue::atomIds, return_value_policy<return_by_value>()), &Residue::setAtomIds)
     // real functions 
     .def("atomId", &Residue::atomId)

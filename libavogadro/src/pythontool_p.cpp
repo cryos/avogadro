@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "pythontool.h"
+#include "pythontool_p.h"
 #include "pythoninterpreter.h"
 #include "pythonscript.h"
 
@@ -327,4 +327,4 @@ namespace Avogadro {
 
 }
 
-#include "pythontool.moc"
+#include "pythontool_p.moc"

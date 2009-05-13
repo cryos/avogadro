@@ -10,15 +10,15 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro-lib")
+set(LINK_LIBS "avogadro")
 
 ### drawtool
-set(drawtool_SRCS 
+set(drawtool_SRCS
   drawtool.cpp
   drawcommand.cpp
   directorytreemodel.cpp
   insertfragmentdialog.cpp)
-avogadro_plugin(drawtool 
+avogadro_plugin(drawtool
   "${drawtool_SRCS}"
   insertfragmentdialog.ui
   drawtool.qrc)

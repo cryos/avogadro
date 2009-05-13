@@ -1,7 +1,10 @@
-#include <Python.h>
+// Last update: timvdm 12 May 2009
+
 #include <boost/python.hpp>
 
 #include <avogadro/primitive.h>
+
+#include <QReadWriteLock>
 
 using namespace boost::python;
 using namespace Avogadro;
@@ -32,13 +35,14 @@ void export_Primitive()
     .value("FirstType", Primitive::FirstType)
     ;
 
-  class_<Avogadro::Primitive, boost::noncopyable>("Primitive")
+  class_<Avogadro::Primitive, boost::noncopyable>("Primitive", no_init)
     // read-only properties
     .add_property("id", &Primitive::id) // read-only, managed by Molecule
     .add_property("index", &Primitive::index) // read-only, managed by Molecule
     .add_property("type", &Primitive::type) // read-only, managed by Molecule
     // real functions
     .def("update", &Primitive::update)
+    .def("lock", &Primitive::lock, return_value_policy<manage_new_object>())
     ;
  
 }

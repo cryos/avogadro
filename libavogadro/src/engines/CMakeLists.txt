@@ -10,7 +10,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro-lib")
+set(LINK_LIBS "avogadro")
 
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)

@@ -1,25 +1,25 @@
 # Set up CPack with the correct version, external libraries etc
 
 set (CPACK_PACKAGE_NAME "Avogadro")
-set (CPACK_PACKAGE_VERSION_MAJOR 0)
-set (CPACK_PACKAGE_VERSION_MINOR 9)
-set (CPACK_PACKAGE_VERSION_PATCH 4)
+set (CPACK_PACKAGE_VERSION_MAJOR ${Avogadro_VERSION_MAJOR})
+set (CPACK_PACKAGE_VERSION_MINOR ${Avogadro_VERSION_MINOR})
+set (CPACK_PACKAGE_VERSION_PATCH ${Avogadro_VERSION_PATCH})
 set (CPACK_PACKAGE_INSTALL_DIRECTORY "Avogadro")
-set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
+#set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
 
 set (CPACK_PACKAGE_EXECUTABLES "avogadro" "Avogadro")
 set (CPACK_CREATE_DESKTOP_LINKS "avogadro")
 
 if (WIN32)
   # Set the directories to defaults if not set
- 
+
   ##############################################
   # Zlib                                       #
   ##############################################
   find_file(zlib_DLL "zlib1.dll" PATHS
       "C:/src/zlib-1.2.3/projects/visualc6/Win32_DLL_Release"
       ${zlib_DIR}
-  ) 
+  )
   install(FILES ${zlib_DLL} DESTINATION bin)
 
   ##############################################
@@ -29,12 +29,12 @@ if (WIN32)
       "C:/src/libxml2"
       "C:/src/libxml2-2.7.3"
       "C:/src/libxml2-2-7-3"
-  ) 
+  )
   find_file(libxml2_DLL "libxml2.dll" PATHS
       "${libxml2_DIR}/win32/bin.msvc"
       "${libxml2_DIR}/bin"
       "${libxml2_DIR}/lib"
-  ) 
+  )
   install(FILES ${libxml2_DLL} DESTINATION bin)
 
   ##############################################
@@ -65,14 +65,14 @@ if (WIN32)
       "${openbabel_SRCDIR}/Release"
       "${openbabel_SRCDIR}"
   )
-  set(openbabel_DLLs 
+  set(openbabel_DLLs
       "${openbabel_BINDIR}/openbabel-2.dll"
       "${openbabel_BINDIR}/inchi.dll")
   install(FILES ${openbabel_DLLs} DESTINATION bin)
 
   file(GLOB openbabel_FORMATS "${openbabel_BINDIR}/*.obf")
   install(FILES ${openbabel_FORMATS} DESTINATION bin)
- 
+
   ##############################################
   # Qt                                         #
   ##############################################
@@ -91,7 +91,7 @@ if (WIN32)
 
   ##############################################
   # GLSL shaders (Optional)                    #
-  ##############################################  
+  ##############################################
   if(ENABLE_GLSL AND GLEW_FOUND)
     find_file(glew_DLL "glew32.dll" PATHS
         "C:/src/glew/bin"
@@ -104,7 +104,7 @@ if (WIN32)
   ##############################################
   if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     # Python support - optionally enabled and installed
-    
+
     #
     # python library
     #
@@ -141,18 +141,18 @@ if (WIN32)
     file(GLOB python_lib_encodings_FILES "${python_DIR}/lib/encodings/*.py")
     install(FILES ${python_lib_encodings_FILES} DESTINATION bin/lib/encodings)
     #
-    # sip 
+    # sip
     #
     set(python_lib_sip_FILES
         "${python_DIR}/lib/site-packages/sip.pyd"
         "${python_DIR}/lib/site-packages/sipconfig.py"
     )
     install(FILES ${python_lib_sip_FILES} DESTINATION bin/lib/site-packages)
-    #    
+    #
     # numpy
     #
     install(DIRECTORY ${python_DIR}/lib/site-packages/numpy DESTINATION bin/lib/site-packages)
-    # 
+    #
     # PyQt4
     #
     find_path(pyqt_DIR "pyqtconfig.py.in" PATHS
@@ -166,7 +166,7 @@ if (WIN32)
       "${pyqt_DIR}/QtOpenGL/QtOpenGL.pyd"
       "${pyqt_DIR}/QtCore/QtCore.pyd")
     install(FILES ${pyqt_DEPS} DESTINATION bin/lib/site-packages/PyQt4)
-    # 
+    #
     # Avogadro python module
     #
     install(FILES ${Avogadro_BINARY_DIR}/lib/Avogadro.pyd DESTINATION bin/lib/site-packages)
@@ -183,6 +183,10 @@ if (WIN32)
   endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 endif (WIN32)
+
+if(APPLE)
+  set(CMAKE_OSX_ARCHITECTURES "ppc;i386")
+endif(APPLE)
 
 configure_file("${CMAKE_MODULE_PATH}/AvoCPackOptions.cmake.in"
   "${CMAKE_BINARY_DIR}/AvoCPackOptions.cmake" @ONLY)

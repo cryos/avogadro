@@ -24,12 +24,12 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "glpainter.h"
+#include "glpainter_p.h"
 #include "glwidget.h"
 #include "camera.h"
-#include "sphere.h"
-#include "cylinder.h"
-#include "textrenderer.h"
+#include "sphere_p.h"
+#include "cylinder_p.h"
+#include "textrenderer_p.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>

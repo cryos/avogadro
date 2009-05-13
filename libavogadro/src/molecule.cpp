@@ -341,19 +341,28 @@ namespace Avogadro{
       return 0;
     }
   }
-
+    
   Cube *Molecule::addCube()
+  {
+    Q_D(const Molecule);
+    return addCube(d->cubes.size());
+  }
+
+  Cube *Molecule::addCube(unsigned long id)
   {
     Q_D(Molecule);
 
     Cube *cube = new Cube(this);
 
     m_lock->lockForWrite();
-    d->cubes.push_back(cube);
+    if(id >= d->cubes.size())
+      d->cubes.resize(id+1,0);
+    d->cubes[id] = cube;
+    // Does this still want to have the same index as before somehow?
     d->cubeList.push_back(cube);
     m_lock->unlock();
 
-    cube->setId(d->cubes.size()-1);
+    cube->setId(id);
     cube->setIndex(d->cubeList.size()-1);
 
     // now that the id is correct, emit the signal
@@ -391,16 +400,24 @@ namespace Avogadro{
 
   Mesh * Molecule::addMesh()
   {
+    Q_D(const Molecule);
+    return addMesh(d->meshes.size());
+  }
+
+  Mesh * Molecule::addMesh(unsigned long id)
+  {
     Q_D(Molecule);
 
     Mesh *mesh = new Mesh(this);
 
     m_lock->lockForWrite();
-    d->meshes.push_back(mesh);
+    if (id >= d->meshes.size())
+      d->meshes.resize(id+1,0);
+    d->meshes[id] = mesh;
     d->meshList.push_back(mesh);
     m_lock->unlock();
 
-    mesh->setId(d->meshes.size()-1);
+    mesh->setId(id);
     mesh->setIndex(d->meshList.size()-1);
 
     // now that the id is correct, emit the signal
@@ -462,14 +479,24 @@ namespace Avogadro{
 
   Residue * Molecule::addResidue()
   {
+    Q_D(const Molecule);
+    return addResidue(d->residues.size());
+  }
+
+  Residue * Molecule::addResidue(unsigned long id)
+  {
     Q_D(Molecule);
 
     Residue *residue = new Residue(this);
 
-    d->residues.push_back(residue);
-    residue->setId(d->residues.size()-1);
-
+    m_lock->lockForWrite();
+    if (id >= d->residues.size())
+      d->residues.resize(id+1,0);
+    d->residues[id] = residue;
     d->residueList.push_back(residue);
+    m_lock->unlock();
+ 
+    residue->setId(id);
     residue->setIndex(d->residueList.size()-1);
 
     // now that the id is correct, emit the signal
@@ -505,14 +532,24 @@ namespace Avogadro{
 
   Fragment * Molecule::addRing()
   {
+    Q_D(const Molecule);
+    return addRing(d->rings.size());
+  }
+  
+  Fragment * Molecule::addRing(unsigned long id)
+  {
     Q_D(Molecule);
 
     Fragment *ring = new Fragment(this);
 
-    d->rings.push_back(ring);
-    ring->setId(d->rings.size()-1);
-
+    m_lock->lockForWrite();
+    if (id >= d->rings.size())
+      d->rings.resize(id+1,0);
+    d->rings[id] = ring;
     d->ringList.push_back(ring);
+    m_lock->unlock();
+ 
+    ring->setId(id);
     ring->setIndex(d->ringList.size()-1);
 
     // now that the id is correct, emit the signal
