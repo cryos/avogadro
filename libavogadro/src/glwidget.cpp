@@ -1364,6 +1364,7 @@ namespace Avogadro {
 
     // compute the molecule's geometric info
     updateGeometry();
+    invalidateDLs();
 
     // setup the camera to have a nice viewpoint on the molecule
     d->camera->initializeViewPoint();
