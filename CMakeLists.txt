@@ -280,10 +280,17 @@ include(CMakeExportBuildSettings)
 cmake_export_build_settings("${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake")
 export_library_dependencies("${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake")
 
+if(APPLE)
+  install(FILES "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+    DESTINATION Resources)
+else(APPLE)
+  install(FILES "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+    DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
+endif(APPLE)
+
 # Install the configuration files to help find Avogadro
 install(FILES
   "${CMAKE_MODULE_PATH}/AvogadroUse.cmake"
-  "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake"
   DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
