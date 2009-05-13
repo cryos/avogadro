@@ -272,8 +272,12 @@ add_custom_command(TARGET create-translations
 configure_file(
   "${CMAKE_MODULE_PATH}/AvogadroConfig.cmake.in"
   "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
-  IMMEDIATE @ONLY
-)
+  IMMEDIATE @ONLY)
+
+configure_file(
+  "${CMAKE_MODULE_PATH}/AvogadroConfigVersion.cmake.in"
+  "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
+  IMMEDIATE @ONLY)
 
 # Export our build settings and library dependencies
 include(CMakeExportBuildSettings)
@@ -281,10 +285,14 @@ cmake_export_build_settings("${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
 export_library_dependencies("${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake")
 
 if(APPLE)
-  install(FILES "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+  install(FILES
+    "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+    "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION Resources)
 else(APPLE)
-  install(FILES "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+  install(FILES
+    "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
+    "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
 endif(APPLE)
 
