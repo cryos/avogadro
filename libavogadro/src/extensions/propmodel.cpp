@@ -117,6 +117,40 @@ namespace Avogadro {
     if (!index.isValid())
       return QVariant();
 
+    // handle text alignments
+    if (role == Qt::TextAlignmentRole) {
+      if (m_type == CartesianType) {
+        return Qt::AlignRight + Qt::AlignVCenter; // XYZ coordinates
+      }
+      else if (m_type == ConformerType) {
+        return Qt::AlignRight + Qt::AlignVCenter; // energies
+      }
+      else if (m_type == AtomType) {
+        if (index.column() == 3)
+          return Qt::AlignRight + Qt::AlignVCenter; // partial charge
+        else
+          return Qt::AlignHCenter + Qt::AlignVCenter;
+      }
+      else if (m_type == BondType) {
+        if (index.column() == 4)
+          return Qt::AlignRight + Qt::AlignVCenter; // bond length
+        else
+          return Qt::AlignHCenter + Qt::AlignVCenter;
+      }
+      else if (m_type == AngleType) {
+        if (index.column() == 3)
+          return Qt::AlignRight + Qt::AlignVCenter; // angle
+        else
+          return Qt::AlignHCenter + Qt::AlignVCenter;
+      }
+      else if (m_type == TorsionType) {
+        if (index.column() == 4)
+          return Qt::AlignRight + Qt::AlignVCenter; // dihedral angle
+        else
+          return Qt::AlignHCenter + Qt::AlignVCenter;
+      }
+    }
+
     if (role != Qt::DisplayRole)
       return QVariant();
 
@@ -136,10 +170,10 @@ namespace Avogadro {
         }
       case 1: // atomic number
         return atom->atomicNumber();
-      case 2: // partial charge
-        return QString::number(atom->partialCharge(), 'f', 3);
-      case 3: // valence
+      case 2: // valence
         return atom->valence();
+      case 3: // partial charge
+        return QString::number(atom->partialCharge(), 'f', 3);
       }
     }
     else if (m_type == BondType) {
@@ -158,10 +192,10 @@ namespace Avogadro {
           return bond->GetEndAtomIdx();
         case 2: // order
           return bond->GetBondOrder();
-        case 3: // length
-          return QString::number(bond->GetLength(), 'f', 4);
-        case 4: // rotatable
+        case 3: // rotatable
           return bond->IsRotor();
+        case 4: // length
+          return QString::number(bond->GetLength(), 'f', 4);
         }
     }
     else if (m_type == AngleType) {
@@ -255,6 +289,13 @@ namespace Avogadro {
 
   QVariant PropertiesModel::headerData(int section, Qt::Orientation orientation, int role) const
   {
+    // handle text alignments
+    if (role == Qt::TextAlignmentRole) {
+      if (orientation == Qt::Vertical) {
+        return Qt::AlignHCenter; // XYZ coordinates
+      }
+    }
+    
     if (role != Qt::DisplayRole)
       return QVariant();
 
@@ -266,9 +307,9 @@ namespace Avogadro {
         case 1:
           return tr("Atomic Number");
         case 2:
-          return tr("Partial Charge");
-        case 3:
           return tr("Valence");
+        case 3:
+          return tr("Partial Charge");
         }
       } else
         return tr("Atom %1").arg(section + 1);
@@ -282,9 +323,9 @@ namespace Avogadro {
         case 2:
           return tr("Bond Order");
         case 3:
-          return tr("Length (Å)");
-        case 4:
           return tr("Rotatable");
+        case 4:
+          return tr("Length (\xC5)", "Angstrom symbol");
         }
       } else
         // Bond ordering starts at 0
@@ -299,7 +340,7 @@ namespace Avogadro {
         case 2:
           return tr("End Atom");
         case 3:
-          return tr("Angle (°)");
+          return tr("Angle (\xB0)", "Degree symbol");
         }
       } else
         return tr("Angle %1").arg(section + 1);
@@ -312,7 +353,7 @@ namespace Avogadro {
         case 3:
           return tr("Atom Index %1").arg(section +1);
         case 4:
-          return tr("Torsion (°)");
+          return tr("Torsion (\xB0)", "Degree symbol");
         }
       } else
         return tr("Torsion %1").arg(section + 1);
@@ -320,11 +361,11 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("X (Å)");
+          return tr("X (\xC5)", "Angstrom symbol");
         case 1:
-          return tr("Y (Å)");
+          return tr("Y (\xC5)", "Angstrom symbol");
         case 2:
-          return tr("Z (Å)");
+          return tr("Z (\xC5)", "Angstrom symbol");
         }
       } else
         return tr("Atom %1").arg(section + 1);
@@ -349,16 +390,16 @@ namespace Avogadro {
     if (m_type == AtomType) {
       switch (index.column()) {
       case 1: // atomic number
-      case 2: // partial charge
+      case 3: // partial charge
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       case 0: // type
-      case 3: // valence
+      case 2: // valence
         return QAbstractItemModel::flags(index);
       }
     }
     else if (m_type == BondType) {
       switch (index.column()) {
-      case 3: // bond length
+      case 4: // bond length
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
@@ -409,13 +450,13 @@ namespace Avogadro {
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
-      case 2: // partial charge
+      case 3: // partial charge
         atom->setPartialCharge(value.toDouble());
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
       case 0: // type
-      case 3: // valence
+      case 2: // valence
       default:
         return false;
       }
@@ -440,7 +481,7 @@ namespace Avogadro {
       SkeletonTree zMatrixTree;
 
       switch (index.column()) {
-      case 3: // length
+      case 4: // length
         lengthScale = (value.toDouble() - bond->length()) / bond->length();
         // scale our bond vector to match the new length
         bondDirection *= lengthScale;
