@@ -71,6 +71,5 @@ namespace Avogadro {
 
 }
 
-#include "chargecolor.moc"
-
 Q_EXPORT_PLUGIN2(chargecolor, Avogadro::ChargeColorFactory)
+

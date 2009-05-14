@@ -106,6 +106,4 @@ namespace Avogadro {
 
 }
 
-#include "axesengine.moc"
-
 Q_EXPORT_PLUGIN2(axesengine, Avogadro::AxesEngineFactory)

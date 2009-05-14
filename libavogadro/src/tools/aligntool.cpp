@@ -327,6 +327,4 @@ namespace Avogadro {
 
 }
 
-#include "aligntool.moc"
-
 Q_EXPORT_PLUGIN2(aligntool, Avogadro::AlignToolFactory)

@@ -262,5 +262,3 @@ namespace Avogadro {
   }
 
 }
-
-#include "insertfragmentdialog.moc"

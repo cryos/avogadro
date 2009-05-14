@@ -264,28 +264,7 @@ namespace Avogadro {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // end namespace Avogadro
 
-#include "wiitrackextension.moc"
 Q_EXPORT_PLUGIN2(wiitrackextension, Avogadro::WiiTrackExtensionFactory)
+

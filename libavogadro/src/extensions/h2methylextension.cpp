@@ -135,5 +135,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "h2methylextension.moc"
 Q_EXPORT_PLUGIN2(h2methylextension, Avogadro::H2MethylExtensionFactory)
+

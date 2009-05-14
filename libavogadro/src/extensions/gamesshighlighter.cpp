@@ -142,4 +142,3 @@ namespace Avogadro {
 
 } // End namespace Avogadro
 
-#include "gamesshighlighter.moc"

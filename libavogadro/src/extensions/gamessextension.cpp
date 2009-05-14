@@ -627,6 +627,5 @@ namespace Avogadro
 
 }
 
-#include "gamessextension.moc"
-
 Q_EXPORT_PLUGIN2(gamessextension, Avogadro::GamessExtensionFactory)
+

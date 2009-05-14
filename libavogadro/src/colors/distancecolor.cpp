@@ -90,6 +90,5 @@ namespace Avogadro {
 
 }
 
-#include "distancecolor.moc"
-
 Q_EXPORT_PLUGIN2(distancecolor, Avogadro::DistanceColorFactory)
+

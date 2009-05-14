@@ -112,4 +112,3 @@ namespace Avogadro {
   
 }
 
-#include "pocketdialog.moc"

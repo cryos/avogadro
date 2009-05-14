@@ -443,6 +443,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "shaderextension.moc"
-
 Q_EXPORT_PLUGIN2(shaderextension, Avogadro::ShaderExtensionFactory)
+

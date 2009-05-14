@@ -87,4 +87,3 @@ namespace Avogadro {
   
 }
 
-#include "supercelldialog.moc"

@@ -108,5 +108,5 @@ namespace Avogadro {
 
 }
 
-#include "zmatrixtool.moc"
 Q_EXPORT_PLUGIN2(zmatrixtool, Avogadro::ZMatrixToolFactory)
+

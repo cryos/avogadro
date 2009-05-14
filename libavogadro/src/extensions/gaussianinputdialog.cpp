@@ -614,4 +614,3 @@ namespace Avogadro
 
 }
 
-#include "gaussianinputdialog.moc"

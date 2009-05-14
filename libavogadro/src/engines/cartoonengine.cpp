@@ -379,7 +379,4 @@ namespace Avogadro {
 
 }
 
-#include "cartoonengine.moc"
-
 Q_EXPORT_PLUGIN2(cartoonengine, Avogadro::CartoonEngineFactory)
-

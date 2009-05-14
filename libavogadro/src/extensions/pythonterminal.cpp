@@ -256,6 +256,5 @@ namespace Avogadro
   }
 }
 
-#include "pythonterminal.moc"
-
 Q_EXPORT_PLUGIN2(pythonterminal, Avogadro::PythonTerminalFactory)
+

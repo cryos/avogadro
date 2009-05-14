@@ -176,4 +176,3 @@ namespace Avogadro {
   }
 }
 
-#include "conformersearchdialog.moc"

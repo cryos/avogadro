@@ -145,4 +145,3 @@ namespace Avogadro
 
 }
 
-#include "vdwsurface.moc"
