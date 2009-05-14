@@ -56,6 +56,7 @@ namespace Avogadro {
       //@{
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
+      bool renderPick(PainterDevice *pd); // make the atoms larger
       //@}
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
@@ -74,9 +75,11 @@ namespace Avogadro {
       void readSettings(QSettings &settings);
 
     private:
-      double radius(const Atom *a) const;
+      inline double radius(const Atom *a) const
+      { return m_radius; }
       //! Render an Atom.
       bool renderOpaque(PainterDevice *pd, const Atom *a);
+      bool renderPick(PainterDevice *pd, const Atom *a);
       //! Render a Bond.
       bool renderOpaque(PainterDevice *pd, const Bond *b);
 

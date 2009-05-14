@@ -125,6 +125,24 @@ namespace Avogadro {
 
     return true;
   }
+  
+  bool StickEngine::renderPick(PainterDevice *pd)
+  {
+    glDisable( GL_NORMALIZE );
+    glEnable( GL_RESCALE_NORMAL );
+
+    // Render the atoms
+    foreach(Atom *a, atoms())
+      renderPick(pd, a);
+
+    // render bonds (sticks)
+    glDisable( GL_RESCALE_NORMAL );
+    glEnable( GL_NORMALIZE );
+    foreach(Bond *b, bonds())
+      renderOpaque(pd, b);
+
+    return true;
+  }
 
   inline bool StickEngine::renderOpaque(PainterDevice *pd, const Atom* a)
   {
@@ -135,6 +153,19 @@ namespace Avogadro {
     pd->painter()->setColor(map);
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) );
+
+    return true;
+  }
+
+  inline bool StickEngine::renderPick(PainterDevice *pd, const Atom* a)
+  {
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+
+    map->set(a);
+    pd->painter()->setColor(map);
+    pd->painter()->setName(a);
+    pd->painter()->drawSphere( a->pos(), radius(a) + 0.2 );
 
     return true;
   }
@@ -189,11 +220,6 @@ namespace Avogadro {
     // Something else
     else
       return 0.;
-  }
-
-  inline double StickEngine::radius(const Atom*) const
-  {
-    return m_radius;
   }
 
   Engine::Layers StickEngine::layers() const
