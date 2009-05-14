@@ -177,8 +177,6 @@ namespace Avogadro
     bool tabbedTools;
     QTabWidget::TabPosition toolsTabPosition;
 
-    bool animationsEnabled;
-
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
     double rotationAcceleration;
@@ -1379,16 +1377,6 @@ namespace Avogadro
       qApp->quit();
   }
 
-  void MainWindow::setAnimationsEnabled(bool animations)
-  {
-    d->animationsEnabled = animations;
-  }
-
-  bool MainWindow::animationsEnabled() const
-  {
-    return d->animationsEnabled;
-  }
-
   void MainWindow::clearRecentFiles()
   {
     QSettings settings; // already set up properly via main.cpp
@@ -1954,8 +1942,7 @@ namespace Avogadro
     }
 
     // if smooth transitions are disabled, center now and return
-    if( !d->animationsEnabled ) {
-      //      camera->initializeViewPoint(); -- old method, doesn't handle seletions
+    if( !d->molecule->numAtoms() >= 1000 ) {
       camera->setModelview(goal);
       d->glWidget->update();
       return;
@@ -2297,7 +2284,6 @@ namespace Avogadro
     resize( size );
 
     d->fileDialogPath = settings.value("openDialogPath").toString();
-    d->animationsEnabled = settings.value( "animationsEnabled", false ).toBool();
 
     QByteArray ba = settings.value( "state" ).toByteArray();
     if(!ba.isEmpty())
@@ -2369,7 +2355,6 @@ namespace Avogadro
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
-    settings.setValue( "animationsEnabled", d->animationsEnabled );
 
     // save the views
     settings.beginWriteArray("view");

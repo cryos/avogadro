@@ -161,10 +161,6 @@ namespace Avogadro {
       // Mac helper
       void macQuit();
 
-      // animations
-      void setAnimationsEnabled(bool animations);
-      bool animationsEnabled() const;
-
       //void projectTreeItemClicked(QTreeWidgetItem *item, int column);
       void setupProjectTree();
       void projectItemActivated(const QModelIndex& index);
