@@ -51,6 +51,7 @@ set(libavogadro_HDRS
   molecule.h
   navigate.h
   neighborlist.h
+  openbabelwrapper.h
   painter.h
   painterdevice.h
   periodictableview.h
@@ -69,6 +70,8 @@ set(libavogadro_HDRS
 )
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
+# Also add in the qtiocompressor class
+#set(libavogadro_SRCS ${libavogadro_SRCS} ../qtiocompressor/qtiocompressor.cpp)
 
 # Statically link the core engines and tools so that users have a working
 # system even if no plugins can be found.
