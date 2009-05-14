@@ -186,6 +186,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "povrayextension.moc"
-
 Q_EXPORT_PLUGIN2(povrayextension, Avogadro::POVRayExtensionFactory)
+

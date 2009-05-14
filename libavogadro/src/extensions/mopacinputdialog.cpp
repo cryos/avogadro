@@ -565,4 +565,3 @@ namespace Avogadro
 
 }
 
-#include "mopacinputdialog.moc"

@@ -252,6 +252,4 @@ namespace Avogadro {
   }
 }
 
-#include "labelengine.moc"
-
 Q_EXPORT_PLUGIN2(labelengine, Avogadro::LabelEngineFactory)

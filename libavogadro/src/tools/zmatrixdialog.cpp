@@ -86,4 +86,3 @@ namespace Avogadro {
 
 } // End namespace Avogadro
 
-#include "zmatrixdialog.moc"

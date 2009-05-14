@@ -94,13 +94,13 @@ namespace Avogadro {
         m_numSelectedAtoms--; // update the count
         m_selectedAtoms.removeAt(indexOfAtom);
       }
-      else { // new atom to add to list  
+      else { // new atom to add to list
         if(m_numSelectedAtoms < 4) {
           // Select another atom
           ++m_numSelectedAtoms;
           m_selectedAtoms.append(atom);
         }
-        
+
       }
       widget->update();
     }
@@ -335,7 +335,5 @@ namespace Avogadro {
     return true;
   }
 }
-
-#include "clickmeasuretool.moc"
 
 Q_EXPORT_PLUGIN2(clickmeasuretool, Avogadro::ClickMeasureToolFactory)

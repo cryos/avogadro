@@ -509,4 +509,3 @@ namespace Avogadro
 
 }
 
-#include "molproinputdialog.moc"

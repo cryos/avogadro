@@ -175,6 +175,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "networkfetchextension.moc"
-
 Q_EXPORT_PLUGIN2(networkfetchextension, Avogadro::NetworkFetchExtensionFactory)
+

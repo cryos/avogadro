@@ -83,6 +83,4 @@ namespace Avogadro {
 
 }
 
-#include "forceengine.moc"
-
 Q_EXPORT_PLUGIN2(forceengine, Avogadro::ForceEngineFactory)

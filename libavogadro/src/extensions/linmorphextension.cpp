@@ -346,6 +346,6 @@ QMessageBox::warning( NULL, tr( "Avogadro" ),
     return true;
   }
 }
-#include "linmorphextension.moc"
 
 Q_EXPORT_PLUGIN2(linmorphextension, Avogadro::LinMorphExtensionFactory)
+

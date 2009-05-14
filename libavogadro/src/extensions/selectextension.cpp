@@ -297,5 +297,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "selectextension.moc"
 Q_EXPORT_PLUGIN2(selectextension, Avogadro::SelectExtensionFactory)
+

@@ -257,6 +257,4 @@ namespace Avogadro {
   }
 }
 
-#include "wireengine.moc"
-
 Q_EXPORT_PLUGIN2(wireengine, Avogadro::WireEngineFactory)

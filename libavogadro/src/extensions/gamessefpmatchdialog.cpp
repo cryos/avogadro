@@ -101,6 +101,3 @@ namespace Avogadro
 
 }
 
-
-
-#include "gamessefpmatchdialog.moc"

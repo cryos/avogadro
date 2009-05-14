@@ -243,6 +243,4 @@ namespace Avogadro {
 
 }
 
-#include "sphereengine.moc"
-
 Q_EXPORT_PLUGIN2(sphereengine, Avogadro::SphereEngineFactory)

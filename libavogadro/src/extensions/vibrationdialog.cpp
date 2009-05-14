@@ -206,4 +206,3 @@ namespace Avogadro {
 
 } // namespace Avogadro
 
-#include "vibrationdialog.moc"

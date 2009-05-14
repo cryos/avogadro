@@ -489,4 +489,3 @@ namespace Avogadro
 
 }
 
-#include "qcheminputdialog.moc"

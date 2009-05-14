@@ -232,4 +232,3 @@ namespace Avogadro {
   
 }
 
-#include "unitcellparamdialog.moc"

@@ -310,5 +310,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "supercellextension.moc"
 Q_EXPORT_PLUGIN2(supercellextension, Avogadro::SuperCellExtensionFactory)
+

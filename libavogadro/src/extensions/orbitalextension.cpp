@@ -855,6 +855,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "orbitalextension.moc"
-
 Q_EXPORT_PLUGIN2(orbitalextension, Avogadro::OrbitalExtensionFactory)
+

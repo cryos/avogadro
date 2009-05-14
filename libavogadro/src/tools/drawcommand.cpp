@@ -1006,5 +1006,4 @@ namespace Avogadro {
     d->molecule->update();
   }
 
-
 } // end namespace Avogadro

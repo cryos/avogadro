@@ -408,6 +408,4 @@ namespace Avogadro {
   }
 }
 
-#include "manipulatetool.moc"
-
 Q_EXPORT_PLUGIN2(manipulatetool, Avogadro::ManipulateToolFactory)

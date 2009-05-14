@@ -725,4 +725,3 @@ namespace Avogadro
 
 }
 
-#include "basisset.moc"

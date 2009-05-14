@@ -261,6 +261,4 @@ namespace Avogadro{
 
 }
 
-#include "ringengine.moc"
-
 Q_EXPORT_PLUGIN2(ringengine, Avogadro::RingEngineFactory)

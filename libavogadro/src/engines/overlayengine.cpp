@@ -127,6 +127,4 @@ namespace Avogadro {
   }
 }
 
-#include "overlayengine.moc"
-
 Q_EXPORT_PLUGIN2(overlayengine, Avogadro::OverlayEngineFactory)

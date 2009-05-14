@@ -272,7 +272,4 @@ namespace Avogadro {
 
 }
 
-#include "ribbonengine.moc"
-
 Q_EXPORT_PLUGIN2(ribbonengine, Avogadro::RibbonEngineFactory)
-

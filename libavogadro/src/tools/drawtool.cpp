@@ -878,6 +878,4 @@ namespace Avogadro {
   }
 }
 
-#include "drawtool.moc"
-
 Q_EXPORT_PLUGIN2(drawtool, Avogadro::DrawToolFactory)

@@ -168,6 +168,4 @@ namespace Avogadro {
 
 }
 
-#include "dipoleengine.moc"
-
 Q_EXPORT_PLUGIN2(DipoleEngine, Avogadro::DipoleEngineFactory)

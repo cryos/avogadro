@@ -102,5 +102,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "spectraextension.moc"
 Q_EXPORT_PLUGIN2(spectraextension, Avogadro::SpectraExtensionFactory)
+

@@ -612,6 +612,4 @@ namespace Avogadro {
 
 }
 
-#include "autoopttool.moc"
-
 Q_EXPORT_PLUGIN2(autoopttool, Avogadro::AutoOptToolFactory)

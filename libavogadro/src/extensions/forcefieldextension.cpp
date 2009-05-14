@@ -575,5 +575,5 @@ namespace Avogadro
 
 } // end namespace Avogadro
 
-#include "forcefieldextension.moc"
 Q_EXPORT_PLUGIN2(forcefieldextension, Avogadro::ForceFieldExtensionFactory)
+

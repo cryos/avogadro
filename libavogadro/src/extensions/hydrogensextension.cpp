@@ -187,5 +187,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "hydrogensextension.moc"
 Q_EXPORT_PLUGIN2(hydrogensextension, Avogadro::HydrogensExtensionFactory)
+

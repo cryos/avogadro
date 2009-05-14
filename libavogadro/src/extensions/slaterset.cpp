@@ -520,4 +520,3 @@ namespace Avogadro
 
 }
 
-#include "slaterset.moc"

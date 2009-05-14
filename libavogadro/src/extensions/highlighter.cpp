@@ -110,4 +110,3 @@ namespace Avogadro {
 
 } // namespace
 
-#include "highlighter.moc"
