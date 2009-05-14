@@ -127,6 +127,9 @@ namespace Avogadro
     PropertiesView  *view;
     QDialog *dialog = new QDialog(qobject_cast<QWidget *>(parent()));
     QVBoxLayout *layout = new QVBoxLayout(dialog);
+    // Don't show whitespace around the PropertiesView
+    layout->setSpacing(0);
+    layout->setContentsMargins(0,0,0,0);
 
     int i = action->data().toInt();
     switch (i) {
@@ -136,18 +139,10 @@ namespace Avogadro
       model->setMolecule(m_molecule);
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::AtomType, dialog);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       connect(m_molecule, SIGNAL( atomAdded(Atom*) ),
               model, SLOT( atomAdded(Atom*) ));
       connect(m_molecule, SIGNAL( atomRemoved(Atom*) ),
               model, SLOT( atomRemoved(Atom*) ));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      layout->addWidget(view);
-      dialog->resize(860, 400);
-      dialog->setWindowTitle(tr("Atoms"));
-      dialog->show();
       break;
     case BondPropIndex: // bond properties
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
@@ -155,18 +150,10 @@ namespace Avogadro
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::BondType, widget);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
       connect(m_molecule, SIGNAL( bondAdded(Bond*) ),
               model, SLOT( bondAdded(Bond*) ));
       connect(m_molecule, SIGNAL( bondRemoved(Bond*) ),
               model, SLOT( bondRemoved(Bond*) ));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      layout->addWidget(view);
-      dialog->resize(550, 400);
-      dialog->setWindowTitle(tr("Bonds"));
-      dialog->show();
       break;
     case AnglePropIndex: // angle properties
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
@@ -174,16 +161,6 @@ namespace Avogadro
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::AngleType, widget);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      layout->addWidget(view);
-      dialog->resize(550, 400);
-      dialog->setWindowTitle(tr("Angles"));
-      dialog->show();
       break;
     case TorsionPropIndex: // torsion properties
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
@@ -191,16 +168,6 @@ namespace Avogadro
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::TorsionType, widget);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      //connect(m_molecule, SIGNAL( primitiveAdded(Primitive *) ), model, SLOT( primitiveAdded(Primitive *) ));
-      //connect(m_molecule, SIGNAL( primitiveRemoved(Primitive *) ), model, SLOT( primitiveRemoved(Primitive *) ));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      layout->addWidget(view);
-      dialog->resize(550, 400);
-      dialog->setWindowTitle(tr("Torsions"));
-      dialog->show();
       break;
     case CartesianIndex: // cartesian editor
       // m_angleModel will be deleted in PropertiesView::hideEvent using deleteLater().
@@ -208,37 +175,30 @@ namespace Avogadro
       model->setMolecule( m_molecule );
       // m_view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::CartesianType, widget);
-      connect(m_molecule, SIGNAL(updated()), model, SLOT(updateTable()));
       connect(m_molecule, SIGNAL(atomAdded(Atom*)), model, SLOT( atomAdded(Atom*)));
       connect(m_molecule, SIGNAL(atomRemoved(Atom*)), model, SLOT(atomRemoved(Atom*)));
-      connect(m_molecule, SIGNAL(moleculeChanged()), model, SLOT(moleculeChanged()));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      layout->addWidget(view);
-      dialog->resize(550, 400);
-      dialog->setWindowTitle(tr("Coordinates"));
-      dialog->show();
       break;
     case ConformerIndex: // conformers
-      layout->setSpacing(0);
-      layout->setContentsMargins(0,0,0,0);
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
       model = new PropertiesModel(PropertiesModel::ConformerType, dialog);
       model->setMolecule( m_molecule );
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::ConformerType, dialog);
-      connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
-      view->setMolecule( m_molecule );
-      view->setWidget( widget );
-      view->setModel( model );
-      view->resize(180, 500);
-      view->sortByColumn(0, Qt::AscendingOrder);
-      layout->addWidget(view);
-      dialog->setWindowTitle(tr("Conformers"));
-      dialog->show();
       break;
     }
+
+    connect(m_molecule, SIGNAL(moleculeChanged()), model, SLOT(moleculeChanged()));
+    connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+    view->setMolecule( m_molecule );
+    view->setWidget( widget );
+    view->setModel( model );
+    //    view->sortByColumn(0, Qt::AscendingOrder);
+    layout->addWidget(view);
+    dialog->setWindowTitle(view->windowTitle());
+    QSize dialogSize = dialog->size();
+    dialogSize.setWidth(550);
+    dialog->resize(dialogSize);
+    dialog->show();
 
     return undo;
   }
@@ -251,33 +211,39 @@ namespace Avogadro
     QString title;
     switch(type){
     case AtomType:
-      title = tr("Atom") + ' ';
+      title = tr("Atom Properties");
       break;
     case BondType:
-      title = tr("Bond") + ' ';
+      title = tr("Bond Properties");
       break;
     case AngleType:
-      title = tr("Angle") + ' ';
+      title = tr("Angle Properties");
       break;
     case TorsionType:
-      title = tr("Torsion") + ' ';
+      title = tr("Torsion Properties");
       break;
     case CartesianType:
-      title = tr("Cartesian") + ' ';
+      title = tr("Cartesian Properties");
       break;
     case ConformerType:
-      title = tr("Conformer") + ' ';
+      title = tr("Conformer Properties");
       break;
     default:
       title = QString();
     }
-    title += tr("Properties");
     this->setWindowTitle(title);
 
     QHeaderView *horizontal = this->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
     QHeaderView *vertical = this->verticalHeader();
     vertical->setResizeMode(QHeaderView::Stretch);
+
+    // Don't allow selecting everything
+    setCornerButtonEnabled(false);
+    // Alternating row colors
+    setAlternatingRowColors(true);
+    // Allow sorting the table
+    //    setSortingEnabled(true);
   }
 
 
