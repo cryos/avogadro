@@ -111,4 +111,3 @@ namespace Avogadro {
   }
 }
 
-#include "forcefielddialog.moc"

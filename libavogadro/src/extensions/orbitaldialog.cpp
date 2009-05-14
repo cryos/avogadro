@@ -401,4 +401,3 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "orbitaldialog.moc"

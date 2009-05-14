@@ -229,6 +229,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "gaussianextension.moc"
-
 Q_EXPORT_PLUGIN2(gaussianextension, Avogadro::GaussianExtensionFactory)
+

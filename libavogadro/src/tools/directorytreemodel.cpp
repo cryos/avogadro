@@ -167,7 +167,7 @@ namespace Avogadro {
 
     if (!parentItem)
       return 0;
-      
+
     return parentItem->childCount();
   }
 
@@ -212,7 +212,7 @@ namespace Avogadro {
 
     int position = 0; // current number of subdirectories (i.e., the relative path depth)
     int absoluteDepth = 0; // depth of the parent directory
-  
+
     foreach (const QString& dir, dirList) {
       QDir currentDir(dir);
 
@@ -222,20 +222,20 @@ namespace Avogadro {
         QList<FileTreeItem*> parents;
         QList<int> indentations; // number of subdirectories for each item in the model
         parents << parent;
-        indentations << 0;          
-          
+        indentations << 0;
+
         // set the first item to be the top-level directory itself
         QList<QVariant> topLevel;
         topLevel << currentDir.dirName();
         parent->appendChild(new FileTreeItem(topLevel, parent));
         parents << parents.last()->child(parents.last()->childCount()-1);
         indentations << 0;
-        
+
         QDirIterator dirIterator(currentDir.absolutePath(),
-                             QDir::Dirs | QDir::Files | QDir::Readable 
+                             QDir::Dirs | QDir::Files | QDir::Readable
                                  | QDir::NoSymLinks | QDir::NoDotAndDotDot,
                              QDirIterator::Subdirectories);
-          
+
         do {
           dirIterator.next();
           position = directoryDepth(dirIterator.filePath()) - absoluteDepth;
@@ -246,11 +246,11 @@ namespace Avogadro {
               parents.pop_back();
               indentations.pop_back();
             }
-          }           
+          }
 
           // If this is a real directory, add it as a new subdirectory
           if (dirIterator.fileInfo().isDir() && !dirIterator.fileInfo().isBundle()) {
-            
+
             // insert a new nested directory
             QList<QVariant> dirData;
             dirData << dirIterator.fileName();
@@ -264,16 +264,16 @@ namespace Avogadro {
 
           // check to see if its an excluded file
           // (hidden or not readable or a Mac OS X bundle
-          if (dirIterator.fileInfo().isHidden() 
+          if (dirIterator.fileInfo().isHidden()
               || !dirIterator.fileInfo().isReadable()
               || dirIterator.fileInfo().isBundle())
             continue;
-          
+
           // OK, this is a file, and we've set the correct path structure
           // Add the filename as the first column
           QList<QVariant> columnData;
           columnData << dirIterator.fileName();
-                        
+
           // Append a new item to the current parent's list of children.
           parents.last()->appendChild(new FileTreeItem(columnData, parents.last(), dirIterator.filePath()));
 
@@ -285,13 +285,13 @@ namespace Avogadro {
     invalidateIndexes();
     emit layoutChanged(); // again, tell the view that we're finished
   }
-  
+
   /* From Qt API doc:
    * void QAbstractItemModel::layoutAboutToBeChanged ()   [signal]
    *
-   * ... Subclasses should update any persistent model indexes after emitting 
+   * ... Subclasses should update any persistent model indexes after emitting
    * layoutAboutToBeChanged(). ...
-   * 
+   *
    * and: http://der-dakon.net/blog/KDE/persistent-crash.html
    */
   void DirectoryTreeModel::invalidateIndexes()
@@ -313,5 +313,3 @@ namespace Avogadro {
   }
 
 } // end namespace Avogadro
-
-#include "directorytreemodel.moc"

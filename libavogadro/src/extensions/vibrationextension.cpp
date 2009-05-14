@@ -262,5 +262,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "vibrationextension.moc"
 Q_EXPORT_PLUGIN2(vibrationextension, Avogadro::VibrationExtensionFactory)
+

@@ -308,5 +308,5 @@ namespace Avogadro
 
 } // end namespace Avogadro
 
-#include "propextension.moc"
 Q_EXPORT_PLUGIN2( propextension, Avogadro::PropertiesExtensionFactory )
+

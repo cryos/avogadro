@@ -299,4 +299,3 @@ namespace Avogadro {
   }
 }
 
-#include "skeletontree.moc"

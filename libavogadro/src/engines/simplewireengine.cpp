@@ -83,6 +83,4 @@ namespace Avogadro {
   }
 }
 
-#include "simplewireengine.moc"
-
 Q_EXPORT_PLUGIN2(simplewireengine, Avogadro::SimpleWireEngineFactory)

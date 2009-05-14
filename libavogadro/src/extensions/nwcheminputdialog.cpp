@@ -531,4 +531,3 @@ namespace Avogadro
 
 }
 
-#include "nwcheminputdialog.moc"

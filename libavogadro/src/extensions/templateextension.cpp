@@ -106,6 +106,5 @@ namespace Avogadro
 
 }
 
-#include "templateextension.moc"
-
 Q_EXPORT_PLUGIN2(templateextension, Avogadro::TemplateExtensionFactory)
+

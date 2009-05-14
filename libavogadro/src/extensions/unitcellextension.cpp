@@ -254,5 +254,5 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "unitcellextension.moc"
 Q_EXPORT_PLUGIN2(unitcellextension, Avogadro::UnitCellExtensionFactory)
+

@@ -27,6 +27,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/bond.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/openbabelwrapper.h>
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -40,8 +41,6 @@
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
-
-
 
 using namespace OpenBabel;
 using namespace std;
@@ -161,7 +160,8 @@ namespace Avogadro
   {
     QString fileName = m_fileImportDialog->fileName->text();
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    OBConversion conv;
+
+/*    OBConversion conv;
     OBFormat     *inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QApplication::restoreOverrideCursor();
@@ -179,13 +179,11 @@ namespace Avogadro
       return;
     }
 
-    OBMol *obmol = new OBMol;
+    OBMol *obmol = new OBMol; */
     // Turn off bond perception
-    conv.AddOption("b", OBConversion::INOPTIONS);
-    if (conv.Read(obmol, &ifs)) {
-      Molecule *mol = new Molecule;
-      mol->setOBMol(obmol);
-      mol->setFileName(fileName);
+    Molecule *mol = OpenbabelWrapper::openFile(fileName, "", "b");
+//    conv.AddOption("b", OBConversion::INOPTIONS);
+    if (mol) {
       Molecule *oldMol = m_molecule;
       qDebug() << "Attempting to read parm file...";
       readParmFile(mol);
@@ -193,6 +191,8 @@ namespace Avogadro
       emit moleculeChanged(mol);
       oldMol->deleteLater();
     }
+    else
+      qDebug() << "Reading molecule file failed...";
 
     QApplication::restoreOverrideCursor();
   }
@@ -215,6 +215,5 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "fileimportextension.moc"
-
 Q_EXPORT_PLUGIN2(fileimportextension, Avogadro::FileImportExtensionFactory)
+

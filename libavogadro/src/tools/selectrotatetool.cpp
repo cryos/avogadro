@@ -452,6 +452,4 @@ namespace Avogadro {
   }
 }
 
-#include "selectrotatetool.moc"
-
 Q_EXPORT_PLUGIN2(selectrotatetool, Avogadro::SelectRotateToolFactory)

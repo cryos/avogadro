@@ -121,4 +121,3 @@ namespace Avogadro {
   }
 }
 
-#include "linmorphdialog.moc"

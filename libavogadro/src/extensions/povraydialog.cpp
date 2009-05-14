@@ -171,4 +171,3 @@ namespace Avogadro
 
 } // End namespace Avogadro
 
-#include "povraydialog.moc"

@@ -239,6 +239,4 @@ namespace Avogadro {
 
 }
 
-#include "hbondengine.moc"
-
 Q_EXPORT_PLUGIN2(hbondengine, Avogadro::HBondEngineFactory)

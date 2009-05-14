@@ -312,6 +312,4 @@ namespace Avogadro {
   }
 }
 
-#include "navigatetool.moc"
-
 Q_EXPORT_PLUGIN2(navigatetool, Avogadro::NavigateToolFactory)

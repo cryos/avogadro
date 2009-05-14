@@ -666,4 +666,3 @@ namespace Avogadro {
 
 } // end namespace Avogadro
 
-#include "propmodel.moc"

@@ -296,5 +296,5 @@ namespace Avogadro {
   }
 } // end namespace Avogadro
 
-#include "animationextension.moc"
 Q_EXPORT_PLUGIN2(animationextension, Avogadro::AnimationExtensionFactory)
+

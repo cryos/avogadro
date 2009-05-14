@@ -2322,4 +2322,3 @@ namespace Avogadro {
   }
 }
 
-#include "gamessinputdialog.moc"

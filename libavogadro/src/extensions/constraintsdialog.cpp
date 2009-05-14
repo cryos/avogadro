@@ -394,4 +394,3 @@ namespace Avogadro {
 
 }
 
-#include "constraintsdialog.moc"

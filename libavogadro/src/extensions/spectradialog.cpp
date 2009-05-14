@@ -1236,4 +1236,4 @@ namespace Avogadro {
     }
   }
 }
-#include "spectradialog.moc"
+

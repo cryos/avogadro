@@ -114,6 +114,4 @@ namespace Avogadro{
 
 }
 
-#include "polygonengine.moc"
-
 Q_EXPORT_PLUGIN2(polygonengine, Avogadro::PolygonEngineFactory)

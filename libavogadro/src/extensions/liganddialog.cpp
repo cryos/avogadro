@@ -114,4 +114,3 @@ namespace Avogadro {
   
 }
 
-#include "liganddialog.moc"
