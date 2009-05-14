@@ -96,6 +96,12 @@ namespace Avogadro
       case D5:
         m_numMOs += 5;
         break;
+      case F:
+	m_numMOs += 8;
+	break;
+      case F7:
+	m_numMOs += 7;
+	break;
       default:
         // Should never hit here
         ;
@@ -300,6 +306,18 @@ namespace Avogadro
                           / (M_PI*M_PI*M_PI), 0.25));
           }
           break;
+        case F:
+          m_moIndices[i] = indexMO;	
+          indexMO += 8;
+          m_cIndices.push_back(m_gtoCN.size());
+          qDebug() << "F Basis set not handled - results may be incorrect.";
+          break;
+	case F7:
+	  m_moIndices[i] = indexMO;
+	  indexMO += 7;
+	  m_cIndices.push_back(m_gtoCN.size());
+          qDebug() << "F7 Basis set not handled - results may be incorrect.";
+	  break;
         default:
           qDebug() << "Basis set not handled - results may be incorrect.";
       }

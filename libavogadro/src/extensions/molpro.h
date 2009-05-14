@@ -41,10 +41,18 @@ namespace Avogadro
   public:
     Molpro(const QString &filename, BasisSet *basis);
     ~Molpro();
+    void outputAll();
+    void reorderD5Orbitals();
   private:
     QTextStream m_in;
 
+    int m_electrons;
     unsigned int m_numBasisFunctions;
+    std::vector<int> m_aNums;
+    std::vector<double> m_aPos;
+    std::vector<int> m_shellTypes;
+    std::vector<int> m_shellNums;
+    std::vector<int> m_shelltoAtom;
     std::vector<double> m_orbitalEnergy;
     std::vector<double> m_MOcoeffs;
   };
