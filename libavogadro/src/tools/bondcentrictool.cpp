@@ -27,7 +27,6 @@
  **********************************************************************/
 
 #include "bondcentrictool.h"
-#include "quaternion.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -648,7 +647,7 @@ namespace Avogadro {
                                * direction;
 
           if (m_skeleton) {
-            m_skeleton->skeletonTranslate(component.x(), component.y(), component.z());
+            m_skeleton->skeletonTranslate(component);
           }
         }
         else if (m_selectedBond && m_clickedAtom &&
@@ -1505,11 +1504,13 @@ namespace Avogadro {
       Vector3d rotationVector, Vector3d centerVector,
       Vector3d positionVector)
   {
-    Quaternion qLeft = Quaternion::createRotationLeftHalf(angle, rotationVector);
-    Quaternion qRight = qLeft.multiplicitiveInverse();
+    //Rotate skeleton around a particular axis and center point
+    Eigen::Transform3d rotation;
+    rotation = Eigen::AngleAxisd(angle, rotationVector);
+    rotation.pretranslate(centerVector);
+    rotation.translate(-centerVector);
 
-    return Quaternion::performRotationMultiplication(qLeft, positionVector -
-        centerVector, qRight) + centerVector;
+    return rotation*positionVector;
   }
 
   // ##########  showAnglesChanged  ##########

@@ -495,9 +495,7 @@ namespace Avogadro {
         bondDirection *= lengthScale;
 
         zMatrixTree.populate(bond->beginAtom(), bond, m_molecule);
-        zMatrixTree.skeletonTranslate(bondDirection.x(),
-                                      bondDirection.y(),
-                                      bondDirection.z());
+        zMatrixTree.skeletonTranslate(bondDirection);
         emit dataChanged(index, index);
         return true;
 
