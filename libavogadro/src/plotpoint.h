@@ -38,8 +38,9 @@ class QPointF;
 namespace Avogadro {
 
   /**
-   * @class PlotPoint
+   * @class PlotPoint plotpoint.h <avogadro/plotpoint.h>
    * @short Encapsulates a point in the plot.
+   *
    * A PlotPoint consists of X and Y coordinates (in Data units),
    * an optional label string, and an optional bar-width,
    * The bar-width is only used for plots of type PlotObject::Bars,

@@ -35,7 +35,7 @@ namespace Avogadro {
 
   /**
    * @class Line line.h <avogadro/line.h>
-   * @brief Line Class
+   * @brief Representation of a line in space (i.e., beginning and end points)
    * @author Tim Vandermeersch
    *
    * The Line class is a Primitive subclass that provides a generic way

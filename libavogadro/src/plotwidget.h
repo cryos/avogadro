@@ -40,7 +40,7 @@
 namespace Avogadro {
 
     /**
-     *@class PlotWidget
+     *@class PlotWidget plotwidget.h <avogadro/plotwidget.h>
      *
      *@short Generic data plotting widget.
      *

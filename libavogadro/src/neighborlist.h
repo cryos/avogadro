@@ -32,8 +32,12 @@
 namespace Avogadro
 {
   /**
-   * @class NeighborList
+   * @class NeighborList neighborlist.h <avogadro/neighborlist.h>
+   * @brief A list container for finding spatial neighbors of atoms
+   * @author Tim Vandermeersch
    *
+   * NeighborList can be used for finding non-bonded interactions between
+   * pairs of atoms.
    * Based on:
    * Near-neighbor calculations using a modified cell-linked list method
    * Mattson, W.; B. M. Rice (1999). "Near-neighbor calculations using a
