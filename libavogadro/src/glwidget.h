@@ -60,7 +60,7 @@ namespace Avogadro {
 
   /**
    * @class GLHit glwidget.h <avogadro/glwidget.h>
-   * @brief Class for wrapping hits from GL picking.
+   * @brief Hits from OpenGL selections/picking.
    * @author Donald Ephraim Curtis
    *
    * Provides an easy to use class to contain OpenGL hits returned from the

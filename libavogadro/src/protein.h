@@ -38,6 +38,8 @@ namespace Avogadro {
 
   class ProteinPrivate;
   /**
+   * @class Protein protein.h <avogadro/protein.h>
+   * @brief Representation of a protein, including secondary structure
    *
    * http://en.wikipedia.org/wiki/Secondary_structure#The_DSSP_code
    *

@@ -43,6 +43,8 @@
  * The widget has a default minimium size of 35x20 pixels.
  */
 
+namespace Avogadro {
+
 class A_EXPORT ColorButton : public QAbstractButton
 {
  Q_OBJECT
@@ -87,5 +89,7 @@ class A_EXPORT ColorButton : public QAbstractButton
 
   QColor m_color; //!< The current color
 };
+
+} // end namespace Avogadro
 
 #endif

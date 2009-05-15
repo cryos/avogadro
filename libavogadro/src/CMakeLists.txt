@@ -51,6 +51,7 @@ set(libavogadro_HDRS
   molecule.h
   navigate.h
   neighborlist.h
+  openbabelwrapper.h
   painter.h
   painterdevice.h
   periodictableview.h
@@ -69,6 +70,8 @@ set(libavogadro_HDRS
 )
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
+# Also add in the qtiocompressor class
+#set(libavogadro_SRCS ${libavogadro_SRCS} ../qtiocompressor/qtiocompressor.cpp)
 
 # Statically link the core engines and tools so that users have a working
 # system even if no plugins can be found.
@@ -146,7 +149,7 @@ set_target_properties(avogadro
 target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
-install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/avogadro)
+install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR})
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
 # Add the engiens, tools and extensions directories

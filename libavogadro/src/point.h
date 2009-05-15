@@ -35,7 +35,7 @@ namespace Avogadro {
 
   /**
    * @class Point point.h <avogadro/point.h>
-   * @brief Point Class
+   * @brief Representation for a point in space
    * @author Tim Vandermeersch
    *
    * The Point class is a Primitive subclass that provides a generic way

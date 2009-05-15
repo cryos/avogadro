@@ -131,7 +131,6 @@ namespace Avogadro
     QString line = in->readLine();
     QString key = line;
     key = key.trimmed();
-//    qDebug() << "Line" << line;
 
     if (key == "%FLAG BONDS_WITHOUT_HYDROGEN") {
       qDebug() << "Reading in bonds...";
@@ -141,7 +140,6 @@ namespace Avogadro
       QStringList list;
       while (line[0] != '%') {
         line = in->readLine();
-//        qDebug() << line;
         list += line.split(" ", QString::SkipEmptyParts);
         if (list.size() == 30) {
           for (int i = 0; i <= 27; i += 3) {
@@ -182,7 +180,6 @@ namespace Avogadro
     OBMol *obmol = new OBMol; */
     // Turn off bond perception
     Molecule *mol = OpenbabelWrapper::openFile(fileName, "", "b");
-//    conv.AddOption("b", OBConversion::INOPTIONS);
     if (mol) {
       Molecule *oldMol = m_molecule;
       qDebug() << "Attempting to read parm file...";
