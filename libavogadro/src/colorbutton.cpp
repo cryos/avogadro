@@ -27,6 +27,8 @@
 #include <QColorDialog>
 #include <QPainter>
 
+namespace Avogadro {
+
 ColorButton::ColorButton(QWidget *parent)
   : QAbstractButton(parent), m_color(Qt::white)
 {
@@ -89,6 +91,8 @@ void ColorButton::paintEvent(QPaintEvent *)
 bool ColorButton::event(QEvent *e)
 {
   return QAbstractButton::event(e);
+}
+
 }
 
 #include "colorbutton.moc"
