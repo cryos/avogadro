@@ -167,7 +167,7 @@
       </widget>
      </item>
      <item>
-      <widget class="ColorButton" name="posColor" native="true">
+      <widget class="Avogadro::ColorButton" name="posColor" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -190,7 +190,7 @@
       </widget>
      </item>
      <item>
-      <widget class="ColorButton" name="negColor" native="true">
+      <widget class="Avogadro::ColorButton" name="negColor" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
