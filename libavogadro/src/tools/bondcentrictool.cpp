@@ -312,7 +312,7 @@ namespace Avogadro {
           Vector3d clickedProj = widget->camera()->project(*m_clickedAtom->pos());
           clickedProj -= Vector3d(0,0,clickedProj.z());
 
-          if ((clickedProj - centerProj).norm() == 0)
+          if ((clickedProj - centerProj).norm() < 1.0e-5)
           {
             // Have no way of testing this as the chance of this happening is almost 0
             m_directionVector = new Vector3d(1, 0, 0);

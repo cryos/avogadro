@@ -63,7 +63,7 @@ namespace Avogadro
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( tr("Angles Properties..." ));
+    action->setText( tr("Angle Properties..." ));
     action->setData(AnglePropIndex);
     m_actions.append( action );
 

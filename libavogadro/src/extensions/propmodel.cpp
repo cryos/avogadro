@@ -30,6 +30,8 @@
 #include <openbabel/mol.h>
 #include <Eigen/Geometry>
 
+#include <math.h>
+
 #include <QDebug>
 
 namespace Avogadro {
@@ -222,6 +224,8 @@ namespace Avogadro {
         angle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
+        if (!std::isfinite(angle))
+          angle = 0.0;
         return QString::number(angle, 'f', 4);
       }
     }
@@ -253,7 +257,12 @@ namespace Avogadro {
             case 3:
               return j->second->GetIdx();
             case 4:
-              dihedralAngle = m_cachedOBMol->GetTorsion(j->first, torsionBC.first, torsionBC.second, j->second);
+              dihedralAngle = m_cachedOBMol->GetTorsion(j->first,
+                                                        torsionBC.first,
+                                                        torsionBC.second,
+                                                        j->second);
+              if (!std::isfinite(dihedralAngle))
+                dihedralAngle = 0.0;
               return QString::number(dihedralAngle, 'f', 4);
             }
           }
@@ -519,17 +528,17 @@ namespace Avogadro {
       double initialAngle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                       m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
                                       m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
+      if (!std::isfinite(initialAngle))
+        initialAngle = 0.0;
 
       switch (index.column()) {
       case 3: // angle
         abVector = *(startAtom->pos()) - *(vertex->pos());
         bcVector = *(endAtom->pos()) - *(vertex->pos());
-        crossProductVector = abVector.cross(bcVector);
+        crossProductVector = abVector.cross(bcVector).normalized();
         
         rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
-        
-        qDebug() << " initial: " << initialAngle << " adjustment: " << rotationAdjustment / cDegToRad;
-        
+
         zMatrixTree.populate(vertex, bond, m_molecule);
         zMatrixTree.skeletonRotate(rotationAdjustment, crossProductVector, *(vertex->pos()));
         
@@ -560,13 +569,13 @@ namespace Avogadro {
                                       m_cachedOBMol->GetAtom(torsions[index.row()][1] + 1),
                                       m_cachedOBMol->GetAtom(torsions[index.row()][2] + 1),
                                       m_cachedOBMol->GetAtom(torsions[index.row()][3] + 1));
+      if (!std::isfinite(initialAngle))
+        initialAngle = 0.0;
 
       switch (index.column()) {
       case 4: // dihedral angle
-        bcVector = *(c->pos()) - *(b->pos());
+        bcVector = (*(b->pos()) - *(c->pos())).normalized();
         rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
-
-        qDebug() << " initial: " << initialAngle << " adjustment: " << rotationAdjustment / cDegToRad;
 
         zMatrixTree.populate(b, bond, m_molecule);
         zMatrixTree.skeletonRotate(rotationAdjustment, bcVector, *(b->pos()));
