@@ -185,6 +185,10 @@ namespace Avogadro
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::ConformerType, dialog);
       break;
+    default:
+      delete dialog;
+      layout = 0; // deleted as a child of the dialog
+      return 0;
     }
 
     connect(m_molecule, SIGNAL(moleculeChanged()), model, SLOT(moleculeChanged()));
@@ -257,7 +261,7 @@ namespace Avogadro
       if (!index.isValid())
         return;
 
-      if (m_type == AtomType) {
+      if (m_type == AtomType || m_type == CartesianType) {
         if ((unsigned int) index.row() >= m_molecule->numAtoms())
           return;
 
@@ -281,6 +285,7 @@ namespace Avogadro
         m_molecule->update();
         return;
       }
+      // TODO: Highlight angles and torsions
     }
   }
 
