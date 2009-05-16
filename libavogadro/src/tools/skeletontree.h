@@ -4,6 +4,9 @@
   Copyright (C) 2007 by Shahzad Ali
   Copyright (C) 2007 by Ross Braithwaite
   Copyright (C) 2007 by James Bunt
+  Some portions Copyright (C) 2009 by Geoffrey Hutchison
+
+  Revisions to use Eigen/Geometry directly, rather than home-grown Quaternions
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -27,10 +30,10 @@
 #ifndef SKELETONTREE_H
 #define SKELETONTREE_H
 
-#include "quaternion.h"
-
 #include <QObject>
 #include <QList>
+
+#include <Eigen/Geometry>
 
 namespace Avogadro {
 
@@ -78,7 +81,7 @@ namespace Avogadro {
        *
        * @return A QList of pointers to all the children Nodes of this Node.
        */
-      QList<Node*> *nodes();
+      QList<Node*> nodes();
 
       /**
        * Determines whether or not this Node is a leaf in the SkeletonTree.
@@ -117,8 +120,8 @@ namespace Avogadro {
    * @brief Skeletal representation and manipulation of a Molecule.
    * @author Shahzad Ali, Ross Braithwaite, James Bunt
    *
-   * This class creates and provides methods to manipulate a Molecule using
-   * skeletal math.
+   * This class creates and provides methods to manipulate a Molecule 
+   * recursively (e.g., change a bond length or angle)
    */
   class SkeletonTree : public QObject
   {
@@ -157,21 +160,19 @@ namespace Avogadro {
        * Translates the Atoms attached to root node skeleton by the given amount
        * in the 3 standard directions (x, y, and z).
        *
-       * @param dx The distance the skeleton should move in the x direction.
-       * @param dy The distance the skeleton should move in the y direction.
-       * @param dz The distance the skeleton should move in the z direction.
+       * @param translationVector The translation vector for the skeleton.
        */
-      void skeletonTranslate(double dx, double dy, double dz);
+      void skeletonTranslate(Eigen::Vector3d translationVector);
 
       /**
        * Rotates the Atoms attached to root node skeleton, by the given angle.
        *
        * @param angle The angle the skeleton rotate in radians.
-       * @param rotationVector The Vector3d the skeleton should rotate around.
-       * @param centerVector The Vector3d of the center of rotation for the
+       * @param rotationAxis The axis of rotation for the skeleton
+       * @param centerVector The position of the center of rotation for the
        *                     skeleton.
        */
-      void skeletonRotate(double angle, Eigen::Vector3d rotationVector,
+      void skeletonRotate(double angle, Eigen::Vector3d rotationAxis,
                             Eigen::Vector3d centerVector);
 
       /**
@@ -216,31 +217,19 @@ namespace Avogadro {
        * @param y New y location
        * @param z New z location
        */
-      void recursiveTranslate(Node* n, double x, double y, double z);
+      void recursiveTranslate(Node* n, Eigen::Vector3d translationVector);
 
       /**
        * Recursivly rotates the Atoms attached to Node n in skeleton,
-       * by the given Rotation Quaternions around the Vector centerVector.
+       * around the Vector centerVector.
        *
        * @param n Current node to rotate
-       * @param left Left half of Rotation Quaternion pair.
-       * @param right Right half of Rotation Quaternion pair.
+       * @param rotationMatrix The rotation matrix for the transformation.
        * @param centerVector Center location to rotate around.
        */
-      void recursiveRotate(Node* n, Quaternion left, Quaternion right, Eigen::Vector3d centerVector);
+      void recursiveRotate(Node* n,
+                           Eigen::Transform3d rotationMatrix);
 
-      /**
-       * Performs a rotation on a vector.
-       * @param left Left half of Rotation Quaternion pair.
-       * @param right Right half of Rotation Quaternion pair.
-       * @param centerVector The Vector3d postion around which to rotate.
-       * @param postionVector The Vector3d postion of the vector to rotate.
-       * @return A Vector3d with the final postion after the rotation is
-       *         performed.
-       */
-      Eigen::Vector3d performRotation(Quaternion left, Quaternion right,
-                                      Eigen::Vector3d centerVector,
-                                      Eigen::Vector3d positionVector);
   };
 } // End namespace Avogadro
 

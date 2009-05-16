@@ -33,8 +33,7 @@ if(ENABLE_ZMATRIX_TOOL)
 endif(ENABLE_ZMATRIX_TOOL)
 
 ### bondcentrictool
-set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp
-  quaternion.cpp)
+set(bondcentrictool_SRCS bondcentrictool.cpp skeletontree.cpp)
 avogadro_plugin(bondcentrictool
   "${bondcentrictool_SRCS}"
   bondcentrictool.qrc)

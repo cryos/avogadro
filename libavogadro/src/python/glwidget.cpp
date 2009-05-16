@@ -45,7 +45,7 @@ void export_GLWidget()
   Molecule* (GLWidget::*molecule_ptr)() = &GLWidget::molecule;
 
 
-  class_<Avogadro::GLWidget, /*bases<QWidget>,*/ boost::noncopyable>("GLWidget")
+  class_<Avogadro::GLWidget, boost::noncopyable, std::auto_ptr<Avogadro::GLWidget> >("GLWidget")
     // constructors
     .def(init<QWidget*>())
     .def(init<const QGLFormat&, QWidget*, const GLWidget*>())

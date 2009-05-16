@@ -174,9 +174,6 @@ namespace Avogadro
     QVector< QVector <bool> > menuItemStatus;
     bool initialized;
 
-    bool tabbedTools;
-    QTabWidget::TabPosition toolsTabPosition;
-
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
     double rotationAcceleration;
@@ -226,8 +223,6 @@ namespace Avogadro
 
     QSettings settings;
 
-    d->tabbedTools = settings.value("tabbedTools", true).toBool();
-
     d->centralLayout = new QVBoxLayout(ui.centralWidget);
 
     // settings relies on the centralTab widget
@@ -249,7 +244,7 @@ namespace Avogadro
     connect(&(d->pluginManager), SIGNAL(reloadPlugins()),
             this, SLOT(reloadPlugins()));
 
-    ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
+    //    ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
 
     ui.enginesWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
@@ -264,10 +259,10 @@ namespace Avogadro
     d->messagesText->setReadOnly( true );
 
 #ifdef ENABLE_PYTHON
-    connect(pythonError(), SIGNAL(message(const QString&)),
+    connect(PythonError::instance(), SIGNAL(message(const QString&)),
             d->messagesText, SLOT(append(const QString&)));
-    d->messagesText->append( pythonError()->string() );
-    pythonError()->setListening(true); // switch to 'listening mode'
+    d->messagesText->append( PythonError::instance()->string() );
+    PythonError::instance()->setListening(true); // switch to 'listening mode'
 #endif
 
     messagesVBox->setMargin( 3 );
@@ -303,6 +298,7 @@ namespace Avogadro
     ui.menuToolbars->addAction( ui.projectDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.enginesDock->toggleViewAction() );
     ui.menuToolbars->addAction( ui.fileToolBar->toggleViewAction() );
+    ui.menuToolbars->addAction( ui.toolBar->toggleViewAction() );
 
     // Disable the "Revert" and "Save" actions -- we haven't modified anything
     // This will be enabled when the document is modified
@@ -364,7 +360,7 @@ namespace Avogadro
   {
     // delayed initialization
     if(event->type() == QEvent::Polish) {
-      reloadTabbedTools();
+      reloadTools();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -441,38 +437,6 @@ namespace Avogadro
     QMainWindow::show();
   }
 
-  QTabWidget::TabPosition MainWindow::toolsTabPosition() const
-  {
-    return d->toolsTabPosition;
-  }
-
-  void MainWindow::setToolsTabPosition(QTabWidget::TabPosition tabPosition)
-  {
-    d->toolsTabPosition = tabPosition;
-    if(d->tabbedTools)
-    {
-      d->toolsTab->setTabPosition(d->toolsTabPosition);
-    }
-  }
-
-  bool MainWindow::tabbedTools() const
-  {
-    return d->tabbedTools;
-  }
-
-  void MainWindow::setTabbedTools(bool tabbedTools)
-  {
-    if(tabbedTools == d->tabbedTools)
-    {
-      return;
-    }
-
-    // set our new settings
-    d->tabbedTools = tabbedTools;
-
-    reloadTabbedTools();
-  }
-
   bool MainWindow::renderAxes() const
   {
     return d->glWidget->renderAxes();
@@ -524,11 +488,11 @@ namespace Avogadro
      * So we only have to the new load extensions.
      */
     loadExtensions();
-    reloadTabbedTools();
+    reloadTools();
     qDebug() << "end MainWindow::reloadPlugins";
   }
 
-  void MainWindow::reloadTabbedTools()
+  void MainWindow::reloadTools()
   {
     if(d->toolSettingsDock) {
       delete d->toolSettingsDock;
@@ -536,125 +500,69 @@ namespace Avogadro
       d->toolSettingsWidget = 0;
       d->toolSettingsStacked = 0;
     }
-    delete ui.toolsWidget;
-    ui.toolsWidget = new QWidget();
-    ui.toolsWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
-    ui.toolsDock->setWidget(ui.toolsWidget);
+    ui.toolBar->clear();
+    
+    d->toolSettingsDock = new QDockWidget(this);
+    d->toolSettingsDock->setObjectName(QString::fromUtf8("toolSettingsDock"));
+    d->toolSettingsDock->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea);
+    d->toolSettingsWidget = new QWidget(d->toolSettingsDock);
+    d->toolSettingsWidget->setObjectName(QString::fromUtf8("toolSettingsWidget"));
+    d->toolSettingsDock->setWidget(d->toolSettingsWidget);
 
-    d->toolsTab = 0;
-    d->toolsFlow = 0;
-    d->toolsLayout = 0;
+    addDockWidget(static_cast<Qt::DockWidgetArea>(1), d->toolSettingsDock);
+    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
 
-    if(d->tabbedTools)
-    {
-      d->toolsLayout = new QVBoxLayout(ui.toolsWidget);
-      d->toolsLayout->setContentsMargins(0, 0, 0, 0);
-      d->toolsLayout->setObjectName("toolsLayout");
-      //      d->toolsLayout->setSizeConstraint(QLayout::SetFixedSize);
-
-      d->toolsTab = new IconTabWidget(ui.toolsWidget);
-      d->toolsTab->setObjectName("toolsTab");
-      d->toolsLayout->addWidget(d->toolsTab);
-
-      d->toolsTab->setTabPosition(d->toolsTabPosition);
-
-      // connect changing the tab
-      connect(d->toolsTab, SIGNAL(currentChanged(int)),
-          d->toolGroup, SLOT(setActiveTool(int)));
-    }
-    else
-    {
-      d->toolsFlow = new FlowLayout( ui.toolsWidget );
-      d->toolsFlow->setMargin( 9 );
-
-      d->toolSettingsDock = new QDockWidget(this);
-      d->toolSettingsDock->setObjectName(QString::fromUtf8("toolSettingsDock"));
-      d->toolSettingsDock->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea);
-      d->toolSettingsDock->setWindowTitle(tr("Tool Settings"));
-      d->toolSettingsWidget = new QWidget(d->toolSettingsDock);
-      d->toolSettingsWidget->setObjectName(QString::fromUtf8("toolSettingsWidget"));
-      d->toolSettingsDock->setWidget(d->toolSettingsWidget);
-      addDockWidget(static_cast<Qt::DockWidgetArea>(1), d->toolSettingsDock);
-
-      d->toolSettingsStacked = new QStackedLayout( d->toolSettingsWidget );
-
-      // add blank widget for those tools with no settings widget
-      d->toolSettingsStacked->addWidget( new QWidget );
-      ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
-
-      tabifyDockWidget(ui.toolsDock, d->toolSettingsDock);
-      ui.toolsDock->raise();
-    }
+    // Make sure to do this first, or we'll crash
+    d->toolSettingsStacked = new QStackedLayout( d->toolSettingsWidget );
+    // Add a blank widget for those tools with no settings widget
+    // (slot 0)
+    QWidget* blankWidget = new QWidget;
+    blankWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    d->toolSettingsStacked->addWidget(blankWidget);
 
     d->toolGroup->removeAllTools();
     d->toolGroup->append(d->pluginManager.tools(this));
-    if (d->molecule)
-      d->toolGroup->setActiveTool(tr("Navigate"));
-
-    //qDebug() << "pluginManager.tools().size() = " << d->pluginManager.tools().size();
 
     const QList<Tool *> tools = d->toolGroup->tools();
-    Tool *activeTool = d->toolGroup->activeTool();
     int toolCount = tools.size();
-
-    //qDebug() << "TOOLCOUNT = " << toolCount;
 
     for ( int i = 0; i < toolCount; i++ ) {
       Tool *tool = tools.at(i);
       connect(tool, SIGNAL(message(QString)), d->messagesText,
-          SLOT(append(QString)));
+              SLOT(append(QString)));
+
       QAction *action = tool->activateAction();
+      // Add Ctrl + tool number as an added shortcut
+      int toolNumber = i+1;
+      if (toolNumber == 10)
+        toolNumber = 0;
+      if (toolNumber <= 9) {
+        // If we have 11 or more tools, we can only do this for the first 10
+        QList<QKeySequence> shortcuts = action->shortcuts();
+        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(i + 1)));
+        action->setShortcuts(shortcuts);
+      }
+
+      ui.toolBar->addAction( action );
 
       QWidget *widget = tools.at( i )->settingsWidget();
-
-      if(d->tabbedTools)
-      {
-        if(!widget){
-          widget = new QWidget();
-        }
-
-        QWidget *tmpWidget = new QWidget(d->toolsTab);
-        QVBoxLayout *tmpLayout = new QVBoxLayout(tmpWidget);
-        tmpLayout->setContentsMargins(0,0,0,0);
-
-        // Add a "title" with the name of the tool
-        QLabel *tmpLabel = new QLabel(tmpWidget);
-        tmpLabel->setText(tool->name());
-        tmpLabel->setAlignment(Qt::AlignHCenter);
-        tmpLayout->addWidget(tmpLabel);
-
-        tmpLayout->addWidget(widget);
-
-        // add the tab
-        int tabIndex = d->toolsTab->addTab(tmpWidget, action->icon(), QString());
-        d->toolsTab->setTabToolTip(tabIndex, action->toolTip());
-
-        // set the active tool
-        if(tool == activeTool)
-        {
-          d->toolsTab->setCurrentIndex(tabIndex);
-        }
-      } // tabbed tools
-      else
-      { // non-tabbed tools
-        // create a tool button
-        QToolButton *button = new QToolButton( ui.toolsWidget );
-        button->setDefaultAction( action );
-        d->toolsFlow->addWidget( button );
-
-        // if there is a settings widget then add it to the stack
-        if(widget)
-        {
-          d->toolSettingsStacked->addWidget( widget );
-          if ( i == 0 ) {
-            d->toolSettingsStacked->setCurrentIndex( 1 );
-          }
+      if(widget){
+        d->toolSettingsStacked->addWidget( widget );
+        if ( i == 0 ) {
+          d->toolSettingsStacked->setCurrentIndex( 1 );
         }
       }
-    }
-//    d->toolGroup->setActiveTool(d->toolGroup->activeTool());
-  }
+
+    } // end for loop
+
+    // TODO: Add actions for toggling the tool settings and display settings
+    //    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
+
+    // Now, set the active tool
+    if (d->molecule)
+      d->toolGroup->setActiveTool("Navigate");
+  } // end reloadTools
 
   void MainWindow::newFile()
   {
@@ -1504,8 +1412,6 @@ namespace Avogadro
     d->glWidget = d->glWidgets.at( index );
 
     d->enginesStacked->setCurrentIndex( index );
-//    d->engineConfigurationStacked->setCurrentIndex( index );
-//    d->enginePrimitivesStacked->setCurrentIndex( index );
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
@@ -2025,18 +1931,11 @@ namespace Avogadro
 
   void MainWindow::setTool( Tool *tool )
   {
-    if(d->tabbedTools && d->toolsTab)
-    {
-      int index = d->toolGroup->tools().indexOf(tool);
-      d->toolsTab->setCurrentIndex(index);
-    }
-    else if(d->toolSettingsStacked)
-    {
-      if ( tool->settingsWidget() ) {
-        d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
-      } else {
-        d->toolSettingsStacked->setCurrentIndex( 0 );
-      }
+    d->toolSettingsDock->setWindowTitle(tool->name() + ' ' + tr("Settings"));
+    if ( tool->settingsWidget() ) {
+      d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
+    } else {
+      d->toolSettingsStacked->setCurrentIndex( 0 );
     }
   }
 
@@ -2295,9 +2194,6 @@ namespace Avogadro
       ui.enginesDock->raise();
     }
 
-    setTabbedTools(settings.value( "tabbedTools", true ).toBool());
-    setToolsTabPosition((QTabWidget::TabPosition)settings.value( "toolsTabPosition", QTabWidget::North ).toInt());
-
     settings.beginGroup("tools");
     d->toolGroup->readSettings(settings);
     settings.endGroup();
@@ -2352,8 +2248,6 @@ namespace Avogadro
     settings.setValue( "state", saveState() );
 
     settings.setValue("openDialogPath", d->fileDialogPath);
-    settings.setValue( "tabbedTools", d->tabbedTools );
-    settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
 
     // save the views

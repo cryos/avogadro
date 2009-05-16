@@ -315,13 +315,13 @@ namespace Avogadro {
 
       } else {
         delete script;
-        pythonError()->append(tr("PythonTool: checking ") + filename + "...");
-        pythonError()->append(tr("  - script has no 'Tool' class defined"));
+        PythonError::instance()->append(tr("PythonTool: checking ") + filename + "...");
+        PythonError::instance()->append(tr("  - script has no 'Tool' class defined"));
       }
     } else {
       delete script;
-      pythonError()->append(tr("PythonTool: checking ") + filename + "...");
-      pythonError()->append(tr("  - no module"));
+      PythonError::instance()->append(tr("PythonTool: checking ") + filename + "...");
+      PythonError::instance()->append(tr("  - no module"));
     }
   }
 

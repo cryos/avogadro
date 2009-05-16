@@ -32,41 +32,106 @@
 
 namespace Avogadro {
 
+  /**
+   * @brief Singleton object to store all python errors
+   * 
+   * To be able to display all python errors in the GUI later, it is needed to
+   * store python errors somewhere until the GUI objects are created. This 
+   * class stores the appended errors and when the GUI is created, the preceding
+   * errors can be retrieved for display. The PythonError class has a message 
+   * signal which is emitted if the object is in listening mode (see setListening()).
+   *
+   * All calls to python functions (directly to the Python C API or through 
+   * boost::python), should use the following form:
+   *
+   * @code
+   * try {
+   *   prepareToCatchError();
+   *   // Do python stuff here...
+   * } catch(error_already_set const &) {
+   *   catchError(); 
+   *   // additional error handling here... 
+   * }
+   * @endcode
+   * 
+   *
+   */
   class A_EXPORT PythonError : public QObject
   {
     Q_OBJECT
 
     Q_SIGNALS:
+      /**
+       * In listening mode, this signal is emitted when a new python error is 
+       * caught by catchError().
+       */
       void message(const QString&);
 
     public:
-      PythonError(QObject *parent = 0) : QObject(parent), m_listening(false)
-      {}
-      void append(const QString &str)
-      {
-        if (m_listening)
-          emit message(str); // emit signal when other class is listening
-        else
-          m_str += str; // else, store the error        
-      }
-      QString& string()
-      {
-        return m_str;
-      }
-      void setListening(bool listening)
-      {
-        m_listening = listening;
-      }
-
+      /**
+       * Get a pointer to the singleton instance.
+       */
+      static PythonError* instance();
+      /**
+       * This method has 2 behaviours depening on the listening mode.
+       *
+       * 1) When a class is listening, calling this method will emit the message signal.
+       * 
+       * 2) When there is no class listening, calling this method will 
+       * append str to the internal error log.
+       */
+      void append(const QString &str);
+      /**
+       * Get the internal error log containing all errors when listening 
+       * was disabled.
+       */
+      QString& string();
+      /**
+       * Set listening mode.
+       */
+      void setListening(bool listening);
     private:
+      PythonError();
       QString m_str;
       bool m_listening;
   };
 
-  A_EXPORT PythonError* pythonError();
-  
+  class PythonThreadPrivate;
+  class PythonThread
+  {
+    public:
+      PythonThread();
+      ~PythonThread();
+    private:
+      PythonThreadPrivate * const d;
+  };
+
+  /** 
+   * Initialize python. This is a no-operation when called for a second time.
+   *
+   * @note Py_Finalize is never called. While there may be situations where a 
+   * user disables all python features after using them, calling Py_Finalize()
+   * may result in unexpected behaviour. 
+   * (http://docs.python.org/c-api/init.html#Py_Finalize)
+   *
+   * @param addToSearchPath Optional parameter containing path(s) to add 
+   * (prepend) to sys.path. Multiple paths can be seperated by ';'. 
+   * 
+   * @return True if python was successfully initialized.
+   */
+  A_EXPORT bool initializePython(const QString &addToSearchPath = QString());
+
+  /**
+   * Prepare to catch errors (exceptions) from executing python code. See 
+   * PythonError class documentation for more information on how to use this
+   * function.
+   */
   A_EXPORT void prepareToCatchError();
 
+  /**
+   * Get the last error resulting from executing python code. See PythonError 
+   * class documentation for more information on how to use this function.
+   */
   A_EXPORT void catchError();
 
 } // namespace

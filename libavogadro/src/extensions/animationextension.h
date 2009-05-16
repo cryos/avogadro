@@ -27,6 +27,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
+#include <avogadro/animation.h>
 
 #include <QObject>
 #include <QList>
@@ -62,19 +63,16 @@ namespace Avogadro {
       QList<QAction *> m_actions;
       Molecule *m_molecule;
       AnimationDialog *m_animationDialog;
-      QTimeLine *m_timeLine;
+      Animation *m_animation;
       
       //only needed for rendering a video
       GLWidget* m_widget;
 
-      int m_frameCount;
     
    private Q_SLOTS:
       void loadFile(QString file);
-      void setDuration(int i);
       void setLoop(int state);
-      void setFrame(int i);
-      void stop();
+      void setDynamicBonds(int state);
       void saveVideo(QString videoFileName);
 
   private:

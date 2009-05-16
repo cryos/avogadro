@@ -40,9 +40,6 @@ namespace Avogadro
       //! Desconstructor
       ~AnimationDialog();
 
-      void setFrame(int i);
-      void setFrameCount(int i);
-
       int fps();
 
     private:
@@ -50,6 +47,8 @@ namespace Avogadro
       int m_frameCount;
 
     public Q_SLOTS:
+      void setFrameCount(int i);
+      void setFrame(int i);
       void loadFile();
       void saveVideo();
 
@@ -58,6 +57,7 @@ namespace Avogadro
       void videoFileInfo(QString filename); 
       void sliderChanged(int i);
       void fpsChanged(int i);
+      void dynamicBondsChanged(int state);
       bool loopChanged(int state);
       void back();
       void play();

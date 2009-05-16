@@ -93,6 +93,6 @@ namespace Avogadro {
     return QAbstractButton::event(e);
   }
 
-}
+} // end namespace
 
 #include "colorbutton.moc"

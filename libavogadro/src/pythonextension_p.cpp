@@ -327,13 +327,13 @@ namespace Avogadro
 
       } else {
         delete script;
-        pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
-        pythonError()->append(tr("  - script has no 'Extension' class defined"));
+        PythonError::instance()->append(tr("PythonExtension: checking ") + filename + "...");
+        PythonError::instance()->append(tr("  - script has no 'Extension' class defined"));
       }
     } else {
       delete script;
-      pythonError()->append(tr("PythonExtension: checking ") + filename + "...");
-      pythonError()->append(tr("  - no module"));
+      PythonError::instance()->append(tr("PythonExtension: checking ") + filename + "...");
+      PythonError::instance()->append(tr("  - no module"));
     }
   }
 

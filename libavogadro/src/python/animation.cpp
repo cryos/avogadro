@@ -17,10 +17,11 @@ void export_Animation()
   class_<Avogadro::Animation, boost::noncopyable>("Animation")
     .def("setFrames", &Animation::setFrames)
     .def("setMolecule", &Animation::setMolecule)
-    .def("setDuration", &Animation::setDuration)
+    .def("setFps", &Animation::setFps)
     .def("setLoopCount", &Animation::setLoopCount)
     .def("setFrame", &Animation::setFrame)
     .def("start", &Animation::start)
+    .def("pause", &Animation::pause)
     .def("stop", &Animation::stop)
     ;
 

@@ -194,7 +194,7 @@
              <widget class="QLineEdit" name="stepsZ"/>
             </item>
             <item>
-             <spacer name="horizontalSpacer_3">
+             <spacer name="horizontalSpacer_23">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -337,7 +337,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_22">
          <item>
-          <spacer name="horizontalSpacer_4">
+          <spacer name="horizontalSpacer_24">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -364,7 +364,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_24">
          <item>
-          <spacer name="horizontalSpacer_4">
+          <spacer name="horizontalSpacer_34">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -583,7 +583,7 @@
        <item row="5" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_20">
          <item>
-          <spacer name="horizontalSpacer_4">
+          <spacer name="horizontalSpacer_44">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -643,7 +643,7 @@
           <widget class="QComboBox" name="surfaceCubeCombo"/>
          </item>
          <item>
-          <spacer name="horizontalSpacer_7">
+          <spacer name="horizontalSpacer_17">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
