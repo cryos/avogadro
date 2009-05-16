@@ -61,7 +61,7 @@ namespace Avogadro {
 
   void Animation::setDuration(int i)
   {
-    int interval = 1000 / i;
+    int interval = 1000 / i; // 1 second
     m_timeLine->setUpdateInterval(interval);
     int duration = interval * m_frames.size();
     m_timeLine->setDuration(duration);

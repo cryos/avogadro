@@ -57,9 +57,9 @@ namespace Avogadro {
 
   // ##########  nodes  ##########
 
-  QList<Node*> *Node::nodes()
+  QList<Node*> Node::nodes()
   {
-    return &m_nodes;
+    return m_nodes;
   }
 
   // ##########  isLeaf  ##########
@@ -79,10 +79,9 @@ namespace Avogadro {
       return true;
     }
 
-    for (int i = 0; i < m_nodes.size(); i++)
+    foreach (Node *node, m_nodes)
     {
-      Node* n = m_nodes.at(i);
-      if (n->containsAtom(atom))
+      if (node->containsAtom(atom))
       {
         exists = true;
         break;
@@ -183,8 +182,7 @@ namespace Avogadro {
     Atom* atom = node->atom();
     int found = 0;
 
-    for (unsigned int i=0; i < mol->numBonds(); i++) {
-      Bond* b = mol->bond(i);
+    foreach (Bond *b, mol->bonds()) {
       Atom* bAtom = b->beginAtom();
       Atom* eAtom = b->endAtom();
 
@@ -205,59 +203,60 @@ namespace Avogadro {
 
   // ##########  skeletonTranslate  ##########
 
-  void SkeletonTree::skeletonTranslate(double dx, double dy, double dz)
+  void SkeletonTree::skeletonTranslate(Eigen::Vector3d translationVector)
   {
     if (m_rootNode) {
       //Translate skeleton
-      recursiveTranslate(m_rootNode, dx, dy, dz);
+      recursiveTranslate(m_rootNode, translationVector);
     }
   }
 
   // ##########  skeletonRotate  ##########
 
-  void SkeletonTree::skeletonRotate(double angle, Eigen::Vector3d rotationVector,
-      Eigen::Vector3d centerVector)
+  void SkeletonTree::skeletonRotate(double angle, 
+                                    Eigen::Vector3d rotationAxis,
+                                    Eigen::Vector3d centerVector)
   {
     if (m_rootNode) {
-      //Rotate skeleton
-      Quaternion qLeft = Quaternion::createRotationLeftHalf(angle, rotationVector);
-      Quaternion qRight = qLeft.multiplicitiveInverse();
-      recursiveRotate(m_rootNode, qLeft, qRight, centerVector);
+      //Rotate skeleton around a particular axis and center point
+      Eigen::Transform3d rotation;
+      rotation = Eigen::AngleAxisd(angle, rotationAxis);
+      rotation.pretranslate(centerVector);
+      rotation.translate(-centerVector);
+
+      recursiveRotate(m_rootNode, rotation);
     }
   }
 
   // ##########  recursiveTranslate  ##########
 
-  void SkeletonTree::recursiveTranslate(Node* n, double x, double y, double z)
+  void SkeletonTree::recursiveTranslate(Node* n, 
+                                        Eigen::Vector3d translationVector)
   {
-    QList<Node*>* listNodes = n->nodes();
+    // Translate the root node, and then update any children
     Atom* a = n->atom();
 
-    a->setPos(Vector3d(a->pos()->x() + x, a->pos()->y() + y, a->pos()->z() + z));
+    a->setPos(*(a->pos()) + translationVector);
     a->update();
 
-    for (int i = 0; i < listNodes->size(); i++) {
-      Node* node = listNodes->at(i);
-      recursiveTranslate(node, x, y, z);
-    }
+    foreach (Node* node, n->nodes())
+      recursiveTranslate(node, translationVector);
   }
 
   // ##########  recursiveRotate  ##########
 
-  void SkeletonTree::recursiveRotate(Node* n, Quaternion left, Quaternion right,
-      Eigen::Vector3d centerVector)
+  void SkeletonTree::recursiveRotate(Node* n, 
+                                     Eigen::Transform3d rotationMatrix)
   {
-    QList<Node*>* listNodes = n->nodes();
+    // Update the root node with the new position
     Atom* a = n->atom();
-    Vector3d final = performRotation(left, right, centerVector, *a->pos());
-
-    a->setPos(final);
+    a->setPos(rotationMatrix * (*a->pos()));
     a->update();
 
-    for (int i = 0; i < listNodes->size(); i++)
+    // Now update the children
+    foreach (Node *node, n->nodes())
     {
-      Node* node = listNodes->at(i);
-      recursiveRotate(node, left, right, centerVector);
+      recursiveRotate(node, rotationMatrix);
     }
   }
 
@@ -265,13 +264,8 @@ namespace Avogadro {
 
   void SkeletonTree::printSkeleton(Node* n)
   {
-    QList<Node*>* listNodes = n->nodes();
-
-    for (int i = 0; i < listNodes->size(); i++)
-    {
-      Node* n = listNodes->at(i);
-      printSkeleton(n);
-    }
+    foreach (Node* node, n->nodes())
+      printSkeleton(node);
 
     Atom* a = n->atom();
     cout << a->pos()->x() << "," << a->pos()->y()<< ","<<a->pos()->z() << endl;
@@ -288,14 +282,5 @@ namespace Avogadro {
     return m_rootNode ? m_rootNode->containsAtom(atom) : false;
   }
 
-  // ##########  performRotation  ##########
-
-  Eigen::Vector3d SkeletonTree::performRotation(Quaternion left, Quaternion right,
-      Eigen::Vector3d centerVector,
-      Eigen::Vector3d positionVector)
-  {
-    return Quaternion::performRotationMultiplication(left, positionVector -
-        centerVector, right) + centerVector;
-  }
 }
 

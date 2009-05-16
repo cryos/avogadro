@@ -37,14 +37,28 @@ namespace Avogadro {
 
   class Molecule;
 
+  /**
+   * @class Animation animation.h <avogadro/animation.h>
+   * @brief Simple frame-based animation for Molecule primitives
+   * @author Geoffrey R. Hutchison
+   *
+   * The animation class supports 
+   */
   class A_EXPORT Animation : public QObject
   {
     Q_OBJECT
 
     public:
-      //! Constructor
+    /**
+     * Constructor.
+     *
+     * @param parent The object parent. Should be the widget viewing the
+     * animation or a child of that widget (e.g., an Extension).
+     */
       Animation(QObject *parent=0);
-      //! Deconstructor
+    /**
+     * Deconstructor.
+     */
       virtual ~Animation();
     
       void setFrames(std::vector< std::vector< Eigen::Vector3d> *> frames);
@@ -55,6 +69,9 @@ namespace Avogadro {
       void setLoopCount(int loops);
       void setFrame(int i);
 
+      /**
+       * 
+       */
       void start();
       void stop();
 
