@@ -18,6 +18,8 @@
 #include <avogadro/toolgroup.h>
 #include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
+#include <avogadro/openbabelwrapper.h>
+#include <avogadro/moleculefile.h>
 
 #include <QObject>
 #include <QList>
@@ -97,6 +99,7 @@ template <> struct MetaData<Avogadro::Primitive> { static const char* className(
 template <> struct MetaData<Avogadro::Residue> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::Tool> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::ToolGroup> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::MoleculeFile> { static const char* className() { return "QObject";} };
 
 
 template <> struct MetaData<QObject> { static const char* className() { return "QObject";} };
@@ -349,6 +352,7 @@ void export_sip()
   def("toPyQt", &toPyQt<Avogadro::Residue>);
   def("toPyQt", &toPyQt<Avogadro::Tool>);
   def("toPyQt", &toPyQt<Avogadro::ToolGroup>);
+  def("toPyQt", &toPyQt<Avogadro::MoleculeFile>);
   
   // QClass* <--> PyQt objects 
   QClass_converters<QObject>();

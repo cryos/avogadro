@@ -25,16 +25,90 @@
 #include <avogadro/pythonerror.h>
 
 #include <boost/python.hpp>
+#include <QStringList>
 
 namespace Avogadro
 {
 
-  PythonError* pythonError()
+  PythonError::PythonError() : QObject(), m_listening(false)
+  {
+  }
+
+  PythonError* PythonError::instance()
   {
     static PythonError *obj = 0;
     if (!obj)
-      obj = new PythonError(0);
+      obj = new PythonError;
     return obj;
+  }
+
+  void PythonError::append(const QString &str)
+  {
+    if (m_listening)
+      emit message(str); // emit signal when other class is listening
+    else
+      m_str += str; // else, store the error        
+  }
+  
+  QString& PythonError::string()
+  {
+    return m_str;
+  }
+
+  void PythonError::setListening(bool listening)
+  {
+    m_listening = listening;
+  }
+
+  class PythonThreadPrivate
+  {
+    public:
+      PythonThreadPrivate() : gstate(PyGILState_Ensure())
+      {
+      }
+      PyGILState_STATE gstate;
+  };
+
+  PythonThread::PythonThread() : d(new PythonThreadPrivate)
+  {
+  }
+
+  PythonThread::~PythonThread()
+  {
+    PyGILState_Release(d->gstate);
+    delete d;
+  }
+ 
+  bool initializePython(const QString &addToSearchPath)
+  {
+    Py_Initialize();
+
+    static QStringList addedPaths = QStringList();
+
+    if (Py_IsInitialized()) {
+      using namespace boost::python;
+      try {
+        prepareToCatchError();
+        object main_module = object(( handle<>(borrowed(PyImport_AddModule("__main__")))));
+        object main_namespace = main_module.attr("__dict__");
+        exec("import sys", main_namespace, main_namespace);
+        foreach (const QString &path, addToSearchPath.split(';')) {
+          if (addedPaths.contains(path))
+            continue;
+          addedPaths.append(path);
+          QString exp("sys.path.insert(0,\"");
+          exp.append(path);
+          exp.append("\")");
+          exec(exp.toAscii().data(), main_namespace, main_namespace);
+        }
+      } catch (const error_already_set &) {
+        catchError();
+      }
+     
+      return true;
+    }
+
+    return false;
   }
 
   void prepareToCatchError()
@@ -51,7 +125,7 @@ namespace Avogadro
     // extract the error to a string
     boost::python::object sys = boost::python::import("sys");
     boost::python::object err = sys.attr("stderr");
-    pythonError()->append( QString(boost::python::extract<const char*>(err.attr("getvalue")())) );
+    PythonError::instance()->append( QString(boost::python::extract<const char*>(err.attr("getvalue")())) );
   }
 
 } // namespace

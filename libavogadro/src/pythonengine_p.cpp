@@ -49,7 +49,6 @@ namespace Avogadro {
       PythonEnginePrivate() : script(0), settingsWidget(0)
       {}
 
-      PythonInterpreter      interpreter;
       PythonScript          *script;
       boost::python::object  instance;
       QWidget               *settingsWidget;
@@ -58,13 +57,17 @@ namespace Avogadro {
 
   PythonEngine::PythonEngine(QObject *parent, const QString &filename) : Engine(parent), d(new PythonEnginePrivate)
   {
-    setDescription(tr("Python script rendering")); // FIXME
-
     loadScript(filename);
   }
 
   PythonEngine::~PythonEngine()
   {
+    PythonThread pt;
+    if (d->script) {
+      delete d->script;
+      d->script = 0;
+    }
+
     delete d;
   }
 
@@ -85,6 +88,7 @@ namespace Avogadro {
 
   QString PythonEngine::name() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
       return tr("Unknown Python Engine");
 
@@ -100,6 +104,7 @@ namespace Avogadro {
 
   QString PythonEngine::description() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
       return tr("N/A");
 
@@ -116,6 +121,7 @@ namespace Avogadro {
 
   bool PythonEngine::renderOpaque(PainterDevice *pd)
   {
+    PythonThread pt;
     if (!d->script)
       return false; // nothing we can do
 
@@ -137,6 +143,8 @@ namespace Avogadro {
   {
     if (!d->script)
       return 0; // nothing we can do
+    
+    PythonThread pt;
 
     if(!d->settingsWidget)
     {
@@ -171,6 +179,8 @@ namespace Avogadro {
 
     if (!d->script)
       return;
+    
+    PythonThread pt;
 
     if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
       return;
@@ -214,8 +224,8 @@ namespace Avogadro {
   void PythonEngine::loadScript(const QString &filename)
   {
     QFileInfo info(filename);
-    d->interpreter.addSearchPath(info.canonicalPath());
-
+    initializePython(info.canonicalPath());
+    PythonThread pt;
 
     PythonScript *script = new PythonScript(filename);
     d->identifier = script->identifier();
@@ -237,13 +247,13 @@ namespace Avogadro {
 
       } else {
         delete script;
-        pythonError()->append(tr("PythonEngine: checking ") + filename + "...");
-        pythonError()->append(tr("  - script has no 'Engine' class defined"));
+        PythonError::instance()->append(tr("PythonEngine: checking ") + filename + "...");
+        PythonError::instance()->append(tr("  - script has no 'Engine' class defined"));
       }
     } else {
       delete script;
-      pythonError()->append(tr("PythonEngine: checking ") + filename + "...");
-      pythonError()->append(tr("  - no module"));
+      PythonError::instance()->append(tr("PythonEngine: checking ") + filename + "...");
+      PythonError::instance()->append(tr("  - no module"));
     }
   }
 
@@ -251,6 +261,8 @@ namespace Avogadro {
   {
     if (!d->script)
       return Engine::Opaque; // nothing we can do
+
+    PythonThread pt;
 
     try {
       prepareToCatchError();
@@ -269,6 +281,8 @@ namespace Avogadro {
   {
     if (!d->script)
       return 0.0; // nothing we can do
+    
+    PythonThread pt;
 
     try {
       prepareToCatchError();

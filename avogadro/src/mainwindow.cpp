@@ -266,10 +266,10 @@ namespace Avogadro
     d->messagesText->setReadOnly( true );
 
 #ifdef ENABLE_PYTHON
-    connect(pythonError(), SIGNAL(message(const QString&)),
+    connect(PythonError::instance(), SIGNAL(message(const QString&)),
             d->messagesText, SLOT(append(const QString&)));
-    d->messagesText->append( pythonError()->string() );
-    pythonError()->setListening(true); // switch to 'listening mode'
+    d->messagesText->append( PythonError::instance()->string() );
+    PythonError::instance()->setListening(true); // switch to 'listening mode'
 #endif
 
     messagesVBox->setMargin( 3 );

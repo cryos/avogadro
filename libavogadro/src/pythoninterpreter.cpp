@@ -26,6 +26,7 @@
 
 #include <avogadro/global.h>
 #include <avogadro/molecule.h>
+#include <avogadro/pythonerror.h>
 #include <QString>
 #include <QDebug>
 
@@ -49,24 +50,11 @@ namespace Avogadro {
 
   PythonInterpreter::PythonInterpreter() : d(new PythonInterpreterPrivate)
   {
-    static bool isInitialized = false;
-    
-    if (!isInitialized) {
-      isInitialized = true;
-      
-      try {
-        Py_Initialize();
-      } catch( error_already_set ) {
-        PyErr_Print();
-      }
-      return;
-    }
-      
+    initializePython();
   }
 
   PythonInterpreter::~PythonInterpreter()
   {
-    //Py_Finalize();
     delete d;
   }
 
