@@ -910,8 +910,6 @@ namespace Avogadro {
 
   void GLWidget::renderCrystal(GLuint displayList)
   {
-    if (!d->molecule) return;
- 
     std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
 
     for (int a = 0; a < d->aCells; a++) {
@@ -949,8 +947,6 @@ namespace Avogadro {
   //    0---1
   void GLWidget::renderCrystalAxes()
   {
-    if (!d->molecule) return;
- 
     std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
     vector3 v0(0.0, 0.0, 0.0);
     vector3 v1(cellVectors[0]);
