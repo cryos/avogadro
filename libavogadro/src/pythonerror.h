@@ -96,16 +96,6 @@ namespace Avogadro {
       bool m_listening;
   };
 
-  class PythonThreadPrivate;
-  class PythonThread
-  {
-    public:
-      PythonThread();
-      ~PythonThread();
-    private:
-      PythonThreadPrivate * const d;
-  };
-
   /** 
    * Initialize python. This is a no-operation when called for a second time.
    *
