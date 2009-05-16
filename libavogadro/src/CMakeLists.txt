@@ -49,6 +49,7 @@ set(libavogadro_HDRS
   mesh.h
   meshgenerator.h
   molecule.h
+  moleculefile.h
   navigate.h
   neighborlist.h
   openbabelwrapper.h
