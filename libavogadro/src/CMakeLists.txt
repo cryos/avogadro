@@ -150,7 +150,7 @@ set_target_properties(avogadro
 target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
-install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/avogadro)
+install(FILES ${libavogadro_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR})
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
 # Add the engiens, tools and extensions directories

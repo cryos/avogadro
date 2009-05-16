@@ -5,7 +5,7 @@
 Xcode="@XCODE@x"
 InstallPrefix="@CMAKE_INSTALL_PREFIX@"
 ProjectBinaryDir="@binary_dir@"
-OSX_App_Name="Avogadro0.9"
+OSX_App_Name="Avogadro"
 
 # Check for a Debug build. Note that the EXE_DEBUG_EXTENSION was set
 # in the CMakeLists.txt file

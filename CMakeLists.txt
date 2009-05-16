@@ -268,7 +268,7 @@ add_custom_target(update-translations
     WORKING_DIRECTORY
     ${Avogadro_SOURCE_DIR})
 
-add_custom_command(TARGET create-translations
+add_custom_target(create-translations
     COMMAND ${Avogadro_SOURCE_DIR}/scripts/create-translations.sh
     WORKING_DIRECTORY ${Avogadro_SOURCE_DIR}/i18n)
 

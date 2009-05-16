@@ -36,7 +36,7 @@ namespace Avogadro {
 
   /**
    * @class ZMatrix zmatrix.h <avogadro/zmatrix.h>
-   * @brief Representation of an atom.
+   * @brief Z-matrix internal coordinates for a molecule.
    * @author Marcus D. Hanwell
    *
    * The ZMatrix class is a Primitive subclass that provides a ZMatrix object.

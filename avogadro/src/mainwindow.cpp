@@ -177,8 +177,6 @@ namespace Avogadro
     bool tabbedTools;
     QTabWidget::TabPosition toolsTabPosition;
 
-    bool animationsEnabled;
-
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
     double rotationAcceleration;
@@ -958,6 +956,43 @@ namespace Avogadro
     return true;
   }
 
+  bool MainWindow::maybeSave()
+  {
+    if ( isWindowModified() ) {
+      // We're using the property interface to QMessageBox, rather than
+      // the static functions. This is more work, but gives us some nice
+      // fine-grain control. This helps both on Windows and Mac 
+      // look more "native."
+      QMessageBox msgBox(QMessageBox::Warning, 
+                         tr( "Avogadro" ),
+                         tr( "Do you want to save the changes you made in the document?" ),
+                         QMessageBox::Save | QMessageBox::Discard
+                         | QMessageBox::Cancel,
+                         this);
+
+      // On Mac, this will make a sheet relative to the window
+      // Unfortunately, it also closes the window when the box disappears!
+      //      msgBox.setWindowModality(Qt::WindowModal);
+      // second line of text
+      msgBox.setInformativeText(tr("Your changes will be lost if you don't save them." ));
+      msgBox.setDefaultButton(QMessageBox::Save);
+
+      // OK, now add shortcuts for save and discard
+      msgBox.button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
+      msgBox.button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
+      msgBox.setButtonText(QMessageBox::Save,
+                            d->fileName.isEmpty() ? tr("Save...") : tr("Save"));
+
+      int ret = msgBox.exec();
+
+      if ( ret == QMessageBox::Save )
+        return save();
+      else if ( ret == QMessageBox::Cancel )
+        return false;
+    }
+    return true;
+  }
+
   // Close the current file -- leave an empty window
   // Not used on Mac: the window is closed via closeEvent() instead
   void MainWindow::closeFile()
@@ -1340,50 +1375,6 @@ namespace Avogadro
     QApplication::sendEvent(qApp, &ev);
     if(ev.isAccepted())
       qApp->quit();
-  }
-
-  void MainWindow::setAnimationsEnabled(bool animations)
-  {
-    d->animationsEnabled = animations;
-  }
-
-  bool MainWindow::animationsEnabled() const
-  {
-    return d->animationsEnabled;
-  }
-
-  bool MainWindow::maybeSave()
-  {
-    if ( isWindowModified() ) {
-      // We're using the property interface to QMessageBox, rather than
-      // the static functions. This is more work, but gives us some nice
-      // fine-grain control. This helps both on Windows and Mac 
-      // look more "native."
-      QMessageBox msgBox(QMessageBox::Warning, 
-                         tr( "Avogadro" ),
-                         tr( "Do you want to save the changes you made in the document?" ),
-                         QMessageBox::Save | QMessageBox::Discard
-                         | QMessageBox::Cancel,
-                         this);
-
-      // On Mac, this will make a sheet relative to the window
-      msgBox.setWindowModality(Qt::WindowModal);
-      // second line of text
-      msgBox.setInformativeText(tr("Your changes will be lost if you don't save them." ));
-      msgBox.setDefaultButton(QMessageBox::Save);
-
-      // OK, now add shortcuts for save and discard
-      msgBox.button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
-      msgBox.button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
-
-      int ret = msgBox.exec();
-
-      if ( ret == QMessageBox::Save )
-        return save();
-      else if ( ret == QMessageBox::Cancel )
-        return false;
-    }
-    return true;
   }
 
   void MainWindow::clearRecentFiles()
@@ -1951,8 +1942,7 @@ namespace Avogadro
     }
 
     // if smooth transitions are disabled, center now and return
-    if( !d->animationsEnabled ) {
-      //      camera->initializeViewPoint(); -- old method, doesn't handle seletions
+    if( !d->molecule->numAtoms() >= 1000 ) {
       camera->setModelview(goal);
       d->glWidget->update();
       return;
@@ -2294,7 +2284,6 @@ namespace Avogadro
     resize( size );
 
     d->fileDialogPath = settings.value("openDialogPath").toString();
-    d->animationsEnabled = settings.value( "animationsEnabled", false ).toBool();
 
     QByteArray ba = settings.value( "state" ).toByteArray();
     if(!ba.isEmpty())
@@ -2366,7 +2355,6 @@ namespace Avogadro
     settings.setValue( "tabbedTools", d->tabbedTools );
     settings.setValue( "toolsTabPosition", d->toolsTabPosition );
     settings.setValue( "enginesDock", ui.enginesDock->saveGeometry());
-    settings.setValue( "animationsEnabled", d->animationsEnabled );
 
     // save the views
     settings.beginWriteArray("view");

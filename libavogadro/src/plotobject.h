@@ -47,7 +47,7 @@ class PlotWidget;
 class PlotPoint;
 
   /**
-   * @class PlotObject
+   * @class PlotObject plotobject.h <avogadro/plotobject.h>
    * @short Encapsulates a data set to be plotted in a PlotWidget.
    *
    * Think of a PlotObject as a set of data displayed as a group in the plot.

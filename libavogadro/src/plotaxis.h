@@ -37,6 +37,7 @@
 namespace Avogadro {
 
   /**
+   * @class PlotAxis plotaxis.h <avogadro/plotaxis.h>
    * @short Axis for PlotWidget
    *
    * Contains all data for drawing an axis including format specification axis labels.

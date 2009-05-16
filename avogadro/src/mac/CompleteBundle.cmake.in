@@ -3,6 +3,8 @@ if(COMMAND cmake_policy)
   cmake_policy(SET CMP0009 NEW)
 endif(COMMAND cmake_policy)
 
+set(OSX_App "Avogadro.app")
+
 # gp_item_default_embedded_path item default_embedded_path_var
 #
 # Return the path that others should refer to the item by when the item
@@ -85,17 +87,17 @@ endfunction(gp_item_default_embedded_path_override)
 # -- Copy the App bundle to the installation location first
 EXECUTE_PROCESS(COMMAND "@OSX_MAKE_STANDALONE_BUNDLE_BASH_SCRIPT@")
 
-file(GLOB toolList "$ENV{DESTDIR}/Applications/Avogadro0.9.app/Contents/lib/avogadro/tools/*")
-file(GLOB engineList "$ENV{DESTDIR}/Applications/Avogadro0.9.app/Contents/lib/avogadro/engines/*")
-file(GLOB extensionList "$ENV{DESTDIR}/Applications/Avogadro0.9.app/Contents/lib/avogadro/extensions/*")
-file(GLOB colorList "$ENV{DESTDIR}/Applications/Avogadro0.9.app/Contents/lib/avogadro/colors/*")
+file(GLOB toolList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/tools/*")
+file(GLOB engineList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/engines/*")
+file(GLOB extensionList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/extensions/*")
+file(GLOB colorList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/colors/*")
 
-file(GLOB obList "$ENV{DESTDIR}//Applications/Avogadro0.9.app/Contents/lib/openbabel/2.2.2/*")
+file(GLOB obList "$ENV{DESTDIR}//Applications/${OSX_App}/Contents/lib/openbabel/2.2.2/*")
 
 message(STATUS "PluginList: ${engineList}")
 
 # -- Run the BundleUtilities cmake code
 include(BundleUtilities)
-fixup_bundle("$ENV{DESTDIR}/Applications/Avogadro0.9.app"
+fixup_bundle("$ENV{DESTDIR}/Applications/${OSX_App}"
   "${toolList};${engineList};${extensionList};${colorList};${obList}"
   "@LIB_INSTALL_DIR@;@LIB_INSTALL_DIR@/avogadro/tools;@LIB_INSTALL_DIR@/avogadro/engines;@LIB_INSTALL_DIR@/avogadro/colors;@LIB_INSTALL_DIR@/avogadro/extensions")

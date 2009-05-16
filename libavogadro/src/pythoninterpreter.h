@@ -36,7 +36,7 @@ namespace Avogadro {
 
   /**
    * @author Donald Ephraim Curtis
-   * @class PythonInterpreter pyhtoninterpreter.h <avogadro/pythoninterpreter.h>
+   * @class PythonInterpreter pythoninterpreter.h <avogadro/pythoninterpreter.h>
    * @brief Class to embed the Python interpreter in Avogadro.
    *
    * This class is used to help embed the Python interpreter into C++ apps
