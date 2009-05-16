@@ -24,7 +24,6 @@
  ***********************************************************************/
 
 #include "pythonextension_p.h"
-#include "pythoninterpreter.h"
 #include "pythonscript.h"
 
 
@@ -43,47 +42,33 @@ using namespace boost::python;
 namespace Avogadro
 {
 
-  class PythonExtensionPrivate
-  {
-    public:
-      PythonExtensionPrivate() : script(0), dockWidget(0)
-      {}
-
-      PythonInterpreter      interpreter;
-      PythonScript          *script;
-      boost::python::object  instance;
-      QDockWidget           *dockWidget;
-      QString                identifier;
-  };
-
   PythonExtension::PythonExtension(QObject *parent, const QString &filename) :
-      Extension(parent), d(new PythonExtensionPrivate)
+      Extension(parent), m_script(0), m_dockWidget(0)
   {
     loadScript(filename);
   }
 
   PythonExtension::~PythonExtension()
   {
-    if (d->script)
-      delete d->script;
-    if (d->dockWidget)
-      d->dockWidget->deleteLater();
-    delete d;
+    if (m_script)
+      delete m_script;
+    if (m_dockWidget)
+      m_dockWidget->deleteLater();
   }
 
   QString PythonExtension::identifier() const
   {
-    return d->identifier;
+    return m_identifier;
   }
 
   QString PythonExtension::name() const
   {
-    if (!PyObject_HasAttrString(d->instance.ptr(), "name"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "name"))
       return tr("Unknown Python Extension");
 
     try {
        prepareToCatchError();
-       const char *name = extract<const char*>(d->instance.attr("name")());
+       const char *name = extract<const char*>(m_instance.attr("name")());
        return QString(name);
     } catch(error_already_set const &) {
        catchError();
@@ -94,12 +79,12 @@ namespace Avogadro
 
   QString PythonExtension::description() const
   {
-    if (!PyObject_HasAttrString(d->instance.ptr(), "description"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "description"))
       return tr("N/A");
 
     try {
        prepareToCatchError();
-       const char *name = extract<const char*>(d->instance.attr("description")());
+       const char *name = extract<const char*>(m_instance.attr("description")());
        return QString(name);
     } catch(error_already_set const &) {
        catchError();
@@ -113,12 +98,12 @@ namespace Avogadro
   {
     QList<QAction*> actions;
 
-    if (!d->script)
+    if (!m_script)
       return actions;
 
     try {
       prepareToCatchError();
-      actions = extract< QList<QAction*> >(d->instance.attr("actions")());
+      actions = extract< QList<QAction*> >(m_instance.attr("actions")());
     } catch (error_already_set const &) {
       catchError();
     }
@@ -133,7 +118,7 @@ namespace Avogadro
   // allows us to set the intended menu path for each action
   QString PythonExtension::menuPath(QAction *action) const
   {
-    if (!d->script || !PyObject_HasAttrString(d->instance.ptr(), "menuPath"))
+    if (!m_script || !PyObject_HasAttrString(m_instance.ptr(), "menuPath"))
       return tr("&Scripts");
 
     try {
@@ -143,7 +128,7 @@ namespace Avogadro
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
 
-      return extract<QString>(d->instance.attr("menuPath")(real_qobj));
+      return extract<QString>(m_instance.attr("menuPath")(real_qobj));
     } catch(error_already_set const &) {
       catchError();
     }
@@ -191,11 +176,11 @@ namespace Avogadro
 
   QUndoCommand* PythonExtension::performAction( QAction *action, GLWidget *widget )
   {
-    if (!d->script)
+    if (!m_script)
       return 0;
 
     // Let's just catch the exception and print the error...
-    //if (!PyObject_HasAttrString(d->instance.ptr(), "performAction"))
+    //if (!PyObject_HasAttrString(m_instance.ptr(), "performAction"))
     //  return 0;
 
     try {
@@ -209,7 +194,7 @@ namespace Avogadro
       PyObject *qobj = qconverter(action);
       object real_qobj = object(handle<>(qobj));
 
-      object pyObj(d->instance.attr("performAction")(real_qobj, real_obj)); // new reference
+      object pyObj(m_instance.attr("performAction")(real_qobj, real_obj)); // new reference
       QUndoCommand *command = extract<QUndoCommand*>(pyObj);
       if (!command)
         return 0;
@@ -224,42 +209,42 @@ namespace Avogadro
 
   QDockWidget* PythonExtension::dockWidget()
   {
-    if (!d->script)
+    if (!m_script)
       return 0; // nothing we can do
 
-    if(!d->dockWidget)
+    if(!m_dockWidget)
     {
-      if (PyObject_HasAttrString(d->instance.ptr(), "dockWidget")) {
+      if (PyObject_HasAttrString(m_instance.ptr(), "dockWidget")) {
         try {
           prepareToCatchError();
-          d->dockWidget = extract<QDockWidget*>(d->instance.attr("dockWidget")());
-          d->dockWidget->setObjectName(d->dockWidget->windowTitle());
+          m_dockWidget = extract<QDockWidget*>(m_instance.attr("dockWidget")());
+          m_dockWidget->setObjectName(m_dockWidget->windowTitle());
         } catch (error_already_set const &) {
-          d->dockWidget = 0;
+          m_dockWidget = 0;
           catchError();
         }
       }
 
-      if (d->dockWidget)
-        connect(d->dockWidget, SIGNAL(destroyed()), this, SLOT(dockWidgetDestroyed()));
+      if (m_dockWidget)
+        connect(m_dockWidget, SIGNAL(destroyed()), this, SLOT(dockWidgetDestroyed()));
     }
 
-    return d->dockWidget;
+    return m_dockWidget;
   }
 
   void PythonExtension::dockWidgetDestroyed()
   {
-    d->dockWidget = 0;
+    m_dockWidget = 0;
   }
 
   void PythonExtension::readSettings(QSettings &settings)
   {
     Extension::readSettings(settings);
 
-    if (!d->script)
+    if (!m_script)
       return;
 
-    if (!PyObject_HasAttrString(d->instance.ptr(), "readSettings"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
       return;
 
     try {
@@ -269,7 +254,7 @@ namespace Avogadro
       PyObject *qobj = qconverter(&settings);
       object real_qobj = object(handle<>(qobj));
 
-      d->instance.attr("readSettings")(real_qobj);
+      m_instance.attr("readSettings")(real_qobj);
     } catch(error_already_set const &) {
       catchError();
     }
@@ -279,10 +264,10 @@ namespace Avogadro
   {
     Extension::writeSettings(settings);
 
-    if (!d->script)
+    if (!m_script)
       return;
 
-    if (!PyObject_HasAttrString(d->instance.ptr(), "writeSettings"))
+    if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
       return;
 
     try {
@@ -292,7 +277,7 @@ namespace Avogadro
       PyObject *qobj = qconverter(&settings);
       object real_qobj = object(handle<>(qobj));
 
-      d->instance.attr("writeSettings")(real_qobj);
+      m_instance.attr("writeSettings")(real_qobj);
     } catch(error_already_set const &) {
       catchError();
     }
@@ -301,29 +286,29 @@ namespace Avogadro
   void PythonExtension::loadScript(const QString &filename)
   {
     QFileInfo info(filename);
-    d->interpreter.addSearchPath(info.canonicalPath());
+    initializePython(info.canonicalPath());
 
     PythonScript *script = new PythonScript(filename);
-    d->identifier = script->identifier();
+    m_identifier = script->identifier();
 
     if (script->module()) {
       // make sure there is an Extension class defined
       if (PyObject_HasAttrString(script->module().ptr(), "Extension")) {
         try {
           prepareToCatchError();
-          d->instance = script->module().attr("Extension")();
+          m_instance = script->module().attr("Extension")();
         } catch (error_already_set const &) {
           catchError();
           return;
         }
 
         // connect signal(s)
-        if (PyObject_HasAttrString(d->instance.ptr(), "__pyqtSignals__")) {
-          QObject *obj = extract<QObject*>(d->instance);
+        if (PyObject_HasAttrString(m_instance.ptr(), "__pyqtSignals__")) {
+          QObject *obj = extract<QObject*>(m_instance);
           connect(obj, SIGNAL(message(const QString&)), this, SIGNAL(message(const QString&)));
         }
 
-        d->script = script;
+        m_script = script;
 
       } else {
         delete script;
