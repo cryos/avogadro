@@ -793,6 +793,10 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
+    if (!d->molecule) {
+      qDebug() << "GLWidget::render(): No molecule set.";
+      return;
+    }
     d->painter->begin(this);
 
     if (d->painter->quality() >= 3) {
@@ -906,6 +910,8 @@ namespace Avogadro {
 
   void GLWidget::renderCrystal(GLuint displayList)
   {
+    if (!d->molecule) return;
+ 
     std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
 
     for (int a = 0; a < d->aCells; a++) {
@@ -943,6 +949,8 @@ namespace Avogadro {
   //    0---1
   void GLWidget::renderCrystalAxes()
   {
+    if (!d->molecule) return;
+ 
     std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
     vector3 v0(0.0, 0.0, 0.0);
     vector3 v1(cellVectors[0]);
@@ -1105,7 +1113,11 @@ namespace Avogadro {
                                  + QString::number(d->pd->width())
                                  + " x "
                                  + QString::number(d->pd->height()) );
-
+    if (!d->molecule) {
+      y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
+      return;
+    }
+ 
 //    list = primitives().subList(Primitive::AtomType);
     y += d->pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(d->molecule->numAtoms()));
 
@@ -1404,6 +1416,8 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
+    if (!d->molecule) return;
+ 
     if ( d->molecule->OBUnitCell() == NULL ) {
       //plain molecule, no crystal cell
       d->center = d->molecule->center();
@@ -1868,6 +1882,7 @@ namespace Avogadro {
 
   void GLWidget::toggleSelected()
   {
+    if (!d->molecule) return;
     // Currently handle atoms and bonds
     foreach(Atom *a, d->molecule->atoms()) {
       Primitive *p = static_cast<Primitive *>(a);
@@ -1971,6 +1986,7 @@ namespace Avogadro {
 
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
+    if (!d->molecule) return;
     PrimitiveList list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
