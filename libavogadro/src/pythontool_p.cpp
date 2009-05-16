@@ -24,6 +24,7 @@
 
 #include "pythontool_p.h"
 #include "pythonscript.h"
+#include "pythonthread_p.h"
 
 #include <avogadro/navigate.h>
 #include <avogadro/atom.h>
@@ -51,12 +52,12 @@ namespace Avogadro {
   PythonTool::PythonTool(QObject *parent, const QString &filename) : Tool(parent), 
       m_script(0), m_settingsWidget(0)
   {
-    QAction *action = activateAction();
-    action->setIcon(QIcon(QString::fromUtf8(":/python/python.png")));
-    //action->setShortcut(Qt::Key_F12);
-
     loadScript(filename);
 
+    QAction *action = activateAction();
+    action->setIcon(QIcon(QString::fromUtf8(":/python/python.png")));
+
+    PythonThread pt;
     if (PyObject_HasAttrString(m_instance.ptr(), "toolTip")) {
       try {
         prepareToCatchError();
@@ -70,6 +71,7 @@ namespace Avogadro {
 
   PythonTool::~PythonTool()
   {
+    PythonThread pt;
     if (m_script)
       delete m_script;
     if (m_settingsWidget)
@@ -83,6 +85,7 @@ namespace Avogadro {
 
   QString PythonTool::name() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "name"))
       return tr("Unknown Python Tool");
 
@@ -98,6 +101,7 @@ namespace Avogadro {
 
   QString PythonTool::description() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "description"))
       return tr("N/A");
 
@@ -113,6 +117,7 @@ namespace Avogadro {
 
   QUndoCommand* PythonTool::mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event)
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), what.toStdString().c_str()))
       return 0;
 
@@ -151,6 +156,7 @@ namespace Avogadro {
 
   QUndoCommand* PythonTool::wheelEvent(GLWidget *widget, QWheelEvent *event)
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "wheelEvent"))
       return 0;
 
@@ -174,6 +180,7 @@ namespace Avogadro {
 
   bool PythonTool::paint(GLWidget *widget)
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "paint"))
       return false;
 
@@ -195,6 +202,8 @@ namespace Avogadro {
   {
     if (!m_script)
       return 0; // nothing we can do -- we don't have any real scripts
+
+    PythonThread pt;
 
     if(!m_settingsWidget)
     {
@@ -229,6 +238,8 @@ namespace Avogadro {
 
     if (!m_script)
       return;
+    
+    PythonThread pt;
 
     if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
       return;
@@ -252,6 +263,8 @@ namespace Avogadro {
 
     if (!m_script)
       return;
+    
+    PythonThread pt;
 
     if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
       return;
@@ -273,6 +286,8 @@ namespace Avogadro {
   {
     QFileInfo info(filename);
     initializePython(info.canonicalPath());
+    
+    PythonThread pt;
 
     PythonScript *script = new PythonScript(filename);
     m_identifier = script->identifier();

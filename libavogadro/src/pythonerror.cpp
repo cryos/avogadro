@@ -23,9 +23,10 @@
  ***********************************************************************/
 
 #include <avogadro/pythonerror.h>
-
 #include <boost/python.hpp>
+
 #include <QStringList>
+#include <QDebug>
 
 namespace Avogadro
 {
@@ -60,25 +61,6 @@ namespace Avogadro
     m_listening = listening;
   }
 
-  class PythonThreadPrivate
-  {
-    public:
-      PythonThreadPrivate() : gstate(PyGILState_Ensure())
-      {
-      }
-      PyGILState_STATE gstate;
-  };
-
-  PythonThread::PythonThread() : d(new PythonThreadPrivate)
-  {
-  }
-
-  PythonThread::~PythonThread()
-  {
-    PyGILState_Release(d->gstate);
-    delete d;
-  }
- 
   bool initializePython(const QString &addToSearchPath)
   {
     Py_Initialize();

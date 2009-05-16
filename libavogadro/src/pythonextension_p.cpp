@@ -25,7 +25,7 @@
 
 #include "pythonextension_p.h"
 #include "pythonscript.h"
-
+#include "pythonthread_p.h"
 
 #include <avogadro/molecule.h>
 
@@ -50,6 +50,7 @@ namespace Avogadro
 
   PythonExtension::~PythonExtension()
   {
+    PythonThread pt;
     if (m_script)
       delete m_script;
     if (m_dockWidget)
@@ -63,6 +64,7 @@ namespace Avogadro
 
   QString PythonExtension::name() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "name"))
       return tr("Unknown Python Extension");
 
@@ -79,6 +81,7 @@ namespace Avogadro
 
   QString PythonExtension::description() const
   {
+    PythonThread pt;
     if (!PyObject_HasAttrString(m_instance.ptr(), "description"))
       return tr("N/A");
 
@@ -100,6 +103,8 @@ namespace Avogadro
 
     if (!m_script)
       return actions;
+    
+    PythonThread pt;
 
     try {
       prepareToCatchError();
@@ -141,16 +146,19 @@ namespace Avogadro
     public:
       PythonCommand(QUndoCommand *command) : m_command(command)
       {
+        PythonThread pt;
         setText(m_command->text());
       }
 
       ~PythonCommand()
       {
+        PythonThread pt;
         delete m_command;
       }
 
       void redo()
       {
+        PythonThread pt;
         try {
           prepareToCatchError();
           m_command->redo();
@@ -162,6 +170,7 @@ namespace Avogadro
 
       void undo()
       {
+        PythonThread pt;
         try {
           prepareToCatchError();
           m_command->undo();
@@ -179,6 +188,7 @@ namespace Avogadro
     if (!m_script)
       return 0;
 
+    PythonThread pt;
     // Let's just catch the exception and print the error...
     //if (!PyObject_HasAttrString(m_instance.ptr(), "performAction"))
     //  return 0;
@@ -212,6 +222,8 @@ namespace Avogadro
     if (!m_script)
       return 0; // nothing we can do
 
+    PythonThread pt;
+
     if(!m_dockWidget)
     {
       if (PyObject_HasAttrString(m_instance.ptr(), "dockWidget")) {
@@ -243,6 +255,8 @@ namespace Avogadro
 
     if (!m_script)
       return;
+    
+    PythonThread pt;
 
     if (!PyObject_HasAttrString(m_instance.ptr(), "readSettings"))
       return;
@@ -266,6 +280,8 @@ namespace Avogadro
 
     if (!m_script)
       return;
+    
+    PythonThread pt;
 
     if (!PyObject_HasAttrString(m_instance.ptr(), "writeSettings"))
       return;
@@ -287,6 +303,7 @@ namespace Avogadro
   {
     QFileInfo info(filename);
     initializePython(info.canonicalPath());
+    PythonThread pt;
 
     PythonScript *script = new PythonScript(filename);
     m_identifier = script->identifier();

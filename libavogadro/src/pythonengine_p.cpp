@@ -23,8 +23,8 @@
  **********************************************************************/
 
 #include "pythonengine_p.h"
-#include "pythoninterpreter.h"
 #include "pythonscript.h"
+#include "pythonthread_p.h"
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -51,11 +51,15 @@ namespace Avogadro {
 
   PythonEngine::~PythonEngine()
   {
-    PythonThread pt;
+    //PythonThread pt;
+    /*
     if (m_script) {
       delete m_script;
       m_script = 0;
     }
+    */
+    //if (m_settingsWidget)
+    //  m_settingsWidget->deleteLater();
   }
 
   Engine* PythonEngine::clone() const

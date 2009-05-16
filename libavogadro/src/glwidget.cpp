@@ -32,6 +32,8 @@
 #include "camera.h"
 #include "glpainter_p.h"
 
+#include "pythonthread_p.h"
+
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
 #include <avogadro/toolgroup.h>
@@ -452,6 +454,10 @@ namespace Avogadro {
     d->paintCondition.wakeAll();
     d->thread->wait();
 #endif
+
+    // Creating the PythonThread object in Enigne destructor doesn't seem 
+    // to work so we do it here
+    PythonThread pt;
 
     // delete the engines
     foreach(Engine *engine, d->engines)
