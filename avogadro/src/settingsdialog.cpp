@@ -87,8 +87,6 @@ namespace Avogadro {
   {
     m_mainWindow->setPainterQuality(ui.qualitySlider->value());
     m_mainWindow->setFogLevel(ui.fogSlider->value());
-    m_mainWindow->setTabbedTools(ui.tabbedToolsCheck->isChecked());
-    m_mainWindow->setToolsTabPosition((QTabWidget::TabPosition)ui.tabPositionCombo->currentIndex());
   }
 
   void SettingsDialog::loadValues()
@@ -96,8 +94,6 @@ namespace Avogadro {
     ui.qualitySlider->setValue(m_mainWindow->painterQuality());
     fogChanged(m_mainWindow->fogLevel());
     qualityChanged(m_mainWindow->painterQuality());
-    ui.tabbedToolsCheck->setChecked(m_mainWindow->tabbedTools());
-    ui.tabPositionCombo->setCurrentIndex(m_mainWindow->toolsTabPosition());
   }
 
   void SettingsDialog::qualityChanged(int value)

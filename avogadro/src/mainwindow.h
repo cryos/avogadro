@@ -128,12 +128,6 @@ namespace Avogadro {
       void setPainterQuality(int quality);
       void setFogLevel(int level);
 
-      bool tabbedTools() const;
-      void setTabbedTools(bool tabbedTools);
-
-      QTabWidget::TabPosition toolsTabPosition() const;
-      void setToolsTabPosition(QTabWidget::TabPosition tabPosition);
-
       void setRenderAxes(bool render);
       void setRenderDebug(bool render);
       void setQuickRender(bool quick);
@@ -165,7 +159,7 @@ namespace Avogadro {
       void setupProjectTree();
       void projectItemActivated(const QModelIndex& index);
 
-      void reloadTabbedTools();
+      void reloadTools();
       void reloadPlugins();
 
       /**
