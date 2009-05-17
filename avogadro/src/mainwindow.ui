@@ -396,6 +396,9 @@
    <property name="text">
     <string>&amp;Full Screen Mode</string>
    </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
   </action>
   <action name="actionSetBackgroundColor">
    <property name="icon">

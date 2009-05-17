@@ -175,6 +175,9 @@ namespace Avogadro
     QVector< QVector <bool> > menuItemStatus;
     bool initialized;
 
+    bool fileToolbar;
+    bool statusBar;
+
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
     double rotationAcceleration;
@@ -561,9 +564,7 @@ namespace Avogadro
 
     } // end for loop
 
-    // TODO: Add actions for toggling the tool settings and display settings
-    //    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
-
+    // Add buttons to toggle the tool and engine settings docks
     ui.toolBar->addSeparator();
 
     QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
@@ -1911,6 +1912,8 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
+      d->fileToolbar = ui.fileToolBar->isVisible();
+      d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();
       statusBar()->hide();
       // From KDE: avoid Full Screen
@@ -1921,8 +1924,9 @@ namespace Avogadro
       //      this->showNormal();
       this->setWindowState(this->windowState() & ~Qt::WindowFullScreen);
       ui.actionFullScreen->setText( tr( "Full Screen" ) );
-      ui.fileToolBar->show();
-      statusBar()->show();
+
+      ui.fileToolBar->setVisible(d->fileToolbar);
+      statusBar()->setVisible(d->statusBar);
     }
   }
 
