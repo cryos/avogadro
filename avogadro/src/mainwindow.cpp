@@ -351,8 +351,10 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+    ui.enginesDock->close();
 
     // Disable the detach view option for now
+    // FIXME
     ui.actionDetachView->setVisible(false);
   }
 
@@ -361,6 +363,8 @@ namespace Avogadro
     // delayed initialization
     if(event->type() == QEvent::Polish) {
       reloadTools();
+      if (d->toolSettingsDock)
+        d->toolSettingsDock->hide();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -558,6 +562,18 @@ namespace Avogadro
 
     // TODO: Add actions for toggling the tool settings and display settings
     //    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
+
+    ui.toolBar->addSeparator();
+
+    QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
+    toolSettings->setCheckable(true);
+    connect(toolSettings, SIGNAL(released()), this, SLOT(toggleToolSettingsDock()));
+    ui.toolBar->addWidget(toolSettings);
+
+    QPushButton* displaySettings = new QPushButton(tr("Display Settings..."), ui.toolBar);
+    displaySettings->setCheckable(true);
+    connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
+    ui.toolBar->addWidget(displaySettings);
 
     // Now, set the active tool
     if (d->molecule)
@@ -860,7 +876,7 @@ namespace Avogadro
     updateWindowMenu();
 #endif
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
-    d->toolGroup->setActiveTool(tr("Navigate"));
+    d->toolGroup->setActiveTool("Navigate");
     return true;
   }
 
@@ -1481,7 +1497,7 @@ namespace Avogadro
       newMolecule.setOBMol(&newMol);
       PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
       d->undoStack->push(command);
-      d->toolGroup->setActiveTool(tr("Manipulate")); // set the tool to manipulate, so we can immediate move the selection
+      d->toolGroup->setActiveTool("Manipulate"); // set the tool to manipulate, so we can immediate move the selection
     } else {
       return false;
     }
@@ -2671,6 +2687,16 @@ namespace Avogadro
     // If we have a non-null widget, enable the settings button
     emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
+
+void MainWindow::toggleToolSettingsDock()
+{
+  d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
+}
+
+void MainWindow::toggleEngineSettingsDock()
+{
+  ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+}
 
 } // end namespace Avogadro
 
