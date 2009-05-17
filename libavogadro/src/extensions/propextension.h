@@ -77,7 +77,8 @@ namespace Avogadro {
          AngleType,
          TorsionType,
          CartesianType,
-         ConformerType
+         ConformerType,
+         MoleculeType
        };
 
        explicit PropertiesView(Type type, QWidget *parent = 0);
