@@ -147,7 +147,6 @@
    <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="fileToolBar">
    <property name="windowTitle">
     <string>Main Toolbar</string>

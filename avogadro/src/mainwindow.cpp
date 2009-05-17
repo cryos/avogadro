@@ -98,6 +98,7 @@
 #include <QDesktopServices>
 #include <QTime>
 #include <QGLFramebufferObject>
+#include <QStatusBar>
 
 #include <QDebug>
 
@@ -544,7 +545,7 @@ namespace Avogadro
       if (toolNumber <= 9) {
         // If we have 11 or more tools, we can only do this for the first 10
         QList<QKeySequence> shortcuts = action->shortcuts();
-        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(i + 1)));
+        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(toolNumber)));
         action->setShortcuts(shortcuts);
       }
 
@@ -567,11 +568,15 @@ namespace Avogadro
 
     QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
     toolSettings->setCheckable(true);
+    toolSettings->setChecked(d->toolSettingsDock->isVisible());
+    connect(d->toolSettingsDock, SIGNAL(visibilityChanged(bool)), toolSettings, SLOT(setChecked(bool)));
     connect(toolSettings, SIGNAL(released()), this, SLOT(toggleToolSettingsDock()));
     ui.toolBar->addWidget(toolSettings);
 
     QPushButton* displaySettings = new QPushButton(tr("Display Settings..."), ui.toolBar);
     displaySettings->setCheckable(true);
+    displaySettings->setChecked(ui.enginesDock->isVisible());
+    connect(ui.enginesDock, SIGNAL(visibilityChanged(bool)), displaySettings, SLOT(setChecked(bool)));
     connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
     ui.toolBar->addWidget(displaySettings);
 
