@@ -1992,8 +1992,8 @@ namespace Avogadro {
 
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
-    if (!d->molecule) return;
     PrimitiveList list;
+    if (!d->molecule) return list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
       Atom *atom = d->molecule->atomById(d->namedSelections.at(index).second.first.at(j));
