@@ -38,7 +38,8 @@ namespace Avogadro {
       GLWidget *widget;
   };
 
-  EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) : QAbstractItemModel(parent), d(new EngineItemModelPrivate)
+  EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) : 
+      QAbstractItemModel(parent), d(new EngineItemModelPrivate)
   {
     d->widget = widget;
     connect(d->widget, SIGNAL(engineAdded(Engine *)), this, SLOT(addEngine(Engine *)));
@@ -53,12 +54,12 @@ namespace Avogadro {
     beginInsertRows(QModelIndex(), row, row);
     endInsertRows();
 
-        // We need to indicate that the data has changed to re-sort the list
-        // (Honestly, the dataChanged signal should come from endInsertRows)
-        // But at least in Qt 4.4, we need to signal manually
-        QModelIndex begin = createIndex(0, 0);
-        QModelIndex end = createIndex(list.size() - 1, 0);
-        emit dataChanged(begin, end);
+    // We need to indicate that the data has changed to re-sort the list
+    // (Honestly, the dataChanged signal should come from endInsertRows)
+    // But at least in Qt 4.4, we need to signal manually
+    QModelIndex begin = createIndex(0, 0);
+    QModelIndex end = createIndex(list.size() - 1, 0);
+    emit dataChanged(begin, end);
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
   }
@@ -176,6 +177,11 @@ namespace Avogadro {
     }
 
     return QModelIndex();
+  }
+  
+  void EngineItemModel::clear()
+  { 
+    reset(); 
   }
 
 } // end namespace Avogadro

@@ -53,6 +53,8 @@ namespace Avogadro {
 
       QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
 
+      void clear();
+
     private:
       EngineItemModelPrivate * const d;
 
