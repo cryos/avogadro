@@ -29,6 +29,7 @@
 #include <avogadro/extension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
+#include <boost/python.hpp>
 
 #include <QWidget>
 #include <QList>
@@ -40,7 +41,7 @@
 
 namespace Avogadro {
 
-  class PythonExtensionPrivate;
+  class PythonScript;
 
   class PythonExtension : public Extension
   {
@@ -71,7 +72,10 @@ namespace Avogadro {
     private:
       void loadScript(const QString &filename);
 
-      PythonExtensionPrivate * const d;
+      PythonScript          *m_script;
+      boost::python::object  m_instance;
+      QDockWidget           *m_dockWidget;
+      QString                m_identifier;
   };
 
   class PythonExtensionFactory : public QObject, public PluginFactory

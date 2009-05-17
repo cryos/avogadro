@@ -103,6 +103,7 @@ namespace Avogadro {
   void ToolGroup::append(Tool *tool)
   {
     d->tools.append(tool);
+    setActiveTool(tool);
 
     d->activateActions->addAction(tool->activateAction());
     connect(tool->activateAction(), SIGNAL(triggered(bool)),
