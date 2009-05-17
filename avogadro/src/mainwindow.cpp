@@ -33,6 +33,7 @@
 #include "pluginsettings.h"
 #include "savedialog.h"
 
+#include "engineitemmodel.h"
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
@@ -493,9 +494,33 @@ namespace Avogadro
     /**
      * Extensions: instances are deleted by the PluginManager after writing the
      * settings. The QActions are removed from the menus when they are deleted.
-     * So we only have to the new load extensions.
+     * So we only have to load new extensions.
      */
     loadExtensions();
+    
+    /**
+     * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines() 
+     * for each GLWidget.
+     */ 
+    foreach (GLWidget *glwidget, d->glWidgets)
+      glwidget->reloadEngines();
+
+
+    int count = d->enginesStacked->count();
+    for (int i = 0; i < count; ++i) {
+      QWidget *widget = d->enginesStacked->widget(i);
+      foreach(QObject *object, widget->children()) {
+        if (!object->isWidgetType())
+          continue;
+        EngineListView *engineListView = qobject_cast<EngineListView*>(object);
+        if (engineListView)
+          engineListView->clear();
+      }
+    }
+
+    /**
+     * Tools: see reloadTools().
+     */ 
     reloadTools();
     qDebug() << "end MainWindow::reloadPlugins";
   }
@@ -2564,7 +2589,7 @@ namespace Avogadro
     // Display a warning dialog if we haven't loaded any tools or engines
     if(!nEngines || !nTools)
       QMessageBox::warning(this, tr("Avogadro"), error);
-
+    
     return gl;
   }
 

@@ -29,6 +29,7 @@ class QStandardItem;
 namespace Avogadro {
 
   class GLWidget;
+  class EngineItemModel;
   class Engine;
   /**
    * @class EngineListView
@@ -38,7 +39,6 @@ namespace Avogadro {
    * GLWidget and allow them to be modified.  Thus allowing
    * us to select what features are rendered.
    */
-  class EngineListViewPrivate;
   class EngineListView : public QListView
   {
     Q_OBJECT
@@ -53,8 +53,11 @@ namespace Avogadro {
 //       void setSettingsButton( QAbstractButton *button );
 //       QAbstractButton *settingsButton() const;
 
+      void clear();
+
     private:
-      EngineListViewPrivate *const d;
+      GLWidget *m_glWidget;
+      EngineItemModel *m_model;
 
     private Q_SLOTS:
       void selectEngine( const QModelIndex &index );

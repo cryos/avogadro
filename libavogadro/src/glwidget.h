@@ -847,6 +847,11 @@ namespace Avogadro {
       void loadDefaultEngines();
 
       /**
+       * Reload the engine plugins.
+       */
+      void reloadEngines();
+
+      /**
        * Signal that something changed and the display lists should be invalidated.
        */
       void invalidateDLs();

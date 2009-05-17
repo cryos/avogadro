@@ -35,40 +35,26 @@
 
 namespace Avogadro {
 
-  class EngineListViewPrivate
+  EngineListView::EngineListView( GLWidget *glWidget, QWidget *parent ) : 
+    QListView(parent), m_glWidget(glWidget)
   {
-    public:
-      EngineListViewPrivate() : glWidget(0) {};
+    m_model = new EngineItemModel(m_glWidget, this);
 
-      GLWidget *glWidget;
-  };
-
-  EngineListView::EngineListView( GLWidget *glWidget, QWidget *parent ) : QListView(parent), d(new EngineListViewPrivate)
-  {
-    d->glWidget = glWidget;
-
-    EngineItemModel *m = new EngineItemModel(d->glWidget, this);
-
-    if(model())
-    {
-      delete model();
-    }
-
-		// This should sort the engine names for user views
-		// It should also update dynamically as people edit names
-		// Somehow it doesn't work right from the start!
-		QSortFilterProxyModel *sortModel = new QSortFilterProxyModel(this);
-		sortModel->setSourceModel(m);
+    // This should sort the engine names for user views
+    // It should also update dynamically as people edit names
+    // Somehow it doesn't work right from the start!
+    QSortFilterProxyModel *sortModel = new QSortFilterProxyModel(this);
+    sortModel->setSourceModel(m_model);
     setModel(sortModel);
-		sortModel->setSortCaseSensitivity(Qt::CaseInsensitive);
-		sortModel->setSortLocaleAware(true);
-		sortModel->setDynamicSortFilter(true);
-		sortModel->sort(0, Qt::AscendingOrder);
+    sortModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    sortModel->setSortLocaleAware(true);
+    sortModel->setDynamicSortFilter(true);
+    sortModel->sort(0, Qt::AscendingOrder);
 		
     connect(this, SIGNAL(clicked(QModelIndex)),
         this, SLOT(selectEngine(QModelIndex)));
 		// This might work for having the proxy model emit the signal, but let's keep it as-is
-    connect(m, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+    connect(m_model, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
         glWidget, SLOT(update()));
         
     // improves display performance
@@ -78,12 +64,11 @@ namespace Avogadro {
 
   EngineListView::~EngineListView()
   {
-    delete d;
   }
 
   GLWidget *EngineListView::glWidget() const
   {
-    return d->glWidget;
+    return m_glWidget;
   }
 
   void EngineListView::selectEngine( const QModelIndex &index )
@@ -104,6 +89,11 @@ namespace Avogadro {
     }
 
     return 0;
+  }
+  
+  void EngineListView::clear()
+  {
+    m_model->clear();
   }
 
 } // end namespace Avogadro
