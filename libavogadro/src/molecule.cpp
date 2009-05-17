@@ -892,6 +892,11 @@ namespace Avogadro{
       return NULL;
   }
 
+  const std::vector<std::vector<Eigen::Vector3d> *>& Molecule::conformers() const
+  { 
+    return m_atomConformers; 
+  }
+
   bool Molecule::setConformer(unsigned int index)
   {
     // If the index is higher than the size
@@ -920,6 +925,7 @@ namespace Avogadro{
     for (unsigned int i = 1; i < m_atomConformers.size(); ++i)
       delete m_atomConformers[i];
     m_atomConformers.resize(1);
+    m_atomPos = m_atomConformers[0];
   }
 
   unsigned int Molecule::numConformers() const

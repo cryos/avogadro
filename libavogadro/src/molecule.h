@@ -532,6 +532,11 @@ namespace Avogadro {
     std::vector<Eigen::Vector3d> * conformer(unsigned int index);
 
     /**
+     * Get const reference to all conformers.
+     */
+    const std::vector<std::vector<Eigen::Vector3d> *>& conformers() const;
+
+    /**
      * Change the conformer to the one at the specified index.
      */
     bool setConformer(unsigned int index);

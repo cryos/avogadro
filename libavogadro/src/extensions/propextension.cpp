@@ -53,6 +53,11 @@ namespace Avogadro
     QAction *action;
 
     action = new QAction( this );
+    action->setSeparator(true);
+    action->setData(-1);
+    m_actions.append(action);
+
+    action = new QAction( this );
     action->setText( tr("Atom Properties..." ));
     action->setData(AtomPropIndex);
     m_actions.append( action );
@@ -81,11 +86,6 @@ namespace Avogadro
     action->setText( tr("Cartesian Editor..." ));
     action->setData(CartesianIndex);
     m_actions.append( action );
-
-    action = new QAction( this );
-    action->setSeparator(true);
-    action->setData(-1);
-    m_actions.append(action);
   }
 
   PropertiesExtension::~PropertiesExtension()
@@ -100,12 +100,14 @@ namespace Avogadro
   {
     int i = action->data().toInt();
     switch(i) {
+    case -1: // separator
+      return tr("&View");
     case AtomPropIndex:
     case BondPropIndex:
     case AnglePropIndex:
     case TorsionPropIndex:
     case ConformerIndex:
-      return tr("&Build") + '>' + tr("&Properties");
+      return tr("&View") + '>' + tr("&Properties");
     case CartesianIndex:
     default:
       return tr("&Build");

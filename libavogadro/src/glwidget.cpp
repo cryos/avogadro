@@ -32,6 +32,10 @@
 #include "camera.h"
 #include "glpainter_p.h"
 
+#ifdef ENABLE_PYTHON
+  #include "pythonthread_p.h"
+#endif
+
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
 #include <avogadro/toolgroup.h>
@@ -453,6 +457,12 @@ namespace Avogadro {
     d->thread->wait();
 #endif
 
+#ifdef ENABLE_PYTHON
+    // Creating the PythonThread object in Enigne destructor doesn't seem 
+    // to work so we do it here
+    PythonThread pt;
+#endif
+
     // delete the engines
     foreach(Engine *engine, d->engines)
       delete engine;
@@ -793,6 +803,10 @@ namespace Avogadro {
 
   void GLWidget::render()
   {
+    if (!d->molecule) {
+      qDebug() << "GLWidget::render(): No molecule set.";
+      return;
+    }
     d->painter->begin(this);
 
     if (d->painter->quality() >= 3) {
@@ -1105,7 +1119,11 @@ namespace Avogadro {
                                  + QString::number(d->pd->width())
                                  + " x "
                                  + QString::number(d->pd->height()) );
-
+    if (!d->molecule) {
+      y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
+      return;
+    }
+ 
 //    list = primitives().subList(Primitive::AtomType);
     y += d->pd->painter()->drawText(x, y, tr("Atoms") + ": " + QString::number(d->molecule->numAtoms()));
 
@@ -1404,6 +1422,8 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
+    if (!d->molecule) return;
+ 
     if ( d->molecule->OBUnitCell() == NULL ) {
       //plain molecule, no crystal cell
       d->center = d->molecule->center();
@@ -1868,6 +1888,7 @@ namespace Avogadro {
 
   void GLWidget::toggleSelected()
   {
+    if (!d->molecule) return;
     // Currently handle atoms and bonds
     foreach(Atom *a, d->molecule->atoms()) {
       Primitive *p = static_cast<Primitive *>(a);
@@ -1972,6 +1993,7 @@ namespace Avogadro {
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
     PrimitiveList list;
+    if (!d->molecule) return list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
       Atom *atom = d->molecule->atomById(d->namedSelections.at(index).second.first.at(j));

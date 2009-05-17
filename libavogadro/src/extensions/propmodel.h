@@ -62,7 +62,8 @@ namespace Avogadro {
          AngleType,
          TorsionType,
          CartesianType,
-         ConformerType
+         ConformerType,
+         MoleculeType
        };
 
        explicit PropertiesModel(Type type, QObject *parent = 0);

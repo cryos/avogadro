@@ -27,10 +27,11 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
+#include <boost/python.hpp>
 
 namespace Avogadro {
 
-  class PythonEnginePrivate;
+  class PythonScript;
 
   class PythonEngine : public Engine
   {
@@ -61,8 +62,10 @@ namespace Avogadro {
     private:
       void loadScript(const QString &filename);
 
-      PythonEnginePrivate * const d;
- 
+      PythonScript          *m_script;
+      boost::python::object  m_instance;
+      QWidget               *m_settingsWidget;
+      QString                m_identifier;
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };

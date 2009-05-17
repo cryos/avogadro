@@ -45,6 +45,7 @@ namespace Avogadro {
     connect(ui.frameSlider, SIGNAL(valueChanged(int)), this, SIGNAL(sliderChanged(int)));
     connect(ui.fpsSpin, SIGNAL(valueChanged(int)), this, SIGNAL(fpsChanged(int)));
     connect(ui.loopBox, SIGNAL(stateChanged(int)), this, SIGNAL(loopChanged(int)));
+    connect(ui.dynBondsBox, SIGNAL(stateChanged(int)), this, SIGNAL(dynamicBondsChanged(int)));
     
     connect(ui.playButton, SIGNAL(clicked()), this, SIGNAL(play()));
     connect(ui.pauseButton, SIGNAL(clicked()), this, SIGNAL(pause()));

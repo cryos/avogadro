@@ -40,8 +40,7 @@ using Eigen::Vector3d;
 namespace Avogadro {
 
   AnimationExtension::AnimationExtension(QObject *parent) : Extension(parent),
-    m_molecule(0), m_animationDialog(0), m_timeLine(0), m_widget(0),
-    m_frameCount(0)
+    m_molecule(0), m_animationDialog(0), m_animation(0), m_widget(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Animation..."));
@@ -54,16 +53,13 @@ namespace Avogadro {
 
   AnimationExtension::~AnimationExtension()
   {
-    if (m_animationDialog)
-    {
-      delete m_animationDialog;
-      m_animationDialog = 0;
+    if (m_animation) {
+      delete m_animation;
+      m_animation = 0;
     }
 
-    if (m_timeLine)
-    {
-      delete m_timeLine;
-      m_timeLine = 0;
+    if (m_animationDialog) {
+      m_animationDialog->deleteLater();
     }
   }
 
@@ -86,23 +82,32 @@ namespace Avogadro {
   {
     m_widget = widget;
 
+    if (!m_animation) {
+      m_animation = new Animation;
+    }      
+    m_animation->setMolecule(widget->molecule());
+
     if (!m_animationDialog)
     {
-      m_timeLine = new QTimeLine;
       m_animationDialog = new AnimationDialog(static_cast<QWidget*>(parent()));
 
       connect(m_animationDialog, SIGNAL(fileName(QString)), this, SLOT(loadFile(QString)));
-      connect(m_animationDialog, SIGNAL(sliderChanged(int)), this, SLOT(setFrame(int)));
-      connect(m_animationDialog, SIGNAL(fpsChanged(int)), this, SLOT(setDuration(int)));
+      connect(m_animationDialog, SIGNAL(sliderChanged(int)), m_animation, SLOT(setFrame(int)));
+      connect(m_animationDialog, SIGNAL(fpsChanged(int)), m_animation, SLOT(setFps(int)));
       connect(m_animationDialog, SIGNAL(loopChanged(int)), this, SLOT(setLoop(int)));
+      connect(m_animationDialog, SIGNAL(dynamicBondsChanged(int)), this, SLOT(setDynamicBonds(int)));
 
-      connect(m_timeLine, SIGNAL(frameChanged(int)), this, SLOT(setFrame(int)));
-      connect(m_animationDialog, SIGNAL(play()), m_timeLine, SLOT(start()));
-      connect(m_animationDialog, SIGNAL(pause()), m_timeLine, SLOT(stop()));
-      connect(m_animationDialog, SIGNAL(stop()), this, SLOT(stop()));
+      connect(m_animationDialog, SIGNAL(play()), m_animation, SLOT(start()));
+      connect(m_animationDialog, SIGNAL(pause()), m_animation, SLOT(pause()));
+      connect(m_animationDialog, SIGNAL(stop()), m_animation, SLOT(stop()));
       connect(m_animationDialog, SIGNAL(videoFileInfo(QString)), this, SLOT(saveVideo(QString)));
+      
+      connect(m_animation, SIGNAL(frameChanged(int)), m_animationDialog, SLOT(setFrame(int)));
     }
-
+    
+    m_animationDialog->setFrameCount(m_animation->numFrames());
+    m_animationDialog->setFrame(1);
+ 
     m_animationDialog->show();
 
     return 0;
@@ -142,47 +147,29 @@ namespace Avogadro {
         m_molecule->setOBMol(&obmol);
     }
 
-    m_frameCount = m_molecule->numConformers();
-    m_animationDialog->setFrameCount(m_frameCount);
+    m_animationDialog->setFrameCount(m_animation->numFrames());
     m_animationDialog->setFrame(1);
-    m_timeLine->setFrameRange(1, m_frameCount);
-    setDuration(m_animationDialog->fps());
-  }
-
-
-  void AnimationExtension::setDuration(int i)
-  {
-    int interval = 1000 / i;
-    m_timeLine->setUpdateInterval(interval);
-    int duration = interval * m_frameCount;
-    m_timeLine->setDuration(duration);
+    m_animation->setFps(m_animationDialog->fps());
   }
 
   void AnimationExtension::setLoop(int state)
   {
     if (state == Qt::Checked) {
-      m_timeLine->setLoopCount(0);
+      m_animation->setLoopCount(0);
     } else {
-      m_timeLine->setLoopCount(1);
+      m_animation->setLoopCount(1);
     }
   }
 
-  void AnimationExtension::setFrame(int i)
+  void AnimationExtension::setDynamicBonds(int state)
   {
-    // if (m_timeLine->state() != QTimeLine::Running)
-    //  m_timeLine->setCurrentTime(m_timeLine->updateInterval() * i);
-    m_animationDialog->setFrame(i);
-    m_molecule->setConformer(i - 1);
-    m_molecule->update();
+    if (state == Qt::Checked) {
+      m_animation->setDynamicBonds(true);
+    } else {
+      m_animation->setDynamicBonds(false);
+    }
   }
-
-  void AnimationExtension::stop()
-  {
-    m_timeLine->stop();
-    m_timeLine->setCurrentTime(0);
-    setFrame(1);
-  }
-
+ 
   void AnimationExtension::saveVideo(QString videoFileName)
   {
     if (videoFileName.isEmpty()) {
@@ -283,7 +270,7 @@ namespace Avogadro {
     file.open(filename.toStdString().c_str());
 
     for (unsigned int i = 1; i <= m_molecule->numConformers(); ++i) {
-      setFrame(i);
+      m_animation->setFrame(i);
 
       OpenBabel::OBMol obmol(m_molecule->OBMol());
       conv.Write(&obmol, &file);
@@ -294,6 +281,7 @@ namespace Avogadro {
 
     return true;
   }
+
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(animationextension, Avogadro::AnimationExtensionFactory)

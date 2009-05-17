@@ -27,13 +27,14 @@
 
 #include <avogadro/global.h>
 #include <avogadro/tool.h>
+#include <boost/python.hpp>
 
 #include <QObject>
 #include <QAction>
 
 namespace Avogadro {
 
-  class PythonToolPrivate;
+  class PythonScript;
 
   class PythonTool : public Tool
   {
@@ -64,8 +65,11 @@ namespace Avogadro {
     private:
       void loadScript(const QString &filename);
 
-      PythonToolPrivate * const d;
-
+      PythonScript          *m_script;
+      boost::python::object  m_instance;
+      QWidget               *m_settingsWidget;
+      QString                m_identifier;
+ 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
   };

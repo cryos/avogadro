@@ -23,7 +23,9 @@
 #include "animation.h"
 
 #include <avogadro/molecule.h>
-
+#include <avogadro/atom.h>
+#include <avogadro/bond.h>
+#include <openbabel/mol.h>
 #include <Eigen/Core>
 
 #include <QTimeLine>
@@ -33,7 +35,17 @@ using Eigen::Vector3d;
 
 namespace Avogadro {
 
-  Animation::Animation(QObject *parent) : QObject(parent),
+  class AnimationPrivate
+  {
+    public:
+      AnimationPrivate() : fps(25), framesSet(false), dynamicBonds(false) {}
+
+      int fps;
+      bool framesSet;
+      bool dynamicBonds;
+  };
+
+  Animation::Animation(QObject *parent) : QObject(parent), d(new AnimationPrivate),
                                           m_molecule(0), m_timeLine(new QTimeLine)
   {
   }
@@ -44,27 +56,48 @@ namespace Avogadro {
       delete m_timeLine;
       m_timeLine = 0;
     }
+
+    delete d;
   }
 
   void Animation::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    m_originalConformers.clear();
-
     if (molecule == NULL)
       return; // we can't save the current conformers
 
-    for (unsigned int i = 0; i < molecule->numConformers(); ++i) {
-      m_originalConformers.push_back(molecule->conformer(i));
+    if (d->framesSet) {
+      m_originalConformers.clear();
+      for (unsigned int i = 0; i < molecule->numConformers(); ++i) {
+        m_originalConformers.push_back(molecule->conformer(i));
+      }
+    } else {
+      m_timeLine->setFrameRange(1, m_molecule->numConformers());
     }
   }
 
-  void Animation::setDuration(int i)
+  int Animation::numFrames() const
   {
-    int interval = 1000 / i; // 1 second
-    m_timeLine->setUpdateInterval(interval);
-    int duration = interval * m_frames.size();
-    m_timeLine->setDuration(duration);
+    if (d->framesSet)
+      return m_frames.size();
+    if (m_molecule)
+      return m_molecule->numConformers();
+    return 0;  
+  }
+ 
+  int Animation::fps() const
+  {
+    return d->fps;
+  }
+ 
+  void Animation::setFps(int fps)
+  {
+    d->fps = fps;
+  }
+
+  int Animation::loopCount() const
+  {
+    return m_timeLine->loopCount();
   }
 
   void Animation::setLoopCount(int loops)
@@ -74,8 +107,39 @@ namespace Avogadro {
 
   void Animation::setFrame(int i)
   {
-    m_molecule->setConformer(i - 1);
+    m_molecule->setConformer(i);
+    if (d->dynamicBonds) {
+      // construct minimal OBMol
+      OpenBabel::OBMol obmol;
+      obmol.BeginModify();
+      foreach(Atom *atom, m_molecule->atoms()) {
+        OpenBabel::OBAtom *a = obmol.NewAtom();
+        OpenBabel::OBAtom obatom = atom->OBAtom();
+        *a = obatom;
+      }
+      obmol.EndModify();
+
+      // connect the dots
+      obmol.ConnectTheDots();
+
+      QList<Bond*> bonds(m_molecule->bonds());
+      foreach(Bond *bond, bonds)
+        m_molecule->removeBond(bond->id());
+
+      FOR_BONDS_OF_MOL (obbond, obmol) {
+        Bond *bond = m_molecule->addBond();
+        bond->setBegin(m_molecule->atom(obbond->GetBeginAtomIdx()-1));
+        bond->setEnd(m_molecule->atom(obbond->GetEndAtomIdx()-1));
+        bond->setOrder(obbond->GetBondOrder());
+      }
+    }
     m_molecule->update();
+    emit frameChanged(i);
+  }
+  
+  void Animation::setDynamicBonds(bool enable)
+  {
+    d->dynamicBonds = enable;
   }
 
   void Animation::setFrames(std::vector< std::vector< Eigen::Vector3d> *> frames)
@@ -83,6 +147,13 @@ namespace Avogadro {
     if (frames.size() == 0)
       return; // nothing to do
 
+    if (m_originalConformers.empty() && m_molecule) {
+      for (unsigned int i = 0; i < m_molecule->numConformers(); ++i) {
+        m_originalConformers.push_back(m_molecule->conformer(i));
+      }
+    }
+ 
+    d->framesSet = true;
     m_frames = frames;
     m_timeLine->setFrameRange(1, frames.size());
   }
@@ -95,20 +166,32 @@ namespace Avogadro {
             this, SLOT(setFrame(int)));
 
     // restore original conformers
-    m_molecule->setAllConformers(m_originalConformers);
+    if (d->framesSet)
+      m_molecule->setAllConformers(m_originalConformers);
     setFrame(1);
   }
 
   void Animation::start()
   {
     // set molecule conformers
-    m_molecule->setAllConformers(m_frames);
+    if (d->framesSet)
+      m_molecule->setAllConformers(m_frames);
+
+    int interval = 1000 / d->fps;
+    m_timeLine->setUpdateInterval(interval);
+    int duration = interval * numFrames();
+    m_timeLine->setDuration(duration);
     setFrame(1);
 
     connect(m_timeLine, SIGNAL(frameChanged(int)),
             this, SLOT(setFrame(int)));
     m_timeLine->setCurrentTime(0);
     m_timeLine->start();
+  }
+  
+  void Animation::pause()
+  {
+    m_timeLine->stop();
   }
 
 } // end namespace Avogadro

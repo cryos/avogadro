@@ -229,13 +229,15 @@ namespace Avogadro {
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
     private Q_SLOTS:
-/*      void initialize();*/
 
       void engineSettingsClicked();
       void addEngineClicked();
       void duplicateEngineClicked();
       void removeEngineClicked();
       void engineClicked(Engine *engine);
+
+      void toggleToolSettingsDock();
+      void toggleEngineSettingsDock();
 
       void centerStep();
   };

@@ -98,6 +98,7 @@
 #include <QDesktopServices>
 #include <QTime>
 #include <QGLFramebufferObject>
+#include <QStatusBar>
 
 #include <QDebug>
 
@@ -173,6 +174,9 @@ namespace Avogadro
     // save enable/disable status of every menu item
     QVector< QVector <bool> > menuItemStatus;
     bool initialized;
+
+    bool fileToolbar;
+    bool statusBar;
 
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
@@ -259,10 +263,10 @@ namespace Avogadro
     d->messagesText->setReadOnly( true );
 
 #ifdef ENABLE_PYTHON
-    connect(pythonError(), SIGNAL(message(const QString&)),
+    connect(PythonError::instance(), SIGNAL(message(const QString&)),
             d->messagesText, SLOT(append(const QString&)));
-    d->messagesText->append( pythonError()->string() );
-    pythonError()->setListening(true); // switch to 'listening mode'
+    d->messagesText->append( PythonError::instance()->string() );
+    PythonError::instance()->setListening(true); // switch to 'listening mode'
 #endif
 
     messagesVBox->setMargin( 3 );
@@ -351,8 +355,10 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+    ui.enginesDock->close();
 
     // Disable the detach view option for now
+    // FIXME
     ui.actionDetachView->setVisible(false);
   }
 
@@ -361,6 +367,8 @@ namespace Avogadro
     // delayed initialization
     if(event->type() == QEvent::Polish) {
       reloadTools();
+      if (d->toolSettingsDock)
+        d->toolSettingsDock->hide();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -540,7 +548,7 @@ namespace Avogadro
       if (toolNumber <= 9) {
         // If we have 11 or more tools, we can only do this for the first 10
         QList<QKeySequence> shortcuts = action->shortcuts();
-        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(i + 1)));
+        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(toolNumber)));
         action->setShortcuts(shortcuts);
       }
 
@@ -556,8 +564,22 @@ namespace Avogadro
 
     } // end for loop
 
-    // TODO: Add actions for toggling the tool settings and display settings
-    //    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
+    // Add buttons to toggle the tool and engine settings docks
+    ui.toolBar->addSeparator();
+
+    QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
+    toolSettings->setCheckable(true);
+    toolSettings->setChecked(d->toolSettingsDock->isVisible());
+    connect(d->toolSettingsDock, SIGNAL(visibilityChanged(bool)), toolSettings, SLOT(setChecked(bool)));
+    connect(toolSettings, SIGNAL(released()), this, SLOT(toggleToolSettingsDock()));
+    ui.toolBar->addWidget(toolSettings);
+
+    QPushButton* displaySettings = new QPushButton(tr("Display Settings..."), ui.toolBar);
+    displaySettings->setCheckable(true);
+    displaySettings->setChecked(ui.enginesDock->isVisible());
+    connect(ui.enginesDock, SIGNAL(visibilityChanged(bool)), displaySettings, SLOT(setChecked(bool)));
+    connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
+    ui.toolBar->addWidget(displaySettings);
 
     // Now, set the active tool
     if (d->molecule)
@@ -860,7 +882,7 @@ namespace Avogadro
     updateWindowMenu();
 #endif
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
-    d->toolGroup->setActiveTool(tr("Navigate"));
+    d->toolGroup->setActiveTool("Navigate");
     return true;
   }
 
@@ -1481,7 +1503,7 @@ namespace Avogadro
       newMolecule.setOBMol(&newMol);
       PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
       d->undoStack->push(command);
-      d->toolGroup->setActiveTool(tr("Manipulate")); // set the tool to manipulate, so we can immediate move the selection
+      d->toolGroup->setActiveTool("Manipulate"); // set the tool to manipulate, so we can immediate move the selection
     } else {
       return false;
     }
@@ -1890,6 +1912,8 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
+      d->fileToolbar = ui.fileToolBar->isVisible();
+      d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();
       statusBar()->hide();
       // From KDE: avoid Full Screen
@@ -1900,8 +1924,9 @@ namespace Avogadro
       //      this->showNormal();
       this->setWindowState(this->windowState() & ~Qt::WindowFullScreen);
       ui.actionFullScreen->setText( tr( "Full Screen" ) );
-      ui.fileToolBar->show();
-      statusBar()->show();
+
+      ui.fileToolBar->setVisible(d->fileToolbar);
+      statusBar()->setVisible(d->statusBar);
     }
   }
 
@@ -2671,6 +2696,16 @@ namespace Avogadro
     // If we have a non-null widget, enable the settings button
     emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
+
+void MainWindow::toggleToolSettingsDock()
+{
+  d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
+}
+
+void MainWindow::toggleEngineSettingsDock()
+{
+  ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+}
 
 } // end namespace Avogadro
 
