@@ -54,7 +54,7 @@
 
 // This macro should be used to export parts of the API
 #ifndef A_EXPORT
-  #ifdef avogadro_lib_EXPORTS
+  #ifdef avogadro_EXPORTS
     #define A_EXPORT A_DECL_EXPORT
   #else
     #define A_EXPORT A_DECL_IMPORT

@@ -120,7 +120,7 @@ namespace Avogadro {
    * @brief Skeletal representation and manipulation of a Molecule.
    * @author Shahzad Ali, Ross Braithwaite, James Bunt
    *
-   * This class creates and provides methods to manipulate a Molecule 
+   * This class creates and provides methods to manipulate a Molecule
    * recursively (e.g., change a bond length or angle)
    */
   class SkeletonTree : public QObject
@@ -130,7 +130,7 @@ namespace Avogadro {
     public:
       //! Constructor
        SkeletonTree();
-      //! Deconstructor
+      //! Destructor
       virtual ~SkeletonTree();
 
       /**
@@ -162,7 +162,7 @@ namespace Avogadro {
        *
        * @param translationVector The translation vector for the skeleton.
        */
-      void skeletonTranslate(Eigen::Vector3d translationVector);
+      void skeletonTranslate(const Eigen::Vector3d &translationVector);
 
       /**
        * Rotates the Atoms attached to root node skeleton, by the given angle.
@@ -172,8 +172,8 @@ namespace Avogadro {
        * @param centerVector The position of the center of rotation for the
        *                     skeleton.
        */
-      void skeletonRotate(double angle, Eigen::Vector3d rotationAxis,
-                            Eigen::Vector3d centerVector);
+      void skeletonRotate(double angle, const Eigen::Vector3d &rotationAxis,
+                            const Eigen::Vector3d &centerVector);
 
       /**
        * Recusively prints the children of this Node and child Nodes.
@@ -217,7 +217,7 @@ namespace Avogadro {
        * @param y New y location
        * @param z New z location
        */
-      void recursiveTranslate(Node* n, Eigen::Vector3d translationVector);
+      void recursiveTranslate(Node* n, const Eigen::Vector3d &translationVector);
 
       /**
        * Recursivly rotates the Atoms attached to Node n in skeleton,
@@ -228,7 +228,7 @@ namespace Avogadro {
        * @param centerVector Center location to rotate around.
        */
       void recursiveRotate(Node* n,
-                           Eigen::Transform3d rotationMatrix);
+                           const Eigen::Transform3d &rotationMatrix);
 
   };
 } // End namespace Avogadro

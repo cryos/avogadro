@@ -203,7 +203,7 @@ namespace Avogadro {
 
   // ##########  skeletonTranslate  ##########
 
-  void SkeletonTree::skeletonTranslate(Eigen::Vector3d translationVector)
+  void SkeletonTree::skeletonTranslate(const Eigen::Vector3d &translationVector)
   {
     if (m_rootNode) {
       //Translate skeleton
@@ -213,9 +213,9 @@ namespace Avogadro {
 
   // ##########  skeletonRotate  ##########
 
-  void SkeletonTree::skeletonRotate(double angle, 
-                                    Eigen::Vector3d rotationAxis,
-                                    Eigen::Vector3d centerVector)
+  void SkeletonTree::skeletonRotate(double angle,
+                                    const Eigen::Vector3d &rotationAxis,
+                                    const Eigen::Vector3d &centerVector)
   {
     if (m_rootNode) {
       //Rotate skeleton around a particular axis and center point
@@ -230,8 +230,8 @@ namespace Avogadro {
 
   // ##########  recursiveTranslate  ##########
 
-  void SkeletonTree::recursiveTranslate(Node* n, 
-                                        Eigen::Vector3d translationVector)
+  void SkeletonTree::recursiveTranslate(Node* n,
+                                        const Eigen::Vector3d &translationVector)
   {
     // Translate the root node, and then update any children
     Atom* a = n->atom();
@@ -245,8 +245,8 @@ namespace Avogadro {
 
   // ##########  recursiveRotate  ##########
 
-  void SkeletonTree::recursiveRotate(Node* n, 
-                                     Eigen::Transform3d rotationMatrix)
+  void SkeletonTree::recursiveRotate(Node* n,
+                                     const Eigen::Transform3d &rotationMatrix)
   {
     // Update the root node with the new position
     Atom* a = n->atom();
