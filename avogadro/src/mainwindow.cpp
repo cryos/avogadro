@@ -33,6 +33,7 @@
 #include "pluginsettings.h"
 #include "savedialog.h"
 
+#include "engineitemmodel.h"
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
@@ -493,9 +494,33 @@ namespace Avogadro
     /**
      * Extensions: instances are deleted by the PluginManager after writing the
      * settings. The QActions are removed from the menus when they are deleted.
-     * So we only have to the new load extensions.
+     * So we only have to load new extensions.
      */
     loadExtensions();
+    
+    /**
+     * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines() 
+     * for each GLWidget.
+     */ 
+    foreach (GLWidget *glwidget, d->glWidgets)
+      glwidget->reloadEngines();
+
+
+    int count = d->enginesStacked->count();
+    for (int i = 0; i < count; ++i) {
+      QWidget *widget = d->enginesStacked->widget(i);
+      foreach(QObject *object, widget->children()) {
+        if (!object->isWidgetType())
+          continue;
+        EngineListView *engineListView = qobject_cast<EngineListView*>(object);
+        if (engineListView)
+          engineListView->clear();
+      }
+    }
+
+    /**
+     * Tools: see reloadTools().
+     */ 
     reloadTools();
     qDebug() << "end MainWindow::reloadPlugins";
   }
@@ -615,20 +640,21 @@ namespace Avogadro
 
       QStringList filters;
       filters << tr("Common molecule formats")
-        + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
-          " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
-          " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-          " *.mpd *.mol2 *.nwo)"
+        + " (*.cml *.xyz *.pdb *.alc *.cdx *.cdxml *.ent"
+          " *.gpr *.mdl *.mol *.sdf *.sd *.cht *.dmol *.bgf"
+          " *.inp *.gamin *.gamout *.tmol *.fract *.gjf *.gzmat"
+          " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
+        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
         << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
         << tr("HyperChem") + " (*.hin)"
         << tr("MDL Mol") + " (*.mdl *.mol *.sd *.sdf)"
-        << tr("PDB") + " (*.pdb *.ent)"
         << tr("NWChem Output") + " (*.nwo)"
+        << tr("PDB") + " (*.pdb *.ent)"
         << tr("Sybyl Mol2") + " (*.mol2)"
         << tr("XYZ") + " (*.xyz)";
 
@@ -2564,7 +2590,7 @@ namespace Avogadro
     // Display a warning dialog if we haven't loaded any tools or engines
     if(!nEngines || !nTools)
       QMessageBox::warning(this, tr("Avogadro"), error);
-
+    
     return gl;
   }
 
