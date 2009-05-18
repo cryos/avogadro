@@ -33,6 +33,7 @@
 #include "pluginsettings.h"
 #include "savedialog.h"
 
+#include "engineitemmodel.h"
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
@@ -98,6 +99,7 @@
 #include <QDesktopServices>
 #include <QTime>
 #include <QGLFramebufferObject>
+#include <QStatusBar>
 
 #include <QDebug>
 
@@ -173,6 +175,9 @@ namespace Avogadro
     // save enable/disable status of every menu item
     QVector< QVector <bool> > menuItemStatus;
     bool initialized;
+
+    bool fileToolbar;
+    bool statusBar;
 
     Quaterniond startOrientation, endOrientation;
     Vector3d deltaTrans, startTrans;
@@ -351,8 +356,10 @@ namespace Avogadro
     connectUi();
 
     ui.projectDock->close();
+    ui.enginesDock->close();
 
     // Disable the detach view option for now
+    // FIXME
     ui.actionDetachView->setVisible(false);
   }
 
@@ -361,6 +368,8 @@ namespace Avogadro
     // delayed initialization
     if(event->type() == QEvent::Polish) {
       reloadTools();
+      if (d->toolSettingsDock)
+        d->toolSettingsDock->hide();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -485,9 +494,33 @@ namespace Avogadro
     /**
      * Extensions: instances are deleted by the PluginManager after writing the
      * settings. The QActions are removed from the menus when they are deleted.
-     * So we only have to the new load extensions.
+     * So we only have to load new extensions.
      */
     loadExtensions();
+    
+    /**
+     * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines() 
+     * for each GLWidget.
+     */ 
+    foreach (GLWidget *glwidget, d->glWidgets)
+      glwidget->reloadEngines();
+
+
+    int count = d->enginesStacked->count();
+    for (int i = 0; i < count; ++i) {
+      QWidget *widget = d->enginesStacked->widget(i);
+      foreach(QObject *object, widget->children()) {
+        if (!object->isWidgetType())
+          continue;
+        EngineListView *engineListView = qobject_cast<EngineListView*>(object);
+        if (engineListView)
+          engineListView->clear();
+      }
+    }
+
+    /**
+     * Tools: see reloadTools().
+     */ 
     reloadTools();
     qDebug() << "end MainWindow::reloadPlugins";
   }
@@ -540,7 +573,7 @@ namespace Avogadro
       if (toolNumber <= 9) {
         // If we have 11 or more tools, we can only do this for the first 10
         QList<QKeySequence> shortcuts = action->shortcuts();
-        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(i + 1)));
+        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(toolNumber)));
         action->setShortcuts(shortcuts);
       }
 
@@ -556,8 +589,22 @@ namespace Avogadro
 
     } // end for loop
 
-    // TODO: Add actions for toggling the tool settings and display settings
-    //    ui.menuToolbars->addAction( d->toolSettingsDock->toggleViewAction() );
+    // Add buttons to toggle the tool and engine settings docks
+    ui.toolBar->addSeparator();
+
+    QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
+    toolSettings->setCheckable(true);
+    toolSettings->setChecked(d->toolSettingsDock->isVisible());
+    connect(d->toolSettingsDock, SIGNAL(visibilityChanged(bool)), toolSettings, SLOT(setChecked(bool)));
+    connect(toolSettings, SIGNAL(released()), this, SLOT(toggleToolSettingsDock()));
+    ui.toolBar->addWidget(toolSettings);
+
+    QPushButton* displaySettings = new QPushButton(tr("Display Settings..."), ui.toolBar);
+    displaySettings->setCheckable(true);
+    displaySettings->setChecked(ui.enginesDock->isVisible());
+    connect(ui.enginesDock, SIGNAL(visibilityChanged(bool)), displaySettings, SLOT(setChecked(bool)));
+    connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
+    ui.toolBar->addWidget(displaySettings);
 
     // Now, set the active tool
     if (d->molecule)
@@ -593,20 +640,21 @@ namespace Avogadro
 
       QStringList filters;
       filters << tr("Common molecule formats")
-        + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
-          " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
-          " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-          " *.mpd *.mol2 *.nwo)"
+        + " (*.cml *.xyz *.pdb *.alc *.cdx *.cdxml *.ent"
+          " *.gpr *.mdl *.mol *.sdf *.sd *.cht *.dmol *.bgf"
+          " *.inp *.gamin *.gamout *.tmol *.fract *.gjf *.gzmat"
+          " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
+        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
         << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
         << tr("HyperChem") + " (*.hin)"
         << tr("MDL Mol") + " (*.mdl *.mol *.sd *.sdf)"
-        << tr("PDB") + " (*.pdb *.ent)"
         << tr("NWChem Output") + " (*.nwo)"
+        << tr("PDB") + " (*.pdb *.ent)"
         << tr("Sybyl Mol2") + " (*.mol2)"
         << tr("XYZ") + " (*.xyz)";
 
@@ -860,7 +908,7 @@ namespace Avogadro
     updateWindowMenu();
 #endif
     statusBar()->showMessage( tr("File Loaded..."), 5000 );
-    d->toolGroup->setActiveTool(tr("Navigate"));
+    d->toolGroup->setActiveTool("Navigate");
     return true;
   }
 
@@ -1481,7 +1529,7 @@ namespace Avogadro
       newMolecule.setOBMol(&newMol);
       PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
       d->undoStack->push(command);
-      d->toolGroup->setActiveTool(tr("Manipulate")); // set the tool to manipulate, so we can immediate move the selection
+      d->toolGroup->setActiveTool("Manipulate"); // set the tool to manipulate, so we can immediate move the selection
     } else {
       return false;
     }
@@ -1890,6 +1938,8 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
+      d->fileToolbar = ui.fileToolBar->isVisible();
+      d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();
       statusBar()->hide();
       // From KDE: avoid Full Screen
@@ -1900,8 +1950,9 @@ namespace Avogadro
       //      this->showNormal();
       this->setWindowState(this->windowState() & ~Qt::WindowFullScreen);
       ui.actionFullScreen->setText( tr( "Full Screen" ) );
-      ui.fileToolBar->show();
-      statusBar()->show();
+
+      ui.fileToolBar->setVisible(d->fileToolbar);
+      statusBar()->setVisible(d->statusBar);
     }
   }
 
@@ -2539,7 +2590,7 @@ namespace Avogadro
     // Display a warning dialog if we haven't loaded any tools or engines
     if(!nEngines || !nTools)
       QMessageBox::warning(this, tr("Avogadro"), error);
-
+    
     return gl;
   }
 
@@ -2671,6 +2722,16 @@ namespace Avogadro
     // If we have a non-null widget, enable the settings button
     emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
+
+void MainWindow::toggleToolSettingsDock()
+{
+  d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
+}
+
+void MainWindow::toggleEngineSettingsDock()
+{
+  ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+}
 
 } // end namespace Avogadro
 

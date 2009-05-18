@@ -585,7 +585,10 @@ namespace Avogadro {
     // try setting an element symbol from this string
     int element = OpenBabel::etab.GetAtomicNum(m_keyPressBuffer.toAscii().data());
     if (element == 0) {
-      clearKeyPressBuffer(); // not an element name
+      // Invalid element. If we've tried 2-character elements, start over.
+      if (m_keyPressBuffer.length() > 3) {
+        clearKeyPressBuffer();
+      }
       event->ignore();
       return 0;
     }

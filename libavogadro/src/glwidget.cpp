@@ -32,7 +32,9 @@
 #include "camera.h"
 #include "glpainter_p.h"
 
-#include "pythonthread_p.h"
+#ifdef ENABLE_PYTHON
+  #include "pythonthread_p.h"
+#endif
 
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
@@ -455,9 +457,11 @@ namespace Avogadro {
     d->thread->wait();
 #endif
 
+#ifdef ENABLE_PYTHON
     // Creating the PythonThread object in Enigne destructor doesn't seem 
     // to work so we do it here
     PythonThread pt;
+#endif
 
     // delete the engines
     foreach(Engine *engine, d->engines)
@@ -1988,8 +1992,11 @@ namespace Avogadro {
 
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
-    if (!d->molecule) return;
     PrimitiveList list;
+    if (!d->molecule) return list;
+
+    if (!d->molecule) 
+      return list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
       Atom *atom = d->molecule->atomById(d->namedSelections.at(index).second.first.at(j));
@@ -2134,6 +2141,44 @@ namespace Avogadro {
     }
   }
 
+  void GLWidget::reloadEngines()
+  {
+    QSettings settings;
+
+    // save engine settings
+    int count = d->engines.size();
+    settings.beginWriteArray("engines");
+    for(int i = 0; i< count; i++) {
+      settings.setArrayIndex(i);
+      d->engines.at(i)->writeSettings(settings);
+    }
+    settings.endArray();
+ 
+    // delete engines
+    foreach(Engine *engine, d->engines) {
+      delete engine;
+    }
+
+    // clear the engine list
+    d->engines.clear();
+
+    // read settings and create required engines
+    count = settings.beginReadArray("engines");
+    for(int i=0; i<count; i++) {
+      settings.setArrayIndex(i);
+      QString engineClass = settings.value("engineID", QString()).toString();
+      PluginFactory *factory = PluginManager::factory(engineClass,
+                                                      Plugin::EngineType);
+      if(!engineClass.isEmpty() && factory) {
+        Engine *engine = static_cast<Engine *>(factory->createInstance(this));
+        engine->readSettings(settings);
+        addEngine(engine);
+      }
+    }
+    settings.endArray();
+  }
+
+ 
   void GLWidget::setQuickRender(bool enabled)
   {
     d->allowQuickRender = enabled;
