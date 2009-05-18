@@ -640,20 +640,21 @@ namespace Avogadro
 
       QStringList filters;
       filters << tr("Common molecule formats")
-        + " (*.cml *.xyz *.ent *.pdb *.alc *.chm *.cdx *.cdxml *.c3d1 *.c3d2"
-          " *.gpr *.mdl *.mol *.sdf *.sd *.crk3d *.cht *.dmol *.bgf"
-          " *.gam *.inp *.gamin *.gamout *.tmol *.fract *.gau *.gzmat"
-          " *.mpd *.mol2 *.nwo)"
+        + " (*.cml *.xyz *.pdb *.alc *.cdx *.cdxml *.ent"
+          " *.gpr *.mdl *.mol *.sdf *.sd *.cht *.dmol *.bgf"
+          " *.inp *.gamin *.gamout *.tmol *.fract *.gjf *.gzmat"
+          " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
         << tr("Gaussian Formatted Checkpoint") + " (*.fchk)"
+        << tr("Generic Output Files") + " (*.out *.log *.dat *.output)"
         << tr("HyperChem") + " (*.hin)"
         << tr("MDL Mol") + " (*.mdl *.mol *.sd *.sdf)"
-        << tr("PDB") + " (*.pdb *.ent)"
         << tr("NWChem Output") + " (*.nwo)"
+        << tr("PDB") + " (*.pdb *.ent)"
         << tr("Sybyl Mol2") + " (*.mol2)"
         << tr("XYZ") + " (*.xyz)";
 
