@@ -38,7 +38,7 @@ namespace Avogadro {
     friend class ProjectTreeModel;
 
     public:
-      ProjectTreeItem(const QVector<QVariant> &data, ProjectTreeItem *parent = 0);
+      explicit ProjectTreeItem(const QVector<QVariant> &data, ProjectTreeItem *parent = 0);
       ~ProjectTreeItem();
 
       /**

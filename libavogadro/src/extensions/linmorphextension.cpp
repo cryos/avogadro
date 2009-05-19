@@ -280,7 +280,7 @@ namespace Avogadro
     //first, split out the directory and filenames
     QString dir, fileName, prefix;
 
-    int slashPos = movieFileName.lastIndexOf("/");
+    int slashPos = movieFileName.lastIndexOf('/');
     
     if (slashPos < 0) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
@@ -288,7 +288,7 @@ namespace Avogadro
       return;
     }
 
-    dir = movieFileName.left(slashPos) + "/"; 
+    dir = movieFileName.left(slashPos) + '/'; 
     fileName = movieFileName.right(movieFileName.length() - (slashPos+1));
     if (fileName.isEmpty()) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
@@ -301,7 +301,7 @@ namespace Avogadro
     
 
     //Make the directory where the snapshots will be saved
-    QString snapshotsDir = dir + prefix + "/";
+    QString snapshotsDir = dir + prefix + '/';
     QString mkdirCommand = "mkdir " + snapshotsDir;
     system(mkdirCommand.toStdString().c_str());
 

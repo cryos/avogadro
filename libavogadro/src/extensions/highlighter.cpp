@@ -41,7 +41,7 @@ namespace Avogadro {
                     << "\\bdef\\b" << "\\bfor\\b" << "\\blambda\\b"
                     << "\\btry\\b";
 
-    foreach (QString pattern, keywordPatterns) {
+    foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegExp(pattern);
         rule.format = keywordFormat;
         highlightingRules.append(rule);
@@ -77,7 +77,7 @@ namespace Avogadro {
 
   void Highlighter::highlightBlock(const QString &text)
   {
-    foreach (HighlightingRule rule, highlightingRules) {
+    foreach (const HighlightingRule &rule, highlightingRules) {
         QRegExp expression(rule.pattern);
         int index = text.indexOf(expression);
         while (index >= 0) {

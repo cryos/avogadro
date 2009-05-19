@@ -100,7 +100,7 @@ namespace Avogadro
       QList<QByteArray> lines = params->split('\n');
       qDebug() << "Loading shader parameter file:" << lines.size();
       qDebug() << *params;
-      foreach(QByteArray line, lines) {
+      foreach(const QByteArray &line, lines) {
         QList<QByteArray> halves = line.split('\t');
         QList<QByteArray> tokens = halves.at(0).split(' ');
         if (tokens.size() != 2) {
@@ -326,11 +326,11 @@ namespace Avogadro
       m_shaderDialog->vertFile->setText(fileName);
       QFileInfo vert(fileName);
       // See if we can guess the other two from this
-      vert.setFile(vert.absolutePath() + "/" + vert.baseName() + ".frag");
+      vert.setFile(vert.absolutePath() + '/' + vert.baseName() + ".frag");
       if (vert.exists()) {
         m_shaderDialog->fragFile->setText(vert.absoluteFilePath());
       }
-      vert.setFile(vert.absolutePath() + "/" + vert.baseName() + ".params");
+      vert.setFile(vert.absolutePath() + '/' + vert.baseName() + ".params");
       if (vert.exists()) {
         m_shaderDialog->paramsFile->setText(vert.absoluteFilePath());
       }
@@ -406,10 +406,10 @@ namespace Avogadro
       vertFile.close();
       // Is there a corresponding fragment file?
       if (verts.exists(info.baseName() + ".frag")) {
-        QFile fragFile(info.canonicalPath() + "/" + info.baseName() + ".frag");
+        QFile fragFile(info.canonicalPath() + '/' + info.baseName() + ".frag");
         if (!fragFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
           qDebug() << "Error opening frag file..."
-                   << info.canonicalPath() + "/" + info.baseName() + ".frag";
+                   << info.canonicalPath() + '/' + info.baseName() + ".frag";
           continue;
         }
         QByteArray fragSource = fragFile.readAll();
@@ -426,10 +426,10 @@ namespace Avogadro
 
       // Now let us see if there are any parameter files that need loading...
       if (verts.exists(info.baseName() + ".params")) {
-        QFile paramsFile(info.canonicalPath() + "/" + info.baseName() + ".params");
+        QFile paramsFile(info.canonicalPath() + '/' + info.baseName() + ".params");
         if (!paramsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
           qDebug() << "Error opening parameters file..."
-                   << info.canonicalPath() + "/" + info.baseName() + ".params";
+                   << info.canonicalPath() + '/' + info.baseName() + ".params";
           continue;
         }
         QByteArray params = paramsFile.readAll();

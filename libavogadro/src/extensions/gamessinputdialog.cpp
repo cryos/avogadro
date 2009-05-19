@@ -1600,7 +1600,7 @@ namespace Avogadro {
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".inp";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
         defaultFileName, tr("GAMESS Input Deck (*.inp)"));
 

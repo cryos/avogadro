@@ -113,7 +113,7 @@ namespace Avogadro{
     // Disable face culling for ring structures.
     glDisable(GL_CULL_FACE);
 
-    // Optimise for smaller ring structures
+    // Optimize for smaller ring structures
     switch (ring.size()) {
       case 3:
         // Single triangle - easy
@@ -232,7 +232,7 @@ namespace Avogadro{
               this, SLOT(setOpacity(int)));
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
-      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->opacitySlider->setValue(int(20*m_alpha));
     }
     return m_settingsWidget;
   }
@@ -254,7 +254,7 @@ namespace Avogadro{
     Engine::readSettings(settings);
     setOpacity(settings.value("opacity", 20).toInt());
     if (m_settingsWidget) {
-      m_settingsWidget->opacitySlider->setValue(20*m_alpha);
+      m_settingsWidget->opacitySlider->setValue(int(20*m_alpha));
     }
   }
 

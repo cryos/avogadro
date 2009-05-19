@@ -341,7 +341,7 @@ namespace Avogadro{
       return 0;
     }
   }
-    
+
   Cube *Molecule::addCube()
   {
     Q_D(const Molecule);
@@ -495,7 +495,7 @@ namespace Avogadro{
     d->residues[id] = residue;
     d->residueList.push_back(residue);
     m_lock->unlock();
- 
+
     residue->setId(id);
     residue->setIndex(d->residueList.size()-1);
 
@@ -535,7 +535,7 @@ namespace Avogadro{
     Q_D(const Molecule);
     return addRing(d->rings.size());
   }
-  
+
   Fragment * Molecule::addRing(unsigned long id)
   {
     Q_D(Molecule);
@@ -548,7 +548,7 @@ namespace Avogadro{
     d->rings[id] = ring;
     d->ringList.push_back(ring);
     m_lock->unlock();
- 
+
     ring->setId(id);
     ring->setIndex(d->ringList.size()-1);
 
@@ -893,8 +893,8 @@ namespace Avogadro{
   }
 
   const std::vector<std::vector<Eigen::Vector3d> *>& Molecule::conformers() const
-  { 
-    return m_atomConformers; 
+  {
+    return m_atomConformers;
   }
 
   bool Molecule::setConformer(unsigned int index)
@@ -922,10 +922,12 @@ namespace Avogadro{
 
   void Molecule::clearConformers()
   {
-    for (unsigned int i = 1; i < m_atomConformers.size(); ++i)
-      delete m_atomConformers[i];
-    m_atomConformers.resize(1);
-    m_atomPos = m_atomConformers[0];
+    if (m_atomConformers.size() > 1) {
+      for (unsigned int i = 1; i < m_atomConformers.size(); ++i)
+        delete m_atomConformers[i];
+      m_atomConformers.resize(1);
+      m_atomPos = m_atomConformers[0];
+    }
   }
 
   unsigned int Molecule::numConformers() const

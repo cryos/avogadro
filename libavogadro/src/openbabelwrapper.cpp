@@ -34,7 +34,6 @@
 #include <QPointer>
 
 #include <openbabel/mol.h>
-#include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
 #include <iostream>
@@ -204,7 +203,7 @@ namespace Avogadro {
       success = conv.Write(&obMol, &ofs);
       if (!success)
         break;
-      if (fileName.endsWith("xyz", Qt::CaseInsensitive))
+      if (fileName.endsWith(QLatin1String("xyz"), Qt::CaseInsensitive))
         ofs << std::endl;
     }
 

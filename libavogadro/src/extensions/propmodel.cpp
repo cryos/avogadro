@@ -30,12 +30,13 @@
 #include <openbabel/mol.h>
 #include <Eigen/Geometry>
 
-#include <math.h>
+#include <limits>
 
 #include <QDebug>
 
 namespace Avogadro {
 
+  using std::numeric_limits;
   using std::vector;
   using std::pair;
   using OpenBabel::triple;
@@ -224,8 +225,10 @@ namespace Avogadro {
         angle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
-        if (!std::isfinite(angle))
+        if (numeric_limits<double>::has_infinity &&
+            angle == numeric_limits<double>::infinity()) {
           angle = 0.0;
+        }
         return QString::number(angle, 'f', 4);
       }
     }
@@ -261,8 +264,10 @@ namespace Avogadro {
                                                         torsionBC.first,
                                                         torsionBC.second,
                                                         j->second);
-              if (!std::isfinite(dihedralAngle))
+              if (numeric_limits<double>::has_infinity &&
+                  dihedralAngle == numeric_limits<double>::infinity()) {
                 dihedralAngle = 0.0;
+              }
               return QString::number(dihedralAngle, 'f', 4);
             }
           }
@@ -307,7 +312,7 @@ namespace Avogadro {
         return Qt::AlignHCenter; // XYZ coordinates
       }
     }
-    
+
     if (role != Qt::DisplayRole)
       return QVariant();
 
@@ -443,7 +448,7 @@ namespace Avogadro {
     return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
   }
 
-  bool PropertiesModel::setData(const QModelIndex &index, 
+  bool PropertiesModel::setData(const QModelIndex &index,
                                 const QVariant &value,
                                 int role)
   {
@@ -528,20 +533,22 @@ namespace Avogadro {
       double initialAngle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                       m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
                                       m_cachedOBMol->GetAtom(angles[index.row()][2] + 1));
-      if (!std::isfinite(initialAngle))
+      if (numeric_limits<double>::has_infinity &&
+          initialAngle == numeric_limits<double>::infinity()) {
         initialAngle = 0.0;
+      }
 
       switch (index.column()) {
       case 3: // angle
         abVector = *(startAtom->pos()) - *(vertex->pos());
         bcVector = *(endAtom->pos()) - *(vertex->pos());
         crossProductVector = abVector.cross(bcVector).normalized();
-        
+
         rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
 
         zMatrixTree.populate(vertex, bond, m_molecule);
         zMatrixTree.skeletonRotate(rotationAdjustment, crossProductVector, *(vertex->pos()));
-        
+
         emit dataChanged(index, index);
         return true;
         break;
@@ -569,8 +576,10 @@ namespace Avogadro {
                                       m_cachedOBMol->GetAtom(torsions[index.row()][1] + 1),
                                       m_cachedOBMol->GetAtom(torsions[index.row()][2] + 1),
                                       m_cachedOBMol->GetAtom(torsions[index.row()][3] + 1));
-      if (!std::isfinite(initialAngle))
+      if (numeric_limits<double>::has_infinity &&
+          initialAngle == numeric_limits<double>::infinity()) {
         initialAngle = 0.0;
+      }
 
       switch (index.column()) {
       case 4: // dihedral angle
@@ -579,7 +588,7 @@ namespace Avogadro {
 
         zMatrixTree.populate(b, bond, m_molecule);
         zMatrixTree.skeletonRotate(rotationAdjustment, bcVector, *(b->pos()));
-        
+
         emit dataChanged(index, index);
         return true;
         break;

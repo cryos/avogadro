@@ -31,7 +31,6 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QFileDialog>
 #include <QCoreApplication>
 #include <QProcess>
 #include <QFileInfo>

@@ -39,7 +39,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      PythonEngine(QObject *parent = 0, const QString &filename = QString());
+      explicit PythonEngine(QObject *parent = 0, const QString &filename = QString());
       //! Deconstructor
       ~PythonEngine();
       //! Copy
