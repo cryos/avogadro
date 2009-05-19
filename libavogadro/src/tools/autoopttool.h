@@ -92,7 +92,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("AutoOptimization", tr("AutoOptimization"),
-                    tr("Automatic optimization of molecular geometry"))
+                    tr("Automatic optimization of molecular geometry"),
+                    tr("AutoOptimization Settings"))
 
     public:
       //! Constructor

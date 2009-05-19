@@ -49,7 +49,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_TOOL("Selection", tr("Selection"),
-                  tr("Select atoms, residues, and molecules"))
+                  tr("Select atoms, residues, and molecules"),
+                  tr("Selection Settings"))
 
     public:
       //! Constructor

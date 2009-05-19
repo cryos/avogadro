@@ -37,7 +37,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_TOOL("Z-Matrix", tr("Z-Matrix"),
-                  tr("Create/edit a z-matrix"))
+                  tr("Create/edit a z-matrix")
+                  tr("Z-Matrix Settings"))
 
   public:
     //! Constructor

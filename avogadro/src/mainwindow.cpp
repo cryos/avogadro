@@ -1409,7 +1409,7 @@ namespace Avogadro
       if (!widget->d->fileName.isEmpty())
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
-        windowAction->setText(tr("Untitled") + ' ' + QString::number(++untitledCount));
+        windowAction->setText(tr("Untitled %1").arg(QString::number(++untitledCount)));
 
       if (widget == this) {
         windowAction->setCheckable(true);
@@ -1989,7 +1989,7 @@ namespace Avogadro
 
   void MainWindow::setTool( Tool *tool )
   {
-    d->toolSettingsDock->setWindowTitle(tool->name() + ' ' + tr("Settings"));
+    d->toolSettingsDock->setWindowTitle(tool->settingsTitle());
     if ( tool->settingsWidget() ) {
       d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
     } else {

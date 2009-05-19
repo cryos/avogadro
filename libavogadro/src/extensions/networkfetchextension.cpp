@@ -148,7 +148,7 @@ namespace Avogadro
     if (data.contains("Error report")) {
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Download Failed"),
-                           tr("Specified molecule could not be found: ") + *m_moleculeName);
+                           tr("Specified molecule could not be found: %1").arg(*m_moleculeName));
       delete reply;
       return;
     }
@@ -167,7 +167,7 @@ namespace Avogadro
     else {
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Download Failed"),
-                           tr("Specified molecule could not be loaded: ") + *m_moleculeName);
+                           tr("Specified molecule could not be loaded: %1").arg(*m_moleculeName));
     }
     // We are responsible for deleting the reply object
     delete reply;

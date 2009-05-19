@@ -51,6 +51,7 @@ namespace Avogadro {
       QString identifier() const;
       QString name() const;
       QString description() const;
+      QString settingsTitle() const;
       QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);

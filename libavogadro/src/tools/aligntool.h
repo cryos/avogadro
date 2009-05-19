@@ -38,7 +38,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("Align", tr("Align"),
-                    tr("Align molecules to a Cartesian axis"))
+                    tr("Align molecules to a Cartesian axis"),
+                    tr("Aign Settings"))
 
     public:
       //! Constructor

@@ -263,7 +263,7 @@ namespace Avogadro
       // We have a slater type orbital....
       qDebug() << "Adding a slater type orbital...." << mo;
       Cube *cube = m_molecule->addCube();
-      cube->setName(QString(tr("MO ") + QString::number(mo)));
+      cube->setName(tr("MO %1", "Molecular Orbital").arg(QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
       if (!m_timer) {
@@ -280,7 +280,7 @@ namespace Avogadro
       }
 
       // Set up the progress bar
-      m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
+      m_progress->setWindowTitle(tr("Calculating MO %1", "Molecular Orbital").arg(QString::number(mo)));
       m_progress->setRange(m_slater->watcher().progressMinimum(),
                            m_slater->watcher().progressMinimum());
       m_progress->setValue(m_slater->watcher().progressValue());
@@ -300,7 +300,7 @@ namespace Avogadro
     else if (m_basis) {
       // Calculate each point in the cube in parallel
       Cube *cube = m_molecule->addCube();
-      cube->setName(QString(tr("MO ") + QString::number(mo)));
+      cube->setName(tr("MO ", "Molecular Orbital").arg(QString::number(mo)));
       cube->setLimits(origin * BOHR_TO_ANGSTROM, steps,
                       stepSize * BOHR_TO_ANGSTROM);
       if (!m_timer) {
@@ -317,7 +317,7 @@ namespace Avogadro
       }
 
       // Set up the progress bar
-      m_progress->setWindowTitle(tr("Calculating MO ") + QString::number(mo));
+      m_progress->setWindowTitle(tr("Calculating MO %1", "Molecular Orbital").arg(QString::number(mo)));
       m_progress->setRange(m_basis->watcher().progressMinimum(),
                            m_basis->watcher().progressMinimum());
       m_progress->setValue(m_basis->watcher().progressValue());

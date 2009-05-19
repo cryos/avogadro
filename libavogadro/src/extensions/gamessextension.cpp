@@ -101,7 +101,7 @@ namespace Avogadro
   {
     if ( !m_gamessEfpDock ) {
       m_gamessEfpDock = new QDockWidget( tr( "GAMESS EFP Information" ) );
-      m_gamessEfpDock->setObjectName(tr("gamessEfpDock"));
+      m_gamessEfpDock->setObjectName("gamessEfpDock");
 
       QWidget *widget = new QWidget( m_gamessEfpDock );
       QVBoxLayout *layout = new QVBoxLayout();
@@ -236,8 +236,6 @@ namespace Avogadro
     string pattern = conv.WriteString( &obmol );
     pattern.erase( pattern.find_first_of( " \t\n\r" ) );
 
-//    QMessageBox::information( 0, tr( "" ), "Got Pattern : " + QString::fromStdString( pattern ) );
-
     OBSmartsPattern sp;
     sp.Init( pattern );
 
@@ -285,7 +283,7 @@ namespace Avogadro
           }
 
           if ( !first ) {
-            text.append( tr( ", " ) );
+            text.append( ", " );
           }
           else {
             first = false;
@@ -299,7 +297,7 @@ namespace Avogadro
             // see if each neighbor is a hydrogen or another match
             if ( a->isHydrogen() ) {
               if ( !first ) {
-                text.append( tr( ", " ) );
+                text.append( ", " );
               }
               int idx = m_molecule->atomById(a->id())->index();
               text.append(QString::number(idx));
@@ -480,7 +478,7 @@ namespace Avogadro
       foreach( Atom *atom, group ) {
 
         if ( !first ) {
-          groupString.append( tr( ", " ) );
+          groupString.append( ", " );
         } else {
           first = false;
         }
@@ -521,7 +519,10 @@ namespace Avogadro
     if(newItems.size() && !rootItem)
     {
       rootItem = new QStandardItem(groupName);
-      QStandardItem *typeItem  = new QStandardItem(tr(" (") + tr( type ? "qm" : "efp" ) + tr(")") );
+      QString typeName = tr(" (");
+      typeName += type ? tr("qm") : tr("efp");
+      typeName += tr(")");
+      QStandardItem *typeItem  = new QStandardItem(typeName);
       QList<QStandardItem *> row;
       row.append(rootItem);
       row.append(typeItem);
@@ -592,7 +593,7 @@ namespace Avogadro
         foreach(Atom *atom, atoms)
         {
           if ( !first ) {
-            text.append( tr( ", " ) );
+            text.append( ", " );
           } else {
             first = false;
           }

@@ -788,8 +788,8 @@ namespace Avogadro {
       if (m_currentReference)
       {
         // Draw bond length text.
-        QString length = tr("Bond Length: ") +
-          QString::number(m_selectedBond->length(), 10, 1) +
+        QString length = tr("Bond Length: %1", "%1 is the length of the bond")
+          .arg(QString::number(m_selectedBond->length(), 10, 2)) +
           QString::fromUtf8(" Å");
 
         glColor4f(1.0, 1.0, 1.0, 1.0);
