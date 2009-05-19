@@ -1,6 +1,6 @@
 #!/bin/sh
-BASEDIR="../avogadro"	# root of translatable sources
-PROJECT="avogadro"	# project name
+BASEDIR="../avogadro/libavogadro"	# root of translatable sources
+PROJECT="libavogadro"	# project name
 PACKAGE="Avogadro"  # user-readable package name
 # user-readable version
 VERSION=`grep 'set(VERSION' libavogadro/CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
@@ -35,7 +35,7 @@ xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki1
 echo "Done extracting messages"
 
 # Replace some boilerplate strings
-sed -e "s/SOME DESCRIPTIVE TITLE/Translations for the Avogadro molecular editor/" <${PROJECT}.pot >${PROJECT}.new
+sed -e "s/SOME DESCRIPTIVE TITLE/Translations for the Avogadro molecular library libavogadro/" <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
 sed -e 's/Copyright (C) YEAR/Copyright (C) 2006-2009/' <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot

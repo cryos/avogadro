@@ -5,7 +5,7 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
+        <translatorcomment>Czech translation for avogadro
 Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 This file is distributed under the same license as the avogadro package.
 FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
@@ -13,10 +13,10 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2009-05-06 17:12+0000
+Last-Translator: milboy &lt;Unknown&gt;
+Language-Team: Czech &lt;cs@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -30,22 +30,22 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="+13"/>
         <source>Add Display Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat typ zobrazení</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jméno:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popis:</translation>
     </message>
 </context>
 <context>
@@ -53,17 +53,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="+14"/>
         <source>Animate Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animovat dráhu</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Load File...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otveřít soubor...</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -73,17 +73,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+7"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smyčka</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>Save as .avi...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit jako .avi...</translation>
     </message>
 </context>
 <context>
@@ -91,17 +91,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="+46"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Application Version: %2&lt;br/&gt;&lt;br/&gt;Library Version: %3&lt;br/&gt;&lt;br/&gt;For more information check the &lt;a href=&quot;http://avogadro.openmolecules.net/&quot;&gt;Avogadro homepage&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;h3&gt;%1&lt;/h3&gt;&lt;br/&gt;&lt;br/&gt;Verze aplikace: %2&lt;br/&gt;&lt;br/&gt;Verze knihovny: %3&lt;br/&gt;&lt;br/&gt;Pro více informací navštivte &lt;a href=&quot;http://avogadro.openmolecules.net/&quot;&gt;domovskou stránku projektu&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Program je poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.&lt;br/&gt;</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
 </context>
 <context>
@@ -114,43 +114,48 @@ Left Mouse: 	Select up to two atoms.
 	The first atom is centered at the origin.
 	The second atom is aligned to the selected axis.
 Right Mouse: 	Reset alignment.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zarovnat molekuly
+
+Levé tlačítko myši: 	Vybrat až dva atomy.
+	První atom je zarovnán na počátek.
+	Druhý atom je zarovnán k vybrané ose.
+Pravé tlačítko myši: 	Zrušit zarovnání.</translation>
     </message>
     <message>
         <location line="+192"/>
         <source>Axis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">souřadnice</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Align:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zarovnání:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vše</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+40"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zarovnání</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+1"/>
         <source>Align molecules to a Cartesian axis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zarovnat molekuly ke kartézským osám</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení</translation>
     </message>
 </context>
 <context>
@@ -158,37 +163,37 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="+65"/>
         <source>Open trajectory file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít soubor trajektorie</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Trajectory files (*.xtc *.xyz)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubory trajektorie (*.xtc *.xyz)</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Save Video File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit video soubor</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>video files (*.avi)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Video soubory (*.avi)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Adding .avi extension</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidávám koncovku .avi</translation>
     </message>
 </context>
 <context>
@@ -196,7 +201,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+46"/>
         <source>Animation...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animace...</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -215,23 +220,23 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+13"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-115"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu rozpoznat typ souboru %1.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Read trajectory file %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítání souboru trajektorie %1 selahalo.</translation>
     </message>
     <message>
         <location line="+35"/>
         <location line="+6"/>
         <source>Must specify a valid .avi file name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Musíte určit platný soubor .avi</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -241,17 +246,17 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+11"/>
         <source>Invalid video filename.  Must include full directory path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neplatný soubor, Musíte uvést úplnou cestu</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Invalid video filename.  Must include full directory path and name, ending with .avi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neplatný název souboru. Musíte určit kompletní cestu k souboru a jméno včetně koncovky .avi</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>could not set format to XYZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nemohu nastavit formát na XYZ</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -261,12 +266,12 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+6"/>
         <source>Trajectory file %1 disagrees on the number of atoms in the present molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.h" line="+45"/>
         <source>Animation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animace</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -302,7 +307,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+29"/>
         <source>Force Field:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silové pole:</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -312,7 +317,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+11"/>
         <source>Algorithm:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algoritmus:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -343,7 +348,7 @@ Left Mouse: Click and drag atoms to move them</source>
         <location line="+2"/>
         <location line="+93"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spustit</translation>
     </message>
     <message>
         <location line="-91"/>
@@ -358,7 +363,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+57"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zastavit</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.h" line="+94"/>
@@ -373,7 +378,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoOptimization Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Optimalizace</translation>
     </message>
 </context>
 <context>
@@ -386,43 +391,43 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+168"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zastavit</translation>
     </message>
     <message>
         <location line="+10"/>
         <location line="+61"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spustit</translation>
     </message>
     <message>
         <location line="-46"/>
         <source>x rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x rotace:</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>x rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x rotace</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>y rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y rotace:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>y rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y rotace</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>z rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z rotace:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>z rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z rotace</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -442,7 +447,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení nástrojů</translation>
     </message>
 </context>
 <context>
@@ -450,12 +455,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/axesengine.h" line="+37"/>
         <source>Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Osy</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders the x, y, and z axes at the origin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit osy x.y.z v počátku</translation>
     </message>
 </context>
 <context>
@@ -490,12 +495,12 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
         <location line="+712"/>
         <source>Bond Length: %1</source>
         <comment>%1 is the length of the bond</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délka vazby: </translation>
     </message>
     <message>
         <location line="+806"/>
         <source> Show Angles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Zobrazit úhly</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -531,7 +536,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
         <location line="+18"/>
         <location line="+15"/>
         <source>bond %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">vyzba %1</translation>
     </message>
 </context>
 <context>
@@ -544,7 +549,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location line="+1"/>
         <source>Renders protein secundary structure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit sekundární strukturu proteinů</translation>
     </message>
 </context>
 <context>
@@ -552,12 +557,12 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location filename="../libavogadro/src/colors/chargecolor.h" line="+44"/>
         <source>Color by Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva podle parciálního náboje</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Color by atomic partial charge (blue = positive, red = negative.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva podle parciálního atomového náboje (modrá = pozitivní, červená = negativní).</translation>
     </message>
 </context>
 <context>
@@ -575,12 +580,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+91"/>
         <source>Distance (1-&gt;2): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost (1-&gt;2): %1 %2</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Distance (2-&gt;3): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost (2-&gt;3): %1 %2</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -590,7 +595,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+20"/>
         <source>Distance (3-&gt;4): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost (3-&gt;4): %1 %2</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -601,35 +606,35 @@ Right Mouse: Reset the measurements.</source>
         <location line="+40"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*2</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*3</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*4</source>
         <comment>*4 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*4</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Distance(s):</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="+48"/>
         <source>Measure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Měření</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -639,7 +644,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení</translation>
     </message>
 </context>
 <context>
@@ -647,12 +652,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.cpp" line="+133"/>
         <source>Number of atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet atomů: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Number of rotatable bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet rotačních vazeb: %1</translation>
     </message>
 </context>
 <context>
@@ -691,12 +696,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="+42"/>
         <source>Dipole</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dipól</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders molecular dipole moments</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit dipólové momenty molekul</translation>
     </message>
 </context>
 <context>
@@ -704,12 +709,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/colors/distancecolor.h" line="+44"/>
         <source>Color by Distance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva podle vzdálenosti</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Color by distance from the first atom.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva podle vzdálenosti od prvního atomu</translation>
     </message>
 </context>
 <context>
@@ -742,37 +747,37 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+36"/>
         <source>Change Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Změnit druh vazby</translation>
     </message>
     <message>
         <location line="+248"/>
         <source>Element:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prvek:</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>Other...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ostatní:</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Bond Order:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Druh vazby:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jednoduchá</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dvojná</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Triple</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trojná</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -792,7 +797,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení</translation>
     </message>
 </context>
 <context>
@@ -800,12 +805,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/colors/elementcolor.h" line="+45"/>
         <source>Color by Element</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barvy podle prvku</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Color by Element (carbon = grey, oxygen = red, ...).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barvy podle prvku (uhlík = šedá, kyslík = červená, ...).</translation>
     </message>
 </context>
 <context>
@@ -813,597 +818,597 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished">Vodík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Helium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Helium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lithium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lithium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Beryllium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beryllium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Boron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished">Uhlík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished">Dusík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished">Kyslík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fluorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fluor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sodík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Magnesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hořčík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Aluminum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hliník</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silicon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Křemík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished">Fosfor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sulfur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Síra</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chlorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chlor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Argon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Argon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Potassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Draslík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Calcium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vápník</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Scandium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skandium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Titanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titan</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Vanadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vanad</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chromium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chrom</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Manganese</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hořčík</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Železo</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cobalt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kobalt</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nickel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nikl</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Měď</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zinc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zinek</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gallium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Germanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Germanium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Arsenic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Arzén</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Selenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Selen</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bromine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Brom</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Krypton</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krypton</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rubidium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rubidium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Strontium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stroncium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Yttrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yttrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zirconium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zirkon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Niobium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Niob</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Molybdenum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molybden</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Technetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Technecium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ruthenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ruthenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rhodium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Palladium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Palladium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stříbro</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cadmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kadmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Indium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Indium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cín</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Antimony</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Antimon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tellurium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tellur</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iodine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jód</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Xenon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Xenon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Caesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cesium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Barium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lanthanum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lanthan</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cer</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Praseodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Praseodymi</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neodymi</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Promethium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Promethium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Samarium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Samarium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Europium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Europium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gadolinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gadolinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Terbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Terbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dysprosium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dysprosium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Holmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Holmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Erbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thulium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thulium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ytterbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ytterbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lutetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lutetium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hafnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hafnium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tantalum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tantal</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tungsten</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Wolfram</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rhenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Osmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Osmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iridium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iridium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Platina</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zlato</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rtuť</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thallium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lead</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Olovo</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bismuth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bismut</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Polonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polonium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Astatine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Astat</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Francium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Francium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Actinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Actinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thorium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thorium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Protactinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Protactinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Uranium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uran</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neptunium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neptunium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Plutonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plutonium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Americium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Americium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Curium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Curium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Berkelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Berkelium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Californium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Californium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Einsteinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einsteinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fermium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fermium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mendelevium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mendelevium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nobelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nobelium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lawrencium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lawrencium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rutherfordium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rutherfordium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dubnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dubnium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Seaborgium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seaborgium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bohrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bohrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hassium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Meitnerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Meitnerium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Darmstadtium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Darmstadtium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Roentgenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Roentgenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununtrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununtrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununquadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununquadium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununpentium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununpentium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununhexium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununhexium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununseptium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununseptium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununoctium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununoctium</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neznámý</translation>
     </message>
 </context>
 <context>
@@ -1419,7 +1424,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extension.cpp" line="+44"/>
         <source>Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rozšíření</translation>
     </message>
 </context>
 <context>
@@ -1427,17 +1432,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.cpp" line="+54"/>
         <source>Trajectory...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trajektorie...</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Soubor</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Importovat</translation>
     </message>
     <message>
         <location line="+126"/>
@@ -1447,7 +1452,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Chemical files (*.xyz)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chemické soubory (*.xyz)</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1457,12 +1462,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Chemical files (*.parm7)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chemické soubory (*.parm7)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/fileimportextension.h" line="+43"/>
         <source>Import Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Importovat trajektorie</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1475,7 +1480,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/engines/forceengine.h" line="+38"/>
         <source>Force</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Síla</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1493,12 +1498,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+5"/>
         <source>Setup Force Field...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavit silová pole</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Calculate Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vypočítat energii</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1513,12 +1518,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+5"/>
         <source>Ignore Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ignorovat výběr</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Selected Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ukontvit vybrané atomy</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -1536,7 +1541,7 @@ Right Mouse: Delete Atom</source>
         <location line="+12"/>
         <location line="+20"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -1548,12 +1553,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="-35"/>
         <source>Energy = %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Energie = %1 %2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.h" line="+54"/>
         <source>ForceField</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silové pole</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1572,7 +1577,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+5"/>
         <source>OpenGL error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chyba OpenGL</translation>
     </message>
     <message>
         <location line="+580"/>
@@ -1582,7 +1587,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+1"/>
         <source>FPS: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">FPS</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1592,17 +1597,17 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+2"/>
         <source>No molecule set</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit molekulu jako</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomy: </translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazba %1</translation>
     </message>
     <message>
         <location line="+1007"/>
@@ -1628,12 +1633,12 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+5"/>
         <source>EFP Selection...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EFP výběr...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>QM Selection...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QM výběr</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -1643,7 +1648,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>&amp;GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;GAMESS</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -1653,17 +1658,17 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+15"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat</translation>
     </message>
     <message>
         <location line="+82"/>
         <source>No Atoms Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Není vybrán žádný atom</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>You must make a selection!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Musíte provést výběr!</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1683,27 +1688,27 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+53"/>
         <source> (</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> (</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>qm</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">qm</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessextension.h" line="+44"/>
         <source>GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1716,40 +1721,43 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.cpp" line="+619"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+877"/>
         <source>Advanced Settings Changed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Změna pokročilých nastavení</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Advanced settings have changed.
 Discard?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pokročilá nastavení byla změněna.
+Zahodit změny?</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Advanced Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazání pokročilých nastavení</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Are you sure you wish to reset advanced settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jste si jisti, že chcete smazat pokročilá nastavení?
+Všechny změny budou ztraceny!</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Basic Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazání základních nastavení</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Are you sure you wish to reset basic settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jste si jisti, že chcete smazat základní nastavení?
+Všechny změny budou ztraceny!</translation>
     </message>
     <message>
         <location line="+72"/>
@@ -1767,12 +1775,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="+45"/>
         <source>Gaussian Input...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vstup Gaussian...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Q-Chem Input...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vstup Q-Chem...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1798,17 +1806,17 @@ All changes will be lost!</source>
         <location line="+80"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-8"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu rozpoznat typ souboru %1.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu načíst soubor %1.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.h" line="+42"/>
@@ -1846,12 +1854,12 @@ All changes will be lost!</source>
     <message>
         <location line="+23"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
 </context>
 <context>
@@ -1859,22 +1867,22 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.cpp" line="+43"/>
         <source>Change H to Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zaměnit H za Metyl</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.h" line="+37"/>
         <source>H2Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">H2Methyl</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Transform hydrogens to methyl groups</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Změnit vodíkové atomy na methylové skupiny</translation>
     </message>
 </context>
 <context>
@@ -1882,12 +1890,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="+42"/>
         <source>Hydrogen Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vodíkové můstky</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders hydrogen bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit vodíkové můstky</translation>
     </message>
 </context>
 <context>
@@ -1895,42 +1903,42 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.cpp" line="+42"/>
         <source>Add Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vodíkové atomy</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Add Hydrogens for pH...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vodíkové atomy pro pH...</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Remove Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Odstranit vodíkové atomy</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Add Hydrogens for pH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vodíkové atomy pro pH</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>pH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">pH</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="+40"/>
         <source>Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vodíkové atomy</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Add or remove hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat nebo odstranit vodíkové atomy</translation>
     </message>
 </context>
 <context>
@@ -1938,7 +1946,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít soubor</translation>
     </message>
 </context>
 <context>
@@ -1960,24 +1968,24 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
         <location line="+8"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu rozpoznat typ souboru %1.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu načíst soubor %1.</translation>
     </message>
     <message>
         <location line="+51"/>
         <location line="+9"/>
         <location line="+20"/>
         <source>Stop Inserting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ukončit vkládání</translation>
     </message>
     <message>
         <location line="-21"/>
@@ -1992,7 +2000,7 @@ All changes will be lost!</source>
     <message>
         <location line="+23"/>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít složku</translation>
     </message>
 </context>
 <context>
@@ -2000,12 +2008,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/labelengine.h" line="+45"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisek</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Renders atom and bond labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit popisky atomů a vazeb</translation>
     </message>
 </context>
 <context>
@@ -2013,12 +2021,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="+63"/>
         <source>Open ligand file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít soubor ligandů</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Avogadro files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubory Avogadro (*.*)</translation>
     </message>
 </context>
 <context>
@@ -2026,47 +2034,47 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphdialog.cpp" line="+65"/>
         <source>Open mol file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít soubor molekul</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Any files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Všechny soubory (*.*)</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Save Movie File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit video</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>movie files (*.avi)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">video soubory (*.avi)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Adding .avi extension</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidávám koncovku .avi</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Save Traj File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit soubor trajektorie</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>trajectory file (*.xyz)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">soubor trajektorie (*xyz)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
 </context>
 <context>
@@ -2090,17 +2098,17 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-244"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu rozpoznat typ souboru %1.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Read mol file %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítání souboru molekul %1 selhalo.</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -2120,13 +2128,13 @@ All changes will be lost!</source>
     <message>
         <location line="+11"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu uložit soubor %1.</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+6"/>
         <source>Must specify a valid .avi file name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Musíte určit platný soubor .avi</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2136,22 +2144,22 @@ All changes will be lost!</source>
     <message>
         <location line="+11"/>
         <source>Invalid movie filename.  Must include full directory path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neplatný název videa. Musíte zadat plnou cestu k souboru.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Invalid movie filename.  Must include full directory path and name, ending with .avi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící na .avi</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Would write file to %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubor bude zapsán do %1.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Wrote file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubor %1.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/linmorphextension.h" line="+38"/>
@@ -2224,12 +2232,12 @@ All changes will be lost!</source>
     <message>
         <location line="+20"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -2247,33 +2255,33 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zprávy</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Okno</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Minimalizovat</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Zoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zvětšení</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+1040"/>
         <source>Bring All to Front</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přenést vše do popředí</translation>
     </message>
     <message>
         <location line="-785"/>
@@ -2289,7 +2297,7 @@ All changes will be lost!</source>
         <location line="+40"/>
         <location line="+371"/>
         <source>Common molecule formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Základní molekuly</translation>
     </message>
     <message>
         <location line="-366"/>
@@ -2297,14 +2305,14 @@ All changes will be lost!</source>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Všechny soubory</translation>
     </message>
     <message>
         <location line="-613"/>
         <location line="+359"/>
         <location line="+12"/>
         <source>CML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CML</translation>
     </message>
     <message>
         <location line="-370"/>
@@ -2319,7 +2327,7 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source>GAMESS-US Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výstup GAMESS-US</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2334,12 +2342,12 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source>HyperChem</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HyperChem</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>MDL Mol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MDL Mol</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2350,30 +2358,30 @@ All changes will be lost!</source>
         <location line="+1"/>
         <location line="+367"/>
         <source>PDB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PDB</translation>
     </message>
     <message>
         <location line="-366"/>
         <location line="+368"/>
         <source>Sybyl Mol2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sybyl Mol2</translation>
     </message>
     <message>
         <location line="-367"/>
         <location line="+368"/>
         <source>XYZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">XYZ</translation>
     </message>
     <message>
         <location line="-365"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít soubor</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítám %1...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2391,43 +2399,44 @@ All changes will be lost!</source>
         <location line="+914"/>
         <location line="+443"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-1862"/>
         <source>Cannot read file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu načíst soubor %1:
+%2.</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu rozpoznat typ souboru %1.</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu načíst soubor %1.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Loading %1...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítám %1...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>This file contains 2D coordinates only. Do you want Avogadro to scale the bonds and do a quick optimization?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tento soubor obsahuje pouze 2D souřadnice. Přejete si, aby se je Avogadro pokusilo načíst a optimalizovat?</translation>
     </message>
     <message>
         <location line="+65"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo úpravou.</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být ztraceny.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -2437,17 +2446,17 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source> Bonds: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Vazby: </translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Reading molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítání souboru molekul selhalo.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>File Loaded...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubor načten...</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2463,7 +2472,7 @@ All changes will be lost!</source>
         <location line="+4"/>
         <source>Ctrl+S</source>
         <comment>Save</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2479,12 +2488,12 @@ All changes will be lost!</source>
     <message>
         <location line="+0"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit</translation>
     </message>
     <message>
         <location line="+80"/>
         <source>GAMESS Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vstup GAMESS</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2499,7 +2508,7 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source>MDL SDfile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MDL SDfile</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2521,80 +2530,81 @@ All changes will be lost!</source>
         <location line="+14"/>
         <source>Cannot write to the file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu zapisovat do souboru %1:
+%2</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Cannot write to the file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu zapisovat do souboru %1.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saving file.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ukládám soubor.</translation>
     </message>
     <message>
         <location line="+45"/>
         <source>Save succeeded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ukládání proběhlo úspěšně.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložení molekulového souboru selhalo.</translation>
     </message>
     <message>
         <location line="+21"/>
         <location line="+12"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PNG</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Common image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Běžné formáty obrázků</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BMP</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>JPEG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JPEG</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+79"/>
         <source>Export Bitmap Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exportovat bitmapu</translation>
     </message>
     <message>
         <location line="-27"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu uložit soubor %1.</translation>
     </message>
     <message>
         <location line="+8"/>
         <location line="+11"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PDF</translation>
     </message>
     <message>
         <location line="-4"/>
         <source>Common vector image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Běžné vektorové formáty</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SVG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SVG</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>EPS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EPS</translation>
     </message>
     <message>
         <location line="+148"/>
@@ -2604,17 +2614,17 @@ All changes will be lost!</source>
     <message>
         <location line="+83"/>
         <source>Unable to paste molecule.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu vložit molekulu.</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Paste failed (format unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vložení selhalo (nedostupný formát)</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Copy failed (mdl unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopírování selhalo (mdl není dostupné).</translation>
     </message>
     <message>
         <location line="+126"/>
@@ -2623,22 +2633,22 @@ All changes will be lost!</source>
         <location line="+32"/>
         <location line="+472"/>
         <source>View %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit %1</translation>
     </message>
     <message>
         <location line="-497"/>
         <source>Avogadro: Detached View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro: oddělený pohled</translation>
     </message>
     <message>
         <location line="+162"/>
         <source>Normal Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Normální velikost</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Celá obrazovka</translation>
     </message>
     <message>
         <location line="+84"/>
@@ -2648,38 +2658,38 @@ All changes will be lost!</source>
     <message>
         <location line="+59"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nepojmenováno</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[*]Avogadro</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1[*] - %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1[*] - %2</translation>
     </message>
     <message>
         <location line="+387"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení...</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Duplikovat</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Odstranit</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -2694,12 +2704,12 @@ All changes will be lost!</source>
     <message>
         <location line="+2"/>
         <source>No tools loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nejsou načteny žádné nástroje</translation>
     </message>
     <message>
         <location line="+1"/>
         <source> It is unlikely this application will function correctly. Please correct this error.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Aplikace pravděpodobně nebude fungovat správně. Prosím opravte tuto chybu.</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2710,17 +2720,17 @@ All changes will be lost!</source>
     <message>
         <location line="+6"/>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Objekty</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barvy</translation>
     </message>
     <message>
         <location line="+48"/>
         <source> copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> kopírovat</translation>
     </message>
 </context>
 <context>
@@ -2747,7 +2757,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení nástrojů</translation>
     </message>
 </context>
 <context>
@@ -2775,12 +2785,12 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+15"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
 </context>
 <context>
@@ -2808,12 +2818,12 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+15"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
 </context>
 <context>
@@ -2830,7 +2840,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/tools/navigatetool.h" line="+54"/>
         <source>Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navigace</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2840,7 +2850,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navigace</translation>
     </message>
 </context>
 <context>
@@ -2858,12 +2868,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+17"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Soubor</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Importovat</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -2924,13 +2934,13 @@ Right Mouse:  Click and drag to move the view</source>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="+248"/>
         <location line="+4"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="-3"/>
         <location line="+4"/>
         <source>ESP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ESP</translation>
     </message>
 </context>
 <context>
@@ -2938,12 +2948,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/orbitalengine.h" line="+47"/>
         <source>Orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Orbitaly</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders molecular orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit molekulové orbitaly</translation>
     </message>
 </context>
 <context>
@@ -2962,7 +2972,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+174"/>
         <source>MO %1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO </translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2971,32 +2981,32 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+38"/>
         <location line="+258"/>
         <source>Abort Calculation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přerušit výpočet</translation>
     </message>
     <message>
         <location line="-487"/>
         <location line="+37"/>
         <source>Calculating MO %1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počítám MO </translation>
     </message>
     <message>
         <location line="-17"/>
         <source>MO </source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO </translation>
     </message>
     <message>
         <location line="+158"/>
         <location line="+38"/>
         <source>Electron Density</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Elektornová hustota</translation>
     </message>
     <message>
         <location line="-20"/>
         <location line="+38"/>
         <source>Calculating Electron Density</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počítám elektronovou hustotu</translation>
     </message>
     <message>
         <location line="+245"/>
@@ -3037,12 +3047,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.cpp" line="+151"/>
         <source>Save POV-Ray rendered image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit jako POV-Ray obrázek</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Image files (*.png *.pbm)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubory obrázků (*.png, *.pbm)</translation>
     </message>
 </context>
 <context>
@@ -3050,17 +3060,17 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.cpp" line="+49"/>
         <source>POV-Ray...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray...</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Soubor</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exportovat</translation>
     </message>
     <message>
         <location line="+66"/>
@@ -3080,22 +3090,22 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>You requested no direct rendering using POV-Ray and not to keep the POV-Ray file. This will result in no output being saved. Are you sure that is what you want?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zvolili jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru POV-Ray. To znamená, že nebude uložen žádný výstup. Jste si jisti?</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>POV-Ray failed to start.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spuštění POV-Ray selhalo.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>POV-Ray failed to start. May be the path to the executable is not set correctly.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spuštění POV-Ray selhalo. Cesta ke spouštěcímu souboru je nejspíš špatně nastavena.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/povrayextension.h" line="+40"/>
         <source>POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3116,7 +3126,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/pluginsettings.cpp" line="+55"/>
         <source>Name: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název: </translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3126,13 +3136,14 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>File: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soubor: </translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Description:
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popis:
+</translation>
     </message>
 </context>
 <context>
@@ -3140,7 +3151,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/polygonengine.h" line="+39"/>
         <source>Polygon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polygon</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3153,40 +3164,40 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+261"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Atom %1 %2</source>
         <comment>%1 is element, %2 is atom index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atom %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond %1</source>
         <comment>%1 is bond index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazba %1</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Residue %1 %2</source>
         <comment>%1 is residue name, %2 is residue index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikál</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomy</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazby</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikály</translation>
     </message>
 </context>
 <context>
@@ -3196,32 +3207,32 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+63"/>
         <location line="+370"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisek</translation>
     </message>
     <message>
         <location line="-432"/>
         <location line="+404"/>
         <location line="+30"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location line="-433"/>
         <location line="+435"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomy</translation>
     </message>
     <message>
         <location line="-434"/>
         <location line="+436"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazby</translation>
     </message>
     <message>
         <location line="-435"/>
         <location line="+437"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikály</translation>
     </message>
     <message>
         <location line="-436"/>
@@ -3232,7 +3243,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="-379"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chyba</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3255,27 +3266,27 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+138"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisek</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazby</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomy</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikály</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3288,22 +3299,22 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="+61"/>
         <source>Atom Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti atomu...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti vazby...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Angle Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlasnosti úhlů...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Torsion Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti zkroucení...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3319,22 +3330,22 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+18"/>
         <location line="+6"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zobrazit</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>&amp;Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Vlasnosti</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.h" line="+43"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3347,17 +3358,17 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propmodel.cpp" line="+323"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Atomic Number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomové číslo</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Valence</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3368,40 +3379,40 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+3"/>
         <location line="+56"/>
         <source>Atom %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atom %1</translation>
     </message>
     <message>
         <location line="-51"/>
         <location line="+17"/>
         <source>Start Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počáteční atom</translation>
     </message>
     <message>
         <location line="-15"/>
         <location line="+19"/>
         <source>End Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Koncový atom</translation>
     </message>
     <message>
         <location line="-17"/>
         <source>Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Druh vazby</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Rotatable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rotace</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Length %1</source>
         <comment>in Angstrom</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délka (Å)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Bond %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazba %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3412,12 +3423,12 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+4"/>
         <source>Angle %1</source>
         <comment>Degree symbol</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Úhel %1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Úhel %1</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -3428,12 +3439,12 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+2"/>
         <source>Torsion %1</source>
         <comment>Degree symbol</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zkroucení %1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zkroucení %1</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3456,7 +3467,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+8"/>
         <source>Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Energie</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3469,32 +3480,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="+107"/>
         <source>Atom Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti atomu...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bond Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti vazby...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlasnosti úhlů...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti zkroucení...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cartesian Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti zkroucení...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Conformer Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti atomu...</translation>
     </message>
 </context>
 <context>
@@ -3509,7 +3520,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+8"/>
         <location line="+8"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">N/A</translation>
     </message>
     <message>
         <location line="+133"/>
@@ -3540,13 +3551,13 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+7"/>
         <location line="+10"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">N/A</translation>
     </message>
     <message>
         <location line="+31"/>
         <location line="+14"/>
         <source>&amp;Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Skripty</translation>
     </message>
     <message>
         <location line="+191"/>
@@ -3571,12 +3582,12 @@ Right Mouse:  Click and drag to move the view</source>
         <location filename="../libavogadro/src/extensions/pythonterminal.cpp" line="+70"/>
         <location filename="../libavogadro/src/extensions/pythonterminal.h" line="+52"/>
         <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python - terminál</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>pythonTerminalDock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">pythonTerminalDock</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminal.h" line="+1"/>
@@ -3598,7 +3609,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+8"/>
         <location line="+8"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">N/A</translation>
     </message>
     <message>
         <location line="+206"/>
@@ -3642,12 +3653,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+15"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
 </context>
 <context>
@@ -3660,7 +3671,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
 </context>
 <context>
@@ -3668,7 +3679,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/colors/residuecolor.h" line="+49"/>
         <source>Color by Residue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva podle radikálu</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3707,12 +3718,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/savedialog.cpp" line="+65"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nepojmenováno</translation>
     </message>
 </context>
 <context>
@@ -3720,7 +3731,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="+68"/>
         <source>&amp;Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Invertovat výběr</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3730,7 +3741,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+5"/>
         <source>Select by Element...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat podle prvku</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3750,7 +3761,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+16"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Vybrat</translation>
     </message>
     <message>
         <location line="+56"/>
@@ -3770,19 +3781,19 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+0"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název radikálu</translation>
     </message>
     <message>
         <location line="+45"/>
         <location line="+12"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-17"/>
         <source>There is no current selection.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nebylo nic vybráno.</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -3792,12 +3803,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+0"/>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">název</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název nesmí být prázdný</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -3807,12 +3818,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.h" line="+41"/>
         <source>Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výběry</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Select atoms, bonds, residues...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat atomy, vazby, radikály...</translation>
     </message>
 </context>
 <context>
@@ -3833,32 +3844,32 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+5"/>
         <source>Atom/Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atom/Vazba</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Residue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikál</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="+51"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výběr</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Select atoms, residues, and molecules</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat atomy, radikály a molekuly</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python - nastavení</translation>
     </message>
 </context>
 <context>
@@ -3867,55 +3878,55 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location filename="../avogadro/src/settingsdialog.cpp" line="+104"/>
         <source>Low</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nízké</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Medium</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Střední</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>High</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vysoké</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Undefined</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nedefinováno</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>None</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Some</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Částečně</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Mid</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Střed</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Lots</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mnoho</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Undefined</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nedefinováno</translation>
     </message>
 </context>
 <context>
@@ -4033,7 +4044,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+56"/>
         <source>NMR</source>
         <comment>NMR spectra option</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">NMR</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4157,13 +4168,13 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+2"/>
         <source>Data Format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Format:</source>
         <comment>noun, not verb</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -4218,7 +4229,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+33"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chyba</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -4274,7 +4285,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/sphereengine.h" line="+44"/>
         <source>Van der Waals Spheres</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Van der Waalsovi sféry</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4305,12 +4316,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+15"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Upozornění</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4333,7 +4344,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.h" line="+48"/>
         <source>Surface</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Povrch</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4346,12 +4357,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.cpp" line="+42"/>
         <source>First Action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">První akce</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Second Action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Truhá akce</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -4362,17 +4373,17 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+0"/>
         <location line="+3"/>
         <source>&amp;Template</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Vzor</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Upravit</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.h" line="+34"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzor</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4385,7 +4396,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/tool.cpp" line="+57"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nástroje</translation>
     </message>
 </context>
 <context>
@@ -4398,12 +4409,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+25"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4429,12 +4440,12 @@ Do you want to create a crystal unit cell?</source>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.cpp" line="+94"/>
         <location line="+5"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Použít</translation>
     </message>
     <message>
         <location line="-2"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
 </context>
 <context>
@@ -4505,12 +4516,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.cpp" line="+58"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Připojit</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Odpojit</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -4571,7 +4582,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neznámý</translation>
     </message>
 </context>
 <context>
@@ -4594,7 +4605,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení</translation>
     </message>
 </context>
 <context>
@@ -4602,22 +4613,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="+18"/>
         <source>Atom Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poloměr atomu:</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Bond Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poloměr vazby</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Průhlednost</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit násobné vazby</translation>
     </message>
 </context>
 <context>
@@ -4630,17 +4641,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Volby</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Number of atoms:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet atomů</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Number of rotatable bonds:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet rotačních vazeb</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -4650,7 +4661,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+19"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -4683,42 +4694,42 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+14"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Ignore Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ignorovat atom</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Upevnit atom</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Upevnit atom X</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Upevnit atom Y</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Upevnit atom Z</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Distance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Úhel</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4738,37 +4749,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+19"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Volby</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načíst</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Delete Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat vybrané</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Delete All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat vše</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
 </context>
 <context>
@@ -4776,22 +4787,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/dipolesettingswidget.ui" line="+22"/>
         <source>Dipole:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dipól:</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Dipole Moment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dipólový moment:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Custom Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastní hodnota</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Custom:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastní:</translation>
     </message>
 </context>
 <context>
@@ -4804,7 +4815,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Color by:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva dle:</translation>
     </message>
 </context>
 <context>
@@ -4848,13 +4859,13 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název souboru:</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+21"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Procházet...</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -4883,12 +4894,12 @@ Do you want to create a crystal unit cell?</source>
         <location line="+12"/>
         <location line="+6"/>
         <source>Force Field</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silové pole</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Ghemical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ghemical</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -4898,12 +4909,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Number of steps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet kroků</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algoritmus</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -4918,12 +4929,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Convergence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Konvergence</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>10e-</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">10e-</translation>
     </message>
 </context>
 <context>
@@ -4944,91 +4955,91 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="+13"/>
         <source>GAMESS Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vstup GAMESS</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&amp;Basic Setup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Základní nastavení</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+628"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location line="-623"/>
         <location line="+628"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location line="-623"/>
         <location line="+905"/>
         <source>RHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RHF</translation>
     </message>
     <message>
         <location line="-900"/>
         <location line="+2231"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location line="-2226"/>
         <location line="+332"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location line="-327"/>
         <location line="+1077"/>
         <source>CCSD(T)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD(T)</translation>
     </message>
     <message>
         <location line="-1068"/>
         <location line="+509"/>
         <source>STO-3G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location line="-504"/>
         <location line="+489"/>
         <source>MINI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MINI</translation>
     </message>
     <message>
         <location line="-484"/>
         <location line="+519"/>
         <source>3-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location line="-514"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31+G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31+G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31+G(2d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31+G(2d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-311++G(2d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-311++G(2d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5063,12 +5074,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Neutral</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neutrální</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Anion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anion</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5098,28 +5109,28 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Gas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plyn</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Water</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Voda</translation>
     </message>
     <message>
         <location line="+23"/>
         <location line="+2395"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vypočítat</translation>
     </message>
     <message>
         <location line="-2385"/>
         <source>With:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Šířka:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5129,12 +5140,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+27"/>
         <source>&amp;Advanced Setup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Pokročilá nastavení</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pokročilé</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5149,12 +5160,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+4"/>
         <source>SCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SCF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DFT</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DFT</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5170,12 +5181,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Data</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Systém</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5185,7 +5196,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Různé</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -5199,7 +5210,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+46"/>
         <location line="+986"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="-1646"/>
@@ -5209,12 +5220,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>SBKJC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SBKJC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hay-Wadt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hay-Wadt</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -5234,52 +5245,52 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+19"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MIDI</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-2G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-2G</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>STO-4G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-4G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-5G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-5G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-6G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-6G</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>6-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>4-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">4-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>5-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">5-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-311G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-311G</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5314,7 +5325,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>MNDO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MNDO</translation>
     </message>
     <message>
         <location line="+47"/>
@@ -5325,7 +5336,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+1131"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výchozí</translation>
     </message>
     <message>
         <location line="-1126"/>
@@ -5350,7 +5361,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Hondo7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hondo7</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -5375,17 +5386,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Energie</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Gradient</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gradient</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Optimalizace</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5400,7 +5411,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>IRC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IRC</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5410,7 +5421,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>DRC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DRC</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5420,7 +5431,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastnosti</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5445,7 +5456,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>TDHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TDHF</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5455,7 +5466,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>VSCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">VSCF</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5470,7 +5481,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>NMR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">NMR</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5480,27 +5491,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+31"/>
         <source>UHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>ROHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ROHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>GVB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GVB</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MCSCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MCSCF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>None (CI)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic (CI)</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -5535,12 +5546,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>CI:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CI:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>GUGA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GUGA</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5570,7 +5581,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>CC:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CC:</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -5590,27 +5601,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>R-CC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">R-CC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CR-CC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CR-CC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>EOM-CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EOM-CCSD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CR-EOM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CR-EOM</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -5620,17 +5631,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kontrola</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Debug</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Other...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ostatní:</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -5645,12 +5656,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+22"/>
         <source>Use MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Použít MP2</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Use DFT</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Použít DFT</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -5660,12 +5671,12 @@ Do you want to create a crystal unit cell?</source>
     <message utf8="true">
         <location line="+10"/>
         <source>Ǻngstrom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ǻngstrom</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bohr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bohr</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -5680,82 +5691,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>C1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CS</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CI</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CnH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CnH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CnV</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CnV</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Cn</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cn</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>S2n</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">S2n</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DnD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DnD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DnH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DnH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Dn</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dn</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>TD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>TH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>T</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">T</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>OH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">O</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -5790,12 +5801,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Units:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jednotky:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -5805,49 +5816,49 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+27"/>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sekundy</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Minuty</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hodiny</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Days</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dny</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Týdny</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Years</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Roky</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Millenia</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tisíciletí</translation>
     </message>
     <message>
         <location line="+29"/>
         <location line="+44"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Slova</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+44"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Byty</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -5859,7 +5870,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="-39"/>
         <location line="+44"/>
         <source>MegaBytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MegaByty</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -5874,33 +5885,33 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+18"/>
         <source>EVVRSP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EVVRSP</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>GIVEIS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GIVEIS</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>JACOBI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JACOBI</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Time Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Časový limit:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>MemDDI:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MemDDI:</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+575"/>
         <source>Memory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Paměť:</translation>
     </message>
     <message>
         <location line="-568"/>
@@ -5915,12 +5926,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smyčka</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Next Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Další hodnota</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5940,7 +5951,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>HCore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HCore</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5955,7 +5966,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přeskočit</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -5975,22 +5986,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>MolPlt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MolPlt</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>PltOrb</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PltOrb</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>AIMPAC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AIMPAC</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>RPAC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RPAC</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6000,27 +6011,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+16"/>
         <source>Hondo 8.2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hondo 8.2</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>MELDF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MELDF</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>GAMESS (UK Version)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (verze UK)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Gaussian 9x</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian 9x</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Všechno</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -6035,7 +6046,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Direct SCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přímé SCF</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -6140,7 +6151,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+26"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mřížka</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6155,7 +6166,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda:</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -6175,7 +6186,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+13"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">slova</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -6190,12 +6201,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+13"/>
         <source>Use Localized Orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Použít lokalizované orbitaly</translation>
     </message>
     <message>
         <location line="+7"/>
         <source># of Core Electrons:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"># jaderných elektronů:</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -6220,17 +6231,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Analytic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Analytická</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Numeric</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Numerická</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6310,27 +6321,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Step Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Velikost kroku</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Maximum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Maximum:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Minimum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Minimum:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Initial:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výchozí:</translation>
     </message>
     <message>
         <location line="+44"/>
         <source>Newton-Raphson</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Newton-Raphson</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6340,7 +6351,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Quadratic Approximation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kvadratická aproximace</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6355,7 +6366,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+13"/>
         <source>steps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">kroky</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -6380,7 +6391,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výchozí</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6390,7 +6401,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -6403,17 +6414,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výpočet:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6428,7 +6439,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6438,37 +6449,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+37"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorie:</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>RHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6478,27 +6489,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+16"/>
         <source>STO-3G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>3-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>LANL2DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LANL2DZ</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6508,12 +6519,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+37"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výstup:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6538,7 +6549,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+17"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -6558,7 +6569,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+44"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -6573,7 +6584,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>Compute...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počítám...</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -6583,7 +6594,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -6591,7 +6602,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="+16"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Šíška:</translation>
     </message>
     <message>
         <location line="+41"/>
@@ -6601,12 +6612,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A</translation>
     </message>
     <message utf8="true">
         <location line="+10"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">°</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6624,22 +6635,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název souboru:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat...</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Automatically detect from extension</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automaticky detekovat z přípony</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6654,7 +6665,7 @@ Do you want to create a crystal unit cell?</source>
     <message utf8="true">
         <location line="+10"/>
         <source>Coordinates are in Ångstroms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Souřadnice jsou v Ångstremech</translation>
     </message>
 </context>
 <context>
@@ -6667,7 +6678,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Add Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat složku</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -6690,33 +6701,33 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="+22"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisky atomů:</translation>
     </message>
     <message>
         <location line="+32"/>
         <location line="+80"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="-75"/>
         <source>Atom number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomové číslo</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název prvku</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element symbol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Symbol prvku</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název radikálu</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6742,22 +6753,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Bond Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisky vazeb:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Bond length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délka vazby</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Číslo vazby</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pořadí vazeb</translation>
     </message>
 </context>
 <context>
@@ -6771,7 +6782,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+8"/>
         <location line="+13"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -6786,12 +6797,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>create ligand from file...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">vytvořit ligand ze souboru</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název radikálu</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -6824,22 +6835,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Num Frames</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počet snímků</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smyčka</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -6849,17 +6860,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>Button to save an .xyz trajectory.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tlačítko pro uložení .xyz trajektorie</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Save trajectory...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit trakejtorii</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Save movie...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit film...</translation>
     </message>
 </context>
 <context>
@@ -6872,17 +6883,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výpočet:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6897,7 +6908,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6907,7 +6918,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+37"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6927,27 +6938,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Quartet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kvartet</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Quintet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kvintet</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda:</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>AM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AM1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MNDO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MNDO</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6957,22 +6968,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>PM3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM3</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>PM6</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PM6</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>RM1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RM1</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -6987,7 +6998,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+33"/>
         <source>Show Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit náhled</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -7002,7 +7013,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>Compute...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Počítám...</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -7012,7 +7023,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -7020,32 +7031,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="+14"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Nápověda</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Soubor</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Open &amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otevřít &amp;nedávné</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exportovat</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Importovat</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -7055,22 +7066,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+4"/>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lišty</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Build</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Sestavit</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zobrazit</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Upravit</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -7080,12 +7091,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>&amp;Select</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Vybrat</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hlavní lišta</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -7100,82 +7111,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nástroje</translation>
     </message>
     <message>
         <location line="+21"/>
         <location line="+12"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Otevřít</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+O</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Ukončit</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Q</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nedávné</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Clear Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Smazat nedávné</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+12"/>
         <source>&amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Nový</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+N</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;zavřít</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+W</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Uložit</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit &amp;jako...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+S</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -7190,7 +7201,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>&amp;Full Screen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Celoobrazovkový režim</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7200,82 +7211,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>Set &amp;Background Color...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavit barvu &amp;pozadí...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;O aplikaci</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zpět</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Z</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Obnovit</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+Z</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>New View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nový pohled</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Close View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít pohlet</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vystředit</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Vložit</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+V</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopírovat</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+C</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vyjmout</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+X</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7285,42 +7296,42 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat vše</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zrušit výběr</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+A</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Configure Avogadro...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavit Avogadro...</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Tutorials</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Návody</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Duplicate View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Duplikovat pohled</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Display Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit osy</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -7330,27 +7341,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Avogadro Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nápověda Avogadro</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Release Notes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poznámky k vydání</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nahlásit chybu</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">FAQ</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Avogadro Website</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Domovská stránka Avogadro</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7398,17 +7409,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výpočet:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -7423,37 +7434,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+40"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorie:</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>HF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCSD(T)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD(T)</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -7463,22 +7474,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+16"/>
         <source>STO-3G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>3-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7518,12 +7529,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+37"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -7543,7 +7554,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+44"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -7563,7 +7574,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -7576,17 +7587,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výpočet:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -7601,32 +7612,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+40"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorie:</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>HF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -7636,22 +7647,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+16"/>
         <source>STO-3G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>3-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7676,7 +7687,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>LANL2DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LANL2DZ</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -7686,12 +7697,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+40"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+40"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -7711,7 +7722,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+44"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -7731,7 +7742,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -7744,7 +7755,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Cubes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krychle</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -7754,37 +7765,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>x</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Origin:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Původ:</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>Max:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Max:</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>Steps:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kroky:</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>Step Size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Velikost kroku:</translation>
     </message>
     <message>
         <location line="+90"/>
@@ -7815,13 +7826,13 @@ Do you want to create a crystal unit cell?</source>
         <location line="+6"/>
         <location line="+216"/>
         <source>Cube:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krychle:</translation>
     </message>
     <message>
         <location line="-186"/>
         <location line="+216"/>
         <source>Color By:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva dle:</translation>
     </message>
     <message>
         <location line="-182"/>
@@ -7831,7 +7842,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>0.02</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0.02</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -7841,12 +7852,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>0.000</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0.000</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>1.000</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1.000</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -7868,7 +7879,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+52"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7878,17 +7889,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Distance:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vzdálenost:</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>0.0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0.0</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Range:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rozsah:</translation>
     </message>
 </context>
 <context>
@@ -7896,37 +7907,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="+17"/>
         <source>Orbital:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Orbital:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Průhlednost</translation>
     </message>
     <message>
         <location line="+44"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit:</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výplň</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Čáry</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Body</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Draw Box:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rámeček:</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -7951,12 +7962,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Positivní</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Negative</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Negativní</translation>
     </message>
 </context>
 <context>
@@ -7964,33 +7975,33 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="+22"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisky atomů:</translation>
     </message>
     <message>
         <location line="+32"/>
         <location line="+70"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="-65"/>
         <source>Atom number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomové číslo</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název prvku</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element symbol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Symbol prvku</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název radikálu</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8005,22 +8016,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Bond Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisky vazeb:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Bond length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délka vazby</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Číslo vazby</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pořadí vazeb</translation>
     </message>
 </context>
 <context>
@@ -8028,87 +8039,87 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/povraydialog.ui" line="+19"/>
         <source>POV-Ray Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">POV-Ray Export</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vybrat...</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>povray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">povray</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Render</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Filename:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název souboru:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Resolution:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rozlišení:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Use full scene antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Požít vyhlazování pro celou scénu</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Antialias</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vyhlazování</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Set the background color to be transparent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavit pozadí jako průhledné</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Alpha transparency</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alfa průhlednost</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Command:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Příkaz:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Render the molecule directly using command line POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit molekulu přímo použitím POV-Ray pro příkazovou řádku</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Render using POV-Ray</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit pomocí POV-Ray</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Keep the POV-Ray source after rendering has completed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit zdrojový kód POV-Ray po dokončení vykreslení scény</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Keep POV-Ray source after rendering</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uložit zdrojový kód POV-Ray po vykreslení scény</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cesta:</translation>
     </message>
 </context>
 <context>
@@ -8116,7 +8127,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/pluginsettings.ui" line="+16"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zásuvné moduly</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -8126,22 +8137,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nástroje</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rozšíření</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barvy</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Detaily</translation>
     </message>
 </context>
 <context>
@@ -8155,7 +8166,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+8"/>
         <location line="+13"/>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metoda</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -8170,7 +8181,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>Residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název radikálu</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -8200,7 +8211,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="-132"/>
         <location line="+171"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ</translation>
     </message>
     <message>
         <location line="-151"/>
@@ -8240,7 +8251,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">L</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -8250,7 +8261,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">R</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -8260,7 +8271,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">U</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -8270,12 +8281,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">D</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -8285,12 +8296,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Alias</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alias</translation>
     </message>
     <message>
         <location line="+30"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nastavení...</translation>
     </message>
 </context>
 <context>
@@ -8298,7 +8309,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/tools/pythonsettingswidget.ui" line="+25"/>
         <source>Python Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python - nastavení</translation>
     </message>
 </context>
 <context>
@@ -8306,7 +8317,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminalwidget.ui" line="+13"/>
         <source>Python Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python - terminál</translation>
     </message>
 </context>
 <context>
@@ -8314,22 +8325,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/qcheminputdialog.ui" line="+20"/>
         <source>Q-Chem Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vstup Q-Chem</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Calculation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výpočet:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -8344,27 +8355,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Frequencies</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence</translation>
     </message>
     <message>
         <location line="+40"/>
         <source>Theory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorie:</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>HF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MP2</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>B3LYP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B3LYP</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8384,7 +8395,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -8394,22 +8405,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+16"/>
         <source>STO-3G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-3G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>3-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8434,7 +8445,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>LANL2DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LANL2DZ</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8449,12 +8460,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+37"/>
         <source>Multiplicity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Násobnost:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formát:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -8474,7 +8485,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+44"/>
         <source>Hide Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skrýt náhled</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -8494,7 +8505,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zavřít</translation>
     </message>
 </context>
 <context>
@@ -8502,52 +8513,52 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/editcommands.cpp" line="+44"/>
         <source>Cut Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vyjmout molekulu</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Cut Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vyjmout atomy</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vložit</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Clear Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat molekulu</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Clear Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat atomy</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/atomdelegate.h" line="+43"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Atomy</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/bonddelegate.h" line="+43"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vazby</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/labeldelegate.h" line="+43"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Popisek</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/moleculedelegate.h" line="+43"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekula</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/residuedelegate.h" line="+43"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radikály</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/selectiondelegate.h" line="+43"/>
@@ -8571,7 +8582,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+3"/>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="+62"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ukončit</translation>
     </message>
     <message>
         <location line="-7"/>
@@ -8591,22 +8602,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.cpp" line="+23"/>
         <source>H to Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">H to Methyl</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.cpp" line="+25"/>
         <source>Add Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vodíkové atomy</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Add Hydrogens for pH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vodíkové atomy pro pH</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Remove Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Odstranit vodíkové atomy</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="-16"/>
@@ -8616,7 +8627,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+23"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-99"/>
@@ -8631,7 +8642,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Building video </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sestavuji video </translation>
     </message>
     <message>
         <location line="+47"/>
@@ -8641,7 +8652,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+15"/>
         <source>Could not run povray.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nemohu spustit POV-Ray</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -8664,7 +8675,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/plugin.cpp" line="+42"/>
         <source>No Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bez popisku</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="+195"/>
@@ -8681,33 +8692,33 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="+275"/>
         <location line="+14"/>
         <source>Add Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat atom</translation>
     </message>
     <message>
         <location line="+94"/>
         <source>Delete Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat atom</translation>
     </message>
     <message>
         <location line="+144"/>
         <location line="+19"/>
         <source>Add Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat vazbu</translation>
     </message>
     <message>
         <location line="+172"/>
         <source>Delete Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat vazbu</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Change Element</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Změnit prvek</translation>
     </message>
     <message>
         <location line="+104"/>
         <source>Change Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Změnit druh vazby</translation>
     </message>
     <message>
         <location line="+95"/>
@@ -8746,7 +8757,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+5"/>
         <source>Hydrophobicity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hydrofobie</translation>
     </message>
 </context>
 <context>
@@ -8754,27 +8765,27 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="+16"/>
         <source>Rendering:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslení:</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Backbone</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Páteř</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Čáry</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poloměr:</translation>
     </message>
     <message>
         <location line="+54"/>
         <source>Include Nitrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zahrnout dusíkové atomy</translation>
     </message>
 </context>
 <context>
@@ -8782,7 +8793,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/ringsettingswidget.ui" line="+16"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Průhlednost</translation>
     </message>
 </context>
 <context>
@@ -8796,12 +8807,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location line="+20"/>
         <location line="+203"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Obecné</translation>
     </message>
     <message>
         <location line="-195"/>
         <source>Quality:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kvalita:</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -8812,7 +8823,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-21"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Střední</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -8822,12 +8833,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+44"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
     <message>
         <location line="+102"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zásuvné moduly</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -8862,7 +8873,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location line="+24"/>
         <location line="+24"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Procházet...</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -8872,7 +8883,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+24"/>
         <source>Parameters:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Parametry:</translation>
     </message>
     <message>
         <location line="+62"/>
@@ -8883,7 +8894,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-75"/>
         <source>Display Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ zobrazení:</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -8893,7 +8904,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+17"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nic</translation>
     </message>
 </context>
 <context>
@@ -8906,7 +8917,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;zavřít</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -8985,7 +8996,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+10"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Název:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -9149,7 +9160,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+23"/>
         <source>&amp;Load data...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otveřít soubor...</translation>
     </message>
 </context>
 <context>
@@ -9165,7 +9176,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/engines/sticksettingswidget.ui" line="+16"/>
         <source>Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poloměr:</translation>
     </message>
 </context>
 <context>
@@ -9183,17 +9194,17 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+6"/>
         <source>A repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A opakování:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>B repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B opakování:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>C repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C opakování:</translation>
     </message>
     <message>
         <location line="+32"/>
@@ -9206,52 +9217,52 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/engines/surfacesettingswidget.ui" line="+17"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Průhlednost</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Render:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vykreslit:</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Výplň</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Čáry</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Body</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barva:</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Custom Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastní barva</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Electrostatic Potential (ESP)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Elektrostatický potebciál (ESP)</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Draw Box:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rámeček:</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Custom Color:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vlastní barva:</translation>
     </message>
 </context>
 <context>
@@ -9270,17 +9281,17 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+6"/>
         <source>A repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A opakování:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>B repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B opakování:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>C repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C opakování:</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -9295,42 +9306,42 @@ Scroll wheel: Zoom to cursor</source>
     <message utf8="true">
         <location line="+30"/>
         <source>Axes (Å)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Osy (Å)</translation>
     </message>
     <message utf8="true">
         <location line="+20"/>
         <source>Angles (°)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Úhly (°)</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>A:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>alpha:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">alfa:</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>B:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>beta:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">beta:</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>C:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>gamma:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">gamma:</translation>
     </message>
 </context>
 <context>
@@ -9343,17 +9354,17 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+31"/>
         <source>Frequency (cm-1)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frekvence (cm-1)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Intensity (km/mol)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Intenzita (a.u.)</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Volby</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -9381,12 +9392,12 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/engines/wiresettingswidget.ui" line="+18"/>
         <source>Show Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit atomy</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Show Multiple Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zobrazit násobné vazby</translation>
     </message>
 </context>
 <context>
@@ -9404,7 +9415,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+20"/>
         <source>Add Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat atom</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -9417,7 +9428,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../avogadro/src/main.cpp" line="+193"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>

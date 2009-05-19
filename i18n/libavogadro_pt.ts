@@ -5,7 +5,7 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
+        <translatorcomment>Portuguese translation for avogadro
 Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 This file is distributed under the same license as the avogadro package.
 FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
@@ -13,10 +13,10 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2009-03-29 16:24+0000
+Last-Translator: Ivo Fernandes &lt;ivofernandes12@gmail.com&gt;
+Language-Team: Portuguese &lt;pt@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -35,17 +35,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+6"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tipo:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nome:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Descrição:</translation>
     </message>
 </context>
 <context>
@@ -53,17 +53,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="+14"/>
         <source>Animate Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animar Trajectória</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Load File...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Carregar Ficheiro...</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -78,7 +78,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -91,7 +91,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="+46"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aceitar</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -101,7 +101,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+7"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
 </context>
 <context>
@@ -119,7 +119,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+192"/>
         <source>Axis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eixo:</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -150,7 +150,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações</translation>
     </message>
 </context>
 <context>
@@ -168,7 +168,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+8"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -183,7 +183,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -196,7 +196,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+46"/>
         <source>Animation...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animação...</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -215,12 +215,12 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+13"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-115"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o formato do arquivo %1</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -302,7 +302,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+29"/>
         <source>Force Field:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Campo de Força:</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -312,7 +312,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+11"/>
         <source>Algorithm:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algoritmo:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -442,7 +442,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ferramenta de definições</translation>
     </message>
 </context>
 <context>
@@ -639,7 +639,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações</translation>
     </message>
 </context>
 <context>
@@ -792,7 +792,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações</translation>
     </message>
 </context>
 <context>
@@ -813,7 +813,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished">Hidrogênio</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -838,17 +838,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished">Carbono</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished">Oxigénio</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -858,32 +858,32 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sódio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Magnesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Magnésio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Aluminum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alumínio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silicon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sílicone</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished">Fósforo</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1043,7 +1043,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prateado</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1208,52 +1208,52 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mercúrio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tálio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lead</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chumbo</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bismuth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bismuto</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Polonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polônio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Astatine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Astato</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radônio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Francium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frâncio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rádio</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Actinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Actínio</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1536,7 +1536,7 @@ Right Mouse: Delete Atom</source>
         <location line="+12"/>
         <location line="+20"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -1592,17 +1592,17 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+2"/>
         <source>No molecule set</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvar Molécula Como</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Átomos: </translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Ligações: </translation>
     </message>
     <message>
         <location line="+1007"/>
@@ -1693,7 +1693,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1798,17 +1798,17 @@ All changes will be lost!</source>
         <location line="+80"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-8"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o formato do arquivo %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o arquivo %1</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.h" line="+42"/>
@@ -1938,7 +1938,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Abrir Arquivo</translation>
     </message>
 </context>
 <context>
@@ -1960,17 +1960,17 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
         <location line="+8"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o formato do arquivo %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o arquivo %1</translation>
     </message>
     <message>
         <location line="+51"/>
@@ -2046,7 +2046,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2066,7 +2066,7 @@ All changes will be lost!</source>
     <message>
         <location line="+7"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
 </context>
 <context>
@@ -2090,12 +2090,12 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-244"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o formato do arquivo %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2120,7 +2120,7 @@ All changes will be lost!</source>
     <message>
         <location line="+11"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível salvar o arquivo %1.</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2247,33 +2247,33 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mensagens</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Janela</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Minimizar</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Zoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zoom</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+1040"/>
         <source>Bring All to Front</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trazer todos para a frente</translation>
     </message>
     <message>
         <location line="-785"/>
@@ -2289,7 +2289,7 @@ All changes will be lost!</source>
         <location line="+40"/>
         <location line="+371"/>
         <source>Common molecule formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formatos de moléculas em comum</translation>
     </message>
     <message>
         <location line="-366"/>
@@ -2297,14 +2297,14 @@ All changes will be lost!</source>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Todos os ficheiros</translation>
     </message>
     <message>
         <location line="-613"/>
         <location line="+359"/>
         <location line="+12"/>
         <source>CML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CML</translation>
     </message>
     <message>
         <location line="-370"/>
@@ -2362,18 +2362,18 @@ All changes will be lost!</source>
         <location line="-367"/>
         <location line="+368"/>
         <source>XYZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">XYZ</translation>
     </message>
     <message>
         <location line="-365"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Abrir Arquivo</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Carregando %1...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2391,43 +2391,44 @@ All changes will be lost!</source>
         <location line="+914"/>
         <location line="+443"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-1862"/>
         <source>Cannot read file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o arquivo %1:
+%2.</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o formato do arquivo %1</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível ler o arquivo %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Loading %1...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Carregando %1...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>This file contains 2D coordinates only. Do you want Avogadro to scale the bonds and do a quick optimization?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este ficheiro contém apenas coordenadas 2D. Deseja que Avogadro faça a escala dos bonds e uma rápida optimização?</translation>
     </message>
     <message>
         <location line="+65"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este arquivo não contém coordenadas 3D. Você pode não conseguir editar ou visualizar adequadamente.</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá ler apenas a primeira molécula. Se você salvar, todas as outras moléculas poderão ser perdidas.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -2442,12 +2443,12 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Reading molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Falhou leitura de ficheiro de molécula.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>File Loaded...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Arquivo Carregado...</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2479,7 +2480,7 @@ All changes will be lost!</source>
     <message>
         <location line="+0"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvar</translation>
     </message>
     <message>
         <location line="+80"/>
@@ -2521,17 +2522,18 @@ All changes will be lost!</source>
         <location line="+14"/>
         <source>Cannot write to the file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível escrever no arquivo %1:
+%2</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Cannot write to the file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível escrever no arquivo %1.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saving file.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvando Arquivo.</translation>
     </message>
     <message>
         <location line="+45"/>
@@ -2547,54 +2549,54 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+12"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PNG</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Common image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formatos de imagem comuns</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BMP</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>JPEG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JPEG</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+79"/>
         <source>Export Bitmap Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exportar Gráficos Bitmap</translation>
     </message>
     <message>
         <location line="-27"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível salvar o arquivo %1.</translation>
     </message>
     <message>
         <location line="+8"/>
         <location line="+11"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PDF</translation>
     </message>
     <message>
         <location line="-4"/>
         <source>Common vector image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formatos de imagem vectorial comuns</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SVG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SVG</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>EPS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EPS</translation>
     </message>
     <message>
         <location line="+148"/>
@@ -2604,7 +2606,7 @@ All changes will be lost!</source>
     <message>
         <location line="+83"/>
         <source>Unable to paste molecule.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Não foi possível colar a molécula.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -2614,7 +2616,7 @@ All changes will be lost!</source>
     <message>
         <location line="+69"/>
         <source>Copy failed (mdl unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cópia falhada (mdl indisponível).</translation>
     </message>
     <message>
         <location line="+126"/>
@@ -2633,12 +2635,12 @@ All changes will be lost!</source>
     <message>
         <location line="+162"/>
         <source>Normal Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tamanho Normal</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tela Cheia</translation>
     </message>
     <message>
         <location line="+84"/>
@@ -2648,38 +2650,38 @@ All changes will be lost!</source>
     <message>
         <location line="+59"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sem título</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[*]Avogadro</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1[*] - %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1[*] - %2</translation>
     </message>
     <message>
         <location line="+387"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações...</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adicionar</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Duplicar</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Remover</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -2689,12 +2691,12 @@ All changes will be lost!</source>
     <message>
         <location line="+2"/>
         <source>No engines loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Motores não carregados.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No tools loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nenhuma ferramenta carregada.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2710,17 +2712,17 @@ All changes will be lost!</source>
     <message>
         <location line="+6"/>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Objetos</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cores</translation>
     </message>
     <message>
         <location line="+48"/>
         <source> copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> copiar</translation>
     </message>
 </context>
 <context>
@@ -2737,7 +2739,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location filename="../libavogadro/src/tools/manipulatetool.h" line="+53"/>
         <source>Manipulate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Manipular</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2747,7 +2749,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Manipular</translation>
     </message>
 </context>
 <context>
@@ -2830,7 +2832,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/tools/navigatetool.h" line="+54"/>
         <source>Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navegar</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2840,7 +2842,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navegar</translation>
     </message>
 </context>
 <context>
@@ -3232,7 +3234,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="-379"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erro</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3660,7 +3662,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cortar Molécula</translation>
     </message>
 </context>
 <context>
@@ -3707,12 +3709,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/savedialog.cpp" line="+65"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvar</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sem título</translation>
     </message>
 </context>
 <context>
@@ -3777,7 +3779,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+12"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-17"/>
@@ -3858,7 +3860,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ferramenta de definições</translation>
     </message>
 </context>
 <context>
@@ -3867,19 +3869,19 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location filename="../avogadro/src/settingsdialog.cpp" line="+104"/>
         <source>Low</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Baíxo</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Medium</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Médio</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>High</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alto</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3897,7 +3899,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+5"/>
         <source>Some</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alguns</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3909,7 +3911,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+5"/>
         <source>Lots</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Muitos</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4218,7 +4220,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+33"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erro</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -4403,7 +4405,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+24"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4434,7 +4436,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aceitar</translation>
     </message>
 </context>
 <context>
@@ -4594,7 +4596,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações</translation>
     </message>
 </context>
 <context>
@@ -4738,7 +4740,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+19"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adicionar</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -4748,7 +4750,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvar</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -4768,7 +4770,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aceitar</translation>
     </message>
 </context>
 <context>
@@ -6667,12 +6669,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Add Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adicionar Pasta</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Reset List</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Resetar Lista</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -6829,7 +6831,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -6839,7 +6841,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -7020,7 +7022,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="+14"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -8136,7 +8138,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cores</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -8290,7 +8292,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+30"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações...</translation>
     </message>
 </context>
 <context>
@@ -8507,22 +8509,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+2"/>
         <source>Cut Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cortar Átomos</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Colar</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Clear Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Limpar Molécula</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Clear Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Limpar Átomos</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/atomdelegate.h" line="+43"/>
@@ -8616,7 +8618,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+23"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-99"/>
@@ -8651,7 +8653,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Set Aspect Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Setar Razão de Aspecto</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -8812,7 +8814,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-21"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Médio</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -9149,7 +9151,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+23"/>
         <source>&amp;Load data...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Carregar Ficheiro...</translation>
     </message>
 </context>
 <context>
@@ -9300,7 +9302,7 @@ Scroll wheel: Zoom to cursor</source>
     <message utf8="true">
         <location line="+20"/>
         <source>Angles (°)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ângulos (°)</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -9325,7 +9327,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+20"/>
         <source>C:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C:</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -9417,7 +9419,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../avogadro/src/main.cpp" line="+193"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>

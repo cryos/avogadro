@@ -5,22 +5,22 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
-Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+        <translatorcomment>Bulgarian translation for avogadro
+Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 This file is distributed under the same license as the avogadro package.
-FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
+FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2009.
 
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2009-05-08 20:06+0000
+Last-Translator: Svetoslav Stefanov &lt;svetlisashkov@yahoo.com&gt;
+Language-Team: Bulgarian &lt;bg@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-19 17:48+0000
+X-Launchpad-Export-Date: 2009-05-19 17:49+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -91,7 +91,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="+46"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добре</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -101,7 +101,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+7"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
 </context>
 <context>
@@ -150,7 +150,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -183,7 +183,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -215,7 +215,7 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+13"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-115"/>
@@ -442,7 +442,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -639,7 +639,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -792,7 +792,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -813,7 +813,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -838,17 +838,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -883,7 +883,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1536,7 +1536,7 @@ Right Mouse: Delete Atom</source>
         <location line="+12"/>
         <location line="+20"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -1798,7 +1798,7 @@ All changes will be lost!</source>
         <location line="+80"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-8"/>
@@ -1938,7 +1938,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отваряне на файл</translation>
     </message>
 </context>
 <context>
@@ -1960,7 +1960,7 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
         <location line="+8"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-7"/>
@@ -2046,7 +2046,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2090,7 +2090,7 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-244"/>
@@ -2247,27 +2247,27 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Съобщения</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Прозорец</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Минимизиране</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Zoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Мащаб</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2297,14 +2297,14 @@ All changes will be lost!</source>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Всички файлове</translation>
     </message>
     <message>
         <location line="-613"/>
         <location line="+359"/>
         <location line="+12"/>
         <source>CML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CML</translation>
     </message>
     <message>
         <location line="-370"/>
@@ -2356,18 +2356,18 @@ All changes will be lost!</source>
         <location line="-366"/>
         <location line="+368"/>
         <source>Sybyl Mol2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sybyl Mol2</translation>
     </message>
     <message>
         <location line="-367"/>
         <location line="+368"/>
         <source>XYZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">XYZ</translation>
     </message>
     <message>
         <location line="-365"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отваряне на файл</translation>
     </message>
     <message>
         <location line="+69"/>
@@ -2391,7 +2391,7 @@ All changes will be lost!</source>
         <location line="+914"/>
         <location line="+443"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-1862"/>
@@ -2747,7 +2747,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -2840,7 +2840,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -3660,7 +3660,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изрязване на молекула</translation>
     </message>
 </context>
 <context>
@@ -3777,7 +3777,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+12"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-17"/>
@@ -3858,7 +3858,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -4403,7 +4403,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+24"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4434,7 +4434,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добре</translation>
     </message>
 </context>
 <context>
@@ -4594,7 +4594,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -4768,7 +4768,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добре</translation>
     </message>
 </context>
 <context>
@@ -7020,7 +7020,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="+14"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -8507,22 +8507,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+2"/>
         <source>Cut Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Азрязване на атоми</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поставяне</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Clear Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изчистване на молекула</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Clear Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изчистване на атоми</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/atomdelegate.h" line="+43"/>
@@ -8616,7 +8616,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+23"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="-99"/>
@@ -9417,7 +9417,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../avogadro/src/main.cpp" line="+193"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
         <location line="+1"/>

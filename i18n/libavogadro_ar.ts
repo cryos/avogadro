@@ -5,7 +5,7 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
+        <translatorcomment>Arabic translation for avogadro
 Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 This file is distributed under the same license as the avogadro package.
 FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
@@ -13,10 +13,10 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2009-05-19 12:01+0000
+Last-Translator: TheLight &lt;houd.ox@gmail.com&gt;
+Language-Team: Arabic &lt;ar@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -35,17 +35,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+6"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">النوع:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الاسم:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الوصف</translation>
     </message>
 </context>
 <context>
@@ -63,7 +63,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -78,7 +78,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إطار في الثانية</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -91,7 +91,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="+46"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">موافق</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -101,7 +101,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+7"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
 </context>
 <context>
@@ -124,12 +124,12 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+11"/>
         <source>Align:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المحاذاة:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كل شئ</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -140,7 +140,7 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+4"/>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+40"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">حاذي</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+1"/>
@@ -150,7 +150,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -168,7 +168,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+8"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -183,7 +183,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -215,7 +215,7 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+13"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-115"/>
@@ -266,7 +266,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.h" line="+45"/>
         <source>Animation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تأثيرات متحركة</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -312,7 +312,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+11"/>
         <source>Algorithm:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الخوارزمية:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -442,7 +442,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -450,7 +450,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/axesengine.h" line="+37"/>
         <source>Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المحاور</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -601,25 +601,25 @@ Right Mouse: Reset the measurements.</source>
         <location line="+40"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1*</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">2*</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">3*</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*4</source>
         <comment>*4 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">4*</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -629,7 +629,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="+48"/>
         <source>Measure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">قياس</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -639,7 +639,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -737,7 +737,7 @@ Right Mouse: Delete Atom</source>
         <location line="+9"/>
         <location filename="../libavogadro/src/tools/drawtool.h" line="+54"/>
         <source>Draw</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رسم</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -747,7 +747,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+248"/>
         <source>Element:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">عنصر</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -762,17 +762,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+5"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مفرد</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مضاعف</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Triple</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ثلاثي</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -792,7 +792,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -813,42 +813,42 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Helium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">هيليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lithium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ليثيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Beryllium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بريليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Boron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بورون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished">كربون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished">نيتروجين</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished">أكسجين</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -858,32 +858,32 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نيون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">صوديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Magnesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">منجنيزوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Aluminum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ألومنيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silicon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سليكون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished">فوسفور</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -893,167 +893,167 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Chlorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كلور</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Argon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أرجون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Potassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بوتاسيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Calcium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كالسيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Scandium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سكانديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Titanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تيتانيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Vanadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">فانيديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chromium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كروم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Manganese</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">منجنيز</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">حديد</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cobalt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كوبالت</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nickel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نيكال</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نحاس</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zinc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">زنك</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">جاليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Germanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">جرمانيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Arsenic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">زرنيخ</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Selenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سيلينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bromine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بروم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Krypton</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كريبتون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rubidium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">روبيديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Strontium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سترونتيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Yttrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يتريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zirconium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">زركونيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Niobium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نيوبيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Molybdenum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مولبيدن</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Technetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تكنيتيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ruthenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ئروثينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">روديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Palladium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بلاديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">فضة</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cadmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كاديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Indium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إنديوم</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1068,17 +1068,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Tellurium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تيلوريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iodine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يود</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Xenon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إكزينون</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1088,52 +1088,52 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Barium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">باريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lanthanum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">لانثانوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سيريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Praseodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">براسيوديميوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نيوديميوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Promethium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بروميثيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Samarium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ساماريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Europium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يوروبيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gadolinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">جادولينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Terbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تريبيوم</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1143,92 +1143,92 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Holmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">هولميوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Erbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إريبيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thulium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ثوليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ytterbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يتربيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lutetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">لوتيسيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hafnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">هفنيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tantalum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تانتالم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tungsten</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تنجستن</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Osmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أوزميوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iridium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إريديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بلاتين</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ذهب</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">زئبق</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ثاليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lead</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رصاص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bismuth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بزموث</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Polonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بولونيوم</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1238,92 +1238,92 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Radon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رادون</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Francium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">فرانسيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">راديوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Actinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أكتينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thorium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ثوريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Protactinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بروتكتتينيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Uranium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يورانيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neptunium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نبتونيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Plutonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بولتونيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Americium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أمريكيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Curium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كوريوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Berkelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بركليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Californium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كالفورنيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Einsteinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أينشتانيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fermium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">فرميوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mendelevium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مندليفيوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nobelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نوبليوم</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lawrencium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">لورنسيوم</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1432,7 +1432,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+19"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;ملف</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1475,7 +1475,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/engines/forceengine.h" line="+38"/>
         <source>Force</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أوقف</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1536,7 +1536,7 @@ Right Mouse: Delete Atom</source>
         <location line="+12"/>
         <location line="+20"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -1597,12 +1597,12 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+5"/>
         <source>Atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الذرات: </translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> الروابط: </translation>
     </message>
     <message>
         <location line="+1007"/>
@@ -1653,7 +1653,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+15"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">احذف</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1678,7 +1678,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+260"/>
         <source>Group Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اسم المجموعة</translation>
     </message>
     <message>
         <location line="+53"/>
@@ -1693,7 +1693,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إطار في الثانية</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1798,7 +1798,7 @@ All changes will be lost!</source>
         <location line="+80"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-8"/>
@@ -1938,7 +1938,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">افتح ملف</translation>
     </message>
 </context>
 <context>
@@ -1960,7 +1960,7 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
         <location line="+8"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-7"/>
@@ -2000,7 +2000,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/labelengine.h" line="+45"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تسمية</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2046,7 +2046,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2066,7 +2066,7 @@ All changes will be lost!</source>
     <message>
         <location line="+7"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
 </context>
 <context>
@@ -2090,7 +2090,7 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-244"/>
@@ -2247,33 +2247,33 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رسائل</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نافذة</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تصغير</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Zoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">قرب</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+1040"/>
         <source>Bring All to Front</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أحضر الكل إلى الأمام</translation>
     </message>
     <message>
         <location line="-785"/>
@@ -2297,7 +2297,7 @@ All changes will be lost!</source>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كافة الملفات</translation>
     </message>
     <message>
         <location line="-613"/>
@@ -2367,7 +2367,7 @@ All changes will be lost!</source>
     <message>
         <location line="-365"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">افتح ملف</translation>
     </message>
     <message>
         <location line="+69"/>
@@ -2391,7 +2391,7 @@ All changes will be lost!</source>
         <location line="+914"/>
         <location line="+443"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-1862"/>
@@ -2447,7 +2447,7 @@ All changes will be lost!</source>
     <message>
         <location line="+9"/>
         <source>File Loaded...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الملف حمِّل...</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2547,7 +2547,7 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+12"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PNG</translation>
     </message>
     <message>
         <location line="-5"/>
@@ -2557,12 +2557,12 @@ All changes will be lost!</source>
     <message>
         <location line="+4"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BMP</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>JPEG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JPEG</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -2633,12 +2633,12 @@ All changes will be lost!</source>
     <message>
         <location line="+162"/>
         <source>Normal Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الحجم العادي</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ملئ الشاشة</translation>
     </message>
     <message>
         <location line="+84"/>
@@ -2648,7 +2648,7 @@ All changes will be lost!</source>
     <message>
         <location line="+59"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بلا عنوان</translation>
     </message>
     <message>
         <location line="+48"/>
@@ -2664,7 +2664,7 @@ All changes will be lost!</source>
     <message>
         <location line="+387"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات...</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -2674,12 +2674,12 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نسخة مطابقة</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أزل</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -2710,7 +2710,7 @@ All changes will be lost!</source>
     <message>
         <location line="+6"/>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أجسام</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -2747,7 +2747,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -2840,7 +2840,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -2858,7 +2858,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+17"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;ملف</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3055,12 +3055,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+15"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;ملف</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">صدِّر</translation>
     </message>
     <message>
         <location line="+66"/>
@@ -3140,7 +3140,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/polygonengine.h" line="+39"/>
         <source>Polygon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مضلّع</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3196,7 +3196,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+63"/>
         <location line="+370"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تسمية</translation>
     </message>
     <message>
         <location line="-432"/>
@@ -3255,7 +3255,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+138"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تسمية</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3298,7 +3298,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+5"/>
         <source>Angle Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3319,12 +3319,12 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+18"/>
         <location line="+6"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;اعرض</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>&amp;Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3469,32 +3469,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="+107"/>
         <source>Atom Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bond Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cartesian Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Conformer Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;خصائص</translation>
     </message>
 </context>
 <context>
@@ -3660,7 +3660,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">قص جزيئا</translation>
     </message>
 </context>
 <context>
@@ -3681,7 +3681,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/ribbonengine.h" line="+41"/>
         <source>Ribbon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">شريط</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3712,7 +3712,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+18"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بلا عنوان</translation>
     </message>
 </context>
 <context>
@@ -3720,7 +3720,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="+68"/>
         <source>&amp;Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;أعكس الإختيار</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3777,7 +3777,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+12"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-17"/>
@@ -3792,7 +3792,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+0"/>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اسم</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -3858,7 +3858,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -4287,7 +4287,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.h" line="+43"/>
         <source>Stick</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الصق</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4333,7 +4333,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.h" line="+48"/>
         <source>Surface</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">السطح</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4385,7 +4385,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/tool.cpp" line="+57"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أدوات</translation>
     </message>
 </context>
 <context>
@@ -4403,7 +4403,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+24"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4434,7 +4434,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">موافق</translation>
     </message>
 </context>
 <context>
@@ -4505,12 +4505,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.cpp" line="+58"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اتصل</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اقطع الاتصال</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -4594,7 +4594,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات الأداة</translation>
     </message>
 </context>
 <context>
@@ -4713,7 +4713,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Distance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المسافة</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4753,22 +4753,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تحميل</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Delete Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">احذف المنتقى</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Delete All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">حذف الكل</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">موافق</translation>
     </message>
 </context>
 <context>
@@ -4898,12 +4898,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Number of steps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">عدد الخطوات</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الخوارزمية</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -5063,7 +5063,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Neutral</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">محايد</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5103,12 +5103,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+26"/>
         <source>Gas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">غاز</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Water</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ماء</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -5119,7 +5119,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2385"/>
         <source>With:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مع :</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5134,17 +5134,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+34"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">متطور</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Basis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اﻷساس</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تحكّم</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -5170,12 +5170,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بيانات</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نظام</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5185,7 +5185,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">متفرقات</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -5204,7 +5204,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-1646"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إقرأ</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5234,7 +5234,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+19"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MIDI</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5620,12 +5620,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">فحص</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نقّح</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5790,7 +5790,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Units:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الواحدات:</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -5805,32 +5805,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+27"/>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ثوان</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">دقائق</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ساعات</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Days</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أيّام</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أسابيع</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Years</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سنوات</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5841,13 +5841,13 @@ Do you want to create a crystal unit cell?</source>
         <location line="+29"/>
         <location line="+44"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الكلمات</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+44"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">بايت</translation>
     </message>
     <message>
         <location line="-39"/>
@@ -5900,7 +5900,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+7"/>
         <location line="+575"/>
         <source>Memory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الذاكرة:</translation>
     </message>
     <message>
         <location line="-568"/>
@@ -5920,7 +5920,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Next Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">القيمة التالية</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5955,7 +5955,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تخطّي</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6020,7 +6020,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الجميع</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -6140,7 +6140,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+26"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">شبكة</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6155,7 +6155,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المنهج:</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -6225,12 +6225,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Analytic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تحليلي</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Numeric</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">رقمي</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6315,12 +6315,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Maximum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الحد الأقصى:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Minimum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الحد الأدنى:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6591,7 +6591,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="+16"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">العرض:</translation>
     </message>
     <message>
         <location line="+41"/>
@@ -6606,7 +6606,7 @@ Do you want to create a crystal unit cell?</source>
     <message utf8="true">
         <location line="+10"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">°</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6667,7 +6667,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Add Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إضافة مجلد</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -6706,7 +6706,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اسم العنصر</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6829,7 +6829,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -6839,7 +6839,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إطار في الثانية</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -6937,7 +6937,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المنهج:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -7020,17 +7020,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="+14"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;مساعدة</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;ملف</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -7040,7 +7040,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">صدِّر</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -7065,7 +7065,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;اعرض</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -7085,7 +7085,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+17"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">شريط الأدوات الرئيسي</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -7100,13 +7100,13 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أدوات</translation>
     </message>
     <message>
         <location line="+21"/>
         <location line="+12"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;افتح</translation>
     </message>
     <message>
         <location line="-9"/>
@@ -7138,7 +7138,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+9"/>
         <location line="+12"/>
         <source>&amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;جديد</translation>
     </message>
     <message>
         <location line="-9"/>
@@ -7149,7 +7149,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;أغلق</translation>
     </message>
     <message>
         <location line="-9"/>
@@ -7160,7 +7160,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;حفظ</translation>
     </message>
     <message>
         <location line="-9"/>
@@ -7170,7 +7170,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+18"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">احفظ &amp;كــ ...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7205,27 +7205,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;عن</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;تراجع</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Z</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;كرّر</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+Z</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -7245,37 +7245,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;لصق</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+V</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">انسخ</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+C</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إقطع</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+X</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">محو</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7285,22 +7285,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اختر الكل</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إزالة التحديد</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+A</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -7345,7 +7345,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الأسئلة الشائعة</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7779,7 +7779,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+42"/>
         <source>Steps:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الخطوات:</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -7951,12 +7951,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">موجب</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Negative</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">سالب</translation>
     </message>
 </context>
 <context>
@@ -7980,7 +7980,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اسم العنصر</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8126,7 +8126,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أدوات</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8290,7 +8290,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+30"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إعدادات...</translation>
     </message>
 </context>
 <context>
@@ -8507,22 +8507,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+2"/>
         <source>Cut Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">قص ذرات</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ألصق</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Clear Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إمسح جزيئا</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Clear Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إمسح ذرات</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/atomdelegate.h" line="+43"/>
@@ -8537,7 +8537,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/projectdelegates/labeldelegate.h" line="+43"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تسمية</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/moleculedelegate.h" line="+43"/>
@@ -8571,7 +8571,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+3"/>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="+62"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إلغي</translation>
     </message>
     <message>
         <location line="-7"/>
@@ -8616,7 +8616,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+23"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="-99"/>
@@ -8801,7 +8801,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-195"/>
         <source>Quality:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الجودة:</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -8906,7 +8906,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;أغلق</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -9417,7 +9417,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../avogadro/src/main.cpp" line="+193"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">أفوقادرو</translation>
     </message>
     <message>
         <location line="+1"/>

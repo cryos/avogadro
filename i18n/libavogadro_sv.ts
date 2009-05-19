@@ -5,7 +5,7 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
+        <translatorcomment>Swedish translation for avogadro
 Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 This file is distributed under the same license as the avogadro package.
 FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
@@ -13,10 +13,10 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2008-12-15 16:49+0000
+Last-Translator: Dostojevskji &lt;darkangel_nr1@hotmail.com&gt;
+Language-Team: Swedish &lt;sv@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -35,17 +35,17 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+6"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Typ:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Namn:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beskrivning :</translation>
     </message>
 </context>
 <context>
@@ -63,12 +63,12 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
         <source>Dynamic Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita bindning</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -78,7 +78,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -119,17 +119,17 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+192"/>
         <source>Axis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Axel:</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Align:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Räta upp</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Allting</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -140,7 +140,7 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+4"/>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+40"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rada upp</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+1"/>
@@ -168,7 +168,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+8"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -196,7 +196,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+46"/>
         <source>Animation...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Animering...</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -287,32 +287,40 @@ Right Mouse: Move Space
 
 Extra Function when running
 Left Mouse: Click and drag atoms to move them</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automatiskt optimeringsverktyg
+
+Navigeringen fungerar vid klick på tomma utrymmen:
+Vänster knapp: Rotera rymd
+Mittenknapp: Zooma rymd
+Höger knapp: Flytta rymd
+
+Extrafunktion vid körning:
+Vänster knapp: Klicka och dra atomer för att flytta dem</translation>
     </message>
     <message>
         <location line="+162"/>
         <source>AutoOpt: Could not setup force field....</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automatisk optimering: Kunde inte ställa in kraftfält...</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>AutoOpt: E = %1 %2 (dE = %3)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AutoOpt: E = %1 %2 (dE = %3)</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Force Field:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kraftfält:</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Steps per Update:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Steg per uppdatering:</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Algorithm:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algoritm:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -327,17 +335,17 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (300K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekyldynamik (300 K)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (600K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekyldynamik (600 K)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (900K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekyldynamik (900 K)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -348,12 +356,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="-91"/>
         <source>Fixed atoms are movable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fasta atomer är flyttbara</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ignored atoms are movable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ignorerade atomer är flyttbara</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -363,7 +371,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.h" line="+94"/>
         <source>AutoOptimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto Optimering</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -373,7 +381,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoOptimization Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto Optimering</translation>
     </message>
 </context>
 <context>
@@ -381,7 +389,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="+52"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automatiskt rotationsverktyg</translation>
     </message>
     <message>
         <location line="+168"/>
@@ -397,32 +405,32 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="-46"/>
         <source>x rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x rotation:</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>x rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">x rotation</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>y rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y-rotation:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>y rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y rotation</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>z rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z rotation:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>z rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">z rotation</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -432,7 +440,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.h" line="+53"/>
         <source>AutoRotate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto Rotera</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -442,7 +450,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto Rotera</translation>
     </message>
 </context>
 <context>
@@ -450,7 +458,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/axesengine.h" line="+37"/>
         <source>Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Axlar</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -495,17 +503,17 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location line="+806"/>
         <source> Show Angles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Visa vinklar</translation>
     </message>
     <message>
         <location line="+3"/>
         <source> Snap-to Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Låsande bindningar</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Snap-to Threshold: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lås till tröskel: </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.h" line="+65"/>
@@ -575,12 +583,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+91"/>
         <source>Distance (1-&gt;2): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avstånd (1-&gt;2): %1 %2</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Distance (2-&gt;3): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avstånd (2-&gt;3): %1 %2</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -590,7 +598,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+20"/>
         <source>Distance (3-&gt;4): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avstånd (3-&gt;4): %1 %2</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -601,35 +609,35 @@ Right Mouse: Reset the measurements.</source>
         <location line="+40"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*2</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*3</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*4</source>
         <comment>*4 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*4</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Distance(s):</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avstånd:</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="+48"/>
         <source>Measure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mät</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -639,7 +647,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mät</translation>
     </message>
 </context>
 <context>
@@ -647,12 +655,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.cpp" line="+133"/>
         <source>Number of atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Antalet atomer: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Number of rotatable bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Antalet vridbara bindningar: %1</translation>
     </message>
 </context>
 <context>
@@ -663,22 +671,22 @@ Right Mouse: Reset the measurements.</source>
         <location line="+9"/>
         <location line="+10"/>
         <source>Add constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lägg till restriktion</translation>
     </message>
     <message>
         <location line="-41"/>
         <source>Your molecule must contain at least one atom to add a constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Din molekyl ska innehålla minst en atom för att kunna lägga till en restriktion</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Your molecule must contain at least two atoms to add a bond constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Din molekyl ska innehålla minst två atomer för att kunna lägga till en restriktion för bindningen</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Your molecule must contain at least three atoms to add an angle constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Din molekyl ska innehålla minst tre atomer för att kunna lägga till en restriktion för vinkeln</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -691,7 +699,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="+42"/>
         <source>Dipole</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">två polig</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -726,18 +734,18 @@ Right Mouse: Delete Atom</source>
         <location line="+330"/>
         <location line="+6"/>
         <source>Draw Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita atom</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Draw Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita bindning</translation>
     </message>
     <message>
         <location line="+9"/>
         <location filename="../libavogadro/src/tools/drawtool.h" line="+54"/>
         <source>Draw</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -747,7 +755,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+248"/>
         <source>Element:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gundämne:</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -757,22 +765,22 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+4"/>
         <source>Bond Order:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bindningsordning:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Enkel</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dubbel</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Triple</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trippel</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -813,367 +821,367 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished">Väte</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Helium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Helium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lithium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Litium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Beryllium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beryllium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Boron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished">Kol</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished">Kväve</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished">Syre</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fluorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fluor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Natrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Magnesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Magnesium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Aluminum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aluminium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silicon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kisel</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished">Fosfor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sulfur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Svavel</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chlorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Klor</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Argon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Argon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Potassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kalium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Calcium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kalcium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Scandium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skandium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Titanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titan</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Vanadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vanadin</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chromium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krom</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Manganese</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mangan</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Järn</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cobalt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kobolt</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nickel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nickel</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Koppar</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zinc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zink</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gallium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Germanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Germanium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Arsenic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Arsenik</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Selenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Selen</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bromine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Brom</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Krypton</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krypton</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rubidium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rubidium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Strontium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Strontium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Yttrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yttrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zirconium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zirkonium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Niobium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Niob</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Molybdenum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molybden</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Technetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teknetium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ruthenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rutenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rodium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Palladium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Palladium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silver</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cadmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kadmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Indium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Indium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tenn</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Antimony</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Antimon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tellurium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tellur</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iodine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jod</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Xenon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Xenon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Caesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cesium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Barium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lanthanum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lantan</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cerium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Praseodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Praseodym</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neodym</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Promethium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prometium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Samarium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Samarium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Europium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Europium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gadolinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gadolinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Terbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Terbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dysprosium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dysprosium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Holmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Holmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Erbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thulium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tulium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ytterbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ytterbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lutetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lutetium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hafnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hafnium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tantalum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tantal</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1183,202 +1191,202 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Rhenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rhenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Osmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Osmium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iridium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iridium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">platina</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Guld</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kvicksilver</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tallium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lead</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bly</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bismuth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vismut</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Polonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polonium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Astatine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Astat</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radon</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Francium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Francium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Actinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aktinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thorium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Torium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Protactinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Protaktinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Uranium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uran</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neptunium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neptunium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Plutonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plutonium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Americium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Americium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Curium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Curium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Berkelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Berkelium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Californium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Californium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Einsteinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einsteinium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fermium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fermium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mendelevium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mendelevium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nobelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nobelium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lawrencium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lawrencium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rutherfordium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rutherfordium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dubnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dubnium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Seaborgium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seaborgium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bohrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bohrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hassium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Meitnerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Meitnerium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Darmstadtium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Darmstadtium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Roentgenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Röntgenium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununtrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununtrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununquadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununquadium</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1388,17 +1396,17 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+3"/>
         <source>Ununhexium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununhexium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununseptium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununseptium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununoctium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununoctium</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -1693,7 +1701,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2066,7 +2074,7 @@ All changes will be lost!</source>
     <message>
         <location line="+7"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
 </context>
 <context>
@@ -3159,7 +3167,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+4"/>
         <source>Atom %1 %2</source>
         <comment>%1 is element, %2 is atom index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vinkel: %1 %2</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3474,7 +3482,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+3"/>
         <source>Bond Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bindningsordning:</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -6829,7 +6837,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -6839,7 +6847,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>

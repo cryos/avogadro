@@ -5,7 +5,7 @@
     <name></name>
     <message>
         <source></source>
-        <translatorcomment>Korean translation for avogadro
+        <translatorcomment>Traditional Chinese translation for avogadro
 Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 This file is distributed under the same license as the avogadro package.
 FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
@@ -13,10 +13,10 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:33-0400
-PO-Revision-Date: 2009-01-05 21:40+0000
-Last-Translator: Geoff Hutchison &lt;Unknown&gt;
-Language-Team: Korean &lt;ko@li.org&gt;
+POT-Creation-Date: 2009-05-19 14:32-0400
+PO-Revision-Date: 2009-05-04 18:56+0000
+Last-Translator: iychiang &lt;iychiang1809@gmail.com&gt;
+Language-Team: Traditional Chinese &lt;zh_TW@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -30,22 +30,22 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/addenginedialog.ui" line="+13"/>
         <source>Add Display Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增展示模式</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">種類：</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名稱:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述:</translation>
     </message>
 </context>
 <context>
@@ -53,22 +53,22 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.ui" line="+14"/>
         <source>Animate Trajectory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">動畫軌跡</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Load File...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">載入檔案...</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
         <source>Dynamic Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製鍵</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -78,7 +78,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -91,7 +91,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location filename="../avogadro/src/aboutdialog.cpp" line="+46"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">確定</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -101,7 +101,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+7"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
 </context>
 <context>
@@ -114,33 +114,38 @@ Left Mouse: 	Select up to two atoms.
 	The first atom is centered at the origin.
 	The second atom is aligned to the selected axis.
 Right Mouse: 	Reset alignment.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子排序
+
+滑鼠左鍵：	最多選擇兩個原子。
+	第一個原子置於中央。
+	第二個原子依選取的軸線排列。
+滑鼠右鍵：	重置排序。</translation>
     </message>
     <message>
         <location line="+192"/>
         <source>Axis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">軸：</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Align:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">排列：</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">任何東西</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+40"/>
         <source>Align</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">排列</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/aligntool.h" line="+1"/>
@@ -150,7 +155,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定</translation>
     </message>
 </context>
 <context>
@@ -158,7 +163,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationdialog.cpp" line="+65"/>
         <source>Open trajectory file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟軌跡檔案</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -168,7 +173,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+8"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -183,7 +188,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -196,7 +201,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+46"/>
         <source>Animation...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">動畫</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -215,17 +220,17 @@ Right Mouse: 	Reset alignment.</source>
         <location line="+13"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-115"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1 的格式。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Read trajectory file %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取軌跡檔 %1</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -266,7 +271,7 @@ Right Mouse: 	Reset alignment.</source>
     <message>
         <location filename="../libavogadro/src/extensions/animationextension.h" line="+45"/>
         <source>Animation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">動畫</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -287,32 +292,36 @@ Right Mouse: Move Space
 
 Extra Function when running
 Left Mouse: Click and drag atoms to move them</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動構形最適化工具
+此處分子的旋轉, 放大縮小, 移動與導覽工具操作法相同
+
+執行時最適化時的額外功能
+滑鼠左鍵：點擊並拖曳可以移動原子</translation>
     </message>
     <message>
         <location line="+162"/>
         <source>AutoOpt: Could not setup force field....</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動最佳化: 無法設定力場... (請檢查所繪製的分子是否正確)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>AutoOpt: E = %1 %2 (dE = %3)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AutoOpt: E = %1 %2 (dE = %3)</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Force Field:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">力場</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Steps per Update:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">每次更新步數：</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Algorithm:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">演算法：</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -327,17 +336,17 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (300K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子動力學 (300 K)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (600K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子動力學 (600 K)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Molecular Dynamics (900K)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子動力學 (900 K)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -348,12 +357,12 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="-91"/>
         <source>Fixed atoms are movable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定原子可移動</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ignored atoms are movable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">被忽略的原子可移動</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -363,7 +372,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.h" line="+94"/>
         <source>AutoOptimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動構型最適化</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -373,7 +382,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoOptimization Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動構型最適化</translation>
     </message>
 </context>
 <context>
@@ -381,7 +390,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.cpp" line="+52"/>
         <source>Auto Rotation Tool</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動旋轉工具</translation>
     </message>
     <message>
         <location line="+168"/>
@@ -397,32 +406,32 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="-46"/>
         <source>x rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 X 軸旋轉：</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>x rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 X 軸旋轉</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>y rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 Y 軸旋轉：</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>y rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 Y 軸旋轉：</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>z rotation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 Z 軸旋轉：</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>z rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繞 Z 軸旋轉</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -432,7 +441,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/tools/autorotatetool.h" line="+53"/>
         <source>AutoRotate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動旋轉 (可以設定的旋轉軸, 選轉方向及速度)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -442,7 +451,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動旋轉 (可以設定的旋轉軸, 選轉方向及速度)</translation>
     </message>
 </context>
 <context>
@@ -450,7 +459,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/axesengine.h" line="+37"/>
         <source>Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">軸</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -463,7 +472,7 @@ Left Mouse: Click and drag atoms to move them</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdyengine.h" line="+41"/>
         <source>Ball and Stick</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">球與棒 (原子與鍵)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -484,33 +493,39 @@ Right Mouse:  Click and drag to move the view
 Left Click &amp; drag on a Bond to set the Manipulation Plane:
 - Left Click &amp; Drag one of the Atoms in the Bond to change the angle
 - Right Click &amp; Drag one of the Atoms in the Bond to change the length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵中心調整工具
+旋轉, 放大縮小, 移動的功能與導覽工具相同
+*調整功能如下
+1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉該平面並調整到適當的位置, 然後放開滑鼠左鍵.
+2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞著藍色平面改變鍵角.
+3. 使用滑鼠右鍵可以改變鍵的長度
+譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到適當的形狀.</translation>
     </message>
     <message>
         <location line="+712"/>
         <source>Bond Length: %1</source>
         <comment>%1 is the length of the bond</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的長度</translation>
     </message>
     <message>
         <location line="+806"/>
         <source> Show Angles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> 顯示角度</translation>
     </message>
     <message>
         <location line="+3"/>
         <source> Snap-to Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> 貼近鍵</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Snap-to Threshold: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">貼近下限： </translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.h" line="+65"/>
         <source>Bond Centric Manipulate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵中心調整</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -520,7 +535,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location line="+1"/>
         <source>Bond Centric Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵中心調整</translation>
     </message>
 </context>
 <context>
@@ -531,7 +546,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
         <location line="+18"/>
         <location line="+15"/>
         <source>bond %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵 %1</translation>
     </message>
 </context>
 <context>
@@ -557,7 +572,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
     <message>
         <location line="+1"/>
         <source>Color by atomic partial charge (blue = positive, red = negative.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">以不同顏色顯示原子的電荷分佈 (藍色表示正電, 紅色表示負電)</translation>
     </message>
 </context>
 <context>
@@ -570,17 +585,22 @@ Left Mouse: 	Select up to three Atoms.
 	Distances are measured between 1-2 and 2-3
 	Angle is measured between 1-3 using 2 as the common point
 Right Mouse: Reset the measurements.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">點擊以量測（F12）
+
+滑鼠左鍵：	選擇最多三個原子
+	會量測 1-2 與 2-3 間的距離
+	以及角 2 的角度
+滑鼠右鍵：重置測量</translation>
     </message>
     <message>
         <location line="+91"/>
         <source>Distance (1-&gt;2): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距離（1-&gt;2）：%1 %2</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Distance (2-&gt;3): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距離（2-&gt;3）：%1 %2</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -590,7 +610,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+20"/>
         <source>Distance (3-&gt;4): %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距離（3-&gt;4）：%1 %2</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -601,35 +621,35 @@ Right Mouse: Reset the measurements.</source>
         <location line="+40"/>
         <source>*1</source>
         <comment>*1 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>*2</source>
         <comment>*2 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*2</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*3</source>
         <comment>*3 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*3</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>*4</source>
         <comment>*4 is a number. You most likely do not need to translate this</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">*4</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Distance(s):</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距離：</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/clickmeasuretool.h" line="+48"/>
         <source>Measure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">測量</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -639,7 +659,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定</translation>
     </message>
 </context>
 <context>
@@ -647,12 +667,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.cpp" line="+133"/>
         <source>Number of atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子的數目: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Number of rotatable bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">可旋轉的鍵的數目: %1</translation>
     </message>
 </context>
 <context>
@@ -663,27 +683,27 @@ Right Mouse: Reset the measurements.</source>
         <location line="+9"/>
         <location line="+10"/>
         <source>Add constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">加入約束</translation>
     </message>
     <message>
         <location line="-41"/>
         <source>Your molecule must contain at least one atom to add a constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您的分子至少要有一個原子用來加入約束</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Your molecule must contain at least two atoms to add a bond constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您的分子至少要有兩個原子用來加入鍵的約束</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Your molecule must contain at least three atoms to add an angle constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您的分子至少要有三個原子用來加入鍵角的約束</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Your molecule must contain at least four atoms to add a torsion constraint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您的分子至少要有四個原子用來加入扭轉的約束</translation>
     </message>
 </context>
 <context>
@@ -691,7 +711,7 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="+42"/>
         <source>Dipole</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">雙極</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -704,12 +724,12 @@ Right Mouse: Reset the measurements.</source>
     <message>
         <location filename="../libavogadro/src/colors/distancecolor.h" line="+44"/>
         <source>Color by Distance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">以不同顏色表示距離</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Color by distance from the first atom.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">以不同顏色表示與第一個原子的距離</translation>
     </message>
 </context>
 <context>
@@ -720,24 +740,27 @@ Right Mouse: Reset the measurements.</source>
 
 Left Mouse: 	Click and Drag to create Atoms and Bonds
 Right Mouse: Delete Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製工具（F8）
+
+滑鼠左鍵：點擊並拖曳以產生原子與結合鍵
+滑鼠右鍵：刪除原子</translation>
     </message>
     <message>
         <location line="+330"/>
         <location line="+6"/>
         <source>Draw Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製原子</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Draw Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製鍵</translation>
     </message>
     <message>
         <location line="+9"/>
         <location filename="../libavogadro/src/tools/drawtool.h" line="+54"/>
         <source>Draw</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪圖</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -747,7 +770,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+248"/>
         <source>Element:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素：</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -757,32 +780,32 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+4"/>
         <source>Bond Order:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的級數:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">單鍵</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">雙鍵</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Triple</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">三鍵</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Adjust Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動加上氫原子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fragment Library...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子資料庫</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawtool.h" line="+1"/>
@@ -792,7 +815,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定</translation>
     </message>
 </context>
 <context>
@@ -800,12 +823,12 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/colors/elementcolor.h" line="+45"/>
         <source>Color by Element</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">依元素標示顏色</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Color by Element (carbon = grey, oxygen = red, ...).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">依元素標示顏色 (碳=灰色, 氧=紅色, ...)</translation>
     </message>
 </context>
 <context>
@@ -813,597 +836,597 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/elementtranslator.cpp" line="+42"/>
         <source>Hydrogen</source>
-        <translation type="unfinished">수소</translation>
+        <translation type="unfinished">Hydrogen (氫)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Helium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Helium (氦)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lithium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lithium (鋰)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Beryllium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beryllium (鈹)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Boron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Boron (硼)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Carbon</source>
-        <translation type="unfinished">탄소</translation>
+        <translation type="unfinished">Carbon (碳)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nitrogen</source>
-        <translation type="unfinished">질소</translation>
+        <translation type="unfinished">Nitrogen (氮)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Oxygen</source>
-        <translation type="unfinished">산소</translation>
+        <translation type="unfinished">Oxygen (氧)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fluorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fluorine (氟)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neon (氖)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sodium (鈉)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Magnesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Magnesium (鎂)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Aluminum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aluminum (鋁)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silicon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silicon (矽)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Phosphorus</source>
-        <translation type="unfinished">인</translation>
+        <translation type="unfinished">Phosphorus (磷)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Sulfur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sulfur (硫)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chlorine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chlorine (氯)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Argon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Argon (氬)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Potassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Potassium (鉀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Calcium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Calcium (鈣)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Scandium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Scandium (鈧)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Titanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titanium (鈦)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Vanadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vanadium (釩)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Chromium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chromium (鉻)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Manganese</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Manganese (錳)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iron</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iron (鐵)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cobalt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cobalt (鈷)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nickel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nickel (鎳)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Copper (銅)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zinc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zinc (鋅)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gallium (鎵)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Germanium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Germanium (鍺)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Arsenic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Arsenic (砷)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Selenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Selenium (硒)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bromine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bromine (溴)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Krypton</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Krypton (氪)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rubidium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rubidium (銣)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Strontium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Strontium (鍶)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Yttrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yttrium (釔)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Zirconium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zirconium (鋯)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Niobium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Niobium (鈮)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Molybdenum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molybdenum (鉬)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Technetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Technetium (鎝)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ruthenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ruthenium (釕)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhodium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rhodium (銠)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Palladium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Palladium (鈀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Silver (銀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cadmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cadmium (鎘)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Indium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Indium (銦)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tin (錫)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Antimony</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">(銻)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tellurium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tellurium (碲)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iodine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iodine (碘)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Xenon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Xenon (氙)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Caesium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Caesium (銫)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Barium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Barium (鋇)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lanthanum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lantanum (鑭)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cerium (鈰)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Praseodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Praseodymium (鐠)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neodymium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neodymium (釹)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Promethium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Promethium (鉕)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Samarium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Samarium (釤)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Europium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Europium (銪)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gadolinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gadolinium (釓)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Terbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Terbium (鋱)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dysprosium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dysprosium (鏑)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Holmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Holmium (鈥)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Erbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erbium (鉺)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thulium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thulium (銩)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ytterbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ytterbium (鐿)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lutetium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lutetium (鎦)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hafnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hafnium (鉿)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tantalum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tantalum (鉭)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Tungsten</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tungsten (鎢)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rhenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rhenium (錸)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Osmium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Osmium (鋨)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Iridium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iridium (銥)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Platinum (鉑)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gold (金)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mercury (汞)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thallium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thallium (鉈)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lead</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lead (鉛)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bismuth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bismuth (鉍)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Polonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polonium (釙)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Astatine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Astatine (砈)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radon (氡)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Francium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Francium (鍅)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Radium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radium (鐳)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Actinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Actinium (錒)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Thorium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thorium (釷)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Protactinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Protactinium (鏷)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Uranium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uranium (鈾)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Neptunium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neptunium (錼)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Plutonium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plutonium (鈽)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Americium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Americium (鋂)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Curium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Curium (鋦)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Berkelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Berkelium (鉳)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Californium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Californium (鉲)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Einsteinium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eisteinium (鑀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Fermium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fermium (鐨)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Mendelevium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mendelevium (鍆)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Nobelium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nobelium (鍩)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Lawrencium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lawrencium (鐒)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Rutherfordium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rutherfordium (鑪)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Dubnium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dubnium (𨧀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Seaborgium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seaborgium (金希)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bohrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">bohrium (𨨏)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Hassium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hassium (𨭆)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Meitnerium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Meitnerium (䥑)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Darmstadtium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Darmstadtium (鐽)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Roentgenium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Roentgenium (錀)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununbium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununbium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununtrium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununtrium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununquadium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununquadium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununpentium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununpentium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununhexium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununhexium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununseptium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununseptium</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ununoctium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ununoctium</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未知</translation>
     </message>
 </context>
 <context>
@@ -1411,7 +1434,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/engine.cpp" line="+64"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">引擎</translation>
     </message>
 </context>
 <context>
@@ -1419,7 +1442,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extension.cpp" line="+44"/>
         <source>Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">延伸功能</translation>
     </message>
 </context>
 <context>
@@ -1432,7 +1455,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+19"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檔案 (&amp;F)</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1475,7 +1498,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/engines/forceengine.h" line="+38"/>
         <source>Force</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">力</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1488,37 +1511,37 @@ Right Mouse: Delete Atom</source>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.cpp" line="+69"/>
         <source>Optimize Geometry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最適化構型</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Setup Force Field...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定力場...</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Calculate Energy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">計算能量</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Conformer Search...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">尋找構形異構物</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Constraints...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">約束...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Ignore Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">忽略選項</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Selected Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定所選的原子</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -1528,7 +1551,7 @@ Right Mouse: Delete Atom</source>
     <message>
         <location line="+0"/>
         <source>&amp;Molecular Mechanics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;分子力學</translation>
     </message>
     <message>
         <location line="+38"/>
@@ -1536,24 +1559,24 @@ Right Mouse: Delete Atom</source>
         <location line="+12"/>
         <location line="+20"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+20"/>
         <location line="+20"/>
         <source>Cannot set up the force field for this molecule.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法設定這分子的力場</translation>
     </message>
     <message>
         <location line="-35"/>
         <source>Energy = %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">能量 = %1 %2</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.h" line="+54"/>
         <source>ForceField</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">力場</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1567,12 +1590,12 @@ Right Mouse: Delete Atom</source>
         <location filename="../libavogadro/src/glwidget.cpp" line="+530"/>
         <source>Invalid OpenGL context.
 Either something is completely broken in your OpenGL setup (can you run any OpenGL application?), or you found a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無效的 OpenGL 上下文</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>OpenGL error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OpenGL 錯誤</translation>
     </message>
     <message>
         <location line="+580"/>
@@ -1582,32 +1605,32 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+1"/>
         <source>FPS: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">FPS</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>View Size: %1 x %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檢視大小</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No molecule set</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">另存分子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Atoms: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子: </translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bonds: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵 %1</translation>
     </message>
     <message>
         <location line="+1007"/>
         <source>Ball and Stick</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">球與棒 (原子與鍵)</translation>
     </message>
 </context>
 <context>
@@ -1615,7 +1638,7 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location filename="../libavogadro/src/extensions/gamessefpmatchdialog.cpp" line="+49"/>
         <source>QM Matches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QM 配對</translation>
     </message>
 </context>
 <context>
@@ -1628,12 +1651,12 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+5"/>
         <source>EFP Selection...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EFP 選項...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>QM Selection...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QM 選項...</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -1643,47 +1666,47 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>&amp;GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (原子分子之電子結構系統)</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>GAMESS EFP Information</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS EFP 訊息</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">刪除</translation>
     </message>
     <message>
         <location line="+82"/>
         <source>No Atoms Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沒有選擇原子:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>You must make a selection!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您必須先選取</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>SMILES Conversion Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法轉換成 SMILES 化學式</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>SMILES Format Conversion Not Available!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法使用轉換 SMILES 化學式</translation>
     </message>
     <message>
         <location line="+260"/>
         <source>Group Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">群組名稱</translation>
     </message>
     <message>
         <location line="+53"/>
         <source> (</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> (</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1693,17 +1716,17 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gamessextension.h" line="+44"/>
         <source>GAMESS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (原子分子之電子結構系統)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1721,45 +1744,48 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+877"/>
         <source>Advanced Settings Changed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">進階設定已變更</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Advanced settings have changed.
 Discard?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">進階設定已變更
+要忽略嗎?</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Advanced Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重設進階設定</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Are you sure you wish to reset advanced settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您確定要重設進階設定嗎?
+將失去原先的變更!</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Basic Settings Reset</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重設基本設定</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Are you sure you wish to reset basic settings?
 All changes will be lost!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您確定要重新設定所有的基本設定?
+將會失去原先的變更!</translation>
     </message>
     <message>
         <location line="+72"/>
         <source>Export Input Deck</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">匯出輸入平台</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GAMESS Input Deck (*.inp)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS 輸入平台 (*.inp)</translation>
     </message>
 </context>
 <context>
@@ -1767,7 +1793,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="+45"/>
         <source>Gaussian Input...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">輸入 Gaussian/計算化學軟體...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1798,22 +1824,22 @@ All changes will be lost!</source>
         <location line="+80"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-8"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1 的格式。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianextension.h" line="+42"/>
         <source>Gaussian Input Deck</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian 輸入平台</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1836,12 +1862,12 @@ All changes will be lost!</source>
     <message>
         <location line="+43"/>
         <source>Save Gaussian Input Deck</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存 Gaussian 輸入平台</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gaussian Input Deck (*.com)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian 輸入平台 (*.com)</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1859,7 +1885,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.cpp" line="+43"/>
         <source>Change H to Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">把氫原子換成甲基</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1869,7 +1895,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.h" line="+37"/>
         <source>H2Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">H2Methyl</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1882,12 +1908,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondengine.h" line="+42"/>
         <source>Hydrogen Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">氫鍵</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders hydrogen bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪出氫的結合鍵</translation>
     </message>
 </context>
 <context>
@@ -1900,7 +1926,7 @@ All changes will be lost!</source>
     <message>
         <location line="+4"/>
         <source>Add Hydrogens for pH...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">配合 pH 加上氫</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -1920,12 +1946,12 @@ All changes will be lost!</source>
     <message>
         <location line="+0"/>
         <source>pH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">pH</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.h" line="+40"/>
         <source>Hydrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">氫</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1938,7 +1964,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟檔案</translation>
     </message>
 </context>
 <context>
@@ -1960,24 +1986,24 @@ All changes will be lost!</source>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
         <location line="+8"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1 的格式。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1。</translation>
     </message>
     <message>
         <location line="+51"/>
         <location line="+9"/>
         <location line="+20"/>
         <source>Stop Inserting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">停止插入</translation>
     </message>
     <message>
         <location line="-21"/>
@@ -1992,7 +2018,7 @@ All changes will be lost!</source>
     <message>
         <location line="+23"/>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟資料夾</translation>
     </message>
 </context>
 <context>
@@ -2000,7 +2026,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/engines/labelengine.h" line="+45"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2013,12 +2039,12 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.cpp" line="+63"/>
         <source>Open ligand file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟配位基檔案</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Avogadro files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro files (*.*)</translation>
     </message>
 </context>
 <context>
@@ -2046,7 +2072,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2066,7 +2092,7 @@ All changes will be lost!</source>
     <message>
         <location line="+7"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1/%2</translation>
     </message>
 </context>
 <context>
@@ -2090,12 +2116,12 @@ All changes will be lost!</source>
         <location line="+21"/>
         <location line="+9"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-244"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1 的格式。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2120,7 +2146,7 @@ All changes will be lost!</source>
     <message>
         <location line="+11"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法存檔 %1</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2247,27 +2273,27 @@ All changes will be lost!</source>
     <message>
         <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">訊息</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">視窗</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最小化</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+M</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Zoom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">縮放</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2289,7 +2315,7 @@ All changes will be lost!</source>
         <location line="+40"/>
         <location line="+371"/>
         <source>Common molecule formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常用的分子檔案格式</translation>
     </message>
     <message>
         <location line="-366"/>
@@ -2297,14 +2323,14 @@ All changes will be lost!</source>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">所有檔案</translation>
     </message>
     <message>
         <location line="-613"/>
         <location line="+359"/>
         <location line="+12"/>
         <source>CML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CML</translation>
     </message>
     <message>
         <location line="-370"/>
@@ -2314,32 +2340,32 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source>Crystallographic Interchange CIF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Crystallographic Interchange CIF</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GAMESS-US Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS-US 輸出</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gaussian 98/03 Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian 98/03 輸出</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gaussian Formatted Checkpoint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian Formatted Checkpoint</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>HyperChem</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HyperChem</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>MDL Mol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MDL Mol</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2350,30 +2376,30 @@ All changes will be lost!</source>
         <location line="+1"/>
         <location line="+367"/>
         <source>PDB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PDB</translation>
     </message>
     <message>
         <location line="-366"/>
         <location line="+368"/>
         <source>Sybyl Mol2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sybyl Mol2</translation>
     </message>
     <message>
         <location line="-367"/>
         <location line="+368"/>
         <source>XYZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">XYZ</translation>
     </message>
     <message>
         <location line="-365"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟檔案</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Loading %1...</source>
         <comment>%1 is a filename</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">載入 %1...</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2391,43 +2417,43 @@ All changes will be lost!</source>
         <location line="+914"/>
         <location line="+443"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-1862"/>
         <source>Cannot read file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Cannot read file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1 的格式。</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Cannot read file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取檔案 %1。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Loading %1...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">載入 %1...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>This file contains 2D coordinates only. Do you want Avogadro to scale the bonds and do a quick optimization?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">該檔案只含有平面坐標. 您希望本軟體 Avogadro 進行鍵的調整及最適化嗎?</translation>
     </message>
     <message>
         <location line="+65"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">這檔案不含 3 D 坐標, 您可能無法編輯或是觀看該檔</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">這檔案還有多個分子的紀錄. Avogadro 將只會讀取第一個分子. 如果您存檔, 將會失去其他分子的紀錄</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -2437,17 +2463,17 @@ All changes will be lost!</source>
     <message>
         <location line="+1"/>
         <source> Bonds: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> 鍵 </translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Reading molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法讀取分子檔</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>File Loaded...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檔案載入中...</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2463,7 +2489,7 @@ All changes will be lost!</source>
         <location line="+4"/>
         <source>Ctrl+S</source>
         <comment>Save</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2479,27 +2505,27 @@ All changes will be lost!</source>
     <message>
         <location line="+0"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存</translation>
     </message>
     <message>
         <location line="+80"/>
         <source>GAMESS Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (原子分子之電子結構系統) 輸入</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gaussian Cartesian Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian Cartesian Input</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gaussian Z-matrix Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian Z-matrix Input</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>MDL SDfile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MDL SDfile (MDL SD 檔)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2514,87 +2540,88 @@ All changes will be lost!</source>
     <message>
         <location line="+32"/>
         <source>Cannot write to file format of file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法寫入 %1 的檔案格式</translation>
     </message>
     <message>
         <location line="+8"/>
         <location line="+14"/>
         <source>Cannot write to the file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法寫入檔案 %1:
+%2.</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Cannot write to the file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法寫入檔案 %1</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saving file.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">存檔</translation>
     </message>
     <message>
         <location line="+45"/>
         <source>Save succeeded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">存檔成功</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法存檔</translation>
     </message>
     <message>
         <location line="+21"/>
         <location line="+12"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PNG</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Common image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常見的影像檔案格式</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BMP</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>JPEG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JPEG</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+79"/>
         <source>Export Bitmap Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">匯出點陣圖</translation>
     </message>
     <message>
         <location line="-27"/>
         <source>Cannot save file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法存檔 %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <location line="+11"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PDF</translation>
     </message>
     <message>
         <location line="-4"/>
         <source>Common vector image formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一般向量圖形格式</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SVG</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SVG</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>EPS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EPS</translation>
     </message>
     <message>
         <location line="+148"/>
@@ -2604,17 +2631,17 @@ All changes will be lost!</source>
     <message>
         <location line="+83"/>
         <source>Unable to paste molecule.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法貼上分子</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Paste failed (format unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法貼上 (檔案格式無法使用)</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Copy failed (mdl unavailable).</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無法複製</translation>
     </message>
     <message>
         <location line="+126"/>
@@ -2623,7 +2650,7 @@ All changes will be lost!</source>
         <location line="+32"/>
         <location line="+472"/>
         <source>View %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檢視 %1</translation>
     </message>
     <message>
         <location line="-497"/>
@@ -2633,12 +2660,12 @@ All changes will be lost!</source>
     <message>
         <location line="+162"/>
         <source>Normal Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">正常大小</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全螢幕</translation>
     </message>
     <message>
         <location line="+84"/>
@@ -2648,58 +2675,58 @@ All changes will be lost!</source>
     <message>
         <location line="+59"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未命名</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[*]Avogadro</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1[*] - %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1[*] - %2</translation>
     </message>
     <message>
         <location line="+387"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定...</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">製作複本</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">移除</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>No tools or engines loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沒有載入工具或引擎</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No engines loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沒有載入引擎</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No tools loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沒有載入工具</translation>
     </message>
     <message>
         <location line="+1"/>
         <source> It is unlikely this application will function correctly. Please correct this error.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> 這個應用程式無法正常使用. 請先更正錯誤.</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2710,17 +2737,17 @@ All changes will be lost!</source>
     <message>
         <location line="+6"/>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">物件</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顏色</translation>
     </message>
     <message>
         <location line="+48"/>
         <source> copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> 複製</translation>
     </message>
 </context>
 <context>
@@ -2732,12 +2759,16 @@ All changes will be lost!</source>
 Left Mouse:   Click and drag to move atoms
 Middle Mouse: Click and drag to move atoms further away or closer
 Right Mouse:  Click and drag to rotate selected atoms.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調整工具（F10）
+
+滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平面)
+滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面的垂直方向移動) 。
+滑鼠右鍵：點擊並拖曳可以旋轉所選的原子。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/manipulatetool.h" line="+53"/>
         <source>Manipulate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調整</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2747,7 +2778,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調整原子</translation>
     </message>
 </context>
 <context>
@@ -2825,12 +2856,15 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 Left Mouse:   Click and drag to rotate the view
 Middle Mouse: Click and drag to zoom in or out
 Right Mouse:  Click and drag to move the view</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">導覽工具（F9）
+滑鼠左鍵：點擊並拖曳可以旋轉分子。
+滑鼠中鍵：點擊並拖曳以縮放分子的大小 (或是滾輪向前轉是放大, 向後轉是縮小)。
+滑鼠右鍵：點擊並拖曳可以移動分子檢視的位置。</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/navigatetool.h" line="+54"/>
         <source>Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">導覽</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2840,7 +2874,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">導覽</translation>
     </message>
 </context>
 <context>
@@ -2858,7 +2892,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+17"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檔案 (&amp;F)</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2924,7 +2958,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="+248"/>
         <location line="+4"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="-3"/>
@@ -2962,7 +2996,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+174"/>
         <source>MO %1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO </translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2971,20 +3005,20 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+38"/>
         <location line="+258"/>
         <source>Abort Calculation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">停止計算</translation>
     </message>
     <message>
         <location line="-487"/>
         <location line="+37"/>
         <source>Calculating MO %1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">計算能量</translation>
     </message>
     <message>
         <location line="-17"/>
         <source>MO </source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO </translation>
     </message>
     <message>
         <location line="+158"/>
@@ -3024,7 +3058,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/overlayengine.h" line="+41"/>
         <source>Overlay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">覆蓋</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3055,12 +3089,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+15"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檔案 (&amp;F)</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">匯出</translation>
     </message>
     <message>
         <location line="+66"/>
@@ -3140,7 +3174,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/polygonengine.h" line="+39"/>
         <source>Polygon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">多邊形</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3153,40 +3187,40 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+261"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Atom %1 %2</source>
         <comment>%1 is element, %2 is atom index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子 %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond %1</source>
         <comment>%1 is bond index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵 %1</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Residue %1 %2</source>
         <comment>%1 is residue name, %2 is residue index</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基</translation>
     </message>
 </context>
 <context>
@@ -3196,43 +3230,43 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+63"/>
         <location line="+370"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location line="-432"/>
         <location line="+404"/>
         <location line="+30"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location line="-433"/>
         <location line="+435"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location line="-434"/>
         <location line="+436"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵</translation>
     </message>
     <message>
         <location line="-435"/>
         <location line="+437"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基</translation>
     </message>
     <message>
         <location line="-436"/>
         <location line="+438"/>
         <source>User Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用者自選的項目</translation>
     </message>
     <message>
         <location line="-379"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">錯誤</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3255,32 +3289,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+138"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>User Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用者自選的項目</translation>
     </message>
 </context>
 <context>
@@ -3288,43 +3322,43 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="+61"/>
         <source>Atom Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子的特性</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的特性</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Angle Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵角的特性</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Torsion Properties...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉的特性...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Conformers...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">構形異構物...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Cartesian Editor...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">直角坐標 (笛卡兒坐標) 編輯</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+6"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檢視(&amp;V)</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>&amp;Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">特性 (&amp;P)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3352,45 +3386,45 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Atomic Number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子序</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">價</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部份電荷</translation>
     </message>
     <message>
         <location line="+3"/>
         <location line="+56"/>
         <source>Atom %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子 %1</translation>
     </message>
     <message>
         <location line="-51"/>
         <location line="+17"/>
         <source>Start Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">起始原子</translation>
     </message>
     <message>
         <location line="-15"/>
         <location line="+19"/>
         <source>End Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">終止原子</translation>
     </message>
     <message>
         <location line="-17"/>
         <source>Bond Order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的級數</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Rotatable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">可旋轉</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3401,23 +3435,23 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+4"/>
         <source>Bond %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵 %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Vertex</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">頂點</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Angle %1</source>
         <comment>Degree symbol</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵角 %1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵角 %1</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -3428,12 +3462,12 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+2"/>
         <source>Torsion %1</source>
         <comment>Degree symbol</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉 %1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉 %1</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3461,7 +3495,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+3"/>
         <source>Conformer %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">構形異構物 %1</translation>
     </message>
 </context>
 <context>
@@ -3469,32 +3503,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/propextension.cpp" line="+107"/>
         <source>Atom Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子的特性</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bond Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的特性</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵角的特性</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉的特性...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cartesian Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉的特性...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Conformer Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">計算 MP2 的特性</translation>
     </message>
 </context>
 <context>
@@ -3546,7 +3580,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+31"/>
         <location line="+14"/>
         <source>&amp;Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">程式語法</translation>
     </message>
     <message>
         <location line="+191"/>
@@ -3576,7 +3610,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+3"/>
         <source>pythonTerminalDock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">python 程式的小視窗</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/pythonterminal.h" line="+1"/>
@@ -3632,7 +3666,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+47"/>
         <source>Save QChem Input Deck</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存 QChem 輸入平台</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3655,12 +3689,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/openbabelwrapper.cpp" line="+341"/>
         <source>Conformer %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">構形異構物 %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
 </context>
 <context>
@@ -3681,7 +3715,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/ribbonengine.h" line="+41"/>
         <source>Ribbon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">帶狀</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3694,7 +3728,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/engines/ringengine.h" line="+42"/>
         <source>Ring</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">環</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3707,12 +3741,12 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../avogadro/src/savedialog.cpp" line="+65"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>untitled</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未命名</translation>
     </message>
 </context>
 <context>
@@ -3720,32 +3754,32 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.cpp" line="+68"/>
         <source>&amp;Invert Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">反向選擇(&amp;I) (選與不選互換)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select SMARTS...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇 SMARTS 化學式...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select by Element...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">依照元素來選擇</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select by Residue...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">依照殘基來選擇</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select Solvent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇溶劑</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Add Named Selection...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增命名的選項</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3755,17 +3789,17 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+56"/>
         <source>SMARTS Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SMARTS 化學式選項</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>SMARTS pattern to select</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">請輸入需要的 SMARTS 樣式</translation>
     </message>
     <message>
         <location line="+59"/>
         <source>Select by residue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">依照殘基來選擇</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3777,37 +3811,37 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+12"/>
         <location line="+6"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-17"/>
         <source>There is no current selection.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">目前沒有選項</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Add Named Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增命名的選項</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名稱</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名稱不能留空白</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>There is already a selection with this name.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">已存在一個同名的選項</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/selectextension.h" line="+41"/>
         <source>Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選項</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3823,17 +3857,22 @@ Right Mouse:  Click and drag to move the view</source>
 Click to pick individual atoms, residues, or fragments
 Drag to select a range of atoms
 Use Ctrl to toggle the selection and shift to add to the selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選取工具（F11）
+1. 先從選擇模式的選單中挑選需要的型式, 如選擇原子、殘基或片段
+2. 可以點選原子或是鍵. 也使用拖曳 (會出現一個方框) 可以選擇特定範圍內的原子
+3. 使用 Ctrl 鍵來切換選擇，Shift 鍵來加入新的選項
+
+譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需要的原子</translation>
     </message>
     <message>
         <location line="+353"/>
         <source>Selection Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇模式：</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Atom/Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子/鍵</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3843,12 +3882,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+1"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/selectrotatetool.h" line="+51"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3858,7 +3897,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選項</translation>
     </message>
 </context>
 <context>
@@ -3867,55 +3906,55 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location filename="../avogadro/src/settingsdialog.cpp" line="+104"/>
         <source>Low</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">低</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Medium</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">中等</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>High</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Undefined</source>
         <comment>Display quality setting</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未定義</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>None</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Some</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一些</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Mid</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">中</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Lots</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">很多</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Undefined</source>
         <comment>Level of fog in the scene</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未定義</translation>
     </message>
 </context>
 <context>
@@ -4033,7 +4072,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+56"/>
         <source>NMR</source>
         <comment>NMR spectra option</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">NMR</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4218,7 +4257,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+33"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">錯誤</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -4274,12 +4313,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/sphereengine.h" line="+44"/>
         <source>Van der Waals Spheres</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">凡得瓦球形</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Renders atoms as Van der Waals spheres</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">將原子繪成凡得瓦球形</translation>
     </message>
 </context>
 <context>
@@ -4287,7 +4326,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/stickengine.h" line="+43"/>
         <source>Stick</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">棒狀</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4333,7 +4372,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/engines/surfaceengine.h" line="+48"/>
         <source>Surface</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子表面 (以紅色表示)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4346,12 +4385,12 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.cpp" line="+42"/>
         <source>First Action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">第一步</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Second Action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">第二步</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -4362,17 +4401,17 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
         <location line="+0"/>
         <location line="+3"/>
         <source>&amp;Template</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;範本</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">編輯(&amp;E)</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/templateextension.h" line="+34"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">樣本</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4385,7 +4424,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/tool.cpp" line="+57"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">工具</translation>
     </message>
 </context>
 <context>
@@ -4393,7 +4432,7 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellextension.cpp" line="+45"/>
         <source>Unit Cell Parameters...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">單位晶胞參數...</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -4403,14 +4442,16 @@ Use Ctrl to toggle the selection and shift to add to the selection</source>
     <message>
         <location line="+24"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This document is currently an isolated molecule.
 
 Do you want to create a crystal unit cell?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">本文件目前是獨立的分子
+
+您想要加入晶格嗎?</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellextension.h" line="+34"/>
@@ -4434,7 +4475,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">確定</translation>
     </message>
 </context>
 <context>
@@ -4477,7 +4518,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+44"/>
         <location line="+92"/>
         <source>Vibrational Analysis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">振動分析</translation>
     </message>
     <message>
         <location line="-92"/>
@@ -4505,12 +4546,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.cpp" line="+58"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">連接</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">斷線</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -4520,7 +4561,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+0"/>
         <source>&amp;WiiTrack</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;WiiTrack</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/wiitrackextension.h" line="+40"/>
@@ -4538,7 +4579,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/wireengine.h" line="+44"/>
         <source>Wireframe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">網架</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4571,7 +4612,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未知</translation>
     </message>
 </context>
 <context>
@@ -4584,7 +4625,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/tools/zmatrixtool.h" line="+39"/>
         <source>Z-Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-Matrix</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4594,7 +4635,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定</translation>
     </message>
 </context>
 <context>
@@ -4602,12 +4643,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/bsdysettingswidget.ui" line="+18"/>
         <source>Atom Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子半徑：</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Bond Radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的半徑：</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -4625,7 +4666,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/conformersearchdialog.ui" line="+13"/>
         <source>Conformer Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">找尋構形異構物</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -4635,17 +4676,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Number of atoms:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子的數目:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Number of rotatable bonds:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">可旋轉鍵的數目</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Number of conformers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">構形異構物的數目</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -4655,17 +4696,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Systematic rotor search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Systematic rotor search</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Random rotor search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Random rotor search</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Weighted rotor search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Weighted rotor search</translation>
     </message>
 </context>
 <context>
@@ -4673,12 +4714,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/constraintsdialog.ui" line="+13"/>
         <source>Constraints</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">約束</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Add Constraints</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">加入約束</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -4688,32 +4729,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Ignore Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">忽略原子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定原子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定原子 X</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom Y</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定原子 Y</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Fix Atom Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">固定原子 Z</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Distance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">距離</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4723,22 +4764,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Torsion angle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">扭轉角度</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Constraint Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">約束值</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Atom Indices</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子指數</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -4748,27 +4789,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">載入</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Delete Selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">刪除所選取項目</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Delete All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全部刪除</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">確定</translation>
     </message>
 </context>
 <context>
@@ -4813,19 +4854,19 @@ Do you want to create a crystal unit cell?</source>
         <location filename="../avogadro/src/engineprimitiveswidget.ui" line="+41"/>
         <location line="+3"/>
         <source>Add Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">加入選擇的 Primitives</translation>
     </message>
     <message>
         <location line="+11"/>
         <location line="+3"/>
         <source>Remove Selected Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">移除選擇的 Primitives</translation>
     </message>
     <message>
         <location line="+11"/>
         <location line="+3"/>
         <source>Add All Primitives</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇所有的 Primitives</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -4835,7 +4876,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+3"/>
         <source>Assign to Selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">指定到所選擇的</translation>
     </message>
 </context>
 <context>
@@ -4877,18 +4918,18 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/forcefielddialog.ui" line="+13"/>
         <source>Setup Force Field</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">建立力場</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+6"/>
         <source>Force Field</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">力場</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Ghemical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ghemical</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -4898,12 +4939,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Number of steps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">步驟數</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">演算法</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -4918,12 +4959,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Convergence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">收斂</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>10e-</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">10e-</translation>
     </message>
 </context>
 <context>
@@ -4931,12 +4972,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gamessefpmatchdialog.ui" line="+16"/>
         <source>EFP Matches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EFP Matches</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Group Label:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Group Label:</translation>
     </message>
 </context>
 <context>
@@ -4944,12 +4985,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gamessinputdialog.ui" line="+13"/>
         <source>GAMESS Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (原子分子之電子結構系統) 輸入</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&amp;Basic Setup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">建立 (&amp;B)</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -4985,7 +5026,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="-327"/>
         <location line="+1077"/>
         <source>CCSD(T)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD(T)</translation>
     </message>
     <message>
         <location line="-1068"/>
@@ -4997,7 +5038,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="-504"/>
         <location line="+489"/>
         <source>MINI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MINI</translation>
     </message>
     <message>
         <location line="-484"/>
@@ -5018,82 +5059,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>6-31+G(d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31+G(d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31+G(2d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31+G(2d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-311++G(2d,p)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-311++G(2d,p)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Core Potential</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Core Potential</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Singlet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Singlet</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Doublet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Doublet</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Triplet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Triplet</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Dication</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dication</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Cation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">陽離子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Neutral</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">中性</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Anion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">陰離子</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Dianion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dianion</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>On:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">On:</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Single Point Entry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Single Point Entry</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Equilibrium Geometry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Equilibrium Geometry</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Transition State</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">過渡狀態</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5103,12 +5144,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+26"/>
         <source>Gas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">氣體</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Water</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">水</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -5119,78 +5160,78 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-2385"/>
         <source>With:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">With:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>In:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">In:</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>&amp;Advanced Setup</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">進階設定</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">進階</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Basis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Basis</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">控制</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>SCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SCF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DFT</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DFT</translation>
     </message>
     <message>
         <location line="+10"/>
         <location line="+437"/>
         <source>Hessian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hessian</translation>
     </message>
     <message>
         <location line="-432"/>
         <source>Stat Point</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stat Point</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">資料</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">系統</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MO Guess</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO Guess</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">其他</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>#D Heavy Atom Polarization Functions:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">#D 重原子極化函數:</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -5199,178 +5240,178 @@ Do you want to create a crystal unit cell?</source>
         <location line="+46"/>
         <location line="+986"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="-1646"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">讀取</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SBKJC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SBKJC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hay-Wadt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hay-Wadt</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Diffuse S-Shell on Heavy Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diffuse S-Shell on Heavy Atoms</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Diffuse L-Shell on Heavy Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diffuse L-Shell on Heavy Atoms</translation>
     </message>
     <message>
         <location line="+50"/>
         <source>Basis Set:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Basis Set:</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MIDI</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-2G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-2G</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>STO-4G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-4G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-5G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-5G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>STO-6G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STO-6G</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>6-21G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-21G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>4-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">4-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>5-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">5-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-31G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-31G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>6-311G</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">6-311G</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Double Zeta Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Double Zeta Valence</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Dunning/Hay DZ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dunning/Hay DZ</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Triple Zeta Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Triple Zeta Valence</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>McLean/Chandler</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">McLean/Chandler</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SBKJA Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SBKJA Valence</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hay/Wadt Valence</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hay/Wadt Valence</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MNDO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MNDO</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>ECP Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ECP 種類:</translation>
     </message>
     <message>
         <location line="+14"/>
         <location line="+1131"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">預設</translation>
     </message>
     <message>
         <location line="-1126"/>
         <source>Pople</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pople</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Pople N311</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pople N311</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Dunning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dunning</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Huzinaga</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Huzinaga</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hondo7</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hondo7</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>#F Heavy Atom Polarization Functions:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">#F Heavy Atom Polarization Functions:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>#light Atom Polarization Functions:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">#light Atom Polarization Functions:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Polar:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Polar:</translation>
     </message>
     <message>
         <location line="+30"/>
         <source>Max SCF Iterations:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Max SCF Iterations:</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -5380,42 +5421,42 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Gradient</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gradient</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最適化</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Trudge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trudge</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Saddle Point</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鞍點</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>IRC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IRC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Gradient Extremal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gradient Extremal</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DRC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DRC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Energy Surface</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">能量表面</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5425,187 +5466,187 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Morokuma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Morokuma</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Radiative Transition mom.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">放射過度 mom</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Spin Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自旋軌道</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Finite Electric Field</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">有限電場</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>TDHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TDHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Global Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全局最佳化</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>VSCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">VSCF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>FMO Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">FMO 最佳化</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Raman Intensities</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">拉曼強度</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>NMR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">NMR</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Make EFP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">產生 EFP</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>UHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>ROHF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ROHF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>GVB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GVB</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MCSCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MCSCF</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>None (CI)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">None (CI)</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Foster-Boys</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Foster-Boys</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Edmistron-Ruedenberg</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Edmistron-Ruedenberg</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Pipek-Mezey</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pipek-Mezey</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>SCF Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SCF 種類:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Localization Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Localization Method:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Exec Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Exec 種類:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>CI:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CI:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>GUGA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GUGA</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Ames Lab. Determinant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ames Lab. Determinant</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Occupation Restricted Multiple Active Space</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Occupation Restricted Multiple Active Space</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CI Singles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CI Singles</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Full Second Order CI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Full Second Order CI</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>General CI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">General CI</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>CC:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CC:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>LCCD: Linearized CC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LCCD: 線性化的 CC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCD: CC with Doubles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCD: CC with Doubles</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CCSD: CC with Singles and Doubles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD: CC with Singles and Doubles</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>R-CC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">R-CC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CR-CC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CR-CC</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>EOM-CCSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EOM-CCSD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CR-EOM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CR-EOM</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -5615,17 +5656,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+15"/>
         <source>Normal Run</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Normal Run</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Check</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Check</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">除錯</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -5635,122 +5676,122 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+24"/>
         <source>Molecule Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子電荷:</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Run Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Run 種類:</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Use MP2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use MP2</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Use DFT</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use DFT</translation>
     </message>
     <message>
         <location line="+49"/>
         <source># of Z-Matrix Variables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"># of Z-Matrix Variables</translation>
     </message>
     <message utf8="true">
         <location line="+10"/>
         <source>Ǻngstrom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ǻngstrom</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bohr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bohr</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Order of Principal Axis:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Order of Principal Axis:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Coordinate Type:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">坐標軸種類:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>C1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CS</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CI</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CnH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CnH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>CnV</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CnV</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Cn</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cn</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>S2n</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">S2n</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DnD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DnD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>DnH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DnH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Dn</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dn</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>TD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TD</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>TH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>T</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">T</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>OH</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OH</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">O</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -5760,37 +5801,37 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+25"/>
         <source>Unique cartesian Coords.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Unique cartesian Coords.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hilderbrant internals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hilderbrant internals</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Cartesian coordinates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">笛卡兒坐標/直角坐標</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Z-Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Z-Matrix</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MOPAC Z-Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MOPAC Z-Matrix</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Use Symmetry During Calculation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use Symmetry During Calculation</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Units:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">單位：</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -5800,117 +5841,117 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+57"/>
         <source>Point Group:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Point Group:</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">秒</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分鐘</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">小時</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Days</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">天</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">週</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Years</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">年</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Millenia</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">千年</translation>
     </message>
     <message>
         <location line="+29"/>
         <location line="+44"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">字</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+44"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">位元組</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+44"/>
         <source>MegaWords</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MegaWords</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+44"/>
         <source>MegaBytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MegaBytes</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Force Parallel Methods</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Force Parallel Methods</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Produce &quot;core&quot; file upon abort</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Produce &quot;core&quot; file upon abort</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>EVVRSP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">EVVRSP</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>GIVEIS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GIVEIS</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>JACOBI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JACOBI</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Time Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">時間限制:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>MemDDI:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MemDDI:</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+575"/>
         <source>Memory:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">記憶體：</translation>
     </message>
     <message>
         <location line="-568"/>
         <source>Diagonalization Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diagonalization Method:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Parallel Load Balance Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Parallel Load Balance Type</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -5920,302 +5961,302 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Next Value</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">下一個值</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Use External Data Representation for Messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use External Data Representation for Messages</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>Initial Guess:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Initial Guess:</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Huckel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Huckel</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>HCore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HCore</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MO Read ($VEC)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO Read ($VEC)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>MO Saved (DICTNRY)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MO 已存檔 (DICTNRY)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">略過</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Rotate Alpha and Beta Orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選轉 Alpha 及 Beta 軌域</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Print the Initial Guess</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print the Initial Guess</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>GAMESS Interface to Other Codes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS Interface to Other Codes</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>MolPlt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MolPlt</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>PltOrb</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PltOrb</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>AIMPAC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AIMPAC</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>RPAC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">RPAC</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Force a Check Run Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Force a Check Run Type</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Hondo 8.2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hondo 8.2</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>MELDF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MELDF</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>GAMESS (UK Version)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GAMESS (英國版本)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Gaussian 9x</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gaussian 9x</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全部</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Solvate with Water</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">與進行溶媒合作用</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Generate UHF Natural Orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">產生 UHF 自然軌域</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Direct SCF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Direct SCF</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Compute Only Changed in Fock Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Compute Only Changed in Fock Matrix</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>Slater exchange</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Slater exchange</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Becke 1988 exchange</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Becke 1988 exchange</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>VWN: Vosko-Wilk-Nusair (VWN5) correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">VWN: Vosko-Wilk-Nusair (VWN5) correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>LYP: Lee-Yang-Parr correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LYP: Lee-Yang-Parr correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SVWN: Slater exhange + VWN correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SVWN: Slater exhange + VWN correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>BVWN: BECKE exchange + VWN5 correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BVWN: BECKE exchange + VWN5 correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>BLYP: BECKE exchange + LYP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BLYP: BECKE exchange + LYP correlation</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Gill 1996 exchange</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gill 1996 exchange</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Perdew-Burke-Ernzerhof (PBE) exchange</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Perdew-Burke-Ernzerhof (PBE) exchange</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>OP: One-parameter Progressive correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OP: One-parameter Progressive correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SLYP: SLATER + Lee-Yang-Parr (LYP) correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>SOP: SLATER + OP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SOP: SLATER + OP correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>BOP: BECKE exchange + OP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BOP: BECKE exchange + OP correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>BVWN: GILL exchange + VWN5 correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BVWN: GILL exchange + VWN5 correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>GLYP: GILL exchange + LYP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GLYP: GILL exchange + LYP correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>PBEVWN: PBE exchange + VWN6 correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PBEVWN: PBE exchange + VWN6 correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>PBELYP: PBE exchange +LYP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PBELYP: PBE exchange +LYP correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>PBEOP: PBE exchange + OP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PBEOP: PBE exchange + OP correlation</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>BHHLYP: HF and BECKE exchange + LYP correlation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BHHLYP: HF and BECKE exchange + LYP correlation</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Grid</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Grid-Free</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Grid-Free</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>DFT Functional:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DFT Functional:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">方式:</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>AO Integral Storage</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AO Integral Storage</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Duplicated on Each Node</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Duplicated on Each Node</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Distributed Across All Nodes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Distributed Across All Nodes</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">words</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Compute MP2 Properties</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">計算 MP2 的特性</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Integral Retention Cutoff:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Integral Retention Cutoff:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Use Localized Orbitals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用定域軌域</translation>
     </message>
     <message>
         <location line="+7"/>
         <source># of Core Electrons:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">內層電子數:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Transformation Method</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Transformation Method</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Two Phase Bin Sort</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Two Phase Bin Sort</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Segmented Transformation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Segmented Transformation</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Vibrational Analysis</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">振動分析</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -6225,162 +6266,162 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+6"/>
         <source>Analytic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分析</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Numeric</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">數字</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Double Differenced Hessian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Double Differenced Hessian</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Print Internal Force Constants</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print Internal Force Constants</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Displacement Size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">置換大小</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Purify Hessian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Purify Hessian</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Frequency Scale Factor:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Frequency Scale Factor:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>bohrs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">bohrs</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Initial Hessian</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Initial Hessian</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Guess (+ define)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Guess (+ define)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Read (from $HESS)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Read (from $HESS)</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Update Step Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Update Step Size</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Print Orbs at Each Iteration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print Orbs at Each Iteration</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Gradient Convergence Criteria:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">梯度收斂的標準</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Jump Size:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jump Size:</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Stationary Point</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stationary Point</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Optimization Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最適化方法</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Step Size</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Step Size</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Maximum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最大值：</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Minimum:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最小值：</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Initial:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Initial:</translation>
     </message>
     <message>
         <location line="+44"/>
         <source>Newton-Raphson</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Newton-Raphson</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Rational Function Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rational Function Optimization</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Quadratic Approximation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">二次逼近</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Schlegel (quasi-NR)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Schlegel (quasi-NR)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Constrained Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Constrained Optimization</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>steps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">steps</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Recalculate Hessian Every:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Recalculate Hessian Every:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Follow Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Follow Mode:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Maximum Steps:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Maximum Steps:</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Reset All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">恢復預設值</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">預設值</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6398,7 +6439,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/gaussianinputdialog.ui" line="+19"/>
         <source>Gaussian Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">輸入 Gaussian</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -6503,7 +6544,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電荷:</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -6523,12 +6564,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Molden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molden</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Molekel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Molekel</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -6591,27 +6632,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/hbondsettingswidget.ui" line="+16"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">寬度：</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Cut-off radius:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">截止半徑</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A</translation>
     </message>
     <message utf8="true">
         <location line="+10"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">°</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Cut-off angle:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">截斷角度：</translation>
     </message>
 </context>
 <context>
@@ -6629,7 +6670,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選取...</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -6662,22 +6703,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="+13"/>
         <source>Insert Fragment...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">插入片段...</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增目錄</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Reset List</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">重設清單</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Generate from SMILES:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從 SMILES 產生：</translation>
     </message>
     <message>
         <location line="+39"/>
@@ -6690,28 +6731,28 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="+22"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子標籤：</translation>
     </message>
     <message>
         <location line="+32"/>
         <location line="+80"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="-75"/>
         <source>Atom number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子數</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素名稱</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element symbol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6721,12 +6762,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Residue number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基編號</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部份電荷</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6742,22 +6783,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Bond Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的標示:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Bond length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的長度</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的編號</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的級數</translation>
     </message>
 </context>
 <context>
@@ -6765,7 +6806,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/liganddialog.ui" line="+13"/>
         <source>Create ligand</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增配位基</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -6776,17 +6817,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+4"/>
         <source>create ligand from current selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從目前選項中新增配位基</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>create ligand from residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從殘基名稱新增配位基</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>create ligand from file...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從檔案新增配位基</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -6829,7 +6870,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>0/0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">0/0</translation>
     </message>
     <message>
         <location line="+117"/>
@@ -6839,7 +6880,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+20"/>
         <source>fps</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">fps</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -6902,7 +6943,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電荷:</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -6912,17 +6953,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+10"/>
         <source>Singlet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Singlet</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Doublet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Doublet</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Triplet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Triplet</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -6937,7 +6978,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Method:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">方式:</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -6947,7 +6988,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>MNDO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MNDO</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7020,27 +7061,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/mainwindow.ui" line="+14"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">說明(&amp;H)</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檔案 (&amp;F)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Open &amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟最近的(&amp;R)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">匯出</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -7055,7 +7096,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+4"/>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">工具列</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -7065,12 +7106,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">檢視(&amp;V)</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">編輯(&amp;E)</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -7085,7 +7126,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+17"/>
         <source>Main Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">主工具列</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -7095,92 +7136,92 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+33"/>
         <source>Display Types</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顯示的項目</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">工具</translation>
     </message>
     <message>
         <location line="+21"/>
         <location line="+12"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">開啟(&amp;O)</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+O</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">離開(&amp;Q)</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Q</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最近的</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Clear Recent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除最近的</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+12"/>
         <source>&amp;New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增(&amp;N)...</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+N</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">關閉</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+W</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+12"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">儲存(&amp;S)</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">另存新檔...(&amp;A)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+S</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Revert To Saved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">恢復到舊檔</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -7190,7 +7231,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>&amp;Full Screen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全螢幕模式 (&amp;F)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7200,82 +7241,82 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+9"/>
         <source>Set &amp;Background Color...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定背景顏色(&amp;B)...</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">關於本軟體 (&amp;A)</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Undo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">復原(&amp;U)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Z</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Redo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">取消復原(&amp;R)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+Z</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+Z</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>New View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">增加新的工作視窗</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Close View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">關閉工作視窗</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">將分子置於工作視窗中央</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">貼上(&amp;P)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+V</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">複製</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+C</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">剪下</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+X</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7285,42 +7326,42 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全選</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Select None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不選擇</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ctrl+Shift+A</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Configure Avogadro...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定 Avogadro (的顯示品質)</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Tutorials</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">教學</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Duplicate View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">複製工作視窗</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Display Axes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顯示坐標軸</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -7330,27 +7371,27 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Avogadro Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 說明</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Release Notes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">發行說明</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">回報錯誤</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>FAQ</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">常見問題</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Avogadro Website</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 網頁</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7453,7 +7494,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>CCSD(T)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CCSD(T)</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -7513,7 +7554,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電荷:</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -7681,7 +7722,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電荷:</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -7769,7 +7810,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+15"/>
         <source>Origin:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原點：</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -7779,7 +7820,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+42"/>
         <source>Steps:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">步驟：</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -7852,7 +7893,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+12"/>
         <location line="+217"/>
         <source>In:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">In:</translation>
     </message>
     <message>
         <location line="-169"/>
@@ -7868,7 +7909,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+52"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7896,7 +7937,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/orbitalsettingswidget.ui" line="+17"/>
         <source>Orbital:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">軌域：</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -7926,7 +7967,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+8"/>
         <source>Draw Box:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製盒：</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -7951,12 +7992,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+12"/>
         <source>Positive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">正</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Negative</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">負</translation>
     </message>
 </context>
 <context>
@@ -7964,28 +8005,28 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/overlaysettingswidget.ui" line="+22"/>
         <source>Atom Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子標籤：</translation>
     </message>
     <message>
         <location line="+32"/>
         <location line="+70"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="-65"/>
         <source>Atom number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子數</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素名稱</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Element symbol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7995,32 +8036,32 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Residue number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基編號</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Partial Charge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">部份電荷</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Bond Labels:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的標示:</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Bond length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的長度</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond number</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的編號</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond order</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵的級數</translation>
     </message>
 </context>
 <context>
@@ -8033,7 +8074,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選取...</translation>
     </message>
     <message>
         <location line="+34"/>
@@ -8121,22 +8162,22 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Display Types</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顯示的項目</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">工具</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Extensions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">延伸功能</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">顏色</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -8149,7 +8190,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/extensions/pocketdialog.ui" line="+13"/>
         <source>Create binding pocket</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增鍵結結合區域</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -8160,12 +8201,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+4"/>
         <source>create pocket from current selection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從目前的選項新增鍵結結合區域</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>create pocket from residue name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">從殘基名稱新增結合區域</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -8180,12 +8221,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Radius</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">半徑</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>All atoms within radius from the ligand will be part of the binding pocket</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">配位基上此半徑範圍內的原子將會是鍵結結合區域的一部份</translation>
     </message>
 </context>
 <context>
@@ -8290,7 +8331,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+30"/>
         <source>Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">設定...</translation>
     </message>
 </context>
 <context>
@@ -8444,7 +8485,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+23"/>
         <source>Charge:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電荷:</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -8502,67 +8543,67 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../avogadro/src/editcommands.cpp" line="+44"/>
         <source>Cut Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">剪下分子</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Cut Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">剪下原子</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">貼上</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Clear Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除分子</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Clear Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除原子</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/atomdelegate.h" line="+43"/>
         <source>Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">原子</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/bonddelegate.h" line="+43"/>
         <source>Bonds</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/labeldelegate.h" line="+43"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">元素符號</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/moleculedelegate.h" line="+43"/>
         <source>Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">分子</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/residuedelegate.h" line="+43"/>
         <source>Residues</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">殘基</translation>
     </message>
     <message>
         <location filename="../avogadro/src/projectdelegates/selectiondelegate.h" line="+43"/>
         <source>User Selections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">使用者自選的項目</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/forcefieldextension.cpp" line="+45"/>
         <source>Geometric Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">幾何最適化</translation>
     </message>
     <message>
         <location line="+263"/>
         <source>Forcefield Optimization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">力場最適化</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -8571,27 +8612,27 @@ Do you want to create a crystal unit cell?</source>
         <location line="+3"/>
         <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="+62"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">取消</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Systematic Rotor Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Systematic Rotor Search</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Random Rotor Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Random Rotor Search</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Weighted Rotor Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Weighted Rotor Search</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/h2methylextension.cpp" line="+23"/>
         <source>H to Methyl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">氫到甲基</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/extensions/hydrogensextension.cpp" line="+25"/>
@@ -8616,7 +8657,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="+14"/>
         <location line="+23"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="-99"/>
@@ -8651,7 +8692,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+11"/>
         <source>Set Aspect Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Set Aspect Ratio</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -8659,50 +8700,53 @@ Do you want to create a crystal unit cell?</source>
 You may keep this value, for example if you intend to use POV-Ray
 to produce an image of %4x1000 pixels, or you may enter any other positive value,
 for example 1 if you intend to use POV-Ray to produce a square image, like 1000x1000 pixels.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">目前 Avogadro 的工作視窗是 %1x%2 畫素, 而畫面比例是 %3.
+您可以保留這設定, 例如, 如果您想要使用 POV-Ray
+以產生 %4x1000 畫素的影像, 或者您可以自行設定畫面的大小,
+例如範本 1 , 您可以設定成正方形的影像, 大小是 1000x1000 畫素.</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/plugin.cpp" line="+42"/>
         <source>No Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沒有描述</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/autoopttool.cpp" line="+195"/>
         <source>AutoOpt Molecule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自動最佳化分子</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/bondcentrictool.cpp" line="+54"/>
         <location line="+15"/>
         <source>Bond Centric Manipulation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵中心調整</translation>
     </message>
     <message>
         <location filename="../libavogadro/src/tools/drawcommand.cpp" line="+275"/>
         <location line="+14"/>
         <source>Add Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增原子</translation>
     </message>
     <message>
         <location line="+94"/>
         <source>Delete Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">刪除原子</translation>
     </message>
     <message>
         <location line="+144"/>
         <location line="+19"/>
         <source>Add Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增鍵</translation>
     </message>
     <message>
         <location line="+172"/>
         <source>Delete Bond</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">刪除鍵</translation>
     </message>
     <message>
         <location line="+69"/>
         <source>Change Element</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">變更元素</translation>
     </message>
     <message>
         <location line="+104"/>
@@ -8718,7 +8762,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
         <location filename="../libavogadro/src/tools/manipulatetool.cpp" line="+311"/>
         <location line="+9"/>
         <source>Manipulate Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調整原子</translation>
     </message>
 </context>
 <context>
@@ -8754,12 +8798,12 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location filename="../libavogadro/src/engines/ribbonsettingswidget.ui" line="+16"/>
         <source>Rendering:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製：</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Backbone</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">骨幹</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8774,7 +8818,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+54"/>
         <source>Include Nitrogens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">包含氮</translation>
     </message>
 </context>
 <context>
@@ -8801,7 +8845,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-195"/>
         <source>Quality:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">品質：</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -8812,7 +8856,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-21"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">中等</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -8822,7 +8866,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+44"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -8893,7 +8937,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+17"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無</translation>
     </message>
 </context>
 <context>
@@ -8906,7 +8950,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+12"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">關閉</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -9149,7 +9193,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+23"/>
         <source>&amp;Load data...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">載入檔案...</translation>
     </message>
 </context>
 <context>
@@ -9157,7 +9201,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/engines/spheresettingswidget.ui" line="+16"/>
         <source>VdW Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">VdW 不透明度：</translation>
     </message>
 </context>
 <context>
@@ -9183,17 +9227,17 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+6"/>
         <source>A repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A 重複:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>B repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B 重複:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>C repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C 重複:</translation>
     </message>
     <message>
         <location line="+32"/>
@@ -9236,22 +9280,22 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+11"/>
         <source>Custom Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自訂顏色</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Electrostatic Potential (ESP)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">靜電力（ESP）</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Draw Box:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">繪製盒：</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Custom Color:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自訂顏色：</translation>
     </message>
 </context>
 <context>
@@ -9260,77 +9304,77 @@ Scroll wheel: Zoom to cursor</source>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="+13"/>
         <location line="+97"/>
         <source>Unit Cell Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">單位晶胞參數</translation>
     </message>
     <message>
         <location line="-82"/>
         <source>Unit Cell Display Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">單位晶胞展示的選項</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>A repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A 重複:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>B repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B 重複:</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>C repeat:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C 重複:</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Delete Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">移除單位晶胞</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Fill Unit Cell</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">填入單位晶胞</translation>
     </message>
     <message utf8="true">
         <location line="+30"/>
         <source>Axes (Å)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">軸 (Å)</translation>
     </message>
     <message utf8="true">
         <location line="+20"/>
         <source>Angles (°)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">鍵角 (°)</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>A:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>alpha:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">alpha:</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>B:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>beta:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">beta:</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>C:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>gamma:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">gamma:</translation>
     </message>
 </context>
 <context>
@@ -9381,7 +9425,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/engines/wiresettingswidget.ui" line="+18"/>
         <source>Show Atoms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Atoms</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -9404,7 +9448,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location line="+20"/>
         <source>Add Atom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">新增原子</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -9417,7 +9461,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../avogadro/src/main.cpp" line="+193"/>
         <source>Avogadro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
         <location line="+1"/>
