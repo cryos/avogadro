@@ -389,7 +389,7 @@ namespace Avogadro
     QTextStream mol(&buffer);
 
     mol << " AUX ";
-    mol << "CHARGE=" << m_charge << " ";
+    mol << "CHARGE=" << m_charge << ' ';
     switch (m_multiplicity)
       {
       case 2:
@@ -409,8 +409,8 @@ namespace Avogadro
         mol << "SINGLET ";
       }
 
-    mol << getCalculationType(m_calculationType) << " ";
-    mol << getTheoryType(m_theoryType) << "\n";
+    mol << getCalculationType(m_calculationType) << ' ';
+    mol << getTheoryType(m_theoryType) << '\n';
 
     mol << m_title << "\n\n";
 
@@ -433,7 +433,7 @@ namespace Avogadro
               << atom->pos()->x() << optimizationFlag
               << atom->pos()->y() << optimizationFlag
               << atom->pos()->z() << optimizationFlag
-              << qSetFieldWidth(0) << "\n";
+              << qSetFieldWidth(0) << '\n';
         }
       }
     // Z-matrix

@@ -248,24 +248,24 @@ namespace Avogadro
     mol << "*** " << m_title << "\n\n";
 
     // Default output parameters
-    mol << "gprint,basis" << "\n";
-    mol << "gprint,orbital" << "\n";
+    mol << "gprint,basis" << '\n';
+    mol << "gprint,orbital" << '\n';
 
-    mol << "\n";
+    mol << '\n';
 
     // Now for the basis set
-    mol << "basis, " << getBasisType(m_basisType) << "\n";
+    mol << "basis, " << getBasisType(m_basisType) << '\n';
 
-    mol << "\n";
+    mol << '\n';
 
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
     if (m_molecule && m_coordType == CARTESIAN)
     {
-      mol << "geomtyp=xyz" << "\n";
-      mol << "geometry={" << "\n";
-      mol << m_molecule->numAtoms() << "\n";
-      mol << "\n";
+      mol << "geomtyp=xyz" << '\n';
+      mol << "geometry={" << '\n';
+      mol << m_molecule->numAtoms() << '\n';
+      mol << '\n';
       QList<Atom *> atoms = m_molecule->atoms();
       foreach (Atom *atom, atoms) {
         mol << qSetFieldWidth(2) << left
@@ -273,9 +273,9 @@ namespace Avogadro
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->pos()->x() << atom->pos()->y()
             << atom->pos()->z()
-            << qSetFieldWidth(0) << "\n";
+            << qSetFieldWidth(0) << '\n';
       }
-      mol << "}" << "\n";
+      mol << "}" << '\n';
     }
     // Z-matrix
     else if (m_molecule && m_coordType == ZMATRIX)
@@ -303,20 +303,20 @@ namespace Avogadro
         if (atom->GetIdx() > 1)
           mol << "   r" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << r << qSetFieldWidth(0) << "\n";
+              << r << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << "\n";
+              << w << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << "\n";
+              << t << qSetFieldWidth(0) << '\n';
       }
-      mol << "geometry={" << "\n";
-      mol << "\n";
-      mol << "nosym" << "\n"; /* FIXME */
-      mol << "ang" << "\n";
+      mol << "geometry={" << '\n';
+      mol << '\n';
+      mol << "nosym" << '\n'; /* FIXME */
+      mol << "ang" << '\n';
       FOR_ATOMS_OF_MOL(atom, &obmol)
       {
         a = vic[atom->GetIdx()]->_a;
@@ -333,9 +333,9 @@ namespace Avogadro
         if (atom->GetIdx() > 3)
           mol << ", " << QString::number(c->GetIdx())
               << ", d" << atom->GetIdx();
-        mol << "\n";
+        mol << '\n';
       }
-      mol << "}" << "\n";
+      mol << "}" << '\n';
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
     }
@@ -345,9 +345,9 @@ namespace Avogadro
       OBAtom *a, *b, *c;
       double r, w, t;
 
-      mol << "geometry={" << "\n";
-      mol << "nosym" << "\n"; /* FIXME */
-      mol << "ang" << "\n";
+      mol << "geometry={" << '\n';
+      mol << "nosym" << '\n'; /* FIXME */
+      mol << "ang" << '\n';
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
       vic.push_back((OpenBabel::OBInternalCoord*)NULL);
@@ -382,26 +382,26 @@ namespace Avogadro
           mol << ", " << QString::number(c->GetIdx()) << ", " 
               << qSetRealNumberPrecision(5) << forcepoint 
               << fixed << right << t;
-        mol << qSetFieldWidth(0) << "\n";
+        mol << qSetFieldWidth(0) << '\n';
       }
-      mol << "}" << "\n";
+      mol << "}" << '\n';
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
     }
 
-    mol << "\n";
+    mol << '\n';
 
     // Now specify the job type
     if (m_theoryType != B3LYP) {
-      mol << "{" << "rhf" << "\n";
+      mol << "{" << "rhf" << '\n';
       mol << getWavefunction() << "}\n";
     }
     if (m_theoryType != RHF) {
-      mol << "{" << getTheoryType(m_theoryType) << "\n";
+      mol << "{" << getTheoryType(m_theoryType) << '\n';
       mol << getWavefunction() << "}\n";
     }
     
-    mol << "\n";
+    mol << '\n';
 
     // Now for the calculation type
     mol << getCalculationType(m_calculationType);

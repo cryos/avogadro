@@ -56,7 +56,7 @@ namespace Avogadro
         QString aNum;
         line = m_in.readLine(); // blank
         line = m_in.readLine();
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         while (list.size() == 6) {
           aNum = list.at(2);
           aNum.chop(3); // get rid of the ".00"
@@ -70,11 +70,11 @@ namespace Avogadro
 	  m_aPos.push_back(list.at(3).toDouble());
 
           line = m_in.readLine();
-          list = line.split(" ", QString::SkipEmptyParts);
+          list = line.split(' ', QString::SkipEmptyParts);
         } 
       }
       else if (line.indexOf( "NUMBER OF ELECTRONS" ) != -1 ) {
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         QString alpha = list.at(3);
         QString beta = list.at(4);
         // get rid of the +/- signs after the values
@@ -84,7 +84,7 @@ namespace Avogadro
 	m_electrons = alpha.toInt() + beta.toInt();
       }
       else if (line.indexOf( "NUMBER OF CONTRACTIONS" ) != -1 ) {
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         m_numBasisFunctions = list.at(3).toInt();
       } 
       /* Atomic basis definitions.  They look like this in the output:
@@ -119,11 +119,11 @@ namespace Avogadro
 	bool newShell = true;
         line = m_in.readLine(); // blank
         line = m_in.readLine();
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         QString frontline = line.mid(1, 25);
-        QStringList frontlist = frontline.split(" ", QString::SkipEmptyParts);
+        QStringList frontlist = frontline.split(' ', QString::SkipEmptyParts);
         QString backline = line.mid(25, 55);
-        QStringList backlist = backline.split(" ", QString::SkipEmptyParts);
+        QStringList backlist = backline.split(' ', QString::SkipEmptyParts);
         while (list.size() > 1) {
 	  vector< vector<double> > contrCoeffs;
 	  vector<double> exponents;
@@ -173,11 +173,11 @@ namespace Avogadro
 	  contrCoeffs.push_back(contractions);
 
           line = m_in.readLine();
-          list = line.split(" ", QString::SkipEmptyParts);
+          list = line.split(' ', QString::SkipEmptyParts);
           frontline = line.mid(1, 25);
-          frontlist = frontline.split(" ", QString::SkipEmptyParts);
+          frontlist = frontline.split(' ', QString::SkipEmptyParts);
           backline = line.mid(25, 55);
-          backlist = backline.split(" ", QString::SkipEmptyParts);
+          backlist = backline.split(' ', QString::SkipEmptyParts);
 
           while (list.size() > 0 && frontlist.size() < 4) {
 	    /* new contraction.  This can either have a AO header without type
@@ -187,7 +187,7 @@ namespace Avogadro
                               64.710000     0.101718   -0.023312    0.000000
              */
 	    QString backline = line.mid(25, 55);
-            backlist = backline.split(" ", QString::SkipEmptyParts);
+            backlist = backline.split(' ', QString::SkipEmptyParts);
             exponents.push_back(backlist.at(0).toDouble());
 	    vector<double> contractions;
 	    for (int i = 0; i < zetaType; i++) {
@@ -196,11 +196,11 @@ namespace Avogadro
             contrCoeffs.push_back(contractions);
 
             line = m_in.readLine();
-            list = line.split(" ", QString::SkipEmptyParts);
+            list = line.split(' ', QString::SkipEmptyParts);
             frontline = line.mid(1, 25);
-            frontlist = frontline.split(" ", QString::SkipEmptyParts);
+            frontlist = frontline.split(' ', QString::SkipEmptyParts);
             backline = line.mid(25, 55);
-            backlist = backline.split(" ", QString::SkipEmptyParts);
+            backlist = backline.split(' ', QString::SkipEmptyParts);
           }
 
 	  /* We're at the end of this shell.  Now add the data we gathered to
@@ -253,30 +253,30 @@ namespace Avogadro
 */
         line = m_in.readLine(); // blank
         line = m_in.readLine(); // column header start
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         while (list.size() > 1) {
           // skip column header
           line = m_in.readLine();
-          list = line.split(" ", QString::SkipEmptyParts);
+          list = line.split(' ', QString::SkipEmptyParts);
         }
         line = m_in.readLine();
-        list = line.split(" ", QString::SkipEmptyParts);
+        list = line.split(' ', QString::SkipEmptyParts);
         while (list.size() > 1) {
           // new MO
           m_orbitalEnergy.push_back(list.at(2).toDouble());
           QStringList MOList;
           QString MOLine = line.mid(32);
-          MOList = MOLine.split(" ", QString::SkipEmptyParts);
+          MOList = MOLine.split(' ', QString::SkipEmptyParts);
           while (MOList.size() > 1) {
             for (int i = 0; i < MOList.size(); i++) 
               m_MOcoeffs.push_back(MOList.at(i).toDouble()); 
             line = m_in.readLine();
-            list = line.split(" ", QString::SkipEmptyParts);
+            list = line.split(' ', QString::SkipEmptyParts);
             MOLine = line.mid(32);
-            MOList = MOLine.split(" ", QString::SkipEmptyParts);
+            MOList = MOLine.split(' ', QString::SkipEmptyParts);
           }
           line = m_in.readLine();
-          list = line.split(" ", QString::SkipEmptyParts);
+          list = line.split(' ', QString::SkipEmptyParts);
         }
         reorderD5Orbitals();
         basis->addMOs(m_MOcoeffs);

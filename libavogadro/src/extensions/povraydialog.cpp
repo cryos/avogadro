@@ -166,7 +166,7 @@ namespace Avogadro
   void POVRayDialog::updateCommandLine()
   {
     // Should update the command line when anything is changed
-    ui.command->setText(ui.povrayPath->text() + " " + commandLine().join(" "));
+    ui.command->setText(ui.povrayPath->text() + ' ' + commandLine().join(" "));
   }
 
 } // End namespace Avogadro

@@ -253,7 +253,7 @@ namespace Avogadro
 //    std::cout << m_normalized << std::endl << std::endl;
 //    std::cout << s.eigenvalues() << std::endl << std::endl;
 //    std::cout << m_overlap << std::endl << std::endl;
-//    std::cout << s.eigenvalues().minCoeff() << " " << s.eigenvalues().maxCoeff() << std::endl << std::endl;
+//    std::cout << s.eigenvalues().minCoeff() << ' ' << s.eigenvalues().maxCoeff() << std::endl << std::endl;
 
     m_factors.resize(m_zetas.size());
     m_PQNs = m_pqns;

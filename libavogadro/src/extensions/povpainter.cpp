@@ -227,8 +227,8 @@ namespace Avogadro
         norms << ", ";
       }
       if (i != 0 && i%3 == 0) {
-        verts << "\n";
-        norms << "\n";
+        verts << '\n';
+        norms << '\n';
       }
     }
     // Now to write out the indices
@@ -238,7 +238,7 @@ namespace Avogadro
         iverts << ", ";
       }
       if (i != 0 && ((i+1)/3)%3 == 0) {
-        iverts << "\n";
+        iverts << '\n';
       }
     }
     // Now to close off all the arrays
@@ -247,9 +247,9 @@ namespace Avogadro
     iverts << "\n}";
     // Now to write out the full mesh - could be pretty big...
     *(d->output) << "mesh2 {\n"
-                 << vertsStr << "\n"
-                 << normsStr << "\n"
-                 << ivertsStr << "\n"
+                 << vertsStr << '\n'
+                 << normsStr << '\n'
+                 << ivertsStr << '\n'
                  << "\tpigment { rgbt <" << d->color.red() << ", "
                  << d->color.green() << ", "
                  << d->color.blue() << ", " << 1.0 - d->color.alpha() << "> }"
@@ -301,8 +301,8 @@ namespace Avogadro
         textures << ",\n";
       }
       if (i != 0 && i%3 == 0) {
-        verts << "\n";
-        norms << "\n";
+        verts << '\n';
+        norms << '\n';
       }
     }
     // Now to write out the indices
@@ -313,7 +313,7 @@ namespace Avogadro
         iverts << ", ";
       }
       if (i != 0 && ((i+1)/3)%3 == 0) {
-        iverts << "\n";
+        iverts << '\n';
       }
     }
     // Now to close off all the arrays
@@ -323,10 +323,10 @@ namespace Avogadro
     textures << "\n}";
     // Now to write out the full mesh - could be pretty big...
     *(d->output) << "mesh2 {\n"
-                 << vertsStr << "\n"
-                 << normsStr << "\n"
-                 << texturesStr << "\n"
-                 << ivertsStr << "\n"
+                 << vertsStr << '\n'
+                 << normsStr << '\n'
+                 << texturesStr << '\n'
+                 << ivertsStr << '\n'
                  << "}\n\n";
   }
 
@@ -426,10 +426,10 @@ namespace Avogadro
       << "camera {\n"
       << "\tperspective\n"
       << "\tlocation <" << cameraT.x() << ", " << cameraT.y() << ", " << cameraT.z() << ">\n"
-      << "\tangle " << m_glwidget->camera()->angleOfViewY() << "\n"
+      << "\tangle " << m_glwidget->camera()->angleOfViewY() << '\n'
       << "\tup <" << cameraY.x() << ", " << cameraY.y() << ", " << cameraY.z() << ">\n"
       << "\tright <" << cameraX.x() << ", " << cameraX.y() << ", " << cameraX.z()
-      << "> * " << m_aspectRatio << "\n"
+      << "> * " << m_aspectRatio << '\n'
       << "\tdirection <" << cameraZ.x() << ", " << cameraZ.y() << ", " << cameraZ.z() << "> }\n\n"
 
       << "light_source {\n"
@@ -439,7 +439,7 @@ namespace Avogadro
       << "\tcolor rgb <" << LIGHT0_DIFFUSE[0] << ", "
                          << LIGHT0_DIFFUSE[1] << ", "
                          << LIGHT0_DIFFUSE[2] << ">\n"
-      << "\tfade_distance " << 2 * huge << "\n"
+      << "\tfade_distance " << 2 * huge << '\n'
       << "\tfade_power 0\n"
       << "\tparallel\n"
       << "\tpoint_at <" << -light0pos[0]
@@ -454,7 +454,7 @@ namespace Avogadro
       << "\tcolor rgb <" << LIGHT1_DIFFUSE[0] << ", "
                          << LIGHT1_DIFFUSE[1] << ", "
                          << LIGHT1_DIFFUSE[2] << ">\n"
-      << "\tfade_distance " << 2 * huge << "\n"
+      << "\tfade_distance " << 2 * huge << '\n'
       << "\tfade_power 0\n"
       << "\tparallel\n"
       << "\tpoint_at <" << -light1pos[0]

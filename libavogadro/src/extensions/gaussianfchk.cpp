@@ -65,7 +65,7 @@ namespace Avogadro
     key.resize(42);
     key = key.trimmed();
     QString tmp = line.mid(43, 37);
-    QStringList list = tmp.split(" ", QString::SkipEmptyParts);
+    QStringList list = tmp.split(' ', QString::SkipEmptyParts);
 
     // Big switch statement checking for various things we are interested in
     if (key == "Number of atoms")
@@ -200,7 +200,7 @@ namespace Avogadro
       if (line.isEmpty())
         return tmp;
 
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i) {
         if (tmp.size() >= n) {
           qDebug() << "Too many variables read in. File may be inconsistent."
@@ -235,7 +235,7 @@ namespace Avogadro
         return tmp;
 
       if (width == 0) { // we can split by spaces
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         for (int i = 0; i < list.size(); ++i) {
           if (tmp.size() >= n) {
             qDebug() << "Too many variables read in. File may be inconsistent."
@@ -292,7 +292,7 @@ namespace Avogadro
         return false;
 
       if (width == 0) { // we can split by spaces
-        QStringList list = line.split(" ", QString::SkipEmptyParts);
+        QStringList list = line.split(' ', QString::SkipEmptyParts);
         for (int k = 0; k < list.size(); ++k) {
           if (cnt >= n) {
             qDebug() << "Too many variables read in. File may be inconsistent."
