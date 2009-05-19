@@ -51,7 +51,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("AutoRotate", tr("AutoRotate"),
-                    tr("Automatic rotation of molecules"))
+                    tr("Automatic rotation of molecules"),
+                    tr("AutoRotate Settings"))
 
     public:
       //! Constructor

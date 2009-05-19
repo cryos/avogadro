@@ -62,8 +62,8 @@ namespace Avogadro {
     d->glWidget = widget;
 
     QVector<QVariant> rootData;
-    rootData << tr("tree");
-    rootData << tr("index");
+    rootData << tr("Item");
+    rootData << tr("Index");
     d->rootItem = new ProjectTreeItem(rootData);
     d->rootItem->setTerminal(false);
     

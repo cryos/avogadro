@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef __ANIMATIONEXTENSION_H
-#define __ANIMATIONEXTENSION_H
+#ifndef ANIMATIONEXTENSION_H
+#define ANIMATIONEXTENSION_H
 
 
 #include <openbabel/mol.h>

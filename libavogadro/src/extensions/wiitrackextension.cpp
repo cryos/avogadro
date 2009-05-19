@@ -250,7 +250,7 @@ namespace Avogadro {
           if (!valid_source) {
             printf("no sources detected");
           }
-          printf("\n");
+          printf('\n');
           break;
         case CWIID_MESG_ERROR:
           if (cwiid_disconnect(wiimote)) {

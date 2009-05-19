@@ -42,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      PythonTool(QObject *parent = 0, const QString &filename = QString(""));
+      explicit PythonTool(QObject *parent = 0, const QString &filename = QString(""));
       //! Destructor
       virtual ~PythonTool();
 
@@ -51,6 +51,7 @@ namespace Avogadro {
       QString identifier() const;
       QString name() const;
       QString description() const;
+      QString settingsTitle() const;
       QUndoCommand* mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mousePressEvent(GLWidget *widget, QMouseEvent *event);
       QUndoCommand* mouseReleaseEvent(GLWidget *widget, QMouseEvent *event);

@@ -115,6 +115,23 @@ namespace Avogadro {
     }
   }
 
+  QString PythonTool::settingsTitle() const
+  {
+    PythonThread pt;
+    if (!PyObject_HasAttrString(m_instance.ptr(), "settingsTitle"))
+      return tr("N/A");
+
+    try {
+      prepareToCatchError();
+      const char *desc = extract<const char*>(m_instance.attr("settingsTitle")());
+      return QString(desc);
+    } catch(error_already_set const &) {
+      catchError();
+      return tr("N/A");
+    }
+  }
+
+
   QUndoCommand* PythonTool::mouseEvent(const QString &what, GLWidget *widget, QMouseEvent *event)
   {
     PythonThread pt;

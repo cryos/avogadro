@@ -27,6 +27,7 @@
 #define GLOBAL_H
 
 #include <QTranslator>
+#include <QPointer>
 
 #define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5
 
@@ -125,7 +126,7 @@ namespace Avogadro
       /**
        * Create a translator instance for the Avogadro library.
        */
-      static QTranslator *createTranslator();
+      static QPointer<QTranslator> createTranslator();
 
       /**
        * @return The version of the Avogadro library.

@@ -235,7 +235,7 @@ namespace Avogadro
       title = tr("Conformer Properties");
       break;
     default:
-      title = QString();
+      break;
     }
     this->setWindowTitle(title);
 
@@ -255,11 +255,9 @@ namespace Avogadro
 
   void PropertiesView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
   {
-    QModelIndex index;
     QList<Primitive *> matchedPrimitives;
-    QModelIndexList items = selected.indexes();
 
-    foreach (index, items) {
+    foreach (const QModelIndex &index, selected.indexes()) {
       if (!index.isValid())
         return;
 

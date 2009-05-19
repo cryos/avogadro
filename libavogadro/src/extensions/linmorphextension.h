@@ -30,9 +30,6 @@
 
 #include "linmorphdialog.h"
 
-#include <avogadro/primitive.h>
-#include <avogadro/glwidget.h>
-
 namespace Avogadro {
   
   class LinMorphExtension : public Extension

@@ -262,13 +262,12 @@ namespace Avogadro {
         }
         else if(type == Primitive::AtomType) {
           Atom *atom = static_cast<Atom*>(primitive);
-          str = tr("Atom") + ' '
-            + QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
-            + ' ' + QString::number(atom->index());
+          str = tr("Atom %1 %2", "%1 is element, %2 is atom index").arg(QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())))
+            .arg(QString::number(atom->index()));
         }
         else if(type == Primitive::BondType){
           Bond *bond = static_cast<Bond*>(primitive);
-          str = tr("Bond") + ' ' + QString::number(bond->index());
+          str = tr("Bond %1", "%1 is bond index").arg(QString::number(bond->index()));
           if (d->molecule) {
             const Atom *beginAtom = d->molecule->atomById(bond->beginAtomId());
             const Atom *endAtom = d->molecule->atomById(bond->endAtomId());
@@ -292,8 +291,9 @@ namespace Avogadro {
         } // end bond
         else if(type == Primitive::ResidueType) {
           Residue *residue = (Residue*)primitive;
-          str = tr("Residue") + ' ';
-          str += residue->name() + ' ' + residue->number();
+          str = tr("Residue %1 %2", "%1 is residue name, %2 is residue index")
+            .arg(residue->name())
+            .arg(residue->number());
         }
 
         return str;

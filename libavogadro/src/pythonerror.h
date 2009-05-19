@@ -105,7 +105,7 @@ namespace Avogadro {
    * (http://docs.python.org/c-api/init.html#Py_Finalize)
    *
    * @param addToSearchPath Optional parameter containing path(s) to add 
-   * (prepend) to sys.path. Multiple paths can be seperated by ';'. 
+   * (prepend) to sys.path. Multiple paths can be separated by ';'. 
    * 
    * @return True if python was successfully initialized.
    */

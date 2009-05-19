@@ -738,7 +738,7 @@ namespace Avogadro
         ++cIndex;
       }
     }
-    qDebug() << "\n";
+    qDebug() << '\n';
   }
 
 }

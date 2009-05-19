@@ -2,7 +2,9 @@
   ColorButton - Button widget to display the current selected color
                 and bring up the color picker when clicked
 
-  Copyright (C) 2008 Geoffrey Hutchison
+	Copyright (c) 2008-2009 Geoff Hutchison
+	Copyright (c) 2008 Tim Vandermeersch
+	Copyright (c) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>

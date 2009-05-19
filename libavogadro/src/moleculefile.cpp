@@ -33,7 +33,6 @@
 #include <QPointer>
 
 #include <openbabel/mol.h>
-#include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
 #include <iostream>
@@ -129,7 +128,7 @@ namespace Avogadro {
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
 
-    if (i && m_fileName.endsWith("xyz", Qt::CaseInsensitive)) {
+    if (i && m_fileName.endsWith(QLatin1String("xyz"), Qt::CaseInsensitive)) {
       ifs.unget();
     }
  

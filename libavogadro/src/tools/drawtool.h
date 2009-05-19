@@ -52,7 +52,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_TOOL("Draw", tr("Draw"),
-                  tr("Draw and edit atoms and bonds"))
+                  tr("Draw and edit atoms and bonds"),
+                  tr("Draw Settings"))
 
     public:
       //! Constructor

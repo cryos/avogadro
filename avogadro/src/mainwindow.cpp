@@ -641,8 +641,8 @@ namespace Avogadro
       QStringList filters;
       filters << tr("Common molecule formats")
         + " (*.cml *.xyz *.pdb *.alc *.cdx *.cdxml *.ent"
-          " *.gpr *.mdl *.mol *.sdf *.sd *.cht *.dmol *.bgf"
-          " *.inp *.gamin *.gamout *.tmol *.fract *.gjf *.gzmat"
+          " *.gpr *.mdl *.mol *.sdf *.sd *.dmol"
+          " *.inp *.gamin *.gamout *.fract *.gjf *.gzmat"
           " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
@@ -746,8 +746,8 @@ namespace Avogadro
 
     // set any options
     if (!options.isEmpty()) {
-      foreach(const QString option, options.split('\n', QString::SkipEmptyParts)) {
-    conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
+      foreach(const QString &option, options.split('\n', QString::SkipEmptyParts)) {
+        conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
       }
     }
 
@@ -866,8 +866,8 @@ namespace Avogadro
           savedSetting = dynamic_cast<OBPairData *>(*i);
           // Check to see if this is an Avogadro setting
           attribute = savedSetting->GetAttribute().c_str();
-          if (attribute.startsWith("Avogadro:")) {
-            attribute.remove("Avogadro:");
+          if (attribute.startsWith(QLatin1String("Avogadro:"))) {
+            attribute.remove(QLatin1String("Avogadro:"));
             settings.setValue(attribute, savedSetting->GetValue().c_str());
             // TODO: we should probably delete the entry now, but I'm going to play it safe first
           }
@@ -876,7 +876,7 @@ namespace Avogadro
 
       // do we have a multi-molecule file?
       // Changed this -- we have problems knowing if we're at the end of a gzipped file
-      if (!fileName.endsWith(".gz", Qt::CaseInsensitive) &&
+      if (!fileName.endsWith(QLatin1String(".gz"), Qt::CaseInsensitive) &&
         ifs.peek() != EOF && ifs.good()) {
         QMessageBox::warning( this, tr( "Avogadro" ),
             tr( "This file appears to contain multiple molecule records."
@@ -919,7 +919,7 @@ namespace Avogadro
       // the static functions. This is more work, but gives us some nice
       // fine-grain control. This helps both on Windows and Mac 
       // look more "native."
-      QMessageBox msgBox(QMessageBox::Warning, 
+      QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning, 
                          tr( "Avogadro" ),
                          tr( "Do you want to save the changes you made in the document?" ),
                          QMessageBox::Save | QMessageBox::Discard
@@ -928,23 +928,28 @@ namespace Avogadro
 
       // On Mac, this will make a sheet relative to the window
       // Unfortunately, it also closes the window when the box disappears!
-      //      msgBox.setWindowModality(Qt::WindowModal);
+      // msgBox->setWindowModality(Qt::WindowModal);
       // second line of text
-      msgBox.setInformativeText(tr("Your changes will be lost if you don't save them." ));
-      msgBox.setDefaultButton(QMessageBox::Save);
+      msgBox->setInformativeText(tr("Your changes will be lost if you don't save them." ));
+      msgBox->setDefaultButton(QMessageBox::Save);
 
       // OK, now add shortcuts for save and discard
-      msgBox.button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
-      msgBox.button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
-      msgBox.setButtonText(QMessageBox::Save,
+      msgBox->button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
+      msgBox->button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
+      msgBox->setButtonText(QMessageBox::Save,
                             d->fileName.isEmpty() ? tr("Save...") : tr("Save"));
 
-      int ret = msgBox.exec();
+      int ret = msgBox->exec();
 
-      if ( ret == QMessageBox::Save )
+      if ( ret == QMessageBox::Save ) {
+        delete msgBox;
         return save();
-      else if ( ret == QMessageBox::Cancel )
+      }
+      else if ( ret == QMessageBox::Cancel ) {
+        delete msgBox;
         return false;
+      }
+      delete msgBox;
     }
     return true;
   }
@@ -1110,13 +1115,15 @@ namespace Avogadro
       QString attribute, value;
 
       // Walk through all our settings (is there a more efficient way to do this?)
-      foreach(QString key, settings.allKeys()) {
+      foreach(const QString &key, settings.allKeys()) {
         // Ignore this key -- there are definitely some on Mac with Apple... or com/
         // There may be others to ignore on Linux and Windows, but I haven't tested those yet.
-        if (key.startsWith("Apple") || key.startsWith("com/") || key.startsWith("NS"))
+        if (key.startsWith(QLatin1String("Apple")) 
+            || key.startsWith(QLatin1String("com/")) 
+            || key.startsWith(QLatin1String("NS")))
           continue;
 
-        if (key.startsWith("enginesDock")) {
+        if (key.startsWith(QLatin1String("enginesDock"))) {
           continue; // TODO: this seems to kill the CML
         }
 
@@ -1344,10 +1351,7 @@ namespace Avogadro
 
   void MainWindow::zoom()
   {
-    if (isMaximized())
-      showNormal();
-    else
-      showMaximized();
+    setWindowState(windowState() ^ Qt::WindowMaximized);
   }
 
   void MainWindow::bringAllToFront()
@@ -1402,7 +1406,7 @@ namespace Avogadro
       if (!widget->d->fileName.isEmpty())
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
-        windowAction->setText(tr("Untitled") + ' ' + QString::number(++untitledCount));
+        windowAction->setText(tr("Untitled %1").arg(QString::number(++untitledCount)));
 
       if (widget == this) {
         windowAction->setCheckable(true);
@@ -1982,7 +1986,7 @@ namespace Avogadro
 
   void MainWindow::setTool( Tool *tool )
   {
-    d->toolSettingsDock->setWindowTitle(tool->name() + ' ' + tr("Settings"));
+    d->toolSettingsDock->setWindowTitle(tool->settingsTitle());
     if ( tool->settingsWidget() ) {
       d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
     } else {

@@ -250,7 +250,7 @@ namespace Avogadro {
 
       for ( int i=0; i<d->pList.size(); ++i ) {
         double w = 0;
-        if ( d->pList[i]->barWidth() == 0.0 ) {
+        if ( d->pList[i]->barWidth() < 1.0e-6 ) {
           if ( i<d->pList.size()-1 )
             w = d->pList[i+1]->x() - d->pList[i]->x();
           //For the last bin, we'll just keep the previous width
@@ -410,7 +410,7 @@ namespace Avogadro {
 
       for ( int i=0; i<d->pList.size(); ++i ) {
         double w = 0;
-        if ( d->pList[i]->barWidth() == 0.0 ) {
+        if ( d->pList[i]->barWidth() < 1.0e-6 ) {
           if ( i<d->pList.size()-1 )
             w = d->pList[i+1]->x() - d->pList[i]->x();
           //For the last bin, we'll just keep the previous width

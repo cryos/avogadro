@@ -165,7 +165,7 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".nw";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".nw";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save NWChem Input Deck"),
                                 defaultFileName, tr("NWChem Input Deck (*.nw)"));
     QFile file(fileName);
@@ -285,7 +285,7 @@ namespace Avogadro
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->pos()->x() << atom->pos()->y()
             << atom->pos()->z()
-            << qSetFieldWidth(0) << "\n";
+            << qSetFieldWidth(0) << '\n';
       }
     }
     // Z-matrix
@@ -315,18 +315,18 @@ namespace Avogadro
                        + QString::number(atom->GetIdx()))
             << qSetFieldWidth(0);
         if (atom->GetIdx() > 1)
-          mol << " " << QString(etab.GetSymbol(a->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(a->GetAtomicNum())
                                 + QString::number(a->GetIdx()))
               << " r" << atom->GetIdx();
         if (atom->GetIdx() > 2)
-          mol << " " << QString(etab.GetSymbol(b->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(b->GetAtomicNum())
                                 + QString::number(b->GetIdx()))
               << " a" << atom->GetIdx();
         if (atom->GetIdx() > 3)
-          mol << " " << QString(etab.GetSymbol(c->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(c->GetAtomicNum())
                                 + QString::number(c->GetIdx()))
               << " d" << atom->GetIdx();
-        mol << "\n";
+        mol << '\n';
       }
 
       mol << " variables\n";
@@ -342,15 +342,15 @@ namespace Avogadro
         if (atom->GetIdx() > 1)
           mol << "   r" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << r << qSetFieldWidth(0) << "\n";
+              << r << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << "\n";
+              << w << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << "\n";
+              << t << qSetFieldWidth(0) << '\n';
       }
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
@@ -402,7 +402,7 @@ namespace Avogadro
               << QString(etab.GetSymbol(c->GetAtomicNum())
                          + QString::number(c->GetIdx())) << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
-        mol << qSetFieldWidth(0) << "\n";
+        mol << qSetFieldWidth(0) << '\n';
       }
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
@@ -411,7 +411,7 @@ namespace Avogadro
 
     // Basis set
     mol << "basis\n";
-    mol << "  * library " << getBasisType(m_basisType) << "\n";
+    mol << "  * library " << getBasisType(m_basisType) << '\n';
     mol << "end\n\n";
 
     // theory directives (multiplicity, too)

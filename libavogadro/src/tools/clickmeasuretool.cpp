@@ -171,9 +171,7 @@ namespace Avogadro {
       m_angle *= 180.0 / M_PI;
 //      m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
 //                            vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
-      QString angleString = tr("Angle: %1 %2").arg(
-                            QString::number(m_angle),
-                            QString("°"));
+      QString angleString = tr("Angle: %1 °").arg(QString::number(m_angle));
 
       // Check whether we have already sent this out
       if (m_lastMeasurement.at(1) != m_vector[1].norm()) {
@@ -209,10 +207,7 @@ namespace Avogadro {
                                 vector3(m_selectedAtoms[3]->pos()->x(),
                                 m_selectedAtoms[3]->pos()->y(),
                                 m_selectedAtoms[3]->pos()->z()));
-      QString dihedralString = tr("Dihedral Angle: %1 %2").arg(
-                                QString::number(m_dihedral),
-                                QString("°"));
-
+      QString dihedralString = tr("Dihedral Angle: %1 °").arg(QString::number(m_dihedral));
       // Check whether these measurements have been sent already
       if (m_lastMeasurement.at(2) != m_vector[2].norm()) {
         emit message(distanceString);

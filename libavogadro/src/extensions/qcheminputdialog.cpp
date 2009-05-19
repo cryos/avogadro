@@ -158,7 +158,7 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".qcin";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".qcin";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save QChem Input Deck"),
                                 defaultFileName, tr("QChem Input Deck (*.qcin)"));
     QFile file(fileName);
@@ -248,11 +248,11 @@ namespace Avogadro
     mol << "$rem\n";
 
     // Now for the calculation type
-    mol << "   JOBTYPE " << getCalculationType(m_calculationType) << "\n";
+    mol << "   JOBTYPE " << getCalculationType(m_calculationType) << '\n';
 
     // Now specify the job type and basis set
-    mol << "   EXCHANGE " << getTheoryType(m_theoryType) << "\n";
-    mol << "   " << getBasisType(m_basisType) << "\n";
+    mol << "   EXCHANGE " << getTheoryType(m_theoryType) << '\n';
+    mol << "   " << getBasisType(m_basisType) << '\n';
 
     // Output parameters for some programs
     mol << "   GUI=2\n";
@@ -267,7 +267,7 @@ namespace Avogadro
     mol << "$molecule\n";
 
     // Now for the charge and multiplicity
-    mol << "   " << m_charge << " " << m_multiplicity << "\n";
+    mol << "   " << m_charge << ' ' << m_multiplicity << '\n';
 
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
@@ -281,7 +281,7 @@ namespace Avogadro
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->pos()->x() << atom->pos()->y()
             << atom->pos()->z()
-            << qSetFieldWidth(0) << "\n";
+            << qSetFieldWidth(0) << '\n';
       }
     }
     // Z-matrix
@@ -310,21 +310,21 @@ namespace Avogadro
                        + QString::number(atom->GetIdx()))
             << qSetFieldWidth(0);
         if (atom->GetIdx() > 1)
-          mol << " " << QString(etab.GetSymbol(a->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(a->GetAtomicNum())
                                 + QString::number(a->GetIdx()))
               << " r" << atom->GetIdx();
         if (atom->GetIdx() > 2)
-          mol << " " << QString(etab.GetSymbol(b->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(b->GetAtomicNum())
                                 + QString::number(b->GetIdx()))
               << " a" << atom->GetIdx();
         if (atom->GetIdx() > 3)
-          mol << " " << QString(etab.GetSymbol(c->GetAtomicNum())
+          mol << ' ' << QString(etab.GetSymbol(c->GetAtomicNum())
                                 + QString::number(c->GetIdx()))
               << " d" << atom->GetIdx();
-        mol << "\n";
+        mol << '\n';
       }
 
-      mol << "\n";
+      mol << '\n';
       FOR_ATOMS_OF_MOL(atom, &obmol)
       {
         r = vic[atom->GetIdx()]->_dst;
@@ -337,15 +337,15 @@ namespace Avogadro
         if (atom->GetIdx() > 1)
           mol << "   r" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << r << qSetFieldWidth(0) << "\n";
+              << r << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << "\n";
+              << w << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << "\n";
+              << t << qSetFieldWidth(0) << '\n';
       }
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
@@ -395,7 +395,7 @@ namespace Avogadro
               << QString(etab.GetSymbol(c->GetAtomicNum())
                          + QString::number(c->GetIdx())) << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
-        mol << qSetFieldWidth(0) << "\n";
+        mol << qSetFieldWidth(0) << '\n';
       }
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;

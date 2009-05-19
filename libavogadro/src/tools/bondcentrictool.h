@@ -63,7 +63,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("Bond Centric Manipulate", tr("Bond Centric Manipulate"),
-                  tr("Manipulation of bond lengths, angles, and torsions"))
+                    tr("Manipulation of bond lengths, angles, and torsions"),
+                    tr("Bond Centric Manipulate Settings"))
 
     public:
       //! Constructor

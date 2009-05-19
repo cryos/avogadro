@@ -48,8 +48,7 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-file(GLOB avogadro_TS "${Avogadro_SOURCE_DIR}/i18n/*.ts")
-
+file(GLOB avogadro_TS "${Avogadro_SOURCE_DIR}/i18n/avogadro*.ts")
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
 # Some relative rpath handling for Linux

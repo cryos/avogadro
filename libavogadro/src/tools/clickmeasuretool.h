@@ -46,7 +46,8 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_TOOL("Measure", tr("Measure"),
-                  tr("Measure bond lengths, angles, and dihedrals"))
+                  tr("Measure bond lengths, angles, and dihedrals"),
+                  tr("Measure Settings"))
 
     public:
       //! Constructor

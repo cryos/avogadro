@@ -109,8 +109,13 @@ int main(int argc, char *argv[])
   if (res1 != 0 || res2 != 0)
     qDebug() << "Error: putenv failed." << res1 << res2;
 
-  QString env(getenv("BABEL_LIBDIR"));
+  QString env(qgetenv("BABEL_LIBDIR"));
   qDebug() << "getenv(\"BABEL_LIBDIR\")=" << env;
+
+  // Override the Qt plugin search path too
+  QStringList pluginSearchPaths;
+  pluginSearchPaths << QCoreApplication::applicationDirPath() + "/../plugins";
+  QCoreApplication::setLibraryPaths(pluginSearchPaths);
 #endif
 
   // Before we do much else, load translations
@@ -133,26 +138,44 @@ int main(int argc, char *argv[])
 
   qDebug() << "Locale: " << translationCode;
   // Load Qt translations first
+  bool tryLoadingQtTranslations = false;
   QString qtFilename = "qt_" + translationCode + ".qm";
   QTranslator qtTranslator(0);
   if (qtTranslator.load(qtFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
     app.installTranslator(&qtTranslator);
   }
+  else {
+    tryLoadingQtTranslations = true;
+  }
+  
+  // Load the libavogadro translations
+  QPointer <QTranslator> libTranslator = Library::createTranslator();
+  if (libTranslator)
+    app.installTranslator(libTranslator);
 
   // Load the Avogadro translations
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
-  foreach (QString translationPath, translationPaths) {
-    qDebug() << "path = " << translationPath + avoFilename;
+  foreach (const QString &translationPath, translationPaths) {
+
+    // We can't find the normal Qt translations (maybe we're in a "bundle"?)
+    if (tryLoadingQtTranslations) {
+      if (qtTranslator.load(qtFilename, translationPath)) {
+        app.installTranslator(&qtTranslator);
+        tryLoadingQtTranslations = false; // already loaded
+      }
+    }
+
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       qDebug() << "Translation successfully loaded.";
-      break;
+      // we won't break because we want to find Qt translations too
+      //      break;
     }
-    else {
-      qDebug() << translationPath + avoFilename << "not found.";
-    }
+//     else {
+//       qDebug() << translationPath + avoFilename << "not found.";
+//     }
   }
 
   // Check if we just need a version or help message
@@ -210,9 +233,8 @@ int main(int argc, char *argv[])
 void printVersion(const QString &)
 {
   #ifdef WIN32
-  std::cout << "Avogadro: 0.8.0" << std::endl;
-  std::cout << "LibAvogadro: 0.8.0" << std::endl;
-  std::cout << "Qt: \t\t4.3.4" << std::endl;
+  std::cout << "Avogadro: " << VERSION << std::endl;
+  std::cout << "Qt: \t\t" << qVersion() << std::endl;
   #else
   std::wcout << QCoreApplication::translate("main.cpp", "Avogadro: \t%1 (Hash %2)\n"
       "LibAvogadro: \t%3 (Hash %4)\n"
@@ -224,7 +246,7 @@ void printHelp(const QString &appName)
 {
   #ifdef WIN32
   std::cout << "Usage: avogadro [options] [files]" << std::endl << std::endl;
-  std::cout << "Advanced Molecular Editor (version 0.8.0)" << std::endl << std::endl;
+  std::cout << "Advanced Molecular Editor (version " << VERSION << ')' << std::endl << std::endl;
   std::cout << "Options:" << std::endl;
   std::cout << "  -h, --help\t\tShow help options (this)" << std::endl;
   std::cout << "  -v, --version\t\tShow version information" << std::endl;

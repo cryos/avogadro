@@ -52,7 +52,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("Navigate", tr("Navigate"),
-                    tr("Translate, rotate, and zoom around the current view"))
+                    tr("Translate, rotate, and zoom around the current view"),
+                    tr("Navigate Settings"))
 
   public:
     /**

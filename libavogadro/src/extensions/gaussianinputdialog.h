@@ -61,6 +61,8 @@ namespace Avogadro
      */
     virtual void readSettings(QSettings &settings);
 
+    QString pathToG03() const;
+
   protected:
     /**
      * Reimplemented to update the dialog when it is shown

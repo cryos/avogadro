@@ -31,7 +31,6 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QFileDialog>
 #include <QCoreApplication>
 #include <QProcess>
 #include <QFileInfo>
@@ -71,7 +70,7 @@ namespace Avogadro
 
   QString FileImportExtension::menuPath(QAction*) const
   {
-    return tr("&File") + ">" + tr("Import");
+    return tr("&File") + '>' + tr("Import");
   }
 
   QUndoCommand* FileImportExtension::performAction(QAction *, GLWidget *widget)
@@ -140,7 +139,7 @@ namespace Avogadro
       QStringList list;
       while (line[0] != '%') {
         line = in->readLine();
-        list += line.split(" ", QString::SkipEmptyParts);
+        list += line.split(' ', QString::SkipEmptyParts);
         if (list.size() == 30) {
           for (int i = 0; i <= 27; i += 3) {
             Bond *bond = mol->addBond();

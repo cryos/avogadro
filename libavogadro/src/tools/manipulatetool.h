@@ -51,7 +51,8 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_TOOL("Manipulate", tr("Manipulate"),
-                    tr("Translate, rotate, and adjust atoms and fragments"))
+                    tr("Translate, rotate, and adjust atoms and fragments"),
+                    tr("Manipulate Settings"))
 
     public:
       //! Constructor

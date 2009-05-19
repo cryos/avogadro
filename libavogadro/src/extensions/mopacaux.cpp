@@ -70,11 +70,11 @@ namespace Avogadro
 
     // Big switch statement checking for various things we are interested in
     if (key.contains("ATOM_EL")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of atoms =" << tmp.toInt();
     }
     else if (key.contains("AO_ATOMINDEX")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of atomic orbitals =" << tmp.toInt();
       m_atomIndex = readArrayI(tmp.toInt());
       for (unsigned int i = 0; i < m_atomIndex.size(); ++i) {
@@ -82,42 +82,42 @@ namespace Avogadro
       }
     }
     else if (key.contains("ATOM_SYMTYPE")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of atomic orbital types =" << tmp.toInt();
       m_atomSym = readArraySym(tmp.toInt());
     }
     else if (key.contains("AO_ZETA")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of zeta values =" << tmp.toInt();
       m_zeta = readArrayD(tmp.toInt());
     }
     else if (key.contains("ATOM_PQN")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of PQN values =" << tmp.toInt();
       m_pqn = readArrayI(tmp.toInt());
     }
     else if (key.contains("NUM_ELECTRONS")) {
-      QString tmp = key.split("=").at(1);
+      QString tmp = key.split('=').at(1);
       qDebug() << "Number of electrons =" << tmp.toInt();
       m_electrons = tmp.toInt();
     }
     else if (key.contains("ATOM_X_OPT:ANGSTROMS")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 4);
+      QString tmp = key.mid(key.indexOf('[')+1, 4);
       qDebug() << "Number of atomic coordinates =" << tmp.toInt();
       m_atomPos = readArrayVec(tmp.toInt());
     }
     else if (key.contains("OVERLAP_MATRIX")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 6);
+      QString tmp = key.mid(key.indexOf('[')+1, 6);
       qDebug() << "Size of lower half triangle of overlap matrix =" << tmp.toInt();
       readOverlapMatrix(tmp.toInt());
     }
     else if (key.contains("EIGENVECTORS")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 6);
+      QString tmp = key.mid(key.indexOf('[')+1, 6);
       qDebug() << "Size of eigen vectors matrix =" << tmp.toInt();
       readEigenVectors(tmp.toInt());
     }
     else if (key.contains("TOTAL_DENSITY_MATRIX")) {
-      QString tmp = key.mid(key.indexOf("[")+1, 6);
+      QString tmp = key.mid(key.indexOf('[')+1, 6);
       qDebug() << "Size of lower half triangle of density matrix =" << tmp.toInt();
       readDensityMatrix(tmp.toInt());
     }
@@ -142,7 +142,7 @@ namespace Avogadro
     vector<int> tmp;
     while (tmp.size() < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i)
         tmp.push_back(list.at(i).toInt());
     }
@@ -154,7 +154,7 @@ namespace Avogadro
     vector<double> tmp;
     while (tmp.size() < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i)
         tmp.push_back(list.at(i).toDouble());
     }
@@ -167,7 +167,7 @@ namespace Avogadro
     vector<int> tmp;
     while (tmp.size() < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i) {
         if (list.at(i) == "S") type = SlaterSet::S;
         else if (list.at(i) == "PX") type = SlaterSet::PX;
@@ -192,7 +192,7 @@ namespace Avogadro
     unsigned int cnt = 0;
     while (cnt < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int i = 0; i < list.size(); ++i) {
         ptr[cnt++] = list.at(i).toDouble();
       }
@@ -210,7 +210,7 @@ namespace Avogadro
     m_in.readLine();
     while (cnt < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int k = 0; k < list.size(); ++k) {
         //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
         m_overlap(i, j) = m_overlap(j, i) = list.at(k).toDouble();
@@ -233,7 +233,7 @@ namespace Avogadro
     unsigned int i = 0, j = 0;
     while (cnt < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int k = 0; k < list.size(); ++k) {
         m_eigenVectors(i, j) = list.at(k).toDouble();
         ++i; ++cnt;
@@ -257,7 +257,7 @@ namespace Avogadro
     m_in.readLine();
     while (cnt < n) {
       QString line = m_in.readLine();
-      QStringList list = line.split(" ", QString::SkipEmptyParts);
+      QStringList list = line.split(' ', QString::SkipEmptyParts);
       for (int k = 0; k < list.size(); ++k) {
         //m_overlap.part<Eigen::SelfAdjoint>()(i, j) = list.at(k).toDouble();
         m_density(i, j) = m_density(j, i) = list.at(k).toDouble();

@@ -22,7 +22,7 @@
 #include "savedialog.h"
 #include "mainwindow.h"
 
-using namespace std;
+#include <QPointer>
 
 namespace Avogadro
 {
@@ -90,13 +90,14 @@ namespace Avogadro
                                           defaultDirectory + '/' + fileName,
                                           filters.join(";;"), &defaultFilter);
 #else
-    SaveDialog dialog(widget, windowTitle, defaultDirectory, fileName, filters, defaultSuffix);
-    dialog.selectFilter(defaultFilter);
-    if(dialog.exec())
+    QPointer<SaveDialog> dialog = new SaveDialog(widget, windowTitle, defaultDirectory, fileName, filters, defaultSuffix);
+    dialog->selectFilter(defaultFilter);
+    if(dialog->exec())
     {
-      result = dialog.selectedFiles().first();
-      defaultFilter = dialog.selectedFilter();
+      result = dialog->selectedFiles().first();
+      defaultFilter = dialog->selectedFilter();
     }
+    delete dialog;
 #endif
     return result;
   }

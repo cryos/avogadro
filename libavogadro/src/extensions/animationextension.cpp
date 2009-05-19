@@ -120,7 +120,7 @@ namespace Avogadro {
     if (file.isEmpty())
       return;
 
-    if (file.endsWith(".xyz")) {
+    if (file.endsWith(QLatin1String(".xyz"))) {
       readTrajFromXyz(file);
     }
 
@@ -178,7 +178,7 @@ namespace Avogadro {
       return;
     }
 
-    if (!videoFileName.endsWith(".avi")){
+    if (!videoFileName.endsWith(QLatin1String(".avi"))) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
           tr( "Must specify a valid .avi file name" ));
       return;
@@ -193,7 +193,7 @@ namespace Avogadro {
     //first, split out the directory and filenames
     QString dir, fileName, prefix;
 
-    int slashPos = videoFileName.lastIndexOf("/");
+    int slashPos = videoFileName.lastIndexOf('/');
 
     if (slashPos < 0) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
@@ -201,7 +201,7 @@ namespace Avogadro {
       return;
     }
 
-    dir = videoFileName.left(slashPos) + "/";
+    dir = videoFileName.left(slashPos) + '/';
     fileName = videoFileName.right(videoFileName.length() - (slashPos+1));
     if (fileName.isEmpty()) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
@@ -214,7 +214,7 @@ namespace Avogadro {
 
 
     //Make the directory where the snapshots will be saved
-    QString snapshotsDir = dir + prefix + "/";
+    QString snapshotsDir = dir + prefix + '/';
     QDir qdir;
     if (!qdir.exists(snapshotsDir))
       qdir.mkpath(snapshotsDir);

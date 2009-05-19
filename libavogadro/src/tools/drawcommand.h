@@ -61,7 +61,7 @@ namespace Avogadro {
   class AdjustHydrogensPreCommand : public QUndoCommand
   {
   public:
-    AdjustHydrogensPreCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
+    explicit AdjustHydrogensPreCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
     AdjustHydrogensPreCommand(Molecule *molecule, unsigned long atomId);
     ~AdjustHydrogensPreCommand();
  
@@ -77,7 +77,7 @@ namespace Avogadro {
   class AdjustHydrogensPostCommand : public QUndoCommand
   {
   public:
-    AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
+    explicit AdjustHydrogensPostCommand(Molecule *molecule, const QList<unsigned long> &atomIds = QList<unsigned long>());
     AdjustHydrogensPostCommand(Molecule *molecule, unsigned long atomId);
     ~AdjustHydrogensPostCommand();
  

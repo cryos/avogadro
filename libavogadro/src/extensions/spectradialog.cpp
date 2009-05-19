@@ -603,7 +603,7 @@ namespace Avogadro {
     }
 
     // get file extension
-    QStringList tmp 	= filename.split(".");
+    QStringList tmp 	= filename.split('.');
     QString ext 	= tmp.at(tmp.size()-1);
 
     // Clear out any old import data
@@ -621,8 +621,8 @@ namespace Avogadro {
 
     // Pick delimiter
     QString delim;
-    if      (ext == "tsv" || ext == "TSV")	delim = "\t";
-    else if (ext == "csv" || ext == "CSV") 	delim = ",";
+    if      (ext == "tsv" || ext == "TSV")	delim = '\t';
+    else if (ext == "csv" || ext == "CSV") 	delim = ',';
     else if (ext == "jdx" || ext == "JDX") 	delim = "\\s+"; // Regex finds whitespace
     else {					// Not a supported file type....
       QMessageBox::warning(this, tr("Spectra Import"), tr("Unknown extension: %1").arg(ext));
@@ -632,7 +632,7 @@ namespace Avogadro {
     // Extract data
     while (!in.atEnd()) {
       QString line = in.readLine();
-      if (line.trimmed().startsWith("#")) continue; 	//discard comments
+      if (line.trimmed().startsWith('#')) continue; 	//discard comments
       QStringList data = line.split(QRegExp(delim));
       if (data.size() < 2) {
         qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
@@ -734,7 +734,7 @@ namespace Avogadro {
     }
 
     // get file extension
-    QStringList tmp 	= filename.split(".");
+    QStringList tmp 	= filename.split('.');
     QString ext 	= tmp.at(tmp.size()-1);
 
     // Prepare stream
@@ -769,7 +769,7 @@ namespace Avogadro {
       QList<double> intensities;
       while (!in.atEnd()) {
         QString line = in.readLine();
-        if (line.trimmed().startsWith("#")) continue; 	//discard comments
+        if (line.trimmed().startsWith('#')) continue; 	//discard comments
         QStringList data = line.split(QRegExp(delim));
         if (data.size() < min) {
           qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
@@ -849,7 +849,7 @@ namespace Avogadro {
       return;
     }
     // get file extension
-    QStringList tmp 	= filename.split(".");
+    QStringList tmp 	= filename.split('.');
     QString ext 	= tmp.at(tmp.size()-1);
 
     if (ext != "png" && ext != "PNG" &&

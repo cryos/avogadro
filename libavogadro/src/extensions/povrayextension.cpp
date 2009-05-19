@@ -80,7 +80,7 @@ namespace Avogadro
     else {
 //      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
       QFileInfo info(m_molecule->fileName());
-      m_POVRayDialog->setFileName(info.absolutePath() + "/" + info.baseName()
+      m_POVRayDialog->setFileName(info.absolutePath() + '/' + info.baseName()
                                   + ".png");
       m_POVRayDialog->show();
     }
@@ -156,7 +156,7 @@ namespace Avogadro
       QFileInfo info(fileName + ".png");
       m_process->setWorkingDirectory(info.absolutePath());
       m_process->start(m_POVRayDialog->command(), m_POVRayDialog->commandLine());
-      qDebug() << "Command:" << m_POVRayDialog->command() + " " +
+      qDebug() << "Command:" << m_POVRayDialog->command() + ' ' +
                m_POVRayDialog->commandLine().join(" ");
       qDebug() << "Rendering started...";
       if (!m_process->waitForStarted()) {

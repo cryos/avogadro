@@ -32,14 +32,15 @@
 #include <QtPlugin>
 #include <QWheelEvent>
 
-#define AVOGADRO_TOOL(i, t, d)                               \
+#define AVOGADRO_TOOL(i, t, d, s)                            \
   public: \
     static QString staticIdentifier() { return i; }          \
     QString identifier() const { return i; }                 \
     static QString staticName() { return t; }                \
     QString name() const { return t; }                       \
     static QString staticDescription() { return d; }         \
-    QString description() const { return d; }
+    QString description() const { return d; }                \
+    QString settingsTitle() const { return s; }
 
 #define AVOGADRO_TOOL_FACTORY(c)                             \
   public: \
@@ -102,6 +103,11 @@ namespace Avogadro {
        * @return the settings widget for the tool.
        */
       virtual QWidget* settingsWidget();
+
+      /**
+       * @return the translated name of the settings widget
+       */
+      virtual QString settingsTitle() const = 0;
 
       /**
        * Response to mouse press
