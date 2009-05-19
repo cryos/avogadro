@@ -153,7 +153,6 @@ int main(int argc, char *argv[])
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
   foreach (const QString &translationPath, translationPaths) {
-    qDebug() << "path = " << translationPath + avoFilename;
 
     // We can't find the normal Qt translations (maybe we're in a "bundle"?)
     if (tryLoadingQtTranslations) {
@@ -169,9 +168,9 @@ int main(int argc, char *argv[])
       // we won't break because we want to find Qt translations too
       //      break;
     }
-    else {
-      qDebug() << translationPath + avoFilename << "not found.";
-    }
+//     else {
+//       qDebug() << translationPath + avoFilename << "not found.";
+//     }
   }
 
   // Check if we just need a version or help message
