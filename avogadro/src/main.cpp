@@ -111,6 +111,11 @@ int main(int argc, char *argv[])
 
   QString env(qgetenv("BABEL_LIBDIR"));
   qDebug() << "getenv(\"BABEL_LIBDIR\")=" << env;
+
+  // Override the Qt plugin search path too
+  QStringList pluginSearchPaths;
+  pluginSearchPaths << QCoreApplication::applicationDirPath() + "/../plugins";
+  QCoreApplication::setLibraryPaths(pluginSearchPaths);
 #endif
 
   // Before we do much else, load translations
@@ -161,7 +166,8 @@ int main(int argc, char *argv[])
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       qDebug() << "Translation successfully loaded.";
-      break;
+      // we won't break because we want to find Qt translations too
+      //      break;
     }
     else {
       qDebug() << translationPath + avoFilename << "not found.";
@@ -223,9 +229,8 @@ int main(int argc, char *argv[])
 void printVersion(const QString &)
 {
   #ifdef WIN32
-  std::cout << "Avogadro: 0.8.0" << std::endl;
-  std::cout << "LibAvogadro: 0.8.0" << std::endl;
-  std::cout << "Qt: \t\t4.3.4" << std::endl;
+  std::cout << "Avogadro: " << VERSION << std::endl;
+  std::cout << "Qt: \t\t" << qVersion() << std::endl;
   #else
   std::wcout << QCoreApplication::translate("main.cpp", "Avogadro: \t%1 (Hash %2)\n"
       "LibAvogadro: \t%3 (Hash %4)\n"
@@ -237,7 +242,7 @@ void printHelp(const QString &appName)
 {
   #ifdef WIN32
   std::cout << "Usage: avogadro [options] [files]" << std::endl << std::endl;
-  std::cout << "Advanced Molecular Editor (version 0.8.0)" << std::endl << std::endl;
+  std::cout << "Advanced Molecular Editor (version " << VERSION << ')' << std::endl << std::endl;
   std::cout << "Options:" << std::endl;
   std::cout << "  -h, --help\t\tShow help options (this)" << std::endl;
   std::cout << "  -v, --version\t\tShow version information" << std::endl;
