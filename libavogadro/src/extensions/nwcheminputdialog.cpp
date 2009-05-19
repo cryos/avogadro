@@ -265,7 +265,7 @@ namespace Avogadro
     mol << "start molecule\n\n";
 
     // Title
-    mol << "title \"" << m_title << "\'\n';
+    mol << "title \"" << m_title << "\"\n";
 
     // Now for the charge
     mol << "charge " << m_charge << "\n\n";

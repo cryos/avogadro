@@ -157,7 +157,7 @@ namespace Avogadro
       m_process->setWorkingDirectory(info.absolutePath());
       m_process->start(m_POVRayDialog->command(), m_POVRayDialog->commandLine());
       qDebug() << "Command:" << m_POVRayDialog->command() + ' ' +
-               m_POVRayDialog->commandLine().join(' ');
+               m_POVRayDialog->commandLine().join(" ");
       qDebug() << "Rendering started...";
       if (!m_process->waitForStarted()) {
         QMessageBox::warning(m_POVRayDialog, tr("POV-Ray failed to start."),
