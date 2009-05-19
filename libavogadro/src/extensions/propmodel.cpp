@@ -342,7 +342,7 @@ namespace Avogadro {
         case 3:
           return tr("Rotatable");
         case 4:
-          return tr("Length (\xC5)", "Angstrom symbol");
+          return tr("Length %1", "in Angstrom").arg("(\xC5)");
         }
       } else
         // Bond ordering starts at 0
@@ -357,7 +357,7 @@ namespace Avogadro {
         case 2:
           return tr("End Atom");
         case 3:
-          return tr("Angle (\xB0)", "Degree symbol");
+          return tr("Angle %1", "Degree symbol").arg("(\xB0)");
         }
       } else
         return tr("Angle %1").arg(section + 1);
@@ -370,7 +370,7 @@ namespace Avogadro {
         case 3:
           return tr("Atom Index %1").arg(section +1);
         case 4:
-          return tr("Torsion (\xB0)", "Degree symbol");
+          return trUtf8("Torsion %1", "Degree symbol").arg("(\xB0)");
         }
       } else
         return tr("Torsion %1").arg(section + 1);
@@ -378,11 +378,11 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("X (\xC5)", "Angstrom symbol");
+          return trUtf8("X %1", "in Angstrom").arg("(\xC5)");
         case 1:
-          return tr("Y (\xC5)", "Angstrom symbol");
+          return trUtf8("Y %1", "in Angstrom").arg("(\xC5)");
         case 2:
-          return tr("Z (\xC5)", "Angstrom symbol");
+          return trUtf8("Z  %1", "in Angstrom").arg("(\xC5)");
         }
       } else
         return tr("Atom %1").arg(section + 1);

@@ -264,7 +264,7 @@ namespace Avogadro
       return;
     }
     
-    if (!movieFileName.endsWith(".avi")){
+    if (!movieFileName.endsWith(QLatin1String(".avi"))) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
 			    tr( "Must specify a valid .avi file name" ));
       return;

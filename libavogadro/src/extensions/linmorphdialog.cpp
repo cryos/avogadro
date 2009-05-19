@@ -78,10 +78,10 @@ namespace Avogadro {
 
     
     if (!sMovieFileName.isEmpty() )  { 
-      if (!sMovieFileName.endsWith(".avi")){
-	QMessageBox::warning( NULL, tr( "Avogadro" ),
-			      tr( "Adding .avi extension" ));
-	sMovieFileName = sMovieFileName + ".avi";
+      if (!sMovieFileName.endsWith(QLatin1String(".avi"))){
+        QMessageBox::warning( NULL, tr( "Avogadro" ),
+                              tr( "Adding .avi extension" ));
+        sMovieFileName = sMovieFileName + ".avi";
       }
       ui.movieFileLine->setText(sMovieFileName);
     }

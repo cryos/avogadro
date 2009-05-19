@@ -120,7 +120,7 @@ namespace Avogadro {
     if (file.isEmpty())
       return;
 
-    if (file.endsWith(".xyz")) {
+    if (file.endsWith(QLatin1String(".xyz"))) {
       readTrajFromXyz(file);
     }
 
@@ -178,7 +178,7 @@ namespace Avogadro {
       return;
     }
 
-    if (!videoFileName.endsWith(".avi")){
+    if (!videoFileName.endsWith(QLatin1String(".avi"))) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
           tr( "Must specify a valid .avi file name" ));
       return;
