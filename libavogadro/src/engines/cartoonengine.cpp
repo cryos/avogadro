@@ -65,6 +65,10 @@ namespace Avogadro {
     std::vector<std::vector<Eigen::Vector3d> > m_backbonePoints;
     std::vector<Eigen::Vector3d> m_backboneDirections;
 
+    QColor m_helixColor;
+    QColor m_sheetColor;
+    QColor m_loopColor;
+
     // mesh
     std::vector<Eigen::Vector3d> m_vertices;
     std::vector<Eigen::Vector3d> m_normals;
@@ -82,9 +86,30 @@ namespace Avogadro {
 
       m_backbonePoints.resize(m_molecule->numResidues());
       m_backboneDirections.resize(m_molecule->numResidues());
+      
+      m_helixColor = QColor(255, 0, 0); // red
+      m_sheetColor = QColor(255, 255, 0); // yellow
+      m_loopColor = QColor(0, 255, 0); // purple
 
       generateMesh();
     }
+
+    void setHelixColor(const QColor &color)
+    {
+      m_helixColor = color;
+    }
+
+    void setSheetColor(const QColor &color)
+    {
+      m_sheetColor = color;
+    }
+
+    void setLoopColor(const QColor &color)
+    {
+      m_loopColor = color;
+    }
+
+
 
     void setBackbonePoints(Residue *residue, const std::vector<Eigen::Vector3d> &points)
     {
@@ -153,8 +178,6 @@ namespace Avogadro {
           }
         }
       }
-
-      //find_secondary_structure (mol); FIXME
     }
 
     Atom* atomFromResidue(Residue *residue, const QString &atomID)
@@ -203,8 +226,6 @@ namespace Avogadro {
           out.push_back(0.5 * (previousCpos + vn));
         else
           out.push_back(vn);
-        //	out.push_back (mean (mean (vn, vca), mean (vca, vc)));
-        //	out.push_back(mean (vca, vc));
 
         if (hasNext)
           out.push_back(0.5 * (nextNpos + vc));
@@ -347,6 +368,25 @@ namespace Avogadro {
       }
     }
 
+    const QColor& color(Residue *residue) const
+    {
+      if (m_protein->isHelix(residue))
+        return m_helixColor;
+      if (m_protein->isSheet(residue))
+        return m_sheetColor;
+      return m_loopColor;
+    }
+
+    QColor mixColors(const QColor &c1, const QColor &c2) 
+    {
+      QColor color;
+      color.setRgbF((float) (c1.redF()   + c2.redF()  ) * 0.5f,
+                    (float) (c1.greenF() + c2.greenF()) * 0.5f,
+                    (float) (c1.blueF()  + c2.blueF() ) * 0.5f,
+                    (float) (c1.alphaF() + c2.alphaF()) * 0.5f);
+      return color;
+    }
+
     void drawBackboneStick(Residue *residue, const QVector<Residue*> &chain)
     {
       //int n_points = *ddwin ->data ->quality_scale * 9;
@@ -372,12 +412,10 @@ namespace Avogadro {
         sheet_points.push_back( Eigen::Vector3d(sin(angl) * sb-(sc*sb*sin(angl)*sin(angl)*sin(angl)), cos (angl)*sa , 0.));
       }
       std::vector<Eigen::Vector3d> *last_shape, *shape, *next_shape;
-      /* FIXME color...
-         color last_col, col, next_col;
-         col = get_color (res);
-         last_col = col;
-         next_col = col;
-       */
+      QColor last_col, col, next_col;
+      col = color(residue);
+      last_col = col;
+      next_col = col;
       last_shape = &random_points;
       next_shape = &random_points;
       shape = &random_points;
@@ -393,7 +431,7 @@ namespace Avogadro {
       Residue *previousRes = previousResidue(residue, chain);
       Eigen::Vector3d lastdir;
       if (previousRes) {
-        //last_col = get_color (prec_res); FIXME
+        last_col = color(previousRes);
         lastdir = backboneDirection(previousRes);
         if (m_protein->isHelix(previousRes))
           last_shape = &helix_points;
@@ -406,7 +444,7 @@ namespace Avogadro {
       Residue *nextRes = nextResidue(residue, chain);
       Eigen::Vector3d nextdir;
       if (nextRes) {
-        //next_col = get_color (follow_res); FIXME
+        next_col = color(nextRes);
         nextdir = backboneDirection(nextRes);
         if (m_protein->isHelix(nextRes))
           next_shape = &helix_points;
@@ -427,16 +465,8 @@ namespace Avogadro {
       std::vector<Eigen::Vector3d> points = backbonePoints(residue);
       addGuidePointsToBackbone(residue, chain, points);
 
-      //color c2 = mean (last_col, col); FIXME
-      //color c1 = mean (next_col, col);
-      QColor c1, c2;
-      if (m_protein->isHelix(residue)) {
-        c1 = c2 = QColor(255, 0, 0);
-      } else if (m_protein->isSheet(residue)) {
-        c1 = c2 = QColor(255, 255, 0);
-      } else {
-        c1 = c2 = QColor(255, 0, 255);
-      }
+      QColor c2 = mixColors(last_col, col);
+      QColor c1 = mixColors(next_col, col);
 
       if (points.size () > 3) {
         double tot = ((double) points.size () -3);
@@ -619,18 +649,6 @@ namespace Avogadro {
         p1 += v2;
         p2 += v3;
 
-        /*
-           if (!surf) {
-           openGLSetColor(c1);
-           glNormal3f (n1.x (), n1.y (), n1.z ());
-           glVertex3f (p1.x (), p1.y (), p1.z ());
-
-
-           openGLSetColor(c2);
-           glNormal3f (n2.x (), n2.y (), n2.z ());
-           glVertex3f (p2.x (), p2.y (), p2.z ());
-           } else
-         */
         SurfVertex *newv1 = new SurfVertex;
         newv1->normal = n1;
         newv1->coords = p1;
@@ -689,6 +707,7 @@ namespace Avogadro {
     }
 
   };
+  
   const float chainColors[6][3] = {
     { 1.0, 0.0, 0.0 },
     { 0.0, 1.0, 0.0 },
@@ -776,12 +795,15 @@ namespace Avogadro {
   {
     if (!isEnabled()) return;
     // Get a list of residues for the molecule
-    Molecule *molecule = pd->molecule();
-    Protein protein((Molecule*)molecule);
+    const Molecule *molecule = pd->molecule();
 
+    Color *map = colorMap(); // possible custom color map
+    if (!map) map = pd->colorMap(); // fall back to global color map
+ 
     if (!m_mesh) {
-      m_mesh = molecule->addMesh();
-      BackboneToMesh(molecule, m_mesh);
+      Molecule *mol = (Molecule*) molecule;
+      m_mesh = mol->addMesh();
+      BackboneToMesh((Molecule*)molecule, m_mesh);
     }
 
     m_update = false;
