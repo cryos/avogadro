@@ -47,6 +47,22 @@ foreach (test ${tests})
   add_test(${test}Test ${CMAKE_BINARY_DIR}/bin/${test}test)
 endforeach (test ${tests})
 
+# More complicated tests (i.e., with linking)
+#message(STATUS "Test:  primitivemodeltest")
+#  set(primitivemodeltest_SRCS primitivemodeltest.cpp modeltest.cpp)
+#  set(primitivemodeltest_MOC_CPPS primitivemodeltest.cpp)
+#  QT4_WRAP_CPP(primitivemodeltest_MOC_SRCS ${primitivemodeltest_MOC_CPPS})
+#  ADD_CUSTOM_TARGET(primitivemodeltestmoc ALL DEPENDS 
+#                                          ${primitivemodeltest_MOC_SRCS})
+#  add_executable(primitivemodeltest ${primitivemodeltest_SRCS})
+#  add_dependencies(primitivemodeltest primitivemodeltestmoc)
+#  target_link_libraries(primitivemodeltest
+#    ${OPENBABEL2_LIBRARIES}
+#    ${QT_LIBRARIES}
+#    ${QT_QTTEST_LIBRARY}
+#    avogadro)
+#add_test(primitivemodelTest ${CMAKE_BINARY_DIR}/bin/primitivemodeltest)
+
 set(benches
   molecule
 )
