@@ -34,6 +34,8 @@
 
 namespace Avogadro {
 
+  class Mesh;
+
   //! CartoonEngine class.
   class CartoonEngine : public Engine
   {
@@ -95,6 +97,8 @@ namespace Avogadro {
       QList< QVector<Eigen::Vector3d> > m_helixes3;
       QList< QVector<Eigen::Vector3d> > m_helixes4;
       QList< QVector<Eigen::Vector3d> > m_helixes5;
+
+      Mesh *m_mesh;
 
   };
 

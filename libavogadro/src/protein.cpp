@@ -80,6 +80,39 @@ namespace Avogadro {
   {
     return d->structure;
   }
+      
+  const QVector<QVector<Residue*> >& Protein::chains() const
+  {
+    return d->chains;
+  }
+  
+  bool Protein::isHelix(Residue *residue) const
+  {
+    char key = d->structure.at(residue->index());
+    switch(key) {
+      case 'G':
+      case 'H':
+      case 'I':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  bool Protein::isSheet(Residue *residue) const
+  {
+    char key = d->structure.at(residue->index());
+    switch(key) {
+      case 'E':
+      case 'B':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+
+
 
   bool Protein::extractFromPDB()
   {
