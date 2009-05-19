@@ -37,6 +37,7 @@
 #include <QShowEvent>
 #include <QSettings>
 #include <QDebug>
+#include <QProcess>
 
 using namespace OpenBabel;
 
@@ -122,6 +123,37 @@ namespace Avogadro
   void GaussianInputDialog::showEvent(QShowEvent *)
   {
     updatePreviewText();
+
+    if (pathToG03().isEmpty())
+      ui.computeButton->hide();
+    else
+      ui.computeButton->show();
+  }
+
+  QString GaussianInputDialog::pathToG03() const
+  {
+    QString returnPath;
+    QStringList pathList;
+
+    QStringList environment = QProcess::systemEnvironment();
+    // This is a pain
+    // Each item in the list is a key-value pair
+    // so we match PATH
+    // and then we split out the value (the bit after the =)
+    // and split the PATH by ':' characters
+    foreach(const QString &key, environment) {
+      if (key.startsWith(QLatin1String("PATH")))
+        pathList = key.split('=').at(1).split(':');
+    }
+
+    // I don't know how this works for Windows -- probably need a different method
+    foreach(const QString &path, pathList) {
+      QFileInfo info(path + '/' + "g03");
+      if (info.exists() && info.isExecutable())
+        returnPath = info.canonicalFilePath();
+    }
+
+    return returnPath;
   }
 
   void GaussianInputDialog::setMolecule(Molecule *molecule)
@@ -209,7 +241,7 @@ namespace Avogadro
     checkpointName.prepend("%Chk=");
     checkpointName.append(".chk");
 
-    previewText.replace(QString("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
+    previewText.replace(QLatin1String("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
 
     QTextStream out(&file);
     out << previewText;
@@ -395,20 +427,20 @@ namespace Avogadro
 
     // These directives are required before the job specification
     if (m_procs > 1)
-      mol << "%NProcShared=" << m_procs << "\n";
+      mol << "%NProcShared=" << m_procs << '\n';
     if (m_chk) {
       mol << "%Chk=checkpoint.chk\n";
     }
 
     // Now specify the job type etc
-    mol << "#p " << getTheoryType(m_theoryType);
+    mol << "#n " << getTheoryType(m_theoryType);
 
     // Not all theories have a basis set
     if (m_theoryType != AM1 && m_theoryType != PM3)
       mol << '/' << getBasisType(m_basisType);
 
     // Now for the calculation type
-    mol << " " << getCalculationType(m_calculationType);
+    mol << ' ' << getCalculationType(m_calculationType);
 
     // Output parameters for some programs
     mol << m_output;
@@ -417,7 +449,7 @@ namespace Avogadro
     mol << "\n\n " << m_title << "\n\n";
 
     // Now for the charge and multiplicity
-    mol << m_charge << " " << m_multiplicity << "\n";
+    mol << m_charge << ' ' << m_multiplicity << '\n';
 
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
@@ -430,9 +462,9 @@ namespace Avogadro
             << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
             << fixed << right << atom->pos()->x() << atom->pos()->y()
             << atom->pos()->z()
-            << qSetFieldWidth(0) << "\n";
+            << qSetFieldWidth(0) << '\n';
       }
-      mol << "\n";
+      mol << '\n';
     }
     // Z-matrix
     else if (m_molecule && m_coordType == ZMATRIX) {
@@ -457,12 +489,12 @@ namespace Avogadro
             << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(0);
         if (atom->index() > 0)
-          mol << " " << a->GetIdx() << " r" << atom->index();
+          mol << ' ' << a->GetIdx() << " r" << atom->index();
         if (atom->index() > 1)
-          mol << " " << b->GetIdx() << " a" << atom->index();
+          mol << ' ' << b->GetIdx() << " a" << atom->index();
         if (atom->index() > 2)
-          mol << " " << c->GetIdx() << " d" << atom->index();
-        mol << "\n";
+          mol << ' ' << c->GetIdx() << " d" << atom->index();
+        mol << '\n';
       }
 
       mol << "Variables:" << endl;
@@ -477,17 +509,17 @@ namespace Avogadro
         if (atom->index() > 0)
           mol << "r" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << r << qSetFieldWidth(0) << "\n";
+              << r << qSetFieldWidth(0) << '\n';
         if (atom->index() > 1)
           mol << "a" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << "\n";
+              << w << qSetFieldWidth(0) << '\n';
         if (atom->index() > 2)
           mol << "d" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << "\n";
+              << t << qSetFieldWidth(0) << '\n';
       }
-      mol << "\n";
+      mol << '\n';
       foreach(OpenBabel::OBInternalCoord *c, vic)
         delete c;
     }
@@ -529,9 +561,9 @@ namespace Avogadro
         if (atom->GetIdx() > 3)
           mol << qSetFieldWidth(6) << right << c->GetIdx() << qSetFieldWidth(15)
           << qSetRealNumberPrecision(5) << forcepoint << fixed << right << t;
-        mol << qSetFieldWidth(0) << "\n";
+        mol << qSetFieldWidth(0) << '\n';
       }
-      mol << "\n";
+      mol << '\n';
       foreach(OpenBabel::OBInternalCoord *c, vic)
         delete c;
     }
