@@ -79,6 +79,11 @@ namespace Avogadro {
        * @return QByteArray with codes for the protein's secondary structure.
        */
       QByteArray secondaryStructure() const;
+  
+      const QVector<QVector<Residue*> >& chains() const;
+
+      bool isHelix(Residue *residue) const;
+      bool isSheet(Residue *residue) const;
 
       /**
        * @return the number of chains in this protein
