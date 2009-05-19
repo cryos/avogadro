@@ -3,7 +3,10 @@ BASEDIR="../avogadro/libavogadro"	# root of translatable sources
 PROJECT="libavogadro"	# project name
 PACKAGE="Avogadro"  # user-readable package name
 # user-readable version
-VERSION=`grep 'set(VERSION' libavogadro/CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
+MAJORVERSION=`grep 'set(Avogadro_VERSION_MAJOR' CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
+MINORVERSION=`grep 'set(Avogadro_VERSION_MINOR' CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
+PATCHVERSION=`grep 'set(Avogadro_VERSION_PATCH' CMakeLists.txt | cut -f 2 -d ' ' | cut -f 1 -d ')'`
+VERSION="${MAJORVERSION}.${MINORVERSION}.${PATCHVERSION}"
 BUGADDR="avogadro-devel@lists.sourceforge.net"	# MSGID-Bugs
 WDIR=`pwd`		# working dir
 I18NDIR="i18n"          # i18n dir
@@ -24,7 +27,7 @@ echo "Extracting messages"
 cd ${BASEDIR}
 # see above on sorting
 find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | sort > ${WDIR}/infiles.list
-#echo "rc.cpp" >> ${WDIR}/infiles.list
+echo "rc.cpp" >> ${WDIR}/infiles.list
 cd ${WDIR}
 xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
 	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
@@ -43,12 +46,16 @@ sed -e 's/as the PACKAGE package/as the Avogadro package/' <${PROJECT}.pot >${PR
 mv ${PROJECT}.new ${PROJECT}.pot
 sed -e 's/^#. i18n: .\//#: /' <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
+sed -e '/^#: rc.cpp/ d' <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
+sed -e 's/rc\.cpp//' <${PROJECT}.pot >${PROJECT}.new
+mv ${PROJECT}.new ${PROJECT}.pot
 
 mv ${PROJECT}.pot ${I18NDIR}
 
 cd ${I18NDIR} 
 echo "Merging translations"
-catalogs=`find . -name '*.po'`
+catalogs=`find . -name 'libavogadro*.po'`
 for cat in $catalogs; do
   echo $cat
   msgmerge -o $cat.new $cat ${PROJECT}.pot

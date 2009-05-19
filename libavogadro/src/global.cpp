@@ -29,29 +29,42 @@
 #include <QLocale>
 #include <QDebug>
 #include <QCoreApplication>
+#include <QStringList>
+#include <QProcess>
 
 namespace Avogadro
 {
-  QTranslator* Library::createTranslator()
+  QPointer<QTranslator> Library::createTranslator()
   {
     QString translationCode = QLocale::system().name();
-    #ifdef WIN32
-      QString prefixPath = QCoreApplication::applicationDirPath() + "/i18n/libavogadro/";
-    #else
-      QString prefixPath = QString( INSTALL_PREFIX ) + "/share/libavogadro/i18n/";
-    #endif
-    QString fileName = "avogadro_" + translationCode + ".qm";
-
-    QTranslator *translator = new QTranslator(0);
-
-    if (translator->load(fileName, prefixPath )) {
-      return translator;
+    QStringList translationPaths;
+    
+    foreach (const QString &variable, QProcess::systemEnvironment()) {
+      QStringList split1 = variable.split('=');
+      if (split1[0] == "AVOGADRO_TRANSLATIONS") {
+        foreach (const QString &path, split1[1].split(':'))
+          translationPaths << path;
+      }
     }
-    else {
-      qDebug() << prefixPath + fileName << "not found.";
-      delete translator;
-      return 0;
+    
+    translationPaths << QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
+#ifdef Q_WS_MAC
+    translationPaths << QString(INSTALL_PREFIX) + "/share/avogadro/i18n/";
+#endif
+    
+    QString fileName = "libavogadro_" + translationCode + ".qm";
+  
+    // Load the Avogadro translations
+    QPointer<QTranslator> translator = new QTranslator(0);
+    foreach (const QString &translationPath, translationPaths) {
+      if (translator->load(fileName, translationPath)) {
+        return translator;
+      }
     }
+
+    qDebug() << "Libavogadro translations not found.";
+    delete translator;
+    return 0;
   }
 
   QString Library::version()

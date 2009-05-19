@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 0.9.\n"
+"Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-19 14:32-0400\n"
+"POT-Creation-Date: 2009-05-19 15:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1736,7 +1736,7 @@ msgstr ""
 msgid "Energy"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:396 src/openbabelwrapper.cpp:341
+#: src/extensions/propmodel.cpp:396 src/openbabelwrapper.cpp:343
 #, qt-format
 msgid "Conformer %1"
 msgstr ""
@@ -2319,7 +2319,7 @@ msgstr ""
 msgid "Bonds: %1"
 msgstr ""
 
-#: src/openbabelwrapper.cpp:343
+#: src/openbabelwrapper.cpp:345
 #, qt-format
 msgid "Molecule %1"
 msgstr ""

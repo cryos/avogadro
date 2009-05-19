@@ -219,6 +219,8 @@ namespace Avogadro {
 
   class ReadFileThread : public QThread
   {
+    //    Q_OBJECT 
+
     public:
       ReadFileThread(MoleculeFile *moleculeFile) : m_moleculeFile(moleculeFile)
       {
@@ -368,14 +370,6 @@ namespace Avogadro {
     return moleculeFile;
   }
 
-
-
 }
 
 #include "openbabelwrapper.moc"
-
-
-
-
-
-

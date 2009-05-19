@@ -148,6 +148,11 @@ int main(int argc, char *argv[])
     tryLoadingQtTranslations = true;
   }
   
+  // Load the libavogadro translations
+  QPointer <QTranslator> libTranslator = Library::createTranslator();
+  if (libTranslator)
+    app.installTranslator(libTranslator);
+
   // Load the Avogadro translations
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";

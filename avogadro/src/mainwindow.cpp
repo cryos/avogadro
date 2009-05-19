@@ -1351,10 +1351,7 @@ namespace Avogadro
 
   void MainWindow::zoom()
   {
-    if (isMaximized())
-      showNormal();
-    else
-      showMaximized();
+    setWindowState(windowState() ^ Qt::WindowMaximized);
   }
 
   void MainWindow::bringAllToFront()

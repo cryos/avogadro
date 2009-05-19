@@ -21,6 +21,10 @@ include_directories(
 # I think this is necessary now in order to tell the linker where openbabel is
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
+# Library translations
+file(GLOB libavogadro_TS "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.ts")
+QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
+
 file(GLOB libavogadro_SRCS "*.cpp")
 
 # Only headers with exported symbols should actually be installed
