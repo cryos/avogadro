@@ -22,7 +22,7 @@
 #include "savedialog.h"
 #include "mainwindow.h"
 
-using namespace std;
+#include <QPointer>
 
 namespace Avogadro
 {
