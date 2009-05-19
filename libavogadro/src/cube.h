@@ -1,7 +1,8 @@
 /**********************************************************************
   Cube - Primitive class to encapsulate volumetric data
 
-  Copyright (C) 2008 Marcus D. Hanwell
+	Copyright (c) 2008-2009 Marcus D. Hanwell
+	Copyright (c) 2009 Geoff Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>

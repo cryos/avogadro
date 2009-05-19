@@ -1,8 +1,11 @@
 /**********************************************************************
   Color - Base class for handling color changes in OpenGL
 
-  Copyright (C) 2006 Benoit Jacob
-  Copyright (C) 2007 Geoffrey R. Hutchison
+	Copyright (c) 2006-2008 Benoit Jacob
+	Copyright (c) 2007-2009 Geoff Hutchison
+	Copyright (c) 2007-2008 Donald Ephraim Curtis
+	Copyright (c) 2007 Carsten Niehaus
+	Copyright (c) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>

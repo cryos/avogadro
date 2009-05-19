@@ -1,8 +1,9 @@
 /**********************************************************************
   Animation - Basic animation interface
 
-  Copyright (C) 2008 by Tim Vandermeersch
-  Some Portions Copyright (C) 2009 by Geoffrey Hutchison
+	Copyright (c) 2009 Tim Vandermeersch
+	Copyright (c) 2009 Geoff Hutchison
+	Copyright (c) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
