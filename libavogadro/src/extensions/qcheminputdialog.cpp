@@ -158,7 +158,7 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".qcin";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".qcin";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save QChem Input Deck"),
                                 defaultFileName, tr("QChem Input Deck (*.qcin)"));
     QFile file(fileName);

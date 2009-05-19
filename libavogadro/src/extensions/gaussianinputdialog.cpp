@@ -195,7 +195,7 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".com";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".com";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),
                                 defaultFileName, tr("Gaussian Input Deck (*.com)"));
 
@@ -405,7 +405,7 @@ namespace Avogadro
 
     // Not all theories have a basis set
     if (m_theoryType != AM1 && m_theoryType != PM3)
-      mol << "/" << getBasisType(m_basisType);
+      mol << '/' << getBasisType(m_basisType);
 
     // Now for the calculation type
     mol << " " << getCalculationType(m_calculationType);

@@ -182,7 +182,7 @@ namespace Avogadro
     // TODO: Add a warning dialog to make sure that opening up a new file is OK
     // (i.e., that we found the right checkpoint file)
     foreach(const QString &fileName, matchingFiles) {
-      QString fullFileName = parentInfo.path() + "/" + fileName;
+      QString fullFileName = parentInfo.path() + '/' + fileName;
       QFileInfo info(fullFileName);
 
       if (info.completeSuffix().compare("fchk", Qt::CaseInsensitive) == 0

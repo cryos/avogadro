@@ -80,7 +80,7 @@ namespace Avogadro
     else {
 //      m_POVRayDialog->setImageSize(m_glwidget->width(), m_glwidget->height());
       QFileInfo info(m_molecule->fileName());
-      m_POVRayDialog->setFileName(info.absolutePath() + "/" + info.baseName()
+      m_POVRayDialog->setFileName(info.absolutePath() + '/' + info.baseName()
                                   + ".png");
       m_POVRayDialog->show();
     }

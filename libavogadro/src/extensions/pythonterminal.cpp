@@ -92,7 +92,7 @@ namespace Avogadro
     QString text = m_terminalWidget->inputLine->text();
     if(!text.trimmed().isEmpty()) {
       QString line = text;
-      while (line.startsWith(" ")) {
+      while (line.startsWith(' ')) {
         line.remove(0, 2);
         indent++;
       }
@@ -103,18 +103,18 @@ namespace Avogadro
  
         // first line still has >>>
         if (indent > 1)
-          m_terminalWidget->ui.outputText->append("... " + text);
+          m_terminalWidget->ui.outputText->append(QLatin1String("... ") + text);
         else
-          m_terminalWidget->ui.outputText->append(">>> " + text);
-        text += "\n";
+          m_terminalWidget->ui.outputText->append(QLatin1String(">>> ") + text);
+        text += '\n';
         m_lines.append(text);
       } else {
         if (indent && !m_lines.isEmpty()) {
-          m_terminalWidget->ui.outputText->append("... " + text);
-          text += "\n";
+          m_terminalWidget->ui.outputText->append(QLatin1String("... ") + text);
+          text += '\n';
           m_lines.append(text);
         } else {
-          m_terminalWidget->ui.outputText->append(">>> " + text);
+          m_terminalWidget->ui.outputText->append(QLatin1String(">>> ") + text);
           QString result = m_interpreter.exec(text);
           if(!result.isEmpty())
             m_terminalWidget->ui.outputText->append(result);
@@ -122,7 +122,7 @@ namespace Avogadro
       }
       QString indentString;
       for (int i = 0; i < indent; ++i)
-        indentString += "  ";
+        indentString += QLatin1String("  ");
       m_terminalWidget->inputLine->setText(indentString);
  
       // Always update the molecule when running commands from the terminal widget
@@ -132,7 +132,7 @@ namespace Avogadro
       if(!result.isEmpty())
         m_terminalWidget->ui.outputText->append(result);
  
-      m_terminalWidget->ui.outputText->append(">>>");
+      m_terminalWidget->ui.outputText->append(QLatin1String(">>>"));
       m_terminalWidget->inputLine->clear();
  
       m_lines.clear();

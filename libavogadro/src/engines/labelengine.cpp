@@ -154,7 +154,7 @@ namespace Avogadro {
     double renderRadiusA1 = pd->radius(atom1);
     double renderRadiusA2 = pd->radius(atom2);
     // If the render radius is zero then this view does not draw bonds
-    if (!renderRadius)
+    if (renderRadius < 1.0e-3)
       return false;
 
     renderRadius += 0.05;

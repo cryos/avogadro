@@ -158,11 +158,11 @@ namespace Avogadro {
 
   void PlotWidget::setDefaultLimits( double x1, double x2, double y1, double y2 )
   {
-    if ( x2 == x1 ) {
+    if ( fabs(x2 - x1) < 1.0e-3 ) {
       qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
       x2 = x1 + 1.0;
     }
-    if ( y2 == y1 ) {
+    if ( fabs(y2 - y1) < 1.0e-3) {
       qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
       y2 = y1 + 1.0;
     }
@@ -185,11 +185,11 @@ namespace Avogadro {
     XA1=x1; XA2=x2;
     YA1=y1; YA2=y2;
 
-    if ( XA2 == XA1 ) {
+    if ( fabs(XA2 - XA1) < 1.0e-3 ) {
       qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
       XA2 = XA1 + 1.0;
     }
-    if ( YA2 == YA1 ) {
+    if ( fabs(YA2 - YA1) < 1.0e-3) {
       qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
       YA2 = YA1 + 1.0;
     }
@@ -211,11 +211,11 @@ namespace Avogadro {
     XA1=x1; XA2=x2;
     YA1=y1; YA2=y2;
 
-    if ( XA2 == XA1 ) {
+    if ( fabs(XA2 - XA1) < 1.0e-3 ) {
       qDebug() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
       XA2 = XA1 + 1.0;
     }
-    if ( YA2 == YA1 ) {
+    if ( fabs(YA2 - YA1) < 1.0e-3) {
       qDebug() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
       YA2 = YA1 + 1.0;
     }
@@ -507,7 +507,7 @@ namespace Avogadro {
       float y2 = p2.y();
 
       // Discard invalid selections
-      if (x1 == x2 || y1 == y2) {
+      if (fabs(x1 - x2) < 1.0e-3 || fabs(y1 - y2) < 1.0e-3) {
         zoomPosF = QPointF();
         return;
       }
@@ -896,10 +896,10 @@ namespace Avogadro {
       p.setPen(pen);
 
       // get points
-      float x1 = zoomPosF.x();
-      float x2 = mouseClickOrigin.x();
-      float y1 = zoomPosF.y();
-      float y2 = mouseClickOrigin.y();
+      int x1 = int(zoomPosF.x());
+      int x2 = int(mouseClickOrigin.x());
+      int y1 = int(zoomPosF.y());
+      int y2 = int(mouseClickOrigin.y());
 
       // draw rectangle
       p.resetMatrix();
@@ -919,21 +919,21 @@ namespace Avogadro {
     double dpm = 39.3700787 * dpi;
 
     // pixel values from meter
-    int w = static_cast<int>(width * dpm);
-    int h = static_cast<int>(height * dpm);
+    int w = int(width * dpm);
+    int h = int(height * dpm);
     // Find the largest dimension and use it to calculate padding, etc.
     int pad = h>w ? h : w;
-    int imTopPadding		= pad * .01;
-    int imBottomPadding		= pad * .05;
-    int imLeftPadding		= pad * .05;
-    int imRightPadding		= pad * .01;
-    int tickOffset		= 0;
-    int bigTickSize		= pad * .01;
-    int smallTickSize		= pad * .005;
+    int imTopPadding		= int(pad * .01);
+    int imBottomPadding	= int(pad * .05);
+    int imLeftPadding		= int(pad * .05);
+    int imRightPadding	= int(pad * .01);
+    int tickOffset		  = 0;
+    int bigTickSize		  = int(pad * .01);
+    int smallTickSize		= int(pad * .005);
 
     QImage im (w, h, QImage::Format_ARGB32);
-    im.setDotsPerMeterX(dpm);
-    im.setDotsPerMeterY(dpm);
+    im.setDotsPerMeterX(int(dpm));
+    im.setDotsPerMeterY(int(dpm));
     im.fill(0);
     QPainter p;
 

@@ -38,8 +38,8 @@ namespace Avogadro {
   void TrajVideoMaker::makeVideo(GLWidget *widget, QString workDirectory,
 			QString videoFileName)
   {
-    if (!workDirectory.endsWith("/"))
-      workDirectory += "/";
+    if (!workDirectory.endsWith('/'))
+      workDirectory += '/';
 
     // check widget is okay
     if (!widget) {
@@ -59,7 +59,7 @@ namespace Avogadro {
     double aspectRatio = getAspectRatio(widget);
     //start the progress dialog
     QProgressDialog progDialog(QObject::tr("Building video "),
-			  QObject::tr("cancel"), 0,
+			  QObject::tr("Cancel"), 0,
 			  molecule->numConformers()*2);
     progDialog.setMinimumDuration(1);
     progDialog.setValue(0);
@@ -116,7 +116,7 @@ namespace Avogadro {
     const QString povrayexe = "povray -D ";
 
     QString povRayCommand = "cd " +  directory +
-      " && " + povrayexe + " " + povFileName;
+      " && " + povrayexe + ' ' + povFileName;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), povRayCommand);
     int ret = system(povRayCommand.toStdString().c_str());
     if (ret)
@@ -133,13 +133,13 @@ namespace Avogadro {
     QString pngString;
     for (QStringIterator pngIterator = startPngFiles;
       pngIterator != endPngFiles; ++pngIterator) {
-      pngString += *pngIterator + ",";
+      pngString += *pngIterator + ',';
     }
 
     //strip off last comma
     pngString = pngString.left(pngString.length()-1);
 
-    QString mencoderCommand = "cd " + pngFileDirectory + " && " + mencoderexe + " " + videoFileName + " mf://" + pngString ;
+    QString mencoderCommand = "cd " + pngFileDirectory + " && " + mencoderexe + ' ' + videoFileName + " mf://" + pngString ;
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), mencoderCommand);
     int ret = system(mencoderCommand.toStdString().c_str());
     if (ret)

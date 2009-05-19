@@ -248,7 +248,7 @@ namespace Avogadro
 
     // we have a successful run. Read in the results and close the dialog
     QFileInfo inputFile(m_inputFile);
-    QString outputFile = inputFile.canonicalPath() + "/" + inputFile.baseName() + ".out";
+    QString outputFile = inputFile.canonicalPath() + '/' + inputFile.baseName() + ".out";
     emit readOutput(outputFile);
 
     close();
@@ -290,7 +290,7 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + "/" + defaultFile.baseName() + ".mop";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".mop";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
                                                     defaultFileName, tr("MOPAC Input Deck (*.mop)"));
     if (!fileName.isEmpty()) {
