@@ -49,7 +49,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      PythonExtension(QObject *parent = 0, const QString &filename = QString(""));
+      explicit PythonExtension(QObject *parent = 0, const QString &filename = QString(""));
       //! Deconstructor
       virtual ~PythonExtension();
 

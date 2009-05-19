@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef LABELITEMS_H
-#define LABELITEMS_H
+#ifndef LABELDELEGATE_H
+#define LABELDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"

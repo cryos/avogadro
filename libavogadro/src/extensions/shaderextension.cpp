@@ -100,7 +100,7 @@ namespace Avogadro
       QList<QByteArray> lines = params->split('\n');
       qDebug() << "Loading shader parameter file:" << lines.size();
       qDebug() << *params;
-      foreach(QByteArray line, lines) {
+      foreach(const QByteArray &line, lines) {
         QList<QByteArray> halves = line.split('\t');
         QList<QByteArray> tokens = halves.at(0).split(' ');
         if (tokens.size() != 2) {

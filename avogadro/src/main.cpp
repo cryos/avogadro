@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
   if (res1 != 0 || res2 != 0)
     qDebug() << "Error: putenv failed." << res1 << res2;
 
-  QString env(getenv("BABEL_LIBDIR"));
+  QString env(qgetenv("BABEL_LIBDIR"));
   qDebug() << "getenv(\"BABEL_LIBDIR\")=" << env;
 #endif
 
@@ -133,18 +133,31 @@ int main(int argc, char *argv[])
 
   qDebug() << "Locale: " << translationCode;
   // Load Qt translations first
+  bool tryLoadingQtTranslations = false;
   QString qtFilename = "qt_" + translationCode + ".qm";
   QTranslator qtTranslator(0);
   if (qtTranslator.load(qtFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
     app.installTranslator(&qtTranslator);
   }
-
+  else {
+    tryLoadingQtTranslations = true;
+  }
+  
   // Load the Avogadro translations
   QTranslator avoTranslator(0);
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
-  foreach (QString translationPath, translationPaths) {
+  foreach (const QString &translationPath, translationPaths) {
     qDebug() << "path = " << translationPath + avoFilename;
+
+    // We can't find the normal Qt translations (maybe we're in a "bundle"?)
+    if (tryLoadingQtTranslations) {
+      if (qtTranslator.load(qtFilename, translationPath)) {
+        app.installTranslator(&qtTranslator);
+        tryLoadingQtTranslations = false; // already loaded
+      }
+    }
+
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       qDebug() << "Translation successfully loaded.";

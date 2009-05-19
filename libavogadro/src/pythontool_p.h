@@ -42,7 +42,7 @@ namespace Avogadro {
 
     public:
       //! Constructor
-      PythonTool(QObject *parent = 0, const QString &filename = QString(""));
+      explicit PythonTool(QObject *parent = 0, const QString &filename = QString(""));
       //! Destructor
       virtual ~PythonTool();
 

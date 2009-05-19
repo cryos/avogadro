@@ -112,7 +112,7 @@ namespace Avogadro {
     if (helix.isValid()) {
       found = true;
 
-      QStringList lines = helix.toString().split("\n");
+      QStringList lines = helix.toString().split('\n');
       foreach (const QString &line, lines) {
         //qDebug() << "line:" << line;
 
@@ -297,7 +297,7 @@ namespace Avogadro {
     if (sheet.isValid()) {
       found = true;
 
-      QStringList lines = sheet.toString().split("\n");
+      QStringList lines = sheet.toString().split('\n');
       foreach (const QString &line, lines) {
         //qDebug() << "line:" << line;
 

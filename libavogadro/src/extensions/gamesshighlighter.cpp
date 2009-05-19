@@ -123,7 +123,7 @@ namespace Avogadro {
     }
 
     if (previousBlockState() == 1) { // Anything outside of data blocks is a comment
-      foreach (HighlightingRule rule, m_highlightingRules) {
+      foreach (const HighlightingRule &rule, m_highlightingRules) {
         QRegExp expression(rule.pattern);
         expression.setCaseSensitivity(Qt::CaseInsensitive);
         int index = text.indexOf(expression);

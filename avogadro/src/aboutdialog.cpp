@@ -57,10 +57,10 @@ namespace Avogadro {
       QString scmVersion(SCM_REVISION);
       QString appVersion(VERSION);
       if (scmVersion.length())
-        appVersion += " (Git revision: " + scmVersion + ")";
+        appVersion += " (Git revision: " + scmVersion + ')';
       QString libVersion(Library::version());
       if (Library::scmRevision().length())
-        libVersion += " (Git revision: " + Library::scmRevision() + ")";
+        libVersion += " (Git revision: " + Library::scmRevision() + ')';
 
       lbl->setText(
           tr("<h3>%1</h3>"

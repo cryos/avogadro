@@ -1131,7 +1131,7 @@ namespace Avogadro {
         }*/
     }  //End of RightAxis
 
-    // Since the following use QLabels to render their text, it is neccessary
+    // Since the following use QLabels to render their text, it is necessary
     // to paint them after drawing to keep the painter from becoming invalid.
     // Also, be sure NOT to name the plotwidget instance as the labels parent.
     // That makes the widget redraw itself continuously.
@@ -1400,7 +1400,7 @@ namespace Avogadro {
     }  //End of RightAxis
 
 
-    // Since the following use QLabels to render their text, it is neccessary
+    // Since the following use QLabels to render their text, it is necessary
     // to paint them after drawing to keep the painter from becoming invalid.
 
     // Draw BottomAxis Label

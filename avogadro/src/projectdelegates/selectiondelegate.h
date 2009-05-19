@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef SELECTIONITEMS_H
-#define SELECTIONITEMS_H
+#ifndef SELECTIONDELEGATE_H
+#define SELECTIONDELEGATE_H
 
 #include <avogadro/global.h>
 #include "../projecttreemodeldelegate.h"

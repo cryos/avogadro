@@ -113,7 +113,7 @@ namespace Avogadro{
     // Disable face culling for ring structures.
     glDisable(GL_CULL_FACE);
 
-    // Optimise for smaller ring structures
+    // Optimize for smaller ring structures
     switch (ring.size()) {
       case 3:
         // Single triangle - easy

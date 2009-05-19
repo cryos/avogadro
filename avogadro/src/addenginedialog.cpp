@@ -43,7 +43,7 @@ namespace Avogadro {
 
   Engine * AddEngineDialog::getEngine(QWidget *parent, const QList<PluginFactory *> &engineFactories)
   {
-    AddEngineDialog dialog(parent);
+    QPointer<AddEngineDialog> dialog = new AddEngineDialog(parent);
     QStringList types;
 
     // We get the list from the PluginFactories in rendering order
@@ -54,29 +54,31 @@ namespace Avogadro {
     qSort(types);
     
     foreach(const QString &type, types)
-      dialog.addType(type);
+      dialog->addType(type);
 
-    int accepted = dialog.exec();
+    int accepted = dialog->exec();
     if(accepted)
     {
       // Find the engine in the list and instantiate it - needed now we sort the list
       Engine *engine = 0;
       foreach(PluginFactory *factory, engineFactories)
-        if (factory->name() == types.at(dialog.typeIndex()))
+        if (factory->name() == types.at(dialog->typeIndex()))
           engine = (Engine *) factory->createInstance();
 
       // We should always be able to find the engine requested
       if (engine) {
-        engine->setAlias(dialog.nameText());
+        engine->setAlias(dialog->nameText());
         engine->setEnabled(true);
-        engine->setDescription(dialog.descriptionText());
+        engine->setDescription(dialog->descriptionText());
       }
       else
         qDebug() << "Error - engine not found in engineFactories.";
 
+      delete dialog;
       return engine;
     }
 
+    delete dialog;
     return 0;
   }
 

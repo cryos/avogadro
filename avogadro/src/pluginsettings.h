@@ -19,8 +19,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef PLUGINDIALOG_H
-#define PLUGINDIALOG_H
+#ifndef PLUGINSETTINGS_H
+#define PLUGINSETTINGS_H
 
 #include "pluginlistview.h"
 #include "ui_pluginsettings.h"
