@@ -111,16 +111,16 @@ namespace Avogadro {
       int index = chain.indexOf(residue);
       if (index > 0)
         return chain.at(index - 1);
-      return 0; 
+      return 0;
     }
 
     Residue* nextResidue(Residue *residue, const QVector<Residue*> &chain) const
     {
       int index = chain.indexOf(residue);
-      if (index + 1 < chain.size()) 
+      if (index + 1 < chain.size())
         return chain.at(index + 1);
       return 0;
-    } 
+    }
 
     void generateMesh()
     {
@@ -166,7 +166,7 @@ namespace Avogadro {
       return 0;
     }
 
-    void findBackbonePoints(Residue *residue, const QVector<Residue*> &chain) 
+    void findBackbonePoints(Residue *residue, const QVector<Residue*> &chain)
     {
       bool hasPrevious = false, hasNext = false;
       Eigen::Vector3d previousCpos = Eigen::Vector3d(0.,0.,0.);
@@ -201,21 +201,21 @@ namespace Avogadro {
         Eigen::Vector3d vn = *(n->pos());
         if (hasPrevious)
           out.push_back(0.5 * (previousCpos + vn));
-        else 
+        else
           out.push_back(vn);
         //	out.push_back (mean (mean (vn, vca), mean (vca, vc)));
         //	out.push_back(mean (vca, vc));
 
         if (hasNext)
           out.push_back(0.5 * (nextNpos + vc));
-        else 
+        else
           out.push_back (vc);
       }
 
       setBackbonePoints(residue, out);
     }
 
-    void findBackboneDirection(Residue *residue) 
+    void findBackboneDirection(Residue *residue)
     {
       Eigen::Vector3d out(0., 0., 1.);
       Atom *o = atomFromResidue(residue, "O");
@@ -227,21 +227,21 @@ namespace Avogadro {
       setBackboneDirection(residue, out);
     }
 
-    Eigen::Vector3d startReference(Residue *residue) 
+    Eigen::Vector3d startReference(Residue *residue)
     {
       std::vector<Eigen::Vector3d> lis = backbonePoints(residue);
-      if (lis.size()) 	
+      if (lis.size())
         return lis[1];
       return Eigen::Vector3d(0., 0., 0.);
     }
 
-    Eigen::Vector3d endReference(Residue *residue) 
+    Eigen::Vector3d endReference(Residue *residue)
     {
       std::vector<Eigen::Vector3d> lis = backbonePoints(residue);
       return lis[lis.size()-2];
     }
 
-    void addGuidePointsToBackbone(Residue *residue, const QVector<Residue*> &chain, 
+    void addGuidePointsToBackbone(Residue *residue, const QVector<Residue*> &chain,
         std::vector<Eigen::Vector3d> &lis)
     {
       Residue *previousRes = previousResidue(residue, chain);
@@ -270,8 +270,8 @@ namespace Avogadro {
     }
 
     // P     A  B ... C      F     interpolates between A B C etc, P and F are discarded after calculation
-    std::vector<Eigen::Vector3d> smoothList(const std::vector<Eigen::Vector3d> &lis) 
-    { 
+    std::vector<Eigen::Vector3d> smoothList(const std::vector<Eigen::Vector3d> &lis)
+    {
       if (lis.size () > 2) {
         std::vector<Eigen::Vector3d> ilist, out;
         Eigen::Vector3d lasti;
@@ -289,13 +289,13 @@ namespace Avogadro {
           out.push_back(lis[i+2]);
         }
         return out;
-      } else { 
+      } else {
         return lis;
       }
     }
 
-    Eigen::Vector3d circumcenter(const Eigen::Vector3d &v1, 
-        const Eigen::Vector3d &v2, const Eigen::Vector3d v3) 
+    Eigen::Vector3d circumcenter(const Eigen::Vector3d &v1,
+        const Eigen::Vector3d &v2, const Eigen::Vector3d v3)
     {
       Eigen::Vector3d A = v1;
       Eigen::Vector3d B = v2;
@@ -306,7 +306,7 @@ namespace Avogadro {
       double cx = C.x() * c2*(a2+b2-c2);
       double cy = C.y() * c2*(a2+b2-c2);
       double cz = C.z() * c2*(a2+b2-c2);
-      double ax = A.x() * a2*(c2+b2-a2);	
+      double ax = A.x() * a2*(c2+b2-a2);
       double ay = A.y() * a2*(c2+b2-a2);
       double az = A.z() * a2*(c2+b2-a2);
       double bx = B.x() * b2*(a2+c2-b2);
@@ -315,14 +315,14 @@ namespace Avogadro {
 
 
       double den = 2 * (a2*b2 + a2*c2 + b2*c2)-(a2*a2 + b2*b2 + c2*c2);
-      if (den == 0.0) 
+      if (den == 0.0)
         den = 0.0001;
       Eigen::Vector3d out = Eigen::Vector3d((ax+bx+cx)/den, (ay+by+cy)/den, (az+bz+cz)/den);
-      return out;	
+      return out;
     }
 
-    void interpolate(const Eigen::Vector3d &v1, const Eigen::Vector3d &v2, const Eigen::Vector3d &v3, 
-        Eigen::Vector3d &i1, Eigen::Vector3d &i2) 
+    void interpolate(const Eigen::Vector3d &v1, const Eigen::Vector3d &v2, const Eigen::Vector3d &v3,
+        Eigen::Vector3d &i1, Eigen::Vector3d &i2)
     {
       Eigen::Vector3d d1 = v1 - v2;
       Eigen::Vector3d d2 = v3 - v2;
@@ -347,7 +347,7 @@ namespace Avogadro {
       }
     }
 
-    void drawBackboneStick(Residue *residue, const QVector<Residue*> &chain) 
+    void drawBackboneStick(Residue *residue, const QVector<Residue*> &chain)
     {
       //int n_points = *ddwin ->data ->quality_scale * 9;
       unsigned int n_points = 5 * 9; // FIXME
@@ -384,9 +384,9 @@ namespace Avogadro {
 
       // this residue
       Eigen::Vector3d dir = backboneDirection(residue);
-      if (m_protein->isHelix(residue)) 
+      if (m_protein->isHelix(residue))
         shape = &helix_points;
-      else if (m_protein->isSheet(residue)) 
+      else if (m_protein->isSheet(residue))
         shape = &sheet_points;
 
       // previous residue
@@ -395,29 +395,29 @@ namespace Avogadro {
       if (previousRes) {
         //last_col = get_color (prec_res); FIXME
         lastdir = backboneDirection(previousRes);
-        if (m_protein->isHelix(previousRes)) 
-          last_shape = &helix_points; 
-        else if (m_protein->isSheet(previousRes)) 
-          last_shape = &sheet_points; 
-      } else 
+        if (m_protein->isHelix(previousRes))
+          last_shape = &helix_points;
+        else if (m_protein->isSheet(previousRes))
+          last_shape = &sheet_points;
+      } else
         lastdir = dir;
 
       // next residue
-      Residue *nextRes = nextResidue(residue, chain);	
+      Residue *nextRes = nextResidue(residue, chain);
       Eigen::Vector3d nextdir;
       if (nextRes) {
         //next_col = get_color (follow_res); FIXME
         nextdir = backboneDirection(nextRes);
-        if (m_protein->isHelix(nextRes)) 
-          next_shape = &helix_points; 
-        else if (m_protein->isSheet(nextRes)) 
-          next_shape = &sheet_points; 
-      } else 
+        if (m_protein->isHelix(nextRes))
+          next_shape = &helix_points;
+        else if (m_protein->isSheet(nextRes))
+          next_shape = &sheet_points;
+      } else
         nextdir = dir;
 
       if (lastdir.dot(dir) < 0.0)
         lastdir *= -1.0;
-      if (nextdir.dot(dir) < 0.0) 
+      if (nextdir.dot(dir) < 0.0)
         nextdir *= -1.0;
 
       lastdir = 0.5 * (dir + lastdir);
@@ -457,14 +457,14 @@ namespace Avogadro {
           std::vector<Eigen::Vector3d> shape1, shape2;
           for (unsigned int n = 0; n < n_points; n++) {
             Eigen::Vector3d vv2 = 0.5 * ((*last_shape)[n] + (*shape)[n]);
-            Eigen::Vector3d vv1 = 0.5 * ((*next_shape)[n] + (*shape)[n]);	
-            shape1.push_back( Eigen::Vector3d(vv1.x() * dt + vv2.x() * (1 - dt), 
-                  vv1.y() * dt + vv2.y() * (1 - dt), 
+            Eigen::Vector3d vv1 = 0.5 * ((*next_shape)[n] + (*shape)[n]);
+            shape1.push_back( Eigen::Vector3d(vv1.x() * dt + vv2.x() * (1 - dt),
+                  vv1.y() * dt + vv2.y() * (1 - dt),
                   vv1.z() * dt + vv2.z() * (1 - dt)) );
           }
 
-          Eigen::Vector3d d(v1.x() * dt + v2.x() * (1 - dt), 
-              v1.y() * dt + v2.y() * (1 - dt), 
+          Eigen::Vector3d d(v1.x() * dt + v2.x() * (1 - dt),
+              v1.y() * dt + v2.y() * (1 - dt),
               v1.z() * dt + v2.z() * (1 - dt)  );
 
           dt = ((double) i-2) / tot;
@@ -479,22 +479,22 @@ namespace Avogadro {
 
           for (unsigned int n = 0; n < n_points; n++) {
             Eigen::Vector3d vv2 = 0.5 * ((*last_shape)[n] + (*shape)[n]);
-            Eigen::Vector3d vv1 = 0.5 * ((*next_shape)[n] + (*shape)[n]);	
-            shape2.push_back( Eigen::Vector3d (vv1.x() * dt + vv2.x() * (1 - dt), 
-                  vv1.y() * dt + vv2.y() * (1 - dt), 
+            Eigen::Vector3d vv1 = 0.5 * ((*next_shape)[n] + (*shape)[n]);
+            shape2.push_back( Eigen::Vector3d (vv1.x() * dt + vv2.x() * (1 - dt),
+                  vv1.y() * dt + vv2.y() * (1 - dt),
                   vv1.z() * dt + vv2.z() * (1 - dt)) );
           }
 
-          Eigen::Vector3d d2(v1.x() * dt + v2.x() * (1 - dt), 
-              v1.y() * dt + v2.y() * (1 - dt), 
+          Eigen::Vector3d d2(v1.x() * dt + v2.x() * (1 - dt),
+              v1.y() * dt + v2.y() * (1 - dt),
               v1.z() * dt + v2.z() * (1 - dt) );
 
           backboneRibbon(points[i-3], points [i-2],points [i-1],points [i], d, d2, cc1, cc2, shape1, shape2);
-        } 
+        }
       }
     }
 
-    void components(const Eigen::Vector3d &vec, const Eigen::Vector3d &ref, 
+    void components(const Eigen::Vector3d &vec, const Eigen::Vector3d &ref,
         Eigen::Vector3d &parallel, Eigen::Vector3d &normal)
     {
       //assert (!isnan(vec.module()));
@@ -509,7 +509,7 @@ namespace Avogadro {
     }
 
     // FIXME replace with eigen code
-    Eigen::Vector3d rotate_vector_using_matrix_9 (const Eigen::Vector3d &v, double *m) 
+    Eigen::Vector3d rotate_vector_using_matrix_9 (const Eigen::Vector3d &v, double *m)
     {
       double m11, m12, m13, m21, m22, m23, m31, m32, m33;
       m11  = m[0];
@@ -535,12 +535,12 @@ namespace Avogadro {
         Eigen::Vector3d coords;
         Eigen::Vector3d normal;
         QColor         color;
-    }; 
+    };
 
-    void backboneRibbon(const Eigen::Vector3d &v1, const Eigen::Vector3d &v2, 
-        const Eigen::Vector3d &v3, const Eigen::Vector3d &v4, const Eigen::Vector3d &dir, 
-        const Eigen::Vector3d &dir2, const QColor &c1, const QColor &c2, 
-        const std::vector<Eigen::Vector3d> &shape1, const std::vector<Eigen::Vector3d> &shape2) 
+    void backboneRibbon(const Eigen::Vector3d &v1, const Eigen::Vector3d &v2,
+        const Eigen::Vector3d &v3, const Eigen::Vector3d &v4, const Eigen::Vector3d &dir,
+        const Eigen::Vector3d &dir2, const QColor &c1, const QColor &c2,
+        const std::vector<Eigen::Vector3d> &shape1, const std::vector<Eigen::Vector3d> &shape2)
     {
       //Sandri's method
       Eigen::Vector3d prec_vect = v2 - v1;
@@ -554,9 +554,9 @@ namespace Avogadro {
 
       Eigen::Vector3d par1, pp1, par2, pp2;
       components(dir, norm1, par1, pp1);
-      components(dir2, norm2, par2, pp2);	
+      components(dir2, norm2, par2, pp2);
 
-      double m1[9], m2[9];	
+      double m1[9], m2[9];
 
       Eigen::Vector3d newz1 = norm1;
       Eigen::Vector3d newy1 = pp1;
@@ -566,13 +566,13 @@ namespace Avogadro {
 
       m1[0] = newx1.x ();
       m1[3] = newx1.y ();
-      m1[6] = newx1.z ();	
+      m1[6] = newx1.z ();
       m1[1] = newy1.x ();
       m1[4] = newy1.y ();
-      m1[7] = newy1.z ();	
+      m1[7] = newy1.z ();
       m1[2] = newz1.x ();
       m1[5] = newz1.y ();
-      m1[8] = newz1.z ();	
+      m1[8] = newz1.z ();
 
       Eigen::Vector3d newz2 = norm2;
       Eigen::Vector3d newy2 = pp2;
@@ -582,13 +582,13 @@ namespace Avogadro {
 
       m2[0] = newx2.x ();
       m2[3] = newx2.y ();
-      m2[6] = newx2.z ();	
+      m2[6] = newx2.z ();
       m2[1] = newy2.x ();
       m2[4] = newy2.y ();
-      m2[7] = newy2.z ();	
+      m2[7] = newy2.z ();
       m2[2] = newz2.x ();
       m2[5] = newz2.y ();
-      m2[8] = newz2.z ();	
+      m2[8] = newz2.z ();
 
       unsigned int slices = shape1.size();
       std::vector<SurfVertex*> vertices;
@@ -599,19 +599,19 @@ namespace Avogadro {
         Eigen::Vector3d p2 = shape2[n];
 
         int last_n = n - 1;
-        if (last_n < 0) 
+        if (last_n < 0)
           last_n = slices - 2;
         unsigned int next_n = n + 1;
-        if (next_n >= slices) 
+        if (next_n >= slices)
           next_n = 1;
 
         Eigen::Vector3d tan1 = shape1[next_n] - shape1[last_n];
         Eigen::Vector3d tan2 = shape2[next_n] - shape2[last_n];
         Eigen::Vector3d n1 = Eigen::Vector3d(-tan1.y(), tan1.x (), 0);
-        Eigen::Vector3d n2 = Eigen::Vector3d(-tan2.y(), tan2.x (), 0);		
+        Eigen::Vector3d n2 = Eigen::Vector3d(-tan2.y(), tan2.x (), 0);
 
         p1 = rotate_vector_using_matrix_9(p1, m1);
-        p2 = rotate_vector_using_matrix_9(p2, m2);	
+        p2 = rotate_vector_using_matrix_9(p2, m2);
 
         n1 = rotate_vector_using_matrix_9(n1, m1);
         n2 = rotate_vector_using_matrix_9(n2, m2);
@@ -626,10 +626,10 @@ namespace Avogadro {
            glVertex3f (p1.x (), p1.y (), p1.z ());
 
 
-           openGLSetColor(c2); 
-           glNormal3f (n2.x (), n2.y (), n2.z ());       
+           openGLSetColor(c2);
+           glNormal3f (n2.x (), n2.y (), n2.z ());
            glVertex3f (p2.x (), p2.y (), p2.z ());
-           } else 
+           } else
          */
         SurfVertex *newv1 = new SurfVertex;
         newv1->normal = n1;
@@ -680,11 +680,11 @@ namespace Avogadro {
       for (unsigned int i = 0; i < tmp.size(); ++i)
         tmp[i] = Eigen::Vector3f(m_vertices[i].x(), m_vertices[i].y(), m_vertices[i].z());
       m_mesh->setVertices(tmp);
-      
+
       for (unsigned int i = 0; i < tmp.size(); ++i)
         tmp[i] = Eigen::Vector3f(m_normals[i].x(), m_normals[i].y(), m_normals[i].z());
       m_mesh->setNormals(tmp);
-      
+
       m_mesh->setColors(m_colors);
     }
 
@@ -726,6 +726,7 @@ namespace Avogadro {
     if (m_update) updateChains(pd);
 
     glDisable( GL_CULL_FACE );
+    pd->painter()->setColor(0.0, 0.0, 0.0, 1.0);
     if (m_mesh)
       pd->painter()->drawColorMesh(*m_mesh);
     glEnable( GL_CULL_FACE );
