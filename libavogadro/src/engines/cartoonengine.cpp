@@ -324,21 +324,15 @@ namespace Avogadro {
       double a2 = (B - C).squaredNorm();
       double b2 = (C - A).squaredNorm();
       double c2 = (A - B).squaredNorm();
-      double cx = C.x() * c2*(a2+b2-c2);
-      double cy = C.y() * c2*(a2+b2-c2);
-      double cz = C.z() * c2*(a2+b2-c2);
-      double ax = A.x() * a2*(c2+b2-a2);
-      double ay = A.y() * a2*(c2+b2-a2);
-      double az = A.z() * a2*(c2+b2-a2);
-      double bx = B.x() * b2*(a2+c2-b2);
-      double by = B.y() * b2*(a2+c2-b2);
-      double bz = B.z() * b2*(a2+c2-b2);
 
+      double aFactor = a2*(c2 + b2 - a2);
+      double cFactor = c2*(a2 + b2 - c2);
+      double bFactor = b2*(a2 + c2 - b2);
 
       double den = 2 * (a2*b2 + a2*c2 + b2*c2)-(a2*a2 + b2*b2 + c2*c2);
-      if (den == 0.0)
-        den = 0.0001;
-      Eigen::Vector3d out = Eigen::Vector3d((ax+bx+cx)/den, (ay+by+cy)/den, (az+bz+cz)/den);
+      if (den < 1.0e-4)
+        den = 1.0e-4;
+      Eigen::Vector3d out = (A*aFactor + B*bFactor + C*cFactor) / den;
       return out;
     }
 
@@ -538,26 +532,6 @@ namespace Avogadro {
       //assert (!isnan(normal.module ()));
     }
 
-    // FIXME replace with eigen code
-    Eigen::Vector3d rotate_vector_using_matrix_9 (const Eigen::Vector3d &v, double *m)
-    {
-      double m11, m12, m13, m21, m22, m23, m31, m32, m33;
-      m11  = m[0];
-      m12  = m[1];
-      m13  = m[2];
-      m21  = m[3];
-      m22  = m[4];
-      m23  = m[5];
-      m31  = m[6];
-      m32  = m[7];
-      m33  = m[8];
-      Eigen::Vector3d out;
-      out.x() = m11*v.x() + m12*v.y() + m13*v.z();
-      out.y() = m21*v.x() + m22*v.y() + m23*v.z();
-      out.z() = m31*v.x() + m32*v.y() + m33*v.z();
-      return out;
-    }
-
     class SurfVertex
     {
       public:
@@ -586,7 +560,7 @@ namespace Avogadro {
       components(dir, norm1, par1, pp1);
       components(dir2, norm2, par2, pp2);
 
-      double m1[9], m2[9];
+      Eigen::Matrix3d m1, m2;
 
       Eigen::Vector3d newz1 = norm1;
       Eigen::Vector3d newy1 = pp1;
@@ -594,15 +568,9 @@ namespace Avogadro {
       newy1.normalize();
       Eigen::Vector3d newx1 = newy1.cross(newz1);
 
-      m1[0] = newx1.x ();
-      m1[3] = newx1.y ();
-      m1[6] = newx1.z ();
-      m1[1] = newy1.x ();
-      m1[4] = newy1.y ();
-      m1[7] = newy1.z ();
-      m1[2] = newz1.x ();
-      m1[5] = newz1.y ();
-      m1[8] = newz1.z ();
+      m1.col(0) = newx1;
+      m1.col(1) = newy1;
+      m1.col(2) = newz1;
 
       Eigen::Vector3d newz2 = norm2;
       Eigen::Vector3d newy2 = pp2;
@@ -610,15 +578,9 @@ namespace Avogadro {
       newy2.normalize();
       Eigen::Vector3d newx2 = newy2.cross(newz2);
 
-      m2[0] = newx2.x ();
-      m2[3] = newx2.y ();
-      m2[6] = newx2.z ();
-      m2[1] = newy2.x ();
-      m2[4] = newy2.y ();
-      m2[7] = newy2.z ();
-      m2[2] = newz2.x ();
-      m2[5] = newz2.y ();
-      m2[8] = newz2.z ();
+      m2.col(0) = newx2;
+      m2.col(1) = newy2;
+      m2.col(2) = newz2;
 
       unsigned int slices = shape1.size();
       std::vector<SurfVertex*> vertices;
@@ -637,17 +599,14 @@ namespace Avogadro {
 
         Eigen::Vector3d tan1 = shape1[next_n] - shape1[last_n];
         Eigen::Vector3d tan2 = shape2[next_n] - shape2[last_n];
-        Eigen::Vector3d n1 = Eigen::Vector3d(-tan1.y(), tan1.x (), 0);
-        Eigen::Vector3d n2 = Eigen::Vector3d(-tan2.y(), tan2.x (), 0);
+        Eigen::Vector3d n1 = Eigen::Vector3d(-tan1.y(), tan1.x(), 0.0);
+        Eigen::Vector3d n2 = Eigen::Vector3d(-tan2.y(), tan2.x(), 0.0);
 
-        p1 = rotate_vector_using_matrix_9(p1, m1);
-        p2 = rotate_vector_using_matrix_9(p2, m2);
+        p1 = m1*p1 + v2;
+        p2 = m2*p2 + v3;
 
-        n1 = rotate_vector_using_matrix_9(n1, m1);
-        n2 = rotate_vector_using_matrix_9(n2, m2);
-
-        p1 += v2;
-        p2 += v3;
+        n1 = m1*n1;
+        n2 = m1*n2;
 
         SurfVertex *newv1 = new SurfVertex;
         newv1->normal = n1;
@@ -696,11 +655,11 @@ namespace Avogadro {
 
       std::vector<Eigen::Vector3f> tmp(m_vertices.size());
       for (unsigned int i = 0; i < tmp.size(); ++i)
-        tmp[i] = Eigen::Vector3f(m_vertices[i].x(), m_vertices[i].y(), m_vertices[i].z());
+        tmp[i] = m_vertices[i].cast<float>();
       m_mesh->setVertices(tmp);
 
       for (unsigned int i = 0; i < tmp.size(); ++i)
-        tmp[i] = Eigen::Vector3f(m_normals[i].x(), m_normals[i].y(), m_normals[i].z());
+        tmp[i] = m_normals[i].cast<float>();
       m_mesh->setNormals(tmp);
 
       m_mesh->setColors(m_colors);
