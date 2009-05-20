@@ -354,8 +354,6 @@ namespace Avogadro {
   {
     qDebug() << "enableEyeCandy called" << enable;
     m_eyeCandyEnabled = enable == 2 ? true : false;
-
-    qDebug() << "enableEyeCandy called" << enable << m_eyeCandyEnabled;
   }
 
 }
