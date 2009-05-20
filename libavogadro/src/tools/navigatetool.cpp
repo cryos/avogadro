@@ -1,7 +1,7 @@
 /**********************************************************************
   NavigateTool - Navigation Tool for Avogadro
 
-  Copyright (C) 2007,2008 by Marcus D. Hanwell
+  Copyright (C) 2007-2009 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -25,6 +25,9 @@
 
 #include "navigatetool.h"
 #include "eyecandy.h"
+
+#include "ui_navigatesettingswidget.h"
+
 #include <avogadro/navigate.h>
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
@@ -32,19 +35,27 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 
-#include <QtPlugin>
 #include <QDebug>
-
-using namespace std;
-using namespace OpenBabel;
-using namespace Eigen;
 
 namespace Avogadro {
 
+  using Eigen::Vector3d;
+
+  class NavigateSettingsWidget : public QWidget,
+                                 public Ui::NavigateSettingsWidget
+  {
+  public:
+    NavigateSettingsWidget(QWidget *parent=0) : QWidget(parent)
+    {
+      setupUi(this);
+    }
+  };
+
   NavigateTool::NavigateTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
-  m_leftButtonPressed(false), m_midButtonPressed(false),
-  m_rightButtonPressed(false), m_drawEyeCandy(false),
-  m_draggingInitialized(false), m_eyecandy(new Eyecandy)
+      m_leftButtonPressed(false), m_midButtonPressed(false),
+      m_rightButtonPressed(false), m_eyeCandyEnabled(true),
+      m_drawEyeCandy(false), m_draggingInitialized(false),
+      m_eyecandy(new Eyecandy), m_settingsWidget(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/navigate/navigate.png")));
@@ -91,6 +102,19 @@ namespace Avogadro {
       atomsBarycenter /= sumOfWeights;
       m_referencePoint = atomsBarycenter;
     }
+  }
+
+  QWidget* NavigateTool::settingsWidget()
+  {
+    if (!m_settingsWidget) {
+      m_settingsWidget = new NavigateSettingsWidget(qobject_cast<QWidget*>(parent()));
+      // Restore settings
+      m_settingsWidget->eyeCandyCheckBox->setChecked(m_eyeCandyEnabled);
+      // Connect some signals and slots
+      connect(m_settingsWidget->eyeCandyCheckBox, SIGNAL(stateChanged(int)),
+              this, SLOT(enableEyeCandy(int)));
+    }
+    return m_settingsWidget;
   }
 
   QUndoCommand* NavigateTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
@@ -299,7 +323,7 @@ namespace Avogadro {
 
   bool NavigateTool::paint(GLWidget *widget)
   {
-    if (m_drawEyeCandy) {
+    if (m_eyeCandyEnabled && m_drawEyeCandy) {
       if(m_leftButtonPressed)
         m_eyecandy->drawRotation(widget, m_clickedAtom, m_xAngleEyecandy,
                                  m_yAngleEyecandy, &m_referencePoint);
@@ -310,6 +334,30 @@ namespace Avogadro {
     }
     return true;
   }
+
+  void NavigateTool::writeSettings(QSettings &settings) const
+  {
+    Tool::writeSettings(settings);
+    settings.setValue("eyeCandyEnabled", m_eyeCandyEnabled);
+  }
+
+  void NavigateTool::readSettings(QSettings &settings)
+  {
+    Tool::readSettings(settings);
+    m_eyeCandyEnabled = settings.value("eyeCandyEnabled", true).toBool();
+
+    if (m_settingsWidget)
+      m_settingsWidget->eyeCandyCheckBox->setChecked(m_eyeCandyEnabled);
+  }
+
+  void NavigateTool::enableEyeCandy(int enable)
+  {
+    qDebug() << "enableEyeCandy called" << enable;
+    m_eyeCandyEnabled = enable == 2 ? true : false;
+
+    qDebug() << "enableEyeCandy called" << enable << m_eyeCandyEnabled;
+  }
+
 }
 
 Q_EXPORT_PLUGIN2(navigatetool, Avogadro::NavigateToolFactory)
