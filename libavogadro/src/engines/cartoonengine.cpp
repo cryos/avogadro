@@ -192,8 +192,8 @@ namespace Avogadro {
     void findBackbonePoints(Residue *residue, const QVector<Residue*> &chain)
     {
       bool hasPrevious = false, hasNext = false;
-      Eigen::Vector3d previousCpos = Eigen::Vector3d(0.,0.,0.);
-      Eigen::Vector3d nextNpos = Eigen::Vector3d(0.,0.,0.);
+      Eigen::Vector3d previousCpos = Eigen::Vector3d.Zero();
+      Eigen::Vector3d nextNpos = Eigen::Vector3d.Zero();
       std::vector<Eigen::Vector3d> out;
       // get the index for the residue in the chain
       int index = chain.indexOf(residue);
@@ -253,7 +253,7 @@ namespace Avogadro {
       std::vector<Eigen::Vector3d> lis = backbonePoints(residue);
       if (lis.size())
         return lis[1];
-      return Eigen::Vector3d(0., 0., 0.);
+      return Eigen::Vector3d.Zero();
     }
 
     Eigen::Vector3d endReference(Residue *residue)
@@ -274,7 +274,7 @@ namespace Avogadro {
         c *= 2.0;
         lis.insert(lis.begin(), c - v);
       } else {
-        lis.insert(lis.begin(), Eigen::Vector3d(0., 0., 0.));
+        lis.insert(lis.begin(), Eigen::Vector3d.Zero());
       }
 
       Residue *nextRes = nextResidue(residue, chain);
