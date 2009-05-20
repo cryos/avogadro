@@ -2185,6 +2185,10 @@ namespace Avogadro
     int numRecentFiles = qMin( files.size(), ( int )maxRecentFiles );
 
     for ( int i = 0; i < numRecentFiles; ++i ) {
+      // Skip files that don't exist...
+      if (!QFile(QFileInfo(files[i]).absoluteFilePath()).exists()) {
+        continue;
+      }
       d->actionRecentFile[i]->setText( QFileInfo(files[i]).fileName() );
       d->actionRecentFile[i]->setData( files[i] );
       d->actionRecentFile[i]->setVisible( true );
