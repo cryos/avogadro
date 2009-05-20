@@ -130,7 +130,7 @@ namespace Avogadro
     // Find the bond axis
     Vector3d axis = end2 - end1;
     double axisNorm = axis.norm();
-    if( axisNorm == 0.0 ) return;
+    if( axisNorm < 1.0e-5 ) return;
     Vector3d axisNormalized = axis / axisNorm;
 
     // Use the plane normal vector for the molecule to draw multicylinders along

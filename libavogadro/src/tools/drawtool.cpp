@@ -528,7 +528,7 @@ namespace Avogadro {
         if(m_hits[0].type() == Primitive::AtomType) {
           // don't delete H-? atom when adjust hydrogens is on
           Atom *atom = widget->molecule()->atom(m_hits[0].name());
-          if (m_addHydrogens && atom->isHydrogen() && atom->valence())
+          if (m_addHydrogens && atom->isHydrogen() && int(atom->valence()))
             return undo;
           undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(),
                                            m_addHydrogens);
@@ -556,7 +556,7 @@ namespace Avogadro {
     return 0;
   }
 
-  QUndoCommand* DrawTool::keyPressEvent(GLWidget *widget, QKeyEvent *event)
+  QUndoCommand* DrawTool::keyPressEvent(GLWidget *, QKeyEvent *event)
   {
     bool arrowKey = true;
 
