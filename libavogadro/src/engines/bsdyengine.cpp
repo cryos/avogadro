@@ -392,11 +392,16 @@ namespace Avogadro
   {
     if (!m_settingsWidget) {
       m_settingsWidget = new BSDYSettingsWidget();
-      connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setAtomRadiusPercentage(int)));
-      connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)), this, SLOT(setBondRadius(int)));
-      connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)), this, SLOT(setShowMulti(int)));
-      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setAtomRadiusPercentage(int)));
+      connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setBondRadius(int)));
+      connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)),
+              this, SLOT(setShowMulti(int)));
+      connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
+              this, SLOT(setOpacity(int)));
+      connect(m_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
       m_settingsWidget->atomRadiusSlider->setValue(int(10*m_atomRadiusPercentage));
       m_settingsWidget->bondRadiusSlider->setValue(int(20*m_bondRadius));
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
