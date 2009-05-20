@@ -293,6 +293,18 @@ if(APPLE)
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION Resources)
+
+if(ENABLE_AVO_PACKAGE)
+# Make sure to copy Qt plugins and translations
+file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+install(FILES ${qt_TRANSLATIONS}
+	DESTINATION "${I18N_INSTALL_DIR}"
+	)
+install(DIRECTORY "${QT_PLUGINS_DIR}"
+	DESTINATION "${CMAKE_INSTALL_PREFIX}/plugins"
+	)
+endif(ENABLE_AVO_PACKAGE)
+
 else(APPLE)
   install(FILES
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
@@ -334,9 +346,6 @@ add_subdirectory(doc)
 
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
-#if(APPLE)
-#  set(avogadro_FRAGMENTS "/Library/Application Support/Avogadro")
-#endif(APPLE)
 
 # When installing, make sure to install some fragments
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
