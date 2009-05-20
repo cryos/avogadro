@@ -716,7 +716,7 @@ namespace Avogadro {
   {
     glDisable( GL_CULL_FACE );
     if (m_mesh)
-      pd->painter()->drawColorMesh(*m_mesh);
+      pd->painter()->drawMesh(*m_mesh);
     glEnable( GL_CULL_FACE );
 
     return true;
