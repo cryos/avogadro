@@ -1,7 +1,7 @@
 /**********************************************************************
   NavigateTool - Navigation Tool for Avogadro
 
-  Copyright (C) 2007,2008 by Marcus D. Hanwell
+  Copyright (C) 2007-2009 by Marcus D. Hanwell
   Copyright (C) 2006,2007 by Benoit Jacob
 
   This file is part of the Avogadro molecular editor project.
@@ -29,9 +29,6 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/tool.h>
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
 #include <QImage>
 #include <QAction>
 
@@ -48,6 +45,7 @@ namespace Avogadro {
    * centric (if no atom has been clicked on) navigation.
    */
   class Eyecandy;
+  class NavigateSettingsWidget;
   class NavigateTool : public Tool
   {
     Q_OBJECT
@@ -60,10 +58,16 @@ namespace Avogadro {
      * Constructor.
      */
     NavigateTool(QObject *parent = 0);
+
     /**
      * Destructor.
      */
     virtual ~NavigateTool();
+
+    /**
+     * @return the settings widget for the tool.
+     */
+    virtual QWidget* settingsWidget();
 
     /** \name Tool Methods
      * @{
@@ -89,6 +93,22 @@ namespace Avogadro {
      */
     virtual bool paint(GLWidget *widget);
 
+    /**
+     * Write the tool settings so that they can be saved between sessions.
+     */
+    virtual void writeSettings(QSettings &settings) const;
+
+    /**
+     * Read in the settings that have been saved for the tool instance.
+     */
+    virtual void readSettings(QSettings &settings);
+
+  private slots:
+    /**
+     * Change whether eye candy/visual cues are displayed.
+     */
+    void enableEyeCandy(int enable);
+
   protected:
     Atom *              m_clickedAtom;
     Eigen::Vector3d     m_referencePoint; // the reference point for movement
@@ -97,6 +117,7 @@ namespace Avogadro {
     bool                m_leftButtonPressed;  // rotation
     bool                m_midButtonPressed;   // scale / zoom
     bool                m_rightButtonPressed; // translation
+    bool                m_eyeCandyEnabled;    // Is eye candy enabled?
     bool                m_drawEyeCandy;       // Should eye candy be drawn?
     double m_yAngleEyecandy, m_xAngleEyecandy;
 
@@ -104,6 +125,7 @@ namespace Avogadro {
     bool                m_draggingInitialized;  // Has dragging been initialized?
 
     Eyecandy * m_eyecandy;
+    NavigateSettingsWidget *m_settingsWidget;
 
     /** recomputes m_referencePoint. Uses the value of m_clickedAtom. */
     void computeReferencePoint(GLWidget *widget);

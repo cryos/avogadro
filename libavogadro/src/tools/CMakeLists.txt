@@ -49,7 +49,7 @@ avogadro_plugin(autoopttool autoopttool.cpp autoopttool.qrc)
 
 ### navigatetool
 avogadro_plugin(navigatetool
-  "navigatetool.cpp;eyecandy.cpp" navigatetool.qrc)
+  "navigatetool.cpp;eyecandy.cpp" "navigatesettingswidget.ui;navigatetool.qrc")
 
 ### manipulatetool
 avogadro_plugin(manipulatetool
