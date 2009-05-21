@@ -184,7 +184,7 @@ namespace Avogadro
       qDebug() << "Attempting to read parm file...";
       readParmFile(mol);
       qDebug() << "Parm file read...";
-      emit moleculeChanged(mol);
+      emit moleculeChanged(mol, Extension::DeleteOld | Extension::NewWindow);
       oldMol->deleteLater();
     }
     else

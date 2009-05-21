@@ -79,11 +79,39 @@ namespace Avogadro {
    */
   class A_EXPORT Extension : public Plugin
   {
+
   Q_OBJECT
 
   public:
+    /**
+     * Constructor.
+     */
     Extension(QObject *parent = 0);
+
+    /**
+     * Destructor.
+     */
     virtual ~Extension();
+
+    /**
+     * \enum Possible Molecule change hints. The enumeration lists the
+     * desired treatmest of the Molecule emitted. The hints should be honoured
+     * by the class receiving the moleculeChanged signal.
+     *
+     * KeepOld - the old Molecule is not deleted, it is simply replaced.
+
+     * DeleteOld - old default behaviour, old Molecule is deleted and
+     * the new Molecule replaces the old one in the current window.
+     *
+     * NewWindow - open the new Molecule in a new Window if the old one was
+     * modified.
+     */
+    enum MoleculeChangedHint
+    {
+      KeepOld   = 0x00, /// Keeps the old Molecule
+      DeleteOld = 0x01, /// Deletes the old Molecule
+      NewWindow = 0x02 /// Open the new Molecule in a new window if old is modified
+    };
 
     /**
      * Plugin Type
@@ -131,7 +159,11 @@ namespace Avogadro {
     virtual void readSettings(QSettings &settings);
 
   public Q_SLOTS:
-    virtual void setMolecule(Molecule *m);
+    /**
+     * Slot to set the Molecule for the Extension - should be called whenever
+     * the active Molecule changes.
+     */
+    virtual void setMolecule(Molecule *molecule);
 
   Q_SIGNALS:
     /**
@@ -145,9 +177,11 @@ namespace Avogadro {
     void actionsChanged(Extension*);
 
     /**
-      * Can be used to notify the MainWindow to change the molecule to a new one.
-      */
-    void moleculeChanged(Molecule *);
+     * Can be used to notify the MainWindow to change the molecule to a new one.
+     * The MoleculeChangedHint allows the extension to specify how the new and
+     * old Molecule objects should be treated.
+     */
+    void moleculeChanged(Molecule *, int);
 
   };
 
