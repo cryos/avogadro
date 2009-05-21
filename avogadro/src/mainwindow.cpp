@@ -2007,15 +2007,19 @@ namespace Avogadro
     connect( ui.actionClose, SIGNAL( triggered() ), this, SLOT( close() ) );
     connect( ui.actionCloseTool, SIGNAL( triggered() ), this, SLOT( close() ) );
 #else
-    connect( ui.actionClose, SIGNAL( triggered() ), this, SLOT( closeFile() ) );
-    connect( ui.actionCloseTool, SIGNAL( triggered() ), this, SLOT( closeFile() ) );
+    connect( ui.actionClose, SIGNAL( triggered() ),
+             this, SLOT( closeFile() ) );
+    connect( ui.actionCloseTool, SIGNAL( triggered() ),
+             this, SLOT( closeFile() ) );
 #endif
     connect( ui.actionSave, SIGNAL( triggered() ), this, SLOT( save() ) );
     connect( ui.actionSaveTool, SIGNAL( triggered() ), this, SLOT( save() ) );
     connect( ui.actionSaveAs, SIGNAL( triggered() ), this, SLOT( saveAs() ) );
     connect( ui.actionRevert, SIGNAL( triggered() ), this, SLOT( revert() ) );
-    connect( ui.actionImport_File, SIGNAL( triggered() ), this, SLOT( importFile() ) );
-    connect( ui.actionExportGraphics, SIGNAL( triggered() ), this, SLOT( exportGraphics() ) );
+    connect( ui.actionImport_File, SIGNAL( triggered() ),
+             this, SLOT( importFile() ) );
+    connect( ui.actionExportGraphics, SIGNAL( triggered() ),
+             this, SLOT( exportGraphics() ) );
     connect( ui.actionExportGL2PS, SIGNAL(triggered()), this, SLOT(exportGL2PS()));
 #ifdef Q_WS_MAC
     connect( ui.actionQuit, SIGNAL( triggered() ), this, SLOT( macQuit() ) );
@@ -2025,9 +2029,11 @@ namespace Avogadro
     connect( ui.actionQuitTool, SIGNAL( triggered() ), this, SLOT( close() ) );
 #endif
 
-    connect( ui.actionClearRecent, SIGNAL( triggered() ), this, SLOT( clearRecentFiles() ) );
+    connect( ui.actionClearRecent, SIGNAL( triggered() ),
+             this, SLOT( clearRecentFiles() ) );
 
-    connect( d->undoStack, SIGNAL( cleanChanged( bool ) ), this, SLOT( undoStackClean( bool ) ) );
+    connect( d->undoStack, SIGNAL( cleanChanged( bool ) ),
+             this, SLOT( undoStackClean( bool ) ) );
 
     connect( ui.actionCut, SIGNAL( triggered() ), this, SLOT( cut() ) );
     connect( ui.actionCopy, SIGNAL( triggered() ), this, SLOT( copy() ) );
@@ -2040,17 +2046,25 @@ namespace Avogadro
     clearShortcuts << QKeySequence(tr("Ctrl+Backspace"));
     ui.actionClear->setShortcuts(clearShortcuts);
 
-    connect( ui.actionSelect_All, SIGNAL( triggered() ), this, SLOT( selectAll() ) );
-    connect( ui.actionSelect_None, SIGNAL( triggered() ), this, SLOT( selectNone() ) );
+    connect( ui.actionSelect_All, SIGNAL( triggered() ),
+             this, SLOT( selectAll() ) );
+    connect( ui.actionSelect_None, SIGNAL( triggered() ),
+             this, SLOT( selectNone() ) );
 
-    connect( ui.actionNewView, SIGNAL( triggered() ), this, SLOT( newView() ) );
+    connect( ui.actionNewView, SIGNAL( triggered() ),
+             this, SLOT( newView() ) );
     connect( ui.actionDuplicateView, SIGNAL( triggered() ),
             this, SLOT( duplicateView() ) );
-    connect(ui.actionDetachView, SIGNAL(triggered()), this, SLOT(detachView()));
-    connect( ui.actionCloseView, SIGNAL( triggered() ), this, SLOT( closeView() ) );
-    connect( ui.actionCenter, SIGNAL( triggered() ), this, SLOT( centerView() ) );
-    connect( ui.actionFullScreen, SIGNAL( triggered() ), this, SLOT( fullScreen() ) );
-    connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ), this, SLOT( setBackgroundColor() ) );
+    connect(ui.actionDetachView, SIGNAL(triggered()),
+            this, SLOT(detachView()));
+    connect( ui.actionCloseView, SIGNAL( triggered() ),
+             this, SLOT( closeView() ) );
+    connect( ui.actionCenter, SIGNAL( triggered() ),
+             this, SLOT( centerView() ) );
+    connect( ui.actionFullScreen, SIGNAL( triggered() ),
+             this, SLOT( fullScreen() ) );
+    connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ),
+             this, SLOT( setBackgroundColor() ) );
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
             this, SLOT(setRenderAxes(bool)));
     connect(ui.actionDisplayUnitCellAxes, SIGNAL(triggered(bool)),
@@ -2061,7 +2075,8 @@ namespace Avogadro
             this, SLOT(setQuickRender(bool)));
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
-    connect( d->centralTab, SIGNAL( currentChanged( int ) ), this, SLOT( setView( int ) ) );
+    connect( d->centralTab, SIGNAL( currentChanged( int ) ),
+             this, SLOT( setView( int ) ) );
 
     connect( ui.configureAvogadroAction, SIGNAL( triggered() ),
         this, SLOT( showSettingsDialog() ) );
@@ -2069,15 +2084,22 @@ namespace Avogadro
     connect( ui.projectTreeView, SIGNAL(activated(const QModelIndex&)),
         this, SLOT(projectItemActivated(const QModelIndex&)));
 
-    connect( ui.actionTutorials, SIGNAL( triggered() ), this, SLOT( openTutorialURL() ));
-    connect( ui.actionFAQ, SIGNAL( triggered() ), this, SLOT( openFAQURL() ) );
-    connect( ui.actionRelease_Notes, SIGNAL( triggered() ), this, SLOT( openReleaseNotesURL() ));
-    connect( ui.actionAvogadro_Website, SIGNAL( triggered() ), this, SLOT( openWebsiteURL() ) );
-    connect( ui.actionReport_a_Bug, SIGNAL( triggered() ), this, SLOT( openBugURL() ) );
+    connect( ui.actionTutorials, SIGNAL( triggered() ),
+             this, SLOT( openTutorialURL() ));
+    connect( ui.actionFAQ, SIGNAL( triggered() ),
+             this, SLOT( openFAQURL() ) );
+    connect( ui.actionRelease_Notes, SIGNAL( triggered() ),
+             this, SLOT( openReleaseNotesURL() ));
+    connect( ui.actionAvogadro_Website, SIGNAL( triggered() ),
+             this, SLOT( openWebsiteURL() ) );
+    connect( ui.actionReport_a_Bug, SIGNAL( triggered() ),
+             this, SLOT( openBugURL() ) );
 
 
-    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ), this, SLOT( setTool( Tool * ) ) );
-    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup, SLOT( setMolecule( Molecule * ) ) );
+    connect( d->toolGroup, SIGNAL( toolActivated( Tool * ) ),
+             this, SLOT( setTool( Tool * ) ) );
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), d->toolGroup,
+             SLOT( setMolecule( Molecule * ) ) );
 
   }
 
@@ -2099,15 +2121,52 @@ namespace Avogadro
       setWindowFilePath(tr("untitled") + ".cml");
     }
 
-    connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ), this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ), this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ), this, SLOT( documentWasModified() ) );
+    connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
+    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
+    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
 
     emit moleculeChanged(molecule);
 
     //ui.projectTree->setModel( new PrimitiveItemModel( d->molecule, this ) );
 
     setWindowModified( false );
+  }
+
+  void MainWindow::setMolecule(Molecule *molecule, int options)
+  {
+    if (d->molecule && options & Extension::DeleteOld) {
+      disconnect(d->molecule, 0, this, 0);
+      d->molecule->deleteLater();
+      qDebug() << "Old molecule deleted...";
+    }
+    else if (d->molecule) {
+      disconnect(d->molecule, 0, this, 0);
+      qDebug() << "Old molecule replaced...";
+    }
+
+    d->undoStack->clear();
+
+    d->molecule = molecule;
+
+    QString newFileName = molecule->fileName();
+    setFileName(newFileName);
+
+    if (newFileName.isEmpty())
+      setWindowFilePath(tr("untitled") + ".cml");
+
+    connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
+    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
+    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
+             this, SLOT( documentWasModified() ) );
+
+    emit moleculeChanged(molecule);
+
+    setWindowModified(false);
   }
 
   void MainWindow::setupProjectTree()
@@ -2409,7 +2468,7 @@ namespace Avogadro
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
 
-      connect(this, SIGNAL( moleculeChanged(Molecule*)),
+      connect(this, SIGNAL(moleculeChanged(Molecule*)),
               extension, SLOT(setMolecule(Molecule*)));
       // When loading a molecule with an already open window with another
       // molecule this signal is never triggered. If we already have a
@@ -2421,8 +2480,8 @@ namespace Avogadro
             d->messagesText, SLOT(append(QString)));
       connect(extension, SIGNAL( actionsChanged(Extension*) ),
             this, SLOT(addActionsToMenu(Extension*)));
-      connect(extension, SIGNAL( moleculeChanged(Molecule *)),
-            this, SLOT(setMolecule(Molecule *)));
+      connect(extension, SIGNAL(moleculeChanged(Molecule *, int)),
+            this, SLOT(setMolecule(Molecule *, int)));
     }
   }
 
@@ -2521,7 +2580,8 @@ namespace Avogadro
       gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
     }
 
-    connect( this, SIGNAL( moleculeChanged( Molecule * ) ), gl, SLOT( setMolecule( Molecule * ) ) );
+    connect( this, SIGNAL( moleculeChanged( Molecule * ) ),
+             gl, SLOT( setMolecule( Molecule * ) ) );
 
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));

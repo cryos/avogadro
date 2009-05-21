@@ -172,6 +172,12 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule);
 
+      /**
+       * @param molecule set the current molecule and take ownership
+       * @param options Enum found in Extension with options for new Molecule
+       */
+      void setMolecule(Molecule *molecule, int options);
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
       void enableEngineSettingsButton(bool);

@@ -181,7 +181,7 @@ namespace Avogadro
       Molecule *mol = new Molecule;
       mol->setOBMol(obmol);
       mol->setFileName(filename);
-      emit moleculeChanged(mol);
+      emit moleculeChanged(mol, Extension::DeleteOld);
       m_molecule = mol;
     }
 
