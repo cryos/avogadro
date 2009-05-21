@@ -34,6 +34,8 @@
 #endif
 #include <QGLWidget>
 
+#include <avogadro/glhit.h>
+
 #include <QThread>
 
 #include <Eigen/Core>
@@ -57,109 +59,6 @@ namespace Avogadro {
   class Engine;
   class Painter;
   class PrimitiveList;
-
-  /**
-   * @class GLHit glwidget.h <avogadro/glwidget.h>
-   * @brief Hits from OpenGL selections/picking.
-   * @author Donald Ephraim Curtis
-   *
-   * Provides an easy to use class to contain OpenGL hits returned from the
-   * process of picking.  This class relies on the %Engine subclasses properly
-   * naming the objects that they are rendering.  For more information see the
-   * Engine documentation.
-   */
-  class GLHitPrivate;
-  class A_EXPORT GLHit
-  {
-    public:
-      /**
-       * Blank constructor.
-       */
-      GLHit();
-      /**
-       * Copy constructor.
-       */
-      GLHit(const GLHit &glHit);
-      /**
-       * Constructor.
-       * @param type The type of the OpenGL object that was picked which corresponds
-       * to the Primitive::Type for the object
-       * (ie. type==Primitive::AtomType means an Atom was picked).
-       * @param name The name of the OpenGL object that was picked corresponding
-       * to the primitive index
-       * (ie. name==1 means Atom 1).
-       * @param minZ minimum window Z value of the hit
-       * @param maxZ maximum window Z value of the hit
-       */
-      GLHit(GLuint type, GLuint name, GLuint minZ, GLuint maxZ);
-      /**
-       * Destructor.
-       */
-      ~GLHit();
-
-      /**
-       * Less than operator.
-       * @param other the other GLHit object to compare to.
-       * @return (this->minZ < other->minZ) ? @c true : @c false
-       */
-      bool operator<(const GLHit &other) const;
-
-      /**
-       * Equivalence operator.
-       * @param other the other GLHit object to test equivalence with.
-       * @return returns true if all elements are equivalent (type, name, minZ, maxZ).
-       */
-      bool operator==(const GLHit &other) const;
-
-      /**
-       * Copy operator.
-       * @param other the GLHit object to set this object equal to.
-       * @return  *this
-       */
-      GLHit &operator=(const GLHit &other);
-
-      /**
-       * @return type of the object that was picked.
-       */
-      GLuint type() const;
-
-      /**
-       * @return name of the object that was picked.
-       */
-      GLuint name() const;
-
-      /**
-       * @return the minimum z value of this hit corresponding
-       * to the z value of the drawn object closest to the camera.
-       */
-      GLuint minZ() const;
-
-      /**
-       * @return the maximum z value of this hit corresponding
-       * to the z value of the drawn object farthest from the camera.
-       */
-      GLuint maxZ() const;
-
-      /**
-       * @param type new object type.
-       */
-      void setType(GLuint type);
-      /**
-       * @param name new object name.
-       */
-      void setName(GLuint name);
-      /**
-       * @param minZ minimum z value to set for this object.
-       */
-      void setMinZ(GLuint minZ);
-      /**
-       * @param maxZ maximum z value to set for this object.
-       */
-      void setMaxZ(GLuint maxZ);
-
-    private:
-      GLHitPrivate * const d;
-  };
 
   /**
    * @class GLWidget glwidget.h <avogadro/glwidget.h>

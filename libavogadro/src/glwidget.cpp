@@ -31,6 +31,7 @@
 #include "glwidget.h"
 #include "camera.h"
 #include "glpainter_p.h"
+#include "glhit.h"
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
@@ -113,73 +114,6 @@ namespace Avogadro {
     }
     return false;
   }
-
-  class GLHitPrivate
-  {
-  public:
-    GLHitPrivate() {};
-
-    GLuint type;
-    GLuint name;
-    GLuint minZ;
-    GLuint maxZ;
-  };
-
-  GLHit::GLHit() : d( new GLHitPrivate ) {}
-
-  GLHit::GLHit( const GLHit &other ) : d( new GLHitPrivate )
-  {
-    GLHitPrivate *e = other.d;
-    d->type = e->type;
-    d->name = e->name;
-    d->minZ = e->minZ;
-    d->maxZ = e->maxZ;
-  }
-
-  GLHit::GLHit( GLuint type, GLuint name, GLuint minZ, GLuint maxZ ) : d( new GLHitPrivate )
-  {
-    d->name = name;
-    d->type = type;
-    d->minZ = minZ;
-    d->maxZ = maxZ;
-  }
-
-  GLHit &GLHit::operator=( const GLHit &other )
-  {
-    GLHitPrivate *e = other.d;
-    d->type = e->type;
-    d->name = e->name;
-    d->minZ = e->minZ;
-    d->maxZ = e->maxZ;
-    return *this;
-  }
-
-  GLHit::~GLHit()
-  {
-    delete d;
-  }
-
-  bool GLHit::operator<( const GLHit &other ) const
-  {
-    GLHitPrivate *e = other.d;
-    return d->minZ < e->minZ;
-  }
-
-  bool GLHit::operator==( const GLHit &other ) const
-  {
-    GLHitPrivate *e = other.d;
-    return (( d->type == e->type ) && ( d->name == e->name ) );
-  }
-
-  GLuint GLHit::name() const { return d->name; }
-  GLuint GLHit::type() const { return d->type; }
-  GLuint GLHit::minZ() const { return d->minZ; }
-  GLuint GLHit::maxZ() const { return d->maxZ; }
-
-  void GLHit::setName( GLuint name ) { d->name = name; }
-  void GLHit::setType( GLuint type ) { d->type = type; }
-  void GLHit::setMinZ( GLuint minZ ) { d->minZ = minZ; }
-  void GLHit::setMaxZ( GLuint maxZ ) { d->maxZ = maxZ; }
 
   class GLPainterDevice : public PainterDevice
   {
