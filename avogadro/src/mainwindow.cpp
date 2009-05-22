@@ -38,8 +38,6 @@
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
 
-#include "icontabwidget.h"
-
 //#ifdef Q_WS_MAC
 //#include "macchempasteboard.h"
 //#endif
@@ -124,7 +122,7 @@ namespace Avogadro
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     MainWindowPrivate() : molecule( 0 ),
-      undoStack( 0 ), toolsFlow( 0 ), toolsLayout( 0 ),
+      undoStack( 0 ), toolsLayout( 0 ),
       toolsTab(0),
       toolSettingsStacked(0), toolSettingsWidget(0), toolSettingsDock(0),
       currentSelectedEngine(0),
@@ -144,9 +142,7 @@ namespace Avogadro
     QString    fileDialogPath;
     QUndoStack *undoStack;
 
-    FlowLayout *toolsFlow;
     QVBoxLayout *toolsLayout;
-    IconTabWidget *toolsTab;
 
     // we must manage this if we want it to be dynamic
     QStackedLayout *toolSettingsStacked;
