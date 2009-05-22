@@ -26,7 +26,6 @@
 
 #include <Eigen/Geometry>
 #include "ui_mainwindow.h"
-#include "flowlayout.h"
 #include "flattabwidget.h"
 
 #include <QMainWindow>
