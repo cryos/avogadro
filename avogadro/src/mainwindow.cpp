@@ -765,7 +765,7 @@ namespace Avogadro
     }
 
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
-    
+
     OBMol *obMolecule = new OBMol;
 //    if (conv.Read( obMolecule, &ifs)) {
     if (conv.ReadFile( obMolecule, QString(QFile::encodeName(fileName)).toStdString())) {
@@ -865,12 +865,11 @@ namespace Avogadro
         }
       } // end reading OBPairData
 
-       // do we have a multi-molecule file?
-       // Changed this -- we have problems knowing if we're at the end of a gzipped file
+      // do we have a multi-molecule file?
+      // Changed this -- we have problems knowing if we're at the end of a gzipped file
       istream *ifs = (conv.GetInStream());
-
-       if (!fileName.endsWith(QLatin1String(".gz"), Qt::CaseInsensitive) &&
-         ifs->peek() != EOF && ifs->good()) {
+      if (!fileName.endsWith(QLatin1String(".gz"), Qt::CaseInsensitive) &&
+          ifs->peek() != EOF && ifs->good()) {
          QMessageBox::warning( this, tr( "Avogadro" ),
              tr( "This file appears to contain multiple molecule records."
                " Avogadro will only read the first molecule."
