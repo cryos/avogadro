@@ -759,7 +759,7 @@ namespace Avogadro {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
  
-    if (!m_mesh) {
+    if (!m_mesh && molecule->numAtoms() != 0) {
       Molecule *mol = (Molecule*) molecule;
       m_mesh = mol->addMesh();
       BackboneToMesh((Molecule*)molecule, m_mesh);
