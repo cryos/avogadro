@@ -123,7 +123,6 @@ namespace Avogadro
 
     MainWindowPrivate() : molecule( 0 ),
       undoStack( 0 ), toolsLayout( 0 ),
-      toolsTab(0),
       toolSettingsStacked(0), toolSettingsWidget(0), toolSettingsDock(0),
       currentSelectedEngine(0),
       messagesText( 0 ),
@@ -245,13 +244,8 @@ namespace Avogadro
     connect(&(d->pluginManager), SIGNAL(reloadPlugins()),
             this, SLOT(reloadPlugins()));
 
-    //    ui.menuToolbars->addAction( ui.toolsDock->toggleViewAction() );
-
     ui.enginesWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     d->enginesStacked = new QStackedLayout( ui.enginesWidget );
-    //    d->enginesStacked->setSizeConstraint(QLayout::SetFixedSize);
-//    d->engineConfigurationStacked = new QStackedLayout( ui.engineConfigurationWidget );
-//    d->enginePrimitivesStacked = new QStackedLayout( ui.enginePrimitivesWidget );
 
     // create messages widget
     QWidget *messagesWidget = new QWidget(this);
@@ -791,9 +785,7 @@ namespace Avogadro
             double scale = (1.5 * obMolecule->NumBonds()) / sum;
             FOR_ATOMS_OF_MOL (atom, obMolecule) {
               vector3 vec = atom->GetVector();
-              vec.SetX(vec.x() * scale);
-              vec.SetY(vec.y() * scale);
-              atom->SetVector(vec);
+              atom->SetVector(vec * scale);
             }
             obMolecule->Center();
 
@@ -2119,16 +2111,14 @@ namespace Avogadro
       setWindowFilePath(tr("untitled") + ".cml");
     }
 
+    emit moleculeChanged(molecule);
+
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
-
-    emit moleculeChanged(molecule);
-
-    //ui.projectTree->setModel( new PrimitiveItemModel( d->molecule, this ) );
 
     setWindowModified( false );
   }
@@ -2155,15 +2145,14 @@ namespace Avogadro
     if (newFileName.isEmpty())
       setWindowFilePath(tr("untitled") + ".cml");
 
+    emit moleculeChanged(molecule);
+
     connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
     connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
              this, SLOT( documentWasModified() ) );
-
-    emit moleculeChanged(molecule);
-
     setWindowModified(false);
   }
 
@@ -2480,6 +2469,8 @@ namespace Avogadro
             this, SLOT(addActionsToMenu(Extension*)));
       connect(extension, SIGNAL(moleculeChanged(Molecule *, int)),
             this, SLOT(setMolecule(Molecule *, int)));
+      connect(extension, SIGNAL(performCommand(QUndoCommand *)),
+            this, SLOT(performCommand(QUndoCommand *)));
     }
   }
 
@@ -2496,6 +2487,12 @@ namespace Avogadro
         d->undoStack->push( command );
       }
     }
+  }
+  
+  void MainWindow::performCommand(QUndoCommand *command)
+  {
+    if ( command )
+      d->undoStack->push( command );
   }
 
   void MainWindow::hideMainWindowMac()

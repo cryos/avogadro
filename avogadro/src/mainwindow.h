@@ -26,7 +26,6 @@
 
 #include <Eigen/Geometry>
 #include "ui_mainwindow.h"
-#include "flowlayout.h"
 #include "flattabwidget.h"
 
 #include <QMainWindow>
@@ -35,6 +34,7 @@
 #include <QTabWidget>
 
 class QUndoStack;
+class QUndoCommand;
 class QStackedLayout;
 class QStandardItem;
 
@@ -147,7 +147,8 @@ namespace Avogadro {
       void openBugURL() const;
       void openFAQURL() const;
 
-      void actionTriggered();
+      void actionTriggered(); // A QAction from an Extension (e.g., a direct menu command)
+      void performCommand(QUndoCommand *); // Delayed action from an Extension
       void documentWasModified();
 
       void setTool(Tool *tool);
