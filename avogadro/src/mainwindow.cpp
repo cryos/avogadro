@@ -487,11 +487,11 @@ namespace Avogadro
      * So we only have to load new extensions.
      */
     loadExtensions();
-    
+
     /**
-     * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines() 
+     * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines()
      * for each GLWidget.
-     */ 
+     */
     foreach (GLWidget *glwidget, d->glWidgets)
       glwidget->reloadEngines();
 
@@ -510,7 +510,7 @@ namespace Avogadro
 
     /**
      * Tools: see reloadTools().
-     */ 
+     */
     reloadTools();
     qDebug() << "end MainWindow::reloadPlugins";
   }
@@ -525,7 +525,7 @@ namespace Avogadro
     }
 
     ui.toolBar->clear();
-    
+
     d->toolSettingsDock = new QDockWidget(this);
     d->toolSettingsDock->setObjectName(QString::fromUtf8("toolSettingsDock"));
     d->toolSettingsDock->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::NoDockWidgetArea|Qt::RightDockWidgetArea);
@@ -766,7 +766,7 @@ namespace Avogadro
     }
 
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
-    
+
     OBMol *obMolecule = new OBMol;
 //    if (conv.Read( obMolecule, &ifs)) {
     if (conv.ReadFile( obMolecule, QString(QFile::encodeName(fileName)).toStdString())) {
@@ -907,9 +907,9 @@ namespace Avogadro
     if ( isWindowModified() ) {
       // We're using the property interface to QMessageBox, rather than
       // the static functions. This is more work, but gives us some nice
-      // fine-grain control. This helps both on Windows and Mac 
+      // fine-grain control. This helps both on Windows and Mac
       // look more "native."
-      QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning, 
+      QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                          tr( "Avogadro" ),
                          tr( "Do you want to save the changes you made in the document?" ),
                          QMessageBox::Save | QMessageBox::Discard
@@ -1108,8 +1108,8 @@ namespace Avogadro
       foreach(const QString &key, settings.allKeys()) {
         // Ignore this key -- there are definitely some on Mac with Apple... or com/
         // There may be others to ignore on Linux and Windows, but I haven't tested those yet.
-        if (key.startsWith(QLatin1String("Apple")) 
-            || key.startsWith(QLatin1String("com/")) 
+        if (key.startsWith(QLatin1String("Apple"))
+            || key.startsWith(QLatin1String("com/"))
             || key.startsWith(QLatin1String("NS")))
           continue;
 
@@ -2653,7 +2653,7 @@ namespace Avogadro
     // Display a warning dialog if we haven't loaded any tools or engines
     if(!nEngines || !nTools)
       QMessageBox::warning(this, tr("Avogadro"), error);
-    
+
     return gl;
   }
 
