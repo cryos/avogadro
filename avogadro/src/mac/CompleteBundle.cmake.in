@@ -39,8 +39,11 @@ function(gp_item_default_embedded_path_override item default_embedded_path_var)
   # Embed .dylibs in the Libraries Directory
   #
   if(item MATCHES "\\.dylib$")
-    set(path "${install_name_prefix}/../lib")
-    set(overridden 1)
+    # Don't override the Qt plugins
+    if (NOT item MATCHES "libq\\.dylib$")
+      set(path "${install_name_prefix}/../lib")
+      set(overridden 1)
+    endif (NOT item MATCHES "libq\\.dylib$")
   endif(item MATCHES "\\.dylib$")
 
   # Embed .so files in their directory
@@ -92,12 +95,13 @@ file(GLOB engineList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadr
 file(GLOB extensionList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/extensions/*")
 file(GLOB colorList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/colors/*")
 
-file(GLOB obList "$ENV{DESTDIR}//Applications/${OSX_App}/Contents/lib/openbabel/2.2.2/*")
+file(GLOB obList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/openbabel/2.2.2/*")
+file(GLOB qtPluginList "$ENV{DESTDIR}/Applications/{OS_App}/Contents/plugins/*")
 
 message(STATUS "PluginList: ${engineList}")
 
 # -- Run the BundleUtilities cmake code
 include(BundleUtilities)
 fixup_bundle("$ENV{DESTDIR}/Applications/${OSX_App}"
-  "${toolList};${engineList};${extensionList};${colorList};${obList}"
-  "@LIB_INSTALL_DIR@;@LIB_INSTALL_DIR@/avogadro/tools;@LIB_INSTALL_DIR@/avogadro/engines;@LIB_INSTALL_DIR@/avogadro/colors;@LIB_INSTALL_DIR@/avogadro/extensions")
+  "${toolList};${engineList};${extensionList};${colorList};${obList};${qtPluginList}"
+  "@LIB_INSTALL_DIR@;@LIB_INSTALL_DIR@/avogadro/tools;@LIB_INSTALL_DIR@/avogadro/engines;@LIB_INSTALL_DIR@/avogadro/colors;@LIB_INSTALL_DIR@/avogadro/extensions;")

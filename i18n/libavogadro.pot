@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-19 15:26-0400\n"
+"POT-Creation-Date: 2009-05-21 13:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -544,7 +544,7 @@ msgstr ""
 msgid "Renders the x, y, and z axes at the origin"
 msgstr ""
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:2136
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:2070
 msgid "Ball and Stick"
 msgstr ""
 
@@ -552,11 +552,11 @@ msgstr ""
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
 msgstr ""
 
-#: src/engines/cartoonengine.h:41
+#: src/engines/cartoonengine.h:43
 msgid "Cartoon"
 msgstr ""
 
-#: src/engines/cartoonengine.h:42
+#: src/engines/cartoonengine.h:44
 msgid "Renders protein secundary structure"
 msgstr ""
 
@@ -1867,7 +1867,7 @@ msgid "Shader parameters files (*.params)"
 msgstr ""
 
 #: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1396
+#: src/extensions/shaderextension.h:41 :1468
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1884,12 +1884,12 @@ msgid "Y Axis"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:61
-#: src/extensions/spectradialog.cpp:144 :1428
+#: src/extensions/spectradialog.cpp:144 :1500
 msgid "&Appearance"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:360
-#: src/extensions/spectradialog.cpp:145 :1472
+#: src/extensions/spectradialog.cpp:145 :1544
 msgid "E&xport Image"
 msgstr ""
 
@@ -1919,7 +1919,7 @@ msgid "NMR"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:731
-#: src/extensions/spectradialog.cpp:230 :1514
+#: src/extensions/spectradialog.cpp:230 :1586
 msgid "&NMR Spectra Settings"
 msgstr ""
 
@@ -2089,7 +2089,7 @@ msgid "Customi&ze <<"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:851
-#: src/extensions/spectradialog.cpp:928 :1526
+#: src/extensions/spectradialog.cpp:928 :1598
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2223,7 +2223,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:115
 #: src/extensions/vibrationdialog.cpp:157
-#: src/extensions/vibrationdialog.cpp:160 :1592
+#: src/extensions/vibrationdialog.cpp:160 :1664
 msgid "Start &Animation"
 msgstr ""
 
@@ -2281,40 +2281,40 @@ msgstr ""
 msgid "Track motion using Wii remotes"
 msgstr ""
 
-#: src/glwidget.cpp:530
+#: src/glwidget.cpp:464
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
 "OpenGL application?), or you found a bug."
 msgstr ""
 
-#: src/glwidget.cpp:535
+#: src/glwidget.cpp:469
 msgid "OpenGL error"
 msgstr ""
 
-#: src/glwidget.cpp:1115
+#: src/glwidget.cpp:1049
 msgid "Debug Information"
 msgstr ""
 
-#: src/glwidget.cpp:1116
+#: src/glwidget.cpp:1050
 msgid "FPS: "
 msgstr ""
 
-#: src/glwidget.cpp:1119
+#: src/glwidget.cpp:1053
 #, qt-format
 msgid "View Size: %1 x %2"
 msgstr ""
 
-#: src/glwidget.cpp:1121
+#: src/glwidget.cpp:1055
 msgid "No molecule set"
 msgstr ""
 
-#: src/glwidget.cpp:1126
+#: src/glwidget.cpp:1060
 #, qt-format
 msgid "Atoms: %1"
 msgstr ""
 
-#: src/glwidget.cpp:1129
+#: src/glwidget.cpp:1063
 #, qt-format
 msgid "Bonds: %1"
 msgstr ""
@@ -2701,7 +2701,7 @@ msgid "Measure Settings"
 msgstr ""
 
 #: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1612
+#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1694
 msgid "Add Atom"
 msgstr ""
 
@@ -2830,7 +2830,7 @@ msgstr ""
 msgid "Manipulate Settings"
 msgstr ""
 
-#: src/tools/navigatetool.cpp:51
+#: src/tools/navigatetool.cpp:62
 msgid ""
 "Navigation Tool (F9)\n"
 "\n"
@@ -2839,15 +2839,15 @@ msgid ""
 "Right Mouse:  Click and drag to move the view"
 msgstr ""
 
-#: src/tools/navigatetool.h:54
+#: src/tools/navigatetool.h:52
 msgid "Navigate"
 msgstr ""
 
-#: src/tools/navigatetool.h:55
+#: src/tools/navigatetool.h:53
 msgid "Translate, rotate, and zoom around the current view"
 msgstr ""
 
-#: src/tools/navigatetool.h:56
+#: src/tools/navigatetool.h:54
 msgid "Navigate Settings"
 msgstr ""
 
@@ -2985,6 +2985,8 @@ msgid "A"
 msgstr ""
 
 #: src/engines/hbondsettingswidget.ui:74
+#: src/extensions/peptidebuilder.ui:290
+#: src/extensions/peptidebuilder.ui:306
 msgid "°"
 msgstr ""
 
@@ -4901,6 +4903,142 @@ msgstr ""
 msgid "Range:"
 msgstr ""
 
+#: src/extensions/peptidebuilder.ui:14
+msgid "Dialog"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:20
+msgid "Peptide Builder"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:46
+msgid "Ala"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:53
+msgid "Arg"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:60
+msgid "Asn"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:67
+msgid "Asp"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:74
+msgid "Cys"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:81
+msgid "Glu"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:88
+msgid "Gln"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:95
+msgid "Gly"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:102
+msgid "His"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:109
+msgid "Ile"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:116
+msgid "Val"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:123
+msgid "Tyr"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:130
+msgid "Trp"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:137
+msgid "Thr"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:144
+msgid "Ser"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:151
+msgid "Pro"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:158
+msgid "Phe"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:165
+msgid "Met"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:172
+msgid "Lys"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:179
+msgid "Leu"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:203
+msgid "Sequence:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:213
+msgid "Stereochemistry:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:222
+msgid "L"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:232
+msgid "D"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:241
+msgid "Structure:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:250
+msgid "Straight Chain"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:260
+msgid "Alpha Helix"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:267
+msgid "Beta Strand"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:274
+msgid "Other:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:283
+msgid "Phi:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:322
+msgid "Psi:"
+msgstr ""
+
+#: src/extensions/peptidebuilder.ui:336
+msgid "Insert Peptide"
+msgstr ""
+
 #: src/extensions/pocketdialog.ui:13
 msgid "Create binding pocket"
 msgstr ""
@@ -5334,6 +5472,26 @@ msgstr ""
 
 #: src/tools/insertfragmentdialog.ui:60
 msgid "Generate from SMILES:"
+msgstr ""
+
+#: src/tools/navigatesettingswidget.ui:14
+msgid "Form"
+msgstr ""
+
+#: src/tools/navigatesettingswidget.ui:23
+msgctxt ""
+"Should the navigate tool display visual cues about the action taking place?"
+msgid ""
+"\n"
+"     </property>\n"
+"     <property name=\"text\">\n"
+"      <string>Display visual cues"
+msgstr ""
+
+#: src/tools/navigatesettingswidget.ui:24
+msgid ""
+"Display visual cues</string>\n"
+"     </property>"
 msgstr ""
 
 #: src/tools/pythonsettingswidget.ui:25

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-05-19 15:26-0400\n"
+"POT-Creation-Date: 2009-05-21 14:35-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: src/mainwindow.cpp:771 src/mainwindow.cpp:783 src/mainwindow.cpp:848
 #: src/mainwindow.cpp:881 src/mainwindow.cpp:923 src/mainwindow.cpp:1061
 #: src/mainwindow.cpp:1069 src/mainwindow.cpp:1083 src/mainwindow.cpp:1095
-#: src/mainwindow.cpp:1242 src/mainwindow.cpp:2153 src/mainwindow.cpp:2596
+#: src/mainwindow.cpp:1242 src/mainwindow.cpp:2212 src/mainwindow.cpp:2660
 msgid "Avogadro"
 msgstr ""
 
@@ -345,7 +345,7 @@ msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
 #: src/mainwindow.cpp:1716 src/mainwindow.cpp:1746 src/mainwindow.cpp:1775
-#: src/mainwindow.cpp:1807 src/mainwindow.cpp:2279
+#: src/mainwindow.cpp:1807 src/mainwindow.cpp:2342
 #, qt-format
 msgid "View %1"
 msgstr ""
@@ -362,53 +362,53 @@ msgstr ""
 msgid "Full Screen"
 msgstr ""
 
-#: src/mainwindow.cpp:2040
+#: src/mainwindow.cpp:2046
 msgid "Ctrl+Backspace"
 msgstr ""
 
-#: src/mainwindow.cpp:2099 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2121 src/mainwindow.cpp:2158 src/savedialog.cpp:83
 msgid "untitled"
 msgstr ""
 
-#: src/mainwindow.cpp:2147
+#: src/mainwindow.cpp:2206
 msgid "[*]Avogadro"
 msgstr ""
 
-#: src/mainwindow.cpp:2152
+#: src/mainwindow.cpp:2211
 #, qt-format
 msgid "%1[*] - %2"
 msgstr ""
 
 #: src/projecttreeeditor.ui:229
-#: src/mainwindow.cpp:2539 :256
+#: src/mainwindow.cpp:2603 :256
 msgid "Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:2550
+#: src/mainwindow.cpp:2614
 msgid "Add"
 msgstr ""
 
-#: src/mainwindow.cpp:2555
+#: src/mainwindow.cpp:2619
 msgid "Duplicate"
 msgstr ""
 
-#: src/mainwindow.cpp:2560
+#: src/mainwindow.cpp:2624
 msgid "Remove"
 msgstr ""
 
-#: src/mainwindow.cpp:2588
+#: src/mainwindow.cpp:2652
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2590
+#: src/mainwindow.cpp:2654
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2592
+#: src/mainwindow.cpp:2656
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2593
+#: src/mainwindow.cpp:2657
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -416,20 +416,20 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:191
 #: src/settingsdialog.ui:14
-#: src/mainwindow.cpp:2614 src/mainwindow.cpp:2631 :250 rc.cpp:258
+#: src/mainwindow.cpp:2678 src/mainwindow.cpp:2695 :250 rc.cpp:258
 msgid "Settings"
 msgstr ""
 
-#: src/mainwindow.cpp:2637
+#: src/mainwindow.cpp:2701
 msgid "Objects"
 msgstr ""
 
 #: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2643 :210
+#: src/mainwindow.cpp:2707 :210
 msgid "Colors"
 msgstr ""
 
-#: src/mainwindow.cpp:2691
+#: src/mainwindow.cpp:2755
 msgid " copy"
 msgstr ""
 
