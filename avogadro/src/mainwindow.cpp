@@ -764,17 +764,6 @@ namespace Avogadro
       return false;
     }
 
-    // Still create ifs to check for EOL's later.
-    ifstream ifs;
-    ifs.open(QFile::encodeName(fileName));
-    if ( !ifs ) { // shouldn't happen, already checked file above
-      QApplication::restoreOverrideCursor();
-      QMessageBox::warning( this, tr( "Avogadro" ),
-                            tr( "Cannot read file %1." )
-                            .arg( fileName ) );
-      return false;
-    }
-
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
     
     OBMol *obMolecule = new OBMol;
@@ -876,15 +865,17 @@ namespace Avogadro
         }
       } // end reading OBPairData
 
-//       // do we have a multi-molecule file?
-//       // Changed this -- we have problems knowing if we're at the end of a gzipped file
-//       if (!fileName.endsWith(QLatin1String(".gz"), Qt::CaseInsensitive) &&
-//         ifs.peek() != EOF && ifs.good()) {
-//         QMessageBox::warning( this, tr( "Avogadro" ),
-//             tr( "This file appears to contain multiple molecule records."
-//               " Avogadro will only read the first molecule."
-//               " If you save, all other molecules may be lost." ));
-//      }
+       // do we have a multi-molecule file?
+       // Changed this -- we have problems knowing if we're at the end of a gzipped file
+      istream *ifs = (conv.GetInStream());
+
+       if (!fileName.endsWith(QLatin1String(".gz"), Qt::CaseInsensitive) &&
+         ifs->peek() != EOF && ifs->good()) {
+         QMessageBox::warning( this, tr( "Avogadro" ),
+             tr( "This file appears to contain multiple molecule records."
+               " Avogadro will only read the first molecule."
+               " If you save, all other molecules may be lost." ));
+      }
 
       QApplication::restoreOverrideCursor();
 
