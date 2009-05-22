@@ -300,6 +300,7 @@ file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
 install(FILES ${qt_TRANSLATIONS}
 	DESTINATION "${I18N_INSTALL_DIR}"
 	)
+# FIXME: These need to have the install-name tool run on them
 install(DIRECTORY "${QT_PLUGINS_DIR}"
 	DESTINATION "${CMAKE_INSTALL_PREFIX}"
 	)
