@@ -509,7 +509,7 @@ namespace Avogadro {
         void pointClicked(PlotPoint*);
 
         /**
-         * Get the point in data units from a mouseover
+         * Get the point in data units from a mouseover. Use setMouseTracking(true) to enable.
          * @param x X value
          * @param y Y value
          */
