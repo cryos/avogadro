@@ -488,8 +488,27 @@ namespace Avogadro {
          */
         const PlotAxis* axis( Axis type ) const;
 
+       signals:
+        /**
+         * Get the point in data units selected by a left click.
+         * @param x X value
+         * @param y Y value
+         */
+        void pointClicked(double x, double y);
 
-                                               public Q_SLOTS:
+        /**
+         * Get a list of points in data units within 4 pixels of a left click.
+         * @param pl List of PlotPoints
+         */
+        void pointClicked(QList<PlotPoint*> pl);
+
+        /**
+         * Get the nearest point to a left click event.
+         * @param p PlotPoint nearest click location
+         */
+        void pointClicked(PlotPoint*);
+
+       public Q_SLOTS:
         /**
          * Toggle whether grid lines are drawn at major tickmarks.
          * @param show if true, grid lines will be drawn.
@@ -575,6 +594,12 @@ namespace Avogadro {
          * @param p The screen position from which to check for plot points.
          */
         QList<PlotPoint*> pointsUnderPoint( const QPoint& p ) const;
+
+        /**
+         * @return the nearest point in the plot to p
+         * @param p The screen position from which to check for plot points.
+         */
+        PlotPoint* pointNearestPoint( const QPoint& p ) const;
 
     private:
         class Private;

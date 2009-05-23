@@ -431,6 +431,24 @@ namespace Avogadro {
     return pts;
   }
 
+  PlotPoint* PlotWidget::pointNearestPoint( const QPoint& p ) const {
+    PlotPoint* pt = NULL;
+    double cur, distance = rect().width(); // Widget width as default
+    foreach ( PlotObject *po, d->objectList ) {
+      foreach ( PlotPoint *pp, po->points() ) {
+        cur = ( p - mapToWidget( pp->position() ).toPoint() ).manhattanLength();
+        if ( cur < distance ) {
+          pt = pp;
+          distance = cur;
+        }
+      }
+    }
+
+    if (pt)
+      return pt;
+    else
+      return NULL;
+  }
 
   bool PlotWidget::event( QEvent* e ) {
     if ( e->type() == QEvent::ToolTip ) {
@@ -479,6 +497,14 @@ namespace Avogadro {
     }
     if (event->buttons() & Qt::MidButton) {
       mouseClickOrigin = event->posF();
+    }
+    if (event->buttons() & Qt::LeftButton) {
+      QPointF pF ( mapToWidget(mapFrameToData(event->pos())));
+      QPoint p_widget ( static_cast<int>(pF.x()), static_cast<int>(pF.y()));
+      QPointF p_data = mapFrameToData(event->posF());
+      emit pointClicked(p_data.x(), p_data.y());
+      emit pointClicked(pointsUnderPoint(p_widget));
+      emit pointClicked(pointNearestPoint(p_widget));
     }
   }
 
