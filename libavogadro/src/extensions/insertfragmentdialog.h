@@ -48,32 +48,25 @@ namespace Avogadro {
     //! Destructor
     ~InsertFragmentDialog();
 
-    const Molecule *fragment();
-
-    const QString smilesString();
-    void setSmilesString(const QString);
+    const Molecule &fragment();
 
     const QStringList directoryList() const;
     void setDirectoryList(const QStringList);
 
-    void closeEvent( QCloseEvent *event );
-
-  public slots:
+  public Q_SLOTS:
     void refresh();
-    void setupInsertMode(bool);
 
     void addDirectory(bool);
     void clearDirectoryList(bool);
+    void insertButtonClicked(bool);
 
-  signals:
-    void setInsertMode(bool);
+  Q_SIGNALS:
+    void insertClicked();
 
   private:
     Ui::InsertFragmentDialog ui;
 
     QStringList m_directoryList;
-    QString     m_smilesString;
-
     InsertFragmentPrivate *d;
   };
 

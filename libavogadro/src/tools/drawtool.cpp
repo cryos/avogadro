@@ -27,7 +27,6 @@
 
 #include "drawtool.h"
 #include "drawcommand.h"
-#include "insertfragmentdialog.h"
 
 #include <avogadro/periodictableview.h>
 #include <avogadro/navigate.h>
@@ -47,6 +46,7 @@
 #include <openbabel/obconversion.h>
 
 #include <QtPlugin>
+#include <QAction>
 #include <QLabel>
 #include <QCheckBox>
 #include <QVBoxLayout>
@@ -78,7 +78,6 @@ namespace Avogadro {
                                         m_comboElements(0),
                                         m_addHydrogensCheck(0),
                                         m_periodicTable(0),
-                                        m_fragmentDialog(0),
                                         m_settingsWidget(0)
   {
     QAction *action = activateAction();
@@ -88,7 +87,6 @@ namespace Avogadro {
                           "Right Mouse: Delete Atom"));
     action->setShortcut(Qt::Key_F8);
 
-    m_insertFragmentMode = false;
     m_forceField = OBForceField::FindForceField("MMFF94");
   }
 
@@ -179,28 +177,11 @@ namespace Avogadro {
                                                 oldBondOrder, m_addHydrogens);
         }
       }
-      else { // a genuine click in new space == create a new atom or fragment
-        if (m_insertFragmentMode) { // insert a new fragment
-          Vector3d refPoint;
-          if (m_beginAtom) {
-            refPoint = *m_beginAtom->pos();
-          } else {
-            refPoint = widget->center();
-          }
-          Vector3d newMolPos = widget->camera()->unProject(event->pos(), refPoint);
-          Molecule m_generatedMolecule = *m_fragmentDialog->fragment();
-          m_generatedMolecule.center();
-          m_generatedMolecule.translate(Vector3d(newMolPos.x(),
-                                                 newMolPos.y(),
-                                                 newMolPos.z()));
-          undo = new InsertFragmentCommand(widget->molecule(), m_generatedMolecule);
-        } // end insert fragment mode
-        else { // create a new atom
-          m_beginAtom = addAtom(widget, event->pos());
-          m_beginAtomAdded = true;
-          m_forceField->SetIgnoreAtom(m_beginAtom->index());
-          m_beginAtom->update();
-        } // place atoms
+      else { // a genuine click in new space == create a new atom
+        m_beginAtom = addAtom(widget, event->pos());
+        m_beginAtomAdded = true;
+        m_forceField->SetIgnoreAtom(m_beginAtom->index());
+        m_beginAtom->update();
       } // hits
     } // left button
 
@@ -723,11 +704,6 @@ namespace Avogadro {
     return m_addHydrogens;
   }
 
-  void DrawTool::setInsertFragmentMode( bool mode )
-  {
-    m_insertFragmentMode = mode;
-  }
-
   QWidget *DrawTool::settingsWidget() {
     if(!m_settingsWidget) {
       m_settingsWidget = new QWidget;
@@ -788,20 +764,9 @@ namespace Avogadro {
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
 
-      // Fragment dialog button
-      m_fragmentButton = new QPushButton(m_settingsWidget);
-      m_fragmentButton->setText(tr("Fragment Library..."));
-      QHBoxLayout* fragmentLayout = new QHBoxLayout;
-      fragmentLayout->addStretch(1);
-      fragmentLayout->addWidget(m_fragmentButton);
-      fragmentLayout->addStretch(1);
-      connect(m_fragmentButton, SIGNAL(clicked(bool)),
-              this, SLOT(showFragmentDialog(bool)));
-
       m_layout = new QVBoxLayout();
       m_layout->addLayout(grid);
       m_layout->addWidget(m_addHydrogensCheck);
-      m_layout->addLayout(fragmentLayout);
       m_layout->addStretch(1);
       m_settingsWidget->setLayout(m_layout);
 
@@ -831,30 +796,11 @@ namespace Avogadro {
     m_keyPressBuffer.clear();
   }
 
-  void DrawTool::showFragmentDialog(bool)
-  {
-    if (!m_fragmentDialog) {
-      m_fragmentDialog = new InsertFragmentDialog(m_settingsWidget);
-      connect(m_fragmentDialog, SIGNAL(setInsertMode(bool)),
-              this, SLOT(setInsertFragmentMode(bool)));
-    }
-    if (m_fragmentDialog->isVisible()) {
-      m_fragmentDialog->hide();
-      m_insertFragmentMode = false;
-    }
-    else
-      m_fragmentDialog->show();
-  }
-
   void DrawTool::writeSettings(QSettings &settings) const
   {
     Tool::writeSettings(settings);
     settings.setValue("currentElement", element());
     settings.setValue("addHydrogens", m_addHydrogens);
-    if (m_fragmentDialog) {
-      settings.setValue("smiles", m_fragmentDialog->smilesString());
-      settings.setValue("fragmentPath", m_fragmentDialog->directoryList().join("\n"));
-    }
   }
 
   void DrawTool::readSettings(QSettings &settings)
@@ -871,13 +817,6 @@ namespace Avogadro {
     }
     if(m_addHydrogensCheck)
       m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
-    if(m_fragmentDialog) {
-      m_fragmentDialog->setSmilesString(settings.value("smiles").toString());
-      if (settings.contains("fragmentPath")) {
-        QString directoryList = settings.value("fragmentPath").toString();
-        m_fragmentDialog->setDirectoryList(directoryList.split('\n'));
-      }
-    }
   }
 }
 
