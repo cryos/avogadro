@@ -29,12 +29,13 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-
-//#include "ui_ribbonsettingswidget.h"
+#include <QPointer>
+#include "ui_cartoonsettingswidget.h"
 
 namespace Avogadro {
 
   class Mesh;
+  class CartoonSettingsWidget;
 
   //! CartoonEngine class.
   class CartoonEngine : public Engine
@@ -64,6 +65,8 @@ namespace Avogadro {
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
 
       void setPrimitives(const PrimitiveList &primitives);
+      
+      QWidget* settingsWidget();
 
       /**
        * Write the engine settings so that they can be saved between sessions.
@@ -81,25 +84,45 @@ namespace Avogadro {
       void removePrimitive(Primitive *primitive);
 
     private:
-      void updateChains(PainterDevice *pd);
-
-      int m_type;      // Type of ribbon rendering to do
-      double m_radius; // Cartoon radius
-      bool m_update;   // Is an update of the chain necessary?
-      int m_useNitrogens;
-      QList< QVector<Eigen::Vector3d> > m_chains;
+      void updateMesh(PainterDevice *pd);
+      bool m_update;   // Is an update of the mesh necessary?
       
-      QList<Eigen::Vector3d> m_triangles;
-      QList<Eigen::Vector3d> m_normals;
+      // store the mesh as QPointer so the pointer will always be
+      // set to 0 when the object gets deleted.
+      QPointer<Mesh> m_mesh;
+      CartoonSettingsWidget *m_settingsWidget;
 
-      QList<Eigen::Vector3d> m_debugPoints;
+      // shape parameters
+      double m_aHelix, m_bHelix, m_cHelix;
+      double m_aSheet, m_bSheet, m_cSheet;
+      double m_aLoop, m_bLoop, m_cLoop;
+
+      // colors
+      QColor m_helixColor, m_sheetColor, m_loopColor;
+    
+    private Q_SLOTS:
+      void settingsWidgetDestroyed();
+      void setHelixA(double value);
+      void setHelixB(double value);
+      void setHelixC(double value);
+      void setSheetA(double value);
+      void setSheetB(double value);
+      void setSheetC(double value);
+      void setLoopA(double value);
+      void setLoopB(double value);
+      void setLoopC(double value);
       
-      QList< QVector<Eigen::Vector3d> > m_helixes3;
-      QList< QVector<Eigen::Vector3d> > m_helixes4;
-      QList< QVector<Eigen::Vector3d> > m_helixes5;
+      void setHelixColor(QColor); 
+      void setSheetColor(QColor); 
+      void setLoopColor(QColor); 
+  };
 
-      Mesh *m_mesh;
-
+  class CartoonSettingsWidget : public QWidget, public Ui::CartoonSettingsWidget
+  {
+    public:
+      CartoonSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
   };
 
   //! Generates instances of our CartoonEngine class
