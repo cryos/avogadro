@@ -488,6 +488,10 @@ namespace Avogadro {
       zoomPosF = event->pos();
       update();
     }
+
+    // "mouseover" events
+    QPointF p_data = mapFrameToData(event->posF());
+    emit mouseOverPoint(p_data.x(), p_data.y());
   }
 
   void PlotWidget::mousePressEvent(QMouseEvent *event)

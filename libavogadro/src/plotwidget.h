@@ -508,6 +508,13 @@ namespace Avogadro {
          */
         void pointClicked(PlotPoint*);
 
+        /**
+         * Get the point in data units from a mouseover
+         * @param x X value
+         * @param y Y value
+         */
+        void mouseOverPoint(double x, double y);
+
        public Q_SLOTS:
         /**
          * Toggle whether grid lines are drawn at major tickmarks.
