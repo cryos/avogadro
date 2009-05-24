@@ -788,12 +788,12 @@ namespace Avogadro {
 
       // Convert intensities --> transmittances
       double maxIntensity=0;
-      for (unsigned int i = 0; i < intensities.size(); i++) {
+      for (int i = 0; i < intensities.size(); i++) {
         if (intensities.at(i) >= maxIntensity) {
           maxIntensity = intensities.at(i);
         }
       }
-      for (unsigned int i = 0; i < intensities.size(); i++) {
+      for (int i = 0; i < intensities.size(); i++) {
         double t = intensities.at(i);
         t = t / maxIntensity; 	// Normalize
         t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
