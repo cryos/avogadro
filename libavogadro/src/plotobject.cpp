@@ -234,6 +234,15 @@ namespace Avogadro {
     d->pList.removeAt( index );
   }
 
+  PlotPoint* PlotObject::at( int index ) {
+    if ( ( index < 0 ) || ( index >= d->pList.count() ) ) {
+      qWarning() << "PlotObject::removePoint(): index " << index << " out of range!";
+      return NULL;
+    }
+
+    return d->pList.at( index );
+  }
+
   void PlotObject::clearPoints()
   {
     qDeleteAll( d->pList );

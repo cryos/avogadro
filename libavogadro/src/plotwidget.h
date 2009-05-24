@@ -543,36 +543,42 @@ namespace Avogadro {
         /**
          * Mark the indicated point with a yellow circle.
          * @param point PlotPoint to be highlighted
-         * @sa clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection()
+         * @sa clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection() setPointFollowMouse()
          */
         void selectPoint(PlotPoint* point);
 
         /**
          * Mark the indicated points with yellow circles.
          * @param points QList of PlotPoints to be highlighted
-         * @sa selectPoint() clearAndSelectPoint() clearAndSelectPoints() clearSelection()
+         * @sa selectPoint() clearAndSelectPoint() clearAndSelectPoints() clearSelection() setPointFollowMouse()
          */
         void selectPoints(const QList<PlotPoint*> & points);
 
         /**
          * Just like selectPoint(), but clears selection first.
          * @param point PlotPoint to be highlighted
-         * @sa selectPoint() selectPoints() clearAndSelectPoints() clearSelection()
+         * @sa selectPoint() selectPoints() clearAndSelectPoints() clearSelection() setPointFollowMouse()
          */
         void clearAndSelectPoint(PlotPoint* point);
 
         /**
          * Just like selectPoints(), but clears selection first.
          * @param points QList of PlotPoints to be highlighted
-         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearSelection()
+         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearSelection() setPointFollowMouse()
          */
         void clearAndSelectPoints(const QList<PlotPoint*> & points);
 
         /**
          * Clear out the selected points
-         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints()
+         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints() setPointFollowMouse()
          */
         void clearSelection();
+
+        /**
+         * Highlight the point nearest the mouse with a blue circle.
+         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection()
+         */
+        void setPointFollowMouse(bool b);
 
     protected:
         /**

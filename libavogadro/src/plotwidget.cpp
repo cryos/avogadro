@@ -59,9 +59,9 @@ namespace Avogadro {
   public:
     Private( PlotWidget *qq )
       : q( qq ),
-      cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
-      showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-      font( QFont() )
+        cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
+        showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
+        font( QFont() ), followingMouse(false)
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -74,15 +74,20 @@ namespace Avogadro {
       axes.insert( RightAxis, rightAxis );
       PlotAxis *topAxis = new PlotAxis();
       axes.insert( TopAxis, topAxis );
+      mousefollow = new PlotObject(Qt::blue, PlotObject::Points);
+      mousefollow->setPointStyle(PlotObject::Circle);
+      privateObjectList.append(mousefollow);
+      // Selection should follow mousefollow for a more natural feel when selecting points
       selection = new PlotObject(Qt::yellow, PlotObject::Points);
       selection->setPointStyle(PlotObject::Circle);
+      privateObjectList.append(selection);
     }
 
     ~Private()
     {
       qDeleteAll( objectList );
       qDeleteAll( axes );
-      delete selection;
+      qDeleteAll( privateObjectList );
     }
 
     PlotWidget *q;
@@ -108,10 +113,10 @@ namespace Avogadro {
     int leftPadding, rightPadding, topPadding, bottomPadding;
     // hashmap with the axes we have
     QHash<Axis, PlotAxis*> axes;
-    // List of PlotObjects
-    QList<PlotObject*> objectList;
-    // Selection PlotObject
-    PlotObject *selection;
+    // Lists of PlotObjects
+    QList<PlotObject*> objectList, privateObjectList;
+    // Private PlotObjects
+    PlotObject *selection, *mousefollow;
     // Limits of the plot area in data units
     QRectF dataRect, secondDataRect, defaultDataRect;
     // Limits of the plot area in pixel units
@@ -120,6 +125,8 @@ namespace Avogadro {
     QImage plotMask;
     //Font properties
     QFont font;
+    //Whether to highlight the point nearest the mouse
+    bool followingMouse;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -290,6 +297,13 @@ namespace Avogadro {
   void PlotWidget::clearSelection()
   {
     d->selection->clearPoints();
+    update();
+  }
+
+  void PlotWidget::setPointFollowMouse(bool b)
+  {
+    setMouseTracking(b);
+    d->followingMouse = b;
     update();
   }
 
@@ -533,8 +547,27 @@ namespace Avogadro {
     }
 
     // "mouseover" events
-    QPointF p_data = mapFrameToData(event->posF());
-    emit mouseOverPoint(p_data.x(), p_data.y());
+    if (event->button() == Qt::NoButton) {
+      QPointF p_data = mapFrameToData(event->posF());
+      emit mouseOverPoint(p_data.x(), p_data.y());
+    }
+
+    // "Mouse follow" events
+    if (event->button() == Qt::NoButton && d->objectList.size() > 0 && d->followingMouse) {
+      QPointF pF 	= mapToWidget(mapFrameToData(event->pos()));
+      QPoint p_widget 	( static_cast<int>(pF.x()), static_cast<int>(pF.y()));
+      PlotPoint *p 	= pointNearestPoint(p_widget);
+      PlotPoint *old;
+
+      if (p) { // Make sure p isn't null...
+        if (d->mousefollow->points().size() != 0) {
+          old 	= d->mousefollow->at(0);
+          d->mousefollow->clearPoints();
+        }
+        d->mousefollow->addPoint(p->x(), p->y());
+        update();
+      }
+    }
   }
 
   void PlotWidget::mousePressEvent(QMouseEvent *event)
@@ -549,9 +582,10 @@ namespace Avogadro {
       QPointF pF ( mapToWidget(mapFrameToData(event->pos())));
       QPoint p_widget ( static_cast<int>(pF.x()), static_cast<int>(pF.y()));
       QPointF p_data = mapFrameToData(event->posF());
+      PlotPoint *p_near = pointNearestPoint(p_widget); 
       emit pointClicked(p_data.x(), p_data.y());
       emit pointClicked(pointsUnderPoint(p_widget));
-      emit pointClicked(pointNearestPoint(p_widget));
+      if (p_near) emit pointClicked(p_near);
     }
   }
 
@@ -953,8 +987,9 @@ namespace Avogadro {
     foreach( PlotObject *po, d->objectList )
       po->draw( &p, this );
 
-    // Draw selection
-    d->selection->draw( &p, this );
+    // Draw private objects
+    foreach( PlotObject *po, d->privateObjectList )
+      po->draw( &p, this );
 
     //DEBUG: Draw the plot mask
     //    p.drawImage( 0, 0, d->plotMask );
@@ -1043,8 +1078,9 @@ namespace Avogadro {
       po->drawImage( &p, &imPixRect, &d->dataRect );
     }
 
-    // Selections, too!
-    d->selection->drawImage( &p, &imPixRect, &d->dataRect );
+    foreach( PlotObject *po, d->privateObjectList ) {
+      po->drawImage( &p, &imPixRect, &d->dataRect );
+    }
 
     p.setClipping( false );
 

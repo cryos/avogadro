@@ -270,6 +270,12 @@ class PlotPoint;
     void removePoint( int index );
 
     /**
+     * Return a reference to the PlotPoint at the specified index.
+     * @param ind index of point to be returned
+     */
+    PlotPoint* at( int index );
+
+    /**
      * Remove and destroy the points of this object
      */
     void clearPoints();
