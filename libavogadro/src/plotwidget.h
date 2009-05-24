@@ -500,7 +500,7 @@ namespace Avogadro {
          * Get a list of points in data units within 4 pixels of a left click.
          * @param pl List of PlotPoints
          */
-        void pointClicked(QList<PlotPoint*> pl);
+        void pointClicked(const QList<PlotPoint*> & pl);
 
         /**
          * Get the nearest point to a left click event.
