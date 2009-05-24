@@ -44,7 +44,6 @@ namespace Avogadro {
   class Bond;
   class GLHit;
 
-  class InsertFragmentDialog;
   class PeriodicTableView;
   class AddAtomCommand;
 
@@ -109,7 +108,6 @@ namespace Avogadro {
       void customElementChanged( int index );
       void bondOrderChanged( int index );
       void setBondOrder(int i);
-      void setInsertFragmentMode( bool mode );
 
       void clearKeyPressBuffer();
 
@@ -140,8 +138,6 @@ namespace Avogadro {
       int m_addHydrogens;
       QUndoCommand *m_hydrogenCommand;
 
-      bool m_insertFragmentMode;
-
       QList<GLHit> m_hits;
 
       QComboBox *m_comboElements;
@@ -151,7 +147,6 @@ namespace Avogadro {
       QPushButton *m_tableButton;
       PeriodicTableView *m_periodicTable;
       QPushButton *m_fragmentButton;
-      InsertFragmentDialog *m_fragmentDialog;
       QVBoxLayout *m_layout;
 
       QWidget *m_settingsWidget;
@@ -164,7 +159,6 @@ namespace Avogadro {
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();
-      void showFragmentDialog(bool checked);
   };
 
   class DrawToolFactory : public QObject, public PluginFactory

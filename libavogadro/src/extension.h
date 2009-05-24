@@ -182,6 +182,14 @@ namespace Avogadro {
      * old Molecule objects should be treated.
      */
     void moleculeChanged(Molecule *, int);
+    
+    /**
+     * Can be used to notify the MainWindow of a delayed action.
+     * For example, if the Extension shows a window that alters a bond length
+     * or inserts a new framgent.
+     * The action should be added to the undo stack.
+     */
+    void performCommand(QUndoCommand*);
 
   };
 

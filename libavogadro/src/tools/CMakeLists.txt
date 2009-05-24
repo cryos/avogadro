@@ -15,12 +15,9 @@ set(LINK_LIBS "avogadro")
 ### drawtool
 set(drawtool_SRCS
   drawtool.cpp
-  drawcommand.cpp
-  directorytreemodel.cpp
-  insertfragmentdialog.cpp)
+  drawcommand.cpp)
 avogadro_plugin(drawtool
   "${drawtool_SRCS}"
-  insertfragmentdialog.ui
   drawtool.qrc)
 
 option(ENABLE_ZMATRIX_TOOL "Enable the z-matrix tool (experimental)" OFF)

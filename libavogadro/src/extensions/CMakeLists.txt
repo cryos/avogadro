@@ -47,6 +47,16 @@ avogadro_plugin(unitcellextension
   "unitcellextension.cpp;unitcellparamdialog.cpp"
   unitcellparamdialog.ui)
 
+### insert fragment
+avogadro_plugin(insertfragmentextension
+"insertfragmentextension.cpp;directorytreemodel.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
+  insertfragmentdialog.ui)
+
+### insert peptide (builder)
+#avogadro_plugin(insertpeptideextension
+#  "peptidebuilderextension.cpp;peptidebuilderdialog.cpp;insertcommand.cpp"
+#  peptidebuilderdialog.ui)
+
 ### h->methyl
 avogadro_plugin(h2methylextension h2methylextension.cpp)
 

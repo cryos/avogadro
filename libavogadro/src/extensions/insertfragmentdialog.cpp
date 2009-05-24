@@ -52,12 +52,8 @@ namespace Avogadro {
     OBConversion conv;
     OBBuilder    builder;
     DirectoryTreeModel *model;
-
-    bool         insertMode;
-    bool         smilesMode;
-
-    InsertFragmentPrivate() : insertMode(false)
-    { }
+    
+    QString      currentFileName;
 
     ~InsertFragmentPrivate()
     {
@@ -93,6 +89,8 @@ namespace Avogadro {
 
     d = new InsertFragmentPrivate;
 
+    d->currentFileName.clear();
+
     // There has to be a better way to set this based on the installation prefix
     m_directoryList = DefaultDirectoryList();
     d->model = new DirectoryTreeModel(m_directoryList, this);
@@ -104,10 +102,8 @@ namespace Avogadro {
     ui.directoryTreeView->setUniformRowHeights(true);
     ui.directoryTreeView->expandToDepth(1);
 
-    ui.insertFragmentButton->setFocusPolicy(Qt::NoFocus);
-
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
-            this, SLOT(setupInsertMode(bool)));
+            this, SLOT(insertButtonClicked(bool)));
     connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
             this, SLOT(addDirectory(bool)));
     connect(ui.clearListButton, SIGNAL(clicked(bool)),
@@ -119,73 +115,46 @@ namespace Avogadro {
     delete d;
   }
 
-  const Molecule *InsertFragmentDialog::fragment()
+  const Molecule &InsertFragmentDialog::fragment()
   {
-    d->fragment.clear();
     OBMol obfragment;
 
-    // SMILES insert
-    if (d->smilesMode) {
+    QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
+    if (selected.count() == 1) {
+      QString fileName = d->model->filePath(selected.first());
 
-      // We should use the method because it will grab updates to the line edit
-      std::string SmilesString(smilesString().toAscii());
-      if(d->conv.SetInFormat("smi")
-        && d->conv.ReadString(&obfragment, SmilesString))
-        {
-        d->builder.Build(obfragment);
+      if (!fileName.isEmpty()) {
+        if (fileName == d->currentFileName)
+          return d->fragment; // don't re-read the file
+
+        d->fragment.clear();
+
+        // TODO: Needs porting to MolecularFile
+        OBConversion conv;
+        OBFormat *inFormat = conv.FormatFromExt(fileName.toAscii());
+        if (!inFormat || !conv.SetInFormat(inFormat)) {
+          QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
+                                tr( "Cannot read file format of file %1." )
+                                .arg( fileName ) );
+          return d->fragment;
+        }
+        std::ifstream ifs;
+        ifs.open(QFile::encodeName(fileName));
+        if (!ifs) {
+          QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
+                                tr( "Cannot read file %1." )
+                                .arg( fileName ) );
+          return d->fragment;
+        }
+
+        conv.Read(&obfragment, &ifs);
         d->fragment.setOBMol(&obfragment);
         d->fragment.center();
-        d->fragment.addHydrogens();
-      }
-    } else {
-      QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
-      if (selected.count() != 0) {
-        QString file = d->model->filePath(selected.first());
-        if (!file.isEmpty()) {
-          std::string fileName(file.toAscii());
-          //OBFormat *inFormat = d->conv.FormatFromExt(fileName.c_str());
-          //if (!inFormat || !d->conv.SetInFormat(inFormat)) {
-          OBConversion conv;
-          OBFormat *inFormat = conv.FormatFromExt(fileName.c_str());
-          if (!inFormat || !conv.SetInFormat(inFormat)) {
-            QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                                  tr( "Cannot read file format of file %1." )
-                                  .arg( QString(fileName.c_str()) ) );
-            return &d->fragment;
-          }
-          std::ifstream ifs;
-          ifs.open(fileName.c_str());
-          if (!ifs) {
-            QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                                  tr( "Cannot read file %1." )
-                                  .arg( QString(fileName.c_str()) ) );
-            return &d->fragment;
-          }
-
-          //d->conv.Read(&d->fragment, &ifs);
-          conv.Read(&obfragment, &ifs);
-          d->fragment.setOBMol(&obfragment);
-          d->fragment.center();
-          ifs.close();
-        }
+        ifs.close();
       }
     }
 
-    return &d->fragment;
-  }
-
-  const QString InsertFragmentDialog::smilesString()
-  {
-    if (!ui.smilesLineEdit->text().isEmpty()) {
-      m_smilesString = ui.smilesLineEdit->text();
-    }
-    return m_smilesString;
-  }
-
-  void InsertFragmentDialog::setSmilesString(const QString smiles)
-  {
-    m_smilesString = smiles;
-    ui.smilesLineEdit->setText(m_smilesString);
+    return d->fragment;
   }
 
   const QStringList InsertFragmentDialog::directoryList() const
@@ -204,42 +173,6 @@ namespace Avogadro {
   {
     d->model->setDirectoryList(m_directoryList);
     ui.directoryTreeView->update();
-  }
-
-  void InsertFragmentDialog::setupInsertMode(bool)
-  {
-    bool inserting = (ui.insertFragmentButton->text() == tr("Stop Inserting"));
-
-    if(!inserting) {
-      if (ui.smilesLineEdit->hasFocus()) {
-        d->smilesMode = true;
-      } else {
-        d->smilesMode = false;
-      }
-      ui.toolTipLabel->setText(tr("Click to insert the fragment at that position."));
-      ui.insertFragmentButton->setText(tr("Stop Inserting"));
-      ui.smilesLineEdit->setEnabled(false);
-      ui.directoryTreeView->setEnabled(false);
-    } else {
-      ui.insertFragmentButton->setText(tr("Insert Fragment"));
-      ui.toolTipLabel->setText(QString());
-      ui.smilesLineEdit->setEnabled(true);
-      ui.directoryTreeView->setEnabled(true);
-      if (d->smilesMode) {
-        ui.smilesLineEdit->setFocus();
-      } else {
-        ui.directoryTreeView->setFocus();
-      }
-    }
-    emit setInsertMode(!inserting);
-  }
-
-  void InsertFragmentDialog::closeEvent(QCloseEvent *event)
-  {
-    // stop inserting
-    if (ui.insertFragmentButton->text() == tr("Stop Inserting"))
-      setupInsertMode(false);
-    event->accept();
   }
 
   void InsertFragmentDialog::addDirectory(bool)
@@ -261,4 +194,9 @@ namespace Avogadro {
     refresh();
   }
 
+  void InsertFragmentDialog::insertButtonClicked(bool)
+  {
+    emit insertClicked();
+  }
+  
 }

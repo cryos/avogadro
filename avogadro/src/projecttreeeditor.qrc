@@ -1,10 +1,10 @@
 <RCC>
   <qresource prefix="projecttreeeditor" >
-    <file>back.png</file>
-    <file>down.png</file>
-    <file>up.png</file>
-    <file>forward.png</file>
-    <file>minus.png</file>
-    <file>plus.png</file>
+    <file>icons/back.png</file>
+    <file>icons/down.png</file>
+    <file>icons/up.png</file>
+    <file>icons/forward.png</file>
+    <file>icons/minus.png</file>
+    <file>icons/plus.png</file>
   </qresource>
 </RCC>

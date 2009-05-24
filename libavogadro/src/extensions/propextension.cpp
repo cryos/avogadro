@@ -33,6 +33,8 @@
 #include <QDialog>
 #include <QVBoxLayout>
 
+#include <QDebug>
+
 using namespace std;
 using namespace OpenBabel;
 
@@ -274,6 +276,32 @@ namespace Avogadro
           return;
 
         matchedPrimitives.append( m_molecule->bond(index.row()) );
+        m_widget->clearSelected();
+        m_widget->setSelected(matchedPrimitives, true);
+        m_widget->update();
+      } else if (m_type == AngleType && model() != 0) {
+        int aIndex = model()->data(index.sibling(index.row(), 0)).toInt();
+        int bIndex = model()->data(index.sibling(index.row(), 1)).toInt();
+        int cIndex = model()->data(index.sibling(index.row(), 2)).toInt();
+        
+        matchedPrimitives.append( m_molecule->atom( aIndex - 1) );
+        matchedPrimitives.append( m_molecule->atom( bIndex - 1) );
+        matchedPrimitives.append( m_molecule->atom( cIndex - 1) );
+
+        m_widget->clearSelected();
+        m_widget->setSelected(matchedPrimitives, true);
+        m_widget->update();
+      } else if (m_type == TorsionType && model() != 0) {
+        int aIndex = model()->data(index.sibling(index.row(), 0)).toInt();
+        int bIndex = model()->data(index.sibling(index.row(), 1)).toInt();
+        int cIndex = model()->data(index.sibling(index.row(), 2)).toInt();
+        int dIndex = model()->data(index.sibling(index.row(), 3)).toInt();
+        
+        matchedPrimitives.append( m_molecule->atom( aIndex - 1) );
+        matchedPrimitives.append( m_molecule->atom( bIndex - 1) );
+        matchedPrimitives.append( m_molecule->atom( cIndex - 1) );
+        matchedPrimitives.append( m_molecule->atom( dIndex - 1) );
+
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();

@@ -65,6 +65,7 @@ endforeach (test ${tests})
 
 set(benches
   molecule
+  cartoonmesh
 )
 
 foreach (bench ${benches})

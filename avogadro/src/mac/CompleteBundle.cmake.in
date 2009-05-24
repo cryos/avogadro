@@ -40,13 +40,46 @@ function(gp_item_default_embedded_path_override item default_embedded_path_var)
   #
   if(item MATCHES "\\.dylib$")
     # Don't override the Qt plugins
-    if (NOT item MATCHES "libq\\.dylib$")
+    if(NOT item MATCHES "libq[a-zA-Z0-9]*\\.dylib$|libphonon_qt7.dylib$")
       set(path "${install_name_prefix}/../lib")
       set(overridden 1)
-    endif (NOT item MATCHES "libq\\.dylib$")
+    endif(NOT item MATCHES "libq[a-zA-Z0-9]*\\.dylib$|libphonon_qt7.dylib$")
+    # Now for the various Qt plugins - I think this is very hackish...
+    if(item MATCHES "plugins/accessible/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/accessible")
+      set(overridden 1)
+    endif(item MATCHES "plugins/accessible/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/designer/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/designer")
+      set(overridden 1)
+    endif(item MATCHES "plugins/designer/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/iconengines/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/iconengines")
+      set(overridden 1)
+    endif(item MATCHES "plugins/iconengines/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/sqldrivers/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/sqldrivers")
+      set(overridden 1)
+    endif(item MATCHES "plugins/sqldrivers/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/codecs/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/codecs")
+      set(overridden 1)
+    endif(item MATCHES "plugins/codecs/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/graphicssystems/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/graphicssystems")
+      set(overridden 1)
+    endif(item MATCHES "plugins/graphicssystems/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/script/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/script")
+      set(overridden 1)
+    endif(item MATCHES "plugins/script/[a-zA-Z]*\\.dylib$")
+    if(item MATCHES "plugins/imageformats/[a-zA-Z]*\\.dylib$")
+      set(path "${install_name_prefix}/../plugins/imageformats")
+      set(overridden 1)
+    endif(item MATCHES "plugins/imageformats/[a-zA-Z]*\\.dylib$")
   endif(item MATCHES "\\.dylib$")
 
-  # Embed .so files in their directory
+  # Embed .so plugin files in their directories
   #
   if(item MATCHES "tool\\.so$")
     set(path "${install_name_prefix}/../lib/avogadro/tools")
@@ -66,13 +99,17 @@ function(gp_item_default_embedded_path_override item default_embedded_path_var)
   endif(item MATCHES "color\\.so$")
 
   if(item MATCHES "format\\.so$")
-    set(path "${install_name_prefix}/../lib/openbabel/")
+    set(path "${install_name_prefix}/../lib/openbabel")
     set(overridden 1)
   endif(item MATCHES "format\\.so$")
   if(item MATCHES "Interface\\.so$")
-    set(path "${install_name_prefix}/../lib/openbabel/")
+    set(path "${install_name_prefix}/../lib/openbabel")
     set(overridden 1)
   endif(item MATCHES "Interface\\.so$")
+  if(item MATCHES "chemdrawcdx.so$|chemdrawct.so$|molreport.so$|pubchem.so")
+    set(path "${install_name_prefix}/../lib/openbabel")
+    set(overridden 1)
+  endif(item MATCHES "chemdrawcdx.so$|chemdrawct.so$|molreport.so$|pubchem.so")
 
   # Embed frameworks in the embedded "Frameworks" directory (sibling of MacOS):
   #
@@ -90,18 +127,15 @@ endfunction(gp_item_default_embedded_path_override)
 # -- Copy the App bundle to the installation location first
 EXECUTE_PROCESS(COMMAND "@OSX_MAKE_STANDALONE_BUNDLE_BASH_SCRIPT@")
 
-file(GLOB toolList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/tools/*")
-file(GLOB engineList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/engines/*")
-file(GLOB extensionList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/extensions/*")
-file(GLOB colorList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/colors/*")
+file(GLOB_RECURSE pluginList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/avogadro/*.so")
 
-file(GLOB obList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/openbabel/2.2.2/*")
-file(GLOB qtPluginList "$ENV{DESTDIR}/Applications/{OS_App}/Contents/plugins/*")
+file(GLOB obList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/lib/openbabel/*")
+file(GLOB_RECURSE qtPluginList "$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/*.dylib")
 
-message(STATUS "PluginList: ${engineList}")
+message(STATUS "PluginList: ${qtPluginList}")
 
 # -- Run the BundleUtilities cmake code
 include(BundleUtilities)
 fixup_bundle("$ENV{DESTDIR}/Applications/${OSX_App}"
-  "${toolList};${engineList};${extensionList};${colorList};${obList};${qtPluginList}"
-  "@LIB_INSTALL_DIR@;@LIB_INSTALL_DIR@/avogadro/tools;@LIB_INSTALL_DIR@/avogadro/engines;@LIB_INSTALL_DIR@/avogadro/colors;@LIB_INSTALL_DIR@/avogadro/extensions;")
+  "${pluginList};${obList};${qtPluginList}"
+  "@LIB_INSTALL_DIR@;@LIB_INSTALL_DIR@/avogadro/tools;@LIB_INSTALL_DIR@/avogadro/engines;@LIB_INSTALL_DIR@/avogadro/colors;@LIB_INSTALL_DIR@/avogadro/extensions;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/accessible;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/designer;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/iconengines;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/phonon_backend;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/sqldrivers;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/codecs;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/graphicssystems;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/imageformats;$ENV{DESTDIR}/Applications/${OSX_App}/Contents/plugins/script")
