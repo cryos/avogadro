@@ -540,6 +540,40 @@ namespace Avogadro {
          */
         bool saveImage(const QString &filename, double width, double height, double dpi, bool optimizeFontSize );
 
+        /**
+         * Mark the indicated point with a yellow circle.
+         * @param point PlotPoint to be highlighted
+         * @sa clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection()
+         */
+        void selectPoint(PlotPoint* point);
+
+        /**
+         * Mark the indicated points with yellow circles.
+         * @param points QList of PlotPoints to be highlighted
+         * @sa selectPoint() clearAndSelectPoint() clearAndSelectPoints() clearSelection()
+         */
+        void selectPoints(const QList<PlotPoint*> & points);
+
+        /**
+         * Just like selectPoint(), but clears selection first.
+         * @param point PlotPoint to be highlighted
+         * @sa selectPoint() selectPoints() clearAndSelectPoints() clearSelection()
+         */
+        void clearAndSelectPoint(PlotPoint* point);
+
+        /**
+         * Just like selectPoints(), but clears selection first.
+         * @param points QList of PlotPoints to be highlighted
+         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearSelection()
+         */
+        void clearAndSelectPoints(const QList<PlotPoint*> & points);
+
+        /**
+         * Clear out the selected points
+         * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints()
+         */
+        void clearSelection();
+
     protected:
         /**
          * Generic event handler.

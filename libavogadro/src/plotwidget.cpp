@@ -74,12 +74,15 @@ namespace Avogadro {
       axes.insert( RightAxis, rightAxis );
       PlotAxis *topAxis = new PlotAxis();
       axes.insert( TopAxis, topAxis );
+      selection = new PlotObject(Qt::yellow, PlotObject::Points);
+      selection->setPointStyle(PlotObject::Circle);
     }
 
     ~Private()
     {
       qDeleteAll( objectList );
       qDeleteAll( axes );
+      delete selection;
     }
 
     PlotWidget *q;
@@ -107,6 +110,8 @@ namespace Avogadro {
     QHash<Axis, PlotAxis*> axes;
     // List of PlotObjects
     QList<PlotObject*> objectList;
+    // Selection PlotObject
+    PlotObject *selection;
     // Limits of the plot area in data units
     QRectF dataRect, secondDataRect, defaultDataRect;
     // Limits of the plot area in pixel units
@@ -248,6 +253,44 @@ namespace Avogadro {
   QRectF PlotWidget::secondaryDataRect() const
   {
     return d->secondDataRect;
+  }
+
+  void PlotWidget::selectPoint(PlotPoint* point)
+  {
+    // Need to just send x and y; otherwise Bad Things happen when the point is cleared...
+    d->selection->addPoint(point->x(), point->y());
+    update();
+  }
+
+  void PlotWidget::selectPoints(const QList<PlotPoint*> & points)
+  {
+    for (int i = 0; i < points.size(); i++)
+      // Need to just send x and y; otherwise Bad Things happen when the point is cleared...
+      d->selection->addPoint(points.at(i)->x(), points.at(i)->y());
+    update();
+  }
+
+  void PlotWidget::clearAndSelectPoint(PlotPoint* point)
+  {
+    clearSelection();
+    // Need to just send x and y; otherwise Bad Things happen when the point is cleared...
+    d->selection->addPoint(point->x(), point->y());
+    update();
+  }
+
+  void PlotWidget::clearAndSelectPoints(const QList<PlotPoint*> & points)
+  {
+    clearSelection();
+    for (int i = 0; i < points.size(); i++)
+      // Need to just send x and y; otherwise Bad Things happen when the point is cleared...
+      d->selection->addPoint(points.at(i)->x(), points.at(i)->y());
+    update();
+  }
+
+  void PlotWidget::clearSelection()
+  {
+    d->selection->clearPoints();
+    update();
   }
 
   void PlotWidget::addPlotObject( PlotObject *object )
@@ -910,6 +953,9 @@ namespace Avogadro {
     foreach( PlotObject *po, d->objectList )
       po->draw( &p, this );
 
+    // Draw selection
+    d->selection->draw( &p, this );
+
     //DEBUG: Draw the plot mask
     //    p.drawImage( 0, 0, d->plotMask );
 
@@ -996,6 +1042,9 @@ namespace Avogadro {
     foreach( PlotObject *po, d->objectList ) {
       po->drawImage( &p, &imPixRect, &d->dataRect );
     }
+
+    // Selections, too!
+    d->selection->drawImage( &p, &imPixRect, &d->dataRect );
 
     p.setClipping( false );
 

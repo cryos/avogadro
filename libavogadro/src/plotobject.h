@@ -97,7 +97,7 @@ class PlotPoint;
       Hexagon = 6,
       Asterisk = 7,
       Star = 8,
-      UnknwonPoint
+      UnknownPoint
     };
 
     /**
