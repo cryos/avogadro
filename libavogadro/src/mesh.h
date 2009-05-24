@@ -121,6 +121,11 @@ namespace Avogadro {
     const std::vector<Eigen::Vector3f> & vertices() const;
 
     /**
+     * @return The number of vertices.
+     */
+    unsigned int numVertices() const { return m_vertices.size(); }
+
+    /**
      * @return Pointer to the first vertex of the specified triangle.
      */
     const Eigen::Vector3f * vertex(int n) const;
@@ -140,6 +145,12 @@ namespace Avogadro {
      * @return Vector containing all of the normals in a one-dimensional array.
      */
     const std::vector<Eigen::Vector3f> & normals() const;
+
+    /**
+     * @return The number of normals.
+     */
+    unsigned int numNormals() const { return m_normals.size(); }
+
 
     /**
      * @return Pointer to the first normal of the specified triangle.
