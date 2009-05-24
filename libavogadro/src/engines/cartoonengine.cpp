@@ -210,10 +210,13 @@ namespace Avogadro {
     // Get a list of residues for the molecule
     const Molecule *molecule = pd->molecule();
 
+    if (molecule->numResidues() == 0)
+      return; // There's no use generating meshes for non-biomolecules
+
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
  
-    if (!m_mesh && molecule->numAtoms() != 0) {
+    if (!m_mesh) {
       Molecule *mol = (Molecule*) molecule;
       m_mesh = mol->addMesh();
     }
