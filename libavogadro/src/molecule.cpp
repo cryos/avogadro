@@ -1391,7 +1391,7 @@ namespace Avogadro{
       residue->setNumber(r->number());
       residue->setName(r->name());
 
-      foreach(unsigned int atomId, residue->atoms()) {
+      foreach(unsigned int atomId, r->atoms()) {
         residue->addAtom(atomId);
       }
       residue->setAtomIds(r->atomIds());
@@ -1426,7 +1426,7 @@ namespace Avogadro{
       residue->setNumber(r->number());
       residue->setName(r->name());
 
-      foreach(unsigned int atomId, residue->atoms()) {
+      foreach(unsigned int atomId, r->atoms()) {
         residue->addAtom(map.at(atomId));
       }
       residue->setAtomIds(r->atomIds());
