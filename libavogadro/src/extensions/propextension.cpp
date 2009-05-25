@@ -28,6 +28,7 @@
 #include <avogadro/primitivelist.h>
 
 #include <QAbstractTableModel>
+#include <QSortFilterProxyModel>
 #include <QHeaderView>
 #include <QAction>
 #include <QDialog>
@@ -197,10 +198,15 @@ namespace Avogadro
 
     connect(m_molecule, SIGNAL(moleculeChanged()), model, SLOT(moleculeChanged()));
     connect(m_molecule, SIGNAL( updated() ), model, SLOT( updateTable() ));
+
+    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel(this);
+    proxyModel->setSourceModel(model);
+    proxyModel->setDynamicSortFilter(true);
+
     view->setMolecule( m_molecule );
     view->setWidget( widget );
-    view->setModel( model );
-    //    view->sortByColumn(0, Qt::AscendingOrder);
+    view->setModel( proxyModel );
+
     layout->addWidget(view);
     dialog->setWindowTitle(view->windowTitle());
     QSize dialogSize = dialog->size();
@@ -251,7 +257,7 @@ namespace Avogadro
     // Alternating row colors
     setAlternatingRowColors(true);
     // Allow sorting the table
-    //    setSortingEnabled(true);
+    setSortingEnabled(true);
   }
 
 
