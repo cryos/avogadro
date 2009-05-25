@@ -60,7 +60,7 @@ namespace Avogadro {
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
-	    this, SLOT(exportVibrationData(bool)));
+            this, SLOT(exportVibrationData(bool)));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -96,15 +96,17 @@ namespace Avogadro {
       // Some codes don't provide intensity data. Display "-" in place of intensities.
       QTableWidgetItem *newInten;
       if (intensities.size() == 0) {
-	newInten = new QTableWidgetItem("-");
+        newInten = new QTableWidgetItem("-");
       }
       else {
-	newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
       }
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
     }
+    
+    ui.vibrationTable->sortItems(0, Qt::AscendingOrder); // sort by frequency
     // enable export button
     ui.exportButton->setEnabled(true);
   }
