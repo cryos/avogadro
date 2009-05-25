@@ -1384,6 +1384,19 @@ namespace Avogadro{
       }
     }
 
+    foreach (Residue *r, other.residues()) {
+      Residue *residue = addResidue();
+      residue->setChainNumber(r->chainNumber());
+      residue->setChainID(r->chainID());
+      residue->setNumber(r->number());
+      residue->setName(r->name());
+
+      foreach(unsigned int atomId, r->atoms()) {
+        residue->addAtom(atomId);
+      }
+      residue->setAtomIds(r->atomIds());
+    }
+
     return *this;
   }
 
@@ -1406,6 +1419,20 @@ namespace Avogadro{
       bond->setEnd(atomById(map.at(other.atomById(b->endAtomId())->index())));
       emit primitiveAdded(bond);
     }
+    foreach (Residue *r, other.residues()) {
+      Residue *residue = addResidue();
+      residue->setChainNumber(r->chainNumber());
+      residue->setChainID(r->chainID());
+      residue->setNumber(r->number());
+      residue->setName(r->name());
+
+      foreach(unsigned int atomId, r->atoms()) {
+        residue->addAtom(map.at(atomId));
+      }
+      residue->setAtomIds(r->atomIds());
+    }
+
+    //    qDebug() << " residues: " << numResidues() << other.numResidues();
     return *this;
   }
 

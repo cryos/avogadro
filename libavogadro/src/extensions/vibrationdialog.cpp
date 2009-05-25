@@ -60,7 +60,7 @@ namespace Avogadro {
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
-	    this, SLOT(exportVibrationData(bool)));
+            this, SLOT(exportVibrationData(bool)));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -95,16 +95,18 @@ namespace Avogadro {
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       // Some codes don't provide intensity data. Display "-" in place of intensities.
       QTableWidgetItem *newInten;
-      if (intensities.size() == 0) {
-	newInten = new QTableWidgetItem("-");
+      if (row >= intensities.size()) {
+        newInten = new QTableWidgetItem("-");
       }
       else {
-	newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
       }
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
     }
+    
+    ui.vibrationTable->sortItems(0, Qt::AscendingOrder); // sort by frequency
     // enable export button
     ui.exportButton->setEnabled(true);
   }
@@ -149,6 +151,9 @@ namespace Avogadro {
 
   void VibrationDialog::setDisplayForceVectors(bool checked)
   {
+    if (checked != ui.displayForcesCheckBox->isChecked())
+      ui.displayForcesCheckBox->setChecked(checked);
+
     emit setEnabledForceVector(checked);
   }
 
@@ -187,16 +192,22 @@ namespace Avogadro {
     }
 
     vector<double> frequencies = m_vibrations->GetFrequencies();
-
     vector<double> intensities = m_vibrations->GetIntensities();
 
     QTextStream out(&file);
-    QString format = "%1\t%2\n";
-
     out << "Frequencies\tIntensities\n";
 
+    QString format = "%1\t%2\n";
     for (unsigned int line = 0; line < frequencies.size(); ++line) {
-      out << format.arg(frequencies[line], 0, 'f', 2).arg(intensities[line], 0, 'f', 2);
+      QString intensity;
+      // we can't trust that we'll actually get intensities
+      // some formats don't report them
+      if (line >= intensities.size())
+        intensity = '-';
+      else
+        intensity = QString::number(intensities[line], 'f', 2);
+
+      out << format.arg(frequencies[line], 0, 'f', 2).arg(intensity);
     }
     
     file.close();

@@ -36,7 +36,7 @@ namespace Avogadro {
     : QAbstractItemModel(parent), _directoryList(dirList.split('\n'))
   {
     QList<QVariant> rootData;
-    rootData << "Name"; // This is the header row -- add more columns, e.g. file size, etc.
+    rootData << tr("Name"); // This is the header row -- add more columns, e.g. file size, etc.
     _rootItem = new FileTreeItem(rootData);
 
     setupModelData(_directoryList, _rootItem);
@@ -46,7 +46,7 @@ namespace Avogadro {
   : QAbstractItemModel(parent), _directoryList(dirList)
   {
     QList<QVariant> rootData;
-    rootData << "Name"; // This is the header row -- add more columns here
+    rootData << tr("Name"); // This is the header row -- add more columns here
     _rootItem = new FileTreeItem(rootData);
 
     setupModelData(_directoryList, _rootItem);

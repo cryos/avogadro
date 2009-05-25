@@ -96,6 +96,9 @@ namespace Avogadro {
 
   void Engine::setEnabled(bool enabled)
   {
+    if (m_enabled != enabled)
+      emit enableToggled(enabled);
+
     m_enabled = enabled;
     emit changed();
   }
