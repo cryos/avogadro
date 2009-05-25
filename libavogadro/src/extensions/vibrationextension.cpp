@@ -202,6 +202,13 @@ namespace Avogadro {
                 this, SLOT(toggleAnimation()));
         m_dialog->setMolecule(m_molecule);
 
+        foreach (Engine *engine, m_widget->engines()) {
+          if (engine->identifier() == "Force") {
+            m_dialog->setDisplayForceVectors(engine->isEnabled());
+            connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
+          }
+        }
+
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
         m_animation->setMolecule(m_molecule);
@@ -224,16 +231,18 @@ namespace Avogadro {
 
   void VibrationExtension::setDisplayForceVectors(bool enabled)
   {
-    m_displayVectors = enabled;
-
+    if (m_displayVectors == enabled)
+      return; // nothing to do
     if (!m_widget)
       return;
 
+    m_displayVectors = enabled;
     foreach (Engine *engine, m_widget->engines()) {
       if (engine->identifier() == "Force") {
         engine->setEnabled(enabled);
       }
     }
+
     m_widget->update();
   }
 

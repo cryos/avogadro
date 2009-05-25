@@ -151,6 +151,9 @@ namespace Avogadro {
 
   void VibrationDialog::setDisplayForceVectors(bool checked)
   {
+    if (checked != ui.displayForcesCheckBox->isChecked())
+      ui.displayForcesCheckBox->setChecked(checked);
+
     emit setEnabledForceVector(checked);
   }
 

@@ -409,6 +409,11 @@ namespace Avogadro {
        */
       void changed();
 
+      /**
+       * Signals that the engine has been enabled or disabled.
+       */ 
+      void enableToggled(bool enabled);
+
     public Q_SLOTS:
       /**
        * Add the primitive to the engines PrimitiveList.
