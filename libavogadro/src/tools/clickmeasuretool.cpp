@@ -280,7 +280,7 @@ namespace Avogadro {
         widget->painter()->drawText(labelPos, tr("Distance(s):"));
 
         glColor3f(1.0,1.0,0.0);
-        widget->painter()->drawText(distancePos[0], QString::number(m_vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
+        widget->painter()->drawText(distancePos[0], QString::number(m_vector[0].norm(), 10, 3) + QString::fromUtf8(" Å"));
 
         if(m_numSelectedAtoms >= 3)
         {
@@ -291,7 +291,7 @@ namespace Avogadro {
           widget->painter()->drawText(anglePos, QString::number(m_angle, 10, 1) + QString::fromUtf8("°"));
 
           glColor3f(0.0,1.0,1.0);
-          widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
+          widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 3) + QString::fromUtf8(" Å"));
         }
 
         if(m_numSelectedAtoms >= 4)
@@ -303,7 +303,7 @@ namespace Avogadro {
           widget->painter()->drawText(dihedralPos, QString::number(m_dihedral, 10, 1) + QString::fromUtf8("°"));
 
           glColor3f(1.0, 1.0, 1.0);
-          widget->painter()->drawText(distancePos[2], QString::number(m_vector[2].norm(), 10, 2) + QString::fromUtf8(" Å"));
+          widget->painter()->drawText(distancePos[2], QString::number(m_vector[2].norm(), 10, 3) + QString::fromUtf8(" Å"));
         }
 
 
