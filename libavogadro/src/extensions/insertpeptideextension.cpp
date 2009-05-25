@@ -57,10 +57,6 @@ namespace Avogadro {
 
   InsertPeptideExtension::~InsertPeptideExtension()
   {
-    if (m_dialog) {
-      delete m_dialog;
-      m_dialog = 0;
-    }
   }
 
   QList<QAction *> InsertPeptideExtension::actions() const
@@ -169,9 +165,9 @@ namespace Avogadro {
     // Fix the final C=O if not straight-chain
     ic = vic[lastO];
     ic->_tor = 180.0 + psi;
-    // "End group modification"
-    // add the extra H to get NH2
-    // need to add the new OH to get COOH
+    // TODO: "End group modification"
+    // add the extra H to get NH2/NH3+
+    // need to add the new O/OH to get CO2-/COOH
 
     obfragment.EndModify();
     InternalToCartesian(vic,obfragment);
@@ -372,7 +368,7 @@ namespace Avogadro {
       coord->_ang = atof(vs[2].c_str());
       coord->_tor = atof(vs[3].c_str());
       
-      int index;
+      unsigned int index;
       // Set _a
       index = atoi(vs[4].c_str());
       if (index > 0 && index <= mol.NumAtoms())
