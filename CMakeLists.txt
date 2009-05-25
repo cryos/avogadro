@@ -351,6 +351,8 @@ set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 # When installing, make sure to install some fragments
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
+        DESTINATION ${avogadro_FRAGMENTS})
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
