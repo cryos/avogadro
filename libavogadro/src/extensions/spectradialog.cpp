@@ -51,8 +51,13 @@ namespace Avogadro {
   {
     ui.setupUi(this);
 
+    tab_ir = new QWidget();
+    tab_nmr = new QWidget();
+    ui_tab_ir.setupUi(tab_ir);
+    ui_tab_nmr.setupUi(tab_nmr);
+
     // Initialize vars
-    m_IR_yaxis = ui.combo_IR_yaxis->currentText();
+    m_IR_yaxis = ui_tab_ir.combo_IR_yaxis->currentText();
     m_schemes = new QList<QHash<QString, QVariant> >;
 
     // Hide advanced options initially
@@ -149,18 +154,18 @@ namespace Avogadro {
     if (vibrations) {
       // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
-      ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+      ui.tab_widget->addTab(tab_ir, tr("&Infrared Spectra Settings"));
 
       // Setup signals/slots
       connect(this, SIGNAL(scaleUpdated_IR()),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
+      connect(ui_tab_ir.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.spin_IR_scale, SIGNAL(valueChanged(double)),
+      connect(ui_tab_ir.spin_IR_scale, SIGNAL(valueChanged(double)),
               this, SLOT(setScale_IR(double)));
-      connect(ui.spin_IR_FWHM, SIGNAL(valueChanged(double)),
+      connect(ui_tab_ir.spin_IR_FWHM, SIGNAL(valueChanged(double)),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
+      connect(ui_tab_ir.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
               this, SLOT(updateYAxis_IR(QString)));
 
       // OK, we have valid vibrations, so store them for later
@@ -227,20 +232,20 @@ namespace Avogadro {
       qDebug() << "NMR data found:";
       // Setup GUI
       ui.combo_spectra->addItem(tr("NMR", "NMR spectra option"));
-      ui.tab_widget->addTab(ui.tab_NMR, tr("&NMR Spectra Settings"));
+      ui.tab_widget->addTab(tab_nmr, tr("&NMR Spectra Settings"));
 
       // Setup signals/slots
       connect(this, SIGNAL(refUpdated_NMR()),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.combo_NMR_type, SIGNAL(currentIndexChanged(QString)),
+      connect(ui_tab_nmr.combo_NMR_type, SIGNAL(currentIndexChanged(QString)),
               this, SLOT(setNMRAtom(QString)));
-      connect(ui.spin_NMR_ref, SIGNAL(valueChanged(double)),
+      connect(ui_tab_nmr.spin_NMR_ref, SIGNAL(valueChanged(double)),
               this, SLOT(setReference_NMR(double)));
-      connect(ui.push_NMR_resetAxes, SIGNAL(clicked()),
+      connect(ui_tab_nmr.push_NMR_resetAxes, SIGNAL(clicked()),
               this, SLOT(updatePlotAxes_NMR()));
-      connect(ui.spin_NMR_FWHM, SIGNAL(valueChanged(double)),
+      connect(ui_tab_nmr.spin_NMR_FWHM, SIGNAL(valueChanged(double)),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.cb_NMR_labelPeaks, SIGNAL(toggled(bool)),
+      connect(ui_tab_nmr.cb_NMR_labelPeaks, SIGNAL(toggled(bool)),
               this, SLOT(regenerateCalculatedSpectra()));
 
       // Extract data from obmol
@@ -253,13 +258,13 @@ namespace Avogadro {
         }
         else {
           // Dump symbol into NMR Type list
-          ui.combo_NMR_type->addItem(symbol);
+          ui_tab_nmr.combo_NMR_type->addItem(symbol);
         }
         list.append(shift);
         m_NMRdata->insert(symbol, list);
       }
       qDebug() << *m_NMRdata;
-      setNMRAtom(ui.combo_NMR_type->currentText());
+      setNMRAtom(ui_tab_nmr.combo_NMR_type->currentText());
     } else { qDebug() << "No NMR data found..."; }
 
     // Change this when other spectra are added!!
@@ -285,12 +290,12 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
 
     settings.setValue("spectra/IR/scale", m_IR_scale);
-    settings.setValue("spectra/IR/gaussianWidth", ui.spin_IR_FWHM->value());
-    settings.setValue("spectra/IR/labelPeaks", ui.cb_IR_labelPeaks->isChecked());
+    settings.setValue("spectra/IR/gaussianWidth", ui_tab_ir.spin_IR_FWHM->value());
+    settings.setValue("spectra/IR/labelPeaks", ui_tab_ir.cb_IR_labelPeaks->isChecked());
 
     settings.setValue("spectra/NMR/reference", m_NMR_ref);
-    settings.setValue("spectra/NMR/gaussianWidth", ui.spin_NMR_FWHM->value());
-    settings.setValue("spectra/NMR/labelPeaks", ui.cb_NMR_labelPeaks->isChecked());
+    settings.setValue("spectra/NMR/gaussianWidth", ui_tab_nmr.spin_NMR_FWHM->value());
+    settings.setValue("spectra/NMR/labelPeaks", ui_tab_nmr.cb_NMR_labelPeaks->isChecked());
 
     settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
     settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
@@ -320,12 +325,12 @@ namespace Avogadro {
   void SpectraDialog::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     setScale_IR(settings.value("spectra/IR/scale", 1.0).toDouble());
-    ui.spin_IR_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
-    ui.cb_IR_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
+    ui_tab_ir.spin_IR_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
+    ui_tab_ir.cb_IR_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
 
     setReference_NMR(settings.value("spectra/NMR/reference", 0.0).toDouble());
-    ui.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
-    ui.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
+    ui_tab_nmr.spin_NMR_FWHM->setValue(settings.value("spectra/NMR/gaussianWidth",0.0).toDouble());
+    ui_tab_nmr.cb_NMR_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
 
     ui.spin_imageWidth->setValue(settings.value("spectra/image/width", 21).toInt());
     ui.spin_imageHeight->setValue(settings.value("spectra/image/height", 10).toInt());
@@ -803,18 +808,18 @@ namespace Avogadro {
       }
       // Setup GUI
       ui.combo_spectra->addItem(tr("Infrared", "Infrared spectra option"));
-      ui.tab_widget->addTab(ui.tab_infrared, tr("&Infrared Spectra Settings"));
+      ui.tab_widget->addTab(ui_tab_ir.widget, tr("&Infrared Spectra Settings"));
 
       // Setup signals/slots
       connect(this, SIGNAL(scaleUpdated_IR()),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
+      connect(ui_tab_ir.cb_IR_labelPeaks, SIGNAL(toggled(bool)),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.spin_IR_scale, SIGNAL(valueChanged(double)),
+      connect(ui_tab_ir.spin_IR_scale, SIGNAL(valueChanged(double)),
               this, SLOT(setScale_IR(double)));
-      connect(ui.spin_IR_FWHM, SIGNAL(valueChanged(double)),
+      connect(ui_tab_ir.spin_IR_FWHM, SIGNAL(valueChanged(double)),
               this, SLOT(regenerateCalculatedSpectra()));
-      connect(ui.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
+      connect(ui_tab_ir.combo_IR_yaxis, SIGNAL(currentIndexChanged(QString)),
               this, SLOT(updateYAxis_IR(QString)));
     }
 
@@ -933,26 +938,26 @@ namespace Avogadro {
   void SpectraDialog::regenerateCalculatedSpectra() {
 
     // IR spectra checks:
-    if (ui.spin_IR_FWHM->value() != 0.0 && ui.cb_IR_labelPeaks->isEnabled()) {
-      ui.cb_IR_labelPeaks->setEnabled(false);
-      ui.cb_IR_labelPeaks->setChecked(false);
+    if (ui_tab_ir.spin_IR_FWHM->value() != 0.0 && ui_tab_ir.cb_IR_labelPeaks->isEnabled()) {
+      ui_tab_ir.cb_IR_labelPeaks->setEnabled(false);
+      ui_tab_ir.cb_IR_labelPeaks->setChecked(false);
     }
-    if (ui.spin_IR_FWHM->value() == 0.0 && !ui.cb_IR_labelPeaks->isEnabled()) {
-      ui.cb_IR_labelPeaks->setEnabled(true);
+    if (ui_tab_ir.spin_IR_FWHM->value() == 0.0 && !ui_tab_ir.cb_IR_labelPeaks->isEnabled()) {
+      ui_tab_ir.cb_IR_labelPeaks->setEnabled(true);
     }
-    if (!ui.cb_IR_labelPeaks->isEnabled()) {
-      ui.cb_IR_labelPeaks->setChecked(false);
+    if (!ui_tab_ir.cb_IR_labelPeaks->isEnabled()) {
+      ui_tab_ir.cb_IR_labelPeaks->setChecked(false);
     }
     // NMR spectra checks:
-    if (ui.spin_NMR_FWHM->value() != 0.0 && ui.cb_NMR_labelPeaks->isEnabled()) {
-      ui.cb_NMR_labelPeaks->setEnabled(false);
-      ui.cb_NMR_labelPeaks->setChecked(false);
+    if (ui_tab_nmr.spin_NMR_FWHM->value() != 0.0 && ui_tab_nmr.cb_NMR_labelPeaks->isEnabled()) {
+      ui_tab_nmr.cb_NMR_labelPeaks->setEnabled(false);
+      ui_tab_nmr.cb_NMR_labelPeaks->setChecked(false);
     }
-    if (ui.spin_NMR_FWHM->value() == 0.0 && !ui.cb_NMR_labelPeaks->isEnabled()) {
-      ui.cb_NMR_labelPeaks->setEnabled(true);
+    if (ui_tab_nmr.spin_NMR_FWHM->value() == 0.0 && !ui_tab_nmr.cb_NMR_labelPeaks->isEnabled()) {
+      ui_tab_nmr.cb_NMR_labelPeaks->setEnabled(true);
     }
-    if (!ui.cb_NMR_labelPeaks->isEnabled()) {
-      ui.cb_NMR_labelPeaks->setChecked(false);
+    if (!ui_tab_nmr.cb_NMR_labelPeaks->isEnabled()) {
+      ui_tab_nmr.cb_NMR_labelPeaks->setChecked(false);
     }
 
     // Update plot object and display changes
@@ -977,13 +982,13 @@ namespace Avogadro {
 
     // Use this ladder to select correct spectra function:
     if (m_spectra == "Infrared") {
-      if (ui.spin_IR_FWHM->value() == 0.0) {
+      if (ui_tab_ir.spin_IR_FWHM->value() == 0.0) {
         getCalculatedSinglets_IR(plotObject);
       }
       else {
         getCalculatedGaussians_IR(plotObject);
       }
-      if (ui.combo_IR_yaxis->currentText() == "Absorbance (%)") {
+      if (ui_tab_ir.combo_IR_yaxis->currentText() == "Absorbance (%)") {
         for(int i = 0; i< plotObject->points().size(); i++) {
           double absorbance = 100 - plotObject->points().at(i)->y();
           plotObject->points().at(i)->setY(absorbance);
@@ -991,7 +996,7 @@ namespace Avogadro {
       }
     } // End IR spectra
     if (m_spectra == "NMR") {
-      if (ui.spin_NMR_FWHM->value() == 0.0) {
+      if (ui_tab_nmr.spin_NMR_FWHM->value() == 0.0) {
         getCalculatedSinglets_NMR(plotObject);
       }
       else {
@@ -1011,7 +1016,7 @@ namespace Avogadro {
       for (uint i = 0; i < m_imported_IRtransmittances.size(); i++) {
         double wavenumber = m_imported_IRwavenumbers.at(i);
         double y = m_imported_IRtransmittances.at(i);
-        if (ui.combo_IR_yaxis->currentText() == "Absorbance (%)") {
+        if (ui_tab_ir.combo_IR_yaxis->currentText() == "Absorbance (%)") {
           y = 100 - y;
         }
         plotObject->addPoint ( wavenumber, y );
@@ -1039,7 +1044,7 @@ namespace Avogadro {
       double wavenumber = m_IRwavenumbers.at(i) * m_IR_scale;
       double transmittance = m_IRtransmittances.at(i);
       plotObject->addPoint ( wavenumber, 100 );
-      if (ui.cb_IR_labelPeaks->isChecked()) {
+      if (ui_tab_ir.cb_IR_labelPeaks->isChecked()) {
         plotObject->addPoint( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
       }
       else {
@@ -1068,14 +1073,14 @@ namespace Avogadro {
       return;
     }
     m_IR_scale = scale;
-    ui.spin_IR_scale->setValue(scale);
+    ui_tab_ir.spin_IR_scale->setValue(scale);
     emit scaleUpdated_IR();
   }
 
   void SpectraDialog::getCalculatedGaussians_IR(PlotObject *plotObject)
   {
     // convert FWHM to sigma squared
-    double FWHM = ui.spin_IR_FWHM->value();
+    double FWHM = ui_tab_ir.spin_IR_FWHM->value();
     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
     // determine range
@@ -1140,7 +1145,7 @@ namespace Avogadro {
       double shift = m_NMRshifts.at(i) - m_NMR_ref;
       //      double intensity = m_NMRintensities.at(i);
       plotObject->addPoint ( shift, 0);
-            if (ui.cb_NMR_labelPeaks->isChecked()) {
+            if (ui_tab_nmr.cb_NMR_labelPeaks->isChecked()) {
               plotObject->addPoint( shift, 1.0 /* intensity */, QString::number(shift, 'f', 2));
             }
             else {
@@ -1155,7 +1160,7 @@ namespace Avogadro {
   {
     QList<double> tmp (m_NMRshifts);
     qSort(tmp);
-    double FWHM = ui.spin_NMR_FWHM->value();
+    double FWHM = ui_tab_nmr.spin_NMR_FWHM->value();
     if (tmp.size() == 1) {
       double center 	= tmp.first() - m_NMR_ref;
       double ext	= 5 + FWHM;
@@ -1181,7 +1186,7 @@ namespace Avogadro {
       return;
     }
     m_NMR_ref = ref;
-    ui.spin_NMR_ref->setValue(ref);
+    ui_tab_nmr.spin_NMR_ref->setValue(ref);
     emit refUpdated_NMR();
   }
 
@@ -1190,7 +1195,7 @@ namespace Avogadro {
     if (m_NMRshifts.isEmpty()) return;
 
     // convert FWHM to sigma squared
-    double FWHM = ui.spin_NMR_FWHM->value();
+    double FWHM = ui_tab_nmr.spin_NMR_FWHM->value();
     double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
     // determine range

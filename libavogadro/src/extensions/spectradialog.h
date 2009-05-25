@@ -34,6 +34,8 @@
 #include <openbabel/generic.h>
 
 #include "ui_spectradialog.h"
+#include "ui_spectratabir.h"
+#include "ui_spectratabnmr.h"
 
 namespace Avogadro {
 
@@ -86,6 +88,10 @@ namespace Avogadro {
 
   private:
     Ui::SpectraDialog ui;
+    Ui::Tab_IR ui_tab_ir;
+    QWidget *tab_ir;
+    Ui::Tab_NMR ui_tab_nmr;
+    QWidget *tab_nmr;
 
     void getCalculatedSpectra(PlotObject *plotObject);
     void getImportedSpectra(PlotObject *plotObject);
