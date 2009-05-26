@@ -563,7 +563,7 @@ namespace Avogadro
       if (toolNumber <= 9) {
         // If we have 11 or more tools, we can only do this for the first 10
         QList<QKeySequence> shortcuts = action->shortcuts();
-        shortcuts.append(QKeySequence(QString("Ctrl+") + QString::number(toolNumber)));
+        shortcuts.append(QKeySequence(QString("Ctrl+%1").arg(toolNumber)));
         action->setShortcuts(shortcuts);
       }
 
@@ -1386,7 +1386,7 @@ namespace Avogadro
       if (!widget->d->fileName.isEmpty())
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
-        windowAction->setText(tr("Untitled %1").arg(QString::number(++untitledCount)));
+        windowAction->setText(tr("Untitled %1").arg(++untitledCount));
 
       if (widget == this) {
         windowAction->setCheckable(true);
@@ -1693,7 +1693,7 @@ namespace Avogadro
     gl->loadDefaultEngines();
     layout->addWidget(gl);
 
-    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()+1) );
+    QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab(widget, tabName);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
@@ -1723,7 +1723,7 @@ namespace Avogadro
     gl->readSettings(settings);
     settings.endArray();
 
-    QString tabName = tr("View %1").arg( QString::number( d->centralTab->count()+1) );
+    QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled( true );
@@ -1753,7 +1753,7 @@ namespace Avogadro
 
         for (int count=d->centralTab->count(); index < count; index++) {
           d->centralTab->setTabText(index, tr( "View %1" )
-                                           .arg(QString::number( index + 1)));
+                                           .arg( index + 1) );
         }
         ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
         // Set the GLWidget as the main widget in the dialog
@@ -1784,7 +1784,7 @@ namespace Avogadro
         delete widget;
 
         for ( int count=d->centralTab->count(); index < count; ++index ) {
-          d->centralTab->setTabText(index, tr("View %1").arg(QString::number(index + 1)));
+          d->centralTab->setTabText(index, tr("View %1").arg( index + 1) );
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
@@ -2185,7 +2185,7 @@ namespace Avogadro
       QFileInfo fileInfo(fileName);
       d->fileName = fileInfo.canonicalFilePath();
       d->fileDialogPath = fileInfo.absolutePath();
-      setWindowTitle( tr( "%1[*] - %2" ).arg( fileInfo.fileName() )
+      setWindowTitle( tr( "%1[*] - %2", "Window title: %1 is file name, %2 is Avogadro" ).arg( fileInfo.fileName() )
           .arg( tr( "Avogadro" ) ) );
 
       QSettings settings; // already set up properly via main.cpp
@@ -2316,7 +2316,7 @@ namespace Avogadro
 
       setupProjectTree();
 
-      QString tabName = tr("View %1").arg(QString::number(i+1));
+      QString tabName = tr("View %1").arg( i+1 );
       d->centralTab->addTab(widget, tabName);
 
       gl->readSettings(settings);

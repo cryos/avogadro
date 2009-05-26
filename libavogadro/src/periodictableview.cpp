@@ -128,7 +128,7 @@ namespace Avogadro {
 
     QString symbol = OpenBabel::etab.GetSymbol(m_element);
     QString name(ElementTranslator::name(m_element));
-    QString mass = QString::number(OpenBabel::etab.GetMass(m_element), 'f', 3);
+    QString mass = QString("%L1").arg(OpenBabel::etab.GetMass(m_element), 0, 'f', 3);
 
     std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
     QColor m_color;
