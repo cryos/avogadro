@@ -205,7 +205,7 @@ namespace Avogadro {
       if (line >= intensities.size())
         intensity = '-';
       else
-        intensity = QString::number(intensities[line], 'f', 2);
+        intensity = QString("%L1").arg(intensities[line], 0, 'f', 2);
 
       out << format.arg(frequencies[line], 0, 'f', 2).arg(intensity);
     }

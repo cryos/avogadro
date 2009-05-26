@@ -788,8 +788,8 @@ namespace Avogadro {
       if (m_currentReference)
       {
         // Draw bond length text.
-        QString length = tr("Bond Length: %1", "%1 is the length of the bond")
-          .arg(QString::number(m_selectedBond->length(), 10, 2)) +
+        QString length = tr("Bond Length: %L1", "%L1 is the length of the bond")
+          .arg(m_selectedBond->length(), 0, 'f', 2) +
           QString::fromUtf8(" Å");
 
         glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -886,7 +886,7 @@ namespace Avogadro {
 
     // If angle is less than 1 (will be approximated to 0), attempting to draw
     // will crash, so return.
-    if (abs(uvAngle) <= 1) {
+    if (fabs(uvAngle) <= 1) {
       return;
     }
 
@@ -913,7 +913,7 @@ namespace Avogadro {
     Vector3d point = performRotation((uvAngle / 2 * (M_PI / 180.0)), n,
         Vector3d(0, 0, 0), alternateAngle ? v : u);
 
-    QString angle = QString::number(uvAngle, 10, 1) + QString::fromUtf8("°");
+    QString angle = QString("%L1").arg(uvAngle, 0, 'f', 1) + QString::fromUtf8("°");
     glColor4f(1.0, 1.0, 1.0, 1.0);
     widget->painter()->setColor(1.0, 1.0, 1.0, 1.0);
     widget->painter()->drawText(point + origin, angle);

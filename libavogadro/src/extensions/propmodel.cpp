@@ -172,12 +172,13 @@ namespace Avogadro {
           OpenBabel::OBAtom *obatom = m_cachedOBMol->GetAtom(index.row() + 1);
           return obatom->GetType();
         }
-      case 1: // atomic number
-        return atom->atomicNumber();
+      case 1: // atomic symbol
+        return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
       case 2: // valence
         return atom->valence();
       case 3: // partial charge
-        return QString::number(atom->partialCharge(), 'f', 3);
+        QString format("%L1");
+        return format.arg(atom->partialCharge(), 0, 'f', 3);
       }
     }
     else if (m_type == BondType) {
@@ -199,7 +200,8 @@ namespace Avogadro {
         case 3: // rotatable
           return bond->IsRotor();
         case 4: // length
-          return QString::number(bond->GetLength(), 'f', 4);
+          QString format("%L1");
+          return format.arg(bond->GetLength(), 0, 'f', 4);
         }
     }
     else if (m_type == AngleType) {
@@ -229,7 +231,8 @@ namespace Avogadro {
             angle == numeric_limits<double>::infinity()) {
           angle = 0.0;
         }
-        return QString::number(angle, 'f', 4);
+        QString format("%L1");
+        return format.arg(angle, 0, 'f', 4);
       }
     }
     else if (m_type == TorsionType) {
@@ -268,7 +271,8 @@ namespace Avogadro {
                   dihedralAngle == numeric_limits<double>::infinity()) {
                 dihedralAngle = 0.0;
               }
-              return QString::number(dihedralAngle, 'f', 4);
+              QString format("%L1");
+              return format.arg(dihedralAngle, 0, 'f', 4);
             }
           }
           rowCount++;
@@ -279,14 +283,15 @@ namespace Avogadro {
         return QVariant();
 
       Atom *atom = m_molecule->atom(index.row());
+      QString format("%L1");
 
       switch (index.column()) {
       case 0:
-        return QString::number(atom->pos()->x(), 'f', 5);
+        return format.arg(atom->pos()->x(), 0, 'f', 5);
       case 1:
-        return QString::number(atom->pos()->y(), 'f', 5);
+        return format.arg(atom->pos()->y(), 0, 'f', 5);
       case 2:
-        return QString::number(atom->pos()->z(), 'f', 5);
+        return format.arg(atom->pos()->z(), 0, 'f', 5);
       }
     } else if (m_type == ConformerType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numConformers())
@@ -297,7 +302,8 @@ namespace Avogadro {
         if ((unsigned int) index.row() >= m_molecule->energies().size())
           return QVariant();
 
-        return QString::number(m_molecule->energies().at(index.row()), 'f', 4);
+        QString format("%L1");
+        return format.arg(m_molecule->energies().at(index.row()), 0, 'f', 4);
       }
     }
 
@@ -322,7 +328,7 @@ namespace Avogadro {
         case 0:
           return tr("Type");
         case 1:
-          return tr("Atomic Number");
+          return tr("Element");
         case 2:
           return tr("Valence");
         case 3:
@@ -468,7 +474,14 @@ namespace Avogadro {
 
       switch (index.column()) {
       case 1: // atomic number
-        atom->setAtomicNumber(value.toInt());
+        // Try first as a number
+        bool ok;
+        int atomicNumber = value.toInt(&ok);
+        if (ok)
+          atom->setAtomicNumber(atomicNumber);
+        else
+          atom->setAtomicNumber(OpenBabel::etab.GetAtomicNum(value.toString().toAscii()));
+
         m_molecule->update();
         emit dataChanged(index, index);
         return true;

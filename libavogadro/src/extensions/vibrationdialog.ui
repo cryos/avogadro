@@ -42,7 +42,7 @@
      </property>
      <column>
       <property name="text">
-       <string>Frequency (cm-1)</string>
+       <string>Frequency (cm⁻¹)</string>
       </property>
      </column>
      <column>
