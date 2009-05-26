@@ -233,7 +233,7 @@ namespace Avogadro {
 
     m_molecule->clearConformers();
 
-    std::ifstream file(xyzfile.toStdString().c_str());
+    std::ifstream file(QFile::encodeName(xyzfile));
 
     OpenBabel::OBMol tmpMol;
     int i=0;
@@ -266,8 +266,7 @@ namespace Avogadro {
     OBConversion conv;
     conv.SetInAndOutFormats("XYZ","XYZ");
 
-    std::ofstream file;
-    file.open(filename.toStdString().c_str());
+    std::ofstream file(QFile::encodeName(filename));
 
     for (unsigned int i = 1; i <= m_molecule->numConformers(); ++i) {
       m_animation->setFrame(i);
