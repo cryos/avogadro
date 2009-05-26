@@ -43,7 +43,17 @@ namespace Avogadro {
    * @brief Simple frame-based animation for Molecule primitives
    * @author Geoffrey R. Hutchison
    *
-   * The animation class supports 
+   * The animation class supports simple frame-based animations for molecules.
+   * It can handle trajectories, vibrations, geometry optimizations and many other common
+   * molecular animations.
+   *
+   * It assumes constant atom lists throughout. If you want more complicated animations,
+   * you can accomplish this using your own Extension.
+   *
+   * An Animation object works by changing conformers inside a Molecule. Consequently,
+   * you can either read in the conformers from a file, or call Animation::setFrames()
+   * to set the coordinates for the animation. The latter works well for generated coordinates,
+   * for example, vibrations.
    */
   class AnimationPrivate;
   class A_EXPORT Animation : public QObject
