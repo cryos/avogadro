@@ -29,15 +29,15 @@
 #include <avogadro/plotwidget.h>
 #include <avogadro/molecule.h>
 
-
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
 #include "ui_spectradialog.h"
-#include "ui_spectratabir.h"
-#include "ui_spectratabnmr.h"
-
 namespace Avogadro {
+
+  class SpectraType;
+  class IRSpectra;
+  class NMRSpectra;
 
   class SpectraDialog : public QDialog
   {
@@ -50,9 +50,11 @@ namespace Avogadro {
     void setMolecule(Molecule *molecule);
     void writeSettings() const;
     void readSettings();
+    Ui::SpectraDialog * getUi() {return &ui;};
 
   public slots:
-    void setScale_IR(double scale);
+    void regenerateCalculatedSpectra();
+    void regenerateImportedSpectra();
 
   private slots:
     void changeBackgroundColor();
@@ -65,65 +67,34 @@ namespace Avogadro {
     void updatePlot();
     void toggleImported(bool state);
     void toggleCalculated(bool state);
-    void regenerateCalculatedSpectra();
-    void regenerateImportedSpectra();
     void saveImage();
     void toggleCustomize();
-    void updateYAxis_IR(QString);
     void schemeChanged();
     void updateScheme(int scheme);
-    void updateCurrentSpectra(QString text);
+    void updateCurrentSpectra(const QString & text);
     void addScheme();
     void removeScheme();
     void renameScheme();
     void exportSpectra();
     void saveImageFileDialog();
-    void setNMRAtom(const QString & symbol);
-    void setReference_NMR(double ref);
-    void updatePlotAxes_NMR();
 
   signals:
-    void scaleUpdated_IR();
-    void refUpdated_NMR();
 
   private:
     Ui::SpectraDialog ui;
-    Ui::Tab_IR ui_tab_ir;
-    QWidget *tab_ir;
-    Ui::Tab_NMR ui_tab_nmr;
-    QWidget *tab_nmr;
 
-    void getCalculatedSpectra(PlotObject *plotObject);
-    void getImportedSpectra(PlotObject *plotObject);
-
-    void getCalculatedSinglets_IR(PlotObject *plotObject);
-    void getCalculatedGaussians_IR(PlotObject *plotObject);
-
-    void getCalculatedSinglets_NMR(PlotObject *plotObject);
-    void getCalculatedGaussians_NMR(PlotObject *plotObject);
+    IRSpectra *m_spectra_ir;
+    NMRSpectra *m_spectra_nmr;
 
     Molecule *m_molecule;
     int m_scheme;
     QList<QHash<QString, QVariant> > *m_schemes;
 
     QString m_spectra;
+    SpectraType * currentSpectra();
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
-
-    std::vector<double> m_IRwavenumbers;
-    std::vector<double> m_IRtransmittances;
-    std::vector<double> m_imported_IRwavenumbers;
-    std::vector<double> m_imported_IRtransmittances;
-    double m_IR_scale;
-    QString m_IR_yaxis;
-
-    QHash<QString, QList<double> > *m_NMRdata;
-    QList<double> m_NMRshifts;
-    QList<double> m_NMRintensities;
-    QList<double> m_imported_NMRshifts;
-    QList<double> m_imported_NMRintensities;
-    double m_NMR_ref;
   };
 }
 
