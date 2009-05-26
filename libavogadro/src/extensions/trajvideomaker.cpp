@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QProgressDialog>
+#include <QFile>
 
 #include <fstream>
 #include <vector>
@@ -97,7 +98,7 @@ namespace Avogadro {
     progDialog.setValue(progDialog.maximum());
 
     //tell user if successful
-    std::ifstream fin(videoFileName.toStdString().c_str());
+    std::ifstream fin(QFile::encodeName(videoFileName));
     if(!fin.fail()) {
     fin.close();
     QString successMessage = "Video file " + videoFileName + " written.";

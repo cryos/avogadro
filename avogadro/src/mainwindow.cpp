@@ -737,7 +737,7 @@ namespace Avogadro
     // set any options
     if (!options.isEmpty()) {
       foreach(const QString &option, options.split('\n', QString::SkipEmptyParts)) {
-        conv.AddOption(option.toAscii().data(), OBConversion::INOPTIONS);
+        conv.AddOption(option.toAscii().constData(), OBConversion::INOPTIONS);
       }
     }
 
@@ -745,7 +745,7 @@ namespace Avogadro
     if (format != NULL)
       inFormat = format;
     else
-      inFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+      inFormat = conv.FormatFromExt( fileName.toAscii() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -1036,7 +1036,7 @@ namespace Avogadro
     if (format != NULL)
       outFormat = format;
     else
-      outFormat = conv.FormatFromExt(( fileName.toAscii() ).data() );
+      outFormat = conv.FormatFromExt( fileName.toAscii() );
     if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to file format of file %1." )
@@ -1070,7 +1070,7 @@ namespace Avogadro
 
     // Pass of an ofstream to Open Babel
     ofstream     ofs;
-    ofs.open(( newFileName.toAscii() ).data() );
+    ofs.open( QFile::encodeName(newFileName) );
     if ( !ofs ) { // shouldn't happen, already checked file above
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to the file %1." )
@@ -1277,7 +1277,7 @@ namespace Avogadro
     else
       return;
 
-    fp = fopen(fileName.toStdString().c_str(), "wb");
+    fp = fopen(QFile::encodeName(fileName), "wb");
     qDebug() << "Writing out a vector graphics file...";
     while(state == GL2PS_OVERFLOW) {
       buffsize += 1024*1024;
