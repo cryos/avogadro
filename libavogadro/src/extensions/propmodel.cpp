@@ -473,7 +473,7 @@ namespace Avogadro {
       Atom *atom = m_molecule->atom(index.row());
 
       switch (index.column()) {
-      case 1: // atomic number
+      case 1: {// atomic number
         // Try first as a number
         bool ok;
         int atomicNumber = value.toInt(&ok);
@@ -485,6 +485,7 @@ namespace Avogadro {
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
+      }
       case 3: // partial charge
         atom->setPartialCharge(value.toDouble());
         m_molecule->update();
