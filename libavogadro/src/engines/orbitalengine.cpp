@@ -282,8 +282,10 @@ namespace Avogadro {
         if (m_mesh1)
           if (m_mesh1->id() == mesh->id())
             tmp1 = m_settingsWidget->orbital1Combo->count();
-        m_settingsWidget->orbital1Combo->addItem(mesh->name() + ", isosurface = "
-                     + QString::number(mesh->isoValue()));
+        QString itemName(tr("%1, isosurface = %L2", "%1 is mesh name, %2 is the isosurface cutoff"));
+        m_settingsWidget->orbital1Combo->addItem(itemName
+                                                 .arg(mesh->name())
+                                                 .arg(mesh->isoValue()));
       }
       mesh->lock()->unlock();
     }
