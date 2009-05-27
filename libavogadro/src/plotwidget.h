@@ -142,9 +142,17 @@ namespace Avogadro {
          * @param x2 the maximum X value in data units
          * @param y1 the minimum Y value in data units
          * @param y2 the maximum Y value in data units
-         * @sa setDefaultLimits()
+         * @sa scaleLimits() setDefaultLimits()
          */
         void setLimits( double x1, double x2, double y1, double y2 );
+
+        /**
+         * Determine the limits of the plot by examining the PlotPoints.
+         * Omit PlotPoint *po to examine all PlotObjects.
+         * @param po the PlotObject to be used for scaling. Omit to look at all PlotObjects.
+         * @sa setLimits()
+         */
+        void scaleLimits(PlotObject *po = NULL);
 
         /**
          * Set the default data limits for the plot. These are used for

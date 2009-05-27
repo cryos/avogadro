@@ -168,6 +168,41 @@ namespace Avogadro {
     update();
   }
 
+  void PlotWidget::scaleLimits(PlotObject * po) {
+    double xmin=0, xmax=0, ymin=0, ymax=0;
+    if (po) {
+      if (po->points().isEmpty()) return;
+      xmin = xmax = po->points().first()->x();
+      ymin = ymax = po->points().first()->y();
+      
+      foreach ( PlotPoint *pp, po->points() ) {
+        if (pp->x() < xmin) xmin = pp->x();
+        if (pp->x() > xmax) xmax = pp->x();
+        if (pp->y() < ymin) ymin = pp->y();
+        if (pp->y() > ymax) ymax = pp->y();
+      }
+    } else {
+      // Initialize values with the first point of the first non-empty plot object
+      foreach ( PlotObject *po, d->objectList ) {
+        if (!po->points().isEmpty()) {
+          xmin = xmax = po->points().first()->x();
+          ymin = ymax = po->points().first()->y();
+          break;
+        }
+      }
+
+      foreach ( PlotObject *po, d->objectList ) {
+        foreach ( PlotPoint *pp, po->points() ) {
+          if (pp->x() < xmin) xmin = pp->x();
+          if (pp->x() > xmax) xmax = pp->x();
+          if (pp->y() < ymin) ymin = pp->y();
+          if (pp->y() > ymax) ymax = pp->y();
+        }
+      }
+    }
+    setLimits( xmin, xmax, ymin, ymax );
+  }
+
   void PlotWidget::setDefaultLimits( double x1, double x2, double y1, double y2 )
   {
     if ( fabs(x2 - x1) < 1.0e-3 ) {
