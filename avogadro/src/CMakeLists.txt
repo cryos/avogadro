@@ -100,8 +100,21 @@ if(APPLE)
   install(FILES "mac/avogadro.icns" DESTINATION Resources)
   install(FILES "mac/AvogadroDocument.icns" DESTINATION Resources)
 
-  set(TRANSLATIONS "ar;ca;cs;de;en;en_GB;es;fi;fr;it;pl;pt;pt_BR;ru;sv;uk;zh;zh_CN;zh_TW")
-  foreach(lang ${TRANSLATIONS})
+# Install a .lproj directory for each translation
+# We're assuming that there will never be an libavogadro translation
+#  without a corresponding avogadro one.
+# (Fairly safe assumption)
+
+# This regex gives us translations with just two characters
+#  (e.g., avogadro_fr.ts)
+  string(REGEX MATCHALL "_[a-z]+\\.ts" langresult "${avogadro_TS}")
+  string(REGEX REPLACE "_([^.]+)\\.ts" "\\1" languages "${langresult}")
+# This one gives us languages for country codes (e.g., avogadro_zh_CN.ts)
+  string(REGEX MATCHALL "_[a-z]+_[A-Z]+\\.ts" langresult "${avogadro_TS}")
+  string(REGEX REPLACE "_([^_]+_[^.]+)\\.ts" "\\1" fulllangs "${langresult}")
+  set (LANGUAGES "${languages};${fulllangs}")
+
+    foreach(lang ${LANGUAGES})
     set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
     install(CODE "EXECUTE_PROCESS(COMMAND
           mkdir ${MAC_LANG_DIR}
