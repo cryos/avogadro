@@ -68,6 +68,8 @@ namespace Avogadro {
     void setPsi(double);
     
     void setStereo(int);
+    
+    void dialogDestroyed();
 
   private:
     QList<QAction *> m_actions;
