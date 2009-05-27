@@ -28,7 +28,7 @@
 
 #include <avogadro/elementtranslator.h>
 
-#include <openbabel/data.h>
+#include <openbabel/mol.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
@@ -36,13 +36,6 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QDebug>
-
-/// FIXME We need a singleton or something to retrieve the global instance of
-/// this class. Having global instances is not good form and is tough to get
-/// the initialization right.
-namespace OpenBabel{
-  OBElementTable etab2;
-}
 
 namespace Avogadro{
 
@@ -52,8 +45,8 @@ namespace Avogadro{
     // Want these items to be selectable
     setFlags(QGraphicsItem::ItemIsSelectable);
 
-    m_symbol = OpenBabel::etab2.GetSymbol(m_element);
-    std::vector<double> color = OpenBabel::etab2.GetRGB(m_element);
+    m_symbol = OpenBabel::etab.GetSymbol(m_element);
+    std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
     m_color = new QColor();
     m_color->setRgbF(color[0], color[1], color[2]);
     // Set some custom data to make it easy to figure out which element we are

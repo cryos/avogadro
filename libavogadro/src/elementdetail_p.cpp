@@ -28,7 +28,7 @@
 
 #include <avogadro/elementtranslator.h>
 
-#include <openbabel/data.h>
+#include <openbabel/mol.h>
 
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
@@ -36,13 +36,6 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QDebug>
-
-/// FIXME We need a singleton or something to retrieve the global instance of
-/// this class. Having global instances is not good form and is tough to get
-/// the initialization right.
-namespace OpenBabel{
-  OBElementTable etab;
-}
 
 namespace Avogadro{
 
