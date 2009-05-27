@@ -26,9 +26,24 @@ namespace Avogadro {
   {
     HighlightingRule rule;
 
+    promptFormat.setForeground(Qt::red);
+    promptFormat.setFontWeight(QFont::Bold);
+    QStringList promptPatterns;
+    promptPatterns << ">>>" << "\\.\\.\\.";
+
+    foreach (const QString &pattern, promptPatterns) {
+        rule.pattern = QRegExp(pattern);
+        rule.format = promptFormat;
+        highlightingRules.append(rule);
+    }
+
+  
+    
     keywordFormat.setForeground(Qt::darkGreen);
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
+
+    // Python keywords
     keywordPatterns << "\\band\\b" << "\\bdel\\b" << "\\bfrom\\b"
                     << "\\bnot\\b" << "\\bwhile\\b" << "\\bas\\b"
                     << "\\belif\\b" << "\\bglobal\\b" << "\\bor\\b"
