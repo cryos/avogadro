@@ -33,7 +33,7 @@
 namespace Avogadro {
 
   /**
-   * @class ElementColor elementcolor.h <avogadro/elementcolor.h>
+   * @class ElementColor
    * @brief Default atom color scheme based on periodic table
    * @author Geoff Hutchison
    *

@@ -27,3 +27,5 @@ avogadro_plugin(chargecolor chargecolor.cpp)
 ### distancecolor
 avogadro_plugin(distancecolor distancecolor.cpp)
 
+## custom color
+avogadro_plugin(customcolor customcolor.cpp)

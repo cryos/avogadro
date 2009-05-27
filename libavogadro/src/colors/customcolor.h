@@ -1,7 +1,7 @@
 /**********************************************************************
-  IndexColor - Color atoms by numbering in the file
+  CustomColor - Class for using arbitrary colors
 
-  Copyright (C) 2008 Geoffrey R. Hutchison
+  Copyright (C) 2009 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef INDEXCOLOR_H
-#define INDEXCOLOR_H
+#ifndef CUSTOMCOLOR_H
+#define CUSTOMCOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
@@ -32,35 +32,46 @@
 namespace Avogadro {
 
   /**
-   * @class IndexColor
-   * @brief Color by atomic index (i.e., order in the file)
+   * @class CustomColor 
+   * @brief Set custom colors for atoms
    * @author Geoff Hutchison
    *
-   * Map atom colors based on atom numbering (with rainbow colors)
    */
-  class IndexColor: public Color
+  class CustomColor: public Color
   {
     Q_OBJECT
-    AVOGADRO_COLOR("IndexColor", tr("Color by Index"),
-                   tr("Color by Index (red, orange, yellow, green, blue, violet)."))
+    AVOGADRO_COLOR("CustomColor", tr("Custom Color"),
+                   tr("Set custom colors for objects"))
 
   public:
-    IndexColor();
-    virtual ~IndexColor();
+    CustomColor();
+    virtual ~CustomColor();
 
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
-    void set(const Primitive *);
+    virtual void set(const Primitive *);
+
+    // In this case, the settings are everything!
+    // We set our color based on the settings
+    virtual QWidget* settingsWidget();
+    virtual void writeSettings(QSettings &settings) const;
+    virtual void readSettings(QSettings &settings);
+
+  private Q_SLOTS:
+      void settingsWidgetDestroyed();
+      void colorChanged(QColor);
+
+  private:
+      QWidget *m_settingsWidget;
   };
 
-  class IndexColorFactory : public QObject, public PluginFactory
+  class CustomColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(IndexColor)
+    AVOGADRO_COLOR_FACTORY(CustomColor)
   };
-
 
 }
 

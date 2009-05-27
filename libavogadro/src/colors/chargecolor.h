@@ -32,7 +32,7 @@
 namespace Avogadro {
 
   /**
-   * @class ChargeColor chargecolor.h <avogadro/chargecolor.h>
+   * @class ChargeColor 
    * @brief Color by atomic partial charge
    * @author Geoff Hutchison
    *

@@ -32,7 +32,7 @@
 namespace Avogadro {
 
   /**
-   * @class DistanceColor distancecolor.h <avogadro/distancecolor.h>
+   * @class DistanceColor
    * @brief Color by distance from the first atom
    * @author Geoff Hutchison
    *
