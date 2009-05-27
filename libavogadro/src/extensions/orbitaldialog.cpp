@@ -104,7 +104,7 @@ namespace Avogadro
     ui.orbitalCombo->setEnabled(true);
     ui.orbitalCombo->clear();
     for (int i = 1; i <= num; ++i)
-      ui.orbitalCombo->addItem("MO " + QString::number(i));
+      ui.orbitalCombo->addItem(tr("MO %L1", "Molecular Orbital").arg(i));
     ui.calculate->setEnabled(true);
     ui.calculateAll->setEnabled(true);
     ui.calculateDensity->setEnabled(true);
@@ -126,16 +126,17 @@ namespace Avogadro
   {
     // Just do two decimal places
     Vector3d tmp = (origin * 100).cast<int>().cast<double>() / 100.0;
-    ui.originX->setText(QString::number(tmp.x()));
-    ui.originY->setText(QString::number(tmp.y()));
-    ui.originZ->setText(QString::number(tmp.z()));
-    ui.maxX->setText(QString::number(tmp.x()+step*nx));
-    ui.maxY->setText(QString::number(tmp.y()+step*ny));
-    ui.maxZ->setText(QString::number(tmp.z()+step*nz));
-    ui.stepsX->setText(QString::number(nx));
-    ui.stepsY->setText(QString::number(ny));
-    ui.stepsZ->setText(QString::number(nz));
-    ui.stepSize->setText(QString::number(step));
+    QString format("%L1");
+    ui.originX->setText(format.arg(tmp.x()));
+    ui.originY->setText(format.arg(tmp.y()));
+    ui.originZ->setText(format.arg(tmp.z()));
+    ui.maxX->setText(format.arg(tmp.x()+step*nx));
+    ui.maxY->setText(format.arg(tmp.y()+step*ny));
+    ui.maxZ->setText(format.arg(tmp.z()+step*nz));
+    ui.stepsX->setText(format.arg(nx));
+    ui.stepsY->setText(format.arg(ny));
+    ui.stepsZ->setText(format.arg(nz));
+    ui.stepSize->setText(format.arg(step));
   }
 
   Vector3d OrbitalDialog::origin()
@@ -279,12 +280,13 @@ namespace Avogadro
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
-    ui.maxX->setText(QString::number(max.x()));
-    ui.maxY->setText(QString::number(max.y()));
-    ui.maxZ->setText(QString::number(max.z()));
-    ui.stepsX->setText(QString::number(steps.x()));
-    ui.stepsY->setText(QString::number(steps.y()));
-    ui.stepsZ->setText(QString::number(steps.z()));
+    QString format("%L1");
+    ui.maxX->setText(format.arg(max.x()));
+    ui.maxY->setText(format.arg(max.y()));
+    ui.maxZ->setText(format.arg(max.z()));
+    ui.stepsX->setText(format.arg(steps.x()));
+    ui.stepsY->setText(format.arg(steps.y()));
+    ui.stepsZ->setText(format.arg(steps.z()));
   }
 
   void OrbitalDialog::maxChanged()
@@ -298,12 +300,13 @@ namespace Avogadro
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
-    ui.maxX->setText(QString::number(max.x()));
-    ui.maxY->setText(QString::number(max.y()));
-    ui.maxZ->setText(QString::number(max.z()));
-    ui.stepsX->setText(QString::number(steps.x()));
-    ui.stepsY->setText(QString::number(steps.y()));
-    ui.stepsZ->setText(QString::number(steps.z()));
+    QString format("%L1");
+    ui.maxX->setText(format.arg(max.x()));
+    ui.maxY->setText(format.arg(max.y()));
+    ui.maxZ->setText(format.arg(max.z()));
+    ui.stepsX->setText(format.arg(steps.x()));
+    ui.stepsY->setText(format.arg(steps.y()));
+    ui.stepsZ->setText(format.arg(steps.z()));
   }
 
   void OrbitalDialog::stepsChanged()
@@ -316,12 +319,13 @@ namespace Avogadro
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
-    ui.maxX->setText(QString::number(max.x()));
-    ui.maxY->setText(QString::number(max.y()));
-    ui.maxZ->setText(QString::number(max.z()));
-    ui.stepsX->setText(QString::number(steps.x()));
-    ui.stepsY->setText(QString::number(steps.y()));
-    ui.stepsZ->setText(QString::number(steps.z()));
+    QString format("%L1");
+    ui.maxX->setText(format.arg(max.x()));
+    ui.maxY->setText(format.arg(max.y()));
+    ui.maxZ->setText(format.arg(max.z()));
+    ui.stepsX->setText(format.arg(steps.x()));
+    ui.stepsY->setText(format.arg(steps.y()));
+    ui.stepsZ->setText(format.arg(steps.z()));
   }
 
   void OrbitalDialog::stepSizeChanged()
@@ -334,12 +338,13 @@ namespace Avogadro
     Vector3d max(ui.originX->text().toDouble() + step * steps.x(),
                  ui.originY->text().toDouble() + step * steps.y(),
                  ui.originZ->text().toDouble() + step * steps.z());
-    ui.maxX->setText(QString::number(max.x()));
-    ui.maxY->setText(QString::number(max.y()));
-    ui.maxZ->setText(QString::number(max.z()));
-    ui.stepsX->setText(QString::number(steps.x()));
-    ui.stepsY->setText(QString::number(steps.y()));
-    ui.stepsZ->setText(QString::number(steps.z()));
+    QString format("%L1");
+    ui.maxX->setText(format.arg(max.x()));
+    ui.maxY->setText(format.arg(max.y()));
+    ui.maxZ->setText(format.arg(max.z()));
+    ui.stepsX->setText(format.arg(steps.x()));
+    ui.stepsY->setText(format.arg(steps.y()));
+    ui.stepsZ->setText(format.arg(steps.z()));
   }
 
   void OrbitalDialog::orbitalComboChanged(int n)
@@ -353,15 +358,16 @@ namespace Avogadro
           m_max = m_min * -1.0;
         m_min = 0.0;
       }
-      ui.cubeLow->setText(QString::number(m_min));
-      ui.cubeHigh->setText(QString::number(m_max));
+      QString format("%L1");
+      ui.cubeLow->setText(format.arg(m_min));
+      ui.cubeHigh->setText(format.arg(m_max));
     }
   }
 
   void OrbitalDialog::isoSliderChanged(int n)
   {
-    ui.isoValue->setText(QString::number(
-                         n/99.0 * (m_max-m_min) + m_min ));
+    ui.isoValue->setText(QString("%L1")
+                         .arg(n/99.0 * (m_max-m_min) + m_min ));
   }
 
   void OrbitalDialog::isoEditChanged()
@@ -384,7 +390,7 @@ namespace Avogadro
 
   void OrbitalDialog::VdWSliderChanged(int n)
   {
-    ui.surfaceDistance->setText(QString::number(n/25.0));
+    ui.surfaceDistance->setText(QString("%L1").arg(n/25.0));
   }
 
   void OrbitalDialog::VdWEditChanged()

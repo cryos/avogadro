@@ -177,7 +177,8 @@ namespace Avogadro {
         double transmittance = m_yList->at(i);
         plotObject->addPoint ( wavenumber, 100 );
         if (ui.cb_labelPeaks->isChecked()) {
-          plotObject->addPoint( wavenumber, transmittance, QString::number(wavenumber, 'f', 1));
+          // %L1 uses localized number format (e.g., 1.023,4 in Europe)
+          plotObject->addPoint( wavenumber, transmittance, QString("%L1").arg(wavenumber, 0, 'f', 1) );
         }
         else {
           plotObject->addPoint( wavenumber, transmittance );

@@ -3,7 +3,7 @@
 
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -318,15 +318,16 @@ namespace Avogadro
     d->color.set(red, green, blue, alpha);
   }
 
-  void GLPainter::drawSphere ( const Eigen::Vector3d *center, float radius )
+  void GLPainter::drawSphere (const Eigen::Vector3d &center, double radius)
   {
-    if(!d->isValid()) { return; }
+    if(!d->isValid())
+      return;
 
     // Default to the minimum detail level for this quality
     int detailLevel = PAINTER_MAX_DETAIL_LEVEL / 3;
 
     if (m_dynamicScaling) {
-      double apparentRadius = radius / d->widget->camera()->distance(*center);
+      double apparentRadius = radius / d->widget->camera()->distance(center);
       detailLevel = 1 + static_cast<int>(floor (PAINTER_SPHERES_DETAIL_COEFF
                         * (sqrt(apparentRadius) - PAINTER_SPHERES_SQRT_LIMIT_MIN_LEVEL)));
       if (detailLevel < 0)
@@ -337,7 +338,7 @@ namespace Avogadro
 
     d->color.applyAsMaterials();
     pushName();
-    d->spheres[detailLevel]->draw (*center, radius);
+    d->spheres[detailLevel]->draw (center, radius);
     popName();
   }
 
@@ -394,16 +395,18 @@ namespace Avogadro
     popName();
   }
 
-  void GLPainter::drawCone(const Eigen::Vector3d &base, const Eigen::Vector3d &tip,
-                double radius)
+  void GLPainter::drawCone(const Eigen::Vector3d &base,
+                           const Eigen::Vector3d &cap,
+                           double baseRadius,
+                           double capRadius)
   {
     const int CONE_TESS_LEVEL = 30;
     // This draws a cone which will be most useful for drawing arrows etc.
-    Eigen::Vector3d axis = tip - base;
+    Eigen::Vector3d axis = cap - base;
     Eigen::Vector3d axisNormalized = axis.normalized();
     Eigen::Vector3d ortho1, ortho2;
     ortho1 = axisNormalized.unitOrthogonal();
-    ortho1 *= radius;
+    ortho1 *= baseRadius;
     ortho2 = axisNormalized.cross(ortho1);
 
     d->color.applyAsMaterials();
@@ -419,11 +422,11 @@ namespace Avogadro
       Eigen::Vector3d v = sin(alpha) * ortho1 + cos(alpha) * ortho2 + base;
       Eigen::Vector3d vNext = sin(alphaNext) * ortho1 + cos(alphaNext) * ortho2 + base;
       Eigen::Vector3d vPrec = sin(alphaPrec) * ortho1 + cos(alphaPrec) * ortho2 + base;
-      Eigen::Vector3d n = (tip - v).cross(v - vPrec).normalized();
-      Eigen::Vector3d nNext = (tip - vNext).cross(vNext - v).normalized();
+      Eigen::Vector3d n = (cap - v).cross(v - vPrec).normalized();
+      Eigen::Vector3d nNext = (cap - vNext).cross(vNext - v).normalized();
       glBegin(GL_TRIANGLES);
       glNormal3dv((n+nNext).normalized().data());
-      glVertex3dv(tip.data());
+      glVertex3dv(cap.data());
       glNormal3dv(nNext.data());
       glVertex3dv(vNext.data());
       glNormal3dv(n.data());
@@ -1033,7 +1036,7 @@ namespace Avogadro
     glEnable(GL_LIGHTING);
   }
 
-  int GLPainter::drawText ( int x, int y, const QString &string ) const
+  int GLPainter::drawText ( int x, int y, const QString &string )
   {
     if(!d->isValid()) { return 0; }
     d->textRenderer->begin ( d->widget );
@@ -1043,7 +1046,7 @@ namespace Avogadro
     return val;
   }
 
-  int GLPainter::drawText ( const QPoint& pos, const QString &string ) const
+  int GLPainter::drawText ( const QPoint& pos, const QString &string )
   {
     assert( d->widget );
     if(!d->isValid()) { return 0; }
@@ -1053,13 +1056,23 @@ namespace Avogadro
     return 0;
   }
 
-  int GLPainter::drawText ( const Eigen::Vector3d &pos, const QString &string ) const
+  int GLPainter::drawText ( const Eigen::Vector3d &pos, const QString &string )
   {
     if(!d->isValid()) { return 0; }
     d->textRenderer->begin ( d->widget );
     int val = d->textRenderer->draw ( pos, string );
     d->textRenderer->end( );
     return val;
+  }
+
+  void GLPainter::drawBox(const Eigen::Vector3d &,
+                          const Eigen::Vector3d &)
+  {
+  }
+
+  void GLPainter::drawTorus(const Eigen::Vector3d &,
+                            double, double)
+  {
   }
 
   int GLPainter::defaultQuality()

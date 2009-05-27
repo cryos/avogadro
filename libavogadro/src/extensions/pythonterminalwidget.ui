@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PythonTerminalWidget</class>
- <widget class="QWidget" name="PythonTerminalWidget" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PythonTerminalWidget">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,27 +10,34 @@
     <height>444</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Python Terminal</string>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QVBoxLayout">
    <item>
-    <widget class="QTextEdit" name="outputText" >
-     <property name="font" >
+    <widget class="PythonTerminalEdit" name="terminal">
+     <property name="font">
       <font>
        <family>DejaVu Sans Mono</family>
       </font>
      </property>
-     <property name="lineWrapMode" >
+     <property name="lineWrapMode">
       <enum>QTextEdit::NoWrap</enum>
      </property>
-     <property name="readOnly" >
+     <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PythonTerminalEdit</class>
+   <extends>QTextEdit</extends>
+   <header>pythonterminal.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -17,12 +17,13 @@ void export_Painter()
   void (Painter::*setColor_ptr1)(const Color *) = &Painter::setColor;
   void (Painter::*setColor_ptr2)(float, float, float, float) = &Painter::setColor;
   //void (Painter::*setColor (const QColor *color) = 0;
+  void (Painter::*drawSphere_ptr1)(const Eigen::Vector3d &, double) = &Painter::drawSphere;
   void (Painter::*drawTriangle_ptr1)(const Eigen::Vector3d &, const Eigen::Vector3d &, 
       const Eigen::Vector3d &) = &Painter::drawTriangle;
   void (Painter::*drawTriangle_ptr2)(const Eigen::Vector3d &, const Eigen::Vector3d &,
       const Eigen::Vector3d &, const Eigen::Vector3d &) = &Painter::drawTriangle;
-  int (Painter::*drawText_ptr1)(int, int, const QString &) const = &Painter::drawText;
-  int (Painter::*drawText_ptr2)(const Eigen::Vector3d &, const QString &) const = &Painter::drawText;
+  int (Painter::*drawText_ptr1)(int, int, const QString &) = &Painter::drawText;
+  int (Painter::*drawText_ptr2)(const Eigen::Vector3d &, const QString &) = &Painter::drawText;
   
   class_<Avogadro::Painter, boost::noncopyable>("Painter", no_init)
     // read-only poperties 
@@ -34,7 +35,7 @@ void export_Painter()
     .def("setColor", setColor_ptr2)
     .def("drawTriangle", drawTriangle_ptr1)
     .def("drawTriangle", drawTriangle_ptr2)
-    .def("drawSphere", &Painter::drawSphere, return_value_policy<return_by_value>())
+    .def("drawSphere", drawSphere_ptr1)
     .def("drawCylinder", &Painter::drawCylinder)
     .def("drawMultiCylinder", &Painter::drawMultiCylinder)
     .def("drawCone", &Painter::drawCone)

@@ -22,20 +22,18 @@
 #ifndef TRAJVIDEOMAKER_H
 #define TRAJVIDEOMAKER_H
 
-
 #include <avogadro/glwidget.h>
 
-
 namespace Avogadro {
-  
-  class TrajVideoMaker 
+
+  class TrajVideoMaker
   {
   public:
     //! Constructor
         TrajVideoMaker();
     //! Destructor
     virtual ~TrajVideoMaker();
-    
+
     static void makeVideo(GLWidget *widget, QString workDirectory, QString videoFileName);
 
   private:
@@ -43,8 +41,8 @@ namespace Avogadro {
     static void runPovRay(QString directory, QString povFileName);
 
     template <class QStringIterator>
-    static void runMencoder(QString pngFileDirectory, QString videoFileName, 
-		       QStringIterator startPngFiles, QStringIterator endPngFiles);
+    static void runMencoder(QString pngFileDirectory, QString videoFileName,
+               QStringIterator startPngFiles, QStringIterator endPngFiles);
 
   };
 }

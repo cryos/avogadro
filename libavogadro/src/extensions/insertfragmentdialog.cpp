@@ -74,6 +74,7 @@ namespace Avogadro {
     directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
 #endif
 #ifdef Q_WS_MAC
+    directoryList << QCoreApplication::applicationDirPath() + "/../share/avogadro/fragments";
     directoryList << "/Library/Application Support/Avogadro/Fragments";
     directoryList << QDir::homePath() + "/Library/Application Support/Avogadro/Fragments";
 #endif

@@ -262,31 +262,18 @@ namespace Avogadro {
         }
         else if(type == Primitive::AtomType) {
           Atom *atom = static_cast<Atom*>(primitive);
-          str = tr("Atom %1 %2", "%1 is element, %2 is atom index").arg(QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())))
-            .arg(QString::number(atom->index()));
+          str = tr("Atom %1 %L2", "%1 is element, %L2 is atom index").arg(QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())))
+            .arg(atom->index());
         }
         else if(type == Primitive::BondType){
           Bond *bond = static_cast<Bond*>(primitive);
-          str = tr("Bond %1", "%1 is bond index").arg(QString::number(bond->index()));
+          str = tr("Bond %L1", "%L1 is bond index").arg(bond->index());
           if (d->molecule) {
             const Atom *beginAtom = d->molecule->atomById(bond->beginAtomId());
             const Atom *endAtom = d->molecule->atomById(bond->endAtomId());
-            str += " (";
-            if(beginAtom)
-              str += QString::number(beginAtom->index());
-            else
-              // this should never happen: Bond always has a beginning -GRH
-              str += '-';
-
-            str += ',';
-
-            if(endAtom)
-              str += QString::number(endAtom->index());
-            else
-              // this should never happen: Bond always has an end -GRH
-              str += '-';
-
-            str += ')';
+            str += QString(" (%L1, %L2)")
+              .arg(beginAtom->index())
+              .arg(endAtom->index());
           }
         } // end bond
         else if(type == Primitive::ResidueType) {

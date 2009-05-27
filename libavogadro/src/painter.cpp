@@ -37,6 +37,19 @@ namespace Avogadro
   {
   }
 
-} // end namespace Avogadro
+  bool Painter::initialize()
+  {
+    return false;
+  }
 
-#include "painter.moc"
+  bool Painter::finalize()
+  {
+    return false;
+  }
+
+  void Painter::drawSphere(const Eigen::Vector3d *center, double radius)
+  {
+    drawSphere(*center, radius);
+  }
+
+} // end namespace Avogadro

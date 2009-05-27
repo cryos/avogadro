@@ -103,11 +103,11 @@ namespace Avogadro {
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *inFormat;
-    if (!m_fileType.isEmpty() && !conv.SetInFormat(m_fileType.toAscii().data()))
+    if (!m_fileType.isEmpty() && !conv.SetInFormat(m_fileType.toAscii()))
       // Input format not supported
       return 0;
     else {
-      inFormat = conv.FormatFromExt(m_fileName.toAscii().data());
+      inFormat = conv.FormatFromExt(m_fileName.toAscii());
       if (!conv.SetInFormat(inFormat))
         // Input format not supported
         return 0;
@@ -183,9 +183,4 @@ namespace Avogadro {
 }
 
 #include "moleculefile.moc"
-
-
-
-
-
 

@@ -144,9 +144,9 @@ namespace Avogadro {
 
       // Two atoms selected - distance measurement only
       m_vector[0] = *m_selectedAtoms[1]->pos() - *m_selectedAtoms[0]->pos();
-      QString distanceString = tr("Distance (1->2): %1 %2").arg(
-                                QString::number(m_vector[0].norm()),
-                                QString::fromUtf8("Å"));
+      QString distanceString = tr("Distance (1->2): %L1 %2", "%L1 is distance, %2 is Angstrom symbol")
+        .arg(m_vector[0].norm())
+        .arg(QString::fromUtf8("Å"));
 
       // Check whether we have already sent this out...
       if (m_lastMeasurement.at(0) != m_vector[0].norm()) {
@@ -162,16 +162,16 @@ namespace Avogadro {
 
       // Two distances and the angle between the three selected atoms
       m_vector[1] = *m_selectedAtoms[1]->pos() - *m_selectedAtoms[2]->pos();
-      QString distanceString = tr("Distance (2->3): %1 %2").arg(
-                               QString::number(m_vector[1].norm()),
-                               QString::fromUtf8("Å"));
+      QString distanceString = tr("Distance (2->3): %L1 %2", "%L1 is distance, %2 is Angstrom symbol")
+        .arg(m_vector[1].norm())
+        .arg(QString::fromUtf8("Å"));
 
       // Calculate the angle between the atoms
       m_angle = acos(m_vector[0].normalized().dot(m_vector[1].normalized()));
       m_angle *= 180.0 / M_PI;
 //      m_angle = vectorAngle(vector3(m_vector[0].x(), m_vector[0].y(), m_vector[0].z()),
 //                            vector3(m_vector[1].x(), m_vector[1].y(), m_vector[1].z()));
-      QString angleString = tr("Angle: %1 °").arg(QString::number(m_angle));
+      QString angleString = tr("Angle: %L1 °").arg(m_angle);
 
       // Check whether we have already sent this out
       if (m_lastMeasurement.at(1) != m_vector[1].norm()) {
@@ -191,9 +191,9 @@ namespace Avogadro {
 
       // Three distances, bond angle and dihedral angle
       m_vector[2] = *m_selectedAtoms[2]->pos() - *m_selectedAtoms[3]->pos();
-      QString distanceString = tr("Distance (3->4): %1 %2").arg(
-                                QString::number(m_vector[2].norm()),
-                                QString::fromUtf8("Å"));
+      QString distanceString = tr("Distance (3->4): %L1 %2", "%L1 is distance, %2 is Angstrom symbol")
+        .arg(m_vector[2].norm())
+        .arg(QString::fromUtf8("Å"));
 
       m_dihedral = CalcTorsionAngle(vector3(m_selectedAtoms[0]->pos()->x(),
                                 m_selectedAtoms[0]->pos()->y(),
@@ -207,7 +207,7 @@ namespace Avogadro {
                                 vector3(m_selectedAtoms[3]->pos()->x(),
                                 m_selectedAtoms[3]->pos()->y(),
                                 m_selectedAtoms[3]->pos()->z()));
-      QString dihedralString = tr("Dihedral Angle: %1 °").arg(QString::number(m_dihedral));
+      QString dihedralString = tr("Dihedral Angle: %1 °").arg(m_dihedral);
       // Check whether these measurements have been sent already
       if (m_lastMeasurement.at(2) != m_vector[2].norm()) {
         emit message(distanceString);
@@ -280,7 +280,9 @@ namespace Avogadro {
         widget->painter()->drawText(labelPos, tr("Distance(s):"));
 
         glColor3f(1.0,1.0,0.0);
-        widget->painter()->drawText(distancePos[0], QString::number(m_vector[0].norm(), 10, 2) + QString::fromUtf8(" Å"));
+        // For localized measurements, e.g. 1,02 in Europe.
+        QString format("%L1");
+        widget->painter()->drawText(distancePos[0], format.arg(m_vector[0].norm(), 0, 'f', 3) + QString::fromUtf8(" Å"));
 
         if(m_numSelectedAtoms >= 3)
         {
@@ -288,10 +290,10 @@ namespace Avogadro {
           widget->painter()->drawText(angleLabelPos, QString("Angle:"));
 
           glColor3f(0.8, 0.8, 0.8);
-          widget->painter()->drawText(anglePos, QString::number(m_angle, 10, 1) + QString::fromUtf8("°"));
+          widget->painter()->drawText(anglePos, format.arg(m_angle, 0, 'f', 1) + QString::fromUtf8("°"));
 
           glColor3f(0.0,1.0,1.0);
-          widget->painter()->drawText(distancePos[1], QString::number(m_vector[1].norm(), 10, 2) + QString::fromUtf8(" Å"));
+          widget->painter()->drawText(distancePos[1], format.arg(m_vector[1].norm(), 0, 'f', 3) + QString::fromUtf8(" Å"));
         }
 
         if(m_numSelectedAtoms >= 4)
@@ -300,10 +302,10 @@ namespace Avogadro {
           widget->painter()->drawText(dihedralLabelPos, QString("Dihedral:"));
 
           glColor3f(0.6, 0.6, 0.6);
-          widget->painter()->drawText(dihedralPos, QString::number(m_dihedral, 10, 1) + QString::fromUtf8("°"));
+          widget->painter()->drawText(dihedralPos, format.arg(m_dihedral, 0, 'f', 1) + QString::fromUtf8("°"));
 
           glColor3f(1.0, 1.0, 1.0);
-          widget->painter()->drawText(distancePos[2], QString::number(m_vector[2].norm(), 10, 2) + QString::fromUtf8(" Å"));
+          widget->painter()->drawText(distancePos[2], format.arg(m_vector[2].norm(), 0, 'f', 3) + QString::fromUtf8(" Å"));
         }
 
 

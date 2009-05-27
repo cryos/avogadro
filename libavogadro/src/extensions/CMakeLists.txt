@@ -53,9 +53,9 @@ avogadro_plugin(insertfragmentextension
   insertfragmentdialog.ui)
 
 ### insert peptide (builder)
-#avogadro_plugin(insertpeptideextension
-#  "peptidebuilderextension.cpp;peptidebuilderdialog.cpp;insertcommand.cpp"
-#  peptidebuilderdialog.ui)
+avogadro_plugin(insertpeptideextension
+  "insertpeptideextension.cpp;insertcommand.cpp"
+  insertpeptidedialog.ui)
 
 ### h->methyl
 avogadro_plugin(h2methylextension h2methylextension.cpp)

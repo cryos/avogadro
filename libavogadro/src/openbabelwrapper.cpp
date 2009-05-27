@@ -135,11 +135,11 @@ namespace Avogadro {
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *outFormat;
-    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii().data()))
+    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii()))
       // Output format not supported
       return false;
     else {
-      outFormat = conv.FormatFromExt(fileName.toAscii().data());
+      outFormat = conv.FormatFromExt(fileName.toAscii());
       if (!conv.SetOutFormat(outFormat))
         // Output format not supported
         return false;
@@ -177,11 +177,11 @@ namespace Avogadro {
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *outFormat;
-    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii().data()))
+    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii()))
       // Output format not supported
       return false;
     else {
-      outFormat = conv.FormatFromExt(fileName.toAscii().data());
+      outFormat = conv.FormatFromExt(fileName.toAscii());
       if (!conv.SetOutFormat(outFormat))
         // Output format not supported
         return false;
