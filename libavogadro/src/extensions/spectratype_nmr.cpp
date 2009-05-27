@@ -94,7 +94,8 @@ namespace Avogadro {
         //      double intensity = m_NMRintensities.at(i);
         plotObject->addPoint ( shift, 0);
         if (ui.cb_labelPeaks->isChecked()) {
-          plotObject->addPoint( shift, 1.0 /* intensity */, QString::number(shift, 'f', 2));
+          // %L1 uses localized number format (e.g., 10,23 in Europe)
+          plotObject->addPoint( shift, 1.0 /* intensity */, QString("%L1").arg(shift, 0, 'f', 2));
         }
         else {
           plotObject->addPoint( shift, 1.0 /* intensity */ );

@@ -1,7 +1,7 @@
 /**********************************************************************
   POVPainter - drawing spheres, cylinders and text in a POVRay scene
 
-  Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -75,19 +75,19 @@ namespace Avogadro
      * Uses the primitive to set the type and name. Not used by POV-Ray as it
      * is not an interactive display.
      */
-    void setName (const Primitive *) { }
+    void setName(const Primitive *) { }
 
     /**
      * Sets the primitive type and id. Not used by POV-Ray as it is not an
      * interactive display.
      */
-    void setName (Primitive::Type, int) { }
+    void setName(Primitive::Type, int) { }
 
     /**
      * Set the color to paint the primitives with.
      * @param color the color to be used for painting.
      */
-    void setColor (const Color *color);
+    void setColor(const Color *color);
 
     /**
      * Set the color to paint the primitives with.
@@ -103,13 +103,13 @@ namespace Avogadro
      * @param blue component of the color.
      * @param alpha component of the color.
      */
-    void setColor (float red, float green, float blue, float alpha = 1.0);
+    void setColor(float red, float green, float blue, float alpha = 1.0);
 
     /**
      * Sets the plane normal of the scene, this affects the way higher order
      * bonds are rendered.
      */
-    void setPlaneNormal (Vector3d planeNormalVector);
+    void setPlaneNormal(Vector3d planeNormalVector);
 
     /**
      * Draws a sphere, leaving the Painter choose the appropriate detail level based on the
@@ -117,7 +117,7 @@ namespace Avogadro
      * @param center the position of the center of the sphere.
      * @param radius the radius of the sphere.
      */
-    void drawSphere (const Vector3d *center, float radius);
+    void drawSphere(const Vector3d &center, double radius);
 
     /**
      * Draws a cylinder, leaving the Painter choose the appropriate detail level based on the
@@ -126,8 +126,8 @@ namespace Avogadro
      * @param end2 the position of the second end of the cylinder.
      * @param radius the radius, i.e. half-width of the cylinder.
      */
-    void drawCylinder (const Vector3d &end1, const Vector3d &end2,
-                        double radius);
+    void drawCylinder(const Vector3d &end1, const Vector3d &end2,
+                      double radius);
 
     /**
      * Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
@@ -151,8 +151,8 @@ namespace Avogadro
      * @param shift how far away from the central axis the cylinders are shifted.
      *              In other words this influences the total width of multiple bonds.
      */
-    void drawMultiCylinder (const Vector3d &end1, const Vector3d &end2,
-                            double radius, int order, double shift);
+    void drawMultiCylinder(const Vector3d &end1, const Vector3d &end2,
+                           double radius, int order, double shift);
 
     /**
      * Draws a cone between the tip and the base with the base radius given.
@@ -161,7 +161,7 @@ namespace Avogadro
      * @param radius the radius of the base of the cone.
      */
     void drawCone(const Eigen::Vector3d &, const Eigen::Vector3d &,
-                  double) { }
+                  double, double) { }
 
     /**
      * Draws a line between the given points of the given width.
@@ -261,8 +261,10 @@ namespace Avogadro
      * @param point3 the third of the four corners of the quadrilateral.
      * @param point4 the last of the four corners of the quadrilateral.
      */
-    void drawShadedQuadrilateral(const Eigen::Vector3d & point1, const Eigen::Vector3d & point2,
-                                 const Eigen::Vector3d & point3, const Eigen::Vector3d & point4);
+    void drawShadedQuadrilateral(const Eigen::Vector3d & point1,
+                                 const Eigen::Vector3d & point2,
+                                 const Eigen::Vector3d & point3,
+                                 const Eigen::Vector3d & point4);
 
     /**
      * Draws the outline of a two dimensional quadrilateral in three dimensional space.
@@ -273,8 +275,10 @@ namespace Avogadro
      * @param point4 the last of the four corners of the quadrilateral.
      * @param lineWidth the thickness of the line the quadrilateral will be drawn with.
      */
-    void drawQuadrilateral(const Eigen::Vector3d & point1, const Eigen::Vector3d & point2,
-                           const Eigen::Vector3d & point3, const Eigen::Vector3d & point4,
+    void drawQuadrilateral(const Eigen::Vector3d & point1,
+                           const Eigen::Vector3d & point2,
+                           const Eigen::Vector3d & point3,
+                           const Eigen::Vector3d & point4,
                            double lineWidth);
 
     /**
@@ -291,9 +295,28 @@ namespace Avogadro
      */
     void drawColorMesh(const Mesh & mesh, int mode = 0);
 
-    int drawText (int x, int y, const QString &string) const;
-    int drawText (const QPoint& pos, const QString &string) const;
-    int drawText (const Vector3d & pos, const QString &string) const;
+    int drawText (int x, int y, const QString &string);
+    int drawText (const QPoint& pos, const QString &string);
+    int drawText (const Vector3d & pos, const QString &string);
+
+    /**
+     * Placeholder to draw a box.
+     * @param corner1 First corner of the box.
+     * @param corner2 Second corner of the box.
+     * @todo Implement this primitive.
+     */
+    void drawBox(const Eigen::Vector3d &corner1,
+                 const Eigen::Vector3d &corner2);
+
+    /**
+     * Placeholder to draw a torus.
+     * @param pos Position of the center of the torus.
+     * @param majorRadius Major radius of the torus.
+     * @param minorRadius Minor radius of the torus.
+     * @todo Implement this primitive.
+     */
+    void drawTorus(const Eigen::Vector3d &position,
+                   double majorRadius, double minorRadius);
 
     void begin(QTextStream *output, Vector3d planeNormalVector);
     void end();

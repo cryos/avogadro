@@ -47,10 +47,8 @@ namespace Avogadro
    */
   class Color;
   class Mesh;
-  class A_EXPORT Painter : public QObject
+  class A_EXPORT Painter
   {
-    Q_OBJECT
-
   public:
     /**
      * Constructor.
@@ -63,6 +61,19 @@ namespace Avogadro
     virtual ~Painter();
 
     /**
+     * Function that may be used to initialize the drawing context when the
+     * painter is first used.
+     * @return True on success, false on failure to initialize.
+     */
+    virtual bool initialize();
+
+    /**
+     * Function to clean up before the drawing context is destroyed.
+     * @return True on success, false on failure to finalize.
+     */
+    virtual bool finalize();
+
+    /**
      * @return the current global quality setting.
      */
     virtual int quality() const = 0;
@@ -71,26 +82,26 @@ namespace Avogadro
      * Uses the primitive to set the type and name if the Paint Device supports it.
      * @param primitive the primitive about to be drawn.
      */
-    virtual void setName (const Primitive *primitive) = 0;
+    virtual void setName(const Primitive *primitive) = 0;
 
     /**
      * Sets the primitive type and id.
      * @param type the primitive type about to be drawn.
      * @param id the primitive id.
      */
-    virtual void setName (Primitive::Type type, int id) = 0;
+    virtual void setName(Primitive::Type type, int id) = 0;
 
     /**
      * Set the color to paint the primitive elements with.
      * @param color the color to be used for painting.
     */
-    virtual void setColor (const Color *color) = 0;
+    virtual void setColor(const Color *color) = 0;
 
     /**
      * Set the color to paint the primitive elements with.
      * @param color the color to be used for painting.
     */
-    virtual void setColor (const QColor *color) = 0;
+    virtual void setColor(const QColor *color) = 0;
 
     /**
      * Set the color to paint elements with where 0.0 is the minimum and 1.0
@@ -100,7 +111,7 @@ namespace Avogadro
      * @param blue component of the color.
      * @param alpha component of the color.
      */
-    virtual void setColor (float red, float green, float blue, float alpha = 1.0) = 0;
+    virtual void setColor(float red, float green, float blue, float alpha = 1.0) = 0;
 
     /**
      * Draws a sphere, leaving the Painter choose the appropriate detail level based on the
@@ -108,18 +119,27 @@ namespace Avogadro
      * @param center the position of the center of the sphere.
      * @param radius the radius of the sphere.
      */
-    virtual void drawSphere (const Eigen::Vector3d *center, float radius) = 0;
+    virtual void drawSphere(const Eigen::Vector3d &center, double radius) = 0;
+
+    /**
+     * Draws a sphere, leaving the Painter choose the appropriate detail level based on the
+     * apparent radius (ratio of radius over distance) and the global quality setting.
+     * @param center the position of the center of the sphere.
+     * @param radius the radius of the sphere.
+     * @note Convenience function - might be removed.
+     */
+    virtual void drawSphere(const Eigen::Vector3d *center, double radius);
 
     /**
      * Draws a cylinder, leaving the Painter choose the appropriate detail level based on the
      * apparent radius (ratio of radius over distance) and the global quality setting.
      * @param end1 the position of the first end of the cylinder.
      * @param end2 the position of the second end of the cylinder.
-     * @param radius the radius, i.e. half-width of the cylinder.
+     * @param radius the radius of the cylinder.
      */
-    virtual void drawCylinder (const Eigen::Vector3d &end1,
-                               const Eigen::Vector3d &end2,
-                               double radius) = 0;
+    virtual void drawCylinder(const Eigen::Vector3d &end1,
+                              const Eigen::Vector3d &end2,
+                              double radius) = 0;
 
     /**
      * Draws a multiple cylinder (see below), leaving the Painter choose the appropriate
@@ -143,19 +163,21 @@ namespace Avogadro
      * @param shift how far away from the central axis the cylinders are shifted.
      *              In other words this influences the total width of multiple bonds.
      */
-    virtual void drawMultiCylinder (const Eigen::Vector3d &end1,
-                                    const Eigen::Vector3d &end2,
-                                    double radius, int order, double shift) = 0;
+    virtual void drawMultiCylinder(const Eigen::Vector3d &end1,
+                                   const Eigen::Vector3d &end2,
+                                   double radius, int order, double shift) = 0;
 
     /**
      * Draws a cone between the tip and the base with the base radius given.
      * @param base the position of the base of the cone.
-     * @param tip the position of the tip of the cone.
-     * @param radius the radius of the base of the cone.
+     * @param cap the position of the tip of the cone.
+     * @param baseRadius the radius of the base of the cone.
+     * @param capRadius the radius of the base of the cone.
      */
     virtual void drawCone(const Eigen::Vector3d &base,
-                          const Eigen::Vector3d &tip,
-                          double radius) = 0;
+                          const Eigen::Vector3d &cap,
+                          double baseRadius,
+                          double capRadius = 0.0) = 0;
 
     /**
      * Draws a line between the given points of the given width.
@@ -233,7 +255,8 @@ namespace Avogadro
      */
     virtual void drawShadedSector(const Eigen::Vector3d & origin,
                                   const Eigen::Vector3d & direction1,
-                                  const Eigen::Vector3d & direction2, double radius,
+                                  const Eigen::Vector3d & direction2,
+                                  double radius,
                                   bool alternateAngle = false) = 0;
 
     /**
@@ -250,7 +273,8 @@ namespace Avogadro
      * @param alternateAngle whether to draw the obtuse angle made by the two vectors
      *                       instead of the acute angle between them.
      */
-    virtual void drawArc(const Eigen::Vector3d & origin, const Eigen::Vector3d & direction1,
+    virtual void drawArc(const Eigen::Vector3d & origin,
+                         const Eigen::Vector3d & direction1,
                          const Eigen::Vector3d & direction2, double radius,
                          double lineWidth, bool alternateAngle = false) = 0;
 
@@ -309,7 +333,7 @@ namespace Avogadro
      * @sa begin(), drawText(const Eigen::Vector3d &, const QString &) const,
      *     drawText(const QPoint &, const QString &) const
      */
-    virtual int drawText (int x, int y, const QString &string) const = 0;
+    virtual int drawText(int x, int y, const QString &string) = 0;
 
     /**
      * Draws text at a given window position, on top of the scene.
@@ -325,7 +349,7 @@ namespace Avogadro
      * @sa begin(), drawText(const Eigen::Vector3d &, const QString &) const,
      *     drawText(int, int, const QString &) const
      */
-    virtual int drawText (const QPoint& pos, const QString &string) const = 0;
+    virtual int drawText(const QPoint& pos, const QString &string) = 0;
 
     /**
      * Draws text at a given scene position, inside the scene.
@@ -341,8 +365,33 @@ namespace Avogadro
      * @sa begin(), drawText(const QPoint&, const QString &) const,
      *     drawText(int, int, const QString &) const
      */
-    virtual int drawText (const Eigen::Vector3d & pos,
-                          const QString &string) const = 0;
+    virtual int drawText(const Eigen::Vector3d & pos,
+                          const QString &string) = 0;
+
+    /**
+     * Placeholder to draw a box.
+     * @param corner1 First corner of the box.
+     * @param corner2 Second corner of the box.
+     * @todo Implement this primitive.
+     */
+    virtual void drawBox(const Eigen::Vector3d &corner1,
+                         const Eigen::Vector3d &corner2) = 0;
+
+    /**
+     * Placeholder to draw a torus.
+     * @param pos Position of the center of the torus.
+     * @param majorRadius Major radius of the torus.
+     * @param minorRadius Minor radius of the torus.
+     * @todo Implement this primitive.
+     */
+    virtual void drawTorus(const Eigen::Vector3d &position,
+                           double majorRadius, double minorRadius) = 0;
+
+    /**
+     * Other primitives we may want
+     * Disc - flat circular disc with center, normal and radius.
+     * Quadrics and quartics?
+     */
 
   };
 } // end namespace Avogadro

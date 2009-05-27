@@ -1,5 +1,5 @@
 /**********************************************************************
- PeriodicTableView - Periodic Table Graphics View for Avogadro
+ PeriodicTableScene - Periodic Table Graphics Scene for Avogadro
 
  Copyright (C) 2007-2009 by Marcus D. Hanwell
 
@@ -22,57 +22,36 @@
  02110-1301, USA.
  **********************************************************************/
 
-#ifndef PERIODICTABLEVIEW_H
-#define PERIODICTABLEVIEW_H
+#ifndef PERIODICTABLESCENE_P_H
+#define PERIODICTABLESCENE_P_H
 
-#include <avogadro/global.h>
-
-#include <QGraphicsView>
+#include <QGraphicsScene>
 
 namespace Avogadro {
 
   /**
-   * @class PeriodicTableView periodictableview.h <avogadro/periodictableview.h>
+   * @class PeriodicTableScene
    * @author Marcus D. Hanwell
-   * @brief This class implements the view of the PeriodicTableScene.
+   * @brief This class encapsulates the scene, all items are contained in it.
    *
-   * This is the class that actually draws the widget onto screen. This is
-   * the class that should normally be instantiated in order to display a
-   * Periodic Table.
+   * This class implements a QGraphicsScene that holds all of the element items.
+   * Any items owned by this class are automatically deleted by it.
    */
-  class A_EXPORT PeriodicTableView : public QGraphicsView
+  class PeriodicTableScene : public QGraphicsScene
   {
-    Q_OBJECT
+  Q_OBJECT
 
   public:
     /**
-     * Constructor - contructs a new PeriodicTableView with an internal instance
-     * of PeriodicTableScene.
+     * Constructor.
      */
-    explicit PeriodicTableView(QWidget *parent = 0);
-
-    /**
-     * Destructor.
-     */
-    ~PeriodicTableView();
-
-  private Q_SLOTS:
-    /**
-     * Use this slot to change the active element.
-     */
-    void elementClicked(int element);
+    PeriodicTableScene(QObject *parent = 0);
 
   Q_SIGNALS:
     /**
-     * Signal emitted when the active element in the PeriodicTableView changes.
+     * This signal is emitted when an element item is clicked.
      */
     void elementChanged(int element);
-
-  private:
-    /**
-     * Proton number of the active element.
-     */
-    int m_element;
 
   protected:
     /**
@@ -82,12 +61,21 @@ namespace Avogadro {
     bool event(QEvent *e);
 
     /**
-     * Double click event - select an element and hide the PeriodicTableView.
+     * Handles the mouse press events to change the active element.
      */
-    void mouseDoubleClickEvent(QMouseEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
+    /**
+     * Not used at present.
+     */
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+
+    /**
+     * Not used at present.
+     */
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
   };
 
-} // End of Avogadro namespace
+} // End namespace Avogadro
 
-#endif
-
+#endif // PERIODICTABLESCENE_P_H

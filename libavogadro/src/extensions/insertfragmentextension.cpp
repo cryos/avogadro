@@ -54,7 +54,7 @@ namespace Avogadro {
     m_actions.append(action);
 
     action = new QAction(this);
-    action->setText(tr("SMILES.."));
+    action->setText(tr("SMILES..."));
     action->setData(SMILESIndex);
     m_actions.append(action);
 

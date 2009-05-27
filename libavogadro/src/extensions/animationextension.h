@@ -22,27 +22,21 @@
 #ifndef ANIMATIONEXTENSION_H
 #define ANIMATIONEXTENSION_H
 
-
-#include <openbabel/mol.h>
-
-#include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
-#include <avogadro/animation.h>
 
-#include <QObject>
 #include <QList>
 #include <QString>
-#include <QUndoCommand>
-#include <QTimeLine>
 
 #include "animationdialog.h"
 
 namespace Avogadro {
 
- class AnimationExtension : public Extension
+  class Animation;
+
+  class AnimationExtension : public Extension
   {
     Q_OBJECT
-    AVOGADRO_EXTENSION("Animation", tr("Animation"), 
+    AVOGADRO_EXTENSION("Animation", tr("Animation"),
                        tr("Animate trajectories, reactions, and vibratins."))
 
     public:
@@ -64,11 +58,10 @@ namespace Avogadro {
       Molecule *m_molecule;
       AnimationDialog *m_animationDialog;
       Animation *m_animation;
-      
+
       //only needed for rendering a video
       GLWidget* m_widget;
 
-    
    private Q_SLOTS:
       void loadFile(QString file);
       void setLoop(int state);

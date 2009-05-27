@@ -30,7 +30,7 @@ include (TestIfWeNeedFPermissive)
 # use mulithreaded dll runtime on windows when using MSVC
 if (MSVC)
   # FIXME From what I can tell this is really hackish - prevents Windows debug builds
-  set(CMAKE_CXX_FLAGS "/MD ${CMAKE_CXX_FLAGS}")
+  set(CMAKE_CXX_FLAGS_RELEASE "/MD /MP ${CMAKE_CXX_FLAGS}")
   # Do not generate manifests for the plugins - caused issues loading plugins
   set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 endif(MSVC)

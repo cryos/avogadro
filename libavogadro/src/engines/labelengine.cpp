@@ -96,7 +96,7 @@ namespace Avogadro {
       QString str;
       switch(m_atomType) {
         case 1: // Atom index
-          str = QString::number(a->index() + 1);
+          str = QString("%L1").arg(a->index() + 1);
           break;
         case 3: // Atomic Symbol
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
@@ -110,10 +110,10 @@ namespace Avogadro {
             str = a->residue()->number();
           break;
         case 6: // Partial charge
-          str = QString::number(const_cast<Atom *>(a)->partialCharge(), 'g', 2);
+          str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
           break;
         case 7: // Unique ID
-          str = QString::number(a->id());
+          str = QString("%L1").arg(a->id());
           break;
         case 2: // Element name
           str = ElementTranslator::name(a->atomicNumber());
@@ -164,21 +164,22 @@ namespace Avogadro {
 
     double zDistance = pd->camera()->distance(pos);
 
+    QString format("%L1");
     if(zDistance < 50.0) {
       QString str;
       switch(m_bondType) {
         case 1:
-          str = QString::number(b->length(), 'g', 4);
+          str = format.arg(b->length(), 0, 'g', 4);
           break;
         case 2:
-          str = QString::number(b->index() + 1);
+          str = format.arg(b->index() + 1);
           break;
         case 4:
-          str = QString::number(b->id());
+          str = format.arg(b->id());
           break;
         case 3:
         default:
-          str = QString::number(b->order());
+          str = format.arg(b->order());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
