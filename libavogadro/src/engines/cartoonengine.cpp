@@ -24,6 +24,7 @@
  **********************************************************************/
 
 #include "cartoonengine.h"
+#include "cartoonmeshgenerator.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -33,7 +34,6 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/mesh.h>
 #include <avogadro/painterdevice.h>
-#include <avogadro/cartoonmeshgenerator.h>
 
 #include <avogadro/protein.h>
 

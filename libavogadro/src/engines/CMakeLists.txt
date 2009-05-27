@@ -37,7 +37,7 @@ avogadro_plugin(stickengine stickengine.cpp sticksettingswidget.ui)
 avogadro_plugin(ribbonengine ribbonengine.cpp ribbonsettingswidget.ui)
 
 # Cartoon engine (biological structure)
-avogadro_plugin(cartoonengine cartoonengine.cpp cartoonsettingswidget.ui)
+avogadro_plugin(cartoonengine "cartoonengine.cpp;cartoonmeshgenerator.cpp" cartoonsettingswidget.ui)
 
 # Ring engine - display cyclic rings
 avogadro_plugin(ringengine ringengine.cpp ringsettingswidget.ui)
