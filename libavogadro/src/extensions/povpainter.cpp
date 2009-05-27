@@ -1,7 +1,7 @@
 /**********************************************************************
   POVPainter - drawing spheres, cylinders and text in a POVRay scene
 
-  Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -40,33 +40,35 @@ namespace Avogadro
 {
   class POVPainterPrivate
   {
-    public:
-      POVPainterPrivate() : pd (0), initialized (false), sharing(0),
-        color(0), output(0), planeNormalVector(0., 0., 0.)  { color.set(0., 0., 0., 0.); }
-      ~POVPainterPrivate()
-      {
-      }
+  public:
+    POVPainterPrivate() : pd (0), initialized (false), sharing(0),
+    color(0), output(0), planeNormalVector(0., 0., 0.)
+    {
+      color.set(0., 0., 0., 0.);
+    }
+    ~POVPainterPrivate()
+    {
+    }
 
-      POVPainterDevice *pd;
+    POVPainterDevice *pd;
 
-      bool initialized;
+    bool initialized;
 
-      inline bool isValid();
+    inline bool isValid();
 
-      /**
-       * Painters can be shared, we must keep track of this.
-       */
-      int sharing;
+    /**
+     * Painters can be shared, we must keep track of this.
+     */
+    int sharing;
 
-      Color color;
-      QTextStream *output;
-      Vector3d planeNormalVector;
+    Color color;
+    QTextStream *output;
+    Vector3d planeNormalVector;
   };
 
 
   POVPainter::POVPainter() : d (new POVPainterPrivate)
   {
-
   }
 
   POVPainter::~POVPainter()
@@ -96,11 +98,11 @@ namespace Avogadro
     d->planeNormalVector = planeNormalVector;
   }
 
-  void POVPainter::drawSphere (const Vector3d *center, float radius)
+  void POVPainter::drawSphere (const Vector3d &center, double radius)
   {
     // Write out a POVRay sphere for rendering
     *(d->output) << "sphere {\n"
-      << "\t<" << center->x() << ", " << center->y() << ", " << center->z()
+      << "\t<" << center.x() << ", " << center.y() << ", " << center.z()
       << ">, " << radius
       << "\n\tpigment { rgbt <" << d->color.red() << ", " << d->color.green()
       << ", " << d->color.blue() << "," << 1.0 - d->color.alpha() << "> }\n}\n";
@@ -330,19 +332,29 @@ namespace Avogadro
                  << "}\n\n";
   }
 
-  int POVPainter::drawText (int, int, const QString &) const
+  int POVPainter::drawText(int, int, const QString &)
   {
     return 0;
   }
 
-  int POVPainter::drawText (const QPoint&, const QString &) const
+  int POVPainter::drawText(const QPoint&, const QString &)
   {
     return 0;
   }
 
-  int POVPainter::drawText (const Vector3d &, const QString &) const
+  int POVPainter::drawText(const Vector3d &, const QString &)
   {
     return 0;
+  }
+
+  void POVPainter::drawBox(const Eigen::Vector3d &,
+                           const Eigen::Vector3d &)
+  {
+  }
+
+  void POVPainter::drawTorus(const Eigen::Vector3d &,
+                             double, double)
+  {
   }
 
   void POVPainter::begin(QTextStream *output, Vector3d planeNormalVector)
