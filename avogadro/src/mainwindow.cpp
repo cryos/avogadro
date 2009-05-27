@@ -582,16 +582,18 @@ namespace Avogadro
     // Add buttons to toggle the tool and engine settings docks
     ui.toolBar->addSeparator();
 
-    QPushButton* toolSettings = new QPushButton(tr("Tool Settings..."), ui.toolBar);
+    QPushButton* toolSettings = new QPushButton(tr("&Tool Settings..."), ui.toolBar);
     toolSettings->setCheckable(true);
     toolSettings->setChecked(d->toolSettingsDock->isVisible());
+    toolSettings->setShortcut(tr("Ctrl+T", "Tool Settings shortcut"));
     connect(d->toolSettingsDock, SIGNAL(visibilityChanged(bool)), toolSettings, SLOT(setChecked(bool)));
     connect(toolSettings, SIGNAL(released()), this, SLOT(toggleToolSettingsDock()));
     ui.toolBar->addWidget(toolSettings);
 
-    QPushButton* displaySettings = new QPushButton(tr("Display Settings..."), ui.toolBar);
+    QPushButton* displaySettings = new QPushButton(tr("&Display Settings..."), ui.toolBar);
     displaySettings->setCheckable(true);
     displaySettings->setChecked(ui.enginesDock->isVisible());
+    displaySettings->setShortcut(tr("Ctrl+D", "Display Settings shortcut"));
     connect(ui.enginesDock, SIGNAL(visibilityChanged(bool)), displaySettings, SLOT(setChecked(bool)));
     connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
     ui.toolBar->addWidget(displaySettings);
