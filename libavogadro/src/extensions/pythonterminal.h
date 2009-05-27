@@ -30,10 +30,10 @@
 #include "../pythoninterpreter.h"
 #include "../pythonscript.h"
 
-#include "ui_pythonterminalwidget.h"
+//#include "ui_pythonterminalwidget.h"
 
 #include <QWidget>
-#include <QLineEdit>
+#include <QTextEdit>
 #include <QList>
 #include <QDir>
 #include <QString>
@@ -45,7 +45,7 @@ class QDockWidget;
 
 namespace Avogadro {
 
-  class PythonTerminalWidget;
+  class PythonTerminalEdit;
   class PythonTerminal : public Extension
   {
     Q_OBJECT
@@ -69,37 +69,36 @@ namespace Avogadro {
     private:
       Molecule *m_molecule;
       QDockWidget *m_terminalDock;
-      PythonTerminalWidget *m_terminalWidget;
-      PythonInterpreter m_interpreter;
-      QString m_lines;
+      PythonTerminalEdit *m_terminalEdit;
+
+  };
+
+  class PythonTerminalEdit : public QTextEdit
+  {
+    Q_OBJECT
+
+    public:
+      PythonTerminalEdit(QWidget *parent = 0);
+      virtual void keyPressEvent ( QKeyEvent * event );
+
+      void setMolecule(Molecule *molecule); 
 
     private Q_SLOTS:
       void runCommand();
+      void printPrompt();
 
-  };
-
-  class PythonTerminalLineEdit : public QLineEdit
-  {
-    Q_OBJECT
-
-    public:
-    PythonTerminalLineEdit(QWidget *parent = 0);
-    virtual void keyPressEvent ( QKeyEvent * event );
+      void setTextCursorToEnd();
 
     private:
+      PythonInterpreter m_interpreter;
+      Molecule *m_molecule;
+      
       QList<QString> m_commandStack;
-      int m_current;
+      int m_current; //!< current command
+      
+      QString m_lines;
+      int m_cursorPos, m_indent;
 
-  };
-
-  class PythonTerminalWidget : public QWidget
-  {
-    Q_OBJECT
-
-    public:
-      PythonTerminalWidget( QWidget *parent = 0 );
-      Ui::PythonTerminalWidget ui;
-      PythonTerminalLineEdit * inputLine;
   };
 
   class PythonTerminalFactory : public QObject, public PluginFactory

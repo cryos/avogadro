@@ -23,8 +23,10 @@
 #include "trajvideomaker.h"
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
+#include <avogadro/animation.h>
 #include <avogadro/glwidget.h>
 
+#include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
 #include <Eigen/Core>
@@ -84,7 +86,7 @@ namespace Avogadro {
 
     if (!m_animation) {
       m_animation = new Animation;
-    }      
+    }
     m_animation->setMolecule(widget->molecule());
 
     if (!m_animationDialog)
@@ -101,13 +103,13 @@ namespace Avogadro {
       connect(m_animationDialog, SIGNAL(pause()), m_animation, SLOT(pause()));
       connect(m_animationDialog, SIGNAL(stop()), m_animation, SLOT(stop()));
       connect(m_animationDialog, SIGNAL(videoFileInfo(QString)), this, SLOT(saveVideo(QString)));
-      
+
       connect(m_animation, SIGNAL(frameChanged(int)), m_animationDialog, SLOT(setFrame(int)));
     }
-    
+
     m_animationDialog->setFrameCount(m_animation->numFrames());
     m_animationDialog->setFrame(1);
- 
+
     m_animationDialog->show();
 
     return 0;
@@ -169,7 +171,7 @@ namespace Avogadro {
       m_animation->setDynamicBonds(false);
     }
   }
- 
+
   void AnimationExtension::saveVideo(QString videoFileName)
   {
     if (videoFileName.isEmpty()) {
