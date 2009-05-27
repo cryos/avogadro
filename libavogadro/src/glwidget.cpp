@@ -1047,20 +1047,20 @@ namespace Avogadro {
 
     int x = 5, y = 5;
     y += d->pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
-    y += d->pd->painter()->drawText(x, y, tr("FPS: ") + QString::number(computeFramesPerSecond(), 'g', 3));
+    y += d->pd->painter()->drawText(x, y, tr("FPS: %L1").arg(computeFramesPerSecond(), 0, 'g', 3));
 
     y += d->pd->painter()->drawText(x, y, 
-                                    tr("View Size: %1 x %2").arg(QString::number(d->pd->width())).arg(QString::number(d->pd->height()) ));
+                                    tr("View Size: %L1 x %L2").arg(d->pd->width()).arg(d->pd->height()) );
     if (!d->molecule) {
       y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
       return;
     }
  
 //    list = primitives().subList(Primitive::AtomType);
-    y += d->pd->painter()->drawText(x, y, tr("Atoms: %1").arg(QString::number(d->molecule->numAtoms())));
+    y += d->pd->painter()->drawText(x, y, tr("Atoms: %L1").arg(d->molecule->numAtoms()));
 
 //    list = primitives().subList(Primitive::BondType);
-    y += d->pd->painter()->drawText(x, y, tr("Bonds: %1").arg(QString::number(d->molecule->numBonds())));
+    y += d->pd->painter()->drawText(x, y, tr("Bonds: %L1").arg(d->molecule->numBonds()));
   }
 
   bool GLWidget::event( QEvent *event )

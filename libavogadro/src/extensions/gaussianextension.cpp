@@ -30,6 +30,7 @@
 #include <avogadro/molecule.h>
 
 #include <QMessageBox>
+#include <QFile>
 
 using namespace OpenBabel;
 using namespace std;
@@ -159,7 +160,7 @@ namespace Avogadro
   {
     QApplication::setOverrideCursor(Qt::WaitCursor);
     OBConversion conv;
-    OBFormat     *inFormat = conv.FormatFromExt(( filename.toAscii() ).data() );
+    OBFormat     *inFormat = conv.FormatFromExt( filename.toAscii() );
     if ( !inFormat || !conv.SetInFormat( inFormat ) ) {
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(m_widget, tr("Avogadro"),
@@ -167,8 +168,9 @@ namespace Avogadro
       return;
     }
 
+    // TODO: Switch to MoleculeFile
     ifstream ifs;
-    ifs.open((filename.toAscii()).data());
+    ifs.open(QFile::encodeName(filename));
     if (!ifs) { // shouldn't happen, already checked file above
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(m_widget, tr("Avogadro"),
