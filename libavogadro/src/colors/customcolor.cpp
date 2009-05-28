@@ -39,7 +39,9 @@ namespace Avogadro {
 
   /// Constructor
   CustomColor::CustomColor(): m_settingsWidget(NULL)
-  { }
+  {
+    Color::set(QColor(Qt::white));
+  }
 
   /// Destructor
   CustomColor::~CustomColor()
@@ -62,6 +64,8 @@ namespace Avogadro {
       ColorButton *button = new ColorButton(m_settingsWidget);
       layout->addWidget(label);
       layout->addWidget(button);
+
+      button->setColor(Color::color());
 
       connect(button, SIGNAL(colorChanged(QColor)),
               this, SLOT(colorChanged(QColor)));
@@ -90,7 +94,7 @@ namespace Avogadro {
 
   void CustomColor::readSettings(QSettings &settings)
   {
-    Color::set(settings.value("customcolor", QColor(1,1,1,1)).value<QColor>());
+    Color::set(settings.value("customcolor", QColor(Qt::white)).value<QColor>());
   }
 
 }

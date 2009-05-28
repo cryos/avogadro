@@ -63,6 +63,7 @@
 
 #include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/color.h>
 
 #include <openbabel/obconversion.h>
 #include <openbabel/mol.h>
@@ -2301,6 +2302,12 @@ namespace Avogadro
     }
     settings.endGroup();
 
+    settings.beginGroup("colors");
+    foreach(Color *color, d->pluginManager.colors(this)) {
+      color->readSettings(settings);
+    }
+    settings.endGroup();
+
     int count = settings.beginReadArray("view");
     if(count < 1)
     {
@@ -2368,10 +2375,11 @@ namespace Avogadro
     }
     settings.endGroup();
 
-    // write the plugin manager settings
-    //settings.beginGroup("plugins");
-    //pluginManager.writeSettings(settings);
-    //settings.endGroup();
+    settings.beginGroup("colors");
+    foreach(Color *color, d->pluginManager.colors(this)) {
+      color->writeSettings(settings);
+    }
+    settings.endGroup();
   }
 
   void MainWindow::addActionsToMenu(Extension *extension)
