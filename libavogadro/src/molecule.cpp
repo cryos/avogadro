@@ -1040,6 +1040,24 @@ namespace Avogadro{
       obmol.AddBond(beginAtom->index() + 1,
                     endAtom->index() + 1, bond->order());
     }
+    qDebug() << "Exporting Residues";
+    // We're doing this after copying all atoms, so we can grab them ourselves
+    foreach(Residue *residue, d->residueList) {
+      OpenBabel::OBResidue *r = obmol.NewResidue();
+      // Copy per-residue information
+      r->SetNum(residue->number().toStdString());
+      r->SetChain(residue->chainID());
+      r->SetName(residue->name().toUpper().toStdString());
+      
+      OpenBabel::OBAtom *a;
+      foreach(unsigned long atomId, residue->atoms()){
+        // Avogadro indexes from 0, but OB from 1. Watch out!
+        a = obmol.GetAtom(this->atomById(atomId)->index() + 1);
+        r->AddAtom(a);
+        r->SetSerialNum(a, a->GetIdx());
+        r->SetAtomID(a, residue->atomId(atomId).toStdString());
+      }
+    }
     foreach(Cube *cube, d->cubeList) {
       qDebug() << "Exporting cube" << cube->name();
       OpenBabel::OBGridData *obgrid = new OpenBabel::OBGridData;
