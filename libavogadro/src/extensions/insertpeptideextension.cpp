@@ -355,8 +355,10 @@ namespace Avogadro {
     ifstream ifs;
     ifs.open(filename.toAscii());
     
-    if (!ifs) // file doesn't exist
+    if (!ifs) { // file doesn't exist
+      qDebug() << " Cannout open residue file: " << filename;
       return;
+    }
     
     // Offset:
     //  When we add the internal coordinates, we have to increment
@@ -425,8 +427,8 @@ namespace Avogadro {
     OBMol &mol, vector<OBInternalCoord*> &vic)
     {
       OBResidue *res = mol.GetResidue(mol.NumResidues() - 1);
-      if (!res)
-        return; // can't do anything
+      if (!res || mol.NumResidues() == 0)
+        return; // can't do anything -- we're in a weird state
 
       OBAtom *atom;
 
