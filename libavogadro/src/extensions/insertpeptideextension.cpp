@@ -101,6 +101,10 @@ namespace Avogadro {
     if (!m_dialog)
       return; // nothing we can do
 
+    QString sequence = m_dialog->sequenceText->toPlainText().toLower();
+    if (sequence.isEmpty())
+      return; // also nothing to do
+
     OBMol obfragment;
     vector<OBInternalCoord*> vic;
     vic.push_back((OBInternalCoord*)NULL);
@@ -117,7 +121,6 @@ namespace Avogadro {
     // Now the work begins
     // Get the sequence (in lower case)
     obfragment.BeginModify();
-    QString sequence = m_dialog->sequenceText->toPlainText().toLower();
     foreach (const QString residue, sequence.split('-')) {
       AddResidue(residue, lStereo, obfragment, vic, chain);
 
@@ -201,17 +204,20 @@ namespace Avogadro {
     }
 
     obfragment.EndModify();
-    InternalToCartesian(vic,obfragment);
-    OBBitVec allAtoms;
-    allAtoms.SetRangeOn(0, obfragment.NumAtoms());
-    allAtoms.SetBitOff(obfragment.NumAtoms() - 1); // Don't add bonds for the terminus
-    resdat.AssignBonds(obfragment, allAtoms);
+    if (obfragment.NumAtoms()) { 
+      // Don't do all this work, if there's nothing to do
+      InternalToCartesian(vic,obfragment);
+      OBBitVec allAtoms;
+      allAtoms.SetRangeOn(0, obfragment.NumAtoms());
+      allAtoms.SetBitOff(obfragment.NumAtoms() - 1); // Don't add bonds for the terminus
+      resdat.AssignBonds(obfragment, allAtoms);
 
-    obfragment.SetPartialChargesPerceived();
+      obfragment.SetPartialChargesPerceived();
 
-    Molecule fragment;
-    fragment.setOBMol(&obfragment);
-    emit performCommand(new InsertFragmentCommand(m_molecule, fragment, m_widget, tr("Insert Peptide")));
+      Molecule fragment;
+      fragment.setOBMol(&obfragment);
+      emit performCommand(new InsertFragmentCommand(m_molecule, fragment, m_widget, tr("Insert Peptide")));
+    }
   }
 
   void InsertPeptideExtension::writeSettings(QSettings &settings) const
