@@ -409,7 +409,7 @@ namespace Avogadro {
       atom = mol.NewAtom();
       atom->SetAtomicNum(etab.GetAtomicNum(vs[0].c_str()));
       atom->SetPartialCharge(atof(vs[7].c_str()));
-      res->AddAtom(atom);
+      res->InsertAtom(atom);
       res->SetHetAtom(atom, false);
       res->SetSerialNum(atom, mol.NumAtoms());
       if (vs.size() == 9)
@@ -458,7 +458,7 @@ namespace Avogadro {
 
       atom = mol.NewAtom();
       atom->SetAtomicNum(element);
-      res->AddAtom(atom);
+      res->InsertAtom(atom);
       res->SetHetAtom(atom, false);
       res->SetSerialNum(atom, mol.NumAtoms());
       res->SetAtomID(atom, atomID.toAscii().data());
