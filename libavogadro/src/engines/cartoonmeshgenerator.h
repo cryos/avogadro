@@ -53,7 +53,7 @@ namespace Avogadro {
   class Atom;
   class Mesh;
 
-  class A_EXPORT CartoonMeshGenerator : public QThread
+  class CartoonMeshGenerator : public QThread
   {
   public:
     /**

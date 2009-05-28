@@ -68,13 +68,11 @@ namespace Avogadro
     if(!m_terminalDock)
     {
       m_terminalDock = new QDockWidget( tr("Python Terminal"), qobject_cast<QWidget *>(parent()) );
-      m_terminalWidget = new PythonTerminalWidget();
-      m_terminalDock->setWidget(m_terminalWidget);
       m_terminalDock->setObjectName( tr("pythonTerminalDock") );
+      m_terminalEdit = new PythonTerminalEdit();
+      m_terminalDock->setWidget(m_terminalEdit);
 
-      new Highlighter(m_terminalWidget->ui.outputText->document());
-
-      connect(m_terminalWidget->inputLine, SIGNAL(returnPressed()), this, SLOT(runCommand()));
+      new Highlighter(m_terminalEdit->document());
     }
 
     return m_terminalDock;
@@ -83,60 +81,7 @@ namespace Avogadro
   void PythonTerminal::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    m_interpreter.setMolecule(molecule);
-  }
-
-  void PythonTerminal::runCommand()
-  {
-    int indent = 0;
-    QString text = m_terminalWidget->inputLine->text();
-    if(!text.trimmed().isEmpty()) {
-      QString line = text;
-      while (line.startsWith(' ')) {
-        line.remove(0, 2);
-        indent++;
-      }
-      line += text.trimmed();
- 
-      if (line.endsWith(':')) {
-        indent++;
- 
-        // first line still has >>>
-        if (indent > 1)
-          m_terminalWidget->ui.outputText->append(QLatin1String("... ") + text);
-        else
-          m_terminalWidget->ui.outputText->append(QLatin1String(">>> ") + text);
-        text += '\n';
-        m_lines.append(text);
-      } else {
-        if (indent && !m_lines.isEmpty()) {
-          m_terminalWidget->ui.outputText->append(QLatin1String("... ") + text);
-          text += '\n';
-          m_lines.append(text);
-        } else {
-          m_terminalWidget->ui.outputText->append(QLatin1String(">>> ") + text);
-          QString result = m_interpreter.exec(text);
-          if(!result.isEmpty())
-            m_terminalWidget->ui.outputText->append(result);
-        }
-      }
-      QString indentString;
-      for (int i = 0; i < indent; ++i)
-        indentString += QLatin1String("  ");
-      m_terminalWidget->inputLine->setText(indentString);
- 
-      // Always update the molecule when running commands from the terminal widget
-      m_molecule->update();
-    } else {
-      QString result = m_interpreter.exec(m_lines);
-      if(!result.isEmpty())
-        m_terminalWidget->ui.outputText->append(result);
- 
-      m_terminalWidget->ui.outputText->append(QLatin1String(">>>"));
-      m_terminalWidget->inputLine->clear();
- 
-      m_lines.clear();
-    }
+    m_terminalEdit->setMolecule(molecule);
   }
 
   QUndoCommand* PythonTerminal::performAction( QAction *action, GLWidget *widget )
@@ -146,6 +91,7 @@ namespace Avogadro
     return 0;
   }
 
+  /*
   PythonTerminalWidget::PythonTerminalWidget( QWidget *parent ) : QWidget(parent)
   {
     ui.setupUi(this);
@@ -171,8 +117,10 @@ namespace Avogadro
 
     layout()->addWidget(inputLine);
   }
+  */
 
-  PythonTerminalLineEdit::PythonTerminalLineEdit(QWidget *parent ) : QLineEdit(parent), m_current(0)
+  PythonTerminalEdit::PythonTerminalEdit(QWidget *parent) : QTextEdit(parent), 
+      m_current(0), m_cursorPos(0), m_indent(0)
   {
     // Load the saved commands
     QSettings settings;
@@ -182,9 +130,95 @@ namespace Avogadro
       m_commandStack.append( settings.value("command").toString() );
     }
     settings.endArray();
+ 
+    // set the font
+    QFont font;
+    font.setFamily(QString::fromUtf8("Courier New"));
+    setFont(font);
+         
+    printPrompt();
+
+    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(setTextCursorToEnd()));
   }
 
-  void PythonTerminalLineEdit::keyPressEvent ( QKeyEvent * event )
+  void PythonTerminalEdit::setMolecule(Molecule *molecule)
+  {
+    m_molecule = molecule;
+    m_interpreter.setMolecule(m_molecule);
+  }
+      
+  void PythonTerminalEdit::setTextCursorToEnd()
+  {
+    QTextCursor cursor(textCursor());
+    if (cursor.position() < m_cursorPos)
+      cursor.setPosition(m_cursorPos);
+    setTextCursor(cursor);
+  }
+
+  void PythonTerminalEdit::runCommand()
+  {
+    int indent = 0;
+    QString text = toPlainText();
+    text = text.right(text.size() - m_cursorPos);
+
+    QString indentString;
+
+    if(!text.trimmed().isEmpty()) {
+      QString line = text;
+      while (line.startsWith(' ')) {
+        line.remove(0, 1);
+        indent++;
+      }
+      line += text.trimmed();
+ 
+      if (line.endsWith(':')) {
+        indent += 2;
+        m_lines.append(text);
+        append(QLatin1String(""));
+      } else {
+        if (indent && !m_lines.isEmpty()) {
+          m_lines.append(text);
+          append(QLatin1String(""));
+        } else {
+          QString result = m_interpreter.exec(text);
+          append(result);
+        }
+      }
+      for (int i = 0; i < indent; ++i)
+        indentString += QLatin1String(" ");
+      // Always update the molecule when running commands from the terminal widget
+      m_molecule->update();
+    } else {
+      QString result = m_interpreter.exec(m_lines);
+      append(result);
+      m_lines.clear();
+    }
+
+    m_indent = indent;
+    printPrompt();
+  }
+
+  void PythonTerminalEdit::printPrompt()
+  {
+    QTextCursor cursor(textCursor());
+    cursor.clearSelection();
+    cursor.movePosition(QTextCursor::End);
+
+    if (m_lines.isEmpty()) {
+      cursor.insertText(QLatin1String(">>> "));
+    } else  {
+      QString indentString;
+      for (int i = 0; i < m_indent; ++i)
+        indentString += QLatin1String(" ");
+      cursor.insertText(QLatin1String("... ") + indentString);
+    }
+    
+    m_cursorPos = cursor.position();
+    m_cursorPos -= m_indent;
+    setTextCursor(cursor);
+  }
+
+  void PythonTerminalEdit::keyPressEvent(QKeyEvent *event)
   {
     if(event->key() == Qt::Key_Up)
     {
@@ -195,17 +229,25 @@ namespace Avogadro
           m_current = m_commandStack.size();
         }
 
-        if(m_current == m_commandStack.size())
-        {
-          clear();
-        }
-        else
-        {
-          setText(m_commandStack.at(m_current));
+        if(m_current == m_commandStack.size()) {
+          // we've reached the first command, display empty prompt
+          setText(toPlainText().left(m_cursorPos));
+          QTextCursor cursor(textCursor());
+          cursor.movePosition(QTextCursor::End);
+          setTextCursor(cursor);
+        } else {
+          // diplay cached command
+          setText(toPlainText().left(m_cursorPos));
+          QTextCursor cursor(textCursor());
+          cursor.movePosition(QTextCursor::End);
+          cursor.insertText(m_commandStack.at(m_current));
+          cursor.movePosition(QTextCursor::End);
+          setTextCursor(cursor);
         }
 
       }
       event->accept();
+      return;
     }
     else if(event->key() == Qt::Key_Down)
     {
@@ -218,11 +260,21 @@ namespace Avogadro
 
         if(m_current == m_commandStack.size())
         {
-          clear();
+          // we've reached the last command, display empty prompt
+          setText(toPlainText().left(m_cursorPos));
+          QTextCursor cursor(textCursor());
+          cursor.movePosition(QTextCursor::End);
+          setTextCursor(cursor);
         }
         else
         {
-          setText(m_commandStack.at(m_current));
+          // diplay cached command
+          setText(toPlainText().left(m_cursorPos));
+          QTextCursor cursor(textCursor());
+          cursor.movePosition(QTextCursor::End);
+          cursor.insertText(m_commandStack.at(m_current));
+          cursor.movePosition(QTextCursor::End);
+          setTextCursor(cursor);
         }
 
       }
@@ -230,10 +282,12 @@ namespace Avogadro
     }
     else if(event->key() == Qt::Key_Return)
     {
-      QString t = text();
+      QString text = toPlainText();
+      QString t = text.right(text.size() - m_cursorPos);
+
       if(!t.isEmpty())
       {
-        m_commandStack.append(text());
+        m_commandStack.append(t);
         // this limits how many commands we save
         if(m_commandStack.size() > 100)
         {
@@ -250,9 +304,20 @@ namespace Avogadro
         settings.endArray();
       }
       m_current = m_commandStack.size();
+      runCommand();
       event->accept();
+      return;
     }
-    QLineEdit::keyPressEvent(event);
+    else if(event->key() == Qt::Key_Backspace)
+    {
+      QTextCursor cursor(textCursor());
+      if (cursor.position() <= m_cursorPos) {
+        event->accept();
+        return;
+      }
+    }
+
+    QTextEdit::keyPressEvent(event);
   }
 }
 

@@ -98,6 +98,9 @@ namespace Avogadro {
         case 1: // Atom index
           str = QString("%L1").arg(a->index() + 1);
           break;
+        case 2: // Element name
+          str = ElementTranslator::name(a->atomicNumber());
+          break;
         case 3: // Atomic Symbol
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
           break;
@@ -115,8 +118,8 @@ namespace Avogadro {
         case 7: // Unique ID
           str = QString("%L1").arg(a->id());
           break;
-        case 2: // Element name
-          str = ElementTranslator::name(a->atomicNumber());
+        case 8: // Symbol & Atom Number
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
           break;
         default: // some custom data -- if available
           int customIndex = m_atomType - 7 - 1;

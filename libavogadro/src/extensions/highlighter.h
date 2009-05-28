@@ -50,6 +50,7 @@ namespace Avogadro {
       QRegExp commentEndExpression;
 
       QTextCharFormat keywordFormat;
+      QTextCharFormat promptFormat;
       QTextCharFormat classFormat;
       QTextCharFormat singleLineCommentFormat;
       QTextCharFormat multiLineCommentFormat;

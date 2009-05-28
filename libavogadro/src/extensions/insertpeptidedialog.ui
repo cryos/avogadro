@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>452</width>
-    <height>432</height>
+    <width>447</width>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -342,11 +342,6 @@
           <item>
            <property name="text">
             <string>CO₂⁻</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>CO₂NH₂</string>
            </property>
           </item>
          </widget>

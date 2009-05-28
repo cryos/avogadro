@@ -36,7 +36,7 @@ namespace Avogadro {
   class ResidueColorSettingsWidget;
 
   /**
-   * @class ResidueColor residuecolor.h <avogadro/residuecolor.h>
+   * @class ResidueColor 
    * @brief Atom coloring based on residue for biomolecules
    * @author Geoff Hutchison
    *
