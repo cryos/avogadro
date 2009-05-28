@@ -68,6 +68,12 @@ namespace Avogadro {
   {
     Q_UNUSED(settings);
   }
+
+  int Extension::usefulness() const
+  {
+    return 0;
+  }
+
 }
 
 #include "extension.moc"

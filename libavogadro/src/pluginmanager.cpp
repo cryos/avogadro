@@ -202,6 +202,29 @@ namespace Avogadro {
 
   bool PluginManagerPrivate::factoriesLoaded = false;
 
+  // Sort tools based on "usefulness" (currently unused)
+  // defined in tool.cpp
+  extern bool toolGreaterThan(const Tool *first, const Tool *second);
+
+  // Sort extensions based on "usefulness" (currently unused)
+  bool extensionGreaterThan(const Extension *first, const Extension *second)
+  {
+    return first->usefulness() > second->usefulness();
+  }
+
+  // Sort colors based on their translated names
+  bool colorGreaterThan(const Color *first, const Color *second)
+  {
+    if (first->identifier() == "ElementColor")
+      return true; // always the top!
+    else if (second->identifier() == "ElementColor")
+      return false; // always the top!
+
+    // locale aware returns less-than, greater-than, or 0 
+    // Required for sorting lists.
+    return (QString::localeAwareCompare(first->name(), second->name()) < 0);
+  }
+
   PluginManager::PluginManager(QObject *parent) : QObject(parent),
                                                   d(new PluginManagerPrivate)
   {
@@ -235,6 +258,8 @@ namespace Avogadro {
       d->extensions.append(extension);
     }
 
+    qSort(d->extensions.begin(), d->extensions.end(), extensionGreaterThan);
+
     d->extensionsLoaded = true;
 
     return d->extensions;
@@ -250,6 +275,8 @@ namespace Avogadro {
       Tool *tool = static_cast<Tool *>(factory->createInstance(parent));
       d->tools.append(tool);
     }
+
+    qSort(d->tools.begin(), d->tools.end(), toolGreaterThan);
 
     d->toolsLoaded = true;
     return d->tools;
@@ -329,6 +356,8 @@ namespace Avogadro {
       Color *color = static_cast<Color *>(factory->createInstance(parent));
       d->colors.append(color);
     }
+
+    qSort(d->colors.begin(), d->colors.end(), colorGreaterThan);
 
     d->colorsLoaded = true;
     return d->colors;
@@ -643,6 +672,17 @@ namespace Avogadro {
     d->extensionsLoaded = false;
     d->extensions.clear();
 
+    // Also handle colors
+    settings.beginGroup("colors");
+    foreach(Color *color, d->colors) {
+      color->writeSettings(settings);
+      color->deleteLater();
+    }
+    settings.endGroup();
+
+    // Clear the color list too
+    d->colorsLoaded = false;
+    d->colors.clear();
 
     PluginManagerPrivate::factoriesLoaded = false;
 

@@ -158,6 +158,14 @@ namespace Avogadro {
      */
     virtual void readSettings(QSettings &settings);
 
+    /**
+     * Determines the ordering of the extensions.  More useful
+     * extensions will be placed first in menus. It is up to the
+     * extension designer to be humble about their usefulness value.
+     * @return usefulness value
+     */
+    virtual int usefulness() const;
+
   public Q_SLOTS:
     /**
      * Slot to set the Molecule for the Extension - should be called whenever
