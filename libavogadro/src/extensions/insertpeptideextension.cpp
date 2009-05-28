@@ -36,17 +36,17 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  void AddResidue(QString residue, bool lStereo, 
+  void AddResidue(QString residue, bool lStereo,
                   OBMol &mol, vector<OBInternalCoord*> &vic,
                   const char chain);
-                  
-  void AddTerminus(int element, QString atomID, 
-    int a, double distance, 
+
+  void AddTerminus(int element, QString atomID,
+    int a, double distance,
     int b, double angle,
     int c, double dihedral,
     OBMol &mol, vector<OBInternalCoord*> &vic);
 
-  InsertPeptideExtension::InsertPeptideExtension(QObject *parent) : 
+  InsertPeptideExtension::InsertPeptideExtension(QObject *parent) :
     Extension(parent),
     m_molecule(0),
     phi(180.0), psi(180.0), omega(179.99),
@@ -80,14 +80,14 @@ namespace Avogadro {
     m_molecule = molecule;
   }
 
-  QUndoCommand* InsertPeptideExtension::performAction(QAction *, 
+  QUndoCommand* InsertPeptideExtension::performAction(QAction *,
                                                        GLWidget *widget)
   {
     if (m_molecule == NULL)
       return NULL; // nothing we can do
 
     m_widget = widget; // save for delayed response
-    
+
     if (m_dialog == NULL) {
       constructDialog();
     }
@@ -113,7 +113,7 @@ namespace Avogadro {
     lastN = lastCa = lastCac = lastO = 0;
     int newN, newCa, newCac, newO;
     int lastAtom = 0; // last atom read from previous residue
-    
+
     double amideLength = 1.34;
     double bondAngle = 120.0;
     const char chain = m_dialog->chainNumberCombo->currentText().toAscii()[0];
@@ -123,6 +123,10 @@ namespace Avogadro {
     obfragment.BeginModify();
     foreach (const QString residue, sequence.split('-')) {
       AddResidue(residue, lStereo, obfragment, vic, chain);
+      if (!obfragment.NumAtoms()) {// Residue was not added - bail
+        qDebug() << "Problem adding new residues - file not read.";
+        return;
+      }
 
       newN = lastAtom + 1;
       newCa = lastAtom + 2;
@@ -139,7 +143,7 @@ namespace Avogadro {
         ic->_ang = bondAngle;
         ic->_c = obfragment.GetAtom(lastN);
         ic->_tor = psi;
-	
+
         // fix the O=C from previous residue
         ic = vic[lastO];
         ic->_tor = 180.0 + psi;
@@ -155,7 +159,7 @@ namespace Avogadro {
         ic = vic[newCac];
         ic->_c = obfragment.GetAtom(lastCac);
         ic->_tor = phi;
-        
+
         // add the peptide bond
         obfragment.AddBond(lastCac, newN, 1);
       }
@@ -163,14 +167,17 @@ namespace Avogadro {
         // Add the N-terminus modification
         switch (m_dialog->nGroupCombo->currentIndex()) {
           case 0: // NH2
-          AddTerminus(1, "HN", newN, 1.016, newCa, 120.0, newCac, 175.0, obfragment, vic);
-          break;
+            AddTerminus(1, "HN", newN, 1.016, newCa, 120.0,
+                        newCac, 175.0, obfragment, vic);
+            break;
           case 1: // NH3+
-          AddTerminus(1, "HN", newN, 1.016, newCa, 109.5, newCac, 117.0, obfragment, vic);
-          AddTerminus(1, "2HN", newN, 1.016, newCa, 109.5, newCac, -117.0, obfragment, vic);
-          break;
+            AddTerminus(1, "HN", newN, 1.016, newCa, 109.5,
+                        newCac, 117.0, obfragment, vic);
+            AddTerminus(1, "2HN", newN, 1.016, newCa, 109.5,
+                        newCac, -117.0, obfragment, vic);
+            break;
           default:
-          break;
+            break;
         }
       }
 
@@ -192,19 +199,22 @@ namespace Avogadro {
     // Add the C-terminus end group
     switch (m_dialog->cGroupCombo->currentIndex()) {
       case 0: // CO2H
-      AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0, lastCa, -180.0, obfragment, vic);
-      obfragment.AddBond(obfragment.NumAtoms(), lastCac, 1);
-      AddTerminus(1, "HO", obfragment.NumAtoms(), 1.064, lastCac, 120.0, lastO, 180.0, obfragment, vic);
-      break;
+        AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0,
+                    lastCa, -180.0, obfragment, vic);
+        obfragment.AddBond(obfragment.NumAtoms(), lastCac, 1);
+        AddTerminus(1, "HO", obfragment.NumAtoms(), 1.064,
+                    lastCac, 120.0, lastO, 180.0, obfragment, vic);
+        break;
       case 1: // CO2-
-      AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0, lastCa, -180.0, obfragment, vic);
-      break;
+        AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0,
+                    lastCa, -180.0, obfragment, vic);
+        break;
       default:
-      break;
+        break;
     }
 
     obfragment.EndModify();
-    if (obfragment.NumAtoms()) { 
+    if (obfragment.NumAtoms()) {
       // Don't do all this work, if there's nothing to do
       InternalToCartesian(vic,obfragment);
       OBBitVec allAtoms;
@@ -216,7 +226,8 @@ namespace Avogadro {
 
       Molecule fragment;
       fragment.setOBMol(&obfragment);
-      emit performCommand(new InsertFragmentCommand(m_molecule, fragment, m_widget, tr("Insert Peptide")));
+      emit performCommand(new InsertFragmentCommand(m_molecule, fragment,
+                                                    m_widget, tr("Insert Peptide")));
     }
   }
 
@@ -250,12 +261,17 @@ namespace Avogadro {
       stereoGroup->addButton(m_dialog->lStereoButton, 1);
       stereoGroup->setExclusive(true);
 
-      connect(stereoGroup, SIGNAL(buttonClicked(int)), this, SLOT(setStereo(int)));
+      connect(stereoGroup, SIGNAL(buttonClicked(int)),
+              this, SLOT(setStereo(int)));
 
-      connect(m_dialog->structureCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(setStructureType(int)));
-      connect(m_dialog->phiSpin, SIGNAL(valueChanged(double)), this, SLOT(setPhi(double)));
-      connect(m_dialog->psiSpin, SIGNAL(valueChanged(double)), this, SLOT(setPsi(double)));
-      connect(m_dialog->insertButton, SIGNAL(clicked()), this, SLOT(performInsert()));
+      connect(m_dialog->structureCombo, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setStructureType(int)));
+      connect(m_dialog->phiSpin, SIGNAL(valueChanged(double)),
+              this, SLOT(setPhi(double)));
+      connect(m_dialog->psiSpin, SIGNAL(valueChanged(double)),
+              this, SLOT(setPsi(double)));
+      connect(m_dialog->insertButton, SIGNAL(clicked()),
+              this, SLOT(performInsert()));
 
       // Set the amino buttons to update the sequence
       foreach(QToolButton *child, m_dialog->findChildren<QToolButton*>()) {
@@ -263,7 +279,7 @@ namespace Avogadro {
       }
       connect(m_dialog, SIGNAL(destroyed()), this, SLOT(dialogDestroyed()));
     }
-    m_dialog->sequenceText->setPlainText(QString());    
+    m_dialog->sequenceText->setPlainText(QString());
     updateDialog();
   }
 
@@ -288,7 +304,7 @@ namespace Avogadro {
       QString sequenceText = m_dialog->sequenceText->toPlainText();
       if (!sequenceText.isEmpty())
         sequenceText += '-'; // divider between amino acids
-      
+
       sequenceText += button->text();
 
       m_dialog->sequenceText->setPlainText(sequenceText);
@@ -337,18 +353,20 @@ namespace Avogadro {
       break;
     }
   }
-  
+
   void InsertPeptideExtension::dialogDestroyed()
   {
     m_dialog = 0;
   }
-  
-  void AddResidue(QString residue, bool lStereo, 
+
+  void AddResidue(QString residue, bool lStereo,
                   OBMol &mol, vector<OBInternalCoord*> &vic,
                   const char chain)
   {
     QString filename;
-    filename = QCoreApplication::applicationDirPath() + "/../share/avogadro/builder/amino/";
+    /// TODO Make this work in the build directory.
+    filename = QCoreApplication::applicationDirPath()
+               + "/../share/avogadro/builder/amino/";
 
     if (residue != "gly") {
       if (lStereo)
@@ -357,20 +375,20 @@ namespace Avogadro {
         filename += "d-";
     }
     filename += residue + ".zmat";
-    
+
     ifstream ifs;
     ifs.open(filename.toAscii());
-    
+
     if (!ifs) { // file doesn't exist
-      qDebug() << " Cannout open residue file: " << filename;
+      qDebug() << " Cannot open residue file: " << filename;
       return;
     }
-    
+
     // Offset:
     //  When we add the internal coordinates, we have to increment
     //  based on the size of the molecule so far
     unsigned int offset = mol.NumAtoms();
-    
+
     // setup the parent residue
     int prevRes = mol.NumResidues() + 1;
     OBResidue *res = mol.NewResidue();
@@ -378,16 +396,16 @@ namespace Avogadro {
     res->SetChain(chain);
     // needs to be in uppercase
     res->SetName(residue.toUpper().toStdString());
-    
+
     // Read in an amino z-matrix
     // similar to MOPAC zmat format
     char buffer[BUFF_SIZE];
     vector<string> vs;
     OBAtom *atom;
-    
+
     while (ifs.getline(buffer, BUFF_SIZE)) {
       tokenize(vs, buffer);
-      
+
       atom = mol.NewAtom();
       atom->SetAtomicNum(etab.GetAtomicNum(vs[0].c_str()));
       atom->SetPartialCharge(atof(vs[7].c_str()));
@@ -396,12 +414,12 @@ namespace Avogadro {
       res->SetSerialNum(atom, mol.NumAtoms());
       if (vs.size() == 9)
         res->SetAtomID(atom, vs[8]);
-      
+
       OBInternalCoord *coord = new OBInternalCoord;
       coord->_dst = atof(vs[1].c_str());
       coord->_ang = atof(vs[2].c_str());
       coord->_tor = atof(vs[3].c_str());
-      
+
       unsigned int index;
       // Set _a
       index = atoi(vs[4].c_str());
@@ -416,18 +434,18 @@ namespace Avogadro {
       else
         coord->_b = NULL;
       // Set _c
-      index = atoi(vs[6].c_str());    
+      index = atoi(vs[6].c_str());
       if (index > 0 && index <= mol.NumAtoms())
         coord->_c = mol.GetAtom(index + offset);
       else
         coord->_c = NULL;
-      
+
       vic.push_back(coord);
     }
   }
-  
-  void AddTerminus(int element, QString atomID, 
-    int a, double distance, 
+
+  void AddTerminus(int element, QString atomID,
+    int a, double distance,
     int b, double angle,
     int c, double dihedral,
     OBMol &mol, vector<OBInternalCoord*> &vic)
@@ -463,4 +481,3 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_EXPORT_PLUGIN2(insertpeptideextension, Avogadro::InsertPeptideExtensionFactory)
-
