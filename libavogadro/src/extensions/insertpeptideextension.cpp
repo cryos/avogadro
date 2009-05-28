@@ -161,13 +161,10 @@ namespace Avogadro {
         switch (m_dialog->nGroupCombo->currentIndex()) {
           case 0: // NH2
           AddTerminus(1, "HN", newN, 1.016, newCa, 120.0, newCac, 175.0, obfragment, vic);
-          obfragment.AddBond(obfragment.NumAtoms(), newN, 1);
           break;
           case 1: // NH3+
           AddTerminus(1, "HN", newN, 1.016, newCa, 109.5, newCac, 117.0, obfragment, vic);
-          obfragment.AddBond(obfragment.NumAtoms(), newN, 1);
           AddTerminus(1, "2HN", newN, 1.016, newCa, 109.5, newCac, -117.0, obfragment, vic);
-          obfragment.AddBond(obfragment.NumAtoms(), newN, 1);
           break;
           default:
           break;
@@ -195,11 +192,9 @@ namespace Avogadro {
       AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0, lastCa, -180.0, obfragment, vic);
       obfragment.AddBond(obfragment.NumAtoms(), lastCac, 1);
       AddTerminus(1, "HO", obfragment.NumAtoms(), 1.064, lastCac, 120.0, lastO, 180.0, obfragment, vic);
-      obfragment.AddBond(obfragment.NumAtoms(), obfragment.NumAtoms() - 1, 1);
       break;
       case 1: // CO2-
       AddTerminus(8, "OXT", lastCac, 1.351, lastO, 120.0, lastCa, -180.0, obfragment, vic);
-      obfragment.AddBond(obfragment.NumAtoms(), lastCac, 1);
       break;
       default:
       break;
@@ -430,6 +425,8 @@ namespace Avogadro {
     OBMol &mol, vector<OBInternalCoord*> &vic)
     {
       OBResidue *res = mol.GetResidue(mol.NumResidues() - 1);
+      if (!res)
+        return; // can't do anything
 
       OBAtom *atom;
 
@@ -448,6 +445,9 @@ namespace Avogadro {
       coord->_a = mol.GetAtom(a);
       coord->_b = mol.GetAtom(b);
       coord->_c = mol.GetAtom(c);
+
+      // Add a bond between the recently created atom and our "a"
+      mol.AddBond(mol.NumAtoms(), a, 1);
 
       vic.push_back(coord);
     }
