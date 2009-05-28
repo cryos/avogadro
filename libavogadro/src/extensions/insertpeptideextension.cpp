@@ -352,9 +352,9 @@ namespace Avogadro {
 
     if (residue != "gly") {
       if (lStereo)
-        filename += "L-";
+        filename += "l-";
       else // D stereo
-        filename += "D-";
+        filename += "d-";
     }
     filename += residue + ".zmat";
     
