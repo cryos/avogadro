@@ -29,8 +29,8 @@ include (TestIfWeNeedFPermissive)
 
 # use mulithreaded dll runtime on windows when using MSVC
 if (MSVC)
-  # FIXME From what I can tell this is really hackish - prevents Windows debug builds
-  set(CMAKE_CXX_FLAGS_RELEASE "/MD /MP ${CMAKE_CXX_FLAGS}")
+  # Make sure the build is parallelised for faster builds
+  set(CMAKE_CXX_FLAGS"${CMAKE_CXX_FLAGS} /MP")
   # Do not generate manifests for the plugins - caused issues loading plugins
   set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
 endif(MSVC)
@@ -88,8 +88,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 
   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
   # they will not replace them.
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG")
-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DQT_NO_DEBUG")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
 
   TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
@@ -109,9 +108,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "Enabling the SSE2 instruction set")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
   endif(WITH_SSE2)
-else(CMAKE_COMPILER_IS_GNUCXX)
-  set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -DQT_NO_DEBUG")
-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DQT_NO_DEBUG")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 set(QT_MIN_VERSION "4.4.0") # we need at least version 4.3 of Qt now
