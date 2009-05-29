@@ -356,6 +356,19 @@ namespace Avogadro
           m_forceField->UpdateCoordinates( mol );
           assert( mol.NumAtoms() == m_molecule->numAtoms() );
           double *coordPtr = mol.GetCoordinates();
+          // forces
+          if (mol.HasData(OBGenericDataType::ConformerData)) {
+            OBConformerData *cd = (OBConformerData*) mol.GetData(OBGenericDataType::ConformerData);
+            const vector<vector<vector3> > &allForces = cd->GetForces();
+            if (allForces.size()) {
+              const vector<vector3> &forces = allForces[0];
+              if (forces.size() == mol.NumAtoms()) {
+                foreach(Atom* atom, m_molecule->atoms()) {
+                  atom->setForceVector(Eigen::Vector3d(forces[atom->index()].AsArray()));
+                }
+              }
+            }
+          }
           foreach (Atom *atom, m_molecule->atoms()) {
             atom->setPos(Eigen::Vector3d(coordPtr));
             coordPtr += 3;
@@ -380,6 +393,20 @@ namespace Avogadro
           m_forceField->UpdateCoordinates( mol );
           assert( mol.NumAtoms() == m_molecule->numAtoms() );
           double *coordPtr = mol.GetCoordinates();
+          // forces
+          if (mol.HasData(OBGenericDataType::ConformerData)) {
+            OBConformerData *cd = (OBConformerData*) mol.GetData(OBGenericDataType::ConformerData);
+            const vector<vector<vector3> > &allForces = cd->GetForces();
+            if (allForces.size()) {
+              const vector<vector3> &forces = allForces[0];
+              if (forces.size() == mol.NumAtoms()) {
+                foreach(Atom* atom, m_molecule->atoms()) {
+                  atom->setForceVector(Eigen::Vector3d(forces[atom->index()].AsArray()));
+                }
+              }
+            }
+          }
+ 
           foreach (Atom *atom, m_molecule->atoms()) {
             atom->setPos(Eigen::Vector3d(coordPtr));
             coordPtr += 3;
