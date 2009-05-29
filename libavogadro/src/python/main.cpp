@@ -41,7 +41,7 @@ void export_Residue();
 void export_Tool();
 void export_ToolGroup();
 
-BOOST_PYTHON_MODULE(Avogadro) {
+BOOST_PYTHON_MODULE(_Avogadro) {
 
   try { import("PyQt4.QtCore"); } catch(...) {} // needed for toPyQt(...)
   try { import("PyQt4.QtGui"); } catch(...) {} // needed for toPyQt(...)

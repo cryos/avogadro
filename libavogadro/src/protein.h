@@ -41,6 +41,12 @@ namespace Avogadro {
    * @class Protein protein.h <avogadro/protein.h>
    * @brief Representation of a protein, including secondary structure
    *
+   * The Protein class helps other parts of the library or plugins to work
+   * with proteins. If the molecule was read from a pdb file, an attempt
+   * will be made to get the secondary structure information from the HELIX
+   * and SHEET lines. If this fails, a simplified version of the DSSP 
+   * algorithm is used.
+   *
    * http://en.wikipedia.org/wiki/Secondary_structure#The_DSSP_code
    *
    * The secondary structure is assigned based on hydrogen bonding
@@ -73,33 +79,46 @@ namespace Avogadro {
        * @param molecule The object parent.
        */
       Protein(Molecule *molecule);
+      /**
+       * Destructor.
+       */
       virtual ~Protein();
 
+      //! @name Chains
+      //@{
       /**
-       * @return QByteArray with codes for the protein's secondary structure.
+       * @return All the residues in the protein ordered by chain.
        */
-      QByteArray secondaryStructure() const;
-  
       const QVector<QVector<Residue*> >& chains() const;
-
-      bool isHelix(Residue *residue) const;
-      bool isSheet(Residue *residue) const;
-
       /**
        * @return the number of chains in this protein
        */
       int numChains() const;
-
+      /**
+       * @return All atom ids for chain with @p index.
+       */
       QList<unsigned long> chainAtoms(int index) const;
+      /**
+       * @return All residue ids for chain with @p index.
+       */
       QList<unsigned long> chainResidues(int index) const;
+      //@}
 
-      int num3turnHelixes() const;
-      int num4turnHelixes() const;
-      int num5turnHelixes() const;
-
-      QList<unsigned long> helix3BackboneAtoms(int index);
-      QList<unsigned long> helix4BackboneAtoms(int index);
-      QList<unsigned long> helix5BackboneAtoms(int index);
+      //! @name Secondary structure
+      //@{
+      /**
+       * @return QByteArray with codes for the protein's secondary structure.
+       */
+      QByteArray secondaryStructure() const;
+      /**
+       * @return True if the residue is part of a sheet.
+       */ 
+      bool isHelix(Residue *residue) const;
+      /**
+       * @return True if the residue is part of a sheet.
+       */
+      bool isSheet(Residue *residue) const;
+      //@}
 
     private:
       bool extractFromPDB();

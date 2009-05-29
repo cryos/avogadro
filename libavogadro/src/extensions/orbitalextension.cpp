@@ -358,7 +358,7 @@ namespace Avogadro
     if (!m_molecule)
       return;
 
-    NeighborList *nbrList = new NeighborList(m_molecule, 7, 2);
+    NeighborList *nbrList = new NeighborList(m_molecule, 7.0, false, 2);
 
     std::vector<QColor> colors;
     for(unsigned int i=0; i < mesh->vertices().size(); ++i) {

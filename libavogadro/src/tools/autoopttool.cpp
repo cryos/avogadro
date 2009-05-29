@@ -412,14 +412,29 @@ namespace Avogadro {
                     m_stepsSpinBox->value());
     m_thread->update();
   }
-
+  
   void AutoOptTool::finished(bool calculated)
   {
     if (m_running && calculated)
     {
+      QList<Atom*> atoms = m_glwidget->molecule()->atoms();
+
       OBMol mol = m_glwidget->molecule()->OBMol();
       m_forceField->GetCoordinates( mol );
-      QList<Atom*> atoms = m_glwidget->molecule()->atoms();
+      // forces
+      if (mol.HasData(OBGenericDataType::ConformerData)) {
+        OBConformerData *cd = (OBConformerData*) mol.GetData(OBGenericDataType::ConformerData);
+        const vector<vector<vector3> > &allForces = cd->GetForces();
+        if (allForces.size()) {
+          const vector<vector3> &forces = allForces[0];
+          if (forces.size() == mol.NumAtoms()) {
+            foreach(Atom* atom, atoms) {
+              atom->setForceVector(Eigen::Vector3d(forces[atom->index()].AsArray()));
+            }
+          }
+        }
+      }
+      // coordinates
       double *coordPtr = mol.GetCoordinates();
       foreach(Atom* atom, atoms) {
         atom->setPos(Eigen::Vector3d(coordPtr));

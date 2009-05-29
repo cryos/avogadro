@@ -44,9 +44,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
-
-#include <avogadro/point.h>
-#include <avogadro/line.h>
+#include <avogadro/color.h>
 
 // Include static engine headers
 #include "engines/bsdyengine.h"
@@ -164,7 +162,6 @@ namespace Avogadro {
                         renderAxes(false),
                         renderDebug(false),
                         dlistQuick(0), dlistOpaque(0), dlistTransparent(0),
-                        clickedPrimitive(0),
                         pd(0)
     {
     }
@@ -238,8 +235,6 @@ namespace Avogadro {
     GLuint                 dlistQuick;
     GLuint                 dlistOpaque;
     GLuint                 dlistTransparent;
-
-    Primitive             *clickedPrimitive;
 
     /**
       * Member GLPainterDevice which is passed to the engines.
@@ -706,35 +701,6 @@ namespace Avogadro {
     return d->renderDebug;
   }
 
-  bool GLWidget::renderPrimitives()
-  {
-    QVector<int> ids(Primitive::LastType, 0);
-    foreach ( Primitive *primitive, d->primitives) {
-      switch (primitive->type()) {
-        case Primitive::PointType:
-          {
-          Point *point = static_cast<Point*>(primitive);
-          d->pd->painter()->setColor( point->color() );
-          d->pd->painter()->setName( Primitive::PointType, ids[Primitive::PointType]++ );
-          d->pd->painter()->drawSphere( &point->pos(), point->radius() );
-          }
-          break;
-        case Primitive::LineType:
-          {
-          Line *line = static_cast<Line*>(primitive);
-          d->pd->painter()->setColor( line->color() );
-          d->pd->painter()->setName( Primitive::LineType, ids[Primitive::LineType]++ );
-          d->pd->painter()->drawLine( line->begin(), line->end(), line->width() );
-          }
-          break;
-        default:
-          break;
-      }
-    }
-
-    return true;
-  }
-
   void GLWidget::render()
   {
     if (!d->molecule) {
@@ -839,9 +805,6 @@ namespace Avogadro {
         }
       }
     }
-
-    // Render graphical primitives like arrows, points, planes and so on...
-    renderPrimitives();
 
     // If enabled draw the axes
     if (d->renderAxes) renderAxesOverlay();
@@ -1075,25 +1038,8 @@ namespace Avogadro {
 
   void GLWidget::mousePressEvent( QMouseEvent * event )
   {
-    d->clickedPrimitive = computeClickedPrimitive( event->pos() );
-
     // Set the event to ignored, check whether any tools accept it
     event->ignore();
-
-    if ( d->clickedPrimitive ) {
-      switch (d->clickedPrimitive->type()) {
-        case Primitive::PointType:
-          {
-          Point *point = static_cast<Point*>(d->clickedPrimitive);
-          point->mousePressed( event );
-          qDebug() << "point clicked!!";
-          }
-          return;
-        default:
-          d->clickedPrimitive = 0;
-          break;
-      }
-    }
 
     if ( d->tool ) {
       QUndoCommand *command = 0;
@@ -1116,22 +1062,7 @@ namespace Avogadro {
     // Set the event to ignored, check whether any tools accept it
     event->ignore();
 
-    if ( d->clickedPrimitive ) {
-      switch (d->clickedPrimitive->type()) {
-        case Primitive::PointType:
-          {
-          Point *point = static_cast<Point*>(d->clickedPrimitive);
-          point->mouseReleased( event );
-          qDebug() << "point clicked!!";
-          }
-          return;
-        default:
-          break;
-      }
-
-      d->clickedPrimitive = 0;
-    }
-    else if ( d->tool ) {
+    if ( d->tool ) {
       QUndoCommand *command;
       command = d->tool->mouseReleaseEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
@@ -1169,21 +1100,7 @@ namespace Avogadro {
 #ifdef ENABLE_THREADED_GL
     d->renderMutex.unlock();
 #endif
-    if ( d->clickedPrimitive ) {
-      switch (d->clickedPrimitive->type()) {
-        case Primitive::PointType:
-          {
-          Point *point = static_cast<Point*>(d->clickedPrimitive);
-          point->mouseMoved( event );
-          qDebug() << "point clicked!!";
-          }
-          return;
-        default:
-          break;
-      }
-
-    }
-    else if ( d->tool ) {
+    if ( d->tool ) {
       QUndoCommand *command;
       command = d->tool->mouseMoveEvent( this, event );
       // If the mouse event is not accepted, pass it to the navigate tool
@@ -1719,8 +1636,6 @@ namespace Avogadro {
         return molecule()->atom(hit.name());
       else if(hit.type() == Primitive::BondType)
         return molecule()->bond(hit.name());
-      else if(hit.type() == Primitive::PointType)
-        return static_cast<Point *>( d->primitives.subList(Primitive::PointType).at(hit.name()) );
     }
     return 0;
   }

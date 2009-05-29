@@ -30,8 +30,10 @@ using namespace std;
 namespace Avogadro
 {
 
-  NeighborList::NeighborList(Molecule* mol, double rcut, int boxSize) : m_mol(mol), m_rcut(rcut)
+  NeighborList::NeighborList(Molecule* mol, double rcut, bool periodic, int boxSize)
   {
+    m_atoms = mol->atoms();
+    m_rcut = rcut;
     m_rcut2 = rcut*rcut;
     m_boxSize = boxSize;
     m_edgeLength = m_rcut / m_boxSize;
@@ -40,13 +42,28 @@ namespace Avogadro
     initOffsetMap();
     initOneTwo();
     initCells();
-    initGhostMap();
+    initGhostMap(periodic);
   }
 
-  QList<Atom*> NeighborList::nbrs(Atom *atom)
+  NeighborList::NeighborList(const QList<Atom*> &atoms, double rcut, bool periodic, int boxSize)
+  {
+    m_atoms = atoms;
+    m_rcut = rcut;
+    m_rcut2 = rcut*rcut;
+    m_boxSize = boxSize;
+    m_edgeLength = m_rcut / m_boxSize;
+    m_updateCounter = 0;
+
+    initOffsetMap();
+    initOneTwo();
+    initCells();
+    initGhostMap(periodic);
+  }
+
+  QList<Atom*> NeighborList::nbrs(Atom *atom, bool uniqueOnly)
   {
     m_r2.clear();
-    m_r2.reserve(m_mol->numAtoms());
+    m_r2.reserve(m_atoms.size());
     QList<Atom*> atoms;
     Eigen::Vector3i index(cellIndexes(atom->pos()));
 
@@ -61,9 +78,11 @@ namespace Avogadro
       unsigned int cell = cellIndex(m_ghostMap.at(ghostIndex(offset)));
 
       for (atom_iter j = m_cells[cell].begin(); j != m_cells[cell].end(); ++j) {
-        // make sure to only return unique pairs
-        if (atom->index() >= (*j)->index())
-          continue;
+        if (uniqueOnly) {
+          // make sure to only return unique pairs
+          if (atom->index() >= (*j)->index())
+            continue;
+        }
         if (IsOneTwo(atom->index(), (*j)->index()))
           continue;
         if (IsOneThree(atom->index(), (*j)->index()))
@@ -84,7 +103,7 @@ namespace Avogadro
   QList<Atom*> NeighborList::nbrs(const Eigen::Vector3f *pos)
   {
     m_r2.clear();
-    m_r2.reserve(m_mol->numAtoms());
+    m_r2.reserve(m_atoms.size());
     QList<Atom*> atoms;
     Eigen::Vector3d dpos(pos->cast<double>());
     Eigen::Vector3i index(cellIndexes(&dpos));
@@ -126,17 +145,26 @@ namespace Avogadro
 
   void NeighborList::initOneTwo()
   {
-    m_oneTwo.resize(m_mol->numAtoms());
-    m_oneThree.resize(m_mol->numAtoms());
+    unsigned int numAtoms = m_atoms.size();
+    if (!numAtoms)
+      return;
 
-    foreach (Atom *atom, m_mol->atoms()) {
+    m_oneTwo.resize(m_atoms.size());
+    m_oneThree.resize(m_atoms.size());
+
+    if (m_atoms.isEmpty())
+      return;
+
+    Molecule *molecule = dynamic_cast<Molecule*>(m_atoms.first()->parent());
+
+    foreach (Atom *atom, m_atoms) {
       foreach (unsigned long id1, atom->neighbors()) {
-        Atom *nbr1 = m_mol->atomById(id1);
+        Atom *nbr1 = molecule->atomById(id1);
         m_oneTwo[atom->index()].push_back(nbr1->index());
         m_oneTwo[nbr1->index()].push_back(atom->index());
 
         foreach (unsigned long id2, nbr1->neighbors()) {
-          Atom *nbr2 = m_mol->atomById(id2);
+          Atom *nbr2 = molecule->atomById(id2);
           if (atom->index() == nbr2->index())
             continue;
 
@@ -145,12 +173,13 @@ namespace Avogadro
         }
       }
     }
+
   }
 
   void NeighborList::initCells()
   {
     // find min & max
-    foreach (Atom *atom, m_mol->atoms()) {
+    foreach (Atom *atom, m_atoms) {
       Eigen::Vector3d pos = *(atom->pos());
 
       if (!atom->index()) {
@@ -189,7 +218,7 @@ namespace Avogadro
     // the last cell is always empty and can be used for all ghost cells
     // in non-periodic boundary conditions.
     m_cells.resize(m_xyDim * m_dim.z() + 1);
-    foreach (Atom *atom, m_mol->atoms()) {
+    foreach (Atom *atom, m_atoms) {
       m_cells[cellIndex(*(atom->pos()))].push_back(&*atom);
     }
   }

@@ -50,7 +50,6 @@ set(libavogadro_HDRS
   plotobject.h
   plotpoint.h
   plotwidget.h
-  line.h
   mesh.h
   meshgenerator.h
   molecule.h
@@ -63,7 +62,6 @@ set(libavogadro_HDRS
   periodictableview.h
   plugin.h
   pluginmanager.h
-  point.h
   primitive.h
   primitiveitemmodel.h
   primitivelist.h
