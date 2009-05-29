@@ -79,10 +79,19 @@ namespace Avogadro {
        * @return QByteArray with codes for the protein's secondary structure.
        */
       QByteArray secondaryStructure() const;
-  
+ 
+      /**
+       * @return All the residues in the protein ordered by chain.
+       */
       const QVector<QVector<Residue*> >& chains() const;
 
+      /**
+       * @return True if the residue is part of a sheet.
+       */ 
       bool isHelix(Residue *residue) const;
+      /**
+       * @return True if the residue is part of a sheet.
+       */
       bool isSheet(Residue *residue) const;
 
       /**
@@ -90,7 +99,14 @@ namespace Avogadro {
        */
       int numChains() const;
 
+
+      /**
+       * @return All atom ids for chain with @p index.
+       */
       QList<unsigned long> chainAtoms(int index) const;
+      /**
+       * @return All residue ids for chain with @p index.
+       */
       QList<unsigned long> chainResidues(int index) const;
 
       int num3turnHelixes() const;

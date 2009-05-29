@@ -67,25 +67,31 @@ namespace Avogadro {
   {
   }
 
+  unsigned long createUniqueHbondId(Atom *donorH, Atom *acceptor)
+  {
+    return acceptor->index() * static_cast<Molecule*>(acceptor->parent())->numAtoms() + donorH->index();
+  }
+
   bool HBondEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *molecule = const_cast<Molecule *>(pd->molecule());
-    OBMol mol = molecule->OBMol();
 
     pd->painter()->setColor(1.0, 1.0, 0.3);
     int stipple = 0xF0F0; // pattern for lines
 
-    NeighborList *nbrList = new NeighborList(molecule, m_radius, 1);
-    for (unsigned int i = 0; i < molecule->numAtoms(); ++i) {
-      Atom *atom = molecule->atom(i);
+    QList<unsigned long> rendered;
+
+    NeighborList *nbrList = new NeighborList(molecule, m_radius);
+    //for (unsigned int i = 0; i < molecule->numAtoms(); ++i) {
+    foreach(Atom *atom, atoms()) {
       bool atomIsH = atom->isHydrogen() ? true : false;
 
       if (!atomIsH && !isHbondAcceptor(atom))
           continue;
 
-      QList<Atom*> nbrs = nbrList->nbrs(atom);
+      // get ALL possible pairs for atom (uniqueOnly = false)
+      QList<Atom*> nbrs = nbrList->nbrs(atom, false);
       foreach(Atom *nbr, nbrs) {
-
         double angle = 180.0;
         Atom *hydrogen, *acceptor, *donor = 0;
 
@@ -115,6 +121,11 @@ namespace Avogadro {
 
         if (angle < m_angle)
           continue;
+
+        unsigned long HbondId = createUniqueHbondId(hydrogen, acceptor);
+        if (rendered.contains(HbondId))
+          continue;
+        rendered.append(HbondId);
 
         pd->painter()->drawMultiLine(*atom->pos(), *nbr->pos(), m_width, 1, stipple);
       } // for each nbr

@@ -56,12 +56,21 @@ namespace Avogadro
 
     public:
       /**
-       * Constructor.
+       * Constructor to include all atoms.
        * @param mol The molecule containing the atoms
        * @param rcut The cut-off distance.
        * @param boxSize The number of cells per rcut distance.
        */
-      NeighborList(Molecule *mol, double rcut, int boxSize = 1);
+      NeighborList(Molecule *mol, double rcut, bool periodic = false, int boxSize = 1);
+      /**
+       * Construcor.
+       * @param atoms The atoms
+       * @param rcut The cut-off distance.
+       * @param periodic Use periodic boundary conditions.
+       * @param The number of cells per rcut distance. 
+       */
+      NeighborList(const QList<Atom*> &atoms, double rcut, bool periodic = false, int boxSize = 1);
+
       /**
        * Update the cells. While minimizing or running MD simulations,
        * atoms move and can go from on cell into the next. This function
@@ -79,7 +88,7 @@ namespace Avogadro
        * @param atom The atom for which to return the near-neighbors
        * @return The near-neighbors for @p atom
        */
-      QList<Atom*> nbrs(Atom *atom);
+      QList<Atom*> nbrs(Atom *atom, bool uniqueOnly = true);
       /**
        * Get the near-neighbor atoms around @p pos. The squared distance is
        * checked and is cached for later use (see r2() function).
@@ -180,7 +189,7 @@ namespace Avogadro
       void initGhostMap(bool periodic = false);
       bool insideShpere(const Eigen::Vector3i &index);
 
-      Molecule                           *m_mol;
+      QList<Atom*>                        m_atoms;
       double                              m_rcut, m_rcut2;
       double                              m_edgeLength;
       int                                 m_boxSize;

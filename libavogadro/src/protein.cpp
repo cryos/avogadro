@@ -710,7 +710,7 @@ namespace Avogadro {
   void Protein::detectHBonds()
   {
     d->hbondPairs.resize(d->molecule->numResidues());
-    NeighborList neighborList(d->molecule, 4, 1);
+    NeighborList neighborList(d->molecule, 4.0);
 
     for (unsigned int i = 0; i < d->molecule->numAtoms(); ++i) {
       Atom *atom = d->molecule->atom(i);
