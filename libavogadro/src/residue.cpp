@@ -97,11 +97,11 @@ namespace Avogadro {
     int index = m_atoms.indexOf(id);
     if (index != -1 ) {
       if (m_atomId.size() == index) {
-        m_atomId.push_back(atomId);
+        m_atomId.push_back(atomId.trimmed());
         return true;
       }
       else if (index < m_atomId.size()) {
-        m_atomId[index] = atomId;
+        m_atomId[index] = atomId.trimmed();
         return true;
       }
       else {
