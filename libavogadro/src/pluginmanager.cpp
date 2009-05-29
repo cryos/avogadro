@@ -209,7 +209,7 @@ namespace Avogadro {
   // Sort extensions based on "usefulness" (currently unused)
   bool extensionGreaterThan(const Extension *first, const Extension *second)
   {
-    return first->usefulness() > second->usefulness();
+    return first->usefulness() < second->usefulness();
   }
 
   // Sort colors based on their translated names
@@ -258,7 +258,7 @@ namespace Avogadro {
       d->extensions.append(extension);
     }
 
-    qSort(d->extensions.begin(), d->extensions.end(), extensionGreaterThan);
+    //    qSort(d->extensions.begin(), d->extensions.end(), extensionGreaterThan);
 
     d->extensionsLoaded = true;
 
