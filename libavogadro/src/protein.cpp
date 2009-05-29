@@ -487,6 +487,7 @@ namespace Avogadro {
     return ids;
   }
 
+  /*
   int Protein::numHelixes(char c) const
   {
     int count = 0;
@@ -526,6 +527,7 @@ namespace Avogadro {
     d->num5turnHelixes = numHelixes('I');
     return d->num5turnHelixes;
   }
+  */
 
   QList<unsigned long> Protein::helixBackboneAtoms(char c, int index)
   {
@@ -565,6 +567,7 @@ namespace Avogadro {
     return ids;
   }
 
+  /*
   QList<unsigned long> Protein::helix3BackboneAtoms(int index)
   {
     return helixBackboneAtoms('G', index);
@@ -579,6 +582,7 @@ namespace Avogadro {
   {
     return helixBackboneAtoms('I', index);
   }
+  */
 
   int Protein::residueIndex(Residue *residue) const
   {
