@@ -31,6 +31,18 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
+# Should we build the update checking code?
+option(ENABLE_UPDATE_CHECKER
+  "Should the Avogadro update checking code be compiled?" ON)
+if(ENABLE_UPDATE_CHECKER)
+  add_definitions(-DENABLE_UPDATE_CHECKER)
+else(ENABLE_UPDATE_CHECKER)
+  list(REMOVE_ITEM avogadro_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/updatecheck.cpp")
+  list(REMOVE_ITEM avogadro_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/updatedialog.cpp")
+endif(ENABLE_UPDATE_CHECKER)
+
+message(STATUS "Source: ${avogadro_SRCS}")
+
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
 # Add GL2PS to the executable

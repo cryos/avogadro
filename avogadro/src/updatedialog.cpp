@@ -54,12 +54,11 @@ namespace Avogadro {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(mainText);
 
-    QHBoxLayout *okLayout = new QHBoxLayout(this);
+    QHBoxLayout *okLayout = new QHBoxLayout();
     okLayout->addStretch();
     okLayout->addWidget(okButton);
 
     layout->addLayout(okLayout);
-    setLayout(layout);
   }
 
   UpdateDialog::~UpdateDialog()
