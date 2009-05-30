@@ -75,25 +75,32 @@ namespace Avogadro {
     return true;
   }
 
-  Molecule * OpenbabelWrapper::openFile(const QString &fileName,
-                                        const QString &fileType,
-                                        const QString &fileOptions)
+  Molecule * OpenbabelWrapper::readMolecule(const QString &fileName,
+      const QString &fileType, const QString &fileOptions, QString *error)
   {
     // Check that the file can be read from disk
-    if (!canOpen(fileName, QFile::ReadOnly | QFile::Text))
+    if (!canOpen(fileName, QFile::ReadOnly | QFile::Text)) {
+      if (error)
+        error->append(QObject::tr("File %1 can not be opened for reading.").arg(fileName));
       return 0;
+    }
 
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *inFormat;
-    if (!fileType.isEmpty() && !conv.SetInFormat(fileType.toAscii().data()))
+    if (!fileType.isEmpty() && !conv.SetInFormat(fileType.toAscii().data())) {
       // Input format not supported
+      if (error)
+        error->append(QObject::tr("File type '%1' is not a supported for reading.").arg(fileType));
       return 0;
-    else {
+    } else {
       inFormat = conv.FormatFromExt(fileName.toAscii().data());
-      if (!conv.SetInFormat(inFormat))
+      if (!conv.SetInFormat(inFormat)) {
         // Input format not supported
+        if (error)
+          error->append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(fileName));
         return 0;
+      }
     }
 
     // set any options
@@ -115,19 +122,23 @@ namespace Avogadro {
       mol->setOBMol(obMol);
       mol->setFileName(fileName);
       return mol;
-    }
-    else
+    } else {
+      if (error)
+        error->append(QObject::tr("Reading a molecule from file '%1' failed.").arg(fileName));
       return 0;
+    }
   }
 
-  bool OpenbabelWrapper::saveFile(const Molecule *molecule,
-                                  const QString &fileName,
-                                  const QString &fileType)
+  bool OpenbabelWrapper::writeMolecule(const Molecule *molecule,
+      const QString &fileName, const QString &fileType, QString *error)
   {
     // Check that the file can be written to disk
-    if (!canOpen(fileName, QFile::WriteOnly | QFile::Text))
+    if (!canOpen(fileName, QFile::WriteOnly | QFile::Text)) {
       // Cannot write to the file
+      if (error)
+        error->append(QObject::tr("File %1 can not be opened for writing.").arg(fileName));
       return false;
+    }
     
     QString newFileName(fileName + ".new");
     QFile newFile(newFileName);
@@ -135,14 +146,19 @@ namespace Avogadro {
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *outFormat;
-    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii()))
+    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii())) {
       // Output format not supported
+      if (error)
+        error->append(QObject::tr("File type '%1' is not a supported for writing.").arg(fileType));
       return false;
-    else {
+    } else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
-      if (!conv.SetOutFormat(outFormat))
+      if (!conv.SetOutFormat(outFormat)) {
         // Output format not supported
+        if (error)
+          error->append(QObject::tr("File type for file '%1' is not a supported for writing.").arg(fileName));
         return false;
+      }
     }
 
     // Now attempt to write the molecule in
@@ -155,21 +171,26 @@ namespace Avogadro {
       QFile(fileName).remove();
       newFile.rename(fileName);
       return true;
-    }
-    else {
+    } else {
       newFile.remove();
+      if (error)
+        error->append(QObject::tr("Writing a molecule to file '%1' failed.").arg(fileName));
       return false;
     }
   }
 
   bool OpenbabelWrapper::writeConformers(const Molecule *molecule,
                                          const QString &fileName,
-                                         const QString &fileType)
+                                         const QString &fileType,
+                                         QString *error)
   {
     // Check that the file can be written to disk
-    if (!canOpen(fileName, QFile::WriteOnly | QFile::Text))
+    if (!canOpen(fileName, QFile::WriteOnly | QFile::Text)) {
       // Cannot write to the file
+      if (error)
+        error->append(QObject::tr("File %1 can not be opened for writing.").arg(fileName));
       return false;
+    }
     
     QString newFileName(fileName + ".new");
     QFile newFile(newFileName);
@@ -177,14 +198,19 @@ namespace Avogadro {
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
     OBFormat *outFormat;
-    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii()))
+    if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii())) {
       // Output format not supported
+      if (error)
+        error->append(QObject::tr("File type '%1' is not a supported for writing.").arg(fileType));
       return false;
-    else {
+    } else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
-      if (!conv.SetOutFormat(outFormat))
+      if (!conv.SetOutFormat(outFormat)) {
         // Output format not supported
+        if (error)
+          error->append(QObject::tr("File type for file '%1' is not a supported for writing.").arg(fileName));
         return false;
+      }
     }
 
     // Now attempt to write the molecule in
@@ -212,6 +238,9 @@ namespace Avogadro {
       newFile.rename(fileName);
       return true;
     } 
+ 
+    if (error)
+      error->append(QObject::tr("Writing conformers to file '%1' failed.").arg(fileName));
       
     newFile.remove();
     return false;
@@ -290,17 +319,30 @@ namespace Avogadro {
 
       void run()
       {
+        // Check that the file can be read from disk
+        if (!OpenbabelWrapper::canOpen(m_moleculeFile->m_fileName, QFile::ReadOnly | QFile::Text)) {
+          // Cannot read the file
+          m_moleculeFile->errors().append(QObject::tr("File %1 can not be opened for reading.").arg(
+                m_moleculeFile->m_fileName));
+          return;
+        }
+ 
         // Construct the OpenBabel objects, set the file type
         OBConversion conv;
         OBFormat *inFormat;
-        if (!m_moleculeFile->m_fileType.isEmpty() && !conv.SetInFormat(m_moleculeFile->m_fileType.toAscii().data()))
+        if (!m_moleculeFile->m_fileType.isEmpty() && !conv.SetInFormat(m_moleculeFile->m_fileType.toAscii().data())) {
           // Input format not supported
+          m_moleculeFile->errors().append(
+              QObject::tr("File type '%1' is not a supported for reading.").arg(m_moleculeFile->m_fileType));
           return;
-        else {
+        } else {
           inFormat = conv.FormatFromExt(m_moleculeFile->m_fileName.toAscii().data());
-          if (!conv.SetInFormat(inFormat))
+          if (!conv.SetInFormat(inFormat)) {
             // Input format not supported
+            m_moleculeFile->errors().append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(
+                  m_moleculeFile->m_fileName));
             return;
+          }
         }
 
         // set any options

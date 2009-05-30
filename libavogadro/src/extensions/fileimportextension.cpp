@@ -178,7 +178,7 @@ namespace Avogadro
 
     OBMol *obmol = new OBMol; */
     // Turn off bond perception
-    Molecule *mol = OpenbabelWrapper::openFile(fileName, "", "b");
+    Molecule *mol = OpenbabelWrapper::readMolecule(fileName, "", "b");
     if (mol) {
       Molecule *oldMol = m_molecule;
       qDebug() << "Attempting to read parm file...";
