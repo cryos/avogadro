@@ -49,6 +49,7 @@ namespace Avogadro {
   class Molecule;
   class Engine;
   class Extension;
+  class UpdateCheck;
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -186,6 +187,7 @@ namespace Avogadro {
     private:
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
+      UpdateCheck *m_updateCheck;
       static const int m_configFileVersion;
 
       Ui::MainWindow ui;

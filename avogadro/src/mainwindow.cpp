@@ -38,6 +38,8 @@
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
 
+#include "updatecheck.h"
+
 //#ifdef Q_WS_MAC
 //#include "macchempasteboard.h"
 //#endif
@@ -348,6 +350,8 @@ namespace Avogadro
 
     ui.projectDock->close();
     ui.enginesDock->close();
+
+    m_updateCheck = new UpdateCheck(this);
 
     // Disable the detach view option for now
     // FIXME
@@ -2261,10 +2265,8 @@ namespace Avogadro
     }
     else
       qDebug() << "Versioned config - loading.";
-    // On Mac or Windows, the application should remember
-    // window positions. On Linux, it's handled by the window manager
 
-    // Only remember a window if it's the first one -- others will be offset
+    // Only remember a window if it is the first one - others will be offset
     if (getMainWindowCount() == 1) {
       QPoint originalPosition = pos();
       QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
@@ -2339,6 +2341,10 @@ namespace Avogadro
     ui.actionQuickRender->setChecked(quickRender());
 
     ui.actionCloseView->setEnabled(count > 1);
+
+    // Load the updated version configuration settings and then run it
+    m_updateCheck->readSettings(settings);
+    m_updateCheck->checkForUpdates();
   }
 
   void MainWindow::writeSettings()
@@ -2380,6 +2386,9 @@ namespace Avogadro
       color->writeSettings(settings);
     }
     settings.endGroup();
+
+    // Write the updated version configuration settings
+    m_updateCheck->writeSettings(settings);
   }
 
   void MainWindow::addActionsToMenu(Extension *extension)
@@ -2786,15 +2795,15 @@ namespace Avogadro
     emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
 
-void MainWindow::toggleToolSettingsDock()
-{
-  d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
-}
+  void MainWindow::toggleToolSettingsDock()
+  {
+    d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
+  }
 
-void MainWindow::toggleEngineSettingsDock()
-{
-  ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
-}
+  void MainWindow::toggleEngineSettingsDock()
+  {
+    ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+  }
 
 } // end namespace Avogadro
 

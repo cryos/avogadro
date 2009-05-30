@@ -1,4 +1,5 @@
 set(QT_USE_QTOPENGL true)
+set(QT_USE_QTNETWORK true)
 
 if(WIN32)
   set(QT_USE_QTMAIN true)
