@@ -180,6 +180,21 @@ namespace Avogadro {
     d->ready = value;
   }
  
+  const QString& MoleculeFile::errors() const
+  {
+    return m_error;
+  }
+
+  QString& MoleculeFile::errors()
+  {
+    return m_error;
+  }
+
+  void MoleculeFile::clearErrors()
+  {
+    m_error.clear();
+  }
+
 }
 
 #include "moleculefile.moc"
