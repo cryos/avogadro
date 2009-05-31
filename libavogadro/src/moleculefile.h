@@ -73,6 +73,16 @@ namespace Avogadro {
        * vector if the opened file isn't a conformer file (see isConformerFile()).
        */
       const std::vector<std::vector<Eigen::Vector3d>*>& conformers() const;
+      /**
+       * @return Errors from reading/writing to the file.
+       */
+      const QString& errors() const;
+      /**
+       * Clear the errors. Errors are always appended to error(), so unless you 
+       * clear them explicitly, consecutive calls to errors() returns all errors
+       * from before plus the new ones (if any).
+       */
+      void clearErrors();
     Q_SIGNALS:
       void ready();
     protected Q_SLOTS:
@@ -81,6 +91,7 @@ namespace Avogadro {
       MoleculeFile(const QString &fileName, const QString &fileType,
                    const QString &fileOptions);
       QStringList& titles();
+      QString& errors();
       std::vector<std::streampos>& streampos();
       std::vector<std::vector<Eigen::Vector3d>*>& conformers();
       void setConformerFile(bool value);
@@ -88,6 +99,7 @@ namespace Avogadro {
  
       MoleculeFilePrivate * const d; 
       QString m_fileName, m_fileType, m_fileOptions;
+      QString m_error;
   };
 
 } // End namespace Avogadro

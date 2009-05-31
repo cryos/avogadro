@@ -62,9 +62,10 @@ namespace Avogadro {
      * @param fileOptions Options for reading the molecule file, such as bonding.
      * @return The Molecule object loaded, 0 if the file could not be loaded.
      */
-    static Molecule * openFile(const QString &fileName,
-                               const QString &fileType = QString(),
-                               const QString &fileOptions = QString());
+    static Molecule * readMolecule(const QString &fileName,
+                                   const QString &fileType = QString(),
+                                   const QString &fileOptions = QString(),
+                                   QString *error = 0);
 
     /**
      * Static function to save a single molecule to a file. If writing was 
@@ -75,9 +76,10 @@ namespace Avogadro {
      * extension parsing.
      * @return True on success, false on failure.
      */
-    static bool saveFile(const Molecule *molecule,
-                         const QString &fileName,
-                         const QString &fileType = QString());
+    static bool writeMolecule(const Molecule *molecule,
+                              const QString &fileName,
+                              const QString &fileType = QString(),
+                              QString *error = 0);
 
     /**
      * Static function to save a all conformers in a molecule to a file. If 
@@ -92,14 +94,29 @@ namespace Avogadro {
      */ 
     static bool writeConformers(const Molecule *molecule,
                                 const QString &fileName,
-                                const QString &fileType = QString());
+                                const QString &fileType = QString(),
+                                QString *error = 0);
 
 
+    /**
+     * Read an entire file, possibly containing multiple molecules in a 
+     * separate thread and return a MoleculeFile object with the result.
+     *
+     * By default, the @p wait parameter is set to true and the function
+     * waits for the thread to finish before returning. If set to 
+     * false, listening to the MoleculeFile::ready() signal will be 
+     * emitted when the results are ready.
+     * @param fileName The full path to the file to be saved.
+     * @param fileType Optional file type parameter - override default file
+     * extension parsing.
+     * @param fileOptions Options for reading the molecule file, such as bonding.
+     * @param wait Wait for the thread to finish before returning.
+     * @return MoleculeFile with (future) results.
+     */
     static MoleculeFile* readFile(const QString &fileName,
                                   const QString &fileType = QString(),
                                   const QString &fileOptions = QString(),
                                   bool wait = true);
-
 
   };
 
