@@ -90,7 +90,7 @@ namespace Avogadro
     bool newVersionAvailable = false;
 
     // reply->canReadLine() always returns false, so this seems to best approach
-    QStringList lines = QString(reply->readAll()).split("\n");
+    QStringList lines = QString(reply->readAll()).split('\n');
     for(int i = 0; i < lines.size(); ++i) {
       if (lines[i] == "[Version]" && lines.size() > ++i) {
         version = lines[i];
@@ -106,8 +106,9 @@ namespace Avogadro
     }
 
     if (newVersionAvailable) {
-      UpdateDialog info(qobject_cast<QWidget *>(parent()), releaseNotes);
-      info.exec();
+      QPointer<UpdateDialog> info = new UpdateDialog(qobject_cast<QWidget *>(parent()), releaseNotes);
+      info->exec();
+      delete info;
     }
     // Now we have warned the user, set this version as the prompted version
     *m_versionPrompted = version;

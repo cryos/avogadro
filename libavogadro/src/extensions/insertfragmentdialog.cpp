@@ -25,7 +25,7 @@
 #include "insertfragmentdialog.h"
 #include "directorytreemodel.h"
 // Defines INSTALL_PREFIX among other things
-#include "config.h"
+#include "config.h" // krazy:exclude=includes
 
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>

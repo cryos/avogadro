@@ -22,6 +22,8 @@
 #include "application.h"
 #include "mainwindow.h"
 
+// The Krazy checker doesn't like this, but it's correct
+// krazy:excludeall=cpp
 #ifdef Q_OS_UNIX
 #  include "locale.h"
 #endif // Q_OS_UNIX

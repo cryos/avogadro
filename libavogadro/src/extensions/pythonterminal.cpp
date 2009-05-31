@@ -236,7 +236,7 @@ namespace Avogadro
           cursor.movePosition(QTextCursor::End);
           setTextCursor(cursor);
         } else {
-          // diplay cached command
+          // display cached command
           setText(toPlainText().left(m_cursorPos));
           QTextCursor cursor(textCursor());
           cursor.movePosition(QTextCursor::End);
@@ -268,7 +268,7 @@ namespace Avogadro
         }
         else
         {
-          // diplay cached command
+          // display cached command
           setText(toPlainText().left(m_cursorPos));
           QTextCursor cursor(textCursor());
           cursor.movePosition(QTextCursor::End);

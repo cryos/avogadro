@@ -121,7 +121,7 @@ namespace Avogadro {
     // Now the work begins
     // Get the sequence (in lower case)
     obfragment.BeginModify();
-    foreach (const QString residue, sequence.split('-')) {
+    foreach (const QString &residue, sequence.split('-')) {
       AddResidue(residue, lStereo, obfragment, vic, chain);
       if (!obfragment.NumAtoms()) {// Residue was not added - bail
         qDebug() << "Problem adding new residues - file not read.";
@@ -274,7 +274,7 @@ namespace Avogadro {
               this, SLOT(performInsert()));
 
       // Set the amino buttons to update the sequence
-      foreach(QToolButton *child, m_dialog->findChildren<QToolButton*>()) {
+      foreach(const QToolButton *child, m_dialog->findChildren<QToolButton*>()) {
         connect(child, SIGNAL(clicked()), this, SLOT(updateText()));
       }
       connect(m_dialog, SIGNAL(destroyed()), this, SLOT(dialogDestroyed()));

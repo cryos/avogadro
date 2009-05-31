@@ -24,6 +24,8 @@
  **********************************************************************/
 
 #include "global.h"
+// The Krazy checker doesn't like this, but it's correct
+// krazy:excludeall=includes
 #include "config.h"
 
 #include <QLocale>

@@ -71,7 +71,8 @@ namespace Avogadro {
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
     PrimitiveList list = engine->primitives();
-    foreach(const int row, d->rowTypeMap.keys())
+    // This is a good foreach, but Krazy doesn't like it, for some reason
+    foreach(const int row, d->rowTypeMap.keys()) // krazy:exclude=foreach
     {
       d->size[row] = list.count(d->rowTypeMap[row]);
     }

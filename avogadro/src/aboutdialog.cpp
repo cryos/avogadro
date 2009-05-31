@@ -17,7 +17,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 #include "aboutdialog.h"
-#include "config.h"
+#include "config.h" // krazy:exclude=includes
 
 #include <QtCore/QVector>
 #include <QtGui/QMouseEvent>

@@ -42,9 +42,9 @@
 #include <iostream>
 
 // get the SVN revision string
-#include "config.h"
+#include "config.h" // krazy:exclude=includes
 
-#include <avogadro/pluginmanager.h>
+// #include <avogadro/pluginmanager.h>
 
 // Avogadro Includes
 #include "mainwindow.h"
