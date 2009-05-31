@@ -3,7 +3,7 @@
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Copyright (C) 2006-2008 by Donald E. Curtis
-  Copyright (C) 2007-2008 by Marcus D. Hanwell
+  Copyright (C) 2007-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -37,6 +37,10 @@
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
 #include "enginecolorswidget.h"
+
+#ifdef ENABLE_UPDATE_CHECKER
+  #include "updatecheck.h"
+#endif
 
 //#ifdef Q_WS_MAC
 //#include "macchempasteboard.h"
@@ -348,6 +352,10 @@ namespace Avogadro
 
     ui.projectDock->close();
     ui.enginesDock->close();
+
+#ifdef ENABLE_UPDATE_CHECKER
+    m_updateCheck = new UpdateCheck(this);
+#endif
 
     // Disable the detach view option for now
     // FIXME
@@ -2256,15 +2264,10 @@ namespace Avogadro
     QSettings settings;
     // Check if the config file version exists and whether to the saved settings
     if (settings.value("ConfigVersion", 0) != m_configFileVersion) {
-      qDebug() << "Unversioned configuration - clearing.";
       settings.clear();
     }
-    else
-      qDebug() << "Versioned config - loading.";
-    // On Mac or Windows, the application should remember
-    // window positions. On Linux, it's handled by the window manager
 
-    // Only remember a window if it's the first one -- others will be offset
+    // Only remember a window if it is the first one - others will be offset
     if (getMainWindowCount() == 1) {
       QPoint originalPosition = pos();
       QPoint newPosition = settings.value("pos", QPoint(200, 200)).toPoint();
@@ -2310,11 +2313,9 @@ namespace Avogadro
 
     int count = settings.beginReadArray("view");
     if(count < 1)
-    {
       count = 1;
-    }
-    for(int i = 0; i<count; i++)
-    {
+
+    for(int i = 0; i<count; i++) {
       settings.setArrayIndex(i);
       QWidget *widget = new QWidget();
       QVBoxLayout *layout = new QVBoxLayout( widget );
@@ -2339,6 +2340,12 @@ namespace Avogadro
     ui.actionQuickRender->setChecked(quickRender());
 
     ui.actionCloseView->setEnabled(count > 1);
+
+#ifdef ENABLE_UPDATE_CHECKER
+    // Load the updated version configuration settings and then run it
+    m_updateCheck->readSettings(settings);
+    m_updateCheck->checkForUpdates();
+#endif
   }
 
   void MainWindow::writeSettings()
@@ -2380,6 +2387,11 @@ namespace Avogadro
       color->writeSettings(settings);
     }
     settings.endGroup();
+
+#ifdef ENABLE_UPDATE_CHECKER
+    // Write the updated version configuration settings
+    m_updateCheck->writeSettings(settings);
+#endif
   }
 
   void MainWindow::addActionsToMenu(Extension *extension)
@@ -2786,15 +2798,15 @@ namespace Avogadro
     emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
 
-void MainWindow::toggleToolSettingsDock()
-{
-  d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
-}
+  void MainWindow::toggleToolSettingsDock()
+  {
+    d->toolSettingsDock->setVisible(! d->toolSettingsDock->isVisible());
+  }
 
-void MainWindow::toggleEngineSettingsDock()
-{
-  ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
-}
+  void MainWindow::toggleEngineSettingsDock()
+  {
+    ui.enginesDock->setVisible(! ui.enginesDock->isVisible() );
+  }
 
 } // end namespace Avogadro
 

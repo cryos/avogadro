@@ -3,7 +3,7 @@
 
   Copyright (C) 2006-2007 by Geoffrey R. Hutchison
   Copyright (C) 2006-2008 by Donald E. Curtis
-  Copyright (C) 2007-2008 by Marcus D. Hanwell
+  Copyright (C) 2007-2009 by Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -49,6 +49,9 @@ namespace Avogadro {
   class Molecule;
   class Engine;
   class Extension;
+#ifdef ENABLE_UPDATE_CHECKER
+  class UpdateCheck;
+#endif
 
   class MainWindowPrivate;
   class MainWindow : public QMainWindow
@@ -187,6 +190,10 @@ namespace Avogadro {
       friend class MainWindowPrivate;
       MainWindowPrivate * const d;
       static const int m_configFileVersion;
+
+#ifdef ENABLE_UPDATE_CHECKER
+      UpdateCheck *m_updateCheck;
+#endif
 
       Ui::MainWindow ui;
 
