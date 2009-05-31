@@ -149,7 +149,7 @@ namespace Avogadro {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    map->set(a);
+    map->setFromPrimitive(a);
     pd->painter()->setColor(map);
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) );
@@ -162,7 +162,7 @@ namespace Avogadro {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    map->set(a);
+    map->setFromPrimitive(a);
     pd->painter()->setColor(map);
     pd->painter()->setName(a);
     pd->painter()->drawSphere( a->pos(), radius(a) + 0.2 );
@@ -181,12 +181,12 @@ namespace Avogadro {
     Vector3d v2 (*atom2->pos());
     Vector3d v3 (( v1 + v2 ) / 2);
 
-    map->set(atom1);
+    map->setFromPrimitive(atom1);
     pd->painter()->setColor(map);
     pd->painter()->setName(b);
     pd->painter()->drawCylinder( v1, v3, radius(atom1) );
 
-    map->set(atom2);
+    map->setFromPrimitive(atom2);
     pd->painter()->setColor(map);
     pd->painter()->setName(b);
     pd->painter()->drawCylinder( v3, v2, radius(atom1) );

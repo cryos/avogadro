@@ -82,7 +82,7 @@ namespace Avogadro{
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    map->set(a);
+    map->setFromPrimitive(a);
     pd->painter()->setColor(map);
 
     QVector<const Vector3d*> atoms;
@@ -96,7 +96,6 @@ namespace Avogadro{
       for (int j = 0; j < atoms.size(); j++)
         for (int k = 1; k < atoms.size(); k++)
           pd->painter()->drawTriangle(*atoms[i], *atoms[j], *atoms[k]);
-//      pd->painter()->drawTriangle(atoms[i], atoms[0], atoms[atoms.size()-1]);
     }
     // Disable face culling for ring structures.
     return true;

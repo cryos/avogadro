@@ -23,7 +23,7 @@
 
 #include "mainwindow.h"
 
-#include "config.h"
+#include "config.h" // krazy:exclude=includes
 
 #include "aboutdialog.h"
 #include "addenginedialog.h"
@@ -960,6 +960,7 @@ namespace Avogadro
     raise();
 
 #ifdef Q_WS_MAC
+    qDebug() << " close event ";
     unsigned int mainWindowCount = getMainWindowCount();
 
     if ( mainWindowCount == 1 && isVisible() ) {
@@ -1924,9 +1925,8 @@ namespace Avogadro
 
   void MainWindow::showAndActivate()
   {
-    showNormal();
+    setWindowState(windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
     raise();
-    activateWindow();
   }
 
   void MainWindow::fullScreen()
@@ -1979,6 +1979,7 @@ namespace Avogadro
   {
     d->toolSettingsDock->setWindowTitle(tool->settingsTitle());
     if ( tool->settingsWidget() ) {
+      qDebug() << tool->name();
       d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
     } else {
       d->toolSettingsStacked->setCurrentIndex( 0 );

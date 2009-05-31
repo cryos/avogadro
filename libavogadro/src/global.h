@@ -39,6 +39,8 @@
 #endif
 
 // If we are using a recent GCC version with visibility support use it
+// The Krazy checker doesn't like this, but it's a valid CMake conditional
+// krazy:excludeall=cpp
 #ifdef HAVE_GCC_VISIBILITY
   #define A_DECL_IMPORT __attribute__ ((visibility("default")))
   #define A_DECL_EXPORT __attribute__ ((visibility("default")))

@@ -25,7 +25,7 @@
  **********************************************************************/
 
 #include "pluginmanager.h"
-#include "config.h"
+#include "config.h" // krazy:exclude=includes
 
 #ifdef ENABLE_PYTHON
   #include "pythontool_p.h"

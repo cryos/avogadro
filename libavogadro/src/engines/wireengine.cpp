@@ -115,7 +115,7 @@ namespace Avogadro {
       glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * (size + 1.0));
     }
     else {
-      map->set(a);
+      map->setFromPrimitive(a);
       map->apply();
       glPointSize(OpenBabel::etab.GetVdwRad(a->atomicNumber()) * size);
     }
@@ -184,7 +184,7 @@ namespace Avogadro {
       }
     }
 
-    map->set(atom1);
+    map->setFromPrimitive(atom1);
     pd->painter()->setColor(map);
     // if have two of the same atoms, just draw one line
     if (atom1->atomicNumber() == atom2->atomicNumber()) {
@@ -196,7 +196,7 @@ namespace Avogadro {
     if (order != 1) pd->painter()->drawMultiLine(v1, v3, width, order, stipple);
     else pd->painter()->drawLine(v1, v3, width);
 
-    map->set(atom2);
+    map->setFromPrimitive(atom2);
     pd->painter()->setColor(map);
     if (order != 1) pd->painter()->drawMultiLine(v3, v2, width, order, stipple);
     else pd->painter()->drawLine(v3, v2, width);

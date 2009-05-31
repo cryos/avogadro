@@ -30,8 +30,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
-#include <avogadro/point.h>
-#include <avogadro/line.h>
 
 #include "ui_surfacesettingswidget.h"
 

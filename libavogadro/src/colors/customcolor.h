@@ -47,11 +47,6 @@ namespace Avogadro {
     CustomColor();
     virtual ~CustomColor();
 
-    /**
-     * Set the color based on the supplied Primitive
-     * If NULL is passed, do nothing */
-    virtual void set(const Primitive *);
-
     // In this case, the settings are everything!
     // We set our color based on the settings
     virtual QWidget* settingsWidget();
