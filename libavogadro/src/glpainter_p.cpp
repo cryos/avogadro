@@ -304,18 +304,19 @@ namespace Avogadro
 
   void GLPainter::setColor (const Color *color)
   {
-    d->color.set(color->red(), color->green(), color->blue(), color->alpha());
+    d->color.setFromRgba(color->red(), color->green(), color->blue(),
+                         color->alpha());
   }
 
   void GLPainter::setColor (const QColor *color)
   {
-    d->color.set(color->redF(), color->greenF(), color->blueF(),
-                 color->alphaF());
+    d->color.setFromRgba(color->redF(), color->greenF(), color->blueF(),
+                         color->alphaF());
   }
 
   void GLPainter::setColor ( float red, float green, float blue, float alpha )
   {
-    d->color.set(red, green, blue, alpha);
+    d->color.setFromRgba(red, green, blue, alpha);
   }
 
   void GLPainter::drawSphere (const Eigen::Vector3d &center, double radius)
@@ -1025,7 +1026,8 @@ namespace Avogadro
     // Normal or reverse winding?
     Color color;
     for(unsigned int i = 0; i < v.size(); ++i) {
-      color.set(c[i].redF(), c[i].greenF(), c[i].blueF(), d->color.alpha());
+      color.setFromRgba(c[i].redF(), c[i].greenF(), c[i].blueF(),
+                        d->color.alpha());
       color.applyAsMaterials();
       glNormal3fv(n[i].data());
       glVertex3fv(v[i].data());

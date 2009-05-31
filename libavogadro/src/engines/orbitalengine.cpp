@@ -44,8 +44,9 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
     m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true), m_colored(false)
   {
-    m_negColor.set(1.0, 0.0, 0.0, m_alpha);
-    m_posColor.set(0.0, 0.0, 1.0, m_alpha);
+    // default is red for negative, blue for positive
+    m_negColor.setFromRgba(1.0, 0.0, 0.0, m_alpha);
+    m_posColor.setFromRgba(0.0, 0.0, 1.0, m_alpha);
   }
 
   OrbitalEngine::~OrbitalEngine()
@@ -348,13 +349,13 @@ namespace Avogadro {
 
   void OrbitalEngine::setPosColor(const QColor& color)
   {
-    m_posColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
+    m_posColor.setFromRgba(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
   void OrbitalEngine::setNegColor(const QColor& color)
   {
-    m_negColor.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
+    m_negColor.setFromRgba(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 

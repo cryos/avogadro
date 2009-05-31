@@ -40,7 +40,7 @@ namespace Avogadro {
   /// Constructor
   CustomColor::CustomColor(): m_settingsWidget(NULL)
   {
-    Color::set(QColor(Qt::white));
+    Color::setFromQColor(QColor(Qt::white));
   }
 
   /// Destructor
@@ -78,13 +78,8 @@ namespace Avogadro {
 
   void CustomColor::colorChanged(QColor newColor)
   {
-    Color::set(newColor);
+    Color::setFromQColor(newColor);
     emit changed();
-  }
-
-  void CustomColor::set(const Primitive *)
-  {
-    // handled by the custom coloring
   }
 
   void CustomColor::writeSettings(QSettings &settings) const
@@ -94,7 +89,7 @@ namespace Avogadro {
 
   void CustomColor::readSettings(QSettings &settings)
   {
-    Color::set(settings.value("customcolor", QColor(Qt::white)).value<QColor>());
+    Color::setFromQColor(settings.value("customcolor", QColor(Qt::white)).value<QColor>());
   }
 
 }

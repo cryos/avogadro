@@ -138,7 +138,7 @@ namespace Avogadro {
     if (!map) map = pd->colorMap();
 
     foreach(Atom *a, atoms()) {
-      map->set(a);
+      map->setFromPrimitive(a);
       pd->painter()->setColor(map);
       pd->painter()->setName(a);
       pd->painter()->drawSphere(a->pos(), radius(a));
@@ -155,7 +155,7 @@ namespace Avogadro {
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
 
-    map->set(a);
+    map->setFromPrimitive(a);
     map->setAlpha(m_alpha);
     pd->painter()->setColor(map);
     pd->painter()->setName(a);

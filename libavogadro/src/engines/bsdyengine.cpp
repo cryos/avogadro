@@ -141,11 +141,11 @@ namespace Avogadro
       int order = 1;
       if (m_showMulti) order = b->order();
 
-      map->set(atom1);
+      map->setFromPrimitive(atom1);
       pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
-      map->set(atom2);
+      map->setFromPrimitive(atom2);
       pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     }
@@ -155,7 +155,7 @@ namespace Avogadro
 
     // Render the atoms
     foreach(const Atom *a, atoms()) {
-      map->set(a);
+      map->setFromPrimitive(a);
       pd->painter()->setColor(map);
       pd->painter()->drawSphere(a->pos(), radius(a));
     }
@@ -180,7 +180,7 @@ namespace Avogadro
     foreach(const Atom *a, atoms()) {
       // First render the atom if it is transparent.
       if (m_alpha < 0.999 && m_alpha > 0.001) {
-        map->set(a);
+        map->setFromPrimitive(a);
         map->setAlpha(m_alpha);
         pd->painter()->setColor(map);
         pd->painter()->drawSphere(a->pos(), radius(a));
@@ -219,12 +219,12 @@ namespace Avogadro
 
       // The "inner" bond has to be rendered first.
       if (m_alpha < 0.999 && m_alpha > 0.001) {
-        map->set(atom1);
+        map->setFromPrimitive(atom1);
         map->setAlpha(m_alpha);
         pd->painter()->setColor( map );
         pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
-        map->set(atom2);
+        map->setFromPrimitive(atom2);
         map->setAlpha(m_alpha);
         pd->painter()->setColor( map );
         pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
@@ -268,11 +268,11 @@ namespace Avogadro
                                          m_bondRadius, order, shift);
       }
       else {
-        map->set(atom1);
+        map->setFromPrimitive(atom1);
         pd->painter()->setColor(map);
         pd->painter()->drawMultiCylinder(v1, v3, m_bondRadius, order, shift);
 
-        map->set( atom2 );
+        map->setFromPrimitive( atom2 );
         pd->painter()->setColor(map);
         pd->painter()->drawMultiCylinder(v3, v2, m_bondRadius, order, shift);
       }
@@ -288,7 +288,7 @@ namespace Avogadro
         pd->painter()->drawSphere(a->pos(), SEL_ATOM_EXTRA_RADIUS + radius(a));
       }
       else {
-        map->set(a);
+        map->setFromPrimitive(a);
         pd->painter()->setColor(map);
         pd->painter()->drawSphere(a->pos(), radius(a));
       }

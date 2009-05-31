@@ -57,11 +57,11 @@ namespace Avogadro {
 
   Color::Color( const Primitive *p ): d(0)
   {
-    set(p);
+    setFromPrimitive(p);
   }
 
-  void Color::set(const GLfloat red, const GLfloat green,
-                  const GLfloat blue, const GLfloat alpha)
+  void Color::setFromRgba(const GLfloat red, const GLfloat green,
+                      const GLfloat blue, const GLfloat alpha)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -77,7 +77,7 @@ namespace Avogadro {
     m_channels[3] = 0.7;
   }
 
-  void Color::set(const QColor &color)
+  void Color::setFromQColor(const QColor &color)
   {
     m_channels[0] = color.redF();
     m_channels[1] = color.greenF();
@@ -85,18 +85,18 @@ namespace Avogadro {
     m_channels[3] = color.alphaF();
   }
 
-  void Color::set(const Primitive *)
+  void Color::setFromPrimitive(const Primitive *)
   {
     return;
   }
 
-  void Color::setIndex(const unsigned int)
+  void Color::setFromIndex(const unsigned int)
   {
     return;
   }
 
-  void Color::setGradient(const double, const double,
-           const double, const double)
+  void Color::setFromGradient(const double, const double,
+                              const double, const double)
   {
     return;
   }

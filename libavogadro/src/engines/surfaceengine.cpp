@@ -42,7 +42,7 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh(0), m_alpha(0.5), m_renderMode(0),
     m_colorMode(0), m_drawBox(false)
   {
-    m_color.set(0.0, 1.0, 0.0, m_alpha);
+    m_color.setFromRgba(0.0, 1.0, 0.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -176,7 +176,7 @@ namespace Avogadro {
 
   void SurfaceEngine::setColor(const QColor& color)
   {
-    m_color.set(color.redF(), color.greenF(), color.blueF(), m_alpha);
+    m_color.setFromRgba(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
@@ -266,7 +266,7 @@ namespace Avogadro {
     setRenderMode(settings.value("renderMode", 0).toInt());
     setColorMode(settings.value("colorMode", 0).toInt());
     if (settings.contains("color"))
-      m_color.set(settings.value("color").value<QColor>());
+      m_color.setFromQColor(settings.value("color").value<QColor>());
     m_color.setAlpha(m_alpha);
 
     if (m_molecule)
