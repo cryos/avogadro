@@ -48,6 +48,8 @@ namespace Avogadro {
   Animation::Animation(QObject *parent) : QObject(parent), d(new AnimationPrivate),
                                           m_molecule(0), m_timeLine(new QTimeLine)
   {
+    // in chemical animations, each frame should take the same time
+    m_timeLine->setCurveShape(QTimeLine::LinearCurve);
   }
 
   Animation::~Animation()
