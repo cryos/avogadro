@@ -40,7 +40,7 @@ namespace Avogadro {
   ElementColor::~ElementColor()
   { }
 
-  void ElementColor::set(const Primitive *p)
+  void ElementColor::setFromPrimitive(const Primitive *p)
   {
     if (!p || p->type() != Primitive::AtomType)
       return;

@@ -62,13 +62,13 @@ namespace Avogadro {
       const Vector3d & v1 = *atom1->pos();
       const Atom* atom2 = b->endAtom();
       const Vector3d & v2 = *atom2->pos();
-      map->set(atom1);
+      map->setFromPrimitive(atom1);
       pd->painter()->setColor(map);
       if (atom1->atomicNumber() != atom2->atomicNumber()) {
         // compute the mid-point between the two atoms
         Vector3d v3((v1 + v2) / 2.0);
         pd->painter()->drawLine(v1, v3, 1.0);
-        map->set(atom2);
+        map->setFromPrimitive(atom2);
         pd->painter()->setColor(map);
         pd->painter()->drawLine(v3, v2, 1.0);
       }

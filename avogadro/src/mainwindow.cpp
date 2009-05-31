@@ -1979,6 +1979,7 @@ namespace Avogadro
   {
     d->toolSettingsDock->setWindowTitle(tool->settingsTitle());
     if ( tool->settingsWidget() ) {
+      qDebug() << tool->name();
       d->toolSettingsStacked->setCurrentWidget( tool->settingsWidget() );
     } else {
       d->toolSettingsStacked->setCurrentIndex( 0 );

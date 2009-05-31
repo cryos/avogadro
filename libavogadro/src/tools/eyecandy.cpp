@@ -402,7 +402,7 @@ namespace Avogadro {
   void Eyecandy::setColor(const double red, const double green,
                           const double blue, const double alpha)
   {
-    m_color->set(red, green, blue, alpha);
+    m_color->setFromRgba(red, green, blue, alpha);
   }
 
   Color *Eyecandy::color()

@@ -44,7 +44,7 @@ namespace Avogadro
     POVPainterPrivate() : pd (0), initialized (false), sharing(0),
     color(0), output(0), planeNormalVector(0., 0., 0.)
     {
-      color.set(0., 0., 0., 0.);
+      color.setFromRgba(0., 0., 0., 0.);
     }
     ~POVPainterPrivate()
     {
@@ -78,18 +78,18 @@ namespace Avogadro
 
   void POVPainter::setColor (const Color *color)
   {
-    d->color.set(color->red(), color->green(), color->blue(), color->alpha());
+    d->color.setFromRgba(color->red(), color->green(), color->blue(), color->alpha());
   }
 
   void POVPainter::setColor (const QColor *color)
   {
-    d->color.set(color->redF(), color->greenF(), color->blueF(),
+    d->color.setFromRgba(color->redF(), color->greenF(), color->blueF(),
                      color->alphaF());
   }
 
   void POVPainter::setColor (float red, float green, float blue, float alpha)
   {
-    d->color.set(red, green, blue, alpha);
+    d->color.setFromRgba(red, green, blue, alpha);
   }
 
   void POVPainter::setPlaneNormal (Vector3d planeNormalVector)

@@ -100,6 +100,41 @@ namespace Avogadro {
      */
     Color( const Primitive *p);
 
+   /** @name Set Color Methods
+     * These methods assign a color based on a primitive, index value (int),
+     * or gradient (float/double). They are the main use of color plugins.
+     * @{
+     */
+
+    /**
+     * Set the color based on the supplied Primitive.
+     * If NULL is passed do nothing.
+     * @param p the color is derived from this primitive.
+     */
+    virtual void setFromPrimitive(const Primitive *p);
+
+    /**
+     * Set the color based on the supplied index (e.g., in an indexed color table)
+     * @param index the color is derived from this value
+     */
+    virtual void setFromIndex(const unsigned int index);
+
+    /**
+     * Set the color based on the supplied floating point value (e.g., a gradient)
+     * @param value the floating point number to consider
+     * @param lo the low point of the range
+     * @param mid the middle point of the range (e.g., 0.0)
+     * @param hi the high point of the range
+     */
+    virtual void setFromGradient(const double value, const double lo,
+                                 const double mid, const double hi);
+    //@}
+
+   /** @name Explicit Color Methods
+     * These methods assign a color based on explicit assignment.
+     * @{
+     */
+
     /**
      * Set the four components of the color
      * individually. Each one ranges from 0.0 (lowest intensity) to
@@ -111,8 +146,15 @@ namespace Avogadro {
      * @param blue The blue component
      * @param alpha The opacity of the color
      */
-    virtual void set(const GLfloat red, const GLfloat green,
-                     const GLfloat blue, const GLfloat alpha = 1.0 );
+    virtual void setFromRgba(const GLfloat red, const GLfloat green,
+                             const GLfloat blue, const GLfloat alpha = 1.0 );
+
+    /**
+     * Set the color explicitly based on a QColor, copying RGB and Alpha levels.
+     *
+     * @param color The explicit color to use.
+     */
+    virtual void setFromQColor(const QColor &color);
 
     /**
      * Set the color to the selection color
@@ -121,37 +163,13 @@ namespace Avogadro {
     virtual void setToSelectionColor();
 
     /**
-     * Set the color based on the supplied Primitive.
-     * If NULL is passed do nothing.
-     * @param p the color is derived from this primitive.
-     */
-    virtual void set(const Primitive *p);
-
-    /**
-     * Set the color based on the supplied index (e.g., in an indexed color table)
-     * @param index the color is derived from this value
-     */
-    virtual void setIndex(const unsigned int index);
-
-    /**
-     * Set the color based on the supplied floating point value (e.g., a gradient)
-     * @param value the floating point number to consider
-     * @param lo the low point of the range
-     * @param mid the middle point of the range (e.g., 0.0)
-     * @param hi the high point of the range
-     */
-    virtual void setGradient(const double value, const double lo,
-                             const double mid, const double hi);
-
-    virtual void set(const QColor &color);
-
-    /**
      * Set the alpha component of the color, 0.0 means totally transparent and
      * 1.0 means totally opaque.
      *
      * @param alpha The opacity of the color
      */
     virtual void setAlpha(double alpha);
+    //@}
 
     /**
      * Sets this color to be the one used by OpenGL for rendering
