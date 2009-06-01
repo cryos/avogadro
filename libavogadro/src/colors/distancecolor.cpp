@@ -44,7 +44,7 @@ namespace Avogadro {
   DistanceColor::~DistanceColor()
   { }
 
-  void DistanceColor::set(const Primitive *p)
+  void DistanceColor::setFromPrimitive(const Primitive *p)
   {
     if (!p || p->type() != Primitive::AtomType)
       return;

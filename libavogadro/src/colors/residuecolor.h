@@ -56,7 +56,7 @@ namespace Avogadro {
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
-    virtual void set(const Primitive *);
+    virtual void setFromPrimitive(const Primitive *);
 
     virtual QWidget* settingsWidget();
 

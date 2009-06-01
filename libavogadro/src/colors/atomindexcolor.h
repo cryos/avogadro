@@ -1,5 +1,5 @@
 /**********************************************************************
-  IndexColor - Color atoms by numbering in the file
+  AtomIndexColor - Color atoms by numbering in the file
 
   Copyright (C) 2008 Geoffrey R. Hutchison
 
@@ -22,8 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef INDEXCOLOR_H
-#define INDEXCOLOR_H
+#ifndef ATOMINDEXCOLOR_H
+#define ATOMINDEXCOLOR_H
 
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
@@ -32,33 +32,33 @@
 namespace Avogadro {
 
   /**
-   * @class IndexColor
+   * @class AtomIndexColor
    * @brief Color by atomic index (i.e., order in the file)
    * @author Geoff Hutchison
    *
    * Map atom colors based on atom numbering (with rainbow colors)
    */
-  class IndexColor: public Color
+  class AtomIndexColor: public Color
   {
     Q_OBJECT
-    AVOGADRO_COLOR("IndexColor", tr("Color by Index"),
+    AVOGADRO_COLOR("AtomIndexColor", tr("Color by Index"),
                    tr("Color by Index (red, orange, yellow, green, blue, violet)."))
 
   public:
-    IndexColor();
-    virtual ~IndexColor();
+    AtomIndexColor();
+    virtual ~AtomIndexColor();
 
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
-    void set(const Primitive *);
+    void setFromPrimitive(const Primitive *);
   };
 
-  class IndexColorFactory : public QObject, public PluginFactory
+  class AtomIndexColorFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_COLOR_FACTORY(IndexColor)
+    AVOGADRO_COLOR_FACTORY(AtomIndexColor)
   };
 
 

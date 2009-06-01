@@ -149,7 +149,7 @@ namespace Avogadro {
       m_settingsWidget->deleteLater();
   }
 
-  void ResidueColor::set(const Primitive *primitive)
+  void ResidueColor::setFromPrimitive(const Primitive *primitive)
   {
     if (!primitive)
       return;

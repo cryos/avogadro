@@ -19,7 +19,7 @@ set(LINK_LIBS "avogadro")
 avogadro_plugin(residuecolor residuecolor.cpp residuecolorsettings.ui)
 
 ### indexcolor
-avogadro_plugin(indexcolor indexcolor.cpp)
+avogadro_plugin(atomindexcolor atomindexcolor.cpp)
 
 ### chargecolor
 avogadro_plugin(chargecolor chargecolor.cpp)

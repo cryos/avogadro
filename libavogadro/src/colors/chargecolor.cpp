@@ -42,7 +42,7 @@ namespace Avogadro {
   ChargeColor::~ChargeColor()
   { }
 
-  void ChargeColor::set(const Primitive *p)
+  void ChargeColor::setFromPrimitive(const Primitive *p)
   {
     if (!p || p->type() != Primitive::AtomType)
       return;

@@ -1,5 +1,5 @@
 /**********************************************************************
- IndexColor - Color atoms by numbering in the file
+ AtomIndexColor - Color atoms by numbering in the file
 
   Copyright (C) 2007 Geoffrey R. Hutchison
 
@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "indexcolor.h"
+#include "atomindexcolor.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -34,14 +34,14 @@
 namespace Avogadro {
 
   /// Constructor
-  IndexColor::IndexColor()
+  AtomIndexColor::AtomIndexColor()
   { }
 
   /// Destructor
-  IndexColor::~IndexColor()
+  AtomIndexColor::~AtomIndexColor()
   { }
 
-  void IndexColor::set(const Primitive *p)
+  void AtomIndexColor::setFromPrimitive(const Primitive *p)
   {
     if (!p || p->type() != Primitive::AtomType)
       return;
@@ -83,5 +83,5 @@ namespace Avogadro {
 
 }
 
-Q_EXPORT_PLUGIN2(indexcolor, Avogadro::IndexColorFactory)
+Q_EXPORT_PLUGIN2(atomindexcolor, Avogadro::AtomIndexColorFactory)
 
