@@ -1971,8 +1971,11 @@ namespace Avogadro
 
   void MainWindow::setBackgroundColor()
   {
-    d->glWidget->setBackground( QColorDialog::getColor( d->glWidget->background(), this ) );
-    d->glWidget->update();
+    QColor color = QColorDialog::getColor(d->glWidget->background(), this);
+    if (color.isValid()) {
+      d->glWidget->setBackground(color);
+      d->glWidget->update();
+    }
   }
 
   void MainWindow::setTool( Tool *tool )
@@ -2501,7 +2504,7 @@ namespace Avogadro
       }
     }
   }
-  
+
   void MainWindow::performCommand(QUndoCommand *command)
   {
     if ( command )
