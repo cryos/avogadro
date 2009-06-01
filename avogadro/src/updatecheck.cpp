@@ -71,8 +71,6 @@ namespace Avogadro
 
     // Check the URL for the latest release version of Avogadro
     m_network->get(QNetworkRequest(QUrl("http://avogadro.openmolecules.net/version.txt")));
-
-    return true;
   }
 
   void UpdateCheck::replyFinished(QNetworkReply *reply)
