@@ -13,14 +13,14 @@ FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2008.
 </translatorcomment>
         <translation>Project-Id-Version: avogadro
 Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net
-POT-Creation-Date: 2009-05-19 14:32-0400
-PO-Revision-Date: 2009-05-04 18:57+0000
+POT-Creation-Date: 2009-06-01 06:09-0400
+PO-Revision-Date: 2009-05-21 20:47+0000
 Last-Translator: 94thomas &lt;Thomas.Bellotti@liceotosi.org&gt;
 Language-Team: Italian &lt;it@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-19 17:48+0000
+X-Launchpad-Export-Date: 2009-05-31 22:29+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -40,7 +40,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished">Nome:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
@@ -68,7 +68,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+117"/>
         <source>Dynamic Bonds</source>
-        <translation type="unfinished">Disegna Legame</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
@@ -155,7 +155,7 @@ Mouse destro: 	Azzera l&apos;allineamento.</translation>
     <message>
         <location line="+1"/>
         <source>Aign Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -199,7 +199,7 @@ Mouse destro: 	Azzera l&apos;allineamento.</translation>
 <context>
     <name>Avogadro::AnimationExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+46"/>
+        <location filename="../libavogadro/src/extensions/animationextension.cpp" line="+48"/>
         <source>Animation...</source>
         <translation type="unfinished">Animazione...</translation>
     </message>
@@ -269,7 +269,7 @@ Mouse destro: 	Azzera l&apos;allineamento.</translation>
         <translation type="unfinished">Il file traiettoria %1 è in disaccordo con il numero di atomi nella molecola attuale</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/animationextension.h" line="+45"/>
+        <location filename="../libavogadro/src/extensions/animationextension.h" line="+39"/>
         <source>Animation</source>
         <translation type="unfinished">Animazione</translation>
     </message>
@@ -277,6 +277,19 @@ Mouse destro: 	Azzera l&apos;allineamento.</translation>
         <location line="+1"/>
         <source>Animate trajectories, reactions, and vibratins.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::AtomIndexColor</name>
+    <message>
+        <location filename="../libavogadro/src/colors/atomindexcolor.h" line="+44"/>
+        <source>Color by Index</source>
+        <translation type="unfinished">Colori a seconda dell&apos;indice</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Color by Index (red, orange, yellow, green, blue, violet).</source>
+        <translation type="unfinished">Colori secondo l&apos;indice(rosso, arancione, giallo, verde. blu e viola).</translation>
     </message>
 </context>
 <context>
@@ -386,7 +399,7 @@ Tasto sinistro del mouse: Clicca e trascina gli atomi per muoverli</translation>
     <message>
         <location line="+1"/>
         <source>AutoOptimization Settings</source>
-        <translation type="unfinished">Ottimizzazione Automatica</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -455,7 +468,7 @@ Tasto sinistro del mouse: Clicca e trascina gli atomi per muoverli</translation>
     <message>
         <location line="+1"/>
         <source>AutoRotate Settings</source>
-        <translation type="unfinished">Auto Rotazione</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -509,9 +522,9 @@ Fai clic sinistro e trascina un legame per impostare il piano di manipolazione:
     </message>
     <message>
         <location line="+712"/>
-        <source>Bond Length: %1</source>
-        <comment>%1 is the length of the bond</comment>
-        <translation type="unfinished">Lunghezza del legame: </translation>
+        <source>Bond Length: %L1</source>
+        <comment>%L1 is the length of the bond</comment>
+        <translation type="unfinished">Lunghezza di legame</translation>
     </message>
     <message>
         <location line="+806"/>
@@ -541,7 +554,7 @@ Fai clic sinistro e trascina un legame per impostare il piano di manipolazione:
     <message>
         <location line="+1"/>
         <source>Bond Centric Manipulate Settings</source>
-        <translation type="unfinished">Manipolazione Basata Sui Legami</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -558,7 +571,7 @@ Fai clic sinistro e trascina un legame per impostare il piano di manipolazione:
 <context>
     <name>Avogadro::CartoonEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/cartoonengine.h" line="+41"/>
+        <location filename="../libavogadro/src/engines/cartoonengine.h" line="+44"/>
         <source>Cartoon</source>
         <translation type="unfinished">Fumetto</translation>
     </message>
@@ -600,22 +613,25 @@ Mouse destro: azzera le misurazioni.</translation>
     </message>
     <message>
         <location line="+91"/>
-        <source>Distance (1-&gt;2): %1 %2</source>
+        <source>Distance (1-&gt;2): %L1 %2</source>
+        <comment>%L1 is distance, %2 is Angstrom symbol</comment>
         <translation type="unfinished">Distanza (1-&gt;2): %1 %2</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>Distance (2-&gt;3): %1 %2</source>
+        <source>Distance (2-&gt;3): %L1 %2</source>
+        <comment>%L1 is distance, %2 is Angstrom symbol</comment>
         <translation type="unfinished">Distanza (2-&gt;3): %1 %2</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Angle: %1 Â°</source>
+        <source>Angle: %L1 Â°</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+20"/>
-        <source>Distance (3-&gt;4): %1 %2</source>
+        <source>Distance (3-&gt;4): %L1 %2</source>
+        <comment>%L1 is distance, %2 is Angstrom symbol</comment>
         <translation type="unfinished">Distanza (3-&gt;4): %1 %2</translation>
     </message>
     <message>
@@ -665,7 +681,7 @@ Mouse destro: azzera le misurazioni.</translation>
     <message>
         <location line="+1"/>
         <source>Measure Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -713,6 +729,24 @@ Mouse destro: azzera le misurazioni.</translation>
     </message>
 </context>
 <context>
+    <name>Avogadro::CustomColor</name>
+    <message>
+        <location filename="../libavogadro/src/colors/customcolor.cpp" line="+63"/>
+        <source>Custom Color:</source>
+        <translation type="unfinished">Colore personalizzato:</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/colors/customcolor.h" line="+43"/>
+        <source>Custom Color</source>
+        <translation type="unfinished">Colore personalizzato</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set custom colors for objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Avogadro::DipoleEngine</name>
     <message>
         <location filename="../libavogadro/src/engines/dipoleengine.h" line="+42"/>
@@ -723,6 +757,15 @@ Mouse destro: azzera le misurazioni.</translation>
         <location line="+1"/>
         <source>Renders molecular dipole moments</source>
         <translation type="unfinished">Visualizza momenti molecolari dipolari</translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::DirectoryTreeModel</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/directorytreemodel.cpp" line="+39"/>
+        <location line="+10"/>
+        <source>Name</source>
+        <translation type="unfinished">Nome:</translation>
     </message>
 </context>
 <context>
@@ -741,7 +784,7 @@ Mouse destro: azzera le misurazioni.</translation>
 <context>
     <name>Avogadro::DrawTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/drawtool.cpp" line="+86"/>
+        <location filename="../libavogadro/src/tools/drawtool.cpp" line="+85"/>
         <source>Draw Tool (F8)
 
 Left Mouse: 	Click and Drag to create Atoms and Bonds
@@ -752,7 +795,7 @@ Mouse sinistro: 	Clicca e trascina per creare atomi e legami
 Mouse destro: elimina atomo</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+312"/>
         <location line="+6"/>
         <source>Draw Atom</source>
         <translation type="unfinished">Disegna Atomo</translation>
@@ -764,7 +807,7 @@ Mouse destro: elimina atomo</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../libavogadro/src/tools/drawtool.h" line="+54"/>
+        <location filename="../libavogadro/src/tools/drawtool.h" line="+53"/>
         <source>Draw</source>
         <translation type="unfinished">Disegna</translation>
     </message>
@@ -774,7 +817,7 @@ Mouse destro: elimina atomo</translation>
         <translation type="unfinished">Cambia Ordine Legami</translation>
     </message>
     <message>
-        <location line="+248"/>
+        <location line="+243"/>
         <source>Element:</source>
         <translation type="unfinished">Elemento:</translation>
     </message>
@@ -809,11 +852,6 @@ Mouse destro: elimina atomo</translation>
         <translation type="unfinished">Satura con Idrogeni</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>Fragment Library...</source>
-        <translation type="unfinished">Libreria di Frammenti...</translation>
-    </message>
-    <message>
         <location filename="../libavogadro/src/tools/drawtool.h" line="+1"/>
         <source>Draw and edit atoms and bonds</source>
         <translation type="unfinished"></translation>
@@ -821,7 +859,7 @@ Mouse destro: elimina atomo</translation>
     <message>
         <location line="+1"/>
         <source>Draw Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1593,7 +1631,7 @@ Mouse destro: elimina atomo</translation>
 <context>
     <name>Avogadro::GLWidget</name>
     <message>
-        <location filename="../libavogadro/src/glwidget.cpp" line="+530"/>
+        <location filename="../libavogadro/src/glwidget.cpp" line="+459"/>
         <source>Invalid OpenGL context.
 Either something is completely broken in your OpenGL setup (can you run any OpenGL application?), or you found a bug.</source>
         <translation type="unfinished">Contesto OpenGL non valido.
@@ -1605,37 +1643,37 @@ Può trattarsi di un errore nel setup di OpenGL (puoi eseguire applicazioni Open
         <translation type="unfinished">Errore OpenGL</translation>
     </message>
     <message>
-        <location line="+580"/>
+        <location line="+548"/>
         <source>Debug Information</source>
         <translation type="unfinished">Informazioni di debug</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>FPS: </source>
-        <translation type="unfinished">FPS</translation>
+        <source>FPS: %L1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>View Size: %1 x %2</source>
-        <translation type="unfinished">Vedi Dimensioni</translation>
+        <source>View Size: %L1 x %L2</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No molecule set</source>
-        <translation type="unfinished">Salva Molecola Come</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Atoms: %1</source>
-        <translation type="unfinished">Atomi: </translation>
+        <source>Atoms: %L1</source>
+        <translation type="unfinished">Atomo %1</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Bonds: %1</source>
+        <source>Bonds: %L1</source>
         <translation type="unfinished">Legame %1</translation>
     </message>
     <message>
-        <location line="+1007"/>
+        <location line="+959"/>
         <source>Ball and Stick</source>
         <translation type="unfinished">Sfera e bastoncino</translation>
     </message>
@@ -1723,7 +1761,7 @@ Può trattarsi di un errore nel setup di OpenGL (puoi eseguire applicazioni Open
     <message>
         <location line="+0"/>
         <source>efp</source>
-        <translation type="unfinished">fps</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1797,7 +1835,7 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::GaussianExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="+45"/>
+        <location filename="../libavogadro/src/extensions/gaussianextension.cpp" line="+46"/>
         <source>Gaussian Input...</source>
         <translation type="unfinished">Input Gauusian...</translation>
     </message>
@@ -1828,17 +1866,17 @@ All changes will be lost!</source>
     </message>
     <message>
         <location line="+80"/>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-9"/>
         <source>Cannot read file format of file %1.</source>
         <translation type="unfinished">Impossibile leggere il formato del file %1.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Cannot read file %1.</source>
         <translation type="unfinished">Impossibile leggere il file %1.</translation>
     </message>
@@ -1966,6 +2004,24 @@ All changes will be lost!</source>
     </message>
 </context>
 <context>
+    <name>Avogadro::IRSpectra</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/spectratype_ir.cpp" line="+97"/>
+        <source>No intensities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Wavenumber (cm&lt;sup&gt;-1&lt;/sup&gt;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Avogadro::ImportDialog</name>
     <message>
         <location filename="../avogadro/src/importdialog.cpp" line="+175"/>
@@ -1974,22 +2030,9 @@ All changes will be lost!</source>
     </message>
 </context>
 <context>
-    <name>Avogadro::IndexColor</name>
-    <message>
-        <location filename="../libavogadro/src/colors/indexcolor.h" line="+44"/>
-        <source>Color by Index</source>
-        <translation type="unfinished">Colori a seconda dell&apos;indice</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Color by Index (red, orange, yellow, green, blue, violet).</source>
-        <translation type="unfinished">Colori secondo l&apos;indice(rosso, arancione, giallo, verde. blu e viola).</translation>
-    </message>
-</context>
-<context>
     <name>Avogadro::InsertFragmentDialog</name>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.cpp" line="+151"/>
+        <location filename="../libavogadro/src/extensions/insertfragmentdialog.cpp" line="+137"/>
         <location line="+8"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
@@ -2005,26 +2048,83 @@ All changes will be lost!</source>
         <translation type="unfinished">Impossibile leggere il file %1.</translation>
     </message>
     <message>
-        <location line="+51"/>
-        <location line="+9"/>
-        <location line="+20"/>
-        <source>Stop Inserting</source>
-        <translation type="unfinished">Ferma Inserimento</translation>
+        <location line="+35"/>
+        <source>Open Directory</source>
+        <translation type="unfinished">Apri Cartella</translation>
     </message>
+</context>
+<context>
+    <name>Avogadro::InsertFragmentExtension</name>
     <message>
-        <location line="-21"/>
-        <source>Click to insert the fragment at that position.</source>
-        <translation type="unfinished">Clicca per inserire il frammento in quella posizione.</translation>
+        <location filename="../libavogadro/src/extensions/insertfragmentextension.cpp" line="+52"/>
+        <source>Fragment...</source>
+        <translation type="unfinished">Inserisci Frammento...</translation>
     </message>
     <message>
         <location line="+5"/>
+        <source>SMILES...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>&amp;Build</source>
+        <translation type="unfinished">&amp;Compila</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>&amp;Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <location line="+18"/>
+        <source>Insert SMILES</source>
+        <translation type="unfinished">Genera da SMILES</translation>
+    </message>
+    <message>
+        <location line="-17"/>
+        <source>Insert SMILES fragment:</source>
+        <translation type="unfinished">Inserisci Frammento</translation>
+    </message>
+    <message>
+        <location line="+59"/>
+        <location filename="../libavogadro/src/extensions/insertfragmentextension.h" line="+34"/>
         <source>Insert Fragment</source>
         <translation type="unfinished">Inserisci Frammento</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>Open Directory</source>
-        <translation type="unfinished">Apri Cartella</translation>
+        <location filename="../libavogadro/src/extensions/insertfragmentextension.h" line="+1"/>
+        <source>Insert molecular fragments for building larger molecules</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::InsertPeptideExtension</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/insertpeptideextension.cpp" line="+58"/>
+        <source>Peptide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&amp;Build</source>
+        <translation type="unfinished">&amp;Compila</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>&amp;Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+155"/>
+        <location filename="../libavogadro/src/extensions/insertpeptideextension.h" line="+43"/>
+        <source>Insert Peptide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/insertpeptideextension.h" line="+1"/>
+        <source>Insert oligopeptide sequences</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2277,7 +2377,7 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="+275"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="+270"/>
         <source>Messages</source>
         <translation type="unfinished">Messaggi</translation>
     </message>
@@ -2303,43 +2403,55 @@ All changes will be lost!</source>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+1040"/>
+        <location line="+1034"/>
         <source>Bring All to Front</source>
         <translation type="unfinished">Porta tutto in primo piano</translation>
     </message>
     <message>
-        <location line="-785"/>
-        <source>Tool Settings...</source>
+        <location line="-775"/>
+        <source>&amp;Tool Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>Display Settings...</source>
+        <location line="+3"/>
+        <source>Ctrl+T</source>
+        <comment>Tool Settings shortcut</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+40"/>
-        <location line="+371"/>
+        <location line="+5"/>
+        <source>&amp;Display Settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ctrl+D</source>
+        <comment>Display Settings shortcut</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <location line="+362"/>
         <source>Common molecule formats</source>
         <translation type="unfinished">Formati molecolari comuni</translation>
     </message>
     <message>
-        <location line="-366"/>
-        <location line="+363"/>
+        <location line="-357"/>
+        <location line="+354"/>
         <location line="+172"/>
         <location line="+79"/>
         <source>All files</source>
         <translation type="unfinished">Tutti i file</translation>
     </message>
     <message>
-        <location line="-613"/>
-        <location line="+359"/>
+        <location line="-604"/>
+        <location line="+350"/>
         <location line="+12"/>
         <source>CML</source>
         <translation type="unfinished">CML</translation>
     </message>
     <message>
-        <location line="-370"/>
+        <location line="-361"/>
         <source>Computational Chemistry Output</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2380,24 +2492,24 @@ All changes will be lost!</source>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+367"/>
+        <location line="+358"/>
         <source>PDB</source>
         <translation type="unfinished">PDB</translation>
     </message>
     <message>
-        <location line="-366"/>
-        <location line="+368"/>
+        <location line="-357"/>
+        <location line="+359"/>
         <source>Sybyl Mol2</source>
         <translation type="unfinished">Sybyl Mol2</translation>
     </message>
     <message>
-        <location line="-367"/>
-        <location line="+368"/>
+        <location line="-358"/>
+        <location line="+359"/>
         <source>XYZ</source>
         <translation type="unfinished">XYZ</translation>
     </message>
     <message>
-        <location line="-365"/>
+        <location line="-356"/>
         <source>Open File</source>
         <translation type="unfinished">Apri File</translation>
     </message>
@@ -2410,23 +2522,22 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <location line="+25"/>
-        <location line="+10"/>
-        <location line="+12"/>
-        <location line="+65"/>
-        <location line="+33"/>
+        <location line="+13"/>
+        <location line="+63"/>
+        <location line="+34"/>
         <location line="+42"/>
-        <location line="+138"/>
+        <location line="+139"/>
         <location line="+8"/>
         <location line="+14"/>
         <location line="+12"/>
         <location line="+147"/>
-        <location line="+914"/>
-        <location line="+443"/>
+        <location line="+967"/>
+        <location line="+467"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
-        <location line="-1862"/>
+        <location line="-1930"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished">Impossibile leggere il file %1:
@@ -2438,27 +2549,22 @@ All changes will be lost!</source>
         <translation type="unfinished">Impossibile leggere il formato del file %1.</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Cannot read file %1.</source>
-        <translation type="unfinished">Impossibile leggere il file %1.</translation>
-    </message>
-    <message>
         <location line="+5"/>
         <source>Loading %1...</source>
         <translation type="unfinished">Caricamento %1...</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>This file contains 2D coordinates only. Do you want Avogadro to scale the bonds and do a quick optimization?</source>
         <translation type="unfinished">Questo file contiene solamente coordinate 2D. Si desidera che Avogadro scali i legami e faccia una rapida ottimizzazione??</translation>
     </message>
     <message>
-        <location line="+65"/>
+        <location line="+63"/>
         <source>This file does not contain 3D coordinates. You may not be able to edit or view properly.</source>
         <translation type="unfinished">Questo file non contiene coordinate 3D. Potresti non essere in grado di modificarlo o visualizzarlo correttamente.</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+34"/>
         <source>This file appears to contain multiple molecule records. Avogadro will only read the first molecule. If you save, all other molecules may be lost.</source>
         <translation type="unfinished">Questo file sembra contenere diverse strutture molecolari. Avogadro leggerà solo la prima molecola. In caso di salvataggio del file tutte le altre molecole potrebbero andare perdute.</translation>
     </message>
@@ -2475,7 +2581,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Reading molecular file failed.</source>
-        <translation type="unfinished">Lettura del file moleolare fallita.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+9"/>
@@ -2515,7 +2621,7 @@ All changes will be lost!</source>
         <translation type="unfinished">Salva</translation>
     </message>
     <message>
-        <location line="+80"/>
+        <location line="+81"/>
         <source>GAMESS Input</source>
         <translation type="unfinished">Input GAMESS</translation>
     </message>
@@ -2575,7 +2681,7 @@ All changes will be lost!</source>
     <message>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
-        <translation type="unfinished">Salvataggio del file molecolare fallito.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2631,7 +2737,7 @@ All changes will be lost!</source>
         <translation type="unfinished">EPS</translation>
     </message>
     <message>
-        <location line="+148"/>
+        <location line="+145"/>
         <source>Untitled %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2655,17 +2761,17 @@ All changes will be lost!</source>
         <location line="+30"/>
         <location line="+29"/>
         <location line="+32"/>
-        <location line="+472"/>
+        <location line="+531"/>
         <source>View %1</source>
         <translation type="unfinished">Vedi %1</translation>
     </message>
     <message>
-        <location line="-497"/>
+        <location line="-556"/>
         <source>Avogadro: Detached View</source>
         <translation type="unfinished">Avogadro: vista distaccata</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+161"/>
         <source>Normal Size</source>
         <translation type="unfinished">Dimensione normale</translation>
     </message>
@@ -2675,17 +2781,18 @@ All changes will be lost!</source>
         <translation type="unfinished">Schermo intero</translation>
     </message>
     <message>
-        <location line="+84"/>
+        <location line="+91"/>
         <source>Ctrl+Backspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+75"/>
+        <location line="+35"/>
         <source>untitled</source>
         <translation type="unfinished">senza nome</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+47"/>
         <source>[*]Avogadro</source>
         <comment>[*] indicates that this is a modified view....</comment>
         <translation type="unfinished">[*]Avogadro</translation>
@@ -2693,10 +2800,11 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>%1[*] - %2</source>
+        <comment>Window title: %1 is file name, %2 is Avogadro</comment>
         <translation type="unfinished">%1[*] - %2</translation>
     </message>
     <message>
-        <location line="+387"/>
+        <location line="+411"/>
         <source>Settings...</source>
         <translation type="unfinished">Impostazioni...</translation>
     </message>
@@ -2785,7 +2893,88 @@ Right Mouse:  Clicca e trascina per ruotare gli atomi selezionati.</translation>
     <message>
         <location line="+1"/>
         <source>Manipulate Settings</source>
-        <translation type="unfinished">Manipola Atomo</translation>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::MolecularPropertiesExtension</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+37"/>
+        <source>Molecule...</source>
+        <translation type="unfinished">Molecola</translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>&amp;View</source>
+        <translation type="unfinished">&amp;Visualizza</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>&amp;Properties</source>
+        <translation type="unfinished">&amp;Proprietà</translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+38"/>
+        <source>Molecular Properties</source>
+        <translation type="unfinished">Proprietà</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display standard molecular properties.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::MoleculeFile</name>
+    <message>
+        <location filename="../libavogadro/src/moleculefile.cpp" line="+110"/>
+        <source>OBMol: index %1 out of reach.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>File type &apos;%1&apos; is not supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>File type for file &apos;%1&apos; is not supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Reading molecule with index %1 from file &apos;%2&apos; failed.</source>
+        <translation type="unfinished">Lettura del file moleolare fallita.</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>replaceMolecule: index %1 out of reach.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>File type &apos;%1&apos; is not supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>File type for file &apos;%1&apos; is not supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Could not open file &apos;%1&apos; for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Could not open file &apos;%1&apos; for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Replacing molecule with index %1 in file &apos;%2&apos; failed.</source>
+        <translation type="unfinished">Lettura del file moleolare fallita.</translation>
     </message>
 </context>
 <context>
@@ -2819,6 +3008,14 @@ Right Mouse:  Clicca e trascina per ruotare gli atomi selezionati.</translation>
         <location line="+4"/>
         <source>Hide Preview</source>
         <translation type="unfinished">Nascondi Anteprima</translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::NMRSpectra</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/spectratype_nmr.cpp" line="+278"/>
+        <source>Shift (ppm)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2857,7 +3054,7 @@ Right Mouse:  Clicca e trascina per ruotare gli atomi selezionati.</translation>
 <context>
     <name>Avogadro::NavigateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+51"/>
+        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+62"/>
         <source>Navigation Tool (F9)
 
 Left Mouse:   Click and drag to rotate the view
@@ -2870,7 +3067,7 @@ Tasto centrale del Mouse: Clicca e trascina per ingrandire e rimpicciolire
 Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.h" line="+54"/>
+        <location filename="../libavogadro/src/tools/navigatetool.h" line="+52"/>
         <source>Navigate</source>
         <translation type="unfinished">Naviga</translation>
     </message>
@@ -2882,7 +3079,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
     <message>
         <location line="+1"/>
         <source>Navigate Settings</source>
-        <translation type="unfinished">Naviga</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2963,7 +3160,13 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::OrbitalDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="+248"/>
+        <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="+107"/>
+        <source>MO %L1</source>
+        <comment>Molecular Orbital</comment>
+        <translation type="unfinished">MO </translation>
+    </message>
+    <message>
+        <location line="+142"/>
         <location line="+4"/>
         <source>None</source>
         <translation type="unfinished">Nessuno</translation>
@@ -2977,6 +3180,12 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 </context>
 <context>
     <name>Avogadro::OrbitalEngine</name>
+    <message>
+        <location filename="../libavogadro/src/engines/orbitalengine.cpp" line="+286"/>
+        <source>%1, isosurface = %L2</source>
+        <comment>%1 is mesh name, %2 is the isosurface cutoff</comment>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../libavogadro/src/engines/orbitalengine.h" line="+47"/>
         <source>Orbitals</source>
@@ -3002,12 +3211,13 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
     </message>
     <message>
         <location line="+174"/>
-        <source>MO %1</source>
+        <location line="+37"/>
+        <source>MO %L1</source>
         <comment>Molecular Orbital</comment>
         <translation type="unfinished">MO </translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="-25"/>
         <location line="+37"/>
         <location line="+159"/>
         <location line="+38"/>
@@ -3018,18 +3228,12 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
     <message>
         <location line="-487"/>
         <location line="+37"/>
-        <source>Calculating MO %1</source>
+        <source>Calculating MO %L1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished">Sto calcolando gli Orbitali Molecolari </translation>
+        <translation type="unfinished">Calcola gli Orbitali Molecolari</translation>
     </message>
     <message>
-        <location line="-17"/>
-        <source>MO </source>
-        <comment>Molecular Orbital</comment>
-        <translation type="unfinished">MO </translation>
-    </message>
-    <message>
-        <location line="+158"/>
+        <location line="+141"/>
         <location line="+38"/>
         <source>Electron Density</source>
         <translation type="unfinished">Densità elettronica</translation>
@@ -3148,7 +3352,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::PeriodicTableView</name>
     <message>
-        <location filename="../libavogadro/src/periodictableview.cpp" line="+375"/>
+        <location filename="../libavogadro/src/periodictableview.cpp" line="+43"/>
         <source>Periodic Table</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3194,27 +3398,27 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::PrimitiveItemModel</name>
     <message>
-        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+261"/>
+        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+262"/>
         <source>Molecule</source>
         <translation type="unfinished">Molecola</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>Atom %1 %2</source>
-        <comment>%1 is element, %2 is atom index</comment>
+        <source>Atom %1 %L2</source>
+        <comment>%1 is element, %L2 is atom index</comment>
         <translation type="unfinished">Atomo %1</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Bond %1</source>
-        <comment>%1 is bond index</comment>
+        <source>Bond %L1</source>
+        <comment>%L1 is bond index</comment>
         <translation type="unfinished">Legame %1</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+11"/>
         <source>Residue %1 %2</source>
         <comment>%1 is residue name, %2 is residue index</comment>
-        <translation type="unfinished">Residuo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3329,7 +3533,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::PropertiesExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="+61"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="+64"/>
         <source>Atom Properties...</source>
         <translation type="unfinished">Proprietà Atomo...</translation>
     </message>
@@ -3341,7 +3545,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
     <message>
         <location line="+5"/>
         <source>Angle Properties...</source>
-        <translation type="unfinished">Proprietà Angoli...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3388,14 +3592,14 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::PropertiesModel</name>
     <message>
-        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="+323"/>
+        <location filename="../libavogadro/src/extensions/propmodel.cpp" line="+329"/>
         <source>Type</source>
         <translation type="unfinished">Tipo</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Atomic Number</source>
-        <translation type="unfinished">Numero Atomico</translation>
+        <source>Element</source>
+        <translation type="unfinished">Elemento:</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3439,7 +3643,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
         <location line="+2"/>
         <source>Length %1</source>
         <comment>in Angstrom</comment>
-        <translation type="unfinished">Lunghezza (Å)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
@@ -3510,34 +3714,34 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::PropertiesView</name>
     <message>
-        <location filename="../libavogadro/src/extensions/propextension.cpp" line="+107"/>
+        <location filename="../libavogadro/src/extensions/propextension.cpp" line="+112"/>
         <source>Atom Properties</source>
-        <translation type="unfinished">Proprietà Atomo...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bond Properties</source>
-        <translation type="unfinished">Proprietà Legame...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Angle Properties</source>
-        <translation type="unfinished">Proprietà Angoli...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Torsion Properties</source>
-        <translation type="unfinished">Proprietà Torsioni...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cartesian Properties</source>
-        <translation type="unfinished">Proprietà Torsioni...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Conformer Properties</source>
-        <translation type="unfinished">Calcola le proprietà MP2</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3617,7 +3821,7 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
         <translation type="unfinished">Terminale Python</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+1"/>
         <source>pythonTerminalDock</source>
         <translation type="unfinished">pythonTerminalDock</translation>
     </message>
@@ -3696,14 +3900,14 @@ Tasto destro del Mouse:  Clicca e trascina per spostare la visuale</translation>
 <context>
     <name>Avogadro::ReadFileThread</name>
     <message>
-        <location filename="../libavogadro/src/openbabelwrapper.cpp" line="+341"/>
+        <location filename="../libavogadro/src/openbabelwrapper.cpp" line="+385"/>
         <source>Conformer %1</source>
         <translation type="unfinished">Conformero %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Molecule %1</source>
-        <translation type="unfinished">Molecola</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3904,7 +4108,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
     <message>
         <location line="+1"/>
         <source>Selection Settings</source>
-        <translation type="unfinished">Impostazioni Phyton</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4033,7 +4237,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
 <context>
     <name>Avogadro::SpectraDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/spectradialog.cpp" line="+64"/>
+        <location filename="../libavogadro/src/extensions/spectradialog.cpp" line="+71"/>
         <source>X Axis</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4043,7 +4247,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+80"/>
         <source>&amp;Appearance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4053,30 +4257,18 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <location line="+654"/>
+        <location line="+5"/>
         <source>Infrared</source>
         <comment>Infrared spectra option</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-653"/>
-        <location line="+654"/>
+        <location line="+1"/>
         <source>&amp;Infrared Spectra Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-633"/>
-        <source>No intensities</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+56"/>
+        <location line="+6"/>
         <source>NMR</source>
         <comment>NMR spectra option</comment>
         <translation type="unfinished">NMR</translation>
@@ -4087,12 +4279,12 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+7"/>
         <source>No data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+92"/>
+        <location line="+77"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4137,17 +4329,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+87"/>
-        <source>Wavenumber (cm&lt;sup&gt;-1&lt;/sup&gt;)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Shift (ppm)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+19"/>
+        <location line="+100"/>
         <source>Export Calculated Spectrum</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4157,7 +4339,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+24"/>
         <source>Tab Separated Values</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4173,29 +4355,29 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
     </message>
     <message>
         <location line="+1"/>
-        <location line="+131"/>
-        <location line="+118"/>
+        <location line="+83"/>
+        <location line="+87"/>
         <source>All Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-247"/>
+        <location line="-168"/>
         <source>Import Spectra</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+26"/>
         <source>Spectra Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+235"/>
+        <location line="+163"/>
         <source>Unknown extension: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-117"/>
         <source>PWscf IR data (*.out)</source>
         <comment>Do not remove &apos;IR&apos; or &apos;(*.out)&apos; -- needed for parsing later</comment>
         <translation type="unfinished"></translation>
@@ -4203,7 +4385,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
     <message>
         <location line="+2"/>
         <source>Data Format</source>
-        <translation type="unfinished">Formato:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
@@ -4217,7 +4399,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+109"/>
+        <location line="+78"/>
         <source>Portable Network Graphics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4377,7 +4559,7 @@ Usa Ctrl per commutare la selezione e Shift per aggiungere alla selezione.</tran
 <context>
     <name>Avogadro::SurfaceEngine</name>
     <message>
-        <location filename="../libavogadro/src/engines/surfaceengine.h" line="+48"/>
+        <location filename="../libavogadro/src/engines/surfaceengine.h" line="+46"/>
         <source>Surface</source>
         <translation type="unfinished">Superficie</translation>
     </message>
@@ -4486,9 +4668,36 @@ Vuoi creare una cella cristallina unitaria?</translation>
     </message>
 </context>
 <context>
+    <name>Avogadro::UpdateCheck</name>
+    <message>
+        <location filename="../avogadro/src/updatecheck.cpp" line="+83"/>
+        <source>Network Update Check Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Network timeout or other error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::UpdateDialog</name>
+    <message>
+        <location filename="../avogadro/src/updatedialog.cpp" line="+37"/>
+        <source>Updated Version of Avogadro Available</source>
+        <comment>Indicates an updated Avogadro version is available</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+</context>
+<context>
     <name>Avogadro::VibrationDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/vibrationdialog.cpp" line="+157"/>
+        <location filename="../libavogadro/src/extensions/vibrationdialog.cpp" line="+162"/>
         <location line="+3"/>
         <source>Start &amp;Animation</source>
         <translation type="unfinished"></translation>
@@ -4523,17 +4732,17 @@ Vuoi creare una cella cristallina unitaria?</translation>
     </message>
     <message>
         <location line="+44"/>
-        <location line="+92"/>
+        <location line="+99"/>
         <source>Vibrational Analysis</source>
         <translation type="unfinished">Analisi Vibrazionale</translation>
     </message>
     <message>
-        <location line="-92"/>
+        <location line="-99"/>
         <source>No vibrational displacements exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+92"/>
+        <location line="+99"/>
         <source>No vibrations have been computed for this molecule.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4642,7 +4851,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
     <message>
         <location line="+1"/>
         <source>Z-Matrix Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4666,6 +4875,58 @@ Vuoi creare una cella cristallina unitaria?</translation>
         <location line="+43"/>
         <source>Show Multiple Bonds</source>
         <translation type="unfinished">Mostra i Legami Multipli</translation>
+    </message>
+</context>
+<context>
+    <name>CartoonSettingsWidget</name>
+    <message>
+        <location filename="../libavogadro/src/engines/cartoonsettingswidget.ui" line="+17"/>
+        <source>Shape</source>
+        <translation type="unfinished">Salva</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+288"/>
+        <source>Helix</source>
+        <translation type="unfinished">Elio</translation>
+    </message>
+    <message>
+        <location line="-266"/>
+        <location line="+93"/>
+        <location line="+93"/>
+        <source>a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-163"/>
+        <location line="+93"/>
+        <location line="+93"/>
+        <source>b</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-163"/>
+        <location line="+93"/>
+        <location line="+93"/>
+        <source>c</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-161"/>
+        <location line="+218"/>
+        <source>Sheet</source>
+        <translation type="unfinished">&amp;Seleziona</translation>
+    </message>
+    <message>
+        <location line="-125"/>
+        <location line="+148"/>
+        <source>Loop</source>
+        <translation type="unfinished">Ciclo</translation>
+    </message>
+    <message>
+        <location line="-52"/>
+        <source>Colors</source>
+        <translation type="unfinished">Colori</translation>
     </message>
 </context>
 <context>
@@ -6708,7 +6969,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
 <context>
     <name>InsertFragmentDialog</name>
     <message>
-        <location filename="../libavogadro/src/tools/insertfragmentdialog.ui" line="+13"/>
+        <location filename="../libavogadro/src/extensions/insertfragmentdialog.ui" line="+14"/>
         <source>Insert Fragment...</source>
         <translation type="unfinished">Inserisci Frammento...</translation>
     </message>
@@ -6723,31 +6984,377 @@ Vuoi creare una cella cristallina unitaria?</translation>
         <translation type="unfinished">Resetta Lista</translation>
     </message>
     <message>
-        <location line="+29"/>
-        <source>Generate from SMILES:</source>
-        <translation type="unfinished">Genera da SMILES</translation>
-    </message>
-    <message>
-        <location line="+39"/>
+        <location line="+44"/>
         <source>Insert Fragment</source>
         <translation type="unfinished">Inserisci Frammento</translation>
     </message>
 </context>
 <context>
+    <name>InsertPeptideDialog</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/insertpeptidedialog.ui" line="+14"/>
+        <location line="+491"/>
+        <source>Insert Peptide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-485"/>
+        <source>Peptide Builder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Alanine</source>
+        <translation type="unfinished">Astato</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ala</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Arginine</source>
+        <translation type="unfinished">Argon</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Arg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Asparagine</source>
+        <translation type="unfinished">Astato</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Asn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Aspartic acid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Asp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Cysteine</source>
+        <translation type="unfinished">Astato</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Cys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Glutamic acid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Glu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Glutamine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Gln</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Glycine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Gly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Histidine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>His</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Isoleucine</source>
+        <translation type="unfinished">Iodio</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Valine</source>
+        <translation type="unfinished">Valence</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Tyrosine</source>
+        <translation type="unfinished">Bromo</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Tyr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Tryptophan</source>
+        <translation type="unfinished">Cripton</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Trp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Threonine</source>
+        <translation type="unfinished">Bromo</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Thr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Serine</source>
+        <translation type="unfinished">Singolo</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Proline</source>
+        <translation type="unfinished">Bromo</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Pro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Phenylalanine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Phe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Methionine</source>
+        <translation type="unfinished">Metodo</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Met</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Lysine</source>
+        <translation type="unfinished">Linee</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Lys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Leucine</source>
+        <translation type="unfinished">Linee</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Leu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <source>Amino Acids:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sequence (N to C):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Stereochemistry:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>L</source>
+        <translation type="unfinished">L</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <location line="+170"/>
+        <source>D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-159"/>
+        <source>N Terminus:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>C Terminus:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location line="+8"/>
+        <source>NH₂</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location line="+5"/>
+        <source>NH₃⁺</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location line="+9"/>
+        <source>CO₂H</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location line="+5"/>
+        <source>CO₂⁻</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Structure:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Straight Chain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Alpha Helix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Beta Sheet</source>
+        <translation type="unfinished">Set Base:</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Other</source>
+        <translation type="unfinished">Altro...</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Phi:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location line="+7"/>
+        <location line="+16"/>
+        <source>°</source>
+        <translation type="unfinished">°</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Psi:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Chain Number:</source>
+        <translation type="unfinished">Numero Atomico</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>The chain number for the new peptide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>A</source>
+        <translation type="unfinished">A</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>B</source>
+        <translation type="unfinished">B:</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>C</source>
+        <translation type="unfinished">C1</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>G</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LabelSettingsWidget</name>
     <message>
-        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="+22"/>
+        <location filename="../libavogadro/src/engines/labelsettingswidget.ui" line="+23"/>
         <source>Atom Labels:</source>
         <translation type="unfinished">Etichette degli Atomi:</translation>
     </message>
     <message>
         <location line="+32"/>
-        <location line="+80"/>
+        <location line="+85"/>
         <source>None</source>
         <translation type="unfinished">Nessuno</translation>
     </message>
     <message>
-        <location line="-75"/>
+        <location line="-80"/>
         <source>Atom number</source>
         <translation type="unfinished">Atomo numero</translation>
     </message>
@@ -6778,12 +7385,17 @@ Vuoi creare una cella cristallina unitaria?</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location line="+65"/>
+        <location line="+70"/>
         <source>Unique ID</source>
         <translation type="unfinished">ID Univoco</translation>
     </message>
     <message>
-        <location line="-60"/>
+        <location line="-65"/>
+        <source>Symbol &amp; Atom Number</source>
+        <translation type="unfinished">Numero Atomico</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Custom Data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7437,6 +8049,54 @@ Vuoi creare una cella cristallina unitaria?</translation>
     </message>
 </context>
 <context>
+    <name>MoleculePropertiesDialog</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropdialog.ui" line="+14"/>
+        <source>Molecule Properties</source>
+        <translation type="unfinished">Proprietà</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Title:</source>
+        <translation type="unfinished">Titolo</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Molecular Weight (g/mol):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Chemical Formula:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Number of Atoms:</source>
+        <translation type="unfinished">Numero di Atomi:</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Number of Bonds:</source>
+        <translation type="unfinished">Numero di Atomi:</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Number of Residues:</source>
+        <translation type="unfinished">Numero di passi</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Energy (kJ/mol):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Dipole Moment (D):</source>
+        <translation type="unfinished">Momento di dipolo</translation>
+    </message>
+</context>
+<context>
     <name>MolproInputDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/molproinputdialog.ui" line="+20"/>
@@ -7780,6 +8440,19 @@ Vuoi creare una cella cristallina unitaria?</translation>
         <location line="+7"/>
         <source>Close</source>
         <translation type="unfinished">Chiudi</translation>
+    </message>
+</context>
+<context>
+    <name>NavigateSettingsWidget</name>
+    <message>
+        <location filename="../libavogadro/src/tools/navigatesettingswidget.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished">Forma</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Display visual cues</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8333,7 +9006,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
     <message>
         <location line="+8"/>
         <source>Alias</source>
-        <translation type="unfinished">Pseudonimo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+30"/>
@@ -8352,7 +9025,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
 <context>
     <name>PythonTerminalWidget</name>
     <message>
-        <location filename="../libavogadro/src/extensions/pythonterminalwidget.ui" line="+13"/>
+        <location filename="../libavogadro/src/extensions/pythonterminalwidget.ui" line="+14"/>
         <source>Python Terminal</source>
         <translation type="unfinished">Terminale Python</translation>
     </message>
@@ -8608,7 +9281,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
         <translation type="unfinished">Ottimizzazione di Geometria</translation>
     </message>
     <message>
-        <location line="+263"/>
+        <location line="+290"/>
         <source>Forcefield Optimization</source>
         <translation type="unfinished">Ottimizzazione del campo di forze</translation>
     </message>
@@ -8617,7 +9290,7 @@ Vuoi creare una cella cristallina unitaria?</translation>
         <location line="+3"/>
         <location line="+3"/>
         <location line="+3"/>
-        <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="+62"/>
+        <location filename="../libavogadro/src/extensions/trajvideomaker.cpp" line="+63"/>
         <source>Cancel</source>
         <translation type="unfinished">Annulla</translation>
     </message>
@@ -8711,12 +9384,79 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
 Puoi tenere questo rapporto se, ad esempio, vuoi usare POV-Ray per produrre un&apos;immagine di  %4x1000 pixels, o puoi inserire un altro valore positivo, ad esempio 1, se vuoi che POV-Ray produca un&apos;immagine quadrata, per esempio 1000x1000 pixels.</translation>
     </message>
     <message>
+        <location filename="../libavogadro/src/openbabelwrapper.cpp" line="-303"/>
+        <location line="+241"/>
+        <source>File %1 can not be opened for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-231"/>
+        <source>File type &apos;%1&apos; is not a supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>File type for file &apos;%1&apos; is not a supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Reading a molecule from file &apos;%1&apos; failed.</source>
+        <translation type="unfinished">Lettura del file moleolare fallita.</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <location line="+52"/>
+        <source>File %1 can not be opened for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-39"/>
+        <source>File type &apos;%1&apos; is not a supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>File type for file &apos;%1&apos; is not a supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Writing a molecule to file &apos;%1&apos; failed.</source>
+        <translation type="unfinished">Salvataggio del file molecolare fallito.</translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>File type &apos;%1&apos; is not supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>File type for file &apos;%1&apos; is not supported for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Writing conformers to file &apos;%1&apos; failed.</source>
+        <translation type="unfinished">Lettura del file molecola %1 fallita</translation>
+    </message>
+    <message>
+        <location line="+93"/>
+        <source>File type &apos;%1&apos; is not supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>File type for file &apos;%1&apos; is not supported for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../libavogadro/src/plugin.cpp" line="+42"/>
         <source>No Description</source>
         <translation type="unfinished">Nessuna descrizione</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="+195"/>
+        <location filename="../libavogadro/src/tools/autoopttool.cpp" line="+210"/>
         <source>AutoOpt Molecule</source>
         <translation type="unfinished">AutoOpt Molecola</translation>
     </message>
@@ -8948,7 +9688,7 @@ Puoi tenere questo rapporto se, ad esempio, vuoi usare POV-Ray per produrre un&a
 <context>
     <name>SpectraDialog</name>
     <message>
-        <location filename="../libavogadro/src/extensions/spectradialog.ui" line="+14"/>
+        <location filename="../libavogadro/src/extensions/spectradialog.ui" line="+20"/>
         <source>Spectra Visualization</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9117,88 +9857,23 @@ Puoi tenere questo rapporto se, ad esempio, vuoi usare POV-Ray per produrre un&a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>&amp;Infrared Spectra Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+12"/>
-        <source>&amp;Y Axis Units:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>&amp;Gaussian Width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+49"/>
-        <source>Transmittance (%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Absorbance (%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <source>&amp;Label peaks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+54"/>
-        <source>Sc&amp;ale:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>&amp;NMR Spectra Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>NMR &amp;Type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+39"/>
-        <source>&amp;Reference:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>Reset &amp;Plot Axes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Gaussian &amp;Width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>Label Peaks:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+19"/>
+        <location line="+22"/>
         <source>Customi&amp;ze &gt;&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+23"/>
+        <source>&amp;Load data...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
         <source>Controls:
 Double left click: Restore default axis limits
 Right click + drag: Move plot
 Middle click + drag: Zoom to region
 Scroll wheel: Zoom to cursor</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>&amp;Load data...</source>
-        <translation type="unfinished">Carica file...</translation>
     </message>
 </context>
 <context>
@@ -9304,6 +9979,77 @@ Scroll wheel: Zoom to cursor</source>
     </message>
 </context>
 <context>
+    <name>Tab_IR</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/spectratabir.ui" line="+14"/>
+        <source>tab_IR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>&amp;Y Axis Units:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Transmittance (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Absorbance (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Sc&amp;ale:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>&amp;Gaussian Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>&amp;Label peaks</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tab_NMR</name>
+    <message>
+        <location filename="../libavogadro/src/extensions/spectratabnmr.ui" line="+14"/>
+        <source>tab_NMR</source>
+        <translation type="unfinished">NMR</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>NMR &amp;Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>&amp;Reference:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Gaussian &amp;Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Reset &amp;Plot Axes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Label Peaks:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UnitCellParamDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/unitcellparamdialog.ui" line="+13"/>
@@ -9389,9 +10135,9 @@ Scroll wheel: Zoom to cursor</source>
         <source>Molecular Vibrations</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location line="+31"/>
-        <source>Frequency (cm-1)</source>
+        <source>Frequency (cm⁻¹)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

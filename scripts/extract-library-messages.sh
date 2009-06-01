@@ -57,6 +57,9 @@ cd ${I18NDIR}
 echo "Merging translations"
 catalogs=`find . -name 'libavogadro*.po'`
 for cat in $catalogs; do
+  # remove any \r escapes
+  sed -e 's/\\r//' <$cat >$cat.new
+  mv $cat.new $cat
   echo $cat
   msgmerge -o $cat.new $cat ${PROJECT}.pot
   mv $cat.new $cat

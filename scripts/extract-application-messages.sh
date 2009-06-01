@@ -58,6 +58,9 @@ echo "Merging translations"
 catalogs=`find . -name "avogadro*.po"`
 for cat in $catalogs; do
   echo $cat
+  # remove any \r escapes
+  sed -e 's/\\r//' <$cat >$cat.new
+  mv $cat.new $cat
   msgmerge -o $cat.new $cat ${PROJECT}.pot
   mv $cat.new $cat
 done
