@@ -2,7 +2,7 @@
   Molecule - Molecule class derived from the base Primitive class
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -94,11 +94,14 @@ namespace Avogadro{
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
                                         d_ptr(new MoleculePrivate),
-                                        m_fileName(""),
                                         m_atomPos(0), m_dipoleMoment(0),
     m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
+    // Assign a default path and file name to new molecules.
+    m_fileName = QDir::homePath() + '/' +
+                 tr("untitled", "Name of a new, untitled molecule file") +
+                 ".cml";
   }
 
   Molecule::Molecule(const Molecule &other) :
@@ -1048,7 +1051,7 @@ namespace Avogadro{
       r->SetNum(residue->number().toStdString());
       r->SetChain(residue->chainID());
       r->SetName(residue->name().toUpper().toStdString());
-      
+
       OpenBabel::OBAtom *a;
       foreach(unsigned long atomId, residue->atoms()){
         // Avogadro indexes from 0, but OB from 1. Watch out!
