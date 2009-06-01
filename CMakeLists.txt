@@ -42,12 +42,16 @@ endif(MSVC)
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
-  if(CMAKE_BUILD_TYPE MATCHES "Debug")
+  # On Linux with GCC 4.3+ these flags generate thousands of warnings, so they
+  # are now optional. Most of the warnings are in included headers.
+  option(EXTRA_WARNINGS
+    "Enable extra GCC warnings - can generate thousands" OFF)
+  if(EXTRA_WARNINGS)
     # Enable extra compiler wanrings for Debug builds - may be all of the
     # extra flags for warnings belong in here
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Woverloaded-virtual -Wfloat-equal")
 #  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wold-style-cast")
-  endif(CMAKE_BUILD_TYPE MATCHES "Debug")
+  endif(EXTRA_WARNINGS)
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags
   if (CMAKE_SYSTEM_NAME MATCHES Linux)
