@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-01 06:08-0400\n"
+"POT-Creation-Date: 2009-06-01 07:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,6 +92,7 @@ msgid "&Tool Settings..."
 msgstr ""
 
 #: src/mainwindow.cpp:597
+msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr ""
 
@@ -99,7 +100,8 @@ msgstr ""
 msgid "&Display Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:605 src/mainwindow.cpp:929
+#: src/mainwindow.cpp:605
+msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr ""
 
@@ -160,8 +162,9 @@ msgstr ""
 msgid "XYZ"
 msgstr ""
 
-#: src/mainwindow.cpp:732 src/mainwindow.cpp:768
+#: src/mainwindow.cpp:732
 #, qt-format
+msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr ""
 
@@ -175,6 +178,11 @@ msgstr ""
 #: src/mainwindow.cpp:763
 #, qt-format
 msgid "Cannot read file format of file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:768
+#, qt-format
+msgid "Loading %1..."
 msgstr ""
 
 #: src/mainwindow.cpp:776
@@ -219,9 +227,14 @@ msgstr ""
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.cpp:928 :110
+#: src/mainwindow.cpp:928
+msgctxt "Save"
 msgid "Ctrl+S"
+msgstr ""
+
+#: src/mainwindow.cpp:929
+msgctxt "Discard"
+msgid "Ctrl+D"
 msgstr ""
 
 #: src/mainwindow.cpp:931
@@ -370,11 +383,13 @@ msgid "untitled"
 msgstr ""
 
 #: src/mainwindow.cpp:2195
+msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr ""
 
 #: src/mainwindow.cpp:2200
 #, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
@@ -505,37 +520,50 @@ msgid "Index"
 msgstr ""
 
 #: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
 #: src/settingsdialog.ui:86
 #: src/settingsdialog.cpp:107 :266
+msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
 
 #: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
 msgid "High"
 msgstr ""
 
-#: src/settingsdialog.cpp:114 src/settingsdialog.cpp:140
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
 #: src/settingsdialog.ui:144
 #: src/settingsdialog.cpp:122 :272
+msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
 
 #: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
 msgid "Some"
 msgstr ""
 
 #: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
 msgid "Mid"
 msgstr ""
 
 #: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
 msgid "Lots"
+msgstr ""
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
 msgstr ""
 
 #: src/updatecheck.cpp:83
@@ -547,6 +575,7 @@ msgid "Network timeout or other error."
 msgstr ""
 
 #: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
 msgstr ""
 
@@ -743,6 +772,10 @@ msgstr ""
 #: src/mainwindow.ui:346
 #: src/mainwindow.ui:358
 msgid "&Save"
+msgstr ""
+
+#: src/mainwindow.ui:349
+msgid "Ctrl+S"
 msgstr ""
 
 #: src/mainwindow.ui:367

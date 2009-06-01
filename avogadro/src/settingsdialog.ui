@@ -83,7 +83,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Medium</string>
+               <string comment="Display quality setting">Medium</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -141,7 +141,7 @@
                </size>
               </property>
               <property name="text">
-               <string>None</string>
+               <string comment="Level of fog in the scene">None</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>

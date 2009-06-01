@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-01 06:09-0400\n"
+"POT-Creation-Date: 2009-06-01 07:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -608,6 +608,7 @@ msgstr ""
 
 #: src/engines/orbitalengine.cpp:286
 #, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
 msgstr ""
 
@@ -1556,6 +1557,7 @@ msgstr ""
 #: src/extensions/orbitalextension.cpp:266
 #: src/extensions/orbitalextension.cpp:303
 #, qt-format
+msgctxt "Molecular Orbital"
 msgid "MO %L1"
 msgstr ""
 
@@ -1593,6 +1595,7 @@ msgstr ""
 #: src/extensions/orbitalextension.cpp:283
 #: src/extensions/orbitalextension.cpp:320
 #, qt-format
+msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr ""
 
@@ -1778,6 +1781,7 @@ msgstr ""
 
 #: src/extensions/propmodel.cpp:351
 #, qt-format
+msgctxt "in Angstrom"
 msgid "Length %1"
 msgstr ""
 
@@ -1790,7 +1794,13 @@ msgstr ""
 msgid "Vertex"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:366 src/extensions/propmodel.cpp:369
+#: src/extensions/propmodel.cpp:366
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Angle %1"
+msgstr ""
+
+#: src/extensions/propmodel.cpp:369
 #, qt-format
 msgid "Angle %1"
 msgstr ""
@@ -1800,23 +1810,32 @@ msgstr ""
 msgid "Atom Index %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:379 src/extensions/propmodel.cpp:382
+#: src/extensions/propmodel.cpp:379
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Torsion %1"
+msgstr ""
+
+#: src/extensions/propmodel.cpp:382
 #, qt-format
 msgid "Torsion %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:387
 #, qt-format
+msgctxt "in Angstrom"
 msgid "X %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:389
 #, qt-format
+msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:391
 #, qt-format
+msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr ""
 
@@ -1983,6 +2002,7 @@ msgid "E&xport Image"
 msgstr ""
 
 #: src/extensions/spectradialog.cpp:158
+msgctxt "Infrared spectra option"
 msgid "Infrared"
 msgstr ""
 
@@ -1990,8 +2010,8 @@ msgstr ""
 msgid "&Infrared Spectra Settings"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:916
-#: src/extensions/spectradialog.cpp:165 :528
+#: src/extensions/spectradialog.cpp:165
+msgctxt "NMR spectra option"
 msgid "NMR"
 msgstr ""
 
@@ -2078,6 +2098,7 @@ msgid "Unknown extension: %1"
 msgstr ""
 
 #: src/extensions/spectradialog.cpp:529
+msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr ""
 
@@ -2085,12 +2106,8 @@ msgstr ""
 msgid "Data Format"
 msgstr ""
 
-#: src/extensions/gaussianinputdialog.ui:396
-#: src/extensions/molproinputdialog.ui:334
-#: src/extensions/mopacinputdialog.ui:250
-#: src/extensions/nwcheminputdialog.ui:330
-#: src/extensions/qcheminputdialog.ui:344
-#: src/extensions/spectradialog.cpp:531 :980 rc.cpp:1262 rc.cpp:1322
+#: src/extensions/spectradialog.cpp:531
+msgctxt "noun, not verb"
 msgid "Format:"
 msgstr ""
 
@@ -2522,16 +2539,19 @@ msgstr ""
 
 #: src/primitiveitemmodel.cpp:266
 #, qt-format
+msgctxt "%1 is element, %L2 is atom index"
 msgid "Atom %1 %L2"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:271
 #, qt-format
+msgctxt "%L1 is bond index"
 msgid "Bond %L1"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:282
 #, qt-format
+msgctxt "%1 is residue name, %2 is residue index"
 msgid "Residue %1 %2"
 msgstr ""
 
@@ -2790,6 +2810,7 @@ msgstr ""
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
+msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
 msgstr ""
 
@@ -2833,11 +2854,13 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:147
 #, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
 msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:165
 #, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
 msgstr ""
 
@@ -2848,6 +2871,7 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:194
 #, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
 msgstr ""
 
@@ -2857,18 +2881,22 @@ msgid "Dihedral Angle: %1 °"
 msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:250
+msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
 msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:258
+msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
 msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:267
+msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
 msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:276
+msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
 msgstr ""
 
@@ -4010,6 +4038,10 @@ msgstr ""
 msgid "Raman Intensities"
 msgstr ""
 
+#: src/extensions/gamessinputdialog.ui:916
+msgid "NMR"
+msgstr ""
+
 #: src/extensions/gamessinputdialog.ui:921
 msgid "Make EFP"
 msgstr ""
@@ -4824,6 +4856,14 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.ui:379
 msgid "Checkpoint:"
+msgstr ""
+
+#: src/extensions/gaussianinputdialog.ui:396
+#: src/extensions/molproinputdialog.ui:334
+#: src/extensions/mopacinputdialog.ui:250
+#: src/extensions/nwcheminputdialog.ui:330
+#: src/extensions/qcheminputdialog.ui:344
+msgid "Format:"
 msgstr ""
 
 #: src/extensions/gaussianinputdialog.ui:415
