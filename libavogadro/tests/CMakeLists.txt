@@ -28,6 +28,7 @@ set(tests
   drawcommand
 #  hydrogenscommand
   molecule
+  moleculefile
   neighborlist
 )
 
