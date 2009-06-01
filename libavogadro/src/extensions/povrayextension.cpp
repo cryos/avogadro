@@ -1,7 +1,7 @@
 /**********************************************************************
   POVRayExtension - Extension for generating POV-Ray rendered images
 
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -146,24 +146,40 @@ namespace Avogadro
       return;
     } */
 
-    double aspectRatio = static_cast<double>(m_POVRayDialog->imageWidth())
-                         / m_POVRayDialog->imageHeight();
-    qDebug() << "Aspect ratio:" << aspectRatio;
-    POVPainterDevice pd(fileName + ".pov", aspectRatio, m_glwidget);
+    // Check whether the .pov file can be written
+    QFileInfo povFile(fileName + ".pov");
+    if (povFile.isWritable()) {
+      double aspectRatio = static_cast<double>(m_POVRayDialog->imageWidth())
+                           / m_POVRayDialog->imageHeight();
+      qDebug() << "Aspect ratio:" << aspectRatio;
+      POVPainterDevice pd(fileName + ".pov", aspectRatio, m_glwidget);
+    }
+    else {
+      QMessageBox::warning(m_POVRayDialog, tr("Cannot Write to File."),
+                           tr("Cannot write to file %1. Do you have permissions to write to that location?").arg(fileName+".pov"));
+      return;
+    }
 
     if (m_POVRayDialog->renderDirect()) {
       m_process = new QProcess(this);
       QFileInfo info(fileName + ".png");
-      m_process->setWorkingDirectory(info.absolutePath());
-      m_process->start(m_POVRayDialog->command(), m_POVRayDialog->commandLine());
-      qDebug() << "Command:" << m_POVRayDialog->command() + ' ' +
-               m_POVRayDialog->commandLine().join(" ");
-      qDebug() << "Rendering started...";
-      if (!m_process->waitForStarted()) {
-        QMessageBox::warning(m_POVRayDialog, tr("POV-Ray failed to start."),
-                             tr("POV-Ray failed to start. May be the path to the executable is not set correctly."));
+      if (info.isWritable()) {
+        m_process->setWorkingDirectory(info.absolutePath());
+        m_process->start(m_POVRayDialog->command(), m_POVRayDialog->commandLine());
+        qDebug() << "Command:" << m_POVRayDialog->command() + ' ' +
+                 m_POVRayDialog->commandLine().join(" ");
+        qDebug() << "Rendering started...";
+        if (!m_process->waitForStarted()) {
+          QMessageBox::warning(m_POVRayDialog, tr("POV-Ray failed to start."),
+                               tr("POV-Ray failed to start. May be the path to the executable is not set correctly."));
+        }
+        connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
       }
-      connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
+      else { // Should not really get here in general, but best to check
+        QMessageBox::warning(m_POVRayDialog, tr("Cannot Write to File."),
+                           tr("Cannot write to file %1. Do you have permissions to write to that location?").arg(fileName+".png"));
+        return;
+      }
     }
   }
 
