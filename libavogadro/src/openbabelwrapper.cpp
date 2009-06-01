@@ -201,14 +201,14 @@ namespace Avogadro {
     if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii())) {
       // Output format not supported
       if (error)
-        error->append(QObject::tr("File type '%1' is not a supported for writing.").arg(fileType));
+        error->append(QObject::tr("File type '%1' is not supported for writing.").arg(fileType));
       return false;
     } else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
       if (!conv.SetOutFormat(outFormat)) {
         // Output format not supported
         if (error)
-          error->append(QObject::tr("File type for file '%1' is not a supported for writing.").arg(fileName));
+          error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
         return false;
       }
     }
@@ -333,13 +333,13 @@ namespace Avogadro {
         if (!m_moleculeFile->m_fileType.isEmpty() && !conv.SetInFormat(m_moleculeFile->m_fileType.toAscii().data())) {
           // Input format not supported
           m_moleculeFile->m_error.append(
-              QObject::tr("File type '%1' is not a supported for reading.").arg(m_moleculeFile->m_fileType));
+              QObject::tr("File type '%1' is not supported for reading.").arg(m_moleculeFile->m_fileType));
           return;
         } else {
           inFormat = conv.FormatFromExt(m_moleculeFile->m_fileName.toAscii().data());
           if (!conv.SetInFormat(inFormat)) {
             // Input format not supported
-            m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(
+            m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not supported for reading.").arg(
                   m_moleculeFile->m_fileName));
             return;
           }
