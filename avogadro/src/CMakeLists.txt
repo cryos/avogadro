@@ -41,8 +41,6 @@ else(ENABLE_UPDATE_CHECKER)
   list(REMOVE_ITEM avogadro_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/updatedialog.cpp")
 endif(ENABLE_UPDATE_CHECKER)
 
-message(STATUS "Source: ${avogadro_SRCS}")
-
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
 # Add GL2PS to the executable
