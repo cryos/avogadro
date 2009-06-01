@@ -226,7 +226,7 @@ namespace Avogadro {
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
-    //    updateForcesAndFrames();
+    updateMode(m_mode);
   }
 
   void VibrationExtension::setDisplayForceVectors(bool enabled)

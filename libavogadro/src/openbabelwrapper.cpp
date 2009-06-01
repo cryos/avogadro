@@ -222,7 +222,7 @@ namespace Avogadro {
     bool success = false;
     const std::vector<std::vector<Eigen::Vector3d>*> &conformers = molecule->conformers();
     OBMol obMol = molecule->OBMol();
-    for (unsigned int i = 0; i <= conformers.size(); ++i) {
+    for (unsigned int i = 0; i < conformers.size(); ++i) {
       OBAtomIterator ai;
       for (OBAtom *atom = obMol.BeginAtom(ai); atom; atom = obMol.NextAtom(ai))
         atom->SetVector(conformers.at(i)->at(atom->GetIdx()-1).data());
@@ -261,7 +261,7 @@ namespace Avogadro {
         std::vector<Eigen::Vector3d> *coords = new std::vector<Eigen::Vector3d>(numAtoms);
         for (unsigned int i = 0; i < numAtoms; ++i)
           coords->push_back(Eigen::Vector3d(conformer.GetAtom(i+1)->GetVector().AsArray()));
-        m_moleculeFile->conformers().push_back(coords);
+        m_moleculeFile->m_conformers.push_back(coords);
       }
 
       void detectConformers(unsigned int c, const OpenBabel::OBMol &first, const OpenBabel::OBMol &current)
@@ -302,7 +302,7 @@ namespace Avogadro {
 
         if (first.NumAtoms() != current.NumAtoms()) {
           m_moleculeFile->setConformerFile(false);
-          m_moleculeFile->conformers().clear();
+          m_moleculeFile->m_conformers.clear();
           return;
         }
 
@@ -311,7 +311,7 @@ namespace Avogadro {
           OpenBabel::OBAtom *currentAtom = current.GetAtom(i+1);
           if (firstAtom->GetAtomicNum() != currentAtom->GetAtomicNum()) {
             m_moleculeFile->setConformerFile(false);
-            m_moleculeFile->conformers().clear();
+            m_moleculeFile->m_conformers.clear();
             return;
           }    
         }
@@ -322,7 +322,7 @@ namespace Avogadro {
         // Check that the file can be read from disk
         if (!OpenbabelWrapper::canOpen(m_moleculeFile->m_fileName, QFile::ReadOnly | QFile::Text)) {
           // Cannot read the file
-          m_moleculeFile->errors().append(QObject::tr("File %1 can not be opened for reading.").arg(
+          m_moleculeFile->m_error.append(QObject::tr("File %1 can not be opened for reading.").arg(
                 m_moleculeFile->m_fileName));
           return;
         }
@@ -332,14 +332,14 @@ namespace Avogadro {
         OBFormat *inFormat;
         if (!m_moleculeFile->m_fileType.isEmpty() && !conv.SetInFormat(m_moleculeFile->m_fileType.toAscii().data())) {
           // Input format not supported
-          m_moleculeFile->errors().append(
+          m_moleculeFile->m_error.append(
               QObject::tr("File type '%1' is not a supported for reading.").arg(m_moleculeFile->m_fileType));
           return;
         } else {
           inFormat = conv.FormatFromExt(m_moleculeFile->m_fileName.toAscii().data());
           if (!conv.SetInFormat(inFormat)) {
             // Input format not supported
-            m_moleculeFile->errors().append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(
+            m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(
                   m_moleculeFile->m_fileName));
             return;
           }

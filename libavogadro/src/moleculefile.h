@@ -33,6 +33,10 @@
 #include <vector>
 #include <Eigen/Core>
 
+namespace OpenBabel {
+  class OBMol;
+}
+
 namespace Avogadro {
 
   class Molecule;
@@ -59,8 +63,12 @@ namespace Avogadro {
        * Get the titles for the molecules.
        */
       QList<QString> titles() const;
+     
+      //! @name Input (reading molecules)
+      //@{
       /**
-       * Get the @p {i}th molecule.
+       * Get the @p {i}th molecule. This function returns a new pointer, you are 
+       * responsible for deleting it.
        *
        * @param i The index for the molecule to get from the file (indexed from 0).
        * 
@@ -69,10 +77,45 @@ namespace Avogadro {
        */
       Molecule* molecule(unsigned int i = 0);
       /**
+       * Get the original OBMol object for the @p {i}th molecule. This function 
+       * returns a new pointer, you are responsible for deleting it.
+       *
+       * @param i The index for the molecule to get from the file (indexed from 0 to numMolecule()-1).
+       * @return The original OBMol object read by OpenBabel.
+       */
+      OpenBabel::OBMol* OBMol(unsigned int i = 0);
+      /**
        * Get all the conformers from the file. This methods returns an empty 
        * vector if the opened file isn't a conformer file (see isConformerFile()).
        */
       const std::vector<std::vector<Eigen::Vector3d>*>& conformers() const;
+      //@}
+ 
+      //! @name Output (writing molecules)
+      //@{
+      /**
+       * Replace the @p {i}th molecule with @p molecule. When a molecule 
+       * returned by molecule() has changed, this function can be used to write
+       * it back to the file at the same position.
+       * 
+       * @param i The index for the molecule to replace.
+       * @param molecule The changed (or a totally different) molecule
+       */
+      bool replaceMolecule(unsigned int i, Molecule *molecule);
+      /**
+       * Insert a molecule at index @p i.
+       * @param molecule The molecule to insert
+       */
+      bool insertMolecule(unsigned int i, Molecule *molecule);
+      /**
+       * Append @p molecule to the end of the file.
+       * @param molecule The molecule to append
+       */
+      bool appendMolecule(Molecule *molecule);
+      //@}
+
+      //! @name Error handling
+      //@{
       /**
        * @return Errors from reading/writing to the file.
        */
@@ -83,23 +126,30 @@ namespace Avogadro {
        * from before plus the new ones (if any).
        */
       void clearErrors();
+      //@}
+
     Q_SIGNALS:
+      /**
+       * This signal is emitted when the results are read (i.e. the file is read).
+       */
       void ready();
+    
+      
     protected Q_SLOTS:
       void threadFinished();
     protected:
       MoleculeFile(const QString &fileName, const QString &fileType,
                    const QString &fileOptions);
       QStringList& titles();
-      QString& errors();
       std::vector<std::streampos>& streampos();
-      std::vector<std::vector<Eigen::Vector3d>*>& conformers();
+      std::vector<std::vector<Eigen::Vector3d>*>& conformersRef();
       void setConformerFile(bool value);
       void setReady(bool value);
  
       MoleculeFilePrivate * const d; 
       QString m_fileName, m_fileType, m_fileOptions;
       QString m_error;
+      std::vector<std::vector<Eigen::Vector3d>*> m_conformers;
   };
 
 } // End namespace Avogadro

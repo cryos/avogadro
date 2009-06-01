@@ -51,7 +51,7 @@ namespace Avogadro {
     /**
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
-    void set(const Primitive *);
+    void setFromPrimitive(const Primitive *);
   };
 
   class DistanceColorFactory : public QObject, public PluginFactory
