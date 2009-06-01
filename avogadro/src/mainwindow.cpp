@@ -1134,17 +1134,20 @@ namespace Avogadro
     } // end saving settings for CML files
 
     if ( conv.Write( &obmol, &ofs ) ) {
+      ofs.close();
       bool success;
       success = file.rename(fileName + ".old");
       if (success)
         success = newFile.rename(fileName);
-      else
-        statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
-      
       if (success) // renaming worked
-        file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
-      statusBar()->showMessage( tr("Save succeeded."), 5000 );
-      setWindowModified( false );
+        success = file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
+
+      if (success) {
+        statusBar()->showMessage( tr("Save succeeded."), 5000 );
+        setWindowModified( false );
+      } else {
+        statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
+      }
     }
     else {
       statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
