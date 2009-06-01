@@ -1,5 +1,5 @@
 /**********************************************************************
-  MoleculeFile - MoleculeFileTest class provides unit testing for the 
+  MoleculeFile - MoleculeFileTest class provides unit testing for the
   MoleculeFile and OpenbabelWrapper class
 
   Copyright (C) 2009 Tim Vandermeersch
@@ -165,7 +165,7 @@ void MoleculeFileTest::readFile()
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(1) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned int>(4) );
+  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(4) );
 
 
   ofs.open(filename.toAscii().data());
@@ -176,13 +176,13 @@ void MoleculeFileTest::readFile()
   mol.NewAtom();
   conv.Write(&mol, &ofs);
   conv.Write(&mol, &ofs);
-  
+
   moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(4) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned int>(0) );
+  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(0) );
 }
 
 void MoleculeFileTest::readWriteConformers()
@@ -192,7 +192,7 @@ void MoleculeFileTest::readWriteConformers()
     Q_UNUSED(atom)
     conformer.push_back(Eigen::Vector3d(0., 1., 2.));
   }
-  
+
   std::vector<std::vector<Eigen::Vector3d> *> conformers;
   conformers.push_back(new std::vector<Eigen::Vector3d>(conformer));
   conformers.push_back(new std::vector<Eigen::Vector3d>(conformer));
@@ -208,7 +208,7 @@ void MoleculeFileTest::readWriteConformers()
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(1) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned int>(5) );
+  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(5) );
 }
 
 void MoleculeFileTest::replaceMolecule()
