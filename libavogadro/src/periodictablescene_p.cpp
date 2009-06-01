@@ -38,6 +38,9 @@
 #include <QFontMetrics>
 #include <QDebug>
 
+// The use of postfix operators here is just fine!
+// We're using int for postfix, so it's almost zero overhead
+// krazy:excludeall=postfixop
 namespace Avogadro {
 
   PeriodicTableScene::PeriodicTableScene(QObject *parent)

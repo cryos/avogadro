@@ -179,7 +179,7 @@ namespace Avogadro {
   void PrimitiveItemModel::engineChanged()
   {
     PrimitiveList list = d->engine->primitives();
-    foreach(const int row, d->rowTypeMap.keys())
+    foreach(const int row, d->rowTypeMap.keys()) // krazy:exclude=foreach
     {
       Primitive::Type type = d->rowTypeMap[row];
       int newsize = list.count(type);
