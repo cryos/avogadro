@@ -271,7 +271,7 @@ void MoleculeFileTest::replaceMolecule()
   delete moleculeFile;
 }
 
-void MoleculeFileTest::replaceMolecule()
+void MoleculeFileTest::appendMolecule()
 {
   QString filename = "moleculefiletest_tmp.smi";
   std::ofstream ofs(filename.toAscii().data());
@@ -285,11 +285,7 @@ void MoleculeFileTest::replaceMolecule()
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(3) );
-
-
 }
-
-
 
 QTEST_MAIN(MoleculeFileTest)
 
