@@ -81,7 +81,7 @@ namespace Avogadro
     m_actions.append( action );
 
     action = new QAction( this );
-    action->setText( tr("Conformers..." ));
+    action->setText( tr("Conformer Properties..." ));
     action->setData(ConformerIndex);
     m_actions.append( action );
 

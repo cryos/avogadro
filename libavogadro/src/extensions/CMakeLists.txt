@@ -29,6 +29,10 @@ avogadro_plugin(gamessextension
 avogadro_plugin(propextension
    "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
 
+avogadro_plugin(molecularpropextension
+        "molecularpropextension.cpp"
+        molecularpropdialog.ui)
+
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
   constraintsdialog.cpp constraintsmodel.cpp conformersearchdialog.cpp)
