@@ -36,6 +36,7 @@
 #include "engineitemmodel.h"
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
+#include "primitiveitemmodel.h"
 #include "enginecolorswidget.h"
 
 #ifdef ENABLE_UPDATE_CHECKER
@@ -65,7 +66,6 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 
-#include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/color.h>
 

@@ -25,11 +25,10 @@
 #include "engineprimitiveswidget.h"
 
 #include "primitivetreeview.h"
+#include "primitiveitemmodel.h"
 
 #include <avogadro/engine.h>
 #include <avogadro/glwidget.h>
-
-#include <avogadro/primitiveitemmodel.h>
 #include <avogadro/primitivelist.h>
 
 #include <QAbstractButton>
