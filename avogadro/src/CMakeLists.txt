@@ -123,7 +123,7 @@ if(APPLE)
 # This one gives us languages for country codes (e.g., avogadro_zh_CN.ts)
   string(REGEX MATCHALL "_[a-z]+_[A-Z]+\\.ts" langresult "${avogadro_TS}")
   string(REGEX REPLACE "_([^_]+_[^.]+)\\.ts" "\\1" fulllangs "${langresult}")
-  set (LANGUAGES "${languages};${fulllangs}")
+  set (LANGUAGES "${languages};${fulllangs};en;en_US")
 
     foreach(lang ${LANGUAGES})
     set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
