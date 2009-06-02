@@ -62,7 +62,7 @@ namespace Avogadro {
     ui.itemTypeCombo->addItem(tr("Bonds"));
     ui.itemTypeCombo->addItem(tr("Residues"));
     ui.itemTypeCombo->addItem(tr("User Selections"));
-    
+
     loadValues();
   }
 
@@ -84,7 +84,7 @@ namespace Avogadro {
     } else
         newItem = new QTreeWidgetItem(ui.treeWidget);
     newItem->setText(0, ui.itemTypeCombo->currentText());
-    
+
     // create a new ProjectTreeModelDelegate for this QTreeWidgetItem
     switch (ui.itemTypeCombo->currentIndex()) {
       default:
@@ -123,7 +123,7 @@ namespace Avogadro {
       QMessageBox::information(this, tr("Error"), tr("only labels can have sub items"));
       return;
     }
-    
+
     m_updating = true;
 
     // create a new QTreeWidgetItem
@@ -331,10 +331,10 @@ namespace Avogadro {
 
   void ProjectTreeEditor::on_aliasEdit_textEdited(const QString &)
   {
-    QTreeWidgetItem *current = ui.treeWidget->currentItem();  
+    QTreeWidgetItem *current = ui.treeWidget->currentItem();
     m_hash.value(current)->setAlias( ui.aliasEdit->text() );
   }
-      
+
   void ProjectTreeEditor::on_settingsButton_clicked()
   {
     QTreeWidgetItem *current = ui.treeWidget->currentItem();
@@ -351,7 +351,7 @@ namespace Avogadro {
     bool moveItemDownEnabled = false;
     bool moveItemRightEnabled = false;
     bool moveItemLeftEnabled = false;
-    
+
     bool settingsButtonEnabled = false;
     QString aliasText, typeText;
 
@@ -359,7 +359,7 @@ namespace Avogadro {
     if (current) {
       int idx;
       int idxCount;
-      
+
       currentItemEnabled = true;
       if (current->parent()) {
         moveItemLeftEnabled = true;
@@ -369,10 +369,10 @@ namespace Avogadro {
         idx = ui.treeWidget->indexOfTopLevelItem(current);
         idxCount = ui.treeWidget->topLevelItemCount();
       }
-      
+
       if (idx > 0)
         moveItemUpEnabled = true;
-      
+
       if (idx < idxCount - 1) {
         moveItemDownEnabled = true;
         moveItemRightEnabled = true;
@@ -388,7 +388,7 @@ namespace Avogadro {
       }
 
     }
-    
+
     ui.itemsBox->setEnabled(itemsEnabled);
     ui.textLabel->setEnabled(currentItemEnabled);
     //ui.itemTypeCombo->setEnabled(currentItemEnabled);
@@ -399,11 +399,11 @@ namespace Avogadro {
     ui.moveItemDownButton->setEnabled(moveItemDownEnabled);
     ui.moveItemRightButton->setEnabled(moveItemRightEnabled);
     ui.moveItemLeftButton->setEnabled(moveItemLeftEnabled);
-    
+
     ui.settingsButton->setEnabled(settingsButtonEnabled);
     ui.aliasEdit->setText( aliasText );
     ui.typeEdit->setText( typeText );
- 
+
   }
 
   void ProjectTreeEditor::on_itemTypeCombo_currentIndexChanged(int)
@@ -417,13 +417,13 @@ namespace Avogadro {
 
     m_updating = true;
     curItem->setText(0, ui.itemTypeCombo->currentText());
-    
+
     ProjectTreeModelDelegate *oldPlugin = m_hash.value(curItem);
     delete oldPlugin;
 
     m_hash.remove(curItem);
     PluginFactory *factory = pluginManager.projectItemClassFactory().value(ui.itemTypeCombo->currentText());
-    if (factory) 
+    if (factory)
     {
       ProjectTreeModelDelegate *plugin = factory->createInstance();
       m_hash[curItem] = plugin;
@@ -436,10 +436,10 @@ namespace Avogadro {
 
   void ProjectTreeEditor::closeEditors()
   {
-   
+
     if (QTreeWidgetItem *cur = ui.treeWidget->currentItem() ) {
       const int numCols = cur->columnCount ();
-      for (int i = 0; i < numCols; i++) { 
+      for (int i = 0; i < numCols; i++) {
         ui.treeWidget->closePersistentEditor (cur, i);
       }
     }
@@ -453,11 +453,11 @@ namespace Avogadro {
     QList<int> indentations;
     parents << ui.treeWidget->invisibleRootItem();
     indentations << 0;
-    
+
     QSettings settings;
     settings.beginGroup("projectTree");
     int size = settings.beginReadArray("items");
-    
+
     if (size == 0) { // default (i.e., never started a project tree)
        // Start with a molecule delegate
        newItem = new QTreeWidgetItem(parents.last());
@@ -483,7 +483,7 @@ namespace Avogadro {
           indentations.pop_back();
         }
       }
-      
+
       // Append a new item to the current parent's list of children.
       newItem = new QTreeWidgetItem(parents.last());
       newItem->setText(0, settings.value("alias").toString());
@@ -500,9 +500,9 @@ namespace Avogadro {
       } else if (settings.value("name").toString() == tr("Residues")) {
         m_hash[newItem] = (ProjectTreeModelDelegate*) new ResidueDelegate(0);
       } else if (settings.value("name").toString() == tr("User Selections")) {
-        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0); 
+        m_hash[newItem] = (ProjectTreeModelDelegate*) new SelectionDelegate(0);
       }
-     
+
       if (!m_hash[newItem])
         continue;
 
@@ -511,13 +511,18 @@ namespace Avogadro {
   }
 
     settings.endArray();
-    settings.endGroup();  
+    settings.endGroup();
   }
-  
-  void ProjectTreeEditor::writeItem(QSettings &settings, QTreeWidgetItem *cur, int indent, int &idx)
+
+  void ProjectTreeEditor::writeItem(QSettings &settings, QTreeWidgetItem *cur,
+                                    int indent, int &idx)
   {
+    if (!cur)
+      return;
     settings.setArrayIndex(idx);
     settings.setValue("indent", indent);
+    if (!m_hash.value(cur))
+      return;
     m_hash.value(cur)->writeSettings(settings);
 
     indent++;
@@ -528,12 +533,12 @@ namespace Avogadro {
       writeItem(settings, child, indent, idx);
     }
   }
-  
-  void ProjectTreeEditor::saveValues() 
+
+  void ProjectTreeEditor::saveValues()
   {
     int indent = 0;
     int idx = 0;
- 
+
     QSettings settings;
     settings.beginGroup("projectTree");
     settings.beginWriteArray("items");
