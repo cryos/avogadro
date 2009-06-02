@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.4\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-01 07:13-0400\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1076,7 +1076,7 @@ msgstr ""
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :652 rc.cpp:928 rc.cpp:1214
+#: src/extensions/gamessinputdialog.cpp:619 :652 rc.cpp:928 rc.cpp:1212
 msgid "Title"
 msgstr ""
 
@@ -1175,7 +1175,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1328
+#: src/extensions/qcheminputdialog.cpp:178 :1326
 msgid "Show Preview"
 msgstr ""
 
@@ -1187,7 +1187,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :988 rc.cpp:1270 rc.cpp:1396
+#: src/extensions/qcheminputdialog.cpp:182 :988 rc.cpp:1268 rc.cpp:1394
 msgid "Hide Preview"
 msgstr ""
 
@@ -1386,25 +1386,29 @@ msgstr ""
 msgid "Create linear interpolation for animations"
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:37
-msgid "Molecule..."
+#: src/extensions/molecularpropextension.cpp:40
+msgid "Molecule Properties..."
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:52
+#: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
 msgid "&View"
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:52
+#: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
 msgstr ""
 
-#: src/extensions/molecularpropextension.h:38
+#: src/extensions/molecularpropextension.cpp:122
+msgid "Estimated Dipole Moment (D):"
+msgstr ""
+
+#: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
 msgstr ""
 
-#: src/extensions/molecularpropextension.h:39
+#: src/extensions/molecularpropextension.h:49
 msgid "Display standard molecular properties."
 msgstr ""
 
@@ -1618,7 +1622,7 @@ msgid "Calculating VdW Cube"
 msgstr ""
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48 :1406
+#: src/extensions/orbitalextension.h:48 :1404
 msgid "Surfaces"
 msgstr ""
 
@@ -1661,11 +1665,23 @@ msgid ""
 "you want?"
 msgstr ""
 
-#: src/extensions/povrayextension.cpp:163
+#: src/extensions/povrayextension.cpp:158
+#: src/extensions/povrayextension.cpp:179
+msgid "Cannot Write to File."
+msgstr ""
+
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:180
+#, qt-format
+msgid ""
+"Cannot write to file %1. Do you have permissions to write to that location?"
+msgstr ""
+
+#: src/extensions/povrayextension.cpp:173
 msgid "POV-Ray failed to start."
 msgstr ""
 
-#: src/extensions/povrayextension.cpp:164
+#: src/extensions/povrayextension.cpp:174
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
@@ -1697,7 +1713,7 @@ msgid "Torsion Properties..."
 msgstr ""
 
 #: src/extensions/propextension.cpp:84
-msgid "Conformers..."
+msgid "Conformer Properties..."
 msgstr ""
 
 #: src/extensions/propextension.cpp:89
@@ -1975,7 +1991,7 @@ msgid "Shader parameters files (*.params)"
 msgstr ""
 
 #: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1602
+#: src/extensions/shaderextension.h:41 :1600
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1992,12 +2008,12 @@ msgid "Y Axis"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:67
-#: src/extensions/spectradialog.cpp:152 :1634
+#: src/extensions/spectradialog.cpp:152 :1632
 msgid "&Appearance"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:366
-#: src/extensions/spectradialog.cpp:153 :1678
+#: src/extensions/spectradialog.cpp:153 :1676
 msgid "E&xport Image"
 msgstr ""
 
@@ -2174,7 +2190,7 @@ msgid "Customi&ze <<"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:587
-#: src/extensions/spectradialog.cpp:711 :1704
+#: src/extensions/spectradialog.cpp:711 :1702
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2327,7 +2343,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:115
 #: src/extensions/vibrationdialog.cpp:162
-#: src/extensions/vibrationdialog.cpp:165 :1798
+#: src/extensions/vibrationdialog.cpp:165 :1796
 msgid "Start &Animation"
 msgstr ""
 
@@ -2422,6 +2438,11 @@ msgstr ""
 #: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
+msgstr ""
+
+#: src/molecule.cpp:103
+msgctxt "Name of a new, untitled molecule file"
+msgid "untitled"
 msgstr ""
 
 #: src/moleculefile.cpp:110
@@ -2532,41 +2553,6 @@ msgstr ""
 msgid "No Description"
 msgstr ""
 
-#: src/primitiveitemmodel.cpp:262 src/tools/aligntool.cpp:271
-#: src/tools/selectrotatetool.cpp:418
-msgid "Molecule"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:266
-#, qt-format
-msgctxt "%1 is element, %L2 is atom index"
-msgid "Atom %1 %L2"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:271
-#, qt-format
-msgctxt "%L1 is bond index"
-msgid "Bond %L1"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:282
-#, qt-format
-msgctxt "%1 is residue name, %2 is residue index"
-msgid "Residue %1 %2"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:298
-msgid "Atoms"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:300
-msgid "Bonds"
-msgstr ""
-
-#: src/primitiveitemmodel.cpp:302
-msgid "Residues"
-msgstr ""
-
 #: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
 msgid "Unknown Python Engine"
 msgstr ""
@@ -2643,6 +2629,10 @@ msgstr ""
 
 #: src/tools/aligntool.cpp:270
 msgid "Everything"
+msgstr ""
+
+#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+msgid "Molecule"
 msgstr ""
 
 #: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
@@ -2779,7 +2769,7 @@ msgstr ""
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
 #: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:292 :990 rc.cpp:1272 rc.cpp:1330
+#: src/tools/autorotatetool.cpp:292 :990 rc.cpp:1270 rc.cpp:1328
 msgid "Reset"
 msgstr ""
 
@@ -2917,7 +2907,7 @@ msgid "Measure Settings"
 msgstr ""
 
 #: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1818
+#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1816
 msgid "Add Atom"
 msgstr ""
 
@@ -3023,7 +3013,7 @@ msgstr ""
 msgid "Manipulate Settings"
 msgstr ""
 
-#: src/tools/navigatetool.cpp:62
+#: src/tools/navigatetool.cpp:60
 msgid ""
 "Navigation Tool (F9)\n"
 "\n"
@@ -4293,7 +4283,6 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1581
 #: src/extensions/gaussianinputdialog.ui:30
-#: src/extensions/molecularpropdialog.ui:22
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
@@ -5244,31 +5233,31 @@ msgstr ""
 msgid "Molecule Properties"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:29
+#: src/extensions/molecularpropdialog.ui:22
 msgid "Molecular Weight (g/mol):"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:36
+#: src/extensions/molecularpropdialog.ui:29
 msgid "Chemical Formula:"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:43
+#: src/extensions/molecularpropdialog.ui:36
 msgid "Number of Atoms:"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:50
+#: src/extensions/molecularpropdialog.ui:43
 msgid "Number of Bonds:"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:57
+#: src/extensions/molecularpropdialog.ui:50
 msgid "Number of Residues:"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:64
+#: src/extensions/molecularpropdialog.ui:57
 msgid "Energy (kJ/mol):"
 msgstr ""
 
-#: src/extensions/molecularpropdialog.ui:71
+#: src/extensions/molecularpropdialog.ui:64
 msgid "Dipole Moment (D):"
 msgstr ""
 
