@@ -59,6 +59,7 @@
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
+#include <avogadro/engine.h>
 
 #include <avogadro/glgraphicsview.h>
 
