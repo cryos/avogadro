@@ -76,6 +76,7 @@ class MoleculeFileTest : public QObject
     void readFile();
     void readWriteConformers();
     void replaceMolecule();
+    void appendMolecule();
 
 };
 
@@ -160,12 +161,15 @@ void MoleculeFileTest::readFile()
   conv.Write(&mol, &ofs);
   ofs.close();
 
+
+
   MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(1) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(4) );
+  QCOMPARE( moleculeFile->conformers().size(), 
+      static_cast<std::vector<int>::size_type>(4) );
 
 
   ofs.open(filename.toAscii().data());
@@ -182,7 +186,8 @@ void MoleculeFileTest::readFile()
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(4) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(0) );
+  QCOMPARE( moleculeFile->conformers().size(), 
+      static_cast<std::vector<int>::size_type>(0) );
 }
 
 void MoleculeFileTest::readWriteConformers()
@@ -208,7 +213,8 @@ void MoleculeFileTest::readWriteConformers()
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(1) );
-  QCOMPARE( moleculeFile->conformers().size(), static_cast<unsigned long>(5) );
+  QCOMPARE( moleculeFile->conformers().size(), 
+      static_cast<std::vector<int>::size_type>(5) );
 }
 
 void MoleculeFileTest::replaceMolecule()
@@ -265,7 +271,21 @@ void MoleculeFileTest::replaceMolecule()
   delete moleculeFile;
 }
 
+void MoleculeFileTest::appendMolecule()
+{
+  QString filename = "moleculefiletest_tmp.smi";
+  std::ofstream ofs(filename.toAscii().data());
+  ofs << "c1ccccc1  phenyl" << std::endl;
+  ofs << "c1ccccc1N  aniline" << std::endl;
+  ofs << "c1ccccc1C  toluene" << std::endl;
+  ofs.close();
 
+  MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  QVERIFY( moleculeFile );
+  QVERIFY( moleculeFile->errors().isEmpty() );
+  QCOMPARE( moleculeFile->isConformerFile(), false );
+  QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(3) );
+}
 
 QTEST_MAIN(MoleculeFileTest)
 
