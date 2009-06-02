@@ -29,6 +29,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 
 #include <QDebug>
@@ -84,8 +85,11 @@ namespace Avogadro {
 
   void Engine::clearPrimitives()
   {
+    // Set custom primitives to false and clear the lists of primitives
     m_customPrims = false;
     m_primitives.clear();
+    m_atoms.clear();
+    m_bonds.clear();
   }
 
   void Engine::setPainterDevice(const PainterDevice *pd)
@@ -311,11 +315,6 @@ namespace Avogadro {
     m_molecule = mol;
   }
 
-  void Engine::changeMolecule(Molecule *, Molecule *next)
-  {
-    setMolecule(next);
-  }
-
   void Engine::useCustomPrimitives()
   {
     m_customPrims = true;
@@ -338,12 +337,16 @@ namespace Avogadro {
             this, SLOT(removeBond(Bond*)));
   }
 
-  const PrimitiveList & Engine::primitives() const
+  const PrimitiveList Engine::primitives() const
   {
     if (m_customPrims)
       return m_primitives;
-    else if (m_pd)
-      return *m_pd->primitives();
+    else if (m_pd) {
+      PrimitiveList list;
+      foreach(Residue *r, m_molecule->residues())
+        list.append(r);
+      return list;
+    }
     else
       return m_primitives;
   }

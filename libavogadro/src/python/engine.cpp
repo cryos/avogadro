@@ -46,8 +46,7 @@ void export_Engine()
     // read/write properties
     .add_property("alias", &Engine::alias, &Engine::setAlias)
     .add_property("shader", &Engine::shader, &Engine::setShader)
-    .add_property("primitives", make_function(&Engine::primitives, return_value_policy<reference_existing_object>()), 
-        &Engine::setPrimitives)
+    .add_property("primitives", &Engine::primitives, &Engine::setPrimitives)
     .add_property("enabled", &Engine::isEnabled, &Engine::setEnabled)
     .add_property("colorMap", make_function(&Engine::colorMap, return_value_policy<reference_existing_object>()),
         &Engine::setColorMap)

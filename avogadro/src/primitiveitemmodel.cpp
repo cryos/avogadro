@@ -73,11 +73,10 @@ namespace Avogadro {
 
     connect(engine, SIGNAL(changed()), this, SLOT(engineChanged()));
     PrimitiveList list = engine->primitives();
-    // This is a good foreach, but Krazy doesn't like it, for some reason
-    foreach(const int row, d->rowTypeMap.keys()) // krazy:exclude=foreach
-    {
-      d->size[row] = list.count(d->rowTypeMap[row]);
-    }
+
+    d->size[0] = engine->atoms().size();
+    d->size[1] = engine->bonds().size();
+    d->size[2] = engine->primitives().subList(Primitive::ResidueType).size();
   }
 
   PrimitiveItemModel::PrimitiveItemModel(Molecule *molecule, QObject *parent)
