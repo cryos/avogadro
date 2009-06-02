@@ -20,7 +20,7 @@ Language-Team: Traditional Chinese &lt;zh_TW@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-31 22:28+0000
+X-Launchpad-Export-Date: 2009-06-02 15:08+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -2371,7 +2371,7 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="+270"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="+271"/>
         <source>Messages</source>
         <translation type="unfinished">訊息</translation>
     </message>
@@ -2397,25 +2397,25 @@ All changes will be lost!</source>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+1034"/>
+        <location line="+1044"/>
         <source>Bring All to Front</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-775"/>
+        <location line="-785"/>
         <source>&amp;Tool Settings...</source>
-        <translation type="unfinished">工具設定</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+T</source>
         <comment>Tool Settings shortcut</comment>
-        <translation type="unfinished">Ctrl+M</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Display Settings...</source>
-        <translation type="unfinished">設定...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2432,13 +2432,13 @@ All changes will be lost!</source>
     <message>
         <location line="-357"/>
         <location line="+354"/>
-        <location line="+172"/>
+        <location line="+182"/>
         <location line="+79"/>
         <source>All files</source>
         <translation type="unfinished">所有檔案</translation>
     </message>
     <message>
-        <location line="-604"/>
+        <location line="-614"/>
         <location line="+350"/>
         <location line="+12"/>
         <source>CML</source>
@@ -2524,14 +2524,14 @@ All changes will be lost!</source>
         <location line="+8"/>
         <location line="+14"/>
         <location line="+12"/>
-        <location line="+147"/>
-        <location line="+967"/>
+        <location line="+157"/>
+        <location line="+970"/>
         <location line="+467"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro 亞佛加厥</translation>
     </message>
     <message>
-        <location line="-1930"/>
+        <location line="-1943"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished">無法讀取檔案 %1</translation>
@@ -2667,11 +2667,12 @@ All changes will be lost!</source>
         <translation type="unfinished">存檔</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+52"/>
         <source>Save succeeded.</source>
         <translation type="unfinished">存檔成功</translation>
     </message>
     <message>
+        <location line="+3"/>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
         <translation type="unfinished">無法存檔</translation>
@@ -2754,12 +2755,12 @@ All changes will be lost!</source>
         <location line="+30"/>
         <location line="+29"/>
         <location line="+32"/>
-        <location line="+531"/>
+        <location line="+534"/>
         <source>View %1</source>
         <translation type="unfinished">檢視 %1</translation>
     </message>
     <message>
-        <location line="-556"/>
+        <location line="-559"/>
         <source>Avogadro: Detached View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2774,7 +2775,7 @@ All changes will be lost!</source>
         <translation type="unfinished">全螢幕</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="+94"/>
         <source>Ctrl+Backspace</source>
         <translation type="unfinished">Ctrl+Backspace</translation>
     </message>
@@ -2892,8 +2893,8 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 <context>
     <name>Avogadro::MolecularPropertiesExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+37"/>
-        <source>Molecule...</source>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+40"/>
+        <source>Molecule Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2907,7 +2908,12 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
         <translation type="unfinished">特性 (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+38"/>
+        <location line="+67"/>
+        <source>Estimated Dipole Moment (D):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+48"/>
         <source>Molecular Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2915,6 +2921,15 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
         <location line="+1"/>
         <source>Display standard molecular properties.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::Molecule</name>
+    <message>
+        <location filename="../libavogadro/src/molecule.cpp" line="+103"/>
+        <source>untitled</source>
+        <comment>Name of a new, untitled molecule file</comment>
+        <translation type="unfinished">未命名</translation>
     </message>
 </context>
 <context>
@@ -3047,7 +3062,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 <context>
     <name>Avogadro::NavigateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+62"/>
+        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+60"/>
         <source>Navigation Tool (F9)
 
 Left Mouse:   Click and drag to rotate the view
@@ -3321,7 +3336,19 @@ Right Mouse:  Click and drag to move the view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+21"/>
+        <location line="+21"/>
+        <source>Cannot Write to File.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-20"/>
+        <location line="+21"/>
+        <source>Cannot write to file %1. Do you have permissions to write to that location?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
         <source>POV-Ray failed to start.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3389,7 +3416,7 @@ Right Mouse:  Click and drag to move the view</source>
 <context>
     <name>Avogadro::PrimitiveItemModel</name>
     <message>
-        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+262"/>
+        <location filename="../avogadro/src/primitiveitemmodel.cpp" line="+265"/>
         <source>Molecule</source>
         <translation type="unfinished">分子</translation>
     </message>
@@ -3545,8 +3572,8 @@ Right Mouse:  Click and drag to move the view</source>
     </message>
     <message>
         <location line="+5"/>
-        <source>Conformers...</source>
-        <translation type="unfinished">構形異構物...</translation>
+        <source>Conformer Properties...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4663,7 +4690,7 @@ Do you want to create a crystal unit cell?</source>
 <context>
     <name>Avogadro::UpdateCheck</name>
     <message>
-        <location filename="../avogadro/src/updatecheck.cpp" line="+83"/>
+        <location filename="../avogadro/src/updatecheck.cpp" line="+81"/>
         <source>Network Update Check Failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8042,7 +8069,7 @@ Do you want to create a crystal unit cell?</source>
     </message>
 </context>
 <context>
-    <name>MoleculePropertiesDialog</name>
+    <name>MolecularPropertiesDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/molecularpropdialog.ui" line="+14"/>
         <source>Molecule Properties</source>
@@ -8050,11 +8077,6 @@ Do you want to create a crystal unit cell?</source>
     </message>
     <message>
         <location line="+8"/>
-        <source>Title:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>Molecular Weight (g/mol):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9596,6 +9618,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-21"/>
         <source>Medium</source>
+        <comment>Display quality setting</comment>
         <translation type="unfinished">中等</translation>
     </message>
     <message>
@@ -9606,6 +9629,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+44"/>
         <source>None</source>
+        <comment>Level of fog in the scene</comment>
         <translation type="unfinished">無</translation>
     </message>
     <message>

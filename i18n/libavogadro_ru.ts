@@ -20,7 +20,7 @@ Language-Team: Russian &lt;ru@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-31 22:28+0000
+X-Launchpad-Export-Date: 2009-06-02 15:09+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -40,7 +40,7 @@ X-Generator: Launchpad (build Unknown)
     <message>
         <location line="+13"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Название:</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -516,7 +516,7 @@ Left Click &amp; drag on a Bond to set the Manipulation Plane:
         <location line="+712"/>
         <source>Bond Length: %L1</source>
         <comment>%L1 is the length of the bond</comment>
-        <translation type="unfinished">Длина связи: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+806"/>
@@ -607,13 +607,13 @@ Right Mouse: Reset the measurements.</source>
         <location line="+91"/>
         <source>Distance (1-&gt;2): %L1 %2</source>
         <comment>%L1 is distance, %2 is Angstrom symbol</comment>
-        <translation type="unfinished">Расстояние (1-&gt;2): %1 %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Distance (2-&gt;3): %L1 %2</source>
         <comment>%L1 is distance, %2 is Angstrom symbol</comment>
-        <translation type="unfinished">Расстояние (2-&gt;3): %1 %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+9"/>
@@ -624,7 +624,7 @@ Right Mouse: Reset the measurements.</source>
         <location line="+20"/>
         <source>Distance (3-&gt;4): %L1 %2</source>
         <comment>%L1 is distance, %2 is Angstrom symbol</comment>
-        <translation type="unfinished">Расстояние (3-&gt;4): %1 %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
@@ -757,7 +757,7 @@ Right Mouse: Reset the measurements.</source>
         <location filename="../libavogadro/src/extensions/directorytreemodel.cpp" line="+39"/>
         <location line="+10"/>
         <source>Name</source>
-        <translation type="unfinished">Название:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1641,12 +1641,12 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+1"/>
         <source>FPS: %L1</source>
-        <translation type="unfinished">Кадров в секунду: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>View Size: %L1 x %L2</source>
-        <translation type="unfinished">Размер изображения: %1 x %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -1656,12 +1656,12 @@ Either something is completely broken in your OpenGL setup (can you run any Open
     <message>
         <location line="+5"/>
         <source>Atoms: %L1</source>
-        <translation type="unfinished">Атомы: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Bonds: %L1</source>
-        <translation type="unfinished">Связи: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+959"/>
@@ -2050,7 +2050,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/insertfragmentextension.cpp" line="+52"/>
         <source>Fragment...</source>
-        <translation type="unfinished">Вставить фрагмент...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2071,12 +2071,12 @@ All changes will be lost!</source>
         <location line="+23"/>
         <location line="+18"/>
         <source>Insert SMILES</source>
-        <translation type="unfinished">Создать из SMILES:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-17"/>
         <source>Insert SMILES fragment:</source>
-        <translation type="unfinished">Вставить фрагмент</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+59"/>
@@ -2095,7 +2095,7 @@ All changes will be lost!</source>
     <message>
         <location filename="../libavogadro/src/extensions/insertpeptideextension.cpp" line="+58"/>
         <source>Peptide...</source>
-        <translation type="unfinished">Рассчитать...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2369,7 +2369,7 @@ All changes will be lost!</source>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="+270"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="+271"/>
         <source>Messages</source>
         <translation type="unfinished">Сообщения</translation>
     </message>
@@ -2395,12 +2395,12 @@ All changes will be lost!</source>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+1034"/>
+        <location line="+1044"/>
         <source>Bring All to Front</source>
         <translation type="unfinished">Вынести всё на передний план</translation>
     </message>
     <message>
-        <location line="-775"/>
+        <location line="-785"/>
         <source>&amp;Tool Settings...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2430,13 +2430,13 @@ All changes will be lost!</source>
     <message>
         <location line="-357"/>
         <location line="+354"/>
-        <location line="+172"/>
+        <location line="+182"/>
         <location line="+79"/>
         <source>All files</source>
         <translation type="unfinished">Все файлы</translation>
     </message>
     <message>
-        <location line="-604"/>
+        <location line="-614"/>
         <location line="+350"/>
         <location line="+12"/>
         <source>CML</source>
@@ -2522,14 +2522,14 @@ All changes will be lost!</source>
         <location line="+8"/>
         <location line="+14"/>
         <location line="+12"/>
-        <location line="+147"/>
-        <location line="+967"/>
+        <location line="+157"/>
+        <location line="+970"/>
         <location line="+467"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
-        <location line="-1930"/>
+        <location line="-1943"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished">Невозможно считать %1:
@@ -2573,7 +2573,7 @@ All changes will be lost!</source>
     <message>
         <location line="+5"/>
         <source>Reading molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Не удалось считать файл структуры.</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -2666,14 +2666,15 @@ All changes will be lost!</source>
         <translation type="unfinished">Сохраняю файл.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+52"/>
         <source>Save succeeded.</source>
         <translation type="unfinished">Успешно сохранено.</translation>
     </message>
     <message>
+        <location line="+3"/>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Не удалось сохранить файл молекулы.</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2753,12 +2754,12 @@ All changes will be lost!</source>
         <location line="+30"/>
         <location line="+29"/>
         <location line="+32"/>
-        <location line="+531"/>
+        <location line="+534"/>
         <source>View %1</source>
         <translation type="unfinished">Просмотр %1</translation>
     </message>
     <message>
-        <location line="-556"/>
+        <location line="-559"/>
         <source>Avogadro: Detached View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2773,7 +2774,7 @@ All changes will be lost!</source>
         <translation type="unfinished">Полноэкранный режим</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="+94"/>
         <source>Ctrl+Backspace</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2887,9 +2888,9 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 <context>
     <name>Avogadro::MolecularPropertiesExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+37"/>
-        <source>Molecule...</source>
-        <translation type="unfinished">Молекула</translation>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+40"/>
+        <source>Molecule Properties...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+15"/>
@@ -2902,14 +2903,28 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
         <translation type="unfinished">&amp;Свойства</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+38"/>
+        <location line="+67"/>
+        <source>Estimated Dipole Moment (D):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+48"/>
         <source>Molecular Properties</source>
-        <translation type="unfinished">Свойства угла</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Display standard molecular properties.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::Molecule</name>
+    <message>
+        <location filename="../libavogadro/src/molecule.cpp" line="+103"/>
+        <source>untitled</source>
+        <comment>Name of a new, untitled molecule file</comment>
+        <translation type="unfinished">безымянный</translation>
     </message>
 </context>
 <context>
@@ -2932,7 +2947,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+27"/>
         <source>Reading molecule with index %1 from file &apos;%2&apos; failed.</source>
-        <translation type="unfinished">Не удалось считать файл структуры.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+12"/>
@@ -2962,7 +2977,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
     <message>
         <location line="+9"/>
         <source>Replacing molecule with index %1 in file &apos;%2&apos; failed.</source>
-        <translation type="unfinished">Не удалось считать файл структуры.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3042,7 +3057,7 @@ Right Mouse:  Click and drag to rotate selected atoms.</source>
 <context>
     <name>Avogadro::NavigateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+62"/>
+        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+60"/>
         <source>Navigation Tool (F9)
 
 Left Mouse:   Click and drag to rotate the view
@@ -3147,7 +3162,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location filename="../libavogadro/src/extensions/orbitaldialog.cpp" line="+107"/>
         <source>MO %L1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished">МО </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+142"/>
@@ -3198,7 +3213,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+37"/>
         <source>MO %L1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished">МО </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-25"/>
@@ -3214,7 +3229,7 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+37"/>
         <source>Calculating MO %L1</source>
         <comment>Molecular Orbital</comment>
-        <translation type="unfinished">Расчет МО %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+141"/>
@@ -3313,7 +3328,19 @@ Right Mouse:  Click and drag to move the view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+21"/>
+        <location line="+21"/>
+        <source>Cannot Write to File.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-20"/>
+        <location line="+21"/>
+        <source>Cannot write to file %1. Do you have permissions to write to that location?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
         <source>POV-Ray failed to start.</source>
         <translation type="unfinished">Не удалось запустить POV-Ray.</translation>
     </message>
@@ -3382,7 +3409,7 @@ Right Mouse:  Click and drag to move the view</source>
 <context>
     <name>Avogadro::PrimitiveItemModel</name>
     <message>
-        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+262"/>
+        <location filename="../avogadro/src/primitiveitemmodel.cpp" line="+265"/>
         <source>Molecule</source>
         <translation type="unfinished">Молекула</translation>
     </message>
@@ -3390,13 +3417,13 @@ Right Mouse:  Click and drag to move the view</source>
         <location line="+4"/>
         <source>Atom %1 %L2</source>
         <comment>%1 is element, %L2 is atom index</comment>
-        <translation type="unfinished">Атом %1 %2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bond %L1</source>
         <comment>%L1 is bond index</comment>
-        <translation type="unfinished">Связь %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+11"/>
@@ -3538,8 +3565,8 @@ Right Mouse:  Click and drag to move the view</source>
     </message>
     <message>
         <location line="+5"/>
-        <source>Conformers...</source>
-        <translation type="unfinished">Конформеры...</translation>
+        <source>Conformer Properties...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -3583,7 +3610,7 @@ Right Mouse:  Click and drag to move the view</source>
     <message>
         <location line="+2"/>
         <source>Element</source>
-        <translation type="unfinished">Элемент:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4653,7 +4680,7 @@ Do you want to create a crystal unit cell?</source>
 <context>
     <name>Avogadro::UpdateCheck</name>
     <message>
-        <location filename="../avogadro/src/updatecheck.cpp" line="+83"/>
+        <location filename="../avogadro/src/updatecheck.cpp" line="+81"/>
         <source>Network Update Check Failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4865,13 +4892,13 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location filename="../libavogadro/src/engines/cartoonsettingswidget.ui" line="+17"/>
         <source>Shape</source>
-        <translation type="unfinished">Сохранить</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+288"/>
         <source>Helix</source>
-        <translation type="unfinished">Гелий</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-266"/>
@@ -4898,7 +4925,7 @@ Do you want to create a crystal unit cell?</source>
         <location line="-161"/>
         <location line="+218"/>
         <source>Sheet</source>
-        <translation type="unfinished">&amp;Выделить</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-125"/>
@@ -6988,7 +7015,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+26"/>
         <source>Alanine</source>
-        <translation type="unfinished">Астат</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -6998,7 +7025,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Arginine</source>
-        <translation type="unfinished">Аргон</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7008,7 +7035,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Asparagine</source>
-        <translation type="unfinished">Астат</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7028,7 +7055,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Cysteine</source>
-        <translation type="unfinished">Астат</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7078,7 +7105,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Isoleucine</source>
-        <translation type="unfinished">Иод</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7088,7 +7115,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Valine</source>
-        <translation type="unfinished">Валентность</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7098,7 +7125,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Tyrosine</source>
-        <translation type="unfinished">Бром</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7108,7 +7135,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Tryptophan</source>
-        <translation type="unfinished">Криптон</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7118,7 +7145,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Threonine</source>
-        <translation type="unfinished">Бром</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7128,7 +7155,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Serine</source>
-        <translation type="unfinished">Одинарная</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7138,7 +7165,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Proline</source>
-        <translation type="unfinished">Бром</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7158,7 +7185,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Methionine</source>
-        <translation type="unfinished">Метод</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7168,7 +7195,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Lysine</source>
-        <translation type="unfinished">Линии</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7178,7 +7205,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Leucine</source>
-        <translation type="unfinished">Линии</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -7259,12 +7286,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>Beta Sheet</source>
-        <translation type="unfinished">Новая схема</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Other</source>
-        <translation type="unfinished">Другой...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
@@ -7285,7 +7312,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+14"/>
         <source>Chain Number:</source>
-        <translation type="unfinished">Атомный номер</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
@@ -7300,12 +7327,12 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>B</source>
-        <translation type="unfinished">B:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>C</source>
-        <translation type="unfinished">C1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
@@ -7315,7 +7342,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+5"/>
         <source>F</source>
-        <translation type="unfinished">HF</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -7375,7 +7402,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="-65"/>
         <source>Symbol &amp; Atom Number</source>
-        <translation type="unfinished">Атомный номер</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -8032,19 +8059,14 @@ Do you want to create a crystal unit cell?</source>
     </message>
 </context>
 <context>
-    <name>MoleculePropertiesDialog</name>
+    <name>MolecularPropertiesDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/molecularpropdialog.ui" line="+14"/>
         <source>Molecule Properties</source>
-        <translation type="unfinished">Свойства угла</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>Title:</source>
-        <translation type="unfinished">Название:</translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>Molecular Weight (g/mol):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8056,17 +8078,17 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Number of Atoms:</source>
-        <translation type="unfinished">Число атомов:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Number of Bonds:</source>
-        <translation type="unfinished">Число атомов:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Number of Residues:</source>
-        <translation type="unfinished">Число шагов</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
@@ -8076,7 +8098,7 @@ Do you want to create a crystal unit cell?</source>
     <message>
         <location line="+7"/>
         <source>Dipole Moment (D):</source>
-        <translation type="unfinished">Дипольный момент</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -9384,7 +9406,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+26"/>
         <source>Reading a molecule from file &apos;%1&apos; failed.</source>
-        <translation type="unfinished">Не удалось считать файл структуры.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+12"/>
@@ -9405,7 +9427,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+18"/>
         <source>Writing a molecule to file &apos;%1&apos; failed.</source>
-        <translation type="unfinished">Не удалось сохранить файл молекулы.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+27"/>
@@ -9420,7 +9442,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+32"/>
         <source>Writing conformers to file &apos;%1&apos; failed.</source>
-        <translation type="unfinished">Не удалось прочитать файл траектории %1.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+93"/>
@@ -9583,6 +9605,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="-21"/>
         <source>Medium</source>
+        <comment>Display quality setting</comment>
         <translation type="unfinished">Среднее</translation>
     </message>
     <message>
@@ -9593,6 +9616,7 @@ for example 1 if you intend to use POV-Ray to produce a square image, like 1000x
     <message>
         <location line="+44"/>
         <source>None</source>
+        <comment>Level of fog in the scene</comment>
         <translation type="unfinished">Отсутствует</translation>
     </message>
     <message>
@@ -10003,7 +10027,7 @@ Scroll wheel: Zoom to cursor</source>
     <message>
         <location filename="../libavogadro/src/extensions/spectratabnmr.ui" line="+14"/>
         <source>tab_NMR</source>
-        <translation type="unfinished">ЯМР</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+9"/>
@@ -10120,7 +10144,7 @@ Scroll wheel: Zoom to cursor</source>
     <message utf8="true">
         <location line="+31"/>
         <source>Frequency (cm⁻¹)</source>
-        <translation type="unfinished">Частота (cm-1)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
