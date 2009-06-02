@@ -63,7 +63,6 @@ set(libavogadro_HDRS
   plugin.h
   pluginmanager.h
   primitive.h
-  primitiveitemmodel.h
   primitivelist.h
   protein.h
   residue.h

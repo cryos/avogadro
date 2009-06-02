@@ -22,9 +22,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include <avogadro/primitiveitemmodel.h>
+#include "primitiveitemmodel.h"
 
-#include <QTimer>
 #include <QVector>
 #include <QDebug>
 
@@ -32,6 +31,8 @@
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
+#include <avogadro/engine.h>
+
 #include <openbabel/mol.h>
 
 namespace Avogadro {
@@ -59,7 +60,8 @@ namespace Avogadro {
       QVector<QVector<Primitive *> > moleculeCache;
   };
 
-  PrimitiveItemModel::PrimitiveItemModel( Engine *engine, QObject *parent) : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
+  PrimitiveItemModel::PrimitiveItemModel( Engine *engine, QObject *parent)
+    : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
   {
     d->engine = engine;
 
@@ -78,7 +80,8 @@ namespace Avogadro {
     }
   }
 
-  PrimitiveItemModel::PrimitiveItemModel(Molecule *molecule, QObject *parent) : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
+  PrimitiveItemModel::PrimitiveItemModel(Molecule *molecule, QObject *parent)
+    : QAbstractItemModel(parent), d(new PrimitiveItemModelPrivate)
   {
     d->molecule = molecule;
 
@@ -321,7 +324,8 @@ namespace Avogadro {
     return Qt::ItemIsEnabled;
   }
 
-  QModelIndex PrimitiveItemModel::index ( int row, int column, const QModelIndex & parent ) const
+  QModelIndex PrimitiveItemModel::index ( int row, int column,
+                                          const QModelIndex & parent ) const
   {
     if(!parent.isValid())
     {
