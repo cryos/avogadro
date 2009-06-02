@@ -960,7 +960,7 @@ namespace Avogadro
     raise();
 
 #ifdef Q_WS_MAC
-    qDebug() << " close event ";
+    //    qDebug() << " close event ";
     unsigned int mainWindowCount = getMainWindowCount();
 
     if ( mainWindowCount == 1 && isVisible() ) {
