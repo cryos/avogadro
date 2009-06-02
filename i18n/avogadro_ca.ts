@@ -22,7 +22,7 @@ Language-Team: Catalan (Valencia) &lt;ca@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-31 22:28+0000
+X-Launchpad-Export-Date: 2009-06-02 15:08+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -2380,7 +2380,7 @@ Tot els canvis es perdran!</translation>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="+270"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="+271"/>
         <source>Messages</source>
         <translation type="unfinished">Missatges</translation>
     </message>
@@ -2406,25 +2406,25 @@ Tot els canvis es perdran!</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+1034"/>
+        <location line="+1044"/>
         <source>Bring All to Front</source>
         <translation type="unfinished">Porta-ho tot al davant</translation>
     </message>
     <message>
-        <location line="-775"/>
+        <location line="-785"/>
         <source>&amp;Tool Settings...</source>
-        <translation type="unfinished">Barra de configuració</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+T</source>
         <comment>Tool Settings shortcut</comment>
-        <translation type="unfinished">Ctrl+M</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Display Settings...</source>
-        <translation type="unfinished">Configuració…</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2441,13 +2441,13 @@ Tot els canvis es perdran!</translation>
     <message>
         <location line="-357"/>
         <location line="+354"/>
-        <location line="+172"/>
+        <location line="+182"/>
         <location line="+79"/>
         <source>All files</source>
         <translation type="unfinished">Tots els fitxers</translation>
     </message>
     <message>
-        <location line="-604"/>
+        <location line="-614"/>
         <location line="+350"/>
         <location line="+12"/>
         <source>CML</source>
@@ -2533,14 +2533,14 @@ Tot els canvis es perdran!</translation>
         <location line="+8"/>
         <location line="+14"/>
         <location line="+12"/>
-        <location line="+147"/>
-        <location line="+967"/>
+        <location line="+157"/>
+        <location line="+970"/>
         <location line="+467"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
-        <location line="-1930"/>
+        <location line="-1943"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished">No es pot llegir el fitxer %1: 
@@ -2677,11 +2677,12 @@ Tot els canvis es perdran!</translation>
         <translation type="unfinished">Alça el fitxer.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+52"/>
         <source>Save succeeded.</source>
         <translation type="unfinished">S&apos;ha alçat amb èxit.</translation>
     </message>
     <message>
+        <location line="+3"/>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
         <translation type="unfinished">S&apos;ha produït un error en alçar el fitxer molecular.</translation>
@@ -2764,12 +2765,12 @@ Tot els canvis es perdran!</translation>
         <location line="+30"/>
         <location line="+29"/>
         <location line="+32"/>
-        <location line="+531"/>
+        <location line="+534"/>
         <source>View %1</source>
         <translation type="unfinished">Visualitza %1</translation>
     </message>
     <message>
-        <location line="-556"/>
+        <location line="-559"/>
         <source>Avogadro: Detached View</source>
         <translation type="unfinished">Avogadro: Vista separada</translation>
     </message>
@@ -2784,7 +2785,7 @@ Tot els canvis es perdran!</translation>
         <translation type="unfinished">Pantalla completa</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="+94"/>
         <source>Ctrl+Backspace</source>
         <translation type="unfinished">Ctrl+Backspace</translation>
     </message>
@@ -2902,8 +2903,8 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a girar els àtoms
 <context>
     <name>Avogadro::MolecularPropertiesExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+37"/>
-        <source>Molecule...</source>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+40"/>
+        <source>Molecule Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2917,7 +2918,12 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a girar els àtoms
         <translation type="unfinished">&amp;Propietats</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+38"/>
+        <location line="+67"/>
+        <source>Estimated Dipole Moment (D):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+48"/>
         <source>Molecular Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2925,6 +2931,15 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a girar els àtoms
         <location line="+1"/>
         <source>Display standard molecular properties.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::Molecule</name>
+    <message>
+        <location filename="../libavogadro/src/molecule.cpp" line="+103"/>
+        <source>untitled</source>
+        <comment>Name of a new, untitled molecule file</comment>
+        <translation type="unfinished">sense títol</translation>
     </message>
 </context>
 <context>
@@ -3057,7 +3072,7 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a girar els àtoms
 <context>
     <name>Avogadro::NavigateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+62"/>
+        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+60"/>
         <source>Navigation Tool (F9)
 
 Left Mouse:   Click and drag to rotate the view
@@ -3332,7 +3347,19 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la vista.<
         <translation type="unfinished">No heu demanat cap generació POV-Ray i no podeu utilitzar cap fitxer POV-Ray.  Així no podreu alçar cap resultat. Esteu segur que això és el que voleu ?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+21"/>
+        <location line="+21"/>
+        <source>Cannot Write to File.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-20"/>
+        <location line="+21"/>
+        <source>Cannot write to file %1. Do you have permissions to write to that location?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
         <source>POV-Ray failed to start.</source>
         <translation type="unfinished">S&apos;ha produït un error en iniciar el POV-Ray.</translation>
     </message>
@@ -3401,7 +3428,7 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la vista.<
 <context>
     <name>Avogadro::PrimitiveItemModel</name>
     <message>
-        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+262"/>
+        <location filename="../avogadro/src/primitiveitemmodel.cpp" line="+265"/>
         <source>Molecule</source>
         <translation type="unfinished">Molècula</translation>
     </message>
@@ -3557,8 +3584,8 @@ Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la vista.<
     </message>
     <message>
         <location line="+5"/>
-        <source>Conformers...</source>
-        <translation type="unfinished">Confòrmers...</translation>
+        <source>Conformer Properties...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4673,7 +4700,7 @@ Voleu crear una cel·la cristalina?</translation>
 <context>
     <name>Avogadro::UpdateCheck</name>
     <message>
-        <location filename="../avogadro/src/updatecheck.cpp" line="+83"/>
+        <location filename="../avogadro/src/updatecheck.cpp" line="+81"/>
         <source>Network Update Check Failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8052,7 +8079,7 @@ Voleu crear una cel·la cristalina?</translation>
     </message>
 </context>
 <context>
-    <name>MoleculePropertiesDialog</name>
+    <name>MolecularPropertiesDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/molecularpropdialog.ui" line="+14"/>
         <source>Molecule Properties</source>
@@ -8060,11 +8087,6 @@ Voleu crear una cel·la cristalina?</translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>Title:</source>
-        <translation type="unfinished">Títol:</translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>Molecular Weight (g/mol):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9605,6 +9627,7 @@ per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada de d&ap
     <message>
         <location line="-21"/>
         <source>Medium</source>
+        <comment>Display quality setting</comment>
         <translation type="unfinished">Mitjà</translation>
     </message>
     <message>
@@ -9615,6 +9638,7 @@ per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada de d&ap
     <message>
         <location line="+44"/>
         <source>None</source>
+        <comment>Level of fog in the scene</comment>
         <translation type="unfinished">Cap</translation>
     </message>
     <message>

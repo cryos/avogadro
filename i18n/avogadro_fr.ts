@@ -14,7 +14,7 @@ Language-Team: LANGUAGE &lt;LL@li.org&gt;
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Launchpad-Export-Date: 2009-05-31 22:28+0000
+X-Launchpad-Export-Date: 2009-06-02 15:08+0000
 X-Generator: Launchpad (build Unknown)
 </translation>
     </message>
@@ -2374,7 +2374,7 @@ Tous les changements seront perdus!</translation>
 <context>
     <name>Avogadro::MainWindow</name>
     <message>
-        <location filename="../avogadro/src/mainwindow.cpp" line="+270"/>
+        <location filename="../avogadro/src/mainwindow.cpp" line="+271"/>
         <source>Messages</source>
         <translation type="unfinished">Messages</translation>
     </message>
@@ -2400,25 +2400,25 @@ Tous les changements seront perdus!</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+1034"/>
+        <location line="+1044"/>
         <source>Bring All to Front</source>
         <translation type="unfinished">Tout ramener au premier plan</translation>
     </message>
     <message>
-        <location line="-775"/>
+        <location line="-785"/>
         <source>&amp;Tool Settings...</source>
-        <translation type="unfinished">Paramètres des outils</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ctrl+T</source>
         <comment>Tool Settings shortcut</comment>
-        <translation type="unfinished">Ctrl+S</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
         <source>&amp;Display Settings...</source>
-        <translation type="unfinished">Paramètres...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2435,13 +2435,13 @@ Tous les changements seront perdus!</translation>
     <message>
         <location line="-357"/>
         <location line="+354"/>
-        <location line="+172"/>
+        <location line="+182"/>
         <location line="+79"/>
         <source>All files</source>
         <translation type="unfinished">Tous les fichiers</translation>
     </message>
     <message>
-        <location line="-604"/>
+        <location line="-614"/>
         <location line="+350"/>
         <location line="+12"/>
         <source>CML</source>
@@ -2527,14 +2527,14 @@ Tous les changements seront perdus!</translation>
         <location line="+8"/>
         <location line="+14"/>
         <location line="+12"/>
-        <location line="+147"/>
-        <location line="+967"/>
+        <location line="+157"/>
+        <location line="+970"/>
         <location line="+467"/>
         <source>Avogadro</source>
         <translation type="unfinished">Avogadro</translation>
     </message>
     <message>
-        <location line="-1930"/>
+        <location line="-1943"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished">Impossible de lire le fichier %1:
@@ -2672,11 +2672,12 @@ les mette à l&apos;échelle et effectue une optimisation rapide ?</translation>
         <translation type="unfinished">Enregistrement du fichier.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+52"/>
         <source>Save succeeded.</source>
         <translation type="unfinished">Enregistrement effectué.</translation>
     </message>
     <message>
+        <location line="+3"/>
         <location line="+4"/>
         <source>Saving molecular file failed.</source>
         <translation type="unfinished">L&apos;enregistrement du fichier moléculaire a échoué.</translation>
@@ -2759,12 +2760,12 @@ les mette à l&apos;échelle et effectue une optimisation rapide ?</translation>
         <location line="+30"/>
         <location line="+29"/>
         <location line="+32"/>
-        <location line="+531"/>
+        <location line="+534"/>
         <source>View %1</source>
         <translation type="unfinished">Vue %1</translation>
     </message>
     <message>
-        <location line="-556"/>
+        <location line="-559"/>
         <source>Avogadro: Detached View</source>
         <translation type="unfinished">Avogadro : Nouvelle vue</translation>
     </message>
@@ -2779,7 +2780,7 @@ les mette à l&apos;échelle et effectue une optimisation rapide ?</translation>
         <translation type="unfinished">Plein écran</translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="+94"/>
         <source>Ctrl+Backspace</source>
         <translation type="unfinished">Ctrl+Backspace</translation>
     </message>
@@ -2897,8 +2898,8 @@ Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur les at
 <context>
     <name>Avogadro::MolecularPropertiesExtension</name>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+37"/>
-        <source>Molecule...</source>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.cpp" line="+40"/>
+        <source>Molecule Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2912,7 +2913,12 @@ Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur les at
         <translation type="unfinished">&amp;Propriétés</translation>
     </message>
     <message>
-        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+38"/>
+        <location line="+67"/>
+        <source>Estimated Dipole Moment (D):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libavogadro/src/extensions/molecularpropextension.h" line="+48"/>
         <source>Molecular Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2920,6 +2926,15 @@ Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur les at
         <location line="+1"/>
         <source>Display standard molecular properties.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Avogadro::Molecule</name>
+    <message>
+        <location filename="../libavogadro/src/molecule.cpp" line="+103"/>
+        <source>untitled</source>
+        <comment>Name of a new, untitled molecule file</comment>
+        <translation type="unfinished">sans_titre</translation>
     </message>
 </context>
 <context>
@@ -3052,7 +3067,7 @@ Bouton droit: Cliquer et glisser-déposer pour effectuer une rotation sur les at
 <context>
     <name>Avogadro::NavigateTool</name>
     <message>
-        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+62"/>
+        <location filename="../libavogadro/src/tools/navigatetool.cpp" line="+60"/>
         <source>Navigation Tool (F9)
 
 Left Mouse:   Click and drag to rotate the view
@@ -3132,7 +3147,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     <message>
         <location line="-29"/>
         <source>Network timeout or other error.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délai d&apos;attente réseau expiré, ou autre erreur</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -3327,7 +3342,19 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
         <translation type="unfinished">Vous n&apos;avez pas demandé de rendu direct avec POV-Ray, ni enregistré le fichier POV-Ray. Etes-vous certain de vouloir poursuivre ?</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+21"/>
+        <location line="+21"/>
+        <source>Cannot Write to File.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-20"/>
+        <location line="+21"/>
+        <source>Cannot write to file %1. Do you have permissions to write to that location?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
         <source>POV-Ray failed to start.</source>
         <translation type="unfinished">Erreur de lancement de POV-Ray.</translation>
     </message>
@@ -3396,7 +3423,7 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
 <context>
     <name>Avogadro::PrimitiveItemModel</name>
     <message>
-        <location filename="../libavogadro/src/primitiveitemmodel.cpp" line="+262"/>
+        <location filename="../avogadro/src/primitiveitemmodel.cpp" line="+265"/>
         <source>Molecule</source>
         <translation type="unfinished">Molécule</translation>
     </message>
@@ -3552,8 +3579,8 @@ Bouton droit: Cliquer et glisser-déposer pour déplacer la vue</translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>Conformers...</source>
-        <translation type="unfinished">Conformères...</translation>
+        <source>Conformer Properties...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4667,14 +4694,14 @@ Voulez-vous créer une maille conventionnelle de cristal?</translation>
 <context>
     <name>Avogadro::UpdateCheck</name>
     <message>
-        <location filename="../avogadro/src/updatecheck.cpp" line="+83"/>
+        <location filename="../avogadro/src/updatecheck.cpp" line="+81"/>
         <source>Network Update Check Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Network timeout or other error.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Délai d&apos;attente réseau expiré, ou autre erreur</translation>
     </message>
 </context>
 <context>
@@ -8046,7 +8073,7 @@ Voulez-vous créer une maille conventionnelle de cristal?</translation>
     </message>
 </context>
 <context>
-    <name>MoleculePropertiesDialog</name>
+    <name>MolecularPropertiesDialog</name>
     <message>
         <location filename="../libavogadro/src/extensions/molecularpropdialog.ui" line="+14"/>
         <source>Molecule Properties</source>
@@ -8054,11 +8081,6 @@ Voulez-vous créer une maille conventionnelle de cristal?</translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>Title:</source>
-        <translation type="unfinished">Titre:</translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>Molecular Weight (g/mol):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9600,6 +9622,7 @@ par exemple 1 si vous voulez utiliser POV-Ray pour produire une image carrée, p
     <message>
         <location line="-21"/>
         <source>Medium</source>
+        <comment>Display quality setting</comment>
         <translation type="unfinished">Moyen</translation>
     </message>
     <message>
@@ -9610,6 +9633,7 @@ par exemple 1 si vous voulez utiliser POV-Ray pour produire une image carrée, p
     <message>
         <location line="+44"/>
         <source>None</source>
+        <comment>Level of fog in the scene</comment>
         <translation type="unfinished">Rien</translation>
     </message>
     <message>
