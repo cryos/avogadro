@@ -169,7 +169,8 @@ if (WIN32)
     #
     # Avogadro python module
     #
-    install(FILES ${Avogadro_BINARY_DIR}/lib/Avogadro.pyd DESTINATION bin/lib/site-packages)
+    install(FILES ${Avogadro_BINARY_DIR}/lib/_Avogadro.pyd DESTINATION bin/lib/site-packages)
+    install(FILES ${Avogadro_SOURCE_DIR}/libavogadro/src/python/Avogadro.py DESTINATION bin/lib/site-packages)
     #
     # Avogadro plugin scripts
     #
