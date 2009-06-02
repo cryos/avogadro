@@ -802,7 +802,6 @@ namespace Avogadro {
        */
       void namedSelectionsChanged();
 
-
   };
 
 } // end namespace Avogadro

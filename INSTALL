@@ -51,6 +51,9 @@ installation locations.
    -DENABLE_PYTHON : specify whether to build Boost.Python interpreter
                     (default = TRUE)
 
+   -DENABLE_UPDATE_CHECKER : Enable checking for new Avogadro versions over the
+                             network - Linux distributions may want to disable.
+
 For more information please consult the CMake documentation.
 
 Avogadro uses a few environment variables to find things at runtime. If Avogadro

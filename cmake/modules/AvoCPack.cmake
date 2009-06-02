@@ -86,7 +86,8 @@ if (WIN32)
   set(qt_DEPS
     "${qt_BINDIR}/QtCore4.dll"
     "${qt_BINDIR}/QtGui4.dll"
-    "${qt_BINDIR}/QtOpenGL4.dll")
+    "${qt_BINDIR}/QtOpenGL4.dll"
+    "${qt_BINDIR}/QtNetwork4.dll")
   install(FILES ${qt_DEPS} DESTINATION bin)
 
   ##############################################
