@@ -712,16 +712,21 @@ namespace Avogadro{
     m_dipoleMoment = new Vector3d(moment);
   }
 
-  const Eigen::Vector3d * Molecule::dipoleMoment() const
+  const Eigen::Vector3d * Molecule::dipoleMoment(bool *estimate) const
   {
-    if (m_dipoleMoment)
+    if (m_dipoleMoment) {
+      if (estimate)
+        *estimate = false; // genuine calculated dipole moment
       return m_dipoleMoment;
+    }
     else {
       // Calculate an estimate
       m_dipoleMoment = new Vector3d(0.0, 0.0, 0.0);
       foreach (Atom *a, atoms()) {
         *m_dipoleMoment += *a->pos() * a->partialCharge();
       }
+      if (estimate)
+        *estimate = true;
       return m_dipoleMoment;
     }
   }

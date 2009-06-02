@@ -24,7 +24,8 @@
 
 #include "primitivetreeview.h"
 
-#include <avogadro/primitiveitemmodel.h>
+#include "primitiveitemmodel.h"
+
 #include <avogadro/primitive.h>
 #include <avogadro/engine.h>
 

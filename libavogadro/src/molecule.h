@@ -483,9 +483,13 @@ namespace Avogadro {
     void setDipoleMoment(const Eigen::Vector3d &moment);
 
     /**
+     * Calculate the dipole moment vector for this molecule. If not known,
+     * Avogadro will estimate it based on partial charges.
+     *
+     * @param A boolean to indicate if the dipole is estimated or not
      * @return The dipole moment of the Molecule.
      */
-    const Eigen::Vector3d * dipoleMoment() const;
+    const Eigen::Vector3d * dipoleMoment(bool *estimate = 0) const;
 
     /**
      * Calculate the partial charges on each atom.

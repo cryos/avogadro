@@ -35,8 +35,6 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/camera.h>
 
-#include <QDebug>
-
 namespace Avogadro {
 
   using Eigen::Vector3d;
@@ -352,7 +350,6 @@ namespace Avogadro {
 
   void NavigateTool::enableEyeCandy(int enable)
   {
-    qDebug() << "enableEyeCandy called" << enable;
     m_eyeCandyEnabled = enable == 2 ? true : false;
   }
 

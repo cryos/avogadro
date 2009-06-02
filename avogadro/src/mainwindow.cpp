@@ -36,6 +36,7 @@
 #include "engineitemmodel.h"
 #include "enginelistview.h"
 #include "engineprimitiveswidget.h"
+#include "primitiveitemmodel.h"
 #include "enginecolorswidget.h"
 
 #ifdef ENABLE_UPDATE_CHECKER
@@ -58,6 +59,7 @@
 
 #include <avogadro/camera.h>
 #include <avogadro/extension.h>
+#include <avogadro/engine.h>
 
 #include <avogadro/glgraphicsview.h>
 
@@ -65,7 +67,6 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 
-#include <avogadro/primitiveitemmodel.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/color.h>
 
@@ -960,7 +961,7 @@ namespace Avogadro
     raise();
 
 #ifdef Q_WS_MAC
-    qDebug() << " close event ";
+    //    qDebug() << " close event ";
     unsigned int mainWindowCount = getMainWindowCount();
 
     if ( mainWindowCount == 1 && isVisible() ) {

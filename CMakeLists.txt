@@ -41,26 +41,31 @@ endif(MSVC)
 ###########################################################
 # We should always respect the users CXXFLAGS if they have set them
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
+  set (CMAKE_CXX_FLAGS_WARN "-Wnon-virtual-dtor -Wno-long-long -ansi -Wcast-align -Wchar-subscripts -Wall -Wextra -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic")
   # On Linux with GCC 4.3+ these flags generate thousands of warnings, so they
   # are now optional. Most of the warnings are in included headers.
   option(EXTRA_WARNINGS
     "Enable extra GCC warnings - can generate thousands" OFF)
   if(EXTRA_WARNINGS)
-    # Enable extra compiler wanrings for Debug builds - may be all of the
-    # extra flags for warnings belong in here
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Woverloaded-virtual -Wfloat-equal")
+    # Enable extra compiler warnings for extra checking
+    set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -Wconversion -Woverloaded-virtual -Wfloat-equal")
 #  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wold-style-cast")
   endif(EXTRA_WARNINGS)
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags
-  if (CMAKE_SYSTEM_NAME MATCHES Linux)
-    set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
-    set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
-    set (CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
-    set (CMAKE_MODULE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
-    set (CMAKE_EXE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
-    set (CMAKE_EXE_LINKER_FLAGS "-Wl,--enable-new-dtags ${CMAKE_EXE_LINKER_FLAGS}")
+  if(CMAKE_SYSTEM_NAME MATCHES Linux)
+    set(CMAKE_SHARED_LINKER_FLAGS
+      "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set(CMAKE_SHARED_LINKER_FLAGS
+      "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
+    set(CMAKE_MODULE_LINKER_FLAGS
+      "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set(CMAKE_MODULE_LINKER_FLAGS
+      "-Wl,--enable-new-dtags ${CMAKE_SHARED_LINKER_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS
+      "-Wl,--fatal-warnings -Wl,--no-undefined -lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS
+      "-Wl,--enable-new-dtags ${CMAKE_EXE_LINKER_FLAGS}")
   endif (CMAKE_SYSTEM_NAME MATCHES Linux)
   # Now check if we can use visibility to selectively export symbols
   # Get the GCC version - from KDE4 cmake files
@@ -92,8 +97,10 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 
   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
   # they will not replace them.
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-  set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+    "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
+  set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline ${CMAKE_CXX_FLAGS_WARN}")
 
   TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
   if(NEED_FPERMISSIVE)

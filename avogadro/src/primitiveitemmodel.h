@@ -25,16 +25,15 @@
 #ifndef PRIMITIVEITEMMODEL_H
 #define PRIMITIVEITEMMODEL_H
 
-#include <avogadro/global.h>
-#include <avogadro/engine.h>
-
 #include <QAbstractItemModel>
 
 class QTreeView;
 namespace Avogadro {
-
+  class Engine;
+  class Primitive;
+  class Molecule;
   class PrimitiveItemModelPrivate;
-  class A_EXPORT PrimitiveItemModel : public QAbstractItemModel
+  class PrimitiveItemModel : public QAbstractItemModel
   {
     Q_OBJECT
 
