@@ -220,7 +220,7 @@ namespace Avogadro
     ui.procSpin->setValue(1);
   }
 
-  void GaussianInputDialog::generateClicked()
+  QString GaussianInputDialog::saveInputFile()
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
@@ -234,7 +234,7 @@ namespace Avogadro
     QFile file(fileName);
     // FIXME This really should pop up a warning if the file cannot be opened
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
+      return QString();
 
     QString previewText = ui.previewText->toPlainText();
     QString checkpointName = QFileInfo(fileName).baseName();
@@ -245,6 +245,99 @@ namespace Avogadro
 
     QTextStream out(&file);
     out << previewText;
+
+    return fileName;
+  }
+
+  void GaussianInputDialog::generateClicked()
+  {
+    saveInputFile();
+  }
+
+  void GaussianInputDialog::computeClicked()
+  {
+    if (m_process != 0) {
+      QMessageBox::warning(this, tr("Gaussian Running."),
+                           tr("Gaussian is already running. Wait until the previous calculation is finished."));
+      return;
+    }
+
+    QString fileName = saveInputFile();
+    if (fileName.isEmpty())
+      return;
+
+    QFileInfo info(pathToG03);
+    if (!info.exists() || !info.isExecutable()) {
+      QMessageBox::warning(this, tr("Gaussian Not Installed."),
+                           tr("The G03 executable, cannot be found."));
+      return;
+    }
+
+    m_process = new QProcess(this);
+    QFileInfo input(fileName);
+    m_process->setWorkingDirectory(input.absolutePath());
+
+    QStringList arguments;
+    arguments << fileName;
+    m_inputFile = fileName; // save for reading in output
+
+    m_process->start(mopacPath, arguments);
+    if (!m_process->waitForStarted()) {
+      QMessageBox::warning(this, tr("G03 failed to start."),
+                           tr("G03 did not start. Perhaps it is not installed correctly."));
+    }
+    connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
+    m_progress = new QProgressDialog(this);
+    m_progress->setRange(0,0); // indeterminate progress
+    m_progress->setLabelText(tr("Running MOPAC calculation..."));
+    m_progress->show();
+    connect(m_progress, SIGNAL(canceled()), this, SLOT(stopProcess()));
+  }
+
+  void GaussianInputDialog::stopProcess()
+  {
+    if (m_progress) {
+      m_progress->deleteLater();
+      m_progress = 0;
+    }
+
+    disconnect(m_process, 0, this, 0); // don't send a "finished" signal
+    m_process->close();
+    m_process->deleteLater();
+    m_process = 0;
+  }
+
+  void GaussianInputDialog::finished(int exitCode)
+  {
+    if (m_progress) {
+      m_progress->cancel();
+      m_progress->deleteLater();
+      m_progress = 0;
+    }
+
+    if (m_process) {
+      disconnect(m_process, 0, this, 0);
+      m_process->deleteLater();
+      m_process = 0;
+    } else {
+      return; // we probably cancelled
+    }
+
+    if (exitCode) {
+      QMessageBox::warning(this, tr("G03 Crashed."),
+                           tr("Gaussian did not run correctly. Perhaps it is not installed correctly."));
+     return;
+    }
+
+    if (!m_molecule)
+      return;
+
+    // we have a successful run. Read in the results and close the dialog
+    QFileInfo inputFile(m_inputFile);
+    QString outputFile = inputFile.canonicalPath() + '/' + inputFile.baseName() + ".out";
+    emit readOutput(outputFile);
+
+    close();
   }
 
   void GaussianInputDialog::moreClicked()

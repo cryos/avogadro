@@ -96,6 +96,8 @@ namespace Avogadro
 
     // Enable/disable form elements
     void deckDirty(bool);
+    
+    QString saveInputFile();
 
   public Q_SLOTS:
     void updatePreviewText();
@@ -104,6 +106,7 @@ namespace Avogadro
     //! Button Slots
     void resetClicked();
     void generateClicked();
+    void computeClicked();
     void enableFormClicked();
     void moreClicked();
     void previewEdited();
@@ -117,6 +120,9 @@ namespace Avogadro
     void setOutput(int);
     void setChk(int);
     void setCoords(int);
+    
+    void finished(int);
+    void stopProcess();
   };
 }
 
