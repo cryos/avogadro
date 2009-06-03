@@ -93,6 +93,8 @@ namespace Avogadro
     if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
+        connect(m_gaussianInputDialog, SIGNAL(readOutput(QString)),
+          this, SLOT(readOutputFile(QString)));
         m_gaussianInputDialog->setMolecule(m_molecule);
         m_gaussianInputDialog->show();
       }

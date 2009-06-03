@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="beta-D-lyxopyranose.out">
+ <atomArray>
+  <atom id="a1" elementType="C" x3="1.375100" y3="0.490400" z3="-0.538100"/>
+  <atom id="a2" elementType="O" x3="0.368200" y3="1.315500" z3="-1.141400"/>
+  <atom id="a3" elementType="C" x3="-0.996800" y3="0.862900" z3="-1.150100"/>
+  <atom id="a4" elementType="C" x3="-1.433100" y3="0.274800" z3="0.200300"/>
+  <atom id="a5" elementType="O" x3="-2.721800" y3="-0.295100" z3="-0.068600"/>
+  <atom id="a6" elementType="C" x3="-0.456100" y3="-0.852300" z3="0.607700"/>
+  <atom id="a7" elementType="C" x3="0.948300" y3="-0.240500" z3="0.769000"/>
+  <atom id="a8" elementType="O" x3="0.867900" y3="0.711100" z3="1.831000"/>
+  <atom id="a9" elementType="O" x3="-0.835000" y3="-1.371300" z3="1.884700"/>
+  <atom id="a10" elementType="O" x3="2.352900" y3="1.450300" z3="-0.152200"/>
+  <atom id="a11" elementType="H" x3="-1.116500" y3="0.130200" z3="-1.969200"/>
+  <atom id="a12" elementType="H" x3="-1.548200" y3="1.790300" z3="-1.399800"/>
+  <atom id="a13" elementType="H" x3="1.828200" y3="-0.158700" z3="-1.311100"/>
+  <atom id="a14" elementType="H" x3="1.697800" y3="-1.013700" z3="1.053600"/>
+  <atom id="a15" elementType="H" x3="-0.452300" y3="-1.673000" z3="-0.143100"/>
+  <atom id="a16" elementType="H" x3="-1.498500" y3="1.037200" z3="1.008700"/>
+  <atom id="a17" elementType="H" x3="1.988300" y3="2.365700" z3="-0.291400"/>
+  <atom id="a18" elementType="H" x3="1.706500" y3="1.246900" z3="1.842600"/>
+  <atom id="a19" elementType="H" x3="-1.403600" y3="-2.161000" z3="1.765900"/>
+  <atom id="a20" elementType="H" x3="-3.218700" y3="-0.400400" z3="0.771300"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a11 a3" order="1"/>
+  <bond atomRefs2="a12 a3" order="1"/>
+  <bond atomRefs2="a13 a1" order="1"/>
+  <bond atomRefs2="a3 a2" order="1"/>
+  <bond atomRefs2="a3 a4" order="1"/>
+  <bond atomRefs2="a2 a1" order="1"/>
+  <bond atomRefs2="a1 a10" order="1"/>
+  <bond atomRefs2="a1 a7" order="1"/>
+  <bond atomRefs2="a17 a10" order="1"/>
+  <bond atomRefs2="a15 a6" order="1"/>
+  <bond atomRefs2="a5 a4" order="1"/>
+  <bond atomRefs2="a5 a20" order="1"/>
+  <bond atomRefs2="a4 a6" order="1"/>
+  <bond atomRefs2="a4 a16" order="1"/>
+  <bond atomRefs2="a6 a7" order="1"/>
+  <bond atomRefs2="a6 a9" order="1"/>
+  <bond atomRefs2="a7 a14" order="1"/>
+  <bond atomRefs2="a7 a8" order="1"/>
+  <bond atomRefs2="a19 a9" order="1"/>
+  <bond atomRefs2="a8 a18" order="1"/>
+ </bondArray>
+</molecule>
