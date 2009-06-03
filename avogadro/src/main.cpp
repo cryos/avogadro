@@ -89,14 +89,18 @@ int main(int argc, char *argv[])
   qDebug() << versionInfo;
 
 #ifdef WIN32
+#ifndef AVO_APP_BUNDLE
   // Need to add an environment variable to the current process in order
   // to load the forcefield parameters in OpenBabel.
   QString babelDataDir = "BABEL_DATADIR=" + QCoreApplication::applicationDirPath();
   qDebug() << babelDataDir;
   _putenv(babelDataDir.toStdString().c_str());
 #endif
+#endif
+
 #ifdef AVO_APP_BUNDLE
   // Set up the babel data and plugin directories for Mac - relocatable
+  // This also works for the Windows package, but BABEL_LIBDIR is ignored
   QByteArray babelDataDir(("BABEL_DATADIR="
                            + QCoreApplication::applicationDirPath()
                            + "/../share/openbabel/2.2.2").toAscii());
@@ -108,9 +112,6 @@ int main(int argc, char *argv[])
 
   if (res1 != 0 || res2 != 0)
     qDebug() << "Error: putenv failed." << res1 << res2;
-
-  QString env(qgetenv("BABEL_LIBDIR"));
-  qDebug() << "getenv(\"BABEL_LIBDIR\")=" << env;
 
   // Override the Qt plugin search path too
   QStringList pluginSearchPaths;
@@ -147,7 +148,7 @@ int main(int argc, char *argv[])
   else {
     tryLoadingQtTranslations = true;
   }
-  
+
   // Load the libavogadro translations
   QPointer <QTranslator> libTranslator = Library::createTranslator();
   if (libTranslator)
