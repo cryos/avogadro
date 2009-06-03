@@ -76,6 +76,8 @@ namespace Avogadro
         this, SLOT(previewEdited()));
     connect(ui.generateButton, SIGNAL(clicked()),
         this, SLOT(generateClicked()));
+    connect(ui.computeButton, SIGNAL(clicked()),
+        this, SLOT(computeClicked()));
     connect(ui.resetButton, SIGNAL(clicked()),
         this, SLOT(resetClicked()));
     connect(ui.moreButton, SIGNAL(clicked()),
@@ -150,7 +152,7 @@ namespace Avogadro
     foreach(const QString &path, pathList) {
       QFileInfo info(path + '/' + "g03");
       if (info.exists() && info.isExecutable())
-        returnPath = info.canonicalFilePath();
+        returnPath = info.canonicalPath();
     }
 
     return returnPath;
@@ -266,7 +268,7 @@ namespace Avogadro
     if (fileName.isEmpty())
       return;
 
-    QFileInfo info(pathToG03);
+    QFileInfo info(pathToG03() + '/' + "g03");
     if (!info.exists() || !info.isExecutable()) {
       QMessageBox::warning(this, tr("Gaussian Not Installed."),
                            tr("The G03 executable, cannot be found."));
@@ -281,7 +283,7 @@ namespace Avogadro
     arguments << fileName;
     m_inputFile = fileName; // save for reading in output
 
-    m_process->start(mopacPath, arguments);
+    m_process->start(pathToG03() + '/' + "g03", arguments);
     if (!m_process->waitForStarted()) {
       QMessageBox::warning(this, tr("G03 failed to start."),
                            tr("G03 did not start. Perhaps it is not installed correctly."));
@@ -289,7 +291,7 @@ namespace Avogadro
     connect(m_process, SIGNAL(finished(int)), this, SLOT(finished(int)));
     m_progress = new QProgressDialog(this);
     m_progress->setRange(0,0); // indeterminate progress
-    m_progress->setLabelText(tr("Running MOPAC calculation..."));
+    m_progress->setLabelText(tr("Running Gaussian calculation..."));
     m_progress->show();
     connect(m_progress, SIGNAL(canceled()), this, SLOT(stopProcess()));
   }
@@ -332,9 +334,24 @@ namespace Avogadro
     if (!m_molecule)
       return;
 
-    // we have a successful run. Read in the results and close the dialog
+    // we have a successful run.
+    // try to run formchk
     QFileInfo inputFile(m_inputFile);
-    QString outputFile = inputFile.canonicalPath() + '/' + inputFile.baseName() + ".out";
+    QString checkpointFileName = inputFile.canonicalPath() + '/' + inputFile.baseName() + ".chk";
+    QFileInfo checkpointFile(checkpointFileName);
+    if (checkpointFile.exists() && checkpointFile.isReadable()) {
+      // let's see if formchk exists
+      QString formchkFilePath = pathToG03() + '/' + "formchk";
+      QFileInfo formchkInfo(formchkFilePath);
+      if (formchkInfo.exists() && formchkInfo.isExecutable()) {
+        QStringList arguments;
+        arguments << checkpointFileName;
+        QProcess::execute(formchkFilePath, arguments); // if this fails, it's not a big deal
+      }
+    }
+    
+    // Now, read in the results and close the dialog
+    QString outputFile = inputFile.canonicalPath() + '/' + inputFile.baseName() + ".log";
     emit readOutput(outputFile);
 
     close();

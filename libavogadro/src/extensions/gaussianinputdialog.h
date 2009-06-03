@@ -27,6 +27,8 @@
 #define GAUSSIANINPUTDIALOG_H
 
 #include <QDialog>
+#include <QProcess>
+#include <QProgressDialog>
 
 #include <avogadro/glwidget.h>
 
@@ -86,6 +88,9 @@ namespace Avogadro
     coordType m_coordType;
     bool m_dirty;
     bool m_warned;
+    QProcess *m_process;
+    QProgressDialog *m_progress;
+    QString m_inputFile;
 
     // Generate an input deck as a string
     QString generateInputDeck();
@@ -98,6 +103,9 @@ namespace Avogadro
     void deckDirty(bool);
     
     QString saveInputFile();
+
+  Q_SIGNALS:
+    void readOutput(const QString outputFileName);
 
   public Q_SLOTS:
     void updatePreviewText();
