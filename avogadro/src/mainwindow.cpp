@@ -194,7 +194,7 @@ namespace Avogadro
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
-  const int MainWindow::m_configFileVersion = 1;
+  const int MainWindow::m_configFileVersion = 2;
 
   unsigned int getMainWindowCount()
   {
@@ -769,13 +769,25 @@ namespace Avogadro
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
 
     OBMol *obMolecule = new OBMol;
-//    if (conv.Read( obMolecule, &ifs)) {
-    if (conv.ReadFile( obMolecule, QString(QFile::encodeName(fileName)).toStdString())) {
+
+/*    std::ifstream ifs;
+    ifs.open(QFile::encodeName(fileName));
+    if (!ifs) {
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning(this, tr("Avogadro"),
+          tr("Cannot read file %1.").arg(fileName));
+      return false;
+    }
+
+    if (conv.Read( obMolecule, &ifs)) { */
+    if (conv.ReadFile(obMolecule,
+                      QString(QFile::encodeName(fileName)).toStdString())) {
       if (obMolecule->GetDimension() != 3) {
         if (obMolecule->Has2D()) {
           int retval = QMessageBox::warning( this, tr( "Avogadro" ),
               tr( "This file contains 2D coordinates only. Do you want Avogadro "
-              "to scale the bonds and do a quick optimization?"), QMessageBox::Yes, QMessageBox::No );
+              "to scale the bonds and do a quick optimization?"),
+              QMessageBox::Yes, QMessageBox::No );
 
           if (retval == QMessageBox::Yes) {
             // Scale the bond lengths
@@ -890,7 +902,8 @@ namespace Avogadro
     }
     else {
       QApplication::restoreOverrideCursor();
-      statusBar()->showMessage( tr("Reading molecular file failed."), 5000 );
+      QMessageBox::warning(this, tr("Avogadro"),
+          tr("Reading molecular file failed, file %1.").arg(fileName));
       return false;
     }
 
@@ -1057,8 +1070,10 @@ namespace Avogadro
       return false;
     }
 
-    QFile file( fileName );
-    if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
+
+    QFile file(fileName);
+    bool replaceExistingFile = file.exists();
+/*    if ( !file.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
           tr( "Cannot write to the file %1:\n%2." )
           .arg( fileName )
@@ -1066,11 +1081,12 @@ namespace Avogadro
       return false;
     }
     file.close();
-
+*/
     // We'll save to a new file and then rename it to the requested file name
     // This way, if an error occurs, we won't destroy the old file
     QString newFileName(fileName);
-    newFileName += ".new";
+    if (replaceExistingFile)
+      newFileName += ".new";
     QFile newFile( newFileName );
     if ( !newFile.open( QFile::WriteOnly | QFile::Text ) ) {
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -1082,7 +1098,7 @@ namespace Avogadro
     newFile.close();
 
     // Pass of an ofstream to Open Babel
-    ofstream     ofs;
+    ofstream ofs;
     ofs.open( QFile::encodeName(newFileName) );
     if ( !ofs ) { // shouldn't happen, already checked file above
       QMessageBox::warning( this, tr( "Avogadro" ),
@@ -1136,22 +1152,47 @@ namespace Avogadro
 
     if ( conv.Write( &obmol, &ofs ) ) {
       ofs.close();
-      bool success;
-      success = file.rename(fileName + ".old");
-      if (success)
-        success = newFile.rename(fileName);
-      if (success) // renaming worked
-        success = file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
+      if (replaceExistingFile) {
+        bool success;
+        success = file.rename(fileName + ".old");
+        if (success) {
+          file.setFileName(fileName + ".old");
+          success = newFile.rename(fileName);
+        }
+        else {
+          QApplication::restoreOverrideCursor();
+          QMessageBox::warning(this, tr("Avogadro"),
+              tr("Saving molecular file failed - could not rename original file"));
+          return false;
+        }
+        if (success) // renaming worked
+          success = file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
+        else {
+          QApplication::restoreOverrideCursor();
+          QMessageBox::warning(this, tr("Avogadro"),
+              tr("Saving molecular file failed - could not rename new file"));
+          return false;
+        }
 
-      if (success) {
-        statusBar()->showMessage( tr("Save succeeded."), 5000 );
-        setWindowModified( false );
-      } else {
-        statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
+        if (success) {
+          statusBar()->showMessage( tr("Save succeeded."), 5000 );
+          setWindowModified( false );
+        }
+        else {
+          QApplication::restoreOverrideCursor();
+          QMessageBox::warning(this, tr("Avogadro"),
+              tr("Saving molecular file failed - could not remove old file"));
+          return false;
+        }
       }
+      else
+        statusBar()->showMessage( tr("Save succeeded."), 5000 );
     }
     else {
       statusBar()->showMessage( tr("Saving molecular file failed."), 5000 );
+      QApplication::restoreOverrideCursor();
+      QMessageBox::warning(this, tr("Avogadro"),
+          tr("Saving molecular file failed - could not rename original file"));
       newFile.remove(); // remove the temporary file -- we'll leave the old file in place
     }
 
