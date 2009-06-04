@@ -24,6 +24,7 @@
 
 #include "gaussianfchk.h"
 #include "basisset.h"
+#include "../../qtiocompressor/qtiocompressor.h"
 
 #include <QFile>
 #include <QStringList>
@@ -38,19 +39,34 @@ namespace Avogadro
   GaussianFchk::GaussianFchk(const QString &filename, BasisSet* basis)
   {
     // Open the file for reading and process it
-    QFile file(filename);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-      return;
+    QFile* file = new QFile(filename);
+    QtIOCompressor* compressedFile = 0;
+
+    if (filename.endsWith(".gz")) {
+      compressedFile = new QtIOCompressor(file);
+      compressedFile->setStreamFormat(QtIOCompressor::GzipFormat);
+      compressedFile->open(QIODevice::ReadOnly);
+      m_in = compressedFile;
+    }
+    else {
+      file->open(QIODevice::ReadOnly | QIODevice::Text);
+      m_in = file;
+    }
 
     qDebug() << "File" << filename << "opened.";
 
     // Process the formatted checkpoint and extract all the information we need
-    m_in.setDevice(&file);
-    while (!m_in.atEnd())
+    while (!m_in->atEnd()) {
       processLine();
+    }
 
     // Now it should all be loaded load it into the basis set
     load(basis);
+
+    if (compressedFile)
+      delete compressedFile;
+    else
+      delete file;
   }
 
   GaussianFchk::~GaussianFchk()
@@ -60,10 +76,13 @@ namespace Avogadro
   void GaussianFchk::processLine()
   {
     // First truncate the line, remove trailing white space and check
-    QString line = m_in.readLine();
+    QString line = m_in->readLine();
+    if (line.isEmpty())
+      return;
     QString key = line;
     key.resize(42);
     key = key.trimmed();
+
     QString tmp = line.mid(43, 37);
     QStringList list = tmp.split(' ', QString::SkipEmptyParts);
 
@@ -117,7 +136,6 @@ namespace Avogadro
       else
         qDebug() << "Error reading in the SCF density matrix.";
     }
-
   }
 
   void GaussianFchk::load(BasisSet* basis)
@@ -191,12 +209,12 @@ namespace Avogadro
     tmp.reserve(n);
     bool ok = false;
     while (tmp.size() < n) {
-      if (m_in.atEnd()) {
+      if (m_in->atEnd()) {
         qDebug() << "GaussianFchk::readArrayI could not read all elements"
                  << n << "expected" << tmp.size() << "parsed.";
         return tmp;
       }
-      QString line = m_in.readLine();
+      QString line = m_in->readLine();
       if (line.isEmpty())
         return tmp;
 
@@ -225,12 +243,12 @@ namespace Avogadro
     tmp.reserve(n);
     bool ok = false;
     while (tmp.size() < n) {
-      if (m_in.atEnd()) {
+      if (m_in->atEnd()) {
         qDebug() << "GaussianFchk::readArrayD could not read all elements"
                  << n << "expected" << tmp.size() << "parsed.";
         return tmp;
       }
-      QString line = m_in.readLine();
+      QString line = m_in->readLine();
       if (line.isEmpty())
         return tmp;
 
@@ -282,12 +300,12 @@ namespace Avogadro
     unsigned int f = 1;
     bool ok = false;
     while (cnt < n) {
-      if (m_in.atEnd()) {
+      if (m_in->atEnd()) {
         qDebug() << "GaussianFchk::readDensityMatrix could not read all elements"
                  << n << "expected" << cnt << "parsed.";
         return false;
       }
-      QString line = m_in.readLine();
+      QString line = m_in->readLine();
       if (line.isEmpty())
         return false;
 
