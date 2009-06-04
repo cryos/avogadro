@@ -184,10 +184,11 @@ namespace Avogadro
     foreach(const QString &fileName, matchingFiles) {
       QString fullFileName = parentInfo.path() + '/' + fileName;
       QFileInfo info(fullFileName);
+      QString completeSuffix = info.completeSuffix();
 
-      if (info.completeSuffix().compare("fchk", Qt::CaseInsensitive) == 0
-          || info.completeSuffix().compare("fch", Qt::CaseInsensitive) == 0
-          || info.completeSuffix().compare("fck", Qt::CaseInsensitive) == 0) {
+      if (completeSuffix.contains("fchk", Qt::CaseInsensitive)
+          || completeSuffix.contains("fch", Qt::CaseInsensitive)
+          || completeSuffix.contains("fck", Qt::CaseInsensitive)) {
         if (m_slater) {
           delete m_slater;
           m_slater = 0;
@@ -206,7 +207,7 @@ namespace Avogadro
         }
         return true;
       }
-      else if (info.completeSuffix().compare("aux", Qt::CaseInsensitive) == 0) {
+      else if (completeSuffix.contains("aux", Qt::CaseInsensitive)) {
         if (m_slater) {
           delete m_slater;
           m_slater = 0;
@@ -226,7 +227,7 @@ namespace Avogadro
         }
         return true;
       }
-      else if (info.completeSuffix().compare("mpo", Qt::CaseInsensitive) == 0) {
+      else if (completeSuffix.contains("mpo", Qt::CaseInsensitive)) {
         if (m_slater) {
           delete m_slater;
           m_slater = 0;
@@ -237,7 +238,7 @@ namespace Avogadro
         }
         m_basis = new BasisSet;
         Molpro mpo(fullFileName, m_basis);
-    qDebug() << "numMOs: " << m_basis->numMOs();
+        qDebug() << "numMOs: " << m_basis->numMOs();
         m_orbitalDialog->setMOs(m_basis->numMOs());
         for (int i = 0; i < m_basis->numMOs(); ++i) {
           if (m_basis->HOMO(i)) m_orbitalDialog->setHOMO(i);
