@@ -557,6 +557,30 @@ namespace Avogadro {
       return 0;
     }
 
+    // Check if it's a number key 1-4
+    int bondOrder = 0;
+    switch (event->key()) {
+    case Qt::Key_1:
+      bondOrder = 1;
+      break;
+    case Qt::Key_2:
+      bondOrder = 2;
+      break;
+    case Qt::Key_3:
+      bondOrder = 3;
+      break;
+    case Qt::Key_4:
+      bondOrder = 4;
+      break;
+    default:
+      break;
+    }
+    if (bondOrder) {
+      setBondOrder(bondOrder);
+      event->accept();
+      return 0;
+    }
+
     if (m_keyPressBuffer.isEmpty()) // this is the first character typed
       // wait for 2 seconds, then clear the buffer
       // this ensures we can get multi-character elements
