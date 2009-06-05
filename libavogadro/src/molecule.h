@@ -564,6 +564,11 @@ namespace Avogadro {
     unsigned int numConformers() const;
 
     /**
+     * @return The current conformer index.
+     */
+    unsigned int currentConformer() const;
+
+    /**
      * @return The energies for all conformers.
      */
     const std::vector<double>& energies() const;
@@ -577,7 +582,14 @@ namespace Avogadro {
     double energy(unsigned int index = -1) const;
 
     /**
+     * Set the energy for the current conformer
+     * @param energy The value for this conformer
+     */
+    void setEnergy(double energy);
+
+    /**
      * Set the energies for all conformers.
+     * @param energies The vector of all energy values
      */
     void setEnergies(const std::vector<double>& energies);
 
@@ -673,6 +685,8 @@ namespace Avogadro {
     std::vector<Eigen::Vector3d> *m_atomPos; // Atom position vector
     /** Vector containing pointers to various conformers. **/
     std::vector< std::vector<Eigen::Vector3d>* > m_atomConformers;
+    mutable unsigned int m_currentConformer;
+    mutable bool m_estimatedDipoleMoment;
     mutable Eigen::Vector3d *m_dipoleMoment;
     mutable bool m_invalidPartialCharges;
     mutable bool m_invalidAromaticity;

@@ -78,7 +78,7 @@ avogadro_plugin(h2methylextension h2methylextension.cpp)
 ### Orbitals
 set(orbitalextension_SRCS orbitalextension.cpp orbitaldialog.cpp
   basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp molpro.cpp
-  vdwsurface.cpp)
+  vdwsurface.cpp ../../qtiocompressor/qtiocompressor.cpp)
 avogadro_plugin(orbitalextension "${orbitalextension_SRCS}" orbitaldialog.ui)
 
 ### Vibrations

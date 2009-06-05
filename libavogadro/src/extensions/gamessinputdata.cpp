@@ -1768,7 +1768,7 @@ void GamessDataGroup::WriteToFile( ostream &File, GamessInputData *IData, Molecu
   }
 
   if (( PointGroup>GAMESS_CI )&&( PointGroup<GAMESS_TD ) ) {
-    sprintf( Out, "%s %d", GetPointGroupText(), PGroupOrder );
+    sprintf( Out, "%s %d\n", GetPointGroupText(), PGroupOrder );
   } else {
     sprintf( Out, "%s", GetPointGroupText() );
   }

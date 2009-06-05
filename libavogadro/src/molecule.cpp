@@ -94,7 +94,10 @@ namespace Avogadro{
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
                                         d_ptr(new MoleculePrivate),
-                                        m_atomPos(0), m_dipoleMoment(0),
+                                        m_atomPos(0),
+                                        m_currentConformer(0),
+                                        m_estimatedDipoleMoment(true),
+                                        m_dipoleMoment(0),
     m_invalidPartialCharges(true), m_invalidAromaticity(true)
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -710,23 +713,28 @@ namespace Avogadro{
       delete m_dipoleMoment;
 
     m_dipoleMoment = new Vector3d(moment);
+    m_estimatedDipoleMoment = true;
   }
 
   const Eigen::Vector3d * Molecule::dipoleMoment(bool *estimate) const
   {
-    if (m_dipoleMoment) {
+    if (m_dipoleMoment && !m_estimatedDipoleMoment) {
       if (estimate)
         *estimate = false; // genuine calculated dipole moment
       return m_dipoleMoment;
     }
     else {
-      // Calculate an estimate
+      if (m_dipoleMoment)
+        delete m_dipoleMoment; // don't leak -- this is the previous estimate
+
+      // Calculate a new estimate (e.g., the geometry changed
       m_dipoleMoment = new Vector3d(0.0, 0.0, 0.0);
       foreach (Atom *a, atoms()) {
         *m_dipoleMoment += *a->pos() * a->partialCharge();
       }
       if (estimate)
         *estimate = true;
+      m_estimatedDipoleMoment = true;
       return m_dipoleMoment;
     }
   }
@@ -915,6 +923,7 @@ namespace Avogadro{
       m_atomPos = m_atomConformers[index];
       while (m_atomPos->size() < size)
         m_atomPos->push_back(Eigen::Vector3d::Zero());
+      m_currentConformer = index;
       return true;
     }
   }
@@ -943,6 +952,11 @@ namespace Avogadro{
     return m_atomConformers.size();
   }
 
+  unsigned int Molecule::currentConformer() const
+  {
+    return m_currentConformer;
+  }
+
   const std::vector<double>& Molecule::energies() const
   {
     Q_D(const Molecule);
@@ -954,10 +968,19 @@ namespace Avogadro{
   double Molecule::energy(unsigned int index) const
   {
     Q_D(const Molecule);
-    if (index < d->energies.size())
+    if (index == -1)
+      return d->energies[m_currentConformer];
+    else if (index < d->energies.size())
       return d->energies[index];
     else
       return 0.0;
+  }
+
+  void Molecule::setEnergy(double energy)
+  {
+    Q_D(const Molecule);
+    if (m_currentConformer < d->energies.size())
+      d->energies[m_currentConformer] = energy;
   }
 
   void Molecule::setEnergies(const std::vector<double>& energies)
@@ -1048,7 +1071,6 @@ namespace Avogadro{
       obmol.AddBond(beginAtom->index() + 1,
                     endAtom->index() + 1, bond->order());
     }
-    qDebug() << "Exporting Residues";
     // We're doing this after copying all atoms, so we can grab them ourselves
     foreach(Residue *residue, d->residueList) {
       OpenBabel::OBResidue *r = obmol.NewResidue();
@@ -1067,7 +1089,6 @@ namespace Avogadro{
       }
     }
     foreach(Cube *cube, d->cubeList) {
-      qDebug() << "Exporting cube" << cube->name();
       OpenBabel::OBGridData *obgrid = new OpenBabel::OBGridData;
       obgrid->SetOrigin(OpenBabel::fileformatInput);
       obgrid->SetAttribute(cube->name().toLatin1().data());
@@ -1121,7 +1142,6 @@ namespace Avogadro{
     // Copy all the parts of the OBMol to our Molecule
     blockSignals(true);
 
-    qDebug() << "Copying atoms...";
     // Begin by copying all of the atoms
     std::vector<OpenBabel::OBAtom*>::iterator i;
 
@@ -1130,7 +1150,6 @@ namespace Avogadro{
       atom->setOBAtom(obatom);
     }
 
-    qDebug() << "Copying bonds...";
     // Now bonds, we use the indices of the atoms to get the bonding right
     std::vector<OpenBabel::OBBond*>::iterator j;
     for (OpenBabel::OBBond *obbond = obmol->BeginBond(j); obbond; obbond = obmol->NextBond(j)) {
@@ -1141,7 +1160,6 @@ namespace Avogadro{
                      obbond->GetBondOrder());
     }
 
-    qDebug() << "Copying cubes...";
     // Now for the volumetric data
     std::vector<OpenBabel::OBGenericData*> data = obmol->GetAllData(OpenBabel::OBGenericDataType::GridData);
     for (unsigned int i = 0; i < data.size(); ++i) {
@@ -1158,10 +1176,8 @@ namespace Avogadro{
       cube->setLimits(min, max, points);
       cube->setData(grid->GetValues());
       cube->setName(name);
-//      qDebug() << "Cube" << i << "added.";
     }
 
-    qDebug() << "Copying residues...";
     // Copy the residues across...
     std::vector<OpenBabel::OBResidue *> residues;
     OpenBabel::OBResidueIterator iResidue;
@@ -1191,7 +1207,6 @@ namespace Avogadro{
       }
     }
 
-    qDebug() << "Copying other data...";
     // Copy the dipole moment of the molecule
     OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
     if (vd) {
@@ -1218,7 +1233,6 @@ namespace Avogadro{
         OpenBabel::vector3 force;
         foreach (Atom *atom, m_atomList) { // loop through each atom
             force = allForces[0][atom->index()];
-            qDebug() << " copying force " << force.x() << force.y() << force.z();
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
           } // end setting forces on each atom
         }
@@ -1458,7 +1472,6 @@ namespace Avogadro{
       residue->setAtomIds(r->atomIds());
     }
 
-    //    qDebug() << " residues: " << numResidues() << other.numResidues();
     return *this;
   }
 
@@ -1470,6 +1483,11 @@ namespace Avogadro{
     d->center.setZero();
     d->normalVector.setZero();
     d->radius = 1.0;
+
+    // invalidate the previous dipole moment
+    if (m_dipoleMoment)
+      delete m_dipoleMoment; // don't leak -- this is the previous estimate
+
     unsigned int nAtoms = numAtoms();
     // In order to calculate many parameters we need at least two atoms
     if(nAtoms > 1) {

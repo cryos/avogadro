@@ -26,7 +26,7 @@
 #define GAUSSIANFCHK_H
 
 #include <QString>
-#include <QTextStream>
+#include <QIODevice>
 #include <Eigen/Core>
 #include <vector>
 
@@ -41,7 +41,7 @@ namespace Avogadro
     ~GaussianFchk();
     void outputAll();
   private:
-    QTextStream m_in;
+    QIODevice *m_in;
     void processLine();
     void load(BasisSet* basis);
     std::vector<int> readArrayI(unsigned int n);

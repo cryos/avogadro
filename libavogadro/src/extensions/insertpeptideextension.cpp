@@ -221,6 +221,9 @@ namespace Avogadro {
       allAtoms.SetRangeOn(0, obfragment.NumAtoms());
       allAtoms.SetBitOff(obfragment.NumAtoms() - 1); // Don't add bonds for the terminus
       resdat.AssignBonds(obfragment, allAtoms);
+      
+      // some of the fragments still miss bonds
+      obfragment.ConnectTheDots();
 
       obfragment.SetPartialChargesPerceived();
 

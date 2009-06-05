@@ -359,8 +359,17 @@ namespace Avogadro
      * @param minorRadius Minor radius of the torus.
      * @todo Implement this primitive.
      */
-    void drawTorus(const Eigen::Vector3d &position,
+    void drawTorus(const Eigen::Vector3d &pos,
                    double majorRadius, double minorRadius);
+
+    /**
+     * Placeholder to draw an ellipsoid.
+     * @param pos Position of the center of the ellipsoid.
+     * @param matrix Linear transformation matrix for scaling and rotation.
+     * @todo Implement this primitive.
+     */
+    void drawEllipsoid(const Eigen::Vector3d &position,
+                               const Eigen::Matrix3d &matrix);
 
     /**
      * Set the Painter up for painting onto a GLWidget, should be called
