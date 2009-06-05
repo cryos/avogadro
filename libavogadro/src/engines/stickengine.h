@@ -75,7 +75,7 @@ namespace Avogadro {
       void readSettings(QSettings &settings);
 
     private:
-      inline double radius(const Atom *a) const
+      inline double radius(const Atom *) const
       { return m_radius; }
       //! Render an Atom.
       bool renderOpaque(PainterDevice *pd, const Atom *a);

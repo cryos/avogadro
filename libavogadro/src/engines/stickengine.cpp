@@ -54,7 +54,7 @@ namespace Avogadro {
 
   StickEngine::~StickEngine()
   {
-      // Delete the settings widget if it exists
+    // Delete the settings widget if it exists
     if(m_settingsWidget)
       m_settingsWidget->deleteLater();
   }
