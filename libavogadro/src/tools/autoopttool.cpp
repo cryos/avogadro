@@ -221,6 +221,7 @@ namespace Avogadro {
         widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
       } else {
         double energy = m_forceField->Energy(false);
+        widget->molecule()->setEnergy(m_forceField->Energy());
         widget->painter()->drawText(labelPos,
             tr("AutoOpt: E = %1 %2 (dE = %3)").arg(energy).
             arg(m_forceField->GetUnit().c_str()).

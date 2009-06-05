@@ -184,7 +184,8 @@ namespace Avogadro
       }
 
       energy = m_forceField->Energy();
-      msg = QString( tr( "Energy = %1 %2" ))
+      m_molecule->setEnergy(energy);
+      msg = QString( tr( "Energy = %L1 %2" ))
                      .arg(energy).arg(m_forceField->GetUnit().c_str());
       QMessageBox::information( widget, tr( "Avogadro" ), msg);
 
@@ -457,6 +458,7 @@ namespace Avogadro
       copyConformers();
     }
 
+    m_molecule->setEnergy(m_forceField->Energy());
     m_molecule->update();
 
     emit message( QObject::tr( buff.str().c_str() ) );
@@ -467,6 +469,7 @@ namespace Avogadro
   {
     QMutexLocker locker(&m_mutex);
     m_stop = true;
+    m_molecule->setEnergy(m_forceField->Energy());
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,

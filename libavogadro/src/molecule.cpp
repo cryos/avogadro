@@ -968,7 +968,8 @@ namespace Avogadro{
   double Molecule::energy(unsigned int index) const
   {
     Q_D(const Molecule);
-    if (index == -1)
+    qDebug() << "energy: " << m_currentConformer;
+    if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
     else if (index < d->energies.size())
       return d->energies[index];
@@ -979,6 +980,8 @@ namespace Avogadro{
   void Molecule::setEnergy(double energy)
   {
     Q_D(const Molecule);
+    while (d->energies.size() != numConformers())
+      d->energies.push_back(0.0);
     if (m_currentConformer < d->energies.size())
       d->energies[m_currentConformer] = energy;
   }
