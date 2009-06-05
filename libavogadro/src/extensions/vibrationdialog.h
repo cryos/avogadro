@@ -72,6 +72,7 @@ namespace Avogadro {
       GLWidget *m_widget;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
+      std::vector<int> *m_indexMap;
   };
 }
 
