@@ -25,6 +25,7 @@
 #include <QButtonGroup>
 #include <QDebug>
 #include <QFileDialog>
+#include <QProgressDialog>
 #include <QFile>
 #include <QDir>
 
@@ -47,6 +48,8 @@ namespace Avogadro {
     // Make sure the columns span the whole width of the table widget
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
+
+    m_indexMap = new std::vector<int>;
 
     connect(ui.vibrationTable, SIGNAL(currentCellChanged(int, int, int, int)),
             this, SLOT(currentCellChanged(int, int, int, int)));
@@ -87,6 +90,40 @@ namespace Avogadro {
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
 
+    // Generate an index vector to map sorted indicies to the old indices
+    m_indexMap->clear();
+    for (uint i = 0; i < frequencies.size(); i++)
+      m_indexMap->push_back(i);
+
+    // Setup progress dialog, just in case it takes longer than 2 seconds
+    QProgressDialog prog(tr("Sorting %1 vibrations by frequency...")
+                         .arg(frequencies.size()), "", 0, frequencies.size());
+    prog.setWindowModality(Qt::WindowModal);
+    prog.setMinimumDuration(2000);
+    prog.setCancelButton(0);
+
+    // Simple selection sort
+    double tmp;
+    int tmp_int;
+    for (uint i = 0; i < frequencies.size(); i++) {
+      for (uint j = i; j < frequencies.size(); j++) {
+        if (i == j) continue; // Save a bit of time...
+        if (frequencies.at(j) < frequencies.at(i)) {
+          tmp = frequencies.at(j);
+          frequencies.at(j) = frequencies.at(i);
+          frequencies.at(j) = tmp;
+          tmp = intensities.at(j);
+          intensities.at(j) = intensities.at(i);
+          intensities.at(j) = tmp;
+          tmp_int = m_indexMap->at(j);
+          m_indexMap->at(j) = m_indexMap->at(i);
+          m_indexMap->at(j) = tmp_int;
+        }
+      }
+      // Update progress bar
+      prog.setValue(i);
+    }
+
     ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
 
@@ -106,7 +143,6 @@ namespace Avogadro {
       ui.vibrationTable->setItem(row, 1, newInten);
     }
     
-    ui.vibrationTable->sortItems(0, Qt::AscendingOrder); // sort by frequency
     // enable export button
     ui.exportButton->setEnabled(true);
   }
@@ -122,7 +158,8 @@ namespace Avogadro {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
     }
-    emit selectedMode(row);
+    if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationDialog::cellClicked(int row, int)
@@ -130,7 +167,8 @@ namespace Avogadro {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
     }
-    emit selectedMode(row);
+    if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationDialog::reject()
