@@ -399,7 +399,7 @@ namespace Avogadro
   void GLPainter::drawCone(const Eigen::Vector3d &base,
                            const Eigen::Vector3d &cap,
                            double baseRadius,
-                           double capRadius)
+                           double)
   {
     const int CONE_TESS_LEVEL = 30;
     // This draws a cone which will be most useful for drawing arrows etc.
@@ -1074,6 +1074,11 @@ namespace Avogadro
 
   void GLPainter::drawTorus(const Eigen::Vector3d &,
                             double, double)
+  {
+  }
+
+  void GLPainter::drawEllipsoid(const Eigen::Vector3d &,
+                                const Eigen::Matrix3d &)
   {
   }
 

@@ -384,13 +384,23 @@ namespace Avogadro
      * @param minorRadius Minor radius of the torus.
      * @todo Implement this primitive.
      */
-    virtual void drawTorus(const Eigen::Vector3d &position,
+    virtual void drawTorus(const Eigen::Vector3d &pos,
                            double majorRadius, double minorRadius) = 0;
+
+    /**
+     * Placeholder to draw an ellipsoid.
+     * @param pos Position of the center of the ellipsoid.
+     * @param matrix Linear transformation matrix for scaling and rotation.
+     * @todo Implement this primitive.
+     */
+    virtual void drawEllipsoid(const Eigen::Vector3d &position,
+                               const Eigen::Matrix3d &matrix) = 0;
 
     /**
      * Other primitives we may want
      * Disc - flat circular disc with center, normal and radius.
      * Quadrics and quartics?
+     * Parametric surface
      */
 
   };

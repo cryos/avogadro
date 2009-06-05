@@ -357,6 +357,11 @@ namespace Avogadro
   {
   }
 
+  void POVPainter::drawEllipsoid(const Eigen::Vector3d &,
+                                 const Eigen::Matrix3d &)
+  {
+  }
+
   void POVPainter::begin(QTextStream *output, Vector3d planeNormalVector)
   {
     d->output = output;
