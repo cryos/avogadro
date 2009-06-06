@@ -250,11 +250,6 @@ namespace Avogadro {
   {
     return false;
   }
-      
-  const std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformers() const
-  {
-    return m_conformers;
-  }
 
   void MoleculeFile::threadFinished()
   {
@@ -271,7 +266,17 @@ namespace Avogadro {
   {
     return d->titles;
   }
-      
+
+  const std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformers() const
+  {
+    return m_conformers;
+  }
+
+  std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformersRef()
+  {
+    return m_conformers;
+  }
+
   void MoleculeFile::setConformerFile(bool value)
   {
     d->isConformerFile = value;
