@@ -1131,8 +1131,6 @@ namespace Avogadro{
       obmol.SetData(d->obvibdata->Clone(&obmol));
     }
 
-    // TODO: Copy residue information, cubes, etc.
-
     return obmol;
   }
 

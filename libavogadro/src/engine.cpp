@@ -29,6 +29,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
+#include <avogadro/residue.h>
 #include <avogadro/color.h>
 
 #include <QDebug>
@@ -84,8 +85,12 @@ namespace Avogadro {
 
   void Engine::clearPrimitives()
   {
+    // Set custom primitives to false and clear the lists of primitives
     m_customPrims = false;
     m_primitives.clear();
+    m_atoms.clear();
+    m_bonds.clear();
+    emit changed();
   }
 
   void Engine::setPainterDevice(const PainterDevice *pd)
@@ -311,9 +316,9 @@ namespace Avogadro {
     m_molecule = mol;
   }
 
-  void Engine::changeMolecule(Molecule *, Molecule *next)
+  void Engine::setMolecule(Molecule *molecule)
   {
-    setMolecule(next);
+    setMolecule(molecule);
   }
 
   void Engine::useCustomPrimitives()
@@ -321,13 +326,8 @@ namespace Avogadro {
     m_customPrims = true;
     m_atoms = m_molecule->atoms();
     m_bonds = m_molecule->bonds();
-    m_primitives = *m_pd->primitives();
 
     // Now listen to the molecule
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
-            this, SLOT(addPrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
-            this, SLOT(removePrimitive(Primitive*)));
     connect(m_molecule, SIGNAL(atomAdded(Atom*)),
             this, SLOT(addAtom(Atom*)));
     connect(m_molecule, SIGNAL(atomRemoved(Atom*)),
@@ -338,14 +338,9 @@ namespace Avogadro {
             this, SLOT(removeBond(Bond*)));
   }
 
-  const PrimitiveList & Engine::primitives() const
+  const PrimitiveList Engine::primitives() const
   {
-    if (m_customPrims)
-      return m_primitives;
-    else if (m_pd)
-      return *m_pd->primitives();
-    else
-      return m_primitives;
+    return m_primitives;
   }
 
   const QList<Atom *> Engine::atoms() const

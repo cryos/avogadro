@@ -2750,8 +2750,8 @@ namespace Avogadro
       if (objectsTab) {
         EnginePrimitivesWidget *primitivesWidget =
             new EnginePrimitivesWidget(d->glWidget, settingsWindow);
-          primitivesWidget->setEngine(selectedEngine);
-          settingsTabs->addTab(primitivesWidget, tr("Objects"));
+        primitivesWidget->setEngine(selectedEngine);
+        settingsTabs->addTab(primitivesWidget, tr("Objects"));
       }
 
       if (colorsTab) {
@@ -2774,10 +2774,8 @@ namespace Avogadro
     Engine *engine =  AddEngineDialog::getEngine(this, d->pluginManager.factories(Plugin::EngineType));
     if(engine) {
       PrimitiveList p = d->glWidget->selectedPrimitives();
-      if(!p.size()) {
-        p = d->glWidget->primitives();
-      }
-      engine->setPrimitives(p);
+      if(p.size())
+        engine->setPrimitives(p);
       d->glWidget->addEngine(engine);
     }
   }
@@ -2801,9 +2799,7 @@ namespace Avogadro
           Engine *newEngine = engine->clone();
           PrimitiveList list = d->glWidget->selectedPrimitives();
           if(list.size()) {
-            newEngine->setPrimitives(d->glWidget->selectedPrimitives());
-          } else {
-            newEngine->setPrimitives(d->glWidget->primitives());
+            newEngine->setPrimitives(list);
           }
           newEngine->setAlias(newEngine->alias() + tr(" copy"));
           d->glWidget->addEngine(newEngine);
