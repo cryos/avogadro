@@ -171,7 +171,9 @@ namespace Avogadro {
     protected:
       MoleculeFile(const QString &fileName, const QString &fileType,
                    const QString &fileOptions);
-      std::vector<std::streampos>& streampos();
+
+      QStringList& titlesRef();
+      std::vector<std::streampos>& streamposRef();
       std::vector<std::vector<Eigen::Vector3d>*>& conformersRef();
       void setConformerFile(bool value);
       void setReady(bool value);

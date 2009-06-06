@@ -262,9 +262,14 @@ namespace Avogadro {
     emit ready();
   }
 
-  std::vector<std::streampos>& MoleculeFile::streampos()
+  std::vector<std::streampos>& MoleculeFile::streamposRef()
   {
     return d->streampos;
+  }
+
+  QStringList& MoleculeFile::titlesRef()
+  {
+    return d->titles;
   }
       
   void MoleculeFile::setConformerFile(bool value)
@@ -279,7 +284,7 @@ namespace Avogadro {
  
   void MoleculeFile::setFirstReady(bool value)
   {
-    if (value)
+    if (value && !d->ready)
       emit firstMolReady();
   }
 
