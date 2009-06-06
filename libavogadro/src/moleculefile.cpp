@@ -89,6 +89,11 @@ namespace Avogadro {
     return d->titles;
   }
 
+  QStringList& MoleculeFile::titles_p()
+  {
+    return d->titles;
+  }
+
   Molecule* MoleculeFile::molecule(unsigned int i)
   {
     OpenBabel::OBMol *obmol = OBMol(i);
@@ -262,7 +267,7 @@ namespace Avogadro {
     emit ready();
   }
 
-  std::vector<std::streampos>& MoleculeFile::streampos()
+  std::vector<std::streampos>& MoleculeFile::streampos_p()
   {
     return d->streampos;
   }

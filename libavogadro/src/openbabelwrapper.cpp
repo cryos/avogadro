@@ -361,7 +361,7 @@ namespace Avogadro {
         // read all molecules
         OpenBabel::OBMol firstOBMol, currentOBMol;
         unsigned int c = 0;
-        m_moleculeFile->streampos().push_back(ifs.tellg());
+        m_moleculeFile->streampos_p().push_back(ifs.tellg());
         while (ifs.good() && conv.Read(&currentOBMol, &ifs)) {
           if (!c)
             firstOBMol = currentOBMol;
@@ -369,15 +369,15 @@ namespace Avogadro {
           // detect conformer/trajectory files
           detectConformers(c, firstOBMol, currentOBMol);
           // store information about molecule
-          m_moleculeFile->streampos().push_back(ifs.tellg());
-          m_moleculeFile->titles().append(currentOBMol.GetTitle());
+          m_moleculeFile->streampos_p().push_back(ifs.tellg());
+          m_moleculeFile->titles_p().append(currentOBMol.GetTitle());
           // increment count
           ++c;
         }
 
         // check for empty titles
-        for (int i = 0; i < m_moleculeFile->titles().size(); ++i) {
-          if (!m_moleculeFile->titles()[i].isEmpty())
+        for (int i = 0; i < m_moleculeFile->titles_p().size(); ++i) {
+          if (!m_moleculeFile->titles_p()[i].isEmpty())
             continue;
 
           QString title;
@@ -386,7 +386,7 @@ namespace Avogadro {
           else
             title = tr("Molecule %1").arg(i+1);
         
-          m_moleculeFile->titles()[i] = title;
+          m_moleculeFile->titles_p()[i] = title;
         }
       }
 
