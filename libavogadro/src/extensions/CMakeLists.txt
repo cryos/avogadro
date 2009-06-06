@@ -80,6 +80,7 @@ set(orbitalextension_SRCS orbitalextension.cpp orbitaldialog.cpp
   basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp molpro.cpp
   vdwsurface.cpp ../../qtiocompressor/qtiocompressor.cpp)
 avogadro_plugin(orbitalextension "${orbitalextension_SRCS}" orbitaldialog.ui)
+target_link_libraries(orbitalextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
 
 ### Vibrations
 avogadro_plugin(vibrationextension
