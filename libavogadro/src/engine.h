@@ -474,6 +474,11 @@ namespace Avogadro {
        */
       virtual void setMolecule(const Molecule *molecule);
 
+      /**
+       * Slot to set the Molecule pointer for this engine.
+       */
+      virtual void setMolecule(Molecule *molecule);
+
     protected:
       EnginePrivate *const d;
       GLuint m_shader;
