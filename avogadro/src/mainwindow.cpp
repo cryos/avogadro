@@ -108,6 +108,8 @@
 #include <QTime>
 #include <QGLFramebufferObject>
 #include <QStatusBar>
+#include <QListWidget>
+#include <QProgressDialog>
 
 #include <QDebug>
 
@@ -143,7 +145,8 @@ namespace Avogadro
       initialized( false ),
       centerTimer(0),
       centerTime(0),
-      moleculeFile(0), currentIndex(0)
+      moleculeFile(0), currentIndex(0),
+      progressDialog(0)
     {}
 
     Molecule  *molecule;
@@ -199,6 +202,8 @@ namespace Avogadro
     // Track all the molecules in a file
     MoleculeFile *moleculeFile;
     unsigned int currentIndex;
+    QProgressDialog *progressDialog;
+    QListWidget  allMoleculesList;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -498,6 +503,16 @@ namespace Avogadro
     d->glWidget->setRenderUnitCellAxes(render);
   }
 
+  void MainWindow::showAllMolecules(bool showWindow)
+  {
+    if (showWindow) {
+      d->allMoleculesList.show();
+      d->allMoleculesList.raise();
+    } else {
+      d->allMoleculesList.hide();
+    }
+  }
+
   void MainWindow::reloadPlugins()
   {
     qDebug() << "MainWindow::reloadPlugins";
@@ -736,6 +751,7 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
+      ui.actionAllMolecules->setEnabled(false); // only one molecule -- the blank slate
       return true;
     }
 
@@ -753,15 +769,12 @@ namespace Avogadro
     if (!d->moleculeFile)
       return false;
 
+    // TODO: split into first molecule vs. whole file
+    // TODO: pop up progress dialog
     connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(firstMolReady()));
     connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(finishLoadFile()));
 
     return true;
-  }
-
-  void MainWindow::finishLoadFile()
-  {
-    // populate a QListWidget with the list of titles
   }
 
   void MainWindow::check3DCoords(OBMol *obMolecule)
@@ -807,10 +820,26 @@ namespace Avogadro
     setMolecule(mol);
   }
 
+  void MainWindow::finishLoadFile()
+  {
+    if (!d->moleculeFile)
+      return;
+
+    if (d->moleculeFile->numMolecules() > 1)
+      ui.actionAllMolecules->setEnabled(true); // only one molecule -- the blank slate
+
+    d->allMoleculesList.clear();
+    d->allMoleculesList.addItems(d->moleculeFile->titles());
+
+    connect(&d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
+  }
+
   void MainWindow::firstMolReady()
   {
     if (d->moleculeFile == NULL)
       return;
+
+    ui.actionAllMolecules->setEnabled(false); // only one molecule right now
 
     QString errors = d->moleculeFile->errors();
     OBMol *obMolecule = d->moleculeFile->OBMol();
@@ -2078,6 +2107,9 @@ namespace Avogadro
             this, SLOT(setRenderDebug(bool)));
     connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
             this, SLOT(setQuickRender(bool)));
+    connect(ui.actionAllMolecules, SIGNAL(triggered(bool)),
+            this, SLOT(showAllMolecules(bool)));
+
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
     connect( d->centralTab, SIGNAL( currentChanged( int ) ),
