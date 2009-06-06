@@ -318,7 +318,17 @@ namespace Avogadro {
 
   void Engine::setMolecule(Molecule *molecule)
   {
-    setMolecule(molecule);
+    // this was causing an infinite loop before
+    //    setMolecule(molecule);
+    if (m_customPrims) {
+      m_primitives.clear();
+      m_atoms.clear();
+      m_bonds.clear();
+      m_customPrims = false;
+      if (m_molecule)
+        disconnect(m_molecule, 0, this, 0);
+    }
+    m_molecule = molecule;
   }
 
   void Engine::useCustomPrimitives()
