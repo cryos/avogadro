@@ -97,6 +97,13 @@ namespace Avogadro {
       virtual QString description() const;
 
       /**
+       * @return The license applied to the plugin.
+       * @note This defaults to GPL2+, and must be a license compatible with a
+       * GPL2 only library, as all plugins link to Avogadro and OpenBabel.\
+       */
+      virtual QString license() const;
+
+      /**
        * @return a QWidget containing the engine settings or 0
        * if no settings widget is available.
        */
