@@ -136,6 +136,7 @@ namespace Avogadro {
       void setRenderDebug(bool render);
       void setQuickRender(bool quick);
       void setRenderUnitCellAxes(bool render);
+      void showAllMolecules(bool show);
 
       void undoStackClean(bool clean);
 
