@@ -99,7 +99,7 @@ namespace Avogadro {
       /**
        * @return The license applied to the plugin.
        * @note This defaults to GPL2+, and must be a license compatible with a
-       * GPL2 only library, as all plugins link to Avogadro and OpenBabel.\
+       * GPL2 only library, as all plugins link to Avogadro and OpenBabel.
        */
       virtual QString license() const;
 
@@ -166,6 +166,7 @@ namespace Avogadro {
 } // end namespace Avogadro
 
 Q_DECLARE_METATYPE(Avogadro::Plugin*)
-Q_DECLARE_INTERFACE(Avogadro::PluginFactory, "net.sourceforge.avogadro.pluginfactory/1.2")
+Q_DECLARE_INTERFACE(Avogadro::PluginFactory,
+                    "net.sourceforge.avogadro.pluginfactory/1.3")
 
 #endif
