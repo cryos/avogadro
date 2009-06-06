@@ -244,6 +244,8 @@ namespace Avogadro {
       void showMainWindowMac();
     private Q_SLOTS:
 
+      void finishLoadFile();
+
       void engineSettingsClicked();
       void addEngineClicked();
       void duplicateEngineClicked();

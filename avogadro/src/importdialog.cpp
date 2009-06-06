@@ -90,13 +90,13 @@ namespace Avogadro {
     ui.checkBoxAngstroms->setChecked(true);
 
     connect(ui.formatComboBox, SIGNAL(currentIndexChanged(int)),
-	    this, SLOT(changedFormat(int)));
+            this, SLOT(changedFormat(int)));
     connect(ui.checkBoxBonding, SIGNAL(stateChanged(int)),
-	    this, SLOT(changedOptions(int)));
+            this, SLOT(changedOptions(int)));
     connect(ui.selectButton, SIGNAL(clicked(bool)),
-	    this, SLOT(updateFilename(bool)));
+            this, SLOT(updateFilename(bool)));
     connect(ui.dialogButtonBox, SIGNAL(clicked(QAbstractButton *)),
-	    this, SLOT(buttonClicked(QAbstractButton *)));
+            this, SLOT(buttonClicked(QAbstractButton *)));
   }
 
   void ImportDialog::buttonClicked(QAbstractButton *button)
@@ -122,7 +122,7 @@ namespace Avogadro {
     if (ui.checkBoxBonding->isEnabled() && !ui.checkBoxBonding->isChecked())
       options = "b\n";
     else if ((ui.checkBoxBonding->isEnabled() && ui.checkBoxBonding->isChecked())
-	     && (ui.checkBoxBondOrders->isEnabled() && !ui.checkBoxBondOrders->isChecked()))
+             && (ui.checkBoxBondOrders->isEnabled() && !ui.checkBoxBondOrders->isChecked()))
       options = "s\n";
 
     if (ui.checkBoxAngstroms->isEnabled() && ui.checkBoxAngstroms->isChecked())
@@ -152,14 +152,14 @@ namespace Avogadro {
 
     if (formatIndex >= 1) // not automatic detection
       {
-	QString description = m_formatList[formatIndex - 1]->Description();
+        QString description = m_formatList[formatIndex - 1]->Description();
 
-	// Don't translate these search strings -- they are literals from Open Babel
-	ui.checkBoxBonding->setEnabled(description.contains("Disable bonding entirely"));
+        // Don't translate these search strings -- they are literals from Open Babel
+        ui.checkBoxBonding->setEnabled(description.contains("Disable bonding entirely"));
 
-	ui.checkBoxBondOrders->setEnabled(description.contains("Output single bonds only"));
+        ui.checkBoxBondOrders->setEnabled(description.contains("Output single bonds only"));
 
-	ui.checkBoxAngstroms->setEnabled(description.contains("Input in Angstroms"));
+        ui.checkBoxAngstroms->setEnabled(description.contains("Input in Angstroms"));
       }
   }
 

@@ -82,7 +82,7 @@ namespace Avogadro {
     return d->titles.size();
   }
       
-  QList<QString> MoleculeFile::titles() const
+  QStringList MoleculeFile::titles() const
   {
     if (!d->ready) 
       return QStringList();
@@ -104,8 +104,9 @@ namespace Avogadro {
 
   OpenBabel::OBMol* MoleculeFile::OBMol(unsigned int i)
   {
-    if (!d->ready) 
+    if (!d->ready)
       return 0;
+
     if (i >= d->streampos.size()) {
       m_error.append(tr("OBMol: index %1 out of reach.").arg(i));
       return 0;
@@ -240,12 +241,12 @@ namespace Avogadro {
     return true;
   }
   
-  bool MoleculeFile::insertMolecule(unsigned int i, Molecule *molecule)
+  bool MoleculeFile::insertMolecule(unsigned int, Molecule *)
   {
     return false;
   }
   
-  bool MoleculeFile::appendMolecule(Molecule *molecule)
+  bool MoleculeFile::appendMolecule(Molecule *)
   {
     return false;
   }
@@ -260,12 +261,7 @@ namespace Avogadro {
     d->ready = true;
     emit ready();
   }
- 
-  QStringList& MoleculeFile::titles()
-  {
-    return d->titles;
-  }
-  
+
   std::vector<std::streampos>& MoleculeFile::streampos()
   {
     return d->streampos;
@@ -281,6 +277,12 @@ namespace Avogadro {
     d->ready = value;
   }
  
+  void MoleculeFile::setFirstReady(bool value)
+  {
+    if (value)
+      emit firstMolReady();
+  }
+
   const QString& MoleculeFile::errors() const
   {
     return m_error;

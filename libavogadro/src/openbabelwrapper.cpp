@@ -81,7 +81,7 @@ namespace Avogadro {
     // Check that the file can be read from disk
     if (!canOpen(fileName, QFile::ReadOnly | QFile::Text)) {
       if (error)
-        error->append(QObject::tr("File %1 can not be opened for reading.").arg(fileName));
+        error->append(QObject::tr("File %1 cannot be opened for reading.").arg(fileName));
       return 0;
     }
 
@@ -91,14 +91,14 @@ namespace Avogadro {
     if (!fileType.isEmpty() && !conv.SetInFormat(fileType.toAscii().data())) {
       // Input format not supported
       if (error)
-        error->append(QObject::tr("File type '%1' is not a supported for reading.").arg(fileType));
+        error->append(QObject::tr("File type '%1' is not supported for reading.").arg(fileType));
       return 0;
     } else {
       inFormat = conv.FormatFromExt(fileName.toAscii().data());
       if (!conv.SetInFormat(inFormat)) {
         // Input format not supported
         if (error)
-          error->append(QObject::tr("File type for file '%1' is not a supported for reading.").arg(fileName));
+          error->append(QObject::tr("File type for file '%1' is not supported for reading.").arg(fileName));
         return 0;
       }
     }
@@ -156,7 +156,7 @@ namespace Avogadro {
       if (!conv.SetOutFormat(outFormat)) {
         // Output format not supported
         if (error)
-          error->append(QObject::tr("File type for file '%1' is not a supported for writing.").arg(fileName));
+          error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
         return false;
       }
     }
@@ -188,7 +188,7 @@ namespace Avogadro {
     if (!canOpen(fileName, QFile::WriteOnly | QFile::Text)) {
       // Cannot write to the file
       if (error)
-        error->append(QObject::tr("File %1 can not be opened for writing.").arg(fileName));
+        error->append(QObject::tr("File %1 cannot be opened for writing.").arg(fileName));
       return false;
     }
     
@@ -280,7 +280,7 @@ namespace Avogadro {
         // conformer/trajectory file, add the conformers
         addConformer(current);
 
-        // performance: check only certain molecule 1-10,20,50,100
+        // performance: check only certain molecule 1-10,20,50
         switch (c) {
           case 1:
           case 2:
@@ -294,7 +294,6 @@ namespace Avogadro {
           case 10:
           case 20:
           case 50:
-          case 100:
             break;
           default:
             return;
@@ -322,7 +321,7 @@ namespace Avogadro {
         // Check that the file can be read from disk
         if (!OpenbabelWrapper::canOpen(m_moleculeFile->m_fileName, QFile::ReadOnly | QFile::Text)) {
           // Cannot read the file
-          m_moleculeFile->m_error.append(QObject::tr("File %1 can not be opened for reading.").arg(
+          m_moleculeFile->m_error.append(QObject::tr("File %1 cannot be opened for reading.").arg(
                 m_moleculeFile->m_fileName));
           return;
         }
@@ -339,8 +338,8 @@ namespace Avogadro {
           inFormat = conv.FormatFromExt(m_moleculeFile->m_fileName.toAscii().data());
           if (!conv.SetInFormat(inFormat)) {
             // Input format not supported
-            m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not supported for reading.").arg(
-                  m_moleculeFile->m_fileName));
+            m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not supported for reading.")
+                                           .arg(m_moleculeFile->m_fileName));
             return;
           }
         }
@@ -363,9 +362,10 @@ namespace Avogadro {
         OpenBabel::OBMol firstOBMol, currentOBMol;
         unsigned int c = 0;
         m_moleculeFile->streampos().push_back(ifs.tellg());
-        while (conv.Read(&currentOBMol, &ifs)) {
+        while (ifs.good() && conv.Read(&currentOBMol, &ifs)) {
           if (!c)
             firstOBMol = currentOBMol;
+
           // detect conformer/trajectory files
           detectConformers(c, firstOBMol, currentOBMol);
           // store information about molecule
@@ -388,12 +388,10 @@ namespace Avogadro {
         
           m_moleculeFile->titles()[i] = title;
         }
-
-      
       }
 
-      MoleculeFile *m_moleculeFile; 
-  };
+      MoleculeFile *m_moleculeFile;
+  }; // end ReadFileThread class
 
   MoleculeFile* OpenbabelWrapper::readFile(const QString &fileName,
       const QString &fileType, const QString &fileOptions, bool wait)

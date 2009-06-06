@@ -49,12 +49,11 @@ bool writeConformers3(Molecule *molecule, const QString &fileName, const QString
 
 void export_FileIO()
 {
-  QList<QString> (MoleculeFile::*titles_ptr)() const = &MoleculeFile::titles;
 
   class_<Avogadro::MoleculeFile, boost::noncopyable>("MoleculeFile", no_init)
     .add_property("isConformerFile", &MoleculeFile::isConformerFile)
     .add_property("numMolecules", &MoleculeFile::numMolecules)
-    .add_property("titles", titles_ptr)
+    .add_property("titles", &MoleculeFile::titles)
 //    .add_property("conformers", &MoleculeFile::conformers)
     .def("molecule", &MoleculeFile::molecule, return_value_policy<manage_new_object>())
     ;

@@ -62,8 +62,8 @@ namespace Avogadro {
       /**
        * Get the titles for the molecules.
        */
-      QList<QString> titles() const;
-     
+      QStringList titles() const;
+
       //! @name Input (reading molecules)
       //@{
       /**
@@ -90,7 +90,7 @@ namespace Avogadro {
        */
       const std::vector<std::vector<Eigen::Vector3d>*>& conformers() const;
       //@}
- 
+
       //! @name Output (writing molecules)
       //@{
       /**
@@ -105,11 +105,13 @@ namespace Avogadro {
       /**
        * Insert a molecule at index @p i.
        * @param molecule The molecule to insert
+       * @todo implement this method
        */
       bool insertMolecule(unsigned int i, Molecule *molecule);
       /**
        * Append @p molecule to the end of the file.
        * @param molecule The molecule to append
+       * @todo implement this method
        */
       bool appendMolecule(Molecule *molecule);
       //@}
@@ -128,24 +130,49 @@ namespace Avogadro {
       void clearErrors();
       //@}
 
+      //! @name Convenience functions
+      //@{
+      /**
+       * @return the filename for this file
+       */
+      const QString &fileName() const
+        { return m_fileName; }
+
+      /**
+       * @return the file type of this file (e.g., extension or Open Babel code)
+       */
+      const QString &fileType() const
+        { return m_fileType; }
+
+      /**
+       * @return any options set for this file
+       */
+      const QString &fileOptions() const
+        { return m_fileOptions; }
+      //@}
+
     Q_SIGNALS:
       /**
        * This signal is emitted when the results are read (i.e. the file is read).
        */
       void ready();
-    
-      
+
+      /**
+       * This signal is emitted when the first molecule is read
+       */
+      void firstMolReady();
+
     protected Q_SLOTS:
       void threadFinished();
     protected:
       MoleculeFile(const QString &fileName, const QString &fileType,
                    const QString &fileOptions);
-      QStringList& titles();
       std::vector<std::streampos>& streampos();
       std::vector<std::vector<Eigen::Vector3d>*>& conformersRef();
       void setConformerFile(bool value);
       void setReady(bool value);
- 
+      void setFirstReady(bool value); // used by ReadFileThread
+
       MoleculeFilePrivate * const d; 
       QString m_fileName, m_fileType, m_fileOptions;
       QString m_error;
