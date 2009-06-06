@@ -146,8 +146,15 @@ namespace Avogadro
       centerTimer(0),
       centerTime(0),
       moleculeFile(0), currentIndex(0),
-      progressDialog(0)
+      progressDialog(0),
+      allMoleculesList(0)
     {}
+
+    ~MainWindowPrivate()
+    {
+      if (allMoleculesList)
+        delete allMoleculesList;
+    }
 
     Molecule  *molecule;
 
@@ -203,7 +210,7 @@ namespace Avogadro
     MoleculeFile *moleculeFile;
     unsigned int currentIndex;
     QProgressDialog *progressDialog;
-    QListWidget  allMoleculesList;
+    QListWidget  *allMoleculesList;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -503,13 +510,17 @@ namespace Avogadro
     d->glWidget->setRenderUnitCellAxes(render);
   }
 
-  void MainWindow::showAllMolecules(bool showWindow)
+  void MainWindow::showAllMolecules(bool)
   {
-    if (showWindow) {
-      d->allMoleculesList.show();
-      d->allMoleculesList.raise();
-    } else {
-      d->allMoleculesList.hide();
+    if (!d->allMoleculesList)
+      return;
+
+    if (d->allMoleculesList->isVisible()) {
+      d->allMoleculesList->hide();
+    }
+    else {
+      d->allMoleculesList->show();
+      d->allMoleculesList->raise();
     }
   }
 
@@ -828,10 +839,16 @@ namespace Avogadro
     if (d->moleculeFile->numMolecules() > 1)
       ui.actionAllMolecules->setEnabled(true); // only one molecule -- the blank slate
 
-    d->allMoleculesList.clear();
-    d->allMoleculesList.addItems(d->moleculeFile->titles());
+    if (!d->allMoleculesList) {
+      d->allMoleculesList = new QListWidget();
+      d->allMoleculesList->setWindowTitle(tr("Titles of All Molecules"));
+      d->allMoleculesList->setAlternatingRowColors(true);
+      d->allMoleculesList->setUniformItemSizes(true);
+      connect(d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
+    }
 
-    connect(&d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
+    d->allMoleculesList->clear();
+    d->allMoleculesList->addItems(d->moleculeFile->titles());
   }
 
   void MainWindow::firstMolReady()
