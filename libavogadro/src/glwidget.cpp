@@ -1171,7 +1171,7 @@ namespace Avogadro {
       disconnect(d->molecule, 0, this, 0);
 
     // Emit the molecule changed signal
-    emit moleculeChanged(d->molecule, molecule);
+    emit moleculeChanged(molecule);
 
     d->molecule = molecule;
 
@@ -1296,8 +1296,8 @@ namespace Avogadro {
   {
     connect(engine, SIGNAL(changed()), this, SLOT(update()));
     connect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
-    connect(this, SIGNAL(moleculeChanged(Molecule *, Molecule *)),
-            engine, SLOT(changeMolecule(Molecule *, Molecule *)));
+    connect(this, SIGNAL(moleculeChanged(Molecule *)),
+            engine, SLOT(setMolecule(Molecule *)));
     d->engines.append(engine);
     qSort(d->engines.begin(), d->engines.end(), engineLessThan);
     engine->setPainterDevice(d->pd);
@@ -1308,8 +1308,7 @@ namespace Avogadro {
   void GLWidget::removeEngine(Engine *engine)
   {
     disconnect(engine, 0, this, 0);
-    disconnect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
-    connect(this, 0, engine, 0);
+    disconnect(this, 0, engine, 0);
     d->engines.removeAll(engine);
     emit engineRemoved(engine);
     engine->deleteLater();

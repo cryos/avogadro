@@ -687,7 +687,7 @@ namespace Avogadro {
       /**
        * Signal that the Molecule has changed.
        */
-      void moleculeChanged(Molecule *previous, Molecule *next);
+      void moleculeChanged(Molecule *newMolecule);
 
       /**
        * Signal that an Engine has been added to the GLWidget.
