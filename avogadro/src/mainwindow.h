@@ -40,6 +40,7 @@ class QStandardItem;
 
 namespace OpenBabel{
   class OBFormat;
+  class OBMol;
 }
 
 namespace Avogadro {
@@ -238,13 +239,20 @@ namespace Avogadro {
       //! Helper function to paste data from mime data
       bool pasteMimeData(const QMimeData *mimeData);
 
+      //! Helper function to check for 3D coordinates from files
+      void check3DCoords(OpenBabel::OBMol *molecule);
+
       //! Helper function for Mac -- hide main window and disable menus
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
       void showMainWindowMac();
     private Q_SLOTS:
 
+      void firstMolReady();
       void finishLoadFile();
+
+      // select a molecule out of a multi-molecule file
+      void selectMolecule(int index);
 
       void engineSettingsClicked();
       void addEngineClicked();
