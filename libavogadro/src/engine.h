@@ -314,7 +314,7 @@ namespace Avogadro {
        * @return the engine's PrimitiveList containing all primitives the engine
        * can render.
        */
-      virtual const PrimitiveList & primitives() const;
+      virtual const PrimitiveList primitives() const;
 
       /**
        * @return the engine's Atom list containing all atoms the engine
@@ -475,9 +475,9 @@ namespace Avogadro {
       virtual void setMolecule(const Molecule *molecule);
 
       /**
-       * Slot to change the molecule of the engine.
+       * Slot to set the Molecule pointer for this engine.
        */
-      virtual void changeMolecule(Molecule *previous, Molecule *next);
+      virtual void setMolecule(Molecule *molecule);
 
     protected:
       EnginePrivate *const d;

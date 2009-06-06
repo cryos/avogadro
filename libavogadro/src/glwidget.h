@@ -260,7 +260,7 @@ namespace Avogadro {
       /**
        * @return the radius of the Molecule.
        */
-      const double & radius() const;
+      double radius() const;
       /**
        * @return the Atom farthest away from the camera.
        */
@@ -324,11 +324,6 @@ namespace Avogadro {
         * @sa class Painter
         */
       Painter *painter() const;
-
-      /**
-       * @return list of primitives for this widget
-       */
-      PrimitiveList & primitives() const;
 
       /** @name Selection Methods
        *  These methods are used to manipulate user-selected primitives.
@@ -626,93 +621,6 @@ namespace Avogadro {
       void setTool(Tool *tool);
 
       /**
-       * Add the primitive to the widget.  This slot is called whenever
-       * a new primitive is added to our molecule model.  It adds the
-       * primitive to the list in the appropriate group.
-       *
-       * @param primitive pointer to a primitive to add to the view
-       */
-      void addPrimitive(Primitive *primitive);
-
-      /**
-       * Update a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been changed and we need to check our view.
-       *
-       * @note In some cases we are passed the molecule itself meaning that more
-       * than one thing has changed in the molecule.
-       *
-       * @param primitive object which changed.
-       */
-      void updatePrimitive(Primitive *primitive);
-
-      /** Remove a primitive.  This slot is called whenever a primitive of our
-       * molecule model has been removed and we need to take it off our list.
-       * Additionally we need to update other items in our view that are impacted
-       * by this change.
-       *
-       * @param primitive object to remove.
-       */
-      void removePrimitive(Primitive *primitive);
-
-      /**
-       * Add the Atom to the GLWidget.  This slot is called whenever
-       * a new Atom is added to our Molecule model.  It adds the
-       * Atom to the list in the appropriate group.
-       *
-       * @note This may change before 1.0 - the Molecule should be used more.
-       *
-       * @param atom Pointer to an Atom to add to the view
-       */
-      void addAtom(Atom *atom);
-
-      /**
-       * Update an Atom.  This slot is called whenever an Atom of our
-       * Molecule model has been changed and we need to update our view.
-       *
-       * @param atom Atom that changed.
-       */
-      void updateAtom(Atom *atom);
-
-      /**
-       * Remove an Atom.  This slot is called whenever an Atom of our
-       * Molecule model has been removed and we need to take it off our list.
-       * Additionally we need to update other items in our view that are impacted
-       * by this change.
-       *
-       * @param atom Atom to remove.
-       */
-      void removeAtom(Atom *atom);
-
-      /**
-       * Add the Bond to the GLWidget.  This slot is called whenever
-       * a new Bond is added to our Molecule model.  It adds the
-       * Bond to the list in the appropriate group.
-       *
-       * @note This may change before 1.0 - the Molecule should be used more.
-       *
-       * @param bond Pointer to a Bond to add to the view
-       */
-      void addBond(Bond *bond);
-
-      /**
-       * Update a Bond.  This slot is called whenever a Bond of our
-       * Molecule model has been changed and we need to update our view.
-       *
-       * @param bond Bond that changed.
-       */
-      void updateBond(Bond *bond);
-
-      /**
-       * Remove a Bond.  This slot is called whenever a Bond of our
-       * Molecule model has been removed and we need to take it off our list.
-       * Additionally we need to update other items in our view that are impacted
-       * by this change.
-       *
-       * @param bond Bond to remove.
-       */
-      void removeBond(Bond *bond);
-
-      /**
        * Set the background color of the rendering area (the default is black).
        *
        * @param background the new background color.
@@ -779,7 +687,7 @@ namespace Avogadro {
       /**
        * Signal that the Molecule has changed.
        */
-      void moleculeChanged(Molecule *previous, Molecule *next);
+      void moleculeChanged(Molecule *newMolecule);
 
       /**
        * Signal that an Engine has been added to the GLWidget.

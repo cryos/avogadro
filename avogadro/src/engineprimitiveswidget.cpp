@@ -98,40 +98,21 @@ namespace Avogadro {
   {
     PrimitiveList selectedPrimitives = d->glWidget->selectedPrimitives();
     foreach(Primitive *p, selectedPrimitives)
-    {
       d->engine->removePrimitive(p);
-    }
   }
 
   void EnginePrimitivesWidget::addAll()
   {
-    d->engine->setPrimitives(d->glWidget->primitives());
-  }
-
-  void EnginePrimitivesWidget::toSelection()
-  {
-    PrimitiveList pl = d->glWidget->selectedPrimitives();
-    if(pl.size())
-    {
-      d->engine->setPrimitives(pl);
-    }
-    else
-    {
-      d->engine->setPrimitives(d->glWidget->primitives());
-    }
+    d->engine->clearPrimitives();
   }
 
   void EnginePrimitivesWidget::fromSelection()
   {
     PrimitiveList pl = d->glWidget->selectedPrimitives();
     if(pl.size())
-    {
       d->engine->setPrimitives(pl);
-    }
     else
-    {
-      d->engine->setPrimitives(d->glWidget->primitives());
-    }
+      d->engine->clearPrimitives();
   }
 
   GLWidget *EnginePrimitivesWidget::glWidget() const
@@ -146,9 +127,7 @@ namespace Avogadro {
     QAbstractItemModel *model = ui.enginePrimitivesTree->model();
 
     if(model)
-    {
       delete model;
-    }
 
     model = new PrimitiveItemModel(engine, this);
     ui.enginePrimitivesTree->setModel(model);

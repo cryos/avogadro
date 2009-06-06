@@ -125,7 +125,6 @@ namespace Avogadro {
     double radius( const Primitive *p ) const { return widget->radius(p); }
     const Molecule *molecule() const { return widget->molecule(); }
     Color *colorMap() const { return widget->colorMap(); }
-    PrimitiveList * primitives() const { return &widget->primitives(); }
 
     int width() { return widget->width(); }
     int height() { return widget->height(); }
@@ -208,7 +207,6 @@ namespace Avogadro {
 
     QList<QPair<QString, QPair<QList<unsigned int>, QList<unsigned int> > > > namedSelections;
     PrimitiveList          selectedPrimitives;
-    PrimitiveList          primitives;
 
     QUndoStack            *undoStack;
 
@@ -1163,75 +1161,31 @@ namespace Avogadro {
     }
   }
 
-  void GLWidget::setMolecule( Molecule *molecule )
+  void GLWidget::setMolecule(Molecule *molecule)
   {
-    if ( !molecule ) { return; }
+    if (!molecule)
+      return;
 
     // disconnect from our old molecule
-    if ( d->molecule ) {
-      QObject::disconnect( d->molecule, 0, this, 0 );
-    }
+    if (d->molecule)
+      disconnect(d->molecule, 0, this, 0);
 
     // Emit the molecule changed signal
-    emit moleculeChanged(d->molecule, molecule);
+    emit moleculeChanged(molecule);
 
     d->molecule = molecule;
 
-    // Clear the primitives list, selection lists etc
-    d->primitives.clear();
+    // Clear the selection list
     d->selectedPrimitives.clear();
-
-    // add the atoms to the default queue
-    QList<Atom *> atoms = molecule->atoms();
-    foreach(Atom *atom, atoms)
-      d->primitives.append(atom);
-    // Add the bonds to the default queue
-    QList<Bond *> bonds = molecule->bonds();
-    foreach(Bond *bond, bonds)
-      d->primitives.append(bond);
-    // Add the residues to the default queue
-    QList<Residue *> residues = molecule->residues();
-    foreach(Residue *residue, residues)
-      d->primitives.append(residue);
-
-    d->primitives.append(d->molecule);
-
-    // Now set the primitives for the engines
-//    for (int i = 0; i < d->engines.size(); i++)
-//      d->engines.at(i)->setPrimitives(d->primitives);
-
-    // connect our signals so if the molecule gets updated
-    connect(d->molecule,SIGNAL(primitiveAdded(Primitive*)),
-             this, SLOT(addPrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive*)),
-             this, SLOT(updatePrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)),
-             this, SLOT(removePrimitive(Primitive*)));
-    // Atoms
-    connect(d->molecule, SIGNAL(atomAdded(Atom*)),
-            this, SLOT(addAtom(Atom*)));
-    connect(d->molecule, SIGNAL(atomUpdated(Atom*)),
-            this, SLOT(updateAtom(Atom*)));
-    connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
-             this, SLOT(removeAtom(Atom*)));
-    // Atoms
-    connect(d->molecule, SIGNAL(atomAdded(Atom*)),
-             this, SLOT(addAtom(Atom*)));
-    connect(d->molecule, SIGNAL(atomUpdated(Atom*)),
-             this, SLOT(updateAtom(Atom*)));
-    connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
-             this, SLOT(removeAtom(Atom*)));
-    // Bonds
-    connect(d->molecule, SIGNAL(bondAdded(Bond*)),
-             this, SLOT(addBond(Bond*)));
-    connect(d->molecule, SIGNAL(bondUpdated(Bond*)),
-             this, SLOT(updateBond(Bond*)));
-    connect(d->molecule, SIGNAL(bondRemoved(Bond*)),
-             this, SLOT(removeBond(Bond*)));
 
     // compute the molecule's geometric info
     updateGeometry();
     invalidateDLs();
+
+    // When the molecule is updated, the display lists become invalid, we should
+    // also render the updated molecule. This should be much simpler than before.
+    connect(d->molecule, SIGNAL(updated()), this, SLOT(invalidateDLs()));
+    connect(d->molecule, SIGNAL(updated()), this, SLOT(update()));
 
     // setup the camera to have a nice viewpoint on the molecule
     d->camera->initializeViewPoint();
@@ -1259,7 +1213,7 @@ namespace Avogadro {
     return d->normalVector;
   }
 
-  const double & GLWidget::radius() const
+  double GLWidget::radius() const
   {
     return d->radius;
   }
@@ -1319,11 +1273,11 @@ namespace Avogadro {
       d->farthestAtom = atoms.at(0);
       max_x = centerOffset.dot(*d->farthestAtom->pos());
       foreach (Atom *atom, atoms) {
-    x = centerOffset.dot(*atom->pos());
-    if (x > max_x) {
-      max_x = x;
-      d->farthestAtom = atom;
-    }
+        x = centerOffset.dot(*atom->pos());
+        if (x > max_x) {
+          max_x = x;
+          d->farthestAtom = atom;
+        }
       } // end foreach
     } // end general repeat (many atoms, multiple cells)
   }
@@ -1338,95 +1292,12 @@ namespace Avogadro {
     return d->engines;
   }
 
-  PrimitiveList & GLWidget::primitives() const
-  {
-    return d->primitives;
-  }
-
-  void GLWidget::addPrimitive(Primitive *primitive)
-  {
-    if ( primitive ) {
-      d->primitives.append(primitive);
-      invalidateDLs();
-      update();
-    }
-  }
-
-  void GLWidget::updatePrimitive(Primitive *)
-  {
-    updateGeometry();
-    invalidateDLs();
-    update();
-  }
-
-  void GLWidget::removePrimitive( Primitive *primitive )
-  {
-    if ( primitive ) {
-      d->selectedPrimitives.removeAll(primitive);
-      d->primitives.removeAll(primitive);
-      invalidateDLs();
-      update();
-    }
-  }
-
-  void GLWidget::addAtom(Atom *a)
-  {
-    if (a) {
-      d->primitives.append(a);
-      invalidateDLs();
-      update();
-    }
-  }
-
-  void GLWidget::updateAtom(Atom *)
-  {
-    updateGeometry();
-    invalidateDLs();
-    update();
-  }
-
-  void GLWidget::removeAtom(Atom *a)
-  {
-    if (a) {
-      d->selectedPrimitives.removeAll(a);
-      d->primitives.removeAll(a);
-      invalidateDLs();
-      update();
-    }
-  }
-
-  void GLWidget::addBond(Bond *b)
-  {
-    if (b) {
-      d->primitives.append(b);
-      invalidateDLs();
-      update();
-    }
-  }
-
-  void GLWidget::updateBond(Bond *)
-  {
-    updateGeometry();
-    invalidateDLs();
-    update();
-  }
-
-  void GLWidget::removeBond(Bond *b)
-  {
-    if (b) {
-      d->selectedPrimitives.removeAll(b);
-      d->primitives.removeAll(b);
-      invalidateDLs();
-      update();
-    }
-  }
-
   void GLWidget::addEngine(Engine *engine)
   {
     connect(engine, SIGNAL(changed()), this, SLOT(update()));
     connect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
-    connect(this, SIGNAL(moleculeChanged(Molecule *, Molecule *)),
-            engine, SLOT(changeMolecule(Molecule *, Molecule *)));
+    connect(this, SIGNAL(moleculeChanged(Molecule *)),
+            engine, SLOT(setMolecule(Molecule *)));
     d->engines.append(engine);
     qSort(d->engines.begin(), d->engines.end(), engineLessThan);
     engine->setPainterDevice(d->pd);
@@ -1437,8 +1308,7 @@ namespace Avogadro {
   void GLWidget::removeEngine(Engine *engine)
   {
     disconnect(engine, 0, this, 0);
-    disconnect(engine, SIGNAL(changed()), this, SLOT(invalidateDLs()));
-    connect(this, 0, engine, 0);
+    disconnect(this, 0, engine, 0);
     d->engines.removeAll(engine);
     emit engineRemoved(engine);
     engine->deleteLater();
