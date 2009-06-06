@@ -706,9 +706,15 @@ namespace Avogadro {
     if (ui.tab_widget->isHidden()) {
       ui.push_customize->setText(tr("Customi&ze <<"));
       ui.tab_widget->show();
+      QSize s = size();
+      s.setHeight(s.height() + ui.tab_widget->size().height());
+      resize(s);
     }
     else {
       ui.push_customize->setText(tr("Customi&ze >>"));
+      QSize s = size();
+      s.setHeight(s.height() - ui.tab_widget->size().height());
+      resize(s);
       ui.tab_widget->hide();
     }
   }
