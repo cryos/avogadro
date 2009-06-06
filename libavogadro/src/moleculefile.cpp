@@ -157,7 +157,7 @@ namespace Avogadro {
     return obmol;
   }
 
-  bool MoleculeFile::replaceMolecule(unsigned int i, Molecule *molecule)
+  bool MoleculeFile::replaceMolecule(unsigned int i, Molecule *molecule, QString fileName)
   {
     if (!d->ready) 
       return false;
@@ -241,19 +241,14 @@ namespace Avogadro {
     return true;
   }
   
-  bool MoleculeFile::insertMolecule(unsigned int, Molecule *)
+  bool MoleculeFile::insertMolecule(unsigned int, Molecule *, QString)
   {
     return false;
   }
   
-  bool MoleculeFile::appendMolecule(Molecule *)
+  bool MoleculeFile::appendMolecule(Molecule *, QString)
   {
     return false;
-  }
-      
-  const std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformers() const
-  {
-    return m_conformers;
   }
 
   void MoleculeFile::threadFinished()
@@ -262,11 +257,26 @@ namespace Avogadro {
     emit ready();
   }
 
-  std::vector<std::streampos>& MoleculeFile::streampos()
+  std::vector<std::streampos>& MoleculeFile::streamposRef()
   {
     return d->streampos;
   }
-      
+
+  QStringList& MoleculeFile::titlesRef()
+  {
+    return d->titles;
+  }
+
+  const std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformers() const
+  {
+    return m_conformers;
+  }
+
+  std::vector<std::vector<Eigen::Vector3d>*>& MoleculeFile::conformersRef()
+  {
+    return m_conformers;
+  }
+
   void MoleculeFile::setConformerFile(bool value)
   {
     d->isConformerFile = value;
@@ -279,7 +289,7 @@ namespace Avogadro {
  
   void MoleculeFile::setFirstReady(bool value)
   {
-    if (value)
+    if (value && !d->ready)
       emit firstMolReady();
   }
 
