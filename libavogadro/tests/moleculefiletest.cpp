@@ -253,7 +253,7 @@ void MoleculeFileTest::replaceMolecule()
   aniline = moleculeFile->molecule(1);
   aniline->addAtom();
   aniline->addAtom();
-  QVERIFY( moleculeFile->replaceMolecule(1, aniline) );
+  QVERIFY( moleculeFile->replaceMolecule(1, aniline, filename) );
   delete aniline;
 
   // check again

@@ -111,6 +111,9 @@
     <addaction name="actionDisplayUnitCellAxes"/>
     <addaction name="actionDebugInformation"/>
     <addaction name="actionQuickRender"/>
+    <addaction name="separator"/>
+    <addaction name="actionAllMolecules"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -636,6 +639,14 @@
    </property>
    <property name="text">
     <string>Display Unit Cell Axes</string>
+   </property>
+  </action>
+  <action name="actionAllMolecules">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>All Molecules in File...</string>
    </property>
   </action>
  </widget>

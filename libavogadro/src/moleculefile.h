@@ -100,20 +100,24 @@ namespace Avogadro {
        * 
        * @param i The index for the molecule to replace.
        * @param molecule The changed (or a totally different) molecule
+       * @param fileName The name of the file for saving.
        */
-      bool replaceMolecule(unsigned int i, Molecule *molecule);
+      bool replaceMolecule(unsigned int i, Molecule *molecule, QString fileName);
       /**
        * Insert a molecule at index @p i.
+       * @param i The index for inserting the molecule
        * @param molecule The molecule to insert
+       * @param fileName The name of the file for saving.
        * @todo implement this method
        */
-      bool insertMolecule(unsigned int i, Molecule *molecule);
+      bool insertMolecule(unsigned int i, Molecule *molecule, QString fileName);
       /**
        * Append @p molecule to the end of the file.
-       * @param molecule The molecule to append
+       * @param molecule The molecule to append.
+       * @param fileName The name of the file for saving.
        * @todo implement this method
        */
-      bool appendMolecule(Molecule *molecule);
+      bool appendMolecule(Molecule *molecule, QString fileName);
       //@}
 
       //! @name Error handling
@@ -167,10 +171,10 @@ namespace Avogadro {
     protected:
       MoleculeFile(const QString &fileName, const QString &fileType,
                    const QString &fileOptions);
-      
-      std::vector<std::streampos>& streampos_p();
-      QStringList& titles_p();
 
+      QStringList& titlesRef();
+      std::vector<std::streampos>& streamposRef();
+      std::vector<std::vector<Eigen::Vector3d>*>& conformersRef();
       void setConformerFile(bool value);
       void setReady(bool value);
       void setFirstReady(bool value); // used by ReadFileThread

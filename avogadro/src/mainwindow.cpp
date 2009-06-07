@@ -108,6 +108,8 @@
 #include <QTime>
 #include <QGLFramebufferObject>
 #include <QStatusBar>
+#include <QTableWidget>
+#include <QProgressDialog>
 
 #include <QDebug>
 
@@ -126,6 +128,12 @@ using namespace Eigen;
 namespace Avogadro
 {
 
+  enum BuilderOption {
+    AskUser = 0,
+    AlwaysBuild = 1,
+    NeverBuild = 2
+  };
+
   class MainWindowPrivate
   {
   public:
@@ -143,7 +151,11 @@ namespace Avogadro
       initialized( false ),
       centerTimer(0),
       centerTime(0),
-      moleculeFile(0), currentIndex(0)
+      build3D(AskUser),
+      moleculeFile(0), currentIndex(0),
+      progressDialog(0),
+      allMoleculesTable(0),
+      allMoleculesDialog(0)
     {}
 
     Molecule  *molecule;
@@ -196,9 +208,13 @@ namespace Avogadro
 
     PluginManager pluginManager;
 
+    BuilderOption build3D;
     // Track all the molecules in a file
     MoleculeFile *moleculeFile;
     unsigned int currentIndex;
+    QProgressDialog *progressDialog;
+    QTableWidget  *allMoleculesTable;
+    QDialog       *allMoleculesDialog;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -498,6 +514,20 @@ namespace Avogadro
     d->glWidget->setRenderUnitCellAxes(render);
   }
 
+  void MainWindow::showAllMolecules(bool)
+  {
+    if (!d->allMoleculesDialog)
+      return;
+
+    if (d->allMoleculesDialog->isVisible()) {
+      d->allMoleculesDialog->hide();
+    }
+    else {
+      d->allMoleculesDialog->show();
+      d->allMoleculesDialog->raise();
+    }
+  }
+
   void MainWindow::reloadPlugins()
   {
     qDebug() << "MainWindow::reloadPlugins";
@@ -699,7 +729,6 @@ namespace Avogadro
 
       // if we have nothing open or modified
       if ( d->fileName.isEmpty() && !isWindowModified() ) {
-        qDebug() << "Loading File";
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -737,6 +766,7 @@ namespace Avogadro
     if(fileName.isEmpty()) {
       setFileName(fileName);
       setMolecule(new Molecule(this));
+      ui.actionAllMolecules->setEnabled(false); // only one molecule -- the blank slate
       return true;
     }
 
@@ -754,74 +784,189 @@ namespace Avogadro
     if (!d->moleculeFile)
       return false;
 
+    // TODO: split into first molecule vs. whole file
+    connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(firstMolReady()));
     connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(finishLoadFile()));
+
+    if (!d->progressDialog) {
+      d->progressDialog = new QProgressDialog(this);
+      d->progressDialog->setRange(0,0); // indeterminate progress
+      d->progressDialog->setLabelText(tr("Reading multi-molecule file. This may take a while..."));
+      d->progressDialog->setWindowModality(Qt::WindowModal);
+      d->progressDialog->setCancelButtonText(QString()); // no cancel button
+    }
+    d->progressDialog->show();
 
     return true;
   }
 
+  void MainWindow::check3DCoords(OBMol *obMolecule)
+  {
+    bool build = false;
+
+    if (obMolecule->GetDimension() != 3) {
+
+      // we may want to check with the user
+      if (d->build3D == AskUser) {
+
+        QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
+                                                       tr( "Avogadro" ),
+                                                       tr("This file contains does not contain 3D coordinates."),
+                                                       QMessageBox::YesToAll | QMessageBox::Yes 
+                                                       | QMessageBox::No,
+                                                       this);
+
+        msgBox->setInformativeText(tr("Do you want Avogadro to build a rough geometry?"));
+        msgBox->setDefaultButton(QMessageBox::Yes);
+        int retval = msgBox->exec();
+
+        switch(retval) {
+        case (QMessageBox::YesToAll):
+          d->build3D = AlwaysBuild;
+        case (QMessageBox::Yes):
+          build = true;
+          break;
+
+        case (QMessageBox::NoToAll):
+          d->build3D = NeverBuild;
+          build = false;
+          break;
+        case (QMessageBox::No):
+        default:
+          QMessageBox::warning( this, tr( "Avogadro" ),
+                                tr( "This file does not contain 3D coordinates.\n"
+                                    "You may not be able to edit or view properly." ));
+          build = false;
+          break;
+        }
+        delete msgBox;
+      }
+
+      if (build || d->build3D == AlwaysBuild) {
+        // In OB-2.2.2 and later, builder will use 2D coordinates if present
+        OBBuilder builder;
+        builder.Build(*obMolecule);
+        obMolecule->AddHydrogens(false, true); // Add some hydrogens before running force field
+
+        OBForceField* pFF =  OBForceField::FindForceField("UFF");
+        if (pFF && pFF->Setup(*obMolecule)) {
+          pFF->ConjugateGradients(250, 1.0e-4);
+          pFF->UpdateCoordinates(*obMolecule);
+        }
+      } // building geometry
+
+    } // check 3D coordinates
+  }
+
+  void MainWindow::selectMolecule(int index, int)
+  {
+    if (!d->moleculeFile)
+      return; // nothing to do
+
+    OBMol *obMolecule =  d->moleculeFile->OBMol(index);
+    if (!obMolecule)
+      return; // bad index
+    check3DCoords(obMolecule);
+
+    Molecule *mol = new Molecule;
+    mol->setOBMol(obMolecule);
+    mol->setFileName(d->molecule->fileName()); // copy the same filename
+    setMolecule(mol);
+  }
+
   void MainWindow::finishLoadFile()
+  {
+    if (!d->moleculeFile)
+      return;
+
+    if (d->moleculeFile->numMolecules() > 1)
+      ui.actionAllMolecules->setEnabled(true); // only one molecule -- the blank slate
+
+    if (!d->allMoleculesTable) {
+      d->allMoleculesDialog = new QDialog(this);
+      d->allMoleculesDialog->setWindowTitle(tr("Select Molecule to View"));
+
+      QVBoxLayout *layout = new QVBoxLayout( d->allMoleculesDialog );
+      layout->setMargin( 0 );
+      layout->setSpacing( 6 );
+
+      d->allMoleculesTable = new QTableWidget( d->allMoleculesDialog );
+      d->allMoleculesTable->setAlternatingRowColors(true);
+      d->allMoleculesTable->setSelectionMode(QAbstractItemView::SingleSelection);
+      layout->addWidget(d->allMoleculesTable);
+
+      // make sure the table stretches across the dialog as it resizes
+      QHeaderView *horizontal = d->allMoleculesTable->horizontalHeader();
+      horizontal->setResizeMode(QHeaderView::Stretch);
+      QHeaderView *vertical = d->allMoleculesTable->verticalHeader();
+      vertical->setResizeMode(QHeaderView::Stretch);
+
+    }
+
+    disconnect(d->allMoleculesTable, 0, this, 0);
+    d->allMoleculesTable->clear();
+    d->allMoleculesTable->setRowCount(d->moleculeFile->numMolecules());
+    d->allMoleculesTable->setColumnCount(1);
+
+    QStringList columnLabels, rowLabels;
+    columnLabels << tr("Molecule Title");
+    d->allMoleculesTable->setHorizontalHeaderLabels(columnLabels);
+    int molecule = 0;
+    foreach(const QString &title, d->moleculeFile->titles()) {
+      QTableWidgetItem* newItem = new QTableWidgetItem(title);
+      d->allMoleculesTable->setItem(molecule, 0, newItem);
+      //      qDebug() << " molecule: " << molecule << title;
+      rowLabels << QString("%L1").arg(++molecule);
+    }
+    d->allMoleculesTable->setCurrentCell(0, 0, QItemSelectionModel::ClearAndSelect);
+    connect(d->allMoleculesTable, SIGNAL(currentCellChanged(int, int, int, int)), this, SLOT(selectMolecule(int, int)));
+  }
+
+  void MainWindow::firstMolReady()
   {
     if (d->moleculeFile == NULL)
       return;
+    if (d->progressDialog) {
+      d->progressDialog->cancel();
+    }
+
+    ui.actionAllMolecules->setEnabled(false); // only one molecule right now
 
     QString errors = d->moleculeFile->errors();
     OBMol *obMolecule = d->moleculeFile->OBMol();
     if (errors.isEmpty() && obMolecule != NULL) { // successful read
 
       qDebug() << " read " << d->moleculeFile->numMolecules() << " molecules.";
-      foreach(const QString &title, d->moleculeFile->titles())
-        qDebug() << title;
 
       // e.g. SMILES or MDL molfile, etc.
-      if (obMolecule->GetDimension() != 3) {
-        int retval = QMessageBox::warning( this, tr( "Avogadro" ),
-                                           tr( "This file contains does not contain 3D coordinates.\n"
-                                               "Do you want Avogadro to build a rough geometry?"),
-                                           QMessageBox::Yes, QMessageBox::No );
-
-        if (retval == QMessageBox::Yes) {
-          // In OB-2.2.2 and later, builder will use 2D coordinates if present
-          OBBuilder builder;
-          builder.Build(*obMolecule);
-          obMolecule->AddHydrogens(false, true); // Add some hydrogens before running force field
-
-          OBForceField* pFF =  OBForceField::FindForceField("UFF");
-          if (pFF && pFF->Setup(*obMolecule)) {
-            pFF->ConjugateGradients(250, 1.0e-4);
-            pFF->UpdateCoordinates(*obMolecule);
-          }
-        }
-        else {
-          QMessageBox::warning( this, tr( "Avogadro" ),
-                                tr( "This file does not contain 3D coordinates.\n"
-                                    "You may not be able to edit or view properly." ));
-        }
-      }
+      check3DCoords(obMolecule);
 
       Molecule *mol = new Molecule;
       mol->setOBMol(obMolecule);
       setMolecule(mol);
       // Now unroll any settings we saved in the file
       // This is disabled for version 1.0-release
-//       if (obMolecule->HasData(OBGenericDataType::PairData)) {
-//         QSettings settings;
-//         // We've saved the settings with key Avogadro:blah as an OBPairData.
-//         std::vector<OBGenericData *> pairDataVector = obMolecule->GetAllData(OBGenericDataType::PairData);
-//         OBPairData *savedSetting;
-//         OBDataIterator i;
-//         QString attribute;
+      /*
+      if (obMolecule->HasData(OBGenericDataType::PairData)) {
+        QSettings settings;
+        // We've saved the settings with key Avogadro:blah as an OBPairData.
+        std::vector<OBGenericData *> pairDataVector = obMolecule->GetAllData(OBGenericDataType::PairData);
+        OBPairData *savedSetting;
+        OBDataIterator i;
+        QString attribute;
 
-//         for (i = pairDataVector.begin(); i != pairDataVector.end(); ++i) {
-//           savedSetting = dynamic_cast<OBPairData *>(*i);
-//           // Check to see if this is an Avogadro setting
-//           attribute = savedSetting->GetAttribute().c_str();
-//           if (attribute.startsWith(QLatin1String("Avogadro:"))) {
-//             attribute.remove(QLatin1String("Avogadro:"));
-//             settings.setValue(attribute, savedSetting->GetValue().c_str());
-//             // TODO: we should probably delete the entry now, but I'm going to play it safe first
-//           }
-//         }
-//       } // end reading OBPairData
+        for (i = pairDataVector.begin(); i != pairDataVector.end(); ++i) {
+          savedSetting = dynamic_cast<OBPairData *>(*i);
+          // Check to see if this is an Avogadro setting
+          attribute = savedSetting->GetAttribute().c_str();
+          if (attribute.startsWith(QLatin1String("Avogadro:"))) {
+            attribute.remove(QLatin1String("Avogadro:"));
+            settings.setValue(attribute, savedSetting->GetValue().c_str());
+            // TODO: we should probably delete the entry now, but I'm going to play it safe first
+          }
+        }
+      } // end reading OBPairData
+      */
 
       QApplication::restoreOverrideCursor();
 
@@ -936,7 +1081,8 @@ namespace Avogadro
 
   bool MainWindow::save()
   {
-    if ( d->fileName.isEmpty() ) {
+    // we can't safely save to a gzipped file
+    if ( d->fileName.isEmpty() || d->fileName.endsWith(".gz"), Qt::CaseInsensitive) {
       return saveAs();
     } else {
       return saveFile( d->fileName );
@@ -1005,25 +1151,11 @@ namespace Avogadro
         OpenbabelWrapper::writeConformers(d->molecule, fileName, formatType.trimmed());
       else
         // use MoleculeFile to save just the current slice of the file
-        d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule);
+        d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule, fileName);
     }
+
 
     /*
-    // Check the format next (before we try creating a file)
-    OBConversion conv;
-    OBFormat     *outFormat;
-    if (format != NULL)
-      outFormat = format;
-    else
-      outFormat = conv.FormatFromExt( fileName.toAscii() );
-    if ( !outFormat || !conv.SetOutFormat( outFormat ) ) {
-      QMessageBox::warning( this, tr( "Avogadro" ),
-          tr( "Cannot write to file format of file %1." )
-          .arg( fileName ) );
-      return false;
-    }
-
-
     QFile file(fileName);
     bool replaceExistingFile = file.exists();
 
@@ -2065,6 +2197,9 @@ namespace Avogadro
             this, SLOT(setRenderDebug(bool)));
     connect(ui.actionQuickRender, SIGNAL(triggered(bool)),
             this, SLOT(setQuickRender(bool)));
+    connect(ui.actionAllMolecules, SIGNAL(triggered(bool)),
+            this, SLOT(showAllMolecules(bool)));
+
     connect( ui.actionAbout, SIGNAL( triggered() ), this, SLOT( about() ) );
 
     connect( d->centralTab, SIGNAL( currentChanged( int ) ),
