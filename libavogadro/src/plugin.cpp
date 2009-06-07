@@ -42,6 +42,11 @@ namespace Avogadro {
     return QObject::tr("No Description");
   }
 
+  QString Plugin::license() const
+  {
+    return tr("GPL2+", "Default license for all Avogadro plugins");
+  }
+
   QWidget *Plugin::settingsWidget()
   {
     return NULL; // no settings widget

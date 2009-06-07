@@ -34,7 +34,7 @@ void export_GLWidget()
     .add_property("maxZ", &GLHit::maxZ)
     ;
 
-  const double & (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
+  double (GLWidget::*radius_ptr1)() const = &GLWidget::radius;
   double (GLWidget::*radius_ptr2)(const Primitive *) const = &GLWidget::radius;
   void (GLWidget::*toggleSelected_ptr1)() = &GLWidget::toggleSelected;
   //void (GLWidget::*toggleSelected_ptr2)(PrimitiveList list) = &GLWidget::toggleSelected;
@@ -83,7 +83,7 @@ void export_GLWidget()
     .add_property("bCells", &GLWidget::bCells)
     .add_property("cCells", &GLWidget::cCells)
     // real functions
-    .def("radius", radius_ptr1, return_value_policy<copy_const_reference>())
+    .def("radius", radius_ptr1)
     .def("radius", radius_ptr2)
     .def("updateGeometry", &GLWidget::updateGeometry)
     .def("hits", &GLWidget::hits)
@@ -108,15 +108,6 @@ void export_GLWidget()
     .def("writeSettings", &GLWidget::writeSettings)
     .def("readSettings", &GLWidget::readSettings)
     .def("loadDefaultEngines", &GLWidget::loadDefaultEngines)
-    .def("addPrimitive", &GLWidget::addPrimitive)
-    .def("updatePrimitive", &GLWidget::updatePrimitive)
-    .def("removePrimitive", &GLWidget::removePrimitive)
-    .def("addAtom", &GLWidget::addAtom)
-    .def("updateAtom", &GLWidget::updateAtom)
-    .def("removeAtom", &GLWidget::removeAtom)
-    .def("addBond", &GLWidget::addBond)
-    .def("updateBond", &GLWidget::updateBond)
-    .def("removeBond", &GLWidget::removeBond)
     .def("addEngine", &GLWidget::addEngine)
     .def("removeEngine", &GLWidget::removeEngine)
     .def("invalidateDLs", &GLWidget::invalidateDLs)

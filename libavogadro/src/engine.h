@@ -314,7 +314,7 @@ namespace Avogadro {
        * @return the engine's PrimitiveList containing all primitives the engine
        * can render.
        */
-      virtual const PrimitiveList & primitives() const;
+      virtual const PrimitiveList primitives() const;
 
       /**
        * @return the engine's Atom list containing all atoms the engine
@@ -391,6 +391,16 @@ namespace Avogadro {
        * if no settings widget is available.
        */
       virtual QWidget *settingsWidget();
+
+      /**
+       * This method can provide a much faster way of determining if an Engine
+       * has a configuration dialog, it should be reimplemented in classes to
+       * avoid the settings wigdet being constructed in order to check whether
+       * an engine has settings.
+       * @return True if the Engine has a settings widget.
+       * @note Calls settingsWidget() by default and tests for null.
+       */
+      virtual bool hasSettings();
 
       /**
        * Write the engine settings so that they can be saved between sessions.
@@ -475,9 +485,9 @@ namespace Avogadro {
       virtual void setMolecule(const Molecule *molecule);
 
       /**
-       * Slot to change the molecule of the engine.
+       * Slot to set the Molecule pointer for this engine.
        */
-      virtual void changeMolecule(Molecule *previous, Molecule *next);
+      virtual void setMolecule(Molecule *molecule);
 
     protected:
       EnginePrivate *const d;

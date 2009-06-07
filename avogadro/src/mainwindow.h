@@ -245,6 +245,7 @@ namespace Avogadro {
     private Q_SLOTS:
 
       void finishLoadFile();
+      void engineSettingsClicked(Engine *engine);
 
       void engineSettingsClicked();
       void addEngineClicked();

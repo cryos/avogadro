@@ -66,6 +66,8 @@ namespace Avogadro {
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
 
+      bool hasSettings() { return true; }
+
       private:
         int m_dipoleType; // type of dipole to render
         Eigen::Vector3d m_dipole; // cached dipole moment

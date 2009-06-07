@@ -64,6 +64,8 @@ namespace Avogadro {
       //! Display a window for the user to pick rendering options
       QWidget *settingsWidget();
 
+      bool hasSettings() { return true; }
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */

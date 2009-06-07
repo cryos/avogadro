@@ -2,6 +2,7 @@
   EngineItemModel - List Model for Engines
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -32,23 +33,18 @@
 
 namespace Avogadro {
 
-  class EngineItemModelPrivate
-  {
-    public:
-      GLWidget *widget;
-  };
-
   EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) : 
-      QAbstractItemModel(parent), d(new EngineItemModelPrivate)
+      QAbstractItemModel(parent), m_glwidget(widget)
   {
-    d->widget = widget;
-    connect(d->widget, SIGNAL(engineAdded(Engine *)), this, SLOT(addEngine(Engine *)));
-    connect(d->widget, SIGNAL(engineRemoved(Engine *)), this, SLOT(removeEngine(Engine *)));
+    connect(m_glwidget, SIGNAL(engineAdded(Engine *)),
+            this, SLOT(addEngine(Engine *)));
+    connect(m_glwidget, SIGNAL(engineRemoved(Engine *)),
+            this, SLOT(removeEngine(Engine *)));
   }
 
   void EngineItemModel::addEngine(Engine *engine)
   {
-    QList<Engine *> list = d->widget->engines();
+    QList<Engine *> list = m_glwidget->engines();
     int row = list.indexOf(engine);
 
     beginInsertRows(QModelIndex(), row, row);
@@ -77,12 +73,12 @@ namespace Avogadro {
     if(!engine)
       return;
 
-    QList<Engine *> list = d->widget->engines();
+    QList<Engine *> list = m_glwidget->engines();
     int row = list.indexOf(engine);
 
-        QModelIndex begin = createIndex(row, 0);
-        QModelIndex end = createIndex(row, 0);
-        emit dataChanged(begin, end);
+    QModelIndex begin = createIndex(row, 0);
+    QModelIndex end = createIndex(row, 0);
+    emit dataChanged(begin, end);
   }
 
   QModelIndex EngineItemModel::parent( const QModelIndex & ) const
@@ -92,66 +88,67 @@ namespace Avogadro {
 
   int EngineItemModel::columnCount( const QModelIndex & ) const
   {
-    return 1;
+    return 2;
   }
 
-  int EngineItemModel::rowCount( const QModelIndex & parent ) const
+  int EngineItemModel::rowCount(const QModelIndex & parent) const
   {
     if(!parent.isValid())
-    {
-      return d->widget->engines().size();
-    }
+      return m_glwidget->engines().size();
     else
-    {
       return 0;
-    }
   }
 
-  QVariant EngineItemModel::data ( const QModelIndex & index, int role ) const
+  QVariant EngineItemModel::data(const QModelIndex & index, int role) const
   {
-    if(!index.isValid() || index.column() != 0)
-    {
+    if(!index.isValid() || index.column() > 1)
       return QVariant();
-    }
 
     Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
-    if(engine)
-    {
-      if(role == Qt::DisplayRole || role == Qt::EditRole) {
-          return engine->alias();
-      } else if ( role == Qt::CheckStateRole) {
-          if(engine->isEnabled()) {
-            return Qt::Checked;
-          } else {
-            return Qt::Unchecked;
-          }
-      } else if ( role == Qt::ToolTipRole || role == Qt::WhatsThisRole) {
-        return engine->description();
-      } else if ( role == EngineItemModel::EngineRole ) {
-        return qVariantFromValue(engine);
+    if(engine) {
+      if(index.column() == 1) {
+        if (role == Qt::DisplayRole)
+          return QVariant();
+        if (role == Qt::ToolTipRole)
+          return engine->hasSettings();
+        else if (role == EngineItemModel::EngineRole)
+          return qVariantFromValue(engine);
+        else
+          return QVariant();
       }
-
+      if(role == Qt::DisplayRole || role == Qt::EditRole)
+        return engine->alias();
+      else if (role == Qt::CheckStateRole) {
+        if(engine->isEnabled())
+          return Qt::Checked;
+        else
+          return Qt::Unchecked;
+      }
+      else if (role == Qt::ToolTipRole || role == Qt::WhatsThisRole)
+        return engine->description();
+      else if (role == EngineItemModel::EngineRole)
+        return qVariantFromValue(engine);
     }
 
     return QVariant();
   }
 
-  bool EngineItemModel::setData ( const QModelIndex & index, const QVariant & value, int role )
+  bool EngineItemModel::setData (const QModelIndex & index,
+                                 const QVariant & value, int role)
   {
-    if(!index.isValid() || !index.internalPointer()) {
+    if(!index.isValid() || !index.internalPointer())
       return false;
-    }
 
     Engine *engine = qobject_cast<Engine *>(static_cast<QObject *>(index.internalPointer()));
     if(role == Qt::CheckStateRole) {
-      if(value == Qt::Checked) {
+      if(value == Qt::Checked)
         engine->setEnabled(true);
-      } else {
+      else
         engine->setEnabled(false);
-      }
       emit dataChanged(index, index);
       return true;
-    } else if ( role == Qt::DisplayRole  || role == Qt::EditRole ) {
+    }
+    else if (role == Qt::DisplayRole  || role == Qt::EditRole) {
       engine->setAlias(value.toString());
       emit dataChanged(index, index);
       return true;
@@ -160,19 +157,20 @@ namespace Avogadro {
     return false;
   }
 
-  Qt::ItemFlags EngineItemModel::flags ( const QModelIndex & ) const
+  Qt::ItemFlags EngineItemModel::flags( const QModelIndex & ) const
   {
-    return (Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+    return (Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable
+            | Qt::ItemIsEnabled);
   }
 
-  QModelIndex EngineItemModel::index ( int row, int column, const QModelIndex & parent ) const
+  QModelIndex EngineItemModel::index(int row, int column,
+                                     const QModelIndex & parent) const
   {
     //FIXME: (bjacob) I added the "&& row >=0" condition below because I had to
     //fix a failed assert. It'd be cleaner to fix the cause of the problem, which is that
     //this function is being called with row=-1.
-    if(!parent.isValid() && row >=0 && row < d->widget->engines().count())
-    {
-      Engine *engine = d->widget->engines().at(row);
+    if(!parent.isValid() && row >=0 && row < m_glwidget->engines().count()) {
+      Engine *engine = m_glwidget->engines().at(row);
       return createIndex(row,column,engine);
     }
 

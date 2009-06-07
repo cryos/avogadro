@@ -56,7 +56,6 @@ namespace Avogadro
       void addSelection();
       void removeSelection();
       void fromSelection();
-      void toSelection();
       void addAll();
 
     private:
