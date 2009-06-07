@@ -261,6 +261,7 @@ namespace Avogadro
     d->centralTab = new QTabWidget(ui.centralWidget);
     d->centralTab->setObjectName("centralTab");
     d->centralTab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    d->centralTab->setDocumentMode(true);
     d->centralTab->setTabsClosable(true);
     d->centralLayout->addWidget(d->centralTab);
     // Set up the signal/slot for closing tabs from the tab widget
