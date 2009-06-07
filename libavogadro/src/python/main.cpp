@@ -22,7 +22,6 @@ void export_Engine();
 void export_Extension();
 void export_FileIO();
 void export_Fragment();
-void export_GLGraphicsView();
 void export_GLWidget();
 void export_Mesh();
 void export_MeshGenerator();
@@ -71,7 +70,6 @@ BOOST_PYTHON_MODULE(_Avogadro) {
   export_Extension();
   export_FileIO();
   export_Fragment();
-  export_GLGraphicsView();
   export_GLWidget();
   export_Mesh();
   export_MeshGenerator();

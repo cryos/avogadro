@@ -247,7 +247,6 @@ namespace Avogadro {
       void finishLoadFile();
       void engineSettingsClicked(Engine *engine);
 
-      void engineSettingsClicked();
       void addEngineClicked();
       void duplicateEngineClicked();
       void removeEngineClicked();
