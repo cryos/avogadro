@@ -82,6 +82,12 @@ namespace Avogadro
     if (fileName.isEmpty())
       fileName = tr("untitled");
 
+    // we cannot current save to a .gz file, so remove that suffix
+    int gzipIndex = fileName.lastIndexOf(QLatin1String(".gz"), -1, Qt::CaseInsensitive);
+    if (gzipIndex != -1) {
+      fileName.remove(gzipIndex, 3);
+    }
+
 #if defined (Q_WS_MAC) || defined (Q_WS_WIN)
 // The Mac and Windows Qt/Native dialog already update extensions for us.
 // So we'll call the static version.

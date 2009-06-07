@@ -128,6 +128,12 @@ using namespace Eigen;
 namespace Avogadro
 {
 
+  enum BuilderOption {
+    AskUser = 0,
+    AlwaysBuild = 1,
+    NeverBuild = 2
+  };
+
   class MainWindowPrivate
   {
   public:
@@ -145,6 +151,7 @@ namespace Avogadro
       initialized( false ),
       centerTimer(0),
       centerTime(0),
+      build3D(AskUser),
       moleculeFile(0), currentIndex(0),
       progressDialog(0),
       allMoleculesTable(0),
@@ -201,6 +208,7 @@ namespace Avogadro
 
     PluginManager pluginManager;
 
+    BuilderOption build3D;
     // Track all the molecules in a file
     MoleculeFile *moleculeFile;
     unsigned int currentIndex;
@@ -794,13 +802,47 @@ namespace Avogadro
 
   void MainWindow::check3DCoords(OBMol *obMolecule)
   {
-    if (obMolecule->GetDimension() != 3) {
-      int retval = QMessageBox::warning( this, tr( "Avogadro" ),
-                                         tr( "This file contains does not contain 3D coordinates.\n"
-                                             "Do you want Avogadro to build a rough geometry?"),
-                                         QMessageBox::Yes, QMessageBox::No );
+    bool build = false;
 
-      if (retval == QMessageBox::Yes) {
+    if (obMolecule->GetDimension() != 3) {
+
+      // we may want to check with the user
+      if (d->build3D == AskUser) {
+
+        QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
+                                                       tr( "Avogadro" ),
+                                                       tr("This file contains does not contain 3D coordinates."),
+                                                       QMessageBox::YesToAll | QMessageBox::Yes 
+                                                       | QMessageBox::No,
+                                                       this);
+
+        msgBox->setInformativeText(tr("Do you want Avogadro to build a rough geometry?"));
+        msgBox->setDefaultButton(QMessageBox::Yes);
+        int retval = msgBox->exec();
+
+        switch(retval) {
+        case (QMessageBox::YesToAll):
+          d->build3D = AlwaysBuild;
+        case (QMessageBox::Yes):
+          build = true;
+          break;
+
+        case (QMessageBox::NoToAll):
+          d->build3D = NeverBuild;
+          build = false;
+          break;
+        case (QMessageBox::No):
+        default:
+          QMessageBox::warning( this, tr( "Avogadro" ),
+                                tr( "This file does not contain 3D coordinates.\n"
+                                    "You may not be able to edit or view properly." ));
+          build = false;
+          break;
+        }
+        delete msgBox;
+      }
+
+      if (build || d->build3D == AlwaysBuild) {
         // In OB-2.2.2 and later, builder will use 2D coordinates if present
         OBBuilder builder;
         builder.Build(*obMolecule);
@@ -811,13 +853,9 @@ namespace Avogadro
           pFF->ConjugateGradients(250, 1.0e-4);
           pFF->UpdateCoordinates(*obMolecule);
         }
-      }
-      else {
-        QMessageBox::warning( this, tr( "Avogadro" ),
-                              tr( "This file does not contain 3D coordinates.\n"
-                                  "You may not be able to edit or view properly." ));
-      }
-    }
+      } // building geometry
+
+    } // check 3D coordinates
   }
 
   void MainWindow::selectMolecule(int index, int)
@@ -832,6 +870,7 @@ namespace Avogadro
 
     Molecule *mol = new Molecule;
     mol->setOBMol(obMolecule);
+    mol->setFileName(d->molecule->fileName()); // copy the same filename
     setMolecule(mol);
   }
 
@@ -1042,7 +1081,8 @@ namespace Avogadro
 
   bool MainWindow::save()
   {
-    if ( d->fileName.isEmpty() ) {
+    // we can't safely save to a gzipped file
+    if ( d->fileName.isEmpty() || d->fileName.endsWith(".gz"), Qt::CaseInsensitive) {
       return saveAs();
     } else {
       return saveFile( d->fileName );
