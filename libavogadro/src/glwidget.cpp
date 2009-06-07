@@ -369,13 +369,9 @@ namespace Avogadro {
   GLWidget::~GLWidget()
   {
     if(!d->painter->isShared())
-      {
-        delete d->painter;
-      }
+      delete d->painter;
     else
-      {
-        d->painter->decrementShare();
-      }
+      d->painter->decrementShare();
 
 #ifdef ENABLE_THREADED_GL
     // cleanup our thread
@@ -385,7 +381,7 @@ namespace Avogadro {
 #endif
 
 #ifdef ENABLE_PYTHON
-    // Creating the PythonThread object in Enigne destructor doesn't seem 
+    // Creating the PythonThread object in Engine destructor doesn't seem
     // to work so we do it here
     PythonThread pt;
 #endif
@@ -1053,6 +1049,7 @@ namespace Avogadro {
         delete command;
       }
     }
+    emit activated(this);
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )

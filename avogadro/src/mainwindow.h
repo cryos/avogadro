@@ -124,6 +124,7 @@ namespace Avogadro {
       void duplicateView();
       void detachView();
       void closeView();
+      void closeView(int index);
       void centerView();
       void setView(int index);
       void fullScreen();
@@ -183,6 +184,11 @@ namespace Avogadro {
        * @param options Enum found in Extension with options for new Molecule
        */
       void setMolecule(Molecule *molecule, int options);
+
+      /**
+       * Slot to check we have the correct active GLWidget.
+       */
+      void glWidgetActivated(GLWidget *glWidget);
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);

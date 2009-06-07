@@ -710,6 +710,11 @@ namespace Avogadro {
        */
       void namedSelectionsChanged();
 
+      /**
+       * Signal that this GLWidget was activated.
+       */
+      void activated(GLWidget *);
+
   };
 
 } // end namespace Avogadro

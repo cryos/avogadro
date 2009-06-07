@@ -261,7 +261,11 @@ namespace Avogadro
     d->centralTab = new QTabWidget(ui.centralWidget);
     d->centralTab->setObjectName("centralTab");
     d->centralTab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    d->centralTab->setTabsClosable(true);
     d->centralLayout->addWidget(d->centralTab);
+    // Set up the signal/slot for closing tabs from the tab widget
+    connect(d->centralTab, SIGNAL(tabCloseRequested(int)),
+            this, SLOT(closeView(int)));
 
     setAttribute( Qt::WA_DeleteOnClose );
     setAcceptDrops(true);
@@ -1281,7 +1285,6 @@ namespace Avogadro
     return true;
   }
 
-
   void MainWindow::undoStackClean( bool clean )
   {
     ui.actionRevert->setEnabled(!clean);
@@ -1583,11 +1586,33 @@ namespace Avogadro
     QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));
   }
 
-  void MainWindow::setView( int index )
+  void MainWindow::setView(int index)
   {
-    d->glWidget = d->glWidgets.at( index );
+    QWidget *widget = d->centralTab->widget(index);
+    foreach(QObject *object, widget->children()) {
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if (glWidget) {
+        d->glWidget = glWidget;
+        int idx =d->glWidgets.indexOf(glWidget);
+        d->enginesStacked->setCurrentIndex(idx);
+        ui.actionDisplayAxes->setChecked(renderAxes());
+        ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
+        ui.actionDebugInformation->setChecked(renderDebug());
+        ui.actionQuickRender->setChecked(quickRender());
+        break;
+      }
+    }
+  }
 
-    d->enginesStacked->setCurrentIndex( index );
+  void MainWindow::glWidgetActivated(GLWidget *glWidget)
+  {
+    if (d->glWidget == glWidget)
+      return;
+
+    d->glWidget = glWidget;
+
+    int index = d->glWidgets.indexOf(glWidget);
+    d->enginesStacked->setCurrentIndex(index);
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
@@ -1912,30 +1937,31 @@ namespace Avogadro
 
   void MainWindow::closeView()
   {
-    QWidget *widget = d->centralTab->currentWidget();
+    closeView(d->centralTab->currentIndex());
+  }
+
+  void MainWindow::closeView(int index)
+  {
+    QWidget *widget = d->centralTab->widget(index);
     foreach( QObject *object, widget->children() ) {
-      GLWidget *glWidget = qobject_cast<GLWidget *>( object );
-      if ( glWidget ) {
-        int index = d->centralTab->currentIndex();
-        d->centralTab->removeTab( index );
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if (glWidget) {
+        d->centralTab->removeTab(index);
 
         // delete the engines list for this GLWidget
         QWidget *widget = d->enginesStacked->widget( index );
         d->enginesStacked->removeWidget( widget );
         delete widget;
 
-        for ( int count=d->centralTab->count(); index < count; ++index ) {
-          d->centralTab->setTabText(index, tr("View %1").arg( index + 1) );
-        }
+        for (int count=d->centralTab->count(); index < count; ++index)
+          d->centralTab->setTabText(index, tr("View %1").arg(index + 1));
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
         ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
         ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
       }
     }
-
-    setView( d->centralTab->currentIndex() );
-
+    setView( d->centralTab->currentIndex());
     writeSettings();
   }
 
@@ -2713,18 +2739,18 @@ namespace Avogadro
   GLWidget *MainWindow::newGLWidget()
   {
     GLWidget *gl = 0;
-    if(!d->glWidget)
-    {
+    if(!d->glWidget) {
       gl = new GLWidget(this);
       d->glWidget = gl;
     }
     else
-    {
       gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
-    }
 
+    // Connect up a few signals and slots we need
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ),
              gl, SLOT( setMolecule( Molecule * ) ) );
+    connect(gl, SIGNAL(activated(GLWidget *)),
+            this, SLOT(glWidgetActivated(GLWidget *)));
 
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
