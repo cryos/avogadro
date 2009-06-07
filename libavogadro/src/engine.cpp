@@ -241,6 +241,11 @@ namespace Avogadro {
     return 0;
   }
 
+  bool Engine::hasSettings()
+  {
+    return settingsWidget();
+  }
+
   void Engine::setAlias(const QString &alias)
   {
     m_alias = alias;
