@@ -108,7 +108,7 @@
 #include <QTime>
 #include <QGLFramebufferObject>
 #include <QStatusBar>
-#include <QListWidget>
+#include <QTableWidget>
 #include <QProgressDialog>
 
 #include <QDebug>
@@ -147,14 +147,9 @@ namespace Avogadro
       centerTime(0),
       moleculeFile(0), currentIndex(0),
       progressDialog(0),
-      allMoleculesList(0)
+      allMoleculesTable(0),
+      allMoleculesDialog(0)
     {}
-
-    ~MainWindowPrivate()
-    {
-      if (allMoleculesList)
-        delete allMoleculesList;
-    }
 
     Molecule  *molecule;
 
@@ -210,7 +205,8 @@ namespace Avogadro
     MoleculeFile *moleculeFile;
     unsigned int currentIndex;
     QProgressDialog *progressDialog;
-    QListWidget  *allMoleculesList;
+    QTableWidget  *allMoleculesTable;
+    QDialog       *allMoleculesDialog;
 
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
@@ -512,15 +508,15 @@ namespace Avogadro
 
   void MainWindow::showAllMolecules(bool)
   {
-    if (!d->allMoleculesList)
+    if (!d->allMoleculesDialog)
       return;
 
-    if (d->allMoleculesList->isVisible()) {
-      d->allMoleculesList->hide();
+    if (d->allMoleculesDialog->isVisible()) {
+      d->allMoleculesDialog->hide();
     }
     else {
-      d->allMoleculesList->show();
-      d->allMoleculesList->raise();
+      d->allMoleculesDialog->show();
+      d->allMoleculesDialog->raise();
     }
   }
 
@@ -824,7 +820,7 @@ namespace Avogadro
     }
   }
 
-  void MainWindow::selectMolecule(int index)
+  void MainWindow::selectMolecule(int index, int)
   {
     if (!d->moleculeFile)
       return; // nothing to do
@@ -847,19 +843,44 @@ namespace Avogadro
     if (d->moleculeFile->numMolecules() > 1)
       ui.actionAllMolecules->setEnabled(true); // only one molecule -- the blank slate
 
-    if (!d->allMoleculesList) {
-      d->allMoleculesList = new QListWidget();
-      d->allMoleculesList->setWindowTitle(tr("Titles of All Molecules"));
-      d->allMoleculesList->setAlternatingRowColors(true);
-      d->allMoleculesList->setUniformItemSizes(true);
-      d->allMoleculesList->setSelectionMode(QAbstractItemView::SingleSelection);
+    if (!d->allMoleculesTable) {
+      d->allMoleculesDialog = new QDialog(this);
+      d->allMoleculesDialog->setWindowTitle(tr("Select Molecule to View"));
+
+      QVBoxLayout *layout = new QVBoxLayout( d->allMoleculesDialog );
+      layout->setMargin( 0 );
+      layout->setSpacing( 6 );
+
+      d->allMoleculesTable = new QTableWidget( d->allMoleculesDialog );
+      d->allMoleculesTable->setAlternatingRowColors(true);
+      d->allMoleculesTable->setSelectionMode(QAbstractItemView::SingleSelection);
+      layout->addWidget(d->allMoleculesTable);
+
+      // make sure the table stretches across the dialog as it resizes
+      QHeaderView *horizontal = d->allMoleculesTable->horizontalHeader();
+      horizontal->setResizeMode(QHeaderView::Stretch);
+      QHeaderView *vertical = d->allMoleculesTable->verticalHeader();
+      vertical->setResizeMode(QHeaderView::Stretch);
+
     }
 
-    disconnect(d->allMoleculesList, 0, this, 0);
-    d->allMoleculesList->clear();
-    d->allMoleculesList->addItems(d->moleculeFile->titles());
-    d->allMoleculesList->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
-    connect(d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
+    disconnect(d->allMoleculesTable, 0, this, 0);
+    d->allMoleculesTable->clear();
+    d->allMoleculesTable->setRowCount(d->moleculeFile->numMolecules());
+    d->allMoleculesTable->setColumnCount(1);
+
+    QStringList columnLabels, rowLabels;
+    columnLabels << tr("Molecule Title");
+    d->allMoleculesTable->setHorizontalHeaderLabels(columnLabels);
+    int molecule = 0;
+    foreach(const QString &title, d->moleculeFile->titles()) {
+      QTableWidgetItem* newItem = new QTableWidgetItem(title);
+      d->allMoleculesTable->setItem(molecule, 0, newItem);
+      //      qDebug() << " molecule: " << molecule << title;
+      rowLabels << QString("%L1").arg(++molecule);
+    }
+    d->allMoleculesTable->setCurrentCell(0, 0, QItemSelectionModel::ClearAndSelect);
+    connect(d->allMoleculesTable, SIGNAL(currentCellChanged(int, int, int, int)), this, SLOT(selectMolecule(int, int)));
   }
 
   void MainWindow::firstMolReady()
