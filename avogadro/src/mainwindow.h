@@ -124,6 +124,7 @@ namespace Avogadro {
       void duplicateView();
       void detachView();
       void closeView();
+      void closeView(int index);
       void centerView();
       void setView(int index);
       void fullScreen();
@@ -184,9 +185,18 @@ namespace Avogadro {
        */
       void setMolecule(Molecule *molecule, int options);
 
+      /**
+       * Slot to check we have the correct active GLWidget.
+       */
+      void glWidgetActivated(GLWidget *glWidget);
+
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
-      void enableEngineSettingsButton(bool);
+      /**
+       * Currently used by the detached views to detect when the parent window
+       * is closed.
+       */
+      void windowClosed();
 
     private:
       friend class MainWindowPrivate;

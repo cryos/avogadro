@@ -39,8 +39,8 @@
 #include "primitiveitemmodel.h"
 #include "enginecolorswidget.h"
 
-#include <avogadro/openbabelwrapper.h>
-#include <avogadro/moleculefile.h>
+#include "glgraphicsview.h"
+#include "detachedview.h"
 
 #ifdef ENABLE_UPDATE_CHECKER
   #include "updatecheck.h"
@@ -64,7 +64,8 @@
 #include <avogadro/extension.h>
 #include <avogadro/engine.h>
 
-#include "glgraphicsview.h"
+#include <avogadro/openbabelwrapper.h>
+#include <avogadro/moleculefile.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -260,7 +261,12 @@ namespace Avogadro
     d->centralTab = new QTabWidget(ui.centralWidget);
     d->centralTab->setObjectName("centralTab");
     d->centralTab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    d->centralTab->setDocumentMode(true);
+    d->centralTab->setTabsClosable(true);
     d->centralLayout->addWidget(d->centralTab);
+    // Set up the signal/slot for closing tabs from the tab widget
+    connect(d->centralTab, SIGNAL(tabCloseRequested(int)),
+            this, SLOT(closeView(int)));
 
     setAttribute( Qt::WA_DeleteOnClose );
     setAcceptDrops(true);
@@ -385,7 +391,7 @@ namespace Avogadro
 
     // Disable the detach view option for now
     // FIXME
-    ui.actionDetachView->setVisible(false);
+//    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)
@@ -1072,6 +1078,7 @@ namespace Avogadro
 #endif
 
     if ( maybeSave() ) {
+      emit(windowClosed());
       writeSettings();
       event->accept();
     } else {
@@ -1278,7 +1285,6 @@ namespace Avogadro
 
     return true;
   }
-
 
   void MainWindow::undoStackClean( bool clean )
   {
@@ -1581,11 +1587,33 @@ namespace Avogadro
     QDesktopServices::openUrl(QUrl("http://sourceforge.net/tracker/?group_id=165310&atid=835077"));
   }
 
-  void MainWindow::setView( int index )
+  void MainWindow::setView(int index)
   {
-    d->glWidget = d->glWidgets.at( index );
+    QWidget *widget = d->centralTab->widget(index);
+    foreach(QObject *object, widget->children()) {
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if (glWidget) {
+        d->glWidget = glWidget;
+        int idx =d->glWidgets.indexOf(glWidget);
+        d->enginesStacked->setCurrentIndex(idx);
+        ui.actionDisplayAxes->setChecked(renderAxes());
+        ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
+        ui.actionDebugInformation->setChecked(renderDebug());
+        ui.actionQuickRender->setChecked(quickRender());
+        break;
+      }
+    }
+  }
 
-    d->enginesStacked->setCurrentIndex( index );
+  void MainWindow::glWidgetActivated(GLWidget *glWidget)
+  {
+    if (d->glWidget == glWidget)
+      return;
+
+    d->glWidget = glWidget;
+
+    int index = d->glWidgets.indexOf(glWidget);
+    d->enginesStacked->setCurrentIndex(index);
     ui.actionDisplayAxes->setChecked(renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(renderDebug());
@@ -1838,6 +1866,8 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab(widget, tabName);
+    ui.actionCloseView->setEnabled(true);
+    ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1868,7 +1898,8 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab( widget, tabName );
-    ui.actionCloseView->setEnabled( true );
+    ui.actionCloseView->setEnabled(true);
+    ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1879,12 +1910,6 @@ namespace Avogadro
 
   void MainWindow::detachView()
   {
-    // Create a new QDialog and layout
-//    QDialog *dialog = new QDialog(this);
-//    QVBoxLayout *layout = new QVBoxLayout(dialog);
-//    layout->setMargin( 0 );
-//    layout->setSpacing( 6 );
-
     // Get the GLWidget of the current view, close in in the tabs
     QWidget *widget = d->centralTab->currentWidget();
     foreach(QObject *object, widget->children()) {
@@ -1893,49 +1918,51 @@ namespace Avogadro
         int index = d->centralTab->currentIndex();
         d->centralTab->removeTab(index);
 
-        for (int count=d->centralTab->count(); index < count; index++) {
-          d->centralTab->setTabText(index, tr( "View %1" )
-                                           .arg( index + 1) );
+        for (int count=d->centralTab->count(); index < count; ++index) {
+          d->centralTab->setTabText(index, tr("View %1", "View number (from 1 on)")
+                                           .arg(index +1));
         }
-        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
-        // Set the GLWidget as the main widget in the dialog
-        //layout->addWidget(glWidget);
-        GLGraphicsView *view = new GLGraphicsView(glWidget, 0);
+        // Ensure that actions are enabled/disabled appropriately.
+        ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
+        ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        // Set up the detached viwe
+        DetachedView *view = new DetachedView(glWidget);
         view->setWindowTitle(tr("Avogadro: Detached View"));
-        view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-        view->setScene(new QGraphicsScene);
-        view->scene()->addText("Avogadro GLGraphicsView");
+        view->resize(glWidget->size());
         view->show();
 
+        connect(this, SIGNAL(windowClosed()), view, SLOT(mainWindowClosed()));
       }
     }
   }
 
   void MainWindow::closeView()
   {
-    QWidget *widget = d->centralTab->currentWidget();
+    closeView(d->centralTab->currentIndex());
+  }
+
+  void MainWindow::closeView(int index)
+  {
+    QWidget *widget = d->centralTab->widget(index);
     foreach( QObject *object, widget->children() ) {
-      GLWidget *glWidget = qobject_cast<GLWidget *>( object );
-      if ( glWidget ) {
-        int index = d->centralTab->currentIndex();
-        d->centralTab->removeTab( index );
+      GLWidget *glWidget = qobject_cast<GLWidget *>(object);
+      if (glWidget) {
+        d->centralTab->removeTab(index);
 
         // delete the engines list for this GLWidget
         QWidget *widget = d->enginesStacked->widget( index );
         d->enginesStacked->removeWidget( widget );
         delete widget;
 
-        for ( int count=d->centralTab->count(); index < count; ++index ) {
-          d->centralTab->setTabText(index, tr("View %1").arg( index + 1) );
-        }
+        for (int count=d->centralTab->count(); index < count; ++index)
+          d->centralTab->setTabText(index, tr("View %1").arg(index + 1));
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
-        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
+        ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
+        ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
       }
     }
-
-    setView( d->centralTab->currentIndex() );
-
+    setView( d->centralTab->currentIndex());
     writeSettings();
   }
 
@@ -2476,6 +2503,7 @@ namespace Avogadro
     ui.actionQuickRender->setChecked(quickRender());
 
     ui.actionCloseView->setEnabled(count > 1);
+    ui.actionDetachView->setEnabled(count > 1);
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
@@ -2713,18 +2741,18 @@ namespace Avogadro
   GLWidget *MainWindow::newGLWidget()
   {
     GLWidget *gl = 0;
-    if(!d->glWidget)
-    {
+    if(!d->glWidget) {
       gl = new GLWidget(this);
       d->glWidget = gl;
     }
     else
-    {
       gl = new GLWidget( d->glWidget->format(), this, d->glWidget );
-    }
 
+    // Connect up a few signals and slots we need
     connect( this, SIGNAL( moleculeChanged( Molecule * ) ),
              gl, SLOT( setMolecule( Molecule * ) ) );
+    connect(gl, SIGNAL(activated(GLWidget *)),
+            this, SLOT(glWidgetActivated(GLWidget *)));
 
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
