@@ -40,9 +40,6 @@ namespace Avogadro {
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(m_glWidget);
     layout->setMargin(0);
-
-    // Attach to the GLWidget destroyed signal so that we can destroy ourselves
-    connect(m_glWidget, SIGNAL(destroyed()), this, SLOT(glWidgetDestroyed()));
   }
 
   DetachedView::~DetachedView()
