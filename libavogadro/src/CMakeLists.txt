@@ -41,7 +41,6 @@ set(libavogadro_HDRS
   extension.h
   filetreeitem.h
   fragment.h
-  glgraphicsview.h
   glhit.h
   glwidget.h
   global.h
