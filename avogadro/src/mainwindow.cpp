@@ -2502,6 +2502,7 @@ namespace Avogadro
     ui.actionQuickRender->setChecked(quickRender());
 
     ui.actionCloseView->setEnabled(count > 1);
+    ui.actionDetachView->setEnabled(count > 1);
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
