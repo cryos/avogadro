@@ -787,7 +787,7 @@ namespace Avogadro
     if (!d->progressDialog) {
       d->progressDialog = new QProgressDialog(this);
       d->progressDialog->setRange(0,0); // indeterminate progress
-      d->progressDialog->setLabelText(tr("Reading multi-molecule file..."));
+      d->progressDialog->setLabelText(tr("Reading multi-molecule file. This may take a while..."));
       d->progressDialog->setWindowModality(Qt::WindowModal);
       d->progressDialog->setCancelButtonText(QString()); // no cancel button
     }
@@ -853,13 +853,13 @@ namespace Avogadro
       d->allMoleculesList->setAlternatingRowColors(true);
       d->allMoleculesList->setUniformItemSizes(true);
       d->allMoleculesList->setSelectionMode(QAbstractItemView::SingleSelection);
-      d->allMoleculesList->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
-
-      connect(d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
     }
 
+    disconnect(d->allMoleculesList, 0, this, 0);
     d->allMoleculesList->clear();
     d->allMoleculesList->addItems(d->moleculeFile->titles());
+    d->allMoleculesList->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
+    connect(d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
   }
 
   void MainWindow::firstMolReady()
