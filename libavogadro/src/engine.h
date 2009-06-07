@@ -393,6 +393,16 @@ namespace Avogadro {
       virtual QWidget *settingsWidget();
 
       /**
+       * This method can provide a much faster way of determining if an Engine
+       * has a configuration dialog, it should be reimplemented in classes to
+       * avoid the settings wigdet being constructed in order to check whether
+       * an engine has settings.
+       * @return True if the Engine has a settings widget.
+       * @note Calls settingsWidget() by default and tests for null.
+       */
+      virtual bool hasSettings();
+
+      /**
        * Write the engine settings so that they can be saved between sessions.
        */
       virtual void writeSettings(QSettings &settings) const;

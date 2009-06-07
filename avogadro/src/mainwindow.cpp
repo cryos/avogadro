@@ -34,7 +34,7 @@
 #include "savedialog.h"
 
 #include "engineitemmodel.h"
-#include "enginelistview.h"
+#include "engineviewwidget.h"
 #include "engineprimitiveswidget.h"
 #include "primitiveitemmodel.h"
 #include "enginecolorswidget.h"
@@ -552,9 +552,9 @@ namespace Avogadro
       foreach(QObject *object, widget->children()) {
         if (!object->isWidgetType())
           continue;
-        EngineListView *engineListView = qobject_cast<EngineListView*>(object);
-        if (engineListView)
-          engineListView->clear();
+        EngineViewWidget *engineView = qobject_cast<EngineViewWidget *>(object);
+        if (engineView)
+          engineView->clear();
       }
     }
 
@@ -2736,23 +2736,13 @@ namespace Avogadro
     QWidget *engineListWidget = new QWidget(ui.enginesWidget);
     QVBoxLayout *vlayout = new QVBoxLayout(engineListWidget);
 
-    EngineListView *engineListView = new EngineListView( gl, engineListWidget );
-    vlayout->addWidget(engineListView);
-
-    // buttons for engines
-    // First the settings button
-    QHBoxLayout *hlayout = new QHBoxLayout();
-//    hlayout->addStretch(1);
-    QPushButton *engineSettingsButton = new QPushButton(tr("Settings..."), engineListWidget);
-    engineSettingsButton->setEnabled(false);
-    hlayout->addWidget(engineSettingsButton);
-    connect(engineSettingsButton, SIGNAL(clicked()), this, SLOT(engineSettingsClicked()));
-    connect(this, SIGNAL(enableEngineSettingsButton(bool)), engineSettingsButton, SLOT(setEnabled(bool)));
-//    hlayout->addStretch(1);
-    vlayout->addLayout(hlayout);
+    EngineViewWidget *engineView = new EngineViewWidget(gl, engineListWidget);
+    vlayout->addWidget(engineView);
+    connect(engineView, SIGNAL(settings(Engine *)), this,
+            SLOT(engineSettingsClicked(Engine *)));
 
     // Then a row of add, duplicate, remove
-    hlayout = new QHBoxLayout();
+    QHBoxLayout *hlayout = new QHBoxLayout();
     // add
     QPushButton *addEngineButton = new QPushButton(tr("Add"), engineListWidget);
     hlayout->addWidget(addEngineButton);
@@ -2781,8 +2771,8 @@ namespace Avogadro
 //      new EnginePrimitivesWidget(gl, ui.enginePrimitivesWidget);
 //    d->enginePrimitivesStacked->addWidget(primitivesWidget);
 
-    connect( engineListView, SIGNAL( clicked( Engine * ) ),
-        this, SLOT( engineClicked( Engine * ) ) );
+    connect(engineView, SIGNAL(clicked(Engine *)),
+        this, SLOT(engineClicked(Engine *)));
 
 //    connect( engineListView, SIGNAL( clicked( Engine * ) ),
 //        primitivesWidget, SLOT( setEngine( Engine * ) ) );
@@ -2805,11 +2795,11 @@ namespace Avogadro
     return gl;
   }
 
-  void MainWindow::engineSettingsClicked()
+  void MainWindow::engineSettingsClicked(Engine *engine)
   {
-    if (!d->currentSelectedEngine)
+    if (!engine)
       return;
-    Engine *selectedEngine = d->currentSelectedEngine;
+    Engine *selectedEngine = engine;
 
     QWidget *settingsWindow = d->engineSettingsWindows.value(selectedEngine);
 
@@ -2872,62 +2862,34 @@ namespace Avogadro
 
   void MainWindow::duplicateEngineClicked()
   {
-    // get the current widget for the engines
-    QWidget *widget = d->enginesStacked->currentWidget();
+    Engine *engine = d->currentSelectedEngine;
 
-    foreach(QObject *object, widget->children())
-    {
-      // Since our EngineListViews are contained in a parent QWidget
-      // we have to search our children for the actual EngineListView.
-      EngineListView *engineListView;
-      if( object->isWidgetType() &&
-          (engineListView = qobject_cast<EngineListView *>(object)) )
-      {
-        Engine *engine = engineListView->selectedEngine();
-
-        if(engine) {
-          Engine *newEngine = engine->clone();
-          PrimitiveList list = d->glWidget->selectedPrimitives();
-          if(list.size()) {
-            newEngine->setPrimitives(list);
-          }
-          newEngine->setAlias(newEngine->alias() + tr(" copy"));
-          d->glWidget->addEngine(newEngine);
-        }
-        break;
+    if(engine) {
+      Engine *newEngine = engine->clone();
+      PrimitiveList list = d->glWidget->selectedPrimitives();
+      if(list.size()) {
+        newEngine->setPrimitives(list);
       }
+      newEngine->setAlias(newEngine->alias() + tr(" copy"));
+      d->glWidget->addEngine(newEngine);
     }
   }
 
   void MainWindow::removeEngineClicked()
   {
-    QWidget *widget = d->enginesStacked->currentWidget();
-    foreach(QObject *object, widget->children()) {
-      EngineListView *engineListView;
-      if( object->isWidgetType() &&
-          (engineListView = qobject_cast<EngineListView *>(object)) )
-      {
-        Engine *engine = engineListView->selectedEngine();
+    Engine *engine = d->currentSelectedEngine;
 
-        if(engine) {
-          d->glWidget->removeEngine(engine);
-          d->engineSettingsWindows.remove(engine);
-          emit enableEngineSettingsButton(false);
-        }
-        break;
-      }
+    if(engine) {
+      d->glWidget->removeEngine(engine);
+      d->engineSettingsWindows.remove(engine);
     }
-
   }
 
   void MainWindow::engineClicked(Engine *engine)
   {
     if (!engine)
       return;
-
     d->currentSelectedEngine = engine;
-    // If we have a non-null widget, enable the settings button
-    emit enableEngineSettingsButton(engine->settingsWidget() != NULL);
   }
 
   void MainWindow::toggleToolSettingsDock()

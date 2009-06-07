@@ -255,7 +255,7 @@ namespace Avogadro {
       // select a molecule out of a multi-molecule file
       void selectMolecule(int index, int column);
 
-      void engineSettingsClicked();
+      void engineSettingsClicked(Engine *engine);
       void addEngineClicked();
       void duplicateEngineClicked();
       void removeEngineClicked();

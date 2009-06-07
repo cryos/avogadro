@@ -2,6 +2,7 @@
   EngineItemModel - List Model for Engines
 
   Copyright (C) 2007 Donald Ephraim Curtis
+  Copyright (C) 2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -29,9 +30,7 @@
 
 namespace Avogadro {
   class GLWidget;
-
   class Engine;
-  class EngineItemModelPrivate;
   class EngineItemModel : public QAbstractItemModel
   {
     Q_OBJECT
@@ -48,15 +47,17 @@ namespace Avogadro {
       int rowCount( const QModelIndex & parent = QModelIndex() ) const;
       int columnCount( const QModelIndex & parent = QModelIndex() ) const;
       QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const;
-      bool setData ( const QModelIndex & index, const QVariant & value, int role = Qt::EditRole );
+      bool setData ( const QModelIndex & index, const QVariant & value,
+                     int role = Qt::EditRole );
       Qt::ItemFlags flags ( const QModelIndex & index ) const;
 
-      QModelIndex index ( int row, int column, const QModelIndex & parent = QModelIndex() ) const;
+      QModelIndex index ( int row, int column,
+                          const QModelIndex & parent = QModelIndex() ) const;
 
       void clear();
 
     private:
-      EngineItemModelPrivate * const d;
+      GLWidget *m_glwidget;
 
     private Q_SLOTS:
       void addEngine(Engine *engine);
