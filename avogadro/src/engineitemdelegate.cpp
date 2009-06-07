@@ -27,6 +27,7 @@
 #include <avogadro/engine.h>
 
 #include <QtGui/QPainter>
+#include <QtGui/QIcon>
 
 namespace Avogadro
 {
@@ -41,15 +42,18 @@ namespace Avogadro
                                  const QModelIndex &index) const
   {
 
-    QStyledItemDelegate::paint(painter, option, index);
+    if (index.column() == 0)
+      QStyledItemDelegate::paint(painter, option, index);
 
     if (index.isValid() && index.column() == 1) {
-      if (!index.internalPointer())
-        return;
       bool hasSettings = index.data(Qt::DisplayRole).toBool();
-      QBrush brush = hasSettings ? option.palette.dark()
-                   : option.palette.background();
-      painter->fillRect(option.rect, brush);
+      QIcon icon(":/icons/tool.png");
+      QRect iconRect(option.rect.right() - option.rect.height(),
+                     option.rect.top(),
+                     option.rect.height(),
+                     option.rect.height());
+      icon.paint(painter, iconRect, Qt::AlignRight | Qt::AlignVCenter,
+                 hasSettings ? QIcon::Normal : QIcon::Disabled);
     }
 
   }
