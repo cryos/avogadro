@@ -45,6 +45,8 @@ namespace Avogadro
 
     if (index.isValid() && index.column() == 1) {
       bool hasSettings = index.data(Qt::ToolTipRole).toBool();
+      if (!hasSettings)
+        return;
       QIcon icon(":/icons/tool.png");
       QRect iconRect(option.rect.right() - option.rect.height(),
                      option.rect.top(),
