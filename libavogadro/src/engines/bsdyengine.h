@@ -65,6 +65,9 @@ namespace Avogadro {
        * @return a pointer to the BSDYEngine settings widget
        */
       QWidget *settingsWidget();
+
+      bool hasSettings() { return true; }
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */

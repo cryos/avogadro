@@ -70,6 +70,7 @@ namespace Avogadro {
       Engine *clone() const;
 
       QWidget* settingsWidget();
+      bool hasSettings() { return true; }
 
       void writeSettings(QSettings &settings) const;
       void readSettings(QSettings &settings);

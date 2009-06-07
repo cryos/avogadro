@@ -64,6 +64,9 @@ namespace Avogadro {
       Engine::Layers layers() const;
 
       QWidget* settingsWidget();
+
+      bool hasSettings() { return true; }
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */

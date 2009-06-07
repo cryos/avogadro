@@ -265,7 +265,6 @@ namespace Avogadro {
     if (!m_settingsWidget || !m_molecule)
       return;
     // Reset the orbital combo
-    qDebug() << "Update orbital combo called...";
     int tmp1 = m_settingsWidget->orbital1Combo->currentIndex();
     if (tmp1 < 0) tmp1 = 0;
     m_settingsWidget->orbital1Combo->clear();
