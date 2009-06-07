@@ -64,7 +64,7 @@
 #include <avogadro/extension.h>
 #include <avogadro/engine.h>
 
-#include <avogadro/glgraphicsview.h>
+#include "glgraphicsview.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
