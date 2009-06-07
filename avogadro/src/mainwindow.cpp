@@ -39,8 +39,8 @@
 #include "primitiveitemmodel.h"
 #include "enginecolorswidget.h"
 
-#include <avogadro/openbabelwrapper.h>
-#include <avogadro/moleculefile.h>
+#include "glgraphicsview.h"
+#include "detachedview.h"
 
 #ifdef ENABLE_UPDATE_CHECKER
   #include "updatecheck.h"
@@ -64,7 +64,8 @@
 #include <avogadro/extension.h>
 #include <avogadro/engine.h>
 
-#include <avogadro/glgraphicsview.h>
+#include <avogadro/openbabelwrapper.h>
+#include <avogadro/moleculefile.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -385,7 +386,7 @@ namespace Avogadro
 
     // Disable the detach view option for now
     // FIXME
-    ui.actionDetachView->setVisible(false);
+//    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)
@@ -1072,6 +1073,7 @@ namespace Avogadro
 #endif
 
     if ( maybeSave() ) {
+      emit(windowClosed());
       writeSettings();
       event->accept();
     } else {
@@ -1838,6 +1840,8 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab(widget, tabName);
+    ui.actionCloseView->setEnabled(true);
+    ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1868,7 +1872,8 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab( widget, tabName );
-    ui.actionCloseView->setEnabled( true );
+    ui.actionCloseView->setEnabled(true);
+    ui.actionDetachView->setEnabled(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1879,12 +1884,6 @@ namespace Avogadro
 
   void MainWindow::detachView()
   {
-    // Create a new QDialog and layout
-//    QDialog *dialog = new QDialog(this);
-//    QVBoxLayout *layout = new QVBoxLayout(dialog);
-//    layout->setMargin( 0 );
-//    layout->setSpacing( 6 );
-
     // Get the GLWidget of the current view, close in in the tabs
     QWidget *widget = d->centralTab->currentWidget();
     foreach(QObject *object, widget->children()) {
@@ -1893,20 +1892,20 @@ namespace Avogadro
         int index = d->centralTab->currentIndex();
         d->centralTab->removeTab(index);
 
-        for (int count=d->centralTab->count(); index < count; index++) {
-          d->centralTab->setTabText(index, tr( "View %1" )
-                                           .arg( index + 1) );
+        for (int count=d->centralTab->count(); index < count; ++index) {
+          d->centralTab->setTabText(index, tr("View %1", "View number (from 1 on)")
+                                           .arg(index +1));
         }
-        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
-        // Set the GLWidget as the main widget in the dialog
-        //layout->addWidget(glWidget);
-        GLGraphicsView *view = new GLGraphicsView(glWidget, 0);
+        // Ensure that actions are enabled/disabled appropriately.
+        ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
+        ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        // Set up the detached viwe
+        DetachedView *view = new DetachedView(glWidget);
         view->setWindowTitle(tr("Avogadro: Detached View"));
-        view->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-        view->setScene(new QGraphicsScene);
-        view->scene()->addText("Avogadro GLGraphicsView");
+        view->resize(glWidget->size());
         view->show();
 
+        connect(this, SIGNAL(windowClosed()), view, SLOT(mainWindowClosed()));
       }
     }
   }
@@ -1930,7 +1929,8 @@ namespace Avogadro
         }
         d->glWidgets.removeAll( glWidget );
         delete glWidget;
-        ui.actionCloseView->setEnabled( d->centralTab->count() != 1 );
+        ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
+        ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
       }
     }
 

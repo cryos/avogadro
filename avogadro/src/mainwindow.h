@@ -186,7 +186,11 @@ namespace Avogadro {
 
     Q_SIGNALS:
       void moleculeChanged(Molecule *);
-      void enableEngineSettingsButton(bool);
+      /**
+       * Currently used by the detached views to detect when the parent window
+       * is closed.
+       */
+      void windowClosed();
 
     private:
       friend class MainWindowPrivate;
