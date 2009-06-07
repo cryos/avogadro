@@ -781,9 +781,17 @@ namespace Avogadro
       return false;
 
     // TODO: split into first molecule vs. whole file
-    // TODO: pop up progress dialog
     connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(firstMolReady()));
     connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(finishLoadFile()));
+
+    if (!d->progressDialog) {
+      d->progressDialog = new QProgressDialog(this);
+      d->progressDialog->setRange(0,0); // indeterminate progress
+      d->progressDialog->setLabelText(tr("Reading multi-molecule file..."));
+      d->progressDialog->setWindowModality(Qt::WindowModal);
+      d->progressDialog->setCancelButtonText(QString()); // no cancel button
+    }
+    d->progressDialog->show();
 
     return true;
   }
@@ -844,6 +852,9 @@ namespace Avogadro
       d->allMoleculesList->setWindowTitle(tr("Titles of All Molecules"));
       d->allMoleculesList->setAlternatingRowColors(true);
       d->allMoleculesList->setUniformItemSizes(true);
+      d->allMoleculesList->setSelectionMode(QAbstractItemView::SingleSelection);
+      d->allMoleculesList->setCurrentRow(0, QItemSelectionModel::ClearAndSelect);
+
       connect(d->allMoleculesList, SIGNAL(currentRowChanged(int)), this, SLOT(selectMolecule(int)));
     }
 
@@ -855,6 +866,9 @@ namespace Avogadro
   {
     if (d->moleculeFile == NULL)
       return;
+    if (d->progressDialog) {
+      d->progressDialog->cancel();
+    }
 
     ui.actionAllMolecules->setEnabled(false); // only one molecule right now
 
@@ -863,8 +877,6 @@ namespace Avogadro
     if (errors.isEmpty() && obMolecule != NULL) { // successful read
 
       qDebug() << " read " << d->moleculeFile->numMolecules() << " molecules.";
-      foreach(const QString &title, d->moleculeFile->titles())
-        qDebug() << title;
 
       // e.g. SMILES or MDL molfile, etc.
       check3DCoords(obMolecule);
