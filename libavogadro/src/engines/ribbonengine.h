@@ -63,6 +63,8 @@ namespace Avogadro {
 
       QWidget* settingsWidget();
 
+      bool hasSettings() { return true; }
+
       void setPrimitives(const PrimitiveList &primitives);
 
       /**

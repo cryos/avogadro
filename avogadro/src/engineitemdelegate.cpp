@@ -41,12 +41,10 @@ namespace Avogadro
                                  const QStyleOptionViewItem &option,
                                  const QModelIndex &index) const
   {
-
-    if (index.column() == 0)
-      QStyledItemDelegate::paint(painter, option, index);
+    QStyledItemDelegate::paint(painter, option, index);
 
     if (index.isValid() && index.column() == 1) {
-      bool hasSettings = index.data(Qt::DisplayRole).toBool();
+      bool hasSettings = index.data(Qt::ToolTipRole).toBool();
       QIcon icon(":/icons/tool.png");
       QRect iconRect(option.rect.right() - option.rect.height(),
                      option.rect.top(),

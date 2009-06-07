@@ -68,6 +68,8 @@ namespace Avogadro {
       
       QWidget* settingsWidget();
 
+      bool hasSettings() { return true; }
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */
