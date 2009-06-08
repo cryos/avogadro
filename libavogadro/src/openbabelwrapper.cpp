@@ -149,11 +149,11 @@ namespace Avogadro {
     if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii())) {
       // Output format not supported
       if (error)
-        error->append(QObject::tr("File type '%1' is not a supported for writing.").arg(fileType));
+        error->append(QObject::tr("File type '%1' is not supported for writing.").arg(fileType));
       return false;
     } else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
-      if (!conv.SetOutFormat(outFormat)) {
+      if (outFormat && !conv.SetOutFormat(outFormat)) {
         // Output format not supported
         if (error)
           error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
