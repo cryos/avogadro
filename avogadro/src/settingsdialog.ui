@@ -247,7 +247,7 @@
       </property>
       <property name="icon">
        <iconset resource="avogadro.qrc">
-        <normaloff>:/icons/edit_add.png</normaloff>:/icons/edit_add.png</iconset>
+        <normaloff>:/icons/preferences-plugin.png</normaloff>:/icons/preferences-plugin.png</iconset>
       </property>
      </item>
      <item>
@@ -256,7 +256,7 @@
       </property>
       <property name="icon">
        <iconset resource="avogadro.qrc">
-        <normaloff>:/icons/avogadro.png</normaloff>:/icons/avogadro.png</iconset>
+        <normaloff>:/icons/view-list-tree.png</normaloff>:/icons/view-list-tree.png</iconset>
       </property>
      </item>
     </widget>

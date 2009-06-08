@@ -313,10 +313,10 @@ namespace Avogadro
     ui.menuOpenRecent->addAction( ui.actionClearRecent );
 
     QAction *undoAction = d->undoStack->createUndoAction( this );
-    undoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/undo.png" ) ) );
+    undoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-undo.png" ) ) );
     undoAction->setShortcuts( QKeySequence::Undo );
     QAction *redoAction = d->undoStack->createRedoAction( this );
-    redoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/redo.png" ) ) );
+    redoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-redo.png" ) ) );
     redoAction->setShortcuts( QKeySequence::Redo );
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
@@ -2090,6 +2090,7 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
+      ui.actionFullScreen->setIcon( QIcon( QLatin1String( ":/icons/view-restore.png" ) ) );
       d->fileToolbar = ui.fileToolBar->isVisible();
       d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();

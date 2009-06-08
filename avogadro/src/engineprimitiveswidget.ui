@@ -45,7 +45,7 @@
         </property>
         <property name="icon" >
          <iconset resource="avogadro.qrc" >
-          <normaloff>:/icons/edit_add.png</normaloff>:/icons/edit_add.png</iconset>
+          <normaloff>:/icons/edit-add.png</normaloff>:/icons/edit-add.png</iconset>
         </property>
        </widget>
       </item>
@@ -59,7 +59,7 @@
         </property>
         <property name="icon" >
          <iconset resource="avogadro.qrc" >
-          <normaloff>:/icons/edit_remove.png</normaloff>:/icons/edit_remove.png</iconset>
+          <normaloff>:/icons/edit-remove.png</normaloff>:/icons/edit-remove.png</iconset>
         </property>
        </widget>
       </item>
@@ -73,7 +73,7 @@
         </property>
         <property name="icon" >
          <iconset resource="avogadro.qrc" >
-          <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
+          <normaloff>:/icons/edit-undo.png</normaloff>:/icons/edit-undo.png</iconset>
         </property>
        </widget>
       </item>

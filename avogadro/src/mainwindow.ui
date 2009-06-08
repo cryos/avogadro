@@ -249,7 +249,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
+     <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -261,7 +261,7 @@
   <action name="actionOpenTool">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
+     <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -270,7 +270,7 @@
   <action name="actionQuit">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
+     <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Quit</string>
@@ -282,7 +282,7 @@
   <action name="actionQuitTool">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
+     <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Quit</string>
@@ -301,7 +301,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/filenew.png</normaloff>:/icons/filenew.png</iconset>
+     <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
     <string>&amp;New</string>
@@ -313,7 +313,7 @@
   <action name="actionNewTool">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/filenew.png</normaloff>:/icons/filenew.png</iconset>
+     <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
     <string>&amp;New</string>
@@ -322,7 +322,7 @@
   <action name="actionClose">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/fileclose.png</normaloff>:/icons/fileclose.png</iconset>
+     <normaloff>:/icons/document-close.png</normaloff>:/icons/document-close.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Close</string>
@@ -334,7 +334,7 @@
   <action name="actionCloseTool">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/fileclose.png</normaloff>:/icons/fileclose.png</iconset>
+     <normaloff>:/icons/document-close.png</normaloff>:/icons/document-close.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Close</string>
@@ -343,7 +343,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png</iconset>
+     <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -355,7 +355,7 @@
   <action name="actionSaveTool">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png</iconset>
+     <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -364,7 +364,7 @@
   <action name="actionSaveAs">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/filesaveas.png</normaloff>:/icons/filesaveas.png</iconset>
+     <normaloff>:/icons/document-save-as.png</normaloff>:/icons/document-save-as.png</iconset>
    </property>
    <property name="text">
     <string>Save &amp;As...</string>
@@ -376,7 +376,7 @@
   <action name="actionRevert">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/revert.png</normaloff>:/icons/revert.png</iconset>
+     <normaloff>:/icons/document-revert.png</normaloff>:/icons/document-revert.png</iconset>
    </property>
    <property name="text">
     <string>Revert To Saved</string>
@@ -385,7 +385,7 @@
   <action name="actionExportGraphics">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/fileexport.png</normaloff>:/icons/fileexport.png</iconset>
+     <normaloff>:/icons/document-export.png</normaloff>:/icons/document-export.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Graphics...</string>
@@ -394,7 +394,7 @@
   <action name="actionFullScreen">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/window_fullscreen.png</normaloff>:/icons/window_fullscreen.png</iconset>
+     <normaloff>:/icons/view-fullscreen.png</normaloff>:/icons/view-fullscreen.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Full Screen Mode</string>
@@ -406,7 +406,7 @@
   <action name="actionSetBackgroundColor">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/colorize.png</normaloff>:/icons/colorize.png</iconset>
+     <normaloff>:/icons/fill-color.png</normaloff>:/icons/fill-color.png</iconset>
    </property>
    <property name="text">
     <string>Set &amp;Background Color...</string>
@@ -420,7 +420,7 @@
   <action name="actionUndo">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
+     <normaloff>:/icons/edit-undo.png</normaloff>:/icons/edit-undo.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Undo</string>
@@ -432,7 +432,7 @@
   <action name="actionRedo">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/redo.png</normaloff>:/icons/redo.png</iconset>
+     <normaloff>:/icons/edit-redo.png</normaloff>:/icons/edit-redo.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Redo</string>
@@ -444,7 +444,7 @@
   <action name="actionNewView">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/tab_new.png</normaloff>:/icons/tab_new.png</iconset>
+     <normaloff>:/icons/tab-new.png</normaloff>:/icons/tab-new.png</iconset>
    </property>
    <property name="text">
     <string>New View</string>
@@ -456,7 +456,7 @@
    </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/tab_remove.png</normaloff>:/icons/tab_remove.png</iconset>
+     <normaloff>:/icons/tab-close.png</normaloff>:/icons/tab-close.png</iconset>
    </property>
    <property name="text">
     <string>Close View</string>
@@ -474,7 +474,7 @@
   <action name="actionPaste">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/paste.png</normaloff>:/icons/paste.png</iconset>
+     <normaloff>:/icons/edit-paste.png</normaloff>:/icons/edit-paste.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Paste</string>
@@ -486,7 +486,7 @@
   <action name="actionCopy">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/copy.png</normaloff>:/icons/copy.png</iconset>
+     <normaloff>:/icons/edit-copy.png</normaloff>:/icons/edit-copy.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -498,7 +498,7 @@
   <action name="actionCut">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/cut.png</normaloff>:/icons/cut.png</iconset>
+     <normaloff>:/icons/edit-cut.png</normaloff>:/icons/edit-cut.png</iconset>
    </property>
    <property name="text">
     <string>Cut</string>
@@ -510,6 +510,10 @@
   <action name="actionClear">
    <property name="text">
     <string>Clear</string>
+   </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/edit-clear.png</normaloff>:/icons/edit-clear.png</iconset>
    </property>
    <property name="shortcut">
     <string>Backspace</string>
@@ -534,7 +538,7 @@
   <action name="configureAvogadroAction">
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/tool.png</normaloff>:/icons/tool.png</iconset>
+     <normaloff>:/icons/configure.png</normaloff>:/icons/configure.png</iconset>
    </property>
    <property name="text">
     <string>Configure Avogadro...</string>
@@ -551,6 +555,10 @@
   <action name="actionDuplicateView">
    <property name="text">
     <string>Duplicate View</string>
+   </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/tab-duplicate.png</normaloff>:/icons/tab-duplicate.png</iconset>
    </property>
   </action>
   <action name="actionDisplayAxes">
@@ -601,20 +609,36 @@
    <property name="text">
     <string>Plugin Manager...</string>
    </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/preferences-plugin.png</normaloff>:/icons/preferences-plugin.png</iconset>
+   </property>
   </action>
   <action name="projectTreeEditorAction">
    <property name="text">
     <string>Project Tree Editor...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/view-list-tree.png</normaloff>:/icons/view-list-tree.png</iconset>
    </property>
   </action>
   <action name="actionDetachView">
    <property name="text">
     <string>Detach View</string>
    </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/tab-detach.png</normaloff>:/icons/tab-detach.png</iconset>
+   </property>
   </action>
   <action name="actionImport_File">
    <property name="text">
     <string>Molecule File...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/document-import.png</normaloff>:/icons/documents-import.png</iconset>
    </property>
   </action>
   <action name="actionQuickRender">

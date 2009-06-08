@@ -1,30 +1,46 @@
 <RCC>
     <qresource prefix="/" >
+        <file>icons/application-exit.png</file>
+        <file>icons/arrow-down.png</file>
+        <file>icons/arrow-left.png</file>
+        <file>icons/arrow-right.png</file>
+        <file>icons/arrow-up.png</file>
         <file>icons/avogadro.png</file>
-        <file>icons/colorize.png</file>
-        <file>icons/copy.png</file>
-        <file>icons/cut.png</file>
-        <file>icons/edit_add.png</file>
-        <file>icons/edit_remove.png</file>
-        <file>icons/exit.png</file>
-        <file>icons/fileclose.png</file>
-        <file>icons/fileexport.png</file>
-        <file>icons/filenew.png</file>
-        <file>icons/fileopen.png</file>
-        <file>icons/filesave.png</file>
-        <file>icons/filesaveas.png</file>
+        <file>icons/configure.png</file>
+        <file>icons/document-close.png</file>
+        <file>icons/document-export.png</file>
+        <file>icons/document-import.png</file>
+        <file>icons/document-new.png</file>
+        <file>icons/document-open.png</file>
+        <file>icons/document-print.png</file>
+        <file>icons/document-revert.png</file>
+        <file>icons/document-save-as.png</file>
+        <file>icons/document-save.png</file>
+        <file>icons/edit-add.png</file>
+        <file>icons/edit-add-child.png</file>
+        <file>icons/edit-clear.png</file>
+        <file>icons/edit-copy.png</file>
+        <file>icons/edit-cut.png</file>
+        <file>icons/edit-paste.png</file>
+        <file>icons/edit-redo.png</file>
+        <file>icons/edit-remove.png</file>
+        <file>icons/edit-select-all.png</file>
+        <file>icons/edit-undo.png</file>
+        <file>icons/fill-color.png</file>
         <file>icons/help.png</file>
         <file>icons/navigate.png</file>
         <file>icons/navigateN.png</file>
-        <file>icons/paste.png</file>
-        <file>icons/redo.png</file>
-        <file>icons/revert.png</file>
+        <file>icons/preferences-plugin.png</file>
+        <file>icons/rebuild.png</file>
         <file>icons/selecttable.png</file>
-        <file>icons/tab_new.png</file>
-        <file>icons/tab_remove.png</file>
+        <file>icons/tab-close.png</file>
+        <file>icons/tab-detatch.png</file>
+        <file>icons/tab-duplicate.png</file>
+        <file>icons/tab-new.png</file>
         <file>icons/tool.png</file>
-        <file>icons/undo.png</file>
-        <file>icons/window_fullscreen.png</file>
-        <file>icons/window_nofullscreen.png</file>
+        <file>icons/tools-report-bug.png</file>
+        <file>icons/view-fullscreen.png</file>
+        <file>icons/view-list-tree.png</file>
+        <file>icons/view-restore.png</file>
     </qresource>
 </RCC>

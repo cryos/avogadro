@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ProjectTreeEditor</class>
- <widget class="QWidget" name="ProjectTreeEditor" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ProjectTreeEditor">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,97 +10,86 @@
     <height>426</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="itemsBox" >
-     <property name="title" >
+  <layout class="QGridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="itemsBox">
+     <property name="title">
       <string>Tree Items</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="margin">
        <number>8</number>
       </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="2" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <property name="margin" >
-         <number>0</number>
-        </property>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QLabel" name="textLabel" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+         <widget class="QLabel" name="textLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Type</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="itemTypeCombo" />
+         <widget class="QComboBox" name="itemTypeCombo"/>
         </item>
        </layout>
       </item>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <property name="margin" >
-         <number>0</number>
-        </property>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QToolButton" name="newItemButton" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="newItemButton">
+          <property name="toolTip">
            <string>New Item</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>&amp;New Item</string>
           </property>
-          <property name="icon" >
-           <iconset resource="projecttreeeditor.qrc" >
-            <normaloff>:/projecttreeeditor/plus.png</normaloff>:/projecttreeeditor/plus.png</iconset>
+          <property name="icon">
+           <iconset resource="avogadro.qrc">
+            <normaloff>:/icons/edit-add.png</normaloff>:/icons/edit-add.png</iconset>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="newSubItemButton" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="newSubItemButton">
+          <property name="toolTip">
            <string>New Subitem</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>New &amp;Subitem</string>
+          </property>
+          <property name="icon">
+           <iconset resource="avogadro.qrc">
+            <normaloff>:/icons/edit-add-child.png</normaloff>:/icons/edit-add-child.png</iconset>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="deleteItemButton" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="deleteItemButton">
+          <property name="toolTip">
            <string>Delete Item</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>&amp;Delete Item</string>
           </property>
-          <property name="icon" >
-           <iconset resource="projecttreeeditor.qrc" >
-            <normaloff>:/projecttreeeditor/minus.png</normaloff>:/projecttreeeditor/minus.png</iconset>
+          <property name="icon">
+           <iconset resource="avogadro.qrc">
+            <normaloff>:/icons/edit-remove.png</normaloff>:/icons/edit-remove.png</iconset>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>16</width>
             <height>10</height>
@@ -108,74 +98,74 @@
          </spacer>
         </item>
         <item>
-         <widget class="QToolButton" name="moveItemLeftButton" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="moveItemLeftButton">
+          <property name="toolTip">
            <string>Move Item Left (before Parent Item)</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>L</string>
           </property>
-          <property name="icon" >
-           <iconset resource="projecttreeeditor.qrc" >
-            <normaloff>:/projecttreeeditor/back.png</normaloff>:/projecttreeeditor/back.png</iconset>
+          <property name="icon">
+           <iconset resource="avogadro.qrc">
+            <normaloff>:/icons/arrow-left.png</normaloff>:/icons/arrow-left.png</iconset>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="moveItemRightButton" >
-          <property name="toolTip" >
+         <widget class="QToolButton" name="moveItemRightButton">
+          <property name="toolTip">
            <string>Move Item Right (as a First Subitem of the Next Sibling Item)</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>R</string>
           </property>
-          <property name="icon" >
-           <iconset resource="projecttreeeditor.qrc" >
-            <normaloff>:/projecttreeeditor/forward.png</normaloff>:/projecttreeeditor/forward.png</iconset>
+          <property name="icon">
+           <iconset resource="avogadro.qrc">
+            <normaloff>:/icons/arrow-right.png</normaloff>:/icons/arrow-right.png</iconset>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="1" column="1" >
-       <widget class="QToolButton" name="moveItemUpButton" >
-        <property name="toolTip" >
+      <item row="1" column="1">
+       <widget class="QToolButton" name="moveItemUpButton">
+        <property name="toolTip">
          <string>Move Item Up</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>U</string>
         </property>
-        <property name="icon" >
-         <iconset resource="projecttreeeditor.qrc" >
-          <normaloff>:/projecttreeeditor/up.png</normaloff>:/projecttreeeditor/up.png</iconset>
+        <property name="icon">
+         <iconset resource="avogadro.qrc">
+          <normaloff>:/icons/arrow-up.png</normaloff>:/icons/arrow-up.png</iconset>
         </property>
        </widget>
       </item>
-      <item row="2" column="1" >
-       <widget class="QToolButton" name="moveItemDownButton" >
-        <property name="toolTip" >
+      <item row="2" column="1">
+       <widget class="QToolButton" name="moveItemDownButton">
+        <property name="toolTip">
          <string>Move Item Down</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>D</string>
         </property>
-        <property name="icon" >
-         <iconset resource="projecttreeeditor.qrc" >
-          <normaloff>:/projecttreeeditor/down.png</normaloff>:/projecttreeeditor/down.png</iconset>
+        <property name="icon">
+         <iconset resource="avogadro.qrc">
+          <normaloff>:/icons/arrow-down.png</normaloff>:/icons/arrow-down.png</iconset>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QTreeWidget" name="treeWidget" >
-        <property name="focusPolicy" >
+      <item row="0" column="0" colspan="2">
+       <widget class="QTreeWidget" name="treeWidget">
+        <property name="focusPolicy">
          <enum>Qt::TabFocus</enum>
         </property>
-        <property name="toolTip" >
+        <property name="toolTip">
          <string>Tree Items</string>
         </property>
         <column>
-         <property name="text" >
-          <string>1</string>
+         <property name="text">
+          <string>Item</string>
          </property>
         </column>
        </widget>
@@ -183,70 +173,66 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <layout class="QVBoxLayout" >
-     <item>
-      <widget class="QGroupBox" name="groupBox" >
-       <property name="title" >
-        <string>Settings</string>
-       </property>
-       <layout class="QVBoxLayout" >
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <layout class="QHBoxLayout">
         <item>
-         <layout class="QHBoxLayout" >
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Alias</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="aliasEdit" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <item>
-           <widget class="QLabel" name="label_2" >
-            <property name="text" >
-             <string>Type</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="typeEdit" >
-            <property name="readOnly" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="settingsButton" >
-          <property name="text" >
-           <string>Settings...</string>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Alias</string>
           </property>
          </widget>
         </item>
         <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0" >
-           <size>
-            <width>145</width>
-            <height>111</height>
-           </size>
-          </property>
-         </spacer>
+         <widget class="QLineEdit" name="aliasEdit"/>
         </item>
        </layout>
-      </widget>
-     </item>
-    </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Type</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="typeEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="settingsButton">
+        <property name="text">
+         <string>Settings...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>145</width>
+          <height>111</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -261,7 +247,7 @@
   <tabstop>moveItemDownButton</tabstop>
  </tabstops>
  <resources>
-  <include location="projecttreeeditor.qrc" />
+  <include location="avogadro.qrc"/>
  </resources>
  <connections/>
 </ui>
