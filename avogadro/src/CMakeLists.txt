@@ -157,7 +157,7 @@ endif(APPLE AND ENABLE_AVO_PACKAGE)
 # Install a .desktop file and icon for Linux users
 if (CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME MATCHES kFreeBSD)
   install(FILES "avogadro.desktop" DESTINATION ${XDG_APPS_INSTALL_DIR})
-  install(FILES "icons/avogadro_icon.png" DESTINATION ${XDG_ICON_INSTALL_DIR})
+  install(FILES "icons/avogadro-icon.png" DESTINATION ${XDG_ICON_INSTALL_DIR})
 endif(CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME MATCHES kFreeBSD)
 
 #add_subdirectory(projectplugins)
