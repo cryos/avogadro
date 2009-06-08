@@ -471,6 +471,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="computeButton">
+       <property name="text">
+        <string>Compute...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="generateButton">
        <property name="text">
         <string>Generate...</string>
