@@ -25,14 +25,13 @@
 #ifndef GLGRAPHICSVIEW_H
 #define GLGRAPHICSVIEW_H
 
-#include <avogadro/global.h>
 #include <QGraphicsView>
 
 namespace Avogadro {
 
   class GLWidget;
 
-  class A_EXPORT GLGraphicsView : public QGraphicsView
+  class GLGraphicsView : public QGraphicsView
   {
   Q_OBJECT
 
