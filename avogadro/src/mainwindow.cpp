@@ -1152,16 +1152,33 @@ namespace Avogadro
 
     if (!d->moleculeFile) {
       // just save this one molecule
-      OpenbabelWrapper::writeMolecule(d->molecule, fileName, formatType.trimmed());
-    } else {
-      if (d->moleculeFile->isConformerFile())
+      QString error;
+      bool result = OpenbabelWrapper::writeMolecule(d->molecule, fileName,
+                                                    formatType.trimmed(),
+                                                    &error);
+      if (!result) { // There was an error saving the file - inform the user
+        QApplication::restoreOverrideCursor();
+        QMessageBox::warning(this, tr("Avogadro"), error);
+        return false;
+      }
+      else {
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
+    }
+    else { /// FIXME Add error checking
+      if (d->moleculeFile->isConformerFile()) {
         OpenbabelWrapper::writeConformers(d->molecule, fileName, formatType.trimmed());
-      else
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
+      else { /// FIXME Add error checking
         // use MoleculeFile to save just the current slice of the file
         d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule, fileName);
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
     }
-
-
     /*
     QFile file(fileName);
     bool replaceExistingFile = file.exists();
@@ -1282,8 +1299,7 @@ namespace Avogadro
     */
 
     QApplication::restoreOverrideCursor();
-
-    return true;
+    return false;
   }
 
   void MainWindow::undoStackClean( bool clean )

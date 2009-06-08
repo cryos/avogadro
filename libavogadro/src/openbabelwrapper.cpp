@@ -132,6 +132,9 @@ namespace Avogadro {
   bool OpenbabelWrapper::writeMolecule(const Molecule *molecule,
       const QString &fileName, const QString &fileType, QString *error)
   {
+    // Check is we are replacing an existing file
+    QFile file(fileName);
+    bool replaceExistingFile = file.exists();
     // Check that the file can be written to disk
     if (!canOpen(fileName, QFile::WriteOnly | QFile::Text)) {
       // Cannot write to the file
@@ -140,7 +143,7 @@ namespace Avogadro {
       return false;
     }
     
-    QString newFileName(fileName + ".new");
+    QString newFileName(replaceExistingFile ? fileName + ".new" : fileName);
     QFile newFile(newFileName);
 
     // Construct the OpenBabel objects, set the file type
@@ -151,7 +154,8 @@ namespace Avogadro {
       if (error)
         error->append(QObject::tr("File type '%1' is not supported for writing.").arg(fileType));
       return false;
-    } else {
+    }
+    else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
       if (outFormat && !conv.SetOutFormat(outFormat)) {
         // Output format not supported
@@ -164,19 +168,54 @@ namespace Avogadro {
     // Now attempt to write the molecule in
     ofstream ofs;
     ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
-    if (!ofs) // Should not happen, already checked file could be opened
-      return false;
-    OBMol obMol = molecule->OBMol();
-    if (conv.Write(&obMol, &ofs)) {
-      QFile(fileName).remove();
-      newFile.rename(fileName);
-      return true;
-    } else {
-      newFile.remove();
-      if (error)
-        error->append(QObject::tr("Writing a molecule to file '%1' failed.").arg(fileName));
+    if (!ofs) {// Should not happen, already checked file could be opened
+      qDebug() << "ofs is bad";
       return false;
     }
+    OBMol obmol = molecule->OBMol();
+    if (conv.Write(&obmol, &ofs)) {
+      ofs.close();
+      if (replaceExistingFile) {
+        bool success;
+        success = file.rename(fileName + ".old");
+        if (success) {
+          // Leave to ensure we work around a bug in Qt < 4.5.1
+          file.setFileName(fileName + ".old");
+          success = newFile.rename(fileName);
+        }
+        else {
+          if (error)
+              error->append(QObject::tr("Saving molecular file failed - could not rename original file."));
+          return false;
+        }
+        if (success) // renaming worked
+          success = file.remove(); // remove the old file: WARNING -- would much prefer to just rename, but Qt won't let you
+        else {
+          if (error)
+            error->append(QObject::tr("Saving molecular file failed - could not rename new file."));
+          return false;
+        }
+
+        if (success) {
+          return true;
+        }
+        else {
+          if (error)
+            error->append(QObject::tr("Saving molecular file failed - could not remove old file."));
+          return false;
+        }
+      }
+      else // No need for all that - this is a new file in an empty location
+        return true;
+    }
+    else {
+      if (error)
+        error->append(QObject::tr("Writing a molecule to file '%1' failed. OpenBabel function failed.").arg(fileName));
+      return false;
+    }
+    // Assume something went wrong if we did not return true earlier
+    qDebug() << "OBWrapper should never get here...";
+    return false;
   }
 
   bool OpenbabelWrapper::writeConformers(const Molecule *molecule,
