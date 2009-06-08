@@ -75,6 +75,8 @@ namespace Avogadro {
   bool HBondEngine::renderOpaque(PainterDevice *pd)
   {
     Molecule *molecule = const_cast<Molecule *>(pd->molecule());
+    if (!molecule->numAtoms())
+      return false;
 
     pd->painter()->setColor(1.0, 1.0, 0.3);
     int stipple = 0xF0F0; // pattern for lines
