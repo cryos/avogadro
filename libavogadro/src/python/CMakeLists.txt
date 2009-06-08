@@ -14,7 +14,7 @@ FILE(GLOB wrapper_SRCS "*.cpp")
 qt4_automoc(moleculelist.cpp)
 
 ADD_LIBRARY(python-module MODULE ${wrapper_SRCS})
-SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME _Avogadro)
+SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 if (WIN32)
   SET_TARGET_PROPERTIES(python-module PROPERTIES SUFFIX ".pyd")
