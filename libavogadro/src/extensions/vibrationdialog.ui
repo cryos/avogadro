@@ -94,10 +94,20 @@
       <item>
        <widget class="QCheckBox" name="displayForcesCheckBox">
         <property name="text">
-         <string>Display Force &amp;Vectors</string>
+         <string>Display force &amp;vectors</string>
         </property>
         <property name="checked">
          <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="animationSpeedCheckBox">
+        <property name="toolTip">
+         <string>higher frequency vibrations will show faster movement</string>
+        </property>
+        <property name="text">
+         <string>Animation speed set by frequency</string>
         </property>
        </widget>
       </item>

@@ -60,6 +60,8 @@ namespace Avogadro {
             this, SLOT(setScale(int)));
     connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setDisplayForceVectors(bool)));
+    connect(ui.animationSpeedCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.exportButton, SIGNAL(clicked(bool)),
@@ -192,7 +194,15 @@ namespace Avogadro {
     if (checked != ui.displayForcesCheckBox->isChecked())
       ui.displayForcesCheckBox->setChecked(checked);
 
-    emit setEnabledForceVector(checked);
+    emit forceVectorUpdated(checked);
+  }
+
+  void VibrationDialog::setAnimationSpeed(bool checked)
+  {
+    if (checked != ui.animationSpeedCheckBox->isChecked())
+      ui.animationSpeedCheckBox->setChecked(checked);
+
+    emit animationSpeedUpdated(checked);
   }
 
   void VibrationDialog::animateButtonClicked(bool)

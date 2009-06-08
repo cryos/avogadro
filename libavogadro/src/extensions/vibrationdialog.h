@@ -57,13 +57,15 @@ namespace Avogadro {
       void setScale(int scale);
       void setScale(double scale);
       void setDisplayForceVectors(bool checked);
+      void setAnimationSpeed(bool checked);
       void animateButtonClicked(bool);
       void exportVibrationData(bool);
 
     signals:
       void selectedMode(int);
       void scaleUpdated(double scale);
-      void setEnabledForceVector(bool enabled);
+      void forceVectorUpdated(bool enabled);
+      void animationSpeedUpdated(bool enabled);
       void toggleAnimation();
 
     private:

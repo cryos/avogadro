@@ -50,6 +50,7 @@ namespace Avogadro {
                                                             m_scale(1.0),
                                                             m_framesPerStep(8),
                                                             m_displayVectors(true),
+                                                            m_animationSpeed(false),
                                                             m_animating(false)
   {
     QAction *action = new QAction( this );
@@ -110,7 +111,7 @@ namespace Avogadro {
     if (m_vibrations == NULL)
       return; // e.g., when destroying the molecule;
 
-    if (m_vibrations->GetLx().size() != 0) {
+    if (m_vibrations->GetLx().size() != 0 && mode < m_vibrations->GetLx().size()) {
 
       m_mode = mode;
       updateForcesAndFrames();
@@ -126,8 +127,13 @@ namespace Avogadro {
   {
     if (m_mode == -1)
       return;
-    if (m_vibrations == NULL || m_vibrations->GetLx().size() == 0)
+    // we do this check above
+    /*
+    if (m_vibrations == NULL 
+        || m_vibrations->GetLx().size() == 0
+        || m_mode > m_vibrations->GetLx().size())
       return;
+    */
 
     vector<vector3> displacementVectors = m_vibrations->GetLx()[m_mode];
     // Sanity check
@@ -174,6 +180,17 @@ namespace Avogadro {
     // and we remove the first frame (duplicate)
     m_animationFrames.erase(m_animationFrames.begin());
     m_animation->setFrames(m_animationFrames);
+    if (m_animationSpeed) {
+      // vibrations per femtosecond
+      // wavenumber * 3.0e10 cm/s * 1e-15 s/fs = 3e-5 fs-1
+      if (m_mode < m_vibrations->GetFrequencies().size()) {
+        double vibPerFs = m_vibrations->GetFrequencies()[m_mode] * 3.0e-5;
+        // 10fs = 4000 cm-1 gets 0.1 second apparent vibration
+        double fps = vibPerFs / 100.0;
+        m_animation->setFps(fps * m_animationFrames.size());
+        qDebug() << " fps " << fps * m_animationFrames.size();
+      }
+    }
     if (m_animating)
       m_animation->start();
     m_molecule->update();
@@ -196,8 +213,10 @@ namespace Avogadro {
                 this, SLOT(updateMode(int)));
         connect(m_dialog, SIGNAL(scaleUpdated(double)),
                 this, SLOT(setScale(double)));
-        connect(m_dialog, SIGNAL(setEnabledForceVector(bool)),
+        connect(m_dialog, SIGNAL(forceVectorUpdated(bool)),
                 this, SLOT(setDisplayForceVectors(bool)));
+        connect(m_dialog, SIGNAL(animationSpeedUpdated(bool)),
+                this, SLOT(setAnimationSpeed(bool)));
         connect(m_dialog, SIGNAL(toggleAnimation()),
                 this, SLOT(toggleAnimation()));
         m_dialog->setMolecule(m_molecule);
@@ -243,6 +262,16 @@ namespace Avogadro {
       }
     }
 
+    m_widget->update();
+  }
+
+  void VibrationExtension::setAnimationSpeed(bool enabled)
+  {
+    if (!m_widget || !m_animation)
+      return;
+
+    m_animationSpeed = enabled;
+    updateMode(m_mode);
     m_widget->update();
   }
 
