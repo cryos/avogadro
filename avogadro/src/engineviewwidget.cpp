@@ -43,6 +43,8 @@ namespace Avogadro {
     m_view = new QTreeView(this);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(m_view);
+    layout->setMargin( 0 );
+    layout->setSpacing( 0 );
     setLayout(layout);
     m_model = new EngineItemModel(m_glWidget, m_view);
 

@@ -38,6 +38,8 @@ namespace Avogadro {
   ZMatrixTool::ZMatrixTool(QObject *parent) : Tool(parent), m_molecule(0),
       m_settingsWidget(0), m_zMatrixDialog(0)
   {
+    QAction *action = activateAction();
+    action->setIcon(QIcon(QLatin1String(":/zmatrix/zmatrix.png")));
   }
 
   ZMatrixTool::~ZMatrixTool()

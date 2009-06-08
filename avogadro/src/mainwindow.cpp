@@ -313,10 +313,10 @@ namespace Avogadro
     ui.menuOpenRecent->addAction( ui.actionClearRecent );
 
     QAction *undoAction = d->undoStack->createUndoAction( this );
-    undoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/undo.png" ) ) );
+    undoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-undo.png" ) ) );
     undoAction->setShortcuts( QKeySequence::Undo );
     QAction *redoAction = d->undoStack->createRedoAction( this );
-    redoAction->setIcon( QIcon( QString::fromUtf8( ":/icons/redo.png" ) ) );
+    redoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-redo.png" ) ) );
     redoAction->setShortcuts( QKeySequence::Redo );
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
@@ -388,10 +388,6 @@ namespace Avogadro
 #ifdef ENABLE_UPDATE_CHECKER
     m_updateCheck = new UpdateCheck(this);
 #endif
-
-    // Disable the detach view option for now
-    // FIXME
-//    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)
@@ -818,7 +814,7 @@ namespace Avogadro
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                                                        tr( "Avogadro" ),
                                                        tr("This file contains does not contain 3D coordinates."),
-                                                       QMessageBox::YesToAll | QMessageBox::Yes 
+                                                       QMessageBox::YesToAll | QMessageBox::Yes
                                                        | QMessageBox::No,
                                                        this);
 
@@ -1152,16 +1148,33 @@ namespace Avogadro
 
     if (!d->moleculeFile) {
       // just save this one molecule
-      OpenbabelWrapper::writeMolecule(d->molecule, fileName, formatType.trimmed());
-    } else {
-      if (d->moleculeFile->isConformerFile())
+      QString error;
+      bool result = OpenbabelWrapper::writeMolecule(d->molecule, fileName,
+                                                    formatType.trimmed(),
+                                                    &error);
+      if (!result) { // There was an error saving the file - inform the user
+        QApplication::restoreOverrideCursor();
+        QMessageBox::warning(this, tr("Avogadro"), error);
+        return false;
+      }
+      else {
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
+    }
+    else { /// FIXME Add error checking
+      if (d->moleculeFile->isConformerFile()) {
         OpenbabelWrapper::writeConformers(d->molecule, fileName, formatType.trimmed());
-      else
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
+      else { /// FIXME Add error checking
         // use MoleculeFile to save just the current slice of the file
         d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule, fileName);
+        QApplication::restoreOverrideCursor();
+        return true;
+      }
     }
-
-
     /*
     QFile file(fileName);
     bool replaceExistingFile = file.exists();
@@ -1282,8 +1295,7 @@ namespace Avogadro
     */
 
     QApplication::restoreOverrideCursor();
-
-    return true;
+    return false;
   }
 
   void MainWindow::undoStackClean( bool clean )
@@ -1868,6 +1880,7 @@ namespace Avogadro
     d->centralTab->addTab(widget, tabName);
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
+    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1900,6 +1913,7 @@ namespace Avogadro
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
+    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1910,6 +1924,8 @@ namespace Avogadro
 
   void MainWindow::detachView()
   {
+    if (d->centralLayout->count() == 1) // Don't close/detach the final view
+      return;
     // Get the GLWidget of the current view, close in in the tabs
     QWidget *widget = d->centralTab->currentWidget();
     foreach(QObject *object, widget->children()) {
@@ -1925,6 +1941,7 @@ namespace Avogadro
         // Ensure that actions are enabled/disabled appropriately.
         ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
         ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        d->centralTab->setTabsClosable(d->centralTab->count() != 1);
         // Set up the detached viwe
         DetachedView *view = new DetachedView(glWidget);
         view->setWindowTitle(tr("Avogadro: Detached View"));
@@ -1943,6 +1960,9 @@ namespace Avogadro
 
   void MainWindow::closeView(int index)
   {
+    if (d->centralLayout->count() == 1) // Don't close the final view
+      return;
+
     QWidget *widget = d->centralTab->widget(index);
     foreach( QObject *object, widget->children() ) {
       GLWidget *glWidget = qobject_cast<GLWidget *>(object);
@@ -1960,6 +1980,7 @@ namespace Avogadro
         delete glWidget;
         ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
         ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        d->centralTab->setTabsClosable(d->centralTab->count() != 1);
       }
     }
     setView( d->centralTab->currentIndex());
@@ -2090,6 +2111,7 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
+      ui.actionFullScreen->setIcon( QIcon( QLatin1String( ":/icons/view-restore.png" ) ) );
       d->fileToolbar = ui.fileToolBar->isVisible();
       d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();
@@ -2504,6 +2526,7 @@ namespace Avogadro
 
     ui.actionCloseView->setEnabled(count > 1);
     ui.actionDetachView->setEnabled(count > 1);
+    d->centralTab->setTabsClosable(count > 1);
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
