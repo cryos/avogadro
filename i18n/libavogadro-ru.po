@@ -1,0 +1,6614 @@
+# Russian translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-06 15:31+0000\n"
+"Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/colors/atomindexcolor.h:44
+msgid "Color by Index"
+msgstr "Раскрасить по порядковому номеру атома"
+
+#: src/colors/atomindexcolor.h:45
+msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+msgstr ""
+"Раскрасить по порядковому номеру атома (красный, оранжевый, жёлтый, зелёный, "
+"синий, фиолетовый)."
+
+#: src/colors/chargecolor.h:44
+msgid "Color by Partial Charge"
+msgstr "Раскрасить по частичному заряду атома"
+
+#: src/colors/chargecolor.h:45
+msgid "Color by atomic partial charge (blue = positive, red = negative."
+msgstr ""
+"Раскрасить по частичному заряду атома (синий = положительный, красный = "
+"отрицательный)."
+
+#: src/engines/surfacesettingswidget.ui:139
+#: src/colors/customcolor.cpp:63 :192
+msgid "Custom Color:"
+msgstr "Другой цвет:"
+
+#: src/engines/surfacesettingswidget.ui:95
+#: src/colors/customcolor.h:43 :186
+msgid "Custom Color"
+msgstr "Другой цвет"
+
+#: src/colors/customcolor.h:44
+msgid "Set custom colors for objects"
+msgstr ""
+
+#: src/colors/distancecolor.h:44
+msgid "Color by Distance"
+msgstr "Раскрасить по расстоянию"
+
+#: src/colors/distancecolor.h:45
+msgid "Color by distance from the first atom."
+msgstr "Раскрасить по расстоянию от первого атома"
+
+#: src/colors/elementcolor.h:45
+msgid "Color by Element"
+msgstr "Раскрасить по элементу"
+
+#: src/colors/elementcolor.h:46
+msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+msgstr "Раскрасить по элементу (углерод = серый, кислород = красный, ...)."
+
+#: src/colors/residuecolor.h:49
+msgid "Color by Residue"
+msgstr ""
+
+#: src/colors/residuecolor.h:50
+msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+msgstr ""
+"Цвет согласно аминокислотному остатку (тип аминокислоты, гидрофобность, ...)"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Водород"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Гелий"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Литий"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Бериллий"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Бор"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Углерод"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Азот"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Кислород"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Фтор"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Неон"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Натрий"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Магний"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Алюминий"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Кремний"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Фосфор"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Сера"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Хлор"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Аргон"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Калий"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Кальций"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Скандий"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Титан"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Ванадий"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Хром"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Марганец"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Железо"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Кобальт"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Никель"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Медь"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Цинк"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Галлий"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Германий"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Мышьяк"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Селен"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Бром"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Криптон"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Рубидий"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Стронций"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Иттрий"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Цирконий"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Ниобий"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Молибден"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Технеций"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Рутений"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Родий"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Палладий"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Серебро"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Кадмий"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Индий"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Олово"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Сурьма"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Теллур"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Иод"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Ксенон"
+
+#: src/elementtranslator.cpp:204
+msgid "Caesium"
+msgstr "Цезий"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Барий"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Лантан"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Церий"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Празеодим"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Неодим"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Прометий"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Самарий"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Европий"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Гадолиний"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Тербий"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Диспрозий"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Гольмий"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Эрбий"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Тулий"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Иттербий"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Лютеций"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Гафний"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Тантал"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Вольфрам"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Рений"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Осмий"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Иридий"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Платина"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Золото"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Ртуть"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Таллий"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Свинец"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Висмут"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Полоний"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Астат"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Радон"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Франций"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Радий"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Актиний"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Торий"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Протактиний"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Уран"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Нептуний"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Плутоний"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Америций"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Кюрий"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Берклий"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Калифорний"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Эйнштейний"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Фермий"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Менделевий"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Нобелий"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Лоуренсий"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Резерфордий"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Дубний"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Сиборгий"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Борий"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Хассий"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Мейтнерий"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Дармштадтий"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Рентгений"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Унунбий"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Унунтрий"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Унунквадий"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Унунпентий"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Унунгексий"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Унунсептий"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Унуноктий"
+
+#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+msgid "Unknown"
+msgstr "Неизвестный"
+
+#: src/engine.cpp:64
+msgid "Engines"
+msgstr ""
+
+#: src/engines/axesengine.h:37
+msgid "Axes"
+msgstr "Оси"
+
+#: src/engines/axesengine.h:38
+msgid "Renders the x, y, and z axes at the origin"
+msgstr "Отображает оси x, y, и z в начале координат"
+
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1985
+msgid "Ball and Stick"
+msgstr "Шаро-стержневая модель"
+
+#: src/engines/bsdyengine.h:42
+msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+msgstr ""
+
+#: src/engines/cartoonengine.h:44
+msgid "Cartoon"
+msgstr ""
+
+#: src/engines/cartoonengine.h:45
+msgid "Renders protein secundary structure"
+msgstr "Отображает вторичную структуру белка"
+
+#: src/engines/dipoleengine.h:42
+msgid "Dipole"
+msgstr "Диполь"
+
+#: src/engines/dipoleengine.h:43
+msgid "Renders molecular dipole moments"
+msgstr "Отображает молекулярный дипольный момент"
+
+#: src/engines/forceengine.h:38
+msgid "Force"
+msgstr "Сила"
+
+#: src/engines/forceengine.h:39
+msgid "Renders force displacements on atoms"
+msgstr ""
+
+#: src/engines/hbondengine.h:42
+msgid "Hydrogen Bond"
+msgstr "Водородные связи"
+
+#: src/engines/hbondengine.h:43
+msgid "Renders hydrogen bonds"
+msgstr "Отображает водородные связи"
+
+#: src/engines/labelengine.h:45
+msgid "Label"
+msgstr "Метка"
+
+#: src/engines/labelengine.h:45
+msgid "Renders atom and bond labels"
+msgstr "Отображает подписи атомов и связей"
+
+#: src/engines/orbitalengine.cpp:286
+#, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+msgid "%1, isosurface = %L2"
+msgstr ""
+
+#: src/engines/orbitalengine.h:47
+msgid "Orbitals"
+msgstr "Орбитали"
+
+#: src/engines/orbitalengine.h:48
+msgid "Renders molecular orbitals"
+msgstr "Отображает молекулярные орбитали"
+
+#: src/engines/overlayengine.h:41
+msgid "Overlay"
+msgstr "Перекрывание"
+
+#: src/engines/overlayengine.h:42
+msgid "Renders color scale for gradients"
+msgstr "Отображает цветовую шкалу для градиентов"
+
+#: src/engines/polygonengine.h:39
+msgid "Polygon"
+msgstr "Многоугольник"
+
+#: src/engines/polygonengine.h:40
+msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+msgstr "Отображает атомы как тетраэдры, октаэдры и другие многогранники"
+
+#: src/engines/ribbonengine.h:41
+msgid "Ribbon"
+msgstr "Лента"
+
+#: src/engines/ribbonengine.h:42
+msgid "Renders protein backbones as ribbons"
+msgstr "Отображает остов белка лентами"
+
+#: src/engines/ringengine.h:42
+msgid "Ring"
+msgstr "Цикл"
+
+#: src/engines/ringengine.h:43
+msgid "Renders rings with colored planes"
+msgstr "Отображает циклы разноцветными плоскостями"
+
+#: src/engines/simplewireengine.h:37
+msgid "Simple Wireframe"
+msgstr "Простой каркас"
+
+#: src/engines/simplewireengine.h:38
+msgid "Renders bonds as wires (lines), ideal for large molecules"
+msgstr "Отображает связи каркасом, идеально подходит для больших молекул"
+
+#: src/engines/sphereengine.h:44
+msgid "Van der Waals Spheres"
+msgstr "Сферы Ван дер Ваальса"
+
+#: src/engines/sphereengine.h:45
+msgid "Renders atoms as Van der Waals spheres"
+msgstr "Отображает атомы как сферы Ван дер Ваальса"
+
+#: src/engines/stickengine.h:43
+msgid "Stick"
+msgstr ""
+
+#: src/engines/stickengine.h:44
+msgid "Renders molecules as sticks"
+msgstr ""
+
+#: src/engines/surfaceengine.h:46
+msgid "Surface"
+msgstr "Поверхность"
+
+#: src/engines/surfaceengine.h:47
+msgid "Renders computed molecular surfaces"
+msgstr "Отображать рассчитанные поверхности молекул"
+
+#: src/engines/wireengine.h:44
+msgid "Wireframe"
+msgstr "Каркас"
+
+#: src/engines/wireengine.h:45
+msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+msgstr ""
+"Отображает связи как каркас, отлично подходит для очень больших (био)молекул"
+
+#: src/extension.cpp:44
+msgid "Extensions"
+msgstr "Расширения"
+
+#: src/extensions/animationdialog.cpp:65
+msgid "Open trajectory file"
+msgstr "Открыть файл траектории"
+
+#: src/extensions/animationdialog.cpp:66
+msgid "Trajectory files (*.xtc *.xyz)"
+msgstr "Файлы траекторий (*.xtc *.xyz)"
+
+#: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
+#, qt-format
+msgid "%1/%2"
+msgstr "%1/%2"
+
+#: src/extensions/animationdialog.cpp:95
+msgid "Save Video File"
+msgstr "Сохранить видео файл"
+
+#: src/extensions/animationdialog.cpp:97
+msgid "video files (*.avi)"
+msgstr "видео файлы (*.avi)"
+
+#: src/extensions/animationdialog.cpp:102
+#: src/extensions/animationextension.cpp:135
+#: src/extensions/animationextension.cpp:143
+#: src/extensions/animationextension.cpp:178
+#: src/extensions/animationextension.cpp:184
+#: src/extensions/animationextension.cpp:190
+#: src/extensions/animationextension.cpp:201
+#: src/extensions/animationextension.cpp:209
+#: src/extensions/animationextension.cpp:232
+#: src/extensions/animationextension.cpp:245
+#: src/extensions/animationextension.cpp:251
+#: src/extensions/forcefieldextension.cpp:181
+#: src/extensions/forcefieldextension.cpp:189
+#: src/extensions/forcefieldextension.cpp:201
+#: src/extensions/forcefieldextension.cpp:221
+#: src/extensions/gaussianextension.cpp:166
+#: src/extensions/gaussianextension.cpp:176
+#: src/extensions/insertfragmentdialog.cpp:137
+#: src/extensions/insertfragmentdialog.cpp:145
+#: src/extensions/linmorphdialog.cpp:82
+#: src/extensions/linmorphextension.cpp:79
+#: src/extensions/linmorphextension.cpp:86
+#: src/extensions/linmorphextension.cpp:116
+#: src/extensions/linmorphextension.cpp:239
+#: src/extensions/linmorphextension.cpp:250
+#: src/extensions/linmorphextension.cpp:262
+#: src/extensions/linmorphextension.cpp:268
+#: src/extensions/linmorphextension.cpp:275
+#: src/extensions/linmorphextension.cpp:286
+#: src/extensions/linmorphextension.cpp:294
+#: src/extensions/linmorphextension.cpp:315
+#: src/extensions/linmorphextension.cpp:324
+#: src/extensions/selectextension.cpp:275
+#: src/extensions/selectextension.cpp:287
+#: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
+#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
+#: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
+#: src/extensions/trajvideomaker.cpp:147
+#: src/extensions/unitcellextension.cpp:94
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
+msgid "Adding .avi extension"
+msgstr "Добавление расширения .avi"
+
+#: src/extensions/animationextension.cpp:48
+msgid "Animation..."
+msgstr "Анимация..."
+
+#: src/extensions/animationextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:143
+#: src/extensions/gamessextension.cpp:97
+#: src/extensions/gaussianextension.cpp:86
+#: src/extensions/linmorphextension.cpp:103
+#: src/extensions/orbitalextension.cpp:92
+#: src/extensions/shaderextension.cpp:187
+#: src/extensions/spectraextension.cpp:78
+#: src/extensions/templateextension.cpp:70
+#: src/extensions/vibrationextension.cpp:76
+#: src/extensions/wiitrackextension.cpp:83
+msgid "E&xtensions"
+msgstr "Рас&ширения"
+
+#: src/extensions/animationextension.cpp:136
+#: src/extensions/gaussianextension.cpp:167
+#: src/extensions/insertfragmentdialog.cpp:138
+#: src/extensions/linmorphextension.cpp:80
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Невозможно определить формат файла %1."
+
+#: src/extensions/animationextension.cpp:144
+#, qt-format
+msgid "Read trajectory file %1 failed."
+msgstr "Не удалось прочитать файл траектории %1."
+
+#: src/extensions/animationextension.cpp:179
+#: src/extensions/animationextension.cpp:185
+#: src/extensions/linmorphextension.cpp:263
+#: src/extensions/linmorphextension.cpp:269
+msgid "Must specify a valid .avi file name"
+msgstr "Нужно указать правильное имя .avi файла"
+
+#: src/extensions/animationextension.cpp:191
+msgid "GL widget was not correctly initialized in order to save video"
+msgstr ""
+
+#: src/extensions/animationextension.cpp:202
+msgid "Invalid video filename.  Must include full directory path"
+msgstr "Неправильное имя видеофайла. Имя должно содержать полный путь"
+
+#: src/extensions/animationextension.cpp:210
+msgid ""
+"Invalid video filename.  Must include full directory path and name, ending "
+"with .avi"
+msgstr ""
+"Неправильное имя видеофайла. Имя должно содержать полный путь и название, "
+"оканчивающееся на .avi"
+
+#: src/extensions/animationextension.cpp:233
+msgid "could not set format to XYZ"
+msgstr ""
+
+#: src/extensions/animationextension.cpp:246
+#, qt-format
+msgid "Problem reading traj file %1"
+msgstr "Не удалось прочитать файл траектории %1"
+
+#: src/extensions/animationextension.cpp:252
+#, qt-format
+msgid ""
+"Trajectory file %1 disagrees on the number of atoms in the present molecule"
+msgstr "Файл траектории %1 не соответствует числу атомов в данной молекуле"
+
+#: src/extensions/animationextension.h:39
+msgid "Animation"
+msgstr "Анимация"
+
+#: src/extensions/animationextension.h:40
+msgid "Animate trajectories, reactions, and vibratins."
+msgstr "Анимировать траектории, реакции и колебания"
+
+#: src/extensions/conformersearchdialog.cpp:133
+#, qt-format
+msgid "Number of atoms: %1"
+msgstr "Количество атомов: %1"
+
+#: src/extensions/conformersearchdialog.cpp:134
+#, qt-format
+msgid "Number of rotatable bonds: %1"
+msgstr "Число вращающихся связей: %1"
+
+#: src/extensions/constraintsdialog.cpp:338
+#: src/extensions/constraintsdialog.cpp:361
+#: src/extensions/constraintsdialog.cpp:370
+#: src/extensions/constraintsdialog.cpp:380
+msgid "Add constraint"
+msgstr "Добавить ограничение"
+
+#: src/extensions/constraintsdialog.cpp:339
+msgid "Your molecule must contain at least one atom to add a constraint"
+msgstr ""
+"В вашей молекуле должен быть как минимум один атом для добавления ограничения"
+
+#: src/extensions/constraintsdialog.cpp:362
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr ""
+"В вашей молекуле должно быть как минимум два атома для добавления "
+"ограничения связи"
+
+#: src/extensions/constraintsdialog.cpp:371
+msgid ""
+"Your molecule must contain at least three atoms to add an angle constraint"
+msgstr ""
+"В вашей молекуле должно быть как минимум три атома для добавления "
+"ограничения угла"
+
+#: src/extensions/constraintsdialog.cpp:381
+msgid ""
+"Your molecule must contain at least four atoms to add a torsion constraint"
+msgstr ""
+"В вашей молекуле должно быть как минимум четыре атома для добавления "
+"ограничения двугранного угла"
+
+#: src/extensions/directorytreemodel.cpp:39
+#: src/extensions/directorytreemodel.cpp:49
+msgid "Name"
+msgstr ""
+
+#: src/extensions/fileimportextension.cpp:54
+msgid "Trajectory..."
+msgstr "Траектория..."
+
+#: src/extensions/fileimportextension.cpp:73
+#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/povrayextension.cpp:64
+msgid "&File"
+msgstr "&Файл"
+
+#: src/extensions/fileimportextension.cpp:73
+#: src/extensions/networkfetchextension.cpp:70
+msgid "Import"
+msgstr "Импортировать"
+
+#: src/extensions/fileimportextension.cpp:199
+msgid "Open chemical file format"
+msgstr ""
+
+#: src/extensions/fileimportextension.cpp:200
+msgid "Chemical files (*.xyz)"
+msgstr ""
+
+#: src/extensions/fileimportextension.cpp:207
+msgid "Open parameter file"
+msgstr "Открыть файл параметров"
+
+#: src/extensions/fileimportextension.cpp:208
+msgid "Chemical files (*.parm7)"
+msgstr ""
+
+#: src/extensions/fileimportextension.h:43
+msgid "Import Trajectory"
+msgstr "Импортировать траекторию"
+
+#: src/extensions/fileimportextension.h:44
+msgid "Import trajectory files"
+msgstr "Импортировать файлы траекторий"
+
+#: src/extensions/forcefieldextension.cpp:69
+msgid "Optimize Geometry"
+msgstr "Оптимизировать геометрию"
+
+#: src/extensions/forcefieldextension.cpp:74
+msgid "Setup Force Field..."
+msgstr "Настроить силовое поле..."
+
+#: src/extensions/forcefieldextension.cpp:84
+msgid "Calculate Energy"
+msgstr "Рассчитать энергию"
+
+#: src/extensions/forcefieldextension.cpp:89
+msgid "Conformer Search..."
+msgstr "Поиск конформеров"
+
+#: src/extensions/forcefieldextension.cpp:99
+msgid "Constraints..."
+msgstr "Ограничения..."
+
+#: src/extensions/forcefieldextension.cpp:104
+msgid "Ignore Selection"
+msgstr "Игнорировать выделенное"
+
+#: src/extensions/forcefieldextension.cpp:109
+msgid "Fix Selected Atoms"
+msgstr "Зафиксировать выделенные атомы"
+
+#: src/extensions/forcefieldextension.cpp:143
+msgid "&Molecular Mechanics"
+msgstr "&Молекулярная механика"
+
+#: src/extensions/forcefieldextension.cpp:182
+#: src/extensions/forcefieldextension.cpp:202
+#: src/extensions/forcefieldextension.cpp:222
+msgid "Cannot set up the force field for this molecule."
+msgstr "Не могу выбрать силовое поле для этой молекулы"
+
+#: src/extensions/forcefieldextension.cpp:187
+#, qt-format
+msgid "Energy = %1 %2"
+msgstr "Энергия = %1 %2"
+
+#: src/extensions/forcefieldextension.cpp:232
+msgid "Geometric Optimization"
+msgstr "Геометрическая оптимизация"
+
+#: src/extensions/forcefieldextension.cpp:522
+msgid "Forcefield Optimization"
+msgstr "Оптимизация с помощью силового поля"
+
+#: src/extensions/forcefieldextension.cpp:523
+#: src/extensions/forcefieldextension.cpp:526
+#: src/extensions/forcefieldextension.cpp:529
+#: src/extensions/forcefieldextension.cpp:532
+#: src/extensions/trajvideomaker.cpp:63
+msgid "Cancel"
+msgstr "Отменить"
+
+#: src/extensions/forcefieldextension.cpp:525
+msgid "Systematic Rotor Search"
+msgstr "Систематический поиск внутренних вращений"
+
+#: src/extensions/forcefieldextension.cpp:528
+msgid "Random Rotor Search"
+msgstr "Случайный поиск внутренних вращений"
+
+#: src/extensions/forcefieldextension.cpp:531
+msgid "Weighted Rotor Search"
+msgstr ""
+
+#: src/extensions/forcefieldextension.h:54
+msgid "ForceField"
+msgstr "Силовое поле"
+
+#: src/extensions/forcefieldextension.h:55
+msgid ""
+"Optimize molecules and generate conformers using molecular mechanics force "
+"fields"
+msgstr ""
+"Оптимизировать молекулы и выбрать конформеры, используя "
+"молекулярномеханические силовые поля"
+
+#: src/extensions/gamessefpmatchdialog.cpp:49
+msgid "QM Matches"
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:65
+msgid "Input Generator..."
+msgstr "Генератор входного файла..."
+
+#: src/extensions/gamessextension.cpp:70
+msgid "EFP Selection..."
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:75
+msgid "QM Selection..."
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:97
+msgid "&GAMESS"
+msgstr "&GAMESS"
+
+#: src/extensions/gamessextension.cpp:103
+msgid "GAMESS EFP Information"
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:118
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/extensions/gamessextension.cpp:200
+msgid "No Atoms Selected"
+msgstr "Не выбрано ни одного атома"
+
+#: src/extensions/gamessextension.cpp:201
+msgid "You must make a selection!"
+msgstr "Вы должны создать выделение!"
+
+#: src/extensions/gamessextension.cpp:208
+msgid "SMILES Conversion Unavailable"
+msgstr "Недоступно преобразование из SMILES"
+
+#: src/extensions/gamessextension.cpp:209
+msgid "SMILES Format Conversion Not Available!"
+msgstr "Недоступно преобразование из SMILES!"
+
+#: src/extensions/gamessextension.cpp:469
+msgid "Group Name"
+msgstr "Название группы"
+
+#: src/extensions/gamessextension.cpp:522
+msgid " ("
+msgstr " ("
+
+#: src/extensions/gamessextension.cpp:523
+msgid "qm"
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:523
+msgid "efp"
+msgstr ""
+
+#: src/extensions/gamessextension.cpp:524
+msgid ")"
+msgstr ")"
+
+#: src/extensions/gamessextension.h:44
+msgid "GAMESS"
+msgstr "GAMESS"
+
+#: src/extensions/gamessextension.h:45
+msgid "Create input files for the GAMESS quantum chemistry package"
+msgstr "Создать входные файлы для квантовохимического пакета GAMESS"
+
+#: src/extensions/gamessinputdialog.ui:1496
+#: src/extensions/gaussianinputdialog.ui:40
+#: src/extensions/molproinputdialog.ui:41
+#: src/extensions/mopacinputdialog.ui:40
+#: src/extensions/nwcheminputdialog.ui:41
+#: src/extensions/qcheminputdialog.ui:41
+#: src/extensions/gamessinputdialog.cpp:619 :652 rc.cpp:928 rc.cpp:1212
+msgid "Title"
+msgstr "Название"
+
+#: src/extensions/gamessinputdialog.cpp:1496
+msgid "Advanced Settings Changed"
+msgstr "Изменены расширенные настройки"
+
+#: src/extensions/gamessinputdialog.cpp:1497
+msgid ""
+"Advanced settings have changed.\n"
+"Discard?"
+msgstr ""
+"Изменены расширенные настройки.\n"
+"Отменить?"
+
+#: src/extensions/gamessinputdialog.cpp:1518
+msgid "Advanced Settings Reset"
+msgstr "Сброс расширенных настроек"
+
+#: src/extensions/gamessinputdialog.cpp:1519
+msgid ""
+"Are you sure you wish to reset advanced settings?\n"
+"All changes will be lost!"
+msgstr ""
+"Вы уверены, что хотите сбросить расширенные настройки?\n"
+"Все изменения будут потеряны!"
+
+#: src/extensions/gamessinputdialog.cpp:1531
+msgid "Basic Settings Reset"
+msgstr "Сброс основных настроек"
+
+#: src/extensions/gamessinputdialog.cpp:1532
+msgid ""
+"Are you sure you wish to reset basic settings?\n"
+"All changes will be lost!"
+msgstr ""
+"Вы уверены, что хотите сбросить основные настройки?\n"
+"Все изменения будут потеряны!"
+
+#: src/extensions/gamessinputdialog.cpp:1604
+msgid "Export Input Deck"
+msgstr "Экспорт входного файла"
+
+#: src/extensions/gamessinputdialog.cpp:1605
+msgid "GAMESS Input Deck (*.inp)"
+msgstr "Входной файл GAMESS (*.inp)"
+
+#: src/extensions/gaussianextension.cpp:46
+msgid "Gaussian Input..."
+msgstr "Входной файл Gaussian..."
+
+#: src/extensions/gaussianextension.cpp:51
+msgid "Q-Chem Input..."
+msgstr "Входной файл Q-CHem..."
+
+#: src/extensions/gaussianextension.cpp:56
+msgid "MOLPRO Input..."
+msgstr "Входной файл MOLPRO..."
+
+#: src/extensions/gaussianextension.cpp:61
+msgid "MOPAC Input..."
+msgstr "Входной файл MOPAC"
+
+#: src/extensions/gaussianextension.cpp:66
+msgid "&NWChem Input..."
+msgstr "Входной файл &NWChem..."
+
+#: src/extensions/gaussianextension.cpp:177
+#: src/extensions/insertfragmentdialog.cpp:146
+#, qt-format
+msgid "Cannot read file %1."
+msgstr "Невозможно считать файл %1."
+
+#: src/extensions/gaussianextension.h:42
+msgid "Gaussian Input Deck"
+msgstr "Входной файл Gaussian"
+
+#: src/extensions/gaussianextension.h:43
+msgid "Create input files for quantum chemistry packages like Gaussian"
+msgstr ""
+"Создать входные файлы для квантвохимических пакетов, таких как Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:187
+msgid "Gaussian Input Deck Generator Warning"
+msgstr "Предупреждение генератора входных файлов Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:188
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"Gaussian input deck preview pane?"
+msgstr ""
+"Вы хотите обновить текст входного файла Gaussian, теряя все изменения, "
+"сделанные на панели предпросмотра?"
+
+#: src/extensions/gaussianinputdialog.cpp:231
+msgid "Save Gaussian Input Deck"
+msgstr "Сохранить входной файл Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:232
+msgid "Gaussian Input Deck (*.com)"
+msgstr "Входной файл Gaussian (*.com)"
+
+#: src/extensions/mopacinputdialog.ui:307
+#: src/extensions/gaussianinputdialog.cpp:255
+#: src/extensions/molproinputdialog.cpp:178
+#: src/extensions/mopacinputdialog.cpp:262
+#: src/extensions/nwcheminputdialog.cpp:185
+#: src/extensions/qcheminputdialog.cpp:178 :1326
+msgid "Show Preview"
+msgstr "Предпросмотр"
+
+#: src/extensions/gaussianinputdialog.ui:469
+#: src/extensions/molproinputdialog.ui:407
+#: src/extensions/nwcheminputdialog.ui:403
+#: src/extensions/qcheminputdialog.ui:417
+#: src/extensions/gaussianinputdialog.cpp:259
+#: src/extensions/molproinputdialog.cpp:182
+#: src/extensions/mopacinputdialog.cpp:267
+#: src/extensions/nwcheminputdialog.cpp:189
+#: src/extensions/qcheminputdialog.cpp:182 :988 rc.cpp:1268 rc.cpp:1394
+msgid "Hide Preview"
+msgstr "Скрыть предпросмотр"
+
+#: src/extensions/h2methylextension.cpp:43
+msgid "Change H to Methyl"
+msgstr "Заменить H на метил"
+
+#: src/extensions/h2methylextension.cpp:62
+#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertpeptideextension.cpp:75
+#: src/extensions/propextension.cpp:116
+#: src/extensions/supercellextension.cpp:72
+#: src/extensions/unitcellextension.cpp:70
+msgid "&Build"
+msgstr ""
+
+#: src/extensions/h2methylextension.cpp:85
+msgid "H to Methyl"
+msgstr "H на метил"
+
+#: src/extensions/h2methylextension.h:37
+msgid "H2Methyl"
+msgstr "H2Метил"
+
+#: src/extensions/h2methylextension.h:38
+msgid "Transform hydrogens to methyl groups"
+msgstr "Превратить атомы водорода в метильные группы"
+
+#: src/extensions/hydrogensextension.cpp:42
+#: src/extensions/hydrogensextension.cpp:111
+msgid "Add Hydrogens"
+msgstr "Добавть атомы водорода"
+
+#: src/extensions/hydrogensextension.cpp:46
+msgid "Add Hydrogens for pH..."
+msgstr "Добавить протоны при pH..."
+
+#: src/extensions/hydrogensextension.cpp:50
+#: src/extensions/hydrogensextension.cpp:117
+msgid "Remove Hydrogens"
+msgstr "Удалить атомы водорода"
+
+#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:114
+msgid "Add Hydrogens for pH"
+msgstr "Добавить протоны при pH"
+
+#: src/extensions/hydrogensextension.cpp:86
+msgid "pH"
+msgstr "pH"
+
+#: src/extensions/hydrogensextension.h:40
+msgid "Hydrogens"
+msgstr "Атомы водорода"
+
+#: src/extensions/hydrogensextension.h:41
+msgid "Add or remove hydrogens"
+msgstr "Добавить или удалить атомы водорода"
+
+#: src/extensions/insertfragmentdialog.cpp:181
+msgid "Open Directory"
+msgstr "Открыть каталог"
+
+#: src/extensions/insertfragmentextension.cpp:52
+msgid "Fragment..."
+msgstr "Фрагмент..."
+
+#: src/extensions/insertfragmentextension.cpp:57
+msgid "SMILES..."
+msgstr "SMILES..."
+
+#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertpeptideextension.cpp:75
+msgid "&Insert"
+msgstr "В&ставить"
+
+#: src/extensions/insertfragmentextension.cpp:103
+#: src/extensions/insertfragmentextension.cpp:121
+msgid "Insert SMILES"
+msgstr "Вставить SMILES"
+
+#: src/extensions/insertfragmentextension.cpp:104
+msgid "Insert SMILES fragment:"
+msgstr "Вставить фрагмент, используя SMILES:"
+
+#: src/extensions/insertfragmentdialog.ui:76
+#: src/extensions/insertfragmentextension.cpp:163
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+msgid "Insert Fragment"
+msgstr "Вставить фрагмент"
+
+#: src/extensions/insertfragmentextension.h:35
+msgid "Insert molecular fragments for building larger molecules"
+msgstr ""
+
+#: src/extensions/insertpeptideextension.cpp:58
+msgid "Peptide..."
+msgstr "Пептид..."
+
+#: src/extensions/insertpeptidedialog.ui:14
+#: src/extensions/insertpeptidedialog.ui:505
+#: src/extensions/insertpeptideextension.cpp:230
+#: src/extensions/insertpeptideextension.h:43 :1008 rc.cpp:1150
+msgid "Insert Peptide"
+msgstr "Вставить пептид"
+
+#: src/extensions/insertpeptideextension.h:44
+msgid "Insert oligopeptide sequences"
+msgstr "Вставить олигопептидную последовательность"
+
+#: src/extensions/liganddialog.cpp:63
+msgid "Open ligand file"
+msgstr "Открыть файл лиганда"
+
+#: src/extensions/liganddialog.cpp:63
+msgid "Avogadro files (*.*)"
+msgstr "Файлы Avogadro (*.*)"
+
+#: src/extensions/linmorphdialog.cpp:65
+msgid "Open mol file"
+msgstr ""
+
+#: src/extensions/linmorphdialog.cpp:66
+msgid "Any files (*.*)"
+msgstr "Все файлы (*.*)"
+
+#: src/extensions/linmorphdialog.cpp:75
+msgid "Save Movie File"
+msgstr "Сохранить Видеофайл"
+
+#: src/extensions/linmorphdialog.cpp:77
+msgid "movie files (*.avi)"
+msgstr "видеофайлы (*.avi)"
+
+#: src/extensions/linmorphdialog.cpp:96
+msgid "Save Traj File"
+msgstr "Сохранить файл траектории"
+
+#: src/extensions/linmorphdialog.cpp:98
+msgid "trajectory file (*.xyz)"
+msgstr "файл траектории (*.xyz)"
+
+#: src/extensions/linmorphextension.cpp:45
+msgid "Lin Morph..."
+msgstr ""
+
+#: src/extensions/linmorphextension.cpp:87
+#, qt-format
+msgid "Read mol file %1 failed."
+msgstr ""
+
+#: src/extensions/linmorphextension.cpp:117
+#, qt-format
+msgid "Two molecules have different number atoms %1 %2"
+msgstr ""
+
+#: src/extensions/linmorphextension.cpp:240
+msgid "GL widget was not correctly initialized in order to save snapshots"
+msgstr ""
+
+#: src/extensions/linmorphextension.cpp:251
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Невозможно сохранить файл %1."
+
+#: src/extensions/linmorphextension.cpp:276
+msgid "GL widget was not correctly initialized in order to save movie"
+msgstr ""
+
+#: src/extensions/linmorphextension.cpp:287
+msgid "Invalid movie filename.  Must include full directory path"
+msgstr "Неправильное имя файла анимации"
+
+#: src/extensions/linmorphextension.cpp:295
+msgid ""
+"Invalid movie filename.  Must include full directory path and name, ending "
+"with .avi"
+msgstr ""
+"Неправильное имя файла анимации. Имя должно содержать полный путь и "
+"название, оканчивающееся на .avi"
+
+#: src/extensions/linmorphextension.cpp:316
+#, qt-format
+msgid "Would write file to %1."
+msgstr "Запись в файл %1."
+
+#: src/extensions/linmorphextension.cpp:325
+#, qt-format
+msgid "Wrote file %1."
+msgstr "Записан файл %1."
+
+#: src/extensions/linmorphextension.h:38
+msgid "Linear Morph"
+msgstr ""
+
+#: src/extensions/linmorphextension.h:39
+msgid "Create linear interpolation for animations"
+msgstr "Добавить линейную интерполяцию в анимации"
+
+#: src/extensions/molecularpropextension.cpp:40
+msgid "Molecule Properties..."
+msgstr "Свойства молекулы..."
+
+#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
+msgid "&View"
+msgstr "&Вид"
+
+#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/propextension.cpp:113
+msgid "&Properties"
+msgstr "&Свойства"
+
+#: src/extensions/molecularpropextension.cpp:122
+msgid "Estimated Dipole Moment (D):"
+msgstr "Оценочный дипольный момент (Д):"
+
+#: src/extensions/molecularpropextension.h:48
+msgid "Molecular Properties"
+msgstr "Свойства молекулы"
+
+#: src/extensions/molecularpropextension.h:49
+msgid "Display standard molecular properties."
+msgstr "Отобразить стандартные свойства молекулы"
+
+#: src/extensions/molproinputdialog.cpp:114
+#: src/extensions/qcheminputdialog.cpp:114
+msgid "Q-Chem Input Deck Generator Warning"
+msgstr "Предупреждение генератора входных файлов Q-Chem"
+
+#: src/extensions/molproinputdialog.cpp:115
+#: src/extensions/qcheminputdialog.cpp:115
+msgid ""
+"Would you like to update the preview text, losing all changes made in the Q-"
+"Chem input deck preview pane?"
+msgstr ""
+"Вы хотите обновить текст входного файла Q-Chem, теряя все изменения, "
+"сделанные на панели предпросмотра?"
+
+#: src/extensions/molproinputdialog.cpp:162
+msgid "Save Molpro Input Deck"
+msgstr "Сохранить входной файл Molpro"
+
+#: src/extensions/molproinputdialog.cpp:163
+msgid "Molpro Input Deck (*.qcin)"
+msgstr "Входной файл Molpro (*.qcin)"
+
+#: src/extensions/mopacinputdialog.cpp:132
+msgid "MOPAC Input Warning"
+msgstr ""
+
+#: src/extensions/mopacinputdialog.cpp:133
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"MOPAC input deck preview pane?"
+msgstr ""
+"Вы хотите обновить текст входного файла MOPAC, теряя все изменения, "
+"сделанные на панели предпросмотра?"
+
+#: src/extensions/mopacinputdialog.cpp:174
+msgid "MOPAC Running."
+msgstr "Идет расчет в MOPAC."
+
+#: src/extensions/mopacinputdialog.cpp:175
+msgid ""
+"MOPAC is already running. Wait until the previous calculation is finished."
+msgstr "MOPAC уже запущен. Подождите завершения предыдущего расчета."
+
+#: src/extensions/mopacinputdialog.cpp:185
+msgid "MOPAC Not Installed."
+msgstr "MOPAC не установлен"
+
+#: src/extensions/mopacinputdialog.cpp:186
+msgid "The MOPAC executable, cannot be found."
+msgstr "Исполняемый файл MOPAC не найден"
+
+#: src/extensions/mopacinputdialog.cpp:200
+msgid "MOPAC failed to start."
+msgstr "Не удалось запустить MOPAC"
+
+#: src/extensions/mopacinputdialog.cpp:201
+msgid "MOPAC did not start. Perhaps it is not installed correctly."
+msgstr "MOPAC не запустился. Возможно, он установлен не правильно."
+
+#: src/extensions/mopacinputdialog.cpp:206
+msgid "Running MOPAC calculation..."
+msgstr "Идет расчет в MOPAC..."
+
+#: src/extensions/mopacinputdialog.cpp:241
+msgid "MOPAC Crashed."
+msgstr ""
+
+#: src/extensions/mopacinputdialog.cpp:242
+msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+msgstr "MOPAC не был запущен правильно. Возможно, он неправильно установлен."
+
+#: src/extensions/mopacinputdialog.cpp:294
+msgid "Save MOPAC Input Deck"
+msgstr "Сохранить входной файл MOPAC"
+
+#: src/extensions/mopacinputdialog.cpp:295
+msgid "MOPAC Input Deck (*.mop)"
+msgstr "Входной файл MOPAC (*.mop)"
+
+#: src/extensions/networkfetchextension.cpp:49
+msgid "Fetch from PDB..."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:53
+msgid "Fetch from URL..."
+msgstr "Получить с URL..."
+
+#: src/extensions/networkfetchextension.cpp:88
+msgid "PDB Entry"
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:89
+msgid "PDB entry to download."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:103
+msgid "URL"
+msgstr "URL"
+
+#: src/extensions/networkfetchextension.cpp:104
+msgid "URL of molecule to download."
+msgstr "URL молекулы для загрузки"
+
+#: src/extensions/networkfetchextension.cpp:139
+#: src/extensions/networkfetchextension.cpp:150
+#: src/extensions/networkfetchextension.cpp:169
+msgid "Network Download Failed"
+msgstr "Не удалось загрузить из сети"
+
+#: src/extensions/networkfetchextension.cpp:140
+msgid "Network timeout or other error."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:151
+#, qt-format
+msgid "Specified molecule could not be found: %1"
+msgstr "Не удалось найти молекулу: %1"
+
+#: src/extensions/networkfetchextension.cpp:170
+#, qt-format
+msgid "Specified molecule could not be loaded: %1"
+msgstr "Данная молекула не можеть быть загружена: %1"
+
+#: src/extensions/networkfetchextension.h:39
+msgid "Network Fetch"
+msgstr "Скачать из сети"
+
+#: src/extensions/networkfetchextension.h:40
+msgid "Fetch molecule files over the network."
+msgstr "Скачать файлы молекул по сети"
+
+#: src/extensions/nwcheminputdialog.cpp:121
+msgid "NWChem Input Deck Generator Warning"
+msgstr "Предупреждение генератора входный файлов NWChem"
+
+#: src/extensions/nwcheminputdialog.cpp:122
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"NWChem input deck preview pane?"
+msgstr ""
+"Вы хотите обновить текст входного файла NWChem, теряя все изменения, "
+"сделанные на панели предпросмотра?"
+
+#: src/extensions/nwcheminputdialog.cpp:169
+msgid "Save NWChem Input Deck"
+msgstr "Сохранить входной файл NWChem"
+
+#: src/extensions/nwcheminputdialog.cpp:170
+msgid "NWChem Input Deck (*.nw)"
+msgstr "Входной файл NWChem (*.nw)"
+
+#: src/extensions/orbitaldialog.cpp:107
+#: src/extensions/orbitalextension.cpp:266
+#: src/extensions/orbitalextension.cpp:303
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "MO %L1"
+msgstr "MO %L1"
+
+#: src/engines/labelsettingswidget.ui:55
+#: src/engines/labelsettingswidget.ui:140
+#: src/engines/overlaysettingswidget.ui:54
+#: src/engines/overlaysettingswidget.ui:124
+#: src/extensions/gamessinputdialog.ui:449
+#: src/extensions/gamessinputdialog.ui:998
+#: src/extensions/gamessinputdialog.ui:1068
+#: src/extensions/gamessinputdialog.ui:1114
+#: src/extensions/gamessinputdialog.ui:2100
+#: src/extensions/orbitaldialog.ui:679
+#: src/extensions/shaderdialog.ui:207
+#: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
+msgid "None"
+msgstr "Отсутствует"
+
+#: src/extensions/orbitaldialog.cpp:250 src/extensions/orbitaldialog.cpp:254
+msgid "ESP"
+msgstr ""
+
+#: src/extensions/orbitalextension.cpp:65
+msgid "Create Surfaces..."
+msgstr "Создать поверхности..."
+
+#: src/extensions/orbitalextension.cpp:278
+#: src/extensions/orbitalextension.cpp:315
+#: src/extensions/orbitalextension.cpp:474
+#: src/extensions/orbitalextension.cpp:512
+#: src/extensions/orbitalextension.cpp:770
+msgid "Abort Calculation"
+msgstr "Остановить расчёт"
+
+#: src/extensions/orbitalextension.cpp:283
+#: src/extensions/orbitalextension.cpp:320
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "Calculating MO %L1"
+msgstr "Расчет МО %L1"
+
+#: src/extensions/orbitalextension.cpp:461
+#: src/extensions/orbitalextension.cpp:499
+msgid "Electron Density"
+msgstr "Электронная плотность"
+
+#: src/extensions/orbitalextension.cpp:479
+#: src/extensions/orbitalextension.cpp:517
+msgid "Calculating Electron Density"
+msgstr "Расчет электронной плотности"
+
+#: src/extensions/orbitalextension.cpp:762
+msgid "VdW Cube"
+msgstr ""
+
+#: src/extensions/orbitalextension.cpp:775
+msgid "Calculating VdW Cube"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:20
+#: src/extensions/orbitalextension.h:48 :1404
+msgid "Surfaces"
+msgstr "Поверхности"
+
+#: src/extensions/orbitalextension.h:49
+msgid "Calculate molecular orbitals and other surfaces"
+msgstr "Рассчитать молекулярные орбитали и другие поверхности"
+
+#: src/extensions/povraydialog.cpp:151
+msgid "Save POV-Ray rendered image"
+msgstr ""
+
+#: src/extensions/povraydialog.cpp:152
+msgid "Image files (*.png *.pbm)"
+msgstr "Файлы изображений (*.png *.pbm)"
+
+#: src/extensions/povrayextension.cpp:49
+msgid "POV-Ray..."
+msgstr "POV-Ray..."
+
+#: src/extensions/povrayextension.cpp:64
+msgid "Export"
+msgstr "Экспортировать"
+
+#: src/extensions/povrayextension.cpp:130
+msgid "No filename supplied."
+msgstr "Не указано имя фала."
+
+#: src/extensions/povrayextension.cpp:131
+msgid "No valid filename was supplied."
+msgstr "Не указано корректное имя фала."
+
+#: src/extensions/povrayextension.cpp:136
+msgid "Does not compute."
+msgstr ""
+
+#: src/extensions/povrayextension.cpp:137
+msgid ""
+"You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+"file. This will result in no output being saved. Are you sure that is what "
+"you want?"
+msgstr ""
+
+#: src/extensions/povrayextension.cpp:158
+#: src/extensions/povrayextension.cpp:179
+msgid "Cannot Write to File."
+msgstr "Запись в файл невозможна."
+
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:180
+#, qt-format
+msgid ""
+"Cannot write to file %1. Do you have permissions to write to that location?"
+msgstr ""
+"Не удается записать файл %1. У вас есть разрешение на запись по указанному "
+"адресу?"
+
+#: src/extensions/povrayextension.cpp:173
+msgid "POV-Ray failed to start."
+msgstr "Не удалось запустить POV-Ray."
+
+#: src/extensions/povrayextension.cpp:174
+msgid ""
+"POV-Ray failed to start. May be the path to the executable is not set "
+"correctly."
+msgstr ""
+"Не удалось запустить POV-Ray. Возможно, путь к исполняемому файлу указан "
+"неправильно."
+
+#: src/extensions/povrayextension.h:40
+msgid "POV-Ray"
+msgstr "POV-Ray"
+
+#: src/extensions/povrayextension.h:41
+msgid ""
+"Create POV-Ray files and render them using the command line POV-Ray program."
+msgstr ""
+"Создать файлы POV-Ray и отрендерить их, используя консольную программу POV-"
+"Ray."
+
+#: src/extensions/propextension.cpp:64
+msgid "Atom Properties..."
+msgstr "Свойства атома..."
+
+#: src/extensions/propextension.cpp:69
+msgid "Bond Properties..."
+msgstr "Свойства связи..."
+
+#: src/extensions/propextension.cpp:74
+msgid "Angle Properties..."
+msgstr "Свойства угла..."
+
+#: src/extensions/propextension.cpp:79
+msgid "Torsion Properties..."
+msgstr "Свойства двугранного угла..."
+
+#: src/extensions/propextension.cpp:84
+msgid "Conformer Properties..."
+msgstr "Свойства конформеров..."
+
+#: src/extensions/propextension.cpp:89
+msgid "Cartesian Editor..."
+msgstr "Редактор декартовых координат..."
+
+#: src/extensions/propextension.cpp:228
+msgid "Atom Properties"
+msgstr "Свойства атома..."
+
+#: src/extensions/propextension.cpp:231
+msgid "Bond Properties"
+msgstr "Свойства связи..."
+
+#: src/extensions/propextension.cpp:234
+msgid "Angle Properties"
+msgstr "Свойства угла"
+
+#: src/extensions/propextension.cpp:237
+msgid "Torsion Properties"
+msgstr "Свойства двугранного угла"
+
+#: src/extensions/propextension.cpp:240
+msgid "Cartesian Properties"
+msgstr "Свойства декартовых координат"
+
+#: src/extensions/propextension.cpp:243
+msgid "Conformer Properties"
+msgstr "Свойства конформеров"
+
+#: src/extensions/gamessinputdialog.ui:866
+#: src/extensions/propextension.h:43 :508
+msgid "Properties"
+msgstr "Свойства"
+
+#: src/extensions/propextension.h:44
+msgid ""
+"Windows for displaying atom, bond, angle and tosion properties. It also "
+"includes a cartesian coordinate editor."
+msgstr ""
+"Окна для отображения свойств атомов, связей, валентных и двугранных углов. "
+"Также включает редактор декартовых координат"
+
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:329 :234
+msgid "Type"
+msgstr "Тип"
+
+#: src/extensions/propmodel.cpp:331
+msgid "Element"
+msgstr "Элемент"
+
+#: src/extensions/propmodel.cpp:333
+msgid "Valence"
+msgstr "Валентность"
+
+#: src/engines/labelsettingswidget.ui:85
+#: src/engines/overlaysettingswidget.ui:84
+#: src/extensions/propmodel.cpp:335 :86 rc.cpp:146
+msgid "Partial Charge"
+msgstr "Частичный заряд"
+
+#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#, qt-format
+msgid "Atom %1"
+msgstr "Атом %1"
+
+#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+msgid "Start Atom"
+msgstr "Первый атом"
+
+#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+msgid "End Atom"
+msgstr "Последний атом"
+
+#: src/extensions/propmodel.cpp:347
+msgid "Bond Order"
+msgstr "Порядок связи"
+
+#: src/extensions/propmodel.cpp:349
+msgid "Rotatable"
+msgstr "Вращаемый"
+
+#: src/extensions/propmodel.cpp:351
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Length %1"
+msgstr "Длина %1"
+
+#: src/extensions/propmodel.cpp:355
+#, qt-format
+msgid "Bond %1"
+msgstr "Связь %1"
+
+#: src/extensions/propmodel.cpp:362
+msgid "Vertex"
+msgstr "Вершина"
+
+#: src/extensions/propmodel.cpp:366
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Angle %1"
+msgstr "Угол %1"
+
+#: src/extensions/propmodel.cpp:369
+#, qt-format
+msgid "Angle %1"
+msgstr "Угол %1"
+
+#: src/extensions/propmodel.cpp:377
+#, qt-format
+msgid "Atom Index %1"
+msgstr "Номер атома %1"
+
+#: src/extensions/propmodel.cpp:379
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Torsion %1"
+msgstr "Двугранный угол %1"
+
+#: src/extensions/propmodel.cpp:382
+#, qt-format
+msgid "Torsion %1"
+msgstr "Двугранный угол %1"
+
+#: src/extensions/propmodel.cpp:387
+#, qt-format
+msgctxt "in Angstrom"
+msgid "X %1"
+msgstr "X %1"
+
+#: src/extensions/propmodel.cpp:389
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Y %1"
+msgstr "Y %1"
+
+#: src/extensions/propmodel.cpp:391
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Z  %1"
+msgstr "Z  %1"
+
+#: src/extensions/gamessinputdialog.ui:816
+#: src/extensions/propmodel.cpp:399 :488
+msgid "Energy"
+msgstr "Энергия"
+
+#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:385
+#, qt-format
+msgid "Conformer %1"
+msgstr "Конформер %1"
+
+#: src/extensions/pythonterminalwidget.ui:14
+#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
+msgid "Python Terminal"
+msgstr "Терминал Python"
+
+#: src/extensions/pythonterminal.cpp:71
+msgid "pythonTerminalDock"
+msgstr ""
+
+#: src/extensions/pythonterminal.h:53
+msgid "Interactive python scripting terminal"
+msgstr "Интерактивный терминал для сценариев Python"
+
+#: src/extensions/qcheminputdialog.cpp:162
+msgid "Save QChem Input Deck"
+msgstr "Сохранить входной файл Q-Chem"
+
+#: src/extensions/qcheminputdialog.cpp:163
+msgid "QChem Input Deck (*.qcin)"
+msgstr "Входной файл Q-Chem (*.qcin)"
+
+#: src/extensions/selectextension.cpp:68
+msgid "&Invert Selection"
+msgstr "&Обратить выделение"
+
+#: src/extensions/selectextension.cpp:73
+msgid "Select SMARTS..."
+msgstr "Выделить SMARTS..."
+
+#: src/extensions/selectextension.cpp:78
+msgid "Select by Element..."
+msgstr "Выделить по элементу..."
+
+#: src/extensions/selectextension.cpp:83
+msgid "Select by Residue..."
+msgstr "Выделить по аминокислотному остатку..."
+
+#: src/extensions/selectextension.cpp:88
+msgid "Select Solvent"
+msgstr "Выделить растворитель"
+
+#: src/extensions/selectextension.cpp:98
+msgid "Add Named Selection..."
+msgstr "Добавить именованное выделение..."
+
+#: src/extensions/selectextension.cpp:114
+msgid "&Select"
+msgstr "&Выделить"
+
+#: src/extensions/selectextension.cpp:170
+msgid "SMARTS Selection"
+msgstr ""
+
+#: src/extensions/selectextension.cpp:171
+msgid "SMARTS pattern to select"
+msgstr ""
+
+#: src/extensions/selectextension.cpp:230
+msgid "Select by residue"
+msgstr "Выделить по аминокислотному остатку"
+
+#: src/engines/labelsettingswidget.ui:75
+#: src/engines/overlaysettingswidget.ui:74
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :82 rc.cpp:142 rc.cpp:1164
+msgid "Residue name"
+msgstr "Название аминокислотного остатка"
+
+#: src/extensions/selectextension.cpp:276
+msgid "There is no current selection."
+msgstr "Ничего не выделено"
+
+#: src/extensions/selectextension.cpp:282
+msgid "Add Named Selection"
+msgstr "Добавить именованное выделение"
+
+#: src/extensions/selectextension.cpp:282
+msgid "name"
+msgstr "имя"
+
+#: src/extensions/selectextension.cpp:288
+msgid "Name cannot be empty."
+msgstr "Имя не может быть пустым"
+
+#: src/extensions/selectextension.cpp:294
+msgid "There is already a selection with this name."
+msgstr "Выделение с этим именем уже существует"
+
+#: src/extensions/selectextension.h:41
+msgid "Selections"
+msgstr ""
+
+#: src/extensions/selectextension.h:42
+msgid "Select atoms, bonds, residues..."
+msgstr "Выделить атомы, связи, аминокислотные остатки..."
+
+#: src/extensions/shaderextension.cpp:169
+msgid "GLSL Shaders..."
+msgstr "GLSL шейдеры..."
+
+#: src/extensions/shaderextension.cpp:323
+msgid "Open a vertex shader source file"
+msgstr ""
+
+#: src/extensions/shaderextension.cpp:324
+msgid "Vertex shader files (*.vert)"
+msgstr "Файлы вершинных шейдеров (*.vert)"
+
+#: src/extensions/shaderextension.cpp:344
+msgid "Open a fragment shader source file"
+msgstr ""
+
+#: src/extensions/shaderextension.cpp:345
+msgid "Fragment shader files (*.frag)"
+msgstr ""
+
+#: src/extensions/shaderextension.cpp:355
+msgid "Open a shader parameters file"
+msgstr "Открыть файл параметров шейдеров"
+
+#: src/extensions/shaderextension.cpp:356
+msgid "Shader parameters files (*.params)"
+msgstr "Файл параметров шейдеров (*.params)"
+
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1600
+msgid "GLSL Shaders"
+msgstr "GLSL шейдеры"
+
+#: src/extensions/shaderextension.h:42
+msgid "Load and use OpenGL 2.0 GLSL shaders"
+msgstr "Загрузить и использовать GLSL шейдеры OpenGL 2.0"
+
+#: src/extensions/spectradialog.cpp:71
+msgid "X Axis"
+msgstr "Ось X"
+
+#: src/extensions/spectradialog.cpp:72
+msgid "Y Axis"
+msgstr "Ось Y"
+
+#: src/extensions/spectradialog.ui:67
+#: src/extensions/spectradialog.cpp:152 :1632
+msgid "&Appearance"
+msgstr "Внешний вид"
+
+#: src/extensions/spectradialog.ui:366
+#: src/extensions/spectradialog.cpp:153 :1676
+msgid "E&xport Image"
+msgstr "Э&кспорт изображения"
+
+#: src/extensions/spectradialog.cpp:158
+msgctxt "Infrared spectra option"
+msgid "Infrared"
+msgstr "ИК"
+
+#: src/extensions/spectradialog.cpp:159
+msgid "&Infrared Spectra Settings"
+msgstr "Настройки &ИК спектра"
+
+#: src/extensions/spectradialog.cpp:165
+msgctxt "NMR spectra option"
+msgid "NMR"
+msgstr "ЯМР"
+
+#: src/extensions/spectradialog.cpp:166
+msgid "&NMR Spectra Settings"
+msgstr "Настройки ЯМР спектров"
+
+#: src/extensions/spectradialog.cpp:173
+msgid "No data"
+msgstr "Нет данных"
+
+#: src/extensions/spectradialog.cpp:250
+msgid "Dark"
+msgstr "Темный"
+
+#: src/extensions/spectradialog.cpp:261
+msgid "Light"
+msgstr "Светлый"
+
+#: src/extensions/spectradialog.cpp:272
+msgid "Publication"
+msgstr "Публикация"
+
+#: src/extensions/spectradialog.cpp:283
+msgid "Handdrawn"
+msgstr "От руки"
+
+#: src/extensions/spectradialog.cpp:309
+msgid "New Scheme"
+msgstr "Новая схема"
+
+#: src/extensions/spectradialog.cpp:317
+msgid "Confirm Scheme Removal"
+msgstr "Подтвердить удаление схемы"
+
+#: src/extensions/spectradialog.cpp:317
+msgid "Really remove current scheme?"
+msgstr "Действительно удалить данную схему?"
+
+#: src/extensions/spectradialog.cpp:327
+msgid "Change Scheme Name"
+msgstr "Изменить название схемы"
+
+#: src/extensions/spectradialog.cpp:328
+msgid "Enter new name for current scheme:"
+msgstr "Введите новое название для данной схемы:"
+
+#: src/extensions/spectradialog.cpp:428
+msgid "Export Calculated Spectrum"
+msgstr "Экспорт рассчитанного спектра"
+
+#: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:179
+msgid "Tab Separated Values (*.tsv)"
+msgstr "Значения, разделенные табуляциями (*.tsv)"
+
+#: src/extensions/spectradialog.cpp:452
+msgid "Tab Separated Values"
+msgstr "Значения, разделенные табуляциями"
+
+#: src/extensions/spectradialog.cpp:453
+msgid "Comma Separated Values"
+msgstr "Значения, разделенные запятыми"
+
+#: src/extensions/spectradialog.cpp:454
+msgid "JCAMP-DX"
+msgstr "JCAMP-DX"
+
+#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
+#: src/extensions/spectradialog.cpp:625
+msgid "All Files"
+msgstr "Все файлы"
+
+#: src/extensions/spectradialog.cpp:457
+msgid "Import Spectra"
+msgstr "Импорт спектров"
+
+#: src/extensions/spectradialog.cpp:483
+msgid "Spectra Import"
+msgstr "Импорт спектров"
+
+#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
+#, qt-format
+msgid "Unknown extension: %1"
+msgstr "Неизвестное расширение: %1"
+
+#: src/extensions/spectradialog.cpp:529
+msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
+msgid "PWscf IR data (*.out)"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:531
+msgid "Data Format"
+msgstr "Формат данных"
+
+#: src/extensions/spectradialog.cpp:531
+msgctxt "noun, not verb"
+msgid "Format:"
+msgstr "Формат:"
+
+#: src/extensions/spectradialog.cpp:540
+msgid "Load Spectral Data"
+msgstr "Загрузить спектры"
+
+#: src/extensions/spectradialog.cpp:618
+msgid "Portable Network Graphics"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:619
+msgid "jpeg"
+msgstr "jpeg"
+
+#: src/extensions/spectradialog.cpp:620
+msgid "Tagged Image File Format"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:621
+msgid "Windows Bitmap"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:622
+msgid "Portable Pixmap"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:623
+msgid "X11 Bitmap"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:624
+msgid "X11 Pixmap"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:628
+msgid "Save Spectra Image"
+msgstr "Сохранить спектр как изображение"
+
+#: src/extensions/spectradialog.cpp:646
+msgid "Invalid Filename"
+msgstr "Неправильное имя файла"
+
+#: src/extensions/spectradialog.cpp:679
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/extensions/spectradialog.cpp:679
+#, qt-format
+msgid "A problem occurred while writing file %1"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:681
+msgid "Success!"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:681
+#, qt-format
+msgid "Image successfully written to %1"
+msgstr "Изображение успешно сохранено в файл %1"
+
+#: src/extensions/spectradialog.cpp:707
+msgid "Customi&ze <<"
+msgstr "Настроить <<"
+
+#: src/extensions/spectradialog.ui:587
+#: src/extensions/spectradialog.cpp:711 :1702
+msgid "Customi&ze >>"
+msgstr "Настроить >>"
+
+#: src/extensions/spectraextension.cpp:49
+msgid "&Spectra..."
+msgstr "&Спектры..."
+
+#: src/extensions/spectraextension.h:39
+msgid "Spectra"
+msgstr "Спектры"
+
+#: src/extensions/spectraextension.h:40
+msgid "Visualize spectral data from quantum chemistry calculations"
+msgstr "Визуализировать спектральные данные из квантовохимических расчетов"
+
+#: src/extensions/spectratype_ir.cpp:97
+msgid "No intensities"
+msgstr "Без интенсивностей"
+
+#: src/extensions/spectratype_ir.cpp:97
+msgid ""
+"The vibration data in the molecule you have loaded does not have any "
+"intensity data. Intensities have been set to an arbitrary value for "
+"visualization."
+msgstr ""
+"Информация о колебаниях данной молекулы не содержит интенсивностей. Для "
+"визуализации будут использованы произвольные значения интенсивностей"
+
+#: src/extensions/spectratype_ir.cpp:152
+msgid "Wavenumber (cm<sup>-1</sup>)"
+msgstr "Волновое число (см<sup>-1</sup>)"
+
+#: src/extensions/spectratype_nmr.cpp:278
+msgid "Shift (ppm)"
+msgstr "Химический сдвиг (м.д.)"
+
+#: src/extensions/supercellextension.cpp:57
+msgid "Super Cell Builder..."
+msgstr ""
+
+#: src/extensions/supercellextension.cpp:91
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: src/extensions/supercellextension.cpp:92
+msgid ""
+"This document is currently an isolated molecule. You need to create a unit "
+"cell."
+msgstr ""
+"Сейчас в этом документе изолированная молекула. Вам нужно создать "
+"элементарную ячеку."
+
+#: src/extensions/supercellextension.h:38
+msgid "Super Cell"
+msgstr ""
+
+#: src/extensions/supercellextension.h:39
+msgid "Build and display crystallographic super cells"
+msgstr ""
+
+#: src/extensions/templateextension.cpp:42
+msgid "First Action"
+msgstr "Первое действие"
+
+#: src/extensions/templateextension.cpp:48
+msgid "Second Action"
+msgstr "Второе действие"
+
+#: src/extensions/templateextension.cpp:70
+#: src/extensions/templateextension.cpp:73
+msgid "&Template"
+msgstr "&Шаблон"
+
+#: src/extensions/templateextension.cpp:73
+msgid "&Edit"
+msgstr "&Правка"
+
+#: src/extensions/templateextension.h:34
+msgid "Template"
+msgstr "Шаблон"
+
+#: src/extensions/templateextension.h:35
+msgid "Example extension"
+msgstr "Пример расширения"
+
+#: src/extensions/trajvideomaker.cpp:48
+msgid "GL widget was not correctly initialized in order to make a video"
+msgstr ""
+"Невозможно создать видео, т.к. виджет GL не инициализировался корректно"
+
+#: src/extensions/trajvideomaker.cpp:56
+msgid "GL widget has no molecule"
+msgstr ""
+
+#: src/extensions/trajvideomaker.cpp:62
+msgid "Building video "
+msgstr "Создание видео "
+
+#: src/extensions/trajvideomaker.cpp:109
+msgid "Video file not written."
+msgstr "Видео файл не записан."
+
+#: src/extensions/trajvideomaker.cpp:124
+msgid "Could not run povray."
+msgstr "Не могу запустить POV-Ray"
+
+#: src/extensions/trajvideomaker.cpp:147
+msgid "Could not run mencoder."
+msgstr ""
+
+#: src/extensions/trajvideomaker.cpp:158
+msgid "Set Aspect Ratio"
+msgstr ""
+
+#: src/extensions/trajvideomaker.cpp:159
+#, qt-format
+msgid ""
+"The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+"ratio %3.\n"
+"You may keep this value, for example if you intend to use POV-Ray\n"
+"to produce an image of %4x1000 pixels, or you may enter any other positive "
+"value,\n"
+"for example 1 if you intend to use POV-Ray to produce a square image, like "
+"1000x1000 pixels."
+msgstr ""
+
+#: src/extensions/unitcellextension.cpp:45
+msgid "Unit Cell Parameters..."
+msgstr "Параметры элементарной ячейки..."
+
+#: src/extensions/unitcellextension.cpp:95
+msgid ""
+"This document is currently an isolated molecule.\n"
+"\n"
+"Do you want to create a crystal unit cell?"
+msgstr ""
+"В текущем документе содержится отдельная молекула.\n"
+"Хотите ли Вы создать элементарную ячейку кристаллической решётки?"
+
+#: src/extensions/unitcellextension.h:34
+msgid "Unit Cell"
+msgstr "Элементарная ячейка"
+
+#: src/extensions/unitcellextension.h:35
+msgid "Build and display crystallographic unit cells"
+msgstr "Построить и отобразить кристаллографические элементарные ячейки"
+
+#: src/extensions/unitcellparamdialog.cpp:94
+#: src/extensions/unitcellparamdialog.cpp:99
+msgid "Apply"
+msgstr "Применить"
+
+#: src/extensions/constraintsdialog.ui:212
+#: src/extensions/unitcellparamdialog.cpp:97 :268
+msgid "OK"
+msgstr "Готово"
+
+#: src/extensions/vibrationdialog.ui:115
+#: src/extensions/vibrationdialog.cpp:162
+#: src/extensions/vibrationdialog.cpp:165 :1796
+msgid "Start &Animation"
+msgstr "Начать &анимацию"
+
+#: src/extensions/vibrationdialog.cpp:163
+msgid "Stop &Animation"
+msgstr "Остановить анимация"
+
+#: src/extensions/vibrationdialog.cpp:179
+msgid "Export Vibrational Data"
+msgstr "Экспорт колебательных данных"
+
+#: src/extensions/vibrationextension.cpp:60
+msgid "&Vibrations..."
+msgstr "&Колебания..."
+
+#: src/extensions/gamessinputdialog.ui:2549
+#: src/extensions/vibrationextension.cpp:120
+#: src/extensions/vibrationextension.cpp:219 :850
+msgid "Vibrational Analysis"
+msgstr "Колебательный анализ"
+
+#: src/extensions/vibrationextension.cpp:120
+msgid "No vibrational displacements exist."
+msgstr ""
+
+#: src/extensions/vibrationextension.cpp:219
+msgid "No vibrations have been computed for this molecule."
+msgstr "Для этой молекулы не были рассчитаны колебания"
+
+#: src/extensions/vibrationextension.h:45
+msgid "Vibration"
+msgstr "Колебание"
+
+#: src/extensions/vibrationextension.h:46
+msgid "Visualize vibrational modes from quantum chemistry calculations"
+msgstr "Показать колебательные моды из квантовохимического расчета"
+
+#: src/extensions/wiitrackextension.cpp:58
+msgid "Connect"
+msgstr "Соединить"
+
+#: src/extensions/wiitrackextension.cpp:63
+msgid "Disconnect"
+msgstr "Разъединить"
+
+#: src/extensions/wiitrackextension.cpp:83
+msgid "&WiiTrack"
+msgstr ""
+
+#: src/extensions/wiitrackextension.h:40
+msgid "Wii Tracking"
+msgstr ""
+
+#: src/extensions/wiitrackextension.h:41
+msgid "Track motion using Wii remotes"
+msgstr ""
+
+#: src/glwidget.cpp:459
+msgid ""
+"Invalid OpenGL context.\n"
+"Either something is completely broken in your OpenGL setup (can you run any "
+"OpenGL application?), or you found a bug."
+msgstr ""
+
+#: src/glwidget.cpp:464
+msgid "OpenGL error"
+msgstr "Ошибка OpenGL"
+
+#: src/glwidget.cpp:1012
+msgid "Debug Information"
+msgstr "Отладочная информация"
+
+#: src/glwidget.cpp:1013
+#, qt-format
+msgid "FPS: %L1"
+msgstr "Кадров в секунду: %L1"
+
+#: src/glwidget.cpp:1016
+#, qt-format
+msgid "View Size: %L1 x %L2"
+msgstr ""
+
+#: src/glwidget.cpp:1018
+msgid "No molecule set"
+msgstr ""
+
+#: src/glwidget.cpp:1023
+#, qt-format
+msgid "Atoms: %L1"
+msgstr "Атомы: %L1"
+
+#: src/glwidget.cpp:1026
+#, qt-format
+msgid "Bonds: %L1"
+msgstr "Связи: %L1"
+
+#: src/molecule.cpp:103
+msgctxt "Name of a new, untitled molecule file"
+msgid "untitled"
+msgstr "без названия"
+
+#: src/moleculefile.cpp:110
+#, qt-format
+msgid "OBMol: index %1 out of reach."
+msgstr "OBMol: номер %1 недостижим."
+
+#: src/moleculefile.cpp:119 src/openbabelwrapper.cpp:336
+#, qt-format
+msgid "File type '%1' is not supported for reading."
+msgstr "Чтение типа файлов '%1' не поддерживается"
+
+#: src/moleculefile.cpp:125 src/openbabelwrapper.cpp:342
+#, qt-format
+msgid "File type for file '%1' is not supported for reading."
+msgstr ""
+
+#: src/moleculefile.cpp:152
+#, qt-format
+msgid "Reading molecule with index %1 from file '%2' failed."
+msgstr "Не удалось прочитать молекулу с номером %1 из файла '%2'."
+
+#: src/moleculefile.cpp:164
+#, qt-format
+msgid "replaceMolecule: index %1 out of reach."
+msgstr ""
+
+#: src/moleculefile.cpp:173 src/openbabelwrapper.cpp:204
+#, qt-format
+msgid "File type '%1' is not supported for writing."
+msgstr "Для типа файлов '%1' не поддерживается запись."
+
+#: src/moleculefile.cpp:179 src/openbabelwrapper.cpp:211
+#, qt-format
+msgid "File type for file '%1' is not supported for writing."
+msgstr "Для типа файлов файла '%1' не поддерживается запись."
+
+#: src/moleculefile.cpp:189
+#, qt-format
+msgid "Could not open file '%1' for writing."
+msgstr "Не удалось открыть файл '%1' для записи."
+
+#: src/moleculefile.cpp:196
+#, qt-format
+msgid "Could not open file '%1' for reading."
+msgstr "Не удалось открыть файл '%1' для чтения."
+
+#: src/moleculefile.cpp:205
+#, qt-format
+msgid "Replacing molecule with index %1 in file '%2' failed."
+msgstr "Замена молекулы с номером %1 в файле '%2' не удалась."
+
+#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:325
+#, qt-format
+msgid "File %1 can not be opened for reading."
+msgstr "Файл %1 не может быть открыт для чтения."
+
+#: src/openbabelwrapper.cpp:94
+#, qt-format
+msgid "File type '%1' is not a supported for reading."
+msgstr "Файл %1 не может быть открыт для чтения."
+
+#: src/openbabelwrapper.cpp:101
+#, qt-format
+msgid "File type for file '%1' is not a supported for reading."
+msgstr "Не поддерживается чтение типа файлов файла '%1' ."
+
+#: src/openbabelwrapper.cpp:127
+#, qt-format
+msgid "Reading a molecule from file '%1' failed."
+msgstr "Не удалось прочитать молекулу из файла '%1'."
+
+#: src/openbabelwrapper.cpp:139 src/openbabelwrapper.cpp:191
+#, qt-format
+msgid "File %1 can not be opened for writing."
+msgstr "Файл %1 не может быть открыт для записи"
+
+#: src/openbabelwrapper.cpp:152
+#, qt-format
+msgid "File type '%1' is not a supported for writing."
+msgstr "Не поддерживается запись типа файлов '%1'."
+
+#: src/openbabelwrapper.cpp:159
+#, qt-format
+msgid "File type for file '%1' is not a supported for writing."
+msgstr "Не поддерживается запись для типа файлов файла '%1' ."
+
+#: src/openbabelwrapper.cpp:177
+#, qt-format
+msgid "Writing a molecule to file '%1' failed."
+msgstr "Не удалось записать молекулу в файл '%1'."
+
+#: src/openbabelwrapper.cpp:243
+#, qt-format
+msgid "Writing conformers to file '%1' failed."
+msgstr "Не удалось записать конформеры в файл '%1'."
+
+#: src/openbabelwrapper.cpp:387
+#, qt-format
+msgid "Molecule %1"
+msgstr "Молекула %1"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Периодическая система элементов Д.И. Менделеева"
+
+#: src/plugin.cpp:42
+msgid "No Description"
+msgstr "Нет описания"
+
+#: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
+msgid "Unknown Python Engine"
+msgstr "Неизвестный движок Python"
+
+#: src/pythonengine_p.cpp:100 src/pythonengine_p.cpp:108
+#: src/pythonextension_p.cpp:86 src/pythonextension_p.cpp:96
+#: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
+#: src/pythontool_p.cpp:130
+msgid "N/A"
+msgstr ""
+
+#: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
+msgid "PythonEngine: checking "
+msgstr ""
+
+#: src/pythonengine_p.cpp:242
+msgid "  - script has no 'Engine' class defined"
+msgstr ""
+
+#: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:338
+#: src/pythontool_p.cpp:342
+msgid "  - no module"
+msgstr "  - нет модуля"
+
+#: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
+msgid "Unknown Python Extension"
+msgstr "Неизвестное расширение Python"
+
+#: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
+msgid "&Scripts"
+msgstr "Сценарии"
+
+#: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
+msgid "PythonExtension: checking "
+msgstr ""
+
+#: src/pythonextension_p.cpp:333
+msgid "  - script has no 'Extension' class defined"
+msgstr ""
+
+#: src/pythontool_p.cpp:90 src/pythontool_p.cpp:98
+msgid "Unknown Python Tool"
+msgstr "Неизвестный инструмент Python"
+
+#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+msgid "PythonTool: checking "
+msgstr ""
+
+#: src/pythontool_p.cpp:337
+msgid "  - script has no 'Tool' class defined"
+msgstr ""
+
+#: src/tool.cpp:57
+msgid "Tools"
+msgstr "Инструменты"
+
+#: src/tools/aligntool.cpp:62
+msgid ""
+"Align Molecules\n"
+"\n"
+"Left Mouse: \tSelect up to two atoms.\n"
+"\tThe first atom is centered at the origin.\n"
+"\tThe second atom is aligned to the selected axis.\n"
+"Right Mouse: \tReset alignment."
+msgstr ""
+"Выровнять молекулы\n"
+"\n"
+"Левая кнопка мыши: \tВыберите не более двух атомов.\n"
+"\tПервый атом перемещается в начало координат.\n"
+"\tВторой атом выравнивается по выбранной оси.\n"
+"Правая кнопка мыши: \tСбросить выравнивание."
+
+#: src/tools/aligntool.cpp:254
+msgid "Axis:"
+msgstr "Ось:"
+
+#: src/tools/aligntool.cpp:265
+msgid "Align:"
+msgstr "Выровнять"
+
+#: src/tools/aligntool.cpp:270
+msgid "Everything"
+msgstr "Всё"
+
+#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+msgid "Molecule"
+msgstr "Молекула"
+
+#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+msgid "Align"
+msgstr "Выровнять"
+
+#: src/tools/aligntool.h:41
+msgid "Align molecules to a Cartesian axis"
+msgstr "Выровнять молекулы по осям координат"
+
+#: src/tools/aligntool.h:42
+msgid "Aign Settings"
+msgstr "Настройки выравнивания"
+
+#: src/tools/autoopttool.cpp:59
+msgid ""
+"Auto Optimization Tool\n"
+"\n"
+"Navigation Functions when Clicking in empty space.\n"
+"Left Mouse: Rotate Space\n"
+"Middle Mouse: Zoom Space\n"
+"Right Mouse: Move Space\n"
+"\n"
+"Extra Function when running\n"
+"Left Mouse: Click and drag atoms to move them"
+msgstr ""
+"Автоматическая оптимизация\n"
+"\n"
+"Функции навигации при щелчке в пустом пространстве.\n"
+"Левая кнопка мыши: Вращать пространство\n"
+"Средняя кнопка мыши: Изменить масштаб\n"
+"Правая кнопка мыши: Переместить в пространстве\n"
+"\n"
+"Дополнительная функция во время работы\n"
+"Левая кнопка мыши: Щелкните и потяните атомы чтобы переместить их"
+
+#: src/tools/autoopttool.cpp:221
+msgid "AutoOpt: Could not setup force field...."
+msgstr "AutoOpt: Невозможно установить силовое поле"
+
+#: src/tools/autoopttool.cpp:225
+#, qt-format
+msgid "AutoOpt: E = %1 %2 (dE = %3)"
+msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#: src/tools/autoopttool.cpp:254
+msgid "Force Field:"
+msgstr "Силовое поле:"
+
+#: src/tools/autoopttool.cpp:269
+msgid "Steps per Update:"
+msgstr "Шагов до обновления:"
+
+#: src/tools/autoopttool.cpp:280
+msgid "Algorithm:"
+msgstr "Алгоритм:"
+
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:283 :298
+msgid "Steepest Descent"
+msgstr "Наискорейший спуск"
+
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:284 :300
+msgid "Conjugate Gradients"
+msgstr "Сопряжённые градиенты"
+
+#: src/tools/autoopttool.cpp:285
+msgid "Molecular Dynamics (300K)"
+msgstr "Молекулярная динамика (300K)"
+
+#: src/tools/autoopttool.cpp:286
+msgid "Molecular Dynamics (600K)"
+msgstr "Молекулярная динамика (600K)"
+
+#: src/tools/autoopttool.cpp:287
+msgid "Molecular Dynamics (900K)"
+msgstr "Молекулярная динамика (900K)"
+
+#: src/tools/autoopttool.cpp:289 src/tools/autoopttool.cpp:382
+#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+msgid "Start"
+msgstr "Начать"
+
+#: src/tools/autoopttool.cpp:291
+msgid "Fixed atoms are movable"
+msgstr "Закреплённые атомы могут перемещаться"
+
+#: src/tools/autoopttool.cpp:292
+msgid "Ignored atoms are movable"
+msgstr "Игнорируемые атомы могут перемещаться"
+
+#: src/tools/autoopttool.cpp:349 src/tools/autorotatetool.cpp:220
+msgid "Stop"
+msgstr "Остановить"
+
+#: src/tools/autoopttool.cpp:559
+msgid "AutoOpt Molecule"
+msgstr "Автооптимизация молекулы"
+
+#: src/tools/autoopttool.h:94
+msgid "AutoOptimization"
+msgstr "Автооптимизация"
+
+#: src/tools/autoopttool.h:95
+msgid "Automatic optimization of molecular geometry"
+msgstr "Автоматическая оптимизация геометрии молекулы"
+
+#: src/tools/autoopttool.h:96
+msgid "AutoOptimization Settings"
+msgstr "Настройки автооптимизации"
+
+#: src/tools/autorotatetool.cpp:52
+msgid "Auto Rotation Tool"
+msgstr "Инструмент автоматического вращения"
+
+#: src/tools/autorotatetool.cpp:245
+msgid "x rotation:"
+msgstr "вращение по оси Х:"
+
+#: src/tools/autorotatetool.cpp:251
+msgid "x rotation"
+msgstr "вращение по оси Х:"
+
+#: src/tools/autorotatetool.cpp:261
+msgid "y rotation:"
+msgstr "вращение по оси Y:"
+
+#: src/tools/autorotatetool.cpp:266
+msgid "y rotation"
+msgstr "вращение по оси Y:"
+
+#: src/tools/autorotatetool.cpp:276
+msgid "z rotation:"
+msgstr "вращение по оси Z:"
+
+#: src/tools/autorotatetool.cpp:281
+msgid "z rotation"
+msgstr "вращение по оси Z:"
+
+#: src/extensions/gaussianinputdialog.ui:498
+#: src/extensions/molproinputdialog.ui:436
+#: src/extensions/mopacinputdialog.ui:347
+#: src/extensions/nwcheminputdialog.ui:432
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:292 :990 rc.cpp:1270 rc.cpp:1328
+msgid "Reset"
+msgstr "Сброс"
+
+#: src/tools/autorotatetool.h:53
+msgid "AutoRotate"
+msgstr "Автоматическое вращение"
+
+#: src/tools/autorotatetool.h:54
+msgid "Automatic rotation of molecules"
+msgstr "Автоматическое вращение молекул"
+
+#: src/tools/autorotatetool.h:55
+msgid "AutoRotate Settings"
+msgstr "Настройки автоматического вращения"
+
+#: src/tools/bondcentrictool.cpp:79
+msgid ""
+"Bond Centric Manipulation Tool\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view\n"
+"\n"
+"Left Click & drag on a Bond to set the Manipulation Plane:\n"
+"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"- Right Click & Drag one of the Atoms in the Bond to change the length"
+msgstr ""
+
+#: src/tools/bondcentrictool.cpp:791
+#, qt-format
+msgctxt "%L1 is the length of the bond"
+msgid "Bond Length: %L1"
+msgstr "Длина связи: %L1"
+
+#: src/tools/bondcentrictool.cpp:1597
+msgid " Show Angles"
+msgstr " Показать углы"
+
+#: src/tools/bondcentrictool.cpp:1600
+msgid " Snap-to Bonds"
+msgstr " Привязка к связям"
+
+#: src/tools/bondcentrictool.cpp:1603
+msgid "Snap-to Threshold: "
+msgstr "Порог привязки: "
+
+#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+msgid "Bond Centric Manipulation"
+msgstr ""
+
+#: src/tools/bondcentrictool.h:65
+msgid "Bond Centric Manipulate"
+msgstr ""
+
+#: src/tools/bondcentrictool.h:66
+msgid "Manipulation of bond lengths, angles, and torsions"
+msgstr ""
+
+#: src/tools/bondcentrictool.h:67
+msgid "Bond Centric Manipulate Settings"
+msgstr ""
+
+#: src/tools/clickmeasuretool.cpp:56
+msgid ""
+"Click to Measure (F12)\n"
+"\n"
+"Left Mouse: \tSelect up to three Atoms.\n"
+"\tDistances are measured between 1-2 and 2-3\n"
+"\tAngle is measured between 1-3 using 2 as the common point\n"
+"Right Mouse: Reset the measurements."
+msgstr ""
+"Щелкните для измерения (F12)\n"
+"\n"
+"Левая кнопка мыши: \tВыбрать до трех атомов.\n"
+"\tРасстояния измеряются между 1-2 и 2-3\n"
+"\tУгол измеряется между 1-3, используя 2 как общую точку\n"
+"Правая кнопка мыши: Сбросить измерения."
+
+#: src/tools/clickmeasuretool.cpp:147
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (1->2): %L1 %2"
+msgstr "Расстояние (1->2): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:165
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (2->3): %L1 %2"
+msgstr "Расстояние (2->3): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:174
+#, qt-format
+msgid "Angle: %L1 °"
+msgstr "Угол: %L1 °"
+
+#: src/tools/clickmeasuretool.cpp:194
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (3->4): %L1 %2"
+msgstr "Расстояние (3->4): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:210
+#, qt-format
+msgid "Dihedral Angle: %1 °"
+msgstr "Двуганный угол: %1 °"
+
+#: src/tools/clickmeasuretool.cpp:250
+msgctxt "*1 is a number. You most likely do not need to translate this"
+msgid "*1"
+msgstr "*1"
+
+#: src/tools/clickmeasuretool.cpp:258
+msgctxt "*2 is a number. You most likely do not need to translate this"
+msgid "*2"
+msgstr "*2"
+
+#: src/tools/clickmeasuretool.cpp:267
+msgctxt "*3 is a number. You most likely do not need to translate this"
+msgid "*3"
+msgstr "*3"
+
+#: src/tools/clickmeasuretool.cpp:276
+msgctxt "*4 is a number. You most likely do not need to translate this"
+msgid "*4"
+msgstr "*4"
+
+#: src/tools/clickmeasuretool.cpp:280
+msgid "Distance(s):"
+msgstr "Расстояние(я):"
+
+#: src/tools/clickmeasuretool.h:48
+msgid "Measure"
+msgstr "Измерение"
+
+#: src/tools/clickmeasuretool.h:49
+msgid "Measure bond lengths, angles, and dihedrals"
+msgstr "Измерить длины связей, углы и двугранные углы"
+
+#: src/tools/clickmeasuretool.h:50
+msgid "Measure Settings"
+msgstr "Настройки измерения"
+
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1816
+msgid "Add Atom"
+msgstr "Добавить атом"
+
+#: src/tools/drawcommand.cpp:383
+msgid "Delete Atom"
+msgstr "Удалить атом"
+
+#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+msgid "Add Bond"
+msgstr "Добавить связь"
+
+#: src/tools/drawcommand.cpp:718
+msgid "Delete Bond"
+msgstr "Удалить связь"
+
+#: src/tools/drawcommand.cpp:787
+msgid "Change Element"
+msgstr "Изменить элемент"
+
+#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+msgid "Change Bond Order"
+msgstr "Изменить порядок связи"
+
+#: src/tools/drawtool.cpp:85
+msgid ""
+"Draw Tool (F8)\n"
+"\n"
+"Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+"Right Mouse: Delete Atom"
+msgstr ""
+"Рисованиеl (F8)\n"
+"\n"
+"Левая кнопка мыши: \tЩелкните мышкой и протяните, чтобы создать атомы и "
+"связи\n"
+"Правая кнопка мыши: Удалить атом"
+
+#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+msgid "Draw Atom"
+msgstr "Нарисовать атом"
+
+#: src/tools/drawtool.cpp:423
+msgid "Draw Bond"
+msgstr "Нарисовать связь"
+
+#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+msgid "Draw"
+msgstr "Рисовать"
+
+#: src/tools/drawtool.cpp:711
+msgid "Element:"
+msgstr "Элемент:"
+
+#: src/extensions/gamessinputdialog.ui:1213
+#: src/tools/drawtool.cpp:738 :602
+msgid "Other..."
+msgstr "Другой..."
+
+#: src/tools/drawtool.cpp:742
+msgid "Bond Order:"
+msgstr "Порядок связи:"
+
+#: src/tools/drawtool.cpp:747
+msgid "Single"
+msgstr "Одинарная"
+
+#: src/tools/drawtool.cpp:748
+msgid "Double"
+msgstr "Двойная"
+
+#: src/tools/drawtool.cpp:749
+msgid "Triple"
+msgstr "Тройная"
+
+#: src/tools/drawtool.cpp:764
+msgid "Adjust Hydrogens"
+msgstr "Автодобавление водородов"
+
+#: src/tools/drawtool.h:54
+msgid "Draw and edit atoms and bonds"
+msgstr "Нарисовать и редактировать атомы и связи"
+
+#: src/tools/drawtool.h:55
+msgid "Draw Settings"
+msgstr "Настройки рисования"
+
+#: src/tools/manipulatetool.cpp:51
+msgid ""
+"Manipulation Tool (F10)\n"
+"\n"
+"Left Mouse:   Click and drag to move atoms\n"
+"Middle Mouse: Click and drag to move atoms further away or closer\n"
+"Right Mouse:  Click and drag to rotate selected atoms."
+msgstr ""
+
+#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
+msgid "Manipulate Atom"
+msgstr ""
+
+#: src/tools/manipulatetool.h:53
+msgid "Manipulate"
+msgstr ""
+
+#: src/tools/manipulatetool.h:54
+msgid "Translate, rotate, and adjust atoms and fragments"
+msgstr "Переместить, повернуть и подогнать атомы и фрагменты"
+
+#: src/tools/manipulatetool.h:55
+msgid "Manipulate Settings"
+msgstr ""
+
+#: src/tools/navigatetool.cpp:60
+msgid ""
+"Navigation Tool (F9)\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view"
+msgstr ""
+
+#: src/tools/navigatetool.h:52
+msgid "Navigate"
+msgstr "Навигация"
+
+#: src/tools/navigatetool.h:53
+msgid "Translate, rotate, and zoom around the current view"
+msgstr ""
+
+#: src/tools/navigatetool.h:54
+msgid "Navigate Settings"
+msgstr "Настройки навигации"
+
+#: src/tools/selectrotatetool.cpp:58
+msgid ""
+"Selection Tool (F11)\n"
+"Click to pick individual atoms, residues, or fragments\n"
+"Drag to select a range of atoms\n"
+"Use Ctrl to toggle the selection and shift to add to the selection"
+msgstr ""
+"Инструмент выделения (F11)\n"
+"Щелкните, чтобы выбрать индивидуальные атомы, остатки или фрагменты\n"
+"Протяните мышкой для выбора группы атомов\n"
+"Используйте Ctrl для выбора выделения и Shift для добавления к выделению"
+
+#: src/tools/selectrotatetool.cpp:411
+msgid "Selection Mode:"
+msgstr "Режим выделения:"
+
+#: src/tools/selectrotatetool.cpp:416
+msgid "Atom/Bond"
+msgstr "Атом/Связь"
+
+#: src/tools/selectrotatetool.cpp:417
+msgid "Residue"
+msgstr "Аминокислотный остаток"
+
+#: src/tools/selectrotatetool.h:51
+msgid "Selection"
+msgstr "Выделение"
+
+#: src/tools/selectrotatetool.h:52
+msgid "Select atoms, residues, and molecules"
+msgstr "ВЫделить атомы, остатки и молекулы"
+
+#: src/tools/selectrotatetool.h:53
+msgid "Selection Settings"
+msgstr "Настройки выделения"
+
+#: src/tools/zmatrixmodel.cpp:78
+msgid "Symbol"
+msgstr "Символ"
+
+#: src/tools/zmatrixmodel.cpp:86
+msgid "Bond Length"
+msgstr "Длина связи"
+
+#: src/tools/zmatrixmodel.cpp:89
+msgid "Bond Angle"
+msgstr "Валентный угол"
+
+#: src/tools/zmatrixmodel.cpp:92
+msgid "Dihedral Angle"
+msgstr "Двугранный угол"
+
+#: src/tools/zmatrixtool.cpp:86
+msgid "Z Matrix Editor..."
+msgstr "Редактор Z-матриц"
+
+#: src/extensions/gamessinputdialog.ui:1536
+#: src/tools/zmatrixtool.h:39 :660
+msgid "Z-Matrix"
+msgstr "Z-матрица"
+
+#: src/tools/zmatrixtool.h:40
+msgid "Create/edit a z-matrix"
+msgstr "Создать/редактировать Z-матрицу"
+
+#: src/tools/zmatrixtool.h:41
+msgid "Z-Matrix Settings"
+msgstr "Настройки Z-матрицы"
+
+#: src/colors/residuecolorsettings.ui:13
+msgid "Residue Color Settings"
+msgstr "Настройка цветов аминокислотных остатков"
+
+#: src/colors/residuecolorsettings.ui:19
+msgid "Color residues by:"
+msgstr ""
+
+#: src/colors/residuecolorsettings.ui:27
+msgid "Amino Colors"
+msgstr ""
+
+#: src/colors/residuecolorsettings.ui:32
+msgid "Shapely Colors"
+msgstr ""
+
+#: src/colors/residuecolorsettings.ui:37
+msgid "Hydrophobicity"
+msgstr "Гидрофобность"
+
+#: src/engines/bsdysettingswidget.ui:18
+msgid "Atom Radius:"
+msgstr "Радиус атома:"
+
+#: src/engines/bsdysettingswidget.ui:47
+msgid "Bond Radius:"
+msgstr "Радиус связи:"
+
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/orbitalsettingswidget.ui:30
+#: src/engines/ringsettingswidget.ui:16
+#: src/engines/surfacesettingswidget.ui:17
+msgid "Opacity:"
+msgstr "Непрозрачность:"
+
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
+msgid "Show Multiple Bonds"
+msgstr "Показывать кратные связи"
+
+#: src/engines/cartoonsettingswidget.ui:17
+msgid "Shape"
+msgstr ""
+
+#: src/engines/cartoonsettingswidget.ui:23
+#: src/engines/cartoonsettingswidget.ui:311
+msgid "Helix"
+msgstr "Спираль"
+
+#: src/engines/cartoonsettingswidget.ui:45
+#: src/engines/cartoonsettingswidget.ui:138
+#: src/engines/cartoonsettingswidget.ui:231
+msgid "a"
+msgstr "a"
+
+#: src/engines/cartoonsettingswidget.ui:68
+#: src/engines/cartoonsettingswidget.ui:161
+#: src/engines/cartoonsettingswidget.ui:254
+msgid "b"
+msgstr "b"
+
+#: src/engines/cartoonsettingswidget.ui:91
+#: src/engines/cartoonsettingswidget.ui:184
+#: src/engines/cartoonsettingswidget.ui:277
+msgid "c"
+msgstr "c"
+
+#: src/engines/cartoonsettingswidget.ui:116
+#: src/engines/cartoonsettingswidget.ui:334
+msgid "Sheet"
+msgstr ""
+
+#: src/engines/cartoonsettingswidget.ui:209
+#: src/engines/cartoonsettingswidget.ui:357
+#: src/extensions/animationdialog.ui:169
+#: src/extensions/gamessinputdialog.ui:1904
+#: src/extensions/linmorphdialog.ui:181
+msgid "Loop"
+msgstr ""
+
+#: src/engines/cartoonsettingswidget.ui:305
+msgid "Colors"
+msgstr "Цвета"
+
+#: src/engines/dipolesettingswidget.ui:22
+msgid "Dipole:"
+msgstr "Дипоь:"
+
+#: src/engines/dipolesettingswidget.ui:54
+msgid "Dipole Moment"
+msgstr "Дипольный момент"
+
+#: src/engines/dipolesettingswidget.ui:59
+msgid "Custom Value"
+msgstr ""
+
+#: src/engines/dipolesettingswidget.ui:70
+msgid "Custom:"
+msgstr ""
+
+#: src/engines/hbondsettingswidget.ui:16
+msgid "Width:"
+msgstr ""
+
+#: src/engines/hbondsettingswidget.ui:57
+msgid "Cut-off radius:"
+msgstr ""
+
+#: src/engines/hbondsettingswidget.ui:64
+#: src/extensions/insertpeptidedialog.ui:454
+msgid "A"
+msgstr "A"
+
+#: src/engines/hbondsettingswidget.ui:74
+#: src/extensions/insertpeptidedialog.ui:394
+#: src/extensions/insertpeptidedialog.ui:410
+msgid "°"
+msgstr "°"
+
+#: src/engines/hbondsettingswidget.ui:90
+msgid "Cut-off angle:"
+msgstr ""
+
+#: src/engines/labelsettingswidget.ui:23
+#: src/engines/overlaysettingswidget.ui:22
+msgid "Atom Labels:"
+msgstr "Подписи атомов:"
+
+#: src/engines/labelsettingswidget.ui:60
+#: src/engines/overlaysettingswidget.ui:59
+msgid "Atom number"
+msgstr "Номер атома"
+
+#: src/engines/labelsettingswidget.ui:65
+#: src/engines/overlaysettingswidget.ui:64
+msgid "Element name"
+msgstr "Название элемента"
+
+#: src/engines/labelsettingswidget.ui:70
+#: src/engines/overlaysettingswidget.ui:69
+msgid "Element symbol"
+msgstr "Символ элемента"
+
+#: src/engines/labelsettingswidget.ui:80
+#: src/engines/overlaysettingswidget.ui:79
+msgid "Residue number"
+msgstr "Номер аминокислотного остатка"
+
+#: src/engines/labelsettingswidget.ui:90
+#: src/engines/labelsettingswidget.ui:160
+msgid "Unique ID"
+msgstr "Уникальный ID"
+
+#: src/engines/labelsettingswidget.ui:95
+msgid "Symbol & Atom Number"
+msgstr "Символ и номер атома"
+
+#: src/engines/labelsettingswidget.ui:100
+msgid "Custom Data"
+msgstr ""
+
+#: src/engines/labelsettingswidget.ui:108
+#: src/engines/overlaysettingswidget.ui:92
+msgid "Bond Labels:"
+msgstr "Подписи связей:"
+
+#: src/engines/labelsettingswidget.ui:145
+#: src/engines/overlaysettingswidget.ui:129
+msgid "Bond length"
+msgstr "Длина связи"
+
+#: src/engines/labelsettingswidget.ui:150
+#: src/engines/overlaysettingswidget.ui:134
+msgid "Bond number"
+msgstr "Номер связи"
+
+#: src/engines/labelsettingswidget.ui:155
+#: src/engines/overlaysettingswidget.ui:139
+msgid "Bond order"
+msgstr "Порядок связи"
+
+#: src/engines/orbitalsettingswidget.ui:17
+msgid "Orbital:"
+msgstr "Орбиталь:"
+
+#: src/engines/orbitalsettingswidget.ui:74
+#: src/engines/surfacesettingswidget.ui:58
+msgid "Render:"
+msgstr ""
+
+#: src/engines/orbitalsettingswidget.ui:85
+#: src/engines/surfacesettingswidget.ui:66
+msgid "Fill"
+msgstr "Заливка"
+
+#: src/engines/orbitalsettingswidget.ui:90
+#: src/engines/ribbonsettingswidget.ui:29
+#: src/engines/surfacesettingswidget.ui:71
+msgid "Lines"
+msgstr "Линии"
+
+#: src/engines/orbitalsettingswidget.ui:95
+#: src/engines/surfacesettingswidget.ui:76
+msgid "Points"
+msgstr "Точки"
+
+#: src/engines/orbitalsettingswidget.ui:103
+#: src/engines/surfacesettingswidget.ui:108
+msgid "Draw Box:"
+msgstr ""
+
+#: src/engines/orbitalsettingswidget.ui:129
+msgid "Style:"
+msgstr "Стиль:"
+
+#: src/engines/orbitalsettingswidget.ui:140
+msgid "Selected Colors"
+msgstr "Выбранные цвета"
+
+#: src/engines/orbitalsettingswidget.ui:145
+msgid "Mapped Colors"
+msgstr ""
+
+#: src/engines/orbitalsettingswidget.ui:153
+msgid "Colors:"
+msgstr "Цвета:"
+
+#: src/engines/orbitalsettingswidget.ui:165
+msgid "Positive"
+msgstr ""
+
+#: src/engines/orbitalsettingswidget.ui:188
+msgid "Negative"
+msgstr ""
+
+#: src/engines/ribbonsettingswidget.ui:16
+msgid "Rendering:"
+msgstr "Рендеринг:"
+
+#: src/engines/ribbonsettingswidget.ui:24
+msgid "Backbone"
+msgstr "Каркас"
+
+#: src/engines/ribbonsettingswidget.ui:37
+#: src/engines/sticksettingswidget.ui:16
+msgid "Radius:"
+msgstr "Радиус:"
+
+#: src/engines/ribbonsettingswidget.ui:91
+msgid "Include Nitrogens"
+msgstr "Включить атомы азота"
+
+#: src/engines/spheresettingswidget.ui:16
+msgid "VdW Opacity:"
+msgstr "Непрозрачность ван-дер-ваальсовых поверхностей"
+
+#: src/engines/surfacesettingswidget.ui:84
+msgid "Color:"
+msgstr "Цвет:"
+
+#: src/engines/surfacesettingswidget.ui:100
+msgid "Electrostatic Potential (ESP)"
+msgstr "Электростатический потенциал (ESP)"
+
+#: src/engines/wiresettingswidget.ui:18
+msgid "Show Atoms"
+msgstr "Показать атомы"
+
+#: src/extensions/animationdialog.ui:14
+msgid "Animate Trajectory"
+msgstr "Анимировать траекторию"
+
+#: src/extensions/animationdialog.ui:25
+msgid "Load File..."
+msgstr "Загрузить файл..."
+
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
+msgid "0/0"
+msgstr "0/0"
+
+#: src/extensions/animationdialog.ui:162
+msgid "Dynamic Bonds"
+msgstr ""
+
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
+msgid "fps"
+msgstr "кадров/с"
+
+#: src/extensions/animationdialog.ui:216
+msgid "Save as .avi..."
+msgstr "Сохранить как .avi..."
+
+#: src/extensions/conformersearchdialog.ui:13
+msgid "Conformer Search"
+msgstr "Поиск конформеров"
+
+#: src/extensions/conformersearchdialog.ui:19
+#: src/extensions/constraintsdialog.ui:132
+#: src/extensions/vibrationdialog.ui:58
+msgid "Options"
+msgstr "Параметры"
+
+#: src/extensions/conformersearchdialog.ui:25
+msgid "Number of atoms:"
+msgstr "Число атомов:"
+
+#: src/extensions/conformersearchdialog.ui:32
+msgid "Number of rotatable bonds:"
+msgstr "Число вращаемых связей"
+
+#: src/extensions/conformersearchdialog.ui:41
+msgid "Number of conformers"
+msgstr "Число конформеров"
+
+#: src/extensions/conformersearchdialog.ui:60
+#: src/extensions/gamessinputdialog.ui:2559
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
+#: src/extensions/pocketdialog.ui:34
+msgid "Method"
+msgstr "Метод"
+
+#: src/extensions/conformersearchdialog.ui:66
+msgid "Systematic rotor search"
+msgstr "Систематический поиск внутренних вращений"
+
+#: src/extensions/conformersearchdialog.ui:73
+msgid "Random rotor search"
+msgstr "Случайный поиск внутренних вращений"
+
+#: src/extensions/conformersearchdialog.ui:80
+msgid "Weighted rotor search"
+msgstr ""
+
+#: src/extensions/constraintsdialog.ui:13
+msgid "Constraints"
+msgstr "Ограничения"
+
+#: src/extensions/constraintsdialog.ui:26
+msgid "Add Constraints"
+msgstr "Добавить ограничения"
+
+#: src/extensions/constraintsdialog.ui:48
+msgid "Ignore Atom"
+msgstr "Игнорировать атом"
+
+#: src/extensions/constraintsdialog.ui:53
+msgid "Fix Atom"
+msgstr "Зафиксировать атом"
+
+#: src/extensions/constraintsdialog.ui:58
+msgid "Fix Atom X"
+msgstr "Зафиксировать координату X атома"
+
+#: src/extensions/constraintsdialog.ui:63
+msgid "Fix Atom Y"
+msgstr "Зафиксировать координату Y атома"
+
+#: src/extensions/constraintsdialog.ui:68
+msgid "Fix Atom Z"
+msgstr "Зафиксировать координату Z атома"
+
+#: src/extensions/constraintsdialog.ui:73
+msgid "Distance"
+msgstr "Расстояние"
+
+#: src/extensions/constraintsdialog.ui:78
+msgid "Angle"
+msgstr "Угол"
+
+#: src/extensions/constraintsdialog.ui:83
+msgid "Torsion angle"
+msgstr "Торсионный угол"
+
+#: src/extensions/constraintsdialog.ui:91
+msgid "Constraint Value"
+msgstr "Значение ограничения"
+
+#: src/extensions/constraintsdialog.ui:101
+msgid "Atom Indices"
+msgstr ""
+
+#: src/extensions/constraintsdialog.ui:120
+msgid "Add"
+msgstr "Добавить"
+
+#: src/extensions/constraintsdialog.ui:143
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/extensions/constraintsdialog.ui:153
+msgid "Load"
+msgstr "Загрузить"
+
+#: src/extensions/constraintsdialog.ui:185
+msgid "Delete Selected"
+msgstr "Удалить выбранное"
+
+#: src/extensions/constraintsdialog.ui:192
+msgid "Delete All"
+msgstr "Удалить всё"
+
+#: src/extensions/fileimportdialog.ui:19
+msgid "File Import..."
+msgstr "импорт файла..."
+
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
+msgid "Filename:"
+msgstr "Имя файла:"
+
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
+#: src/extensions/shaderdialog.ui:115
+msgid "Browse..."
+msgstr "Обзор..."
+
+#: src/extensions/fileimportdialog.ui:46
+msgid "Par File:"
+msgstr ""
+
+#: src/extensions/fileimportdialog.ui:67
+msgid "Attempt to perceive bonds?"
+msgstr ""
+
+#: src/extensions/fileimportdialog.ui:70
+msgid "Perceive bonds?"
+msgstr ""
+
+#: src/extensions/forcefielddialog.ui:13
+msgid "Setup Force Field"
+msgstr "Настроить силовое поле"
+
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
+msgid "Force Field"
+msgstr "Силовое поле"
+
+#: src/extensions/forcefielddialog.ui:42
+msgid "Ghemical"
+msgstr "Ghemical"
+
+#: src/extensions/forcefielddialog.ui:59
+#: src/extensions/gaussianinputdialog.ui:68
+#: src/extensions/molproinputdialog.ui:69
+#: src/extensions/mopacinputdialog.ui:68
+#: src/extensions/nwcheminputdialog.ui:69
+#: src/extensions/qcheminputdialog.ui:69
+msgid "Geometry Optimization"
+msgstr "Оптимизация геометрии"
+
+#: src/extensions/forcefielddialog.ui:65
+msgid "Number of steps"
+msgstr "Число шагов"
+
+#: src/extensions/forcefielddialog.ui:82
+msgid "Algorithm"
+msgstr "Алгоритм"
+
+#: src/extensions/forcefielddialog.ui:103
+msgid "Convergence"
+msgstr "Порог сходимости"
+
+#: src/extensions/forcefielddialog.ui:113
+msgid "10e-"
+msgstr "10e-"
+
+#: src/extensions/gamessefpmatchdialog.ui:16
+msgid "EFP Matches"
+msgstr ""
+
+#: src/extensions/gamessefpmatchdialog.ui:25
+msgid "Group Label:"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:13
+msgid "GAMESS Input"
+msgstr "Входной файл GAMESS"
+
+#: src/extensions/gamessinputdialog.ui:23
+msgid "&Basic Setup"
+msgstr "&Основные параметры"
+
+#: src/extensions/gamessinputdialog.ui:32
+#: src/extensions/gamessinputdialog.ui:660
+#: src/extensions/gaussianinputdialog.ui:149
+#: src/extensions/mopacinputdialog.ui:202
+msgid "AM1"
+msgstr "AM1"
+
+#: src/extensions/gamessinputdialog.ui:37
+#: src/extensions/gamessinputdialog.ui:665
+#: src/extensions/gaussianinputdialog.ui:154
+#: src/extensions/mopacinputdialog.ui:217
+msgid "PM3"
+msgstr "PM3"
+
+#: src/extensions/gamessinputdialog.ui:42
+#: src/extensions/gamessinputdialog.ui:947
+#: src/extensions/gaussianinputdialog.ui:159
+msgid "RHF"
+msgstr "RHF"
+
+#: src/extensions/gamessinputdialog.ui:47
+#: src/extensions/gamessinputdialog.ui:2278
+#: src/extensions/gaussianinputdialog.ui:164
+#: src/extensions/molproinputdialog.ui:143
+#: src/extensions/nwcheminputdialog.ui:143
+#: src/extensions/qcheminputdialog.ui:143
+msgid "B3LYP"
+msgstr "B3LYP"
+
+#: src/extensions/gamessinputdialog.ui:52
+#: src/extensions/gamessinputdialog.ui:384
+#: src/extensions/gaussianinputdialog.ui:169
+#: src/extensions/molproinputdialog.ui:138
+#: src/extensions/nwcheminputdialog.ui:138
+#: src/extensions/qcheminputdialog.ui:138
+msgid "MP2"
+msgstr "MP2"
+
+#: src/extensions/gamessinputdialog.ui:57
+#: src/extensions/gamessinputdialog.ui:1134
+#: src/extensions/molproinputdialog.ui:153
+msgid "CCSD(T)"
+msgstr "CCSD(T)"
+
+#: src/extensions/gamessinputdialog.ui:66
+#: src/extensions/gamessinputdialog.ui:575
+#: src/extensions/gaussianinputdialog.ui:213
+#: src/extensions/molproinputdialog.ui:192
+#: src/extensions/nwcheminputdialog.ui:187
+#: src/extensions/qcheminputdialog.ui:202
+msgid "STO-3G"
+msgstr "STO-3G"
+
+#: src/extensions/gamessinputdialog.ui:71
+#: src/extensions/gamessinputdialog.ui:560
+msgid "MINI"
+msgstr "MINI"
+
+#: src/extensions/gamessinputdialog.ui:76
+#: src/extensions/gamessinputdialog.ui:595
+#: src/extensions/gaussianinputdialog.ui:218
+#: src/extensions/molproinputdialog.ui:197
+#: src/extensions/nwcheminputdialog.ui:192
+#: src/extensions/qcheminputdialog.ui:207
+msgid "3-21G"
+msgstr "3-21G"
+
+#: src/extensions/gamessinputdialog.ui:81
+#: src/extensions/gaussianinputdialog.ui:223
+#: src/extensions/molproinputdialog.ui:202
+#: src/extensions/nwcheminputdialog.ui:197
+#: src/extensions/qcheminputdialog.ui:212
+msgid "6-31G(d)"
+msgstr "6-31G(d)"
+
+#: src/extensions/gamessinputdialog.ui:86
+#: src/extensions/gaussianinputdialog.ui:228
+#: src/extensions/molproinputdialog.ui:207
+#: src/extensions/nwcheminputdialog.ui:202
+#: src/extensions/qcheminputdialog.ui:217
+msgid "6-31G(d,p)"
+msgstr "6-31G(d,p)"
+
+#: src/extensions/gamessinputdialog.ui:91
+msgid "6-31+G(d,p)"
+msgstr "6-31+G(d,p)"
+
+#: src/extensions/gamessinputdialog.ui:96
+msgid "6-31+G(2d,p)"
+msgstr "6-31+G(2d,p)"
+
+#: src/extensions/gamessinputdialog.ui:101
+msgid "6-311++G(2d,p)"
+msgstr "6-311++G(2d,p)"
+
+#: src/extensions/gamessinputdialog.ui:106
+msgid "Core Potential"
+msgstr "Псевдопотенциал"
+
+#: src/extensions/gamessinputdialog.ui:132
+#: src/extensions/mopacinputdialog.ui:143
+msgid "Singlet"
+msgstr "Синглет"
+
+#: src/extensions/gamessinputdialog.ui:137
+#: src/extensions/mopacinputdialog.ui:148
+msgid "Doublet"
+msgstr "Дублет"
+
+#: src/extensions/gamessinputdialog.ui:142
+#: src/extensions/mopacinputdialog.ui:153
+msgid "Triplet"
+msgstr "Триплет"
+
+#: src/extensions/gamessinputdialog.ui:151
+msgid "Dication"
+msgstr "Дикатион"
+
+#: src/extensions/gamessinputdialog.ui:156
+msgid "Cation"
+msgstr "Катион"
+
+#: src/extensions/gamessinputdialog.ui:161
+msgid "Neutral"
+msgstr "Нейтральная"
+
+#: src/extensions/gamessinputdialog.ui:166
+msgid "Anion"
+msgstr "Анион"
+
+#: src/extensions/gamessinputdialog.ui:171
+msgid "Dianion"
+msgstr "Дианион"
+
+#: src/extensions/gamessinputdialog.ui:194
+msgid "On:"
+msgstr "Для:"
+
+#: src/extensions/gamessinputdialog.ui:210
+msgid "Single Point Entry"
+msgstr "В одной точке"
+
+#: src/extensions/gamessinputdialog.ui:215
+msgid "Equilibrium Geometry"
+msgstr "Равновесная геометрия"
+
+#: src/extensions/gamessinputdialog.ui:220
+msgid "Transition State"
+msgstr "Переходное состояние"
+
+#: src/extensions/gamessinputdialog.ui:225
+#: src/extensions/gaussianinputdialog.ui:73
+#: src/extensions/molproinputdialog.ui:74
+#: src/extensions/mopacinputdialog.ui:73
+#: src/extensions/nwcheminputdialog.ui:74
+#: src/extensions/qcheminputdialog.ui:74
+msgid "Frequencies"
+msgstr "Частоты колебаний"
+
+#: src/extensions/gamessinputdialog.ui:251
+msgid "Gas"
+msgstr "газовой фазе"
+
+#: src/extensions/gamessinputdialog.ui:256
+msgid "Water"
+msgstr "воде"
+
+#: src/extensions/gamessinputdialog.ui:279
+#: src/extensions/gamessinputdialog.ui:2674
+msgid "Calculate"
+msgstr "Рассчитать"
+
+#: src/extensions/gamessinputdialog.ui:289
+msgid "With:"
+msgstr "С помощью:"
+
+#: src/extensions/gamessinputdialog.ui:299
+#: src/extensions/orbitaldialog.ui:556
+#: src/extensions/orbitaldialog.ui:773
+msgid "In:"
+msgstr "В:"
+
+#: src/extensions/gamessinputdialog.ui:326
+msgid "&Advanced Setup"
+msgstr "Расширенные настройки"
+
+#: src/extensions/gamessinputdialog.ui:360
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: src/extensions/gamessinputdialog.ui:365
+msgid "Basis"
+msgstr "Базис"
+
+#: src/extensions/gamessinputdialog.ui:370
+msgid "Control"
+msgstr "Управление"
+
+#: src/extensions/gamessinputdialog.ui:374
+msgid "SCF"
+msgstr "SCF"
+
+#: src/extensions/gamessinputdialog.ui:379
+msgid "DFT"
+msgstr "DFT"
+
+#: src/extensions/gamessinputdialog.ui:389
+#: src/extensions/gamessinputdialog.ui:826
+msgid "Hessian"
+msgstr "Гессиан"
+
+#: src/extensions/gamessinputdialog.ui:394
+msgid "Stat Point"
+msgstr "Стационарная точка"
+
+#: src/extensions/gamessinputdialog.ui:400
+msgid "Data"
+msgstr "Данные"
+
+#: src/extensions/gamessinputdialog.ui:405
+msgid "System"
+msgstr "Система"
+
+#: src/extensions/gamessinputdialog.ui:410
+msgid "MO Guess"
+msgstr "Начальное приближение МО"
+
+#: src/extensions/gamessinputdialog.ui:415
+msgid "Misc"
+msgstr "Прочее"
+
+#: src/extensions/gamessinputdialog.ui:436
+msgid "#D Heavy Atom Polarization Functions:"
+msgstr "Количество поляризационных функций D на тяжелых атомах"
+
+#: src/extensions/gamessinputdialog.ui:454
+msgid "Read"
+msgstr "Прочитать"
+
+#: src/extensions/gamessinputdialog.ui:459
+msgid "SBKJC"
+msgstr "SBKJC"
+
+#: src/extensions/gamessinputdialog.ui:464
+msgid "Hay-Wadt"
+msgstr "Hay-Wadt"
+
+#: src/extensions/gamessinputdialog.ui:489
+msgid "Diffuse S-Shell on Heavy Atoms"
+msgstr "Диффузная S-функция на тяжелых атомах"
+
+#: src/extensions/gamessinputdialog.ui:496
+msgid "Diffuse L-Shell on Heavy Atoms"
+msgstr "Диффузная L-функция на тяжелых атомах"
+
+#: src/extensions/gamessinputdialog.ui:546
+msgid "Basis Set:"
+msgstr "Базисный набор:"
+
+#: src/extensions/gamessinputdialog.ui:565
+msgid "MIDI"
+msgstr "MIDI"
+
+#: src/extensions/gamessinputdialog.ui:570
+msgid "STO-2G"
+msgstr "STO-2G"
+
+#: src/extensions/gamessinputdialog.ui:580
+msgid "STO-4G"
+msgstr "STO-4G"
+
+#: src/extensions/gamessinputdialog.ui:585
+msgid "STO-5G"
+msgstr "STO-5G"
+
+#: src/extensions/gamessinputdialog.ui:590
+msgid "STO-6G"
+msgstr "STO-6G"
+
+#: src/extensions/gamessinputdialog.ui:600
+msgid "6-21G"
+msgstr "6-21G"
+
+#: src/extensions/gamessinputdialog.ui:605
+msgid "4-31G"
+msgstr "4-31G"
+
+#: src/extensions/gamessinputdialog.ui:610
+msgid "5-31G"
+msgstr "5-31G"
+
+#: src/extensions/gamessinputdialog.ui:615
+msgid "6-31G"
+msgstr "6-31G"
+
+#: src/extensions/gamessinputdialog.ui:620
+msgid "6-311G"
+msgstr "6-311G"
+
+#: src/extensions/gamessinputdialog.ui:625
+msgid "Double Zeta Valence"
+msgstr "Двухэкспоненциальный валентный"
+
+#: src/extensions/gamessinputdialog.ui:630
+msgid "Dunning/Hay DZ"
+msgstr "Dunning/Hay DZ"
+
+#: src/extensions/gamessinputdialog.ui:635
+msgid "Triple Zeta Valence"
+msgstr "Трехэкспоненциальный валентный"
+
+#: src/extensions/gamessinputdialog.ui:640
+msgid "McLean/Chandler"
+msgstr "McLean/Chandler"
+
+#: src/extensions/gamessinputdialog.ui:645
+msgid "SBKJA Valence"
+msgstr "SBKJA валентный"
+
+#: src/extensions/gamessinputdialog.ui:650
+msgid "Hay/Wadt Valence"
+msgstr "Hay/Wadt валентный"
+
+#: src/extensions/gamessinputdialog.ui:655
+#: src/extensions/mopacinputdialog.ui:207
+msgid "MNDO"
+msgstr "MNDO"
+
+#: src/extensions/gamessinputdialog.ui:702
+msgid "ECP Type:"
+msgstr "Тип ECP:"
+
+#: src/extensions/gamessinputdialog.ui:716
+#: src/extensions/gamessinputdialog.ui:1847
+msgid "Default"
+msgstr "По умолчанию"
+
+#: src/extensions/gamessinputdialog.ui:721
+msgid "Pople"
+msgstr "Pople"
+
+#: src/extensions/gamessinputdialog.ui:726
+msgid "Pople N311"
+msgstr "Pople N311"
+
+#: src/extensions/gamessinputdialog.ui:731
+msgid "Dunning"
+msgstr "Dunning"
+
+#: src/extensions/gamessinputdialog.ui:736
+msgid "Huzinaga"
+msgstr "Huzinaga"
+
+#: src/extensions/gamessinputdialog.ui:741
+msgid "Hondo7"
+msgstr "Hondo7"
+
+#: src/extensions/gamessinputdialog.ui:749
+msgid "#F Heavy Atom Polarization Functions:"
+msgstr "Поляризационных функций F на тяжелых атомах"
+
+#: src/extensions/gamessinputdialog.ui:759
+msgid "#light Atom Polarization Functions:"
+msgstr "Поляризационных функций на легких атомах"
+
+#: src/extensions/gamessinputdialog.ui:776
+msgid "Polar:"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:806
+msgid "Max SCF Iterations:"
+msgstr "Максимум итераций SCF:"
+
+#: src/extensions/gamessinputdialog.ui:821
+msgid "Gradient"
+msgstr "Градиент"
+
+#: src/extensions/gamessinputdialog.ui:831
+msgid "Optimization"
+msgstr "Оптимизация"
+
+#: src/extensions/gamessinputdialog.ui:836
+msgid "Trudge"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:841
+msgid "Saddle Point"
+msgstr "Седловая точка"
+
+#: src/extensions/gamessinputdialog.ui:846
+msgid "IRC"
+msgstr "IRC"
+
+#: src/extensions/gamessinputdialog.ui:851
+msgid "Gradient Extremal"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:856
+msgid "DRC"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:861
+msgid "Energy Surface"
+msgstr "Поверхность энергии"
+
+#: src/extensions/gamessinputdialog.ui:871
+msgid "Morokuma"
+msgstr "Morokuma"
+
+#: src/extensions/gamessinputdialog.ui:876
+msgid "Radiative Transition mom."
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:881
+msgid "Spin Orbit"
+msgstr "Спин-орбитальное взаимодействие"
+
+#: src/extensions/gamessinputdialog.ui:886
+msgid "Finite Electric Field"
+msgstr "Конечное электрическое поле"
+
+#: src/extensions/gamessinputdialog.ui:891
+msgid "TDHF"
+msgstr "TDHF"
+
+#: src/extensions/gamessinputdialog.ui:896
+msgid "Global Optimization"
+msgstr "Полная оптимизация"
+
+#: src/extensions/gamessinputdialog.ui:901
+msgid "VSCF"
+msgstr "VSCF"
+
+#: src/extensions/gamessinputdialog.ui:906
+msgid "FMO Optimization"
+msgstr "FMO оптимизация"
+
+#: src/extensions/gamessinputdialog.ui:911
+msgid "Raman Intensities"
+msgstr "Рамановские интенсивности"
+
+#: src/extensions/gamessinputdialog.ui:916
+msgid "NMR"
+msgstr "ЯМР"
+
+#: src/extensions/gamessinputdialog.ui:921
+msgid "Make EFP"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:952
+msgid "UHF"
+msgstr "UHF"
+
+#: src/extensions/gamessinputdialog.ui:957
+msgid "ROHF"
+msgstr "ROHF"
+
+#: src/extensions/gamessinputdialog.ui:962
+msgid "GVB"
+msgstr "GVB"
+
+#: src/extensions/gamessinputdialog.ui:967
+msgid "MCSCF"
+msgstr "MCSCF"
+
+#: src/extensions/gamessinputdialog.ui:972
+msgid "None (CI)"
+msgstr "Отсутствует"
+
+#: src/extensions/gamessinputdialog.ui:1003
+msgid "Foster-Boys"
+msgstr "Foster-Boys"
+
+#: src/extensions/gamessinputdialog.ui:1008
+msgid "Edmistron-Ruedenberg"
+msgstr "Edmistron-Ruedenberg"
+
+#: src/extensions/gamessinputdialog.ui:1013
+msgid "Pipek-Mezey"
+msgstr "Pipek-Mezey"
+
+#: src/extensions/gamessinputdialog.ui:1036
+msgid "SCF Type:"
+msgstr "Тип SCF:"
+
+#: src/extensions/gamessinputdialog.ui:1043
+msgid "Localization Method:"
+msgstr "Метод локализации:"
+
+#: src/extensions/gamessinputdialog.ui:1053
+msgid "Exec Type:"
+msgstr "Режим запуска:"
+
+#: src/extensions/gamessinputdialog.ui:1060
+msgid "CI:"
+msgstr "CI"
+
+#: src/extensions/gamessinputdialog.ui:1073
+msgid "GUGA"
+msgstr "GUGA"
+
+#: src/extensions/gamessinputdialog.ui:1078
+msgid "Ames Lab. Determinant"
+msgstr "Детерминант Ames (ALDET)"
+
+#: src/extensions/gamessinputdialog.ui:1083
+msgid "Occupation Restricted Multiple Active Space"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1088
+msgid "CI Singles"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1093
+msgid "Full Second Order CI"
+msgstr "Полное КВ второго порядка (FSOCI)"
+
+#: src/extensions/gamessinputdialog.ui:1098
+msgid "General CI"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1106
+msgid "CC:"
+msgstr "CC:"
+
+#: src/extensions/gamessinputdialog.ui:1119
+msgid "LCCD: Linearized CC"
+msgstr "LCCD: Линаризованный CC"
+
+#: src/extensions/gamessinputdialog.ui:1124
+msgid "CCD: CC with Doubles"
+msgstr "CCD: CC с двукратными возбуждениями"
+
+#: src/extensions/gamessinputdialog.ui:1129
+msgid "CCSD: CC with Singles and Doubles"
+msgstr "CCSD: CC с одно- и двукратными возбуждениями"
+
+#: src/extensions/gamessinputdialog.ui:1139
+msgid "R-CC"
+msgstr "R-CC"
+
+#: src/extensions/gamessinputdialog.ui:1144
+msgid "CR-CC"
+msgstr "CR-CC"
+
+#: src/extensions/gamessinputdialog.ui:1149
+msgid "EOM-CCSD"
+msgstr "EOM-CCSD"
+
+#: src/extensions/gamessinputdialog.ui:1154
+msgid "CR-EOM"
+msgstr "CR-EOM"
+
+#: src/extensions/gamessinputdialog.ui:1183
+#: src/extensions/gaussianinputdialog.ui:293
+#: src/extensions/molproinputdialog.ui:297
+#: src/extensions/mopacinputdialog.ui:133
+#: src/extensions/nwcheminputdialog.ui:290
+#: src/extensions/qcheminputdialog.ui:307
+msgid "Multiplicity:"
+msgstr "Мультиплетность:"
+
+#: src/extensions/gamessinputdialog.ui:1198
+msgid "Normal Run"
+msgstr "Нормальный запуск"
+
+#: src/extensions/gamessinputdialog.ui:1203
+msgid "Check"
+msgstr "Проверка"
+
+#: src/extensions/gamessinputdialog.ui:1208
+msgid "Debug"
+msgstr "Отладка"
+
+#: src/extensions/gamessinputdialog.ui:1237
+msgid "Molecule Charge:"
+msgstr "Заряд молекулы:"
+
+#: src/extensions/gamessinputdialog.ui:1249
+msgid "Run Type:"
+msgstr "Тип расчета:"
+
+#: src/extensions/gamessinputdialog.ui:1271
+msgid "Use MP2"
+msgstr "Использовать MP2"
+
+#: src/extensions/gamessinputdialog.ui:1297
+msgid "Use DFT"
+msgstr "Использовать DFT"
+
+#: src/extensions/gamessinputdialog.ui:1346
+msgid "# of Z-Matrix Variables"
+msgstr "число переменных Z-матрицы"
+
+#: src/extensions/gamessinputdialog.ui:1356
+msgid "Ǻngstrom"
+msgstr "Ангстрем"
+
+#: src/extensions/gamessinputdialog.ui:1361
+msgid "Bohr"
+msgstr "Бор"
+
+#: src/extensions/gamessinputdialog.ui:1384
+msgid "Order of Principal Axis:"
+msgstr "Порядок главной оси:"
+
+#: src/extensions/gamessinputdialog.ui:1391
+msgid "Coordinate Type:"
+msgstr "Тип координат"
+
+#: src/extensions/gamessinputdialog.ui:1401
+msgid "C1"
+msgstr "C1"
+
+#: src/extensions/gamessinputdialog.ui:1406
+msgid "CS"
+msgstr "Cs"
+
+#: src/extensions/gamessinputdialog.ui:1411
+msgid "CI"
+msgstr "Ci"
+
+#: src/extensions/gamessinputdialog.ui:1416
+msgid "CnH"
+msgstr "CnH"
+
+#: src/extensions/gamessinputdialog.ui:1421
+msgid "CnV"
+msgstr "CnV"
+
+#: src/extensions/gamessinputdialog.ui:1426
+msgid "Cn"
+msgstr "Cn"
+
+#: src/extensions/gamessinputdialog.ui:1431
+msgid "S2n"
+msgstr "S2n"
+
+#: src/extensions/gamessinputdialog.ui:1436
+msgid "DnD"
+msgstr "Dnd"
+
+#: src/extensions/gamessinputdialog.ui:1441
+msgid "DnH"
+msgstr "Dnh"
+
+#: src/extensions/gamessinputdialog.ui:1446
+msgid "Dn"
+msgstr "Dn"
+
+#: src/extensions/gamessinputdialog.ui:1451
+msgid "TD"
+msgstr "Td"
+
+#: src/extensions/gamessinputdialog.ui:1456
+msgid "TH"
+msgstr "Th"
+
+#: src/extensions/gamessinputdialog.ui:1461
+msgid "T"
+msgstr "T"
+
+#: src/extensions/gamessinputdialog.ui:1466
+msgid "OH"
+msgstr "Oh"
+
+#: src/extensions/gamessinputdialog.ui:1471
+msgid "O"
+msgstr "O"
+
+#: src/extensions/gamessinputdialog.ui:1521
+msgid "Unique cartesian Coords."
+msgstr "Уникальные декартовы координаты"
+
+#: src/extensions/gamessinputdialog.ui:1526
+msgid "Hilderbrant internals"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1531
+msgid "Cartesian coordinates"
+msgstr "Декартовы координаты"
+
+#: src/extensions/gamessinputdialog.ui:1541
+msgid "MOPAC Z-Matrix"
+msgstr "Z-матрица MOPAC"
+
+#: src/extensions/gamessinputdialog.ui:1564
+msgid "Use Symmetry During Calculation"
+msgstr "Использовать симметрию"
+
+#: src/extensions/gamessinputdialog.ui:1574
+msgid "Units:"
+msgstr "Единицы измерения:"
+
+#: src/extensions/gamessinputdialog.ui:1581
+#: src/extensions/gaussianinputdialog.ui:30
+#: src/extensions/molproinputdialog.ui:31
+#: src/extensions/mopacinputdialog.ui:30
+#: src/extensions/nwcheminputdialog.ui:31
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:300
+msgid "Title:"
+msgstr "Название:"
+
+#: src/extensions/gamessinputdialog.ui:1638
+msgid "Point Group:"
+msgstr "Точечная группа:"
+
+#: src/extensions/gamessinputdialog.ui:1665
+msgid "Seconds"
+msgstr "Секунды"
+
+#: src/extensions/gamessinputdialog.ui:1670
+msgid "Minutes"
+msgstr "Минуты"
+
+#: src/extensions/gamessinputdialog.ui:1675
+msgid "Hours"
+msgstr "Часы"
+
+#: src/extensions/gamessinputdialog.ui:1680
+msgid "Days"
+msgstr "Дни"
+
+#: src/extensions/gamessinputdialog.ui:1685
+msgid "Weeks"
+msgstr "недели"
+
+#: src/extensions/gamessinputdialog.ui:1690
+msgid "Years"
+msgstr "Годы"
+
+#: src/extensions/gamessinputdialog.ui:1695
+msgid "Millenia"
+msgstr "Тысячелетия"
+
+#: src/extensions/gamessinputdialog.ui:1724
+#: src/extensions/gamessinputdialog.ui:1768
+msgid "Words"
+msgstr "Слова"
+
+#: src/extensions/gamessinputdialog.ui:1729
+#: src/extensions/gamessinputdialog.ui:1773
+msgid "Bytes"
+msgstr "Байт"
+
+#: src/extensions/gamessinputdialog.ui:1734
+#: src/extensions/gamessinputdialog.ui:1778
+msgid "MegaWords"
+msgstr "Мегаслов"
+
+#: src/extensions/gamessinputdialog.ui:1739
+#: src/extensions/gamessinputdialog.ui:1783
+msgid "MegaBytes"
+msgstr "Мегабайт"
+
+#: src/extensions/gamessinputdialog.ui:1811
+msgid "Force Parallel Methods"
+msgstr "Использовать параллельные методы"
+
+#: src/extensions/gamessinputdialog.ui:1834
+msgid "Produce \"core\" file upon abort"
+msgstr "Создать core-файл при некорректном завершении"
+
+#: src/extensions/gamessinputdialog.ui:1852
+msgid "EVVRSP"
+msgstr "EVVRSP"
+
+#: src/extensions/gamessinputdialog.ui:1857
+msgid "GIVEIS"
+msgstr "GIVEIS"
+
+#: src/extensions/gamessinputdialog.ui:1862
+msgid "JACOBI"
+msgstr "Якоби"
+
+#: src/extensions/gamessinputdialog.ui:1870
+msgid "Time Limit:"
+msgstr "Ограничение Времени:"
+
+#: src/extensions/gamessinputdialog.ui:1877
+msgid "MemDDI:"
+msgstr "MemDDI:"
+
+#: src/extensions/gamessinputdialog.ui:1884
+#: src/extensions/gamessinputdialog.ui:2459
+msgid "Memory:"
+msgstr "Память:"
+
+#: src/extensions/gamessinputdialog.ui:1891
+msgid "Diagonalization Method:"
+msgstr "Метод диагонализации:"
+
+#: src/extensions/gamessinputdialog.ui:1898
+msgid "Parallel Load Balance Type"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1914
+msgid "Next Value"
+msgstr "Следующее значение"
+
+#: src/extensions/gamessinputdialog.ui:1924
+msgid "Use External Data Representation for Messages"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1972
+msgid "Initial Guess:"
+msgstr "Начальное приближение:"
+
+#: src/extensions/gamessinputdialog.ui:1983
+msgid "Huckel"
+msgstr "Хюккель"
+
+#: src/extensions/gamessinputdialog.ui:1988
+msgid "HCore"
+msgstr "Голые ядра"
+
+#: src/extensions/gamessinputdialog.ui:1993
+msgid "MO Read ($VEC)"
+msgstr "Прочитать MO ($VEC)"
+
+#: src/extensions/gamessinputdialog.ui:1998
+msgid "MO Saved (DICTNRY)"
+msgstr "Сохраненные MO (DICTNRY)"
+
+#: src/extensions/gamessinputdialog.ui:2003
+msgid "Skip"
+msgstr "Пропустить"
+
+#: src/extensions/gamessinputdialog.ui:2026
+msgid "Rotate Alpha and Beta Orbitals"
+msgstr "Повернуть альфа- и бета-орбитали"
+
+#: src/extensions/gamessinputdialog.ui:2033
+msgid "Print the Initial Guess"
+msgstr "Выводить начальное приближение"
+
+#: src/extensions/gamessinputdialog.ui:2057
+msgid "GAMESS Interface to Other Codes"
+msgstr "Интерфейс GAMESS к другим программам"
+
+#: src/extensions/gamessinputdialog.ui:2063
+msgid "MolPlt"
+msgstr "MolPlt"
+
+#: src/extensions/gamessinputdialog.ui:2070
+msgid "PltOrb"
+msgstr "PltOrb"
+
+#: src/extensions/gamessinputdialog.ui:2077
+msgid "AIMPAC"
+msgstr "AIMPAC"
+
+#: src/extensions/gamessinputdialog.ui:2084
+msgid "RPAC"
+msgstr "RPAC"
+
+#: src/extensions/gamessinputdialog.ui:2094
+msgid "Force a Check Run Type"
+msgstr "Только в режиме проверки"
+
+#: src/extensions/gamessinputdialog.ui:2110
+msgid "Hondo 8.2"
+msgstr "Hondo 8.2"
+
+#: src/extensions/gamessinputdialog.ui:2117
+msgid "MELDF"
+msgstr "MELDF"
+
+#: src/extensions/gamessinputdialog.ui:2124
+msgid "GAMESS (UK Version)"
+msgstr "GAMESS (UK Version)"
+
+#: src/extensions/gamessinputdialog.ui:2131
+msgid "Gaussian 9x"
+msgstr "Gaussian 9x"
+
+#: src/extensions/gamessinputdialog.ui:2138
+msgid "All"
+msgstr "Все"
+
+#: src/extensions/gamessinputdialog.ui:2163
+msgid "Solvate with Water"
+msgstr "Сольватировать водой"
+
+#: src/extensions/gamessinputdialog.ui:2202
+msgid "Generate UHF Natural Orbitals"
+msgstr "Сгенерировать натуральные орбитали UHF"
+
+#: src/extensions/gamessinputdialog.ui:2209
+msgid "Direct SCF"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2216
+msgid "Compute Only Changed in Fock Matrix"
+msgstr "Рассчитывать только изменения фокиана (FDIFF)"
+
+#: src/extensions/gamessinputdialog.ui:2243
+msgid "Slater exchange"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2248
+msgid "Becke 1988 exchange"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2253
+msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2258
+msgid "LYP: Lee-Yang-Parr correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2263
+msgid "SVWN: Slater exhange + VWN correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2268
+msgid "BVWN: BECKE exchange + VWN5 correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2273
+msgid "BLYP: BECKE exchange + LYP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2283
+msgid "Gill 1996 exchange"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2288
+msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2293
+msgid "OP: One-parameter Progressive correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2298
+msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2303
+msgid "SOP: SLATER + OP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2308
+msgid "BOP: BECKE exchange + OP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2313
+msgid "BVWN: GILL exchange + VWN5 correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2318
+msgid "GLYP: GILL exchange + LYP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2323
+msgid "PBEVWN: PBE exchange + VWN6 correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2328
+msgid "PBELYP: PBE exchange +LYP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2333
+msgid "PBEOP: PBE exchange + OP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2338
+msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2364
+msgid "Grid"
+msgstr "Сетка интегрирования"
+
+#: src/extensions/gamessinputdialog.ui:2369
+msgid "Grid-Free"
+msgstr "Безсеточный"
+
+#: src/extensions/gamessinputdialog.ui:2392
+msgid "DFT Functional:"
+msgstr "Функционал плотности:"
+
+#: src/extensions/gamessinputdialog.ui:2399
+#: src/extensions/mopacinputdialog.ui:186
+msgid "Method:"
+msgstr "Метод:"
+
+#: src/extensions/gamessinputdialog.ui:2423
+msgid "AO Integral Storage"
+msgstr "Хранение интегралов АО"
+
+#: src/extensions/gamessinputdialog.ui:2432
+msgid "Duplicated on Each Node"
+msgstr "Дублировать на каждом узле"
+
+#: src/extensions/gamessinputdialog.ui:2439
+msgid "Distributed Across All Nodes"
+msgstr "Распределить по всем узлам"
+
+#: src/extensions/gamessinputdialog.ui:2452
+msgid "words"
+msgstr "слов"
+
+#: src/extensions/gamessinputdialog.ui:2466
+msgid "Compute MP2 Properties"
+msgstr "Вычислить свойства для MP2"
+
+#: src/extensions/gamessinputdialog.ui:2473
+msgid "Integral Retention Cutoff:"
+msgstr "Предел сохранения интегралов:"
+
+#: src/extensions/gamessinputdialog.ui:2486
+msgid "Use Localized Orbitals"
+msgstr "Использо"
+
+#: src/extensions/gamessinputdialog.ui:2493
+msgid "# of Core Electrons:"
+msgstr "Число внутренних электронов"
+
+#: src/extensions/gamessinputdialog.ui:2500
+msgid "Transformation Method"
+msgstr "Метод трансформации"
+
+#: src/extensions/gamessinputdialog.ui:2509
+msgid "Two Phase Bin Sort"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2516
+msgid "Segmented Transformation"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2565
+msgid "Analytic"
+msgstr "Аналитический"
+
+#: src/extensions/gamessinputdialog.ui:2575
+msgid "Numeric"
+msgstr "Численный"
+
+#: src/extensions/gamessinputdialog.ui:2585
+msgid "Double Differenced Hessian"
+msgstr "С двойным численным дифференцированием"
+
+#: src/extensions/gamessinputdialog.ui:2592
+msgid "Print Internal Force Constants"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2599
+msgid "Displacement Size:"
+msgstr "Величина шага:"
+
+#: src/extensions/gamessinputdialog.ui:2606
+msgid "Purify Hessian"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2613
+msgid "Frequency Scale Factor:"
+msgstr "Коэффициент масштабирования частот:"
+
+#: src/extensions/gamessinputdialog.ui:2620
+msgid "bohrs"
+msgstr "бор"
+
+#: src/extensions/gamessinputdialog.ui:2654
+msgid "Initial Hessian"
+msgstr "Начальный гессиан"
+
+#: src/extensions/gamessinputdialog.ui:2660
+msgid "Guess (+ define)"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2667
+msgid "Read (from $HESS)"
+msgstr "Прочитать (из $HESS)"
+
+#: src/extensions/gamessinputdialog.ui:2684
+msgid "Update Step Size"
+msgstr "Величина шага обновления"
+
+#: src/extensions/gamessinputdialog.ui:2694
+msgid "Print Orbs at Each Iteration"
+msgstr "Выводить орбитали на каждой итерации"
+
+#: src/extensions/gamessinputdialog.ui:2701
+msgid "Gradient Convergence Criteria:"
+msgstr "Критерии сходимости градиента:"
+
+#: src/extensions/gamessinputdialog.ui:2730
+msgid "Jump Size:"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2737
+msgid "Stationary Point"
+msgstr "Стационарная точка"
+
+#: src/extensions/gamessinputdialog.ui:2747
+msgid "Optimization Method:"
+msgstr "Метод оптимизации:"
+
+#: src/extensions/gamessinputdialog.ui:2757
+msgid "Step Size"
+msgstr "Размер шага"
+
+#: src/extensions/gamessinputdialog.ui:2763
+msgid "Maximum:"
+msgstr "Максимум:"
+
+#: src/extensions/gamessinputdialog.ui:2770
+msgid "Minimum:"
+msgstr "Минимум:"
+
+#: src/extensions/gamessinputdialog.ui:2780
+msgid "Initial:"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:2824
+msgid "Newton-Raphson"
+msgstr "Ньютона-Рафсона"
+
+#: src/extensions/gamessinputdialog.ui:2829
+msgid "Rational Function Optimization"
+msgstr "Рациональная функция"
+
+#: src/extensions/gamessinputdialog.ui:2834
+msgid "Quadratic Approximation"
+msgstr "Квадратичная аппроксимация"
+
+#: src/extensions/gamessinputdialog.ui:2839
+msgid "Schlegel (quasi-NR)"
+msgstr "Шлегель (quasi-NR)"
+
+#: src/extensions/gamessinputdialog.ui:2844
+msgid "Constrained Optimization"
+msgstr "Оптимизация с ограничениями"
+
+#: src/extensions/gamessinputdialog.ui:2857
+msgid "steps"
+msgstr "шагов"
+
+#: src/extensions/gamessinputdialog.ui:2879
+msgid "Recalculate Hessian Every:"
+msgstr "Пересчитывать гессиан каждые:"
+
+#: src/extensions/gamessinputdialog.ui:2889
+msgid "Follow Mode:"
+msgstr "Следовать колебательной моде..."
+
+#: src/extensions/gamessinputdialog.ui:2899
+msgid "Maximum Steps:"
+msgstr "Максимальное число шагов:"
+
+#: src/extensions/gamessinputdialog.ui:2932
+msgid "Reset All"
+msgstr "Сбросить всё"
+
+#: src/extensions/gamessinputdialog.ui:2939
+msgid "Defaults"
+msgstr "По умолчанию"
+
+#: src/extensions/gamessinputdialog.ui:2962
+#: src/extensions/gaussianinputdialog.ui:535
+#: src/extensions/molproinputdialog.ui:466
+#: src/extensions/mopacinputdialog.ui:384
+#: src/extensions/nwcheminputdialog.ui:462
+#: src/extensions/qcheminputdialog.ui:476
+msgid "Generate..."
+msgstr "Создать..."
+
+#: src/extensions/gamessinputdialog.ui:2969
+#: src/extensions/gaussianinputdialog.ui:542
+#: src/extensions/molproinputdialog.ui:473
+#: src/extensions/mopacinputdialog.ui:391
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
+#: src/extensions/qcheminputdialog.ui:483
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/extensions/gaussianinputdialog.ui:19
+msgid "Gaussian Input"
+msgstr "Входной файл Gaussian"
+
+#: src/extensions/gaussianinputdialog.ui:47
+#: src/extensions/molproinputdialog.ui:48
+#: src/extensions/mopacinputdialog.ui:47
+#: src/extensions/nwcheminputdialog.ui:48
+#: src/extensions/qcheminputdialog.ui:48
+msgid "Calculation:"
+msgstr "Расчет:"
+
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
+msgstr "Энергия в точке:"
+
+#: src/extensions/gaussianinputdialog.ui:96
+msgid "Processors:"
+msgstr "Процессоры:"
+
+#: src/extensions/gaussianinputdialog.ui:133
+#: src/extensions/molproinputdialog.ui:114
+#: src/extensions/nwcheminputdialog.ui:114
+#: src/extensions/qcheminputdialog.ui:114
+msgid "Theory:"
+msgstr "Теория:"
+
+#: src/extensions/gaussianinputdialog.ui:174
+#: src/extensions/molproinputdialog.ui:148
+#: src/extensions/nwcheminputdialog.ui:148
+#: src/extensions/qcheminputdialog.ui:163
+msgid "CCSD"
+msgstr "CCSD"
+
+#: src/extensions/gaussianinputdialog.ui:197
+#: src/extensions/molproinputdialog.ui:176
+#: src/extensions/nwcheminputdialog.ui:171
+#: src/extensions/qcheminputdialog.ui:186
+msgid "Basis:"
+msgstr "Базис:"
+
+#: src/extensions/gaussianinputdialog.ui:233
+#: src/extensions/nwcheminputdialog.ui:227
+#: src/extensions/qcheminputdialog.ui:242
+msgid "LANL2DZ"
+msgstr "LANL2DZ"
+
+#: src/extensions/gaussianinputdialog.ui:256
+#: src/extensions/molproinputdialog.ui:260
+#: src/extensions/mopacinputdialog.ui:96
+#: src/extensions/nwcheminputdialog.ui:250
+#: src/extensions/qcheminputdialog.ui:270
+msgid "Charge:"
+msgstr "Заряд:"
+
+#: src/extensions/gaussianinputdialog.ui:330
+msgid "Output:"
+msgstr ""
+
+#: src/extensions/gaussianinputdialog.ui:346
+msgid "Standard"
+msgstr ""
+
+#: src/extensions/gaussianinputdialog.ui:351
+msgid "Molden"
+msgstr "Molden"
+
+#: src/extensions/gaussianinputdialog.ui:356
+msgid "Molekel"
+msgstr "Molekel"
+
+#: src/extensions/gaussianinputdialog.ui:379
+msgid "Checkpoint:"
+msgstr "Контрольная точка:"
+
+#: src/extensions/gaussianinputdialog.ui:396
+#: src/extensions/molproinputdialog.ui:334
+#: src/extensions/mopacinputdialog.ui:250
+#: src/extensions/nwcheminputdialog.ui:330
+#: src/extensions/qcheminputdialog.ui:344
+msgid "Format:"
+msgstr "Формат:"
+
+#: src/extensions/gaussianinputdialog.ui:415
+#: src/extensions/molproinputdialog.ui:353
+#: src/extensions/mopacinputdialog.ui:269
+#: src/extensions/nwcheminputdialog.ui:349
+#: src/extensions/qcheminputdialog.ui:363
+msgid "Cartesian"
+msgstr "Декартовы"
+
+#: src/extensions/gaussianinputdialog.ui:420
+#: src/extensions/molproinputdialog.ui:358
+#: src/extensions/mopacinputdialog.ui:274
+#: src/extensions/nwcheminputdialog.ui:354
+#: src/extensions/qcheminputdialog.ui:368
+msgid "Z-matrix"
+msgstr "Z-матрица"
+
+#: src/extensions/gaussianinputdialog.ui:425
+#: src/extensions/molproinputdialog.ui:363
+#: src/extensions/nwcheminputdialog.ui:359
+#: src/extensions/qcheminputdialog.ui:373
+msgid "Z-matrix (compact)"
+msgstr "Z-матрица (компактная)"
+
+#: src/extensions/gaussianinputdialog.ui:508
+#: src/extensions/molproinputdialog.ui:446
+#: src/extensions/mopacinputdialog.ui:357
+#: src/extensions/nwcheminputdialog.ui:442
+#: src/extensions/qcheminputdialog.ui:456
+msgid "Use Form"
+msgstr ""
+
+#: src/extensions/gaussianinputdialog.ui:528
+#: src/extensions/mopacinputdialog.ui:377
+msgid "Compute..."
+msgstr "Рассчитать..."
+
+#: src/extensions/insertfragmentdialog.ui:14
+msgid "Insert Fragment..."
+msgstr "Вставить фрагмент..."
+
+#: src/extensions/insertfragmentdialog.ui:25
+msgid "Add Directory"
+msgstr "Добавить каталог"
+
+#: src/extensions/insertfragmentdialog.ui:32
+msgid "Reset List"
+msgstr "Сбросить список"
+
+#: src/extensions/insertpeptidedialog.ui:20
+msgid "Peptide Builder"
+msgstr "Построение пептида"
+
+#: src/extensions/insertpeptidedialog.ui:46
+msgid "Alanine"
+msgstr "Аланин"
+
+#: src/extensions/insertpeptidedialog.ui:49
+msgid "Ala"
+msgstr "Ala"
+
+#: src/extensions/insertpeptidedialog.ui:56
+msgid "Arginine"
+msgstr "Аргинин"
+
+#: src/extensions/insertpeptidedialog.ui:59
+msgid "Arg"
+msgstr "Arg"
+
+#: src/extensions/insertpeptidedialog.ui:66
+msgid "Asparagine"
+msgstr "Аспарагин"
+
+#: src/extensions/insertpeptidedialog.ui:69
+msgid "Asn"
+msgstr "Asn"
+
+#: src/extensions/insertpeptidedialog.ui:76
+msgid "Aspartic acid"
+msgstr "Аспарагиновая кислота"
+
+#: src/extensions/insertpeptidedialog.ui:79
+msgid "Asp"
+msgstr "Asp"
+
+#: src/extensions/insertpeptidedialog.ui:86
+msgid "Cysteine"
+msgstr "Цистеин"
+
+#: src/extensions/insertpeptidedialog.ui:89
+msgid "Cys"
+msgstr "Cys"
+
+#: src/extensions/insertpeptidedialog.ui:96
+msgid "Glutamic acid"
+msgstr "Глутаминовая кислота"
+
+#: src/extensions/insertpeptidedialog.ui:99
+msgid "Glu"
+msgstr "Glu"
+
+#: src/extensions/insertpeptidedialog.ui:106
+msgid "Glutamine"
+msgstr "Глутамин"
+
+#: src/extensions/insertpeptidedialog.ui:109
+msgid "Gln"
+msgstr "Gln"
+
+#: src/extensions/insertpeptidedialog.ui:116
+msgid "Glycine"
+msgstr "Глицин"
+
+#: src/extensions/insertpeptidedialog.ui:119
+msgid "Gly"
+msgstr "Gly"
+
+#: src/extensions/insertpeptidedialog.ui:126
+msgid "Histidine"
+msgstr "Гистидин"
+
+#: src/extensions/insertpeptidedialog.ui:129
+msgid "His"
+msgstr "His"
+
+#: src/extensions/insertpeptidedialog.ui:136
+msgid "Isoleucine"
+msgstr "Изолейцин"
+
+#: src/extensions/insertpeptidedialog.ui:139
+msgid "Ile"
+msgstr "Ile"
+
+#: src/extensions/insertpeptidedialog.ui:146
+msgid "Valine"
+msgstr "Валин"
+
+#: src/extensions/insertpeptidedialog.ui:149
+msgid "Val"
+msgstr "Val"
+
+#: src/extensions/insertpeptidedialog.ui:156
+msgid "Tyrosine"
+msgstr "Тирозин"
+
+#: src/extensions/insertpeptidedialog.ui:159
+msgid "Tyr"
+msgstr "Tyr"
+
+#: src/extensions/insertpeptidedialog.ui:166
+msgid "Tryptophan"
+msgstr "Триптофан"
+
+#: src/extensions/insertpeptidedialog.ui:169
+msgid "Trp"
+msgstr "Trp"
+
+#: src/extensions/insertpeptidedialog.ui:176
+msgid "Threonine"
+msgstr "Треонин"
+
+#: src/extensions/insertpeptidedialog.ui:179
+msgid "Thr"
+msgstr "Thr"
+
+#: src/extensions/insertpeptidedialog.ui:186
+msgid "Serine"
+msgstr "Серин"
+
+#: src/extensions/insertpeptidedialog.ui:189
+msgid "Ser"
+msgstr "Ser"
+
+#: src/extensions/insertpeptidedialog.ui:196
+msgid "Proline"
+msgstr "Пролин"
+
+#: src/extensions/insertpeptidedialog.ui:199
+msgid "Pro"
+msgstr "Pro"
+
+#: src/extensions/insertpeptidedialog.ui:206
+msgid "Phenylalanine"
+msgstr "Фенилаланин"
+
+#: src/extensions/insertpeptidedialog.ui:209
+msgid "Phe"
+msgstr "Phe"
+
+#: src/extensions/insertpeptidedialog.ui:216
+msgid "Methionine"
+msgstr "Метионин"
+
+#: src/extensions/insertpeptidedialog.ui:219
+msgid "Met"
+msgstr "Met"
+
+#: src/extensions/insertpeptidedialog.ui:226
+msgid "Lysine"
+msgstr "Лизин"
+
+#: src/extensions/insertpeptidedialog.ui:229
+msgid "Lys"
+msgstr "Lys"
+
+#: src/extensions/insertpeptidedialog.ui:236
+msgid "Leucine"
+msgstr "Лейцин"
+
+#: src/extensions/insertpeptidedialog.ui:239
+msgid "Leu"
+msgstr "Leu"
+
+#: src/extensions/insertpeptidedialog.ui:263
+msgid "Amino Acids:"
+msgstr "Аминокислоты:"
+
+#: src/extensions/insertpeptidedialog.ui:270
+msgid "Sequence (N to C):"
+msgstr "Последовательность (от N к C):"
+
+#: src/extensions/insertpeptidedialog.ui:280
+msgid "Stereochemistry:"
+msgstr "Стереохимия:"
+
+#: src/extensions/insertpeptidedialog.ui:289
+msgid "L"
+msgstr "L"
+
+#: src/extensions/insertpeptidedialog.ui:299
+#: src/extensions/insertpeptidedialog.ui:469
+msgid "D"
+msgstr "D"
+
+#: src/extensions/insertpeptidedialog.ui:310
+msgid "N Terminus:"
+msgstr "N-конец:"
+
+#: src/extensions/insertpeptidedialog.ui:317
+msgid "C Terminus:"
+msgstr "C-конец:"
+
+#: src/extensions/insertpeptidedialog.ui:325
+msgid "NH₂"
+msgstr "NH₂"
+
+#: src/extensions/insertpeptidedialog.ui:330
+msgid "NH₃⁺"
+msgstr "NH₃⁺"
+
+#: src/extensions/insertpeptidedialog.ui:339
+msgid "CO₂H"
+msgstr "CO₂H"
+
+#: src/extensions/insertpeptidedialog.ui:344
+msgid "CO₂⁻"
+msgstr "CO₂⁻"
+
+#: src/extensions/insertpeptidedialog.ui:354
+msgid "Structure:"
+msgstr "Структура:"
+
+#: src/extensions/insertpeptidedialog.ui:362
+msgid "Straight Chain"
+msgstr "Развернутая цепь"
+
+#: src/extensions/insertpeptidedialog.ui:367
+msgid "Alpha Helix"
+msgstr "Альфа-спираль"
+
+#: src/extensions/insertpeptidedialog.ui:372
+msgid "Beta Sheet"
+msgstr "Бета-лист"
+
+#: src/extensions/insertpeptidedialog.ui:377
+msgid "Other"
+msgstr "Другая"
+
+#: src/extensions/insertpeptidedialog.ui:387
+msgid "Phi:"
+msgstr "Phi:"
+
+#: src/extensions/insertpeptidedialog.ui:426
+msgid "Psi:"
+msgstr "Psi:"
+
+#: src/extensions/insertpeptidedialog.ui:440
+msgid "Chain Number:"
+msgstr ""
+
+#: src/extensions/insertpeptidedialog.ui:447
+msgid "The chain number for the new peptide"
+msgstr ""
+
+#: src/extensions/insertpeptidedialog.ui:459
+msgid "B"
+msgstr "B"
+
+#: src/extensions/insertpeptidedialog.ui:464
+msgid "C"
+msgstr "C"
+
+#: src/extensions/insertpeptidedialog.ui:474
+msgid "E"
+msgstr "E"
+
+#: src/extensions/insertpeptidedialog.ui:479
+msgid "F"
+msgstr "F"
+
+#: src/extensions/insertpeptidedialog.ui:484
+msgid "G"
+msgstr "G"
+
+#: src/extensions/liganddialog.ui:13
+msgid "Create ligand"
+msgstr "Создать лиганд"
+
+#: src/extensions/liganddialog.ui:38
+msgid "create ligand from current selection"
+msgstr "создать лиганд из текущего выделения"
+
+#: src/extensions/liganddialog.ui:43
+msgid "create ligand from residue name"
+msgstr ""
+
+#: src/extensions/liganddialog.ui:48
+msgid "create ligand from file..."
+msgstr "создать лиганд из файла..."
+
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
+msgid "The residue name"
+msgstr "Название аминокислотного остатка"
+
+#: src/extensions/linmorphdialog.ui:13
+msgid "Linear Morph Trajectory"
+msgstr ""
+
+#: src/extensions/linmorphdialog.ui:24
+msgid ""
+"Load a second confromation and computer a linear interpolation with the "
+"current conformation."
+msgstr ""
+
+#: src/extensions/linmorphdialog.ui:27
+msgid "button to load a second conformation from a file."
+msgstr ""
+
+#: src/extensions/linmorphdialog.ui:30
+msgid "Load Second Conformation ..."
+msgstr "Загрузить вторую конформацию..."
+
+#: src/extensions/linmorphdialog.ui:41
+msgid "Num Frames"
+msgstr ""
+
+#: src/extensions/linmorphdialog.ui:228
+msgid ""
+"Save snapshots of the trajectory as a series of POVRay files.  These can "
+"then be used to make a movie."
+msgstr ""
+"Сохранить снимки траектории как серию POVRay-файлов. Это может быть "
+"использовано для изготовления видеоклипа"
+
+#: src/extensions/linmorphdialog.ui:231
+msgid "Button to save an .xyz trajectory."
+msgstr "Кнопка для сохранения .xyz траектории."
+
+#: src/extensions/linmorphdialog.ui:234
+msgid "Save trajectory..."
+msgstr "Сохранить траекторию..."
+
+#: src/extensions/linmorphdialog.ui:248
+msgid "Save movie..."
+msgstr "Сохранить фильм..."
+
+#: src/extensions/molecularpropdialog.ui:14
+msgid "Molecule Properties"
+msgstr "Свойства молекулы"
+
+#: src/extensions/molecularpropdialog.ui:22
+msgid "Molecular Weight (g/mol):"
+msgstr ""
+
+#: src/extensions/molecularpropdialog.ui:29
+msgid "Chemical Formula:"
+msgstr "Химическая формула:"
+
+#: src/extensions/molecularpropdialog.ui:36
+msgid "Number of Atoms:"
+msgstr "Количество атомов:"
+
+#: src/extensions/molecularpropdialog.ui:43
+msgid "Number of Bonds:"
+msgstr "Количество связей:"
+
+#: src/extensions/molecularpropdialog.ui:50
+msgid "Number of Residues:"
+msgstr "Количество аминокислотных остатков:"
+
+#: src/extensions/molecularpropdialog.ui:57
+msgid "Energy (kJ/mol):"
+msgstr "Энекргия (кДж/моль)"
+
+#: src/extensions/molecularpropdialog.ui:64
+msgid "Dipole Moment (D):"
+msgstr "Дипольный момент (Д)"
+
+#: src/extensions/molproinputdialog.ui:20
+msgid "MOLPRO Input"
+msgstr "Входной файл Molpro"
+
+#: src/extensions/molproinputdialog.ui:133
+#: src/extensions/nwcheminputdialog.ui:133
+#: src/extensions/qcheminputdialog.ui:133
+msgid "HF"
+msgstr "HF"
+
+#: src/extensions/molproinputdialog.ui:212
+#: src/extensions/nwcheminputdialog.ui:207
+#: src/extensions/qcheminputdialog.ui:222
+msgid "6-31+G(d)"
+msgstr "6-31+G(d)"
+
+#: src/extensions/molproinputdialog.ui:217
+#: src/extensions/nwcheminputdialog.ui:212
+#: src/extensions/qcheminputdialog.ui:227
+msgid "6-311G(d)"
+msgstr "6-311G(d)"
+
+#: src/extensions/molproinputdialog.ui:222
+#: src/extensions/nwcheminputdialog.ui:217
+#: src/extensions/qcheminputdialog.ui:232
+msgid "cc-pVDZ"
+msgstr "cc-pVDZ"
+
+#: src/extensions/molproinputdialog.ui:227
+#: src/extensions/nwcheminputdialog.ui:222
+#: src/extensions/qcheminputdialog.ui:237
+msgid "cc-pVTZ"
+msgstr "cc-pVTZ"
+
+#: src/extensions/molproinputdialog.ui:232
+msgid "AUG-cc-pVDZ"
+msgstr "AUG-cc-pVDZ"
+
+#: src/extensions/molproinputdialog.ui:237
+msgid "AUG-cc-pVTZ"
+msgstr "AUG-cc-pVTZ"
+
+#: src/extensions/mopacinputdialog.ui:19
+msgid "MOPAC Input"
+msgstr "Входной файл MOPAC"
+
+#: src/extensions/mopacinputdialog.ui:158
+msgid "Quartet"
+msgstr "Квартет"
+
+#: src/extensions/mopacinputdialog.ui:163
+msgid "Quintet"
+msgstr "Квинтет"
+
+#: src/extensions/mopacinputdialog.ui:212
+msgid "MNDO-d"
+msgstr "MNDO-d"
+
+#: src/extensions/mopacinputdialog.ui:222
+msgid "PM6"
+msgstr "PM6"
+
+#: src/extensions/mopacinputdialog.ui:227
+msgid "RM1"
+msgstr "RM1"
+
+#: src/extensions/nwcheminputdialog.ui:20
+msgid "NWChem Input"
+msgstr "Входной файл NWChem"
+
+#: src/extensions/orbitaldialog.ui:30
+msgid "Cubes"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:36
+msgid "Cube Dimensions"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:47
+msgid "x"
+msgstr "x"
+
+#: src/extensions/orbitaldialog.ui:60
+msgid "y"
+msgstr "y"
+
+#: src/extensions/orbitaldialog.ui:73
+msgid "z"
+msgstr "z"
+
+#: src/extensions/orbitaldialog.ui:88
+msgid "Origin:"
+msgstr "Начало координат:"
+
+#: src/extensions/orbitaldialog.ui:130
+msgid "Max:"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:172
+msgid "Steps:"
+msgstr "Шагов:"
+
+#: src/extensions/orbitaldialog.ui:214
+msgid "Step Size:"
+msgstr "Величина шага:"
+
+#: src/extensions/orbitaldialog.ui:304
+msgid "Calculate MO"
+msgstr "Рассчитать МО"
+
+#: src/extensions/orbitaldialog.ui:331
+msgid "Calculate All MOs"
+msgstr "Рассчитать все МО"
+
+#: src/extensions/orbitaldialog.ui:358
+msgid "Calculate Electron Density"
+msgstr "Рассчитать электронную плотность"
+
+#: src/extensions/orbitaldialog.ui:385
+msgid "Calculate Van der Waals Cube"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:411
+msgid "Isosurfaces"
+msgstr "Изоповерхности"
+
+#: src/extensions/orbitaldialog.ui:417
+#: src/extensions/orbitaldialog.ui:633
+msgid "Cube:"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:447
+#: src/extensions/orbitaldialog.ui:663
+msgid "Color By:"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:481
+msgid "Iso Value:"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:493
+msgid "0.02"
+msgstr "0.02"
+
+#: src/extensions/orbitaldialog.ui:515
+msgid "Cube Range:"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:527
+msgid "0.000"
+msgstr "0.000"
+
+#: src/extensions/orbitaldialog.ui:544
+msgid "1.000"
+msgstr "1.000"
+
+#: src/extensions/orbitaldialog.ui:604
+#: src/extensions/orbitaldialog.ui:821
+msgid "Calculate Mesh"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:627
+msgid "Van der Waals Surface"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:684
+msgid "ESP (approximate)"
+msgstr ""
+
+#: src/extensions/orbitaldialog.ui:707
+msgid "Distance:"
+msgstr "Расстояние:"
+
+#: src/extensions/orbitaldialog.ui:719
+msgid "0.0"
+msgstr "0.0"
+
+#: src/extensions/orbitaldialog.ui:741
+msgid "Range:"
+msgstr ""
+
+#: src/extensions/pocketdialog.ui:13
+msgid "Create binding pocket"
+msgstr ""
+
+#: src/extensions/pocketdialog.ui:38
+msgid "create pocket from current selection"
+msgstr ""
+
+#: src/extensions/pocketdialog.ui:43
+msgid "create pocket from residue name"
+msgstr ""
+
+#: src/extensions/pocketdialog.ui:85
+msgid "Radius"
+msgstr "Радиус"
+
+#: src/extensions/pocketdialog.ui:98
+msgid ""
+"All atoms within radius from the ligand will be part of the binding pocket"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:19
+msgid "POV-Ray Export"
+msgstr "Экспорт в POV-Ray"
+
+#: src/extensions/povraydialog.ui:30
+msgid "Select..."
+msgstr "Выбрать..."
+
+#: src/extensions/povraydialog.ui:64
+msgid "povray"
+msgstr "povray"
+
+#: src/extensions/povraydialog.ui:111
+msgid "Render"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:137
+msgid "Resolution:"
+msgstr "Разрешение:"
+
+#: src/extensions/povraydialog.ui:147
+msgid "Use full scene antialiasing"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:150
+msgid "Antialias"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:160
+msgid "Set the background color to be transparent"
+msgstr "Установить прозрачный цвет фона"
+
+#: src/extensions/povraydialog.ui:163
+msgid "Alpha transparency"
+msgstr "Альфа-прозрачность"
+
+#: src/extensions/povraydialog.ui:173
+msgid "Command:"
+msgstr "Команда:"
+
+#: src/extensions/povraydialog.ui:183
+msgid "Render the molecule directly using command line POV-Ray"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:186
+msgid "Render using POV-Ray"
+msgstr ""
+
+#: src/extensions/povraydialog.ui:196
+msgid "Keep the POV-Ray source after rendering has completed"
+msgstr "Сохранить входной файл POV-Ray после завершения рендеринга"
+
+#: src/extensions/povraydialog.ui:199
+msgid "Keep POV-Ray source after rendering"
+msgstr "Сохранить входной файл POV-Ray после рендеринга"
+
+#: src/extensions/povraydialog.ui:209
+msgid "Path:"
+msgstr "Путь:"
+
+#: src/extensions/qcheminputdialog.ui:20
+msgid "Q-Chem Input"
+msgstr "Входной файл Q-Chem"
+
+#: src/extensions/qcheminputdialog.ui:148
+msgid "B3LYP5"
+msgstr "B3LYP5"
+
+#: src/extensions/qcheminputdialog.ui:153
+msgid "EDF1"
+msgstr "EDF1"
+
+#: src/extensions/qcheminputdialog.ui:158
+msgid "M06-2X"
+msgstr "M06-2X"
+
+#: src/extensions/qcheminputdialog.ui:247
+msgid "LACVP"
+msgstr "LACVP"
+
+#: src/extensions/shaderdialog.ui:29
+msgid "Load Shaders"
+msgstr "Загрузить шейдеры"
+
+#: src/extensions/shaderdialog.ui:35
+msgid "Shader Name:"
+msgstr "Имя шейдера:"
+
+#: src/extensions/shaderdialog.ui:52
+msgid "Vertex Shader:"
+msgstr "Вершинный шейдер:"
+
+#: src/extensions/shaderdialog.ui:76
+msgid "Fragment Shader:"
+msgstr ""
+
+#: src/extensions/shaderdialog.ui:100
+msgid "Parameters:"
+msgstr "Параметры:"
+
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
+msgid "Assign Shader"
+msgstr ""
+
+#: src/extensions/shaderdialog.ui:170
+msgid "Display Type:"
+msgstr ""
+
+#: src/extensions/shaderdialog.ui:190
+msgid "Shader Program:"
+msgstr ""
+
+#: src/extensions/spectradialog.ui:20
+msgid "Spectra Visualization"
+msgstr "Визуализация спектров"
+
+#: src/extensions/spectradialog.ui:32
+msgid "&Close"
+msgstr "&Закрыть"
+
+#: src/extensions/spectradialog.ui:95
+msgid "Calculated Spectra:"
+msgstr "Рассчитанные спектры:"
+
+#: src/extensions/spectradialog.ui:108
+#: src/extensions/spectradialog.ui:131
+#: src/extensions/spectradialog.ui:219
+#: src/extensions/spectradialog.ui:245
+msgid "Set Color..."
+msgstr "Установить цвет..."
+
+#: src/extensions/spectradialog.ui:115
+msgid "Imported Spectra:"
+msgstr "Импортированные спектры.."
+
+#: src/extensions/spectradialog.ui:138
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: src/extensions/spectradialog.ui:151
+msgid "Change Font..."
+msgstr "Сменить шрифт..."
+
+#: src/extensions/spectradialog.ui:164
+#: src/extensions/spectradialog.ui:177
+msgid "Show"
+msgstr "Показать"
+
+#: src/extensions/spectradialog.ui:190
+msgid "Imports a tsv of experimental spectra to overlay on the plot."
+msgstr ""
+"Импортирует экспериментальные спектры в формате tsv и отображает на том же "
+"графике"
+
+#: src/extensions/spectradialog.ui:193
+msgid "&Import..."
+msgstr "&Импорт..."
+
+#: src/extensions/spectradialog.ui:206
+msgid "Background:"
+msgstr "Фон:"
+
+#: src/extensions/spectradialog.ui:232
+msgid "Foreground:"
+msgstr ""
+
+#: src/extensions/spectradialog.ui:261
+msgid "New..."
+msgstr "Новая..."
+
+#: src/extensions/spectradialog.ui:277
+msgid "Remove..."
+msgstr "Удалить..."
+
+#: src/extensions/spectradialog.ui:290
+msgid "Rename..."
+msgstr "Переименовать..."
+
+#: src/extensions/spectradialog.ui:316
+msgid "TODO"
+msgstr "TODO"
+
+#: src/extensions/spectradialog.ui:329
+msgid "&Schemes:"
+msgstr "&Схемы..."
+
+#: src/extensions/spectradialog.ui:345
+msgid "&Export..."
+msgstr "&Экспорт..."
+
+#: src/extensions/spectradialog.ui:385
+msgid "&DPI:"
+msgstr "&DPI:"
+
+#: src/extensions/spectradialog.ui:401
+msgid "&Width:"
+msgstr "&Ширина:"
+
+#: src/extensions/spectradialog.ui:430
+msgid "&Height"
+msgstr "&Высота"
+
+#: src/extensions/spectradialog.ui:453
+msgid "&Filename:"
+msgstr "Имя файла:"
+
+#: src/extensions/spectradialog.ui:489
+msgid "..."
+msgstr "..."
+
+#: src/extensions/spectradialog.ui:500
+msgid "cm"
+msgstr "см"
+
+#: src/extensions/spectradialog.ui:505
+msgid "mm"
+msgstr "мм"
+
+#: src/extensions/spectradialog.ui:510
+msgid "in"
+msgstr "дюймов"
+
+#: src/extensions/spectradialog.ui:515
+msgid "px"
+msgstr "пикселей"
+
+#: src/extensions/spectradialog.ui:529
+msgid "&Save Image..."
+msgstr "&Сохранить изображение..."
+
+#: src/extensions/spectradialog.ui:562
+msgid ""
+"Use an optimized value for the font size instead of the scheme-specified "
+"value (screen to image point sizes don't translate well!)"
+msgstr ""
+
+#: src/extensions/spectradialog.ui:565
+msgid "Auto-adjust F&ont Size"
+msgstr "Автоподбор размера &шрифта"
+
+#: src/extensions/spectradialog.ui:610
+msgid "&Load data..."
+msgstr "&Загрузить данные"
+
+#: src/extensions/spectradialog.ui:633
+msgid ""
+"Controls:\n"
+"Double left click: Restore default axis limits\n"
+"Right click + drag: Move plot\n"
+"Middle click + drag: Zoom to region\n"
+"Scroll wheel: Zoom to cursor"
+msgstr ""
+
+#: src/extensions/spectratabir.ui:14
+msgid "tab_IR"
+msgstr "tab_ИК"
+
+#: src/extensions/spectratabir.ui:29
+msgid "&Y Axis Units:"
+msgstr "Единицы измерения по оси &Y:"
+
+#: src/extensions/spectratabir.ui:46
+#, no-c-format
+msgid "Transmittance (%)"
+msgstr "Пропускание T(%)"
+
+#: src/extensions/spectratabir.ui:51
+#, no-c-format
+msgid "Absorbance (%)"
+msgstr "Поглощение A(%)"
+
+#: src/extensions/spectratabir.ui:78
+msgid "Sc&ale:"
+msgstr "Ш&кала:"
+
+#: src/extensions/spectratabir.ui:94
+msgid "&Gaussian Width:"
+msgstr "Ширина &гауссова пика:"
+
+#: src/extensions/spectratabir.ui:123
+msgid "&Label peaks"
+msgstr "&Подписипиков"
+
+#: src/extensions/spectratabnmr.ui:14
+msgid "tab_NMR"
+msgstr "tab_ЯМР"
+
+#: src/extensions/spectratabnmr.ui:23
+msgid "NMR &Type:"
+msgstr "&Тип ЯМР:"
+
+#: src/extensions/spectratabnmr.ui:36
+msgid "&Reference:"
+msgstr "Ста&ндарт:"
+
+#: src/extensions/spectratabnmr.ui:46
+msgid "Gaussian &Width:"
+msgstr "Ширина &гауссова пика:"
+
+#: src/extensions/spectratabnmr.ui:69
+msgid "Reset &Plot Axes"
+msgstr "Сбросить &оси графика:"
+
+#: src/extensions/spectratabnmr.ui:105
+msgid "Label Peaks:"
+msgstr "Подписи пиков:"
+
+#: src/extensions/supercelldialog.ui:14
+msgid "Super Cell Parameters"
+msgstr ""
+
+#: src/extensions/supercelldialog.ui:22
+msgid "Super Cell Options"
+msgstr ""
+
+#: src/extensions/supercelldialog.ui:28
+#: src/extensions/unitcellparamdialog.ui:34
+msgid "A repeat:"
+msgstr "Повторений по оси A:"
+
+#: src/extensions/supercelldialog.ui:42
+#: src/extensions/unitcellparamdialog.ui:48
+msgid "B repeat:"
+msgstr "Повторений по оси B:"
+
+#: src/extensions/supercelldialog.ui:56
+#: src/extensions/unitcellparamdialog.ui:62
+msgid "C repeat:"
+msgstr "Повторений по оси C:"
+
+#: src/extensions/supercelldialog.ui:88
+msgid "Generate Cell"
+msgstr "Создать ячеку"
+
+#: src/extensions/unitcellparamdialog.ui:13
+#: src/extensions/unitcellparamdialog.ui:110
+msgid "Unit Cell Parameters"
+msgstr "Параметры элементарной ячейки"
+
+#: src/extensions/unitcellparamdialog.ui:28
+msgid "Unit Cell Display Options"
+msgstr "Параметры отображения элементарной ячейки"
+
+#: src/extensions/unitcellparamdialog.ui:81
+msgid "Delete Unit Cell"
+msgstr "Удалить элементарную ячейку"
+
+#: src/extensions/unitcellparamdialog.ui:101
+msgid "Fill Unit Cell"
+msgstr "Заполнить элементарную ячейку"
+
+#: src/extensions/unitcellparamdialog.ui:131
+msgid "Axes (Å)"
+msgstr "Стороны (Å)"
+
+#: src/extensions/unitcellparamdialog.ui:151
+msgid "Angles (°)"
+msgstr "Углы (°)"
+
+#: src/extensions/unitcellparamdialog.ui:175
+msgid "A:"
+msgstr "A:"
+
+#: src/extensions/unitcellparamdialog.ui:192
+msgid "alpha:"
+msgstr "alpha:"
+
+#: src/extensions/unitcellparamdialog.ui:212
+msgid "B:"
+msgstr "B:"
+
+#: src/extensions/unitcellparamdialog.ui:229
+msgid "beta:"
+msgstr "beta:"
+
+#: src/extensions/unitcellparamdialog.ui:249
+msgid "C:"
+msgstr "C:"
+
+#: src/extensions/unitcellparamdialog.ui:266
+msgid "gamma:"
+msgstr "gamma:"
+
+#: src/extensions/vibrationdialog.ui:14
+msgid "Molecular Vibrations"
+msgstr "Молекулярные колебания"
+
+#: src/extensions/vibrationdialog.ui:45
+msgid "Frequency (cm⁻¹)"
+msgstr "Частота (см⁻¹)"
+
+#: src/extensions/vibrationdialog.ui:50
+msgid "Intensity (km/mol)"
+msgstr "Интенсивность (km/моль)"
+
+#: src/extensions/vibrationdialog.ui:66
+msgid "&Scale:"
+msgstr ""
+
+#: src/extensions/vibrationdialog.ui:97
+msgid "Display Force &Vectors"
+msgstr "Отображать векторы перемещений"
+
+#: src/extensions/vibrationdialog.ui:122
+msgid "E&xport..."
+msgstr "&Экспорт"
+
+#: src/tools/navigatesettingswidget.ui:14
+msgid "Form"
+msgstr ""
+
+#: src/tools/navigatesettingswidget.ui:23
+msgctxt ""
+"Should the navigate tool display visual cues about the action taking place?"
+msgid ""
+"\n"
+"     </property>\n"
+"     <property name=\"text\">\n"
+"      <string>Display visual cues"
+msgstr ""
+
+#: src/tools/navigatesettingswidget.ui:24
+msgid ""
+"Display visual cues</string>\n"
+"     </property>"
+msgstr ""
+
+#: src/tools/pythonsettingswidget.ui:25
+msgid "Python Settings"
+msgstr "Настройки Python"
+
+#: src/tools/zmatrixdialog.ui:14
+msgid "Z Matrix Editor"
+msgstr "Редактор Z-матриц"
+
+#: src/tools/zmatrixdialog.ui:25
+msgid "Import Selected Atoms"
+msgstr "Импортировать выделенные атомы"
+
+#: src/tools/zmatrixdialog.ui:52
+msgid "Remove Atom"
+msgstr "Удалить атом"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
+"Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
+"Kurg,dn2010, ,Launchpad Contributions:,Konstantin Tokarev"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,annulen@"
+"yandex.ru"
+
+#~ msgid "MO "
+#~ msgstr "МО "
+
+#~ msgid "Conformers..."
+#~ msgstr "Конформеры..."
+
+#~ msgid "Atomic Number"
+#~ msgstr "Атомный номер"
+
+#~ msgid "Atoms"
+#~ msgstr "Атомы"
+
+#~ msgid "Bonds"
+#~ msgstr "Связи"
+
+#~ msgid "Residues"
+#~ msgstr "Аминокислотые остатки"
+
+#, qt-format
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Расстояние (1->2): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Расстояние (2->3): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Расстояние (3->4): %1 %2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Библиотека фрагментов..."
+
+#~ msgid "Stop Inserting"
+#~ msgstr "Прекратить вставку"
+
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "Щелкните, чтобы вставить фрагмент в это положение"
+
+#~ msgid "Frequency (cm-1)"
+#~ msgstr "Частота (cm-1)"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "Создать из SMILES:"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
+#~ "%3<br/><br/>Дальнейшую информацию вы можете получить на <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта "
+#~ "программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
+#~ "подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+#~ "КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+
+#~ msgid "Cut Molecule"
+#~ msgstr "Вырезать молекулу"
+
+#~ msgid "Cut Atoms"
+#~ msgstr "Вырезать атомы"
+
+#~ msgid "Paste"
+#~ msgstr "Вставить"
+
+#~ msgid "Clear Molecule"
+#~ msgstr "Удалить молекулу"
+
+#~ msgid "Clear Atoms"
+#~ msgstr "Удалить атомы"
+
+#~ msgid "Open File"
+#~ msgstr "Открыть файл"
+
+#~ msgid "Messages"
+#~ msgstr "Сообщения"
+
+#~ msgid "Window"
+#~ msgstr "Окно"
+
+#~ msgid "&Minimize"
+#~ msgstr "Свер&нуть"
+
+#~ msgid "Ctrl+M"
+#~ msgstr "Ctrl+M"
+
+#~ msgid "&Zoom"
+#~ msgstr "Масштаб (&Z)"
+
+#~ msgid "Bring All to Front"
+#~ msgstr "Вынести всё на передний план"
+
+#~ msgid "Common molecule formats"
+#~ msgstr "Распространённые форматы молекул"
+
+#~ msgid "All files"
+#~ msgstr "Все файлы"
+
+#~ msgid "CML"
+#~ msgstr "CML"
+
+#~ msgid "Crystallographic Interchange CIF"
+#~ msgstr "Кристаллографическая информация CIF"
+
+#~ msgid "GAMESS-US Output"
+#~ msgstr "Выдача GAMESS-US"
+
+#~ msgid "Gaussian 98/03 Output"
+#~ msgstr "Выдача Gaussian 98/03"
+
+#~ msgid "HyperChem"
+#~ msgstr "HyperChem"
+
+#~ msgid "MDL Mol"
+#~ msgstr "MDL Mol"
+
+#~ msgid "PDB"
+#~ msgstr "PDB"
+
+#~ msgid "Sybyl Mol2"
+#~ msgstr "Sybyl Mol2"
+
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#~ msgid "Loading %1..."
+#~ msgstr "Загрузка %1..."
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Невозможно считать %1:\n"
+#~ "%2."
+
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Этот файл содержит только 2D-координаты. Хотите ли вы, чтобы Avogadro "
+#~ "произвёл подгонку длин связей и быструю оптимизацию?"
+
+#~ msgid ""
+#~ "This file does not contain 3D coordinates. You may not be able to edit or "
+#~ "view properly."
+#~ msgstr ""
+#~ "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть или "
+#~ "редактировать его корректно."
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ msgstr ""
+#~ "Похоже, в этом файле содержатся записи о нескольких молекулах. Avogadro "
+#~ "может считать только первую запись. При сохранении записи о всех других "
+#~ "молекулах могут быть потеряны."
+
+#~ msgid " Bonds: "
+#~ msgstr " Связи: "
+
+#~ msgid "Reading molecular file failed."
+#~ msgstr "Не удалось считать файл структуры."
+
+#~ msgid "File Loaded..."
+#~ msgstr "Файл загружен..."
+
+#~ msgid "Gaussian Cartesian Input"
+#~ msgstr "Входной файл Gaussian (декартовы координаты)"
+
+#~ msgid "Gaussian Z-matrix Input"
+#~ msgstr "Входной файл Gaussian (Z-матрица)"
+
+#~ msgid "MDL SDfile"
+#~ msgstr "MDL SDfile"
+
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "Невозможно произвести запись в формате файла %1."
+
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Невозможно записать файл %1:\n"
+#~ "%2."
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Невозможно записать файл %1."
+
+#~ msgid "Saving file."
+#~ msgstr "Сохраняю файл."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Успешно сохранено."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "Не удалось сохранить файл молекулы."
+
+#~ msgid "PNG"
+#~ msgstr "PNG"
+
+#~ msgid "Common image formats"
+#~ msgstr "Распространенные форматы изображений"
+
+#~ msgid "BMP"
+#~ msgstr "BMP"
+
+#~ msgid "JPEG"
+#~ msgstr "JPEG"
+
+#~ msgid "Export Bitmap Graphics"
+#~ msgstr "Экспорт растрового изображения"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Common vector image formats"
+#~ msgstr "Распространенные форматы векторной графики"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Документ был изменен.\n"
+#~ "Хотите ли Вы сохранить изменения?"
+
+#~ msgid "Untitled"
+#~ msgstr "Без названия"
+
+#~ msgid "Unable to paste molecule."
+#~ msgstr "Не удалось вставить молекулу."
+
+#~ msgid "Paste failed (format unavailable)."
+#~ msgstr "Вставка не удалась (формат недоступен)"
+
+#~ msgid "Copy failed (mdl unavailable)."
+#~ msgstr "Копирование не удалось (mdl недоступен)"
+
+#~ msgid "View %1"
+#~ msgstr "Просмотр %1"
+
+#~ msgid "Normal Size"
+#~ msgstr "Нормальный размер"
+
+#~ msgid "Full Screen"
+#~ msgstr "Полноэкранный режим"
+
+#~ msgid "untitled"
+#~ msgstr "безымянный"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Settings..."
+#~ msgstr "Настройки..."
+
+#~ msgid "Duplicate"
+#~ msgstr "Дублировать"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "No tools loaded."
+#~ msgstr "Не загружены инструменты."
+
+#~ msgid ""
+#~ " It is unlikely this application will function correctly. Please correct "
+#~ "this error."
+#~ msgstr ""
+#~ " Маловероятно, что это приложение будет работать корректно. Пожалуста "
+#~ "исправьте эту ошибку."
+
+#~ msgid "Objects"
+#~ msgstr "Объекты"
+
+#~ msgid " copy"
+#~ msgstr " копировать"
+
+#~ msgid "Name: "
+#~ msgstr "Название: "
+
+#~ msgid "File: "
+#~ msgstr "Файл: "
+
+#~ msgid "Description:\n"
+#~ msgstr "Описание:\n"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Менеджер плагинов"
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Чтобы изменения вступили в силу, требуется перезапуск Avogadro"
+
+#~ msgid "bond %1"
+#~ msgstr "связь %1"
+
+#~ msgid "tree"
+#~ msgstr "дерево"
+
+#~ msgid "Low"
+#~ msgstr "Низкое"
+
+#~ msgid "Medium"
+#~ msgstr "Среднее"
+
+#~ msgid "High"
+#~ msgstr "Высокое"
+
+#~ msgid "Undefined"
+#~ msgstr "Не определено"
+
+#~ msgid "Some"
+#~ msgstr "Немного"
+
+#~ msgid "Mid"
+#~ msgstr "Средне"
+
+#~ msgid "Lots"
+#~ msgstr "Много"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "Copy text"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Atom"
+#~ msgstr "Атом"
+
+#~ msgid "Bond"
+#~ msgstr "Связь"
+
+#~ msgid "Torsion"
+#~ msgstr "Двугранный угол"
+
+#~ msgid "Conformer"
+#~ msgstr "Конформер"
+
+#~ msgid "Angle (°)"
+#~ msgstr "Угол (°)"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "Двугранный угол (°)"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "cancel"
+#~ msgstr "отмена"
+
+#~ msgid "Type:"
+#~ msgstr "Тип:"
+
+#~ msgid "Name:"
+#~ msgstr "Название:"
+
+#~ msgid "Description:"
+#~ msgstr "Описание:"
+
+#~ msgid "Color by:"
+#~ msgstr "Раскрашивать по:"
+
+#~ msgid "Add Selected Primitives"
+#~ msgstr "Добавить Выбранные Примитивы"
+
+#~ msgid "Remove Selected Primitives"
+#~ msgstr "Удалить Выбранные Примитивы"
+
+#~ msgid "Add All Primitives"
+#~ msgstr "Добавить Все Примитивы"
+
+#~ msgid "Import Molecule File"
+#~ msgstr "Импортировать файл молекулы"
+
+#~ msgid "Automatically detect from extension"
+#~ msgstr "Автоматически определить по расширению"
+
+#~ msgid "Coordinates are in Ångstroms"
+#~ msgstr "Координаты в ангстремах"
+
+#~ msgid "&Help"
+#~ msgstr "&Справка"
+
+#~ msgid "Open &Recent"
+#~ msgstr "Пр&едыдущие документы"
+
+#~ msgid "Toolbars"
+#~ msgstr "Панели инструментов"
+
+#~ msgid "Main Toolbar"
+#~ msgstr "Главная панель"
+
+#~ msgid "&Open"
+#~ msgstr "&Открыть"
+
+#~ msgid "Ctrl+O"
+#~ msgstr "Ctrl+O"
+
+#~ msgid "&Quit"
+#~ msgstr "В&ыход"
+
+#~ msgid "Ctrl+Q"
+#~ msgstr "Ctrl+Q"
+
+#~ msgid "Recent"
+#~ msgstr "Недавние"
+
+#~ msgid "&New"
+#~ msgstr "С&оздать"
+
+#~ msgid "Ctrl+N"
+#~ msgstr "Ctrl+N"
+
+#~ msgid "Ctrl+W"
+#~ msgstr "Ctrl+W"
+
+#~ msgid "&Save"
+#~ msgstr "&Сохранить"
+
+#~ msgid "Ctrl+S"
+#~ msgstr "Ctrl+S"
+
+#~ msgid "Save &As..."
+#~ msgstr "Сохранить &как..."
+
+#~ msgid "Ctrl+Shift+S"
+#~ msgstr "Ctrl+Shift+S"
+
+#~ msgid "&Graphics..."
+#~ msgstr "&Графика..."
+
+#~ msgid "&Full Screen Mode"
+#~ msgstr "&Полноэкранный режим"
+
+#~ msgid "Set &Background Color..."
+#~ msgstr "Выбрать &цвет фона..."
+
+#~ msgid "&About"
+#~ msgstr "&О программе"
+
+#~ msgid "&Undo"
+#~ msgstr "&Отменить"
+
+#~ msgid "Ctrl+Z"
+#~ msgstr "Ctrl+Z"
+
+#~ msgid "&Redo"
+#~ msgstr "&Повторить"
+
+#~ msgid "Ctrl+Shift+Z"
+#~ msgstr "Ctrl+Shift+Z"
+
+#~ msgid "Close View"
+#~ msgstr "Закрыть окно просмотра"
+
+#~ msgid "Center"
+#~ msgstr "По центру"
+
+#~ msgid "&Paste"
+#~ msgstr "Вст&авить"
+
+#~ msgid "Ctrl+V"
+#~ msgstr "Ctrl+V"
+
+#~ msgid "Copy"
+#~ msgstr "Копировать"
+
+#~ msgid "Ctrl+C"
+#~ msgstr "Ctrl+C"
+
+#~ msgid "Cut"
+#~ msgstr "Вырезать"
+
+#~ msgid "Ctrl+X"
+#~ msgstr "Ctrl+X"
+
+#~ msgid "Clear"
+#~ msgstr "Очистить"
+
+#~ msgid "Select All"
+#~ msgstr "Выделить все"
+
+#~ msgid "Ctrl+A"
+#~ msgstr "Ctrl+A"
+
+#~ msgid "Select None"
+#~ msgstr "Снять выделение"
+
+#~ msgid "Ctrl+Shift+A"
+#~ msgstr "Ctrl+Shift+A"
+
+#~ msgid "Configure Avogadro..."
+#~ msgstr "Настроить Avogadro..."
+
+#~ msgid "Tutorials"
+#~ msgstr "Учебник"
+
+#~ msgid "Display Axes"
+#~ msgstr "Показать оси"
+
+#~ msgid "Avogadro Help"
+#~ msgstr "Справка Avogadro"
+
+#~ msgid "Release Notes"
+#~ msgstr "Примечания к выпуску"
+
+#~ msgid "Report a Bug"
+#~ msgstr "Сообщить об ошибке"
+
+#~ msgid "Avogadro Website"
+#~ msgstr "Веб-сайт Avogadro"
+
+#~ msgid "Plugin Manager..."
+#~ msgstr "Менеджер дополнений..."
+
+#~ msgid "Molecule File..."
+#~ msgstr "Файл молекулы..."
+
+#~ msgid "&Vector Graphics..."
+#~ msgstr "Векторная графика..."
+
+#~ msgid "Display Unit Cell Axes"
+#~ msgstr "Показывать оси элементарной ячейки"
+
+#~ msgid "Plugins"
+#~ msgstr "Дополнения"
+
+#~ msgid "Details"
+#~ msgstr "Подробности"
+
+#~ msgid "New Item"
+#~ msgstr "Новый элемент"
+
+#~ msgid "&New Item"
+#~ msgstr "&Новый элемент"
+
+#~ msgid "Delete Item"
+#~ msgstr "Удалить элемент"
+
+#~ msgid "&Delete Item"
+#~ msgstr "&Удалить элемент"
+
+#~ msgid "Move Item Up"
+#~ msgstr "Переместить элемент вверх"
+
+#~ msgid "Move Item Down"
+#~ msgstr "Переместить элемент вниз"
+
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgid "Quality:"
+#~ msgstr "Качество:"
+
+#~ msgid "Top"
+#~ msgstr "По верхнему краю"
+
+#~ msgid "Bottom"
+#~ msgstr "По нижнему краю"
+
+#~ msgid "Left"
+#~ msgstr "По левому краю"
+
+#~ msgid "Right"
+#~ msgstr "По правому краю"
+
+#~ msgid "Tab Position"
+#~ msgstr "Расположение вкладки"
+
+#~ msgid "Fog:"
+#~ msgstr "Туман:"
+
+#~ msgid "Smooth Transitions"
+#~ msgstr "Сглаживать перемещения"

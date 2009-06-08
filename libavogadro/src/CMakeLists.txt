@@ -22,7 +22,7 @@ include_directories(
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Library translations
-file(GLOB libavogadro_TS "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.ts")
+file(GLOB libavogadro_TS "${Avogadro_BINARY_DIR}/i18n/libavogadro*.ts")
 QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 file(GLOB libavogadro_SRCS "*.cpp")

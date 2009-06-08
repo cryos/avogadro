@@ -1,0 +1,2991 @@
+# Czech translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-03 17:07+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/mainwindow.cpp:2052
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
+msgid "OK"
+msgstr "OK"
+
+#: src/aboutdialog.cpp:66
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
+msgstr ""
+"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
+"%3<br/><br/>Pro více informací navštivte <a "
+"href=\"http://avogadro.openmolecules.net/\">domovskou stránku "
+"projektu</a>.<br/><br/>Program je poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, "
+"VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
+
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:738 src/mainwindow.cpp:763
+#: src/mainwindow.cpp:776 src/mainwindow.cpp:839 src/mainwindow.cpp:873
+#: src/mainwindow.cpp:915 src/mainwindow.cpp:1054 src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1076 src/mainwindow.cpp:1088 src/mainwindow.cpp:1245
+#: src/mainwindow.cpp:2215 src/mainwindow.cpp:2682 :46
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr "Vyjmout molekulu"
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr "Vyjmout atomy"
+
+#: src/editcommands.cpp:97
+msgid "Paste"
+msgstr "Vložit"
+
+#: src/editcommands.cpp:132
+msgid "Clear Molecule"
+msgstr "Smazat molekulu"
+
+#: src/editcommands.cpp:134
+msgid "Clear Atoms"
+msgstr "Smazat atomy"
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:664
+msgid "Open File"
+msgstr "Otevřít soubor"
+
+#: src/mainwindow.cpp:271
+msgid "Messages"
+msgstr "Zprávy"
+
+#: src/mainwindow.cpp:320
+msgid "Window"
+msgstr "Okno"
+
+#: src/mainwindow.cpp:323
+msgid "&Minimize"
+msgstr "&Minimalizovat"
+
+#: src/mainwindow.cpp:324
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: src/mainwindow.cpp:329
+msgid "&Zoom"
+msgstr "&Zvětšení"
+
+#: src/mainwindow.cpp:336 src/mainwindow.cpp:1380
+msgid "Bring All to Front"
+msgstr "Přenést vše do popředí"
+
+#: src/mainwindow.cpp:595
+msgid "&Tool Settings..."
+msgstr ""
+
+#: src/mainwindow.cpp:598
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr ""
+
+#: src/mainwindow.cpp:603
+msgid "&Display Settings..."
+msgstr ""
+
+#: src/mainwindow.cpp:606
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr ""
+
+#: src/mainwindow.cpp:644 src/mainwindow.cpp:1006
+msgid "Common molecule formats"
+msgstr "Základní molekuly"
+
+#: src/mainwindow.cpp:649 src/mainwindow.cpp:1003 src/mainwindow.cpp:1185
+#: src/mainwindow.cpp:1264
+msgid "All files"
+msgstr "Všechny soubory"
+
+#: src/mainwindow.cpp:650 src/mainwindow.cpp:1000 src/mainwindow.cpp:1012
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:651
+msgid "Computational Chemistry Output"
+msgstr ""
+
+#: src/mainwindow.cpp:652
+msgid "Crystallographic Interchange CIF"
+msgstr ""
+
+#: src/mainwindow.cpp:653
+msgid "GAMESS-US Output"
+msgstr "Výstup GAMESS-US"
+
+#: src/mainwindow.cpp:654
+msgid "Gaussian 98/03 Output"
+msgstr ""
+
+#: src/mainwindow.cpp:655
+msgid "Gaussian Formatted Checkpoint"
+msgstr ""
+
+#: src/mainwindow.cpp:656
+msgid "HyperChem"
+msgstr "HyperChem"
+
+#: src/mainwindow.cpp:657
+msgid "MDL Mol"
+msgstr "MDL Mol"
+
+#: src/mainwindow.cpp:658
+msgid "NWChem Output"
+msgstr ""
+
+#: src/mainwindow.cpp:659 src/mainwindow.cpp:1017
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:660 src/mainwindow.cpp:1019
+msgid "Sybyl Mol2"
+msgstr "Sybyl Mol2"
+
+#: src/mainwindow.cpp:661 src/mainwindow.cpp:1020
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:733
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr ""
+
+#: src/mainwindow.cpp:739
+#, qt-format
+msgid ""
+"Cannot read file %1:\n"
+"%2."
+msgstr ""
+"Nemohu načíst soubor %1:\n"
+"%2."
+
+#: src/mainwindow.cpp:764
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Nemohu rozpoznat typ souboru %1."
+
+#: src/mainwindow.cpp:769
+#, qt-format
+msgid "Loading %1..."
+msgstr "Načítám %1..."
+
+#: src/mainwindow.cpp:777
+msgid ""
+"This file contains 2D coordinates only. Do you want Avogadro to scale the "
+"bonds and do a quick optimization?"
+msgstr ""
+"Tento soubor obsahuje pouze 2D souřadnice. Přejete si, aby se je Avogadro "
+"pokusilo načíst a optimalizovat?"
+
+#: src/mainwindow.cpp:840
+msgid ""
+"This file does not contain 3D coordinates. You may not be able to edit or "
+"view properly."
+msgstr ""
+"Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo "
+"úpravou."
+
+#: src/mainwindow.cpp:874
+msgid ""
+"This file appears to contain multiple molecule records. Avogadro will only "
+"read the first molecule. If you save, all other molecules may be lost."
+msgstr ""
+"Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze "
+"první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být "
+"ztraceny."
+
+#: src/mainwindow.cpp:887
+msgid "Atoms: "
+msgstr "Atomy: "
+
+#: src/mainwindow.cpp:888
+msgid " Bonds: "
+msgstr " Vazby: "
+
+#: src/mainwindow.cpp:893
+msgid "Reading molecular file failed."
+msgstr "Načítání souboru molekul selhalo."
+
+#: src/mainwindow.cpp:902
+msgid "File Loaded..."
+msgstr "Soubor načten..."
+
+#: src/mainwindow.cpp:916
+msgid "Do you want to save the changes you made in the document?"
+msgstr ""
+
+#: src/mainwindow.cpp:925
+msgid "Your changes will be lost if you don't save them."
+msgstr ""
+
+#: src/mainwindow.cpp:929
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr ""
+
+#: src/mainwindow.cpp:930
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr ""
+
+#: src/mainwindow.cpp:932
+msgid "Save..."
+msgstr ""
+
+#: src/mainwindow.cpp:932 src/savedialog.cpp:65
+msgid "Save"
+msgstr "Uložit"
+
+#: src/mainwindow.cpp:1013
+msgid "GAMESS Input"
+msgstr "Vstup GAMESS"
+
+#: src/mainwindow.cpp:1014
+msgid "Gaussian Cartesian Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1015
+msgid "Gaussian Z-matrix Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1016
+msgid "MDL SDfile"
+msgstr "MDL SDfile"
+
+#: src/mainwindow.cpp:1018
+msgid "NWChem Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1023
+msgid "Save Molecule As"
+msgstr "Uložit molekulu jako"
+
+#: src/mainwindow.cpp:1055
+#, qt-format
+msgid "Cannot write to file format of file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:1063 src/mainwindow.cpp:1077
+#, qt-format
+msgid ""
+"Cannot write to the file %1:\n"
+"%2."
+msgstr ""
+"Nemohu zapisovat do souboru %1:\n"
+"%2"
+
+#: src/mainwindow.cpp:1089
+#, qt-format
+msgid "Cannot write to the file %1."
+msgstr "Nemohu zapisovat do souboru %1."
+
+#: src/mainwindow.cpp:1095
+msgid "Saving file."
+msgstr "Ukládám soubor."
+
+#: src/mainwindow.cpp:1147
+msgid "Save succeeded."
+msgstr "Ukládání proběhlo úspěšně."
+
+#: src/mainwindow.cpp:1150 src/mainwindow.cpp:1154
+msgid "Saving molecular file failed."
+msgstr "Uložení molekulového souboru selhalo."
+
+#: src/mainwindow.cpp:1175 src/mainwindow.cpp:1187
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1182
+msgid "Common image formats"
+msgstr "Běžné formáty obrázků"
+
+#: src/mainwindow.cpp:1186
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1188
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1194 src/mainwindow.cpp:1273
+msgid "Export Bitmap Graphics"
+msgstr "Exportovat bitmapu"
+
+#: src/mainwindow.cpp:1246
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Nemohu uložit soubor %1."
+
+#: src/mainwindow.cpp:1254 src/mainwindow.cpp:1265
+msgid "PDF"
+msgstr "PDF"
+
+#: src/mainwindow.cpp:1261
+msgid "Common vector image formats"
+msgstr "Běžné vektorové formáty"
+
+#: src/mainwindow.cpp:1266
+msgid "SVG"
+msgstr "SVG"
+
+#: src/mainwindow.cpp:1267
+msgid "EPS"
+msgstr "EPS"
+
+#: src/mainwindow.cpp:1412
+#, qt-format
+msgid "Untitled %1"
+msgstr ""
+
+#: src/mainwindow.cpp:1495
+msgid "Unable to paste molecule."
+msgstr "Nemohu vložit molekulu."
+
+#: src/mainwindow.cpp:1524
+msgid "Paste failed (format unavailable)."
+msgstr "Vložení selhalo (nedostupný formát)"
+
+#: src/mainwindow.cpp:1593
+msgid "Copy failed (mdl unavailable)."
+msgstr "Kopírování selhalo (mdl není dostupné)."
+
+#: src/mainwindow.cpp:1719 src/mainwindow.cpp:1749 src/mainwindow.cpp:1778
+#: src/mainwindow.cpp:1810 src/mainwindow.cpp:2344
+#, qt-format
+msgid "View %1"
+msgstr "Zobrazit %1"
+
+#: src/mainwindow.cpp:1785
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: oddělený pohled"
+
+#: src/mainwindow.cpp:1946
+msgid "Normal Size"
+msgstr "Normální velikost"
+
+#: src/mainwindow.cpp:1958
+msgid "Full Screen"
+msgstr "Celá obrazovka"
+
+#: src/mainwindow.cpp:2127 src/mainwindow.cpp:2162 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "nepojmenováno"
+
+#: src/mainwindow.cpp:2209
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr ""
+
+#: src/mainwindow.cpp:2214
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr ""
+
+#: src/projecttreeeditor.ui:229
+#: src/mainwindow.cpp:2625 :256
+msgid "Settings..."
+msgstr "Nastavení..."
+
+#: src/mainwindow.cpp:2636
+msgid "Add"
+msgstr "Přidat"
+
+#: src/mainwindow.cpp:2641
+msgid "Duplicate"
+msgstr "Duplikovat"
+
+#: src/mainwindow.cpp:2646
+msgid "Remove"
+msgstr "Odstranit"
+
+#: src/mainwindow.cpp:2674
+msgid "No tools or engines loaded."
+msgstr ""
+
+#: src/mainwindow.cpp:2676
+msgid "No engines loaded."
+msgstr ""
+
+#: src/mainwindow.cpp:2678
+msgid "No tools loaded."
+msgstr "Nejsou načteny žádné nástroje"
+
+#: src/mainwindow.cpp:2679
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+" Aplikace pravděpodobně nebude fungovat správně. Prosím opravte tuto chybu."
+
+#: src/projecttreeeditor.ui:191
+#: src/settingsdialog.ui:14
+#: src/mainwindow.cpp:2700 src/mainwindow.cpp:2717 :250 rc.cpp:258
+msgid "Settings"
+msgstr "Nastavení"
+
+#: src/mainwindow.cpp:2723
+msgid "Objects"
+msgstr "Objekty"
+
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2729 :210
+msgid "Colors"
+msgstr "Barvy"
+
+#: src/mainwindow.cpp:2777
+msgid " copy"
+msgstr " kopírovat"
+
+#: src/pluginsettings.cpp:55
+msgid "Name: "
+msgstr "Název: "
+
+#: src/pluginsettings.cpp:56
+msgid "Identifier: "
+msgstr ""
+
+#: src/pluginsettings.cpp:57
+msgid "File: "
+msgstr "Soubor: "
+
+#: src/pluginsettings.cpp:58
+msgid "Description:\n"
+msgstr "Popis:\n"
+
+#: src/primitiveitemmodel.cpp:265 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "Molekula"
+
+#: src/primitiveitemmodel.cpp:269
+#, qt-format
+msgctxt "%1 is element, %L2 is atom index"
+msgid "Atom %1 %L2"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:274
+#, qt-format
+msgctxt "%L1 is bond index"
+msgid "Bond %L1"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:285
+#, qt-format
+msgctxt "%1 is residue name, %2 is residue index"
+msgid "Residue %1 %2"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:301 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "Atomy"
+
+#: src/primitiveitemmodel.cpp:303 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "Vazby"
+
+#: src/primitiveitemmodel.cpp:305 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr "Radikály"
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "vyzba %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr "Popisek"
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr ""
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "Chyba"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr ""
+
+#: src/projecttreemodel.cpp:65
+msgid "Item"
+msgstr ""
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr ""
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr ""
+
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :266
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr ""
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr ""
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr ""
+
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :272
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr ""
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr ""
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr ""
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr ""
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr ""
+
+#: src/updatecheck.cpp:81
+msgid "Network Update Check Failed"
+msgstr ""
+
+#: src/updatecheck.cpp:82
+msgid "Network timeout or other error."
+msgstr ""
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr ""
+
+#: src/addenginedialog.ui:13
+msgid "Add Display Type"
+msgstr "Přidat typ zobrazení"
+
+#: src/addenginedialog.ui:19
+msgid "Type:"
+msgstr "Typ:"
+
+#: src/addenginedialog.ui:32
+msgid "Name:"
+msgstr "Jméno:"
+
+#: src/addenginedialog.ui:45
+msgid "Description:"
+msgstr "Popis:"
+
+#: src/enginecolorswidget.ui:13
+msgid "Form"
+msgstr ""
+
+#: src/enginecolorswidget.ui:24
+msgid "Color by:"
+msgstr "Barva dle:"
+
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
+msgid "Add Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
+msgid "Remove Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
+msgid "Add All Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:83
+msgid "Display Only Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:86
+msgid "Assign to Selection"
+msgstr ""
+
+#: src/importdialog.ui:13
+msgid "Import Molecule File"
+msgstr ""
+
+#: src/importdialog.ui:24
+msgid "Filename:"
+msgstr "Název souboru:"
+
+#: src/importdialog.ui:34
+msgid "Select..."
+msgstr "Vybrat..."
+
+#: src/importdialog.ui:45
+msgid "Format:"
+msgstr "Formát:"
+
+#: src/importdialog.ui:53
+msgid "Automatically detect from extension"
+msgstr "Automaticky detekovat z přípony"
+
+#: src/importdialog.ui:63
+msgid "Perceive bonding"
+msgstr ""
+
+#: src/importdialog.ui:73
+msgid "Perceive bond orders"
+msgstr ""
+
+#: src/importdialog.ui:83
+msgid "Coordinates are in Ångstroms"
+msgstr "Souřadnice jsou v Ångstremech"
+
+#: src/mainwindow.ui:32
+msgid "&Help"
+msgstr "&Nápověda"
+
+#: src/mainwindow.ui:46
+msgid "&File"
+msgstr "&Soubor"
+
+#: src/mainwindow.ui:50
+msgid "Open &Recent"
+msgstr "Otevřít &nedávné"
+
+#: src/mainwindow.ui:55
+msgid "Export"
+msgstr "Exportovat"
+
+#: src/mainwindow.ui:62
+msgid "Import"
+msgstr "Importovat"
+
+#: src/mainwindow.ui:81
+msgid "Se&ttings"
+msgstr ""
+
+#: src/mainwindow.ui:85
+msgid "Toolbars"
+msgstr "Lišty"
+
+#: src/mainwindow.ui:94
+msgid "&Build"
+msgstr "&Sestavit"
+
+#: src/mainwindow.ui:99
+msgid "&View"
+msgstr "&Zobrazit"
+
+#: src/mainwindow.ui:117
+msgid "&Edit"
+msgstr "&Upravit"
+
+#: src/mainwindow.ui:130
+msgid "E&xtensions"
+msgstr ""
+
+#: src/mainwindow.ui:135
+msgid "&Select"
+msgstr "&Vybrat"
+
+#: src/mainwindow.ui:152
+msgid "Main Toolbar"
+msgstr "Hlavní lišta"
+
+#: src/mainwindow.ui:189
+#: src/settingsdialog.ui:255
+msgid "Project Tree"
+msgstr ""
+
+#: src/mainwindow.ui:222
+#: src/pluginsettings.ui:23
+msgid "Display Types"
+msgstr ""
+
+#: src/mainwindow.ui:231
+#: src/pluginsettings.ui:28
+msgid "Tools"
+msgstr "Nástroje"
+
+#: src/mainwindow.ui:252
+#: src/mainwindow.ui:264
+msgid "&Open"
+msgstr "&Otevřít"
+
+#: src/mainwindow.ui:255
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: src/mainwindow.ui:273
+#: src/mainwindow.ui:285
+msgid "&Quit"
+msgstr "&Ukončit"
+
+#: src/mainwindow.ui:276
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: src/mainwindow.ui:290
+msgid "Recent"
+msgstr "Nedávné"
+
+#: src/mainwindow.ui:295
+msgid "&Clear Recent"
+msgstr "&Smazat nedávné"
+
+#: src/mainwindow.ui:304
+#: src/mainwindow.ui:316
+msgid "&New"
+msgstr "&Nový"
+
+#: src/mainwindow.ui:307
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: src/mainwindow.ui:325
+#: src/mainwindow.ui:337
+msgid "&Close"
+msgstr "&zavřít"
+
+#: src/mainwindow.ui:328
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#: src/mainwindow.ui:346
+#: src/mainwindow.ui:358
+msgid "&Save"
+msgstr "&Uložit"
+
+#: src/mainwindow.ui:349
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.ui:367
+msgid "Save &As..."
+msgstr "Uložit &jako..."
+
+#: src/mainwindow.ui:370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: src/mainwindow.ui:379
+msgid "Revert To Saved"
+msgstr ""
+
+#: src/mainwindow.ui:388
+msgid "&Graphics..."
+msgstr ""
+
+#: src/mainwindow.ui:397
+msgid "&Full Screen Mode"
+msgstr "&Celoobrazovkový režim"
+
+#: src/mainwindow.ui:400
+msgid "Esc"
+msgstr ""
+
+#: src/mainwindow.ui:409
+msgid "Set &Background Color..."
+msgstr "Nastavit barvu &pozadí..."
+
+#: src/mainwindow.ui:414
+msgid "&About"
+msgstr "&O aplikaci"
+
+#: src/mainwindow.ui:423
+msgid "&Undo"
+msgstr "&Zpět"
+
+#: src/mainwindow.ui:426
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#: src/mainwindow.ui:435
+msgid "&Redo"
+msgstr "&Obnovit"
+
+#: src/mainwindow.ui:438
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#: src/mainwindow.ui:447
+msgid "New View"
+msgstr "Nový pohled"
+
+#: src/mainwindow.ui:459
+msgid "Close View"
+msgstr "Zavřít pohlet"
+
+#: src/mainwindow.ui:468
+msgid "Center"
+msgstr "Vystředit"
+
+#: src/mainwindow.ui:477
+msgid "&Paste"
+msgstr "&Vložit"
+
+#: src/mainwindow.ui:480
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: src/mainwindow.ui:489
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: src/mainwindow.ui:492
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: src/mainwindow.ui:501
+msgid "Cut"
+msgstr "Vyjmout"
+
+#: src/mainwindow.ui:504
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: src/mainwindow.ui:509
+msgid "Clear"
+msgstr "Smazat"
+
+#: src/mainwindow.ui:512
+msgid "Backspace"
+msgstr ""
+
+#: src/mainwindow.ui:517
+msgid "Select All"
+msgstr "Vybrat vše"
+
+#: src/mainwindow.ui:520
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: src/mainwindow.ui:525
+msgid "Select None"
+msgstr "Zrušit výběr"
+
+#: src/mainwindow.ui:528
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#: src/mainwindow.ui:537
+msgid "Configure Avogadro..."
+msgstr "Nastavit Avogadro..."
+
+#: src/mainwindow.ui:545
+msgid "Tutorials"
+msgstr "Návody"
+
+#: src/mainwindow.ui:550
+msgid "Duplicate View"
+msgstr "Duplikovat pohled"
+
+#: src/mainwindow.ui:558
+msgid "Display Axes"
+msgstr "Zobrazit osy"
+
+#: src/mainwindow.ui:566
+msgid "Debug Information"
+msgstr ""
+
+#: src/mainwindow.ui:574
+msgid "Avogadro Help"
+msgstr "Nápověda Avogadro"
+
+#: src/mainwindow.ui:579
+msgid "Release Notes"
+msgstr "Poznámky k vydání"
+
+#: src/mainwindow.ui:584
+msgid "Report a Bug"
+msgstr "Nahlásit chybu"
+
+#: src/mainwindow.ui:589
+msgid "FAQ"
+msgstr "FAQ"
+
+#: src/mainwindow.ui:594
+msgid "Avogadro Website"
+msgstr "Domovská stránka Avogadro"
+
+#: src/mainwindow.ui:599
+msgid "Plugin Manager..."
+msgstr ""
+
+#: src/mainwindow.ui:604
+msgid "Project Tree Editor..."
+msgstr ""
+
+#: src/mainwindow.ui:609
+msgid "Detach View"
+msgstr ""
+
+#: src/mainwindow.ui:614
+msgid "Molecule File..."
+msgstr ""
+
+#: src/mainwindow.ui:625
+msgid "Use Quick Render"
+msgstr ""
+
+#: src/mainwindow.ui:630
+msgid "&Vector Graphics..."
+msgstr ""
+
+#: src/mainwindow.ui:638
+msgid "Display Unit Cell Axes"
+msgstr ""
+
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
+msgid "Plugins"
+msgstr "Zásuvné moduly"
+
+#: src/pluginsettings.ui:33
+msgid "Extensions"
+msgstr "Rozšíření"
+
+#: src/pluginsettings.ui:52
+msgid "Details"
+msgstr "Detaily"
+
+#: src/projecttreeeditor.ui:16
+#: src/projecttreeeditor.ui:174
+msgid "Tree Items"
+msgstr ""
+
+#: src/projecttreeeditor.ui:42
+#: src/projecttreeeditor.ui:213
+msgid "Type"
+msgstr "Typ"
+
+#: src/projecttreeeditor.ui:62
+msgid "New Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:65
+msgid "&New Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:76
+msgid "New Subitem"
+msgstr ""
+
+#: src/projecttreeeditor.ui:79
+msgid "New &Subitem"
+msgstr ""
+
+#: src/projecttreeeditor.ui:86
+msgid "Delete Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:89
+msgid "&Delete Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:113
+msgid "Move Item Left (before Parent Item)"
+msgstr ""
+
+#: src/projecttreeeditor.ui:116
+msgid "L"
+msgstr "L"
+
+#: src/projecttreeeditor.ui:127
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+
+#: src/projecttreeeditor.ui:130
+msgid "R"
+msgstr "R"
+
+#: src/projecttreeeditor.ui:143
+msgid "Move Item Up"
+msgstr ""
+
+#: src/projecttreeeditor.ui:146
+msgid "U"
+msgstr "U"
+
+#: src/projecttreeeditor.ui:157
+msgid "Move Item Down"
+msgstr ""
+
+#: src/projecttreeeditor.ui:160
+msgid "D"
+msgstr "D"
+
+#: src/projecttreeeditor.ui:178
+msgid "1"
+msgstr "1"
+
+#: src/projecttreeeditor.ui:199
+msgid "Alias"
+msgstr "Alias"
+
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
+msgid "General"
+msgstr "Obecné"
+
+#: src/settingsdialog.ui:42
+msgid "Quality:"
+msgstr "Kvalita:"
+
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
+msgid "Set the global rendering quality."
+msgstr ""
+
+#: src/settingsdialog.ui:100
+msgid "Fog:"
+msgstr ""
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
+"ech.trefny@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,"
+
+#, qt-format
+#~ msgid "Cannot read file %1."
+#~ msgstr "Nemohu načíst soubor %1."
+
+#~ msgid "Navigate"
+#~ msgstr "Navigace"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Dokument byl změněn.\n"
+#~ "Přejete si změny uložit?"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#, qt-format
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Vodík"
+
+#~ msgid "Helium"
+#~ msgstr "Helium"
+
+#~ msgid "Lithium"
+#~ msgstr "Lithium"
+
+#~ msgid "Beryllium"
+#~ msgstr "Beryllium"
+
+#~ msgid "Boron"
+#~ msgstr "Bor"
+
+#~ msgid "Carbon"
+#~ msgstr "Uhlík"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Dusík"
+
+#~ msgid "Oxygen"
+#~ msgstr "Kyslík"
+
+#~ msgid "Fluorine"
+#~ msgstr "Fluor"
+
+#~ msgid "Neon"
+#~ msgstr "Neon"
+
+#~ msgid "Sodium"
+#~ msgstr "Sodík"
+
+#~ msgid "Magnesium"
+#~ msgstr "Hořčík"
+
+#~ msgid "Aluminum"
+#~ msgstr "Hliník"
+
+#~ msgid "Silicon"
+#~ msgstr "Křemík"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Fosfor"
+
+#~ msgid "Sulfur"
+#~ msgstr "Síra"
+
+#~ msgid "Chlorine"
+#~ msgstr "Chlor"
+
+#~ msgid "Argon"
+#~ msgstr "Argon"
+
+#~ msgid "Potassium"
+#~ msgstr "Draslík"
+
+#~ msgid "Calcium"
+#~ msgstr "Vápník"
+
+#~ msgid "Scandium"
+#~ msgstr "Skandium"
+
+#~ msgid "Titanium"
+#~ msgstr "Titan"
+
+#~ msgid "Vanadium"
+#~ msgstr "Vanad"
+
+#~ msgid "Chromium"
+#~ msgstr "Chrom"
+
+#~ msgid "Manganese"
+#~ msgstr "Hořčík"
+
+#~ msgid "Iron"
+#~ msgstr "Železo"
+
+#~ msgid "Cobalt"
+#~ msgstr "Kobalt"
+
+#~ msgid "Nickel"
+#~ msgstr "Nikl"
+
+#~ msgid "Copper"
+#~ msgstr "Měď"
+
+#~ msgid "Zinc"
+#~ msgstr "Zinek"
+
+#~ msgid "Gallium"
+#~ msgstr "Gallium"
+
+#~ msgid "Germanium"
+#~ msgstr "Germanium"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arzén"
+
+#~ msgid "Selenium"
+#~ msgstr "Selen"
+
+#~ msgid "Bromine"
+#~ msgstr "Brom"
+
+#~ msgid "Krypton"
+#~ msgstr "Krypton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubidium"
+
+#~ msgid "Strontium"
+#~ msgstr "Stroncium"
+
+#~ msgid "Yttrium"
+#~ msgstr "Yttrium"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zirkon"
+
+#~ msgid "Niobium"
+#~ msgstr "Niob"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molybden"
+
+#~ msgid "Technetium"
+#~ msgstr "Technecium"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruthenium"
+
+#~ msgid "Rhodium"
+#~ msgstr "Rhodium"
+
+#~ msgid "Palladium"
+#~ msgstr "Palladium"
+
+#~ msgid "Silver"
+#~ msgstr "Stříbro"
+
+#~ msgid "Cadmium"
+#~ msgstr "Kadmium"
+
+#~ msgid "Indium"
+#~ msgstr "Indium"
+
+#~ msgid "Tin"
+#~ msgstr "Cín"
+
+#~ msgid "Antimony"
+#~ msgstr "Antimon"
+
+#~ msgid "Tellurium"
+#~ msgstr "Tellur"
+
+#~ msgid "Iodine"
+#~ msgstr "Jód"
+
+#~ msgid "Xenon"
+#~ msgstr "Xenon"
+
+#~ msgid "Caesium"
+#~ msgstr "Cesium"
+
+#~ msgid "Barium"
+#~ msgstr "Barium"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lanthan"
+
+#~ msgid "Cerium"
+#~ msgstr "Cer"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Praseodymi"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodymi"
+
+#~ msgid "Promethium"
+#~ msgstr "Promethium"
+
+#~ msgid "Samarium"
+#~ msgstr "Samarium"
+
+#~ msgid "Europium"
+#~ msgstr "Europium"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Gadolinium"
+
+#~ msgid "Terbium"
+#~ msgstr "Terbium"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Dysprosium"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmium"
+
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
+
+#~ msgid "Thulium"
+#~ msgstr "Thulium"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Ytterbium"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutetium"
+
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Tantalum"
+#~ msgstr "Tantal"
+
+#~ msgid "Tungsten"
+#~ msgstr "Wolfram"
+
+#~ msgid "Rhenium"
+#~ msgstr "Rhenium"
+
+#~ msgid "Osmium"
+#~ msgstr "Osmium"
+
+#~ msgid "Iridium"
+#~ msgstr "Iridium"
+
+#~ msgid "Platinum"
+#~ msgstr "Platina"
+
+#~ msgid "Gold"
+#~ msgstr "Zlato"
+
+#~ msgid "Mercury"
+#~ msgstr "Rtuť"
+
+#~ msgid "Thallium"
+#~ msgstr "Thallium"
+
+#~ msgid "Lead"
+#~ msgstr "Olovo"
+
+#~ msgid "Bismuth"
+#~ msgstr "Bismut"
+
+#~ msgid "Polonium"
+#~ msgstr "Polonium"
+
+#~ msgid "Astatine"
+#~ msgstr "Astat"
+
+#~ msgid "Radon"
+#~ msgstr "Radon"
+
+#~ msgid "Francium"
+#~ msgstr "Francium"
+
+#~ msgid "Radium"
+#~ msgstr "Radium"
+
+#~ msgid "Actinium"
+#~ msgstr "Actinium"
+
+#~ msgid "Thorium"
+#~ msgstr "Thorium"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protactinium"
+
+#~ msgid "Uranium"
+#~ msgstr "Uran"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptunium"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutonium"
+
+#~ msgid "Americium"
+#~ msgstr "Americium"
+
+#~ msgid "Curium"
+#~ msgstr "Curium"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkelium"
+
+#~ msgid "Californium"
+#~ msgstr "Californium"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteinium"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermium"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelevium"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobelium"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Lawrencium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dubnium"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgium"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bohrium"
+
+#~ msgid "Hassium"
+#~ msgstr "Hassium"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnerium"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstadtium"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Roentgenium"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadium"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentium"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptium"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Ununoctium"
+
+#~ msgid "Unknown"
+#~ msgstr "Neznámý"
+
+#~ msgid "Axes"
+#~ msgstr "Osy"
+
+#~ msgid "Dipole"
+#~ msgstr "Dipól"
+
+#~ msgid "Force"
+#~ msgstr "Síla"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Vykreslit vodíkové můstky"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Vodíkové můstky"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitaly"
+
+#~ msgid "Polygon"
+#~ msgstr "Polygon"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van der Waalsovi sféry"
+
+#~ msgid "Surface"
+#~ msgstr "Povrch"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Otevřít soubor trajektorie"
+
+#, qt-format
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Animation..."
+#~ msgstr "Animace..."
+
+#, qt-format
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Načítání souboru trajektorie %1 selahalo."
+
+#~ msgid "Animation"
+#~ msgstr "Animace"
+
+#, qt-format
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Počet atomů: %1"
+
+#, qt-format
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Počet rotačních vazeb: %1"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Nastavit silová pole"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Vypočítat energii"
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Ignorovat výběr"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Ukontvit vybrané atomy"
+
+#, qt-format
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Energie = %1 %2"
+
+#~ msgid "Cancel"
+#~ msgstr "Ukončit"
+
+#~ msgid "ForceField"
+#~ msgstr "Silové pole"
+
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP výběr..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "QM výběr"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "gamessEfpDock"
+
+#~ msgid "Delete"
+#~ msgstr "Smazat"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Není vybrán žádný atom"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Musíte provést výběr!"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Název"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Změna pokročilých nastavení"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Pokročilá nastavení byla změněna.\n"
+#~ "Zahodit změny?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Smazání pokročilých nastavení"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Jste si jisti, že chcete smazat pokročilá nastavení?\n"
+#~ "Všechny změny budou ztraceny!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Smazání základních nastavení"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Jste si jisti, že chcete smazat základní nastavení?\n"
+#~ "Všechny změny budou ztraceny!"
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Vstup Gaussian..."
+
+#~ msgid "Show Preview"
+#~ msgstr "Zobrazit náhled"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Skrýt náhled"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Zaměnit H za Metyl"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H to Methyl"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H2Methyl"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Přidat vodíkové atomy"
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Odstranit vodíkové atomy"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Vodíkové atomy"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Otevřít soubor ligandů"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Soubory Avogadro (*.*)"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Vlastnosti atomu..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Vlastnosti vazby..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "Vlasnosti úhlů..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Vlastnosti zkroucení..."
+
+#~ msgid "&Properties"
+#~ msgstr "&Vlasnosti"
+
+#~ msgid "Atom"
+#~ msgstr "Atom"
+
+#~ msgid "Bond"
+#~ msgstr "Vazba"
+
+#~ msgid "Angle"
+#~ msgstr "Úhel"
+
+#~ msgid "Torsion"
+#~ msgstr "Zkroucení"
+
+#~ msgid "Properties"
+#~ msgstr "Vlastnosti"
+
+#~ msgid "Atomic Number"
+#~ msgstr "Atomové číslo"
+
+#~ msgid "Valence"
+#~ msgstr "Valence"
+
+#~ msgid "Bond Order"
+#~ msgstr "Druh vazby"
+
+#, qt-format
+#~ msgid "Atom %1"
+#~ msgstr "Atom %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Počáteční atom"
+
+#~ msgid "End Atom"
+#~ msgstr "Koncový atom"
+
+#~ msgid "Length (Å)"
+#~ msgstr "Délka (Å)"
+
+#~ msgid "Rotatable"
+#~ msgstr "Rotace"
+
+#, qt-format
+#~ msgid "Bond %1"
+#~ msgstr "Vazba %1"
+
+#~ msgid "Angle (°)"
+#~ msgstr "Úhel (°)"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Úhel %1"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "Zkroucení (°)"
+
+#, qt-format
+#~ msgid "Torsion %1"
+#~ msgstr "Zkroucení %1"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "Energy"
+#~ msgstr "Energie"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Skripty"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Python - terminál"
+
+#~ msgid "pythonTerminalDock"
+#~ msgstr "pythonTerminalDock"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Invertovat výběr"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Vybrat podle prvku"
+
+#~ msgid "Residue name"
+#~ msgstr "Název radikálu"
+
+#~ msgid "Selections"
+#~ msgstr "Výběry"
+
+#~ msgid "First Action"
+#~ msgstr "První akce"
+
+#~ msgid "Second Action"
+#~ msgstr "Truhá akce"
+
+#~ msgid "&Template"
+#~ msgstr "&Vzor"
+
+#~ msgid "Template"
+#~ msgstr "Vzor"
+
+#~ msgid "Apply"
+#~ msgstr "Použít"
+
+#~ msgid "Connect"
+#~ msgstr "Připojit"
+
+#~ msgid "Disconnect"
+#~ msgstr "Odpojit"
+
+#~ msgid "OpenGL error"
+#~ msgstr "Chyba OpenGL"
+
+#~ msgid "FPS"
+#~ msgstr "FPS"
+
+#~ msgid "Residue"
+#~ msgstr "Radikál"
+
+#~ msgid "No Description"
+#~ msgstr "Bez popisku"
+
+#~ msgid ""
+#~ "Align Molecules\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to two atoms.\n"
+#~ "\tThe first atom is centered at the origin.\n"
+#~ "\tThe second atom is aligned to the selected axis.\n"
+#~ "Right Mouse: \tReset alignment."
+#~ msgstr ""
+#~ "Zarovnat molekuly\n"
+#~ "\n"
+#~ "Levé tlačítko myši: \tVybrat až dva atomy.\n"
+#~ "\tPrvní atom je zarovnán na počátek.\n"
+#~ "\tDruhý atom je zarovnán k vybrané ose.\n"
+#~ "Pravé tlačítko myši: \tZrušit zarovnání."
+
+#~ msgid "Axis:"
+#~ msgstr "souřadnice"
+
+#~ msgid "Align:"
+#~ msgstr "Zarovnání:"
+
+#~ msgid "Everything"
+#~ msgstr "Vše"
+
+#~ msgid "Align"
+#~ msgstr "Zarovnání"
+
+#~ msgid "Force Field:"
+#~ msgstr "Silové pole:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Algoritmus:"
+
+#~ msgid "Start"
+#~ msgstr "Spustit"
+
+#~ msgid "Stop"
+#~ msgstr "Zastavit"
+
+#~ msgid "x rotation:"
+#~ msgstr "x rotace:"
+
+#~ msgid "x rotation"
+#~ msgstr "x rotace"
+
+#~ msgid "y rotation:"
+#~ msgstr "y rotace:"
+
+#~ msgid "y rotation"
+#~ msgstr "y rotace"
+
+#~ msgid "z rotation:"
+#~ msgstr "z rotace:"
+
+#~ msgid "z rotation"
+#~ msgstr "z rotace"
+
+#~ msgid " Show Angles"
+#~ msgstr " Zobrazit úhly"
+
+#, qt-format
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Vzdálenost (1->2): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Vzdálenost (2->3): %1 %2"
+
+#, qt-format
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Úhel: %1 %2"
+
+#, qt-format
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Vzdálenost (3->4): %1 %2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Vzdálenost:"
+
+#~ msgid "Measure"
+#~ msgstr "Měření"
+
+#~ msgid "Add Atom"
+#~ msgstr "Přidat atom"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Smazat atom"
+
+#~ msgid "Add Bond"
+#~ msgstr "Přidat vazbu"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Smazat vazbu"
+
+#~ msgid "Change Element"
+#~ msgstr "Změnit prvek"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Změnit druh vazby"
+
+#~ msgid "Element:"
+#~ msgstr "Prvek:"
+
+#~ msgid "Other..."
+#~ msgstr "Ostatní:"
+
+#~ msgid "Bond Order:"
+#~ msgstr "Druh vazby:"
+
+#~ msgid "Single"
+#~ msgstr "Jednoduchá"
+
+#~ msgid "Double"
+#~ msgstr "Dvojná"
+
+#~ msgid "Triple"
+#~ msgstr "Trojná"
+
+#~ msgid "Stop Inserting"
+#~ msgstr "Ukončit vkládání"
+
+#~ msgid "Open Directory"
+#~ msgstr "Otevřít složku"
+
+#~ msgid "Medium"
+#~ msgstr "Střední"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Poloměr atomu:"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Poloměr vazby"
+
+#~ msgid "Show Multiple Bonds"
+#~ msgstr "Zobrazit násobné vazby"
+
+#~ msgid "Width:"
+#~ msgstr "Šíška:"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Atom Labels:"
+#~ msgstr "Popisky atomů:"
+
+#~ msgid "Atom number"
+#~ msgstr "Atomové číslo"
+
+#~ msgid "Element symbol"
+#~ msgstr "Symbol prvku"
+
+#~ msgid "Element name"
+#~ msgstr "Název prvku"
+
+#~ msgid "None"
+#~ msgstr "Nic"
+
+#~ msgid "Bond Labels:"
+#~ msgstr "Popisky vazeb:"
+
+#~ msgid "Bond number"
+#~ msgstr "Číslo vazby"
+
+#~ msgid "Bond order"
+#~ msgstr "Pořadí vazeb"
+
+#~ msgid "Orbital:"
+#~ msgstr "Orbital:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Průhlednost"
+
+#~ msgid "Render:"
+#~ msgstr "Vykreslit:"
+
+#~ msgid "Fill"
+#~ msgstr "Výplň"
+
+#~ msgid "Lines"
+#~ msgstr "Čáry"
+
+#~ msgid "Points"
+#~ msgstr "Body"
+
+#~ msgid "Draw Box:"
+#~ msgstr "Rámeček:"
+
+#~ msgid "Color:"
+#~ msgstr "Barva:"
+
+#~ msgid "Positive"
+#~ msgstr "Positivní"
+
+#~ msgid "Negative"
+#~ msgstr "Negativní"
+
+#~ msgid "Calculate"
+#~ msgstr "Vypočítat"
+
+#~ msgid "Rendering:"
+#~ msgstr "Vykreslení:"
+
+#~ msgid "Backbone"
+#~ msgstr "Páteř"
+
+#~ msgid "Radius:"
+#~ msgstr "Poloměr:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Zahrnout dusíkové atomy"
+
+#~ msgid "Custom Color"
+#~ msgstr "Vlastní barva"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Elektrostatický potebciál (ESP)"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Vlastní barva:"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Zobrazit atomy"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Animovat dráhu"
+
+#~ msgid "Load File..."
+#~ msgstr "Otveřít soubor..."
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "Loop"
+#~ msgstr "Smyčka"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#~ msgid "Options"
+#~ msgstr "Volby"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Počet atomů"
+
+#~ msgid "Number of rotatable bonds:"
+#~ msgstr "Počet rotačních vazeb"
+
+#~ msgid "Method"
+#~ msgstr "Metoda"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Ignorovat atom"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Upevnit atom"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Upevnit atom X"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Upevnit atom Y"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Upevnit atom Z"
+
+#~ msgid "Distance"
+#~ msgstr "Vzdálenost"
+
+#~ msgid "Load"
+#~ msgstr "Načíst"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Smazat vybrané"
+
+#~ msgid "Delete All"
+#~ msgstr "Smazat vše"
+
+#~ msgid "Force Field"
+#~ msgstr "Silové pole"
+
+#~ msgid "Ghemical"
+#~ msgstr "Ghemical"
+
+#~ msgid "Number of steps"
+#~ msgstr "Počet kroků"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritmus"
+
+#~ msgid "Convergence"
+#~ msgstr "Konvergence"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "&Základní nastavení"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "RHF"
+#~ msgstr "RHF"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Memory:"
+#~ msgstr "Paměť:"
+
+#~ msgid "Neutral"
+#~ msgstr "Neutrální"
+
+#~ msgid "Anion"
+#~ msgstr "Anion"
+
+#~ msgid "Frequencies"
+#~ msgstr "Frekvence"
+
+#~ msgid "Gas"
+#~ msgstr "Plyn"
+
+#~ msgid "Water"
+#~ msgstr "Voda"
+
+#~ msgid "With:"
+#~ msgstr "Šířka:"
+
+#~ msgid "Time Limit:"
+#~ msgstr "Časový limit:"
+
+#~ msgid "&Advanced Setup"
+#~ msgstr "&Pokročilá nastavení"
+
+#~ msgid "Advanced"
+#~ msgstr "Pokročilé"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "Data"
+#~ msgstr "Data"
+
+#~ msgid "Misc"
+#~ msgstr "Různé"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "Default"
+#~ msgstr "Výchozí"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "Gradient"
+#~ msgstr "Gradient"
+
+#~ msgid "Optimization"
+#~ msgstr "Optimalizace"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "None (CI)"
+#~ msgstr "Nic (CI)"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "Násobnost:"
+
+#~ msgid "Check"
+#~ msgstr "Kontrola"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "Use MP2"
+#~ msgstr "Použít MP2"
+
+#~ msgid "Use DFT"
+#~ msgstr "Použít DFT"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ǻngstrom"
+
+#~ msgid "Bohr"
+#~ msgstr "Bohr"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Units:"
+#~ msgstr "Jednotky:"
+
+#~ msgid "Title:"
+#~ msgstr "Název:"
+
+#~ msgid "Seconds"
+#~ msgstr "Sekundy"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuty"
+
+#~ msgid "Hours"
+#~ msgstr "Hodiny"
+
+#~ msgid "Days"
+#~ msgstr "Dny"
+
+#~ msgid "Weeks"
+#~ msgstr "Týdny"
+
+#~ msgid "Years"
+#~ msgstr "Roky"
+
+#~ msgid "Millenia"
+#~ msgstr "Tisíciletí"
+
+#~ msgid "Words"
+#~ msgstr "Slova"
+
+#~ msgid "Bytes"
+#~ msgstr "Byty"
+
+#~ msgid "MegaBytes"
+#~ msgstr "MegaByty"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "Next Value"
+#~ msgstr "Další hodnota"
+
+#~ msgid "HCore"
+#~ msgstr "HCore"
+
+#~ msgid "Skip"
+#~ msgstr "Přeskočit"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (verze UK)"
+
+#~ msgid "Gaussian 9x"
+#~ msgstr "Gaussian 9x"
+
+#~ msgid "All"
+#~ msgstr "Všechno"
+
+#~ msgid "Direct SCF"
+#~ msgstr "Přímé SCF"
+
+#~ msgid "Grid"
+#~ msgstr "Mřížka"
+
+#~ msgid "Method:"
+#~ msgstr "Metoda:"
+
+#~ msgid "words"
+#~ msgstr "slova"
+
+#~ msgid "Use Localized Orbitals"
+#~ msgstr "Použít lokalizované orbitaly"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "# jaderných elektronů:"
+
+#~ msgid "Analytic"
+#~ msgstr "Analytická"
+
+#~ msgid "Numeric"
+#~ msgstr "Numerická"
+
+#~ msgid "Step Size"
+#~ msgstr "Velikost kroku"
+
+#~ msgid "Maximum:"
+#~ msgstr "Maximum:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Minimum:"
+
+#~ msgid "Initial:"
+#~ msgstr "Výchozí:"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Newton-Raphson"
+
+#~ msgid "Quadratic Approximation"
+#~ msgstr "Kvadratická aproximace"
+
+#~ msgid "steps"
+#~ msgstr "kroky"
+
+#~ msgid "Defaults"
+#~ msgstr "Výchozí"
+
+#~ msgid "Close"
+#~ msgstr "Zavřít"
+
+#~ msgid "Calculation:"
+#~ msgstr "Výpočet:"
+
+#~ msgid "Theory:"
+#~ msgstr "Teorie:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Output:"
+#~ msgstr "Výstup:"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "vytvořit ligand ze souboru"
+
+#~ msgid "Steps:"
+#~ msgstr "Kroky:"
+
+#~ msgid "Origin:"
+#~ msgstr "Původ:"
+
+#~ msgid "A repeat:"
+#~ msgstr "A opakování:"
+
+#~ msgid "B repeat:"
+#~ msgstr "B opakování:"
+
+#~ msgid "C repeat:"
+#~ msgstr "C opakování:"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "Osy (Å)"
+
+#~ msgid "Angles (°)"
+#~ msgstr "Úhly (°)"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "alpha:"
+#~ msgstr "alfa:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "Add Directory"
+#~ msgstr "Přidat složku"
+
+#~ msgid "Bond length"
+#~ msgstr "Délka vazby"
+
+#~ msgid "Step Size:"
+#~ msgstr "Velikost kroku:"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Přidat vodíkové atomy pro pH..."
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Přerušit výpočet"
+
+#~ msgid "MO "
+#~ msgstr "MO "
+
+#~ msgid "There is no current selection."
+#~ msgstr "Nebylo nic vybráno."
+
+#~ msgid "name"
+#~ msgstr "název"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Název nesmí být prázdný"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Atom/Vazba"
+
+#~ msgid "tree"
+#~ msgstr "strom"
+
+#~ msgid "Low"
+#~ msgstr "Nízké"
+
+#~ msgid "High"
+#~ msgstr "Vysoké"
+
+#~ msgid "Undefined"
+#~ msgstr "Nedefinováno"
+
+#~ msgid "Some"
+#~ msgstr "Částečně"
+
+#~ msgid "Mid"
+#~ msgstr "Střed"
+
+#~ msgid "Lots"
+#~ msgstr "Mnoho"
+
+#~ msgid "Color by Element"
+#~ msgstr "Barvy podle prvku"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Barvy podle prvku (uhlík = šedá, kyslík = červená, ...)."
+
+#~ msgid "Color by Residue"
+#~ msgstr "Barva podle radikálu"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Soubory trajektorie (*.xtc *.xyz)"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "Video soubory (*.avi)"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Přidávám koncovku .avi"
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Musíte určit platný soubor .avi"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "Neplatný soubor, Musíte uvést úplnou cestu"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr ""
+#~ "Neplatný název souboru. Musíte určit kompletní cestu k souboru a jméno "
+#~ "včetně koncovky .avi"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "nemohu nastavit formát na XYZ"
+
+#, qt-format
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ msgstr "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
+
+#~ msgid "Trajectory..."
+#~ msgstr "Trajektorie..."
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Chemické soubory (*.xyz)"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Chemické soubory (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Importovat trajektorie"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Vstup Q-Chem..."
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Přidat vodíkové atomy pro pH"
+
+#~ msgid "Open mol file"
+#~ msgstr "Otevřít soubor molekul"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Všechny soubory (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Uložit video"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "video soubory (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Uložit soubor trajektorie"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "soubor trajektorie (*xyz)"
+
+#, qt-format
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Načítání souboru molekul %1 selhalo."
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Neplatný název videa. Musíte zadat plnou cestu k souboru."
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr ""
+#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící na "
+#~ ".avi"
+
+#, qt-format
+#~ msgid "Would write file to %1."
+#~ msgstr "Soubor bude zapsán do %1."
+
+#, qt-format
+#~ msgid "Wrote file %1."
+#~ msgstr "Soubor %1."
+
+#~ msgid "Calculating MO "
+#~ msgstr "Počítám MO "
+
+#~ msgid "Electron Density"
+#~ msgstr "Elektornová hustota"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "Počítám elektronovou hustotu"
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Uložit jako POV-Ray obrázek"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Soubory obrázků (*.png, *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
+#~ msgstr ""
+#~ "Zvolili jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru "
+#~ "POV-Ray. To znamená, že nebude uložen žádný výstup. Jste si jisti?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "Spuštění POV-Ray selhalo."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "Spuštění POV-Ray selhalo. Cesta ke spouštěcímu souboru je nejspíš špatně "
+#~ "nastavena."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Building video "
+#~ msgstr "Sestavuji video "
+
+#~ msgid "cancel"
+#~ msgstr "ukončit"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Správce zásuvných modulů"
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Pro vykonání změn musíte Avogadro restartovat."
+
+#~ msgid "Bond Length: "
+#~ msgstr "Délka vazby: "
+
+#~ msgid "Selection"
+#~ msgstr "Výběr"
+
+#~ msgid "Bottom"
+#~ msgstr "Dole"
+
+#~ msgid "Left"
+#~ msgstr "Vlevo"
+
+#~ msgid "Right"
+#~ msgstr "Vpravo"
+
+#~ msgid "Dipole:"
+#~ msgstr "Dipól:"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Dipólový moment:"
+
+#~ msgid "Custom Value"
+#~ msgstr "Vlastní hodnota"
+
+#~ msgid "Custom:"
+#~ msgstr "Vlastní:"
+
+#~ msgid "Python Settings"
+#~ msgstr "Python - nastavení"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Uložit jako .avi..."
+
+#~ msgid "Browse..."
+#~ msgstr "Procházet..."
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Num Frames"
+#~ msgstr "Počet snímků"
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Tlačítko pro uložení .xyz trajektorie"
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Uložit trakejtorii"
+
+#~ msgid "Save movie..."
+#~ msgstr "Uložit film..."
+
+#~ msgid "Cubes"
+#~ msgstr "Krychle"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Max:"
+#~ msgstr "Max:"
+
+#~ msgid "Cube:"
+#~ msgstr "Krychle:"
+
+#~ msgid "Color By:"
+#~ msgstr "Barva dle:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "Distance:"
+#~ msgstr "Vzdálenost:"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Range:"
+#~ msgstr "Rozsah:"
+
+#~ msgid "POV-Ray Export"
+#~ msgstr "POV-Ray Export"
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "Render"
+#~ msgstr "Vykreslit"
+
+#~ msgid "Resolution:"
+#~ msgstr "Rozlišení:"
+
+#~ msgid "Use full scene antialiasing"
+#~ msgstr "Požít vyhlazování pro celou scénu"
+
+#~ msgid "Antialias"
+#~ msgstr "Vyhlazování"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "Nastavit pozadí jako průhledné"
+
+#~ msgid "Alpha transparency"
+#~ msgstr "Alfa průhlednost"
+
+#~ msgid "Command:"
+#~ msgstr "Příkaz:"
+
+#~ msgid "Render the molecule directly using command line POV-Ray"
+#~ msgstr "Vykreslit molekulu přímo použitím POV-Ray pro příkazovou řádku"
+
+#~ msgid "Render using POV-Ray"
+#~ msgstr "Vykreslit pomocí POV-Ray"
+
+#~ msgid "Keep the POV-Ray source after rendering has completed"
+#~ msgstr "Uložit zdrojový kód POV-Ray po dokončení vykreslení scény"
+
+#~ msgid "Keep POV-Ray source after rendering"
+#~ msgstr "Uložit zdrojový kód POV-Ray po vykreslení scény"
+
+#~ msgid "Path:"
+#~ msgstr "Cesta:"
+
+#~ msgid "Q-Chem Input"
+#~ msgstr "Vstup Q-Chem"
+
+#~ msgid "Parameters:"
+#~ msgstr "Parametry:"
+
+#~ msgid "Display Type:"
+#~ msgstr "Typ zobrazení:"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Barva podle parciálního náboje"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr ""
+#~ "Barva podle parciálního atomového náboje (modrá = pozitivní, červená = "
+#~ "negativní)."
+
+#~ msgid "Color by Distance"
+#~ msgstr "Barva podle vzdálenosti"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Barva podle vzdálenosti od prvního atomu"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Vykreslit osy x.y.z v počátku"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Vykreslit sekundární strukturu proteinů"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Vykreslit dipólové momenty molekul"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Vykreslit popisky atomů a vazeb"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Vykreslit molekulové orbitaly"
+
+#~ msgid "Save Video File"
+#~ msgstr "Uložit video soubor"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Změnit vodíkové atomy na methylové skupiny"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Přidat nebo odstranit vodíkové atomy"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Vybrat atomy, vazby, radikály..."
+
+#~ msgid "Warning"
+#~ msgstr "Upozornění"
+
+#~ msgid "Could not run povray."
+#~ msgstr "Nemohu spustit POV-Ray"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "Align molecules to a Cartesian axis"
+#~ msgstr "Zarovnat molekuly ke kartézským osám"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "Vybrat atomy, radikály a molekuly"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Hydrofobie"
+
+#~ msgid "Quartet"
+#~ msgstr "Kvartet"
+
+#~ msgid "Quintet"
+#~ msgstr "Kvintet"
+
+#~ msgid "PM6"
+#~ msgstr "PM6"
+
+#~ msgid "RM1"
+#~ msgstr "RM1"
+
+#~ msgid "Compute..."
+#~ msgstr "Počítám..."
+
+#~ msgid "HF"
+#~ msgstr "HF"
+
+#~ msgid "Frequency (cm-1)"
+#~ msgstr "Frekvence (cm-1)"
+
+#~ msgid "Intensity (a.u.)"
+#~ msgstr "Intenzita (a.u.)"

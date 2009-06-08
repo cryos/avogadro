@@ -1,0 +1,3707 @@
+# Russian translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-07 13:11+0000\n"
+"Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/mainwindow.cpp:2052
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
+msgid "OK"
+msgstr "Готово"
+
+#: src/aboutdialog.cpp:66
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
+msgstr ""
+"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
+"%3<br/><br/>Дальнейшую информацию вы можете получить на <a "
+"href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта "
+"программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
+"подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+"КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:738 src/mainwindow.cpp:763
+#: src/mainwindow.cpp:776 src/mainwindow.cpp:839 src/mainwindow.cpp:873
+#: src/mainwindow.cpp:915 src/mainwindow.cpp:1054 src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1076 src/mainwindow.cpp:1088 src/mainwindow.cpp:1245
+#: src/mainwindow.cpp:2215 src/mainwindow.cpp:2682 :46
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr "Вырезать молекулу"
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr "Вырезать атомы"
+
+#: src/editcommands.cpp:97
+msgid "Paste"
+msgstr "Вставить"
+
+#: src/editcommands.cpp:132
+msgid "Clear Molecule"
+msgstr "Удалить молекулу"
+
+#: src/editcommands.cpp:134
+msgid "Clear Atoms"
+msgstr "Удалить атомы"
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:664
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: src/mainwindow.cpp:271
+msgid "Messages"
+msgstr "Сообщения"
+
+#: src/mainwindow.cpp:320
+msgid "Window"
+msgstr "Окно"
+
+#: src/mainwindow.cpp:323
+msgid "&Minimize"
+msgstr "Свер&нуть"
+
+#: src/mainwindow.cpp:324
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: src/mainwindow.cpp:329
+msgid "&Zoom"
+msgstr "Масштаб (&Z)"
+
+#: src/mainwindow.cpp:336 src/mainwindow.cpp:1380
+msgid "Bring All to Front"
+msgstr "Вынести всё на передний план"
+
+#: src/mainwindow.cpp:595
+msgid "&Tool Settings..."
+msgstr "&Настройки инструмента..."
+
+#: src/mainwindow.cpp:598
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr "Ctrl+T"
+
+#: src/mainwindow.cpp:603
+msgid "&Display Settings..."
+msgstr "&Настройки дисплея..."
+
+#: src/mainwindow.cpp:606
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:644 src/mainwindow.cpp:1006
+msgid "Common molecule formats"
+msgstr "Распространённые форматы молекул"
+
+#: src/mainwindow.cpp:649 src/mainwindow.cpp:1003 src/mainwindow.cpp:1185
+#: src/mainwindow.cpp:1264
+msgid "All files"
+msgstr "Все файлы"
+
+#: src/mainwindow.cpp:650 src/mainwindow.cpp:1000 src/mainwindow.cpp:1012
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:651
+msgid "Computational Chemistry Output"
+msgstr "Выходной файл квантовохимической программы"
+
+#: src/mainwindow.cpp:652
+msgid "Crystallographic Interchange CIF"
+msgstr "Кристаллографическая информация CIF"
+
+#: src/mainwindow.cpp:653
+msgid "GAMESS-US Output"
+msgstr "Выдача GAMESS-US"
+
+#: src/mainwindow.cpp:654
+msgid "Gaussian 98/03 Output"
+msgstr "Выдача Gaussian 98/03"
+
+#: src/mainwindow.cpp:655
+msgid "Gaussian Formatted Checkpoint"
+msgstr "Гаусс-форматированная контрольная точка"
+
+#: src/mainwindow.cpp:656
+msgid "HyperChem"
+msgstr "HyperChem"
+
+#: src/mainwindow.cpp:657
+msgid "MDL Mol"
+msgstr "MDL Mol"
+
+#: src/mainwindow.cpp:658
+msgid "NWChem Output"
+msgstr "Выходной файл NWChem"
+
+#: src/mainwindow.cpp:659 src/mainwindow.cpp:1017
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:660 src/mainwindow.cpp:1019
+msgid "Sybyl Mol2"
+msgstr "Sybyl Mol2"
+
+#: src/mainwindow.cpp:661 src/mainwindow.cpp:1020
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:733
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr "Загрузка %1..."
+
+#: src/mainwindow.cpp:739
+#, qt-format
+msgid ""
+"Cannot read file %1:\n"
+"%2."
+msgstr ""
+"Невозможно считать %1:\n"
+"%2."
+
+#: src/mainwindow.cpp:764
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Невозможно определить формат файла %1."
+
+#: src/mainwindow.cpp:769
+#, qt-format
+msgid "Loading %1..."
+msgstr "Загрузка %1..."
+
+#: src/mainwindow.cpp:777
+msgid ""
+"This file contains 2D coordinates only. Do you want Avogadro to scale the "
+"bonds and do a quick optimization?"
+msgstr ""
+"Этот файл содержит только 2D-координаты. Хотите ли вы, чтобы Avogadro "
+"произвёл подгонку длин связей и быструю оптимизацию?"
+
+#: src/mainwindow.cpp:840
+msgid ""
+"This file does not contain 3D coordinates. You may not be able to edit or "
+"view properly."
+msgstr ""
+"Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть или "
+"редактировать его корректно."
+
+#: src/mainwindow.cpp:874
+msgid ""
+"This file appears to contain multiple molecule records. Avogadro will only "
+"read the first molecule. If you save, all other molecules may be lost."
+msgstr ""
+"Похоже, в этом файле содержатся записи о нескольких молекулах. Avogadro "
+"может считать только первую запись. При сохранении записи о всех других "
+"молекулах могут быть потеряны."
+
+#: src/mainwindow.cpp:887
+msgid "Atoms: "
+msgstr "Атомы: "
+
+#: src/mainwindow.cpp:888
+msgid " Bonds: "
+msgstr " Связи: "
+
+#: src/mainwindow.cpp:893
+msgid "Reading molecular file failed."
+msgstr "Не удалось считать файл структуры."
+
+#: src/mainwindow.cpp:902
+msgid "File Loaded..."
+msgstr "Файл загружен..."
+
+#: src/mainwindow.cpp:916
+msgid "Do you want to save the changes you made in the document?"
+msgstr "Вы хотите сохранить изменения в документе?"
+
+#: src/mainwindow.cpp:925
+msgid "Your changes will be lost if you don't save them."
+msgstr "Изменения будут утеряны, если вы не сохраните их."
+
+#: src/mainwindow.cpp:929
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.cpp:930
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:932
+msgid "Save..."
+msgstr "Сохранить"
+
+#: src/mainwindow.cpp:932 src/savedialog.cpp:65
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/mainwindow.cpp:1013
+msgid "GAMESS Input"
+msgstr "Входной файл GAMESS"
+
+#: src/mainwindow.cpp:1014
+msgid "Gaussian Cartesian Input"
+msgstr "Входной файл Gaussian (декартовы координаты)"
+
+#: src/mainwindow.cpp:1015
+msgid "Gaussian Z-matrix Input"
+msgstr "Входной файл Gaussian (Z-матрица)"
+
+#: src/mainwindow.cpp:1016
+msgid "MDL SDfile"
+msgstr "MDL SDfile"
+
+#: src/mainwindow.cpp:1018
+msgid "NWChem Input"
+msgstr "Входной файл NWChem"
+
+#: src/mainwindow.cpp:1023
+msgid "Save Molecule As"
+msgstr "Сохранить молекулу как"
+
+#: src/mainwindow.cpp:1055
+#, qt-format
+msgid "Cannot write to file format of file %1."
+msgstr "Невозможно произвести запись в формате файла %1."
+
+#: src/mainwindow.cpp:1063 src/mainwindow.cpp:1077
+#, qt-format
+msgid ""
+"Cannot write to the file %1:\n"
+"%2."
+msgstr ""
+"Невозможно записать файл %1:\n"
+"%2."
+
+#: src/mainwindow.cpp:1089
+#, qt-format
+msgid "Cannot write to the file %1."
+msgstr "Невозможно записать файл %1."
+
+#: src/mainwindow.cpp:1095
+msgid "Saving file."
+msgstr "Сохраняю файл."
+
+#: src/mainwindow.cpp:1147
+msgid "Save succeeded."
+msgstr "Успешно сохранено."
+
+#: src/mainwindow.cpp:1150 src/mainwindow.cpp:1154
+msgid "Saving molecular file failed."
+msgstr "Не удалось сохранить файл молекулы."
+
+#: src/mainwindow.cpp:1175 src/mainwindow.cpp:1187
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1182
+msgid "Common image formats"
+msgstr "Распространенные форматы изображений"
+
+#: src/mainwindow.cpp:1186
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1188
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1194 src/mainwindow.cpp:1273
+msgid "Export Bitmap Graphics"
+msgstr "Экспорт растрового изображения"
+
+#: src/mainwindow.cpp:1246
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Невозможно сохранить файл %1."
+
+#: src/mainwindow.cpp:1254 src/mainwindow.cpp:1265
+msgid "PDF"
+msgstr "PDF"
+
+#: src/mainwindow.cpp:1261
+msgid "Common vector image formats"
+msgstr "Распространенные форматы векторной графики"
+
+#: src/mainwindow.cpp:1266
+msgid "SVG"
+msgstr "SVG"
+
+#: src/mainwindow.cpp:1267
+msgid "EPS"
+msgstr "EPS"
+
+#: src/mainwindow.cpp:1412
+#, qt-format
+msgid "Untitled %1"
+msgstr "Безымянный %1"
+
+#: src/mainwindow.cpp:1495
+msgid "Unable to paste molecule."
+msgstr "Не удалось вставить молекулу."
+
+#: src/mainwindow.cpp:1524
+msgid "Paste failed (format unavailable)."
+msgstr "Вставка не удалась (формат недоступен)"
+
+#: src/mainwindow.cpp:1593
+msgid "Copy failed (mdl unavailable)."
+msgstr "Копирование не удалось (mdl недоступен)"
+
+#: src/mainwindow.cpp:1719 src/mainwindow.cpp:1749 src/mainwindow.cpp:1778
+#: src/mainwindow.cpp:1810 src/mainwindow.cpp:2344
+#, qt-format
+msgid "View %1"
+msgstr "Просмотр %1"
+
+#: src/mainwindow.cpp:1785
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: Открепленные виды"
+
+#: src/mainwindow.cpp:1946
+msgid "Normal Size"
+msgstr "Нормальный размер"
+
+#: src/mainwindow.cpp:1958
+msgid "Full Screen"
+msgstr "Полноэкранный режим"
+
+#: src/mainwindow.cpp:2127 src/mainwindow.cpp:2162 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "безымянный"
+
+#: src/mainwindow.cpp:2209
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr ""
+
+#: src/mainwindow.cpp:2214
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr ""
+
+#: src/projecttreeeditor.ui:229
+#: src/mainwindow.cpp:2625 :256
+msgid "Settings..."
+msgstr "Настройки..."
+
+#: src/mainwindow.cpp:2636
+msgid "Add"
+msgstr "Добавить"
+
+#: src/mainwindow.cpp:2641
+msgid "Duplicate"
+msgstr "Дублировать"
+
+#: src/mainwindow.cpp:2646
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/mainwindow.cpp:2674
+msgid "No tools or engines loaded."
+msgstr "Не загружены инструменты или движки."
+
+#: src/mainwindow.cpp:2676
+msgid "No engines loaded."
+msgstr "Не загружены движки."
+
+#: src/mainwindow.cpp:2678
+msgid "No tools loaded."
+msgstr "Не загружены инструменты."
+
+#: src/mainwindow.cpp:2679
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+" Маловероятно, что это приложение будет работать корректно. Пожалуста "
+"исправьте эту ошибку."
+
+#: src/projecttreeeditor.ui:191
+#: src/settingsdialog.ui:14
+#: src/mainwindow.cpp:2700 src/mainwindow.cpp:2717 :250 rc.cpp:258
+msgid "Settings"
+msgstr "Настройки"
+
+#: src/mainwindow.cpp:2723
+msgid "Objects"
+msgstr "Объекты"
+
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2729 :210
+msgid "Colors"
+msgstr "Цвета"
+
+#: src/mainwindow.cpp:2777
+msgid " copy"
+msgstr " копировать"
+
+#: src/pluginsettings.cpp:55
+msgid "Name: "
+msgstr "Название: "
+
+#: src/pluginsettings.cpp:56
+msgid "Identifier: "
+msgstr "Опознаватель "
+
+#: src/pluginsettings.cpp:57
+msgid "File: "
+msgstr "Файл: "
+
+#: src/pluginsettings.cpp:58
+msgid "Description:\n"
+msgstr "Описание:\n"
+
+#: src/primitiveitemmodel.cpp:265 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "Молекула"
+
+#: src/primitiveitemmodel.cpp:269
+#, qt-format
+msgctxt "%1 is element, %L2 is atom index"
+msgid "Atom %1 %L2"
+msgstr "Атом %1 %L2"
+
+#: src/primitiveitemmodel.cpp:274
+#, qt-format
+msgctxt "%L1 is bond index"
+msgid "Bond %L1"
+msgstr "Связь %L1"
+
+#: src/primitiveitemmodel.cpp:285
+#, qt-format
+msgctxt "%1 is residue name, %2 is residue index"
+msgid "Residue %1 %2"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:301 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "Атомы"
+
+#: src/primitiveitemmodel.cpp:303 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "Связи"
+
+#: src/primitiveitemmodel.cpp:305 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr "Аминокислотые остатки"
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "связь %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr "Метка"
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr "Пользовательский выбор"
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr "только метки могут иметь вложенные значения"
+
+#: src/projecttreemodel.cpp:65
+msgid "Item"
+msgstr "Объект"
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr "индекс"
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr "Низкий"
+
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :266
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr "Средний"
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr "Высокий"
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr "Неопределенный"
+
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :272
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr "Нет"
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr "Мало"
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr "Средне"
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr "Много"
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr "Неопределено"
+
+#: src/updatecheck.cpp:81
+msgid "Network Update Check Failed"
+msgstr "Сбой при проверке обновлений"
+
+#: src/updatecheck.cpp:82
+msgid "Network timeout or other error."
+msgstr ""
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr "Доступна новая версия Avogadro"
+
+#: src/addenginedialog.ui:13
+msgid "Add Display Type"
+msgstr "добавить отображаемый тип"
+
+#: src/addenginedialog.ui:19
+msgid "Type:"
+msgstr "Тип:"
+
+#: src/addenginedialog.ui:32
+msgid "Name:"
+msgstr "Название:"
+
+#: src/addenginedialog.ui:45
+msgid "Description:"
+msgstr "Описание:"
+
+#: src/enginecolorswidget.ui:13
+msgid "Form"
+msgstr "форма"
+
+#: src/enginecolorswidget.ui:24
+msgid "Color by:"
+msgstr "Раскрашивать по:"
+
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
+msgid "Add Selected Primitives"
+msgstr "Добавить Выбранные Примитивы"
+
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
+msgid "Remove Selected Primitives"
+msgstr "Удалить Выбранные Примитивы"
+
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
+msgid "Add All Primitives"
+msgstr "Добавить Все Примитивы"
+
+#: src/engineprimitiveswidget.ui:83
+msgid "Display Only Selected Primitives"
+msgstr "Отображать только выбранные примитивы"
+
+#: src/engineprimitiveswidget.ui:86
+msgid "Assign to Selection"
+msgstr "подписать выбранные"
+
+#: src/importdialog.ui:13
+msgid "Import Molecule File"
+msgstr "Импортировать файл молекулы"
+
+#: src/importdialog.ui:24
+msgid "Filename:"
+msgstr "Имя файла:"
+
+#: src/importdialog.ui:34
+msgid "Select..."
+msgstr "Выбрать..."
+
+#: src/importdialog.ui:45
+msgid "Format:"
+msgstr "Формат:"
+
+#: src/importdialog.ui:53
+msgid "Automatically detect from extension"
+msgstr "Автоматически определить по расширению"
+
+#: src/importdialog.ui:63
+msgid "Perceive bonding"
+msgstr ""
+
+#: src/importdialog.ui:73
+msgid "Perceive bond orders"
+msgstr ""
+
+#: src/importdialog.ui:83
+msgid "Coordinates are in Ångstroms"
+msgstr "Координаты в ангстремах"
+
+#: src/mainwindow.ui:32
+msgid "&Help"
+msgstr "&Справка"
+
+#: src/mainwindow.ui:46
+msgid "&File"
+msgstr "&Файл"
+
+#: src/mainwindow.ui:50
+msgid "Open &Recent"
+msgstr "Пр&едыдущие документы"
+
+#: src/mainwindow.ui:55
+msgid "Export"
+msgstr "Экспортировать"
+
+#: src/mainwindow.ui:62
+msgid "Import"
+msgstr "Импортировать"
+
+#: src/mainwindow.ui:81
+msgid "Se&ttings"
+msgstr "настройки"
+
+#: src/mainwindow.ui:85
+msgid "Toolbars"
+msgstr "Панели инструментов"
+
+#: src/mainwindow.ui:94
+msgid "&Build"
+msgstr "Построение"
+
+#: src/mainwindow.ui:99
+msgid "&View"
+msgstr "&Вид"
+
+#: src/mainwindow.ui:117
+msgid "&Edit"
+msgstr "&Правка"
+
+#: src/mainwindow.ui:130
+msgid "E&xtensions"
+msgstr "выражения"
+
+#: src/mainwindow.ui:135
+msgid "&Select"
+msgstr "&Выделить"
+
+#: src/mainwindow.ui:152
+msgid "Main Toolbar"
+msgstr "Главная панель"
+
+#: src/mainwindow.ui:189
+#: src/settingsdialog.ui:255
+msgid "Project Tree"
+msgstr "Дерево структуры проекта"
+
+#: src/mainwindow.ui:222
+#: src/pluginsettings.ui:23
+msgid "Display Types"
+msgstr "Отображаемые типы"
+
+#: src/mainwindow.ui:231
+#: src/pluginsettings.ui:28
+msgid "Tools"
+msgstr "Инструменты"
+
+#: src/mainwindow.ui:252
+#: src/mainwindow.ui:264
+msgid "&Open"
+msgstr "&Открыть"
+
+#: src/mainwindow.ui:255
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: src/mainwindow.ui:273
+#: src/mainwindow.ui:285
+msgid "&Quit"
+msgstr "В&ыход"
+
+#: src/mainwindow.ui:276
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: src/mainwindow.ui:290
+msgid "Recent"
+msgstr "Недавние"
+
+#: src/mainwindow.ui:295
+msgid "&Clear Recent"
+msgstr "очистить текущее"
+
+#: src/mainwindow.ui:304
+#: src/mainwindow.ui:316
+msgid "&New"
+msgstr "С&оздать"
+
+#: src/mainwindow.ui:307
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: src/mainwindow.ui:325
+#: src/mainwindow.ui:337
+msgid "&Close"
+msgstr "&Закрыть"
+
+#: src/mainwindow.ui:328
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#: src/mainwindow.ui:346
+#: src/mainwindow.ui:358
+msgid "&Save"
+msgstr "&Сохранить"
+
+#: src/mainwindow.ui:349
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.ui:367
+msgid "Save &As..."
+msgstr "Сохранить &как..."
+
+#: src/mainwindow.ui:370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: src/mainwindow.ui:379
+msgid "Revert To Saved"
+msgstr ""
+
+#: src/mainwindow.ui:388
+msgid "&Graphics..."
+msgstr "&Графика..."
+
+#: src/mainwindow.ui:397
+msgid "&Full Screen Mode"
+msgstr "&Полноэкранный режим"
+
+#: src/mainwindow.ui:400
+msgid "Esc"
+msgstr "выход"
+
+#: src/mainwindow.ui:409
+msgid "Set &Background Color..."
+msgstr "Выбрать &цвет фона..."
+
+#: src/mainwindow.ui:414
+msgid "&About"
+msgstr "&О программе"
+
+#: src/mainwindow.ui:423
+msgid "&Undo"
+msgstr "&Отменить"
+
+#: src/mainwindow.ui:426
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#: src/mainwindow.ui:435
+msgid "&Redo"
+msgstr "&Повторить"
+
+#: src/mainwindow.ui:438
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#: src/mainwindow.ui:447
+msgid "New View"
+msgstr "новый вид"
+
+#: src/mainwindow.ui:459
+msgid "Close View"
+msgstr "Закрыть окно просмотра"
+
+#: src/mainwindow.ui:468
+msgid "Center"
+msgstr "По центру"
+
+#: src/mainwindow.ui:477
+msgid "&Paste"
+msgstr "Вст&авить"
+
+#: src/mainwindow.ui:480
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: src/mainwindow.ui:489
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/mainwindow.ui:492
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: src/mainwindow.ui:501
+msgid "Cut"
+msgstr "Вырезать"
+
+#: src/mainwindow.ui:504
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: src/mainwindow.ui:509
+msgid "Clear"
+msgstr "Очистить"
+
+#: src/mainwindow.ui:512
+msgid "Backspace"
+msgstr ""
+
+#: src/mainwindow.ui:517
+msgid "Select All"
+msgstr "Выделить все"
+
+#: src/mainwindow.ui:520
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: src/mainwindow.ui:525
+msgid "Select None"
+msgstr "Снять выделение"
+
+#: src/mainwindow.ui:528
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#: src/mainwindow.ui:537
+msgid "Configure Avogadro..."
+msgstr "Настроить Avogadro..."
+
+#: src/mainwindow.ui:545
+msgid "Tutorials"
+msgstr "Учебник"
+
+#: src/mainwindow.ui:550
+msgid "Duplicate View"
+msgstr "дублировать вид"
+
+#: src/mainwindow.ui:558
+msgid "Display Axes"
+msgstr "Показать оси"
+
+#: src/mainwindow.ui:566
+msgid "Debug Information"
+msgstr "Отладочная информация"
+
+#: src/mainwindow.ui:574
+msgid "Avogadro Help"
+msgstr "Справка Avogadro"
+
+#: src/mainwindow.ui:579
+msgid "Release Notes"
+msgstr "Примечания к выпуску"
+
+#: src/mainwindow.ui:584
+msgid "Report a Bug"
+msgstr "Сообщить об ошибке"
+
+#: src/mainwindow.ui:589
+msgid "FAQ"
+msgstr "Часто задаваемые вопросы"
+
+#: src/mainwindow.ui:594
+msgid "Avogadro Website"
+msgstr "Веб-сайт Avogadro"
+
+#: src/mainwindow.ui:599
+msgid "Plugin Manager..."
+msgstr "Менеджер дополнений..."
+
+#: src/mainwindow.ui:604
+msgid "Project Tree Editor..."
+msgstr "Редактор структуры проекта..."
+
+#: src/mainwindow.ui:609
+msgid "Detach View"
+msgstr "Открепить вид"
+
+#: src/mainwindow.ui:614
+msgid "Molecule File..."
+msgstr "Файл молекулы..."
+
+#: src/mainwindow.ui:625
+msgid "Use Quick Render"
+msgstr "Использовать быструю прорисовку"
+
+#: src/mainwindow.ui:630
+msgid "&Vector Graphics..."
+msgstr "Векторная графика..."
+
+#: src/mainwindow.ui:638
+msgid "Display Unit Cell Axes"
+msgstr "Показывать оси элементарной ячейки"
+
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
+msgid "Plugins"
+msgstr "Дополнения"
+
+#: src/pluginsettings.ui:33
+msgid "Extensions"
+msgstr "Расширения"
+
+#: src/pluginsettings.ui:52
+msgid "Details"
+msgstr "Подробности"
+
+#: src/projecttreeeditor.ui:16
+#: src/projecttreeeditor.ui:174
+msgid "Tree Items"
+msgstr "элементы дерева"
+
+#: src/projecttreeeditor.ui:42
+#: src/projecttreeeditor.ui:213
+msgid "Type"
+msgstr "Тип"
+
+#: src/projecttreeeditor.ui:62
+msgid "New Item"
+msgstr "Новый элемент"
+
+#: src/projecttreeeditor.ui:65
+msgid "&New Item"
+msgstr "&Новый элемент"
+
+#: src/projecttreeeditor.ui:76
+msgid "New Subitem"
+msgstr "новый подчинённый объект"
+
+#: src/projecttreeeditor.ui:79
+msgid "New &Subitem"
+msgstr "новый подчинённый объект"
+
+#: src/projecttreeeditor.ui:86
+msgid "Delete Item"
+msgstr "Удалить элемент"
+
+#: src/projecttreeeditor.ui:89
+msgid "&Delete Item"
+msgstr "&Удалить элемент"
+
+#: src/projecttreeeditor.ui:113
+msgid "Move Item Left (before Parent Item)"
+msgstr "Переместить элемент влево (до родительского элемента)"
+
+#: src/projecttreeeditor.ui:116
+msgid "L"
+msgstr "Л"
+
+#: src/projecttreeeditor.ui:127
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+"Переместить элемент вправо (как первый подэлемент следующего элемента)"
+
+#: src/projecttreeeditor.ui:130
+msgid "R"
+msgstr "Р"
+
+#: src/projecttreeeditor.ui:143
+msgid "Move Item Up"
+msgstr "Переместить элемент вверх"
+
+#: src/projecttreeeditor.ui:146
+msgid "U"
+msgstr "Ю"
+
+#: src/projecttreeeditor.ui:157
+msgid "Move Item Down"
+msgstr "Переместить элемент вниз"
+
+#: src/projecttreeeditor.ui:160
+msgid "D"
+msgstr "Д"
+
+#: src/projecttreeeditor.ui:178
+msgid "1"
+msgstr "1"
+
+#: src/projecttreeeditor.ui:199
+msgid "Alias"
+msgstr "привязка"
+
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
+msgid "General"
+msgstr "Общие"
+
+#: src/settingsdialog.ui:42
+msgid "Quality:"
+msgstr "Качество:"
+
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
+msgid "Set the global rendering quality."
+msgstr "Установить общее качество рендеринга"
+
+#: src/settingsdialog.ui:100
+msgid "Fog:"
+msgstr "Туман:"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
+"Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Koptev "
+"Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,panda-"
+"yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@"
+"sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru"
+
+#~ msgid "Tool Settings"
+#~ msgstr "Настройки инструментов"
+
+#, qt-format
+#~ msgid "Cannot read file %1."
+#~ msgstr "Невозможно считать файл %1."
+
+#~ msgid "Navigate"
+#~ msgstr "Навигация"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Документ был изменен.\n"
+#~ "Хотите ли Вы сохранить изменения?"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#, qt-format
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Водород"
+
+#~ msgid "Helium"
+#~ msgstr "Гелий"
+
+#~ msgid "Lithium"
+#~ msgstr "Литий"
+
+#~ msgid "Beryllium"
+#~ msgstr "Бериллий"
+
+#~ msgid "Boron"
+#~ msgstr "Бор"
+
+#~ msgid "Carbon"
+#~ msgstr "Углерод"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Азот"
+
+#~ msgid "Oxygen"
+#~ msgstr "Кислород"
+
+#~ msgid "Fluorine"
+#~ msgstr "Фтор"
+
+#~ msgid "Neon"
+#~ msgstr "Неон"
+
+#~ msgid "Sodium"
+#~ msgstr "Натрий"
+
+#~ msgid "Magnesium"
+#~ msgstr "Магний"
+
+#~ msgid "Aluminum"
+#~ msgstr "Алюминий"
+
+#~ msgid "Silicon"
+#~ msgstr "Кремний"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Фосфор"
+
+#~ msgid "Sulfur"
+#~ msgstr "Сера"
+
+#~ msgid "Chlorine"
+#~ msgstr "Хлор"
+
+#~ msgid "Argon"
+#~ msgstr "Аргон"
+
+#~ msgid "Potassium"
+#~ msgstr "Калий"
+
+#~ msgid "Calcium"
+#~ msgstr "Кальций"
+
+#~ msgid "Scandium"
+#~ msgstr "Скандий"
+
+#~ msgid "Titanium"
+#~ msgstr "Титан"
+
+#~ msgid "Vanadium"
+#~ msgstr "Ванадий"
+
+#~ msgid "Chromium"
+#~ msgstr "Хром"
+
+#~ msgid "Manganese"
+#~ msgstr "Марганец"
+
+#~ msgid "Iron"
+#~ msgstr "Железо"
+
+#~ msgid "Cobalt"
+#~ msgstr "Кобальт"
+
+#~ msgid "Nickel"
+#~ msgstr "Никель"
+
+#~ msgid "Copper"
+#~ msgstr "Медь"
+
+#~ msgid "Zinc"
+#~ msgstr "Цинк"
+
+#~ msgid "Gallium"
+#~ msgstr "Галлий"
+
+#~ msgid "Germanium"
+#~ msgstr "Германий"
+
+#~ msgid "Arsenic"
+#~ msgstr "Мышьяк"
+
+#~ msgid "Selenium"
+#~ msgstr "Селен"
+
+#~ msgid "Bromine"
+#~ msgstr "Бром"
+
+#~ msgid "Krypton"
+#~ msgstr "Криптон"
+
+#~ msgid "Rubidium"
+#~ msgstr "Рубидий"
+
+#~ msgid "Strontium"
+#~ msgstr "Стронций"
+
+#~ msgid "Yttrium"
+#~ msgstr "Иттрий"
+
+#~ msgid "Zirconium"
+#~ msgstr "Цирконий"
+
+#~ msgid "Niobium"
+#~ msgstr "Ниобий"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Молибден"
+
+#~ msgid "Technetium"
+#~ msgstr "Технеций"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Рутений"
+
+#~ msgid "Rhodium"
+#~ msgstr "Родий"
+
+#~ msgid "Palladium"
+#~ msgstr "Палладий"
+
+#~ msgid "Silver"
+#~ msgstr "Серебро"
+
+#~ msgid "Cadmium"
+#~ msgstr "Кадмий"
+
+#~ msgid "Indium"
+#~ msgstr "Индий"
+
+#~ msgid "Tin"
+#~ msgstr "Олово"
+
+#~ msgid "Antimony"
+#~ msgstr "Сурьма"
+
+#~ msgid "Tellurium"
+#~ msgstr "Теллур"
+
+#~ msgid "Iodine"
+#~ msgstr "Иод"
+
+#~ msgid "Xenon"
+#~ msgstr "Ксенон"
+
+#~ msgid "Caesium"
+#~ msgstr "Цезий"
+
+#~ msgid "Barium"
+#~ msgstr "Барий"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Лантан"
+
+#~ msgid "Cerium"
+#~ msgstr "Церий"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Празеодим"
+
+#~ msgid "Neodymium"
+#~ msgstr "Неодим"
+
+#~ msgid "Promethium"
+#~ msgstr "Прометий"
+
+#~ msgid "Samarium"
+#~ msgstr "Самарий"
+
+#~ msgid "Europium"
+#~ msgstr "Европий"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Гадолиний"
+
+#~ msgid "Terbium"
+#~ msgstr "Тербий"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Диспрозий"
+
+#~ msgid "Holmium"
+#~ msgstr "Гольмий"
+
+#~ msgid "Erbium"
+#~ msgstr "Эрбий"
+
+#~ msgid "Thulium"
+#~ msgstr "Тулий"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Иттербий"
+
+#~ msgid "Lutetium"
+#~ msgstr "Лютеций"
+
+#~ msgid "Hafnium"
+#~ msgstr "Гафний"
+
+#~ msgid "Tantalum"
+#~ msgstr "Тантал"
+
+#~ msgid "Tungsten"
+#~ msgstr "Вольфрам"
+
+#~ msgid "Rhenium"
+#~ msgstr "Рений"
+
+#~ msgid "Osmium"
+#~ msgstr "Осмий"
+
+#~ msgid "Iridium"
+#~ msgstr "Иридий"
+
+#~ msgid "Platinum"
+#~ msgstr "Платина"
+
+#~ msgid "Gold"
+#~ msgstr "Золото"
+
+#~ msgid "Mercury"
+#~ msgstr "Ртуть"
+
+#~ msgid "Thallium"
+#~ msgstr "Таллий"
+
+#~ msgid "Lead"
+#~ msgstr "Свинец"
+
+#~ msgid "Bismuth"
+#~ msgstr "Висмут"
+
+#~ msgid "Polonium"
+#~ msgstr "Полоний"
+
+#~ msgid "Astatine"
+#~ msgstr "Астат"
+
+#~ msgid "Radon"
+#~ msgstr "Радон"
+
+#~ msgid "Francium"
+#~ msgstr "Франций"
+
+#~ msgid "Radium"
+#~ msgstr "Радий"
+
+#~ msgid "Actinium"
+#~ msgstr "Актиний"
+
+#~ msgid "Thorium"
+#~ msgstr "Торий"
+
+#~ msgid "Protactinium"
+#~ msgstr "Протактиний"
+
+#~ msgid "Uranium"
+#~ msgstr "Уран"
+
+#~ msgid "Neptunium"
+#~ msgstr "Нептуний"
+
+#~ msgid "Plutonium"
+#~ msgstr "Плутоний"
+
+#~ msgid "Americium"
+#~ msgstr "Америций"
+
+#~ msgid "Curium"
+#~ msgstr "Кюрий"
+
+#~ msgid "Berkelium"
+#~ msgstr "Берклий"
+
+#~ msgid "Californium"
+#~ msgstr "Калифорний"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Эйнштейний"
+
+#~ msgid "Fermium"
+#~ msgstr "Фермий"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Менделевий"
+
+#~ msgid "Nobelium"
+#~ msgstr "Нобелий"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Лоуренсий"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Резерфордий"
+
+#~ msgid "Dubnium"
+#~ msgstr "Дубний"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Сиборгий"
+
+#~ msgid "Bohrium"
+#~ msgstr "Борий"
+
+#~ msgid "Hassium"
+#~ msgstr "Хассий"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Мейтнерий"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Дармштадтий"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Рентгений"
+
+#~ msgid "Ununbium"
+#~ msgstr "Унунбий"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Унунтрий"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Унунквадий"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Унунпентий"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Унунгексий"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Унунсептий"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Унуноктий"
+
+#~ msgid "Unknown"
+#~ msgstr "Неизвестный"
+
+#~ msgid "Axes"
+#~ msgstr "Оси"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Шаро-стержневая модель"
+
+#~ msgid "Dipole"
+#~ msgstr "Диполь"
+
+#~ msgid "Force"
+#~ msgstr "Сила"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Отображает водородные связи"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Водородные связи"
+
+#~ msgid "Orbitals"
+#~ msgstr "Орбитали"
+
+#~ msgid "Polygon"
+#~ msgstr "Многоугольник"
+
+#~ msgid "Ribbon"
+#~ msgstr "Лента"
+
+#~ msgid "Ring"
+#~ msgstr "Цикл"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Отображает атомы как сферы Ван дер Ваальса"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Сферы Ван дер Ваальса"
+
+#~ msgid "Surface"
+#~ msgstr "Поверхность"
+
+#~ msgid "Wireframe"
+#~ msgstr "Каркас"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Открыть файл траектории"
+
+#, qt-format
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Animation..."
+#~ msgstr "Анимация..."
+
+#, qt-format
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Не удалось прочитать файл траектории %1."
+
+#~ msgid "Animation"
+#~ msgstr "Анимация"
+
+#, qt-format
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Количество атомов: %1"
+
+#, qt-format
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Число вращающихся связей: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Добавить ограничение"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "В вашей молекуле должен быть как минимум один атом для добавления ограничения"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "В вашей молекуле должно быть как минимум два атома для добавления "
+#~ "ограничения связи"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "В вашей молекуле должно быть как минимум три атома для добавления "
+#~ "ограничения угла"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "В вашей молекуле должно быть как минимум четыре атома для добавления "
+#~ "ограничения двугранного угла"
+
+#~ msgid "Optimize Geometry"
+#~ msgstr "Оптимизировать геометрию"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Настроить силовое поле..."
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Рассчитать энергию"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "Поиск конформеров"
+
+#~ msgid "Constraints..."
+#~ msgstr "Ограничения..."
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Игнорировать выделенное"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Зафиксировать выделенные атомы"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Молекулярная механика"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Не могу выбрать силовое поле для этой молекулы"
+
+#, qt-format
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Энергия = %1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Геометрическая оптимизация"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Оптимизация с помощью силового поля"
+
+#~ msgid "Cancel"
+#~ msgstr "Отменить"
+
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "Систематический поиск внутренних вращений"
+
+#~ msgid "Random Rotor Search"
+#~ msgstr "Случайный поиск внутренних вращений"
+
+#~ msgid "ForceField"
+#~ msgstr "Силовое поле"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "Copy text"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Не выбрано ни одного атома"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "Недоступно преобразование из SMILES"
+
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "Недоступно преобразование из SMILES!"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Group Name"
+#~ msgstr "Название группы"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Название"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Изменены расширенные настройки"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Изменены расширенные настройки.\n"
+#~ "Отменить?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Сброс расширенных настроек"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Вы уверены, что хотите сбросить расширенные настройки?\n"
+#~ "Все изменения будут потеряны!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Сброс основных настроек"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Вы уверены, что хотите сбросить основные настройки?\n"
+#~ "Все изменения будут потеряны!"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Экспорт входного файла"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "Входной файл GAMESS (*.inp)"
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Входной файл Gaussian..."
+
+#~ msgid "Gaussian Input Deck"
+#~ msgstr "Входной файл Gaussian"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Сохранить входной файл Gaussian"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Входной файл Gaussian (*.com)"
+
+#~ msgid "Show Preview"
+#~ msgstr "Предпросмотр"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Скрыть предпросмотр"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Заменить H на метил"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H на метил"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H2Метил"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Добавть атомы водорода"
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Удалить атомы водорода"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Атомы водорода"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Открыть файл лиганда"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Файлы Avogadro (*.*)"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Свойства атома..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Свойства связи..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "Свойства угла..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Свойства двугранного угла..."
+
+#~ msgid "Conformers..."
+#~ msgstr "Конформеры..."
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Редактор декартовых координат..."
+
+#~ msgid "&Properties"
+#~ msgstr "&Свойства"
+
+#~ msgid "Atom"
+#~ msgstr "Атом"
+
+#~ msgid "Bond"
+#~ msgstr "Связь"
+
+#~ msgid "Angle"
+#~ msgstr "Угол"
+
+#~ msgid "Torsion"
+#~ msgstr "Двугранный угол"
+
+#~ msgid "Cartesian"
+#~ msgstr "Декартовы"
+
+#~ msgid "Conformer"
+#~ msgstr "Конформер"
+
+#~ msgid "Properties"
+#~ msgstr "Свойства"
+
+#~ msgid "Atomic Number"
+#~ msgstr "Атомный номер"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Частичный заряд"
+
+#~ msgid "Valence"
+#~ msgstr "Валентность"
+
+#~ msgid "Bond Order"
+#~ msgstr "Порядок связи"
+
+#, qt-format
+#~ msgid "Atom %1"
+#~ msgstr "Атом %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Первый атом"
+
+#~ msgid "End Atom"
+#~ msgstr "Последний атом"
+
+#~ msgid "Length (Å)"
+#~ msgstr "Длина (Å)"
+
+#~ msgid "Rotatable"
+#~ msgstr "Вращаемый"
+
+#, qt-format
+#~ msgid "Bond %1"
+#~ msgstr "Связь %1"
+
+#~ msgid "Vertex"
+#~ msgstr "Вершина"
+
+#~ msgid "Angle (°)"
+#~ msgstr "Угол (°)"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Угол %1"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "Двугранный угол (°)"
+
+#, qt-format
+#~ msgid "Torsion %1"
+#~ msgstr "Двугранный угол %1"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "Energy"
+#~ msgstr "Энергия"
+
+#, qt-format
+#~ msgid "Conformer %1"
+#~ msgstr "Конформер %1"
+
+#~ msgid "&Scripts"
+#~ msgstr "Сценарии"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Терминал Python"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Обратить выделение"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "Выделить SMARTS..."
+
+#~ msgid "Select by Element..."
+#~ msgstr "Выделить по элементу..."
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Выделить по аминокислотному остатку..."
+
+#~ msgid "Select Solvent"
+#~ msgstr "Выделить растворитель"
+
+#~ msgid "Select by residue"
+#~ msgstr "Выделить по аминокислотному остатку"
+
+#~ msgid "Residue name"
+#~ msgstr "Название аминокислотного остатка"
+
+#~ msgid "First Action"
+#~ msgstr "Первое действие"
+
+#~ msgid "Second Action"
+#~ msgstr "Второе действие"
+
+#~ msgid "&Template"
+#~ msgstr "&Шаблон"
+
+#~ msgid "Template"
+#~ msgstr "Шаблон"
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "Параметры элементарной ячейки..."
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "В текущем документе содержится отдельная молекула.\n"
+#~ "Хотите ли Вы создать элементарную ячейку кристаллической решётки?"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#~ msgid "OpenGL error"
+#~ msgstr "Ошибка OpenGL"
+
+#~ msgid "FPS"
+#~ msgstr "Кадров в секунду"
+
+#~ msgid "View Size"
+#~ msgstr "Просмотр размера"
+
+#~ msgid "Residue"
+#~ msgstr "Аминокислотный остаток"
+
+#~ msgid "No Description"
+#~ msgstr "Нет описания"
+
+#~ msgid "Axis:"
+#~ msgstr "Ось:"
+
+#~ msgid "Align:"
+#~ msgstr "Выровнять"
+
+#~ msgid "Everything"
+#~ msgstr "Всё"
+
+#~ msgid "Align"
+#~ msgstr "Выровнять"
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "Автоматическая оптимизация\n"
+#~ "\n"
+#~ "Функции навигации при щелчке в пустом пространстве.\n"
+#~ "Левая кнопка мыши: Вращать пространство\n"
+#~ "Средняя кнопка мыши: Изменить масштаб\n"
+#~ "Правая кнопка мыши: Переместить в пространстве\n"
+#~ "\n"
+#~ "Дополнительная функция во время работы\n"
+#~ "Левая кнопка мыши: Щелкните и потяните атомы чтобы переместить их"
+
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "AutoOpt: Невозможно установить силовое поле"
+
+#, qt-format
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#~ msgid "Force Field:"
+#~ msgstr "Силовое поле:"
+
+#~ msgid "Steps per Update:"
+#~ msgstr "Шагов до обновления:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Алгоритм:"
+
+#~ msgid "Steepest Descent"
+#~ msgstr "Наискорейший спуск"
+
+#~ msgid "Conjugate Gradients"
+#~ msgstr "Сопряжённые градиенты"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Молекулярная динамика (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Молекулярная динамика (600K)"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Молекулярная динамика (900K)"
+
+#~ msgid "Start"
+#~ msgstr "Начать"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Закреплённые атомы могут перемещаться"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Игнорируемые атомы могут перемещаться"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "Автооптимизация"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Инструмент автоматического вращения"
+
+#~ msgid "x rotation:"
+#~ msgstr "вращение по оси Х:"
+
+#~ msgid "x rotation"
+#~ msgstr "вращение по оси Х:"
+
+#~ msgid "y rotation:"
+#~ msgstr "вращение по оси Y:"
+
+#~ msgid "y rotation"
+#~ msgstr "вращение по оси Y:"
+
+#~ msgid "z rotation:"
+#~ msgstr "вращение по оси Z:"
+
+#~ msgid "z rotation"
+#~ msgstr "вращение по оси Z:"
+
+#~ msgid "Reset"
+#~ msgstr "Сброс"
+
+#~ msgid "AutoRotate"
+#~ msgstr "Автоматическое вращение"
+
+#~ msgid " Show Angles"
+#~ msgstr " Показать углы"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " Привязка к связям"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Порог привязки: "
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "Щелкните для измерения (F12)\n"
+#~ "\n"
+#~ "Левая кнопка мыши: \tВыбрать до трех атомов.\n"
+#~ "\tРасстояния измеряются между 1-2 и 2-3\n"
+#~ "\tУгол измеряется между 1-3, используя 2 как общую точку\n"
+#~ "Правая кнопка мыши: Сбросить измерения."
+
+#, qt-format
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Расстояние (1->2): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Расстояние (2->3): %1 %2"
+
+#, qt-format
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Угол: %1 %2"
+
+#, qt-format
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Расстояние (3->4): %1 %2"
+
+#, qt-format
+#~ msgid "Dihedral Angle: %1 %2"
+#~ msgstr "Диэдральный угол: %1 %2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Расстояние(я):"
+
+#~ msgid "Measure"
+#~ msgstr "Измерение"
+
+#~ msgid "Add Atom"
+#~ msgstr "Добавить атом"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Удалить атом"
+
+#~ msgid "Add Bond"
+#~ msgstr "Добавить связь"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Удалить связь"
+
+#~ msgid "Change Element"
+#~ msgstr "Изменить элемент"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Изменить порядок связи"
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Вставить фрагмент"
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "Рисованиеl (F8)\n"
+#~ "\n"
+#~ "Левая кнопка мыши: \tЩелкните мышкой и протяните, чтобы создать атомы и "
+#~ "связи\n"
+#~ "Правая кнопка мыши: Удалить атом"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Нарисовать атом"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Нарисовать связь"
+
+#~ msgid "Draw"
+#~ msgstr "Рисовать"
+
+#~ msgid "Element:"
+#~ msgstr "Элемент:"
+
+#~ msgid "Other..."
+#~ msgstr "Другой..."
+
+#~ msgid "Bond Order:"
+#~ msgstr "Порядок связи:"
+
+#~ msgid "Single"
+#~ msgstr "Одинарная"
+
+#~ msgid "Double"
+#~ msgstr "Двойная"
+
+#~ msgid "Triple"
+#~ msgstr "Тройная"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Автодобавление водородов"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Библиотека фрагментов..."
+
+#~ msgid "Stop Inserting"
+#~ msgstr "Прекратить вставку"
+
+#~ msgid "Open Directory"
+#~ msgstr "Открыть каталог"
+
+#~ msgid ""
+#~ "Selection Tool (F11)\n"
+#~ "Click to pick individual atoms, residues, or fragments\n"
+#~ "Drag to select a range of atoms\n"
+#~ "Use Ctrl to toggle the selection and shift to add to the selection"
+#~ msgstr ""
+#~ "Инструмент выделения (F11)\n"
+#~ "Щелкните, чтобы выбрать индивидуальные атомы, остатки или фрагменты\n"
+#~ "Протяните мышкой для выбора группы атомов\n"
+#~ "Используйте Ctrl для выбора выделения и Shift для добавления к выделению"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Режим выделения:"
+
+#~ msgid "Medium"
+#~ msgstr "Среднее"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Радиус атома:"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Радиус связи:"
+
+#~ msgid "Show Multiple Bonds"
+#~ msgstr "Показывать кратные связи"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Atom Labels:"
+#~ msgstr "Подписи атомов:"
+
+#~ msgid "Atom number"
+#~ msgstr "Номер атома"
+
+#~ msgid "Element symbol"
+#~ msgstr "Символ элемента"
+
+#~ msgid "Element name"
+#~ msgstr "Название элемента"
+
+#~ msgid "Residue number"
+#~ msgstr "Номер аминокислотного остатка"
+
+#~ msgid "None"
+#~ msgstr "Отсутствует"
+
+#~ msgid "Bond Labels:"
+#~ msgstr "Подписи связей:"
+
+#~ msgid "Bond number"
+#~ msgstr "Номер связи"
+
+#~ msgid "Bond order"
+#~ msgstr "Порядок связи"
+
+#~ msgid "Orbital:"
+#~ msgstr "Орбиталь:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Непрозрачность:"
+
+#~ msgid "Fill"
+#~ msgstr "Заливка"
+
+#~ msgid "Lines"
+#~ msgstr "Линии"
+
+#~ msgid "Points"
+#~ msgstr "Точки"
+
+#~ msgid "Color:"
+#~ msgstr "Цвет:"
+
+#~ msgid "Calculate"
+#~ msgstr "Рассчитать"
+
+#~ msgid "Rendering:"
+#~ msgstr "Рендеринг:"
+
+#~ msgid "Backbone"
+#~ msgstr "Каркас"
+
+#~ msgid "Radius:"
+#~ msgstr "Радиус:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Включить атомы азота"
+
+#~ msgid "VdW Opacity:"
+#~ msgstr "Непрозрачность ван-дер-ваальсовых поверхностей"
+
+#~ msgid "Custom Color"
+#~ msgstr "Другой цвет"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Электростатический потенциал (ESP)"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Показать атомы"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Анимировать траекторию"
+
+#~ msgid "Load File..."
+#~ msgstr "Загрузить файл..."
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "кадров/с"
+
+#~ msgid "Conformer Search"
+#~ msgstr "Поиск конформеров"
+
+#~ msgid "Options"
+#~ msgstr "Параметры"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Число атомов:"
+
+#~ msgid "Number of conformers"
+#~ msgstr "Число конформеров"
+
+#~ msgid "Method"
+#~ msgstr "Метод"
+
+#~ msgid "Systematic rotor search"
+#~ msgstr "Систематический поиск внутренних вращений"
+
+#~ msgid "Random rotor search"
+#~ msgstr "Случайный поиск внутренних вращений"
+
+#~ msgid "Constraints"
+#~ msgstr "Ограничения"
+
+#~ msgid "Add Constraints"
+#~ msgstr "Добавить ограничения"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Игнорировать атом"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Зафиксировать атом"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Зафиксировать координату X атома"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Зафиксировать координату Y атома"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Зафиксировать координату Z атома"
+
+#~ msgid "Distance"
+#~ msgstr "Расстояние"
+
+#~ msgid "Torsion angle"
+#~ msgstr "Торсионный угол"
+
+#~ msgid "Load"
+#~ msgstr "Загрузить"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Удалить выбранное"
+
+#~ msgid "Delete All"
+#~ msgstr "Удалить всё"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "Настроить силовое поле"
+
+#~ msgid "Force Field"
+#~ msgstr "Силовое поле"
+
+#~ msgid "Ghemical"
+#~ msgstr "Ghemical"
+
+#~ msgid "Geometry Optimization"
+#~ msgstr "Оптимизация геометрии"
+
+#~ msgid "Number of steps"
+#~ msgstr "Число шагов"
+
+#~ msgid "Algorithm"
+#~ msgstr "Алгоритм"
+
+#~ msgid "Convergence"
+#~ msgstr "Порог сходимости"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "&Основные параметры"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "RHF"
+#~ msgstr "RHF"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Core Potential"
+#~ msgstr "Псевдопотенциал"
+
+#~ msgid "Memory:"
+#~ msgstr "Память:"
+
+#~ msgid "Singlet"
+#~ msgstr "Синглет"
+
+#~ msgid "Doublet"
+#~ msgstr "Дублет"
+
+#~ msgid "Triplet"
+#~ msgstr "Триплет"
+
+#~ msgid "Dication"
+#~ msgstr "Дикатион"
+
+#~ msgid "Cation"
+#~ msgstr "Катион"
+
+#~ msgid "Neutral"
+#~ msgstr "Нейтральная"
+
+#~ msgid "Anion"
+#~ msgstr "Анион"
+
+#~ msgid "Dianion"
+#~ msgstr "Дианион"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "В одной точке"
+
+#~ msgid "Equilibrium Geometry"
+#~ msgstr "Равновесная геометрия"
+
+#~ msgid "Transition State"
+#~ msgstr "Переходное состояние"
+
+#~ msgid "Frequencies"
+#~ msgstr "Частоты колебаний"
+
+#~ msgid "Gas"
+#~ msgstr "Газ"
+
+#~ msgid "Water"
+#~ msgstr "Вода"
+
+#~ msgid "Time Limit:"
+#~ msgstr "Ограничение Времени:"
+
+#~ msgid "&Advanced Setup"
+#~ msgstr "Расширенные настройки"
+
+#~ msgid "Advanced"
+#~ msgstr "Дополнительно"
+
+#~ msgid "Basis"
+#~ msgstr "Базис"
+
+#~ msgid "Control"
+#~ msgstr "Управление"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "Hessian"
+#~ msgstr "Гессиан"
+
+#~ msgid "Stat Point"
+#~ msgstr "Стационарная точка"
+
+#~ msgid "Data"
+#~ msgstr "Данные"
+
+#~ msgid "System"
+#~ msgstr "Система"
+
+#~ msgid "MO Guess"
+#~ msgstr "Начальное приближение МО"
+
+#~ msgid "Misc"
+#~ msgstr "Прочее"
+
+#~ msgid "#D Heavy Atom Polarization Functions:"
+#~ msgstr "Количество поляризационных функций D на тяжелых атомах"
+
+#~ msgid "Read"
+#~ msgstr "Прочитать"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "Diffuse S-Shell on Heavy Atoms"
+#~ msgstr "Диффузная S-функция на тяжелых атомах"
+
+#~ msgid "Diffuse L-Shell on Heavy Atoms"
+#~ msgstr "Диффузная L-функция на тяжелых атомах"
+
+#~ msgid "Basis Set:"
+#~ msgstr "Базисный набор:"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "Double Zeta Valence"
+#~ msgstr "Двухэкспоненциальный валентный"
+
+#~ msgid "Dunning/Hay DZ"
+#~ msgstr "Dunning/Hay DZ"
+
+#~ msgid "Triple Zeta Valence"
+#~ msgstr "Трехэкспоненциальный валентный"
+
+#~ msgid "McLean/Chandler"
+#~ msgstr "McLean/Chandler"
+
+#~ msgid "SBKJA Valence"
+#~ msgstr "SBKJA валентный"
+
+#~ msgid "Hay/Wadt Valence"
+#~ msgstr "Hay/Wadt валентный"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "ECP Type:"
+#~ msgstr "Тип ECP:"
+
+#~ msgid "Default"
+#~ msgstr "По умолчанию"
+
+#~ msgid "Pople"
+#~ msgstr "Pople"
+
+#~ msgid "Pople N311"
+#~ msgstr "Pople N311"
+
+#~ msgid "Dunning"
+#~ msgstr "Dunning"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "#F Heavy Atom Polarization Functions:"
+#~ msgstr "Поляризационных функций F на тяжелых атомах"
+
+#~ msgid "#light Atom Polarization Functions:"
+#~ msgstr "Поляризационных функций на легких атомах"
+
+#~ msgid "Max SCF Iterations:"
+#~ msgstr "Максимум итераций SCF:"
+
+#~ msgid "Gradient"
+#~ msgstr "Градиент"
+
+#~ msgid "Optimization"
+#~ msgstr "Оптимизация"
+
+#~ msgid "Saddle Point"
+#~ msgstr "Седловая точка"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "Energy Surface"
+#~ msgstr "Поверхность энергии"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "Spin Orbit"
+#~ msgstr "Спин-орбитальное взаимодействие"
+
+#~ msgid "Finite Electric Field"
+#~ msgstr "Конечное электрическое поле"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "Raman Intensities"
+#~ msgstr "Рамановские интенсивности"
+
+#~ msgid "NMR"
+#~ msgstr "ЯМР"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "Foster-Boys"
+#~ msgstr "Foster-Boys"
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
+
+#~ msgid "SCF Type:"
+#~ msgstr "Тип SCF:"
+
+#~ msgid "Localization Method:"
+#~ msgstr "Метод локализации:"
+
+#~ msgid "Exec Type:"
+#~ msgstr "Режим запуска:"
+
+#~ msgid "CI:"
+#~ msgstr "CI"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "LCCD: Linearized CC"
+#~ msgstr "LCCD: Линаризованный CC"
+
+#~ msgid "CCD: CC with Doubles"
+#~ msgstr "CCD: CC с двукратными возбуждениями"
+
+#~ msgid "CCSD: CC with Singles and Doubles"
+#~ msgstr "CCSD: CC с одно- и двукратными возбуждениями"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "Мультиплетность:"
+
+#~ msgid "Normal Run"
+#~ msgstr "Нормальный запуск"
+
+#~ msgid "Check"
+#~ msgstr "Проверка"
+
+#~ msgid "Debug"
+#~ msgstr "Отладка"
+
+#~ msgid "Molecule Charge:"
+#~ msgstr "Заряд молекулы:"
+
+#~ msgid "Run Type:"
+#~ msgstr "Тип расчета:"
+
+#~ msgid "Use MP2"
+#~ msgstr "Использовать MP2"
+
+#~ msgid "Use DFT"
+#~ msgstr "Использовать DFT"
+
+#~ msgid "# of Z-Matrix Variables"
+#~ msgstr "число переменных Z-матрицы"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ангстрем"
+
+#~ msgid "Bohr"
+#~ msgstr "Бор"
+
+#~ msgid "Order of Principal Axis:"
+#~ msgstr "Порядок главной оси:"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "Тип координат"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "CS"
+#~ msgstr "Cs"
+
+#~ msgid "CI"
+#~ msgstr "Ci"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "DnD"
+#~ msgstr "Dnd"
+
+#~ msgid "DnH"
+#~ msgstr "Dnh"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "Td"
+
+#~ msgid "TH"
+#~ msgstr "Th"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "Oh"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Unique cartesian Coords."
+#~ msgstr "Уникальные декартовы координаты"
+
+#~ msgid "Cartesian coordinates"
+#~ msgstr "Декартовы координаты"
+
+#~ msgid "Z-Matrix"
+#~ msgstr "Z-матрица"
+
+#~ msgid "MOPAC Z-Matrix"
+#~ msgstr "Z-матрица MOPAC"
+
+#~ msgid "Use Symmetry During Calculation"
+#~ msgstr "Использовать симметрию"
+
+#~ msgid "Title:"
+#~ msgstr "Название:"
+
+#~ msgid "Point Group:"
+#~ msgstr "Точечная группа:"
+
+#~ msgid "Seconds"
+#~ msgstr "Секунды"
+
+#~ msgid "Minutes"
+#~ msgstr "Минуты"
+
+#~ msgid "Hours"
+#~ msgstr "Часы"
+
+#~ msgid "Days"
+#~ msgstr "Дни"
+
+#~ msgid "Weeks"
+#~ msgstr "недели"
+
+#~ msgid "Years"
+#~ msgstr "Годы"
+
+#~ msgid "Millenia"
+#~ msgstr "Тысячелетия"
+
+#~ msgid "Words"
+#~ msgstr "Слова"
+
+#~ msgid "Bytes"
+#~ msgstr "Байт"
+
+#~ msgid "MegaBytes"
+#~ msgstr "Мегабайт"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "Diagonalization Method:"
+#~ msgstr "Метод диагонализации:"
+
+#~ msgid "Next Value"
+#~ msgstr "Следующее значение"
+
+#~ msgid "Huckel"
+#~ msgstr "Хюккель"
+
+#~ msgid "HCore"
+#~ msgstr "Голые ядра"
+
+#~ msgid "MO Read ($VEC)"
+#~ msgstr "Прочитать MO ($VEC)"
+
+#~ msgid "MO Saved (DICTNRY)"
+#~ msgstr "Сохраненные MO (DICTNRY)"
+
+#~ msgid "Skip"
+#~ msgstr "Пропустить"
+
+#~ msgid "Rotate Alpha and Beta Orbitals"
+#~ msgstr "Повернуть альфа- и бета-орбитали"
+
+#~ msgid "Print the Initial Guess"
+#~ msgstr "Печатать начальное приближение"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "Force a Check Run Type"
+#~ msgstr "Только в режиме проверки"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (UK Version)"
+
+#~ msgid "Gaussian 9x"
+#~ msgstr "Gaussian 9x"
+
+#~ msgid "All"
+#~ msgstr "Все"
+
+#~ msgid "Solvate with Water"
+#~ msgstr "Сольватировать водой"
+
+#~ msgid "Generate UHF Natural Orbitals"
+#~ msgstr "Сгенерировать натуральные орбитали UHF"
+
+#~ msgid "Grid"
+#~ msgstr "Сетка интегрирования"
+
+#~ msgid "Grid-Free"
+#~ msgstr "Безсеточный"
+
+#~ msgid "DFT Functional:"
+#~ msgstr "Функционал плотности:"
+
+#~ msgid "Method:"
+#~ msgstr "Метод:"
+
+#~ msgid "AO Integral Storage"
+#~ msgstr "Хранение интегралов АО"
+
+#~ msgid "Duplicated on Each Node"
+#~ msgstr "Дублировать на каждом узле"
+
+#~ msgid "Distributed Across All Nodes"
+#~ msgstr "Распределить по всем узлам"
+
+#~ msgid "words"
+#~ msgstr "слов"
+
+#~ msgid "Compute MP2 Properties"
+#~ msgstr "Вычислить свойства для MP2"
+
+#~ msgid "Integral Retention Cutoff:"
+#~ msgstr "Предел сохранения интегралов:"
+
+#~ msgid "Use Localized Orbitals"
+#~ msgstr "Использо"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "Число внутренних электронов"
+
+#~ msgid "Transformation Method"
+#~ msgstr "Метод трансформации"
+
+#~ msgid "Vibrational Analysis"
+#~ msgstr "Колебательный анализ"
+
+#~ msgid "Analytic"
+#~ msgstr "Аналитический"
+
+#~ msgid "Numeric"
+#~ msgstr "Численный"
+
+#~ msgid "Double Differenced Hessian"
+#~ msgstr "С двойным численным дифференцированием"
+
+#~ msgid "Frequency Scale Factor:"
+#~ msgstr "Коэффициент масштабирования частот:"
+
+#~ msgid "bohrs"
+#~ msgstr "бор"
+
+#~ msgid "Initial Hessian"
+#~ msgstr "Начальный гессиан"
+
+#~ msgid "Read (from $HESS)"
+#~ msgstr "Прочитать (из $HESS)"
+
+#~ msgid "Update Step Size"
+#~ msgstr "Величина шага обновления"
+
+#~ msgid "Print Orbs at Each Iteration"
+#~ msgstr "Выводить орбитали на каждой итерации"
+
+#~ msgid "Gradient Convergence Criteria:"
+#~ msgstr "Критерии сходимости градиента:"
+
+#~ msgid "Stationary Point"
+#~ msgstr "Стационарная точка"
+
+#~ msgid "Optimization Method:"
+#~ msgstr "Метод оптимизации:"
+
+#~ msgid "Step Size"
+#~ msgstr "Размер шага"
+
+#~ msgid "Maximum:"
+#~ msgstr "Максимум:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Минимум:"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Ньютона-Рафсона"
+
+#~ msgid "Rational Function Optimization"
+#~ msgstr "Рациональная функция"
+
+#~ msgid "Quadratic Approximation"
+#~ msgstr "Квадратичная аппроксимация"
+
+#~ msgid "Schlegel (quasi-NR)"
+#~ msgstr "Шлегель (quasi-NR)"
+
+#~ msgid "Constrained Optimization"
+#~ msgstr "Оптимизация с ограничениями"
+
+#~ msgid "steps"
+#~ msgstr "шагов"
+
+#~ msgid "Recalculate Hessian Every:"
+#~ msgstr "Пересчитывать гессиан каждые:"
+
+#~ msgid "Maximum Steps:"
+#~ msgstr "Максимальное число шагов:"
+
+#~ msgid "Reset All"
+#~ msgstr "Сбросить всё"
+
+#~ msgid "Defaults"
+#~ msgstr "По умолчанию"
+
+#~ msgid "Close"
+#~ msgstr "Закрыть"
+
+#~ msgid "Calculation:"
+#~ msgstr "Расчет:"
+
+#~ msgid "Single Point Energy"
+#~ msgstr "Энергия в точке:"
+
+#~ msgid "Processors:"
+#~ msgstr "Процессоры:"
+
+#~ msgid "Theory:"
+#~ msgstr "Теория:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Basis:"
+#~ msgstr "Базис:"
+
+#~ msgid "Charge:"
+#~ msgstr "Заряд:"
+
+#~ msgid "Molden"
+#~ msgstr "Molden"
+
+#~ msgid "Molekel"
+#~ msgstr "Molekel"
+
+#~ msgid "Checkpoint:"
+#~ msgstr "Контрольная точка:"
+
+#~ msgid "Z-matrix"
+#~ msgstr "Z-матрица"
+
+#~ msgid "Create ligand"
+#~ msgstr "Создать лиганд"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "создать лиганд из текущего выделения"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "создать лиганд из файла..."
+
+#~ msgid "Origin:"
+#~ msgstr "Начало координат:"
+
+#~ msgid "Radius"
+#~ msgstr "Радиус"
+
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "Параметры элементарной ячейки"
+
+#~ msgid "Unit Cell Display Options"
+#~ msgstr "Параметры отображения элементарной ячейки"
+
+#~ msgid "A repeat:"
+#~ msgstr "Повторений по оси A:"
+
+#~ msgid "B repeat:"
+#~ msgstr "Повторений по оси B:"
+
+#~ msgid "C repeat:"
+#~ msgstr "Повторений по оси C:"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "Удалить элементарную ячейку"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "Заполнить элементарную ячейку"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "Стороны (Å)"
+
+#~ msgid "Angles (°)"
+#~ msgstr "Углы (°)"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "alpha:"
+#~ msgstr "alpha:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "Вставить фрагмент..."
+
+#~ msgid "Add Directory"
+#~ msgstr "Добавить каталог"
+
+#~ msgid "Reset List"
+#~ msgstr "Сбросить список"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "Создать из SMILES:"
+
+#~ msgid "Bond length"
+#~ msgstr "Длина связи"
+
+#~ msgid "Gaussian Input"
+#~ msgstr "Входной файл Gaussian"
+
+#~ msgid "Step Size:"
+#~ msgstr "Величина шага:"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Добавить протоны при pH..."
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Остановить расчёт"
+
+#~ msgid "MO "
+#~ msgstr "МО "
+
+#~ msgid "Save QChem Input Deck"
+#~ msgstr "Сохранить входной файл Q-Chem"
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "Добавить именованное выделение..."
+
+#~ msgid "There is no current selection."
+#~ msgstr "Ничего не выделено"
+
+#~ msgid "Add Named Selection"
+#~ msgstr "Добавить именованное выделение"
+
+#~ msgid "name"
+#~ msgstr "имя"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Имя не может быть пустым"
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Выделение с этим именем уже существует"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Атом/Связь"
+
+#~ msgid "Overlay"
+#~ msgstr "Перекрывание"
+
+#~ msgid "tree"
+#~ msgstr "дерево"
+
+#~ msgid "Low"
+#~ msgstr "Низкое"
+
+#~ msgid "High"
+#~ msgstr "Высокое"
+
+#~ msgid "Undefined"
+#~ msgstr "Не определено"
+
+#~ msgid "Some"
+#~ msgstr "Немного"
+
+#~ msgid "Mid"
+#~ msgstr "Средне"
+
+#~ msgid "Lots"
+#~ msgstr "Много"
+
+#~ msgid "Color by Element"
+#~ msgstr "Раскрасить по элементу"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Раскрасить по элементу (углерод = серый, кислород = красный, ...)."
+
+#~ msgid "Color by Index"
+#~ msgstr "Цвет согласно Индексу"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr ""
+#~ "Цвет согласно Индексу (красный, оранжевый, жёлтый, зелёный, синий, "
+#~ "фиолетовый)."
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Файлы траекторий (*.xtc *.xyz)"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "видео файлы (*.avi)"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Добавление расширения .avi"
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Нужно указать правильное имя .avi файла"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "Не правильное имя видеофайла.  Имя должно содержать полный путь"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr ""
+#~ "Не правильное имя видеофайла.  Имя должно содержать полный путь и название, "
+#~ "оканчивающееся на .avi"
+
+#, qt-format
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "Не удалось прочитать файл траектории %1"
+
+#, qt-format
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ msgstr "Файл траектории %1 не соответствует числу атомов в данной молекуле"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Траектория..."
+
+#~ msgid "Open parameter file"
+#~ msgstr "Открыть файл параметров"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Импортировать траекторию"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Входной файл Q-CHem..."
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Добавить протоны при pH"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Все файлы (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Сохранить Видеофайл"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "видеофайлы (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Сохранить файл траектории"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "файл траектории (*.xyz)"
+
+#, qt-format
+#~ msgid "Wrote file %1."
+#~ msgstr "Записан файл %1."
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "СОздать поверхности..."
+
+#~ msgid "Electron Density"
+#~ msgstr "Электронная плотность"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "Расчет электронной плотности"
+
+#~ msgid "Surfaces"
+#~ msgstr "Поверхности"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Файлы изображений (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "No filename supplied."
+#~ msgstr "Не указано имя фала."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "Не указано корректное имя фала."
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "Не удалось запустить POV-Ray."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "Не удалось запустить POV-Ray. Возможно, путь к исполняемому файлу указан "
+#~ "неправильно."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Vertex shader files (*.vert)"
+#~ msgstr "Файлы вершинных шейдеров (*.vert)"
+
+#~ msgid "Load and use OpenGL 2.0 GLSL shaders"
+#~ msgstr "Загрузить и использовать GLSL шейдеры OpenGL 2.0"
+
+#~ msgid "GL widget was not correctly initialized in order to make a video"
+#~ msgstr ""
+#~ "Невозможно создать видео, т.к. виджет GL не инициализировался корректно"
+
+#~ msgid "cancel"
+#~ msgstr "отмена"
+
+#~ msgid "Video file not written."
+#~ msgstr "Видео файл не записан."
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Менеджер плагинов"
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Чтобы изменения вступили в силу, требуется перезапуск Avogadro"
+
+#~ msgid "Bond Length: "
+#~ msgstr "Длина связи: "
+
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "Щелкните, чтобы вставить фрагмент в это положение"
+
+#~ msgid "Selection"
+#~ msgstr "Выделение"
+
+#~ msgid "Top"
+#~ msgstr "По верхнему краю"
+
+#~ msgid "Bottom"
+#~ msgstr "По нижнему краю"
+
+#~ msgid "Left"
+#~ msgstr "По левому краю"
+
+#~ msgid "Right"
+#~ msgstr "По правому краю"
+
+#~ msgid "Tab Position"
+#~ msgstr "Расположение вкладки"
+
+#~ msgid "Smooth Transitions"
+#~ msgstr "Сглаживать перемещения"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Дипольный момент"
+
+#~ msgid "Unique ID"
+#~ msgstr "Уникальный ID"
+
+#~ msgid "Python Settings"
+#~ msgstr "Настройки Python"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Сохранить как .avi..."
+
+#~ msgid "Browse..."
+#~ msgstr "Обзор..."
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Загрузить вторую конформацию..."
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Сохранить снимки траектории как серию POVRay-файлов. Это может быть "
+#~ "использовано для изготовления видеоклипа"
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Сохранить траекторию..."
+
+#~ msgid "Save movie..."
+#~ msgstr "Сохранить фильм..."
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Рассчитать МО"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Рассчитать все МО"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Рассчитать электронную плотность"
+
+#~ msgid "Isosurfaces"
+#~ msgstr "Изоповерхности"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "POV-Ray Export"
+#~ msgstr "Экспорт в POV-Ray"
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "Resolution:"
+#~ msgstr "Разрешение:"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "Установить прозрачный цвет фона"
+
+#~ msgid "Alpha transparency"
+#~ msgstr "Альфа-прозрачность"
+
+#~ msgid "Command:"
+#~ msgstr "Команда:"
+
+#~ msgid "Keep the POV-Ray source after rendering has completed"
+#~ msgstr "Сохранить входной файл POV-Ray после завершения рендеринга"
+
+#~ msgid "Keep POV-Ray source after rendering"
+#~ msgstr "Сохранить входной файл POV-Ray после рендеринга"
+
+#~ msgid "Path:"
+#~ msgstr "Путь:"
+
+#~ msgid "Q-Chem Input"
+#~ msgstr "Входной файл Q-Chem"
+
+#~ msgid "GLSL Shaders"
+#~ msgstr "GLSL шейдеры"
+
+#~ msgid "Load Shaders"
+#~ msgstr "Загрузить шейдеры"
+
+#~ msgid "Shader Name:"
+#~ msgstr "Имя шейдера:"
+
+#~ msgid "Vertex Shader:"
+#~ msgstr "Вершинный шейдер:"
+
+#~ msgid "Parameters:"
+#~ msgstr "Параметры:"
+
+#~ msgid "Untitled"
+#~ msgstr "Без названия"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr ""
+#~ "Раскрасить по частичному заряду атома (синий = положительный, красный = "
+#~ "отрицательный)."
+
+#~ msgid "Color by Distance"
+#~ msgstr "Раскрасить по расстоянию"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Раскрасить по расстоянию от первого атома"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr ""
+#~ "Цвет согласно аминокислотному остатку (тип аминокислоты, гидрофобность, ...)"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Отображает оси x, y, и z в начале координат"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Отображает вторичную структуру белка"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Отображает молекулярный дипольный момент"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Отображает подписи атомов и связей"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Отображает молекулярные орбитали"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Отображает атомы как тетраэдры, октаэдры и другие многогранники"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "Отображает остов белка лентами"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr ""
+#~ "Отображает связи как каркас, отлично подходит для очень больших (био)молекул"
+
+#~ msgid "Save Video File"
+#~ msgstr "Сохранить видео файл"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Анимировать траектории, реакции и колебания"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Импортировать файлы траекторий"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics force "
+#~ "fields"
+#~ msgstr ""
+#~ "Оптимизировать молекулы и выбрать конформеры, используя "
+#~ "молекулярномеханические силовые поля"
+
+#~ msgid "Input Generator..."
+#~ msgstr "Генератор входного файла..."
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "Создать входные файлы для квантовохимического пакета GAMESS"
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "Входной файл MOPAC"
+
+#~ msgid "Create input files for quantum chemistry packages like Gaussian"
+#~ msgstr ""
+#~ "Создать входные файлы для квантвохимических пакетов, таких как Gaussian"
+
+#~ msgid "Gaussian Input Deck Generator Warning"
+#~ msgstr "Предупреждение генератора входных файлов Gaussian"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Превратить атомы водорода в метильные группы"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Добавить или удалить атомы водорода"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Добавить линейную интерполяцию в анимации"
+
+#~ msgid "MOPAC Running."
+#~ msgstr "Идет расчет в MOPAC."
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr "MOPAC уже запущен. Подождите завершения предыдущего расчета."
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC не установлен"
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "Исполняемый файл MOPAC не найден"
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "Не удалось запустить MOPAC"
+
+#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC не запустился. Возможно, он установлен не правильно."
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "Идет расчет в MOPAC..."
+
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "Сохранить входной файл MOPAC"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Входной файл MOPAC (*.mop)"
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "Рассчитать молекулярные орбитали и другие поверхности"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Окна для отображения свойств атомов, связей, валентных и двугранных углов. "
+#~ "Также включает редактор декартовых координат"
+
+#, qt-format
+#~ msgid "Atom Index %1"
+#~ msgstr "Номер атома %1"
+
+#~ msgid "Interactive python scripting terminal"
+#~ msgstr "Интерактивный терминал для сценариев Python"
+
+#~ msgid "Q-Chem Input Deck Generator Warning"
+#~ msgstr "Предупреждение генератора входных файлов Q-Chem"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Входной файл Q-Chem (*.qcin)"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Выделить атомы, связи, аминокислотные остатки..."
+
+#~ msgid "Warning"
+#~ msgstr "Предупреждение"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule. You need to create a unit "
+#~ "cell."
+#~ msgstr ""
+#~ "Сейчас в этом документе изолированная молекула. Вам нужно создать "
+#~ "элементарную ячеку."
+
+#~ msgid "Could not run povray."
+#~ msgstr "Не могу запустить POV-Ray"
+
+#~ msgid "Unit Cell"
+#~ msgstr "Элементарная ячейка"
+
+#~ msgid "Build and display crystallographic unit cells"
+#~ msgstr "Построить и отобразить кристаллографические элементарные ячейки"
+
+#~ msgid "No vibrations have been computed for this molecule."
+#~ msgstr "Для этой молекулы не были рассчитаны колебания"
+
+#~ msgid "Vibration"
+#~ msgstr "Колебание"
+
+#~ msgid "Unknown Python Engine"
+#~ msgstr "Неизвестный движок Python"
+
+#~ msgid "  - no module"
+#~ msgstr "  - нет модуля"
+
+#~ msgid "Unknown Python Extension"
+#~ msgstr "Неизвестное расширение Python"
+
+#~ msgid "Align molecules to a Cartesian axis"
+#~ msgstr "Выровнять молекулы по осям координат"
+
+#~ msgid "Automatic optimization of molecular geometry"
+#~ msgstr "Автоматическая оптимизация геометрии молекулы"
+
+#~ msgid "Automatic rotation of molecules"
+#~ msgstr "Автоматическое вращение молекул"
+
+#~ msgid "Measure bond lengths, angles, and dihedrals"
+#~ msgstr "Измерить длины связей, углы и двугранные углы"
+
+#~ msgid "Draw and edit atoms and bonds"
+#~ msgstr "Нарисовать и редактировать атомы и связи"
+
+#~ msgid "Translate, rotate, and adjust atoms and fragments"
+#~ msgstr "Переместить, повернуть и подогнать атомы и фрагменты"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "ВЫделить атомы, остатки и молекулы"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Гидрофобность"
+
+#~ msgid "MOPAC Input"
+#~ msgstr "Входной файл MOPAC"
+
+#~ msgid "Quartet"
+#~ msgstr "Квартет"
+
+#~ msgid "Quintet"
+#~ msgstr "Квинтет"
+
+#~ msgid "MNDO-d"
+#~ msgstr "MNDO-d"
+
+#~ msgid "PM6"
+#~ msgstr "PM6"
+
+#~ msgid "RM1"
+#~ msgstr "RM1"
+
+#~ msgid "Compute..."
+#~ msgstr "Рассчитать..."
+
+#~ msgid "HF"
+#~ msgstr "HF"
+
+#~ msgid "Generate Cell"
+#~ msgstr "Создать ячеку"
+
+#~ msgid "Molecular Vibrations"
+#~ msgstr "Молекулярные колебания"
+
+#~ msgid "Frequency (cm-1)"
+#~ msgstr "Частота (cm-1)"
+
+#~ msgid "Intensity (a.u.)"
+#~ msgstr "Интенсивность (отн.ед.)"

@@ -1,0 +1,2629 @@
+# Finnish translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-03 17:13+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/mainwindow.cpp:2052
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+askelpalautin"
+
+#: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
+msgid "OK"
+msgstr ""
+
+#: src/aboutdialog.cpp:66
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
+msgstr ""
+
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:738 src/mainwindow.cpp:763
+#: src/mainwindow.cpp:776 src/mainwindow.cpp:839 src/mainwindow.cpp:873
+#: src/mainwindow.cpp:915 src/mainwindow.cpp:1054 src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1076 src/mainwindow.cpp:1088 src/mainwindow.cpp:1245
+#: src/mainwindow.cpp:2215 src/mainwindow.cpp:2682 :46
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr ""
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr ""
+
+#: src/editcommands.cpp:97
+msgid "Paste"
+msgstr "Liitä"
+
+#: src/editcommands.cpp:132
+msgid "Clear Molecule"
+msgstr ""
+
+#: src/editcommands.cpp:134
+msgid "Clear Atoms"
+msgstr ""
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:664
+msgid "Open File"
+msgstr "Avaa tiedosto"
+
+#: src/mainwindow.cpp:271
+msgid "Messages"
+msgstr ""
+
+#: src/mainwindow.cpp:320
+msgid "Window"
+msgstr "Ikkuna"
+
+#: src/mainwindow.cpp:323
+msgid "&Minimize"
+msgstr ""
+
+#: src/mainwindow.cpp:324
+msgid "Ctrl+M"
+msgstr ""
+
+#: src/mainwindow.cpp:329
+msgid "&Zoom"
+msgstr ""
+
+#: src/mainwindow.cpp:336 src/mainwindow.cpp:1380
+msgid "Bring All to Front"
+msgstr ""
+
+#: src/mainwindow.cpp:595
+msgid "&Tool Settings..."
+msgstr ""
+
+#: src/mainwindow.cpp:598
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr ""
+
+#: src/mainwindow.cpp:603
+msgid "&Display Settings..."
+msgstr ""
+
+#: src/mainwindow.cpp:606
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr ""
+
+#: src/mainwindow.cpp:644 src/mainwindow.cpp:1006
+msgid "Common molecule formats"
+msgstr "Yleiset molekyylitiedostomuodot"
+
+#: src/mainwindow.cpp:649 src/mainwindow.cpp:1003 src/mainwindow.cpp:1185
+#: src/mainwindow.cpp:1264
+msgid "All files"
+msgstr "Kaikki tiedostot"
+
+#: src/mainwindow.cpp:650 src/mainwindow.cpp:1000 src/mainwindow.cpp:1012
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:651
+msgid "Computational Chemistry Output"
+msgstr ""
+
+#: src/mainwindow.cpp:652
+msgid "Crystallographic Interchange CIF"
+msgstr ""
+
+#: src/mainwindow.cpp:653
+msgid "GAMESS-US Output"
+msgstr ""
+
+#: src/mainwindow.cpp:654
+msgid "Gaussian 98/03 Output"
+msgstr ""
+
+#: src/mainwindow.cpp:655
+msgid "Gaussian Formatted Checkpoint"
+msgstr ""
+
+#: src/mainwindow.cpp:656
+msgid "HyperChem"
+msgstr ""
+
+#: src/mainwindow.cpp:657
+msgid "MDL Mol"
+msgstr ""
+
+#: src/mainwindow.cpp:658
+msgid "NWChem Output"
+msgstr ""
+
+#: src/mainwindow.cpp:659 src/mainwindow.cpp:1017
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:660 src/mainwindow.cpp:1019
+msgid "Sybyl Mol2"
+msgstr ""
+
+#: src/mainwindow.cpp:661 src/mainwindow.cpp:1020
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:733
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr ""
+
+#: src/mainwindow.cpp:739
+#, qt-format
+msgid ""
+"Cannot read file %1:\n"
+"%2."
+msgstr ""
+"Tiedostoa %1 ei voida lukea:\n"
+"%2"
+
+#: src/mainwindow.cpp:764
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Tiedoston %1 tiedostomuotoa ei voida lukea."
+
+#: src/mainwindow.cpp:769
+#, qt-format
+msgid "Loading %1..."
+msgstr "Ladataan %1..."
+
+#: src/mainwindow.cpp:777
+msgid ""
+"This file contains 2D coordinates only. Do you want Avogadro to scale the "
+"bonds and do a quick optimization?"
+msgstr ""
+"Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
+"skaalaa sidokset ja tekee nopean optimisaation?"
+
+#: src/mainwindow.cpp:840
+msgid ""
+"This file does not contain 3D coordinates. You may not be able to edit or "
+"view properly."
+msgstr ""
+"Tämä tiedosto ei sisällä 3D-koordinaatteja. Voi olla, ettet pysty "
+"muokkaamaan tai käyttämään näkymää kunnolla."
+
+#: src/mainwindow.cpp:874
+msgid ""
+"This file appears to contain multiple molecule records. Avogadro will only "
+"read the first molecule. If you save, all other molecules may be lost."
+msgstr ""
+"Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro lukee "
+"ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut molekyylit "
+"saattavat kadota."
+
+#: src/mainwindow.cpp:887
+msgid "Atoms: "
+msgstr "Atomit: "
+
+#: src/mainwindow.cpp:888
+msgid " Bonds: "
+msgstr " Sidokset: "
+
+#: src/mainwindow.cpp:893
+msgid "Reading molecular file failed."
+msgstr "Molekyylitiedoston lukeminen epäonnistui."
+
+#: src/mainwindow.cpp:902
+msgid "File Loaded..."
+msgstr "Tiedosto ladattu..."
+
+#: src/mainwindow.cpp:916
+msgid "Do you want to save the changes you made in the document?"
+msgstr ""
+
+#: src/mainwindow.cpp:925
+msgid "Your changes will be lost if you don't save them."
+msgstr ""
+
+#: src/mainwindow.cpp:929
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr ""
+
+#: src/mainwindow.cpp:930
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr ""
+
+#: src/mainwindow.cpp:932
+msgid "Save..."
+msgstr ""
+
+#: src/mainwindow.cpp:932 src/savedialog.cpp:65
+msgid "Save"
+msgstr "Tallenna"
+
+#: src/mainwindow.cpp:1013
+msgid "GAMESS Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1014
+msgid "Gaussian Cartesian Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1015
+msgid "Gaussian Z-matrix Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1016
+msgid "MDL SDfile"
+msgstr ""
+
+#: src/mainwindow.cpp:1018
+msgid "NWChem Input"
+msgstr ""
+
+#: src/mainwindow.cpp:1023
+msgid "Save Molecule As"
+msgstr "Tallenna molekyyli nimellä"
+
+#: src/mainwindow.cpp:1055
+#, qt-format
+msgid "Cannot write to file format of file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:1063 src/mainwindow.cpp:1077
+#, qt-format
+msgid ""
+"Cannot write to the file %1:\n"
+"%2."
+msgstr ""
+"Tiedostoon %1 ei voida kirjoittaa:\n"
+"%2."
+
+#: src/mainwindow.cpp:1089
+#, qt-format
+msgid "Cannot write to the file %1."
+msgstr "Tiedostoon %1 ei voida kirjoittaa."
+
+#: src/mainwindow.cpp:1095
+msgid "Saving file."
+msgstr "Tiedostoa tallennetaan."
+
+#: src/mainwindow.cpp:1147
+msgid "Save succeeded."
+msgstr "Tallennus onnistui."
+
+#: src/mainwindow.cpp:1150 src/mainwindow.cpp:1154
+msgid "Saving molecular file failed."
+msgstr ""
+
+#: src/mainwindow.cpp:1175 src/mainwindow.cpp:1187
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1182
+msgid "Common image formats"
+msgstr ""
+
+#: src/mainwindow.cpp:1186
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1188
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1194 src/mainwindow.cpp:1273
+msgid "Export Bitmap Graphics"
+msgstr ""
+
+#: src/mainwindow.cpp:1246
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Tiedostoa %1 ei voida tallentaa."
+
+#: src/mainwindow.cpp:1254 src/mainwindow.cpp:1265
+msgid "PDF"
+msgstr "PDF"
+
+#: src/mainwindow.cpp:1261
+msgid "Common vector image formats"
+msgstr ""
+
+#: src/mainwindow.cpp:1266
+msgid "SVG"
+msgstr "SVG"
+
+#: src/mainwindow.cpp:1267
+msgid "EPS"
+msgstr "EPS"
+
+#: src/mainwindow.cpp:1412
+#, qt-format
+msgid "Untitled %1"
+msgstr ""
+
+#: src/mainwindow.cpp:1495
+msgid "Unable to paste molecule."
+msgstr "Molekyyliä ei voida liittää."
+
+#: src/mainwindow.cpp:1524
+msgid "Paste failed (format unavailable)."
+msgstr "Liittäminen epäonnistui."
+
+#: src/mainwindow.cpp:1593
+msgid "Copy failed (mdl unavailable)."
+msgstr ""
+
+#: src/mainwindow.cpp:1719 src/mainwindow.cpp:1749 src/mainwindow.cpp:1778
+#: src/mainwindow.cpp:1810 src/mainwindow.cpp:2344
+#, qt-format
+msgid "View %1"
+msgstr "Näkymä %1"
+
+#: src/mainwindow.cpp:1785
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: Erillinen näkymä"
+
+#: src/mainwindow.cpp:1946
+msgid "Normal Size"
+msgstr "Tavallinen koko"
+
+#: src/mainwindow.cpp:1958
+msgid "Full Screen"
+msgstr "Koko kuvaruutu"
+
+#: src/mainwindow.cpp:2127 src/mainwindow.cpp:2162 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "nimetön"
+
+#: src/mainwindow.cpp:2209
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr ""
+
+#: src/mainwindow.cpp:2214
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr ""
+
+#: src/projecttreeeditor.ui:229
+#: src/mainwindow.cpp:2625 :256
+msgid "Settings..."
+msgstr "Asetukset..."
+
+#: src/mainwindow.cpp:2636
+msgid "Add"
+msgstr "Lisää"
+
+#: src/mainwindow.cpp:2641
+msgid "Duplicate"
+msgstr "Monista"
+
+#: src/mainwindow.cpp:2646
+msgid "Remove"
+msgstr "Poista"
+
+#: src/mainwindow.cpp:2674
+msgid "No tools or engines loaded."
+msgstr ""
+
+#: src/mainwindow.cpp:2676
+msgid "No engines loaded."
+msgstr ""
+
+#: src/mainwindow.cpp:2678
+msgid "No tools loaded."
+msgstr "Työkaluja ei ole ladattu."
+
+#: src/mainwindow.cpp:2679
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+" On epätodennäköistä että sovellus toimii oikein. Ole hyvä ja korjaa tämä "
+"virhe."
+
+#: src/projecttreeeditor.ui:191
+#: src/settingsdialog.ui:14
+#: src/mainwindow.cpp:2700 src/mainwindow.cpp:2717 :250 rc.cpp:258
+msgid "Settings"
+msgstr "Asetukset"
+
+#: src/mainwindow.cpp:2723
+msgid "Objects"
+msgstr ""
+
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2729 :210
+msgid "Colors"
+msgstr "Värit"
+
+#: src/mainwindow.cpp:2777
+msgid " copy"
+msgstr ""
+
+#: src/pluginsettings.cpp:55
+msgid "Name: "
+msgstr "Nimi: "
+
+#: src/pluginsettings.cpp:56
+msgid "Identifier: "
+msgstr ""
+
+#: src/pluginsettings.cpp:57
+msgid "File: "
+msgstr "Tiedosto: "
+
+#: src/pluginsettings.cpp:58
+msgid "Description:\n"
+msgstr "Kuvaus:\n"
+
+#: src/primitiveitemmodel.cpp:265 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "Molekyyli"
+
+#: src/primitiveitemmodel.cpp:269
+#, qt-format
+msgctxt "%1 is element, %L2 is atom index"
+msgid "Atom %1 %L2"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:274
+#, qt-format
+msgctxt "%L1 is bond index"
+msgid "Bond %L1"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:285
+#, qt-format
+msgctxt "%1 is residue name, %2 is residue index"
+msgid "Residue %1 %2"
+msgstr ""
+
+#: src/primitiveitemmodel.cpp:301 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "Atomit"
+
+#: src/primitiveitemmodel.cpp:303 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "Sidokset"
+
+#: src/primitiveitemmodel.cpp:305 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr ""
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "sidos %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr ""
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr ""
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "Virhe"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr ""
+
+#: src/projecttreemodel.cpp:65
+msgid "Item"
+msgstr ""
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr ""
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr ""
+
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :266
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr ""
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr ""
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr ""
+
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :272
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr ""
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr ""
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr ""
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr ""
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr ""
+
+#: src/updatecheck.cpp:81
+msgid "Network Update Check Failed"
+msgstr ""
+
+#: src/updatecheck.cpp:82
+msgid "Network timeout or other error."
+msgstr ""
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr ""
+
+#: src/addenginedialog.ui:13
+msgid "Add Display Type"
+msgstr ""
+
+#: src/addenginedialog.ui:19
+msgid "Type:"
+msgstr ""
+
+#: src/addenginedialog.ui:32
+msgid "Name:"
+msgstr ""
+
+#: src/addenginedialog.ui:45
+msgid "Description:"
+msgstr "Kuvaus:"
+
+#: src/enginecolorswidget.ui:13
+msgid "Form"
+msgstr ""
+
+#: src/enginecolorswidget.ui:24
+msgid "Color by:"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
+msgid "Add Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
+msgid "Remove Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
+msgid "Add All Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:83
+msgid "Display Only Selected Primitives"
+msgstr ""
+
+#: src/engineprimitiveswidget.ui:86
+msgid "Assign to Selection"
+msgstr ""
+
+#: src/importdialog.ui:13
+msgid "Import Molecule File"
+msgstr ""
+
+#: src/importdialog.ui:24
+msgid "Filename:"
+msgstr "Tiedoston nimi:"
+
+#: src/importdialog.ui:34
+msgid "Select..."
+msgstr "Valitse..."
+
+#: src/importdialog.ui:45
+msgid "Format:"
+msgstr ""
+
+#: src/importdialog.ui:53
+msgid "Automatically detect from extension"
+msgstr ""
+
+#: src/importdialog.ui:63
+msgid "Perceive bonding"
+msgstr ""
+
+#: src/importdialog.ui:73
+msgid "Perceive bond orders"
+msgstr ""
+
+#: src/importdialog.ui:83
+msgid "Coordinates are in Ångstroms"
+msgstr "Koordinaattien yksikkö on Ångström"
+
+#: src/mainwindow.ui:32
+msgid "&Help"
+msgstr "&Ohje"
+
+#: src/mainwindow.ui:46
+msgid "&File"
+msgstr "&Tiedosto"
+
+#: src/mainwindow.ui:50
+msgid "Open &Recent"
+msgstr ""
+
+#: src/mainwindow.ui:55
+msgid "Export"
+msgstr ""
+
+#: src/mainwindow.ui:62
+msgid "Import"
+msgstr ""
+
+#: src/mainwindow.ui:81
+msgid "Se&ttings"
+msgstr ""
+
+#: src/mainwindow.ui:85
+msgid "Toolbars"
+msgstr ""
+
+#: src/mainwindow.ui:94
+msgid "&Build"
+msgstr ""
+
+#: src/mainwindow.ui:99
+msgid "&View"
+msgstr "&Näytä"
+
+#: src/mainwindow.ui:117
+msgid "&Edit"
+msgstr "&Muokkaa"
+
+#: src/mainwindow.ui:130
+msgid "E&xtensions"
+msgstr ""
+
+#: src/mainwindow.ui:135
+msgid "&Select"
+msgstr "&Valitse"
+
+#: src/mainwindow.ui:152
+msgid "Main Toolbar"
+msgstr ""
+
+#: src/mainwindow.ui:189
+#: src/settingsdialog.ui:255
+msgid "Project Tree"
+msgstr ""
+
+#: src/mainwindow.ui:222
+#: src/pluginsettings.ui:23
+msgid "Display Types"
+msgstr ""
+
+#: src/mainwindow.ui:231
+#: src/pluginsettings.ui:28
+msgid "Tools"
+msgstr "Työkalut"
+
+#: src/mainwindow.ui:252
+#: src/mainwindow.ui:264
+msgid "&Open"
+msgstr "&Avaa"
+
+#: src/mainwindow.ui:255
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: src/mainwindow.ui:273
+#: src/mainwindow.ui:285
+msgid "&Quit"
+msgstr "&Lopeta"
+
+#: src/mainwindow.ui:276
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: src/mainwindow.ui:290
+msgid "Recent"
+msgstr ""
+
+#: src/mainwindow.ui:295
+msgid "&Clear Recent"
+msgstr ""
+
+#: src/mainwindow.ui:304
+#: src/mainwindow.ui:316
+msgid "&New"
+msgstr "&Uusi"
+
+#: src/mainwindow.ui:307
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: src/mainwindow.ui:325
+#: src/mainwindow.ui:337
+msgid "&Close"
+msgstr "&Sulje"
+
+#: src/mainwindow.ui:328
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#: src/mainwindow.ui:346
+#: src/mainwindow.ui:358
+msgid "&Save"
+msgstr "&Tallenna"
+
+#: src/mainwindow.ui:349
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.ui:367
+msgid "Save &As..."
+msgstr "Tallenna &nimellä..."
+
+#: src/mainwindow.ui:370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: src/mainwindow.ui:379
+msgid "Revert To Saved"
+msgstr ""
+
+#: src/mainwindow.ui:388
+msgid "&Graphics..."
+msgstr "&Grafiikka..."
+
+#: src/mainwindow.ui:397
+msgid "&Full Screen Mode"
+msgstr "&Kokonäyttötila"
+
+#: src/mainwindow.ui:400
+msgid "Esc"
+msgstr ""
+
+#: src/mainwindow.ui:409
+msgid "Set &Background Color..."
+msgstr "Aseta &taustaväri..."
+
+#: src/mainwindow.ui:414
+msgid "&About"
+msgstr ""
+
+#: src/mainwindow.ui:423
+msgid "&Undo"
+msgstr "&Kumoa"
+
+#: src/mainwindow.ui:426
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#: src/mainwindow.ui:435
+msgid "&Redo"
+msgstr "&Tee uudelleen"
+
+#: src/mainwindow.ui:438
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#: src/mainwindow.ui:447
+msgid "New View"
+msgstr "Uusi näkymä"
+
+#: src/mainwindow.ui:459
+msgid "Close View"
+msgstr "Sulje näkymä"
+
+#: src/mainwindow.ui:468
+msgid "Center"
+msgstr "Keskitä"
+
+#: src/mainwindow.ui:477
+msgid "&Paste"
+msgstr "&Liitä"
+
+#: src/mainwindow.ui:480
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: src/mainwindow.ui:489
+msgid "Copy"
+msgstr "Kopioi"
+
+#: src/mainwindow.ui:492
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: src/mainwindow.ui:501
+msgid "Cut"
+msgstr "Leikkaa"
+
+#: src/mainwindow.ui:504
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: src/mainwindow.ui:509
+msgid "Clear"
+msgstr "Tyhjennä"
+
+#: src/mainwindow.ui:512
+msgid "Backspace"
+msgstr ""
+
+#: src/mainwindow.ui:517
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: src/mainwindow.ui:520
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: src/mainwindow.ui:525
+msgid "Select None"
+msgstr "Poista valinnat"
+
+#: src/mainwindow.ui:528
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#: src/mainwindow.ui:537
+msgid "Configure Avogadro..."
+msgstr ""
+
+#: src/mainwindow.ui:545
+msgid "Tutorials"
+msgstr "Opastukset"
+
+#: src/mainwindow.ui:550
+msgid "Duplicate View"
+msgstr "Monista näkymä"
+
+#: src/mainwindow.ui:558
+msgid "Display Axes"
+msgstr "Näytä akselit"
+
+#: src/mainwindow.ui:566
+msgid "Debug Information"
+msgstr ""
+
+#: src/mainwindow.ui:574
+msgid "Avogadro Help"
+msgstr "Avogadron ohje"
+
+#: src/mainwindow.ui:579
+msgid "Release Notes"
+msgstr "Julkaisutiedot"
+
+#: src/mainwindow.ui:584
+msgid "Report a Bug"
+msgstr "Tee virheraportti"
+
+#: src/mainwindow.ui:589
+msgid "FAQ"
+msgstr "UKK"
+
+#: src/mainwindow.ui:594
+msgid "Avogadro Website"
+msgstr "Avogadron sivusto"
+
+#: src/mainwindow.ui:599
+msgid "Plugin Manager..."
+msgstr ""
+
+#: src/mainwindow.ui:604
+msgid "Project Tree Editor..."
+msgstr ""
+
+#: src/mainwindow.ui:609
+msgid "Detach View"
+msgstr ""
+
+#: src/mainwindow.ui:614
+msgid "Molecule File..."
+msgstr "Molekyylitiedosto..."
+
+#: src/mainwindow.ui:625
+msgid "Use Quick Render"
+msgstr ""
+
+#: src/mainwindow.ui:630
+msgid "&Vector Graphics..."
+msgstr "&Vektorigrafiikka"
+
+#: src/mainwindow.ui:638
+msgid "Display Unit Cell Axes"
+msgstr ""
+
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
+msgid "Plugins"
+msgstr ""
+
+#: src/pluginsettings.ui:33
+msgid "Extensions"
+msgstr ""
+
+#: src/pluginsettings.ui:52
+msgid "Details"
+msgstr ""
+
+#: src/projecttreeeditor.ui:16
+#: src/projecttreeeditor.ui:174
+msgid "Tree Items"
+msgstr ""
+
+#: src/projecttreeeditor.ui:42
+#: src/projecttreeeditor.ui:213
+msgid "Type"
+msgstr ""
+
+#: src/projecttreeeditor.ui:62
+msgid "New Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:65
+msgid "&New Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:76
+msgid "New Subitem"
+msgstr ""
+
+#: src/projecttreeeditor.ui:79
+msgid "New &Subitem"
+msgstr ""
+
+#: src/projecttreeeditor.ui:86
+msgid "Delete Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:89
+msgid "&Delete Item"
+msgstr ""
+
+#: src/projecttreeeditor.ui:113
+msgid "Move Item Left (before Parent Item)"
+msgstr ""
+
+#: src/projecttreeeditor.ui:116
+msgid "L"
+msgstr ""
+
+#: src/projecttreeeditor.ui:127
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+
+#: src/projecttreeeditor.ui:130
+msgid "R"
+msgstr ""
+
+#: src/projecttreeeditor.ui:143
+msgid "Move Item Up"
+msgstr ""
+
+#: src/projecttreeeditor.ui:146
+msgid "U"
+msgstr ""
+
+#: src/projecttreeeditor.ui:157
+msgid "Move Item Down"
+msgstr ""
+
+#: src/projecttreeeditor.ui:160
+msgid "D"
+msgstr ""
+
+#: src/projecttreeeditor.ui:178
+msgid "1"
+msgstr ""
+
+#: src/projecttreeeditor.ui:199
+msgid "Alias"
+msgstr ""
+
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
+msgid "General"
+msgstr ""
+
+#: src/settingsdialog.ui:42
+msgid "Quality:"
+msgstr "Laatu:"
+
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
+msgid "Set the global rendering quality."
+msgstr "Aseta globaali renderöintilaatu."
+
+#: src/settingsdialog.ui:100
+msgid "Fog:"
+msgstr ""
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff "
+"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Ulla"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+
+#, qt-format
+#~ msgid "Cannot read file %1."
+#~ msgstr "Tiedostoa %1 ei voida lukea."
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Aseta kuvasuhde"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Dokumenttia on muutettu.\n"
+#~ "Haluatko tallentaa muutokset?"
+
+#~ msgid "Manipulate"
+#~ msgstr "Manipuloi"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#, qt-format
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Vety"
+
+#~ msgid "Helium"
+#~ msgstr "Helium"
+
+#~ msgid "Lithium"
+#~ msgstr "Litium"
+
+#~ msgid "Beryllium"
+#~ msgstr "Beryllium"
+
+#~ msgid "Boron"
+#~ msgstr "Boori"
+
+#~ msgid "Carbon"
+#~ msgstr "Hiili"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Typpi"
+
+#~ msgid "Oxygen"
+#~ msgstr "Happi"
+
+#~ msgid "Fluorine"
+#~ msgstr "Fluori"
+
+#~ msgid "Neon"
+#~ msgstr "Neon"
+
+#~ msgid "Sodium"
+#~ msgstr "Natrium"
+
+#~ msgid "Magnesium"
+#~ msgstr "Magnesium"
+
+#~ msgid "Aluminum"
+#~ msgstr "Alumiini"
+
+#~ msgid "Silicon"
+#~ msgstr "Pii"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Fosfori"
+
+#~ msgid "Sulfur"
+#~ msgstr "Rikki"
+
+#~ msgid "Chlorine"
+#~ msgstr "Kloori"
+
+#~ msgid "Argon"
+#~ msgstr "Argon"
+
+#~ msgid "Potassium"
+#~ msgstr "Kalium"
+
+#~ msgid "Calcium"
+#~ msgstr "Kalsium"
+
+#~ msgid "Scandium"
+#~ msgstr "Skandium"
+
+#~ msgid "Titanium"
+#~ msgstr "Titaani"
+
+#~ msgid "Vanadium"
+#~ msgstr "Vanadiini"
+
+#~ msgid "Chromium"
+#~ msgstr "Kromi"
+
+#~ msgid "Manganese"
+#~ msgstr "Mangaani"
+
+#~ msgid "Iron"
+#~ msgstr "Rauta"
+
+#~ msgid "Cobalt"
+#~ msgstr "Koboltti"
+
+#~ msgid "Nickel"
+#~ msgstr "Nikkeli"
+
+#~ msgid "Copper"
+#~ msgstr "Kupari"
+
+#~ msgid "Zinc"
+#~ msgstr "Sinkki"
+
+#~ msgid "Gallium"
+#~ msgstr "Gallium"
+
+#~ msgid "Germanium"
+#~ msgstr "Germanium"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arseeni"
+
+#~ msgid "Selenium"
+#~ msgstr "Seleeni"
+
+#~ msgid "Bromine"
+#~ msgstr "Bromi"
+
+#~ msgid "Krypton"
+#~ msgstr "Krypton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubidium"
+
+#~ msgid "Strontium"
+#~ msgstr "Strontium"
+
+#~ msgid "Yttrium"
+#~ msgstr "Yttrium"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zirkonium"
+
+#~ msgid "Niobium"
+#~ msgstr "Niobium"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molybdeeni"
+
+#~ msgid "Technetium"
+#~ msgstr "Teknetium"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Rutenium"
+
+#~ msgid "Rhodium"
+#~ msgstr "Rodium"
+
+#~ msgid "Palladium"
+#~ msgstr "Palladium"
+
+#~ msgid "Silver"
+#~ msgstr "Hopea"
+
+#~ msgid "Cadmium"
+#~ msgstr "Kadmium"
+
+#~ msgid "Indium"
+#~ msgstr "Indium"
+
+#~ msgid "Tin"
+#~ msgstr "Tina"
+
+#~ msgid "Antimony"
+#~ msgstr "Antimoni"
+
+#~ msgid "Tellurium"
+#~ msgstr "Telluuri"
+
+#~ msgid "Iodine"
+#~ msgstr "Jodi"
+
+#~ msgid "Xenon"
+#~ msgstr "Ksenon"
+
+#~ msgid "Caesium"
+#~ msgstr "Cesium"
+
+#~ msgid "Barium"
+#~ msgstr "Barium"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lantaani"
+
+#~ msgid "Cerium"
+#~ msgstr "Cerium"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Praseodyymi"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodyymi"
+
+#~ msgid "Promethium"
+#~ msgstr "Prometium"
+
+#~ msgid "Samarium"
+#~ msgstr "Samarium"
+
+#~ msgid "Europium"
+#~ msgstr "Europium"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Gadolinium"
+
+#~ msgid "Terbium"
+#~ msgstr "Terbium"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Dysprosium"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmium"
+
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
+
+#~ msgid "Thulium"
+#~ msgstr "Tulium"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Ytterbium"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutetium"
+
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Tantalum"
+#~ msgstr "Tantaali"
+
+#~ msgid "Tungsten"
+#~ msgstr "Volframi"
+
+#~ msgid "Rhenium"
+#~ msgstr "Renium"
+
+#~ msgid "Osmium"
+#~ msgstr "Osmium"
+
+#~ msgid "Iridium"
+#~ msgstr "Iridium"
+
+#~ msgid "Platinum"
+#~ msgstr "Platina"
+
+#~ msgid "Gold"
+#~ msgstr "Kulta"
+
+#~ msgid "Mercury"
+#~ msgstr "Elohopea"
+
+#~ msgid "Thallium"
+#~ msgstr "Tallium"
+
+#~ msgid "Lead"
+#~ msgstr "Lyijy"
+
+#~ msgid "Bismuth"
+#~ msgstr "Vismutti"
+
+#~ msgid "Polonium"
+#~ msgstr "Polonium"
+
+#~ msgid "Astatine"
+#~ msgstr "Astatiini"
+
+#~ msgid "Radon"
+#~ msgstr "Radon"
+
+#~ msgid "Francium"
+#~ msgstr "Frankium"
+
+#~ msgid "Radium"
+#~ msgstr "Radium"
+
+#~ msgid "Actinium"
+#~ msgstr "Aktinium"
+
+#~ msgid "Thorium"
+#~ msgstr "Torium"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protaktinium"
+
+#~ msgid "Uranium"
+#~ msgstr "Uraani"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptunium"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutonium"
+
+#~ msgid "Americium"
+#~ msgstr "Amerikium"
+
+#~ msgid "Curium"
+#~ msgstr "Curium"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkelium"
+
+#~ msgid "Californium"
+#~ msgstr "Kalifornium"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteinium"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermium"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelevium"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobelium"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Lawrencium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dubnium"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgium"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bohrium"
+
+#~ msgid "Hassium"
+#~ msgstr "Hassium"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnerium"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstadtium"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Röntgenium"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununkvadium"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentium"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununheksium"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptium"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Ununoktium"
+
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgid "Axes"
+#~ msgstr "Akselit"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Pallo ja tikku"
+
+#~ msgid "Dipole"
+#~ msgstr "Dipoli"
+
+#~ msgid "Force"
+#~ msgstr "Voima"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Renderöi vetysidokset"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Vetysidos"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitaalit"
+
+#~ msgid "Polygon"
+#~ msgstr "Monikulmio"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Renderöi atomit Van der Waals -palloina"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van der Waals -pallot"
+
+#~ msgid "Stick"
+#~ msgstr "Tikku"
+
+#~ msgid "Surface"
+#~ msgstr "Pinta"
+
+#, qt-format
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Animation..."
+#~ msgstr "Animaatio..."
+
+#~ msgid "Animation"
+#~ msgstr "Animaatio"
+
+#, qt-format
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Atomien lukumäärä: %1"
+
+#, qt-format
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Kierrettävien sidosten määrä: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Lisää rajoite"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "Molekyylisi täytyy koostua ainakin yhdestä atomista, jotta voit lisätä "
+#~ "rajoitteen"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Molekyylisi täytyy koostua ainakin kahdesta atomista, jotta voit lisätä "
+#~ "sidosrajoitteen"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Molekyylisi täytyy koostua ainakin kolmesta atomista, jotta voit lisätä "
+#~ "kulmarajoitteen"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Molekyylisi täytyy koostua ainakin neljästä atomista, jotta voit lisätä "
+#~ "kiertokulmarajoitteen"
+
+#~ msgid "Optimize Geometry"
+#~ msgstr "Optimoi geometria"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Laske energia"
+
+#~ msgid "Constraints..."
+#~ msgstr "Rajoitteet..."
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Kiinnitä valitut atomit paikoilleen"
+
+#, qt-format
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Energia = %1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Geometrinen optimisaatio"
+
+#~ msgid "Cancel"
+#~ msgstr "Peruuta"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Yhtään atomia ei ole valittu"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Group Name"
+#~ msgstr "Ryhmän nimi"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Show Preview"
+#~ msgstr "Näytä esikatselu"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Piilota esikatselu"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Vaihta H metyyliin"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H metyyliin"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Lisää vetyjä"
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Poista vetyjä"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Avaa liganditiedosto"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Avogadro-tiedostot (*.*)"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Atomiominaisuudet..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Sidosominaisuudet..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "Kulmaominaisuudet..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Kiertokulmaominaisuudet..."
+
+#~ msgid "&Properties"
+#~ msgstr "&Ominaisuudet"
+
+#~ msgid "Atom"
+#~ msgstr "Atomi"
+
+#~ msgid "Bond"
+#~ msgstr "Sidos"
+
+#~ msgid "Angle"
+#~ msgstr "Kulma"
+
+#~ msgid "Properties"
+#~ msgstr "Ominaisuudet"
+
+#~ msgid "Atomic Number"
+#~ msgstr "Järjestysluku"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Osittaisvaraus"
+
+#~ msgid "Valence"
+#~ msgstr "Valenssi"
+
+#, qt-format
+#~ msgid "Atom %1"
+#~ msgstr "Atomi %1"
+
+#~ msgid "Length (Å)"
+#~ msgstr "Pituus (Å)"
+
+#, qt-format
+#~ msgid "Bond %1"
+#~ msgstr "Sidos %1"
+
+#~ msgid "Angle (°)"
+#~ msgstr "Kulma (°)"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Kulma %1"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "Kiertokulma (°)"
+
+#, qt-format
+#~ msgid "Torsion %1"
+#~ msgstr "Kiertokulma %1"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "Energy"
+#~ msgstr "Energia"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Python-terminaali"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Valitse alkuaineen mukaan..."
+
+#~ msgid "Select Solvent"
+#~ msgstr "Valitse liuotin"
+
+#~ msgid "Selections"
+#~ msgstr "Valinnat"
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "Yksikkökopin parametrit..."
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "Tämä dokumentti on yksittäisestä molekyylistä.\n"
+#~ "Haluatko luoda kiteen yksikkökopin?"
+
+#~ msgid "View Size"
+#~ msgstr "Näytä koko"
+
+#~ msgid "No Description"
+#~ msgstr "Ei kuvausta"
+
+#~ msgid ""
+#~ "Align Molecules\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to two atoms.\n"
+#~ "\tThe first atom is centered at the origin.\n"
+#~ "\tThe second atom is aligned to the selected axis.\n"
+#~ "Right Mouse: \tReset alignment."
+#~ msgstr ""
+#~ "Kohdista molekyylejä\n"
+#~ "\n"
+#~ "Vasen hiiren painike: \tValitse korkeintaan kaksi atomia.\n"
+#~ "\tEnsimmäinen atomi keskitetään origoon.\n"
+#~ "\tToinen atomi kohdistetaan valitun akselin kanssa samansuuntaiseksi.\n"
+#~ "Oikea hiiren painike: \tAseta kohdennus alkutilaan."
+
+#~ msgid "Axis:"
+#~ msgstr "Akseli:"
+
+#~ msgid "Align:"
+#~ msgstr "Kohdista:"
+
+#~ msgid "Everything"
+#~ msgstr "Kaikki"
+
+#~ msgid "Align"
+#~ msgstr "Kohdista"
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "Auto-optimisaatiotyökalu\n"
+#~ "\n"
+#~ "Navigaatio toimii, kun napsautat tyhjää tilaa.\n"
+#~ "Vasen hiiren nappula: Pyöritä tilaa.\n"
+#~ "Keskimmäinen hiiren nappula: Zoomaa tilaa.\n"
+#~ "Oikea nappula: Siirrä tilaa.\n"
+#~ "\n"
+#~ "Lisätoiminnot ajon aikana\n"
+#~ "Vasen hiiren nappula: Napsauta ja vedä atomeja siirtääksesi niitä"
+
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "AutoOpt: Ei voitu asettaa voimakenttää..."
+
+#, qt-format
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#~ msgid "Force Field:"
+#~ msgstr "Voimakenttä:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Algoritmi:"
+
+#~ msgid "Start"
+#~ msgstr "Käynnistä"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Kiinnitetyt atomit voivat liikkua"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Huomiotta jätetyt atomit voivat liikkua"
+
+#~ msgid "Stop"
+#~ msgstr "Pysäytä"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "Auto-optimisaatio"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Automaattinen kiertotyökalu"
+
+#~ msgid "x rotation:"
+#~ msgstr "x-akselin kiertymä:"
+
+#~ msgid "x rotation"
+#~ msgstr "x-akselin kiertymä"
+
+#~ msgid "y rotation:"
+#~ msgstr "y-akselin kiertymä:"
+
+#~ msgid "y rotation"
+#~ msgstr "y-akselin kiertymä"
+
+#~ msgid "z rotation:"
+#~ msgstr "z-akselin kiertymä:"
+
+#~ msgid "z rotation"
+#~ msgstr "z-akselin kiertymä"
+
+#~ msgid "Reset"
+#~ msgstr "Palauta oletusarvot"
+
+#~ msgid " Show Angles"
+#~ msgstr " Näytä kulmat"
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "Napsauta mitataksesi (F12)\n"
+#~ "\n"
+#~ "Vasen hiiren painike: \tValitse korkeintaan kolme atomia.\n"
+#~ "\tEtäisyydet mitataan välillä 1-2 ja 2-3\n"
+#~ "\tKulma mitataan välillä 1-3 pitäen atomia 2 yhteisenä pisteenä\n"
+#~ "Oikea hiiren painike: Aseta alkutilaan."
+
+#, qt-format
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Etäisyys (1->2): %1 %2"
+
+#, qt-format
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Etäisyys (2->3): %1 %2"
+
+#, qt-format
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Kulma: %1 %2"
+
+#, qt-format
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Etäisyys (3->4): %1 %2"
+
+#, qt-format
+#~ msgid "Dihedral Angle: %1 %2"
+#~ msgstr "Kiertokulma: %1 %2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Etäisyydet:"
+
+#~ msgid "Measure"
+#~ msgstr "Mittaa"
+
+#~ msgid "Add Atom"
+#~ msgstr "Lisää atomi"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Poista atomi"
+
+#~ msgid "Add Bond"
+#~ msgstr "Lisää sidos"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Poista sidos"
+
+#~ msgid "Change Element"
+#~ msgstr "Vaihda alkuaine"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Vaihda sidosten järjestystä"
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "Piirtotyökalu (F8)\n"
+#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi atomeja "
+#~ "ja sidoksia\n"
+#~ "Oikea hiiren painike: \tPoista atomi"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Piirrä atomi"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Piirrä sidos"
+
+#~ msgid "Draw"
+#~ msgstr "Piirrä"
+
+#~ msgid "Element:"
+#~ msgstr "Alkuaine:"
+
+#~ msgid "Other..."
+#~ msgstr "Muu..."
+
+#~ msgid "Bond Order:"
+#~ msgstr "Sidoskertaluku:"
+
+#~ msgid "Single"
+#~ msgstr "Yksinkertainen sidos"
+
+#~ msgid "Double"
+#~ msgstr "Kaksoissidos"
+
+#~ msgid "Triple"
+#~ msgstr "Kolmoissidos"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Säädä vetyjä"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "Manipulaatiotyökalu (F10)\n"
+#~ "\n"
+#~ "Vasen hiiren painike: Napsauta ja vedä painike pohjassa siirtääksesi "
+#~ "atomeita\n"
+#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs tai "
+#~ "kauemmas\n"
+#~ "Oikea hiiren painike: Napsauta ja vedä painike pohjassa pyörittääksesi "
+#~ "valittuja atomeita"
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Manipuloi atomia"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "Navigaatiotyökalu (F9)\n"
+#~ "\n"
+#~ "Vasen hiiren painike: Napsauta ja vedä painike pohjassa pyörittääksesi "
+#~ "näkymää\n"
+#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa lähentääksesi tai "
+#~ "loitontaaksesi näkymää\n"
+#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi näkymää"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Valintatila:"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Atomin säde:"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Sidoksen säde:"
+
+#~ msgid "Width:"
+#~ msgstr "Leveys:"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Atom Labels:"
+#~ msgstr "Atomien nimikkeet:"
+
+#~ msgid "Atom number"
+#~ msgstr "Järjestysluku"
+
+#~ msgid "Element symbol"
+#~ msgstr "Kemiallinen merkki"
+
+#~ msgid "Element name"
+#~ msgstr "Alkuaineen nimi"
+
+#~ msgid "Bond Labels:"
+#~ msgstr "Sidosten nimikkeet:"
+
+#~ msgid "Bond order"
+#~ msgstr "Sidoskertaluku"
+
+#~ msgid "Orbital:"
+#~ msgstr "Orbitaali:"
+
+#~ msgid "Color:"
+#~ msgstr "Väri:"
+
+#~ msgid "Positive"
+#~ msgstr "Positiivinen"
+
+#~ msgid "Negative"
+#~ msgstr "Negatiivinen"
+
+#~ msgid "Radius:"
+#~ msgstr "Säde:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Sisällytä typet"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Sähköstaattinen potentiaali (ESP)"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Näytä atomit"
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#~ msgid "Options"
+#~ msgstr "Valinnat"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Atomien lukumäärä:"
+
+#~ msgid "Number of rotatable bonds:"
+#~ msgstr "Kierrettävien sidosten määrä:"
+
+#~ msgid "Method"
+#~ msgstr "Menetelmä"
+
+#~ msgid "Constraints"
+#~ msgstr "Rajoitukset"
+
+#~ msgid "Add Constraints"
+#~ msgstr "Lisää rajoituksia"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Jätä atomi huomiotta"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Kiinnitä atomi paikoilleen"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Kiinnitä atomi X"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Kiinnitä atomi Y"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Kiinnitä atomi Z"
+
+#~ msgid "Distance"
+#~ msgstr "Etäisyys"
+
+#~ msgid "Torsion angle"
+#~ msgstr "Kiertokulma"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Poista valitut"
+
+#~ msgid "Delete All"
+#~ msgstr "Poista kaikki"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "Aseta voimakenttä"
+
+#~ msgid "Force Field"
+#~ msgstr "Voimakenttä"
+
+#~ msgid "Ghemical"
+#~ msgstr "Ghemical"
+
+#~ msgid "Geometry Optimization"
+#~ msgstr "Geometrian optimisointi"
+
+#~ msgid "Number of steps"
+#~ msgstr "Askelten lukumäärä"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritmi"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "Cation"
+#~ msgstr "Kationi"
+
+#~ msgid "Neutral"
+#~ msgstr "Neutraali"
+
+#~ msgid "Anion"
+#~ msgstr "Anioni"
+
+#~ msgid "Equilibrium Geometry"
+#~ msgstr "Tasapainotilan geometria"
+
+#~ msgid "Frequencies"
+#~ msgstr "Taajuudet"
+
+#~ msgid "Gas"
+#~ msgstr "Kaasu"
+
+#~ msgid "Water"
+#~ msgstr "Vesi"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "McLean/Chandler"
+#~ msgstr "McLean/Chandler"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "Default"
+#~ msgstr "Oletusarvo"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "Optimization"
+#~ msgstr "Optimisaatio"
+
+#~ msgid "Saddle Point"
+#~ msgstr "Satulapiste"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "Global Optimization"
+#~ msgstr "Globaali optimisaatio"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "FMO Optimization"
+#~ msgstr "FMO-optimisaatio"
+
+#~ msgid "Raman Intensities"
+#~ msgstr "Raman-intensiteetit"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Normal Run"
+#~ msgstr "Normaali ajo"
+
+#~ msgid "Debug"
+#~ msgstr "Virheenjäljitys"
+
+#~ msgid "Molecule Charge:"
+#~ msgstr "Molekyylin varaus:"
+
+#~ msgid "Use DFT"
+#~ msgstr "Käytä DFT:tä"
+
+#~ msgid "# of Z-Matrix Variables"
+#~ msgstr "Z-matriisin muuttujien määrä"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ångström"
+
+#~ msgid "Bohr"
+#~ msgstr "Bohr"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "Koordinaattityyppi"
+
+#~ msgid "Cartesian coordinates"
+#~ msgstr "Kateesiset koordinaatit"
+
+#~ msgid "Z-Matrix"
+#~ msgstr "Z-matriisi"
+
+#~ msgid "MOPAC Z-Matrix"
+#~ msgstr "MOPAC Z-matriisi"
+
+#~ msgid "Use Symmetry During Calculation"
+#~ msgstr "Käytä symmetriaa laskemisen aikana"
+
+#~ msgid "Seconds"
+#~ msgstr "Sekuntia"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuuttia"
+
+#~ msgid "Hours"
+#~ msgstr "Tuntia"
+
+#~ msgid "Days"
+#~ msgstr "Päivää"
+
+#~ msgid "Weeks"
+#~ msgstr "Viikkoa"
+
+#~ msgid "Years"
+#~ msgstr "Vuotta"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "Diagonalization Method:"
+#~ msgstr "Diagonalisointimenetelmä:"
+
+#~ msgid "Next Value"
+#~ msgstr "Seuraava arvo"
+
+#~ msgid "Initial Guess:"
+#~ msgstr "Alkuarvaus:"
+
+#~ msgid "Print the Initial Guess"
+#~ msgstr "Tulosta alkuarvaus"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "All"
+#~ msgstr "Kaikki"
+
+#~ msgid "Solvate with Water"
+#~ msgstr "Liuota veteen"
+
+#~ msgid "Method:"
+#~ msgstr "Menetelmä:"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "Sisäelektronien määrä"
+
+#~ msgid "Analytic"
+#~ msgstr "Analyyttinen"
+
+#~ msgid "Numeric"
+#~ msgstr "Numeerinen"
+
+#~ msgid "Optimization Method:"
+#~ msgstr "Optimisaatiomenetelmä:"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Newton-Raphson"
+
+#~ msgid "Rational Function Optimization"
+#~ msgstr "Rationaalifunktio-optimisaatio"
+
+#~ msgid "Defaults"
+#~ msgstr "Oletusasetukset"
+
+#~ msgid "Close"
+#~ msgstr "Sulje"
+
+#~ msgid "Calculation:"
+#~ msgstr "Lasku"
+
+#~ msgid "Processors:"
+#~ msgstr "Prosessoreja:"
+
+#~ msgid "Theory:"
+#~ msgstr "Teoria:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Charge:"
+#~ msgstr "Varaus:"
+
+#~ msgid "Output:"
+#~ msgstr "Ulostulo:"
+
+#~ msgid "Standard"
+#~ msgstr "Tavallinen"
+
+#~ msgid "Z-matrix"
+#~ msgstr "Z-matriisi"
+
+#~ msgid "Create ligand"
+#~ msgstr "Luo ligandi"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "luo ligandi nykyisestä valinnasta"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "luo ligandi tiedostosta..."
+
+#~ msgid "Origin:"
+#~ msgstr "Origo:"
+
+#~ msgid "Radius"
+#~ msgstr "Säde"
+
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "Yksikkökopin parametrit"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "Poista yksikkökoppi"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "Täytä yksikkökoppi"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "Akselit (Å)"
+
+#~ msgid "Angles (°)"
+#~ msgstr "Kulmat (°)"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "alpha:"
+#~ msgstr "alfa:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "Add Directory"
+#~ msgstr "Lisää hakemisto"
+
+#~ msgid "Reset List"
+#~ msgstr "Nollaa lista"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "Luo SMILES-tiedoista:"
+
+#~ msgid "Bond length"
+#~ msgstr "Sidoksen pituus"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Keskeytä laskeminen"
+
+#~ msgid "name"
+#~ msgstr "nimi"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Nimi ei voi olla tyhjä."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Tämän niminen valinta on jo olemassa."
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Atomi/Sidos"
+
+#~ msgid "Undefined"
+#~ msgstr "Määrittelemätön"
+
+#~ msgid "Color by Element"
+#~ msgstr "Väri alkuaineen mukaan"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Väri alkuaineen mukaan (hiili = harmaa, happi = punainen, ...)"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "videotiedostot (*.avi)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Avaa mol-tiedosto"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Kaikki tiedostot (*.*)"
+
+#, qt-format
+#~ msgid "Wrote file %1."
+#~ msgstr "Kirjoitettiin tiedosto %1."
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Luo pintoja..."
+
+#~ msgid "Electron Density"
+#~ msgstr "Elektronitiheys"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "Lasketaan elektronitiheyttä"
+
+#~ msgid "Surfaces"
+#~ msgstr "Pinnat"
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Tallenna POV-Ray-renderöity kuva"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Kuvatiedostot (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
+#~ msgstr ""
+#~ "Valintasi on olla käyttämättä suoraa POV-Ray-renderöintiä etkä halua "
+#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. Oletko "
+#~ "varma että haluat toimia näin?"
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Video file not written."
+#~ msgstr "Videotiedostoa ei kirjoitettu."
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
+
+#~ msgid "Bond Length: "
+#~ msgstr "Sidoksen pituus: "
+
+#~ msgid "Selection"
+#~ msgstr "Valinta"
+
+#~ msgid "Dipole:"
+#~ msgstr "Dipoli:"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Dipolimomentti"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Tallenna muodossa .avi..."
+
+#~ msgid "Browse..."
+#~ msgstr "Selaa..."
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "painike toisen konformaation lataamiseksi tiedostosta."
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Lataa toinen konformaatio..."
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Laske elektronitiheys"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Laske Van der Waals -kuutio"
+
+#~ msgid "Cube:"
+#~ msgstr "Kuutio:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "Distance:"
+#~ msgstr "Etäisyys:"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "Render"
+#~ msgstr "Renderöi"
+
+#~ msgid "Resolution:"
+#~ msgstr "Resoluutio:"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "Aseta taustaväri läpinäkyväksi"
+
+#~ msgid "Command:"
+#~ msgstr "Komento:"
+
+#~ msgid "Render the molecule directly using command line POV-Ray"
+#~ msgstr "Renderöi molekyyli suoraan käyttäen komentoriviltä POV-Raytä"
+
+#~ msgid "Render using POV-Ray"
+#~ msgstr "Renderöi käyttäen POV-Raytä"
+
+#~ msgid "Parameters:"
+#~ msgstr "Parametrit:"

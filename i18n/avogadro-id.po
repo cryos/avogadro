@@ -1,0 +1,1111 @@
+# Indonesian translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-02 23:16+0000\n"
+"Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
+msgid "OK"
+msgstr "Oke"
+
+#: src/aboutdialog.cpp:66
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
+msgstr ""
+"<h3>%1</h3><br/><br/>Versi Aplikasi: %2<br/><br/>Versi Pustaka: "
+"%3<br/><br/>Untuk informasi lain lihat di <a "
+"href=\"http://avogadro.openmolecules.net/\">Halaman Web "
+"Avogadro</a>.<br/><br/>Program Ini dibuat SEPERTI INI tanpa ADA JAMINAN "
+"DALAM BENTUK APAPUN, TERMASUK TIDAK ADA JAMINAN BILA DIGUNAKAN UNTUK DESAIN, "
+"PERDAGANGAN DAN KESUAIAN UNTUK TUJUAN TERTENTU.<br/>"
+
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:738 src/mainwindow.cpp:763
+#: src/mainwindow.cpp:776 src/mainwindow.cpp:839 src/mainwindow.cpp:873
+#: src/mainwindow.cpp:915 src/mainwindow.cpp:1054 src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1076 src/mainwindow.cpp:1088 src/mainwindow.cpp:1245
+#: src/mainwindow.cpp:2215 src/mainwindow.cpp:2682 :46
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr "Potong Molekul"
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr "Potong Atom"
+
+#: src/editcommands.cpp:97
+msgid "Paste"
+msgstr "Tempelkan"
+
+#: src/editcommands.cpp:132
+msgid "Clear Molecule"
+msgstr "Hapus Molekul"
+
+#: src/editcommands.cpp:134
+msgid "Clear Atoms"
+msgstr "Hapus Atom"
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:664
+msgid "Open File"
+msgstr "Buka Berkas"
+
+#: src/mainwindow.cpp:271
+msgid "Messages"
+msgstr "Pesan-pesan"
+
+#: src/mainwindow.cpp:320
+msgid "Window"
+msgstr "Jendela"
+
+#: src/mainwindow.cpp:323
+msgid "&Minimize"
+msgstr "&Minimize"
+
+#: src/mainwindow.cpp:324
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: src/mainwindow.cpp:329
+msgid "&Zoom"
+msgstr "&Zum"
+
+#: src/mainwindow.cpp:336 src/mainwindow.cpp:1380
+msgid "Bring All to Front"
+msgstr "Menampilkan semua paing depan"
+
+#: src/mainwindow.cpp:595
+msgid "&Tool Settings..."
+msgstr "Pengaturan &AlatBantu..."
+
+#: src/mainwindow.cpp:598
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr "Ctrl+T"
+
+#: src/mainwindow.cpp:603
+msgid "&Display Settings..."
+msgstr "Pengaturan Ta&mpilan..."
+
+#: src/mainwindow.cpp:606
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:644 src/mainwindow.cpp:1006
+msgid "Common molecule formats"
+msgstr "Format molekul yang umum"
+
+#: src/mainwindow.cpp:649 src/mainwindow.cpp:1003 src/mainwindow.cpp:1185
+#: src/mainwindow.cpp:1264
+msgid "All files"
+msgstr "Semua berkas"
+
+#: src/mainwindow.cpp:650 src/mainwindow.cpp:1000 src/mainwindow.cpp:1012
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:651
+msgid "Computational Chemistry Output"
+msgstr "Keluaran Kimia Komputasi"
+
+#: src/mainwindow.cpp:652
+msgid "Crystallographic Interchange CIF"
+msgstr "Crystallographic Interchange CIF"
+
+#: src/mainwindow.cpp:653
+msgid "GAMESS-US Output"
+msgstr "Keluaran GAMESS-US"
+
+#: src/mainwindow.cpp:654
+msgid "Gaussian 98/03 Output"
+msgstr "Keluaran Gaussian 98/03"
+
+#: src/mainwindow.cpp:655
+msgid "Gaussian Formatted Checkpoint"
+msgstr "Pemeriksaan Format Gauss"
+
+#: src/mainwindow.cpp:656
+msgid "HyperChem"
+msgstr "HyperChem"
+
+#: src/mainwindow.cpp:657
+msgid "MDL Mol"
+msgstr "MDL Mol"
+
+#: src/mainwindow.cpp:658
+msgid "NWChem Output"
+msgstr "Keluaran NWChem"
+
+#: src/mainwindow.cpp:659 src/mainwindow.cpp:1017
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:660 src/mainwindow.cpp:1019
+msgid "Sybyl Mol2"
+msgstr "Sybyl Mol2"
+
+#: src/mainwindow.cpp:661 src/mainwindow.cpp:1020
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:733
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr "Memuat %1..."
+
+#: src/mainwindow.cpp:739
+#, qt-format
+msgid ""
+"Cannot read file %1:\n"
+"%2."
+msgstr ""
+"Tidak bisa membaca berkas %1:\n"
+"%2."
+
+#: src/mainwindow.cpp:764
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Tidak bisa membaca format berkas %1."
+
+#: src/mainwindow.cpp:769
+#, qt-format
+msgid "Loading %1..."
+msgstr "Memuat %1..."
+
+#: src/mainwindow.cpp:777
+msgid ""
+"This file contains 2D coordinates only. Do you want Avogadro to scale the "
+"bonds and do a quick optimization?"
+msgstr ""
+"Berkas ini hanya mengandung koordinat 2D. Apakah anda menghendaki Avogadro "
+"merubah skala ikatan dan melakukan optimisasi cepat?"
+
+#: src/mainwindow.cpp:840
+msgid ""
+"This file does not contain 3D coordinates. You may not be able to edit or "
+"view properly."
+msgstr ""
+"Berkas ini tidak mengandung koordinat 3D. Anda tidak bisa menyunting atau "
+"menampilkan dengan sempurna."
+
+#: src/mainwindow.cpp:874
+msgid ""
+"This file appears to contain multiple molecule records. Avogadro will only "
+"read the first molecule. If you save, all other molecules may be lost."
+msgstr ""
+"Berkas ini mempunyai catatan berbagai molekul. Avogadro hanya membaca "
+"molekul pertama saja. Apabila anda menyimpan, data molekul lain akan "
+"terhapus."
+
+#: src/mainwindow.cpp:887
+msgid "Atoms: "
+msgstr "Atom: "
+
+#: src/mainwindow.cpp:888
+msgid " Bonds: "
+msgstr " Ikatan: "
+
+#: src/mainwindow.cpp:893
+msgid "Reading molecular file failed."
+msgstr "Gagal membaca berkas molekul."
+
+#: src/mainwindow.cpp:902
+msgid "File Loaded..."
+msgstr "Berkas sudah dimuat..."
+
+#: src/mainwindow.cpp:916
+msgid "Do you want to save the changes you made in the document?"
+msgstr "Apakah anda akan menyimpan perubahan yang ada di dokumen?"
+
+#: src/mainwindow.cpp:925
+msgid "Your changes will be lost if you don't save them."
+msgstr "Perubahan yang sudah dibuat akan hilang bila tidak disimpan."
+
+#: src/mainwindow.cpp:929
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.cpp:930
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:932
+msgid "Save..."
+msgstr "Simpan..."
+
+#: src/mainwindow.cpp:932 src/savedialog.cpp:65
+msgid "Save"
+msgstr "Simpan"
+
+#: src/mainwindow.cpp:1013
+msgid "GAMESS Input"
+msgstr "Masukan GAMESS"
+
+#: src/mainwindow.cpp:1014
+msgid "Gaussian Cartesian Input"
+msgstr "Masukan Kartesian Gauss"
+
+#: src/mainwindow.cpp:1015
+msgid "Gaussian Z-matrix Input"
+msgstr "Masukan Z-matriks Gauss"
+
+#: src/mainwindow.cpp:1016
+msgid "MDL SDfile"
+msgstr "MDL SDfile"
+
+#: src/mainwindow.cpp:1018
+msgid "NWChem Input"
+msgstr "Masukan NWChem"
+
+#: src/mainwindow.cpp:1023
+msgid "Save Molecule As"
+msgstr "Simpan Molekul Sebagai"
+
+#: src/mainwindow.cpp:1055
+#, qt-format
+msgid "Cannot write to file format of file %1."
+msgstr "Tidak bisa menulis dalam format dari berkas %1."
+
+#: src/mainwindow.cpp:1063 src/mainwindow.cpp:1077
+#, qt-format
+msgid ""
+"Cannot write to the file %1:\n"
+"%2."
+msgstr ""
+"Tidak bisa menulis dalaam berkas %1:\n"
+"%2."
+
+#: src/mainwindow.cpp:1089
+#, qt-format
+msgid "Cannot write to the file %1."
+msgstr "Tidak bisa menulis berkas %1."
+
+#: src/mainwindow.cpp:1095
+msgid "Saving file."
+msgstr "Menyimpan berkas."
+
+#: src/mainwindow.cpp:1147
+msgid "Save succeeded."
+msgstr "Berhasil disimpan."
+
+#: src/mainwindow.cpp:1150 src/mainwindow.cpp:1154
+msgid "Saving molecular file failed."
+msgstr "Tidak berhasil menyimpan berkas molekul."
+
+#: src/mainwindow.cpp:1175 src/mainwindow.cpp:1187
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1182
+msgid "Common image formats"
+msgstr "Format gambar yang umum"
+
+#: src/mainwindow.cpp:1186
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1188
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1194 src/mainwindow.cpp:1273
+msgid "Export Bitmap Graphics"
+msgstr "Expor Grafiks Bitmap"
+
+#: src/mainwindow.cpp:1246
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Tidak bisa menyimpan berkas %1."
+
+#: src/mainwindow.cpp:1254 src/mainwindow.cpp:1265
+msgid "PDF"
+msgstr "PDF"
+
+#: src/mainwindow.cpp:1261
+msgid "Common vector image formats"
+msgstr "Format gambar vektor yang umum"
+
+#: src/mainwindow.cpp:1266
+msgid "SVG"
+msgstr "SVG"
+
+#: src/mainwindow.cpp:1267
+msgid "EPS"
+msgstr "EPS"
+
+#: src/mainwindow.cpp:1412
+#, qt-format
+msgid "Untitled %1"
+msgstr "Tanpa nama %1"
+
+#: src/mainwindow.cpp:1495
+msgid "Unable to paste molecule."
+msgstr "Tidak bisa menempel molekul"
+
+#: src/mainwindow.cpp:1524
+msgid "Paste failed (format unavailable)."
+msgstr "Penempelan gagal (format tidak tersedia)"
+
+#: src/mainwindow.cpp:1593
+msgid "Copy failed (mdl unavailable)."
+msgstr "Penyalinan gagal (mdl tidak tersedia)"
+
+#: src/mainwindow.cpp:1719 src/mainwindow.cpp:1749 src/mainwindow.cpp:1778
+#: src/mainwindow.cpp:1810 src/mainwindow.cpp:2344
+#, qt-format
+msgid "View %1"
+msgstr "Tampilan %1"
+
+#: src/mainwindow.cpp:1785
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: Tampilan Terpisah"
+
+#: src/mainwindow.cpp:1946
+msgid "Normal Size"
+msgstr "Ukuran Normal"
+
+#: src/mainwindow.cpp:1958
+msgid "Full Screen"
+msgstr "Layar Penuh"
+
+#: src/mainwindow.cpp:2052
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/mainwindow.cpp:2127 src/mainwindow.cpp:2162 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "tanpa nama"
+
+#: src/mainwindow.cpp:2209
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr "[*]Avogadro"
+
+#: src/mainwindow.cpp:2214
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr "%1[*] - %2"
+
+#: src/projecttreeeditor.ui:229
+#: src/mainwindow.cpp:2625 :256
+msgid "Settings..."
+msgstr "Setelan..."
+
+#: src/mainwindow.cpp:2636
+msgid "Add"
+msgstr "Tambah"
+
+#: src/mainwindow.cpp:2641
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: src/mainwindow.cpp:2646
+msgid "Remove"
+msgstr "Hapus"
+
+#: src/mainwindow.cpp:2674
+msgid "No tools or engines loaded."
+msgstr "Tidak ada alat bantuan atau mesin yang dimuat."
+
+#: src/mainwindow.cpp:2676
+msgid "No engines loaded."
+msgstr "Tidak ada mesin yang dimuat."
+
+#: src/mainwindow.cpp:2678
+msgid "No tools loaded."
+msgstr "Tidak ada alat bantuan yang dimuat."
+
+#: src/mainwindow.cpp:2679
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr ""
+" tampaknya ada aplikasi yang tidak berfungsi dengan benar. Mohon koreksi "
+"kesalahan ini."
+
+#: src/projecttreeeditor.ui:191
+#: src/settingsdialog.ui:14
+#: src/mainwindow.cpp:2700 src/mainwindow.cpp:2717 :250 rc.cpp:258
+msgid "Settings"
+msgstr "Setelan"
+
+#: src/mainwindow.cpp:2723
+msgid "Objects"
+msgstr "Obyek"
+
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2729 :210
+msgid "Colors"
+msgstr "Warna"
+
+#: src/mainwindow.cpp:2777
+msgid " copy"
+msgstr " salin"
+
+#: src/pluginsettings.cpp:55
+msgid "Name: "
+msgstr "Nama: "
+
+#: src/pluginsettings.cpp:56
+msgid "Identifier: "
+msgstr "Pengenal: "
+
+#: src/pluginsettings.cpp:57
+msgid "File: "
+msgstr "Berkas: "
+
+#: src/pluginsettings.cpp:58
+msgid "Description:\n"
+msgstr "Deskripsi:\n"
+
+#: src/primitiveitemmodel.cpp:265 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "Molekul"
+
+#: src/primitiveitemmodel.cpp:269
+#, qt-format
+msgctxt "%1 is element, %L2 is atom index"
+msgid "Atom %1 %L2"
+msgstr "Atom %1 %L2"
+
+#: src/primitiveitemmodel.cpp:274
+#, qt-format
+msgctxt "%L1 is bond index"
+msgid "Bond %L1"
+msgstr "Ikatan %L1"
+
+#: src/primitiveitemmodel.cpp:285
+#, qt-format
+msgctxt "%1 is residue name, %2 is residue index"
+msgid "Residue %1 %2"
+msgstr "Residu %1 %2"
+
+#: src/primitiveitemmodel.cpp:301 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "Atom"
+
+#: src/primitiveitemmodel.cpp:303 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "Ikatan"
+
+#: src/primitiveitemmodel.cpp:305 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr "Residu"
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "ikatan %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr "Label"
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr "Pilihan Pengguna"
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "Kesalahan"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr "hanya label yang mempunyai sub item"
+
+#: src/projecttreemodel.cpp:65
+msgid "Item"
+msgstr "Item"
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr "Indeks"
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr "Rendah"
+
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :266
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr "Sedang"
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr "Tinggi"
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr "Tidak Didefinisikan"
+
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :272
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr "Kosong"
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr "Beberapa"
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr "Sedang"
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr "Banyak"
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr "Tidak Didefinisikan"
+
+#: src/updatecheck.cpp:81
+msgid "Network Update Check Failed"
+msgstr "Pencarian versi baru melalui jaringan telah gagal."
+
+#: src/updatecheck.cpp:82
+msgid "Network timeout or other error."
+msgstr "Ada kesalahan batasan waktu atau karena kesalahan lain."
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr "Versi Terbaru Avogadro Sudah Tersedia"
+
+#: src/addenginedialog.ui:13
+msgid "Add Display Type"
+msgstr "Tambah Tipe Tampilan"
+
+#: src/addenginedialog.ui:19
+msgid "Type:"
+msgstr "Tipe:"
+
+#: src/addenginedialog.ui:32
+msgid "Name:"
+msgstr "Nama:"
+
+#: src/addenginedialog.ui:45
+msgid "Description:"
+msgstr "Deskripsi:"
+
+#: src/enginecolorswidget.ui:13
+msgid "Form"
+msgstr "Bentuk"
+
+#: src/enginecolorswidget.ui:24
+msgid "Color by:"
+msgstr "Warna menurut:"
+
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
+msgid "Add Selected Primitives"
+msgstr "Tambah Pilihan Bentuk Dasar"
+
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
+msgid "Remove Selected Primitives"
+msgstr "Hapus Pilihan Bentuk Dasar"
+
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
+msgid "Add All Primitives"
+msgstr "Tambah Semua  Bentuk Dasar"
+
+#: src/engineprimitiveswidget.ui:83
+msgid "Display Only Selected Primitives"
+msgstr "Tampilkan Hanya Bentuk Dasar Yang Dipilih"
+
+#: src/engineprimitiveswidget.ui:86
+msgid "Assign to Selection"
+msgstr "Ditetapkan ke Pilihan"
+
+#: src/importdialog.ui:13
+msgid "Import Molecule File"
+msgstr "Impor Berkas Molekul"
+
+#: src/importdialog.ui:24
+msgid "Filename:"
+msgstr "Namaberkas:"
+
+#: src/importdialog.ui:34
+msgid "Select..."
+msgstr "Pilih..."
+
+#: src/importdialog.ui:45
+msgid "Format:"
+msgstr "Format:"
+
+#: src/importdialog.ui:53
+msgid "Automatically detect from extension"
+msgstr "Mendapatkan secara otomatis dari ekstensi"
+
+#: src/importdialog.ui:63
+msgid "Perceive bonding"
+msgstr "Memperoleh ikatan"
+
+#: src/importdialog.ui:73
+msgid "Perceive bond orders"
+msgstr "Memeperoleh urutan ikatan"
+
+#: src/importdialog.ui:83
+msgid "Coordinates are in Ångstroms"
+msgstr "Koordinat dinyatakan dalam Ångstroms"
+
+#: src/mainwindow.ui:32
+msgid "&Help"
+msgstr "&Bantuan"
+
+#: src/mainwindow.ui:46
+msgid "&File"
+msgstr "&Berkas"
+
+#: src/mainwindow.ui:50
+msgid "Open &Recent"
+msgstr "Buka te&rkini"
+
+#: src/mainwindow.ui:55
+msgid "Export"
+msgstr "Expor"
+
+#: src/mainwindow.ui:62
+msgid "Import"
+msgstr "Impor"
+
+#: src/mainwindow.ui:81
+msgid "Se&ttings"
+msgstr "Se&telan"
+
+#: src/mainwindow.ui:85
+msgid "Toolbars"
+msgstr "Kotak Bantuan"
+
+#: src/mainwindow.ui:94
+msgid "&Build"
+msgstr "Mem&bangun"
+
+#: src/mainwindow.ui:99
+msgid "&View"
+msgstr "&Tampilan"
+
+#: src/mainwindow.ui:117
+msgid "&Edit"
+msgstr "&Suntingan"
+
+#: src/mainwindow.ui:130
+msgid "E&xtensions"
+msgstr "E&kstensi"
+
+#: src/mainwindow.ui:135
+msgid "&Select"
+msgstr "&Pemiihan"
+
+#: src/mainwindow.ui:152
+msgid "Main Toolbar"
+msgstr "Kotak Bantuan Utama"
+
+#: src/mainwindow.ui:189
+#: src/settingsdialog.ui:255
+msgid "Project Tree"
+msgstr "Pohon Proyek"
+
+#: src/mainwindow.ui:222
+#: src/pluginsettings.ui:23
+msgid "Display Types"
+msgstr "Tipe Tampilan"
+
+#: src/mainwindow.ui:231
+#: src/pluginsettings.ui:28
+msgid "Tools"
+msgstr "Alat Bantuan"
+
+#: src/mainwindow.ui:252
+#: src/mainwindow.ui:264
+msgid "&Open"
+msgstr "&Buka"
+
+#: src/mainwindow.ui:255
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#: src/mainwindow.ui:273
+#: src/mainwindow.ui:285
+msgid "&Quit"
+msgstr "&Keluar"
+
+#: src/mainwindow.ui:276
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: src/mainwindow.ui:290
+msgid "Recent"
+msgstr "Terkini"
+
+#: src/mainwindow.ui:295
+msgid "&Clear Recent"
+msgstr "Hapus Terkini"
+
+#: src/mainwindow.ui:304
+#: src/mainwindow.ui:316
+msgid "&New"
+msgstr "&Baru"
+
+#: src/mainwindow.ui:307
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#: src/mainwindow.ui:325
+#: src/mainwindow.ui:337
+msgid "&Close"
+msgstr "&Tutup"
+
+#: src/mainwindow.ui:328
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#: src/mainwindow.ui:346
+#: src/mainwindow.ui:358
+msgid "&Save"
+msgstr "Si&mpan"
+
+#: src/mainwindow.ui:349
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.ui:367
+msgid "Save &As..."
+msgstr "Simpan Seba&gai..."
+
+#: src/mainwindow.ui:370
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#: src/mainwindow.ui:379
+msgid "Revert To Saved"
+msgstr "Balik ke yang disimpan"
+
+#: src/mainwindow.ui:388
+msgid "&Graphics..."
+msgstr "&Grafiks..."
+
+#: src/mainwindow.ui:397
+msgid "&Full Screen Mode"
+msgstr "Tampilan &Layar Penuh"
+
+#: src/mainwindow.ui:400
+msgid "Esc"
+msgstr "Esc"
+
+#: src/mainwindow.ui:409
+msgid "Set &Background Color..."
+msgstr "Atur Warna &Latar..."
+
+#: src/mainwindow.ui:414
+msgid "&About"
+msgstr "&Tentang"
+
+#: src/mainwindow.ui:423
+msgid "&Undo"
+msgstr "&Batalkan"
+
+#: src/mainwindow.ui:426
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#: src/mainwindow.ui:435
+msgid "&Redo"
+msgstr "&Kembalikan"
+
+#: src/mainwindow.ui:438
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#: src/mainwindow.ui:447
+msgid "New View"
+msgstr "Tampilan Baru"
+
+#: src/mainwindow.ui:459
+msgid "Close View"
+msgstr "Tutup Tampilan"
+
+#: src/mainwindow.ui:468
+msgid "Center"
+msgstr "Tengah"
+
+#: src/mainwindow.ui:477
+msgid "&Paste"
+msgstr "Tem&pelkan"
+
+#: src/mainwindow.ui:480
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: src/mainwindow.ui:489
+msgid "Copy"
+msgstr "Salin"
+
+#: src/mainwindow.ui:492
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: src/mainwindow.ui:501
+msgid "Cut"
+msgstr "Potong"
+
+#: src/mainwindow.ui:504
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#: src/mainwindow.ui:509
+msgid "Clear"
+msgstr "Hapus"
+
+#: src/mainwindow.ui:512
+msgid "Backspace"
+msgstr "Spasimundur"
+
+#: src/mainwindow.ui:517
+msgid "Select All"
+msgstr "Pilih Semua"
+
+#: src/mainwindow.ui:520
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#: src/mainwindow.ui:525
+msgid "Select None"
+msgstr "Tidak Ada Pilihan"
+
+#: src/mainwindow.ui:528
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#: src/mainwindow.ui:537
+msgid "Configure Avogadro..."
+msgstr "Konfigur Avogadro..."
+
+#: src/mainwindow.ui:545
+msgid "Tutorials"
+msgstr "Tutorial"
+
+#: src/mainwindow.ui:550
+msgid "Duplicate View"
+msgstr "Duplikat Tampilan"
+
+#: src/mainwindow.ui:558
+msgid "Display Axes"
+msgstr "Tampilkan Sumbu"
+
+#: src/mainwindow.ui:566
+msgid "Debug Information"
+msgstr "Informasi Awakutu"
+
+#: src/mainwindow.ui:574
+msgid "Avogadro Help"
+msgstr "Bantuan Avogadro"
+
+#: src/mainwindow.ui:579
+msgid "Release Notes"
+msgstr "Nota Rilis"
+
+#: src/mainwindow.ui:584
+msgid "Report a Bug"
+msgstr "Laporkan Kutu"
+
+#: src/mainwindow.ui:589
+msgid "FAQ"
+msgstr "Tanya dan Jawab"
+
+#: src/mainwindow.ui:594
+msgid "Avogadro Website"
+msgstr "Halaman Web Avogadro"
+
+#: src/mainwindow.ui:599
+msgid "Plugin Manager..."
+msgstr "Manajer Plugin..."
+
+#: src/mainwindow.ui:604
+msgid "Project Tree Editor..."
+msgstr "Penyunting Pohon Proyek..."
+
+#: src/mainwindow.ui:609
+msgid "Detach View"
+msgstr "Pisahkan Tampilan"
+
+#: src/mainwindow.ui:614
+msgid "Molecule File..."
+msgstr "Berkas Molekul..."
+
+#: src/mainwindow.ui:625
+msgid "Use Quick Render"
+msgstr "Gunakan Penggambaran Cepat"
+
+#: src/mainwindow.ui:630
+msgid "&Vector Graphics..."
+msgstr "Grafik &Vektor..."
+
+#: src/mainwindow.ui:638
+msgid "Display Unit Cell Axes"
+msgstr "Tampilkan Satuan Sel"
+
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
+msgid "Plugins"
+msgstr "Plugin"
+
+#: src/pluginsettings.ui:33
+msgid "Extensions"
+msgstr "Ekstensi"
+
+#: src/pluginsettings.ui:52
+msgid "Details"
+msgstr "Perincian"
+
+#: src/projecttreeeditor.ui:16
+#: src/projecttreeeditor.ui:174
+msgid "Tree Items"
+msgstr "Pohon Item"
+
+#: src/projecttreeeditor.ui:42
+#: src/projecttreeeditor.ui:213
+msgid "Type"
+msgstr "Tipe"
+
+#: src/projecttreeeditor.ui:62
+msgid "New Item"
+msgstr "Item baru"
+
+#: src/projecttreeeditor.ui:65
+msgid "&New Item"
+msgstr "Item &Baru"
+
+#: src/projecttreeeditor.ui:76
+msgid "New Subitem"
+msgstr "Subitem baru"
+
+#: src/projecttreeeditor.ui:79
+msgid "New &Subitem"
+msgstr "&Subitem baru"
+
+#: src/projecttreeeditor.ui:86
+msgid "Delete Item"
+msgstr "Hapus Item"
+
+#: src/projecttreeeditor.ui:89
+msgid "&Delete Item"
+msgstr "&Hapus Item"
+
+#: src/projecttreeeditor.ui:113
+msgid "Move Item Left (before Parent Item)"
+msgstr "Pindah Item ke kiri (sebelum Item induk)"
+
+#: src/projecttreeeditor.ui:116
+msgid "L"
+msgstr "L"
+
+#: src/projecttreeeditor.ui:127
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr ""
+"Pindah Item ke kanant (sebagai Subitem pertama dari anak item berikutnya)"
+
+#: src/projecttreeeditor.ui:130
+msgid "R"
+msgstr "R"
+
+#: src/projecttreeeditor.ui:143
+msgid "Move Item Up"
+msgstr "Pindah Item keatas"
+
+#: src/projecttreeeditor.ui:146
+msgid "U"
+msgstr "U"
+
+#: src/projecttreeeditor.ui:157
+msgid "Move Item Down"
+msgstr "Pindah Item kebawah"
+
+#: src/projecttreeeditor.ui:160
+msgid "D"
+msgstr "D"
+
+#: src/projecttreeeditor.ui:178
+msgid "1"
+msgstr "1"
+
+#: src/projecttreeeditor.ui:199
+msgid "Alias"
+msgstr "Alias"
+
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
+msgid "General"
+msgstr "Umum"
+
+#: src/settingsdialog.ui:42
+msgid "Quality:"
+msgstr "Kualitas:"
+
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
+msgid "Set the global rendering quality."
+msgstr "Atur kualitas penggambaran secara global."
+
+#: src/settingsdialog.ui:100
+msgid "Fog:"
+msgstr "Kabut:"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr " ,Launchpad Contributions:,Waluyo Adi Siswanto"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,"

@@ -1,0 +1,6051 @@
+# Indonesian translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-06-02 11:17-0400\n"
+"PO-Revision-Date: 2009-06-02 23:13+0000\n"
+"Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/colors/atomindexcolor.h:44
+msgid "Color by Index"
+msgstr "Warna berdasarkan Indeks"
+
+#: src/colors/atomindexcolor.h:45
+msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+msgstr "Warna berdasarkan Indeks (merah, oranye, kuning, hijau, biru, ungu)."
+
+#: src/colors/chargecolor.h:44
+msgid "Color by Partial Charge"
+msgstr "Warna berdasarkan Muatan Parsial"
+
+#: src/colors/chargecolor.h:45
+msgid "Color by atomic partial charge (blue = positive, red = negative."
+msgstr "Warna berdasarkan muatan parsial (biru = positif, merah = negatif)"
+
+#: src/engines/surfacesettingswidget.ui:139
+#: src/colors/customcolor.cpp:63 :192
+msgid "Custom Color:"
+msgstr "Warna Atur Sendiri:"
+
+#: src/engines/surfacesettingswidget.ui:95
+#: src/colors/customcolor.h:43 :186
+msgid "Custom Color"
+msgstr "Warna Atur Sendiri"
+
+#: src/colors/customcolor.h:44
+msgid "Set custom colors for objects"
+msgstr "Atur warna untuk obyek"
+
+#: src/colors/distancecolor.h:44
+msgid "Color by Distance"
+msgstr "Warna berdasrkan Jarak"
+
+#: src/colors/distancecolor.h:45
+msgid "Color by distance from the first atom."
+msgstr "Warna berdasarkan jarak dari atom pertama"
+
+#: src/colors/elementcolor.h:45
+msgid "Color by Element"
+msgstr "Warna berdasarkan Unsur"
+
+#: src/colors/elementcolor.h:46
+msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+msgstr "Warna berdasarkan Unsur (karbon = kelabu, oksigen = merah, ...)."
+
+#: src/colors/residuecolor.h:49
+msgid "Color by Residue"
+msgstr "Warna berdasarkan Residu"
+
+#: src/colors/residuecolor.h:50
+msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+msgstr "Warna berdasarkan Residu (tipe asam amino, hidrofobisitas, ..."
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Hidrogen"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Helium"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Litium"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Berilium"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Boron"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Karbon"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Nitrogen"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Oksigen"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Fluor"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Neon"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Sodium"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Magnesium"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Aluminum"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Silikon"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Belerang"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Klor"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Argon"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Potasium"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Kalsium"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Skandium"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Titanium"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Vanadium"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Krom"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Mangan"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Besi"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Kobalt"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Nikel"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Tembaga"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Seng"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Galium"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Germanium"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Arsen"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Selenium"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Brom"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Kripton"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Rubidium"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Strontium"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Itrium"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Zirkonium"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Niobium"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Molibden"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Teknetium"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Rutenium"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Rodium"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Paladium"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Perak"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Kadmium"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Indium"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Timah"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Antimon"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Telurium"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Yodium"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Xenon"
+
+#: src/elementtranslator.cpp:204
+msgid "Caesium"
+msgstr "Sesium"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Barium"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Lantanum"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Serium"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Praseodimium"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Neodimium"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Prometium"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Samarium"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Europium"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Gadolinium"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Terbium"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Disprosium"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Holmium"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Erbium"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Tulium"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Iterbium"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Lutetium"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Hafnium"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Tantalum"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Wolfram"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Renium"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Osmium"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Iridium"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Platina"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Emas"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Raksa"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Talium"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Timbal"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Bismut"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Polonium"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Astatin"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Radon"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Fransium"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Radium"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Aktinium"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Torium"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Protaktinium"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Uranium"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Neptunium"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Plutonium"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Amerisium"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Kurium"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Berkelium"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Kalifornium"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Einsteinium"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Fermium"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Mendelevium"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Nobelium"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Lawrensium"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Rutherfordium"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Dubnium"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Seaborgium"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Bohrium"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Hassium"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Meitnerium"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Darmstadtium"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Roentgenium"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ununbium"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ununtrium"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ununquadium"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ununpentium"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ununheksium"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ununseptium"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ununoktium"
+
+#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+msgid "Unknown"
+msgstr "Tidak dikenal"
+
+#: src/engine.cpp:64
+msgid "Engines"
+msgstr "Mesin"
+
+#: src/engines/axesengine.h:37
+msgid "Axes"
+msgstr "Sumbu"
+
+#: src/engines/axesengine.h:38
+msgid "Renders the x, y, and z axes at the origin"
+msgstr "Menggambarkan sumbu x, y, dan z di titik pusat"
+
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1985
+msgid "Ball and Stick"
+msgstr "Bola dan Batang"
+
+#: src/engines/bsdyengine.h:42
+msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+msgstr ""
+"Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
+
+#: src/engines/cartoonengine.h:44
+msgid "Cartoon"
+msgstr "Karton"
+
+#: src/engines/cartoonengine.h:45
+msgid "Renders protein secundary structure"
+msgstr "Menggambarkan struktur protein sekunder"
+
+#: src/engines/dipoleengine.h:42
+msgid "Dipole"
+msgstr "Dua kutup"
+
+#: src/engines/dipoleengine.h:43
+msgid "Renders molecular dipole moments"
+msgstr "Menggambarkan momen molekul dua kutup"
+
+#: src/engines/forceengine.h:38
+msgid "Force"
+msgstr "Gaya"
+
+#: src/engines/forceengine.h:39
+msgid "Renders force displacements on atoms"
+msgstr "Menggambarkan gaya simpangan pada atom"
+
+#: src/engines/hbondengine.h:42
+msgid "Hydrogen Bond"
+msgstr "Ikatan Hidrogen"
+
+#: src/engines/hbondengine.h:43
+msgid "Renders hydrogen bonds"
+msgstr "Menggambarkan ikatan hidrogen"
+
+#: src/engines/labelengine.h:45
+msgid "Label"
+msgstr "Label"
+
+#: src/engines/labelengine.h:45
+msgid "Renders atom and bond labels"
+msgstr "Menggambarkan atom dan label ikatan"
+
+#: src/engines/orbitalengine.cpp:286
+#, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+msgid "%1, isosurface = %L2"
+msgstr "%1, PermukaanIso = %L2"
+
+#: src/engines/orbitalengine.h:47
+msgid "Orbitals"
+msgstr "Orbit"
+
+#: src/engines/orbitalengine.h:48
+msgid "Renders molecular orbitals"
+msgstr "Menggambarkan orbit molekul"
+
+#: src/engines/overlayengine.h:41
+msgid "Overlay"
+msgstr "Overlay"
+
+#: src/engines/overlayengine.h:42
+msgid "Renders color scale for gradients"
+msgstr "Menggambarkan perubahan skala warna"
+
+#: src/engines/polygonengine.h:39
+msgid "Polygon"
+msgstr "Poligon"
+
+#: src/engines/polygonengine.h:40
+msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+msgstr ""
+"Menggambarkan atom sebagai bentuk tetrahedral, oktahedral, dan bentuk poligon"
+
+#: src/engines/ribbonengine.h:41
+msgid "Ribbon"
+msgstr "Pita"
+
+#: src/engines/ribbonengine.h:42
+msgid "Renders protein backbones as ribbons"
+msgstr "Menggambar struktur utama protein dengan pita"
+
+#: src/engines/ringengine.h:42
+msgid "Ring"
+msgstr "Cincin"
+
+#: src/engines/ringengine.h:43
+msgid "Renders rings with colored planes"
+msgstr "Menggambar cincin dengan bidang berwarna"
+
+#: src/engines/simplewireengine.h:37
+msgid "Simple Wireframe"
+msgstr "Wireframe sederhana"
+
+#: src/engines/simplewireengine.h:38
+msgid "Renders bonds as wires (lines), ideal for large molecules"
+msgstr "Menggambar ikatan dengan jaring (garis), sesuai untuk melekul besar"
+
+#: src/engines/sphereengine.h:44
+msgid "Van der Waals Spheres"
+msgstr "Bola Van der Waals"
+
+#: src/engines/sphereengine.h:45
+msgid "Renders atoms as Van der Waals spheres"
+msgstr "Menggambar atom sebagai bola Van der Waals"
+
+#: src/engines/stickengine.h:43
+msgid "Stick"
+msgstr "Batang"
+
+#: src/engines/stickengine.h:44
+msgid "Renders molecules as sticks"
+msgstr "Menggambar molekul dengan batang"
+
+#: src/engines/surfaceengine.h:46
+msgid "Surface"
+msgstr "Permukaan"
+
+#: src/engines/surfaceengine.h:47
+msgid "Renders computed molecular surfaces"
+msgstr "Membuat gambar permukaan molekul hasil perhitungan"
+
+#: src/engines/wireengine.h:44
+msgid "Wireframe"
+msgstr "Wireframe"
+
+#: src/engines/wireengine.h:45
+msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+msgstr ""
+"Membuat gambar ikatan dengan jaringan (garis), sesuai untuk (bio)molekul "
+"yang sangat besar"
+
+#: src/extension.cpp:44
+msgid "Extensions"
+msgstr "Ekstensi"
+
+#: src/extensions/animationdialog.cpp:65
+msgid "Open trajectory file"
+msgstr "Buka berkas trayektori"
+
+#: src/extensions/animationdialog.cpp:66
+msgid "Trajectory files (*.xtc *.xyz)"
+msgstr "Berkas Trayektori (*.xtc *.xyz)"
+
+#: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
+#, qt-format
+msgid "%1/%2"
+msgstr "%1/%2"
+
+#: src/extensions/animationdialog.cpp:95
+msgid "Save Video File"
+msgstr "Simpan berkas video"
+
+#: src/extensions/animationdialog.cpp:97
+msgid "video files (*.avi)"
+msgstr "berkas video (*.avi)"
+
+#: src/extensions/animationdialog.cpp:102
+#: src/extensions/animationextension.cpp:135
+#: src/extensions/animationextension.cpp:143
+#: src/extensions/animationextension.cpp:178
+#: src/extensions/animationextension.cpp:184
+#: src/extensions/animationextension.cpp:190
+#: src/extensions/animationextension.cpp:201
+#: src/extensions/animationextension.cpp:209
+#: src/extensions/animationextension.cpp:232
+#: src/extensions/animationextension.cpp:245
+#: src/extensions/animationextension.cpp:251
+#: src/extensions/forcefieldextension.cpp:181
+#: src/extensions/forcefieldextension.cpp:189
+#: src/extensions/forcefieldextension.cpp:201
+#: src/extensions/forcefieldextension.cpp:221
+#: src/extensions/gaussianextension.cpp:166
+#: src/extensions/gaussianextension.cpp:176
+#: src/extensions/insertfragmentdialog.cpp:137
+#: src/extensions/insertfragmentdialog.cpp:145
+#: src/extensions/linmorphdialog.cpp:82
+#: src/extensions/linmorphextension.cpp:79
+#: src/extensions/linmorphextension.cpp:86
+#: src/extensions/linmorphextension.cpp:116
+#: src/extensions/linmorphextension.cpp:239
+#: src/extensions/linmorphextension.cpp:250
+#: src/extensions/linmorphextension.cpp:262
+#: src/extensions/linmorphextension.cpp:268
+#: src/extensions/linmorphextension.cpp:275
+#: src/extensions/linmorphextension.cpp:286
+#: src/extensions/linmorphextension.cpp:294
+#: src/extensions/linmorphextension.cpp:315
+#: src/extensions/linmorphextension.cpp:324
+#: src/extensions/selectextension.cpp:275
+#: src/extensions/selectextension.cpp:287
+#: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
+#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
+#: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
+#: src/extensions/trajvideomaker.cpp:147
+#: src/extensions/unitcellextension.cpp:94
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
+msgid "Adding .avi extension"
+msgstr "Menambah ekstensi .avi"
+
+#: src/extensions/animationextension.cpp:48
+msgid "Animation..."
+msgstr "Animasi..."
+
+#: src/extensions/animationextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:143
+#: src/extensions/gamessextension.cpp:97
+#: src/extensions/gaussianextension.cpp:86
+#: src/extensions/linmorphextension.cpp:103
+#: src/extensions/orbitalextension.cpp:92
+#: src/extensions/shaderextension.cpp:187
+#: src/extensions/spectraextension.cpp:78
+#: src/extensions/templateextension.cpp:70
+#: src/extensions/vibrationextension.cpp:76
+#: src/extensions/wiitrackextension.cpp:83
+msgid "E&xtensions"
+msgstr "E&kstensi"
+
+#: src/extensions/animationextension.cpp:136
+#: src/extensions/gaussianextension.cpp:167
+#: src/extensions/insertfragmentdialog.cpp:138
+#: src/extensions/linmorphextension.cpp:80
+#, qt-format
+msgid "Cannot read file format of file %1."
+msgstr "Tidak bisa membaca format dari berkas %1."
+
+#: src/extensions/animationextension.cpp:144
+#, qt-format
+msgid "Read trajectory file %1 failed."
+msgstr "Gagal membaca berkas trayektori %1."
+
+#: src/extensions/animationextension.cpp:179
+#: src/extensions/animationextension.cpp:185
+#: src/extensions/linmorphextension.cpp:263
+#: src/extensions/linmorphextension.cpp:269
+msgid "Must specify a valid .avi file name"
+msgstr "Perlu menyatakan nama berkas .avi yang sahih."
+
+#: src/extensions/animationextension.cpp:191
+msgid "GL widget was not correctly initialized in order to save video"
+msgstr "Alat GL tidak di inisiasi dengan benar untuk menyimpan video"
+
+#: src/extensions/animationextension.cpp:202
+msgid "Invalid video filename.  Must include full directory path"
+msgstr ""
+"Nama berkas video tidak sahih.  Perlu menyertakan direktori berkas secara "
+"lengkap"
+
+#: src/extensions/animationextension.cpp:210
+msgid ""
+"Invalid video filename.  Must include full directory path and name, ending "
+"with .avi"
+msgstr ""
+"Nama berkas video tidak sahih. Perlu menyertakan direktori berkas secara "
+"lengkap, diakhiri dengan .avi"
+
+#: src/extensions/animationextension.cpp:233
+msgid "could not set format to XYZ"
+msgstr "tidak bisa merubah ke format XYZ"
+
+#: src/extensions/animationextension.cpp:246
+#, qt-format
+msgid "Problem reading traj file %1"
+msgstr "Ada masalah ketika membaca berkas trayektori %1"
+
+#: src/extensions/animationextension.cpp:252
+#, qt-format
+msgid ""
+"Trajectory file %1 disagrees on the number of atoms in the present molecule"
+msgstr ""
+"Berkas trayektori %1 mempunyai jumlah atom yang tidak sesuai dengan molekul "
+"yang ada"
+
+#: src/extensions/animationextension.h:39
+msgid "Animation"
+msgstr "Animasi"
+
+#: src/extensions/animationextension.h:40
+msgid "Animate trajectories, reactions, and vibratins."
+msgstr "Animasi trayektori, reaksi, dan vibratin."
+
+#: src/extensions/conformersearchdialog.cpp:133
+#, qt-format
+msgid "Number of atoms: %1"
+msgstr "Jumlah atom: %1"
+
+#: src/extensions/conformersearchdialog.cpp:134
+#, qt-format
+msgid "Number of rotatable bonds: %1"
+msgstr "Jumlah ikatan yang bisa diputar: %1"
+
+#: src/extensions/constraintsdialog.cpp:338
+#: src/extensions/constraintsdialog.cpp:361
+#: src/extensions/constraintsdialog.cpp:370
+#: src/extensions/constraintsdialog.cpp:380
+msgid "Add constraint"
+msgstr "Tambahkan kendala"
+
+#: src/extensions/constraintsdialog.cpp:339
+msgid "Your molecule must contain at least one atom to add a constraint"
+msgstr ""
+"Untuk menambah kendala, molekul anda harus terdiri dari paling tidak satu "
+"atom"
+
+#: src/extensions/constraintsdialog.cpp:362
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr ""
+"Untuk menambah satu kendala ikatan, molekul anda harus mempunyai paling "
+"sedikit dua atom"
+
+#: src/extensions/constraintsdialog.cpp:371
+msgid ""
+"Your molecule must contain at least three atoms to add an angle constraint"
+msgstr ""
+"Untuk menambah satu kendala sudut, molekul anda harus mempunyai paling "
+"sedikit tiga atom"
+
+#: src/extensions/constraintsdialog.cpp:381
+msgid ""
+"Your molecule must contain at least four atoms to add a torsion constraint"
+msgstr ""
+"Untuk menambah satu kendala torsi, molekul anda harus mempunyai paling "
+"sedikit empat atom"
+
+#: src/extensions/directorytreemodel.cpp:39
+#: src/extensions/directorytreemodel.cpp:49
+msgid "Name"
+msgstr "Nama"
+
+#: src/extensions/fileimportextension.cpp:54
+msgid "Trajectory..."
+msgstr "Trajektori..."
+
+#: src/extensions/fileimportextension.cpp:73
+#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/povrayextension.cpp:64
+msgid "&File"
+msgstr "&Berkas"
+
+#: src/extensions/fileimportextension.cpp:73
+#: src/extensions/networkfetchextension.cpp:70
+msgid "Import"
+msgstr "Impor"
+
+#: src/extensions/fileimportextension.cpp:199
+msgid "Open chemical file format"
+msgstr "Buka format berkas kimia"
+
+#: src/extensions/fileimportextension.cpp:200
+msgid "Chemical files (*.xyz)"
+msgstr "Berkas kimia (*.xyz)"
+
+#: src/extensions/fileimportextension.cpp:207
+msgid "Open parameter file"
+msgstr "Buka berkas parameter"
+
+#: src/extensions/fileimportextension.cpp:208
+msgid "Chemical files (*.parm7)"
+msgstr "Berkas kimia (*.parm7)"
+
+#: src/extensions/fileimportextension.h:43
+msgid "Import Trajectory"
+msgstr "Impor Trayektori"
+
+#: src/extensions/fileimportextension.h:44
+msgid "Import trajectory files"
+msgstr "Impor berkas trayektori"
+
+#: src/extensions/forcefieldextension.cpp:69
+msgid "Optimize Geometry"
+msgstr "Optimisasi Geometri"
+
+#: src/extensions/forcefieldextension.cpp:74
+msgid "Setup Force Field..."
+msgstr "Pengaturan Bidang Gaya..."
+
+#: src/extensions/forcefieldextension.cpp:84
+msgid "Calculate Energy"
+msgstr "Menghitung Energi"
+
+#: src/extensions/forcefieldextension.cpp:89
+msgid "Conformer Search..."
+msgstr "Pencarian Conformer..."
+
+#: src/extensions/forcefieldextension.cpp:99
+msgid "Constraints..."
+msgstr "Kendala..."
+
+#: src/extensions/forcefieldextension.cpp:104
+msgid "Ignore Selection"
+msgstr "Lupakan Pilihan"
+
+#: src/extensions/forcefieldextension.cpp:109
+msgid "Fix Selected Atoms"
+msgstr "Menetapkan Pilihan Atom"
+
+#: src/extensions/forcefieldextension.cpp:143
+msgid "&Molecular Mechanics"
+msgstr "&Mekanika Molekuler"
+
+#: src/extensions/forcefieldextension.cpp:182
+#: src/extensions/forcefieldextension.cpp:202
+#: src/extensions/forcefieldextension.cpp:222
+msgid "Cannot set up the force field for this molecule."
+msgstr "Tidak bisa pengatur bidang gaya untuk molekul ini"
+
+#: src/extensions/forcefieldextension.cpp:187
+#, qt-format
+msgid "Energy = %1 %2"
+msgstr "Energi = %1 %2"
+
+#: src/extensions/forcefieldextension.cpp:232
+msgid "Geometric Optimization"
+msgstr "Optimisasi Geometrik"
+
+#: src/extensions/forcefieldextension.cpp:522
+msgid "Forcefield Optimization"
+msgstr "Optimisasi Bidang Gaya"
+
+#: src/extensions/forcefieldextension.cpp:523
+#: src/extensions/forcefieldextension.cpp:526
+#: src/extensions/forcefieldextension.cpp:529
+#: src/extensions/forcefieldextension.cpp:532
+#: src/extensions/trajvideomaker.cpp:63
+msgid "Cancel"
+msgstr "Batalkan"
+
+#: src/extensions/forcefieldextension.cpp:525
+msgid "Systematic Rotor Search"
+msgstr "Pencarian Rotor Sistimatik"
+
+#: src/extensions/forcefieldextension.cpp:528
+msgid "Random Rotor Search"
+msgstr "Pnecarian Rotor Acak"
+
+#: src/extensions/forcefieldextension.cpp:531
+msgid "Weighted Rotor Search"
+msgstr "Pencarian Rotor Terbeban"
+
+#: src/extensions/forcefieldextension.h:54
+msgid "ForceField"
+msgstr "BidangGaya"
+
+#: src/extensions/forcefieldextension.h:55
+msgid ""
+"Optimize molecules and generate conformers using molecular mechanics force "
+"fields"
+msgstr ""
+"Optimalkan molekul dan membentuk conformer menggunakan mekanika molekular "
+"bidang gaya"
+
+#: src/extensions/gamessefpmatchdialog.cpp:49
+msgid "QM Matches"
+msgstr "QM Sesuai"
+
+#: src/extensions/gamessextension.cpp:65
+msgid "Input Generator..."
+msgstr "Masukan Pembuat..."
+
+#: src/extensions/gamessextension.cpp:70
+msgid "EFP Selection..."
+msgstr "Pemilihan EFP..."
+
+#: src/extensions/gamessextension.cpp:75
+msgid "QM Selection..."
+msgstr "Pemilihan QM..."
+
+#: src/extensions/gamessextension.cpp:97
+msgid "&GAMESS"
+msgstr "&GAMESS"
+
+#: src/extensions/gamessextension.cpp:103
+msgid "GAMESS EFP Information"
+msgstr "Informasi GAMESS EFP"
+
+#: src/extensions/gamessextension.cpp:118
+msgid "Delete"
+msgstr "Hapus"
+
+#: src/extensions/gamessextension.cpp:200
+msgid "No Atoms Selected"
+msgstr "Tidak ada Atom yang dipilih"
+
+#: src/extensions/gamessextension.cpp:201
+msgid "You must make a selection!"
+msgstr "Anda harus memilih salah satu!"
+
+#: src/extensions/gamessextension.cpp:208
+msgid "SMILES Conversion Unavailable"
+msgstr "Konversi SMILES tidak tersedia"
+
+#: src/extensions/gamessextension.cpp:209
+msgid "SMILES Format Conversion Not Available!"
+msgstr "Konversi Format SMILES Tidak Tersedia!"
+
+#: src/extensions/gamessextension.cpp:469
+msgid "Group Name"
+msgstr "Nama Grup"
+
+#: src/extensions/gamessextension.cpp:522
+msgid " ("
+msgstr " ("
+
+#: src/extensions/gamessextension.cpp:523
+msgid "qm"
+msgstr "qm"
+
+#: src/extensions/gamessextension.cpp:523
+msgid "efp"
+msgstr "efp"
+
+#: src/extensions/gamessextension.cpp:524
+msgid ")"
+msgstr ")"
+
+#: src/extensions/gamessextension.h:44
+msgid "GAMESS"
+msgstr "GAMESS"
+
+#: src/extensions/gamessextension.h:45
+msgid "Create input files for the GAMESS quantum chemistry package"
+msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
+
+#: src/extensions/gamessinputdialog.ui:1496
+#: src/extensions/gaussianinputdialog.ui:40
+#: src/extensions/molproinputdialog.ui:41
+#: src/extensions/mopacinputdialog.ui:40
+#: src/extensions/nwcheminputdialog.ui:41
+#: src/extensions/qcheminputdialog.ui:41
+#: src/extensions/gamessinputdialog.cpp:619 :652 rc.cpp:928 rc.cpp:1212
+msgid "Title"
+msgstr "Judul"
+
+#: src/extensions/gamessinputdialog.cpp:1496
+msgid "Advanced Settings Changed"
+msgstr "Pengaturan Lanjut Berubah"
+
+#: src/extensions/gamessinputdialog.cpp:1497
+msgid ""
+"Advanced settings have changed.\n"
+"Discard?"
+msgstr ""
+"Pengaturan lanjut sudah dipilih.\n"
+"Dibatalkan?"
+
+#: src/extensions/gamessinputdialog.cpp:1518
+msgid "Advanced Settings Reset"
+msgstr "Tata Ulang Pengaturan Lanjut"
+
+#: src/extensions/gamessinputdialog.cpp:1519
+msgid ""
+"Are you sure you wish to reset advanced settings?\n"
+"All changes will be lost!"
+msgstr ""
+"Anda yakin ingin menata ulang pengaturan lanjut?\n"
+"Semua perubahan akan terhapus!"
+
+#: src/extensions/gamessinputdialog.cpp:1531
+msgid "Basic Settings Reset"
+msgstr "Tata Ulang Pengaturan Dasar"
+
+#: src/extensions/gamessinputdialog.cpp:1532
+msgid ""
+"Are you sure you wish to reset basic settings?\n"
+"All changes will be lost!"
+msgstr ""
+"Anda yakin ingin menata ulang pengaturan dasar?\n"
+"Semua perubahan akan terhapus!"
+
+#: src/extensions/gamessinputdialog.cpp:1604
+msgid "Export Input Deck"
+msgstr "Ekspor Masukan Program"
+
+#: src/extensions/gamessinputdialog.cpp:1605
+msgid "GAMESS Input Deck (*.inp)"
+msgstr "Masukan Program GAMESS (*.inp)"
+
+#: src/extensions/gaussianextension.cpp:46
+msgid "Gaussian Input..."
+msgstr "Masukan Gaussian..."
+
+#: src/extensions/gaussianextension.cpp:51
+msgid "Q-Chem Input..."
+msgstr "Masukan Q-Chem..."
+
+#: src/extensions/gaussianextension.cpp:56
+msgid "MOLPRO Input..."
+msgstr "Masukan MOLPRO..."
+
+#: src/extensions/gaussianextension.cpp:61
+msgid "MOPAC Input..."
+msgstr "Masukan MOPAC..."
+
+#: src/extensions/gaussianextension.cpp:66
+msgid "&NWChem Input..."
+msgstr "Masukan &NWChem..."
+
+#: src/extensions/gaussianextension.cpp:177
+#: src/extensions/insertfragmentdialog.cpp:146
+#, qt-format
+msgid "Cannot read file %1."
+msgstr "Tidak bisa membaca berkas %1."
+
+#: src/extensions/gaussianextension.h:42
+msgid "Gaussian Input Deck"
+msgstr "Masukan Program Gaussian"
+
+#: src/extensions/gaussianextension.h:43
+msgid "Create input files for quantum chemistry packages like Gaussian"
+msgstr "Membuat berkas masukan untuk program kimia kuantum seperti Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:187
+msgid "Gaussian Input Deck Generator Warning"
+msgstr "Pembuat Peringatan Masukan Program Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:188
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"Gaussian input deck preview pane?"
+msgstr ""
+"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
+"progam Gaussian di jendela pratampilan akan terhapus?"
+
+#: src/extensions/gaussianinputdialog.cpp:231
+msgid "Save Gaussian Input Deck"
+msgstr "Simpan Masukan Program Gaussian"
+
+#: src/extensions/gaussianinputdialog.cpp:232
+msgid "Gaussian Input Deck (*.com)"
+msgstr "Masukan Program Gaussian (*.com)"
+
+#: src/extensions/mopacinputdialog.ui:307
+#: src/extensions/gaussianinputdialog.cpp:255
+#: src/extensions/molproinputdialog.cpp:178
+#: src/extensions/mopacinputdialog.cpp:262
+#: src/extensions/nwcheminputdialog.cpp:185
+#: src/extensions/qcheminputdialog.cpp:178 :1326
+msgid "Show Preview"
+msgstr "Mengeluarkan Pratampilan"
+
+#: src/extensions/gaussianinputdialog.ui:469
+#: src/extensions/molproinputdialog.ui:407
+#: src/extensions/nwcheminputdialog.ui:403
+#: src/extensions/qcheminputdialog.ui:417
+#: src/extensions/gaussianinputdialog.cpp:259
+#: src/extensions/molproinputdialog.cpp:182
+#: src/extensions/mopacinputdialog.cpp:267
+#: src/extensions/nwcheminputdialog.cpp:189
+#: src/extensions/qcheminputdialog.cpp:182 :988 rc.cpp:1268 rc.cpp:1394
+msgid "Hide Preview"
+msgstr "Menyembunyikan Pratampilan"
+
+#: src/extensions/h2methylextension.cpp:43
+msgid "Change H to Methyl"
+msgstr "Meruba H ke Metil"
+
+#: src/extensions/h2methylextension.cpp:62
+#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertpeptideextension.cpp:75
+#: src/extensions/propextension.cpp:116
+#: src/extensions/supercellextension.cpp:72
+#: src/extensions/unitcellextension.cpp:70
+msgid "&Build"
+msgstr "Mem&bangun"
+
+#: src/extensions/h2methylextension.cpp:85
+msgid "H to Methyl"
+msgstr "H ke Metil"
+
+#: src/extensions/h2methylextension.h:37
+msgid "H2Methyl"
+msgstr "H2Methyl"
+
+#: src/extensions/h2methylextension.h:38
+msgid "Transform hydrogens to methyl groups"
+msgstr "Transformasi hidrogen ke grup metil"
+
+#: src/extensions/hydrogensextension.cpp:42
+#: src/extensions/hydrogensextension.cpp:111
+msgid "Add Hydrogens"
+msgstr "Tambah Hidrogen"
+
+#: src/extensions/hydrogensextension.cpp:46
+msgid "Add Hydrogens for pH..."
+msgstr "Tambah Hidrogen untuk pH..."
+
+#: src/extensions/hydrogensextension.cpp:50
+#: src/extensions/hydrogensextension.cpp:117
+msgid "Remove Hydrogens"
+msgstr "Hapus Hidrogen"
+
+#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:114
+msgid "Add Hydrogens for pH"
+msgstr "Tambah Hidrogen untuk pH"
+
+#: src/extensions/hydrogensextension.cpp:86
+msgid "pH"
+msgstr "pH"
+
+#: src/extensions/hydrogensextension.h:40
+msgid "Hydrogens"
+msgstr "Hidrogen"
+
+#: src/extensions/hydrogensextension.h:41
+msgid "Add or remove hydrogens"
+msgstr "Tambah atau hapus hidrogen"
+
+#: src/extensions/insertfragmentdialog.cpp:181
+msgid "Open Directory"
+msgstr "Buka Direktori"
+
+#: src/extensions/insertfragmentextension.cpp:52
+msgid "Fragment..."
+msgstr "Fragmen..."
+
+#: src/extensions/insertfragmentextension.cpp:57
+msgid "SMILES..."
+msgstr "SMILES..."
+
+#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertpeptideextension.cpp:75
+msgid "&Insert"
+msgstr "S&isipan"
+
+#: src/extensions/insertfragmentextension.cpp:103
+#: src/extensions/insertfragmentextension.cpp:121
+msgid "Insert SMILES"
+msgstr "Sisipkan SMILES"
+
+#: src/extensions/insertfragmentextension.cpp:104
+msgid "Insert SMILES fragment:"
+msgstr "Sisipkan SMILES fragmen:"
+
+#: src/extensions/insertfragmentdialog.ui:76
+#: src/extensions/insertfragmentextension.cpp:163
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+msgid "Insert Fragment"
+msgstr "Sisipkan Fragmen"
+
+#: src/extensions/insertfragmentextension.h:35
+msgid "Insert molecular fragments for building larger molecules"
+msgstr "Sisipkan fragmen molekul untuk membuat molekul yang lebih besar"
+
+#: src/extensions/insertpeptideextension.cpp:58
+msgid "Peptide..."
+msgstr "Peptide..."
+
+#: src/extensions/insertpeptidedialog.ui:14
+#: src/extensions/insertpeptidedialog.ui:505
+#: src/extensions/insertpeptideextension.cpp:230
+#: src/extensions/insertpeptideextension.h:43 :1008 rc.cpp:1150
+msgid "Insert Peptide"
+msgstr "Sisipkan Peptide"
+
+#: src/extensions/insertpeptideextension.h:44
+msgid "Insert oligopeptide sequences"
+msgstr "Sisipkan urutan oligopeptide"
+
+#: src/extensions/liganddialog.cpp:63
+msgid "Open ligand file"
+msgstr "Buka berkas ligand"
+
+#: src/extensions/liganddialog.cpp:63
+msgid "Avogadro files (*.*)"
+msgstr "Berkas Avogadro (*.*)"
+
+#: src/extensions/linmorphdialog.cpp:65
+msgid "Open mol file"
+msgstr "Buka berkas mol"
+
+#: src/extensions/linmorphdialog.cpp:66
+msgid "Any files (*.*)"
+msgstr "Sembarang berkas (*.*)"
+
+#: src/extensions/linmorphdialog.cpp:75
+msgid "Save Movie File"
+msgstr "Simpan Berkas Film"
+
+#: src/extensions/linmorphdialog.cpp:77
+msgid "movie files (*.avi)"
+msgstr "berkas film (*.avi)"
+
+#: src/extensions/linmorphdialog.cpp:96
+msgid "Save Traj File"
+msgstr "Simpan Berkas Traj"
+
+#: src/extensions/linmorphdialog.cpp:98
+msgid "trajectory file (*.xyz)"
+msgstr "berkas trayektori (*.xyz)"
+
+#: src/extensions/linmorphextension.cpp:45
+msgid "Lin Morph..."
+msgstr "Lin Morph..."
+
+#: src/extensions/linmorphextension.cpp:87
+#, qt-format
+msgid "Read mol file %1 failed."
+msgstr "Gagal membaca berkas mol %1."
+
+#: src/extensions/linmorphextension.cpp:117
+#, qt-format
+msgid "Two molecules have different number atoms %1 %2"
+msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
+
+#: src/extensions/linmorphextension.cpp:240
+msgid "GL widget was not correctly initialized in order to save snapshots"
+msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan potret"
+
+#: src/extensions/linmorphextension.cpp:251
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "Tidak bisa menyimpan berkas %1."
+
+#: src/extensions/linmorphextension.cpp:276
+msgid "GL widget was not correctly initialized in order to save movie"
+msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan filem"
+
+#: src/extensions/linmorphextension.cpp:287
+msgid "Invalid movie filename.  Must include full directory path"
+msgstr ""
+"Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap"
+
+#: src/extensions/linmorphextension.cpp:295
+msgid ""
+"Invalid movie filename.  Must include full directory path and name, ending "
+"with .avi"
+msgstr ""
+"Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap, "
+"diakhiri dengan .avi"
+
+#: src/extensions/linmorphextension.cpp:316
+#, qt-format
+msgid "Would write file to %1."
+msgstr "Akan menulis berkas ke %1."
+
+#: src/extensions/linmorphextension.cpp:325
+#, qt-format
+msgid "Wrote file %1."
+msgstr "Sudah menulis berkas %1."
+
+#: src/extensions/linmorphextension.h:38
+msgid "Linear Morph"
+msgstr "Linear Morph"
+
+#: src/extensions/linmorphextension.h:39
+msgid "Create linear interpolation for animations"
+msgstr "Membuat interpolasi linier untuk animasi"
+
+#: src/extensions/molecularpropextension.cpp:40
+msgid "Molecule Properties..."
+msgstr "Properti Molekul..."
+
+#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
+msgid "&View"
+msgstr "Tam&pilan"
+
+#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/propextension.cpp:113
+msgid "&Properties"
+msgstr "&Properti"
+
+#: src/extensions/molecularpropextension.cpp:122
+msgid "Estimated Dipole Moment (D):"
+msgstr "Perkiraan Momen Dipol (D):"
+
+#: src/extensions/molecularpropextension.h:48
+msgid "Molecular Properties"
+msgstr "Properti Molekul"
+
+#: src/extensions/molecularpropextension.h:49
+msgid "Display standard molecular properties."
+msgstr "Tampilkan properti molekul standar"
+
+#: src/extensions/molproinputdialog.cpp:114
+#: src/extensions/qcheminputdialog.cpp:114
+msgid "Q-Chem Input Deck Generator Warning"
+msgstr "Pembuat Peringatan Masukan Program Q-Chem"
+
+#: src/extensions/molproinputdialog.cpp:115
+#: src/extensions/qcheminputdialog.cpp:115
+msgid ""
+"Would you like to update the preview text, losing all changes made in the Q-"
+"Chem input deck preview pane?"
+msgstr ""
+"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
+"progam Q-Chem di jendela pratampilan akan terhapus?"
+
+#: src/extensions/molproinputdialog.cpp:162
+msgid "Save Molpro Input Deck"
+msgstr "Simpan Masukan Program Molpro"
+
+#: src/extensions/molproinputdialog.cpp:163
+msgid "Molpro Input Deck (*.qcin)"
+msgstr "Masukan Program Molpro (*.qcin)"
+
+#: src/extensions/mopacinputdialog.cpp:132
+msgid "MOPAC Input Warning"
+msgstr "Peringatan Masukan MOPAC"
+
+#: src/extensions/mopacinputdialog.cpp:133
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"MOPAC input deck preview pane?"
+msgstr ""
+"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
+"progam MOPAC di jendela pratampilan akan terhapus?"
+
+#: src/extensions/mopacinputdialog.cpp:174
+msgid "MOPAC Running."
+msgstr "MOPAC sedang berjalan."
+
+#: src/extensions/mopacinputdialog.cpp:175
+msgid ""
+"MOPAC is already running. Wait until the previous calculation is finished."
+msgstr "MOPAC sedang berjalan. Tunggu sampai perhitungan sebelumnya selesai."
+
+#: src/extensions/mopacinputdialog.cpp:185
+msgid "MOPAC Not Installed."
+msgstr "MOPAC Belum di instal."
+
+#: src/extensions/mopacinputdialog.cpp:186
+msgid "The MOPAC executable, cannot be found."
+msgstr "Berkas program MOPAC yang bisa dijalankan tidak ditemukan."
+
+#: src/extensions/mopacinputdialog.cpp:200
+msgid "MOPAC failed to start."
+msgstr "MOPAC gagal dijalankan."
+
+#: src/extensions/mopacinputdialog.cpp:201
+msgid "MOPAC did not start. Perhaps it is not installed correctly."
+msgstr ""
+"MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
+
+#: src/extensions/mopacinputdialog.cpp:206
+msgid "Running MOPAC calculation..."
+msgstr "Perhitungan MOPAC sedang berlangsung..."
+
+#: src/extensions/mopacinputdialog.cpp:241
+msgid "MOPAC Crashed."
+msgstr "MOPAC Bertabrakan."
+
+#: src/extensions/mopacinputdialog.cpp:242
+msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+msgstr ""
+"MOPAC tidak berjalan dengan benar. Kemungkingan tidak di instal dengan benar."
+
+#: src/extensions/mopacinputdialog.cpp:294
+msgid "Save MOPAC Input Deck"
+msgstr "Simpan Masukan Program MOPAC"
+
+#: src/extensions/mopacinputdialog.cpp:295
+msgid "MOPAC Input Deck (*.mop)"
+msgstr "Masukan Program MOPAC (*.mop)"
+
+#: src/extensions/networkfetchextension.cpp:49
+msgid "Fetch from PDB..."
+msgstr "Mengambil dari PDB..."
+
+#: src/extensions/networkfetchextension.cpp:53
+msgid "Fetch from URL..."
+msgstr "Mengambil dari URL..."
+
+#: src/extensions/networkfetchextension.cpp:88
+msgid "PDB Entry"
+msgstr "Entri PDB"
+
+#: src/extensions/networkfetchextension.cpp:89
+msgid "PDB entry to download."
+msgstr "Entri PDB untuk muaturun."
+
+#: src/extensions/networkfetchextension.cpp:103
+msgid "URL"
+msgstr "URL"
+
+#: src/extensions/networkfetchextension.cpp:104
+msgid "URL of molecule to download."
+msgstr "URL molekul untuk muaturun."
+
+#: src/extensions/networkfetchextension.cpp:139
+#: src/extensions/networkfetchextension.cpp:150
+#: src/extensions/networkfetchextension.cpp:169
+msgid "Network Download Failed"
+msgstr "Muaturun Jaringan Gagal"
+
+#: src/extensions/networkfetchextension.cpp:140
+msgid "Network timeout or other error."
+msgstr "Bataswaktu jaringan atau kesalahan lain."
+
+#: src/extensions/networkfetchextension.cpp:151
+#, qt-format
+msgid "Specified molecule could not be found: %1"
+msgstr "Molekul yang dikehendaki tidak ditemukan: %1"
+
+#: src/extensions/networkfetchextension.cpp:170
+#, qt-format
+msgid "Specified molecule could not be loaded: %1"
+msgstr "Molekul yang dikehendaki tidak bisa dimuat: %1"
+
+#: src/extensions/networkfetchextension.h:39
+msgid "Network Fetch"
+msgstr "Pengambilan dari Jaringan"
+
+#: src/extensions/networkfetchextension.h:40
+msgid "Fetch molecule files over the network."
+msgstr "Mengambil berkas molekul dari jaringan."
+
+#: src/extensions/nwcheminputdialog.cpp:121
+msgid "NWChem Input Deck Generator Warning"
+msgstr "Pembuat Peringatan Masukan Program NWChem"
+
+#: src/extensions/nwcheminputdialog.cpp:122
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"NWChem input deck preview pane?"
+msgstr ""
+"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
+"progam NWChem di jendela pratampilan akan terhapus?"
+
+#: src/extensions/nwcheminputdialog.cpp:169
+msgid "Save NWChem Input Deck"
+msgstr "Simpan Masukan Program NWChem"
+
+#: src/extensions/nwcheminputdialog.cpp:170
+msgid "NWChem Input Deck (*.nw)"
+msgstr "Masukan Program NWChem (*.nw)"
+
+#: src/extensions/orbitaldialog.cpp:107
+#: src/extensions/orbitalextension.cpp:266
+#: src/extensions/orbitalextension.cpp:303
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "MO %L1"
+msgstr "MO %L1"
+
+#: src/engines/labelsettingswidget.ui:55
+#: src/engines/labelsettingswidget.ui:140
+#: src/engines/overlaysettingswidget.ui:54
+#: src/engines/overlaysettingswidget.ui:124
+#: src/extensions/gamessinputdialog.ui:449
+#: src/extensions/gamessinputdialog.ui:998
+#: src/extensions/gamessinputdialog.ui:1068
+#: src/extensions/gamessinputdialog.ui:1114
+#: src/extensions/gamessinputdialog.ui:2100
+#: src/extensions/orbitaldialog.ui:679
+#: src/extensions/shaderdialog.ui:207
+#: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
+msgid "None"
+msgstr "Kosong"
+
+#: src/extensions/orbitaldialog.cpp:250 src/extensions/orbitaldialog.cpp:254
+msgid "ESP"
+msgstr "ESP"
+
+#: src/extensions/orbitalextension.cpp:65
+msgid "Create Surfaces..."
+msgstr "Membuat Permukaan..."
+
+#: src/extensions/orbitalextension.cpp:278
+#: src/extensions/orbitalextension.cpp:315
+#: src/extensions/orbitalextension.cpp:474
+#: src/extensions/orbitalextension.cpp:512
+#: src/extensions/orbitalextension.cpp:770
+msgid "Abort Calculation"
+msgstr "Membatalkan perhitungan"
+
+#: src/extensions/orbitalextension.cpp:283
+#: src/extensions/orbitalextension.cpp:320
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "Calculating MO %L1"
+msgstr "Menghitung MO %L1"
+
+#: src/extensions/orbitalextension.cpp:461
+#: src/extensions/orbitalextension.cpp:499
+msgid "Electron Density"
+msgstr "Kepadatan Elektron"
+
+#: src/extensions/orbitalextension.cpp:479
+#: src/extensions/orbitalextension.cpp:517
+msgid "Calculating Electron Density"
+msgstr "Menghitung Kepadatan Elektron"
+
+#: src/extensions/orbitalextension.cpp:762
+msgid "VdW Cube"
+msgstr "Kubus VdW"
+
+#: src/extensions/orbitalextension.cpp:775
+msgid "Calculating VdW Cube"
+msgstr "Menghitung kubus VdW"
+
+#: src/extensions/orbitaldialog.ui:20
+#: src/extensions/orbitalextension.h:48 :1404
+msgid "Surfaces"
+msgstr "Bidang Permukaan"
+
+#: src/extensions/orbitalextension.h:49
+msgid "Calculate molecular orbitals and other surfaces"
+msgstr "Menghitung orbit melekul dan bidang lainnya"
+
+#: src/extensions/povraydialog.cpp:151
+msgid "Save POV-Ray rendered image"
+msgstr "Menyimpan gambar hasil POV-Ray"
+
+#: src/extensions/povraydialog.cpp:152
+msgid "Image files (*.png *.pbm)"
+msgstr "Berkas gambar (*.png *.pbm)"
+
+#: src/extensions/povrayextension.cpp:49
+msgid "POV-Ray..."
+msgstr "POV-Ray..."
+
+#: src/extensions/povrayextension.cpp:64
+msgid "Export"
+msgstr "Ekspor"
+
+#: src/extensions/povrayextension.cpp:130
+msgid "No filename supplied."
+msgstr "Nama berkas belum diberikan."
+
+#: src/extensions/povrayextension.cpp:131
+msgid "No valid filename was supplied."
+msgstr "Nama berkas yang diberikan tidak sahih."
+
+#: src/extensions/povrayextension.cpp:136
+msgid "Does not compute."
+msgstr "Tidak melakukan perhitungan"
+
+#: src/extensions/povrayextension.cpp:137
+msgid ""
+"You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+"file. This will result in no output being saved. Are you sure that is what "
+"you want?"
+msgstr ""
+"Anda meminta tidak menggambar langsung menggunakan POV-Ray dan tidak "
+"menyimpan berkas POV-Ray. Keluaran yang dihasilkan tidak akan disimpan. "
+"Apakah ini anda inginkan?"
+
+#: src/extensions/povrayextension.cpp:158
+#: src/extensions/povrayextension.cpp:179
+msgid "Cannot Write to File."
+msgstr "Tidak Bisa Menulis ke Berkas"
+
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:180
+#, qt-format
+msgid ""
+"Cannot write to file %1. Do you have permissions to write to that location?"
+msgstr ""
+"Tidak bisa menulis ke berkas %1. Apakah anda mempunyai hak menulis ke lokasi "
+"tersebut?"
+
+#: src/extensions/povrayextension.cpp:173
+msgid "POV-Ray failed to start."
+msgstr "POV-Ray gagal dijalankan."
+
+#: src/extensions/povrayextension.cpp:174
+msgid ""
+"POV-Ray failed to start. May be the path to the executable is not set "
+"correctly."
+msgstr ""
+"POV-Ray gagal dijalankan. Kemungkinan karena lokasi berkas yang dijalankan "
+"tidak tepat."
+
+#: src/extensions/povrayextension.h:40
+msgid "POV-Ray"
+msgstr "POV-Ray"
+
+#: src/extensions/povrayextension.h:41
+msgid ""
+"Create POV-Ray files and render them using the command line POV-Ray program."
+msgstr ""
+"Membuat berkas POV-Ray dan memunculkan gambar hasil menggunakan perintah "
+"baris program POV-Ray."
+
+#: src/extensions/propextension.cpp:64
+msgid "Atom Properties..."
+msgstr "Properti Atom..."
+
+#: src/extensions/propextension.cpp:69
+msgid "Bond Properties..."
+msgstr "Properti Ikatan..."
+
+#: src/extensions/propextension.cpp:74
+msgid "Angle Properties..."
+msgstr "Properti Sudut..."
+
+#: src/extensions/propextension.cpp:79
+msgid "Torsion Properties..."
+msgstr "Properti Torsi..."
+
+#: src/extensions/propextension.cpp:84
+msgid "Conformer Properties..."
+msgstr "Properti Conformer..."
+
+#: src/extensions/propextension.cpp:89
+msgid "Cartesian Editor..."
+msgstr "Pneyunting Kartesian..."
+
+#: src/extensions/propextension.cpp:228
+msgid "Atom Properties"
+msgstr "Properti Atom"
+
+#: src/extensions/propextension.cpp:231
+msgid "Bond Properties"
+msgstr "Properti Ikatan"
+
+#: src/extensions/propextension.cpp:234
+msgid "Angle Properties"
+msgstr "Properti Sudut"
+
+#: src/extensions/propextension.cpp:237
+msgid "Torsion Properties"
+msgstr "Properti Torsi"
+
+#: src/extensions/propextension.cpp:240
+msgid "Cartesian Properties"
+msgstr "Properti Kartesian"
+
+#: src/extensions/propextension.cpp:243
+msgid "Conformer Properties"
+msgstr "Properti Conformer"
+
+#: src/extensions/gamessinputdialog.ui:866
+#: src/extensions/propextension.h:43 :508
+msgid "Properties"
+msgstr "Berbagai Properti"
+
+#: src/extensions/propextension.h:44
+msgid ""
+"Windows for displaying atom, bond, angle and tosion properties. It also "
+"includes a cartesian coordinate editor."
+msgstr ""
+"Jendela untuk menampilkan properti atom, ikatan, sudut dan torsi, termasuk "
+"penyunting koordinat kartesian."
+
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:329 :234
+msgid "Type"
+msgstr "Tipe"
+
+#: src/extensions/propmodel.cpp:331
+msgid "Element"
+msgstr "Unsur"
+
+#: src/extensions/propmodel.cpp:333
+msgid "Valence"
+msgstr "Valensi"
+
+#: src/engines/labelsettingswidget.ui:85
+#: src/engines/overlaysettingswidget.ui:84
+#: src/extensions/propmodel.cpp:335 :86 rc.cpp:146
+msgid "Partial Charge"
+msgstr "Muatan Parsial"
+
+#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#, qt-format
+msgid "Atom %1"
+msgstr "Atom %1"
+
+#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+msgid "Start Atom"
+msgstr "Awal Atom"
+
+#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+msgid "End Atom"
+msgstr "Akhir Atom"
+
+#: src/extensions/propmodel.cpp:347
+msgid "Bond Order"
+msgstr "Orde Ikatan"
+
+#: src/extensions/propmodel.cpp:349
+msgid "Rotatable"
+msgstr "Dapat diputar"
+
+#: src/extensions/propmodel.cpp:351
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Length %1"
+msgstr "Panjang %1"
+
+#: src/extensions/propmodel.cpp:355
+#, qt-format
+msgid "Bond %1"
+msgstr "Ikatan %1"
+
+#: src/extensions/propmodel.cpp:362
+msgid "Vertex"
+msgstr "Verteks"
+
+#: src/extensions/propmodel.cpp:366
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Angle %1"
+msgstr "Sudut %1"
+
+#: src/extensions/propmodel.cpp:369
+#, qt-format
+msgid "Angle %1"
+msgstr "Sudut %1"
+
+#: src/extensions/propmodel.cpp:377
+#, qt-format
+msgid "Atom Index %1"
+msgstr "Indeks Atom %1"
+
+#: src/extensions/propmodel.cpp:379
+#, qt-format
+msgctxt "Degree symbol"
+msgid "Torsion %1"
+msgstr "Torsi %1"
+
+#: src/extensions/propmodel.cpp:382
+#, qt-format
+msgid "Torsion %1"
+msgstr "Torsi %1"
+
+#: src/extensions/propmodel.cpp:387
+#, qt-format
+msgctxt "in Angstrom"
+msgid "X %1"
+msgstr "X %1"
+
+#: src/extensions/propmodel.cpp:389
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Y %1"
+msgstr "Y %1"
+
+#: src/extensions/propmodel.cpp:391
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Z  %1"
+msgstr "Z  %1"
+
+#: src/extensions/gamessinputdialog.ui:816
+#: src/extensions/propmodel.cpp:399 :488
+msgid "Energy"
+msgstr "Energi"
+
+#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:385
+#, qt-format
+msgid "Conformer %1"
+msgstr "Conformer %1"
+
+#: src/extensions/pythonterminalwidget.ui:14
+#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
+msgid "Python Terminal"
+msgstr "Terminal Python"
+
+#: src/extensions/pythonterminal.cpp:71
+msgid "pythonTerminalDock"
+msgstr "pythonTerminalDock"
+
+#: src/extensions/pythonterminal.h:53
+msgid "Interactive python scripting terminal"
+msgstr "Terminal interaktif untuk skrip python"
+
+#: src/extensions/qcheminputdialog.cpp:162
+msgid "Save QChem Input Deck"
+msgstr "Simpan Masukan Program QChem"
+
+#: src/extensions/qcheminputdialog.cpp:163
+msgid "QChem Input Deck (*.qcin)"
+msgstr "Masukan Program QChem (*.qcin)"
+
+#: src/extensions/selectextension.cpp:68
+msgid "&Invert Selection"
+msgstr "&Membalikan Pilihan"
+
+#: src/extensions/selectextension.cpp:73
+msgid "Select SMARTS..."
+msgstr "Pemilihan SMARTS..."
+
+#: src/extensions/selectextension.cpp:78
+msgid "Select by Element..."
+msgstr "Pilih berdasarkan Unsur..."
+
+#: src/extensions/selectextension.cpp:83
+msgid "Select by Residue..."
+msgstr "Pilih berdasarkan Residu..."
+
+#: src/extensions/selectextension.cpp:88
+msgid "Select Solvent"
+msgstr "Pilih Pelarut"
+
+#: src/extensions/selectextension.cpp:98
+msgid "Add Named Selection..."
+msgstr "Tambah Pilihan Yang Dinamai..."
+
+#: src/extensions/selectextension.cpp:114
+msgid "&Select"
+msgstr "&Pilihan"
+
+#: src/extensions/selectextension.cpp:170
+msgid "SMARTS Selection"
+msgstr "Pilihan SMARTS"
+
+#: src/extensions/selectextension.cpp:171
+msgid "SMARTS pattern to select"
+msgstr "Memilih pola SMARTS"
+
+#: src/extensions/selectextension.cpp:230
+msgid "Select by residue"
+msgstr "Pilih berdasarkan residu"
+
+#: src/engines/labelsettingswidget.ui:75
+#: src/engines/overlaysettingswidget.ui:74
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :82 rc.cpp:142 rc.cpp:1164
+msgid "Residue name"
+msgstr "Nama residu"
+
+#: src/extensions/selectextension.cpp:276
+msgid "There is no current selection."
+msgstr "Sekarang belum ada pilihan"
+
+#: src/extensions/selectextension.cpp:282
+msgid "Add Named Selection"
+msgstr "Tambah Pilihan Yang Dinamai"
+
+#: src/extensions/selectextension.cpp:282
+msgid "name"
+msgstr "nama"
+
+#: src/extensions/selectextension.cpp:288
+msgid "Name cannot be empty."
+msgstr "Nama tidak boleh kosong."
+
+#: src/extensions/selectextension.cpp:294
+msgid "There is already a selection with this name."
+msgstr "Sudah ada pilihan dengan nama ini"
+
+#: src/extensions/selectextension.h:41
+msgid "Selections"
+msgstr "Pilihan"
+
+#: src/extensions/selectextension.h:42
+msgid "Select atoms, bonds, residues..."
+msgstr "Pilih atom, ikatan, residu..."
+
+#: src/extensions/shaderextension.cpp:169
+msgid "GLSL Shaders..."
+msgstr "GLSL Shader..."
+
+#: src/extensions/shaderextension.cpp:323
+msgid "Open a vertex shader source file"
+msgstr "Buka berkas sumber vertex shader"
+
+#: src/extensions/shaderextension.cpp:324
+msgid "Vertex shader files (*.vert)"
+msgstr "Berkas vertex shader (*.vert)"
+
+#: src/extensions/shaderextension.cpp:344
+msgid "Open a fragment shader source file"
+msgstr "Buka berkas sumber fragmen shader"
+
+#: src/extensions/shaderextension.cpp:345
+msgid "Fragment shader files (*.frag)"
+msgstr "Berkas fragmen shader (*.frag)"
+
+#: src/extensions/shaderextension.cpp:355
+msgid "Open a shader parameters file"
+msgstr "Buka berkas parameter shader"
+
+#: src/extensions/shaderextension.cpp:356
+msgid "Shader parameters files (*.params)"
+msgstr "berkas parameter shader (*.params)"
+
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1600
+msgid "GLSL Shaders"
+msgstr "GLSL Shader"
+
+#: src/extensions/shaderextension.h:42
+msgid "Load and use OpenGL 2.0 GLSL shaders"
+msgstr "Memuat dan menggunakan OpenGL 2.0 GLSL shader"
+
+#: src/extensions/spectradialog.cpp:71
+msgid "X Axis"
+msgstr "Sumbu X"
+
+#: src/extensions/spectradialog.cpp:72
+msgid "Y Axis"
+msgstr "Sumbu Y"
+
+#: src/extensions/spectradialog.ui:67
+#: src/extensions/spectradialog.cpp:152 :1632
+msgid "&Appearance"
+msgstr "Pen&ampilan"
+
+#: src/extensions/spectradialog.ui:366
+#: src/extensions/spectradialog.cpp:153 :1676
+msgid "E&xport Image"
+msgstr "Ek&spor Gambar"
+
+#: src/extensions/spectradialog.cpp:158
+msgctxt "Infrared spectra option"
+msgid "Infrared"
+msgstr "InfraMerah"
+
+#: src/extensions/spectradialog.cpp:159
+msgid "&Infrared Spectra Settings"
+msgstr "Pengaturak Spektra &Inframerah"
+
+#: src/extensions/spectradialog.cpp:165
+msgctxt "NMR spectra option"
+msgid "NMR"
+msgstr "NMR"
+
+#: src/extensions/spectradialog.cpp:166
+msgid "&NMR Spectra Settings"
+msgstr "Pengaturan Spektra &NMR"
+
+#: src/extensions/spectradialog.cpp:173
+msgid "No data"
+msgstr "Tidak ada data"
+
+#: src/extensions/spectradialog.cpp:250
+msgid "Dark"
+msgstr "Gelap"
+
+#: src/extensions/spectradialog.cpp:261
+msgid "Light"
+msgstr "Terang"
+
+#: src/extensions/spectradialog.cpp:272
+msgid "Publication"
+msgstr "Publikasi"
+
+#: src/extensions/spectradialog.cpp:283
+msgid "Handdrawn"
+msgstr "Gambaran tangan"
+
+#: src/extensions/spectradialog.cpp:309
+msgid "New Scheme"
+msgstr "Skema Baru"
+
+#: src/extensions/spectradialog.cpp:317
+msgid "Confirm Scheme Removal"
+msgstr "Konfirmasi Menghapus Skema"
+
+#: src/extensions/spectradialog.cpp:317
+msgid "Really remove current scheme?"
+msgstr "Apakah akam menghapus skema yang ada?"
+
+#: src/extensions/spectradialog.cpp:327
+msgid "Change Scheme Name"
+msgstr "Merubah Nama Skema"
+
+#: src/extensions/spectradialog.cpp:328
+msgid "Enter new name for current scheme:"
+msgstr "Tuliskan nama baru untuk sekema yang sekarang"
+
+#: src/extensions/spectradialog.cpp:428
+msgid "Export Calculated Spectrum"
+msgstr "Ekspor Spektrum Hasil Perhitungan"
+
+#: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:179
+msgid "Tab Separated Values (*.tsv)"
+msgstr "Angka Dipisahkan Tab (*.tsv)"
+
+#: src/extensions/spectradialog.cpp:452
+msgid "Tab Separated Values"
+msgstr "Angka Dipisahkan Tab"
+
+#: src/extensions/spectradialog.cpp:453
+msgid "Comma Separated Values"
+msgstr "Angka Dispisahkan Koma"
+
+#: src/extensions/spectradialog.cpp:454
+msgid "JCAMP-DX"
+msgstr "JCAMP-DX"
+
+#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
+#: src/extensions/spectradialog.cpp:625
+msgid "All Files"
+msgstr "Semua Berkas"
+
+#: src/extensions/spectradialog.cpp:457
+msgid "Import Spectra"
+msgstr "Impor Spektra"
+
+#: src/extensions/spectradialog.cpp:483
+msgid "Spectra Import"
+msgstr "Impor Spektra"
+
+#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
+#, qt-format
+msgid "Unknown extension: %1"
+msgstr "Ekstensi tidak dikenal: %1"
+
+#: src/extensions/spectradialog.cpp:529
+msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
+msgid "PWscf IR data (*.out)"
+msgstr "PWscf IR data (*.out)"
+
+#: src/extensions/spectradialog.cpp:531
+msgid "Data Format"
+msgstr "Format Data"
+
+#: src/extensions/spectradialog.cpp:531
+msgctxt "noun, not verb"
+msgid "Format:"
+msgstr "Format:"
+
+#: src/extensions/spectradialog.cpp:540
+msgid "Load Spectral Data"
+msgstr "Memuat Data Spektral"
+
+#: src/extensions/spectradialog.cpp:618
+msgid "Portable Network Graphics"
+msgstr "Portable Network Graphics"
+
+#: src/extensions/spectradialog.cpp:619
+msgid "jpeg"
+msgstr "jpeg"
+
+#: src/extensions/spectradialog.cpp:620
+msgid "Tagged Image File Format"
+msgstr "Tagged Image File Format"
+
+#: src/extensions/spectradialog.cpp:621
+msgid "Windows Bitmap"
+msgstr "Windows Bitmap"
+
+#: src/extensions/spectradialog.cpp:622
+msgid "Portable Pixmap"
+msgstr "Portable Pixmap"
+
+#: src/extensions/spectradialog.cpp:623
+msgid "X11 Bitmap"
+msgstr "X11 Bitmap"
+
+#: src/extensions/spectradialog.cpp:624
+msgid "X11 Pixmap"
+msgstr "X11 Pixmap"
+
+#: src/extensions/spectradialog.cpp:628
+msgid "Save Spectra Image"
+msgstr "Simpan Gambar Spektral"
+
+#: src/extensions/spectradialog.cpp:646
+msgid "Invalid Filename"
+msgstr "Nama berkas tidak sahih"
+
+#: src/extensions/spectradialog.cpp:679
+msgid "Error"
+msgstr "Kesalahan"
+
+#: src/extensions/spectradialog.cpp:679
+#, qt-format
+msgid "A problem occurred while writing file %1"
+msgstr "Ada masalah ketika menulis berkas %1"
+
+#: src/extensions/spectradialog.cpp:681
+msgid "Success!"
+msgstr "Sukses!"
+
+#: src/extensions/spectradialog.cpp:681
+#, qt-format
+msgid "Image successfully written to %1"
+msgstr "Gambar berhasil disimpan ke %1"
+
+#: src/extensions/spectradialog.cpp:707
+msgid "Customi&ze <<"
+msgstr "Tutup Pengaturan <<"
+
+#: src/extensions/spectradialog.ui:587
+#: src/extensions/spectradialog.cpp:711 :1702
+msgid "Customi&ze >>"
+msgstr "&Buka Pengaturan >>"
+
+#: src/extensions/spectraextension.cpp:49
+msgid "&Spectra..."
+msgstr "&Spektra..."
+
+#: src/extensions/spectraextension.h:39
+msgid "Spectra"
+msgstr "Spektra"
+
+#: src/extensions/spectraextension.h:40
+msgid "Visualize spectral data from quantum chemistry calculations"
+msgstr "Memvisualisasikan data spektral dari perhitungan kimia kuantum"
+
+#: src/extensions/spectratype_ir.cpp:97
+msgid "No intensities"
+msgstr "Tanpa intensitas"
+
+#: src/extensions/spectratype_ir.cpp:97
+msgid ""
+"The vibration data in the molecule you have loaded does not have any "
+"intensity data. Intensities have been set to an arbitrary value for "
+"visualization."
+msgstr ""
+"Data getaran di molekul yang anda tambahkan tidak mempunyai data intensitas. "
+"Sembarang angka diberikan sebagai intensitas untuk tujuan penggambaran."
+
+#: src/extensions/spectratype_ir.cpp:152
+msgid "Wavenumber (cm<sup>-1</sup>)"
+msgstr "Nomor gelombang (cm<sup>-1</sup>)"
+
+#: src/extensions/spectratype_nmr.cpp:278
+msgid "Shift (ppm)"
+msgstr "Shift (ppm)"
+
+#: src/extensions/supercellextension.cpp:57
+msgid "Super Cell Builder..."
+msgstr "Pembangun Super Sel..."
+
+#: src/extensions/supercellextension.cpp:91
+msgid "Warning"
+msgstr "Peringatan"
+
+#: src/extensions/supercellextension.cpp:92
+msgid ""
+"This document is currently an isolated molecule. You need to create a unit "
+"cell."
+msgstr ""
+"Dokumen ini merupakan molekul yang di isolasi saat ini. Anda perlu membuat "
+"satu sel."
+
+#: src/extensions/supercellextension.h:38
+msgid "Super Cell"
+msgstr "Super Sel"
+
+#: src/extensions/supercellextension.h:39
+msgid "Build and display crystallographic super cells"
+msgstr "Membangun dan menampilkan kristalografi super sel"
+
+#: src/extensions/templateextension.cpp:42
+msgid "First Action"
+msgstr "Aksi Pertama"
+
+#: src/extensions/templateextension.cpp:48
+msgid "Second Action"
+msgstr "Aksi Kedua"
+
+#: src/extensions/templateextension.cpp:70
+#: src/extensions/templateextension.cpp:73
+msgid "&Template"
+msgstr "&Templet"
+
+#: src/extensions/templateextension.cpp:73
+msgid "&Edit"
+msgstr "S&untingan"
+
+#: src/extensions/templateextension.h:34
+msgid "Template"
+msgstr "Templet"
+
+#: src/extensions/templateextension.h:35
+msgid "Example extension"
+msgstr "Contoh ekstensi"
+
+#: src/extensions/trajvideomaker.cpp:48
+msgid "GL widget was not correctly initialized in order to make a video"
+msgstr "Alat GL tidak di inisiasi dengan benar untuk membuat filem"
+
+#: src/extensions/trajvideomaker.cpp:56
+msgid "GL widget has no molecule"
+msgstr "Alat GL tidak memiliki molekul"
+
+#: src/extensions/trajvideomaker.cpp:62
+msgid "Building video "
+msgstr "Membuat gambar filem "
+
+#: src/extensions/trajvideomaker.cpp:109
+msgid "Video file not written."
+msgstr "Berkas filem tidak direkam"
+
+#: src/extensions/trajvideomaker.cpp:124
+msgid "Could not run povray."
+msgstr "Tidak dapat menjalankan povray"
+
+#: src/extensions/trajvideomaker.cpp:147
+msgid "Could not run mencoder."
+msgstr "Tidak dapat menjalankan mencoder"
+
+#: src/extensions/trajvideomaker.cpp:158
+msgid "Set Aspect Ratio"
+msgstr "Atur Aspek Rasio"
+
+#: src/extensions/trajvideomaker.cpp:159
+#, qt-format
+msgid ""
+"The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+"ratio %3.\n"
+"You may keep this value, for example if you intend to use POV-Ray\n"
+"to produce an image of %4x1000 pixels, or you may enter any other positive "
+"value,\n"
+"for example 1 if you intend to use POV-Ray to produce a square image, like "
+"1000x1000 pixels."
+msgstr ""
+"Pengaturan sekarang untuk layar adalah %1x%2 piksel, dan mempunyai aspek "
+"rasio %3.\n"
+"Anda dapat memakai ukuran ini, apabila anda ingin menggunakan misalnya POV-"
+"Ray\n"
+"untuk mendapatkan gambar of %4x1000 piksel, atau anda bisa mengganti dengan "
+"ukuran lain,\n"
+"apabila anda ingin menggunakan POV-Ray untuk membuat gambar, seperti ukuran "
+"1000x1000 piksel."
+
+#: src/extensions/unitcellextension.cpp:45
+msgid "Unit Cell Parameters..."
+msgstr "Parameter Unit Sel..."
+
+#: src/extensions/unitcellextension.cpp:95
+msgid ""
+"This document is currently an isolated molecule.\n"
+"\n"
+"Do you want to create a crystal unit cell?"
+msgstr ""
+"Dokumen ini merupakan molekul yang terisolasi sekarang.\n"
+"\n"
+"Apakah anda akan membuat satu sel kristal?"
+
+#: src/extensions/unitcellextension.h:34
+msgid "Unit Cell"
+msgstr "Satu Sel"
+
+#: src/extensions/unitcellextension.h:35
+msgid "Build and display crystallographic unit cells"
+msgstr "Membangun dan menampilkan kristalografi unit sel"
+
+#: src/extensions/unitcellparamdialog.cpp:94
+#: src/extensions/unitcellparamdialog.cpp:99
+msgid "Apply"
+msgstr "Terapkan"
+
+#: src/extensions/constraintsdialog.ui:212
+#: src/extensions/unitcellparamdialog.cpp:97 :268
+msgid "OK"
+msgstr "Oke"
+
+#: src/extensions/vibrationdialog.ui:115
+#: src/extensions/vibrationdialog.cpp:162
+#: src/extensions/vibrationdialog.cpp:165 :1796
+msgid "Start &Animation"
+msgstr "Memulai &Animasi"
+
+#: src/extensions/vibrationdialog.cpp:163
+msgid "Stop &Animation"
+msgstr "Menghentikan &Animasi"
+
+#: src/extensions/vibrationdialog.cpp:179
+msgid "Export Vibrational Data"
+msgstr "Ekspor Data Getaran"
+
+#: src/extensions/vibrationextension.cpp:60
+msgid "&Vibrations..."
+msgstr "&Getaran..."
+
+#: src/extensions/gamessinputdialog.ui:2549
+#: src/extensions/vibrationextension.cpp:120
+#: src/extensions/vibrationextension.cpp:219 :850
+msgid "Vibrational Analysis"
+msgstr "Analisis Getaran"
+
+#: src/extensions/vibrationextension.cpp:120
+msgid "No vibrational displacements exist."
+msgstr "Tidak ada simpangan getaran"
+
+#: src/extensions/vibrationextension.cpp:219
+msgid "No vibrations have been computed for this molecule."
+msgstr "Tidak ada perhitungan getaran untuk molekul ini"
+
+#: src/extensions/vibrationextension.h:45
+msgid "Vibration"
+msgstr "Getaran"
+
+#: src/extensions/vibrationextension.h:46
+msgid "Visualize vibrational modes from quantum chemistry calculations"
+msgstr "Menggambarkan pola getaran dari perhitungan kimia kuantum"
+
+#: src/extensions/wiitrackextension.cpp:58
+msgid "Connect"
+msgstr "Sambung"
+
+#: src/extensions/wiitrackextension.cpp:63
+msgid "Disconnect"
+msgstr "Putus Sambungan"
+
+#: src/extensions/wiitrackextension.cpp:83
+msgid "&WiiTrack"
+msgstr "&WiiTrack"
+
+#: src/extensions/wiitrackextension.h:40
+msgid "Wii Tracking"
+msgstr "Wii Tracking"
+
+#: src/extensions/wiitrackextension.h:41
+msgid "Track motion using Wii remotes"
+msgstr "Track motion menggunakan Wii remote"
+
+#: src/glwidget.cpp:459
+msgid ""
+"Invalid OpenGL context.\n"
+"Either something is completely broken in your OpenGL setup (can you run any "
+"OpenGL application?), or you found a bug."
+msgstr ""
+"Konteks OpenGL ada kesalahan.\n"
+"Kemungkingan ada kesalahan dalam pengaturan OpenGL (apakah anda bisa "
+"menjalankan aplikasi OpenGL lainnya?), atau mungkin anda menemukan kutu."
+
+#: src/glwidget.cpp:464
+msgid "OpenGL error"
+msgstr "Kesalahan OpenGL"
+
+#: src/glwidget.cpp:1012
+msgid "Debug Information"
+msgstr "Informasi Awakutu"
+
+#: src/glwidget.cpp:1013
+#, qt-format
+msgid "FPS: %L1"
+msgstr "FPS: %L1"
+
+#: src/glwidget.cpp:1016
+#, qt-format
+msgid "View Size: %L1 x %L2"
+msgstr "Ukuran Tampilan: %L1 x %L2"
+
+#: src/glwidget.cpp:1018
+msgid "No molecule set"
+msgstr "Tidak ada atur molekul"
+
+#: src/glwidget.cpp:1023
+#, qt-format
+msgid "Atoms: %L1"
+msgstr "Atom: %L1"
+
+#: src/glwidget.cpp:1026
+#, qt-format
+msgid "Bonds: %L1"
+msgstr "Ikatan: %L1"
+
+#: src/molecule.cpp:103
+msgctxt "Name of a new, untitled molecule file"
+msgid "untitled"
+msgstr "tanpa judul"
+
+#: src/moleculefile.cpp:110
+#, qt-format
+msgid "OBMol: index %1 out of reach."
+msgstr "OBMol: indeks %1 diluar jangkauan."
+
+#: src/moleculefile.cpp:119 src/openbabelwrapper.cpp:336
+#, qt-format
+msgid "File type '%1' is not supported for reading."
+msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#: src/moleculefile.cpp:125 src/openbabelwrapper.cpp:342
+#, qt-format
+msgid "File type for file '%1' is not supported for reading."
+msgstr "Tipe berkas pada berkas  '%1' tidak mempunyai dukungan untuk dibaca."
+
+#: src/moleculefile.cpp:152
+#, qt-format
+msgid "Reading molecule with index %1 from file '%2' failed."
+msgstr "Gagal membaca molekul dengan indeks %1 dari berkas '%2'."
+
+#: src/moleculefile.cpp:164
+#, qt-format
+msgid "replaceMolecule: index %1 out of reach."
+msgstr "mengganti Molekul: indeks %1 diluar jangkauan."
+
+#: src/moleculefile.cpp:173 src/openbabelwrapper.cpp:204
+#, qt-format
+msgid "File type '%1' is not supported for writing."
+msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#: src/moleculefile.cpp:179 src/openbabelwrapper.cpp:211
+#, qt-format
+msgid "File type for file '%1' is not supported for writing."
+msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#: src/moleculefile.cpp:189
+#, qt-format
+msgid "Could not open file '%1' for writing."
+msgstr "Tidak bisa membuka berkas '%1' untuk ditulis."
+
+#: src/moleculefile.cpp:196
+#, qt-format
+msgid "Could not open file '%1' for reading."
+msgstr "Tidak bisa membuka berkas '%1' untuk dibaca."
+
+#: src/moleculefile.cpp:205
+#, qt-format
+msgid "Replacing molecule with index %1 in file '%2' failed."
+msgstr "Gagal mengganti molekul dengan indeks %1 pada berkas '%2'"
+
+#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:325
+#, qt-format
+msgid "File %1 can not be opened for reading."
+msgstr "Berkas %1 tidak bisa dibuka untuk dibaca."
+
+#: src/openbabelwrapper.cpp:94
+#, qt-format
+msgid "File type '%1' is not a supported for reading."
+msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#: src/openbabelwrapper.cpp:101
+#, qt-format
+msgid "File type for file '%1' is not a supported for reading."
+msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#: src/openbabelwrapper.cpp:127
+#, qt-format
+msgid "Reading a molecule from file '%1' failed."
+msgstr "Gagal membaca molekul pada berkas '%1'."
+
+#: src/openbabelwrapper.cpp:139 src/openbabelwrapper.cpp:191
+#, qt-format
+msgid "File %1 can not be opened for writing."
+msgstr "Berkas %1 tidak bisa dibuka untuk ditulis."
+
+#: src/openbabelwrapper.cpp:152
+#, qt-format
+msgid "File type '%1' is not a supported for writing."
+msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#: src/openbabelwrapper.cpp:159
+#, qt-format
+msgid "File type for file '%1' is not a supported for writing."
+msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#: src/openbabelwrapper.cpp:177
+#, qt-format
+msgid "Writing a molecule to file '%1' failed."
+msgstr "Gagal menulis molekul ke berkas '%1'."
+
+#: src/openbabelwrapper.cpp:243
+#, qt-format
+msgid "Writing conformers to file '%1' failed."
+msgstr "Gagal menulis conformer ke berkas '%1'."
+
+#: src/openbabelwrapper.cpp:387
+#, qt-format
+msgid "Molecule %1"
+msgstr "Molekul %1"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Tabel Periodik"
+
+#: src/plugin.cpp:42
+msgid "No Description"
+msgstr "Tidak ada penjelasan"
+
+#: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
+msgid "Unknown Python Engine"
+msgstr "Enjin Python Tidak Dikenal"
+
+#: src/pythonengine_p.cpp:100 src/pythonengine_p.cpp:108
+#: src/pythonextension_p.cpp:86 src/pythonextension_p.cpp:96
+#: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
+#: src/pythontool_p.cpp:130
+msgid "N/A"
+msgstr "TidakAda"
+
+#: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
+msgid "PythonEngine: checking "
+msgstr "PythonEngine: memeriksa "
+
+#: src/pythonengine_p.cpp:242
+msgid "  - script has no 'Engine' class defined"
+msgstr "  - skrip belum mendefinisikan 'Enjin' class"
+
+#: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:338
+#: src/pythontool_p.cpp:342
+msgid "  - no module"
+msgstr "  - tidak ada modul"
+
+#: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
+msgid "Unknown Python Extension"
+msgstr "Ekstensi Python Tidak Dikenal"
+
+#: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
+msgid "&Scripts"
+msgstr "&Skrip"
+
+#: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
+msgid "PythonExtension: checking "
+msgstr "PythonExtension: pengecekan "
+
+#: src/pythonextension_p.cpp:333
+msgid "  - script has no 'Extension' class defined"
+msgstr "  - skrip belum mendefiniskan 'Ekstensi' class"
+
+#: src/pythontool_p.cpp:90 src/pythontool_p.cpp:98
+msgid "Unknown Python Tool"
+msgstr "Alat Python Tidak Dikenal"
+
+#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+msgid "PythonTool: checking "
+msgstr "PythonTool: pengecekan "
+
+#: src/pythontool_p.cpp:337
+msgid "  - script has no 'Tool' class defined"
+msgstr "  - skrip tidak mempunyai definisi 'Tool' class"
+
+#: src/tool.cpp:57
+msgid "Tools"
+msgstr "Alat-alat"
+
+#: src/tools/aligntool.cpp:62
+msgid ""
+"Align Molecules\n"
+"\n"
+"Left Mouse: \tSelect up to two atoms.\n"
+"\tThe first atom is centered at the origin.\n"
+"\tThe second atom is aligned to the selected axis.\n"
+"Right Mouse: \tReset alignment."
+msgstr ""
+"Pelurusan Molekul\n"
+"\n"
+"Tetikus Kiri: \tMemilih sampai dua atom.\n"
+"\tAtom pertama ditengahkan pada titik pusat.\n"
+"\tAtom kedua diluruskan menurut sumbu yang dipilih.\n"
+"Tetikus Kanan: \tTata ulang pelurusan."
+
+#: src/tools/aligntool.cpp:254
+msgid "Axis:"
+msgstr "Sumbu:"
+
+#: src/tools/aligntool.cpp:265
+msgid "Align:"
+msgstr "Pelurusan:"
+
+#: src/tools/aligntool.cpp:270
+msgid "Everything"
+msgstr "Semuanya"
+
+#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+msgid "Molecule"
+msgstr "Molekul"
+
+#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+msgid "Align"
+msgstr "Pelurusan"
+
+#: src/tools/aligntool.h:41
+msgid "Align molecules to a Cartesian axis"
+msgstr "Pelurusan molekul menurut sumbu Kartesian"
+
+#: src/tools/aligntool.h:42
+msgid "Aign Settings"
+msgstr "Pengaturan Pelurusan"
+
+#: src/tools/autoopttool.cpp:59
+msgid ""
+"Auto Optimization Tool\n"
+"\n"
+"Navigation Functions when Clicking in empty space.\n"
+"Left Mouse: Rotate Space\n"
+"Middle Mouse: Zoom Space\n"
+"Right Mouse: Move Space\n"
+"\n"
+"Extra Function when running\n"
+"Left Mouse: Click and drag atoms to move them"
+msgstr ""
+"Bantuan Optimisasi Otomatis\n"
+"\n"
+"Fungsi navigasi ketika klik ruang kosong.\n"
+"Tetikus Kiri: Memutar Ruang\n"
+"Tetikus Tengah: Memperbesar Ruang\n"
+"Tetikus Kanan: Menggerakkan Ruang\n"
+"\n"
+"Fungsi tambahan ketika proses\n"
+"Tetikus Kiri: Kilk dan menyeret atom untuk menggeser"
+
+#: src/tools/autoopttool.cpp:221
+msgid "AutoOpt: Could not setup force field...."
+msgstr "AutoOpt: Tidak bisa mengatur bidang gaya...."
+
+#: src/tools/autoopttool.cpp:225
+#, qt-format
+msgid "AutoOpt: E = %1 %2 (dE = %3)"
+msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#: src/tools/autoopttool.cpp:254
+msgid "Force Field:"
+msgstr "Bidang Gaya:"
+
+#: src/tools/autoopttool.cpp:269
+msgid "Steps per Update:"
+msgstr "Jumlah Langkah setiap Pembaruan:"
+
+#: src/tools/autoopttool.cpp:280
+msgid "Algorithm:"
+msgstr "Algoritma:"
+
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:283 :298
+msgid "Steepest Descent"
+msgstr "Cara Steepest Descent"
+
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:284 :300
+msgid "Conjugate Gradients"
+msgstr "Cara Conjugate Gradients"
+
+#: src/tools/autoopttool.cpp:285
+msgid "Molecular Dynamics (300K)"
+msgstr "Dinamika Molekuler (300K)"
+
+#: src/tools/autoopttool.cpp:286
+msgid "Molecular Dynamics (600K)"
+msgstr "Dinamika Molekuler (600K)"
+
+#: src/tools/autoopttool.cpp:287
+msgid "Molecular Dynamics (900K)"
+msgstr "Dinamika Molekuler (900K)"
+
+#: src/tools/autoopttool.cpp:289 src/tools/autoopttool.cpp:382
+#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+msgid "Start"
+msgstr "Mulai"
+
+#: src/tools/autoopttool.cpp:291
+msgid "Fixed atoms are movable"
+msgstr "Atom-atom tetap dapat dipindahkan"
+
+#: src/tools/autoopttool.cpp:292
+msgid "Ignored atoms are movable"
+msgstr "Atom-atom yang lain dapat dipindahkan"
+
+#: src/tools/autoopttool.cpp:349 src/tools/autorotatetool.cpp:220
+msgid "Stop"
+msgstr "Berhenti"
+
+#: src/tools/autoopttool.cpp:559
+msgid "AutoOpt Molecule"
+msgstr "AutoOpt Molekul"
+
+#: src/tools/autoopttool.h:94
+msgid "AutoOptimization"
+msgstr "OptimisasiOtomatis"
+
+#: src/tools/autoopttool.h:95
+msgid "Automatic optimization of molecular geometry"
+msgstr "Optimisasi otomatis untuk geometri molekul"
+
+#: src/tools/autoopttool.h:96
+msgid "AutoOptimization Settings"
+msgstr "Pengaturan OptimisasiOtomatis"
+
+#: src/tools/autorotatetool.cpp:52
+msgid "Auto Rotation Tool"
+msgstr "Bantuan Putaran Otomatis"
+
+#: src/tools/autorotatetool.cpp:245
+msgid "x rotation:"
+msgstr "rotasi x:"
+
+#: src/tools/autorotatetool.cpp:251
+msgid "x rotation"
+msgstr "rotasi x"
+
+#: src/tools/autorotatetool.cpp:261
+msgid "y rotation:"
+msgstr "rotasi y:"
+
+#: src/tools/autorotatetool.cpp:266
+msgid "y rotation"
+msgstr "rotasi y"
+
+#: src/tools/autorotatetool.cpp:276
+msgid "z rotation:"
+msgstr "rotasi z:"
+
+#: src/tools/autorotatetool.cpp:281
+msgid "z rotation"
+msgstr "rotasi z"
+
+#: src/extensions/gaussianinputdialog.ui:498
+#: src/extensions/molproinputdialog.ui:436
+#: src/extensions/mopacinputdialog.ui:347
+#: src/extensions/nwcheminputdialog.ui:432
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:292 :990 rc.cpp:1270 rc.cpp:1328
+msgid "Reset"
+msgstr "Tata Ulang"
+
+#: src/tools/autorotatetool.h:53
+msgid "AutoRotate"
+msgstr "RotasiOtomatis"
+
+#: src/tools/autorotatetool.h:54
+msgid "Automatic rotation of molecules"
+msgstr "Putaran otomatis molekul"
+
+#: src/tools/autorotatetool.h:55
+msgid "AutoRotate Settings"
+msgstr "Pengaturan PutaranOtomatis"
+
+#: src/tools/bondcentrictool.cpp:79
+msgid ""
+"Bond Centric Manipulation Tool\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view\n"
+"\n"
+"Left Click & drag on a Bond to set the Manipulation Plane:\n"
+"- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+"- Right Click & Drag one of the Atoms in the Bond to change the length"
+msgstr ""
+"Bantuan Manipulasi Ikatan Sentrik\n"
+"\n"
+"Tetikus Kiri:   Klik dan seret untuk memutar pandangan\n"
+"Tetikus Tengah: Klik dan seret untuk memperbesar dan memperkecil\n"
+"Tetikus Kanan:  Klik dan seret untuk menggeser\n"
+"\n"
+"Klik kiri & Seret pada suatu Ikatan untuk mengatur Bidang Manipulasi:\n"
+"- Kik Kiri & Seret salah satu Atom pada Ikatan untuk mengubah sudut\n"
+"- Kik Kiri & Seret salah satu Atom pada Ikatan untuk mengubah panjangnya"
+
+#: src/tools/bondcentrictool.cpp:791
+#, qt-format
+msgctxt "%L1 is the length of the bond"
+msgid "Bond Length: %L1"
+msgstr "Panjang Ikatan: %L1"
+
+#: src/tools/bondcentrictool.cpp:1597
+msgid " Show Angles"
+msgstr " Tampilkan Sudut"
+
+#: src/tools/bondcentrictool.cpp:1600
+msgid " Snap-to Bonds"
+msgstr " Kancingkan ke Ikatan"
+
+#: src/tools/bondcentrictool.cpp:1603
+msgid "Snap-to Threshold: "
+msgstr "Kancingkan ke Batas: "
+
+#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+msgid "Bond Centric Manipulation"
+msgstr "Manipulasi Ikatan Sentrik"
+
+#: src/tools/bondcentrictool.h:65
+msgid "Bond Centric Manipulate"
+msgstr "Memanipulasi Ikatan Sentrik"
+
+#: src/tools/bondcentrictool.h:66
+msgid "Manipulation of bond lengths, angles, and torsions"
+msgstr "Manipulasi panjang ikatan, sudut dan torsi"
+
+#: src/tools/bondcentrictool.h:67
+msgid "Bond Centric Manipulate Settings"
+msgstr "Pengaturan Manipulasi Ikatan Sentrik"
+
+#: src/tools/clickmeasuretool.cpp:56
+msgid ""
+"Click to Measure (F12)\n"
+"\n"
+"Left Mouse: \tSelect up to three Atoms.\n"
+"\tDistances are measured between 1-2 and 2-3\n"
+"\tAngle is measured between 1-3 using 2 as the common point\n"
+"Right Mouse: Reset the measurements."
+msgstr ""
+"Klik untuk Pengukuran (F12)\n"
+"\n"
+"Tetikus Kiri: \tPilih sampai tiga Atom.\n"
+"\tJarak diukur antara 1-2 dan 2-3\n"
+"\tSudut diukur antara 1-3 menggunakan 2 sebagai titik acuan\n"
+"Tetikus Kanan: Tata ulang cara pengukuran."
+
+#: src/tools/clickmeasuretool.cpp:147
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (1->2): %L1 %2"
+msgstr "Jarak (1->2): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:165
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (2->3): %L1 %2"
+msgstr "Jarak (2->3): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:174
+#, qt-format
+msgid "Angle: %L1 °"
+msgstr "Sudut: %L1 °"
+
+#: src/tools/clickmeasuretool.cpp:194
+#, qt-format
+msgctxt "%L1 is distance, %2 is Angstrom symbol"
+msgid "Distance (3->4): %L1 %2"
+msgstr "Jarak (3->4): %L1 %2"
+
+#: src/tools/clickmeasuretool.cpp:210
+#, qt-format
+msgid "Dihedral Angle: %1 °"
+msgstr "Sudut Dihedral: %1 °"
+
+#: src/tools/clickmeasuretool.cpp:250
+msgctxt "*1 is a number. You most likely do not need to translate this"
+msgid "*1"
+msgstr "*1"
+
+#: src/tools/clickmeasuretool.cpp:258
+msgctxt "*2 is a number. You most likely do not need to translate this"
+msgid "*2"
+msgstr "*2"
+
+#: src/tools/clickmeasuretool.cpp:267
+msgctxt "*3 is a number. You most likely do not need to translate this"
+msgid "*3"
+msgstr "*3"
+
+#: src/tools/clickmeasuretool.cpp:276
+msgctxt "*4 is a number. You most likely do not need to translate this"
+msgid "*4"
+msgstr "*4"
+
+#: src/tools/clickmeasuretool.cpp:280
+msgid "Distance(s):"
+msgstr "Jarak:"
+
+#: src/tools/clickmeasuretool.h:48
+msgid "Measure"
+msgstr "Pengukuran"
+
+#: src/tools/clickmeasuretool.h:49
+msgid "Measure bond lengths, angles, and dihedrals"
+msgstr "Pengukuran panajng ikatan, sudut, dan dihedral"
+
+#: src/tools/clickmeasuretool.h:50
+msgid "Measure Settings"
+msgstr "Pengaturan Pengukuran"
+
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1816
+msgid "Add Atom"
+msgstr "Tambah Atom"
+
+#: src/tools/drawcommand.cpp:383
+msgid "Delete Atom"
+msgstr "Hapus Atom"
+
+#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+msgid "Add Bond"
+msgstr "Tambah Ikatan"
+
+#: src/tools/drawcommand.cpp:718
+msgid "Delete Bond"
+msgstr "Hapus Ikatan"
+
+#: src/tools/drawcommand.cpp:787
+msgid "Change Element"
+msgstr "Merubah Unsur"
+
+#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+msgid "Change Bond Order"
+msgstr "Merubah Orde Ikatan"
+
+#: src/tools/drawtool.cpp:85
+msgid ""
+"Draw Tool (F8)\n"
+"\n"
+"Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+"Right Mouse: Delete Atom"
+msgstr ""
+"Bantuan Menggambar (F8)\n"
+"\n"
+"Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+"Right Mouse: Delete Atom"
+
+#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+msgid "Draw Atom"
+msgstr "Menggambar Atom"
+
+#: src/tools/drawtool.cpp:423
+msgid "Draw Bond"
+msgstr "Menggambar Ikatan"
+
+#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+msgid "Draw"
+msgstr "Menggambar"
+
+#: src/tools/drawtool.cpp:711
+msgid "Element:"
+msgstr "Unsur:"
+
+#: src/extensions/gamessinputdialog.ui:1213
+#: src/tools/drawtool.cpp:738 :602
+msgid "Other..."
+msgstr "Lainnya..."
+
+#: src/tools/drawtool.cpp:742
+msgid "Bond Order:"
+msgstr "Orde Ikatan:"
+
+#: src/tools/drawtool.cpp:747
+msgid "Single"
+msgstr "Tunggal"
+
+#: src/tools/drawtool.cpp:748
+msgid "Double"
+msgstr "Dua"
+
+#: src/tools/drawtool.cpp:749
+msgid "Triple"
+msgstr "Tiga Kali"
+
+#: src/tools/drawtool.cpp:764
+msgid "Adjust Hydrogens"
+msgstr "Atur Hidrogen"
+
+#: src/tools/drawtool.h:54
+msgid "Draw and edit atoms and bonds"
+msgstr "Menggambar dan menyunting atom serta ikatan"
+
+#: src/tools/drawtool.h:55
+msgid "Draw Settings"
+msgstr "Pengaturan Menggambar"
+
+#: src/tools/manipulatetool.cpp:51
+msgid ""
+"Manipulation Tool (F10)\n"
+"\n"
+"Left Mouse:   Click and drag to move atoms\n"
+"Middle Mouse: Click and drag to move atoms further away or closer\n"
+"Right Mouse:  Click and drag to rotate selected atoms."
+msgstr ""
+"Alat Manipulasi (F10)\n"
+"\n"
+"Tetikus Kiri:   Klik dan seret untuk menggeser atom\n"
+"Tetikus Tengah: Klik dan seret untuk menjauhkan dan mendekatkan atom\n"
+"Tetikus Kanan:  Klik dan seret untuk memutar atom tertentu."
+
+#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
+msgid "Manipulate Atom"
+msgstr "Manipulasi Atom"
+
+#: src/tools/manipulatetool.h:53
+msgid "Manipulate"
+msgstr "Manipulasi"
+
+#: src/tools/manipulatetool.h:54
+msgid "Translate, rotate, and adjust atoms and fragments"
+msgstr "Menggeser, memutar dan mengatur atom serta fragmen"
+
+#: src/tools/manipulatetool.h:55
+msgid "Manipulate Settings"
+msgstr "Pengaturan Manipulasi"
+
+#: src/tools/navigatetool.cpp:60
+msgid ""
+"Navigation Tool (F9)\n"
+"\n"
+"Left Mouse:   Click and drag to rotate the view\n"
+"Middle Mouse: Click and drag to zoom in or out\n"
+"Right Mouse:  Click and drag to move the view"
+msgstr ""
+"Alat Navigasi (F9)\n"
+"\n"
+"Tetikus Kiri:   Klik dan seret untuk memutar tampilan\n"
+"Tetikus Tengah: Klik dan seret untuk memperbesar atau memperkecil tampilan\n"
+"Tetikus Kanan:  Klik dan seret untuk menggeser tampilan"
+
+#: src/tools/navigatetool.h:52
+msgid "Navigate"
+msgstr "Navigasi"
+
+#: src/tools/navigatetool.h:53
+msgid "Translate, rotate, and zoom around the current view"
+msgstr "Menggeser, memutar dan mengatur besar kecil tampilan"
+
+#: src/tools/navigatetool.h:54
+msgid "Navigate Settings"
+msgstr "Pengaturan Navigasi"
+
+#: src/tools/selectrotatetool.cpp:58
+msgid ""
+"Selection Tool (F11)\n"
+"Click to pick individual atoms, residues, or fragments\n"
+"Drag to select a range of atoms\n"
+"Use Ctrl to toggle the selection and shift to add to the selection"
+msgstr ""
+"Alat Bantuan Pemilihan (F11)\n"
+"Klik untuk memilih  atom, residu, atau fragmen\n"
+"Seret untuk memilih beberapa atom\n"
+"Gunakan Ctrl to untuk menandai pilihan dan Shift untuk menambah pilihan"
+
+#: src/tools/selectrotatetool.cpp:411
+msgid "Selection Mode:"
+msgstr "Mode Pemilihan:"
+
+#: src/tools/selectrotatetool.cpp:416
+msgid "Atom/Bond"
+msgstr "Atom/Ikatan"
+
+#: src/tools/selectrotatetool.cpp:417
+msgid "Residue"
+msgstr "Residu"
+
+#: src/tools/selectrotatetool.h:51
+msgid "Selection"
+msgstr "Pemilihan"
+
+#: src/tools/selectrotatetool.h:52
+msgid "Select atoms, residues, and molecules"
+msgstr "Pemilihan atom, residu dan molekul"
+
+#: src/tools/selectrotatetool.h:53
+msgid "Selection Settings"
+msgstr "Pengaturan Pilihan"
+
+#: src/tools/zmatrixmodel.cpp:78
+msgid "Symbol"
+msgstr "Simbol"
+
+#: src/tools/zmatrixmodel.cpp:86
+msgid "Bond Length"
+msgstr "Panjang Ikatan"
+
+#: src/tools/zmatrixmodel.cpp:89
+msgid "Bond Angle"
+msgstr "Sudut Ikatan"
+
+#: src/tools/zmatrixmodel.cpp:92
+msgid "Dihedral Angle"
+msgstr "Sudut Dihedral"
+
+#: src/tools/zmatrixtool.cpp:86
+msgid "Z Matrix Editor..."
+msgstr "Penyunting Matriks Z"
+
+#: src/extensions/gamessinputdialog.ui:1536
+#: src/tools/zmatrixtool.h:39 :660
+msgid "Z-Matrix"
+msgstr "Matriks-Z"
+
+#: src/tools/zmatrixtool.h:40
+msgid "Create/edit a z-matrix"
+msgstr "Membuat/menyunting matriks-z"
+
+#: src/tools/zmatrixtool.h:41
+msgid "Z-Matrix Settings"
+msgstr "Pengaturan Matriks-Z"
+
+#: src/colors/residuecolorsettings.ui:13
+msgid "Residue Color Settings"
+msgstr "Pengaturan Warna Residu"
+
+#: src/colors/residuecolorsettings.ui:19
+msgid "Color residues by:"
+msgstr "Warna Residu berdasarkan:"
+
+#: src/colors/residuecolorsettings.ui:27
+msgid "Amino Colors"
+msgstr "Warna Amino"
+
+#: src/colors/residuecolorsettings.ui:32
+msgid "Shapely Colors"
+msgstr "Warna pilihan"
+
+#: src/colors/residuecolorsettings.ui:37
+msgid "Hydrophobicity"
+msgstr "Hidrofobisitas"
+
+#: src/engines/bsdysettingswidget.ui:18
+msgid "Atom Radius:"
+msgstr "Jejari Atom:"
+
+#: src/engines/bsdysettingswidget.ui:47
+msgid "Bond Radius:"
+msgstr "Jejari Ikatan:"
+
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/orbitalsettingswidget.ui:30
+#: src/engines/ringsettingswidget.ui:16
+#: src/engines/surfacesettingswidget.ui:17
+msgid "Opacity:"
+msgstr "Opasitas:"
+
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
+msgid "Show Multiple Bonds"
+msgstr "Tampilkan Ikatan Berganda"
+
+#: src/engines/cartoonsettingswidget.ui:17
+msgid "Shape"
+msgstr "Bentuk"
+
+#: src/engines/cartoonsettingswidget.ui:23
+#: src/engines/cartoonsettingswidget.ui:311
+msgid "Helix"
+msgstr "Heliks"
+
+#: src/engines/cartoonsettingswidget.ui:45
+#: src/engines/cartoonsettingswidget.ui:138
+#: src/engines/cartoonsettingswidget.ui:231
+msgid "a"
+msgstr "a"
+
+#: src/engines/cartoonsettingswidget.ui:68
+#: src/engines/cartoonsettingswidget.ui:161
+#: src/engines/cartoonsettingswidget.ui:254
+msgid "b"
+msgstr "b"
+
+#: src/engines/cartoonsettingswidget.ui:91
+#: src/engines/cartoonsettingswidget.ui:184
+#: src/engines/cartoonsettingswidget.ui:277
+msgid "c"
+msgstr "c"
+
+#: src/engines/cartoonsettingswidget.ui:116
+#: src/engines/cartoonsettingswidget.ui:334
+msgid "Sheet"
+msgstr "Lembar"
+
+#: src/engines/cartoonsettingswidget.ui:209
+#: src/engines/cartoonsettingswidget.ui:357
+#: src/extensions/animationdialog.ui:169
+#: src/extensions/gamessinputdialog.ui:1904
+#: src/extensions/linmorphdialog.ui:181
+msgid "Loop"
+msgstr "Loop"
+
+#: src/engines/cartoonsettingswidget.ui:305
+msgid "Colors"
+msgstr "Warna"
+
+#: src/engines/dipolesettingswidget.ui:22
+msgid "Dipole:"
+msgstr "Duakutub:"
+
+#: src/engines/dipolesettingswidget.ui:54
+msgid "Dipole Moment"
+msgstr "Momen Duakutub:"
+
+#: src/engines/dipolesettingswidget.ui:59
+msgid "Custom Value"
+msgstr "Angka Penyesuaian"
+
+#: src/engines/dipolesettingswidget.ui:70
+msgid "Custom:"
+msgstr "Penyesuaian:"
+
+#: src/engines/hbondsettingswidget.ui:16
+msgid "Width:"
+msgstr "Lebar:"
+
+#: src/engines/hbondsettingswidget.ui:57
+msgid "Cut-off radius:"
+msgstr "Jejari potong:"
+
+#: src/engines/hbondsettingswidget.ui:64
+#: src/extensions/insertpeptidedialog.ui:454
+msgid "A"
+msgstr "A"
+
+#: src/engines/hbondsettingswidget.ui:74
+#: src/extensions/insertpeptidedialog.ui:394
+#: src/extensions/insertpeptidedialog.ui:410
+msgid "°"
+msgstr "°"
+
+#: src/engines/hbondsettingswidget.ui:90
+msgid "Cut-off angle:"
+msgstr "Sudut potong:"
+
+#: src/engines/labelsettingswidget.ui:23
+#: src/engines/overlaysettingswidget.ui:22
+msgid "Atom Labels:"
+msgstr "Label Atom:"
+
+#: src/engines/labelsettingswidget.ui:60
+#: src/engines/overlaysettingswidget.ui:59
+msgid "Atom number"
+msgstr "Nomor atom"
+
+#: src/engines/labelsettingswidget.ui:65
+#: src/engines/overlaysettingswidget.ui:64
+msgid "Element name"
+msgstr "Nama Unsur"
+
+#: src/engines/labelsettingswidget.ui:70
+#: src/engines/overlaysettingswidget.ui:69
+msgid "Element symbol"
+msgstr "Simbol unsur"
+
+#: src/engines/labelsettingswidget.ui:80
+#: src/engines/overlaysettingswidget.ui:79
+msgid "Residue number"
+msgstr "Nomor residu"
+
+#: src/engines/labelsettingswidget.ui:90
+#: src/engines/labelsettingswidget.ui:160
+msgid "Unique ID"
+msgstr "ID khusus"
+
+#: src/engines/labelsettingswidget.ui:95
+msgid "Symbol & Atom Number"
+msgstr "Simbol & Nomor Atom"
+
+#: src/engines/labelsettingswidget.ui:100
+msgid "Custom Data"
+msgstr "Data Penyesuaian"
+
+#: src/engines/labelsettingswidget.ui:108
+#: src/engines/overlaysettingswidget.ui:92
+msgid "Bond Labels:"
+msgstr "Label Ikatan:"
+
+#: src/engines/labelsettingswidget.ui:145
+#: src/engines/overlaysettingswidget.ui:129
+msgid "Bond length"
+msgstr "Panjang Ikatan"
+
+#: src/engines/labelsettingswidget.ui:150
+#: src/engines/overlaysettingswidget.ui:134
+msgid "Bond number"
+msgstr "Nomor Ikatan"
+
+#: src/engines/labelsettingswidget.ui:155
+#: src/engines/overlaysettingswidget.ui:139
+msgid "Bond order"
+msgstr "Orde Ikatan"
+
+#: src/engines/orbitalsettingswidget.ui:17
+msgid "Orbital:"
+msgstr "Orbit:"
+
+#: src/engines/orbitalsettingswidget.ui:74
+#: src/engines/surfacesettingswidget.ui:58
+msgid "Render:"
+msgstr "Menggambar:"
+
+#: src/engines/orbitalsettingswidget.ui:85
+#: src/engines/surfacesettingswidget.ui:66
+msgid "Fill"
+msgstr "Berisi"
+
+#: src/engines/orbitalsettingswidget.ui:90
+#: src/engines/ribbonsettingswidget.ui:29
+#: src/engines/surfacesettingswidget.ui:71
+msgid "Lines"
+msgstr "Garis-garis"
+
+#: src/engines/orbitalsettingswidget.ui:95
+#: src/engines/surfacesettingswidget.ui:76
+msgid "Points"
+msgstr "Titik-titik"
+
+#: src/engines/orbitalsettingswidget.ui:103
+#: src/engines/surfacesettingswidget.ui:108
+msgid "Draw Box:"
+msgstr "Menggambar Kotak:"
+
+#: src/engines/orbitalsettingswidget.ui:129
+msgid "Style:"
+msgstr "Corak Gaya:"
+
+#: src/engines/orbitalsettingswidget.ui:140
+msgid "Selected Colors"
+msgstr "Warna Pilihan"
+
+#: src/engines/orbitalsettingswidget.ui:145
+msgid "Mapped Colors"
+msgstr "Peta Warna"
+
+#: src/engines/orbitalsettingswidget.ui:153
+msgid "Colors:"
+msgstr "Warna-warna:"
+
+#: src/engines/orbitalsettingswidget.ui:165
+msgid "Positive"
+msgstr "Positif"
+
+#: src/engines/orbitalsettingswidget.ui:188
+msgid "Negative"
+msgstr "Negatif"
+
+#: src/engines/ribbonsettingswidget.ui:16
+msgid "Rendering:"
+msgstr "Penggambaran:"
+
+#: src/engines/ribbonsettingswidget.ui:24
+msgid "Backbone"
+msgstr "Tulangpunggung"
+
+#: src/engines/ribbonsettingswidget.ui:37
+#: src/engines/sticksettingswidget.ui:16
+msgid "Radius:"
+msgstr "Jejari:"
+
+#: src/engines/ribbonsettingswidget.ui:91
+msgid "Include Nitrogens"
+msgstr "Termasuk Nitrogen"
+
+#: src/engines/spheresettingswidget.ui:16
+msgid "VdW Opacity:"
+msgstr "Opasitas VdW:"
+
+#: src/engines/surfacesettingswidget.ui:84
+msgid "Color:"
+msgstr "Warna:"
+
+#: src/engines/surfacesettingswidget.ui:100
+msgid "Electrostatic Potential (ESP)"
+msgstr "Potensial Elektrostatik (ESP)"
+
+#: src/engines/wiresettingswidget.ui:18
+msgid "Show Atoms"
+msgstr "Perlihatkan Atom"
+
+#: src/extensions/animationdialog.ui:14
+msgid "Animate Trajectory"
+msgstr "Animasi Trayektori"
+
+#: src/extensions/animationdialog.ui:25
+msgid "Load File..."
+msgstr "Memuat Berkas..."
+
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
+msgid "0/0"
+msgstr "0/0"
+
+#: src/extensions/animationdialog.ui:162
+msgid "Dynamic Bonds"
+msgstr "Ikatan Dinamik"
+
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
+msgid "fps"
+msgstr "fps"
+
+#: src/extensions/animationdialog.ui:216
+msgid "Save as .avi..."
+msgstr "Simpan sebagai .avi..."
+
+#: src/extensions/conformersearchdialog.ui:13
+msgid "Conformer Search"
+msgstr "Pencarian Conformer"
+
+#: src/extensions/conformersearchdialog.ui:19
+#: src/extensions/constraintsdialog.ui:132
+#: src/extensions/vibrationdialog.ui:58
+msgid "Options"
+msgstr "Pilihan"
+
+#: src/extensions/conformersearchdialog.ui:25
+msgid "Number of atoms:"
+msgstr "Jumlah atom:"
+
+#: src/extensions/conformersearchdialog.ui:32
+msgid "Number of rotatable bonds:"
+msgstr "Jumlah ikatan yang bisa diputar:"
+
+#: src/extensions/conformersearchdialog.ui:41
+msgid "Number of conformers"
+msgstr "Jumlah dari conformer"
+
+#: src/extensions/conformersearchdialog.ui:60
+#: src/extensions/gamessinputdialog.ui:2559
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
+#: src/extensions/pocketdialog.ui:34
+msgid "Method"
+msgstr "Metoda"
+
+#: src/extensions/conformersearchdialog.ui:66
+msgid "Systematic rotor search"
+msgstr "Pencarian rotor sistematik"
+
+#: src/extensions/conformersearchdialog.ui:73
+msgid "Random rotor search"
+msgstr "Pencarian rotor acak"
+
+#: src/extensions/conformersearchdialog.ui:80
+msgid "Weighted rotor search"
+msgstr "Pencarian rotor terbeban"
+
+#: src/extensions/constraintsdialog.ui:13
+msgid "Constraints"
+msgstr "Kendala"
+
+#: src/extensions/constraintsdialog.ui:26
+msgid "Add Constraints"
+msgstr "Tambah kendala"
+
+#: src/extensions/constraintsdialog.ui:48
+msgid "Ignore Atom"
+msgstr "Tidak Hiraukan Atom"
+
+#: src/extensions/constraintsdialog.ui:53
+msgid "Fix Atom"
+msgstr "Atom tetap"
+
+#: src/extensions/constraintsdialog.ui:58
+msgid "Fix Atom X"
+msgstr "Atom Tetap X"
+
+#: src/extensions/constraintsdialog.ui:63
+msgid "Fix Atom Y"
+msgstr "Atom Tetap Y"
+
+#: src/extensions/constraintsdialog.ui:68
+msgid "Fix Atom Z"
+msgstr "Atom Tetap Z"
+
+#: src/extensions/constraintsdialog.ui:73
+msgid "Distance"
+msgstr "Jarak"
+
+#: src/extensions/constraintsdialog.ui:78
+msgid "Angle"
+msgstr "Sudut"
+
+#: src/extensions/constraintsdialog.ui:83
+msgid "Torsion angle"
+msgstr "Sudut Torsi"
+
+#: src/extensions/constraintsdialog.ui:91
+msgid "Constraint Value"
+msgstr "Angka Kendala"
+
+#: src/extensions/constraintsdialog.ui:101
+msgid "Atom Indices"
+msgstr "Indeks Atom"
+
+#: src/extensions/constraintsdialog.ui:120
+msgid "Add"
+msgstr "Tambah"
+
+#: src/extensions/constraintsdialog.ui:143
+msgid "Save"
+msgstr "Simpan"
+
+#: src/extensions/constraintsdialog.ui:153
+msgid "Load"
+msgstr "Muat"
+
+#: src/extensions/constraintsdialog.ui:185
+msgid "Delete Selected"
+msgstr "Hapus Pilihan"
+
+#: src/extensions/constraintsdialog.ui:192
+msgid "Delete All"
+msgstr "Hapus Semua"
+
+#: src/extensions/fileimportdialog.ui:19
+msgid "File Import..."
+msgstr "Impor Berkas..."
+
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
+msgid "Filename:"
+msgstr "Nama berkas:"
+
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
+#: src/extensions/shaderdialog.ui:115
+msgid "Browse..."
+msgstr "Cari..."
+
+#: src/extensions/fileimportdialog.ui:46
+msgid "Par File:"
+msgstr "Berkas Par:"
+
+#: src/extensions/fileimportdialog.ui:67
+msgid "Attempt to perceive bonds?"
+msgstr "Berusaha melihat ikatan?"
+
+#: src/extensions/fileimportdialog.ui:70
+msgid "Perceive bonds?"
+msgstr "Melihat ikatan?"
+
+#: src/extensions/forcefielddialog.ui:13
+msgid "Setup Force Field"
+msgstr "Pengaturan Bidang Gaya"
+
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
+msgid "Force Field"
+msgstr "Bidang Gaya"
+
+#: src/extensions/forcefielddialog.ui:42
+msgid "Ghemical"
+msgstr "Kimia"
+
+#: src/extensions/forcefielddialog.ui:59
+#: src/extensions/gaussianinputdialog.ui:68
+#: src/extensions/molproinputdialog.ui:69
+#: src/extensions/mopacinputdialog.ui:68
+#: src/extensions/nwcheminputdialog.ui:69
+#: src/extensions/qcheminputdialog.ui:69
+msgid "Geometry Optimization"
+msgstr "Optimisasi Geometri"
+
+#: src/extensions/forcefielddialog.ui:65
+msgid "Number of steps"
+msgstr "Jumlah Langkah"
+
+#: src/extensions/forcefielddialog.ui:82
+msgid "Algorithm"
+msgstr "Algoritma"
+
+#: src/extensions/forcefielddialog.ui:103
+msgid "Convergence"
+msgstr "Konvergensi"
+
+#: src/extensions/forcefielddialog.ui:113
+msgid "10e-"
+msgstr "10e-"
+
+#: src/extensions/gamessefpmatchdialog.ui:16
+msgid "EFP Matches"
+msgstr "EFP Matches"
+
+#: src/extensions/gamessefpmatchdialog.ui:25
+msgid "Group Label:"
+msgstr "Label Grup:"
+
+#: src/extensions/gamessinputdialog.ui:13
+msgid "GAMESS Input"
+msgstr "Masukan GAMESS"
+
+#: src/extensions/gamessinputdialog.ui:23
+msgid "&Basic Setup"
+msgstr "Pengaturan Dasar"
+
+#: src/extensions/gamessinputdialog.ui:32
+#: src/extensions/gamessinputdialog.ui:660
+#: src/extensions/gaussianinputdialog.ui:149
+#: src/extensions/mopacinputdialog.ui:202
+msgid "AM1"
+msgstr "AM1"
+
+#: src/extensions/gamessinputdialog.ui:37
+#: src/extensions/gamessinputdialog.ui:665
+#: src/extensions/gaussianinputdialog.ui:154
+#: src/extensions/mopacinputdialog.ui:217
+msgid "PM3"
+msgstr "PM3"
+
+#: src/extensions/gamessinputdialog.ui:42
+#: src/extensions/gamessinputdialog.ui:947
+#: src/extensions/gaussianinputdialog.ui:159
+msgid "RHF"
+msgstr "RHF"
+
+#: src/extensions/gamessinputdialog.ui:47
+#: src/extensions/gamessinputdialog.ui:2278
+#: src/extensions/gaussianinputdialog.ui:164
+#: src/extensions/molproinputdialog.ui:143
+#: src/extensions/nwcheminputdialog.ui:143
+#: src/extensions/qcheminputdialog.ui:143
+msgid "B3LYP"
+msgstr "B3LYP"
+
+#: src/extensions/gamessinputdialog.ui:52
+#: src/extensions/gamessinputdialog.ui:384
+#: src/extensions/gaussianinputdialog.ui:169
+#: src/extensions/molproinputdialog.ui:138
+#: src/extensions/nwcheminputdialog.ui:138
+#: src/extensions/qcheminputdialog.ui:138
+msgid "MP2"
+msgstr "MP2"
+
+#: src/extensions/gamessinputdialog.ui:57
+#: src/extensions/gamessinputdialog.ui:1134
+#: src/extensions/molproinputdialog.ui:153
+msgid "CCSD(T)"
+msgstr "CCSD(T)"
+
+#: src/extensions/gamessinputdialog.ui:66
+#: src/extensions/gamessinputdialog.ui:575
+#: src/extensions/gaussianinputdialog.ui:213
+#: src/extensions/molproinputdialog.ui:192
+#: src/extensions/nwcheminputdialog.ui:187
+#: src/extensions/qcheminputdialog.ui:202
+msgid "STO-3G"
+msgstr "STO-3G"
+
+#: src/extensions/gamessinputdialog.ui:71
+#: src/extensions/gamessinputdialog.ui:560
+msgid "MINI"
+msgstr "MINI"
+
+#: src/extensions/gamessinputdialog.ui:76
+#: src/extensions/gamessinputdialog.ui:595
+#: src/extensions/gaussianinputdialog.ui:218
+#: src/extensions/molproinputdialog.ui:197
+#: src/extensions/nwcheminputdialog.ui:192
+#: src/extensions/qcheminputdialog.ui:207
+msgid "3-21G"
+msgstr "3-21G"
+
+#: src/extensions/gamessinputdialog.ui:81
+#: src/extensions/gaussianinputdialog.ui:223
+#: src/extensions/molproinputdialog.ui:202
+#: src/extensions/nwcheminputdialog.ui:197
+#: src/extensions/qcheminputdialog.ui:212
+msgid "6-31G(d)"
+msgstr "6-31G(d)"
+
+#: src/extensions/gamessinputdialog.ui:86
+#: src/extensions/gaussianinputdialog.ui:228
+#: src/extensions/molproinputdialog.ui:207
+#: src/extensions/nwcheminputdialog.ui:202
+#: src/extensions/qcheminputdialog.ui:217
+msgid "6-31G(d,p)"
+msgstr "6-31G(d,p)"
+
+#: src/extensions/gamessinputdialog.ui:91
+msgid "6-31+G(d,p)"
+msgstr "6-31+G(d,p)"
+
+#: src/extensions/gamessinputdialog.ui:96
+msgid "6-31+G(2d,p)"
+msgstr "6-31+G(2d,p)"
+
+#: src/extensions/gamessinputdialog.ui:101
+msgid "6-311++G(2d,p)"
+msgstr "6-311++G(2d,p)"
+
+#: src/extensions/gamessinputdialog.ui:106
+msgid "Core Potential"
+msgstr "Inti Potensial"
+
+#: src/extensions/gamessinputdialog.ui:132
+#: src/extensions/mopacinputdialog.ui:143
+msgid "Singlet"
+msgstr "Singlet"
+
+#: src/extensions/gamessinputdialog.ui:137
+#: src/extensions/mopacinputdialog.ui:148
+msgid "Doublet"
+msgstr "Kembar"
+
+#: src/extensions/gamessinputdialog.ui:142
+#: src/extensions/mopacinputdialog.ui:153
+msgid "Triplet"
+msgstr "Kembar tiga"
+
+#: src/extensions/gamessinputdialog.ui:151
+msgid "Dication"
+msgstr "Dication"
+
+#: src/extensions/gamessinputdialog.ui:156
+msgid "Cation"
+msgstr "Cation"
+
+#: src/extensions/gamessinputdialog.ui:161
+msgid "Neutral"
+msgstr "Netral"
+
+#: src/extensions/gamessinputdialog.ui:166
+msgid "Anion"
+msgstr "Anion"
+
+#: src/extensions/gamessinputdialog.ui:171
+msgid "Dianion"
+msgstr "Dianion"
+
+#: src/extensions/gamessinputdialog.ui:194
+msgid "On:"
+msgstr "Aktif:"
+
+#: src/extensions/gamessinputdialog.ui:210
+msgid "Single Point Entry"
+msgstr "Entri Satu Poin"
+
+#: src/extensions/gamessinputdialog.ui:215
+msgid "Equilibrium Geometry"
+msgstr "Kesetimbangan Geometri"
+
+#: src/extensions/gamessinputdialog.ui:220
+msgid "Transition State"
+msgstr "Keadaan Transisi"
+
+#: src/extensions/gamessinputdialog.ui:225
+#: src/extensions/gaussianinputdialog.ui:73
+#: src/extensions/molproinputdialog.ui:74
+#: src/extensions/mopacinputdialog.ui:73
+#: src/extensions/nwcheminputdialog.ui:74
+#: src/extensions/qcheminputdialog.ui:74
+msgid "Frequencies"
+msgstr "Frekuensi"
+
+#: src/extensions/gamessinputdialog.ui:251
+msgid "Gas"
+msgstr "Gas"
+
+#: src/extensions/gamessinputdialog.ui:256
+msgid "Water"
+msgstr "Air"
+
+#: src/extensions/gamessinputdialog.ui:279
+#: src/extensions/gamessinputdialog.ui:2674
+msgid "Calculate"
+msgstr "Menghitung"
+
+#: src/extensions/gamessinputdialog.ui:289
+msgid "With:"
+msgstr "Dengan:"
+
+#: src/extensions/gamessinputdialog.ui:299
+#: src/extensions/orbitaldialog.ui:556
+#: src/extensions/orbitaldialog.ui:773
+msgid "In:"
+msgstr "Dalam:"
+
+#: src/extensions/gamessinputdialog.ui:326
+msgid "&Advanced Setup"
+msgstr "Pengaturan Lanjut"
+
+#: src/extensions/gamessinputdialog.ui:360
+msgid "Advanced"
+msgstr "Lanjut"
+
+#: src/extensions/gamessinputdialog.ui:365
+msgid "Basis"
+msgstr "Basis"
+
+#: src/extensions/gamessinputdialog.ui:370
+msgid "Control"
+msgstr "Kontrol"
+
+#: src/extensions/gamessinputdialog.ui:374
+msgid "SCF"
+msgstr "SCF"
+
+#: src/extensions/gamessinputdialog.ui:379
+msgid "DFT"
+msgstr "DFT"
+
+#: src/extensions/gamessinputdialog.ui:389
+#: src/extensions/gamessinputdialog.ui:826
+msgid "Hessian"
+msgstr "Hessian"
+
+#: src/extensions/gamessinputdialog.ui:394
+msgid "Stat Point"
+msgstr "Poin Stat"
+
+#: src/extensions/gamessinputdialog.ui:400
+msgid "Data"
+msgstr "Data"
+
+#: src/extensions/gamessinputdialog.ui:405
+msgid "System"
+msgstr "Sistem"
+
+#: src/extensions/gamessinputdialog.ui:410
+msgid "MO Guess"
+msgstr "Kiraan MO"
+
+#: src/extensions/gamessinputdialog.ui:415
+msgid "Misc"
+msgstr "Lain-lain"
+
+#: src/extensions/gamessinputdialog.ui:436
+msgid "#D Heavy Atom Polarization Functions:"
+msgstr "#D Fungsi Polarisasi Atom Berat:"
+
+#: src/extensions/gamessinputdialog.ui:454
+msgid "Read"
+msgstr "Baca"
+
+#: src/extensions/gamessinputdialog.ui:459
+msgid "SBKJC"
+msgstr "SBKJC"
+
+#: src/extensions/gamessinputdialog.ui:464
+msgid "Hay-Wadt"
+msgstr "Hay-Wadt"
+
+#: src/extensions/gamessinputdialog.ui:489
+msgid "Diffuse S-Shell on Heavy Atoms"
+msgstr "Menghamburkan S-Shell pada Atom"
+
+#: src/extensions/gamessinputdialog.ui:496
+msgid "Diffuse L-Shell on Heavy Atoms"
+msgstr "Hamburkan L-Shell pada Atom Berat"
+
+#: src/extensions/gamessinputdialog.ui:546
+msgid "Basis Set:"
+msgstr "Aturan Dasar:"
+
+#: src/extensions/gamessinputdialog.ui:565
+msgid "MIDI"
+msgstr "MIDI"
+
+#: src/extensions/gamessinputdialog.ui:570
+msgid "STO-2G"
+msgstr "STO-2G"
+
+#: src/extensions/gamessinputdialog.ui:580
+msgid "STO-4G"
+msgstr "STO-4G"
+
+#: src/extensions/gamessinputdialog.ui:585
+msgid "STO-5G"
+msgstr "STO-5G"
+
+#: src/extensions/gamessinputdialog.ui:590
+msgid "STO-6G"
+msgstr "STO-6G"
+
+#: src/extensions/gamessinputdialog.ui:600
+msgid "6-21G"
+msgstr "6-21G"
+
+#: src/extensions/gamessinputdialog.ui:605
+msgid "4-31G"
+msgstr "4-31G"
+
+#: src/extensions/gamessinputdialog.ui:610
+msgid "5-31G"
+msgstr "5-31G"
+
+#: src/extensions/gamessinputdialog.ui:615
+msgid "6-31G"
+msgstr "6-31G"
+
+#: src/extensions/gamessinputdialog.ui:620
+msgid "6-311G"
+msgstr "6-311G"
+
+#: src/extensions/gamessinputdialog.ui:625
+msgid "Double Zeta Valence"
+msgstr "Valensi Dua Zeta"
+
+#: src/extensions/gamessinputdialog.ui:630
+msgid "Dunning/Hay DZ"
+msgstr "Dunning/Hay DZ"
+
+#: src/extensions/gamessinputdialog.ui:635
+msgid "Triple Zeta Valence"
+msgstr "Valensi Tiga Zeta"
+
+#: src/extensions/gamessinputdialog.ui:640
+msgid "McLean/Chandler"
+msgstr "McLean/Chandler"
+
+#: src/extensions/gamessinputdialog.ui:645
+msgid "SBKJA Valence"
+msgstr "Valensi SBKJA"
+
+#: src/extensions/gamessinputdialog.ui:650
+msgid "Hay/Wadt Valence"
+msgstr "Valensi Hay/Wadt"
+
+#: src/extensions/gamessinputdialog.ui:655
+#: src/extensions/mopacinputdialog.ui:207
+msgid "MNDO"
+msgstr "MNDO"
+
+#: src/extensions/gamessinputdialog.ui:702
+msgid "ECP Type:"
+msgstr "Tipe ECP:"
+
+#: src/extensions/gamessinputdialog.ui:716
+#: src/extensions/gamessinputdialog.ui:1847
+msgid "Default"
+msgstr "Bawaan"
+
+#: src/extensions/gamessinputdialog.ui:721
+msgid "Pople"
+msgstr "Pople"
+
+#: src/extensions/gamessinputdialog.ui:726
+msgid "Pople N311"
+msgstr "Pople N311"
+
+#: src/extensions/gamessinputdialog.ui:731
+msgid "Dunning"
+msgstr "Dunning"
+
+#: src/extensions/gamessinputdialog.ui:736
+msgid "Huzinaga"
+msgstr "Huzinaga"
+
+#: src/extensions/gamessinputdialog.ui:741
+msgid "Hondo7"
+msgstr "Hondo7"
+
+#: src/extensions/gamessinputdialog.ui:749
+msgid "#F Heavy Atom Polarization Functions:"
+msgstr "#F Fungsi Polarisasi Atom Berat:"
+
+#: src/extensions/gamessinputdialog.ui:759
+msgid "#light Atom Polarization Functions:"
+msgstr "#light Fungsi Polarisasi Atom:"
+
+#: src/extensions/gamessinputdialog.ui:776
+msgid "Polar:"
+msgstr "Kutub:"
+
+#: src/extensions/gamessinputdialog.ui:806
+msgid "Max SCF Iterations:"
+msgstr "Iterasi SCF Max:"
+
+#: src/extensions/gamessinputdialog.ui:821
+msgid "Gradient"
+msgstr "Gradient"
+
+#: src/extensions/gamessinputdialog.ui:831
+msgid "Optimization"
+msgstr "Optimisasi"
+
+#: src/extensions/gamessinputdialog.ui:836
+msgid "Trudge"
+msgstr "Tertatih"
+
+#: src/extensions/gamessinputdialog.ui:841
+msgid "Saddle Point"
+msgstr "Titik Duduk"
+
+#: src/extensions/gamessinputdialog.ui:846
+msgid "IRC"
+msgstr "IRC"
+
+#: src/extensions/gamessinputdialog.ui:851
+msgid "Gradient Extremal"
+msgstr "Gradient Extremal"
+
+#: src/extensions/gamessinputdialog.ui:856
+msgid "DRC"
+msgstr "DRC"
+
+#: src/extensions/gamessinputdialog.ui:861
+msgid "Energy Surface"
+msgstr "Permukaan Energi"
+
+#: src/extensions/gamessinputdialog.ui:871
+msgid "Morokuma"
+msgstr "Morokuma"
+
+#: src/extensions/gamessinputdialog.ui:876
+msgid "Radiative Transition mom."
+msgstr "Radiasi Transisi mom."
+
+#: src/extensions/gamessinputdialog.ui:881
+msgid "Spin Orbit"
+msgstr "Orbit Putaran"
+
+#: src/extensions/gamessinputdialog.ui:886
+msgid "Finite Electric Field"
+msgstr "Bidang Elektrik Terhingga"
+
+#: src/extensions/gamessinputdialog.ui:891
+msgid "TDHF"
+msgstr "TDHF"
+
+#: src/extensions/gamessinputdialog.ui:896
+msgid "Global Optimization"
+msgstr "Optimisasi global"
+
+#: src/extensions/gamessinputdialog.ui:901
+msgid "VSCF"
+msgstr "VSCF"
+
+#: src/extensions/gamessinputdialog.ui:906
+msgid "FMO Optimization"
+msgstr "Optimisasi FMO"
+
+#: src/extensions/gamessinputdialog.ui:911
+msgid "Raman Intensities"
+msgstr "Intensitas Raman"
+
+#: src/extensions/gamessinputdialog.ui:916
+msgid "NMR"
+msgstr "NMR"
+
+#: src/extensions/gamessinputdialog.ui:921
+msgid "Make EFP"
+msgstr "Membuat EFP"
+
+#: src/extensions/gamessinputdialog.ui:952
+msgid "UHF"
+msgstr "UHF"
+
+#: src/extensions/gamessinputdialog.ui:957
+msgid "ROHF"
+msgstr "ROHF"
+
+#: src/extensions/gamessinputdialog.ui:962
+msgid "GVB"
+msgstr "GVB"
+
+#: src/extensions/gamessinputdialog.ui:967
+msgid "MCSCF"
+msgstr "MCSCF"
+
+#: src/extensions/gamessinputdialog.ui:972
+msgid "None (CI)"
+msgstr "Kosong (Cl)"
+
+#: src/extensions/gamessinputdialog.ui:1003
+msgid "Foster-Boys"
+msgstr "Foster-Boys"
+
+#: src/extensions/gamessinputdialog.ui:1008
+msgid "Edmistron-Ruedenberg"
+msgstr "Edmistron-Ruedenberg"
+
+#: src/extensions/gamessinputdialog.ui:1013
+msgid "Pipek-Mezey"
+msgstr "Pipek-Mezey"
+
+#: src/extensions/gamessinputdialog.ui:1036
+msgid "SCF Type:"
+msgstr "Tipe SCF:"
+
+#: src/extensions/gamessinputdialog.ui:1043
+msgid "Localization Method:"
+msgstr "Metoda Localisasi:"
+
+#: src/extensions/gamessinputdialog.ui:1053
+msgid "Exec Type:"
+msgstr "Tipe Exec:"
+
+#: src/extensions/gamessinputdialog.ui:1060
+msgid "CI:"
+msgstr "CI:"
+
+#: src/extensions/gamessinputdialog.ui:1073
+msgid "GUGA"
+msgstr "GUGA"
+
+#: src/extensions/gamessinputdialog.ui:1078
+msgid "Ames Lab. Determinant"
+msgstr "Determinan Ames Lab."
+
+#: src/extensions/gamessinputdialog.ui:1083
+msgid "Occupation Restricted Multiple Active Space"
+msgstr "Penempatan Terbatas Ruang Aktif Berganda"
+
+#: src/extensions/gamessinputdialog.ui:1088
+msgid "CI Singles"
+msgstr "CI Tunggal"
+
+#: src/extensions/gamessinputdialog.ui:1093
+msgid "Full Second Order CI"
+msgstr "Orde Dua Cl Penuh"
+
+#: src/extensions/gamessinputdialog.ui:1098
+msgid "General CI"
+msgstr "CI Umum"
+
+#: src/extensions/gamessinputdialog.ui:1106
+msgid "CC:"
+msgstr "CC:"
+
+#: src/extensions/gamessinputdialog.ui:1119
+msgid "LCCD: Linearized CC"
+msgstr "LCCD:  CC Linier"
+
+#: src/extensions/gamessinputdialog.ui:1124
+msgid "CCD: CC with Doubles"
+msgstr "CCD: CC dengan Berganda"
+
+#: src/extensions/gamessinputdialog.ui:1129
+msgid "CCSD: CC with Singles and Doubles"
+msgstr "CCSD: CC dengan Tunggal dan Berganda"
+
+#: src/extensions/gamessinputdialog.ui:1139
+msgid "R-CC"
+msgstr "R-CC"
+
+#: src/extensions/gamessinputdialog.ui:1144
+msgid "CR-CC"
+msgstr "CR-CC"
+
+#: src/extensions/gamessinputdialog.ui:1149
+msgid "EOM-CCSD"
+msgstr "EOM-CCSD"
+
+#: src/extensions/gamessinputdialog.ui:1154
+msgid "CR-EOM"
+msgstr "CR-EOM"
+
+#: src/extensions/gamessinputdialog.ui:1183
+#: src/extensions/gaussianinputdialog.ui:293
+#: src/extensions/molproinputdialog.ui:297
+#: src/extensions/mopacinputdialog.ui:133
+#: src/extensions/nwcheminputdialog.ui:290
+#: src/extensions/qcheminputdialog.ui:307
+msgid "Multiplicity:"
+msgstr "Pengalian:"
+
+#: src/extensions/gamessinputdialog.ui:1198
+msgid "Normal Run"
+msgstr "Dijalankan Normal"
+
+#: src/extensions/gamessinputdialog.ui:1203
+msgid "Check"
+msgstr "Periksa"
+
+#: src/extensions/gamessinputdialog.ui:1208
+msgid "Debug"
+msgstr "Awakutu"
+
+#: src/extensions/gamessinputdialog.ui:1237
+msgid "Molecule Charge:"
+msgstr "Muatan Molekul:"
+
+#: src/extensions/gamessinputdialog.ui:1249
+msgid "Run Type:"
+msgstr "Tipe Run:"
+
+#: src/extensions/gamessinputdialog.ui:1271
+msgid "Use MP2"
+msgstr "Gunakan MP2"
+
+#: src/extensions/gamessinputdialog.ui:1297
+msgid "Use DFT"
+msgstr "Gunakan DFT"
+
+#: src/extensions/gamessinputdialog.ui:1346
+msgid "# of Z-Matrix Variables"
+msgstr "# dari Variabel Matriks-Z"
+
+#: src/extensions/gamessinputdialog.ui:1356
+msgid "Ǻngstrom"
+msgstr "Ǻngstrom"
+
+#: src/extensions/gamessinputdialog.ui:1361
+msgid "Bohr"
+msgstr "Bohr"
+
+#: src/extensions/gamessinputdialog.ui:1384
+msgid "Order of Principal Axis:"
+msgstr "Orde Sumbu Utama:"
+
+#: src/extensions/gamessinputdialog.ui:1391
+msgid "Coordinate Type:"
+msgstr "Tipe Koordinat:"
+
+#: src/extensions/gamessinputdialog.ui:1401
+msgid "C1"
+msgstr "C1"
+
+#: src/extensions/gamessinputdialog.ui:1406
+msgid "CS"
+msgstr "CS"
+
+#: src/extensions/gamessinputdialog.ui:1411
+msgid "CI"
+msgstr "CI"
+
+#: src/extensions/gamessinputdialog.ui:1416
+msgid "CnH"
+msgstr "CnH"
+
+#: src/extensions/gamessinputdialog.ui:1421
+msgid "CnV"
+msgstr "CnV"
+
+#: src/extensions/gamessinputdialog.ui:1426
+msgid "Cn"
+msgstr "Cn"
+
+#: src/extensions/gamessinputdialog.ui:1431
+msgid "S2n"
+msgstr "S2n"
+
+#: src/extensions/gamessinputdialog.ui:1436
+msgid "DnD"
+msgstr "DnD"
+
+#: src/extensions/gamessinputdialog.ui:1441
+msgid "DnH"
+msgstr "DnH"
+
+#: src/extensions/gamessinputdialog.ui:1446
+msgid "Dn"
+msgstr "Dn"
+
+#: src/extensions/gamessinputdialog.ui:1451
+msgid "TD"
+msgstr "TD"
+
+#: src/extensions/gamessinputdialog.ui:1456
+msgid "TH"
+msgstr "TH"
+
+#: src/extensions/gamessinputdialog.ui:1461
+msgid "T"
+msgstr "T"
+
+#: src/extensions/gamessinputdialog.ui:1466
+msgid "OH"
+msgstr "OH"
+
+#: src/extensions/gamessinputdialog.ui:1471
+msgid "O"
+msgstr "O"
+
+#: src/extensions/gamessinputdialog.ui:1521
+msgid "Unique cartesian Coords."
+msgstr "Koordinat Cartesian."
+
+#: src/extensions/gamessinputdialog.ui:1526
+msgid "Hilderbrant internals"
+msgstr "Internal Hilderbrant"
+
+#: src/extensions/gamessinputdialog.ui:1531
+msgid "Cartesian coordinates"
+msgstr "Koordinat Cartesian"
+
+#: src/extensions/gamessinputdialog.ui:1541
+msgid "MOPAC Z-Matrix"
+msgstr "MOPAC Matriks-Z"
+
+#: src/extensions/gamessinputdialog.ui:1564
+msgid "Use Symmetry During Calculation"
+msgstr "Gunakan Simetri Ketika Menghitung"
+
+#: src/extensions/gamessinputdialog.ui:1574
+msgid "Units:"
+msgstr "Satuan:"
+
+#: src/extensions/gamessinputdialog.ui:1581
+#: src/extensions/gaussianinputdialog.ui:30
+#: src/extensions/molproinputdialog.ui:31
+#: src/extensions/mopacinputdialog.ui:30
+#: src/extensions/nwcheminputdialog.ui:31
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:300
+msgid "Title:"
+msgstr "Judul:"
+
+#: src/extensions/gamessinputdialog.ui:1638
+msgid "Point Group:"
+msgstr "Grup Poin:"
+
+#: src/extensions/gamessinputdialog.ui:1665
+msgid "Seconds"
+msgstr "Detik"
+
+#: src/extensions/gamessinputdialog.ui:1670
+msgid "Minutes"
+msgstr "Menit"
+
+#: src/extensions/gamessinputdialog.ui:1675
+msgid "Hours"
+msgstr "Jam"
+
+#: src/extensions/gamessinputdialog.ui:1680
+msgid "Days"
+msgstr "Hari"
+
+#: src/extensions/gamessinputdialog.ui:1685
+msgid "Weeks"
+msgstr "Minggu"
+
+#: src/extensions/gamessinputdialog.ui:1690
+msgid "Years"
+msgstr "Tahun"
+
+#: src/extensions/gamessinputdialog.ui:1695
+msgid "Millenia"
+msgstr "Millenia"
+
+#: src/extensions/gamessinputdialog.ui:1724
+#: src/extensions/gamessinputdialog.ui:1768
+msgid "Words"
+msgstr "Kata"
+
+#: src/extensions/gamessinputdialog.ui:1729
+#: src/extensions/gamessinputdialog.ui:1773
+msgid "Bytes"
+msgstr "Bytes"
+
+#: src/extensions/gamessinputdialog.ui:1734
+#: src/extensions/gamessinputdialog.ui:1778
+msgid "MegaWords"
+msgstr "MegaWords"
+
+#: src/extensions/gamessinputdialog.ui:1739
+#: src/extensions/gamessinputdialog.ui:1783
+msgid "MegaBytes"
+msgstr "MegaBytes"
+
+#: src/extensions/gamessinputdialog.ui:1811
+msgid "Force Parallel Methods"
+msgstr "Metoda Gaya Paralel"
+
+#: src/extensions/gamessinputdialog.ui:1834
+msgid "Produce \"core\" file upon abort"
+msgstr "Mnghasilkan berkas \"core\" saat membatalkan"
+
+#: src/extensions/gamessinputdialog.ui:1852
+msgid "EVVRSP"
+msgstr "EVVRSP"
+
+#: src/extensions/gamessinputdialog.ui:1857
+msgid "GIVEIS"
+msgstr "GIVEIS"
+
+#: src/extensions/gamessinputdialog.ui:1862
+msgid "JACOBI"
+msgstr "JACOBI"
+
+#: src/extensions/gamessinputdialog.ui:1870
+msgid "Time Limit:"
+msgstr "Batas Waktu:"
+
+#: src/extensions/gamessinputdialog.ui:1877
+msgid "MemDDI:"
+msgstr "MemDDI:"
+
+#: src/extensions/gamessinputdialog.ui:1884
+#: src/extensions/gamessinputdialog.ui:2459
+msgid "Memory:"
+msgstr "Memori:"
+
+#: src/extensions/gamessinputdialog.ui:1891
+msgid "Diagonalization Method:"
+msgstr "Metoda Diagonalisasi"
+
+#: src/extensions/gamessinputdialog.ui:1898
+msgid "Parallel Load Balance Type"
+msgstr "Tipe Keseimbangan Beban Paralel"
+
+#: src/extensions/gamessinputdialog.ui:1914
+msgid "Next Value"
+msgstr "Angka Selanjutnya"
+
+#: src/extensions/gamessinputdialog.ui:1924
+msgid "Use External Data Representation for Messages"
+msgstr "Gunakan Representasi Data Eksternal untuk Pesan Catatan"
+
+#: src/extensions/gamessinputdialog.ui:1972
+msgid "Initial Guess:"
+msgstr "Terkaan Awal:"
+
+#: src/extensions/gamessinputdialog.ui:1983
+msgid "Huckel"
+msgstr "Huckel"
+
+#: src/extensions/gamessinputdialog.ui:1988
+msgid "HCore"
+msgstr "HCore"
+
+#: src/extensions/gamessinputdialog.ui:1993
+msgid "MO Read ($VEC)"
+msgstr "MO Dibaca ($VEC)"
+
+#: src/extensions/gamessinputdialog.ui:1998
+msgid "MO Saved (DICTNRY)"
+msgstr "MO Disimpan (DICTNRY)"
+
+#: src/extensions/gamessinputdialog.ui:2003
+msgid "Skip"
+msgstr "Lewati"
+
+#: src/extensions/gamessinputdialog.ui:2026
+msgid "Rotate Alpha and Beta Orbitals"
+msgstr "Putar Orbit Alfa dan Beta"
+
+#: src/extensions/gamessinputdialog.ui:2033
+msgid "Print the Initial Guess"
+msgstr "Cetak Terkaan Awal"
+
+#: src/extensions/gamessinputdialog.ui:2057
+msgid "GAMESS Interface to Other Codes"
+msgstr "Antarmuka GAMESS dengan Program Lain"
+
+#: src/extensions/gamessinputdialog.ui:2063
+msgid "MolPlt"
+msgstr "MolPlt"
+
+#: src/extensions/gamessinputdialog.ui:2070
+msgid "PltOrb"
+msgstr "PltOrb"
+
+#: src/extensions/gamessinputdialog.ui:2077
+msgid "AIMPAC"
+msgstr "AIMPAC"
+
+#: src/extensions/gamessinputdialog.ui:2084
+msgid "RPAC"
+msgstr "RPAC"
+
+#: src/extensions/gamessinputdialog.ui:2094
+msgid "Force a Check Run Type"
+msgstr "Paksa pada Tipe Check Run"
+
+#: src/extensions/gamessinputdialog.ui:2110
+msgid "Hondo 8.2"
+msgstr "Hondo 8.2"
+
+#: src/extensions/gamessinputdialog.ui:2117
+msgid "MELDF"
+msgstr "MELDF"
+
+#: src/extensions/gamessinputdialog.ui:2124
+msgid "GAMESS (UK Version)"
+msgstr "GAMESS (UK Version)"
+
+#: src/extensions/gamessinputdialog.ui:2131
+msgid "Gaussian 9x"
+msgstr "Gaussian 9x"
+
+#: src/extensions/gamessinputdialog.ui:2138
+msgid "All"
+msgstr "Semua"
+
+#: src/extensions/gamessinputdialog.ui:2163
+msgid "Solvate with Water"
+msgstr "Solvate dengan Air"
+
+#: src/extensions/gamessinputdialog.ui:2202
+msgid "Generate UHF Natural Orbitals"
+msgstr "Membuat Orbit UHF Alami"
+
+#: src/extensions/gamessinputdialog.ui:2209
+msgid "Direct SCF"
+msgstr "SCF Langsung"
+
+#: src/extensions/gamessinputdialog.ui:2216
+msgid "Compute Only Changed in Fock Matrix"
+msgstr "Menghitung Hanya Perubahan di Matriks Fock"
+
+#: src/extensions/gamessinputdialog.ui:2243
+msgid "Slater exchange"
+msgstr "Pergantian Slater"
+
+#: src/extensions/gamessinputdialog.ui:2248
+msgid "Becke 1988 exchange"
+msgstr "Pertukaran Becke 1988"
+
+#: src/extensions/gamessinputdialog.ui:2253
+msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+msgstr "VWN: Korelasi Vosko-Wilk-Nusair (VWN5)"
+
+#: src/extensions/gamessinputdialog.ui:2258
+msgid "LYP: Lee-Yang-Parr correlation"
+msgstr "LYP: Korelasi Lee-Yang-Parr"
+
+#: src/extensions/gamessinputdialog.ui:2263
+msgid "SVWN: Slater exhange + VWN correlation"
+msgstr "SVWN: Pertukaran Slater + Korelasi VWN"
+
+#: src/extensions/gamessinputdialog.ui:2268
+msgid "BVWN: BECKE exchange + VWN5 correlation"
+msgstr "BVWN: Pertukaran BECKE + korelasi VWN5"
+
+#: src/extensions/gamessinputdialog.ui:2273
+msgid "BLYP: BECKE exchange + LYP correlation"
+msgstr "BLYP: pertukaran BECKE + korelasi LYP"
+
+#: src/extensions/gamessinputdialog.ui:2283
+msgid "Gill 1996 exchange"
+msgstr "Pertukaran Gill 1996"
+
+#: src/extensions/gamessinputdialog.ui:2288
+msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+msgstr "Pertukaran Perdew-Burke-Ernzerhof (PBE)"
+
+#: src/extensions/gamessinputdialog.ui:2293
+msgid "OP: One-parameter Progressive correlation"
+msgstr "OP: Korelasi progresif satu-parameter"
+
+#: src/extensions/gamessinputdialog.ui:2298
+msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+msgstr "SLYP: Korelasi SLATER + Lee-Yang-Parr (LYP)"
+
+#: src/extensions/gamessinputdialog.ui:2303
+msgid "SOP: SLATER + OP correlation"
+msgstr "SOP: Korelasi SLATER + OP"
+
+#: src/extensions/gamessinputdialog.ui:2308
+msgid "BOP: BECKE exchange + OP correlation"
+msgstr "BOP: Pertukaran BECKE + korelasi OP"
+
+#: src/extensions/gamessinputdialog.ui:2313
+msgid "BVWN: GILL exchange + VWN5 correlation"
+msgstr "BVWN: pertukaran GILL + korelasi VWN5"
+
+#: src/extensions/gamessinputdialog.ui:2318
+msgid "GLYP: GILL exchange + LYP correlation"
+msgstr "GLYP: pertukaran GILL + korelasi LYP"
+
+#: src/extensions/gamessinputdialog.ui:2323
+msgid "PBEVWN: PBE exchange + VWN6 correlation"
+msgstr "PBEVWN: pertukaran PBE + korelasi VWN6"
+
+#: src/extensions/gamessinputdialog.ui:2328
+msgid "PBELYP: PBE exchange +LYP correlation"
+msgstr "PBELYP: pertukaran PBE + korelasi LYP"
+
+#: src/extensions/gamessinputdialog.ui:2333
+msgid "PBEOP: PBE exchange + OP correlation"
+msgstr "PBEOP: pertukaran PBE + korelasi OP"
+
+#: src/extensions/gamessinputdialog.ui:2338
+msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+msgstr "BHHLYP: pertukaran HF dan BECKE + korelasi LYP"
+
+#: src/extensions/gamessinputdialog.ui:2364
+msgid "Grid"
+msgstr "Grid"
+
+#: src/extensions/gamessinputdialog.ui:2369
+msgid "Grid-Free"
+msgstr "Tanpa-Grid"
+
+#: src/extensions/gamessinputdialog.ui:2392
+msgid "DFT Functional:"
+msgstr "DFT Fungsional:"
+
+#: src/extensions/gamessinputdialog.ui:2399
+#: src/extensions/mopacinputdialog.ui:186
+msgid "Method:"
+msgstr "Metoda:"
+
+#: src/extensions/gamessinputdialog.ui:2423
+msgid "AO Integral Storage"
+msgstr "Penyimpanan AO Integral"
+
+#: src/extensions/gamessinputdialog.ui:2432
+msgid "Duplicated on Each Node"
+msgstr "Ditiru pada Setiap Nodal"
+
+#: src/extensions/gamessinputdialog.ui:2439
+msgid "Distributed Across All Nodes"
+msgstr "Terdistribusi Pada Semua Nodal"
+
+#: src/extensions/gamessinputdialog.ui:2452
+msgid "words"
+msgstr "kata"
+
+#: src/extensions/gamessinputdialog.ui:2466
+msgid "Compute MP2 Properties"
+msgstr "Menghitung Properti MP2"
+
+#: src/extensions/gamessinputdialog.ui:2473
+msgid "Integral Retention Cutoff:"
+msgstr "Pemotongan Integral Retensi:"
+
+#: src/extensions/gamessinputdialog.ui:2486
+msgid "Use Localized Orbitals"
+msgstr "Gunakan Orbit Lokal"
+
+#: src/extensions/gamessinputdialog.ui:2493
+msgid "# of Core Electrons:"
+msgstr "# dari Elektron Inti:"
+
+#: src/extensions/gamessinputdialog.ui:2500
+msgid "Transformation Method"
+msgstr "Metoda Transformasi"
+
+#: src/extensions/gamessinputdialog.ui:2509
+msgid "Two Phase Bin Sort"
+msgstr "Two Phase Bin Sort"
+
+#: src/extensions/gamessinputdialog.ui:2516
+msgid "Segmented Transformation"
+msgstr "Transformasi Tersegmentasi"
+
+#: src/extensions/gamessinputdialog.ui:2565
+msgid "Analytic"
+msgstr "Analitik"
+
+#: src/extensions/gamessinputdialog.ui:2575
+msgid "Numeric"
+msgstr "Numerik"
+
+#: src/extensions/gamessinputdialog.ui:2585
+msgid "Double Differenced Hessian"
+msgstr "Double Differenced Hessian"
+
+#: src/extensions/gamessinputdialog.ui:2592
+msgid "Print Internal Force Constants"
+msgstr "Cetak Konstanta Gaya Internal"
+
+#: src/extensions/gamessinputdialog.ui:2599
+msgid "Displacement Size:"
+msgstr "Ukuran Simpangan:"
+
+#: src/extensions/gamessinputdialog.ui:2606
+msgid "Purify Hessian"
+msgstr "Bersihkan Hessian"
+
+#: src/extensions/gamessinputdialog.ui:2613
+msgid "Frequency Scale Factor:"
+msgstr "Faktor Skala Frekuensi:"
+
+#: src/extensions/gamessinputdialog.ui:2620
+msgid "bohrs"
+msgstr "bohrs"
+
+#: src/extensions/gamessinputdialog.ui:2654
+msgid "Initial Hessian"
+msgstr "Hessian Awal"
+
+#: src/extensions/gamessinputdialog.ui:2660
+msgid "Guess (+ define)"
+msgstr "Kiraan (+ definisi)"
+
+#: src/extensions/gamessinputdialog.ui:2667
+msgid "Read (from $HESS)"
+msgstr "Baca (dari $HESS)"
+
+#: src/extensions/gamessinputdialog.ui:2684
+msgid "Update Step Size"
+msgstr "Perbarui Ukuran Langkah"
+
+#: src/extensions/gamessinputdialog.ui:2694
+msgid "Print Orbs at Each Iteration"
+msgstr "Cetak Orbit pada setiap iterasi"
+
+#: src/extensions/gamessinputdialog.ui:2701
+msgid "Gradient Convergence Criteria:"
+msgstr "Kriteria Konvergensi Gradient:"
+
+#: src/extensions/gamessinputdialog.ui:2730
+msgid "Jump Size:"
+msgstr "Ukuran Lompatan:"
+
+#: src/extensions/gamessinputdialog.ui:2737
+msgid "Stationary Point"
+msgstr "Titik Stasioner"
+
+#: src/extensions/gamessinputdialog.ui:2747
+msgid "Optimization Method:"
+msgstr "Metoda Optimisasi:"
+
+#: src/extensions/gamessinputdialog.ui:2757
+msgid "Step Size"
+msgstr "Ukuran Step"
+
+#: src/extensions/gamessinputdialog.ui:2763
+msgid "Maximum:"
+msgstr "Maksimum:"
+
+#: src/extensions/gamessinputdialog.ui:2770
+msgid "Minimum:"
+msgstr "Minimum:"
+
+#: src/extensions/gamessinputdialog.ui:2780
+msgid "Initial:"
+msgstr "Awal:"
+
+#: src/extensions/gamessinputdialog.ui:2824
+msgid "Newton-Raphson"
+msgstr "Newton-Raphson"
+
+#: src/extensions/gamessinputdialog.ui:2829
+msgid "Rational Function Optimization"
+msgstr "Fungsi Rasional Optimisasi"
+
+#: src/extensions/gamessinputdialog.ui:2834
+msgid "Quadratic Approximation"
+msgstr "Pendekatan Kuadrat"
+
+#: src/extensions/gamessinputdialog.ui:2839
+msgid "Schlegel (quasi-NR)"
+msgstr "Schlegel (quasi-NR)"
+
+#: src/extensions/gamessinputdialog.ui:2844
+msgid "Constrained Optimization"
+msgstr "Optimisasi dengan Kendala"
+
+#: src/extensions/gamessinputdialog.ui:2857
+msgid "steps"
+msgstr "step"
+
+#: src/extensions/gamessinputdialog.ui:2879
+msgid "Recalculate Hessian Every:"
+msgstr "Menghitung Ulang Setiap Hessian:"
+
+#: src/extensions/gamessinputdialog.ui:2889
+msgid "Follow Mode:"
+msgstr "Follow Mode:"
+
+#: src/extensions/gamessinputdialog.ui:2899
+msgid "Maximum Steps:"
+msgstr "Maksimum Step:"
+
+#: src/extensions/gamessinputdialog.ui:2932
+msgid "Reset All"
+msgstr "Tata Ulang Semua"
+
+#: src/extensions/gamessinputdialog.ui:2939
+msgid "Defaults"
+msgstr "Bawaan"
+
+#: src/extensions/gamessinputdialog.ui:2962
+#: src/extensions/gaussianinputdialog.ui:535
+#: src/extensions/molproinputdialog.ui:466
+#: src/extensions/mopacinputdialog.ui:384
+#: src/extensions/nwcheminputdialog.ui:462
+#: src/extensions/qcheminputdialog.ui:476
+msgid "Generate..."
+msgstr "Membuat..."
+
+#: src/extensions/gamessinputdialog.ui:2969
+#: src/extensions/gaussianinputdialog.ui:542
+#: src/extensions/molproinputdialog.ui:473
+#: src/extensions/mopacinputdialog.ui:391
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
+#: src/extensions/qcheminputdialog.ui:483
+msgid "Close"
+msgstr "Tutup"
+
+#: src/extensions/gaussianinputdialog.ui:19
+msgid "Gaussian Input"
+msgstr "Masukan Gaussian"
+
+#: src/extensions/gaussianinputdialog.ui:47
+#: src/extensions/molproinputdialog.ui:48
+#: src/extensions/mopacinputdialog.ui:47
+#: src/extensions/nwcheminputdialog.ui:48
+#: src/extensions/qcheminputdialog.ui:48
+msgid "Calculation:"
+msgstr "Perhitungan:"
+
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
+msgstr "Energi Satu Titik"
+
+#: src/extensions/gaussianinputdialog.ui:96
+msgid "Processors:"
+msgstr "Prosesor:"
+
+#: src/extensions/gaussianinputdialog.ui:133
+#: src/extensions/molproinputdialog.ui:114
+#: src/extensions/nwcheminputdialog.ui:114
+#: src/extensions/qcheminputdialog.ui:114
+msgid "Theory:"
+msgstr "Teori:"
+
+#: src/extensions/gaussianinputdialog.ui:174
+#: src/extensions/molproinputdialog.ui:148
+#: src/extensions/nwcheminputdialog.ui:148
+#: src/extensions/qcheminputdialog.ui:163
+msgid "CCSD"
+msgstr "CCSD"
+
+#: src/extensions/gaussianinputdialog.ui:197
+#: src/extensions/molproinputdialog.ui:176
+#: src/extensions/nwcheminputdialog.ui:171
+#: src/extensions/qcheminputdialog.ui:186
+msgid "Basis:"
+msgstr "Basis:"
+
+#: src/extensions/gaussianinputdialog.ui:233
+#: src/extensions/nwcheminputdialog.ui:227
+#: src/extensions/qcheminputdialog.ui:242
+msgid "LANL2DZ"
+msgstr "LANL2DZ"
+
+#: src/extensions/gaussianinputdialog.ui:256
+#: src/extensions/molproinputdialog.ui:260
+#: src/extensions/mopacinputdialog.ui:96
+#: src/extensions/nwcheminputdialog.ui:250
+#: src/extensions/qcheminputdialog.ui:270
+msgid "Charge:"
+msgstr "Muatan:"
+
+#: src/extensions/gaussianinputdialog.ui:330
+msgid "Output:"
+msgstr "Keluaran:"
+
+#: src/extensions/gaussianinputdialog.ui:346
+msgid "Standard"
+msgstr "Standar"
+
+#: src/extensions/gaussianinputdialog.ui:351
+msgid "Molden"
+msgstr "Molden"
+
+#: src/extensions/gaussianinputdialog.ui:356
+msgid "Molekel"
+msgstr "Molekel"
+
+#: src/extensions/gaussianinputdialog.ui:379
+msgid "Checkpoint:"
+msgstr "Checkpoint:"
+
+#: src/extensions/gaussianinputdialog.ui:396
+#: src/extensions/molproinputdialog.ui:334
+#: src/extensions/mopacinputdialog.ui:250
+#: src/extensions/nwcheminputdialog.ui:330
+#: src/extensions/qcheminputdialog.ui:344
+msgid "Format:"
+msgstr "Format:"
+
+#: src/extensions/gaussianinputdialog.ui:415
+#: src/extensions/molproinputdialog.ui:353
+#: src/extensions/mopacinputdialog.ui:269
+#: src/extensions/nwcheminputdialog.ui:349
+#: src/extensions/qcheminputdialog.ui:363
+msgid "Cartesian"
+msgstr "Cartesian"
+
+#: src/extensions/gaussianinputdialog.ui:420
+#: src/extensions/molproinputdialog.ui:358
+#: src/extensions/mopacinputdialog.ui:274
+#: src/extensions/nwcheminputdialog.ui:354
+#: src/extensions/qcheminputdialog.ui:368
+msgid "Z-matrix"
+msgstr "Matriks-Z"
+
+#: src/extensions/gaussianinputdialog.ui:425
+#: src/extensions/molproinputdialog.ui:363
+#: src/extensions/nwcheminputdialog.ui:359
+#: src/extensions/qcheminputdialog.ui:373
+msgid "Z-matrix (compact)"
+msgstr "Matrix-Z (ringkas)"
+
+#: src/extensions/gaussianinputdialog.ui:508
+#: src/extensions/molproinputdialog.ui:446
+#: src/extensions/mopacinputdialog.ui:357
+#: src/extensions/nwcheminputdialog.ui:442
+#: src/extensions/qcheminputdialog.ui:456
+msgid "Use Form"
+msgstr "Gunakan Bentuk"
+
+#: src/extensions/gaussianinputdialog.ui:528
+#: src/extensions/mopacinputdialog.ui:377
+msgid "Compute..."
+msgstr "Menghitung..."
+
+#: src/extensions/insertfragmentdialog.ui:14
+msgid "Insert Fragment..."
+msgstr "Sisipkan Fragmen..."
+
+#: src/extensions/insertfragmentdialog.ui:25
+msgid "Add Directory"
+msgstr "Tambah Direktori"
+
+#: src/extensions/insertfragmentdialog.ui:32
+msgid "Reset List"
+msgstr "Tata Ulang Senarai"
+
+#: src/extensions/insertpeptidedialog.ui:20
+msgid "Peptide Builder"
+msgstr "Pembuat Peptide"
+
+#: src/extensions/insertpeptidedialog.ui:46
+msgid "Alanine"
+msgstr "Alanin"
+
+#: src/extensions/insertpeptidedialog.ui:49
+msgid "Ala"
+msgstr "Ala"
+
+#: src/extensions/insertpeptidedialog.ui:56
+msgid "Arginine"
+msgstr "Arginin"
+
+#: src/extensions/insertpeptidedialog.ui:59
+msgid "Arg"
+msgstr "Arg"
+
+#: src/extensions/insertpeptidedialog.ui:66
+msgid "Asparagine"
+msgstr "Asparagin"
+
+#: src/extensions/insertpeptidedialog.ui:69
+msgid "Asn"
+msgstr "Asn"
+
+#: src/extensions/insertpeptidedialog.ui:76
+msgid "Aspartic acid"
+msgstr "Asam Aspartik"
+
+#: src/extensions/insertpeptidedialog.ui:79
+msgid "Asp"
+msgstr "Asp"
+
+#: src/extensions/insertpeptidedialog.ui:86
+msgid "Cysteine"
+msgstr "Sistein"
+
+#: src/extensions/insertpeptidedialog.ui:89
+msgid "Cys"
+msgstr "Cys"
+
+#: src/extensions/insertpeptidedialog.ui:96
+msgid "Glutamic acid"
+msgstr "Asam Glutamik"
+
+#: src/extensions/insertpeptidedialog.ui:99
+msgid "Glu"
+msgstr "Glu"
+
+#: src/extensions/insertpeptidedialog.ui:106
+msgid "Glutamine"
+msgstr "Glutamin"
+
+#: src/extensions/insertpeptidedialog.ui:109
+msgid "Gln"
+msgstr "Gln"
+
+#: src/extensions/insertpeptidedialog.ui:116
+msgid "Glycine"
+msgstr "Glisin"
+
+#: src/extensions/insertpeptidedialog.ui:119
+msgid "Gly"
+msgstr "Gly"
+
+#: src/extensions/insertpeptidedialog.ui:126
+msgid "Histidine"
+msgstr "Histidin"
+
+#: src/extensions/insertpeptidedialog.ui:129
+msgid "His"
+msgstr "His"
+
+#: src/extensions/insertpeptidedialog.ui:136
+msgid "Isoleucine"
+msgstr "Isoleusin"
+
+#: src/extensions/insertpeptidedialog.ui:139
+msgid "Ile"
+msgstr "Ile"
+
+#: src/extensions/insertpeptidedialog.ui:146
+msgid "Valine"
+msgstr "Valin"
+
+#: src/extensions/insertpeptidedialog.ui:149
+msgid "Val"
+msgstr "Val"
+
+#: src/extensions/insertpeptidedialog.ui:156
+msgid "Tyrosine"
+msgstr "Tirosin"
+
+#: src/extensions/insertpeptidedialog.ui:159
+msgid "Tyr"
+msgstr "Tyr"
+
+#: src/extensions/insertpeptidedialog.ui:166
+msgid "Tryptophan"
+msgstr "Triptopan"
+
+#: src/extensions/insertpeptidedialog.ui:169
+msgid "Trp"
+msgstr "Trp"
+
+#: src/extensions/insertpeptidedialog.ui:176
+msgid "Threonine"
+msgstr "Treonin"
+
+#: src/extensions/insertpeptidedialog.ui:179
+msgid "Thr"
+msgstr "Thr"
+
+#: src/extensions/insertpeptidedialog.ui:186
+msgid "Serine"
+msgstr "Serin"
+
+#: src/extensions/insertpeptidedialog.ui:189
+msgid "Ser"
+msgstr "Ser"
+
+#: src/extensions/insertpeptidedialog.ui:196
+msgid "Proline"
+msgstr "Prolin"
+
+#: src/extensions/insertpeptidedialog.ui:199
+msgid "Pro"
+msgstr "Pro"
+
+#: src/extensions/insertpeptidedialog.ui:206
+msgid "Phenylalanine"
+msgstr "Phenilalanin"
+
+#: src/extensions/insertpeptidedialog.ui:209
+msgid "Phe"
+msgstr "Phe"
+
+#: src/extensions/insertpeptidedialog.ui:216
+msgid "Methionine"
+msgstr "Metionin"
+
+#: src/extensions/insertpeptidedialog.ui:219
+msgid "Met"
+msgstr "Met"
+
+#: src/extensions/insertpeptidedialog.ui:226
+msgid "Lysine"
+msgstr "Lisin"
+
+#: src/extensions/insertpeptidedialog.ui:229
+msgid "Lys"
+msgstr "Lys"
+
+#: src/extensions/insertpeptidedialog.ui:236
+msgid "Leucine"
+msgstr "Leusin"
+
+#: src/extensions/insertpeptidedialog.ui:239
+msgid "Leu"
+msgstr "Leu"
+
+#: src/extensions/insertpeptidedialog.ui:263
+msgid "Amino Acids:"
+msgstr "Asam Amino:"
+
+#: src/extensions/insertpeptidedialog.ui:270
+msgid "Sequence (N to C):"
+msgstr "Urutan (N ke C):"
+
+#: src/extensions/insertpeptidedialog.ui:280
+msgid "Stereochemistry:"
+msgstr "Stereokimia:"
+
+#: src/extensions/insertpeptidedialog.ui:289
+msgid "L"
+msgstr "L"
+
+#: src/extensions/insertpeptidedialog.ui:299
+#: src/extensions/insertpeptidedialog.ui:469
+msgid "D"
+msgstr "D"
+
+#: src/extensions/insertpeptidedialog.ui:310
+msgid "N Terminus:"
+msgstr "N Terminus:"
+
+#: src/extensions/insertpeptidedialog.ui:317
+msgid "C Terminus:"
+msgstr "C Terminus:"
+
+#: src/extensions/insertpeptidedialog.ui:325
+msgid "NH₂"
+msgstr "NH₂"
+
+#: src/extensions/insertpeptidedialog.ui:330
+msgid "NH₃⁺"
+msgstr "NH₃⁺"
+
+#: src/extensions/insertpeptidedialog.ui:339
+msgid "CO₂H"
+msgstr "CO₂H"
+
+#: src/extensions/insertpeptidedialog.ui:344
+msgid "CO₂⁻"
+msgstr "CO₂⁻"
+
+#: src/extensions/insertpeptidedialog.ui:354
+msgid "Structure:"
+msgstr "Struktur:"
+
+#: src/extensions/insertpeptidedialog.ui:362
+msgid "Straight Chain"
+msgstr "Rantai Lurus"
+
+#: src/extensions/insertpeptidedialog.ui:367
+msgid "Alpha Helix"
+msgstr "Alpha Helix"
+
+#: src/extensions/insertpeptidedialog.ui:372
+msgid "Beta Sheet"
+msgstr "Lembar Beta"
+
+#: src/extensions/insertpeptidedialog.ui:377
+msgid "Other"
+msgstr "Lainnya"
+
+#: src/extensions/insertpeptidedialog.ui:387
+msgid "Phi:"
+msgstr "Phi:"
+
+#: src/extensions/insertpeptidedialog.ui:426
+msgid "Psi:"
+msgstr "Psi:"
+
+#: src/extensions/insertpeptidedialog.ui:440
+msgid "Chain Number:"
+msgstr "Nomor Rantai:"
+
+#: src/extensions/insertpeptidedialog.ui:447
+msgid "The chain number for the new peptide"
+msgstr "Nomor rantai untuk peptide baru"
+
+#: src/extensions/insertpeptidedialog.ui:459
+msgid "B"
+msgstr "B"
+
+#: src/extensions/insertpeptidedialog.ui:464
+msgid "C"
+msgstr "C"
+
+#: src/extensions/insertpeptidedialog.ui:474
+msgid "E"
+msgstr "E"
+
+#: src/extensions/insertpeptidedialog.ui:479
+msgid "F"
+msgstr "F"
+
+#: src/extensions/insertpeptidedialog.ui:484
+msgid "G"
+msgstr "G"
+
+#: src/extensions/liganddialog.ui:13
+msgid "Create ligand"
+msgstr "Membuat ligand"
+
+#: src/extensions/liganddialog.ui:38
+msgid "create ligand from current selection"
+msgstr "membuat ligand dari pilihan sekarang"
+
+#: src/extensions/liganddialog.ui:43
+msgid "create ligand from residue name"
+msgstr "membuat ligand dari nama residu"
+
+#: src/extensions/liganddialog.ui:48
+msgid "create ligand from file..."
+msgstr "membuat ligand dari berkas..."
+
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
+msgid "The residue name"
+msgstr "Nama residu nya"
+
+#: src/extensions/linmorphdialog.ui:13
+msgid "Linear Morph Trajectory"
+msgstr "Trayektori Linear Morph"
+
+#: src/extensions/linmorphdialog.ui:24
+msgid ""
+"Load a second confromation and computer a linear interpolation with the "
+"current conformation."
+msgstr ""
+"Memuat conformasi kedua dan penghitung interpolasi linier dengan conformasi "
+"sekarang."
+
+#: src/extensions/linmorphdialog.ui:27
+msgid "button to load a second conformation from a file."
+msgstr "tombol untuk memuat konformasi kedua dari berkas"
+
+#: src/extensions/linmorphdialog.ui:30
+msgid "Load Second Conformation ..."
+msgstr "Memuat Conformasi Kedua..."
+
+#: src/extensions/linmorphdialog.ui:41
+msgid "Num Frames"
+msgstr "Num Frames"
+
+#: src/extensions/linmorphdialog.ui:228
+msgid ""
+"Save snapshots of the trajectory as a series of POVRay files.  These can "
+"then be used to make a movie."
+msgstr ""
+"Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas ini "
+"dapat digunakan untuk membuat filem."
+
+#: src/extensions/linmorphdialog.ui:231
+msgid "Button to save an .xyz trajectory."
+msgstr "Tombol untuk menyimpan berkas trayektori .xyz"
+
+#: src/extensions/linmorphdialog.ui:234
+msgid "Save trajectory..."
+msgstr "Menyimpan trayektori..."
+
+#: src/extensions/linmorphdialog.ui:248
+msgid "Save movie..."
+msgstr "Menyimpan filem..."
+
+#: src/extensions/molecularpropdialog.ui:14
+msgid "Molecule Properties"
+msgstr "Properti Molekul"
+
+#: src/extensions/molecularpropdialog.ui:22
+msgid "Molecular Weight (g/mol):"
+msgstr "Berat Molekul (g/mol):"
+
+#: src/extensions/molecularpropdialog.ui:29
+msgid "Chemical Formula:"
+msgstr "Rumus Kimia:"
+
+#: src/extensions/molecularpropdialog.ui:36
+msgid "Number of Atoms:"
+msgstr "Nomor dari Atom:"
+
+#: src/extensions/molecularpropdialog.ui:43
+msgid "Number of Bonds:"
+msgstr "Nomor dari Ikatan:"
+
+#: src/extensions/molecularpropdialog.ui:50
+msgid "Number of Residues:"
+msgstr "Nomor dari Residu:"
+
+#: src/extensions/molecularpropdialog.ui:57
+msgid "Energy (kJ/mol):"
+msgstr "Energi (kJ/mol):"
+
+#: src/extensions/molecularpropdialog.ui:64
+msgid "Dipole Moment (D):"
+msgstr "Momen Dipol (D):"
+
+#: src/extensions/molproinputdialog.ui:20
+msgid "MOLPRO Input"
+msgstr "Masukan MOLPRO"
+
+#: src/extensions/molproinputdialog.ui:133
+#: src/extensions/nwcheminputdialog.ui:133
+#: src/extensions/qcheminputdialog.ui:133
+msgid "HF"
+msgstr "HF"
+
+#: src/extensions/molproinputdialog.ui:212
+#: src/extensions/nwcheminputdialog.ui:207
+#: src/extensions/qcheminputdialog.ui:222
+msgid "6-31+G(d)"
+msgstr "6-31+G(d)"
+
+#: src/extensions/molproinputdialog.ui:217
+#: src/extensions/nwcheminputdialog.ui:212
+#: src/extensions/qcheminputdialog.ui:227
+msgid "6-311G(d)"
+msgstr "6-311G(d)"
+
+#: src/extensions/molproinputdialog.ui:222
+#: src/extensions/nwcheminputdialog.ui:217
+#: src/extensions/qcheminputdialog.ui:232
+msgid "cc-pVDZ"
+msgstr "cc-pVDZ"
+
+#: src/extensions/molproinputdialog.ui:227
+#: src/extensions/nwcheminputdialog.ui:222
+#: src/extensions/qcheminputdialog.ui:237
+msgid "cc-pVTZ"
+msgstr "cc-pVTZ"
+
+#: src/extensions/molproinputdialog.ui:232
+msgid "AUG-cc-pVDZ"
+msgstr "AUG-cc-pVDZ"
+
+#: src/extensions/molproinputdialog.ui:237
+msgid "AUG-cc-pVTZ"
+msgstr "AUG-cc-pVTZ"
+
+#: src/extensions/mopacinputdialog.ui:19
+msgid "MOPAC Input"
+msgstr "Masukan MOPAC"
+
+#: src/extensions/mopacinputdialog.ui:158
+msgid "Quartet"
+msgstr "Quartet"
+
+#: src/extensions/mopacinputdialog.ui:163
+msgid "Quintet"
+msgstr "Quintet"
+
+#: src/extensions/mopacinputdialog.ui:212
+msgid "MNDO-d"
+msgstr "MNDO-d"
+
+#: src/extensions/mopacinputdialog.ui:222
+msgid "PM6"
+msgstr "PM6"
+
+#: src/extensions/mopacinputdialog.ui:227
+msgid "RM1"
+msgstr "RM1"
+
+#: src/extensions/nwcheminputdialog.ui:20
+msgid "NWChem Input"
+msgstr "Masukan NWChem"
+
+#: src/extensions/orbitaldialog.ui:30
+msgid "Cubes"
+msgstr "Kubus"
+
+#: src/extensions/orbitaldialog.ui:36
+msgid "Cube Dimensions"
+msgstr "Dimensi Kubus"
+
+#: src/extensions/orbitaldialog.ui:47
+msgid "x"
+msgstr "x"
+
+#: src/extensions/orbitaldialog.ui:60
+msgid "y"
+msgstr "y"
+
+#: src/extensions/orbitaldialog.ui:73
+msgid "z"
+msgstr "z"
+
+#: src/extensions/orbitaldialog.ui:88
+msgid "Origin:"
+msgstr "Titik Asal:"
+
+#: src/extensions/orbitaldialog.ui:130
+msgid "Max:"
+msgstr "Maks:"
+
+#: src/extensions/orbitaldialog.ui:172
+msgid "Steps:"
+msgstr "Langkah:"
+
+#: src/extensions/orbitaldialog.ui:214
+msgid "Step Size:"
+msgstr "Ukuran Langkah:"
+
+#: src/extensions/orbitaldialog.ui:304
+msgid "Calculate MO"
+msgstr "Menghitung MO"
+
+#: src/extensions/orbitaldialog.ui:331
+msgid "Calculate All MOs"
+msgstr "Menghitung Semua MO"
+
+#: src/extensions/orbitaldialog.ui:358
+msgid "Calculate Electron Density"
+msgstr "Menghitung Densitas Elektron"
+
+#: src/extensions/orbitaldialog.ui:385
+msgid "Calculate Van der Waals Cube"
+msgstr "Menghitung Kubus Van der Waals"
+
+#: src/extensions/orbitaldialog.ui:411
+msgid "Isosurfaces"
+msgstr "PermukaanIso"
+
+#: src/extensions/orbitaldialog.ui:417
+#: src/extensions/orbitaldialog.ui:633
+msgid "Cube:"
+msgstr "Kubus:"
+
+#: src/extensions/orbitaldialog.ui:447
+#: src/extensions/orbitaldialog.ui:663
+msgid "Color By:"
+msgstr "Warna Berdasarkan:"
+
+#: src/extensions/orbitaldialog.ui:481
+msgid "Iso Value:"
+msgstr "Angka Iso:"
+
+#: src/extensions/orbitaldialog.ui:493
+msgid "0.02"
+msgstr "0.02"
+
+#: src/extensions/orbitaldialog.ui:515
+msgid "Cube Range:"
+msgstr "Jakauan Kubus:"
+
+#: src/extensions/orbitaldialog.ui:527
+msgid "0.000"
+msgstr "0.000"
+
+#: src/extensions/orbitaldialog.ui:544
+msgid "1.000"
+msgstr "1.000"
+
+#: src/extensions/orbitaldialog.ui:604
+#: src/extensions/orbitaldialog.ui:821
+msgid "Calculate Mesh"
+msgstr "Mengitung Mesh"
+
+#: src/extensions/orbitaldialog.ui:627
+msgid "Van der Waals Surface"
+msgstr "Permukaan Van der Waals"
+
+#: src/extensions/orbitaldialog.ui:684
+msgid "ESP (approximate)"
+msgstr "ESP (perkiraan)"
+
+#: src/extensions/orbitaldialog.ui:707
+msgid "Distance:"
+msgstr "Jarak:"
+
+#: src/extensions/orbitaldialog.ui:719
+msgid "0.0"
+msgstr "0.0"
+
+#: src/extensions/orbitaldialog.ui:741
+msgid "Range:"
+msgstr "Jangkauan:"
+
+#: src/extensions/pocketdialog.ui:13
+msgid "Create binding pocket"
+msgstr "Membuat ikatan poket"
+
+#: src/extensions/pocketdialog.ui:38
+msgid "create pocket from current selection"
+msgstr "membuat poket dari pilihan"
+
+#: src/extensions/pocketdialog.ui:43
+msgid "create pocket from residue name"
+msgstr "membuat poket dari nama residu"
+
+#: src/extensions/pocketdialog.ui:85
+msgid "Radius"
+msgstr "Jejari"
+
+#: src/extensions/pocketdialog.ui:98
+msgid ""
+"All atoms within radius from the ligand will be part of the binding pocket"
+msgstr ""
+"Semua atom dalam radius dari ligand akan menjadi bagian dari poket ikatan"
+
+#: src/extensions/povraydialog.ui:19
+msgid "POV-Ray Export"
+msgstr "Ekspor POV-Ray"
+
+#: src/extensions/povraydialog.ui:30
+msgid "Select..."
+msgstr "Pilih..."
+
+#: src/extensions/povraydialog.ui:64
+msgid "povray"
+msgstr "povray"
+
+#: src/extensions/povraydialog.ui:111
+msgid "Render"
+msgstr "Menggambar"
+
+#: src/extensions/povraydialog.ui:137
+msgid "Resolution:"
+msgstr "Resolusi:"
+
+#: src/extensions/povraydialog.ui:147
+msgid "Use full scene antialiasing"
+msgstr "Menggunakan antialiasing penuh"
+
+#: src/extensions/povraydialog.ui:150
+msgid "Antialias"
+msgstr "Antialias"
+
+#: src/extensions/povraydialog.ui:160
+msgid "Set the background color to be transparent"
+msgstr "Ubah warna latar dengan transparan"
+
+#: src/extensions/povraydialog.ui:163
+msgid "Alpha transparency"
+msgstr "Transparansi Alfa"
+
+#: src/extensions/povraydialog.ui:173
+msgid "Command:"
+msgstr "Perintah:"
+
+#: src/extensions/povraydialog.ui:183
+msgid "Render the molecule directly using command line POV-Ray"
+msgstr ""
+"Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
+
+#: src/extensions/povraydialog.ui:186
+msgid "Render using POV-Ray"
+msgstr "Menggambar dengan POV-Ray"
+
+#: src/extensions/povraydialog.ui:196
+msgid "Keep the POV-Ray source after rendering has completed"
+msgstr "Simpan perintah POV-Ray setelah penggambaran selesai"
+
+#: src/extensions/povraydialog.ui:199
+msgid "Keep POV-Ray source after rendering"
+msgstr "Simpan perintah POV-Ray setelah penggambaran"
+
+#: src/extensions/povraydialog.ui:209
+msgid "Path:"
+msgstr "Path:"
+
+#: src/extensions/qcheminputdialog.ui:20
+msgid "Q-Chem Input"
+msgstr "Masukan Q-Chem"
+
+#: src/extensions/qcheminputdialog.ui:148
+msgid "B3LYP5"
+msgstr "B3LYP5"
+
+#: src/extensions/qcheminputdialog.ui:153
+msgid "EDF1"
+msgstr "EDF1"
+
+#: src/extensions/qcheminputdialog.ui:158
+msgid "M06-2X"
+msgstr "M06-2X"
+
+#: src/extensions/qcheminputdialog.ui:247
+msgid "LACVP"
+msgstr "LACVP"
+
+#: src/extensions/shaderdialog.ui:29
+msgid "Load Shaders"
+msgstr "Memuat Shader"
+
+#: src/extensions/shaderdialog.ui:35
+msgid "Shader Name:"
+msgstr "Nama Shader:"
+
+#: src/extensions/shaderdialog.ui:52
+msgid "Vertex Shader:"
+msgstr "Vertex Shader:"
+
+#: src/extensions/shaderdialog.ui:76
+msgid "Fragment Shader:"
+msgstr "Fragmen Shader:"
+
+#: src/extensions/shaderdialog.ui:100
+msgid "Parameters:"
+msgstr "Parameter:"
+
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
+msgid "Assign Shader"
+msgstr "Terapkan Shader"
+
+#: src/extensions/shaderdialog.ui:170
+msgid "Display Type:"
+msgstr "Tipe Monitor:"
+
+#: src/extensions/shaderdialog.ui:190
+msgid "Shader Program:"
+msgstr "Program Shader:"
+
+#: src/extensions/spectradialog.ui:20
+msgid "Spectra Visualization"
+msgstr "Visualisasi Spektra"
+
+#: src/extensions/spectradialog.ui:32
+msgid "&Close"
+msgstr "T&utup"
+
+#: src/extensions/spectradialog.ui:95
+msgid "Calculated Spectra:"
+msgstr "Spektra Perhitungan:"
+
+#: src/extensions/spectradialog.ui:108
+#: src/extensions/spectradialog.ui:131
+#: src/extensions/spectradialog.ui:219
+#: src/extensions/spectradialog.ui:245
+msgid "Set Color..."
+msgstr "Atur Warna..."
+
+#: src/extensions/spectradialog.ui:115
+msgid "Imported Spectra:"
+msgstr "Spektra yang diimpor:"
+
+#: src/extensions/spectradialog.ui:138
+msgid "Font:"
+msgstr "Huruf:"
+
+#: src/extensions/spectradialog.ui:151
+msgid "Change Font..."
+msgstr "Merubah Huruf..."
+
+#: src/extensions/spectradialog.ui:164
+#: src/extensions/spectradialog.ui:177
+msgid "Show"
+msgstr "Tampilkan"
+
+#: src/extensions/spectradialog.ui:190
+msgid "Imports a tsv of experimental spectra to overlay on the plot."
+msgstr "Impor spektra hasil eksperimen sebagai tambahan dalam plot"
+
+#: src/extensions/spectradialog.ui:193
+msgid "&Import..."
+msgstr "&Impor..."
+
+#: src/extensions/spectradialog.ui:206
+msgid "Background:"
+msgstr "Latar Belakang:"
+
+#: src/extensions/spectradialog.ui:232
+msgid "Foreground:"
+msgstr "Latar Depan:"
+
+#: src/extensions/spectradialog.ui:261
+msgid "New..."
+msgstr "Baru..."
+
+#: src/extensions/spectradialog.ui:277
+msgid "Remove..."
+msgstr "Hapus..."
+
+#: src/extensions/spectradialog.ui:290
+msgid "Rename..."
+msgstr "Namai ulang..."
+
+#: src/extensions/spectradialog.ui:316
+msgid "TODO"
+msgstr "Perlu Dikerjakan"
+
+#: src/extensions/spectradialog.ui:329
+msgid "&Schemes:"
+msgstr "&Skema:"
+
+#: src/extensions/spectradialog.ui:345
+msgid "&Export..."
+msgstr "&Ekspor..."
+
+#: src/extensions/spectradialog.ui:385
+msgid "&DPI:"
+msgstr "&DPI:"
+
+#: src/extensions/spectradialog.ui:401
+msgid "&Width:"
+msgstr "Lebar:"
+
+#: src/extensions/spectradialog.ui:430
+msgid "&Height"
+msgstr "Tinggi"
+
+#: src/extensions/spectradialog.ui:453
+msgid "&Filename:"
+msgstr "Nama Berkas:"
+
+#: src/extensions/spectradialog.ui:489
+msgid "..."
+msgstr "..."
+
+#: src/extensions/spectradialog.ui:500
+msgid "cm"
+msgstr "cm"
+
+#: src/extensions/spectradialog.ui:505
+msgid "mm"
+msgstr "mm"
+
+#: src/extensions/spectradialog.ui:510
+msgid "in"
+msgstr "in"
+
+#: src/extensions/spectradialog.ui:515
+msgid "px"
+msgstr "px"
+
+#: src/extensions/spectradialog.ui:529
+msgid "&Save Image..."
+msgstr "&Simpan gambar..."
+
+#: src/extensions/spectradialog.ui:562
+msgid ""
+"Use an optimized value for the font size instead of the scheme-specified "
+"value (screen to image point sizes don't translate well!)"
+msgstr ""
+"Gunakan ukuran huruf yang optimal sebagai ganti dari angka dinyatakan "
+"melalui skema"
+
+#: src/extensions/spectradialog.ui:565
+msgid "Auto-adjust F&ont Size"
+msgstr "Pengaturan Otomatis Ukuran Huru&f"
+
+#: src/extensions/spectradialog.ui:610
+msgid "&Load data..."
+msgstr "&Muat data..."
+
+#: src/extensions/spectradialog.ui:633
+msgid ""
+"Controls:\n"
+"Double left click: Restore default axis limits\n"
+"Right click + drag: Move plot\n"
+"Middle click + drag: Zoom to region\n"
+"Scroll wheel: Zoom to cursor"
+msgstr ""
+"Kontrol:\n"
+"Klik kiri dua kali: Mengembalikan batas sumbu bawaan\n"
+"Klik kanan + seret: Menggeser Plot\n"
+"Klik tengah + seret: Perbesar atau perkecil daerah\n"
+"Putar roda tetikus: Perbesar atau perkecil menurut kursor"
+
+#: src/extensions/spectratabir.ui:14
+msgid "tab_IR"
+msgstr "tab_IR"
+
+#: src/extensions/spectratabir.ui:29
+msgid "&Y Axis Units:"
+msgstr "Satuan Sumbu &Y:"
+
+#: src/extensions/spectratabir.ui:46
+#, no-c-format
+msgid "Transmittance (%)"
+msgstr "Transmitansi (%)"
+
+#: src/extensions/spectratabir.ui:51
+#, no-c-format
+msgid "Absorbance (%)"
+msgstr "Absorbansi (%)"
+
+#: src/extensions/spectratabir.ui:78
+msgid "Sc&ale:"
+msgstr "Sk&ala:"
+
+#: src/extensions/spectratabir.ui:94
+msgid "&Gaussian Width:"
+msgstr "Lebar &Gaussian:"
+
+#: src/extensions/spectratabir.ui:123
+msgid "&Label peaks"
+msgstr "&Label peaks"
+
+#: src/extensions/spectratabnmr.ui:14
+msgid "tab_NMR"
+msgstr "tab_NMR"
+
+#: src/extensions/spectratabnmr.ui:23
+msgid "NMR &Type:"
+msgstr "NMR &Tipe:"
+
+#: src/extensions/spectratabnmr.ui:36
+msgid "&Reference:"
+msgstr "&Referensi:"
+
+#: src/extensions/spectratabnmr.ui:46
+msgid "Gaussian &Width:"
+msgstr "Le&bar Gaussian:"
+
+#: src/extensions/spectratabnmr.ui:69
+msgid "Reset &Plot Axes"
+msgstr "Tata Ulan Sumbu &Plot"
+
+#: src/extensions/spectratabnmr.ui:105
+msgid "Label Peaks:"
+msgstr "Label Peaks:"
+
+#: src/extensions/supercelldialog.ui:14
+msgid "Super Cell Parameters"
+msgstr "Parameter Super Sel"
+
+#: src/extensions/supercelldialog.ui:22
+msgid "Super Cell Options"
+msgstr "Pilihan Super Sel"
+
+#: src/extensions/supercelldialog.ui:28
+#: src/extensions/unitcellparamdialog.ui:34
+msgid "A repeat:"
+msgstr "Ulang A:"
+
+#: src/extensions/supercelldialog.ui:42
+#: src/extensions/unitcellparamdialog.ui:48
+msgid "B repeat:"
+msgstr "Ulang B:"
+
+#: src/extensions/supercelldialog.ui:56
+#: src/extensions/unitcellparamdialog.ui:62
+msgid "C repeat:"
+msgstr "Ulang C:"
+
+#: src/extensions/supercelldialog.ui:88
+msgid "Generate Cell"
+msgstr "Menghasilkan Sel"
+
+#: src/extensions/unitcellparamdialog.ui:13
+#: src/extensions/unitcellparamdialog.ui:110
+msgid "Unit Cell Parameters"
+msgstr "Parameter Unit Sel"
+
+#: src/extensions/unitcellparamdialog.ui:28
+msgid "Unit Cell Display Options"
+msgstr "Pilihan Tampilan Unit Sel"
+
+#: src/extensions/unitcellparamdialog.ui:81
+msgid "Delete Unit Cell"
+msgstr "Hapus Unit Sel"
+
+#: src/extensions/unitcellparamdialog.ui:101
+msgid "Fill Unit Cell"
+msgstr "Isi Unit Sel"
+
+#: src/extensions/unitcellparamdialog.ui:131
+msgid "Axes (Å)"
+msgstr "Sumbu (Å)"
+
+#: src/extensions/unitcellparamdialog.ui:151
+msgid "Angles (°)"
+msgstr "Sudut (°)"
+
+#: src/extensions/unitcellparamdialog.ui:175
+msgid "A:"
+msgstr "A:"
+
+#: src/extensions/unitcellparamdialog.ui:192
+msgid "alpha:"
+msgstr "alpha:"
+
+#: src/extensions/unitcellparamdialog.ui:212
+msgid "B:"
+msgstr "B:"
+
+#: src/extensions/unitcellparamdialog.ui:229
+msgid "beta:"
+msgstr "beta:"
+
+#: src/extensions/unitcellparamdialog.ui:249
+msgid "C:"
+msgstr "C:"
+
+#: src/extensions/unitcellparamdialog.ui:266
+msgid "gamma:"
+msgstr "gamma:"
+
+#: src/extensions/vibrationdialog.ui:14
+msgid "Molecular Vibrations"
+msgstr "Getaran molekuler"
+
+#: src/extensions/vibrationdialog.ui:45
+msgid "Frequency (cm⁻¹)"
+msgstr "Frekuensi (cm⁻¹)"
+
+#: src/extensions/vibrationdialog.ui:50
+msgid "Intensity (km/mol)"
+msgstr "Intensitas (km/mol)"
+
+#: src/extensions/vibrationdialog.ui:66
+msgid "&Scale:"
+msgstr "&Skala:"
+
+#: src/extensions/vibrationdialog.ui:97
+msgid "Display Force &Vectors"
+msgstr "Menampilkan &Vektor Gaya"
+
+#: src/extensions/vibrationdialog.ui:122
+msgid "E&xport..."
+msgstr "Eksp&or"
+
+#: src/tools/navigatesettingswidget.ui:14
+msgid "Form"
+msgstr "Bentuk"
+
+#: src/tools/navigatesettingswidget.ui:23
+msgctxt ""
+"Should the navigate tool display visual cues about the action taking place?"
+msgid ""
+"\n"
+"     </property>\n"
+"     <property name=\"text\">\n"
+"      <string>Display visual cues"
+msgstr ""
+"\n"
+"     </property>\n"
+"     <property name=\"text\">\n"
+"      <string>Menampilkan isyarat gambar"
+
+#: src/tools/navigatesettingswidget.ui:24
+msgid ""
+"Display visual cues</string>\n"
+"     </property>"
+msgstr ""
+"Menampilkan isyarat gambar</string>\n"
+"     </property>"
+
+#: src/tools/pythonsettingswidget.ui:25
+msgid "Python Settings"
+msgstr "Setelan Python"
+
+#: src/tools/zmatrixdialog.ui:14
+msgid "Z Matrix Editor"
+msgstr "Penyunting Z Matrix"
+
+#: src/tools/zmatrixdialog.ui:25
+msgid "Import Selected Atoms"
+msgstr "Impor Atom Terpilih"
+
+#: src/tools/zmatrixdialog.ui:52
+msgid "Remove Atom"
+msgstr "Hapus Atom"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr " ,Launchpad Contributions:,Waluyo Adi Siswanto"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,"
