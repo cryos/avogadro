@@ -33,7 +33,7 @@
 
 namespace Avogadro {
 
-  EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) : 
+  EngineItemModel::EngineItemModel( GLWidget *widget, QObject *parent ) :
       QAbstractItemModel(parent), m_glwidget(widget)
   {
     connect(m_glwidget, SIGNAL(engineAdded(Engine *)),
@@ -161,10 +161,13 @@ namespace Avogadro {
     return false;
   }
 
-  Qt::ItemFlags EngineItemModel::flags( const QModelIndex & ) const
+  Qt::ItemFlags EngineItemModel::flags(const QModelIndex & index) const
   {
-    return (Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable
-            | Qt::ItemIsEnabled);
+    if (index.column() == 0)
+      return Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable
+              | Qt::ItemIsEnabled;
+    else
+      return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
   }
 
   QModelIndex EngineItemModel::index(int row, int column,
@@ -180,10 +183,10 @@ namespace Avogadro {
 
     return QModelIndex();
   }
-  
+
   void EngineItemModel::clear()
-  { 
-    reset(); 
+  {
+    reset();
   }
 
 } // end namespace Avogadro
