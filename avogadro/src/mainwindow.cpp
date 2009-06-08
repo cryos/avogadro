@@ -1924,6 +1924,8 @@ namespace Avogadro
 
   void MainWindow::detachView()
   {
+    if (d->centralLayout->count() == 1) // Don't close/detach the final view
+      return;
     // Get the GLWidget of the current view, close in in the tabs
     QWidget *widget = d->centralTab->currentWidget();
     foreach(QObject *object, widget->children()) {
@@ -1958,6 +1960,9 @@ namespace Avogadro
 
   void MainWindow::closeView(int index)
   {
+    if (d->centralLayout->count() == 1) // Don't close the final view
+      return;
+
     QWidget *widget = d->centralTab->widget(index);
     foreach( QObject *object, widget->children() ) {
       GLWidget *glWidget = qobject_cast<GLWidget *>(object);
