@@ -109,8 +109,12 @@ namespace Avogadro {
       if(index.column() == 1) {
         if (role == Qt::DisplayRole)
           return QVariant();
-        if (role == Qt::ToolTipRole)
-          return tr("Settings");
+        if (role == Qt::ToolTipRole) {
+          if (engine->hasSettings())
+            return tr("Settings");
+          else
+            return QVariant();
+        }
         else if (role == EngineItemModel::EngineRole)
           return qVariantFromValue(engine);
         else

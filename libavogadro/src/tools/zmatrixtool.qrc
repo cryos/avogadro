@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/zmatrix">
+        <file>zmatrix.png</file>
+    </qresource>
+</RCC>

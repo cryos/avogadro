@@ -26,7 +26,7 @@ if(ENABLE_ZMATRIX_TOOL)
   set(zmatrixtool_SRCS zmatrixtool.cpp zmatrixdialog.cpp zmatrixmodel.cpp)
   avogadro_plugin(zmatrixtool
     "${zmatrixtool_SRCS}"
-    zmatrixdialog.ui)
+    zmatrixdialog.ui;zmatrixtool.qrc)
 endif(ENABLE_ZMATRIX_TOOL)
 
 ### bondcentrictool
