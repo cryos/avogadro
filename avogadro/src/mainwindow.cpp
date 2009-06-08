@@ -388,10 +388,6 @@ namespace Avogadro
 #ifdef ENABLE_UPDATE_CHECKER
     m_updateCheck = new UpdateCheck(this);
 #endif
-
-    // Disable the detach view option for now
-    // FIXME
-//    ui.actionDetachView->setVisible(false);
   }
 
   bool MainWindow::event(QEvent *event)
@@ -818,7 +814,7 @@ namespace Avogadro
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                                                        tr( "Avogadro" ),
                                                        tr("This file contains does not contain 3D coordinates."),
-                                                       QMessageBox::YesToAll | QMessageBox::Yes 
+                                                       QMessageBox::YesToAll | QMessageBox::Yes
                                                        | QMessageBox::No,
                                                        this);
 
@@ -1884,6 +1880,7 @@ namespace Avogadro
     d->centralTab->addTab(widget, tabName);
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
+    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1916,6 +1913,7 @@ namespace Avogadro
     d->centralTab->addTab( widget, tabName );
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
+    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1941,6 +1939,7 @@ namespace Avogadro
         // Ensure that actions are enabled/disabled appropriately.
         ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
         ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        d->centralTab->setTabsClosable(d->centralTab->count() != 1);
         // Set up the detached viwe
         DetachedView *view = new DetachedView(glWidget);
         view->setWindowTitle(tr("Avogadro: Detached View"));
@@ -1976,6 +1975,7 @@ namespace Avogadro
         delete glWidget;
         ui.actionCloseView->setEnabled(d->centralTab->count() != 1);
         ui.actionDetachView->setEnabled(d->centralTab->count() != 1);
+        d->centralTab->setTabsClosable(d->centralTab->count() != 1);
       }
     }
     setView( d->centralTab->currentIndex());
@@ -2521,6 +2521,7 @@ namespace Avogadro
 
     ui.actionCloseView->setEnabled(count > 1);
     ui.actionDetachView->setEnabled(count > 1);
+    d->centralTab->setTabsClosable(count > 1);
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
