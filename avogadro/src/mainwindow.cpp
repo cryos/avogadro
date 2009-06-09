@@ -262,7 +262,7 @@ namespace Avogadro
     d->centralTab->setObjectName("centralTab");
     d->centralTab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     d->centralTab->setDocumentMode(true);
-    d->centralTab->setTabsClosable(true);
+    d->centralTab->setTabsClosable(false); // by default, we just have one tab
     d->centralLayout->addWidget(d->centralTab);
     // Set up the signal/slot for closing tabs from the tab widget
     connect(d->centralTab, SIGNAL(tabCloseRequested(int)),
@@ -1878,9 +1878,9 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab(widget, tabName);
+    d->centralTab->setTabsClosable(d->centralTab->count() > 1);
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
-    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -1911,9 +1911,9 @@ namespace Avogadro
     QString tabName = tr("View %1").arg( d->centralTab->count()+1 );
 
     d->centralTab->addTab( widget, tabName );
+    d->centralTab->setTabsClosable(d->centralTab->count() > 1);
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
-    d->centralTab->setTabsClosable(true);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
@@ -2500,7 +2500,7 @@ namespace Avogadro
     if(count < 1)
       count = 1;
 
-    for(int i = 0; i<count; i++) {
+    for(int i = 0; i < count; i++) {
       settings.setArrayIndex(i);
       QWidget *widget = new QWidget();
       QVBoxLayout *layout = new QVBoxLayout( widget );

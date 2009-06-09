@@ -66,8 +66,9 @@ namespace Avogadro
     if ( m_forceField ) { // make sure we can actually find and run it!
 
       action = new QAction( this );
-      action->setText( tr("Optimize Geometry" ));
+      action->setText( tr("&Optimize Geometry" ));
       action->setData(OptimizeGeometryIndex);
+      action->setShortcut( tr("Ctrl+Alt+O", "Shortcut key for optimize geometry") );
       m_actions.append( action );
 
       action = new QAction( this );
