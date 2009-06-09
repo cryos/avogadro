@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 07:29-0400\n"
+"POT-Creation-Date: 2009-06-09 08:14-0400\n"
 "PO-Revision-Date: 2009-06-06 15:31+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2444,7 +2444,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1838
+#: src/extensions/vibrationdialog.cpp:213:1840
 msgid "Start &Animation"
 msgstr "Начать &анимацию"
 
@@ -3036,7 +3036,7 @@ msgid "Measure Settings"
 msgstr "Настройки измерения"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1858
+#: src/tools/drawcommand.cpp:289:1860
 msgid "Add Atom"
 msgstr "Добавить атом"
 
@@ -3883,7 +3883,7 @@ msgstr "воде"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:292
+#: src/extensions/surfacedialog.ui:295
 msgid "Calculate"
 msgstr "Рассчитать"
 
@@ -3900,7 +3900,7 @@ msgstr "В:"
 msgid "&Advanced Setup"
 msgstr "Расширенные настройки"
 
-#: src/extensions/gamessinputdialog.ui:361 src/extensions/surfacedialog.ui:302
+#: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
 msgstr "Дополнительно"
 
@@ -5524,7 +5524,7 @@ msgstr ""
 msgid "Color By:"
 msgstr ""
 
-#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:200
+#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr ""
 
@@ -5946,31 +5946,47 @@ msgid "MO 666"
 msgstr "МО "
 
 #: src/extensions/surfacedialog.ui:162
+#, fuzzy
+msgctxt "low resolution"
 msgid "Low"
 msgstr "Низкое"
 
 #: src/extensions/surfacedialog.ui:167
+#, fuzzy
+msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Среднее"
 
 #: src/extensions/surfacedialog.ui:172
+#, fuzzy
+msgctxt "high resolution"
 msgid "High"
 msgstr "Высокое"
 
 #: src/extensions/surfacedialog.ui:177
 #, fuzzy
+msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Высокое"
 
-#: src/extensions/surfacedialog.ui:233
+#: src/extensions/surfacedialog.ui:200
+msgid "Isosurface cutoff value"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:236
 #, fuzzy
 msgid "In Display Type:"
 msgstr "Показать оси"
 
-#: src/extensions/surfacedialog.ui:252
+#: src/extensions/surfacedialog.ui:255
 #, fuzzy
 msgid "New Display"
 msgstr "Показать оси"
+
+#: src/extensions/surfacedialog.ui:305
+#, fuzzy
+msgid "Advanced..."
+msgstr "Дополнительно"
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110

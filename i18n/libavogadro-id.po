@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 07:29-0400\n"
+"POT-Creation-Date: 2009-06-09 08:14-0400\n"
 "PO-Revision-Date: 2009-06-02 23:13+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -2459,7 +2459,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1838
+#: src/extensions/vibrationdialog.cpp:213:1840
 msgid "Start &Animation"
 msgstr "Memulai &Animasi"
 
@@ -3060,7 +3060,7 @@ msgid "Measure Settings"
 msgstr "Pengaturan Pengukuran"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1858
+#: src/tools/drawcommand.cpp:289:1860
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
@@ -3916,7 +3916,7 @@ msgstr "Air"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:292
+#: src/extensions/surfacedialog.ui:295
 msgid "Calculate"
 msgstr "Menghitung"
 
@@ -3933,7 +3933,7 @@ msgstr "Dalam:"
 msgid "&Advanced Setup"
 msgstr "Pengaturan Lanjut"
 
-#: src/extensions/gamessinputdialog.ui:361 src/extensions/surfacedialog.ui:302
+#: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
 msgstr "Lanjut"
 
@@ -5559,7 +5559,7 @@ msgstr "Kubus:"
 msgid "Color By:"
 msgstr "Warna Berdasarkan:"
 
-#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:200
+#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr "Angka Iso:"
 
@@ -5986,31 +5986,45 @@ msgid "MO 666"
 msgstr ""
 
 #: src/extensions/surfacedialog.ui:162
+msgctxt "low resolution"
 msgid "Low"
 msgstr ""
 
 #: src/extensions/surfacedialog.ui:167
 #, fuzzy
+msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Mendelevium"
 
 #: src/extensions/surfacedialog.ui:172
 #, fuzzy
+msgctxt "high resolution"
 msgid "High"
 msgstr "Tinggi"
 
 #: src/extensions/surfacedialog.ui:177
+#, fuzzy
+msgctxt "very high resolution"
 msgid "Very High"
+msgstr "Tinggi"
+
+#: src/extensions/surfacedialog.ui:200
+msgid "Isosurface cutoff value"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:233
+#: src/extensions/surfacedialog.ui:236
 #, fuzzy
 msgid "In Display Type:"
 msgstr "Tipe Monitor:"
 
-#: src/extensions/surfacedialog.ui:252
+#: src/extensions/surfacedialog.ui:255
 msgid "New Display"
 msgstr ""
+
+#: src/extensions/surfacedialog.ui:305
+#, fuzzy
+msgid "Advanced..."
+msgstr "Lanjut"
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110
