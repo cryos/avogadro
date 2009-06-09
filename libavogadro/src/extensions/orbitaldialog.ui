@@ -490,7 +490,7 @@
          <item>
           <widget class="QLineEdit" name="isoValue">
            <property name="text">
-            <string>0.02</string>
+            <string notr="true">0.02</string>
            </property>
           </widget>
          </item>
@@ -524,7 +524,7 @@
          <item>
           <widget class="QLabel" name="cubeLow">
            <property name="text">
-            <string>0.000</string>
+            <string notr="true">0.000</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -541,7 +541,7 @@
          <item>
           <widget class="QLabel" name="cubeHigh">
            <property name="text">
-            <string>1.000</string>
+            <string notr="true">1.000</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -716,7 +716,7 @@
          <item>
           <widget class="QLineEdit" name="surfaceDistance">
            <property name="text">
-            <string>0.0</string>
+            <string notr="true">0.0</string>
            </property>
           </widget>
          </item>
