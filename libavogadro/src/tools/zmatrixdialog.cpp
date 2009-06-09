@@ -37,6 +37,11 @@ namespace Avogadro {
     ui.setupUi(this);
     ui.tableView->setModel(m_zMatrixModel);
 
+    QHeaderView *horizontal = ui.tableView->horizontalHeader();
+    horizontal->setResizeMode(QHeaderView::Stretch);
+    QHeaderView *vertical = ui.tableView->verticalHeader();
+    vertical->setResizeMode(QHeaderView::Stretch);
+
     // Connect our signals and slots...
     connect(ui.addButton, SIGNAL(clicked()), this, SLOT(addAtom()));
     connect(ui.removeButton, SIGNAL(clicked()), this, SLOT(removeAtom()));
