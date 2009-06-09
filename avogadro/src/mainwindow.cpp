@@ -1880,7 +1880,7 @@ namespace Avogadro
     d->centralTab->addTab(widget, tabName);
     ui.actionCloseView->setEnabled(true);
     ui.actionDetachView->setEnabled(true);
-    d->centralTab->setTabsClosable(true);
+    d->centralTab->setTabsClosable(count > 1);
     ui.actionDisplayAxes->setChecked(gl->renderAxes());
     ui.actionDisplayUnitCellAxes->setChecked(gl->renderUnitCellAxes());
     ui.actionDebugInformation->setChecked(gl->renderDebug());
