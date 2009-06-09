@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 07:29-0400\n"
+"POT-Creation-Date: 2009-06-09 08:14-0400\n"
 "PO-Revision-Date: 2009-06-04 13:59+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -2414,7 +2414,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1838
+#: src/extensions/vibrationdialog.cpp:213:1840
 msgid "Start &Animation"
 msgstr "开始动画"
 
@@ -3018,7 +3018,7 @@ msgid "Measure Settings"
 msgstr "测量设置"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1858
+#: src/tools/drawcommand.cpp:289:1860
 msgid "Add Atom"
 msgstr "添加原子"
 
@@ -3874,7 +3874,7 @@ msgstr "水"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:292
+#: src/extensions/surfacedialog.ui:295
 msgid "Calculate"
 msgstr "计算"
 
@@ -3891,7 +3891,7 @@ msgstr "输入："
 msgid "&Advanced Setup"
 msgstr "高级设置"
 
-#: src/extensions/gamessinputdialog.ui:361 src/extensions/surfacedialog.ui:302
+#: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
 msgstr "高级"
 
@@ -5513,7 +5513,7 @@ msgstr "立方体:"
 msgid "Color By:"
 msgstr "着色按:"
 
-#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:200
+#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr "Iso值:"
 
@@ -5939,31 +5939,47 @@ msgid "MO 666"
 msgstr "分子轨道 "
 
 #: src/extensions/surfacedialog.ui:162
+#, fuzzy
+msgctxt "low resolution"
 msgid "Low"
 msgstr "低"
 
 #: src/extensions/surfacedialog.ui:167
+#, fuzzy
+msgctxt "medium resolution"
 msgid "Medium"
 msgstr "中"
 
 #: src/extensions/surfacedialog.ui:172
+#, fuzzy
+msgctxt "high resolution"
 msgid "High"
 msgstr "高"
 
 #: src/extensions/surfacedialog.ui:177
 #, fuzzy
+msgctxt "very high resolution"
 msgid "Very High"
 msgstr "高"
 
-#: src/extensions/surfacedialog.ui:233
+#: src/extensions/surfacedialog.ui:200
+msgid "Isosurface cutoff value"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:236
 #, fuzzy
 msgid "In Display Type:"
 msgstr "显示模式："
 
-#: src/extensions/surfacedialog.ui:252
+#: src/extensions/surfacedialog.ui:255
 #, fuzzy
 msgid "New Display"
 msgstr "显示坐标轴"
+
+#: src/extensions/surfacedialog.ui:305
+#, fuzzy
+msgid "Advanced..."
+msgstr "高级"
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110

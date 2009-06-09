@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>408</width>
-    <height>242</height>
+    <width>457</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,26 +155,26 @@
        <item>
         <widget class="QComboBox" name="resolutionCombo">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <item>
           <property name="text">
-           <string>Low</string>
+           <string comment="low resolution">Low</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Medium</string>
+           <string comment="medium resolution">Medium</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>High</string>
+           <string comment="high resolution">High</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Very High</string>
+           <string comment="very high resolution">Very High</string>
           </property>
          </item>
         </widget>
@@ -196,6 +196,9 @@
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
+       <property name="toolTip">
+        <string>Isosurface cutoff value</string>
+       </property>
        <property name="text">
         <string>Iso Value:</string>
        </property>
@@ -299,7 +302,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>Advanced</string>
+        <string>Advanced...</string>
        </property>
       </widget>
      </item>

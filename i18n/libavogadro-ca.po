@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 07:29-0400\n"
+"POT-Creation-Date: 2009-06-09 08:14-0400\n"
 "PO-Revision-Date: 2009-05-21 20:54+0000\n"
 "Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -2455,7 +2455,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1838
+#: src/extensions/vibrationdialog.cpp:213:1840
 msgid "Start &Animation"
 msgstr ""
 
@@ -3065,7 +3065,7 @@ msgid "Measure Settings"
 msgstr ""
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1858
+#: src/tools/drawcommand.cpp:289:1860
 msgid "Add Atom"
 msgstr "Afig un àtom"
 
@@ -3925,7 +3925,7 @@ msgstr "Aigua"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:292
+#: src/extensions/surfacedialog.ui:295
 msgid "Calculate"
 msgstr "Calcula"
 
@@ -3942,7 +3942,7 @@ msgstr "Entrada:"
 msgid "&Advanced Setup"
 msgstr "Configuració &avançada"
 
-#: src/extensions/gamessinputdialog.ui:361 src/extensions/surfacedialog.ui:302
+#: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
 msgstr "Avançat"
 
@@ -5568,7 +5568,7 @@ msgstr "Cub:"
 msgid "Color By:"
 msgstr "Color de:"
 
-#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:200
+#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr "Valor Iso:"
 
@@ -5992,31 +5992,47 @@ msgid "MO 666"
 msgstr "MO "
 
 #: src/extensions/surfacedialog.ui:162
+#, fuzzy
+msgctxt "low resolution"
 msgid "Low"
 msgstr "Baix"
 
 #: src/extensions/surfacedialog.ui:167
+#, fuzzy
+msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Mitjà"
 
 #: src/extensions/surfacedialog.ui:172
+#, fuzzy
+msgctxt "high resolution"
 msgid "High"
 msgstr "Alt"
 
 #: src/extensions/surfacedialog.ui:177
 #, fuzzy
+msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Alt"
 
-#: src/extensions/surfacedialog.ui:233
+#: src/extensions/surfacedialog.ui:200
+msgid "Isosurface cutoff value"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:236
 #, fuzzy
 msgid "In Display Type:"
 msgstr "Tipus de visualització:"
 
-#: src/extensions/surfacedialog.ui:252
+#: src/extensions/surfacedialog.ui:255
 #, fuzzy
 msgid "New Display"
 msgstr "Mostra els eixos"
+
+#: src/extensions/surfacedialog.ui:305
+#, fuzzy
+msgid "Advanced..."
+msgstr "Avançat"
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110
