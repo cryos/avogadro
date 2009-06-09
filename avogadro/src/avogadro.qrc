@@ -12,6 +12,8 @@
         <file>icons/document-import.png</file>
         <file>icons/document-new.png</file>
         <file>icons/document-open.png</file>
+        <file>icons/document-open-recent.png</file>
+        <file>icons/document-open-remote.png</file>
         <file>icons/document-print.png</file>
         <file>icons/document-revert.png</file>
         <file>icons/document-save-as.png</file>
