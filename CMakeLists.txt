@@ -288,7 +288,7 @@ add_custom_target(update-translations
     ALL
    COMMENT "Updating translations"
    COMMAND ${QT_LUPDATE_EXECUTABLE}
-    ${Avogadro_SOURCE_DIR} -silent -noobsolete -ts ${avogadro_TS}
+    ${Avogadro_SOURCE_DIR}/libavogadro ${Avogadro_SOURCE_DIR}/avogadro -silent -noobsolete -ts ${avogadro_TS}
     WORKING_DIRECTORY "${Avogadro_BINARY_DIR}/i18n"
    )
 
