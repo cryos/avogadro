@@ -277,19 +277,28 @@ FIND_PROGRAM(QT_LCONVERT_EXECUTABLE
 
 file(MAKE_DIRECTORY "${Avogadro_BINARY_DIR}/i18n")
 file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/*.po")
-string(REGEX REPLACE "(.*)\\.po" "\\1.ts" avogadro_TS "${avogadro_PO}")
+# three step replace (there's probably a regex, but this is easier
+string(REPLACE ".po" ".ts" initial_TS "${avogadro_PO}")
+string(REPLACE "${Avogadro_SOURCE_DIR}" "${Avogadro_BINARY_DIR}" second_TS "${initial_TS}")
+string(REPLACE "-" "_" avogadro_TS "${second_TS}")
 
+# I hate custom_target -- it re-runs all the time. If someone knows Cmake magic, let's fix this
 add_custom_target(create-translations
   COMMENT "Creating Qt translation files"
-   COMMAND "${Avogadro_SOURCE_DIR}/scripts/create-translations.sh" "${Avogadro_SOURCE_DIR}/i18n" ${QT_LCONVERT_EXECUTABLE}
-    WORKING_DIRECTORY ${Avogadro_BINARY_DIR}/i18n)
- 
+  COMMAND "${Avogadro_SOURCE_DIR}/scripts/create-translations.sh" "${Avogadro_SOURCE_DIR}/i18n" ${QT_LCONVERT_EXECUTABLE}
+  WORKING_DIRECTORY ${Avogadro_BINARY_DIR}/i18n
+  DEPENDS ${avogadro_PO}
+)
+
+# I hate custom_target -- it re-runs all the time. If someone knows Cmake magic, let's fix this
 add_custom_target(update-translations
-    ALL
-   COMMENT "Updating translations"
-   COMMAND ${QT_LUPDATE_EXECUTABLE}
-    ${Avogadro_SOURCE_DIR}/libavogadro ${Avogadro_SOURCE_DIR}/avogadro -silent -noobsolete -ts ${avogadro_TS}
-    WORKING_DIRECTORY "${Avogadro_BINARY_DIR}/i18n"
+	ALL
+  COMMENT "Updating translations"
+  COMMAND ${QT_LUPDATE_EXECUTABLE}
+    ${Avogadro_SOURCE_DIR}/libavogadro ${Avogadro_SOURCE_DIR}/avogadro -silent -noobsolete -ts "*.ts"
+  WORKING_DIRECTORY "${Avogadro_BINARY_DIR}/i18n"
+# That's not a typo -- we don't update the translations unless the PO files have changed
+  DEPENDS ${avogadro_PO}
    )
 
 add_dependencies(update-translations create-translations)
