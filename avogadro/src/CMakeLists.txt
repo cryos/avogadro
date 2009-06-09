@@ -59,7 +59,12 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-file(GLOB avogadro_TS "${Avogadro_BINARY_DIR}/i18n/avogadro*.ts")
+file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
+# three step replace (there's probably a regex, but this is easier
+string(REPLACE ".po" ".ts" initial_TS "${avogadro_PO}")
+string(REPLACE "${Avogadro_SOURCE_DIR}" "${Avogadro_BINARY_DIR}" second_TS "${initial_TS}")
+string(REPLACE "-" "_" avogadro_TS "${second_TS}")
+
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
 # Some relative rpath handling for Linux

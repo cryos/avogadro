@@ -22,8 +22,12 @@ include_directories(
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Library translations
-file(GLOB libavogadro_TS "${Avogadro_BINARY_DIR}/i18n/libavogadro*.ts")
-QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
+file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.po")
+# three step replace (there's probably a regex, but this is easier
+string(REPLACE ".po" ".ts" initial_TS "${libavogadro_PO}")
+string(REPLACE "${Avogadro_SOURCE_DIR}" "${Avogadro_BINARY_DIR}" second_TS "${initial_TS}")
+string(REPLACE "-" "_" libavogadro_TS "${second_TS}")
+ QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
 
 file(GLOB libavogadro_SRCS "*.cpp")
 
