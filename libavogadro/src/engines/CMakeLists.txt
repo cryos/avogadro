@@ -16,7 +16,7 @@ set(LINK_LIBS "avogadro")
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
 
 # overlay engine
-avogadro_plugin(overlayengine overlayengine.cpp overlaysettingswidget.ui)
+avogadro_plugin(overlayengine overlayengine.cpp)
 
 # wireframe
 avogadro_plugin(wireengine wireengine.cpp wiresettingswidget.ui)
