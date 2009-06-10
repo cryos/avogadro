@@ -179,6 +179,8 @@ namespace Avogadro {
     if (d->framesSet)
       m_molecule->setAllConformers(m_frames);
 
+    if (d->fps < 1.0)
+      d->fps = 1.0;
     int interval = 1000 / d->fps;
     m_timeLine->setUpdateInterval(interval);
     int duration = interval * numFrames();

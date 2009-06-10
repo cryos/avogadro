@@ -185,10 +185,11 @@ namespace Avogadro {
       // wavenumber * 3.0e10 cm/s * 1e-15 s/fs = 3e-5 fs-1
       if (m_mode < m_vibrations->GetFrequencies().size()) {
         double vibPerFs = m_vibrations->GetFrequencies()[m_mode] * 3.0e-5;
-        // 10fs = 4000 cm-1 gets 0.1 second apparent vibration
-        double fps = vibPerFs / 100.0;
+        // 10fs = 4000 cm-1 gets 1 second apparent vibration
+        // fs-1 above * 10fs / 1 s => per second * frames = fps
+        double fps = vibPerFs * 10.0;
         m_animation->setFps(fps * m_animationFrames.size());
-        qDebug() << " fps " << fps * m_animationFrames.size();
+        qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
     if (m_animating)
