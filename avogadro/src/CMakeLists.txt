@@ -63,8 +63,12 @@ file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
 # three step replace (there's probably a regex, but this is easier
 string(REPLACE ".po" ".ts" initial_TS "${avogadro_PO}")
 string(REPLACE "${Avogadro_SOURCE_DIR}" "${Avogadro_BINARY_DIR}" second_TS "${initial_TS}")
-string(REPLACE "-" "_" avogadro_TS "${second_TS}")
-
+foreach(tsfile ${second_TS})
+  get_filename_component(filename_TS ${tsfile} NAME)
+  get_filename_component(path_TS ${tsfile} PATH)
+  string(REPLACE "-" "_" newname_TS ${filename_TS})
+  set(avogadro_TS ${avogadro_TS} "${path_TS}/${newname_TS}")
+endforeach(tsfile ${second_TS})
 QT4_WRAP_TS(avogadro_QM ${avogadro_TS})
 
 # Some relative rpath handling for Linux
