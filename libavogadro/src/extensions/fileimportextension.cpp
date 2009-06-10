@@ -27,7 +27,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/bond.h>
 #include <avogadro/toolgroup.h>
-#include <avogadro/openbabelwrapper.h>
+#include <avogadro/moleculefile.h>
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -178,7 +178,7 @@ namespace Avogadro
 
     OBMol *obmol = new OBMol; */
     // Turn off bond perception
-    Molecule *mol = OpenbabelWrapper::readMolecule(fileName, "", "b");
+    Molecule *mol = MoleculeFile::readMolecule(fileName, "", "b");
     if (mol) {
       Molecule *oldMol = m_molecule;
       qDebug() << "Attempting to read parm file...";

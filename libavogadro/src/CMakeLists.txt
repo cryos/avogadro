@@ -59,7 +59,6 @@ set(libavogadro_HDRS
   moleculefile.h
   navigate.h
   neighborlist.h
-  openbabelwrapper.h
   painter.h
   painterdevice.h
   periodictableview.h
