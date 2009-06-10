@@ -111,13 +111,13 @@ namespace Avogadro {
         if (frequencies.at(j) < frequencies.at(i)) {
           tmp = frequencies.at(j);
           frequencies.at(j) = frequencies.at(i);
-          frequencies.at(j) = tmp;
+          frequencies.at(i) = tmp;
           tmp = intensities.at(j);
           intensities.at(j) = intensities.at(i);
-          intensities.at(j) = tmp;
+          intensities.at(i) = tmp;
           tmp_int = m_indexMap->at(j);
           m_indexMap->at(j) = m_indexMap->at(i);
-          m_indexMap->at(j) = tmp_int;
+          m_indexMap->at(i) = tmp_int;
         }
       }
       // Update progress bar
