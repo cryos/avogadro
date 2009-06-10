@@ -18,7 +18,6 @@
 #include <avogadro/toolgroup.h>
 #include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
-#include <avogadro/openbabelwrapper.h>
 #include <avogadro/moleculefile.h>
 
 #include <QObject>
