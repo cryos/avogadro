@@ -32,7 +32,7 @@
 namespace Avogadro {
 
   /**
-   * @class UndoSequence
+   * @class UndoSequence undosequence.h <avogadro/undosequence.h>
    * @brief Provides a sequence of Undo/Redo commands in a single command
    * @author Donald Ephraim Curtis
    *
