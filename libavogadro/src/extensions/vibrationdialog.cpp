@@ -31,7 +31,6 @@
 #include <QHeaderView>
 
 #include <avogadro/molecule.h>
-#include <avogadro/numbertableitem.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -105,11 +104,33 @@ namespace Avogadro {
     prog.setMinimumDuration(2000);
     prog.setCancelButton(0);
 
-    ui.vibrationTable->setRowCount(frequencies.size());
+    // Simple selection sort
+    double tmp;
+    int tmp_int;
+    for (uint i = 0; i < frequencies.size(); i++) {
+      for (uint j = i; j < frequencies.size(); j++) {
+        if (i == j) continue; // Save a bit of time...
+        if (frequencies.at(j) < frequencies.at(i)) {
+          tmp = frequencies.at(j);
+          frequencies.at(j) = frequencies.at(i);
+          frequencies.at(j) = tmp;
+          tmp = intensities.at(j);
+          intensities.at(j) = intensities.at(i);
+          intensities.at(j) = tmp;
+          tmp_int = m_indexMap->at(j);
+          m_indexMap->at(j) = m_indexMap->at(i);
+          m_indexMap->at(j) = tmp_int;
+        }
+      }
+      // Update progress bar
+      prog.setValue(i);
+    }
 
+    ui.vibrationTable->setRowCount(frequencies.size());
     QString format("%L1");
+
     for (unsigned int row = 0; row < frequencies.size(); ++row) {
-      NumberTableItem *newFreq = new NumberTableItem(frequencies[row], 0, 'f', 1);
+      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       // Some codes don't provide intensity data. Display "-" in place of intensities.
       QTableWidgetItem *newInten;
@@ -123,8 +144,7 @@ namespace Avogadro {
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
     }
-    ui.vibrationTable->sortItems(0, Qt::AscendingOrder); // sort by frequency
-    
+
     // enable export button
     ui.exportButton->setEnabled(true);
   }
