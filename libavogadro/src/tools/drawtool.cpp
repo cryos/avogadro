@@ -651,7 +651,8 @@ namespace Avogadro {
     // Bring up the periodic table widget
     else {
       if (!m_periodicTable) {
-        m_periodicTable = new PeriodicTableView(m_settingsWidget);
+        // call the method, which will create the widget if needed
+        m_periodicTable = new PeriodicTableView(settingsWidget());
         connect(m_periodicTable, SIGNAL(elementChanged(int)),
                 this, SLOT(customElementChanged(int)));
       }

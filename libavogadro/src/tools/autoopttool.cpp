@@ -89,6 +89,8 @@ namespace Avogadro {
       delete m_thread;
       m_thread = 0;
     }
+    if (m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   int AutoOptTool::usefulness() const

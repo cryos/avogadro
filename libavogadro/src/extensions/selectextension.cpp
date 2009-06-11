@@ -59,7 +59,7 @@ namespace Avogadro {
 
   SelectExtension::SelectExtension(QObject *parent) : Extension(parent)
   {
-    m_periodicTable = new PeriodicTableView;
+    m_periodicTable = new PeriodicTableView(qobject_cast<QWidget*>(parent));
     connect( m_periodicTable, SIGNAL( elementChanged(int) ),
         this, SLOT( selectElement(int) ));
     QAction *action;

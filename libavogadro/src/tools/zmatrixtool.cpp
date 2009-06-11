@@ -44,6 +44,8 @@ namespace Avogadro {
 
   ZMatrixTool::~ZMatrixTool()
   {
+    if (m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   QUndoCommand * ZMatrixTool::mousePressEvent(GLWidget *widget,
@@ -84,14 +86,14 @@ namespace Avogadro {
     if (!m_settingsWidget) {
       m_settingsWidget = new QWidget;
       // Z matrix editor button
-      QPushButton *zMatrixButton = new QPushButton(m_settingsWidget);
+      QPushButton *zMatrixButton = new QPushButton;
       zMatrixButton->setText(tr("Z Matrix Editor..."));
       QHBoxLayout* zMatrixLayout = new QHBoxLayout;
       zMatrixLayout->addStretch(1);
       zMatrixLayout->addWidget(zMatrixButton);
       zMatrixLayout->addStretch(1);
       connect(zMatrixButton, SIGNAL(clicked()), this, SLOT(showZMatrixDialog()));
-      QVBoxLayout *layout = new QVBoxLayout();
+      QVBoxLayout *layout = new QVBoxLayout(m_settingsWidget);
       layout->addLayout(zMatrixLayout);
       m_settingsWidget->setLayout(layout);
       return m_settingsWidget;
