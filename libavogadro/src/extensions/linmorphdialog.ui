@@ -21,7 +21,7 @@
      <item>
       <widget class="QPushButton" name="loadButton" >
        <property name="toolTip" >
-        <string>Load a second confromation and computer a linear interpolation with the current conformation.</string>
+        <string>Load a second conformation and computer a linear interpolation with the current conformation.</string>
        </property>
        <property name="whatsThis" >
         <string>button to load a second conformation from a file.</string>

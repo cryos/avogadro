@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"POT-Creation-Date: 2009-06-12 06:34-0400\n"
 "PO-Revision-Date: 2009-05-21 20:54+0000\n"
 "Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -288,7 +288,8 @@ msgid "Xenon"
 msgstr "Xenó"
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+#, fuzzy
+msgid "Cesium"
 msgstr "Cesi"
 
 #: src/elementtranslator.cpp:207
@@ -573,7 +574,8 @@ msgid "Cartoon"
 msgstr "Pel·lícula"
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+#, fuzzy
+msgid "Renders protein secondary structure"
 msgstr "Renderitza l'estructura de la proteïna secundaria"
 
 #: src/engines/dipoleengine.h:42
@@ -845,7 +847,8 @@ msgid "Animation"
 msgstr "Animació"
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+#, fuzzy
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr "Anima trajectòries, reaccions, i vibracions."
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -1846,8 +1849,9 @@ msgid "Properties"
 msgstr "Propietats"
 
 #: src/extensions/propextension.h:44
+#, fuzzy
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
 "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
@@ -2765,8 +2769,9 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "Alinear molècules als eixos cartesians"
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
-msgstr ""
+#, fuzzy
+msgid "Align Settings"
+msgstr "Barra de configuració"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -4547,7 +4552,8 @@ msgid "Initial Guess:"
 msgstr "Conjectura inicial:"
 
 #: src/extensions/gamessinputdialog.ui:1984
-msgid "Huckel"
+#, fuzzy
+msgid "Hückel"
 msgstr "Huckel"
 
 #: src/extensions/gamessinputdialog.ui:1989
@@ -4651,7 +4657,8 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr "LYP: Correlació Lee-Yang-Parr"
 
 #: src/extensions/gamessinputdialog.ui:2264
-msgid "SVWN: Slater exhange + VWN correlation"
+#, fuzzy
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr "SVWN: Intercanvi Slater + Correlació VWN"
 
 #: src/extensions/gamessinputdialog.ui:2269
@@ -5344,8 +5351,9 @@ msgid "Linear Morph Trajectory"
 msgstr "Trajectoria Linear Morph"
 
 #: src/extensions/linmorphdialog.ui:24
+#, fuzzy
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and computer a linear interpolation with the "
 "current conformation."
 msgstr ""
 "Carrega el segon estereoisòmer i calcula una interpolació linial amb "
@@ -6735,9 +6743,6 @@ msgstr ""
 
 #~ msgid "Avogadro: Detached View"
 #~ msgstr "Avogadro: Vista separada"
-
-#~ msgid "Tool Settings"
-#~ msgstr "Barra de configuració"
 
 #~ msgid "No tools or engines loaded."
 #~ msgstr "No hi ha cap eina o motor carregat."

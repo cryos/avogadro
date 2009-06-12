@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"POT-Creation-Date: 2009-06-12 06:34-0400\n"
 "PO-Revision-Date: 2009-06-09 16:17+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,7 +283,8 @@ msgid "Xenon"
 msgstr "Xénon"
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+#, fuzzy
+msgid "Cesium"
 msgstr "Césium"
 
 #: src/elementtranslator.cpp:207
@@ -568,7 +569,8 @@ msgid "Cartoon"
 msgstr "Cartoon"
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+#, fuzzy
+msgid "Renders protein secondary structure"
 msgstr "Afficher la structure secondaire de la protéine"
 
 #: src/engines/dipoleengine.h:42
@@ -842,7 +844,8 @@ msgid "Animation"
 msgstr "Animation"
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+#, fuzzy
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr "Animer les trajectoires, les réactions et les fréquences."
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -1857,8 +1860,9 @@ msgid "Properties"
 msgstr "Propriétés"
 
 #: src/extensions/propextension.h:44
+#, fuzzy
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
 "Fenêtres d'affichage des distances, angles et angles de torsion inter-"
@@ -2787,7 +2791,8 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "Aligner les molécules selon un axe cartésien"
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
+#, fuzzy
+msgid "Align Settings"
 msgstr "Paramètres d'alignement"
 
 #: src/tools/autoopttool.cpp:59
@@ -4570,7 +4575,8 @@ msgid "Initial Guess:"
 msgstr "Estimation initiale:"
 
 #: src/extensions/gamessinputdialog.ui:1984
-msgid "Huckel"
+#, fuzzy
+msgid "Hückel"
 msgstr "Huckel"
 
 #: src/extensions/gamessinputdialog.ui:1989
@@ -4674,7 +4680,8 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr "LYP: corrélation Lee-Yang-Parr"
 
 #: src/extensions/gamessinputdialog.ui:2264
-msgid "SVWN: Slater exhange + VWN correlation"
+#, fuzzy
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr "SVWN: échange de Slater + corrélation VWN"
 
 #: src/extensions/gamessinputdialog.ui:2269
@@ -5367,8 +5374,9 @@ msgid "Linear Morph Trajectory"
 msgstr "Trajectoire d'interpolation linéaire"
 
 #: src/extensions/linmorphdialog.ui:24
+#, fuzzy
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and computer a linear interpolation with the "
 "current conformation."
 msgstr ""
 "Charger un second conformère et procéder à une interpolation linéaire avec "

@@ -1981,7 +1981,7 @@
               <widget class="QComboBox" name="moGuessInitialCombo">
                <item>
                 <property name="text">
-                 <string>Huckel</string>
+                 <string>Hückel</string>
                 </property>
                </item>
                <item>
@@ -2261,7 +2261,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>SVWN: Slater exhange + VWN correlation</string>
+                 <string>SVWN: Slater exchange + VWN correlation</string>
                 </property>
                </item>
                <item>

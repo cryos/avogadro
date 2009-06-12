@@ -37,7 +37,7 @@ namespace Avogadro {
   {
     Q_OBJECT
     AVOGADRO_EXTENSION("Animation", tr("Animation"),
-                       tr("Animate trajectories, reactions, and vibratins."))
+                       tr("Animate trajectories, reactions, and vibrations."))
 
     public:
       //! Constructor

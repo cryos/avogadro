@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 0.9.6\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"POT-Creation-Date: 2009-06-12 06:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -287,7 +287,7 @@ msgid "Xenon"
 msgstr ""
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+msgid "Cesium"
 msgstr ""
 
 #: src/elementtranslator.cpp:207
@@ -571,7 +571,7 @@ msgid "Cartoon"
 msgstr ""
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+msgid "Renders protein secondary structure"
 msgstr ""
 
 #: src/engines/dipoleengine.h:42
@@ -835,7 +835,7 @@ msgid "Animation"
 msgstr ""
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -1791,7 +1791,7 @@ msgstr ""
 
 #: src/extensions/propextension.h:44
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
 
@@ -2689,7 +2689,7 @@ msgid "Align molecules to a Cartesian axis"
 msgstr ""
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
+msgid "Align Settings"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:59
@@ -4434,7 +4434,7 @@ msgid "Initial Guess:"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1984
-msgid "Huckel"
+msgid "Hückel"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1989
@@ -4538,7 +4538,7 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2264
-msgid "SVWN: Slater exhange + VWN correlation"
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2269
@@ -5234,7 +5234,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:24
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and computer a linear interpolation with the "
 "current conformation."
 msgstr ""
 

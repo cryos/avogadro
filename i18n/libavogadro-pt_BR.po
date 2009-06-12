@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"POT-Creation-Date: 2009-06-12 06:34-0400\n"
 "PO-Revision-Date: 2009-06-11 16:45+0000\n"
 "Last-Translator: Felipe Vieira Borges <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -287,7 +287,8 @@ msgid "Xenon"
 msgstr "Xenônio"
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+#, fuzzy
+msgid "Cesium"
 msgstr "Césio"
 
 #: src/elementtranslator.cpp:207
@@ -571,7 +572,8 @@ msgid "Cartoon"
 msgstr "Ilustração"
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+#, fuzzy
+msgid "Renders protein secondary structure"
 msgstr "renderizar estrutura secundária da proteina"
 
 #: src/engines/dipoleengine.h:42
@@ -843,7 +845,8 @@ msgid "Animation"
 msgstr "Animação"
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+#, fuzzy
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr "Anima trajetórias, reações e vibrações"
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -1840,8 +1843,9 @@ msgid "Properties"
 msgstr "Propriedades"
 
 #: src/extensions/propextension.h:44
+#, fuzzy
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
 "Janela para exibição das propriedades de átomos, ligações, ângulos e "
@@ -2765,8 +2769,9 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "Alinha moléculas a um eixo cartesiano"
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
-msgstr ""
+#, fuzzy
+msgid "Align Settings"
+msgstr "Configurações de Seleção"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -4542,8 +4547,9 @@ msgid "Initial Guess:"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1984
-msgid "Huckel"
-msgstr ""
+#, fuzzy
+msgid "Hückel"
+msgstr "Níquel"
 
 #: src/extensions/gamessinputdialog.ui:1989
 msgid "HCore"
@@ -4646,7 +4652,7 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2264
-msgid "SVWN: Slater exhange + VWN correlation"
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2269
@@ -5340,7 +5346,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:24
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and computer a linear interpolation with the "
 "current conformation."
 msgstr ""
 

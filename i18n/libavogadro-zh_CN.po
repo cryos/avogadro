@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"POT-Creation-Date: 2009-06-12 06:34-0400\n"
 "PO-Revision-Date: 2009-06-04 13:59+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -286,7 +286,8 @@ msgid "Xenon"
 msgstr "氙"
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+#, fuzzy
+msgid "Cesium"
 msgstr "铯"
 
 #: src/elementtranslator.cpp:207
@@ -570,7 +571,8 @@ msgid "Cartoon"
 msgstr "卡通"
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+#, fuzzy
+msgid "Renders protein secondary structure"
 msgstr "渲染蛋白质二级结构"
 
 #: src/engines/dipoleengine.h:42
@@ -834,7 +836,8 @@ msgid "Animation"
 msgstr "动画"
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+#, fuzzy
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr "动画显示轨道，反应和振动"
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -1810,8 +1813,9 @@ msgid "Properties"
 msgstr "属性"
 
 #: src/extensions/propextension.h:44
+#, fuzzy
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr "用于显示原子，键，键角和扭转属性的窗口。它还含有一个笛卡尔坐标编辑器。"
 
@@ -2724,7 +2728,8 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "将分子对齐到一个笛卡尔坐标轴"
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
+#, fuzzy
+msgid "Align Settings"
 msgstr "对齐设置"
 
 #: src/tools/autoopttool.cpp:59
@@ -4496,7 +4501,8 @@ msgid "Initial Guess:"
 msgstr "初始猜测:"
 
 #: src/extensions/gamessinputdialog.ui:1984
-msgid "Huckel"
+#, fuzzy
+msgid "Hückel"
 msgstr "Huckel"
 
 #: src/extensions/gamessinputdialog.ui:1989
@@ -4600,7 +4606,8 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr "LYP: Lee-Yang-Parr 相关"
 
 #: src/extensions/gamessinputdialog.ui:2264
-msgid "SVWN: Slater exhange + VWN correlation"
+#, fuzzy
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr "SVWN: Slater 交换 + VWN 相关"
 
 #: src/extensions/gamessinputdialog.ui:2269
@@ -5293,8 +5300,9 @@ msgid "Linear Morph Trajectory"
 msgstr "线性形态轨迹"
 
 #: src/extensions/linmorphdialog.ui:24
+#, fuzzy
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and computer a linear interpolation with the "
 "current conformation."
 msgstr "载入第二个构象并和当前构象一起计算线性插值。"
 
