@@ -27,6 +27,8 @@
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
 
+#include <openbabel/mol.h>
+
 #include <QAction>
 #include <QInputDialog>
 #include <QString>
@@ -76,6 +78,7 @@ namespace Avogadro {
 
   QUndoCommand* HydrogensExtension::performAction(QAction *action, GLWidget *widget)
   {
+    m_molecule = widget->molecule();
 
     QUndoCommand *undo = 0;
     int i = m_actions.indexOf(action);
@@ -128,21 +131,23 @@ namespace Avogadro {
   {
     if (m_SelectedList.size() == 0) {
       switch(m_action) {
-        case AddHydrogens:
-          m_molecule->addHydrogens();
-          break;
-        case AddHydrogensPH:
-          /// FIXME - need to add back in pH corrected
-          m_molecule->addHydrogens();
-/*	  m_molecule->UnsetFlag(OB_PH_CORRECTED_MOL);
-	  FOR_ATOMS_OF_MOL (a, m_molecule)
+      case AddHydrogens:
+        m_molecule->addHydrogens();
+        break;
+      case AddHydrogensPH:
+        {
+          OBMol obmol = m_molecule->OBMol();
+          obmol.UnsetFlag(OB_PH_CORRECTED_MOL);
+          FOR_ATOMS_OF_MOL (a, obmol)
             a->SetFormalCharge(0.0);
-	  m_molecule->SetAutomaticFormalCharge(true);
-          m_molecule->AddHydrogens(false, true, m_pH); */
+          obmol.SetAutomaticFormalCharge(true);
+          obmol.AddHydrogens(false, true, m_pH);
+          m_molecule->setOBMol(&obmol);
           break;
-        case RemoveHydrogens:
-          m_molecule->removeHydrogens();
-          break;
+        }
+      case RemoveHydrogens:
+        m_molecule->removeHydrogens();
+        break;
       }
     }
     else { // user selected some atoms, only operate on those
