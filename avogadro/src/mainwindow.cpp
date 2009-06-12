@@ -812,7 +812,7 @@ namespace Avogadro
 
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                                                        tr( "Avogadro" ),
-                                                       tr("This file contains does not contain 3D coordinates."),
+                                                       tr("This file does not contain 3D coordinates."),
                                                        QMessageBox::YesToAll | QMessageBox::Yes
                                                        | QMessageBox::No,
                                                        this);

@@ -20,7 +20,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_15">
         <property name="text">
-         <string>NMR &amp;Type:</string>
+         <string>Nucleus:</string>
         </property>
         <property name="buddy">
          <cstring>combo_type</cstring>
@@ -118,6 +118,20 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>ppm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>ppm</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
