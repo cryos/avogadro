@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:54-0400\n"
 "PO-Revision-Date: 2009-06-03 17:24+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -189,7 +189,7 @@ msgstr "读取分子文件失败。"
 
 #: src/mainwindow.cpp:815
 #, fuzzy
-msgid "This file contains does not contain 3D coordinates."
+msgid "This file does not contain 3D coordinates."
 msgstr "该文件不包含3D坐标。您可能无法正确地查看或进行编辑。"
 
 #: src/mainwindow.cpp:820

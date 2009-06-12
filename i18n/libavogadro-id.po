@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:56-0400\n"
 "PO-Revision-Date: 2009-06-02 23:13+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -2458,7 +2458,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1814
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr "Memulai &Animasi"
 
@@ -3056,7 +3056,7 @@ msgid "Measure Settings"
 msgstr "Pengaturan Pengukuran"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1834
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
@@ -5344,7 +5344,7 @@ msgstr "Trayektori Linear Morph"
 #: src/extensions/linmorphdialog.ui:24
 #, fuzzy
 msgid ""
-"Load a second conformation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 "Memuat conformasi kedua dan penghitung interpolasi linier dengan conformasi "
@@ -5905,8 +5905,8 @@ msgid "tab_NMR"
 msgstr "tab_NMR"
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
-msgstr "NMR &Tipe:"
+msgid "Nucleus:"
+msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5923,6 +5923,10 @@ msgstr "Tata Ulan Sumbu &Plot"
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
 msgstr "Label Peaks:"
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
+msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
 msgid "Super Cell Parameters"
@@ -6003,6 +6007,9 @@ msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
 #, fuzzy
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
 msgid "In Display Type:"
 msgstr "Tipe Monitor:"
 
@@ -6146,6 +6153,9 @@ msgstr " ,Launchpad Contributions:,Waluyo Adi Siswanto"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "NMR &Tipe:"
 
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."

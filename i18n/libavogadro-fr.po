@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:56-0400\n"
 "PO-Revision-Date: 2009-06-09 16:17+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2474,7 +2474,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1814
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr "Commencer &L'animation"
 
@@ -3084,7 +3084,7 @@ msgid "Measure Settings"
 msgstr "Paramètres des mesures"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1834
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Ajouter atome"
 
@@ -5376,7 +5376,7 @@ msgstr "Trajectoire d'interpolation linéaire"
 #: src/extensions/linmorphdialog.ui:24
 #, fuzzy
 msgid ""
-"Load a second conformation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 "Charger un second conformère et procéder à une interpolation linéaire avec "
@@ -5940,8 +5940,8 @@ msgid "tab_NMR"
 msgstr "tab_RMN"
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
-msgstr "&Noyau :"
+msgid "Nucleus:"
+msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5958,6 +5958,10 @@ msgstr "Ré-initialiser &tracer les axes"
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
 msgstr "Etiqueter les pics :"
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
+msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
 msgid "Super Cell Parameters"
@@ -6041,6 +6045,9 @@ msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
 #, fuzzy
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
 msgid "In Display Type:"
 msgstr "Type d'affichage :"
 
@@ -6194,6 +6201,9 @@ msgstr ""
 "com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
 "ricard@polytechnique.edu,,,nizar.kerkeni@gmail.com,,,jacob.benoit.1@gmail."
 "com,louis.ricard@polytechnique.edu,alfred002@gmail.com"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "&Noyau :"
 
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "La lecture de fichier de type '%1' n'est pas supportée."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:56-0400\n"
 "PO-Revision-Date: 2009-06-05 22:54+0000\n"
 "Last-Translator: helix84 <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -2427,7 +2427,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1814
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr "Spustiť &animáciu"
 
@@ -3004,7 +3004,7 @@ msgid "Measure Settings"
 msgstr "Rozsah Nastavenia"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1834
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Pridať Atóm"
 
@@ -5282,7 +5282,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:24
 msgid ""
-"Load a second conformation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 
@@ -5831,7 +5831,7 @@ msgid "tab_NMR"
 msgstr ""
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
+msgid "Nucleus:"
 msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
@@ -5848,6 +5848,10 @@ msgstr ""
 
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
+msgstr ""
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
 msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
@@ -5928,6 +5932,9 @@ msgid "Isosurface cutoff value"
 msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
 msgid "In Display Type:"
 msgstr ""
 

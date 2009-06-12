@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:54-0400\n"
 "PO-Revision-Date: 2009-06-07 13:11+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -190,7 +190,7 @@ msgstr "Не удалось считать файл структуры."
 
 #: src/mainwindow.cpp:815
 #, fuzzy
-msgid "This file contains does not contain 3D coordinates."
+msgid "This file does not contain 3D coordinates."
 msgstr ""
 "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть или "
 "редактировать его корректно."

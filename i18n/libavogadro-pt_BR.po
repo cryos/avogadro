@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:56-0400\n"
 "PO-Revision-Date: 2009-06-11 16:45+0000\n"
 "Last-Translator: Felipe Vieira Borges <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -2454,7 +2454,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1814
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
@@ -3058,7 +3058,7 @@ msgid "Measure Settings"
 msgstr "Configurações de Medidas"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1834
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Adicionar Átomo"
 
@@ -5346,7 +5346,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:24
 msgid ""
-"Load a second conformation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 
@@ -5902,8 +5902,8 @@ msgid "tab_NMR"
 msgstr ""
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
-msgstr "&Tipo de RMN:"
+msgid "Nucleus:"
+msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5919,6 +5919,10 @@ msgstr ""
 
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
+msgstr ""
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
 msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
@@ -6003,6 +6007,9 @@ msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
 #, fuzzy
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
 msgid "In Display Type:"
 msgstr "Adicionar tipo a ser mostrado"
 
@@ -6153,6 +6160,9 @@ msgstr ""
 "rafporto@gmail.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,"
 "ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail."
 "com,,,,avogadro-devel@lists.sourceforge.net,"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "&Tipo de RMN:"
 
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "O tipo de arquivo '%1' não é suportado."

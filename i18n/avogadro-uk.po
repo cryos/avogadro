@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:54-0400\n"
 "PO-Revision-Date: 2009-06-03 17:23+0000\n"
 "Last-Translator: svv <skrypnychuk@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -188,7 +188,7 @@ msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
 #: src/mainwindow.cpp:815
-msgid "This file contains does not contain 3D coordinates."
+msgid "This file does not contain 3D coordinates."
 msgstr ""
 
 #: src/mainwindow.cpp:820

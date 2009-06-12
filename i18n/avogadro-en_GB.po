@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-en_GB\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:54-0400\n"
 "PO-Revision-Date: 2009-05-26 01:54+0000\n"
 "Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -187,7 +187,7 @@ msgstr "Reading molecular file failed."
 
 #: src/mainwindow.cpp:815
 #, fuzzy
-msgid "This file contains does not contain 3D coordinates."
+msgid "This file does not contain 3D coordinates."
 msgstr ""
 "This file does not contain 3D coordinates. You may not be able to edit or "
 "view properly."

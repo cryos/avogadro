@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:54-0400\n"
 "PO-Revision-Date: 2009-06-11 09:36+0000\n"
 "Last-Translator: mikeL <Unknown>\n"
 "Language-Team: <de@li.org>\n"
@@ -188,7 +188,7 @@ msgstr "Lesen der Molekül-Datei fehlgeschlagen."
 
 #: src/mainwindow.cpp:815
 #, fuzzy
-msgid "This file contains does not contain 3D coordinates."
+msgid "This file does not contain 3D coordinates."
 msgstr ""
 "Diese Datei besitzt keine 3D-Koordinaten und kann möglicherweise nicht "
 "korrekt angezeigt oder bearbeitet werden."

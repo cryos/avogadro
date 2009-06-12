@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>457</width>
+    <width>459</width>
     <height>246</height>
    </rect>
   </property>
@@ -233,7 +233,7 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>In Display Type:</string>
+        <string comment="Add the new surface to this particular display type (i.e., orbital or surface)">In Display Type:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

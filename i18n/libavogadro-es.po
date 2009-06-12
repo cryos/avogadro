@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 06:34-0400\n"
+"POT-Creation-Date: 2009-06-12 10:56-0400\n"
 "PO-Revision-Date: 2009-06-09 16:30+0000\n"
 "Last-Translator: niniocompu <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2451,7 +2451,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1814
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr ""
 
@@ -3056,7 +3056,7 @@ msgid "Measure Settings"
 msgstr ""
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1834
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Añadir átomo"
 
@@ -5345,7 +5345,7 @@ msgstr "Trayectoria lineal Morph"
 #: src/extensions/linmorphdialog.ui:24
 #, fuzzy
 msgid ""
-"Load a second conformation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 "Una segunda carga confromation un ordenador y la interpolación lineal con la "
@@ -5911,8 +5911,8 @@ msgid "tab_NMR"
 msgstr "tab_NMR"
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
-msgstr "RMN y Tipo:"
+msgid "Nucleus:"
+msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5929,6 +5929,10 @@ msgstr "Restablecer  &Parcela Ejes"
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
 msgstr "Picos de etiqueta:"
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
+msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
 msgid "Super Cell Parameters"
@@ -6012,6 +6016,9 @@ msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
 #, fuzzy
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
 msgid "In Display Type:"
 msgstr "Tipo de display:"
 
@@ -6175,6 +6182,9 @@ msgstr ""
 "diegojromerolopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,"
 "federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,"
 "jalvarezrom@gmail.com,,,avogadro-devel@lists.sourceforge.net,"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "RMN y Tipo:"
 
 #~ msgid "Conformers..."
 #~ msgstr "Confórmeros..."
