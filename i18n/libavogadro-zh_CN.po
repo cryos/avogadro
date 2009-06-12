@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 08:14-0400\n"
+"POT-Creation-Date: 2009-06-11 21:00-0400\n"
 "PO-Revision-Date: 2009-06-04 13:59+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Launchpad-Export-Date: 2009-06-12 00:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -33,11 +33,11 @@ msgstr "按部分电荷着色"
 msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr "按原子部分电荷着色（蓝色=正电荷，红色=负电荷。）"
 
-#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:192
+#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:166
 msgid "Custom Color:"
 msgstr "自定义颜色："
 
-#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:186
+#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:160
 msgid "Custom Color"
 msgstr "自定义颜色"
 
@@ -619,11 +619,11 @@ msgstr "轨道"
 msgid "Renders molecular orbitals"
 msgstr "渲染原子轨道"
 
-#: src/engines/overlayengine.h:41
+#: src/engines/overlayengine.h:37
 msgid "Overlay"
 msgstr "叠加"
 
-#: src/engines/overlayengine.h:42
+#: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
 msgstr "为渐变色渲染色差度"
 
@@ -1082,7 +1082,7 @@ msgstr "为GAMESS量子化学软件包创建输入文件"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:652 rc.cpp:930 rc.cpp:1214
+#: src/extensions/gamessinputdialog.cpp:619:626 rc.cpp:904 rc.cpp:1188
 msgid "Title"
 msgstr "标题"
 
@@ -1234,7 +1234,7 @@ msgstr "MOPAC没有正确运行。也许是因为它没有被正确安装。"
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1328
+#: src/extensions/qcheminputdialog.cpp:178:1302
 msgid "Show Preview"
 msgstr "显示预览"
 
@@ -1246,7 +1246,7 @@ msgstr "显示预览"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:990 rc.cpp:1270 rc.cpp:1396
+#: src/extensions/qcheminputdialog.cpp:182:964 rc.cpp:1244 rc.cpp:1370
 msgid "Hide Preview"
 msgstr "隐藏预览"
 
@@ -1350,7 +1350,7 @@ msgstr "多肽..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1010 rc.cpp:1152
+#: src/extensions/insertpeptideextension.h:43:984 rc.cpp:1126
 msgid "Insert Peptide"
 msgstr "插入多肽"
 
@@ -1628,8 +1628,6 @@ msgstr "分子轨道 %L1"
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
-#: src/engines/overlaysettingswidget.ui:54
-#: src/engines/overlaysettingswidget.ui:124
 #: src/extensions/gamessinputdialog.ui:450
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
@@ -1682,7 +1680,7 @@ msgid "Calculating VdW Cube"
 msgstr "计算VdW立方体"
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48:1406
+#: src/extensions/orbitalextension.h:48:1380
 msgid "Surfaces"
 msgstr "表面"
 
@@ -1782,32 +1780,32 @@ msgstr "构象属性..."
 msgid "Cartesian Editor..."
 msgstr "笛卡尔坐标编辑器..."
 
-#: src/extensions/propextension.cpp:228
+#: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
 msgstr "原子属性"
 
-#: src/extensions/propextension.cpp:231
+#: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
 msgstr "键属性"
 
-#: src/extensions/propextension.cpp:234
+#: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
 msgstr "键角属性"
 
-#: src/extensions/propextension.cpp:237
+#: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
 msgstr "扭转属性"
 
-#: src/extensions/propextension.cpp:240
+#: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
 msgstr "笛卡儿属性"
 
-#: src/extensions/propextension.cpp:243
+#: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
 msgstr "构象异构体属性"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:508
+#: src/extensions/propextension.h:43:482
 msgid "Properties"
 msgstr "属性"
 
@@ -1817,111 +1815,109 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr "用于显示原子，键，键角和扭转属性的窗口。它还含有一个笛卡尔坐标编辑器。"
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:329:234
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:208
 msgid "Type"
 msgstr "类型"
 
-#: src/extensions/propmodel.cpp:331
+#: src/extensions/propmodel.cpp:355
 msgid "Element"
 msgstr "元素"
 
-#: src/extensions/propmodel.cpp:333
+#: src/extensions/propmodel.cpp:357
 msgid "Valence"
 msgstr "化合价"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/engines/overlaysettingswidget.ui:84 src/extensions/propmodel.cpp:335:86
-#: rc.cpp:146
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "部分电荷"
 
-#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
 #, qt-format
 msgid "Atom %1"
 msgstr "原子 %1"
 
-#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+#: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
 msgid "Start Atom"
 msgstr "起始原子"
 
-#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+#: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
 msgid "End Atom"
 msgstr "结束原子"
 
-#: src/extensions/propmodel.cpp:347
+#: src/extensions/propmodel.cpp:371
 msgid "Bond Order"
 msgstr "键级"
 
-#: src/extensions/propmodel.cpp:349
+#: src/extensions/propmodel.cpp:373
 msgid "Rotatable"
 msgstr "可旋转的"
 
-#: src/extensions/propmodel.cpp:351
+#: src/extensions/propmodel.cpp:375
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
 msgstr "长度%1"
 
-#: src/extensions/propmodel.cpp:355
+#: src/extensions/propmodel.cpp:379
 #, qt-format
 msgid "Bond %1"
 msgstr "键 %1"
 
-#: src/extensions/propmodel.cpp:362
+#: src/extensions/propmodel.cpp:386
 msgid "Vertex"
 msgstr "顶点"
 
-#: src/extensions/propmodel.cpp:366
+#: src/extensions/propmodel.cpp:390
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
 msgstr "角度%1"
 
-#: src/extensions/propmodel.cpp:369
+#: src/extensions/propmodel.cpp:393
 #, qt-format
 msgid "Angle %1"
 msgstr "角度 %1"
 
-#: src/extensions/propmodel.cpp:377
+#: src/extensions/propmodel.cpp:401
 #, qt-format
 msgid "Atom Index %1"
 msgstr "原子索引%1"
 
-#: src/extensions/propmodel.cpp:379
+#: src/extensions/propmodel.cpp:403
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr "扭转 %1"
 
-#: src/extensions/propmodel.cpp:382
+#: src/extensions/propmodel.cpp:406
 #, qt-format
 msgid "Torsion %1"
 msgstr "扭转 %1"
 
-#: src/extensions/propmodel.cpp:387
+#: src/extensions/propmodel.cpp:411
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
 msgstr "X %1"
 
-#: src/extensions/propmodel.cpp:389
+#: src/extensions/propmodel.cpp:413
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr "Y %1"
 
-#: src/extensions/propmodel.cpp:391
+#: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:399:488
+#: src/extensions/propmodel.cpp:423:462
 msgid "Energy"
 msgstr "能量"
 
-#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:427
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
 #, qt-format
 msgid "Conformer %1"
 msgstr "构象异构体%1"
@@ -1987,10 +1983,9 @@ msgstr "SMARTS模版选择"
 msgid "Select by residue"
 msgstr "按残基选择"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/engines/overlaysettingswidget.ui:74 src/extensions/liganddialog.ui:60
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
 #: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:142 rc.cpp:1166
+#: rc.cpp:1140 rc.cpp:1458
 msgid "Residue name"
 msgstr "残基名称"
 
@@ -2050,7 +2045,7 @@ msgstr "打开着色器参数文件"
 msgid "Shader parameters files (*.params)"
 msgstr "着色器参数文件 (*.params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1604
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1578
 msgid "GLSL Shaders"
 msgstr "GLSL着色器"
 
@@ -2067,12 +2062,12 @@ msgid "Y Axis"
 msgstr "Y 轴"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1646
+#: src/extensions/spectradialog.cpp:152:1620
 msgid "&Appearance"
 msgstr "外观(&A)"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1690
+#: src/extensions/spectradialog.cpp:153:1664
 msgid "E&xport Image"
 msgstr "导入图像(&X)"
 
@@ -2249,7 +2244,7 @@ msgid "Customi&ze <<"
 msgstr "自定义(&Z) <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714:1642
+#: src/extensions/spectradialog.cpp:714:1616
 msgid "Customi&ze >>"
 msgstr "自定义(&Z) >>"
 
@@ -2403,7 +2398,7 @@ msgid "Apply"
 msgstr "应用"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:268
+#: src/extensions/unitcellparamdialog.cpp:97:242
 msgid "OK"
 msgstr "确定"
 
@@ -2414,7 +2409,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1840
+#: src/extensions/vibrationdialog.cpp:213:1814
 msgid "Start &Animation"
 msgstr "开始动画"
 
@@ -2432,7 +2427,7 @@ msgstr "振动..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:238:850
+#: src/extensions/vibrationextension.cpp:239:824
 msgid "Vibrational Analysis"
 msgstr "振动分析"
 
@@ -2440,7 +2435,7 @@ msgstr "振动分析"
 msgid "No vibrational displacements exist."
 msgstr "没有振动位移存在。"
 
-#: src/extensions/vibrationextension.cpp:238
+#: src/extensions/vibrationextension.cpp:239
 msgid "No vibrations have been computed for this molecule."
 msgstr "该分子没有被计算出任何振动。"
 
@@ -2519,106 +2514,102 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "未命名"
 
-#: src/moleculefile.cpp:111
+#: src/moleculefile.cpp:112
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: index %1 out of reach."
 
-#: src/moleculefile.cpp:120 src/openbabelwrapper.cpp:94
-#: src/openbabelwrapper.cpp:374
+#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "文件类型 '%1' 不支持读取操作。"
 
-#: src/moleculefile.cpp:126 src/openbabelwrapper.cpp:101
-#: src/openbabelwrapper.cpp:380
+#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "文件 '%1' 的文件类型不支持读取操作。"
 
-#: src/moleculefile.cpp:153
+#: src/moleculefile.cpp:154
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr "读取含有索引 %1 的分子信息的文件 '%2' 失败。"
 
-#: src/moleculefile.cpp:165
+#: src/moleculefile.cpp:166
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "replaceMolecule: index %1 out of reach."
 
-#: src/moleculefile.cpp:174 src/openbabelwrapper.cpp:155
-#: src/openbabelwrapper.cpp:243
+#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "文件类型 '%1' 不支持写入操作。"
 
-#: src/moleculefile.cpp:180 src/openbabelwrapper.cpp:163
-#: src/openbabelwrapper.cpp:250
+#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "文件 '%1' 的文件类型不支持写入操作。"
 
-#: src/moleculefile.cpp:190
+#: src/moleculefile.cpp:191
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr "无法打开文件 '%1' 并写入。"
 
-#: src/moleculefile.cpp:197
+#: src/moleculefile.cpp:198
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr "无法打开文件 '%1' 并读取。"
 
-#: src/moleculefile.cpp:206
+#: src/moleculefile.cpp:207
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "用索引 %1替换文件 '%2' 中的分子失败。"
 
-#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:363
+#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
 #, fuzzy, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "文件 %1 无法被打开并读取。"
 
-#: src/openbabelwrapper.cpp:127
+#: src/moleculefile.cpp:378
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "从文件 '%1' 读取分子失败。"
 
-#: src/openbabelwrapper.cpp:142
+#: src/moleculefile.cpp:393
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/openbabelwrapper.cpp:188
+#: src/moleculefile.cpp:439
 #, fuzzy
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "保存分子文件失败。"
 
-#: src/openbabelwrapper.cpp:195
+#: src/moleculefile.cpp:446
 #, fuzzy
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "保存分子文件失败。"
 
-#: src/openbabelwrapper.cpp:204
+#: src/moleculefile.cpp:455
 #, fuzzy
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "保存分子文件失败。"
 
-#: src/openbabelwrapper.cpp:213
+#: src/moleculefile.cpp:464
 #, fuzzy, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "将分子写入到文件 '%1' 失败"
 
-#: src/openbabelwrapper.cpp:230
+#: src/moleculefile.cpp:481
 #, fuzzy, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/openbabelwrapper.cpp:282
+#: src/moleculefile.cpp:533
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "将构象异构体写入到文件 '%1' 失败"
 
-#: src/openbabelwrapper.cpp:429
+#: src/moleculefile.cpp:680
 #, qt-format
 msgid "Molecule %1"
 msgstr "分子 %1"
@@ -2708,23 +2699,23 @@ msgstr ""
 "\t 第二个原子对齐到选中的轴上。\n"
 "鼠标右键：\t 重置对齐。"
 
-#: src/tools/aligntool.cpp:254
+#: src/tools/aligntool.cpp:256
 msgid "Axis:"
 msgstr "轴"
 
-#: src/tools/aligntool.cpp:265
+#: src/tools/aligntool.cpp:267
 msgid "Align:"
 msgstr "对齐："
 
-#: src/tools/aligntool.cpp:270
+#: src/tools/aligntool.cpp:272
 msgid "Everything"
 msgstr "所有内容"
 
-#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
 msgstr "分子"
 
-#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "对齐"
 
@@ -2758,65 +2749,65 @@ msgstr ""
 "运行时的附加功能\n"
 "鼠标左键: 点击并拖动原子以移动它们"
 
-#: src/tools/autoopttool.cpp:221
+#: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
 msgstr "自动优化: 不能建立力场...."
 
-#: src/tools/autoopttool.cpp:226
+#: src/tools/autoopttool.cpp:228
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "自动优化: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:255
+#: src/tools/autoopttool.cpp:257
 msgid "Force Field:"
 msgstr "力场:"
 
-#: src/tools/autoopttool.cpp:270
+#: src/tools/autoopttool.cpp:272
 msgid "Steps per Update:"
 msgstr "每次更新步骤数:"
 
-#: src/tools/autoopttool.cpp:281
+#: src/tools/autoopttool.cpp:283
 msgid "Algorithm:"
 msgstr "算法："
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:284:298
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:272
 msgid "Steepest Descent"
 msgstr "最速下降法"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:285:300
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:274
 msgid "Conjugate Gradients"
 msgstr "共轭梯度法"
 
-#: src/tools/autoopttool.cpp:286
+#: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
 msgstr "分子动力学 (300K)"
 
-#: src/tools/autoopttool.cpp:287
+#: src/tools/autoopttool.cpp:289
 msgid "Molecular Dynamics (600K)"
 msgstr "分子动力学 (600K)"
 
-#: src/tools/autoopttool.cpp:288
+#: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (900K)"
 msgstr "分子动力学 (900K)"
 
-#: src/tools/autoopttool.cpp:290 src/tools/autoopttool.cpp:383
-#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+#: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
+#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
 msgid "Start"
 msgstr "开始"
 
-#: src/tools/autoopttool.cpp:292
+#: src/tools/autoopttool.cpp:294
 msgid "Fixed atoms are movable"
 msgstr "设置固定的原子为可移动的"
 
-#: src/tools/autoopttool.cpp:293
+#: src/tools/autoopttool.cpp:295
 msgid "Ignored atoms are movable"
 msgstr "设置已忽略的原子为可移动的"
 
-#: src/tools/autoopttool.cpp:350 src/tools/autorotatetool.cpp:220
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
 msgid "Stop"
 msgstr "停止"
 
-#: src/tools/autoopttool.cpp:560
+#: src/tools/autoopttool.cpp:562
 msgid "AutoOpt Molecule"
 msgstr "自动优化分子"
 
@@ -2836,27 +2827,27 @@ msgstr "自动优化设置"
 msgid "Auto Rotation Tool"
 msgstr "自动旋转工具"
 
-#: src/tools/autorotatetool.cpp:245
+#: src/tools/autorotatetool.cpp:247
 msgid "x rotation:"
 msgstr "x轴旋转"
 
-#: src/tools/autorotatetool.cpp:251
+#: src/tools/autorotatetool.cpp:253
 msgid "x rotation"
 msgstr "x轴旋转"
 
-#: src/tools/autorotatetool.cpp:261
+#: src/tools/autorotatetool.cpp:263
 msgid "y rotation:"
 msgstr "y轴旋转"
 
-#: src/tools/autorotatetool.cpp:266
+#: src/tools/autorotatetool.cpp:268
 msgid "y rotation"
 msgstr "y轴旋转"
 
-#: src/tools/autorotatetool.cpp:276
+#: src/tools/autorotatetool.cpp:278
 msgid "z rotation:"
 msgstr "z轴旋转"
 
-#: src/tools/autorotatetool.cpp:281
+#: src/tools/autorotatetool.cpp:283
 msgid "z rotation"
 msgstr "z轴旋转"
 
@@ -2864,8 +2855,8 @@ msgstr "z轴旋转"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:292:992
-#: rc.cpp:1272 rc.cpp:1330
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:966
+#: rc.cpp:1246 rc.cpp:1304
 msgid "Reset"
 msgstr "重置"
 
@@ -3018,7 +3009,7 @@ msgid "Measure Settings"
 msgstr "测量设置"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1860
+#: src/tools/drawcommand.cpp:289:1834
 msgid "Add Atom"
 msgstr "添加原子"
 
@@ -3066,31 +3057,31 @@ msgstr "绘制化学键"
 msgid "Draw"
 msgstr "绘制"
 
-#: src/tools/drawtool.cpp:735
+#: src/tools/drawtool.cpp:736
 msgid "Element:"
 msgstr "元素"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:762:602
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:576
 msgid "Other..."
 msgstr "其它..."
 
-#: src/tools/drawtool.cpp:766
+#: src/tools/drawtool.cpp:767
 msgid "Bond Order:"
 msgstr "键级："
 
-#: src/tools/drawtool.cpp:771
+#: src/tools/drawtool.cpp:772
 msgid "Single"
 msgstr "单键"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:773
 msgid "Double"
 msgstr "双键"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:774
 msgid "Triple"
 msgstr "三键"
 
-#: src/tools/drawtool.cpp:788
+#: src/tools/drawtool.cpp:789
 msgid "Adjust Hydrogens"
 msgstr "调整氢原子数目"
 
@@ -3210,11 +3201,11 @@ msgstr "键角"
 msgid "Dihedral Angle"
 msgstr "二面角"
 
-#: src/tools/zmatrixtool.cpp:88
+#: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
 msgstr "Z矩阵编辑器..."
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:660
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:634
 msgid "Z-Matrix"
 msgstr "Z-矩阵"
 
@@ -3349,27 +3340,22 @@ msgid "Cut-off angle:"
 msgstr "截断角度:"
 
 #: src/engines/labelsettingswidget.ui:23
-#: src/engines/overlaysettingswidget.ui:22
 msgid "Atom Labels:"
 msgstr "原子标签"
 
 #: src/engines/labelsettingswidget.ui:60
-#: src/engines/overlaysettingswidget.ui:59
 msgid "Atom number"
 msgstr "原子序数"
 
 #: src/engines/labelsettingswidget.ui:65
-#: src/engines/overlaysettingswidget.ui:64
 msgid "Element name"
 msgstr "元素名称"
 
 #: src/engines/labelsettingswidget.ui:70
-#: src/engines/overlaysettingswidget.ui:69
 msgid "Element symbol"
 msgstr "元素符号"
 
 #: src/engines/labelsettingswidget.ui:80
-#: src/engines/overlaysettingswidget.ui:79
 msgid "Residue number"
 msgstr "残基序数"
 
@@ -3387,22 +3373,18 @@ msgid "Custom Data"
 msgstr "自定义数据"
 
 #: src/engines/labelsettingswidget.ui:108
-#: src/engines/overlaysettingswidget.ui:92
 msgid "Bond Labels:"
 msgstr "键标签:"
 
 #: src/engines/labelsettingswidget.ui:145
-#: src/engines/overlaysettingswidget.ui:129
 msgid "Bond length"
 msgstr "键长"
 
 #: src/engines/labelsettingswidget.ui:150
-#: src/engines/overlaysettingswidget.ui:134
 msgid "Bond number"
 msgstr "键序数:"
 
 #: src/engines/labelsettingswidget.ui:155
-#: src/engines/overlaysettingswidget.ui:139
 msgid "Bond order"
 msgstr "键级"
 

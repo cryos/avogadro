@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 08:14-0400\n"
+"POT-Creation-Date: 2009-06-11 21:00-0400\n"
 "PO-Revision-Date: 2009-06-05 22:54+0000\n"
 "Last-Translator: helix84 <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Launchpad-Export-Date: 2009-06-12 00:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -34,11 +34,11 @@ msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr ""
 "Farba podľa čiastkového atomového náboja (modrá = kladný, červená = záporný)"
 
-#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:192
+#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:166
 msgid "Custom Color:"
 msgstr "Vlastná farba:"
 
-#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:186
+#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:160
 msgid "Custom Color"
 msgstr "Vlastná farba"
 
@@ -620,11 +620,11 @@ msgstr "Orbitály"
 msgid "Renders molecular orbitals"
 msgstr "Vykreslí molekulárne orbitály"
 
-#: src/engines/overlayengine.h:41
+#: src/engines/overlayengine.h:37
 msgid "Overlay"
 msgstr "Vrstva"
 
-#: src/engines/overlayengine.h:42
+#: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
 msgstr "Vykreslí farebnú stupnicu prechodov"
 
@@ -1096,7 +1096,7 @@ msgstr "Vytvorenie vstupných súborov pre balík kvantovej chémie GAMESS"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:652 rc.cpp:930 rc.cpp:1214
+#: src/extensions/gamessinputdialog.cpp:619:626 rc.cpp:904 rc.cpp:1188
 msgid "Title"
 msgstr "Názov"
 
@@ -1246,7 +1246,7 @@ msgstr "MOPAC nefunguje správne. Možno nie je správne nainštalovaný."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1328
+#: src/extensions/qcheminputdialog.cpp:178:1302
 msgid "Show Preview"
 msgstr "Zobraziť náhľad"
 
@@ -1258,7 +1258,7 @@ msgstr "Zobraziť náhľad"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:990 rc.cpp:1270 rc.cpp:1396
+#: src/extensions/qcheminputdialog.cpp:182:964 rc.cpp:1244 rc.cpp:1370
 msgid "Hide Preview"
 msgstr "Skryť náhľad"
 
@@ -1362,7 +1362,7 @@ msgstr "Peptid..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1010 rc.cpp:1152
+#: src/extensions/insertpeptideextension.h:43:984 rc.cpp:1126
 msgid "Insert Peptide"
 msgstr "Vložiť peptid"
 
@@ -1646,8 +1646,6 @@ msgstr "MO %L1"
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
-#: src/engines/overlaysettingswidget.ui:54
-#: src/engines/overlaysettingswidget.ui:124
 #: src/extensions/gamessinputdialog.ui:450
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
@@ -1700,7 +1698,7 @@ msgid "Calculating VdW Cube"
 msgstr "Prebieha výpočet VdW kocky"
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48:1406
+#: src/extensions/orbitalextension.h:48:1380
 msgid "Surfaces"
 msgstr "Povrchy"
 
@@ -1801,32 +1799,32 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "Karteziánsky editor..."
 
-#: src/extensions/propextension.cpp:228
+#: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
 msgstr "Vlastnosti atómu"
 
-#: src/extensions/propextension.cpp:231
+#: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
 msgstr "Vlastnosti väzby"
 
-#: src/extensions/propextension.cpp:234
+#: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
 msgstr "Vlastnosti uhla"
 
-#: src/extensions/propextension.cpp:237
+#: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
 msgstr "Vlastnosti krútenia"
 
-#: src/extensions/propextension.cpp:240
+#: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
 msgstr ""
 
-#: src/extensions/propextension.cpp:243
+#: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:508
+#: src/extensions/propextension.h:43:482
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -1838,111 +1836,109 @@ msgstr ""
 "Okno pre zobrazenie atomu, väzieb a krútivých vlastností. Tiež obsahuje "
 "súradnicový editor."
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:329:234
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:208
 msgid "Type"
 msgstr "Typ"
 
-#: src/extensions/propmodel.cpp:331
+#: src/extensions/propmodel.cpp:355
 msgid "Element"
 msgstr "Prvok"
 
-#: src/extensions/propmodel.cpp:333
+#: src/extensions/propmodel.cpp:357
 msgid "Valence"
 msgstr "Mocenstvo"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/engines/overlaysettingswidget.ui:84 src/extensions/propmodel.cpp:335:86
-#: rc.cpp:146
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "Čiastočne Nabitý"
 
-#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
 #, qt-format
 msgid "Atom %1"
 msgstr "Atóm %1"
 
-#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+#: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
 msgid "Start Atom"
 msgstr "Štart Atómu"
 
-#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+#: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
 msgid "End Atom"
 msgstr "Koniec Atómu"
 
-#: src/extensions/propmodel.cpp:347
+#: src/extensions/propmodel.cpp:371
 msgid "Bond Order"
 msgstr "Objednať Väzby"
 
-#: src/extensions/propmodel.cpp:349
+#: src/extensions/propmodel.cpp:373
 msgid "Rotatable"
 msgstr "Otočný"
 
-#: src/extensions/propmodel.cpp:351
+#: src/extensions/propmodel.cpp:375
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
 msgstr "Dĺžka %1"
 
-#: src/extensions/propmodel.cpp:355
+#: src/extensions/propmodel.cpp:379
 #, qt-format
 msgid "Bond %1"
 msgstr "Väzba %1"
 
-#: src/extensions/propmodel.cpp:362
+#: src/extensions/propmodel.cpp:386
 msgid "Vertex"
 msgstr "Vrchol"
 
-#: src/extensions/propmodel.cpp:366
+#: src/extensions/propmodel.cpp:390
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
 msgstr "Uhol %1"
 
-#: src/extensions/propmodel.cpp:369
+#: src/extensions/propmodel.cpp:393
 #, qt-format
 msgid "Angle %1"
 msgstr "Uhol %1"
 
-#: src/extensions/propmodel.cpp:377
+#: src/extensions/propmodel.cpp:401
 #, qt-format
 msgid "Atom Index %1"
 msgstr "Obsah Atómu %1"
 
-#: src/extensions/propmodel.cpp:379
+#: src/extensions/propmodel.cpp:403
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr "Krútenie %1"
 
-#: src/extensions/propmodel.cpp:382
+#: src/extensions/propmodel.cpp:406
 #, qt-format
 msgid "Torsion %1"
 msgstr "Krútenie %1"
 
-#: src/extensions/propmodel.cpp:387
+#: src/extensions/propmodel.cpp:411
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
 msgstr "X %1"
 
-#: src/extensions/propmodel.cpp:389
+#: src/extensions/propmodel.cpp:413
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr "Y %1"
 
-#: src/extensions/propmodel.cpp:391
+#: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:399:488
+#: src/extensions/propmodel.cpp:423:462
 msgid "Energy"
 msgstr "Energia"
 
-#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:427
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
 #, qt-format
 msgid "Conformer %1"
 msgstr ""
@@ -2008,10 +2004,9 @@ msgstr ""
 msgid "Select by residue"
 msgstr "Vybrať podľa zvyškov"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/engines/overlaysettingswidget.ui:74 src/extensions/liganddialog.ui:60
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
 #: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:142 rc.cpp:1166
+#: rc.cpp:1140 rc.cpp:1458
 msgid "Residue name"
 msgstr "Názov zvyškov"
 
@@ -2071,7 +2066,7 @@ msgstr ""
 msgid "Shader parameters files (*.params)"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1604
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1578
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2088,12 +2083,12 @@ msgid "Y Axis"
 msgstr "Osa Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1646
+#: src/extensions/spectradialog.cpp:152:1620
 msgid "&Appearance"
 msgstr "&Vzhľad"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1690
+#: src/extensions/spectradialog.cpp:153:1664
 msgid "E&xport Image"
 msgstr "E&xport Obrázku"
 
@@ -2270,7 +2265,7 @@ msgid "Customi&ze <<"
 msgstr "&Prispôsobiť <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714:1642
+#: src/extensions/spectradialog.cpp:714:1616
 msgid "Customi&ze >>"
 msgstr "Prispôso&biť >>"
 
@@ -2417,7 +2412,7 @@ msgid "Apply"
 msgstr "Použiť"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:268
+#: src/extensions/unitcellparamdialog.cpp:97:242
 msgid "OK"
 msgstr "OK"
 
@@ -2428,7 +2423,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1840
+#: src/extensions/vibrationdialog.cpp:213:1814
 msgid "Start &Animation"
 msgstr "Spustiť &animáciu"
 
@@ -2446,7 +2441,7 @@ msgstr "&Vibrácie..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:238:850
+#: src/extensions/vibrationextension.cpp:239:824
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2454,7 +2449,7 @@ msgstr ""
 msgid "No vibrational displacements exist."
 msgstr ""
 
-#: src/extensions/vibrationextension.cpp:238
+#: src/extensions/vibrationextension.cpp:239
 msgid "No vibrations have been computed for this molecule."
 msgstr ""
 
@@ -2530,106 +2525,102 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "bez názvu"
 
-#: src/moleculefile.cpp:111
+#: src/moleculefile.cpp:112
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:120 src/openbabelwrapper.cpp:94
-#: src/openbabelwrapper.cpp:374
+#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "Súbor typu '%1' nie je podporovaný pre čítanie."
 
-#: src/moleculefile.cpp:126 src/openbabelwrapper.cpp:101
-#: src/openbabelwrapper.cpp:380
+#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "Súbor typu pre súbor '%1' nie je podporovaný pre čítanie."
 
-#: src/moleculefile.cpp:153
+#: src/moleculefile.cpp:154
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr ""
 
-#: src/moleculefile.cpp:165
+#: src/moleculefile.cpp:166
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:174 src/openbabelwrapper.cpp:155
-#: src/openbabelwrapper.cpp:243
+#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:180 src/openbabelwrapper.cpp:163
-#: src/openbabelwrapper.cpp:250
+#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:190
+#: src/moleculefile.cpp:191
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:197
+#: src/moleculefile.cpp:198
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:206
+#: src/moleculefile.cpp:207
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:363
+#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
 #, fuzzy, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Súbor %1 sa nedá otvoriť pre čítanie."
 
-#: src/openbabelwrapper.cpp:127
+#: src/moleculefile.cpp:378
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:142
+#: src/moleculefile.cpp:393
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "Súbor %1 sa nedá otvoriť pre zapisovanie."
 
-#: src/openbabelwrapper.cpp:188
+#: src/moleculefile.cpp:439
 #, fuzzy
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "Uloženie molekulárneho súboru zlyhalo."
 
-#: src/openbabelwrapper.cpp:195
+#: src/moleculefile.cpp:446
 #, fuzzy
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "Uloženie molekulárneho súboru zlyhalo."
 
-#: src/openbabelwrapper.cpp:204
+#: src/moleculefile.cpp:455
 #, fuzzy
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "Uloženie molekulárneho súboru zlyhalo."
 
-#: src/openbabelwrapper.cpp:213
+#: src/moleculefile.cpp:464
 #, fuzzy, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "Zapísanie molekuly do súboru '%1' zlyhalo."
 
-#: src/openbabelwrapper.cpp:230
+#: src/moleculefile.cpp:481
 #, fuzzy, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Súbor %1 sa nedá otvoriť pre zapisovanie."
 
-#: src/openbabelwrapper.cpp:282
+#: src/moleculefile.cpp:533
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:429
+#: src/moleculefile.cpp:680
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molekula %1"
@@ -2713,23 +2704,23 @@ msgid ""
 "Right Mouse: \tReset alignment."
 msgstr ""
 
-#: src/tools/aligntool.cpp:254
+#: src/tools/aligntool.cpp:256
 msgid "Axis:"
 msgstr "Osa:"
 
-#: src/tools/aligntool.cpp:265
+#: src/tools/aligntool.cpp:267
 msgid "Align:"
 msgstr "Zarovnať:"
 
-#: src/tools/aligntool.cpp:270
+#: src/tools/aligntool.cpp:272
 msgid "Everything"
 msgstr "Všetko"
 
-#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
 msgstr "Molekula"
 
-#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Zarovnať"
 
@@ -2763,65 +2754,65 @@ msgstr ""
 "Extra Funkcie pri spustení\n"
 "Ľavé tlačítko myši: Kliknutím a ťahaním atomov s nimi pohybovať"
 
-#: src/tools/autoopttool.cpp:221
+#: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
 msgstr ""
 
-#: src/tools/autoopttool.cpp:226
+#: src/tools/autoopttool.cpp:228
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:255
+#: src/tools/autoopttool.cpp:257
 msgid "Force Field:"
 msgstr "Silové Pole:"
 
-#: src/tools/autoopttool.cpp:270
+#: src/tools/autoopttool.cpp:272
 msgid "Steps per Update:"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:281
+#: src/tools/autoopttool.cpp:283
 msgid "Algorithm:"
 msgstr "Algoritmy"
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:284:298
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:272
 msgid "Steepest Descent"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:285:300
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:274
 msgid "Conjugate Gradients"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:286
+#: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
 msgstr "Molekulárna Dynamika (300K)"
 
-#: src/tools/autoopttool.cpp:287
+#: src/tools/autoopttool.cpp:289
 msgid "Molecular Dynamics (600K)"
 msgstr "Molekulárna Dynamika (600K)"
 
-#: src/tools/autoopttool.cpp:288
+#: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (900K)"
 msgstr "Molekulárna Dynamika (900K)"
 
-#: src/tools/autoopttool.cpp:290 src/tools/autoopttool.cpp:383
-#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+#: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
+#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
 msgid "Start"
 msgstr "Štart"
 
-#: src/tools/autoopttool.cpp:292
+#: src/tools/autoopttool.cpp:294
 msgid "Fixed atoms are movable"
 msgstr "Pevné atómy sú pohyblivé"
 
-#: src/tools/autoopttool.cpp:293
+#: src/tools/autoopttool.cpp:295
 msgid "Ignored atoms are movable"
 msgstr "Ignorované atómy sú pohyblivé"
 
-#: src/tools/autoopttool.cpp:350 src/tools/autorotatetool.cpp:220
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
 msgid "Stop"
 msgstr "Stop"
 
-#: src/tools/autoopttool.cpp:560
+#: src/tools/autoopttool.cpp:562
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -2841,27 +2832,27 @@ msgstr "AutomatickáOptimalizácia Nastavenia"
 msgid "Auto Rotation Tool"
 msgstr "Nástroje pre Atomatické Otáčanie"
 
-#: src/tools/autorotatetool.cpp:245
+#: src/tools/autorotatetool.cpp:247
 msgid "x rotation:"
 msgstr "x otáčanie:"
 
-#: src/tools/autorotatetool.cpp:251
+#: src/tools/autorotatetool.cpp:253
 msgid "x rotation"
 msgstr "x otáčanie"
 
-#: src/tools/autorotatetool.cpp:261
+#: src/tools/autorotatetool.cpp:263
 msgid "y rotation:"
 msgstr "y otáčanie:"
 
-#: src/tools/autorotatetool.cpp:266
+#: src/tools/autorotatetool.cpp:268
 msgid "y rotation"
 msgstr "y otáčanie"
 
-#: src/tools/autorotatetool.cpp:276
+#: src/tools/autorotatetool.cpp:278
 msgid "z rotation:"
 msgstr "z otáčanie:"
 
-#: src/tools/autorotatetool.cpp:281
+#: src/tools/autorotatetool.cpp:283
 msgid "z rotation"
 msgstr "z otáčanie"
 
@@ -2869,8 +2860,8 @@ msgstr "z otáčanie"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:292:992
-#: rc.cpp:1272 rc.cpp:1330
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:966
+#: rc.cpp:1246 rc.cpp:1304
 msgid "Reset"
 msgstr "Vynulovanie"
 
@@ -3008,7 +2999,7 @@ msgid "Measure Settings"
 msgstr "Rozsah Nastavenia"
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1860
+#: src/tools/drawcommand.cpp:289:1834
 msgid "Add Atom"
 msgstr "Pridať Atóm"
 
@@ -3052,31 +3043,31 @@ msgstr "Kresliť Väzby"
 msgid "Draw"
 msgstr "Kresliť"
 
-#: src/tools/drawtool.cpp:735
+#: src/tools/drawtool.cpp:736
 msgid "Element:"
 msgstr "Prvok:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:762:602
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:576
 msgid "Other..."
 msgstr "Ďaľšie..."
 
-#: src/tools/drawtool.cpp:766
+#: src/tools/drawtool.cpp:767
 msgid "Bond Order:"
 msgstr ""
 
-#: src/tools/drawtool.cpp:771
+#: src/tools/drawtool.cpp:772
 msgid "Single"
 msgstr "Jednoduchý"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:773
 msgid "Double"
 msgstr "Dvojitý"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:774
 msgid "Triple"
 msgstr "Trojitý"
 
-#: src/tools/drawtool.cpp:788
+#: src/tools/drawtool.cpp:789
 msgid "Adjust Hydrogens"
 msgstr "Upravte Vodíky"
 
@@ -3192,11 +3183,11 @@ msgstr ""
 msgid "Dihedral Angle"
 msgstr ""
 
-#: src/tools/zmatrixtool.cpp:88
+#: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:660
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:634
 msgid "Z-Matrix"
 msgstr ""
 
@@ -3331,27 +3322,22 @@ msgid "Cut-off angle:"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:23
-#: src/engines/overlaysettingswidget.ui:22
 msgid "Atom Labels:"
 msgstr "Štítok Atómu:"
 
 #: src/engines/labelsettingswidget.ui:60
-#: src/engines/overlaysettingswidget.ui:59
 msgid "Atom number"
 msgstr "Atómové číslo"
 
 #: src/engines/labelsettingswidget.ui:65
-#: src/engines/overlaysettingswidget.ui:64
 msgid "Element name"
 msgstr "Názov prvku"
 
 #: src/engines/labelsettingswidget.ui:70
-#: src/engines/overlaysettingswidget.ui:69
 msgid "Element symbol"
 msgstr "Značka Prvku"
 
 #: src/engines/labelsettingswidget.ui:80
-#: src/engines/overlaysettingswidget.ui:79
 msgid "Residue number"
 msgstr "Číslo zvyšku"
 
@@ -3369,22 +3355,18 @@ msgid "Custom Data"
 msgstr "Vlastné Údaje"
 
 #: src/engines/labelsettingswidget.ui:108
-#: src/engines/overlaysettingswidget.ui:92
 msgid "Bond Labels:"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:145
-#: src/engines/overlaysettingswidget.ui:129
 msgid "Bond length"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:150
-#: src/engines/overlaysettingswidget.ui:134
 msgid "Bond number"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:155
-#: src/engines/overlaysettingswidget.ui:139
 msgid "Bond order"
 msgstr ""
 
@@ -5931,10 +5913,9 @@ msgid "High"
 msgstr "Svetlý"
 
 #: src/extensions/surfacedialog.ui:177
-#, fuzzy
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr "Svetlý"
+msgstr ""
 
 #: src/extensions/surfacedialog.ui:200
 msgid "Isosurface cutoff value"

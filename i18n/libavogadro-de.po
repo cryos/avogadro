@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-09 08:14-0400\n"
-"PO-Revision-Date: 2009-06-04 19:28+0000\n"
+"POT-Creation-Date: 2009-06-11 21:00-0400\n"
+"PO-Revision-Date: 2009-06-11 20:08+0000\n"
 "Last-Translator: kuede <Unknown>\n"
 "Language-Team: <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Launchpad-Export-Date: 2009-06-12 00:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -29,11 +29,11 @@ msgstr "Farbe nach Teilladung"
 msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr "Farbe nach atomarer Teilladung (blau = positiv, rot = negativ)."
 
-#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:192
+#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:166
 msgid "Custom Color:"
 msgstr "Eigene Farbe:"
 
-#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:186
+#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:160
 msgid "Custom Color"
 msgstr "Eigene Farbe"
 
@@ -615,11 +615,11 @@ msgstr "Orbitale"
 msgid "Renders molecular orbitals"
 msgstr "Rendert Molekülorbitale"
 
-#: src/engines/overlayengine.h:41
+#: src/engines/overlayengine.h:37
 msgid "Overlay"
 msgstr "Überlagerung"
 
-#: src/engines/overlayengine.h:42
+#: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
 msgstr "Rendert Farbskala für Gradienten"
 
@@ -1095,7 +1095,7 @@ msgstr "Kreire Eingabedateien für das GAMESS-Quantenchemie-Paket"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:652 rc.cpp:930 rc.cpp:1214
+#: src/extensions/gamessinputdialog.cpp:619:626 rc.cpp:904 rc.cpp:1188
 msgid "Title"
 msgstr "Titel"
 
@@ -1249,7 +1249,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1328
+#: src/extensions/qcheminputdialog.cpp:178:1302
 msgid "Show Preview"
 msgstr "Vorschau anzeigen"
 
@@ -1261,7 +1261,7 @@ msgstr "Vorschau anzeigen"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:990 rc.cpp:1270 rc.cpp:1396
+#: src/extensions/qcheminputdialog.cpp:182:964 rc.cpp:1244 rc.cpp:1370
 msgid "Hide Preview"
 msgstr "Vorschau ausblenden"
 
@@ -1365,7 +1365,7 @@ msgstr "Peptid..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1010 rc.cpp:1152
+#: src/extensions/insertpeptideextension.h:43:984 rc.cpp:1126
 msgid "Insert Peptide"
 msgstr "Peptid einfügen"
 
@@ -1654,8 +1654,6 @@ msgstr "MO %L1"
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
-#: src/engines/overlaysettingswidget.ui:54
-#: src/engines/overlaysettingswidget.ui:124
 #: src/extensions/gamessinputdialog.ui:450
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
@@ -1687,7 +1685,7 @@ msgstr "Berechnung abbrechen"
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
-msgstr ""
+msgstr "Berechne MO %L1"
 
 #: src/extensions/orbitalextension.cpp:462
 #: src/extensions/orbitalextension.cpp:500
@@ -1708,7 +1706,7 @@ msgid "Calculating VdW Cube"
 msgstr "Berechne VdW-Würfel"
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48:1406
+#: src/extensions/orbitalextension.h:48:1380
 msgid "Surfaces"
 msgstr "Oberflächen"
 
@@ -1757,7 +1755,7 @@ msgstr ""
 #: src/extensions/povrayextension.cpp:158
 #: src/extensions/povrayextension.cpp:179
 msgid "Cannot Write to File."
-msgstr ""
+msgstr "Kann nicht in Datei schreiben."
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:180
@@ -1765,6 +1763,8 @@ msgstr ""
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr ""
+"Kann nicht in Datei %1 schreiben. Haben Sie die Rechte, an diese Stelle zu "
+"schreiben?"
 
 #: src/extensions/povrayextension.cpp:173
 msgid "POV-Ray failed to start."
@@ -1799,7 +1799,7 @@ msgstr "Bindungs-Eigenschaften..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr ""
+msgstr "Winkeleigenschaften..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
@@ -1807,38 +1807,38 @@ msgstr "Torsions-Eigenschaften"
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "Konformereneigenschaften..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Cartesian Editor..."
 msgstr "Kartesischer Editor..."
 
-#: src/extensions/propextension.cpp:228
-msgid "Atom Properties"
-msgstr ""
-
 #: src/extensions/propextension.cpp:231
-msgid "Bond Properties"
-msgstr ""
+msgid "Atom Properties"
+msgstr "Atomeigenschaften"
 
 #: src/extensions/propextension.cpp:234
-msgid "Angle Properties"
-msgstr ""
+msgid "Bond Properties"
+msgstr "Bindungseigenschaften"
 
 #: src/extensions/propextension.cpp:237
-msgid "Torsion Properties"
-msgstr ""
+msgid "Angle Properties"
+msgstr "Winkeleigenschaften"
 
 #: src/extensions/propextension.cpp:240
-msgid "Cartesian Properties"
-msgstr ""
+msgid "Torsion Properties"
+msgstr "Torsionseigenschaften"
 
 #: src/extensions/propextension.cpp:243
+msgid "Cartesian Properties"
+msgstr "Kartesische Eigenschaften"
+
+#: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
-msgstr ""
+msgstr "Konformereneigenschaften"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:508
+#: src/extensions/propextension.h:43:482
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -1850,111 +1850,109 @@ msgstr ""
 "Fenster um Atome, Bindungen, Winkel und Torsionseigenschaften anzuzeigen. Es "
 "beinhaltet auch einen Editor für Kartesische Koordinaten."
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:329:234
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:208
 msgid "Type"
 msgstr "Typ"
 
-#: src/extensions/propmodel.cpp:331
+#: src/extensions/propmodel.cpp:355
 msgid "Element"
-msgstr ""
+msgstr "Element"
 
-#: src/extensions/propmodel.cpp:333
+#: src/extensions/propmodel.cpp:357
 msgid "Valence"
 msgstr "Valenz"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/engines/overlaysettingswidget.ui:84 src/extensions/propmodel.cpp:335:86
-#: rc.cpp:146
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "Teilladung"
 
-#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
 #, qt-format
 msgid "Atom %1"
 msgstr "Atom %1"
 
-#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+#: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
 msgid "Start Atom"
 msgstr "Atom starten"
 
-#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+#: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
 msgid "End Atom"
 msgstr "Endatom"
 
-#: src/extensions/propmodel.cpp:347
+#: src/extensions/propmodel.cpp:371
 msgid "Bond Order"
 msgstr "Anzahl der Bindungen"
 
-#: src/extensions/propmodel.cpp:349
+#: src/extensions/propmodel.cpp:373
 msgid "Rotatable"
 msgstr "Rotierbar"
 
-#: src/extensions/propmodel.cpp:351
+#: src/extensions/propmodel.cpp:375
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
-msgstr ""
+msgstr "Länge %1"
 
-#: src/extensions/propmodel.cpp:355
+#: src/extensions/propmodel.cpp:379
 #, qt-format
 msgid "Bond %1"
 msgstr "Bindung %1"
 
-#: src/extensions/propmodel.cpp:362
+#: src/extensions/propmodel.cpp:386
 msgid "Vertex"
 msgstr "Vertex"
 
-#: src/extensions/propmodel.cpp:366
+#: src/extensions/propmodel.cpp:390
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "Winkel %1"
 
-#: src/extensions/propmodel.cpp:369
+#: src/extensions/propmodel.cpp:393
 #, qt-format
 msgid "Angle %1"
 msgstr "Winkel %1"
 
-#: src/extensions/propmodel.cpp:377
+#: src/extensions/propmodel.cpp:401
 #, qt-format
 msgid "Atom Index %1"
 msgstr "Atomindex %1"
 
-#: src/extensions/propmodel.cpp:379
+#: src/extensions/propmodel.cpp:403
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr "Torsion %1"
 
-#: src/extensions/propmodel.cpp:382
+#: src/extensions/propmodel.cpp:406
 #, qt-format
 msgid "Torsion %1"
 msgstr "Torsion %1"
 
-#: src/extensions/propmodel.cpp:387
+#: src/extensions/propmodel.cpp:411
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
 msgstr "X %1"
 
-#: src/extensions/propmodel.cpp:389
+#: src/extensions/propmodel.cpp:413
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr "Y %1"
 
-#: src/extensions/propmodel.cpp:391
+#: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:399:488
+#: src/extensions/propmodel.cpp:423:462
 msgid "Energy"
 msgstr "Energie"
 
-#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:427
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
 #, qt-format
 msgid "Conformer %1"
 msgstr "Konformer %1"
@@ -2020,10 +2018,9 @@ msgstr "SMARTS-Muster auswählen"
 msgid "Select by residue"
 msgstr "Auswahl nach Rest"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/engines/overlaysettingswidget.ui:74 src/extensions/liganddialog.ui:60
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
 #: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:142 rc.cpp:1166
+#: rc.cpp:1140 rc.cpp:1458
 msgid "Residue name"
 msgstr "Restname"
 
@@ -2083,7 +2080,7 @@ msgstr "Öffne eine Shader-Parameter-Datei"
 msgid "Shader parameters files (*.params)"
 msgstr "Shader-Parameter-Dateien (\".params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1604
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1578
 msgid "GLSL Shaders"
 msgstr "GLSL-Shader"
 
@@ -2100,12 +2097,12 @@ msgid "Y Axis"
 msgstr "Y-Achse"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1646
+#: src/extensions/spectradialog.cpp:152:1620
 msgid "&Appearance"
 msgstr "&Aussehen"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1690
+#: src/extensions/spectradialog.cpp:153:1664
 msgid "E&xport Image"
 msgstr "E&xportiere Bild"
 
@@ -2141,7 +2138,7 @@ msgstr "Licht"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
-msgstr ""
+msgstr "Veröffentlichung"
 
 #: src/extensions/spectradialog.cpp:283
 msgid "Handdrawn"
@@ -2149,7 +2146,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "Neues Schema"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
@@ -2157,11 +2154,11 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "Aktuelles Schema wirklich entfernen?"
 
 #: src/extensions/spectradialog.cpp:327
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "Ändere Name des Schemas"
 
 #: src/extensions/spectradialog.cpp:328
 msgid "Enter new name for current scheme:"
@@ -2173,24 +2170,24 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:227
 msgid "Tab Separated Values (*.tsv)"
-msgstr ""
+msgstr "Tab-getrennte Werte (*.tsv)"
 
 #: src/extensions/spectradialog.cpp:452
 msgid "Tab Separated Values"
-msgstr ""
+msgstr "Tab-getrennte Werte"
 
 #: src/extensions/spectradialog.cpp:453
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "Komma-getrennte Werte"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
 #: src/extensions/spectradialog.cpp:625
 msgid "All Files"
-msgstr ""
+msgstr "Alle Dateien"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
@@ -2203,7 +2200,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
 #, qt-format
 msgid "Unknown extension: %1"
-msgstr ""
+msgstr "Unbekannte Erweiterung: %1"
 
 #: src/extensions/spectradialog.cpp:529
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
@@ -2217,7 +2214,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:531
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: src/extensions/spectradialog.cpp:540
 msgid "Load Spectral Data"
@@ -2229,7 +2226,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:619
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:620
 msgid "Tagged Image File Format"
@@ -2282,7 +2279,7 @@ msgid "Customi&ze <<"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714:1642
+#: src/extensions/spectradialog.cpp:714:1616
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2315,7 +2312,7 @@ msgstr ""
 
 #: src/extensions/spectratype_nmr.cpp:278
 msgid "Shift (ppm)"
-msgstr ""
+msgstr "Shift (ppm)"
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2444,7 +2441,7 @@ msgid "Apply"
 msgstr "Anwenden"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:268
+#: src/extensions/unitcellparamdialog.cpp:97:242
 msgid "OK"
 msgstr "OK"
 
@@ -2455,7 +2452,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1840
+#: src/extensions/vibrationdialog.cpp:213:1814
 msgid "Start &Animation"
 msgstr ""
 
@@ -2473,7 +2470,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:238:850
+#: src/extensions/vibrationextension.cpp:239:824
 msgid "Vibrational Analysis"
 msgstr "Vibrationsanalyse"
 
@@ -2481,7 +2478,7 @@ msgstr "Vibrationsanalyse"
 msgid "No vibrational displacements exist."
 msgstr "Es existiert keine Verschiebung durch Vibration."
 
-#: src/extensions/vibrationextension.cpp:238
+#: src/extensions/vibrationextension.cpp:239
 msgid "No vibrations have been computed for this molecule."
 msgstr "Für dieses Molekül wurden keine Vibrationen berechnet."
 
@@ -2535,7 +2532,7 @@ msgstr "Debug-Informationen"
 #: src/glwidget.cpp:1007
 #, qt-format
 msgid "FPS: %L1"
-msgstr ""
+msgstr "FPS: %L1"
 
 #: src/glwidget.cpp:1010
 #, qt-format
@@ -2561,106 +2558,102 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr ""
 
-#: src/moleculefile.cpp:111
+#: src/moleculefile.cpp:112
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:120 src/openbabelwrapper.cpp:94
-#: src/openbabelwrapper.cpp:374
+#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:126 src/openbabelwrapper.cpp:101
-#: src/openbabelwrapper.cpp:380
+#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:153
+#: src/moleculefile.cpp:154
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr ""
 
-#: src/moleculefile.cpp:165
+#: src/moleculefile.cpp:166
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:174 src/openbabelwrapper.cpp:155
-#: src/openbabelwrapper.cpp:243
+#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:180 src/openbabelwrapper.cpp:163
-#: src/openbabelwrapper.cpp:250
+#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:190
+#: src/moleculefile.cpp:191
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr ""
 
-#: src/moleculefile.cpp:197
+#: src/moleculefile.cpp:198
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:206
+#: src/moleculefile.cpp:207
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:363
+#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:127
+#: src/moleculefile.cpp:378
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:142
+#: src/moleculefile.cpp:393
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:188
+#: src/moleculefile.cpp:439
 #, fuzzy
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "Speichern des Moleküls fehlgeschlagen."
 
-#: src/openbabelwrapper.cpp:195
+#: src/moleculefile.cpp:446
 #, fuzzy
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "Speichern des Moleküls fehlgeschlagen."
 
-#: src/openbabelwrapper.cpp:204
+#: src/moleculefile.cpp:455
 #, fuzzy
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "Speichern des Moleküls fehlgeschlagen."
 
-#: src/openbabelwrapper.cpp:213
+#: src/moleculefile.cpp:464
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:230
+#: src/moleculefile.cpp:481
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:282
+#: src/moleculefile.cpp:533
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:429
+#: src/moleculefile.cpp:680
 #, qt-format
 msgid "Molecule %1"
 msgstr ""
@@ -2750,23 +2743,23 @@ msgstr ""
 "\tDas zweite Atome wird an der ausgewählten Achse ausgerichtet.\n"
 "Rechte Maustaste: \tAusrichtung zurücksetzen."
 
-#: src/tools/aligntool.cpp:254
+#: src/tools/aligntool.cpp:256
 msgid "Axis:"
 msgstr "Achse:"
 
-#: src/tools/aligntool.cpp:265
+#: src/tools/aligntool.cpp:267
 msgid "Align:"
 msgstr "Ausrichten:"
 
-#: src/tools/aligntool.cpp:270
+#: src/tools/aligntool.cpp:272
 msgid "Everything"
 msgstr "Alles"
 
-#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
 msgstr "Molekül"
 
-#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Ausrichten"
 
@@ -2800,65 +2793,65 @@ msgstr ""
 "Bei aktiviertem Werkzeug:\n"
 "Linke Maustaste: Klicken und ziehen um Atome zu bewegen"
 
-#: src/tools/autoopttool.cpp:221
+#: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
 msgstr "AutoOpt: Kraftfeld konnte nicht initialisiert werden..."
 
-#: src/tools/autoopttool.cpp:226
+#: src/tools/autoopttool.cpp:228
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Automatische Option: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:255
+#: src/tools/autoopttool.cpp:257
 msgid "Force Field:"
 msgstr "Kraftfeld:"
 
-#: src/tools/autoopttool.cpp:270
+#: src/tools/autoopttool.cpp:272
 msgid "Steps per Update:"
 msgstr "Schritte pro Aktualisierung:"
 
-#: src/tools/autoopttool.cpp:281
+#: src/tools/autoopttool.cpp:283
 msgid "Algorithm:"
 msgstr "Algorithmus:"
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:284:298
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:272
 msgid "Steepest Descent"
 msgstr "Tiefster Abstieg"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:285:300
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:274
 msgid "Conjugate Gradients"
 msgstr "Verlaufskonjugation"
 
-#: src/tools/autoopttool.cpp:286
+#: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
 msgstr "Moleküldynamik (300K)"
 
-#: src/tools/autoopttool.cpp:287
+#: src/tools/autoopttool.cpp:289
 msgid "Molecular Dynamics (600K)"
 msgstr "Moleküldynamik (600K)"
 
-#: src/tools/autoopttool.cpp:288
+#: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (900K)"
 msgstr "Moleküldynamik (900K)"
 
-#: src/tools/autoopttool.cpp:290 src/tools/autoopttool.cpp:383
-#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+#: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
+#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
 msgid "Start"
 msgstr "Start"
 
-#: src/tools/autoopttool.cpp:292
+#: src/tools/autoopttool.cpp:294
 msgid "Fixed atoms are movable"
 msgstr "Gesperrte Atome sind beweglich"
 
-#: src/tools/autoopttool.cpp:293
+#: src/tools/autoopttool.cpp:295
 msgid "Ignored atoms are movable"
 msgstr "Ignorierte Atome sind beweglich"
 
-#: src/tools/autoopttool.cpp:350 src/tools/autorotatetool.cpp:220
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
 msgid "Stop"
 msgstr "Stop"
 
-#: src/tools/autoopttool.cpp:560
+#: src/tools/autoopttool.cpp:562
 msgid "AutoOpt Molecule"
 msgstr "AutoOpt-Molekül"
 
@@ -2878,27 +2871,27 @@ msgstr ""
 msgid "Auto Rotation Tool"
 msgstr "Automatisches Rotieren"
 
-#: src/tools/autorotatetool.cpp:245
+#: src/tools/autorotatetool.cpp:247
 msgid "x rotation:"
 msgstr "Rotation um x-Achse:"
 
-#: src/tools/autorotatetool.cpp:251
+#: src/tools/autorotatetool.cpp:253
 msgid "x rotation"
 msgstr "Rotation um x-Achse"
 
-#: src/tools/autorotatetool.cpp:261
+#: src/tools/autorotatetool.cpp:263
 msgid "y rotation:"
 msgstr "Rotation um y-Achse:"
 
-#: src/tools/autorotatetool.cpp:266
+#: src/tools/autorotatetool.cpp:268
 msgid "y rotation"
 msgstr "Rotation um y-Achse"
 
-#: src/tools/autorotatetool.cpp:276
+#: src/tools/autorotatetool.cpp:278
 msgid "z rotation:"
 msgstr "Rotation um z-Achse:"
 
-#: src/tools/autorotatetool.cpp:281
+#: src/tools/autorotatetool.cpp:283
 msgid "z rotation"
 msgstr "Rotation um z-Achse"
 
@@ -2906,8 +2899,8 @@ msgstr "Rotation um z-Achse"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:292:992
-#: rc.cpp:1272 rc.cpp:1330
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:966
+#: rc.cpp:1246 rc.cpp:1304
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -3063,7 +3056,7 @@ msgid "Measure Settings"
 msgstr ""
 
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1860
+#: src/tools/drawcommand.cpp:289:1834
 msgid "Add Atom"
 msgstr "Atom hinzufügen"
 
@@ -3112,31 +3105,31 @@ msgstr "Bindung zeichnen"
 msgid "Draw"
 msgstr "Zeichnen"
 
-#: src/tools/drawtool.cpp:735
+#: src/tools/drawtool.cpp:736
 msgid "Element:"
 msgstr "Element:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:762:602
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:576
 msgid "Other..."
 msgstr "Anderes..."
 
-#: src/tools/drawtool.cpp:766
+#: src/tools/drawtool.cpp:767
 msgid "Bond Order:"
 msgstr "Anzahl der Bindungen:"
 
-#: src/tools/drawtool.cpp:771
+#: src/tools/drawtool.cpp:772
 msgid "Single"
 msgstr "Einfach"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:773
 msgid "Double"
 msgstr "Zweifach"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:774
 msgid "Triple"
 msgstr "Dreifach"
 
-#: src/tools/drawtool.cpp:788
+#: src/tools/drawtool.cpp:789
 msgid "Adjust Hydrogens"
 msgstr "Wasserstoffatome adjustieren"
 
@@ -3256,11 +3249,11 @@ msgstr ""
 msgid "Dihedral Angle"
 msgstr ""
 
-#: src/tools/zmatrixtool.cpp:88
+#: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:660
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:634
 msgid "Z-Matrix"
 msgstr "Z-Matrix"
 
@@ -3395,27 +3388,22 @@ msgid "Cut-off angle:"
 msgstr "Cut-off-Winkel:"
 
 #: src/engines/labelsettingswidget.ui:23
-#: src/engines/overlaysettingswidget.ui:22
 msgid "Atom Labels:"
 msgstr "Atombeschriftung:"
 
 #: src/engines/labelsettingswidget.ui:60
-#: src/engines/overlaysettingswidget.ui:59
 msgid "Atom number"
 msgstr "Ordungszahl"
 
 #: src/engines/labelsettingswidget.ui:65
-#: src/engines/overlaysettingswidget.ui:64
 msgid "Element name"
 msgstr "Elementbezeichnung"
 
 #: src/engines/labelsettingswidget.ui:70
-#: src/engines/overlaysettingswidget.ui:69
 msgid "Element symbol"
 msgstr "Elementsymbol"
 
 #: src/engines/labelsettingswidget.ui:80
-#: src/engines/overlaysettingswidget.ui:79
 msgid "Residue number"
 msgstr "Restnummer"
 
@@ -3433,22 +3421,18 @@ msgid "Custom Data"
 msgstr "Persönliche Daten"
 
 #: src/engines/labelsettingswidget.ui:108
-#: src/engines/overlaysettingswidget.ui:92
 msgid "Bond Labels:"
 msgstr "Bindungsbeschriftung:"
 
 #: src/engines/labelsettingswidget.ui:145
-#: src/engines/overlaysettingswidget.ui:129
 msgid "Bond length"
 msgstr "Bindungslänge"
 
 #: src/engines/labelsettingswidget.ui:150
-#: src/engines/overlaysettingswidget.ui:134
 msgid "Bond number"
 msgstr "Bindungsnummer"
 
 #: src/engines/labelsettingswidget.ui:155
-#: src/engines/overlaysettingswidget.ui:139
 msgid "Bond order"
 msgstr "Bindungsanzahl"
 
