@@ -38,8 +38,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  OverlayEngine::OverlayEngine(QObject *parent) : Engine(parent),
-  m_settingsWidget(0)
+  OverlayEngine::OverlayEngine(QObject *parent) : Engine(parent)
   {
   }
 
@@ -83,22 +82,6 @@ namespace Avogadro {
   {
     // Don't render text when moving...
     return true;
-  }
-
-  QWidget *OverlayEngine::settingsWidget()
-  {
-    if(!m_settingsWidget)
-    {
-      m_settingsWidget = new OverlaySettingsWidget();
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-    }
-    return m_settingsWidget;
-  }
-
-  void OverlayEngine::settingsWidgetDestroyed()
-  {
-    qDebug() << "Destroyed Settings Widget";
-    m_settingsWidget = 0;
   }
 
   Engine::Layers OverlayEngine::layers() const

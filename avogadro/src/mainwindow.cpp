@@ -64,7 +64,6 @@
 #include <avogadro/extension.h>
 #include <avogadro/engine.h>
 
-#include <avogadro/openbabelwrapper.h>
 #include <avogadro/moleculefile.h>
 
 #include <avogadro/primitive.h>
@@ -782,7 +781,7 @@ namespace Avogadro
       formatType = format->GetID();
     }
     // This will work in a background thread -- we want to wait until the firstMolReady() signal appears
-    d->moleculeFile = OpenbabelWrapper::readFile(fileName, formatType.trimmed(), options, false);
+    d->moleculeFile = MoleculeFile::readFile(fileName, formatType.trimmed(), options, false);
     if (!d->moleculeFile)
       return false;
 
@@ -813,7 +812,7 @@ namespace Avogadro
 
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                                                        tr( "Avogadro" ),
-                                                       tr("This file contains does not contain 3D coordinates."),
+                                                       tr("This file does not contain 3D coordinates."),
                                                        QMessageBox::YesToAll | QMessageBox::Yes
                                                        | QMessageBox::No,
                                                        this);
@@ -1149,9 +1148,9 @@ namespace Avogadro
     if (!d->moleculeFile) {
       // just save this one molecule
       QString error;
-      bool result = OpenbabelWrapper::writeMolecule(d->molecule, fileName,
-                                                    formatType.trimmed(),
-                                                    &error);
+      bool result = MoleculeFile::writeMolecule(d->molecule, fileName,
+                                                formatType.trimmed(),
+                                                &error);
       if (!result) { // There was an error saving the file - inform the user
         QApplication::restoreOverrideCursor();
         QMessageBox::warning(this, tr("Avogadro"), error);
@@ -1164,7 +1163,7 @@ namespace Avogadro
     }
     else { /// FIXME Add error checking
       if (d->moleculeFile->isConformerFile()) {
-        OpenbabelWrapper::writeConformers(d->molecule, fileName, formatType.trimmed());
+        MoleculeFile::writeConformers(d->molecule, fileName, formatType.trimmed());
         QApplication::restoreOverrideCursor();
         return true;
       }
@@ -1474,6 +1473,16 @@ namespace Avogadro
   //  then we quit
   void MainWindow::macQuit()
   {
+    // Check first for any parent-less windows for debugging
+    foreach(QWidget *widget, qApp->topLevelWidgets()) {
+      if (widget->parent() == 0) {
+        qDebug() << " found parentless " << widget->windowTitle()
+                 << widget->metaObject()->className();
+        foreach (const QObject* child, widget->children())
+          qDebug() << "   child: " << child->metaObject()->className();
+      }
+    }
+
     QCloseEvent ev;
     QApplication::sendEvent(qApp, &ev);
     if(ev.isAccepted())
@@ -2437,6 +2446,13 @@ namespace Avogadro
       return 0;
 
     foreach(QWidget *widget, qApp->topLevelWidgets()) {
+      if (widget->parent() == 0) {
+        qDebug() << " found parentless " << widget->windowTitle()
+                 << widget->metaObject()->className();
+        foreach (const QObject* child, widget->children())
+          qDebug() << "   child: " << child->metaObject()->className();
+      }
+
       MainWindow *window = qobject_cast<MainWindow *>( widget );
       if (window && window->d->fileName == canonicalFilePath)
         return window;

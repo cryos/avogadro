@@ -28,13 +28,9 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
-
-#include "ui_overlaysettingswidget.h"
-
 namespace Avogadro {
 
   //! Overlay Engine class.
-  class OverlaySettingsWidget;
   class OverlayEngine : public Engine
   {
     Q_OBJECT
@@ -50,7 +46,6 @@ namespace Avogadro {
       //! Deconstructor
       ~OverlayEngine() {}
 
-
       //! \name Render Methods
       //@{
       bool renderOpaque(PainterDevice *pd);
@@ -60,11 +55,6 @@ namespace Avogadro {
       Layers layers() const;
       PrimitiveTypes primitiveTypes() const;
       ColorTypes colorTypes() const;
-
-      //! Display a window for the user to pick rendering options
-      QWidget *settingsWidget();
-
-      bool hasSettings() { return true; }
 
       /**
        * Write the engine settings so that they can be saved between sessions.
@@ -76,25 +66,6 @@ namespace Avogadro {
        */
       void readSettings(QSettings &settings);
 
-
-    private:
-      //int m_atomType;  // Atom label type
-      //int m_bondType;  // Bond label type
-      OverlaySettingsWidget* m_settingsWidget;
-
-    private Q_SLOTS:
-      //void setAtomType(int value);
-      //void setBondType(int value);
-      void settingsWidgetDestroyed();
-
-  };
-
-  class OverlaySettingsWidget : public QWidget, public Ui::OverlaySettingsWidget
-  {
-    public:
-      OverlaySettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-      }
   };
 
   //! Generates instances of our OverlayEngine class

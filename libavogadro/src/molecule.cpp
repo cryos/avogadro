@@ -1085,7 +1085,10 @@ namespace Avogadro{
       OpenBabel::OBAtom *a;
       foreach(unsigned long atomId, residue->atoms()){
         // Avogadro indexes from 0, but OB from 1. Watch out!
-        a = obmol.GetAtom(this->atomById(atomId)->index() + 1);
+        Atom *avoAtom = this->atomById(atomId);
+        if (!avoAtom)
+          continue;
+        a = obmol.GetAtom(avoAtom->index() + 1);
         r->AddAtom(a);
         r->SetSerialNum(a, a->GetIdx());
         r->SetAtomID(a, residue->atomId(atomId).toStdString());

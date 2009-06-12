@@ -155,8 +155,10 @@ namespace Avogadro {
       }
     }
 
-    if (role != Qt::DisplayRole)
+    if (role != Qt::UserRole && role != Qt::DisplayRole)
       return QVariant();
+
+    bool sortRole = (role == Qt::UserRole); // from the proxy model to handle floating-point
 
     if (m_type == AtomType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numAtoms())
@@ -178,7 +180,10 @@ namespace Avogadro {
         return atom->valence();
       case 3: // partial charge
         QString format("%L1");
-        return format.arg(atom->partialCharge(), 0, 'f', 3);
+        if (sortRole)
+          return atom->partialCharge();
+        else
+          return format.arg(atom->partialCharge(), 0, 'f', 3);
       }
     }
     else if (m_type == BondType) {
@@ -188,21 +193,22 @@ namespace Avogadro {
       if (!m_validCache)
         cacheOBMol();
       OpenBabel::OBBond *bond = m_cachedOBMol->GetBond(index.row());
+      if (sortRole && index.column() == 4)
+        return bond->GetLength();
 
-      if (role == Qt::DisplayRole)
-        switch (index.column()) {
-        case 0: // atom 1
-          return bond->GetBeginAtomIdx();
-        case 1: // atom 2
-          return bond->GetEndAtomIdx();
-        case 2: // order
-          return bond->GetBondOrder();
-        case 3: // rotatable
-          return bond->IsRotor();
-        case 4: // length
-          QString format("%L1");
-          return format.arg(bond->GetLength(), 0, 'f', 4);
-        }
+      switch (index.column()) {
+      case 0: // atom 1
+        return bond->GetBeginAtomIdx();
+      case 1: // atom 2
+        return bond->GetEndAtomIdx();
+      case 2: // order
+        return bond->GetBondOrder();
+      case 3: // rotatable
+        return bond->IsRotor();
+      case 4: // length
+        QString format("%L1");
+        return format.arg(bond->GetLength(), 0, 'f', 4);
+      }
     }
     else if (m_type == AngleType) {
       if (!m_validCache)
@@ -232,7 +238,10 @@ namespace Avogadro {
           angle = 0.0;
         }
         QString format("%L1");
-        return format.arg(angle, 0, 'f', 4);
+        if (sortRole)
+          return angle;
+        else
+          return format.arg(angle, 0, 'f', 4);
       }
     }
     else if (m_type == TorsionType) {
@@ -272,7 +281,10 @@ namespace Avogadro {
                 dihedralAngle = 0.0;
               }
               QString format("%L1");
-              return format.arg(dihedralAngle, 0, 'f', 4);
+              if (sortRole)
+                return dihedralAngle;
+              else
+                return format.arg(dihedralAngle, 0, 'f', 4);
             }
           }
           rowCount++;
@@ -287,11 +299,20 @@ namespace Avogadro {
 
       switch (index.column()) {
       case 0:
-        return format.arg(atom->pos()->x(), 0, 'f', 5);
+        if (sortRole)
+          return atom->pos()->x();
+        else
+          return format.arg(atom->pos()->x(), 0, 'f', 5);
       case 1:
-        return format.arg(atom->pos()->y(), 0, 'f', 5);
+        if (sortRole)
+          return atom->pos()->y();
+        else
+          return format.arg(atom->pos()->y(), 0, 'f', 5);
       case 2:
-        return format.arg(atom->pos()->z(), 0, 'f', 5);
+        if (sortRole)
+          return atom->pos()->z();
+        else
+          return format.arg(atom->pos()->z(), 0, 'f', 5);
       }
     } else if (m_type == ConformerType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numConformers())
@@ -303,7 +324,10 @@ namespace Avogadro {
           return QVariant();
 
         QString format("%L1");
-        return format.arg(m_molecule->energies().at(index.row()), 0, 'f', 4);
+        if (sortRole)
+          return m_molecule->energies().at(index.row());
+        else
+          return format.arg(m_molecule->energies().at(index.row()), 0, 'f', 4);
       }
     }
 

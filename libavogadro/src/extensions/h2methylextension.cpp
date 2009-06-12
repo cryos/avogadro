@@ -70,7 +70,7 @@ namespace Avogadro {
   QUndoCommand* H2MethylExtension::performAction( QAction *, GLWidget *widget )
   {
     QUndoCommand *undo = 0;
-    undo = new H2MethylCommand(m_molecule, widget);
+    undo = new H2MethylCommand(widget->molecule(), widget);
     return undo;
   }
 
@@ -93,9 +93,8 @@ namespace Avogadro {
   void H2MethylCommand::redo()
   {
     if (m_SelectedList.size() == 0) {
-      QList<Atom*> hydrogenList, atoms;
-      atoms = m_molecule->atoms();
-      foreach(Atom *a, atoms) {
+      QList<Atom*> hydrogenList;
+      foreach(Atom *a, m_molecule->atoms()) {
         if (a->isHydrogen()) {
           hydrogenList.append(a);
         }
@@ -118,7 +117,7 @@ namespace Avogadro {
 
   void H2MethylCommand::undo()
   {
-    *m_molecule = m_moleculeCopy;
+    *m_molecule = *m_moleculeCopy;
     m_molecule->update();
   }
 

@@ -202,6 +202,9 @@ namespace Avogadro
     QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel(this);
     proxyModel->setSourceModel(model);
     proxyModel->setDynamicSortFilter(true);
+    proxyModel->setSortLocaleAware(true);
+    // this role will received direct floating-point numbers from the model
+    proxyModel->setSortRole(Qt::UserRole);
 
     view->setMolecule( m_molecule );
     view->setWidget( widget );

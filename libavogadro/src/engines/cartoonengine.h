@@ -42,7 +42,7 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_ENGINE("Cartoon", tr("Cartoon"),
-                      tr("Renders protein secundary structure"))
+                      tr("Renders protein secondary structure"))
 
     public:
       //! Constructor

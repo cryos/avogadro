@@ -9,6 +9,7 @@
 # First remove these from cache
 set(QT_LUPDATE_EXECUTABLE NOTFOUND CACHE FILEPATH "" FORCE)
 set(QT_LRELEASE_EXECUTABLE NOTFOUND CACHE FILEPATH "" FORCE)
+set(QT_LCONVERT_EXECUTABLE NOTFOUND CACHE FILEPATH "" FORCE)
 
 FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate-qt4 lupdate PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
@@ -34,7 +35,19 @@ else(QT_LRELEASE_EXECUTABLE)
   message(FATAL_ERROR "Could NOT find lrelease")
 endif(QT_LRELEASE_EXECUTABLE)
 
-mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE)
+FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lrelease-qt4 lconvert PATHS
+  "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
+  "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\4.0.0;InstallDir]/bin"
+  $ENV{QTDIR}/bin
+)
+
+if(QT_LCONVERT_EXECUTABLE)
+  message(STATUS "Found lconvert: ${QT_LCONVERT_EXECUTABLE}")
+else(QT_LCONVERT_EXECUTABLE)
+  message(FATAL_ERROR "Could NOT find lconvert")
+endif(QT_LCONVERT_EXECUTABLE)
+
+mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE QT_LCONVERT_EXECUTABLE)
 
 # QT4_WRAP_TS(outfiles infiles ...)
 # outfiles receives .qm generated files from
@@ -62,3 +75,32 @@ MACRO (QT4_WRAP_TS outfiles)
     SET(${outfiles} ${${outfiles}} ${outfile})
   ENDFOREACH (it)
 ENDMACRO (QT4_WRAP_TS)
+
+# QT_WRAP_PO(outfiles infiles ...)
+# outfiles receives .qm generated files from
+# .po files in arguments
+# example: QT4_WRAP_PO(foo_TS ${foo_PO})
+MACRO (QT4_WRAP_PO outfiles)
+   FOREACH (it ${ARGN})
+      GET_FILENAME_COMPONENT(it ${it} ABSOLUTE)
+      # PO files are foo-en_GB.po not foo_en_GB.po like Qt expects
+      GET_FILENAME_COMPONENT(fileWithDash ${it} NAME_WE)
+      STRING(REPLACE "-" "_" filenameBase "${fileWithDash}")
+      SET(tsfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.ts)
+      SET(qmfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.qm)
+
+      # lconvert from PO to TS and then run lupdate to generate the correct strings
+      # finally run lrelease as used above
+      ADD_CUSTOM_COMMAND(OUTPUT ${qmfile}
+                         COMMAND ${QT_LCONVERT_EXECUTABLE}
+                         ARGS -i ${it} -o ${tsfile}
+                         COMMAND ${QT_LUPDATE_EXECUTABLE}
+                         ARGS ${CMAKE_CURRENT_SOURCE_DIR} -silent -noobsolete -ts ${tsfile}
+                         COMMAND ${QT_LRELEASE_EXECUTABLE}
+                         ARGS -compress -removeidentical -silent ${tsfile} -qm ${qmfile}
+                         DEPENDS ${it}
+                         )
+
+      SET(${outfiles} ${${outfiles}} ${qmfile})
+   ENDFOREACH (it)
+ENDMACRO (QT4_WRAP_PO)

@@ -24,6 +24,8 @@
 
 #include "primitivelist.h"
 
+#include <QDebug>
+
 namespace Avogadro {
 
   class PrimitiveListPrivate {
@@ -107,6 +109,8 @@ namespace Avogadro {
   }
 
   void PrimitiveList::append(Primitive *p) {
+    if (!p || p->type() < Primitive::FirstType || p->type() >= Primitive::LastType)
+      return;
     d->vector[p->type()].append(p);
     d->size++;
   }

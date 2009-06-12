@@ -23,16 +23,7 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Library translations
 file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.po")
-# three step replace (there's probably a regex, but this is easier
-string(REPLACE ".po" ".ts" initial_TS "${libavogadro_PO}")
-string(REPLACE "${Avogadro_SOURCE_DIR}" "${Avogadro_BINARY_DIR}" second_TS "${initial_TS}")
-foreach(tsfile ${second_TS})
-  get_filename_component(filename_TS ${tsfile} NAME)
-  get_filename_component(path_TS ${tsfile} PATH)
-  string(REPLACE "-" "_" newname_TS ${filename_TS})
-  set(libavogadro_TS ${libavogadro_TS} "${path_TS}/${newname_TS}")
-endforeach(tsfile ${second_TS})
-QT4_WRAP_TS(libavogadro_QM ${libavogadro_TS})
+QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
 
 file(GLOB libavogadro_SRCS "*.cpp")
 
@@ -64,7 +55,6 @@ set(libavogadro_HDRS
   moleculefile.h
   navigate.h
   neighborlist.h
-  openbabelwrapper.h
   painter.h
   painterdevice.h
   periodictableview.h

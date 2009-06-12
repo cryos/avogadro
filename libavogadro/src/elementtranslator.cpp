@@ -201,7 +201,7 @@ namespace Avogadro {
       result = tr("Xenon");
       break;
     case 55:
-      result = tr("Caesium");
+      result = tr("Cesium");
       break;
     case 56:
       result = tr("Barium");

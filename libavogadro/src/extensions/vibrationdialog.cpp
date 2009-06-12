@@ -28,10 +28,10 @@
 #include <QProgressDialog>
 #include <QFile>
 #include <QDir>
-
 #include <QHeaderView>
 
 #include <avogadro/molecule.h>
+
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
@@ -144,7 +144,7 @@ namespace Avogadro {
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
     }
-    
+
     // enable export button
     ui.exportButton->setEnabled(true);
   }

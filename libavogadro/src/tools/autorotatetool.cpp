@@ -54,6 +54,8 @@ namespace Avogadro {
 
   AutoRotateTool::~AutoRotateTool()
   {
+    if (m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   int AutoRotateTool::usefulness() const

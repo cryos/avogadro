@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-02 11:17-0400\n"
-"PO-Revision-Date: 2009-05-24 01:06+0000\n"
-"Last-Translator: Alexandre R Soares <Unknown>\n"
+"POT-Creation-Date: 2009-06-12 11:52-0400\n"
+"PO-Revision-Date: 2009-06-11 16:45+0000\n"
+"Last-Translator: Felipe Vieira Borges <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-08 21:37+0000\n"
+"X-Launchpad-Export-Date: 2009-06-12 00:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -23,8 +23,7 @@ msgstr "colorir pelo índice"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
-"colorir pelo índice (vermelho, laranja, amarelo, verde, azul, violeta)"
+msgstr "colorir pelo índice (vermelho, laranja, amarelo, verde, azul, violeta)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -35,19 +34,17 @@ msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr ""
 "colorir por Carregamento Parcial Atômico (azul=positivo, vermelho=negativo)"
 
-#: src/engines/surfacesettingswidget.ui:139
-#: src/colors/customcolor.cpp:63 :192
+#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:166
 msgid "Custom Color:"
 msgstr "Cor Personalizada:"
 
-#: src/engines/surfacesettingswidget.ui:95
-#: src/colors/customcolor.h:43 :186
+#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:160
 msgid "Custom Color"
 msgstr "Cor Personalizada"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "Definir Cores Personalizadas para Objetos"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -290,7 +287,8 @@ msgid "Xenon"
 msgstr "Xenônio"
 
 #: src/elementtranslator.cpp:204
-msgid "Caesium"
+#, fuzzy
+msgid "Cesium"
 msgstr "Césio"
 
 #: src/elementtranslator.cpp:207
@@ -549,7 +547,7 @@ msgstr "Ununoctio"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/engine.cpp:64
+#: src/engine.cpp:65
 msgid "Engines"
 msgstr "Mecanismos"
 
@@ -561,7 +559,7 @@ msgstr "Eixos"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "renderizar eixos x, y e z na origem"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1985
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1852
 msgid "Ball and Stick"
 msgstr "Bola e Bastão"
 
@@ -574,7 +572,8 @@ msgid "Cartoon"
 msgstr "Ilustração"
 
 #: src/engines/cartoonengine.h:45
-msgid "Renders protein secundary structure"
+#, fuzzy
+msgid "Renders protein secondary structure"
 msgstr "renderizar estrutura secundária da proteina"
 
 #: src/engines/dipoleengine.h:42
@@ -609,7 +608,7 @@ msgstr "Rótulo"
 msgid "Renders atom and bond labels"
 msgstr "Desenha rótulos de átomos e ligações"
 
-#: src/engines/orbitalengine.cpp:286
+#: src/engines/orbitalengine.cpp:285
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
@@ -623,11 +622,11 @@ msgstr "Orbitais"
 msgid "Renders molecular orbitals"
 msgstr "Renderiza orbitais moleculares"
 
-#: src/engines/overlayengine.h:41
+#: src/engines/overlayengine.h:37
 msgid "Overlay"
 msgstr ""
 
-#: src/engines/overlayengine.h:42
+#: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
 msgstr "Renderiza escala de cores para gradientes"
 
@@ -661,8 +660,7 @@ msgstr "Estrutura de Arame Simples"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr ""
-"Renderiza ligações como arames (linhas), ideal para moléculas grandes"
+msgstr "Renderiza ligações como arames (linhas), ideal para moléculas grandes"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
@@ -734,12 +732,12 @@ msgstr "arquivos de video (*.avi)"
 #: src/extensions/animationextension.cpp:232
 #: src/extensions/animationextension.cpp:245
 #: src/extensions/animationextension.cpp:251
-#: src/extensions/forcefieldextension.cpp:181
-#: src/extensions/forcefieldextension.cpp:189
-#: src/extensions/forcefieldextension.cpp:201
-#: src/extensions/forcefieldextension.cpp:221
-#: src/extensions/gaussianextension.cpp:166
-#: src/extensions/gaussianextension.cpp:176
+#: src/extensions/forcefieldextension.cpp:182
+#: src/extensions/forcefieldextension.cpp:191
+#: src/extensions/forcefieldextension.cpp:203
+#: src/extensions/forcefieldextension.cpp:223
+#: src/extensions/gaussianextension.cpp:168
+#: src/extensions/gaussianextension.cpp:178
 #: src/extensions/insertfragmentdialog.cpp:137
 #: src/extensions/insertfragmentdialog.cpp:145
 #: src/extensions/linmorphdialog.cpp:82
@@ -774,7 +772,7 @@ msgid "Animation..."
 msgstr "Animação..."
 
 #: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:143
+#: src/extensions/forcefieldextension.cpp:144
 #: src/extensions/gamessextension.cpp:97
 #: src/extensions/gaussianextension.cpp:86
 #: src/extensions/linmorphextension.cpp:103
@@ -782,13 +780,13 @@ msgstr "Animação..."
 #: src/extensions/shaderextension.cpp:187
 #: src/extensions/spectraextension.cpp:78
 #: src/extensions/templateextension.cpp:70
-#: src/extensions/vibrationextension.cpp:76
+#: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "E&xtensões"
 
 #: src/extensions/animationextension.cpp:136
-#: src/extensions/gaussianextension.cpp:167
+#: src/extensions/gaussianextension.cpp:169
 #: src/extensions/insertfragmentdialog.cpp:138
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
@@ -847,7 +845,8 @@ msgid "Animation"
 msgstr "Animação"
 
 #: src/extensions/animationextension.h:40
-msgid "Animate trajectories, reactions, and vibratins."
+#, fuzzy
+msgid "Animate trajectories, reactions, and vibrations."
 msgstr "Anima trajetórias, reações e vibrações"
 
 #: src/extensions/conformersearchdialog.cpp:133
@@ -860,33 +859,32 @@ msgstr "Número de átomos: %1"
 msgid "Number of rotatable bonds: %1"
 msgstr "Número de ligações rotacionáveis: %1"
 
-#: src/extensions/constraintsdialog.cpp:338
-#: src/extensions/constraintsdialog.cpp:361
-#: src/extensions/constraintsdialog.cpp:370
-#: src/extensions/constraintsdialog.cpp:380
+#: src/extensions/constraintsdialog.cpp:345
+#: src/extensions/constraintsdialog.cpp:368
+#: src/extensions/constraintsdialog.cpp:377
+#: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
 msgstr "Adicionar restrição"
 
-#: src/extensions/constraintsdialog.cpp:339
+#: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr ""
 "Sua molécula deve conter ao menos um átomo para adicionar uma restrição"
 
-#: src/extensions/constraintsdialog.cpp:362
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+#: src/extensions/constraintsdialog.cpp:369
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Sua molécula deve conter ao menos dois átomos para adicionar uma restrição "
 "de ligação"
 
-#: src/extensions/constraintsdialog.cpp:371
+#: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
 msgstr ""
 "Sua molécula deve conter ao menos três átomos para adicionar uma restrição "
 "angular"
 
-#: src/extensions/constraintsdialog.cpp:381
+#: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
 msgstr ""
@@ -896,7 +894,7 @@ msgstr ""
 #: src/extensions/directorytreemodel.cpp:39
 #: src/extensions/directorytreemodel.cpp:49
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -938,73 +936,80 @@ msgid "Import trajectory files"
 msgstr "Importa arquivos de trajetória"
 
 #: src/extensions/forcefieldextension.cpp:69
-msgid "Optimize Geometry"
+#, fuzzy
+msgid "&Optimize Geometry"
 msgstr "Otimizar Geometria"
 
-#: src/extensions/forcefieldextension.cpp:74
+#: src/extensions/forcefieldextension.cpp:71
+#, fuzzy
+msgctxt "Shortcut key for optimize geometry"
+msgid "Ctrl+Alt+O"
+msgstr "Ctrl+O"
+
+#: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
 msgstr "Configurar Campo de Força..."
 
-#: src/extensions/forcefieldextension.cpp:84
+#: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
 msgstr "Calcular Energia"
 
-#: src/extensions/forcefieldextension.cpp:89
+#: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
 msgstr "Busca Conformacional..."
 
-#: src/extensions/forcefieldextension.cpp:99
+#: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
 msgstr "Restrições..."
 
-#: src/extensions/forcefieldextension.cpp:104
+#: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
 msgstr "Ignorar Seleção"
 
-#: src/extensions/forcefieldextension.cpp:109
+#: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
 msgstr "Fixar Átomos Selecionados"
 
-#: src/extensions/forcefieldextension.cpp:143
+#: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
 msgstr "&Mecânica Molecular"
 
-#: src/extensions/forcefieldextension.cpp:182
-#: src/extensions/forcefieldextension.cpp:202
-#: src/extensions/forcefieldextension.cpp:222
+#: src/extensions/forcefieldextension.cpp:183
+#: src/extensions/forcefieldextension.cpp:204
+#: src/extensions/forcefieldextension.cpp:224
 msgid "Cannot set up the force field for this molecule."
 msgstr "Não foi possível habilitar o campo de força para esta molécula."
 
-#: src/extensions/forcefieldextension.cpp:187
-#, qt-format
-msgid "Energy = %1 %2"
+#: src/extensions/forcefieldextension.cpp:189
+#, fuzzy, qt-format
+msgid "Energy = %L1 %2"
 msgstr "Energia = %1 %2"
 
-#: src/extensions/forcefieldextension.cpp:232
+#: src/extensions/forcefieldextension.cpp:234
 msgid "Geometric Optimization"
 msgstr "Otimização Geométrica"
 
-#: src/extensions/forcefieldextension.cpp:522
+#: src/extensions/forcefieldextension.cpp:526
 msgid "Forcefield Optimization"
 msgstr "Otimização do Campo de Força"
 
-#: src/extensions/forcefieldextension.cpp:523
-#: src/extensions/forcefieldextension.cpp:526
-#: src/extensions/forcefieldextension.cpp:529
-#: src/extensions/forcefieldextension.cpp:532
+#: src/extensions/forcefieldextension.cpp:527
+#: src/extensions/forcefieldextension.cpp:530
+#: src/extensions/forcefieldextension.cpp:533
+#: src/extensions/forcefieldextension.cpp:536
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/extensions/forcefieldextension.cpp:525
+#: src/extensions/forcefieldextension.cpp:529
 msgid "Systematic Rotor Search"
 msgstr "Busca sistemática de rotores"
 
-#: src/extensions/forcefieldextension.cpp:528
+#: src/extensions/forcefieldextension.cpp:532
 msgid "Random Rotor Search"
 msgstr "Busca aleatória de rotores"
 
-#: src/extensions/forcefieldextension.cpp:531
+#: src/extensions/forcefieldextension.cpp:535
 msgid "Weighted Rotor Search"
 msgstr "Busca ponderada de rotores"
 
@@ -1093,13 +1098,13 @@ msgid "Create input files for the GAMESS quantum chemistry package"
 msgstr ""
 "Criar arquivos de entrada de dados para o pacote de química quântica GAMESS"
 
-#: src/extensions/gamessinputdialog.ui:1496
+#: src/extensions/gamessinputdialog.ui:1497
 #: src/extensions/gaussianinputdialog.ui:40
 #: src/extensions/molproinputdialog.ui:41
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :652 rc.cpp:928 rc.cpp:1212
+#: src/extensions/gamessinputdialog.cpp:619:626 rc.cpp:904 rc.cpp:1188
 msgid "Title"
 msgstr "Título"
 
@@ -1167,7 +1172,7 @@ msgstr "Entrada MOPAC..."
 msgid "&NWChem Input..."
 msgstr "Entrada &NWChem..."
 
-#: src/extensions/gaussianextension.cpp:177
+#: src/extensions/gaussianextension.cpp:179
 #: src/extensions/insertfragmentdialog.cpp:146
 #, qt-format
 msgid "Cannot read file %1."
@@ -1183,30 +1188,78 @@ msgstr ""
 "Criar arquivos de entrada de dados para os pacotes de química quântica como "
 "Gaussiam"
 
-#: src/extensions/gaussianinputdialog.cpp:187
+#: src/extensions/gaussianinputdialog.cpp:189
 msgid "Gaussian Input Deck Generator Warning"
 msgstr ""
 
-#: src/extensions/gaussianinputdialog.cpp:188
+#: src/extensions/gaussianinputdialog.cpp:190
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
 msgstr ""
 
-#: src/extensions/gaussianinputdialog.cpp:231
+#: src/extensions/gaussianinputdialog.cpp:233
 msgid "Save Gaussian Input Deck"
 msgstr ""
 
-#: src/extensions/gaussianinputdialog.cpp:232
+#: src/extensions/gaussianinputdialog.cpp:234
 msgid "Gaussian Input Deck (*.com)"
 msgstr ""
 
+#: src/extensions/gaussianinputdialog.cpp:262
+#, fuzzy
+msgid "Gaussian Running."
+msgstr "Entrada Gaussiana..."
+
+#: src/extensions/gaussianinputdialog.cpp:263
+#, fuzzy
+msgid ""
+"Gaussian is already running. Wait until the previous calculation is finished."
+msgstr "MOPAC já está em execução. Aguarde até que termine os cálculos."
+
+#: src/extensions/gaussianinputdialog.cpp:273
+#, fuzzy
+msgid "Gaussian Not Installed."
+msgstr "MOPAC não está instalado."
+
+#: src/extensions/gaussianinputdialog.cpp:274
+#, fuzzy
+msgid "The G03 executable, cannot be found."
+msgstr "O executável MOPAC não foi encontrado."
+
+#: src/extensions/gaussianinputdialog.cpp:288
+#, fuzzy
+msgid "G03 failed to start."
+msgstr "Falha ao iniciar MOPAC."
+
+#: src/extensions/gaussianinputdialog.cpp:289
+#, fuzzy
+msgid "G03 did not start. Perhaps it is not installed correctly."
+msgstr "MOPAC não iniciou. Talvez não esteja corretamente instalado."
+
+#: src/extensions/gaussianinputdialog.cpp:294
+#, fuzzy
+msgid "Running Gaussian calculation..."
+msgstr "Executando cálculo do MOPAC..."
+
+#: src/extensions/gaussianinputdialog.cpp:329
+#, fuzzy
+msgid "G03 Crashed."
+msgstr "MOPAC trancou."
+
+#: src/extensions/gaussianinputdialog.cpp:330
+#, fuzzy
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr ""
+"MOPAC não foi executado corretamente. Talvez não esteja corretamente "
+"instalado."
+
 #: src/extensions/mopacinputdialog.ui:307
-#: src/extensions/gaussianinputdialog.cpp:255
+#: src/extensions/gaussianinputdialog.cpp:365
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1326
+#: src/extensions/qcheminputdialog.cpp:178:1302
 msgid "Show Preview"
 msgstr "Mostrar Pré-visualização"
 
@@ -1214,11 +1267,11 @@ msgstr "Mostrar Pré-visualização"
 #: src/extensions/molproinputdialog.ui:407
 #: src/extensions/nwcheminputdialog.ui:403
 #: src/extensions/qcheminputdialog.ui:417
-#: src/extensions/gaussianinputdialog.cpp:259
+#: src/extensions/gaussianinputdialog.cpp:369
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :988 rc.cpp:1268 rc.cpp:1394
+#: src/extensions/qcheminputdialog.cpp:182:964 rc.cpp:1244 rc.cpp:1370
 msgid "Hide Preview"
 msgstr "Ocultar Pré-visualização"
 
@@ -1227,7 +1280,7 @@ msgid "Change H to Methyl"
 msgstr "Trocar H por Metil"
 
 #: src/extensions/h2methylextension.cpp:62
-#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
@@ -1248,26 +1301,26 @@ msgstr "H2Metil"
 msgid "Transform hydrogens to methyl groups"
 msgstr "Transformar hidrogênios em grupos metila"
 
-#: src/extensions/hydrogensextension.cpp:42
-#: src/extensions/hydrogensextension.cpp:111
+#: src/extensions/hydrogensextension.cpp:44
+#: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
 msgstr "Adicionar Hidrogênios"
 
-#: src/extensions/hydrogensextension.cpp:46
+#: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
 msgstr "Adicionar hidrogênios para pH..."
 
-#: src/extensions/hydrogensextension.cpp:50
-#: src/extensions/hydrogensextension.cpp:117
+#: src/extensions/hydrogensextension.cpp:52
+#: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
 msgstr "Remover Hidrogênios"
 
-#: src/extensions/hydrogensextension.cpp:86
-#: src/extensions/hydrogensextension.cpp:114
+#: src/extensions/hydrogensextension.cpp:89
+#: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
 msgstr "Adicionar hidrogênios para pH"
 
-#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
 msgstr "pH"
 
@@ -1294,7 +1347,7 @@ msgstr ""
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr ""
+msgstr "&Inserir"
 
 #: src/extensions/insertfragmentextension.cpp:103
 #: src/extensions/insertfragmentextension.cpp:121
@@ -1321,8 +1374,8 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
-#: src/extensions/insertpeptideextension.cpp:230
-#: src/extensions/insertpeptideextension.h:43 :1008 rc.cpp:1150
+#: src/extensions/insertpeptideextension.cpp:233
+#: src/extensions/insertpeptideextension.h:43:984 rc.cpp:1126
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1423,7 +1476,7 @@ msgstr "Criar interpolação linear para animações"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
-msgstr ""
+msgstr "Propriedades da Molécula"
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
@@ -1441,7 +1494,7 @@ msgstr ""
 
 #: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
-msgstr ""
+msgstr "Propriedades Moleculares"
 
 #: src/extensions/molecularpropextension.h:49
 msgid "Display standard molecular properties."
@@ -1561,7 +1614,7 @@ msgstr "Tempo expirou ou outro erro."
 #: src/extensions/networkfetchextension.cpp:151
 #, qt-format
 msgid "Specified molecule could not be found: %1"
-msgstr ""
+msgstr "A molécula especificada não pode ser encontrada: %1"
 
 #: src/extensions/networkfetchextension.cpp:170
 #, qt-format
@@ -1595,8 +1648,8 @@ msgid "NWChem Input Deck (*.nw)"
 msgstr ""
 
 #: src/extensions/orbitaldialog.cpp:107
-#: src/extensions/orbitalextension.cpp:266
-#: src/extensions/orbitalextension.cpp:303
+#: src/extensions/orbitalextension.cpp:267
+#: src/extensions/orbitalextension.cpp:304
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -1604,15 +1657,12 @@ msgstr ""
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
-#: src/engines/overlaysettingswidget.ui:54
-#: src/engines/overlaysettingswidget.ui:124
-#: src/extensions/gamessinputdialog.ui:449
-#: src/extensions/gamessinputdialog.ui:998
-#: src/extensions/gamessinputdialog.ui:1068
-#: src/extensions/gamessinputdialog.ui:1114
-#: src/extensions/gamessinputdialog.ui:2100
-#: src/extensions/orbitaldialog.ui:679
-#: src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:450
+#: src/extensions/gamessinputdialog.ui:999
+#: src/extensions/gamessinputdialog.ui:1069
+#: src/extensions/gamessinputdialog.ui:1115
+#: src/extensions/gamessinputdialog.ui:2101
+#: src/extensions/orbitaldialog.ui:679 src/extensions/shaderdialog.ui:207
 #: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
 msgid "None"
 msgstr "Nenhum"
@@ -1625,41 +1675,41 @@ msgstr "ESP"
 msgid "Create Surfaces..."
 msgstr "Criar Superfícies..."
 
-#: src/extensions/orbitalextension.cpp:278
-#: src/extensions/orbitalextension.cpp:315
-#: src/extensions/orbitalextension.cpp:474
-#: src/extensions/orbitalextension.cpp:512
-#: src/extensions/orbitalextension.cpp:770
+#: src/extensions/orbitalextension.cpp:279
+#: src/extensions/orbitalextension.cpp:316
+#: src/extensions/orbitalextension.cpp:475
+#: src/extensions/orbitalextension.cpp:513
+#: src/extensions/orbitalextension.cpp:771
 msgid "Abort Calculation"
 msgstr "Abortar Cálculo"
 
-#: src/extensions/orbitalextension.cpp:283
-#: src/extensions/orbitalextension.cpp:320
+#: src/extensions/orbitalextension.cpp:284
+#: src/extensions/orbitalextension.cpp:321
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr ""
 
-#: src/extensions/orbitalextension.cpp:461
-#: src/extensions/orbitalextension.cpp:499
+#: src/extensions/orbitalextension.cpp:462
+#: src/extensions/orbitalextension.cpp:500
 msgid "Electron Density"
 msgstr "Densidade Eletrônica"
 
-#: src/extensions/orbitalextension.cpp:479
-#: src/extensions/orbitalextension.cpp:517
+#: src/extensions/orbitalextension.cpp:480
+#: src/extensions/orbitalextension.cpp:518
 msgid "Calculating Electron Density"
 msgstr "Calculando Densidade Eletrônica"
 
-#: src/extensions/orbitalextension.cpp:762
+#: src/extensions/orbitalextension.cpp:763
 msgid "VdW Cube"
 msgstr "Cubo VdW"
 
-#: src/extensions/orbitalextension.cpp:775
+#: src/extensions/orbitalextension.cpp:776
 msgid "Calculating VdW Cube"
 msgstr "Calculando Cubo VdW"
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48 :1404
+#: src/extensions/orbitalextension.h:48:1380
 msgid "Surfaces"
 msgstr "Superfícies"
 
@@ -1705,7 +1755,7 @@ msgstr ""
 #: src/extensions/povrayextension.cpp:158
 #: src/extensions/povrayextension.cpp:179
 msgid "Cannot Write to File."
-msgstr ""
+msgstr "O Arquivo não pode ser escrito."
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:180
@@ -1713,6 +1763,8 @@ msgstr ""
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr ""
+"O arquivo %1 não pode ser escrito. Você tem permissões para escrever neste "
+"local?"
 
 #: src/extensions/povrayextension.cpp:173
 msgid "POV-Ray failed to start."
@@ -1747,7 +1799,7 @@ msgstr "Propriedades das Ligações..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr ""
+msgstr "Propriedades do Ângulo..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
@@ -1761,149 +1813,147 @@ msgstr ""
 msgid "Cartesian Editor..."
 msgstr "Editor Cartesiano..."
 
-#: src/extensions/propextension.cpp:228
+#: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
 msgstr "Propriedades do Átomo"
 
-#: src/extensions/propextension.cpp:231
+#: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
 msgstr "Propriedades da Ligação"
 
-#: src/extensions/propextension.cpp:234
+#: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
 msgstr "Propriedades do Ângulo"
 
-#: src/extensions/propextension.cpp:237
+#: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
 msgstr "Propriedades de Torsão"
 
-#: src/extensions/propextension.cpp:240
+#: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
 msgstr "Propriedades Cartesianas"
 
-#: src/extensions/propextension.cpp:243
+#: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:866
-#: src/extensions/propextension.h:43 :508
+#: src/extensions/gamessinputdialog.ui:867
+#: src/extensions/propextension.h:43:482
 msgid "Properties"
 msgstr "Propriedades"
 
 #: src/extensions/propextension.h:44
+#, fuzzy
 msgid ""
-"Windows for displaying atom, bond, angle and tosion properties. It also "
+"Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
 "Janela para exibição das propriedades de átomos, ligações, ângulos e "
 "torsões. Também inclue um editor de coordenadas cartesianas."
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:329 :234
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:208
 msgid "Type"
 msgstr "Tipo"
 
-#: src/extensions/propmodel.cpp:331
+#: src/extensions/propmodel.cpp:355
 msgid "Element"
-msgstr ""
+msgstr "Elemento"
 
-#: src/extensions/propmodel.cpp:333
+#: src/extensions/propmodel.cpp:357
 msgid "Valence"
 msgstr "Valência"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/engines/overlaysettingswidget.ui:84
-#: src/extensions/propmodel.cpp:335 :86 rc.cpp:146
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "Carga Parcial"
 
-#: src/extensions/propmodel.cpp:338 src/extensions/propmodel.cpp:394
+#: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
 #, qt-format
 msgid "Atom %1"
 msgstr "Átomo %1"
 
-#: src/extensions/propmodel.cpp:343 src/extensions/propmodel.cpp:360
+#: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
 msgid "Start Atom"
 msgstr "Átomo Inicial"
 
-#: src/extensions/propmodel.cpp:345 src/extensions/propmodel.cpp:364
+#: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
 msgid "End Atom"
 msgstr "Átomo Final"
 
-#: src/extensions/propmodel.cpp:347
+#: src/extensions/propmodel.cpp:371
 msgid "Bond Order"
 msgstr "Ordem de Ligação"
 
-#: src/extensions/propmodel.cpp:349
+#: src/extensions/propmodel.cpp:373
 msgid "Rotatable"
 msgstr "Rotacionável"
 
-#: src/extensions/propmodel.cpp:351
+#: src/extensions/propmodel.cpp:375
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
-msgstr ""
+msgstr "Comprimento %1"
 
-#: src/extensions/propmodel.cpp:355
+#: src/extensions/propmodel.cpp:379
 #, qt-format
 msgid "Bond %1"
 msgstr "Ligação %1"
 
-#: src/extensions/propmodel.cpp:362
+#: src/extensions/propmodel.cpp:386
 msgid "Vertex"
 msgstr "Vértice"
 
-#: src/extensions/propmodel.cpp:366
+#: src/extensions/propmodel.cpp:390
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "Ângulo %1"
 
-#: src/extensions/propmodel.cpp:369
+#: src/extensions/propmodel.cpp:393
 #, qt-format
 msgid "Angle %1"
 msgstr "Ângulo %1"
 
-#: src/extensions/propmodel.cpp:377
+#: src/extensions/propmodel.cpp:401
 #, qt-format
 msgid "Atom Index %1"
 msgstr "Índice do Átomo %1"
 
-#: src/extensions/propmodel.cpp:379
+#: src/extensions/propmodel.cpp:403
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:382
+#: src/extensions/propmodel.cpp:406
 #, qt-format
 msgid "Torsion %1"
 msgstr "Torsão %1"
 
-#: src/extensions/propmodel.cpp:387
+#: src/extensions/propmodel.cpp:411
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
-msgstr ""
+msgstr "X %1"
 
-#: src/extensions/propmodel.cpp:389
+#: src/extensions/propmodel.cpp:413
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
-msgstr ""
+msgstr "Y %1"
 
-#: src/extensions/propmodel.cpp:391
+#: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
-msgstr ""
+msgstr "Z %1"
 
-#: src/extensions/gamessinputdialog.ui:816
-#: src/extensions/propmodel.cpp:399 :488
+#: src/extensions/gamessinputdialog.ui:817
+#: src/extensions/propmodel.cpp:423:462
 msgid "Energy"
 msgstr "Energia"
 
-#: src/extensions/propmodel.cpp:402 src/openbabelwrapper.cpp:385
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
 #, qt-format
 msgid "Conformer %1"
 msgstr ""
@@ -1919,7 +1969,7 @@ msgstr ""
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
-msgstr ""
+msgstr "Console Interativo do Python"
 
 #: src/extensions/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
@@ -1969,11 +2019,9 @@ msgstr ""
 msgid "Select by residue"
 msgstr "Selecionar por Resíduo"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/engines/overlaysettingswidget.ui:74
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :82 rc.cpp:142 rc.cpp:1164
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
+#: rc.cpp:1140 rc.cpp:1458
 msgid "Residue name"
 msgstr "Nome do Resíduo"
 
@@ -2033,8 +2081,7 @@ msgstr ""
 msgid "Shader parameters files (*.params)"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1600
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1578
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2050,13 +2097,13 @@ msgstr "Eixo X"
 msgid "Y Axis"
 msgstr "Eixo Y"
 
-#: src/extensions/spectradialog.ui:67
-#: src/extensions/spectradialog.cpp:152 :1632
+#: src/extensions/spectradialog.ui:127
+#: src/extensions/spectradialog.cpp:152:1620
 msgid "&Appearance"
 msgstr "&Aparência"
 
-#: src/extensions/spectradialog.ui:366
-#: src/extensions/spectradialog.cpp:153 :1676
+#: src/extensions/spectradialog.ui:426
+#: src/extensions/spectradialog.cpp:153:1664
 msgid "E&xport Image"
 msgstr "E&xportar Imagem"
 
@@ -2072,7 +2119,7 @@ msgstr "Configurações do Espectro de &Infravermelho"
 #: src/extensions/spectradialog.cpp:165
 msgctxt "NMR spectra option"
 msgid "NMR"
-msgstr ""
+msgstr "NMR"
 
 #: src/extensions/spectradialog.cpp:166
 msgid "&NMR Spectra Settings"
@@ -2122,7 +2169,7 @@ msgstr "Fornça novo nome ao esquema atual:"
 msgid "Export Calculated Spectrum"
 msgstr "Exportar espectro Calculado"
 
-#: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:179
+#: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:227
 msgid "Tab Separated Values (*.tsv)"
 msgstr "Valores Separados por Tabulação (*.tsv)"
 
@@ -2168,7 +2215,7 @@ msgstr "Formato de Dados"
 #: src/extensions/spectradialog.cpp:531
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "Formato"
 
 #: src/extensions/spectradialog.cpp:540
 msgid "Load Spectral Data"
@@ -2232,8 +2279,8 @@ msgstr "Imagem escrita com sucesso em %1"
 msgid "Customi&ze <<"
 msgstr "Personali&ze <<"
 
-#: src/extensions/spectradialog.ui:587
-#: src/extensions/spectradialog.cpp:711 :1702
+#: src/extensions/spectradialog.ui:84
+#: src/extensions/spectradialog.cpp:714:1616
 msgid "Customi&ze >>"
 msgstr "Personali&ze >>"
 
@@ -2323,6 +2370,8 @@ msgstr ""
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
 msgstr ""
+"O widget GL não foi inicializado corretamente, impossibilitando que se grave "
+"um vídeo."
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
@@ -2394,39 +2443,44 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :268
+#: src/extensions/unitcellparamdialog.cpp:97:242
 msgid "OK"
 msgstr "OK"
 
-#: src/extensions/vibrationdialog.ui:115
-#: src/extensions/vibrationdialog.cpp:162
-#: src/extensions/vibrationdialog.cpp:165 :1796
+#: src/extensions/vibrationdialog.cpp:101
+#, qt-format
+msgid "Sorting %1 vibrations by frequency..."
+msgstr ""
+
+#: src/extensions/vibrationdialog.ui:125
+#: src/extensions/vibrationdialog.cpp:210
+#: src/extensions/vibrationdialog.cpp:213:1818
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
-#: src/extensions/vibrationdialog.cpp:163
+#: src/extensions/vibrationdialog.cpp:211
 msgid "Stop &Animation"
 msgstr "Parar &Animação"
 
-#: src/extensions/vibrationdialog.cpp:179
+#: src/extensions/vibrationdialog.cpp:227
 msgid "Export Vibrational Data"
 msgstr "Exportar Dados Vibracionais"
 
-#: src/extensions/vibrationextension.cpp:60
+#: src/extensions/vibrationextension.cpp:61
 msgid "&Vibrations..."
 msgstr "&Vibrações..."
 
-#: src/extensions/gamessinputdialog.ui:2549
-#: src/extensions/vibrationextension.cpp:120
-#: src/extensions/vibrationextension.cpp:219 :850
+#: src/extensions/gamessinputdialog.ui:2550
+#: src/extensions/vibrationextension.cpp:121
+#: src/extensions/vibrationextension.cpp:239:824
 msgid "Vibrational Analysis"
 msgstr "Análise Vibracional"
 
-#: src/extensions/vibrationextension.cpp:120
+#: src/extensions/vibrationextension.cpp:121
 msgid "No vibrational displacements exist."
 msgstr ""
 
-#: src/extensions/vibrationextension.cpp:219
+#: src/extensions/vibrationextension.cpp:239
 msgid "No vibrations have been computed for this molecule."
 msgstr "Não foram calculadas vibrações para essa molécula"
 
@@ -2458,7 +2512,7 @@ msgstr ""
 msgid "Track motion using Wii remotes"
 msgstr ""
 
-#: src/glwidget.cpp:459
+#: src/glwidget.cpp:453
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
@@ -2468,139 +2522,139 @@ msgstr ""
 "Algo está totalmente danificado em sua instalação OpenGL (você consegue "
 "executar qualquer aplicação OpenGL?), ou você encontrou um bug."
 
-#: src/glwidget.cpp:464
+#: src/glwidget.cpp:458
 msgid "OpenGL error"
 msgstr "Erro OpenGL"
 
-#: src/glwidget.cpp:1012
+#: src/glwidget.cpp:1006
 msgid "Debug Information"
 msgstr "Informações de Debug"
 
-#: src/glwidget.cpp:1013
+#: src/glwidget.cpp:1007
 #, qt-format
 msgid "FPS: %L1"
-msgstr ""
+msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1016
+#: src/glwidget.cpp:1010
 #, qt-format
 msgid "View Size: %L1 x %L2"
-msgstr ""
+msgstr "Tamanho da Visualização: %L1 x %L2"
 
-#: src/glwidget.cpp:1018
+#: src/glwidget.cpp:1012
 msgid "No molecule set"
-msgstr ""
+msgstr "Nenhuma molécula definida"
 
-#: src/glwidget.cpp:1023
+#: src/glwidget.cpp:1017
 #, qt-format
 msgid "Atoms: %L1"
 msgstr ""
 
-#: src/glwidget.cpp:1026
+#: src/glwidget.cpp:1020
 #, qt-format
 msgid "Bonds: %L1"
 msgstr ""
 
-#: src/molecule.cpp:103
+#: src/molecule.cpp:106
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
-msgstr ""
+msgstr "sem título"
 
-#: src/moleculefile.cpp:110
+#: src/moleculefile.cpp:112
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:119 src/openbabelwrapper.cpp:336
+#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
 #, qt-format
 msgid "File type '%1' is not supported for reading."
-msgstr ""
+msgstr "O Tipo de arquivo '%1' não é suportado."
 
-#: src/moleculefile.cpp:125 src/openbabelwrapper.cpp:342
+#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
-msgstr ""
+msgstr "O tipo de arquivo '%1' não por ser lido."
 
-#: src/moleculefile.cpp:152
+#: src/moleculefile.cpp:154
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
-msgstr ""
+msgstr "Falha ao ler molécula com índice %1 do arquivo '%2'."
 
-#: src/moleculefile.cpp:164
+#: src/moleculefile.cpp:166
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:173 src/openbabelwrapper.cpp:204
+#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
 #, qt-format
 msgid "File type '%1' is not supported for writing."
-msgstr ""
+msgstr "Tipo de Arquivo '%1' não pode ser escrito."
 
-#: src/moleculefile.cpp:179 src/openbabelwrapper.cpp:211
+#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
-msgstr ""
+msgstr "O formato do arquivo '%1' não pode ser escrito."
 
-#: src/moleculefile.cpp:189
+#: src/moleculefile.cpp:191
 #, qt-format
 msgid "Could not open file '%1' for writing."
-msgstr ""
+msgstr "Não foi possível abrir o arquivo '%1' para escrita."
 
-#: src/moleculefile.cpp:196
+#: src/moleculefile.cpp:198
 #, qt-format
 msgid "Could not open file '%1' for reading."
-msgstr ""
+msgstr "Não possível abrir o arquivo '%1'."
 
-#: src/moleculefile.cpp:205
+#: src/moleculefile.cpp:207
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:84 src/openbabelwrapper.cpp:325
-#, qt-format
-msgid "File %1 can not be opened for reading."
-msgstr ""
+#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
+#, fuzzy, qt-format
+msgid "File %1 cannot be opened for reading."
+msgstr "O Arquivo %1 não pode ser aberto para leitura."
 
-#: src/openbabelwrapper.cpp:94
-#, qt-format
-msgid "File type '%1' is not a supported for reading."
-msgstr ""
-
-#: src/openbabelwrapper.cpp:101
-#, qt-format
-msgid "File type for file '%1' is not a supported for reading."
-msgstr ""
-
-#: src/openbabelwrapper.cpp:127
+#: src/moleculefile.cpp:378
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
-msgstr ""
+msgstr "Falha ao ler a molécula do arquivo '%1'."
 
-#: src/openbabelwrapper.cpp:139 src/openbabelwrapper.cpp:191
+#: src/moleculefile.cpp:393
 #, qt-format
 msgid "File %1 can not be opened for writing."
-msgstr ""
+msgstr "O Arquivo %1 não pode ser aberto para escrita"
 
-#: src/openbabelwrapper.cpp:152
-#, qt-format
-msgid "File type '%1' is not a supported for writing."
-msgstr ""
+#: src/moleculefile.cpp:439
+#, fuzzy
+msgid "Saving molecular file failed - could not rename original file."
+msgstr "Falha ao salvar o arquivo molecular."
 
-#: src/openbabelwrapper.cpp:159
-#, qt-format
-msgid "File type for file '%1' is not a supported for writing."
-msgstr ""
+#: src/moleculefile.cpp:446
+#, fuzzy
+msgid "Saving molecular file failed - could not rename new file."
+msgstr "Falha ao salvar o arquivo molecular."
 
-#: src/openbabelwrapper.cpp:177
-#, qt-format
-msgid "Writing a molecule to file '%1' failed."
-msgstr ""
+#: src/moleculefile.cpp:455
+#, fuzzy
+msgid "Saving molecular file failed - could not remove old file."
+msgstr "Falha ao salvar o arquivo molecular."
 
-#: src/openbabelwrapper.cpp:243
+#: src/moleculefile.cpp:464
+#, fuzzy, qt-format
+msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
+msgstr "Falha ao grava molécula no arquivo '%1'"
+
+#: src/moleculefile.cpp:481
+#, fuzzy, qt-format
+msgid "File %1 cannot be opened for writing."
+msgstr "O Arquivo %1 não pode ser aberto para escrita"
+
+#: src/moleculefile.cpp:533
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr ""
 
-#: src/openbabelwrapper.cpp:387
+#: src/moleculefile.cpp:680
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molécula %1"
@@ -2613,6 +2667,11 @@ msgstr "Tabela Periódica"
 msgid "No Description"
 msgstr "Sem Descrição"
 
+#: src/plugin.cpp:47
+msgctxt "Default license for all Avogadro plugins"
+msgid "GPL2+"
+msgstr ""
+
 #: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
 msgid "Unknown Python Engine"
 msgstr "Motor Python Desconhecido"
@@ -2622,11 +2681,11 @@ msgstr "Motor Python Desconhecido"
 #: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
 #: src/pythontool_p.cpp:130
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
 msgid "PythonEngine: checking "
-msgstr ""
+msgstr "PythonEngine: verificando "
 
 #: src/pythonengine_p.cpp:242
 msgid "  - script has no 'Engine' class defined"
@@ -2635,7 +2694,7 @@ msgstr ""
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:338
 #: src/pythontool_p.cpp:342
 msgid "  - no module"
-msgstr ""
+msgstr "  - sem módulo"
 
 #: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
 msgid "Unknown Python Extension"
@@ -2647,7 +2706,7 @@ msgstr "&Scripts"
 
 #: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
 msgid "PythonExtension: checking "
-msgstr ""
+msgstr "PythonExtension: verificando "
 
 #: src/pythonextension_p.cpp:333
 msgid "  - script has no 'Extension' class defined"
@@ -2659,7 +2718,7 @@ msgstr "Ferramenta Python Desconhecida"
 
 #: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
 msgid "PythonTool: checking "
-msgstr ""
+msgstr "PythonTool: verificando "
 
 #: src/pythontool_p.cpp:337
 msgid "  - script has no 'Tool' class defined"
@@ -2685,23 +2744,23 @@ msgstr ""
 "\tO segungo átomo é alinhado com o eixo selecionado.\n"
 "Botão Direito do Mouse: \tReseta o alinhamento."
 
-#: src/tools/aligntool.cpp:254
+#: src/tools/aligntool.cpp:256
 msgid "Axis:"
 msgstr "Eixo:"
 
-#: src/tools/aligntool.cpp:265
+#: src/tools/aligntool.cpp:267
 msgid "Align:"
 msgstr "Alinhar:"
 
-#: src/tools/aligntool.cpp:270
+#: src/tools/aligntool.cpp:272
 msgid "Everything"
 msgstr "Tudo"
 
-#: src/tools/aligntool.cpp:271 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
 msgstr "Molécula"
 
-#: src/tools/aligntool.cpp:275 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Alinhar"
 
@@ -2710,8 +2769,9 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "Alinha moléculas a um eixo cartesiano"
 
 #: src/tools/aligntool.h:42
-msgid "Aign Settings"
-msgstr ""
+#, fuzzy
+msgid "Align Settings"
+msgstr "Configurações de Seleção"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -2735,67 +2795,65 @@ msgstr ""
 "Função Extra enquanto executando\n"
 "Botão Esquerdo do Mouse: Clique e arraste átomos para movê-los"
 
-#: src/tools/autoopttool.cpp:221
+#: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
 msgstr "AutoOtimização: Não foi possível habilitar o campo de força..."
 
-#: src/tools/autoopttool.cpp:225
+#: src/tools/autoopttool.cpp:228
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOtimização: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:254
+#: src/tools/autoopttool.cpp:257
 msgid "Force Field:"
 msgstr "Campo de Força"
 
-#: src/tools/autoopttool.cpp:269
+#: src/tools/autoopttool.cpp:272
 msgid "Steps per Update:"
 msgstr "Passos por Atualização:"
 
-#: src/tools/autoopttool.cpp:280
+#: src/tools/autoopttool.cpp:283
 msgid "Algorithm:"
 msgstr "Algoritmo:"
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:283 :298
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:272
 msgid "Steepest Descent"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:284 :300
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:274
 msgid "Conjugate Gradients"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:285
+#: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
 msgstr "Dinâmica Molecular (300K)"
 
-#: src/tools/autoopttool.cpp:286
+#: src/tools/autoopttool.cpp:289
 msgid "Molecular Dynamics (600K)"
 msgstr "Dinâmica Molecular (600K)"
 
-#: src/tools/autoopttool.cpp:287
+#: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (900K)"
 msgstr "Dinâmica Molecular (900k)"
 
-#: src/tools/autoopttool.cpp:289 src/tools/autoopttool.cpp:382
-#: src/tools/autorotatetool.cpp:230 src/tools/autorotatetool.cpp:291
+#: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
+#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
 msgid "Start"
 msgstr "Iniciar"
 
-#: src/tools/autoopttool.cpp:291
+#: src/tools/autoopttool.cpp:294
 msgid "Fixed atoms are movable"
 msgstr "Átomos fixos são movíveis"
 
-#: src/tools/autoopttool.cpp:292
+#: src/tools/autoopttool.cpp:295
 msgid "Ignored atoms are movable"
 msgstr "Átomos ignorados são movíveis"
 
-#: src/tools/autoopttool.cpp:349 src/tools/autorotatetool.cpp:220
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
 msgid "Stop"
 msgstr "Parar"
 
-#: src/tools/autoopttool.cpp:559
+#: src/tools/autoopttool.cpp:562
 msgid "AutoOpt Molecule"
 msgstr "AutoOtimizar Molécula"
 
@@ -2815,27 +2873,27 @@ msgstr ""
 msgid "Auto Rotation Tool"
 msgstr "Ferramenta de Auto Rotação"
 
-#: src/tools/autorotatetool.cpp:245
+#: src/tools/autorotatetool.cpp:247
 msgid "x rotation:"
 msgstr "Rotação em x:"
 
-#: src/tools/autorotatetool.cpp:251
+#: src/tools/autorotatetool.cpp:253
 msgid "x rotation"
 msgstr "Rotação em x"
 
-#: src/tools/autorotatetool.cpp:261
+#: src/tools/autorotatetool.cpp:263
 msgid "y rotation:"
 msgstr "Rotação em y:"
 
-#: src/tools/autorotatetool.cpp:266
+#: src/tools/autorotatetool.cpp:268
 msgid "y rotation"
 msgstr "Rotação em y"
 
-#: src/tools/autorotatetool.cpp:276
+#: src/tools/autorotatetool.cpp:278
 msgid "z rotation:"
 msgstr "Rotação em z:"
 
-#: src/tools/autorotatetool.cpp:281
+#: src/tools/autorotatetool.cpp:283
 msgid "z rotation"
 msgstr "Rotação em z"
 
@@ -2843,8 +2901,8 @@ msgstr "Rotação em z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:292 :990 rc.cpp:1270 rc.cpp:1328
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:966
+#: rc.cpp:1246 rc.cpp:1304
 msgid "Reset"
 msgstr "Resetar"
 
@@ -2939,24 +2997,24 @@ msgstr ""
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
-msgstr ""
+msgstr "Distância (1->2): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:165
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
-msgstr ""
+msgstr "Distância (2->3): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:174
 #, qt-format
 msgid "Angle: %L1 °"
-msgstr ""
+msgstr "Ângulo: %L1 °"
 
 #: src/tools/clickmeasuretool.cpp:194
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
-msgstr ""
+msgstr "Distância (3->4): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:210
 #, qt-format
@@ -2966,22 +3024,22 @@ msgstr "Ângulo Diédrico: %1 °"
 #: src/tools/clickmeasuretool.cpp:250
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
-msgstr ""
+msgstr "*1"
 
 #: src/tools/clickmeasuretool.cpp:258
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
-msgstr ""
+msgstr "*2"
 
 #: src/tools/clickmeasuretool.cpp:267
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
-msgstr ""
+msgstr "*3"
 
 #: src/tools/clickmeasuretool.cpp:276
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
-msgstr ""
+msgstr "*4"
 
 #: src/tools/clickmeasuretool.cpp:280
 msgid "Distance(s):"
@@ -2999,8 +3057,8 @@ msgstr "Medir comprimentos de ligação, ângulos, e diedros"
 msgid "Measure Settings"
 msgstr "Configurações de Medidas"
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1816
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
+#: src/tools/drawcommand.cpp:289:1838
 msgid "Add Atom"
 msgstr "Adicionar Átomo"
 
@@ -3048,32 +3106,31 @@ msgstr "Desenhar Ligação"
 msgid "Draw"
 msgstr "Desenho"
 
-#: src/tools/drawtool.cpp:711
+#: src/tools/drawtool.cpp:736
 msgid "Element:"
 msgstr "Elemento:"
 
-#: src/extensions/gamessinputdialog.ui:1213
-#: src/tools/drawtool.cpp:738 :602
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:576
 msgid "Other..."
 msgstr "Outro..."
 
-#: src/tools/drawtool.cpp:742
+#: src/tools/drawtool.cpp:767
 msgid "Bond Order:"
 msgstr "Ordem da Ligação:"
 
-#: src/tools/drawtool.cpp:747
+#: src/tools/drawtool.cpp:772
 msgid "Single"
 msgstr "Simples"
 
-#: src/tools/drawtool.cpp:748
+#: src/tools/drawtool.cpp:773
 msgid "Double"
 msgstr "Dupla"
 
-#: src/tools/drawtool.cpp:749
+#: src/tools/drawtool.cpp:774
 msgid "Triple"
 msgstr "Tripla"
 
-#: src/tools/drawtool.cpp:764
+#: src/tools/drawtool.cpp:789
 msgid "Adjust Hydrogens"
 msgstr "Ajustar Hidrogênios"
 
@@ -3195,12 +3252,11 @@ msgstr "Ângulo de Ligação"
 msgid "Dihedral Angle"
 msgstr "Ângulo Diédrico"
 
-#: src/tools/zmatrixtool.cpp:86
+#: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
 msgstr "Editor Matriz Z..."
 
-#: src/extensions/gamessinputdialog.ui:1536
-#: src/tools/zmatrixtool.h:39 :660
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:634
 msgid "Z-Matrix"
 msgstr "Matriz-Z"
 
@@ -3247,14 +3303,13 @@ msgstr "Raio das Ligações:"
 msgid "Opacity:"
 msgstr "Opacidade:"
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Exibir Ligações Múltiplas"
 
 #: src/engines/cartoonsettingswidget.ui:17
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: src/engines/cartoonsettingswidget.ui:23
 #: src/engines/cartoonsettingswidget.ui:311
@@ -3265,29 +3320,29 @@ msgstr ""
 #: src/engines/cartoonsettingswidget.ui:138
 #: src/engines/cartoonsettingswidget.ui:231
 msgid "a"
-msgstr ""
+msgstr "a"
 
 #: src/engines/cartoonsettingswidget.ui:68
 #: src/engines/cartoonsettingswidget.ui:161
 #: src/engines/cartoonsettingswidget.ui:254
 msgid "b"
-msgstr ""
+msgstr "b"
 
 #: src/engines/cartoonsettingswidget.ui:91
 #: src/engines/cartoonsettingswidget.ui:184
 #: src/engines/cartoonsettingswidget.ui:277
 msgid "c"
-msgstr ""
+msgstr "c"
 
 #: src/engines/cartoonsettingswidget.ui:116
 #: src/engines/cartoonsettingswidget.ui:334
 msgid "Sheet"
-msgstr ""
+msgstr "Folha"
 
 #: src/engines/cartoonsettingswidget.ui:209
 #: src/engines/cartoonsettingswidget.ui:357
 #: src/extensions/animationdialog.ui:169
-#: src/extensions/gamessinputdialog.ui:1904
+#: src/extensions/gamessinputdialog.ui:1905
 #: src/extensions/linmorphdialog.ui:181
 msgid "Loop"
 msgstr "Repetir"
@@ -3336,27 +3391,22 @@ msgid "Cut-off angle:"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:23
-#: src/engines/overlaysettingswidget.ui:22
 msgid "Atom Labels:"
 msgstr "Rótulos dos Átomos:"
 
 #: src/engines/labelsettingswidget.ui:60
-#: src/engines/overlaysettingswidget.ui:59
 msgid "Atom number"
 msgstr "Número Atômico"
 
 #: src/engines/labelsettingswidget.ui:65
-#: src/engines/overlaysettingswidget.ui:64
 msgid "Element name"
 msgstr "Nome do Elemento"
 
 #: src/engines/labelsettingswidget.ui:70
-#: src/engines/overlaysettingswidget.ui:69
 msgid "Element symbol"
 msgstr "Símbolo do Elemento"
 
 #: src/engines/labelsettingswidget.ui:80
-#: src/engines/overlaysettingswidget.ui:79
 msgid "Residue number"
 msgstr "Número do Resíduo"
 
@@ -3367,29 +3417,25 @@ msgstr ""
 
 #: src/engines/labelsettingswidget.ui:95
 msgid "Symbol & Atom Number"
-msgstr ""
+msgstr "Simbolo & Número Atômico"
 
 #: src/engines/labelsettingswidget.ui:100
 msgid "Custom Data"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:108
-#: src/engines/overlaysettingswidget.ui:92
 msgid "Bond Labels:"
 msgstr "Rótulos das Ligações:"
 
 #: src/engines/labelsettingswidget.ui:145
-#: src/engines/overlaysettingswidget.ui:129
 msgid "Bond length"
 msgstr "Comprimento da ligação"
 
 #: src/engines/labelsettingswidget.ui:150
-#: src/engines/overlaysettingswidget.ui:134
 msgid "Bond number"
 msgstr "Número da Ligação"
 
 #: src/engines/labelsettingswidget.ui:155
-#: src/engines/overlaysettingswidget.ui:139
 msgid "Bond order"
 msgstr "Ordem da Ligação"
 
@@ -3488,8 +3534,7 @@ msgstr "Trajetória animada"
 msgid "Load File..."
 msgstr "Carregar Arquivo..."
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3497,8 +3542,7 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr "Ligações Dinâmicas"
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3529,10 +3573,8 @@ msgid "Number of conformers"
 msgstr ""
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2559
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Método"
@@ -3621,18 +3663,15 @@ msgstr "Apagar Tudo"
 msgid "File Import..."
 msgstr "Importar Arquivo..."
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
-msgstr ""
+msgstr "Nome do Arquivo:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
-msgstr ""
+msgstr "Navegando..."
 
 #: src/extensions/fileimportdialog.ui:46
 msgid "Par File:"
@@ -3650,8 +3689,7 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr "Configurar Campo de Força"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Campo de Força"
 
@@ -3692,36 +3730,36 @@ msgstr ""
 msgid "Group Label:"
 msgstr "Rótulo do Grupo"
 
-#: src/extensions/gamessinputdialog.ui:13
+#: src/extensions/gamessinputdialog.ui:14
 msgid "GAMESS Input"
 msgstr "Entrada GAMESS"
 
-#: src/extensions/gamessinputdialog.ui:23
+#: src/extensions/gamessinputdialog.ui:24
 msgid "&Basic Setup"
 msgstr "Configuração &Básica"
 
-#: src/extensions/gamessinputdialog.ui:32
-#: src/extensions/gamessinputdialog.ui:660
+#: src/extensions/gamessinputdialog.ui:33
+#: src/extensions/gamessinputdialog.ui:661
 #: src/extensions/gaussianinputdialog.ui:149
 #: src/extensions/mopacinputdialog.ui:202
 msgid "AM1"
 msgstr "AM1"
 
-#: src/extensions/gamessinputdialog.ui:37
-#: src/extensions/gamessinputdialog.ui:665
+#: src/extensions/gamessinputdialog.ui:38
+#: src/extensions/gamessinputdialog.ui:666
 #: src/extensions/gaussianinputdialog.ui:154
 #: src/extensions/mopacinputdialog.ui:217
 msgid "PM3"
 msgstr "PM3"
 
-#: src/extensions/gamessinputdialog.ui:42
-#: src/extensions/gamessinputdialog.ui:947
+#: src/extensions/gamessinputdialog.ui:43
+#: src/extensions/gamessinputdialog.ui:948
 #: src/extensions/gaussianinputdialog.ui:159
 msgid "RHF"
 msgstr "RHF"
 
-#: src/extensions/gamessinputdialog.ui:47
-#: src/extensions/gamessinputdialog.ui:2278
+#: src/extensions/gamessinputdialog.ui:48
+#: src/extensions/gamessinputdialog.ui:2279
 #: src/extensions/gaussianinputdialog.ui:164
 #: src/extensions/molproinputdialog.ui:143
 #: src/extensions/nwcheminputdialog.ui:143
@@ -3729,8 +3767,8 @@ msgstr "RHF"
 msgid "B3LYP"
 msgstr "B3LYP"
 
-#: src/extensions/gamessinputdialog.ui:52
-#: src/extensions/gamessinputdialog.ui:384
+#: src/extensions/gamessinputdialog.ui:53
+#: src/extensions/gamessinputdialog.ui:385
 #: src/extensions/gaussianinputdialog.ui:169
 #: src/extensions/molproinputdialog.ui:138
 #: src/extensions/nwcheminputdialog.ui:138
@@ -3738,14 +3776,14 @@ msgstr "B3LYP"
 msgid "MP2"
 msgstr "MP2"
 
-#: src/extensions/gamessinputdialog.ui:57
-#: src/extensions/gamessinputdialog.ui:1134
+#: src/extensions/gamessinputdialog.ui:58
+#: src/extensions/gamessinputdialog.ui:1135
 #: src/extensions/molproinputdialog.ui:153
 msgid "CCSD(T)"
 msgstr "CCSD(T)"
 
-#: src/extensions/gamessinputdialog.ui:66
-#: src/extensions/gamessinputdialog.ui:575
+#: src/extensions/gamessinputdialog.ui:67
+#: src/extensions/gamessinputdialog.ui:576
 #: src/extensions/gaussianinputdialog.ui:213
 #: src/extensions/molproinputdialog.ui:192
 #: src/extensions/nwcheminputdialog.ui:187
@@ -3753,13 +3791,13 @@ msgstr "CCSD(T)"
 msgid "STO-3G"
 msgstr "STO-3G"
 
-#: src/extensions/gamessinputdialog.ui:71
-#: src/extensions/gamessinputdialog.ui:560
+#: src/extensions/gamessinputdialog.ui:72
+#: src/extensions/gamessinputdialog.ui:561
 msgid "MINI"
 msgstr "MINI"
 
-#: src/extensions/gamessinputdialog.ui:76
-#: src/extensions/gamessinputdialog.ui:595
+#: src/extensions/gamessinputdialog.ui:77
+#: src/extensions/gamessinputdialog.ui:596
 #: src/extensions/gaussianinputdialog.ui:218
 #: src/extensions/molproinputdialog.ui:197
 #: src/extensions/nwcheminputdialog.ui:192
@@ -3767,7 +3805,7 @@ msgstr "MINI"
 msgid "3-21G"
 msgstr "3-21G"
 
-#: src/extensions/gamessinputdialog.ui:81
+#: src/extensions/gamessinputdialog.ui:82
 #: src/extensions/gaussianinputdialog.ui:223
 #: src/extensions/molproinputdialog.ui:202
 #: src/extensions/nwcheminputdialog.ui:197
@@ -3775,7 +3813,7 @@ msgstr "3-21G"
 msgid "6-31G(d)"
 msgstr "6-31G(d)"
 
-#: src/extensions/gamessinputdialog.ui:86
+#: src/extensions/gamessinputdialog.ui:87
 #: src/extensions/gaussianinputdialog.ui:228
 #: src/extensions/molproinputdialog.ui:207
 #: src/extensions/nwcheminputdialog.ui:202
@@ -3783,74 +3821,79 @@ msgstr "6-31G(d)"
 msgid "6-31G(d,p)"
 msgstr "6-31G(d,p)"
 
-#: src/extensions/gamessinputdialog.ui:91
+#: src/extensions/gamessinputdialog.ui:92
 msgid "6-31+G(d,p)"
 msgstr "6-31+G(d,p)"
 
-#: src/extensions/gamessinputdialog.ui:96
+#: src/extensions/gamessinputdialog.ui:97
 msgid "6-31+G(2d,p)"
 msgstr "6-31+G(2d,p)"
 
-#: src/extensions/gamessinputdialog.ui:101
+#: src/extensions/gamessinputdialog.ui:102
 msgid "6-311++G(2d,p)"
 msgstr "6-311++G(2d,p)"
 
-#: src/extensions/gamessinputdialog.ui:106
+#: src/extensions/gamessinputdialog.ui:107
 msgid "Core Potential"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:132
+#: src/extensions/gamessinputdialog.ui:133
 #: src/extensions/mopacinputdialog.ui:143
 msgid "Singlet"
 msgstr "Singlete"
 
-#: src/extensions/gamessinputdialog.ui:137
+#: src/extensions/gamessinputdialog.ui:138
 #: src/extensions/mopacinputdialog.ui:148
 msgid "Doublet"
 msgstr "Dublete"
 
-#: src/extensions/gamessinputdialog.ui:142
+#: src/extensions/gamessinputdialog.ui:143
 #: src/extensions/mopacinputdialog.ui:153
 msgid "Triplet"
 msgstr "Triplete"
 
-#: src/extensions/gamessinputdialog.ui:151
+#: src/extensions/gamessinputdialog.ui:152
 msgid "Dication"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:156
+#: src/extensions/gamessinputdialog.ui:157
 msgid "Cation"
 msgstr "Cátion"
 
-#: src/extensions/gamessinputdialog.ui:161
+#: src/extensions/gamessinputdialog.ui:162
 msgid "Neutral"
-msgstr ""
+msgstr "Neutro"
 
-#: src/extensions/gamessinputdialog.ui:166
+#: src/extensions/gamessinputdialog.ui:167
 msgid "Anion"
 msgstr "Ânion"
 
-#: src/extensions/gamessinputdialog.ui:171
+#: src/extensions/gamessinputdialog.ui:172
 msgid "Dianion"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:194
+#: src/extensions/gamessinputdialog.ui:195
 msgid "On:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:210
-msgid "Single Point Entry"
+#: src/extensions/gamessinputdialog.ui:211
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:215
+#: src/extensions/gamessinputdialog.ui:216
 msgid "Equilibrium Geometry"
 msgstr "Geometria de Equilíbio"
 
-#: src/extensions/gamessinputdialog.ui:220
+#: src/extensions/gamessinputdialog.ui:221
 msgid "Transition State"
 msgstr "Estado de Transição"
 
-#: src/extensions/gamessinputdialog.ui:225
+#: src/extensions/gamessinputdialog.ui:226
 #: src/extensions/gaussianinputdialog.ui:73
 #: src/extensions/molproinputdialog.ui:74
 #: src/extensions/mopacinputdialog.ui:73
@@ -3859,401 +3902,401 @@ msgstr "Estado de Transição"
 msgid "Frequencies"
 msgstr "Freqüências"
 
-#: src/extensions/gamessinputdialog.ui:251
+#: src/extensions/gamessinputdialog.ui:252
 msgid "Gas"
 msgstr "Gás"
 
-#: src/extensions/gamessinputdialog.ui:256
+#: src/extensions/gamessinputdialog.ui:257
 msgid "Water"
 msgstr "Água"
 
-#: src/extensions/gamessinputdialog.ui:279
-#: src/extensions/gamessinputdialog.ui:2674
+#: src/extensions/gamessinputdialog.ui:280
+#: src/extensions/gamessinputdialog.ui:2675
+#: src/extensions/surfacedialog.ui:295
 msgid "Calculate"
 msgstr "Calcular"
 
-#: src/extensions/gamessinputdialog.ui:289
+#: src/extensions/gamessinputdialog.ui:290
 msgid "With:"
 msgstr "Com:"
 
-#: src/extensions/gamessinputdialog.ui:299
-#: src/extensions/orbitaldialog.ui:556
+#: src/extensions/gamessinputdialog.ui:300 src/extensions/orbitaldialog.ui:556
 #: src/extensions/orbitaldialog.ui:773
 msgid "In:"
 msgstr "Em:"
 
-#: src/extensions/gamessinputdialog.ui:326
+#: src/extensions/gamessinputdialog.ui:327
 msgid "&Advanced Setup"
 msgstr "Configurações &Avançadas"
 
-#: src/extensions/gamessinputdialog.ui:360
+#: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/extensions/gamessinputdialog.ui:365
+#: src/extensions/gamessinputdialog.ui:366
 msgid "Basis"
 msgstr "Base"
 
-#: src/extensions/gamessinputdialog.ui:370
+#: src/extensions/gamessinputdialog.ui:371
 msgid "Control"
 msgstr "Controle"
 
-#: src/extensions/gamessinputdialog.ui:374
+#: src/extensions/gamessinputdialog.ui:375
 msgid "SCF"
-msgstr ""
+msgstr "SCF"
 
-#: src/extensions/gamessinputdialog.ui:379
+#: src/extensions/gamessinputdialog.ui:380
 msgid "DFT"
-msgstr ""
+msgstr "DFT"
 
-#: src/extensions/gamessinputdialog.ui:389
-#: src/extensions/gamessinputdialog.ui:826
+#: src/extensions/gamessinputdialog.ui:390
+#: src/extensions/gamessinputdialog.ui:827
 msgid "Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:394
+#: src/extensions/gamessinputdialog.ui:395
 msgid "Stat Point"
 msgstr "Ponto Inicial"
 
-#: src/extensions/gamessinputdialog.ui:400
+#: src/extensions/gamessinputdialog.ui:401
 msgid "Data"
 msgstr "Dados"
 
-#: src/extensions/gamessinputdialog.ui:405
+#: src/extensions/gamessinputdialog.ui:406
 msgid "System"
 msgstr "Sistema"
 
-#: src/extensions/gamessinputdialog.ui:410
+#: src/extensions/gamessinputdialog.ui:411
 msgid "MO Guess"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:415
+#: src/extensions/gamessinputdialog.ui:416
 msgid "Misc"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:436
+#: src/extensions/gamessinputdialog.ui:437
 msgid "#D Heavy Atom Polarization Functions:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:454
+#: src/extensions/gamessinputdialog.ui:455
 msgid "Read"
-msgstr ""
+msgstr "Ler"
 
-#: src/extensions/gamessinputdialog.ui:459
+#: src/extensions/gamessinputdialog.ui:460
 msgid "SBKJC"
-msgstr ""
+msgstr "SBKJC"
 
-#: src/extensions/gamessinputdialog.ui:464
+#: src/extensions/gamessinputdialog.ui:465
 msgid "Hay-Wadt"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:489
+#: src/extensions/gamessinputdialog.ui:490
 msgid "Diffuse S-Shell on Heavy Atoms"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:496
+#: src/extensions/gamessinputdialog.ui:497
 msgid "Diffuse L-Shell on Heavy Atoms"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:546
+#: src/extensions/gamessinputdialog.ui:547
 msgid "Basis Set:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:565
+#: src/extensions/gamessinputdialog.ui:566
 msgid "MIDI"
-msgstr ""
+msgstr "MIDI"
 
-#: src/extensions/gamessinputdialog.ui:570
+#: src/extensions/gamessinputdialog.ui:571
 msgid "STO-2G"
-msgstr ""
+msgstr "STO-2G"
 
-#: src/extensions/gamessinputdialog.ui:580
+#: src/extensions/gamessinputdialog.ui:581
 msgid "STO-4G"
-msgstr ""
+msgstr "STO-4G"
 
-#: src/extensions/gamessinputdialog.ui:585
+#: src/extensions/gamessinputdialog.ui:586
 msgid "STO-5G"
-msgstr ""
+msgstr "STO-5G"
 
-#: src/extensions/gamessinputdialog.ui:590
+#: src/extensions/gamessinputdialog.ui:591
 msgid "STO-6G"
-msgstr ""
+msgstr "STO-6G"
 
-#: src/extensions/gamessinputdialog.ui:600
+#: src/extensions/gamessinputdialog.ui:601
 msgid "6-21G"
-msgstr ""
+msgstr "6-21G"
 
-#: src/extensions/gamessinputdialog.ui:605
+#: src/extensions/gamessinputdialog.ui:606
 msgid "4-31G"
-msgstr ""
+msgstr "4-31G"
 
-#: src/extensions/gamessinputdialog.ui:610
+#: src/extensions/gamessinputdialog.ui:611
 msgid "5-31G"
-msgstr ""
+msgstr "5-31G"
 
-#: src/extensions/gamessinputdialog.ui:615
+#: src/extensions/gamessinputdialog.ui:616
 msgid "6-31G"
-msgstr ""
+msgstr "6-31G"
 
-#: src/extensions/gamessinputdialog.ui:620
+#: src/extensions/gamessinputdialog.ui:621
 msgid "6-311G"
-msgstr ""
+msgstr "6-311G"
 
-#: src/extensions/gamessinputdialog.ui:625
+#: src/extensions/gamessinputdialog.ui:626
 msgid "Double Zeta Valence"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:630
+#: src/extensions/gamessinputdialog.ui:631
 msgid "Dunning/Hay DZ"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:635
+#: src/extensions/gamessinputdialog.ui:636
 msgid "Triple Zeta Valence"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:640
+#: src/extensions/gamessinputdialog.ui:641
 msgid "McLean/Chandler"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:645
+#: src/extensions/gamessinputdialog.ui:646
 msgid "SBKJA Valence"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:650
+#: src/extensions/gamessinputdialog.ui:651
 msgid "Hay/Wadt Valence"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:655
+#: src/extensions/gamessinputdialog.ui:656
 #: src/extensions/mopacinputdialog.ui:207
 msgid "MNDO"
-msgstr ""
+msgstr "MNDO"
 
-#: src/extensions/gamessinputdialog.ui:702
+#: src/extensions/gamessinputdialog.ui:703
 msgid "ECP Type:"
-msgstr ""
+msgstr "Tipo ECP:"
 
-#: src/extensions/gamessinputdialog.ui:716
-#: src/extensions/gamessinputdialog.ui:1847
+#: src/extensions/gamessinputdialog.ui:717
+#: src/extensions/gamessinputdialog.ui:1848
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
-#: src/extensions/gamessinputdialog.ui:721
+#: src/extensions/gamessinputdialog.ui:722
 msgid "Pople"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:726
+#: src/extensions/gamessinputdialog.ui:727
 msgid "Pople N311"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:731
+#: src/extensions/gamessinputdialog.ui:732
 msgid "Dunning"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:736
+#: src/extensions/gamessinputdialog.ui:737
 msgid "Huzinaga"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:741
+#: src/extensions/gamessinputdialog.ui:742
 msgid "Hondo7"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:749
+#: src/extensions/gamessinputdialog.ui:750
 msgid "#F Heavy Atom Polarization Functions:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:759
+#: src/extensions/gamessinputdialog.ui:760
 msgid "#light Atom Polarization Functions:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:776
+#: src/extensions/gamessinputdialog.ui:777
 msgid "Polar:"
 msgstr "Polar:"
 
-#: src/extensions/gamessinputdialog.ui:806
+#: src/extensions/gamessinputdialog.ui:807
 msgid "Max SCF Iterations:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:821
+#: src/extensions/gamessinputdialog.ui:822
 msgid "Gradient"
 msgstr "Gradiente"
 
-#: src/extensions/gamessinputdialog.ui:831
+#: src/extensions/gamessinputdialog.ui:832
 msgid "Optimization"
 msgstr "Otimização"
 
-#: src/extensions/gamessinputdialog.ui:836
+#: src/extensions/gamessinputdialog.ui:837
 msgid "Trudge"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:841
+#: src/extensions/gamessinputdialog.ui:842
 msgid "Saddle Point"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:846
+#: src/extensions/gamessinputdialog.ui:847
 msgid "IRC"
 msgstr "IRC"
 
-#: src/extensions/gamessinputdialog.ui:851
+#: src/extensions/gamessinputdialog.ui:852
 msgid "Gradient Extremal"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:856
+#: src/extensions/gamessinputdialog.ui:857
 msgid "DRC"
-msgstr ""
+msgstr "DRC"
 
-#: src/extensions/gamessinputdialog.ui:861
+#: src/extensions/gamessinputdialog.ui:862
 msgid "Energy Surface"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:871
+#: src/extensions/gamessinputdialog.ui:872
 msgid "Morokuma"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:876
+#: src/extensions/gamessinputdialog.ui:877
 msgid "Radiative Transition mom."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:881
+#: src/extensions/gamessinputdialog.ui:882
 msgid "Spin Orbit"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:886
+#: src/extensions/gamessinputdialog.ui:887
 msgid "Finite Electric Field"
 msgstr "Campo Elétrico Finito"
 
-#: src/extensions/gamessinputdialog.ui:891
+#: src/extensions/gamessinputdialog.ui:892
 msgid "TDHF"
-msgstr ""
+msgstr "TDHF"
 
-#: src/extensions/gamessinputdialog.ui:896
+#: src/extensions/gamessinputdialog.ui:897
 msgid "Global Optimization"
 msgstr "Otimização Global"
 
-#: src/extensions/gamessinputdialog.ui:901
+#: src/extensions/gamessinputdialog.ui:902
 msgid "VSCF"
-msgstr ""
+msgstr "VSCF"
 
-#: src/extensions/gamessinputdialog.ui:906
+#: src/extensions/gamessinputdialog.ui:907
 msgid "FMO Optimization"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:911
+#: src/extensions/gamessinputdialog.ui:912
 msgid "Raman Intensities"
 msgstr "Intensidades Raman"
 
-#: src/extensions/gamessinputdialog.ui:916
+#: src/extensions/gamessinputdialog.ui:917
 msgid "NMR"
 msgstr "RMN"
 
-#: src/extensions/gamessinputdialog.ui:921
+#: src/extensions/gamessinputdialog.ui:922
 msgid "Make EFP"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:952
+#: src/extensions/gamessinputdialog.ui:953
 msgid "UHF"
 msgstr "UHF"
 
-#: src/extensions/gamessinputdialog.ui:957
+#: src/extensions/gamessinputdialog.ui:958
 msgid "ROHF"
 msgstr "ROHF"
 
-#: src/extensions/gamessinputdialog.ui:962
+#: src/extensions/gamessinputdialog.ui:963
 msgid "GVB"
 msgstr "GVB"
 
-#: src/extensions/gamessinputdialog.ui:967
+#: src/extensions/gamessinputdialog.ui:968
 msgid "MCSCF"
 msgstr "MCSCF"
 
-#: src/extensions/gamessinputdialog.ui:972
+#: src/extensions/gamessinputdialog.ui:973
 msgid "None (CI)"
-msgstr ""
+msgstr "Nenhum"
 
-#: src/extensions/gamessinputdialog.ui:1003
+#: src/extensions/gamessinputdialog.ui:1004
 msgid "Foster-Boys"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1008
+#: src/extensions/gamessinputdialog.ui:1009
 msgid "Edmistron-Ruedenberg"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1013
+#: src/extensions/gamessinputdialog.ui:1014
 msgid "Pipek-Mezey"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1036
+#: src/extensions/gamessinputdialog.ui:1037
 msgid "SCF Type:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1043
+#: src/extensions/gamessinputdialog.ui:1044
 msgid "Localization Method:"
 msgstr "Método de Localização:"
 
-#: src/extensions/gamessinputdialog.ui:1053
+#: src/extensions/gamessinputdialog.ui:1054
 msgid "Exec Type:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1060
+#: src/extensions/gamessinputdialog.ui:1061
 msgid "CI:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1073
+#: src/extensions/gamessinputdialog.ui:1074
 msgid "GUGA"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1078
+#: src/extensions/gamessinputdialog.ui:1079
 msgid "Ames Lab. Determinant"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1083
+#: src/extensions/gamessinputdialog.ui:1084
 msgid "Occupation Restricted Multiple Active Space"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1088
+#: src/extensions/gamessinputdialog.ui:1089
 msgid "CI Singles"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1093
+#: src/extensions/gamessinputdialog.ui:1094
 msgid "Full Second Order CI"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1098
+#: src/extensions/gamessinputdialog.ui:1099
 msgid "General CI"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1106
+#: src/extensions/gamessinputdialog.ui:1107
 msgid "CC:"
-msgstr ""
+msgstr "CC"
 
-#: src/extensions/gamessinputdialog.ui:1119
+#: src/extensions/gamessinputdialog.ui:1120
 msgid "LCCD: Linearized CC"
-msgstr ""
+msgstr "LCCD: Linearizado CC"
 
-#: src/extensions/gamessinputdialog.ui:1124
+#: src/extensions/gamessinputdialog.ui:1125
 msgid "CCD: CC with Doubles"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1129
+#: src/extensions/gamessinputdialog.ui:1130
 msgid "CCSD: CC with Singles and Doubles"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1139
+#: src/extensions/gamessinputdialog.ui:1140
 msgid "R-CC"
-msgstr ""
+msgstr "R-CC"
 
-#: src/extensions/gamessinputdialog.ui:1144
+#: src/extensions/gamessinputdialog.ui:1145
 msgid "CR-CC"
-msgstr ""
+msgstr "CR-CC"
 
-#: src/extensions/gamessinputdialog.ui:1149
+#: src/extensions/gamessinputdialog.ui:1150
 msgid "EOM-CCSD"
-msgstr ""
+msgstr "EOM-CCSD"
 
-#: src/extensions/gamessinputdialog.ui:1154
+#: src/extensions/gamessinputdialog.ui:1155
 msgid "CR-EOM"
-msgstr ""
+msgstr "CR-EOM"
 
-#: src/extensions/gamessinputdialog.ui:1183
+#: src/extensions/gamessinputdialog.ui:1184
 #: src/extensions/gaussianinputdialog.ui:293
 #: src/extensions/molproinputdialog.ui:297
 #: src/extensions/mopacinputdialog.ui:133
@@ -4262,624 +4305,630 @@ msgstr ""
 msgid "Multiplicity:"
 msgstr "Multiplicidade:"
 
-#: src/extensions/gamessinputdialog.ui:1198
+#: src/extensions/gamessinputdialog.ui:1199
 msgid "Normal Run"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1203
+#: src/extensions/gamessinputdialog.ui:1204
 msgid "Check"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1208
+#: src/extensions/gamessinputdialog.ui:1209
 msgid "Debug"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1237
+#: src/extensions/gamessinputdialog.ui:1238
 msgid "Molecule Charge:"
 msgstr "Carga da Molécula:"
 
-#: src/extensions/gamessinputdialog.ui:1249
+#: src/extensions/gamessinputdialog.ui:1250
 msgid "Run Type:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1271
+#: src/extensions/gamessinputdialog.ui:1272
 msgid "Use MP2"
 msgstr "Usar MP2"
 
-#: src/extensions/gamessinputdialog.ui:1297
+#: src/extensions/gamessinputdialog.ui:1298
 msgid "Use DFT"
 msgstr "Usar DFT"
 
-#: src/extensions/gamessinputdialog.ui:1346
+#: src/extensions/gamessinputdialog.ui:1347
 msgid "# of Z-Matrix Variables"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1356
+#: src/extensions/gamessinputdialog.ui:1357
 msgid "Ǻngstrom"
 msgstr "Ǻngstrom"
 
-#: src/extensions/gamessinputdialog.ui:1361
+#: src/extensions/gamessinputdialog.ui:1362
 msgid "Bohr"
 msgstr "Bohr"
 
-#: src/extensions/gamessinputdialog.ui:1384
+#: src/extensions/gamessinputdialog.ui:1385
 msgid "Order of Principal Axis:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1391
+#: src/extensions/gamessinputdialog.ui:1392
 msgid "Coordinate Type:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1401
+#: src/extensions/gamessinputdialog.ui:1402
 msgid "C1"
-msgstr ""
+msgstr "C1"
 
-#: src/extensions/gamessinputdialog.ui:1406
+#: src/extensions/gamessinputdialog.ui:1407
 msgid "CS"
-msgstr ""
+msgstr "CS"
 
-#: src/extensions/gamessinputdialog.ui:1411
+#: src/extensions/gamessinputdialog.ui:1412
 msgid "CI"
-msgstr ""
+msgstr "CI"
 
-#: src/extensions/gamessinputdialog.ui:1416
+#: src/extensions/gamessinputdialog.ui:1417
 msgid "CnH"
-msgstr ""
+msgstr "CnH"
 
-#: src/extensions/gamessinputdialog.ui:1421
+#: src/extensions/gamessinputdialog.ui:1422
 msgid "CnV"
-msgstr ""
+msgstr "CnV"
 
-#: src/extensions/gamessinputdialog.ui:1426
+#: src/extensions/gamessinputdialog.ui:1427
 msgid "Cn"
-msgstr ""
+msgstr "Cn"
 
-#: src/extensions/gamessinputdialog.ui:1431
+#: src/extensions/gamessinputdialog.ui:1432
 msgid "S2n"
-msgstr ""
+msgstr "S2n"
 
-#: src/extensions/gamessinputdialog.ui:1436
+#: src/extensions/gamessinputdialog.ui:1437
 msgid "DnD"
-msgstr ""
+msgstr "DnD"
 
-#: src/extensions/gamessinputdialog.ui:1441
+#: src/extensions/gamessinputdialog.ui:1442
 msgid "DnH"
-msgstr ""
+msgstr "DnH"
 
-#: src/extensions/gamessinputdialog.ui:1446
+#: src/extensions/gamessinputdialog.ui:1447
 msgid "Dn"
-msgstr ""
+msgstr "Dn"
 
-#: src/extensions/gamessinputdialog.ui:1451
+#: src/extensions/gamessinputdialog.ui:1452
 msgid "TD"
-msgstr ""
+msgstr "TD"
 
-#: src/extensions/gamessinputdialog.ui:1456
+#: src/extensions/gamessinputdialog.ui:1457
 msgid "TH"
-msgstr ""
+msgstr "TH"
 
-#: src/extensions/gamessinputdialog.ui:1461
+#: src/extensions/gamessinputdialog.ui:1462
 msgid "T"
-msgstr ""
+msgstr "T"
 
-#: src/extensions/gamessinputdialog.ui:1466
+#: src/extensions/gamessinputdialog.ui:1467
 msgid "OH"
-msgstr ""
+msgstr "OH"
 
-#: src/extensions/gamessinputdialog.ui:1471
+#: src/extensions/gamessinputdialog.ui:1472
 msgid "O"
-msgstr ""
+msgstr "O"
 
-#: src/extensions/gamessinputdialog.ui:1521
+#: src/extensions/gamessinputdialog.ui:1522
 msgid "Unique cartesian Coords."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1526
+#: src/extensions/gamessinputdialog.ui:1527
 msgid "Hilderbrant internals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1531
+#: src/extensions/gamessinputdialog.ui:1532
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas"
 
-#: src/extensions/gamessinputdialog.ui:1541
+#: src/extensions/gamessinputdialog.ui:1542
 msgid "MOPAC Z-Matrix"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1564
+#: src/extensions/gamessinputdialog.ui:1565
 msgid "Use Symmetry During Calculation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1574
+#: src/extensions/gamessinputdialog.ui:1575
 msgid "Units:"
 msgstr "Unidades:"
 
-#: src/extensions/gamessinputdialog.ui:1581
+#: src/extensions/gamessinputdialog.ui:1582
 #: src/extensions/gaussianinputdialog.ui:30
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:300
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Título:"
 
-#: src/extensions/gamessinputdialog.ui:1638
+#: src/extensions/gamessinputdialog.ui:1639
 msgid "Point Group:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1665
+#: src/extensions/gamessinputdialog.ui:1666
 msgid "Seconds"
 msgstr "Segundos"
 
-#: src/extensions/gamessinputdialog.ui:1670
+#: src/extensions/gamessinputdialog.ui:1671
 msgid "Minutes"
 msgstr "Minutos"
 
-#: src/extensions/gamessinputdialog.ui:1675
+#: src/extensions/gamessinputdialog.ui:1676
 msgid "Hours"
 msgstr "Horas"
 
-#: src/extensions/gamessinputdialog.ui:1680
+#: src/extensions/gamessinputdialog.ui:1681
 msgid "Days"
 msgstr "Dias"
 
-#: src/extensions/gamessinputdialog.ui:1685
+#: src/extensions/gamessinputdialog.ui:1686
 msgid "Weeks"
 msgstr "Semanas"
 
-#: src/extensions/gamessinputdialog.ui:1690
+#: src/extensions/gamessinputdialog.ui:1691
 msgid "Years"
 msgstr "Anos"
 
-#: src/extensions/gamessinputdialog.ui:1695
+#: src/extensions/gamessinputdialog.ui:1696
 msgid "Millenia"
 msgstr "Milênio"
 
-#: src/extensions/gamessinputdialog.ui:1724
-#: src/extensions/gamessinputdialog.ui:1768
+#: src/extensions/gamessinputdialog.ui:1725
+#: src/extensions/gamessinputdialog.ui:1769
 msgid "Words"
 msgstr "Palavras"
 
-#: src/extensions/gamessinputdialog.ui:1729
-#: src/extensions/gamessinputdialog.ui:1773
+#: src/extensions/gamessinputdialog.ui:1730
+#: src/extensions/gamessinputdialog.ui:1774
 msgid "Bytes"
 msgstr "Bytes"
 
-#: src/extensions/gamessinputdialog.ui:1734
-#: src/extensions/gamessinputdialog.ui:1778
+#: src/extensions/gamessinputdialog.ui:1735
+#: src/extensions/gamessinputdialog.ui:1779
 msgid "MegaWords"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1739
-#: src/extensions/gamessinputdialog.ui:1783
+#: src/extensions/gamessinputdialog.ui:1740
+#: src/extensions/gamessinputdialog.ui:1784
 msgid "MegaBytes"
-msgstr ""
+msgstr "MegaBytes"
 
-#: src/extensions/gamessinputdialog.ui:1811
+#: src/extensions/gamessinputdialog.ui:1812
 msgid "Force Parallel Methods"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1834
+#: src/extensions/gamessinputdialog.ui:1835
 msgid "Produce \"core\" file upon abort"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1852
+#: src/extensions/gamessinputdialog.ui:1853
 msgid "EVVRSP"
-msgstr ""
+msgstr "EVVRSP"
 
-#: src/extensions/gamessinputdialog.ui:1857
+#: src/extensions/gamessinputdialog.ui:1858
 msgid "GIVEIS"
-msgstr ""
+msgstr "GIVEIS"
 
-#: src/extensions/gamessinputdialog.ui:1862
+#: src/extensions/gamessinputdialog.ui:1863
 msgid "JACOBI"
-msgstr ""
+msgstr "JACOBI"
 
-#: src/extensions/gamessinputdialog.ui:1870
+#: src/extensions/gamessinputdialog.ui:1871
 msgid "Time Limit:"
 msgstr "Limite de Tempo:"
 
-#: src/extensions/gamessinputdialog.ui:1877
+#: src/extensions/gamessinputdialog.ui:1878
 msgid "MemDDI:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1884
-#: src/extensions/gamessinputdialog.ui:2459
+#: src/extensions/gamessinputdialog.ui:1885
+#: src/extensions/gamessinputdialog.ui:2460
 msgid "Memory:"
 msgstr "Memória:"
 
-#: src/extensions/gamessinputdialog.ui:1891
+#: src/extensions/gamessinputdialog.ui:1892
 msgid "Diagonalization Method:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1898
+#: src/extensions/gamessinputdialog.ui:1899
 msgid "Parallel Load Balance Type"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1914
+#: src/extensions/gamessinputdialog.ui:1915
 msgid "Next Value"
 msgstr "Próximo Valor"
 
-#: src/extensions/gamessinputdialog.ui:1924
+#: src/extensions/gamessinputdialog.ui:1925
 msgid "Use External Data Representation for Messages"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1972
+#: src/extensions/gamessinputdialog.ui:1973
 msgid "Initial Guess:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1983
-msgid "Huckel"
-msgstr ""
+#: src/extensions/gamessinputdialog.ui:1984
+#, fuzzy
+msgid "Hückel"
+msgstr "Níquel"
 
-#: src/extensions/gamessinputdialog.ui:1988
+#: src/extensions/gamessinputdialog.ui:1989
 msgid "HCore"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1993
+#: src/extensions/gamessinputdialog.ui:1994
 msgid "MO Read ($VEC)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1998
+#: src/extensions/gamessinputdialog.ui:1999
 msgid "MO Saved (DICTNRY)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2003
+#: src/extensions/gamessinputdialog.ui:2004
 msgid "Skip"
-msgstr ""
+msgstr "Pular"
 
-#: src/extensions/gamessinputdialog.ui:2026
+#: src/extensions/gamessinputdialog.ui:2027
 msgid "Rotate Alpha and Beta Orbitals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2033
+#: src/extensions/gamessinputdialog.ui:2034
 msgid "Print the Initial Guess"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2057
+#: src/extensions/gamessinputdialog.ui:2058
 msgid "GAMESS Interface to Other Codes"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2063
+#: src/extensions/gamessinputdialog.ui:2064
 msgid "MolPlt"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2070
+#: src/extensions/gamessinputdialog.ui:2071
 msgid "PltOrb"
-msgstr ""
+msgstr "PltOrb"
 
-#: src/extensions/gamessinputdialog.ui:2077
+#: src/extensions/gamessinputdialog.ui:2078
 msgid "AIMPAC"
-msgstr ""
+msgstr "AIMPAC"
 
-#: src/extensions/gamessinputdialog.ui:2084
+#: src/extensions/gamessinputdialog.ui:2085
 msgid "RPAC"
-msgstr ""
+msgstr "RPAC"
 
-#: src/extensions/gamessinputdialog.ui:2094
+#: src/extensions/gamessinputdialog.ui:2095
 msgid "Force a Check Run Type"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2110
+#: src/extensions/gamessinputdialog.ui:2111
 msgid "Hondo 8.2"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2117
+#: src/extensions/gamessinputdialog.ui:2118
 msgid "MELDF"
-msgstr ""
+msgstr "Copy text   \t MELDF"
 
-#: src/extensions/gamessinputdialog.ui:2124
+#: src/extensions/gamessinputdialog.ui:2125
 msgid "GAMESS (UK Version)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2131
+#: src/extensions/gamessinputdialog.ui:2132
 msgid "Gaussian 9x"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2138
+#: src/extensions/gamessinputdialog.ui:2139
 msgid "All"
 msgstr "Todos"
 
-#: src/extensions/gamessinputdialog.ui:2163
+#: src/extensions/gamessinputdialog.ui:2164
 msgid "Solvate with Water"
 msgstr "Solvatar com Água"
 
-#: src/extensions/gamessinputdialog.ui:2202
+#: src/extensions/gamessinputdialog.ui:2203
 msgid "Generate UHF Natural Orbitals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2209
+#: src/extensions/gamessinputdialog.ui:2210
 msgid "Direct SCF"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2216
+#: src/extensions/gamessinputdialog.ui:2217
 msgid "Compute Only Changed in Fock Matrix"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2243
+#: src/extensions/gamessinputdialog.ui:2244
 msgid "Slater exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2248
+#: src/extensions/gamessinputdialog.ui:2249
 msgid "Becke 1988 exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2253
+#: src/extensions/gamessinputdialog.ui:2254
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2258
+#: src/extensions/gamessinputdialog.ui:2259
 msgid "LYP: Lee-Yang-Parr correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2263
-msgid "SVWN: Slater exhange + VWN correlation"
+#: src/extensions/gamessinputdialog.ui:2264
+msgid "SVWN: Slater exchange + VWN correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2268
+#: src/extensions/gamessinputdialog.ui:2269
 msgid "BVWN: BECKE exchange + VWN5 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2273
+#: src/extensions/gamessinputdialog.ui:2274
 msgid "BLYP: BECKE exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2283
+#: src/extensions/gamessinputdialog.ui:2284
 msgid "Gill 1996 exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2288
+#: src/extensions/gamessinputdialog.ui:2289
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2293
+#: src/extensions/gamessinputdialog.ui:2294
 msgid "OP: One-parameter Progressive correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2298
+#: src/extensions/gamessinputdialog.ui:2299
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2303
+#: src/extensions/gamessinputdialog.ui:2304
 msgid "SOP: SLATER + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2308
+#: src/extensions/gamessinputdialog.ui:2309
 msgid "BOP: BECKE exchange + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2313
+#: src/extensions/gamessinputdialog.ui:2314
 msgid "BVWN: GILL exchange + VWN5 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2318
+#: src/extensions/gamessinputdialog.ui:2319
 msgid "GLYP: GILL exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2323
+#: src/extensions/gamessinputdialog.ui:2324
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2328
+#: src/extensions/gamessinputdialog.ui:2329
 msgid "PBELYP: PBE exchange +LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2333
+#: src/extensions/gamessinputdialog.ui:2334
 msgid "PBEOP: PBE exchange + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2338
+#: src/extensions/gamessinputdialog.ui:2339
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2364
+#: src/extensions/gamessinputdialog.ui:2365
 msgid "Grid"
-msgstr ""
+msgstr "Grade"
 
-#: src/extensions/gamessinputdialog.ui:2369
+#: src/extensions/gamessinputdialog.ui:2370
 msgid "Grid-Free"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2392
+#: src/extensions/gamessinputdialog.ui:2393
 msgid "DFT Functional:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2399
+#: src/extensions/gamessinputdialog.ui:2400
 #: src/extensions/mopacinputdialog.ui:186
 msgid "Method:"
 msgstr "Método:"
 
-#: src/extensions/gamessinputdialog.ui:2423
+#: src/extensions/gamessinputdialog.ui:2424
 msgid "AO Integral Storage"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2432
+#: src/extensions/gamessinputdialog.ui:2433
 msgid "Duplicated on Each Node"
 msgstr "Duplicado em Cada Nó"
 
-#: src/extensions/gamessinputdialog.ui:2439
+#: src/extensions/gamessinputdialog.ui:2440
 msgid "Distributed Across All Nodes"
 msgstr "Distribuído por Todos os Nós"
 
-#: src/extensions/gamessinputdialog.ui:2452
+#: src/extensions/gamessinputdialog.ui:2453
 msgid "words"
 msgstr "palavras"
 
-#: src/extensions/gamessinputdialog.ui:2466
+#: src/extensions/gamessinputdialog.ui:2467
 msgid "Compute MP2 Properties"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2473
+#: src/extensions/gamessinputdialog.ui:2474
 msgid "Integral Retention Cutoff:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2486
+#: src/extensions/gamessinputdialog.ui:2487
 msgid "Use Localized Orbitals"
 msgstr "Usar Orbitais  Localizados"
 
-#: src/extensions/gamessinputdialog.ui:2493
+#: src/extensions/gamessinputdialog.ui:2494
 msgid "# of Core Electrons:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2500
+#: src/extensions/gamessinputdialog.ui:2501
 msgid "Transformation Method"
 msgstr "Método de Transformação"
 
-#: src/extensions/gamessinputdialog.ui:2509
+#: src/extensions/gamessinputdialog.ui:2510
 msgid "Two Phase Bin Sort"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2516
+#: src/extensions/gamessinputdialog.ui:2517
 msgid "Segmented Transformation"
 msgstr "Transformação Segmentada"
 
-#: src/extensions/gamessinputdialog.ui:2565
+#: src/extensions/gamessinputdialog.ui:2566
 msgid "Analytic"
 msgstr "Analítica"
 
-#: src/extensions/gamessinputdialog.ui:2575
+#: src/extensions/gamessinputdialog.ui:2576
 msgid "Numeric"
 msgstr "Numérica"
 
-#: src/extensions/gamessinputdialog.ui:2585
+#: src/extensions/gamessinputdialog.ui:2586
 msgid "Double Differenced Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2592
+#: src/extensions/gamessinputdialog.ui:2593
 msgid "Print Internal Force Constants"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2599
+#: src/extensions/gamessinputdialog.ui:2600
 msgid "Displacement Size:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2606
+#: src/extensions/gamessinputdialog.ui:2607
 msgid "Purify Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2613
+#: src/extensions/gamessinputdialog.ui:2614
 msgid "Frequency Scale Factor:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2620
+#: src/extensions/gamessinputdialog.ui:2621
 msgid "bohrs"
 msgstr "bohrs"
 
-#: src/extensions/gamessinputdialog.ui:2654
+#: src/extensions/gamessinputdialog.ui:2655
 msgid "Initial Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2660
+#: src/extensions/gamessinputdialog.ui:2661
 msgid "Guess (+ define)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2667
+#: src/extensions/gamessinputdialog.ui:2668
 msgid "Read (from $HESS)"
-msgstr ""
+msgstr "Ler (de $HESS)"
 
-#: src/extensions/gamessinputdialog.ui:2684
+#: src/extensions/gamessinputdialog.ui:2685
 msgid "Update Step Size"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2694
+#: src/extensions/gamessinputdialog.ui:2695
 msgid "Print Orbs at Each Iteration"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2701
+#: src/extensions/gamessinputdialog.ui:2702
 msgid "Gradient Convergence Criteria:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2730
+#: src/extensions/gamessinputdialog.ui:2731
 msgid "Jump Size:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2737
+#: src/extensions/gamessinputdialog.ui:2738
 msgid "Stationary Point"
 msgstr "Ponto Estacionário"
 
-#: src/extensions/gamessinputdialog.ui:2747
+#: src/extensions/gamessinputdialog.ui:2748
 msgid "Optimization Method:"
 msgstr "Método de Otimização:"
 
-#: src/extensions/gamessinputdialog.ui:2757
+#: src/extensions/gamessinputdialog.ui:2758
 msgid "Step Size"
 msgstr "Tamanho do Passo"
 
-#: src/extensions/gamessinputdialog.ui:2763
+#: src/extensions/gamessinputdialog.ui:2764
 msgid "Maximum:"
 msgstr "Máximo:"
 
-#: src/extensions/gamessinputdialog.ui:2770
+#: src/extensions/gamessinputdialog.ui:2771
 msgid "Minimum:"
 msgstr "Mínimo:"
 
-#: src/extensions/gamessinputdialog.ui:2780
+#: src/extensions/gamessinputdialog.ui:2781
 msgid "Initial:"
 msgstr "Inicial:"
 
-#: src/extensions/gamessinputdialog.ui:2824
+#: src/extensions/gamessinputdialog.ui:2825
 msgid "Newton-Raphson"
 msgstr "Newton-Raphson"
 
-#: src/extensions/gamessinputdialog.ui:2829
+#: src/extensions/gamessinputdialog.ui:2830
 msgid "Rational Function Optimization"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2834
+#: src/extensions/gamessinputdialog.ui:2835
 msgid "Quadratic Approximation"
 msgstr "Aproximação Quadrática"
 
-#: src/extensions/gamessinputdialog.ui:2839
+#: src/extensions/gamessinputdialog.ui:2840
 msgid "Schlegel (quasi-NR)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2844
+#: src/extensions/gamessinputdialog.ui:2845
 msgid "Constrained Optimization"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2857
+#: src/extensions/gamessinputdialog.ui:2858
 msgid "steps"
 msgstr "passos"
 
-#: src/extensions/gamessinputdialog.ui:2879
+#: src/extensions/gamessinputdialog.ui:2880
 msgid "Recalculate Hessian Every:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2889
+#: src/extensions/gamessinputdialog.ui:2890
 msgid "Follow Mode:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2899
+#: src/extensions/gamessinputdialog.ui:2900
 msgid "Maximum Steps:"
 msgstr "Máximo de Passos:"
 
-#: src/extensions/gamessinputdialog.ui:2932
+#: src/extensions/gamessinputdialog.ui:2933
 msgid "Reset All"
 msgstr "Limpar Tudo"
 
-#: src/extensions/gamessinputdialog.ui:2939
+#: src/extensions/gamessinputdialog.ui:2940
 msgid "Defaults"
 msgstr "Padrões"
 
-#: src/extensions/gamessinputdialog.ui:2962
+#: src/extensions/gamessinputdialog.ui:2963
+#: src/extensions/gaussianinputdialog.ui:528
+#: src/extensions/mopacinputdialog.ui:377
+#: src/extensions/qcheminputdialog.ui:476
+msgid "Compute..."
+msgstr "Computar..."
+
+#: src/extensions/gamessinputdialog.ui:2970
 #: src/extensions/gaussianinputdialog.ui:535
 #: src/extensions/molproinputdialog.ui:466
 #: src/extensions/mopacinputdialog.ui:384
 #: src/extensions/nwcheminputdialog.ui:462
-#: src/extensions/qcheminputdialog.ui:476
+#: src/extensions/qcheminputdialog.ui:483
 msgid "Generate..."
 msgstr "Gerar..."
 
-#: src/extensions/gamessinputdialog.ui:2969
+#: src/extensions/gamessinputdialog.ui:2977
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
-#: src/extensions/qcheminputdialog.ui:483
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/extensions/gaussianinputdialog.ui:19
 msgid "Gaussian Input"
@@ -4891,15 +4940,7 @@ msgstr "Entrada Gaussiana"
 #: src/extensions/nwcheminputdialog.ui:48
 #: src/extensions/qcheminputdialog.ui:48
 msgid "Calculation:"
-msgstr ""
-
-#: src/extensions/gaussianinputdialog.ui:63
-#: src/extensions/molproinputdialog.ui:64
-#: src/extensions/mopacinputdialog.ui:63
-#: src/extensions/nwcheminputdialog.ui:64
-#: src/extensions/qcheminputdialog.ui:64
-msgid "Single Point Energy"
-msgstr ""
+msgstr "Cálculo:"
 
 #: src/extensions/gaussianinputdialog.ui:96
 msgid "Processors:"
@@ -4917,7 +4958,7 @@ msgstr "Teoria:"
 #: src/extensions/nwcheminputdialog.ui:148
 #: src/extensions/qcheminputdialog.ui:163
 msgid "CCSD"
-msgstr ""
+msgstr "CCSD"
 
 #: src/extensions/gaussianinputdialog.ui:197
 #: src/extensions/molproinputdialog.ui:176
@@ -4930,7 +4971,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:227
 #: src/extensions/qcheminputdialog.ui:242
 msgid "LANL2DZ"
-msgstr ""
+msgstr "LANL2DZ"
 
 #: src/extensions/gaussianinputdialog.ui:256
 #: src/extensions/molproinputdialog.ui:260
@@ -4998,11 +5039,6 @@ msgstr ""
 #: src/extensions/qcheminputdialog.ui:456
 msgid "Use Form"
 msgstr ""
-
-#: src/extensions/gaussianinputdialog.ui:528
-#: src/extensions/mopacinputdialog.ui:377
-msgid "Compute..."
-msgstr "Computar..."
 
 #: src/extensions/insertfragmentdialog.ui:14
 msgid "Insert Fragment..."
@@ -5186,7 +5222,7 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:270
 msgid "Sequence (N to C):"
-msgstr ""
+msgstr "Sequência (N até C):"
 
 #: src/extensions/insertpeptidedialog.ui:280
 msgid "Stereochemistry:"
@@ -5211,19 +5247,19 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:325
 msgid "NH₂"
-msgstr ""
+msgstr "NH₂"
 
 #: src/extensions/insertpeptidedialog.ui:330
 msgid "NH₃⁺"
-msgstr ""
+msgstr "NH₃⁺"
 
 #: src/extensions/insertpeptidedialog.ui:339
 msgid "CO₂H"
-msgstr ""
+msgstr "CO₂H"
 
 #: src/extensions/insertpeptidedialog.ui:344
 msgid "CO₂⁻"
-msgstr ""
+msgstr "CO₂⁻"
 
 #: src/extensions/insertpeptidedialog.ui:354
 msgid "Structure:"
@@ -5243,7 +5279,7 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:377
 msgid "Other"
-msgstr ""
+msgstr "Outro"
 
 #: src/extensions/insertpeptidedialog.ui:387
 msgid "Phi:"
@@ -5263,23 +5299,23 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:459
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: src/extensions/insertpeptidedialog.ui:464
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/extensions/insertpeptidedialog.ui:474
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/extensions/insertpeptidedialog.ui:479
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/extensions/insertpeptidedialog.ui:484
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/extensions/liganddialog.ui:13
 msgid "Create ligand"
@@ -5297,8 +5333,7 @@ msgstr "criar ligante a partir do nome do resíduo"
 msgid "create ligand from file..."
 msgstr "criar ligante a partir do arquivo..."
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "O nome do resíduo"
 
@@ -5308,7 +5343,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:24
 msgid ""
-"Load a second confromation and computer a linear interpolation with the "
+"Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
 
@@ -5344,19 +5379,19 @@ msgstr "Salvar filme..."
 
 #: src/extensions/molecularpropdialog.ui:14
 msgid "Molecule Properties"
-msgstr ""
+msgstr "Propriedades da Molécula"
 
 #: src/extensions/molecularpropdialog.ui:22
 msgid "Molecular Weight (g/mol):"
-msgstr ""
+msgstr "Peso Molecular (g/mol)"
 
 #: src/extensions/molecularpropdialog.ui:29
 msgid "Chemical Formula:"
-msgstr ""
+msgstr "Fórmula Química"
 
 #: src/extensions/molecularpropdialog.ui:36
 msgid "Number of Atoms:"
-msgstr ""
+msgstr "Número de Átomos"
 
 #: src/extensions/molecularpropdialog.ui:43
 msgid "Number of Bonds:"
@@ -5368,7 +5403,7 @@ msgstr ""
 
 #: src/extensions/molecularpropdialog.ui:57
 msgid "Energy (kJ/mol):"
-msgstr ""
+msgstr "Energia (kj/mol)"
 
 #: src/extensions/molecularpropdialog.ui:64
 msgid "Dipole Moment (D):"
@@ -5382,39 +5417,39 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:133
 #: src/extensions/qcheminputdialog.ui:133
 msgid "HF"
-msgstr ""
+msgstr "HF"
 
 #: src/extensions/molproinputdialog.ui:212
 #: src/extensions/nwcheminputdialog.ui:207
 #: src/extensions/qcheminputdialog.ui:222
 msgid "6-31+G(d)"
-msgstr ""
+msgstr "6-31+G(d)"
 
 #: src/extensions/molproinputdialog.ui:217
 #: src/extensions/nwcheminputdialog.ui:212
 #: src/extensions/qcheminputdialog.ui:227
 msgid "6-311G(d)"
-msgstr ""
+msgstr "6-311G(d)"
 
 #: src/extensions/molproinputdialog.ui:222
 #: src/extensions/nwcheminputdialog.ui:217
 #: src/extensions/qcheminputdialog.ui:232
 msgid "cc-pVDZ"
-msgstr ""
+msgstr "cc-pVDZ"
 
 #: src/extensions/molproinputdialog.ui:227
 #: src/extensions/nwcheminputdialog.ui:222
 #: src/extensions/qcheminputdialog.ui:237
 msgid "cc-pVTZ"
-msgstr ""
+msgstr "cc-pVTZ"
 
 #: src/extensions/molproinputdialog.ui:232
 msgid "AUG-cc-pVDZ"
-msgstr ""
+msgstr "AUG-cc-pVDZ"
 
 #: src/extensions/molproinputdialog.ui:237
 msgid "AUG-cc-pVTZ"
-msgstr ""
+msgstr "AUG-cc-pVTZ"
 
 #: src/extensions/mopacinputdialog.ui:19
 msgid "MOPAC Input"
@@ -5430,15 +5465,15 @@ msgstr "Quinteto"
 
 #: src/extensions/mopacinputdialog.ui:212
 msgid "MNDO-d"
-msgstr ""
+msgstr "MNDO-d"
 
 #: src/extensions/mopacinputdialog.ui:222
 msgid "PM6"
-msgstr ""
+msgstr "PM6"
 
 #: src/extensions/mopacinputdialog.ui:227
 msgid "RM1"
-msgstr ""
+msgstr "RM1"
 
 #: src/extensions/nwcheminputdialog.ui:20
 msgid "NWChem Input"
@@ -5500,23 +5535,22 @@ msgstr "Calcular Cubo de Van der Waals"
 msgid "Isosurfaces"
 msgstr ""
 
-#: src/extensions/orbitaldialog.ui:417
-#: src/extensions/orbitaldialog.ui:633
+#: src/extensions/orbitaldialog.ui:417 src/extensions/orbitaldialog.ui:633
 msgid "Cube:"
 msgstr "Cubo:"
 
-#: src/extensions/orbitaldialog.ui:447
-#: src/extensions/orbitaldialog.ui:663
+#: src/extensions/orbitaldialog.ui:447 src/extensions/orbitaldialog.ui:663
+#: src/extensions/surfacedialog.ui:104
 msgid "Color By:"
 msgstr ""
 
-#: src/extensions/orbitaldialog.ui:481
+#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr ""
 
 #: src/extensions/orbitaldialog.ui:493
 msgid "0.02"
-msgstr ""
+msgstr "0.02"
 
 #: src/extensions/orbitaldialog.ui:515
 msgid "Cube Range:"
@@ -5524,14 +5558,13 @@ msgstr ""
 
 #: src/extensions/orbitaldialog.ui:527
 msgid "0.000"
-msgstr ""
+msgstr "0.000"
 
 #: src/extensions/orbitaldialog.ui:544
 msgid "1.000"
-msgstr ""
+msgstr "1.000"
 
-#: src/extensions/orbitaldialog.ui:604
-#: src/extensions/orbitaldialog.ui:821
+#: src/extensions/orbitaldialog.ui:604 src/extensions/orbitaldialog.ui:821
 msgid "Calculate Mesh"
 msgstr ""
 
@@ -5541,7 +5574,7 @@ msgstr "Superfície de Van der Waals"
 
 #: src/extensions/orbitaldialog.ui:684
 msgid "ESP (approximate)"
-msgstr ""
+msgstr "ESP (aproximadamente)"
 
 #: src/extensions/orbitaldialog.ui:707
 msgid "Distance:"
@@ -5549,7 +5582,7 @@ msgstr "Distância:"
 
 #: src/extensions/orbitaldialog.ui:719
 msgid "0.0"
-msgstr ""
+msgstr "0.0"
 
 #: src/extensions/orbitaldialog.ui:741
 msgid "Range:"
@@ -5592,7 +5625,7 @@ msgstr "povray"
 msgid "Render"
 msgstr "Renderizar"
 
-#: src/extensions/povraydialog.ui:137
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:143
 msgid "Resolution:"
 msgstr "Resolução:"
 
@@ -5642,19 +5675,19 @@ msgstr "Entrada Q-Chem"
 
 #: src/extensions/qcheminputdialog.ui:148
 msgid "B3LYP5"
-msgstr ""
+msgstr "B3LYP5"
 
 #: src/extensions/qcheminputdialog.ui:153
 msgid "EDF1"
-msgstr ""
+msgstr "EDF1"
 
 #: src/extensions/qcheminputdialog.ui:158
 msgid "M06-2X"
-msgstr ""
+msgstr "M06-2X"
 
 #: src/extensions/qcheminputdialog.ui:247
 msgid "LACVP"
-msgstr ""
+msgstr "LACVP"
 
 #: src/extensions/shaderdialog.ui:29
 msgid "Load Shaders"
@@ -5676,8 +5709,7 @@ msgstr ""
 msgid "Parameters:"
 msgstr "Parâmetros:"
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr ""
 
@@ -5693,135 +5725,7 @@ msgstr ""
 msgid "Spectra Visualization"
 msgstr "Visualizar Espectro"
 
-#: src/extensions/spectradialog.ui:32
-msgid "&Close"
-msgstr "&Fechar"
-
-#: src/extensions/spectradialog.ui:95
-msgid "Calculated Spectra:"
-msgstr "Espectro Calculado:"
-
-#: src/extensions/spectradialog.ui:108
-#: src/extensions/spectradialog.ui:131
-#: src/extensions/spectradialog.ui:219
-#: src/extensions/spectradialog.ui:245
-msgid "Set Color..."
-msgstr "Mudar Cor..."
-
-#: src/extensions/spectradialog.ui:115
-msgid "Imported Spectra:"
-msgstr "Espectro Importado:"
-
-#: src/extensions/spectradialog.ui:138
-msgid "Font:"
-msgstr "Fonte:"
-
-#: src/extensions/spectradialog.ui:151
-msgid "Change Font..."
-msgstr "Mudar Fonte..."
-
-#: src/extensions/spectradialog.ui:164
-#: src/extensions/spectradialog.ui:177
-msgid "Show"
-msgstr "Mostrar"
-
-#: src/extensions/spectradialog.ui:190
-msgid "Imports a tsv of experimental spectra to overlay on the plot."
-msgstr ""
-
-#: src/extensions/spectradialog.ui:193
-msgid "&Import..."
-msgstr "&Importar..."
-
-#: src/extensions/spectradialog.ui:206
-msgid "Background:"
-msgstr "Fundo:"
-
-#: src/extensions/spectradialog.ui:232
-msgid "Foreground:"
-msgstr "Frente:"
-
-#: src/extensions/spectradialog.ui:261
-msgid "New..."
-msgstr "Novo..."
-
-#: src/extensions/spectradialog.ui:277
-msgid "Remove..."
-msgstr "Remover..."
-
-#: src/extensions/spectradialog.ui:290
-msgid "Rename..."
-msgstr "Renomear..."
-
-#: src/extensions/spectradialog.ui:316
-msgid "TODO"
-msgstr ""
-
-#: src/extensions/spectradialog.ui:329
-msgid "&Schemes:"
-msgstr "E&squemas:"
-
-#: src/extensions/spectradialog.ui:345
-msgid "&Export..."
-msgstr "&Exportar..."
-
-#: src/extensions/spectradialog.ui:385
-msgid "&DPI:"
-msgstr "&DPI:"
-
-#: src/extensions/spectradialog.ui:401
-msgid "&Width:"
-msgstr "&Largura:"
-
-#: src/extensions/spectradialog.ui:430
-msgid "&Height"
-msgstr "&Altura"
-
-#: src/extensions/spectradialog.ui:453
-msgid "&Filename:"
-msgstr ""
-
-#: src/extensions/spectradialog.ui:489
-msgid "..."
-msgstr "..."
-
-#: src/extensions/spectradialog.ui:500
-msgid "cm"
-msgstr "cm"
-
-#: src/extensions/spectradialog.ui:505
-msgid "mm"
-msgstr "mm"
-
-#: src/extensions/spectradialog.ui:510
-msgid "in"
-msgstr "pol"
-
-#: src/extensions/spectradialog.ui:515
-msgid "px"
-msgstr "px"
-
-#: src/extensions/spectradialog.ui:529
-msgid "&Save Image..."
-msgstr "&Salvar Imagem..."
-
-#: src/extensions/spectradialog.ui:562
-msgid ""
-"Use an optimized value for the font size instead of the scheme-specified "
-"value (screen to image point sizes don't translate well!)"
-msgstr ""
-"Usar um valor otimizado para o tamanho da fonte em vez de valor especificado "
-"(a conversão da tela para pontos de imagem não é boa!)"
-
-#: src/extensions/spectradialog.ui:565
-msgid "Auto-adjust F&ont Size"
-msgstr "Tamanho de Fonte Auto-ajustado"
-
-#: src/extensions/spectradialog.ui:610
-msgid "&Load data..."
-msgstr ""
-
-#: src/extensions/spectradialog.ui:633
+#: src/extensions/spectradialog.ui:42
 msgid ""
 "Controls:\n"
 "Double left click: Restore default axis limits\n"
@@ -5834,6 +5738,131 @@ msgstr ""
 "Clique direito + arrastar: Move gráfico\n"
 "Clique do meio + arrastar: Zoom na região\n"
 "Roda do mouse: Zoom para o cursor"
+
+#: src/extensions/spectradialog.ui:71
+msgid "&Load data..."
+msgstr ""
+
+#: src/extensions/spectradialog.ui:110
+msgid "&Close"
+msgstr "&Fechar"
+
+#: src/extensions/spectradialog.ui:155
+msgid "Calculated Spectra:"
+msgstr "Espectro Calculado:"
+
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+msgid "Set Color..."
+msgstr "Mudar Cor..."
+
+#: src/extensions/spectradialog.ui:175
+msgid "Imported Spectra:"
+msgstr "Espectro Importado:"
+
+#: src/extensions/spectradialog.ui:198
+msgid "Font:"
+msgstr "Fonte:"
+
+#: src/extensions/spectradialog.ui:211
+msgid "Change Font..."
+msgstr "Mudar Fonte..."
+
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+msgid "Show"
+msgstr "Mostrar"
+
+#: src/extensions/spectradialog.ui:250
+msgid "Imports a tsv of experimental spectra to overlay on the plot."
+msgstr ""
+
+#: src/extensions/spectradialog.ui:253
+msgid "&Import..."
+msgstr "&Importar..."
+
+#: src/extensions/spectradialog.ui:266
+msgid "Background:"
+msgstr "Fundo:"
+
+#: src/extensions/spectradialog.ui:292
+msgid "Foreground:"
+msgstr "Frente:"
+
+#: src/extensions/spectradialog.ui:321
+msgid "New..."
+msgstr "Novo..."
+
+#: src/extensions/spectradialog.ui:337
+msgid "Remove..."
+msgstr "Remover..."
+
+#: src/extensions/spectradialog.ui:350
+msgid "Rename..."
+msgstr "Renomear..."
+
+#: src/extensions/spectradialog.ui:376
+msgid "TODO"
+msgstr ""
+
+#: src/extensions/spectradialog.ui:389
+msgid "&Schemes:"
+msgstr "E&squemas:"
+
+#: src/extensions/spectradialog.ui:405
+msgid "&Export..."
+msgstr "&Exportar..."
+
+#: src/extensions/spectradialog.ui:445
+msgid "&DPI:"
+msgstr "&DPI:"
+
+#: src/extensions/spectradialog.ui:461
+msgid "&Width:"
+msgstr "&Largura:"
+
+#: src/extensions/spectradialog.ui:490
+msgid "&Height"
+msgstr "&Altura"
+
+#: src/extensions/spectradialog.ui:513
+msgid "&Filename:"
+msgstr "&Nome do Arquivo:"
+
+#: src/extensions/spectradialog.ui:549
+msgid "..."
+msgstr "..."
+
+#: src/extensions/spectradialog.ui:560
+msgid "cm"
+msgstr "cm"
+
+#: src/extensions/spectradialog.ui:565
+msgid "mm"
+msgstr "mm"
+
+#: src/extensions/spectradialog.ui:570
+msgid "in"
+msgstr "pol"
+
+#: src/extensions/spectradialog.ui:575
+msgid "px"
+msgstr "px"
+
+#: src/extensions/spectradialog.ui:589
+msgid "&Save Image..."
+msgstr "&Salvar Imagem..."
+
+#: src/extensions/spectradialog.ui:622
+msgid ""
+"Use an optimized value for the font size instead of the scheme-specified "
+"value (screen to image point sizes don't translate well!)"
+msgstr ""
+"Usar um valor otimizado para o tamanho da fonte em vez de valor especificado "
+"(a conversão da tela para pontos de imagem não é boa!)"
+
+#: src/extensions/spectradialog.ui:625
+msgid "Auto-adjust F&ont Size"
+msgstr "Tamanho de Fonte Auto-ajustado"
 
 #: src/extensions/spectratabir.ui:14
 msgid "tab_IR"
@@ -5870,8 +5899,8 @@ msgid "tab_NMR"
 msgstr ""
 
 #: src/extensions/spectratabnmr.ui:23
-msgid "NMR &Type:"
-msgstr "&Tipo de RMN:"
+msgid "Nucleus:"
+msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5887,6 +5916,10 @@ msgstr ""
 
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
+msgstr ""
+
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+msgid "ppm"
 msgstr ""
 
 #: src/extensions/supercelldialog.ui:14
@@ -5915,6 +5948,77 @@ msgstr "Repetir C:"
 #: src/extensions/supercelldialog.ui:88
 msgid "Generate Cell"
 msgstr "Gerar Célula"
+
+#: src/extensions/surfacedialog.ui:14
+#, fuzzy
+msgid "Create Surfaces"
+msgstr "Criar Superfícies..."
+
+#: src/extensions/surfacedialog.ui:25
+#, fuzzy
+msgid "Surface Type:"
+msgstr "Superfície"
+
+#: src/extensions/surfacedialog.ui:41
+#, fuzzy
+msgid "Van der Waals"
+msgstr "Esferas de Van der Waals"
+
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:120
+#, fuzzy
+msgid "Electrostatic Potential"
+msgstr "Potencial Eletrostático (ESP)"
+
+#: src/extensions/surfacedialog.ui:81
+#, fuzzy
+msgid "MO 666"
+msgstr "OM "
+
+#: src/extensions/surfacedialog.ui:162
+#, fuzzy
+msgctxt "low resolution"
+msgid "Low"
+msgstr "Baixo"
+
+#: src/extensions/surfacedialog.ui:167
+#, fuzzy
+msgctxt "medium resolution"
+msgid "Medium"
+msgstr "Médio"
+
+#: src/extensions/surfacedialog.ui:172
+#, fuzzy
+msgctxt "high resolution"
+msgid "High"
+msgstr "Alto"
+
+#: src/extensions/surfacedialog.ui:177
+#, fuzzy
+msgctxt "very high resolution"
+msgid "Very High"
+msgstr "Alto"
+
+#: src/extensions/surfacedialog.ui:200
+msgid "Isosurface cutoff value"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:236
+#, fuzzy
+msgctxt ""
+"Add the new surface to this particular display type (i.e., orbital or "
+"surface)"
+msgid "In Display Type:"
+msgstr "Adicionar tipo a ser mostrado"
+
+#: src/extensions/surfacedialog.ui:255
+#, fuzzy
+msgid "New Display"
+msgstr "Exibir Eixos"
+
+#: src/extensions/surfacedialog.ui:305
+#, fuzzy
+msgid "Advanced..."
+msgstr "Avançado"
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110
@@ -5971,7 +6075,7 @@ msgstr "Vibrações Moleculares"
 
 #: src/extensions/vibrationdialog.ui:45
 msgid "Frequency (cm⁻¹)"
-msgstr ""
+msgstr "Frequencia (cm⁻¹)"
 
 #: src/extensions/vibrationdialog.ui:50
 msgid "Intensity (km/mol)"
@@ -5982,10 +6086,19 @@ msgid "&Scale:"
 msgstr "E&scala:"
 
 #: src/extensions/vibrationdialog.ui:97
-msgid "Display Force &Vectors"
+#, fuzzy
+msgid "Display force &vectors"
 msgstr "Exibir &Vectores de Força"
 
-#: src/extensions/vibrationdialog.ui:122
+#: src/extensions/vibrationdialog.ui:107
+msgid "higher frequency vibrations will show faster movement"
+msgstr ""
+
+#: src/extensions/vibrationdialog.ui:110
+msgid "Animation speed set by frequency"
+msgstr ""
+
+#: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."
 msgstr "E&xportar..."
 
@@ -6028,25 +6141,37 @@ msgstr "Remover Átomo"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro "
-"Nametala,Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres "
-"Hopkins,Petrus Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney "
-"Gomes Pereira, ,Launchpad Contributions:,Alexandre R Soares,André "
-"Gondim,Ciniro Nametala,Enrico Nicoletto,Geoff Hutchison,Leandro "
-"Boscariol,Myres Hopkins,Petrus Henrique Gonçalves Freire,Rafael Porto "
-"Rodrigues,Rosiney Gomes Pereira, ,Launchpad Contributions:,Alexandre R "
-"Soares,Avogadro Team"
+",Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro Nametala,"
+"Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres Hopkins,Petrus "
+"Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney Gomes Pereira, ,"
+"Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro Nametala,"
+"Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres Hopkins,Petrus "
+"Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney Gomes Pereira, ,"
+"Launchpad Contributions:,Alexandre R Soares,Avogadro Team,Felipe Vieira "
+"Borges"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,andregondim@ubuntu.com,ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gma"
-"il.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,ciniro@gmail.com,liveri"
-"g@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net"
+",,,andregondim@ubuntu.com,ciniro@gmail.com,liverig@gmail.com,,,,,"
+"rafporto@gmail.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,"
+"ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail."
+"com,,,,avogadro-devel@lists.sourceforge.net,"
 
-#~ msgid "MO "
-#~ msgstr "OM "
+#~ msgid "NMR &Type:"
+#~ msgstr "&Tipo de RMN:"
+
+#~ msgid "File type '%1' is not a supported for reading."
+#~ msgstr "O tipo de arquivo '%1' não é suportado."
+
+#~ msgid "File type for file '%1' is not a supported for reading."
+#~ msgstr "O formato do arquivo '%1' não é suportado."
+
+#~ msgid "File type '%1' is not a supported for writing."
+#~ msgstr "O formato de arquivo '%1' não é suportado."
+
+#~ msgid "File type for file '%1' is not a supported for writing."
+#~ msgstr "O formato do arquivo '%1' não é suportado."
 
 #~ msgid "Atomic Number"
 #~ msgstr "Número Atômico"
@@ -6060,15 +6185,12 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "Resíduos"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distância (1->2): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distância (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distância (3->4): %1 %2"
 
@@ -6094,17 +6216,16 @@ msgstr ""
 #~ msgstr "Gerar a partir de SMILES:"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão do Aplicativo: %2<br/><br/>Versão da Biblioteca: "
-#~ "%3<br/><br/>Para mais informações veja o <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>O programa é provido \t\n"
+#~ "<h3>%1</h3><br/><br/>Versão do Aplicativo: %2<br/><br/>Versão da "
+#~ "Biblioteca: %3<br/><br/>Para mais informações veja o <a href=\"http://"
+#~ "avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>O programa "
+#~ "é provido \t\n"
 #~ "COMO ESTÁ com SEM GARANTIA DE QUALQUER TIPO, INCLUINDO AS GARANTIAS DE "
 #~ "DESIGN, COMERCIABILIDADE E ADEQUAÇÃO PARA UM DETERMINADO OBJETIVO.<br/>"
 
@@ -6191,23 +6312,24 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Esse arquivo contém apenas coordenadas 2D. Deseja que Avogadro redimensione "
-#~ "as ligações e faça uma otimização rápida?"
+#~ "Esse arquivo contém apenas coordenadas 2D. Deseja que Avogadro "
+#~ "redimensione as ligações e faça uma otimização rápida?"
 
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Este arquivo não contem coordenadas 3D. Você pode não conseguir editá-lo ou "
-#~ "visualizá-lo adequadamente."
+#~ "Este arquivo não contem coordenadas 3D. Você pode não conseguir editá-lo "
+#~ "ou visualizá-lo adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro lerá "
-#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas podem "
-#~ "ser perdidas."
+#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "podem ser perdidas."
 
 #~ msgid " Bonds: "
 #~ msgstr " Ligações: "
@@ -6245,9 +6367,6 @@ msgstr ""
 
 #~ msgid "Save succeeded."
 #~ msgstr "Salvo com sucesso."
-
-#~ msgid "Saving molecular file failed."
-#~ msgstr "Falha ao salvar o arquivo molecular."
 
 #~ msgid "PNG"
 #~ msgstr "PNG"
@@ -6360,15 +6479,6 @@ msgstr ""
 #~ msgid "tree"
 #~ msgstr "árvore"
 
-#~ msgid "Low"
-#~ msgstr "Baixo"
-
-#~ msgid "Medium"
-#~ msgstr "Médio"
-
-#~ msgid "High"
-#~ msgstr "Alto"
-
 #~ msgid "Undefined"
 #~ msgstr "Indefinido"
 
@@ -6446,9 +6556,6 @@ msgstr ""
 
 #~ msgid "&Open"
 #~ msgstr "&Abrir"
-
-#~ msgid "Ctrl+O"
-#~ msgstr "Ctrl+O"
 
 #~ msgid "&Quit"
 #~ msgstr "&Sair"
@@ -6546,9 +6653,6 @@ msgstr ""
 #~ msgid "Tutorials"
 #~ msgstr "Tutoriais"
 
-#~ msgid "Display Axes"
-#~ msgstr "Exibir Eixos"
-
 #~ msgid "Avogadro Help"
 #~ msgstr "Ajuda Avogadro"
 
@@ -6617,9 +6721,6 @@ msgstr ""
 
 #~ msgid "index"
 #~ msgstr "index"
-
-#~ msgid "Add Display Type"
-#~ msgstr "Adicionar tipo a ser mostrado"
 
 #~ msgid "Assign to Selection"
 #~ msgstr "Atribuir à Seleção"

@@ -74,6 +74,8 @@ namespace Avogadro {
 
   AlignTool::~AlignTool()
   {
+    if (m_settingsWidget)
+      m_settingsWidget->deleteLater();
   }
 
   QUndoCommand* AlignTool::mousePressEvent(GLWidget *widget, QMouseEvent *event)
@@ -251,7 +253,7 @@ namespace Avogadro {
     if(!m_settingsWidget) {
       m_settingsWidget = new QWidget;
 
-      QLabel *labelAxis = new QLabel(tr("Axis:"));
+      QLabel *labelAxis = new QLabel(tr("Axis:"), m_settingsWidget);
       labelAxis->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
       labelAxis->setMaximumHeight(15);
 

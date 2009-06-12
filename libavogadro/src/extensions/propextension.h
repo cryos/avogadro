@@ -41,7 +41,7 @@ namespace Avogadro {
   {
     Q_OBJECT
       AVOGADRO_EXTENSION("Properties", tr("Properties"),
-                         tr("Windows for displaying atom, bond, angle and tosion properties. It also includes a cartesian coordinate editor."))
+                         tr("Windows for displaying atom, bond, angle and torsion properties. It also includes a cartesian coordinate editor."))
 
     public:
       //! Constructor
