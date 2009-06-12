@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:56-0400\n"
+"POT-Creation-Date: 2009-06-12 11:52-0400\n"
 "PO-Revision-Date: 2009-06-11 20:08+0000\n"
 "Last-Translator: kuede <Unknown>\n"
 "Language-Team: <de@li.org>\n"
@@ -1273,7 +1273,7 @@ msgid "Change H to Methyl"
 msgstr "Ersetze Wasserstoff durch Methyl"
 
 #: src/extensions/h2methylextension.cpp:62
-#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
@@ -1294,26 +1294,26 @@ msgstr "H-zu-Methyl"
 msgid "Transform hydrogens to methyl groups"
 msgstr "Wandle Wasserstoffatome in Methylgruppen um"
 
-#: src/extensions/hydrogensextension.cpp:42
-#: src/extensions/hydrogensextension.cpp:111
+#: src/extensions/hydrogensextension.cpp:44
+#: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
 msgstr "Wasserstoffatome hinzufügen"
 
-#: src/extensions/hydrogensextension.cpp:46
+#: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
 msgstr "Füge Wasserstoffatome für den pH-Wert hinzu..."
 
-#: src/extensions/hydrogensextension.cpp:50
-#: src/extensions/hydrogensextension.cpp:117
+#: src/extensions/hydrogensextension.cpp:52
+#: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
 msgstr "Wasserstoffatome entfernen"
 
-#: src/extensions/hydrogensextension.cpp:86
-#: src/extensions/hydrogensextension.cpp:114
+#: src/extensions/hydrogensextension.cpp:89
+#: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
 msgstr "Füge Wasserstoffatome für den pH-Wert hinzu"
 
-#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
 msgstr "pH"
 
@@ -3879,8 +3879,13 @@ msgid "On:"
 msgstr "Auf:"
 
 #: src/extensions/gamessinputdialog.ui:211
-msgid "Single Point Entry"
-msgstr "einzelner Eingangspunkt"
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
+msgstr "Einzelpunktsenergie"
 
 #: src/extensions/gamessinputdialog.ui:216
 msgid "Equilibrium Geometry"
@@ -4939,14 +4944,6 @@ msgstr "Gaussian Eingabe"
 #: src/extensions/qcheminputdialog.ui:48
 msgid "Calculation:"
 msgstr "Kalkulation:"
-
-#: src/extensions/gaussianinputdialog.ui:63
-#: src/extensions/molproinputdialog.ui:64
-#: src/extensions/mopacinputdialog.ui:63
-#: src/extensions/nwcheminputdialog.ui:64
-#: src/extensions/qcheminputdialog.ui:64
-msgid "Single Point Energy"
-msgstr "Einzelpunktsenergie"
 
 #: src/extensions/gaussianinputdialog.ui:96
 msgid "Processors:"
@@ -6157,6 +6154,9 @@ msgstr ""
 "steve@steve-m.de,loniedavid@gmail.com,,,soc@krg-nw.de,,,,erik_hahn@gmx.de,,,,"
 "armin_mohring@web.de,michael.kogan@gmx.net,steve@steve-m.de,loniedavid@gmail."
 "com,,,soc@krg-nw.de,,,avogadro-devel@lists.sourceforge.net,,"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "einzelner Eingangspunkt"
 
 #~ msgid "Conformers..."
 #~ msgstr "Konformeren..."

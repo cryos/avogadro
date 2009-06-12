@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-en_GB\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:56-0400\n"
+"POT-Creation-Date: 2009-06-12 11:52-0400\n"
 "PO-Revision-Date: 2009-05-21 20:51+0000\n"
 "Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -1264,7 +1264,7 @@ msgid "Change H to Methyl"
 msgstr "Change H to Methyl"
 
 #: src/extensions/h2methylextension.cpp:62
-#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
@@ -1285,26 +1285,26 @@ msgstr "H2Methyl"
 msgid "Transform hydrogens to methyl groups"
 msgstr "Transform hydrogens to methyl groups"
 
-#: src/extensions/hydrogensextension.cpp:42
-#: src/extensions/hydrogensextension.cpp:111
+#: src/extensions/hydrogensextension.cpp:44
+#: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
 msgstr "Add Hydrogens"
 
-#: src/extensions/hydrogensextension.cpp:46
+#: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
 msgstr "Add Hydrogens for pH..."
 
-#: src/extensions/hydrogensextension.cpp:50
-#: src/extensions/hydrogensextension.cpp:117
+#: src/extensions/hydrogensextension.cpp:52
+#: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
 msgstr "Remove Hydrogens"
 
-#: src/extensions/hydrogensextension.cpp:86
-#: src/extensions/hydrogensextension.cpp:114
+#: src/extensions/hydrogensextension.cpp:89
+#: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
 msgstr "Add Hydrogens for pH"
 
-#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
 msgstr "pH"
 
@@ -3858,8 +3858,13 @@ msgid "On:"
 msgstr "On:"
 
 #: src/extensions/gamessinputdialog.ui:211
-msgid "Single Point Entry"
-msgstr "Single Point Entry"
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
+msgstr "Single Point Energy"
 
 #: src/extensions/gamessinputdialog.ui:216
 msgid "Equilibrium Geometry"
@@ -4918,14 +4923,6 @@ msgstr "Gaussian Input"
 #: src/extensions/qcheminputdialog.ui:48
 msgid "Calculation:"
 msgstr "Calculation:"
-
-#: src/extensions/gaussianinputdialog.ui:63
-#: src/extensions/molproinputdialog.ui:64
-#: src/extensions/mopacinputdialog.ui:63
-#: src/extensions/nwcheminputdialog.ui:64
-#: src/extensions/qcheminputdialog.ui:64
-msgid "Single Point Energy"
-msgstr "Single Point Energy"
 
 #: src/extensions/gaussianinputdialog.ui:96
 msgid "Processors:"
@@ -6145,6 +6142,9 @@ msgstr ""
 "patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
 "com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,debianmaster@gmail.com,,"
 "jenfraggleubuntu@googlemail.com,,,,,avogadro-devel@lists.sourceforge.net"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "Single Point Entry"
 
 #~ msgid "NMR &Type:"
 #~ msgstr "NMR &Type:"

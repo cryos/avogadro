@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:56-0400\n"
+"POT-Creation-Date: 2009-06-12 11:52-0400\n"
 "PO-Revision-Date: 2009-06-03 17:27+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -1237,7 +1237,7 @@ msgid "Change H to Methyl"
 msgstr ""
 
 #: src/extensions/h2methylextension.cpp:62
-#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
@@ -1258,26 +1258,26 @@ msgstr ""
 msgid "Transform hydrogens to methyl groups"
 msgstr ""
 
-#: src/extensions/hydrogensextension.cpp:42
-#: src/extensions/hydrogensextension.cpp:111
+#: src/extensions/hydrogensextension.cpp:44
+#: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
 msgstr ""
 
-#: src/extensions/hydrogensextension.cpp:46
+#: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
 msgstr ""
 
-#: src/extensions/hydrogensextension.cpp:50
-#: src/extensions/hydrogensextension.cpp:117
+#: src/extensions/hydrogensextension.cpp:52
+#: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
 msgstr ""
 
-#: src/extensions/hydrogensextension.cpp:86
-#: src/extensions/hydrogensextension.cpp:114
+#: src/extensions/hydrogensextension.cpp:89
+#: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
 msgstr ""
 
-#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
 msgstr ""
 
@@ -3743,7 +3743,12 @@ msgid "On:"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:211
-msgid "Single Point Entry"
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:216
@@ -4800,14 +4805,6 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:48
 #: src/extensions/qcheminputdialog.ui:48
 msgid "Calculation:"
-msgstr ""
-
-#: src/extensions/gaussianinputdialog.ui:63
-#: src/extensions/molproinputdialog.ui:64
-#: src/extensions/mopacinputdialog.ui:63
-#: src/extensions/nwcheminputdialog.ui:64
-#: src/extensions/qcheminputdialog.ui:64
-msgid "Single Point Energy"
 msgstr ""
 
 #: src/extensions/gaussianinputdialog.ui:96

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:56-0400\n"
+"POT-Creation-Date: 2009-06-12 11:52-0400\n"
 "PO-Revision-Date: 2009-06-04 13:59+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -1258,7 +1258,7 @@ msgid "Change H to Methyl"
 msgstr "将氢替换为甲基"
 
 #: src/extensions/h2methylextension.cpp:62
-#: src/extensions/hydrogensextension.cpp:69
+#: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
@@ -1279,26 +1279,26 @@ msgstr "氢到甲基"
 msgid "Transform hydrogens to methyl groups"
 msgstr "将氢原子转换为甲基"
 
-#: src/extensions/hydrogensextension.cpp:42
-#: src/extensions/hydrogensextension.cpp:111
+#: src/extensions/hydrogensextension.cpp:44
+#: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
 msgstr "添加氢原子"
 
-#: src/extensions/hydrogensextension.cpp:46
+#: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
 msgstr "添加pH为...时的氢键"
 
-#: src/extensions/hydrogensextension.cpp:50
-#: src/extensions/hydrogensextension.cpp:117
+#: src/extensions/hydrogensextension.cpp:52
+#: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
 msgstr "删除氢原子"
 
-#: src/extensions/hydrogensextension.cpp:86
-#: src/extensions/hydrogensextension.cpp:114
+#: src/extensions/hydrogensextension.cpp:89
+#: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
 msgstr "添加特定pH下的氢原子"
 
-#: src/extensions/hydrogensextension.cpp:86
+#: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
 msgstr "pH"
 
@@ -3831,8 +3831,13 @@ msgid "On:"
 msgstr "On:"
 
 #: src/extensions/gamessinputdialog.ui:211
-msgid "Single Point Entry"
-msgstr "单点进入"
+#: src/extensions/gaussianinputdialog.ui:63
+#: src/extensions/molproinputdialog.ui:64
+#: src/extensions/mopacinputdialog.ui:63
+#: src/extensions/nwcheminputdialog.ui:64
+#: src/extensions/qcheminputdialog.ui:64
+msgid "Single Point Energy"
+msgstr "单点能"
 
 #: src/extensions/gamessinputdialog.ui:216
 msgid "Equilibrium Geometry"
@@ -4891,14 +4896,6 @@ msgstr "Gaussian输入"
 #: src/extensions/qcheminputdialog.ui:48
 msgid "Calculation:"
 msgstr "计算:"
-
-#: src/extensions/gaussianinputdialog.ui:63
-#: src/extensions/molproinputdialog.ui:64
-#: src/extensions/mopacinputdialog.ui:63
-#: src/extensions/nwcheminputdialog.ui:64
-#: src/extensions/qcheminputdialog.ui:64
-msgid "Single Point Energy"
-msgstr "单点能"
 
 #: src/extensions/gaussianinputdialog.ui:96
 msgid "Processors:"
@@ -6115,6 +6112,9 @@ msgstr ""
 ",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
 "sihanzheng@gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,"
 "yjjart@gmail.com,sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "单点进入"
 
 #~ msgid "NMR &Type:"
 #~ msgstr "NMR类型:"

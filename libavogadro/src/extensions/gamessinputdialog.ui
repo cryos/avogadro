@@ -208,7 +208,7 @@
           <widget class="QComboBox" name="basicCalculateCombo">
            <item>
             <property name="text">
-             <string>Single Point Entry</string>
+             <string>Single Point Energy</string>
             </property>
            </item>
            <item>
