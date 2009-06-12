@@ -1,6 +1,6 @@
 /**********************************************************************
   MoleculeFile - MoleculeFileTest class provides unit testing for the
-  MoleculeFile and OpenbabelWrapper class
+  MoleculeFile class
 
   Copyright (C) 2009 Tim Vandermeersch
 
@@ -24,7 +24,6 @@
  **********************************************************************/
 
 #include <QtTest>
-#include <avogadro/openbabelwrapper.h>
 #include <avogadro/moleculefile.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
@@ -38,7 +37,6 @@ using OpenBabel::OBMol;
 using OpenBabel::OBConversion;
 
 using Avogadro::MoleculeFile;
-using Avogadro::OpenbabelWrapper;
 using Avogadro::Molecule;
 using Avogadro::Atom;
 
@@ -114,32 +112,32 @@ void MoleculeFileTest::readWriteMolecule()
   QString filename = "moleculefiletest_tmp.sdf";
 
   // writeMolecule
-  QVERIFY( OpenbabelWrapper::writeMolecule(m_molecule, filename) );
-  QVERIFY( OpenbabelWrapper::writeMolecule(m_molecule, filename, "sdf") );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename) );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "sdf") );
   QString error;
-  QVERIFY( OpenbabelWrapper::writeMolecule(m_molecule, filename, "sdf", &error) );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "sdf", &error) );
   QVERIFY( error.isEmpty() );
 
   // readMolecule
-  Molecule *newMolecule = OpenbabelWrapper::readMolecule(filename);
+  Molecule *newMolecule = MoleculeFile::readMolecule(filename);
   QVERIFY( newMolecule );
   QCOMPARE( newMolecule->numAtoms(), static_cast<unsigned int>(3));
   delete newMolecule;
 
   // test forced format
-  QVERIFY( OpenbabelWrapper::writeMolecule(m_molecule, filename, "xyz", &error) );
+  QVERIFY( MoleculeFile::writeMolecule(m_molecule, filename, "xyz", &error) );
   QVERIFY( error.isEmpty() );
-  newMolecule = OpenbabelWrapper::readMolecule(filename, "xyz", "", &error);
+  newMolecule = MoleculeFile::readMolecule(filename, "xyz", "", &error);
   QVERIFY( error.isEmpty() );
   QVERIFY( newMolecule );
   QCOMPARE( newMolecule->numAtoms(), static_cast<unsigned int>(3));
   delete newMolecule;
 
   // test invalid format
-  QVERIFY( !OpenbabelWrapper::writeMolecule(m_molecule, filename, "invalid_format", &error) );
+  QVERIFY( !MoleculeFile::writeMolecule(m_molecule, filename, "invalid_format", &error) );
   QVERIFY( !error.isEmpty() );
   error.clear();
-  QVERIFY( !OpenbabelWrapper::readMolecule(filename, "invalid_format", "", &error) );
+  QVERIFY( !MoleculeFile::readMolecule(filename, "invalid_format", "", &error) );
   QVERIFY( !error.isEmpty() );
   error.clear();
 
@@ -163,7 +161,7 @@ void MoleculeFileTest::readFile()
 
 
 
-  MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  MoleculeFile* moleculeFile = MoleculeFile::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
@@ -181,7 +179,7 @@ void MoleculeFileTest::readFile()
   conv.Write(&mol, &ofs);
   conv.Write(&mol, &ofs);
 
-  moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  moleculeFile = MoleculeFile::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
@@ -206,9 +204,9 @@ void MoleculeFileTest::readWriteConformers()
   m_molecule->setAllConformers(conformers);
 
   QString filename = "moleculefiletest_tmp.sdf";
-  QVERIFY( OpenbabelWrapper::writeConformers(m_molecule, filename) );
+  QVERIFY( MoleculeFile::writeConformers(m_molecule, filename) );
 
-  MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  MoleculeFile* moleculeFile = MoleculeFile::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), true );
@@ -226,7 +224,7 @@ void MoleculeFileTest::replaceMolecule()
   ofs << "c1ccccc1C  toluene" << std::endl;
   ofs.close();
 
-  MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  MoleculeFile* moleculeFile = MoleculeFile::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
@@ -280,7 +278,7 @@ void MoleculeFileTest::appendMolecule()
   ofs << "c1ccccc1C  toluene" << std::endl;
   ofs.close();
 
-  MoleculeFile* moleculeFile = OpenbabelWrapper::readFile(filename.toAscii().data());
+  MoleculeFile* moleculeFile = MoleculeFile::readFile(filename.toAscii().data());
   QVERIFY( moleculeFile );
   QVERIFY( moleculeFile->errors().isEmpty() );
   QCOMPARE( moleculeFile->isConformerFile(), false );
