@@ -35,7 +35,7 @@ else(QT_LRELEASE_EXECUTABLE)
   message(FATAL_ERROR "Could NOT find lrelease")
 endif(QT_LRELEASE_EXECUTABLE)
 
-FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert PATHS
+FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert-qt4 lconvert PATHS
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Qt3Versions\\4.0.0;InstallDir]/bin"
   "[HKEY_CURRENT_USER\\Software\\Trolltech\\Versions\\4.0.0;InstallDir]/bin"
   $ENV{QTDIR}/bin
