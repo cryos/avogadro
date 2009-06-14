@@ -39,7 +39,6 @@ set(libavogadro_HDRS
   elementtranslator.h
   engine.h
   extension.h
-  filetreeitem.h
   fragment.h
   glhit.h
   glwidget.h

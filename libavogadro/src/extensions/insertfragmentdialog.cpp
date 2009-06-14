@@ -23,7 +23,7 @@
  **********************************************************************/
 
 #include "insertfragmentdialog.h"
-#include "directorytreemodel.h"
+//#include "directorytreemodel.h"
 // Defines INSTALL_PREFIX among other things
 #include "config.h" // krazy:exclude=includes
 
@@ -41,6 +41,7 @@
 #include <QDir>
 #include <QCloseEvent>
 #include <QDebug>
+#include <QFileSystemModel>
 
 using namespace OpenBabel;
 namespace Avogadro {
@@ -51,7 +52,7 @@ namespace Avogadro {
     Molecule     fragment;
     OBConversion conv;
     OBBuilder    builder;
-    DirectoryTreeModel *model;
+    QFileSystemModel *model;
     
     QString      currentFileName;
 
@@ -94,10 +95,16 @@ namespace Avogadro {
 
     // There has to be a better way to set this based on the installation prefix
     m_directoryList = DefaultDirectoryList();
-    d->model = new DirectoryTreeModel(m_directoryList, this);
+    d->model = new QFileSystemModel(this);
+    d->model->setReadOnly(true);
+    QModelIndex rootIndex = d->model->setRootPath(m_directoryList.first());
 
     ui.setupUi(this);
     ui.directoryTreeView->setModel(d->model);
+    ui.directoryTreeView->setRootIndex(rootIndex);
+    for (int i = 1; i < d->model->columnCount(); ++i)
+      ui.directoryTreeView->hideColumn(i);
+
     ui.directoryTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui.directoryTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui.directoryTreeView->setUniformRowHeights(true);
@@ -105,10 +112,10 @@ namespace Avogadro {
 
     connect(ui.insertFragmentButton, SIGNAL(clicked(bool)),
             this, SLOT(insertButtonClicked(bool)));
-    connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
-            this, SLOT(addDirectory(bool)));
-    connect(ui.clearListButton, SIGNAL(clicked(bool)),
-            this, SLOT(clearDirectoryList(bool)));
+    //    connect(ui.addDirectoryButton, SIGNAL(clicked(bool)),
+    //            this, SLOT(addDirectory(bool)));
+    //    connect(ui.clearListButton, SIGNAL(clicked(bool)),
+    //            this, SLOT(clearDirectoryList(bool)));
   }
 
   InsertFragmentDialog::~InsertFragmentDialog()
@@ -121,38 +128,36 @@ namespace Avogadro {
     OBMol obfragment;
 
     QModelIndexList selected = ui.directoryTreeView->selectionModel()->selectedIndexes();
-    if (selected.count() == 1) {
-      QString fileName = d->model->filePath(selected.first());
+    QString fileName = d->model->filePath(selected.first());
 
-      if (!fileName.isEmpty()) {
-        if (fileName == d->currentFileName)
-          return d->fragment; // don't re-read the file
-
-        d->fragment.clear();
-
-        // TODO: Needs porting to MolecularFile
-        OBConversion conv;
-        OBFormat *inFormat = conv.FormatFromExt(fileName.toAscii());
-        if (!inFormat || !conv.SetInFormat(inFormat)) {
-          QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                                tr( "Cannot read file format of file %1." )
-                                .arg( fileName ) );
-          return d->fragment;
-        }
-        std::ifstream ifs;
-        ifs.open(QFile::encodeName(fileName));
-        if (!ifs) {
-          QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
-                                tr( "Cannot read file %1." )
-                                .arg( fileName ) );
-          return d->fragment;
-        }
-
-        conv.Read(&obfragment, &ifs);
-        d->fragment.setOBMol(&obfragment);
-        d->fragment.center();
-        ifs.close();
+    if (!fileName.isEmpty()) {
+      if (fileName == d->currentFileName)
+        return d->fragment; // don't re-read the file
+      
+      d->fragment.clear();
+      
+      // TODO: Needs porting to MolecularFile
+      OBConversion conv;
+      OBFormat *inFormat = conv.FormatFromExt(fileName.toAscii());
+      if (!inFormat || !conv.SetInFormat(inFormat)) {
+        QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
+                              tr( "Cannot read file format of file %1." )
+                              .arg( fileName ) );
+        return d->fragment;
       }
+      std::ifstream ifs;
+      ifs.open(QFile::encodeName(fileName));
+      if (!ifs) {
+        QMessageBox::warning( (QWidget*)this, tr( "Avogadro" ),
+                              tr( "Cannot read file %1." )
+                              .arg( fileName ) );
+        return d->fragment;
+      }
+      
+      conv.Read(&obfragment, &ifs);
+      d->fragment.setOBMol(&obfragment);
+      d->fragment.center();
+      ifs.close();
     }
 
     return d->fragment;
@@ -172,7 +177,7 @@ namespace Avogadro {
 
   void InsertFragmentDialog::refresh()
   {
-    d->model->setDirectoryList(m_directoryList);
+    //    d->model->setDirectoryList(m_directoryList);
     ui.directoryTreeView->update();
   }
 
