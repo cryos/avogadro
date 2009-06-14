@@ -53,7 +53,7 @@ avogadro_plugin(unitcellextension
 
 ### insert fragment
 avogadro_plugin(insertfragmentextension
-"insertfragmentextension.cpp;directorytreemodel.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
+"insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
   insertfragmentdialog.ui)
 
 ### insert peptide (builder)
