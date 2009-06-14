@@ -208,17 +208,15 @@ namespace Avogadro {
       return false;
     }
 
-    // size of the molecule to be replaced (in chars)
-    std::streampos oldSize = d->streampos[i+1] - d->streampos[i];
     std::streampos newSize = ofs.tellp() - d->streampos[i];
-    std::streampos delta = newSize - oldSize; 
-
-    // copy remaining molecules 
-    ifs.seekg(0, std::ios::end);
-    std::streampos endpos = ifs.tellg();
-    ifs.seekg(d->streampos.at(i+1));
-    while (ifs.tellg() < endpos)
-      ofs.put(ifs.get()); // FIXME using istream_iterator or something
+    if (i+1 < d->streampos.size()) {
+      // copy remaining molecules 
+      ifs.seekg(0, std::ios::end);
+      std::streampos endpos = ifs.tellg();
+      ifs.seekg(d->streampos.at(i+1));
+      while (ifs.tellg() < endpos)
+        ofs.put(ifs.get()); // FIXME using istream_iterator or something
+    }
     /*
     std::copy(std::istream_iterator<char>(ifs),
               std::istream_iterator<char>(),
@@ -234,6 +232,10 @@ namespace Avogadro {
 
     // adjust the cached variables
     if (i+1 < d->streampos.size()) {
+      // size of the molecule to be replaced (in chars)
+      std::streampos oldSize = d->streampos[i+1] - d->streampos[i];
+      std::streampos delta = newSize - oldSize; 
+
       for (unsigned int j = i+1; j < d->streampos.size(); ++j) {
         d->streampos[j] += delta;
       }
@@ -667,6 +669,7 @@ namespace Avogadro {
           // increment count
           ++c;
         }
+        m_moleculeFile->streamposRef().pop_back();
 
         // signle molecule files are not conformer files
         if (c == 1) {

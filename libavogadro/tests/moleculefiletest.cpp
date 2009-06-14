@@ -266,6 +266,19 @@ void MoleculeFileTest::replaceMolecule()
   QCOMPARE( toluene->atom(6)->atomicNumber(), 6 );
   delete toluene;
 
+  // replace 1st
+  phenyl = moleculeFile->molecule(0);
+  phenyl->addAtom();
+  phenyl->addAtom();
+  QVERIFY( moleculeFile->replaceMolecule(0, phenyl, filename) );
+  delete phenyl;
+  // check again
+  phenyl = moleculeFile->molecule(0);
+  QVERIFY( phenyl );
+  QCOMPARE( phenyl->numAtoms(), static_cast<unsigned int>(8) );
+  delete phenyl;
+ 
+
   delete moleculeFile;
 }
 

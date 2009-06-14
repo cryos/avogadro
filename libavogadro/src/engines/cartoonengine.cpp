@@ -218,9 +218,7 @@ namespace Avogadro {
       OpenBabel::OBChainsParser chainparser;
       OpenBabel::OBMol mol = molecule->OBMol();
       mol.UnsetFlag(OB_CHAINS_MOL);
-      qDebug() << "UnsetFlag(OB_CHAINS_MOL)";
       chainparser.PerceiveChains(mol);
-      qDebug() << "NumResidues =" << mol.NumResidues();
       ((Molecule*)molecule)->setOBMol(&mol);
     }
  
