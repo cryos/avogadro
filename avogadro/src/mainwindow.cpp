@@ -1130,6 +1130,14 @@ namespace Avogadro
       return false;
     }
 
+    // delete the MoleculeFile before calling saveFile.
+    // We don't want to replace the molecule but save it
+    // to another file. 
+    if (d->moleculeFile) {
+      delete d->moleculeFile;
+      d->moleculeFile = 0;
+    }
+
     // we must save the file before we can set the fileName
     bool result = saveFile( fileName );
 

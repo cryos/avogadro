@@ -122,7 +122,7 @@ namespace Avogadro {
       return 0;
     } else {
       inFormat = conv.FormatFromExt(m_fileName.toAscii());
-      if (!conv.SetInFormat(inFormat)) {
+      if (!inFormat || !conv.SetInFormat(inFormat)) {
         // Input format not supported
         m_error.append(tr("File type for file '%1' is not supported for reading.").arg(m_fileName));
         return 0;
@@ -176,7 +176,7 @@ namespace Avogadro {
       return false;
     } else {
       outFormat = conv.FormatFromExt(m_fileName.toAscii());
-      if (!conv.SetOutFormat(outFormat)) {
+      if (!outFormat || !conv.SetOutFormat(outFormat)) {
         // Output format not supported
         m_error.append(tr("File type for file '%1' is not supported for writing.").arg(m_fileName));
         return false;
@@ -346,7 +346,7 @@ namespace Avogadro {
       return 0;
     } else {
       inFormat = conv.FormatFromExt(fileName.toAscii().data());
-      if (!conv.SetInFormat(inFormat)) {
+      if (!inFormat || !conv.SetInFormat(inFormat)) {
         // Input format not supported
         if (error)
           error->append(QObject::tr("File type for file '%1' is not supported for reading.").arg(fileName));
@@ -408,7 +408,7 @@ namespace Avogadro {
     }
     else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
-      if (outFormat && !conv.SetOutFormat(outFormat)) {
+      if (!outFormat || !conv.SetOutFormat(outFormat)) {
         // Output format not supported
         if (error)
           error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
@@ -495,7 +495,7 @@ namespace Avogadro {
       return false;
     } else {
       outFormat = conv.FormatFromExt(fileName.toAscii());
-      if (!conv.SetOutFormat(outFormat)) {
+      if (!outFormat || !conv.SetOutFormat(outFormat)) {
         // Output format not supported
         if (error)
           error->append(QObject::tr("File type for file '%1' is not supported for writing.").arg(fileName));
@@ -626,7 +626,7 @@ namespace Avogadro {
           return;
         } else {
           inFormat = conv.FormatFromExt(m_moleculeFile->m_fileName.toAscii().data());
-          if (!conv.SetInFormat(inFormat)) {
+          if (!inFormat || !conv.SetInFormat(inFormat)) {
             // Input format not supported
             m_moleculeFile->m_error.append(QObject::tr("File type for file '%1' is not supported for reading.")
                                            .arg(m_moleculeFile->m_fileName));
@@ -666,6 +666,12 @@ namespace Avogadro {
           m_moleculeFile->titlesRef().append(currentOBMol.GetTitle());
           // increment count
           ++c;
+        }
+
+        // signle molecule files are not conformer files
+        if (c == 1) {
+          m_moleculeFile->setConformerFile(false);
+          m_moleculeFile->m_conformers.clear();
         }
 
         // check for empty titles
