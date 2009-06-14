@@ -98,6 +98,7 @@ namespace Avogadro
 #else
     QPointer<SaveDialog> dialog = new SaveDialog(widget, windowTitle, defaultDirectory, fileName, filters, defaultSuffix);
     dialog->selectFilter(defaultFilter);
+    dialog->updateDefaultSuffix();
     if(dialog->exec())
     {
       result = dialog->selectedFiles().first();
