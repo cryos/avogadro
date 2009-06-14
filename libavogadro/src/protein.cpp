@@ -753,17 +753,37 @@ namespace Avogadro {
           residue2 = swap;
         }
 
+        Eigen::Vector3d H_pos(Eigen::Vector3d::Zero());
         Atom *H = 0, *N = 0, *C = 0, *O = 0;
+        // find N in first residue
         foreach (unsigned long id, residue1->atoms()) {
-          if (residue1->atomId(id).trimmed() == "N") N = d->molecule->atomById(id);
-          if (residue1->atomId(id).trimmed() == "H") H = d->molecule->atomById(id);
+          if (residue1->atomId(id).trimmed() == "N") 
+            N = d->molecule->atomById(id);
         }
+        if (!N)
+          continue;
+        
+        // find neighboring H, or compute it's position if there are no hydrogens
+        foreach (unsigned long nbrId, N->neighbors()) {
+          Atom *neighbor = d->molecule->atomById(nbrId);
+          if (neighbor->isHydrogen()) {
+            H = d->molecule->atomById(nbrId);
+            H_pos = *H->pos(); 
+            break;
+          } else {
+            H_pos += *N->pos() - *neighbor->pos();
+          }
+        }
+        if (!H) {
+          H_pos = *N->pos() + 1.1 * H_pos.normalized();           
+        }
+
+        // find C & O in residue 2
         foreach (unsigned long id, residue2->atoms()) {
           if (residue2->atomId(id).trimmed() == "C") C = d->molecule->atomById(id);
           if (residue2->atomId(id).trimmed() == "O") O = d->molecule->atomById(id);
         }
-
-        if (!C || !O || !N || !H)
+        if (!C || !O)
           continue;
 
         //  C=O ~ H-N
@@ -771,8 +791,8 @@ namespace Avogadro {
         //  C +0.42e   O -0.42e
         //  H +0.20e   N -0.20e
         double rON = (*O->pos() - *N->pos()).norm();
-        double rCH = (*C->pos() - *H->pos()).norm();
-        double rOH = (*O->pos() - *H->pos()).norm();
+        double rCH = (*C->pos() - H_pos).norm();
+        double rOH = (*O->pos() - H_pos).norm();
         double rCN = (*C->pos() - *N->pos()).norm();
 
         double eON = 332 * (-0.42 * -0.20) / rON;

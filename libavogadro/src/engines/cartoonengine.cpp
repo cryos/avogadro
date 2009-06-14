@@ -34,8 +34,10 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/mesh.h>
 #include <avogadro/painterdevice.h>
-
 #include <avogadro/protein.h>
+
+#include <openbabel/mol.h>
+#include <openbabel/chains.h>
 
 #include <QMessageBox>
 #include <QString>
@@ -210,9 +212,18 @@ namespace Avogadro {
     // Get a list of residues for the molecule
     const Molecule *molecule = pd->molecule();
 
-    if (molecule->numResidues() == 0)
-      return; // There's no use generating meshes for non-biomolecules
-
+    //if (molecule->numResidues() == 0)
+    //  return; // There's no use generating meshes for non-biomolecules
+    if (molecule->numResidues() == 0) {
+      OpenBabel::OBChainsParser chainparser;
+      OpenBabel::OBMol mol = molecule->OBMol();
+      mol.UnsetFlag(OB_CHAINS_MOL);
+      qDebug() << "UnsetFlag(OB_CHAINS_MOL)";
+      chainparser.PerceiveChains(mol);
+      qDebug() << "NumResidues =" << mol.NumResidues();
+      ((Molecule*)molecule)->setOBMol(&mol);
+    }
+ 
     Color *map = colorMap(); // possible custom color map
     if (!map) map = pd->colorMap(); // fall back to global color map
  
