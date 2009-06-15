@@ -163,6 +163,7 @@ namespace Avogadro {
           if (QString(residue->chainID()) != initChainID)
             continue;
           initChainNum = residue->chainNumber();
+          break;
         }
 
         if (initChainNum < 0) {
@@ -589,10 +590,58 @@ namespace Avogadro {
     return d->chains.at(residue->chainNumber()).indexOf(residue);
   }
 
+  bool isAminoAcid(Residue *residue)
+  {
+    QString resname = residue->name();
+    if (resname == "ALA")
+      return true;
+    if (resname == "ARG")
+      return true;
+    if (resname == "ASN")
+      return true;
+    if (resname == "ASP")
+      return true;
+    if (resname == "CYS")
+      return true;
+    if (resname == "GLU")
+      return true;
+    if (resname == "GLN")
+      return true;
+    if (resname == "GLY")
+      return true;
+    if (resname == "HIS")
+      return true;
+    if (resname == "ILE")
+      return true;
+    if (resname == "LEU")
+      return true;
+    if (resname == "LYS")
+      return true;
+    if (resname == "MET")
+      return true;
+    if (resname == "PHE")
+      return true;
+    if (resname == "PRO")
+      return true;
+    if (resname == "SER")
+      return true;
+    if (resname == "THR")
+      return true;
+    if (resname == "TRP")
+      return true;
+    if (resname == "TYR")
+      return true;
+    if (resname == "VAL")
+      return true;
+    return false;
+  }
+
   void Protein::iterateBackward(Atom *prevN, Atom *currC, QVector<bool> &visited)
   {
     Residue *residue = currC->residue();
     visited[residue->index()] = true;
+    if (!isAminoAcid(residue))
+      return;
 
     d->chains[residue->chainNumber()].prepend(residue);
 
@@ -635,6 +684,8 @@ namespace Avogadro {
   {
     Residue *residue = currN->residue();
     visited[residue->index()] = true;
+    if (!isAminoAcid(residue))
+      return;
 
     d->chains[residue->chainNumber()].append(residue);
 
@@ -681,6 +732,8 @@ namespace Avogadro {
     // determine the number of chains
     unsigned int numChains = 0;
     foreach (Residue *residue, d->molecule->residues()) {
+      if (!isAminoAcid(residue))
+        continue;
       if (residue->chainNumber() > numChains)
         numChains = residue->chainNumber();
     }
