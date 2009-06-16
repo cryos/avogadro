@@ -50,7 +50,7 @@ class Extension(QObject):
     return actions
 
   def menuPath(self, action):
-    return "Python Examples"
+    return "Scripts"
 
   def performAction(self, action, glwidget):
     self.emit(SIGNAL("message(const QString&)"), "performing action...")
