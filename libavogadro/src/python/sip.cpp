@@ -127,11 +127,19 @@ struct QClass_converters
   {
     static PyObject* convert(const T& object)
     {
+#ifdef SIP_4_8
+      const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
+#else
       sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
+#endif
       if (!type)
         return incref(Py_None);
       
+#ifdef SIP_4_8
+      PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+#else
       PyObject *sip_obj = sip_API->api_convert_from_instance((void*)(&object), type, 0);
+#endif
       if (!sip_obj)
         return incref(Py_None);
 
@@ -142,12 +150,20 @@ struct QClass_converters
     {
       if (!object)
         return incref(Py_None);
-      
+ 
+#ifdef SIP_4_8
+      const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
+#else     
       sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
+#endif
       if (!type)
         return incref(Py_None);
       
+#ifdef SIP_4_8
+      PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+#else
       PyObject *sip_obj = sip_API->api_convert_from_instance(object, type, 0);
+#endif
       if (!sip_obj)
         return incref(Py_None);
 
@@ -157,10 +173,20 @@ struct QClass_converters
 
   static void* QClass_from_PyQt(PyObject *obj_ptr)
   {
+#ifdef SIP_4_8
+    if (PyObject_TypeCheck(obj_ptr, sipWrapper_Type))
+#else
     if (!sip_API->api_wrapper_check(obj_ptr))
+#endif
       throw_error_already_set();
+    
     // transfer ownership from python to C++
+#ifdef SIP_4_8
+    sip_API->api_transfer_to(obj_ptr, 0);
+#else
     sip_API->api_transfer(obj_ptr, 1);
+#endif
+    
     // reinterpret to sipWrapper
     sipWrapper *wrapper = reinterpret_cast<sipWrapper*>(obj_ptr);
     // return the C++ pointer
@@ -188,14 +214,22 @@ struct QList_QAction_to_python_list_PyQt
 
   static PyObject* convert(const QList<QAction*> &qList)
   {
+#ifdef SIP_4_8
+    const sipTypeDef *type = sip_API->api_find_type("QAction");
+#else
     sipWrapperType *type = sip_API->api_find_class("QAction");
+#endif
     if (!type)
       return incref(Py_None);
      
     boost::python::list pyList;
 
     foreach (QAction *action, qList) {
+#ifdef SIP_4_8
+      PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+#else
       PyObject *sip_obj = sip_API->api_convert_from_instance(action, type, 0);
+#endif
       if (!sip_obj)
         continue;
       boost::python::object real_obj = object(handle<>(sip_obj));
@@ -317,11 +351,19 @@ PyObject* toPyQt(T *obj)
   if (!obj)
     return incref(Py_None);
       
+#ifdef SIP_4_8
+  const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
+#else
   sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
+#endif
   if (!type)
     return incref(Py_None);
       
+#ifdef SIP_4_8
+  PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+#else
   PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
+#endif
   if (!sip_obj)
     return incref(Py_None);
 
