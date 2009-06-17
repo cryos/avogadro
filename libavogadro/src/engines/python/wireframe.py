@@ -50,11 +50,11 @@ class Engine(QObject):
       delta = beginAtom.pos - endAtom.pos
       center = (beginAtom.pos + endAtom.pos) / 2
 
-      color.set(beginAtom)
+      color.setFromPrimitive(beginAtom)
       painter.setColor(color)
       painter.drawLine(beginAtom.pos, center, self.width)
 
-      color.set(endAtom)
+      color.setFromPrimitive(endAtom)
       painter.setColor(color)
       painter.drawLine(endAtom.pos, center, self.width)
 
