@@ -1,0 +1,20 @@
+/vasptmp/8LiH00001x00003/
+
+# output options
+LWAVE  = .FALSE. # write or don't write WAVECAR
+LCHARG = .FALSE. # write or don't write CHG and CHGCAR
+LELF   = .FALSE. # write ELF
+
+# ionic relaxation
+NSW = 100        # number of ionic steps
+IBRION = 2       # 2=conjucate gradient, 1=Newton like
+ISIF = 3         # 3=relax everything, 2=relax ions only, 4=keep volume fixed
+
+# precision parameters
+EDIFF = 1E-3     # 1E-3 very low precision for pre-relaxation, use 1E-5 next
+EDIFFG = 1E-2    # usually: 10 * EDIFF
+PREC = med       # precision low, med, high, accurate
+
+# electronic relaxation
+ISMEAR = -5      # -5 = tetraedon, 1..N = Methfessel
+ENCUT = 250      # cutoff energy
