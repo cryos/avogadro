@@ -1,0 +1,7 @@
+This is a sample of a VASP input set. The POSCAR contains the positions of the atoms and unit cell parameters. The other important file (not included) is the CONTCAR file, which contains the output cell and positions in the same format as the POSCAR.
+
+Information on the files can be found here:
+
+http://cms.mpi.univie.ac.at/vasp/vasp/vasp.html
+
+Currently, OpenBabel will open either the POSCAR and CONTCAR files using the OBConversion::ReadFile(). OBConversion::Read() will _not_ work, as the entire path to the POSCAR/CONTCAR is needed. The POTCAR file contains the identities of the atoms and is also necessary for reading.
