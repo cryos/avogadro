@@ -1,20 +1,21 @@
 # Czech translation for avogadro
 # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# Pavel Fric <pavelfric@seznam.cz>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-09 10:08+0000\n"
-"Last-Translator: Vojtěch Trefný <vojtech.trefny@gmail.com>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2009-06-14 07:27+0000\n"
+"Last-Translator: fri <pavelfric@seznam.cz>\n"
+"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-12 00:56+0000\n"
+"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,22 +25,23 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/><br/"
-">Pro více informací navštivte <a href=\"http://avogadro.openmolecules.net/"
-"\">domovskou stránku projektu</a>.<br/><br/>Program je poskytován TAK JAK JE "
-"BEZ JAKÉKOLI ZÁRUKY, VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ "
-"ÚČEL.<br/>"
+"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
+"%3<br/><br/>Pro více informací navštivte <a "
+"href=\"http://avogadro.openmolecules.net/\">domovskou stránku "
+"projektu</a>.<br/><br/>Program je poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, "
+"VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:814
-#: src/mainwindow.cpp:837 src/mainwindow.cpp:988 src/mainwindow.cpp:1010
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1381 src/mainwindow.cpp:2394
-#: src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
+#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
+#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -63,9 +65,10 @@ msgstr "Smazat molekulu"
 msgid "Clear Atoms"
 msgstr "Smazat atomy"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895:252 rc.cpp:260
+#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -130,7 +133,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:692
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Počítačový výstup chemie"
 
 #: src/mainwindow.cpp:693
 msgid "Crystallographic Interchange CIF"
@@ -146,7 +149,7 @@ msgstr "Gaussovský 98/03 výstup"
 
 #: src/mainwindow.cpp:696
 msgid "Gaussian Formatted Checkpoint"
-msgstr ""
+msgstr "Gaussovské formátované kontrolní místo"
 
 #: src/mainwindow.cpp:697
 msgid "HyperChem"
@@ -176,47 +179,40 @@ msgstr "XYZ"
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr "Načítání %1..."
+msgstr "Nahrávání %1..."
 
 #: src/mainwindow.cpp:777
 #, qt-format
 msgid "Loading %1..."
-msgstr "Načítám %1..."
+msgstr "Nahrává se %1..."
 
 #: src/mainwindow.cpp:795
-#, fuzzy
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr "Načítání souboru molekul selhalo."
+msgstr "Provádí se čtení souboru s více molekulami. Chvíli to může trvat..."
 
 #: src/mainwindow.cpp:815
-#, fuzzy
 msgid "This file does not contain 3D coordinates."
-msgstr ""
-"Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo "
-"úpravou."
+msgstr "Tento soubor neobsahuje 3D souřadnice."
 
 #: src/mainwindow.cpp:820
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Chcete, aby Avogadro sestavil hrubé uspořádání?"
 
 #: src/mainwindow.cpp:838
-#, fuzzy
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo "
-"úpravou."
+"Tento soubor neobsahuje 3D souřadnice.\n"
+"Mohou nastat problémy se čtením nebo úpravou."
 
 #: src/mainwindow.cpp:888
-#, fuzzy
 msgid "Select Molecule to View"
-msgstr "Uložit molekulu jako"
+msgstr "Vybrat molekulu pro zobrazení"
 
 #: src/mainwindow.cpp:913
-#, fuzzy
 msgid "Molecule Title"
-msgstr "Molekula"
+msgstr "Název molekuly"
 
 #: src/mainwindow.cpp:982
 msgid "Atoms: "
@@ -227,9 +223,9 @@ msgid " Bonds: "
 msgstr " Vazby: "
 
 #: src/mainwindow.cpp:989
-#, fuzzy, qt-format
+#, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr "Načítání souboru molekul selhalo."
+msgstr "Načítání souboru molekul selhalo, soubor %1."
 
 #: src/mainwindow.cpp:998
 msgid "File Loaded..."
@@ -237,25 +233,26 @@ msgstr "Soubor načten..."
 
 #: src/mainwindow.cpp:1011
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
+msgstr "Chcete uložit změny, které jste provedl v dokumentu?"
 
 #: src/mainwindow.cpp:1020
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
+"Změny, které jste provedl v dokumentu, budou ztraceny, pokud je neuložíte."
 
 #: src/mainwindow.cpp:1024
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: src/mainwindow.cpp:1025
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:1027
 msgid "Save..."
-msgstr ""
+msgstr "Uložit..."
 
 #: src/mainwindow.cpp:1027 src/savedialog.cpp:65
 msgid "Save"
@@ -267,11 +264,11 @@ msgstr "Vstup GAMESS"
 
 #: src/mainwindow.cpp:1111
 msgid "Gaussian Cartesian Input"
-msgstr ""
+msgstr "Gaussovský kartézský vstup"
 
 #: src/mainwindow.cpp:1112
 msgid "Gaussian Z-matrix Input"
-msgstr ""
+msgstr "Gaussovský Z-maticový vstup"
 
 #: src/mainwindow.cpp:1113
 msgid "MDL SDfile"
@@ -279,7 +276,7 @@ msgstr "MDL SDfile"
 
 #: src/mainwindow.cpp:1115
 msgid "NWChem Input"
-msgstr ""
+msgstr "NWChem vstup"
 
 #: src/mainwindow.cpp:1120
 msgid "Save Molecule As"
@@ -303,7 +300,7 @@ msgstr "JPEG"
 
 #: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
 msgid "Export Bitmap Graphics"
-msgstr "Exportovat bitmapu"
+msgstr "Vyvést bitmapu do souboru"
 
 #: src/mainwindow.cpp:1382
 #, qt-format
@@ -316,7 +313,7 @@ msgstr "PDF"
 
 #: src/mainwindow.cpp:1397
 msgid "Common vector image formats"
-msgstr "Běžné vektorové formáty"
+msgstr "Běžné vektorové obrázkové formáty"
 
 #: src/mainwindow.cpp:1402
 msgid "SVG"
@@ -329,15 +326,15 @@ msgstr "EPS"
 #: src/mainwindow.cpp:1558
 #, qt-format
 msgid "Untitled %1"
-msgstr ""
+msgstr "Bez názvu %1"
 
 #: src/mainwindow.cpp:1663
 msgid "Unable to paste molecule."
-msgstr "Nemohu vložit molekulu."
+msgstr "Nelze vložit molekulu."
 
 #: src/mainwindow.cpp:1692
 msgid "Paste failed (format unavailable)."
-msgstr "Vložení selhalo (nedostupný formát)"
+msgstr "Vložení selhalo (nedostupný formát)."
 
 #: src/mainwindow.cpp:1761
 msgid "Copy failed (mdl unavailable)."
@@ -350,7 +347,7 @@ msgid "View %1"
 msgstr "Zobrazit %1"
 
 #: src/mainwindow.cpp:1947
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Zobrazit %1"
@@ -373,18 +370,18 @@ msgstr "Ctrl+Backspace"
 
 #: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "nepojmenováno"
+msgstr "bez názvu"
 
 #: src/mainwindow.cpp:2388
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
-msgstr ""
+msgstr "[*]Avogadro"
 
 #: src/mainwindow.cpp:2393
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:2814
 msgid "Add"
@@ -392,7 +389,7 @@ msgstr "Přidat"
 
 #: src/mainwindow.cpp:2819
 msgid "Duplicate"
-msgstr "Duplikovat"
+msgstr "Zdvojit"
 
 #: src/mainwindow.cpp:2824
 msgid "Remove"
@@ -400,28 +397,29 @@ msgstr "Odstranit"
 
 #: src/mainwindow.cpp:2852
 msgid "No tools or engines loaded."
-msgstr ""
+msgstr "Nejsou nahrány žádné nástroje nebo stroje."
 
 #: src/mainwindow.cpp:2854
 msgid "No engines loaded."
-msgstr ""
+msgstr "Nejsou nahrány žádné stroje."
 
 #: src/mainwindow.cpp:2856
 msgid "No tools loaded."
-msgstr "Nejsou načteny žádné nástroje"
+msgstr "Nejsou nahrány žádné nástroje."
 
 #: src/mainwindow.cpp:2857
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
-" Aplikace pravděpodobně nebude fungovat správně. Prosím opravte tuto chybu."
+" Aplikace pravděpodobně nebude fungovat správně. Prosím, opravte tuto chybu."
 
 #: src/mainwindow.cpp:2901
 msgid "Objects"
-msgstr "Objekty"
+msgstr "Předměty"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2907:212
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2907 :212
 msgid "Colors"
 msgstr "Barvy"
 
@@ -435,7 +433,7 @@ msgstr "Název: "
 
 #: src/pluginsettings.cpp:56
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifikátor: "
 
 #: src/pluginsettings.cpp:57
 msgid "File: "
@@ -475,7 +473,7 @@ msgstr "Radikály"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr "vyzba %1"
+msgstr "vazba %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
@@ -486,7 +484,7 @@ msgstr "Popisek"
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr ""
+msgstr "Uživatelské výběry"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
@@ -494,73 +492,76 @@ msgstr "Chyba"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr ""
+msgstr "pouze popisky mohou mít podčlánky"
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :250
 msgid "Item"
-msgstr ""
+msgstr "Článek"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr ""
+msgstr "Rejstřík"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr ""
+msgstr "Nízký"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :268
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr ""
+msgstr "Střední"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr ""
+msgstr "Vysoký"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr ""
+msgstr "Neurčen"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :274
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr ""
+msgstr "Žádný"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr ""
+msgstr "Nějaký"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "Střed"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "Spousta"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr ""
+msgstr "Neurčen"
 
 #: src/updatecheck.cpp:81
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Kontrola aktualizace po síti selhala"
 
 #: src/updatecheck.cpp:82
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Vypršení času na síti nebo jiná chyba."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr ""
+msgstr "Je dostupná aktualizovaná verze Avogadra"
 
 #: src/addenginedialog.ui:13
 msgid "Add Display Type"
@@ -572,7 +573,7 @@ msgstr "Typ:"
 
 #: src/addenginedialog.ui:32
 msgid "Name:"
-msgstr "Jméno:"
+msgstr "Název:"
 
 #: src/addenginedialog.ui:45
 msgid "Description:"
@@ -580,35 +581,38 @@ msgstr "Popis:"
 
 #: src/enginecolorswidget.ui:13
 msgid "Form"
-msgstr ""
+msgstr "Formulář"
 
 #: src/enginecolorswidget.ui:24
 msgid "Color by:"
 msgstr "Barva dle:"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
-msgstr ""
+msgstr "Přidat vybrané základní"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
-msgstr ""
+msgstr "Odstranit vybrané základní"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
-msgstr ""
+msgstr "Přidat všechny základní"
 
 #: src/engineprimitiveswidget.ui:83
 msgid "Display Only Selected Primitives"
-msgstr ""
+msgstr "Zobrazit pouze vybrané základní"
 
 #: src/engineprimitiveswidget.ui:86
 msgid "Assign to Selection"
-msgstr ""
+msgstr "Přiřadit k výběru"
 
 #: src/importdialog.ui:13
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Zavést soubor s molekulou"
 
 #: src/importdialog.ui:24
 msgid "Filename:"
@@ -624,15 +628,15 @@ msgstr "Formát:"
 
 #: src/importdialog.ui:53
 msgid "Automatically detect from extension"
-msgstr "Automaticky detekovat z přípony"
+msgstr "Automaticky zjistit z přípony"
 
 #: src/importdialog.ui:63
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Rozpoznat vazbu"
 
 #: src/importdialog.ui:73
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Rozpoznat uspořádání vazby"
 
 #: src/importdialog.ui:83
 msgid "Coordinates are in Ångstroms"
@@ -652,57 +656,61 @@ msgstr "Otevřít &nedávné"
 
 #: src/mainwindow.ui:55
 msgid "Export"
-msgstr "Exportovat"
+msgstr "Vyvést do souboru"
 
 #: src/mainwindow.ui:62
 msgid "Import"
-msgstr "Importovat"
+msgstr "Zavést ze souboru"
 
 #: src/mainwindow.ui:81
 msgid "Se&ttings"
-msgstr ""
+msgstr "Na&stavení"
 
 #: src/mainwindow.ui:85
 msgid "Toolbars"
-msgstr "Lišty"
+msgstr "Nástrojové lišty"
 
 #: src/mainwindow.ui:94
 msgid "&Build"
-msgstr "&Sestavit"
+msgstr "&Sestavení"
 
 #: src/mainwindow.ui:99
 msgid "&View"
-msgstr "&Zobrazit"
+msgstr "&Pohled"
 
 #: src/mainwindow.ui:120
 msgid "&Edit"
-msgstr "&Upravit"
+msgstr "&Úpravy"
 
 #: src/mainwindow.ui:133
 msgid "E&xtensions"
-msgstr ""
+msgstr "Roz&šíření"
 
 #: src/mainwindow.ui:138
 msgid "&Select"
-msgstr "&Vybrat"
+msgstr "&Výběr"
 
 #: src/mainwindow.ui:155
 msgid "Main Toolbar"
-msgstr "Hlavní lišta"
+msgstr "Hlavní nástrojová lišta"
 
-#: src/mainwindow.ui:192 src/settingsdialog.ui:255
+#: src/mainwindow.ui:192
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
-msgstr ""
+msgstr "Projektový strom"
 
-#: src/mainwindow.ui:225 src/pluginsettings.ui:23
+#: src/mainwindow.ui:225
+#: src/pluginsettings.ui:23
 msgid "Display Types"
-msgstr ""
+msgstr "Typy ukázek"
 
-#: src/mainwindow.ui:234 src/pluginsettings.ui:28
+#: src/mainwindow.ui:234
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Nástroje"
 
-#: src/mainwindow.ui:255 src/mainwindow.ui:267
+#: src/mainwindow.ui:255
+#: src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Otevřít"
 
@@ -710,7 +718,8 @@ msgstr "&Otevřít"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276 src/mainwindow.ui:288
+#: src/mainwindow.ui:276
+#: src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Ukončit"
 
@@ -726,7 +735,8 @@ msgstr "Nedávné"
 msgid "&Clear Recent"
 msgstr "&Smazat nedávné"
 
-#: src/mainwindow.ui:307 src/mainwindow.ui:319
+#: src/mainwindow.ui:307
+#: src/mainwindow.ui:319
 msgid "&New"
 msgstr "&Nový"
 
@@ -734,15 +744,17 @@ msgstr "&Nový"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328 src/mainwindow.ui:340
+#: src/mainwindow.ui:328
+#: src/mainwindow.ui:340
 msgid "&Close"
-msgstr "&zavřít"
+msgstr "&Zavřít"
 
 #: src/mainwindow.ui:331
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349 src/mainwindow.ui:361
+#: src/mainwindow.ui:349
+#: src/mainwindow.ui:361
 msgid "&Save"
 msgstr "&Uložit"
 
@@ -760,11 +772,11 @@ msgstr "Ctrl+Shift+S"
 
 #: src/mainwindow.ui:382
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Obnovit původní stav"
 
 #: src/mainwindow.ui:391
 msgid "&Graphics..."
-msgstr ""
+msgstr "&Grafické znázornění..."
 
 #: src/mainwindow.ui:400
 msgid "&Full Screen Mode"
@@ -772,7 +784,7 @@ msgstr "&Celoobrazovkový režim"
 
 #: src/mainwindow.ui:403
 msgid "Esc"
-msgstr ""
+msgstr "Esc"
 
 #: src/mainwindow.ui:412
 msgid "Set &Background Color..."
@@ -840,7 +852,7 @@ msgstr "Smazat"
 
 #: src/mainwindow.ui:519
 msgid "Backspace"
-msgstr ""
+msgstr "Backspace"
 
 #: src/mainwindow.ui:524
 msgid "Select All"
@@ -868,7 +880,7 @@ msgstr "Návody"
 
 #: src/mainwindow.ui:557
 msgid "Duplicate View"
-msgstr "Duplikovat pohled"
+msgstr "Zdvojit pohled"
 
 #: src/mainwindow.ui:569
 msgid "Display Axes"
@@ -876,7 +888,7 @@ msgstr "Zobrazit osy"
 
 #: src/mainwindow.ui:577
 msgid "Debug Information"
-msgstr ""
+msgstr "Informace o vyhledávání a odstraňování chyb"
 
 #: src/mainwindow.ui:585
 msgid "Avogadro Help"
@@ -900,39 +912,40 @@ msgstr "Domovská stránka Avogadro"
 
 #: src/mainwindow.ui:610
 msgid "Plugin Manager..."
-msgstr ""
+msgstr "Správce přídavných modulů..."
 
 #: src/mainwindow.ui:619
 msgid "Project Tree Editor..."
-msgstr ""
+msgstr "Editor projektového stromu..."
 
 #: src/mainwindow.ui:628
 msgid "Detach View"
-msgstr ""
+msgstr "Odstranit pohled"
 
 #: src/mainwindow.ui:637
 msgid "Molecule File..."
-msgstr ""
+msgstr "Soubor s molekulou..."
 
 #: src/mainwindow.ui:652
 msgid "Use Quick Render"
-msgstr ""
+msgstr "Použít rychlé vykreslení"
 
 #: src/mainwindow.ui:657
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Vektorové grafické znázornění..."
 
 #: src/mainwindow.ui:665
 msgid "Display Unit Cell Axes"
-msgstr ""
+msgstr "Zobrazit osy jednotkových buněk"
 
 #: src/mainwindow.ui:673
 msgid "All Molecules in File..."
-msgstr ""
+msgstr "Všechny molekuly v souboru..."
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
-msgstr "Zásuvné moduly"
+msgstr "Přídavné moduly"
 
 #: src/pluginsettings.ui:33
 msgid "Extensions"
@@ -940,43 +953,45 @@ msgstr "Rozšíření"
 
 #: src/pluginsettings.ui:52
 msgid "Details"
-msgstr "Detaily"
+msgstr "Podrobnosti"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
-msgstr ""
+msgstr "Články stromu"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Typ"
 
 #: src/projecttreeeditor.ui:48
 msgid "New Item"
-msgstr ""
+msgstr "Nový článek"
 
 #: src/projecttreeeditor.ui:51
 msgid "&New Item"
-msgstr ""
+msgstr "&Nový článek"
 
 #: src/projecttreeeditor.ui:62
 msgid "New Subitem"
-msgstr ""
+msgstr "Nový podčlánek"
 
 #: src/projecttreeeditor.ui:65
 msgid "New &Subitem"
-msgstr ""
+msgstr "Nový &podčlánek"
 
 #: src/projecttreeeditor.ui:76
 msgid "Delete Item"
-msgstr ""
+msgstr "Smazat článek"
 
 #: src/projecttreeeditor.ui:79
 msgid "&Delete Item"
-msgstr ""
+msgstr "&Smazat článek"
 
 #: src/projecttreeeditor.ui:103
 msgid "Move Item Left (before Parent Item)"
-msgstr ""
+msgstr "Pohnout článkem doleva (před rodičovský článek)"
 
 #: src/projecttreeeditor.ui:106
 msgid "L"
@@ -985,6 +1000,8 @@ msgstr "L"
 #: src/projecttreeeditor.ui:117
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
 msgstr ""
+"Pohnout článkem doprava (jako první podčlánek následujícího sourozeneckého "
+"článku)"
 
 #: src/projecttreeeditor.ui:120
 msgid "R"
@@ -992,7 +1009,7 @@ msgstr "R"
 
 #: src/projecttreeeditor.ui:133
 msgid "Move Item Up"
-msgstr ""
+msgstr "Pohnout článkem nahoru"
 
 #: src/projecttreeeditor.ui:136
 msgid "U"
@@ -1000,7 +1017,7 @@ msgstr "U"
 
 #: src/projecttreeeditor.ui:147
 msgid "Move Item Down"
-msgstr ""
+msgstr "Pohnout článkem dolů"
 
 #: src/projecttreeeditor.ui:150
 msgid "D"
@@ -1008,13 +1025,14 @@ msgstr "D"
 
 #: src/projecttreeeditor.ui:187
 msgid "Alias"
-msgstr "Alias"
+msgstr "Přezdívka"
 
 #: src/projecttreeeditor.ui:217
 msgid "Settings..."
 msgstr "Nastavení..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr "Obecné"
 
@@ -1022,28 +1040,38 @@ msgstr "Obecné"
 msgid "Quality:"
 msgstr "Kvalita:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
-msgstr ""
+msgstr "Stanovit obecnou kvalitu vykreslování."
 
 #: src/settingsdialog.ui:100
 msgid "Fog:"
-msgstr ""
+msgstr "Mlha:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
-"Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, Pavel Fric, "
+",Launchpad Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch "
+"Trefný,fri,milboy"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
-"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,venca."
-"rehak@seznam.cz,vojtech.trefny@gmail.com,"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
+"ech.trefny@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,"
+",avogadro-"
+"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com, "
+"pavelfric@seznam.cz,,,avogadro-"
+"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pa"
+"velfric@seznam.cz,"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1051,25 +1079,26 @@ msgstr ""
 #~ "Nemohu načíst soubor %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Nemohu rozpoznat typ souboru %1."
 
-#~ msgid ""
-#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
-#~ "bonds and do a quick optimization?"
-#~ msgstr ""
-#~ "Tento soubor obsahuje pouze 2D souřadnice. Přejete si, aby se je Avogadro "
-#~ "pokusilo načíst a optimalizovat?"
+#, qt-format
+#~ msgid "Cannot read file %1."
+#~ msgstr "Nemohu načíst soubor %1."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze "
 #~ "první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být "
 #~ "ztraceny."
 
+#~ msgid "Navigate"
+#~ msgstr "Navigace"
+
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1077,6 +1106,7 @@ msgstr ""
 #~ "Nemohu zapisovat do souboru %1:\n"
 #~ "%2"
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Nemohu zapisovat do souboru %1."
 
@@ -1089,15 +1119,6 @@ msgstr ""
 #~ msgid "Saving molecular file failed."
 #~ msgstr "Uložení molekulového souboru selhalo."
 
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Cannot read file %1."
-#~ msgstr "Nemohu načíst soubor %1."
-
-#~ msgid "Navigate"
-#~ msgstr "Navigace"
-
 #~ msgid ""
 #~ "The document has been modified.\n"
 #~ "Do you want to save your changes?"
@@ -1108,6 +1129,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1498,21 +1520,25 @@ msgstr ""
 #~ msgid "Open trajectory file"
 #~ msgstr "Otevřít soubor trajektorie"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "Animation..."
 #~ msgstr "Animace..."
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Načítání souboru trajektorie %1 selahalo."
 
 #~ msgid "Animation"
 #~ msgstr "Animace"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Počet atomů: %1"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Počet rotačních vazeb: %1"
 
@@ -1528,6 +1554,7 @@ msgstr ""
 #~ msgid "Fix Selected Atoms"
 #~ msgstr "Ukontvit vybrané atomy"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energie = %1 %2"
 
@@ -1678,6 +1705,7 @@ msgstr ""
 #~ msgid "Bond Order"
 #~ msgstr "Druh vazby"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -1693,18 +1721,21 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotace"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Vazba %1"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Úhel (°)"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Úhel %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Zkroucení (°)"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Zkroucení %1"
 
@@ -1834,15 +1865,19 @@ msgstr ""
 #~ msgid " Show Angles"
 #~ msgstr " Zobrazit úhly"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Vzdálenost (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Vzdálenost (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Úhel: %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Vzdálenost (3->4): %1 %2"
 
@@ -2539,6 +2574,13 @@ msgstr ""
 #~ msgid "pH"
 #~ msgstr "pH"
 
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Tento soubor obsahuje pouze 2D souřadnice. Přejete si, aby se je Avogadro "
+#~ "pokusilo načíst a optimalizovat?"
+
 #~ msgid "Abort Calculation"
 #~ msgstr "Přerušit výpočet"
 
@@ -2603,8 +2645,8 @@ msgstr ""
 #~ msgstr "Neplatný soubor, Musíte uvést úplnou cestu"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Neplatný název souboru. Musíte určit kompletní cestu k souboru a jméno "
 #~ "včetně koncovky .avi"
@@ -2612,11 +2654,10 @@ msgstr ""
 #~ msgid "could not set format to XYZ"
 #~ msgstr "nemohu nastavit formát na XYZ"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
-#~ msgstr ""
-#~ "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ msgstr "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
 
 #~ msgid "Trajectory..."
 #~ msgstr "Trajektorie..."
@@ -2654,6 +2695,7 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "soubor trajektorie (*xyz)"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Načítání souboru molekul %1 selhalo."
 
@@ -2661,15 +2703,17 @@ msgstr ""
 #~ msgstr "Neplatný název videa. Musíte zadat plnou cestu k souboru."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
-#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící "
-#~ "na .avi"
+#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící na "
+#~ ".avi"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Soubor bude zapsán do %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Soubor %1."
 
@@ -2692,9 +2736,9 @@ msgstr ""
 #~ msgstr "POV-Ray..."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 #~ msgstr ""
 #~ "Zvolili jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru "
 #~ "POV-Ray. To znamená, že nebude uložen žádný výstup. Jste si jisti?"
@@ -2730,6 +2774,9 @@ msgstr ""
 
 #~ msgid "Selection"
 #~ msgstr "Výběr"
+
+#~ msgid "1"
+#~ msgstr "1"
 
 #~ msgid "Bottom"
 #~ msgstr "Dole"

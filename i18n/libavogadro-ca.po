@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-05-21 20:54+0000\n"
-"Last-Translator: Geoff Hutchison <Unknown>\n"
+"PO-Revision-Date: 2009-06-12 14:10+0000\n"
+"Last-Translator: el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-12 00:57+0000\n"
+"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -35,17 +35,19 @@ msgstr "Color de la càrrega parcial."
 msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr "Color de la càrrega atòmica parcial ( blau= positiva, roja=negativa."
 
-#: src/engines/surfacesettingswidget.ui:139 src/colors/customcolor.cpp:63:166
+#: src/engines/surfacesettingswidget.ui:139
+#: src/colors/customcolor.cpp:63 :166
 msgid "Custom Color:"
 msgstr "Color personalitzat:"
 
-#: src/engines/surfacesettingswidget.ui:95 src/colors/customcolor.h:43:160
+#: src/engines/surfacesettingswidget.ui:95
+#: src/colors/customcolor.h:43 :160
 msgid "Custom Color"
 msgstr "Color personalitzat"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "Tria els colors personalitzats pels objectes"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -288,7 +290,6 @@ msgid "Xenon"
 msgstr "Xenó"
 
 #: src/elementtranslator.cpp:204
-#, fuzzy
 msgid "Cesium"
 msgstr "Cesi"
 
@@ -574,9 +575,8 @@ msgid "Cartoon"
 msgstr "Pel·lícula"
 
 #: src/engines/cartoonengine.h:45
-#, fuzzy
 msgid "Renders protein secondary structure"
-msgstr "Renderitza l'estructura de la proteïna secundaria"
+msgstr "Renderitza l'estructura secundària de proteines"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
@@ -614,7 +614,7 @@ msgstr "Renderitza etiquetes d'àtoms i enllaços"
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, isosurface = %L2"
 
 #: src/engines/orbitalengine.h:47
 msgid "Orbitals"
@@ -785,7 +785,7 @@ msgstr "Animació…"
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr ""
+msgstr "E&xtensions"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
@@ -809,7 +809,8 @@ msgstr "Cal especificar un nom .avi vàlid"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr "El giny GL no s'ha inicialitzat de forma correcta per a alçar el vídeo"
+msgstr ""
+"El giny GL no s'ha inicialitzat de forma correcta per a alçar el vídeo"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
@@ -847,9 +848,8 @@ msgid "Animation"
 msgstr "Animació"
 
 #: src/extensions/animationextension.h:40
-#, fuzzy
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr "Anima trajectòries, reaccions, i vibracions."
+msgstr "Anima trajectòries, reaccions i vibracions."
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -875,7 +875,8 @@ msgstr ""
 "restricció"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "La vostra molècula ha de contindre al menys dos àtoms per a afegir-hi una "
 "restricció d'enllaç"
@@ -897,7 +898,7 @@ msgstr ""
 #: src/extensions/directorytreemodel.cpp:39
 #: src/extensions/directorytreemodel.cpp:49
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -939,15 +940,13 @@ msgid "Import trajectory files"
 msgstr "Importa fitxers de trajectòria"
 
 #: src/extensions/forcefieldextension.cpp:69
-#, fuzzy
 msgid "&Optimize Geometry"
-msgstr "Optimitza la geometria"
+msgstr "&Optimitza Geometria"
 
 #: src/extensions/forcefieldextension.cpp:71
-#, fuzzy
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr "Ctrl+O"
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
@@ -984,9 +983,9 @@ msgid "Cannot set up the force field for this molecule."
 msgstr "No es pot inicialitzar el camp de forces per esta molècula."
 
 #: src/extensions/forcefieldextension.cpp:189
-#, fuzzy, qt-format
+#, qt-format
 msgid "Energy = %L1 %2"
-msgstr "Energia = %1 %2"
+msgstr "Energia = %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:234
 msgid "Geometric Optimization"
@@ -1086,7 +1085,7 @@ msgstr "qm"
 
 #: src/extensions/gamessextension.cpp:523
 msgid "efp"
-msgstr ""
+msgstr "efp"
 
 #: src/extensions/gamessextension.cpp:524
 msgid ")"
@@ -1106,7 +1105,7 @@ msgstr "Crea fitxers d'entrada per al paquet químic quàntic GAMESS"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:626 rc.cpp:904 rc.cpp:1188
+#: src/extensions/gamessinputdialog.cpp:619 :626 rc.cpp:904 rc.cpp:1188
 msgid "Title"
 msgstr "Títol"
 
@@ -1164,7 +1163,7 @@ msgstr "Entrada Q-Chem..."
 
 #: src/extensions/gaussianextension.cpp:56
 msgid "MOLPRO Input..."
-msgstr ""
+msgstr "Introducció MOLPRO..."
 
 #: src/extensions/gaussianextension.cpp:61
 msgid "MOPAC Input..."
@@ -1172,7 +1171,7 @@ msgstr "Entrada MOPAC..."
 
 #: src/extensions/gaussianextension.cpp:66
 msgid "&NWChem Input..."
-msgstr ""
+msgstr "&Introducció NWChem..."
 
 #: src/extensions/gaussianextension.cpp:179
 #: src/extensions/insertfragmentdialog.cpp:146
@@ -1210,58 +1209,49 @@ msgid "Gaussian Input Deck (*.com)"
 msgstr "Entrada gaussiana (*.com)"
 
 #: src/extensions/gaussianinputdialog.cpp:262
-#, fuzzy
 msgid "Gaussian Running."
-msgstr "Entrada gaussiana..."
+msgstr "Execució Gaussiana"
 
 #: src/extensions/gaussianinputdialog.cpp:263
-#, fuzzy
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr "MOPAC està executant-se. Espera fins que els càlculs hagen acabat."
+msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:273
-#, fuzzy
 msgid "Gaussian Not Installed."
-msgstr "MOPAC no instal·lat"
+msgstr "Gaussià no instal·lat"
 
 #: src/extensions/gaussianinputdialog.cpp:274
-#, fuzzy
 msgid "The G03 executable, cannot be found."
-msgstr "L'executable MOPAC, no és pot trobar."
+msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:288
-#, fuzzy
 msgid "G03 failed to start."
-msgstr "MOPAC no s'ha executat."
+msgstr "G03 ha fallat en el seu inici"
 
 #: src/extensions/gaussianinputdialog.cpp:289
-#, fuzzy
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC no s'ha iniciat. Tal vegada no està correctament instal·lat"
+msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:294
-#, fuzzy
 msgid "Running Gaussian calculation..."
-msgstr "Executant el càlcul MOPAC..."
+msgstr "Executant càlcul Gaussià"
 
 #: src/extensions/gaussianinputdialog.cpp:329
-#, fuzzy
 msgid "G03 Crashed."
-msgstr "MOPAC s'ha trencat."
+msgstr "G03 Trencat."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-#, fuzzy
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
-"MOPAC no s'executa correctament. Tal vegada no està correctament instal·lat"
 
 #: src/extensions/mopacinputdialog.ui:307
 #: src/extensions/gaussianinputdialog.cpp:365
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1302
+#: src/extensions/qcheminputdialog.cpp:178 :1302
 msgid "Show Preview"
 msgstr "Mostra la previsualització"
 
@@ -1273,7 +1263,7 @@ msgstr "Mostra la previsualització"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:964 rc.cpp:1244 rc.cpp:1370
+#: src/extensions/qcheminputdialog.cpp:182 :964 rc.cpp:1244 rc.cpp:1370
 msgid "Hide Preview"
 msgstr "Amaga la previsualització"
 
@@ -1340,21 +1330,21 @@ msgstr "Obre un directori"
 
 #: src/extensions/insertfragmentextension.cpp:52
 msgid "Fragment..."
-msgstr ""
+msgstr "Fragment..."
 
 #: src/extensions/insertfragmentextension.cpp:57
 msgid "SMILES..."
-msgstr ""
+msgstr "ICONES..."
 
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr ""
+msgstr "&Inserta"
 
 #: src/extensions/insertfragmentextension.cpp:103
 #: src/extensions/insertfragmentextension.cpp:121
 msgid "Insert SMILES"
-msgstr ""
+msgstr "Inserta Emoticones"
 
 #: src/extensions/insertfragmentextension.cpp:104
 msgid "Insert SMILES fragment:"
@@ -1377,7 +1367,7 @@ msgstr ""
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:984 rc.cpp:1126
+#: src/extensions/insertpeptideextension.h:43 :984 rc.cpp:1126
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1601,7 +1591,7 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:103
 msgid "URL"
-msgstr ""
+msgstr "Adreça URL"
 
 #: src/extensions/networkfetchextension.cpp:104
 msgid "URL of molecule to download."
@@ -1611,7 +1601,7 @@ msgstr ""
 #: src/extensions/networkfetchextension.cpp:150
 #: src/extensions/networkfetchextension.cpp:169
 msgid "Network Download Failed"
-msgstr ""
+msgstr "Descàrrega de Xarxa fallida"
 
 #: src/extensions/networkfetchextension.cpp:140
 msgid "Network timeout or other error."
@@ -1659,7 +1649,7 @@ msgstr ""
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
-msgstr ""
+msgstr "MO %L1"
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
@@ -1668,7 +1658,8 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
 #: src/extensions/gamessinputdialog.ui:2101
-#: src/extensions/orbitaldialog.ui:679 src/extensions/shaderdialog.ui:207
+#: src/extensions/orbitaldialog.ui:679
+#: src/extensions/shaderdialog.ui:207
 #: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
 msgid "None"
 msgstr "Cap"
@@ -1694,7 +1685,7 @@ msgstr "Cancel·la el calcul"
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
-msgstr ""
+msgstr "Calculant MO %L1"
 
 #: src/extensions/orbitalextension.cpp:462
 #: src/extensions/orbitalextension.cpp:500
@@ -1715,7 +1706,7 @@ msgid "Calculating VdW Cube"
 msgstr "Calcula el cub VdW"
 
 #: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48:1380
+#: src/extensions/orbitalextension.h:48 :1380
 msgid "Surfaces"
 msgstr "Superfícies"
 
@@ -1764,7 +1755,7 @@ msgstr ""
 #: src/extensions/povrayextension.cpp:158
 #: src/extensions/povrayextension.cpp:179
 msgid "Cannot Write to File."
-msgstr ""
+msgstr "No es pot escriure a l'arxiu"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:180
@@ -1805,7 +1796,7 @@ msgstr "Propietats dels enllaços..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr ""
+msgstr "Propietats d'Angle"
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
@@ -1821,7 +1812,7 @@ msgstr "Editor cartesià..."
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr ""
+msgstr "Propietats d'Àtom"
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
@@ -1829,47 +1820,46 @@ msgstr ""
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr ""
+msgstr "Propietats d'angle"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
-msgstr ""
+msgstr "Propietats de la torsió"
 
 #: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
-msgstr ""
+msgstr "Propietats cartesianes"
 
 #: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:482
+#: src/extensions/propextension.h:43 :482
 msgid "Properties"
 msgstr "Propietats"
 
 #: src/extensions/propextension.h:44
-#, fuzzy
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
-"Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
-"inclou un editor de coordenades cartesianes."
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:208
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:353 :208
 msgid "Type"
 msgstr "Tipus"
 
 #: src/extensions/propmodel.cpp:355
 msgid "Element"
-msgstr ""
+msgstr "Element"
 
 #: src/extensions/propmodel.cpp:357
 msgid "Valence"
 msgstr "València"
 
-#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
+#: src/engines/labelsettingswidget.ui:85
+#: src/extensions/propmodel.cpp:359 :86
 msgid "Partial Charge"
 msgstr "Carrega parcial"
 
@@ -1898,7 +1888,7 @@ msgstr "Angular"
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
-msgstr ""
+msgstr "Llargada %1"
 
 #: src/extensions/propmodel.cpp:379
 #, qt-format
@@ -1913,7 +1903,7 @@ msgstr "Vèrtex"
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "Angle %1"
 
 #: src/extensions/propmodel.cpp:393
 #, qt-format
@@ -1929,7 +1919,7 @@ msgstr "Índex atòmic %1"
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
-msgstr ""
+msgstr "Torsió %1"
 
 #: src/extensions/propmodel.cpp:406
 #, qt-format
@@ -1940,22 +1930,22 @@ msgstr "Torsió %1"
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
-msgstr ""
+msgstr "X %1"
 
 #: src/extensions/propmodel.cpp:413
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
-msgstr ""
+msgstr "Y %1"
 
 #: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
-msgstr ""
+msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423:462
+#: src/extensions/propmodel.cpp:423 :462
 msgid "Energy"
 msgstr "Energia"
 
@@ -2025,9 +2015,10 @@ msgstr "Patró SMART a seleccionar"
 msgid "Select by residue"
 msgstr "Selecciona per residu"
 
-#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:1140 rc.cpp:1458
+#: src/engines/labelsettingswidget.ui:75
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1140 rc.cpp:1458
 msgid "Residue name"
 msgstr "Nom del residu"
 
@@ -2087,7 +2078,8 @@ msgstr "Obre un fitxer de paràmetres shader"
 msgid "Shader parameters files (*.params)"
 msgstr "Fitxers de paràmetres shader (*.params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1578
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1578
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -2097,26 +2089,26 @@ msgstr "Carrega i utilitza OpenGL 2.0 GLSL shader"
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "Eix X"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Eix Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1620
+#: src/extensions/spectradialog.cpp:152 :1620
 msgid "&Appearance"
-msgstr ""
+msgstr "&Aparició"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1664
+#: src/extensions/spectradialog.cpp:153 :1664
 msgid "E&xport Image"
-msgstr ""
+msgstr "E&xporta Imatge"
 
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "Infraroig"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
@@ -2125,7 +2117,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:165
 msgctxt "NMR spectra option"
 msgid "NMR"
-msgstr ""
+msgstr "NMR"
 
 #: src/extensions/spectradialog.cpp:166
 msgid "&NMR Spectra Settings"
@@ -2133,19 +2125,19 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
-msgstr ""
+msgstr "Sense dades"
 
 #: src/extensions/spectradialog.cpp:250
 msgid "Dark"
-msgstr ""
+msgstr "Fosc"
 
 #: src/extensions/spectradialog.cpp:261
 msgid "Light"
-msgstr ""
+msgstr "Llum"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
-msgstr ""
+msgstr "Publicació"
 
 #: src/extensions/spectradialog.cpp:283
 msgid "Handdrawn"
@@ -2153,52 +2145,52 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "Nou esquema"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
-msgstr ""
+msgstr "Confirma eliminació d'esquema"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "Vols esborrar l'esquema actual?"
 
 #: src/extensions/spectradialog.cpp:327
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "Canvia Nom d'esquema"
 
 #: src/extensions/spectradialog.cpp:328
 msgid "Enter new name for current scheme:"
-msgstr ""
+msgstr "Escriu nou nom per a l'esquema actual:"
 
 #: src/extensions/spectradialog.cpp:428
 msgid "Export Calculated Spectrum"
-msgstr ""
+msgstr "Exporta l'espectre calculat"
 
 #: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:227
 msgid "Tab Separated Values (*.tsv)"
-msgstr ""
+msgstr "Valors Separats per Tabulador (*.tsv)"
 
 #: src/extensions/spectradialog.cpp:452
 msgid "Tab Separated Values"
-msgstr ""
+msgstr "Valors Separats per Tabulador"
 
 #: src/extensions/spectradialog.cpp:453
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "Valors separats per coma"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
 #: src/extensions/spectradialog.cpp:625
 msgid "All Files"
-msgstr ""
+msgstr "Tots els arxius"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
-msgstr ""
+msgstr "Importa Espectre"
 
 #: src/extensions/spectradialog.cpp:483
 msgid "Spectra Import"
@@ -2286,7 +2278,7 @@ msgid "Customi&ze <<"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714:1616
+#: src/extensions/spectradialog.cpp:714 :1616
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2371,7 +2363,8 @@ msgstr "Exemple d'extensió"
 
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
-msgstr "El estri GL no està correctament inicialitzat per enregistrar un vídeo"
+msgstr ""
+"El estri GL no està correctament inicialitzat per enregistrar un vídeo"
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
@@ -2443,7 +2436,7 @@ msgid "Apply"
 msgstr "Aplica"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:242
+#: src/extensions/unitcellparamdialog.cpp:97 :242
 msgid "OK"
 msgstr "D'acord"
 
@@ -2454,7 +2447,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1818
+#: src/extensions/vibrationdialog.cpp:213 :1818
 msgid "Start &Animation"
 msgstr ""
 
@@ -2472,7 +2465,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239:824
+#: src/extensions/vibrationextension.cpp:239 :824
 msgid "Vibrational Analysis"
 msgstr "Anàlisis vibracional"
 
@@ -2625,19 +2618,16 @@ msgid "File %1 can not be opened for writing."
 msgstr ""
 
 #: src/moleculefile.cpp:439
-#, fuzzy
 msgid "Saving molecular file failed - could not rename original file."
-msgstr "S'ha produït un error en alçar el fitxer molecular."
+msgstr ""
 
 #: src/moleculefile.cpp:446
-#, fuzzy
 msgid "Saving molecular file failed - could not rename new file."
-msgstr "S'ha produït un error en alçar el fitxer molecular."
+msgstr ""
 
 #: src/moleculefile.cpp:455
-#, fuzzy
 msgid "Saving molecular file failed - could not remove old file."
-msgstr "S'ha produït un error en alçar el fitxer molecular."
+msgstr ""
 
 #: src/moleculefile.cpp:464
 #, qt-format
@@ -2769,9 +2759,8 @@ msgid "Align molecules to a Cartesian axis"
 msgstr "Alinear molècules als eixos cartesians"
 
 #: src/tools/aligntool.h:42
-#, fuzzy
 msgid "Align Settings"
-msgstr "Barra de configuració"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -2817,11 +2806,13 @@ msgstr "Passes per actualizar:"
 msgid "Algorithm:"
 msgstr "Algoritme:"
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:272
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:286 :272
 msgid "Steepest Descent"
 msgstr "Pas descendent"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:274
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:287 :274
 msgid "Conjugate Gradients"
 msgstr "Gradients conjugats"
 
@@ -2868,7 +2859,7 @@ msgstr "Optimització automàtica de la geometria molecular"
 
 #: src/tools/autoopttool.h:96
 msgid "AutoOptimization Settings"
-msgstr ""
+msgstr "Configuració d'Autooptimització"
 
 #: src/tools/autorotatetool.cpp:52
 msgid "Auto Rotation Tool"
@@ -2902,8 +2893,8 @@ msgstr "rotació z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:966
-#: rc.cpp:1246 rc.cpp:1304
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:294 :966 rc.cpp:1246 rc.cpp:1304
 msgid "Reset"
 msgstr "Inicialització"
 
@@ -2917,7 +2908,7 @@ msgstr "Rotació automàtica de molècules"
 
 #: src/tools/autorotatetool.h:55
 msgid "AutoRotate Settings"
-msgstr ""
+msgstr "Configuració d'Autorotació"
 
 #: src/tools/bondcentrictool.cpp:79
 msgid ""
@@ -3000,24 +2991,24 @@ msgstr ""
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
-msgstr ""
+msgstr "Distància (1->2): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:165
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
-msgstr ""
+msgstr "Distància (2->3): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:174
 #, qt-format
 msgid "Angle: %L1 °"
-msgstr ""
+msgstr "Angle: %L1 °"
 
 #: src/tools/clickmeasuretool.cpp:194
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
-msgstr ""
+msgstr "Distància (3->4): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:210
 #, qt-format
@@ -3027,22 +3018,22 @@ msgstr ""
 #: src/tools/clickmeasuretool.cpp:250
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
-msgstr ""
+msgstr "*1"
 
 #: src/tools/clickmeasuretool.cpp:258
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
-msgstr ""
+msgstr "*2"
 
 #: src/tools/clickmeasuretool.cpp:267
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
-msgstr ""
+msgstr "*3"
 
 #: src/tools/clickmeasuretool.cpp:276
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
-msgstr ""
+msgstr "*4"
 
 #: src/tools/clickmeasuretool.cpp:280
 msgid "Distance(s):"
@@ -3058,10 +3049,10 @@ msgstr "Mesura de longituds d'enllaç, angles i dièdrics"
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure Settings"
-msgstr ""
+msgstr "Configuració de mesuraments"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1838
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1838
 msgid "Add Atom"
 msgstr "Afig un àtom"
 
@@ -3114,7 +3105,8 @@ msgstr "Dibuixa"
 msgid "Element:"
 msgstr "Element:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:576
+#: src/extensions/gamessinputdialog.ui:1214
+#: src/tools/drawtool.cpp:763 :576
 msgid "Other..."
 msgstr "Altre..."
 
@@ -3144,7 +3136,7 @@ msgstr "Dibuixa i edita àtoms i enllaços"
 
 #: src/tools/drawtool.h:55
 msgid "Draw Settings"
-msgstr ""
+msgstr "Configuració de Dibuix"
 
 #: src/tools/manipulatetool.cpp:51
 msgid ""
@@ -3176,7 +3168,7 @@ msgstr "Trasllada , rota, i ajusta àtoms i fragments"
 
 #: src/tools/manipulatetool.h:55
 msgid "Manipulate Settings"
-msgstr ""
+msgstr "Configuració de manipulació"
 
 #: src/tools/navigatetool.cpp:60
 msgid ""
@@ -3203,7 +3195,7 @@ msgstr "Trasllada, rota i amplia al voltat  de la vista actual"
 
 #: src/tools/navigatetool.h:54
 msgid "Navigate Settings"
-msgstr ""
+msgstr "Configuració de navegació"
 
 #: src/tools/selectrotatetool.cpp:58
 msgid ""
@@ -3239,11 +3231,11 @@ msgstr "Selecciona àtoms, residus i molècules"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
-msgstr ""
+msgstr "Configuració de selecció"
 
 #: src/tools/zmatrixmodel.cpp:78
 msgid "Symbol"
-msgstr ""
+msgstr "Símbol"
 
 #: src/tools/zmatrixmodel.cpp:86
 msgid "Bond Length"
@@ -3259,19 +3251,20 @@ msgstr ""
 
 #: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
-msgstr ""
+msgstr "Editor de Matriu Z ..."
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:634
+#: src/extensions/gamessinputdialog.ui:1537
+#: src/tools/zmatrixtool.h:39 :634
 msgid "Z-Matrix"
 msgstr "Matriu Z"
 
 #: src/tools/zmatrixtool.h:40
 msgid "Create/edit a z-matrix"
-msgstr ""
+msgstr "Crea/edita una matriu z"
 
 #: src/tools/zmatrixtool.h:41
 msgid "Z-Matrix Settings"
-msgstr ""
+msgstr "Configuració de Matriu Z"
 
 #: src/colors/residuecolorsettings.ui:13
 msgid "Residue Color Settings"
@@ -3308,13 +3301,14 @@ msgstr "Radi de l'enllaç:"
 msgid "Opacity:"
 msgstr "Opacitat:"
 
-#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Mostra multiples enllaços"
 
 #: src/engines/cartoonsettingswidget.ui:17
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: src/engines/cartoonsettingswidget.ui:23
 #: src/engines/cartoonsettingswidget.ui:311
@@ -3325,19 +3319,19 @@ msgstr ""
 #: src/engines/cartoonsettingswidget.ui:138
 #: src/engines/cartoonsettingswidget.ui:231
 msgid "a"
-msgstr ""
+msgstr "a"
 
 #: src/engines/cartoonsettingswidget.ui:68
 #: src/engines/cartoonsettingswidget.ui:161
 #: src/engines/cartoonsettingswidget.ui:254
 msgid "b"
-msgstr ""
+msgstr "b"
 
 #: src/engines/cartoonsettingswidget.ui:91
 #: src/engines/cartoonsettingswidget.ui:184
 #: src/engines/cartoonsettingswidget.ui:277
 msgid "c"
-msgstr ""
+msgstr "c"
 
 #: src/engines/cartoonsettingswidget.ui:116
 #: src/engines/cartoonsettingswidget.ui:334
@@ -3422,7 +3416,7 @@ msgstr "ID únic"
 
 #: src/engines/labelsettingswidget.ui:95
 msgid "Symbol & Atom Number"
-msgstr ""
+msgstr "Símbol & Nombre de l'Àtom"
 
 #: src/engines/labelsettingswidget.ui:100
 msgid "Custom Data"
@@ -3476,11 +3470,11 @@ msgstr "Caixa de dibuix:"
 
 #: src/engines/orbitalsettingswidget.ui:129
 msgid "Style:"
-msgstr ""
+msgstr "Estil:"
 
 #: src/engines/orbitalsettingswidget.ui:140
 msgid "Selected Colors"
-msgstr ""
+msgstr "Colors seleccionats"
 
 #: src/engines/orbitalsettingswidget.ui:145
 msgid "Mapped Colors"
@@ -3488,7 +3482,7 @@ msgstr ""
 
 #: src/engines/orbitalsettingswidget.ui:153
 msgid "Colors:"
-msgstr ""
+msgstr "Colors:"
 
 #: src/engines/orbitalsettingswidget.ui:165
 msgid "Positive"
@@ -3539,7 +3533,8 @@ msgstr "Anima la trajectoa"
 msgid "Load File..."
 msgstr "Carrega un fitxer..."
 
-#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3547,7 +3542,8 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr ""
 
-#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3578,8 +3574,10 @@ msgid "Number of conformers"
 msgstr "Nombre de confòrmers"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Mètode"
@@ -3668,12 +3666,15 @@ msgstr "Suprimeix-ho tot"
 msgid "File Import..."
 msgstr "Importa el fitxer..."
 
-#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Nom de fitxer:"
 
-#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Navega..."
@@ -3694,7 +3695,8 @@ msgstr "Voleu detectar els enllaços?"
 msgid "Setup Force Field"
 msgstr "Configura el camp de forces"
 
-#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Camp de força"
 
@@ -3925,7 +3927,8 @@ msgstr "Calcula"
 msgid "With:"
 msgstr "Amb:"
 
-#: src/extensions/gamessinputdialog.ui:300 src/extensions/orbitaldialog.ui:556
+#: src/extensions/gamessinputdialog.ui:300
+#: src/extensions/orbitaldialog.ui:556
 #: src/extensions/orbitaldialog.ui:773
 msgid "In:"
 msgstr "Entrada:"
@@ -4447,7 +4450,8 @@ msgstr "Unitats:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Títol:"
 
@@ -4557,9 +4561,8 @@ msgid "Initial Guess:"
 msgstr "Conjectura inicial:"
 
 #: src/extensions/gamessinputdialog.ui:1984
-#, fuzzy
 msgid "Hückel"
-msgstr "Huckel"
+msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1989
 msgid "HCore"
@@ -4662,9 +4665,8 @@ msgid "LYP: Lee-Yang-Parr correlation"
 msgstr "LYP: Correlació Lee-Yang-Parr"
 
 #: src/extensions/gamessinputdialog.ui:2264
-#, fuzzy
 msgid "SVWN: Slater exchange + VWN correlation"
-msgstr "SVWN: Intercanvi Slater + Correlació VWN"
+msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2269
 msgid "BVWN: BECKE exchange + VWN5 correlation"
@@ -4931,7 +4933,8 @@ msgstr "Genera..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Tanca"
@@ -5228,7 +5231,7 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:270
 msgid "Sequence (N to C):"
-msgstr ""
+msgstr "Seqüència (N to C):"
 
 #: src/extensions/insertpeptidedialog.ui:280
 msgid "Stereochemistry:"
@@ -5253,23 +5256,23 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:325
 msgid "NH₂"
-msgstr ""
+msgstr "NH₂"
 
 #: src/extensions/insertpeptidedialog.ui:330
 msgid "NH₃⁺"
-msgstr ""
+msgstr "NH₃⁺"
 
 #: src/extensions/insertpeptidedialog.ui:339
 msgid "CO₂H"
-msgstr ""
+msgstr "CO₂H"
 
 #: src/extensions/insertpeptidedialog.ui:344
 msgid "CO₂⁻"
-msgstr ""
+msgstr "CO₂⁻"
 
 #: src/extensions/insertpeptidedialog.ui:354
 msgid "Structure:"
-msgstr ""
+msgstr "Estrcutura:"
 
 #: src/extensions/insertpeptidedialog.ui:362
 msgid "Straight Chain"
@@ -5285,7 +5288,7 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:377
 msgid "Other"
-msgstr ""
+msgstr "Altra"
 
 #: src/extensions/insertpeptidedialog.ui:387
 msgid "Phi:"
@@ -5305,11 +5308,11 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:459
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: src/extensions/insertpeptidedialog.ui:464
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/extensions/insertpeptidedialog.ui:474
 msgid "E"
@@ -5339,7 +5342,8 @@ msgstr "crea un lligand a partir del nom del residu"
 msgid "create ligand from file..."
 msgstr "crea un lligand des d'un fitxer…"
 
-#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "El nom del residu"
 
@@ -5348,13 +5352,10 @@ msgid "Linear Morph Trajectory"
 msgstr "Trajectoria Linear Morph"
 
 #: src/extensions/linmorphdialog.ui:24
-#, fuzzy
 msgid ""
 "Load a second conformation and compute a linear interpolation with the "
 "current conformation."
 msgstr ""
-"Carrega el segon estereoisòmer i calcula una interpolació linial amb "
-"l'actual estereoisòmer."
 
 #: src/extensions/linmorphdialog.ui:27
 msgid "button to load a second conformation from a file."
@@ -5546,16 +5547,19 @@ msgstr "Calcula el cub de Van der Waals"
 msgid "Isosurfaces"
 msgstr "Isosuperfícies"
 
-#: src/extensions/orbitaldialog.ui:417 src/extensions/orbitaldialog.ui:633
+#: src/extensions/orbitaldialog.ui:417
+#: src/extensions/orbitaldialog.ui:633
 msgid "Cube:"
 msgstr "Cub:"
 
-#: src/extensions/orbitaldialog.ui:447 src/extensions/orbitaldialog.ui:663
+#: src/extensions/orbitaldialog.ui:447
+#: src/extensions/orbitaldialog.ui:663
 #: src/extensions/surfacedialog.ui:104
 msgid "Color By:"
 msgstr "Color de:"
 
-#: src/extensions/orbitaldialog.ui:481 src/extensions/surfacedialog.ui:203
+#: src/extensions/orbitaldialog.ui:481
+#: src/extensions/surfacedialog.ui:203
 msgid "Iso Value:"
 msgstr "Valor Iso:"
 
@@ -5575,7 +5579,8 @@ msgstr "0.000"
 msgid "1.000"
 msgstr "1.000"
 
-#: src/extensions/orbitaldialog.ui:604 src/extensions/orbitaldialog.ui:821
+#: src/extensions/orbitaldialog.ui:604
+#: src/extensions/orbitaldialog.ui:821
 msgid "Calculate Mesh"
 msgstr "Calcula l'acoplament"
 
@@ -5638,7 +5643,8 @@ msgstr "povray"
 msgid "Render"
 msgstr "Renderitza"
 
-#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:143
+#: src/extensions/povraydialog.ui:137
+#: src/extensions/surfacedialog.ui:143
 msgid "Resolution:"
 msgstr "Resolució:"
 
@@ -5724,7 +5730,8 @@ msgstr "Fragment Shader:"
 msgid "Parameters:"
 msgstr "Paràmetres:"
 
-#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "Assigna un ombrejat"
 
@@ -5761,8 +5768,10 @@ msgstr "&Tanca"
 msgid "Calculated Spectra:"
 msgstr ""
 
-#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168
+#: src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279
+#: src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr ""
 
@@ -5778,7 +5787,8 @@ msgstr ""
 msgid "Change Font..."
 msgstr ""
 
-#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224
+#: src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr ""
 
@@ -5800,67 +5810,67 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:321
 msgid "New..."
-msgstr ""
+msgstr "Nou..."
 
 #: src/extensions/spectradialog.ui:337
 msgid "Remove..."
-msgstr ""
+msgstr "Esborra..."
 
 #: src/extensions/spectradialog.ui:350
 msgid "Rename..."
-msgstr ""
+msgstr "Reanomena..."
 
 #: src/extensions/spectradialog.ui:376
 msgid "TODO"
-msgstr ""
+msgstr "PER FER"
 
 #: src/extensions/spectradialog.ui:389
 msgid "&Schemes:"
-msgstr ""
+msgstr "E&squemes:"
 
 #: src/extensions/spectradialog.ui:405
 msgid "&Export..."
-msgstr ""
+msgstr "&Exporta..."
 
 #: src/extensions/spectradialog.ui:445
 msgid "&DPI:"
-msgstr ""
+msgstr "&DPI:"
 
 #: src/extensions/spectradialog.ui:461
 msgid "&Width:"
-msgstr ""
+msgstr "&Amplada:"
 
 #: src/extensions/spectradialog.ui:490
 msgid "&Height"
-msgstr ""
+msgstr "&Alçada"
 
 #: src/extensions/spectradialog.ui:513
 msgid "&Filename:"
-msgstr ""
+msgstr "&Nom d'Arxiu:"
 
 #: src/extensions/spectradialog.ui:549
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/extensions/spectradialog.ui:560
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/extensions/spectradialog.ui:565
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 #: src/extensions/spectradialog.ui:570
 msgid "in"
-msgstr ""
+msgstr "a"
 
 #: src/extensions/spectradialog.ui:575
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/extensions/spectradialog.ui:589
 msgid "&Save Image..."
-msgstr ""
+msgstr "&Salva Imatge..."
 
 #: src/extensions/spectradialog.ui:622
 msgid ""
@@ -5874,7 +5884,7 @@ msgstr ""
 
 #: src/extensions/spectratabir.ui:14
 msgid "tab_IR"
-msgstr ""
+msgstr "tab_IR"
 
 #: src/extensions/spectratabir.ui:29
 msgid "&Y Axis Units:"
@@ -5888,11 +5898,11 @@ msgstr ""
 #: src/extensions/spectratabir.ui:51
 #, no-c-format
 msgid "Absorbance (%)"
-msgstr ""
+msgstr "Absorció (%)"
 
 #: src/extensions/spectratabir.ui:78
 msgid "Sc&ale:"
-msgstr ""
+msgstr "Esc&ala:"
 
 #: src/extensions/spectratabir.ui:94
 msgid "&Gaussian Width:"
@@ -5912,7 +5922,7 @@ msgstr ""
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
-msgstr ""
+msgstr "&Referència:"
 
 #: src/extensions/spectratabnmr.ui:46
 msgid "Gaussian &Width:"
@@ -5926,7 +5936,8 @@ msgstr ""
 msgid "Label Peaks:"
 msgstr ""
 
-#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125
+#: src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr ""
 
@@ -5958,75 +5969,64 @@ msgid "Generate Cell"
 msgstr "Genera cel·la"
 
 #: src/extensions/surfacedialog.ui:14
-#, fuzzy
 msgid "Create Surfaces"
-msgstr "Crea superfícies..."
+msgstr "Crea Superfície"
 
 #: src/extensions/surfacedialog.ui:25
-#, fuzzy
 msgid "Surface Type:"
-msgstr "Superfície"
+msgstr "Tipus de superfície"
 
 #: src/extensions/surfacedialog.ui:41
-#, fuzzy
 msgid "Van der Waals"
-msgstr "Esferes de Van der Waals"
+msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:120
-#, fuzzy
+#: src/extensions/surfacedialog.ui:46
+#: src/extensions/surfacedialog.ui:120
 msgid "Electrostatic Potential"
-msgstr "Potencial electrostàtic (ESP)"
+msgstr ""
 
 #: src/extensions/surfacedialog.ui:81
-#, fuzzy
 msgid "MO 666"
-msgstr "MO "
+msgstr "MO 666"
 
 #: src/extensions/surfacedialog.ui:162
-#, fuzzy
 msgctxt "low resolution"
 msgid "Low"
 msgstr "Baix"
 
 #: src/extensions/surfacedialog.ui:167
-#, fuzzy
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Mitjà"
 
 #: src/extensions/surfacedialog.ui:172
-#, fuzzy
 msgctxt "high resolution"
 msgid "High"
 msgstr "Alt"
 
 #: src/extensions/surfacedialog.ui:177
-#, fuzzy
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr "Alt"
+msgstr "Molt Alt"
 
 #: src/extensions/surfacedialog.ui:200
 msgid "Isosurface cutoff value"
 msgstr ""
 
 #: src/extensions/surfacedialog.ui:236
-#, fuzzy
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
-msgstr "Tipus de visualització:"
+msgstr ""
 
 #: src/extensions/surfacedialog.ui:255
-#, fuzzy
 msgid "New Display"
-msgstr "Mostra els eixos"
+msgstr "Nova mostra"
 
 #: src/extensions/surfacedialog.ui:305
-#, fuzzy
 msgid "Advanced..."
-msgstr "Avançat"
+msgstr "Avançat..."
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110
@@ -6083,19 +6083,19 @@ msgstr "Vibracions moleculars"
 
 #: src/extensions/vibrationdialog.ui:45
 msgid "Frequency (cm⁻¹)"
-msgstr ""
+msgstr "Freqüència (cm⁻¹)"
 
 #: src/extensions/vibrationdialog.ui:50
 msgid "Intensity (km/mol)"
-msgstr ""
+msgstr "Intensitat (km/mol)"
 
 #: src/extensions/vibrationdialog.ui:66
 msgid "&Scale:"
-msgstr ""
+msgstr "E&scale:"
 
 #: src/extensions/vibrationdialog.ui:97
 msgid "Display force &vectors"
-msgstr ""
+msgstr "Mostra &vectors de força"
 
 #: src/extensions/vibrationdialog.ui:107
 msgid "higher frequency vibrations will show faster movement"
@@ -6107,7 +6107,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."
-msgstr ""
+msgstr "E&xporta..."
 
 #: src/tools/navigatesettingswidget.ui:14
 msgid "Form"
@@ -6139,31 +6139,46 @@ msgstr ""
 
 #: src/tools/zmatrixdialog.ui:25
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "Importa Àtoms Seleccionats"
 
 #: src/tools/zmatrixdialog.ui:52
 msgid "Remove Atom"
-msgstr ""
+msgstr "Esborra Àtoms"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
-"Launchpad Contributions:,Avogadro Team"
+"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, "
+",Launchpad Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro "
+"Team,Geoff Hutchison,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
-"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net"
+",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el.li"
+"bre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,,el.libre@gmail.com"
 
-#~ msgid "Single Point Entry"
-#~ msgstr "Punt d'entrada senzill"
+#~ msgid "Caesium"
+#~ msgstr "Cesi"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Renderitza l'estructura de la proteïna secundaria"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Anima trajectòries, reaccions, i vibracions."
 
 #~ msgid "Conformers..."
 #~ msgstr "Confòrmers..."
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
+#~ "inclou un editor de coordenades cartesianes."
 
 #~ msgid "Atomic Number"
 #~ msgstr "Nombre atòmic"
@@ -6177,12 +6192,15 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "Residus"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distància (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distància (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distància (3->4): %1 %2"
 
@@ -6207,6 +6225,22 @@ msgstr ""
 #~ msgid "Click to insert the fragment at that position."
 #~ msgstr "Feu clic per a inserir el fragment en eixa posició."
 
+#~ msgid "Single Point Entry"
+#~ msgstr "Punt d'entrada senzill"
+
+#~ msgid "Huckel"
+#~ msgstr "Huckel"
+
+#~ msgid "SVWN: Slater exhange + VWN correlation"
+#~ msgstr "SVWN: Intercanvi Slater + Correlació VWN"
+
+#~ msgid ""
+#~ "Load a second confromation and computer a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Carrega el segon estereoisòmer i calcula una interpolació linial amb "
+#~ "l'actual estereoisòmer."
+
 #~ msgid "Frequency (cm-1)"
 #~ msgstr "Freqüència (cm-1)"
 
@@ -6214,17 +6248,19 @@ msgstr ""
 #~ msgstr "Generat a partir de SMILES:"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versió de programa: %2<br/><br/> Versió de "
-#~ "llibreria: %3<br/><br/>Per a més informació ves a <a href=\\\"http://"
-#~ "avogadro.sourceforge.net/\">Pàgina d'inici d'Avogadro </a>.<br/><br/"
-#~ ">Aquest programa és subministra sense CAP GARANTIA de CAP MENA, INCLOENT-"
-#~ "HI LA GARANTIA DE DISSENY, VENDA o APTITUD PER QUALSEVOL COSA.<br/>"
+#~ "<h3>%1</h3><br/><br/>Versió de programa: %2<br/><br/> Versió de llibreria: "
+#~ "%3<br/><br/>Per a més informació ves a <a href=\\"
+#~ "\"http://avogadro.sourceforge.net/\">Pàgina d'inici d'Avogadro "
+#~ "</a>.<br/><br/>Aquest programa és subministra sense CAP GARANTIA de CAP "
+#~ "MENA, INCLOENT-HI LA GARANTIA DE DISSENY, VENDA o APTITUD PER QUALSEVOL "
+#~ "COSA.<br/>"
 
 #~ msgid "Cut Molecule"
 #~ msgstr "Retalla la molècula"
@@ -6309,20 +6345,19 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie "
-#~ "l'escala dels enllaços i faça una optimització ràpida?"
+#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie l'escala "
+#~ "dels enllaços i faça una optimització ràpida?"
 
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Este fitxer no conté coordenades 3D. No podreu editar-lo ni visualitzar-"
-#~ "lo de forma correcta."
+#~ "Este fitxer no conté coordenades 3D. No podreu editar-lo ni visualitzar-lo "
+#~ "de forma correcta."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Este fitxer sembla que conté múltiples molècules. L'Avogadro només pot "
 #~ "llegir la primera molècula. Si l'alceu, totes les altres molècules es "
@@ -6469,8 +6504,8 @@ msgstr ""
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
 #~ msgstr ""
-#~ "Avogadro necessita que reinicieu el programa per tal que els canvis "
-#~ "tinguen efecte."
+#~ "Avogadro necessita que reinicieu el programa per tal que els canvis tinguen "
+#~ "efecte."
 
 #~ msgid "bond %1"
 #~ msgstr "enllaç %1"
@@ -6751,6 +6786,9 @@ msgstr ""
 #~ msgid "Avogadro: Detached View"
 #~ msgstr "Avogadro: Vista separada"
 
+#~ msgid "Tool Settings"
+#~ msgstr "Barra de configuració"
+
 #~ msgid "No tools or engines loaded."
 #~ msgstr "No hi ha cap eina o motor carregat."
 
@@ -6855,5 +6893,4 @@ msgstr ""
 #~ "Enables the use of transitional animations when performing automatic "
 #~ "positioning of the GLWidget."
 #~ msgstr ""
-#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament "
-#~ "GLWidget."
+#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament GLWidget."

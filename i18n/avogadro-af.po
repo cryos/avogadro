@@ -1,16 +1,16 @@
-# Swedish translation for avogadro
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Afrikaans translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-12 02:27+0000\n"
-"Last-Translator: Dostojevskji <darkangel_nr1@hotmail.com>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2009-06-15 09:33+0000\n"
+"Last-Translator: Sander Deryckere <sanderd17@gmail.com>\n"
+"Language-Team: Afrikaans <af@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/aboutdialog.cpp:66
 #, qt-format
@@ -37,46 +37,46 @@ msgstr ""
 #: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
 #: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr ""
+msgstr "Snij Molecule"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr ""
+msgstr "Snij Atomen"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr ""
+msgstr "Plak"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr ""
+msgstr "Molecule afwis"
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr ""
+msgstr "Atooms afwis"
 
 #: src/projecttreeeditor.ui:179
 #: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
 msgid "Settings"
-msgstr ""
+msgstr "Bepalings"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:705
 msgid "Open File"
-msgstr ""
+msgstr "Open Bestand"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
-msgstr ""
+msgstr "Berigs"
 
 #: src/mainwindow.cpp:350
 msgid "Window"
-msgstr ""
+msgstr "Venster"
 
 #: src/mainwindow.cpp:353
 msgid "&Minimize"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:354
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: src/mainwindow.cpp:359
 msgid "&Zoom"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
 msgid "Bring All to Front"
-msgstr ""
+msgstr "Breng alles naar voorgrond"
 
 #: src/mainwindow.cpp:636
 msgid "&Tool Settings..."
@@ -101,7 +101,7 @@ msgstr ""
 #: src/mainwindow.cpp:639
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:644
 msgid "&Display Settings..."
@@ -110,7 +110,7 @@ msgstr ""
 #: src/mainwindow.cpp:647
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
 msgid "Common molecule formats"
@@ -559,15 +559,15 @@ msgstr ""
 
 #: src/addenginedialog.ui:19
 msgid "Type:"
-msgstr "Typ:"
+msgstr ""
 
 #: src/addenginedialog.ui:32
 msgid "Name:"
-msgstr "Namn:"
+msgstr ""
 
 #: src/addenginedialog.ui:45
 msgid "Description:"
-msgstr "Beskrivning :"
+msgstr ""
 
 #: src/enginecolorswidget.ui:13
 msgid "Form"
@@ -1039,569 +1039,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Dostojevskji, ,Launchpad "
-"Contributions:,Dostojevskji, ,Launchpad Contributions:,Dostojevskji"
+msgstr " ,Launchpad Contributions:,Sander Deryckere"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotmail.com,,,darkangel_nr1@hotma"
-"il.com"
-
-#~ msgid "Hydrogen"
-#~ msgstr "Väte"
-
-#~ msgid "Helium"
-#~ msgstr "Helium"
-
-#~ msgid "Lithium"
-#~ msgstr "Litium"
-
-#~ msgid "Beryllium"
-#~ msgstr "Beryllium"
-
-#~ msgid "Boron"
-#~ msgstr "Bor"
-
-#~ msgid "Carbon"
-#~ msgstr "Kol"
-
-#~ msgid "Nitrogen"
-#~ msgstr "Kväve"
-
-#~ msgid "Oxygen"
-#~ msgstr "Syre"
-
-#~ msgid "Fluorine"
-#~ msgstr "Fluor"
-
-#~ msgid "Neon"
-#~ msgstr "Neon"
-
-#~ msgid "Sodium"
-#~ msgstr "Natrium"
-
-#~ msgid "Magnesium"
-#~ msgstr "Magnesium"
-
-#~ msgid "Aluminum"
-#~ msgstr "Aluminium"
-
-#~ msgid "Silicon"
-#~ msgstr "Kisel"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Fosfor"
-
-#~ msgid "Sulfur"
-#~ msgstr "Svavel"
-
-#~ msgid "Chlorine"
-#~ msgstr "Klor"
-
-#~ msgid "Argon"
-#~ msgstr "Argon"
-
-#~ msgid "Potassium"
-#~ msgstr "Kalium"
-
-#~ msgid "Calcium"
-#~ msgstr "Kalcium"
-
-#~ msgid "Scandium"
-#~ msgstr "Skandium"
-
-#~ msgid "Titanium"
-#~ msgstr "Titan"
-
-#~ msgid "Vanadium"
-#~ msgstr "Vanadin"
-
-#~ msgid "Chromium"
-#~ msgstr "Krom"
-
-#~ msgid "Manganese"
-#~ msgstr "Mangan"
-
-#~ msgid "Iron"
-#~ msgstr "Järn"
-
-#~ msgid "Cobalt"
-#~ msgstr "Kobolt"
-
-#~ msgid "Nickel"
-#~ msgstr "Nickel"
-
-#~ msgid "Copper"
-#~ msgstr "Koppar"
-
-#~ msgid "Zinc"
-#~ msgstr "Zink"
-
-#~ msgid "Gallium"
-#~ msgstr "Gallium"
-
-#~ msgid "Germanium"
-#~ msgstr "Germanium"
-
-#~ msgid "Arsenic"
-#~ msgstr "Arsenik"
-
-#~ msgid "Selenium"
-#~ msgstr "Selen"
-
-#~ msgid "Bromine"
-#~ msgstr "Brom"
-
-#~ msgid "Krypton"
-#~ msgstr "Krypton"
-
-#~ msgid "Rubidium"
-#~ msgstr "Rubidium"
-
-#~ msgid "Strontium"
-#~ msgstr "Strontium"
-
-#~ msgid "Yttrium"
-#~ msgstr "Yttrium"
-
-#~ msgid "Zirconium"
-#~ msgstr "Zirkonium"
-
-#~ msgid "Niobium"
-#~ msgstr "Niob"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Molybden"
-
-#~ msgid "Technetium"
-#~ msgstr "Teknetium"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Rutenium"
-
-#~ msgid "Rhodium"
-#~ msgstr "Rodium"
-
-#~ msgid "Palladium"
-#~ msgstr "Palladium"
-
-#~ msgid "Silver"
-#~ msgstr "Silver"
-
-#~ msgid "Cadmium"
-#~ msgstr "Kadmium"
-
-#~ msgid "Indium"
-#~ msgstr "Indium"
-
-#~ msgid "Tin"
-#~ msgstr "Tenn"
-
-#~ msgid "Antimony"
-#~ msgstr "Antimon"
-
-#~ msgid "Tellurium"
-#~ msgstr "Tellur"
-
-#~ msgid "Iodine"
-#~ msgstr "Jod"
-
-#~ msgid "Xenon"
-#~ msgstr "Xenon"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesium"
-
-#~ msgid "Barium"
-#~ msgstr "Barium"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lantan"
-
-#~ msgid "Cerium"
-#~ msgstr "Cerium"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Praseodym"
-
-#~ msgid "Neodymium"
-#~ msgstr "Neodym"
-
-#~ msgid "Promethium"
-#~ msgstr "Prometium"
-
-#~ msgid "Samarium"
-#~ msgstr "Samarium"
-
-#~ msgid "Europium"
-#~ msgstr "Europium"
-
-#~ msgid "Gadolinium"
-#~ msgstr "Gadolinium"
-
-#~ msgid "Terbium"
-#~ msgstr "Terbium"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Dysprosium"
-
-#~ msgid "Holmium"
-#~ msgstr "Holmium"
-
-#~ msgid "Erbium"
-#~ msgstr "Erbium"
-
-#~ msgid "Thulium"
-#~ msgstr "Tulium"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Ytterbium"
-
-#~ msgid "Lutetium"
-#~ msgstr "Lutetium"
-
-#~ msgid "Hafnium"
-#~ msgstr "Hafnium"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tantal"
-
-#~ msgid "Rhenium"
-#~ msgstr "Rhenium"
-
-#~ msgid "Osmium"
-#~ msgstr "Osmium"
-
-#~ msgid "Iridium"
-#~ msgstr "Iridium"
-
-#~ msgid "Platinum"
-#~ msgstr "platina"
-
-#~ msgid "Gold"
-#~ msgstr "Guld"
-
-#~ msgid "Mercury"
-#~ msgstr "Kvicksilver"
-
-#~ msgid "Thallium"
-#~ msgstr "Tallium"
-
-#~ msgid "Lead"
-#~ msgstr "Bly"
-
-#~ msgid "Bismuth"
-#~ msgstr "Vismut"
-
-#~ msgid "Polonium"
-#~ msgstr "Polonium"
-
-#~ msgid "Astatine"
-#~ msgstr "Astat"
-
-#~ msgid "Radon"
-#~ msgstr "Radon"
-
-#~ msgid "Francium"
-#~ msgstr "Francium"
-
-#~ msgid "Radium"
-#~ msgstr "Radium"
-
-#~ msgid "Actinium"
-#~ msgstr "Aktinium"
-
-#~ msgid "Thorium"
-#~ msgstr "Torium"
-
-#~ msgid "Protactinium"
-#~ msgstr "Protaktinium"
-
-#~ msgid "Uranium"
-#~ msgstr "Uran"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptunium"
-
-#~ msgid "Plutonium"
-#~ msgstr "Plutonium"
-
-#~ msgid "Americium"
-#~ msgstr "Americium"
-
-#~ msgid "Curium"
-#~ msgstr "Curium"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkelium"
-
-#~ msgid "Californium"
-#~ msgstr "Californium"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einsteinium"
-
-#~ msgid "Fermium"
-#~ msgstr "Fermium"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelevium"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobelium"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Lawrencium"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfordium"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dubnium"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborgium"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bohrium"
-
-#~ msgid "Hassium"
-#~ msgstr "Hassium"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Meitnerium"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "Darmstadtium"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Röntgenium"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrium"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadium"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Ununseptium"
-
-#~ msgid "Ununoctium"
-#~ msgstr "Ununoctium"
-
-#~ msgid "Axes"
-#~ msgstr "Axlar"
-
-#~ msgid "Dipole"
-#~ msgstr "två polig"
-
-#, qt-format
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Animation..."
-#~ msgstr "Animering..."
-
-#, qt-format
-#~ msgid "Number of atoms: %1"
-#~ msgstr "Antalet atomer: %1"
-
-#, qt-format
-#~ msgid "Number of rotatable bonds: %1"
-#~ msgstr "Antalet vridbara bindningar: %1"
-
-#~ msgid "Add constraint"
-#~ msgstr "Lägg till restriktion"
-
-#~ msgid "Your molecule must contain at least one atom to add a constraint"
-#~ msgstr ""
-#~ "Din molekyl ska innehålla minst en atom för att kunna lägga till en "
-#~ "restriktion"
-
-#~ msgid ""
-#~ "Your molecule must contain at least two atoms to add a bond constraint"
-#~ msgstr ""
-#~ "Din molekyl ska innehålla minst två atomer för att kunna lägga till en "
-#~ "restriktion för bindningen"
-
-#~ msgid ""
-#~ "Your molecule must contain at least three atoms to add an angle constraint"
-#~ msgstr ""
-#~ "Din molekyl ska innehålla minst tre atomer för att kunna lägga till en "
-#~ "restriktion för vinkeln"
-
-#~ msgid "Axis:"
-#~ msgstr "Axel:"
-
-#~ msgid "Align:"
-#~ msgstr "Räta upp"
-
-#~ msgid "Everything"
-#~ msgstr "Allting"
-
-#~ msgid "Align"
-#~ msgstr "Rada upp"
-
-#~ msgid ""
-#~ "Auto Optimization Tool\n"
-#~ "\n"
-#~ "Navigation Functions when Clicking in empty space.\n"
-#~ "Left Mouse: Rotate Space\n"
-#~ "Middle Mouse: Zoom Space\n"
-#~ "Right Mouse: Move Space\n"
-#~ "\n"
-#~ "Extra Function when running\n"
-#~ "Left Mouse: Click and drag atoms to move them"
-#~ msgstr ""
-#~ "Automatiskt optimeringsverktyg\n"
-#~ "\n"
-#~ "Navigeringen fungerar vid klick på tomma utrymmen:\n"
-#~ "Vänster knapp: Rotera rymd\n"
-#~ "Mittenknapp: Zooma rymd\n"
-#~ "Höger knapp: Flytta rymd\n"
-#~ "\n"
-#~ "Extrafunktion vid körning:\n"
-#~ "Vänster knapp: Klicka och dra atomer för att flytta dem"
-
-#~ msgid "AutoOpt: Could not setup force field...."
-#~ msgstr "Automatisk optimering: Kunde inte ställa in kraftfält..."
-
-#, qt-format
-#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
-#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
-
-#~ msgid "Force Field:"
-#~ msgstr "Kraftfält:"
-
-#~ msgid "Steps per Update:"
-#~ msgstr "Steg per uppdatering:"
-
-#~ msgid "Algorithm:"
-#~ msgstr "Algoritm:"
-
-#~ msgid "Molecular Dynamics (300K)"
-#~ msgstr "Molekyldynamik (300 K)"
-
-#~ msgid "Molecular Dynamics (600K)"
-#~ msgstr "Molekyldynamik (600 K)"
-
-#~ msgid "Molecular Dynamics (900K)"
-#~ msgstr "Molekyldynamik (900 K)"
-
-#~ msgid "Fixed atoms are movable"
-#~ msgstr "Fasta atomer är flyttbara"
-
-#~ msgid "Ignored atoms are movable"
-#~ msgstr "Ignorerade atomer är flyttbara"
-
-#~ msgid "AutoOptimization"
-#~ msgstr "Auto Optimering"
-
-#~ msgid "Auto Rotation Tool"
-#~ msgstr "Automatiskt rotationsverktyg"
-
-#~ msgid "x rotation:"
-#~ msgstr "x rotation:"
-
-#~ msgid "x rotation"
-#~ msgstr "x rotation"
-
-#~ msgid "y rotation:"
-#~ msgstr "Y-rotation:"
-
-#~ msgid "y rotation"
-#~ msgstr "y rotation"
-
-#~ msgid "z rotation:"
-#~ msgstr "z rotation:"
-
-#~ msgid "z rotation"
-#~ msgstr "z rotation"
-
-#~ msgid "AutoRotate"
-#~ msgstr "Auto Rotera"
-
-#~ msgid " Show Angles"
-#~ msgstr " Visa vinklar"
-
-#~ msgid " Snap-to Bonds"
-#~ msgstr " Låsande bindningar"
-
-#~ msgid "Snap-to Threshold: "
-#~ msgstr "Lås till tröskel: "
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Avstånd (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Avstånd (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Angle: %1 %2"
-#~ msgstr "Vinkel: %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Avstånd (3->4): %1 %2"
-
-#, qt-format
-#~ msgid "Dihedral Angle: %1 %2"
-#~ msgstr "Dihedralvinkel: %1 %2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Distance(s):"
-#~ msgstr "Avstånd:"
-
-#~ msgid "Measure"
-#~ msgstr "Mät"
-
-#~ msgid "Draw Atom"
-#~ msgstr "Rita atom"
-
-#~ msgid "Draw Bond"
-#~ msgstr "Rita bindning"
-
-#~ msgid "Draw"
-#~ msgstr "Rita"
-
-#~ msgid "Element:"
-#~ msgstr "Gundämne:"
-
-#~ msgid "Bond Order:"
-#~ msgstr "Bindningsordning:"
-
-#~ msgid "Single"
-#~ msgstr "Enkel"
-
-#~ msgid "Double"
-#~ msgstr "Dubbel"
-
-#~ msgid "Triple"
-#~ msgstr "Trippel"
-
-#~ msgid "0/0"
-#~ msgstr "0/0"
-
-#~ msgid "fps"
-#~ msgstr "fps"
+msgstr ",,sanderd17@gmail.com"
