@@ -719,7 +719,7 @@ namespace Avogadro {
 
     QFileInfo qfile(fileName);
     // handle VASP files by calling OBConversion::ReadFile
-    if (qfile.baseName() == "POSCAR" || qfile.baseName() == "CONTAR") {
+    if (qfile.baseName() == "POSCAR" || qfile.baseName() == "CONTCAR") {
       // Check that the file can be read from disk
       if (!MoleculeFile::canOpen(fileName, QFile::ReadOnly | QFile::Text)) {
         // Cannot read the file
@@ -731,7 +731,7 @@ namespace Avogadro {
 
       // Construct the OpenBabel objects, set the file type
       OpenBabel::OBConversion conv;
-      // OBFormats are "POSCAR" and "CONTAR"
+      // OBFormats are "POSCAR" and "CONTCAR"
       if (!conv.SetInFormat(qfile.baseName().toAscii().data())) {
         // Input format not supported
         moleculeFile->m_error.append(
