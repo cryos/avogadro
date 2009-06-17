@@ -160,7 +160,7 @@ struct QClass_converters
         return incref(Py_None);
       
 #ifdef SIP_4_8
-      PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+      PyObject *sip_obj = sip_API->api_convert_from_type(object, type, 0);
 #else
       PyObject *sip_obj = sip_API->api_convert_from_instance(object, type, 0);
 #endif
@@ -230,7 +230,7 @@ struct QList_QAction_to_python_list_PyQt
 
     foreach (QAction *action, qList) {
 #ifdef SIP_4_8
-      PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+      PyObject *sip_obj = sip_API->api_convert_from_type(action, type, 0);
 #else
       PyObject *sip_obj = sip_API->api_convert_from_instance(action, type, 0);
 #endif
@@ -364,7 +364,7 @@ PyObject* toPyQt(T *obj)
     return incref(Py_None);
       
 #ifdef SIP_4_8
-  PyObject *sip_obj = sip_API->api_convert_from_type((void*)(&object), type, 0);
+  PyObject *sip_obj = sip_API->api_convert_from_type(obj, type, 0);
 #else
   PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
 #endif
