@@ -55,6 +55,10 @@ namespace Avogadro {
      */
     bool isConformerFile() const;
     /**
+     * @return True if the MoleculeFile is ready (i.e. completed reading the file)
+     */
+    bool isReady() const;
+    /**
      * Get the number of molecules in the file. When 
      */
     unsigned int numMolecules() const;

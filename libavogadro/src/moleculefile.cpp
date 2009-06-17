@@ -27,6 +27,7 @@
 #include <avogadro/molecule.h>
 
 #include <QFile>
+#include <QFileInfo>
 #include <QStringList>
 #include <QThread>
 #include <QDebug>
@@ -51,11 +52,16 @@ namespace Avogadro {
   class MoleculeFilePrivate
   {
     public:
-      MoleculeFilePrivate() : isConformerFile(false), ready(false) {}
+      MoleculeFilePrivate() : isConformerFile(false), ready(false), specialCaseOBMol(0) {}
       QStringList titles;
       std::vector<std::streampos> streampos;
       bool isConformerFile;
       bool ready;
+
+      // special cases call OBConversion::ReadFile and save the the resulting
+      // OBMol in specialCaseOBMol. MoleculeFile::molecule will return this 
+      // OBMol object (if non 0) regardless of the index.
+      OBMol *specialCaseOBMol;
   };
 
   MoleculeFile::MoleculeFile(const QString &fileName, const QString &fileType, 
@@ -66,7 +72,14 @@ namespace Avogadro {
 
   MoleculeFile::~MoleculeFile() 
   {
+    if (d->specialCaseOBMol)
+      delete d->specialCaseOBMol;
     delete d;
+  }
+    
+  bool MoleculeFile::isReady() const
+  {
+    return d->ready;
   }
 
   bool MoleculeFile::isConformerFile() const
@@ -107,6 +120,10 @@ namespace Avogadro {
   {
     if (!d->ready)
       return 0;
+
+    // return a copy of the specialCaseOBMol if it is set
+    if (d->specialCaseOBMol)
+      return (new OpenBabel::OBMol(*d->specialCaseOBMol));
 
     if (i >= d->streampos.size()) {
       m_error.append(tr("OBMol: index %1 out of reach.").arg(i));
@@ -699,6 +716,46 @@ namespace Avogadro {
       const QString &fileType, const QString &fileOptions, bool wait)
   {
     QPointer<MoleculeFile> moleculeFile = new MoleculeFile(fileName, fileType, fileOptions);
+
+    QFileInfo qfile(fileName);
+    // handle VASP files by calling OBConversion::ReadFile
+    if (qfile.baseName() == "POSCAR" || qfile.baseName() == "CONTAR") {
+      // Check that the file can be read from disk
+      if (!MoleculeFile::canOpen(fileName, QFile::ReadOnly | QFile::Text)) {
+        // Cannot read the file
+        moleculeFile->m_error.append(
+            QObject::tr("File %1 cannot be opened for reading.").arg(fileName));
+        moleculeFile->setReady(true);
+        moleculeFile->threadFinished(); // set & emit ready
+      }
+
+      // Construct the OpenBabel objects, set the file type
+      OpenBabel::OBConversion conv;
+      // OBFormats are "POSCAR" and "CONTAR"
+      if (!conv.SetInFormat(qfile.baseName().toAscii().data())) {
+        // Input format not supported
+        moleculeFile->m_error.append(
+            QObject::tr("File type '%1' is not supported for reading.").arg(qfile.baseName()));
+        moleculeFile->setReady(true);
+        moleculeFile->threadFinished(); // set & emit ready
+      } 
+      
+      moleculeFile->setConformerFile(false);
+      // Now attempt to read the molecule in
+      moleculeFile->d->specialCaseOBMol = new OpenBabel::OBMol;
+      if (conv.ReadFile(moleculeFile->d->specialCaseOBMol, QFile::encodeName(fileName).data())) {
+        moleculeFile->titlesRef().push_back(tr("Molecule %1").arg(1));
+      } else {
+        delete moleculeFile->d->specialCaseOBMol;
+        moleculeFile->d->specialCaseOBMol = 0;
+
+        moleculeFile->m_error.append(
+            QObject::tr("Reading a molecule from file '%1' failed.").arg(fileName));
+      }
+      
+      moleculeFile->threadFinished(); // set & emit ready
+      return moleculeFile;
+    } // handle VASP files
 
     ReadFileThread *thread = new ReadFileThread(moleculeFile);
     QObject::connect(thread, SIGNAL(finished()), moleculeFile, SLOT(threadFinished()));

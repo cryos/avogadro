@@ -785,18 +785,23 @@ namespace Avogadro
     if (!d->moleculeFile)
       return false;
 
-    // TODO: split into first molecule vs. whole file
-    connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(firstMolReady()));
-    connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(finishLoadFile()));
+    if (!d->moleculeFile->isReady()) {
+      // TODO: split into first molecule vs. whole file
+      connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(firstMolReady()));
+      connect(d->moleculeFile, SIGNAL(ready()), this, SLOT(finishLoadFile()));
 
-    if (!d->progressDialog) {
-      d->progressDialog = new QProgressDialog(this);
-      d->progressDialog->setRange(0,0); // indeterminate progress
-      d->progressDialog->setLabelText(tr("Reading multi-molecule file. This may take a while..."));
-      d->progressDialog->setWindowModality(Qt::WindowModal);
-      d->progressDialog->setCancelButtonText(QString()); // no cancel button
+      if (!d->progressDialog) {
+        d->progressDialog = new QProgressDialog(this);
+        d->progressDialog->setRange(0,0); // indeterminate progress
+        d->progressDialog->setLabelText(tr("Reading multi-molecule file. This may take a while..."));
+        d->progressDialog->setWindowModality(Qt::WindowModal);
+        d->progressDialog->setCancelButtonText(QString()); // no cancel button
+      }
+      d->progressDialog->show();
+    } else {
+      firstMolReady();
+      finishLoadFile();
     }
-    d->progressDialog->show();
 
     return true;
   }
@@ -984,6 +989,7 @@ namespace Avogadro
       statusBar()->showMessage( status, 5000 );
     }
     else { // errors
+      // @TODO: show errors in Messages Tab
       QApplication::restoreOverrideCursor();
       QMessageBox::warning(this, tr("Avogadro"),
                            tr("Reading molecular file failed, file %1.").arg(d->moleculeFile->fileName()));
