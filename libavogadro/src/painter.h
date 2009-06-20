@@ -74,7 +74,7 @@ namespace Avogadro
     virtual bool finalize();
 
     /**
-     * @return the current global quality setting.
+     * @return The current global quality setting.
      */
     virtual int quality() const = 0;
 

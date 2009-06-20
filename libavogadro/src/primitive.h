@@ -135,7 +135,7 @@ const unsigned long FALSE_ID = std::numeric_limits<unsigned long>::max();
      */
 
     /**
-     * @return the primitive type (one of Primitive::Type)
+     * @return The primitive type (one of Primitive::Type)
      */
     Type type() const;
 
@@ -145,12 +145,12 @@ const unsigned long FALSE_ID = std::numeric_limits<unsigned long>::max();
     QReadWriteLock *lock() const;
 
     /**
-     * @return the unique id of the primitive.
+     * @return The unique id of the primitive.
      */
     unsigned long id() const { return m_id; }
 
     /**
-     * @return the index of the primitive.
+     * @return The index of the primitive.
      * @note Replaces GetIdx().
      */
     unsigned long index() const { return m_index; }

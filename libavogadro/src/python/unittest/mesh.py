@@ -1,6 +1,8 @@
 import Avogadro
 import unittest
+from PyQt4.QtGui import *
 from numpy import *
+from util import *
 
 class TestMesh(unittest.TestCase):
   def setUp(self):
@@ -15,11 +17,21 @@ class TestMesh(unittest.TestCase):
     # just check if the method is there
     self.assertEqual(self.mesh.reserve(100, True), True)
 
+  def test_various(self):
+    self.mesh.otherMesh
+    self.mesh.cube
+
+    self.assertEqual(self.mesh.numVertices, 0)
+    self.assertEqual(self.mesh.numNormals, 0)
+  
   def test_stable(self):
     self.mesh.stable = False
     self.assertEqual(self.mesh.stable, False)
     self.mesh.stable = True
     self.assertEqual(self.mesh.stable, True)
+
+  def test_isoValue(self):
+    testReadWriteProperty(self, self.mesh.isoValue, 0.0, 3.0)
 
   def test_vertices(self):
     vertices = []
@@ -46,6 +58,19 @@ class TestMesh(unittest.TestCase):
  
     self.mesh.addNormals(normals)
     self.assertEqual(len(self.mesh.normals), 6)
+ 
+  def test_colors(self):
+    colors = []
+    colors.append(QColor(255,0,0))
+    colors.append(QColor(255,0,0))
+    colors.append(QColor(255,0,0))
+
+    self.mesh.colors = colors
+    self.assertEqual(len(self.mesh.colors), 3)
+    self.assertEqual(self.mesh.color(0).red(), 255)
+ 
+    self.mesh.addColors(colors)
+    self.assertEqual(len(self.mesh.colors), 6)
   
   def test_valid(self):
     # just test it's there...

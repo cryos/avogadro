@@ -1,60 +1,44 @@
-atom.cpp                done + unittest (Atom::valence not working)
-bond.cpp                done + unittest (Bond::otherAtom not working)
-molecule.cpp            done + unittest 
-fragment.cpp            done + unittest
+O/D = function Overloading / Default arguments
+
+Animation               done              O/D + doc
+Atom                    done + unittest + O/D + doc
+Bond                    done + unittest + O/D + doc
+Camera                  done + unittest + O/D + doc
+Color                   done + unittest + O/D + doc
+Cube                    done + unittest + O/D + doc
+ElementTranslator       done            + O/D + doc
+Engine                  done + unittest + O/D + doc (todo: addPrimitive)    [settings]
+Extension               done + unittest + O/D + doc                         [settings]
+Fragment                done + unittest + O/D + doc
+GLWidget                done + unittest + O/D + doc
+Mesh                    done + unittest + O/D + doc
+MeshGenerator           done            + O/D + doc
+Molecule                done + unittest + O/D + doc
+ moleculefile.h
+navigate                done            + O/D + doc
+NeighborList            done            + O/D + doc
+Painter                 done            + O/D + doc
+PaiterDevice            done            + O/D
+PeriodicTableView       done            + O/D + doc
+Plugin                  done + unittest + O/D + doc (todo: check derived plugin read/write settings)
+PluginManager           done + unittest + O/D + doc
+Primitive               done + unit tests for this are spread out over the other tests
+PrimitiveList           done + unittest + O/D + doc
+Residue                 done + unittest + O/D + doc
+Tool                    done + unittest + O/D + doc
+ToolGroup               done + unittest + O/D + doc
+
 eigen.cpp               done + unittest
-qstring.cpp             done + unit tests for this are spread out over the other tests
 qlist.cpp               done + unit tests for this are spread out over the other tests
-cube.cpp                done + unittest
-residue.cpp             done + unittest
-primitive.cpp           done + unit tests for this are spread out over the other tests
-mesh.cpp                done + unittest
-primitivelist.cpp       done + unittest
-pluginmanager.cpp       done + unittest
-toolgroup.cpp           done + unittest
-plugin.cpp              done + unittest
-tool.cpp                done + unittest
-color.cpp               done + unittest
-engine.cpp              done + unittest
-extension.h             done + unittest
-glwidget.cpp            done + unittest
-camera.cpp              done + unittest
+qstring.cpp             done + unit tests for this are spread out over the other tests
 
-
-
-painter.cpp             done
-paiterdevice.cpp        done
-
-
-# next
-line.h
-point.h
 
 # later...
-elementtranslator.h
-navigate.h
-periodictableview.h
 undosequence.h
 
-# needed?
-pythoninterpreter.h
-pythonscript.h
-idlist.h
-sphere.h
-cylinder.h
-
-
-
-
-boxcontrol.h
 colorbutton.h
-cutoffgrid.h
 filetreeitem.h
 glgraphicsview.h
-meshgenerator.h
 moleculetreeview.h
-periodictableview.h
 pluginlistview.h
-pluginmanager.h
 primitiveitemmodel.h
-undosequence.h

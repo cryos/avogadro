@@ -59,35 +59,33 @@ namespace Avogadro {
       ~ToolGroup();
 
       /**
-       * Search and load plugins from the following paths:
-       *    /usr/lib/avogadro/tools
-       *    /usr/local/lib/avogadro/tools
-       *
-       * You can set the AVOGADRO_PATH to designate a path
-       * at runtime.
+       * Append the @p tools to the toolgroup.
        */
       void append(QList<Tool *> tools);
-
+      
+      /**
+       * Append the @p tool to the toolgroup.
+       */
       void append(Tool *tool);
 
       /**
-       * @return the active tool
+       * @return The active tool.
        */
       Tool* activeTool() const;
 
       /**
        * @param i index of the tool to return
-       * @return tool at index i
+       * @return The tool at index i.
        */
       Tool* tool(int i) const;
 
       /**
-       * @return constant list of the tools
+       * @return Constant list of the tools.
        */
       const QList<Tool *>& tools() const;
 
       /**
-       * @return constant QActionGroup of all the tool select actions
+       * @return constant QActionGroup of all the tool select actions.
        */
       const QActionGroup * activateActions() const;
 
@@ -122,7 +120,7 @@ namespace Avogadro {
        */
       void readSettings(QSettings &settings);
       /**
-       * Reset the toolgroup to it's original state
+       * Reset the toolgroup to it's original state.
        */
       void removeAllTools();
 

@@ -7,6 +7,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
 #include <avogadro/cube.h>
+#include <avogadro/glwidget.h>
 
 #include <openbabel/mol.h>
 
@@ -42,7 +43,14 @@ namespace Avogadro {
 
 using namespace boost::python;
 using namespace Avogadro;
-  
+
+Molecule *currentMolecule()
+{
+  if (!GLWidget::current())
+    return 0;
+  return GLWidget::current()->molecule();
+}
+
 void export_MoleculeList()
 {
 

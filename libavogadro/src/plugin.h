@@ -77,22 +77,22 @@ namespace Avogadro {
       virtual ~Plugin();
 
       /**
-       * @return the type of the plugin.
+       * @return The type of the plugin.
        */
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the unique, untranslated identifier for the plugin.
+       * @return The unique, untranslated identifier for the plugin.
        */
       virtual QString identifier() const = 0;
 
       /**
-       * @return the translated name of the plugin.
+       * @return The translated name of the plugin.
        */
       virtual QString name() const = 0;
 
       /**
-       * @return a description of the plugin.
+       * @return A description of the plugin.
        */
       virtual QString description() const;
 
@@ -110,12 +110,12 @@ namespace Avogadro {
       virtual QWidget *settingsWidget();
 
       /**
-       * Write the engine settings so that they can be saved between sessions.
+       * Write the plugin settings so that they can be saved between sessions.
        */
       virtual void writeSettings(QSettings &settings) const;
 
       /**
-       * Read in the settings that have been saved for the engine instance.
+       * Read in the settings that have been saved for the plugin instance.
        */
       virtual void readSettings(QSettings &settings);
 
@@ -143,22 +143,22 @@ namespace Avogadro {
       virtual Plugin *createInstance(QObject *parent=0) = 0;
 
       /**
-       * @return the type of the plugin.
+       * @return The type of the plugin.
        */
       virtual Plugin::Type type() const = 0;
 
       /**
-       * @return the untranslated identifier of the plugin
+       * @return The untranslated identifier of the plugin.
        */
       virtual QString identifier() const = 0;
 
       /**
-       * @return the translated name of the plugin.
+       * @return The translated name of the plugin.
        */
       virtual QString name() const = 0;
 
       /**
-       * @return a description of the plugin.
+       * @return A description of the plugin.
        */
       virtual QString description() const = 0;
   };

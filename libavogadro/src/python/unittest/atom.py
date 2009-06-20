@@ -25,33 +25,23 @@ class TestAtom(unittest.TestCase):
     atom.atomicNumber = 6
     self.assertEqual(atom.atomicNumber, 6)
 
-#  def test_addBond(self):
-#    atom = self.molecule.addAtom()
-#    bond1 = self.molecule.addBond()
-#    bond2 = self.molecule.addBond()
-#
-#    # test addBond(Bond*)
-#    atom.addBond(bond1)
-#    self.assert_(bond1.id in atom.bonds)
-#    # void addBond(unsigned long int)
-#    atom.addBond(bond2.id)
-#    self.assert_(bond2.id in atom.bonds)
+  def test_forceVector(self):
+    atom = self.molecule.addAtom()
+    atom.forceVector # test if it is there
+    vec = array([1., 2., 3.])
+    atom.forceVector = vec # test setter
+    # test getter
+    self.assertEqual(atom.forceVector[0], 1.)
+    self.assertEqual(atom.forceVector[1], 2.)
+    self.assertEqual(atom.forceVector[2], 3.)
 
-#  def test_removeBond(self):
-#    atom = self.molecule.addAtom()
-#    # add two bonds
-#    bond1 = self.molecule.addBond()
-#    bond2 = self.molecule.addBond()
-#    atom.addBond(bond1)
-#    atom.addBond(bond2)
-#    self.assertEqual(len(atom.bonds), 2)
-#
-#    # test removeBond(Bond*)
-#    atom.removeBond(bond1)
-#    self.assertEqual(len(atom.bonds), 1)
-#    # void removeBond(unsigned long int)
-#    atom.removeBond(bond2.id)
-#    self.assertEqual(len(atom.bonds), 0)
+  def test_residue(self):
+    atom = self.molecule.addAtom()
+    self.assertEqual(atom.residue, None)
+    residue = self.molecule.addResidue() # test setter
+    residue.addAtom(atom.id)
+    self.assertNotEqual(atom.residue, None) # test getter
+    self.assertEqual(atom.residueId, 0)
 
   def test_bonds(self):
     atom = self.molecule.addAtom()
@@ -97,9 +87,12 @@ class TestAtom(unittest.TestCase):
     bond1.setAtoms(atom1.id, atom2.id, 1)
     bond2.setAtoms(atom1.id, atom3.id, 1)
 
-    print(atom1.bonds)
-    
     self.assertEqual(atom1.valence, 2)
+
+    # test bond(otherAtom)
+    self.assertNotEqual(atom1.bond(atom3), None)
+    self.assertNotEqual(atom1.bond(atom2), None)
+    self.assertEqual(atom2.bond(atom3), None)
 
   def test_isHydrogen(self):
     # add 3 atoms

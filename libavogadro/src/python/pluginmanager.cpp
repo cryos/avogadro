@@ -35,8 +35,24 @@ void export_PluginManager()
           return_value_policy<reference_existing_object>()))
 
     // real functions
-    .def("loadFactories", &loadFactories1)
-    .def("loadFactories", &loadFactories2)
+    .def("loadFactories", 
+        &loadFactories1,
+        "Find all plugins by looking through the search paths:\n"
+        "   <bin_location>/../<lib_dir>/avogadro/engines\n"
+        "   <bin_location>/../<lib_dir>/avogadro/tools\n"
+        "   <bin_location>/../<lib_dir>/avogadro/extensions\n"
+        "   <bin_location>/../<lib_dir>/avogadro/colors\n"
+        "   <bin_location>/../<lib_dir>/avogadro/contrib (external plugins)\n\n"
+        "You can set AVOGADRO_PLUGINS to designate a path at runtime to search.")
+    .def("loadFactories", 
+        &loadFactories2,
+        "Find all plugins by looking through the search paths:\n"
+        "   <bin_location>/../<lib_dir>/avogadro/engines\n"
+        "   <bin_location>/../<lib_dir>/avogadro/tools\n"
+        "   <bin_location>/../<lib_dir>/avogadro/extensions\n"
+        "   <bin_location>/../<lib_dir>/avogadro/colors\n"
+        "   <bin_location>/../<lib_dir>/avogadro/contrib (external plugins)\n\n"
+        "You can set AVOGADRO_PLUGINS to designate a path at runtime to search.")
     .staticmethod("loadFactories")
 
     //.def("factories", &PluginManager::factories)
@@ -44,24 +60,71 @@ void export_PluginManager()
     //.def("factory", &PluginManager::factory, return_value_policy<reference_existing_object>())
     //.staticmethod("factory")
 
-    .def("extension", &PluginManager::extension, return_value_policy<manage_new_object>())
-    .def("extension", &extension1, return_value_policy<manage_new_object>())
-    .def("tool", &PluginManager::tool, return_value_policy<manage_new_object>())
-    .def("tool", &tool1, return_value_policy<manage_new_object>())
-    .def("color", &PluginManager::color, return_value_policy<manage_new_object>())
-    .def("color", &color1, return_value_policy<manage_new_object>())
-    .def("engine", &PluginManager::engine, return_value_policy<manage_new_object>())
-    .def("engine", &engine1, return_value_policy<manage_new_object>())
-    .def("names", &PluginManager::names)
-    .def("identifiers", &PluginManager::identifiers)
-    .def("descriptions", &PluginManager::descriptions)
+    .def("extension", 
+        &PluginManager::extension, return_value_policy<manage_new_object>(),
+        "Get a new instance of the extension with identifier @p id.")
+    .def("extension", 
+        &extension1, return_value_policy<manage_new_object>(),
+        "Get a new instance of the extension with identifier @p id.")
 
-    .def("extensions", &PluginManager::extensions)
-    .def("extensions", &extensions1)
-    .def("tools", &PluginManager::tools)
-    .def("tools", &tools1)
-    .def("colors", &PluginManager::colors)
-    .def("colors", &colors1)
+    .def("tool", 
+        &PluginManager::tool, return_value_policy<manage_new_object>(),
+        "Get a new instance of the tool with identifier @p id.")
+    .def("tool", 
+        &tool1, return_value_policy<manage_new_object>(),
+        "Get a new instance of the tool with identifier @p id.")
+
+    .def("color", 
+        &PluginManager::color, return_value_policy<manage_new_object>(),
+        "Get a new instance of the color with identifier @p id.")
+    .def("color", 
+        &color1, return_value_policy<manage_new_object>(),
+        "Get a new instance of the color with identifier @p id.")
+
+    .def("engine", 
+        &PluginManager::engine, return_value_policy<manage_new_object>(),
+        "Get a new instance of the color with identifier @p id.")
+    .def("engine", 
+        &engine1, return_value_policy<manage_new_object>(),
+        "Get a new instance of the color with identifier @p id.")
+
+    .def("names", 
+        &PluginManager::names,
+        "Get a list with the plugin names of type @p type.")
+
+    .def("identifiers", 
+        &PluginManager::identifiers,
+        "Get a list with the plugin identifiers of type @p type.")
+
+    .def("descriptions", 
+        &PluginManager::descriptions,
+        "Get a list with the plugin descriptions of type @p type.")
+
+    .def("extensions", 
+        &PluginManager::extensions,
+        "Get a list of all extension (new instances).")
+    .def("extensions", 
+        &extensions1,
+        "Get a list of all extension (new instances).")
+
+    .def("tools", 
+        &PluginManager::tools,
+        "Get a list of all tool (new instances).")
+    .def("tools", 
+        &tools1,
+        "Get a list of all tool (new instances).")
+
+    .def("colors", 
+        &PluginManager::colors,
+        "Get a list of all color (new instances).")
+    .def("colors", 
+        &colors1,
+        "Get a list of all color (new instances).")
+
+    .def("writeSettings", 
+        &PluginManager::writeSettings,
+        "Write the settings of the PluginManager in order to save them to disk.")
+        .staticmethod("writeSettings")
     ;
 
 }

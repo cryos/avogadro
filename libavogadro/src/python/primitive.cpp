@@ -36,13 +36,29 @@ void export_Primitive()
     ;
 
   class_<Avogadro::Primitive, boost::noncopyable>("Primitive", no_init)
-    // read-only properties
-    .add_property("id", &Primitive::id) // read-only, managed by Molecule
-    .add_property("index", &Primitive::index) // read-only, managed by Molecule
-    .add_property("type", &Primitive::type) // read-only, managed by Molecule
+    // read-only properties (managed by molecule)
+    .add_property("id", 
+        &Primitive::id,
+        "The unique id of the primitive.")
+
+    .add_property("index",
+        &Primitive::index,
+        "The index of the primitive.")
+
+    .add_property("type", 
+        &Primitive::type,
+        "The primitive type (one of Primitive::Type)")
+
+    //
     // real functions
-    .def("update", &Primitive::update)
-    .def("lock", &Primitive::lock, return_value_policy<manage_new_object>())
+    //
+    .def("update", &Primitive::update,
+        "Function used to push changes to a primitive to the rest of the "
+        "system.  At this time there is no way (other than this) to "
+        "generate a signal when properties of a primitive change.")
+
+    // most functions lock the lock, having it in python will only cause double locks to freeze the app...
+    //.def("lock", &Primitive::lock, return_value_policy<manage_new_object>())
     ;
  
 }

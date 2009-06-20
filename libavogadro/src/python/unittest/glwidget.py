@@ -19,8 +19,6 @@ class TestGLWidget(unittest.TestCase):
     # create the GLWidget and load the default engines
     None
     
-
-
   def _test_constructors(self):
     self.qwidget = QWidget()
     self.glwidget2 = Avogadro.GLWidget(self.qwidget)
@@ -31,12 +29,22 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.quickRender
     self.glwidget.quickRender = True
     self.assertEqual(self.glwidget.quickRender, True)
- 
-#  def test_quality(self):
-#    print self.glwidget.quality
-#    self.glwidget.quality = 4
-#    print self.glwidget.quality
-#    self.assertEqual(self.glwidget.quality, 3)
+
+  def test_renderUnitCellAxes(self):
+    self.glwidget.renderUnitCellAxes
+    self.glwidget.renderUnitCellAxes = True
+    self.assertEqual(self.glwidget.renderUnitCellAxes, True)
+
+  def test_colorMap(self):
+    self.glwidget.colorMap
+    self.glwidget.colorMap = Avogadro.Color()
+    self.assertNotEqual(self.glwidget.colorMap, None)
+
+  # the quality isn't changed directly, this is not q bug... 
+  # (see GLPainterPainterPrivate::newQuality)
+  #def test_quality(self):
+    #self.glwidget.quality = 2
+    #self.assertEqual(self.glwidget.quality, 2)
   
   def test_fogLevel(self):
     self.glwidget.fogLevel
@@ -52,11 +60,6 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.renderDebug
     self.glwidget.renderDebug = True
     self.assertEqual(self.glwidget.renderDebug, True)
-
-  def test_colorMap(self):
-    self.glwidget.colorMap
-    self.glwidget.colorMap = Avogadro.Color()
-    self.assertNotEqual(self.glwidget.colorMap, None)
 
   def test_undoStack(self):
     self.glwidget.undoStack
@@ -162,11 +165,6 @@ class TestGLWidget(unittest.TestCase):
     self.glwidget.bCells
     self.glwidget.cCells
     self.glwidget.clearUnitCell()
-
-  def test_slots(self):
-    self.glwidget.addPrimitive(self.molecule.atom(0))
-    self.glwidget.updatePrimitive(self.molecule.atom(0))
-    self.glwidget.removePrimitive(self.molecule.atom(0))
 
   def test_engine(self):
     engines = Avogadro.PluginManager.instance.identifiers(Avogadro.PluginType.EngineType)

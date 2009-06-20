@@ -178,9 +178,10 @@ class TestCube(unittest.TestCase):
     # change the value
     cube.setValue(2, 3, 4, 5.5)
     self.assertEqual(cube.value(2, 3, 4), 5.5)
+    
+    self.assertEqual(cube.minValue, 0)
+    self.assertEqual(cube.maxValue, 124)
 
-
- 
   def test_name(self):
     cube = self.molecule.addCube()
     cube.name = "testing"

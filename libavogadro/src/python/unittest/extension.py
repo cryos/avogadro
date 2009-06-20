@@ -33,7 +33,7 @@ class TestExtension(unittest.TestCase):
   def test_performAction(self):
     glwidget = Avogadro.GLWidget()
     molecule = Avogadro.molecules.addMolecule()
-    #glwidget.molecule = molecule
+    glwidget.molecule = molecule
     molecule.addAtom().atomicNumber = 6
 
     for extension in self.extensions:

@@ -1,5 +1,4 @@
-// Last update: timvdm 12 May 2009
-
+// Last update: timvdm 18 June 2009
 #include <boost/python.hpp>
 
 #include <avogadro/primitive.h>
@@ -34,7 +33,15 @@ void addHydrogens2(Molecule &self, Atom *atom)
 { 
   self.addHydrogens(atom); 
 }
+void removeHydrogens(Molecule &self)
+{
+  self.removeHydrogens();
+}
 
+double energy(Molecule &self)
+{
+  return self.energy();
+}
 
 void export_Molecule()
 {
@@ -44,7 +51,7 @@ void export_Molecule()
   Atom* (Molecule::*addAtom_ptr2)(unsigned long) = &Molecule::addAtom;
   void (Molecule::*removeAtom_ptr1)(Atom*) = &Molecule::removeAtom;
   void (Molecule::*removeAtom_ptr2)(unsigned long) = &Molecule::removeAtom;
-  void (Molecule::*setAtomPos_ptr1)(unsigned long, const Eigen::Vector3d &) = &Molecule::setAtomPos;
+  //void (Molecule::*setAtomPos_ptr1)(unsigned long, const Eigen::Vector3d &) = &Molecule::setAtomPos;
   Bond* (Molecule::*addBond_ptr1)() = &Molecule::addBond;
   Bond* (Molecule::*addBond_ptr2)(unsigned long) = &Molecule::addBond;
   void (Molecule::*removeBond_ptr1)(Bond*) = &Molecule::removeBond;
@@ -77,109 +84,303 @@ void export_Molecule()
 
   class_<Avogadro::Molecule, bases<Avogadro::Primitive>, boost::noncopyable,
       std::auto_ptr<Avogadro::Molecule> >("Molecule", no_init)
-
-    // copy constructor
-    //.def(init<const Molecule&>())
     // overloaded functions
     .def("copy", &copy)
     .add_property("OBMol", &Molecule_OBMol, &Molecule_setOBMol)
 
+    //
     // read/write properties
-    .add_property("fileName", &Molecule::fileName, &Molecule::setFileName)
-    .add_property("dipoleMoment", make_function(&Molecule::dipoleMoment, 
-          return_value_policy<return_by_value>()), &Molecule::setDipoleMoment)
-    .add_property("energies", make_function(&Molecule::energies, 
-          return_value_policy<return_by_value>()), &Molecule::setEnergies)
+    //
+    .add_property("fileName", 
+        &Molecule::fileName, 
+        &Molecule::setFileName,
+        "The full path filename of the molecule.")
+
+    .add_property("dipoleMoment", 
+        make_function(&Molecule::dipoleMoment, return_value_policy<return_by_value>()), 
+        &Molecule::setDipoleMoment,
+        "The dipole moment of the Molecule.")
+
+    .add_property("energies", 
+        make_function(&Molecule::energies, return_value_policy<return_by_value>()), 
+        &Molecule::setEnergies,
+        "The energies for all conformers.")
+
+    //
     // read-only poperties
-    .add_property("numAtoms", &Molecule::numAtoms)
-    .add_property("numBonds", &Molecule::numBonds)
-    .add_property("numResidues", &Molecule::numResidues)
-    .add_property("numRings", &Molecule::numRings)
-    .add_property("numCubes", &Molecule::numCubes)
-    .add_property("numMeshes", &Molecule::numMeshes)
-    .add_property("numZMatrices", &Molecule::numZMatrices)
-    .add_property("numConformers", &Molecule::numZMatrices)
-    .add_property("atoms", &Molecule::atoms)
-    .add_property("bonds", &Molecule::bonds)
-    .add_property("cubes", &Molecule::cubes)
-    .add_property("meshes", &Molecule::meshes)
-    .add_property("residues", &Molecule::residues)
-    .add_property("rings", &Molecule::rings)
-    .add_property("zMatrices", &Molecule::zMatrices)
-    .add_property("center", make_function(&Molecule::center, return_value_policy<return_by_value>()))
-    .add_property("normalVector", make_function(&Molecule::normalVector, return_value_policy<return_by_value>()))
-    .add_property("radius", &Molecule::radius)
-    .add_property("farthestAtom", make_function(&Molecule::farthestAtom, return_value_policy<reference_existing_object>()))
+    //
+    .add_property("numAtoms", 
+        &Molecule::numAtoms,
+        "The total number of Atom objects in the molecule.")
+    .add_property("numBonds", 
+        &Molecule::numBonds,
+        "The total number of Bond objects in the Mmolecule.")
+    .add_property("numResidues", 
+        &Molecule::numResidues,
+        "The total number of Residue objects in the Molecule.")
+    .add_property("numRings", 
+        &Molecule::numRings,
+        "The total number of ring (Fragment) objects in the Molecule.")
+    .add_property("numCubes", 
+        &Molecule::numCubes,
+        "The total number of Cube objects in the Molecule.")
+    .add_property("numMeshes", 
+        &Molecule::numMeshes,
+        "The total number of Mesh objects in the Molecule.")
+    .add_property("numZMatrices", 
+        &Molecule::numZMatrices,
+        "The total number of ZMatrix objects in the Molecule.")
+    .add_property("numConformers", 
+        &Molecule::numZMatrices,
+        "The number of conformers.")
+
+    .add_property("atoms", 
+        &Molecule::atoms,
+        "List of all Atom objects in the Molecule.")
+    .add_property("bonds", 
+        &Molecule::bonds,
+        "List of all Bond objects in the Molecule.")
+    .add_property("cubes", 
+        &Molecule::cubes,
+        "List of all Cube objects in the Molecule.")
+    .add_property("meshes", 
+        &Molecule::meshes,
+        "List of all Mesh objects in the Molecule.")
+    .add_property("residues", 
+        &Molecule::residues,
+        "List of all Residue objects in the Molecule.")
+    .add_property("rings", 
+        &Molecule::rings,
+        "List of all ring (Fragment) objects in the Molecule.")
+    .add_property("zMatrices", 
+        &Molecule::zMatrices,
+        "List of all ZMatrix objects in the Molecule.")
+
+    .add_property("center", 
+        make_function(&Molecule::center, return_value_policy<return_by_value>()),
+        "The position of the center of the Molecule.")
+    
+    .add_property("normalVector", 
+        make_function(&Molecule::normalVector, return_value_policy<return_by_value>()),
+        "The normal vector of the Molecule.")
+    
+    .add_property("radius", 
+        &Molecule::radius,
+        "The radius of the Molecule.")
+
+    .add_property("farthestAtom", 
+        make_function(&Molecule::farthestAtom, return_value_policy<reference_existing_object>()),
+        "The Atom furthest away from the center of the Molecule.")
 
     //
     // real functions
     //
+    .def("update", 
+        &Molecule::update,
+        "Call to trigger an update signal, causing the molecule to be redrawn.")
 
-    .def("setAtomPos", setAtomPos_ptr1)
-    .def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>())
+    // use Atom::pos
+    //.def("setAtomPos", setAtomPos_ptr1, "Set the Atom position.")
+    //.def("atomPos", &Molecule::atomPos, return_value_policy<return_by_value>(), "Set the Atom position.")
 
     // atom functions
-    .def("addAtom", addAtom_ptr1, return_value_policy<reference_existing_object>())
-    .def("addAtom", addAtom_ptr2, return_value_policy<reference_existing_object>())
-    .def("atom", atom_ptr, return_value_policy<reference_existing_object>())
-    .def("atomById", &Molecule::atomById, return_value_policy<reference_existing_object>())
-    .def("removeAtom", removeAtom_ptr1)
-    .def("removeAtom", removeAtom_ptr2)
+    .def("addAtom", 
+        addAtom_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new Atom object and return a pointer to it.")
+    .def("addAtom", 
+        addAtom_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Atom object with the specified id and return a pointer to "
+        "it. Used when you need to recreate an Atom with the same unique id.")
+    .def("atom", 
+        atom_ptr, return_value_policy<reference_existing_object>(),
+        "The Atom at the supplied index.")
+    .def("atomById", 
+        &Molecule::atomById, return_value_policy<reference_existing_object>(),
+        "The Atom at the supplied unqique id.")
+    .def("removeAtom", 
+        removeAtom_ptr1, 
+        "Remove the supplied Atom.")
+    .def("removeAtom", 
+        removeAtom_ptr2,
+        "Delete the Atom with the unique id specified.")
     // bond functions
-    .def("addBond", addBond_ptr1, return_value_policy<reference_existing_object>())
-    .def("addBond", addBond_ptr2, return_value_policy<reference_existing_object>())
-    .def("bond", bond_ptr1, return_value_policy<reference_existing_object>())
-    .def("bond", bond_ptr2, return_value_policy<reference_existing_object>())
-    .def("bond", bond_ptr3, return_value_policy<reference_existing_object>())
-    .def("bondById", &Molecule::bondById, return_value_policy<reference_existing_object>())
-    .def("removeBond", removeBond_ptr1)
-    .def("removeBond", removeBond_ptr2)
+    .def("addBond", 
+        addBond_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new Bond object and return a pointer to it.")
+    .def("addBond", 
+        addBond_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Bond object with the specified id and return a pointer to "
+        "it. Used when you need to recreate a Bond with the same unique id.")
+    .def("bond", 
+        bond_ptr1, return_value_policy<reference_existing_object>(),
+        "Get the Bond at the supplied index.")
+    .def("bond", 
+        bond_ptr2, return_value_policy<reference_existing_object>(),
+        "Get the bond between the two supplied atom ids if one exists.")
+    .def("bond", 
+        bond_ptr3, return_value_policy<reference_existing_object>(),
+        "Get the bond between the two supplied atoms if one exists.")
+    .def("bondById", 
+        &Molecule::bondById, return_value_policy<reference_existing_object>(),
+        "The Bond at the supplied unique id.")
+    .def("removeBond", 
+        removeBond_ptr1,
+        "Remove the supplied Bond.")
+    .def("removeBond", 
+        removeBond_ptr2,
+        "Remove the Bond with the unique id specified.")
     // cube functions
-    .def("addCube", addCube_ptr1, return_value_policy<reference_existing_object>())
-    .def("addCube", addCube_ptr2, return_value_policy<reference_existing_object>())
-    .def("cube", cube_ptr, return_value_policy<reference_existing_object>())
-    .def("cubeById", &Molecule::cubeById, return_value_policy<reference_existing_object>())
-    .def("removeCube", removeCube_ptr1)
-    .def("removeCube", removeCube_ptr2)
+    .def("addCube", 
+        addCube_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new Cube object and return a pointer to it.")
+    .def("addCube", 
+        addCube_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Cube object with the specified id and return a pointer to "
+        "it. Used when you need to recreate a Cube with the same unique id.")
+    .def("cube", 
+        cube_ptr, return_value_policy<reference_existing_object>(),
+        "Get the Cube at the supplied index.")
+    .def("cubeById", 
+        &Molecule::cubeById, return_value_policy<reference_existing_object>(),
+        "Get the Cube at the supplied unique id.")
+    .def("removeCube", 
+        removeCube_ptr1,
+        "Remove the supplied Cube.")
+    .def("removeCube", 
+        removeCube_ptr2,
+        "Remove the Cube with the unique id specified.")
     // mesh functions
-    .def("addMesh", addMesh_ptr1, return_value_policy<reference_existing_object>())
-    .def("addMesh", addMesh_ptr2, return_value_policy<reference_existing_object>())
-    .def("mesh", mesh_ptr, return_value_policy<reference_existing_object>())
-    .def("meshById", &Molecule::meshById, return_value_policy<reference_existing_object>())
-    .def("removeMesh", removeMesh_ptr1)
-    .def("removeMesh", removeMesh_ptr2)
+    .def("addMesh", 
+        addMesh_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new Mesh object and return a pointer to it.")
+    .def("addMesh", 
+        addMesh_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Mesh object with the specified id and return a pointer to "
+        "it. Used when you need to recreate a Mesh with the same unique id.")
+    .def("mesh", 
+        mesh_ptr, return_value_policy<reference_existing_object>(),
+        "Get the Mesh at the supplied index.")
+    .def("meshById", 
+        &Molecule::meshById, return_value_policy<reference_existing_object>(),
+        "Get the Mesh at the supplied unique id.")
+    .def("removeMesh", 
+        removeMesh_ptr1,
+        "Remove the supplied Mesh.")
+    .def("removeMesh", 
+        removeMesh_ptr2,
+        "Remove the Mesh with the unique id specified.")
     // residue functions
-    .def("addResidue", addResidue_ptr1, return_value_policy<reference_existing_object>())
-    .def("addResidue", addResidue_ptr2, return_value_policy<reference_existing_object>())
-    .def("residue", residue_ptr, return_value_policy<reference_existing_object>())
-    .def("residueById", &Molecule::residueById, return_value_policy<reference_existing_object>())
-    .def("removeResidue", removeResidue_ptr1)
-    .def("removeResidue", removeResidue_ptr2)
+    .def("addResidue", 
+        addResidue_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new Residue object and return a pointer to it.")
+    .def("addResidue", 
+        addResidue_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Residue object with the specified id and return a pointer to "
+        "it. Used when you need to recreate a Residue with the same unique id.")
+    .def("residue", 
+        residue_ptr, return_value_policy<reference_existing_object>(),
+        "Get the residue at the supplied index.")
+    .def("residueById", 
+        &Molecule::residueById, return_value_policy<reference_existing_object>(),
+        "Get the residue at the supplied unique id.")
+    .def("removeResidue", 
+        removeResidue_ptr1,
+        "Remove the supplied residue.")
+    .def("removeResidue", 
+        removeResidue_ptr2,
+        "Remove the residue with the unique id specified.")
     // ring functions
-    .def("addRing", addRing_ptr1, return_value_policy<reference_existing_object>())
-    .def("addRing", addRing_ptr2, return_value_policy<reference_existing_object>())
-    .def("removeRing", removeRing_ptr1)
-    .def("removeRing", removeRing_ptr2)
+    .def("addRing", 
+        addRing_ptr1, return_value_policy<reference_existing_object>(),
+        "Create a new ring object and return a pointer to it.")
+    .def("addRing", 
+        addRing_ptr2, return_value_policy<reference_existing_object>(),
+        "Create a new Ring object with the specified id and return a pointer to "
+        "it. Used when you need to recreate a Ring with the same unique id.")
+    .def("removeRing", 
+        removeRing_ptr1,
+        "Remove the supplied ring.")
+    .def("removeRing", 
+        removeRing_ptr2,
+        "Remove the ring with the unique id specified.")
     // zmatrix functions
-    .def("addZMatrix", &Molecule::addZMatrix, return_value_policy<reference_existing_object>())
-    .def("removeZMatrix", &Molecule::removeZMatrix)
-    .def("zMatrix", &Molecule::zMatrix, return_value_policy<reference_existing_object>())
+    .def("addZMatrix", 
+        &Molecule::addZMatrix, return_value_policy<reference_existing_object>(),
+        "Create a new ZMatrix object and return a pointer to it.")
+    .def("removeZMatrix", 
+        &Molecule::removeZMatrix,
+        "Remove the supplied ZMatrix.")
+    .def("zMatrix", 
+        &Molecule::zMatrix, return_value_policy<reference_existing_object>(),
+        "Get the ZMatrix at the supplied index.")
     // conformer functions
-    .def("addConformer", addConformer_ptr1)
-    .def("addConformer", addConformer_ptr2, return_value_policy<return_by_value>())
-    .def("conformer", &Molecule::conformer, return_value_policy<return_by_value>())
-    .def("setConformer", &Molecule::setConformer)
-    .def("setAllConformers", &Molecule::setAllConformers)
-    .def("clearConformers", &Molecule::clearConformers)
-    .def("energy", &Molecule::energy)
+    .def("addConformer", 
+        addConformer_ptr1,
+        "Add a new conformer to the Molecule. The conformers are mapped onto the "
+        "unique ids of the atoms in the Molecule.")
+    .def("addConformer", 
+        addConformer_ptr2, return_value_policy<return_by_value>(),
+        "Add a new conformer and return a pointer to it.")
+    .def("conformer", 
+        &Molecule::conformer, return_value_policy<return_by_value>(),
+        "Get the conformer for the supplied index, or None if the index doesn't exist.")
+    .def("conformers", 
+        &Molecule::conformer, return_value_policy<return_by_value>(),
+        "Get const reference to all conformers.") // FIXME
+    .def("setConformer", 
+        &Molecule::setConformer,
+        "Change the conformer to the one at the specified index.")
+    .def("setAllConformers", 
+        &Molecule::setAllConformers,
+        "Replace all conformers in the Molecule. The conformers are "
+        "mapped onto the unique ids of the atoms in the Molecule. "
+        "This will first clear all conformers.")
+    .def("currentConformer", 
+        &Molecule::currentConformer,
+        "The current conformer index.")
+    .def("clearConformers", 
+        &Molecule::clearConformers,
+        "Clear all conformers from the molecule, leaving just conformer zero.")
+    .def("energy", 
+        energy,
+        "Get the energy of the current conformer.")
+    .def("energy", 
+        &Molecule::energy,
+        "Get the energy of the supplied conformer index.")
+    .def("setEnergy",
+        &Molecule::setEnergy,
+        "Set the energy for the current conformer.")
     // general functions
-    .def("addHydrogens", &addHydrogens1)
-    .def("addHydrogens", &addHydrogens2)
-    .def("removeHydrogens", &Molecule::removeHydrogens)
-    .def("calculatePartialCharges", &Molecule::calculatePartialCharges)
-    .def("calculateAromaticity", &Molecule::calculateAromaticity)
-    .def("clear", &Molecule::clear)
-    .def("translate", &Molecule::translate)
+    .def("addHydrogens", 
+        &addHydrogens1,
+        "Add hydrogens to the molecule.")
+    .def("addHydrogens", 
+        &addHydrogens2,
+        "Add hydrogens to the molecule.")
+
+    .def("removeHydrogens", 
+        &Molecule::removeHydrogens,
+        "Remove all hydrogens connected to the supplied atom.")
+    .def("removeHydrogens", 
+        removeHydrogens,
+        "Remove all hydrogens from the molecule.")
+
+
+    .def("calculatePartialCharges", 
+        &Molecule::calculatePartialCharges,
+        "Calculate the partial charges on each atom.")
+    
+    .def("calculateAromaticity", 
+        &Molecule::calculateAromaticity,
+        "Calculate the aromaticity of the bonds.")
+
+    .def("clear", 
+        &Molecule::clear,
+        "Remove all elements of the molecule.")
+
+    .def("translate", 
+        &Molecule::translate,
+        "Translate the Molecule using the supplied vector.")
     ;
 
 }

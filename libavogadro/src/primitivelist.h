@@ -99,7 +99,7 @@ namespace Avogadro
       void removeAll( Primitive *p );
 
       /**
-       * @return the total number of primitives in this queue
+       * @return The total number of primitives in this queue.
        */
       int size() const;
 

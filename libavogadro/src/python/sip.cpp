@@ -105,6 +105,7 @@ template <> struct MetaData<QObject> { static const char* className() { return "
 template <> struct MetaData<QWidget> { static const char* className() { return "QWidget";} };
 template <> struct MetaData<QDockWidget> { static const char* className() { return "QDockWidget";} };
 template <> struct MetaData<QAction> { static const char* className() { return "QAction";} };
+template <> struct MetaData<QActionGroup> { static const char* className() { return "QActionGroup";} };
 template <> struct MetaData<QUndoCommand> { static const char* className() { return "QUndoCommand";} };
 template <> struct MetaData<QUndoStack> { static const char* className() { return "QUndoStack";} };
 template <> struct MetaData<QPoint> { static const char* className() { return "QPoint";} };
@@ -169,6 +170,12 @@ struct QClass_converters
 
       return incref(sip_obj);
     }
+
+    static PyObject* convert(const T* object)
+    {
+      return convert((T*)object);
+    }
+
   };
 
   static void* QClass_from_PyQt(PyObject *obj_ptr)
@@ -201,6 +208,8 @@ struct QClass_converters
   {
     // example: PyQt object --> C++ pointer
     converter::registry::insert( &QClass_from_PyQt, type_id<T>() );
+    // example: const QColor* -> PyQt object
+    to_python_converter<const T*, QClass_to_PyQt>();
     // example: QUndoCommand* Extension::performAction(...) --> PyQt object
     to_python_converter<T*, QClass_to_PyQt>();
     // example: QColor GLWidget::background() --> PyQt object
@@ -411,6 +420,7 @@ void export_sip()
   QClass_converters<QMouseEvent>(); // to python
   QClass_converters<QWheelEvent>(); // to python
   QClass_converters<QSettings>(); // to python
+  QClass_converters<QActionGroup>(); // to python
 
 
   // special case 

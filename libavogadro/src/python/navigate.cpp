@@ -1,5 +1,4 @@
-// Last update: timvdm 12 May 2009
-
+// Last update: timvdm 19 June 2009
 #include <boost/python.hpp>
 
 #include <avogadro/navigate.h>
@@ -15,16 +14,32 @@ void export_Navigate()
   void (*rotate_ptr2)(GLWidget*, const Eigen::Vector3d&, double, double, double) = &Navigate::rotate;
  
   class_<Avogadro::Navigate, boost::noncopyable>("Navigate", no_init)
+    //
     // real functions
-    .def("zoom", &Navigate::zoom)
-    .staticmethod("zoom")
-    .def("translate", translate_ptr1)
-    .staticmethod("translate")
-    .def("rotate", rotate_ptr1)
-    .def("rotate", rotate_ptr2)
-    .staticmethod("rotate")
-    .def("tilt", &Navigate::tilt)
-    .staticmethod("tilt")
+    //
+    .def("zoom", 
+        &Navigate::zoom,
+        "Zooms toward a given point by the given amount.")
+        .staticmethod("zoom")
+
+    .def("translate", 
+        translate_ptr1,
+        "Translate between the from and to positions relative to what.")
+        .staticmethod("translate")
+    
+    .def("rotate", 
+        rotate_ptr1,
+        "Rotate about center by the amounts deltaX and deltaY in tha x and y axes.")
+    .def("rotate", 
+        rotate_ptr2,
+        "Rotate about center by deltaX, deltaY, and deltaZ in the x, y and z axes "
+        "A generalization of the rotate() and tilt() methods.")
+        .staticmethod("rotate")
+
+    .def("tilt", 
+        &Navigate::tilt,
+        "Tilt about center by the amount delta z axis.")
+        .staticmethod("tilt")
     ;
 
 }
