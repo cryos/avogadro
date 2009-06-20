@@ -44,7 +44,7 @@ template <> struct ScalarTraits<double>
       //
       static PyObject* convert(Vector3x const &vec)
       {
-        int dims[1] = { 3 };
+        npy_intp dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
           result = PyArray_SimpleNew(1, dims, NPY_INT);
@@ -70,7 +70,7 @@ template <> struct ScalarTraits<double>
         if (!vec)
           throw_error_already_set();
  
-        int dims[1] = { 3 };
+        npy_intp dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
           result = PyArray_SimpleNew(1, dims, NPY_INT);
@@ -96,7 +96,7 @@ template <> struct ScalarTraits<double>
         if (!vec)
           throw_error_already_set();
 
-        int dims[1] = { 3 };
+        npy_intp dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
           result = PyArray_SimpleNew(1, dims, NPY_INT);
