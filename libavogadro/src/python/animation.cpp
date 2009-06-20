@@ -1,7 +1,4 @@
-// Last update: timvdm 12 May 2009
-
-//#include <Python.h>
-// http://www.boost.org/doc/libs/1_39_0/libs/python/doc/building.html#include-issues
+// Last update: timvdm 18 June 2009
 #include <boost/python/detail/wrap_python.hpp>
 #include <boost/python.hpp>
 
@@ -14,15 +11,24 @@ using namespace Avogadro;
 void export_Animation()
 {
   
-  class_<Avogadro::Animation, boost::noncopyable>("Animation")
-    .def("setFrames", &Animation::setFrames)
-    .def("setMolecule", &Animation::setMolecule)
-    .def("setFps", &Animation::setFps)
-    .def("setLoopCount", &Animation::setLoopCount)
-    .def("setFrame", &Animation::setFrame)
-    .def("start", &Animation::start)
-    .def("pause", &Animation::pause)
-    .def("stop", &Animation::stop)
+  class_<Avogadro::Animation, boost::noncopyable>("Animation", "Basic animation interface")
+    .def("setMolecule", &Animation::setMolecule, "Set the molecule to animate.")
+    .def("setFrames", &Animation::setFrames,
+        "Set the frames for the animation. By default, the conformers in the "
+        "molecule are used as animation frames. However, for trajectory files "
+        "that don't contain any topology, it is needed to read in the the "
+        "molecule topology before the trajectory. The trajectory frames can "
+        "be used to call setFrames() later.") // @todo unit test conversion for argument
+    .add_property("fps", &Animation::fps, &Animation::setFps, "The number of frames per second.")
+    .add_property("loopCount", &Animation::loopCount, &Animation::setLoopCount, 
+        "The number of loops (0 = repeat forever).")
+    .add_property("numFrames", &Animation::numFrames, "The total number of frames in the animation.")
+    .add_property("dynamicBonds", &Animation::dynamicBonds, &Animation::setDynamicBonds, 
+        "True if dynamic bond detection is enabled.")
+    .def("setFrame", &Animation::setFrame, "Set the current frame.")
+    .def("start", &Animation::start, "Start the animation (at current frame).")
+    .def("pause", &Animation::pause, "Pause the animation.")
+    .def("stop", &Animation::stop, "Stop the animation (and return to the first frame).")
     ;
 
 }

@@ -758,7 +758,7 @@ namespace Avogadro{
       return;
 
     OpenBabel::OBMol obmol = OBMol();
-    for (unsigned int i = 0; i < numBonds(); ++i) {
+    for (unsigned int i = 0; i < obmol.NumBonds(); ++i) {
       bond(i)->setAromaticity(obmol.GetBond(i)->IsAromatic());
     }
     m_invalidAromaticity = false;

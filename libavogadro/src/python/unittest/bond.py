@@ -2,6 +2,8 @@ import Avogadro
 import unittest
 from numpy import *
 
+from util import *
+
 class TestBond(unittest.TestCase):
   def setUp(self):
     self.molecule = Avogadro.molecules.addMolecule()
@@ -14,6 +16,14 @@ class TestBond(unittest.TestCase):
   def test_type(self):
     bond = self.molecule.addBond()
     self.assertEqual(bond.type, Avogadro.PrimitiveType.BondType)
+
+  def test_order(self):
+    bond = self.molecule.addBond()
+    testReadWriteProperty(self, bond.order, 1, 2)
+
+  def test_isAromatic(self):
+    bond = self.molecule.addBond()
+    testReadWriteProperty(self, bond.isAromatic, False, True)
 
   # also tests bond.beginAtomId
   def test_setBegin(self):
@@ -47,21 +57,6 @@ class TestBond(unittest.TestCase):
     self.assert_(bond.id in beginAtom.bonds)
     self.assert_(bond.id in endAtom.bonds)
 
-  def test_otherAtom(self):
-    beginAtom = self.molecule.addAtom()
-    endAtom = self.molecule.addAtom()
-    bond = self.molecule.addBond()
-
-    bond.setAtoms(beginAtom.id, endAtom.id, 2)
-    # check if setAtoms added the bond to the atoms
-    #self.assertEqual(bond.otherAtom(beginAtom.id), endAtom.id)
-    bond.otherAtom(beginAtom.id) # why doesn't this work??
-
-  def test_order(self):
-    bond = self.molecule.addBond()
-    bond.order = 2
-    self.assertEqual(bond.order, 2)
-
   def test_length(self):
     beginAtom = self.molecule.addAtom()
     endAtom = self.molecule.addAtom()
@@ -72,10 +67,26 @@ class TestBond(unittest.TestCase):
     bond.setAtoms(beginAtom.id, endAtom.id, 1)
     self.assertEqual(bond.length, 1.5)
 
+  def test_pos(self):
+    beginAtom = self.molecule.addAtom()
+    endAtom = self.molecule.addAtom()
+    bond = self.molecule.addBond()
 
+    #translate one atom
+    endAtom.pos = array([3.0, 0., 0.])
+    bond.setAtoms(beginAtom.id, endAtom.id, 1)
+    self.assertEqual(bond.beginPos[0], 0.0)
+    self.assertEqual(bond.midPos[0], 1.5)
+    self.assertEqual(bond.endPos[0], 3.0)
 
+  def test_otherAtom(self):
+    beginAtom = self.molecule.addAtom()
+    endAtom = self.molecule.addAtom()
+    bond = self.molecule.addBond()
 
-
+    bond.setAtoms(beginAtom.id, endAtom.id, 2)
+    # check if setAtoms added the bond to the atoms
+    self.assertEqual(bond.otherAtom(beginAtom.id), endAtom.id)
 
 
 if __name__ == "__main__":

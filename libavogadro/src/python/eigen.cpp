@@ -1,5 +1,5 @@
-
-#include <Python.h>
+// Last update: timvdm 19 June 2009
+#include <boost/python/detail/wrap_python.hpp>
 #include <numpy/arrayobject.h> 
 #include <boost/python.hpp>
 #include <boost/python/tuple.hpp>
@@ -47,11 +47,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_FromDims(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, PyArray_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
         else
-          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -73,11 +73,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_FromDims(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, PyArray_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
         else
-          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -99,11 +99,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_FromDims(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, PyArray_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_FromDims(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
         else
-          result = PyArray_FromDims(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -308,7 +308,7 @@ template <> struct ScalarTraits<double>
       static PyObject* convert(Eigen::Transform3d const &trans)
       {
         int dims[2] = { 4, 4 };
-        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
         double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -324,7 +324,7 @@ template <> struct ScalarTraits<double>
       static PyObject* convert(Eigen::Transform3d *trans)
       {
         int dims[2] = { 4, 4 };
-        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
         double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -340,7 +340,7 @@ template <> struct ScalarTraits<double>
       static PyObject* convert(const Eigen::Transform3d *trans)
       {
         int dims[2] = { 4, 4 };
-        PyObject *result = PyArray_FromDims(2, dims, PyArray_DOUBLE);
+        PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
         double *data = (double*) reinterpret_cast<PyArrayObject*>(result)->data;

@@ -1,7 +1,9 @@
+// Last update: timvdm 18 June 2009
 #include <boost/python.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <QList>
+#include <QColor>
 
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
@@ -304,6 +306,8 @@ using namespace Avogadro;
 void export_QList()
 {
   export_list< QList<QString> >();
+  export_list< QStringList >();
+  export_list< QList<QColor> >();
   export_list< QList<GLHit> >();
   export_list< QList<unsigned long> >();
 

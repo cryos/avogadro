@@ -24,32 +24,99 @@ void export_Cube()
   bool (Cube::*setValue_ptr1)(int, int, int, double) = &Cube::setValue;
 
   class_<Avogadro::Cube, bases<Avogadro::Primitive>, boost::noncopyable>("Cube", no_init)
+    //
     // read/write properties
-    .add_property("name", &Cube::name, &Cube::setName)
-    .add_property("data", make_function(&Cube::data, return_value_policy<return_by_value>()), &Cube::setData)
+    //
+    .add_property("name", 
+        &Cube::name, 
+        &Cube::setName)
+
+    .add_property("data", 
+        make_function(&Cube::data, return_value_policy<return_by_value>()), 
+        &Cube::setData, 
+        "List containing all the data in a one-dimensional array.")
+
+    //
     // read-only properties
-    .add_property("min", &Cube::min)
-    .add_property("max", &Cube::max)
-    .add_property("spacing", &Cube::spacing)
-    .add_property("dimensions", &Cube::dimensions)
-    .add_property("minValue", &Cube::minValue)
-    .add_property("maxValue", &Cube::maxValue)
+    //
+    .add_property("min", 
+        &Cube::min, 
+        "The minimum point in the cube.")
+
+    .add_property("max", 
+        &Cube::max, 
+        "The maximum point in the cube.")
+
+    .add_property("spacing", 
+        &Cube::spacing, 
+        "The spacing of the grid.")
+
+    .add_property("dimensions", 
+        &Cube::dimensions, 
+        "The x, y and z dimensions of the cube.")
+
+    .add_property("minValue", 
+        &Cube::minValue, 
+        "The minimum  value at any point in the Cube.")
+
+    .add_property("maxValue", 
+        &Cube::maxValue, 
+        "The mzximum  value at any point in the Cube.")
+
+    //
     // real functions
-    .def("setLimits", setLimits_ptr1)
-    .def("setLimits", setLimits_ptr2)
-    .def("setLimits", setLimits_ptr3)
-    .def("setLimits", setLimits_ptr4)
-    .def("setLimits", setLimits_ptr5)
-    .def("closestIndex", &Cube::closestIndex)
-    .def("indexVector", &Cube::indexVector)
-    .def("position", &Cube::position)
-    .def("value", value_ptr1)
-    .def("value", value_ptr2)
-    .def("value", value_ptr3)
-    .def("setValue", setValue_ptr1)
+    //
+    .def("setLimits", 
+        setLimits_ptr1, 
+        "Set the limits of the cube.")
+    .def("setLimits", 
+        setLimits_ptr2, 
+        "Set the limits of the cube.")
+    .def("setLimits", 
+        setLimits_ptr3, 
+        "Set the limits of the cube.")
+    .def("setLimits", 
+        setLimits_ptr4, 
+        "Set the limits of the cube.")
+    .def("setLimits", 
+        setLimits_ptr5, 
+        "Set the limits of the cube.")
+
+    .def("closestIndex", 
+        &Cube::closestIndex, 
+        "Index of the point closest to the position supplied.")
+
+    .def("indexVector", 
+        &Cube::indexVector, 
+        "Index vector of the point closest to the position supplied, in the form of i, j, k.")
+
+    .def("position", 
+        &Cube::position, 
+        "Position of the given index.")
+
+    .def("value", 
+        value_ptr1, 
+        "This function is very quick as it just returns the value at the point.")
+    .def("value", 
+        value_ptr2, 
+        "This function is very quick as it just returns the value at the point.")
+    .def("value", 
+        value_ptr3, 
+        "This function uses trilinear interpolation to find the value at points "
+        "between those specified in the cube.")
+
+    .def("setValue", 
+        setValue_ptr1, 
+        "Sets the value at the specified point in the cube.")
+
     // provide setData, it returns bool...
-    .def("setData", &Cube::setData)
-    .def("addData", &Cube::addData)
+    .def("setData", 
+        &Cube::setData, 
+        "Set the values in the cube.")
+
+    .def("addData", 
+        &Cube::addData, 
+        "Add the values in the cube")
     ;
 
 }

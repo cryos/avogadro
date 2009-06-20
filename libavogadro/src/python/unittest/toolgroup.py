@@ -50,15 +50,18 @@ class TestToolGroup(unittest.TestCase):
       tool = self.toolGroup.append(tool)
     
     self.assertNotEqual(len(self.toolGroup.tools), 0)
+ 
+  def test_activateAction(self):
+    for tool in Avogadro.PluginManager.instance.tools(None):
+      tool = self.toolGroup.append(tool)
+    
+    self.assertNotEqual(self.toolGroup.activateActions, None)
     
   def test_setActiveTools(self):
     self.toolGroup.setActiveTool(99)
     for tool in Avogadro.PluginManager.instance.tools(None):
       tool = self.toolGroup.append(tool)
 
-    self.toolGroup.setActiveTool("SomeNonExistingTool")
-    self.assertEqual(self.toolGroup.activeTool, None)
- 
     self.toolGroup.setActiveTool(0)
     self.assertNotEqual(self.toolGroup.activeTool, None)
     

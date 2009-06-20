@@ -138,7 +138,12 @@ namespace Avogadro {
     m_molecule->update();
     emit frameChanged(i);
   }
-  
+ 
+  bool Animation::dynamicBonds() const
+  {
+    return d->dynamicBonds;
+  }
+ 
   void Animation::setDynamicBonds(bool enable)
   {
     d->dynamicBonds = enable;
