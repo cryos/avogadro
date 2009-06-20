@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-03 17:23+0000\n"
+"PO-Revision-Date: 2009-06-12 03:20+0000\n"
 "Last-Translator: svv <skrypnychuk@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-12 00:56+0000\n"
+"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,22 +24,24 @@ msgstr "Гаразд"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: %3<br/"
-"><br/>За додатковою інформацією зверніться до <a href=\"http://avogadro."
-"openmolecules.net/\">Домашньої сторінки Avogadro</a>.<br/><br/>Програма "
-"надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ "
-"ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ ЦІЛЕЙ.<br/>"
+"<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: "
+"%3<br/><br/>За додатковою інформацією зверніться до <a "
+"href=\"http://avogadro.openmolecules.net/\">Домашньої сторінки "
+"Avogadro</a>.<br/><br/>Програма надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ "
+"БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ "
+"ЦІЛЕЙ.<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:814
-#: src/mainwindow.cpp:837 src/mainwindow.cpp:988 src/mainwindow.cpp:1010
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1381 src/mainwindow.cpp:2394
-#: src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
+#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
+#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -63,11 +65,12 @@ msgstr "Стерти молекулу"
 msgid "Clear Atoms"
 msgstr "Стерти атоми"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895:252 rc.cpp:260
+#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
 msgid "Settings"
-msgstr ""
+msgstr "Налаштування"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:705
 msgid "Open File"
@@ -206,17 +209,16 @@ msgid "Select Molecule to View"
 msgstr ""
 
 #: src/mainwindow.cpp:913
-#, fuzzy
 msgid "Molecule Title"
-msgstr "Вирізати молекулу"
+msgstr ""
 
 #: src/mainwindow.cpp:982
 msgid "Atoms: "
-msgstr ""
+msgstr "Атоми: "
 
 #: src/mainwindow.cpp:983
 msgid " Bonds: "
-msgstr ""
+msgstr " Зв'язки: "
 
 #: src/mainwindow.cpp:989
 #, qt-format
@@ -247,7 +249,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1027
 msgid "Save..."
-msgstr ""
+msgstr "Зберегти..."
 
 #: src/mainwindow.cpp:1027 src/savedialog.cpp:65
 msgid "Save"
@@ -304,7 +306,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: src/mainwindow.cpp:1397
 msgid "Common vector image formats"
@@ -312,7 +314,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1402
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: src/mainwindow.cpp:1403
 msgid "EPS"
@@ -325,7 +327,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1663
 msgid "Unable to paste molecule."
-msgstr ""
+msgstr "Не вдалося вставити молекулу."
 
 #: src/mainwindow.cpp:1692
 msgid "Paste failed (format unavailable)."
@@ -361,7 +363,7 @@ msgstr "На весь екран"
 
 #: src/mainwindow.cpp:2228
 msgid "Ctrl+Backspace"
-msgstr ""
+msgstr "Ctrl+Backspace"
 
 #: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
 msgid "untitled"
@@ -407,12 +409,14 @@ msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
+" Здається, додаток не працюватиме коректно. Будь ласка, виправте цю помилку."
 
 #: src/mainwindow.cpp:2901
 msgid "Objects"
 msgstr "Об'єкти"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2907:212
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2907 :212
 msgid "Colors"
 msgstr ""
 
@@ -430,11 +434,11 @@ msgstr ""
 
 #: src/pluginsettings.cpp:57
 msgid "File: "
-msgstr ""
+msgstr "Файл: "
 
 #: src/pluginsettings.cpp:58
 msgid "Description:\n"
-msgstr ""
+msgstr "Опис:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
@@ -472,7 +476,7 @@ msgstr ""
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr ""
+msgstr "Мітка"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
@@ -481,13 +485,14 @@ msgstr ""
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :250
 msgid "Item"
 msgstr ""
 
@@ -500,7 +505,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -515,7 +521,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -559,7 +566,7 @@ msgstr ""
 
 #: src/addenginedialog.ui:19
 msgid "Type:"
-msgstr ""
+msgstr "Тип:"
 
 #: src/addenginedialog.ui:32
 msgid "Name:"
@@ -567,7 +574,7 @@ msgstr ""
 
 #: src/addenginedialog.ui:45
 msgid "Description:"
-msgstr ""
+msgstr "Опис:"
 
 #: src/enginecolorswidget.ui:13
 msgid "Form"
@@ -577,15 +584,18 @@ msgstr ""
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -631,11 +641,11 @@ msgstr ""
 
 #: src/mainwindow.ui:32
 msgid "&Help"
-msgstr ""
+msgstr "Довідка"
 
 #: src/mainwindow.ui:46
 msgid "&File"
-msgstr ""
+msgstr "Файл"
 
 #: src/mainwindow.ui:50
 msgid "Open &Recent"
@@ -681,29 +691,34 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/mainwindow.ui:192 src/settingsdialog.ui:255
+#: src/mainwindow.ui:192
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:225 src/pluginsettings.ui:23
+#: src/mainwindow.ui:225
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:234 src/pluginsettings.ui:28
+#: src/mainwindow.ui:234
+#: src/pluginsettings.ui:28
 msgid "Tools"
-msgstr ""
+msgstr "Інструменти"
 
-#: src/mainwindow.ui:255 src/mainwindow.ui:267
+#: src/mainwindow.ui:255
+#: src/mainwindow.ui:267
 msgid "&Open"
-msgstr ""
+msgstr "Відкрити"
 
 #: src/mainwindow.ui:258
 msgid "Ctrl+O"
 msgstr ""
 
-#: src/mainwindow.ui:276 src/mainwindow.ui:288
+#: src/mainwindow.ui:276
+#: src/mainwindow.ui:288
 msgid "&Quit"
-msgstr ""
+msgstr "Вийти"
 
 #: src/mainwindow.ui:279
 msgid "Ctrl+Q"
@@ -717,7 +732,8 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:307 src/mainwindow.ui:319
+#: src/mainwindow.ui:307
+#: src/mainwindow.ui:319
 msgid "&New"
 msgstr ""
 
@@ -725,17 +741,19 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
-#: src/mainwindow.ui:328 src/mainwindow.ui:340
+#: src/mainwindow.ui:328
+#: src/mainwindow.ui:340
 msgid "&Close"
-msgstr ""
+msgstr "Закрити"
 
 #: src/mainwindow.ui:331
 msgid "Ctrl+W"
 msgstr ""
 
-#: src/mainwindow.ui:349 src/mainwindow.ui:361
+#: src/mainwindow.ui:349
+#: src/mainwindow.ui:361
 msgid "&Save"
-msgstr ""
+msgstr "Зберегти"
 
 #: src/mainwindow.ui:352
 msgid "Ctrl+S"
@@ -743,7 +761,7 @@ msgstr ""
 
 #: src/mainwindow.ui:370
 msgid "Save &As..."
-msgstr ""
+msgstr "Зберегти як..."
 
 #: src/mainwindow.ui:373
 msgid "Ctrl+Shift+S"
@@ -759,11 +777,11 @@ msgstr ""
 
 #: src/mainwindow.ui:400
 msgid "&Full Screen Mode"
-msgstr ""
+msgstr "Повноекранний режим"
 
 #: src/mainwindow.ui:403
 msgid "Esc"
-msgstr ""
+msgstr "Esc"
 
 #: src/mainwindow.ui:412
 msgid "Set &Background Color..."
@@ -771,7 +789,7 @@ msgstr ""
 
 #: src/mainwindow.ui:417
 msgid "&About"
-msgstr ""
+msgstr "Про програму"
 
 #: src/mainwindow.ui:426
 msgid "&Undo"
@@ -803,7 +821,7 @@ msgstr ""
 
 #: src/mainwindow.ui:480
 msgid "&Paste"
-msgstr ""
+msgstr "Вставити"
 
 #: src/mainwindow.ui:483
 msgid "Ctrl+V"
@@ -811,7 +829,7 @@ msgstr ""
 
 #: src/mainwindow.ui:492
 msgid "Copy"
-msgstr ""
+msgstr "Скопіювати"
 
 #: src/mainwindow.ui:495
 msgid "Ctrl+C"
@@ -819,7 +837,7 @@ msgstr ""
 
 #: src/mainwindow.ui:504
 msgid "Cut"
-msgstr ""
+msgstr "Вирізати"
 
 #: src/mainwindow.ui:507
 msgid "Ctrl+X"
@@ -827,11 +845,11 @@ msgstr ""
 
 #: src/mainwindow.ui:512
 msgid "Clear"
-msgstr ""
+msgstr "Очистити"
 
 #: src/mainwindow.ui:519
 msgid "Backspace"
-msgstr ""
+msgstr "Backspace"
 
 #: src/mainwindow.ui:524
 msgid "Select All"
@@ -871,11 +889,11 @@ msgstr ""
 
 #: src/mainwindow.ui:585
 msgid "Avogadro Help"
-msgstr ""
+msgstr "Довідка Avogadro"
 
 #: src/mainwindow.ui:590
 msgid "Release Notes"
-msgstr ""
+msgstr "Примітки до випуску"
 
 #: src/mainwindow.ui:595
 msgid "Report a Bug"
@@ -883,7 +901,7 @@ msgstr ""
 
 #: src/mainwindow.ui:600
 msgid "FAQ"
-msgstr ""
+msgstr "ЧаПи (FAQ)"
 
 #: src/mainwindow.ui:605
 msgid "Avogadro Website"
@@ -921,23 +939,26 @@ msgstr ""
 msgid "All Molecules in File..."
 msgstr ""
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
-msgstr ""
+msgstr "Втулки"
 
 #: src/pluginsettings.ui:33
 msgid "Extensions"
-msgstr ""
+msgstr "Доповнення"
 
 #: src/pluginsettings.ui:52
 msgid "Details"
-msgstr ""
+msgstr "Подробиці"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1003,17 +1024,19 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:217
 msgid "Settings..."
-msgstr ""
+msgstr "Параметри..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
 #: src/settingsdialog.ui:42
 msgid "Quality:"
-msgstr ""
+msgstr "Якість:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr ""
 
@@ -1024,12 +1047,13 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,"
-"Vladimir Kurg,svv"
+",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad "
+"Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,Vladimir Kurg,svv"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,,skrypnychuk@gmail.com,,,,skrypnychuk@gmail.com"
+msgstr ""
+",,,skrypnychuk@gmail.com,,,,skrypnychuk@gmail.com,,,,skrypnychuk@gmail.com"
 
 #~ msgid "Navigate"
 #~ msgstr "Навігація"
