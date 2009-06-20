@@ -55,6 +55,10 @@ namespace Avogadro {
     // Initialise variables
     m_update = true;
 
+    m_helixColor = Qt::red;
+    m_sheetColor = Qt::yellow;
+    m_loopColor = Qt::green;
+
     m_aHelix = 1.0; m_bHelix = 0.3; m_cHelix = 1.0;
     m_aSheet = 1.0; m_bSheet = 0.3; m_cSheet = 1.0;
     m_aLoop = 0.2; m_bLoop = 0.2; m_cLoop = 0.0;
@@ -142,7 +146,7 @@ namespace Avogadro {
     if (m_update) updateMesh(pd);
 
     if (m_mesh) {
-      if (m_mesh->stable()) {
+      if (m_mesh->stable() && m_mesh->valid()) {
         pd->painter()->setColor(0.0, 0.0, 0.0, 1.0);
         pd->painter()->drawColorMesh(*m_mesh);
       }
@@ -291,9 +295,9 @@ namespace Avogadro {
     m_bLoop = settings.value("bLoop", 0.2).toDouble();
     m_cLoop = settings.value("cLoop", 0.0).toDouble();
      
-    m_helixColor = settings.value("cHelixColor", QColor(255,0,0)).value<QColor>();
-    m_sheetColor = settings.value("cSheetColor", QColor(255,255,0)).value<QColor>();
-    m_loopColor = settings.value("cLoopColor", QColor(0,255,0)).value<QColor>();
+    m_helixColor = settings.value("cHelixColor", Qt::red).value<QColor>();
+    m_sheetColor = settings.value("cSheetColor", Qt::yellow).value<QColor>();
+    m_loopColor = settings.value("cLoopColor", Qt::green).value<QColor>();
 
     if (m_molecule) {
       m_mesh = m_molecule->meshById(settings.value("meshId", 0).toInt());
