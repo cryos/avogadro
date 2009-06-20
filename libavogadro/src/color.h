@@ -114,13 +114,13 @@ namespace Avogadro {
     virtual void setFromPrimitive(const Primitive *p);
 
     /**
-     * Set the color based on the supplied index (e.g., in an indexed color table)
+     * Set the color based on the supplied index (e.g., in an indexed color table).
      * @param index the color is derived from this value
      */
     virtual void setFromIndex(const unsigned int index);
 
     /**
-     * Set the color based on the supplied floating point value (e.g., a gradient)
+     * Set the color based on the supplied floating point value (e.g., a gradient).
      * @param value the floating point number to consider
      * @param lo the low point of the range
      * @param mid the middle point of the range (e.g., 0.0)
@@ -157,8 +157,8 @@ namespace Avogadro {
     virtual void setFromQColor(const QColor &color);
 
     /**
-     * Set the color to the selection color
-     * By default, the selection color is (0.3, 0.6, 1.0, 0.7)
+     * Set the color to the selection color.
+     * By default, the selection color is (0.3, 0.6, 1.0, 0.7).
      * which is a light transparent blue */
     virtual void setToSelectionColor();
 

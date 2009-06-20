@@ -51,15 +51,15 @@ namespace Avogadro {
   public:
     virtual ~MoleculeFile();
     /**
-     * @return True if the file contains multiple frames/conformers of the same molecule.
-     */
-    bool isConformerFile() const;
-    /**
      * @return True if the MoleculeFile is ready (i.e. completed reading the file)
      */
     bool isReady() const;
     /**
-     * Get the number of molecules in the file. When 
+     * @return True if the file contains multiple frames/conformers of the same molecule.
+     */
+    bool isConformerFile() const;
+    /**
+     * Get the number of molecules in the file.  
      */
     unsigned int numMolecules() const;
     /**

@@ -171,56 +171,56 @@ namespace Avogadro {
     static PluginFactory *factory(const QString &id, Plugin::Type type);
 
     /**
-     * Get a new instance of the extension with identifier @p id
+     * Get a new instance of the extension with identifier @p id.
      * @return 0 if there is no extension plugin with identifier @p id
      */
     Extension *extension(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the tool with identifier @p id
+     * Get a new instance of the tool with identifier @p id.
      * @return 0 if there is no tool plugin with identifier @p id
      */
     Tool *tool(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the color with identifier @p id
+     * Get a new instance of the color with identifier @p id.
      * @return 0 if there is no color plugin with identifier @p id
      */
     Color *color(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a new instance of the color with identifier @p id
+     * Get a new instance of the color with identifier @p id.
      * @return 0 if there is no engine plugin with identifier @p id
      */
     Engine *engine(const QString &id, QObject *parent = 0);
 
     /**
-     * Get a list with the plugin names of type @p type
+     * Get a list with the plugin names of type @p type.
      */
     QList<QString> names(Plugin::Type type);
 
     /**
-     * Get a list with the plugin identifiers of type @p type
+     * Get a list with the plugin identifiers of type @p type.
      */
     QList<QString> identifiers(Plugin::Type type);
 
     /**
-     * Get a list with the plugin descriptions of type @p type
+     * Get a list with the plugin descriptions of type @p type.
      */
     QList<QString> descriptions(Plugin::Type type);
 
     /**
-     * Get a list of all extension (new instances)
+     * Get a list of all extension (new instances).
      */
     QList<Extension *> extensions(QObject *parent=0) const;
 
     /**
-     * Get a list of all tools (new instances)
+     * Get a list of all tools (new instances).
      */
     QList<Tool *> tools(QObject *parent=0) const;
 
     /**
-     * Get a list of all colors (new instances)
+     * Get a list of all colors (new instances).
      */
     QList<Color *> colors(QObject *parent=0) const;
 

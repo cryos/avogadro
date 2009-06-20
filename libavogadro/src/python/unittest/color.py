@@ -14,6 +14,9 @@ class TestColor(unittest.TestCase):
     self.assertNotEqual(len(self.colors), 0)
 
   def test_constructors(self):
+    color0 = Avogadro.Color(1.0, 0.0, 0.0)
+    self.assertNotEqual(color0, None)
+    
     color1 = Avogadro.Color(1.0, 0.0, 0.0, 1.0)
     self.assertNotEqual(color1, None)
 
@@ -40,8 +43,11 @@ class TestColor(unittest.TestCase):
     atom.atomicNumber = 6
  
     color = Avogadro.Color()
-    color.set(0.0, 1.0, 0.0, 1.0)
-    color.set(atom)
+    color.setFromRgba(0.0, 1.0, 0.0)
+    color.setFromRgba(0.0, 1.0, 0.0, 1.0)
+    color.setFromPrimitive(atom)
+    color.setFromGradient(0.7, 0.0, 0.5, 1.0)
+    color.setFromIndex(0)
     color.alpha = 0.5
     
   def test_setToSelectionColor(self):

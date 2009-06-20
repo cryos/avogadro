@@ -85,27 +85,27 @@ namespace Avogadro {
       virtual ~Tool();
 
       /**
-       * Plugin Type
+       * Plugin Type.
        */
       Plugin::Type type() const;
 
       /**
-       * Plugin Type Name (Tools)
+       * Plugin Type Name (Tools).
        */
       QString typeName() const;
 
       /**
-       * @return the QAction of the tool
+       * @return The QAction of the tool.
        */
       virtual QAction* activateAction() const;
 
       /**
-       * @return the settings widget for the tool.
+       * @return The settings widget for the tool.
        */
       virtual QWidget* settingsWidget();
 
       /**
-       * @return the translated name of the settings widget
+       * @return The translated name of the settings widget
        */
       virtual QString settingsTitle() const = 0;
 

@@ -91,7 +91,6 @@ namespace Avogadro {
      */
     void update();
 
-
     /** @name Molecule parameters
      * These methods set and get Molecule parameters.
      * @{
@@ -582,7 +581,7 @@ namespace Avogadro {
     double energy(unsigned int index = -1) const;
 
     /**
-     * Set the energy for the current conformer
+     * Set the energy for the current conformer.
      * @param energy The value for this conformer
      */
     void setEnergy(double energy);

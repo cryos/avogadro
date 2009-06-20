@@ -86,7 +86,7 @@ namespace Avogadro {
        * The copy constructor - it is useful to be able to copy the Camera.
        */
       Camera(const Camera *camera);
-      /** @return a pointer to the parent GLWidget
+      /** @return a pointer to the parent GLWidget.
         * @sa setParent() */
       const GLWidget *parent() const;
       /** Sets the vertical viewing angle.
@@ -135,8 +135,9 @@ namespace Avogadro {
       double distance(const Eigen::Vector3d & point) const;
       /** Multiply the camera's "modelview" matrix on the right by the translation of the given
         * vector. As the translation is applied on the right, the vector is understood in
-        * the molecule's coordinate system. Use this method if you want to give the impression that the molecule is moving while the camera remains fixed. This is the
-        * equivalent of the OpenGL function glTranslate().
+        * the molecule's coordinate system. Use this method if you want to give the impression 
+        * that the molecule is moving while the camera remains fixed. This is the equivalent of 
+        * the OpenGL function glTranslate().
         * @param vector the translation vector
         * @sa pretranslate(), translationVector()*/
       void translate(const Eigen::Vector3d &vector);

@@ -33,6 +33,5 @@ message(STATUS "Python site-packages directory: ${PYTHON_LIB_PATH}")
 option(INSTALL_PYTHON_MODULE "Install the avogadro python module for the system wide python installation." ON)
 if (INSTALL_PYTHON_MODULE)
 INSTALL(TARGETS python-module DESTINATION ${PYTHON_LIB_PATH})
-INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Avogadro.py DESTINATION ${PYTHON_LIB_PATH})
 endif (INSTALL_PYTHON_MODULE)
 

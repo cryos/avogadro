@@ -30,20 +30,6 @@ class TestMolecule(unittest.TestCase):
     atom = self.molecule.addAtom(id)
     self.assertEqual(atom.id, id)
 
-  def test_atomPos(self):
-    atom = self.molecule.addAtom()
-
-    pos = self.molecule.atomPos(atom.id)
-    self.assertEqual(pos[0], 0.0)
-    self.assertEqual(pos[0], 0.0)
-    self.assertEqual(pos[0], 0.0)
-    
-    self.molecule.setAtomPos(atom.id, array([1., 2., 3.]))
-    pos = self.molecule.atomPos(atom.id)
-    self.assertEqual(pos[0], 1.0)
-    self.assertEqual(pos[1], 2.0)
-    self.assertEqual(pos[2], 3.0)
-
   def test_removeAtom(self):
     # add 2 atoms
     atom1 = self.molecule.addAtom()

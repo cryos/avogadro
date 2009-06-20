@@ -338,7 +338,7 @@ namespace Avogadro {
     double a2 = (B - C).squaredNorm();
     double b2 = (C - A).squaredNorm();
     double c2 = (A - B).squaredNorm();
-
+    
     double aFactor = a2*(c2 + b2 - a2);
     double cFactor = c2*(a2 + b2 - c2);
     double bFactor = b2*(a2 + c2 - b2);
@@ -550,7 +550,7 @@ namespace Avogadro {
       Eigen::Vector3f normal;
       QColor         color;
   };
-
+  
   void CartoonMeshGenerator::backboneRibbon(const Eigen::Vector3f &v1, const Eigen::Vector3f &v2,
       const Eigen::Vector3f &v3, const Eigen::Vector3f &v4, const Eigen::Vector3f &dir,
       const Eigen::Vector3f &dir2, const QColor &c1, const QColor &c2,
@@ -581,7 +581,7 @@ namespace Avogadro {
     m1.col(0) = newx1;
     m1.col(1) = newy1;
     m1.col(2) = newz1;
-
+ 
     Eigen::Vector3f newz2 = norm2;
     Eigen::Vector3f newy2 = pp2;
     newz2.normalize();
@@ -614,9 +614,8 @@ namespace Avogadro {
 
       p1 = m1*p1 + v2;
       p2 = m2*p2 + v3;
-
       n1 = m1*n1;
-      n2 = m1*n2;
+      n2 = m2*n2;
 
       SurfVertex *newv1 = new SurfVertex;
       newv1->normal = n1;

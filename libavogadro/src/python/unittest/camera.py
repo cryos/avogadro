@@ -4,6 +4,7 @@ import Avogadro
 import sys
 import unittest
 
+from util import *
 
 class TestCamera(unittest.TestCase):
   def setUp(self):
@@ -20,14 +21,12 @@ class TestCamera(unittest.TestCase):
     # create the GLWidget and load the default engines
     None
     
-
   def test_parent(self):
     self.assertNotEqual(self.glwidget.camera.parent, None)
   
   def test_angleOfViewY(self):
     self.assert_(self.glwidget.camera.angleOfViewY)
-    self.glwidget.camera.angleOfViewY = 40.0
-    self.assertEqual(self.glwidget.camera.angleOfViewY, 40.0)
+    testReadWriteProperty(self, self.glwidget.camera.angleOfViewY, 40.0, 60.0)
 
   def test_modelview(self):
     self.glwidget.camera.modelview

@@ -13,7 +13,6 @@ class TestTool(unittest.TestCase):
     
     self.assertNotEqual(len(self.tools), 0)
 
-
   def test_typeName(self):
     for tool in self.tools:
       self.assertEqual(tool.type, Avogadro.PluginType.ToolType)
@@ -26,21 +25,7 @@ class TestTool(unittest.TestCase):
   def test_usefulness(self):
     for tool in self.tools:
       tool.usefulness
-
-
     
-  def test_setMolecule(self):
-    molecule = Avogadro.molecules.addMolecule()
-    for tool in self.tools:
-      tool.setMolecule(molecule)
-   
-
-    
- 
-
-
-
-
 if __name__ == "__main__":
   app = QApplication(sys.argv)
   unittest.main()

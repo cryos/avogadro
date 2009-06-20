@@ -2,7 +2,7 @@
 #include <boost/tuple/tuple.hpp>
 
 #include <vector>
-
+#include <QColor>
 #include <Eigen/Core>
 
 using namespace boost::python;
@@ -191,6 +191,7 @@ void export_std_vector()
   export_std_vector< std::vector<double> >(); // for Cube
   export_std_vector< std::vector<Eigen::Vector3f> >(); // for Mesh
   export_std_vector< std::vector<Eigen::Vector3d> >(); // for Mesh
+  export_std_vector< std::vector<QColor> >(); // for Mesh
   
   to_python_converter<std::vector<double>*, std_vector_double_ptr_to_python_list >();
 

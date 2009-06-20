@@ -1,7 +1,7 @@
 import Avogadro
 import unittest
 from numpy import *
-
+from util import *
 from PyQt4.Qt import *
 import sys
 
@@ -22,6 +22,8 @@ class TestEngine(unittest.TestCase):
   def test_settingsWidget(self):
     for engine in self.engines:
       print(engine.name)
+      if not engine.hasSettings:
+        continue
       if engine.name != "Orbitals":
         widget = engine.settingsWidget
       else:
@@ -38,30 +40,43 @@ class TestEngine(unittest.TestCase):
       engine.shader = 1
       self.assertEqual(engine.shader, 1)
 
-  def test_layers(self):
+  def test_variousReadOnlyProperties(self):
+    molecule = Avogadro.molecules.addMolecule()
     for engine in self.engines:
+      engine.molecule = molecule
       engine.layers
+      engine.primitiveTypes
+      engine.colorTypes
+      engine.transparencyDepth
+      engine.atoms
+      engine.bonds
+
+  def test_molecule(self):
+    molecule = Avogadro.molecules.addMolecule()
+    for engine in self.engines:
+      testReadWriteProperty(self, engine.molecule, None, molecule)
+
     
-#  def test_primitives(self):
-#    molecule = Avogadro.molecules.addMolecule()
-#    for i in range(10):
-#      molecule.addAtom()
-#
-#    list = Avogadro.PrimitiveList(molecule.atoms)
-#
-#    for engine in self.engines:
-#      self.assertEqual(engine.primitives.size, 0)
-#      engine.primitives = list
-#      self.assertNotEqual(engine.primitives.size, 0)
-#      engine.clearPrimitives()
-#      self.assertEqual(engine.primitives.size, 0)
-#
+  def test_primitives(self):
+    molecule = Avogadro.molecules.addMolecule()
+    for i in range(10):
+      molecule.addAtom()
+
+    list = Avogadro.PrimitiveList(molecule.atoms)
+
+    for engine in self.engines:
+      self.assertEqual(engine.primitives.size, 0)
+      engine.primitives = list
+      self.assertNotEqual(engine.primitives.size, 0)
+      engine.clearPrimitives()
+      self.assertEqual(engine.primitives.size, 0)
+
 #      for i in range(10):
 #        self.assertEqual(engine.primitives.size, i)
 #        engine.updatePrimitive(molecule.atom(i))
 #        engine.addPrimitive(molecule.atom(i))
 #        engine.updatePrimitive(molecule.atom(i))
-#
+
 #      for i in range(10):
 #        self.assertEqual(engine.primitives.size, 10 - i)
 #        engine.removePrimitive(molecule.atom(i))
@@ -89,10 +104,6 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(engine.name, name)
       else:
         print("FIXME: PythonEngine::clone() is not working...")
-
-
-
-
 
 
 if __name__ == "__main__":
