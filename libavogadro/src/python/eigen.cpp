@@ -47,11 +47,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_SimpleNew(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, NPY_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, NPY_FLOAT);
         else
-          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -73,11 +73,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_SimpleNew(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, NPY_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, NPY_FLOAT);
         else
-          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
@@ -99,11 +99,11 @@ template <> struct ScalarTraits<double>
         int dims[1] = { 3 };
         PyObject *result;
         if (ScalarTraits<Scalar>::isInt)
-          result = PyArray_SimpleNew(1, dims, PyArray_INT);
+          result = PyArray_SimpleNew(1, dims, NPY_INT);
         else if (ScalarTraits<Scalar>::isFloat)
-          result = PyArray_SimpleNew(1, dims, PyArray_FLOAT);
+          result = PyArray_SimpleNew(1, dims, NPY_FLOAT);
         else
-          result = PyArray_SimpleNew(1, dims, PyArray_DOUBLE);
+          result = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
         
         // copy the data
         Scalar *data = (Scalar*) reinterpret_cast<PyArrayObject*>(result)->data;
