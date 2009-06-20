@@ -76,7 +76,7 @@ namespace Avogadro {
     void setEnd(Atom* atom);
 
     /**
-     * Set the unique ID of both atoms in the bond
+     * Set the unique ID of both atoms in the bond.
      * @param atom1 First atom in the bond.
      * @param atom2 Second atom in the bond.
      * @param order Bond order (defaults to 1).

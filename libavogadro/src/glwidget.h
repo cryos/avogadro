@@ -359,7 +359,7 @@ namespace Avogadro {
        * @param primitives the set of objects to update.
        * @param select whether to select or deselect the objects.
        */
-      void setSelected(PrimitiveList primitives, bool select = true);
+      void setSelected(PrimitiveList primitives, bool select = true); // do we pass by value intentionally
 
       /**
        * Deselect all objects.
@@ -433,22 +433,22 @@ namespace Avogadro {
       void setUnitCells(int a, int b, int c);
 
       /**
-        * Clear the unit cell data
-      */
+       * Clear the unit cell data.
+       */
       void clearUnitCell();
 
       /**
-       * @return the number of unit cells to display along the a axis.
+       * @return The number of unit cells to display along the a axis.
        */
       int aCells();
 
       /**
-       * @return the number of unit cells to display along the b axis.
+       * @return The number of unit cells to display along the b axis.
        */
       int bCells();
 
       /**
-       * @return the number of unit cells to display along the c axis.
+       * @return The number of unit cells to display along the c axis.
        */
       int cCells();
 
@@ -634,11 +634,13 @@ namespace Avogadro {
       void setMolecule(Molecule *molecule);
 
       /**
+       * Add an engine to the GLWidget. 
        * @param engine Engine to add to this widget.
        */
       void addEngine(Engine *engine);
 
       /**
+       * Remove an engine from the GLWidget. 
        * @param engine Engine to remove from this widget.
        */
       void removeEngine(Engine *engine);
