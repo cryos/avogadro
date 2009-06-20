@@ -8,14 +8,18 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-03 17:13+0000\n"
+"PO-Revision-Date: 2009-06-12 02:22+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-12 00:56+0000\n"
+"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+#: src/mainwindow.cpp:2228
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+askelpalautin"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
@@ -24,17 +28,18 @@ msgstr ""
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:814
-#: src/mainwindow.cpp:837 src/mainwindow.cpp:988 src/mainwindow.cpp:1010
-#: src/mainwindow.cpp:1156 src/mainwindow.cpp:1381 src/mainwindow.cpp:2394
-#: src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
+#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
+#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -58,9 +63,10 @@ msgstr ""
 msgid "Clear Atoms"
 msgstr ""
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895:252 rc.cpp:260
+#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -179,39 +185,30 @@ msgid "Loading %1..."
 msgstr "Ladataan %1..."
 
 #: src/mainwindow.cpp:795
-#, fuzzy
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr "Molekyylitiedoston lukeminen epäonnistui."
+msgstr ""
 
 #: src/mainwindow.cpp:815
-#, fuzzy
 msgid "This file does not contain 3D coordinates."
 msgstr ""
-"Tämä tiedosto ei sisällä 3D-koordinaatteja. Voi olla, ettet pysty "
-"muokkaamaan tai käyttämään näkymää kunnolla."
 
 #: src/mainwindow.cpp:820
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
 #: src/mainwindow.cpp:838
-#, fuzzy
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"Tämä tiedosto ei sisällä 3D-koordinaatteja. Voi olla, ettet pysty "
-"muokkaamaan tai käyttämään näkymää kunnolla."
 
 #: src/mainwindow.cpp:888
-#, fuzzy
 msgid "Select Molecule to View"
-msgstr "Tallenna molekyyli nimellä"
+msgstr ""
 
 #: src/mainwindow.cpp:913
-#, fuzzy
 msgid "Molecule Title"
-msgstr "Molekyylitiedosto..."
+msgstr ""
 
 #: src/mainwindow.cpp:982
 msgid "Atoms: "
@@ -222,9 +219,9 @@ msgid " Bonds: "
 msgstr " Sidokset: "
 
 #: src/mainwindow.cpp:989
-#, fuzzy, qt-format
+#, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr "Molekyylitiedoston lukeminen epäonnistui."
+msgstr ""
 
 #: src/mainwindow.cpp:998
 msgid "File Loaded..."
@@ -345,10 +342,10 @@ msgid "View %1"
 msgstr "Näkymä %1"
 
 #: src/mainwindow.cpp:1947
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr "Näkymä %1"
+msgstr ""
 
 #: src/mainwindow.cpp:1956
 msgid "Avogadro: Detached View"
@@ -361,10 +358,6 @@ msgstr "Tavallinen koko"
 #: src/mainwindow.cpp:2135
 msgid "Full Screen"
 msgstr "Koko kuvaruutu"
-
-#: src/mainwindow.cpp:2228
-msgid "Ctrl+Backspace"
-msgstr "Ctrl+askelpalautin"
 
 #: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
 msgid "untitled"
@@ -417,7 +410,8 @@ msgstr ""
 msgid "Objects"
 msgstr ""
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2907:212
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2907 :212
 msgid "Colors"
 msgstr "Värit"
 
@@ -492,7 +486,8 @@ msgstr "Virhe"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :250
 msgid "Item"
 msgstr ""
 
@@ -505,7 +500,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -520,7 +516,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -582,15 +579,18 @@ msgstr ""
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -686,19 +686,23 @@ msgstr "&Valitse"
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/mainwindow.ui:192 src/settingsdialog.ui:255
+#: src/mainwindow.ui:192
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:225 src/pluginsettings.ui:23
+#: src/mainwindow.ui:225
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:234 src/pluginsettings.ui:28
+#: src/mainwindow.ui:234
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Työkalut"
 
-#: src/mainwindow.ui:255 src/mainwindow.ui:267
+#: src/mainwindow.ui:255
+#: src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Avaa"
 
@@ -706,7 +710,8 @@ msgstr "&Avaa"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276 src/mainwindow.ui:288
+#: src/mainwindow.ui:276
+#: src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Lopeta"
 
@@ -722,7 +727,8 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:307 src/mainwindow.ui:319
+#: src/mainwindow.ui:307
+#: src/mainwindow.ui:319
 msgid "&New"
 msgstr "&Uusi"
 
@@ -730,7 +736,8 @@ msgstr "&Uusi"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328 src/mainwindow.ui:340
+#: src/mainwindow.ui:328
+#: src/mainwindow.ui:340
 msgid "&Close"
 msgstr "&Sulje"
 
@@ -738,7 +745,8 @@ msgstr "&Sulje"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349 src/mainwindow.ui:361
+#: src/mainwindow.ui:349
+#: src/mainwindow.ui:361
 msgid "&Save"
 msgstr "&Tallenna"
 
@@ -923,11 +931,11 @@ msgid "Display Unit Cell Axes"
 msgstr ""
 
 #: src/mainwindow.ui:673
-#, fuzzy
 msgid "All Molecules in File..."
-msgstr "Molekyylitiedosto..."
+msgstr ""
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr ""
 
@@ -939,11 +947,13 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1011,7 +1021,8 @@ msgstr ""
 msgid "Settings..."
 msgstr "Asetukset..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
@@ -1019,7 +1030,8 @@ msgstr ""
 msgid "Quality:"
 msgstr "Laatu:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Aseta globaali renderöintilaatu."
 
@@ -1030,13 +1042,17 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff Hutchison,"
-"Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Ulla"
+",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff "
+"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff "
+"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Ulla"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+msgstr ""
+",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1044,25 +1060,23 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "Tiedostoa %1 ei voida lukea:\n"
 #~ "%2"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tiedoston %1 tiedostomuotoa ei voida lukea."
 
-#~ msgid ""
-#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
-#~ "bonds and do a quick optimization?"
-#~ msgstr ""
-#~ "Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
-#~ "skaalaa sidokset ja tekee nopean optimisaation?"
+#, qt-format
+#~ msgid "Cannot read file %1."
+#~ msgstr "Tiedostoa %1 ei voida lukea."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro "
-#~ "lukee ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut "
-#~ "molekyylit saattavat kadota."
+#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro lukee "
+#~ "ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut molekyylit "
+#~ "saattavat kadota."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1070,6 +1084,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "Tiedostoon %1 ei voida kirjoittaa:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Tiedostoon %1 ei voida kirjoittaa."
 
@@ -1078,9 +1093,6 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 
 #~ msgid "Save succeeded."
 #~ msgstr "Tallennus onnistui."
-
-#~ msgid "Cannot read file %1."
-#~ msgstr "Tiedostoa %1 ei voida lukea."
 
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Aseta kuvasuhde"
@@ -1098,6 +1110,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1494,6 +1507,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Surface"
 #~ msgstr "Pinta"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1503,9 +1517,11 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Animation"
 #~ msgstr "Animaatio"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Atomien lukumäärä: %1"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Kierrettävien sidosten määrä: %1"
 
@@ -1547,6 +1563,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Fix Selected Atoms"
 #~ msgstr "Kiinnitä valitut atomit paikoilleen"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1640,24 +1657,28 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Valence"
 #~ msgstr "Valenssi"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atomi %1"
 
 #~ msgid "Length (Å)"
 #~ msgstr "Pituus (Å)"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Sidos %1"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Kulma (°)"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Kulma %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Kiertokulma (°)"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Kiertokulma %1"
 
@@ -1753,6 +1774,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "AutoOpt: Could not setup force field...."
 #~ msgstr "AutoOpt: Ei voitu asettaa voimakenttää..."
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1819,18 +1841,23 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "\tKulma mitataan välillä 1-3 pitäen atomia 2 yhteisenä pisteenä\n"
 #~ "Oikea hiiren painike: Aseta alkutilaan."
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Etäisyys (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Etäisyys (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Kulma: %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Etäisyys (3->4): %1 %2"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Kiertokulma: %1 %2"
 
@@ -1877,8 +1904,8 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "Right Mouse: Delete Atom"
 #~ msgstr ""
 #~ "Piirtotyökalu (F8)\n"
-#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi "
-#~ "atomeja ja sidoksia\n"
+#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi atomeja "
+#~ "ja sidoksia\n"
 #~ "Oikea hiiren painike: \tPoista atomi"
 
 #~ msgid "Draw Atom"
@@ -1922,8 +1949,8 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "\n"
 #~ "Vasen hiiren painike: Napsauta ja vedä painike pohjassa siirtääksesi "
 #~ "atomeita\n"
-#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs "
-#~ "tai kauemmas\n"
+#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs tai "
+#~ "kauemmas\n"
 #~ "Oikea hiiren painike: Napsauta ja vedä painike pohjassa pyörittääksesi "
 #~ "valittuja atomeita"
 
@@ -1943,8 +1970,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "näkymää\n"
 #~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa lähentääksesi tai "
 #~ "loitontaaksesi näkymää\n"
-#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi "
-#~ "näkymää"
+#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi näkymää"
 
 #~ msgid "Selection Mode:"
 #~ msgstr "Valintatila:"
@@ -2426,6 +2452,13 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "pH"
 #~ msgstr "pH"
 
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
+#~ "skaalaa sidokset ja tekee nopean optimisaation?"
+
 #~ msgid "Abort Calculation"
 #~ msgstr "Keskeytä laskeminen"
 
@@ -2459,6 +2492,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Any files (*.*)"
 #~ msgstr "Kaikki tiedostot (*.*)"
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Kirjoitettiin tiedosto %1."
 
@@ -2484,13 +2518,13 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgstr "POV-Ray..."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
-#~ "Ray file. This will result in no output being saved. Are you sure that is "
-#~ "what you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
+#~ "file. This will result in no output being saved. Are you sure that is what "
+#~ "you want?"
 #~ msgstr ""
 #~ "Valintasi on olla käyttämättä suoraa POV-Ray-renderöintiä etkä halua "
-#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. "
-#~ "Oletko varma että haluat toimia näin?"
+#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. Oletko "
+#~ "varma että haluat toimia näin?"
 
 #~ msgid "POV-Ray"
 #~ msgstr "POV-Ray"
@@ -2500,8 +2534,7 @@ msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr ""
-#~ "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
+#~ msgstr "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
 
 #~ msgid "Bond Length: "
 #~ msgstr "Sidoksen pituus: "
