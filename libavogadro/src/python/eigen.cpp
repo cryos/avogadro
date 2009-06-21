@@ -307,7 +307,7 @@ template <> struct ScalarTraits<double>
       //
       static PyObject* convert(Eigen::Transform3d const &trans)
       {
-        int dims[2] = { 4, 4 };
+        npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
@@ -323,7 +323,7 @@ template <> struct ScalarTraits<double>
       //
       static PyObject* convert(Eigen::Transform3d *trans)
       {
-        int dims[2] = { 4, 4 };
+        npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
@@ -339,7 +339,7 @@ template <> struct ScalarTraits<double>
       //
       static PyObject* convert(const Eigen::Transform3d *trans)
       {
-        int dims[2] = { 4, 4 };
+        npy_intp dims[2] = { 4, 4 };
         PyObject *result = PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
         
         // copy the data
