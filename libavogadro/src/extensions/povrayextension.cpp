@@ -147,11 +147,12 @@ namespace Avogadro
     } */
 
     // Check whether the .pov file can be written
-    QFileInfo povFile(fileName + ".pov");
-    if (povFile.isWritable()) {
+    QFile povFile(fileName + ".pov");
+    if (povFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
       double aspectRatio = static_cast<double>(m_POVRayDialog->imageWidth())
                            / m_POVRayDialog->imageHeight();
       qDebug() << "Aspect ratio:" << aspectRatio;
+      povFile.close();
       POVPainterDevice pd(fileName + ".pov", aspectRatio, m_glwidget);
     }
     else {
@@ -162,8 +163,10 @@ namespace Avogadro
 
     if (m_POVRayDialog->renderDirect()) {
       m_process = new QProcess(this);
-      QFileInfo info(fileName + ".png");
-      if (info.isWritable()) {
+      QFile pngFile(fileName + ".png");
+      if (pngFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        pngFile.close();
+        QFileInfo info(fileName + ".png");
         m_process->setWorkingDirectory(info.absolutePath());
         m_process->start(m_POVRayDialog->command(), m_POVRayDialog->commandLine());
         qDebug() << "Command:" << m_POVRayDialog->command() + ' ' +
