@@ -471,6 +471,7 @@ namespace Avogadro {
       glMatrixMode( GL_MODELVIEW );
       glPopAttrib();
       glDepthMask(GL_TRUE);
+      glEnable(GL_LIGHTING);
       d->textmode = false;
       d->glwidget = 0;
     }
