@@ -470,6 +470,7 @@ namespace Avogadro {
       glPopMatrix();
       glMatrixMode( GL_MODELVIEW );
       glPopAttrib();
+      glDepthMask(GL_TRUE);
       d->textmode = false;
       d->glwidget = 0;
     }
