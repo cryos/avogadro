@@ -49,6 +49,11 @@ namespace Avogadro {
     Q_UNUSED(action); return QString();
   }
 
+  bool Extension::usesNetwork(QAction *action) const
+  {
+    Q_UNUSED(action); return false;
+  }
+
   QDockWidget * Extension::dockWidget()
   {
     return 0;

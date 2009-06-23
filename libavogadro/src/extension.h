@@ -134,6 +134,11 @@ namespace Avogadro {
     virtual QString menuPath(QAction *action) const;
 
     /**
+     * @return whether the specified action requires the network
+     */
+    virtual bool usesNetwork(QAction *action) const;
+
+    /**
      * @return a list of dock widgets associated with this extensions
      */
     virtual QDockWidget * dockWidget();
