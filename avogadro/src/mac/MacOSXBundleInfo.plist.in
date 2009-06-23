@@ -36,8 +36,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>SHELX file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -52,8 +50,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>XYZ molecule file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -69,8 +65,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>MDL Molfile</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -86,8 +80,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>MDL SD file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -103,8 +95,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Protein Databank file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -120,8 +110,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Sybyl Mol2 file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -136,8 +124,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>HyperChem file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -152,14 +138,13 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Accelrys/MSI Cerius II file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
 	<dict>
 		<key>CFBundleTypeExtensions</key>
 		<array>
+			<string>g09</string>
 			<string>g03</string>
 			<string>g98</string>
 		</array>
@@ -169,8 +154,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Gaussian output</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -186,8 +169,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Gaussian Cube</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -202,8 +183,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Gaussian formatted checkpoint</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -219,8 +198,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Gaussian input</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -236,8 +213,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>GAMESS output</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -252,8 +227,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Ghemical project</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -268,8 +241,6 @@
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
 		<string>Chemical Markup Language file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
 		<key>LSTypeIsPackage</key>
 		<false/>
 	</dict>
@@ -283,11 +254,13 @@
     <key>CFBundleTypeIconFile</key>
     <string>AvogadroDocument.icns</string>
 		<key>CFBundleTypeName</key>
-		<string>Crystallographic Interchange file</string>
-		<key>LSIsAppleDefaultForType</key>
-		<true/>
+		<string>Crystallographic Information file</string>
 		<key>LSTypeIsPackage</key>
 		<false/>
+    <key>CFBundleTypeMIMETypes</key>
+    <array>
+      <string>text/cif</string>
+    </array>
 	</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -356,7 +329,9 @@
  			<dict>
 				<key>public.filename-extension</key>
 				<array>
+					<string>g98</string>
 					<string>g03</string>
+					<string>g09</string>
  				</array>
  			</dict>
  		</dict>
@@ -367,7 +342,7 @@
  				<string>public.text</string>
  			</array>
  			<key>UTTypeDescription</key>
- 			<string>Gaussian03 FCHK</string>
+ 			<string>Gaussian FCHK file</string>
  			<key>UTTypeIdentifier</key>
  			<string>com.gaussian.fchk</string>
  			<key>UTTypeTagSpecification</key>
