@@ -116,8 +116,8 @@ namespace Avogadro {
     m_dialog->formulaLine->setText(formula);
 
     m_dialog->energyLine->setText(format.arg(m_molecule->energy(), 0, 'f', 3));
-    bool estimate; // estimated dipole
-    m_dialog->dipoleMomentLine->setText(format.arg(m_molecule->dipoleMoment(&estimate)->norm(), 0, 'f', 3));
+    bool estimate = true; // estimated dipole
+    //    m_dialog->dipoleMomentLine->setText(format.arg(m_molecule->dipoleMoment(&estimate)->norm(), 0, 'f', 3));
     if (estimate)
       m_dialog->dipoleLabel->setText(tr("Estimated Dipole Moment (D):"));
     m_dialog->atomsLine->setText(format.arg(m_molecule->numAtoms()));
