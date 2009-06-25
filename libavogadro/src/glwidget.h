@@ -634,6 +634,21 @@ namespace Avogadro {
       void setMolecule(Molecule *molecule);
 
       /**
+       * A primitive, was removed, so update the selection
+       */
+      void unselectPrimitive(Primitive *);
+
+      /**
+       * An atom, was removed, so update the selection
+       */
+      void unselectAtom(Atom *);
+
+      /**
+       * A bond, was removed, so update the selection
+       */
+      void unselectBond(Bond *);
+
+      /**
        * Add an engine to the GLWidget. 
        * @param engine Engine to add to this widget.
        */

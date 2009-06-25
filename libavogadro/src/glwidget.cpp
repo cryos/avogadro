@@ -1184,10 +1184,34 @@ namespace Avogadro {
     connect(d->molecule, SIGNAL(updated()), this, SLOT(invalidateDLs()));
     connect(d->molecule, SIGNAL(updated()), this, SLOT(update()));
 
+    // If primitives, atoms, or bonds are removed, we need to delete them from the selected list
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(unselectPrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(atomRemoved(Atom*)), this, SLOT(unselectAtom(Atom*)));
+    connect(d->molecule, SIGNAL(bondRemoved(Bond*)), this, SLOT(unselectBond(Bond*)));
+
     // setup the camera to have a nice viewpoint on the molecule
     d->camera->initializeViewPoint();
 
     update();
+  }
+
+  void GLWidget::unselectPrimitive(Primitive *p)
+  {
+    d->selectedPrimitives.removeAll( p );
+    // The engine caches must be invalidated
+    d->updateCache = true;
+
+    // TODO: remove also from named selections
+  }
+
+  void GLWidget::unselectAtom(Atom *a)
+  {
+    unselectPrimitive(a);
+  }
+
+  void GLWidget::unselectBond(Bond *b)
+  {
+    unselectPrimitive(b);
   }
 
   const Molecule* GLWidget::molecule() const
