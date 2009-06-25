@@ -27,6 +27,7 @@
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
+#include <openbabel/forcefield.h>
 #include <openbabel/obconversion.h>
 
 #include <QInputDialog>
@@ -112,6 +113,13 @@ namespace Avogadro {
            && conv.ReadString(&obfragment, SmilesString))
           {
             builder.Build(obfragment);
+
+            OBForceField* pFF =  OBForceField::FindForceField("UFF");
+            if (pFF && pFF->Setup(obfragment)) {
+              pFF->ConjugateGradients(250, 1.0e-4);
+              pFF->UpdateCoordinates(obfragment);
+            }
+            
             fragment.setOBMol(&obfragment);
             fragment.addHydrogens();
             fragment.center();
