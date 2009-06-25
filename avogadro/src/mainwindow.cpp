@@ -815,11 +815,13 @@ namespace Avogadro
       // we may want to check with the user
       if (d->build3D == AskUser) {
 
+        QMessageBox::StandardButtons buttons = QMessageBox::Yes | QMessageBox::No;
+        if (d->moleculeFile != NULL && d->moleculeFile->numMolecules() > 1)
+          buttons = QMessageBox::YesToAll | QMessageBox::NoToAll | buttons;
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
                                                        tr( "Avogadro" ),
                                                        tr("This file does not contain 3D coordinates."),
-                                                       QMessageBox::YesToAll | QMessageBox::Yes
-                                                       | QMessageBox::No,
+                                                       buttons,
                                                        this);
 
         msgBox->setInformativeText(tr("Do you want Avogadro to build a rough geometry?"));
