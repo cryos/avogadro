@@ -2266,8 +2266,17 @@ void GamessHessianGroup::WriteToFile( ostream &File, GamessInputData *IData )
   //Punch the group label
   File << " $FORCE ";
   //Method
-  if ( method ) File << "METHOD=ANALYTIC ";
-  else File << "METHOD=SEMINUM ";
+  switch (IData->Basis->GetBasis()) {
+  case GAMESS_BS_MNDO:
+  case GAMESS_BS_AM1:
+  case GAMESS_BS_PM3:
+    File << "METHOD=NUMERIC ";
+    break;
+  default:
+    if ( method ) File << "METHOD=ANALYTIC ";
+    else File << "METHOD=SEMINUM ";
+  }
+
   if ( !method ) {
     //NVIB
     if ( GetDoubleDiff() ) {
