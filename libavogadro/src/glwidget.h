@@ -732,6 +732,11 @@ namespace Avogadro {
        */
       void activated(GLWidget *);
 
+      /**
+       * Signal that the unit cell axis display has changed
+       */
+      void unitCellAxesRenderChanged(bool enabled);
+
   };
 
 } // end namespace Avogadro

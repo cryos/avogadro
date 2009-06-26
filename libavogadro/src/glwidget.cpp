@@ -1929,7 +1929,10 @@ namespace Avogadro {
 
   void GLWidget::setRenderUnitCellAxes(bool enabled)
   {
-    d->renderUnitCellAxes = enabled;
+    if (d->renderUnitCellAxes != enabled) {
+      d->renderUnitCellAxes = enabled;
+      emit unitCellAxesRenderChanged(enabled);
+    }
   }
 
   bool GLWidget::renderUnitCellAxes() const

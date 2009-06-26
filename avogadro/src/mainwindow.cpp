@@ -511,8 +511,9 @@ namespace Avogadro
 
   void MainWindow::setRenderUnitCellAxes(bool render)
   {
-    ui.actionDisplayUnitCellAxes->setChecked(false);
-    d->glWidget->setRenderUnitCellAxes(render);
+    ui.actionDisplayUnitCellAxes->setChecked(render);
+    if (d->glWidget->renderUnitCellAxes() != render)
+      d->glWidget->setRenderUnitCellAxes(render);
   }
 
   void MainWindow::showAllMolecules(bool)
@@ -978,6 +979,10 @@ namespace Avogadro
 
       QApplication::restoreOverrideCursor();
 
+      // If there's a unit cell, by default, draw the cell axes
+      if (d->molecule->OBUnitCell() != NULL) {
+        setRenderUnitCellAxes(true);
+      }
       // Check if this is a PDB file -- by default we do not show the unit cell
       QFileInfo info(d->moleculeFile->fileName());
       if (d->moleculeFile->fileType().contains("PDB", Qt::CaseInsensitive)
@@ -2808,6 +2813,8 @@ namespace Avogadro
              gl, SLOT( setMolecule( Molecule * ) ) );
     connect(gl, SIGNAL(activated(GLWidget *)),
             this, SLOT(glWidgetActivated(GLWidget *)));
+    connect(gl, SIGNAL(unitCellAxesRenderChanged(bool)),
+            this, SLOT(setRenderUnitCellAxes(bool)));
 
     gl->setMolecule(d->molecule);
     gl->setObjectName(QString::fromUtf8("glWidget"));
