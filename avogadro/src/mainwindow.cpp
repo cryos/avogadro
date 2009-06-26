@@ -1494,16 +1494,6 @@ namespace Avogadro
   //  then we quit
   void MainWindow::macQuit()
   {
-    // Check first for any parent-less windows for debugging
-    foreach(QWidget *widget, qApp->topLevelWidgets()) {
-      if (widget->parent() == 0) {
-        qDebug() << " found parentless " << widget->windowTitle()
-                 << widget->metaObject()->className();
-        foreach (const QObject* child, widget->children())
-          qDebug() << "   child: " << child->metaObject()->className();
-      }
-    }
-
     QCloseEvent ev;
     QApplication::sendEvent(qApp, &ev);
     if(ev.isAccepted())
@@ -2467,13 +2457,6 @@ namespace Avogadro
       return 0;
 
     foreach(QWidget *widget, qApp->topLevelWidgets()) {
-      if (widget->parent() == 0) {
-        qDebug() << " found parentless " << widget->windowTitle()
-                 << widget->metaObject()->className();
-        foreach (const QObject* child, widget->children())
-          qDebug() << "   child: " << child->metaObject()->className();
-      }
-
       MainWindow *window = qobject_cast<MainWindow *>( widget );
       if (window && window->d->fileName == canonicalFilePath)
         return window;
