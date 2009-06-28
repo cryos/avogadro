@@ -200,7 +200,7 @@ namespace Avogadro {
         }
       }
     }
-    setLimits( xmin, xmax, ymin, ymax );
+    setDefaultLimits( xmin, xmax, ymin, ymax );
   }
 
   void PlotWidget::setDefaultLimits( double x1, double x2, double y1, double y2 )
