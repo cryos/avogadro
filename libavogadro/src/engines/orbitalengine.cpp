@@ -238,8 +238,10 @@ namespace Avogadro {
     }
 
     // attribute is the text key for the Mesh
-    m_mesh1 = meshes[iMesh1];
-    m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+    if (!m_mesh1) {
+      m_mesh1 = meshes[iMesh1];
+      m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+    }
     // Check whether mesh has multiple colors
     bool colorMesh = m_mesh1->colors().size() == m_mesh1->vertices().size();
     if (m_settingsWidget) {
