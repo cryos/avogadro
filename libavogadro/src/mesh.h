@@ -48,7 +48,7 @@ namespace Avogadro {
   class MeshPrivate;
   class A_EXPORT Mesh : public Primitive
   {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     /**

@@ -33,6 +33,7 @@
 #include <avogadro/mesh.h>
 
 #include <QPointer>
+#include <QList>
 
 #include "ui_orbitalsettingswidget.h"
 
@@ -77,7 +78,7 @@ namespace Avogadro {
 
       void setPrimitives(const PrimitiveList &primitives);
 
-    public Q_SLOTS:
+    public slots:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
@@ -95,10 +96,11 @@ namespace Avogadro {
       bool   m_drawBox;
       bool   m_update;
       bool   m_colored;
+      QList <unsigned long> m_meshes;
 
       void updateSurfaces(PainterDevice *pd);
 
-    private Q_SLOTS:
+    private slots:
       /**
        * Update the orbital combo box with new orbitals
        */

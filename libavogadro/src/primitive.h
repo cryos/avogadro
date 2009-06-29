@@ -39,8 +39,8 @@ class QReadWriteLock;
 
 namespace Avogadro {
 
-// Define the overflow resulting from long (-1) as the error/not found
-const unsigned long FALSE_ID = std::numeric_limits<unsigned long>::max();
+  // Define the overflow resulting from long (-1) as the error/not found
+  const unsigned long FALSE_ID = std::numeric_limits<unsigned long>::max();
 
   /**
    * @class Primitive primitive.h <avogadro/primitive.h>

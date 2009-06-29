@@ -267,32 +267,55 @@ namespace Avogadro {
   {
     if (!m_settingsWidget || !m_molecule)
       return;
-    // Reset the orbital combo
-    int tmp1 = m_settingsWidget->orbital1Combo->currentIndex();
-    if (tmp1 < 0) tmp1 = 0;
-    m_settingsWidget->orbital1Combo->clear();
 
-    QList<Mesh *> meshList = m_molecule->meshes();
-    if (meshList.empty())
+    if (!m_molecule->numMeshes())
       return;
 
-    foreach(Mesh *mesh, meshList) {
+    // Reset the orbital combo
+    int index = m_settingsWidget->orbital1Combo->currentIndex();
+    if (index < 0) index = 0;
+    m_settingsWidget->orbital1Combo->clear();
+
+    // Build up a new list mapping combo box indices to meshes
+    m_meshes.clear();
+
+    foreach(Mesh *mesh, m_molecule->meshes()) {
       if (!mesh->lock()->tryLockForRead()) {
         qDebug() << "Cannot get a read lock on the mesh...";
         continue;
       }
-      if (mesh->isoValue() > 0.0) {
-        if (m_mesh1)
-          if (m_mesh1->id() == mesh->id())
-            tmp1 = m_settingsWidget->orbital1Combo->count();
-        QString itemName(tr("%1, isosurface = %L2", "%1 is mesh name, %2 is the isosurface cutoff"));
-        m_settingsWidget->orbital1Combo->addItem(itemName
-                                                 .arg(mesh->name())
-                                                 .arg(mesh->isoValue()));
+      // Update the index if we have hit the currently selected Mesh
+      if (m_mesh1 && m_mesh1->id() == mesh->id())
+        index = m_settingsWidget->orbital1Combo->count();
+
+      // Now figure out the mesh type and add it to the map
+      Cube::Type cubeType = m_molecule->cubeById(mesh->cube())->cubeType();
+      QString comboText;
+      if (cubeType == Cube::VdW) {
+        comboText = tr("Van der Waals, isosurface = %L1",
+                       "Van der Waals isosurface with a cutoff of %1");
+        m_settingsWidget->orbital1Combo->addItem(comboText.arg(mesh->isoValue()));
+        m_meshes.push_back(mesh->id());
+      }
+      else if (cubeType == Cube::ElectronDensity) {
+        comboText = tr("Electron density, isosurface = %L1",
+                       "Electron density isosurface with a cutoff of %1");
+        m_settingsWidget->orbital1Combo->addItem(comboText.arg(mesh->isoValue()));
+        m_meshes.push_back(mesh->id());
+      }
+      else if (cubeType == Cube::MO) {
+        if (mesh->isoValue() > 0.0) {
+          comboText = tr("%1, isosurface = %L2",
+                         "%1 is mesh name, %2 is the isosurface cutoff");
+          m_settingsWidget->orbital1Combo->addItem(comboText
+                                                   .arg(mesh->name())
+                                                   .arg(mesh->isoValue()));
+          m_meshes.push_back(mesh->id());
+        }
       }
       mesh->lock()->unlock();
     }
-    m_settingsWidget->orbital1Combo->setCurrentIndex(tmp1);
+    m_settingsWidget->orbital1Combo->setCurrentIndex(index);
   }
 
   double OrbitalEngine::transparencyDepth() const
@@ -315,9 +338,12 @@ namespace Avogadro {
     return Engine::IndexedColors;
   }
 
-  void OrbitalEngine::setOrbital(int)
+  void OrbitalEngine::setOrbital(int n)
   {
-    m_update = true;
+    if (m_meshes.size() && n >= 0 && n < m_meshes.size()) {
+      m_mesh1 = m_molecule->meshById(m_meshes.at(n));
+      m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+    }
     emit changed();
   }
 

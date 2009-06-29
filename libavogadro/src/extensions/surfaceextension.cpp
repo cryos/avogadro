@@ -563,6 +563,7 @@ namespace Avogadro
         if (!cube) { // We need a new cube
           cube = newCube();
           cube->setName(tr("VdW"));
+          cube->setCubeType(Cube::VdW);
           m_cubes[0] = cube->id();
           calculateVdW(cube);
           calculateCube = true;
@@ -590,6 +591,7 @@ namespace Avogadro
         if (!cube) { // We need a new cube
           cube = newCube();
           cube->setName(tr("Electron Density"));
+          cube->setCubeType(Cube::ElectronDensity);
           m_cubes[2] = cube->id();
           calculateElectronDensity(cube);
           calculateCube = true;
@@ -617,6 +619,7 @@ namespace Avogadro
         if (!cube) { // We need a new cube
           cube = newCube();
           cube->setName(tr("MO %L1", "Molecular Orbital").arg(mo));
+          cube->setCubeType(Cube::MO);
           m_moCubes[mo - 1] = cube->id();
           calculateMo(cube, mo);
           calculateCube = true;
