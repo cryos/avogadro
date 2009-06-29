@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>246</height>
+    <width>449</width>
+    <height>248</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,6 +117,11 @@
         <widget class="QComboBox" name="colorByCombo">
          <item>
           <property name="text">
+           <string>Nothing</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Electrostatic Potential</string>
           </property>
          </item>
@@ -124,6 +129,41 @@
        </item>
        <item>
         <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QComboBox" name="moColorCombo">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string notr="true">MO 666</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -155,7 +195,7 @@
        <item>
         <widget class="QComboBox" name="resolutionCombo">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <item>
           <property name="text">
