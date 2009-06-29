@@ -249,8 +249,9 @@ namespace Avogadro {
     if (m_colored && !colorMesh)
       m_colored = false;
 
-    qDebug() << " Orbital 1 title: " << m_mesh1->name();
-    qDebug() << " Orbital 2 title: " << m_mesh2->name();
+    qDebug() << "Mesh 1 title: " << m_mesh1->name();
+    if (m_mesh2)
+      qDebug() << "Mesh 2 title: " << m_mesh2->name();
 
     // Get the cube extents
     Cube *cube = m_molecule->cubeById(m_mesh1->cube());
@@ -468,8 +469,10 @@ namespace Avogadro {
     m_colored = settings.value("colorMode", false).toBool();
     m_drawBox = settings.value("drawBox", false).toBool();
     if (m_molecule) {
-      m_mesh1 = m_molecule->meshById(settings.value("mesh1Id", 0).toInt());
-      m_mesh2 = m_molecule->meshById(settings.value("mesh2Id", 0).toInt());
+      m_mesh1 = m_molecule->meshById(settings.value("mesh1Id",
+                                                    qulonglong(FALSE_ID)).toInt());
+      m_mesh2 = m_molecule->meshById(settings.value("mesh2Id",
+                                                    qulonglong(FALSE_ID)).toInt());
     }
   }
 
