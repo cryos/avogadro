@@ -200,18 +200,20 @@ namespace Avogadro {
         }
       }
     }
-    setLimits( xmin, xmax, ymin, ymax );
+    setDefaultLimits( xmin, xmax, ymin, ymax );
   }
 
   void PlotWidget::setDefaultLimits( double x1, double x2, double y1, double y2 )
   {
-    if ( fabs(x2 - x1) < 1.0e-3 ) {
-      qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
-      x2 = x1 + 1.0;
+    if (x2 == x1) {
+      qWarning() << "x1 and x2 cannot be equal. Centering around point.";
+      x2 = x1 + 0.5;
+      x1 -= 0.5;
     }
-    if ( fabs(y2 - y1) < 1.0e-3) {
-      qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
-      y2 = y1 + 1.0;
+    if (y2 == y1) {
+      qWarning() << "y1 and y2 cannot be equal. Centering around point.";
+      y2 = y1 + 0.5;
+      y1 -= 0.5;
     }
     d->defaultDataRect = QRectF( x1, y1, x2 - x1, y2 - y1 );
     setLimits( x1, x2, y1, y2 );
@@ -232,14 +234,17 @@ namespace Avogadro {
     XA1=x1; XA2=x2;
     YA1=y1; YA2=y2;
 
-    if ( fabs(XA2 - XA1) < 1.0e-3 ) {
-      qWarning() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
-      XA2 = XA1 + 1.0;
+    if (XA2 == XA1) {
+      qWarning() << "x1 and x2 cannot be equal. Centering around point.";
+      XA2 = XA1 + 0.5;
+      XA1 -= 0.5;
     }
-    if ( fabs(YA2 - YA1) < 1.0e-3) {
-      qWarning() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
-      YA2 = YA1 + 1.0;
+    if (YA2 == YA1) {
+      qWarning() << "y1 and y2 cannot be equal. Centering around point.";
+      YA2 = YA1 + 0.5;
+      YA1 -= 0.5;
     }
+
     dataRect = QRectF( XA1, YA1, XA2 - XA1, YA2 - YA1 );
 
     q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
@@ -258,14 +263,17 @@ namespace Avogadro {
     XA1=x1; XA2=x2;
     YA1=y1; YA2=y2;
 
-    if ( fabs(XA2 - XA1) < 1.0e-3 ) {
-      qDebug() << "x1 and x2 cannot be equal. Setting x2 = x1 + 1.0";
-      XA2 = XA1 + 1.0;
+    if (XA2 == XA1) {
+      qWarning() << "x1 and x2 cannot be equal. Centering around point.";
+      XA2 = XA1 + 0.5;
+      XA1 -= 0.5;
     }
-    if ( fabs(YA2 - YA1) < 1.0e-3) {
-      qDebug() << "y1 and y2 cannot be equal. Setting y2 = y1 + 1.0";
-      YA2 = YA1 + 1.0;
+    if (YA2 == YA1) {
+      qWarning() << "y1 and y2 cannot be equal. Centering around point.";
+      YA2 = YA1 + 0.5;
+      YA1 -= 0.5;
     }
+
     d->secondDataRect = QRectF( XA1, YA1, XA2-XA1, YA2-YA1 );
 
     axis(RightAxis)->setTickMarks( d->secondDataRect.y(), d->secondDataRect.height() );
@@ -649,7 +657,7 @@ namespace Avogadro {
       float y2 = p2.y();
 
       // Discard invalid selections
-      if (fabs(x1 - x2) < 1.0e-3 || fabs(y1 - y2) < 1.0e-3) {
+      if (x1 == x2 || y1 == y2) {
         zoomPosF = QPointF();
         return;
       }
