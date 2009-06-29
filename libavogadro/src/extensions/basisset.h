@@ -189,7 +189,13 @@ namespace Avogadro
      */
     QFutureWatcher<void> & watcher() { return m_watcher; }
 
-  private Q_SLOTS:
+  signals:
+    /**
+     * Emitted when the calculation is complete.
+     */
+    void finished();
+
+  private slots:
      /**
      * Slot to set the cube data once Qt Concurrent is done
      */
