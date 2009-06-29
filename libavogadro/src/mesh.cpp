@@ -34,7 +34,7 @@ using std::vector;
 namespace Avogadro {
 
   Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_vertices(0),
-    m_normals(0), m_colors(0), m_stable(true), m_other(0), m_cube(0)
+    m_normals(0), m_colors(0), m_stable(true), m_other(FALSE_ID), m_cube(0)
   {
     m_vertices.reserve(100);
     m_normals.reserve(100);
