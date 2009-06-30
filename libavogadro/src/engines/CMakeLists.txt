@@ -46,7 +46,7 @@ avogadro_plugin(ringengine ringengine.cpp ringsettingswidget.ui)
 avogadro_plugin(polygonengine polygonengine.cpp)
 
 # Surface engine - molecular surfaces and 3D functions
-avogadro_plugin(surfaceengine surfaceengine.cpp surfacesettingswidget.ui)
+#avogadro_plugin(surfaceengine surfaceengine.cpp surfacesettingswidget.ui)
 
 # Orbital engine - molecular orbitals
 avogadro_plugin(orbitalengine orbitalengine.cpp orbitalsettingswidget.ui)
