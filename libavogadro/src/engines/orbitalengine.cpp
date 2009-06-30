@@ -66,7 +66,6 @@ namespace Avogadro {
   {
     // Render the opaque surface if m_alpha is 1
     if (m_alpha >= 0.999) {
-
       if (m_mesh1) {
         if (m_mesh1->stable()) {
           if (m_colored)
@@ -87,9 +86,10 @@ namespace Avogadro {
           }
         }
       }
-
-      renderSurfaces(pd);
     }
+
+    if (m_drawBox)
+      renderBox(pd);
 
     return true;
   }
@@ -98,7 +98,6 @@ namespace Avogadro {
   {
     // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_alpha > 0.001 && m_alpha < 0.999) {
-
       if (m_mesh1) {
         if (m_mesh1->stable()) {
           if (m_colored) {
@@ -123,8 +122,6 @@ namespace Avogadro {
           }
         }
       }
-
-      renderSurfaces(pd);
     }
     return true;
   }
@@ -147,48 +144,47 @@ namespace Avogadro {
         pd->painter()->drawMesh(*m_mesh2, renderMode);
       }
     }
-    renderSurfaces(pd);
+    if (m_drawBox)
+      renderBox(pd);
 
     return true;
   }
 
-  bool OrbitalEngine::renderSurfaces(PainterDevice *pd)
+  inline bool OrbitalEngine::renderBox(PainterDevice *pd)
   {
     // Draw the extents of the cube if requested to
-    if (m_drawBox) {
-      pd->painter()->setColor(1.0, 1.0, 1.0);
+    pd->painter()->setColor(1.0, 1.0, 1.0);
 
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_min.x(), m_max.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_min.x(), m_min.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_max.x(), m_min.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_min.x(), m_max.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_min.x(), m_min.y(), m_max.z()), 1.0);
 
-      pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
-                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_max.x(), m_min.y(), m_min.z()),
+                            Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
 
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
-                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
-                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
+                            Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_max.y(), m_min.z()),
+                            Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
 
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
-                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
-                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
+                            Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_min.x(), m_min.y(), m_max.z()),
+                            Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
 
-      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
-                              Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
-                              Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
-      pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
-                              Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
-    }
+    pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                            Vector3d(m_max.x(), m_max.y(), m_min.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                            Vector3d(m_max.x(), m_min.y(), m_max.z()), 1.0);
+    pd->painter()->drawLine(Vector3d(m_max.x(), m_max.y(), m_max.z()),
+                            Vector3d(m_min.x(), m_max.y(), m_max.z()), 1.0);
 
     return true;
   }

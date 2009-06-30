@@ -60,7 +60,6 @@ namespace Avogadro {
       bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
       bool renderPick(PainterDevice *) { return false; }
-      bool renderSurfaces(PainterDevice *pd);
       //@}
 
       double transparencyDepth() const;
@@ -96,6 +95,8 @@ namespace Avogadro {
       bool   m_drawBox;
       bool   m_colored;
       QList <unsigned long> m_meshes;
+
+      bool renderBox(PainterDevice *pd);
 
     private slots:
       /**
