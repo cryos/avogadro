@@ -28,7 +28,7 @@
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
-#include <avogadro/meshgenerator.h>
+#include <avogadro/mesh.h>
 #include <avogadro/painterdevice.h>
 
 #include <QReadWriteLock>
