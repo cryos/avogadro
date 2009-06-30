@@ -30,15 +30,13 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
-#include <avogadro/mesh.h>
 
 #include <QPointer>
 #include <QList>
 
-#include "ui_orbitalsettingswidget.h"
-
 namespace Avogadro {
 
+  class Mesh;
   class OrbitalSettingsWidget;
 
   //! Orbital Engine class.
@@ -135,14 +133,6 @@ namespace Avogadro {
        * @param color the color for the negative iso surface
        */
       void setNegColor(const QColor& color);
-  };
-
-  class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget
-  {
-    public:
-      OrbitalSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-      }
   };
 
   //! Generates instances of our OrbitalEngine class

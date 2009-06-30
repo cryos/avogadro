@@ -26,6 +26,8 @@
 
 #include "orbitalengine.h"
 
+#include "ui_orbitalsettingswidget.h"
+
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
@@ -39,6 +41,15 @@ using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
+
+  // Our settings widget class
+  class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget
+  {
+    public:
+      OrbitalSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
+  };
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
