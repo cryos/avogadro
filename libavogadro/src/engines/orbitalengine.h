@@ -94,11 +94,8 @@ namespace Avogadro {
       double m_alpha;
       int    m_renderMode;
       bool   m_drawBox;
-      bool   m_update;
       bool   m_colored;
       QList <unsigned long> m_meshes;
-
-      void updateSurfaces(PainterDevice *pd);
 
     private slots:
       /**

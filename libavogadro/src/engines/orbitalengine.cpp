@@ -42,7 +42,7 @@ namespace Avogadro {
 
   OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
-    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_update(true), m_colored(false)
+    m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_colored(false)
   {
     // default is red for negative, blue for positive
     m_negColor.setFromRgba(1.0, 0.0, 0.0, m_alpha);
@@ -65,10 +65,7 @@ namespace Avogadro {
   bool OrbitalEngine::renderOpaque(PainterDevice *pd)
   {
     // Render the opaque surface if m_alpha is 1
-    if (m_alpha >= 0.999)
-    {
-      if (m_update)
-        updateSurfaces(pd);
+    if (m_alpha >= 0.999) {
 
       if (m_mesh1) {
         if (m_mesh1->stable()) {
@@ -100,10 +97,7 @@ namespace Avogadro {
   bool OrbitalEngine::renderTransparent(PainterDevice *pd)
   {
     // Render the transparent surface if m_alpha is between 0 and 1.
-    if (m_alpha > 0.001 && m_alpha < 0.999)
-    {
-      if (m_update)
-        updateSurfaces(pd);
+    if (m_alpha > 0.001 && m_alpha < 0.999) {
 
       if (m_mesh1) {
         if (m_mesh1->stable()) {
@@ -137,9 +131,6 @@ namespace Avogadro {
 
   bool OrbitalEngine::renderQuick(PainterDevice *pd)
   {
-    if (m_update)
-      updateSurfaces(pd);
-
     int renderMode = 1;
     if (m_renderMode == 2)
       renderMode = 2;
@@ -200,67 +191,6 @@ namespace Avogadro {
     }
 
     return true;
-  }
-
-  void OrbitalEngine::updateSurfaces(PainterDevice *pd)
-  {
-    // Attempt to find the correct meshes
-    m_molecule = pd->molecule();
-    int iMesh1 = 0;
-    int iMesh2 = 1;
-    if (m_mesh1)
-      iMesh1 = m_mesh1->index();
-    if (m_mesh2)
-      iMesh2 = m_mesh2->index();
-    QList<Mesh *> meshes;
-    foreach(Mesh *mesh, pd->molecule()->meshes()) {
-      if (!mesh->lock()->tryLockForRead())
-        continue;
-      if (mesh->isoValue() > 0.0)
-        meshes.push_back(mesh);
-      mesh->lock()->unlock();
-    }
-    if (meshes.empty())
-      return;
-
-    if (m_settingsWidget) {
-      if (!m_settingsWidget->orbital1Combo->count()) {
-        updateOrbitalCombo();
-      }
-      else {
-        // Valid settings widget with populated orbital combos
-        iMesh1 = m_settingsWidget->orbital1Combo->currentIndex();
-        if (iMesh1 >= meshes.size()) {
-          qDebug() << "Invalid orbital selected.";
-          return;
-        }
-      }
-    }
-
-    // attribute is the text key for the Mesh
-    if (!m_mesh1) {
-      m_mesh1 = meshes[iMesh1];
-      m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
-    }
-    // Check whether mesh has multiple colors
-    bool colorMesh = m_mesh1->colors().size() == m_mesh1->vertices().size();
-    if (m_settingsWidget) {
-      m_settingsWidget->colorCombo->setEnabled(colorMesh);
-      m_settingsWidget->colorCombo->setCurrentIndex(m_colored ? 1 : 0);
-    }
-    if (m_colored && !colorMesh)
-      m_colored = false;
-
-    qDebug() << "Mesh 1 title: " << m_mesh1->name();
-    if (m_mesh2)
-      qDebug() << "Mesh 2 title: " << m_mesh2->name();
-
-    // Get the cube extents
-    Cube *cube = m_molecule->cubeById(m_mesh1->cube());
-    m_min = cube->min();
-    m_max = cube->max();
-
-    m_update = false;
   }
 
   void OrbitalEngine::updateOrbitalCombo()
@@ -343,8 +273,19 @@ namespace Avogadro {
     if (m_meshes.size() && n >= 0 && n < m_meshes.size()) {
       m_mesh1 = m_molecule->meshById(m_meshes.at(n));
       m_mesh2 = m_molecule->meshById(m_mesh1->otherMesh());
+      Cube *cube = m_molecule->cubeById(m_mesh1->cube());
+      m_min = cube->min();
+      m_max = cube->max();
+
+      // Enable the combo if appropriate for mapped color
+      if (m_settingsWidget) {
+        m_settingsWidget->colorCombo->setEnabled(m_mesh1->vertices().size()
+                                                 == m_mesh1->colors().size());
+        m_settingsWidget->colorCombo->setCurrentIndex(m_colored ? 1 : 0);
+      }
+
+      emit changed();
     }
-    emit changed();
   }
 
   void OrbitalEngine::setOpacity(int value)
@@ -389,8 +330,7 @@ namespace Avogadro {
 
   QWidget* OrbitalEngine::settingsWidget()
   {
-    if(!m_settingsWidget)
-    {
+    if(!m_settingsWidget) {
       m_settingsWidget = new OrbitalSettingsWidget(qobject_cast<QWidget *>(parent()));
       connect(m_settingsWidget->orbital1Combo, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setOrbital(int)));
@@ -440,7 +380,7 @@ namespace Avogadro {
   {
     Engine::setPrimitives(primitives);
     // This is used to load new molecules and so there could be a new cube file
-    m_update = true;
+    updateOrbitalCombo();
   }
 
   void OrbitalEngine::addPrimitive(Primitive *primitive)
@@ -448,21 +388,21 @@ namespace Avogadro {
     Engine::addPrimitive(primitive);
     // Updating primitives does not invalidate these surfaces...
     if (primitive->type() == Primitive::MeshType)
-      m_update = true;
+      updateOrbitalCombo();
   }
 
   void OrbitalEngine::updatePrimitive(Primitive *primitive)
   {
     // Updating primitives does not invalidate these surfaces...
     if (primitive->type() == Primitive::MeshType)
-      m_update = true;
+      updateOrbitalCombo();
   }
 
   void OrbitalEngine::removePrimitive(Primitive *primitive)
   {
     Engine::removePrimitive(primitive);
     if (primitive->type() == Primitive::MeshType)
-      m_update = true;
+      updateOrbitalCombo();
   }
 
   void OrbitalEngine::setMolecule(const Molecule *molecule)
@@ -470,6 +410,7 @@ namespace Avogadro {
     disconnect(m_molecule, 0, this, 0);
     Engine::setMolecule(molecule);
     connect(m_molecule, SIGNAL(updated()), this, SLOT(updateOrbitalCombo()));
+    updateOrbitalCombo();
   }
 
   void OrbitalEngine::writeSettings(QSettings &settings) const
@@ -501,6 +442,9 @@ namespace Avogadro {
                                                     qulonglong(FALSE_ID)).toInt());
       m_mesh2 = m_molecule->meshById(settings.value("mesh2Id",
                                                     qulonglong(FALSE_ID)).toInt());
+      Cube *cube = m_molecule->cubeById(m_mesh1->cube());
+      m_min = cube->min();
+      m_max = cube->max();
     }
   }
 
