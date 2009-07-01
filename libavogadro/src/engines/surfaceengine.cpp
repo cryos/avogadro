@@ -1,5 +1,5 @@
 /**********************************************************************
-  OrbitalEngine - Engine for display of molecular orbitals
+  SurfaceEngine - Engine for display of isosurface meshes
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
   Copyright (C) 2008 Geoffrey R. Hutchison
@@ -24,9 +24,9 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "orbitalengine.h"
+#include "surfaceengine.h"
 
-#include "ui_orbitalsettingswidget.h"
+#include "ui_surfacesettingswidget.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
@@ -43,15 +43,15 @@ using namespace Eigen;
 namespace Avogadro {
 
   // Our settings widget class
-  class OrbitalSettingsWidget : public QWidget, public Ui::OrbitalSettingsWidget
+  class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget
   {
     public:
-      OrbitalSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+      SurfaceSettingsWidget(QWidget *parent=0) : QWidget(parent) {
         setupUi(this);
       }
   };
 
-  OrbitalEngine::OrbitalEngine(QObject *parent) : Engine(parent),
+  SurfaceEngine::SurfaceEngine(QObject *parent) : Engine(parent),
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
     m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_colored(false)
   {
@@ -60,20 +60,20 @@ namespace Avogadro {
     m_posColor.setFromRgba(0.0, 0.0, 1.0, m_alpha);
   }
 
-  OrbitalEngine::~OrbitalEngine()
+  SurfaceEngine::~SurfaceEngine()
   {
   }
 
-  Engine *OrbitalEngine::clone() const
+  Engine *SurfaceEngine::clone() const
   {
-    OrbitalEngine *engine = new OrbitalEngine(parent());
+    SurfaceEngine *engine = new SurfaceEngine(parent());
     engine->setAlias(alias());
     engine->setEnabled(isEnabled());
 
     return engine;
   }
 
-  bool OrbitalEngine::renderOpaque(PainterDevice *pd)
+  bool SurfaceEngine::renderOpaque(PainterDevice *pd)
   {
     // Render the opaque surface if m_alpha is 1
     if (m_alpha >= 0.999) {
@@ -105,7 +105,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool OrbitalEngine::renderTransparent(PainterDevice *pd)
+  bool SurfaceEngine::renderTransparent(PainterDevice *pd)
   {
     // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_alpha > 0.001 && m_alpha < 0.999) {
@@ -137,7 +137,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool OrbitalEngine::renderQuick(PainterDevice *pd)
+  bool SurfaceEngine::renderQuick(PainterDevice *pd)
   {
     int renderMode = 1;
     if (m_renderMode == 2)
@@ -161,7 +161,7 @@ namespace Avogadro {
     return true;
   }
 
-  inline bool OrbitalEngine::renderBox(PainterDevice *pd)
+  inline bool SurfaceEngine::renderBox(PainterDevice *pd)
   {
     // Draw the extents of the cube if requested to
     pd->painter()->setColor(1.0, 1.0, 1.0);
@@ -200,7 +200,7 @@ namespace Avogadro {
     return true;
   }
 
-  void OrbitalEngine::updateOrbitalCombo()
+  void SurfaceEngine::updateOrbitalCombo()
   {
     if (!m_settingsWidget || !m_molecule)
       return;
@@ -255,27 +255,27 @@ namespace Avogadro {
     m_settingsWidget->orbital1Combo->setCurrentIndex(index);
   }
 
-  double OrbitalEngine::transparencyDepth() const
+  double SurfaceEngine::transparencyDepth() const
   {
     return 1.0;
   }
 
-  Engine::Layers OrbitalEngine::layers() const
+  Engine::Layers SurfaceEngine::layers() const
   {
     return Engine::Transparent;
   }
 
-  Engine::PrimitiveTypes OrbitalEngine::primitiveTypes() const
+  Engine::PrimitiveTypes SurfaceEngine::primitiveTypes() const
   {
     return Engine::Surfaces; // i.e., don't display the "primitives tab"
   }
 
-  Engine::ColorTypes OrbitalEngine::colorTypes() const
+  Engine::ColorTypes SurfaceEngine::colorTypes() const
   {
     return Engine::IndexedColors;
   }
 
-  void OrbitalEngine::setOrbital(int n)
+  void SurfaceEngine::setOrbital(int n)
   {
     if (m_meshes.size() && n >= 0 && n < m_meshes.size()) {
       m_mesh1 = m_molecule->meshById(m_meshes.at(n));
@@ -295,7 +295,7 @@ namespace Avogadro {
     }
   }
 
-  void OrbitalEngine::setOpacity(int value)
+  void SurfaceEngine::setOpacity(int value)
   {
     m_alpha = 0.05 * value;
     m_posColor.setAlpha(m_alpha);
@@ -303,42 +303,42 @@ namespace Avogadro {
     emit changed();
   }
 
-  void OrbitalEngine::setRenderMode(int value)
+  void SurfaceEngine::setRenderMode(int value)
   {
     m_renderMode = value;
     emit changed();
   }
 
-  void OrbitalEngine::setDrawBox(int value)
+  void SurfaceEngine::setDrawBox(int value)
   {
     if (value == 0) m_drawBox = false;
     else m_drawBox = true;
     emit changed();
   }
 
-  void OrbitalEngine::setColorMode(int value)
+  void SurfaceEngine::setColorMode(int value)
   {
     m_colored = static_cast<bool>(value);
     emit changed();
   }
 
 
-  void OrbitalEngine::setPosColor(const QColor& color)
+  void SurfaceEngine::setPosColor(const QColor& color)
   {
     m_posColor.setFromRgba(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
-  void OrbitalEngine::setNegColor(const QColor& color)
+  void SurfaceEngine::setNegColor(const QColor& color)
   {
     m_negColor.setFromRgba(color.redF(), color.greenF(), color.blueF(), m_alpha);
     emit changed();
   }
 
-  QWidget* OrbitalEngine::settingsWidget()
+  QWidget* SurfaceEngine::settingsWidget()
   {
     if(!m_settingsWidget) {
-      m_settingsWidget = new OrbitalSettingsWidget(qobject_cast<QWidget *>(parent()));
+      m_settingsWidget = new SurfaceSettingsWidget(qobject_cast<QWidget *>(parent()));
       connect(m_settingsWidget->orbital1Combo, SIGNAL(currentIndexChanged(int)),
               this, SLOT(setOrbital(int)));
       connect(m_settingsWidget->opacitySlider, SIGNAL(valueChanged(int)),
@@ -377,50 +377,56 @@ namespace Avogadro {
     return m_settingsWidget;
   }
 
-  void OrbitalEngine::settingsWidgetDestroyed()
+  void SurfaceEngine::settingsWidgetDestroyed()
   {
     qDebug() << "Destroyed Settings Widget";
     m_settingsWidget = 0;
   }
 
-  void OrbitalEngine::setPrimitives(const PrimitiveList &primitives)
+  void SurfaceEngine::setPrimitives(const PrimitiveList &primitives)
   {
     Engine::setPrimitives(primitives);
     // This is used to load new molecules and so there could be a new cube file
     updateOrbitalCombo();
   }
 
-  void OrbitalEngine::addPrimitive(Primitive *primitive)
+  void SurfaceEngine::addPrimitive(Primitive *primitive)
   {
     Engine::addPrimitive(primitive);
-    // Updating primitives does not invalidate these surfaces...
+    // Rebuild the combo if a new mesh was added
+    qDebug() << "New primitive added:" << primitive->type() << primitive->id();
     if (primitive->type() == Primitive::MeshType)
       updateOrbitalCombo();
   }
 
-  void OrbitalEngine::updatePrimitive(Primitive *primitive)
+  void SurfaceEngine::updatePrimitive(Primitive *primitive)
   {
     // Updating primitives does not invalidate these surfaces...
     if (primitive->type() == Primitive::MeshType)
       updateOrbitalCombo();
   }
 
-  void OrbitalEngine::removePrimitive(Primitive *primitive)
+  void SurfaceEngine::removePrimitive(Primitive *primitive)
   {
     Engine::removePrimitive(primitive);
     if (primitive->type() == Primitive::MeshType)
       updateOrbitalCombo();
   }
 
-  void OrbitalEngine::setMolecule(const Molecule *molecule)
+  void SurfaceEngine::setMolecule(const Molecule *molecule)
   {
     disconnect(m_molecule, 0, this, 0);
     Engine::setMolecule(molecule);
-    connect(m_molecule, SIGNAL(updated()), this, SLOT(updateOrbitalCombo()));
+
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
+            this, SLOT(addPrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
+            this, SLOT(removePrimitive(Primitive*)));
+
     updateOrbitalCombo();
   }
 
-  void OrbitalEngine::writeSettings(QSettings &settings) const
+  void SurfaceEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
     settings.setValue("alpha", m_alpha);
@@ -435,7 +441,7 @@ namespace Avogadro {
 //    settings.setValue("posColor", m_negColor);
   }
 
-  void OrbitalEngine::readSettings(QSettings &settings)
+  void SurfaceEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
     m_alpha = settings.value("alpha", 0.5).toDouble();
@@ -457,4 +463,4 @@ namespace Avogadro {
 
 }
 
-Q_EXPORT_PLUGIN2(orbitalengine, Avogadro::OrbitalEngineFactory)
+Q_EXPORT_PLUGIN2(surfaceengine, Avogadro::SurfaceEngineFactory)

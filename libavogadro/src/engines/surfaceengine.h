@@ -1,5 +1,5 @@
 /**********************************************************************
-  OrbitalEngine - Engine for display of molecular orbitals
+  SurfaceEngine - Engine for display of isosurface meshes
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
   Copyright (C) 2008 Geoffrey R. Hutchison
@@ -24,8 +24,8 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef ORBITALENGINE_H
-#define ORBITALENGINE_H
+#ifndef SURFACEENGINE_H
+#define SURFACEENGINE_H
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
@@ -37,20 +37,20 @@
 namespace Avogadro {
 
   class Mesh;
-  class OrbitalSettingsWidget;
+  class SurfaceSettingsWidget;
 
   //! Orbital Engine class.
-  class OrbitalEngine : public Engine
+  class SurfaceEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Orbitals", tr("Orbitals"),
-                    tr("Renders molecular orbitals"))
+    AVOGADRO_ENGINE("Surfaces", tr("Surfaces"),
+                    tr("Renders molecular isosurface meshes"))
 
     public:
       //! Constructor
-      OrbitalEngine(QObject *parent=0);
+      SurfaceEngine(QObject *parent=0);
       //! Destructor
-      ~OrbitalEngine();
+      ~SurfaceEngine();
 
       //! \name Render Methods
       //@{
@@ -82,7 +82,7 @@ namespace Avogadro {
       void setMolecule(const Molecule *molecule);
 
     protected:
-      OrbitalSettingsWidget *m_settingsWidget;
+      SurfaceSettingsWidget *m_settingsWidget;
       QPointer<Mesh> m_mesh1;
       QPointer<Mesh> m_mesh2;
       Eigen::Vector3d m_min, m_max;
@@ -135,12 +135,12 @@ namespace Avogadro {
       void setNegColor(const QColor& color);
   };
 
-  //! Generates instances of our OrbitalEngine class
-  class OrbitalEngineFactory : public QObject, public PluginFactory
+  //! Generates instances of our SurfaceEngine class
+  class SurfaceEngineFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_ENGINE_FACTORY(OrbitalEngine)
+    AVOGADRO_ENGINE_FACTORY(SurfaceEngine)
   };
 
 } // end namespace Avogadro

@@ -134,7 +134,10 @@ namespace Avogadro {
 
   Engine * SurfaceDialog::currentEngine()
   {
-    return m_engines.at(ui.engineCombo->currentIndex());
+    if (m_engines.size())
+      return m_engines.at(ui.engineCombo->currentIndex());
+    else
+      return 0;
   }
 
   SurfaceDialog::Type SurfaceDialog::cubeType()
