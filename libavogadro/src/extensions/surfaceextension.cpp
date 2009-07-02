@@ -217,12 +217,12 @@ namespace Avogadro
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;
-        m_surfaceDialog->setMOs(m_basis->numMOs());
-        m_moCubes.resize(m_basis->numMOs());
+        m_surfaceDialog->setMOs(m_slater->numMOs());
+        m_moCubes.resize(m_slater->numMOs());
         m_moCubes.fill(FALSE_ID);
-        for (int i = 0; i < m_basis->numMOs(); ++i) {
-          if (m_basis->HOMO(i)) m_surfaceDialog->setHOMO(i);
-          else if (m_basis->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        for (int i = 0; i < m_slater->numMOs(); ++i) {
+          if (m_slater->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_slater->LUMO(i)) m_surfaceDialog->setLUMO(i);
         }
         return true;
       }
