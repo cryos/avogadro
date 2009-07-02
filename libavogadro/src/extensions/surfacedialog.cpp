@@ -182,7 +182,7 @@ namespace Avogadro {
     ui.engineCombo->clear();
     m_engines.clear();
     foreach (Engine *engine, m_glwidget->engines()) {
-      if (engine->identifier() == "Orbitals") {
+      if (engine->identifier() == "Surfaces") {
         m_engines.push_back(engine);
         ui.engineCombo->addItem(engine->alias());
       }
