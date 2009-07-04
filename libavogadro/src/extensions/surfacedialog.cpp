@@ -39,8 +39,8 @@ namespace Avogadro {
     ui.moColorCombo->hide();
 
     // Initialize the surface and color by type mappings
-    m_surfaceTypes << VdW << ESP;
-    m_colorTypes << None << ESP;
+    m_surfaceTypes << Cube::VdW << Cube::ESP;
+    m_colorTypes << Cube::None << Cube::ESP;
 
     // Connect up some signals and slots
     connect(ui.calculateButton, SIGNAL(clicked()),
@@ -92,9 +92,9 @@ namespace Avogadro {
 
     // Update the type mappings too
     m_surfaceTypes.clear();
-    m_surfaceTypes << VdW << ESP << ElectronDensity << MO;
+    m_surfaceTypes << Cube::VdW << Cube::ESP << Cube::ElectronDensity << Cube::MO;
     m_colorTypes.clear();
-    m_colorTypes << None << ESP << ElectronDensity << MO;
+    m_colorTypes << Cube::None << Cube::ESP << Cube::ElectronDensity << Cube::MO;
   }
 
   void SurfaceDialog::setHOMO(int n)
@@ -140,27 +140,27 @@ namespace Avogadro {
       return 0;
   }
 
-  SurfaceDialog::Type SurfaceDialog::cubeType()
+  Cube::Type SurfaceDialog::cubeType()
   {
     return m_surfaceTypes.at(ui.surfaceCombo->currentIndex());
   }
 
   int SurfaceDialog::moNumber()
   {
-    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == MO)
+    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == Cube::MO)
       return ui.moCombo->currentIndex() + 1;
     else
       return -1;
   }
 
-  SurfaceDialog::Type SurfaceDialog::cubeColorType()
+  Cube::Type SurfaceDialog::cubeColorType()
   {
     return m_colorTypes.at(ui.colorByCombo->currentIndex());
   }
 
   int SurfaceDialog::moColorNumber()
   {
-    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == MO)
+    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == Cube::MO)
       return ui.moColorCombo->currentIndex() + 1;
     else
       return -1;
@@ -230,9 +230,9 @@ namespace Avogadro {
 
     // Update the type mappings too
     m_surfaceTypes.clear();
-    m_surfaceTypes << VdW << ESP;
+    m_surfaceTypes << Cube::VdW << Cube::ESP;
     m_colorTypes.clear();
-    m_colorTypes << None << ESP;
+    m_colorTypes << Cube::None << Cube::ESP;
 
     // Connect to the molecule signals to check for addition/removal of cubes
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),

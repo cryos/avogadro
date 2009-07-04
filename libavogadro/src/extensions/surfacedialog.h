@@ -26,10 +26,13 @@
 #define SURFACEDIALOG_H
 
 #include <QDialog>
-#include <QList>
-#include <Eigen/Core>
 
 #include "ui_surfacedialog.h"
+
+#include <avogadro/cube.h>
+
+#include <QList>
+#include <Eigen/Core>
 
 namespace Avogadro
 {
@@ -51,18 +54,10 @@ namespace Avogadro
     double stepSize();
     Engine * currentEngine();
 
-    enum Type{
-      VdW,
-      ESP,
-      ElectronDensity,
-      MO,
-      None
-    };
-
     /**
      * @return the requested cube type.
      */
-    Type cubeType();
+    Cube::Type cubeType();
 
     /**
      * @return the MO number (if applicable), or -1 if not.
@@ -72,7 +67,7 @@ namespace Avogadro
     /**
      * @return the requested cube color type.
      */
-    Type cubeColorType();
+    Cube::Type cubeColorType();
 
     /**
      * @return the MO number (if applicable), or -1 if not.
@@ -94,8 +89,8 @@ namespace Avogadro
     // Lists of different properties we need to keep track of
     int m_moIndex; // The index of the MO entry
     int m_moColorIndex; // The index of the MO entry
-    QList<Type> m_surfaceTypes;  // Mapping of the surface type combo
-    QList<Type> m_colorTypes;    // Mapping of the color by combo
+    QList<Cube::Type> m_surfaceTypes;  // Mapping of the surface type combo
+    QList<Cube::Type> m_colorTypes;    // Mapping of the color by combo
     QList<Engine *> m_engines;   // List of engines, as displayed in the combo
 
     // Update the engine list

@@ -523,11 +523,11 @@ namespace Avogadro
       connect(m_meshGen1, SIGNAL(finished()), this, SLOT(calculateDone()));
     }
     m_meshGen1->initialize(cube, m_mesh1, isoValue,
-                           m_surfaceDialog->cubeType() == SurfaceDialog::VdW);
+                           m_surfaceDialog->cubeType() == Cube::VdW);
     m_meshGen1->start();
 
     // Calculate the negative part of the MO if this is an MO mesh
-    if (m_surfaceDialog->cubeType() == SurfaceDialog::MO) {
+    if (m_surfaceDialog->cubeType() == Cube::MO) {
       m_mesh2 = m_molecule->addMesh();
       m_mesh2->setName(cube->name() + " negative");
       m_mesh2->setIsoValue(-isoValue);
@@ -554,11 +554,11 @@ namespace Avogadro
     qDebug() << "calculateMesh called" << isoValue;
   }
 
-  Cube * SurfaceExtension::startCubeCalculation(SurfaceDialog::Type type,
+  Cube * SurfaceExtension::startCubeCalculation(Cube::Type type,
                                                 int mo, bool &calculateCube)
   {
     switch (type) {
-      case SurfaceDialog::VdW: {
+      case Cube::VdW: {
         Cube *cube = m_molecule->cubeById(m_cubes[0]);
         if (!cube) { // We need a new cube
           cube = newCube();
@@ -583,9 +583,9 @@ namespace Avogadro
           return cube;
         }
       }
-      case SurfaceDialog::ESP:
+      case Cube::ESP:
         ;
-      case SurfaceDialog::ElectronDensity: {
+      case Cube::ElectronDensity: {
         qDebug() << "m_cubes.size() =" << m_cubes.size();
         Cube *cube = m_molecule->cubeById(m_cubes[2]);
         if (!cube) { // We need a new cube
@@ -611,7 +611,7 @@ namespace Avogadro
           return cube;
         }
       }
-      case SurfaceDialog::MO: {
+      case Cube::MO: {
         if ((mo - 1) >= m_moCubes.size())
           m_moCubes.resize(mo - 1);
         // Attempt to retrieve the cube - will be 0 if no cube was calculated
@@ -641,7 +641,7 @@ namespace Avogadro
           return cube;
         }
       }
-      case SurfaceDialog::None:
+      case Cube::None:
       default: // Do nothing
         return 0;
     }
@@ -677,8 +677,8 @@ namespace Avogadro
         qDebug() << "Calculation phase 0 complete - now to phase 1...";
         m_calculationPhase = 1;
         // Disconnect the signals and slots that we are now finished with
-        if (m_surfaceDialog->cubeType() == SurfaceDialog::MO ||
-            m_surfaceDialog->cubeType() == SurfaceDialog::ElectronDensity) {
+        if (m_surfaceDialog->cubeType() == Cube::MO ||
+            m_surfaceDialog->cubeType() == Cube::ElectronDensity) {
           if (m_basis)
             disconnect(&m_basis->watcher(), 0, this, 0);
           else if (m_slater)
@@ -686,7 +686,7 @@ namespace Avogadro
         }
         disconnect(m_progress, 0, this, 0);
         // FIXME Skipped for now!
-        if (m_surfaceDialog->cubeColorType() != SurfaceDialog::None) {
+        if (m_surfaceDialog->cubeColorType() != Cube::None) {
 
         }
       }
@@ -712,7 +712,7 @@ namespace Avogadro
           QSettings settings;
           engine->writeSettings(settings);
           // If there is a color by and it is 1 then do ESP estimation
-          if (m_surfaceDialog->cubeColorType() == SurfaceDialog::ESP) {
+          if (m_surfaceDialog->cubeColorType() == Cube::ESP) {
             qDebug() << "Calculating approximate ESP mapping...";
             calculateESP(m_mesh1);
             if (m_mesh2)

@@ -113,7 +113,7 @@ namespace Avogadro
      * @param calculateCube true if the cube needs to be calculated.
      * @return the relevant Cube as requested in the form.
      */
-    Cube * startCubeCalculation(SurfaceDialog::Type type, int mo,
+    Cube * startCubeCalculation(Cube::Type type, int mo,
                                 bool &calculateCube);
 
   private slots:
