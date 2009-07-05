@@ -305,6 +305,8 @@ namespace Avogadro {
   void SurfaceDialog::surfaceComboChanged(int n)
   {
     ui.moCombo->setEnabled(n == m_moIndex);
+    if (m_surfaceTypes.size() > 0 && n >= 0 && n < m_surfaceTypes.size())
+      ui.resolutionCombo->setEnabled(m_surfaceTypes[n] != Cube::FromFile);
   }
 
   void SurfaceDialog::colorByComboChanged(int n)
