@@ -407,15 +407,30 @@ namespace Avogadro {
     QFile file(fileName);
     bool replaceExistingFile = file.exists();
     // Check that the file can be written to disk
-    if (!canOpen(fileName, QFile::WriteOnly | QFile::Text)) {
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
       // Cannot write to the file
-      if (error)
-        error->append(QObject::tr("File %1 can not be opened for writing.").arg(fileName));
+      if (error) {
+        error->append(QObject::tr("File %1 can not be opened for writing.")
+                      .arg(fileName));
+      }
       return false;
     }
-    
-    QString newFileName(replaceExistingFile ? fileName + ".new" : fileName);
-    QFile newFile(newFileName);
+    file.close();
+
+    QString newFileName = fileName;
+    if (replaceExistingFile) {
+      newFileName += ".new";
+      QFile newFile(newFileName);
+      if (!newFile.open(QFile::WriteOnly | QFile::Text)) {
+        // Cannot write to the temporary file location
+        if (error) {
+          error->append(QObject::tr("File %1 can not be opened for writing.")
+                        .arg(newFileName));
+        }
+        return false;
+      }
+      newFile.close();
+    }
 
     // Construct the OpenBabel objects, set the file type
     OBConversion conv;
@@ -423,7 +438,8 @@ namespace Avogadro {
     if (!fileType.isEmpty() && !conv.SetOutFormat(fileType.toAscii())) {
       // Output format not supported
       if (error)
-        error->append(QObject::tr("File type '%1' is not supported for writing.").arg(fileType));
+        error->append(QObject::tr("File type '%1' is not supported for writing.")
+                      .arg(fileType));
       return false;
     }
     else {
@@ -447,6 +463,7 @@ namespace Avogadro {
     if (conv.Write(&obmol, &ofs)) {
       ofs.close();
       if (replaceExistingFile) {
+        QFile newFile(newFileName);
         bool success;
         success = file.rename(fileName + ".old");
         if (success) {
