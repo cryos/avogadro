@@ -64,7 +64,7 @@ namespace Avogadro
     m_VdWsurface(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Create Surfaces 2..."));
+    action->setText(tr("Create Surfaces..."));
     m_actions.append(action);
   }
 
