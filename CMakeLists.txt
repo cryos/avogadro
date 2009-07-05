@@ -127,18 +127,7 @@ find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
-
-# Avogadro can be built with OpenBabel and packaged together
-option(EMBED_OPENBABEL "Build an embedded OpenBabel library" OFF)
-if(EMBED_OPENBABEL)
-  # Set up the required variables from the included OpenBabel directory
-  set(OPENBABEL2_INCLUDE_DIR
-    ${openbabel_SOURCE_DIR}/include
-    ${openbabel_BINARY_DIR}/include)
-  set(OPENBABEL2_LIBRARIES openbabel)
-else(EMBED_OPENBABEL)
-  find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
-endif(EMBED_OPENBABEL)
+find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 
 # Check if we are building from a Git clone or a released version
 function(git_version dir version_var)
