@@ -527,7 +527,8 @@ namespace Avogadro
     m_meshGen1->start();
 
     // Calculate the negative part of the MO if this is an MO mesh
-    if (m_surfaceDialog->cubeType() == Cube::MO) {
+    if (m_surfaceDialog->cubeType() == Cube::MO ||
+        m_surfaceDialog->cubeType() == Cube::FromFile) {
       m_mesh2 = m_molecule->addMesh();
       m_mesh2->setName(cube->name() + " negative");
       m_mesh2->setIsoValue(-isoValue);
@@ -640,6 +641,11 @@ namespace Avogadro
           calculateCube = false;
           return cube;
         }
+      }
+      case Cube::FromFile: {
+        // If it is a cube from a file, query the dialog for the cube id
+        calculateCube = false;
+        return m_molecule->cubeById(m_surfaceDialog->cubeFromFile());
       }
       case Cube::None:
       default: // Do nothing

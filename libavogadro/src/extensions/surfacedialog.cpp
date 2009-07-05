@@ -28,6 +28,8 @@
 #include <avogadro/engine.h>
 #include <avogadro/molecule.h>
 
+#include <QDebug>
+
 namespace Avogadro {
 
   SurfaceDialog::SurfaceDialog(QWidget* parent, Qt::WindowFlags f)
@@ -166,6 +168,30 @@ namespace Avogadro {
       return -1;
   }
 
+  unsigned long SurfaceDialog::cubeFromFile() {
+    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == Cube::FromFile) {
+      // Iterate through the cubes to find the loaded cube that is current
+      QString text(ui.surfaceCombo->currentText());
+      foreach (Cube *cube, m_molecule->cubes()) {
+        if (text == cube->name())
+          return cube->id();
+      }
+    }
+    return FALSE_ID;
+  }
+
+  unsigned long SurfaceDialog::cubeColorFromFile() {
+    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == Cube::FromFile) {
+      // Iterate through the cubes to find the loaded cube that is current
+      QString text(ui.colorByCombo->currentText());
+      foreach (Cube *cube, m_molecule->cubes()) {
+        if (text == cube->name())
+          return cube->id();
+      }
+    }
+    return FALSE_ID;
+  }
+
   double SurfaceDialog::isoValue()
   {
     return ui.isoValueEdit->text().toDouble();
@@ -239,10 +265,19 @@ namespace Avogadro {
             this, SLOT(updateCubes(Primitive *)));
     connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
             this, SLOT(updateCubes(Primitive *)));
+    updateCubes(0);
   }
 
   void SurfaceDialog::updateCubes(Primitive *)
   {
+    // This routine takes care of checking for loaded
+    foreach (Cube *cube, m_molecule->cubes()) {
+      if (cube->cubeType() == Cube::FromFile) {
+        qDebug() << "Found one:" << cube->name();
+        m_surfaceTypes.push_back(Cube::FromFile);
+        ui.surfaceCombo->addItem(cube->name());
+      }
+    }
   }
 
   void SurfaceDialog::engineAdded(Engine *engine)

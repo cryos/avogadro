@@ -1180,6 +1180,7 @@ namespace Avogadro{
       cube->setLimits(min, max, points);
       cube->setData(grid->GetValues());
       cube->setName(name);
+      cube->setCubeType(Cube::FromFile);
     }
 
     // Copy the residues across...

@@ -75,10 +75,23 @@ namespace Avogadro
     int moColorNumber();
 
     /**
+     * In the case of Cube objects that were loaded, return the cube id
+     */
+    unsigned long cubeFromFile();
+
+    /**
+     * In the case of Cube objects that were loaded, return the cube id
+     */
+    unsigned long cubeColorFromFile();
+
+    /**
      * @return the iso value specified in the form.
      */
     double isoValue();
 
+    /**
+     * Enable or disable the calculate button.
+     */
     void enableCalculation(bool enable);
 
   private:
