@@ -392,9 +392,7 @@ namespace Avogadro {
 
   void SurfaceEngine::addPrimitive(Primitive *primitive)
   {
-    Engine::addPrimitive(primitive);
     // Rebuild the combo if a new mesh was added
-    qDebug() << "New primitive added:" << primitive->type() << primitive->id();
     if (primitive->type() == Primitive::MeshType)
       updateOrbitalCombo();
   }
@@ -408,18 +406,32 @@ namespace Avogadro {
 
   void SurfaceEngine::removePrimitive(Primitive *primitive)
   {
-    Engine::removePrimitive(primitive);
     if (primitive->type() == Primitive::MeshType)
       updateOrbitalCombo();
   }
 
   void SurfaceEngine::setMolecule(const Molecule *molecule)
   {
-    disconnect(m_molecule, 0, this, 0);
     Engine::setMolecule(molecule);
 
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
             this, SLOT(addPrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
+            this, SLOT(updatePrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
+            this, SLOT(removePrimitive(Primitive*)));
+
+    updateOrbitalCombo();
+  }
+
+  void SurfaceEngine::setMolecule(Molecule *molecule)
+  {
+    Engine::setMolecule(molecule);
+
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
+            this, SLOT(addPrimitive(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
+            this, SLOT(updatePrimitive(Primitive*)));
     connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
             this, SLOT(removePrimitive(Primitive*)));
 

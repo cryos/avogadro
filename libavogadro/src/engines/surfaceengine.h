@@ -80,6 +80,7 @@ namespace Avogadro {
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
       void setMolecule(const Molecule *molecule);
+      void setMolecule(Molecule *molecule);
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
