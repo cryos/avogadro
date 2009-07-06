@@ -208,21 +208,26 @@ namespace Avogadro {
     return d->pList;
   }
 
-  void PlotObject::addPoint( const QPointF &p, const QString &label, double barWidth )
+  PlotPoint* PlotObject::addPoint( const QPointF &p, const QString &label, double barWidth )
   {
-    addPoint( new PlotPoint( p.x(), p.y(), label, barWidth ) );
+    PlotPoint *pp = new PlotPoint( p.x(), p.y(), label, barWidth );
+    addPoint( pp );
+    return pp;
   }
 
-  void PlotObject::addPoint( PlotPoint *p )
+  PlotPoint* PlotObject::addPoint( PlotPoint *p )
   {
     if ( !p )
-      return;
+      return NULL;
     d->pList.append( p );
+    return p;
   }
 
-  void PlotObject::addPoint( double x, double y, const QString &label, double barWidth )
+  PlotPoint* PlotObject::addPoint( double x, double y, const QString &label, double barWidth )
   {
-    addPoint( new PlotPoint( x, y, label, barWidth ) );
+    PlotPoint *pp =  new PlotPoint( x, y, label, barWidth );
+    addPoint( pp );
+    return pp;
   }
 
   void PlotObject::removePoint( int index ) {
