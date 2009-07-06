@@ -28,6 +28,8 @@
 #include <avogadro/engine.h>
 #include <avogadro/molecule.h>
 
+#include <QDebug>
+
 namespace Avogadro {
 
   SurfaceDialog::SurfaceDialog(QWidget* parent, Qt::WindowFlags f)
@@ -39,8 +41,8 @@ namespace Avogadro {
     ui.moColorCombo->hide();
 
     // Initialize the surface and color by type mappings
-    m_surfaceTypes << VdW << ESP;
-    m_colorTypes << None << ESP;
+    m_surfaceTypes << Cube::VdW << Cube::ESP;
+    m_colorTypes << Cube::None << Cube::ESP;
 
     // Connect up some signals and slots
     connect(ui.calculateButton, SIGNAL(clicked()),
@@ -92,9 +94,9 @@ namespace Avogadro {
 
     // Update the type mappings too
     m_surfaceTypes.clear();
-    m_surfaceTypes << VdW << ESP << ElectronDensity << MO;
+    m_surfaceTypes << Cube::VdW << Cube::ESP << Cube::ElectronDensity << Cube::MO;
     m_colorTypes.clear();
-    m_colorTypes << None << ESP << ElectronDensity << MO;
+    m_colorTypes << Cube::None << Cube::ESP << Cube::ElectronDensity << Cube::MO;
   }
 
   void SurfaceDialog::setHOMO(int n)
@@ -140,30 +142,54 @@ namespace Avogadro {
       return 0;
   }
 
-  SurfaceDialog::Type SurfaceDialog::cubeType()
+  Cube::Type SurfaceDialog::cubeType()
   {
     return m_surfaceTypes.at(ui.surfaceCombo->currentIndex());
   }
 
   int SurfaceDialog::moNumber()
   {
-    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == MO)
+    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == Cube::MO)
       return ui.moCombo->currentIndex() + 1;
     else
       return -1;
   }
 
-  SurfaceDialog::Type SurfaceDialog::cubeColorType()
+  Cube::Type SurfaceDialog::cubeColorType()
   {
     return m_colorTypes.at(ui.colorByCombo->currentIndex());
   }
 
   int SurfaceDialog::moColorNumber()
   {
-    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == MO)
+    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == Cube::MO)
       return ui.moColorCombo->currentIndex() + 1;
     else
       return -1;
+  }
+
+  unsigned long SurfaceDialog::cubeFromFile() {
+    if (m_surfaceTypes.at(ui.surfaceCombo->currentIndex()) == Cube::FromFile) {
+      // Iterate through the cubes to find the loaded cube that is current
+      QString text(ui.surfaceCombo->currentText());
+      foreach (Cube *cube, m_molecule->cubes()) {
+        if (text == cube->name())
+          return cube->id();
+      }
+    }
+    return FALSE_ID;
+  }
+
+  unsigned long SurfaceDialog::cubeColorFromFile() {
+    if (m_colorTypes.at(ui.colorByCombo->currentIndex()) == Cube::FromFile) {
+      // Iterate through the cubes to find the loaded cube that is current
+      QString text(ui.colorByCombo->currentText());
+      foreach (Cube *cube, m_molecule->cubes()) {
+        if (text == cube->name())
+          return cube->id();
+      }
+    }
+    return FALSE_ID;
   }
 
   double SurfaceDialog::isoValue()
@@ -230,19 +256,28 @@ namespace Avogadro {
 
     // Update the type mappings too
     m_surfaceTypes.clear();
-    m_surfaceTypes << VdW << ESP;
+    m_surfaceTypes << Cube::VdW << Cube::ESP;
     m_colorTypes.clear();
-    m_colorTypes << None << ESP;
+    m_colorTypes << Cube::None << Cube::ESP;
 
     // Connect to the molecule signals to check for addition/removal of cubes
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
             this, SLOT(updateCubes(Primitive *)));
     connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
             this, SLOT(updateCubes(Primitive *)));
+    updateCubes(0);
   }
 
   void SurfaceDialog::updateCubes(Primitive *)
   {
+    // This routine takes care of checking for loaded
+    foreach (Cube *cube, m_molecule->cubes()) {
+      if (cube->cubeType() == Cube::FromFile) {
+        qDebug() << "Found one:" << cube->name();
+        m_surfaceTypes.push_back(Cube::FromFile);
+        ui.surfaceCombo->addItem(cube->name());
+      }
+    }
   }
 
   void SurfaceDialog::engineAdded(Engine *engine)
@@ -270,6 +305,8 @@ namespace Avogadro {
   void SurfaceDialog::surfaceComboChanged(int n)
   {
     ui.moCombo->setEnabled(n == m_moIndex);
+    if (m_surfaceTypes.size() > 0 && n >= 0 && n < m_surfaceTypes.size())
+      ui.resolutionCombo->setEnabled(m_surfaceTypes[n] != Cube::FromFile);
   }
 
   void SurfaceDialog::colorByComboChanged(int n)
