@@ -30,6 +30,7 @@
 
 #include <QtAlgorithms>
 #include <QPainter>
+#include <QVariant>
 
 namespace Avogadro {
 
@@ -46,6 +47,7 @@ namespace Avogadro {
     QPointF point;
     QString label;
     double barWidth;
+    QVariant customData;
   };
 
   PlotPoint::PlotPoint()
@@ -116,6 +118,16 @@ namespace Avogadro {
   void PlotPoint::setBarWidth( double w )
   {
     d->barWidth = w;
+  }
+
+  QVariant PlotPoint::customData() const
+  {
+    return d->customData;
+  }
+
+  void PlotPoint::setCustomData( QVariant v )
+  {
+    d->customData = v;
   }
 
 }
