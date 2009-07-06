@@ -36,7 +36,8 @@
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
-#include <iostream>
+// Included in obconversion.h
+//#include <iostream>
 
 namespace Avogadro {
 
@@ -670,8 +671,9 @@ namespace Avogadro {
         // read all molecules
         OpenBabel::OBMol firstOBMol, currentOBMol;
         unsigned int c = 0;
+        conv.SetInStream(&ifs);
         m_moleculeFile->streamposRef().push_back(ifs.tellg());
-        while (ifs.good() && conv.Read(&currentOBMol, &ifs)) {
+        while (ifs.good() && conv.Read(&currentOBMol)) {
           if (!c)
             firstOBMol = currentOBMol;
 

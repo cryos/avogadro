@@ -86,6 +86,28 @@
 	<dict>
 		<key>CFBundleTypeExtensions</key>
 		<array>
+			<string>cdx</string>
+		</array>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+    <key>CFBundleTypeIconFile</key>
+    <string>AvogadroDocument.icns</string>
+  	<key>CFBundleTypeMIMETypes</key>
+		<array>
+			<string>chemical/x-cdx</string>
+		</array>
+		<key>CFBundleTypeName</key>
+		<string>CS ChemDraw Drawing</string>
+		<key>CFBundleTypeOSTypes</key>
+		<array>
+			<string>CHMS</string>
+		</array>
+		<key>LSTypeIsPackage</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>CFBundleTypeExtensions</key>
+		<array>
 			<string>pdb</string>
 			<string>ent</string>
 		</array>
@@ -520,6 +542,50 @@
 				</array>
 				<key>public.mime-type</key>
 				<string>chemical/x-cml</string>
+			</dict>
+		</dict>
+    <dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>CS ChemDraw XML Drawing</string>
+			<key>UTTypeIconFile</key>
+			<string>AvogadroDocument.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.cambridgesoft.cdxml</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<string>CdxM</string>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cdxml</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>CS ChemDraw Drawing</string>
+			<key>UTTypeIconFile</key>
+			<string>AvogadroDocument.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.cambridgesoft.cdx</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<string>CHMS</string>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cdx</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>chemical/x-cdx</string>
 			</dict>
 		</dict>
  	</array>
