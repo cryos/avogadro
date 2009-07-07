@@ -61,6 +61,10 @@ namespace Avogadro {
 
   void SurfaceDialog::setMOs(int num)
   {
+    // If there are no MOs, then do nothing as there was a problem with the file
+    if (num < 1)
+      return;
+
     // Enable the MO combos and populate them
     ui.moCombo->setVisible(true);
     ui.moCombo->clear();
