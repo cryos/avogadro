@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-16 15:08+0000\n"
+"PO-Revision-Date: 2009-06-22 14:47+0000\n"
 "Last-Translator: Alexandre R Soares <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:02+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -809,6 +809,8 @@ msgstr "Deve especificar um nome válido para arquivo .avi"
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
 msgstr ""
+"O widget (elemento de interface) GL não foi iniciado corretamente para poder "
+"salvar vídeo"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
@@ -1161,7 +1163,7 @@ msgstr "Entrada Q-Chem..."
 
 #: src/extensions/gaussianextension.cpp:56
 msgid "MOLPRO Input..."
-msgstr ""
+msgstr "Entrada MOLPRO..."
 
 #: src/extensions/gaussianextension.cpp:61
 msgid "MOPAC Input..."
@@ -1423,6 +1425,8 @@ msgstr "Duas moléculas possuem diferentes números de átomos %1 %2"
 #: src/extensions/linmorphextension.cpp:240
 msgid "GL widget was not correctly initialized in order to save snapshots"
 msgstr ""
+"O widget (elemento de interface) GL não foi inicializado corretamente para "
+"poder salvar imagens instantâneas"
 
 #: src/extensions/linmorphextension.cpp:251
 #, qt-format
@@ -1491,7 +1495,7 @@ msgstr "Propriedades Moleculares"
 
 #: src/extensions/molecularpropextension.h:49
 msgid "Display standard molecular properties."
-msgstr ""
+msgstr "Exibir propriedades moleculares padrões"
 
 #: src/extensions/molproinputdialog.cpp:114
 #: src/extensions/qcheminputdialog.cpp:114
@@ -1580,7 +1584,7 @@ msgstr "Buscar na URL..."
 
 #: src/extensions/networkfetchextension.cpp:88
 msgid "PDB Entry"
-msgstr ""
+msgstr "Entrada PDB"
 
 #: src/extensions/networkfetchextension.cpp:89
 msgid "PDB entry to download."
@@ -1801,7 +1805,7 @@ msgstr "Propriedades das Torsões..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "Propriedades do Confórmero..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Cartesian Editor..."
@@ -1829,7 +1833,7 @@ msgstr "Propriedades Cartesianas"
 
 #: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
-msgstr ""
+msgstr "Propriedades do Confórmero"
 
 #: src/extensions/gamessinputdialog.ui:867
 #: src/extensions/propextension.h:43 :482
@@ -1841,6 +1845,8 @@ msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
+"Janelas para exibir propriedades de átomo. ligação, ângulo e torsão. Indlui "
+"também um editor de coordenadas cartesianas."
 
 #: src/extensions/constraintsdialog.ui:40
 #: src/extensions/propmodel.cpp:353 :208
@@ -1949,7 +1955,7 @@ msgstr "Energia"
 #: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
 #, qt-format
 msgid "Conformer %1"
-msgstr ""
+msgstr "Confórmero %1"
 
 #: src/extensions/pythonterminalwidget.ui:14
 #: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
@@ -2315,7 +2321,7 @@ msgstr "Shift (ppm)"
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
-msgstr ""
+msgstr "Construtor de Supercélula..."
 
 #: src/extensions/supercellextension.cpp:91
 msgid "Warning"
@@ -2331,11 +2337,11 @@ msgstr ""
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
-msgstr ""
+msgstr "Supercélula"
 
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
-msgstr ""
+msgstr "Contrói e exibe supercélulas cristalográficas"
 
 #: src/extensions/templateextension.cpp:42
 msgid "First Action"
@@ -2602,7 +2608,7 @@ msgstr "Não possível abrir o arquivo '%1'."
 #: src/moleculefile.cpp:207
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
-msgstr ""
+msgstr "Falha ao substituir molécula com índice %1 no arquivo '%2'."
 
 #: src/moleculefile.cpp:335 src/moleculefile.cpp:614
 #, qt-format
@@ -2640,6 +2646,7 @@ msgstr ""
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
+"Falha ao escrever no arquivo '%1'. Falha de funcionamento do OpenBabel."
 
 #: src/moleculefile.cpp:481
 #, qt-format
@@ -2649,7 +2656,7 @@ msgstr "Arquivo %1 não pôde ser aberta para escrita."
 #: src/moleculefile.cpp:533
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
-msgstr ""
+msgstr "Falha ao escrever os confórmeros no arquivo '%1'."
 
 #: src/moleculefile.cpp:680
 #, qt-format
@@ -2767,7 +2774,7 @@ msgstr "Alinha moléculas a um eixo cartesiano"
 
 #: src/tools/aligntool.h:42
 msgid "Align Settings"
-msgstr ""
+msgstr "Configurações de Alinhamento"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -2820,7 +2827,7 @@ msgstr ""
 #: src/extensions/forcefielddialog.ui:95
 #: src/tools/autoopttool.cpp:287 :274
 msgid "Conjugate Gradients"
-msgstr ""
+msgstr "Conjugar Gradientes"
 
 #: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
@@ -2865,7 +2872,7 @@ msgstr "Otimização automática da geometria molecular"
 
 #: src/tools/autoopttool.h:96
 msgid "AutoOptimization Settings"
-msgstr ""
+msgstr "Configurações de Otimização"
 
 #: src/tools/autorotatetool.cpp:52
 msgid "Auto Rotation Tool"
@@ -3274,11 +3281,11 @@ msgstr "Configurações de Cor par Resíduo"
 
 #: src/colors/residuecolorsettings.ui:19
 msgid "Color residues by:"
-msgstr ""
+msgstr "Colorir resíduois por:"
 
 #: src/colors/residuecolorsettings.ui:27
 msgid "Amino Colors"
-msgstr ""
+msgstr "Aminoácido"
 
 #: src/colors/residuecolorsettings.ui:32
 msgid "Shapely Colors"
@@ -3573,7 +3580,7 @@ msgstr "Número de ligações rotacionáveis:"
 
 #: src/extensions/conformersearchdialog.ui:41
 msgid "Number of conformers"
-msgstr ""
+msgstr "Número de confórmeros"
 
 #: src/extensions/conformersearchdialog.ui:60
 #: src/extensions/gamessinputdialog.ui:2560
@@ -3982,7 +3989,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:416
 msgid "Misc"
-msgstr ""
+msgstr "Misc"
 
 #: src/extensions/gamessinputdialog.ui:437
 msgid "#D Heavy Atom Polarization Functions:"
@@ -4054,27 +4061,27 @@ msgstr "6-311G"
 
 #: src/extensions/gamessinputdialog.ui:626
 msgid "Double Zeta Valence"
-msgstr ""
+msgstr "Valência Duplo Zeta"
 
 #: src/extensions/gamessinputdialog.ui:631
 msgid "Dunning/Hay DZ"
-msgstr ""
+msgstr "Dunning/Hay DZ"
 
 #: src/extensions/gamessinputdialog.ui:636
 msgid "Triple Zeta Valence"
-msgstr ""
+msgstr "Valência Triplo Zeta"
 
 #: src/extensions/gamessinputdialog.ui:641
 msgid "McLean/Chandler"
-msgstr ""
+msgstr "McLean/Chandler"
 
 #: src/extensions/gamessinputdialog.ui:646
 msgid "SBKJA Valence"
-msgstr ""
+msgstr "Valência SBKJA"
 
 #: src/extensions/gamessinputdialog.ui:651
 msgid "Hay/Wadt Valence"
-msgstr ""
+msgstr "Valência Hay/Wadt"
 
 #: src/extensions/gamessinputdialog.ui:656
 #: src/extensions/mopacinputdialog.ui:207
@@ -4092,15 +4099,15 @@ msgstr "Padrão"
 
 #: src/extensions/gamessinputdialog.ui:722
 msgid "Pople"
-msgstr ""
+msgstr "Pople"
 
 #: src/extensions/gamessinputdialog.ui:727
 msgid "Pople N311"
-msgstr ""
+msgstr "Pople N311"
 
 #: src/extensions/gamessinputdialog.ui:732
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
 #: src/extensions/gamessinputdialog.ui:737
 msgid "Huzinaga"
@@ -4108,7 +4115,7 @@ msgstr "Huzinaga"
 
 #: src/extensions/gamessinputdialog.ui:742
 msgid "Hondo7"
-msgstr ""
+msgstr "Hondo7"
 
 #: src/extensions/gamessinputdialog.ui:750
 msgid "#F Heavy Atom Polarization Functions:"
@@ -4317,7 +4324,7 @@ msgstr "Multiplicidade:"
 
 #: src/extensions/gamessinputdialog.ui:1199
 msgid "Normal Run"
-msgstr ""
+msgstr "Execução Normal"
 
 #: src/extensions/gamessinputdialog.ui:1204
 msgid "Check"
@@ -4333,7 +4340,7 @@ msgstr "Carga da Molécula:"
 
 #: src/extensions/gamessinputdialog.ui:1250
 msgid "Run Type:"
-msgstr ""
+msgstr "Tipo de Excução:"
 
 #: src/extensions/gamessinputdialog.ui:1272
 msgid "Use MP2"
@@ -4357,11 +4364,11 @@ msgstr "Bohr"
 
 #: src/extensions/gamessinputdialog.ui:1385
 msgid "Order of Principal Axis:"
-msgstr ""
+msgstr "Ordem do Eixo Principal:"
 
 #: src/extensions/gamessinputdialog.ui:1392
 msgid "Coordinate Type:"
-msgstr ""
+msgstr "Tipo de Coordenada:"
 
 #: src/extensions/gamessinputdialog.ui:1402
 msgid "C1"
@@ -4437,11 +4444,11 @@ msgstr "Coordenadas cartesianas"
 
 #: src/extensions/gamessinputdialog.ui:1542
 msgid "MOPAC Z-Matrix"
-msgstr ""
+msgstr "Matriz-Z MOPAC"
 
 #: src/extensions/gamessinputdialog.ui:1565
 msgid "Use Symmetry During Calculation"
-msgstr ""
+msgstr "Usar Simetria Durante Cálculo"
 
 #: src/extensions/gamessinputdialog.ui:1575
 msgid "Units:"
@@ -4564,7 +4571,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1984
 msgid "Hückel"
-msgstr ""
+msgstr "Hückel"
 
 #: src/extensions/gamessinputdialog.ui:1989
 msgid "HCore"
@@ -4660,11 +4667,11 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2254
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
-msgstr ""
+msgstr "VWN: correlação Vosko-Wilk-Nusair (VWN5)"
 
 #: src/extensions/gamessinputdialog.ui:2259
 msgid "LYP: Lee-Yang-Parr correlation"
-msgstr ""
+msgstr "LYP: correlação Lee-Yang-Parr"
 
 #: src/extensions/gamessinputdialog.ui:2264
 msgid "SVWN: Slater exchange + VWN correlation"
