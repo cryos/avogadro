@@ -181,7 +181,7 @@ struct QClass_converters
   static void* QClass_from_PyQt(PyObject *obj_ptr)
   {
 #ifdef SIP_4_8
-    if (PyObject_TypeCheck(obj_ptr, sip_API->api_wrapper_type))
+    if (!PyObject_TypeCheck(obj_ptr, sip_API->api_wrapper_type))
 #else
     if (!sip_API->api_wrapper_check(obj_ptr))
 #endif
