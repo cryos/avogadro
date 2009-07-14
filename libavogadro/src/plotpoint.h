@@ -32,6 +32,7 @@
 #include <avogadro/global.h>
 
 #include <QtCore/QString>
+#include <QtCore/QVariant>
 
 class QPointF;
 
@@ -131,6 +132,16 @@ namespace Avogadro {
      * Set the bar-width for the point
      */
     void setBarWidth( double w );
+
+    /**
+     * @return a QVariant holding arbitrary data associated with the point
+     */
+    QVariant customData() const;
+
+    /**
+     * Associate arbitrary data with the point
+     */
+    void setCustomData(QVariant v);
 
   private:
     class Private;
