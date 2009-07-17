@@ -4,13 +4,13 @@ msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-16 07:12+0000\n"
+"PO-Revision-Date: 2009-06-24 13:45+0000\n"
 "Last-Translator: Keruskerfuerst <armin_mohring@web.de>\n"
 "Language-Team: <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgctxt "EMAIL OF TRANSLATORS"
@@ -142,7 +142,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:692
 msgid "Computational Chemistry Output"
-msgstr "Ausgabe der Computerchemie"
+msgstr "Computerchemie-Ausgabe"
 
 #: src/mainwindow.cpp:693
 msgid "Crystallographic Interchange CIF"
@@ -154,11 +154,11 @@ msgstr "GAMESS-US Ausgabe"
 
 #: src/mainwindow.cpp:695
 msgid "Gaussian 98/03 Output"
-msgstr "Gaussche 98/03 Ausgabe"
+msgstr "Gaussian 98/03 Ausgabe"
 
 #: src/mainwindow.cpp:696
 msgid "Gaussian Formatted Checkpoint"
-msgstr "formatierter Gausscher Kontrollpunkt"
+msgstr "formatierter Gaussian Checkpoint"
 
 #: src/mainwindow.cpp:697
 msgid "HyperChem"
@@ -275,15 +275,15 @@ msgstr "GAMESS Eingabe"
 
 #: src/mainwindow.cpp:1111
 msgid "Gaussian Cartesian Input"
-msgstr "Gaus´sche kartesische Eingabe"
+msgstr "Gaussian kartesische Eingabe"
 
 #: src/mainwindow.cpp:1112
 msgid "Gaussian Z-matrix Input"
-msgstr "Eingabe der Gaus´schen Z-Matrix"
+msgstr "Gaussian Z-Matrix Eingabe"
 
 #: src/mainwindow.cpp:1113
 msgid "MDL SDfile"
-msgstr "MDL SD-Datei"
+msgstr "MDL SDF-Datei"
 
 #: src/mainwindow.cpp:1115
 msgid "NWChem Input"
@@ -1573,19 +1573,12 @@ msgstr ""
 #~ msgid "Wireframe"
 #~ msgstr "Drahtgitter"
 
-#~ msgid "Open trajectory file"
-#~ msgstr "Trajektorie-Datei öffnen"
-
 #, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "Animation..."
 #~ msgstr "Animation..."
-
-#, qt-format
-#~ msgid "Read trajectory file %1 failed."
-#~ msgstr "Trajektorie-Dateien %1 konnte nicht gelesen werden."
 
 #~ msgid "Animation"
 #~ msgstr "Animation"
@@ -1764,18 +1757,6 @@ msgstr ""
 
 #~ msgid "GAMESS Input Deck (*.inp)"
 #~ msgstr "GAMESS Eingabe-Deck (*.inp)"
-
-#~ msgid "Gaussian Input..."
-#~ msgstr "Gauss'sche Eingabe"
-
-#~ msgid "Gaussian Input Deck"
-#~ msgstr "Gauss'sches Eingabe-Deck"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Gauss'sches Eingabe-Deck speichern"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gauss'sches Eingabe-Deck (*.com)"
 
 #~ msgid "Show Preview"
 #~ msgstr "Vorschau anzeigen"
@@ -2693,12 +2674,6 @@ msgstr ""
 #~ msgid "Control"
 #~ msgstr "Kontrolle"
 
-#~ msgid "SCF"
-#~ msgstr "wissenschaftlicher Lebensmittelausschuß"
-
-#~ msgid "DFT"
-#~ msgstr "diskrete Fouriertransformation"
-
 #~ msgid "Hessian"
 #~ msgstr "Hessematrix"
 
@@ -2818,9 +2793,6 @@ msgstr ""
 
 #~ msgid "Polar:"
 #~ msgstr "Polar:"
-
-#~ msgid "Max SCF Iterations:"
-#~ msgstr "maximale SCF Iterationen:"
 
 #~ msgid "Gradient"
 #~ msgstr "Gradient"
@@ -3544,9 +3516,6 @@ msgstr ""
 #~ msgid "Bond length"
 #~ msgstr "Bindungslänge"
 
-#~ msgid "Gaussian Input"
-#~ msgstr "Gauss'sche Eingabe"
-
 #~ msgid "Engines"
 #~ msgstr "Engines"
 
@@ -3571,9 +3540,6 @@ msgstr ""
 
 #~ msgid "MO "
 #~ msgstr "MO "
-
-#~ msgid "Save QChem Input Deck"
-#~ msgstr "Den Eingangsstapel von QChem speichern"
 
 #~ msgid "Add Named Selection..."
 #~ msgstr "Füge benannte Auswahl hinzu..."
@@ -4223,19 +4189,6 @@ msgstr ""
 #~ msgid "MOPAC Input..."
 #~ msgstr "MOPAC-Eingabe..."
 
-#~ msgid "Create input files for quantum chemistry packages like Gaussian"
-#~ msgstr "Erstelle Eingabedateien für Quantenchemiepakete wie das Gauss'sche"
-
-#~ msgid "Gaussian Input Deck Generator Warning"
-#~ msgstr "Warnung des Gauss'schen Eingabestapelgenerators"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Gaussian input deck preview pane?"
-#~ msgstr ""
-#~ "Soll der Vorschautext aktualisiert werden? Alle Änderungen am Gauss'schen "
-#~ "Eingabestapel-Vorschauabschnitt werden verloren gehen."
-
 #~ msgid "Transform hydrogens to methyl groups"
 #~ msgstr "Wandle Wasserstoffatome in Methylgruppen um"
 
@@ -4330,9 +4283,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Soll der Vorschautext aktualisiert werden? Alle Änderungen am Q-Chem-"
 #~ "Eingabestapel-Vorschauabschnitt werden verloren gehen."
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem-Eingabestapel (*.qcin)"
 
 #~ msgid "Select atoms, bonds, residues..."
 #~ msgstr "Atome, Bindungen, Reste auswählen..."

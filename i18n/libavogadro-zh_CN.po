@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-16 05:28+0000\n"
-"Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
+"PO-Revision-Date: 2009-07-01 16:00+0000\n"
+"Last-Translator: yjjart <yjjart@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -780,7 +780,7 @@ msgstr "动画"
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr "扩展(&E)"
+msgstr "扩展(&X)"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
@@ -888,7 +888,7 @@ msgstr "轨迹..."
 #: src/extensions/networkfetchextension.cpp:70
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
-msgstr "文件"
+msgstr "文件(&F)"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:70
@@ -921,7 +921,7 @@ msgstr "导入轨迹文件"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr "几何优化"
+msgstr "优化几何结构(&O)"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
@@ -954,7 +954,7 @@ msgstr "修正所选择的原子"
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr "分子机理"
+msgstr "分子机理(&M)"
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:204
@@ -1149,7 +1149,7 @@ msgstr "MOPAC输入..."
 
 #: src/extensions/gaussianextension.cpp:66
 msgid "&NWChem Input..."
-msgstr "NWChem输入..."
+msgstr "NWChem输入(&N)..."
 
 #: src/extensions/gaussianextension.cpp:179
 #: src/extensions/insertfragmentdialog.cpp:146
@@ -1254,7 +1254,7 @@ msgstr "将氢替换为甲基"
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/unitcellextension.cpp:70
 msgid "&Build"
-msgstr "构建"
+msgstr "构建(&B)"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
@@ -1314,7 +1314,7 @@ msgstr "SMILES..."
 #: src/extensions/insertfragmentextension.cpp:80
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr "插入"
+msgstr "插入(&I)"
 
 #: src/extensions/insertfragmentextension.cpp:103
 #: src/extensions/insertfragmentextension.cpp:121
@@ -1444,12 +1444,12 @@ msgstr "分子属性..."
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
 msgid "&View"
-msgstr "视图"
+msgstr "视图(&V)"
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
-msgstr "属性"
+msgstr "属性(&P)"
 
 #: src/extensions/molecularpropextension.cpp:122
 msgid "Estimated Dipole Moment (D):"
@@ -1936,7 +1936,7 @@ msgstr "Q-Chem输入卡片 (*.qcin)"
 
 #: src/extensions/selectextension.cpp:68
 msgid "&Invert Selection"
-msgstr "反向选择"
+msgstr "反向选择(&I)"
 
 #: src/extensions/selectextension.cpp:73
 msgid "Select SMARTS..."
@@ -1960,7 +1960,7 @@ msgstr "添加已命名的选择"
 
 #: src/extensions/selectextension.cpp:114
 msgid "&Select"
-msgstr "&选择"
+msgstr "选择(&S)"
 
 #: src/extensions/selectextension.cpp:170
 msgid "SMARTS Selection"
@@ -2080,7 +2080,7 @@ msgstr "核磁共振"
 
 #: src/extensions/spectradialog.cpp:166
 msgid "&NMR Spectra Settings"
-msgstr "NMR光谱设置"
+msgstr "核磁共振谱设置(&N)"
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
@@ -2243,7 +2243,7 @@ msgstr "自定义(&Z) >>"
 
 #: src/extensions/spectraextension.cpp:49
 msgid "&Spectra..."
-msgstr "光谱..."
+msgstr "光谱(&S)..."
 
 #: src/extensions/spectraextension.h:39
 msgid "Spectra"
@@ -2305,11 +2305,11 @@ msgstr "第二个动作"
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/templateextension.cpp:73
 msgid "&Template"
-msgstr "模版"
+msgstr "模版(&T)"
 
 #: src/extensions/templateextension.cpp:73
 msgid "&Edit"
-msgstr "&编辑"
+msgstr "编辑(&E)"
 
 #: src/extensions/templateextension.h:34
 msgid "Template"
@@ -2404,11 +2404,11 @@ msgstr "按照频率对 %1 的振动进行分类..."
 #: src/extensions/vibrationdialog.cpp:210
 #: src/extensions/vibrationdialog.cpp:213 :1818
 msgid "Start &Animation"
-msgstr "开始动画"
+msgstr "开始动画(&A)"
 
 #: src/extensions/vibrationdialog.cpp:211
 msgid "Stop &Animation"
-msgstr "停止动画"
+msgstr "停止动画(&A)"
 
 #: src/extensions/vibrationdialog.cpp:227
 msgid "Export Vibrational Data"
@@ -2416,7 +2416,7 @@ msgstr "导出振动数据"
 
 #: src/extensions/vibrationextension.cpp:61
 msgid "&Vibrations..."
-msgstr "振动..."
+msgstr "振动(V)..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
@@ -2450,7 +2450,7 @@ msgstr "断开"
 
 #: src/extensions/wiitrackextension.cpp:83
 msgid "&WiiTrack"
-msgstr "Wii跟踪"
+msgstr "&Wii跟踪"
 
 #: src/extensions/wiitrackextension.h:40
 msgid "Wii Tracking"
@@ -2646,7 +2646,7 @@ msgstr "未知Python扩展"
 
 #: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
 msgid "&Scripts"
-msgstr "脚本"
+msgstr "脚本(&S)"
 
 #: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
 msgid "PythonExtension: checking "
@@ -3687,7 +3687,7 @@ msgstr "GAMESS输入"
 
 #: src/extensions/gamessinputdialog.ui:24
 msgid "&Basic Setup"
-msgstr "基本设置"
+msgstr "基本设置(&B)"
 
 #: src/extensions/gamessinputdialog.ui:33
 #: src/extensions/gamessinputdialog.ui:661
@@ -5701,11 +5701,11 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:71
 msgid "&Load data..."
-msgstr "载入数据..."
+msgstr "载入数据(&L)..."
 
 #: src/extensions/spectradialog.ui:110
 msgid "&Close"
-msgstr "关闭"
+msgstr "关闭(&C)"
 
 #: src/extensions/spectradialog.ui:155
 msgid "Calculated Spectra:"
@@ -5831,7 +5831,7 @@ msgstr "tab_IR"
 
 #: src/extensions/spectratabir.ui:29
 msgid "&Y Axis Units:"
-msgstr "Y轴单位(&Y):"
+msgstr "&Y轴单位:"
 
 #: src/extensions/spectratabir.ui:46
 #, no-c-format
@@ -5849,11 +5849,11 @@ msgstr "缩放比例(&A):"
 
 #: src/extensions/spectratabir.ui:94
 msgid "&Gaussian Width:"
-msgstr "Gaussian宽度:"
+msgstr "高斯宽度(&G):"
 
 #: src/extensions/spectratabir.ui:123
 msgid "&Label peaks"
-msgstr "标记谱峰"
+msgstr "标记谱峰(&L)"
 
 #: src/extensions/spectratabnmr.ui:14
 msgid "tab_NMR"
@@ -5865,15 +5865,15 @@ msgstr "原子核:"
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
-msgstr "参考:"
+msgstr "参考(&R):"
 
 #: src/extensions/spectratabnmr.ui:46
 msgid "Gaussian &Width:"
-msgstr "Gaussian宽度:"
+msgstr "高斯宽度(&W):"
 
 #: src/extensions/spectratabnmr.ui:69
 msgid "Reset &Plot Axes"
-msgstr "重设作图坐标"
+msgstr "重设坐标轴(&P)"
 
 #: src/extensions/spectratabnmr.ui:105
 msgid "Label Peaks:"
@@ -6038,7 +6038,7 @@ msgstr "缩放(&S):"
 
 #: src/extensions/vibrationdialog.ui:97
 msgid "Display force &vectors"
-msgstr "显示力 & 矢量"
+msgstr "显示力矢量(&V)"
 
 #: src/extensions/vibrationdialog.ui:107
 msgid "higher frequency vibrations will show faster movement"
@@ -6050,7 +6050,7 @@ msgstr "动画速度为频率所设置"
 
 #: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."
-msgstr "导出(&E)..."
+msgstr "导出(&X)..."
 
 #: src/tools/navigatesettingswidget.ui:14
 msgid "Form"
@@ -6100,14 +6100,16 @@ msgstr ""
 ",Launchpad Contributions:,Tao Wei,cuiweicui,rainofchaos,yjjart,郑思涵, "
 ",Launchpad Contributions:,Tao Wei,Yinghua "
 "Wang,cuiweicui,rainofchaos,yjjart,郑思涵, ,Launchpad "
-"Contributions:,Xinfeng,cuiweicui, ,Launchpad Contributions:,Xinfeng,cuiweicui"
+"Contributions:,Xinfeng,cuiweicui, ,Launchpad "
+"Contributions:,Xinfeng,cuiweicui,yjjart"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,sihanzheng@"
 "gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
-"sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,cuiweicui1985@gmail.com"
+"sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,cuiweicui1985@gmail.com,yj"
+"jart@gmail.com"
 
 #~ msgid "Caesium"
 #~ msgstr "铯"

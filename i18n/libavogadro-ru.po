@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-15 14:02+0000\n"
-"Last-Translator: Vasily Astanin <madcad@yandex.ru>\n"
+"PO-Revision-Date: 2009-07-05 17:11+0000\n"
+"Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -294,7 +294,7 @@ msgstr "Ксенон"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "Цезий"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
@@ -578,7 +578,7 @@ msgstr ""
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr ""
+msgstr "Отображает вторичную структуру белков"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
@@ -616,7 +616,7 @@ msgstr "Отображает подписи атомов и связей"
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, изоповерхность = %L2"
 
 #: src/engines/orbitalengine.h:47
 msgid "Orbitals"
@@ -845,7 +845,7 @@ msgstr "Анимация"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "Анимировать траектории, реакции и колебания"
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -936,12 +936,12 @@ msgstr "Импортировать файлы траекторий"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&Оптимизировать геометрию"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr ""
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
@@ -980,7 +980,7 @@ msgstr "Не могу выбрать силовое поле для этой м�
 #: src/extensions/forcefieldextension.cpp:189
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "Энергия = %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:234
 msgid "Geometric Optimization"
@@ -1008,7 +1008,7 @@ msgstr "Случайный поиск внутренних вращений"
 
 #: src/extensions/forcefieldextension.cpp:535
 msgid "Weighted Rotor Search"
-msgstr ""
+msgstr "Средневзвешенный поиск внутренних вращений"
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
@@ -1205,7 +1205,7 @@ msgstr "Входной файл Gaussian (*.com)"
 
 #: src/extensions/gaussianinputdialog.cpp:262
 msgid "Gaussian Running."
-msgstr ""
+msgstr "Gaussian запущен."
 
 #: src/extensions/gaussianinputdialog.cpp:263
 msgid ""
@@ -1214,32 +1214,33 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:273
 msgid "Gaussian Not Installed."
-msgstr ""
+msgstr "Gaussian не установлен."
 
 #: src/extensions/gaussianinputdialog.cpp:274
 msgid "The G03 executable, cannot be found."
-msgstr ""
+msgstr "Исполняемый файл G03 не найден."
 
 #: src/extensions/gaussianinputdialog.cpp:288
 msgid "G03 failed to start."
-msgstr ""
+msgstr "Не удалось запустить G03."
 
 #: src/extensions/gaussianinputdialog.cpp:289
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "Не удалось запустить G03. Возможно, он установлен неправильно."
 
 #: src/extensions/gaussianinputdialog.cpp:294
 msgid "Running Gaussian calculation..."
-msgstr ""
+msgstr "Проводится расчет Gaussian..."
 
 #: src/extensions/gaussianinputdialog.cpp:329
 msgid "G03 Crashed."
-msgstr ""
+msgstr "Работа G03 завершилась аварийно."
 
 #: src/extensions/gaussianinputdialog.cpp:330
 msgid ""
 "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
+"Gaussian завершил работу некорректно. Возможно, он установлен неправильно."
 
 #: src/extensions/mopacinputdialog.ui:307
 #: src/extensions/gaussianinputdialog.cpp:365
@@ -1380,7 +1381,7 @@ msgstr "Файлы Avogadro (*.*)"
 
 #: src/extensions/linmorphdialog.cpp:65
 msgid "Open mol file"
-msgstr ""
+msgstr "Открыть файл mol"
 
 #: src/extensions/linmorphdialog.cpp:66
 msgid "Any files (*.*)"
@@ -1954,7 +1955,7 @@ msgstr "Терминал Python"
 
 #: src/extensions/pythonterminal.cpp:71
 msgid "pythonTerminalDock"
-msgstr ""
+msgstr "Док терминала python"
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
@@ -2255,7 +2256,7 @@ msgstr "Ошибка"
 #: src/extensions/spectradialog.cpp:679
 #, qt-format
 msgid "A problem occurred while writing file %1"
-msgstr ""
+msgstr "Возникла проблема при записи файла %1"
 
 #: src/extensions/spectradialog.cpp:681
 msgid "Success!"
@@ -2432,7 +2433,7 @@ msgstr "Готово"
 #: src/extensions/vibrationdialog.cpp:101
 #, qt-format
 msgid "Sorting %1 vibrations by frequency..."
-msgstr ""
+msgstr "Сортировка %1 колебаний по частоте..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
@@ -2460,7 +2461,7 @@ msgstr "Колебательный анализ"
 
 #: src/extensions/vibrationextension.cpp:121
 msgid "No vibrational displacements exist."
-msgstr ""
+msgstr "Колебательные смещения отсутствуют"
 
 #: src/extensions/vibrationextension.cpp:239
 msgid "No vibrations have been computed for this molecule."
@@ -2521,7 +2522,7 @@ msgstr ""
 
 #: src/glwidget.cpp:1012
 msgid "No molecule set"
-msgstr ""
+msgstr "Молекула не задана"
 
 #: src/glwidget.cpp:1017
 #, qt-format
@@ -2551,7 +2552,7 @@ msgstr "Чтение типа файлов '%1' не поддерживаетс�
 #: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
-msgstr ""
+msgstr "Для типа файлов файла '%1' не поддерживается чтение."
 
 #: src/moleculefile.cpp:154
 #, qt-format
@@ -2591,7 +2592,7 @@ msgstr "Замена молекулы с номером %1 в файле '%2' н
 #: src/moleculefile.cpp:335 src/moleculefile.cpp:614
 #, qt-format
 msgid "File %1 cannot be opened for reading."
-msgstr ""
+msgstr "Файл %1 не может быть открыт для чтения."
 
 #: src/moleculefile.cpp:378
 #, qt-format
@@ -2606,24 +2607,28 @@ msgstr "Файл %1 не может быть открыт для записи"
 #: src/moleculefile.cpp:439
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
+"Не удалось сохранить файл молекулы - не получилось переименовать исходный  "
+"файл."
 
 #: src/moleculefile.cpp:446
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
+"Не удалось сохранить файл молекулы - не получилось переименовать новый файл."
 
 #: src/moleculefile.cpp:455
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
+"Не удалось сохранить файл молекулы - не получилось удалить старый файл."
 
 #: src/moleculefile.cpp:464
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
-msgstr ""
+msgstr "Не удалось записать молекулу в файл '%1'. Ошибка функции OpenBabel."
 
 #: src/moleculefile.cpp:481
 #, qt-format
 msgid "File %1 cannot be opened for writing."
-msgstr ""
+msgstr "Файл %1не может быть открыт для записи."
 
 #: src/moleculefile.cpp:533
 #, qt-format
@@ -2646,7 +2651,7 @@ msgstr "Нет описания"
 #: src/plugin.cpp:47
 msgctxt "Default license for all Avogadro plugins"
 msgid "GPL2+"
-msgstr ""
+msgstr "GPL2+"
 
 #: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
 msgid "Unknown Python Engine"
@@ -2746,7 +2751,7 @@ msgstr "Выровнять молекулы по осям координат"
 
 #: src/tools/aligntool.h:42
 msgid "Align Settings"
-msgstr ""
+msgstr "Настройки выравнивания"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -3056,8 +3061,7 @@ msgid ""
 msgstr ""
 "Рисованиеl (F8)\n"
 "\n"
-"Левая кнопка мыши: \tЩелкните мышкой и протяните, чтобы создать атомы и "
-"связи\n"
+"Левая кнопка мыши: \tЩелкните и потяните, чтобы создать атомы и связи\n"
 "Правая кнопка мыши: Удалить атом"
 
 #: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
@@ -3117,6 +3121,12 @@ msgid ""
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
 "Right Mouse:  Click and drag to rotate selected atoms."
 msgstr ""
+"Manipulation Tool (F10)\n"
+"\n"
+"Левая кнопка мыши: Щелкните и потяните, чтобы переместить атомы\n"
+"Средняя кнопка мыши: Щелкните и потяните, чтобы переместить атомы ближе или "
+"дальше\n"
+"Правая кнопка мыши: Щелкните и потяните, чтобы повернуть выделенные атомы."
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
 msgid "Manipulate Atom"
@@ -3185,7 +3195,7 @@ msgstr "Выделение"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
-msgstr "ВЫделить атомы, остатки и молекулы"
+msgstr "Выделить атомы, остатки и молекулы"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
@@ -3294,7 +3304,7 @@ msgstr "c"
 #: src/engines/cartoonsettingswidget.ui:116
 #: src/engines/cartoonsettingswidget.ui:334
 msgid "Sheet"
-msgstr ""
+msgstr "Лист"
 
 #: src/engines/cartoonsettingswidget.ui:209
 #: src/engines/cartoonsettingswidget.ui:357
@@ -3326,11 +3336,11 @@ msgstr ""
 
 #: src/engines/hbondsettingswidget.ui:16
 msgid "Width:"
-msgstr ""
+msgstr "Толщина:"
 
 #: src/engines/hbondsettingswidget.ui:57
 msgid "Cut-off radius:"
-msgstr ""
+msgstr "Предельный радиус:"
 
 #: src/engines/hbondsettingswidget.ui:64
 #: src/extensions/insertpeptidedialog.ui:454
@@ -3345,7 +3355,7 @@ msgstr "°"
 
 #: src/engines/hbondsettingswidget.ui:90
 msgid "Cut-off angle:"
-msgstr ""
+msgstr "Предельный угол:"
 
 #: src/engines/labelsettingswidget.ui:23
 msgid "Atom Labels:"
@@ -3550,7 +3560,7 @@ msgstr "Случайный поиск внутренних вращений"
 
 #: src/extensions/conformersearchdialog.ui:80
 msgid "Weighted rotor search"
-msgstr ""
+msgstr "Средневзвешенный поиск внутренних вращений"
 
 #: src/extensions/constraintsdialog.ui:13
 msgid "Constraints"
@@ -4385,7 +4395,7 @@ msgstr "Уникальные декартовы координаты"
 
 #: src/extensions/gamessinputdialog.ui:1527
 msgid "Hilderbrant internals"
-msgstr ""
+msgstr "Внутренние координаты Гильдербранта"
 
 #: src/extensions/gamessinputdialog.ui:1532
 msgid "Cartesian coordinates"
@@ -4520,7 +4530,7 @@ msgstr "Начальное приближение:"
 
 #: src/extensions/gamessinputdialog.ui:1984
 msgid "Hückel"
-msgstr ""
+msgstr "Хюккель"
 
 #: src/extensions/gamessinputdialog.ui:1989
 msgid "HCore"
@@ -5317,7 +5327,7 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.ui:27
 msgid "button to load a second conformation from a file."
-msgstr ""
+msgstr "кнопка для загрузки второй конформации из файла"
 
 #: src/extensions/linmorphdialog.ui:30
 msgid "Load Second Conformation ..."
@@ -5353,7 +5363,7 @@ msgstr "Свойства молекулы"
 
 #: src/extensions/molecularpropdialog.ui:22
 msgid "Molecular Weight (g/mol):"
-msgstr ""
+msgstr "Молекулярная масса (г/моль):"
 
 #: src/extensions/molecularpropdialog.ui:29
 msgid "Chemical Formula:"
@@ -5691,7 +5701,7 @@ msgstr ""
 
 #: src/extensions/shaderdialog.ui:170
 msgid "Display Type:"
-msgstr ""
+msgstr "Тип отображения:"
 
 #: src/extensions/shaderdialog.ui:190
 msgid "Shader Program:"
@@ -5874,7 +5884,7 @@ msgstr "tab_ЯМР"
 
 #: src/extensions/spectratabnmr.ui:23
 msgid "Nucleus:"
-msgstr ""
+msgstr "Ядро:"
 
 #: src/extensions/spectratabnmr.ui:36
 msgid "&Reference:"
@@ -5926,15 +5936,15 @@ msgstr "Создать ячеку"
 
 #: src/extensions/surfacedialog.ui:14
 msgid "Create Surfaces"
-msgstr ""
+msgstr "Создать поверхности"
 
 #: src/extensions/surfacedialog.ui:25
 msgid "Surface Type:"
-msgstr ""
+msgstr "Тип поверхности:"
 
 #: src/extensions/surfacedialog.ui:41
 msgid "Van der Waals"
-msgstr ""
+msgstr "Ван-дер-Ваальсова"
 
 #: src/extensions/surfacedialog.ui:46
 #: src/extensions/surfacedialog.ui:120
@@ -6047,7 +6057,7 @@ msgstr "Интенсивность (km/моль)"
 
 #: src/extensions/vibrationdialog.ui:66
 msgid "&Scale:"
-msgstr ""
+msgstr "Мас&штаб:"
 
 #: src/extensions/vibrationdialog.ui:97
 msgid "Display force &vectors"
@@ -6056,10 +6066,11 @@ msgstr "Показать векторы &градиентов"
 #: src/extensions/vibrationdialog.ui:107
 msgid "higher frequency vibrations will show faster movement"
 msgstr ""
+"более высокочастотные колебания будут отображаться более быстрыми движениями"
 
 #: src/extensions/vibrationdialog.ui:110
 msgid "Animation speed set by frequency"
-msgstr ""
+msgstr "Скорость анимации задается частотой"
 
 #: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-16 16:47+0000\n"
-"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
+"PO-Revision-Date: 2009-06-20 15:53+0000\n"
+"Last-Translator: Nicolás M. Zahlut <nzahlut@live.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/mainwindow.cpp:2228
@@ -137,7 +137,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:692
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Salida de química computacional"
 
 #: src/mainwindow.cpp:693
 msgid "Crystallographic Interchange CIF"
@@ -353,7 +353,7 @@ msgstr "Ver %1"
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr ""
+msgstr "Ver %1"
 
 #: src/mainwindow.cpp:1956
 msgid "Avogadro: Detached View"
@@ -552,11 +552,11 @@ msgstr "Sin definir"
 
 #: src/updatecheck.cpp:81
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Falló la comprobación de actualización de red"
 
 #: src/updatecheck.cpp:82
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Venció el tiempo de red u otro error."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-12 11:58+0000\n"
-"Last-Translator: huseyinkozan <huseyinkozan@gmail.com>\n"
+"PO-Revision-Date: 2009-06-23 06:13+0000\n"
+"Last-Translator: hayrettin çevik <hayros@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -6046,28 +6046,28 @@ msgstr ""
 
 #: src/tools/zmatrixdialog.ui:14
 msgid "Z Matrix Editor"
-msgstr ""
+msgstr "Z Matris Editörü"
 
 #: src/tools/zmatrixdialog.ui:25
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "Seçilen Atomları Yükle"
 
 #: src/tools/zmatrixdialog.ui:52
 msgid "Remove Atom"
-msgstr ""
+msgstr "Atomu Kaldır"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Osman "
-"Tosun,huseyinkozan"
+"Tosun,hayrettin çevik,huseyinkozan"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,huseyinkoz"
-"an@gmail.com,,,rainman.neu@gmail.com,huseyinkozan@gmail.com"
+"an@gmail.com,,,rainman.neu@gmail.com,hayros@gmail.com,huseyinkozan@gmail.com"
 
 #~ msgid "Caesium"
 #~ msgstr "Sezyum"

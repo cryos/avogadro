@@ -287,7 +287,7 @@ namespace Avogadro {
   void SurfaceDialog::engineAdded(Engine *engine)
   {
     // If this is an orbital engine then append it to the list
-    if (engine->identifier() == "Orbitals") {
+    if (engine->identifier() == "Surfaces") {
       m_engines.push_back(engine);
       ui.engineCombo->addItem(engine->alias());
     }
@@ -296,7 +296,7 @@ namespace Avogadro {
   void SurfaceDialog::engineRemoved(Engine *engine)
   {
     // If this is an orbital type then rebuild the engine list
-    if (engine->identifier() == "Orbitals")
+    if (engine->identifier() == "Surfaces")
       updateEngines();
   }
 
@@ -309,8 +309,29 @@ namespace Avogadro {
   void SurfaceDialog::surfaceComboChanged(int n)
   {
     ui.moCombo->setEnabled(n == m_moIndex);
-    if (m_surfaceTypes.size() > 0 && n >= 0 && n < m_surfaceTypes.size())
+    if (m_surfaceTypes.size() > 0 && n >= 0 && n < m_surfaceTypes.size()) {
       ui.resolutionCombo->setEnabled(m_surfaceTypes[n] != Cube::FromFile);
+
+      // Set a default isosurface value based upon the surface type
+      double isoValue = 0.0;
+      switch (m_surfaceTypes[n]) {
+        case Cube::VdW:
+          isoValue = 0.0;
+          break;
+        case Cube::ESP:
+          isoValue = 0.05;
+          break;
+        case Cube::ElectronDensity:
+          isoValue = 0.1;
+          break;
+        case Cube::MO:
+          isoValue = 0.02;
+          break;
+        default:
+          isoValue = 1.0;
+      }
+      ui.isoValueEdit->setText(QString::number(isoValue));
+    }
   }
 
   void SurfaceDialog::colorByComboChanged(int n)

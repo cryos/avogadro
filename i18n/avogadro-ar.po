@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-13 00:29+0000\n"
-"Last-Translator: Nizar Kerkeni <nizar.kerkeni@gmail.com>\n"
+"PO-Revision-Date: 2009-07-03 05:07+0000\n"
+"Last-Translator: عبد الله شلي (Abdellah Chelli) <sneetsher@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -96,25 +96,25 @@ msgstr "أحضر الكل إلى الأمام"
 
 #: src/mainwindow.cpp:636
 msgid "&Tool Settings..."
-msgstr ""
+msgstr "إعدادات الأداة..."
 
 #: src/mainwindow.cpp:639
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:644
 msgid "&Display Settings..."
-msgstr ""
+msgstr "إعدادات العرض..."
 
 #: src/mainwindow.cpp:647
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
 msgid "Common molecule formats"
-msgstr ""
+msgstr "تنسيقات مشتركة للجزيئ"
 
 #: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
 #: src/mainwindow.cpp:1400
@@ -123,23 +123,23 @@ msgstr "كافة الملفات"
 
 #: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
 msgid "CML"
-msgstr ""
+msgstr "CML"
 
 #: src/mainwindow.cpp:692
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "خرج كيمياء حسابية"
 
 #: src/mainwindow.cpp:693
 msgid "Crystallographic Interchange CIF"
-msgstr ""
+msgstr "تنسيق تبادل بلوري CIF"
 
 #: src/mainwindow.cpp:694
 msgid "GAMESS-US Output"
-msgstr ""
+msgstr "خرج GAMESS-US"
 
 #: src/mainwindow.cpp:695
 msgid "Gaussian 98/03 Output"
-msgstr ""
+msgstr "خرج Gaussian 98/03"
 
 #: src/mainwindow.cpp:696
 msgid "Gaussian Formatted Checkpoint"
@@ -151,34 +151,34 @@ msgstr ""
 
 #: src/mainwindow.cpp:698
 msgid "MDL Mol"
-msgstr ""
+msgstr "MDL Mol"
 
 #: src/mainwindow.cpp:699
 msgid "NWChem Output"
-msgstr ""
+msgstr "خرج NWChem"
 
 #: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
 msgid "PDB"
-msgstr ""
+msgstr "PDB"
 
 #: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
 msgid "Sybyl Mol2"
-msgstr ""
+msgstr "Sybyl Mol2"
 
 #: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/mainwindow.cpp:774
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr ""
+msgstr "تحميل %1..."
 
 #: src/mainwindow.cpp:777
 #, qt-format
 msgid "Loading %1..."
-msgstr ""
+msgstr "تحميل %1..."
 
 #: src/mainwindow.cpp:795
 msgid "Reading multi-molecule file. This may take a while..."
@@ -229,29 +229,29 @@ msgstr ""
 
 #: src/mainwindow.cpp:1020
 msgid "Your changes will be lost if you don't save them."
-msgstr ""
+msgstr "ستضيع تغييراتك ان لم تحفظها."
 
 #: src/mainwindow.cpp:1024
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr ""
+msgstr "Ctrl+S"
 
 #: src/mainwindow.cpp:1025
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:1027
 msgid "Save..."
-msgstr ""
+msgstr "إحفظ..."
 
 #: src/mainwindow.cpp:1027 src/savedialog.cpp:65
 msgid "Save"
-msgstr ""
+msgstr "إحفظ"
 
 #: src/mainwindow.cpp:1110
 msgid "GAMESS Input"
-msgstr ""
+msgstr "دخل GAMESS"
 
 #: src/mainwindow.cpp:1111
 msgid "Gaussian Cartesian Input"
@@ -263,11 +263,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:1113
 msgid "MDL SDfile"
-msgstr ""
+msgstr "ملف MDL SD"
 
 #: src/mainwindow.cpp:1115
 msgid "NWChem Input"
-msgstr ""
+msgstr "دخل NWChem"
 
 #: src/mainwindow.cpp:1120
 msgid "Save Molecule As"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: src/mainwindow.cpp:1397
 msgid "Common vector image formats"
@@ -308,16 +308,16 @@ msgstr ""
 
 #: src/mainwindow.cpp:1402
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: src/mainwindow.cpp:1403
 msgid "EPS"
-msgstr ""
+msgstr "EPS"
 
 #: src/mainwindow.cpp:1558
 #, qt-format
 msgid "Untitled %1"
-msgstr ""
+msgstr "غير معنون %1"
 
 #: src/mainwindow.cpp:1663
 msgid "Unable to paste molecule."
@@ -335,13 +335,13 @@ msgstr ""
 #: src/mainwindow.cpp:2530
 #, qt-format
 msgid "View %1"
-msgstr ""
+msgstr "عرض %1"
 
 #: src/mainwindow.cpp:1947
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr ""
+msgstr "عرض %1"
 
 #: src/mainwindow.cpp:1956
 msgid "Avogadro: Detached View"
@@ -372,11 +372,11 @@ msgstr ""
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:2814
 msgid "Add"
-msgstr ""
+msgstr "أضِف"
 
 #: src/mainwindow.cpp:2819
 msgid "Duplicate"
@@ -411,51 +411,51 @@ msgstr "أجسام"
 #: src/pluginsettings.ui:38
 #: src/mainwindow.cpp:2907 :212
 msgid "Colors"
-msgstr ""
+msgstr "ألوان"
 
 #: src/mainwindow.cpp:2940
 msgid " copy"
-msgstr ""
+msgstr " إنسخ"
 
 #: src/pluginsettings.cpp:55
 msgid "Name: "
-msgstr ""
+msgstr "الاسم: "
 
 #: src/pluginsettings.cpp:56
 msgid "Identifier: "
-msgstr ""
+msgstr "المعرِّف: "
 
 #: src/pluginsettings.cpp:57
 msgid "File: "
-msgstr ""
+msgstr "الملف: "
 
 #: src/pluginsettings.cpp:58
 msgid "Description:\n"
-msgstr ""
+msgstr "الوصف:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
 #: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr ""
+msgstr "جزيئ"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr ""
+msgstr "ذرات"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr ""
+msgstr "روابط"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr ""
+msgstr "رواسب"
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -478,7 +478,7 @@ msgstr ""
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
@@ -487,58 +487,58 @@ msgstr ""
 #: src/projecttreeeditor.ui:168
 #: src/projecttreemodel.cpp:65 :250
 msgid "Item"
-msgstr ""
+msgstr "عنصر"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr ""
+msgstr "فهرس"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr ""
+msgstr "منخفض"
 
 #: src/settingsdialog.ui:86
 #: src/settingsdialog.cpp:107 :268
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr ""
+msgstr "متوسط"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr ""
+msgstr "عالي"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr ""
+msgstr "غيرُ مُعرَّف"
 
 #: src/settingsdialog.ui:144
 #: src/settingsdialog.cpp:122 :274
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr ""
+msgstr "لاشيء"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr ""
+msgstr "بعض"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "وسط"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "كثير"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr ""
+msgstr "غيرُ مُعرَّف"
 
 #: src/updatecheck.cpp:81
 msgid "Network Update Check Failed"
@@ -571,7 +571,7 @@ msgstr "الوصف"
 
 #: src/enginecolorswidget.ui:13
 msgid "Form"
-msgstr ""
+msgstr "شكل"
 
 #: src/enginecolorswidget.ui:24
 msgid "Color by:"

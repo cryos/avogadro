@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-13 02:20+0000\n"
+"PO-Revision-Date: 2009-06-22 14:10+0000\n"
 "Last-Translator: Alexandre R Soares <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-07-11 13:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/mainwindow.cpp:2228
@@ -200,7 +200,7 @@ msgstr "Esse arquivo não contém coordenadas 3D."
 
 #: src/mainwindow.cpp:820
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Deseja que Avogadro esboce a geometria?"
 
 #: src/mainwindow.cpp:838
 msgid ""
@@ -538,12 +538,12 @@ msgstr "Pouco"
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "Média"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "Muita"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
@@ -585,7 +585,7 @@ msgstr "Formulário"
 
 #: src/enginecolorswidget.ui:24
 msgid "Color by:"
-msgstr ""
+msgstr "Colorir por:"
 
 #: src/engineprimitiveswidget.ui:41
 #: src/engineprimitiveswidget.ui:44
@@ -636,7 +636,7 @@ msgstr ""
 
 #: src/importdialog.ui:73
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Ver ordem de ligações"
 
 #: src/importdialog.ui:83
 msgid "Coordinates are in Ångstroms"
@@ -920,7 +920,7 @@ msgstr "Editor da Árvore do Projeto..."
 
 #: src/mainwindow.ui:628
 msgid "Detach View"
-msgstr ""
+msgstr "Ver Separado"
 
 #: src/mainwindow.ui:637
 msgid "Molecule File..."
