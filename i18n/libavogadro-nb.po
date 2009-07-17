@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-12 01:58+0000\n"
-"Last-Translator: Geoff Hutchison <Unknown>\n"
+"PO-Revision-Date: 2009-07-12 21:30+0000\n"
+"Last-Translator: Simen Heggestøyl <simen@simenh.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-11 13:01+0000\n"
+"X-Launchpad-Export-Date: 2009-07-17 19:09+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -36,12 +36,12 @@ msgstr ""
 #: src/engines/surfacesettingswidget.ui:139
 #: src/colors/customcolor.cpp:63 :166
 msgid "Custom Color:"
-msgstr ""
+msgstr "Egendefinert Farge:"
 
 #: src/engines/surfacesettingswidget.ui:95
 #: src/colors/customcolor.h:43 :160
 msgid "Custom Color"
-msgstr ""
+msgstr "Egendefinert Farge"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
@@ -157,395 +157,395 @@ msgstr "Scandium"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "Titan"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "Vanadium"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "Krom"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "Mangan"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "Jern"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "Kobolt"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "Nikkel"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "Kobber"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "Sink"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "Gallium"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "Germanium"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "Arsen"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "Selen"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "Brom"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "Krypton"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "Rubidium"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr ""
+msgstr "Strontium"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr ""
+msgstr "Yttrium"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "Zirconium"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr ""
+msgstr "Niob"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "Molybden"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr ""
+msgstr "Technetium"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr ""
+msgstr "Ruthenium"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "Rhodium"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "Palladium"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "Sølv"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "Kadmium"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "Indium"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "Tinn"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "Antimon"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr ""
+msgstr "Tellur"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "Jod"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "Xenon"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "Cesium"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "Barium"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr ""
+msgstr "Lantan"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "Cerium"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr ""
+msgstr "Praseodym"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr ""
+msgstr "Neodym"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr ""
+msgstr "Promethium"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr ""
+msgstr "Samarium"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr ""
+msgstr "Europium"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr ""
+msgstr "Gadolinium"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr ""
+msgstr "Terbium"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr ""
+msgstr "Dysprosium"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr ""
+msgstr "Holmium"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr ""
+msgstr "Erbium"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr ""
+msgstr "Thulium"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr ""
+msgstr "Ytterbium"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr ""
+msgstr "Lutetium"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr ""
+msgstr "Hafnium"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr ""
+msgstr "Tantal"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr ""
+msgstr "Wolfram"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr ""
+msgstr "Rhenium"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr ""
+msgstr "Osmium"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "Iridium"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "Platina"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "Gull"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "Kvikksølv"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr ""
+msgstr "Thallium"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "Bly"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "Vismut"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "Polonium"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr ""
+msgstr "Astat"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "Radon"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr ""
+msgstr "Francium"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "Radium"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "Actinium"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "Thorium"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "Protactinium"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "Uran"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "Neptunium"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "Plutonium"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr ""
+msgstr "Americium"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "Curium"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr ""
+msgstr "Berkelium"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr ""
+msgstr "Californium"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr ""
+msgstr "Einsteinium"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr ""
+msgstr "Fermium"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr ""
+msgstr "Mendelevium"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr ""
+msgstr "Nobelium"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr ""
+msgstr "Lawrencium"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr ""
+msgstr "Rutherfordium"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr ""
+msgstr "Dubnium"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr ""
+msgstr "Seaborgium"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr ""
+msgstr "Bohrium"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr ""
+msgstr "Hassium"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr ""
+msgstr "Meitnerium"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr ""
+msgstr "Darmstadtium"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr ""
+msgstr "Røntgenium"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr ""
+msgstr "Ununbium"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr ""
+msgstr "Ununtrium"
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr ""
+msgstr "Ununquadium"
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr ""
+msgstr "Ununpentium"
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr ""
+msgstr "Ununhexium"
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr ""
+msgstr "Ununseptium"
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr ""
+msgstr "Ununoctium"
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
-msgstr ""
+msgstr "Ukjent"
 
 #: src/engine.cpp:65
 msgid "Engines"
@@ -6018,7 +6018,7 @@ msgstr ""
 
 #: src/tools/zmatrixdialog.ui:52
 msgid "Remove Atom"
-msgstr ""
+msgstr "Fjern Atom"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
@@ -6027,7 +6027,8 @@ msgstr ""
 "Ricard,Maijin,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
 "Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, "
 ",Launchpad Contributions:,Avogadro Team,Benoit Jacob,Geoff Hutchison, "
-",Launchpad Contributions:,Avogadro Team,Benoit Jacob,Geoff Hutchison"
+",Launchpad Contributions:,Avogadro Team,Benoit Jacob,Geoff Hutchison,Simen "
+"Heggestøyl"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6037,7 +6038,7 @@ msgstr ""
 "noit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizar"
 ".kerkeni@gmail.com,,,avogadro-"
 "devel@lists.sourceforge.net,jacob.benoit.1@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,jacob.benoit.1@gmail.com,"
+"devel@lists.sourceforge.net,jacob.benoit.1@gmail.com,,simen@simenh.com"
 
 #~ msgid "&Zoom"
 #~ msgstr "&Zoom"
