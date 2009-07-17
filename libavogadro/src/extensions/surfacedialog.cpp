@@ -33,8 +33,7 @@
 namespace Avogadro {
 
   SurfaceDialog::SurfaceDialog(QWidget* parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_glwidget(0), m_molecule(0), m_moIndex(-1),
-    m_moColorIndex(-1)
+    : QDialog(parent, f), m_glwidget(0), m_molecule(0)
   {
     ui.setupUi(this);
     ui.moCombo->hide();
@@ -76,31 +75,11 @@ namespace Avogadro {
       ui.moColorCombo->addItem(tr("MO %L1", "Molecular Orbital").arg(i));
     }
     // Now add the MO option to the surface and color combos
-    ui.surfaceCombo->clear();
-    ui.surfaceCombo->addItem(tr("Van der Waals", "Van der Waals surface type"));
-    ui.surfaceCombo->addItem(tr("Electrostatic Potential",
-                                "Electrostatic potential surface type"));
-    ui.surfaceCombo->addItem(tr("Electron Density",
-                                "Electron density surface type"));
-    m_moIndex = ui.surfaceCombo->count();
-    ui.surfaceCombo->addItem(tr("Molecular Orbital",
-                                "Molecular orbital surface type"));
-
-    ui.colorByCombo->clear();
-    ui.colorByCombo->addItem(tr("Nothing", "No color mapping onto isosurface"));
-    ui.colorByCombo->addItem(tr("Electrostatic Potential",
-                                "Electrostatic potential surface type"));
-    ui.colorByCombo->addItem(tr("Electron Density",
-                                "Electron density surface type"));
-    m_moColorIndex = ui.colorByCombo->count();
-    ui.colorByCombo->addItem(tr("Molecular Orbital",
-                                "Molecular orbital surface type"));
-
-    // Update the type mappings too
     m_surfaceTypes.clear();
     m_surfaceTypes << Cube::VdW << Cube::ESP << Cube::ElectronDensity << Cube::MO;
     m_colorTypes.clear();
     m_colorTypes << Cube::None << Cube::ESP << Cube::ElectronDensity << Cube::MO;
+    updateCubes();
   }
 
   void SurfaceDialog::setHOMO(int n)
@@ -244,19 +223,10 @@ namespace Avogadro {
     m_molecule = mol;
 
     // Hide the MO combos
+    ui.moCombo->clear();
     ui.moCombo->hide();
+    ui.moColorCombo->clear();
     ui.moColorCombo->hide();
-
-    // Reset the mapping and the combos too
-    ui.surfaceCombo->clear();
-    ui.surfaceCombo->addItem(tr("Van der Waals", "Van der Waals surface type"));
-    ui.surfaceCombo->addItem(tr("Electrostatic Potential",
-                                "Electrostatic potential surface type"));
-
-    ui.colorByCombo->clear();
-    ui.colorByCombo->addItem(tr("Nothing", "No color mapping onto isosurface"));
-    ui.colorByCombo->addItem(tr("Electrostatic Potential",
-                                "Electrostatic potential surface type"));
 
     // Update the type mappings too
     m_surfaceTypes.clear();
@@ -266,21 +236,74 @@ namespace Avogadro {
 
     // Connect to the molecule signals to check for addition/removal of cubes
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
-            this, SLOT(updateCubes(Primitive *)));
+            this, SLOT(addCube(Primitive *)));
     connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
-            this, SLOT(updateCubes(Primitive *)));
-    updateCubes(0);
+            this, SLOT(removeCube(Primitive *)));
+    updateCubes();
   }
 
-  void SurfaceDialog::updateCubes(Primitive *)
+  inline QString SurfaceDialog::cubeText(int n)
   {
-    // This routine takes care of checking for loaded
+    switch (n) {
+      case Cube::None:
+        return tr("Nothing", "A cube type of nothing - empty cube");
+      case Cube::VdW:
+        return tr("Van der Waals", "Van der Waals surface type");
+      case Cube::ESP:
+        return tr("Electrostatic Potential",
+                  "Electrostatic potential surface type");
+      case Cube::ElectronDensity:
+        return tr("Electron Density", "Electron density surface type");
+      case Cube::MO:
+        return tr("Molecular Orbital", "Molecular orbital surface type");
+      default:
+        return tr("Error - undefined type", "Undefined cube type");
+    }
+  }
+
+  void SurfaceDialog::updateCubes()
+  {
+    // This routine takes care of rebuilding the cube combos for us
+
+    // Reset the combos, then rebuild them
+    ui.surfaceCombo->clear();
+    foreach (const Cube::Type &type, m_surfaceTypes)
+      ui.surfaceCombo->addItem(cubeText(type));
+    ui.colorByCombo->clear();
+    foreach (const Cube::Type &type, m_colorTypes)
+      ui.colorByCombo->addItem(cubeText(type));
+
+    // Now to enumerate the loaded cubes
     foreach (Cube *cube, m_molecule->cubes()) {
       if (cube->cubeType() == Cube::FromFile) {
         qDebug() << "Found one:" << cube->name();
-        m_surfaceTypes.push_back(Cube::FromFile);
+        if (m_surfaceTypes.size() == ui.surfaceCombo->count())
+          m_surfaceTypes << Cube::FromFile;
         ui.surfaceCombo->addItem(cube->name());
+        if (m_colorTypes.size() == ui.colorByCombo->count())
+          m_colorTypes << Cube::FromFile;
+        ui.colorByCombo->addItem(cube->name());
       }
+    }
+  }
+
+  void SurfaceDialog::addCube(Primitive *p)
+  {
+    if (p && p->type() == Primitive::CubeType) {
+      Cube *cube = static_cast<Cube *>(p);
+      if (cube->cubeType() == Cube::FromFile) {
+        ui.surfaceCombo->addItem(cube->name());
+        ui.colorByCombo->addItem(cube->name());
+      }
+    }
+  }
+
+  void SurfaceDialog::removeCube(Primitive *p)
+  {
+    if (p && p->type() == Primitive::CubeType) {
+      Cube *cube = static_cast<Cube *>(p);
+      if (cube->cubeType() == Cube::FromFile)
+        updateCubes();
     }
   }
 
@@ -308,8 +331,8 @@ namespace Avogadro {
 
   void SurfaceDialog::surfaceComboChanged(int n)
   {
-    ui.moCombo->setEnabled(n == m_moIndex);
     if (m_surfaceTypes.size() > 0 && n >= 0 && n < m_surfaceTypes.size()) {
+      ui.moCombo->setEnabled(m_surfaceTypes.at(n) == Cube::MO);
       ui.resolutionCombo->setEnabled(m_surfaceTypes[n] != Cube::FromFile);
 
       // Set a default isosurface value based upon the surface type
@@ -327,6 +350,9 @@ namespace Avogadro {
         case Cube::MO:
           isoValue = 0.02;
           break;
+        case Cube::FromFile: // Tough to guess, usually MOs/electron density
+          isoValue = 0.02;
+          break;
         default:
           isoValue = 1.0;
       }
@@ -336,7 +362,8 @@ namespace Avogadro {
 
   void SurfaceDialog::colorByComboChanged(int n)
   {
-    ui.moColorCombo->setEnabled(n == m_moColorIndex);
+    if (m_colorTypes.size() > 0 && n >= 0 && n < m_colorTypes.size())
+      ui.moColorCombo->setEnabled(m_colorTypes.at(n) == Cube::MO);
   }
 
 }

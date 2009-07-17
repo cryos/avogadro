@@ -100,20 +100,22 @@ namespace Avogadro
     const Molecule *m_molecule;
 
     // Lists of different properties we need to keep track of
-    int m_moIndex; // The index of the MO entry
-    int m_moColorIndex; // The index of the MO entry
     QList<Cube::Type> m_surfaceTypes;  // Mapping of the surface type combo
     QList<Cube::Type> m_colorTypes;    // Mapping of the color by combo
     QList<Engine *> m_engines;   // List of engines, as displayed in the combo
 
     // Update the engine list
     void updateEngines();
+    // Gives the appropriate text for a cube type
+    QString cubeText(int);
+    // Update the cube list
+    void updateCubes();
 
   public slots:
     void setGLWidget(const GLWidget *gl);
     void setMolecule(const Molecule *mol);
-    void updateCubes(Primitive *p);
-
+    void addCube(Primitive *p);
+    void removeCube(Primitive *p);
     void engineAdded(Engine *engine);
     void engineRemoved(Engine *engine);
 
