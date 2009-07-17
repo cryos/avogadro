@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-12 02:24+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2009-07-12 21:10+0000\n"
+"Last-Translator: Simen Heggestøyl <simen@simenh.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-11 13:00+0000\n"
+"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -37,46 +37,46 @@ msgstr ""
 #: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
 #: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr ""
+msgstr "Klipp ut Molekyl"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr ""
+msgstr "Klipp ut Atomer"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr ""
+msgstr "Lim inn"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr ""
+msgstr "Nullstill Molekyl"
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr ""
+msgstr "Nullstill Atomer"
 
 #: src/projecttreeeditor.ui:179
 #: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:705
 msgid "Open File"
-msgstr ""
+msgstr "Åpne Fil"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
-msgstr ""
+msgstr "Meldinger"
 
 #: src/mainwindow.cpp:350
 msgid "Window"
-msgstr ""
+msgstr "Vindu"
 
 #: src/mainwindow.cpp:353
 msgid "&Minimize"
@@ -92,7 +92,7 @@ msgstr "&Zoom"
 
 #: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
 msgid "Bring All to Front"
-msgstr ""
+msgstr "Flytt Alt Fram"
 
 #: src/mainwindow.cpp:636
 msgid "&Tool Settings..."
@@ -114,16 +114,16 @@ msgstr ""
 
 #: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
 msgid "Common molecule formats"
-msgstr ""
+msgstr "Vanlige molekylformater"
 
 #: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
 #: src/mainwindow.cpp:1400
 msgid "All files"
-msgstr ""
+msgstr "Alle filer"
 
 #: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
 msgid "CML"
-msgstr ""
+msgstr "CML"
 
 #: src/mainwindow.cpp:692
 msgid "Computational Chemistry Output"
@@ -135,11 +135,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:694
 msgid "GAMESS-US Output"
-msgstr ""
+msgstr "GAMESS-US Utdata"
 
 #: src/mainwindow.cpp:695
 msgid "Gaussian 98/03 Output"
-msgstr ""
+msgstr "Gaussian 98/03 Utdata"
 
 #: src/mainwindow.cpp:696
 msgid "Gaussian Formatted Checkpoint"
@@ -147,7 +147,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:697
 msgid "HyperChem"
-msgstr ""
+msgstr "HyperChem"
 
 #: src/mainwindow.cpp:698
 msgid "MDL Mol"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:699
 msgid "NWChem Output"
-msgstr ""
+msgstr "NWChem Utdata"
 
 #: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
 msgid "PDB"
@@ -167,26 +167,26 @@ msgstr ""
 
 #: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/mainwindow.cpp:774
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr ""
+msgstr "Laster %1..."
 
 #: src/mainwindow.cpp:777
 #, qt-format
 msgid "Loading %1..."
-msgstr ""
+msgstr "Laster %1..."
 
 #: src/mainwindow.cpp:795
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr ""
+msgstr "Leser multimolekylfil. Dette kan ta en stund..."
 
 #: src/mainwindow.cpp:815
 msgid "This file does not contain 3D coordinates."
-msgstr ""
+msgstr "Denne filen inneholder ikke 3D-koordinater."
 
 #: src/mainwindow.cpp:820
 msgid "Do you want Avogadro to build a rough geometry?"
@@ -196,7 +196,7 @@ msgstr ""
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
-msgstr ""
+msgstr "Denne filen inneholder ikke 3D-koordinater."
 
 #: src/mainwindow.cpp:888
 msgid "Select Molecule to View"
@@ -204,32 +204,32 @@ msgstr ""
 
 #: src/mainwindow.cpp:913
 msgid "Molecule Title"
-msgstr ""
+msgstr "Molekyltittel"
 
 #: src/mainwindow.cpp:982
 msgid "Atoms: "
-msgstr ""
+msgstr "Atomer: "
 
 #: src/mainwindow.cpp:983
 msgid " Bonds: "
-msgstr ""
+msgstr " Bindinger: "
 
 #: src/mainwindow.cpp:989
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr ""
+msgstr "Kunne ikke lese molekylfil, fil %1."
 
 #: src/mainwindow.cpp:998
 msgid "File Loaded..."
-msgstr ""
+msgstr "Fil Lastet..."
 
 #: src/mainwindow.cpp:1011
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
+msgstr "Vil du lagre endringene du har gjort i dokumentet?"
 
 #: src/mainwindow.cpp:1020
 msgid "Your changes will be lost if you don't save them."
-msgstr ""
+msgstr "Dine endringer vil gå tapt hvis du ikke lagrer dem."
 
 #: src/mainwindow.cpp:1024
 msgctxt "Save"
@@ -243,7 +243,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:1027
 msgid "Save..."
-msgstr ""
+msgstr "Lagre..."
 
 #: src/mainwindow.cpp:1027 src/savedialog.cpp:65
 msgid "Save"
@@ -251,15 +251,15 @@ msgstr "Lagre"
 
 #: src/mainwindow.cpp:1110
 msgid "GAMESS Input"
-msgstr ""
+msgstr "GAMESS Inndata"
 
 #: src/mainwindow.cpp:1111
 msgid "Gaussian Cartesian Input"
-msgstr ""
+msgstr "Gaussian Kartesiske Inndata"
 
 #: src/mainwindow.cpp:1112
 msgid "Gaussian Z-matrix Input"
-msgstr ""
+msgstr "Gaussian Z-matrise Inndata"
 
 #: src/mainwindow.cpp:1113
 msgid "MDL SDfile"
@@ -267,11 +267,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:1115
 msgid "NWChem Input"
-msgstr ""
+msgstr "NWChem Inndata"
 
 #: src/mainwindow.cpp:1120
 msgid "Save Molecule As"
-msgstr ""
+msgstr "Lagre Molekyl Som"
 
 #: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
 msgid "PNG"
@@ -296,7 +296,7 @@ msgstr ""
 #: src/mainwindow.cpp:1382
 #, qt-format
 msgid "Cannot save file %1."
-msgstr ""
+msgstr "Kan ikke lagre fil %1."
 
 #: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
 msgid "PDF"
@@ -317,19 +317,19 @@ msgstr "EPS"
 #: src/mainwindow.cpp:1558
 #, qt-format
 msgid "Untitled %1"
-msgstr ""
+msgstr "Uten navn %1"
 
 #: src/mainwindow.cpp:1663
 msgid "Unable to paste molecule."
-msgstr ""
+msgstr "Kan ikke lime inn molekyl."
 
 #: src/mainwindow.cpp:1692
 msgid "Paste failed (format unavailable)."
-msgstr ""
+msgstr "Kunne ikke lime inn (format ikke tilgjengelig)."
 
 #: src/mainwindow.cpp:1761
 msgid "Copy failed (mdl unavailable)."
-msgstr ""
+msgstr "Kopiering mislyktes."
 
 #: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
 #: src/mainwindow.cpp:2530
@@ -349,11 +349,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:2122
 msgid "Normal Size"
-msgstr ""
+msgstr "Normal Størrelse"
 
 #: src/mainwindow.cpp:2135
 msgid "Full Screen"
-msgstr ""
+msgstr "Fullskjerm"
 
 #: src/mainwindow.cpp:2228
 msgid "Ctrl+Backspace"
@@ -361,30 +361,30 @@ msgstr ""
 
 #: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
 msgid "untitled"
-msgstr ""
+msgstr "uten navn"
 
 #: src/mainwindow.cpp:2388
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
-msgstr ""
+msgstr "[*]Avogadro"
 
 #: src/mainwindow.cpp:2393
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:2814
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: src/mainwindow.cpp:2819
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliser"
 
 #: src/mainwindow.cpp:2824
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: src/mainwindow.cpp:2852
 msgid "No tools or engines loaded."
@@ -406,12 +406,12 @@ msgstr ""
 
 #: src/mainwindow.cpp:2901
 msgid "Objects"
-msgstr ""
+msgstr "Objekter"
 
 #: src/pluginsettings.ui:38
 #: src/mainwindow.cpp:2907 :212
 msgid "Colors"
-msgstr ""
+msgstr "Farger"
 
 #: src/mainwindow.cpp:2940
 msgid " copy"
@@ -423,7 +423,7 @@ msgstr "Navn: "
 
 #: src/pluginsettings.cpp:56
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifikator: "
 
 #: src/pluginsettings.cpp:57
 msgid "File: "
@@ -437,19 +437,19 @@ msgstr "Beskrivelse:\n"
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
 #: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr ""
+msgstr "Molekyl"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr ""
+msgstr "Atomer"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr ""
+msgstr "Bindinger"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
@@ -463,13 +463,13 @@ msgstr ""
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr ""
+msgstr "binding %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr ""
+msgstr "Etikett"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
@@ -487,58 +487,58 @@ msgstr ""
 #: src/projecttreeeditor.ui:168
 #: src/projecttreemodel.cpp:65 :250
 msgid "Item"
-msgstr ""
+msgstr "Element"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr ""
+msgstr "Lav"
 
 #: src/settingsdialog.ui:86
 #: src/settingsdialog.cpp:107 :268
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr ""
+msgstr "Middels"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr ""
+msgstr "Høy"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr ""
+msgstr "Ikke angitt"
 
 #: src/settingsdialog.ui:144
 #: src/settingsdialog.cpp:122 :274
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr ""
+msgstr "Noe"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr ""
+msgstr "Middels"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr ""
+msgstr "Mye"
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr ""
+msgstr "Ikke angitt"
 
 #: src/updatecheck.cpp:81
 msgid "Network Update Check Failed"
@@ -551,7 +551,7 @@ msgstr ""
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr ""
+msgstr "En oppdatert versjon av Avogadro er tilgjengelig"
 
 #: src/addenginedialog.ui:13
 msgid "Add Display Type"
@@ -602,19 +602,19 @@ msgstr ""
 
 #: src/importdialog.ui:13
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Importer molekylfil"
 
 #: src/importdialog.ui:24
 msgid "Filename:"
-msgstr ""
+msgstr "Filnavn:"
 
 #: src/importdialog.ui:34
 msgid "Select..."
-msgstr ""
+msgstr "Velg..."
 
 #: src/importdialog.ui:45
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: src/importdialog.ui:53
 msgid "Automatically detect from extension"
@@ -646,11 +646,11 @@ msgstr ""
 
 #: src/mainwindow.ui:55
 msgid "Export"
-msgstr ""
+msgstr "Eksporter"
 
 #: src/mainwindow.ui:62
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/mainwindow.ui:81
 msgid "Se&ttings"
@@ -658,7 +658,7 @@ msgstr ""
 
 #: src/mainwindow.ui:85
 msgid "Toolbars"
-msgstr ""
+msgstr "Verktøylinjer"
 
 #: src/mainwindow.ui:94
 msgid "&Build"
@@ -682,7 +682,7 @@ msgstr ""
 
 #: src/mainwindow.ui:155
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Hovedvertøylinje"
 
 #: src/mainwindow.ui:192
 #: src/settingsdialog.ui:255
@@ -697,7 +697,7 @@ msgstr ""
 #: src/mainwindow.ui:234
 #: src/pluginsettings.ui:28
 msgid "Tools"
-msgstr ""
+msgstr "Verktøy"
 
 #: src/mainwindow.ui:255
 #: src/mainwindow.ui:267
@@ -723,7 +723,7 @@ msgstr ""
 
 #: src/mainwindow.ui:298
 msgid "&Clear Recent"
-msgstr ""
+msgstr "Nullstill Siste"
 
 #: src/mainwindow.ui:307
 #: src/mainwindow.ui:319
@@ -762,7 +762,7 @@ msgstr ""
 
 #: src/mainwindow.ui:382
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Gå tilbake til Lagret"
 
 #: src/mainwindow.ui:391
 msgid "&Graphics..."
@@ -774,7 +774,7 @@ msgstr ""
 
 #: src/mainwindow.ui:403
 msgid "Esc"
-msgstr ""
+msgstr "Esc"
 
 #: src/mainwindow.ui:412
 msgid "Set &Background Color..."
@@ -802,15 +802,15 @@ msgstr ""
 
 #: src/mainwindow.ui:450
 msgid "New View"
-msgstr ""
+msgstr "Ny Visning"
 
 #: src/mainwindow.ui:462
 msgid "Close View"
-msgstr ""
+msgstr "Lukk Visning"
 
 #: src/mainwindow.ui:471
 msgid "Center"
-msgstr ""
+msgstr "Sentrer"
 
 #: src/mainwindow.ui:480
 msgid "&Paste"
@@ -822,7 +822,7 @@ msgstr ""
 
 #: src/mainwindow.ui:492
 msgid "Copy"
-msgstr ""
+msgstr "Kopier"
 
 #: src/mainwindow.ui:495
 msgid "Ctrl+C"
@@ -830,7 +830,7 @@ msgstr ""
 
 #: src/mainwindow.ui:504
 msgid "Cut"
-msgstr ""
+msgstr "Klipp ut"
 
 #: src/mainwindow.ui:507
 msgid "Ctrl+X"
@@ -838,15 +838,15 @@ msgstr ""
 
 #: src/mainwindow.ui:512
 msgid "Clear"
-msgstr ""
+msgstr "Nullstill"
 
 #: src/mainwindow.ui:519
 msgid "Backspace"
-msgstr ""
+msgstr "Rettetast"
 
 #: src/mainwindow.ui:524
 msgid "Select All"
-msgstr ""
+msgstr "Velg alle"
 
 #: src/mainwindow.ui:527
 msgid "Ctrl+A"
@@ -854,7 +854,7 @@ msgstr ""
 
 #: src/mainwindow.ui:532
 msgid "Select None"
-msgstr ""
+msgstr "Velg ingen"
 
 #: src/mainwindow.ui:535
 msgid "Ctrl+Shift+A"
@@ -862,43 +862,43 @@ msgstr ""
 
 #: src/mainwindow.ui:544
 msgid "Configure Avogadro..."
-msgstr ""
+msgstr "Configurer Avogadro..."
 
 #: src/mainwindow.ui:552
 msgid "Tutorials"
-msgstr ""
+msgstr "Veiledninger"
 
 #: src/mainwindow.ui:557
 msgid "Duplicate View"
-msgstr ""
+msgstr "Dupliser Visning"
 
 #: src/mainwindow.ui:569
 msgid "Display Axes"
-msgstr ""
+msgstr "Vis Akser"
 
 #: src/mainwindow.ui:577
 msgid "Debug Information"
-msgstr ""
+msgstr "Feilsøkingsinformasjon"
 
 #: src/mainwindow.ui:585
 msgid "Avogadro Help"
-msgstr ""
+msgstr "Avogadro Hjelp"
 
 #: src/mainwindow.ui:590
 msgid "Release Notes"
-msgstr ""
+msgstr "Versjonsmerknader"
 
 #: src/mainwindow.ui:595
 msgid "Report a Bug"
-msgstr ""
+msgstr "Rapporter en feil"
 
 #: src/mainwindow.ui:600
 msgid "FAQ"
-msgstr ""
+msgstr "OSS"
 
 #: src/mainwindow.ui:605
 msgid "Avogadro Website"
-msgstr ""
+msgstr "Avogadro Nettside"
 
 #: src/mainwindow.ui:610
 msgid "Plugin Manager..."
@@ -910,11 +910,11 @@ msgstr ""
 
 #: src/mainwindow.ui:628
 msgid "Detach View"
-msgstr ""
+msgstr "Løsne Visning"
 
 #: src/mainwindow.ui:637
 msgid "Molecule File..."
-msgstr ""
+msgstr "Molekylfil..."
 
 #: src/mainwindow.ui:652
 msgid "Use Quick Render"
@@ -922,7 +922,7 @@ msgstr ""
 
 #: src/mainwindow.ui:657
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Vektorgrafikk..."
 
 #: src/mainwindow.ui:665
 msgid "Display Unit Cell Axes"
@@ -930,7 +930,7 @@ msgstr ""
 
 #: src/mainwindow.ui:673
 msgid "All Molecules in File..."
-msgstr ""
+msgstr "Alle Molekyler i Fil..."
 
 #: src/pluginsettings.ui:16
 #: src/settingsdialog.ui:246
@@ -939,11 +939,11 @@ msgstr ""
 
 #: src/pluginsettings.ui:33
 msgid "Extensions"
-msgstr ""
+msgstr "Utvidelser"
 
 #: src/pluginsettings.ui:52
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: src/projecttreeeditor.ui:17
 #: src/projecttreeeditor.ui:164
@@ -957,7 +957,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:48
 msgid "New Item"
-msgstr ""
+msgstr "Nytt Element"
 
 #: src/projecttreeeditor.ui:51
 msgid "&New Item"
@@ -965,7 +965,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:62
 msgid "New Subitem"
-msgstr ""
+msgstr "Nytt Underelement"
 
 #: src/projecttreeeditor.ui:65
 msgid "New &Subitem"
@@ -973,7 +973,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:76
 msgid "Delete Item"
-msgstr ""
+msgstr "Slett Element"
 
 #: src/projecttreeeditor.ui:79
 msgid "&Delete Item"
@@ -985,7 +985,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:106
 msgid "L"
-msgstr ""
+msgstr "V"
 
 #: src/projecttreeeditor.ui:117
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
@@ -993,40 +993,40 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:120
 msgid "R"
-msgstr ""
+msgstr "H"
 
 #: src/projecttreeeditor.ui:133
 msgid "Move Item Up"
-msgstr ""
+msgstr "Flytt Element Opp"
 
 #: src/projecttreeeditor.ui:136
 msgid "U"
-msgstr ""
+msgstr "O"
 
 #: src/projecttreeeditor.ui:147
 msgid "Move Item Down"
-msgstr ""
+msgstr "Flytt Element Ned"
 
 #: src/projecttreeeditor.ui:150
 msgid "D"
-msgstr ""
+msgstr "N"
 
 #: src/projecttreeeditor.ui:187
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: src/projecttreeeditor.ui:217
 msgid "Settings..."
-msgstr ""
+msgstr "Innstillinger..."
 
 #: src/settingsdialog.ui:34
 #: src/settingsdialog.ui:237
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: src/settingsdialog.ui:42
 msgid "Quality:"
-msgstr ""
+msgstr "Kvalitet:"
 
 #: src/settingsdialog.ui:49
 #: src/settingsdialog.ui:107
@@ -1035,21 +1035,22 @@ msgstr ""
 
 #: src/settingsdialog.ui:100
 msgid "Fog:"
-msgstr ""
+msgstr "Tåke:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Anders Oftedal,Kenneth Langdalen, ,Launchpad "
 "Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen, ,Launchpad "
-"Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen"
+"Contributions:,Anders Oftedal,Avogadro Team,Kenneth Langdalen,Simen "
+"Heggestøyl"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,anders.oftedal@gmail.com,,,,anders.oftedal@gmail.com,avogadro-"
 "devel@lists.sourceforge.net,,,,anders.oftedal@gmail.com,avogadro-"
-"devel@lists.sourceforge.net,"
+"devel@lists.sourceforge.net,,simen@simenh.com"
 
 #~ msgid "Saving file."
 #~ msgstr "Lager fil."
