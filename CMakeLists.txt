@@ -121,7 +121,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   endif(WITH_SSE2)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
-set(QT_MIN_VERSION "4.4.0") # we need at least version 4.3 of Qt now
+set(QT_MIN_VERSION "4.5.0") # we need at least version 4.3 of Qt now
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(Linguist REQUIRED) # find and setup Linguist
