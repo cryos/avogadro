@@ -986,6 +986,16 @@ namespace Avogadro{
       d->energies[m_currentConformer] = energy;
   }
 
+  void Molecule::setEnergy(int index, double energy)
+  {
+    Q_D(const Molecule);
+    if (index > numConformers() - 1 || index < 0)
+      return;
+    while (d->energies.size() != numConformers())
+      d->energies.push_back(0.0);
+    d->energies[index] = energy;
+  }
+
   void Molecule::setEnergies(const std::vector<double>& energies)
   {
     Q_D(const Molecule);
