@@ -3,7 +3,7 @@ project(Avogadro) # the name of your project
 # The Avogadro version number, currently used by the Avogadro library too
 set(Avogadro_VERSION_MAJOR 0)
 set(Avogadro_VERSION_MINOR 9)
-set(Avogadro_VERSION_PATCH 6)
+set(Avogadro_VERSION_PATCH 7)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
@@ -121,24 +121,13 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   endif(WITH_SSE2)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
-set(QT_MIN_VERSION "4.4.0") # we need at least version 4.3 of Qt now
+set(QT_MIN_VERSION "4.5.0") # we need at least version 4.3 of Qt now
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
 find_package(Linguist REQUIRED) # find and setup Linguist
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
-
-# Avogadro can be built with OpenBabel and packaged together
-option(EMBED_OPENBABEL "Build an embedded OpenBabel library" OFF)
-if(EMBED_OPENBABEL)
-  # Set up the required variables from the included OpenBabel directory
-  set(OPENBABEL2_INCLUDE_DIR
-    ${openbabel_SOURCE_DIR}/include
-    ${openbabel_BINARY_DIR}/include)
-  set(OPENBABEL2_LIBRARIES openbabel)
-else(EMBED_OPENBABEL)
-  find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
-endif(EMBED_OPENBABEL)
+find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
 
 # Check if we are building from a Git clone or a released version
 function(git_version dir version_var)

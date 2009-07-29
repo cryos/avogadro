@@ -1,9 +1,9 @@
 Requirements
 ============
  -- CMake 2.6.0 or later
- -- Qt 4.4.2 or later
- -- OpenBabel 2.2.1 or later
- -- Eigen 2.0.0 or later
+ -- Qt 4.5.2 or later
+ -- OpenBabel 2.2.2 or later
+ -- Eigen 2.0.3 or later
 
 
 Basic Installation

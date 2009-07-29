@@ -1,8 +1,8 @@
 /**********************************************************************
   Cube - Primitive class to encapsulate volumetric data
 
-	Copyright (c) 2008-2009 Marcus D. Hanwell
-	Copyright (c) 2009 Geoff Hutchison
+    Copyright (c) 2008-2009 Marcus D. Hanwell
+    Copyright (c) 2009 Geoff Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -42,6 +42,18 @@ namespace Avogadro {
   public:
     Cube(QObject *parent=0);
     ~Cube();
+
+    /**
+     * @enum Different Cube types relating to the data
+     */
+    enum Type{
+      VdW,
+      ESP,
+      ElectronDensity,
+      MO,
+      FromFile,
+      None
+    };
 
    /**
     * @return The minimum point in the cube.
@@ -197,6 +209,9 @@ namespace Avogadro {
     void setName(QString name) { m_name = name; }
     QString name() const { return m_name; }
 
+    void setCubeType(Type type) { m_cubeType = type; }
+    Type cubeType() { return m_cubeType; }
+
     friend class Molecule;
 
   private:
@@ -205,6 +220,7 @@ namespace Avogadro {
     Eigen::Vector3i m_points;
     double m_minValue, m_maxValue;
     QString m_name;
+    Type    m_cubeType;
     Q_DECLARE_PRIVATE(Cube)
   };
 

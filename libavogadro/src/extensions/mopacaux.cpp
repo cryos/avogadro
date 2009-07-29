@@ -112,9 +112,12 @@ namespace Avogadro
       readOverlapMatrix(tmp.toInt());
     }
     else if (key.contains("EIGENVECTORS")) {
-      QString tmp = key.mid(key.indexOf('[')+1, 6);
-      qDebug() << "Size of eigen vectors matrix =" << tmp.toInt();
-      readEigenVectors(tmp.toInt());
+      // For large molecules the Eigenvectors counter overflows to [*****]
+      // So just use the square of the m_atomIndex array
+//      QString tmp = key.mid(key.indexOf('[')+1, 6);
+      qDebug() << "Size of eigen vectors matrix ="
+          << m_atomIndex.size() * m_atomIndex.size();
+      readEigenVectors(m_atomIndex.size() * m_atomIndex.size());
     }
     else if (key.contains("TOTAL_DENSITY_MATRIX")) {
       QString tmp = key.mid(key.indexOf('[')+1, 6);

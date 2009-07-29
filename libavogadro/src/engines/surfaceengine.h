@@ -1,8 +1,8 @@
 /**********************************************************************
-  SurfaceEngine - Engine for display of isosurfaces
+  SurfaceEngine - Engine for display of isosurface meshes
 
-  Copyright (C) 2006-2007 Geoffrey R. Hutchison
-  Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (C) 2008-2009 Marcus D. Hanwell
+  Copyright (C) 2008 Geoffrey R. Hutchison
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -31,20 +31,20 @@
 #include <avogadro/engine.h>
 #include <avogadro/color.h>
 
-#include "ui_surfacesettingswidget.h"
+#include <QPointer>
+#include <QList>
 
 namespace Avogadro {
 
-  class Atom;
   class Mesh;
   class SurfaceSettingsWidget;
 
-  //! Surface Engine class.
+  //! Orbital Engine class.
   class SurfaceEngine : public Engine
   {
     Q_OBJECT
-    AVOGADRO_ENGINE("Surface", tr("Surface"),
-                    tr("Renders computed molecular surfaces"))
+    AVOGADRO_ENGINE("Surfaces", tr("Surfaces"),
+                    tr("Renders molecular isosurface meshes"))
 
     public:
       //! Constructor
@@ -57,7 +57,7 @@ namespace Avogadro {
       bool renderOpaque(PainterDevice *pd);
       bool renderTransparent(PainterDevice *pd);
       bool renderQuick(PainterDevice *pd);
-      bool renderPick(PainterDevice *pd);
+      bool renderPick(PainterDevice *) { return false; }
       //@}
 
       double transparencyDepth() const;
@@ -68,40 +68,46 @@ namespace Avogadro {
       Engine *clone() const;
 
       QWidget* settingsWidget();
-
       bool hasSettings() { return true; }
 
-      double radius(const PainterDevice *pd, const Primitive *p = 0) const;
-
-      void setPrimitives(const PrimitiveList &primitives);
-      /**
-       * Write the engine settings so that they can be saved between sessions.
-       */
       void writeSettings(QSettings &settings) const;
-
-      /**
-       * Read in the settings that have been saved for the engine instance.
-       */
       void readSettings(QSettings &settings);
 
-    public Q_SLOTS:
+      void setPrimitives(const PrimitiveList &primitives);
+
+    public slots:
       void addPrimitive(Primitive *primitive);
       void updatePrimitive(Primitive *primitive);
       void removePrimitive(Primitive *primitive);
-      void setDrawBox(int);
+      void setMolecule(const Molecule *molecule);
+      void setMolecule(Molecule *molecule);
 
     protected:
       SurfaceSettingsWidget *m_settingsWidget;
-      Mesh *m_mesh;
-      PainterDevice *m_pd;
-      Color  m_color;
+      QPointer<Mesh> m_mesh1;
+      QPointer<Mesh> m_mesh2;
+      Eigen::Vector3d m_min, m_max;
+      Color  m_posColor;
+      Color  m_negColor;
       double m_alpha;
       int    m_renderMode;
-      int    m_colorMode;
       bool   m_drawBox;
+      bool   m_colored;
+      QList <unsigned long> m_meshes;
 
-    private Q_SLOTS:
+      bool renderBox(PainterDevice *pd);
+
+    private slots:
+      /**
+       * Update the orbital combo box with new orbitals
+       */
+      void updateOrbitalCombo();
+
       void settingsWidgetDestroyed();
+      /**
+       * @param value orbital index
+       */
+      void setOrbital(int value);
       /**
        * @param value opacity of the surface / 20
        */
@@ -111,21 +117,23 @@ namespace Avogadro {
        */
       void setRenderMode(int value);
       /**
-       * @param value coloring mode (0 = RGB, 1 = ESP)
+       * @param value interpolate (0 = no, 1 = yes)
+       */
+      void setDrawBox(int value);
+
+      /**
+       * @param color render mode - 0 = selected colors, 1 = mapped colors
        */
       void setColorMode(int value);
-      /**
-       * @param color the new color to use
-       */
-      void setColor(const QColor& color);
-  };
 
-  class SurfaceSettingsWidget : public QWidget, public Ui::SurfaceSettingsWidget
-  {
-    public:
-      SurfaceSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-      }
+      /**
+       * @param color the color for the positive iso surface
+       */
+      void setPosColor(const QColor& color);
+      /**
+       * @param color the color for the negative iso surface
+       */
+      void setNegColor(const QColor& color);
   };
 
   //! Generates instances of our SurfaceEngine class

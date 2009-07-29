@@ -209,11 +209,6 @@ namespace Avogadro {
       Molecule* molecule();
 
       /**
-       * update the Molecule geometry.
-       */
-      void updateGeometry();
-
-      /**
        * @return a pointer to the Camera of this widget.
        */
       Camera * camera() const;
@@ -649,13 +644,13 @@ namespace Avogadro {
       void unselectBond(Bond *);
 
       /**
-       * Add an engine to the GLWidget. 
+       * Add an engine to the GLWidget.
        * @param engine Engine to add to this widget.
        */
       void addEngine(Engine *engine);
 
       /**
-       * Remove an engine from the GLWidget. 
+       * Remove an engine from the GLWidget.
        * @param engine Engine to remove from this widget.
        */
       void removeEngine(Engine *engine);
@@ -674,6 +669,11 @@ namespace Avogadro {
        * Signal that something changed and the display lists should be invalidated.
        */
       void invalidateDLs();
+
+      /**
+       * update the Molecule geometry.
+       */
+      void updateGeometry();
 
       /**
        * One or more tools are deleted..

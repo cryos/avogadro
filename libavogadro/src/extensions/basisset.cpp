@@ -218,9 +218,12 @@ namespace Avogadro
   void BasisSet::calculationComplete()
   {
     disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
-    qDebug() << (*m_basisShells)[0].tCube->data()->at(0) << (*m_basisShells)[0].tCube->data()->at(1);
+    qDebug() << (*m_basisShells)[0].tCube->name()
+        << (*m_basisShells)[0].tCube->data()->at(0)
+        << (*m_basisShells)[0].tCube->data()->at(1);
     (*m_basisShells)[0].tCube->lock()->unlock();
     delete m_basisShells;
+    emit finished();
   }
 
   inline bool BasisSet::isSmall(double val)

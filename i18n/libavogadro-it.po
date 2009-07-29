@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-06-12 11:52-0400\n"
-"PO-Revision-Date: 2009-06-17 14:21+0000\n"
-"Last-Translator: Michele Gatti <michel_gatti@yahoo.it>\n"
+"PO-Revision-Date: 2009-07-05 22:33+0000\n"
+"Last-Translator: dicairo <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-06-17 19:49+0000\n"
+"X-Launchpad-Export-Date: 2009-07-17 19:09+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -613,7 +613,7 @@ msgstr "Visualizza atomi e etichette dei legami"
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, isosuperficie = %L2"
 
 #: src/engines/orbitalengine.h:47
 msgid "Orbitals"
@@ -1029,7 +1029,7 @@ msgstr "QM Matches"
 
 #: src/extensions/gamessextension.cpp:65
 msgid "Input Generator..."
-msgstr ""
+msgstr "Generatore di input"
 
 #: src/extensions/gamessextension.cpp:70
 msgid "EFP Selection..."
@@ -1565,11 +1565,11 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:49
 msgid "Fetch from PDB..."
-msgstr ""
+msgstr "Preleva da PDB..."
 
 #: src/extensions/networkfetchextension.cpp:53
 msgid "Fetch from URL..."
-msgstr ""
+msgstr "Preleva da un URL..."
 
 #: src/extensions/networkfetchextension.cpp:88
 msgid "PDB Entry"
@@ -1581,7 +1581,7 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:103
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/extensions/networkfetchextension.cpp:104
 msgid "URL of molecule to download."
@@ -1609,11 +1609,11 @@ msgstr "La molecola specificata non è stata caricata: %1"
 
 #: src/extensions/networkfetchextension.h:39
 msgid "Network Fetch"
-msgstr ""
+msgstr "Prelievo dalla Rete"
 
 #: src/extensions/networkfetchextension.h:40
 msgid "Fetch molecule files over the network."
-msgstr ""
+msgstr "Preleva i file della molecola dalla rete."
 
 #: src/extensions/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
@@ -1795,7 +1795,7 @@ msgstr "Proprietà Torsioni..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "Proprietà della Conformazione..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Cartesian Editor..."
@@ -1803,7 +1803,7 @@ msgstr "Editor Cartesiano..."
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr ""
+msgstr "Proprietà dell'Atomo"
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
@@ -1811,7 +1811,7 @@ msgstr ""
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr ""
+msgstr "Proprietà dell'Angolo"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
@@ -1845,7 +1845,7 @@ msgstr "Tipo"
 
 #: src/extensions/propmodel.cpp:355
 msgid "Element"
-msgstr ""
+msgstr "Elemento"
 
 #: src/extensions/propmodel.cpp:357
 msgid "Valence"
@@ -2082,11 +2082,11 @@ msgstr "Carica e usa gli ombreggiatori OpenGL 2.0 GLSL"
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "Asse X"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Asse Y"
 
 #: src/extensions/spectradialog.ui:127
 #: src/extensions/spectradialog.cpp:152 :1620
@@ -2101,7 +2101,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "Infrarosso"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
@@ -6140,7 +6140,7 @@ msgstr ""
 "Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo "
 "Naldini,Paolo Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de "
 "mitri, ,Launchpad Contributions:,94thomas, ,Launchpad "
-"Contributions:,94thomas,Michele Gatti"
+"Contributions:,94thomas,Michele Gatti,dicairo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6149,7 +6149,7 @@ msgstr ""
 ",aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas"
 ".Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_"
 "isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas.Bellott"
-"i@liceotosi.org,,,Thomas.Bellotti@liceotosi.org,michel_gatti@yahoo.it"
+"i@liceotosi.org,,,Thomas.Bellotti@liceotosi.org,michel_gatti@yahoo.it,"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesio"

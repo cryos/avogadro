@@ -6,19 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>321</width>
-    <height>209</height>
+    <width>331</width>
+    <height>214</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="opacityLabel">
+    <widget class="QLabel" name="orbitalLabel">
      <property name="text">
-      <string>Opacity:</string>
+      <string>Orbital:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
+    <widget class="QComboBox" name="orbital1Combo"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="opacityLabel">
+     <property name="text">
+      <string>Opacity:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
     <widget class="QSlider" name="opacitySlider">
      <property name="minimum">
       <number>0</number>
@@ -33,10 +49,10 @@
       <number>2</number>
      </property>
      <property name="value">
-      <number>10</number>
+      <number>15</number>
      </property>
      <property name="sliderPosition">
-      <number>10</number>
+      <number>15</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -48,18 +64,21 @@
       <enum>QSlider::TicksBothSides</enum>
      </property>
      <property name="tickInterval">
-      <number>4</number>
+      <number>5</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="renderLabel">
      <property name="text">
       <string>Render:</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1">
     <widget class="QComboBox" name="renderCombo">
      <item>
       <property name="text">
@@ -78,72 +97,106 @@
      </item>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="colorLabel">
-     <property name="text">
-      <string>Color:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QComboBox" name="colorCombo">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <item>
-      <property name="text">
-       <string>Custom Color</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Electrostatic Potential (ESP)</string>
-      </property>
-     </item>
-    </widget>
-   </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="paddingLabel_2">
      <property name="text">
       <string>Draw Box:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QCheckBox" name="drawBoxCheck">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    <widget class="QCheckBox" name="drawBoxCheck">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QLabel" name="customColorLabel">
+    <widget class="QLabel" name="colorLabel_4">
      <property name="text">
-      <string>Custom Color:</string>
+      <string>Style:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item row="4" column="1">
+    <widget class="QComboBox" name="colorCombo">
+     <item>
+      <property name="text">
+       <string>Selected Colors</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mapped Colors</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="colorLabel">
+     <property name="text">
+      <string>Colors:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
     <layout class="QHBoxLayout">
      <item>
-      <widget class="Avogadro::ColorButton" name="customColorButton" native="true">
+      <widget class="QLabel" name="colorLabel_2">
+       <property name="text">
+        <string>Positive</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Avogadro::ColorButton" name="posColor" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>36</width>
+         <height>21</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="colorLabel_3">
+       <property name="text">
+        <string>Negative</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Avogadro::ColorButton" name="negColor" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>36</width>
@@ -167,15 +220,15 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
+   <item row="6" column="0" colspan="2">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>323</width>
+       <height>20</height>
       </size>
      </property>
     </spacer>
