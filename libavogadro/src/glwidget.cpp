@@ -1006,13 +1006,13 @@ namespace Avogadro {
     y += d->pd->painter()->drawText(x, y, "---- " + tr("Debug Information") + " ----");
     y += d->pd->painter()->drawText(x, y, tr("FPS: %L1").arg(computeFramesPerSecond(), 0, 'g', 3));
 
-    y += d->pd->painter()->drawText(x, y, 
+    y += d->pd->painter()->drawText(x, y,
                                     tr("View Size: %L1 x %L2").arg(d->pd->width()).arg(d->pd->height()) );
     if (!d->molecule) {
       y += d->pd->painter()->drawText(x, y, tr("No molecule set"));
       return;
     }
- 
+
 //    list = primitives().subList(Primitive::AtomType);
     y += d->pd->painter()->drawText(x, y, tr("Atoms: %L1").arg(d->molecule->numAtoms()));
 
@@ -1182,12 +1182,16 @@ namespace Avogadro {
     // When the molecule is updated, the display lists become invalid, we should
     // also render the updated molecule. This should be much simpler than before.
     connect(d->molecule, SIGNAL(updated()), this, SLOT(invalidateDLs()));
+    connect(d->molecule, SIGNAL(updated()), this, SLOT(updateGeometry()));
     connect(d->molecule, SIGNAL(updated()), this, SLOT(update()));
 
     // If primitives, atoms, or bonds are removed, we need to delete them from the selected list
-    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)), this, SLOT(unselectPrimitive(Primitive*)));
-    connect(d->molecule, SIGNAL(atomRemoved(Atom*)), this, SLOT(unselectAtom(Atom*)));
-    connect(d->molecule, SIGNAL(bondRemoved(Bond*)), this, SLOT(unselectBond(Bond*)));
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive*)),
+            this, SLOT(unselectPrimitive(Primitive*)));
+    connect(d->molecule, SIGNAL(atomRemoved(Atom*)),
+            this, SLOT(unselectAtom(Atom*)));
+    connect(d->molecule, SIGNAL(bondRemoved(Bond*)),
+            this, SLOT(unselectBond(Bond*)));
 
     // setup the camera to have a nice viewpoint on the molecule
     d->camera->initializeViewPoint();
@@ -1247,7 +1251,7 @@ namespace Avogadro {
   void GLWidget::updateGeometry()
   {
     if (!d->molecule) return;
- 
+
     if ( d->molecule->OBUnitCell() == NULL ) {
       //plain molecule, no crystal cell
       d->center = d->molecule->center();
@@ -1731,9 +1735,7 @@ namespace Avogadro {
   PrimitiveList GLWidget::namedSelectionPrimitives(int index)
   {
     PrimitiveList list;
-    if (!d->molecule) return list;
-
-    if (!d->molecule) 
+    if (!d->molecule)
       return list;
 
     for (int j = 0; j < d->namedSelections.at(index).second.first.size(); ++j) {
@@ -1891,7 +1893,7 @@ namespace Avogadro {
       d->engines.at(i)->writeSettings(settings);
     }
     settings.endArray();
- 
+
     // delete engines
     foreach(Engine *engine, d->engines) {
       delete engine;
@@ -1916,7 +1918,7 @@ namespace Avogadro {
     settings.endArray();
   }
 
- 
+
   void GLWidget::setQuickRender(bool enabled)
   {
     d->allowQuickRender = enabled;
