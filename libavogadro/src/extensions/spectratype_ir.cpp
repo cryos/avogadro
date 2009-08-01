@@ -100,23 +100,6 @@ namespace Avogadro {
       }
     }
 
-    ////////////////////////////////////////////////////////////
-    // FIXME: dlonie: remove this when OB is fixed!! Hack to get
-    // around bug in how open babel reads in QChem files.
-    // While openbabel is broken, remove indicies (n+3), where
-    // n=0,1,2...
-    if (wavenumbers.size() == 0.75 * intensities.size()) {
-      uint count = 0;
-      for (uint i = 0; i < intensities.size(); i++) {
-        if ((i+count)%3 == 0){
-          intensities.erase(intensities.begin()+i);
-          count++;
-          i--;
-        }
-      }
-    }
-    ///////////////////////////////////////////////////////////
-
     // Normalize intensities into transmittances
     double maxIntensity=0;
     for (unsigned int i = 0; i < intensities.size(); i++) {
