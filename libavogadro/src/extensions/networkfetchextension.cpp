@@ -25,12 +25,15 @@
 #include "networkfetchextension.h"
 
 #include <avogadro/molecule.h>
+#include <avogadro/glwidget.h>
+#include <avogadro/toolgroup.h>
 
 #include <QAction>
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QFileInfo>
 #include <QDebug>
 
 #include <openbabel/mol.h>
@@ -48,6 +51,10 @@ namespace Avogadro
     QAction* action = new QAction(this);
     action->setText(tr("Fetch from PDB..."));
     action->setData("PDB");
+    m_actions.append(action);
+    action = new QAction(this);
+    action->setText(tr("Fetch chemical structure..."));
+    action->setData("NIH");
     m_actions.append(action);
     action = new QAction(this);
     action->setText(tr("Fetch from URL..."));
@@ -96,6 +103,22 @@ namespace Avogadro
 
       *m_moleculeName = pdbName + ".pdb";
     }
+    else if (action->data() == "NIH") {
+      // Prompt for a chemical structure name
+      bool ok;
+      QString structureName = QInputDialog::getText(qobject_cast<QWidget*>(parent()),
+                                                    tr("Chemical Name"),
+                                                    tr("Chemical structure to download."),
+                                                    QLineEdit::Normal,
+                                                    "", &ok);
+      if (!ok || structureName.isEmpty())
+        return 0;
+      // Hard coding the PDB download URL - this could be used for other services
+      m_network->get(QNetworkRequest(
+          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf")));
+
+      *m_moleculeName = structureName + ".sdf";
+    }
     else if (action->data() == "URL") {
       // Prompt for a URL
       bool ok;
@@ -111,6 +134,8 @@ namespace Avogadro
 
       *m_moleculeName = url;
     }
+
+    widget->toolGroup()->setActiveTool("Navigate");
 
     return 0;
   }
@@ -155,7 +180,8 @@ namespace Avogadro
 
     // Now read it in with OpenBabel - we should add a wrapper class to automate
     OBConversion conv;
-    conv.SetInFormat("pdb");
+    QFileInfo info(*m_moleculeName);
+    conv.SetInFormat(info.suffix().toAscii());
     OBMol *obmol = new OBMol;
     if (conv.ReadString(obmol, QString(data).toStdString())) {
       Molecule *mol = new Molecule;
