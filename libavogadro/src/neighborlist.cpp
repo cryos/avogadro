@@ -25,6 +25,8 @@
 #include <avogadro/neighborlist.h>
 #include <avogadro/atom.h>
 
+#include <QDebug>
+
 using namespace std;
 
 namespace Avogadro
@@ -155,7 +157,11 @@ namespace Avogadro
     if (m_atoms.isEmpty())
       return;
 
-    Molecule *molecule = dynamic_cast<Molecule*>(m_atoms.first()->parent());
+    Molecule *molecule = qobject_cast<Molecule*>(m_atoms.first()->parent());
+    if (!molecule) {
+      qDebug() << "Error, null molecule returned in NeighborList::initOneTwo()";
+      return;
+    }
 
     foreach (Atom *atom, m_atoms) {
       foreach (unsigned long id1, atom->neighbors()) {
