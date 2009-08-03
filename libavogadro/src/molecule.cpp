@@ -1260,6 +1260,9 @@ namespace Avogadro{
       d->obvibdata = vibData;
     }
 
+    // Copy energy
+    setEnergy(obmol->GetEnergy());
+
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
     OpenBabel::OBPairData *property;
