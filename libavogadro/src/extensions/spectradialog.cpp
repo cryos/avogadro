@@ -526,7 +526,8 @@ namespace Avogadro {
     // Define data types here. Make sure to include "IR" for IR data and "NMR" for NMR data, etc. 
     // Put the default file extension in (*.ext), i.e. (.out)
     types
-      << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" );
+      << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
+      << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" );
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
@@ -560,42 +561,64 @@ namespace Avogadro {
 
       // Prepare lists
       QList<double> x,y;
-      
-      // Set up some info by data type:
-      QString delim;
-      QString cue; // Skip to this line before reading data in
-      int wavenumber_idx;
-      int intensity_idx;
-      if (type.contains("PWscf")) { // Plane wave self consistant field output
-        delim 	= "\\s+"; // finds all whitespace
-        cue	= "#  mode";
-        wavenumber_idx	= 2;
-        intensity_idx	= 4;
-      }
 
-      // Cue file
-      while (!in.atEnd())
-        if (in.readLine().contains(cue)) break;
+      // If the file just contains values in columns, set the variables
+      // below. Otherwise, implement a new reader below  (data in rows, etc).
+      // Add the "easily parsed" types to the condition below:
+      if (type.contains("PWscf") ||
+          type.contains("Turbomole") ) {
+        // Set up some info by data type:
+        QString delim;
+        QString cue; // Skip to this line before reading data in
+        QString end; // This line terminates reading
+        int wavenumber_idx;
+        int intensity_idx;
 
-      // Iterate through file
-      int min = (wavenumber_idx < intensity_idx) ? wavenumber_idx : intensity_idx;
-      while (!in.atEnd()) {
-        QString line = in.readLine();
-        if (line.trimmed().startsWith('#')) continue; 	//discard comments
-        QStringList data = line.split(QRegExp(delim));
-        if (data.size() < min) {
-          qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
-                     << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
-          continue;
+        // Set the variables for each "easily parsed" type here...
+        if (type.contains("PWscf")) { // Plane wave self consistant field output
+          delim	= "\\s+"; // finds all whitespace
+          cue = "#  mode";
+          end = ""; 
+          wavenumber_idx= 2;
+          intensity_idx	= 4;
         }
-        if (data.at(wavenumber_idx).toDouble() && data.at(intensity_idx).toDouble()) { // Check for valid conversions and non-zero data
-          x.append(data.at(wavenumber_idx).toDouble());
-          y.append(data.at(intensity_idx).toDouble());
+        else if (type.contains("Turbomole")) { // Plane wave self consistant field output
+          delim = "\\s+"; // finds all whitespace
+          cue = "$vibrational spectrum";
+          end = "$end";
+          wavenumber_idx= 3;
+          intensity_idx	= 4;
         }
-        else {
-          qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
-          continue;
+
+        // Cue file
+        while (!in.atEnd())
+          if (in.readLine().contains(cue)) break;
+
+        // Iterate through file
+        int min = (wavenumber_idx < intensity_idx) ? wavenumber_idx : intensity_idx;
+        while (!in.atEnd()) {
+          QString line = in.readLine();
+          if (!end.isEmpty() && line.contains(end)) break;
+          if (line.trimmed().startsWith('#')) continue; 	//discard comments
+          QStringList data = line.split(QRegExp(delim));
+          if (data.size() < min) {
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+                       << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
+            continue;
+          }
+          if (data.at(wavenumber_idx).toDouble() && data.at(intensity_idx).toDouble()) { // Check for valid conversions and non-zero data
+            x.append(data.at(wavenumber_idx).toDouble());
+            y.append(data.at(intensity_idx).toDouble());
+            qDebug() << data.at(wavenumber_idx).toDouble() << " "
+                     << data.at(intensity_idx).toDouble();
+            qDebug() << data;
+          }
+          else {
+            qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
+            continue;
+          }
         }
+
       }
 
       // Prepare a molecule with the data
@@ -607,8 +630,7 @@ namespace Avogadro {
       Molecule *mol = new Molecule;
       mol->setOBMol(obmol);
 
-      if (currentSpectra()) currentSpectra()->checkForData(mol);
-      delete mol;
+      setMolecule(mol);
     }
   }
 
