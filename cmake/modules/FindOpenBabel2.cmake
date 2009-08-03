@@ -18,7 +18,7 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
 
     # Use the newer PkgConfig stuff
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.2.0)
+    pkg_check_modules(OPENBABEL2 openbabel-2.0>=2.2.2)
 
     # Maintain backwards compatibility with previous version of module
     if(OPENBABEL2_FOUND STREQUAL "1")
@@ -88,7 +88,7 @@ if(OPENBABEL2_EXECUTABLE)
 else(OPENBABEL2_EXECUTABLE)
   find_program(OPENBABEL2_EXECUTABLE NAMES babel
     PATHS
-    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.2.0]
+    [HKEY_CURRENT_USER\\SOFTWARE\\OpenBabel\ 2.2.2]
     $ENV{OPENBABEL2_EXECUTABLE}
   )
 
