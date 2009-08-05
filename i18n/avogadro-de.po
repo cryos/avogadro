@@ -3,28 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
 "PO-Revision-Date: 2009-06-24 13:45+0000\n"
 "Last-Translator: Keruskerfuerst <armin_mohring@web.de>\n"
 "Language-Team: <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-",,,erik_hahn@gmx.de,,,,armin_mohring@web.de,michael.kogan@gmx.net,steve@steve"
-"-m.de,loniedavid@gmail.com,,,soc@krg-"
-"nw.de,,,,erik_hahn@gmx.de,,,,armin_mohring@web.de,michael.kogan@gmx.net,steve"
-"@steve-m.de,,loniedavid@gmail.com,,,soc@krg-nw.de,,,,avogadro-"
-"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,michael"
-".kogan@gmx.net,steve@steve-m.de,,loniedavid@gmail.com,,,soc@krg-"
-"nw.de,,,,avogadro-"
-"devel@lists.sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,michael"
-".kogan@gmx.net,steve@steve-m.de,,loniedavid@gmail.com,,,,soc@krg-nw.de"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
@@ -33,24 +20,23 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Anwendungsversion: %2<br/><br/>Bibliotheksversion: "
-"%3<br/><br/>Für weitere Informationen schauen sie auf die <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"Homepage</a>.<br/><br/>Das Programm wird WIE ES IST zur Verfügung gestellt. "
-"Es besteht KEINE GARANTIE JEGLICHER ART, wie GARANTIE AUF DESIGN, "
-"VERKEHRSFÄHIGKEIT und FITNESS FÜR EINEN BESTIMMTEN ZWECK.<br/>"
+"<h3>%1</h3><br/><br/>Anwendungsversion: %2<br/><br/>Bibliotheksversion: %"
+"3<br/><br/>Für weitere Informationen schauen sie auf die <a href=\"http://"
+"avogadro.openmolecules.net/\">Avogadro Homepage</a>.<br/><br/>Das Programm "
+"wird WIE ES IST zur Verfügung gestellt. Es besteht KEINE GARANTIE JEGLICHER "
+"ART, wie GARANTIE AUF DESIGN, VERKEHRSFÄHIGKEIT und FITNESS FÜR EINEN "
+"BESTIMMTEN ZWECK.<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -74,14 +60,13 @@ msgstr "Molekül entfernen"
 msgid "Clear Atoms"
 msgstr "Atome entfernen"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
 msgstr "&Einstellungen"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -105,110 +90,115 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr "Alle nach vorne bringen"
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr "Werkzeugeins&tellungen"
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Strg+T"
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr "&Anzeigeeinstellungen..."
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Strg+D"
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "übliche Molekularformate"
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Alle Dateien"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr "Computerchemie-Ausgabe"
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr "kristallografischer Austausch CIF"
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr "GAMESS-US Ausgabe"
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr "Gaussian 98/03 Ausgabe"
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr "formatierter Gaussian Checkpoint"
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr "NWChem Ausgabe"
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Lade %1..."
 
 # %1 is a filename
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr "Lade %1..."
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr "Lesen der Moleküldatei gescheitert, Datei %1."
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Multi-Molekül-Datei wird gelesen. Das kann eine Weile dauern..."
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr "Diese Datei enthält keine 3D Koordinaten"
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Soll Avogadro die ungefähre geometrische Anordnung berechnen?"
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -216,209 +206,204 @@ msgstr ""
 "Diese Datei enthält keine 3D-Koordinaten.\n"
 "Darstellung und Bearbeitung werden nur eingeschränkt funktionieren."
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr "Molekül zur Darstellung wählen"
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr "Molekülbezeichnung"
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Atome: "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Bindungen: "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr "Lesen der Moleküldatei gescheitert, Datei %1."
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr "Datei geladen..."
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr ""
 "Wollen Sie die Änderungen speichern, die Sie in dem Dokument vorgenommen "
 "haben?"
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr "Ihre Änderungen gehen verloren wenn Sie nicht speichern."
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Strg+S"
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Strg+D"
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr "Speichern..."
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Speichern"
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr "GAMESS Eingabe"
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian kartesische Eingabe"
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-Matrix Eingabe"
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr "MDL SDF-Datei"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr "NWChem Eingabe"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr "Speichere Molekül als"
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr "übliche Dateiformate für Bilder"
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr "Bilddatei exportieren"
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Datei %1 konnte nicht gespeichert werden."
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr "übliche Vektorbilddateien"
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr "Unbenannt %1"
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr "Einfügen des Moleküls fehlgeschlagen."
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr "Einfügen fehlgeschlagen (Format nicht verfügbar)."
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopieren fehlgeschlagen (mdl nicht verfügbar)."
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr "Ansicht %1"
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Betrachte %1"
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Abgetrennte Ansicht"
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr "Normale Ansicht"
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "Vollbild"
 
-#: src/mainwindow.cpp:2228
+#: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
 msgstr "Strg+Leertaste"
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "unbenannt"
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr "Duplizieren"
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr "Keine Werkzeuge oder Engine geladen."
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr "Keine Engine geladen."
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr "Keine Werkzeuge geladen."
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -426,16 +411,15 @@ msgstr ""
 " Es ist unwahrscheinlich, dass Avogadro korrekt funktionieren wird. Bitte "
 "beheben Sie den Fehler."
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Objekte"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr "Farben"
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr " Kopieren"
 
@@ -506,8 +490,7 @@ msgstr "Fehler"
 msgid "only labels can have sub items"
 msgstr "Nur Bezeichnungen können Unterartikel besitzen"
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr "Eintrag"
 
@@ -520,8 +503,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Niedrig"
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Mittel"
@@ -536,8 +518,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Undefiniert"
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Keiner"
@@ -599,18 +580,15 @@ msgstr "Form"
 msgid "Color by:"
 msgstr "Farbe nach:"
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Hinzufügen ausgewählter Primitive"
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Entfernen ausgewählter Primitive"
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Alle primitive hinzufügen"
 
@@ -706,23 +684,19 @@ msgstr "Au&swahl"
 msgid "Main Toolbar"
 msgstr "Hauptleiste"
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Projektbaum"
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Anzeige-Typen"
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Öffnen"
 
@@ -730,8 +704,7 @@ msgstr "&Öffnen"
 msgid "Ctrl+O"
 msgstr "Strg+Ö"
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Beenden"
 
@@ -747,8 +720,7 @@ msgstr "Zuletzt"
 msgid "&Clear Recent"
 msgstr "&Liste löschen"
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr "&Neu"
 
@@ -756,8 +728,7 @@ msgstr "&Neu"
 msgid "Ctrl+N"
 msgstr "Strg+N"
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr "&Schließen"
 
@@ -765,8 +736,7 @@ msgstr "&Schließen"
 msgid "Ctrl+W"
 msgstr "Strg+W"
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr "&Speichern"
 
@@ -954,8 +924,7 @@ msgstr "Achsen der Elementarzelle anzeigen"
 msgid "All Molecules in File..."
 msgstr "Alle Moleküle in der Datei..."
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -967,13 +936,11 @@ msgstr "Erweiterungen"
 msgid "Details"
 msgstr "Details"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Baumartikel"
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Typ"
 
@@ -1043,8 +1010,7 @@ msgstr "Alias"
 msgid "Settings..."
 msgstr "Einstellungen..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr "Allgemein"
 
@@ -1052,8 +1018,7 @@ msgstr "Allgemein"
 msgid "Quality:"
 msgstr "Qualität"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Globale Renderqualität einstellen"
 
@@ -1064,469 +1029,145 @@ msgstr "Nebel:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Alexander Minges,Erik Hahn,Geoff "
-"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Photon,Steve "
-"Markgraf,dlonie,kuede,mogli,soc, ,Launchpad Contributions:,Alexander "
-"Minges,Erik Hahn,Geoff Hutchison,HUWagner,Hans "
-"Christof,Keruskerfuerst,Photon,Steve "
-"Markgraf,Thomas_T,dlonie,kuede,mogli,soc, ,Launchpad "
-"Contributions:,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
-"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Photon,Steve "
-"Markgraf,Thomas_T,dlonie,kuede,mogli,soc, ,Launchpad "
-"Contributions:,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
-"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Photon,Steve "
-"Markgraf,Thomas_T,dlonie,kuede,mikeL,mogli,soc"
+",Launchpad Contributions:,Alexander Minges,Erik Hahn,Geoff Hutchison,"
+"HUWagner,Hans Christof,Keruskerfuerst,Photon,Steve Markgraf,dlonie,kuede,"
+"mogli,soc, ,Launchpad Contributions:,Alexander Minges,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Photon,Steve Markgraf,"
+"Thomas_T,dlonie,kuede,mogli,soc, ,Launchpad Contributions:,Alexander Minges,"
+"Avogadro Team,Erik Hahn,Geoff Hutchison,HUWagner,Hans Christof,"
+"Keruskerfuerst,Lunix,Photon,Steve Markgraf,Thomas_T,dlonie,kuede,mogli,soc, ,"
+"Launchpad Contributions:,Alexander Minges,Avogadro Team,Erik Hahn,Geoff "
+"Hutchison,HUWagner,Hans Christof,Keruskerfuerst,Lunix,Photon,Steve Markgraf,"
+"Thomas_T,dlonie,kuede,mikeL,mogli,soc"
 
-#~ msgid "Tool Settings"
-#~ msgstr "Werkzeugeinstellungen"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,erik_hahn@gmx.de,,,,armin_mohring@web.de,michael.kogan@gmx.net,"
+"steve@steve-m.de,loniedavid@gmail.com,,,soc@krg-nw.de,,,,erik_hahn@gmx.de,,,,"
+"armin_mohring@web.de,michael.kogan@gmx.net,steve@steve-m.de,,"
+"loniedavid@gmail.com,,,soc@krg-nw.de,,,,avogadro-devel@lists.sourceforge.net,"
+"erik_hahn@gmx.de,,,,armin_mohring@web.de,,michael.kogan@gmx.net,steve@steve-"
+"m.de,,loniedavid@gmail.com,,,soc@krg-nw.de,,,,avogadro-devel@lists."
+"sourceforge.net,erik_hahn@gmx.de,,,,armin_mohring@web.de,,michael.kogan@gmx."
+"net,steve@steve-m.de,,loniedavid@gmail.com,,,,soc@krg-nw.de"
 
-#, qt-format
-#~ msgid ""
-#~ "Cannot read file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Datei %1 konnte nicht gelesen werden.:\n"
-#~ "%2."
+#~ msgid "Load File..."
+#~ msgstr "Datei laden..."
 
-#, qt-format
-#~ msgid "Cannot read file format of file %1."
-#~ msgstr "Das Dateiformat der Datei %1 kann nicht gelesen werden."
+#~ msgid "Loop"
+#~ msgstr "Schleife"
 
-#, qt-format
-#~ msgid "Cannot read file %1."
-#~ msgstr "Die Datei %1 kann nicht gelesen werden."
+#~ msgid "fps"
+#~ msgstr "FPS"
 
-#~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
-#~ msgstr ""
-#~ "Diese Datei scheint mehrere Moleküle zu enthalten. Avogadro wird nur das "
-#~ "erste Molekül anzeigen. Beim Speichern gehen alle anderen Moleküle verloren."
+#~ msgid "Axis:"
+#~ msgstr "Achse:"
 
-#~ msgid "Navigate"
-#~ msgstr "Navigieren"
+#~ msgid "Align"
+#~ msgstr "Ausrichten"
 
-#, qt-format
-#~ msgid "Cannot write to file format of file %1."
-#~ msgstr "Das Format der Datei %1 konnte nicht geschrieben werden."
+#~ msgid "Align:"
+#~ msgstr "Ausrichten:"
 
-#, qt-format
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Datei %1 konnte nicht geschrieben werden:\n"
-#~ "%2."
+#~ msgid "Everything"
+#~ msgstr "Alles"
 
-#, qt-format
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Datei %1 konnte nicht geschrieben werden."
+#~ msgid "Animation..."
+#~ msgstr "Animation..."
 
-#~ msgid "Saving file."
-#~ msgstr "Speichere Datei."
+#~ msgid "Force Field:"
+#~ msgstr "Kraftfeld:"
 
-#~ msgid "Save succeeded."
-#~ msgstr "Speichern erfolgreich."
+#~ msgid "Algorithm:"
+#~ msgstr "Algorithmus:"
 
-#~ msgid "Saving molecular file failed."
-#~ msgstr "Speichern des Moleküls fehlgeschlagen."
+#~ msgid "Steepest Descent"
+#~ msgstr "Tiefster Abstieg"
 
-#~ msgid "Set Aspect Ratio"
-#~ msgstr "Seitenverhätnis einstellen"
+#~ msgid "10e-"
+#~ msgstr "10e-"
 
-#, qt-format
-#~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-#~ "ratio %3.\n"
-#~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
-#~ "value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
-#~ "1000x1000 pixels."
-#~ msgstr ""
-#~ "Die aktuelle Avogadroanischt ist %1x%2 Pixel gross und besitzt daher ein "
-#~ "Anzeigeverhältnis von %3.\n"
-#~ "Sie können diesen Wert beibehalten, falls Sie zum Beispiel POV-Ray benutzen "
-#~ "möchten\n"
-#~ "um ein BIld von %4x1000 Pixeln zu erzeugen oder Sie können einen anderen "
-#~ "positiven Werte eingeben,\n"
-#~ "zum Beispiel 1 falls Sie mit POV-Ray ein quadratisches Bild, wie 1000 x 1000 "
-#~ "Pixel, erzeugen möchten."
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
 
 #~ msgid ""
-#~ "The document has been modified.\n"
-#~ "Do you want to save your changes?"
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
 #~ msgstr ""
-#~ "Das Molekül wurde verändert.\n"
-#~ "Änderungen speichern?"
+#~ "Automatisches Optimieren\n"
+#~ "\n"
+#~ "\n"
+#~ "Navigationsfunktionen im leeren Raum:Linke Maustaste:Umgebung rotieren\n"
+#~ "Mittlere Maustaste:Umgebung zoomen\n"
+#~ "Rechte Maustaste:Umgebung verschieben\n"
+#~ "\n"
+#~ "Bei aktiviertem Werkzeug:\n"
+#~ "Linke Maustaste: Klicken und ziehen um Atome zu bewegen"
 
-#~ msgid "Manipulate"
-#~ msgstr "Bearbeiten"
+#~ msgid "AutoOptimization"
+#~ msgstr "Automatisches Optimieren"
 
-# [*] indicates that this is a modified view....
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Gesperrte Atome sind beweglich"
 
-#, qt-format
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Ignorierte Atome sind beweglich"
 
-#~ msgid "Hydrogen"
-#~ msgstr "Wasserstoff"
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Moleküldynamik (300K)"
 
-#~ msgid "Helium"
-#~ msgstr "Helium"
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Moleküldynamik (600K)"
 
-#~ msgid "Lithium"
-#~ msgstr "Lithium"
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Moleküldynamik (900K)"
 
-#~ msgid "Beryllium"
-#~ msgstr "Beryllium"
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "AutoOpt: Kraftfeld konnte nicht initialisiert werden..."
 
-#~ msgid "Boron"
-#~ msgstr "Bor"
+#~ msgid "Steps per Update:"
+#~ msgstr "Schritte pro Aktualisierung:"
 
-#~ msgid "Carbon"
-#~ msgstr "Kohlenstoff"
+#~ msgid "Conjugate Gradients"
+#~ msgstr "Verlaufskonjugation"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Stickstoff"
+#~ msgid "AutoRotate"
+#~ msgstr "Automatisches Rotieren"
 
-#~ msgid "Oxygen"
-#~ msgstr "Sauerstoff"
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Automatisches Rotieren"
 
-#~ msgid "Fluorine"
-#~ msgstr "Flour"
+#~ msgid "x rotation:"
+#~ msgstr "Rotation um x-Achse:"
 
-#~ msgid "Neon"
-#~ msgstr "Neon"
+#~ msgid "x rotation"
+#~ msgstr "Rotation um x-Achse"
 
-#~ msgid "Sodium"
-#~ msgstr "Natrium"
+#~ msgid "y rotation:"
+#~ msgstr "Rotation um y-Achse:"
 
-#~ msgid "Magnesium"
-#~ msgstr "Magnesium"
+#~ msgid "y rotation"
+#~ msgstr "Rotation um y-Achse"
 
-#~ msgid "Aluminum"
-#~ msgstr "Aluminium"
+#~ msgid "z rotation:"
+#~ msgstr "Rotation um z-Achse:"
 
-#~ msgid "Silicon"
-#~ msgstr "Silizium"
+#~ msgid "z rotation"
+#~ msgstr "Rotation um z-Achse"
 
-#~ msgid "Phosphorus"
-#~ msgstr "Phosphor"
-
-#~ msgid "Sulfur"
-#~ msgstr "Schwefel"
-
-#~ msgid "Chlorine"
-#~ msgstr "Chlor"
-
-#~ msgid "Argon"
-#~ msgstr "Argon"
-
-#~ msgid "Potassium"
-#~ msgstr "Kalium"
-
-#~ msgid "Calcium"
-#~ msgstr "Kalzium"
-
-#~ msgid "Scandium"
-#~ msgstr "Scandium"
-
-#~ msgid "Titanium"
-#~ msgstr "Titan"
-
-#~ msgid "Vanadium"
-#~ msgstr "Vanadium"
-
-#~ msgid "Chromium"
-#~ msgstr "Chrom"
-
-#~ msgid "Manganese"
-#~ msgstr "Mangan"
-
-#~ msgid "Iron"
-#~ msgstr "Eisen"
-
-#~ msgid "Cobalt"
-#~ msgstr "Kobalt"
-
-#~ msgid "Nickel"
-#~ msgstr "Nickel"
-
-#~ msgid "Copper"
-#~ msgstr "Kupfer"
-
-#~ msgid "Zinc"
-#~ msgstr "Zink"
-
-#~ msgid "Gallium"
-#~ msgstr "Gallium"
-
-#~ msgid "Germanium"
-#~ msgstr "Germanium"
-
-#~ msgid "Arsenic"
-#~ msgstr "Arsen"
-
-#~ msgid "Selenium"
-#~ msgstr "Selen"
-
-#~ msgid "Bromine"
-#~ msgstr "Brom"
-
-#~ msgid "Krypton"
-#~ msgstr "Krypton"
-
-#~ msgid "Rubidium"
-#~ msgstr "Rubidium"
-
-#~ msgid "Strontium"
-#~ msgstr "Strontium"
-
-#~ msgid "Yttrium"
-#~ msgstr "Yttrium"
-
-#~ msgid "Zirconium"
-#~ msgstr "Zircon"
-
-#~ msgid "Niobium"
-#~ msgstr "Niob (Columbium)"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Molybden"
-
-#~ msgid "Technetium"
-#~ msgstr "Technetium"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Ruthenium"
-
-#~ msgid "Rhodium"
-#~ msgstr "Rhodium"
-
-#~ msgid "Palladium"
-#~ msgstr "Palladium"
-
-#~ msgid "Silver"
-#~ msgstr "Silber"
-
-#~ msgid "Cadmium"
-#~ msgstr "Cadmium"
-
-#~ msgid "Indium"
-#~ msgstr "Indium"
-
-#~ msgid "Tin"
-#~ msgstr "Zinn"
-
-#~ msgid "Antimony"
-#~ msgstr "Antimon"
-
-#~ msgid "Tellurium"
-#~ msgstr "Tellur"
-
-#~ msgid "Iodine"
-#~ msgstr "Jod"
-
-#~ msgid "Xenon"
-#~ msgstr "Xenon"
-
-#~ msgid "Caesium"
-#~ msgstr "Cäsium"
-
-#~ msgid "Barium"
-#~ msgstr "Barium"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lanthan"
-
-#~ msgid "Cerium"
-#~ msgstr "Cer"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Praseodym"
-
-#~ msgid "Neodymium"
-#~ msgstr "Neodym"
-
-#~ msgid "Promethium"
-#~ msgstr "Promethium"
-
-#~ msgid "Samarium"
-#~ msgstr "Samarium"
-
-#~ msgid "Europium"
-#~ msgstr "Europium"
-
-#~ msgid "Gadolinium"
-#~ msgstr "Gadolinium"
-
-#~ msgid "Terbium"
-#~ msgstr "Terbium"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Dysprosium"
-
-#~ msgid "Holmium"
-#~ msgstr "Holmium"
-
-#~ msgid "Erbium"
-#~ msgstr "Erbium"
-
-#~ msgid "Thulium"
-#~ msgstr "Thulium"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Ytterbium"
-
-#~ msgid "Lutetium"
-#~ msgstr "Lutetium"
-
-#~ msgid "Hafnium"
-#~ msgstr "Hafnium"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tantal"
-
-#~ msgid "Tungsten"
-#~ msgstr "Wolfram"
-
-#~ msgid "Rhenium"
-#~ msgstr "Rhenium"
-
-#~ msgid "Osmium"
-#~ msgstr "Osmium"
-
-#~ msgid "Iridium"
-#~ msgstr "Iridium"
-
-#~ msgid "Platinum"
-#~ msgstr "Platin"
-
-#~ msgid "Gold"
-#~ msgstr "Gold"
-
-#~ msgid "Mercury"
-#~ msgstr "Quecksilber"
-
-#~ msgid "Thallium"
-#~ msgstr "Thallium"
-
-#~ msgid "Lead"
-#~ msgstr "Blei"
-
-#~ msgid "Bismuth"
-#~ msgstr "Bismut (Wismut)"
-
-#~ msgid "Polonium"
-#~ msgstr "Polonium"
-
-#~ msgid "Astatine"
-#~ msgstr "Astat"
-
-#~ msgid "Radon"
-#~ msgstr "Radon"
-
-#~ msgid "Francium"
-#~ msgstr "Francium"
-
-#~ msgid "Radium"
-#~ msgstr "Radium"
-
-#~ msgid "Actinium"
-#~ msgstr "Actinium"
-
-#~ msgid "Thorium"
-#~ msgstr "Thorium"
-
-#~ msgid "Protactinium"
-#~ msgstr "Protactinium"
-
-#~ msgid "Uranium"
-#~ msgstr "Uran"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptunium"
-
-#~ msgid "Plutonium"
-#~ msgstr "Plutonium"
-
-#~ msgid "Americium"
-#~ msgstr "Americium"
-
-#~ msgid "Curium"
-#~ msgstr "Curium"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkelium"
-
-#~ msgid "Californium"
-#~ msgstr "Californium"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einsteinium"
-
-#~ msgid "Fermium"
-#~ msgstr "Fermium"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelevium"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobelium"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Lawrencium"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfordium"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dubnium"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborgium"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bohrium"
-
-#~ msgid "Hassium"
-#~ msgstr "Hassium"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Meitnerium"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "Darmstadtium"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Roentgenium"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrium"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadium"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Ununpentium"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Ununseptium"
-
-#~ msgid "Ununoctium"
-#~ msgstr "Ununoctium"
-
-#~ msgid "Unknown"
-#~ msgstr "Unbekannt"
+#~ msgid "Reset"
+#~ msgstr "Zurücksetzen"
 
 #~ msgid "Axes"
 #~ msgstr "Achsen"
@@ -1534,60 +1175,66 @@ msgstr ""
 #~ msgid "Ball and Stick"
 #~ msgstr "Kugeln und Stäbe"
 
-#~ msgid "Dipole"
-#~ msgstr "Dipol"
+#~ msgid ""
+#~ "Bond Centric Manipulation Tool\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view\n"
+#~ "\n"
+#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
+#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
+#~ msgstr ""
+#~ "Bindungsorientiertes Bearbeiten\n"
+#~ "\n"
+#~ "Linke Maustaste:Klicken und ziehen um Ansicht zu rotieren\n"
+#~ "Mittlere Maustaste:Klicken und ziehen um zu zoomen\n"
+#~ "Rechte Maustaste:Klicken und ziehen um Ansicht zu verschieben\n"
+#~ "\n"
+#~ "Linke Maustaste: Klick auf Bindung und ziehen um Manipulationsebene "
+#~ "festzulegen\n"
+#~ "- Linke Maustaste: Klicken und ziehen eines Atoms der Bindung um Winkel "
+#~ "zu verändern\n"
+#~ "- Rechte Maustaste:Klicken und ziehen eines Atoms der Bindung um Länge zu "
+#~ "verändern"
 
-#~ msgid "Force"
-#~ msgstr "Kraft"
+#~ msgid " Show Angles"
+#~ msgstr " Winkel anzeigen"
 
-#~ msgid "Renders hydrogen bonds"
-#~ msgstr "Wasserstoffbindungen anzeigen"
+#~ msgid " Snap-to Bonds"
+#~ msgstr " In Bindungen einrasten"
 
-#~ msgid "Hydrogen Bond"
-#~ msgstr "Wasserstoffbindung"
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Einrast-Schwelle: "
 
-#~ msgid "Orbitals"
-#~ msgstr "Orbitale"
+#~ msgid "Bond Centric Manipulate"
+#~ msgstr "Bindungsorientiertes Bearbeiten"
 
-#~ msgid "Polygon"
-#~ msgstr "Polygon"
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Winkel: %1 %2"
 
-#~ msgid "Ribbon"
-#~ msgstr "Band"
+#~ msgid "Distance(s):"
+#~ msgstr "Abstände:"
 
-#~ msgid "Ring"
-#~ msgstr "Ring"
+#~ msgid "Measure"
+#~ msgstr "Messen"
 
-#~ msgid "Renders atoms as Van der Waals spheres"
-#~ msgstr "Atome mit Van-der-Waals-Spähren darstellen"
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Abstand (1->2): %1 %2"
 
-#~ msgid "Van der Waals Spheres"
-#~ msgstr "Van-der-Waals-Sphären"
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Abstand (2->3): %1 %2"
 
-#~ msgid "Stick"
-#~ msgstr "Stab"
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Abstand (3->4): %1 %2"
 
-#~ msgid "Surface"
-#~ msgstr "Oberfläche"
+#~ msgid "Dihedral Angle: %1 %2"
+#~ msgstr "Öffnungswinkel: %1 %2"
 
-#~ msgid "Wireframe"
-#~ msgstr "Drahtgitter"
-
-#, qt-format
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Animation..."
-#~ msgstr "Animation..."
-
-#~ msgid "Animation"
-#~ msgstr "Animation"
-
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Anzahl der Atome: %1"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Anzahl der rotierbaren Bindungen: %1"
 
@@ -1617,14 +1264,191 @@ msgstr ""
 #~ "Das Molekül muss aus mindestens vier Atomen bestehen um eine Torsion-"
 #~ "Einschränkung hinzuzufügen"
 
+#~ msgid "Draw"
+#~ msgstr "Zeichnen"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Atom zeichnen"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Bindung zeichnen"
+
+#~ msgid "Element:"
+#~ msgstr "Element:"
+
+#~ msgid "Other..."
+#~ msgstr "Anderes..."
+
+#~ msgid "Bond Order:"
+#~ msgstr "Anzahl der Bindungen:"
+
+#~ msgid "Single"
+#~ msgstr "Einfach"
+
+#~ msgid "Double"
+#~ msgstr "Zweifach"
+
+#~ msgid "Triple"
+#~ msgstr "Dreifach"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "Durch SMILES erzeugen:"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Wasserstoffatome adjustieren"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Anzahl der Bindungen ändern"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Fragment-Bibliothek..."
+
+#~ msgid "Hydrogen"
+#~ msgstr "Wasserstoff"
+
+#~ msgid "Boron"
+#~ msgstr "Bor"
+
+#~ msgid "Carbon"
+#~ msgstr "Kohlenstoff"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Stickstoff"
+
+#~ msgid "Oxygen"
+#~ msgstr "Sauerstoff"
+
+#~ msgid "Fluorine"
+#~ msgstr "Flour"
+
+#~ msgid "Sodium"
+#~ msgstr "Natrium"
+
+#~ msgid "Silicon"
+#~ msgstr "Silizium"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Phosphor"
+
+#~ msgid "Sulfur"
+#~ msgstr "Schwefel"
+
+#~ msgid "Chlorine"
+#~ msgstr "Chlor"
+
+#~ msgid "Potassium"
+#~ msgstr "Kalium"
+
+#~ msgid "Calcium"
+#~ msgstr "Kalzium"
+
+#~ msgid "Titanium"
+#~ msgstr "Titan"
+
+#~ msgid "Vanadium"
+#~ msgstr "Vanadium"
+
+#~ msgid "Chromium"
+#~ msgstr "Chrom"
+
+#~ msgid "Manganese"
+#~ msgstr "Mangan"
+
+#~ msgid "Iron"
+#~ msgstr "Eisen"
+
+#~ msgid "Cobalt"
+#~ msgstr "Kobalt"
+
+#~ msgid "Copper"
+#~ msgstr "Kupfer"
+
+#~ msgid "Zinc"
+#~ msgstr "Zink"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arsen"
+
+#~ msgid "Selenium"
+#~ msgstr "Selen"
+
+#~ msgid "Bromine"
+#~ msgstr "Brom"
+
+#~ msgid "Niobium"
+#~ msgstr "Niob (Columbium)"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molybden"
+
+#~ msgid "Silver"
+#~ msgstr "Silber"
+
+#~ msgid "Tin"
+#~ msgstr "Zinn"
+
+#~ msgid "Antimony"
+#~ msgstr "Antimon"
+
+#~ msgid "Iodine"
+#~ msgstr "Jod"
+
+#~ msgid "Caesium"
+#~ msgstr "Cäsium"
+
+#~ msgid "Cerium"
+#~ msgstr "Cer"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Praseodym"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodym"
+
+#~ msgid "Tantalum"
+#~ msgstr "Tantal"
+
+#~ msgid "Tungsten"
+#~ msgstr "Wolfram"
+
+#~ msgid "Platinum"
+#~ msgstr "Platin"
+
+#~ msgid "Mercury"
+#~ msgstr "Quecksilber"
+
+#~ msgid "Lead"
+#~ msgstr "Blei"
+
+#~ msgid "Bismuth"
+#~ msgstr "Bismut (Wismut)"
+
+#~ msgid "Astatine"
+#~ msgstr "Astat"
+
+#~ msgid "Uranium"
+#~ msgstr "Uran"
+
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgid "Aluminum"
+#~ msgstr "Aluminium"
+
+#~ msgid "Force"
+#~ msgstr "Kraft"
+
 #~ msgid "Optimize Geometry"
 #~ msgstr "Optimiere Geometrie"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Berechne Energie"
 
 #~ msgid "Setup Force Field..."
 #~ msgstr "Kraftfeld einrichten..."
 
-#~ msgid "Calculate Energy"
-#~ msgstr "Berechne Energie"
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Molekular-Mechanik"
 
 #~ msgid "Conformer Search..."
 #~ msgstr "Konformerensuche..."
@@ -1638,54 +1462,26 @@ msgstr ""
 #~ msgid "Fix Selected Atoms"
 #~ msgstr "Ausgewählte Atome sperren"
 
-#~ msgid "&Molecular Mechanics"
-#~ msgstr "&Molekular-Mechanik"
-
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "Das Kraftfeld dieses Moleküls konnte nicht eingerichtet werden."
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energie = %1 %2"
 
-#~ msgid "Geometric Optimization"
-#~ msgstr "Geometrie-Optimierung"
+#~ msgid "FPS"
+#~ msgstr "FPS"
 
-#~ msgid "Forcefield Optimization"
-#~ msgstr "Kraftfeld-Optimierung"
+#~ msgid "View Size"
+#~ msgstr "Anzeigegröße"
 
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "Systematic Rotor Search"
-#~ msgstr "Systematische Drehpunkt-Suche"
-
-#~ msgid "Random Rotor Search"
-#~ msgstr "Zufällige Drehpunkt-Suche"
-
-#~ msgid "Weighted Rotor Search"
-#~ msgstr "Gewichtete Drehpunkt-Suche"
-
-#~ msgid "ForceField"
-#~ msgstr "Kraftfeld"
+#~ msgid "OpenGL error"
+#~ msgstr "OpenGL Fehler"
 
 #~ msgid "QM Matches"
 #~ msgstr "QM-Übereinstimmungen"
 
-#~ msgid "EFP Selection..."
-#~ msgstr "EFP-Auswahl..."
-
-#~ msgid "QM Selection..."
-#~ msgstr "QM-Auswahl..."
-
-#~ msgid "&GAMESS"
-#~ msgstr "&GAMESS"
-
 #~ msgid "GAMESS EFP Information"
 #~ msgstr "GAMESS EFP Informationen"
-
-#~ msgid "gamessEfpDock"
-#~ msgstr "gamessEfpDock"
 
 #~ msgid "Delete"
 #~ msgstr "Entfernen"
@@ -1711,14 +1507,17 @@ msgstr ""
 #~ msgid " ("
 #~ msgstr " ("
 
-#~ msgid "qm"
-#~ msgstr "qm"
-
 #~ msgid ")"
 #~ msgstr ")"
 
-#~ msgid "GAMESS"
-#~ msgstr "GAMESS"
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP-Auswahl..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "QM-Auswahl..."
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
 
 #~ msgid "Title"
 #~ msgstr "Titel"
@@ -1761,17 +1560,14 @@ msgstr ""
 #~ msgid "Show Preview"
 #~ msgstr "Vorschau anzeigen"
 
-#~ msgid "Hide Preview"
-#~ msgstr "Vorschau ausblenden"
-
 #~ msgid "Change H to Methyl"
 #~ msgstr "Ersetze Wasserstoff durch Methyl"
 
-#~ msgid "H to Methyl"
-#~ msgstr "Wasserstoff zu Methyl"
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Wasserstoffbindungen anzeigen"
 
-#~ msgid "H2Methyl"
-#~ msgstr "H-zu-Methyl"
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Wasserstoffbindung"
 
 #~ msgid "Add Hydrogens"
 #~ msgstr "Wasserstoffatome hinzufügen"
@@ -1779,8 +1575,14 @@ msgstr ""
 #~ msgid "Remove Hydrogens"
 #~ msgstr "Wasserstoffatome entfernen"
 
-#~ msgid "Hydrogens"
-#~ msgstr "Wasserstoffatome"
+#~ msgid "Stop Inserting"
+#~ msgstr "EInfügen stoppen"
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Fragment einfügen"
+
+#~ msgid "Open Directory"
+#~ msgstr "Verzeichnis öffnen"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Ligand-Datei öffnen"
@@ -1788,500 +1590,66 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro-Dateien (*.*)"
 
-#~ msgid "Atom Properties..."
-#~ msgstr "Atom-Eigenschaften..."
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Datei %1 konnte nicht geschrieben werden:\n"
+#~ "%2."
 
-#~ msgid "Bond Properties..."
-#~ msgstr "Bindungs-Eigenschaften..."
+#~ msgid "Saving file."
+#~ msgstr "Speichere Datei."
 
-#~ msgid "Angles Properties..."
-#~ msgstr "Winkel-Eigenschaften"
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "Das Format der Datei %1 konnte nicht geschrieben werden."
 
-#~ msgid "Torsion Properties..."
-#~ msgstr "Torsions-Eigenschaften"
-
-#~ msgid "Conformers..."
-#~ msgstr "Konformeren..."
-
-#~ msgid "Cartesian Editor..."
-#~ msgstr "Kartesischer Editor..."
-
-#~ msgid "&Properties"
-#~ msgstr "Eigenschaften"
-
-#~ msgid "Atom"
-#~ msgstr "Atom"
-
-#~ msgid "Bond"
-#~ msgstr "Bindung"
-
-#~ msgid "Angle"
-#~ msgstr "Winkel"
-
-#~ msgid "Torsion"
-#~ msgstr "Torsion"
-
-#~ msgid "Cartesian"
-#~ msgstr "Kartesisch"
-
-#~ msgid "Conformer"
-#~ msgstr "Konformer"
-
-#~ msgid "Properties"
-#~ msgstr "Eigenschaften"
-
-#~ msgid "Atomic Number"
-#~ msgstr "Ordnungszahl"
-
-#~ msgid "Partial Charge"
-#~ msgstr "Teilladung"
-
-#~ msgid "Valence"
-#~ msgstr "Valenz"
-
-#~ msgid "Bond Order"
-#~ msgstr "Anzahl der Bindungen"
-
-#, qt-format
-#~ msgid "Atom %1"
-#~ msgstr "Atom %1"
-
-#~ msgid "Start Atom"
-#~ msgstr "Atom starten"
-
-#~ msgid "End Atom"
-#~ msgstr "Endatom"
-
-#~ msgid "Length (Å)"
-#~ msgstr "Länge (Å)"
-
-#~ msgid "Rotatable"
-#~ msgstr "Rotierbar"
-
-#, qt-format
-#~ msgid "Bond %1"
-#~ msgstr "Bindung %1"
-
-#~ msgid "Vertex"
-#~ msgstr "Vertex"
-
-#~ msgid "Angle (°)"
-#~ msgstr "Winkel (°)"
-
-#, qt-format
-#~ msgid "Angle %1"
-#~ msgstr "Winkel %1"
-
-#~ msgid "Torsion (°)"
-#~ msgstr "Torsion (°)"
-
-#, qt-format
-#~ msgid "Torsion %1"
-#~ msgstr "Torsion %1"
-
-#~ msgid "X (Å)"
-#~ msgstr "X (Å)"
-
-#~ msgid "Y (Å)"
-#~ msgstr "Y (Å)"
-
-#~ msgid "Z (Å)"
-#~ msgstr "Z (Å)"
-
-#~ msgid "Energy"
-#~ msgstr "Energie"
-
-#, qt-format
-#~ msgid "Conformer %1"
-#~ msgstr "Konformer %1"
-
-#~ msgid "&Scripts"
-#~ msgstr "&Skripte"
-
-#~ msgid "Python Terminal"
-#~ msgstr "Python-Terminal"
-
-#~ msgid "pythonTerminalDock"
-#~ msgstr "pythonTerminalDock"
-
-#~ msgid "&Invert Selection"
-#~ msgstr "Auswahl &umkehren"
-
-#~ msgid "Select SMARTS..."
-#~ msgstr "SMARTS auswählen..."
-
-#~ msgid "Select by Element..."
-#~ msgstr "Auswahl nach Element..."
-
-#~ msgid "Select by Residue..."
-#~ msgstr "Auswahl nach Rest..."
-
-#~ msgid "Select Solvent"
-#~ msgstr "Lösungsmittel auswählen"
-
-#~ msgid "SMARTS Selection"
-#~ msgstr "SMARTS-Auswahl"
-
-#~ msgid "SMARTS pattern to select"
-#~ msgstr "SMARTS-Muster auswählen"
-
-#~ msgid "Select by residue"
-#~ msgstr "Auswahl nach Rest"
-
-#~ msgid "Residue name"
-#~ msgstr "Restname"
-
-#~ msgid "Selections"
-#~ msgstr "Auswahl"
-
-#~ msgid "First Action"
-#~ msgstr "Erste Aktion"
-
-#~ msgid "Second Action"
-#~ msgstr "Zweite Aktion"
-
-#~ msgid "&Template"
-#~ msgstr "&Vorlage"
-
-#~ msgid "Template"
-#~ msgstr "Vorlage"
-
-#~ msgid "Unit Cell Parameters..."
-#~ msgstr "Elementarzellen-Parameter..."
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Datei %1 konnte nicht geschrieben werden."
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule.\n"
-#~ "\n"
-#~ "Do you want to create a crystal unit cell?"
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
 #~ msgstr ""
-#~ "Dieses Dokument ist zur Zeit ein isoliertes Molekül.\n"
-#~ "\n"
-#~ "Elementarzelle erzeugen?"
-
-#~ msgid "Apply"
-#~ msgstr "Anwenden"
-
-#~ msgid "Connect"
-#~ msgstr "Verbinden"
-
-#~ msgid "Disconnect"
-#~ msgstr "Trennen"
-
-#~ msgid "&WiiTrack"
-#~ msgstr "&WiiTrack"
+#~ "Das Molekül wurde verändert.\n"
+#~ "Änderungen speichern?"
 
 #~ msgid ""
-#~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run any "
-#~ "OpenGL application?), or you found a bug."
+#~ "Cannot read file %1:\n"
+#~ "%2."
 #~ msgstr ""
-#~ "Ungültige OpenGL-Umgebung.\n"
-#~ "Entweder ist Ihre gesamte OpenGL-Installation fehlerhaft (können Sie irgend "
-#~ "eine OpenGL Anwendung ausführen?), oder Sie haben einen Programmfehler "
-#~ "gefunden."
+#~ "Datei %1 konnte nicht gelesen werden.:\n"
+#~ "%2."
 
-#~ msgid "OpenGL error"
-#~ msgstr "OpenGL Fehler"
+# [*] indicates that this is a modified view....
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
 
-#~ msgid "FPS"
-#~ msgstr "FPS"
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
 
-#~ msgid "View Size"
-#~ msgstr "Anzeigegröße"
+#~ msgid "Save succeeded."
+#~ msgstr "Speichern erfolgreich."
 
-#~ msgid "Residue"
-#~ msgstr "Rest"
+#~ msgid "Saving molecular file failed."
+#~ msgstr "Speichern des Moleküls fehlgeschlagen."
 
-#~ msgid "No Description"
-#~ msgstr "Keine Beschreibung"
+#~ msgid "Manipulate"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "Navigate"
+#~ msgstr "Navigieren"
+
+#~ msgid "Tool Settings"
+#~ msgstr "Werkzeugeinstellungen"
 
 #~ msgid ""
-#~ "Align Molecules\n"
-#~ "\n"
-#~ "Left Mouse: \tSelect up to two atoms.\n"
-#~ "\tThe first atom is centered at the origin.\n"
-#~ "\tThe second atom is aligned to the selected axis.\n"
-#~ "Right Mouse: \tReset alignment."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
-#~ "Moleküle ausrichten\n"
-#~ "\n"
-#~ "Linke Maustaste: \tZwei Atome nach oben auswählen.\n"
-#~ "\tDas erste Atome wird im Ursprung zentriert.\n"
-#~ "\tDas zweite Atome wird an der ausgewählten Achse ausgerichtet.\n"
-#~ "Rechte Maustaste: \tAusrichtung zurücksetzen."
-
-#~ msgid "Axis:"
-#~ msgstr "Achse:"
-
-#~ msgid "Align:"
-#~ msgstr "Ausrichten:"
-
-#~ msgid "Everything"
-#~ msgstr "Alles"
-
-#~ msgid "Align"
-#~ msgstr "Ausrichten"
-
-#~ msgid ""
-#~ "Auto Optimization Tool\n"
-#~ "\n"
-#~ "Navigation Functions when Clicking in empty space.\n"
-#~ "Left Mouse: Rotate Space\n"
-#~ "Middle Mouse: Zoom Space\n"
-#~ "Right Mouse: Move Space\n"
-#~ "\n"
-#~ "Extra Function when running\n"
-#~ "Left Mouse: Click and drag atoms to move them"
-#~ msgstr ""
-#~ "Automatisches Optimieren\n"
-#~ "\n"
-#~ "\n"
-#~ "Navigationsfunktionen im leeren Raum:Linke Maustaste:Umgebung rotieren\n"
-#~ "Mittlere Maustaste:Umgebung zoomen\n"
-#~ "Rechte Maustaste:Umgebung verschieben\n"
-#~ "\n"
-#~ "Bei aktiviertem Werkzeug:\n"
-#~ "Linke Maustaste: Klicken und ziehen um Atome zu bewegen"
-
-#~ msgid "AutoOpt: Could not setup force field...."
-#~ msgstr "AutoOpt: Kraftfeld konnte nicht initialisiert werden..."
-
-#, qt-format
-#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
-#~ msgstr "Automatische Option: E = %1 %2 (dE = %3)"
-
-#~ msgid "Force Field:"
-#~ msgstr "Kraftfeld:"
-
-#~ msgid "Steps per Update:"
-#~ msgstr "Schritte pro Aktualisierung:"
-
-#~ msgid "Algorithm:"
-#~ msgstr "Algorithmus:"
-
-#~ msgid "Steepest Descent"
-#~ msgstr "Tiefster Abstieg"
-
-#~ msgid "Conjugate Gradients"
-#~ msgstr "Verlaufskonjugation"
-
-#~ msgid "Molecular Dynamics (300K)"
-#~ msgstr "Moleküldynamik (300K)"
-
-#~ msgid "Molecular Dynamics (600K)"
-#~ msgstr "Moleküldynamik (600K)"
-
-#~ msgid "Molecular Dynamics (900K)"
-#~ msgstr "Moleküldynamik (900K)"
-
-#~ msgid "Start"
-#~ msgstr "Start"
-
-#~ msgid "Fixed atoms are movable"
-#~ msgstr "Gesperrte Atome sind beweglich"
-
-#~ msgid "Ignored atoms are movable"
-#~ msgstr "Ignorierte Atome sind beweglich"
-
-#~ msgid "Stop"
-#~ msgstr "Stop"
-
-#~ msgid "AutoOpt Molecule"
-#~ msgstr "AutoOpt-Molekül"
-
-#~ msgid "AutoOptimization"
-#~ msgstr "Automatisches Optimieren"
-
-#~ msgid "Auto Rotation Tool"
-#~ msgstr "Automatisches Rotieren"
-
-#~ msgid "x rotation:"
-#~ msgstr "Rotation um x-Achse:"
-
-#~ msgid "x rotation"
-#~ msgstr "Rotation um x-Achse"
-
-#~ msgid "y rotation:"
-#~ msgstr "Rotation um y-Achse:"
-
-#~ msgid "y rotation"
-#~ msgstr "Rotation um y-Achse"
-
-#~ msgid "z rotation:"
-#~ msgstr "Rotation um z-Achse:"
-
-#~ msgid "z rotation"
-#~ msgstr "Rotation um z-Achse"
-
-#~ msgid "Reset"
-#~ msgstr "Zurücksetzen"
-
-#~ msgid "AutoRotate"
-#~ msgstr "Automatisches Rotieren"
-
-#~ msgid ""
-#~ "Bond Centric Manipulation Tool\n"
-#~ "\n"
-#~ "Left Mouse:   Click and drag to rotate the view\n"
-#~ "Middle Mouse: Click and drag to zoom in or out\n"
-#~ "Right Mouse:  Click and drag to move the view\n"
-#~ "\n"
-#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
-#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
-#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
-#~ msgstr ""
-#~ "Bindungsorientiertes Bearbeiten\n"
-#~ "\n"
-#~ "Linke Maustaste:Klicken und ziehen um Ansicht zu rotieren\n"
-#~ "Mittlere Maustaste:Klicken und ziehen um zu zoomen\n"
-#~ "Rechte Maustaste:Klicken und ziehen um Ansicht zu verschieben\n"
-#~ "\n"
-#~ "Linke Maustaste: Klick auf Bindung und ziehen um Manipulationsebene "
-#~ "festzulegen\n"
-#~ "- Linke Maustaste: Klicken und ziehen eines Atoms der Bindung um Winkel zu "
-#~ "verändern\n"
-#~ "- Rechte Maustaste:Klicken und ziehen eines Atoms der Bindung um Länge zu "
-#~ "verändern"
-
-#~ msgid " Show Angles"
-#~ msgstr " Winkel anzeigen"
-
-#~ msgid " Snap-to Bonds"
-#~ msgstr " In Bindungen einrasten"
-
-#~ msgid "Snap-to Threshold: "
-#~ msgstr "Einrast-Schwelle: "
-
-#~ msgid "Bond Centric Manipulation"
-#~ msgstr "Bindungsorientiertes Bearbeiten"
-
-#~ msgid "Bond Centric Manipulate"
-#~ msgstr "Bindungsorientiertes Bearbeiten"
-
-#~ msgid ""
-#~ "Click to Measure (F12)\n"
-#~ "\n"
-#~ "Left Mouse: \tSelect up to three Atoms.\n"
-#~ "\tDistances are measured between 1-2 and 2-3\n"
-#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
-#~ "Right Mouse: Reset the measurements."
-#~ msgstr ""
-#~ "Messen (F12)\n"
-#~ "\n"
-#~ "Linke Maustaste:    Bis zu 3 Atome auswählen.\n"
-#~ "Messung der Distanz zwischen 1. und 2. sowie 2. und 3. Atom\n"
-#~ "Messung des Winkels zwischen 1. und 3. Atom, Ausgangspunkt ist das 2. Atom\n"
-#~ "Rechte Maustaste:  Messungen zurücksetzen."
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Abstand (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Abstand (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Angle: %1 %2"
-#~ msgstr "Winkel: %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Abstand (3->4): %1 %2"
-
-#, qt-format
-#~ msgid "Dihedral Angle: %1 %2"
-#~ msgstr "Öffnungswinkel: %1 %2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Distance(s):"
-#~ msgstr "Abstände:"
-
-#~ msgid "Measure"
-#~ msgstr "Messen"
-
-#~ msgid "Add Atom"
-#~ msgstr "Atom hinzufügen"
-
-#~ msgid "Delete Atom"
-#~ msgstr "Atom entfernen"
-
-#~ msgid "Add Bond"
-#~ msgstr "Bindung hinzufügen"
-
-#~ msgid "Delete Bond"
-#~ msgstr "Bindung entfernen"
-
-#~ msgid "Change Element"
-#~ msgstr "Element ändern"
-
-#~ msgid "Change Bond Order"
-#~ msgstr "Anzahl der Bindungen ändern"
-
-#~ msgid "Insert Fragment"
-#~ msgstr "Fragment einfügen"
-
-#~ msgid ""
-#~ "Draw Tool (F8)\n"
-#~ "\n"
-#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
-#~ "Right Mouse: Delete Atom"
-#~ msgstr ""
-#~ "Zeichnungswerkzeug (F8)\n"
-#~ "\n"
-#~ "Linke Maustaste:   Klicken und ziehen, um neue Atome und Bindungen zu "
-#~ "erstellen\n"
-#~ "Rechte Maustaste: Atom löschen"
-
-#~ msgid "Draw Atom"
-#~ msgstr "Atom zeichnen"
-
-#~ msgid "Draw Bond"
-#~ msgstr "Bindung zeichnen"
-
-#~ msgid "Draw"
-#~ msgstr "Zeichnen"
-
-#~ msgid "Element:"
-#~ msgstr "Element:"
-
-#~ msgid "Other..."
-#~ msgstr "Anderes..."
-
-#~ msgid "Bond Order:"
-#~ msgstr "Anzahl der Bindungen:"
-
-#~ msgid "Single"
-#~ msgstr "Einfach"
-
-#~ msgid "Double"
-#~ msgstr "Zweifach"
-
-#~ msgid "Triple"
-#~ msgstr "Dreifach"
-
-#~ msgid "Adjust Hydrogens"
-#~ msgstr "Wasserstoffatome adjustieren"
-
-#~ msgid "Fragment Library..."
-#~ msgstr "Fragment-Bibliothek..."
-
-#~ msgid "Stop Inserting"
-#~ msgstr "EInfügen stoppen"
-
-#~ msgid "Open Directory"
-#~ msgstr "Verzeichnis öffnen"
+#~ "Diese Datei scheint mehrere Moleküle zu enthalten. Avogadro wird nur das "
+#~ "erste Molekül anzeigen. Beim Speichern gehen alle anderen Moleküle "
+#~ "verloren."
 
 #~ msgid ""
 #~ "Manipulation Tool (F10)\n"
@@ -2297,9 +1665,6 @@ msgstr ""
 #~ "bewegen\n"
 #~ "Rechte Maustaste:  Klicken und ziehen um Atome zu rotieren."
 
-#~ msgid "Manipulate Atom"
-#~ msgstr "Atom bearbeiten"
-
 #~ msgid ""
 #~ "Navigation Tool (F9)\n"
 #~ "\n"
@@ -2313,6 +1678,120 @@ msgstr ""
 #~ "Mittlere Maustaste: Klicken und ziehen um Anzeige zu zoomen\n"
 #~ "Rechte Maustaste:  Klicken und ziehen um Ansicht zu bewegen"
 
+#~ msgid "Polygon"
+#~ msgstr "Polygon"
+
+#~ msgid "Atom"
+#~ msgstr "Atom"
+
+#~ msgid "Bond"
+#~ msgstr "Bindung"
+
+#~ msgid "Residue"
+#~ msgstr "Rest"
+
+#~ msgid "&Properties"
+#~ msgstr "Eigenschaften"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Atom-Eigenschaften..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Bindungs-Eigenschaften..."
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Kartesischer Editor..."
+
+#~ msgid "Conformers..."
+#~ msgstr "Konformeren..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "Winkel-Eigenschaften"
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Torsions-Eigenschaften"
+
+#~ msgid "Atomic Number"
+#~ msgstr "Ordnungszahl"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Teilladung"
+
+#~ msgid "Valence"
+#~ msgstr "Valenz"
+
+#~ msgid "Bond Order"
+#~ msgstr "Anzahl der Bindungen"
+
+#~ msgid "Atom %1"
+#~ msgstr "Atom %1"
+
+#~ msgid "Rotatable"
+#~ msgstr "Rotierbar"
+
+#~ msgid "Bond %1"
+#~ msgstr "Bindung %1"
+
+#~ msgid "Angle %1"
+#~ msgstr "Winkel %1"
+
+#~ msgid "Energy"
+#~ msgstr "Energie"
+
+#~ msgid "Conformer %1"
+#~ msgstr "Konformer %1"
+
+#~ msgid "Angle"
+#~ msgstr "Winkel"
+
+#~ msgid "Cartesian"
+#~ msgstr "Kartesisch"
+
+#~ msgid "Conformer"
+#~ msgstr "Konformer"
+
+#~ msgid "Properties"
+#~ msgstr "Eigenschaften"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Skripte"
+
+#~ msgid "Ribbon"
+#~ msgstr "Band"
+
+#~ msgid "Ring"
+#~ msgstr "Ring"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "Auswahl &umkehren"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "SMARTS auswählen..."
+
+#~ msgid "SMARTS Selection"
+#~ msgstr "SMARTS-Auswahl"
+
+#~ msgid "SMARTS pattern to select"
+#~ msgstr "SMARTS-Muster auswählen"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Auswahl nach Element..."
+
+#~ msgid "Select by residue"
+#~ msgstr "Auswahl nach Rest"
+
+#~ msgid "Residue name"
+#~ msgstr "Restname"
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Auswahl nach Rest..."
+
+#~ msgid "Select Solvent"
+#~ msgstr "Lösungsmittel auswählen"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Auswahl-Modus:"
+
 #~ msgid ""
 #~ "Selection Tool (F11)\n"
 #~ "Click to pick individual atoms, residues, or fragments\n"
@@ -2323,14 +1802,53 @@ msgstr ""
 #~ "Klicken um einzelne Atome, Reste oder Fragmente auszuwählen\n"
 #~ "Ziehen um mehrere Atome auszuwählen"
 
-#~ msgid "Selection Mode:"
-#~ msgstr "Auswahl-Modus:"
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van-der-Waals-Sphären"
 
-#~ msgid "Medium"
-#~ msgstr "Mittel"
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Atome mit Van-der-Waals-Spähren darstellen"
 
-#~ msgid "Tabbed Tools"
-#~ msgstr "Werkzeuge in Reitern"
+#~ msgid "Stick"
+#~ msgstr "Stab"
+
+#~ msgid "Surface"
+#~ msgstr "Oberfläche"
+
+#~ msgid "First Action"
+#~ msgstr "Erste Aktion"
+
+#~ msgid "Second Action"
+#~ msgstr "Zweite Aktion"
+
+#~ msgid "&Template"
+#~ msgstr "&Vorlage"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "Dieses Dokument ist zur Zeit ein isoliertes Molekül.\n"
+#~ "\n"
+#~ "Elementarzelle erzeugen?"
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "Elementarzellen-Parameter..."
+
+#~ msgid "Apply"
+#~ msgstr "Anwenden"
+
+#~ msgid "Connect"
+#~ msgstr "Verbinden"
+
+#~ msgid "Disconnect"
+#~ msgstr "Trennen"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "Wireframe"
+#~ msgstr "Drahtgitter"
 
 #~ msgid "Atom Radius:"
 #~ msgstr "Atomradius:"
@@ -2340,123 +1858,6 @@ msgstr ""
 
 #~ msgid "Show Multiple Bonds"
 #~ msgstr "Mehrere Bindungen anzeigen"
-
-#~ msgid "Width:"
-#~ msgstr "Strichdicke:"
-
-#~ msgid "Cut-off radius:"
-#~ msgstr "Cut-off-Radius:"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~ msgid "°"
-#~ msgstr "°"
-
-#~ msgid "Cut-off angle:"
-#~ msgstr "Cut-off-Winkel:"
-
-#~ msgid "Atom Labels:"
-#~ msgstr "Atombeschriftung:"
-
-#~ msgid "Atom number"
-#~ msgstr "Ordungszahl"
-
-#~ msgid "Element symbol"
-#~ msgstr "Elementsymbol"
-
-#~ msgid "Element name"
-#~ msgstr "Elementbezeichnung"
-
-#~ msgid "Residue number"
-#~ msgstr "Restnummer"
-
-#~ msgid "None"
-#~ msgstr "Keine"
-
-#~ msgid "Bond Labels:"
-#~ msgstr "Bindungsbeschriftung:"
-
-#~ msgid "Bond number"
-#~ msgstr "Bindungsnummer"
-
-#~ msgid "Bond order"
-#~ msgstr "Bindungsanzahl"
-
-#~ msgid "Orbital:"
-#~ msgstr "Elektronenumlaufbahn:"
-
-#~ msgid "Opacity:"
-#~ msgstr "Transparenz:"
-
-#~ msgid "Render:"
-#~ msgstr "Rendere:"
-
-#~ msgid "Fill"
-#~ msgstr "Füllen"
-
-#~ msgid "Lines"
-#~ msgstr "Linien"
-
-#~ msgid "Points"
-#~ msgstr "Punkte"
-
-#~ msgid "Draw Box:"
-#~ msgstr "Box zeichnen:"
-
-#~ msgid "Color:"
-#~ msgstr "Farbe:"
-
-#~ msgid "Positive"
-#~ msgstr "Positiv"
-
-#~ msgid "Negative"
-#~ msgstr "Negativ"
-
-#~ msgid "Calculate"
-#~ msgstr "Berechnen"
-
-#~ msgid "Rendering:"
-#~ msgstr "Darstellung:"
-
-#~ msgid "Backbone"
-#~ msgstr "Rückgrat"
-
-#~ msgid "Radius:"
-#~ msgstr "Radius:"
-
-#~ msgid "Include Nitrogens"
-#~ msgstr "Stickstoff miteinbeziehen"
-
-#~ msgid "VdW Opacity:"
-#~ msgstr "Van-der-Waals-Transparenz:"
-
-#~ msgid "Custom Color"
-#~ msgstr "Eigene Farbe"
-
-#~ msgid "Electrostatic Potential (ESP)"
-#~ msgstr "Elektrostatisches Potential"
-
-#~ msgid "Custom Color:"
-#~ msgstr "Eigene Farbe:"
-
-#~ msgid "Show Atoms"
-#~ msgstr "Atome anzeigen"
-
-#~ msgid "Animate Trajectory"
-#~ msgstr "Flugbahn animieren"
-
-#~ msgid "Load File..."
-#~ msgstr "Datei laden..."
-
-#~ msgid "0/0"
-#~ msgstr "0/0"
-
-#~ msgid "Loop"
-#~ msgstr "Schleife"
-
-#~ msgid "fps"
-#~ msgstr "FPS"
 
 #~ msgid "Conformer Search"
 #~ msgstr "Konformerensuche"
@@ -2506,9 +1907,6 @@ msgstr ""
 #~ msgid "Fix Atom Z"
 #~ msgstr "Atom fixieren (z-Koordinate)"
 
-#~ msgid "Distance"
-#~ msgstr "Distanz"
-
 #~ msgid "Torsion angle"
 #~ msgstr "Torsionswinkel"
 
@@ -2526,6 +1924,9 @@ msgstr ""
 
 #~ msgid "Delete All"
 #~ msgstr "Alle entfernen"
+
+#~ msgid "Distance"
+#~ msgstr "Distanz"
 
 #~ msgid "Setup Force Field"
 #~ msgstr "Kraftfeld einrichten"
@@ -2548,9 +1949,6 @@ msgstr ""
 #~ msgid "Convergence"
 #~ msgstr "Konvergenz"
 
-#~ msgid "10e-"
-#~ msgstr "10e-"
-
 #~ msgid "EFP Matches"
 #~ msgstr "EFP-Übereinstimmungen"
 
@@ -2560,104 +1958,26 @@ msgstr ""
 #~ msgid "&Basic Setup"
 #~ msgstr "&Grundeinstellungen"
 
-#~ msgid "AM1"
-#~ msgstr "AM1"
-
-#~ msgid "PM3"
-#~ msgstr "PM3"
-
-#~ msgid "RHF"
-#~ msgstr "RHF"
-
-#~ msgid "B3LYP"
-#~ msgstr "B3LYP"
-
-#~ msgid "MP2"
-#~ msgstr "MP2"
-
-#~ msgid "CCSD(T)"
-#~ msgstr "CCSD(T)"
-
-#~ msgid "STO-3G"
-#~ msgstr "STO-3G"
-
-#~ msgid "MINI"
-#~ msgstr "MINI"
-
-#~ msgid "3-21G"
-#~ msgstr "3-21G"
-
-#~ msgid "6-31G(d)"
-#~ msgstr "6-31G(d)"
-
-#~ msgid "6-31G(d,p)"
-#~ msgstr "6-31G(d,p)"
-
-#~ msgid "6-31+G(d,p)"
-#~ msgstr "6-31+G(d,p)"
-
-#~ msgid "6-31+G(2d,p)"
-#~ msgstr "6-31+G(2d,p)"
-
-#~ msgid "6-311++G(2d,p)"
-#~ msgstr "6-311++G(2d,p)"
-
 #~ msgid "Core Potential"
 #~ msgstr "Kern-Potential"
 
 #~ msgid "Memory:"
 #~ msgstr "Speicher:"
 
-#~ msgid "Singlet"
-#~ msgstr "Singlet"
-
-#~ msgid "Doublet"
-#~ msgstr "Doublet"
-
-#~ msgid "Triplet"
-#~ msgstr "Triplet"
-
-#~ msgid "Dication"
-#~ msgstr "Dication"
-
 #~ msgid "Cation"
 #~ msgstr "Kation"
-
-#~ msgid "Neutral"
-#~ msgstr "Neutral"
-
-#~ msgid "Anion"
-#~ msgstr "Anion"
-
-#~ msgid "Dianion"
-#~ msgstr "Dianion"
-
-#~ msgid "On:"
-#~ msgstr "Auf:"
-
-#~ msgid "Single Point Entry"
-#~ msgstr "einzelner Eingangspunkt"
-
-#~ msgid "Equilibrium Geometry"
-#~ msgstr "Gleichgewichtsgeometrie"
-
-#~ msgid "Transition State"
-#~ msgstr "Übergangsstatus"
 
 #~ msgid "Frequencies"
 #~ msgstr "Frequenzen"
 
-#~ msgid "Gas"
-#~ msgstr "Gas"
-
 #~ msgid "Water"
 #~ msgstr "Wasser"
 
+#~ msgid "Calculate"
+#~ msgstr "Berechnen"
+
 #~ msgid "With:"
 #~ msgstr "Mit:"
-
-#~ msgid "In:"
-#~ msgstr "In:"
 
 #~ msgid "Time Limit:"
 #~ msgstr "Zeit-Limit:"
@@ -2665,380 +1985,35 @@ msgstr ""
 #~ msgid "&Advanced Setup"
 #~ msgstr "&Erweiterte Einstellungen"
 
-#~ msgid "Advanced"
-#~ msgstr "Fortgeschritten"
-
-#~ msgid "Basis"
-#~ msgstr "Basis"
-
-#~ msgid "Control"
-#~ msgstr "Kontrolle"
-
-#~ msgid "Hessian"
-#~ msgstr "Hessematrix"
-
-#~ msgid "Stat Point"
-#~ msgstr "statistischer Punkt"
-
-#~ msgid "Data"
-#~ msgstr "Daten"
-
-#~ msgid "System"
-#~ msgstr "System"
-
-#~ msgid "MO Guess"
-#~ msgstr "Schätzung von MO"
-
 #~ msgid "Misc"
 #~ msgstr "Versch."
 
-#~ msgid "#D Heavy Atom Polarization Functions:"
-#~ msgstr "#D Polarisation-Funktion von schweren Atomen:"
+#~ msgid "None"
+#~ msgstr "Keine"
 
 #~ msgid "Read"
 #~ msgstr "Lese"
 
-#~ msgid "SBKJC"
-#~ msgstr "SBKJC Basisset"
-
-#~ msgid "Hay-Wadt"
-#~ msgstr "Hay-Wadt"
-
-#~ msgid "Diffuse S-Shell on Heavy Atoms"
-#~ msgstr "S-Hülle auf schweren Atomen diffusieren"
-
-#~ msgid "Diffuse L-Shell on Heavy Atoms"
-#~ msgstr "L-Hülle auf schweren Atomen diffusieren"
-
-#~ msgid "Basis Set:"
-#~ msgstr "Basissatz"
-
-#~ msgid "MIDI"
-#~ msgstr "MIDI"
-
-#~ msgid "STO-2G"
-#~ msgstr "STO-2G"
-
-#~ msgid "STO-4G"
-#~ msgstr "STO-4G"
-
-#~ msgid "STO-5G"
-#~ msgstr "STO-5G"
-
-#~ msgid "STO-6G"
-#~ msgstr "STO-6G"
-
-#~ msgid "6-21G"
-#~ msgstr "6-21G"
-
-#~ msgid "4-31G"
-#~ msgstr "4-31G"
-
-#~ msgid "5-31G"
-#~ msgstr "5-31G"
-
-#~ msgid "6-31G"
-#~ msgstr "6-31G"
-
-#~ msgid "6-311G"
-#~ msgstr "6-311G"
-
-#~ msgid "Double Zeta Valence"
-#~ msgstr "doppelte Zeta Valenz"
-
-#~ msgid "Dunning/Hay DZ"
-#~ msgstr "Dunning/Hay DZ"
-
-#~ msgid "Triple Zeta Valence"
-#~ msgstr "dreifach Zeta Valenz"
-
-#~ msgid "McLean/Chandler"
-#~ msgstr "McLean/Chandler"
-
-#~ msgid "SBKJA Valence"
-#~ msgstr "SBKJA Valenz"
-
-#~ msgid "Hay/Wadt Valence"
-#~ msgstr "Hay/Wadt Valenz"
-
-#~ msgid "MNDO"
-#~ msgstr "MNDO"
-
-#~ msgid "ECP Type:"
-#~ msgstr "ECP Typ:"
-
-#~ msgid "Default"
-#~ msgstr "Voreinstellung"
-
-#~ msgid "Pople"
-#~ msgstr "Pople"
-
-#~ msgid "Pople N311"
-#~ msgstr "Pople N311"
-
-#~ msgid "Dunning"
-#~ msgstr "Dunning"
-
-#~ msgid "Huzinaga"
-#~ msgstr "Huzinaga"
-
-#~ msgid "Hondo7"
-#~ msgstr "Hondo7"
-
-#~ msgid "#F Heavy Atom Polarization Functions:"
-#~ msgstr "#F schwere Atom Polarisationsfunktion"
-
-#~ msgid "#light Atom Polarization Functions:"
-#~ msgstr "#Lichtatom Polarisationsfunktion"
-
-#~ msgid "Polar:"
-#~ msgstr "Polar:"
-
-#~ msgid "Gradient"
-#~ msgstr "Gradient"
-
 #~ msgid "Optimization"
 #~ msgstr "Optimierung"
-
-#~ msgid "Trudge"
-#~ msgstr "mühseliger Weg"
 
 #~ msgid "Saddle Point"
 #~ msgstr "Sattelpunkt"
 
-#~ msgid "IRC"
-#~ msgstr "IRC"
-
-#~ msgid "Gradient Extremal"
-#~ msgstr "Extremum eines Gradienten"
-
-#~ msgid "DRC"
-#~ msgstr "DRC"
-
-#~ msgid "Energy Surface"
-#~ msgstr "Energiefläche"
-
-#~ msgid "Morokuma"
-#~ msgstr "Morokuma"
-
-#~ msgid "Radiative Transition mom."
-#~ msgstr "radiaitive Transistion mom."
-
-#~ msgid "Spin Orbit"
-#~ msgstr "Spinlaufbahn"
-
-#~ msgid "Finite Electric Field"
-#~ msgstr "finites elektrisches Feld"
-
-#~ msgid "TDHF"
-#~ msgstr "TDHF"
-
 #~ msgid "Global Optimization"
 #~ msgstr "Globale Optimierung"
-
-#~ msgid "VSCF"
-#~ msgstr "VSCF"
 
 #~ msgid "FMO Optimization"
 #~ msgstr "FMO Optimierung"
 
-#~ msgid "Raman Intensities"
-#~ msgstr "Raman Intensität"
-
-#~ msgid "NMR"
-#~ msgstr "NMR"
-
-#~ msgid "Make EFP"
-#~ msgstr "EFP durchführen"
-
-#~ msgid "UHF"
-#~ msgstr "UHF"
-
-#~ msgid "ROHF"
-#~ msgstr "ROHF"
-
-#~ msgid "GVB"
-#~ msgstr "GVB"
-
-#~ msgid "MCSCF"
-#~ msgstr "MCSCF"
-
-#~ msgid "None (CI)"
-#~ msgstr "Kein (CI)"
-
-#~ msgid "Foster-Boys"
-#~ msgstr "Foster-Brüder"
-
-#~ msgid "Edmistron-Ruedenberg"
-#~ msgstr "Edmistron-Ruedenberg"
-
-#~ msgid "Pipek-Mezey"
-#~ msgstr "Pipek-Mezey"
-
-#~ msgid "SCF Type:"
-#~ msgstr "SCF Typ:"
-
-#~ msgid "Localization Method:"
-#~ msgstr "Lokalisierungmethode"
-
-#~ msgid "Exec Type:"
-#~ msgstr "Durchführungs-Typ"
-
-#~ msgid "CI:"
-#~ msgstr "CI:"
-
-#~ msgid "GUGA"
-#~ msgstr "GUGA"
-
-#~ msgid "Ames Lab. Determinant"
-#~ msgstr "Ames Lab. Determinante"
-
-#~ msgid "Occupation Restricted Multiple Active Space"
-#~ msgstr "Besetzung des multiplen aktiven Raums eingeschränkt"
-
-#~ msgid "CI Singles"
-#~ msgstr "CI Singles"
-
-#~ msgid "Full Second Order CI"
-#~ msgstr "Ganz zweiter Ordnung CI"
-
-#~ msgid "General CI"
-#~ msgstr "Allgemeines CI"
-
-#~ msgid "CC:"
-#~ msgstr "CC:"
-
-#~ msgid "LCCD: Linearized CC"
-#~ msgstr "LCCD: Linearisiertes CC"
-
-#~ msgid "CCD: CC with Doubles"
-#~ msgstr "CCD: CC mit Doppeln"
-
-#~ msgid "CCSD: CC with Singles and Doubles"
-#~ msgstr "CCSD: CC mit Einzeln und Doppeln"
-
-#~ msgid "R-CC"
-#~ msgstr "R-CC"
-
-#~ msgid "CR-CC"
-#~ msgstr "CR-CC"
-
-#~ msgid "EOM-CCSD"
-#~ msgstr "EOM-CCSD"
-
-#~ msgid "CR-EOM"
-#~ msgstr "CR-EOM"
-
-#~ msgid "Multiplicity:"
-#~ msgstr "Multiplizität:"
-
-#~ msgid "Normal Run"
-#~ msgstr "Normaler Lauf"
-
-#~ msgid "Check"
-#~ msgstr "Prüfe"
-
-#~ msgid "Debug"
-#~ msgstr "Debug"
-
-#~ msgid "Molecule Charge:"
-#~ msgstr "Molekülladung:"
-
-#~ msgid "Run Type:"
-#~ msgstr "Lauftyp:"
-
-#~ msgid "Use MP2"
-#~ msgstr "MP2 benutzen"
-
-#~ msgid "Use DFT"
-#~ msgstr "DFT benutzen"
-
-#~ msgid "# of Z-Matrix Variables"
-#~ msgstr "# der Z-Matrix Variablen"
-
-#~ msgid "Ǻngstrom"
-#~ msgstr "Ǻngstrom"
-
 #~ msgid "Bohr"
 #~ msgstr "Bohr"
-
-#~ msgid "Order of Principal Axis:"
-#~ msgstr "Reihenfolge der Hauptachsen:"
-
-#~ msgid "Coordinate Type:"
-#~ msgstr "Koordinatentyp:"
-
-#~ msgid "C1"
-#~ msgstr "C1"
-
-#~ msgid "CS"
-#~ msgstr "CS"
-
-#~ msgid "CI"
-#~ msgstr "CI"
-
-#~ msgid "CnH"
-#~ msgstr "CnH"
-
-#~ msgid "CnV"
-#~ msgstr "CnV"
-
-#~ msgid "Cn"
-#~ msgstr "Cn"
-
-#~ msgid "S2n"
-#~ msgstr "S2n"
-
-#~ msgid "DnD"
-#~ msgstr "DnD"
-
-#~ msgid "DnH"
-#~ msgstr "DnH"
-
-#~ msgid "Dn"
-#~ msgstr "Dn"
-
-#~ msgid "TD"
-#~ msgstr "TD"
-
-#~ msgid "TH"
-#~ msgstr "TH"
-
-#~ msgid "T"
-#~ msgstr "T"
-
-#~ msgid "OH"
-#~ msgstr "OH"
-
-#~ msgid "O"
-#~ msgstr "O"
-
-#~ msgid "Unique cartesian Coords."
-#~ msgstr "Eindeutige Kartesische Koordinaten"
-
-#~ msgid "Hilderbrant internals"
-#~ msgstr "Hilderbrant-Interna"
 
 #~ msgid "Cartesian coordinates"
 #~ msgstr "Kartesische Koordinaten"
 
-#~ msgid "Z-Matrix"
-#~ msgstr "Z-Matrix"
-
-#~ msgid "MOPAC Z-Matrix"
-#~ msgstr "MOPAC Z-Matrix"
-
-#~ msgid "Use Symmetry During Calculation"
-#~ msgstr "Verwende Symmetrie während der Berechnung"
-
-#~ msgid "Units:"
-#~ msgstr "Einheiten:"
-
 #~ msgid "Title:"
 #~ msgstr "Titel:"
-
-#~ msgid "Point Group:"
-#~ msgstr "Punktgruppe:"
 
 #~ msgid "Seconds"
 #~ msgstr "Sekunden"
@@ -3061,62 +2036,14 @@ msgstr ""
 #~ msgid "Millenia"
 #~ msgstr "Jahrtausende"
 
-#~ msgid "Words"
-#~ msgstr "Wörter"
-
-#~ msgid "Bytes"
-#~ msgstr "Bytes"
-
-#~ msgid "MegaWords"
-#~ msgstr "MegaWords"
-
-#~ msgid "MegaBytes"
-#~ msgstr "MegaBytes"
-
 #~ msgid "Force Parallel Methods"
 #~ msgstr "Parallele Methoden erzwingen"
-
-#~ msgid "Produce \"core\" file upon abort"
-#~ msgstr "\"Kern\"datei nach dem Abbruch erstellen"
-
-#~ msgid "EVVRSP"
-#~ msgstr "EVVRSP"
-
-#~ msgid "GIVEIS"
-#~ msgstr "GIVEIS"
-
-#~ msgid "JACOBI"
-#~ msgstr "JACOBI"
-
-#~ msgid "MemDDI:"
-#~ msgstr "MemDDI:"
-
-#~ msgid "Diagonalization Method:"
-#~ msgstr "Diagonalisierungsmethode:"
-
-#~ msgid "Parallel Load Balance Type"
-#~ msgstr "Paralleler Auslastungsverteilungstyp"
 
 #~ msgid "Next Value"
 #~ msgstr "Nächster Wert"
 
-#~ msgid "Use External Data Representation for Messages"
-#~ msgstr "Benutze externe Datendarstellung für Mitteilungen"
-
 #~ msgid "Initial Guess:"
 #~ msgstr "Anfangsannahme:"
-
-#~ msgid "Huckel"
-#~ msgstr "Hückel"
-
-#~ msgid "HCore"
-#~ msgstr "HCore"
-
-#~ msgid "MO Read ($VEC)"
-#~ msgstr "MO gelesen ($VEC)"
-
-#~ msgid "MO Saved (DICTNRY)"
-#~ msgstr "MO gespeichert (DICTNRY)"
 
 #~ msgid "Skip"
 #~ msgstr "Überspringen"
@@ -3124,110 +2051,11 @@ msgstr ""
 #~ msgid "Rotate Alpha and Beta Orbitals"
 #~ msgstr "Alpha- und Beta-Orbitale rotieren"
 
-#~ msgid "Print the Initial Guess"
-#~ msgstr "Erste Schätzung anzeigen"
-
-#~ msgid "GAMESS Interface to Other Codes"
-#~ msgstr "GAMESS-Schnittstelle zu anderen Codes"
-
-#~ msgid "MolPlt"
-#~ msgstr "MolPlt"
-
-#~ msgid "PltOrb"
-#~ msgstr "PltOrb"
-
-#~ msgid "AIMPAC"
-#~ msgstr "AIMPAC"
-
-#~ msgid "RPAC"
-#~ msgstr "RPAC"
-
-#~ msgid "Force a Check Run Type"
-#~ msgstr "Erzwinge einen Test des Ausführungsablaufs"
-
-#~ msgid "Hondo 8.2"
-#~ msgstr "Hondo 8.2"
-
-#~ msgid "MELDF"
-#~ msgstr "MELDF"
-
-#~ msgid "GAMESS (UK Version)"
-#~ msgstr "GAMESS (UK-Version)"
-
-#~ msgid "Gaussian 9x"
-#~ msgstr "Gaussian 9x"
-
 #~ msgid "All"
 #~ msgstr "Alle"
 
 #~ msgid "Solvate with Water"
 #~ msgstr "In Wasser lösen"
-
-#~ msgid "Generate UHF Natural Orbitals"
-#~ msgstr "Erzeuge natürliche UHF-Orbitale"
-
-#~ msgid "Direct SCF"
-#~ msgstr "Direktes SCF"
-
-#~ msgid "Compute Only Changed in Fock Matrix"
-#~ msgstr "Berechne nur Änderung in der Fock-Matrix"
-
-#~ msgid "Slater exchange"
-#~ msgstr "Slater-Austausch"
-
-#~ msgid "Becke 1988 exchange"
-#~ msgstr "Becke-1988-Austausch"
-
-#~ msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
-#~ msgstr "VWN: Vosko-Wilk-Nusair-Korrelation  (VWN5)"
-
-#~ msgid "LYP: Lee-Yang-Parr correlation"
-#~ msgstr "LYP: Lee-Yang-Parr-Korrelation"
-
-#~ msgid "SVWN: Slater exhange + VWN correlation"
-#~ msgstr "SVWN: Slater-Austausch + VWN-Korrelation"
-
-#~ msgid "BVWN: BECKE exchange + VWN5 correlation"
-#~ msgstr "BVWN: BECKE-Austausch + VWN5-Korrelation"
-
-#~ msgid "BLYP: BECKE exchange + LYP correlation"
-#~ msgstr "BLYP: BECKE-Austausch + LYP-Korrelation"
-
-#~ msgid "Gill 1996 exchange"
-#~ msgstr "Gill-1996-Austausch"
-
-#~ msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
-#~ msgstr "Perdew-Burke-Ernzerhof-Austausch (PBE)"
-
-#~ msgid "OP: One-parameter Progressive correlation"
-#~ msgstr "OP: Ein-Parameter progressive Korrelation"
-
-#~ msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
-#~ msgstr "SLYP: SLATER + Lee-Yang-Parr-Korrelation (LYP)"
-
-#~ msgid "SOP: SLATER + OP correlation"
-#~ msgstr "SOP: SLATER + OP-Korrelation"
-
-#~ msgid "BOP: BECKE exchange + OP correlation"
-#~ msgstr "BOP: BECKE-Austausch + OP-Korrelation"
-
-#~ msgid "BVWN: GILL exchange + VWN5 correlation"
-#~ msgstr "BVWN: GILL-Austausch + VWN5-Korrelation"
-
-#~ msgid "GLYP: GILL exchange + LYP correlation"
-#~ msgstr "GLYP: GILL-Austausch + LYP-Korrelation"
-
-#~ msgid "PBEVWN: PBE exchange + VWN6 correlation"
-#~ msgstr "PBEVWN: PBE-Austausch + VWN6-Korrelation"
-
-#~ msgid "PBELYP: PBE exchange +LYP correlation"
-#~ msgstr "PBELYP: PBE-Austausch + LYP-Korrelation"
-
-#~ msgid "PBEOP: PBE exchange + OP correlation"
-#~ msgstr "PBEOP: PBE-Austausch + OP-Korrelation"
-
-#~ msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
-#~ msgstr "BHHLYP: HF- und BECKE-Austausch + LYP-Korrelation"
 
 #~ msgid "Grid"
 #~ msgstr "Raster"
@@ -3235,29 +2063,8 @@ msgstr ""
 #~ msgid "Grid-Free"
 #~ msgstr "Rasterfrei"
 
-#~ msgid "DFT Functional:"
-#~ msgstr "DFT-Funktion:"
-
 #~ msgid "Method:"
 #~ msgstr "Methode:"
-
-#~ msgid "AO Integral Storage"
-#~ msgstr "AO-Integralspeicher"
-
-#~ msgid "Duplicated on Each Node"
-#~ msgstr "Dupliziert auf jedem Knoten"
-
-#~ msgid "Distributed Across All Nodes"
-#~ msgstr "Auf alle Knoten verteilt"
-
-#~ msgid "words"
-#~ msgstr "Worte"
-
-#~ msgid "Compute MP2 Properties"
-#~ msgstr "Berechne MP2-Eigenschaften"
-
-#~ msgid "Integral Retention Cutoff:"
-#~ msgstr "Integral-Rückhaltungs-Cutoff:"
 
 #~ msgid "Use Localized Orbitals"
 #~ msgstr "Lokalisierte Orbitale benutzen"
@@ -3265,65 +2072,11 @@ msgstr ""
 #~ msgid "# of Core Electrons:"
 #~ msgstr "Anzahl der Kern-Elektronen"
 
-#~ msgid "Transformation Method"
-#~ msgstr "Transformationsmethode"
-
-#~ msgid "Two Phase Bin Sort"
-#~ msgstr "Zweistufiges Binary Sort"
-
-#~ msgid "Segmented Transformation"
-#~ msgstr "Segmentierte Umwandlung"
-
-#~ msgid "Vibrational Analysis"
-#~ msgstr "Vibrationsanalyse"
-
 #~ msgid "Analytic"
 #~ msgstr "Analytisch"
 
 #~ msgid "Numeric"
 #~ msgstr "Numerisch"
-
-#~ msgid "Double Differenced Hessian"
-#~ msgstr "Doppelt differenzierte Hessematrix"
-
-#~ msgid "Print Internal Force Constants"
-#~ msgstr "Interne Kraftkonstanten ausgeben"
-
-#~ msgid "Displacement Size:"
-#~ msgstr "Verschiebungsgrösse:"
-
-#~ msgid "Purify Hessian"
-#~ msgstr "Bereinige Hessematrix"
-
-#~ msgid "Frequency Scale Factor:"
-#~ msgstr "Frequenzskalierungsfaktor:"
-
-#~ msgid "bohrs"
-#~ msgstr "Bohr"
-
-#~ msgid "Initial Hessian"
-#~ msgstr "Ursprüngliche Hessematrix"
-
-#~ msgid "Guess (+ define)"
-#~ msgstr "Rate (+ definiere)"
-
-#~ msgid "Read (from $HESS)"
-#~ msgstr "Lese (aus $HESS)"
-
-#~ msgid "Update Step Size"
-#~ msgstr "Erneuere Schrittgrösse"
-
-#~ msgid "Print Orbs at Each Iteration"
-#~ msgstr "Orbitale bei jeder Iteration anzeigen"
-
-#~ msgid "Gradient Convergence Criteria:"
-#~ msgstr "Gradientenkonvergenzkriterien:"
-
-#~ msgid "Jump Size:"
-#~ msgstr "Sprunggrösse:"
-
-#~ msgid "Stationary Point"
-#~ msgstr "Fixpunkt"
 
 #~ msgid "Optimization Method:"
 #~ msgstr "Optimierungs-Methode:"
@@ -3337,20 +2090,8 @@ msgstr ""
 #~ msgid "Minimum:"
 #~ msgstr "Minimum"
 
-#~ msgid "Initial:"
-#~ msgstr "Anfang:"
-
-#~ msgid "Newton-Raphson"
-#~ msgstr "Newton-Raphson"
-
-#~ msgid "Rational Function Optimization"
-#~ msgstr "Rationale Funktionsoptimierung"
-
 #~ msgid "Quadratic Approximation"
 #~ msgstr "Quadratische Annährung"
-
-#~ msgid "Schlegel (quasi-NR)"
-#~ msgstr "Schlegel (quasi-NR)"
 
 #~ msgid "Constrained Optimization"
 #~ msgstr "Eingeschränkte Optimierung"
@@ -3358,65 +2099,59 @@ msgstr ""
 #~ msgid "steps"
 #~ msgstr "Schritte"
 
-#~ msgid "Recalculate Hessian Every:"
-#~ msgstr "Berechne Hessematrix neu alle:"
-
-#~ msgid "Follow Mode:"
-#~ msgstr "Folge-Modus:"
-
-#~ msgid "Maximum Steps:"
-#~ msgstr "Maximale Stufen:"
-
 #~ msgid "Reset All"
 #~ msgstr "Alles zurücksetzen"
-
-#~ msgid "Defaults"
-#~ msgstr "Voreinstellungen"
 
 #~ msgid "Close"
 #~ msgstr "Schließen"
 
-#~ msgid "Calculation:"
-#~ msgstr "Kalkulation:"
-
-#~ msgid "Single Point Energy"
-#~ msgstr "Einzelpunktsenergie"
-
-#~ msgid "Processors:"
-#~ msgstr "Processoren:"
-
-#~ msgid "Theory:"
-#~ msgstr "Theorie:"
-
-#~ msgid "CCSD"
-#~ msgstr "CCSD"
-
-#~ msgid "Basis:"
-#~ msgstr "Basis:"
-
 #~ msgid "Charge:"
 #~ msgstr "Ladung:"
 
-#~ msgid "Output:"
-#~ msgstr "Ausgabe:"
+#~ msgid "Calculation:"
+#~ msgstr "Kalkulation:"
 
-#~ msgid "Standard"
-#~ msgstr "Standard"
+#~ msgid "Width:"
+#~ msgstr "Strichdicke:"
 
-#~ msgid "Molden"
-#~ msgstr "Molden"
+#~ msgid "A"
+#~ msgstr "A"
 
-#~ msgid "Molekel"
-#~ msgstr "Molekel"
+#~ msgid "°"
+#~ msgstr "°"
 
-#~ msgid "Checkpoint:"
-#~ msgstr "Kontrollpunkt:"
+#~ msgid "Insert Fragment..."
+#~ msgstr "Fragment einfügen..."
 
-#~ msgid "Z-matrix"
-#~ msgstr "Z-Matrix"
+#~ msgid "Add Directory"
+#~ msgstr "Verzeichnis hinzufügen"
 
-#~ msgid "Use Form"
-#~ msgstr "Benutze Form"
+#~ msgid "Reset List"
+#~ msgstr "Liste zurücksetzen"
+
+#~ msgid "Atom Labels:"
+#~ msgstr "Atombeschriftung:"
+
+#~ msgid "Atom number"
+#~ msgstr "Ordungszahl"
+
+#~ msgid "Element symbol"
+#~ msgstr "Elementsymbol"
+
+#~ msgid "Element name"
+#~ msgstr "Elementbezeichnung"
+
+#~ msgid "Bond Labels:"
+#~ msgstr "Bindungsbeschriftung:"
+
+#~ msgid "Bond number"
+#~ msgstr "Bindungsnummer"
+
+#~ msgid "Residue number"
+#~ msgstr "Restnummer"
+
+#~ msgid "Bond order"
+#~ msgstr "Bindungsanzahl"
 
 #~ msgid "Create ligand"
 #~ msgstr "Ligand erstellen"
@@ -3433,11 +2168,44 @@ msgstr ""
 #~ msgid "The residue name"
 #~ msgstr "Name des Restes"
 
+#~ msgid "Engines"
+#~ msgstr "Engines"
+
 #~ msgid "Steps:"
 #~ msgstr "Schritte:"
 
 #~ msgid "Origin:"
 #~ msgstr "Herkunft:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Transparenz:"
+
+#~ msgid "Lines"
+#~ msgstr "Linien"
+
+#~ msgid "Points"
+#~ msgstr "Punkte"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Elektrostatisches Potential"
+
+#~ msgid "Step Size:"
+#~ msgstr "Schrittgröße:"
+
+#~ msgid "Color:"
+#~ msgstr "Farbe:"
+
+#~ msgid "Positive"
+#~ msgstr "Positiv"
+
+#~ msgid "Negative"
+#~ msgstr "Negativ"
+
+#~ msgid "Orbital:"
+#~ msgstr "Elektronenumlaufbahn:"
+
+#~ msgid "Draw Box:"
+#~ msgstr "Box zeichnen:"
 
 #~ msgid "Create binding pocket"
 #~ msgstr "Bindungstasche erstellen"
@@ -3456,26 +2224,95 @@ msgstr ""
 #~ msgstr ""
 #~ "All Atome im Radius des Liganden werden Teil der Bindungstasche sein."
 
-#~ msgid "Unit Cell Parameters"
-#~ msgstr "Elementarzellenparameter"
+#~ msgid "Geometric Optimization"
+#~ msgstr "Geometrie-Optimierung"
 
-#~ msgid "Unit Cell Display Options"
-#~ msgstr "Optionen für die Elementarzellenanzeige"
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Kraftfeld-Optimierung"
 
-#~ msgid "A repeat:"
-#~ msgstr "Wiederholung von A:"
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
 
-#~ msgid "B repeat:"
-#~ msgstr "Wiederholung von B:"
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "Systematische Drehpunkt-Suche"
 
-#~ msgid "C repeat:"
-#~ msgstr "Wiederholung von C:"
+#~ msgid "Random Rotor Search"
+#~ msgstr "Zufällige Drehpunkt-Suche"
 
-#~ msgid "Delete Unit Cell"
-#~ msgstr "Elementarzelle löschen"
+#~ msgid "Weighted Rotor Search"
+#~ msgstr "Gewichtete Drehpunkt-Suche"
 
-#~ msgid "Fill Unit Cell"
-#~ msgstr "Elementarzelle ausfüllen"
+#~ msgid "ForceField"
+#~ msgstr "Kraftfeld"
+
+#~ msgid "H to Methyl"
+#~ msgstr "Wasserstoff zu Methyl"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H-zu-Methyl"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Wasserstoffatome"
+
+#~ msgid "Selections"
+#~ msgstr "Auswahl"
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Seitenverhätnis einstellen"
+
+#~ msgid "No Description"
+#~ msgstr "Keine Beschreibung"
+
+#~ msgid "Bond Centric Manipulation"
+#~ msgstr "Bindungsorientiertes Bearbeiten"
+
+#~ msgid "Add Atom"
+#~ msgstr "Atom hinzufügen"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Atom entfernen"
+
+#~ msgid "Add Bond"
+#~ msgstr "Bindung hinzufügen"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Bindung entfernen"
+
+#~ msgid "Change Element"
+#~ msgstr "Element ändern"
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Atom bearbeiten"
+
+#~ msgid "Template"
+#~ msgstr "Vorlage"
+
+#~ msgid "Animation"
+#~ msgstr "Animation"
+
+#~ msgid "Rendering:"
+#~ msgstr "Darstellung:"
+
+#~ msgid "Backbone"
+#~ msgstr "Rückgrat"
+
+#~ msgid "Radius:"
+#~ msgstr "Radius:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Stickstoff miteinbeziehen"
+
+#~ msgid "Medium"
+#~ msgstr "Mittel"
+
+#~ msgid "VdW Opacity:"
+#~ msgstr "Van-der-Waals-Transparenz:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Eigene Farbe"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Eigene Farbe:"
 
 #~ msgid "Axes (Å)"
 #~ msgstr "Achsen (Å)"
@@ -3483,8 +2320,128 @@ msgstr ""
 #~ msgid "Angles (°)"
 #~ msgstr "Winkel (°)"
 
+#~ msgid "Show Atoms"
+#~ msgstr "Atome anzeigen"
+
+#~ msgid "Angle (°)"
+#~ msgstr "Winkel (°)"
+
+#~ msgid "Dipole"
+#~ msgstr "Dipol"
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Beryllium"
+#~ msgstr "Beryllium"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Flugbahn animieren"
+
+#~ msgid "Helium"
+#~ msgstr "Helium"
+
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "Automatische Option: E = %1 %2 (dE = %3)"
+
+#~ msgid "Neon"
+#~ msgstr "Neon"
+
+#~ msgid "Lithium"
+#~ msgstr "Lithium"
+
+#~ msgid "Magnesium"
+#~ msgstr "Magnesium"
+
+#~ msgid "Scandium"
+#~ msgstr "Scandium"
+
+#~ msgid "Argon"
+#~ msgstr "Argon"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zircon"
+
+#~ msgid "Strontium"
+#~ msgstr "Strontium"
+
+#~ msgid "Yttrium"
+#~ msgstr "Yttrium"
+
+#~ msgid "Krypton"
+#~ msgstr "Krypton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubidium"
+
+#~ msgid "Nickel"
+#~ msgstr "Nickel"
+
+#~ msgid "Germanium"
+#~ msgstr "Germanium"
+
+#~ msgid "Gallium"
+#~ msgstr "Gallium"
+
+#~ msgid "Barium"
+#~ msgstr "Barium"
+
+#~ msgid "Technetium"
+#~ msgstr "Technetium"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruthenium"
+
+#~ msgid "Rhodium"
+#~ msgstr "Rhodium"
+
+#~ msgid "Tellurium"
+#~ msgstr "Tellur"
+
+#~ msgid "Palladium"
+#~ msgstr "Palladium"
+
+#~ msgid "Indium"
+#~ msgstr "Indium"
+
+#~ msgid "Cadmium"
+#~ msgstr "Cadmium"
+
+#~ msgid "Xenon"
+#~ msgstr "Xenon"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lanthan"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteinium"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermium"
+
 #~ msgid "A:"
 #~ msgstr "A:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
 
 #~ msgid "alpha:"
 #~ msgstr "alpha:"
@@ -3495,38 +2452,492 @@ msgstr ""
 #~ msgid "beta:"
 #~ msgstr "beta:"
 
-#~ msgid "C:"
-#~ msgstr "C:"
+#~ msgid "Samarium"
+#~ msgstr "Samarium"
 
-#~ msgid "gamma:"
-#~ msgstr "gamma:"
+#~ msgid "Promethium"
+#~ msgstr "Promethium"
 
-#~ msgid "Insert Fragment..."
-#~ msgstr "Fragment einfügen..."
+#~ msgid "Europium"
+#~ msgstr "Europium"
 
-#~ msgid "Add Directory"
-#~ msgstr "Verzeichnis hinzufügen"
+#~ msgid "Gadolinium"
+#~ msgstr "Gadolinium"
 
-#~ msgid "Reset List"
-#~ msgstr "Liste zurücksetzen"
+#~ msgid "Terbium"
+#~ msgstr "Terbium"
 
-#~ msgid "Generate from SMILES:"
-#~ msgstr "Durch SMILES erzeugen:"
+#~ msgid "Osmium"
+#~ msgstr "Osmium"
 
-#~ msgid "Bond length"
-#~ msgstr "Bindungslänge"
+#~ msgid "Iridium"
+#~ msgstr "Iridium"
 
-#~ msgid "Engines"
-#~ msgstr "Engines"
+#~ msgid "Rhenium"
+#~ msgstr "Rhenium"
 
-#~ msgid "Step Size:"
-#~ msgstr "Schrittgröße:"
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutetium"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Ytterbium"
+
+#~ msgid "Thulium"
+#~ msgstr "Thulium"
+
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmium"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Dysprosium"
+
+#~ msgid "Gold"
+#~ msgstr "Gold"
+
+#~ msgid "Thallium"
+#~ msgstr "Thallium"
+
+#~ msgid "Polonium"
+#~ msgstr "Polonium"
+
+#~ msgid "Francium"
+#~ msgstr "Francium"
+
+#~ msgid "Radon"
+#~ msgstr "Radon"
+
+#~ msgid "Actinium"
+#~ msgstr "Actinium"
+
+#~ msgid "Radium"
+#~ msgstr "Radium"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protactinium"
+
+#~ msgid "Thorium"
+#~ msgstr "Thorium"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptunium"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Lawrencium"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkelium"
+
+#~ msgid "Curium"
+#~ msgstr "Curium"
+
+#~ msgid "Californium"
+#~ msgstr "Californium"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelevium"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobelium"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dubnium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
+
+#~ msgid "Americium"
+#~ msgstr "Americium"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutonium"
+
+#~ msgid "Hassium"
+#~ msgstr "Hassium"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnerium"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgium"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bohrium"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstadtium"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Roentgenium"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadium"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentium"
+
+#~ msgid ""
+#~ "Invalid OpenGL context.\n"
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
+#~ msgstr ""
+#~ "Ungültige OpenGL-Umgebung.\n"
+#~ "Entweder ist Ihre gesamte OpenGL-Installation fehlerhaft (können Sie "
+#~ "irgend eine OpenGL Anwendung ausführen?), oder Sie haben einen "
+#~ "Programmfehler gefunden."
+
+#~ msgid "Ununoctium"
+#~ msgstr "Ununoctium"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptium"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
+
+#~ msgid "pH"
+#~ msgstr "pH"
 
 #~ msgid "Add Hydrogens for pH..."
 #~ msgstr "Füge Wasserstoffatome für den pH-Wert hinzu..."
 
-#~ msgid "pH"
-#~ msgstr "pH"
+#~ msgid "Abort Calculation"
+#~ msgstr "Berechnung abbrechen"
+
+#~ msgid "B repeat:"
+#~ msgstr "Wiederholung von B:"
+
+#~ msgid "A repeat:"
+#~ msgstr "Wiederholung von A:"
+
+#~ msgid "C repeat:"
+#~ msgstr "Wiederholung von C:"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "gamessEfpDock"
+
+#~ msgid "pythonTerminalDock"
+#~ msgstr "pythonTerminalDock"
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "Füge benannte Auswahl hinzu..."
+
+#~ msgid "Dianion"
+#~ msgstr "Dianion"
+
+#~ msgid "Anion"
+#~ msgstr "Anion"
+
+#~ msgid "Neutral"
+#~ msgstr "Neutral"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Transition State"
+#~ msgstr "Übergangsstatus"
+
+#~ msgid "On:"
+#~ msgstr "Auf:"
+
+#~ msgid "Advanced"
+#~ msgstr "Fortgeschritten"
+
+#~ msgid "Gas"
+#~ msgstr "Gas"
+
+#~ msgid "Basis"
+#~ msgstr "Basis"
+
+#~ msgid "System"
+#~ msgstr "System"
+
+#~ msgid "MO Guess"
+#~ msgstr "Schätzung von MO"
+
+#~ msgid "Data"
+#~ msgstr "Daten"
+
+#~ msgid "Order of Principal Axis:"
+#~ msgstr "Reihenfolge der Hauptachsen:"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "Koordinatentyp:"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "Use MP2"
+#~ msgstr "MP2 benutzen"
+
+#~ msgid "Use DFT"
+#~ msgstr "DFT benutzen"
+
+#~ msgid "# of Z-Matrix Variables"
+#~ msgstr "# der Z-Matrix Variablen"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ǻngstrom"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Start Atom"
+#~ msgstr "Atom starten"
+
+#~ msgid "Torsion %1"
+#~ msgstr "Torsion %1"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Atom/Bond"
+
+#~ msgid "There is no current selection."
+#~ msgstr "Es gibt keine aktuelle Auswahl"
+
+#~ msgid "Add Named Selection"
+#~ msgstr "genannte Auswahl hinzufügen"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Name kann nicht leer sein."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Es gibt bereist eine Auswahl mit diesem Namen."
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "Dication"
+#~ msgstr "Dication"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "einzelner Eingangspunkt"
+
+#~ msgid "Hessian"
+#~ msgstr "Hessematrix"
+
+#~ msgid "#D Heavy Atom Polarization Functions:"
+#~ msgstr "#D Polarisation-Funktion von schweren Atomen:"
+
+#~ msgid "Stat Point"
+#~ msgstr "statistischer Punkt"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "Diffuse S-Shell on Heavy Atoms"
+#~ msgstr "S-Hülle auf schweren Atomen diffusieren"
+
+#~ msgid "Basis Set:"
+#~ msgstr "Basissatz"
+
+#~ msgid "Diffuse L-Shell on Heavy Atoms"
+#~ msgstr "L-Hülle auf schweren Atomen diffusieren"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC Basisset"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "Double Zeta Valence"
+#~ msgstr "doppelte Zeta Valenz"
+
+#~ msgid "McLean/Chandler"
+#~ msgstr "McLean/Chandler"
+
+#~ msgid "Triple Zeta Valence"
+#~ msgstr "dreifach Zeta Valenz"
+
+#~ msgid "SBKJA Valence"
+#~ msgstr "SBKJA Valenz"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "Hay/Wadt Valence"
+#~ msgstr "Hay/Wadt Valenz"
+
+#~ msgid "Dunning/Hay DZ"
+#~ msgstr "Dunning/Hay DZ"
+
+#~ msgid "Pople N311"
+#~ msgstr "Pople N311"
+
+#~ msgid "ECP Type:"
+#~ msgstr "ECP Typ:"
+
+#~ msgid "Pople"
+#~ msgstr "Pople"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Dunning"
+#~ msgstr "Dunning"
+
+#~ msgid "#light Atom Polarization Functions:"
+#~ msgstr "#Lichtatom Polarisationsfunktion"
+
+#~ msgid "Polar:"
+#~ msgstr "Polar:"
+
+#~ msgid "#F Heavy Atom Polarization Functions:"
+#~ msgstr "#F schwere Atom Polarisationsfunktion"
+
+#~ msgid "Trudge"
+#~ msgstr "mühseliger Weg"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "Finite Electric Field"
+#~ msgstr "finites elektrisches Feld"
+
+#~ msgid "Spin Orbit"
+#~ msgstr "Spinlaufbahn"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "Energy Surface"
+#~ msgstr "Energiefläche"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "Gradient Extremal"
+#~ msgstr "Extremum eines Gradienten"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "None (CI)"
+#~ msgstr "Kein (CI)"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "MO "
+#~ msgstr "MO "
+
+#~ msgid "Torsion"
+#~ msgstr "Torsion"
+
+#~ msgid "Doublet"
+#~ msgstr "Doublet"
+
+#~ msgid "Singlet"
+#~ msgstr "Singlet"
+
+#~ msgid "Raman Intensities"
+#~ msgstr "Raman Intensität"
+
+#~ msgid "Make EFP"
+#~ msgstr "EFP durchführen"
+
+#~ msgid "Radiative Transition mom."
+#~ msgstr "radiaitive Transistion mom."
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Foster-Boys"
+#~ msgstr "Foster-Brüder"
+
+#~ msgid "Localization Method:"
+#~ msgstr "Lokalisierungmethode"
+
+#~ msgid "SCF Type:"
+#~ msgstr "SCF Typ:"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "Exec Type:"
+#~ msgstr "Durchführungs-Typ"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
 
 #~ msgid ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
@@ -3535,41 +2946,167 @@ msgstr ""
 #~ "Diese Datei enthält nur zweidimensionale Koordinaten. Soll Avogadro die "
 #~ "Verbindungen skalieren und eine schnelle Optimierung vornehmen?"
 
-#~ msgid "Abort Calculation"
-#~ msgstr "Berechnung abbrechen"
+#~ msgid "Distributed Across All Nodes"
+#~ msgstr "Auf alle Knoten verteilt"
 
-#~ msgid "MO "
-#~ msgstr "MO "
-
-#~ msgid "Add Named Selection..."
-#~ msgstr "Füge benannte Auswahl hinzu..."
-
-#~ msgid "There is no current selection."
-#~ msgstr "Es gibt keine aktuelle Auswahl"
-
-#~ msgid "Add Named Selection"
-#~ msgstr "genannte Auswahl hinzufügen"
-
-#~ msgid "name"
-#~ msgstr "Name"
-
-#~ msgid "Name cannot be empty."
-#~ msgstr "Name kann nicht leer sein."
-
-#~ msgid "There is already a selection with this name."
-#~ msgstr "Es gibt bereist eine Auswahl mit diesem Namen."
-
-#~ msgid "Atom/Bond"
-#~ msgstr "Atom/Bond"
+#~ msgid "Defaults"
+#~ msgstr "Voreinstellungen"
 
 #~ msgid "Overlay"
 #~ msgstr "Überlagerung"
 
-#~ msgid "tree"
-#~ msgstr "Baum"
+#~ msgid "Tabbed Tools"
+#~ msgstr "Werkzeuge in Reitern"
+
+#~ msgid "Bond length"
+#~ msgstr "Bindungslänge"
+
+#~ msgid "Vertex"
+#~ msgstr "Vertex"
+
+#~ msgid "name"
+#~ msgstr "Name"
+
+#~ msgid "Triplet"
+#~ msgstr "Triplet"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "Default"
+#~ msgstr "Voreinstellung"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "MOPAC Z-Matrix"
+#~ msgstr "MOPAC Z-Matrix"
+
+#~ msgid "Z-Matrix"
+#~ msgstr "Z-Matrix"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Point Group:"
+#~ msgstr "Punktgruppe:"
+
+#~ msgid "Units:"
+#~ msgstr "Einheiten:"
+
+#~ msgid "Words"
+#~ msgstr "Wörter"
+
+#~ msgid "Bytes"
+#~ msgstr "Bytes"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "MegaBytes"
+#~ msgstr "MegaBytes"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "Huckel"
+#~ msgstr "Hückel"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Das Dateiformat der Datei %1 kann nicht gelesen werden."
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Die Datei %1 kann nicht gelesen werden."
 
 #~ msgid "index"
 #~ msgstr "Index"
+
+#~ msgid "tree"
+#~ msgstr "Baum"
+
+#~ msgid "Color by Element"
+#~ msgstr "Farbe nach Element"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "Farbe nach Index (rot, orange, gelb, grün, blau, violett)."
+
+#~ msgid "Color by Index"
+#~ msgstr "Farbe nach Index"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Farbe nach Element (Kohlenstoff = grau, Sauerstoff = rot, ...)"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitale"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "Video-Dateien (*.avi)"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Vorschau ausblenden"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Füge Wasserstoffatome für den pH-Wert hinzu"
+
+#~ msgid "Some"
+#~ msgstr "Einige"
 
 #~ msgid "Low"
 #~ msgstr "Niedrig"
@@ -3580,26 +3117,231 @@ msgstr ""
 #~ msgid "Undefined"
 #~ msgstr "Undefiniert"
 
-#~ msgid "Some"
-#~ msgstr "Einige"
+#~ msgid "Adding .avi extension"
+#~ msgstr ".avi Erweiterung hinzufügen"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "Konnte Format nicht auf XYZ umstellen"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Parameterdatei öffnen"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "Filmdateien (*.avi)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Speichere Filmdatei"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "Berechne Elektronendichte"
+
+#~ msgid "Electron Density"
+#~ msgstr "Elektronendichte"
+
+#~ msgid "Calculating MO "
+#~ msgstr "Berechne MO "
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Erstelle Oberflächen..."
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "Berechne VdW-Würfel"
+
+#~ msgid "VdW Cube"
+#~ msgstr "VdW-Würfel"
+
+#~ msgid "Surfaces"
+#~ msgstr "Oberflächen"
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "Es wurde kein gültiger Dateiname vorgeschlagen."
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Bilddateien (.*png *.pbm)"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "Torsion (°)"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "Building video "
+#~ msgstr "Erstelle Video "
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr ""
+#~ "Avogadro muss neu gestartet werden, damit die Änderungen Wirkung zeigen."
+
+#~ msgid "Selection"
+#~ msgstr "Auswahl"
+
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "Klicken um Teil an dieser Stelle einzufügen."
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Smooth Transitions"
+#~ msgstr "Weiche Übergänge"
+
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgid "Left"
+#~ msgstr "Links"
+
+#~ msgid "Top"
+#~ msgstr "Oben"
+
+#~ msgid "Bottom"
+#~ msgstr "Unten"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Dipolmoment"
+
+#~ msgid "Dipole:"
+#~ msgstr "Dipol:"
+
+#~ msgid "Custom Value"
+#~ msgstr "Benutzerdefinierter Wert"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Speichern als .avi..."
+
+#~ msgid "Unique cartesian Coords."
+#~ msgstr "Eindeutige Kartesische Koordinaten"
+
+#~ msgid "Double Differenced Hessian"
+#~ msgstr "Doppelt differenzierte Hessematrix"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "Cubes"
+#~ msgstr "Würfel"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "Würfeldimensionen"
+
+#~ msgid "Cube:"
+#~ msgstr "Würfel:"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Berechne Elektronendichte"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Berechne alle MOe"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Berechne MO"
+
+#~ msgid "Distance:"
+#~ msgstr "Entfernung:"
+
+#~ msgid "Path:"
+#~ msgstr "Pfad:"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr ""
+#~ "Ungültiger Video-Dateiname. Muss vollständigen Verzeichnispfad enthalten"
+
+#~ msgid "Length (Å)"
+#~ msgstr "Länge (Å)"
+
+#~ msgid "End Atom"
+#~ msgstr "Endatom"
+
+#~ msgid "No filename supplied."
+#~ msgstr "Kein Dateiname vorgeschlagen."
+
+#~ msgid ""
+#~ "Align Molecules\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to two atoms.\n"
+#~ "\tThe first atom is centered at the origin.\n"
+#~ "\tThe second atom is aligned to the selected axis.\n"
+#~ "Right Mouse: \tReset alignment."
+#~ msgstr ""
+#~ "Moleküle ausrichten\n"
+#~ "\n"
+#~ "Linke Maustaste: \tZwei Atome nach oben auswählen.\n"
+#~ "\tDas erste Atome wird im Ursprung zentriert.\n"
+#~ "\tDas zweite Atome wird an der ausgewählten Achse ausgerichtet.\n"
+#~ "Rechte Maustaste: \tAusrichtung zurücksetzen."
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "Zeichnungswerkzeug (F8)\n"
+#~ "\n"
+#~ "Linke Maustaste:   Klicken und ziehen, um neue Atome und Bindungen zu "
+#~ "erstellen\n"
+#~ "Rechte Maustaste: Atom löschen"
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "Messen (F12)\n"
+#~ "\n"
+#~ "Linke Maustaste:    Bis zu 3 Atome auswählen.\n"
+#~ "Messung der Distanz zwischen 1. und 2. sowie 2. und 3. Atom\n"
+#~ "Messung des Winkels zwischen 1. und 3. Atom, Ausgangspunkt ist das 2. "
+#~ "Atom\n"
+#~ "Rechte Maustaste:  Messungen zurücksetzen."
+
+#~ msgid "Bond Length: "
+#~ msgstr "Bindungslänge: "
+
+#~ msgid "Equilibrium Geometry"
+#~ msgstr "Gleichgewichtsgeometrie"
+
+#~ msgid "Van der Waals Surface"
+#~ msgstr "Van-der-Waals-Oberfläche"
+
+#~ msgid "Unit Cell Display Options"
+#~ msgstr "Optionen für die Elementarzellenanzeige"
+
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "Elementarzellenparameter"
+
+#~ msgid "Initial Hessian"
+#~ msgstr "Ursprüngliche Hessematrix"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Berechne Van-der-Waals-Würfel"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "Elementarzelle löschen"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "Elementarzelle ausfüllen"
 
 #~ msgid "Mid"
 #~ msgstr "Mid"
-
-#~ msgid "Lots"
-#~ msgstr "Lots"
-
-#~ msgid "Color by Element"
-#~ msgstr "Farbe nach Element"
-
-#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-#~ msgstr "Farbe nach Element (Kohlenstoff = grau, Sauerstoff = rot, ...)"
-
-#~ msgid "Color by Index"
-#~ msgstr "Farbe nach Index"
-
-#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-#~ msgstr "Farbe nach Index (rot, orange, gelb, grün, blau, violett)."
 
 #~ msgid "Color by Residue"
 #~ msgstr "Farbe nach Rest"
@@ -3610,58 +3352,40 @@ msgstr ""
 #~ msgid "Trajectory files (*.xtc *.xyz)"
 #~ msgstr "Trajektorie-Dateien (\".xtc *.xyz)"
 
-#~ msgid "video files (*.avi)"
-#~ msgstr "Video-Dateien (*.avi)"
-
-#~ msgid "Adding .avi extension"
-#~ msgstr ".avi Erweiterung hinzufügen"
-
-#~ msgid "Must specify a valid .avi file name"
-#~ msgstr "Es muss ein gültiger Dateiname einer \".avi-Datei angegeben werden"
-
-#~ msgid "GL widget was not correctly initialized in order to save video"
-#~ msgstr ""
-#~ "GL-Widget wurde nicht ordnungsgemäss initialisiert, um das Video zu speichern"
-
-#~ msgid "Invalid video filename.  Must include full directory path"
-#~ msgstr ""
-#~ "Ungültiger Video-Dateiname. Muss vollständigen Verzeichnispfad enthalten"
-
-#~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
-#~ msgstr ""
-#~ "Ungültiger Videodateiname. Ein vollständiger Pfad und Name inklusive Endung "
-#~ ".avi muss angegeben werden."
-
-#~ msgid "could not set format to XYZ"
-#~ msgstr "Konnte Format nicht auf XYZ umstellen"
-
-#, qt-format
-#~ msgid "Problem reading traj file %1"
-#~ msgstr "Problem, die traj-Datei %1 zu lesen"
-
-#, qt-format
-#~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-#~ msgstr ""
-#~ "Trajectorie-Datei %1 stimmt nicht für die Anzahl Atome im akutellen Molekül "
-#~ "überein"
-
-#~ msgid "Trajectory..."
-#~ msgstr "Trajectorie..."
-
-#~ msgid "Open chemical file format"
-#~ msgstr "Öffne chemisches Dateiformat"
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Chemische Datei (\".parm7)"
 
 #~ msgid "Chemical files (*.xyz)"
 #~ msgstr "Chemische Datei (\".xyz)"
 
-#~ msgid "Open parameter file"
-#~ msgstr "Parameterdatei öffnen"
+#~ msgid "Open chemical file format"
+#~ msgstr "Öffne chemisches Dateiformat"
 
-#~ msgid "Chemical files (*.parm7)"
-#~ msgstr "Chemische Datei (\".parm7)"
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Es muss ein gültiger Dateiname einer \".avi-Datei angegeben werden"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Ungültiger Videodateiname. Ein vollständiger Pfad und Name inklusive "
+#~ "Endung .avi muss angegeben werden."
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "Problem, die traj-Datei %1 zu lesen"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "Trajectorie-Datei %1 stimmt nicht für die Anzahl Atome im akutellen "
+#~ "Molekül überein"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Trajectorie..."
+
+#~ msgid "qm"
+#~ msgstr "qm"
 
 #~ msgid "Import Trajectory"
 #~ msgstr "Importiere Trajectorie"
@@ -3669,8 +3393,11 @@ msgstr ""
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Q-Chem Eingabe..."
 
-#~ msgid "Add Hydrogens for pH"
-#~ msgstr "Füge Wasserstoffatome für den pH-Wert hinzu"
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "Trajektorie-Datei (*.xyz)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Speichere Traj-Datei"
 
 #~ msgid "Open mol file"
 #~ msgstr "Öffne Mol-Datei"
@@ -3678,141 +3405,263 @@ msgstr ""
 #~ msgid "Any files (*.*)"
 #~ msgstr "Alle Dateien (*.*)"
 
-#~ msgid "Save Movie File"
-#~ msgstr "Speichere Filmdatei"
-
-#~ msgid "movie files (*.avi)"
-#~ msgstr "Filmdateien (*.avi)"
-
-#~ msgid "Save Traj File"
-#~ msgstr "Speichere Traj-Datei"
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "Trajektorie-Datei (*.xyz)"
-
-#~ msgid "Lin Morph..."
-#~ msgstr "Lin Morph..."
-
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Einlesen der mol-Datei %1 fehlgeschlagen."
 
-#, qt-format
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "Zwei Moleküle haben unterschiedliche Atomnummern %1 %2"
-
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
-#~ "Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den Schnappschuss "
-#~ "zu speichern."
+#~ "Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den "
+#~ "Schnappschuss zu speichern."
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Speichere mit POV-Ray gerendertes Bild"
 
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr ""
 #~ "Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den Film zu "
 #~ "speichern."
 
+#~ msgid "Would write file to %1."
+#~ msgstr "Datei wird nach %1 geschrieben."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Datei %1 wurde geschrieben."
+
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr "Ungültiger Filmdateiname. Vollständiger Pfad muss angegeben werden."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Ungültiger Filmdateiname. Vollständiger Pfad, Name und Endung .avi muss "
 #~ "angegeben werden."
-
-#, qt-format
-#~ msgid "Would write file to %1."
-#~ msgstr "Datei wird nach %1 geschrieben."
-
-#, qt-format
-#~ msgid "Wrote file %1."
-#~ msgstr "Datei %1 wurde geschrieben."
-
-#~ msgid "Create Surfaces..."
-#~ msgstr "Erstelle Oberflächen..."
-
-#~ msgid "Calculating MO "
-#~ msgstr "Berechne MO "
-
-#~ msgid "Electron Density"
-#~ msgstr "Elektronendichte"
-
-#~ msgid "Calculating Electron Density"
-#~ msgstr "Berechne Elektronendichte"
-
-#~ msgid "VdW Cube"
-#~ msgstr "VdW-Würfel"
-
-#~ msgid "Calculating VdW Cube"
-#~ msgstr "Berechne VdW-Würfel"
-
-#~ msgid "Surfaces"
-#~ msgstr "Oberflächen"
-
-#~ msgid "Save POV-Ray rendered image"
-#~ msgstr "Speichere mit POV-Ray gerendertes Bild"
-
-#~ msgid "Image files (*.png *.pbm)"
-#~ msgstr "Bilddateien (.*png *.pbm)"
-
-#~ msgid "POV-Ray..."
-#~ msgstr "POV-Ray..."
-
-#~ msgid "No filename supplied."
-#~ msgstr "Kein Dateiname vorgeschlagen."
-
-#~ msgid "No valid filename was supplied."
-#~ msgstr "Es wurde kein gültiger Dateiname vorgeschlagen."
-
-#~ msgid "Does not compute."
-#~ msgstr "Wird nicht berechnet."
-
-#~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
-#~ msgstr ""
-#~ "Sie haben kein direktes Rendern mittels POV-Ray und das Verwerfen der POV-"
-#~ "Ray-Datei angefragt. Es wird keine Ausgabe gespeichert. Sind Sie sicher, "
-#~ "dass Sie dies möchten?"
-
-#~ msgid "POV-Ray failed to start."
-#~ msgstr "POV-Ray-Start fehlgeschlagen."
 
 #~ msgid ""
 #~ "POV-Ray failed to start. May be the path to the executable is not set "
 #~ "correctly."
 #~ msgstr ""
-#~ "POV-Ray-Start fehlgeschlagen. Möglicherweise ist der Pfad zur ausführbaren "
-#~ "Datei nicht korrekt."
+#~ "POV-Ray-Start fehlgeschlagen. Möglicherweise ist der Pfad zur "
+#~ "ausführbaren Datei nicht korrekt."
+
+#~ msgid "Does not compute."
+#~ msgstr "Wird nicht berechnet."
 
 #~ msgid "POV-Ray"
 #~ msgstr "POV-Ray"
 
-#~ msgid "GLSL Shaders..."
-#~ msgstr "GLSL Shader..."
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "POV-Ray-Start fehlgeschlagen."
 
-#~ msgid "Open a vertex shader source file"
-#~ msgstr "Öffne eine Vertex-Shader-Quelldatei"
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
 
-#~ msgid "Vertex shader files (*.vert)"
-#~ msgstr "Vertex-Shader-Dateien (*.vert)"
+#~ msgid "Python Terminal"
+#~ msgstr "Python-Terminal"
 
-#~ msgid "Open a fragment shader source file"
-#~ msgstr "Öffne eine Fragment-Shader-Quelldatei."
+#~ msgid "cancel"
+#~ msgstr "Abbrechen"
 
-#~ msgid "Fragment shader files (*.frag)"
-#~ msgstr "Fragment-Shader-Datei (*.frag)"
+#~ msgid "Plugin Manager"
+#~ msgstr "Plugin-Manager"
 
-#~ msgid "Open a shader parameters file"
-#~ msgstr "Öffne eine Shader-Parameter-Datei"
+#~ msgid "Video file not written."
+#~ msgstr "Video-Datei wurde nicht geschrieben."
+
+#~ msgid "Tab Position"
+#~ msgstr "Tab-Position"
+
+#~ msgid "File Import..."
+#~ msgstr "Datei-Import..."
+
+#~ msgid "Python Settings"
+#~ msgstr "Python-Einstellungen"
+
+#~ msgid "Browse..."
+#~ msgstr "Suche..."
+
+#~ msgid "Fill"
+#~ msgstr "Füllen"
+
+#~ msgid "Render:"
+#~ msgstr "Rendere:"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "RHF"
+#~ msgstr "RHF"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "LCCD: Linearized CC"
+#~ msgstr "LCCD: Linearisiertes CC"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "Molecule Charge:"
+#~ msgstr "Molekülladung:"
+
+#~ msgid "HCore"
+#~ msgstr "HCore"
+
+#~ msgid "Gaussian 9x"
+#~ msgstr "Gaussian 9x"
+
+#~ msgid "Compute MP2 Properties"
+#~ msgstr "Berechne MP2-Eigenschaften"
+
+#~ msgid "Vibrational Analysis"
+#~ msgstr "Vibrationsanalyse"
+
+#~ msgid "Transformation Method"
+#~ msgstr "Transformationsmethode"
+
+#~ msgid "Theory:"
+#~ msgstr "Theorie:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Basis:"
+#~ msgstr "Basis:"
+
+#~ msgid "Processors:"
+#~ msgstr "Processoren:"
+
+#~ msgid "Output:"
+#~ msgstr "Ausgabe:"
+
+#~ msgid "Z-matrix"
+#~ msgstr "Z-Matrix"
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Lade eine zweite Konformation..."
+
+#~ msgid ""
+#~ "Load a second confromation and computer a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Lade eine zweite Konformation und berechne eine lineare Interpolation mit "
+#~ "der aktuellen Konformation."
+
+#~ msgid "Iso Value:"
+#~ msgstr "Iso-Wert:"
+
+#~ msgid "Save movie..."
+#~ msgstr "Speichere Film..."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Speichere Trajektorie..."
+
+#~ msgid "Isosurfaces"
+#~ msgstr "Isooberflächen"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "Resolution:"
+#~ msgstr "Auflösung:"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "POV-Ray Export"
+#~ msgstr "POV-Ray-Export"
+
+#~ msgid "Alpha transparency"
+#~ msgstr "Alpha-Transparenz"
+
+#~ msgid "Render using POV-Ray"
+#~ msgstr "Rendere mit POV-Ray"
+
+#~ msgid "Q-Chem Input"
+#~ msgstr "Q-Chem-Eingabe"
+
+#~ msgid "Parameters:"
+#~ msgstr "Parameter:"
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr ""
+#~ "GL-Widget wurde nicht ordnungsgemäss initialisiert, um das Video zu "
+#~ "speichern"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph..."
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
+#~ msgstr ""
+#~ "Sie haben kein direktes Rendern mittels POV-Ray und das Verwerfen der POV-"
+#~ "Ray-Datei angefragt. Es wird keine Ausgabe gespeichert. Sind Sie sicher, "
+#~ "dass Sie dies möchten?"
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Zwei Moleküle haben unterschiedliche Atomnummern %1 %2"
 
 #~ msgid "Shader parameters files (*.params)"
 #~ msgstr "Shader-Parameter-Dateien (\".params)"
 
+#~ msgid "Open a shader parameters file"
+#~ msgstr "Öffne eine Shader-Parameter-Datei"
+
+#~ msgid "Fragment shader files (*.frag)"
+#~ msgstr "Fragment-Shader-Datei (*.frag)"
+
+#~ msgid "Open a fragment shader source file"
+#~ msgstr "Öffne eine Fragment-Shader-Quelldatei."
+
+#~ msgid "Vertex shader files (*.vert)"
+#~ msgstr "Vertex-Shader-Dateien (*.vert)"
+
+#~ msgid "Open a vertex shader source file"
+#~ msgstr "Öffne eine Vertex-Shader-Quelldatei"
+
 #~ msgid "Load and use OpenGL 2.0 GLSL shaders"
 #~ msgstr "Lade und benutze OpenGL 2.0 GLSL-Shader"
+
+#~ msgid "GLSL Shaders..."
+#~ msgstr "GLSL Shader..."
+
+#~ msgid "AutoOpt Molecule"
+#~ msgstr "AutoOpt-Molekül"
 
 #~ msgid "GL widget was not correctly initialized in order to make a video"
 #~ msgstr ""
@@ -3822,95 +3671,8 @@ msgstr ""
 #~ msgid "GL widget has no molecule"
 #~ msgstr "Das GL-Widget besitzt kein Molekül"
 
-#~ msgid "Building video "
-#~ msgstr "Erstelle Video "
-
-#~ msgid "cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "Video file not written."
-#~ msgstr "Video-Datei wurde nicht geschrieben."
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Plugin-Manager"
-
-#~ msgid ""
-#~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr ""
-#~ "Avogadro muss neu gestartet werden, damit die Änderungen Wirkung zeigen."
-
-#~ msgid "Bond Length: "
-#~ msgstr "Bindungslänge: "
-
-#~ msgid "Click to insert the fragment at that position."
-#~ msgstr "Klicken um Teil an dieser Stelle einzufügen."
-
-#~ msgid "Selection"
-#~ msgstr "Auswahl"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Enable the tabbed tool layout."
-#~ msgstr "Aktiviere Werkzeuge-Reiteransicht"
-
-#~ msgid "Top"
-#~ msgstr "Oben"
-
-#~ msgid "Bottom"
-#~ msgstr "Unten"
-
-#~ msgid "Left"
-#~ msgstr "Links"
-
-#~ msgid "Right"
-#~ msgstr "Rechts"
-
-#~ msgid "Tab Position"
-#~ msgstr "Tab-Position"
-
-#~ msgid "Smooths animations of various functions where availabe."
-#~ msgstr "Weiche Animationen von zahlreichen Funktionen falls vorhanden."
-
-#~ msgid ""
-#~ "Enables the use of transitional animations when performing automatic "
-#~ "positioning of the GLWidget."
-#~ msgstr ""
-#~ "Aktiviert die Benutzung von Übergangsanimationen falls eine automatische "
-#~ "Positionierung des GLWidgets durchgeführt wird."
-
-#~ msgid "Smooth Transitions"
-#~ msgstr "Weiche Übergänge"
-
-#~ msgid "Dipole:"
-#~ msgstr "Dipol:"
-
-#~ msgid "Dipole Moment"
-#~ msgstr "Dipolmoment"
-
-#~ msgid "Custom Value"
-#~ msgstr "Benutzerdefinierter Wert"
-
-#~ msgid "Custom:"
-#~ msgstr "Individuell:"
-
-#~ msgid "Unique ID"
-#~ msgstr "Eindeutige ID"
-
-#~ msgid "Python Settings"
-#~ msgstr "Python-Einstellungen"
-
-#~ msgid "Save as .avi..."
-#~ msgstr "Speichern als .avi..."
-
-#~ msgid "File Import..."
-#~ msgstr "Datei-Import..."
-
-#~ msgid "Browse..."
-#~ msgstr "Suche..."
-
-#~ msgid "Par File:"
-#~ msgstr "Nennwert-Datei:"
+#~ msgid "Gradient"
+#~ msgstr "Gradient"
 
 #~ msgid "Attempt to perceive bonds?"
 #~ msgstr "Versuchen, Binddungen zu erkennen?"
@@ -3918,30 +3680,497 @@ msgstr ""
 #~ msgid "Perceive bonds?"
 #~ msgstr "Bindungen erkennen?"
 
-#~ msgid "LANL2DZ"
-#~ msgstr "LANL2DZ"
+#~ msgid "Unique ID"
+#~ msgstr "Eindeutige ID"
 
-#~ msgid "Z-matrix (compact)"
-#~ msgstr "Z-Matrix (kompakt)"
+#~ msgid "Multiplicity:"
+#~ msgstr "Multiplizität:"
 
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "Lineare Verwandlungstrajektorie"
+#~ msgid "Diagonalization Method:"
+#~ msgstr "Diagonalisierungsmethode:"
 
-#~ msgid ""
-#~ "Load a second confromation and computer a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Lade eine zweite Konformation und berechne eine lineare Interpolation mit "
-#~ "der aktuellen Konformation."
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (UK-Version)"
+
+#~ msgid "Update Step Size"
+#~ msgstr "Erneuere Schrittgrösse"
+
+#~ msgid "Jump Size:"
+#~ msgstr "Sprunggrösse:"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Newton-Raphson"
+
+#~ msgid "Schlegel (quasi-NR)"
+#~ msgstr "Schlegel (quasi-NR)"
 
 #~ msgid "button to load a second conformation from a file."
 #~ msgstr "Button, um eine zweite Konformation aus einer Datei zu lesen."
 
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "Lade eine zweite Konformation..."
+#~ msgid "Color By:"
+#~ msgstr "Farbe nach:"
 
-#~ msgid "Num Frames"
-#~ msgstr "Num Frames"
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Button, um eine .xyz-Trajektorie zu speichern."
+
+#~ msgid "Render the molecule directly using command line POV-Ray"
+#~ msgstr "Rendere das Molekül mittels Kommandozeilen-POV-Ray"
+
+#~ msgid "Command:"
+#~ msgstr "Kommando:"
+
+#~ msgid "Render"
+#~ msgstr "Rendere"
+
+#~ msgid "Antialias"
+#~ msgstr "Antialias"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "Setze die Hintergrundfarbe auf transparent"
+
+#~ msgid "Display Type:"
+#~ msgstr "Anzeigetyp:"
+
+#~ msgid "Shader Program:"
+#~ msgstr "Shader-Programm:"
+
+#~ msgid "Assign Shader"
+#~ msgstr "Weise Shader zu"
+
+#~ msgid "Vertex Shader:"
+#~ msgstr "Vertex-Shader:"
+
+#~ msgid "Keep the POV-Ray source after rendering has completed"
+#~ msgstr "Behalte die POV-Ray-Quellen nachdem das Rendern beendet wurde"
+
+#~ msgid "GLSL Shaders"
+#~ msgstr "GLSL-Shader"
+
+#~ msgid "Keep POV-Ray source after rendering"
+#~ msgstr "Behalte die POV-Ray-Quellen nach dem Rendern"
+
+#~ msgid "Shader Name:"
+#~ msgstr "Shader-Name:"
+
+#~ msgid "Load Shaders"
+#~ msgstr "Lade Shader"
+
+#~ msgid "Fragment Shader:"
+#~ msgstr "Fragment-Shader:"
+
+#~ msgid "Untitled"
+#~ msgstr "Unbenannt"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Farbe nach Teilladung"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Farbe nach Abstand"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Farbe nach Abstand vom ersten Atom."
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Rendert die x-, y- und z-Achsen am Ursprung"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Farbe nach Rest (Aminosäurentyp, Hydrophobie, ..."
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Rendert Molekülorbitale"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Rendert sekundäre Proteinstruktur"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Rendert molekulare Dipolmomente"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Rendert Atom- und Bindungsbeschriftungen"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "Rendert Moleküle als Stäbe"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Rendert Atome als Tetraeder, Octaeder oder andere Polygone"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Animiere Trajektorien, Reaktionen und Vibrationen."
+
+#~ msgid "Save Video File"
+#~ msgstr "Speichere Videodatei"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr ""
+#~ "Rendert Bindungen als Draht (Linien), ideal für sehr grosse (Bio)moleküle"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Rendert berechnete Moleküloberflächen"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Importiere Trajektorie-Datei"
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "MOPAC-Eingabe..."
+
+#~ msgid "Linear Morph"
+#~ msgstr "Linear Morph"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Wandle Wasserstoffatome in Methylgruppen um"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Hinzufügen oder entfernen von Wasserstoffatomen"
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "Kreire Eingabedateien für das GAMESS-Quantenchemie-Paket"
+
+#~ msgid "Input Generator..."
+#~ msgstr "Eingabe-Generator..."
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "MOPAC-Berechnung läuft..."
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "Die MOPAC-Ausführungsdatei wurde nicht gefunden."
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC ist nicht installiert."
+
+#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "MOPAC hat nicht gestartet. Vielleicht wurde es nicht richtig installiert."
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "MOPAC-Start fehlgeschlagen."
+
+#~ msgid "MOPAC Running."
+#~ msgstr "MOPAC läuft."
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr ""
+#~ "MOPAC läuft bereits. Warten Sie bis die vorhergehende Berechnung beendet "
+#~ "ist."
+
+#~ msgid "MOPAC Input Warning"
+#~ msgstr "MOPAC-Eingabe-Warnung"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Kreiere eine lineare Interpolation für Animationen"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "MOPAC Crashed."
+#~ msgstr "MOPAC abgestürzt."
+
+#~ msgid "Warning"
+#~ msgstr "Warnung"
+
+#~ msgid "Could not run mencoder."
+#~ msgstr "mencoder konnte nicht ausgeführt werden."
+
+#~ msgid "Could not run povray."
+#~ msgstr "povray konnte nicht ausgeführt werden."
+
+#~ msgid "Unit Cell"
+#~ msgstr "Elementarzelle"
+
+#~ msgid "Vibration"
+#~ msgstr "Vibration"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii-Tracking"
+
+#~ msgid "No vibrations have been computed for this molecule."
+#~ msgstr "Für dieses Molekül wurden keine Vibrationen berechnet."
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Verfolge Bewegung mittels Wii-Fernbedienungen"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "  - script has no 'Extension' class defined"
+#~ msgstr "  - Das Skript hat keine 'Erweiterungs'-Klasse definiert."
+
+#~ msgid "Manipulation of bond lengths, angles, and torsions"
+#~ msgstr "Bearbeitung von Bindungslängen, -winkeln und -torsionen."
+
+#~ msgid "Automatic rotation of molecules"
+#~ msgstr "Automatische Rotation von Molekülen"
+
+#~ msgid "Automatic optimization of molecular geometry"
+#~ msgstr "Automatische Optimierung der Molekülgeometrie"
+
+#~ msgid "Align molecules to a Cartesian axis"
+#~ msgstr "Moleküle an einer Kartesischen Achse ausrichten"
+
+#~ msgid "  - script has no 'Tool' class defined"
+#~ msgstr "  - Das Skript hat keine 'Werkzeug'-Klasse definiert"
+
+#~ msgid "PythonTool: checking "
+#~ msgstr "Python-Werkzeug: Prüfe "
+
+#~ msgid "PythonExtension: checking "
+#~ msgstr "Python-Erweiterung: Prüfe "
+
+#~ msgid "Unknown Python Extension"
+#~ msgstr "Unbekannte Python-Erweiterung"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "Atome, Reste und Moleküle auswählen"
+
+#~ msgid "Draw and edit atoms and bonds"
+#~ msgstr "Zeichne und editiere Atome und Bindungen"
+
+#~ msgid "Enable the tabbed tool layout."
+#~ msgstr "Aktiviere Werkzeuge-Reiteransicht"
+
+#~ msgid "Measure bond lengths, angles, and dihedrals"
+#~ msgstr "Messe Bindungslängen, -winkel und Dieder"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Hydrophobie"
+
+#~ msgid "Color residues by:"
+#~ msgstr "Färbe Reste ein nach:"
+
+#~ msgid "Check"
+#~ msgstr "Prüfe"
+
+#~ msgid "MegaWords"
+#~ msgstr "MegaWords"
+
+#~ msgid "Maximum Steps:"
+#~ msgstr "Maximale Stufen:"
+
+#~ msgid "Read (from $HESS)"
+#~ msgstr "Lese (aus $HESS)"
+
+#~ msgid "Follow Mode:"
+#~ msgstr "Folge-Modus:"
+
+#~ msgid "Generate..."
+#~ msgstr "Erzeuge..."
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "Berechne Gitter"
+
+#~ msgid "Quintet"
+#~ msgstr "Quintett"
+
+#~ msgid "Quartet"
+#~ msgstr "Quartett"
+
+#~ msgid "PM6"
+#~ msgstr "PM6"
+
+#~ msgid "MNDO-d"
+#~ msgstr "MNDO-d"
+
+#~ msgid "Compute..."
+#~ msgstr "Berechne..."
+
+#~ msgid "RM1"
+#~ msgstr "RM1"
+
+#~ msgid "MOPAC Input"
+#~ msgstr "MOPAC-Eingabe"
+
+#~ msgid "Frequency (cm-1)"
+#~ msgstr "Frequenz (cm-1)"
+
+#~ msgid "Generate Cell"
+#~ msgstr "Erzeuge Zelle"
+
+#~ msgid "Molecular Vibrations"
+#~ msgstr "Molukulare Vibrationen"
+
+#~ msgid "Intensity (a.u.)"
+#~ msgstr "Intensität (a.u.)"
+
+#~ msgid "HF"
+#~ msgstr "HF"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (annähernd)"
+
+#~ msgid "Super Cell Options"
+#~ msgstr "Superzellen-Optionen"
+
+#~ msgid "Super Cell Parameters"
+#~ msgstr "Superzellen-Parameter"
+
+#~ msgid "Range:"
+#~ msgstr "Bereich:"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr "Farbe nach atomarer Teilladung (blau = positiv, rot = negativ)."
+
+#~ msgid "Cartoon"
+#~ msgstr "Cartoon"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "Rendert Ringe mit farbigen Ebenen"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "Rendert das Proteinrundgerüst als Bänder"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC-Eingabestapel (*.mop)"
+
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "Speichere MOPAC-Eingabestapel"
+
+#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "MOPAC lief nicht richtig. Vielleicht wurde es nicht richtig installiert."
+
+#~ msgid ""
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
+#~ msgstr ""
+#~ "Erzeuge POV-Ray-Dateien und rendere diese mittels des POV-Ray-"
+#~ "Kommandozeilenprogramms."
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "Berechne Molekülorbitale und andere Oberflächen"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Fenster um Atome, Bindungen, Winkel und Torsionseigenschaften anzuzeigen. "
+#~ "Es beinhaltet auch einen Editor für Kartesische Koordinaten."
+
+#~ msgid "Atom Index %1"
+#~ msgstr "Atomindex %1"
+
+#~ msgid "Example extension"
+#~ msgstr "Beispiel-Erweiterung"
+
+#~ msgid "Build and display crystallographic super cells"
+#~ msgstr "Erzeuge und zeige kristallographische Superzellen"
+
+#~ msgid "Super Cell"
+#~ msgstr "Superzelle"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
+#~ msgstr ""
+#~ "Dieses Dokument ist momentan ein isoliertes Molekül. Sie müssen eine "
+#~ "Elementarzelle erzeugen."
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Atome, Bindungen, Reste auswählen..."
+
+#~ msgid "Super Cell Builder..."
+#~ msgstr "Superzellen-Erzeuger"
+
+#~ msgid "Build and display crystallographic unit cells"
+#~ msgstr "Erzeuge und zeige kristallographische Elementarzellen"
+
+#~ msgid "PythonEngine: checking "
+#~ msgstr "Python-Engine: Prüfe "
+
+#~ msgid "Smooths animations of various functions where availabe."
+#~ msgstr "Weiche Animationen von zahlreichen Funktionen falls vorhanden."
+
+#~ msgid "Amino Colors"
+#~ msgstr "Amino-Farben"
+
+#~ msgid "Residue Color Settings"
+#~ msgstr "Einstellungen der Restefarben"
+
+#~ msgid "Use Symmetry During Calculation"
+#~ msgstr "Verwende Symmetrie während der Berechnung"
+
+#~ msgid "Parallel Load Balance Type"
+#~ msgstr "Paralleler Auslastungsverteilungstyp"
+
+#~ msgid "MO Read ($VEC)"
+#~ msgstr "MO gelesen ($VEC)"
+
+#~ msgid "MO Saved (DICTNRY)"
+#~ msgstr "MO gespeichert (DICTNRY)"
+
+#~ msgid "Becke 1988 exchange"
+#~ msgstr "Becke-1988-Austausch"
+
+#~ msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+#~ msgstr "VWN: Vosko-Wilk-Nusair-Korrelation  (VWN5)"
+
+#~ msgid "Slater exchange"
+#~ msgstr "Slater-Austausch"
+
+#~ msgid "LYP: Lee-Yang-Parr correlation"
+#~ msgstr "LYP: Lee-Yang-Parr-Korrelation"
+
+#~ msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+#~ msgstr "Perdew-Burke-Ernzerhof-Austausch (PBE)"
+
+#~ msgid "Gill 1996 exchange"
+#~ msgstr "Gill-1996-Austausch"
+
+#~ msgid "BVWN: BECKE exchange + VWN5 correlation"
+#~ msgstr "BVWN: BECKE-Austausch + VWN5-Korrelation"
+
+#~ msgid "BLYP: BECKE exchange + LYP correlation"
+#~ msgstr "BLYP: BECKE-Austausch + LYP-Korrelation"
+
+#~ msgid "SVWN: Slater exhange + VWN correlation"
+#~ msgstr "SVWN: Slater-Austausch + VWN-Korrelation"
+
+#~ msgid "BVWN: GILL exchange + VWN5 correlation"
+#~ msgstr "BVWN: GILL-Austausch + VWN5-Korrelation"
+
+#~ msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+#~ msgstr "SLYP: SLATER + Lee-Yang-Parr-Korrelation (LYP)"
+
+#~ msgid "BOP: BECKE exchange + OP correlation"
+#~ msgstr "BOP: BECKE-Austausch + OP-Korrelation"
+
+#~ msgid "SOP: SLATER + OP correlation"
+#~ msgstr "SOP: SLATER + OP-Korrelation"
+
+#~ msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+#~ msgstr "BHHLYP: HF- und BECKE-Austausch + LYP-Korrelation"
+
+#~ msgid "PBEOP: PBE exchange + OP correlation"
+#~ msgstr "PBEOP: PBE-Austausch + OP-Korrelation"
+
+#~ msgid "GLYP: GILL exchange + LYP correlation"
+#~ msgstr "GLYP: GILL-Austausch + LYP-Korrelation"
+
+#~ msgid "PBELYP: PBE exchange +LYP correlation"
+#~ msgstr "PBELYP: PBE-Austausch + LYP-Korrelation"
+
+#~ msgid "PBEVWN: PBE exchange + VWN6 correlation"
+#~ msgstr "PBEVWN: PBE-Austausch + VWN6-Korrelation"
+
+#~ msgid "Print Internal Force Constants"
+#~ msgstr "Interne Kraftkonstanten ausgeben"
+
+#~ msgid "Segmented Transformation"
+#~ msgstr "Segmentierte Umwandlung"
+
+#~ msgid "Print Orbs at Each Iteration"
+#~ msgstr "Orbitale bei jeder Iteration anzeigen"
+
+#~ msgid "Stationary Point"
+#~ msgstr "Fixpunkt"
+
+#~ msgid "Checkpoint:"
+#~ msgstr "Kontrollpunkt:"
+
+#~ msgid "Molekel"
+#~ msgstr "Molekel"
+
+#~ msgid "Initial:"
+#~ msgstr "Anfang:"
 
 #~ msgid ""
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
@@ -3950,259 +4179,81 @@ msgstr ""
 #~ "Speichere Schnappschüsse der Trajektorie als Reihe von POV-Ray-Dateien. "
 #~ "Diese können dazu benutzt werden einen Film zu erstellen."
 
-#~ msgid "Button to save an .xyz trajectory."
-#~ msgstr "Button, um eine .xyz-Trajektorie zu speichern."
-
-#~ msgid "Save trajectory..."
-#~ msgstr "Speichere Trajektorie..."
-
-#~ msgid "Save movie..."
-#~ msgstr "Speichere Film..."
-
-#~ msgid "Cubes"
-#~ msgstr "Würfel"
-
-#~ msgid "Cube Dimensions"
-#~ msgstr "Würfeldimensionen"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "z"
-#~ msgstr "z"
-
-#~ msgid "Max:"
-#~ msgstr "Maximum:"
-
-#~ msgid "Calculate MO"
-#~ msgstr "Berechne MO"
-
-#~ msgid "Calculate All MOs"
-#~ msgstr "Berechne alle MOe"
-
-#~ msgid "Calculate Electron Density"
-#~ msgstr "Berechne Elektronendichte"
-
-#~ msgid "Calculate Van der Waals Cube"
-#~ msgstr "Berechne Van-der-Waals-Würfel"
-
-#~ msgid "Isosurfaces"
-#~ msgstr "Isooberflächen"
-
-#~ msgid "Cube:"
-#~ msgstr "Würfel:"
-
-#~ msgid "Color By:"
-#~ msgstr "Farbe nach:"
-
-#~ msgid "Iso Value:"
-#~ msgstr "Iso-Wert:"
-
-#~ msgid "0.02"
-#~ msgstr "0.02"
-
-#~ msgid "Cube Range:"
-#~ msgstr "Würfelbereich:"
-
-#~ msgid "0.000"
-#~ msgstr "0.000"
-
-#~ msgid "1.000"
-#~ msgstr "1.000"
-
-#~ msgid "Calculate Mesh"
-#~ msgstr "Berechne Gitter"
-
-#~ msgid "Van der Waals Surface"
-#~ msgstr "Van-der-Waals-Oberfläche"
-
-#~ msgid "Distance:"
-#~ msgstr "Entfernung:"
-
-#~ msgid "0.0"
-#~ msgstr "0.0"
-
-#~ msgid "Range:"
-#~ msgstr "Bereich:"
-
-#~ msgid "POV-Ray Export"
-#~ msgstr "POV-Ray-Export"
-
-#~ msgid "povray"
-#~ msgstr "povray"
-
-#~ msgid "Render"
-#~ msgstr "Rendere"
-
-#~ msgid "Resolution:"
-#~ msgstr "Auflösung:"
-
-#~ msgid "Use full scene antialiasing"
-#~ msgstr "Benutze Vollbildantialiasing"
-
-#~ msgid "Antialias"
-#~ msgstr "Antialias"
-
-#~ msgid "Set the background color to be transparent"
-#~ msgstr "Setze die Hintergrundfarbe auf transparent"
-
-#~ msgid "Alpha transparency"
-#~ msgstr "Alpha-Transparenz"
-
-#~ msgid "Command:"
-#~ msgstr "Kommando:"
-
-#~ msgid "Render the molecule directly using command line POV-Ray"
-#~ msgstr "Rendere das Molekül mittels Kommandozeilen-POV-Ray"
-
-#~ msgid "Render using POV-Ray"
-#~ msgstr "Rendere mit POV-Ray"
-
-#~ msgid "Keep the POV-Ray source after rendering has completed"
-#~ msgstr "Behalte die POV-Ray-Quellen nachdem das Rendern beendet wurde"
-
-#~ msgid "Keep POV-Ray source after rendering"
-#~ msgstr "Behalte die POV-Ray-Quellen nach dem Rendern"
-
-#~ msgid "Path:"
-#~ msgstr "Pfad:"
-
-#~ msgid "Q-Chem Input"
-#~ msgstr "Q-Chem-Eingabe"
-
-#~ msgid "GLSL Shaders"
-#~ msgstr "GLSL-Shader"
-
-#~ msgid "Load Shaders"
-#~ msgstr "Lade Shader"
-
-#~ msgid "Shader Name:"
-#~ msgstr "Shader-Name:"
-
-#~ msgid "Vertex Shader:"
-#~ msgstr "Vertex-Shader:"
-
-#~ msgid "Fragment Shader:"
-#~ msgstr "Fragment-Shader:"
-
-#~ msgid "Parameters:"
-#~ msgstr "Parameter:"
-
-#~ msgid "Assign Shader"
-#~ msgstr "Weise Shader zu"
-
-#~ msgid "Display Type:"
-#~ msgstr "Anzeigetyp:"
-
-#~ msgid "Shader Program:"
-#~ msgstr "Shader-Programm:"
-
-#~ msgid "Untitled"
-#~ msgstr "Unbenannt"
-
-#~ msgid "Color by Partial Charge"
-#~ msgstr "Farbe nach Teilladung"
-
-#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
-#~ msgstr "Farbe nach atomarer Teilladung (blau = positiv, rot = negativ)."
-
-#~ msgid "Color by Distance"
-#~ msgstr "Farbe nach Abstand"
-
-#~ msgid "Color by distance from the first atom."
-#~ msgstr "Farbe nach Abstand vom ersten Atom."
-
-#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-#~ msgstr "Farbe nach Rest (Aminosäurentyp, Hydrophobie, ..."
-
-#~ msgid "Renders the x, y, and z axes at the origin"
-#~ msgstr "Rendert die x-, y- und z-Achsen am Ursprung"
-
-#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-#~ msgstr "Rendert Grundgerüst mit Bällen (Atome) und Stäben (Bindungen)"
-
-#~ msgid "Cartoon"
-#~ msgstr "Cartoon"
-
-#~ msgid "Renders protein secundary structure"
-#~ msgstr "Rendert sekundäre Proteinstruktur"
-
-#~ msgid "Renders molecular dipole moments"
-#~ msgstr "Rendert molekulare Dipolmomente"
-
-#~ msgid "Renders force displacements on atoms"
-#~ msgstr "Rendert Kraftverschiebungen auf Atomen"
-
-#~ msgid "Renders atom and bond labels"
-#~ msgstr "Rendert Atom- und Bindungsbeschriftungen"
-
-#~ msgid "Renders molecular orbitals"
-#~ msgstr "Rendert Molekülorbitale"
-
-#~ msgid "Renders color scale for gradients"
-#~ msgstr "Rendert Farbskala für Gradienten"
-
-#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-#~ msgstr "Rendert Atome als Tetraeder, Octaeder oder andere Polygone"
-
-#~ msgid "Renders protein backbones as ribbons"
-#~ msgstr "Rendert das Proteinrundgerüst als Bänder"
-
-#~ msgid "Renders rings with colored planes"
-#~ msgstr "Rendert Ringe mit farbigen Ebenen"
-
-#~ msgid "Renders molecules as sticks"
-#~ msgstr "Rendert Moleküle als Stäbe"
-
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "Rendert berechnete Moleküloberflächen"
-
-#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-#~ msgstr ""
-#~ "Rendert Bindungen als Draht (Linien), ideal für sehr grosse (Bio)moleküle"
-
-#~ msgid "Save Video File"
-#~ msgstr "Speichere Videodatei"
-
-#~ msgid "Animate trajectories, reactions, and vibratins."
-#~ msgstr "Animiere Trajektorien, Reaktionen und Vibrationen."
-
-#~ msgid "Import trajectory files"
-#~ msgstr "Importiere Trajektorie-Datei"
-
 #~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics force "
-#~ "fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
 #~ msgstr ""
 #~ "Optimiere Moleküle und erzeuge Konformere mittels molekülmechanischer "
 #~ "Kraftfelder"
 
-#~ msgid "Input Generator..."
-#~ msgstr "Eingabe-Generator..."
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr "Rendert Grundgerüst mit Bällen (Atome) und Stäben (Bindungen)"
 
-#~ msgid "Create input files for the GAMESS quantum chemistry package"
-#~ msgstr "Kreire Eingabedateien für das GAMESS-Quantenchemie-Paket"
+#~ msgid "Q-Chem Input Deck Generator Warning"
+#~ msgstr "Q-Chem-Eingabestapelwarnung"
 
-#~ msgid "MOPAC Input..."
-#~ msgstr "MOPAC-Eingabe..."
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Rendert Farbskala für Gradienten"
 
-#~ msgid "Transform hydrogens to methyl groups"
-#~ msgstr "Wandle Wasserstoffatome in Methylgruppen um"
+#~ msgid "Interactive python scripting terminal"
+#~ msgstr "Interaktives Python-Skripte-Terminal"
 
-#~ msgid "Add or remove hydrogens"
-#~ msgstr "Hinzufügen oder entfernen von Wasserstoffatomen"
+#~ msgid "  - no module"
+#~ msgstr "  - kein Modul"
 
-#~ msgid "Linear Morph"
-#~ msgstr "Linear Morph"
+#~ msgid "Run Type:"
+#~ msgstr "Lauftyp:"
 
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "Kreiere eine lineare Interpolation für Animationen"
+#~ msgid "Normal Run"
+#~ msgstr "Normaler Lauf"
 
-#~ msgid "MOPAC Input Warning"
-#~ msgstr "MOPAC-Eingabe-Warnung"
+#~ msgid "Direct SCF"
+#~ msgstr "Direktes SCF"
+
+#~ msgid "Single Point Energy"
+#~ msgstr "Einzelpunktsenergie"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Lineare Verwandlungstrajektorie"
+
+#~ msgid "Use Form"
+#~ msgstr "Benutze Form"
+
+#~ msgid "Z-matrix (compact)"
+#~ msgstr "Z-Matrix (kompakt)"
+
+#~ msgid "Use full scene antialiasing"
+#~ msgstr "Benutze Vollbildantialiasing"
+
+#~ msgid "Max:"
+#~ msgstr "Maximum:"
+
+#~ msgid "Cube Range:"
+#~ msgstr "Würfelbereich:"
+
+#~ msgid ""
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
+#~ "You may keep this value, for example if you intend to use POV-Ray\n"
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
+#~ msgstr ""
+#~ "Die aktuelle Avogadroanischt ist %1x%2 Pixel gross und besitzt daher ein "
+#~ "Anzeigeverhältnis von %3.\n"
+#~ "Sie können diesen Wert beibehalten, falls Sie zum Beispiel POV-Ray "
+#~ "benutzen möchten\n"
+#~ "um ein BIld von %4x1000 Pixeln zu erzeugen oder Sie können einen anderen "
+#~ "positiven Werte eingeben,\n"
+#~ "zum Beispiel 1 falls Sie mit POV-Ray ein quadratisches Bild, wie 1000 x "
+#~ "1000 Pixel, erzeugen möchten."
+
+#~ msgid "Visualize vibrational modes from quantum chemistry calculations"
+#~ msgstr "Vibrationsmodi aus den Quantenchemieberechnungen visualisieren"
+
+#~ msgid "Renders force displacements on atoms"
+#~ msgstr "Rendert Kraftverschiebungen auf Atomen"
 
 #~ msgid ""
 #~ "Would you like to update the preview text, losing all changes made in the "
@@ -4211,256 +4262,157 @@ msgstr ""
 #~ "Soll der Vorschautext aktualisiert werden? Alle Änderungen am MOPAC-"
 #~ "Eingabestapel-Vorschauabschnitt werden verloren gehen."
 
-#~ msgid "MOPAC Running."
-#~ msgstr "MOPAC läuft."
-
 #~ msgid ""
-#~ "MOPAC is already running. Wait until the previous calculation is finished."
-#~ msgstr ""
-#~ "MOPAC läuft bereits. Warten Sie bis die vorhergehende Berechnung beendet ist."
-
-#~ msgid "MOPAC Not Installed."
-#~ msgstr "MOPAC ist nicht installiert."
-
-#~ msgid "The MOPAC executable, cannot be found."
-#~ msgstr "Die MOPAC-Ausführungsdatei wurde nicht gefunden."
-
-#~ msgid "MOPAC failed to start."
-#~ msgstr "MOPAC-Start fehlgeschlagen."
-
-#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
-#~ msgstr ""
-#~ "MOPAC hat nicht gestartet. Vielleicht wurde es nicht richtig installiert."
-
-#~ msgid "Running MOPAC calculation..."
-#~ msgstr "MOPAC-Berechnung läuft..."
-
-#~ msgid "MOPAC Crashed."
-#~ msgstr "MOPAC abgestürzt."
-
-#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-#~ msgstr ""
-#~ "MOPAC lief nicht richtig. Vielleicht wurde es nicht richtig installiert."
-
-#~ msgid "Save MOPAC Input Deck"
-#~ msgstr "Speichere MOPAC-Eingabestapel"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC-Eingabestapel (*.mop)"
-
-#~ msgid "ESP"
-#~ msgstr "ESP"
-
-#~ msgid "Calculate molecular orbitals and other surfaces"
-#~ msgstr "Berechne Molekülorbitale und andere Oberflächen"
-
-#~ msgid ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray program."
-#~ msgstr ""
-#~ "Erzeuge POV-Ray-Dateien und rendere diese mittels des POV-Ray-"
-#~ "Kommandozeilenprogramms."
-
-#~ msgid ""
-#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
-#~ "includes a cartesian coordinate editor."
-#~ msgstr ""
-#~ "Fenster um Atome, Bindungen, Winkel und Torsionseigenschaften anzuzeigen. Es "
-#~ "beinhaltet auch einen Editor für Kartesische Koordinaten."
-
-#, qt-format
-#~ msgid "Atom Index %1"
-#~ msgstr "Atomindex %1"
-
-#~ msgid "Interactive python scripting terminal"
-#~ msgstr "Interaktives Python-Skripte-Terminal"
-
-#~ msgid "Q-Chem Input Deck Generator Warning"
-#~ msgstr "Q-Chem-Eingabestapelwarnung"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the Q-"
-#~ "Chem input deck preview pane?"
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
 #~ msgstr ""
 #~ "Soll der Vorschautext aktualisiert werden? Alle Änderungen am Q-Chem-"
 #~ "Eingabestapel-Vorschauabschnitt werden verloren gehen."
 
-#~ msgid "Select atoms, bonds, residues..."
-#~ msgstr "Atome, Bindungen, Reste auswählen..."
-
-#~ msgid "Super Cell Builder..."
-#~ msgstr "Superzellen-Erzeuger"
-
-#~ msgid "Warning"
-#~ msgstr "Warnung"
-
-#~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a unit "
-#~ "cell."
-#~ msgstr ""
-#~ "Dieses Dokument ist momentan ein isoliertes Molekül. Sie müssen eine "
-#~ "Elementarzelle erzeugen."
-
-#~ msgid "Super Cell"
-#~ msgstr "Superzelle"
-
-#~ msgid "Build and display crystallographic super cells"
-#~ msgstr "Erzeuge und zeige kristallographische Superzellen"
-
-#~ msgid "Example extension"
-#~ msgstr "Beispiel-Erweiterung"
-
-#~ msgid "Could not run povray."
-#~ msgstr "povray konnte nicht ausgeführt werden."
-
-#~ msgid "Could not run mencoder."
-#~ msgstr "mencoder konnte nicht ausgeführt werden."
-
-#~ msgid "Unit Cell"
-#~ msgstr "Elementarzelle"
-
-#~ msgid "Build and display crystallographic unit cells"
-#~ msgstr "Erzeuge und zeige kristallographische Elementarzellen"
-
-#~ msgid "No vibrational displacements exist."
-#~ msgstr "Es existiert keine Verschiebung durch Vibration."
-
-#~ msgid "No vibrations have been computed for this molecule."
-#~ msgstr "Für dieses Molekül wurden keine Vibrationen berechnet."
-
-#~ msgid "Vibration"
-#~ msgstr "Vibration"
-
-#~ msgid "Visualize vibrational modes from quantum chemistry calculations"
-#~ msgstr "Vibrationsmodi aus den Quantenchemieberechnungen visualisieren"
-
-#~ msgid "Wii Tracking"
-#~ msgstr "Wii-Tracking"
-
-#~ msgid "Track motion using Wii remotes"
-#~ msgstr "Verfolge Bewegung mittels Wii-Fernbedienungen"
-
-#~ msgid "Unknown Python Engine"
-#~ msgstr "Unbekannte Python-Engine"
-
-#~ msgid "N/A"
-#~ msgstr "N/A"
-
-#~ msgid "PythonEngine: checking "
-#~ msgstr "Python-Engine: Prüfe "
-
 #~ msgid "  - script has no 'Engine' class defined"
 #~ msgstr "  - Das Skript hat keine 'Engine'-Klasse definiert"
-
-#~ msgid "  - no module"
-#~ msgstr "  - kein Modul"
-
-#~ msgid "Unknown Python Extension"
-#~ msgstr "Unbekannte Python-Erweiterung"
-
-#~ msgid "PythonExtension: checking "
-#~ msgstr "Python-Erweiterung: Prüfe "
-
-#~ msgid "  - script has no 'Extension' class defined"
-#~ msgstr "  - Das Skript hat keine 'Erweiterungs'-Klasse definiert."
-
-#~ msgid "Unknown Python Tool"
-#~ msgstr "Unbekanntes Python-Werkzeug"
-
-#~ msgid "PythonTool: checking "
-#~ msgstr "Python-Werkzeug: Prüfe "
-
-#~ msgid "  - script has no 'Tool' class defined"
-#~ msgstr "  - Das Skript hat keine 'Werkzeug'-Klasse definiert"
-
-#~ msgid "Align molecules to a Cartesian axis"
-#~ msgstr "Moleküle an einer Kartesischen Achse ausrichten"
-
-#~ msgid "Automatic optimization of molecular geometry"
-#~ msgstr "Automatische Optimierung der Molekülgeometrie"
-
-#~ msgid "Automatic rotation of molecules"
-#~ msgstr "Automatische Rotation von Molekülen"
-
-#~ msgid "Manipulation of bond lengths, angles, and torsions"
-#~ msgstr "Bearbeitung von Bindungslängen, -winkeln und -torsionen."
-
-#~ msgid "Measure bond lengths, angles, and dihedrals"
-#~ msgstr "Messe Bindungslängen, -winkel und Dieder"
-
-#~ msgid "Draw and edit atoms and bonds"
-#~ msgstr "Zeichne und editiere Atome und Bindungen"
-
-#~ msgid "Translate, rotate, and adjust atoms and fragments"
-#~ msgstr "Atome und Fragmente verschieben, drehen und ausrichten"
-
-#~ msgid "Translate, rotate, and zoom around the current view"
-#~ msgstr "Um aktuelle Ansicht verschieben, drehen und zoomen"
-
-#~ msgid "Select atoms, residues, and molecules"
-#~ msgstr "Atome, Reste und Moleküle auswählen"
-
-#~ msgid "Residue Color Settings"
-#~ msgstr "Einstellungen der Restefarben"
-
-#~ msgid "Color residues by:"
-#~ msgstr "Färbe Reste ein nach:"
-
-#~ msgid "Amino Colors"
-#~ msgstr "Amino-Farben"
 
 #~ msgid "Shapely Colors"
 #~ msgstr "Formschöne Farben"
 
-#~ msgid "Hydrophobicity"
-#~ msgstr "Hydrophobie"
+#~ msgid "Ames Lab. Determinant"
+#~ msgstr "Ames Lab. Determinante"
+
+#~ msgid "Par File:"
+#~ msgstr "Nennwert-Datei:"
+
+#~ msgid "Control"
+#~ msgstr "Kontrolle"
+
+#~ msgid "No vibrational displacements exist."
+#~ msgstr "Es existiert keine Verschiebung durch Vibration."
+
+#~ msgid "Translate, rotate, and zoom around the current view"
+#~ msgstr "Um aktuelle Ansicht verschieben, drehen und zoomen"
+
+#~ msgid "Translate, rotate, and adjust atoms and fragments"
+#~ msgstr "Atome und Fragmente verschieben, drehen und ausrichten"
+
+#~ msgid "Cut-off angle:"
+#~ msgstr "Cut-off-Winkel:"
+
+#~ msgid ""
+#~ "Enables the use of transitional animations when performing automatic "
+#~ "positioning of the GLWidget."
+#~ msgstr ""
+#~ "Aktiviert die Benutzung von Übergangsanimationen falls eine automatische "
+#~ "Positionierung des GLWidgets durchgeführt wird."
+
+#~ msgid "Custom:"
+#~ msgstr "Individuell:"
+
+#~ msgid "In:"
+#~ msgstr "In:"
 
 #~ msgid "Custom Data"
 #~ msgstr "Persönliche Daten"
 
-#~ msgid "Generate..."
-#~ msgstr "Erzeuge..."
+#~ msgid "Cut-off radius:"
+#~ msgstr "Cut-off-Radius:"
 
-#~ msgid "MOPAC Input"
-#~ msgstr "MOPAC-Eingabe"
+#~ msgid "General CI"
+#~ msgstr "Allgemeines CI"
 
-#~ msgid "Quartet"
-#~ msgstr "Quartett"
+#~ msgid "CCSD: CC with Singles and Doubles"
+#~ msgstr "CCSD: CC mit Einzeln und Doppeln"
 
-#~ msgid "Quintet"
-#~ msgstr "Quintett"
+#~ msgid "Full Second Order CI"
+#~ msgstr "Ganz zweiter Ordnung CI"
 
-#~ msgid "MNDO-d"
-#~ msgstr "MNDO-d"
+#~ msgid "CCD: CC with Doubles"
+#~ msgstr "CCD: CC mit Doppeln"
 
-#~ msgid "PM6"
-#~ msgstr "PM6"
+#~ msgid "Use External Data Representation for Messages"
+#~ msgstr "Benutze externe Datendarstellung für Mitteilungen"
 
-#~ msgid "RM1"
-#~ msgstr "RM1"
+#~ msgid "Generate UHF Natural Orbitals"
+#~ msgstr "Erzeuge natürliche UHF-Orbitale"
 
-#~ msgid "Compute..."
-#~ msgstr "Berechne..."
+#~ msgid "Hilderbrant internals"
+#~ msgstr "Hilderbrant-Interna"
 
-#~ msgid "ESP (approximate)"
-#~ msgstr "ESP (annähernd)"
+#~ msgid "Produce \"core\" file upon abort"
+#~ msgstr "\"Kern\"datei nach dem Abbruch erstellen"
 
-#~ msgid "HF"
-#~ msgstr "HF"
+#~ msgid "Print the Initial Guess"
+#~ msgstr "Erste Schätzung anzeigen"
 
-#~ msgid "Super Cell Parameters"
-#~ msgstr "Superzellen-Parameter"
+#~ msgid "GAMESS Interface to Other Codes"
+#~ msgstr "GAMESS-Schnittstelle zu anderen Codes"
 
-#~ msgid "Super Cell Options"
-#~ msgstr "Superzellen-Optionen"
+#~ msgid "words"
+#~ msgstr "Worte"
 
-#~ msgid "Generate Cell"
-#~ msgstr "Erzeuge Zelle"
+#~ msgid "Duplicated on Each Node"
+#~ msgstr "Dupliziert auf jedem Knoten"
 
-#~ msgid "Molecular Vibrations"
-#~ msgstr "Molukulare Vibrationen"
+#~ msgid "AO Integral Storage"
+#~ msgstr "AO-Integralspeicher"
 
-#~ msgid "Frequency (cm-1)"
-#~ msgstr "Frequenz (cm-1)"
+#~ msgid "Displacement Size:"
+#~ msgstr "Verschiebungsgrösse:"
 
-#~ msgid "Intensity (a.u.)"
-#~ msgstr "Intensität (a.u.)"
+#~ msgid "Rational Function Optimization"
+#~ msgstr "Rationale Funktionsoptimierung"
+
+#~ msgid "Force a Check Run Type"
+#~ msgstr "Erzwinge einen Test des Ausführungsablaufs"
+
+#~ msgid "Compute Only Changed in Fock Matrix"
+#~ msgstr "Berechne nur Änderung in der Fock-Matrix"
+
+#~ msgid "DFT Functional:"
+#~ msgstr "DFT-Funktion:"
+
+#~ msgid "OP: One-parameter Progressive correlation"
+#~ msgstr "OP: Ein-Parameter progressive Korrelation"
+
+#~ msgid "Two Phase Bin Sort"
+#~ msgstr "Zweistufiges Binary Sort"
+
+#~ msgid "Recalculate Hessian Every:"
+#~ msgstr "Berechne Hessematrix neu alle:"
+
+#~ msgid "Integral Retention Cutoff:"
+#~ msgstr "Integral-Rückhaltungs-Cutoff:"
+
+#~ msgid "Purify Hessian"
+#~ msgstr "Bereinige Hessematrix"
+
+#~ msgid "bohrs"
+#~ msgstr "Bohr"
+
+#~ msgid "Frequency Scale Factor:"
+#~ msgstr "Frequenzskalierungsfaktor:"
+
+#~ msgid "Guess (+ define)"
+#~ msgstr "Rate (+ definiere)"
+
+#~ msgid "Gradient Convergence Criteria:"
+#~ msgstr "Gradientenkonvergenzkriterien:"
+
+#~ msgid "Molden"
+#~ msgstr "Molden"
+
+#~ msgid "Num Frames"
+#~ msgstr "Num Frames"
+
+#~ msgid "Lots"
+#~ msgstr "Lots"
+
+#~ msgid "CI Singles"
+#~ msgstr "CI Singles"
+
+#~ msgid "Occupation Restricted Multiple Active Space"
+#~ msgstr "Besetzung des multiplen aktiven Raums eingeschränkt"
+
+#~ msgid "Unknown Python Engine"
+#~ msgstr "Unbekannte Python-Engine"
+
+#~ msgid "Unknown Python Tool"
+#~ msgstr "Unbekanntes Python-Werkzeug"

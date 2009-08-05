@@ -1,16 +1,16 @@
-# Polish translation for avogadro
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Greek translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-08-03 14:18-0400\n"
-"PO-Revision-Date: 2009-06-12 02:01+0000\n"
-"Last-Translator: Geoff Hutchison <Unknown>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"PO-Revision-Date: 2009-07-22 08:30+0000\n"
+"Last-Translator: Anastasios Bourazanis <a.brzns@gmail.com>\n"
+"Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,39 +27,39 @@ msgstr ""
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
-msgstr ""
+msgstr "Χρώμα ανά Μερικό Φορτίο"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr ""
+msgstr "Χρώμα ανά μερικό φορτίο ατόμου ( μπλε = θετικό, κόκκινο = αρνητικό."
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
-msgstr "Kolor użytkownika:"
+msgstr "Προσαρμοσμένο Χρώμα:"
 
 #: src/colors/customcolor.h:43
 msgid "Custom Color"
-msgstr "Kolor użytkownika"
+msgstr "Προσαρμοσμένο Χρώμα"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "Επιλογή προσαρμοσμένων χρωμάτων για τα αντικείμενα"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr ""
+msgstr "Χρώμα ανά Απόσταση"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr ""
+msgstr "Χρώμα ανά απόσταση από το πρώτο άτομο"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
-msgstr ""
+msgstr "Χρώμα ανά Στοιχείο"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr ""
+msgstr "Χρώμα ανά Στοιχείο (άνθρακας = γκρι, οξυγόνο = κόκκινο, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
@@ -71,487 +71,487 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr "Wodór"
+msgstr "Υδρογόνο"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr "Hel"
+msgstr "Ήλιο"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr "Lit"
+msgstr "Λίθιο"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr "Beryl"
+msgstr "Βηρύλλιο"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr "Bor"
+msgstr "Βόριο"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr "Węgiel"
+msgstr "Άνθρακας"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr "Azot"
+msgstr "Άζωτο"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr "Tlen"
+msgstr "Οξυγόνο"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr "Fluor"
+msgstr "Φθόριο"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr "Neon"
+msgstr "Νέον"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr "Sód"
+msgstr "Νάτριο"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr "Magnez"
+msgstr "Μαγνήσιο"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr "Glin"
+msgstr "Αλουμίνιο"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr "Krzem"
+msgstr "Πυρίτιο"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr "Fosfor"
+msgstr "Φώσφορος"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr "Siarka"
+msgstr "Θείο"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr "Chlor"
+msgstr "Χλώριο"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr "Argon"
+msgstr "Αργό"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr "Potas"
+msgstr "Κάλιο"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr "Wapń"
+msgstr "Ασβέστιο"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr "Skand"
+msgstr "Σκάνδιο"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr "Tytan"
+msgstr "Τιτάνιο"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr "Wanad"
+msgstr "Βανάδιο"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr "Chrom"
+msgstr "Χρώμιο"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr "Mangan"
+msgstr "Μαγγάνιο"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr "Żelazo"
+msgstr "Σίδηρος"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr "Kobalt"
+msgstr "Κοβάλτιο"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr "Nikiel"
+msgstr "Νικέλιο"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr "Miedź"
+msgstr "Χαλκός"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr "Cynk"
+msgstr "Ψευδάργυρος"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr "Gal"
+msgstr "Γάλλιο"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr "German"
+msgstr "Γερμάνιο"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr "Arsen"
+msgstr "Αρσενικό"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr "Selen"
+msgstr "Σελήνιο"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr "Brom"
+msgstr "Βρώμιο"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr "Krypton"
+msgstr "Κρυπτό"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr "Rubid"
+msgstr "Ρουβίδιο"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr "Stront"
+msgstr "Στρόντιο"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr "Itr"
+msgstr "Ύττριο"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr "Cyrkon"
+msgstr "Ζιρκόνιο"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr "Niob"
+msgstr "Νιόβιο"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr "Molibden"
+msgstr "Μόλυβδος"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr "Technet"
+msgstr "Τεχνήτιο"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr "Ruten"
+msgstr "Ρουθήνιο"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr "Rod"
+msgstr "Ρόδιο"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr "Pallad"
+msgstr "Παλλάδιο"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr "Srebro"
+msgstr "Άργυρος"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr "Kadm"
+msgstr "Κάδμιο"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr "Ind"
+msgstr "Ίνδιο"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr "Cyna"
+msgstr "Κασσίτερος"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr "Antymon"
+msgstr "Αντιμόνιο"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr "Tellur"
+msgstr "Τελλούριο"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr "Jod"
+msgstr "Ιώδιο"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr "Ksenon"
+msgstr "Ξένον"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "Καίσιο"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr "Bar"
+msgstr "Βάριο"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr "Lantan"
+msgstr "Λανθάνιο"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr "Cer"
+msgstr "Δημήτριο"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr "Prazeodym"
+msgstr "Πρασεοδύμιο"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr "Neodym"
+msgstr "Νεοδύμιο"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr "Promet"
+msgstr "Προμήθειο"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr "Samar"
+msgstr "Σαμάριο"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr "Europ"
+msgstr "Ευρώπιο"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr "Gadolin"
+msgstr "Γαδολίνιο"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr "Terb"
+msgstr "Τέρβιο"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr "Dysproz"
+msgstr "Δυσπρόσιο"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr "Holm"
+msgstr "Όλμιο"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr "Erb"
+msgstr "Έρβιο"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr "Tul"
+msgstr "Θούλιο"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr "Iterb"
+msgstr "Υττέρβιο"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr "Lutet"
+msgstr "Λουτέτιο"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr "Hafn"
+msgstr "Αίφνιο"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr "Tantal"
+msgstr "Ταντάλιο"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr "Wolfram"
+msgstr "Βολφράμιο"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr "Ren"
+msgstr "Ρήνιο"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr "Osm"
+msgstr "'Οσμιο"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr "Iryd"
+msgstr "Ιρίδιο"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr "Platinum"
+msgstr "Λευκόχρυσος"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr "Złoto"
+msgstr "Χρυσός"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr "Rtęć"
+msgstr "Υδράργυρος"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr "Tal"
+msgstr "Θάλλιο"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr "Ołów"
+msgstr "Μόλυβδος"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr "Bizmut"
+msgstr "Βισμούθιο"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr "Polon"
+msgstr "Πολώνιο"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr "Astat"
+msgstr "Αστάτιο"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr "Radon"
+msgstr "Ραδόνιο"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr "Frans"
+msgstr "Φράγκιο"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr "Rad"
+msgstr "Ράδιο"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr "Aktyn"
+msgstr "Ακτίνιο"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr "Tor"
+msgstr "Θόριο"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr "Protaktyn"
+msgstr "Πρωτακτίνιο"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr "Uran"
+msgstr "Ουράνιο"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr "Neptun"
+msgstr "Ποσειδώνιο"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr "Pluton"
+msgstr "Πλουτώνιο"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr "Ameryk"
+msgstr "Αμερίκιο"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr "Kiur"
+msgstr "Κιούριο"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr "Berkel"
+msgstr "Μπερκέλιο"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr "Kaliforn"
+msgstr "Καλιφόρνιο"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr "Einstein"
+msgstr "Αϊνσταίνιο"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr "Ferm"
+msgstr "Φέρμιο"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr "Mendelew"
+msgstr "Μεντελέβιο"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr "Nobel"
+msgstr "Νομπέλιο"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr "Lorens"
+msgstr "Λωρέντζιο"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr "Rutherford"
+msgstr "Ρουδεφόρδιο"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr "Dubn"
+msgstr "Δούβνιο"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr "Seaborg"
+msgstr "Σιμπόργιο"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr "Borium"
+msgstr "Βόριο"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr "Has"
+msgstr "Χάσσιο"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr "Meitner"
+msgstr "Μαϊτνέριο"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr "Samar"
+msgstr "Νταρμστάντιο"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr "Roentgen"
+msgstr "Ρεντγκένιο"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr "Ununbium"
+msgstr "Ονούμβιο"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr "Ununtrium"
+msgstr "Ουνούτριο"
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr "Ununquadium"
+msgstr "Ουνουνκουάδιο"
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr "Ununpentium"
+msgstr "Ουνουνπέντιο"
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr "Ununhexium"
+msgstr "Ουνουνέξιο"
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr "Ununseptium"
+msgstr "Ουνουνσέπτιο"
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr "Ununoctium"
+msgstr "Ουνουνόκτιο"
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
-msgstr ""
+msgstr "Άγνωστο"
 
 #: src/engine.cpp:65
 msgid "Engines"
-msgstr ""
+msgstr "Μηχανές"
 
 #: src/engines/axesengine.h:37
 msgid "Axes"
-msgstr "Osie"
+msgstr "Άξονες"
 
 #: src/engines/axesengine.h:38
 msgid "Renders the x, y, and z axes at the origin"
@@ -559,7 +559,7 @@ msgstr ""
 
 #: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
 msgid "Ball and Stick"
-msgstr ""
+msgstr "Σφαίρα και ράβδος"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
@@ -567,15 +567,15 @@ msgstr ""
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
-msgstr ""
+msgstr "Καρτούν"
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr ""
+msgstr "Εμφάνιση δευτερεύουσας δομής της πρωτεΐνης"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
-msgstr "Dipol"
+msgstr "Δίπολο"
 
 #: src/engines/dipoleengine.h:43
 msgid "Renders molecular dipole moments"
@@ -583,7 +583,7 @@ msgstr ""
 
 #: src/engines/forceengine.h:38
 msgid "Force"
-msgstr ""
+msgstr "Δύναμη"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
@@ -591,15 +591,15 @@ msgstr ""
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
-msgstr "Wiązanie wodorowe"
+msgstr "Δεσμός υδρογόνου"
 
 #: src/engines/hbondengine.h:43
 msgid "Renders hydrogen bonds"
-msgstr "Renderuje wiązania wodorowe"
+msgstr "Αποτύπωση δεσμών υδρογόνου"
 
 #: src/engines/labelengine.h:45
 msgid "Label"
-msgstr "Etykieta"
+msgstr "Ετικέτα"
 
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
@@ -607,7 +607,7 @@ msgstr ""
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
-msgstr "Pokrywanie"
+msgstr "Επικάλυψη"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
@@ -615,15 +615,15 @@ msgstr ""
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
-msgstr "Wielokąt"
+msgstr "Πολύγωνο"
 
 #: src/engines/polygonengine.h:40
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-msgstr ""
+msgstr "Αποδίδει άτομα ως τετράεδρα,οκτάεδρα και άλλα πολύγωνα"
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
-msgstr ""
+msgstr "Ταινία"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
@@ -631,7 +631,7 @@ msgstr ""
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
-msgstr ""
+msgstr "Δακτύλιος"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
@@ -643,29 +643,29 @@ msgstr ""
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr ""
+msgstr "Αποδίδει δεσμούς ως γραμμές,ιδανικό για μεγάλα μόρια"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
-msgstr ""
+msgstr "Σφαίρες Van der Waals"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr ""
+msgstr "Αποτύπωση ατόμων ως σφαίρες Van der Waals"
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
-msgstr ""
+msgstr "Ράβδος"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr ""
+msgstr "Αποδίδει μόρια ως ράβδους"
 
 #: src/engines/surfaceengine.cpp:232
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Σφαίρες Van der Waals"
 
 #: src/engines/surfaceengine.cpp:238
 #, qt-format
@@ -681,15 +681,16 @@ msgstr ""
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
-msgstr ""
+msgstr "Επιφάνειες"
 
 #: src/engines/surfaceengine.h:47
+#, fuzzy
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Αποδίδει τις υπολογισμένες μοριακές επιφάνειες"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr ""
+msgstr "Μόνο πλέγμα"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
@@ -697,15 +698,15 @@ msgstr ""
 
 #: src/extension.cpp:44
 msgid "Extensions"
-msgstr ""
+msgstr "Επεκτάσεις"
 
 #: src/extensions/animationdialog.cpp:65
 msgid "Open trajectory file"
-msgstr "Otwórz plik trajektorii"
+msgstr "Άνοιγμα αρχείου τροχιάς"
 
 #: src/extensions/animationdialog.cpp:66
 msgid "Trajectory files (*.xtc *.xyz)"
-msgstr ""
+msgstr "Αρχεία τροχιάς (*.xtc *xyz)"
 
 #: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
 #, qt-format
@@ -714,11 +715,11 @@ msgstr "%1/%2"
 
 #: src/extensions/animationdialog.cpp:95
 msgid "Save Video File"
-msgstr ""
+msgstr "Αποθήκευση αρχείου video"
 
 #: src/extensions/animationdialog.cpp:97
 msgid "video files (*.avi)"
-msgstr ""
+msgstr "αρχεία video (*.avi)"
 
 #: src/extensions/animationdialog.cpp:102
 #: src/extensions/animationextension.cpp:135
@@ -760,15 +761,15 @@ msgstr ""
 #: src/extensions/trajvideomaker.cpp:147
 #: src/extensions/unitcellextension.cpp:94
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
 msgid "Adding .avi extension"
-msgstr ""
+msgstr "Προσθήκη κατάληξης .avi"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr "Animacja..."
+msgstr ""
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
@@ -782,7 +783,7 @@ msgstr "Animacja..."
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr ""
+msgstr "&Επεκτάσεις"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
@@ -790,33 +791,36 @@ msgstr ""
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
-msgstr ""
+msgstr "Αδυναμία ανάγνωσης μορφής του αρχείου %1."
 
 #: src/extensions/animationextension.cpp:144
 #, qt-format
 msgid "Read trajectory file %1 failed."
-msgstr "Odczytanie pliku trajektorii %1 nie powiodło się."
+msgstr "Ανάγνωση αρχείου τροχιάς %1 απέτυχε."
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
 #: src/extensions/linmorphextension.cpp:263
 #: src/extensions/linmorphextension.cpp:269
 msgid "Must specify a valid .avi file name"
-msgstr ""
+msgstr "Ορίστε ένα έγκυρο όνομα αρχείου .avi"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr ""
+msgstr "To GL widget δεν αρχικοποιήθηκε σωστά προκειμένου να αποθηκεύσει video"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
 msgstr ""
+"Μη έγκυρο όνομα αρχείου video.Πρέπει να περιλαμβάνει την πλήρη διαδρομή."
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
+"Μη έγκυρο όνομα αρχείου video.Πρέπει να περιλαμβάνει την πλήρη διαδρομή και "
+"όνομα με κατάληξη .avi"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -825,7 +829,7 @@ msgstr ""
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr ""
+msgstr "Πρόβλημα κατά την ανάγνωση τροχ.αρχείου %1"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
@@ -835,16 +839,16 @@ msgstr ""
 
 #: src/extensions/animationextension.h:39
 msgid "Animation"
-msgstr ""
+msgstr "Γραφική Απεικόνιση"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "Απεικόνισε τροχιές, αντιδράσεις, και δονήσεις."
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
 msgid "Number of atoms: %1"
-msgstr "Liczba atomów: %1"
+msgstr "Αριθμός ατόμων: %1"
 
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
@@ -856,20 +860,26 @@ msgstr ""
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr ""
+msgstr "Προσθήκη περιορισμού"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr ""
+"Το μόριο πρέπει να περιλαμβάνει τουλάχιστον ένα άτομο για να προσθέσετε "
+"περιορισμό."
 
 #: src/extensions/constraintsdialog.cpp:369
 msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
+"Το μόριο πρέπει να περιλαμβάνει τουλάχιστον δύο άτομα για να προσθέσετε έναν "
+"περιορισμό δεσμού"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
 msgstr ""
+"Το μόριο πρέπει να περιλαμβάνει τουλάχιστον τρία άτομα για να προσθέσετε "
+"έναν περιορισμό γωνίας"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
@@ -878,18 +888,18 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
-msgstr ""
+msgstr "Τροχιά..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
-msgstr ""
+msgstr "&Αρχείο"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
@@ -901,7 +911,7 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr ""
+msgstr "Άνοιγμα αρχείου παραμέτρων"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
@@ -909,28 +919,28 @@ msgstr ""
 
 #: src/extensions/fileimportextension.h:43
 msgid "Import Trajectory"
-msgstr ""
+msgstr "Εισαγωγή τροχιάς"
 
 #: src/extensions/fileimportextension.h:44
 msgid "Import trajectory files"
-msgstr ""
+msgstr "Εισαγωγή αρχείων τροχιάς"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&Βελτιστοποίηση Γεωμετρίας"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr ""
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr ""
+msgstr "Ρύθμιση Δυναμικού πεδίου"
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr "Oblicz energię"
+msgstr "Υπολογισμός ενέργειας"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
@@ -938,11 +948,11 @@ msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
-msgstr ""
+msgstr "Περιορισμοί..."
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr "Ignoruj zaznaczenie"
+msgstr "Παράβλεψη Επιλογής"
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
@@ -950,26 +960,26 @@ msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr ""
+msgstr "&Μοριακή Μηχανική"
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:204
 #: src/extensions/forcefieldextension.cpp:224
 msgid "Cannot set up the force field for this molecule."
-msgstr ""
+msgstr "Το δυναμικό πεδίο του συγκεκριμένου μορίου ήταν αδύνατο να οριστεί"
 
 #: src/extensions/forcefieldextension.cpp:189
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "Ενέργεια = %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:234
 msgid "Geometric Optimization"
-msgstr ""
+msgstr "Γεωμετρική Βελτιστοποίηση"
 
 #: src/extensions/forcefieldextension.cpp:526
 msgid "Forcefield Optimization"
-msgstr ""
+msgstr "Βελτιστοποίηση Δυναμικού Πεδίου"
 
 #: src/extensions/forcefieldextension.cpp:527
 #: src/extensions/forcefieldextension.cpp:530
@@ -977,7 +987,7 @@ msgstr ""
 #: src/extensions/forcefieldextension.cpp:536
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: src/extensions/forcefieldextension.cpp:529
 msgid "Systematic Rotor Search"
@@ -993,7 +1003,7 @@ msgstr ""
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr ""
+msgstr "Δυναμικό Πεδίο"
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
@@ -1011,11 +1021,11 @@ msgstr ""
 
 #: src/extensions/gamessextension.cpp:70
 msgid "EFP Selection..."
-msgstr ""
+msgstr "Επιλογή EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgid "QM Selection..."
-msgstr ""
+msgstr "Επιλογή QM..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1023,31 +1033,31 @@ msgstr "&GAMESS"
 
 #: src/extensions/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
-msgstr ""
+msgstr "Πληροφορίες GAMESS EFP"
 
 #: src/extensions/gamessextension.cpp:118
 msgid "Delete"
-msgstr "Usuń"
+msgstr "Διαγραφή"
 
 #: src/extensions/gamessextension.cpp:200
 msgid "No Atoms Selected"
-msgstr "Nie zaznaczono atomów"
+msgstr "Δεν έχουν επιλεχθεί άτομα"
 
 #: src/extensions/gamessextension.cpp:201
 msgid "You must make a selection!"
-msgstr "Musiz coś zaznaczyć!"
+msgstr "Παρακαλώ επιλέξτε!"
 
 #: src/extensions/gamessextension.cpp:208
 msgid "SMILES Conversion Unavailable"
-msgstr "Konwersja do SMILES niedostępna"
+msgstr "Η μετατροπή SMILES είναι μη διαθέσιμη"
 
 #: src/extensions/gamessextension.cpp:209
 msgid "SMILES Format Conversion Not Available!"
-msgstr "Konwersja do formatu SMILES jest niedostępna!"
+msgstr ""
 
 #: src/extensions/gamessextension.cpp:469
 msgid "Group Name"
-msgstr "Nazwa grupy"
+msgstr "Όνομα Ομάδας"
 
 #: src/extensions/gamessextension.cpp:522
 msgid " ("
@@ -1055,11 +1065,11 @@ msgstr " ("
 
 #: src/extensions/gamessextension.cpp:523
 msgid "qm"
-msgstr ""
+msgstr "qm"
 
 #: src/extensions/gamessextension.cpp:523
 msgid "efp"
-msgstr ""
+msgstr "efp"
 
 #: src/extensions/gamessextension.cpp:524
 msgid ")"
@@ -1067,11 +1077,11 @@ msgstr ")"
 
 #: src/extensions/gamessextension.h:44
 msgid "GAMESS"
-msgstr ""
+msgstr "GAMESS"
 
 #: src/extensions/gamessextension.h:45
 msgid "Create input files for the GAMESS quantum chemistry package"
-msgstr ""
+msgstr "Δημιουργία αρχείων εισόδου για το πακέτο κβαντικής χημείας GAMESS"
 
 #: src/extensions/gamessinputdialog.ui:1497
 #: src/extensions/gaussianinputdialog.ui:40
@@ -1081,43 +1091,43 @@ msgstr ""
 #: src/extensions/qcheminputdialog.ui:41
 #: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
-msgstr ""
+msgstr "Τίτλος"
 
 #: src/extensions/gamessinputdialog.cpp:1496
 msgid "Advanced Settings Changed"
-msgstr "Zmieniono ustawienia zaawansowane"
+msgstr "Οι Προχωρημένες Ρυθμίσεις μεταβλήθηκαν."
 
 #: src/extensions/gamessinputdialog.cpp:1497
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
 msgstr ""
-"Ustawienia zaawansowane uległy zmianie.\n"
-"Odrzucić zmiany!"
+"Οι Προχωρημένες Ρυθμίσεις έχουν μεταβληθεί.\n"
+"Απόρριψη?"
 
 #: src/extensions/gamessinputdialog.cpp:1518
 msgid "Advanced Settings Reset"
-msgstr "Przywrócenie ustawień zaawansowanych"
+msgstr "Επαναφορά Προχωρημένων Ρυθμίσεων"
 
 #: src/extensions/gamessinputdialog.cpp:1519
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
 msgstr ""
-"Czy na pewno chcesz przywrócić ustawienia zaawansowane?\n"
-"Wszystkie zmiany zostaną utracone!"
+"Σίγουρα επιθυμείτε να επαναφέρετε τις Προχωρημένες Ρυθμίσεις;\n"
+"Όλες οι αλλαγές θα χαθούν!"
 
 #: src/extensions/gamessinputdialog.cpp:1531
 msgid "Basic Settings Reset"
-msgstr "Przywrócenie ustawień podstawowych"
+msgstr "Επαναφορά Βασικών Ρυθμίσεων"
 
 #: src/extensions/gamessinputdialog.cpp:1532
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
-"Czy na pewno chcesz przywrócić ustawienia podstawowe?\n"
-"Wszystkie zmiany zostaną utracone!"
+"Σίγουρα επιθυμείτε να επαναφέρετε τις Βασικές Ρυθμίσεις;\n"
+"Όλες οι αλλαγές θα χαθούν!"
 
 #: src/extensions/gamessinputdialog.cpp:1604
 msgid "Export Input Deck"
@@ -1129,15 +1139,15 @@ msgstr ""
 
 #: src/extensions/gaussianextension.cpp:46
 msgid "Gaussian Input..."
-msgstr ""
+msgstr "Είσοδος Gaussian..."
 
 #: src/extensions/gaussianextension.cpp:51
 msgid "Q-Chem Input..."
-msgstr ""
+msgstr "Είσοδος Q-Chem..."
 
 #: src/extensions/gaussianextension.cpp:56
 msgid "MOLPRO Input..."
-msgstr ""
+msgstr "Είσοδος MOLRPO..."
 
 #: src/extensions/gaussianextension.cpp:61
 msgid "MOPAC Input..."
@@ -1145,13 +1155,13 @@ msgstr ""
 
 #: src/extensions/gaussianextension.cpp:66
 msgid "&NWChem Input..."
-msgstr ""
+msgstr "Είσοδος &NWChem..."
 
 #: src/extensions/gaussianextension.cpp:179
 #: src/extensions/insertfragmentdialog.cpp:152
 #, qt-format
 msgid "Cannot read file %1."
-msgstr ""
+msgstr "Αδυναμία ανάγνωσης αρχείου %1."
 
 #: src/extensions/gaussianextension.h:42
 msgid "Gaussian Input Deck"
@@ -1160,6 +1170,7 @@ msgstr ""
 #: src/extensions/gaussianextension.h:43
 msgid "Create input files for quantum chemistry packages like Gaussian"
 msgstr ""
+"Δημιουργία αρχείων εισόδου για πακέτα κβαντικής χημείας όπως το Gaussian"
 
 #: src/extensions/gaussianinputdialog.cpp:189
 msgid "Gaussian Input Deck Generator Warning"
@@ -1181,20 +1192,22 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:262
 msgid "Gaussian Running."
-msgstr ""
+msgstr "Το Gaussian εκτελείται."
 
 #: src/extensions/gaussianinputdialog.cpp:263
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
 msgstr ""
+"Το Gaussian εκτελείται ήδη.Παρακαλώ περιμένετε μέχρι να ολοκληρωθεί ο "
+"προηγούμενος υπολογισμός."
 
 #: src/extensions/gaussianinputdialog.cpp:273
 msgid "Gaussian Not Installed."
-msgstr ""
+msgstr "Το Gaussian δεν έχει εγκατασταθεί."
 
 #: src/extensions/gaussianinputdialog.cpp:274
 msgid "The G03 executable, cannot be found."
-msgstr ""
+msgstr "Το εκτελέσιμο G03  δεν βρέθηκε."
 
 #: src/extensions/gaussianinputdialog.cpp:288
 msgid "G03 failed to start."
@@ -1202,11 +1215,11 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:289
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "Το G03 δεν ξεκίνησε.Ίσως δεν έχει εγκατασταθεί σωστά."
 
 #: src/extensions/gaussianinputdialog.cpp:294
 msgid "Running Gaussian calculation..."
-msgstr ""
+msgstr "Εκτέλεση υπολογισμού Gaussian"
 
 #: src/extensions/gaussianinputdialog.cpp:329
 msgid "G03 Crashed."
@@ -1214,7 +1227,7 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:330
 msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "Το Gaussian δεν εκτελέστηκε σωστά.Ίσως δεν έχει εγκατασταθεί σωστά."
 
 #: src/extensions/mopacinputdialog.ui:307
 #: src/extensions/gaussianinputdialog.cpp:365
@@ -1223,7 +1236,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.cpp:185
 #: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
-msgstr ""
+msgstr "Εμφάνιση προεπισκόπησης"
 
 #: src/extensions/gaussianinputdialog.ui:469
 #: src/extensions/molproinputdialog.ui:407
@@ -1235,11 +1248,11 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.cpp:189
 #: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
-msgstr ""
+msgstr "Απόκρυψη προεπισκόπησης"
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
-msgstr "Zmień wodór na grupę metylową"
+msgstr ""
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -1249,7 +1262,7 @@ msgstr "Zmień wodór na grupę metylową"
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/unitcellextension.cpp:70
 msgid "&Build"
-msgstr ""
+msgstr "&Κατασκευή"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
@@ -1266,7 +1279,7 @@ msgstr ""
 #: src/extensions/hydrogensextension.cpp:44
 #: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
-msgstr ""
+msgstr "Προσθήκη υδρογόνων"
 
 #: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
@@ -1275,7 +1288,7 @@ msgstr ""
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
-msgstr ""
+msgstr "Αφαίρεση Υδρογόνων"
 
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
@@ -1288,15 +1301,15 @@ msgstr "pH"
 
 #: src/extensions/hydrogensextension.h:40
 msgid "Hydrogens"
-msgstr "Wodory"
+msgstr "Υδρογόνα"
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
-msgstr ""
+msgstr "Προσθήκη ή αφαίρεση Υδρογόνων"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
-msgstr "Otwórz folder"
+msgstr "Άνοιγμα καταλόγου"
 
 #: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
@@ -1304,17 +1317,17 @@ msgstr ""
 
 #: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
-msgstr ""
+msgstr "SMILES..."
 
 #: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr ""
+msgstr "&Εισαγωγή"
 
 #: src/extensions/insertfragmentextension.cpp:104
 #: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
-msgstr ""
+msgstr "Εισαγωγή SMILES"
 
 #: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
@@ -1324,7 +1337,7 @@ msgstr ""
 #: src/extensions/insertfragmentextension.cpp:171
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
 msgid "Insert Fragment"
-msgstr ""
+msgstr "Εισαγωγή τμήματος"
 
 #: src/extensions/insertfragmentextension.h:35
 msgid "Insert molecular fragments for building larger molecules"
@@ -1332,14 +1345,14 @@ msgstr ""
 
 #: src/extensions/insertpeptideextension.cpp:58
 msgid "Peptide..."
-msgstr ""
+msgstr "Πεπτίδιο..."
 
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
 #: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
-msgstr ""
+msgstr "Εισαγωγή Πεπτιδίου"
 
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
@@ -1347,15 +1360,15 @@ msgstr ""
 
 #: src/extensions/liganddialog.cpp:63
 msgid "Open ligand file"
-msgstr ""
+msgstr "Άνοιγμα αρχείου ligand"
 
 #: src/extensions/liganddialog.cpp:63
 msgid "Avogadro files (*.*)"
-msgstr "Pliki Avogadro (*.*)"
+msgstr "Αρχεία Avogadro(*.*)"
 
 #: src/extensions/linmorphdialog.cpp:65
 msgid "Open mol file"
-msgstr ""
+msgstr "Άνοιγμα αρχείου mol"
 
 #: src/extensions/linmorphdialog.cpp:66
 msgid "Any files (*.*)"
@@ -1371,11 +1384,11 @@ msgstr ""
 
 #: src/extensions/linmorphdialog.cpp:96
 msgid "Save Traj File"
-msgstr ""
+msgstr "Αποθήκευση αρχείου τροχ."
 
 #: src/extensions/linmorphdialog.cpp:98
 msgid "trajectory file (*.xyz)"
-msgstr ""
+msgstr "αρχείο τροχιάς (*.xyz)"
 
 #: src/extensions/linmorphextension.cpp:45
 msgid "Lin Morph..."
@@ -1384,12 +1397,12 @@ msgstr ""
 #: src/extensions/linmorphextension.cpp:87
 #, qt-format
 msgid "Read mol file %1 failed."
-msgstr ""
+msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
 
 #: src/extensions/linmorphextension.cpp:117
 #, qt-format
 msgid "Two molecules have different number atoms %1 %2"
-msgstr ""
+msgstr "Δύο μόρια έχουν διαφορετικό αριθμό ατόμων %1 %2"
 
 #: src/extensions/linmorphextension.cpp:240
 msgid "GL widget was not correctly initialized in order to save snapshots"
@@ -1398,7 +1411,7 @@ msgstr ""
 #: src/extensions/linmorphextension.cpp:251
 #, qt-format
 msgid "Cannot save file %1."
-msgstr ""
+msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
 
 #: src/extensions/linmorphextension.cpp:276
 msgid "GL widget was not correctly initialized in order to save movie"
@@ -1439,12 +1452,12 @@ msgstr ""
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
 msgid "&View"
-msgstr ""
+msgstr "Π&ροβολή"
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
-msgstr "Właściwości"
+msgstr "&Ιδιότητες"
 
 #: src/extensions/molecularpropextension.cpp:122
 msgid "Estimated Dipole Moment (D):"
@@ -1563,7 +1576,7 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
@@ -1629,7 +1642,7 @@ msgstr ""
 
 #: src/extensions/povrayextension.cpp:64
 msgid "Export"
-msgstr ""
+msgstr "Εξαγωγή"
 
 #: src/extensions/povrayextension.cpp:130
 msgid "No filename supplied."
@@ -1674,7 +1687,7 @@ msgstr ""
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
-msgstr ""
+msgstr "POV-Ray"
 
 #: src/extensions/povrayextension.h:41
 msgid ""
@@ -1683,11 +1696,11 @@ msgstr ""
 
 #: src/extensions/propextension.cpp:64
 msgid "Atom Properties..."
-msgstr "Włąściwości atomu..."
+msgstr ""
 
 #: src/extensions/propextension.cpp:69
 msgid "Bond Properties..."
-msgstr "Właściwości wiązania..."
+msgstr ""
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
@@ -1732,7 +1745,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:867
 #: src/extensions/propextension.h:43:462
 msgid "Properties"
-msgstr ""
+msgstr "Ιδιότητες"
 
 #: src/extensions/propextension.h:44
 msgid ""
@@ -1746,28 +1759,28 @@ msgstr ""
 
 #: src/extensions/propmodel.cpp:355
 msgid "Element"
-msgstr ""
+msgstr "Στοιχείο"
 
 #: src/extensions/propmodel.cpp:357
 msgid "Valence"
-msgstr "Wartościowość"
+msgstr ""
 
 #: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
-msgstr ""
+msgstr "Μερικό φορτίου"
 
 #: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
 #, qt-format
 msgid "Atom %1"
-msgstr "Atom %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
 msgid "Start Atom"
-msgstr "Atom początkowy"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
 msgid "End Atom"
-msgstr "Atom końcowy"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:371
 msgid "Bond Order"
@@ -1786,7 +1799,7 @@ msgstr ""
 #: src/extensions/propmodel.cpp:379
 #, qt-format
 msgid "Bond %1"
-msgstr "Wiązanie %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:386
 msgid "Vertex"
@@ -1801,7 +1814,7 @@ msgstr ""
 #: src/extensions/propmodel.cpp:393
 #, qt-format
 msgid "Angle %1"
-msgstr "Kąt %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:401
 #, qt-format
@@ -1840,7 +1853,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:817
 #: src/extensions/propmodel.cpp:423:442
 msgid "Energy"
-msgstr ""
+msgstr "Ενέργεια"
 
 #: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:723
 #, qt-format
@@ -1870,7 +1883,7 @@ msgstr ""
 
 #: src/extensions/selectextension.cpp:68
 msgid "&Invert Selection"
-msgstr ""
+msgstr "&Αντιστροφή επιλογής"
 
 #: src/extensions/selectextension.cpp:73
 msgid "Select SMARTS..."
@@ -1894,7 +1907,7 @@ msgstr ""
 
 #: src/extensions/selectextension.cpp:114
 msgid "&Select"
-msgstr ""
+msgstr "&Επιλογή"
 
 #: src/extensions/selectextension.cpp:170
 msgid "SMARTS Selection"
@@ -1912,7 +1925,7 @@ msgstr ""
 #: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
 #: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
-msgstr ""
+msgstr "Όνομα υπολοίπου"
 
 #: src/extensions/selectextension.cpp:276
 msgid "There is no current selection."
@@ -1924,7 +1937,7 @@ msgstr ""
 
 #: src/extensions/selectextension.cpp:282
 msgid "name"
-msgstr ""
+msgstr "όνομα"
 
 #: src/extensions/selectextension.cpp:288
 msgid "Name cannot be empty."
@@ -1980,16 +1993,16 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "Άξονας X"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Άξονας Υ"
 
 #: src/extensions/spectradialog.ui:127
 #: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
-msgstr ""
+msgstr "Εμφ&άνιση"
 
 #: src/extensions/spectradialog.ui:426
 #: src/extensions/spectradialog.cpp:153:1572
@@ -1999,7 +2012,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "Υπέρυθρο"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
@@ -2016,15 +2029,15 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
-msgstr ""
+msgstr "Χωρίς δεδομένα"
 
 #: src/extensions/spectradialog.cpp:250
 msgid "Dark"
-msgstr ""
+msgstr "Σκοτεινό"
 
 #: src/extensions/spectradialog.cpp:261
 msgid "Light"
-msgstr ""
+msgstr "Φωτεινό"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
@@ -2036,7 +2049,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "Νέο θέμα"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
@@ -2077,7 +2090,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
 #: src/extensions/spectradialog.cpp:647
 msgid "All Files"
-msgstr ""
+msgstr "Όλα τα Αρχεία"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
@@ -2104,12 +2117,12 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
-msgstr ""
+msgstr "Μορφή δεδομένων"
 
 #: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "Μορφή:"
 
 #: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
@@ -2117,19 +2130,19 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "Φορητά Δικτυακά Γραφικά (PNG)"
 
 #: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "Μορφή αρχείου εικόνας με ετικέτες"
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
-msgstr ""
+msgstr "Windows Bitmap"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
@@ -2149,11 +2162,11 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
-msgstr ""
+msgstr "Άκυρο όνομα αρχείου"
 
 #: src/extensions/spectradialog.cpp:701
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: src/extensions/spectradialog.cpp:701
 #, qt-format
@@ -2162,7 +2175,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:703
 msgid "Success!"
-msgstr ""
+msgstr "Επιτυχία!"
 
 #: src/extensions/spectradialog.cpp:703
 #, qt-format
@@ -2184,7 +2197,7 @@ msgstr ""
 
 #: src/extensions/spectraextension.h:39
 msgid "Spectra"
-msgstr ""
+msgstr "Φάσματα"
 
 #: src/extensions/spectraextension.h:40
 msgid "Visualize spectral data from quantum chemistry calculations"
@@ -2215,7 +2228,7 @@ msgstr ""
 
 #: src/extensions/supercellextension.cpp:91
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #: src/extensions/supercellextension.cpp:92
 msgid ""
@@ -2254,15 +2267,16 @@ msgid "Nothing"
 msgstr ""
 
 #: src/extensions/surfacedialog.cpp:251
+#, fuzzy
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
-msgstr ""
+msgstr "Van der Waals"
 
 #: src/extensions/surfacedialog.cpp:253
 #, fuzzy
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
-msgstr "Potencjał elektrostatyczny (ESP)"
+msgstr "Ηλεκτροστατικό δυναμικό (ESP)"
 
 #: src/extensions/surfacedialog.cpp:256
 msgctxt "Electron density surface type"
@@ -2289,7 +2303,7 @@ msgstr ""
 #: src/extensions/surfaceextension.cpp:447
 #: src/extensions/surfaceextension.cpp:475
 msgid "Abort Calculation"
-msgstr "Przerwij obliczenia"
+msgstr ""
 
 #: src/extensions/surfaceextension.cpp:361
 msgid "Calculating VdW Cube"
@@ -2334,11 +2348,11 @@ msgstr ""
 
 #: src/extensions/templateextension.cpp:73
 msgid "&Edit"
-msgstr ""
+msgstr "&Επεξεργασία"
 
 #: src/extensions/templateextension.h:34
 msgid "Template"
-msgstr "Szablon"
+msgstr "Πρότυπο"
 
 #: src/extensions/templateextension.h:35
 msgid "Example extension"
@@ -2406,12 +2420,12 @@ msgstr ""
 #: src/extensions/unitcellparamdialog.cpp:94
 #: src/extensions/unitcellparamdialog.cpp:99
 msgid "Apply"
-msgstr ""
+msgstr "Εφαρμογή"
 
 #: src/extensions/constraintsdialog.ui:212
 #: src/extensions/unitcellparamdialog.cpp:97:222
 msgid "OK"
-msgstr ""
+msgstr "Εντάξει"
 
 #: src/extensions/vibrationdialog.cpp:101
 #, qt-format
@@ -2460,11 +2474,11 @@ msgstr ""
 
 #: src/extensions/wiitrackextension.cpp:58
 msgid "Connect"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: src/extensions/wiitrackextension.cpp:63
 msgid "Disconnect"
-msgstr ""
+msgstr "Αποσύνδεση"
 
 #: src/extensions/wiitrackextension.cpp:83
 msgid "&WiiTrack"
@@ -2487,7 +2501,7 @@ msgstr ""
 
 #: src/glwidget.cpp:458
 msgid "OpenGL error"
-msgstr "Błąd OpenGL"
+msgstr "Σφάλμα OpenGL"
 
 #: src/glwidget.cpp:1006
 msgid "Debug Information"
@@ -2520,7 +2534,7 @@ msgstr ""
 #: src/molecule.cpp:106
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
-msgstr ""
+msgstr "χωρίς τίτλο"
 
 #: src/moleculefile.cpp:130
 #, qt-format
@@ -2622,11 +2636,11 @@ msgstr ""
 
 #: src/periodictableview.cpp:43
 msgid "Periodic Table"
-msgstr ""
+msgstr "Περιοδικός Πίνακας"
 
 #: src/plugin.cpp:42
 msgid "No Description"
-msgstr ""
+msgstr "Χωρίς περιγραφή"
 
 #: src/plugin.cpp:47
 msgctxt "Default license for all Avogadro plugins"
@@ -2642,7 +2656,7 @@ msgstr ""
 #: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
 #: src/pythontool_p.cpp:130
 msgid "N/A"
-msgstr ""
+msgstr "Μη διαθέσιμο"
 
 #: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
 msgid "PythonEngine: checking "
@@ -2663,7 +2677,7 @@ msgstr ""
 
 #: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
 msgid "&Scripts"
-msgstr ""
+msgstr "&Σενάρια"
 
 #: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
 msgid "PythonExtension: checking "
@@ -2687,7 +2701,7 @@ msgstr ""
 
 #: src/tool.cpp:57
 msgid "Tools"
-msgstr ""
+msgstr "Εργαλεία"
 
 #: src/tools/aligntool.cpp:62
 msgid ""
@@ -2701,15 +2715,15 @@ msgstr ""
 
 #: src/tools/aligntool.cpp:256
 msgid "Axis:"
-msgstr "Oś:"
+msgstr "Άξονας:"
 
 #: src/tools/aligntool.cpp:267
 msgid "Align:"
-msgstr "Wyrównaj:"
+msgstr "Στοίχιση:"
 
 #: src/tools/aligntool.cpp:272
 msgid "Everything"
-msgstr "Wszystko"
+msgstr "Όλα"
 
 #: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
@@ -2717,7 +2731,7 @@ msgstr ""
 
 #: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
-msgstr "Wyrównaj"
+msgstr "Στοίχιση"
 
 #: src/tools/aligntool.h:41
 msgid "Align molecules to a Cartesian axis"
@@ -2739,20 +2753,10 @@ msgid ""
 "Extra Function when running\n"
 "Left Mouse: Click and drag atoms to move them"
 msgstr ""
-"Narzędzie automatycznej optymalizacji\n"
-"\n"
-"Funkcje nawigacji po kliknięciu pustej przestrzeni.\n"
-"Lewy przycisk myszy: obrót przestrzeni.\n"
-"Środkowy przycisk myszy: powiększenie.\n"
-"Prawy przycisk myszy: przesunięcie.\n"
-"\n"
-"Dodatkowe funkcje po uruchomieniu\n"
-"Lewy przycisk myszy: kliknięcie i przeciągnięcie pozwala na przemieszczanie "
-"atomów"
 
 #: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
-msgstr "AutoOpt: Nie można ustawić pola sił..."
+msgstr ""
 
 #: src/tools/autoopttool.cpp:228
 #, qt-format
@@ -2761,15 +2765,15 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:257
 msgid "Force Field:"
-msgstr "Pole sił:"
+msgstr "Δυναμικό πεδίο:"
 
 #: src/tools/autoopttool.cpp:272
 msgid "Steps per Update:"
-msgstr "Kroki na uaktualnienie:"
+msgstr "Βήματα ανά ενημέρωση:"
 
 #: src/tools/autoopttool.cpp:283
 msgid "Algorithm:"
-msgstr "Algorytm:"
+msgstr "Αλγόριθμος:"
 
 #: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
 msgid "Steepest Descent"
@@ -2781,40 +2785,40 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:288
 msgid "Molecular Dynamics (300K)"
-msgstr "Dynamika cząsteczek (300K)"
+msgstr "Μοριακή δυναμική (300K)"
 
 #: src/tools/autoopttool.cpp:289
 msgid "Molecular Dynamics (600K)"
-msgstr "Dynamika cząsteczek (600K)"
+msgstr "Μοριακή δυναμική (600K)"
 
 #: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (900K)"
-msgstr "Dynamika cząsteczek (900K)"
+msgstr "Μοριακή δυναμική (900K)"
 
 #: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
 #: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
 msgid "Start"
-msgstr ""
+msgstr "Εκκίνηση"
 
 #: src/tools/autoopttool.cpp:294
 msgid "Fixed atoms are movable"
-msgstr "Można poruszać stałymi atomami"
+msgstr "Τα σταθερά άτομα μπορούν να κινηθούν"
 
 #: src/tools/autoopttool.cpp:295
 msgid "Ignored atoms are movable"
-msgstr "Można poruszać zignorowanymi atomami"
+msgstr "Τα αγνοημένα άτομα μπορούν να κινηθούν"
 
 #: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
 msgid "Stop"
-msgstr ""
+msgstr "Στόπ"
 
 #: src/tools/autoopttool.cpp:562
 msgid "AutoOpt Molecule"
-msgstr ""
+msgstr "Μόριο αυτόματης βελτιστοποίησης"
 
 #: src/tools/autoopttool.h:94
 msgid "AutoOptimization"
-msgstr "AutoOptymalizacja"
+msgstr ""
 
 #: src/tools/autoopttool.h:95
 msgid "Automatic optimization of molecular geometry"
@@ -2826,31 +2830,31 @@ msgstr ""
 
 #: src/tools/autorotatetool.cpp:52
 msgid "Auto Rotation Tool"
-msgstr "Narzędzie automatycznego obrotu"
+msgstr "Εργαλείο αυτόματης περιστροφής"
 
 #: src/tools/autorotatetool.cpp:247
 msgid "x rotation:"
-msgstr "obrót względem osi x:"
+msgstr "περιστροφή x:"
 
 #: src/tools/autorotatetool.cpp:253
 msgid "x rotation"
-msgstr "obrót względem osi x"
+msgstr "περιστροφή x"
 
 #: src/tools/autorotatetool.cpp:263
 msgid "y rotation:"
-msgstr "obrót względem osi Y"
+msgstr "περιστροφή y:"
 
 #: src/tools/autorotatetool.cpp:268
 msgid "y rotation"
-msgstr "obrót względem osi Y"
+msgstr "περιστροφή y"
 
 #: src/tools/autorotatetool.cpp:278
 msgid "z rotation:"
-msgstr "obrót względem osi Z:"
+msgstr "περιστροφή z:"
 
 #: src/tools/autorotatetool.cpp:283
 msgid "z rotation"
-msgstr "obrót względem osi Z"
+msgstr "περιστροφή z"
 
 #: src/extensions/gaussianinputdialog.ui:498
 #: src/extensions/molproinputdialog.ui:436
@@ -2859,11 +2863,11 @@ msgstr "obrót względem osi Z"
 #: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
 #: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
-msgstr ""
+msgstr "Επαναφορά"
 
 #: src/tools/autorotatetool.h:53
 msgid "AutoRotate"
-msgstr "AutoObrót"
+msgstr ""
 
 #: src/tools/autorotatetool.h:54
 msgid "Automatic rotation of molecules"
@@ -2885,19 +2889,18 @@ msgid ""
 "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
 "- Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
-"Narzędzie do manipulacji na wiązaniach\n"
+"Εργαλείο δεσμοκεντρικού χειρισμού\n"
 "\n"
-"Lewy przycisk myszy:   Kliknij i przeciągnij aby obrócić widok\n"
-"Środkowy przycisk myszy: Kliknij i przeciągnij aby powiększyć lub "
-"pomniejszyć\n"
-"Prawy przycisk myszy:  Kliknij i przeciągnij aby przesunąć widok\n"
+"Αριστερό πλήκτρο ποντικιού: Κλικ και σύρσιμο για την περιστροφή της "
+"προβολής\n"
+"Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μεγέθυνση ή σμίκρυνση\n"
+"Δεξί πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μετακίνηση της προβολής\n"
 "\n"
-"Kliknięcie lewego przycisku myszy i przeciągnięcie powoduje ustawienie "
-"płaszczyzny manipulacji:\n"
-"- Lewy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-"kąt\n"
-"- Prawy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-"długość"
+"Αριστερό κλικ & σύρσιμο σε ένα δεσμό για τον ορισμό του επιπέδου χειρισμού:\n"
+"- Αριστερό κλικ & σύρσιμο σε ένα από τα άτομα του δεσμού για την τροποποίηση "
+"της γωνίας\n"
+"- Δεξί κλικ & σύρσιμο σε ένα από τα άτομα του δεσμού για την τροποποίηση του "
+"μήκους"
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
@@ -2907,23 +2910,23 @@ msgstr ""
 
 #: src/tools/bondcentrictool.cpp:1597
 msgid " Show Angles"
-msgstr " Pokaż kąty"
+msgstr " Εμφάνιση γωνιών"
 
 #: src/tools/bondcentrictool.cpp:1600
 msgid " Snap-to Bonds"
-msgstr " Przyciągnięcie do wiązań"
+msgstr " Προσαρμογή στους δεσμούς"
 
 #: src/tools/bondcentrictool.cpp:1603
 msgid "Snap-to Threshold: "
-msgstr "Przyciągnięcie do progu: "
+msgstr "Κατώφλι προσαρμογής: "
 
 #: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
 msgid "Bond Centric Manipulation"
-msgstr ""
+msgstr "Δεσμοκεντρικός χειρισμός"
 
 #: src/tools/bondcentrictool.h:65
 msgid "Bond Centric Manipulate"
-msgstr "Manipulacja przy wiązaniach"
+msgstr ""
 
 #: src/tools/bondcentrictool.h:66
 msgid "Manipulation of bond lengths, angles, and torsions"
@@ -2942,6 +2945,12 @@ msgid ""
 "\tAngle is measured between 1-3 using 2 as the common point\n"
 "Right Mouse: Reset the measurements."
 msgstr ""
+"Κλικ για μετρήσεις (F12)\n"
+"\n"
+"Αριστερό πλήκτρο ποντικιού: \tΕπιλέξτε έως τρία άτομα.\n"
+"\tΜετρούνται οι αποστάσεις μεταξύ των 1-2 και 2-3\n"
+"\tΜετράται η γωνία μεταξύ των 1-3 με το 2 ως κορυφή\n"
+"Δεξί πλήκτρο ποντικιού: Μηδενισμός των μετρήσεων."
 
 #: src/tools/clickmeasuretool.cpp:147
 #, qt-format
@@ -2974,31 +2983,31 @@ msgstr ""
 #: src/tools/clickmeasuretool.cpp:250
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
-msgstr ""
+msgstr "*1"
 
 #: src/tools/clickmeasuretool.cpp:258
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
-msgstr ""
+msgstr "*2"
 
 #: src/tools/clickmeasuretool.cpp:267
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
-msgstr ""
+msgstr "*3"
 
 #: src/tools/clickmeasuretool.cpp:276
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
-msgstr ""
+msgstr "*4"
 
 #: src/tools/clickmeasuretool.cpp:280
 msgid "Distance(s):"
-msgstr "Odległość:"
+msgstr "Απόσταση(εις):"
 
 #: src/tools/clickmeasuretool.cpp:290
 #, fuzzy
 msgid "Angle:"
-msgstr "Kąt %1"
+msgstr "Γωνία"
 
 #: src/tools/clickmeasuretool.cpp:302
 msgid "Dihedral:"
@@ -3006,7 +3015,7 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
-msgstr "Pomiary"
+msgstr "Μέτρηση"
 
 #: src/tools/clickmeasuretool.h:49
 msgid "Measure bond lengths, angles, and dihedrals"
@@ -3019,27 +3028,27 @@ msgstr ""
 #: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
 #: src/tools/drawcommand.cpp:289:1750
 msgid "Add Atom"
-msgstr ""
+msgstr "Προσθήκη ατόμου"
 
 #: src/tools/drawcommand.cpp:383
 msgid "Delete Atom"
-msgstr "Usuń atom"
+msgstr "Διαγραφή ατόμου"
 
 #: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
 msgid "Add Bond"
-msgstr "Dodaj wiązanie"
+msgstr "Προσθήκη δεσμού"
 
 #: src/tools/drawcommand.cpp:718
 msgid "Delete Bond"
-msgstr "Usuń wiązanie"
+msgstr "Διαγραφή δεσμού"
 
 #: src/tools/drawcommand.cpp:787
 msgid "Change Element"
-msgstr "Zmień pierwiastek"
+msgstr "Τροποποίηση στοιχείου"
 
 #: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
 msgid "Change Bond Order"
-msgstr ""
+msgstr "Τροποποίηση σειράς δεσμών"
 
 #: src/tools/drawtool.cpp:85
 msgid ""
@@ -3048,46 +3057,51 @@ msgid ""
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
 "Right Mouse: Delete Atom"
 msgstr ""
+"Εργαλείο σχεδίασης (F8)\n"
+"\n"
+"Αριστερό πλήκτρο ποντικιού: \tΚλικ και σύρσιμο για τη δημιουργία ατόμων και "
+"δεσμών\n"
+"Δεξί πλήκτρο ποντικιού: Διαγραφή ατόμου"
 
 #: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
 msgid "Draw Atom"
-msgstr "Rysuj atom"
+msgstr "Σχεδίαση ατόμου"
 
 #: src/tools/drawtool.cpp:423
 msgid "Draw Bond"
-msgstr "Rysuj wiązanie"
+msgstr "Σχεδίαση δεσμού"
 
 #: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
 msgid "Draw"
-msgstr "Rysowanie"
+msgstr "Σχεδίαση"
 
 #: src/tools/drawtool.cpp:736
 msgid "Element:"
-msgstr "Pierwiastek:"
+msgstr "Στοιχείο:"
 
 #: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
 msgid "Other..."
-msgstr ""
+msgstr "Άλλο..."
 
 #: src/tools/drawtool.cpp:767
 msgid "Bond Order:"
-msgstr "Kolejność wiązań:"
+msgstr "Σειρά δεσμού:"
 
 #: src/tools/drawtool.cpp:772
 msgid "Single"
-msgstr "Pojedyncze"
+msgstr "Απλή"
 
 #: src/tools/drawtool.cpp:773
 msgid "Double"
-msgstr "Podwójne"
+msgstr ""
 
 #: src/tools/drawtool.cpp:774
 msgid "Triple"
-msgstr "Potrójne"
+msgstr ""
 
 #: src/tools/drawtool.cpp:789
 msgid "Adjust Hydrogens"
-msgstr "Dopasuj wodory"
+msgstr "Προσαρμογή υδρογόνων"
 
 #: src/tools/drawtool.h:54
 msgid "Draw and edit atoms and bonds"
@@ -3105,16 +3119,17 @@ msgid ""
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
 "Right Mouse:  Click and drag to rotate selected atoms."
 msgstr ""
-"Narzędzie manipulacji (F10)\n"
+"Εργαλείο χειρισμού (F10)\n"
 "\n"
-"Lewy przycisk myszy: kliknięcie i przeciągnięcie przemieszcza atomy\n"
-"Środkowy przycisk myszy: kliknięcie i przeciągnięcie przemieszcza atomy "
-"bliżej/dalej\n"
-"Prawy przycisk myszy: kliknięcie i przeciągnięcie obraca zaznaczone atomy."
+"Αριστερό πλήκτρο ποντικιού:   Κλικ και σύρσιμο για τη μετακίνηση ατόμων\n"
+"Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μετακίνηση ατόμων σε "
+"μεγαλύτερη ή μικρότερη εγγύτητα\n"
+"Δεξί πλήκτρο ποντικιού:  Κλικ και σύρσιμο για την περιστροφή των επιλεγμένων "
+"ατόμων."
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
 msgid "Manipulate Atom"
-msgstr "Manipulacja atomem"
+msgstr "Χειρισμός ατόμου"
 
 #: src/tools/manipulatetool.h:53
 msgid "Manipulate"
@@ -3136,15 +3151,15 @@ msgid ""
 "Middle Mouse: Click and drag to zoom in or out\n"
 "Right Mouse:  Click and drag to move the view"
 msgstr ""
-"Narzędzie do nawigacji (F9)\n"
+"Εργαλείο πλοήγησης (F9)\n"
 "\n"
-"Lewy przycisk myszy: kliknięcie i przeciągnięcie obraca widok\n"
-"Środkowy przycisk myszy: kliknięcie i przeciągnięcie przybliża lub oddala\n"
-"Prawy przycisk myszy: kliknięcie i przeciągnięcie przesuwa widok"
+"Αριστερό πλήκτρο ποντικιού:   Κλικ και σύρσιμο για την περιστροφή προβολής\n"
+"Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για μεγέθυνση ή σμίκρυνση\n"
+"Δεξί πλήκτρο ποντικιού:  Κλικ και σύρσιμο για τη μετακίνηση της προβολής"
 
 #: src/tools/navigatetool.h:52
 msgid "Navigate"
-msgstr ""
+msgstr "Πλοήγηση"
 
 #: src/tools/navigatetool.h:53
 msgid "Translate, rotate, and zoom around the current view"
@@ -3161,10 +3176,15 @@ msgid ""
 "Drag to select a range of atoms\n"
 "Use Ctrl to toggle the selection and shift to add to the selection"
 msgstr ""
+"Εργαλείο επιλογής (F11)\n"
+"Κλικ για την επιλογή ατόμων, υπολοίπων, ή τμημάτων\n"
+"Σύρσιμο για την επιλογή ενός εύρους ατόμων\n"
+"Χρησιμοποιήστε το Ctrl για την εναλλαγή της επιλογής και το shift για την "
+"προσθήκη στην επιλογή"
 
 #: src/tools/selectrotatetool.cpp:411
 msgid "Selection Mode:"
-msgstr ""
+msgstr "Λειτουργία επιλογής:"
 
 #: src/tools/selectrotatetool.cpp:416
 msgid "Atom/Bond"
@@ -3172,11 +3192,11 @@ msgstr ""
 
 #: src/tools/selectrotatetool.cpp:417
 msgid "Residue"
-msgstr ""
+msgstr "Υπόλοιπο"
 
 #: src/tools/selectrotatetool.h:51
 msgid "Selection"
-msgstr ""
+msgstr "Επιλογή"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
@@ -3188,7 +3208,7 @@ msgstr ""
 
 #: src/tools/zmatrixmodel.cpp:78
 msgid "Symbol"
-msgstr ""
+msgstr "Σύμβολο"
 
 #: src/tools/zmatrixmodel.cpp:86
 msgid "Bond Length"
@@ -3220,36 +3240,36 @@ msgstr ""
 
 #: src/colors/residuecolorsettings.ui:13
 msgid "Residue Color Settings"
-msgstr ""
+msgstr "Ρυθμίσεις χρώματος υπολοίπου"
 
 #: src/colors/residuecolorsettings.ui:19
 msgid "Color residues by:"
-msgstr ""
+msgstr "Υπόλοιπα χρώματος κατά:"
 
 #: src/colors/residuecolorsettings.ui:27
 msgid "Amino Colors"
-msgstr ""
+msgstr "Χρώματα αμίνων"
 
 #: src/colors/residuecolorsettings.ui:32
 msgid "Shapely Colors"
-msgstr ""
+msgstr "Χρώματα σχημάτων"
 
 #: src/colors/residuecolorsettings.ui:37
 msgid "Hydrophobicity"
-msgstr ""
+msgstr "Υδροφοβία"
 
 #: src/engines/bsdysettingswidget.ui:18
 msgid "Atom Radius:"
-msgstr ""
+msgstr "Ακτίνα ατόμου:"
 
 #: src/engines/bsdysettingswidget.ui:47
 msgid "Bond Radius:"
-msgstr ""
+msgstr "Ακτίνα δεσμού:"
 
 #: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
-msgstr ""
+msgstr "Αδιαφάνεια:"
 
 #: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
@@ -3293,35 +3313,35 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:1905
 #: src/extensions/linmorphdialog.ui:181
 msgid "Loop"
-msgstr ""
+msgstr "Βρόχος"
 
 #: src/engines/cartoonsettingswidget.ui:305
 msgid "Colors"
-msgstr ""
+msgstr "Χρώματα"
 
 #: src/engines/dipolesettingswidget.ui:22
 msgid "Dipole:"
-msgstr ""
+msgstr "Δίπολο:"
 
 #: src/engines/dipolesettingswidget.ui:54
 msgid "Dipole Moment"
-msgstr ""
+msgstr "Ροπή διπόλου"
 
 #: src/engines/dipolesettingswidget.ui:59
 msgid "Custom Value"
-msgstr ""
+msgstr "Προσαρμοσμένη τιμή"
 
 #: src/engines/dipolesettingswidget.ui:70
 msgid "Custom:"
-msgstr ""
+msgstr "Προσαρμοσμένο:"
 
 #: src/engines/hbondsettingswidget.ui:16
 msgid "Width:"
-msgstr ""
+msgstr "Πλάτος:"
 
 #: src/engines/hbondsettingswidget.ui:57
 msgid "Cut-off radius:"
-msgstr ""
+msgstr "Ακτίνα αποκοπής:"
 
 #: src/engines/hbondsettingswidget.ui:64
 #: src/extensions/insertpeptidedialog.ui:454
@@ -3336,11 +3356,11 @@ msgstr ""
 
 #: src/engines/hbondsettingswidget.ui:90
 msgid "Cut-off angle:"
-msgstr ""
+msgstr "Γωνία αποκοπής:"
 
 #: src/engines/labelsettingswidget.ui:23
 msgid "Atom Labels:"
-msgstr ""
+msgstr "Ετικέτες ατόμων:"
 
 #: src/engines/labelsettingswidget.ui:55
 #: src/engines/labelsettingswidget.ui:140
@@ -3350,7 +3370,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:1115
 #: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: src/engines/labelsettingswidget.ui:60
 msgid "Atom number"
@@ -3358,20 +3378,20 @@ msgstr ""
 
 #: src/engines/labelsettingswidget.ui:65
 msgid "Element name"
-msgstr ""
+msgstr "Όνομα στοιχείου"
 
 #: src/engines/labelsettingswidget.ui:70
 msgid "Element symbol"
-msgstr ""
+msgstr "Σύμβολο στοιχείου"
 
 #: src/engines/labelsettingswidget.ui:80
 msgid "Residue number"
-msgstr ""
+msgstr "Αριθμός υπολοίπου"
 
 #: src/engines/labelsettingswidget.ui:90
 #: src/engines/labelsettingswidget.ui:160
 msgid "Unique ID"
-msgstr ""
+msgstr "Μοναδικό ID"
 
 #: src/engines/labelsettingswidget.ui:95
 msgid "Symbol & Atom Number"
@@ -3379,31 +3399,31 @@ msgstr ""
 
 #: src/engines/labelsettingswidget.ui:100
 msgid "Custom Data"
-msgstr ""
+msgstr "Προσαρμοσμένα δεδομένα"
 
 #: src/engines/labelsettingswidget.ui:108
 msgid "Bond Labels:"
-msgstr ""
+msgstr "Ετικέτες δεσμών:"
 
 #: src/engines/labelsettingswidget.ui:145
 msgid "Bond length"
-msgstr ""
+msgstr "Μήκος δεσμού"
 
 #: src/engines/labelsettingswidget.ui:150
 msgid "Bond number"
-msgstr ""
+msgstr "Αριθμός δεσμού"
 
 #: src/engines/labelsettingswidget.ui:155
 msgid "Bond order"
-msgstr ""
+msgstr "Σειρά δεσμού"
 
 #: src/engines/ribbonsettingswidget.ui:16
 msgid "Rendering:"
-msgstr ""
+msgstr "Αποτύπωση:"
 
 #: src/engines/ribbonsettingswidget.ui:24
 msgid "Backbone"
-msgstr ""
+msgstr "Κύρια στήριξη"
 
 #: src/engines/ribbonsettingswidget.ui:29
 #: src/engines/surfacesettingswidget.ui:90
@@ -3413,15 +3433,15 @@ msgstr ""
 #: src/engines/ribbonsettingswidget.ui:37
 #: src/engines/sticksettingswidget.ui:16
 msgid "Radius:"
-msgstr ""
+msgstr "Ακτίνα:"
 
 #: src/engines/ribbonsettingswidget.ui:91
 msgid "Include Nitrogens"
-msgstr ""
+msgstr "Συμπερίληψη αζώτου"
 
 #: src/engines/spheresettingswidget.ui:16
 msgid "VdW Opacity:"
-msgstr ""
+msgstr "Αδιαφάνεια VdW:"
 
 #: src/engines/surfacesettingswidget.ui:17
 msgid "Orbital:"
@@ -3445,39 +3465,39 @@ msgstr ""
 
 #: src/engines/surfacesettingswidget.ui:129
 msgid "Style:"
-msgstr ""
+msgstr "Στυλ:"
 
 #: src/engines/surfacesettingswidget.ui:140
 msgid "Selected Colors"
-msgstr ""
+msgstr "Επιλεγμένα χρώματα"
 
 #: src/engines/surfacesettingswidget.ui:145
 msgid "Mapped Colors"
-msgstr ""
+msgstr "Αντιστοιχισμένα χρώματα"
 
 #: src/engines/surfacesettingswidget.ui:153
 msgid "Colors:"
-msgstr ""
+msgstr "Χρώματα:"
 
 #: src/engines/surfacesettingswidget.ui:165
 msgid "Positive"
-msgstr ""
+msgstr "Θετικό"
 
 #: src/engines/surfacesettingswidget.ui:188
 msgid "Negative"
-msgstr ""
+msgstr "Αρνητικό"
 
 #: src/engines/wiresettingswidget.ui:18
 msgid "Show Atoms"
-msgstr "Pokaż atomy"
+msgstr "Εμφάνιση ατόμων"
 
 #: src/extensions/animationdialog.ui:14
 msgid "Animate Trajectory"
-msgstr "Animuj trajektorię"
+msgstr ""
 
 #: src/extensions/animationdialog.ui:25
 msgid "Load File..."
-msgstr "Wczytaj plik..."
+msgstr "Φόρτωση αρχείου..."
 
 #: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
@@ -3489,7 +3509,7 @@ msgstr ""
 
 #: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
-msgstr "kl/s"
+msgstr "fps"
 
 #: src/extensions/animationdialog.ui:216
 msgid "Save as .avi..."
@@ -3503,7 +3523,7 @@ msgstr ""
 #: src/extensions/constraintsdialog.ui:132
 #: src/extensions/vibrationdialog.ui:58
 msgid "Options"
-msgstr ""
+msgstr "Επιλογές"
 
 #: src/extensions/conformersearchdialog.ui:25
 msgid "Number of atoms:"
@@ -3522,7 +3542,7 @@ msgstr ""
 #: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
-msgstr ""
+msgstr "Μέθοδος"
 
 #: src/extensions/conformersearchdialog.ui:66
 msgid "Systematic rotor search"
@@ -3538,7 +3558,7 @@ msgstr ""
 
 #: src/extensions/constraintsdialog.ui:13
 msgid "Constraints"
-msgstr ""
+msgstr "Περιορισμοί"
 
 #: src/extensions/constraintsdialog.ui:26
 msgid "Add Constraints"
@@ -3566,11 +3586,11 @@ msgstr ""
 
 #: src/extensions/constraintsdialog.ui:73
 msgid "Distance"
-msgstr ""
+msgstr "Απόσταση"
 
 #: src/extensions/constraintsdialog.ui:78
 msgid "Angle"
-msgstr ""
+msgstr "Γωνία"
 
 #: src/extensions/constraintsdialog.ui:83
 msgid "Torsion angle"
@@ -3586,23 +3606,23 @@ msgstr ""
 
 #: src/extensions/constraintsdialog.ui:120
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: src/extensions/constraintsdialog.ui:143
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
 #: src/extensions/constraintsdialog.ui:153
 msgid "Load"
-msgstr ""
+msgstr "Φόρτωση"
 
 #: src/extensions/constraintsdialog.ui:185
 msgid "Delete Selected"
-msgstr ""
+msgstr "Διαγραφή επιλεγμένων"
 
 #: src/extensions/constraintsdialog.ui:192
 msgid "Delete All"
-msgstr ""
+msgstr "Διαγραφή 'Ολων"
 
 #: src/extensions/fileimportdialog.ui:19
 msgid "File Import..."
@@ -3610,13 +3630,13 @@ msgstr ""
 
 #: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
-msgstr ""
+msgstr "Όνομα αρχείου:"
 
 #: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
 #: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
-msgstr ""
+msgstr "Περιήγηση..."
 
 #: src/extensions/fileimportdialog.ui:46
 msgid "Par File:"
@@ -3653,11 +3673,11 @@ msgstr ""
 
 #: src/extensions/forcefielddialog.ui:65
 msgid "Number of steps"
-msgstr ""
+msgstr "Αριθμός βημάτων"
 
 #: src/extensions/forcefielddialog.ui:82
 msgid "Algorithm"
-msgstr ""
+msgstr "Αλγόριθμος"
 
 #: src/extensions/forcefielddialog.ui:103
 msgid "Convergence"
@@ -3681,7 +3701,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:24
 msgid "&Basic Setup"
-msgstr ""
+msgstr "&Βασικές ρυθμίσεις"
 
 #: src/extensions/gamessinputdialog.ui:33
 #: src/extensions/gamessinputdialog.ui:661
@@ -3807,7 +3827,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:162
 msgid "Neutral"
-msgstr ""
+msgstr "Ουδέτερο"
 
 #: src/extensions/gamessinputdialog.ui:167
 msgid "Anion"
@@ -3845,25 +3865,25 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:74
 #: src/extensions/qcheminputdialog.ui:74
 msgid "Frequencies"
-msgstr ""
+msgstr "Συχνότητες"
 
 #: src/extensions/gamessinputdialog.ui:252
 msgid "Gas"
-msgstr ""
+msgstr "Αέριο"
 
 #: src/extensions/gamessinputdialog.ui:257
 msgid "Water"
-msgstr ""
+msgstr "Νερό"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
 #: src/extensions/surfacedialog.ui:335
 msgid "Calculate"
-msgstr ""
+msgstr "Υπολογισμός"
 
 #: src/extensions/gamessinputdialog.ui:290
 msgid "With:"
-msgstr ""
+msgstr "Με:"
 
 #: src/extensions/gamessinputdialog.ui:300
 msgid "In:"
@@ -3875,11 +3895,11 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:361
 msgid "Advanced"
-msgstr ""
+msgstr "Για προχωρημένους"
 
 #: src/extensions/gamessinputdialog.ui:366
 msgid "Basis"
-msgstr ""
+msgstr "Βάση"
 
 #: src/extensions/gamessinputdialog.ui:371
 msgid "Control"
@@ -3904,11 +3924,11 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:401
 msgid "Data"
-msgstr ""
+msgstr "Δεδομένα"
 
 #: src/extensions/gamessinputdialog.ui:406
 msgid "System"
-msgstr ""
+msgstr "Σύστημα"
 
 #: src/extensions/gamessinputdialog.ui:411
 msgid "MO Guess"
@@ -3916,7 +3936,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:416
 msgid "Misc"
-msgstr ""
+msgstr "Διάφορα"
 
 #: src/extensions/gamessinputdialog.ui:437
 msgid "#D Heavy Atom Polarization Functions:"
@@ -3924,7 +3944,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:455
 msgid "Read"
-msgstr ""
+msgstr "Ανάγνωση"
 
 #: src/extensions/gamessinputdialog.ui:460
 msgid "SBKJC"
@@ -3948,7 +3968,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:566
 msgid "MIDI"
-msgstr ""
+msgstr "MIDI"
 
 #: src/extensions/gamessinputdialog.ui:571
 msgid "STO-2G"
@@ -4022,7 +4042,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:717
 #: src/extensions/gamessinputdialog.ui:1848
 msgid "Default"
-msgstr ""
+msgstr "Προκαθορισμένο"
 
 #: src/extensions/gamessinputdialog.ui:722
 msgid "Pople"
@@ -4062,7 +4082,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:822
 msgid "Gradient"
-msgstr ""
+msgstr "Διαβάθμιση χρώματος"
 
 #: src/extensions/gamessinputdialog.ui:832
 msgid "Optimization"
@@ -4247,7 +4267,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:290
 #: src/extensions/qcheminputdialog.ui:307
 msgid "Multiplicity:"
-msgstr ""
+msgstr "Πολλαπλότητα:"
 
 #: src/extensions/gamessinputdialog.ui:1199
 msgid "Normal Run"
@@ -4255,11 +4275,11 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1204
 msgid "Check"
-msgstr ""
+msgstr "Επιλογή"
 
 #: src/extensions/gamessinputdialog.ui:1209
 msgid "Debug"
-msgstr ""
+msgstr "Αποσφαλμάτωση"
 
 #: src/extensions/gamessinputdialog.ui:1238
 msgid "Molecule Charge:"
@@ -4379,7 +4399,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1575
 msgid "Units:"
-msgstr ""
+msgstr "Μονάδες:"
 
 #: src/extensions/gamessinputdialog.ui:1582
 #: src/extensions/gaussianinputdialog.ui:30
@@ -4388,7 +4408,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:31
 #: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
-msgstr ""
+msgstr "Τίτλος:"
 
 #: src/extensions/gamessinputdialog.ui:1639
 msgid "Point Group:"
@@ -4396,27 +4416,27 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1666
 msgid "Seconds"
-msgstr ""
+msgstr "Δευτερόλεπτα"
 
 #: src/extensions/gamessinputdialog.ui:1671
 msgid "Minutes"
-msgstr ""
+msgstr "Λεπτά"
 
 #: src/extensions/gamessinputdialog.ui:1676
 msgid "Hours"
-msgstr ""
+msgstr "Ώρες"
 
 #: src/extensions/gamessinputdialog.ui:1681
 msgid "Days"
-msgstr ""
+msgstr "Ημέρες"
 
 #: src/extensions/gamessinputdialog.ui:1686
 msgid "Weeks"
-msgstr ""
+msgstr "Εβδομάδες"
 
 #: src/extensions/gamessinputdialog.ui:1691
 msgid "Years"
-msgstr ""
+msgstr "Έτη"
 
 #: src/extensions/gamessinputdialog.ui:1696
 msgid "Millenia"
@@ -4425,12 +4445,12 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:1725
 #: src/extensions/gamessinputdialog.ui:1769
 msgid "Words"
-msgstr ""
+msgstr "Λέξεις"
 
 #: src/extensions/gamessinputdialog.ui:1730
 #: src/extensions/gamessinputdialog.ui:1774
 msgid "Bytes"
-msgstr ""
+msgstr "Bytes"
 
 #: src/extensions/gamessinputdialog.ui:1735
 #: src/extensions/gamessinputdialog.ui:1779
@@ -4473,7 +4493,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:1885
 #: src/extensions/gamessinputdialog.ui:2460
 msgid "Memory:"
-msgstr ""
+msgstr "Μνήμη:"
 
 #: src/extensions/gamessinputdialog.ui:1892
 msgid "Diagonalization Method:"
@@ -4485,7 +4505,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1915
 msgid "Next Value"
-msgstr ""
+msgstr "Επόμενη τιμή"
 
 #: src/extensions/gamessinputdialog.ui:1925
 msgid "Use External Data Representation for Messages"
@@ -4513,7 +4533,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2004
 msgid "Skip"
-msgstr ""
+msgstr "Παράλειψη"
 
 #: src/extensions/gamessinputdialog.ui:2027
 msgid "Rotate Alpha and Beta Orbitals"
@@ -4565,7 +4585,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2139
 msgid "All"
-msgstr ""
+msgstr "Όλα"
 
 #: src/extensions/gamessinputdialog.ui:2164
 msgid "Solvate with Water"
@@ -4661,7 +4681,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2365
 msgid "Grid"
-msgstr ""
+msgstr "Πλέγμα"
 
 #: src/extensions/gamessinputdialog.ui:2370
 msgid "Grid-Free"
@@ -4674,7 +4694,7 @@ msgstr ""
 #: src/extensions/gamessinputdialog.ui:2400
 #: src/extensions/mopacinputdialog.ui:186
 msgid "Method:"
-msgstr ""
+msgstr "Μέθοδος:"
 
 #: src/extensions/gamessinputdialog.ui:2424
 msgid "AO Integral Storage"
@@ -4722,7 +4742,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2566
 msgid "Analytic"
-msgstr ""
+msgstr "Αναλυτικοί"
 
 #: src/extensions/gamessinputdialog.ui:2576
 msgid "Numeric"
@@ -4790,15 +4810,15 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2758
 msgid "Step Size"
-msgstr ""
+msgstr "Μέγεθος βήματος"
 
 #: src/extensions/gamessinputdialog.ui:2764
 msgid "Maximum:"
-msgstr ""
+msgstr "Μέγιστο:"
 
 #: src/extensions/gamessinputdialog.ui:2771
 msgid "Minimum:"
-msgstr ""
+msgstr "Ελάχιστο:"
 
 #: src/extensions/gamessinputdialog.ui:2781
 msgid "Initial:"
@@ -4846,7 +4866,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2940
 msgid "Defaults"
-msgstr ""
+msgstr "Προκαθορισμένα"
 
 #: src/extensions/gamessinputdialog.ui:2963
 #: src/extensions/gaussianinputdialog.ui:528
@@ -4871,7 +4891,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: src/extensions/gaussianinputdialog.ui:19
 msgid "Gaussian Input"
@@ -4926,11 +4946,11 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.ui:330
 msgid "Output:"
-msgstr ""
+msgstr "Έξοδος:"
 
 #: src/extensions/gaussianinputdialog.ui:346
 msgid "Standard"
-msgstr ""
+msgstr "Τυπικό"
 
 #: src/extensions/gaussianinputdialog.ui:351
 msgid "Molden"
@@ -4950,7 +4970,7 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.ui:330
 #: src/extensions/qcheminputdialog.ui:344
 msgid "Format:"
-msgstr ""
+msgstr "Μορφή:"
 
 #: src/extensions/gaussianinputdialog.ui:415
 #: src/extensions/molproinputdialog.ui:353
@@ -4985,7 +5005,7 @@ msgstr ""
 
 #: src/extensions/insertfragmentdialog.ui:14
 msgid "Insert Fragment..."
-msgstr ""
+msgstr "Εισαγωγή τμήματος..."
 
 #: src/extensions/insertpeptidedialog.ui:20
 msgid "Peptide Builder"
@@ -5214,7 +5234,7 @@ msgstr ""
 
 #: src/extensions/insertpeptidedialog.ui:377
 msgid "Other"
-msgstr ""
+msgstr "Άλλο"
 
 #: src/extensions/insertpeptidedialog.ui:387
 msgid "Phi:"
@@ -5428,7 +5448,7 @@ msgstr ""
 
 #: src/extensions/pocketdialog.ui:85
 msgid "Radius"
-msgstr ""
+msgstr "Ακτίνα"
 
 #: src/extensions/pocketdialog.ui:98
 msgid ""
@@ -5441,7 +5461,7 @@ msgstr ""
 
 #: src/extensions/povraydialog.ui:30
 msgid "Select..."
-msgstr ""
+msgstr "Επιλογή..."
 
 #: src/extensions/povraydialog.ui:64
 msgid "povray"
@@ -5453,7 +5473,7 @@ msgstr ""
 
 #: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
-msgstr ""
+msgstr "Ανάλυση:"
 
 #: src/extensions/povraydialog.ui:147
 msgid "Use full scene antialiasing"
@@ -5461,7 +5481,7 @@ msgstr ""
 
 #: src/extensions/povraydialog.ui:150
 msgid "Antialias"
-msgstr ""
+msgstr "Εξομάλυνση"
 
 #: src/extensions/povraydialog.ui:160
 msgid "Set the background color to be transparent"
@@ -5473,7 +5493,7 @@ msgstr ""
 
 #: src/extensions/povraydialog.ui:173
 msgid "Command:"
-msgstr ""
+msgstr "Εντολή:"
 
 #: src/extensions/povraydialog.ui:183
 msgid "Render the molecule directly using command line POV-Ray"
@@ -5493,7 +5513,7 @@ msgstr ""
 
 #: src/extensions/povraydialog.ui:209
 msgid "Path:"
-msgstr ""
+msgstr "Διαδρομή:"
 
 #: src/extensions/qcheminputdialog.ui:20
 msgid "Q-Chem Input"
@@ -5533,7 +5553,7 @@ msgstr ""
 
 #: src/extensions/shaderdialog.ui:100
 msgid "Parameters:"
-msgstr ""
+msgstr "Παράμετροι:"
 
 #: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
@@ -5566,7 +5586,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:110
 msgid "&Close"
-msgstr ""
+msgstr "&Κλείσιμο"
 
 #: src/extensions/spectradialog.ui:155
 msgid "Calculated Spectra:"
@@ -5575,7 +5595,7 @@ msgstr ""
 #: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
 #: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
-msgstr ""
+msgstr "Καθορισμός χρώματος..."
 
 #: src/extensions/spectradialog.ui:175
 msgid "Imported Spectra:"
@@ -5583,15 +5603,15 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:198
 msgid "Font:"
-msgstr ""
+msgstr "Γραμματοσειρά:"
 
 #: src/extensions/spectradialog.ui:211
 msgid "Change Font..."
-msgstr ""
+msgstr "Αλλαγή γραμματοσειράς..."
 
 #: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: src/extensions/spectradialog.ui:250
 msgid "Imports a tsv of experimental spectra to overlay on the plot."
@@ -5599,31 +5619,31 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:253
 msgid "&Import..."
-msgstr ""
+msgstr "&Εισαγωγή..."
 
 #: src/extensions/spectradialog.ui:266
 msgid "Background:"
-msgstr ""
+msgstr "Φόντο:"
 
 #: src/extensions/spectradialog.ui:292
 msgid "Foreground:"
-msgstr ""
+msgstr "Προσκήνιο:"
 
 #: src/extensions/spectradialog.ui:321
 msgid "New..."
-msgstr ""
+msgstr "Νέο..."
 
 #: src/extensions/spectradialog.ui:337
 msgid "Remove..."
-msgstr ""
+msgstr "Αφαίρεση..."
 
 #: src/extensions/spectradialog.ui:350
 msgid "Rename..."
-msgstr ""
+msgstr "Μετονομασία..."
 
 #: src/extensions/spectradialog.ui:376
 msgid "TODO"
-msgstr ""
+msgstr "ΠΡΟΣ ΥΛΟΠΟΙΗΣΗ"
 
 #: src/extensions/spectradialog.ui:389
 msgid "&Schemes:"
@@ -5631,7 +5651,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:405
 msgid "&Export..."
-msgstr ""
+msgstr "Ε&ξαγωγή..."
 
 #: src/extensions/spectradialog.ui:445
 msgid "&DPI:"
@@ -5639,39 +5659,39 @@ msgstr ""
 
 #: src/extensions/spectradialog.ui:461
 msgid "&Width:"
-msgstr ""
+msgstr "&Πλάτος:"
 
 #: src/extensions/spectradialog.ui:490
 msgid "&Height"
-msgstr ""
+msgstr "Ύ&ψος"
 
 #: src/extensions/spectradialog.ui:513
 msgid "&Filename:"
-msgstr ""
+msgstr "Ό&νομα αρχείου:"
 
 #: src/extensions/spectradialog.ui:549
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/extensions/spectradialog.ui:560
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/extensions/spectradialog.ui:565
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 #: src/extensions/spectradialog.ui:570
 msgid "in"
-msgstr ""
+msgstr "ιν"
 
 #: src/extensions/spectradialog.ui:575
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/extensions/spectradialog.ui:589
 msgid "&Save Image..."
-msgstr ""
+msgstr "&Αποθήκευση εικόνας..."
 
 #: src/extensions/spectradialog.ui:622
 msgid ""
@@ -5778,7 +5798,7 @@ msgstr ""
 
 #: src/extensions/surfacedialog.ui:41
 msgid "Van der Waals"
-msgstr ""
+msgstr "Van der Waals"
 
 #: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
@@ -5866,27 +5886,27 @@ msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:175
 msgid "A:"
-msgstr "A:"
+msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:192
 msgid "alpha:"
-msgstr "alpha:"
+msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:212
 msgid "B:"
-msgstr "B:"
+msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:229
 msgid "beta:"
-msgstr "beta:"
+msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:249
 msgid "C:"
-msgstr "C:"
+msgstr ""
 
 #: src/extensions/unitcellparamdialog.ui:266
 msgid "gamma:"
-msgstr "gamma:"
+msgstr ""
 
 #: src/extensions/vibrationdialog.ui:14
 msgid "Molecular Vibrations"
@@ -5918,11 +5938,11 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."
-msgstr ""
+msgstr "Ε&ξαγωγή..."
 
 #: src/tools/navigatesettingswidget.ui:14
 msgid "Form"
-msgstr ""
+msgstr "Φόρμα"
 
 #: src/tools/navigatesettingswidget.ui:23
 msgctxt ""
@@ -5942,11 +5962,11 @@ msgstr ""
 
 #: src/tools/pythonsettingswidget.ui:25
 msgid "Python Settings"
-msgstr ""
+msgstr "Ρυθμίσεις Python"
 
 #: src/tools/zmatrixdialog.ui:14
 msgid "Z Matrix Editor"
-msgstr ""
+msgstr "Επεξεργαστής μητρώου Z"
 
 #: src/tools/zmatrixdialog.ui:25
 msgid "Import Selected Atoms"
@@ -5954,149 +5974,45 @@ msgstr ""
 
 #: src/tools/zmatrixdialog.ui:52
 msgid "Remove Atom"
-msgstr ""
+msgstr "Αφαίρεση ατόμου"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Roman "
-"Skrzypiński, ,Launchpad Contributions:,Avogadro Team, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison"
+msgstr " ,Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,romano473@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
-"devel@lists.sourceforge.net,"
+msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com"
 
-#~ msgid "Caesium"
-#~ msgstr "Cez"
+#~ msgid "Surface"
+#~ msgstr "Επιφάνεια"
 
-#~ msgid "Atomic Number"
-#~ msgstr "Liczba atomowa"
+#~ msgid "Name"
+#~ msgstr "Όνομα"
 
-#~ msgid "Residues"
-#~ msgstr "Grupy funkcyjne"
+#~ msgid "Color:"
+#~ msgstr "Χρώμα:"
 
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Odległość (1->2): %1 %2"
+#~ msgid "Add Directory"
+#~ msgstr "Προσθήκη Καταλόγου"
 
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Odległość (2->3): %1 %2"
+#~ msgid "Reset List"
+#~ msgstr "Μηδενισμός λίστας"
 
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Odległość (3->4): %1 %2"
+#~ msgid "Steps:"
+#~ msgstr "Βήματα:"
 
-#~ msgid "*1"
-#~ msgstr "*1"
+#~ msgid "0.02"
+#~ msgstr "0.02"
 
-#~ msgid "*2"
-#~ msgstr "*2"
+#~ msgid "0.000"
+#~ msgstr "0.000"
 
-#~ msgid "*3"
-#~ msgstr "*3"
+#~ msgid "1.000"
+#~ msgstr "1.000"
 
-#~ msgid "*4"
-#~ msgstr "*4"
+#~ msgid "Distance:"
+#~ msgstr "Απόσταση:"
 
-#~ msgid "Fragment Library..."
-#~ msgstr "Biblioteka fragmentów..."
-
-#~ msgid "Stop Inserting"
-#~ msgstr "Zakończ wstawianie"
-
-#~ msgid "Open File"
-#~ msgstr "Otwórz Plik"
-
-#~ msgid "Messages"
-#~ msgstr "Komunikaty"
-
-#~ msgid "Common molecule formats"
-#~ msgstr "Częste formaty molekuł"
-
-#~ msgid "All files"
-#~ msgstr "Wszystkie pliki"
-
-#~ msgid "HyperChem"
-#~ msgstr "HyperChem"
-
-#~ msgid "MDL Mol"
-#~ msgstr "MDL Mol"
-
-#~ msgid "PDB"
-#~ msgstr "PDB"
-
-#~ msgid "Sybyl Mol2"
-#~ msgstr "Sybyl Mol2"
-
-#~ msgid "XYZ"
-#~ msgstr "XYZ"
-
-#~ msgid " Bonds: "
-#~ msgstr " Wiązania: "
-
-#~ msgid "File Loaded..."
-#~ msgstr "Plik załadowany..."
-
-#~ msgid "MDL SDfile"
-#~ msgstr "Plik MDL SD"
-
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Nie mogę zapisać pliku %1."
-
-#~ msgid "Saving file."
-#~ msgstr "Zapis pliku."
-
-#~ msgid "Save succeeded."
-#~ msgstr "Zapis zakończony powodzeniem."
-
-#~ msgid "PNG"
-#~ msgstr "PNG"
-
-#~ msgid "BMP"
-#~ msgstr "BMP"
-
-#~ msgid "JPEG"
-#~ msgstr "JPEG"
-
-#~ msgid "Normal Size"
-#~ msgstr "Zwykły rozmiar"
-
-#~ msgid "Full Screen"
-#~ msgstr "Tryb pełnoekranowy"
-
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
-
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
-
-#~ msgid "Settings..."
-#~ msgstr "Ustawienia..."
-
-#~ msgid "Duplicate"
-#~ msgstr "Duplikuj"
-
-#~ msgid "Remove"
-#~ msgstr "Usuń"
-
-#~ msgid "Objects"
-#~ msgstr "Obiekty"
-
-#~ msgid " copy"
-#~ msgstr " kopiuj"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Type:"
-#~ msgstr "Typ:"
-
-#~ msgid "Name:"
-#~ msgstr "Nazwa:"
-
-#~ msgid "Description:"
-#~ msgstr "Opis:"
-
-#~ msgid "Quality:"
-#~ msgstr "Jakość:"
+#~ msgid "0.0"
+#~ msgstr "0.0"

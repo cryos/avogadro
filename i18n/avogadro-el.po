@@ -1,16 +1,16 @@
-# Arabic translation for avogadro
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Greek translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-08-03 14:19-0400\n"
-"PO-Revision-Date: 2009-07-03 05:07+0000\n"
-"Last-Translator: عبد الله شلي (Abdellah Chelli) <sneetsher@gmail.com>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2009-07-22 08:04+0000\n"
+"Last-Translator: Anastasios Bourazanis <a.brzns@gmail.com>\n"
+"Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "موافق"
+msgstr "Εντάξει"
 
 #: src/aboutdialog.cpp:66
 #, qt-format
@@ -30,55 +30,61 @@ msgid ""
 "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
 "FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
+"<h3>%1</h3><br/><br/>Έκδοση Εφαρμογής: %2<br/><br/>Έκδοση Βιβλιοθήκης: %3<br/"
+"><br/>Για περισσότερες πληροφορίες ανατρέξτε εδώ <a href=\"http://avogadro."
+"openmolecules.net/\">Avogadro homepage</a>.<br/><br/>Το πρόγραμμα διατίθεται "
+"ΩΣ ΕΧΕΙ χωρίς ΚΑΜΙΑ ΕΓΓΥΗΣΗ ΟΠΟΙΟΥΔΗΠΟΤΕ ΤΥΠΟΥ, ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΗΣ ΤΗΣ "
+"ΕΓΓΥΗΣΗΣ ΤΟΥ ΣΧΕΔΙΑΣΜΟΥ, ΤΗΣ ΔΙΑΘΕΣΗΣ ΚΑΙ ΠΡΟΣΑΡΜΟΓΗΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ."
+"<br/>"
 
 #: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
 #: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
 #: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
 #: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
-msgstr "أفوقادرو"
+msgstr "Avogadro"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
-msgstr "قص جزيئا"
+msgstr "Αποκοπή μορίου"
 
 #: src/editcommands.cpp:46
 msgid "Cut Atoms"
-msgstr "قص ذرات"
+msgstr "Αποκοπή ατόμων"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr "ألصق"
+msgstr "Επικόλληση"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
-msgstr "إمسح جزيئا"
+msgstr "Καθαρισμός μορίου"
 
 #: src/editcommands.cpp:134
 msgid "Clear Atoms"
-msgstr "إمسح ذرات"
+msgstr "Καθαρισμός ατόμων"
 
 #: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
 #: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
-msgstr "إعدادات"
+msgstr "Ρυθμίσεις"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
-msgstr "افتح ملف"
+msgstr "Άνοιγμα αρχείου"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
-msgstr "رسائل"
+msgstr "Μηνύματα"
 
 #: src/mainwindow.cpp:350
 msgid "Window"
-msgstr "نافذة"
+msgstr "Παράθυρο"
 
 #: src/mainwindow.cpp:353
 msgid "&Minimize"
-msgstr "تصغير"
+msgstr "&Ελαχιστοποίηση"
 
 #: src/mainwindow.cpp:354
 msgid "Ctrl+M"
@@ -86,15 +92,15 @@ msgstr "Ctrl+M"
 
 #: src/mainwindow.cpp:359
 msgid "&Zoom"
-msgstr "قرب"
+msgstr "&Μεγέθυνση"
 
 #: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
-msgstr "أحضر الكل إلى الأمام"
+msgstr "Μεταφορά Όλων Εμπρός"
 
 #: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
-msgstr "إعدادات الأداة..."
+msgstr "&Ρυθμίσεις Εργαλείων"
 
 #: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
@@ -103,7 +109,7 @@ msgstr "Ctrl+T"
 
 #: src/mainwindow.cpp:645
 msgid "&Display Settings..."
-msgstr "إعدادات العرض..."
+msgstr ""
 
 #: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
@@ -112,12 +118,12 @@ msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
-msgstr "تنسيقات مشتركة للجزيئ"
+msgstr "Κοινές μορφές μορίων"
 
 #: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
 #: src/mainwindow.cpp:1446
 msgid "All files"
-msgstr "كافة الملفات"
+msgstr "Όλα τα αρχεία"
 
 #: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
@@ -125,19 +131,19 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
-msgstr "خرج كيمياء حسابية"
+msgstr "Αποτελέσματα Υπολογιστικής Χημείας"
 
 #: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
-msgstr "تنسيق تبادل بلوري CIF"
+msgstr ""
 
 #: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
-msgstr "خرج GAMESS-US"
+msgstr "Αποτελέσματα GAMESS-US"
 
 #: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
-msgstr "خرج Gaussian 98/03"
+msgstr ""
 
 #: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
@@ -149,11 +155,11 @@ msgstr ""
 
 #: src/mainwindow.cpp:699
 msgid "MDL Mol"
-msgstr "MDL Mol"
+msgstr ""
 
 #: src/mainwindow.cpp:700
 msgid "NWChem Output"
-msgstr "خرج NWChem"
+msgstr ""
 
 #: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
@@ -161,7 +167,7 @@ msgstr "PDB"
 
 #: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
-msgstr "Sybyl Mol2"
+msgstr ""
 
 #: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
@@ -171,17 +177,17 @@ msgstr "XYZ"
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
-msgstr "تحميل %1..."
+msgstr "Φόρτωση %1"
 
 #: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
-msgstr "تحميل %1..."
+msgstr "Φόρτωση %1"
 
 #: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
 #, qt-format
 msgid "Reading molecular file failed, file %1."
-msgstr ""
+msgstr "Η ανάγνωση του αρχείου μορίων απέτυχε, αρχείο %1"
 
 #: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
@@ -189,7 +195,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
-msgstr ""
+msgstr "Το συγκεκριμένο αρχείο δεν περιέχει συντεταγμένες 3D"
 
 #: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
@@ -207,49 +213,49 @@ msgstr ""
 
 #: src/mainwindow.cpp:946
 msgid "Molecule Title"
-msgstr ""
+msgstr "Τίτλος μορίου"
 
 #: src/mainwindow.cpp:1019
 msgid "Atoms: "
-msgstr "الذرات: "
+msgstr "Άτομα: "
 
 #: src/mainwindow.cpp:1020
 msgid " Bonds: "
-msgstr " الروابط: "
+msgstr " Δεσμοί: "
 
 #: src/mainwindow.cpp:1036
 msgid "File Loaded..."
-msgstr "الملف حمِّل..."
+msgstr ""
 
 #: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
-msgstr ""
+msgstr "Επιθυμείτε να αποθηκευτούν οι αλλαγές που κάνατε στο αρχείο?"
 
 #: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
-msgstr "ستضيع تغييراتك ان لم تحفظها."
+msgstr "Οι αλλαγές θα χαθούν οριστικά αν δεν τις αποθηκεύσετε."
 
 #: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
-msgstr "Ctrl+S"
+msgstr ""
 
 #: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr "Ctrl+D"
+msgstr ""
 
 #: src/mainwindow.cpp:1065
 msgid "Save..."
-msgstr "إحفظ..."
+msgstr "Αποθήκευση..."
 
 #: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
-msgstr "إحفظ"
+msgstr "Αποθήκευση"
 
 #: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
-msgstr "دخل GAMESS"
+msgstr "Είσοδος GAMESS"
 
 #: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
@@ -261,15 +267,15 @@ msgstr ""
 
 #: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
-msgstr "ملف MDL SD"
+msgstr "Αρχείο MDL SD"
 
 #: src/mainwindow.cpp:1153
 msgid "NWChem Input"
-msgstr "دخل NWChem"
+msgstr ""
 
 #: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
-msgstr ""
+msgstr "Αποθήκευση μορίου ως"
 
 #: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
@@ -277,7 +283,7 @@ msgstr "PNG"
 
 #: src/mainwindow.cpp:1364
 msgid "Common image formats"
-msgstr ""
+msgstr "Κοινοί τύποι εικόνων"
 
 #: src/mainwindow.cpp:1368
 msgid "BMP"
@@ -289,12 +295,12 @@ msgstr "JPEG"
 
 #: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
-msgstr ""
+msgstr "Εξαγωγή Γραφικών Bitmap"
 
 #: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
-msgstr ""
+msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
 
 #: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
@@ -302,7 +308,7 @@ msgstr "PDF"
 
 #: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
-msgstr ""
+msgstr "Κοινοί τύποι διανυσματικών εικόνων"
 
 #: src/mainwindow.cpp:1448
 msgid "SVG"
@@ -315,11 +321,11 @@ msgstr "EPS"
 #: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
-msgstr "غير معنون %1"
+msgstr "Ανώνυμο %1"
 
 #: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
-msgstr ""
+msgstr "Αδύνατη η επικόλληση του μορίου"
 
 #: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
@@ -327,19 +333,19 @@ msgstr ""
 
 #: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
-msgstr ""
+msgstr "Η επικόλληση απέτυχε (μη διαθέσιμο mdl)."
 
 #: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
 #: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
-msgstr "عرض %1"
+msgstr ""
 
 #: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
-msgstr "عرض %1"
+msgstr ""
 
 #: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
@@ -347,24 +353,24 @@ msgstr ""
 
 #: src/mainwindow.cpp:2158
 msgid "Normal Size"
-msgstr "الحجم العادي"
+msgstr "Κανονικό μέγεθος"
 
 #: src/mainwindow.cpp:2171
 msgid "Full Screen"
-msgstr "ملئ الشاشة"
+msgstr "Λειτουργία πλήρους οθόνης"
 
 #: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
-msgstr "Ctrl+Backspace"
+msgstr ""
 
 #: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "بلا عنوان"
+msgstr "χωρίς τίτλο"
 
 #: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
-msgstr ""
+msgstr "[*]Avogadro"
 
 #: src/mainwindow.cpp:2429
 #, qt-format
@@ -374,15 +380,15 @@ msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:2845
 msgid "Add"
-msgstr "أضِف"
+msgstr "Προσθήκη"
 
 #: src/mainwindow.cpp:2850
 msgid "Duplicate"
-msgstr "نسخة مطابقة"
+msgstr "Αντιγραφή"
 
 #: src/mainwindow.cpp:2855
 msgid "Remove"
-msgstr "أزل"
+msgstr "Αφαίρεση"
 
 #: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
@@ -394,7 +400,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:2887
 msgid "No tools loaded."
-msgstr ""
+msgstr "Δεν φορτώθηκε κανένα εργαλείο"
 
 #: src/mainwindow.cpp:2888
 msgid ""
@@ -404,55 +410,55 @@ msgstr ""
 
 #: src/mainwindow.cpp:2932
 msgid "Objects"
-msgstr "أجسام"
+msgstr "Αντικείμενα"
 
 #: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
-msgstr "ألوان"
+msgstr "Χρώματα"
 
 #: src/mainwindow.cpp:2971
 msgid " copy"
-msgstr " إنسخ"
+msgstr " αντιγραφή"
 
 #: src/pluginsettings.cpp:55
 msgid "Name: "
-msgstr "الاسم: "
+msgstr "Όνομα: "
 
 #: src/pluginsettings.cpp:56
 msgid "Identifier: "
-msgstr "المعرِّف: "
+msgstr "Αναγνωριστικό: "
 
 #: src/pluginsettings.cpp:57
 msgid "File: "
-msgstr "الملف: "
+msgstr "Αρχείο: "
 
 #: src/pluginsettings.cpp:58
 msgid "Description:\n"
-msgstr "الوصف:\n"
+msgstr "Περιγραφή:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
 #: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
 #: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
 msgid "Molecule"
-msgstr "جزيئ"
+msgstr "Μόριο"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
 #: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
-msgstr "ذرات"
+msgstr "Άτομα"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
 #: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
-msgstr "روابط"
+msgstr "Δεσμοί"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
 #: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
-msgstr "رواسب"
+msgstr "Υπόλοιπα"
 
 #: src/projectdelegates/bonddelegate.cpp:83
 #: src/projectdelegates/bonddelegate.cpp:101
@@ -460,22 +466,22 @@ msgstr "رواسب"
 #: src/projectdelegates/bonddelegate.cpp:134
 #, qt-format
 msgid "bond %1"
-msgstr ""
+msgstr "δεσμός %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
 #: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
 #: src/projecttreemodel.cpp:204
 msgid "Label"
-msgstr "تسمية"
+msgstr "Ετικέτα"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
 #: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
 msgid "User Selections"
-msgstr ""
+msgstr "Επιλογές Χρήστη"
 
 #: src/projecttreeeditor.cpp:123
 msgid "Error"
-msgstr "خطأ"
+msgstr "Σφάλμα"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
@@ -483,60 +489,60 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
-msgstr "عنصر"
+msgstr "Αντικείμενo"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr "فهرس"
+msgstr "Ευρετήριο"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr "منخفض"
+msgstr "Χαμηλό"
 
 #: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr "متوسط"
+msgstr "Μέτριο"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "عالي"
+msgstr "Υψηλό"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr "غيرُ مُعرَّف"
+msgstr "Μη ορισμένο"
 
 #: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr "لاشيء"
+msgstr "Κανένα"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr "بعض"
+msgstr "Κάποια"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
 msgid "Mid"
-msgstr "وسط"
+msgstr "Μέσο"
 
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr "كثير"
+msgstr ""
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
 msgid "Undefined"
-msgstr "غيرُ مُعرَّف"
+msgstr "Μη ορισμένο"
 
 #: src/updatecheck.cpp:81
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Έλεγχος Ενημέρωσης δικτύου απέτυχε"
 
 #: src/updatecheck.cpp:82
 msgid "Network timeout or other error."
@@ -545,7 +551,7 @@ msgstr ""
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr ""
+msgstr "Διαθέσιμη ενημερωμένη έκδοση του Avogadro"
 
 #: src/addenginedialog.ui:13
 msgid "Add Display Type"
@@ -553,23 +559,23 @@ msgstr ""
 
 #: src/addenginedialog.ui:19
 msgid "Type:"
-msgstr "النوع:"
+msgstr "Τύπος:"
 
 #: src/addenginedialog.ui:32
 msgid "Name:"
-msgstr "الاسم:"
+msgstr "Όνομα:"
 
 #: src/addenginedialog.ui:45
 msgid "Description:"
-msgstr "الوصف"
+msgstr "Περιγραφή:"
 
 #: src/enginecolorswidget.ui:13
 msgid "Form"
-msgstr "شكل"
+msgstr "Φόρμα"
 
 #: src/enginecolorswidget.ui:24
 msgid "Color by:"
-msgstr ""
+msgstr "Χρώμα ανά:"
 
 #: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
@@ -577,15 +583,15 @@ msgstr ""
 
 #: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
-msgstr ""
+msgstr "Αφαίρεση επιλεγμένων πρωτευόντων"
 
 #: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
-msgstr ""
+msgstr "Προσθήκη όλων των πρωτευόντων"
 
 #: src/engineprimitiveswidget.ui:83
 msgid "Display Only Selected Primitives"
-msgstr ""
+msgstr "Εμφάνιση μόνο των επιλεγμένων πρωτευόντων"
 
 #: src/engineprimitiveswidget.ui:86
 msgid "Assign to Selection"
@@ -593,27 +599,27 @@ msgstr ""
 
 #: src/importdialog.ui:13
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Εισαγωγή αρχείου μορίων"
 
 #: src/importdialog.ui:24
 msgid "Filename:"
-msgstr ""
+msgstr "Όνομα αρχείου:"
 
 #: src/importdialog.ui:34
 msgid "Select..."
-msgstr ""
+msgstr "Επιλογή..."
 
 #: src/importdialog.ui:45
 msgid "Format:"
-msgstr ""
+msgstr "Μορφή:"
 
 #: src/importdialog.ui:53
 msgid "Automatically detect from extension"
-msgstr ""
+msgstr "Αυτόματη αναγνώριση με βάση την κατάληξη"
 
 #: src/importdialog.ui:63
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Διατήρηση δεσμού"
 
 #: src/importdialog.ui:73
 msgid "Perceive bond orders"
@@ -625,23 +631,23 @@ msgstr ""
 
 #: src/mainwindow.ui:32
 msgid "&Help"
-msgstr "&مساعدة"
+msgstr "&Βοήθεια"
 
 #: src/mainwindow.ui:46
 msgid "&File"
-msgstr "&ملف"
+msgstr "&Αρχείο"
 
 #: src/mainwindow.ui:50
 msgid "Open &Recent"
-msgstr ""
+msgstr "Άνοιγμα πρόσ&φατου"
 
 #: src/mainwindow.ui:55
 msgid "Export"
-msgstr "صدِّر"
+msgstr "Εξαγωγή"
 
 #: src/mainwindow.ui:62
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: src/mainwindow.ui:81
 msgid "Se&ttings"
@@ -649,19 +655,19 @@ msgstr ""
 
 #: src/mainwindow.ui:85
 msgid "Toolbars"
-msgstr ""
+msgstr "Γραμμές εργαλείων"
 
 #: src/mainwindow.ui:94
 msgid "&Build"
-msgstr ""
+msgstr "&Κατασκευή"
 
 #: src/mainwindow.ui:99
 msgid "&View"
-msgstr "&اعرض"
+msgstr "Π&ροβολή"
 
 #: src/mainwindow.ui:120
 msgid "&Edit"
-msgstr ""
+msgstr "&Επεξεργασία"
 
 #: src/mainwindow.ui:133
 msgid "E&xtensions"
@@ -669,11 +675,11 @@ msgstr ""
 
 #: src/mainwindow.ui:138
 msgid "&Select"
-msgstr ""
+msgstr "&Επιλογή"
 
 #: src/mainwindow.ui:155
 msgid "Main Toolbar"
-msgstr "شريط الأدوات الرئيسي"
+msgstr "Κύρια γραμμή εργαλείων"
 
 #: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
@@ -685,11 +691,11 @@ msgstr ""
 
 #: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
-msgstr "أدوات"
+msgstr "Εργαλεία"
 
 #: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
-msgstr "&افتح"
+msgstr "&Άνοιγμα"
 
 #: src/mainwindow.ui:258
 msgid "Ctrl+O"
@@ -697,7 +703,7 @@ msgstr ""
 
 #: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
-msgstr ""
+msgstr "Έ&ξοδος"
 
 #: src/mainwindow.ui:279
 msgid "Ctrl+Q"
@@ -705,7 +711,7 @@ msgstr ""
 
 #: src/mainwindow.ui:293
 msgid "Recent"
-msgstr ""
+msgstr "Πρόσφατο"
 
 #: src/mainwindow.ui:298
 msgid "&Clear Recent"
@@ -713,7 +719,7 @@ msgstr ""
 
 #: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
-msgstr "&جديد"
+msgstr "&Νέο"
 
 #: src/mainwindow.ui:310
 msgid "Ctrl+N"
@@ -721,7 +727,7 @@ msgstr ""
 
 #: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
-msgstr "&أغلق"
+msgstr "&Κλείσιμο"
 
 #: src/mainwindow.ui:331
 msgid "Ctrl+W"
@@ -729,7 +735,7 @@ msgstr ""
 
 #: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
-msgstr "&حفظ"
+msgstr "&Αποθήκευση"
 
 #: src/mainwindow.ui:352
 msgid "Ctrl+S"
@@ -737,7 +743,7 @@ msgstr ""
 
 #: src/mainwindow.ui:370
 msgid "Save &As..."
-msgstr "احفظ &كــ ..."
+msgstr "Αποθήκευση &ως..."
 
 #: src/mainwindow.ui:373
 msgid "Ctrl+Shift+S"
@@ -745,111 +751,111 @@ msgstr ""
 
 #: src/mainwindow.ui:382
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Επαναφορά στο αποθηκευμένο"
 
 #: src/mainwindow.ui:391
 msgid "&Graphics..."
-msgstr ""
+msgstr "&Γραφικά..."
 
 #: src/mainwindow.ui:400
 msgid "&Full Screen Mode"
-msgstr ""
+msgstr "&Λειτουργία πλήρους οθόνης"
 
 #: src/mainwindow.ui:403
 msgid "Esc"
-msgstr ""
+msgstr "Esc"
 
 #: src/mainwindow.ui:412
 msgid "Set &Background Color..."
-msgstr ""
+msgstr "Ορισμός χρώματος &φόντου..."
 
 #: src/mainwindow.ui:417
 msgid "&About"
-msgstr "&عن"
+msgstr "&Σχετικά"
 
 #: src/mainwindow.ui:426
 msgid "&Undo"
-msgstr "&تراجع"
+msgstr "Α&ναίρεση"
 
 #: src/mainwindow.ui:429
 msgid "Ctrl+Z"
-msgstr "Ctrl+Z"
+msgstr ""
 
 #: src/mainwindow.ui:438
 msgid "&Redo"
-msgstr "&كرّر"
+msgstr "Επανα&φορά"
 
 #: src/mainwindow.ui:441
 msgid "Ctrl+Shift+Z"
-msgstr "Ctrl+Shift+Z"
+msgstr ""
 
 #: src/mainwindow.ui:450
 msgid "New View"
-msgstr ""
+msgstr "Νέα Όψη"
 
 #: src/mainwindow.ui:462
 msgid "Close View"
-msgstr ""
+msgstr "Κλείσιμο προβολής"
 
 #: src/mainwindow.ui:471
 msgid "Center"
-msgstr ""
+msgstr "Κέντρο"
 
 #: src/mainwindow.ui:480
 msgid "&Paste"
-msgstr "&لصق"
+msgstr "Επι&κόλληση"
 
 #: src/mainwindow.ui:483
 msgid "Ctrl+V"
-msgstr "Ctrl+V"
+msgstr ""
 
 #: src/mainwindow.ui:492
 msgid "Copy"
-msgstr "انسخ"
+msgstr "Αντιγραφή"
 
 #: src/mainwindow.ui:495
 msgid "Ctrl+C"
-msgstr "Ctrl+C"
+msgstr ""
 
 #: src/mainwindow.ui:504
 msgid "Cut"
-msgstr "إقطع"
+msgstr "Αποκοπή"
 
 #: src/mainwindow.ui:507
 msgid "Ctrl+X"
-msgstr "Ctrl+X"
+msgstr ""
 
 #: src/mainwindow.ui:512
 msgid "Clear"
-msgstr "محو"
+msgstr "Καθαρισμός"
 
 #: src/mainwindow.ui:519
 msgid "Backspace"
-msgstr ""
+msgstr "Backspace"
 
 #: src/mainwindow.ui:524
 msgid "Select All"
-msgstr "اختر الكل"
+msgstr "Επιλογή όλων"
 
 #: src/mainwindow.ui:527
 msgid "Ctrl+A"
-msgstr "Ctrl+A"
+msgstr ""
 
 #: src/mainwindow.ui:532
 msgid "Select None"
-msgstr "إزالة التحديد"
+msgstr "Επιλογή κανενός"
 
 #: src/mainwindow.ui:535
 msgid "Ctrl+Shift+A"
-msgstr "Ctrl+Shift+A"
+msgstr ""
 
 #: src/mainwindow.ui:544
 msgid "Configure Avogadro..."
-msgstr ""
+msgstr "Ρύθμιση Avogadro.."
 
 #: src/mainwindow.ui:552
 msgid "Tutorials"
-msgstr ""
+msgstr "Οδηγοί"
 
 #: src/mainwindow.ui:557
 msgid "Duplicate View"
@@ -857,35 +863,35 @@ msgstr ""
 
 #: src/mainwindow.ui:569
 msgid "Display Axes"
-msgstr ""
+msgstr "Εμφάνιση αξόνων"
 
 #: src/mainwindow.ui:577
 msgid "Debug Information"
-msgstr ""
+msgstr "Πληροφορίες αποσφαλμάτωσης"
 
 #: src/mainwindow.ui:585
 msgid "Avogadro Help"
-msgstr ""
+msgstr "Βοήθεια Avogadro"
 
 #: src/mainwindow.ui:590
 msgid "Release Notes"
-msgstr ""
+msgstr "Σημειώσεις έκδοσης"
 
 #: src/mainwindow.ui:595
 msgid "Report a Bug"
-msgstr ""
+msgstr "Αναφορά σφάλματος"
 
 #: src/mainwindow.ui:600
 msgid "FAQ"
-msgstr "الأسئلة الشائعة"
+msgstr "Συχνές ερωτήσεις"
 
 #: src/mainwindow.ui:605
 msgid "Avogadro Website"
-msgstr ""
+msgstr "Ιστοσελίδα Avogadro"
 
 #: src/mainwindow.ui:610
 msgid "Plugin Manager..."
-msgstr ""
+msgstr "Διαχείριση Επιπρόσθετων..."
 
 #: src/mainwindow.ui:619
 msgid "Project Tree Editor..."
@@ -897,7 +903,7 @@ msgstr ""
 
 #: src/mainwindow.ui:637
 msgid "Molecule File..."
-msgstr ""
+msgstr "Αρχείο μορίων"
 
 #: src/mainwindow.ui:652
 msgid "Use Quick Render"
@@ -905,7 +911,7 @@ msgstr ""
 
 #: src/mainwindow.ui:657
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Διανυσματικά Γραφικά"
 
 #: src/mainwindow.ui:665
 msgid "Display Unit Cell Axes"
@@ -917,15 +923,15 @@ msgstr ""
 
 #: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
-msgstr ""
+msgstr "Πρόσθετα"
 
 #: src/pluginsettings.ui:33
 msgid "Extensions"
-msgstr ""
+msgstr "Επεκτάσεις"
 
 #: src/pluginsettings.ui:52
 msgid "Details"
-msgstr ""
+msgstr "Λεπτομέρειες"
 
 #: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
@@ -933,15 +939,15 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: src/projecttreeeditor.ui:48
 msgid "New Item"
-msgstr ""
+msgstr "Νέο αντικείμενο"
 
 #: src/projecttreeeditor.ui:51
 msgid "&New Item"
-msgstr ""
+msgstr "&Νέο αντικείμενο"
 
 #: src/projecttreeeditor.ui:62
 msgid "New Subitem"
@@ -949,15 +955,15 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:65
 msgid "New &Subitem"
-msgstr ""
+msgstr "Νέο &υπο-αντικείμνο"
 
 #: src/projecttreeeditor.ui:76
 msgid "Delete Item"
-msgstr ""
+msgstr "Διαγραφή αντικειμένου"
 
 #: src/projecttreeeditor.ui:79
 msgid "&Delete Item"
-msgstr ""
+msgstr "&Διαγραφή αντικειμένου"
 
 #: src/projecttreeeditor.ui:103
 msgid "Move Item Left (before Parent Item)"
@@ -977,7 +983,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:133
 msgid "Move Item Up"
-msgstr ""
+msgstr "Μετακίνηση αντικειμένου πάνω"
 
 #: src/projecttreeeditor.ui:136
 msgid "U"
@@ -985,7 +991,7 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:147
 msgid "Move Item Down"
-msgstr ""
+msgstr "Μετακίνηση αντικειμένου κάτω"
 
 #: src/projecttreeeditor.ui:150
 msgid "D"
@@ -993,19 +999,19 @@ msgstr ""
 
 #: src/projecttreeeditor.ui:187
 msgid "Alias"
-msgstr ""
+msgstr "Αντιστοιχία"
 
 #: src/projecttreeeditor.ui:217
 msgid "Settings..."
-msgstr "إعدادات..."
+msgstr "Ρυθμίσεις..."
 
 #: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
-msgstr ""
+msgstr "Γενικά"
 
 #: src/settingsdialog.ui:42
 msgid "Quality:"
-msgstr "الجودة:"
+msgstr "Ποιότητα:"
 
 #: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
@@ -1013,543 +1019,12 @@ msgstr ""
 
 #: src/settingsdialog.ui:100
 msgid "Fog:"
-msgstr ""
+msgstr "Ομίχλη"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,Nizar Kerkeni,TheLight,عبد الله شلي "
-"(Abdellah Chelli)"
+msgstr " ,Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd."
-"ox@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail.com,"
-"sneetsher@gmail.com,,,shelhatem@gmail.com,nizar.kerkeni@gmail.com,houd."
-"ox@gmail.com,sneetsher@gmail.com"
-
-#~ msgid "0/0"
-#~ msgstr "0/0"
-
-#~ msgid "fps"
-#~ msgstr "إطار في الثانية"
-
-#~ msgid "Align"
-#~ msgstr "حاذي"
-
-#~ msgid "Everything"
-#~ msgstr "كل شئ"
-
-#~ msgid "Align:"
-#~ msgstr "المحاذاة:"
-
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Algorithm:"
-#~ msgstr "الخوارزمية:"
-
-#~ msgid "Axes"
-#~ msgstr "المحاور"
-
-#~ msgid "Measure"
-#~ msgstr "قياس"
-
-#~ msgid "*3"
-#~ msgstr "3*"
-
-#~ msgid "*2"
-#~ msgstr "2*"
-
-#~ msgid "*1"
-#~ msgstr "1*"
-
-#~ msgid "*4"
-#~ msgstr "4*"
-
-#~ msgid "Element:"
-#~ msgstr "عنصر"
-
-#~ msgid "Draw"
-#~ msgstr "رسم"
-
-#~ msgid "Helium"
-#~ msgstr "هيليوم"
-
-#~ msgid "Lithium"
-#~ msgstr "ليثيوم"
-
-#~ msgid "Single"
-#~ msgstr "مفرد"
-
-#~ msgid "Double"
-#~ msgstr "مضاعف"
-
-#~ msgid "Triple"
-#~ msgstr "ثلاثي"
-
-#~ msgid "Beryllium"
-#~ msgstr "بريليوم"
-
-#~ msgid "Boron"
-#~ msgstr "بورون"
-
-#~ msgid "Nitrogen"
-#~ msgstr "نيتروجين"
-
-#~ msgid "Carbon"
-#~ msgstr "كربون"
-
-#~ msgid "Oxygen"
-#~ msgstr "أكسجين"
-
-#~ msgid "Sodium"
-#~ msgstr "صوديوم"
-
-#~ msgid "Neon"
-#~ msgstr "نيون"
-
-#~ msgid "Magnesium"
-#~ msgstr "منجنيزوم"
-
-#~ msgid "Aluminum"
-#~ msgstr "ألومنيوم"
-
-#~ msgid "Calcium"
-#~ msgstr "كالسيوم"
-
-#~ msgid "Scandium"
-#~ msgstr "سكانديوم"
-
-#~ msgid "Vanadium"
-#~ msgstr "فانيديوم"
-
-#~ msgid "Chlorine"
-#~ msgstr "كلور"
-
-#~ msgid "Argon"
-#~ msgstr "أرجون"
-
-#~ msgid "Potassium"
-#~ msgstr "بوتاسيوم"
-
-#~ msgid "Phosphorus"
-#~ msgstr "فوسفور"
-
-#~ msgid "Silicon"
-#~ msgstr "سليكون"
-
-#~ msgid "Titanium"
-#~ msgstr "تيتانيوم"
-
-#~ msgid "Chromium"
-#~ msgstr "كروم"
-
-#~ msgid "Copper"
-#~ msgstr "نحاس"
-
-#~ msgid "Nickel"
-#~ msgstr "نيكال"
-
-#~ msgid "Cobalt"
-#~ msgstr "كوبالت"
-
-#~ msgid "Iron"
-#~ msgstr "حديد"
-
-#~ msgid "Arsenic"
-#~ msgstr "زرنيخ"
-
-#~ msgid "Germanium"
-#~ msgstr "جرمانيوم"
-
-#~ msgid "Gallium"
-#~ msgstr "جاليوم"
-
-#~ msgid "Zinc"
-#~ msgstr "زنك"
-
-#~ msgid "Manganese"
-#~ msgstr "منجنيز"
-
-#~ msgid "Molybdenum"
-#~ msgstr "مولبيدن"
-
-#~ msgid "Technetium"
-#~ msgstr "تكنيتيوم"
-
-#~ msgid "Zirconium"
-#~ msgstr "زركونيوم"
-
-#~ msgid "Niobium"
-#~ msgstr "نيوبيوم"
-
-#~ msgid "Strontium"
-#~ msgstr "سترونتيوم"
-
-#~ msgid "Yttrium"
-#~ msgstr "يتريوم"
-
-#~ msgid "Krypton"
-#~ msgstr "كريبتون"
-
-#~ msgid "Rubidium"
-#~ msgstr "روبيديوم"
-
-#~ msgid "Bromine"
-#~ msgstr "بروم"
-
-#~ msgid "Selenium"
-#~ msgstr "سيلينيوم"
-
-#~ msgid "Ruthenium"
-#~ msgstr "ئروثينيوم"
-
-#~ msgid "Rhodium"
-#~ msgstr "روديوم"
-
-#~ msgid "Iodine"
-#~ msgstr "يود"
-
-#~ msgid "Tellurium"
-#~ msgstr "تيلوريوم"
-
-#~ msgid "Silver"
-#~ msgstr "فضة"
-
-#~ msgid "Palladium"
-#~ msgstr "بلاديوم"
-
-#~ msgid "Indium"
-#~ msgstr "إنديوم"
-
-#~ msgid "Cadmium"
-#~ msgstr "كاديوم"
-
-#~ msgid "Samarium"
-#~ msgstr "ساماريوم"
-
-#~ msgid "Barium"
-#~ msgstr "باريوم"
-
-#~ msgid "Lanthanum"
-#~ msgstr "لانثانوم"
-
-#~ msgid "Cerium"
-#~ msgstr "سيريوم"
-
-#~ msgid "Praseodymium"
-#~ msgstr "براسيوديميوم"
-
-#~ msgid "Neodymium"
-#~ msgstr "نيوديميوم"
-
-#~ msgid "Promethium"
-#~ msgstr "بروميثيوم"
-
-#~ msgid "Europium"
-#~ msgstr "يوروبيوم"
-
-#~ msgid "Xenon"
-#~ msgstr "إكزينون"
-
-#~ msgid "Gadolinium"
-#~ msgstr "جادولينيوم"
-
-#~ msgid "Terbium"
-#~ msgstr "تريبيوم"
-
-#~ msgid "Tantalum"
-#~ msgstr "تانتالم"
-
-#~ msgid "Hafnium"
-#~ msgstr "هفنيوم"
-
-#~ msgid "Lutetium"
-#~ msgstr "لوتيسيوم"
-
-#~ msgid "Ytterbium"
-#~ msgstr "يتربيوم"
-
-#~ msgid "Thulium"
-#~ msgstr "ثوليوم"
-
-#~ msgid "Erbium"
-#~ msgstr "إريبيوم"
-
-#~ msgid "Holmium"
-#~ msgstr "هولميوم"
-
-#~ msgid "Lead"
-#~ msgstr "رصاص"
-
-#~ msgid "Platinum"
-#~ msgstr "بلاتين"
-
-#~ msgid "Gold"
-#~ msgstr "ذهب"
-
-#~ msgid "Osmium"
-#~ msgstr "أوزميوم"
-
-#~ msgid "Iridium"
-#~ msgstr "إريديوم"
-
-#~ msgid "Rhenium"
-#~ msgstr "رينيوم"
-
-#~ msgid "Mercury"
-#~ msgstr "زئبق"
-
-#~ msgid "Thallium"
-#~ msgstr "ثاليوم"
-
-#~ msgid "Tungsten"
-#~ msgstr "تنجستن"
-
-#~ msgid "Bismuth"
-#~ msgstr "بزموث"
-
-#~ msgid "Polonium"
-#~ msgstr "بولونيوم"
-
-#~ msgid "Francium"
-#~ msgstr "فرانسيوم"
-
-#~ msgid "Radon"
-#~ msgstr "رادون"
-
-#~ msgid "Actinium"
-#~ msgstr "أكتينيوم"
-
-#~ msgid "Radium"
-#~ msgstr "راديوم"
-
-#~ msgid "Protactinium"
-#~ msgstr "بروتكتتينيوم"
-
-#~ msgid "Thorium"
-#~ msgstr "ثوريوم"
-
-#~ msgid "Neptunium"
-#~ msgstr "نبتونيوم"
-
-#~ msgid "Uranium"
-#~ msgstr "يورانيوم"
-
-#~ msgid "Berkelium"
-#~ msgstr "بركليوم"
-
-#~ msgid "Curium"
-#~ msgstr "كوريوم"
-
-#~ msgid "Einsteinium"
-#~ msgstr "أينشتانيوم"
-
-#~ msgid "Californium"
-#~ msgstr "كالفورنيوم"
-
-#~ msgid "Mendelevium"
-#~ msgstr "مندليفيوم"
-
-#~ msgid "Fermium"
-#~ msgstr "فرميوم"
-
-#~ msgid "Nobelium"
-#~ msgstr "نوبليوم"
-
-#~ msgid "Americium"
-#~ msgstr "أمريكيوم"
-
-#~ msgid "Plutonium"
-#~ msgstr "بولتونيوم"
-
-#~ msgid "Lawrencium"
-#~ msgstr "لورنسيوم"
-
-#~ msgid "Force"
-#~ msgstr "أوقف"
-
-#~ msgid "Delete"
-#~ msgstr "احذف"
-
-#~ msgid "Group Name"
-#~ msgstr "اسم المجموعة"
-
-#~ msgid "Polygon"
-#~ msgstr "مضلّع"
-
-#~ msgid "&Properties"
-#~ msgstr "&خصائص"
-
-#~ msgid "Ribbon"
-#~ msgstr "شريط"
-
-#~ msgid "&Invert Selection"
-#~ msgstr "&أعكس الإختيار"
-
-#~ msgid "name"
-#~ msgstr "اسم"
-
-#~ msgid "Stick"
-#~ msgstr "الصق"
-
-#~ msgid "Surface"
-#~ msgstr "السطح"
-
-#~ msgid "Disconnect"
-#~ msgstr "اقطع الاتصال"
-
-#~ msgid "Connect"
-#~ msgstr "اتصل"
-
-#~ msgid "Distance"
-#~ msgstr "المسافة"
-
-#~ msgid "Delete All"
-#~ msgstr "حذف الكل"
-
-#~ msgid "Delete Selected"
-#~ msgstr "احذف المنتقى"
-
-#~ msgid "Load"
-#~ msgstr "تحميل"
-
-#~ msgid "Algorithm"
-#~ msgstr "الخوارزمية"
-
-#~ msgid "Number of steps"
-#~ msgstr "عدد الخطوات"
-
-#~ msgid "Memory:"
-#~ msgstr "الذاكرة:"
-
-#~ msgid "Neutral"
-#~ msgstr "محايد"
-
-#~ msgid "Gas"
-#~ msgstr "غاز"
-
-#~ msgid "Advanced"
-#~ msgstr "متطور"
-
-#~ msgid "With:"
-#~ msgstr "مع :"
-
-#~ msgid "Water"
-#~ msgstr "ماء"
-
-#~ msgid "Control"
-#~ msgstr "تحكّم"
-
-#~ msgid "Basis"
-#~ msgstr "اﻷساس"
-
-#~ msgid "Misc"
-#~ msgstr "متفرقات"
-
-#~ msgid "Data"
-#~ msgstr "بيانات"
-
-#~ msgid "System"
-#~ msgstr "نظام"
-
-#~ msgid "Read"
-#~ msgstr "إقرأ"
-
-#~ msgid "MIDI"
-#~ msgstr "MIDI"
-
-#~ msgid "Check"
-#~ msgstr "فحص"
-
-#~ msgid "Debug"
-#~ msgstr "نقّح"
-
-#~ msgid "Units:"
-#~ msgstr "الواحدات:"
-
-#~ msgid "Hours"
-#~ msgstr "ساعات"
-
-#~ msgid "Minutes"
-#~ msgstr "دقائق"
-
-#~ msgid "Seconds"
-#~ msgstr "ثوان"
-
-#~ msgid "Bytes"
-#~ msgstr "بايت"
-
-#~ msgid "Words"
-#~ msgstr "الكلمات"
-
-#~ msgid "Years"
-#~ msgstr "سنوات"
-
-#~ msgid "Days"
-#~ msgstr "أيّام"
-
-#~ msgid "Weeks"
-#~ msgstr "أسابيع"
-
-#~ msgid "Next Value"
-#~ msgstr "القيمة التالية"
-
-#~ msgid "Skip"
-#~ msgstr "تخطّي"
-
-#~ msgid "All"
-#~ msgstr "الجميع"
-
-#~ msgid "Method:"
-#~ msgstr "المنهج:"
-
-#~ msgid "Grid"
-#~ msgstr "شبكة"
-
-#~ msgid "Analytic"
-#~ msgstr "تحليلي"
-
-#~ msgid "Numeric"
-#~ msgstr "رقمي"
-
-#~ msgid "Maximum:"
-#~ msgstr "الحد الأقصى:"
-
-#~ msgid "Minimum:"
-#~ msgstr "الحد الأدنى:"
-
-#~ msgid "Add Directory"
-#~ msgstr "إضافة مجلد"
-
-#~ msgid "Width:"
-#~ msgstr "العرض:"
-
-#~ msgid "°"
-#~ msgstr "°"
-
-#~ msgid "Element name"
-#~ msgstr "اسم العنصر"
-
-#~ msgid "Steps:"
-#~ msgstr "الخطوات:"
-
-#~ msgid "Positive"
-#~ msgstr "موجب"
-
-#~ msgid "Negative"
-#~ msgstr "سالب"
-
-#~ msgid "Animation"
-#~ msgstr "تأثيرات متحركة"
-
-#~ msgid "Cancel"
-#~ msgstr "إلغي"
-
-#~ msgid "Tool Settings"
-#~ msgstr "إعدادات الأداة"
+msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com"

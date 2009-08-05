@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
 "PO-Revision-Date: 2009-06-15 09:18+0000\n"
 "Last-Translator: Sander Deryckere <sanderd17@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,26 +24,24 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Applicatie versie: %2<br/><br/>Bibliotheek versie: "
-"%3<br/><br/>Voor meer informatie: kijk op de <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>Het programma is aangeboden ZOALS HET IS, ZONDER "
-"GARANTIE OP OM HET EVEN WELKE MANIER, INCULUSIEF DE GARRANTIE OP DISIGN, "
-"VERKOOPBAARHEID EN BRUIKBAARHEID VOOR EEN BEPAALD DOEL.<br/> Dit is slechts "
-"een vertaling van de engelse versie, de correcte tekst is in het engels "
-"opgesteld.<br/>"
+"<h3>%1</h3><br/><br/>Applicatie versie: %2<br/><br/>Bibliotheek versie: %"
+"3<br/><br/>Voor meer informatie: kijk op de <a href=\"http://avogadro."
+"openmolecules.net/\">Avogadro homepage</a>.<br/><br/>Het programma is "
+"aangeboden ZOALS HET IS, ZONDER GARANTIE OP OM HET EVEN WELKE MANIER, "
+"INCULUSIEF DE GARRANTIE OP DISIGN, VERKOOPBAARHEID EN BRUIKBAARHEID VOOR EEN "
+"BEPAALD DOEL.<br/> Dit is slechts een vertaling van de engelse versie, de "
+"correcte tekst is in het engels opgesteld.<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -67,14 +65,13 @@ msgstr "Molecule wissen"
 msgid "Clear Atoms"
 msgstr "Atomen wissen"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Bestand openen"
 
@@ -98,109 +95,114 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr "Breng alles naar de voorgrond"
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr "&Tool instellingen..."
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr "&Display instellingen"
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "Veelvoorkomende moleculeformaten."
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr "Computational Chemistry Output"
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr "Crystallographic Interchange CIF"
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr "GAMESS-US Output"
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr "Gaussiaanse 98/03 Output"
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Gaussian Formatted Checkpoint"
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr "NWChem Output"
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Laden %1..."
 
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr "%1aan het laden..."
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr "Lezen van de molecule gefaald, bestand %1"
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Molecule bestand aan het lezen, eventjes geduld..."
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr "Dit bestand bevat geen 3D coördinaten"
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Wil je dat Avogadro een ruwe geometrie bouwt?"
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -208,207 +210,202 @@ msgstr ""
 "Dit bestand bevat geen 3D coördinaten.\n"
 "Het kan gebeuren dat het niet kan bewerken of bekijken."
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr "Selecteer de te bekijken molecule"
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr "Molecule Titel"
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Atomen: "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Bindingen: "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr "Lezen van de molecule gefaald, bestand %1"
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr "Bestand Geladen..."
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Wil je de wijzigingen van dit document opslaan?"
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr "Jou veranderingen gaan verloren als je ze niet opslaat."
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr "Opslaan..."
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr "GAMESS Input"
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussiaanse Cartesische Input"
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussiaanse Z-matrix Input"
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr "MDL SDbestand"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr "NWChem Input"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr "Molecule opslaan als"
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr "Veelvoorkomende afbeeldingformaten."
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr "Bitmap Graphics exporteren"
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Kan het bestand %1 niet opslaan."
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr "Algemene Vector Afbeeldingen"
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr "Untitled %1"
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr "Kan de molecule niet plakken."
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr "Plakken mislukt (formaat niet beschikbaar)."
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopieren mislukt (mdl niet beschikbaar)."
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr "%1 weergeven"
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Bekijk %1"
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Losstaand Zicht"
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr "Normale grootte"
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "Volledig scherm"
 
-#: src/mainwindow.cpp:2228
+#: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "naamloos"
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr "Dupliceren"
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr "Geen hulpmiddelen of engines geladen."
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr "Geen engines geladen."
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr "Geen hulpmiddelen geladen."
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -416,16 +413,15 @@ msgstr ""
 " dit programma zal waarschijnlijk niet correct werken. Corrigeer a.u.b. de "
 "fout."
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Objecten"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr "Kleuren"
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr " kopieren"
 
@@ -496,8 +492,7 @@ msgstr "FOUT"
 msgid "only labels can have sub items"
 msgstr "Enkel labels kunnen sub items hebben"
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr "Item"
 
@@ -510,8 +505,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Laag"
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Medium"
@@ -526,8 +520,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Ongedefinieerd"
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Geen"
@@ -591,18 +584,15 @@ msgstr "Vorm"
 msgid "Color by:"
 msgstr "Kleur per"
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Voeg Geselecteerde Primitieven toe"
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Verwijder Geselecteerde Primitieven"
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Voeg Alle Primitieven Toe"
 
@@ -698,23 +688,19 @@ msgstr "&Selecteer"
 msgid "Main Toolbar"
 msgstr "Hoofdwerkbalk"
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Projectboom"
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Display Types"
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Werktuigen"
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Openen"
 
@@ -722,8 +708,7 @@ msgstr "&Openen"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Quit"
 
@@ -739,8 +724,7 @@ msgstr "Recente Bestanden"
 msgid "&Clear Recent"
 msgstr "Verwijder Re&cente Bestanden"
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr "&Nieuw"
 
@@ -748,8 +732,7 @@ msgstr "&Nieuw"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr "Sluiten"
 
@@ -757,8 +740,7 @@ msgstr "Sluiten"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr "Op&slaan"
 
@@ -946,8 +928,7 @@ msgstr "Toon Celeenheid Assen"
 msgid "All Molecules in File..."
 msgstr "Alle Molecules in Bestand..."
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -959,13 +940,11 @@ msgstr "Extensies"
 msgid "Details"
 msgstr "Details"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Boom Items"
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Type"
 
@@ -1033,8 +1012,7 @@ msgstr "Alias"
 msgid "Settings..."
 msgstr "Instellingen..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr "Algemeen"
 
@@ -1042,8 +1020,7 @@ msgstr "Algemeen"
 msgid "Quality:"
 msgstr "Kwaliteit:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Zet de algemene weergave kwaliteit"
 
@@ -1054,18 +1031,17 @@ msgstr "Mist:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, "
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, "
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby"
+",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, ,"
+"Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, ,"
+"Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,kristo"
-"f.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,kristof.bal@gm"
-"ail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,"
+",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,"
+"kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,kristof."
+"bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1073,58 +1049,11 @@ msgstr ""
 #~ "Kan het bestand %1 niet lezen:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Kan het bestandsformaat van het bestand %1 niet lezen."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Kan het bestand %1 niet lezen."
-
-#~ msgid "Navigate"
-#~ msgstr "Navigeren"
-
-#, qt-format
-#~ msgid "Cannot write to file format of file %1."
-#~ msgstr "Kan niet naar het bestandsformaat van het bestand %1 schrijven."
-
-#, qt-format
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Kan niet naar het bestand %1 schrijven:\n"
-#~ "%2"
-
-#, qt-format
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Kan niet naar het bestand %1 schrijven."
-
-#~ msgid "Saving file."
-#~ msgstr "Bezig met opslaan."
-
-#~ msgid "Save succeeded."
-#~ msgstr "Opslagen."
-
-#~ msgid "Set Aspect Ratio"
-#~ msgstr "Aspectverhouding instellen"
-
-#~ msgid ""
-#~ "The document has been modified.\n"
-#~ "Do you want to save your changes?"
-#~ msgstr ""
-#~ "Het document is gewijzigd.\n"
-#~ "Wilt u uw wijzigingen opslaan?"
-
-#~ msgid "Manipulate"
-#~ msgstr "Aanpassen"
-
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
-
-#, qt-format
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
 
 #~ msgid "Hydrogen"
 #~ msgstr "Waterstof"
@@ -1234,8 +1163,49 @@ msgstr ""
 #~ msgid "Krypton"
 #~ msgstr "Krypton"
 
-#~ msgid "Rubidium"
-#~ msgstr "Rubidium"
+#~ msgid "Navigate"
+#~ msgstr "Navigeren"
+
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Kan niet naar het bestand %1 schrijven:\n"
+#~ "%2"
+
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "Kan niet naar het bestandsformaat van het bestand %1 schrijven."
+
+#~ msgid "Saving file."
+#~ msgstr "Bezig met opslaan."
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Kan niet naar het bestand %1 schrijven."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Opslagen."
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Het document is gewijzigd.\n"
+#~ "Wilt u uw wijzigingen opslaan?"
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Aspectverhouding instellen"
+
+#~ msgid "Manipulate"
+#~ msgstr "Aanpassen"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zirkonium"
 
 #~ msgid "Strontium"
 #~ msgstr "Strontium"
@@ -1243,11 +1213,8 @@ msgstr ""
 #~ msgid "Yttrium"
 #~ msgstr "Yttrium"
 
-#~ msgid "Zirconium"
-#~ msgstr "Zirkonium"
-
-#~ msgid "Niobium"
-#~ msgstr "Niobium"
+#~ msgid "Rubidium"
+#~ msgstr "Rubidium"
 
 #~ msgid "Molybdenum"
 #~ msgstr "Molybdeen"
@@ -1255,41 +1222,41 @@ msgstr ""
 #~ msgid "Technetium"
 #~ msgstr "Technetium"
 
+#~ msgid "Niobium"
+#~ msgstr "Niobium"
+
 #~ msgid "Ruthenium"
 #~ msgstr "Ruthenium"
 
 #~ msgid "Rhodium"
 #~ msgstr "Rhodium"
 
-#~ msgid "Palladium"
-#~ msgstr "Palladium"
-
 #~ msgid "Silver"
 #~ msgstr "Zilver"
 
-#~ msgid "Cadmium"
-#~ msgstr "Cadmium"
-
-#~ msgid "Indium"
-#~ msgstr "Indium"
-
-#~ msgid "Tin"
-#~ msgstr "Tin"
+#~ msgid "Palladium"
+#~ msgstr "Palladium"
 
 #~ msgid "Antimony"
 #~ msgstr "Antimoon"
 
-#~ msgid "Tellurium"
-#~ msgstr "Telluur"
+#~ msgid "Tin"
+#~ msgstr "Tin"
 
 #~ msgid "Iodine"
 #~ msgstr "Jood"
 
+#~ msgid "Indium"
+#~ msgstr "Indium"
+
+#~ msgid "Cadmium"
+#~ msgstr "Cadmium"
+
 #~ msgid "Xenon"
 #~ msgstr "Xenon"
 
-#~ msgid "Caesium"
-#~ msgstr "Cesium"
+#~ msgid "Tellurium"
+#~ msgstr "Telluur"
 
 #~ msgid "Barium"
 #~ msgstr "Barium"
@@ -1309,6 +1276,9 @@ msgstr ""
 #~ msgid "Promethium"
 #~ msgstr "Promethium"
 
+#~ msgid "Caesium"
+#~ msgstr "Cesium"
+
 #~ msgid "Samarium"
 #~ msgstr "Samarium"
 
@@ -1321,47 +1291,47 @@ msgstr ""
 #~ msgid "Terbium"
 #~ msgstr "Terbium"
 
-#~ msgid "Dysprosium"
-#~ msgstr "Dysprosium"
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
 
 #~ msgid "Holmium"
 #~ msgstr "Holmium"
 
-#~ msgid "Erbium"
-#~ msgstr "Erbium"
-
-#~ msgid "Thulium"
-#~ msgstr "Thulium"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Ytterbium"
-
-#~ msgid "Lutetium"
-#~ msgstr "Lutetium"
-
-#~ msgid "Hafnium"
-#~ msgstr "Hafnium"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tantaal"
-
-#~ msgid "Tungsten"
-#~ msgstr "Wolfraam"
+#~ msgid "Dysprosium"
+#~ msgstr "Dysprosium"
 
 #~ msgid "Rhenium"
 #~ msgstr "Renium"
 
-#~ msgid "Osmium"
-#~ msgstr "Osmium"
+#~ msgid "Tungsten"
+#~ msgstr "Wolfraam"
 
-#~ msgid "Iridium"
-#~ msgstr "Iridium"
+#~ msgid "Tantalum"
+#~ msgstr "Tantaal"
+
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutetium"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Ytterbium"
+
+#~ msgid "Thulium"
+#~ msgstr "Thulium"
 
 #~ msgid "Platinum"
 #~ msgstr "Platina"
 
 #~ msgid "Gold"
 #~ msgstr "Goud"
+
+#~ msgid "Osmium"
+#~ msgstr "Osmium"
+
+#~ msgid "Iridium"
+#~ msgstr "Iridium"
 
 #~ msgid "Mercury"
 #~ msgstr "Kwik"
@@ -1372,38 +1342,38 @@ msgstr ""
 #~ msgid "Lead"
 #~ msgstr "Lood"
 
-#~ msgid "Bismuth"
-#~ msgstr "Bismut"
-
 #~ msgid "Polonium"
 #~ msgstr "Polonium"
 
 #~ msgid "Astatine"
 #~ msgstr "Astaat"
 
-#~ msgid "Radon"
-#~ msgstr "Radon"
+#~ msgid "Bismuth"
+#~ msgstr "Bismut"
 
 #~ msgid "Francium"
 #~ msgstr "Francium"
 
-#~ msgid "Radium"
-#~ msgstr "Radium"
+#~ msgid "Radon"
+#~ msgstr "Radon"
 
 #~ msgid "Actinium"
 #~ msgstr "Actinium"
 
+#~ msgid "Radium"
+#~ msgstr "Radium"
+
+#~ msgid "Curium"
+#~ msgstr "Curium"
+
 #~ msgid "Thorium"
 #~ msgstr "Thorium"
 
-#~ msgid "Protactinium"
-#~ msgstr "Protactinium"
+#~ msgid "Neptunium"
+#~ msgstr "Neptunium"
 
 #~ msgid "Uranium"
 #~ msgstr "Uraan"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptunium"
 
 #~ msgid "Plutonium"
 #~ msgstr "Plutonium"
@@ -1411,20 +1381,11 @@ msgstr ""
 #~ msgid "Americium"
 #~ msgstr "Americium"
 
-#~ msgid "Curium"
-#~ msgstr "Curium"
-
 #~ msgid "Berkelium"
 #~ msgstr "Berkelium"
 
-#~ msgid "Californium"
-#~ msgstr "Californium"
-
 #~ msgid "Einsteinium"
 #~ msgstr "Einsteinium"
-
-#~ msgid "Fermium"
-#~ msgstr "Fermium"
 
 #~ msgid "Mendelevium"
 #~ msgstr "Mendelevium"
@@ -1432,20 +1393,17 @@ msgstr ""
 #~ msgid "Nobelium"
 #~ msgstr "Nobelium"
 
+#~ msgid "Protactinium"
+#~ msgstr "Protactinium"
+
+#~ msgid "Californium"
+#~ msgstr "Californium"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermium"
+
 #~ msgid "Lawrencium"
 #~ msgstr "Lawrencium"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfordium"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dubnium"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborgium"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bohrium"
 
 #~ msgid "Hassium"
 #~ msgstr "Hassium"
@@ -1453,11 +1411,17 @@ msgstr ""
 #~ msgid "Meitnerium"
 #~ msgstr "Meitnerium"
 
-#~ msgid "Darmstadtium"
-#~ msgstr "Darmstadtium"
+#~ msgid "Bohrium"
+#~ msgstr "Bohrium"
 
-#~ msgid "Roentgenium"
-#~ msgstr "Roentgenium"
+#~ msgid "Dubnium"
+#~ msgstr "Dubnium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgium"
 
 #~ msgid "Ununbium"
 #~ msgstr "Ununbium"
@@ -1465,34 +1429,53 @@ msgstr ""
 #~ msgid "Ununtrium"
 #~ msgstr "Ununtrium"
 
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstadtium"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Roentgenium"
+
 #~ msgid "Ununquadium"
 #~ msgstr "Ununquadium"
+
+#~ msgid "Add Directory"
+#~ msgstr "Map toevoegen"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "beta:"
+#~ msgstr "beta"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "alpha:"
+#~ msgstr "alfa:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "Radius"
+#~ msgstr "Straal"
 
 #~ msgid "Ununpentium"
 #~ msgstr "Ununpentium"
 
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
+#~ msgid "Unknown"
+#~ msgstr "Onbekend"
 
 #~ msgid "Ununseptium"
 #~ msgstr "Ununseptium"
 
-#~ msgid "Ununoctium"
-#~ msgstr ""
-#~ "Copy text \n"
-#~ "  Ununoctium"
-
-#~ msgid "Unknown"
-#~ msgstr "Onbekend"
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
 
 #~ msgid "Axes"
 #~ msgstr "Assen"
-
-#~ msgid "Ball and Stick"
-#~ msgstr "Bal en staaf"
-
-#~ msgid "Dipole"
-#~ msgstr "Dipolair"
 
 #~ msgid "Force"
 #~ msgstr "Kracht"
@@ -1503,6 +1486,12 @@ msgstr ""
 #~ msgid "Hydrogen Bond"
 #~ msgstr "Waterstofbrug"
 
+#~ msgid "Dipole"
+#~ msgstr "Dipolair"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Bal en staaf"
+
 #~ msgid "Orbitals"
 #~ msgstr "Orbitalen"
 
@@ -1512,31 +1501,29 @@ msgstr ""
 #~ msgid "Ring"
 #~ msgstr "Ring"
 
-#~ msgid "Open trajectory file"
-#~ msgstr "Open baanbestand"
+#~ msgid "Load File..."
+#~ msgstr "Bestand laden..."
 
-#, qt-format
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Animation..."
-#~ msgstr "Animatie..."
-
-#, qt-format
-#~ msgid "Read trajectory file %1 failed."
-#~ msgstr "Lezen baanbestand %1 mislukt."
-
-#~ msgid "Axis:"
-#~ msgstr "As:"
-
-#~ msgid "Align:"
-#~ msgstr "Uitlijning:"
+#~ msgid "fps"
+#~ msgstr "fps"
 
 #~ msgid "Everything"
 #~ msgstr "Alles"
 
+#~ msgid "Align:"
+#~ msgstr "Uitlijning:"
+
 #~ msgid "Align"
 #~ msgstr "Uitlijnen"
+
+#~ msgid "Axis:"
+#~ msgstr "As:"
+
+#~ msgid "Animation..."
+#~ msgstr "Animatie..."
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
 
 #~ msgid "Force Field:"
 #~ msgstr "Krachtveld"
@@ -1544,38 +1531,44 @@ msgstr ""
 #~ msgid "Algorithm:"
 #~ msgstr "Algoritme"
 
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Moleculaire Dynamica (900K)"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Gereedschap voor Automatische Rotatie"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Genegeerde atomen zijn beweegbaar"
+
 #~ msgid "Molecular Dynamics (300K)"
 #~ msgstr "Moleculaire Dynamica (300K)"
 
 #~ msgid "Molecular Dynamics (600K)"
 #~ msgstr "Moleculaire Dynamica (600K)"
 
-#~ msgid "Molecular Dynamics (900K)"
-#~ msgstr "Moleculaire Dynamica (900K)"
-
-#~ msgid "Ignored atoms are movable"
-#~ msgstr "Genegeerde atomen zijn beweegbaar"
-
-#~ msgid "Auto Rotation Tool"
-#~ msgstr "Gereedschap voor Automatische Rotatie"
+#~ msgid "z rotation"
+#~ msgstr "z-rotatie"
 
 #~ msgid "x rotation:"
 #~ msgstr "x-rotatie:"
 
-#~ msgid "x rotation"
-#~ msgstr "x-rotatie"
-
 #~ msgid "y rotation:"
 #~ msgstr "y-rotatie:"
 
-#~ msgid "y rotation"
-#~ msgstr "y-rotatie"
+#~ msgid "x rotation"
+#~ msgstr "x-rotatie"
 
 #~ msgid "z rotation:"
 #~ msgstr "z-rotatie:"
 
-#~ msgid "z rotation"
-#~ msgstr "z-rotatie"
+#~ msgid "y rotation"
+#~ msgstr "y-rotatie"
+
+#~ msgid " Show Angles"
+#~ msgstr " Toon hoeken"
 
 #~ msgid ""
 #~ "Bond Centric Manipulation Tool\n"
@@ -1596,81 +1589,41 @@ msgstr ""
 #~ "\n"
 #~ "Klik met linkermuisknop op een binding om het manipulatievlak in te "
 #~ "stellen:\n"
-#~ "-Klik en versleep met linkermuisknop een van de atomen in de binding om de "
-#~ "hoek te wijzigen\n"
-#~ "-Klik en versleep met rechtermuisknop een van de atomen in de binding om te "
-#~ "lengte te wijzigen"
+#~ "-Klik en versleep met linkermuisknop een van de atomen in de binding om "
+#~ "de hoek te wijzigen\n"
+#~ "-Klik en versleep met rechtermuisknop een van de atomen in de binding om "
+#~ "te lengte te wijzigen"
 
-#~ msgid " Show Angles"
-#~ msgstr " Toon hoeken"
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Afstand (1->2): %1 %2"
-
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Afstand (2->3): %1 %2"
 
-#, qt-format
-#~ msgid "Angle: %1 %2"
-#~ msgstr "Hoek: %1 %2"
-
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Afstand (3->4): %1 %2"
 
-#, qt-format
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Hoek: %1 %2"
+
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Afstand (1->2): %1 %2"
+
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Dihedrale Hoek: %1 %2"
-
-#~ msgid "Medium"
-#~ msgstr "Medium"
-
-#~ msgid "None"
-#~ msgstr "Geen"
 
 #~ msgid "Animate Trajectory"
 #~ msgstr "Animeer Baan"
 
-#~ msgid "Load File..."
-#~ msgstr "Bestand laden..."
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Lezen baanbestand %1 mislukt."
 
-#~ msgid "0/0"
-#~ msgstr "0/0"
+#~ msgid "Open trajectory file"
+#~ msgstr "Open baanbestand"
 
-#~ msgid "fps"
-#~ msgstr "fps"
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Avogadro moet herstart worden om de veranderingen door te voeren."
 
-#~ msgid "Radius"
-#~ msgstr "Straal"
-
-#~ msgid "A:"
-#~ msgstr "A:"
-
-#~ msgid "alpha:"
-#~ msgstr "alfa:"
-
-#~ msgid "B:"
-#~ msgstr "B:"
-
-#~ msgid "beta:"
-#~ msgstr "beta"
-
-#~ msgid "C:"
-#~ msgstr "C:"
-
-#~ msgid "gamma:"
-#~ msgstr "gamma:"
-
-#~ msgid "Add Directory"
-#~ msgstr "Map toevoegen"
-
-#~ msgid "Engines"
-#~ msgstr "Engines"
-
-#~ msgid "tree"
-#~ msgstr "boom"
+#~ msgid "Medium"
+#~ msgstr "Medium"
 
 #~ msgid "Low"
 #~ msgstr "Laag"
@@ -1681,41 +1634,51 @@ msgstr ""
 #~ msgid "Undefined"
 #~ msgstr "Ongedefinieerd"
 
-#~ msgid "Some"
-#~ msgstr "Enkele"
-
-#~ msgid "Mid"
-#~ msgstr "Mid"
-
-#~ msgid "Lots"
-#~ msgstr "Veel"
-
-#~ msgid "Color by Element"
-#~ msgstr "Kleur door element"
-
-#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-#~ msgstr "Kleur door element (Koolstof = grijs, zoorstof = rood, ...)."
-
-#~ msgid "Color by Index"
-#~ msgstr "Kleur door index"
-
-#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-#~ msgstr "Kleur door idex (rood, oranje, geel, groen, blauw, violet)."
-
-#~ msgid ""
-#~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr "Avogadro moet herstart worden om de veranderingen door te voeren."
+#~ msgid "tree"
+#~ msgstr "boom"
 
 #~ msgid "Color by atomic partial charge (blue = positive, red = negative."
 #~ msgstr ""
 #~ "Kleur door atomische gedeeltelijke lading (blauw = positief, rood = "
 #~ "nagatief)."
 
-#~ msgid "Color by Distance"
-#~ msgstr "Kleur door afstand"
-
 #~ msgid "Color by distance from the first atom."
 #~ msgstr "Kleur door afstand van het eerste atoom"
 
+#~ msgid "Color by Distance"
+#~ msgstr "Kleur door afstand"
+
+#~ msgid "Mid"
+#~ msgstr "Mid"
+
+#~ msgid "Color by Element"
+#~ msgstr "Kleur door element"
+
+#~ msgid "Lots"
+#~ msgstr "Veel"
+
+#~ msgid "None"
+#~ msgstr "Geen"
+
+#~ msgid "Some"
+#~ msgstr "Enkele"
+
 #~ msgid "Cartoon"
 #~ msgstr "Cartoon"
+
+#~ msgid "Color by Index"
+#~ msgstr "Kleur door index"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Kleur door element (Koolstof = grijs, zoorstof = rood, ...)."
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "Kleur door idex (rood, oranje, geel, groen, blauw, violet)."
+
+#~ msgid "Engines"
+#~ msgstr "Engines"
+
+#~ msgid "Ununoctium"
+#~ msgstr ""
+#~ "Copy text \n"
+#~ "  Ununoctium"

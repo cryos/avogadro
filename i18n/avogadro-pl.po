@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
-"PO-Revision-Date: 2009-06-12 02:24+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
+"PO-Revision-Date: 2009-07-31 09:10+0000\n"
+"Last-Translator: Paweł Madej <nysander@quanteam.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,18 +24,17 @@ msgstr ""
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr ""
 
@@ -49,7 +48,7 @@ msgstr ""
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr ""
+msgstr "Wklej"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
@@ -59,14 +58,13 @@ msgstr ""
 msgid "Clear Atoms"
 msgstr ""
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Otwórz Plik"
 
@@ -80,7 +78,7 @@ msgstr ""
 
 #: src/mainwindow.cpp:353
 msgid "&Minimize"
-msgstr ""
+msgstr "&Minimalizuj"
 
 #: src/mainwindow.cpp:354
 msgid "Ctrl+M"
@@ -90,330 +88,329 @@ msgstr ""
 msgid "&Zoom"
 msgstr ""
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr ""
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr ""
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "Częste formaty molekuł"
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr ""
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr ""
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr ""
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr ""
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr ""
 
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr ""
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr ""
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr ""
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Atomy: "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Wiązania: "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr ""
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr "Plik załadowany..."
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr ""
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr ""
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr ""
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr ""
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr "Plik MDL SD"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr "Zapisz cząsteczkę jako"
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr ""
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr ""
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr ""
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr ""
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr ""
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr "Zwykły rozmiar"
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "Tryb pełnoekranowy"
 
-#: src/mainwindow.cpp:2228
+#: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
 msgstr ""
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr ""
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr ""
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr ""
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr "Duplikuj"
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Obiekty"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr ""
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr " kopiuj"
 
@@ -484,8 +481,7 @@ msgstr ""
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr ""
 
@@ -498,8 +494,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -514,8 +509,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -577,18 +571,15 @@ msgstr ""
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -684,23 +675,19 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr ""
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr ""
 
@@ -708,8 +695,7 @@ msgstr ""
 msgid "Ctrl+O"
 msgstr ""
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr ""
 
@@ -725,8 +711,7 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr ""
 
@@ -734,8 +719,7 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr ""
 
@@ -743,8 +727,7 @@ msgstr ""
 msgid "Ctrl+W"
 msgstr ""
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr ""
 
@@ -932,8 +915,7 @@ msgstr ""
 msgid "All Molecules in File..."
 msgstr ""
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr ""
 
@@ -945,13 +927,11 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1019,8 +999,7 @@ msgstr ""
 msgid "Settings..."
 msgstr "Ustawienia..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
@@ -1028,8 +1007,7 @@ msgstr ""
 msgid "Quality:"
 msgstr "Jakość:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr ""
 
@@ -1041,43 +1019,151 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Roman "
-"Skrzypiński, ,Launchpad Contributions:,Andrzej MoST (Marcin "
-"Ostajewski),Avogadro Team,Roman Skrzypiński, ,Launchpad "
-"Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro Team,Roman "
-"Skrzypiński"
+"Skrzypiński, ,Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),"
+"Avogadro Team,Roman Skrzypiński, ,Launchpad Contributions:,Andrzej MoST "
+"(Marcin Ostajewski),Avogadro Team,Paweł Madej,Roman Skrzypiński"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,romano473@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,romano473@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,romano473@gmail.com"
+",,,romano473@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
+"romano473@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
+"nysander@quanteam.pl,romano473@gmail.com"
 
-#, qt-format
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Nie mogę zapisać pliku %1."
+#~ msgid "Load File..."
+#~ msgstr "Wczytaj plik..."
 
-#~ msgid "Saving file."
-#~ msgstr "Zapis pliku."
+#~ msgid "Animate Trajectory"
+#~ msgstr "Animuj trajektorię"
 
-#~ msgid "Save succeeded."
-#~ msgstr "Zapis zakończony powodzeniem."
+#~ msgid "Open trajectory file"
+#~ msgstr "Otwórz plik trajektorii"
 
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
+#~ msgid "Align"
+#~ msgstr "Wyrównaj"
 
-#, qt-format
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
+#~ msgid "Everything"
+#~ msgstr "Wszystko"
 
-#~ msgid "Hydrogen"
-#~ msgstr "Wodór"
+#~ msgid "Align:"
+#~ msgstr "Wyrównaj:"
 
-#~ msgid "Helium"
-#~ msgstr "Hel"
+#~ msgid "Axis:"
+#~ msgstr "Oś:"
 
-#~ msgid "Lithium"
-#~ msgstr "Lit"
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "kl/s"
+
+#~ msgid "Animation..."
+#~ msgstr "Animacja..."
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Odczytanie pliku trajektorii %1 nie powiodło się."
+
+#~ msgid "Algorithm:"
+#~ msgstr "Algorytm:"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Dynamika cząsteczek (900K)"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Dynamika cząsteczek (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Dynamika cząsteczek (600K)"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "AutoOptymalizacja"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Narzędzie automatycznego obrotu"
+
+#~ msgid "z rotation"
+#~ msgstr "obrót względem osi Z"
+
+#~ msgid "z rotation:"
+#~ msgstr "obrót względem osi Z:"
+
+#~ msgid "y rotation"
+#~ msgstr "obrót względem osi Y"
+
+#~ msgid "Axes"
+#~ msgstr "Osie"
+
+#~ msgid "AutoRotate"
+#~ msgstr "AutoObrót"
+
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Odległość (2->3): %1 %2"
+
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Kąt: %1 %2"
+
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Odległość (1->2): %1 %2"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " Przyciągnięcie do wiązań"
+
+#~ msgid " Show Angles"
+#~ msgstr " Pokaż kąty"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Przyciągnięcie do progu: "
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Liczba atomów: %1"
+
+#~ msgid "Measure"
+#~ msgstr "Pomiary"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "Dihedral Angle: %1 %2"
+#~ msgstr "Kąt dwuścienny: %1 %2"
+
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Odległość (3->4): %1 %2"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Odległość:"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Dipole"
+#~ msgstr "Dipol"
+
+#~ msgid "Bond Order:"
+#~ msgstr "Kolejność wiązań:"
+
+#~ msgid "Draw"
+#~ msgstr "Rysowanie"
+
+#~ msgid "Element:"
+#~ msgstr "Pierwiastek:"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Rysuj atom"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Rysuj wiązanie"
+
+#~ msgid "Single"
+#~ msgstr "Pojedyncze"
 
 #~ msgid "Beryllium"
 #~ msgstr "Beryl"
@@ -1085,47 +1171,56 @@ msgstr ""
 #~ msgid "Boron"
 #~ msgstr "Bor"
 
-#~ msgid "Carbon"
-#~ msgstr "Węgiel"
+#~ msgid "Helium"
+#~ msgstr "Hel"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Azot"
+#~ msgid "Lithium"
+#~ msgstr "Lit"
 
-#~ msgid "Oxygen"
-#~ msgstr "Tlen"
+#~ msgid "Hydrogen"
+#~ msgstr "Wodór"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Biblioteka fragmentów..."
+
+#~ msgid "Double"
+#~ msgstr "Podwójne"
+
+#~ msgid "Triple"
+#~ msgstr "Potrójne"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Dopasuj wodory"
 
 #~ msgid "Fluorine"
 #~ msgstr "Fluor"
 
-#~ msgid "Neon"
-#~ msgstr "Neon"
-
-#~ msgid "Sodium"
-#~ msgstr "Sód"
-
-#~ msgid "Magnesium"
-#~ msgstr "Magnez"
-
-#~ msgid "Aluminum"
-#~ msgstr "Glin"
+#~ msgid "Phosphorus"
+#~ msgstr "Fosfor"
 
 #~ msgid "Silicon"
 #~ msgstr "Krzem"
 
-#~ msgid "Phosphorus"
-#~ msgstr "Fosfor"
+#~ msgid "Oxygen"
+#~ msgstr "Tlen"
 
-#~ msgid "Sulfur"
-#~ msgstr "Siarka"
+#~ msgid "Nitrogen"
+#~ msgstr "Azot"
 
-#~ msgid "Chlorine"
-#~ msgstr "Chlor"
+#~ msgid "Carbon"
+#~ msgstr "Węgiel"
 
-#~ msgid "Argon"
-#~ msgstr "Argon"
+#~ msgid "Sodium"
+#~ msgstr "Sód"
 
-#~ msgid "Potassium"
-#~ msgstr "Potas"
+#~ msgid "Neon"
+#~ msgstr "Neon"
+
+#~ msgid "Aluminum"
+#~ msgstr "Glin"
+
+#~ msgid "Magnesium"
+#~ msgstr "Magnez"
 
 #~ msgid "Calcium"
 #~ msgstr "Wapń"
@@ -1139,53 +1234,56 @@ msgstr ""
 #~ msgid "Vanadium"
 #~ msgstr "Wanad"
 
+#~ msgid "Sulfur"
+#~ msgstr "Siarka"
+
+#~ msgid "Chlorine"
+#~ msgstr "Chlor"
+
+#~ msgid "Argon"
+#~ msgstr "Argon"
+
 #~ msgid "Chromium"
 #~ msgstr "Chrom"
 
 #~ msgid "Manganese"
 #~ msgstr "Mangan"
 
-#~ msgid "Iron"
-#~ msgstr "Żelazo"
-
-#~ msgid "Cobalt"
-#~ msgstr "Kobalt"
-
-#~ msgid "Nickel"
-#~ msgstr "Nikiel"
-
-#~ msgid "Copper"
-#~ msgstr "Miedź"
-
-#~ msgid "Zinc"
-#~ msgstr "Cynk"
-
-#~ msgid "Gallium"
-#~ msgstr "Gal"
-
-#~ msgid "Germanium"
-#~ msgstr "German"
-
-#~ msgid "Arsenic"
-#~ msgstr "Arsen"
-
-#~ msgid "Selenium"
-#~ msgstr "Selen"
+#~ msgid "Potassium"
+#~ msgstr "Potas"
 
 #~ msgid "Bromine"
 #~ msgstr "Brom"
 
-#~ msgid "Krypton"
-#~ msgstr "Krypton"
+#~ msgid "Copper"
+#~ msgstr "Miedź"
 
-#~ msgid "Rubidium"
-#~ msgstr "Rubid"
+#~ msgid "Nickel"
+#~ msgstr "Nikiel"
 
-#~ msgid "Strontium"
-#~ msgstr "Stront"
+#~ msgid "Cobalt"
+#~ msgstr "Kobalt"
 
-#~ msgid "Yttrium"
-#~ msgstr "Itr"
+#~ msgid "Iron"
+#~ msgstr "Żelazo"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arsen"
+
+#~ msgid "Germanium"
+#~ msgstr "German"
+
+#~ msgid "Gallium"
+#~ msgstr "Gal"
+
+#~ msgid "Zinc"
+#~ msgstr "Cynk"
+
+#~ msgid "Selenium"
+#~ msgstr "Selen"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molibden"
 
 #~ msgid "Zirconium"
 #~ msgstr "Cyrkon"
@@ -1193,11 +1291,17 @@ msgstr ""
 #~ msgid "Niobium"
 #~ msgstr "Niob"
 
-#~ msgid "Molybdenum"
-#~ msgstr "Molibden"
+#~ msgid "Strontium"
+#~ msgstr "Stront"
 
-#~ msgid "Technetium"
-#~ msgstr "Technet"
+#~ msgid "Yttrium"
+#~ msgstr "Itr"
+
+#~ msgid "Krypton"
+#~ msgstr "Krypton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubid"
 
 #~ msgid "Ruthenium"
 #~ msgstr "Ruten"
@@ -1205,47 +1309,44 @@ msgstr ""
 #~ msgid "Rhodium"
 #~ msgstr "Rod"
 
-#~ msgid "Palladium"
-#~ msgstr "Pallad"
-
-#~ msgid "Silver"
-#~ msgstr "Srebro"
-
-#~ msgid "Cadmium"
-#~ msgstr "Kadm"
-
-#~ msgid "Indium"
-#~ msgstr "Ind"
-
-#~ msgid "Tin"
-#~ msgstr "Cyna"
+#~ msgid "Technetium"
+#~ msgstr "Technet"
 
 #~ msgid "Antimony"
 #~ msgstr "Antymon"
 
-#~ msgid "Tellurium"
-#~ msgstr "Tellur"
+#~ msgid "Tin"
+#~ msgstr "Cyna"
 
 #~ msgid "Iodine"
 #~ msgstr "Jod"
 
-#~ msgid "Xenon"
-#~ msgstr "Ksenon"
+#~ msgid "Silver"
+#~ msgstr "Srebro"
+
+#~ msgid "Palladium"
+#~ msgstr "Pallad"
+
+#~ msgid "Indium"
+#~ msgstr "Ind"
+
+#~ msgid "Cadmium"
+#~ msgstr "Kadm"
 
 #~ msgid "Caesium"
 #~ msgstr "Cez"
 
+#~ msgid "Xenon"
+#~ msgstr "Ksenon"
+
+#~ msgid "Tellurium"
+#~ msgstr "Tellur"
+
 #~ msgid "Barium"
 #~ msgstr "Bar"
 
-#~ msgid "Lanthanum"
-#~ msgstr "Lantan"
-
 #~ msgid "Cerium"
 #~ msgstr "Cer"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Prazeodym"
 
 #~ msgid "Neodymium"
 #~ msgstr "Neodym"
@@ -1256,50 +1357,41 @@ msgstr ""
 #~ msgid "Samarium"
 #~ msgstr "Samar"
 
-#~ msgid "Europium"
-#~ msgstr "Europ"
-
 #~ msgid "Gadolinium"
 #~ msgstr "Gadolin"
 
 #~ msgid "Terbium"
 #~ msgstr "Terb"
 
-#~ msgid "Dysprosium"
-#~ msgstr "Dysproz"
-
-#~ msgid "Holmium"
-#~ msgstr "Holm"
-
-#~ msgid "Erbium"
-#~ msgstr "Erb"
-
-#~ msgid "Thulium"
-#~ msgstr "Tul"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Iterb"
+#~ msgid "Lanthanum"
+#~ msgstr "Lantan"
 
 #~ msgid "Lutetium"
 #~ msgstr "Lutet"
 
-#~ msgid "Hafnium"
-#~ msgstr "Hafn"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tantal"
+#~ msgid "Rhenium"
+#~ msgstr "Ren"
 
 #~ msgid "Tungsten"
 #~ msgstr "Wolfram"
 
-#~ msgid "Rhenium"
-#~ msgstr "Ren"
+#~ msgid "Tantalum"
+#~ msgstr "Tantal"
 
-#~ msgid "Osmium"
-#~ msgstr "Osm"
+#~ msgid "Hafnium"
+#~ msgstr "Hafn"
 
-#~ msgid "Iridium"
-#~ msgstr "Iryd"
+#~ msgid "Ytterbium"
+#~ msgstr "Iterb"
+
+#~ msgid "Thulium"
+#~ msgstr "Tul"
+
+#~ msgid "Erbium"
+#~ msgstr "Erb"
+
+#~ msgid "Holmium"
+#~ msgstr "Holm"
 
 #~ msgid "Platinum"
 #~ msgstr "Platinum"
@@ -1307,11 +1399,11 @@ msgstr ""
 #~ msgid "Gold"
 #~ msgstr "Złoto"
 
-#~ msgid "Mercury"
-#~ msgstr "Rtęć"
+#~ msgid "Osmium"
+#~ msgstr "Osm"
 
-#~ msgid "Thallium"
-#~ msgstr "Tal"
+#~ msgid "Iridium"
+#~ msgstr "Iryd"
 
 #~ msgid "Lead"
 #~ msgstr "Ołów"
@@ -1319,77 +1411,74 @@ msgstr ""
 #~ msgid "Bismuth"
 #~ msgstr "Bizmut"
 
-#~ msgid "Polonium"
-#~ msgstr "Polon"
+#~ msgid "Mercury"
+#~ msgstr "Rtęć"
+
+#~ msgid "Thallium"
+#~ msgstr "Tal"
 
 #~ msgid "Astatine"
 #~ msgstr "Astat"
 
-#~ msgid "Radon"
-#~ msgstr "Radon"
+#~ msgid "Polonium"
+#~ msgstr "Polon"
 
 #~ msgid "Francium"
 #~ msgstr "Frans"
 
-#~ msgid "Radium"
-#~ msgstr "Rad"
+#~ msgid "Radon"
+#~ msgstr "Radon"
 
 #~ msgid "Actinium"
 #~ msgstr "Aktyn"
 
-#~ msgid "Thorium"
-#~ msgstr "Tor"
+#~ msgid "Radium"
+#~ msgstr "Rad"
 
 #~ msgid "Protactinium"
 #~ msgstr "Protaktyn"
 
-#~ msgid "Uranium"
-#~ msgstr "Uran"
+#~ msgid "Thorium"
+#~ msgstr "Tor"
 
 #~ msgid "Neptunium"
 #~ msgstr "Neptun"
 
-#~ msgid "Plutonium"
-#~ msgstr "Pluton"
+#~ msgid "Uranium"
+#~ msgstr "Uran"
 
 #~ msgid "Americium"
 #~ msgstr "Ameryk"
 
-#~ msgid "Curium"
-#~ msgstr "Kiur"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkel"
-
-#~ msgid "Californium"
-#~ msgstr "Kaliforn"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einstein"
-
-#~ msgid "Fermium"
-#~ msgstr "Ferm"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelew"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobel"
+#~ msgid "Plutonium"
+#~ msgstr "Pluton"
 
 #~ msgid "Lawrencium"
 #~ msgstr "Lorens"
 
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherford"
+#~ msgid "Berkelium"
+#~ msgstr "Berkel"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einstein"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelew"
+
+#~ msgid "Fermium"
+#~ msgstr "Ferm"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobel"
 
 #~ msgid "Dubnium"
 #~ msgstr "Dubn"
 
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborg"
+#~ msgid "Curium"
+#~ msgstr "Kiur"
 
-#~ msgid "Bohrium"
-#~ msgstr "Borium"
+#~ msgid "Californium"
+#~ msgstr "Kaliforn"
 
 #~ msgid "Hassium"
 #~ msgstr "Has"
@@ -1397,26 +1486,26 @@ msgstr ""
 #~ msgid "Meitnerium"
 #~ msgstr "Meitner"
 
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborg"
+
+#~ msgid "Bohrium"
+#~ msgstr "Borium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
 #~ msgid "Darmstadtium"
 #~ msgstr "Samar"
 
 #~ msgid "Roentgenium"
 #~ msgstr "Roentgen"
 
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrium"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadium"
-
 #~ msgid "Ununpentium"
 #~ msgstr "Ununpentium"
 
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadium"
 
 #~ msgid "Ununseptium"
 #~ msgstr "Ununseptium"
@@ -1424,173 +1513,8 @@ msgstr ""
 #~ msgid "Ununoctium"
 #~ msgstr "Ununoctium"
 
-#~ msgid "Axes"
-#~ msgstr "Osie"
-
-#~ msgid "Dipole"
-#~ msgstr "Dipol"
-
-#~ msgid "Renders hydrogen bonds"
-#~ msgstr "Renderuje wiązania wodorowe"
-
-#~ msgid "Hydrogen Bond"
-#~ msgstr "Wiązanie wodorowe"
-
-#~ msgid "Polygon"
-#~ msgstr "Wielokąt"
-
-#~ msgid "Open trajectory file"
-#~ msgstr "Otwórz plik trajektorii"
-
-#, qt-format
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Animation..."
-#~ msgstr "Animacja..."
-
-#, qt-format
-#~ msgid "Read trajectory file %1 failed."
-#~ msgstr "Odczytanie pliku trajektorii %1 nie powiodło się."
-
-#, qt-format
-#~ msgid "Number of atoms: %1"
-#~ msgstr "Liczba atomów: %1"
-
-#~ msgid "Optimize Geometry"
-#~ msgstr "Optymalizuj geometrię"
-
-#~ msgid "Calculate Energy"
-#~ msgstr "Oblicz energię"
-
-#~ msgid "Ignore Selection"
-#~ msgstr "Ignoruj zaznaczenie"
-
-#, qt-format
-#~ msgid "Energy = %1 %2"
-#~ msgstr "Energia = %1 %2"
-
-#~ msgid "&GAMESS"
-#~ msgstr "&GAMESS"
-
-#~ msgid "Delete"
-#~ msgstr "Usuń"
-
-#~ msgid "No Atoms Selected"
-#~ msgstr "Nie zaznaczono atomów"
-
-#~ msgid "You must make a selection!"
-#~ msgstr "Musiz coś zaznaczyć!"
-
-#~ msgid "SMILES Conversion Unavailable"
-#~ msgstr "Konwersja do SMILES niedostępna"
-
-#~ msgid "SMILES Format Conversion Not Available!"
-#~ msgstr "Konwersja do formatu SMILES jest niedostępna!"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Group Name"
-#~ msgstr "Nazwa grupy"
-
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid ")"
-#~ msgstr ")"
-
-#~ msgid "Advanced Settings Changed"
-#~ msgstr "Zmieniono ustawienia zaawansowane"
-
-#~ msgid ""
-#~ "Advanced settings have changed.\n"
-#~ "Discard?"
-#~ msgstr ""
-#~ "Ustawienia zaawansowane uległy zmianie.\n"
-#~ "Odrzucić zmiany!"
-
-#~ msgid "Advanced Settings Reset"
-#~ msgstr "Przywrócenie ustawień zaawansowanych"
-
-#~ msgid ""
-#~ "Are you sure you wish to reset advanced settings?\n"
-#~ "All changes will be lost!"
-#~ msgstr ""
-#~ "Czy na pewno chcesz przywrócić ustawienia zaawansowane?\n"
-#~ "Wszystkie zmiany zostaną utracone!"
-
-#~ msgid "Basic Settings Reset"
-#~ msgstr "Przywrócenie ustawień podstawowych"
-
-#~ msgid ""
-#~ "Are you sure you wish to reset basic settings?\n"
-#~ "All changes will be lost!"
-#~ msgstr ""
-#~ "Czy na pewno chcesz przywrócić ustawienia podstawowe?\n"
-#~ "Wszystkie zmiany zostaną utracone!"
-
-#~ msgid "Change H to Methyl"
-#~ msgstr "Zmień wodór na grupę metylową"
-
-#~ msgid "Hydrogens"
-#~ msgstr "Wodory"
-
-#~ msgid "Avogadro files (*.*)"
-#~ msgstr "Pliki Avogadro (*.*)"
-
-#~ msgid "Atom Properties..."
-#~ msgstr "Włąściwości atomu..."
-
-#~ msgid "Bond Properties..."
-#~ msgstr "Właściwości wiązania..."
-
-#~ msgid "Angles Properties..."
-#~ msgstr "Właściwości kątów..."
-
-#~ msgid "&Properties"
-#~ msgstr "Właściwości"
-
-#~ msgid "Atomic Number"
-#~ msgstr "Liczba atomowa"
-
-#~ msgid "Valence"
-#~ msgstr "Wartościowość"
-
-#, qt-format
-#~ msgid "Atom %1"
-#~ msgstr "Atom %1"
-
-#~ msgid "Start Atom"
-#~ msgstr "Atom początkowy"
-
-#~ msgid "End Atom"
-#~ msgstr "Atom końcowy"
-
-#, qt-format
-#~ msgid "Bond %1"
-#~ msgstr "Wiązanie %1"
-
-#~ msgid "Template"
-#~ msgstr "Szablon"
-
-#~ msgid "OpenGL error"
-#~ msgstr "Błąd OpenGL"
-
-#~ msgid "FPS"
-#~ msgstr "Klatek na sekundę"
-
-#~ msgid "Axis:"
-#~ msgstr "Oś:"
-
-#~ msgid "Align:"
-#~ msgstr "Wyrównaj:"
-
-#~ msgid "Everything"
-#~ msgstr "Wszystko"
-
-#~ msgid "Align"
-#~ msgstr "Wyrównaj"
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
 
 #~ msgid ""
 #~ "Auto Optimization Tool\n"
@@ -1611,62 +1535,32 @@ msgstr ""
 #~ "Prawy przycisk myszy: przesunięcie.\n"
 #~ "\n"
 #~ "Dodatkowe funkcje po uruchomieniu\n"
-#~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie pozwala na przemieszczanie "
-#~ "atomów"
-
-#~ msgid "AutoOpt: Could not setup force field...."
-#~ msgstr "AutoOpt: Nie można ustawić pola sił..."
+#~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie pozwala na "
+#~ "przemieszczanie atomów"
 
 #~ msgid "Force Field:"
 #~ msgstr "Pole sił:"
 
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "AutoOpt: Nie można ustawić pola sił..."
+
 #~ msgid "Steps per Update:"
 #~ msgstr "Kroki na uaktualnienie:"
 
-#~ msgid "Algorithm:"
-#~ msgstr "Algorytm:"
+#~ msgid "y rotation:"
+#~ msgstr "obrót względem osi Y"
 
-#~ msgid "Molecular Dynamics (300K)"
-#~ msgstr "Dynamika cząsteczek (300K)"
+#~ msgid "x rotation"
+#~ msgstr "obrót względem osi x"
 
-#~ msgid "Molecular Dynamics (600K)"
-#~ msgstr "Dynamika cząsteczek (600K)"
-
-#~ msgid "Molecular Dynamics (900K)"
-#~ msgstr "Dynamika cząsteczek (900K)"
+#~ msgid "x rotation:"
+#~ msgstr "obrót względem osi x:"
 
 #~ msgid "Fixed atoms are movable"
 #~ msgstr "Można poruszać stałymi atomami"
 
 #~ msgid "Ignored atoms are movable"
 #~ msgstr "Można poruszać zignorowanymi atomami"
-
-#~ msgid "AutoOptimization"
-#~ msgstr "AutoOptymalizacja"
-
-#~ msgid "Auto Rotation Tool"
-#~ msgstr "Narzędzie automatycznego obrotu"
-
-#~ msgid "x rotation:"
-#~ msgstr "obrót względem osi x:"
-
-#~ msgid "x rotation"
-#~ msgstr "obrót względem osi x"
-
-#~ msgid "y rotation:"
-#~ msgstr "obrót względem osi Y"
-
-#~ msgid "y rotation"
-#~ msgstr "obrót względem osi Y"
-
-#~ msgid "z rotation:"
-#~ msgstr "obrót względem osi Z:"
-
-#~ msgid "z rotation"
-#~ msgstr "obrót względem osi Z"
-
-#~ msgid "AutoRotate"
-#~ msgstr "AutoObrót"
 
 #~ msgid ""
 #~ "Bond Centric Manipulation Tool\n"
@@ -1688,108 +1582,112 @@ msgstr ""
 #~ "\n"
 #~ "Kliknięcie lewego przycisku myszy i przeciągnięcie powoduje ustawienie "
 #~ "płaszczyzny manipulacji:\n"
-#~ "- Lewy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-#~ "kąt\n"
-#~ "- Prawy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-#~ "długość"
-
-#~ msgid " Show Angles"
-#~ msgstr " Pokaż kąty"
-
-#~ msgid " Snap-to Bonds"
-#~ msgstr " Przyciągnięcie do wiązań"
-
-#~ msgid "Snap-to Threshold: "
-#~ msgstr "Przyciągnięcie do progu: "
+#~ "- Lewy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu "
+#~ "zmienia kąt\n"
+#~ "- Prawy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu "
+#~ "zmienia długość"
 
 #~ msgid "Bond Centric Manipulate"
 #~ msgstr "Manipulacja przy wiązaniach"
 
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Odległość (1->2): %1 %2"
+#~ msgid "Praseodymium"
+#~ msgstr "Prazeodym"
 
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Odległość (2->3): %1 %2"
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
 
-#, qt-format
-#~ msgid "Angle: %1 %2"
-#~ msgstr "Kąt: %1 %2"
+#~ msgid "Europium"
+#~ msgstr "Europ"
 
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Odległość (3->4): %1 %2"
+#~ msgid "Dysprosium"
+#~ msgstr "Dysproz"
 
-#, qt-format
-#~ msgid "Dihedral Angle: %1 %2"
-#~ msgstr "Kąt dwuścienny: %1 %2"
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherford"
 
-#~ msgid "*1"
-#~ msgstr "*1"
+#~ msgid "Optimize Geometry"
+#~ msgstr "Optymalizuj geometrię"
 
-#~ msgid "*2"
-#~ msgstr "*2"
+#~ msgid "Calculate Energy"
+#~ msgstr "Oblicz energię"
 
-#~ msgid "*3"
-#~ msgstr "*3"
+#~ msgid "Ignore Selection"
+#~ msgstr "Ignoruj zaznaczenie"
 
-#~ msgid "*4"
-#~ msgstr "*4"
+#~ msgid "FPS"
+#~ msgstr "Klatek na sekundę"
 
-#~ msgid "Distance(s):"
-#~ msgstr "Odległość:"
+#~ msgid "Delete"
+#~ msgstr "Usuń"
 
-#~ msgid "Measure"
-#~ msgstr "Pomiary"
+#~ msgid " ("
+#~ msgstr " ("
 
-#~ msgid "Delete Atom"
-#~ msgstr "Usuń atom"
+#~ msgid "Group Name"
+#~ msgstr "Nazwa grupy"
 
-#~ msgid "Add Bond"
-#~ msgstr "Dodaj wiązanie"
+#~ msgid ", "
+#~ msgstr ", "
 
-#~ msgid "Delete Bond"
-#~ msgstr "Usuń wiązanie"
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "Konwersja do formatu SMILES jest niedostępna!"
 
-#~ msgid "Change Element"
-#~ msgstr "Zmień pierwiastek"
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "Konwersja do SMILES niedostępna"
 
-#~ msgid "Draw Atom"
-#~ msgstr "Rysuj atom"
+#~ msgid "You must make a selection!"
+#~ msgstr "Musiz coś zaznaczyć!"
 
-#~ msgid "Draw Bond"
-#~ msgstr "Rysuj wiązanie"
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Ustawienia zaawansowane uległy zmianie.\n"
+#~ "Odrzucić zmiany!"
 
-#~ msgid "Draw"
-#~ msgstr "Rysowanie"
+#~ msgid ")"
+#~ msgstr ")"
 
-#~ msgid "Element:"
-#~ msgstr "Pierwiastek:"
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Zmieniono ustawienia zaawansowane"
 
-#~ msgid "Bond Order:"
-#~ msgstr "Kolejność wiązań:"
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Czy na pewno chcesz przywrócić ustawienia zaawansowane?\n"
+#~ "Wszystkie zmiany zostaną utracone!"
 
-#~ msgid "Single"
-#~ msgstr "Pojedyncze"
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Czy na pewno chcesz przywrócić ustawienia podstawowe?\n"
+#~ "Wszystkie zmiany zostaną utracone!"
 
-#~ msgid "Double"
-#~ msgstr "Podwójne"
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Przywrócenie ustawień podstawowych"
 
-#~ msgid "Triple"
-#~ msgstr "Potrójne"
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Przywrócenie ustawień zaawansowanych"
 
-#~ msgid "Adjust Hydrogens"
-#~ msgstr "Dopasuj wodory"
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Renderuje wiązania wodorowe"
 
-#~ msgid "Fragment Library..."
-#~ msgstr "Biblioteka fragmentów..."
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Wiązanie wodorowe"
+
+#~ msgid "Open Directory"
+#~ msgstr "Otwórz folder"
 
 #~ msgid "Stop Inserting"
 #~ msgstr "Zakończ wstawianie"
 
-#~ msgid "Open Directory"
-#~ msgstr "Otwórz folder"
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Saving file."
+#~ msgstr "Zapis pliku."
 
 #~ msgid ""
 #~ "Manipulation Tool (F10)\n"
@@ -1805,9 +1703,6 @@ msgstr ""
 #~ "bliżej/dalej\n"
 #~ "Prawy przycisk myszy: kliknięcie i przeciągnięcie obraca zaznaczone atomy."
 
-#~ msgid "Manipulate Atom"
-#~ msgstr "Manipulacja atomem"
-
 #~ msgid ""
 #~ "Navigation Tool (F9)\n"
 #~ "\n"
@@ -1818,38 +1713,84 @@ msgstr ""
 #~ "Narzędzie do nawigacji (F9)\n"
 #~ "\n"
 #~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie obraca widok\n"
-#~ "Środkowy przycisk myszy: kliknięcie i przeciągnięcie przybliża lub oddala\n"
+#~ "Środkowy przycisk myszy: kliknięcie i przeciągnięcie przybliża lub "
+#~ "oddala\n"
 #~ "Prawy przycisk myszy: kliknięcie i przeciągnięcie przesuwa widok"
 
-#~ msgid "Medium"
-#~ msgstr "Średnia"
+#~ msgid "Polygon"
+#~ msgstr "Wielokąt"
 
-#~ msgid "Custom Color"
-#~ msgstr "Kolor użytkownika"
+#~ msgid "Atom Properties..."
+#~ msgstr "Włąściwości atomu..."
 
-#~ msgid "Electrostatic Potential (ESP)"
-#~ msgstr "Potencjał elektrostatyczny (ESP)"
+#~ msgid "Angles Properties..."
+#~ msgstr "Właściwości kątów..."
 
-#~ msgid "Custom Color:"
-#~ msgstr "Kolor użytkownika:"
+#~ msgid "Bond Properties..."
+#~ msgstr "Właściwości wiązania..."
+
+#~ msgid "&Properties"
+#~ msgstr "Właściwości"
+
+#~ msgid "Valence"
+#~ msgstr "Wartościowość"
+
+#~ msgid "Start Atom"
+#~ msgstr "Atom początkowy"
+
+#~ msgid "Atom %1"
+#~ msgstr "Atom %1"
+
+#~ msgid "End Atom"
+#~ msgstr "Atom końcowy"
+
+#~ msgid "Bond %1"
+#~ msgstr "Wiązanie %1"
+
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Energia = %1 %2"
+
+#~ msgid "OpenGL error"
+#~ msgstr "Błąd OpenGL"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Zmień wodór na grupę metylową"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Nie zaznaczono atomów"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Pliki Avogadro (*.*)"
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Nie mogę zapisać pliku %1."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Zapis zakończony powodzeniem."
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Przerwij obliczenia"
+
+#~ msgid "Atomic Number"
+#~ msgstr "Liczba atomowa"
 
 #~ msgid "Show Atoms"
 #~ msgstr "Pokaż atomy"
 
-#~ msgid "Animate Trajectory"
-#~ msgstr "Animuj trajektorię"
-
-#~ msgid "Load File..."
-#~ msgstr "Wczytaj plik..."
-
-#~ msgid "0/0"
-#~ msgstr "0/0"
-
-#~ msgid "fps"
-#~ msgstr "kl/s"
-
 #~ msgid "A:"
 #~ msgstr "A:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
 
 #~ msgid "alpha:"
 #~ msgstr "alpha:"
@@ -1863,14 +1804,38 @@ msgstr ""
 #~ msgid "C:"
 #~ msgstr "C:"
 
-#~ msgid "gamma:"
-#~ msgstr "gamma:"
+#~ msgid "Custom Color:"
+#~ msgstr "Kolor użytkownika:"
 
-#~ msgid "pH"
-#~ msgstr "pH"
+#~ msgid "Custom Color"
+#~ msgstr "Kolor użytkownika"
 
-#~ msgid "Abort Calculation"
-#~ msgstr "Przerwij obliczenia"
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Potencjał elektrostatyczny (ESP)"
+
+#~ msgid "Medium"
+#~ msgstr "Średnia"
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Manipulacja atomem"
 
 #~ msgid "Overlay"
 #~ msgstr "Pokrywanie"
+
+#~ msgid "Add Bond"
+#~ msgstr "Dodaj wiązanie"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Usuń wiązanie"
+
+#~ msgid "Change Element"
+#~ msgstr "Zmień pierwiastek"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Usuń atom"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Wodory"
+
+#~ msgid "Template"
+#~ msgstr "Szablon"
