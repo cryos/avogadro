@@ -118,12 +118,12 @@ if(APPLE)
 
 # This regex gives us translations with just two characters
 #  (e.g., avogadro_fr.ts)
-  string(REGEX MATCHALL "_[a-z]+\\.ts" langresult "${avogadro_TS}")
-  string(REGEX REPLACE "_([^.]+)\\.ts" "\\1" languages "${langresult}")
+  string(REGEX MATCHALL "-[a-z]+\\.po" langresult "${avogadro_PO}")
+  string(REGEX REPLACE "-([^.]+)\\.po" "\\1" languages "${langresult}")
 # This one gives us languages for country codes (e.g., avogadro_zh_CN.ts)
-  string(REGEX MATCHALL "_[a-z]+_[A-Z]+\\.ts" langresult "${avogadro_TS}")
-  string(REGEX REPLACE "_([^_]+_[^.]+)\\.ts" "\\1" fulllangs "${langresult}")
-  set (LANGUAGES "${languages};${fulllangs};en;en_US")
+ string(REGEX MATCHALL "-[a-z]+_[A-Z]+\\.po" langresult "${avogadro_PO}")
+ string(REGEX REPLACE "-([^_]+_[^.]+)\\.po" "\\1" fulllangs "${langresult}")
+ set (LANGUAGES "${languages};${fulllangs};en;en_US")
 
     foreach(lang ${LANGUAGES})
     set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
