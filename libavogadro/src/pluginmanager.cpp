@@ -547,10 +547,18 @@ namespace Avogadro {
 
     // Load the plugins
     foreach (const QString& path, pluginPaths) {
+#ifndef Q_WS_MAC
       QFileInfo info(path + "/../CMakeCache.txt");
-      if (info.exists()) { // In a build directory
+      if (info.exists()) // In a build directory
         loadPluginDir(path, settings);
+#else
+      QDir dir;
+      // If we are in a Mac build dir things are a little different
+      if (!dir.exists(path)) {
+        loadPluginDir(QCoreApplication::applicationDirPath() +
+	              + "/../../../../" + QString(INSTALL_LIBDIR), settings);
       }
+#endif
       else { // Installed file layout
         loadPluginDir(path + "/avogadro/colors", settings);
         loadPluginDir(path + "/avogadro/engines", settings);
