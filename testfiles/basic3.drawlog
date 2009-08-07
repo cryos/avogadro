@@ -1,0 +1,87 @@
+"Avogadro version:	0.9.7	Git:	1e37271
+LibAvogadro version:	0.9.7	Git:	1e37271" 
+Locale:  "en_US" 
+Libavogadro translations not found. 
+"System has OpenGL support." 
+"About to test OpenGL capabilities." 
+"OpenGL capabilities found: " 
+	 "Double Buffering." 
+	 "Direct Rendering." 
+	 "Antialiasing." 
+Searching for plugins in "/usr/local/bin/../lib/avogadro/colors" 
+Searching for plugins in "/usr/local/bin/../lib/avogadro/engines" 
+Searching for plugins in "/usr/local/bin/../lib/avogadro/extensions" 
+Searching for plugins in "/usr/local/bin/../lib/avogadro/tools" 
+Searching for plugins in "/usr/local/bin/../lib/avogadro/contrib" 
+QStackedLayout::setCurrentWidget: Widget 0x2156350 not contained in stack
+GLWidget initialisation... 
+GLWidget initialised... 
+createObjects() 
+setOBMol called. 
+Molecule::addAtom( 0 ) 
+AddAtomDrawCommand_ctor2(element =  6 , adj =  15 ) 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 1 ) 
+Molecule::addAtom( 2 ) 
+Molecule::addAtom( 3 ) 
+Molecule::addAtom( 4 ) 
+AddAtomDrawCommand::redo(id =  0 ) 
+Molecule::addAtom( 5 ) 
+AddAtomDrawCommand_ctor2(element =  6 , adj =  12 ) 
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY 
+AddBondDrawCommand_ctor2(begin =  0 , end =  5 , order =  1 , adjBegin =  15 , adjEnd =  6 ) 
+AdjustHydrogensPostCommand() 
+AddAtomDrawCommand::redo(id =  5 ) 
+AddBondDrawCommand::redo() 
+AdjustHydrogensPreCommand(atomId =  0 ) 
+AdjustHydrogensPreCommand::redo() 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 6 ) 
+Molecule::addAtom( 7 ) 
+Molecule::addAtom( 8 ) 
+AdjustHydrogensPreCommand(atomId =  5 ) 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 9 ) 
+Molecule::addAtom( 10 ) 
+Molecule::addAtom( 11 ) 
+Molecule::addAtom( 12 ) 
+AddAtomDrawCommand_ctor2(element =  6 , adj =  12 ) 
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY 
+AddBondDrawCommand_ctor2(begin =  5 , end =  12 , order =  1 , adjBegin =  15 , adjEnd =  6 ) 
+AdjustHydrogensPostCommand() 
+AddAtomDrawCommand::redo(id =  12 ) 
+AddBondDrawCommand::redo() 
+AdjustHydrogensPreCommand(atomId =  5 ) 
+AdjustHydrogensPreCommand::redo() 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 13 ) 
+Molecule::addAtom( 14 ) 
+AdjustHydrogensPreCommand(atomId =  12 ) 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 15 ) 
+Molecule::addAtom( 16 ) 
+Molecule::addAtom( 17 ) 
+Molecule::addAtom( 18 ) 
+AddAtomDrawCommand_ctor2(element =  6 , adj =  12 ) 
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY 
+AddBondDrawCommand_ctor2(begin =  12 , end =  18 , order =  1 , adjBegin =  15 , adjEnd =  6 ) 
+AdjustHydrogensPostCommand() 
+AddAtomDrawCommand::redo(id =  18 ) 
+AddBondDrawCommand::redo() 
+AdjustHydrogensPreCommand(atomId =  12 ) 
+AdjustHydrogensPreCommand::redo() 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 19 ) 
+Molecule::addAtom( 20 ) 
+AdjustHydrogensPreCommand(atomId =  18 ) 
+AdjustHydrogensPostCommand() 
+AdjustHydrogensPostCommand::redo() 
+Molecule::addAtom( 21 ) 
+Molecule::addAtom( 22 ) 
+Molecule::addAtom( 23 ) 

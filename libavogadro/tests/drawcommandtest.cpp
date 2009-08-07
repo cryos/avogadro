@@ -86,63 +86,63 @@ class DrawCommandTest : public QObject
     /**
      * Test the first AddAtom constructor by pushing a command to the stack.
      */
-    void pushAddAtom(int element,  AdjustHydrogens::Options adj);
+    //void pushAddAtom(int element,  AdjustHydrogens::Options adj);
     /**
      * Test the second AddAtom constructor by pushing a command to the stack.
      */
-    void pushAddAtom(Atom *atom, AdjustHydrogens::Options adj);
+    //void pushAddAtom(Atom *atom, AdjustHydrogens::Options adj);
     /**
      * Test DeleteAtom by pushing a command to the stack.
      */
-    void pushDeleteAtom(int index, int adj);
+    //void pushDeleteAtom(int index, int adj);
     /**
      * Test the first AddBond constructor by pushing a command to the stack.
      */
-    void pushAddBond(Atom *beginAtom, Atom *endAtom, short order, 
-        AdjustHydrogens::Options adjBegin, AdjustHydrogens::Options adjEnd);
+    //void pushAddBond(Atom *beginAtom, Atom *endAtom, short order, 
+    //    AdjustHydrogens::Options adjBegin, AdjustHydrogens::Options adjEnd);
     /**
      * Test the second AddBond constructor by pushing a command to the stack.
      */
-    void pushAddBond(Bond *bond, AdjustHydrogens::Options adjBegin, 
-        AdjustHydrogens::Options adjEnd);
+    //void pushAddBond(Bond *bond, AdjustHydrogens::Options adjBegin, 
+    //    AdjustHydrogens::Options adjEnd);
     /**
      * Test DeleteBond by pushing a command to the stack.
      */
-    void pushDeleteBond(int index, int adj);
+    //void pushDeleteBond(int index, int adj);
      /**
      * Test ChangeElement by pushing a command to the stack.
      */
-    void pushChangeElement(Atom *atom, int newElement, int adj);
+    //void pushChangeElement(Atom *atom, int newElement, int adj);
 
   private slots:
     /**
      * Test the first pushAddAtom function.
      */
-    void testPushAddAtom1();
+    //void testPushAddAtom1();
     /**
      * Test the second pushAddAtom function.
      */
-    void testPushAddAtom2();
+    //void testPushAddAtom2();
     /**
      * Test the pushDeleteAtom function.
      */
-    void testPushDeleteAtom();
+    //void testPushDeleteAtom();
     /**
      * Test the first pushAddBond function.
      */
-    void testPushAddBond1();
+    //void testPushAddBond1();
     /**
      * Test the second pushAddBond function.
      */
-    void testPushAddBond2();
+    //void testPushAddBond2();
     /**
      * Test the pushDeleteBond function.
      */
-    void testPushDeleteBond();
+    //void testPushDeleteBond();
      /**
      * Test the second pushChangeElement function.
      */   
-    void testPushChangeElement();
+    //void testPushChangeElement();
 
 
 
@@ -150,82 +150,90 @@ class DrawCommandTest : public QObject
     /**
      * Test AdjustHydrogensPreCommand
      */
-    void AdjustHydrogensPreCommand_methane();
+    //void AdjustHydrogensPreCommand_methane();
     /**
      * Test AdjustHydrogensPreCommand
      */
-    void AdjustHydrogensPostCommand_methane();
+    //void AdjustHydrogensPostCommand_methane();
 
 
     /** 
      * Test AddAtomDrawCommand(molecule, pos, element, adj=1)
      */
-    void AddAtom_methane();
+    //void AddAtom_methane();
     /** 
      * Test AddAtomDrawCommand(molecule, atom, adj=1)
      */
-    void AddAtom_ammonia();
+    //void AddAtom_ammonia();
     /** 
      * Test AddAtomDrawCommand(molecule, pos, element, adj=0)
      * Test AddAtomDrawCommand(molecule, atom, adj=0)
      */
-    void AddAtom_water();
+    //void AddAtom_water();
 
  
     /**
      * Test ChangeElementDrawCommand(molecule, atom, oldElement, adj=1);
      */
-    void ChangeElement_ethane();
+    //void ChangeElement_ethane();
     /**
      * Test ChangeElementDrawCommand(molecule, atom, oldElement, adj=0);
      */
-    void ChangeElement_carbon();
+    //void ChangeElement_carbon();
 
     /** 
      * Test AddAtomDrawCommand(molecule, index, adj=1)
      */ 
-    void DeleteAtom_methane();
+    //void DeleteAtom_methane();
     /** 
      * Test AddAtomDrawCommand(molecule, index, adj=0)
      */ 
-    void DeleteAtom_carbon();
+    //void DeleteAtom_carbon();
 
 
     /**
      * Test AddBondDrawCommand(molecule, beginAtom, endAtom, order, adj=1)
      */
-    void AddBond_ethane();
+    ///void AddBond_ethane();
     /**
      * Test AddBondDrawCommand(molecule, bond, adj=1)
      */
-    void AddBond_ethane2();
+    //void AddBond_ethane2();
 
     /**
      * Test ChangeBondOrderDrawCommand(molecule, index, adj=1)
      */
-    void ChangeBondOrder_ethane();
-    void ChangeBondOrder_ethene();
+    //void ChangeBondOrder_ethane();
+    //void ChangeBondOrder_ethene();
  
    
     /**
      * Test DeleteBondDrawCommand(molecule, index, adj=1)
      */
-    void DeleteBond_ethane();
+    //void DeleteBond_ethane();
     
     // 2x AddAtom + AddBond
-    void AddAtomDrawCommand_ethane();
-    void AddAtomDrawCommand_methanol();
-    void AddAtom_AddBond_DeleteAtom();
-    void AddAtom_ChangeElement_DeleteAtom();
+    //void AddAtomDrawCommand_ethane();
+    //void AddAtomDrawCommand_methanol();
+    //void AddAtom_AddBond_DeleteAtom();
+    //void AddAtom_ChangeElement_DeleteAtom();
     
   
     
     // Crashers...
-    void crash1();
-    void crash2();
-    void crash3();
+    //void crash1();
+    //void crash2();
+    //void crash3();
 
-    void DeleteAtom_ethane();
+    //void DeleteAtom_ethane();
+
+
+    void parseLogFiles();
+    void parseLogFile(const QString &fileName);
+
+
+
+
 
     /**
      * Called before the first test function is executed.
@@ -250,6 +258,237 @@ class DrawCommandTest : public QObject
 
 };
 
+
+QStringList extractArguments(const QString &line)
+{
+  QStringList args;
+
+  bool copying = false;
+  QString token;
+  for (int i = 0; i < line.size(); ++i) {
+    if (line.at(i) == '=') {
+      copying = true;
+      continue;
+    }
+
+    if (!token.isEmpty()) {
+      if (line.at(i) == ' ' || line.at(i) == ',') {
+        args.append(token);
+        token.clear();
+        copying = false;
+        continue;
+      }
+    }
+
+    if (copying && line.at(i) != ' ') {
+      token += line.at(i);
+    }
+  }
+
+  return args;
+}
+
+void DrawCommandTest::parseLogFiles()
+{
+  QDir testdatadir(TESTDATADIR);
+  QStringList filter;
+  filter << "*.drawlog";
+  testdatadir.setNameFilters(filter);
+
+  QStringList logFiles = testdatadir.entryList();
+  foreach(const QString &fileName, logFiles)
+    parseLogFile(testdatadir.absolutePath() + QDir::separator() + fileName);
+}
+
+void DrawCommandTest::parseLogFile(const QString &fileName)
+{
+  m_molecule = new Molecule;
+  m_undoStack = new QUndoStack;
+  qDebug() << "TESTING ::" << fileName;
+  QFile logFile(fileName);
+
+  QVERIFY( logFile.open(QIODevice::ReadOnly | QIODevice::Text) );
+  
+  while (!logFile.atEnd()) {
+    QString line = logFile.readLine();
+    qDebug() << "INPUT: " << line;
+      
+    if (line.contains("::redo(") || line.contains("::undo(")) 
+      continue;
+
+    if (line.startsWith("AddAtomDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+      qDebug() << args;
+
+      QCOMPARE( args.size(), 2 );
+      bool ok;
+      int element = args[0].toInt(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adj = static_cast<AdjustHydrogens::Option>(args[1].toInt(&ok));
+      QVERIFY( ok );
+
+      // command has 2 constructors...
+      if (line.contains("ctor1"))
+        m_undoStack->push( new AddAtomDrawCommand(m_molecule, Eigen::Vector3d::Zero(), element, adj) );
+      else {
+        Atom *atom = m_molecule->addAtom();
+        qDebug() << "ID = " << atom->id() << "<----------------------------------------------------------------";
+        atom->setAtomicNumber(element);
+        m_undoStack->push( new AddAtomDrawCommand(m_molecule, atom, adj) );
+      }
+
+      singleUndoRedo();
+    
+    } // AddAtomDrawCommand
+
+    if (line.startsWith("AddBondDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+
+      qDebug() << args;
+
+      QCOMPARE( args.size(), 5 );
+      bool ok;
+      unsigned long begin = args[0].toULong(&ok);
+      QVERIFY( ok );
+      unsigned long end = args[1].toULong(&ok);
+      QVERIFY( ok );
+      int order = args[2].toInt(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adjBegin = static_cast<AdjustHydrogens::Option>(args[3].toInt(&ok));
+      QVERIFY( ok );
+      AdjustHydrogens::Option adjEnd = static_cast<AdjustHydrogens::Option>(args[4].toInt(&ok));
+      QVERIFY( ok );
+
+      Atom *beginAtom = m_molecule->atomById(begin);
+      QVERIFY( beginAtom );
+      Atom *endAtom = m_molecule->atomById(end);
+      QVERIFY( endAtom );
+
+      if (line.contains("ctor1"))
+        m_undoStack->push( new AddBondDrawCommand(m_molecule, beginAtom, endAtom, order, adjBegin, adjEnd) );
+      else {
+        Bond *bond = m_molecule->addBond();
+        bond->setBegin(beginAtom);
+        bond->setEnd(endAtom);
+        bond->setOrder(order);
+        m_undoStack->push( new AddBondDrawCommand(m_molecule, bond, adjBegin, adjEnd) );
+      }
+
+      singleUndoRedo();
+    
+    } // AddBondDrawCommand
+
+    if (line.startsWith("DeleteAtomDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+
+      QCOMPARE( args.size(), 2 );
+      bool ok;
+      unsigned long id = args[0].toULong(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adj = static_cast<AdjustHydrogens::Option>(args[1].toInt(&ok));
+      QVERIFY( ok );
+
+      Atom *atom = m_molecule->atomById(id);
+      QVERIFY( atom );
+
+      m_undoStack->push( new DeleteAtomDrawCommand(m_molecule, atom->index(), adj) );
+      singleUndoRedo();
+    
+    } // DeleteAtomDrawCommand
+ 
+    if (line.startsWith("DeleteBondDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+
+      QCOMPARE( args.size(), 2 );
+      bool ok;
+      unsigned long id = args[0].toULong(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adj = static_cast<AdjustHydrogens::Option>(args[1].toInt(&ok));
+      QVERIFY( ok );
+
+      Bond *bond = m_molecule->bondById(id);
+      QVERIFY( bond );
+
+      m_undoStack->push( new DeleteBondDrawCommand(m_molecule, bond->index(), adj) );
+      singleUndoRedo();
+    
+    } // DeleteBondDrawCommand
+ 
+    if (line.startsWith("ChangeElementDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+
+      QCOMPARE( args.size(), 4 );
+      bool ok;
+      unsigned long id = args[0].toULong(&ok);
+      QVERIFY( ok );
+      int oldElement = args[1].toInt(&ok);
+      QVERIFY( ok );
+      int newElement = args[2].toInt(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adj = static_cast<AdjustHydrogens::Option>(args[3].toInt(&ok));
+      QVERIFY( ok );
+
+      Atom *atom = m_molecule->atomById(id);
+      QVERIFY( atom );
+
+      QCOMPARE( atom->atomicNumber(), oldElement);
+      atom->setAtomicNumber(newElement);
+
+      m_undoStack->push( new ChangeElementDrawCommand(m_molecule, atom, oldElement, adj) );
+      singleUndoRedo();
+    
+    } // ChangeElementDrawCommand
+
+    if (line.startsWith("ChangeBondOrderDrawCommand")) {
+      // extract arguments
+      QStringList args = extractArguments(line);
+
+      QCOMPARE( args.size(), 4 );
+      bool ok;
+      unsigned long id = args[0].toULong(&ok);
+      QVERIFY( ok );
+      int oldOrder = args[1].toInt(&ok);
+      QVERIFY( ok );
+      int newOrder = args[2].toInt(&ok);
+      QVERIFY( ok );
+      AdjustHydrogens::Option adj = static_cast<AdjustHydrogens::Option>(args[3].toInt(&ok));
+      QVERIFY( ok );
+
+      Bond *bond = m_molecule->bondById(id);
+      QVERIFY( bond );
+
+      QCOMPARE( static_cast<int>(bond->order()), oldOrder);
+      bond->setOrder(newOrder);
+
+      m_undoStack->push( new ChangeBondOrderDrawCommand(m_molecule, bond, oldOrder, adj) );
+      singleUndoRedo();
+    
+    } // ChangeBondOrderDrawCommand
+ 
+  }
+  
+  loopUndoRedo();  
+
+  delete m_molecule;
+  m_molecule = 0;
+  delete m_undoStack;
+  m_undoStack = 0;
+}
+
+
+
+
+
+
+
+
+
+
 void DrawCommandTest::initTestCase()
 {
 }
@@ -260,19 +499,13 @@ void DrawCommandTest::cleanupTestCase()
 
 void DrawCommandTest::init()
 {
-  m_molecule = new Molecule;
-  m_undoStack = new QUndoStack;
 }
 
 void DrawCommandTest::cleanup()
 {
-  delete m_molecule;
-  m_molecule = 0;
-  delete m_undoStack;
-  m_undoStack = 0;
 }
     
-    
+/*    
 int DrawCommandTest::numHydrogens(int element)
 {
   switch (element) {
@@ -333,6 +566,8 @@ void DrawCommandTest::debugMolecule()
              << bond->beginAtomId() << ", end=" << bond->endAtomId();
 }
 
+*/
+
 
 void DrawCommandTest::loopUndoRedo()
 {
@@ -348,43 +583,66 @@ void DrawCommandTest::loopUndoRedo()
   foreach (Bond *bond, m_molecule->bonds())
     bondIds.append(bond->id());
 
-  for (int i = 0; i < 10; ++i) {
-    m_undoStack->setIndex(0); // undo all
-    QCOMPARE(m_molecule->numAtoms(), (unsigned int) 0);
+  qDebug() << "START UNDO/REDO";
+  for (int i = 1; i <= cmdIndex; ++i) {
+    qDebug() << "  undoing " << i << " commands...";
+    m_undoStack->setIndex(cmdIndex - i); // undo
+    qDebug() << "  redoing " << i << " commands...";
     m_undoStack->setIndex(cmdIndex); // redo all
-    QCOMPARE(m_molecule->numAtoms(), numAtoms);
-  }
 
-  // check if all atom & bond ids are still the same
-  foreach (Atom *atom, m_molecule->atoms())
-    QCOMPARE(atom->id(), atomIds.at(atom->index()));
-  foreach (Bond *bond, m_molecule->bonds())
-    QCOMPARE(bond->id(), bondIds.at(bond->index()));
+    // check if all atom & bond ids are still the same
+    QCOMPARE(m_molecule->numAtoms(), numAtoms);
+    foreach (Atom *atom, m_molecule->atoms())
+      QCOMPARE(atom->id(), atomIds.at(atom->index()));
+    foreach (Bond *bond, m_molecule->bonds())
+      QCOMPARE(bond->id(), bondIds.at(bond->index()));
+
+  }
 
 
 }
 
+
+
 void DrawCommandTest::singleUndoRedo()
 {
+  qDebug() << "START singleUndoRedo...";
   // save all atom & bond ids
   QList<unsigned long> atomIds, bondIds;
-  foreach (Atom *atom, m_molecule->atoms())
+  qDebug() << "  atoms:";
+  foreach (Atom *atom, m_molecule->atoms()) {
     atomIds.append(atom->id());
-  foreach (Bond *bond, m_molecule->bonds())
+    qDebug() << "    index =" << atom->index() << "  id =" << atom->id();
+  }
+  qDebug() << "  bonds:";
+  foreach (Bond *bond, m_molecule->bonds()) {
     bondIds.append(bond->id());
+    qDebug() << "    index =" << bond->index() << "  id =" << bond->id() << "    begin =" << bond->beginAtomId() << "  end =" << bond->endAtomId(); 
+  }
 
+  qDebug() << "  undoing...";
   m_undoStack->undo();
+  qDebug() << "  redoing...";
   m_undoStack->redo();
 
   QCOMPARE(m_molecule->numAtoms(), (unsigned int) atomIds.size());
   QCOMPARE(m_molecule->numBonds(), (unsigned int) bondIds.size());
 
   // check if all atom & bond ids are still the same
-  foreach (Atom *atom, m_molecule->atoms())
+  qDebug() << "  atoms:";
+  foreach (Atom *atom, m_molecule->atoms()) {
     QCOMPARE(atom->id(), atomIds.at(atom->index()));
-  foreach (Bond *bond, m_molecule->bonds())
+    qDebug() << "    index =" << atom->index() << "  id =" << atom->id();
+  }
+  qDebug() << "  bonds:";
+  foreach (Bond *bond, m_molecule->bonds()) {
     QCOMPARE(bond->id(), bondIds.at(bond->index()));
+    qDebug() << "    index =" << bond->index() << "  id =" << bond->id() << "    begin =" << bond->beginAtomId() << "  end =" << bond->endAtomId(); 
+  }
+  
+  qDebug() << "END singleUndoRedo...";
 }
+/*
 
   
 // AddAtomDrawCommand(Molecule *molecule, const Eigen::Vector3d& pos, unsigned int element, int adjustValence);
@@ -1711,6 +1969,7 @@ void DrawCommandTest::crash3()
   //debugMolecule();
 
 }
+*/
 
 QTEST_MAIN(DrawCommandTest)
 
