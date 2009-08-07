@@ -772,17 +772,42 @@ namespace Avogadro
       return true;
     }
 
-    statusBar()->showMessage( tr("Loading %1...", "%1 is a filename").arg(fileName), 5000 );
+    statusBar()->showMessage(tr("Loading %1...", "%1 is a filename").arg(fileName),
+                             5000 );
 
     QApplication::setOverrideCursor( Qt::WaitCursor );
     statusBar()->showMessage( tr("Loading %1...").arg(fileName), 5000 );
 
     QString formatType;
-    if (format != NULL) {
+    if (format != NULL)
       formatType = format->GetID();
+
+#ifdef WIN32
+    // CML loading does not work on Windows with the new threaded code
+    QFileInfo info(fileName);
+    QString completeSuffix = info.completeSuffix();
+    if (completeSuffix.contains("cml", Qt::CaseInsensitive) ||
+        formatType.contains("cml", Qt::CaseInsensitive)) {
+      Molecule *mol = MoleculeFile::readMolecule(fileName, formatType.trimmed());
+      QApplication::restoreOverrideCursor();
+      if (mol) {
+        setFileName(fileName);
+        setMolecule(mol);
+      }
+      else {
+        QMessageBox::warning(this, tr("Avogadro"),
+                             tr("Reading molecular file failed, file %1.").arg(fileName));
+      return false;
+      }
+      ui.actionAllMolecules->setEnabled(false);
+      return true;
     }
+    // Other file types appear to work correctly - this should be fixed properly
+#endif
+
     // This will work in a background thread -- we want to wait until the firstMolReady() signal appears
-    d->moleculeFile = MoleculeFile::readFile(fileName, formatType.trimmed(), options, false);
+    d->moleculeFile = MoleculeFile::readFile(fileName, formatType.trimmed(),
+                                             options, false);
     if (!d->moleculeFile)
       return false;
 

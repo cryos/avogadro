@@ -587,6 +587,13 @@ namespace Avogadro {
     void setEnergy(double energy);
 
     /**
+     * Set the energy for the specified conformer.
+     * @param index the index of the confomer
+     * @param energy The energy for this conformer
+     */
+    void setEnergy(int index, double energy);
+
+    /**
      * Set the energies for all conformers.
      * @param energies The vector of all energy values
      */

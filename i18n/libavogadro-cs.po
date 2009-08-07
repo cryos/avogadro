@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 11:52-0400\n"
+"POT-Creation-Date: 2009-08-03 14:18-0400\n"
 "PO-Revision-Date: 2009-06-22 12:18+0000\n"
 "Last-Translator: fri <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:09+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -24,8 +24,7 @@ msgstr "Barva podle indexu"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
-"Barva podle indexu (červená, oranžová, žlutá, zelená, modrá, fialová)."
+msgstr "Barva podle indexu (červená, oranžová, žlutá, zelená, modrá, fialová)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -37,13 +36,11 @@ msgstr ""
 "Barva podle parciálního atomového náboje (modrá = pozitivní, červená = "
 "negativní)."
 
-#: src/engines/surfacesettingswidget.ui:139
-#: src/colors/customcolor.cpp:63 :166
+#: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
 msgstr "Vlastní barva:"
 
-#: src/engines/surfacesettingswidget.ui:95
-#: src/colors/customcolor.h:43 :160
+#: src/colors/customcolor.h:43
 msgid "Custom Color"
 msgstr "Vlastní barva"
 
@@ -563,7 +560,7 @@ msgstr "Osy"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Vykresluje osy x.y.z v počátku"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1852
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
 msgid "Ball and Stick"
 msgstr "Koule a hole"
 
@@ -610,20 +607,6 @@ msgstr "Popisek"
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
 msgstr "Vykresluje popisky atomů a vazeb"
-
-#: src/engines/orbitalengine.cpp:285
-#, qt-format
-msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
-msgid "%1, isosurface = %L2"
-msgstr "%1, isoplocha = %L2"
-
-#: src/engines/orbitalengine.h:47
-msgid "Orbitals"
-msgstr "Orbitaly"
-
-#: src/engines/orbitalengine.h:48
-msgid "Renders molecular orbitals"
-msgstr "Vykresluje molekulové orbitaly"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
@@ -682,13 +665,32 @@ msgstr "Tyčka"
 msgid "Renders molecules as sticks"
 msgstr "Vykresluje molekuly jako tyčky"
 
-#: src/engines/surfaceengine.h:46
-msgid "Surface"
-msgstr "Povrch"
+#: src/engines/surfaceengine.cpp:232
+#, fuzzy, qt-format
+msgctxt "Van der Waals isosurface with a cutoff of %1"
+msgid "Van der Waals, isosurface = %L1"
+msgstr "Van der Waalsův povrch"
+
+#: src/engines/surfaceengine.cpp:238
+#, fuzzy, qt-format
+msgctxt "Electron density isosurface with a cutoff of %1"
+msgid "Electron density, isosurface = %L1"
+msgstr "%1, isoplocha = %L2"
+
+#: src/engines/surfaceengine.cpp:245
+#, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+msgid "%1, isosurface = %L2"
+msgstr "%1, isoplocha = %L2"
+
+#: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
+msgid "Surfaces"
+msgstr "Povrchy"
 
 #: src/engines/surfaceengine.h:47
-msgid "Renders computed molecular surfaces"
-msgstr "Vykresluje molekuly jako povrchy"
+#, fuzzy
+msgid "Renders molecular isosurface meshes"
+msgstr "Vykresluje dipólové momenty molekul"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -697,8 +699,8 @@ msgstr "Drátěná kostra"
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
-"Vykresluje vazby jako dráty (čáry), což je ideální pro velmi rozsáhlé "
-"(bio)molekuly"
+"Vykresluje vazby jako dráty (čáry), což je ideální pro velmi rozsáhlé (bio)"
+"molekuly"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -742,8 +744,8 @@ msgstr "Video soubory (*.avi)"
 #: src/extensions/forcefieldextension.cpp:223
 #: src/extensions/gaussianextension.cpp:168
 #: src/extensions/gaussianextension.cpp:178
-#: src/extensions/insertfragmentdialog.cpp:137
-#: src/extensions/insertfragmentdialog.cpp:145
+#: src/extensions/insertfragmentdialog.cpp:143
+#: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/linmorphdialog.cpp:82
 #: src/extensions/linmorphextension.cpp:79
 #: src/extensions/linmorphextension.cpp:86
@@ -780,9 +782,9 @@ msgstr "Vykreslování..."
 #: src/extensions/gamessextension.cpp:97
 #: src/extensions/gaussianextension.cpp:86
 #: src/extensions/linmorphextension.cpp:103
-#: src/extensions/orbitalextension.cpp:92
-#: src/extensions/shaderextension.cpp:187
+#: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
+#: src/extensions/surfaceextension.cpp:92
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -791,7 +793,7 @@ msgstr "Roz&šíření"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
-#: src/extensions/insertfragmentdialog.cpp:138
+#: src/extensions/insertfragmentdialog.cpp:144
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
@@ -822,8 +824,8 @@ msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
-"Neplatný název videosouboru. Musíte určit úplnou cestu k souboru a "
-"název,včetně koncovky .avi"
+"Neplatný název videosouboru. Musíte určit úplnou cestu k souboru a název,"
+"včetně koncovky .avi"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -872,8 +874,7 @@ msgstr ""
 "omezení"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Vaše molekula musí obsahovat alespoň dva atomy, aby mohlo být přidáno "
 "vazební omezení"
@@ -892,23 +893,18 @@ msgstr ""
 "Vaše molekula musí obsahovat alespoň čtyři atomy, aby mohlo být přidáno "
 "omezení zkroucení"
 
-#: src/extensions/directorytreemodel.cpp:39
-#: src/extensions/directorytreemodel.cpp:49
-msgid "Name"
-msgstr "Název"
-
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
 msgstr "Dráha..."
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Soubor"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
 msgstr "Zavést"
 
@@ -1102,7 +1098,7 @@ msgstr "Vytvořit vstupní soubory pro GAMESS balíček pro kvantovou chemii"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :626 rc.cpp:904 rc.cpp:1188
+#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "Název"
 
@@ -1171,7 +1167,7 @@ msgid "&NWChem Input..."
 msgstr "&NWChem vstup..."
 
 #: src/extensions/gaussianextension.cpp:179
-#: src/extensions/insertfragmentdialog.cpp:146
+#: src/extensions/insertfragmentdialog.cpp:152
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Nelze načíst soubor %1."
@@ -1239,8 +1235,7 @@ msgid "G03 Crashed."
 msgstr "G03 havaroval."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussovský neběžel správně. Snad není správně nainstalován."
 
 #: src/extensions/mopacinputdialog.ui:307
@@ -1248,7 +1243,7 @@ msgstr "Gaussovský neběžel správně. Snad není správně nainstalován."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1302
+#: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
 msgstr "Ukázat náhled"
 
@@ -1260,7 +1255,7 @@ msgstr "Ukázat náhled"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :964 rc.cpp:1244 rc.cpp:1370
+#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Skrýt náhled"
 
@@ -1270,7 +1265,7 @@ msgstr "Zaměnit H za Metyl"
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
@@ -1321,34 +1316,34 @@ msgstr "Vodíkové atomy"
 msgid "Add or remove hydrogens"
 msgstr "Přidat nebo odstranit vodíkové atomy"
 
-#: src/extensions/insertfragmentdialog.cpp:181
+#: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
 msgstr "Otevřít složku"
 
-#: src/extensions/insertfragmentextension.cpp:52
+#: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
 msgstr "Kousek..."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "&Vložit"
 
-#: src/extensions/insertfragmentextension.cpp:103
-#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
 msgstr "Vložit SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
 msgstr "Vložit SMILES kousek:"
 
-#: src/extensions/insertfragmentdialog.ui:76
-#: src/extensions/insertfragmentextension.cpp:163
+#: src/extensions/insertfragmentdialog.ui:45
+#: src/extensions/insertfragmentextension.cpp:171
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
 msgid "Insert Fragment"
 msgstr "Vložit kousek"
@@ -1364,7 +1359,7 @@ msgstr "Peptid..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :984 rc.cpp:1126
+#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "Vložit peptid"
 
@@ -1440,8 +1435,8 @@ msgid ""
 "Invalid movie filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
-"Neplatný název filmu. Musíte zadat úplnou cestu k souboru a název končící na "
-".avi"
+"Neplatný název filmu. Musíte zadat úplnou cestu k souboru a název končící "
+"na .avi"
 
 #: src/extensions/linmorphextension.cpp:316
 #, qt-format
@@ -1567,46 +1562,60 @@ msgstr "Uložit MOPAC vstupní balíček"
 msgid "MOPAC Input Deck (*.mop)"
 msgstr "MOPAC vstupní balíček (*.mop)"
 
-#: src/extensions/networkfetchextension.cpp:49
+#: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
 msgstr "Získat z PDB..."
 
-#: src/extensions/networkfetchextension.cpp:53
+#: src/extensions/networkfetchextension.cpp:56
+msgid "Fetch chemical structure..."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
 msgstr "Získat z internetové adresy (URL)..."
 
-#: src/extensions/networkfetchextension.cpp:88
+#: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
 msgstr "Záznam PDB"
 
-#: src/extensions/networkfetchextension.cpp:89
+#: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
 msgstr "Záznam PDB ke stažení."
 
-#: src/extensions/networkfetchextension.cpp:103
+#: src/extensions/networkfetchextension.cpp:110
+#, fuzzy
+msgid "Chemical Name"
+msgstr "Ghemical"
+
+#: src/extensions/networkfetchextension.cpp:111
+#, fuzzy
+msgid "Chemical structure to download."
+msgstr "Internetová adresa molekuly ke stažení."
+
+#: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
 msgstr "Internetová adresa (URL)"
 
-#: src/extensions/networkfetchextension.cpp:104
+#: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
 msgstr "Internetová adresa molekuly ke stažení."
 
-#: src/extensions/networkfetchextension.cpp:139
-#: src/extensions/networkfetchextension.cpp:150
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:164
+#: src/extensions/networkfetchextension.cpp:175
+#: src/extensions/networkfetchextension.cpp:195
 msgid "Network Download Failed"
 msgstr "Stažení přes síť selhalo"
 
-#: src/extensions/networkfetchextension.cpp:140
+#: src/extensions/networkfetchextension.cpp:165
 msgid "Network timeout or other error."
 msgstr "Vypršení času na síti nebo jiná chyba."
 
-#: src/extensions/networkfetchextension.cpp:151
+#: src/extensions/networkfetchextension.cpp:176
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "Zadanou molekulu nelze najít: %1"
 
-#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:196
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "Zadanou molekulu nelze nahrát: %1"
@@ -1638,77 +1647,6 @@ msgstr "Uložit NWChem vstupní balíček"
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
 msgstr "NWChem vstupní balíček (*.nw)"
-
-#: src/extensions/orbitaldialog.cpp:107
-#: src/extensions/orbitalextension.cpp:267
-#: src/extensions/orbitalextension.cpp:304
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "MO %L1"
-msgstr "MO %L1"
-
-#: src/engines/labelsettingswidget.ui:55
-#: src/engines/labelsettingswidget.ui:140
-#: src/extensions/gamessinputdialog.ui:450
-#: src/extensions/gamessinputdialog.ui:999
-#: src/extensions/gamessinputdialog.ui:1069
-#: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101
-#: src/extensions/orbitaldialog.ui:679
-#: src/extensions/shaderdialog.ui:207
-#: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
-msgid "None"
-msgstr "Žádný"
-
-#: src/extensions/orbitaldialog.cpp:250 src/extensions/orbitaldialog.cpp:254
-msgid "ESP"
-msgstr "ESP"
-
-#: src/extensions/orbitalextension.cpp:65
-msgid "Create Surfaces..."
-msgstr "Vytvořit povrchy..."
-
-#: src/extensions/orbitalextension.cpp:279
-#: src/extensions/orbitalextension.cpp:316
-#: src/extensions/orbitalextension.cpp:475
-#: src/extensions/orbitalextension.cpp:513
-#: src/extensions/orbitalextension.cpp:771
-msgid "Abort Calculation"
-msgstr "Přerušit výpočet"
-
-#: src/extensions/orbitalextension.cpp:284
-#: src/extensions/orbitalextension.cpp:321
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "Calculating MO %L1"
-msgstr "Počítá se MO %L1"
-
-#: src/extensions/orbitalextension.cpp:462
-#: src/extensions/orbitalextension.cpp:500
-msgid "Electron Density"
-msgstr "Elektronová hustota"
-
-#: src/extensions/orbitalextension.cpp:480
-#: src/extensions/orbitalextension.cpp:518
-msgid "Calculating Electron Density"
-msgstr "Počítá se elektronová hustotu"
-
-#: src/extensions/orbitalextension.cpp:763
-msgid "VdW Cube"
-msgstr "Krychle VdW"
-
-#: src/extensions/orbitalextension.cpp:776
-msgid "Calculating VdW Cube"
-msgstr "Počítá se krychle VdW"
-
-#: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48 :1380
-msgid "Surfaces"
-msgstr "Povrchy"
-
-#: src/extensions/orbitalextension.h:49
-msgid "Calculate molecular orbitals and other surfaces"
-msgstr "Počítají se orbitaly molekul a jiné povrchy"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -1747,24 +1685,24 @@ msgstr ""
 "Zvolil jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru POV-"
 "Ray. To znamená, že nebude uložen žádný výstup. Jste si jist?"
 
-#: src/extensions/povrayextension.cpp:158
-#: src/extensions/povrayextension.cpp:179
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:182
 msgid "Cannot Write to File."
 msgstr "Nelze zapisovat do souboru."
 
-#: src/extensions/povrayextension.cpp:159
-#: src/extensions/povrayextension.cpp:180
+#: src/extensions/povrayextension.cpp:160
+#: src/extensions/povrayextension.cpp:183
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr ""
 "Nelze zapisovat do souboru %1. Máte oprávnění pro zápis do tohoto umístění?"
 
-#: src/extensions/povrayextension.cpp:173
+#: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
 msgstr "Spuštění POV-Ray selhalo."
 
-#: src/extensions/povrayextension.cpp:174
+#: src/extensions/povrayextension.cpp:177
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
@@ -1832,7 +1770,7 @@ msgid "Conformer Properties"
 msgstr "Vlastnosti podobnosti"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43 :482
+#: src/extensions/propextension.h:43:462
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -1844,8 +1782,7 @@ msgstr ""
 "Okna pro zobrazení vlastností atomů, vazeb, úhlů a zkroucení. Také zahrnuje "
 "kartézský souřadnicový editor."
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:353 :208
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
 msgid "Type"
 msgstr "Typ"
 
@@ -1857,8 +1794,7 @@ msgstr "Prvek"
 msgid "Valence"
 msgstr "Valence"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/extensions/propmodel.cpp:359 :86
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "Částečný náboj"
 
@@ -1944,11 +1880,11 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423 :462
+#: src/extensions/propmodel.cpp:423:442
 msgid "Energy"
 msgstr "Energie"
 
-#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
 msgstr "Podobnost %1"
@@ -2014,10 +1950,9 @@ msgstr "Vybrat vzor SMARTS"
 msgid "Select by residue"
 msgstr "Výběr podle zbytku"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1140 rc.cpp:1458
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
+#: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "Název zbytku"
 
@@ -2049,36 +1984,35 @@ msgstr "Výběry"
 msgid "Select atoms, bonds, residues..."
 msgstr "Vybrat atomy, vazby, zbytky..."
 
-#: src/extensions/shaderextension.cpp:169
+#: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
 msgstr "GLSL tónovače..."
 
-#: src/extensions/shaderextension.cpp:323
+#: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
 msgstr "Otevřít zdrojový soubor tónovače vrcholů"
 
-#: src/extensions/shaderextension.cpp:324
+#: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
 msgstr "Soubory tónovače vrcholů (*.vert)"
 
-#: src/extensions/shaderextension.cpp:344
+#: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
 msgstr "Otevřít zdrojový soubor tónovače kousků"
 
-#: src/extensions/shaderextension.cpp:345
+#: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
 msgstr "Soubory tónovače kousků (*.frag)"
 
-#: src/extensions/shaderextension.cpp:355
+#: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
 msgstr "Otevřít soubor s parametry tónovače"
 
-#: src/extensions/shaderextension.cpp:356
+#: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
 msgstr "Soubory s parametry tónovače (*.params)"
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1578
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
 msgid "GLSL Shaders"
 msgstr "GLSL tónovače"
 
@@ -2095,12 +2029,12 @@ msgid "Y Axis"
 msgstr "Osa Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152 :1620
+#: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
 msgstr "&Vzhled"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153 :1664
+#: src/extensions/spectradialog.cpp:153:1572
 msgid "E&xport Image"
 msgstr "Vy&vést obrázek do souboru"
 
@@ -2182,8 +2116,8 @@ msgstr "Čárkou oddělené hodnoty"
 msgid "JCAMP-DX"
 msgstr "JCAMP-DX"
 
-#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
-#: src/extensions/spectradialog.cpp:625
+#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
+#: src/extensions/spectradialog.cpp:647
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -2195,7 +2129,7 @@ msgstr "Zavedení spektra"
 msgid "Spectra Import"
 msgstr "Zavedení spektra"
 
-#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "Neznámá přípona: %1"
@@ -2205,79 +2139,84 @@ msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr "PWscf IR data (*.out)"
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:530
+msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
+msgid "Turbomole IR data (control)"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
 msgstr "Formát dat"
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
 msgstr "Formát:"
 
-#: src/extensions/spectradialog.cpp:540
+#: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
 msgstr "Nahrát spektrální data"
 
-#: src/extensions/spectradialog.cpp:618
+#: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
 msgstr "PNG (Portable Network Graphics)"
 
-#: src/extensions/spectradialog.cpp:619
+#: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
 msgstr "Jpeg"
 
-#: src/extensions/spectradialog.cpp:620
+#: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
 msgstr "TIFF (Tagged Image File Format)"
 
-#: src/extensions/spectradialog.cpp:621
+#: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
 msgstr "BMP (Windows Bitmap)"
 
-#: src/extensions/spectradialog.cpp:622
+#: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
 msgstr "Portable Pixmap"
 
-#: src/extensions/spectradialog.cpp:623
+#: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
 msgstr "X11 Bitmapa"
 
-#: src/extensions/spectradialog.cpp:624
+#: src/extensions/spectradialog.cpp:646
 msgid "X11 Pixmap"
 msgstr "X11 Pixmapa"
 
-#: src/extensions/spectradialog.cpp:628
+#: src/extensions/spectradialog.cpp:650
 msgid "Save Spectra Image"
 msgstr "Uložit obraz spektra"
 
-#: src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
 msgstr "Neplatný název souboru"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 msgid "Error"
 msgstr "Chyba"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr "Při zápisu souboru %1 se vyskytly potíže"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 msgid "Success!"
 msgstr "Úspěch!"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr "Obrázek byl úspěšně zapsán do %1"
 
-#: src/extensions/spectradialog.cpp:707
+#: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
 msgstr "Uzpůso&bit <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714 :1616
+#: src/extensions/spectradialog.cpp:736:1524
 msgid "Customi&ze >>"
 msgstr "Uzpůso&bit >>"
 
@@ -2306,7 +2245,7 @@ msgstr ""
 "Údaje o vibracích v molekule, které jste nahrál, nemají jakýkoli údaj o "
 "síle. Síly byly nastaveny kvůli zviditelnění na nahodilou hodnotu."
 
-#: src/extensions/spectratype_ir.cpp:152
+#: src/extensions/spectratype_ir.cpp:135
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Vlnové číslo (cm<sup>-1</sup>)"
 
@@ -2337,6 +2276,97 @@ msgstr "Superbuňka"
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
 msgstr "Sestavit a zobrazit krystalografické superbuňky"
+
+#: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
+#: src/extensions/surfaceextension.cpp:622
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "MO %L1"
+msgstr "MO %L1"
+
+#: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
+msgctxt "Highest occupied MO"
+msgid "(HOMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
+msgctxt "Lowest unoccupied MO"
+msgid "(LUMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:249
+msgctxt "A cube type of nothing - empty cube"
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:251
+#, fuzzy
+msgctxt "Van der Waals surface type"
+msgid "Van der Waals"
+msgstr "Van der Waals"
+
+#: src/extensions/surfacedialog.cpp:253
+#, fuzzy
+msgctxt "Electrostatic potential surface type"
+msgid "Electrostatic Potential"
+msgstr "Elektrostatický potenciál"
+
+#: src/extensions/surfacedialog.cpp:256
+#, fuzzy
+msgctxt "Electron density surface type"
+msgid "Electron Density"
+msgstr "Elektronová hustota"
+
+#: src/extensions/surfacedialog.cpp:258
+#, fuzzy
+msgctxt "Molecular orbital surface type"
+msgid "Molecular Orbital"
+msgstr "Vykresluje molekulové orbitaly"
+
+#: src/extensions/surfacedialog.cpp:260
+msgctxt "Undefined cube type"
+msgid "Error - undefined type"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:67
+msgid "Create Surfaces..."
+msgstr "Vytvořit povrchy..."
+
+#: src/extensions/surfaceextension.cpp:356
+#: src/extensions/surfaceextension.cpp:386
+#: src/extensions/surfaceextension.cpp:413
+#: src/extensions/surfaceextension.cpp:447
+#: src/extensions/surfaceextension.cpp:475
+msgid "Abort Calculation"
+msgstr "Přerušit výpočet"
+
+#: src/extensions/surfaceextension.cpp:361
+msgid "Calculating VdW Cube"
+msgstr "Počítá se krychle VdW"
+
+#: src/extensions/surfaceextension.cpp:391
+#: src/extensions/surfaceextension.cpp:417
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "Calculating MO %L1"
+msgstr "Počítá se MO %L1"
+
+#: src/extensions/surfaceextension.cpp:452
+#: src/extensions/surfaceextension.cpp:480
+msgid "Calculating Electron Density"
+msgstr "Počítá se elektronová hustotu"
+
+#: src/extensions/surfaceextension.cpp:566
+msgid "VdW"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:594
+msgid "Electron Density"
+msgstr "Elektronová hustota"
+
+#: src/extensions/surfaceextension.h:51
+msgid "Calculate molecular orbitals and other surfaces"
+msgstr "Počítají se orbitaly molekul a jiné povrchy"
 
 #: src/extensions/templateextension.cpp:42
 msgid "First Action"
@@ -2438,7 +2468,7 @@ msgid "Apply"
 msgstr "Použít"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :242
+#: src/extensions/unitcellparamdialog.cpp:97:222
 msgid "OK"
 msgstr "OK"
 
@@ -2449,7 +2479,7 @@ msgstr "Třídí se %1 vibrace podle kmitočtu..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :1818
+#: src/extensions/vibrationdialog.cpp:213:1730
 msgid "Start &Animation"
 msgstr "Spustit &animaci"
 
@@ -2467,7 +2497,7 @@ msgstr "&Vibrace..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239 :824
+#: src/extensions/vibrationextension.cpp:239:804
 msgid "Vibrational Analysis"
 msgstr "Rozbor vibrací"
 
@@ -2554,101 +2584,101 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "bez názvu"
 
-#: src/moleculefile.cpp:112
+#: src/moleculefile.cpp:130
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: index %1 mimo dosah."
 
-#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
+#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:662
+#: src/moleculefile.cpp:757
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "Souborový typ '%1' není podporován pro čtení."
 
-#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:668
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "Souborový typ pro soubor '%1' není podporován pro čtení."
 
-#: src/moleculefile.cpp:154
+#: src/moleculefile.cpp:172
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr "Čtení molekuly s indexem %1 ze souboru '%2' selhalo."
 
-#: src/moleculefile.cpp:166
+#: src/moleculefile.cpp:184
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "nahraditMolekulu: index %1 mimo dosah."
 
-#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
+#: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Souborový typ '%1' není podporován pro zápis."
 
-#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
+#: src/moleculefile.cpp:199 src/moleculefile.cpp:450 src/moleculefile.cpp:538
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Souborový typ pro soubor '%1' není podporován pro zápisí."
 
-#: src/moleculefile.cpp:191
+#: src/moleculefile.cpp:209
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr "Nepodařilo se otevřít soubor '%1' pro zápis."
 
-#: src/moleculefile.cpp:198
+#: src/moleculefile.cpp:216
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr "Nepodařilo se otevřít soubor '%1' pro čtení."
 
-#: src/moleculefile.cpp:207
+#: src/moleculefile.cpp:225
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Nahrazení molekuly s indexem %1 ze souboru '%2' selhalo."
 
-#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
+#: src/moleculefile.cpp:355 src/moleculefile.cpp:651 src/moleculefile.cpp:746
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Soubor %1 nelze otevřít pro čtení."
 
-#: src/moleculefile.cpp:378
+#: src/moleculefile.cpp:398 src/moleculefile.cpp:772
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Čtení molekuly ze souboru '%1' selhalo."
 
-#: src/moleculefile.cpp:393
+#: src/moleculefile.cpp:413 src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "Soubor %1 nelze otevřít pro zápis."
 
-#: src/moleculefile.cpp:439
+#: src/moleculefile.cpp:476
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Uložení molekulového souboru selhalo - původní soubor nelze přejmenovat."
 
-#: src/moleculefile.cpp:446
+#: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
-msgstr ""
-"Uložení molekulového souboru selhalo - novýí soubor nelze přejmenovat."
+msgstr "Uložení molekulového souboru selhalo - novýí soubor nelze přejmenovat."
 
-#: src/moleculefile.cpp:455
+#: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "Uložení molekulového souboru selhalo - starý soubor nelze odstranit."
 
-#: src/moleculefile.cpp:464
+#: src/moleculefile.cpp:501
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "Zápis molekuly do souboru '%1' selhal. Selhala funkce OpenBabel."
 
-#: src/moleculefile.cpp:481
+#: src/moleculefile.cpp:518
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Soubor %1 nelze otevřít pro zápis."
 
-#: src/moleculefile.cpp:533
+#: src/moleculefile.cpp:570
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Zápis podobnosti do souboru %1 selhal."
 
-#: src/moleculefile.cpp:680
+#: src/moleculefile.cpp:725 src/moleculefile.cpp:766
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molekula %1"
@@ -2809,13 +2839,11 @@ msgstr "Kroky při obnovení:"
 msgid "Algorithm:"
 msgstr "Algoritmus:"
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:286 :272
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
 msgid "Steepest Descent"
 msgstr "Nejstrmější pokles"
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:287 :274
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
 msgid "Conjugate Gradients"
 msgstr "Sdružovat přechody"
 
@@ -2896,8 +2924,8 @@ msgstr "Otáčení kolem osy z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:294 :966 rc.cpp:1246 rc.cpp:1304
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Obnovit"
 
@@ -3037,6 +3065,16 @@ msgstr "*4"
 msgid "Distance(s):"
 msgstr "Vzdálenost(i):"
 
+#: src/tools/clickmeasuretool.cpp:290
+#, fuzzy
+msgid "Angle:"
+msgstr "Úhel"
+
+#: src/tools/clickmeasuretool.cpp:302
+#, fuzzy
+msgid "Dihedral:"
+msgstr "Dvoustěnný úhel"
+
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
 msgstr "Měření"
@@ -3049,8 +3087,8 @@ msgstr "Změřit délky vazeb, úhly a dvoustěnné úhly"
 msgid "Measure Settings"
 msgstr "Nastavení měření"
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1838
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
+#: src/tools/drawcommand.cpp:289:1750
 msgid "Add Atom"
 msgstr "Přidat atom"
 
@@ -3102,8 +3140,7 @@ msgstr "Nakreslit"
 msgid "Element:"
 msgstr "Prvek:"
 
-#: src/extensions/gamessinputdialog.ui:1214
-#: src/tools/drawtool.cpp:763 :576
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
 msgid "Other..."
 msgstr "Ostatní:"
 
@@ -3250,8 +3287,7 @@ msgstr "Dvoustěnný úhel"
 msgid "Z Matrix Editor..."
 msgstr "Editor matice Z..."
 
-#: src/extensions/gamessinputdialog.ui:1537
-#: src/tools/zmatrixtool.h:39 :634
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
 msgid "Z-Matrix"
 msgstr "Matice Z"
 
@@ -3291,15 +3327,12 @@ msgstr "Poloměr atomu:"
 msgid "Bond Radius:"
 msgstr "Poloměr vazby"
 
-#: src/engines/bsdysettingswidget.ui:76
-#: src/engines/orbitalsettingswidget.ui:30
-#: src/engines/ringsettingswidget.ui:16
-#: src/engines/surfacesettingswidget.ui:17
+#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "Průhlednost"
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Ukázat násobné vazby"
 
@@ -3390,6 +3423,16 @@ msgstr "Nejzazší úhel"
 msgid "Atom Labels:"
 msgstr "Popisky atomů:"
 
+#: src/engines/labelsettingswidget.ui:55
+#: src/engines/labelsettingswidget.ui:140
+#: src/extensions/gamessinputdialog.ui:450
+#: src/extensions/gamessinputdialog.ui:999
+#: src/extensions/gamessinputdialog.ui:1069
+#: src/extensions/gamessinputdialog.ui:1115
+#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+msgid "None"
+msgstr "Žádný"
+
 #: src/engines/labelsettingswidget.ui:60
 msgid "Atom number"
 msgstr "Atomové číslo"
@@ -3435,60 +3478,6 @@ msgstr "Číslo vazby"
 msgid "Bond order"
 msgstr "Pořadí vazeb"
 
-#: src/engines/orbitalsettingswidget.ui:17
-msgid "Orbital:"
-msgstr "Orbital:"
-
-#: src/engines/orbitalsettingswidget.ui:74
-#: src/engines/surfacesettingswidget.ui:58
-msgid "Render:"
-msgstr "Vykreslit:"
-
-#: src/engines/orbitalsettingswidget.ui:85
-#: src/engines/surfacesettingswidget.ui:66
-msgid "Fill"
-msgstr "Výplň"
-
-#: src/engines/orbitalsettingswidget.ui:90
-#: src/engines/ribbonsettingswidget.ui:29
-#: src/engines/surfacesettingswidget.ui:71
-msgid "Lines"
-msgstr "Čáry"
-
-#: src/engines/orbitalsettingswidget.ui:95
-#: src/engines/surfacesettingswidget.ui:76
-msgid "Points"
-msgstr "Body"
-
-#: src/engines/orbitalsettingswidget.ui:103
-#: src/engines/surfacesettingswidget.ui:108
-msgid "Draw Box:"
-msgstr "Rámeček:"
-
-#: src/engines/orbitalsettingswidget.ui:129
-msgid "Style:"
-msgstr "Styl:"
-
-#: src/engines/orbitalsettingswidget.ui:140
-msgid "Selected Colors"
-msgstr "Vybrané barvy"
-
-#: src/engines/orbitalsettingswidget.ui:145
-msgid "Mapped Colors"
-msgstr "Zobrazené barvy"
-
-#: src/engines/orbitalsettingswidget.ui:153
-msgid "Colors:"
-msgstr "Barvy:"
-
-#: src/engines/orbitalsettingswidget.ui:165
-msgid "Positive"
-msgstr "Positivní"
-
-#: src/engines/orbitalsettingswidget.ui:188
-msgid "Negative"
-msgstr "Negativní"
-
 #: src/engines/ribbonsettingswidget.ui:16
 msgid "Rendering:"
 msgstr "Vykreslení:"
@@ -3496,6 +3485,11 @@ msgstr "Vykreslení:"
 #: src/engines/ribbonsettingswidget.ui:24
 msgid "Backbone"
 msgstr "Páteř"
+
+#: src/engines/ribbonsettingswidget.ui:29
+#: src/engines/surfacesettingswidget.ui:90
+msgid "Lines"
+msgstr "Čáry"
 
 #: src/engines/ribbonsettingswidget.ui:37
 #: src/engines/sticksettingswidget.ui:16
@@ -3510,13 +3504,49 @@ msgstr "Zahrnout dusíkové atomy"
 msgid "VdW Opacity:"
 msgstr "Neprůhlednost VdW:"
 
-#: src/engines/surfacesettingswidget.ui:84
-msgid "Color:"
-msgstr "Barva:"
+#: src/engines/surfacesettingswidget.ui:17
+msgid "Orbital:"
+msgstr "Orbital:"
 
-#: src/engines/surfacesettingswidget.ui:100
-msgid "Electrostatic Potential (ESP)"
-msgstr "Elektrostatický potenciál (ESP)"
+#: src/engines/surfacesettingswidget.ui:74
+msgid "Render:"
+msgstr "Vykreslit:"
+
+#: src/engines/surfacesettingswidget.ui:85
+msgid "Fill"
+msgstr "Výplň"
+
+#: src/engines/surfacesettingswidget.ui:95
+msgid "Points"
+msgstr "Body"
+
+#: src/engines/surfacesettingswidget.ui:103
+msgid "Draw Box:"
+msgstr "Rámeček:"
+
+#: src/engines/surfacesettingswidget.ui:129
+msgid "Style:"
+msgstr "Styl:"
+
+#: src/engines/surfacesettingswidget.ui:140
+msgid "Selected Colors"
+msgstr "Vybrané barvy"
+
+#: src/engines/surfacesettingswidget.ui:145
+msgid "Mapped Colors"
+msgstr "Zobrazené barvy"
+
+#: src/engines/surfacesettingswidget.ui:153
+msgid "Colors:"
+msgstr "Barvy:"
+
+#: src/engines/surfacesettingswidget.ui:165
+msgid "Positive"
+msgstr "Positivní"
+
+#: src/engines/surfacesettingswidget.ui:188
+msgid "Negative"
+msgstr "Negativní"
 
 #: src/engines/wiresettingswidget.ui:18
 msgid "Show Atoms"
@@ -3530,8 +3560,7 @@ msgstr "Animovat dráhu"
 msgid "Load File..."
 msgstr "Nahrát soubor..."
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3539,8 +3568,7 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr "Dynamické vazby"
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3571,10 +3599,8 @@ msgid "Number of conformers"
 msgstr "Počet podobností"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Metoda"
@@ -3663,15 +3689,12 @@ msgstr "Smazat vše"
 msgid "File Import..."
 msgstr "Zavedení souboru..."
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Název souboru:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Prohledávat..."
@@ -3692,8 +3715,7 @@ msgstr "Rozpoznat vazby?"
 msgid "Setup Force Field"
 msgstr "Nastavit silové pole"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Silové pole"
 
@@ -3916,7 +3938,7 @@ msgstr "Voda"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:295
+#: src/extensions/surfacedialog.ui:335
 msgid "Calculate"
 msgstr "Vypočítat"
 
@@ -3925,8 +3947,6 @@ msgid "With:"
 msgstr "Šířka:"
 
 #: src/extensions/gamessinputdialog.ui:300
-#: src/extensions/orbitaldialog.ui:556
-#: src/extensions/orbitaldialog.ui:773
 msgid "In:"
 msgstr "V:"
 
@@ -4447,8 +4467,7 @@ msgstr "Jednotky:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Název:"
 
@@ -4930,8 +4949,7 @@ msgstr "Vytváří se..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Zavřít"
@@ -5049,14 +5067,6 @@ msgstr "Použít vzhled"
 #: src/extensions/insertfragmentdialog.ui:14
 msgid "Insert Fragment..."
 msgstr "Vložit kousek"
-
-#: src/extensions/insertfragmentdialog.ui:25
-msgid "Add Directory"
-msgstr "Přidat adresář"
-
-#: src/extensions/insertfragmentdialog.ui:32
-msgid "Reset List"
-msgstr "Obnovit seznam"
 
 #: src/extensions/insertpeptidedialog.ui:20
 msgid "Peptide Builder"
@@ -5339,8 +5349,7 @@ msgstr "Ligand vytvořit znázvu zbytku"
 msgid "create ligand from file..."
 msgstr "Ligand vytvořit ze souboru"
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "Název zbytku"
 
@@ -5490,119 +5499,6 @@ msgstr "RM1"
 msgid "NWChem Input"
 msgstr "Vstup NWChem"
 
-#: src/extensions/orbitaldialog.ui:30
-msgid "Cubes"
-msgstr "Krychle"
-
-#: src/extensions/orbitaldialog.ui:36
-msgid "Cube Dimensions"
-msgstr "Rozměry krychle"
-
-#: src/extensions/orbitaldialog.ui:47
-msgid "x"
-msgstr "x"
-
-#: src/extensions/orbitaldialog.ui:60
-msgid "y"
-msgstr "y"
-
-#: src/extensions/orbitaldialog.ui:73
-msgid "z"
-msgstr "z"
-
-#: src/extensions/orbitaldialog.ui:88
-msgid "Origin:"
-msgstr "Původ:"
-
-#: src/extensions/orbitaldialog.ui:130
-msgid "Max:"
-msgstr "Max:"
-
-#: src/extensions/orbitaldialog.ui:172
-msgid "Steps:"
-msgstr "Kroky:"
-
-#: src/extensions/orbitaldialog.ui:214
-msgid "Step Size:"
-msgstr "Velikost kroku:"
-
-#: src/extensions/orbitaldialog.ui:304
-msgid "Calculate MO"
-msgstr "Vypočítat MO"
-
-#: src/extensions/orbitaldialog.ui:331
-msgid "Calculate All MOs"
-msgstr "Vypočítat všechna MO"
-
-#: src/extensions/orbitaldialog.ui:358
-msgid "Calculate Electron Density"
-msgstr "Vypočítat elektronovou hustotu"
-
-#: src/extensions/orbitaldialog.ui:385
-msgid "Calculate Van der Waals Cube"
-msgstr "Vypočítat Van der Waalsovu krychli"
-
-#: src/extensions/orbitaldialog.ui:411
-msgid "Isosurfaces"
-msgstr "Izopovrchy"
-
-#: src/extensions/orbitaldialog.ui:417
-#: src/extensions/orbitaldialog.ui:633
-msgid "Cube:"
-msgstr "Krychle:"
-
-#: src/extensions/orbitaldialog.ui:447
-#: src/extensions/orbitaldialog.ui:663
-#: src/extensions/surfacedialog.ui:104
-msgid "Color By:"
-msgstr "Barva dle:"
-
-#: src/extensions/orbitaldialog.ui:481
-#: src/extensions/surfacedialog.ui:203
-msgid "Iso Value:"
-msgstr "Izohodnota:"
-
-#: src/extensions/orbitaldialog.ui:493
-msgid "0.02"
-msgstr "0.02"
-
-#: src/extensions/orbitaldialog.ui:515
-msgid "Cube Range:"
-msgstr "Rozsah krychle:"
-
-#: src/extensions/orbitaldialog.ui:527
-msgid "0.000"
-msgstr "0.000"
-
-#: src/extensions/orbitaldialog.ui:544
-msgid "1.000"
-msgstr "1.000"
-
-#: src/extensions/orbitaldialog.ui:604
-#: src/extensions/orbitaldialog.ui:821
-msgid "Calculate Mesh"
-msgstr "Vypočítat síť"
-
-#: src/extensions/orbitaldialog.ui:627
-msgid "Van der Waals Surface"
-msgstr "Van der Waalsův povrch"
-
-#: src/extensions/orbitaldialog.ui:684
-msgid "ESP (approximate)"
-msgstr "ESP (přibližně)"
-
-#: src/extensions/orbitaldialog.ui:707
-msgid "Distance:"
-msgstr "Vzdálenost:"
-
-#: src/extensions/orbitaldialog.ui:719
-msgid "0.0"
-msgstr "0.0"
-
-#: src/extensions/orbitaldialog.ui:741
-msgid "Range:"
-msgstr "Rozsah:"
-
 #: src/extensions/pocketdialog.ui:13
 msgid "Create binding pocket"
 msgstr "Vytvořit vázající kapsu"
@@ -5641,8 +5537,7 @@ msgstr "povray"
 msgid "Render"
 msgstr "Vykreslit"
 
-#: src/extensions/povraydialog.ui:137
-#: src/extensions/surfacedialog.ui:143
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Rozlišení:"
 
@@ -5726,8 +5621,7 @@ msgstr "Tónovač kousků:"
 msgid "Parameters:"
 msgstr "Parametry:"
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "Přiřadit tónovač"
 
@@ -5769,10 +5663,8 @@ msgstr "&Zavřít"
 msgid "Calculated Spectra:"
 msgstr "Vypočtená spektra:"
 
-#: src/extensions/spectradialog.ui:168
-#: src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279
-#: src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "Nastavit barvu..."
 
@@ -5788,8 +5680,7 @@ msgstr "Písmo:"
 msgid "Change Font..."
 msgstr "Změnit písmo..."
 
-#: src/extensions/spectradialog.ui:224
-#: src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "Ukázat"
 
@@ -5939,8 +5830,7 @@ msgstr "Obnovit osy ýnákresu"
 msgid "Label Peaks:"
 msgstr "Vrcholy popisků"
 
-#: src/extensions/spectratabnmr.ui:125
-#: src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5983,51 +5873,62 @@ msgstr "Typ povrchu:"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46
-#: src/extensions/surfacedialog.ui:120
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "Elektrostatický potenciál"
 
-#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "MO 666"
 
-#: src/extensions/surfacedialog.ui:162
+#: src/extensions/surfacedialog.ui:104
+msgid "Color By:"
+msgstr "Barva dle:"
+
+#: src/extensions/surfacedialog.ui:120
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
 msgid "Low"
 msgstr "Nízký"
 
-#: src/extensions/surfacedialog.ui:167
+#: src/extensions/surfacedialog.ui:207
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Střední"
 
-#: src/extensions/surfacedialog.ui:172
+#: src/extensions/surfacedialog.ui:212
 msgctxt "high resolution"
 msgid "High"
 msgstr "Vysoký"
 
-#: src/extensions/surfacedialog.ui:177
+#: src/extensions/surfacedialog.ui:217
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Velmi vysoký"
 
-#: src/extensions/surfacedialog.ui:200
+#: src/extensions/surfacedialog.ui:240
 msgid "Isosurface cutoff value"
 msgstr "Hodnota přerušení izopovrchu"
 
-#: src/extensions/surfacedialog.ui:236
+#: src/extensions/surfacedialog.ui:243
+msgid "Iso Value:"
+msgstr "Izohodnota:"
+
+#: src/extensions/surfacedialog.ui:276
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
 msgstr "Typ zobrazení vstupu:"
 
-#: src/extensions/surfacedialog.ui:255
+#: src/extensions/surfacedialog.ui:295
 msgid "New Display"
 msgstr "Nové zobrazení"
 
-#: src/extensions/surfacedialog.ui:305
+#: src/extensions/surfacedialog.ui:345
 msgid "Advanced..."
 msgstr "Pokročilé..."
 
@@ -6158,19 +6059,120 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
-"Contributions:,Avogadro Team,fri, ,Launchpad Contributions:,Avogadro "
-"Team,Geoff Hutchison,fri, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Roman Horník,fri"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
+"Avogadro Team,fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
+"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,fri"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
-"ech.trefny@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,pavelfric@seznam.cz,,,avogadro-"
-"devel@lists.sourceforge.net,,pavelfric@seznam.cz,,,avogadro-"
-"devel@lists.sourceforge.net,,roman.hornik@gmail.com,pavelfric@seznam.cz"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
+"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
+"pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,pavelfric@seznam."
+"cz,,,avogadro-devel@lists.sourceforge.net,,roman.hornik@gmail.com,"
+"pavelfric@seznam.cz"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitaly"
+
+#~ msgid "Surface"
+#~ msgstr "Povrch"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Vykresluje molekuly jako povrchy"
+
+#~ msgid "Name"
+#~ msgstr "Název"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "VdW Cube"
+#~ msgstr "Krychle VdW"
+
+#~ msgid "Color:"
+#~ msgstr "Barva:"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Elektrostatický potenciál (ESP)"
+
+#~ msgid "Add Directory"
+#~ msgstr "Přidat adresář"
+
+#~ msgid "Reset List"
+#~ msgstr "Obnovit seznam"
+
+#~ msgid "Cubes"
+#~ msgstr "Krychle"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "Rozměry krychle"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Origin:"
+#~ msgstr "Původ:"
+
+#~ msgid "Max:"
+#~ msgstr "Max:"
+
+#~ msgid "Steps:"
+#~ msgstr "Kroky:"
+
+#~ msgid "Step Size:"
+#~ msgstr "Velikost kroku:"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Vypočítat MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Vypočítat všechna MO"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Vypočítat elektronovou hustotu"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Vypočítat Van der Waalsovu krychli"
+
+#~ msgid "Isosurfaces"
+#~ msgstr "Izopovrchy"
+
+#~ msgid "Cube:"
+#~ msgstr "Krychle:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "Cube Range:"
+#~ msgstr "Rozsah krychle:"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "Vypočítat síť"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (přibližně)"
+
+#~ msgid "Distance:"
+#~ msgstr "Vzdálenost:"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Range:"
+#~ msgstr "Rozsah:"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesium"
@@ -6187,15 +6189,12 @@ msgstr ""
 #~ msgid "Bonds"
 #~ msgstr "Vazby"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Vzdálenost (1->2): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Vzdálenost (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Vzdálenost (3->4): %1 %2"
 
@@ -6218,18 +6217,17 @@ msgstr ""
 #~ msgstr "Frekvence (cm-1)"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
-#~ "%3<br/><br/>Pro více informací navštivte <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">domovskou stránku "
-#~ "projektu</a>.<br/><br/>Program je poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, "
-#~ "VČETNĚ ZÁRUKY PRODEJNOSTI NEBO POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
+#~ "<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/"
+#~ "><br/>Pro více informací navštivte <a href=\"http://avogadro."
+#~ "openmolecules.net/\">domovskou stránku projektu</a>.<br/><br/>Program je "
+#~ "poskytován TAK JAK JE BEZ JAKÉKOLI ZÁRUKY, VČETNĚ ZÁRUKY PRODEJNOSTI NEBO "
+#~ "POUŽITELNOSTI PRO NĚJAKÝ ÚČEL.<br/>"
 
 #~ msgid "Cut Molecule"
 #~ msgstr "Vyjmout molekulu"
@@ -6305,12 +6303,13 @@ msgstr ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením nebo "
-#~ "úpravou."
+#~ "Tento soubor neobsahuje 3D souřadnice. Mohou nastat problémy se čtením "
+#~ "nebo úpravou."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze "
 #~ "první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být "
@@ -6374,6 +6373,9 @@ msgstr ""
 #~ msgid "View %1"
 #~ msgstr "Zobrazit %1"
 
+#~ msgid "Avogadro: Detached View"
+#~ msgstr "Avogadro: oddělený pohled"
+
 #~ msgid "Normal Size"
 #~ msgstr "Normální velikost"
 
@@ -6396,7 +6398,8 @@ msgstr ""
 #~ " It is unlikely this application will function correctly. Please correct "
 #~ "this error."
 #~ msgstr ""
-#~ " Aplikace pravděpodobně nebude fungovat správně. Prosím opravte tuto chybu."
+#~ " Aplikace pravděpodobně nebude fungovat správně. Prosím opravte tuto "
+#~ "chybu."
 
 #~ msgid " copy"
 #~ msgstr " kopírovat"
@@ -6465,6 +6468,9 @@ msgstr ""
 #~ msgid "cancel"
 #~ msgstr "ukončit"
 
+#~ msgid "Add Display Type"
+#~ msgstr "Přidat typ zobrazení"
+
 #~ msgid "Type:"
 #~ msgstr "Typ:"
 
@@ -6500,6 +6506,9 @@ msgstr ""
 
 #~ msgid "Recent"
 #~ msgstr "Nedávné"
+
+#~ msgid "&Clear Recent"
+#~ msgstr "&Smazat nedávné"
 
 #~ msgid "&New"
 #~ msgstr "&Nový"
@@ -6542,6 +6551,9 @@ msgstr ""
 
 #~ msgid "Ctrl+Shift+Z"
 #~ msgstr "Ctrl+Shift+Z"
+
+#~ msgid "New View"
+#~ msgstr "Nový pohled"
 
 #~ msgid "Close View"
 #~ msgstr "Zavřít pohlet"
@@ -6588,6 +6600,9 @@ msgstr ""
 #~ msgid "Tutorials"
 #~ msgstr "Návody"
 
+#~ msgid "Duplicate View"
+#~ msgstr "Duplikovat pohled"
+
 #~ msgid "Avogadro Help"
 #~ msgstr "Nápověda Avogadro"
 
@@ -6597,11 +6612,23 @@ msgstr ""
 #~ msgid "Report a Bug"
 #~ msgstr "Nahlásit chybu"
 
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
 #~ msgid "Avogadro Website"
 #~ msgstr "Domovská stránka Avogadro"
 
 #~ msgid "Details"
 #~ msgstr "Detaily"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "U"
+#~ msgstr "U"
+
+#~ msgid "1"
+#~ msgstr "1"
 
 #~ msgid "General"
 #~ msgstr "Obecné"
@@ -6617,30 +6644,3 @@ msgstr ""
 
 #~ msgid "Right"
 #~ msgstr "Vpravo"
-
-#~ msgid "Avogadro: Detached View"
-#~ msgstr "Avogadro: oddělený pohled"
-
-#~ msgid "Add Display Type"
-#~ msgstr "Přidat typ zobrazení"
-
-#~ msgid "&Clear Recent"
-#~ msgstr "&Smazat nedávné"
-
-#~ msgid "New View"
-#~ msgstr "Nový pohled"
-
-#~ msgid "Duplicate View"
-#~ msgstr "Duplikovat pohled"
-
-#~ msgid "FAQ"
-#~ msgstr "FAQ"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "U"
-#~ msgstr "U"
-
-#~ msgid "1"
-#~ msgstr "1"

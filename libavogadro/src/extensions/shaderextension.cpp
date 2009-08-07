@@ -28,8 +28,6 @@
   #include <GL/glew.h>
 #endif
 
-#include "../config.h"
-
 #include <avogadro/glwidget.h>
 #include <avogadro/toolgroup.h>
 #include <avogadro/engine.h>
@@ -384,8 +382,8 @@ namespace Avogadro
     verts = QCoreApplication::applicationDirPath();
     verts.cd("shaders");
     #else
-    QString systemShadersPath = QString(INSTALL_PREFIX) + '/'
-      + "share/libavogadro/shaders";
+    QString systemShadersPath = QCoreApplication::applicationDirPath() +
+                                "/../share/libavogadro/shaders";
     verts.cd(systemShadersPath);
     #endif
 

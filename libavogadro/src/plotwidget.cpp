@@ -200,6 +200,12 @@ namespace Avogadro {
         }
       }
     }
+    double xspread = xmax - xmin;
+    double yspread = ymax - ymin;
+    xmin -= xspread * 0.05;
+    xmax += xspread * 0.05;
+    ymin -= yspread * 0.05;
+    ymax += yspread * 0.05;
     setDefaultLimits( xmin, xmax, ymin, ymax );
   }
 

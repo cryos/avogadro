@@ -46,10 +46,6 @@ namespace Avogadro {
     m_actions.append(action);
     m_dialog = new UnitCellParamDialog(static_cast<QWidget*>(parent));
 
-    connect(m_dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
-            this, SLOT(unitCellDisplayChanged(int, int, int)));
-    connect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
-            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
     connect(m_dialog, SIGNAL(deleteUnitCell()),
             this, SLOT(deleteUnitCell()));
     connect(m_dialog, SIGNAL(fillUnitCell()),
@@ -73,6 +69,29 @@ namespace Avogadro {
   void UnitCellExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+
+    if (m_molecule == NULL || m_dialog == NULL)
+      return; // nothing we can do
+
+    OBUnitCell *uc = m_molecule->OBUnitCell();
+    if (!uc)
+      return; // no unit cell
+
+    // We don't want to send signals while we update
+    disconnect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
+               this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+
+    m_dialog->aLength(uc->GetA());
+    m_dialog->bLength(uc->GetB());
+    m_dialog->cLength(uc->GetC());
+
+    m_dialog->alpha(uc->GetAlpha());
+    m_dialog->beta(uc->GetBeta());
+    m_dialog->gamma(uc->GetGamma());
+
+    // reconnect
+    connect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
+            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
   }
 
   QUndoCommand* UnitCellExtension::performAction(QAction *, GLWidget *widget)
@@ -112,6 +131,12 @@ namespace Avogadro {
 
     } // end if (existing unit cell or create a new one)
 
+    // Don't emit signals while we update these
+    disconnect(m_dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
+            this, SLOT(unitCellDisplayChanged(int, int, int)));
+    disconnect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
+            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
+
     m_dialog->aCells(widget->aCells());
     m_dialog->bCells(widget->bCells());
     m_dialog->cCells(widget->cCells());
@@ -123,6 +148,12 @@ namespace Avogadro {
     m_dialog->alpha(uc->GetAlpha());
     m_dialog->beta(uc->GetBeta());
     m_dialog->gamma(uc->GetGamma());
+
+    // OK, now we can handle signal/slots
+    connect(m_dialog, SIGNAL(unitCellDisplayChanged(int, int, int)),
+            this, SLOT(unitCellDisplayChanged(int, int, int)));
+    connect(m_dialog, SIGNAL(unitCellParametersChanged(double, double, double, double, double, double)),
+            this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
 
     m_dialog->show();
 

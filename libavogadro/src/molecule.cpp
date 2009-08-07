@@ -968,7 +968,7 @@ namespace Avogadro{
   double Molecule::energy(unsigned int index) const
   {
     Q_D(const Molecule);
-    qDebug() << "energy: " << m_currentConformer;
+    //    qDebug() << "energy: " << m_currentConformer;
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
     else if (index < d->energies.size())
@@ -984,6 +984,16 @@ namespace Avogadro{
       d->energies.push_back(0.0);
     if (m_currentConformer < d->energies.size())
       d->energies[m_currentConformer] = energy;
+  }
+
+  void Molecule::setEnergy(int index, double energy)
+  {
+    Q_D(const Molecule);
+    if (index > numConformers() - 1 || index < 0)
+      return;
+    while (d->energies.size() != numConformers())
+      d->energies.push_back(0.0);
+    d->energies[index] = energy;
   }
 
   void Molecule::setEnergies(const std::vector<double>& energies)
@@ -1249,6 +1259,9 @@ namespace Avogadro{
       OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
       d->obvibdata = vibData;
     }
+
+    // Copy energy
+    setEnergy(obmol->GetEnergy());
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;
