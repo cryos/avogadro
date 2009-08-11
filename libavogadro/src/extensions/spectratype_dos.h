@@ -39,6 +39,9 @@ namespace Avogadro {
     DOSSpectra( SpectraDialog *parent = 0 );
     ~DOSSpectra();
 
+    enum EnergyUnits	{ ENERGY_EV = 0 };
+    enum DensityUnits	{ DENSITY_PER_CELL = 0, DENSITY_PER_ATOM };
+
     void writeSettings();
     void readSettings();
 
@@ -65,6 +68,8 @@ namespace Avogadro {
     QList<double> *m_xList, *m_yList;
     QList<double> *m_xList_imp, *m_yList_imp;
     SpectraDialog *m_dialog;
+    double m_fermi;
+    uint m_numAtoms;
   };
 }
 

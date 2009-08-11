@@ -763,6 +763,7 @@ namespace Avogadro {
 
   void SpectraDialog::updatePlot()
   {
+    if (currentSpectra()) currentSpectra()->setupPlot(ui.plot);
     ui.plot->update();
   }
 

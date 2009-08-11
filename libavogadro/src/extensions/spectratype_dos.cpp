@@ -71,18 +71,21 @@ namespace Avogadro {
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.combo_energy, SIGNAL(currentIndexChanged(int)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.combo_density, SIGNAL(currentIndexChanged(int)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.cb_fermi, SIGNAL(toggled(bool)),
+            this, SIGNAL(plotDataChanged()));
 
     // OK, we have valid DOS, so store them for later
-    double fermi = dos->GetFermiEnergy();
     std::vector<double> energies = dos->GetEnergies();
     std::vector<double> densities= dos->GetDensities();
 
-    // Shift energies so that fermi energy is at 0.0
-    for (unsigned int i = 0; i < energies.size(); i++) {
-      energies[i] -= fermi;
-    }
-
     // Store in member vars
+    m_numAtoms = mol->numAtoms();
+    m_fermi = dos->GetFermiEnergy();
+    ui.label_fermi->setText(QString::number(m_fermi));
     m_xList->clear();
     m_yList->clear();
     for (uint i = 0; i < energies.size(); i++){
@@ -95,8 +98,21 @@ namespace Avogadro {
 
   void DOSSpectra::setupPlot(PlotWidget * plot) {
     plot->scaleLimits();
-    plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Energy (eV)"));
-    plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Density of States (states/cell)"));
+    switch (ui.combo_energy->currentIndex()) {
+    case ENERGY_EV:
+      plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Energy (eV)"));
+      break;
+    default:
+      break;
+    }
+    switch (ui.combo_density->currentIndex()) {
+    case DENSITY_PER_CELL:
+      plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Density of States (states/cell)"));
+      break;
+    case DENSITY_PER_ATOM:
+      plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Density of States (states/atom)"));
+      break;
+    }
   }
 
   QWidget * DOSSpectra::getTabWidget() {return m_tab_widget;}
@@ -104,9 +120,26 @@ namespace Avogadro {
   void DOSSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
+    int energy_index = ui.combo_energy->currentIndex();
+    int density_index = ui.combo_density->currentIndex();
+    bool use_fermi = ui.cb_fermi->isChecked();
+    double density, energy;
+
     for (int i = 0; i < m_yList->size(); i++) {
-      double energy = m_xList->at(i);
-      double density = m_yList->at(i);
+      switch (energy_index) {
+      case ENERGY_EV:
+        energy = m_xList->at(i);
+        break;
+      }
+      switch (density_index) {
+      case DENSITY_PER_CELL:
+        density = m_yList->at(i);
+        break;
+      case DENSITY_PER_ATOM:
+        density = m_yList->at(i) / ((float)m_numAtoms);
+        break;
+      }
+      if (use_fermi) energy -= m_fermi;
       plotObject->addPoint ( energy, density );
     }
   } 
