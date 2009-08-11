@@ -57,7 +57,7 @@ namespace Avogadro{
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
                           invalidRings(true), obmol(0), obunitcell(0),
-                          obvibdata(0), obdosdata(0) {}
+                          obvibdata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -91,7 +91,6 @@ namespace Avogadro{
       // TODO: Cache an OBMol, in which case the vib. data (and others)
       //       won't be necessary
       OpenBabel::OBVibrationData *  obvibdata;
-      OpenBabel::OBDOSData *        obdosdata;
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -1146,11 +1145,6 @@ namespace Avogadro{
       obmol.SetData(d->obvibdata->Clone(&obmol));
     }
 
-    // Copy dos, if needed
-    if (d->obdosdata != NULL) {
-      obmol.SetData(d->obdosdata->Clone(&obmol));
-    }
-
     return obmol;
   }
 
@@ -1265,12 +1259,6 @@ namespace Avogadro{
     if (obmol->HasData(OpenBabel::OBGenericDataType::VibrationData)) {
       OpenBabel::OBVibrationData *vibData = static_cast<OpenBabel::OBVibrationData*>(obmol->GetData(OpenBabel::OBGenericDataType::VibrationData));
       d->obvibdata = vibData;
-    }
-
-    // Copy DOS data
-    if (obmol->HasData(OpenBabel::OBGenericDataType::DOSData)) {
-      OpenBabel::OBDOSData *dosData = static_cast<OpenBabel::OBDOSData*>(obmol->GetData(OpenBabel::OBGenericDataType::DOSData));
-      d->obdosdata = dosData;
     }
 
     // Copy energy
