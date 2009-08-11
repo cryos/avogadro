@@ -174,7 +174,7 @@ namespace Avogadro {
     bool hasDOS = m_spectra_dos->checkForData(m_molecule);
     if (hasDOS) {
       ui.combo_spectra->addItem(tr("DOS", "Density of States"));
-      ui.tab_widget->addTab(m_spectra_ir->getTabWidget(), tr("&Density Of States Settings"));
+      ui.tab_widget->addTab(m_spectra_dos->getTabWidget(), tr("&Density Of States Settings"));
     }
 
     // Change this when other spectra are added!!
