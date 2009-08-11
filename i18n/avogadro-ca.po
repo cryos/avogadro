@@ -9,19 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
 "PO-Revision-Date: 2009-06-12 14:17+0000\n"
 "Last-Translator: el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#: src/mainwindow.cpp:2228
-msgid "Ctrl+Backspace"
-msgstr "Ctrl+Backspace"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
@@ -30,24 +26,22 @@ msgstr "D'acord"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Versió de programa: %2<br/><br/> Versió de llibreria: "
-"%3<br/><br/>Per a més informació ves a <a href=\\"
-"\"http://avogadro.sourceforge.net/\">Pàgina d'inici d'Avogadro "
-"</a>.<br/><br/>Aquest programa és subministra sense CAP GARANTIA de CAP "
-"MENA, INCLOENT-HI LA GARANTIA DE DISSENY, VENDA o APTITUD PER QUALSEVOL "
-"COSA.<br/>"
+"<h3>%1</h3><br/><br/>Versió de programa: %2<br/><br/> Versió de llibreria: %"
+"3<br/><br/>Per a més informació ves a <a href=\\\"http://avogadro."
+"sourceforge.net/\">Pàgina d'inici d'Avogadro </a>.<br/><br/>Aquest programa "
+"és subministra sense CAP GARANTIA de CAP MENA, INCLOENT-HI LA GARANTIA DE "
+"DISSENY, VENDA o APTITUD PER QUALSEVOL COSA.<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -71,14 +65,13 @@ msgstr "Esborra la molècula"
 msgid "Clear Atoms"
 msgstr "Esborra els atoms"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
 msgstr "Configuració"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Obre un fitxer"
 
@@ -102,311 +95,315 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr "Porta-ho tot al davant"
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr "&Configuració d'Eines..."
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr "&Configuració de Mostra..."
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "Formats comuns de molècula"
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr "Intercanvi crital·logràfic CIF"
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr "Eixida GAMESS-US"
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr "Eixida Gaussian 98/03"
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Punt de control amb format gaussià"
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "Mol MDL"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Carregant %1..."
 
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr "S'està carregant %1…"
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr "Selecciona Molècula per veure"
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr "Títol de la Molècula"
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Àtoms: "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Enllaços: "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr ""
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr "S'ha carregat el fitxer…"
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Vols salvar els canvis que has fet al document?"
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr "Els teus canvis es perdran si no els salves."
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr "Salva..."
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Alça"
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr "Entrada GAMESS"
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr "Entrada cartesiana gaussiana"
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr "Entrada gaussiana matriu Z"
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr "Fitxer MDL SD"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr "Anomena i alça la molècula"
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr "Formats d'imatge comuns"
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr "Exporta el gràfic de mapa de bits."
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "No es pot alçar el fitxer %1"
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr "Formats comuns d'imatges vectorials"
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sense títol %1"
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr "No es pot enganxar la molècula."
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr "S'ha produït un error en enganxar (format no disponible)."
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr "S'ha produït un error en còpiar ( mdl no reconegut)."
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr "Visualitza %1"
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Veure %1"
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Vista separada"
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr "Mida normal"
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2264
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "sense títol"
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr "Afig"
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Suprimeix"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr "No hi ha cap eina o motor carregat."
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr "No hi ha cap motor carregat."
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr "No hi ha cap eina carregada."
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -414,16 +411,15 @@ msgstr ""
 " És impossible que esta aplicació funcione de forma correcta. Per favor, "
 "corregiu-ne l'error."
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Objectes"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr "Colors"
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr " còpia"
 
@@ -494,8 +490,7 @@ msgstr "Error"
 msgid "only labels can have sub items"
 msgstr "només les etiquetes poden tindre subelements"
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr "Ítem"
 
@@ -508,8 +503,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Baix"
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Mitjà"
@@ -524,8 +518,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "No definit"
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Cap"
@@ -587,18 +580,15 @@ msgstr "Forma"
 msgid "Color by:"
 msgstr "Color de:"
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Afig les primitives seleccionades"
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Esborra selecció primitiva"
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Afig totes les primitives"
 
@@ -694,23 +684,19 @@ msgstr "&Selecciona"
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Arbre del projecte"
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Mostra tipus"
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Eines"
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Obre"
 
@@ -718,8 +704,7 @@ msgstr "&Obre"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Ix"
 
@@ -735,8 +720,7 @@ msgstr "Recent"
 msgid "&Clear Recent"
 msgstr "&Esborra allò recent"
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr "&Nou"
 
@@ -744,8 +728,7 @@ msgstr "&Nou"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr "&Tanca"
 
@@ -753,8 +736,7 @@ msgstr "&Tanca"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr "&Alça"
 
@@ -942,8 +924,7 @@ msgstr "Mostra eixos de cel·les unitat"
 msgid "All Molecules in File..."
 msgstr "Totes les molècules a l'arxiu..."
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Connectors"
 
@@ -955,13 +936,11 @@ msgstr "Extensions"
 msgid "Details"
 msgstr "Detalls"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Arbre d'elements"
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Tipus"
 
@@ -1030,8 +1009,7 @@ msgstr "Àlies"
 msgid "Settings..."
 msgstr "Configuració…"
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr "General"
 
@@ -1039,8 +1017,7 @@ msgstr "General"
 msgid "Quality:"
 msgstr "Qualitat:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Configura la qualitat global de generació"
 
@@ -1053,165 +1030,97 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, "
-",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso "
-"Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
+"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
+"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso Pulido,"
+"carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso Pulido,carles "
 "ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el.li"
-"bre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net,,toniher@softcatala.cat,,el.libre@gmail.com,,,avo"
-"gadro-devel@lists.sourceforge.net,,toniher@softcatala.cat,,el.libre@gmail.com"
+",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
+"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,toniher@softcatala."
+"cat,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,"
+"toniher@softcatala.cat,,el.libre@gmail.com"
 
-#, qt-format
-#~ msgid ""
-#~ "Cannot read file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "No es pot llegir el fitxer %1: \n"
-#~ "%2."
+#~ msgid "Axis:"
+#~ msgstr "Eix:"
 
-#, qt-format
-#~ msgid "Cannot read file format of file %1."
-#~ msgstr "No es pot llegir el format del fitxer %1"
+#~ msgid "Everything"
+#~ msgstr "Tot"
 
-#, qt-format
-#~ msgid "Cannot read file %1."
-#~ msgstr "No és pot llegir el fitxer %1"
+#~ msgid "Align:"
+#~ msgstr "Alinia:"
 
-#~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
-#~ msgstr ""
-#~ "Este fitxer sembla que conté múltiples molècules. L'Avogadro només pot "
-#~ "llegir la primera molècula. Si l'alceu, totes les altres molècules es "
-#~ "perdran."
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#~ msgid "Navigate"
-#~ msgstr "Navega"
+#~ msgid "Algorithm:"
+#~ msgstr "Algoritme:"
 
-#, qt-format
-#~ msgid "Cannot write to file format of file %1."
-#~ msgstr "No es pot escriure el fitxer amb format %1."
+#~ msgid "y rotation:"
+#~ msgstr "rotació y:"
 
-#, qt-format
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "No es pot escriure el fitxer %1: \n"
-#~ " %2."
+#~ msgid "x rotation"
+#~ msgstr "rotació x"
 
-#, qt-format
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "No es pot escriure el fitxer %1."
+#~ msgid "z rotation:"
+#~ msgstr "rotació z:"
 
-#~ msgid "Saving file."
-#~ msgstr "Alça el fitxer."
+#~ msgid "0/0"
+#~ msgstr "0/0"
 
-#~ msgid "Save succeeded."
-#~ msgstr "S'ha alçat amb èxit."
+#~ msgid "fps"
+#~ msgstr "fps"
 
-#~ msgid "Saving molecular file failed."
-#~ msgstr "S'ha produït un error en alçar el fitxer molecular."
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
 
-#~ msgid "Set Aspect Ratio"
-#~ msgstr "Configura la relació d'aspecte"
+#~ msgid "*3"
+#~ msgstr "*3"
 
-#, qt-format
-#~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-#~ "ratio %3.\n"
-#~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
-#~ "value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
-#~ "1000x1000 pixels."
-#~ msgstr ""
-#~ "L'actual escena d'Avogadro té %1x%2 pixels d'ample i tanmateix té relació "
-#~ "d'aspecte %3.\n"
-#~ "Podeu utilitzar aquest valor, per exemple per utilitzar POV-Ray per produir "
-#~ "una imatge de %4x1000 pixels , o podeu entrar un altre valor positiu, \n"
-#~ "per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada de "
-#~ "d'aproximadament 1000x1000 pixels."
+#~ msgid "*2"
+#~ msgstr "*2"
 
-#~ msgid ""
-#~ "The document has been modified.\n"
-#~ "Do you want to save your changes?"
-#~ msgstr ""
-#~ "El document ha estat modificat. \n"
-#~ "Voleu alçar-ne els canvis ?"
+#~ msgid "*1"
+#~ msgstr "*1"
 
-#~ msgid "Manipulate"
-#~ msgstr "Manipula"
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Distància (3->4): %1 %2"
 
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
+#~ msgid "Angle: %1 %2"
+#~ msgstr "Angle: %1 %2"
 
-#, qt-format
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Distància (2->3): %1 %2"
 
-#~ msgid "Hydrogen"
-#~ msgstr "Hidrogen"
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Distància (1->2): %1 %2"
 
-#~ msgid "Helium"
-#~ msgstr "Heli"
+#~ msgid "Distance(s):"
+#~ msgstr "Distància(es):"
 
-#~ msgid "Lithium"
-#~ msgstr "Liti"
+#~ msgid "*4"
+#~ msgstr "*4"
 
-#~ msgid "Beryllium"
-#~ msgstr "Beril·li"
+#~ msgid "Axes"
+#~ msgstr "Eixos"
 
-#~ msgid "Boron"
-#~ msgstr "Bor"
+#~ msgid " Show Angles"
+#~ msgstr " Mostra Angles"
 
-#~ msgid "Carbon"
-#~ msgstr "Carboni"
+#~ msgid "Measure"
+#~ msgstr "Mesura"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Nitrogen"
+#~ msgid "z rotation"
+#~ msgstr "rotació z"
 
-#~ msgid "Oxygen"
-#~ msgstr "Oxigen"
+#~ msgid "x rotation:"
+#~ msgstr "rotació x:"
 
-#~ msgid "Fluorine"
-#~ msgstr "Fluor"
-
-#~ msgid "Neon"
-#~ msgstr "Neó"
-
-#~ msgid "Sodium"
-#~ msgstr "Sodi"
-
-#~ msgid "Magnesium"
-#~ msgstr "Magnesi"
-
-#~ msgid "Aluminum"
-#~ msgstr "Alumini"
-
-#~ msgid "Silicon"
-#~ msgstr "Silici"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Fòsfor"
-
-#~ msgid "Sulfur"
-#~ msgstr "Sofre"
-
-#~ msgid "Chlorine"
-#~ msgstr "Clor"
-
-#~ msgid "Argon"
-#~ msgstr "Argó"
-
-#~ msgid "Potassium"
-#~ msgstr "Potassi"
+#~ msgid "y rotation"
+#~ msgstr "rotació y"
 
 #~ msgid "Calcium"
 #~ msgstr "Calci"
@@ -1225,107 +1134,47 @@ msgstr ""
 #~ msgid "Vanadium"
 #~ msgstr "Vanadi"
 
+#~ msgid "Sulfur"
+#~ msgstr "Sofre"
+
+#~ msgid "Chlorine"
+#~ msgstr "Clor"
+
+#~ msgid "Argon"
+#~ msgstr "Argó"
+
 #~ msgid "Chromium"
 #~ msgstr "Crom"
 
 #~ msgid "Manganese"
 #~ msgstr "Manganès"
 
+#~ msgid "Tungsten"
+#~ msgstr "Tungstè"
+
+#~ msgid "Potassium"
+#~ msgstr "Potassi"
+
+#~ msgid "Gold"
+#~ msgstr "Or"
+
 #~ msgid "Iron"
 #~ msgstr "Ferro"
-
-#~ msgid "Cobalt"
-#~ msgstr "Cobalt"
-
-#~ msgid "Nickel"
-#~ msgstr "Níquel"
-
-#~ msgid "Copper"
-#~ msgstr "Coure"
-
-#~ msgid "Zinc"
-#~ msgstr "Zinc"
-
-#~ msgid "Gallium"
-#~ msgstr "Gal·li"
 
 #~ msgid "Germanium"
 #~ msgstr "Germani"
 
-#~ msgid "Arsenic"
-#~ msgstr "Arsènic"
+#~ msgid "Gallium"
+#~ msgstr "Gal·li"
 
-#~ msgid "Selenium"
-#~ msgstr "Seleni"
+#~ msgid "Zinc"
+#~ msgstr "Zinc"
 
 #~ msgid "Bromine"
 #~ msgstr "Brom"
 
-#~ msgid "Krypton"
-#~ msgstr "Criptó"
-
-#~ msgid "Rubidium"
-#~ msgstr "Rubidi"
-
-#~ msgid "Strontium"
-#~ msgstr "Estronci"
-
-#~ msgid "Yttrium"
-#~ msgstr "Itri"
-
-#~ msgid "Zirconium"
-#~ msgstr "Zirconi"
-
-#~ msgid "Niobium"
-#~ msgstr "Niobi"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Molibdè"
-
-#~ msgid "Technetium"
-#~ msgstr "Tecneci"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Ruteni"
-
-#~ msgid "Rhodium"
-#~ msgstr "Rodi"
-
-#~ msgid "Palladium"
-#~ msgstr "Pal·ladi"
-
-#~ msgid "Silver"
-#~ msgstr "Argent"
-
-#~ msgid "Cadmium"
-#~ msgstr "Cadmi"
-
-#~ msgid "Indium"
-#~ msgstr "Indi"
-
-#~ msgid "Tin"
-#~ msgstr "Estany"
-
-#~ msgid "Antimony"
-#~ msgstr "Antimoni"
-
-#~ msgid "Tellurium"
-#~ msgstr "Tel·luri"
-
-#~ msgid "Iodine"
-#~ msgstr "Iode"
-
-#~ msgid "Xenon"
-#~ msgstr "Xenó"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesi"
-
-#~ msgid "Barium"
-#~ msgstr "Bari"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lantani"
+#~ msgid "Selenium"
+#~ msgstr "Seleni"
 
 #~ msgid "Cerium"
 #~ msgstr "Ceri"
@@ -1333,11 +1182,80 @@ msgstr ""
 #~ msgid "Praseodymium"
 #~ msgstr "Praseodimi"
 
-#~ msgid "Neodymium"
-#~ msgstr "Neodimi"
+#~ msgid "Molybdenum"
+#~ msgstr "Molibdè"
 
 #~ msgid "Promethium"
 #~ msgstr "Prometi"
+
+#~ msgid "Nickel"
+#~ msgstr "Níquel"
+
+#~ msgid "Technetium"
+#~ msgstr "Tecneci"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zirconi"
+
+#~ msgid "Strontium"
+#~ msgstr "Estronci"
+
+#~ msgid "Krypton"
+#~ msgstr "Criptó"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruteni"
+
+#~ msgid "Rhodium"
+#~ msgstr "Rodi"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arsènic"
+
+#~ msgid "Bismuth"
+#~ msgstr "Bismut"
+
+#~ msgid "Terbium"
+#~ msgstr "Terbi"
+
+#~ msgid "Oxygen"
+#~ msgstr "Oxigen"
+
+#~ msgid "Tin"
+#~ msgstr "Estany"
+
+#~ msgid "Iodine"
+#~ msgstr "Iode"
+
+#~ msgid "Silver"
+#~ msgstr "Argent"
+
+#~ msgid "Palladium"
+#~ msgstr "Pal·ladi"
+
+#~ msgid "Indium"
+#~ msgstr "Indi"
+
+#~ msgid "Cadmium"
+#~ msgstr "Cadmi"
+
+#~ msgid "Caesium"
+#~ msgstr "Cesi"
+
+#~ msgid "Xenon"
+#~ msgstr "Xenó"
+
+#~ msgid "Tellurium"
+#~ msgstr "Tel·luri"
+
+#~ msgid "Barium"
+#~ msgstr "Bari"
+
+#~ msgid "Boron"
+#~ msgstr "Bor"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodimi"
 
 #~ msgid "Samarium"
 #~ msgstr "Samari"
@@ -1348,50 +1266,65 @@ msgstr ""
 #~ msgid "Gadolinium"
 #~ msgstr "Gadolini"
 
-#~ msgid "Terbium"
-#~ msgstr "Terbi"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Disprosi"
-
-#~ msgid "Holmium"
-#~ msgstr "Holmi"
-
-#~ msgid "Erbium"
-#~ msgstr "Erbi"
-
-#~ msgid "Thulium"
-#~ msgstr "Tuli"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Iterbi"
-
-#~ msgid "Lutetium"
-#~ msgstr "Luteci"
+#~ msgid "Tantalum"
+#~ msgstr "Tàntal"
 
 #~ msgid "Hafnium"
 #~ msgstr "Hafni"
 
-#~ msgid "Tantalum"
-#~ msgstr "Tàntal"
+#~ msgid "Thulium"
+#~ msgstr "Tuli"
 
-#~ msgid "Tungsten"
-#~ msgstr "Tungstè"
+#~ msgid "Erbium"
+#~ msgstr "Erbi"
 
-#~ msgid "Rhenium"
-#~ msgstr "Reni"
+#~ msgid "Triple"
+#~ msgstr "Triple"
 
-#~ msgid "Osmium"
-#~ msgstr "Osmi"
+#~ msgid "Niobium"
+#~ msgstr "Niobi"
 
-#~ msgid "Iridium"
-#~ msgstr "Iridi"
+#~ msgid "Yttrium"
+#~ msgstr "Itri"
+
+#~ msgid "Copper"
+#~ msgstr "Coure"
+
+#~ msgid "Beryllium"
+#~ msgstr "Beril·li"
+
+#~ msgid "Double"
+#~ msgstr "Doble"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubidi"
+
+#~ msgid "Helium"
+#~ msgstr "Heli"
+
+#~ msgid "Lithium"
+#~ msgstr "Liti"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Hidrogen"
+
+#~ msgid "Draw"
+#~ msgstr "Dibuixa"
+
+#~ msgid "Element:"
+#~ msgstr "Element:"
 
 #~ msgid "Platinum"
 #~ msgstr "Platí"
 
-#~ msgid "Gold"
-#~ msgstr "Or"
+#~ msgid "Osmium"
+#~ msgstr "Osmi"
+
+#~ msgid "Lead"
+#~ msgstr "Plom"
+
+#~ msgid "Rhenium"
+#~ msgstr "Reni"
 
 #~ msgid "Mercury"
 #~ msgstr "Mercuri"
@@ -1399,83 +1332,74 @@ msgstr ""
 #~ msgid "Thallium"
 #~ msgstr "Tal·li"
 
-#~ msgid "Lead"
-#~ msgstr "Plom"
+#~ msgid "Antimony"
+#~ msgstr "Antimoni"
 
-#~ msgid "Bismuth"
-#~ msgstr "Bismut"
+#~ msgid "Lutetium"
+#~ msgstr "Luteci"
 
-#~ msgid "Polonium"
-#~ msgstr "Poloni"
+#~ msgid "Phosphorus"
+#~ msgstr "Fòsfor"
 
-#~ msgid "Astatine"
-#~ msgstr "Àstat"
+#~ msgid "Silicon"
+#~ msgstr "Silici"
 
-#~ msgid "Radon"
-#~ msgstr "Radó"
+#~ msgid "Ytterbium"
+#~ msgstr "Iterbi"
 
-#~ msgid "Francium"
-#~ msgstr "Franci"
+#~ msgid "Nitrogen"
+#~ msgstr "Nitrogen"
 
-#~ msgid "Radium"
-#~ msgstr "Radi"
+#~ msgid "Carbon"
+#~ msgstr "Carboni"
 
-#~ msgid "Actinium"
-#~ msgstr "Actini"
+#~ msgid "Fluorine"
+#~ msgstr "Fluor"
 
-#~ msgid "Thorium"
-#~ msgstr "Tori"
+#~ msgid "Sodium"
+#~ msgstr "Sodi"
 
-#~ msgid "Protactinium"
-#~ msgstr "Protoactini"
+#~ msgid "Neon"
+#~ msgstr "Neó"
+
+#~ msgid "Aluminum"
+#~ msgstr "Alumini"
+
+#~ msgid "Magnesium"
+#~ msgstr "Magnesi"
+
+#~ msgid "Iridium"
+#~ msgstr "Iridi"
+
+#~ msgid "Cobalt"
+#~ msgstr "Cobalt"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmi"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Disprosi"
+
+#~ msgid "FPS"
+#~ msgstr "FPS"
+
+#~ msgid "Force"
+#~ msgstr "Força"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Delete"
+#~ msgstr "Esborra"
+
+#~ msgid ")"
+#~ msgstr ")"
 
 #~ msgid "Uranium"
 #~ msgstr "Urani"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptuni"
-
-#~ msgid "Plutonium"
-#~ msgstr "Plutoni"
-
-#~ msgid "Americium"
-#~ msgstr "Americi"
-
-#~ msgid "Curium"
-#~ msgstr "Curi"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkeli"
-
-#~ msgid "Californium"
-#~ msgstr "Californi"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einsteini"
-
-#~ msgid "Fermium"
-#~ msgstr "Fermi"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelevi"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobeli"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Laurenci"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Ruderfordi"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dubni"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborgi"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bohri"
 
 #~ msgid "Hassium"
 #~ msgstr "Hassi"
@@ -1483,11 +1407,648 @@ msgstr ""
 #~ msgid "Meitnerium"
 #~ msgstr "Meitneri"
 
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgi"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bohri"
+
 #~ msgid "Darmstadtium"
 #~ msgstr "Darmstadi"
 
 #~ msgid "Roentgenium"
 #~ msgstr "Roentgueni"
+
+#~ msgid "Polonium"
+#~ msgstr "Poloni"
+
+#~ msgid "Astatine"
+#~ msgstr "Àstat"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkeli"
+
+#~ msgid "Curium"
+#~ msgstr "Curi"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteini"
+
+#~ msgid "Californium"
+#~ msgstr "Californi"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelevi"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermi"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Laurenci"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobeli"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dubni"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Ruderfordi"
+
+#~ msgid "Francium"
+#~ msgstr "Franci"
+
+#~ msgid "Radon"
+#~ msgstr "Radó"
+
+#~ msgid "Actinium"
+#~ msgstr "Actini"
+
+#~ msgid "Radium"
+#~ msgstr "Radi"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protoactini"
+
+#~ msgid "Thorium"
+#~ msgstr "Tori"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptuni"
+
+#~ msgid "Americium"
+#~ msgstr "Americi"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutoni"
+
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Energia = %1 %2"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "MO "
+#~ msgstr "MO "
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Open Directory"
+#~ msgstr "Obre un directori"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Polygon"
+#~ msgstr "Polígon"
+
+#~ msgid "Atom %1"
+#~ msgstr "Àtom %1"
+
+#~ msgid "Valence"
+#~ msgstr "València"
+
+#~ msgid "&Properties"
+#~ msgstr "&Propietats"
+
+#~ msgid "Vertex"
+#~ msgstr "Vèrtex"
+
+#~ msgid "Angle %1"
+#~ msgstr "Angle %1"
+
+#~ msgid "Disconnect"
+#~ msgstr "Desconnecta"
+
+#~ msgid "Torsion %1"
+#~ msgstr "Torsió %1"
+
+#~ msgid "Connect"
+#~ msgstr "Connecta"
+
+#~ msgid "Wireframe"
+#~ msgstr "Filferro"
+
+#~ msgid "Torsion"
+#~ msgstr "Torsió"
+
+#~ msgid "Surface"
+#~ msgstr "Superfície"
+
+#~ msgid "Ribbon"
+#~ msgstr "Cinta"
+
+#~ msgid "Ring"
+#~ msgstr "Anell"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Inverteix la selecció"
+
+#~ msgid "name"
+#~ msgstr "nom"
+
+#~ msgid "Constraints"
+#~ msgstr "Restriccions"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "Number of steps"
+#~ msgstr "Nombre de passos"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritme"
+
+#~ msgid "Convergence"
+#~ msgstr "Convergència"
+
+#~ msgid "Load"
+#~ msgstr "Carrega"
+
+#~ msgid "&Template"
+#~ msgstr "&Plantilla"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "Delete All"
+#~ msgstr "Suprimeix-ho tot"
+
+#~ msgid "Triplet"
+#~ msgstr "Triplet"
+
+#~ msgid "Doublet"
+#~ msgstr "Doblet"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Memory:"
+#~ msgstr "Memòria:"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "In:"
+#~ msgstr "Entrada:"
+
+#~ msgid "With:"
+#~ msgstr "Amb:"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "Basis"
+#~ msgstr "Base"
+
+#~ msgid "Control"
+#~ msgstr "Control"
+
+#~ msgid "Data"
+#~ msgstr "Dades"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "Advanced"
+#~ msgstr "Avançat"
+
+#~ msgid "Misc"
+#~ msgstr "Miscel·lània"
+
+#~ msgid "Water"
+#~ msgstr "Aigua"
+
+#~ msgid "Gas"
+#~ msgstr "Gas"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "Optimization"
+#~ msgstr "Optimització"
+
+#~ msgid "Polar:"
+#~ msgstr "Polar:"
+
+#~ msgid "Neutral"
+#~ msgstr "Neutre"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Read"
+#~ msgstr "Llegeix"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "Default"
+#~ msgstr "Per defecte"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "Configuració &bàsica"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "HCore"
+#~ msgstr "HCore"
+
+#~ msgid "Bohr"
+#~ msgstr "Bohr"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "Hours"
+#~ msgstr "Hores"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "Seconds"
+#~ msgstr "Segons"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "Words"
+#~ msgstr "Paraules"
+
+#~ msgid "Bytes"
+#~ msgstr "Bytes"
+
+#~ msgid "Years"
+#~ msgstr "Anys"
+
+#~ msgid "Days"
+#~ msgstr "Dies"
+
+#~ msgid "Weeks"
+#~ msgstr "Setmanes"
+
+#~ msgid "Minutes"
+#~ msgstr "Minuts"
+
+#~ msgid "MegaBytes"
+#~ msgstr "Megabytes"
+
+#~ msgid "Next Value"
+#~ msgstr "Valor següent"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "Skip"
+#~ msgstr "Omet"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "Units:"
+#~ msgstr "Unitats:"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "Huckel"
+#~ msgstr "Huckel"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "All"
+#~ msgstr "Tots"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Check"
+#~ msgstr "Comprova"
+
+#~ msgid "Debug"
+#~ msgstr "Depura"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ǻngstrom"
+
+#~ msgid "Maximum:"
+#~ msgstr "Màxim:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Mínim:"
+
+#~ msgid "bohrs"
+#~ msgstr "bohrs"
+
+#~ msgid "Numeric"
+#~ msgstr "Numèric"
+
+#~ msgid "Method:"
+#~ msgstr "Mètode:"
+
+#~ msgid "Grid"
+#~ msgstr "Graella"
+
+#~ msgid "words"
+#~ msgstr "paraules"
+
+#~ msgid "Molekel"
+#~ msgstr "Molekel"
+
+#~ msgid "Molden"
+#~ msgstr "Molden"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Element name"
+#~ msgstr "Nom d'element"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "Width:"
+#~ msgstr "Amplada:"
+
+#~ msgid "Group Name"
+#~ msgstr "Nom del grup"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Positive"
+#~ msgstr "Positiu"
+
+#~ msgid "Negative"
+#~ msgstr "Negatiu"
+
+#~ msgid "steps"
+#~ msgstr "passos"
+
+#~ msgid "Orbital:"
+#~ msgstr "Orbital:"
+
+#~ msgid "Origin:"
+#~ msgstr "Origen:"
+
+#~ msgid "Steps:"
+#~ msgstr "Passos:"
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "No es pot llegir el fitxer %1: \n"
+#~ "%2."
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "No es pot llegir el format del fitxer %1"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "No és pot llegir el fitxer %1"
+
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie "
+#~ "l'escala dels enllaços i faça una optimització ràpida?"
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
+#~ msgstr ""
+#~ "Este fitxer sembla que conté múltiples molècules. L'Avogadro només pot "
+#~ "llegir la primera molècula. Si l'alceu, totes les altres molècules es "
+#~ "perdran."
+
+#~ msgid "Navigate"
+#~ msgstr "Navega"
+
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "No es pot escriure el fitxer amb format %1."
+
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "No es pot escriure el fitxer %1: \n"
+#~ " %2."
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "No es pot escriure el fitxer %1."
+
+#~ msgid "Saving file."
+#~ msgstr "Alça el fitxer."
+
+#~ msgid "Save succeeded."
+#~ msgstr "S'ha alçat amb èxit."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "S'ha produït un error en alçar el fitxer molecular."
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "El document ha estat modificat. \n"
+#~ "Voleu alçar-ne els canvis ?"
+
+#~ msgid "Manipulate"
+#~ msgstr "Manipula"
+
+#~ msgid "tree"
+#~ msgstr "arbre"
+
+#~ msgid "Low"
+#~ msgstr "Baix"
+
+#~ msgid "Medium"
+#~ msgstr "Mitjà"
+
+#~ msgid "High"
+#~ msgstr "Alt"
+
+#~ msgid "Undefined"
+#~ msgstr "no definit"
+
+#~ msgid "None"
+#~ msgstr "Cap"
+
+#~ msgid "Some"
+#~ msgstr "Alguns"
+
+#~ msgid "Mid"
+#~ msgstr "Mitjancer"
+
+#~ msgid "Lots"
+#~ msgstr "Porcions"
+
+#~ msgid "Color by Element"
+#~ msgstr "Color per element"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Color per element (carboni = gris , oxigen = roig, … )."
+
+#~ msgid "Color by Index"
+#~ msgstr "Color per índex"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "Color per índex (roig, taronja, groc, verd, blau, violeta)"
+
+#~ msgid "Color by Residue"
+#~ msgstr "Color per residu"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lantani"
 
 #~ msgid "Ununbium"
 #~ msgstr "Ununbi"
@@ -1513,17 +2074,14 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Desconegut"
 
-#~ msgid "Axes"
-#~ msgstr "Eixos"
+#~ msgid "Engines"
+#~ msgstr "Motors"
 
 #~ msgid "Ball and Stick"
 #~ msgstr "Boles i bastons"
 
 #~ msgid "Dipole"
 #~ msgstr "Dipol"
-
-#~ msgid "Force"
-#~ msgstr "Força"
 
 #~ msgid "Renders hydrogen bonds"
 #~ msgstr "Renderitza els enllaços d'hidrogen"
@@ -1534,14 +2092,11 @@ msgstr ""
 #~ msgid "Orbitals"
 #~ msgstr "Orbitals"
 
-#~ msgid "Polygon"
-#~ msgstr "Polígon"
+#~ msgid "Overlay"
+#~ msgstr "Recobriment"
 
-#~ msgid "Ribbon"
-#~ msgstr "Cinta"
-
-#~ msgid "Ring"
-#~ msgstr "Anell"
+#~ msgid "Python script rendering"
+#~ msgstr "Renderització amb script de Python"
 
 #~ msgid "Renders atoms as Van der Waals spheres"
 #~ msgstr "Renderitza els àtoms com a esferes de Van der Waals"
@@ -1552,34 +2107,62 @@ msgstr ""
 #~ msgid "Stick"
 #~ msgstr "Bastons"
 
-#~ msgid "Surface"
-#~ msgstr "Superfície"
-
-#~ msgid "Wireframe"
-#~ msgstr "Filferro"
-
 #~ msgid "Open trajectory file"
 #~ msgstr "Obre un fitxer de trajectòria"
 
-#, qt-format
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Fitxers de trajectòria (*.xtc *.xyz)"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "fitxers de vídeo (*.avi)"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Afig l'extensió .avi"
 
 #~ msgid "Animation..."
 #~ msgstr "Animació…"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "S'ha produït un error en llegir el fitxer %1 de trajectoria."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Cal especificar un nom .avi vàlid"
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr ""
+#~ "El giny GL no s'ha inicialitzat de forma correcta per a alçar el vídeo"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr ""
+#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del "
+#~ "directori complet"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del "
+#~ "directori complet i el nom, acabat en .avi"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "no es pot posar en format XYZ"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "S'ha produït un error en llegir el fitxer traj %1"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "El fitxer trajectòria %1 no concorda amb el nombre d'àtoms de l'actual "
+#~ "molècula"
 
 #~ msgid "Animation"
 #~ msgstr "Animació"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Nombre d'àtoms: %1"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Nombre d'enllaços angulars: %1"
 
@@ -1600,14 +2183,32 @@ msgstr ""
 #~ msgid ""
 #~ "Your molecule must contain at least three atoms to add an angle constraint"
 #~ msgstr ""
-#~ "La vostra molècula ha de contindre al menys tres àtoms per a afegir-hi una "
-#~ "restricció angular"
+#~ "La vostra molècula ha de contindre al menys tres àtoms per a afegir-hi "
+#~ "una restricció angular"
 
 #~ msgid ""
 #~ "Your molecule must contain at least four atoms to add a torsion constraint"
 #~ msgstr ""
-#~ "La vostra molècula ha de contindre al menys quatre àtoms per a afegir-hi una "
-#~ "restricció de torsió"
+#~ "La vostra molècula ha de contindre al menys quatre àtoms per a afegir-hi "
+#~ "una restricció de torsió"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Trajectòria..."
+
+#~ msgid "Open chemical file format"
+#~ msgstr "Obre un format de fitxer químic"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Fitxers químics (*.xyz)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Obre un fitxer de paràmetres"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Fitxers químics (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Importa una trajectòria"
 
 #~ msgid "Optimize Geometry"
 #~ msgstr "Optimitza la geometria"
@@ -1635,10 +2236,6 @@ msgstr ""
 
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "No es pot inicialitzar el camp de forces per esta molècula."
-
-#, qt-format
-#~ msgid "Energy = %1 %2"
-#~ msgstr "Energia = %1 %2"
 
 #~ msgid "Geometric Optimization"
 #~ msgstr "Optimització geomètrica"
@@ -1679,9 +2276,6 @@ msgstr ""
 #~ msgid "gamessEfpDock"
 #~ msgstr "gamessEfpDock"
 
-#~ msgid "Delete"
-#~ msgstr "Esborra"
-
 #~ msgid "No Atoms Selected"
 #~ msgstr "No hi ha àtoms seleccionats"
 
@@ -1694,20 +2288,8 @@ msgstr ""
 #~ msgid "SMILES Format Conversion Not Available!"
 #~ msgstr "La conversió de format SMILES no és disponible !"
 
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Group Name"
-#~ msgstr "Nom del grup"
-
-#~ msgid " ("
-#~ msgstr " ("
-
 #~ msgid "qm"
 #~ msgstr "qm"
-
-#~ msgid ")"
-#~ msgstr ")"
 
 #~ msgid "GAMESS"
 #~ msgstr "GAMESS"
@@ -1754,6 +2336,9 @@ msgstr ""
 #~ msgid "Gaussian Input..."
 #~ msgstr "Entrada gaussiana..."
 
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Entrada Q-Chem..."
+
 #~ msgid "Gaussian Input Deck"
 #~ msgstr "Entrada  Gaussiana"
 
@@ -1781,8 +2366,14 @@ msgstr ""
 #~ msgid "Add Hydrogens"
 #~ msgstr "Afig els hidrògens"
 
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Afig hidrògens per al pH..."
+
 #~ msgid "Remove Hydrogens"
 #~ msgstr "Suprimeix els hidrògens"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Afig hidrògens per al pH"
 
 #~ msgid "Hydrogens"
 #~ msgstr "Hidrògens"
@@ -1792,6 +2383,123 @@ msgstr ""
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Fitxers de l'Avogradro (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Obre un fitxer mol"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Qualsevol fitxer (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Alça el fitxer de pel·lícula"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "fitxers de vídeo (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Alça el fitxer Traj"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "fitxer de trajectòria (*.xyz)"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph..."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Errada en la lectura del fitxer mol %1 ."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dues molècules tenen diferent nombre d'àtoms %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
+#~ "animacions"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
+#~ "vídeos"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Nom de vídeo no vàlid. Cal incloure el camí complet al directori"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Nom de vídeo no vàlid. Cal incloure el camí complet al directori i el nom "
+#~ "acabat en .avi"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Escriuria el fitxer a %1."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Es va escriure el fitxer %1."
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Crea superfícies..."
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Cancel·la el calcul"
+
+#~ msgid "Calculating MO "
+#~ msgstr "Calcula el MO "
+
+#~ msgid "Electron Density"
+#~ msgstr "Densitat d'electrons"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "Calcula la densitat d'electrons"
+
+#~ msgid "VdW Cube"
+#~ msgstr "Cub VdW"
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "Calcula el cub VdW"
+
+#~ msgid "Surfaces"
+#~ msgstr "Superfícies"
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Alça la imatge de POV-Ray generada"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Fitxers d'imatge (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "No filename supplied."
+#~ msgstr "No s'ha proporcionat cap nom de fitxer."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "No s'ha proporcionat cap nom de fitxer vàlid."
+
+#~ msgid "Does not compute."
+#~ msgstr "No concorda."
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
+#~ msgstr ""
+#~ "No heu demanat cap generació POV-Ray i no podeu utilitzar cap fitxer POV-"
+#~ "Ray.  Així no podreu alçar cap resultat. Esteu segur que això és el que "
+#~ "voleu ?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "S'ha produït un error en iniciar el POV-Ray."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "S'ha produït un error en iniciar el POV-Ray. Tal vegada podríeu comprovar "
+#~ "el camí a l'executable."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
 
 #~ msgid "Atom Properties..."
 #~ msgstr "Propietats dels àtoms..."
@@ -1811,9 +2519,6 @@ msgstr ""
 #~ msgid "Cartesian Editor..."
 #~ msgstr "Editor cartesià..."
 
-#~ msgid "&Properties"
-#~ msgstr "&Propietats"
-
 #~ msgid "Atom"
 #~ msgstr "Àtom"
 
@@ -1822,9 +2527,6 @@ msgstr ""
 
 #~ msgid "Angle"
 #~ msgstr "Angle"
-
-#~ msgid "Torsion"
-#~ msgstr "Torsió"
 
 #~ msgid "Cartesian"
 #~ msgstr "Cartesià"
@@ -1841,21 +2543,14 @@ msgstr ""
 #~ msgid "Partial Charge"
 #~ msgstr "Carrega parcial"
 
-#~ msgid "Valence"
-#~ msgstr "València"
-
-#~ msgid "Bond Order"
-#~ msgstr "Ordre de l'enllaç"
-
-#, qt-format
-#~ msgid "Atom %1"
-#~ msgstr "Àtom %1"
-
 #~ msgid "Start Atom"
 #~ msgstr "Àtom inicial"
 
 #~ msgid "End Atom"
 #~ msgstr "Final d'àtom"
+
+#~ msgid "Bond Order"
+#~ msgstr "Ordre de l'enllaç"
 
 #~ msgid "Length (Å)"
 #~ msgstr "Longitud (Å)"
@@ -1863,26 +2558,14 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Angular"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Enllaç %1"
-
-#~ msgid "Vertex"
-#~ msgstr "Vèrtex"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Angle (°)"
 
-#, qt-format
-#~ msgid "Angle %1"
-#~ msgstr "Angle %1"
-
 #~ msgid "Torsion (°)"
 #~ msgstr "Torsió (°)"
-
-#, qt-format
-#~ msgid "Torsion %1"
-#~ msgstr "Torsió %1"
 
 #~ msgid "X (Å)"
 #~ msgstr "X (Å)"
@@ -1896,7 +2579,6 @@ msgstr ""
 #~ msgid "Energy"
 #~ msgstr "Energia"
 
-#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Concordança %1"
 
@@ -1909,8 +2591,8 @@ msgstr ""
 #~ msgid "pythonTerminalDock"
 #~ msgstr "pythonTerminalDock"
 
-#~ msgid "&Invert Selection"
-#~ msgstr "&Inverteix la selecció"
+#~ msgid "Save QChem Input Deck"
+#~ msgstr "Alça l'entrada Qchem"
 
 #~ msgid "Select SMARTS..."
 #~ msgstr "Selecciona SMARTS..."
@@ -1924,6 +2606,9 @@ msgstr ""
 #~ msgid "Select Solvent"
 #~ msgstr "Selecciona solvent"
 
+#~ msgid "Add Named Selection..."
+#~ msgstr "Afig una selecció amb nom..."
+
 #~ msgid "SMARTS Selection"
 #~ msgstr "Selecció SMARTS"
 
@@ -1936,8 +2621,44 @@ msgstr ""
 #~ msgid "Residue name"
 #~ msgstr "Nom del residu"
 
+#~ msgid "There is no current selection."
+#~ msgstr "Ni hi ha cap selecció."
+
+#~ msgid "Add Named Selection"
+#~ msgstr "Afig una selecció amb nom"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "El nom no pot estar buit."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Ja hi ha una selecció amb aquest nom."
+
 #~ msgid "Selections"
 #~ msgstr "Seleccions."
+
+#~ msgid "GLSL Shaders..."
+#~ msgstr "GLSL Shaders..."
+
+#~ msgid "Open a vertex shader source file"
+#~ msgstr "Obre un fitxer font de vertex shader"
+
+#~ msgid "Vertex shader files (*.vert)"
+#~ msgstr "Fitxers de vertex shader (*.vert)"
+
+#~ msgid "Open a fragment shader source file"
+#~ msgstr "Obre un fitxer font de fragment shader"
+
+#~ msgid "Fragment shader files (*.frag)"
+#~ msgstr "Fitxers de fragment shader (*.frag)"
+
+#~ msgid "Open a shader parameters file"
+#~ msgstr "Obre un fitxer de paràmetres shader"
+
+#~ msgid "Shader parameters files (*.params)"
+#~ msgstr "Fitxers de paràmetres shader (*.params)"
+
+#~ msgid "Load and use OpenGL 2.0 GLSL shaders"
+#~ msgstr "Carrega i utilitza OpenGL 2.0 GLSL shader"
 
 #~ msgid "First Action"
 #~ msgstr "Primera acció"
@@ -1945,11 +2666,44 @@ msgstr ""
 #~ msgid "Second Action"
 #~ msgstr "Segona acció"
 
-#~ msgid "&Template"
-#~ msgstr "&Plantilla"
-
 #~ msgid "Template"
 #~ msgstr "Plantilla"
+
+#~ msgid "GL widget was not correctly initialized in order to make a video"
+#~ msgstr ""
+#~ "El estri GL no està correctament inicialitzat per enregistrar un vídeo"
+
+#~ msgid "GL widget has no molecule"
+#~ msgstr "El estri GL no té cap molècula"
+
+#~ msgid "Building video "
+#~ msgstr "Codificant vídeo "
+
+#~ msgid "cancel"
+#~ msgstr "cancel·la"
+
+#~ msgid "Video file not written."
+#~ msgstr "Fitxer de vídeo no alçat."
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Configura la relació d'aspecte"
+
+#~ msgid ""
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
+#~ "You may keep this value, for example if you intend to use POV-Ray\n"
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
+#~ msgstr ""
+#~ "L'actual escena d'Avogadro té %1x%2 pixels d'ample i tanmateix té relació "
+#~ "d'aspecte %3.\n"
+#~ "Podeu utilitzar aquest valor, per exemple per utilitzar POV-Ray per "
+#~ "produir una imatge de %4x1000 pixels , o podeu entrar un altre valor "
+#~ "positiu, \n"
+#~ "per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada "
+#~ "de d'aproximadament 1000x1000 pixels."
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Paràmetres de la cel·la unitat..."
@@ -1966,19 +2720,10 @@ msgstr ""
 #~ msgid "Apply"
 #~ msgstr "Aplica"
 
-#~ msgid "Connect"
-#~ msgstr "Connecta"
-
-#~ msgid "Disconnect"
-#~ msgstr "Desconnecta"
-
-#~ msgid "&WiiTrack"
-#~ msgstr "&WiiTrack"
-
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run any "
-#~ "OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Contexte OpenGL no vàlid. \n"
 #~ "Alguna cosa està completament trencada en la configuració OpenGL (podeu "
@@ -1987,17 +2732,23 @@ msgstr ""
 #~ msgid "OpenGL error"
 #~ msgstr "Error OpenGL"
 
-#~ msgid "FPS"
-#~ msgstr "FPS"
-
 #~ msgid "View Size"
 #~ msgstr "Visualitza mida"
 
-#~ msgid "Residue"
-#~ msgstr "Residu"
-
 #~ msgid "No Description"
 #~ msgstr "No hi ha cap descripció"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "Connector de Gestió"
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr ""
+#~ "Avogadro necessita que reinicieu el programa per tal que els canvis "
+#~ "tinguen efecte."
+
+#~ msgid "Residue"
+#~ msgstr "Residu"
 
 #~ msgid ""
 #~ "Align Molecules\n"
@@ -2013,15 +2764,6 @@ msgstr ""
 #~ "\t El primer àtom està centrat a l'origen.\n"
 #~ "\t El segon àtom està alineat a l'eix seleccionat.\n"
 #~ "Botó dret del ratolí:\t Inicialitza l'alineament."
-
-#~ msgid "Axis:"
-#~ msgstr "Eix:"
-
-#~ msgid "Align:"
-#~ msgstr "Alinia:"
-
-#~ msgid "Everything"
-#~ msgstr "Tot"
 
 #~ msgid "Align"
 #~ msgstr "Alinea"
@@ -2051,18 +2793,11 @@ msgstr ""
 #~ msgid "AutoOpt: Could not setup force field...."
 #~ msgstr "AutoOpt: No es pot configurar el camp de forces..."
 
-#, qt-format
-#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
-#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
-
 #~ msgid "Force Field:"
 #~ msgstr "Camp de força:"
 
 #~ msgid "Steps per Update:"
 #~ msgstr "Passes per actualizar:"
-
-#~ msgid "Algorithm:"
-#~ msgstr "Algoritme:"
 
 #~ msgid "Steepest Descent"
 #~ msgstr "Pas descendent"
@@ -2100,24 +2835,6 @@ msgstr ""
 #~ msgid "Auto Rotation Tool"
 #~ msgstr "Eina d'autogir"
 
-#~ msgid "x rotation:"
-#~ msgstr "rotació x:"
-
-#~ msgid "x rotation"
-#~ msgstr "rotació x"
-
-#~ msgid "y rotation:"
-#~ msgstr "rotació y:"
-
-#~ msgid "y rotation"
-#~ msgstr "rotació y"
-
-#~ msgid "z rotation:"
-#~ msgstr "rotació z:"
-
-#~ msgid "z rotation"
-#~ msgstr "rotació z"
-
 #~ msgid "Reset"
 #~ msgstr "Inicialització"
 
@@ -2150,8 +2867,8 @@ msgstr ""
 #~ "- Feu clic amb el botó secundari (dret) i arrossegueu un dels àtoms de "
 #~ "l'enllaç per a canviar la longitud"
 
-#~ msgid " Show Angles"
-#~ msgstr " Mostra Angles"
+#~ msgid "Bond Length: "
+#~ msgstr "Longitud de l'enllaç: "
 
 #~ msgid " Snap-to Bonds"
 #~ msgstr " Dur als enllaços"
@@ -2180,43 +2897,8 @@ msgstr ""
 #~ "\t L'angle està mesurat entre 1-3 utilitzant 2 com un punt comú\n"
 #~ "Botó secundari (dret) del ratolí: Inicialitza les mesures."
 
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Distància (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Distància (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Angle: %1 %2"
-#~ msgstr "Angle: %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Distància (3->4): %1 %2"
-
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Angle dièdric : %1%2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Distance(s):"
-#~ msgstr "Distància(es):"
-
-#~ msgid "Measure"
-#~ msgstr "Mesura"
 
 #~ msgid "Add Atom"
 #~ msgstr "Afig un àtom"
@@ -2257,12 +2939,6 @@ msgstr ""
 #~ msgid "Draw Bond"
 #~ msgstr "Dibuixa l'enllaç"
 
-#~ msgid "Draw"
-#~ msgstr "Dibuixa"
-
-#~ msgid "Element:"
-#~ msgstr "Element:"
-
 #~ msgid "Other..."
 #~ msgstr "Altre..."
 
@@ -2271,12 +2947,6 @@ msgstr ""
 
 #~ msgid "Single"
 #~ msgstr "Senzill"
-
-#~ msgid "Double"
-#~ msgstr "Doble"
-
-#~ msgid "Triple"
-#~ msgstr "Triple"
 
 #~ msgid "Adjust Hydrogens"
 #~ msgstr "Ajusta els hidrògens"
@@ -2287,8 +2957,8 @@ msgstr ""
 #~ msgid "Stop Inserting"
 #~ msgstr "Cancel·la les insercions"
 
-#~ msgid "Open Directory"
-#~ msgstr "Obre un directori"
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "Feu clic per a inserir el fragment en eixa posició."
 
 #~ msgid ""
 #~ "Manipulation Tool (F10)\n"
@@ -2320,7 +2990,8 @@ msgstr ""
 #~ "Botó primari (esquerre) del ratolí:  Cliqueu i arrossegueu per a girar la "
 #~ "vista\n"
 #~ "Botó del mig: Cliqueu i arrossegueu per a moure el zoom avant i arrere\n"
-#~ "Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la vista."
+#~ "Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la "
+#~ "vista."
 
 #~ msgid ""
 #~ "Selection Tool (F11)\n"
@@ -2336,11 +3007,48 @@ msgstr ""
 #~ msgid "Selection Mode:"
 #~ msgstr "Mode selecció:"
 
-#~ msgid "Medium"
-#~ msgstr "Mitjà"
+#~ msgid "Atom/Bond"
+#~ msgstr "Àtom/Enllaç"
+
+#~ msgid "Selection"
+#~ msgstr "Selecció"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Enable the tabbed tool layout."
+#~ msgstr "Habilita la disposició tabulada de la eina."
 
 #~ msgid "Tabbed Tools"
 #~ msgstr "Eines tabulades"
+
+#~ msgid "Top"
+#~ msgstr "Superior"
+
+#~ msgid "Bottom"
+#~ msgstr "Inferior"
+
+#~ msgid "Left"
+#~ msgstr "Esquerre"
+
+#~ msgid "Right"
+#~ msgstr "Dret"
+
+#~ msgid "Tab Position"
+#~ msgstr "Posició del tabulador"
+
+#~ msgid "Smooths animations of various functions where availabe."
+#~ msgstr "Està disponible allisar animacions de varies funcions."
+
+#~ msgid ""
+#~ "Enables the use of transitional animations when performing automatic "
+#~ "positioning of the GLWidget."
+#~ msgstr ""
+#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament "
+#~ "GLWidget."
+
+#~ msgid "Smooth Transitions"
+#~ msgstr "Transicions suaus"
 
 #~ msgid "Atom Radius:"
 #~ msgstr "Radi de l'àtom:"
@@ -2351,17 +3059,20 @@ msgstr ""
 #~ msgid "Show Multiple Bonds"
 #~ msgstr "Mostra multiples enllaços"
 
-#~ msgid "Width:"
-#~ msgstr "Amplada:"
+#~ msgid "Dipole:"
+#~ msgstr "Dipol:"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Moment dipolar"
+
+#~ msgid "Custom Value"
+#~ msgstr "Valor personalitzat"
+
+#~ msgid "Custom:"
+#~ msgstr "Personalitzat:"
 
 #~ msgid "Cut-off radius:"
 #~ msgstr "Radi de tall:"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~ msgid "°"
-#~ msgstr "°"
 
 #~ msgid "Cut-off angle:"
 #~ msgstr "Angle de tall:"
@@ -2375,17 +3086,17 @@ msgstr ""
 #~ msgid "Element symbol"
 #~ msgstr "Símbol d'element"
 
-#~ msgid "Element name"
-#~ msgstr "Nom d'element"
-
 #~ msgid "Residue number"
 #~ msgstr "Nombre de residu"
 
-#~ msgid "None"
-#~ msgstr "Cap"
+#~ msgid "Unique ID"
+#~ msgstr "ID únic"
 
 #~ msgid "Bond Labels:"
 #~ msgstr "Etiquetes d'enllaç:"
+
+#~ msgid "Bond length"
+#~ msgstr "Longitud d'enllaç"
 
 #~ msgid "Bond number"
 #~ msgstr "Nombre d'enllaç"
@@ -2393,14 +3104,8 @@ msgstr ""
 #~ msgid "Bond order"
 #~ msgstr "Ordre d'enllaç"
 
-#~ msgid "Orbital:"
-#~ msgstr "Orbital:"
-
 #~ msgid "Opacity:"
 #~ msgstr "Opacitat:"
-
-#~ msgid "Render:"
-#~ msgstr "Renderitza:"
 
 #~ msgid "Fill"
 #~ msgstr "Omple"
@@ -2411,20 +3116,17 @@ msgstr ""
 #~ msgid "Points"
 #~ msgstr "Punts"
 
+#~ msgid "Render:"
+#~ msgstr "Renderitza:"
+
 #~ msgid "Draw Box:"
 #~ msgstr "Caixa de dibuix:"
 
 #~ msgid "Color:"
 #~ msgstr "color:"
 
-#~ msgid "Positive"
-#~ msgstr "Positiu"
-
-#~ msgid "Negative"
-#~ msgstr "Negatiu"
-
-#~ msgid "Calculate"
-#~ msgstr "Calcula"
+#~ msgid "Python Settings"
+#~ msgstr "Configuració de python"
 
 #~ msgid "Rendering:"
 #~ msgstr "Renderització:"
@@ -2459,14 +3161,11 @@ msgstr ""
 #~ msgid "Load File..."
 #~ msgstr "Carrega un fitxer..."
 
-#~ msgid "0/0"
-#~ msgstr "0/0"
-
 #~ msgid "Loop"
 #~ msgstr "Cicle"
 
-#~ msgid "fps"
-#~ msgstr "fps"
+#~ msgid "Save as .avi..."
+#~ msgstr "Anomena i alça com a .avi…"
 
 #~ msgid "Conformer Search"
 #~ msgstr "Cercar de confòrmers"
@@ -2494,9 +3193,6 @@ msgstr ""
 
 #~ msgid "Weighted rotor search"
 #~ msgstr "Cerca de rotors depenent de la massa"
-
-#~ msgid "Constraints"
-#~ msgstr "Restriccions"
 
 #~ msgid "Add Constraints"
 #~ msgstr "Afig restriccions"
@@ -2528,14 +3224,23 @@ msgstr ""
 #~ msgid "Atom Indices"
 #~ msgstr "Index d'àtoms"
 
-#~ msgid "Load"
-#~ msgstr "Carrega"
-
 #~ msgid "Delete Selected"
 #~ msgstr "Suprimeix els seleccionats"
 
-#~ msgid "Delete All"
-#~ msgstr "Suprimeix-ho tot"
+#~ msgid "File Import..."
+#~ msgstr "Importa el fitxer..."
+
+#~ msgid "Browse..."
+#~ msgstr "Navega..."
+
+#~ msgid "Par File:"
+#~ msgstr "Fitxer igual:"
+
+#~ msgid "Attempt to perceive bonds?"
+#~ msgstr "Voleu Intentar detectar els enllaços?"
+
+#~ msgid "Perceive bonds?"
+#~ msgstr "Voleu detectar els enllaços?"
 
 #~ msgid "Setup Force Field"
 #~ msgstr "Configura el camp de forces"
@@ -2549,26 +3254,11 @@ msgstr ""
 #~ msgid "Geometry Optimization"
 #~ msgstr "Optimització geomètrica"
 
-#~ msgid "Number of steps"
-#~ msgstr "Nombre de passos"
-
-#~ msgid "Algorithm"
-#~ msgstr "Algoritme"
-
-#~ msgid "Convergence"
-#~ msgstr "Convergència"
-
-#~ msgid "10e-"
-#~ msgstr "10e-"
-
 #~ msgid "EFP Matches"
 #~ msgstr "Resultats EFP"
 
 #~ msgid "Group Label:"
 #~ msgstr "Etiqueta de grup:"
-
-#~ msgid "&Basic Setup"
-#~ msgstr "Configuració &bàsica"
 
 #~ msgid "AM1"
 #~ msgstr "AM1"
@@ -2585,14 +3275,8 @@ msgstr ""
 #~ msgid "MP2"
 #~ msgstr "MP2"
 
-#~ msgid "CCSD(T)"
-#~ msgstr "CCSD(T)"
-
 #~ msgid "STO-3G"
 #~ msgstr "STO-3G"
-
-#~ msgid "MINI"
-#~ msgstr "MINI"
 
 #~ msgid "3-21G"
 #~ msgstr "3-21G"
@@ -2603,38 +3287,17 @@ msgstr ""
 #~ msgid "6-31G(d,p)"
 #~ msgstr "6-31G(d,p)"
 
-#~ msgid "6-31+G(d,p)"
-#~ msgstr "6-31+G(d,p)"
-
-#~ msgid "6-31+G(2d,p)"
-#~ msgstr "6-31+G(2d,p)"
-
-#~ msgid "6-311++G(2d,p)"
-#~ msgstr "6-311++G(2d,p)"
-
 #~ msgid "Core Potential"
 #~ msgstr "Potencial base"
 
-#~ msgid "Memory:"
-#~ msgstr "Memòria:"
-
 #~ msgid "Singlet"
 #~ msgstr "Singlet"
-
-#~ msgid "Doublet"
-#~ msgstr "Doblet"
-
-#~ msgid "Triplet"
-#~ msgstr "Triplet"
 
 #~ msgid "Dication"
 #~ msgstr "Dicatió"
 
 #~ msgid "Cation"
 #~ msgstr "Catió"
-
-#~ msgid "Neutral"
-#~ msgstr "Neutre"
 
 #~ msgid "Anion"
 #~ msgstr "Anió"
@@ -2657,17 +3320,8 @@ msgstr ""
 #~ msgid "Frequencies"
 #~ msgstr "Freqüències"
 
-#~ msgid "Gas"
-#~ msgstr "Gas"
-
-#~ msgid "Water"
-#~ msgstr "Aigua"
-
-#~ msgid "With:"
-#~ msgstr "Amb:"
-
-#~ msgid "In:"
-#~ msgstr "Entrada:"
+#~ msgid "Calculate"
+#~ msgstr "Calcula"
 
 #~ msgid "Time Limit:"
 #~ msgstr "Temps límit:"
@@ -2675,47 +3329,17 @@ msgstr ""
 #~ msgid "&Advanced Setup"
 #~ msgstr "Configuració &avançada"
 
-#~ msgid "Advanced"
-#~ msgstr "Avançat"
-
-#~ msgid "Basis"
-#~ msgstr "Base"
-
-#~ msgid "Control"
-#~ msgstr "Control"
-
-#~ msgid "SCF"
-#~ msgstr "SCF"
-
-#~ msgid "DFT"
-#~ msgstr "DFT"
-
 #~ msgid "Hessian"
 #~ msgstr "Hessià"
 
 #~ msgid "Stat Point"
 #~ msgstr "Punt d'estat"
 
-#~ msgid "Data"
-#~ msgstr "Dades"
-
-#~ msgid "System"
-#~ msgstr "Sistema"
-
 #~ msgid "MO Guess"
 #~ msgstr "Conjectura MO"
 
-#~ msgid "Misc"
-#~ msgstr "Miscel·lània"
-
 #~ msgid "#D Heavy Atom Polarization Functions:"
 #~ msgstr "# Funcions de polarització D del àtoms pesants :"
-
-#~ msgid "Read"
-#~ msgstr "Llegeix"
-
-#~ msgid "SBKJC"
-#~ msgstr "SBKJC"
 
 #~ msgid "Hay-Wadt"
 #~ msgstr "Hay-Wadt"
@@ -2728,36 +3352,6 @@ msgstr ""
 
 #~ msgid "Basis Set:"
 #~ msgstr "Sistema base:"
-
-#~ msgid "MIDI"
-#~ msgstr "MIDI"
-
-#~ msgid "STO-2G"
-#~ msgstr "STO-2G"
-
-#~ msgid "STO-4G"
-#~ msgstr "STO-4G"
-
-#~ msgid "STO-5G"
-#~ msgstr "STO-5G"
-
-#~ msgid "STO-6G"
-#~ msgstr "STO-6G"
-
-#~ msgid "6-21G"
-#~ msgstr "6-21G"
-
-#~ msgid "4-31G"
-#~ msgstr "4-31G"
-
-#~ msgid "5-31G"
-#~ msgstr "5-31G"
-
-#~ msgid "6-31G"
-#~ msgstr "6-31G"
-
-#~ msgid "6-311G"
-#~ msgstr "6-311G"
 
 #~ msgid "Double Zeta Valence"
 #~ msgstr "Doble valència zeta"
@@ -2783,9 +3377,6 @@ msgstr ""
 #~ msgid "ECP Type:"
 #~ msgstr "Tipus ECP"
 
-#~ msgid "Default"
-#~ msgstr "Per defecte"
-
 #~ msgid "Pople"
 #~ msgstr "Pople"
 
@@ -2795,20 +3386,11 @@ msgstr ""
 #~ msgid "Dunning"
 #~ msgstr "Dunning"
 
-#~ msgid "Huzinaga"
-#~ msgstr "Huzinaga"
-
-#~ msgid "Hondo7"
-#~ msgstr "Hondo7"
-
 #~ msgid "#F Heavy Atom Polarization Functions:"
 #~ msgstr "# Funcions de polarització F dels àtoms pesants:"
 
 #~ msgid "#light Atom Polarization Functions:"
 #~ msgstr "# Funcions de polarització dels àtoms lleugers:"
-
-#~ msgid "Polar:"
-#~ msgstr "Polar:"
 
 #~ msgid "Max SCF Iterations:"
 #~ msgstr "Iteracions Max SCF:"
@@ -2816,29 +3398,17 @@ msgstr ""
 #~ msgid "Gradient"
 #~ msgstr "Gradient"
 
-#~ msgid "Optimization"
-#~ msgstr "Optimització"
-
 #~ msgid "Trudge"
 #~ msgstr "Trudge"
 
 #~ msgid "Saddle Point"
 #~ msgstr "Punt Saddle"
 
-#~ msgid "IRC"
-#~ msgstr "IRC"
-
 #~ msgid "Gradient Extremal"
 #~ msgstr "Gradient extrem"
 
-#~ msgid "DRC"
-#~ msgstr "DRC"
-
 #~ msgid "Energy Surface"
 #~ msgstr "Energia superficial"
-
-#~ msgid "Morokuma"
-#~ msgstr "Morokuma"
 
 #~ msgid "Radiative Transition mom."
 #~ msgstr "Transició radiactiva mom."
@@ -2849,14 +3419,8 @@ msgstr ""
 #~ msgid "Finite Electric Field"
 #~ msgstr "Camp elèctric finit"
 
-#~ msgid "TDHF"
-#~ msgstr "TDHF"
-
 #~ msgid "Global Optimization"
 #~ msgstr "Optimització global"
-
-#~ msgid "VSCF"
-#~ msgstr "VSCF"
 
 #~ msgid "FMO Optimization"
 #~ msgstr "Optimització FMO"
@@ -2864,35 +3428,14 @@ msgstr ""
 #~ msgid "Raman Intensities"
 #~ msgstr "Intensitats Raman"
 
-#~ msgid "NMR"
-#~ msgstr "NMR"
-
 #~ msgid "Make EFP"
 #~ msgstr "Fes EFP"
-
-#~ msgid "UHF"
-#~ msgstr "UHF"
-
-#~ msgid "ROHF"
-#~ msgstr "ROHF"
-
-#~ msgid "GVB"
-#~ msgstr "GVB"
-
-#~ msgid "MCSCF"
-#~ msgstr "MCSCF"
 
 #~ msgid "None (CI)"
 #~ msgstr "Cap (CI)"
 
 #~ msgid "Foster-Boys"
 #~ msgstr "Foster-Boys"
-
-#~ msgid "Edmistron-Ruedenberg"
-#~ msgstr "Edmistron-Ruedenberg"
-
-#~ msgid "Pipek-Mezey"
-#~ msgstr "Pipek-Mezey"
 
 #~ msgid "SCF Type:"
 #~ msgstr "Tipus SCF:"
@@ -2902,12 +3445,6 @@ msgstr ""
 
 #~ msgid "Exec Type:"
 #~ msgstr "Tipus Exec:"
-
-#~ msgid "CI:"
-#~ msgstr "CI:"
-
-#~ msgid "GUGA"
-#~ msgstr "GUGA"
 
 #~ msgid "Ames Lab. Determinant"
 #~ msgstr "Determinant Lab. Ames"
@@ -2924,9 +3461,6 @@ msgstr ""
 #~ msgid "General CI"
 #~ msgstr "Cl general"
 
-#~ msgid "CC:"
-#~ msgstr "CC:"
-
 #~ msgid "LCCD: Linearized CC"
 #~ msgstr "LCCD: Linearized CC"
 
@@ -2936,29 +3470,11 @@ msgstr ""
 #~ msgid "CCSD: CC with Singles and Doubles"
 #~ msgstr "CCSD: CC amb Simples i dobles"
 
-#~ msgid "R-CC"
-#~ msgstr "R-CC"
-
-#~ msgid "CR-CC"
-#~ msgstr "CR-CC"
-
-#~ msgid "EOM-CCSD"
-#~ msgstr "EOM-CCSD"
-
-#~ msgid "CR-EOM"
-#~ msgstr "CR-EOM"
-
 #~ msgid "Multiplicity:"
 #~ msgstr "Multiplicitat:"
 
 #~ msgid "Normal Run"
 #~ msgstr "Execució normal"
-
-#~ msgid "Check"
-#~ msgstr "Comprova"
-
-#~ msgid "Debug"
-#~ msgstr "Depura"
 
 #~ msgid "Molecule Charge:"
 #~ msgstr "Carrega molecular:"
@@ -2975,62 +3491,11 @@ msgstr ""
 #~ msgid "# of Z-Matrix Variables"
 #~ msgstr "# de les variables de la matriu Z"
 
-#~ msgid "Ǻngstrom"
-#~ msgstr "Ǻngstrom"
-
-#~ msgid "Bohr"
-#~ msgstr "Bohr"
-
 #~ msgid "Order of Principal Axis:"
 #~ msgstr "Ordre dels eixos principals:"
 
 #~ msgid "Coordinate Type:"
 #~ msgstr "Tipus de coordenada:"
-
-#~ msgid "C1"
-#~ msgstr "C1"
-
-#~ msgid "CS"
-#~ msgstr "CS"
-
-#~ msgid "CI"
-#~ msgstr "CI"
-
-#~ msgid "CnH"
-#~ msgstr "CnH"
-
-#~ msgid "CnV"
-#~ msgstr "CnV"
-
-#~ msgid "Cn"
-#~ msgstr "Cn"
-
-#~ msgid "S2n"
-#~ msgstr "S2n"
-
-#~ msgid "DnD"
-#~ msgstr "DnD"
-
-#~ msgid "DnH"
-#~ msgstr "DnH"
-
-#~ msgid "Dn"
-#~ msgstr "Dn"
-
-#~ msgid "TD"
-#~ msgstr "TD"
-
-#~ msgid "TH"
-#~ msgstr "TH"
-
-#~ msgid "T"
-#~ msgstr "T"
-
-#~ msgid "OH"
-#~ msgstr "OH"
-
-#~ msgid "O"
-#~ msgstr "O"
 
 #~ msgid "Unique cartesian Coords."
 #~ msgstr "Coordenades cartesianes úniques"
@@ -3050,47 +3515,17 @@ msgstr ""
 #~ msgid "Use Symmetry During Calculation"
 #~ msgstr "Utilitza simetria durant el càlcul"
 
-#~ msgid "Units:"
-#~ msgstr "Unitats:"
-
 #~ msgid "Title:"
 #~ msgstr "Títol:"
 
 #~ msgid "Point Group:"
 #~ msgstr "Grup del punt:"
 
-#~ msgid "Seconds"
-#~ msgstr "Segons"
-
-#~ msgid "Minutes"
-#~ msgstr "Minuts"
-
-#~ msgid "Hours"
-#~ msgstr "Hores"
-
-#~ msgid "Days"
-#~ msgstr "Dies"
-
-#~ msgid "Weeks"
-#~ msgstr "Setmanes"
-
-#~ msgid "Years"
-#~ msgstr "Anys"
-
 #~ msgid "Millenia"
 #~ msgstr "Mil·lennis"
 
-#~ msgid "Words"
-#~ msgstr "Paraules"
-
-#~ msgid "Bytes"
-#~ msgstr "Bytes"
-
 #~ msgid "MegaWords"
 #~ msgstr "Milions de paraules"
-
-#~ msgid "MegaBytes"
-#~ msgstr "Megabytes"
 
 #~ msgid "Force Parallel Methods"
 #~ msgstr "Mètodes de força paral·lela"
@@ -3098,26 +3533,11 @@ msgstr ""
 #~ msgid "Produce \"core\" file upon abort"
 #~ msgstr "Produce \"core\" file upon abort"
 
-#~ msgid "EVVRSP"
-#~ msgstr "EVVRSP"
-
-#~ msgid "GIVEIS"
-#~ msgstr "GIVEIS"
-
-#~ msgid "JACOBI"
-#~ msgstr "JACOBI"
-
-#~ msgid "MemDDI:"
-#~ msgstr "MemDDI:"
-
 #~ msgid "Diagonalization Method:"
 #~ msgstr "Mètode de diagonalització:"
 
 #~ msgid "Parallel Load Balance Type"
 #~ msgstr "Tipus del balanç de càrrega paral·lel"
-
-#~ msgid "Next Value"
-#~ msgstr "Valor següent"
 
 #~ msgid "Use External Data Representation for Messages"
 #~ msgstr "Utilitzeu dades externes per representar el missatges"
@@ -3125,20 +3545,11 @@ msgstr ""
 #~ msgid "Initial Guess:"
 #~ msgstr "Conjectura inicial:"
 
-#~ msgid "Huckel"
-#~ msgstr "Huckel"
-
-#~ msgid "HCore"
-#~ msgstr "HCore"
-
 #~ msgid "MO Read ($VEC)"
 #~ msgstr "MO llegit ($VEC)"
 
 #~ msgid "MO Saved (DICTNRY)"
 #~ msgstr "MO alçat (DICTNRY)"
-
-#~ msgid "Skip"
-#~ msgstr "Omet"
 
 #~ msgid "Rotate Alpha and Beta Orbitals"
 #~ msgstr "Gira els orbitals alfa i beta"
@@ -3149,35 +3560,14 @@ msgstr ""
 #~ msgid "GAMESS Interface to Other Codes"
 #~ msgstr "Interfície GAMESS per als altres codis"
 
-#~ msgid "MolPlt"
-#~ msgstr "MolPlt"
-
-#~ msgid "PltOrb"
-#~ msgstr "PltOrb"
-
-#~ msgid "AIMPAC"
-#~ msgstr "AIMPAC"
-
-#~ msgid "RPAC"
-#~ msgstr "RPAC"
-
 #~ msgid "Force a Check Run Type"
 #~ msgstr "Força el funcionament a prova"
-
-#~ msgid "Hondo 8.2"
-#~ msgstr "Hondo 8.2"
-
-#~ msgid "MELDF"
-#~ msgstr "MELDF"
 
 #~ msgid "GAMESS (UK Version)"
 #~ msgstr "GAMESS (Versió UK)"
 
 #~ msgid "Gaussian 9x"
 #~ msgstr "Gaussià 9x"
-
-#~ msgid "All"
-#~ msgstr "Tots"
 
 #~ msgid "Solvate with Water"
 #~ msgstr "Solvata amb aigua"
@@ -3248,17 +3638,11 @@ msgstr ""
 #~ msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
 #~ msgstr "BHHLYP: Intercanvis HF i BECKE + Correlació LYP"
 
-#~ msgid "Grid"
-#~ msgstr "Graella"
-
 #~ msgid "Grid-Free"
 #~ msgstr "Graella lliure"
 
 #~ msgid "DFT Functional:"
 #~ msgstr "DFT funcional:"
-
-#~ msgid "Method:"
-#~ msgstr "Mètode:"
 
 #~ msgid "AO Integral Storage"
 #~ msgstr "Emmagatzemament integral AO"
@@ -3268,9 +3652,6 @@ msgstr ""
 
 #~ msgid "Distributed Across All Nodes"
 #~ msgstr "Distribuït a través de tots els nodes"
-
-#~ msgid "words"
-#~ msgstr "paraules"
 
 #~ msgid "Compute MP2 Properties"
 #~ msgstr "Calcula les propietats MP2"
@@ -3299,9 +3680,6 @@ msgstr ""
 #~ msgid "Analytic"
 #~ msgstr "Analític"
 
-#~ msgid "Numeric"
-#~ msgstr "Numèric"
-
 #~ msgid "Double Differenced Hessian"
 #~ msgstr "Hessià derivada parcial segona"
 
@@ -3316,9 +3694,6 @@ msgstr ""
 
 #~ msgid "Frequency Scale Factor:"
 #~ msgstr "Factor d'escala de la freqüencia:"
-
-#~ msgid "bohrs"
-#~ msgstr "bohrs"
 
 #~ msgid "Initial Hessian"
 #~ msgstr "Hessià inicial"
@@ -3350,12 +3725,6 @@ msgstr ""
 #~ msgid "Step Size"
 #~ msgstr "Mida del pas"
 
-#~ msgid "Maximum:"
-#~ msgstr "Màxim:"
-
-#~ msgid "Minimum:"
-#~ msgstr "Mínim:"
-
 #~ msgid "Initial:"
 #~ msgstr "Inicial:"
 
@@ -3373,9 +3742,6 @@ msgstr ""
 
 #~ msgid "Constrained Optimization"
 #~ msgstr "Optimització de les restriccions"
-
-#~ msgid "steps"
-#~ msgstr "passos"
 
 #~ msgid "Recalculate Hessian Every:"
 #~ msgstr "Recalcula el hessià cada:"
@@ -3395,6 +3761,9 @@ msgstr ""
 #~ msgid "Close"
 #~ msgstr "Tanca"
 
+#~ msgid "Gaussian Input"
+#~ msgstr "Entrada gaussiana"
+
 #~ msgid "Calculation:"
 #~ msgstr "Càlcul:"
 
@@ -3413,6 +3782,9 @@ msgstr ""
 #~ msgid "Basis:"
 #~ msgstr "Base:"
 
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
 #~ msgid "Charge:"
 #~ msgstr "Càrrega:"
 
@@ -3422,17 +3794,14 @@ msgstr ""
 #~ msgid "Standard"
 #~ msgstr "Estàndard"
 
-#~ msgid "Molden"
-#~ msgstr "Molden"
-
-#~ msgid "Molekel"
-#~ msgstr "Molekel"
-
 #~ msgid "Checkpoint:"
 #~ msgstr "Punt de comprovació:"
 
 #~ msgid "Z-matrix"
 #~ msgstr "Matriu Z"
+
+#~ msgid "Z-matrix (compact)"
+#~ msgstr "Matriu Z (compacta)"
 
 #~ msgid "Use Form"
 #~ msgstr "Utilitza la forma"
@@ -3451,500 +3820,6 @@ msgstr ""
 
 #~ msgid "The residue name"
 #~ msgstr "El nom del residu"
-
-#~ msgid "Steps:"
-#~ msgstr "Passos:"
-
-#~ msgid "Origin:"
-#~ msgstr "Origen:"
-
-#~ msgid "Create binding pocket"
-#~ msgstr "Crea una cavitat d'unió (binding pocket)"
-
-#~ msgid "create pocket from current selection"
-#~ msgstr "crea una cavitat (pocket) a partir de la selecció actual"
-
-#~ msgid "create pocket from residue name"
-#~ msgstr "crea una cavitat (pocket) a partir del residu"
-
-#~ msgid "Radius"
-#~ msgstr "Radi"
-
-#~ msgid ""
-#~ "All atoms within radius from the ligand will be part of the binding pocket"
-#~ msgstr ""
-#~ "Tots els àtoms dins del radi del lligand formaran part de la cavitat d'unió "
-#~ "(binding pocket)"
-
-#~ msgid "Unit Cell Parameters"
-#~ msgstr "Paràmetres de la cel·la unitat"
-
-#~ msgid "Unit Cell Display Options"
-#~ msgstr "Opcions de visualització de la cel·la unitat"
-
-#~ msgid "A repeat:"
-#~ msgstr "Repetició A:"
-
-#~ msgid "B repeat:"
-#~ msgstr "Repetició B:"
-
-#~ msgid "C repeat:"
-#~ msgstr "Repetició C:"
-
-#~ msgid "Delete Unit Cell"
-#~ msgstr "Suprimeix la cel·la unitat"
-
-#~ msgid "Fill Unit Cell"
-#~ msgstr "Omple la cel·la unitat"
-
-#~ msgid "Axes (Å)"
-#~ msgstr "Eixos (Å)"
-
-#~ msgid "Angles (°)"
-#~ msgstr "Angles (°)"
-
-#~ msgid "A:"
-#~ msgstr "A:"
-
-#~ msgid "alpha:"
-#~ msgstr "alfa:"
-
-#~ msgid "B:"
-#~ msgstr "B:"
-
-#~ msgid "beta:"
-#~ msgstr "beta:"
-
-#~ msgid "C:"
-#~ msgstr "C:"
-
-#~ msgid "gamma:"
-#~ msgstr "gamma:"
-
-#~ msgid "Insert Fragment..."
-#~ msgstr "Insereix un fragment…"
-
-#~ msgid "Add Directory"
-#~ msgstr "Afig un directori"
-
-#~ msgid "Reset List"
-#~ msgstr "Reinicia la llista"
-
-#~ msgid "Generate from SMILES:"
-#~ msgstr "Generat a partir de SMILES:"
-
-#~ msgid "Bond length"
-#~ msgstr "Longitud d'enllaç"
-
-#~ msgid "Gaussian Input"
-#~ msgstr "Entrada gaussiana"
-
-#~ msgid "Engines"
-#~ msgstr "Motors"
-
-#~ msgid "Step Size:"
-#~ msgstr "Mida del pas:"
-
-#~ msgid "Add Hydrogens for pH..."
-#~ msgstr "Afig hidrògens per al pH..."
-
-#~ msgid "pH"
-#~ msgstr "pH"
-
-#~ msgid ""
-#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
-#~ "bonds and do a quick optimization?"
-#~ msgstr ""
-#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie l'escala "
-#~ "dels enllaços i faça una optimització ràpida?"
-
-#~ msgid "Abort Calculation"
-#~ msgstr "Cancel·la el calcul"
-
-#~ msgid "MO "
-#~ msgstr "MO "
-
-#~ msgid "Save QChem Input Deck"
-#~ msgstr "Alça l'entrada Qchem"
-
-#~ msgid "Add Named Selection..."
-#~ msgstr "Afig una selecció amb nom..."
-
-#~ msgid "There is no current selection."
-#~ msgstr "Ni hi ha cap selecció."
-
-#~ msgid "Add Named Selection"
-#~ msgstr "Afig una selecció amb nom"
-
-#~ msgid "name"
-#~ msgstr "nom"
-
-#~ msgid "Name cannot be empty."
-#~ msgstr "El nom no pot estar buit."
-
-#~ msgid "There is already a selection with this name."
-#~ msgstr "Ja hi ha una selecció amb aquest nom."
-
-#~ msgid "Atom/Bond"
-#~ msgstr "Àtom/Enllaç"
-
-#~ msgid "Overlay"
-#~ msgstr "Recobriment"
-
-#~ msgid "tree"
-#~ msgstr "arbre"
-
-#~ msgid "Low"
-#~ msgstr "Baix"
-
-#~ msgid "High"
-#~ msgstr "Alt"
-
-#~ msgid "Undefined"
-#~ msgstr "no definit"
-
-#~ msgid "Some"
-#~ msgstr "Alguns"
-
-#~ msgid "Mid"
-#~ msgstr "Mitjancer"
-
-#~ msgid "Lots"
-#~ msgstr "Porcions"
-
-#~ msgid "Color by Element"
-#~ msgstr "Color per element"
-
-#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-#~ msgstr "Color per element (carboni = gris , oxigen = roig, … )."
-
-#~ msgid "Color by Index"
-#~ msgstr "Color per índex"
-
-#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-#~ msgstr "Color per índex (roig, taronja, groc, verd, blau, violeta)"
-
-#~ msgid "Color by Residue"
-#~ msgstr "Color per residu"
-
-#~ msgid "Python script rendering"
-#~ msgstr "Renderització amb script de Python"
-
-#~ msgid "Trajectory files (*.xtc *.xyz)"
-#~ msgstr "Fitxers de trajectòria (*.xtc *.xyz)"
-
-#~ msgid "video files (*.avi)"
-#~ msgstr "fitxers de vídeo (*.avi)"
-
-#~ msgid "Adding .avi extension"
-#~ msgstr "Afig l'extensió .avi"
-
-#~ msgid "Must specify a valid .avi file name"
-#~ msgstr "Cal especificar un nom .avi vàlid"
-
-#~ msgid "GL widget was not correctly initialized in order to save video"
-#~ msgstr ""
-#~ "El giny GL no s'ha inicialitzat de forma correcta per a alçar el vídeo"
-
-#~ msgid "Invalid video filename.  Must include full directory path"
-#~ msgstr ""
-#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del directori "
-#~ "complet"
-
-#~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
-#~ msgstr ""
-#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del directori "
-#~ "complet i el nom, acabat en .avi"
-
-#~ msgid "could not set format to XYZ"
-#~ msgstr "no es pot posar en format XYZ"
-
-#, qt-format
-#~ msgid "Problem reading traj file %1"
-#~ msgstr "S'ha produït un error en llegir el fitxer traj %1"
-
-#, qt-format
-#~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-#~ msgstr ""
-#~ "El fitxer trajectòria %1 no concorda amb el nombre d'àtoms de l'actual "
-#~ "molècula"
-
-#~ msgid "Trajectory..."
-#~ msgstr "Trajectòria..."
-
-#~ msgid "Open chemical file format"
-#~ msgstr "Obre un format de fitxer químic"
-
-#~ msgid "Chemical files (*.xyz)"
-#~ msgstr "Fitxers químics (*.xyz)"
-
-#~ msgid "Open parameter file"
-#~ msgstr "Obre un fitxer de paràmetres"
-
-#~ msgid "Chemical files (*.parm7)"
-#~ msgstr "Fitxers químics (*.parm7)"
-
-#~ msgid "Import Trajectory"
-#~ msgstr "Importa una trajectòria"
-
-#~ msgid "Q-Chem Input..."
-#~ msgstr "Entrada Q-Chem..."
-
-#~ msgid "Add Hydrogens for pH"
-#~ msgstr "Afig hidrògens per al pH"
-
-#~ msgid "Open mol file"
-#~ msgstr "Obre un fitxer mol"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "Qualsevol fitxer (*.*)"
-
-#~ msgid "Save Movie File"
-#~ msgstr "Alça el fitxer de pel·lícula"
-
-#~ msgid "movie files (*.avi)"
-#~ msgstr "fitxers de vídeo (*.avi)"
-
-#~ msgid "Save Traj File"
-#~ msgstr "Alça el fitxer Traj"
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "fitxer de trajectòria (*.xyz)"
-
-#~ msgid "Lin Morph..."
-#~ msgstr "Lin Morph..."
-
-#, qt-format
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Errada en la lectura del fitxer mol %1 ."
-
-#, qt-format
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "Dues molècules tenen diferent nombre d'àtoms %1 %2"
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
-#~ "animacions"
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr ""
-#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar vídeos"
-
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr "Nom de vídeo no vàlid. Cal incloure el camí complet al directori"
-
-#~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
-#~ msgstr ""
-#~ "Nom de vídeo no vàlid. Cal incloure el camí complet al directori i el nom "
-#~ "acabat en .avi"
-
-#, qt-format
-#~ msgid "Would write file to %1."
-#~ msgstr "Escriuria el fitxer a %1."
-
-#, qt-format
-#~ msgid "Wrote file %1."
-#~ msgstr "Es va escriure el fitxer %1."
-
-#~ msgid "Create Surfaces..."
-#~ msgstr "Crea superfícies..."
-
-#~ msgid "Calculating MO "
-#~ msgstr "Calcula el MO "
-
-#~ msgid "Electron Density"
-#~ msgstr "Densitat d'electrons"
-
-#~ msgid "Calculating Electron Density"
-#~ msgstr "Calcula la densitat d'electrons"
-
-#~ msgid "VdW Cube"
-#~ msgstr "Cub VdW"
-
-#~ msgid "Calculating VdW Cube"
-#~ msgstr "Calcula el cub VdW"
-
-#~ msgid "Surfaces"
-#~ msgstr "Superfícies"
-
-#~ msgid "Save POV-Ray rendered image"
-#~ msgstr "Alça la imatge de POV-Ray generada"
-
-#~ msgid "Image files (*.png *.pbm)"
-#~ msgstr "Fitxers d'imatge (*.png *.pbm)"
-
-#~ msgid "POV-Ray..."
-#~ msgstr "POV-Ray..."
-
-#~ msgid "No filename supplied."
-#~ msgstr "No s'ha proporcionat cap nom de fitxer."
-
-#~ msgid "No valid filename was supplied."
-#~ msgstr "No s'ha proporcionat cap nom de fitxer vàlid."
-
-#~ msgid "Does not compute."
-#~ msgstr "No concorda."
-
-#~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
-#~ msgstr ""
-#~ "No heu demanat cap generació POV-Ray i no podeu utilitzar cap fitxer POV-"
-#~ "Ray.  Així no podreu alçar cap resultat. Esteu segur que això és el que "
-#~ "voleu ?"
-
-#~ msgid "POV-Ray failed to start."
-#~ msgstr "S'ha produït un error en iniciar el POV-Ray."
-
-#~ msgid ""
-#~ "POV-Ray failed to start. May be the path to the executable is not set "
-#~ "correctly."
-#~ msgstr ""
-#~ "S'ha produït un error en iniciar el POV-Ray. Tal vegada podríeu comprovar el "
-#~ "camí a l'executable."
-
-#~ msgid "POV-Ray"
-#~ msgstr "POV-Ray"
-
-#~ msgid "GLSL Shaders..."
-#~ msgstr "GLSL Shaders..."
-
-#~ msgid "Open a vertex shader source file"
-#~ msgstr "Obre un fitxer font de vertex shader"
-
-#~ msgid "Vertex shader files (*.vert)"
-#~ msgstr "Fitxers de vertex shader (*.vert)"
-
-#~ msgid "Open a fragment shader source file"
-#~ msgstr "Obre un fitxer font de fragment shader"
-
-#~ msgid "Fragment shader files (*.frag)"
-#~ msgstr "Fitxers de fragment shader (*.frag)"
-
-#~ msgid "Open a shader parameters file"
-#~ msgstr "Obre un fitxer de paràmetres shader"
-
-#~ msgid "Shader parameters files (*.params)"
-#~ msgstr "Fitxers de paràmetres shader (*.params)"
-
-#~ msgid "Load and use OpenGL 2.0 GLSL shaders"
-#~ msgstr "Carrega i utilitza OpenGL 2.0 GLSL shader"
-
-#~ msgid "GL widget was not correctly initialized in order to make a video"
-#~ msgstr ""
-#~ "El estri GL no està correctament inicialitzat per enregistrar un vídeo"
-
-#~ msgid "GL widget has no molecule"
-#~ msgstr "El estri GL no té cap molècula"
-
-#~ msgid "Building video "
-#~ msgstr "Codificant vídeo "
-
-#~ msgid "cancel"
-#~ msgstr "cancel·la"
-
-#~ msgid "Video file not written."
-#~ msgstr "Fitxer de vídeo no alçat."
-
-#~ msgid "Plugin Manager"
-#~ msgstr "Connector de Gestió"
-
-#~ msgid ""
-#~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr ""
-#~ "Avogadro necessita que reinicieu el programa per tal que els canvis tinguen "
-#~ "efecte."
-
-#~ msgid "Bond Length: "
-#~ msgstr "Longitud de l'enllaç: "
-
-#~ msgid "Click to insert the fragment at that position."
-#~ msgstr "Feu clic per a inserir el fragment en eixa posició."
-
-#~ msgid "Selection"
-#~ msgstr "Selecció"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Enable the tabbed tool layout."
-#~ msgstr "Habilita la disposició tabulada de la eina."
-
-#~ msgid "Top"
-#~ msgstr "Superior"
-
-#~ msgid "Bottom"
-#~ msgstr "Inferior"
-
-#~ msgid "Left"
-#~ msgstr "Esquerre"
-
-#~ msgid "Right"
-#~ msgstr "Dret"
-
-#~ msgid "Tab Position"
-#~ msgstr "Posició del tabulador"
-
-#~ msgid "Smooths animations of various functions where availabe."
-#~ msgstr "Està disponible allisar animacions de varies funcions."
-
-#~ msgid ""
-#~ "Enables the use of transitional animations when performing automatic "
-#~ "positioning of the GLWidget."
-#~ msgstr ""
-#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament GLWidget."
-
-#~ msgid "Smooth Transitions"
-#~ msgstr "Transicions suaus"
-
-#~ msgid "Dipole:"
-#~ msgstr "Dipol:"
-
-#~ msgid "Dipole Moment"
-#~ msgstr "Moment dipolar"
-
-#~ msgid "Custom Value"
-#~ msgstr "Valor personalitzat"
-
-#~ msgid "Custom:"
-#~ msgstr "Personalitzat:"
-
-#~ msgid "Unique ID"
-#~ msgstr "ID únic"
-
-#~ msgid "Python Settings"
-#~ msgstr "Configuració de python"
-
-#~ msgid "Save as .avi..."
-#~ msgstr "Anomena i alça com a .avi…"
-
-#~ msgid "File Import..."
-#~ msgstr "Importa el fitxer..."
-
-#~ msgid "Browse..."
-#~ msgstr "Navega..."
-
-#~ msgid "Par File:"
-#~ msgstr "Fitxer igual:"
-
-#~ msgid "Attempt to perceive bonds?"
-#~ msgstr "Voleu Intentar detectar els enllaços?"
-
-#~ msgid "Perceive bonds?"
-#~ msgstr "Voleu detectar els enllaços?"
-
-#~ msgid "LANL2DZ"
-#~ msgstr "LANL2DZ"
-
-#~ msgid "Z-matrix (compact)"
-#~ msgstr "Matriu Z (compacta)"
 
 #~ msgid "Linear Morph Trajectory"
 #~ msgstr "Trajectoria Linear Morph"
@@ -3999,6 +3874,9 @@ msgstr ""
 #~ msgid "Max:"
 #~ msgstr "Màx:"
 
+#~ msgid "Step Size:"
+#~ msgstr "Mida del pas:"
+
 #~ msgid "Calculate MO"
 #~ msgstr "Càlcula el MO"
 
@@ -4049,6 +3927,24 @@ msgstr ""
 
 #~ msgid "Range:"
 #~ msgstr "Rang:"
+
+#~ msgid "Create binding pocket"
+#~ msgstr "Crea una cavitat d'unió (binding pocket)"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "crea una cavitat (pocket) a partir de la selecció actual"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "crea una cavitat (pocket) a partir del residu"
+
+#~ msgid "Radius"
+#~ msgstr "Radi"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr ""
+#~ "Tots els àtoms dins del radi del lligand formaran part de la cavitat "
+#~ "d'unió (binding pocket)"
 
 #~ msgid "POV-Ray Export"
 #~ msgstr "Exporta a POV-Ray"
@@ -4124,11 +4020,69 @@ msgstr ""
 #~ msgid "Shader Program:"
 #~ msgstr "Programa de ombrejat:"
 
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "Paràmetres de la cel·la unitat"
+
+#~ msgid "Unit Cell Display Options"
+#~ msgstr "Opcions de visualització de la cel·la unitat"
+
+#~ msgid "A repeat:"
+#~ msgstr "Repetició A:"
+
+#~ msgid "B repeat:"
+#~ msgstr "Repetició B:"
+
+#~ msgid "C repeat:"
+#~ msgstr "Repetició C:"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "Suprimeix la cel·la unitat"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "Omple la cel·la unitat"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "Eixos (Å)"
+
+#~ msgid "Angles (°)"
+#~ msgstr "Angles (°)"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "alpha:"
+#~ msgstr "alfa:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "Insereix un fragment…"
+
+#~ msgid "Add Directory"
+#~ msgstr "Afig un directori"
+
+#~ msgid "Reset List"
+#~ msgstr "Reinicia la llista"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "Generat a partir de SMILES:"
+
 #~ msgid "Color by Partial Charge"
 #~ msgstr "Color de la càrrega parcial."
 
 #~ msgid "Color by atomic partial charge (blue = positive, red = negative."
-#~ msgstr "Color de la càrrega atòmica parcial ( blau= positiva, roja=negativa."
+#~ msgstr ""
+#~ "Color de la càrrega atòmica parcial ( blau= positiva, roja=negativa."
 
 #~ msgid "Color by Distance"
 #~ msgstr "Color de la distància"
@@ -4184,8 +4138,8 @@ msgstr ""
 
 #~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 #~ msgstr ""
-#~ "Renderitza enllaços com línies (simplificades), ideal per  biomolècules molt "
-#~ "grans"
+#~ "Renderitza enllaços com línies (simplificades), ideal per  biomolècules "
+#~ "molt grans"
 
 #~ msgid "Save Video File"
 #~ msgstr "Alça el fitxer de vídeo"
@@ -4197,8 +4151,8 @@ msgstr ""
 #~ msgstr "Importa fitxers de trajectòria"
 
 #~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics force "
-#~ "fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
 #~ msgstr ""
 #~ "Optimitza molècules i genera confòrmers utilitzant camps de força mecànic "
 #~ "moleculars"
@@ -4214,7 +4168,8 @@ msgstr ""
 
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr ""
-#~ "Crea fitxers d'entrada per al paquets químics quàntics semblants al Gaussià"
+#~ "Crea fitxers d'entrada per al paquets químics quàntics semblants al "
+#~ "Gaussià"
 
 #~ msgid "Gaussian Input Deck Generator Warning"
 #~ msgstr "Avís del generador d'entrada Gaussiana"
@@ -4275,7 +4230,8 @@ msgstr ""
 
 #~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
 #~ msgstr ""
-#~ "MOPAC no s'executa correctament. Tal vegada no està correctament instal·lat"
+#~ "MOPAC no s'executa correctament. Tal vegada no està correctament "
+#~ "instal·lat"
 
 #~ msgid "Save MOPAC Input Deck"
 #~ msgstr "Alça l'entrada MOPAC"
@@ -4290,9 +4246,11 @@ msgstr ""
 #~ msgstr "Calcula orbitals moleulars i altres superfícies"
 
 #~ msgid ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray program."
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
 #~ msgstr ""
-#~ "Crea fitxers POV-Ray i renderitza'ls utilitzant el programa d'ordres POV-Ray."
+#~ "Crea fitxers POV-Ray i renderitza'ls utilitzant el programa d'ordres POV-"
+#~ "Ray."
 
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
@@ -4301,7 +4259,6 @@ msgstr ""
 #~ "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
 #~ "inclou un editor de coordenades cartesianes."
 
-#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Índex atòmic %1"
 
@@ -4312,8 +4269,8 @@ msgstr ""
 #~ msgstr "Avís del generador d'entrades Q-Chem"
 
 #~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the Q-"
-#~ "Chem input deck preview pane?"
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
 #~ msgstr ""
 #~ "Voleu actualitzar el text d'abans, perdent tots els canvis fets al panell "
 #~ "d'entrada de Q-Chem ?"
@@ -4331,10 +4288,11 @@ msgstr ""
 #~ msgstr "Avís"
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a unit "
-#~ "cell."
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
 #~ msgstr ""
-#~ "Este document és d'una molècula aïllada. Necessiteu crear una cel·la unitat."
+#~ "Este document és d'una molècula aïllada. Necessiteu crear una cel·la "
+#~ "unitat."
 
 #~ msgid "Super Cell"
 #~ msgstr "Super cel·la"

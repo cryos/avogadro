@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
 "PO-Revision-Date: 2009-06-12 03:20+0000\n"
 "Last-Translator: svv <skrypnychuk@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,24 +24,22 @@ msgstr "Гаразд"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: "
-"%3<br/><br/>За додатковою інформацією зверніться до <a "
-"href=\"http://avogadro.openmolecules.net/\">Домашньої сторінки "
-"Avogadro</a>.<br/><br/>Програма надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ "
-"БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ "
-"ЦІЛЕЙ.<br/>"
+"<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: %3<br/"
+"><br/>За додатковою інформацією зверніться до <a href=\"http://avogadro."
+"openmolecules.net/\">Домашньої сторінки Avogadro</a>.<br/><br/>Програма "
+"надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ "
+"ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ ЦІЛЕЙ.<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -65,14 +63,13 @@ msgstr "Стерти молекулу"
 msgid "Clear Atoms"
 msgstr "Стерти атоми"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Відкрити файл"
 
@@ -96,331 +93,330 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Масштаб"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr ""
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr ""
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "Звичайні формати молекул"
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Усі файли"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr ""
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr ""
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr ""
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr ""
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr ""
 
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr ""
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr ""
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr ""
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr ""
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Атоми: "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Зв'язки: "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr ""
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr ""
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr ""
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr ""
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr ""
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr "Зберегти..."
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Зберегти"
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr ""
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr ""
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr ""
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr ""
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr "Не вдалося вставити молекулу."
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr ""
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr ""
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr ""
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "На весь екран"
 
-#: src/mainwindow.cpp:2228
+#: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "без назви"
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr ""
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr ""
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr "Додати"
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr ""
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Видалити"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Здається, додаток не працюватиме коректно. Будь ласка, виправте цю помилку."
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Об'єкти"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr ""
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr ""
 
@@ -491,8 +487,7 @@ msgstr "Помилка"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr ""
 
@@ -505,8 +500,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -521,8 +515,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -584,18 +577,15 @@ msgstr ""
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -691,23 +681,19 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Інструменти"
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr "Відкрити"
 
@@ -715,8 +701,7 @@ msgstr "Відкрити"
 msgid "Ctrl+O"
 msgstr ""
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "Вийти"
 
@@ -732,8 +717,7 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr ""
 
@@ -741,8 +725,7 @@ msgstr ""
 msgid "Ctrl+N"
 msgstr ""
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr "Закрити"
 
@@ -750,8 +733,7 @@ msgstr "Закрити"
 msgid "Ctrl+W"
 msgstr ""
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr "Зберегти"
 
@@ -939,8 +921,7 @@ msgstr ""
 msgid "All Molecules in File..."
 msgstr ""
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Втулки"
 
@@ -952,13 +933,11 @@ msgstr "Доповнення"
 msgid "Details"
 msgstr "Подробиці"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1026,8 +1005,7 @@ msgstr ""
 msgid "Settings..."
 msgstr "Параметри..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
@@ -1035,8 +1013,7 @@ msgstr ""
 msgid "Quality:"
 msgstr "Якість:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr ""
 
@@ -1047,8 +1024,8 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad "
-"Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,Vladimir Kurg,svv"
+",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,"
+"Vladimir Kurg,svv, ,Launchpad Contributions:,Vladimir Kurg,svv"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1061,17 +1038,17 @@ msgstr ""
 #~ msgid "Hydrogen"
 #~ msgstr "Водень"
 
-#~ msgid "Helium"
-#~ msgstr "Гелій"
-
-#~ msgid "Lithium"
-#~ msgstr "Літій"
-
 #~ msgid "Beryllium"
 #~ msgstr "Берилій"
 
 #~ msgid "Boron"
 #~ msgstr "Бор"
+
+#~ msgid "Helium"
+#~ msgstr "Гелій"
+
+#~ msgid "Lithium"
+#~ msgstr "Літій"
 
 #~ msgid "Carbon"
 #~ msgstr "Вуглець"
@@ -1079,29 +1056,26 @@ msgstr ""
 #~ msgid "Nitrogen"
 #~ msgstr "Азот"
 
-#~ msgid "Oxygen"
-#~ msgstr "Кисень"
-
 #~ msgid "Fluorine"
 #~ msgstr "Фтор"
 
-#~ msgid "Neon"
-#~ msgstr "Неон"
+#~ msgid "Oxygen"
+#~ msgstr "Кисень"
 
 #~ msgid "Sodium"
 #~ msgstr "Натрій"
 
-#~ msgid "Magnesium"
-#~ msgstr "Магній"
+#~ msgid "Neon"
+#~ msgstr "Неон"
 
-#~ msgid "Aluminum"
-#~ msgstr "Алюміній"
+#~ msgid "Calcium"
+#~ msgstr "Кальцій"
 
-#~ msgid "Silicon"
-#~ msgstr "Кремній"
+#~ msgid "Scandium"
+#~ msgstr "Скандій"
 
-#~ msgid "Phosphorus"
-#~ msgstr "Фосфор"
+#~ msgid "Argon"
+#~ msgstr "Аргон"
 
 #~ msgid "Sulfur"
 #~ msgstr "Сірка"
@@ -1109,17 +1083,20 @@ msgstr ""
 #~ msgid "Chlorine"
 #~ msgstr "Хлор"
 
-#~ msgid "Argon"
-#~ msgstr "Аргон"
-
 #~ msgid "Potassium"
 #~ msgstr "Калій"
 
-#~ msgid "Calcium"
-#~ msgstr "Кальцій"
+#~ msgid "Phosphorus"
+#~ msgstr "Фосфор"
 
-#~ msgid "Scandium"
-#~ msgstr "Скандій"
+#~ msgid "Silicon"
+#~ msgstr "Кремній"
+
+#~ msgid "Aluminum"
+#~ msgstr "Алюміній"
+
+#~ msgid "Magnesium"
+#~ msgstr "Магній"
 
 #~ msgid "Titanium"
 #~ msgstr "Титан"
@@ -1133,35 +1110,32 @@ msgstr ""
 #~ msgid "Manganese"
 #~ msgstr "Марганець"
 
-#~ msgid "Iron"
-#~ msgstr "Залізо"
-
-#~ msgid "Cobalt"
-#~ msgstr "Кобальт"
+#~ msgid "Copper"
+#~ msgstr "Мідь"
 
 #~ msgid "Nickel"
 #~ msgstr "Нікель"
 
-#~ msgid "Copper"
-#~ msgstr "Мідь"
+#~ msgid "Cobalt"
+#~ msgstr "Кобальт"
 
-#~ msgid "Zinc"
-#~ msgstr "Цинк"
+#~ msgid "Iron"
+#~ msgstr "Залізо"
 
 #~ msgid "Gallium"
 #~ msgstr "Галій"
 
-#~ msgid "Germanium"
-#~ msgstr "Германій"
+#~ msgid "Zinc"
+#~ msgstr "Цинк"
 
-#~ msgid "Arsenic"
-#~ msgstr "Миш'як"
+#~ msgid "Zirconium"
+#~ msgstr "Цирконій"
 
-#~ msgid "Selenium"
-#~ msgstr "Селен"
+#~ msgid "Niobium"
+#~ msgstr "Ніобій"
 
-#~ msgid "Bromine"
-#~ msgstr "Бром"
+#~ msgid "Strontium"
+#~ msgstr "Стронцій"
 
 #~ msgid "Krypton"
 #~ msgstr "Криптон"
@@ -1169,17 +1143,23 @@ msgstr ""
 #~ msgid "Rubidium"
 #~ msgstr "Рубідій"
 
-#~ msgid "Strontium"
-#~ msgstr "Стронцій"
+#~ msgid "Arsenic"
+#~ msgstr "Миш'як"
+
+#~ msgid "Germanium"
+#~ msgstr "Германій"
+
+#~ msgid "Bromine"
+#~ msgstr "Бром"
+
+#~ msgid "Selenium"
+#~ msgstr "Селен"
 
 #~ msgid "Yttrium"
 #~ msgstr "Ітрій"
 
-#~ msgid "Zirconium"
-#~ msgstr "Цирконій"
-
-#~ msgid "Niobium"
-#~ msgstr "Ніобій"
+#~ msgid "Indium"
+#~ msgstr "Індій"
 
 #~ msgid "Molybdenum"
 #~ msgstr "Молібден"
@@ -1193,32 +1173,17 @@ msgstr ""
 #~ msgid "Rhodium"
 #~ msgstr "Родій"
 
+#~ msgid "Tin"
+#~ msgstr "Олово"
+
 #~ msgid "Palladium"
 #~ msgstr "Паладій"
-
-#~ msgid "Silver"
-#~ msgstr "Срібло"
 
 #~ msgid "Cadmium"
 #~ msgstr "Кадмій"
 
-#~ msgid "Indium"
-#~ msgstr "Індій"
-
-#~ msgid "Tin"
-#~ msgstr "Олово"
-
-#~ msgid "Tellurium"
-#~ msgstr "Телур"
-
-#~ msgid "Iodine"
-#~ msgstr "Йод"
-
-#~ msgid "Xenon"
-#~ msgstr "Ксенон"
-
-#~ msgid "Caesium"
-#~ msgstr "Цезій"
+#~ msgid "Silver"
+#~ msgstr "Срібло"
 
 #~ msgid "Barium"
 #~ msgstr "Барій"
@@ -1238,8 +1203,17 @@ msgstr ""
 #~ msgid "Promethium"
 #~ msgstr "Прометій"
 
-#~ msgid "Samarium"
-#~ msgstr "Самарій"
+#~ msgid "Iodine"
+#~ msgstr "Йод"
+
+#~ msgid "Tellurium"
+#~ msgstr "Телур"
+
+#~ msgid "Caesium"
+#~ msgstr "Цезій"
+
+#~ msgid "Xenon"
+#~ msgstr "Ксенон"
 
 #~ msgid "Europium"
 #~ msgstr "Європій"
@@ -1247,41 +1221,26 @@ msgstr ""
 #~ msgid "Gadolinium"
 #~ msgstr "Гадоліній"
 
-#~ msgid "Dysprosium"
-#~ msgstr "Диспрозій"
-
-#~ msgid "Holmium"
-#~ msgstr "Гольмій"
-
-#~ msgid "Erbium"
-#~ msgstr "Ербій"
-
-#~ msgid "Thulium"
-#~ msgstr "Тулій"
+#~ msgid "Lutetium"
+#~ msgstr "Лютецій"
 
 #~ msgid "Ytterbium"
 #~ msgstr "Ітербій"
 
-#~ msgid "Lutetium"
-#~ msgstr "Лютецій"
+#~ msgid "Thulium"
+#~ msgstr "Тулій"
 
-#~ msgid "Hafnium"
-#~ msgstr "Гафній"
+#~ msgid "Erbium"
+#~ msgstr "Ербій"
 
-#~ msgid "Tantalum"
-#~ msgstr "Тантал"
+#~ msgid "Holmium"
+#~ msgstr "Гольмій"
 
-#~ msgid "Tungsten"
-#~ msgstr "Вольфрам"
+#~ msgid "Dysprosium"
+#~ msgstr "Диспрозій"
 
-#~ msgid "Rhenium"
-#~ msgstr "Реній"
-
-#~ msgid "Osmium"
-#~ msgstr "Осмій"
-
-#~ msgid "Iridium"
-#~ msgstr "Іридій"
+#~ msgid "Samarium"
+#~ msgstr "Самарій"
 
 #~ msgid "Platinum"
 #~ msgstr "Платина"
@@ -1289,11 +1248,32 @@ msgstr ""
 #~ msgid "Gold"
 #~ msgstr "Золото"
 
+#~ msgid "Osmium"
+#~ msgstr "Осмій"
+
+#~ msgid "Iridium"
+#~ msgstr "Іридій"
+
 #~ msgid "Mercury"
 #~ msgstr "Ртуть"
 
 #~ msgid "Thallium"
 #~ msgstr "Талій"
+
+#~ msgid "Rhenium"
+#~ msgstr "Реній"
+
+#~ msgid "Tungsten"
+#~ msgstr "Вольфрам"
+
+#~ msgid "Tantalum"
+#~ msgstr "Тантал"
+
+#~ msgid "Hafnium"
+#~ msgstr "Гафній"
+
+#~ msgid "Protactinium"
+#~ msgstr "Протактиній"
 
 #~ msgid "Lead"
 #~ msgstr "Свинець"
@@ -1313,59 +1293,47 @@ msgstr ""
 #~ msgid "Francium"
 #~ msgstr "Францій"
 
-#~ msgid "Radium"
-#~ msgstr "Радій"
-
 #~ msgid "Actinium"
 #~ msgstr "Актиній"
+
+#~ msgid "Radium"
+#~ msgstr "Радій"
 
 #~ msgid "Thorium"
 #~ msgstr "Торій"
 
-#~ msgid "Protactinium"
-#~ msgstr "Протактиній"
-
-#~ msgid "Uranium"
-#~ msgstr "Уран"
-
-#~ msgid "Neptunium"
-#~ msgstr "Нептуній"
-
-#~ msgid "Plutonium"
-#~ msgstr "Плутоній"
-
-#~ msgid "Americium"
-#~ msgstr "Америцій"
+#~ msgid "Berkelium"
+#~ msgstr "Берклій"
 
 #~ msgid "Curium"
 #~ msgstr "Кюрій"
 
-#~ msgid "Berkelium"
-#~ msgstr "Берклій"
+#~ msgid "Einsteinium"
+#~ msgstr "Ейнштейній"
 
 #~ msgid "Californium"
 #~ msgstr "Каліфорній"
 
-#~ msgid "Einsteinium"
-#~ msgstr "Ейнштейній"
+#~ msgid "Mendelevium"
+#~ msgstr "Менделєвій"
 
 #~ msgid "Fermium"
 #~ msgstr "Фермій"
 
-#~ msgid "Mendelevium"
-#~ msgstr "Менделєвій"
+#~ msgid "Neptunium"
+#~ msgstr "Нептуній"
 
-#~ msgid "Nobelium"
-#~ msgstr "Нобелій"
+#~ msgid "Uranium"
+#~ msgstr "Уран"
 
-#~ msgid "Lawrencium"
-#~ msgstr "Лоуренсій"
+#~ msgid "Americium"
+#~ msgstr "Америцій"
 
-#~ msgid "Rutherfordium"
-#~ msgstr "Резерфордій"
+#~ msgid "Plutonium"
+#~ msgstr "Плутоній"
 
-#~ msgid "Dubnium"
-#~ msgstr "Дубній"
+#~ msgid "Hassium"
+#~ msgstr "Гасій"
 
 #~ msgid "Seaborgium"
 #~ msgstr "Сіборгій"
@@ -1373,14 +1341,23 @@ msgstr ""
 #~ msgid "Bohrium"
 #~ msgstr "Борій"
 
-#~ msgid "Hassium"
-#~ msgstr "Гасій"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Майтнерій"
-
 #~ msgid "Darmstadtium"
 #~ msgstr "Дармштадтій"
 
 #~ msgid "Roentgenium"
 #~ msgstr "Рентгеній"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Лоуренсій"
+
+#~ msgid "Nobelium"
+#~ msgstr "Нобелій"
+
+#~ msgid "Dubnium"
+#~ msgstr "Дубній"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Резерфордій"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Майтнерій"

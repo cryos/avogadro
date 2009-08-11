@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 11:52-0400\n"
+"POT-Creation-Date: 2009-08-03 14:18-0400\n"
 "PO-Revision-Date: 2009-06-22 14:47+0000\n"
 "Last-Translator: Alexandre R Soares <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:09+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -23,8 +23,7 @@ msgstr "colorir pelo índice"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
-"colorir pelo índice (vermelho, laranja, amarelo, verde, azul, violeta)"
+msgstr "colorir pelo índice (vermelho, laranja, amarelo, verde, azul, violeta)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -34,13 +33,11 @@ msgstr "Carga Parcial"
 msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr "Carga Atômica Parcial (azul=positivo, vermelho=negativo)"
 
-#: src/engines/surfacesettingswidget.ui:139
-#: src/colors/customcolor.cpp:63 :166
+#: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
 msgstr "Cor Personalizada:"
 
-#: src/engines/surfacesettingswidget.ui:95
-#: src/colors/customcolor.h:43 :160
+#: src/colors/customcolor.h:43
 msgid "Custom Color"
 msgstr "Cor Personalizada"
 
@@ -560,7 +557,7 @@ msgstr "Eixos"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "renderizar eixos x, y e z na origem"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1852
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
 msgid "Ball and Stick"
 msgstr "Bola e Bastão"
 
@@ -608,20 +605,6 @@ msgstr "Rótulo"
 msgid "Renders atom and bond labels"
 msgstr "Desenha rótulos de átomos e ligações"
 
-#: src/engines/orbitalengine.cpp:285
-#, qt-format
-msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
-msgid "%1, isosurface = %L2"
-msgstr ""
-
-#: src/engines/orbitalengine.h:47
-msgid "Orbitals"
-msgstr "Orbitais"
-
-#: src/engines/orbitalengine.h:48
-msgid "Renders molecular orbitals"
-msgstr "Renderiza orbitais moleculares"
-
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
 msgstr ""
@@ -660,8 +643,7 @@ msgstr "Estrutura de Arame Simples"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr ""
-"Renderiza ligações como arames (linhas), ideal para moléculas grandes"
+msgstr "Renderiza ligações como arames (linhas), ideal para moléculas grandes"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
@@ -679,13 +661,32 @@ msgstr "Bastão"
 msgid "Renders molecules as sticks"
 msgstr "Renderiza moléculas como bastões"
 
-#: src/engines/surfaceengine.h:46
-msgid "Surface"
-msgstr "Superfície"
+#: src/engines/surfaceengine.cpp:232
+#, fuzzy, qt-format
+msgctxt "Van der Waals isosurface with a cutoff of %1"
+msgid "Van der Waals, isosurface = %L1"
+msgstr "Superfície de Van der Waals"
+
+#: src/engines/surfaceengine.cpp:238
+#, fuzzy, qt-format
+msgctxt "Electron density isosurface with a cutoff of %1"
+msgid "Electron density, isosurface = %L1"
+msgstr "Densidade Eletrônica"
+
+#: src/engines/surfaceengine.cpp:245
+#, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+msgid "%1, isosurface = %L2"
+msgstr ""
+
+#: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
+msgid "Surfaces"
+msgstr "Superfícies"
 
 #: src/engines/surfaceengine.h:47
-msgid "Renders computed molecular surfaces"
-msgstr "Renderiza superfícies moleculares computadas"
+#, fuzzy
+msgid "Renders molecular isosurface meshes"
+msgstr "Renderiza momento dipolar molecular"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -739,8 +740,8 @@ msgstr "arquivos de video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:223
 #: src/extensions/gaussianextension.cpp:168
 #: src/extensions/gaussianextension.cpp:178
-#: src/extensions/insertfragmentdialog.cpp:137
-#: src/extensions/insertfragmentdialog.cpp:145
+#: src/extensions/insertfragmentdialog.cpp:143
+#: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/linmorphdialog.cpp:82
 #: src/extensions/linmorphextension.cpp:79
 #: src/extensions/linmorphextension.cpp:86
@@ -777,9 +778,9 @@ msgstr "Animação..."
 #: src/extensions/gamessextension.cpp:97
 #: src/extensions/gaussianextension.cpp:86
 #: src/extensions/linmorphextension.cpp:103
-#: src/extensions/orbitalextension.cpp:92
-#: src/extensions/shaderextension.cpp:187
+#: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
+#: src/extensions/surfaceextension.cpp:92
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -788,7 +789,7 @@ msgstr "E&xtensões"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
-#: src/extensions/insertfragmentdialog.cpp:138
+#: src/extensions/insertfragmentdialog.cpp:144
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
@@ -874,8 +875,7 @@ msgstr ""
 "Sua molécula deve conter ao menos um átomo para adicionar uma restrição"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Sua molécula deve conter ao menos dois átomos para adicionar uma restrição "
 "de ligação"
@@ -894,23 +894,18 @@ msgstr ""
 "Sua molécula deve conter ao menos quatro átomos para adicionar uma restrição "
 "de torsão"
 
-#: src/extensions/directorytreemodel.cpp:39
-#: src/extensions/directorytreemodel.cpp:49
-msgid "Name"
-msgstr "Nome"
-
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
 msgstr "Trajetória..."
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "&Arquivo"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
 msgstr "Importar"
 
@@ -1105,7 +1100,7 @@ msgstr ""
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :626 rc.cpp:904 rc.cpp:1188
+#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "Título"
 
@@ -1174,7 +1169,7 @@ msgid "&NWChem Input..."
 msgstr "Entrada &NWChem..."
 
 #: src/extensions/gaussianextension.cpp:179
-#: src/extensions/insertfragmentdialog.cpp:146
+#: src/extensions/insertfragmentdialog.cpp:152
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Não foi possível ler o arquivo %1."
@@ -1214,8 +1209,7 @@ msgstr "A rodar Gaussian."
 #: src/extensions/gaussianinputdialog.cpp:263
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr ""
-"Gaussian já está a rodar. Espere até que os cálculos sejam concluídos."
+msgstr "Gaussian já está a rodar. Espere até que os cálculos sejam concluídos."
 
 #: src/extensions/gaussianinputdialog.cpp:273
 msgid "Gaussian Not Installed."
@@ -1242,8 +1236,7 @@ msgid "G03 Crashed."
 msgstr "G03 Travou."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian não rodou corretamente. Talvez não esteja corretamente instalado."
 
@@ -1252,7 +1245,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1302
+#: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
 msgstr "Mostrar Pré-visualização"
 
@@ -1264,7 +1257,7 @@ msgstr "Mostrar Pré-visualização"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :964 rc.cpp:1244 rc.cpp:1370
+#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Ocultar Pré-visualização"
 
@@ -1274,7 +1267,7 @@ msgstr "Trocar H por Metil"
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
@@ -1325,34 +1318,34 @@ msgstr "Hidrogênios"
 msgid "Add or remove hydrogens"
 msgstr "Adiciona ou remove hidrogênios"
 
-#: src/extensions/insertfragmentdialog.cpp:181
+#: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
 msgstr "Abrir Diretório"
 
-#: src/extensions/insertfragmentextension.cpp:52
+#: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
 msgstr "Fragmento..."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "&Inserir"
 
-#: src/extensions/insertfragmentextension.cpp:103
-#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
 msgstr "Inserir SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
 msgstr "Inserir fragmentos de SMILES:"
 
-#: src/extensions/insertfragmentdialog.ui:76
-#: src/extensions/insertfragmentextension.cpp:163
+#: src/extensions/insertfragmentdialog.ui:45
+#: src/extensions/insertfragmentextension.cpp:171
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
 msgid "Insert Fragment"
 msgstr "Inserir Fragmento"
@@ -1368,7 +1361,7 @@ msgstr "Peptídeo..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :984 rc.cpp:1126
+#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "Inserir Peptídeo"
 
@@ -1574,46 +1567,60 @@ msgstr ""
 msgid "MOPAC Input Deck (*.mop)"
 msgstr ""
 
-#: src/extensions/networkfetchextension.cpp:49
+#: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
 msgstr "Buscar no PDB..."
 
-#: src/extensions/networkfetchextension.cpp:53
+#: src/extensions/networkfetchextension.cpp:56
+msgid "Fetch chemical structure..."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
 msgstr "Buscar na URL..."
 
-#: src/extensions/networkfetchextension.cpp:88
+#: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
 msgstr "Entrada PDB"
 
-#: src/extensions/networkfetchextension.cpp:89
+#: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
 msgstr "Entrada PDB para download."
 
-#: src/extensions/networkfetchextension.cpp:103
+#: src/extensions/networkfetchextension.cpp:110
+#, fuzzy
+msgid "Chemical Name"
+msgstr "Ghemical"
+
+#: src/extensions/networkfetchextension.cpp:111
+#, fuzzy
+msgid "Chemical structure to download."
+msgstr "URL da molécula para baixar."
+
+#: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:104
+#: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
 msgstr "URL da molécula para baixar."
 
-#: src/extensions/networkfetchextension.cpp:139
-#: src/extensions/networkfetchextension.cpp:150
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:164
+#: src/extensions/networkfetchextension.cpp:175
+#: src/extensions/networkfetchextension.cpp:195
 msgid "Network Download Failed"
 msgstr "Download Falhou"
 
-#: src/extensions/networkfetchextension.cpp:140
+#: src/extensions/networkfetchextension.cpp:165
 msgid "Network timeout or other error."
 msgstr "Tempo expirou ou outro erro."
 
-#: src/extensions/networkfetchextension.cpp:151
+#: src/extensions/networkfetchextension.cpp:176
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "A molécula especificada não pode ser encontrada: %1"
 
-#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:196
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "A molécula especificada não pode ser carregada: %1"
@@ -1643,77 +1650,6 @@ msgstr ""
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
 msgstr ""
-
-#: src/extensions/orbitaldialog.cpp:107
-#: src/extensions/orbitalextension.cpp:267
-#: src/extensions/orbitalextension.cpp:304
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "MO %L1"
-msgstr "OM %L1"
-
-#: src/engines/labelsettingswidget.ui:55
-#: src/engines/labelsettingswidget.ui:140
-#: src/extensions/gamessinputdialog.ui:450
-#: src/extensions/gamessinputdialog.ui:999
-#: src/extensions/gamessinputdialog.ui:1069
-#: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101
-#: src/extensions/orbitaldialog.ui:679
-#: src/extensions/shaderdialog.ui:207
-#: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
-msgid "None"
-msgstr "Nenhum"
-
-#: src/extensions/orbitaldialog.cpp:250 src/extensions/orbitaldialog.cpp:254
-msgid "ESP"
-msgstr "ESP"
-
-#: src/extensions/orbitalextension.cpp:65
-msgid "Create Surfaces..."
-msgstr "Criar Superfícies..."
-
-#: src/extensions/orbitalextension.cpp:279
-#: src/extensions/orbitalextension.cpp:316
-#: src/extensions/orbitalextension.cpp:475
-#: src/extensions/orbitalextension.cpp:513
-#: src/extensions/orbitalextension.cpp:771
-msgid "Abort Calculation"
-msgstr "Abortar Cálculo"
-
-#: src/extensions/orbitalextension.cpp:284
-#: src/extensions/orbitalextension.cpp:321
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "Calculating MO %L1"
-msgstr "Calculando OM %L1"
-
-#: src/extensions/orbitalextension.cpp:462
-#: src/extensions/orbitalextension.cpp:500
-msgid "Electron Density"
-msgstr "Densidade Eletrônica"
-
-#: src/extensions/orbitalextension.cpp:480
-#: src/extensions/orbitalextension.cpp:518
-msgid "Calculating Electron Density"
-msgstr "Calculando Densidade Eletrônica"
-
-#: src/extensions/orbitalextension.cpp:763
-msgid "VdW Cube"
-msgstr "Cubo VdW"
-
-#: src/extensions/orbitalextension.cpp:776
-msgid "Calculating VdW Cube"
-msgstr "Calculando Cubo VdW"
-
-#: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48 :1380
-msgid "Surfaces"
-msgstr "Superfícies"
-
-#: src/extensions/orbitalextension.h:49
-msgid "Calculate molecular orbitals and other surfaces"
-msgstr "Calcula orbitais moleculares e outras superfícies"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -1750,13 +1686,13 @@ msgid ""
 "you want?"
 msgstr ""
 
-#: src/extensions/povrayextension.cpp:158
-#: src/extensions/povrayextension.cpp:179
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:182
 msgid "Cannot Write to File."
 msgstr "O Arquivo não pode ser escrito."
 
-#: src/extensions/povrayextension.cpp:159
-#: src/extensions/povrayextension.cpp:180
+#: src/extensions/povrayextension.cpp:160
+#: src/extensions/povrayextension.cpp:183
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
@@ -1764,11 +1700,11 @@ msgstr ""
 "O arquivo %1 não pode ser escrito. Você tem permissões para escrever neste "
 "local?"
 
-#: src/extensions/povrayextension.cpp:173
+#: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
 msgstr "POV-Ray falhou ao iniciar."
 
-#: src/extensions/povrayextension.cpp:174
+#: src/extensions/povrayextension.cpp:177
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
@@ -1836,7 +1772,7 @@ msgid "Conformer Properties"
 msgstr "Propriedades do Confórmero"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43 :482
+#: src/extensions/propextension.h:43:462
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -1848,8 +1784,7 @@ msgstr ""
 "Janelas para exibir propriedades de átomo. ligação, ângulo e torsão. Indlui "
 "também um editor de coordenadas cartesianas."
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:353 :208
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
 msgid "Type"
 msgstr "Tipo"
 
@@ -1861,8 +1796,7 @@ msgstr "Elemento"
 msgid "Valence"
 msgstr "Valência"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/extensions/propmodel.cpp:359 :86
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "Carga Parcial"
 
@@ -1948,11 +1882,11 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423 :462
+#: src/extensions/propmodel.cpp:423:442
 msgid "Energy"
 msgstr "Energia"
 
-#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
 msgstr "Confórmero %1"
@@ -2018,10 +1952,9 @@ msgstr ""
 msgid "Select by residue"
 msgstr "Selecionar por Resíduo"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1140 rc.cpp:1458
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
+#: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "Nome do Resíduo"
 
@@ -2053,36 +1986,35 @@ msgstr "Seleções"
 msgid "Select atoms, bonds, residues..."
 msgstr "Selecionar átomos, ligações, resíduos..."
 
-#: src/extensions/shaderextension.cpp:169
+#: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
 msgstr ""
 
-#: src/extensions/shaderextension.cpp:323
+#: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
 msgstr ""
 
-#: src/extensions/shaderextension.cpp:324
+#: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
 msgstr "Arquivos vertex shader (*.vert)"
 
-#: src/extensions/shaderextension.cpp:344
+#: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
 msgstr ""
 
-#: src/extensions/shaderextension.cpp:345
+#: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
 msgstr ""
 
-#: src/extensions/shaderextension.cpp:355
+#: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
 msgstr ""
 
-#: src/extensions/shaderextension.cpp:356
+#: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1578
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2099,12 +2031,12 @@ msgid "Y Axis"
 msgstr "Eixo Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152 :1620
+#: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
 msgstr "&Aparência"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153 :1664
+#: src/extensions/spectradialog.cpp:153:1572
 msgid "E&xport Image"
 msgstr "E&xportar Imagem"
 
@@ -2186,8 +2118,8 @@ msgstr "Valores Separados por Vírgula"
 msgid "JCAMP-DX"
 msgstr ""
 
-#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
-#: src/extensions/spectradialog.cpp:625
+#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
+#: src/extensions/spectradialog.cpp:647
 msgid "All Files"
 msgstr "Todos os Arquivos"
 
@@ -2199,7 +2131,7 @@ msgstr "Importar Espectro"
 msgid "Spectra Import"
 msgstr "Importar Espectro"
 
-#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "Extensão desconhecida: %1"
@@ -2209,79 +2141,84 @@ msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr ""
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:530
+msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
+msgid "Turbomole IR data (control)"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
 msgstr "Formato de Dados"
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
 msgstr "Formato"
 
-#: src/extensions/spectradialog.cpp:540
+#: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
 msgstr "Carregar Dados Espectrais"
 
-#: src/extensions/spectradialog.cpp:618
+#: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
 msgstr "Portable Network Graphics"
 
-#: src/extensions/spectradialog.cpp:619
+#: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
 msgstr "jpeg"
 
-#: src/extensions/spectradialog.cpp:620
+#: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
 msgstr ""
 
-#: src/extensions/spectradialog.cpp:621
+#: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
 msgstr "Windows Bitmap"
 
-#: src/extensions/spectradialog.cpp:622
+#: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
 msgstr ""
 
-#: src/extensions/spectradialog.cpp:623
+#: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
 msgstr "X11 Bitmap"
 
-#: src/extensions/spectradialog.cpp:624
+#: src/extensions/spectradialog.cpp:646
 msgid "X11 Pixmap"
 msgstr "X11 Pixmap"
 
-#: src/extensions/spectradialog.cpp:628
+#: src/extensions/spectradialog.cpp:650
 msgid "Save Spectra Image"
 msgstr "salvar Imagem do Espectro"
 
-#: src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
 msgstr "Nome de Arquivo Inválido"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 msgid "Error"
 msgstr "Erro"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr "Houve um problema ao escrever arquivo %1"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 msgid "Success!"
 msgstr "Sucesso!"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr "Imagem escrita com sucesso em %1"
 
-#: src/extensions/spectradialog.cpp:707
+#: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
 msgstr "Personali&ze <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714 :1616
+#: src/extensions/spectradialog.cpp:736:1524
 msgid "Customi&ze >>"
 msgstr "Personali&ze >>"
 
@@ -2311,7 +2248,7 @@ msgstr ""
 "intensidade. Intensidades foram configuradas para um valor arbitrário para a "
 "visualização."
 
-#: src/extensions/spectratype_ir.cpp:152
+#: src/extensions/spectratype_ir.cpp:135
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Número de onda (cm<sup>-1</sup>)"
 
@@ -2342,6 +2279,97 @@ msgstr "Supercélula"
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
 msgstr "Contrói e exibe supercélulas cristalográficas"
+
+#: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
+#: src/extensions/surfaceextension.cpp:622
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "MO %L1"
+msgstr "OM %L1"
+
+#: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
+msgctxt "Highest occupied MO"
+msgid "(HOMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
+msgctxt "Lowest unoccupied MO"
+msgid "(LUMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:249
+msgctxt "A cube type of nothing - empty cube"
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:251
+#, fuzzy
+msgctxt "Van der Waals surface type"
+msgid "Van der Waals"
+msgstr "Van der Waals"
+
+#: src/extensions/surfacedialog.cpp:253
+#, fuzzy
+msgctxt "Electrostatic potential surface type"
+msgid "Electrostatic Potential"
+msgstr "Potencial Eletrostático"
+
+#: src/extensions/surfacedialog.cpp:256
+#, fuzzy
+msgctxt "Electron density surface type"
+msgid "Electron Density"
+msgstr "Densidade Eletrônica"
+
+#: src/extensions/surfacedialog.cpp:258
+#, fuzzy
+msgctxt "Molecular orbital surface type"
+msgid "Molecular Orbital"
+msgstr "Renderiza orbitais moleculares"
+
+#: src/extensions/surfacedialog.cpp:260
+msgctxt "Undefined cube type"
+msgid "Error - undefined type"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:67
+msgid "Create Surfaces..."
+msgstr "Criar Superfícies..."
+
+#: src/extensions/surfaceextension.cpp:356
+#: src/extensions/surfaceextension.cpp:386
+#: src/extensions/surfaceextension.cpp:413
+#: src/extensions/surfaceextension.cpp:447
+#: src/extensions/surfaceextension.cpp:475
+msgid "Abort Calculation"
+msgstr "Abortar Cálculo"
+
+#: src/extensions/surfaceextension.cpp:361
+msgid "Calculating VdW Cube"
+msgstr "Calculando Cubo VdW"
+
+#: src/extensions/surfaceextension.cpp:391
+#: src/extensions/surfaceextension.cpp:417
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "Calculating MO %L1"
+msgstr "Calculando OM %L1"
+
+#: src/extensions/surfaceextension.cpp:452
+#: src/extensions/surfaceextension.cpp:480
+msgid "Calculating Electron Density"
+msgstr "Calculando Densidade Eletrônica"
+
+#: src/extensions/surfaceextension.cpp:566
+msgid "VdW"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:594
+msgid "Electron Density"
+msgstr "Densidade Eletrônica"
+
+#: src/extensions/surfaceextension.h:51
+msgid "Calculate molecular orbitals and other surfaces"
+msgstr "Calcula orbitais moleculares e outras superfícies"
 
 #: src/extensions/templateextension.cpp:42
 msgid "First Action"
@@ -2444,7 +2472,7 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :242
+#: src/extensions/unitcellparamdialog.cpp:97:222
 msgid "OK"
 msgstr "OK"
 
@@ -2455,7 +2483,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :1818
+#: src/extensions/vibrationdialog.cpp:213:1730
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
@@ -2473,7 +2501,7 @@ msgstr "&Vibrações..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239 :824
+#: src/extensions/vibrationextension.cpp:239:804
 msgid "Vibrational Analysis"
 msgstr "Análise Vibracional"
 
@@ -2560,105 +2588,106 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "sem título"
 
-#: src/moleculefile.cpp:112
+#: src/moleculefile.cpp:130
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
+#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:662
+#: src/moleculefile.cpp:757
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "O Tipo de arquivo '%1' não é suportado."
 
-#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:668
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "O tipo de arquivo '%1' não por ser lido."
 
-#: src/moleculefile.cpp:154
+#: src/moleculefile.cpp:172
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr "Falha ao ler molécula com índice %1 do arquivo '%2'."
 
-#: src/moleculefile.cpp:166
+#: src/moleculefile.cpp:184
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
+#: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Tipo de Arquivo '%1' não pode ser escrito."
 
-#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
+#: src/moleculefile.cpp:199 src/moleculefile.cpp:450 src/moleculefile.cpp:538
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "O formato do arquivo '%1' não pode ser escrito."
 
-#: src/moleculefile.cpp:191
+#: src/moleculefile.cpp:209
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr "Não foi possível abrir o arquivo '%1' para escrita."
 
-#: src/moleculefile.cpp:198
+#: src/moleculefile.cpp:216
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr "Não possível abrir o arquivo '%1'."
 
-#: src/moleculefile.cpp:207
+#: src/moleculefile.cpp:225
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Falha ao substituir molécula com índice %1 no arquivo '%2'."
 
-#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
+#: src/moleculefile.cpp:355 src/moleculefile.cpp:651 src/moleculefile.cpp:746
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Arquivo %1 não pôde ser aberto para leitura."
 
-#: src/moleculefile.cpp:378
+#: src/moleculefile.cpp:398 src/moleculefile.cpp:772
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Falha ao ler a molécula do arquivo '%1'."
 
-#: src/moleculefile.cpp:393
+#: src/moleculefile.cpp:413 src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "O Arquivo %1 não pode ser aberto para escrita"
 
-#: src/moleculefile.cpp:439
+#: src/moleculefile.cpp:476
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível renomear o arquivo "
 "original."
 
-#: src/moleculefile.cpp:446
+#: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível renomear o novo arquivo."
 
-#: src/moleculefile.cpp:455
+#: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
 "Falha ao salvar arquivo molecular - não foi possível remover o arquivo "
 "antigo."
 
-#: src/moleculefile.cpp:464
+#: src/moleculefile.cpp:501
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
 "Falha ao escrever no arquivo '%1'. Falha de funcionamento do OpenBabel."
 
-#: src/moleculefile.cpp:481
+#: src/moleculefile.cpp:518
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "Arquivo %1 não pôde ser aberta para escrita."
 
-#: src/moleculefile.cpp:533
+#: src/moleculefile.cpp:570
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "Falha ao escrever os confórmeros no arquivo '%1'."
 
-#: src/moleculefile.cpp:680
+#: src/moleculefile.cpp:725 src/moleculefile.cpp:766
 #, qt-format
 msgid "Molecule %1"
 msgstr "Molécula %1"
@@ -2819,13 +2848,11 @@ msgstr "Passos por Atualização:"
 msgid "Algorithm:"
 msgstr "Algoritmo:"
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:286 :272
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
 msgid "Steepest Descent"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:287 :274
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
 msgid "Conjugate Gradients"
 msgstr "Conjugar Gradientes"
 
@@ -2906,8 +2933,8 @@ msgstr "Rotação em z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:294 :966 rc.cpp:1246 rc.cpp:1304
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Restaurar"
 
@@ -3050,6 +3077,16 @@ msgstr "*4"
 msgid "Distance(s):"
 msgstr "Distância(s):"
 
+#: src/tools/clickmeasuretool.cpp:290
+#, fuzzy
+msgid "Angle:"
+msgstr "Ângulo"
+
+#: src/tools/clickmeasuretool.cpp:302
+#, fuzzy
+msgid "Dihedral:"
+msgstr "Ângulo Diédrico"
+
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
 msgstr "Medir"
@@ -3062,8 +3099,8 @@ msgstr "Medir comprimentos de ligação, ângulos, e diedros"
 msgid "Measure Settings"
 msgstr "Configurações de Medidas"
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1838
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
+#: src/tools/drawcommand.cpp:289:1750
 msgid "Add Atom"
 msgstr "Adicionar Átomo"
 
@@ -3115,8 +3152,7 @@ msgstr "Desenho"
 msgid "Element:"
 msgstr "Elemento:"
 
-#: src/extensions/gamessinputdialog.ui:1214
-#: src/tools/drawtool.cpp:763 :576
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
 msgid "Other..."
 msgstr "Outro..."
 
@@ -3262,8 +3298,7 @@ msgstr "Ângulo Diédrico"
 msgid "Z Matrix Editor..."
 msgstr "Editor Matriz Z..."
 
-#: src/extensions/gamessinputdialog.ui:1537
-#: src/tools/zmatrixtool.h:39 :634
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
 msgid "Z-Matrix"
 msgstr "Matriz-Z"
 
@@ -3303,15 +3338,12 @@ msgstr "Raio dos Átomos:"
 msgid "Bond Radius:"
 msgstr "Raio das Ligações:"
 
-#: src/engines/bsdysettingswidget.ui:76
-#: src/engines/orbitalsettingswidget.ui:30
-#: src/engines/ringsettingswidget.ui:16
-#: src/engines/surfacesettingswidget.ui:17
+#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "Opacidade:"
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Exibir Ligações Múltiplas"
 
@@ -3402,6 +3434,16 @@ msgstr ""
 msgid "Atom Labels:"
 msgstr "Rótulos dos Átomos:"
 
+#: src/engines/labelsettingswidget.ui:55
+#: src/engines/labelsettingswidget.ui:140
+#: src/extensions/gamessinputdialog.ui:450
+#: src/extensions/gamessinputdialog.ui:999
+#: src/extensions/gamessinputdialog.ui:1069
+#: src/extensions/gamessinputdialog.ui:1115
+#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+msgid "None"
+msgstr "Nenhum"
+
 #: src/engines/labelsettingswidget.ui:60
 msgid "Atom number"
 msgstr "Número Atômico"
@@ -3447,60 +3489,6 @@ msgstr "Número da Ligação"
 msgid "Bond order"
 msgstr "Ordem da Ligação"
 
-#: src/engines/orbitalsettingswidget.ui:17
-msgid "Orbital:"
-msgstr "Orbital:"
-
-#: src/engines/orbitalsettingswidget.ui:74
-#: src/engines/surfacesettingswidget.ui:58
-msgid "Render:"
-msgstr "Renderizar:"
-
-#: src/engines/orbitalsettingswidget.ui:85
-#: src/engines/surfacesettingswidget.ui:66
-msgid "Fill"
-msgstr "Preenchimento"
-
-#: src/engines/orbitalsettingswidget.ui:90
-#: src/engines/ribbonsettingswidget.ui:29
-#: src/engines/surfacesettingswidget.ui:71
-msgid "Lines"
-msgstr "Linhas"
-
-#: src/engines/orbitalsettingswidget.ui:95
-#: src/engines/surfacesettingswidget.ui:76
-msgid "Points"
-msgstr "Pontos"
-
-#: src/engines/orbitalsettingswidget.ui:103
-#: src/engines/surfacesettingswidget.ui:108
-msgid "Draw Box:"
-msgstr "Desenhar Caixa:"
-
-#: src/engines/orbitalsettingswidget.ui:129
-msgid "Style:"
-msgstr "Estilo:"
-
-#: src/engines/orbitalsettingswidget.ui:140
-msgid "Selected Colors"
-msgstr "Cores Selecionadas"
-
-#: src/engines/orbitalsettingswidget.ui:145
-msgid "Mapped Colors"
-msgstr "Cores Mapeadas"
-
-#: src/engines/orbitalsettingswidget.ui:153
-msgid "Colors:"
-msgstr "Cores:"
-
-#: src/engines/orbitalsettingswidget.ui:165
-msgid "Positive"
-msgstr "Positivo"
-
-#: src/engines/orbitalsettingswidget.ui:188
-msgid "Negative"
-msgstr "Negativo"
-
 #: src/engines/ribbonsettingswidget.ui:16
 msgid "Rendering:"
 msgstr "Renderizar:"
@@ -3508,6 +3496,11 @@ msgstr "Renderizar:"
 #: src/engines/ribbonsettingswidget.ui:24
 msgid "Backbone"
 msgstr "Espinha"
+
+#: src/engines/ribbonsettingswidget.ui:29
+#: src/engines/surfacesettingswidget.ui:90
+msgid "Lines"
+msgstr "Linhas"
 
 #: src/engines/ribbonsettingswidget.ui:37
 #: src/engines/sticksettingswidget.ui:16
@@ -3522,13 +3515,49 @@ msgstr "Incluir Nitorgênios"
 msgid "VdW Opacity:"
 msgstr "Opacidade VdW"
 
-#: src/engines/surfacesettingswidget.ui:84
-msgid "Color:"
-msgstr "Cor:"
+#: src/engines/surfacesettingswidget.ui:17
+msgid "Orbital:"
+msgstr "Orbital:"
 
-#: src/engines/surfacesettingswidget.ui:100
-msgid "Electrostatic Potential (ESP)"
-msgstr "Potencial Eletrostático (ESP)"
+#: src/engines/surfacesettingswidget.ui:74
+msgid "Render:"
+msgstr "Renderizar:"
+
+#: src/engines/surfacesettingswidget.ui:85
+msgid "Fill"
+msgstr "Preenchimento"
+
+#: src/engines/surfacesettingswidget.ui:95
+msgid "Points"
+msgstr "Pontos"
+
+#: src/engines/surfacesettingswidget.ui:103
+msgid "Draw Box:"
+msgstr "Desenhar Caixa:"
+
+#: src/engines/surfacesettingswidget.ui:129
+msgid "Style:"
+msgstr "Estilo:"
+
+#: src/engines/surfacesettingswidget.ui:140
+msgid "Selected Colors"
+msgstr "Cores Selecionadas"
+
+#: src/engines/surfacesettingswidget.ui:145
+msgid "Mapped Colors"
+msgstr "Cores Mapeadas"
+
+#: src/engines/surfacesettingswidget.ui:153
+msgid "Colors:"
+msgstr "Cores:"
+
+#: src/engines/surfacesettingswidget.ui:165
+msgid "Positive"
+msgstr "Positivo"
+
+#: src/engines/surfacesettingswidget.ui:188
+msgid "Negative"
+msgstr "Negativo"
 
 #: src/engines/wiresettingswidget.ui:18
 msgid "Show Atoms"
@@ -3542,8 +3571,7 @@ msgstr "Trajetória animada"
 msgid "Load File..."
 msgstr "Carregar Arquivo..."
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3551,8 +3579,7 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr "Ligações Dinâmicas"
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3583,10 +3610,8 @@ msgid "Number of conformers"
 msgstr "Número de confórmeros"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Método"
@@ -3675,15 +3700,12 @@ msgstr "Apagar Tudo"
 msgid "File Import..."
 msgstr "Importar Arquivo..."
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Nome do Arquivo:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Navegando..."
@@ -3704,8 +3726,7 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr "Configurar Campo de Força"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Campo de Força"
 
@@ -3928,7 +3949,7 @@ msgstr "Água"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:295
+#: src/extensions/surfacedialog.ui:335
 msgid "Calculate"
 msgstr "Calcular"
 
@@ -3937,8 +3958,6 @@ msgid "With:"
 msgstr "Com:"
 
 #: src/extensions/gamessinputdialog.ui:300
-#: src/extensions/orbitaldialog.ui:556
-#: src/extensions/orbitaldialog.ui:773
 msgid "In:"
 msgstr "Em:"
 
@@ -4459,8 +4478,7 @@ msgstr "Unidades:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Título:"
 
@@ -4942,8 +4960,7 @@ msgstr "Gerar..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Fechar"
@@ -5061,14 +5078,6 @@ msgstr ""
 #: src/extensions/insertfragmentdialog.ui:14
 msgid "Insert Fragment..."
 msgstr "Inserir Fragmento..."
-
-#: src/extensions/insertfragmentdialog.ui:25
-msgid "Add Directory"
-msgstr "Adicionar Diretório"
-
-#: src/extensions/insertfragmentdialog.ui:32
-msgid "Reset List"
-msgstr "Restaurar Lista"
 
 #: src/extensions/insertpeptidedialog.ui:20
 msgid "Peptide Builder"
@@ -5351,8 +5360,7 @@ msgstr "criar ligante a partir do nome do resíduo"
 msgid "create ligand from file..."
 msgstr "criar ligante a partir do arquivo..."
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "O nome do resíduo"
 
@@ -5498,119 +5506,6 @@ msgstr "RM1"
 msgid "NWChem Input"
 msgstr ""
 
-#: src/extensions/orbitaldialog.ui:30
-msgid "Cubes"
-msgstr "Cubos"
-
-#: src/extensions/orbitaldialog.ui:36
-msgid "Cube Dimensions"
-msgstr "Dimensões do Cubo"
-
-#: src/extensions/orbitaldialog.ui:47
-msgid "x"
-msgstr "x"
-
-#: src/extensions/orbitaldialog.ui:60
-msgid "y"
-msgstr "y"
-
-#: src/extensions/orbitaldialog.ui:73
-msgid "z"
-msgstr "z"
-
-#: src/extensions/orbitaldialog.ui:88
-msgid "Origin:"
-msgstr "Origem:"
-
-#: src/extensions/orbitaldialog.ui:130
-msgid "Max:"
-msgstr "Máx:"
-
-#: src/extensions/orbitaldialog.ui:172
-msgid "Steps:"
-msgstr "Passos:"
-
-#: src/extensions/orbitaldialog.ui:214
-msgid "Step Size:"
-msgstr "Tamanho do Passo:"
-
-#: src/extensions/orbitaldialog.ui:304
-msgid "Calculate MO"
-msgstr "Calcular OM"
-
-#: src/extensions/orbitaldialog.ui:331
-msgid "Calculate All MOs"
-msgstr "Calcular Todos os OMs"
-
-#: src/extensions/orbitaldialog.ui:358
-msgid "Calculate Electron Density"
-msgstr "Calcular Densidade Eletrônica"
-
-#: src/extensions/orbitaldialog.ui:385
-msgid "Calculate Van der Waals Cube"
-msgstr "Calcular Cubo de Van der Waals"
-
-#: src/extensions/orbitaldialog.ui:411
-msgid "Isosurfaces"
-msgstr ""
-
-#: src/extensions/orbitaldialog.ui:417
-#: src/extensions/orbitaldialog.ui:633
-msgid "Cube:"
-msgstr "Cubo:"
-
-#: src/extensions/orbitaldialog.ui:447
-#: src/extensions/orbitaldialog.ui:663
-#: src/extensions/surfacedialog.ui:104
-msgid "Color By:"
-msgstr ""
-
-#: src/extensions/orbitaldialog.ui:481
-#: src/extensions/surfacedialog.ui:203
-msgid "Iso Value:"
-msgstr ""
-
-#: src/extensions/orbitaldialog.ui:493
-msgid "0.02"
-msgstr "0.02"
-
-#: src/extensions/orbitaldialog.ui:515
-msgid "Cube Range:"
-msgstr ""
-
-#: src/extensions/orbitaldialog.ui:527
-msgid "0.000"
-msgstr "0.000"
-
-#: src/extensions/orbitaldialog.ui:544
-msgid "1.000"
-msgstr "1.000"
-
-#: src/extensions/orbitaldialog.ui:604
-#: src/extensions/orbitaldialog.ui:821
-msgid "Calculate Mesh"
-msgstr ""
-
-#: src/extensions/orbitaldialog.ui:627
-msgid "Van der Waals Surface"
-msgstr "Superfície de Van der Waals"
-
-#: src/extensions/orbitaldialog.ui:684
-msgid "ESP (approximate)"
-msgstr "ESP (aproximadamente)"
-
-#: src/extensions/orbitaldialog.ui:707
-msgid "Distance:"
-msgstr "Distância:"
-
-#: src/extensions/orbitaldialog.ui:719
-msgid "0.0"
-msgstr "0.0"
-
-#: src/extensions/orbitaldialog.ui:741
-msgid "Range:"
-msgstr ""
-
 #: src/extensions/pocketdialog.ui:13
 msgid "Create binding pocket"
 msgstr ""
@@ -5648,8 +5543,7 @@ msgstr "povray"
 msgid "Render"
 msgstr "Renderizar"
 
-#: src/extensions/povraydialog.ui:137
-#: src/extensions/surfacedialog.ui:143
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Resolução:"
 
@@ -5733,8 +5627,7 @@ msgstr ""
 msgid "Parameters:"
 msgstr "Parâmetros:"
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr ""
 
@@ -5776,10 +5669,8 @@ msgstr "&Fechar"
 msgid "Calculated Spectra:"
 msgstr "Espectro Calculado:"
 
-#: src/extensions/spectradialog.ui:168
-#: src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279
-#: src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "Mudar Cor..."
 
@@ -5795,8 +5686,7 @@ msgstr "Fonte:"
 msgid "Change Font..."
 msgstr "Mudar Fonte..."
 
-#: src/extensions/spectradialog.ui:224
-#: src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "Mostrar"
 
@@ -5946,8 +5836,7 @@ msgstr ""
 msgid "Label Peaks:"
 msgstr ""
 
-#: src/extensions/spectratabnmr.ui:125
-#: src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5990,51 +5879,62 @@ msgstr "Tipo de Superfície:"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46
-#: src/extensions/surfacedialog.ui:120
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "Potencial Eletrostático"
 
-#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "OM 666"
 
-#: src/extensions/surfacedialog.ui:162
+#: src/extensions/surfacedialog.ui:104
+msgid "Color By:"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:120
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
 msgid "Low"
 msgstr "Baixa"
 
-#: src/extensions/surfacedialog.ui:167
+#: src/extensions/surfacedialog.ui:207
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Média"
 
-#: src/extensions/surfacedialog.ui:172
+#: src/extensions/surfacedialog.ui:212
 msgctxt "high resolution"
 msgid "High"
 msgstr "Alta"
 
-#: src/extensions/surfacedialog.ui:177
+#: src/extensions/surfacedialog.ui:217
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Muito Alta"
 
-#: src/extensions/surfacedialog.ui:200
+#: src/extensions/surfacedialog.ui:240
 msgid "Isosurface cutoff value"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:236
+#: src/extensions/surfacedialog.ui:243
+msgid "Iso Value:"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:276
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:255
+#: src/extensions/surfacedialog.ui:295
 msgid "New Display"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:305
+#: src/extensions/surfacedialog.ui:345
 msgid "Advanced..."
 msgstr "Avançado..."
 
@@ -6158,24 +6058,114 @@ msgstr "Remover Átomo"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro "
-"Nametala,Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres "
-"Hopkins,Petrus Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney "
-"Gomes Pereira, ,Launchpad Contributions:,Alexandre R Soares,André "
-"Gondim,Ciniro Nametala,Enrico Nicoletto,Geoff Hutchison,Leandro "
-"Boscariol,Myres Hopkins,Petrus Henrique Gonçalves Freire,Rafael Porto "
-"Rodrigues,Rosiney Gomes Pereira, ,Launchpad Contributions:,Alexandre R "
-"Soares,Avogadro Team, ,Launchpad Contributions:,Alexandre R Soares,André "
-"Gondim,Avogadro Team,Felipe Vieira Borges,Geoff Hutchison"
+",Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro Nametala,"
+"Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres Hopkins,Petrus "
+"Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney Gomes Pereira, ,"
+"Launchpad Contributions:,Alexandre R Soares,André Gondim,Ciniro Nametala,"
+"Enrico Nicoletto,Geoff Hutchison,Leandro Boscariol,Myres Hopkins,Petrus "
+"Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney Gomes Pereira, ,"
+"Launchpad Contributions:,Alexandre R Soares,Avogadro Team, ,Launchpad "
+"Contributions:,Alexandre R Soares,André Gondim,Avogadro Team,Felipe Vieira "
+"Borges,Geoff Hutchison"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,andregondim@ubuntu.com,ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gma"
-"il.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,ciniro@gmail.com,liveri"
-"g@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,andregondim@ubuntu.com,avogadro-"
-"devel@lists.sourceforge.net,,"
+",,,andregondim@ubuntu.com,ciniro@gmail.com,liverig@gmail.com,,,,,"
+"rafporto@gmail.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,"
+"ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail."
+"com,,,,avogadro-devel@lists.sourceforge.net,,,,andregondim@ubuntu.com,"
+"avogadro-devel@lists.sourceforge.net,,"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitais"
+
+#~ msgid "Surface"
+#~ msgstr "Superfície"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Renderiza superfícies moleculares computadas"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "VdW Cube"
+#~ msgstr "Cubo VdW"
+
+#~ msgid "Color:"
+#~ msgstr "Cor:"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Potencial Eletrostático (ESP)"
+
+#~ msgid "Add Directory"
+#~ msgstr "Adicionar Diretório"
+
+#~ msgid "Reset List"
+#~ msgstr "Restaurar Lista"
+
+#~ msgid "Cubes"
+#~ msgstr "Cubos"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "Dimensões do Cubo"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Origin:"
+#~ msgstr "Origem:"
+
+#~ msgid "Max:"
+#~ msgstr "Máx:"
+
+#~ msgid "Steps:"
+#~ msgstr "Passos:"
+
+#~ msgid "Step Size:"
+#~ msgstr "Tamanho do Passo:"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Calcular OM"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Calcular Todos os OMs"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Calcular Densidade Eletrônica"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Calcular Cubo de Van der Waals"
+
+#~ msgid "Cube:"
+#~ msgstr "Cubo:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (aproximadamente)"
+
+#~ msgid "Distance:"
+#~ msgstr "Distância:"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
 
 #~ msgid "Caesium"
 #~ msgstr "Césio"
@@ -6205,15 +6195,12 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "Resíduos"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distância (1->2): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distância (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distância (3->4): %1 %2"
 
@@ -6242,17 +6229,16 @@ msgstr ""
 #~ msgstr "Gerar a partir de SMILES:"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versão do Aplicativo: %2<br/><br/>Versão da Biblioteca: "
-#~ "%3<br/><br/>Para mais informações veja o <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>O programa é provido \t\n"
+#~ "<h3>%1</h3><br/><br/>Versão do Aplicativo: %2<br/><br/>Versão da "
+#~ "Biblioteca: %3<br/><br/>Para mais informações veja o <a href=\"http://"
+#~ "avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>O programa "
+#~ "é provido \t\n"
 #~ "COMO ESTÁ com SEM GARANTIA DE QUALQUER TIPO, INCLUINDO AS GARANTIAS DE "
 #~ "DESIGN, COMERCIABILIDADE E ADEQUAÇÃO PARA UM DETERMINADO OBJETIVO.<br/>"
 
@@ -6292,6 +6278,9 @@ msgstr ""
 #~ msgid "Bring All to Front"
 #~ msgstr "Trazer todas as janelas para a frente"
 
+#~ msgid "Tool Settings"
+#~ msgstr "Ferramenta de Configurações"
+
 #~ msgid "Common molecule formats"
 #~ msgstr "Formatos Moleculares Comuns"
 
@@ -6309,6 +6298,9 @@ msgstr ""
 
 #~ msgid "Gaussian 98/03 Output"
 #~ msgstr "Saída Gaussiana 98/03"
+
+#~ msgid "Gaussian Formatted Checkpoint"
+#~ msgstr "Ponto de Controle de Formato Gaussiano"
 
 #~ msgid "HyperChem"
 #~ msgstr "HyperChem"
@@ -6339,23 +6331,24 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Esse arquivo contém apenas coordenadas 2D. Deseja que Avogadro redimensione "
-#~ "as ligações e faça uma otimização rápida?"
+#~ "Esse arquivo contém apenas coordenadas 2D. Deseja que Avogadro "
+#~ "redimensione as ligações e faça uma otimização rápida?"
 
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Este arquivo não contem coordenadas 3D. Você pode não conseguir editá-lo ou "
-#~ "visualizá-lo adequadamente."
+#~ "Este arquivo não contem coordenadas 3D. Você pode não conseguir editá-lo "
+#~ "ou visualizá-lo adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro lerá "
-#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas podem "
-#~ "ser perdidas."
+#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "podem ser perdidas."
 
 #~ msgid " Bonds: "
 #~ msgstr " Ligações: "
@@ -6467,6 +6460,12 @@ msgstr ""
 #~ msgid "Remove"
 #~ msgstr "Remover"
 
+#~ msgid "No tools or engines loaded."
+#~ msgstr "Não há mecanismos ou ferramentas carregadas"
+
+#~ msgid "No engines loaded."
+#~ msgstr "Sem mecanismos carregados"
+
 #~ msgid "No tools loaded."
 #~ msgstr "Nenhuma ferramenta carregada."
 
@@ -6502,8 +6501,17 @@ msgstr ""
 #~ msgid "bond %1"
 #~ msgstr "ligação %1"
 
+#~ msgid "User Selections"
+#~ msgstr "Seleções do usuário"
+
+#~ msgid "only labels can have sub items"
+#~ msgstr "Apenas rótulos podem ter sub-itens"
+
 #~ msgid "tree"
 #~ msgstr "árvore"
+
+#~ msgid "index"
+#~ msgstr "index"
 
 #~ msgid "Undefined"
 #~ msgstr "Indefinido"
@@ -6565,6 +6573,9 @@ msgstr ""
 #~ msgid "Add All Primitives"
 #~ msgstr "Adicionar Todas Primitivas"
 
+#~ msgid "Assign to Selection"
+#~ msgstr "Atribuir à Seleção"
+
 #~ msgid "Coordinates are in Ångstroms"
 #~ msgstr "Coordinadas estão em Ångstroms"
 
@@ -6580,6 +6591,9 @@ msgstr ""
 #~ msgid "Main Toolbar"
 #~ msgstr "Barra de Ferramentas Principal"
 
+#~ msgid "Project Tree"
+#~ msgstr "Árvore do Projeto"
+
 #~ msgid "&Open"
 #~ msgstr "&Abrir"
 
@@ -6591,6 +6605,9 @@ msgstr ""
 
 #~ msgid "Recent"
 #~ msgstr "Recentes"
+
+#~ msgid "&Clear Recent"
+#~ msgstr "&Apagar Recentes"
 
 #~ msgid "&New"
 #~ msgstr "&Novo"
@@ -6613,6 +6630,9 @@ msgstr ""
 #~ msgid "Ctrl+Shift+S"
 #~ msgstr "Ctrl+Shift+S"
 
+#~ msgid "Revert To Saved"
+#~ msgstr "Reverter para Arquivo Salvo"
+
 #~ msgid "&Full Screen Mode"
 #~ msgstr "Modo &Tela Cheia"
 
@@ -6633,6 +6653,9 @@ msgstr ""
 
 #~ msgid "Ctrl+Shift+Z"
 #~ msgstr "Ctrl+Shift+Z"
+
+#~ msgid "New View"
+#~ msgstr "Nova Janela"
 
 #~ msgid "Close View"
 #~ msgstr "Fechar Janela"
@@ -6679,6 +6702,9 @@ msgstr ""
 #~ msgid "Tutorials"
 #~ msgstr "Tutoriais"
 
+#~ msgid "Duplicate View"
+#~ msgstr "Duplicar Janela"
+
 #~ msgid "Avogadro Help"
 #~ msgstr "Ajuda Avogadro"
 
@@ -6688,11 +6714,17 @@ msgstr ""
 #~ msgid "Report a Bug"
 #~ msgstr "Reporte um Bug"
 
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
 #~ msgid "Avogadro Website"
 #~ msgstr "Avogadro Website"
 
 #~ msgid "Plugin Manager..."
 #~ msgstr "Gerenciador de Plugins..."
+
+#~ msgid "Project Tree Editor..."
+#~ msgstr "Editor da Árvore do Projeto..."
 
 #~ msgid "Display Unit Cell Axes"
 #~ msgstr "Exibir Eixos da Célula Unitária"
@@ -6709,74 +6741,17 @@ msgstr ""
 #~ msgid "&New Item"
 #~ msgstr "&Novo Item"
 
-#~ msgid "Delete Item"
-#~ msgstr "Remover Item"
-
-#~ msgid "&Delete Item"
-#~ msgstr "&Remover Item"
-
-#~ msgid "Move Item Up"
-#~ msgstr "Subir Item"
-
-#~ msgid "Move Item Down"
-#~ msgstr "Baixar Item"
-
-#~ msgid "General"
-#~ msgstr "Geral"
-
-#~ msgid "Quality:"
-#~ msgstr "Qualidade:"
-
-#~ msgid "Gaussian Formatted Checkpoint"
-#~ msgstr "Ponto de Controle de Formato Gaussiano"
-
-#~ msgid "Tool Settings"
-#~ msgstr "Ferramenta de Configurações"
-
-#~ msgid "No tools or engines loaded."
-#~ msgstr "Não há mecanismos ou ferramentas carregadas"
-
-#~ msgid "No engines loaded."
-#~ msgstr "Sem mecanismos carregados"
-
-#~ msgid "User Selections"
-#~ msgstr "Seleções do usuário"
-
-#~ msgid "only labels can have sub items"
-#~ msgstr "Apenas rótulos podem ter sub-itens"
-
-#~ msgid "index"
-#~ msgstr "index"
-
-#~ msgid "Assign to Selection"
-#~ msgstr "Atribuir à Seleção"
-
-#~ msgid "Project Tree"
-#~ msgstr "Árvore do Projeto"
-
-#~ msgid "&Clear Recent"
-#~ msgstr "&Apagar Recentes"
-
-#~ msgid "Revert To Saved"
-#~ msgstr "Reverter para Arquivo Salvo"
-
-#~ msgid "New View"
-#~ msgstr "Nova Janela"
-
-#~ msgid "Duplicate View"
-#~ msgstr "Duplicar Janela"
-
-#~ msgid "FAQ"
-#~ msgstr "FAQ"
-
-#~ msgid "Project Tree Editor..."
-#~ msgstr "Editor da Árvore do Projeto..."
-
 #~ msgid "New Subitem"
 #~ msgstr "Novo Subitem"
 
 #~ msgid "New &Subitem"
 #~ msgstr "Novo &Subitem"
+
+#~ msgid "Delete Item"
+#~ msgstr "Remover Item"
+
+#~ msgid "&Delete Item"
+#~ msgstr "&Remover Item"
 
 #~ msgid "Move Item Left (before Parent Item)"
 #~ msgstr "Mover Item da Esquerda (antes do Item Pai)"
@@ -6788,8 +6763,20 @@ msgstr ""
 #~ msgid "R"
 #~ msgstr "D"
 
+#~ msgid "Move Item Up"
+#~ msgstr "Subir Item"
+
 #~ msgid "U"
 #~ msgstr "S"
 
+#~ msgid "Move Item Down"
+#~ msgstr "Baixar Item"
+
 #~ msgid "1"
 #~ msgstr "memória insuficiente"
+
+#~ msgid "General"
+#~ msgstr "Geral"
+
+#~ msgid "Quality:"
+#~ msgstr "Qualidade:"

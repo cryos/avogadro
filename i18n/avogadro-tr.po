@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 10:54-0400\n"
+"POT-Creation-Date: 2009-08-03 14:19-0400\n"
 "PO-Revision-Date: 2009-06-12 12:03+0000\n"
 "Last-Translator: huseyinkozan <huseyinkozan@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:08+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,25 +24,24 @@ msgstr "Tamam"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: "
-"%3<br/><br/>Daha fazla bilgi için <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro ana sayfasını</a> "
-"kontrol edin.<br/><br/>Program, tasarım, satılabilirlik ve özel bir duruma "
-"uygunluk gibi durumlar için yetki vermemektedir. (The program is provided AS "
-"IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, "
-"MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE).<br/>"
+"<h3>%1</h3><br/><br/>Uygulama Sürümü: %2<br/><br/>Kütüphane Sürümü: %3<br/"
+"><br/>Daha fazla bilgi için <a href=\"http://avogadro.openmolecules.net/"
+"\">Avogadro ana sayfasını</a> kontrol edin.<br/><br/>Program, tasarım, "
+"satılabilirlik ve özel bir duruma uygunluk gibi durumlar için yetki "
+"vermemektedir. (The program is provided AS IS with NO WARRANTY OF ANY KIND, "
+"INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE).<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:814 src/mainwindow.cpp:837
-#: src/mainwindow.cpp:988 src/mainwindow.cpp:1010 src/mainwindow.cpp:1156
-#: src/mainwindow.cpp:1381 src/mainwindow.cpp:2394 src/mainwindow.cpp:2860
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
+#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
+#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -66,14 +65,13 @@ msgstr "Molekülü temizle"
 msgid "Clear Atoms"
 msgstr "Atomları temizle"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2878 src/mainwindow.cpp:2895 :252 rc.cpp:260
+#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:705
+#: src/importdialog.cpp:175 src/mainwindow.cpp:706
 msgid "Open File"
 msgstr "Dosya aç"
 
@@ -97,109 +95,114 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Yakınlaş"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1526
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
 msgid "Bring All to Front"
 msgstr "Hepsini Öne Getir"
 
-#: src/mainwindow.cpp:636
+#: src/mainwindow.cpp:637
 msgid "&Tool Settings..."
 msgstr "Araç Ayarları"
 
-#: src/mainwindow.cpp:639
+#: src/mainwindow.cpp:640
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:644
+#: src/mainwindow.cpp:645
 msgid "&Display Settings..."
 msgstr "Görüntü Ayarları..."
 
-#: src/mainwindow.cpp:647
+#: src/mainwindow.cpp:648
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:685 src/mainwindow.cpp:1103
+#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
 msgid "Common molecule formats"
 msgstr "Genel molekül biçimleri"
 
-#: src/mainwindow.cpp:690 src/mainwindow.cpp:1100 src/mainwindow.cpp:1321
-#: src/mainwindow.cpp:1400
+#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
+#: src/mainwindow.cpp:1446
 msgid "All files"
 msgstr "Tüm Dosyalar"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1097 src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:692
+#: src/mainwindow.cpp:693
 msgid "Computational Chemistry Output"
 msgstr "Sayrsal Kimya Çıktısı"
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:694
 msgid "Crystallographic Interchange CIF"
 msgstr "Kristalografik Değişme CIF"
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:695
 msgid "GAMESS-US Output"
 msgstr "GAMESS-US Çıktısı"
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:696
 msgid "Gaussian 98/03 Output"
 msgstr "Gaussian 98/03 Çıktısı"
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:697
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Gaussian Formatlı Denetim Noktası"
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:698
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:699
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:700
 msgid "NWChem Output"
 msgstr "NWChem Çıktısı"
 
-#: src/mainwindow.cpp:700 src/mainwindow.cpp:1114
+#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1116
+#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1117
+#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:774
+#: src/mainwindow.cpp:775
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Yükleniyor %1 ..."
 
-#: src/mainwindow.cpp:777
+#: src/mainwindow.cpp:779
 #, qt-format
 msgid "Loading %1..."
 msgstr "Yükleniyor %1..."
 
-#: src/mainwindow.cpp:795
+#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr "%1 molekül dosyasının okuması başarısız oldu."
+
+#: src/mainwindow.cpp:822
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Çoklu molekül dosyası okunuyor. Bu işlem biraz zaman alabilir..."
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:849
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:820
+#: src/mainwindow.cpp:853
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Avagadro'nun kabaca bir geometri inşa etmesini istiyor musunuz ?"
 
-#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:871
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -207,207 +210,202 @@ msgstr ""
 "Bu dosya 3D koordinatlarını içermiyor.\n"
 "Düzgün bir şekilde düzenleme ve görüntüleme yapamayabilirsiniz."
 
-#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:921
 msgid "Select Molecule to View"
 msgstr "Görüntülemek İçin Molekül Seçin"
 
-#: src/mainwindow.cpp:913
+#: src/mainwindow.cpp:946
 msgid "Molecule Title"
 msgstr "Molekül Başlığı"
 
-#: src/mainwindow.cpp:982
+#: src/mainwindow.cpp:1019
 msgid "Atoms: "
 msgstr "Atomlar "
 
-#: src/mainwindow.cpp:983
+#: src/mainwindow.cpp:1020
 msgid " Bonds: "
 msgstr " Bağlar "
 
-#: src/mainwindow.cpp:989
-#, qt-format
-msgid "Reading molecular file failed, file %1."
-msgstr "%1 molekül dosyasının okuması başarısız oldu."
-
-#: src/mainwindow.cpp:998
+#: src/mainwindow.cpp:1036
 msgid "File Loaded..."
 msgstr "Dosya Yüklendi ..."
 
-#: src/mainwindow.cpp:1011
+#: src/mainwindow.cpp:1049
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Dosyada yaptığınız değişiklikleri kaydetmek istiyor musunuz ?"
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1058
 msgid "Your changes will be lost if you don't save them."
 msgstr "Eğer kaydetmezseniz yaptığınız değişiklikler kaybolacak !"
 
-#: src/mainwindow.cpp:1024
+#: src/mainwindow.cpp:1062
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1025
+#: src/mainwindow.cpp:1063
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:1065
 msgid "Save..."
 msgstr "Kaydet ..."
 
-#: src/mainwindow.cpp:1027 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/mainwindow.cpp:1110
+#: src/mainwindow.cpp:1148
 msgid "GAMESS Input"
 msgstr "GAMESS Girdisi"
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1149
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Cartesian Girdisi"
 
-#: src/mainwindow.cpp:1112
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-matrix Girdisi"
 
-#: src/mainwindow.cpp:1113
+#: src/mainwindow.cpp:1151
 msgid "MDL SDfile"
 msgstr "MDL SDdosya"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1153
 msgid "NWChem Input"
 msgstr "NWChem Girdisi"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1158
 msgid "Save Molecule As"
 msgstr "Molekülü Farklı Kaydet"
 
-#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1323
+#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1318
+#: src/mainwindow.cpp:1364
 msgid "Common image formats"
 msgstr "Genel resim biçimleri"
 
-#: src/mainwindow.cpp:1322
+#: src/mainwindow.cpp:1368
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1324
+#: src/mainwindow.cpp:1370
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1330 src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
 msgid "Export Bitmap Graphics"
 msgstr "Bitmap Olarak Dışa Aktar"
 
-#: src/mainwindow.cpp:1382
+#: src/mainwindow.cpp:1428
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "%1 dosyası kaydedilemiyor."
 
-#: src/mainwindow.cpp:1390 src/mainwindow.cpp:1401
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1443
 msgid "Common vector image formats"
 msgstr "Genel vektörel resim biçimleri"
 
-#: src/mainwindow.cpp:1402
+#: src/mainwindow.cpp:1448
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1403
+#: src/mainwindow.cpp:1449
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1558
+#: src/mainwindow.cpp:1594
 #, qt-format
 msgid "Untitled %1"
 msgstr "isimsiz %1"
 
-#: src/mainwindow.cpp:1663
+#: src/mainwindow.cpp:1699
 msgid "Unable to paste molecule."
 msgstr "Molekül yapıştırılamadı."
 
-#: src/mainwindow.cpp:1692
+#: src/mainwindow.cpp:1728
 msgid "Paste failed (format unavailable)."
 msgstr "Yapıştırma başarısız (biçim erişilemez)."
 
-#: src/mainwindow.cpp:1761
+#: src/mainwindow.cpp:1797
 msgid "Copy failed (mdl unavailable)."
 msgstr "Kopyalama başarısız (mdl erişilemez)."
 
-#: src/mainwindow.cpp:1887 src/mainwindow.cpp:1920 src/mainwindow.cpp:1987
-#: src/mainwindow.cpp:2530
+#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
+#: src/mainwindow.cpp:2559
 #, qt-format
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:1947
+#: src/mainwindow.cpp:1983
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Görünüm %1"
 
-#: src/mainwindow.cpp:1956
+#: src/mainwindow.cpp:1992
 msgid "Avogadro: Detached View"
 msgstr "Avagadro: Ayrılmış Görüntü"
 
-#: src/mainwindow.cpp:2122
+#: src/mainwindow.cpp:2158
 msgid "Normal Size"
 msgstr "Normal Boyut"
 
-#: src/mainwindow.cpp:2135
+#: src/mainwindow.cpp:2171
 msgid "Full Screen"
 msgstr "Tam Ekran"
 
-#: src/mainwindow.cpp:2228
+#: src/mainwindow.cpp:2264
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2306 src/mainwindow.cpp:2341 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "isimsiz"
 
-#: src/mainwindow.cpp:2388
+#: src/mainwindow.cpp:2424
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2393
+#: src/mainwindow.cpp:2429
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2814
+#: src/mainwindow.cpp:2845
 msgid "Add"
 msgstr "Ekle"
 
-#: src/mainwindow.cpp:2819
+#: src/mainwindow.cpp:2850
 msgid "Duplicate"
 msgstr "Çoğalt"
 
-#: src/mainwindow.cpp:2824
+#: src/mainwindow.cpp:2855
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/mainwindow.cpp:2852
+#: src/mainwindow.cpp:2883
 msgid "No tools or engines loaded."
 msgstr "Herhangi bir araç veya motor yüklenmedi."
 
-#: src/mainwindow.cpp:2854
+#: src/mainwindow.cpp:2885
 msgid "No engines loaded."
 msgstr "Herhangi bir motor yüklenmedi."
 
-#: src/mainwindow.cpp:2856
+#: src/mainwindow.cpp:2887
 msgid "No tools loaded."
 msgstr "Herhangi bir araç yüklenmedi."
 
-#: src/mainwindow.cpp:2857
+#: src/mainwindow.cpp:2888
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -415,16 +413,15 @@ msgstr ""
 " Bu program doğru bir şekilde çalışacağa benzemiyor. Lütfen bu hatayı "
 "düzeltin."
 
-#: src/mainwindow.cpp:2901
+#: src/mainwindow.cpp:2932
 msgid "Objects"
 msgstr "Nesneler"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2907 :212
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
 msgid "Colors"
 msgstr "Renkler"
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2971
 msgid " copy"
 msgstr " kopyala"
 
@@ -495,8 +492,7 @@ msgstr "Hata"
 msgid "only labels can have sub items"
 msgstr "sadece etiketler alt öğe sahip olabilirler"
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :250
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
 msgid "Item"
 msgstr "Öğe"
 
@@ -509,8 +505,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Alçak"
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :268
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Orta"
@@ -525,8 +520,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Tanımlanmamış"
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :274
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Hiç"
@@ -588,18 +582,15 @@ msgstr "Form"
 msgid "Color by:"
 msgstr "Renk:"
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Seçilen Primitifleri Ekle"
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Seçilen Primitifleri Kaldır"
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Bütün Primitifleri Ekle"
 
@@ -695,23 +686,19 @@ msgstr "&Seç"
 msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
 
-#: src/mainwindow.ui:192
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:192 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Proje Ağacı"
 
-#: src/mainwindow.ui:225
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:225 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Tipleri Görüntüle"
 
-#: src/mainwindow.ui:234
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:234 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Araçlar"
 
-#: src/mainwindow.ui:255
-#: src/mainwindow.ui:267
+#: src/mainwindow.ui:255 src/mainwindow.ui:267
 msgid "&Open"
 msgstr "&Aç"
 
@@ -719,8 +706,7 @@ msgstr "&Aç"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276
-#: src/mainwindow.ui:288
+#: src/mainwindow.ui:276 src/mainwindow.ui:288
 msgid "&Quit"
 msgstr "&Çıkış"
 
@@ -736,8 +722,7 @@ msgstr "En Son Dosyalar"
 msgid "&Clear Recent"
 msgstr "En Son Dosyaları Temizle"
 
-#: src/mainwindow.ui:307
-#: src/mainwindow.ui:319
+#: src/mainwindow.ui:307 src/mainwindow.ui:319
 msgid "&New"
 msgstr "Ye&ni"
 
@@ -745,8 +730,7 @@ msgstr "Ye&ni"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328
-#: src/mainwindow.ui:340
+#: src/mainwindow.ui:328 src/mainwindow.ui:340
 msgid "&Close"
 msgstr "&Kapat"
 
@@ -754,8 +738,7 @@ msgstr "&Kapat"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349
-#: src/mainwindow.ui:361
+#: src/mainwindow.ui:349 src/mainwindow.ui:361
 msgid "&Save"
 msgstr "&Kaydet"
 
@@ -943,8 +926,7 @@ msgstr "Birim Hücre Eksenlerini Göster"
 msgid "All Molecules in File..."
 msgstr "Dosyadaki Bütün Moleküller..."
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Eklentiler"
 
@@ -956,13 +938,11 @@ msgstr "Genişletmeler"
 msgid "Details"
 msgstr "Detaylar"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Ağaç Öğeleri"
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Tip"
 
@@ -1030,8 +1010,7 @@ msgstr "Takma Ad"
 msgid "Settings..."
 msgstr "Ayarlar ..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr "Genel"
 
@@ -1039,8 +1018,7 @@ msgstr "Genel"
 msgid "Quality:"
 msgstr "Kalite:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Genel kaplama kalitesini belirle."
 
@@ -1058,60 +1036,12 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,hknrgl@g"
-"mail.com,huseyinkozan@gmail.com,,,rainman.neu@gmail.com,,,hknrgl@gmail.com,hu"
-"seyinkozan@gmail.com"
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,,,"
+"hknrgl@gmail.com,huseyinkozan@gmail.com,,,rainman.neu@gmail.com,,,"
+"hknrgl@gmail.com,huseyinkozan@gmail.com"
 
-#, qt-format
-#~ msgid ""
-#~ "Cannot read file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Dosya Okunamıyor %1:\n"
-#~ "%2."
-
-#, qt-format
-#~ msgid "Cannot read file format of file %1."
-#~ msgstr "Dosya biçimi okunamıyor %1."
-
-#, qt-format
-#~ msgid "Cannot read file %1."
-#~ msgstr "Dosya okunamıyor %1."
-
-#~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
-#~ msgstr ""
-#~ "Bu dosyada birden fazla molekül kaydı var. Avagadro sadece ilk molekülü "
-#~ "okuyacak. Kaydederseniz diğerleri kaybolabilir."
-
-#~ msgid "Navigate"
-#~ msgstr "Gezinme"
-
-#, qt-format
-#~ msgid "Cannot write to file format of file %1."
-#~ msgstr "%1 dosyasının formatı yazılamıyor."
-
-#, qt-format
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "%1 dosyasına yazılamıyor:\n"
-#~ "%2"
-
-#, qt-format
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "%1 dosyasına yazılamıyor."
-
-#~ msgid "Saving file."
-#~ msgstr "Dosya kaydediliyor."
-
-#~ msgid "Save succeeded."
-#~ msgstr "Kayıt başarılı."
-
-#~ msgid "Saving molecular file failed."
-#~ msgstr "Molekül dosyası kaydedilemedi."
+#~ msgid "Load File..."
+#~ msgstr "Dosya yükle..."
 
 #~ msgid "Draw Bond"
 #~ msgstr "Bağ Çiz"
@@ -1119,8 +1049,29 @@ msgstr ""
 #~ msgid "Draw"
 #~ msgstr "Çiz"
 
-#~ msgid "Load File..."
-#~ msgstr "Dosya yükle..."
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Dosya biçimi okunamıyor %1."
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Dosya Okunamıyor %1:\n"
+#~ "%2."
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Dosya okunamıyor %1."
+
+#~ msgid "Navigate"
+#~ msgstr "Gezinme"
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
+#~ msgstr ""
+#~ "Bu dosyada birden fazla molekül kaydı var. Avagadro sadece ilk molekülü "
+#~ "okuyacak. Kaydederseniz diğerleri kaybolabilir."
 
 #~ msgid ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
@@ -1129,20 +1080,39 @@ msgstr ""
 #~ "Bu dosya sadece 2D koordinatları içeriyor. Avagadro'nun bağları "
 #~ "ölçeklemesini ve hızlı bir optimizasyos yapmasını ister misiniz ?"
 
-#~ msgid "1"
-#~ msgstr "1"
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "%1 dosyasının formatı yazılamıyor."
 
-#, qt-format
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "%1 dosyasına yazılamıyor:\n"
+#~ "%2"
+
+#~ msgid "Saving file."
+#~ msgstr "Dosya kaydediliyor."
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "%1 dosyasına yazılamıyor."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Kayıt başarılı."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "Molekül dosyası kaydedilemedi."
+
+#~ msgctxt "%1 is residue name, %2 is residue index"
+#~ msgid "Residue %1 %2"
+#~ msgstr "Kalıntı %1 %2"
+
 #~ msgctxt "%1 is element, %L2 is atom index"
 #~ msgid "Atom %1 %L2"
 #~ msgstr "Atom %1 %L2"
 
-#, qt-format
 #~ msgctxt "%L1 is bond index"
 #~ msgid "Bond %L1"
 #~ msgstr "Bağ %L1"
 
-#, qt-format
-#~ msgctxt "%1 is residue name, %2 is residue index"
-#~ msgid "Residue %1 %2"
-#~ msgstr "Kalıntı %1 %2"
+#~ msgid "1"
+#~ msgstr "1"

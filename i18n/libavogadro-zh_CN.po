@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-06-12 11:52-0400\n"
+"POT-Creation-Date: 2009-08-03 14:18-0400\n"
 "PO-Revision-Date: 2009-07-01 16:00+0000\n"
 "Last-Translator: yjjart <yjjart@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-17 19:09+0000\n"
+"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -33,13 +33,11 @@ msgstr "按部分电荷着色"
 msgid "Color by atomic partial charge (blue = positive, red = negative."
 msgstr "按原子部分电荷着色（蓝色=正电荷，红色=负电荷。）"
 
-#: src/engines/surfacesettingswidget.ui:139
-#: src/colors/customcolor.cpp:63 :166
+#: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
 msgstr "自定义颜色："
 
-#: src/engines/surfacesettingswidget.ui:95
-#: src/colors/customcolor.h:43 :160
+#: src/colors/customcolor.h:43
 msgid "Custom Color"
 msgstr "自定义颜色"
 
@@ -559,7 +557,7 @@ msgstr "轴"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "在原点处渲染x，y和z轴"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1852
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
 msgid "Ball and Stick"
 msgstr "球和棍"
 
@@ -606,20 +604,6 @@ msgstr "标签"
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
 msgstr "渲染原子和键标签"
-
-#: src/engines/orbitalengine.cpp:285
-#, qt-format
-msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
-msgid "%1, isosurface = %L2"
-msgstr "%1, 等高面 = %L2"
-
-#: src/engines/orbitalengine.h:47
-msgid "Orbitals"
-msgstr "轨道"
-
-#: src/engines/orbitalengine.h:48
-msgid "Renders molecular orbitals"
-msgstr "渲染原子轨道"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
@@ -677,13 +661,32 @@ msgstr "棒状"
 msgid "Renders molecules as sticks"
 msgstr "将分子渲染为棍状"
 
-#: src/engines/surfaceengine.h:46
-msgid "Surface"
+#: src/engines/surfaceengine.cpp:232
+#, fuzzy, qt-format
+msgctxt "Van der Waals isosurface with a cutoff of %1"
+msgid "Van der Waals, isosurface = %L1"
+msgstr "Van der Waals表面"
+
+#: src/engines/surfaceengine.cpp:238
+#, fuzzy, qt-format
+msgctxt "Electron density isosurface with a cutoff of %1"
+msgid "Electron density, isosurface = %L1"
+msgstr "%1, 等高面 = %L2"
+
+#: src/engines/surfaceengine.cpp:245
+#, qt-format
+msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+msgid "%1, isosurface = %L2"
+msgstr "%1, 等高面 = %L2"
+
+#: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
+msgid "Surfaces"
 msgstr "表面"
 
 #: src/engines/surfaceengine.h:47
-msgid "Renders computed molecular surfaces"
-msgstr "渲染计算出的分子表面"
+#, fuzzy
+msgid "Renders molecular isosurface meshes"
+msgstr "渲染分子偶极矩"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -735,8 +738,8 @@ msgstr "视频文件 (*.avi)"
 #: src/extensions/forcefieldextension.cpp:223
 #: src/extensions/gaussianextension.cpp:168
 #: src/extensions/gaussianextension.cpp:178
-#: src/extensions/insertfragmentdialog.cpp:137
-#: src/extensions/insertfragmentdialog.cpp:145
+#: src/extensions/insertfragmentdialog.cpp:143
+#: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/linmorphdialog.cpp:82
 #: src/extensions/linmorphextension.cpp:79
 #: src/extensions/linmorphextension.cpp:86
@@ -773,9 +776,9 @@ msgstr "动画"
 #: src/extensions/gamessextension.cpp:97
 #: src/extensions/gaussianextension.cpp:86
 #: src/extensions/linmorphextension.cpp:103
-#: src/extensions/orbitalextension.cpp:92
-#: src/extensions/shaderextension.cpp:187
+#: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
+#: src/extensions/surfaceextension.cpp:92
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -784,7 +787,7 @@ msgstr "扩展(&X)"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/gaussianextension.cpp:169
-#: src/extensions/insertfragmentdialog.cpp:138
+#: src/extensions/insertfragmentdialog.cpp:144
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
@@ -861,8 +864,7 @@ msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr "您的分子必须包含至少一个原子才能添加限制条件"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr "您的分子必须包含至少两个原子以添加化学键限制条件"
 
 #: src/extensions/constraintsdialog.cpp:378
@@ -875,23 +877,18 @@ msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
 msgstr "您的分子必须包含至少四个原子以添加扭转限制条件"
 
-#: src/extensions/directorytreemodel.cpp:39
-#: src/extensions/directorytreemodel.cpp:49
-msgid "Name"
-msgstr "名字"
-
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
 msgstr "轨迹..."
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
 msgstr "文件(&F)"
 
 #: src/extensions/fileimportextension.cpp:73
-#: src/extensions/networkfetchextension.cpp:70
+#: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
 msgstr "导入"
 
@@ -1083,7 +1080,7 @@ msgstr "为GAMESS量子化学软件包创建输入文件"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :626 rc.cpp:904 rc.cpp:1188
+#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "标题"
 
@@ -1152,7 +1149,7 @@ msgid "&NWChem Input..."
 msgstr "NWChem输入(&N)..."
 
 #: src/extensions/gaussianextension.cpp:179
-#: src/extensions/insertfragmentdialog.cpp:146
+#: src/extensions/insertfragmentdialog.cpp:152
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "不能读取文件 %1。"
@@ -1173,7 +1170,8 @@ msgstr "Gaussian输入卡片生成器警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr "您是否希望更新预览文本，并丢失所有在Gaussian输入卡片预览面板中所做的修改？"
+msgstr ""
+"您是否希望更新预览文本，并丢失所有在Gaussian输入卡片预览面板中所做的修改？"
 
 #: src/extensions/gaussianinputdialog.cpp:233
 msgid "Save Gaussian Input Deck"
@@ -1217,8 +1215,7 @@ msgid "G03 Crashed."
 msgstr "G03崩溃了。"
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussian没有正常运行，也许是因为它没有被正确安装。"
 
 #: src/extensions/mopacinputdialog.ui:307
@@ -1226,7 +1223,7 @@ msgstr "Gaussian没有正常运行，也许是因为它没有被正确安装。"
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1302
+#: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
 msgstr "显示预览"
 
@@ -1238,7 +1235,7 @@ msgstr "显示预览"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :964 rc.cpp:1244 rc.cpp:1370
+#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "隐藏预览"
 
@@ -1248,7 +1245,7 @@ msgstr "将氢替换为甲基"
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
@@ -1299,34 +1296,34 @@ msgstr "氢"
 msgid "Add or remove hydrogens"
 msgstr "添加或删除氢原子"
 
-#: src/extensions/insertfragmentdialog.cpp:181
+#: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
 msgstr "打开目录"
 
-#: src/extensions/insertfragmentextension.cpp:52
+#: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
 msgstr "片段..."
 
-#: src/extensions/insertfragmentextension.cpp:57
+#: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
 msgstr "SMILES..."
 
-#: src/extensions/insertfragmentextension.cpp:80
+#: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr "插入(&I)"
 
-#: src/extensions/insertfragmentextension.cpp:103
-#: src/extensions/insertfragmentextension.cpp:121
+#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
 msgstr "插入SMILES"
 
-#: src/extensions/insertfragmentextension.cpp:104
+#: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
 msgstr "插入SMILES片段:"
 
-#: src/extensions/insertfragmentdialog.ui:76
-#: src/extensions/insertfragmentextension.cpp:163
+#: src/extensions/insertfragmentdialog.ui:45
+#: src/extensions/insertfragmentextension.cpp:171
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
 msgid "Insert Fragment"
 msgstr "插入片段"
@@ -1342,7 +1339,7 @@ msgstr "多肽..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :984 rc.cpp:1126
+#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "插入多肽"
 
@@ -1491,7 +1488,8 @@ msgstr "MOPAC输入警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr "您是否希望更新预览文本，并丢失所有在MOPAC输入卡片预览面板中所做的修改？"
+msgstr ""
+"您是否希望更新预览文本，并丢失所有在MOPAC输入卡片预览面板中所做的修改？"
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
@@ -1538,46 +1536,60 @@ msgstr "保存MOPAC输入卡片"
 msgid "MOPAC Input Deck (*.mop)"
 msgstr "MOPAC输入卡片（*.mop）"
 
-#: src/extensions/networkfetchextension.cpp:49
+#: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
 msgstr "从 PCB 获取..."
 
-#: src/extensions/networkfetchextension.cpp:53
+#: src/extensions/networkfetchextension.cpp:56
+msgid "Fetch chemical structure..."
+msgstr ""
+
+#: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
 msgstr "从URL获取..."
 
-#: src/extensions/networkfetchextension.cpp:88
+#: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
 msgstr "PDB项目"
 
-#: src/extensions/networkfetchextension.cpp:89
+#: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
 msgstr "下载PDB项目。"
 
-#: src/extensions/networkfetchextension.cpp:103
+#: src/extensions/networkfetchextension.cpp:110
+#, fuzzy
+msgid "Chemical Name"
+msgstr "Ghemical"
+
+#: src/extensions/networkfetchextension.cpp:111
+#, fuzzy
+msgid "Chemical structure to download."
+msgstr "从URL下载分子。"
+
+#: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
 msgstr "URL"
 
-#: src/extensions/networkfetchextension.cpp:104
+#: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
 msgstr "从URL下载分子。"
 
-#: src/extensions/networkfetchextension.cpp:139
-#: src/extensions/networkfetchextension.cpp:150
-#: src/extensions/networkfetchextension.cpp:169
+#: src/extensions/networkfetchextension.cpp:164
+#: src/extensions/networkfetchextension.cpp:175
+#: src/extensions/networkfetchextension.cpp:195
 msgid "Network Download Failed"
 msgstr "网络下载失败"
 
-#: src/extensions/networkfetchextension.cpp:140
+#: src/extensions/networkfetchextension.cpp:165
 msgid "Network timeout or other error."
 msgstr "网络超时或发生其它错误."
 
-#: src/extensions/networkfetchextension.cpp:151
+#: src/extensions/networkfetchextension.cpp:176
 #, qt-format
 msgid "Specified molecule could not be found: %1"
 msgstr "特定的分子没有找到: %1"
 
-#: src/extensions/networkfetchextension.cpp:170
+#: src/extensions/networkfetchextension.cpp:196
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
 msgstr "特定的分子无法载入: %1"
@@ -1598,7 +1610,8 @@ msgstr "NWChem输入卡片生成器警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
-msgstr "您是否希望更新预览文字，并丢失所有在NWChem输入卡片预览面板中所做的更改？"
+msgstr ""
+"您是否希望更新预览文字，并丢失所有在NWChem输入卡片预览面板中所做的更改？"
 
 #: src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
@@ -1607,77 +1620,6 @@ msgstr "保存NWChem输入卡片"
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
 msgstr "NWChem输入卡片 (*.nw)"
-
-#: src/extensions/orbitaldialog.cpp:107
-#: src/extensions/orbitalextension.cpp:267
-#: src/extensions/orbitalextension.cpp:304
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "MO %L1"
-msgstr "分子轨道 %L1"
-
-#: src/engines/labelsettingswidget.ui:55
-#: src/engines/labelsettingswidget.ui:140
-#: src/extensions/gamessinputdialog.ui:450
-#: src/extensions/gamessinputdialog.ui:999
-#: src/extensions/gamessinputdialog.ui:1069
-#: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101
-#: src/extensions/orbitaldialog.ui:679
-#: src/extensions/shaderdialog.ui:207
-#: src/extensions/orbitaldialog.cpp:249 src/extensions/orbitaldialog.cpp:253
-msgid "None"
-msgstr "无"
-
-#: src/extensions/orbitaldialog.cpp:250 src/extensions/orbitaldialog.cpp:254
-msgid "ESP"
-msgstr "ESP"
-
-#: src/extensions/orbitalextension.cpp:65
-msgid "Create Surfaces..."
-msgstr "创建表面..."
-
-#: src/extensions/orbitalextension.cpp:279
-#: src/extensions/orbitalextension.cpp:316
-#: src/extensions/orbitalextension.cpp:475
-#: src/extensions/orbitalextension.cpp:513
-#: src/extensions/orbitalextension.cpp:771
-msgid "Abort Calculation"
-msgstr "放弃计算"
-
-#: src/extensions/orbitalextension.cpp:284
-#: src/extensions/orbitalextension.cpp:321
-#, qt-format
-msgctxt "Molecular Orbital"
-msgid "Calculating MO %L1"
-msgstr "计算分子轨道%L1"
-
-#: src/extensions/orbitalextension.cpp:462
-#: src/extensions/orbitalextension.cpp:500
-msgid "Electron Density"
-msgstr "电子密度"
-
-#: src/extensions/orbitalextension.cpp:480
-#: src/extensions/orbitalextension.cpp:518
-msgid "Calculating Electron Density"
-msgstr "计算电子密度"
-
-#: src/extensions/orbitalextension.cpp:763
-msgid "VdW Cube"
-msgstr "VdW立方体"
-
-#: src/extensions/orbitalextension.cpp:776
-msgid "Calculating VdW Cube"
-msgstr "计算VdW立方体"
-
-#: src/extensions/orbitaldialog.ui:20
-#: src/extensions/orbitalextension.h:48 :1380
-msgid "Surfaces"
-msgstr "表面"
-
-#: src/extensions/orbitalextension.h:49
-msgid "Calculate molecular orbitals and other surfaces"
-msgstr "计算分子轨道和其它表面"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -1712,25 +1654,27 @@ msgid ""
 "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
-msgstr "你要求不要直接用POV-Ray渲染，并且不保存POV-Ray文件。这会导致没有任何输出被保存。你确定这是你希望的么？"
+msgstr ""
+"你要求不要直接用POV-Ray渲染，并且不保存POV-Ray文件。这会导致没有任何输出被保"
+"存。你确定这是你希望的么？"
 
-#: src/extensions/povrayextension.cpp:158
-#: src/extensions/povrayextension.cpp:179
+#: src/extensions/povrayextension.cpp:159
+#: src/extensions/povrayextension.cpp:182
 msgid "Cannot Write to File."
 msgstr "无法写入到文件。"
 
-#: src/extensions/povrayextension.cpp:159
-#: src/extensions/povrayextension.cpp:180
+#: src/extensions/povrayextension.cpp:160
+#: src/extensions/povrayextension.cpp:183
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr "无法写入到文件%1。是否拥有写入到该地址的许可？"
 
-#: src/extensions/povrayextension.cpp:173
+#: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
 msgstr "POV-Ray启动失败。"
 
-#: src/extensions/povrayextension.cpp:174
+#: src/extensions/povrayextension.cpp:177
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
@@ -1794,7 +1738,7 @@ msgid "Conformer Properties"
 msgstr "构象异构体属性"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43 :482
+#: src/extensions/propextension.h:43:462
 msgid "Properties"
 msgstr "属性"
 
@@ -1802,10 +1746,10 @@ msgstr "属性"
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
-msgstr "用于显示原子、化学键、键角和扭矩属性的窗口。它还包含一个笛卡儿坐标编辑器。"
+msgstr ""
+"用于显示原子、化学键、键角和扭矩属性的窗口。它还包含一个笛卡儿坐标编辑器。"
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:353 :208
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
 msgid "Type"
 msgstr "类型"
 
@@ -1817,8 +1761,7 @@ msgstr "元素"
 msgid "Valence"
 msgstr "化合价"
 
-#: src/engines/labelsettingswidget.ui:85
-#: src/extensions/propmodel.cpp:359 :86
+#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
 msgid "Partial Charge"
 msgstr "部分电荷"
 
@@ -1904,11 +1847,11 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423 :462
+#: src/extensions/propmodel.cpp:423:442
 msgid "Energy"
 msgstr "能量"
 
-#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:678
+#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
 msgstr "构象异构体%1"
@@ -1974,10 +1917,9 @@ msgstr "SMARTS模版选择"
 msgid "Select by residue"
 msgstr "按残基选择"
 
-#: src/engines/labelsettingswidget.ui:75
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1140 rc.cpp:1458
+#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
+#: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "残基名称"
 
@@ -2009,36 +1951,35 @@ msgstr "选择"
 msgid "Select atoms, bonds, residues..."
 msgstr "选择原子，键，残基..."
 
-#: src/extensions/shaderextension.cpp:169
+#: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
 msgstr "GLSL着色器..."
 
-#: src/extensions/shaderextension.cpp:323
+#: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
 msgstr "打开顶点着色器源文件"
 
-#: src/extensions/shaderextension.cpp:324
+#: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
 msgstr "顶点着色器文件 (*.vert)"
 
-#: src/extensions/shaderextension.cpp:344
+#: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
 msgstr "打开片段着色器源文件"
 
-#: src/extensions/shaderextension.cpp:345
+#: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
 msgstr "片段着色器文件 (*.frag)"
 
-#: src/extensions/shaderextension.cpp:355
+#: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
 msgstr "打开着色器参数文件"
 
-#: src/extensions/shaderextension.cpp:356
+#: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
 msgstr "着色器参数文件 (*.params)"
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1578
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
 msgid "GLSL Shaders"
 msgstr "GLSL着色器"
 
@@ -2055,12 +1996,12 @@ msgid "Y Axis"
 msgstr "Y 轴"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152 :1620
+#: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
 msgstr "外观(&A)"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153 :1664
+#: src/extensions/spectradialog.cpp:153:1572
 msgid "E&xport Image"
 msgstr "导入图像(&X)"
 
@@ -2142,8 +2083,8 @@ msgstr "逗号分隔数值"
 msgid "JCAMP-DX"
 msgstr "JCAMP-DX"
 
-#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:538
-#: src/extensions/spectradialog.cpp:625
+#: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
+#: src/extensions/spectradialog.cpp:647
 msgid "All Files"
 msgstr "所有文件"
 
@@ -2155,7 +2096,7 @@ msgstr "导入光谱"
 msgid "Spectra Import"
 msgstr "导入光谱"
 
-#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "未知扩展名: %1"
@@ -2165,79 +2106,84 @@ msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr "PWscf IR 数据 (*.out)"
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:530
+msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
+msgid "Turbomole IR data (control)"
+msgstr ""
+
+#: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
 msgstr "数据格式"
 
-#: src/extensions/spectradialog.cpp:531
+#: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
 msgstr "格式:"
 
-#: src/extensions/spectradialog.cpp:540
+#: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
 msgstr "载入光谱数据"
 
-#: src/extensions/spectradialog.cpp:618
+#: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
 msgstr "便携式网络图形(PNG)"
 
-#: src/extensions/spectradialog.cpp:619
+#: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
 msgstr "jpeg"
 
-#: src/extensions/spectradialog.cpp:620
+#: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
 msgstr "标签图像文件格式(TIFF)"
 
-#: src/extensions/spectradialog.cpp:621
+#: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
 msgstr "Windows 位图"
 
-#: src/extensions/spectradialog.cpp:622
+#: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
 msgstr "可移动点阵图"
 
-#: src/extensions/spectradialog.cpp:623
+#: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
 msgstr "X11 位图"
 
-#: src/extensions/spectradialog.cpp:624
+#: src/extensions/spectradialog.cpp:646
 msgid "X11 Pixmap"
 msgstr "X11 点阵图"
 
-#: src/extensions/spectradialog.cpp:628
+#: src/extensions/spectradialog.cpp:650
 msgid "Save Spectra Image"
 msgstr "保存光谱图像"
 
-#: src/extensions/spectradialog.cpp:646
+#: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
 msgstr "文件名无效"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 msgid "Error"
 msgstr "错误"
 
-#: src/extensions/spectradialog.cpp:679
+#: src/extensions/spectradialog.cpp:701
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr "写入文件 %1 时发生错误"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 msgid "Success!"
 msgstr "完成!"
 
-#: src/extensions/spectradialog.cpp:681
+#: src/extensions/spectradialog.cpp:703
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr "图像成功写入 %1"
 
-#: src/extensions/spectradialog.cpp:707
+#: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
 msgstr "自定义(&Z) <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:714 :1616
+#: src/extensions/spectradialog.cpp:736:1524
 msgid "Customi&ze >>"
 msgstr "自定义(&Z) >>"
 
@@ -2264,7 +2210,7 @@ msgid ""
 "visualization."
 msgstr "您加载的分子振动数据没有任何强度数值。强度应当被赋予一个数值以便显示。"
 
-#: src/extensions/spectratype_ir.cpp:152
+#: src/extensions/spectratype_ir.cpp:135
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波数 (cm<sup>-1</sup>)"
 
@@ -2293,6 +2239,97 @@ msgstr "超晶胞"
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
 msgstr "构建并显示晶体学中的超晶胞"
+
+#: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
+#: src/extensions/surfaceextension.cpp:622
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "MO %L1"
+msgstr "分子轨道 %L1"
+
+#: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
+msgctxt "Highest occupied MO"
+msgid "(HOMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
+msgctxt "Lowest unoccupied MO"
+msgid "(LUMO)"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:249
+msgctxt "A cube type of nothing - empty cube"
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.cpp:251
+#, fuzzy
+msgctxt "Van der Waals surface type"
+msgid "Van der Waals"
+msgstr "Van der Waals"
+
+#: src/extensions/surfacedialog.cpp:253
+#, fuzzy
+msgctxt "Electrostatic potential surface type"
+msgid "Electrostatic Potential"
+msgstr "静电势"
+
+#: src/extensions/surfacedialog.cpp:256
+#, fuzzy
+msgctxt "Electron density surface type"
+msgid "Electron Density"
+msgstr "电子密度"
+
+#: src/extensions/surfacedialog.cpp:258
+#, fuzzy
+msgctxt "Molecular orbital surface type"
+msgid "Molecular Orbital"
+msgstr "渲染原子轨道"
+
+#: src/extensions/surfacedialog.cpp:260
+msgctxt "Undefined cube type"
+msgid "Error - undefined type"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:67
+msgid "Create Surfaces..."
+msgstr "创建表面..."
+
+#: src/extensions/surfaceextension.cpp:356
+#: src/extensions/surfaceextension.cpp:386
+#: src/extensions/surfaceextension.cpp:413
+#: src/extensions/surfaceextension.cpp:447
+#: src/extensions/surfaceextension.cpp:475
+msgid "Abort Calculation"
+msgstr "放弃计算"
+
+#: src/extensions/surfaceextension.cpp:361
+msgid "Calculating VdW Cube"
+msgstr "计算VdW立方体"
+
+#: src/extensions/surfaceextension.cpp:391
+#: src/extensions/surfaceextension.cpp:417
+#, qt-format
+msgctxt "Molecular Orbital"
+msgid "Calculating MO %L1"
+msgstr "计算分子轨道%L1"
+
+#: src/extensions/surfaceextension.cpp:452
+#: src/extensions/surfaceextension.cpp:480
+msgid "Calculating Electron Density"
+msgstr "计算电子密度"
+
+#: src/extensions/surfaceextension.cpp:566
+msgid "VdW"
+msgstr ""
+
+#: src/extensions/surfaceextension.cpp:594
+msgid "Electron Density"
+msgstr "电子密度"
+
+#: src/extensions/surfaceextension.h:51
+msgid "Calculate molecular orbitals and other surfaces"
+msgstr "计算分子轨道和其它表面"
 
 #: src/extensions/templateextension.cpp:42
 msgid "First Action"
@@ -2391,7 +2428,7 @@ msgid "Apply"
 msgstr "应用"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :242
+#: src/extensions/unitcellparamdialog.cpp:97:222
 msgid "OK"
 msgstr "确定"
 
@@ -2402,7 +2439,7 @@ msgstr "按照频率对 %1 的振动进行分类..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :1818
+#: src/extensions/vibrationdialog.cpp:213:1730
 msgid "Start &Animation"
 msgstr "开始动画(&A)"
 
@@ -2420,7 +2457,7 @@ msgstr "振动(V)..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239 :824
+#: src/extensions/vibrationextension.cpp:239:804
 msgid "Vibrational Analysis"
 msgstr "振动分析"
 
@@ -2467,7 +2504,8 @@ msgid ""
 "OpenGL application?), or you found a bug."
 msgstr ""
 "不正确的OpenGL内容.\n"
-"也许您的OpenGL安装被完全破坏 (您是否在运行某些OpenGL程序? ), 或者您遇到了一个Bug."
+"也许您的OpenGL安装被完全破坏 (您是否在运行某些OpenGL程序? ), 或者您遇到了一个"
+"Bug."
 
 #: src/glwidget.cpp:458
 msgid "OpenGL error"
@@ -2506,99 +2544,100 @@ msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "未命名"
 
-#: src/moleculefile.cpp:112
+#: src/moleculefile.cpp:130
 #, qt-format
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: index %1 out of reach."
 
-#: src/moleculefile.cpp:121 src/moleculefile.cpp:345 src/moleculefile.cpp:625
+#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:662
+#: src/moleculefile.cpp:757
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "文件类型 '%1' 不支持读取操作。"
 
-#: src/moleculefile.cpp:127 src/moleculefile.cpp:352 src/moleculefile.cpp:631
+#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:668
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "文件 '%1' 的文件类型不支持读取操作。"
 
-#: src/moleculefile.cpp:154
+#: src/moleculefile.cpp:172
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
 msgstr "读取含有索引 %1 的分子信息的文件 '%2' 失败。"
 
-#: src/moleculefile.cpp:166
+#: src/moleculefile.cpp:184
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
 msgstr "replaceMolecule: index %1 out of reach."
 
-#: src/moleculefile.cpp:175 src/moleculefile.cpp:406 src/moleculefile.cpp:494
+#: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "文件类型 '%1' 不支持写入操作。"
 
-#: src/moleculefile.cpp:181 src/moleculefile.cpp:414 src/moleculefile.cpp:501
+#: src/moleculefile.cpp:199 src/moleculefile.cpp:450 src/moleculefile.cpp:538
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "文件 '%1' 的文件类型不支持写入操作。"
 
-#: src/moleculefile.cpp:191
+#: src/moleculefile.cpp:209
 #, qt-format
 msgid "Could not open file '%1' for writing."
 msgstr "无法打开文件 '%1' 并写入。"
 
-#: src/moleculefile.cpp:198
+#: src/moleculefile.cpp:216
 #, qt-format
 msgid "Could not open file '%1' for reading."
 msgstr "无法打开文件 '%1' 并读取。"
 
-#: src/moleculefile.cpp:207
+#: src/moleculefile.cpp:225
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "用索引 %1替换文件 '%2' 中的分子失败。"
 
-#: src/moleculefile.cpp:335 src/moleculefile.cpp:614
+#: src/moleculefile.cpp:355 src/moleculefile.cpp:651 src/moleculefile.cpp:746
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "文件 %1 无法被打开并读取。"
 
-#: src/moleculefile.cpp:378
+#: src/moleculefile.cpp:398 src/moleculefile.cpp:772
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "从文件 '%1' 读取分子失败。"
 
-#: src/moleculefile.cpp:393
+#: src/moleculefile.cpp:413 src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/moleculefile.cpp:439
+#: src/moleculefile.cpp:476
 msgid "Saving molecular file failed - could not rename original file."
 msgstr "保存分子文件失败 - 无法重命名原始文件。"
 
-#: src/moleculefile.cpp:446
+#: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
 msgstr "保存分子文件失败 - 无法重命名新文件。"
 
-#: src/moleculefile.cpp:455
+#: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
 msgstr "保存分子文件失败 - 无法删除旧文件。"
 
-#: src/moleculefile.cpp:464
+#: src/moleculefile.cpp:501
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr "将分子写入到文件 '%1' 失败。 OpenBabel功能失效。"
 
-#: src/moleculefile.cpp:481
+#: src/moleculefile.cpp:518
 #, qt-format
 msgid "File %1 cannot be opened for writing."
 msgstr "文件 %1 无法被打开并写入。"
 
-#: src/moleculefile.cpp:533
+#: src/moleculefile.cpp:570
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
 msgstr "将构象异构体写入到文件 '%1' 失败"
 
-#: src/moleculefile.cpp:680
+#: src/moleculefile.cpp:725 src/moleculefile.cpp:766
 #, qt-format
 msgid "Molecule %1"
 msgstr "分子 %1"
@@ -2759,13 +2798,11 @@ msgstr "每次更新步骤数:"
 msgid "Algorithm:"
 msgstr "算法："
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:286 :272
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
 msgid "Steepest Descent"
 msgstr "最速下降法"
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:287 :274
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
 msgid "Conjugate Gradients"
 msgstr "共轭梯度法"
 
@@ -2846,8 +2883,8 @@ msgstr "z轴旋转"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:294 :966 rc.cpp:1246 rc.cpp:1304
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "重置"
 
@@ -2987,6 +3024,16 @@ msgstr "*4"
 msgid "Distance(s):"
 msgstr "距离(s):"
 
+#: src/tools/clickmeasuretool.cpp:290
+#, fuzzy
+msgid "Angle:"
+msgstr "键角"
+
+#: src/tools/clickmeasuretool.cpp:302
+#, fuzzy
+msgid "Dihedral:"
+msgstr "二面角"
+
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
 msgstr "测量"
@@ -2999,8 +3046,8 @@ msgstr "测量键长，键角和二面角"
 msgid "Measure Settings"
 msgstr "测量设置"
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:275 src/tools/drawcommand.cpp:289 :1838
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
+#: src/tools/drawcommand.cpp:289:1750
 msgid "Add Atom"
 msgstr "添加原子"
 
@@ -3052,8 +3099,7 @@ msgstr "绘制"
 msgid "Element:"
 msgstr "元素"
 
-#: src/extensions/gamessinputdialog.ui:1214
-#: src/tools/drawtool.cpp:763 :576
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
 msgid "Other..."
 msgstr "其它..."
 
@@ -3197,8 +3243,7 @@ msgstr "二面角"
 msgid "Z Matrix Editor..."
 msgstr "Z矩阵编辑器..."
 
-#: src/extensions/gamessinputdialog.ui:1537
-#: src/tools/zmatrixtool.h:39 :634
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
 msgid "Z-Matrix"
 msgstr "Z-矩阵"
 
@@ -3238,15 +3283,12 @@ msgstr "原子半径:"
 msgid "Bond Radius:"
 msgstr "键半径:"
 
-#: src/engines/bsdysettingswidget.ui:76
-#: src/engines/orbitalsettingswidget.ui:30
-#: src/engines/ringsettingswidget.ui:16
-#: src/engines/surfacesettingswidget.ui:17
+#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "不透明度："
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "显示多重键"
 
@@ -3337,6 +3379,16 @@ msgstr "截断角度:"
 msgid "Atom Labels:"
 msgstr "原子标签"
 
+#: src/engines/labelsettingswidget.ui:55
+#: src/engines/labelsettingswidget.ui:140
+#: src/extensions/gamessinputdialog.ui:450
+#: src/extensions/gamessinputdialog.ui:999
+#: src/extensions/gamessinputdialog.ui:1069
+#: src/extensions/gamessinputdialog.ui:1115
+#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+msgid "None"
+msgstr "无"
+
 #: src/engines/labelsettingswidget.ui:60
 msgid "Atom number"
 msgstr "原子序数"
@@ -3382,60 +3434,6 @@ msgstr "键序数:"
 msgid "Bond order"
 msgstr "键级"
 
-#: src/engines/orbitalsettingswidget.ui:17
-msgid "Orbital:"
-msgstr "轨道:"
-
-#: src/engines/orbitalsettingswidget.ui:74
-#: src/engines/surfacesettingswidget.ui:58
-msgid "Render:"
-msgstr "渲染:"
-
-#: src/engines/orbitalsettingswidget.ui:85
-#: src/engines/surfacesettingswidget.ui:66
-msgid "Fill"
-msgstr "填充"
-
-#: src/engines/orbitalsettingswidget.ui:90
-#: src/engines/ribbonsettingswidget.ui:29
-#: src/engines/surfacesettingswidget.ui:71
-msgid "Lines"
-msgstr "直线"
-
-#: src/engines/orbitalsettingswidget.ui:95
-#: src/engines/surfacesettingswidget.ui:76
-msgid "Points"
-msgstr "点"
-
-#: src/engines/orbitalsettingswidget.ui:103
-#: src/engines/surfacesettingswidget.ui:108
-msgid "Draw Box:"
-msgstr "绘制盒："
-
-#: src/engines/orbitalsettingswidget.ui:129
-msgid "Style:"
-msgstr "样式:"
-
-#: src/engines/orbitalsettingswidget.ui:140
-msgid "Selected Colors"
-msgstr "已选的颜色"
-
-#: src/engines/orbitalsettingswidget.ui:145
-msgid "Mapped Colors"
-msgstr "映射的颜色"
-
-#: src/engines/orbitalsettingswidget.ui:153
-msgid "Colors:"
-msgstr "颜色:"
-
-#: src/engines/orbitalsettingswidget.ui:165
-msgid "Positive"
-msgstr "正"
-
-#: src/engines/orbitalsettingswidget.ui:188
-msgid "Negative"
-msgstr "负"
-
 #: src/engines/ribbonsettingswidget.ui:16
 msgid "Rendering:"
 msgstr "渲染："
@@ -3443,6 +3441,11 @@ msgstr "渲染："
 #: src/engines/ribbonsettingswidget.ui:24
 msgid "Backbone"
 msgstr "骨架"
+
+#: src/engines/ribbonsettingswidget.ui:29
+#: src/engines/surfacesettingswidget.ui:90
+msgid "Lines"
+msgstr "直线"
 
 #: src/engines/ribbonsettingswidget.ui:37
 #: src/engines/sticksettingswidget.ui:16
@@ -3457,13 +3460,49 @@ msgstr "包含氮"
 msgid "VdW Opacity:"
 msgstr "VdW 不透明度:"
 
-#: src/engines/surfacesettingswidget.ui:84
-msgid "Color:"
+#: src/engines/surfacesettingswidget.ui:17
+msgid "Orbital:"
+msgstr "轨道:"
+
+#: src/engines/surfacesettingswidget.ui:74
+msgid "Render:"
+msgstr "渲染:"
+
+#: src/engines/surfacesettingswidget.ui:85
+msgid "Fill"
+msgstr "填充"
+
+#: src/engines/surfacesettingswidget.ui:95
+msgid "Points"
+msgstr "点"
+
+#: src/engines/surfacesettingswidget.ui:103
+msgid "Draw Box:"
+msgstr "绘制盒："
+
+#: src/engines/surfacesettingswidget.ui:129
+msgid "Style:"
+msgstr "样式:"
+
+#: src/engines/surfacesettingswidget.ui:140
+msgid "Selected Colors"
+msgstr "已选的颜色"
+
+#: src/engines/surfacesettingswidget.ui:145
+msgid "Mapped Colors"
+msgstr "映射的颜色"
+
+#: src/engines/surfacesettingswidget.ui:153
+msgid "Colors:"
 msgstr "颜色:"
 
-#: src/engines/surfacesettingswidget.ui:100
-msgid "Electrostatic Potential (ESP)"
-msgstr "静电势 (ESP)"
+#: src/engines/surfacesettingswidget.ui:165
+msgid "Positive"
+msgstr "正"
+
+#: src/engines/surfacesettingswidget.ui:188
+msgid "Negative"
+msgstr "负"
 
 #: src/engines/wiresettingswidget.ui:18
 msgid "Show Atoms"
@@ -3477,8 +3516,7 @@ msgstr "动画轨迹"
 msgid "Load File..."
 msgstr "载入文件..."
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3486,8 +3524,7 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr "动态键"
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "帧/秒"
 
@@ -3518,10 +3555,8 @@ msgid "Number of conformers"
 msgstr "构象异构体数量"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "算法"
@@ -3610,15 +3645,12 @@ msgstr "全部删除"
 msgid "File Import..."
 msgstr "导入文件..."
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "文件名:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "浏览..."
@@ -3639,8 +3671,7 @@ msgstr "检测化学键？"
 msgid "Setup Force Field"
 msgstr "建立力场"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "力场"
 
@@ -3863,7 +3894,7 @@ msgstr "水"
 
 #: src/extensions/gamessinputdialog.ui:280
 #: src/extensions/gamessinputdialog.ui:2675
-#: src/extensions/surfacedialog.ui:295
+#: src/extensions/surfacedialog.ui:335
 msgid "Calculate"
 msgstr "计算"
 
@@ -3872,8 +3903,6 @@ msgid "With:"
 msgstr "为："
 
 #: src/extensions/gamessinputdialog.ui:300
-#: src/extensions/orbitaldialog.ui:556
-#: src/extensions/orbitaldialog.ui:773
 msgid "In:"
 msgstr "输入："
 
@@ -4394,8 +4423,7 @@ msgstr "单位："
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "标题:"
 
@@ -4877,8 +4905,7 @@ msgstr "生成..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "关闭"
@@ -4996,14 +5023,6 @@ msgstr "使用表单"
 #: src/extensions/insertfragmentdialog.ui:14
 msgid "Insert Fragment..."
 msgstr "插入片段..."
-
-#: src/extensions/insertfragmentdialog.ui:25
-msgid "Add Directory"
-msgstr "添加目录"
-
-#: src/extensions/insertfragmentdialog.ui:32
-msgid "Reset List"
-msgstr "重设列表"
 
 #: src/extensions/insertpeptidedialog.ui:20
 msgid "Peptide Builder"
@@ -5286,8 +5305,7 @@ msgstr "由残基名创建配体"
 msgid "create ligand from file..."
 msgstr "从文件创建配体..."
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "残基名称"
 
@@ -5433,119 +5451,6 @@ msgstr "RM1"
 msgid "NWChem Input"
 msgstr "NWChem输入"
 
-#: src/extensions/orbitaldialog.ui:30
-msgid "Cubes"
-msgstr "立方体"
-
-#: src/extensions/orbitaldialog.ui:36
-msgid "Cube Dimensions"
-msgstr "立方体维度"
-
-#: src/extensions/orbitaldialog.ui:47
-msgid "x"
-msgstr "x"
-
-#: src/extensions/orbitaldialog.ui:60
-msgid "y"
-msgstr "y"
-
-#: src/extensions/orbitaldialog.ui:73
-msgid "z"
-msgstr "z"
-
-#: src/extensions/orbitaldialog.ui:88
-msgid "Origin:"
-msgstr "原点:"
-
-#: src/extensions/orbitaldialog.ui:130
-msgid "Max:"
-msgstr "最大:"
-
-#: src/extensions/orbitaldialog.ui:172
-msgid "Steps:"
-msgstr "步骤："
-
-#: src/extensions/orbitaldialog.ui:214
-msgid "Step Size:"
-msgstr "步长:"
-
-#: src/extensions/orbitaldialog.ui:304
-msgid "Calculate MO"
-msgstr "计算MO"
-
-#: src/extensions/orbitaldialog.ui:331
-msgid "Calculate All MOs"
-msgstr "计算所有MO"
-
-#: src/extensions/orbitaldialog.ui:358
-msgid "Calculate Electron Density"
-msgstr "计算电子密度"
-
-#: src/extensions/orbitaldialog.ui:385
-msgid "Calculate Van der Waals Cube"
-msgstr "计算Van der Waals立方体"
-
-#: src/extensions/orbitaldialog.ui:411
-msgid "Isosurfaces"
-msgstr "Iso表面"
-
-#: src/extensions/orbitaldialog.ui:417
-#: src/extensions/orbitaldialog.ui:633
-msgid "Cube:"
-msgstr "立方体:"
-
-#: src/extensions/orbitaldialog.ui:447
-#: src/extensions/orbitaldialog.ui:663
-#: src/extensions/surfacedialog.ui:104
-msgid "Color By:"
-msgstr "着色按:"
-
-#: src/extensions/orbitaldialog.ui:481
-#: src/extensions/surfacedialog.ui:203
-msgid "Iso Value:"
-msgstr "Iso值:"
-
-#: src/extensions/orbitaldialog.ui:493
-msgid "0.02"
-msgstr "0.02"
-
-#: src/extensions/orbitaldialog.ui:515
-msgid "Cube Range:"
-msgstr "立方体范围:"
-
-#: src/extensions/orbitaldialog.ui:527
-msgid "0.000"
-msgstr "0.000"
-
-#: src/extensions/orbitaldialog.ui:544
-msgid "1.000"
-msgstr "1.000"
-
-#: src/extensions/orbitaldialog.ui:604
-#: src/extensions/orbitaldialog.ui:821
-msgid "Calculate Mesh"
-msgstr "计算网格"
-
-#: src/extensions/orbitaldialog.ui:627
-msgid "Van der Waals Surface"
-msgstr "Van der Waals表面"
-
-#: src/extensions/orbitaldialog.ui:684
-msgid "ESP (approximate)"
-msgstr "ESP (近似的)"
-
-#: src/extensions/orbitaldialog.ui:707
-msgid "Distance:"
-msgstr "距离："
-
-#: src/extensions/orbitaldialog.ui:719
-msgid "0.0"
-msgstr "0.0"
-
-#: src/extensions/orbitaldialog.ui:741
-msgid "Range:"
-msgstr "范围:"
-
 #: src/extensions/pocketdialog.ui:13
 msgid "Create binding pocket"
 msgstr "创建结合域"
@@ -5583,8 +5488,7 @@ msgstr "povray"
 msgid "Render"
 msgstr "渲染"
 
-#: src/extensions/povraydialog.ui:137
-#: src/extensions/surfacedialog.ui:143
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "分辨率："
 
@@ -5668,8 +5572,7 @@ msgstr "片段着色器:"
 msgid "Parameters:"
 msgstr "参数："
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "指定着色器"
 
@@ -5711,10 +5614,8 @@ msgstr "关闭(&C)"
 msgid "Calculated Spectra:"
 msgstr "计算光谱:"
 
-#: src/extensions/spectradialog.ui:168
-#: src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279
-#: src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "设置颜色..."
 
@@ -5730,8 +5631,7 @@ msgstr "字体:"
 msgid "Change Font..."
 msgstr "更换字体..."
 
-#: src/extensions/spectradialog.ui:224
-#: src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "显示"
 
@@ -5819,7 +5719,8 @@ msgstr "保存图像(&S)..."
 msgid ""
 "Use an optimized value for the font size instead of the scheme-specified "
 "value (screen to image point sizes don't translate well!)"
-msgstr "使用优化的字体大小而非原理图定义的值(屏幕与图像点大小将不能很好地转换!)"
+msgstr ""
+"使用优化的字体大小而非原理图定义的值(屏幕与图像点大小将不能很好地转换!)"
 
 #: src/extensions/spectradialog.ui:625
 msgid "Auto-adjust F&ont Size"
@@ -5879,8 +5780,7 @@ msgstr "重设坐标轴(&P)"
 msgid "Label Peaks:"
 msgstr "标记谱峰:"
 
-#: src/extensions/spectratabnmr.ui:125
-#: src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5923,51 +5823,62 @@ msgstr "表面类型:"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46
-#: src/extensions/surfacedialog.ui:120
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "静电势"
 
-#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "MO 666"
 
-#: src/extensions/surfacedialog.ui:162
+#: src/extensions/surfacedialog.ui:104
+msgid "Color By:"
+msgstr "着色按:"
+
+#: src/extensions/surfacedialog.ui:120
+msgid "Nothing"
+msgstr ""
+
+#: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
 msgid "Low"
 msgstr "低"
 
-#: src/extensions/surfacedialog.ui:167
+#: src/extensions/surfacedialog.ui:207
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "中"
 
-#: src/extensions/surfacedialog.ui:172
+#: src/extensions/surfacedialog.ui:212
 msgctxt "high resolution"
 msgid "High"
 msgstr "高"
 
-#: src/extensions/surfacedialog.ui:177
+#: src/extensions/surfacedialog.ui:217
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "非常高"
 
-#: src/extensions/surfacedialog.ui:200
+#: src/extensions/surfacedialog.ui:240
 msgid "Isosurface cutoff value"
 msgstr "等高面切断值"
 
-#: src/extensions/surfacedialog.ui:236
+#: src/extensions/surfacedialog.ui:243
+msgid "Iso Value:"
+msgstr "Iso值:"
+
+#: src/extensions/surfacedialog.ui:276
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
 msgstr "在显示模式:"
 
-#: src/extensions/surfacedialog.ui:255
+#: src/extensions/surfacedialog.ui:295
 msgid "New Display"
 msgstr "新建显示"
 
-#: src/extensions/surfacedialog.ui:305
+#: src/extensions/surfacedialog.ui:345
 msgid "Advanced..."
 msgstr "高级..."
 
@@ -6097,19 +6008,120 @@ msgstr "删除原子"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Tao Wei,cuiweicui,rainofchaos,yjjart,郑思涵, "
-",Launchpad Contributions:,Tao Wei,Yinghua "
-"Wang,cuiweicui,rainofchaos,yjjart,郑思涵, ,Launchpad "
-"Contributions:,Xinfeng,cuiweicui, ,Launchpad "
-"Contributions:,Xinfeng,cuiweicui,yjjart"
+",Launchpad Contributions:,Tao Wei,cuiweicui,rainofchaos,yjjart,郑思涵, ,"
+"Launchpad Contributions:,Tao Wei,Yinghua Wang,cuiweicui,rainofchaos,yjjart,郑"
+"思涵, ,Launchpad Contributions:,Xinfeng,cuiweicui, ,Launchpad Contributions:,"
+"Xinfeng,cuiweicui,yjjart"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,sihanzheng@"
-"gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
-"sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,cuiweicui1985@gmail.com,yj"
-"jart@gmail.com"
+",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
+"sihanzheng@gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,"
+"yjjart@gmail.com,sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,"
+"cuiweicui1985@gmail.com,yjjart@gmail.com"
+
+#~ msgid "Orbitals"
+#~ msgstr "轨道"
+
+#~ msgid "Surface"
+#~ msgstr "表面"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "渲染计算出的分子表面"
+
+#~ msgid "Name"
+#~ msgstr "名字"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "VdW Cube"
+#~ msgstr "VdW立方体"
+
+#~ msgid "Color:"
+#~ msgstr "颜色:"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "静电势 (ESP)"
+
+#~ msgid "Add Directory"
+#~ msgstr "添加目录"
+
+#~ msgid "Reset List"
+#~ msgstr "重设列表"
+
+#~ msgid "Cubes"
+#~ msgstr "立方体"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "立方体维度"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Origin:"
+#~ msgstr "原点:"
+
+#~ msgid "Max:"
+#~ msgstr "最大:"
+
+#~ msgid "Steps:"
+#~ msgstr "步骤："
+
+#~ msgid "Step Size:"
+#~ msgstr "步长:"
+
+#~ msgid "Calculate MO"
+#~ msgstr "计算MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "计算所有MO"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "计算电子密度"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "计算Van der Waals立方体"
+
+#~ msgid "Isosurfaces"
+#~ msgstr "Iso表面"
+
+#~ msgid "Cube:"
+#~ msgstr "立方体:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "Cube Range:"
+#~ msgstr "立方体范围:"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "计算网格"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (近似的)"
+
+#~ msgid "Distance:"
+#~ msgstr "距离："
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Range:"
+#~ msgstr "范围:"
 
 #~ msgid "Caesium"
 #~ msgstr "铯"
@@ -6126,7 +6138,8 @@ msgstr ""
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
-#~ msgstr "用于显示原子，键，键角和扭转属性的窗口。它还含有一个笛卡尔坐标编辑器。"
+#~ msgstr ""
+#~ "用于显示原子，键，键角和扭转属性的窗口。它还含有一个笛卡尔坐标编辑器。"
 
 #~ msgid "Atomic Number"
 #~ msgstr "原子序数"
@@ -6143,18 +6156,12 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "残基"
 
-#~ msgid "Aign Settings"
-#~ msgstr "对齐设置"
-
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "距离 (1->2): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "距离 (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "距离 (3->4): %1 %2"
 
@@ -6203,16 +6210,16 @@ msgstr ""
 #~ msgstr "从SMILES生成:"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-#~ "%3<br/><br/>For more information check the <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
-#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-#~ "PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>应用程序版本: %2<br/><br/>资源库版本: %3<br/><br/>更多信息请访问 <a "
-#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro主页</a>.<br/><br/>该程序是按其现状"
-#~ "提供的，不附带任何担保，包括其设计、适销性和特定目的下适用性的担保。<br/>"
+#~ "<h3>%1</h3><br/><br/>应用程序版本: %2<br/><br/>资源库版本: %3<br/><br/>更"
+#~ "多信息请访问 <a href=\"http://avogadro.openmolecules.net/\">Avogadro主页</"
+#~ "a>.<br/><br/>该程序是按其现状提供的，不附带任何担保，包括其设计、适销性和"
+#~ "特定目的下适用性的担保。<br/>"
 
 #~ msgid "Cut Molecule"
 #~ msgstr "剪切分子"
@@ -6250,6 +6257,9 @@ msgstr ""
 #~ msgid "Bring All to Front"
 #~ msgstr "前置全部窗口"
 
+#~ msgid "Tool Settings"
+#~ msgstr "工具设置"
+
 #~ msgid "Common molecule formats"
 #~ msgstr "普通分子格式"
 
@@ -6268,6 +6278,9 @@ msgstr ""
 #~ msgid "Gaussian 98/03 Output"
 #~ msgstr "Gaussian 98/03 输出"
 
+#~ msgid "Gaussian Formatted Checkpoint"
+#~ msgstr "Gaussian 格式化检查点"
+
 #~ msgid "HyperChem"
 #~ msgstr "HyperChem"
 
@@ -6276,6 +6289,9 @@ msgstr ""
 
 #~ msgid "PDB"
 #~ msgstr "PDB"
+
+#~ msgid "NWChem Output"
+#~ msgstr "NWChem输出"
 
 #~ msgid "Sybyl Mol2"
 #~ msgstr "Sybyl Mol2"
@@ -6296,7 +6312,8 @@ msgstr ""
 #~ msgid ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
-#~ msgstr "该文件仅包含2D坐标。你是否希望Avogadro将化学键进行缩放并进行快速优化？"
+#~ msgstr ""
+#~ "该文件仅包含2D坐标。你是否希望Avogadro将化学键进行缩放并进行快速优化？"
 
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
@@ -6304,9 +6321,12 @@ msgstr ""
 #~ msgstr "该文件不包含3D坐标。您可能无法正确地查看或进行编辑。"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
-#~ msgstr "该文件似乎包含多个分子记录。Avogadro将仅读取第一个分子。如果您进行保存，所有其它分子可能会丢失。"
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
+#~ msgstr ""
+#~ "该文件似乎包含多个分子记录。Avogadro将仅读取第一个分子。如果您进行保存，所"
+#~ "有其它分子可能会丢失。"
 
 #~ msgid " Bonds: "
 #~ msgstr " 键: "
@@ -6394,6 +6414,9 @@ msgstr ""
 #~ msgid "View %1"
 #~ msgstr "视图 %1"
 
+#~ msgid "Avogadro: Detached View"
+#~ msgstr "Avogadro: 独立视图"
+
 #~ msgid "Normal Size"
 #~ msgstr "普通大小"
 
@@ -6417,6 +6440,12 @@ msgstr ""
 
 #~ msgid "Remove"
 #~ msgstr "删除"
+
+#~ msgid "No tools or engines loaded."
+#~ msgstr "没有工具或引擎被载入。"
+
+#~ msgid "No engines loaded."
+#~ msgstr "没有引擎被载入。"
 
 #~ msgid "No tools loaded."
 #~ msgstr "没有工具被载入。"
@@ -6451,8 +6480,17 @@ msgstr ""
 #~ msgid "bond %1"
 #~ msgstr "键 %1"
 
+#~ msgid "User Selections"
+#~ msgstr "用户选择"
+
+#~ msgid "only labels can have sub items"
+#~ msgstr "只有标签能拥有子项目"
+
 #~ msgid "tree"
 #~ msgstr "树"
+
+#~ msgid "index"
+#~ msgstr "索引"
 
 #~ msgid "Undefined"
 #~ msgstr "未定义"
@@ -6499,8 +6537,21 @@ msgstr ""
 #~ msgid "Z (Å)"
 #~ msgstr "Z (Å)"
 
+#~ msgid ""
+#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
+#~ "jdx);;All Files (* *.*)"
+#~ msgstr ""
+#~ "标签分离数值文件 (*.tsv);;逗号分离数值文件 (*.csv);;JCAMP-DX (*.jdx);;所有"
+#~ "文件 (* *.*)"
+
 #~ msgid "cancel"
 #~ msgstr "取消"
+
+#~ msgid "Python script rendering"
+#~ msgstr "Python脚本渲染"
+
+#~ msgid "Add Display Type"
+#~ msgstr "添加显示模式"
 
 #~ msgid "Type:"
 #~ msgstr "类型："
@@ -6523,11 +6574,23 @@ msgstr ""
 #~ msgid "Add All Primitives"
 #~ msgstr "添加所有基本几何体"
 
+#~ msgid "Display Only Selected Primitives"
+#~ msgstr "仅显示选择的几何体"
+
+#~ msgid "Assign to Selection"
+#~ msgstr "指定到选择对象"
+
 #~ msgid "Import Molecule File"
 #~ msgstr "导入分子文件"
 
 #~ msgid "Automatically detect from extension"
 #~ msgstr "根据扩展名自动检测"
+
+#~ msgid "Perceive bonding"
+#~ msgstr "检测成键状态"
+
+#~ msgid "Perceive bond orders"
+#~ msgstr "检测键级"
 
 #~ msgid "Coordinates are in Ångstroms"
 #~ msgstr "坐标以埃（Å）为单位"
@@ -6538,11 +6601,20 @@ msgstr ""
 #~ msgid "Open &Recent"
 #~ msgstr "打开最近访问的"
 
+#~ msgid "Se&ttings"
+#~ msgstr "设置(&T)"
+
 #~ msgid "Toolbars"
 #~ msgstr "工具栏"
 
 #~ msgid "Main Toolbar"
 #~ msgstr "主工具栏"
+
+#~ msgid "Project Tree"
+#~ msgstr "项目树"
+
+#~ msgid "Display Types"
+#~ msgstr "显示模式"
 
 #~ msgid "&Open"
 #~ msgstr "打开"
@@ -6555,6 +6627,9 @@ msgstr ""
 
 #~ msgid "Recent"
 #~ msgstr "最近的"
+
+#~ msgid "&Clear Recent"
+#~ msgstr "清除最近使用（&C)"
 
 #~ msgid "&New"
 #~ msgstr "新建"
@@ -6576,6 +6651,9 @@ msgstr ""
 
 #~ msgid "Ctrl+Shift+S"
 #~ msgstr "Ctrl+Shift+S"
+
+#~ msgid "Revert To Saved"
+#~ msgstr "恢复到已保存"
 
 #~ msgid "&Graphics..."
 #~ msgstr "&图像..."
@@ -6600,6 +6678,9 @@ msgstr ""
 
 #~ msgid "Ctrl+Shift+Z"
 #~ msgstr "Ctrl+Shift+Z"
+
+#~ msgid "New View"
+#~ msgstr "新建视图"
 
 #~ msgid "Close View"
 #~ msgstr "关闭视图"
@@ -6628,6 +6709,9 @@ msgstr ""
 #~ msgid "Clear"
 #~ msgstr "清除"
 
+#~ msgid "Backspace, Ctrl+Backspace"
+#~ msgstr "Backspace, Ctrl+Backspace"
+
 #~ msgid "Select All"
 #~ msgstr "全选"
 
@@ -6646,6 +6730,9 @@ msgstr ""
 #~ msgid "Tutorials"
 #~ msgstr "教程"
 
+#~ msgid "Duplicate View"
+#~ msgstr "复制视图"
+
 #~ msgid "Avogadro Help"
 #~ msgstr "Avogadro帮助"
 
@@ -6655,14 +6742,26 @@ msgstr ""
 #~ msgid "Report a Bug"
 #~ msgstr "报告缺陷"
 
+#~ msgid "FAQ"
+#~ msgstr "常见问题"
+
 #~ msgid "Avogadro Website"
 #~ msgstr "Avogadro网站"
 
 #~ msgid "Plugin Manager..."
 #~ msgstr "插件管理器..."
 
+#~ msgid "Project Tree Editor..."
+#~ msgstr "项目树编辑器..."
+
+#~ msgid "Detach View"
+#~ msgstr "拆分视图"
+
 #~ msgid "Molecule File..."
 #~ msgstr "分子文件..."
+
+#~ msgid "Use Quick Render"
+#~ msgstr "使用快速渲染器"
 
 #~ msgid "&Vector Graphics..."
 #~ msgstr "&矢量图形..."
@@ -6676,11 +6775,20 @@ msgstr ""
 #~ msgid "Details"
 #~ msgstr "详情"
 
+#~ msgid "Tree Items"
+#~ msgstr "树型图项目"
+
 #~ msgid "New Item"
 #~ msgstr "新建项目"
 
 #~ msgid "&New Item"
 #~ msgstr "新建项目"
+
+#~ msgid "New Subitem"
+#~ msgstr "新建子项目"
+
+#~ msgid "New &Subitem"
+#~ msgstr "新建子项目"
 
 #~ msgid "Delete Item"
 #~ msgstr "删除项目"
@@ -6688,17 +6796,41 @@ msgstr ""
 #~ msgid "&Delete Item"
 #~ msgstr "删除项目"
 
+#~ msgid "Move Item Left (before Parent Item)"
+#~ msgstr "左移项目（在父项目之前）"
+
+#~ msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+#~ msgstr "右移项目（作为下一个姐妹项目的子项目）"
+
+#~ msgid "R"
+#~ msgstr "R"
+
 #~ msgid "Move Item Up"
 #~ msgstr "上移项目"
 
+#~ msgid "U"
+#~ msgstr "U"
+
 #~ msgid "Move Item Down"
 #~ msgstr "下移项目"
+
+#~ msgid "1"
+#~ msgstr "1"
 
 #~ msgid "General"
 #~ msgstr "通用"
 
 #~ msgid "Quality:"
 #~ msgstr "品质："
+
+#~ msgid "Set the global rendering quality."
+#~ msgstr "设置全局渲染质量。"
+
+#~ msgid "Enable the tabbed tool layout."
+#~ msgstr "允许标签式工具栏布局。"
+
+#~ msgid "Tabbed Tools"
+#~ msgstr "标签工具"
 
 #~ msgid "Top"
 #~ msgstr "顶部"
@@ -6718,128 +6850,6 @@ msgstr ""
 #~ msgid "Fog:"
 #~ msgstr "雾效:"
 
-#~ msgid "Smooth Transitions"
-#~ msgstr "平滑过渡"
-
-#~ msgid "Gaussian Formatted Checkpoint"
-#~ msgstr "Gaussian 格式化检查点"
-
-#~ msgid "NWChem Output"
-#~ msgstr "NWChem输出"
-
-#~ msgid "Avogadro: Detached View"
-#~ msgstr "Avogadro: 独立视图"
-
-#~ msgid "Tool Settings"
-#~ msgstr "工具设置"
-
-#~ msgid "No tools or engines loaded."
-#~ msgstr "没有工具或引擎被载入。"
-
-#~ msgid "No engines loaded."
-#~ msgstr "没有引擎被载入。"
-
-#~ msgid "User Selections"
-#~ msgstr "用户选择"
-
-#~ msgid "only labels can have sub items"
-#~ msgstr "只有标签能拥有子项目"
-
-#~ msgid "index"
-#~ msgstr "索引"
-
-#~ msgid ""
-#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX "
-#~ "(*.jdx);;All Files (* *.*)"
-#~ msgstr "标签分离数值文件 (*.tsv);;逗号分离数值文件 (*.csv);;JCAMP-DX (*.jdx);;所有文件 (* *.*)"
-
-#~ msgid "Python script rendering"
-#~ msgstr "Python脚本渲染"
-
-#~ msgid "Add Display Type"
-#~ msgstr "添加显示模式"
-
-#~ msgid "Display Only Selected Primitives"
-#~ msgstr "仅显示选择的几何体"
-
-#~ msgid "Assign to Selection"
-#~ msgstr "指定到选择对象"
-
-#~ msgid "Perceive bonding"
-#~ msgstr "检测成键状态"
-
-#~ msgid "Perceive bond orders"
-#~ msgstr "检测键级"
-
-#~ msgid "Se&ttings"
-#~ msgstr "设置(&T)"
-
-#~ msgid "Project Tree"
-#~ msgstr "项目树"
-
-#~ msgid "Display Types"
-#~ msgstr "显示模式"
-
-#~ msgid "&Clear Recent"
-#~ msgstr "清除最近使用（&C)"
-
-#~ msgid "Revert To Saved"
-#~ msgstr "恢复到已保存"
-
-#~ msgid "New View"
-#~ msgstr "新建视图"
-
-#~ msgid "Backspace, Ctrl+Backspace"
-#~ msgstr "Backspace, Ctrl+Backspace"
-
-#~ msgid "Duplicate View"
-#~ msgstr "复制视图"
-
-#~ msgid "FAQ"
-#~ msgstr "常见问题"
-
-#~ msgid "Project Tree Editor..."
-#~ msgstr "项目树编辑器..."
-
-#~ msgid "Detach View"
-#~ msgstr "拆分视图"
-
-#~ msgid "Use Quick Render"
-#~ msgstr "使用快速渲染器"
-
-#~ msgid "Tree Items"
-#~ msgstr "树型图项目"
-
-#~ msgid "New Subitem"
-#~ msgstr "新建子项目"
-
-#~ msgid "New &Subitem"
-#~ msgstr "新建子项目"
-
-#~ msgid "Move Item Left (before Parent Item)"
-#~ msgstr "左移项目（在父项目之前）"
-
-#~ msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-#~ msgstr "右移项目（作为下一个姐妹项目的子项目）"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "U"
-#~ msgstr "U"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Set the global rendering quality."
-#~ msgstr "设置全局渲染质量。"
-
-#~ msgid "Enable the tabbed tool layout."
-#~ msgstr "允许标签式工具栏布局。"
-
-#~ msgid "Tabbed Tools"
-#~ msgstr "标签工具"
-
 #~ msgid "Smooths animations of various functions where availabe."
 #~ msgstr "在允许的地方对各种功能的动画进行平滑处理。"
 
@@ -6848,18 +6858,20 @@ msgstr ""
 #~ "positioning of the GLWidget."
 #~ msgstr "在使用GL小工具的自动定位时允许使用过渡态动画。"
 
-#, qt-format
+#~ msgid "Smooth Transitions"
+#~ msgstr "平滑过渡"
+
+#~ msgid "Aign Settings"
+#~ msgstr "对齐设置"
+
+#~ msgid "File type for file '%1' is not a supported for writing."
+#~ msgstr "文件 '%1' 的文件类型不支持写入。"
+
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "文件类型 '%1' 不支持读取。"
 
-#, qt-format
 #~ msgid "File type for file '%1' is not a supported for reading."
 #~ msgstr "文件 '%1' 的文件类型不支持读取。"
 
-#, qt-format
 #~ msgid "File type '%1' is not a supported for writing."
 #~ msgstr "文件类型 '%1' 不支持写入。"
-
-#, qt-format
-#~ msgid "File type for file '%1' is not a supported for writing."
-#~ msgstr "文件 '%1' 的文件类型不支持写入。"
