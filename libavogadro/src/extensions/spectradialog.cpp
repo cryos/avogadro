@@ -21,6 +21,7 @@
 #include "spectratype.h"
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
+#include "spectratype_dos.h"
 
 #include <QPen>
 #include <QColor>
@@ -58,6 +59,7 @@ namespace Avogadro {
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
+    m_spectra_dos = new DOSSpectra(this);
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -128,6 +130,7 @@ namespace Avogadro {
     writeSettings();
     delete m_spectra_ir;
     delete m_spectra_nmr;
+    delete m_spectra_dos;
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -167,8 +170,15 @@ namespace Avogadro {
       m_spectra_nmr->setAtom(""); // Empty string will grab from current selection in the dialog.
     }
 
+    // Check for DOS data
+    bool hasDOS = m_spectra_dos->checkForData(m_molecule);
+    if (hasDOS) {
+      ui.combo_spectra->addItem(tr("DOS", "Density of States"));
+      ui.tab_widget->addTab(m_spectra_ir->getTabWidget(), tr("&Density Of States Settings"));
+    }
+
     // Change this when other spectra are added!!
-    if (!hasIR && !hasNMR) { // Actions if there are no spectra loaded
+    if (!hasIR && !hasNMR && !hasDOS) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -761,6 +771,8 @@ namespace Avogadro {
       return m_spectra_ir;
     else if (m_spectra == "NMR")
       return m_spectra_nmr;
+    else if (m_spectra == "DOS")
+      return m_spectra_dos;
 
     return NULL;
   }
