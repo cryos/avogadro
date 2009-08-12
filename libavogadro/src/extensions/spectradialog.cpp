@@ -22,6 +22,7 @@
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
 #include "spectratype_dos.h"
+#include "spectratype_uv.h"
 
 #include <QPen>
 #include <QColor>
@@ -60,6 +61,7 @@ namespace Avogadro {
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
     m_spectra_dos = new DOSSpectra(this);
+    m_spectra_uv = new UVSpectra(this);
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -131,6 +133,7 @@ namespace Avogadro {
     delete m_spectra_ir;
     delete m_spectra_nmr;
     delete m_spectra_dos;
+    delete m_spectra_uv;
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -177,8 +180,15 @@ namespace Avogadro {
       ui.tab_widget->addTab(m_spectra_dos->getTabWidget(), tr("&Density Of States Settings"));
     }
 
+    // Check for UV data
+    bool hasUV = m_spectra_uv->checkForData(m_molecule);
+    if (hasUV) {
+      ui.combo_spectra->addItem(tr("UV", "Ultra-Violet spectrum"));
+      ui.tab_widget->addTab(m_spectra_uv->getTabWidget(), tr("&UV Settings"));
+    }
+
     // Change this when other spectra are added!!
-    if (!hasIR && !hasNMR && !hasDOS) { // Actions if there are no spectra loaded
+    if (!hasIR && !hasNMR && !hasDOS && !hasUV) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -774,6 +784,8 @@ namespace Avogadro {
       return m_spectra_nmr;
     else if (m_spectra == "DOS")
       return m_spectra_dos;
+    else if (m_spectra == "UV")
+      return m_spectra_uv;
 
     return NULL;
   }
