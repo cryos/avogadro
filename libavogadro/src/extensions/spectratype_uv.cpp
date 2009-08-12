@@ -155,21 +155,10 @@ namespace Avogadro {
         for (int i = 0; i < m_yList->size(); i++) {
           double t = m_yList->at(i);
           double w = m_xList->at(i);
-          y += exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+          // 0.348 term is a normalization constant
+          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 0.348;
         }
         plotObject->addPoint(x,y);
-      }
-
-      // Normalization is probably screwed up, so renormalize the data
-      min = max = plotObject->points().first()->y();
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        if (cur < min) min = cur;
-        if (cur > max) max = cur;
-      }
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        plotObject->points().at(i)->setY( (cur - min) / (max - min) );
       }
     }
     else {
