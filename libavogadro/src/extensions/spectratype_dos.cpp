@@ -55,10 +55,16 @@ namespace Avogadro {
 
   void DOSSpectra::writeSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
+    settings.setValue("spectra/DOS/zeroFermi", ui.cb_fermi->isChecked());
+    settings.setValue("spectra/DOS/energyUnits", ui.combo_energy->currentIndex());
+    settings.setValue("spectra/DOS/densityUnits", ui.combo_density->currentIndex());
   }
 
   void DOSSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
+    ui.cb_fermi->setChecked(settings.value("spectra/DOS/zeroFermi", true).toBool());
+    ui.combo_energy->setCurrentIndex(settings.value("spectra/DOS/energyUnits", ENERGY_EV).toInt());
+    ui.combo_density->setCurrentIndex(settings.value("spectra/DOS/densityUnits", DENSITY_PER_CELL).toInt());
   }
 
   bool DOSSpectra::checkForData(Molecule * mol) {
