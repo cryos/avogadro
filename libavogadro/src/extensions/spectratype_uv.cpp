@@ -119,19 +119,14 @@ namespace Avogadro {
 
     if (m_xList->size() < 1 && m_yList->size() < 1) return;
 
-    double wavelength, intensity, maxint;
+    double wavelength, intensity;
     double FWHM = ui.spin_FWHM->value();
     bool use_widening = (FWHM == 0) ? false : true;
 
-    maxint = m_yList->at(0);
-
-    for (int i = 0; i < m_yList->size(); i++)
-      if (m_yList->at(i) > maxint)
-        maxint = m_yList->at(i);
-
     if (use_widening) {
       // convert FWHM to sigma squared
-      double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+      double sigma = FWHM / (2.0 * sqrt(2.0 * log(2.0)));
+      double s2	= pow( sigma, 2.0 );
 
       // determine range
       // - find maximum and minimum
@@ -155,8 +150,9 @@ namespace Avogadro {
         for (int i = 0; i < m_yList->size(); i++) {
           double t = m_yList->at(i);
           double w = m_xList->at(i);
-          // 0.348 term is a normalization constant
-          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 0.348;
+          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) *
+            // Normalization factor:
+            28.7 / sqrt(2 * M_PI * s2);
         }
         plotObject->addPoint(x,y);
       }
@@ -164,7 +160,9 @@ namespace Avogadro {
     else {
       for (int i = 0; i < m_yList->size(); i++) {
         wavelength = m_xList->at(i);
-        intensity = m_yList->at(i) / maxint;
+        intensity = m_yList->at(i) *
+          // Normalization factor:
+          28.7;
         plotObject->addPoint ( wavelength, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
           // %L1 uses localized number format (e.g., 1.023,4 in Europe)

@@ -39,9 +39,12 @@ namespace Avogadro {
     ui.setupUi(m_tab_widget);
 
     m_xList = new QList<double>;
-    m_yList = new QList<double>;
+    m_yList = 0; // will point to one of the ylist types below
     m_xList_imp = new QList<double>;
     m_yList_imp = new QList<double>;
+
+    m_yListVelocity = new QList<double>;
+    m_yListLength = new QList<double>;
 
     m_dialog = parent;
 
@@ -70,7 +73,8 @@ namespace Avogadro {
     OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol.GetData("ExcitedStatesData"));
 
     if (!esd) return false;
-    if (esd->GetRotatoryStrengths().size() == 0) return false;
+    if ( esd->GetRotatoryStrengthsVelocity().size() == 0 &&
+         esd->GetRotatoryStrengthsLength().size() == 0 ) return false;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -79,18 +83,29 @@ namespace Avogadro {
             this, SIGNAL(plotDataChanged()));
     connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
             this, SIGNAL(plotDataChanged()));
+    connect(ui.combo_rotatoryType, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(rotatoryTypeChanged(QString)));
 
     // OK, we have valid data, so store them for later
     std::vector<double> wavelengths = esd->GetWavelengths();
-    std::vector<double> rot = esd->GetRotatoryStrengths();
+    std::vector<double> rotl = esd->GetRotatoryStrengthsLength();
+    std::vector<double> rotv = esd->GetRotatoryStrengthsVelocity();
+
+    if (rotl.size() != 0) ui.combo_rotatoryType->addItem("Length");
+    if (rotv.size() != 0) ui.combo_rotatoryType->addItem("Velocity");
 
     // Store in member vars
     m_xList->clear();
     m_yList->clear();
-    for (uint i = 0; i < wavelengths.size(); i++){
+    for (uint i = 0; i < wavelengths.size(); i++)
       m_xList->append(wavelengths.at(i));
-      m_yList->append(rot.at(i));
-    }
+    for (uint i = 0; i < rotl.size(); i++)
+      m_yListLength->append(rotl.at(i));
+    for (uint i = 0; i < rotv.size(); i++)
+      m_yListVelocity->append(rotv.at(i));
+
+
+    rotatoryTypeChanged(ui.combo_rotatoryType->currentText());
 
     return true;
   }
@@ -119,15 +134,9 @@ namespace Avogadro {
 
     if (m_xList->size() < 1 && m_yList->size() < 1) return;
 
-    double wavelength, intensity, maxint;
+    double wavelength, intensity;
     double FWHM = ui.spin_FWHM->value();
     bool use_widening = (FWHM == 0) ? false : true;
-
-    maxint = m_yList->at(0);
-
-    for (int i = 0; i < m_yList->size(); i++)
-      if (m_yList->at(i) > maxint)
-        maxint = m_yList->at(i);
 
     if (use_widening) {
       // convert FWHM to sigma squared
@@ -156,26 +165,16 @@ namespace Avogadro {
           double t = m_yList->at(i);
           double w = m_xList->at(i);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 
-            (22.97 * x / 1.986e-25) ; // <-- normalization constant (22.97 / X_0)
+            (22.97 * x / 1241) ; // <-- normalization constant (22.97 / X_0)
         }
         plotObject->addPoint(x,y);
-      }
-
-      // Normalization is probably screwed up, so renormalize the data
-      max = plotObject->points().first()->y();
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        if (fabs(cur) > max) max = cur;
-      }
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        plotObject->points().at(i)->setY( cur / max );
       }
     }
     else {
       for (int i = 0; i < m_yList->size(); i++) {
         wavelength = m_xList->at(i);
-        intensity = m_yList->at(i) / maxint;
+        intensity = m_yList->at(i) /
+          (22.97 * wavelength / 1241) ; // <-- normalization constant (22.97 / X_0)
         plotObject->addPoint ( wavelength, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
           // %L1 uses localized number format (e.g., 1.023,4 in Europe)
@@ -208,6 +207,14 @@ namespace Avogadro {
       out << format.arg(m_xList->at(i), 6, 'g').arg(m_yList->at(i), 6, 'g');
     }
     return str;
+  }
+
+  void CDSpectra::rotatoryTypeChanged(const QString & str) {
+    if (str == "Velocity")
+      m_yList = m_yListVelocity;
+    else if (str == "Length")
+      m_yList = m_yListLength;
+    emit plotDataChanged();
   }
 
 }

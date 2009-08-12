@@ -91,6 +91,16 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Rotatory Strength type:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QComboBox" name="combo_rotatoryType"/>
+   </item>
   </layout>
  </widget>
  <resources/>
