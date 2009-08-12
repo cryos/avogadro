@@ -89,8 +89,8 @@ avogadro_plugin(vibrationextension
 
 ### Spectra
 avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp"
-  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui")
+  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp"
+  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
 
 ### Gaussian input deck generator
 set(gaussianextension_SRCS gaussianextension.cpp

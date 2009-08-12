@@ -40,6 +40,7 @@ namespace Avogadro {
   class NMRSpectra;
   class DOSSpectra;
   class UVSpectra;
+  class CDSpectra;
 
   class SpectraDialog : public QDialog
   {
@@ -89,6 +90,7 @@ namespace Avogadro {
     NMRSpectra *m_spectra_nmr;
     DOSSpectra *m_spectra_dos;
     UVSpectra *m_spectra_uv;
+    CDSpectra *m_spectra_cd;
 
     Molecule *m_molecule;
     int m_scheme;

@@ -19,10 +19,12 @@
 
 #include "spectradialog.h"
 #include "spectratype.h"
+
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
 #include "spectratype_dos.h"
 #include "spectratype_uv.h"
+#include "spectratype_cd.h"
 
 #include <QPen>
 #include <QColor>
@@ -62,6 +64,7 @@ namespace Avogadro {
     m_spectra_nmr = new NMRSpectra(this);
     m_spectra_dos = new DOSSpectra(this);
     m_spectra_uv = new UVSpectra(this);
+    m_spectra_cd = new CDSpectra(this);
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -134,6 +137,7 @@ namespace Avogadro {
     delete m_spectra_nmr;
     delete m_spectra_dos;
     delete m_spectra_uv;
+    delete m_spectra_cd;
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -187,8 +191,15 @@ namespace Avogadro {
       ui.tab_widget->addTab(m_spectra_uv->getTabWidget(), tr("&UV Settings"));
     }
 
+    // Check for CD data
+    bool hasCD = m_spectra_cd->checkForData(m_molecule);
+    if (hasCD) {
+      ui.combo_spectra->addItem(tr("CD", "Circular Dichromism spectrum"));
+      ui.tab_widget->addTab(m_spectra_cd->getTabWidget(), tr("&CD Settings"));
+    }
+
     // Change this when other spectra are added!!
-    if (!hasIR && !hasNMR && !hasDOS && !hasUV) { // Actions if there are no spectra loaded
+    if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -786,6 +797,8 @@ namespace Avogadro {
       return m_spectra_dos;
     else if (m_spectra == "UV")
       return m_spectra_uv;
+    else if (m_spectra == "CD")
+      return m_spectra_cd;
 
     return NULL;
   }
