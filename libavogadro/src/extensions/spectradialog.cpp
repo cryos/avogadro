@@ -655,12 +655,12 @@ namespace Avogadro {
       }
 
       // Attach data to m_molecule
-      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
       std::vector< std::vector< OpenBabel::vector3 > > Lx;
       OpenBabel::OBVibrationData *obvib = new OpenBabel::OBVibrationData;
       obvib->SetData(Lx, x.toVector().toStdVector(), y.toVector().toStdVector());
-      obmol.SetData(obvib);
-      m_molecule->setOBMol(&obmol);
+      obmol->SetData(obvib);
+      m_molecule->setOBMol(obmol);
     }
 
     else if (type.contains("CD")) { // We have CD data loaded
@@ -745,8 +745,15 @@ namespace Avogadro {
 
       // Attach data to m_molecule
       OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
-      OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
-      std::vector<double> forces = std::vector<double>(x.size(), 0.0);
+      std::vector<double> forces;
+      OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol->GetData("ExcitedStatesData"));
+      if (!esd) {
+        esd = new OpenBabel::OBExcitedStatesData;
+        forces = std::vector<double>(x.size(), 0.0);
+      }
+      else {
+        forces = esd->GetForces();
+      }
       esd->SetData(x.toVector().toStdVector(), forces);
       esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
       obmol->SetData(esd);
@@ -834,13 +841,20 @@ namespace Avogadro {
       } // end turbomole
 
       // Attach data to m_molecule
-      OpenBabel::OBMol obmol = m_molecule->OBMol();
-      OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
-      std::vector<double> forces = std::vector<double>(x.size(), 0.0);
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
+      std::vector<double> forces;
+      OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol->GetData("ExcitedStatesData"));
+      if (!esd) {
+        esd = new OpenBabel::OBExcitedStatesData;
+        forces = std::vector<double>(x.size(), 0.0);
+      }
+      else {
+        forces = esd->GetForces();
+      }
       esd->SetData(x.toVector().toStdVector(), forces);
       esd->SetEDipole(y.toVector().toStdVector());
-      obmol.SetData(esd);
-      m_molecule->setOBMol(&obmol);
+      obmol->SetData(esd);
+      m_molecule->setOBMol(obmol);
     }
     setMolecule(m_molecule);
   }
