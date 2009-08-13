@@ -519,7 +519,7 @@ namespace Avogadro {
     while (!in.atEnd()) {
       QString line = in.readLine();
       if (line.trimmed().startsWith('#')) continue; 	//discard comments
-      QStringList data = line.split(QRegExp(delim));
+      QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
       if (data.size() < 2) {
         qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
         continue;
@@ -633,7 +633,7 @@ namespace Avogadro {
           QString line = in.readLine();
           if (!end.isEmpty() && line.contains(end)) break;
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
-          QStringList data = line.split(QRegExp(delim));
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
             qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
@@ -714,7 +714,7 @@ namespace Avogadro {
           line = in.readLine();
           if (!end.isEmpty() && line.contains(end)) break;
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
-          QStringList data = line.split(QRegExp(delim));
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
             qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
@@ -744,13 +744,13 @@ namespace Avogadro {
       } // end turbomole
 
       // Attach data to m_molecule
-      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
       OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
       std::vector<double> forces = std::vector<double>(x.size(), 0.0);
       esd->SetData(x.toVector().toStdVector(), forces);
       esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
-      obmol.SetData(esd);
-      m_molecule->setOBMol(&obmol);
+      obmol->SetData(esd);
+      m_molecule->setOBMol(obmol);
     }
 
     else if (type.contains("UV")) { // We have UV data loaded
@@ -804,7 +804,7 @@ namespace Avogadro {
           line = in.readLine();
           if (!end.isEmpty() && line.contains(end)) break;
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
-          QStringList data = line.split(QRegExp(delim));
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
             qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
