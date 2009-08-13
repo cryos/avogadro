@@ -91,6 +91,7 @@ namespace Avogadro {
     std::vector<double> rotl = esd->GetRotatoryStrengthsLength();
     std::vector<double> rotv = esd->GetRotatoryStrengthsVelocity();
 
+    ui.combo_rotatoryType->clear();
     if (rotl.size() != 0) ui.combo_rotatoryType->addItem("Length");
     if (rotv.size() != 0) ui.combo_rotatoryType->addItem("Velocity");
 
