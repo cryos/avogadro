@@ -98,7 +98,7 @@ namespace Avogadro {
   void UVSpectra::setupPlot(PlotWidget * plot) {
     plot->scaleLimits();
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavelength (nm)"));
-    plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Intensity (arb. units)"));
+    plot->axis(PlotWidget::LeftAxis)->setLabel(tr("<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"));
   }
 
   QWidget * UVSpectra::getTabWidget() {return m_tab_widget;}
@@ -151,8 +151,8 @@ namespace Avogadro {
           double t = m_yList->at(i);
           double w = m_xList->at(i);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) *
-            // Normalization factor:
-            28.7 / sqrt(2 * M_PI * s2);
+            // Normalization factor: (CP, 224 (1997) 143-155)
+            2.87e4 / sqrt(2 * M_PI * s2);
         }
         plotObject->addPoint(x,y);
       }
@@ -162,7 +162,7 @@ namespace Avogadro {
         wavelength = m_xList->at(i);
         intensity = m_yList->at(i) *
           // Normalization factor:
-          28.7;
+          2.87e4;
         plotObject->addPoint ( wavelength, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
           // %L1 uses localized number format (e.g., 1.023,4 in Europe)

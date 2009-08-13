@@ -558,7 +558,8 @@ namespace Avogadro {
     // Put the default file extension in (*.ext), i.e. (.out)
     types
       << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
-      << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" );
+      << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" )
+      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" );
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
@@ -571,6 +572,9 @@ namespace Avogadro {
 
     QString filename 	= QFileDialog::getOpenFileName(this, tr("Load Spectral Data"),
                                                        defaultFileName, filters.join(";;"));
+
+    // Initialize molecule object
+    Molecule *mol = 0;
 
     // Open file
     QFile file(filename);
@@ -660,9 +664,99 @@ namespace Avogadro {
       obmol->SetData(obvib);
       Molecule *mol = new Molecule;
       mol->setOBMol(obmol);
-
-      setMolecule(mol);
     }
+
+    else if (type.contains("CD")) { // We have UV data loaded
+      // Set m_spectra
+      m_spectra = "CD";
+
+      // Prepare lists
+      QList<double> x,y;
+
+      // If the file just contains values in columns, set the variables
+      // below. Otherwise, implement a new reader below  (data in rows, etc).
+      // Add the "easily parsed" types to the condition below:
+      if ( type.contains("Turbomole") ) {
+        // Set up some info by data type:
+        QString delim;
+        QString cue; // Skip to this line before reading data in
+        QString end; // This line terminates reading
+        int wavelength_idx;
+        int rotl_idx;
+
+        // Set the variables for each "easily parsed" type here...
+        if (type.contains("Turbomole")) {
+          delim = "\\s+"; // finds all whitespace
+          cue = "#  excitation energy";
+          end = "";
+          wavelength_idx= 0;
+          rotl_idx	= 1;
+        }
+
+        // Cue file
+        QString line;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (line.contains(cue)) break;
+        }
+
+        QString wl_units;
+        if (type.contains("Turbomole")) {
+          // The cue line contains the units for turbomole.
+          QStringList sl = line.split(QRegExp("\\s+"));
+          if (sl.size() < 5) {
+            QMessageBox::warning(this, tr("Spectra Import"), tr("Turbomole CD file is improperly formatted  : %1").arg(filename));
+            return;
+          }
+          wl_units = sl[4];
+        }
+
+        // Iterate through file
+        int min = (wavelength_idx < rotl_idx) ? wavelength_idx : rotl_idx;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (!end.isEmpty() && line.contains(end)) break;
+          if (line.trimmed().startsWith('#')) continue; 	//discard comments
+          QStringList data = line.split(QRegExp(delim));
+          if (data.size() < min) {
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+                       << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
+            continue;
+          }
+          if (data.at(wavelength_idx).toDouble() && data.at(rotl_idx).toDouble()) { // Check for valid conversions and non-zero data
+            x.append(data.at(wavelength_idx).toDouble());
+            y.append(data.at(rotl_idx).toDouble());
+            qDebug() << data.at(wavelength_idx).toDouble() << " "
+                     << data.at(rotl_idx).toDouble();
+            qDebug() << data;
+          }
+          else {
+            qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
+            continue;
+          }
+        }
+
+        // Convert wavelengths if needed...
+        qDebug() << wl_units;
+        if (wl_units == "cm^(-1)")
+          for ( int i = 0; i < x.size(); i++) {
+            qDebug() <<
+              x[i] << " into " << 1.0 / x.at(i) * 1e7;
+            x[i] = 1.0 / x.at(i) * 1e7;
+          }
+
+        // Prepare a molecule with the data
+        OpenBabel::OBMol *obmol = new OpenBabel::OBMol;
+        OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
+        std::vector<double> forces = std::vector<double>(x.size(), 0.0);
+        esd->SetData(x.toVector().toStdVector(), forces);
+        esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
+        obmol->SetData(esd);
+        mol = new Molecule;
+        mol->setOBMol(obmol);
+      }
+    }
+    setMolecule(mol);
   }
 
   void SpectraDialog::saveImageFileDialog() {
