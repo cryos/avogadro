@@ -574,9 +574,6 @@ namespace Avogadro {
     QString filename 	= QFileDialog::getOpenFileName(this, tr("Load Spectral Data"),
                                                        defaultFileName, filters.join(";;"));
 
-    // Initialize molecule object
-    Molecule *mol = 0;
-
     // Open file
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -657,14 +654,13 @@ namespace Avogadro {
 
       }
 
-      // Prepare a molecule with the data
-      OpenBabel::OBMol *obmol = new OpenBabel::OBMol;
+      // Attach data to m_molecule
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
       std::vector< std::vector< OpenBabel::vector3 > > Lx;
       OpenBabel::OBVibrationData *obvib = new OpenBabel::OBVibrationData;
       obvib->SetData(Lx, x.toVector().toStdVector(), y.toVector().toStdVector());
-      obmol->SetData(obvib);
-      Molecule *mol = new Molecule;
-      mol->setOBMol(obmol);
+      obmol.SetData(obvib);
+      m_molecule->setOBMol(&obmol);
     }
 
     else if (type.contains("CD")) { // We have CD data loaded
@@ -745,17 +741,16 @@ namespace Avogadro {
               x[i] << " into " << 1.0 / x.at(i) * 1e7;
             x[i] = 1.0 / x.at(i) * 1e7;
           }
+      } // end turbomole
 
-        // Prepare a molecule with the data
-        OpenBabel::OBMol *obmol = new OpenBabel::OBMol;
-        OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
-        std::vector<double> forces = std::vector<double>(x.size(), 0.0);
-        esd->SetData(x.toVector().toStdVector(), forces);
-        esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
-        obmol->SetData(esd);
-        mol = new Molecule;
-        mol->setOBMol(obmol);
-      }
+      // Attach data to m_molecule
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
+      std::vector<double> forces = std::vector<double>(x.size(), 0.0);
+      esd->SetData(x.toVector().toStdVector(), forces);
+      esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
+      obmol.SetData(esd);
+      m_molecule->setOBMol(&obmol);
     }
 
     else if (type.contains("UV")) { // We have UV data loaded
@@ -836,19 +831,18 @@ namespace Avogadro {
               x[i] << " into " << 1.0 / x.at(i) * 1e7;
             x[i] = 1.0 / x.at(i) * 1e7;
           }
+      } // end turbomole
 
-        // Prepare a molecule with the data
-        OpenBabel::OBMol *obmol = new OpenBabel::OBMol;
-        OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
-        std::vector<double> forces = std::vector<double>(x.size(), 0.0);
-        esd->SetData(x.toVector().toStdVector(), forces);
-        esd->SetEDipole(y.toVector().toStdVector());
-        obmol->SetData(esd);
-        mol = new Molecule;
-        mol->setOBMol(obmol);
-      }
+      // Attach data to m_molecule
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      OpenBabel::OBExcitedStatesData *esd = new OpenBabel::OBExcitedStatesData;
+      std::vector<double> forces = std::vector<double>(x.size(), 0.0);
+      esd->SetData(x.toVector().toStdVector(), forces);
+      esd->SetEDipole(y.toVector().toStdVector());
+      obmol.SetData(esd);
+      m_molecule->setOBMol(&obmol);
     }
-    setMolecule(mol);
+    setMolecule(m_molecule);
   }
 
   void SpectraDialog::saveImageFileDialog() {
