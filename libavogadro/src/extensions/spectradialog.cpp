@@ -746,17 +746,17 @@ namespace Avogadro {
       // Attach data to m_molecule
       OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
       std::vector<double> forces;
-      OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol->GetData("ExcitedStatesData"));
-      if (!esd) {
-        esd = new OpenBabel::OBExcitedStatesData;
+      OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol->GetData("ElectronicTransitionData"));
+      if (!etd) {
+        etd = new OpenBabel::OBElectronicTransitionData;
         forces = std::vector<double>(x.size(), 0.0);
       }
       else {
-        forces = esd->GetForces();
+        forces = etd->GetForces();
       }
-      esd->SetData(x.toVector().toStdVector(), forces);
-      esd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
-      obmol->SetData(esd);
+      etd->SetData(x.toVector().toStdVector(), forces);
+      etd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
+      obmol->SetData(etd);
       m_molecule->setOBMol(obmol);
     }
 
@@ -843,17 +843,17 @@ namespace Avogadro {
       // Attach data to m_molecule
       OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
       std::vector<double> forces;
-      OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol->GetData("ExcitedStatesData"));
-      if (!esd) {
-        esd = new OpenBabel::OBExcitedStatesData;
+      OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol->GetData("ElectronicTransitionData"));
+      if (!etd) {
+        etd = new OpenBabel::OBElectronicTransitionData;
         forces = std::vector<double>(x.size(), 0.0);
       }
       else {
-        forces = esd->GetForces();
+        forces = etd->GetForces();
       }
-      esd->SetData(x.toVector().toStdVector(), forces);
-      esd->SetEDipole(y.toVector().toStdVector());
-      obmol->SetData(esd);
+      etd->SetData(x.toVector().toStdVector(), forces);
+      etd->SetEDipole(y.toVector().toStdVector());
+      obmol->SetData(etd);
       m_molecule->setOBMol(obmol);
     }
     setMolecule(m_molecule);

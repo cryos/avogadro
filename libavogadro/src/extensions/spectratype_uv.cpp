@@ -67,10 +67,10 @@ namespace Avogadro {
 
   bool UVSpectra::checkForData(Molecule * mol) {
     OpenBabel::OBMol obmol = mol->OBMol();
-    OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol.GetData("ExcitedStatesData"));
+    OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol.GetData("ElectronicTransitionData"));
 
-    if (!esd) return false;
-    if (esd->GetEDipole().size() == 0) return false;
+    if (!etd) return false;
+    if (etd->GetEDipole().size() == 0) return false;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -81,8 +81,8 @@ namespace Avogadro {
             this, SIGNAL(plotDataChanged()));
 
     // OK, we have valid data, so store them for later
-    std::vector<double> wavelengths = esd->GetWavelengths();
-    std::vector<double> edipole= esd->GetEDipole();
+    std::vector<double> wavelengths = etd->GetWavelengths();
+    std::vector<double> edipole= etd->GetEDipole();
 
     // Store in member vars
     m_xList->clear();

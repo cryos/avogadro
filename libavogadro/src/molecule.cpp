@@ -57,7 +57,8 @@ namespace Avogadro{
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
                           invalidRings(true), obmol(0), obunitcell(0),
-                          obvibdata(0), obdosdata(0), obexcitedstatesdata(0) {}
+                          obvibdata(0), obdosdata(0), 
+                          obelectronictransitiondata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -92,7 +93,8 @@ namespace Avogadro{
       //       won't be necessary
       OpenBabel::OBVibrationData *  obvibdata;
       OpenBabel::OBDOSData *        obdosdata;
-      OpenBabel::OBExcitedStatesData *obexcitedstatesdata;
+      OpenBabel::OBElectronicTransitionData *
+                                    obelectronictransitiondata;
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -1153,8 +1155,8 @@ namespace Avogadro{
     }
 
     // Copy excited states data, if needed
-    if (d->obexcitedstatesdata != NULL) {
-      obmol.SetData(d->obexcitedstatesdata->Clone(&obmol));
+    if (d->obelectronictransitiondata != NULL) {
+      obmol.SetData(d->obelectronictransitiondata->Clone(&obmol));
     }
 
     return obmol;
@@ -1280,11 +1282,11 @@ namespace Avogadro{
     }
 
     // Copy DOS data
-    if (obmol->HasData(OpenBabel::OBGenericDataType::ExcitedStatesData)) {
-      OpenBabel::OBExcitedStatesData *esData = 
-        static_cast<OpenBabel::OBExcitedStatesData*>
-        (obmol->GetData(OpenBabel::OBGenericDataType::ExcitedStatesData));
-      d->obexcitedstatesdata = esData;
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicTransitionData)) {
+      OpenBabel::OBElectronicTransitionData *etd = 
+        static_cast<OpenBabel::OBElectronicTransitionData*>
+        (obmol->GetData(OpenBabel::OBGenericDataType::ElectronicTransitionData));
+      d->obelectronictransitiondata = etd;
     }
 
     // Copy energy

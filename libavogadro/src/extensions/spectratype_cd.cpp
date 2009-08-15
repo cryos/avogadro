@@ -70,11 +70,11 @@ namespace Avogadro {
 
   bool CDSpectra::checkForData(Molecule * mol) {
     OpenBabel::OBMol obmol = mol->OBMol();
-    OpenBabel::OBExcitedStatesData *esd = static_cast<OpenBabel::OBExcitedStatesData*>(obmol.GetData("ExcitedStatesData"));
+    OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol.GetData("ElectronicTransitionData"));
 
-    if (!esd) return false;
-    if ( esd->GetRotatoryStrengthsVelocity().size() == 0 &&
-         esd->GetRotatoryStrengthsLength().size() == 0 ) return false;
+    if (!etd) return false;
+    if ( etd->GetRotatoryStrengthsVelocity().size() == 0 &&
+         etd->GetRotatoryStrengthsLength().size() == 0 ) return false;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -87,9 +87,9 @@ namespace Avogadro {
             this, SLOT(rotatoryTypeChanged(QString)));
 
     // OK, we have valid data, so store them for later
-    std::vector<double> wavelengths = esd->GetWavelengths();
-    std::vector<double> rotl = esd->GetRotatoryStrengthsLength();
-    std::vector<double> rotv = esd->GetRotatoryStrengthsVelocity();
+    std::vector<double> wavelengths = etd->GetWavelengths();
+    std::vector<double> rotl = etd->GetRotatoryStrengthsLength();
+    std::vector<double> rotv = etd->GetRotatoryStrengthsVelocity();
 
     ui.combo_rotatoryType->clear();
     if (rotl.size() != 0) ui.combo_rotatoryType->addItem("Length");
