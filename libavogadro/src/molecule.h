@@ -604,6 +604,11 @@ namespace Avogadro {
      */
     void clear();
 
+    /**
+     * Provides locking, should be used before reading/writing to the Molecule.
+     */
+    QReadWriteLock *lock() const;
+
     /** @name OpenBabel translation functions
      * These functions are used to exchange information with OpenBabel.
      * @{
@@ -702,6 +707,8 @@ namespace Avogadro {
     std::vector<Bond *>   m_bonds;
     QList<Atom *>         m_atomList;
     QList<Bond *>         m_bondList;
+
+    QReadWriteLock *m_lock;
 
     /**
      * Compute all the geometry information for the Molecule. This allows

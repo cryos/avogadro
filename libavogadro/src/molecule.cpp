@@ -98,7 +98,9 @@ namespace Avogadro{
                                         m_currentConformer(0),
                                         m_estimatedDipoleMoment(true),
                                         m_dipoleMoment(0),
-    m_invalidPartialCharges(true), m_invalidAromaticity(true)
+                                        m_invalidPartialCharges(true),
+                                        m_invalidAromaticity(true),
+                                        m_lock(new QReadWriteLock)
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     // Assign a default path and file name to new molecules.
@@ -110,7 +112,7 @@ namespace Avogadro{
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
     m_atomPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
-    m_invalidAromaticity(true)
+    m_invalidAromaticity(true), m_lock(new QReadWriteLock)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -122,6 +124,7 @@ namespace Avogadro{
 //    disconnect(this, 0);
 //    blockSignals(true);
     clear();
+    delete m_lock;
     delete d_ptr;
   }
 
@@ -1389,6 +1392,11 @@ namespace Avogadro{
     }
     d->ringList.clear();
     m_lock->unlock();
+  }
+
+  QReadWriteLock * Molecule::lock() const
+  {
+    return m_lock;
   }
 
   Molecule &Molecule::operator=(const Molecule& other)

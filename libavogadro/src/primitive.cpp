@@ -25,7 +25,6 @@
 
 #include "primitive.h"
 
-#include <QReadWriteLock>
 #include <QDebug>
 
 namespace Avogadro {
@@ -37,38 +36,29 @@ namespace Avogadro {
 
   Primitive::Primitive(QObject *parent) : QObject(parent),
     d_ptr(new PrimitivePrivate), m_type(Primitive::OtherType), m_id(FALSE_ID),
-    m_index(FALSE_ID), m_lock(new QReadWriteLock)
+    m_index(FALSE_ID)
   {}
 
   Primitive::Primitive(enum Type type, QObject *parent) : QObject(parent),
-    d_ptr(new PrimitivePrivate), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID),
-    m_lock(new QReadWriteLock)
+    d_ptr(new PrimitivePrivate), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID)
   {}
 
   Primitive::Primitive(PrimitivePrivate &dd, QObject *parent) : QObject(parent),
-    d_ptr(&dd), m_type(Primitive::OtherType), m_id(FALSE_ID), m_index(FALSE_ID),
-    m_lock(new QReadWriteLock)
+    d_ptr(&dd), m_type(Primitive::OtherType), m_id(FALSE_ID), m_index(FALSE_ID)
   {}
 
   Primitive::Primitive(PrimitivePrivate &dd, enum Type type, QObject *parent)
-    : QObject(parent), d_ptr(&dd), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID),
-    m_lock(new QReadWriteLock)
+    : QObject(parent), d_ptr(&dd), m_type(type), m_id(FALSE_ID), m_index(FALSE_ID)
   {}
 
   Primitive::~Primitive()
   {
     delete d_ptr;
-    delete m_lock;
   }
 
   enum Primitive::Type Primitive::type() const
   {
     return m_type;
-  }
-
-  QReadWriteLock *Primitive::lock() const
-  {
-    return m_lock;
   }
 
   void Primitive::update()

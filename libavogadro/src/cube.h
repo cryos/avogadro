@@ -30,6 +30,9 @@
 
 #include <vector>
 
+// Forward declarations
+class QReadWriteLock;
+
 namespace Avogadro {
 
   class Molecule;
@@ -212,15 +215,21 @@ namespace Avogadro {
     void setCubeType(Type type) { m_cubeType = type; }
     Type cubeType() { return m_cubeType; }
 
+    /**
+     * Provides locking.
+     */
+    QReadWriteLock *lock() const;
+
     friend class Molecule;
 
-  private:
+  protected:
     std::vector<double> m_data;
     Eigen::Vector3d m_min, m_max, m_spacing;
     Eigen::Vector3i m_points;
     double m_minValue, m_maxValue;
     QString m_name;
     Type    m_cubeType;
+    QReadWriteLock *m_lock;
     Q_DECLARE_PRIVATE(Cube)
   };
 
