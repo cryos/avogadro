@@ -1250,10 +1250,11 @@ namespace Avogadro {
 
   void GLWidget::updateGeometry()
   {
-    if (!d->molecule) return;
+    if (!d->molecule)
+      return;
 
-    if ( d->molecule->OBUnitCell() == NULL ) {
-      //plain molecule, no crystal cell
+    if (!d->molecule->OBUnitCell()) {
+      // Plain molecule, no crystal cell
       d->center = d->molecule->center();
       d->normalVector = d->molecule->normalVector();
       d->radius = d->molecule->radius();
@@ -1261,50 +1262,51 @@ namespace Avogadro {
       return;
     }
 
-    // render a crystal (so most geometry comes from the cell vectors)
-    // Origin at 0.0, 0.0, 0.0
-    // a = <x0, y0, z0>
-    // b = <x1, y1, z1>
-    // c = <x2, y2, z2>
-    std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
-    Vector3d a(cellVectors[0].AsArray());
-    Vector3d b(cellVectors[1].AsArray());
-    Vector3d c(cellVectors[2].AsArray());
-    Vector3d centerOffset = ( a * (d->aCells - 1)
-                  + b * (d->bCells - 1)
-                  + c * (d->cCells - 1) ) / 2.0;
-    // the center is the center of the molecule translated by centerOffset
-    d->center = d->molecule->center() + centerOffset;
-    // the radius is the length of centerOffset plus the molecule radius
-    d->radius = d->molecule->radius() + centerOffset.norm();
-    // for the normal vector, we just ask for the molecule's normal vector,
-    // crossing our fingers hoping that it will give a nice viewpoint not only
-    // with respect to the molecule but also with respect to the cells.
-    d->normalVector = d->molecule->normalVector();
-    // Computation of the farthest atom.
-    // First case: the molecule is empty
-    if(d->molecule->numAtoms() == 0)
-      d->farthestAtom = 0;
-    // Second case: there is no repetition of the molecule
-    else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1)
-      d->farthestAtom = d->molecule->farthestAtom();
-    // General case: the farthest atom is the one that is located the
-    // farthest in the direction pointed to by centerOffset.
     else {
-      QList<Atom *> atoms = d->molecule->atoms();
-      double x, max_x;
-      // We don't need tis conditional, we tested for atoms above
-      //      if (atoms.size()) {
-      d->farthestAtom = atoms.at(0);
-      max_x = centerOffset.dot(*d->farthestAtom->pos());
-      foreach (Atom *atom, atoms) {
-        x = centerOffset.dot(*atom->pos());
-        if (x > max_x) {
-          max_x = x;
-          d->farthestAtom = atom;
-        }
-      } // end foreach
-    } // end general repeat (many atoms, multiple cells)
+      // render a crystal (so most geometry comes from the cell vectors)
+      // Origin at 0.0, 0.0, 0.0
+      // a = <x0, y0, z0>
+      // b = <x1, y1, z1>
+      // c = <x2, y2, z2>
+      std::vector<vector3> cellVectors = d->molecule->OBUnitCell()->GetCellVectors();
+      Vector3d a(cellVectors[0].AsArray());
+      Vector3d b(cellVectors[1].AsArray());
+      Vector3d c(cellVectors[2].AsArray());
+      Vector3d centerOffset = ( a * (d->aCells - 1)
+                              + b * (d->bCells - 1)
+                              + c * (d->cCells - 1) ) / 2.0;
+      // the center is the center of the molecule translated by centerOffset
+      d->center = d->molecule->center() + centerOffset;
+      // the radius is the length of centerOffset plus the molecule radius
+      d->radius = d->molecule->radius() + centerOffset.norm();
+      // for the normal vector, we just ask for the molecule's normal vector,
+      // crossing our fingers hoping that it will give a nice viewpoint not only
+      // with respect to the molecule but also with respect to the cells.
+      d->normalVector = d->molecule->normalVector();
+      // Computation of the farthest atom.
+      // First case: the molecule is empty
+      if(d->molecule->numAtoms() == 0)
+      d->farthestAtom = 0;
+      // Second case: there is no repetition of the molecule
+      else if(d->aCells <= 1 && d->bCells <= 1 && d->cCells <= 1)
+        d->farthestAtom = d->molecule->farthestAtom();
+      // General case: the farthest atom is the one that is located the
+      // farthest in the direction pointed to by centerOffset.
+      else {
+        QList<Atom *> atoms = d->molecule->atoms();
+        double x, max_x;
+
+        d->farthestAtom = atoms.at(0);
+        max_x = centerOffset.dot(*d->farthestAtom->pos());
+        foreach (Atom *atom, atoms) {
+          x = centerOffset.dot(*atom->pos());
+          if (x > max_x) {
+            max_x = x;
+            d->farthestAtom = atom;
+          }
+        } // end foreach
+      } // end general repeat (many atoms, multiple cells)
+    } // End the case for unit cells
   }
 
   Camera * GLWidget::camera() const
