@@ -41,6 +41,7 @@
 #include <avogadro/meshgenerator.h>
 #include <avogadro/engine.h>
 #include <avogadro/neighborlist.h>
+#include <avogadro/glwidget.h>
 
 #include <Eigen/Core>
 
@@ -736,7 +737,11 @@ namespace Avogadro
 
           engine->readSettings(settings);
           engine->setEnabled(true);
-          m_molecule->update();
+          // Trigger a repaint with the new mesh
+          /// FIXME Should be using m_molecule->update() to trigger a repaint in
+          /// all open displays, this currently causes crashes - need to track
+          /// down the cause.
+          m_glwidget->update();
         }
         else
           qDebug() << "Engine is null - no engines of this type loaded.";
