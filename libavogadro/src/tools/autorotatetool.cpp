@@ -42,9 +42,11 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0), m_leftButtonPressed(false),
-  m_midButtonPressed(false), m_timerId(0), m_xRotation(0), m_yRotation(0), m_zRotation(0), m_maxRotation(40),
-  m_settingsWidget(0), m_buttonStartStop(0), m_sliderX(0), m_sliderY(0), m_sliderZ(0)
+  AutoRotateTool::AutoRotateTool(QObject *parent) : Tool(parent), m_glwidget(0),
+  m_leftButtonPressed(false), m_midButtonPressed(false), m_timerId(0),
+  m_xRotation(0), m_yRotation(0), m_zRotation(0), m_maxRotation(40),
+  m_settingsWidget(0), m_buttonStartStop(0), m_sliderX(0), m_sliderY(0),
+  m_sliderZ(0)
 
   {
     QAction *action = activateAction();
@@ -251,7 +253,7 @@ namespace Avogadro {
       m_sliderX->setOrientation(Qt::Horizontal);
       m_sliderX->setTickPosition(QSlider::TicksAbove);
       m_sliderX->setToolTip(tr("x rotation"));
-      m_sliderX->setTickInterval(10);
+      m_sliderX->setTickInterval(m_maxRotation);
       m_sliderX->setPageStep(5);
       m_sliderX->setRange(-m_maxRotation, m_maxRotation);
       m_sliderX->setValue(0);
@@ -266,7 +268,7 @@ namespace Avogadro {
       m_sliderY->setOrientation(Qt::Horizontal);
       m_sliderY->setTickPosition(QSlider::TicksAbove);
       m_sliderY->setToolTip(tr("y rotation"));
-      m_sliderY->setTickInterval(10);
+      m_sliderY->setTickInterval(m_maxRotation);
       m_sliderY->setPageStep(5);
       m_sliderY->setRange(-m_maxRotation, m_maxRotation);
       m_sliderY->setValue(0);
@@ -281,7 +283,7 @@ namespace Avogadro {
       m_sliderZ->setOrientation(Qt::Horizontal);
       m_sliderZ->setTickPosition(QSlider::TicksAbove);
       m_sliderZ->setToolTip(tr("z rotation"));
-      m_sliderZ->setTickInterval(10);
+      m_sliderZ->setTickInterval(m_maxRotation);
       m_sliderZ->setPageStep(5);
       m_sliderZ->setRange(-m_maxRotation, m_maxRotation);
       m_sliderZ->setValue(0);

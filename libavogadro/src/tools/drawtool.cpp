@@ -373,22 +373,18 @@ namespace Avogadro {
 
         // only add hydrogens to the atoms if it's the only thing
         // we've drawn.  else addbonds will adjust hydrogens.
-        int atomAddHydrogens = 0;
         AdjustHydrogens::Options atomAdjustHydrogens = AdjustHydrogens::Never;
         if(m_addHydrogens) {
           // if no bond then add on undo and redo
           if(!m_bond) {
-            atomAddHydrogens = 1;
             atomAdjustHydrogens = AdjustHydrogens::Always;
           }
           // if bond then only remove on undo, rest is handled by bond
           else {
-            atomAddHydrogens = 2;
             atomAdjustHydrogens = AdjustHydrogens::OnUndo;
           }
         }
 
-        // if we add a bond then we don't need
         // we added At least the beginAtom or we created a bond to
         // an existing atom or to endAtom that we also created
         AddAtomDrawCommand *beginAtomDrawCommand = 0;
@@ -412,10 +408,31 @@ namespace Avogadro {
             if (m_hydrogenCommand) {
               // don't try to remove/add hydrogens to the hydrogen which will be changed
               // by the ChangeElement command...
-              adjBegin = AdjustHydrogens::AddOnRedo | AdjustHydrogens::RemoveOnUndo;
-              adjEnd = AdjustHydrogens::Always;
+              adjBegin = adjEnd = AdjustHydrogens::AddOnRedo | AdjustHydrogens::RemoveOnUndo;
+              if (!m_endAtomAdded) {
+                foreach (unsigned long id, m_bond->endAtom()->neighbors()) {
+                  Atom *nbr = widget->molecule()->atomById(id);
+                  if (nbr->isHydrogen())
+                    adjEnd |= AdjustHydrogens::RemoveOnRedo | AdjustHydrogens::AddOnUndo;
+                }
+              } 
             } else {
-              adjBegin = adjEnd = AdjustHydrogens::Always;
+              adjBegin = adjEnd = AdjustHydrogens::AddOnRedo | AdjustHydrogens::RemoveOnUndo;
+              // pre-existing atoms might need extra work
+              if (!m_beginAtomAdded) {
+                foreach (unsigned long id, m_bond->beginAtom()->neighbors()) {
+                  Atom *nbr = widget->molecule()->atomById(id);
+                  if (nbr->isHydrogen())
+                    adjBegin |= AdjustHydrogens::RemoveOnRedo | AdjustHydrogens::AddOnUndo;
+                }
+              }
+              if (!m_endAtomAdded) {
+                foreach (unsigned long id, m_bond->endAtom()->neighbors()) {
+                  Atom *nbr = widget->molecule()->atomById(id);
+                  if (nbr->isHydrogen())
+                    adjEnd |= AdjustHydrogens::RemoveOnRedo | AdjustHydrogens::AddOnUndo;
+                }
+              } 
             }
           }
 
@@ -468,8 +485,11 @@ namespace Avogadro {
           undo->setText(tr("Change Bond Order"));
         }
       } else if (m_beginAtom) {
+        if (m_hydrogenCommand) {
+          dynamic_cast<ChangeElementDrawCommand*>(m_hydrogenCommand)->setAdjustHydrogens(m_addHydrogens);
+          undo = m_hydrogenCommand;
         // beginAtom exists, but we have no bond, we change the element
-        if (m_beginAtom->atomicNumber() != m_prevAtomElement) {
+        } else if (m_beginAtom->atomicNumber() != m_prevAtomElement) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
                                               m_prevAtomElement,
@@ -486,6 +506,7 @@ namespace Avogadro {
       m_prevAtomElement=0;
       m_beginAtomAdded=false;
       m_endAtomAdded=false;
+      m_hydrogenCommand = 0;
 
       m_forceField->UnsetIgnoreAtom();
       m_forceField->UnsetFixAtom();

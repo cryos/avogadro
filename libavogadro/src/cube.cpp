@@ -39,12 +39,15 @@ namespace Avogadro {
 
   Cube::Cube(QObject *parent) : Primitive(CubeType, parent), m_data(0),
     m_min(0.0, 0.0, 0.0), m_max(0.0, 0.0, 0.0), m_spacing(0.0, 0.0, 0.0),
-    m_points(0, 0, 0), m_minValue(0.0), m_maxValue(0.0)
+    m_points(0, 0, 0), m_minValue(0.0), m_maxValue(0.0),
+    m_lock(new QReadWriteLock)
   {
   }
 
   Cube::~Cube()
   {
+    delete m_lock;
+    m_lock = 0;
   }
 
   bool Cube::setLimits(const Vector3d &min, const Vector3d &max,
@@ -301,6 +304,11 @@ namespace Avogadro {
     }
     else
       return false;
+  }
+
+  QReadWriteLock * Cube::lock() const
+  {
+    return m_lock;
   }
 
 } // End namespace Avogadro

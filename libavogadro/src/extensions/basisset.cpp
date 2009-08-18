@@ -223,6 +223,7 @@ namespace Avogadro
         << (*m_basisShells)[0].tCube->data()->at(1);
     (*m_basisShells)[0].tCube->lock()->unlock();
     delete m_basisShells;
+    m_basisShells = 0;
     emit finished();
   }
 
@@ -710,25 +711,25 @@ namespace Avogadro
         case P:
           qDebug() << "Shell" << i << "\tP\n  MO 1\t"
               << m_moMatrix(0, m_moIndices[i])
-              << "\t" << m_moMatrix(0, m_moIndices[i+1])
-              << "\t" << m_moMatrix(0, m_moIndices[i+2]);
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 2);
           break;
         case D:
           qDebug() << "Shell" << i << "\tD\n  MO 1\t"
               << m_moMatrix(0, m_moIndices[i])
-              << "\t" << m_moMatrix(0, m_moIndices[i+1])
-              << "\t" << m_moMatrix(0, m_moIndices[i+2])
-              << "\t" << m_moMatrix(0, m_moIndices[i+3])
-              << "\t" << m_moMatrix(0, m_moIndices[i+4])
-              << "\t" << m_moMatrix(0, m_moIndices[i+5]);
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 2)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 3)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 4)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 5);
           break;
         case D5:
           qDebug() << "Shell" << i << "\tD\n  MO 1\t"
               << m_moMatrix(0, m_moIndices[i])
-              << "\t" << m_moMatrix(0, m_moIndices[i+1])
-              << "\t" << m_moMatrix(0, m_moIndices[i+2])
-              << "\t" << m_moMatrix(0, m_moIndices[i+3])
-              << "\t" << m_moMatrix(0, m_moIndices[i+4]);
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 1)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 2)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 3)
+              << "\t" << m_moMatrix(0, m_moIndices[i] + 4);
           break;
         default:
           qDebug() << "Error: unhandled type...";

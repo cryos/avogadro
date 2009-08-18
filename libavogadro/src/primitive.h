@@ -34,9 +34,6 @@
 #include <Eigen/Core>
 #include <limits> // To get the maximum size of long for FALSE_ID
 
-// Forward declarations
-class QReadWriteLock;
-
 namespace Avogadro {
 
   // Define the overflow resulting from long (-1) as the error/not found
@@ -140,11 +137,6 @@ namespace Avogadro {
     Type type() const;
 
     /**
-     * Provides locking for all Primitive derived objects.
-     */
-    QReadWriteLock *lock() const;
-
-    /**
      * @return The unique id of the primitive.
      */
     unsigned long id() const { return m_id; }
@@ -181,7 +173,6 @@ namespace Avogadro {
     enum Primitive::Type m_type;
     unsigned long m_id;
     unsigned long m_index;
-    QReadWriteLock *m_lock;
 
   private:
     Q_DECLARE_PRIVATE(Primitive)

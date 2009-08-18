@@ -33,7 +33,7 @@
 #include <QDebug>
 
 // use this for creating drawcommand unit tests
-// #define DEBUG_COMMANDS 1
+//#define DEBUG_COMMANDS 1
 
 using namespace OpenBabel;
 
@@ -57,7 +57,12 @@ namespace Avogadro {
       : d(new AdjustHydrogensPreCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AdjustHydrogensPreCommand()";
+    QString ids = "[ ";
+    foreach (unsigned long id, atomIds)
+      ids += QString::number(id) + " ";
+    ids += "]";
+
+    qDebug() << "AdjustHydrogensPreCommand(atomIds = " + ids + ")";
 #endif
     d->molecule = molecule;
     d->atomIds = atomIds;
@@ -68,7 +73,7 @@ namespace Avogadro {
       : d(new AdjustHydrogensPreCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AdjustHydrogensPreCommand()";
+    qDebug() << "AdjustHydrogensPreCommand(atomId = " << atomId << ")";
 #endif
     d->molecule = molecule;
     d->atomIds.append(atomId);
@@ -79,9 +84,12 @@ namespace Avogadro {
   {
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
+      Q_CHECK_PTR( atom );
       if (atom) {
-        if (atom->isHydrogen())
+        if (atom->isHydrogen()) {
+          qDebug() << "AdjustHydrogensPreCommand::constructor(): Error, request to add hydrogens on hydrogen atom";
           continue;
+        }
 
         foreach (unsigned long nbrId, atom->neighbors()) {
           Atom *nbr = d->molecule->atomById(nbrId);
@@ -108,10 +116,13 @@ namespace Avogadro {
 
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
+      Q_CHECK_PTR( atom );
 
       if (atom) {
-        if (atom->isHydrogen())
+        if (atom->isHydrogen()) {
+          qDebug() << "AdjustHydrogensPreCommand::undo(): Error, request to add hydrogens on hydrogen atom";
           continue;
+        }
 
         d->molecule->addHydrogens(atom, d->hydrogenIds.value(atom->id()), d->bondIds.value(atom->id()));
       }
@@ -127,10 +138,13 @@ namespace Avogadro {
 
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
+      Q_CHECK_PTR( atom );
 
       if (atom) {
-        if (atom->isHydrogen())
+        if (atom->isHydrogen()) {
+          qDebug() << "AdjustHydrogensPreCommand::redo(): Error, request to add hydrogens on hydrogen atom";
           continue;
+        }
 
         d->molecule->removeHydrogens(atom);
       }
@@ -185,10 +199,13 @@ namespace Avogadro {
 
     foreach (unsigned long id, d->atomIds) {
       Atom *atom = d->molecule->atomById(id);
+      Q_CHECK_PTR( atom );
 
       if (atom) {
-        if (atom->isHydrogen())
+        if (atom->isHydrogen()) {
+          qDebug() << "AdjustHydrogensPostCommand::undo(): Error, request to add hydrogens on hydrogen atom";
           continue;
+        }
 
         d->molecule->removeHydrogens(atom);
       }
@@ -205,10 +222,13 @@ namespace Avogadro {
     if (d->hydrogenIds.isEmpty()) {
       foreach (unsigned long id, d->atomIds) {
         Atom *atom = d->molecule->atomById(id);
+        Q_CHECK_PTR( atom );
 
         if (atom) {
-          if (atom->isHydrogen())
+          if (atom->isHydrogen()) {
+            qDebug() << "AdjustHydrogensPostCommand::redo(): Error, request to add hydrogens on hydrogen atom";
             continue;
+          }
 
           d->molecule->addHydrogens(atom); // new ids...
           // save the new ids for reuse
@@ -233,9 +253,13 @@ namespace Avogadro {
       // reuse ids from before
       foreach (unsigned long id, d->atomIds) {
         Atom *atom = d->molecule->atomById(id);
+        Q_CHECK_PTR( atom );
+        
         if (atom) {
-          if (atom->isHydrogen())
+          if (atom->isHydrogen()) {
+            qDebug() << "AdjustHydrogensPostCommand::redo(): Error, request to add hydrogens on hydrogen atom";
             continue;
+          }
 
           d->molecule->addHydrogens(atom, d->hydrogenIds.value(atom->id()), d->bondIds.value(atom->id()));
         }
@@ -269,8 +293,7 @@ namespace Avogadro {
       AdjustHydrogens::Options adjustHydrogens) : d(new AddAtomDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AddAtomDrawCommand_ctor1(element=" << element << ", adj=" << adjustHydrogens << ")";
-    qDebug() << "adj =" << adjustHydrogens;
+    qDebug() << "AddAtomDrawCommand_ctor1(element = " << element << ", adj = " << adjustHydrogens << ")";
 #endif
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
@@ -283,8 +306,7 @@ namespace Avogadro {
       : d(new AddAtomDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AddAtomDrawCommand_ctor2(element=" << atom->atomicNumber() << ", adj=" << adjustHydrogens << ")";
-    qDebug() << "adj =" << adjustHydrogens;
+    qDebug() << "AddAtomDrawCommand_ctor2(element = " << atom->atomicNumber() << ", adj = " << adjustHydrogens << ")";
 #endif
     setText(QObject::tr("Add Atom"));
     d->molecule = molecule;
@@ -307,9 +329,11 @@ namespace Avogadro {
   void AddAtomDrawCommand::undo()
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AddAtomDrawCommand::undo()";
+    qDebug() << "AddAtomDrawCommand::undo(id = " << d->id << ")";
 #endif
+
     Atom *atom = d->molecule->atomById(d->id);
+    Q_CHECK_PTR( atom );
     if (atom) {
       // Remove the previously add hydrogens if needed
       if (d->adjustHydrogens & AdjustHydrogens::RemoveOnUndo)
@@ -317,29 +341,33 @@ namespace Avogadro {
 
       d->molecule->removeAtom(atom);
     }
+
+    d->molecule->update();
   }
 
   void AddAtomDrawCommand::redo()
   {
-#ifdef DEBUG_COMMANDS
-    qDebug() << "AddAtomDrawCommand::redo()";
-#endif
-
     if (d->atom) { // initial creation
       if (d->adjustHydrogens != AdjustHydrogens::Never) {
         d->postCommand = new AdjustHydrogensPostCommand(d->molecule, d->id);
         if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
           d->postCommand->redo();
       }
+      d->atom->update();
       d->atom = 0;
+#ifdef DEBUG_COMMANDS
+      qDebug() << "AddAtomDrawCommand::redo(id = " << d->id << ")";
+#endif
       return;
     }
 
     Atom *atom = 0;
     if (d->id != FALSE_ID) {
       atom = d->molecule->addAtom(d->id);
+      Q_CHECK_PTR( atom );
     } else {
       atom = d->molecule->addAtom();
+      Q_CHECK_PTR( atom );
       d->id = atom->id();
     }
     atom->setPos(d->pos);
@@ -351,6 +379,10 @@ namespace Avogadro {
       if (d->adjustHydrogens & AdjustHydrogens::AddOnRedo)
         d->postCommand->redo();
     }
+
+#ifdef DEBUG_COMMANDS
+    qDebug() << "AddAtomDrawCommand::redo(id = " << d->id << ")";
+#endif
 
     atom->update();
   }
@@ -385,7 +417,7 @@ namespace Avogadro {
     Atom *atom = molecule->atom(index);
     d->id = atom->id();
 #ifdef DEBUG_COMMANDS
-    qDebug() << "DeleteAtomDrawCommand(id=" << d->id << ", adj=" << adjustHydrogens << ")";
+    qDebug() << "DeleteAtomDrawCommand(id = " << d->id << ", adj = " << adjustHydrogens << ")";
 #endif
     d->element = atom->atomicNumber();
     d->pos = *(atom->pos());
@@ -415,6 +447,7 @@ namespace Avogadro {
       d->postCommand->undo();
 
     Atom *atom = d->molecule->addAtom(d->id);
+    Q_CHECK_PTR( atom );
     atom->setAtomicNumber(d->element);
     atom->setPos(d->pos);
 
@@ -437,6 +470,7 @@ namespace Avogadro {
     qDebug() << "DeleteAtomDrawCommand::redo()";
 #endif
     Atom *atom = d->molecule->atomById(d->id);
+    Q_CHECK_PTR( atom );
 
     d->bonds.clear();
     d->bondOrders.clear();
@@ -520,9 +554,9 @@ namespace Avogadro {
       AdjustHydrogens::Options adjustHydrogensOnEndAtom) : d(new AddBondDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AddBondDrawCommand(begin=" << beginAtom->id() << ", end=" << endAtom->id()
-             << ", adjBegin=" << adjustHydrogensOnBeginAtom
-             << ", adjEnd=" << adjustHydrogensOnEndAtom << ")";
+    qDebug() << "AddBondDrawCommand_ctor1(begin = " << beginAtom->id() << ", end = " << endAtom->id()
+             << ", order = " << order << ", adjBegin = " << adjustHydrogensOnBeginAtom
+             << ", adjEnd = " << adjustHydrogensOnEndAtom << ")";
 #endif
     setText(QObject::tr("Add Bond"));
     d->molecule = molecule;
@@ -538,9 +572,9 @@ namespace Avogadro {
       AdjustHydrogens::Options adjustHydrogensOnEndAtom) : d(new AddBondDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "AddBondDrawCommand(begin=" << bond->beginAtomId() << ", end=" << bond->endAtomId()
-             << ", adjBegin=" << adjustHydrogensOnBeginAtom
-             << ", adjEnd=" << adjustHydrogensOnEndAtom << ")";
+    qDebug() << "AddBondDrawCommand_ctor2(begin = " << bond->beginAtomId() << ", end = " << bond->endAtomId()
+             << ", order = " << bond->order() << ", adjBegin = " << adjustHydrogensOnBeginAtom
+             << ", adjEnd = " << adjustHydrogensOnEndAtom << ")";
 #endif
 
     setText(QObject::tr("Add Bond"));
@@ -582,6 +616,7 @@ namespace Avogadro {
     qDebug() << "AddBondDrawCommand::undo()";
 #endif
     Bond *bond = d->molecule->bondById(d->id);
+    Q_CHECK_PTR( bond );
     if (bond) {
       // remove the hydrogens added after the bond was created
       if (d->adjustHydrogensBegin & AdjustHydrogens::RemoveOnUndo)
@@ -661,7 +696,9 @@ namespace Avogadro {
     }
 
     Atom *beginAtom = d->molecule->atomById(d->beginAtomId);
+    Q_CHECK_PTR( beginAtom );
     Atom *endAtom = d->molecule->atomById(d->endAtomId);
+    Q_CHECK_PTR( endAtom );
 
     if (!beginAtom || !endAtom)
       return;
@@ -669,8 +706,10 @@ namespace Avogadro {
     Bond *bond;
     if (d->id != FALSE_ID) {
       bond = d->molecule->addBond(d->id);
+      Q_CHECK_PTR( bond );
     } else {
       bond = d->molecule->addBond();
+      Q_CHECK_PTR( bond );
       d->id = bond->id();
     }
 
@@ -719,6 +758,10 @@ namespace Avogadro {
     d->molecule = molecule;
     d->moleculeCopy = (*(molecule));
     d->id = molecule->bond(index)->id();
+#ifdef DEBUG_COMMANDS
+    qDebug() << "DeleteBondDrawCommand(id = " << d->id << ", adj = " << adjustHydrogens << ")";
+#endif
+
     d->adjustHydrogens = adjustHydrogens;
   }
 
@@ -742,6 +785,7 @@ namespace Avogadro {
     qDebug() << "DeleteBondDrawCommand::redo()";
 #endif
     Bond *bond = d->molecule->bondById(d->id);
+    Q_CHECK_PTR( bond );
     if(bond)
     {
       d->molecule->removeBond(bond);
@@ -782,13 +826,20 @@ namespace Avogadro {
       int adjustHydrogens) : d(new ChangeElementDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "ChangeElementDrawCommand(id=" << atom->id() << ", old=" << oldElement << ", adj=" << adjustHydrogens << ")";
+    qDebug() << "ChangeElementDrawCommand(id = " << atom->id() << ", old = " << oldElement 
+             << ", new = " << atom->atomicNumber() << ", adj=" << adjustHydrogens << ")";
 #endif
+
     setText(QObject::tr("Change Element"));
     d->molecule = molecule;
     d->newElement = atom->atomicNumber();
     d->oldElement = oldElement;
     d->id = atom->id();
+    d->adjustHydrogens = adjustHydrogens;
+  }
+    
+  void ChangeElementDrawCommand::setAdjustHydrogens(int adjustHydrogens)
+  {
     d->adjustHydrogens = adjustHydrogens;
   }
 
@@ -811,6 +862,7 @@ namespace Avogadro {
     qDebug() << "ChangeElementDrawCommand::undo()";
 #endif
     Atom *atom = d->molecule->atomById(d->id);
+    Q_CHECK_PTR( atom );
 
     if (atom) {
       // Remove Hydrogens if needed
@@ -834,6 +886,7 @@ namespace Avogadro {
     qDebug() << "ChangeElementDrawCommand::redo()";
 #endif
     Atom *atom = d->molecule->atomById(d->id);
+    Q_CHECK_PTR( atom );
 
     if (atom) {
       // Remove Hydrogens if needed
@@ -885,8 +938,8 @@ namespace Avogadro {
       unsigned int oldBondOrder, int adjustHydrogens) : d(new ChangeBondOrderDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
-    qDebug() << "ChangeBondOrderDrawCommand(id=" << bond->id() << ", old=" << oldBondOrder
-             << ", adj=" << adjustHydrogens << ")";
+    qDebug() << "ChangeBondOrderDrawCommand(id = " << bond->id() << ", old = " << oldBondOrder
+             << ", new = " << bond->order() << ", adj=" << adjustHydrogens << ")";
 #endif
     setText(QObject::tr("Change Bond Order"));
     d->molecule = molecule;
@@ -915,6 +968,7 @@ namespace Avogadro {
     qDebug() << "ChangeBondOrderDrawCommand::undo()";
 #endif
     Bond *bond = d->molecule->bondById(d->id);
+    Q_CHECK_PTR( bond );
 
     if (bond) {
       // Remove Hydrogens if needed
@@ -938,6 +992,7 @@ namespace Avogadro {
     qDebug() << "ChangeBondOrderDrawCommand::redo()";
 #endif
     Bond *bond = d->molecule->bondById(d->id);
+    Q_CHECK_PTR( bond );
     if (bond) {
       // Remove Hydrogens if needed
       if (d->adjustHydrogens) {

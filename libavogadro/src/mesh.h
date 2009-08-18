@@ -30,6 +30,8 @@
 
 #include <vector>
 
+// Forward declarations
+class QReadWriteLock;
 class QColor;
 
 namespace Avogadro {
@@ -217,9 +219,14 @@ namespace Avogadro {
      */
     QString name() { return m_name; }
 
+    /**
+     * Provides locking.
+     */
+    QReadWriteLock *lock() const;
+
     friend class Molecule;
 
-  private:
+  protected:
     std::vector<Eigen::Vector3f> m_vertices;
     std::vector<Eigen::Vector3f> m_normals;
     std::vector<QColor> m_colors;
@@ -228,6 +235,7 @@ namespace Avogadro {
     float m_isoValue;
     unsigned int m_other; // Unique id of the other mesh if this is part of a pair
     unsigned int m_cube; // Unique id of the cube this mesh was generated from
+    QReadWriteLock *m_lock;
     Q_DECLARE_PRIVATE(Mesh)
   };
 } // End namespace Avogadro
