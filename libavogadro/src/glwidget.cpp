@@ -701,6 +701,11 @@ namespace Avogadro {
       qDebug() << "GLWidget::render(): No molecule set.";
       return;
     }
+    if (!d->molecule->lock()->tryLockForRead()) {
+      qDebug() << "GLWidget::render(): Could not get read lock on molecule.";
+      return;
+    }
+
     d->painter->begin(this);
 
     if (d->painter->quality() >= 3) {
@@ -807,6 +812,7 @@ namespace Avogadro {
     if (d->renderDebug) renderDebugOverlay();
 
     d->painter->end();
+    d->molecule->lock()->unlock();
   }
 
   void GLWidget::renderCrystal(GLuint displayList)
@@ -1253,15 +1259,17 @@ namespace Avogadro {
     if (!d->molecule)
       return;
 
+    // Try to get a read lock for the molecule
+    if (!d->molecule->lock()->tryLockForRead())
+      return;
+
     if (!d->molecule->OBUnitCell()) {
       // Plain molecule, no crystal cell
       d->center = d->molecule->center();
       d->normalVector = d->molecule->normalVector();
       d->radius = d->molecule->radius();
       d->farthestAtom = d->molecule->farthestAtom();
-      return;
     }
-
     else {
       // render a crystal (so most geometry comes from the cell vectors)
       // Origin at 0.0, 0.0, 0.0
@@ -1307,6 +1315,7 @@ namespace Avogadro {
         } // end foreach
       } // end general repeat (many atoms, multiple cells)
     } // End the case for unit cells
+    d->molecule->lock()->unlock();
   }
 
   Camera * GLWidget::camera() const
