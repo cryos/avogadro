@@ -833,14 +833,12 @@ namespace Avogadro{
 
   void Molecule::updateBond()
   {
-    Q_D(Molecule);
     Bond *bond = qobject_cast<Bond *>(sender());
     emit bondUpdated(bond);
   }
 
   void Molecule::update()
   {
-    Q_D(Molecule);
     emit updated();
   }
 
