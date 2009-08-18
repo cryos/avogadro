@@ -835,14 +835,12 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     Bond *bond = qobject_cast<Bond *>(sender());
-    d->invalidGeomInfo = true;
     emit bondUpdated(bond);
   }
 
   void Molecule::update()
   {
     Q_D(Molecule);
-    d->invalidGeomInfo = true;
     emit updated();
   }
 
