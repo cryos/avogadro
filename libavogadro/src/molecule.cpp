@@ -56,7 +56,8 @@ namespace Avogadro{
   class MoleculePrivate {
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
-              invalidRings(true), obmol(0), obunitcell(0), obvibdata(0) {}
+                          invalidRings(true), obmol(0), obunitcell(0),
+                          obvibdata(0) {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
