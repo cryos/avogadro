@@ -1855,7 +1855,7 @@ namespace Avogadro {
     d->renderAxes = settings.value("renderAxes", 1).value<bool>();
     d->renderDebug = settings.value("renderDebug", 0).value<bool>();
     d->allowQuickRender = settings.value("allowQuickRender", 1).value<bool>();
-    d->allowQuickRender = settings.value("renderUnitCellAxes", 1).value<bool>();
+    d->renderUnitCellAxes = settings.value("renderUnitCellAxes", 1).value<bool>();
 
     int count = settings.beginReadArray("engines");
     for(int i=0; i<count; i++) {
