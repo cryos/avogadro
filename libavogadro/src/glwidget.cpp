@@ -1839,6 +1839,8 @@ namespace Avogadro {
 
     int count = d->engines.size();
     settings.beginWriteArray("engines");
+    // Clear the array before writing settings - fixes issue when index changes
+    settings.remove("");
     for(int i = 0; i< count; i++) {
       settings.setArrayIndex(i);
       d->engines.at(i)->writeSettings(settings);
