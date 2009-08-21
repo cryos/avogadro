@@ -31,7 +31,7 @@
   #include <GL/glew.h>
 #endif
 
-// QT Includes
+// Qt Includes
 #include <QApplication>
 #include <QMessageBox>
 #include <QTranslator>
@@ -45,19 +45,18 @@
 // get the SVN revision string
 #include "config.h" // krazy:exclude=includes
 
-// #include <avogadro/pluginmanager.h>
-
 // Avogadro Includes
 #include "mainwindow.h"
 #include "application.h"
 
 #ifdef Q_WS_X11
-#include <X11/Xlib.h>
+  #include <X11/Xlib.h>
 #endif
 
 #ifdef WIN32
   #include <stdlib.h>
 #endif
+
 #ifdef AVO_APP_BUNDLE
   #include <cstdlib>
 #endif
@@ -144,12 +143,10 @@ int main(int argc, char *argv[])
   bool tryLoadingQtTranslations = false;
   QString qtFilename = "qt_" + translationCode + ".qm";
   QTranslator qtTranslator(0);
-  if (qtTranslator.load(qtFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+  if (qtTranslator.load(qtFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
     app.installTranslator(&qtTranslator);
-  }
-  else {
+  else
     tryLoadingQtTranslations = true;
-  }
 
   // Load the libavogadro translations
   QPointer <QTranslator> libTranslator = Library::createTranslator();
@@ -161,7 +158,6 @@ int main(int argc, char *argv[])
   QString avoFilename = "avogadro_" + translationCode + ".qm";
 
   foreach (const QString &translationPath, translationPaths) {
-
     // We can't find the normal Qt translations (maybe we're in a "bundle"?)
     if (tryLoadingQtTranslations) {
       if (qtTranslator.load(qtFilename, translationPath)) {
@@ -173,12 +169,7 @@ int main(int argc, char *argv[])
     if (avoTranslator.load(avoFilename, translationPath)) {
       app.installTranslator(&avoTranslator);
       qDebug() << "Translation successfully loaded.";
-      // we won't break because we want to find Qt translations too
-      //      break;
     }
-//     else {
-//       qDebug() << translationPath + avoFilename << "not found.";
-//     }
   }
 
   // Check if we just need a version or help message
@@ -220,8 +211,7 @@ int main(int argc, char *argv[])
   if (arguments.size() > 1) {
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();
-    for (++i; i != arguments.constEnd(); ++i)
-    {
+    for (++i; i != arguments.constEnd(); ++i) {
       window->openFile(*i);
       // this costs us a few more function calls
       // but makes our loading look nicer

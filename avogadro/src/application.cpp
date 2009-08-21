@@ -22,10 +22,6 @@
 #include "application.h"
 #include "mainwindow.h"
 
-#ifdef ENABLE_PYTHON
-#include <avogadro/pythonwhenidle.h>
-#endif
-
 // The Krazy checker doesn't like this, but it's correct
 // krazy:excludeall=cpp
 #ifdef Q_OS_UNIX
@@ -49,11 +45,7 @@ namespace Avogadro {
     // So we prefer to have this fix here preventively.
     setlocale(LC_NUMERIC, "C");
 #endif // Q_OS_UNIX
-
-#ifdef ENABLE_PYTHON
-    PythonWhenIdle::initialize();
-#endif
-  }
+    }
 
   // Handle open events (e.g., Mac OS X open files)
   bool Application::event(QEvent *event)

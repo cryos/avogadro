@@ -838,16 +838,12 @@ namespace Avogadro{
 
   void Molecule::updateBond()
   {
-    Q_D(Molecule);
     Bond *bond = qobject_cast<Bond *>(sender());
-    d->invalidGeomInfo = true;
     emit bondUpdated(bond);
   }
 
   void Molecule::update()
   {
-    Q_D(Molecule);
-    d->invalidGeomInfo = true;
     emit updated();
   }
 
@@ -973,10 +969,9 @@ namespace Avogadro{
     return d->energies;
   }
 
-  double Molecule::energy(unsigned int index) const
+  double Molecule::energy(int index) const
   {
     Q_D(const Molecule);
-    //    qDebug() << "energy: " << m_currentConformer;
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
     else if (index < d->energies.size())

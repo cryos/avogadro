@@ -578,7 +578,7 @@ namespace Avogadro {
      * @param index The conformer, defaults to the current conformer.
      * @return The energy of the Molecule (or current conformer).
      */
-    double energy(unsigned int index = -1) const;
+    double energy(int index = -1) const;
 
     /**
      * Set the energy for the current conformer.

@@ -2175,6 +2175,11 @@ namespace Avogadro
     }
   }
 
+  void MainWindow::resetDisplayTypes()
+  {
+    d->glWidget->loadDefaultEngines();
+  }
+
   void MainWindow::showSettingsDialog()
   {
     if ( !d->settingsDialog ) {
@@ -2281,6 +2286,8 @@ namespace Avogadro
              this, SLOT( centerView() ) );
     connect( ui.actionFullScreen, SIGNAL( triggered() ),
              this, SLOT( fullScreen() ) );
+    connect( ui.actionResetDisplayTypes, SIGNAL( triggered() ),
+             this, SLOT( resetDisplayTypes() ) );
     connect( ui.actionSetBackgroundColor, SIGNAL( triggered() ),
              this, SLOT( setBackgroundColor() ) );
     connect(ui.actionDisplayAxes, SIGNAL(triggered(bool)),
