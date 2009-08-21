@@ -166,7 +166,8 @@ namespace Avogadro {
           double t = m_yList->at(i);
           double w = m_xList->at(i);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 
-            (22.97 * x / 1241) ; // <-- normalization constant (22.97 / X_0)
+            (22.97 * x / 1241) // <-- normalization constant (22.97 / X_0)
+            / sqrt(2 * M_PI * s2); // <-- gaussian normalization
         }
         plotObject->addPoint(x,y);
       }
