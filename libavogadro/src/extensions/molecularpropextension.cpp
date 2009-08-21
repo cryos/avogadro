@@ -59,20 +59,30 @@ namespace Avogadro {
   {
     if (m_molecule)
       disconnect( m_molecule, 0, this, 0 );
+
     m_molecule = molecule;
 
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(update()));
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)), this, SLOT(updatePrimitives(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)), this, SLOT(updatePrimitives(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)), this, SLOT(updatePrimitives(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+            this, SLOT(updatePrimitives(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+            this, SLOT(updatePrimitives(Primitive*)));
+    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive *)),
+            this, SLOT(updatePrimitives(Primitive*)));
 
-    connect(m_molecule, SIGNAL(atomAdded(Atom *)), this, SLOT(updateAtoms(Atom*)));
-    connect(m_molecule, SIGNAL(atomRemoved(Atom *)), this, SLOT(updateAtoms(Atom*)));
-    connect(m_molecule, SIGNAL(atomUpdated(Atom *)), this, SLOT(updateAtoms(Atom*)));
+    connect(m_molecule, SIGNAL(atomAdded(Atom *)),
+            this, SLOT(updateAtoms(Atom*)));
+    connect(m_molecule, SIGNAL(atomRemoved(Atom *)),
+            this, SLOT(updateAtoms(Atom*)));
+    connect(m_molecule, SIGNAL(atomUpdated(Atom *)),
+            this, SLOT(updateAtoms(Atom*)));
 
-    connect(m_molecule, SIGNAL(bondAdded(Bond *)), this, SLOT(updateBonds(Bond*)));
-    connect(m_molecule, SIGNAL(bondRemoved(Bond *)), this, SLOT(updateBonds(Bond*)));
-    connect(m_molecule, SIGNAL(bondUpdated(Bond *)), this, SLOT(updateBonds(Bond*)));
+    connect(m_molecule, SIGNAL(bondAdded(Bond *)),
+            this, SLOT(updateBonds(Bond*)));
+    connect(m_molecule, SIGNAL(bondRemoved(Bond *)),
+            this, SLOT(updateBonds(Bond*)));
+    connect(m_molecule, SIGNAL(bondUpdated(Bond *)),
+            this, SLOT(updateBonds(Bond*)));
   }
 
   QUndoCommand* MolecularPropertiesExtension::performAction(QAction *,
@@ -82,19 +92,22 @@ namespace Avogadro {
       return 0; // nothing we can do
 
     // Disconnect in case we're attached to a new widget
-    if (m_widget) {
+    if (m_widget)
       disconnect( m_molecule, 0, this, 0 );
-    }
 
     if (widget) {
-      connect(widget, SIGNAL(moleculeChanged(Molecule *, Molecule *)),
-              this, SLOT(moleculeChanged(Molecule*, Molecule*)));
+      connect(widget, SIGNAL(moleculeChanged(Molecule *)),
+              this, SLOT(moleculeChanged(Molecule*)));
       m_widget = widget;
     }
 
-    if (m_dialog == NULL) {
+    if (!m_dialog) {
       m_dialog = new MolecularPropertiesDialog(m_widget);
+      // Disable the dipole moment for now
+      m_dialog->dipoleLabel->setVisible(false);
+      m_dialog->dipoleMomentLine->setVisible(false);
     }
+
     m_dialog->show();
     update();
 
@@ -148,13 +161,13 @@ namespace Avogadro {
     update();
   }
 
-  void MolecularPropertiesExtension::moleculeChanged(Molecule *, Molecule *)
+  void MolecularPropertiesExtension::moleculeChanged(Molecule *)
   {
     update();
   }
 
 } // end namespace Avogadro
 
-Q_EXPORT_PLUGIN2(molecularpropertiesextension, 
+Q_EXPORT_PLUGIN2(molecularpropertiesextension,
                  Avogadro::MolecularPropertiesExtensionFactory)
 
