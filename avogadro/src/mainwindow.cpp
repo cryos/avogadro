@@ -1170,7 +1170,7 @@ namespace Avogadro
 
     // delete the MoleculeFile before calling saveFile.
     // We don't want to replace the molecule but save it
-    // to another file. 
+    // to another file.
     if (d->moleculeFile) {
       delete d->moleculeFile;
       d->moleculeFile = 0;
@@ -2429,31 +2429,38 @@ namespace Avogadro
     if ( fileName.isEmpty() ) {
       d->fileName.clear();
       setWindowTitle( tr( "[*]Avogadro" , "[*] indicates that this is a modified view...." ) );
-    } else {
+    }
+    else {
       QFileInfo fileInfo(fileName);
       d->fileName = fileInfo.canonicalFilePath();
       d->fileDialogPath = fileInfo.absolutePath();
       setWindowTitle( tr( "%1[*] - %2", "Window title: %1 is file name, %2 is Avogadro" ).arg( fileInfo.fileName() )
           .arg( tr( "Avogadro" ) ) );
 
+      // Check that the canonical file path exists - only update recent files
+      // if it does. Should prevent empty list items on initial open etc.
+      if (d->fileName.isEmpty())
+        return;
+
       QSettings settings; // already set up properly via main.cpp
-      QStringList files = settings.value( "recentFileList" ).toStringList();
-      files.removeAll( fileName );
-      files.prepend( fileName );
-      while ( files.size() > maxRecentFiles )
+      QStringList files = settings.value("recentFileList").toStringList();
+      files.removeAll(d->fileName);
+      files.prepend(d->fileName);
+      while (files.size() > maxRecentFiles)
         files.removeLast();
 
-      settings.setValue( "recentFileList", files );
+      qDebug() << "Recent file list:" << files;
+
+      settings.setValue("recentFileList", files);
 
       // Set the fileName for the actual molecule too
-      if (d->molecule) {
-        d->molecule->setFileName(fileInfo.absoluteFilePath());
-      }
+      if (d->molecule)
+        d->molecule->setFileName(d->fileName);
     }
 
     foreach( QWidget *widget, QApplication::topLevelWidgets() ) {
       MainWindow *mainWin = qobject_cast<MainWindow *>( widget );
-      if ( mainWin )
+      if (mainWin)
         mainWin->updateRecentFileActions();
     }
   }
@@ -2461,23 +2468,35 @@ namespace Avogadro
   void MainWindow::updateRecentFileActions()
   {
     QSettings settings; // set up project and program properly in main.cpp
-    QStringList files = settings.value( "recentFileList" ).toStringList();
+    QStringList files = settings.value("recentFileList").toStringList();
 
-    int numRecentFiles = qMin( files.size(), ( int )maxRecentFiles );
+    int originalNumRecentFiles = files.size();
 
-    for ( int i = 0; i < numRecentFiles; ++i ) {
-      // Skip files that don't exist...
-      if (!QFile(QFileInfo(files[i]).absoluteFilePath()).exists()) {
-        continue;
-      }
-      d->actionRecentFile[i]->setText( QFileInfo(files[i]).fileName() );
-      d->actionRecentFile[i]->setData( files[i] );
-      d->actionRecentFile[i]->setVisible( true );
+    // Remove any duplicate or empty entries from the list
+    files.removeDuplicates();
+    files.removeAll(QString());
+    // Now remove any entries which do not exist
+    for(int i = files.size()-1; i >= 0; --i) {
+      QFileInfo fileInfo(files[i]);
+      if (!QFile(fileInfo.absoluteFilePath()).exists())
+        files.removeAt(i);
     }
-    for ( int j = numRecentFiles; j < maxRecentFiles; ++j )
-      d->actionRecentFile[j]->setVisible( false );
 
-    //     ui.actionSeparator->setVisible(numRecentFiles > 0);
+    int numRecentFiles = qMin(files.size(),
+                              static_cast<int>(maxRecentFiles));
+
+    for (int i = 0; i < numRecentFiles; ++i) {
+      qDebug() << "Recent file" << i << files[i];
+      d->actionRecentFile[i]->setText(QFileInfo(files[i]).fileName());
+      d->actionRecentFile[i]->setData(files[i]);
+      d->actionRecentFile[i]->setVisible(true);
+    }
+    for (int j = numRecentFiles; j < maxRecentFiles; ++j)
+      d->actionRecentFile[j]->setVisible(false);
+
+    // If we had to prune the list, then save the cleaned list
+    if (originalNumRecentFiles != numRecentFiles)
+      settings.setValue("recentFileList", files);
   }
 
   MainWindow *MainWindow::findMainWindow( const QString &fileName )
