@@ -50,12 +50,12 @@ namespace Avogadro {
 
    IRSpectra::~IRSpectra() {
      // TODO: Anything to delete?
+     writeSettings();
      delete m_xList;
      delete m_yList;
      delete m_xList_imp;
      delete m_yList_imp;
      delete m_tab_widget;
-     writeSettings();
    }
 
   void IRSpectra::writeSettings() {
