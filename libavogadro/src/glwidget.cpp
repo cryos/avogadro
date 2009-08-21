@@ -1882,9 +1882,7 @@ namespace Avogadro {
     QList<Engine *> engines = d->engines;
 
     foreach(Engine *engine, engines)
-      delete engine;
-
-    d->engines.clear();
+      this->removeEngine(engine);
 
     foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType)) {
       Engine *engine = static_cast<Engine *>(factory->createInstance(this));
