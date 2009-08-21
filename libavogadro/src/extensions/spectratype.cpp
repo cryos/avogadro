@@ -20,6 +20,7 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
+#include <QList>
 #include <QObject>
 
 #include <avogadro/primitive.h>
@@ -28,7 +29,8 @@
 
 namespace Avogadro {
 
-  SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent) {}
+  SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent), m_tab_widget(0), m_xList(0), 
+                                                      m_yList(0), m_xList_imp(0), m_yList_imp(0) {}
   SpectraType::~SpectraType() {}
 
   void SpectraType::writeSettings() {}
@@ -43,6 +45,19 @@ namespace Avogadro {
   void SpectraType::setImportedData(const QList<double> & xList, const QList<double> & yList) {Q_UNUSED(xList); Q_UNUSED(yList);}
   void SpectraType::getImportedPlotObject(PlotObject *plotObject) {Q_UNUSED(plotObject);}
   QString SpectraType::getTSV() {return QString("");}
+
+  QList<double> SpectraType::getXPoints(double FWHM, uint dotsPerPeak) {
+    QList<double> xPoints;
+    for (int i = 0; i < m_xList->size(); i++) {
+      double x = m_xList->at(i) - (2*FWHM);
+      for (uint j = 0; j < dotsPerPeak; j++) {
+        xPoints << x;
+        x += 4*FWHM / (int(dotsPerPeak));
+      }
+    }
+    qSort(xPoints);
+    return xPoints;
+  }
 }
 
 

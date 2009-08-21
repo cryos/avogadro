@@ -29,7 +29,6 @@
 #include <avogadro/plotwidget.h>
 #include <avogadro/molecule.h>
 
-
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
@@ -53,6 +52,7 @@ namespace Avogadro {
 
     virtual QWidget * getTabWidget();
 
+    virtual QList<double> getXPoints(double FWHM, uint dotsPerPeak);
     virtual void getCalculatedPlotObject(PlotObject *plotObject);
     virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
     virtual void getImportedPlotObject(PlotObject *plotObject);
@@ -65,12 +65,9 @@ namespace Avogadro {
   signals:
     // Use: void plotDataChanged();
 
-  private:
-    // Needed:
-    //    Ui::Tab_XXX ui;
-    //    QWidget *tab_widget;
-    //    QList<double> *m_xList, *m_yList;
-    //    PlotObject *m_importedPlotObject;
+  protected:
+    QWidget *m_tab_widget;
+    QList<double> *m_xList, *m_yList, *m_xList_imp, *m_yList_imp;
   };
 }
 
