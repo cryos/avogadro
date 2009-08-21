@@ -50,6 +50,11 @@ namespace Avogadro {
 
   UVSpectra::~UVSpectra() {
     // TODO: Anything to delete?
+    delete m_xList;
+    delete m_yList;
+    delete m_xList_imp;
+    delete m_yList_imp;
+    delete m_tab_widget;;
     writeSettings();
   }
 
@@ -128,28 +133,14 @@ namespace Avogadro {
       double sigma = FWHM / (2.0 * sqrt(2.0 * log(2.0)));
       double s2	= pow( sigma, 2.0 );
 
-      // determine range
-      // - find maximum and minimum
-      double min, max;
-      min = m_xList->first();
-      max = m_xList->last();
-
-      for (int i = 0; i < m_xList->size(); i++) {
-        double cur = m_xList->at(i);
-        if (cur > max) max = cur;
-        if (cur < min) min = cur;
-      }
-      min -= 2*FWHM;
-      max += 2*FWHM;
-      // - get resolution (TODO)
-      double res = (FWHM/10.0 < 10.0) ? FWHM/10.0 : 10.0;
-      if (res < 0.05) res = 0.05;
       // create points
-      for (double x = min; x < max; x += res) {
+      QList<double> xPoints = getXPoints(FWHM, 25);
+      for (int i = 0; i < xPoints.size(); i++) {
+        double x = xPoints.at(i);
         double y = 0.0;
-        for (int i = 0; i < m_yList->size(); i++) {
-          double t = m_yList->at(i);
-          double w = m_xList->at(i);
+        for (int j = 0; j < m_yList->size(); j++) {
+          double t = m_yList->at(j);
+          double w = m_xList->at(j);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) *
             // Normalization factor: (CP, 224 (1997) 143-155)
             2.87e4 / sqrt(2 * M_PI * s2);

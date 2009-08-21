@@ -61,9 +61,6 @@ namespace Avogadro {
 
   private:
     Ui::Tab_UV ui;
-    QWidget *m_tab_widget;
-    QList<double> *m_xList, *m_yList;
-    QList<double> *m_xList_imp, *m_yList_imp;
     SpectraDialog *m_dialog;
     double m_fermi;
     uint m_numAtoms;
