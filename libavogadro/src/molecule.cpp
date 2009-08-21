@@ -99,7 +99,9 @@ namespace Avogadro{
                                         m_currentConformer(0),
                                         m_estimatedDipoleMoment(true),
                                         m_dipoleMoment(0),
-    m_invalidPartialCharges(true), m_invalidAromaticity(true)
+                                        m_invalidPartialCharges(true),
+                                        m_invalidAromaticity(true),
+                                        m_lock(new QReadWriteLock)
   {
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
     // Assign a default path and file name to new molecules.
@@ -111,7 +113,7 @@ namespace Avogadro{
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
     m_atomPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
-    m_invalidAromaticity(true)
+    m_invalidAromaticity(true), m_lock(new QReadWriteLock)
   {
     *this = other;
     connect(this, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -123,6 +125,7 @@ namespace Avogadro{
 //    disconnect(this, 0);
 //    blockSignals(true);
     clear();
+    delete m_lock;
     delete d_ptr;
   }
 
@@ -831,16 +834,12 @@ namespace Avogadro{
 
   void Molecule::updateBond()
   {
-    Q_D(Molecule);
     Bond *bond = qobject_cast<Bond *>(sender());
-    d->invalidGeomInfo = true;
     emit bondUpdated(bond);
   }
 
   void Molecule::update()
   {
-    Q_D(Molecule);
-    d->invalidGeomInfo = true;
     emit updated();
   }
 
@@ -966,10 +965,9 @@ namespace Avogadro{
     return d->energies;
   }
 
-  double Molecule::energy(unsigned int index) const
+  double Molecule::energy(int index) const
   {
     Q_D(const Molecule);
-    //    qDebug() << "energy: " << m_currentConformer;
     if (index == -1 && d->energies.size()) // if there are any...
       return d->energies[m_currentConformer];
     else if (index < d->energies.size())
@@ -1390,6 +1388,11 @@ namespace Avogadro{
     }
     d->ringList.clear();
     m_lock->unlock();
+  }
+
+  QReadWriteLock * Molecule::lock() const
+  {
+    return m_lock;
   }
 
   Molecule &Molecule::operator=(const Molecule& other)

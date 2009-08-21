@@ -105,6 +105,7 @@
     <addaction name="actionCenter"/>
     <addaction name="separator"/>
     <addaction name="actionFullScreen"/>
+    <addaction name="actionResetDisplayTypes"/>
     <addaction name="actionSetBackgroundColor"/>
     <addaction name="separator"/>
     <addaction name="actionDisplayAxes"/>
@@ -508,12 +509,12 @@
    </property>
   </action>
   <action name="actionClear">
-   <property name="text">
-    <string>Clear</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
      <normaloff>:/icons/edit-clear.png</normaloff>:/icons/edit-clear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear</string>
    </property>
    <property name="shortcut">
     <string>Backspace</string>
@@ -553,12 +554,12 @@
    </property>
   </action>
   <action name="actionDuplicateView">
-   <property name="text">
-    <string>Duplicate View</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
      <normaloff>:/icons/tab-duplicate.png</normaloff>:/icons/tab-duplicate.png</iconset>
+   </property>
+   <property name="text">
+    <string>Duplicate View</string>
    </property>
   </action>
   <action name="actionDisplayAxes">
@@ -606,39 +607,39 @@
    </property>
   </action>
   <action name="pluginManagerAction">
-   <property name="text">
-    <string>Plugin Manager...</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
      <normaloff>:/icons/preferences-plugin.png</normaloff>:/icons/preferences-plugin.png</iconset>
    </property>
+   <property name="text">
+    <string>Plugin Manager...</string>
+   </property>
   </action>
   <action name="projectTreeEditorAction">
-   <property name="text">
-    <string>Project Tree Editor...</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
      <normaloff>:/icons/view-list-tree.png</normaloff>:/icons/view-list-tree.png</iconset>
    </property>
+   <property name="text">
+    <string>Project Tree Editor...</string>
+   </property>
   </action>
   <action name="actionDetachView">
-   <property name="text">
-    <string>Detach View</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
      <normaloff>:/icons/tab-detach.png</normaloff>:/icons/tab-detach.png</iconset>
    </property>
+   <property name="text">
+    <string>Detach View</string>
+   </property>
   </action>
   <action name="actionImport_File">
-   <property name="text">
-    <string>Molecule File...</string>
-   </property>
    <property name="icon">
     <iconset resource="avogadro.qrc">
-     <normaloff>:/icons/document-import.png</normaloff>:/icons/documents-import.png</iconset>
+     <normaloff>:/icons/document-import.png</normaloff>:/icons/document-import.png</iconset>
+   </property>
+   <property name="text">
+    <string>Molecule File...</string>
    </property>
   </action>
   <action name="actionQuickRender">
@@ -671,6 +672,11 @@
    </property>
    <property name="text">
     <string>All Molecules in File...</string>
+   </property>
+  </action>
+  <action name="actionResetDisplayTypes">
+   <property name="text">
+    <string>Reset Display Types</string>
    </property>
   </action>
  </widget>

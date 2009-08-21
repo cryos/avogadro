@@ -128,6 +128,7 @@ namespace Avogadro {
       void centerView();
       void setView(int index);
       void fullScreen();
+      void resetDisplayTypes();
       void showSettingsDialog();
       void setBackgroundColor();
       void setPainterQuality(int quality);

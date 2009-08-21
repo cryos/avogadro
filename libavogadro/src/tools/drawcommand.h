@@ -201,6 +201,8 @@ namespace Avogadro {
                              unsigned int element, int adjustValence);
     ~ChangeElementDrawCommand();
 
+    void setAdjustHydrogens(int adjustHydrogens);
+
     virtual void undo();
     virtual void redo();
 

@@ -66,41 +66,35 @@ using Eigen::Vector3d;
   void Atom::setPos(const Eigen::Vector3d &vec)
   {
     m_molecule->setAtomPos(m_id, vec);
-    update();
   }
 
   void Atom::addBond(Bond* bond)
   {
-    if (bond) {
+    if (bond)
       addBond(bond->id());
-    }
   }
 
   void Atom::addBond(unsigned long bond)
   {
     // Ensure that only unique bonds are added to the list
-    if (m_bonds.indexOf(bond) == -1) {
+    if (m_bonds.indexOf(bond) == -1)
       m_bonds.push_back(bond);
-    }
-    else {
+    else
       // Should never happen - warn if it does...
       qDebug() << "Atom" << m_id << "tried to add duplicate bond" << bond;
-    }
   }
 
   void Atom::removeBond(Bond* bond)
   {
-    if (bond) {
+    if (bond)
       removeBond(bond->id());
-    }
   }
 
   void Atom::removeBond(unsigned long bond)
   {
     int index = m_bonds.indexOf(bond);
-    if (index >= 0) {
+    if (index >= 0)
       m_bonds.removeAt(index);
-    }
   }
 
   QList<unsigned long> Atom::neighbors() const
@@ -109,9 +103,8 @@ using Eigen::Vector3d;
       QList<unsigned long> list;
       foreach(unsigned long id, m_bonds) {
         const Bond *bond = m_molecule->bondById(id);
-        if (bond) {
+        if (bond)
           list.push_back(bond->otherAtom(m_id));
-        }
       }
       return list;
     }
@@ -129,9 +122,8 @@ using Eigen::Vector3d;
       m_molecule->calculatePartialCharges();
       return m_partialCharge;
     }
-    else {
+    else
       return 0.0;
-    }
   }
 
   void Atom::setResidue(unsigned long id)
@@ -179,7 +171,6 @@ using Eigen::Vector3d;
     // Copy all needed OBAtom data to our atom
     m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
     m_atomicNumber = obatom->GetAtomicNum();
-//    m_partialCharge = obatom->GetPartialCharge();
 
     // And add any generic data as QObject properties
     std::vector<OpenBabel::OBGenericData*> data;
@@ -198,14 +189,11 @@ using Eigen::Vector3d;
   Atom& Atom::operator=(const Atom& other)
   {
     // Virtually everything here is invariant apart from the index and possibly id
-    if (other.pos()) {
+    if (other.pos())
       m_molecule->setAtomPos(m_id, *other.pos());
-    }
-    else {
+    else
       qDebug() << "Atom position returned null.";
-    }
     m_atomicNumber = other.m_atomicNumber;
-//    m_bonds = other.m_bonds;
     return *this;
   }
 

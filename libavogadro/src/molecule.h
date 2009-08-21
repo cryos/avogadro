@@ -578,7 +578,7 @@ namespace Avogadro {
      * @param index The conformer, defaults to the current conformer.
      * @return The energy of the Molecule (or current conformer).
      */
-    double energy(unsigned int index = -1) const;
+    double energy(int index = -1) const;
 
     /**
      * Set the energy for the current conformer.
@@ -603,6 +603,11 @@ namespace Avogadro {
      * Remove all elements of the molecule.
      */
     void clear();
+
+    /**
+     * Provides locking, should be used before reading/writing to the Molecule.
+     */
+    QReadWriteLock *lock() const;
 
     /** @name OpenBabel translation functions
      * These functions are used to exchange information with OpenBabel.
@@ -702,6 +707,8 @@ namespace Avogadro {
     std::vector<Bond *>   m_bonds;
     QList<Atom *>         m_atomList;
     QList<Bond *>         m_bondList;
+
+    QReadWriteLock *m_lock;
 
     /**
      * Compute all the geometry information for the Molecule. This allows

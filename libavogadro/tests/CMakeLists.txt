@@ -2,6 +2,11 @@ set(QT_USE_QTOPENGL true)
 
 include(${QT_USE_FILE})
 
+# define TESTDATADIR for tests that need input files
+cmake_policy(SET CMP0005 NEW) # needed for line below (escapes value)
+add_definitions( -DTESTDATADIR="${CMAKE_SOURCE_DIR}/testfiles/" )
+
+
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
 set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES

@@ -101,8 +101,7 @@ if(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythontool_p.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine_p.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension_p.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/pythonwhenidle.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension_p.cpp)
   foreach(P_ITEM ${PYTHON_SRCS})
     list(REMOVE_ITEM libavogadro_SRCS "${P_ITEM}")
   endforeach(P_ITEM ${PYTHON_SRCS})
@@ -121,7 +120,6 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
     pythoninterpreter.h
     pythonscript.h
     pythonerror.h
-    pythonwhenidle.h
   )
 
   message(STATUS "Setting new boost python libraries")

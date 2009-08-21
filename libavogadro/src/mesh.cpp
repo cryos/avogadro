@@ -34,7 +34,8 @@ using std::vector;
 namespace Avogadro {
 
   Mesh::Mesh(QObject *parent) : Primitive(MeshType, parent), m_vertices(0),
-    m_normals(0), m_colors(0), m_stable(true), m_other(FALSE_ID), m_cube(0)
+    m_normals(0), m_colors(0), m_stable(true), m_other(FALSE_ID), m_cube(0),
+    m_lock(new QReadWriteLock)
   {
     m_vertices.reserve(100);
     m_normals.reserve(100);
@@ -43,6 +44,8 @@ namespace Avogadro {
 
   Mesh::~Mesh()
   {
+    delete m_lock;
+    m_lock = 0;
   }
 
   bool Mesh::reserve(unsigned int size, bool colors)
@@ -220,6 +223,11 @@ namespace Avogadro {
     m_colors = other.m_colors;
     m_name = other.m_name;
     return *this;
+  }
+
+  QReadWriteLock * Mesh::lock() const
+  {
+    return m_lock;
   }
 
 } // End namespace Avogadro
