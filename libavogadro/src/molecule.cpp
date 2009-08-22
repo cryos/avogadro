@@ -712,34 +712,27 @@ namespace Avogadro{
 
   void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
   {
-    // Don't leak memory
-    if (m_dipoleMoment)
-      delete m_dipoleMoment;
-
-    m_dipoleMoment = new Vector3d(moment);
+    *m_dipoleMoment = moment;
     m_estimatedDipoleMoment = true;
   }
 
-  const Eigen::Vector3d * Molecule::dipoleMoment(bool *estimate) const
+  Eigen::Vector3d Molecule::dipoleMoment(bool *estimate) const
   {
     if (m_dipoleMoment && !m_estimatedDipoleMoment) {
       if (estimate)
         *estimate = false; // genuine calculated dipole moment
-      return m_dipoleMoment;
+      return *m_dipoleMoment;
     }
     else {
-      if (m_dipoleMoment)
-        delete m_dipoleMoment; // don't leak -- this is the previous estimate
-
       // Calculate a new estimate (e.g., the geometry changed
-      m_dipoleMoment = new Vector3d(0.0, 0.0, 0.0);
+      *m_dipoleMoment = Vector3d(0.0, 0.0, 0.0);
       foreach (Atom *a, atoms()) {
         *m_dipoleMoment += *a->pos() * a->partialCharge();
       }
       if (estimate)
         *estimate = true;
       m_estimatedDipoleMoment = true;
-      return m_dipoleMoment;
+      return *m_dipoleMoment;
     }
   }
 
@@ -1270,6 +1263,7 @@ namespace Avogadro{
       property = static_cast<OpenBabel::OBPairData *>(*dIter);
       setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
     }
+
     blockSignals(false);
     return true;
   }
@@ -1350,7 +1344,7 @@ namespace Avogadro{
     m_atomPos = 0;
     delete m_dipoleMoment;
     m_dipoleMoment = 0;
-    delete d->obunitcell;
+//    delete d->obunitcell;
     d->obunitcell = 0;
 
     m_bonds.clear();
@@ -1506,9 +1500,13 @@ namespace Avogadro{
     d->normalVector.setZero();
     d->radius = 1.0;
 
+    /// FIXME This leads to the dipole moment always getting invalidated
+    /// as the geometry information must be computed on load
     // invalidate the previous dipole moment
-    if (m_dipoleMoment)
+    if (m_dipoleMoment) {
       delete m_dipoleMoment; // don't leak -- this is the previous estimate
+      m_dipoleMoment = 0;
+    }
 
     unsigned int nAtoms = numAtoms();
     // In order to calculate many parameters we need at least two atoms
