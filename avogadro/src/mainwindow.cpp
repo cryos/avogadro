@@ -437,12 +437,12 @@ namespace Avogadro
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
+#ifdef Q_WS_MAC
     else if(event->type() == QEvent::ActivationChange
             || event->type() == QEvent::WindowActivate) {
-#ifdef Q_WS_MAC
       updateWindowMenu();
-#endif
     }
+#endif
 
     return QMainWindow::event(event);
   }
