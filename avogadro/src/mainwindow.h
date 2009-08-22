@@ -28,9 +28,11 @@
 #include "ui_mainwindow.h"
 #include "flattabwidget.h"
 
+#include <avogadro/primitivelist.h>
+#include <avogadro/extension.h>
+
 #include <QMainWindow>
 #include <QFileDialog>
-#include <avogadro/primitivelist.h>
 #include <QTabWidget>
 
 class QUndoStack;
@@ -177,14 +179,9 @@ namespace Avogadro {
 
       /**
        * @param molecule set the current molecule and take ownership
-       */
-      void setMolecule(Molecule *molecule);
-
-      /**
-       * @param molecule set the current molecule and take ownership
        * @param options Enum found in Extension with options for new Molecule
        */
-      void setMolecule(Molecule *molecule, int options);
+      void setMolecule(Molecule *molecule, int options = Extension::DeleteOld);
 
       /**
        * Slot to check we have the correct active GLWidget.
