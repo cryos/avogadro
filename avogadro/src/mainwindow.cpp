@@ -2449,8 +2449,6 @@ namespace Avogadro
       while (files.size() > maxRecentFiles)
         files.removeLast();
 
-      qDebug() << "Recent file list:" << files;
-
       settings.setValue("recentFileList", files);
 
       // Set the fileName for the actual molecule too
@@ -2486,7 +2484,6 @@ namespace Avogadro
                               static_cast<int>(maxRecentFiles));
 
     for (int i = 0; i < numRecentFiles; ++i) {
-      qDebug() << "Recent file" << i << files[i];
       d->actionRecentFile[i]->setText(QFileInfo(files[i]).fileName());
       d->actionRecentFile[i]->setData(files[i]);
       d->actionRecentFile[i]->setVisible(true);
