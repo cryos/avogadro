@@ -1214,13 +1214,6 @@ namespace Avogadro{
       }
     }
 
-    // Copy the dipole moment of the molecule
-    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
-    if (vd) {
-      OpenBabel::vector3 moment = vd->GetData();
-      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
-    }
-
     // If available, copy the unit cell
     OpenBabel::OBUnitCell *obunitcell = static_cast<OpenBabel::OBUnitCell *>(obmol->GetData(OpenBabel::OBGenericDataType::UnitCell));
     if (obunitcell) {
@@ -1262,6 +1255,17 @@ namespace Avogadro{
     for (dIter = data.begin(); dIter != data.end(); ++dIter) {
       property = static_cast<OpenBabel::OBPairData *>(*dIter);
       setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
+    }
+
+    computeGeomInfo();
+
+    // Copy the dipole moment of the molecule - do this after calling the
+    // initial computeGeomInfo call
+    OpenBabel::OBVectorData *vd = (OpenBabel::OBVectorData*)obmol->GetData("Dipole Moment");
+    if (vd) {
+      OpenBabel::vector3 moment = vd->GetData();
+      m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
+      m_estimatedDipoleMoment = false;
     }
 
     blockSignals(false);
@@ -1344,7 +1348,7 @@ namespace Avogadro{
     m_atomPos = 0;
     delete m_dipoleMoment;
     m_dipoleMoment = 0;
-//    delete d->obunitcell;
+    delete d->obunitcell;
     d->obunitcell = 0;
 
     m_bonds.clear();
@@ -1506,6 +1510,7 @@ namespace Avogadro{
     if (m_dipoleMoment) {
       delete m_dipoleMoment; // don't leak -- this is the previous estimate
       m_dipoleMoment = 0;
+      m_estimatedDipoleMoment = true;
     }
 
     unsigned int nAtoms = numAtoms();
