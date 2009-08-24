@@ -429,20 +429,20 @@ namespace Avogadro
         }
       }
 
-      if(!molecule()) {
+      if(!molecule())
         loadFile();
-      }
+
       // read settings
       readSettings();
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
+#ifdef Q_WS_MAC
     else if(event->type() == QEvent::ActivationChange
             || event->type() == QEvent::WindowActivate) {
-#ifdef Q_WS_MAC
       updateWindowMenu();
-#endif
     }
+#endif
 
     return QMainWindow::event(event);
   }
@@ -766,7 +766,6 @@ namespace Avogadro
     // http://labs.trolltech.com/blogs/2007/12/28/spotlight-on-little-things/
     QString shownName = fileName;
     if(fileName.isEmpty()) {
-      setFileName(fileName);
       setMolecule(new Molecule(this));
       ui.actionAllMolecules->setEnabled(false); // only one molecule -- the blank slate
       return true;
@@ -1083,10 +1082,8 @@ namespace Avogadro
   // Not used on Mac: the window is closed via closeEvent() instead
   void MainWindow::closeFile()
   {
-    if ( maybeSave() ) {
-      d->undoStack->clear();
+    if (maybeSave())
       loadFile();
-    }
   }
 
   void MainWindow::closeEvent( QCloseEvent *event )
@@ -1529,7 +1526,7 @@ namespace Avogadro
   {
     QSettings settings; // already set up properly via main.cpp
     QStringList files;
-    settings.setValue( "recentFileList", files );
+    settings.setValue("recentFileList", files);
 
     updateRecentFileActions();
   }
@@ -2331,40 +2328,10 @@ namespace Avogadro
 
   }
 
-  void MainWindow::setMolecule( Molecule *molecule )
-  {
-    if ( d->molecule ) {
-      disconnect( d->molecule, 0, this, 0 );
-      d->molecule->deleteLater();
-    }
-
-    d->undoStack->clear();
-
-    d->molecule = molecule;
-
-    QString newFileName = molecule->fileName();
-    setFileName(newFileName);
-
-    if (newFileName.isEmpty()) {
-      setWindowFilePath(tr("untitled") + ".cml");
-    }
-
-    emit moleculeChanged(molecule);
-
-    connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
-
-    setWindowModified( false );
-  }
-
   void MainWindow::setMolecule(Molecule *molecule, int options)
   {
     if (d->molecule && options & Extension::DeleteOld) {
-      disconnect(d->molecule, 0, this, 0);
+      disconnect(d->molecule, 0);
       d->molecule->deleteLater();
       qDebug() << "Old molecule deleted...";
     }
@@ -2385,12 +2352,14 @@ namespace Avogadro
 
     emit moleculeChanged(molecule);
 
-    connect( d->molecule, SIGNAL( primitiveAdded( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveUpdated( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
-    connect( d->molecule, SIGNAL( primitiveRemoved( Primitive * ) ),
-             this, SLOT( documentWasModified() ) );
+    connect(d->molecule, SIGNAL(primitiveAdded(Primitive *)),
+             this, SLOT(documentWasModified()));
+    connect(d->molecule, SIGNAL(primitiveUpdated(Primitive *)),
+             this, SLOT(documentWasModified() ) );
+    connect(d->molecule, SIGNAL(primitiveRemoved(Primitive *)),
+             this, SLOT(documentWasModified()));
+    connect(d->molecule, SIGNAL(updated()), this, SLOT(documentWasModified()));
+
     setWindowModified(false);
   }
 
@@ -2424,7 +2393,7 @@ namespace Avogadro
     return d->molecule;
   }
 
-  void MainWindow::setFileName( const QString &fileName )
+  void MainWindow::setFileName(const QString &fileName)
   {
     if ( fileName.isEmpty() ) {
       d->fileName.clear();
@@ -2439,19 +2408,16 @@ namespace Avogadro
 
       // Check that the canonical file path exists - only update recent files
       // if it does. Should prevent empty list items on initial open etc.
-      if (d->fileName.isEmpty())
-        return;
+      if (!d->fileName.isEmpty()) {
+        QSettings settings; // already set up properly via main.cpp
+        QStringList files = settings.value("recentFileList").toStringList();
+        files.removeAll(d->fileName);
+        files.prepend(d->fileName);
+        while (files.size() > maxRecentFiles)
+          files.removeLast();
 
-      QSettings settings; // already set up properly via main.cpp
-      QStringList files = settings.value("recentFileList").toStringList();
-      files.removeAll(d->fileName);
-      files.prepend(d->fileName);
-      while (files.size() > maxRecentFiles)
-        files.removeLast();
-
-      qDebug() << "Recent file list:" << files;
-
-      settings.setValue("recentFileList", files);
+        settings.setValue("recentFileList", files);
+      }
 
       // Set the fileName for the actual molecule too
       if (d->molecule)
@@ -2486,7 +2452,6 @@ namespace Avogadro
                               static_cast<int>(maxRecentFiles));
 
     for (int i = 0; i < numRecentFiles; ++i) {
-      qDebug() << "Recent file" << i << files[i];
       d->actionRecentFile[i]->setText(QFileInfo(files[i]).fileName());
       d->actionRecentFile[i]->setData(files[i]);
       d->actionRecentFile[i]->setVisible(true);

@@ -150,12 +150,12 @@ namespace Avogadro {
     {
       case 1: // custom
         m_dipole = Vector3d(m_settingsWidget->xDipoleSpinBox->value(),
-                              m_settingsWidget->yDipoleSpinBox->value(),
-                              m_settingsWidget->zDipoleSpinBox->value());
+                            m_settingsWidget->yDipoleSpinBox->value(),
+                            m_settingsWidget->zDipoleSpinBox->value());
         break;
 
       default: // embedded OBGenericData type -- handle
-        m_dipole = Vector3d(*m_molecule->dipoleMoment());
+        m_dipole = m_molecule->dipoleMoment();
     }
     emit changed();
   }

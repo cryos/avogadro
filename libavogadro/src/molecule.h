@@ -488,7 +488,7 @@ namespace Avogadro {
      * @param A boolean to indicate if the dipole is estimated or not
      * @return The dipole moment of the Molecule.
      */
-    const Eigen::Vector3d * dipoleMoment(bool *estimate = 0) const;
+    Eigen::Vector3d dipoleMoment(bool *estimate = 0) const;
 
     /**
      * Calculate the partial charges on each atom.

@@ -68,13 +68,13 @@ namespace Avogadro {
       void updatePrimitives(Primitive*);
       void updateAtoms(Atom*);
       void updateBonds(Bond*);
-      void moleculeChanged(Molecule *previous, Molecule *next);
+      void moleculeChanged(Molecule *previous);
 
     private:
       QList<QAction *> m_actions;
       Molecule *m_molecule;
       GLWidget *m_widget;
-      
+
       MolecularPropertiesDialog *m_dialog;
   };
 
