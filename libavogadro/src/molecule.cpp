@@ -725,14 +725,14 @@ namespace Avogadro{
     }
     else {
       // Calculate a new estimate (e.g., the geometry changed
-      *m_dipoleMoment = Vector3d(0.0, 0.0, 0.0);
-      foreach (Atom *a, atoms()) {
-        *m_dipoleMoment += *a->pos() * a->partialCharge();
-      }
+      Vector3d dipoleMoment(0.0, 0.0, 0.0);
+      foreach (Atom *a, atoms())
+        dipoleMoment += *a->pos() * a->partialCharge();
+
       if (estimate)
         *estimate = true;
       m_estimatedDipoleMoment = true;
-      return *m_dipoleMoment;
+      return dipoleMoment;
     }
   }
 
