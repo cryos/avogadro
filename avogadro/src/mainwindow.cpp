@@ -489,7 +489,9 @@ namespace Avogadro
 
   void MainWindow::setRenderDebug(bool render)
   {
-    d->glWidget->setRenderDebug(render);
+    ui.actionDebugInformation->setChecked(render);
+    if (d->glWidget && d->glWidget->renderDebug() != render)
+      d->glWidget->setRenderDebug(render);
   }
 
   bool MainWindow::quickRender() const
@@ -500,7 +502,9 @@ namespace Avogadro
 
   void MainWindow::setQuickRender(bool quick)
   {
-    d->glWidget->setQuickRender(quick);
+    ui.actionQuickRender->setChecked(quick);
+    if (d->glWidget && d->glWidget->quickRender() != quick)
+      d->glWidget->setQuickRender(quick);
   }
 
   bool MainWindow::renderUnitCellAxes() const
@@ -512,7 +516,7 @@ namespace Avogadro
   void MainWindow::setRenderUnitCellAxes(bool render)
   {
     ui.actionDisplayUnitCellAxes->setChecked(render);
-    if (d->glWidget->renderUnitCellAxes() != render)
+    if (d->glWidget && d->glWidget->renderUnitCellAxes() != render)
       d->glWidget->setRenderUnitCellAxes(render);
   }
 
