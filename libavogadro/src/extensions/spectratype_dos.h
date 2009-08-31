@@ -56,6 +56,7 @@ namespace Avogadro {
     QString getTSV();
 
   public slots:
+    void toggleIntegratedDOS(bool b);
 
   private slots:
 
@@ -65,6 +66,7 @@ namespace Avogadro {
   private:
     Ui::Tab_DOS ui;
     SpectraDialog *m_dialog;
+    std::vector<double> *m_intDOS;
     double m_fermi;
     uint m_numAtoms;
   };

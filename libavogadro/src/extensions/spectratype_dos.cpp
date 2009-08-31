@@ -33,7 +33,7 @@ using namespace std;
 namespace Avogadro {
 
   DOSSpectra::DOSSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent)
+    SpectraType( parent ), m_dialog(parent), m_intDOS(0)
   {
     m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
@@ -61,6 +61,7 @@ namespace Avogadro {
   void DOSSpectra::writeSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     settings.setValue("spectra/DOS/zeroFermi", ui.cb_fermi->isChecked());
+    settings.setValue("spectra/DOS/showIntegrated", ui.cb_toggleIntegrated->isChecked());
     settings.setValue("spectra/DOS/energyUnits", ui.combo_energy->currentIndex());
     settings.setValue("spectra/DOS/densityUnits", ui.combo_density->currentIndex());
   }
@@ -68,6 +69,8 @@ namespace Avogadro {
   void DOSSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     ui.cb_fermi->setChecked(settings.value("spectra/DOS/zeroFermi", true).toBool());
+    ui.cb_toggleIntegrated->setChecked(settings.value("spectra/DOS/showIntegrated", false).toBool());
+    toggleIntegratedDOS(settings.value("spectra/DOS/showIntegrated", false).toBool());
     ui.combo_energy->setCurrentIndex(settings.value("spectra/DOS/energyUnits", ENERGY_EV).toInt());
     ui.combo_density->setCurrentIndex(settings.value("spectra/DOS/densityUnits", DENSITY_PER_CELL).toInt());
   }
@@ -79,9 +82,22 @@ namespace Avogadro {
     qDebug() << dos;
     if (!dos) return false;
 
+    // OK, we have valid DOS, so store them for later
+    std::vector<double> energies = dos->GetEnergies();
+    std::vector<double> densities= dos->GetDensities();
+    if (m_intDOS) delete m_intDOS;
+    m_intDOS = new std::vector<double> (dos->GetIntegration());
+
+    if (energies.size() == 0 || energies.size() != densities.size())
+      return false;
+
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateImportedSpectra()));
+    connect(ui.cb_toggleIntegrated, SIGNAL(toggled(bool)),
+            this, SLOT(toggleIntegratedDOS(bool)));
     connect(ui.combo_energy, SIGNAL(currentIndexChanged(int)),
             this, SIGNAL(plotDataChanged()));
     connect(ui.combo_density, SIGNAL(currentIndexChanged(int)),
@@ -89,20 +105,39 @@ namespace Avogadro {
     connect(ui.cb_fermi, SIGNAL(toggled(bool)),
             this, SIGNAL(plotDataChanged()));
 
-    // OK, we have valid DOS, so store them for later
-    std::vector<double> energies = dos->GetEnergies();
-    std::vector<double> densities= dos->GetDensities();
-
     // Store in member vars
     m_numAtoms = mol->numAtoms();
     m_fermi = dos->GetFermiEnergy();
     ui.label_fermi->setText(QString::number(m_fermi));
     m_xList->clear();
     m_yList->clear();
+    bool generateInt = false;
+    double d_max = densities.at(0);
+    if (m_intDOS->size() == 0) generateInt = true;
     for (uint i = 0; i < energies.size(); i++){
       m_xList->append(energies.at(i));
-      m_yList->append(densities.at(i));
+      double d = densities.at(i);
+      m_yList->append(d);
+      if (d > d_max) d_max = d;
+      if (generateInt) {
+        if (i == 0)
+          m_intDOS->push_back(d);
+        else
+          m_intDOS->push_back(m_intDOS->at(i-1) + d);
+      }
     }
+
+    // Get max integrated value (should be the last entry)
+    double i_max = m_intDOS->at(m_intDOS->size() - 1);
+
+    // Scale integrated DOS
+    if (i_max != 0 && d_max != 0) {
+      for (uint i = 0; i < m_intDOS->size(); i++)
+        m_intDOS->at(i) = m_intDOS->at(i) / i_max * d_max;
+    }
+
+    setImportedData(*m_xList,
+                    QList<double>::fromVector(QVector<double>::fromStdVector(*m_intDOS)));
 
     return true;
   }
@@ -162,8 +197,28 @@ namespace Avogadro {
 
   void DOSSpectra::getImportedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
+    int energy_index = ui.combo_energy->currentIndex();
+    int density_index = ui.combo_density->currentIndex();
+    bool use_fermi = ui.cb_fermi->isChecked();
+    double density, energy;
+
+    for (int i = 0; i < m_yList_imp->size(); i++) {
+      switch (energy_index) {
+      case ENERGY_EV:
+        energy = m_xList_imp->at(i);
+        break;
+      }
+      switch (density_index) {
+      case DENSITY_PER_CELL:
+        density = m_yList_imp->at(i);
+        break;
+      case DENSITY_PER_ATOM:
+        density = m_yList_imp->at(i) / ((float)m_numAtoms);
+        break;
+      }
+      if (use_fermi) energy -= m_fermi;
+      plotObject->addPoint ( energy, density );
+    }
   }
 
   QString DOSSpectra::getTSV() {
@@ -177,4 +232,12 @@ namespace Avogadro {
     return str;
   }
 
+  void DOSSpectra::toggleIntegratedDOS(bool b) {
+    if (!b) {
+      m_dialog->getUi()->cb_import->setChecked(false);
+      return;
+    }
+    m_dialog->regenerateImportedSpectra();
+    m_dialog->getUi()->cb_import->setChecked(true);
+  }
 }
