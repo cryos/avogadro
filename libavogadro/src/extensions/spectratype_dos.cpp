@@ -62,24 +62,26 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     settings.setValue("spectra/DOS/zeroFermi", ui.cb_fermi->isChecked());
     settings.setValue("spectra/DOS/showIntegrated", ui.cb_toggleIntegrated->isChecked());
+    settings.setValue("spectra/DOS/scaleIntegrated", ui.cb_scaleIntegrated->isChecked());
     settings.setValue("spectra/DOS/energyUnits", ui.combo_energy->currentIndex());
     settings.setValue("spectra/DOS/densityUnits", ui.combo_density->currentIndex());
+    settings.setValue("spectra/DOS/valence", ui.spin_valence->value());
   }
 
   void DOSSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     ui.cb_fermi->setChecked(settings.value("spectra/DOS/zeroFermi", true).toBool());
-    ui.cb_toggleIntegrated->setChecked(settings.value("spectra/DOS/showIntegrated", false).toBool());
-    toggleIntegratedDOS(settings.value("spectra/DOS/showIntegrated", false).toBool());
+    ui.cb_toggleIntegrated->setChecked(settings.value("spectra/DOS/showIntegrated", true).toBool());
+    ui.cb_scaleIntegrated->setChecked(settings.value("spectra/DOS/scaleIntegrated", false).toBool());
     ui.combo_energy->setCurrentIndex(settings.value("spectra/DOS/energyUnits", ENERGY_EV).toInt());
     ui.combo_density->setCurrentIndex(settings.value("spectra/DOS/densityUnits", DENSITY_PER_CELL).toInt());
+    ui.spin_valence->setValue(settings.value("spectra/DOS/valence", 1).toDouble());
   }
 
   bool DOSSpectra::checkForData(Molecule * mol) {
     OpenBabel::OBMol obmol = mol->OBMol();
     //OpenBabel::OBDOSData *dos = static_cast<OpenBabel::OBDOSData*>(obmol.GetData(OpenBabel::OBGenericDataType::DOSData));
     OpenBabel::OBDOSData *dos = static_cast<OpenBabel::OBDOSData*>(obmol.GetData("DOSData"));
-    qDebug() << dos;
     if (!dos) return false;
 
     // OK, we have valid DOS, so store them for later
@@ -98,11 +100,15 @@ namespace Avogadro {
             m_dialog, SLOT(regenerateImportedSpectra()));
     connect(ui.cb_toggleIntegrated, SIGNAL(toggled(bool)),
             this, SLOT(toggleIntegratedDOS(bool)));
+    connect(ui.cb_scaleIntegrated, SIGNAL(toggled(bool)),
+            m_dialog, SLOT(regenerateImportedSpectra()));
     connect(ui.combo_energy, SIGNAL(currentIndexChanged(int)),
             this, SIGNAL(plotDataChanged()));
     connect(ui.combo_density, SIGNAL(currentIndexChanged(int)),
             this, SIGNAL(plotDataChanged()));
     connect(ui.cb_fermi, SIGNAL(toggled(bool)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.spin_valence, SIGNAL(valueChanged(int)),
             this, SIGNAL(plotDataChanged()));
 
     // Store in member vars
@@ -112,28 +118,17 @@ namespace Avogadro {
     m_xList->clear();
     m_yList->clear();
     bool generateInt = false;
-    double d_max = densities.at(0);
     if (m_intDOS->size() == 0) generateInt = true;
     for (uint i = 0; i < energies.size(); i++){
       m_xList->append(energies.at(i));
       double d = densities.at(i);
       m_yList->append(d);
-      if (d > d_max) d_max = d;
       if (generateInt) {
         if (i == 0)
           m_intDOS->push_back(d);
         else
           m_intDOS->push_back(m_intDOS->at(i-1) + d);
       }
-    }
-
-    // Get max integrated value (should be the last entry)
-    double i_max = m_intDOS->at(m_intDOS->size() - 1);
-
-    // Scale integrated DOS
-    if (i_max != 0 && d_max != 0) {
-      for (uint i = 0; i < m_intDOS->size(); i++)
-        m_intDOS->at(i) = m_intDOS->at(i) / i_max * d_max;
     }
 
     setImportedData(*m_xList,
@@ -158,6 +153,9 @@ namespace Avogadro {
     case DENSITY_PER_ATOM:
       plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Density of States (states/atom)"));
       break;
+    case DENSITY_PER_VALENCE:
+      plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Density of States (states/valence electron)"));
+      break;
     }
   }
 
@@ -171,6 +169,15 @@ namespace Avogadro {
     bool use_fermi = ui.cb_fermi->isChecked();
     double density, energy;
 
+    // Update GUI if needed
+    double valence = 1;
+    if (density_index == DENSITY_PER_VALENCE) {
+      ui.spin_valence->setVisible(true);
+      valence = ui.spin_valence->value();
+    }
+    else
+      ui.spin_valence->setVisible(false);
+
     for (int i = 0; i < m_yList->size(); i++) {
       switch (energy_index) {
       case ENERGY_EV:
@@ -182,7 +189,10 @@ namespace Avogadro {
         density = m_yList->at(i);
         break;
       case DENSITY_PER_ATOM:
-        density = m_yList->at(i) / ((float)m_numAtoms);
+        density = m_yList->at(i) / ((double)m_numAtoms);
+        break;
+      case DENSITY_PER_VALENCE:
+        density = m_yList->at(i) / valence;
         break;
       }
       if (use_fermi) energy -= m_fermi;
@@ -202,6 +212,30 @@ namespace Avogadro {
     bool use_fermi = ui.cb_fermi->isChecked();
     double density, energy;
 
+    // Scale to density max if requested
+    double scale = 0; // leave at 0 if no scaling is to be done
+    if (ui.cb_scaleIntegrated->isChecked()) {
+      // Get scaling factors
+      double d_max = m_yList->at(0);
+      double i_max = m_intDOS->at(m_intDOS->size() - 1);
+      for (int i = 0; i < m_yList->size(); i++){
+        double d = m_yList->at(i);
+        if (d > d_max) d_max = d;
+      }
+
+      if (i_max != 0 && d_max != 0)
+        scale = d_max / i_max;
+    }
+
+    // Update GUI if needed
+    double valence = 1;
+    if (density_index == DENSITY_PER_VALENCE) {
+      ui.spin_valence->setVisible(true);
+      valence = ui.spin_valence->value();
+    }
+    else
+      ui.spin_valence->setVisible(false);
+
     for (int i = 0; i < m_yList_imp->size(); i++) {
       switch (energy_index) {
       case ENERGY_EV:
@@ -213,10 +247,14 @@ namespace Avogadro {
         density = m_yList_imp->at(i);
         break;
       case DENSITY_PER_ATOM:
-        density = m_yList_imp->at(i) / ((float)m_numAtoms);
+        density = m_yList_imp->at(i) / ((double)m_numAtoms);
+        break;
+      case DENSITY_PER_VALENCE:
+        density = m_yList_imp->at(i) / valence;
         break;
       }
       if (use_fermi) energy -= m_fermi;
+      if (scale != 0.0) density *= scale;
       plotObject->addPoint ( energy, density );
     }
   }

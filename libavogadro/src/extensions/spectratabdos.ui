@@ -80,6 +80,11 @@
        <string>States / Atom</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>States / Valence electron</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="0" column="1" colspan="2">
@@ -91,22 +96,55 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="4">
+   <item row="0" column="5">
     <widget class="QCheckBox" name="cb_fermi">
      <property name="text">
       <string>Fermi energy at zero</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="4">
+   <item row="0" column="4">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="5">
+    <widget class="QCheckBox" name="cb_scaleIntegrated">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Scale integrated DOS</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
     <widget class="QCheckBox" name="cb_toggleIntegrated">
      <property name="text">
-      <string>Show integrated DOS (scaled)</string>
+      <string>Show integrated DOS</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QSpinBox" name="spin_valence">
+     <property name="suffix">
+      <string> valence electrons</string>
+     </property>
+     <property name="minimum">
+      <number>1</number>
      </property>
     </widget>
    </item>
    <item row="0" column="3">
-    <spacer name="horizontalSpacer_2">
+    <spacer name="horizontalSpacer_3">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -121,5 +159,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cb_toggleIntegrated</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cb_scaleIntegrated</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>486</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
