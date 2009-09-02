@@ -969,7 +969,6 @@ namespace Avogadro
 
     d->color.apply();
     d->color.applyAsMaterials();
-    glBegin(GL_TRIANGLES);
 
     // Render the triangles of the mesh
     std::vector<Eigen::Vector3f> v = mesh.vertices();
@@ -981,11 +980,13 @@ namespace Avogadro
       return;
     }
 
-    for(unsigned int i = 0; i < v.size(); ++i) {
-      glNormal3fv(n.at(i).data());
-      glVertex3fv(v.at(i).data());
-    }
-    glEnd();
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, v.data());
+    glNormalPointer(GL_FLOAT, 0, n.data());
+    glDrawArrays(GL_TRIANGLES, 0, v.size());
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
 
     glPolygonMode(GL_FRONT, GL_FILL);
     glEnable(GL_LIGHTING);
