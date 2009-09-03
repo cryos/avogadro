@@ -46,8 +46,7 @@ namespace Avogadro {
       //delete d;
   }
 
-  Color::Color(const GLfloat red, const GLfloat green,
-               const GLfloat blue, const GLfloat alpha ) : d(0)
+  Color::Color(float red, float green, float blue, float alpha ) : d(0)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -60,8 +59,7 @@ namespace Avogadro {
     setFromPrimitive(p);
   }
 
-  void Color::setFromRgba(const GLfloat red, const GLfloat green,
-                      const GLfloat blue, const GLfloat alpha)
+  void Color::setFromRgba(float red, float green, float blue, float alpha)
   {
     m_channels[0] = red;
     m_channels[1] = green;
@@ -108,7 +106,7 @@ namespace Avogadro {
 
   void Color::applyAsMaterials()
   {
-    GLfloat ambientColor [] = { m_channels[0] / 3, m_channels[1] / 3, m_channels[2] / 3,
+    float ambientColor [] = { m_channels[0] / 3, m_channels[1] / 3, m_channels[2] / 3,
       m_channels[3] };
 
     float s = ( 0.5 + fabs( m_channels[0] - m_channels[1] )
@@ -117,7 +115,7 @@ namespace Avogadro {
 
     float t = 1.0 - s;
 
-    GLfloat specularColor [] = { s + t * m_channels[0],
+    float specularColor [] = { s + t * m_channels[0],
       s + t * m_channels[1],
       s + t * m_channels[2],
       m_channels[3] };
