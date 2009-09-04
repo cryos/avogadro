@@ -982,8 +982,8 @@ namespace Avogadro
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
-    glVertexPointer(3, GL_FLOAT, 0, v.data());
-    glNormalPointer(GL_FLOAT, 0, n.data());
+    glVertexPointer(3, GL_FLOAT, 0, &(v[0]));
+    glNormalPointer(GL_FLOAT, 0, &(n[0]));
     glDrawArrays(GL_TRIANGLES, 0, v.size());
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
