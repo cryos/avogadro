@@ -871,6 +871,7 @@ namespace Avogadro{
 
     if (m_atomConformers.size() < index+1) {
       unsigned int size = m_atomConformers.size();
+      // If there is a gap between the current last conformer and the new index, pad it
       for (unsigned int i = size; i <= index; ++i)
         m_atomConformers.push_back( new vector<Vector3d>(m_atomPos->size()) );
     }
@@ -912,22 +913,44 @@ namespace Avogadro{
     if (m_atomConformers.size() < index + 1)
       return false;
     else {
+      // m_atomPos is resized if atoms are added/deleted, we store it's size here
       unsigned int size = m_atomPos->size();
+      // Set the current m_atomPos
       m_atomPos = m_atomConformers[index];
+      // It is possible new atoms got added since the conformers were set.
+      // Here, we pad m_atomPos to match the current number of atoms.
       while (m_atomPos->size() < size)
         m_atomPos->push_back(Eigen::Vector3d::Zero());
+      // set the current conformer index
       m_currentConformer = index;
       return true;
     }
   }
 
-  void Molecule::setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers)
+  bool Molecule::setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers)
   {
-    //    clearConformers();
-    m_atomConformers.resize(1);
-    for (unsigned int i = 0; i < conformers.size(); ++ i) {
+    if (!conformers.size()) {
+      clearConformers();
+      return true;
+    }
+    unsigned long size = m_atomPos->size();
+
+    // delete any previous conformers
+    for (unsigned int i = 0; i < m_atomConformers.size(); ++i)
+      delete m_atomConformers[i];
+    m_atomConformers.clear();
+ 
+    // add the new conformers
+    for (unsigned int i = 0; i < conformers.size(); ++i) {
+      qDebug() << "conformers[i]->size() = " << conformers[i]->size();
+      if (conformers[i]->size() != size)
+        return false;
       m_atomConformers.push_back(conformers[i]);
     }
+      
+    m_atomPos = m_atomConformers[0];
+    m_currentConformer = 0;
+    return true;
   }
 
   void Molecule::clearConformers()
@@ -938,6 +961,7 @@ namespace Avogadro{
       m_atomConformers.resize(1);
       m_atomPos = m_atomConformers[0];
     }
+    m_currentConformer = 0;
   }
 
   unsigned int Molecule::numConformers() const
