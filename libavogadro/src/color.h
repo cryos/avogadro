@@ -174,7 +174,7 @@ namespace Avogadro {
      * Sets this color to be the one used by OpenGL for rendering
      * when lighting is disabled.
      */
-    inline virtual void apply()
+    virtual void apply()
     {
       glColor4fv(m_channels);
     }
