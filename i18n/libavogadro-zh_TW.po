@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-08-03 14:18-0400\n"
-"PO-Revision-Date: 2009-06-23 05:07+0000\n"
+"POT-Creation-Date: 2009-09-08 22:59-0400\n"
+"PO-Revision-Date: 2009-08-18 06:07+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
+"X-Launchpad-Export-Date: 2009-09-09 02:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "軸"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "在開始就呈現 x, y, z 軸"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1889
 msgid "Ball and Stick"
 msgstr "球與棒 (原子與鍵)"
 
@@ -662,16 +662,16 @@ msgid "Renders molecules as sticks"
 msgstr "以棒狀呈現分子"
 
 #: src/engines/surfaceengine.cpp:232
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr "凡得瓦表面"
+msgstr "凡得瓦, 等值面 =%L1"
 
 #: src/engines/surfaceengine.cpp:238
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr "%1, 等值面 = %L2"
+msgstr "電子密度, 等值面 = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -684,9 +684,8 @@ msgid "Surfaces"
 msgstr "表面/曲面"
 
 #: src/engines/surfaceengine.h:47
-#, fuzzy
 msgid "Renders molecular isosurface meshes"
-msgstr "呈現分子的偶極矩"
+msgstr "呈現分子網狀等值面"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -759,7 +758,7 @@ msgstr "影片檔 (*.avi)"
 #: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
 #: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
-#: src/extensions/unitcellextension.cpp:94
+#: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
 msgstr "Avogadro 亞佛加厥"
 
@@ -778,7 +777,7 @@ msgstr "動畫"
 #: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
-#: src/extensions/surfaceextension.cpp:92
+#: src/extensions/surfaceextension.cpp:93
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -1251,7 +1250,7 @@ msgstr "把氫原子換成甲基"
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
 msgstr "建立"
 
@@ -1326,7 +1325,7 @@ msgstr "插入 SMILES 文字化學式片斷"
 
 #: src/extensions/insertfragmentdialog.ui:45
 #: src/extensions/insertfragmentextension.cpp:171
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
 msgstr "插入片斷"
 
@@ -1450,9 +1449,11 @@ msgstr "檢視"
 msgid "&Properties"
 msgstr "性質"
 
-#: src/extensions/molecularpropextension.cpp:122
-msgid "Estimated Dipole Moment (D):"
-msgstr "估計的偶極矩 (D):"
+#: src/extensions/molecularpropextension.cpp:132
+#, fuzzy
+msgctxt "Dipole moment data not available."
+msgid "N/A"
+msgstr "無法使用"
 
 #: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
@@ -1543,7 +1544,7 @@ msgstr "取自 PDB (蛋白質資料庫)..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "讀取化學結構..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
@@ -1558,14 +1559,12 @@ msgid "PDB entry to download."
 msgstr "可供下載 PDB 的項目"
 
 #: src/extensions/networkfetchextension.cpp:110
-#, fuzzy
 msgid "Chemical Name"
-msgstr "Ghemical"
+msgstr "化合物名稱"
 
 #: src/extensions/networkfetchextension.cpp:111
-#, fuzzy
 msgid "Chemical structure to download."
-msgstr "可供下載分子的 URL"
+msgstr "下載化學結構."
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
@@ -2108,7 +2107,7 @@ msgstr "PWscf 紅外線資料 (*.out)"
 #: src/extensions/spectradialog.cpp:530
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
-msgstr ""
+msgstr "Turbomole 紅外線資料 (控制)"
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
@@ -2198,11 +2197,11 @@ msgstr "光譜"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "從量子化學計算顯示光譜的資料"
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "沒有強度"
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2210,11 +2209,11 @@ msgid ""
 msgstr ""
 "您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
 
-#: src/extensions/spectratype_ir.cpp:135
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波數 (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:278
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "化學位移 (ppm)"
 
@@ -2241,7 +2240,7 @@ msgid "Build and display crystallographic super cells"
 msgstr "建立及呈現結晶學上的超級晶格"
 
 #: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
-#: src/extensions/surfaceextension.cpp:622
+#: src/extensions/surfaceextension.cpp:623
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2250,80 +2249,76 @@ msgstr "MO %L1"
 #: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
-msgstr ""
+msgstr "(HOMO, 最高被佔有軌域)"
 
 #: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
-msgstr ""
+msgstr "(LUMO, 最低未被佔有軌域)"
 
 #: src/extensions/surfacedialog.cpp:249
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
-msgstr ""
+msgstr "無"
 
 #: src/extensions/surfacedialog.cpp:251
-#, fuzzy
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
-msgstr "繁得瓦"
+msgstr "凡得瓦"
 
 #: src/extensions/surfacedialog.cpp:253
-#, fuzzy
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
 msgstr "靜電位能"
 
 #: src/extensions/surfacedialog.cpp:256
-#, fuzzy
 msgctxt "Electron density surface type"
 msgid "Electron Density"
 msgstr "電子密度"
 
 #: src/extensions/surfacedialog.cpp:258
-#, fuzzy
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr "呈現分子軌域"
+msgstr "分子軌域"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
-msgstr ""
+msgstr "錯誤-未定義之種類"
 
-#: src/extensions/surfaceextension.cpp:67
+#: src/extensions/surfaceextension.cpp:68
 msgid "Create Surfaces..."
 msgstr "產生外觀..."
 
-#: src/extensions/surfaceextension.cpp:356
-#: src/extensions/surfaceextension.cpp:386
-#: src/extensions/surfaceextension.cpp:413
-#: src/extensions/surfaceextension.cpp:447
-#: src/extensions/surfaceextension.cpp:475
+#: src/extensions/surfaceextension.cpp:357
+#: src/extensions/surfaceextension.cpp:387
+#: src/extensions/surfaceextension.cpp:414
+#: src/extensions/surfaceextension.cpp:448
+#: src/extensions/surfaceextension.cpp:476
 msgid "Abort Calculation"
 msgstr "停止計算"
 
-#: src/extensions/surfaceextension.cpp:361
+#: src/extensions/surfaceextension.cpp:362
 msgid "Calculating VdW Cube"
 msgstr "計算 VdW 立方"
 
-#: src/extensions/surfaceextension.cpp:391
-#: src/extensions/surfaceextension.cpp:417
+#: src/extensions/surfaceextension.cpp:392
+#: src/extensions/surfaceextension.cpp:418
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "計算 MO %L1"
 
-#: src/extensions/surfaceextension.cpp:452
-#: src/extensions/surfaceextension.cpp:480
+#: src/extensions/surfaceextension.cpp:453
+#: src/extensions/surfaceextension.cpp:481
 msgid "Calculating Electron Density"
 msgstr "計算電子密度"
 
-#: src/extensions/surfaceextension.cpp:566
+#: src/extensions/surfaceextension.cpp:567
 msgid "VdW"
-msgstr ""
+msgstr "VdW"
 
-#: src/extensions/surfaceextension.cpp:594
+#: src/extensions/surfaceextension.cpp:595
 msgid "Electron Density"
 msgstr "電子密度"
 
@@ -2404,7 +2399,7 @@ msgstr ""
 msgid "Unit Cell Parameters..."
 msgstr "單位晶胞參數..."
 
-#: src/extensions/unitcellextension.cpp:95
+#: src/extensions/unitcellextension.cpp:114
 msgid ""
 "This document is currently an isolated molecule.\n"
 "\n"
@@ -2508,35 +2503,35 @@ msgstr "無效的 OpenGL 上下文"
 msgid "OpenGL error"
 msgstr "OpenGL 錯誤"
 
-#: src/glwidget.cpp:1006
+#: src/glwidget.cpp:1012
 msgid "Debug Information"
 msgstr "除錯訊息"
 
-#: src/glwidget.cpp:1007
+#: src/glwidget.cpp:1013
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1010
+#: src/glwidget.cpp:1016
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "可視大小: %L1 x %L2"
 
-#: src/glwidget.cpp:1012
+#: src/glwidget.cpp:1018
 msgid "No molecule set"
 msgstr "沒有設定分子"
 
-#: src/glwidget.cpp:1017
+#: src/glwidget.cpp:1023
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "原子: %L1"
 
-#: src/glwidget.cpp:1020
+#: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "鍵: %L1"
 
-#: src/molecule.cpp:106
+#: src/molecule.cpp:109
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "未命名"
@@ -2812,7 +2807,7 @@ msgid "Molecular Dynamics (900K)"
 msgstr "分子動力學 (900 K)"
 
 #: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
-#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
+#: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "開始"
 
@@ -2824,7 +2819,7 @@ msgstr "固定原子可移動"
 msgid "Ignored atoms are movable"
 msgstr "被忽略的原子可移動"
 
-#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "停止"
 
@@ -2844,31 +2839,31 @@ msgstr "自動最適化分子的幾何構形"
 msgid "AutoOptimization Settings"
 msgstr "自動最適化設定"
 
-#: src/tools/autorotatetool.cpp:52
+#: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
 msgstr "自動旋轉工具"
 
-#: src/tools/autorotatetool.cpp:247
+#: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
 msgstr "繞 X 軸旋轉："
 
-#: src/tools/autorotatetool.cpp:253
+#: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
 msgstr "繞 X 軸旋轉"
 
-#: src/tools/autorotatetool.cpp:263
+#: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
 msgstr "繞 Y 軸旋轉："
 
-#: src/tools/autorotatetool.cpp:268
+#: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
 msgstr "繞 Y 軸旋轉："
 
-#: src/tools/autorotatetool.cpp:278
+#: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
 msgstr "繞 Z 軸旋轉："
 
-#: src/tools/autorotatetool.cpp:283
+#: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
 msgstr "繞 Z 軸旋轉"
 
@@ -2876,7 +2871,7 @@ msgstr "繞 Z 軸旋轉"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
 #: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "重設"
@@ -3019,14 +3014,12 @@ msgid "Distance(s):"
 msgstr "距離："
 
 #: src/tools/clickmeasuretool.cpp:290
-#, fuzzy
 msgid "Angle:"
-msgstr "角度"
+msgstr "角度："
 
 #: src/tools/clickmeasuretool.cpp:302
-#, fuzzy
 msgid "Dihedral:"
-msgstr "二平面角"
+msgstr "二面體"
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
@@ -3040,28 +3033,28 @@ msgstr "測量鍵長, 角度及二平面"
 msgid "Measure Settings"
 msgstr "測量功能設定"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1750
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:1750
 msgid "Add Atom"
 msgstr "新增原子"
 
-#: src/tools/drawcommand.cpp:383
+#: src/tools/drawcommand.cpp:415
 msgid "Delete Atom"
 msgstr "刪除原子"
 
-#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+#: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
 msgstr "新增鍵"
 
-#: src/tools/drawcommand.cpp:718
+#: src/tools/drawcommand.cpp:757
 msgid "Delete Bond"
 msgstr "刪除鍵"
 
-#: src/tools/drawcommand.cpp:787
+#: src/tools/drawcommand.cpp:833
 msgid "Change Element"
 msgstr "變更元素"
 
-#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+#: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:485
 msgid "Change Bond Order"
 msgstr "改變鍵級"
 
@@ -3077,43 +3070,43 @@ msgstr ""
 "滑鼠左鍵：點擊並拖曳以產生原子與結合鍵\n"
 "滑鼠右鍵：刪除原子"
 
-#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+#: src/tools/drawtool.cpp:393 src/tools/drawtool.cpp:399
 msgid "Draw Atom"
 msgstr "繪製原子"
 
-#: src/tools/drawtool.cpp:423
+#: src/tools/drawtool.cpp:440
 msgid "Draw Bond"
 msgstr "繪製鍵"
 
-#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:449 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "繪圖"
 
-#: src/tools/drawtool.cpp:736
+#: src/tools/drawtool.cpp:757
 msgid "Element:"
 msgstr "元素："
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:784:556
 msgid "Other..."
 msgstr "其他..."
 
-#: src/tools/drawtool.cpp:767
+#: src/tools/drawtool.cpp:788
 msgid "Bond Order:"
 msgstr "鍵的級數:"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:793
 msgid "Single"
 msgstr "單鍵"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:794
 msgid "Double"
 msgstr "雙鍵"
 
-#: src/tools/drawtool.cpp:774
+#: src/tools/drawtool.cpp:795
 msgid "Triple"
 msgstr "三鍵"
 
-#: src/tools/drawtool.cpp:789
+#: src/tools/drawtool.cpp:810
 msgid "Adjust Hydrogens"
 msgstr "自動加上氫原子"
 
@@ -5818,7 +5811,7 @@ msgstr "Surface 種類:"
 
 #: src/extensions/surfacedialog.ui:41
 msgid "Van der Waals"
-msgstr "繁得瓦"
+msgstr "凡得瓦"
 
 #: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
@@ -5834,7 +5827,7 @@ msgstr "上色是依照:"
 
 #: src/extensions/surfacedialog.ui:120
 msgid "Nothing"
-msgstr ""
+msgstr "無"
 
 #: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
@@ -6014,110 +6007,14 @@ msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com"
 
-#~ msgid "Orbitals"
-#~ msgstr "軌域"
-
-#~ msgid "Surface"
-#~ msgstr "分子表面 (以紅色表示)"
-
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "呈現計算的分子表面"
-
-#~ msgid "Name"
-#~ msgstr "名字"
-
-#~ msgid "ESP"
-#~ msgstr "ESP"
-
-#~ msgid "VdW Cube"
-#~ msgstr "VdW 立方"
-
-#~ msgid "Color:"
-#~ msgstr "顏色:"
-
-#~ msgid "Electrostatic Potential (ESP)"
-#~ msgstr "靜電力（ESP）"
-
-#~ msgid "Add Directory"
-#~ msgstr "新增目錄"
-
-#~ msgid "Reset List"
-#~ msgstr "重設清單"
-
-#~ msgid "Cubes"
-#~ msgstr "立方"
-
-#~ msgid "Cube Dimensions"
-#~ msgstr "立方的維度"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "z"
-#~ msgstr "z"
-
-#~ msgid "Origin:"
-#~ msgstr "原點："
-
-#~ msgid "Max:"
-#~ msgstr "最大:"
-
-#~ msgid "Steps:"
-#~ msgstr "步驟："
-
-#~ msgid "Step Size:"
-#~ msgstr "一步的大小:"
-
-#~ msgid "Calculate MO"
-#~ msgstr "計算 MO"
-
-#~ msgid "Calculate All MOs"
-#~ msgstr "計算所有 MOs"
-
-#~ msgid "Calculate Electron Density"
-#~ msgstr "計算電子密度"
-
-#~ msgid "Calculate Van der Waals Cube"
-#~ msgstr "計算凡得瓦立方"
-
-#~ msgid "Isosurfaces"
-#~ msgstr "Isosurfaces 等曲面"
-
-#~ msgid "Cube:"
-#~ msgstr "立方:"
-
-#~ msgid "0.02"
-#~ msgstr "0.02"
-
-#~ msgid "Cube Range:"
-#~ msgstr "立方範圍:"
-
-#~ msgid "0.000"
-#~ msgstr "0.000"
-
-#~ msgid "1.000"
-#~ msgstr "1.000"
-
-#~ msgid "Calculate Mesh"
-#~ msgstr "計算網狀"
-
-#~ msgid "ESP (approximate)"
-#~ msgstr "ESP (概略)"
-
-#~ msgid "Distance:"
-#~ msgstr "距離:"
-
-#~ msgid "0.0"
-#~ msgstr "0.0"
-
-#~ msgid "Range:"
-#~ msgstr "範圍:"
+#~ msgid "Estimated Dipole Moment (D):"
+#~ msgstr "估計的偶極矩 (D):"
 
 #~ msgid "Caesium"
 #~ msgstr "Caesium (銫)"
+
+#~ msgid "Surface"
+#~ msgstr "分子表面 (以紅色表示)"
 
 #~ msgid "Conformers..."
 #~ msgstr "構形異構物..."
@@ -6161,6 +6058,9 @@ msgstr ""
 #~ msgid "Stop Inserting"
 #~ msgstr "停止插入"
 
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "靜電力（ESP）"
+
 #~ msgid "Single Point Entry"
 #~ msgstr "Single Point Entry"
 
@@ -6169,6 +6069,18 @@ msgstr ""
 
 #~ msgid "SVWN: Slater exhange + VWN correlation"
 #~ msgstr "SVWN: Slater exhange + VWN correlation"
+
+#~ msgid "Origin:"
+#~ msgstr "原點："
+
+#~ msgid "Steps:"
+#~ msgstr "步驟："
+
+#~ msgid "Add Directory"
+#~ msgstr "新增目錄"
+
+#~ msgid "Reset List"
+#~ msgstr "重設清單"
 
 #~ msgid "Generate from SMILES:"
 #~ msgstr "從 SMILES 產生："

@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-08-03 14:18-0400\n"
+"POT-Creation-Date: 2009-09-08 22:59-0400\n"
 "PO-Revision-Date: 2009-06-12 14:10+0000\n"
 "Last-Translator: el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
+"X-Launchpad-Export-Date: 2009-09-09 02:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -559,7 +559,7 @@ msgstr "Eixos"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Renderitza els eixos x, y, i z a l'origen"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1889
 msgid "Ball and Stick"
 msgstr "Boles i bastons"
 
@@ -665,16 +665,16 @@ msgid "Renders molecules as sticks"
 msgstr "Renderitza molècules com bastons"
 
 #: src/engines/surfaceengine.cpp:232
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr "Superfície de Van der Waals"
+msgstr ""
 
 #: src/engines/surfaceengine.cpp:238
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr "%1, isosurface = %L2"
+msgstr ""
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -687,9 +687,8 @@ msgid "Surfaces"
 msgstr "Superfícies"
 
 #: src/engines/surfaceengine.h:47
-#, fuzzy
 msgid "Renders molecular isosurface meshes"
-msgstr "Renderitza els moments dipolars"
+msgstr ""
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -764,7 +763,7 @@ msgstr "fitxers de vídeo (*.avi)"
 #: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
 #: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
-#: src/extensions/unitcellextension.cpp:94
+#: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -783,7 +782,7 @@ msgstr "Animació…"
 #: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
-#: src/extensions/surfaceextension.cpp:92
+#: src/extensions/surfaceextension.cpp:93
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -1272,7 +1271,7 @@ msgstr "Canvia d'H a metil"
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
 msgstr "&Compila"
 
@@ -1347,7 +1346,7 @@ msgstr ""
 
 #: src/extensions/insertfragmentdialog.ui:45
 #: src/extensions/insertfragmentextension.cpp:171
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
 msgstr "Insereix un fragment"
 
@@ -1476,9 +1475,11 @@ msgstr "&Visualitza"
 msgid "&Properties"
 msgstr "&Propietats"
 
-#: src/extensions/molecularpropextension.cpp:122
-msgid "Estimated Dipole Moment (D):"
-msgstr ""
+#: src/extensions/molecularpropextension.cpp:132
+#, fuzzy
+msgctxt "Dipole moment data not available."
+msgid "N/A"
+msgstr "N/A"
 
 #: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
@@ -1589,9 +1590,8 @@ msgid "PDB entry to download."
 msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:110
-#, fuzzy
 msgid "Chemical Name"
-msgstr "Programari químic GNU GPL"
+msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:111
 msgid "Chemical structure to download."
@@ -2232,22 +2232,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:135
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:278
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2275,7 +2275,7 @@ msgid "Build and display crystallographic super cells"
 msgstr "Construeix i mostra super cel·les cristalogràfiques"
 
 #: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
-#: src/extensions/surfaceextension.cpp:622
+#: src/extensions/surfaceextension.cpp:623
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2297,67 +2297,63 @@ msgid "Nothing"
 msgstr ""
 
 #: src/extensions/surfacedialog.cpp:251
-#, fuzzy
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
-msgstr "Van der Waals"
+msgstr ""
 
 #: src/extensions/surfacedialog.cpp:253
-#, fuzzy
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
-msgstr "Potencial electrostàtic (ESP)"
+msgstr ""
 
 #: src/extensions/surfacedialog.cpp:256
-#, fuzzy
 msgctxt "Electron density surface type"
 msgid "Electron Density"
-msgstr "Densitat d'electrons"
+msgstr ""
 
 #: src/extensions/surfacedialog.cpp:258
-#, fuzzy
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr "Renderitza orbitals moleculars"
+msgstr ""
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:67
+#: src/extensions/surfaceextension.cpp:68
 msgid "Create Surfaces..."
 msgstr "Crea superfícies..."
 
-#: src/extensions/surfaceextension.cpp:356
-#: src/extensions/surfaceextension.cpp:386
-#: src/extensions/surfaceextension.cpp:413
-#: src/extensions/surfaceextension.cpp:447
-#: src/extensions/surfaceextension.cpp:475
+#: src/extensions/surfaceextension.cpp:357
+#: src/extensions/surfaceextension.cpp:387
+#: src/extensions/surfaceextension.cpp:414
+#: src/extensions/surfaceextension.cpp:448
+#: src/extensions/surfaceextension.cpp:476
 msgid "Abort Calculation"
 msgstr "Cancel·la el calcul"
 
-#: src/extensions/surfaceextension.cpp:361
+#: src/extensions/surfaceextension.cpp:362
 msgid "Calculating VdW Cube"
 msgstr "Calcula el cub VdW"
 
-#: src/extensions/surfaceextension.cpp:391
-#: src/extensions/surfaceextension.cpp:417
+#: src/extensions/surfaceextension.cpp:392
+#: src/extensions/surfaceextension.cpp:418
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "Calculant MO %L1"
 
-#: src/extensions/surfaceextension.cpp:452
-#: src/extensions/surfaceextension.cpp:480
+#: src/extensions/surfaceextension.cpp:453
+#: src/extensions/surfaceextension.cpp:481
 msgid "Calculating Electron Density"
 msgstr "Calcula la densitat d'electrons"
 
-#: src/extensions/surfaceextension.cpp:566
+#: src/extensions/surfaceextension.cpp:567
 msgid "VdW"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:594
+#: src/extensions/surfaceextension.cpp:595
 msgid "Electron Density"
 msgstr "Densitat d'electrons"
 
@@ -2440,7 +2436,7 @@ msgstr ""
 msgid "Unit Cell Parameters..."
 msgstr "Paràmetres de la cel·la unitat..."
 
-#: src/extensions/unitcellextension.cpp:95
+#: src/extensions/unitcellextension.cpp:114
 msgid ""
 "This document is currently an isolated molecule.\n"
 "\n"
@@ -2547,35 +2543,35 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "Error OpenGL"
 
-#: src/glwidget.cpp:1006
+#: src/glwidget.cpp:1012
 msgid "Debug Information"
 msgstr "Informació desenvolupament"
 
-#: src/glwidget.cpp:1007
+#: src/glwidget.cpp:1013
 #, qt-format
 msgid "FPS: %L1"
 msgstr ""
 
-#: src/glwidget.cpp:1010
+#: src/glwidget.cpp:1016
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr ""
 
-#: src/glwidget.cpp:1012
+#: src/glwidget.cpp:1018
 msgid "No molecule set"
 msgstr ""
 
-#: src/glwidget.cpp:1017
+#: src/glwidget.cpp:1023
 #, qt-format
 msgid "Atoms: %L1"
 msgstr ""
 
-#: src/glwidget.cpp:1020
+#: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
 msgstr ""
 
-#: src/molecule.cpp:106
+#: src/molecule.cpp:109
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr ""
@@ -2856,7 +2852,7 @@ msgid "Molecular Dynamics (900K)"
 msgstr "Dinàmica molecular (900K)"
 
 #: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
-#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
+#: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Inicia"
 
@@ -2868,7 +2864,7 @@ msgstr "Els àtoms fixats es poden moure"
 msgid "Ignored atoms are movable"
 msgstr "Els àtoms ignorats es poden moure"
 
-#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Atura"
 
@@ -2888,31 +2884,31 @@ msgstr "Optimització automàtica de la geometria molecular"
 msgid "AutoOptimization Settings"
 msgstr "Configuració d'Autooptimització"
 
-#: src/tools/autorotatetool.cpp:52
+#: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
 msgstr "Eina d'autogir"
 
-#: src/tools/autorotatetool.cpp:247
+#: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
 msgstr "rotació x:"
 
-#: src/tools/autorotatetool.cpp:253
+#: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
 msgstr "rotació x"
 
-#: src/tools/autorotatetool.cpp:263
+#: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
 msgstr "rotació y:"
 
-#: src/tools/autorotatetool.cpp:268
+#: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
 msgstr "rotació y"
 
-#: src/tools/autorotatetool.cpp:278
+#: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
 msgstr "rotació z:"
 
-#: src/tools/autorotatetool.cpp:283
+#: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
 msgstr "rotació z"
 
@@ -2920,7 +2916,7 @@ msgstr "rotació z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
 #: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Inicialització"
@@ -3067,9 +3063,8 @@ msgid "Distance(s):"
 msgstr "Distància(es):"
 
 #: src/tools/clickmeasuretool.cpp:290
-#, fuzzy
 msgid "Angle:"
-msgstr "Angle"
+msgstr ""
 
 #: src/tools/clickmeasuretool.cpp:302
 msgid "Dihedral:"
@@ -3087,28 +3082,28 @@ msgstr "Mesura de longituds d'enllaç, angles i dièdrics"
 msgid "Measure Settings"
 msgstr "Configuració de mesuraments"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1750
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:1750
 msgid "Add Atom"
 msgstr "Afig un àtom"
 
-#: src/tools/drawcommand.cpp:383
+#: src/tools/drawcommand.cpp:415
 msgid "Delete Atom"
 msgstr "Suprimeix l'àtom"
 
-#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+#: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
 msgstr "Afig un enllaç"
 
-#: src/tools/drawcommand.cpp:718
+#: src/tools/drawcommand.cpp:757
 msgid "Delete Bond"
 msgstr "Suprimeix l'enllaç"
 
-#: src/tools/drawcommand.cpp:787
+#: src/tools/drawcommand.cpp:833
 msgid "Change Element"
 msgstr "Canvia l'element"
 
-#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+#: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:485
 msgid "Change Bond Order"
 msgstr "Canvia l'orde de l'enllaç"
 
@@ -3125,43 +3120,43 @@ msgstr ""
 "àtoms i enllaços\n"
 "Botó secundari (dret) del ratolí: Suprimeix l'àtom"
 
-#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+#: src/tools/drawtool.cpp:393 src/tools/drawtool.cpp:399
 msgid "Draw Atom"
 msgstr "Dibuixa l'àtom"
 
-#: src/tools/drawtool.cpp:423
+#: src/tools/drawtool.cpp:440
 msgid "Draw Bond"
 msgstr "Dibuixa l'enllaç"
 
-#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:449 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "Dibuixa"
 
-#: src/tools/drawtool.cpp:736
+#: src/tools/drawtool.cpp:757
 msgid "Element:"
 msgstr "Element:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:784:556
 msgid "Other..."
 msgstr "Altre..."
 
-#: src/tools/drawtool.cpp:767
+#: src/tools/drawtool.cpp:788
 msgid "Bond Order:"
 msgstr "Orde d'enllaç:"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:793
 msgid "Single"
 msgstr "Senzill"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:794
 msgid "Double"
 msgstr "Doble"
 
-#: src/tools/drawtool.cpp:774
+#: src/tools/drawtool.cpp:795
 msgid "Triple"
 msgstr "Triple"
 
-#: src/tools/drawtool.cpp:789
+#: src/tools/drawtool.cpp:810
 msgid "Adjust Hydrogens"
 msgstr "Ajusta els hidrògens"
 
@@ -6060,8 +6055,17 @@ msgstr ""
 "libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
 "devel@lists.sourceforge.net,,el.libre@gmail.com"
 
+#~ msgid "Caesium"
+#~ msgstr "Cesi"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Renderitza l'estructura de la proteïna secundaria"
+
 #~ msgid "Orbitals"
 #~ msgstr "Orbitals"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Renderitza orbitals moleculars"
 
 #~ msgid "Surface"
 #~ msgstr "Superfície"
@@ -6069,8 +6073,8 @@ msgstr ""
 #~ msgid "Renders computed molecular surfaces"
 #~ msgstr "Renderitza superfícies moleculars computades"
 
-#~ msgid "Name"
-#~ msgstr "Nom"
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Anima trajectòries, reaccions, i vibracions."
 
 #~ msgid "ESP"
 #~ msgstr "ESP"
@@ -6078,14 +6082,79 @@ msgstr ""
 #~ msgid "VdW Cube"
 #~ msgstr "Cub VdW"
 
+#~ msgid "Conformers..."
+#~ msgstr "Confòrmers..."
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
+#~ "inclou un editor de coordenades cartesianes."
+
+#~ msgid "Atomic Number"
+#~ msgstr "Nombre atòmic"
+
+#~ msgid "Atoms"
+#~ msgstr "Àtoms"
+
+#~ msgid "Bonds"
+#~ msgstr "Enllaços"
+
+#~ msgid "Residues"
+#~ msgstr "Residus"
+
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "Distància (1->2): %1 %2"
+
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "Distància (2->3): %1 %2"
+
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "Distància (3->4): %1 %2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "Biblioteca de fragments…"
+
+#~ msgid "Stop Inserting"
+#~ msgstr "Cancel·la les insercions"
+
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "Feu clic per a inserir el fragment en eixa posició."
+
 #~ msgid "Color:"
 #~ msgstr "color:"
 
-#~ msgid "Add Directory"
-#~ msgstr "Afig un directori"
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Potencial electrostàtic (ESP)"
 
-#~ msgid "Reset List"
-#~ msgstr "Reinicia la llista"
+#~ msgid "Single Point Entry"
+#~ msgstr "Punt d'entrada senzill"
+
+#~ msgid "Huckel"
+#~ msgstr "Huckel"
+
+#~ msgid "SVWN: Slater exhange + VWN correlation"
+#~ msgstr "SVWN: Intercanvi Slater + Correlació VWN"
+
+#~ msgid ""
+#~ "Load a second confromation and computer a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Carrega el segon estereoisòmer i calcula una interpolació linial amb "
+#~ "l'actual estereoisòmer."
 
 #~ msgid "Cubes"
 #~ msgstr "Cubs"
@@ -6147,6 +6216,9 @@ msgstr ""
 #~ msgid "Calculate Mesh"
 #~ msgstr "Calcula l'acoplament"
 
+#~ msgid "Van der Waals Surface"
+#~ msgstr "Superfície de Van der Waals"
+
 #~ msgid "ESP (approximate)"
 #~ msgstr "ESP (aproximat)"
 
@@ -6159,85 +6231,14 @@ msgstr ""
 #~ msgid "Range:"
 #~ msgstr "Rang:"
 
-#~ msgid "Caesium"
-#~ msgstr "Cesi"
-
-#~ msgid "Renders protein secundary structure"
-#~ msgstr "Renderitza l'estructura de la proteïna secundaria"
-
-#~ msgid "Animate trajectories, reactions, and vibratins."
-#~ msgstr "Anima trajectòries, reaccions, i vibracions."
-
-#~ msgid "Conformers..."
-#~ msgstr "Confòrmers..."
-
-#~ msgid ""
-#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
-#~ "includes a cartesian coordinate editor."
-#~ msgstr ""
-#~ "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
-#~ "inclou un editor de coordenades cartesianes."
-
-#~ msgid "Atomic Number"
-#~ msgstr "Nombre atòmic"
-
-#~ msgid "Atoms"
-#~ msgstr "Àtoms"
-
-#~ msgid "Bonds"
-#~ msgstr "Enllaços"
-
-#~ msgid "Residues"
-#~ msgstr "Residus"
-
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Distància (1->2): %1 %2"
-
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Distància (2->3): %1 %2"
-
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Distància (3->4): %1 %2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Fragment Library..."
-#~ msgstr "Biblioteca de fragments…"
-
-#~ msgid "Stop Inserting"
-#~ msgstr "Cancel·la les insercions"
-
-#~ msgid "Click to insert the fragment at that position."
-#~ msgstr "Feu clic per a inserir el fragment en eixa posició."
-
-#~ msgid "Single Point Entry"
-#~ msgstr "Punt d'entrada senzill"
-
-#~ msgid "Huckel"
-#~ msgstr "Huckel"
-
-#~ msgid "SVWN: Slater exhange + VWN correlation"
-#~ msgstr "SVWN: Intercanvi Slater + Correlació VWN"
-
-#~ msgid ""
-#~ "Load a second confromation and computer a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Carrega el segon estereoisòmer i calcula una interpolació linial amb "
-#~ "l'actual estereoisòmer."
-
 #~ msgid "Frequency (cm-1)"
 #~ msgstr "Freqüència (cm-1)"
+
+#~ msgid "Add Directory"
+#~ msgstr "Afig un directori"
+
+#~ msgid "Reset List"
+#~ msgstr "Reinicia la llista"
 
 #~ msgid "Generate from SMILES:"
 #~ msgstr "Generat a partir de SMILES:"
