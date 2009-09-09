@@ -131,13 +131,11 @@ namespace Avogadro{
 
   void Molecule::setFileName(const QString& name)
   {
-    QWriteLocker lock(m_lock);
     m_fileName = name;
   }
 
   QString Molecule::fileName() const
   {
-    QReadLocker lock(m_lock);
     return m_fileName;
   }
 
@@ -152,7 +150,6 @@ namespace Avogadro{
   {
     Atom *atom = new Atom(this);
 
-    m_lock->lockForWrite();
     if (!m_atomPos) {
       m_atomConformers.resize(1);
       m_atomConformers[0] = new vector<Vector3d>;
@@ -167,7 +164,6 @@ namespace Avogadro{
     m_atoms[id] = atom;
     // Does this still want to have the same index as before somehow?
     m_atomList.push_back(atom);
-    m_lock->unlock();
 
     atom->setId(id);
     atom->setIndex(m_atomList.size()-1);
@@ -179,16 +175,14 @@ namespace Avogadro{
 
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
-    if (id < m_atomPos->size()) {
-      m_lock->lockForWrite();
+    if (id < m_atomPos->size())
       (*m_atomPos)[id] = vec;
-      m_lock->unlock();
-    }
   }
 
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d *vec)
   {
-    if (vec) setAtomPos(id, *vec);
+    if (vec)
+      setAtomPos(id, *vec);
   }
 
   void Molecule::removeAtom(Atom *atom)
@@ -199,7 +193,6 @@ namespace Avogadro{
         removeBond(bond);
       }
 
-      m_lock->lockForWrite();
       m_atoms[atom->id()] = 0;
       // 1 based arrays stored/shown to user
       int index = atom->index();
@@ -207,7 +200,6 @@ namespace Avogadro{
       for (int i = index; i < m_atomList.size(); ++i)
         m_atomList[i]->setIndex(i);
       atom->deleteLater();
-      m_lock->unlock();
 
       disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
       emit atomRemoved(atom);
@@ -229,7 +221,6 @@ namespace Avogadro{
     Q_D(Molecule);
     Bond *bond = new Bond(this);
 
-    m_lock->lockForWrite();
     d->invalidRings = true;
     m_invalidPartialCharges = true;
     m_invalidAromaticity = true;
@@ -237,7 +228,6 @@ namespace Avogadro{
       m_bonds.resize(id+1,0);
     m_bonds[id] = bond;
     m_bondList.push_back(bond);
-    m_lock->unlock();
 
     bond->setId(id);
     bond->setIndex(m_bondList.size()-1);
@@ -258,11 +248,9 @@ namespace Avogadro{
   {
     if (id < m_bonds.size()) {
       Q_D(Molecule);
-      if (m_bonds[id] == 0) {
+      if (m_bonds[id] == 0)
         return;
-      }
 
-      m_lock->lockForWrite();
       d->invalidRings = true;
       m_invalidPartialCharges = true;
       m_invalidAromaticity = true;
@@ -274,7 +262,6 @@ namespace Avogadro{
       for (int i = index; i < m_bondList.size(); ++i) {
         m_bondList[i]->setIndex(i);
       }
-      m_lock->unlock();
 
       // Also delete the bond from the attached atoms
       if (m_atoms.size() > bond->beginAtomId()) {
@@ -295,61 +282,47 @@ namespace Avogadro{
   Residue *Molecule::residue(int index)
   {
     Q_D(Molecule);
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->residueList.size()) {
+
+    if (index >= 0 && index < d->residueList.size())
       return d->residueList[index];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   const Residue *Molecule::residue(int index) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->residueList.size()) {
+    if (index >= 0 && index < d->residueList.size())
       return d->residueList[index];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Residue *Molecule::residueById(unsigned long id) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if(id < d->residues.size()) {
+    if(id < d->residues.size())
       return d->residues[id];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Cube *Molecule::cube(int index) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->cubeList.size()) {
+    if (index >= 0 && index < d->cubeList.size())
       return d->cubeList[index];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Cube *Molecule::cubeById(unsigned long id) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if(id < d->cubes.size()) {
+    if(id < d->cubes.size())
       return d->cubes[id];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Cube *Molecule::addCube()
@@ -364,13 +337,11 @@ namespace Avogadro{
 
     Cube *cube = new Cube(this);
 
-    m_lock->lockForWrite();
     if(id >= d->cubes.size())
       d->cubes.resize(id+1,0);
     d->cubes[id] = cube;
     // Does this still want to have the same index as before somehow?
     d->cubeList.push_back(cube);
-    m_lock->unlock();
 
     cube->setId(id);
     cube->setIndex(d->cubeList.size()-1);
@@ -385,15 +356,12 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     if(cube) {
-      m_lock->lockForWrite();
       d->cubes[cube->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = cube->index();
       d->cubeList.removeAt(index);
-      for (int i = index; i < d->cubeList.size(); ++i) {
+      for (int i = index; i < d->cubeList.size(); ++i)
         d->cubeList[i]->setIndex(i);
-      }
-      m_lock->unlock();
 
       cube->deleteLater();
       disconnect(cube, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -420,12 +388,10 @@ namespace Avogadro{
 
     Mesh *mesh = new Mesh(this);
 
-    m_lock->lockForWrite();
     if (id >= d->meshes.size())
       d->meshes.resize(id+1,0);
     d->meshes[id] = mesh;
     d->meshList.push_back(mesh);
-    m_lock->unlock();
 
     mesh->setId(id);
     mesh->setIndex(d->meshList.size()-1);
@@ -440,15 +406,12 @@ namespace Avogadro{
   {
     Q_D(Molecule);
     if(mesh) {
-      m_lock->lockForWrite();
       d->meshes[mesh->id()] = 0;
       // 0 based arrays stored/shown to user
       int index = mesh->index();
       d->meshList.removeAt(index);
-      for (int i = index; i < d->meshList.size(); ++i) {
+      for (int i = index; i < d->meshList.size(); ++i)
         d->meshList[i]->setIndex(i);
-      }
-      m_lock->unlock();
 
       mesh->deleteLater();
       disconnect(mesh, SIGNAL(updated()), this, SLOT(updatePrimitive()));
@@ -466,25 +429,19 @@ namespace Avogadro{
   Mesh * Molecule::mesh(int index) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if (index >= 0 && index < d->meshList.size()) {
+    if (index >= 0 && index < d->meshList.size())
       return d->meshList[index];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Mesh * Molecule::meshById(unsigned long id) const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
-    if(id < d->meshes.size()) {
+    if(id < d->meshes.size())
       return d->meshes[id];
-    }
-    else {
+    else
       return 0;
-    }
   }
 
   Residue * Molecule::addResidue()
@@ -499,12 +456,10 @@ namespace Avogadro{
 
     Residue *residue = new Residue(this);
 
-    m_lock->lockForWrite();
     if (id >= d->residues.size())
       d->residues.resize(id+1,0);
     d->residues[id] = residue;
     d->residueList.push_back(residue);
-    m_lock->unlock();
 
     residue->setId(id);
     residue->setIndex(d->residueList.size()-1);
@@ -552,12 +507,10 @@ namespace Avogadro{
 
     Fragment *ring = new Fragment(this);
 
-    m_lock->lockForWrite();
     if (id >= d->rings.size())
       d->rings.resize(id+1,0);
     d->rings[id] = ring;
     d->ringList.push_back(ring);
-    m_lock->unlock();
 
     ring->setId(id);
     ring->setIndex(d->ringList.size()-1);
@@ -763,41 +716,35 @@ namespace Avogadro{
 
   unsigned int Molecule::numAtoms() const
   {
-    QReadLocker lock(m_lock);
     return m_atomList.size();
   }
 
   unsigned int Molecule::numBonds() const
   {
-    QReadLocker lock(m_lock);
     return m_bondList.size();
   }
 
   unsigned int Molecule::numCubes() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->cubeList.size();
   }
 
   unsigned int Molecule::numMeshes() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->meshList.size();
   }
 
   unsigned int Molecule::numResidues() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->residueList.size();
   }
 
   unsigned int Molecule::numRings() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->ringList.size();
   }
 
@@ -939,7 +886,7 @@ namespace Avogadro{
     for (unsigned int i = 0; i < m_atomConformers.size(); ++i)
       delete m_atomConformers[i];
     m_atomConformers.clear();
- 
+
     // add the new conformers
     for (unsigned int i = 0; i < conformers.size(); ++i) {
       qDebug() << "conformers[i]->size() = " << conformers[i]->size();
@@ -947,7 +894,7 @@ namespace Avogadro{
         return false;
       m_atomConformers.push_back(conformers[i]);
     }
-      
+
     m_atomPos = m_atomConformers[0];
     m_currentConformer = 0;
     return true;
@@ -1021,34 +968,29 @@ namespace Avogadro{
 
   QList<Atom *> Molecule::atoms() const
   {
-    QReadLocker lock(m_lock);
     return m_atomList;
   }
 
   QList<Bond *> Molecule::bonds() const
   {
-    QReadLocker lock(m_lock);
     return m_bondList;
   }
 
   QList<Cube *> Molecule::cubes() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->cubeList;
   }
 
   QList<Mesh *> Molecule::meshes() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->meshList;
   }
 
   QList<Residue *> Molecule::residues() const
   {
     Q_D(const Molecule);
-    QReadLocker lock(m_lock);
     return d->residueList;
   }
 
@@ -1072,7 +1014,6 @@ namespace Avogadro{
       }
       d->invalidRings = false;
     }
-    QReadLocker lock(m_lock);
     return d->ringList;
   }
 
@@ -1344,7 +1285,6 @@ namespace Avogadro{
 
   void Molecule::translate(const Eigen::Vector3d& offset)
   {
-    m_lock->lockForWrite();
     if (!m_atomPos)
       return; // nothing to do
 
@@ -1354,13 +1294,11 @@ namespace Avogadro{
       (*m_atomPos)[atom->id()] += offset;
       emit atomUpdated(atom);
     }
-    m_lock->unlock();
   }
 
   void Molecule::clear()
   {
     Q_D(Molecule);
-    m_lock->lockForWrite();
     m_atoms.clear();
     foreach (Atom *atom, m_atomList) {
       atom->deleteLater();
@@ -1409,7 +1347,6 @@ namespace Avogadro{
       emit primitiveRemoved(ring);
     }
     d->ringList.clear();
-    m_lock->unlock();
   }
 
   QReadWriteLock * Molecule::lock() const
