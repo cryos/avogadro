@@ -2,6 +2,7 @@
 #include <boost/python.hpp>
 
 #include <avogadro/mesh.h>
+#include <avogadro/color3f.h>
 #include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 

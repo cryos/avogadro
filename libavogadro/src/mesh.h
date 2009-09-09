@@ -32,11 +32,11 @@
 
 // Forward declarations
 class QReadWriteLock;
-class QColor;
 
 namespace Avogadro {
 
   class Molecule;
+  class Color3f;
   /**
    * @class Mesh mesh.h <avogadro/mesh.h>
    * @brief Encapsulation of a triangular mesh that makes up a surface.
@@ -173,23 +173,23 @@ namespace Avogadro {
     /**
      * @return Vector containing all of the colors in a one-dimensional array.
      */
-    const std::vector<QColor> & colors() const;
+    const std::vector<Color3f> & colors() const;
 
     /**
      * @return Pointer to the first color of the specified triangle.
      */
-    const QColor * color(int n) const;
+    const Color3f * color(int n) const;
 
     /**
      * Clear the colors vector and assign new values.
      */
-    bool setColors(const std::vector<QColor> &values);
+    bool setColors(const std::vector<Color3f> &values);
 
     /**
      * Add one or more normals, i.e., the vector is expected to be of length
      * 3 x n where n is an integer.
      */
-    bool addColors(const std::vector<QColor> &values);
+    bool addColors(const std::vector<Color3f> &values);
 
     /**
      * Sanity checking function - is the mesh sane?
@@ -229,7 +229,7 @@ namespace Avogadro {
   protected:
     std::vector<Eigen::Vector3f> m_vertices;
     std::vector<Eigen::Vector3f> m_normals;
-    std::vector<QColor> m_colors;
+    std::vector<Color3f> m_colors;
     QString m_name;
     bool m_stable;
     float m_isoValue;

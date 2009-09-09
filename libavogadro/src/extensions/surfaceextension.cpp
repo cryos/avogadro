@@ -38,6 +38,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
+#include <avogadro/color3f.h>
 #include <avogadro/meshgenerator.h>
 #include <avogadro/engine.h>
 #include <avogadro/neighborlist.h>
@@ -282,11 +283,11 @@ namespace Avogadro
 
     NeighborList *nbrList = new NeighborList(m_molecule, 7.0, false, 2);
 
-    std::vector<QColor> colors;
+    std::vector<Color3f> colors;
     for(unsigned int i=0; i < mesh->vertices().size(); ++i) {
       const Vector3f *v = mesh->vertex(i);
 
-      GLfloat red, green, blue;
+      float red, green, blue;
       double energy = 0.0;
 
       QList<Atom*> nbrAtoms = nbrList->nbrs(v);
@@ -296,29 +297,29 @@ namespace Avogadro
       }
 
       // Chemistry convention: red = negative, blue = positive
-      QColor color;
+      Color3f color;
       if (energy < 0.0) {
         red = -20.0*energy;
         if (red >= 1.0) {
-          color.setRgbF(1.0, 0.0, 0.0, 1.0);
+          color.set(1.0, 0.0, 0.0);
         }
         else {
           green = 1.0 - red;
-          color.setRgbF(red, green, 0.0, 1.0);
+          color.set(red, green, 0.0);
         }
       }
       else if (energy > 0.0) {
         blue = 20.0*energy;
         if (blue >= 1.0) {
-          color.setRgbF(0.0, 0.0, 1.0, 1.0);
+          color.set(0.0, 0.0, 1.0);
         }
         else {
           green = 1.0 - blue;
-          color.setRgbF(0.0, green, blue, 1.0);
+          color.set(0.0, green, blue);
         }
       }
       else
-        color.setRgbF(0.0, 1.0, 0.0, 1.0);
+        color.set(0.0, 1.0, 0.0);
 
       colors.push_back(color);
     }

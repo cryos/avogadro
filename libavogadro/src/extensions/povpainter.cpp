@@ -31,6 +31,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/mesh.h>
+#include <avogadro/color3f.h>
 
 #include <QFile>
 #include <QDebug>
@@ -275,7 +276,7 @@ namespace Avogadro
     // Render the triangles of the mesh
     std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
-    std::vector<QColor> c = mesh.colors();
+    std::vector<Color3f> c = mesh.colors();
 
     // If there are no triangles then don't bother doing anything
     if (v.size() == 0 || v.size() != c.size()) {
@@ -294,8 +295,8 @@ namespace Avogadro
     for(unsigned int i = 0; i < v.size(); ++i) {
       verts << "<" << v[i].x() << "," << v[i].y() << "," << v[i].z() << ">";
       norms << "<" << n[i].x() << "," << n[i].y() << "," << n[i].z() << ">";
-      textures << "texture{pigment{rgbt<" << c[i].redF() << ","
-               << c[i].greenF() << "," << c[i].blueF() << ","
+      textures << "texture{pigment{rgbt<" << c[i].red() << ","
+               << c[i].green() << "," << c[i].blue() << ","
                << 1.0 - d->color.alpha() << ">}}";
       if (i != v.size()-1) {
         verts << ", ";

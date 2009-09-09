@@ -36,6 +36,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/mesh.h>
 #include <avogadro/color.h>
+#include <avogadro/color3f.h>
 
 #include <QDebug>
 #include <QColor>
@@ -1011,12 +1012,10 @@ namespace Avogadro
         break;
     }
 
-    glBegin(GL_TRIANGLES);
-
     // Render the triangles of the mesh
     std::vector<Eigen::Vector3f> v = mesh.vertices();
     std::vector<Eigen::Vector3f> n = mesh.normals();
-    std::vector<QColor> c = mesh.colors();
+    std::vector<Color3f> c = mesh.colors();
 
     if (v.size() != n.size() || v.size() != c.size()) {
       qDebug() << "Vertices size does not equal normals size or color size:"
@@ -1024,12 +1023,28 @@ namespace Avogadro
       return;
     }
 
-    // Normal or reverse winding?
-    Color color;
+    d->color.applyAsMaterials();
+
+    /* Need to work out issues with material properties, lighting etc...
+    glEnable(GL_COLOR_MATERIAL);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, &(v[0]));
+    glNormalPointer(GL_FLOAT, 0, &(n[0]));
+    glColorPointer(3, GL_FLOAT, 0, &(c[0]));
+    glDrawArrays(GL_TRIANGLES, 0, v.size());
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+    glDisableClientState(GL_COLOR_ARRAY);
+    glDisable(GL_COLOR_MATERIAL);
+*/
+
+    float alpha = d->color.alpha();
+
+    glBegin(GL_TRIANGLES);
     for(unsigned int i = 0; i < v.size(); ++i) {
-      color.setFromRgba(c[i].redF(), c[i].greenF(), c[i].blueF(),
-                        d->color.alpha());
-      color.applyAsMaterials();
+      applyAsMaterials(c[i], alpha);
       glNormal3fv(n[i].data());
       glVertex3fv(v[i].data());
     }
@@ -1155,6 +1170,36 @@ namespace Avogadro
         glPopName();
         resetName();
       }
+  }
+
+  inline void GLPainter::apply(const Color3f &color)
+  {
+    glColor3fv(color.data());
+  }
+
+  inline void GLPainter::applyAsMaterials(const Color3f &c, float alpha)
+  {
+    float color[] = {c.red(), c.green(), c.blue(), alpha};
+    float ambientColor [] = {color[0] / 3.0f,
+                             color[1] / 3.0f,
+                             color[2] / 3.0f,
+                             alpha};
+
+    float s = (0.5f + fabs( color[0] - color[1])
+              + fabs(color[2] - color[1])
+              + fabs(color[2] - color[0])) / 4.0f;
+
+    float t = 1.0 - s;
+
+    float specularColor [] = {s + t * color[0],
+                              s + t * color[1],
+                              s + t * color[2],
+                              alpha};
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, ambientColor);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, color);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, specularColor);
+    glMaterialf(GL_FRONT, GL_SHININESS, 50.0);
   }
 
   void GLPainter::setDynamicScaling(bool scaling)

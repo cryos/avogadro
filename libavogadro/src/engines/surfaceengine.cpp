@@ -31,6 +31,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
+#include <avogadro/color3f.h>
 #include <avogadro/painterdevice.h>
 
 #include <QReadWriteLock>
@@ -283,6 +284,8 @@ namespace Avogadro {
       Cube *cube = m_molecule->cubeById(m_mesh1->cube());
       m_min = cube->min();
       m_max = cube->max();
+      if (m_mesh1->colors().size() == 0)
+          m_colored = false;
 
       // Enable the combo if appropriate for mapped color
       if (m_settingsWidget) {
@@ -470,6 +473,8 @@ namespace Avogadro {
       Cube *cube = m_molecule->cubeById(m_mesh1->cube());
       m_min = cube->min();
       m_max = cube->max();
+      if (m_mesh1->colors().size() == 0)
+        m_colored = false;
     }
   }
 
