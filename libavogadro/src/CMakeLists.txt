@@ -33,6 +33,7 @@ set(libavogadro_HDRS
   atom.h
   bond.h
   camera.h
+  color3f.h
   color.h
   colorbutton.h
   cube.h
