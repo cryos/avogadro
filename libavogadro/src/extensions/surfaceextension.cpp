@@ -709,11 +709,12 @@ namespace Avogadro
       case 2: { // Mesh calculated - now display it in an engine if possible
         if (!m_mesh2)
           m_calculationPhase = -1; // i.e. no calculation in progress any more
-
-        if (m_mesh1->stable() && m_mesh2 && m_mesh2->stable()) {
+        else if (m_mesh1->stable() && m_mesh2 && m_mesh2->stable()) {
           // The MO meshes have both been calculated
           m_calculationPhase = -1;
         }
+        else // Still calculating one of the meshes
+          return;
 
         Engine *engine = m_surfaceDialog->currentEngine();
         if (engine) {
