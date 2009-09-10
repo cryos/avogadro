@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-08-03 14:18-0400\n"
-"PO-Revision-Date: 2009-06-13 00:08+0000\n"
+"POT-Creation-Date: 2009-09-08 22:59-0400\n"
+"PO-Revision-Date: 2009-08-09 12:25+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
+"X-Launchpad-Export-Date: 2009-09-09 02:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Sumbu"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Menggambarkan sumbu x, y, dan z di titik pusat"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1889
 msgid "Ball and Stick"
 msgstr "Bola dan Batang"
 
@@ -663,16 +663,16 @@ msgid "Renders molecules as sticks"
 msgstr "Menggambar molekul dengan batang"
 
 #: src/engines/surfaceengine.cpp:232
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr "Permukaan Van der Waals"
+msgstr "Van der Waals, isosurface = %L1"
 
 #: src/engines/surfaceengine.cpp:238
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr "%1, PermukaanIso = %L2"
+msgstr "Kepadatan elektron, isosurface = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -685,9 +685,8 @@ msgid "Surfaces"
 msgstr "Bidang Permukaan"
 
 #: src/engines/surfaceengine.h:47
-#, fuzzy
 msgid "Renders molecular isosurface meshes"
-msgstr "Menggambarkan momen molekul dua kutup"
+msgstr "Menggambar jaring permukaan molekuler"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -762,7 +761,7 @@ msgstr "berkas video (*.avi)"
 #: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
 #: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
-#: src/extensions/unitcellextension.cpp:94
+#: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -781,7 +780,7 @@ msgstr "Animasi..."
 #: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
-#: src/extensions/surfaceextension.cpp:92
+#: src/extensions/surfaceextension.cpp:93
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
@@ -1272,7 +1271,7 @@ msgstr "Meruba H ke Metil"
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
 msgstr "Mem&bangun"
 
@@ -1347,7 +1346,7 @@ msgstr "Sisipkan SMILES fragmen:"
 
 #: src/extensions/insertfragmentdialog.ui:45
 #: src/extensions/insertfragmentextension.cpp:171
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
 msgstr "Sisipkan Fragmen"
 
@@ -1474,9 +1473,11 @@ msgstr "Tam&pilan"
 msgid "&Properties"
 msgstr "&Properti"
 
-#: src/extensions/molecularpropextension.cpp:122
-msgid "Estimated Dipole Moment (D):"
-msgstr "Perkiraan Momen Dipol (D):"
+#: src/extensions/molecularpropextension.cpp:132
+#, fuzzy
+msgctxt "Dipole moment data not available."
+msgid "N/A"
+msgstr "TidakAda"
 
 #: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
@@ -1572,7 +1573,7 @@ msgstr "Mengambil dari PDB..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "Mengambil struktur kimia..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
@@ -1587,14 +1588,12 @@ msgid "PDB entry to download."
 msgstr "Entri PDB untuk muaturun."
 
 #: src/extensions/networkfetchextension.cpp:110
-#, fuzzy
 msgid "Chemical Name"
-msgstr "Kimia"
+msgstr "Nama Kimia"
 
 #: src/extensions/networkfetchextension.cpp:111
-#, fuzzy
 msgid "Chemical structure to download."
-msgstr "URL molekul untuk muaturun."
+msgstr "Muat turun struktur kimia"
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
@@ -2148,7 +2147,7 @@ msgstr "PWscf IR data (*.out)"
 #: src/extensions/spectradialog.cpp:530
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
-msgstr ""
+msgstr "Data Turbomole IR (kontrol)"
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
@@ -2238,11 +2237,11 @@ msgstr "Spektra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Memvisualisasikan data spektral dari perhitungan kimia kuantum"
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Tanpa intensitas"
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2251,11 +2250,11 @@ msgstr ""
 "Data getaran di molekul yang anda tambahkan tidak mempunyai data intensitas. "
 "Sembarang angka diberikan sebagai intensitas untuk tujuan penggambaran."
 
-#: src/extensions/spectratype_ir.cpp:135
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Nomor gelombang (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:278
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2284,7 +2283,7 @@ msgid "Build and display crystallographic super cells"
 msgstr "Membangun dan menampilkan kristalografi super sel"
 
 #: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
-#: src/extensions/surfaceextension.cpp:622
+#: src/extensions/surfaceextension.cpp:623
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2293,80 +2292,76 @@ msgstr "MO %L1"
 #: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
-msgstr ""
+msgstr "(HOMO)"
 
 #: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
-msgstr ""
+msgstr "(LUMO)"
 
 #: src/extensions/surfacedialog.cpp:249
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
-msgstr ""
+msgstr "Kosong"
 
 #: src/extensions/surfacedialog.cpp:251
-#, fuzzy
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
 #: src/extensions/surfacedialog.cpp:253
-#, fuzzy
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
 msgstr "Potensial Elektrostatik"
 
 #: src/extensions/surfacedialog.cpp:256
-#, fuzzy
 msgctxt "Electron density surface type"
 msgid "Electron Density"
 msgstr "Kepadatan Elektron"
 
 #: src/extensions/surfacedialog.cpp:258
-#, fuzzy
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr "Menggambarkan orbit molekul"
+msgstr "Orbit Molekuler"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
-msgstr ""
+msgstr "Salah - tipe tidak terdefinisi"
 
-#: src/extensions/surfaceextension.cpp:67
+#: src/extensions/surfaceextension.cpp:68
 msgid "Create Surfaces..."
 msgstr "Membuat Permukaan..."
 
-#: src/extensions/surfaceextension.cpp:356
-#: src/extensions/surfaceextension.cpp:386
-#: src/extensions/surfaceextension.cpp:413
-#: src/extensions/surfaceextension.cpp:447
-#: src/extensions/surfaceextension.cpp:475
+#: src/extensions/surfaceextension.cpp:357
+#: src/extensions/surfaceextension.cpp:387
+#: src/extensions/surfaceextension.cpp:414
+#: src/extensions/surfaceextension.cpp:448
+#: src/extensions/surfaceextension.cpp:476
 msgid "Abort Calculation"
 msgstr "Membatalkan perhitungan"
 
-#: src/extensions/surfaceextension.cpp:361
+#: src/extensions/surfaceextension.cpp:362
 msgid "Calculating VdW Cube"
 msgstr "Menghitung kubus VdW"
 
-#: src/extensions/surfaceextension.cpp:391
-#: src/extensions/surfaceextension.cpp:417
+#: src/extensions/surfaceextension.cpp:392
+#: src/extensions/surfaceextension.cpp:418
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "Menghitung MO %L1"
 
-#: src/extensions/surfaceextension.cpp:452
-#: src/extensions/surfaceextension.cpp:480
+#: src/extensions/surfaceextension.cpp:453
+#: src/extensions/surfaceextension.cpp:481
 msgid "Calculating Electron Density"
 msgstr "Menghitung Kepadatan Elektron"
 
-#: src/extensions/surfaceextension.cpp:566
+#: src/extensions/surfaceextension.cpp:567
 msgid "VdW"
-msgstr ""
+msgstr "VdW"
 
-#: src/extensions/surfaceextension.cpp:594
+#: src/extensions/surfaceextension.cpp:595
 msgid "Electron Density"
 msgstr "Kepadatan Elektron"
 
@@ -2451,7 +2446,7 @@ msgstr ""
 msgid "Unit Cell Parameters..."
 msgstr "Parameter Unit Sel..."
 
-#: src/extensions/unitcellextension.cpp:95
+#: src/extensions/unitcellextension.cpp:114
 msgid ""
 "This document is currently an isolated molecule.\n"
 "\n"
@@ -2558,35 +2553,35 @@ msgstr ""
 msgid "OpenGL error"
 msgstr "Kesalahan OpenGL"
 
-#: src/glwidget.cpp:1006
+#: src/glwidget.cpp:1012
 msgid "Debug Information"
 msgstr "Informasi Awakutu"
 
-#: src/glwidget.cpp:1007
+#: src/glwidget.cpp:1013
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1010
+#: src/glwidget.cpp:1016
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Ukuran Tampilan: %L1 x %L2"
 
-#: src/glwidget.cpp:1012
+#: src/glwidget.cpp:1018
 msgid "No molecule set"
 msgstr "Tidak ada atur molekul"
 
-#: src/glwidget.cpp:1017
+#: src/glwidget.cpp:1023
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Atom: %L1"
 
-#: src/glwidget.cpp:1020
+#: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Ikatan: %L1"
 
-#: src/molecule.cpp:106
+#: src/molecule.cpp:109
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr "tanpa judul"
@@ -2867,7 +2862,7 @@ msgid "Molecular Dynamics (900K)"
 msgstr "Dinamika Molekuler (900K)"
 
 #: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
-#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
+#: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Mulai"
 
@@ -2879,7 +2874,7 @@ msgstr "Atom-atom tetap dapat dipindahkan"
 msgid "Ignored atoms are movable"
 msgstr "Atom-atom yang lain dapat dipindahkan"
 
-#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
+#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Berhenti"
 
@@ -2899,31 +2894,31 @@ msgstr "Optimisasi otomatis untuk geometri molekul"
 msgid "AutoOptimization Settings"
 msgstr "Pengaturan OptimisasiOtomatis"
 
-#: src/tools/autorotatetool.cpp:52
+#: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
 msgstr "Bantuan Putaran Otomatis"
 
-#: src/tools/autorotatetool.cpp:247
+#: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
 msgstr "rotasi x:"
 
-#: src/tools/autorotatetool.cpp:253
+#: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
 msgstr "rotasi x"
 
-#: src/tools/autorotatetool.cpp:263
+#: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
 msgstr "rotasi y:"
 
-#: src/tools/autorotatetool.cpp:268
+#: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
 msgstr "rotasi y"
 
-#: src/tools/autorotatetool.cpp:278
+#: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
 msgstr "rotasi z:"
 
-#: src/tools/autorotatetool.cpp:283
+#: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
 msgstr "rotasi z"
 
@@ -2931,7 +2926,7 @@ msgstr "rotasi z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
 #: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Tata Ulang"
@@ -3073,14 +3068,12 @@ msgid "Distance(s):"
 msgstr "Jarak:"
 
 #: src/tools/clickmeasuretool.cpp:290
-#, fuzzy
 msgid "Angle:"
-msgstr "Sudut"
+msgstr "Sudut:"
 
 #: src/tools/clickmeasuretool.cpp:302
-#, fuzzy
 msgid "Dihedral:"
-msgstr "Sudut Dihedral"
+msgstr "Dihedral:"
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
@@ -3094,28 +3087,28 @@ msgstr "Pengukuran panajng ikatan, sudut, dan dihedral"
 msgid "Measure Settings"
 msgstr "Pengaturan Pengukuran"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1750
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:1750
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
-#: src/tools/drawcommand.cpp:383
+#: src/tools/drawcommand.cpp:415
 msgid "Delete Atom"
 msgstr "Hapus Atom"
 
-#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+#: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
 msgstr "Tambah Ikatan"
 
-#: src/tools/drawcommand.cpp:718
+#: src/tools/drawcommand.cpp:757
 msgid "Delete Bond"
 msgstr "Hapus Ikatan"
 
-#: src/tools/drawcommand.cpp:787
+#: src/tools/drawcommand.cpp:833
 msgid "Change Element"
 msgstr "Merubah Unsur"
 
-#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+#: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:485
 msgid "Change Bond Order"
 msgstr "Merubah Orde Ikatan"
 
@@ -3131,43 +3124,43 @@ msgstr ""
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
 "Right Mouse: Delete Atom"
 
-#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+#: src/tools/drawtool.cpp:393 src/tools/drawtool.cpp:399
 msgid "Draw Atom"
 msgstr "Menggambar Atom"
 
-#: src/tools/drawtool.cpp:423
+#: src/tools/drawtool.cpp:440
 msgid "Draw Bond"
 msgstr "Menggambar Ikatan"
 
-#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:449 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "Menggambar"
 
-#: src/tools/drawtool.cpp:736
+#: src/tools/drawtool.cpp:757
 msgid "Element:"
 msgstr "Unsur:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:784:556
 msgid "Other..."
 msgstr "Lainnya..."
 
-#: src/tools/drawtool.cpp:767
+#: src/tools/drawtool.cpp:788
 msgid "Bond Order:"
 msgstr "Orde Ikatan:"
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:793
 msgid "Single"
 msgstr "Tunggal"
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:794
 msgid "Double"
 msgstr "Dua"
 
-#: src/tools/drawtool.cpp:774
+#: src/tools/drawtool.cpp:795
 msgid "Triple"
 msgstr "Tiga Kali"
 
-#: src/tools/drawtool.cpp:789
+#: src/tools/drawtool.cpp:810
 msgid "Adjust Hydrogens"
 msgstr "Atur Hidrogen"
 
@@ -5891,7 +5884,7 @@ msgstr "Warna Berdasarkan:"
 
 #: src/extensions/surfacedialog.ui:120
 msgid "Nothing"
-msgstr ""
+msgstr "Kosong"
 
 #: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
@@ -6071,29 +6064,8 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,,,,,"
 
-#~ msgid "Orbitals"
-#~ msgstr "Orbit"
-
-#~ msgid "Surface"
-#~ msgstr "Permukaan"
-
-#~ msgid "Renders computed molecular surfaces"
-#~ msgstr "Membuat gambar permukaan molekul hasil perhitungan"
-
-#~ msgid "Name"
-#~ msgstr "Nama"
-
-#~ msgid "ESP"
-#~ msgstr "ESP"
-
-#~ msgid "VdW Cube"
-#~ msgstr "Kubus VdW"
-
-#~ msgid "Color:"
-#~ msgstr "Warna:"
-
-#~ msgid "Electrostatic Potential (ESP)"
-#~ msgstr "Potensial Elektrostatik (ESP)"
+#~ msgid "Estimated Dipole Moment (D):"
+#~ msgstr "Perkiraan Momen Dipol (D):"
 
 #~ msgid "Add Directory"
 #~ msgstr "Tambah Direktori"
@@ -6101,86 +6073,32 @@ msgstr ",,,,,,"
 #~ msgid "Reset List"
 #~ msgstr "Tata Ulang Senarai"
 
-#~ msgid "Cubes"
-#~ msgstr "Kubus"
-
-#~ msgid "Cube Dimensions"
-#~ msgstr "Dimensi Kubus"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "z"
-#~ msgstr "z"
-
-#~ msgid "Origin:"
-#~ msgstr "Titik Asal:"
-
-#~ msgid "Max:"
-#~ msgstr "Maks:"
-
-#~ msgid "Steps:"
-#~ msgstr "Langkah:"
-
-#~ msgid "Step Size:"
-#~ msgstr "Ukuran Langkah:"
-
-#~ msgid "Calculate MO"
-#~ msgstr "Menghitung MO"
-
-#~ msgid "Calculate All MOs"
-#~ msgstr "Menghitung Semua MO"
-
-#~ msgid "Calculate Electron Density"
-#~ msgstr "Menghitung Densitas Elektron"
-
-#~ msgid "Calculate Van der Waals Cube"
-#~ msgstr "Menghitung Kubus Van der Waals"
-
-#~ msgid "Isosurfaces"
-#~ msgstr "PermukaanIso"
-
-#~ msgid "Cube:"
-#~ msgstr "Kubus:"
-
-#~ msgid "0.02"
-#~ msgstr "0.02"
-
-#~ msgid "Cube Range:"
-#~ msgstr "Jakauan Kubus:"
-
-#~ msgid "0.000"
-#~ msgstr "0.000"
-
-#~ msgid "1.000"
-#~ msgstr "1.000"
-
-#~ msgid "Calculate Mesh"
-#~ msgstr "Mengitung Mesh"
-
-#~ msgid "ESP (approximate)"
-#~ msgstr "ESP (perkiraan)"
-
-#~ msgid "Distance:"
-#~ msgstr "Jarak:"
-
-#~ msgid "0.0"
-#~ msgstr "0.0"
-
-#~ msgid "Range:"
-#~ msgstr "Jangkauan:"
-
 #~ msgid "Caesium"
 #~ msgstr "Sesium"
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Menggambarkan struktur protein sekunder"
 
+#~ msgid "Orbitals"
+#~ msgstr "Orbit"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Menggambarkan orbit molekul"
+
+#~ msgid "Surface"
+#~ msgstr "Permukaan"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Membuat gambar permukaan molekul hasil perhitungan"
+
 #~ msgid "Animate trajectories, reactions, and vibratins."
 #~ msgstr "Animasi trayektori, reaksi, dan vibratin."
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "VdW Cube"
+#~ msgstr "Kubus VdW"
 
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
@@ -6192,11 +6110,83 @@ msgstr ",,,,,,"
 #~ msgid "Aign Settings"
 #~ msgstr "Pengaturan Pelurusan"
 
+#~ msgid "Color:"
+#~ msgstr "Warna:"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Potensial Elektrostatik (ESP)"
+
 #~ msgid "Single Point Entry"
 #~ msgstr "Entri Satu Poin"
 
 #~ msgid "Huckel"
 #~ msgstr "Huckel"
+
+#~ msgid "Origin:"
+#~ msgstr "Titik Asal:"
+
+#~ msgid "Step Size:"
+#~ msgstr "Ukuran Langkah:"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "Max:"
+#~ msgstr "Maks:"
+
+#~ msgid "Cubes"
+#~ msgstr "Kubus"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "Dimensi Kubus"
+
+#~ msgid "Steps:"
+#~ msgstr "Langkah:"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Menghitung Kubus Van der Waals"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "Cube:"
+#~ msgstr "Kubus:"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Menghitung Densitas Elektron"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Menghitung MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Menghitung Semua MO"
+
+#~ msgid "Van der Waals Surface"
+#~ msgstr "Permukaan Van der Waals"
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "Mengitung Mesh"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Distance:"
+#~ msgstr "Jarak:"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (perkiraan)"
 
 #~ msgid "SVWN: Slater exhange + VWN correlation"
 #~ msgstr "SVWN: Pertukaran Slater + Korelasi VWN"
@@ -6210,6 +6200,18 @@ msgstr ",,,,,,"
 #~ msgstr ""
 #~ "Memuat conformasi kedua dan penghitung interpolasi linier dengan "
 #~ "conformasi sekarang."
+
+#~ msgid "Isosurfaces"
+#~ msgstr "PermukaanIso"
+
+#~ msgid "Range:"
+#~ msgstr "Jangkauan:"
+
+#~ msgid "Cube Range:"
+#~ msgstr "Jakauan Kubus:"
+
+#~ msgid "Name"
+#~ msgstr "Nama"
 
 #~ msgid "File type for file '%1' is not a supported for writing."
 #~ msgstr ""
