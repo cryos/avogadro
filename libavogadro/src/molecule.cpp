@@ -122,8 +122,8 @@ namespace Avogadro{
   Molecule::~Molecule()
   {
     // Need to iterate through all atoms/bonds and destroy them
-//    disconnect(this, 0);
-//    blockSignals(true);
+    disconnect(this, 0);
+    blockSignals(true);
     clear();
     delete m_lock;
     delete d_ptr;

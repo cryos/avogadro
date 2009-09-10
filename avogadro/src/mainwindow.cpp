@@ -1123,11 +1123,12 @@ namespace Avogadro
   bool MainWindow::save()
   {
     // we can't safely save to a gzipped file
-    if ( d->fileName.isEmpty() || d->fileName.endsWith(".gz"), Qt::CaseInsensitive) {
+    if ( d->fileName.isEmpty() ||
+         d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
       return saveAs();
-    } else {
-      return saveFile( d->fileName );
     }
+    else
+      return saveFile( d->fileName );
   }
 
   bool MainWindow::saveAs()
@@ -1205,6 +1206,7 @@ namespace Avogadro
       }
       else {
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
     }
@@ -1212,12 +1214,14 @@ namespace Avogadro
       if (d->moleculeFile->isConformerFile()) {
         MoleculeFile::writeConformers(d->molecule, fileName, formatType.trimmed());
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
       else { /// FIXME Add error checking
         // use MoleculeFile to save just the current slice of the file
         d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule, fileName);
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
     }
