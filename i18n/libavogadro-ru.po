@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:56+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 14:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -872,7 +872,8 @@ msgstr ""
 "В вашей молекуле должен быть как минимум один атом для добавления ограничения"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "В вашей молекуле должно быть как минимум два атома для добавления "
 "ограничения связи"
@@ -1096,7 +1097,7 @@ msgstr "Создать входные файлы для квантовохими
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619 :606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "Название"
 
@@ -1233,7 +1234,8 @@ msgid "G03 Crashed."
 msgstr "Работа G03 завершилась аварийно."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian завершил работу некорректно. Возможно, он установлен неправильно."
 
@@ -1242,7 +1244,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1278
+#: src/extensions/qcheminputdialog.cpp:178 :1278
 msgid "Show Preview"
 msgstr "Предпросмотр"
 
@@ -1254,7 +1256,7 @@ msgstr "Предпросмотр"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Скрыть предпросмотр"
 
@@ -1270,7 +1272,7 @@ msgstr "Заменить H на метил"
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
-msgstr ""
+msgstr "П&остроение"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
@@ -1358,7 +1360,7 @@ msgstr "Пептид..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "Вставить пептид"
 
@@ -1766,7 +1768,7 @@ msgid "Conformer Properties"
 msgstr "Свойства конформеров"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:462
+#: src/extensions/propextension.h:43 :462
 msgid "Properties"
 msgstr "Свойства"
 
@@ -1776,7 +1778,8 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr ""
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:353 :188
 msgid "Type"
 msgstr "Тип"
 
@@ -1788,7 +1791,8 @@ msgstr "Элемент"
 msgid "Valence"
 msgstr "Валентность"
 
-#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
+#: src/engines/labelsettingswidget.ui:85
+#: src/extensions/propmodel.cpp:359 :86
 msgid "Partial Charge"
 msgstr "Частичный заряд"
 
@@ -1874,7 +1878,7 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423:442
+#: src/extensions/propmodel.cpp:423 :442
 msgid "Energy"
 msgstr "Энергия"
 
@@ -1944,9 +1948,10 @@ msgstr ""
 msgid "Select by residue"
 msgstr "Выделить по аминокислотному остатку"
 
-#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:75
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "Название аминокислотного остатка"
 
@@ -2006,7 +2011,8 @@ msgstr "Открыть файл параметров шейдеров"
 msgid "Shader parameters files (*.params)"
 msgstr "Файл параметров шейдеров (*.params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1486
 msgid "GLSL Shaders"
 msgstr "GLSL шейдеры"
 
@@ -2023,12 +2029,12 @@ msgid "Y Axis"
 msgstr "Ось Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1528
+#: src/extensions/spectradialog.cpp:152 :1528
 msgid "&Appearance"
 msgstr "Внешний вид"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1572
+#: src/extensions/spectradialog.cpp:153 :1572
 msgid "E&xport Image"
 msgstr "Э&кспорт изображения"
 
@@ -2210,7 +2216,7 @@ msgid "Customi&ze <<"
 msgstr "Настроить <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736:1524
+#: src/extensions/spectradialog.cpp:736 :1524
 msgid "Customi&ze >>"
 msgstr "Настроить >>"
 
@@ -2451,7 +2457,7 @@ msgid "Apply"
 msgstr "Применить"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:222
+#: src/extensions/unitcellparamdialog.cpp:97 :222
 msgid "OK"
 msgstr "Готово"
 
@@ -2462,7 +2468,7 @@ msgstr "Сортировка %1 колебаний по частоте..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1730
+#: src/extensions/vibrationdialog.cpp:213 :1730
 msgid "Start &Animation"
 msgstr "Начать &анимацию"
 
@@ -2480,7 +2486,7 @@ msgstr "&Колебания..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239:804
+#: src/extensions/vibrationextension.cpp:239 :804
 msgid "Vibrational Analysis"
 msgstr "Колебательный анализ"
 
@@ -2822,11 +2828,13 @@ msgstr "Шагов до обновления:"
 msgid "Algorithm:"
 msgstr "Алгоритм:"
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:286 :252
 msgid "Steepest Descent"
 msgstr "Наискорейший спуск"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:287 :254
 msgid "Conjugate Gradients"
 msgstr "Сопряжённые градиенты"
 
@@ -2907,8 +2915,8 @@ msgstr "вращение по оси Z:"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
-#: rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Сброс"
 
@@ -3059,8 +3067,8 @@ msgstr "Измерить длины связей, углы и двугранны
 msgid "Measure Settings"
 msgstr "Настройки измерения"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
-#: src/tools/drawcommand.cpp:311:1750
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
 msgid "Add Atom"
 msgstr "Добавить атом"
 
@@ -3112,7 +3120,8 @@ msgstr "Рисовать"
 msgid "Element:"
 msgstr "Элемент:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:784:556
+#: src/extensions/gamessinputdialog.ui:1214
+#: src/tools/drawtool.cpp:784 :556
 msgid "Other..."
 msgstr "Другой..."
 
@@ -3252,7 +3261,8 @@ msgstr "Двугранный угол"
 msgid "Z Matrix Editor..."
 msgstr "Редактор Z-матриц"
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
+#: src/extensions/gamessinputdialog.ui:1537
+#: src/tools/zmatrixtool.h:39 :614
 msgid "Z-Matrix"
 msgstr "Z-матрица"
 
@@ -3292,12 +3302,14 @@ msgstr "Радиус атома:"
 msgid "Bond Radius:"
 msgstr "Радиус связи:"
 
-#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "Непрозрачность:"
 
-#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Показывать кратные связи"
 
@@ -3394,7 +3406,8 @@ msgstr "Подписи атомов:"
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2101
+#: src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr "Отсутствует"
 
@@ -3525,7 +3538,8 @@ msgstr "Анимировать траекторию"
 msgid "Load File..."
 msgstr "Загрузить файл..."
 
-#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3533,7 +3547,8 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr ""
 
-#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "кадров/с"
 
@@ -3564,8 +3579,10 @@ msgid "Number of conformers"
 msgstr "Число конформеров"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Метод"
@@ -3654,12 +3671,15 @@ msgstr "Удалить всё"
 msgid "File Import..."
 msgstr "импорт файла..."
 
-#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Имя файла:"
 
-#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Обзор..."
@@ -3680,7 +3700,8 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr "Настроить силовое поле"
 
-#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Силовое поле"
 
@@ -4432,7 +4453,8 @@ msgstr "Единицы измерения:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Название:"
 
@@ -4914,7 +4936,8 @@ msgstr "Создать..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Закрыть"
@@ -5314,7 +5337,8 @@ msgstr ""
 msgid "create ligand from file..."
 msgstr "создать лиганд из файла..."
 
-#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "Название аминокислотного остатка"
 
@@ -5499,7 +5523,8 @@ msgstr "povray"
 msgid "Render"
 msgstr ""
 
-#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137
+#: src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Разрешение:"
 
@@ -5583,7 +5608,8 @@ msgstr ""
 msgid "Parameters:"
 msgstr "Параметры:"
 
-#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr ""
 
@@ -5620,8 +5646,10 @@ msgstr "&Закрыть"
 msgid "Calculated Spectra:"
 msgstr "Рассчитанные спектры:"
 
-#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168
+#: src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279
+#: src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "Установить цвет..."
 
@@ -5637,7 +5665,8 @@ msgstr "Шрифт:"
 msgid "Change Font..."
 msgstr "Сменить шрифт..."
 
-#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224
+#: src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "Показать"
 
@@ -5787,7 +5816,8 @@ msgstr "Сбросить &оси графика:"
 msgid "Label Peaks:"
 msgstr "Подписи пиков:"
 
-#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125
+#: src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr ""
 
@@ -5830,11 +5860,13 @@ msgstr "Тип поверхности:"
 msgid "Van der Waals"
 msgstr "Ван-дер-Ваальсова"
 
-#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46
+#: src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr ""
 
@@ -6012,21 +6044,18 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
 "Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Konstantin Tokarev, ,Launchpad Contributions:,Konstantin "
-"Tokarev,Vasily Astanin"
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
+"Kurg,dn2010, ,Launchpad Contributions:,Konstantin Tokarev, ,Launchpad "
+"Contributions:,Konstantin Tokarev,Vasily Astanin"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,"
-"annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru"
-
-#~ msgid "Estimated Dipole Moment (D):"
-#~ msgstr "Оценочный дипольный момент (Д):"
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,annulen@"
+"yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru"
 
 #~ msgid "Caesium"
 #~ msgstr "Цезий"
@@ -6053,8 +6082,8 @@ msgstr ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
 #~ msgstr ""
-#~ "Окна для отображения свойств атомов, связей, валентных и двугранных "
-#~ "углов. Также включает редактор декартовых координат"
+#~ "Окна для отображения свойств атомов, связей, валентных и двугранных углов. "
+#~ "Также включает редактор декартовых координат"
 
 #~ msgid "Atomic Number"
 #~ msgstr "Атомный номер"
@@ -6068,12 +6097,15 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "Аминокислотые остатки"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Расстояние (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Расстояние (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Расстояние (3->4): %1 %2"
 
@@ -6162,17 +6194,19 @@ msgstr ""
 #~ msgstr "Создать из SMILES:"
 
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %"
-#~ "3<br/><br/>Дальнейшую информацию вы можете получить на <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа "
-#~ "поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых "
-#~ "гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
+#~ "%3<br/><br/>Дальнейшую информацию вы можете получить на <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта "
+#~ "программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
+#~ "подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+#~ "КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #~ msgid "Cut Molecule"
 #~ msgstr "Вырезать молекулу"
@@ -6264,13 +6298,12 @@ msgstr ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть "
-#~ "или редактировать его корректно."
+#~ "Этот файл не содержит 3D-координат. Возможно, вы не сможете просмотреть или "
+#~ "редактировать его корректно."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Похоже, в этом файле содержатся записи о нескольких молекулах. Avogadro "
 #~ "может считать только первую запись. При сохранении записи о всех других "
@@ -6700,15 +6733,22 @@ msgstr ""
 #~ msgid "Renders computed molecular surfaces"
 #~ msgstr "Отображать рассчитанные поверхности молекул"
 
+#~ msgid "Estimated Dipole Moment (D):"
+#~ msgstr "Оценочный дипольный момент (Д):"
+
+#, qt-format
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "Файл %1 не может быть открыт для чтения."
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for writing."
 #~ msgstr "Не поддерживается запись для типа файлов файла '%1' ."
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for reading."
 #~ msgstr "Не поддерживается чтение типа файлов файла '%1' ."
 
+#, qt-format
 #~ msgid "File type '%1' is not a supported for writing."
 #~ msgstr "Не поддерживается запись типа файлов '%1'."
 

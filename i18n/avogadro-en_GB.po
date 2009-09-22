@@ -5,14 +5,18 @@ msgstr ""
 "Project-Id-Version: _avogadro-en_GB\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-09-08 22:59-0400\n"
-"PO-Revision-Date: 2009-08-01 14:52+0000\n"
+"PO-Revision-Date: 2009-09-10 04:23+0000\n"
 "Last-Translator: Marcus D. Hanwell <Unknown>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:52+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 15:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
+
+#: src/mainwindow.ui:413
+msgid "Set &Background Color..."
+msgstr "Set &Background Color..."
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
 msgid "OK"
@@ -21,22 +25,25 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:801
-#: src/mainwindow.cpp:851 src/mainwindow.cpp:873 src/mainwindow.cpp:1029
-#: src/mainwindow.cpp:1051 src/mainwindow.cpp:1203 src/mainwindow.cpp:1428
-#: src/mainwindow.cpp:2411 src/mainwindow.cpp:2886:46
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:801 src/mainwindow.cpp:851
+#: src/mainwindow.cpp:873 src/mainwindow.cpp:1029 src/mainwindow.cpp:1051
+#: src/mainwindow.cpp:1203 src/mainwindow.cpp:1428 src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2886 :46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -60,9 +67,10 @@ msgstr "Clear Molecule"
 msgid "Clear Atoms"
 msgstr "Clear Atoms"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921:254 rc.cpp:262
+#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921 :254 rc.cpp:262
 msgid "Settings"
 msgstr "Settings"
 
@@ -412,7 +420,8 @@ msgstr ""
 msgid "Objects"
 msgstr "Objects"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2933:214
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2933 :214
 msgid "Colors"
 msgstr "Colours"
 
@@ -487,7 +496,8 @@ msgstr "Error"
 msgid "only labels can have sub items"
 msgstr "only labels can have sub items"
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :252
 msgid "Item"
 msgstr "Item"
 
@@ -500,7 +510,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Low"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Medium"
@@ -515,7 +526,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Undefined"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "None"
@@ -577,15 +589,18 @@ msgstr "Form"
 msgid "Color by:"
 msgstr "Colour by:"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Add Selected Primitives"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Remove Selected Primitives"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Add All Primitives"
 
@@ -681,19 +696,23 @@ msgstr "&Select"
 msgid "Main Toolbar"
 msgstr "Main Toolbar"
 
-#: src/mainwindow.ui:193 src/settingsdialog.ui:255
+#: src/mainwindow.ui:193
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Project Tree"
 
-#: src/mainwindow.ui:226 src/pluginsettings.ui:23
+#: src/mainwindow.ui:226
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Display Types"
 
-#: src/mainwindow.ui:235 src/pluginsettings.ui:28
+#: src/mainwindow.ui:235
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Tools"
 
-#: src/mainwindow.ui:256 src/mainwindow.ui:268
+#: src/mainwindow.ui:256
+#: src/mainwindow.ui:268
 msgid "&Open"
 msgstr "&Open"
 
@@ -701,7 +720,8 @@ msgstr "&Open"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:289
+#: src/mainwindow.ui:277
+#: src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "&Quit"
 
@@ -717,7 +737,8 @@ msgstr "Recent"
 msgid "&Clear Recent"
 msgstr "&Clear Recent"
 
-#: src/mainwindow.ui:308 src/mainwindow.ui:320
+#: src/mainwindow.ui:308
+#: src/mainwindow.ui:320
 msgid "&New"
 msgstr "&New"
 
@@ -725,7 +746,8 @@ msgstr "&New"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329 src/mainwindow.ui:341
+#: src/mainwindow.ui:329
+#: src/mainwindow.ui:341
 msgid "&Close"
 msgstr "&Close"
 
@@ -733,7 +755,8 @@ msgstr "&Close"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350 src/mainwindow.ui:362
+#: src/mainwindow.ui:350
+#: src/mainwindow.ui:362
 msgid "&Save"
 msgstr "&Save"
 
@@ -764,10 +787,6 @@ msgstr "&Full Screen Mode"
 #: src/mainwindow.ui:404
 msgid "Esc"
 msgstr "Esc"
-
-#: src/mainwindow.ui:413
-msgid "Set &Background Color..."
-msgstr "Set &Background Color..."
 
 #: src/mainwindow.ui:418
 msgid "&About"
@@ -922,11 +941,11 @@ msgid "All Molecules in File..."
 msgstr "All Molecules in File..."
 
 #: src/mainwindow.ui:679
-#, fuzzy
 msgid "Reset Display Types"
-msgstr "Display Types"
+msgstr "Reset Display Types"
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -938,11 +957,13 @@ msgstr "Extensions"
 msgid "Details"
 msgstr "Details"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Tree Items"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Type"
 
@@ -1010,7 +1031,8 @@ msgstr "Alias"
 msgid "Settings..."
 msgstr "Settings..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr "General"
 
@@ -1018,7 +1040,8 @@ msgstr "General"
 msgid "Quality:"
 msgstr "Quality:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Set the global rendering quality."
 
@@ -1035,8 +1058,8 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,bereavementkiss@gmail.com,debianmaster@gmail.com,"
-"jenfraggleubuntu@googlemail.com,,"
+",,bereavementkiss@gmail.com,debianmaster@gmail.com,jenfraggleubuntu@googlemai"
+"l.com,,"
 
 #~ msgid "Tool Settings"
 #~ msgstr "Tool Settings"
@@ -1044,22 +1067,23 @@ msgstr ""
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Set Aspect Ratio"
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 
 #~ msgid "Hydrogen"
 #~ msgstr "Hydrogen"
@@ -1427,12 +1451,14 @@ msgstr ""
 #~ msgid "Open trajectory file"
 #~ msgstr "Open trajectory file"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "Animation..."
 #~ msgstr "Animation..."
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Read trajectory file %1 failed."
 
@@ -1445,6 +1471,7 @@ msgstr ""
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "Cannot set up the force field for this molecule."
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energy = %1 %2"
 
@@ -1541,6 +1568,7 @@ msgstr ""
 #~ msgid "Bond Order"
 #~ msgstr "Bond Order"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -1553,18 +1581,22 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotatable"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Bond %1"
 
 #~ msgid "Vertex"
 #~ msgstr "Vertex"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Angle %1"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsion %1"
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Conformer %1"
 
@@ -1603,12 +1635,12 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 
 #~ msgid "OpenGL error"
 #~ msgstr "OpenGL error"
@@ -1637,6 +1669,7 @@ msgstr ""
 #~ msgid "AutoOpt: Could not setup force field...."
 #~ msgstr "AutoOpt: Could not setup force field...."
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1658,15 +1691,19 @@ msgstr ""
 #~ msgid "Bond Centric Manipulation"
 #~ msgstr "Bond Centric Manipulation"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distance (1->2): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distance (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distance (3->4): %1 %2"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Dihedral Angle: %1 %2"
 
@@ -2440,6 +2477,7 @@ msgstr ""
 #~ msgid "Bond Centric Manipulate"
 #~ msgstr "Bond Centric Manipulate"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Angle: %1 %2"
 
@@ -2449,9 +2487,11 @@ msgstr ""
 #~ msgid "Measure"
 #~ msgstr "Measure"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Number of atoms: %1"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Number of rotatable bonds: %1"
 
@@ -2590,6 +2630,7 @@ msgstr ""
 #~ msgid "pH"
 #~ msgstr "pH"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -2605,20 +2646,20 @@ msgstr ""
 #~ "view properly."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Reading molecular file failed."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Cannot write to file format of file %1."
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -2626,6 +2667,7 @@ msgstr ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Cannot write to the file %1."
 
@@ -2649,6 +2691,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -3251,9 +3294,11 @@ msgstr ""
 #~ msgid "Show Atoms"
 #~ msgstr "Show Atoms"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Cannot read file format of file %1."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Cannot read file %1."
 

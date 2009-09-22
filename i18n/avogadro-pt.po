@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:52+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 15:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,17 +24,19 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:801
-#: src/mainwindow.cpp:851 src/mainwindow.cpp:873 src/mainwindow.cpp:1029
-#: src/mainwindow.cpp:1051 src/mainwindow.cpp:1203 src/mainwindow.cpp:1428
-#: src/mainwindow.cpp:2411 src/mainwindow.cpp:2886:46
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:801 src/mainwindow.cpp:851
+#: src/mainwindow.cpp:873 src/mainwindow.cpp:1029 src/mainwindow.cpp:1051
+#: src/mainwindow.cpp:1203 src/mainwindow.cpp:1428 src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2886 :46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -58,9 +60,10 @@ msgstr "Limpar Molécula"
 msgid "Clear Atoms"
 msgstr "Limpar Átomos"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921:254 rc.cpp:262
+#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921 :254 rc.cpp:262
 msgid "Settings"
 msgstr "Preferências"
 
@@ -410,7 +413,8 @@ msgstr ""
 msgid "Objects"
 msgstr "Objetos"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2933:214
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2933 :214
 msgid "Colors"
 msgstr "Cores"
 
@@ -485,7 +489,8 @@ msgstr "Erro"
 msgid "only labels can have sub items"
 msgstr "apenas os nomes podem ter sub-items"
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :252
 msgid "Item"
 msgstr "Item"
 
@@ -498,7 +503,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Baixa"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Média"
@@ -513,7 +519,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Indefinida"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nenhum"
@@ -575,15 +582,18 @@ msgstr "Formulário"
 msgid "Color by:"
 msgstr "Cor por:"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Adicionar Primitivas Seleccionadas"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Remover Primitivas Seleccionadas"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Adicionar Todas as Primitivas"
 
@@ -679,19 +689,23 @@ msgstr "&Seleccionar"
 msgid "Main Toolbar"
 msgstr "Barra de Ferramentas Principal"
 
-#: src/mainwindow.ui:193 src/settingsdialog.ui:255
+#: src/mainwindow.ui:193
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Árvore de Projecto"
 
-#: src/mainwindow.ui:226 src/pluginsettings.ui:23
+#: src/mainwindow.ui:226
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:235 src/pluginsettings.ui:28
+#: src/mainwindow.ui:235
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: src/mainwindow.ui:256 src/mainwindow.ui:268
+#: src/mainwindow.ui:256
+#: src/mainwindow.ui:268
 msgid "&Open"
 msgstr "&Abrir"
 
@@ -699,7 +713,8 @@ msgstr "&Abrir"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:289
+#: src/mainwindow.ui:277
+#: src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "&Sair"
 
@@ -715,7 +730,8 @@ msgstr "Recente"
 msgid "&Clear Recent"
 msgstr "&Limpar Recentes"
 
-#: src/mainwindow.ui:308 src/mainwindow.ui:320
+#: src/mainwindow.ui:308
+#: src/mainwindow.ui:320
 msgid "&New"
 msgstr "&Novo"
 
@@ -723,7 +739,8 @@ msgstr "&Novo"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329 src/mainwindow.ui:341
+#: src/mainwindow.ui:329
+#: src/mainwindow.ui:341
 msgid "&Close"
 msgstr "&Fechar"
 
@@ -731,7 +748,8 @@ msgstr "&Fechar"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350 src/mainwindow.ui:362
+#: src/mainwindow.ui:350
+#: src/mainwindow.ui:362
 msgid "&Save"
 msgstr "&Guardar"
 
@@ -920,11 +938,11 @@ msgid "All Molecules in File..."
 msgstr "Todas as Moléculas no Ficheiro..."
 
 #: src/mainwindow.ui:679
-#, fuzzy
 msgid "Reset Display Types"
-msgstr "Adicionar Tipo de Ecrã"
+msgstr ""
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -936,11 +954,13 @@ msgstr "Extensões"
 msgid "Details"
 msgstr "Detalhes"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Items da Árvore"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Tipo"
 
@@ -1009,7 +1029,8 @@ msgstr "Nome Alternativo"
 msgid "Settings..."
 msgstr "Definições..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr "Geral"
 
@@ -1017,7 +1038,8 @@ msgstr "Geral"
 msgid "Quality:"
 msgstr "Qualidade:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Definir a qualidade global de renderização."
 
@@ -1028,16 +1050,16 @@ msgstr "Nevoeiro:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
-"nitrofurano, ,Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago "
-"Silva,nitrofurano, ,Launchpad Contributions:,Arrepiadd,Geoff Hutchison,Ivo "
-"Fernandes,Leandro Boscariol,nitrofurano"
+",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago "
+"Silva,nitrofurano, ,Launchpad Contributions:,Ivo Fernandes,Leandro "
+"Boscariol,Tiago Silva,nitrofurano, ,Launchpad Contributions:,Arrepiadd,Geoff "
+"Hutchison,Ivo Fernandes,Leandro Boscariol,nitrofurano"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,,,,,"
-"ivofernandes12@gmail.com,,"
+",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,,,,,ivofernandes1"
+"2@gmail.com,,"
 
 #~ msgid "Lead"
 #~ msgstr "Chumbo"
@@ -1069,6 +1091,7 @@ msgstr ""
 #~ msgid "Radium"
 #~ msgstr "Rádio"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1076,9 +1099,11 @@ msgstr ""
 #~ "Não foi possível ler o arquivo %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Não foi possível ler o formato do arquivo %1"
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Não foi possível ler o arquivo %1"
 
@@ -1090,17 +1115,17 @@ msgstr ""
 #~ "visualizar adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá "
-#~ "ler apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá ler "
+#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
 #~ "poderão ser perdidas."
 
 #~ msgid "Navigate"
 #~ msgstr "Navegar"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1111,6 +1136,7 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Salvando Arquivo."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Não foi possível escrever no arquivo %1."
 
@@ -1127,6 +1153,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1163,6 +1190,7 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animação..."
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 

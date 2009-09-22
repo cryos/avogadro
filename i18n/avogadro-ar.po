@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:52+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 15:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,17 +24,19 @@ msgstr "موافق"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:801
-#: src/mainwindow.cpp:851 src/mainwindow.cpp:873 src/mainwindow.cpp:1029
-#: src/mainwindow.cpp:1051 src/mainwindow.cpp:1203 src/mainwindow.cpp:1428
-#: src/mainwindow.cpp:2411 src/mainwindow.cpp:2886:46
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:801 src/mainwindow.cpp:851
+#: src/mainwindow.cpp:873 src/mainwindow.cpp:1029 src/mainwindow.cpp:1051
+#: src/mainwindow.cpp:1203 src/mainwindow.cpp:1428 src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2886 :46
 msgid "Avogadro"
 msgstr "أفوقادرو"
 
@@ -58,9 +60,10 @@ msgstr "إمسح جزيئا"
 msgid "Clear Atoms"
 msgstr "إمسح ذرات"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921:254 rc.cpp:262
+#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921 :254 rc.cpp:262
 msgid "Settings"
 msgstr "إعدادات"
 
@@ -406,7 +409,8 @@ msgstr ""
 msgid "Objects"
 msgstr "أجسام"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2933:214
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2933 :214
 msgid "Colors"
 msgstr "ألوان"
 
@@ -481,7 +485,8 @@ msgstr "خطأ"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :252
 msgid "Item"
 msgstr "عنصر"
 
@@ -494,7 +499,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "منخفض"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "متوسط"
@@ -509,7 +515,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "غيرُ مُعرَّف"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "لاشيء"
@@ -571,15 +578,18 @@ msgstr "شكل"
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -675,19 +685,23 @@ msgstr ""
 msgid "Main Toolbar"
 msgstr "شريط الأدوات الرئيسي"
 
-#: src/mainwindow.ui:193 src/settingsdialog.ui:255
+#: src/mainwindow.ui:193
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:226 src/pluginsettings.ui:23
+#: src/mainwindow.ui:226
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:235 src/pluginsettings.ui:28
+#: src/mainwindow.ui:235
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "أدوات"
 
-#: src/mainwindow.ui:256 src/mainwindow.ui:268
+#: src/mainwindow.ui:256
+#: src/mainwindow.ui:268
 msgid "&Open"
 msgstr "&افتح"
 
@@ -695,7 +709,8 @@ msgstr "&افتح"
 msgid "Ctrl+O"
 msgstr ""
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:289
+#: src/mainwindow.ui:277
+#: src/mainwindow.ui:289
 msgid "&Quit"
 msgstr ""
 
@@ -711,7 +726,8 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:308 src/mainwindow.ui:320
+#: src/mainwindow.ui:308
+#: src/mainwindow.ui:320
 msgid "&New"
 msgstr "&جديد"
 
@@ -719,7 +735,8 @@ msgstr "&جديد"
 msgid "Ctrl+N"
 msgstr ""
 
-#: src/mainwindow.ui:329 src/mainwindow.ui:341
+#: src/mainwindow.ui:329
+#: src/mainwindow.ui:341
 msgid "&Close"
 msgstr "&أغلق"
 
@@ -727,7 +744,8 @@ msgstr "&أغلق"
 msgid "Ctrl+W"
 msgstr ""
 
-#: src/mainwindow.ui:350 src/mainwindow.ui:362
+#: src/mainwindow.ui:350
+#: src/mainwindow.ui:362
 msgid "&Save"
 msgstr "&حفظ"
 
@@ -919,7 +937,8 @@ msgstr ""
 msgid "Reset Display Types"
 msgstr ""
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr ""
 
@@ -931,11 +950,13 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1003,7 +1024,8 @@ msgstr ""
 msgid "Settings..."
 msgstr "إعدادات..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
@@ -1011,7 +1033,8 @@ msgstr ""
 msgid "Quality:"
 msgstr "الجودة:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr ""
 
@@ -1022,17 +1045,17 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), ,"
-"Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli)"
+",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,TheLight,عبد الله شلي (Abdellah Chelli), "
+",Launchpad Contributions:,AtomCell,عبد الله شلي (Abdellah Chelli)"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd."
-"ox@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail.com,"
-"sneetsher@gmail.com,,,shelhatem@gmail.com,sneetsher@gmail.com"
+",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail"
+".com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd.ox@gmail.com,sneetsher@gm"
+"ail.com,,,shelhatem@gmail.com,sneetsher@gmail.com"
 
 #~ msgid "0/0"
 #~ msgstr "0/0"
@@ -1049,6 +1072,7 @@ msgstr ""
 #~ msgid "Align:"
 #~ msgstr "المحاذاة:"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
