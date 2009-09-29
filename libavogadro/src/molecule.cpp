@@ -889,7 +889,6 @@ namespace Avogadro{
 
     // add the new conformers
     for (unsigned int i = 0; i < conformers.size(); ++i) {
-      qDebug() << "conformers[i]->size() = " << conformers[i]->size();
       if (conformers[i]->size() != size)
         return false;
       m_atomConformers.push_back(conformers[i]);
@@ -924,8 +923,10 @@ namespace Avogadro{
   const std::vector<double>& Molecule::energies() const
   {
     Q_D(const Molecule);
-    while (d->energies.size() != numConformers())
+    while (d->energies.size() < numConformers())
       d->energies.push_back(0.0);
+    if (d->energies.size() > numConformers())
+      d->energies.resize(numConformers());
     return d->energies;
   }
 
@@ -943,7 +944,7 @@ namespace Avogadro{
   void Molecule::setEnergy(double energy)
   {
     Q_D(const Molecule);
-    while (d->energies.size() != numConformers())
+    while (d->energies.size() < numConformers())
       d->energies.push_back(0.0);
     if (m_currentConformer < d->energies.size())
       d->energies[m_currentConformer] = energy;
