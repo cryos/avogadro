@@ -542,9 +542,11 @@ namespace Avogadro
       else if ( m_task == 2)
         m_dialog = new QProgressDialog( QObject::tr( "Random Rotor Search" ),
                                         QObject::tr( "Cancel" ), 0,  100 );
-      else if ( m_task == 3)
+      else if ( m_task == 3) {
         m_dialog = new QProgressDialog( QObject::tr( "Weighted Rotor Search" ),
                                         QObject::tr( "Cancel" ), 0,  0 );
+        m_dialog->show();
+      }
 
 
       QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );
