@@ -79,23 +79,25 @@ namespace Avogadro {
     // Render the opaque surface if m_alpha is 1
     if (m_alpha >= 0.999) {
       if (m_mesh1) {
-        if (m_mesh1->stable()) {
+        if (m_mesh1->lock()->tryLockForRead()) {
           if (m_colored)
             pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
           else {
             pd->painter()->setColor(&m_posColor);
             pd->painter()->drawMesh(*m_mesh1, m_renderMode);
           }
+          m_mesh1->lock()->unlock();
         }
       }
       if (m_mesh2) {
-        if (m_mesh2->stable()) {
+        if (m_mesh2->lock()->tryLockForRead()) {
           if (m_colored)
             pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
           else {
             pd->painter()->setColor(&m_negColor);
             pd->painter()->drawMesh(*m_mesh2, m_renderMode);
           }
+          m_mesh2->lock()->unlock();
         }
       }
     }
@@ -111,7 +113,7 @@ namespace Avogadro {
     // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_alpha > 0.001 && m_alpha < 0.999) {
       if (m_mesh1) {
-        if (m_mesh1->stable()) {
+        if (m_mesh1->lock()->tryLockForRead()) {
           if (m_colored) {
             pd->painter()->setColor(&m_posColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
@@ -120,10 +122,11 @@ namespace Avogadro {
             pd->painter()->setColor(&m_posColor);
             pd->painter()->drawMesh(*m_mesh1, m_renderMode);
           }
+          m_mesh1->lock()->unlock();
         }
       }
       if (m_mesh2) {
-        if (m_mesh2->stable()) {
+        if (m_mesh2->lock()->tryLockForRead()) {
           if (m_colored) {
             pd->painter()->setColor(&m_negColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
@@ -132,6 +135,7 @@ namespace Avogadro {
             pd->painter()->setColor(&m_negColor);
             pd->painter()->drawMesh(*m_mesh2, m_renderMode);
           }
+          m_mesh2->lock()->unlock();
         }
       }
     }
@@ -145,15 +149,17 @@ namespace Avogadro {
       renderMode = 2;
 
     if (m_mesh1) {
-      if (m_mesh1->stable()) {
+      if (m_mesh1->lock()->tryLockForRead()) {
         pd->painter()->setColor(&m_posColor);
         pd->painter()->drawMesh(*m_mesh1, renderMode);
+        m_mesh1->lock()->unlock();
       }
     }
     if (m_mesh2) {
-      if (m_mesh2->stable()) {
+      if (m_mesh2->lock()->tryLockForRead()) {
         pd->painter()->setColor(&m_negColor);
         pd->painter()->drawMesh(*m_mesh2, renderMode);
+        m_mesh2->lock()->unlock();
       }
     }
     if (m_drawBox)
