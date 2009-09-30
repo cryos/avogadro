@@ -831,7 +831,7 @@ void GamessControlGroup::WriteToFile( ostream &File, GamessInputData *IData, lon
     sprintf( Out,"SCFTYP=%s ",GetSCFTypeText() );
     File << Out;
   } else { //Punch out the default RHF/ROHF wavefunction
-    if ( NumElectrons + GetCharge() & 1 ) sprintf( Out, "SCFTYP=ROHF " );
+    if ( (NumElectrons + GetCharge()) & 1 ) sprintf( Out, "SCFTYP=ROHF " );
     else sprintf( Out, "SCFTYP=RHF " );
     File << Out;
   }
@@ -979,7 +979,8 @@ float GamessSystemGroup::GetConvertedTime( void ) const
   float result, factor=1.0;
 
   if ( TimeLimit ) result = TimeLimit;
-  else result = 525600.0;
+//  else result = 525600.0;
+  result = 0.0;
 
   switch ( TimeUnits ) {
     case milleniaUnit:
@@ -1020,9 +1021,6 @@ long GamessSystemGroup::SetConvertedTime( float NewTime )
       factor *= 60;
     case minuteUnit:
       result = ( long )( NewTime * factor );
-      break;
-    case secondUnit:
-      result = ( long )( NewTime/60.0 );
       break;
     default:
       break;
@@ -1067,22 +1065,26 @@ double GamessSystemGroup::GetConvertedMem( void ) const
 }
 double GamessSystemGroup::SetConvertedMem( double NewMem )
 {
-  double result = 0, factor = 1;
+  double result = 0, factor = 1.0;
+
+  // GAMESS uses the MWORDS keyword instead of
+  // the old 'MEMORY'. The needed memory amount is the same units
+  // as MEMDDI
 
   switch ( MemUnits ) {
     case megaBytesUnit:
-      factor *= 1024*1024;
-    case bytesUnit:
-      result = ( long )( factor*NewMem/8.0 );
+      factor = 1.0/8.0;
       break;
-    case megaWordsUnit:
-      factor *= 1000000;
-    case wordsUnit:
-      result = ( long )( factor*NewMem );
+    case gigaWordsUnit:
+      factor = 1000.0;
+      break;
+    case gigaBytesUnit:
+      factor = 1000.0/8.0;
       break;
     default:
       break;
   }
+  result = NewMem*factor;
   if ( result >= 0 ) Memory = result;
   return Memory;
 }
@@ -1120,7 +1122,8 @@ double GamessSystemGroup::GetConvertedMemDDI( void ) const
 }
 double GamessSystemGroup::SetConvertedMemDDI( double NewMem )
 {
-  double result, factor = 1;
+  double result, factor = 1.0;
+
 
   switch ( MemDDIUnits ) {
     case megaBytesUnit:
@@ -1179,14 +1182,14 @@ GamessSystemGroup::GamessSystemGroup( GamessSystemGroup *Copy )
 }
 void GamessSystemGroup::InitData( void )
 {
-  TimeLimit = 600;
+  TimeLimit = 0;
   Memory = 0.0;
   MemDDI = 0.0;
   KDiag = 0;
   // TimeUnits = minuteUnit;
-  TimeUnits = hourUnit;
+  TimeUnits = minuteUnit;
   // MemUnits = wordsUnit;
-  MemUnits = megaBytesUnit;
+  MemUnits = megaWordsUnit;
   MemDDIUnits = megaWordsUnit;
   Flags = 0;
 }
@@ -1196,20 +1199,22 @@ void GamessSystemGroup::WriteToFile( ostream &File )
 
   //Punch the group label
   if (MemDDI || GetParallel() || KDiag || GetCoreFlag()
-      || GetBalanceType() || GetXDR()) {
+      || GetBalanceType() || GetXDR() || Memory > 0 || TimeLimit > 0) {
     File << " $SYSTEM ";
-    /*
+    
     //Time limit
-    long test = TimeLimit;
-    if ( test==0 ) test = 600;
-    sprintf( Out,"TIMLIM=%ld ",test );
-    File << Out;
+    //long test = TimeLimit;
+    //if ( test==0 ) test = 600;
+    if( TimeLimit > 0 ) {
+      sprintf( Out,"TIMLIM=%ld ",TimeLimit );
+      File << Out;
+    }
     //Memory
     if ( Memory ) {
-    sprintf( Out, "MEMORY=%ld ", ( long )Memory );
-    File << Out;
+      sprintf( Out, "MWORDS=%ld ", ( long )Memory );
+      File << Out;
     }
-    */
+    
     if ( MemDDI ) {
       sprintf( Out, "MEMDDI=%ld ", ( long )MemDDI );
       File << Out;

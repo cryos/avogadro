@@ -339,6 +339,7 @@ namespace Avogadro {
 
   void GamessInputDialog::updatePreviewText()
   {
+    printf("FIRED UPDATE-PREVIEW\n");
     stringstream str;
     m_inputData->WriteInputFile( str );
     ui.previewText->setText( QString::fromAscii( str.str().c_str() ) );
@@ -645,6 +646,13 @@ namespace Avogadro {
   void GamessInputDialog::updateSystemWidgets()
   {
     blockChildrenSignals( ui.systemWidget, true );
+
+    ui.systemTimeDouble->setValue( m_inputData->System->GetConvertedTime() );
+    ui.systemTimeCombo->setCurrentIndex( m_inputData->System->GetTimeUnits() - minuteUnit );
+
+    // Standard Memory Handler
+    ui.systemMemoryDouble->setValue( m_inputData->System->GetConvertedMem() );
+    ui.systemMemoryCombo->setCurrentIndex( m_inputData->System->GetMemUnits() - megaWordsUnit );
 
     // memDDI edit
     ui.systemDDIDouble->setValue( m_inputData->System->GetConvertedMemDDI() );
@@ -1098,6 +1106,34 @@ namespace Avogadro {
 
   void GamessInputDialog::connectSystem()
   {
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( setTimeLimit( double ) ) );
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( setTimeLimitUnits( int ) ) );
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( setSystemMemory( double ) ) );
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( setSystemMemoryUnits( int ) ) );
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( advancedChanged() ) );
+
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
         this, SLOT( setSystemDDI( double ) ) );
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
@@ -2023,6 +2059,26 @@ namespace Avogadro {
     m_inputData->Data->SetUseSym( state );
   }
 
+
+  void GamessInputDialog::setTimeLimit( double val )
+  {
+    m_inputData->System->SetConvertedTime( val );
+  }
+
+  void GamessInputDialog::setTimeLimitUnits( int index )
+  {
+    m_inputData->System->SetTimeUnits((TimeUnit)( index + minuteUnit ) );
+  }
+
+  void GamessInputDialog::setSystemMemory( double val )
+  {
+    m_inputData->System->SetConvertedMem( val );
+  }
+
+  void GamessInputDialog::setSystemMemoryUnits( int index )
+  {
+    m_inputData->System->SetMemUnits(( MemoryUnit )( index + megaWordsUnit ) );
+  }
 
   void GamessInputDialog::setSystemDDI( double val )
   {
