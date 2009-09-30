@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:52+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 15:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,22 +24,23 @@ msgstr "はい"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>アプリケーション・バージョン: %2<br/><br/>ライブラリ・"
-"バージョン: %3<br/><br/>詳しくは、<a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>をご確認ください。<br/><br/>本プログラムは、現状"
-"のまま提供され、設計、商品性、特定目的との適合性を含む、一切の保証を伴いませ"
-"ん。<br/>"
+"<h3>%1</h3><br/><br/>アプリケーション・バージョン: %2<br/><br/>ライブラリ・バージョン: "
+"%3<br/><br/>詳しくは、<a href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>をご確認ください。<br/><br/>本プログラムは、現状のまま提供され、設計、商品性、特定目的との適合性を含む、一切の保証を伴い"
+"ません。<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:801
-#: src/mainwindow.cpp:851 src/mainwindow.cpp:873 src/mainwindow.cpp:1029
-#: src/mainwindow.cpp:1051 src/mainwindow.cpp:1203 src/mainwindow.cpp:1428
-#: src/mainwindow.cpp:2411 src/mainwindow.cpp:2886:46
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:801 src/mainwindow.cpp:851
+#: src/mainwindow.cpp:873 src/mainwindow.cpp:1029 src/mainwindow.cpp:1051
+#: src/mainwindow.cpp:1203 src/mainwindow.cpp:1428 src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2886 :46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -63,9 +64,10 @@ msgstr "分子の消去"
 msgid "Clear Atoms"
 msgstr "原子の消去"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921:254 rc.cpp:262
+#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921 :254 rc.cpp:262
 msgid "Settings"
 msgstr "設定"
 
@@ -407,14 +409,14 @@ msgstr "ツールがロードされていません"
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr ""
-" アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
+msgstr " アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
 
 #: src/mainwindow.cpp:2927
 msgid "Objects"
 msgstr "オブジェクト"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2933:214
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2933 :214
 msgid "Colors"
 msgstr "色"
 
@@ -489,7 +491,8 @@ msgstr "エラー"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :252
 msgid "Item"
 msgstr "アイテム"
 
@@ -502,7 +505,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "低"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "中"
@@ -517,7 +521,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "未定義"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "なし"
@@ -579,15 +584,18 @@ msgstr "フォーム"
 msgid "Color by:"
 msgstr "配色 :"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "選択済み基本要素を追加"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "選択済み基本要素を削除"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "全ての基本要素を追加"
 
@@ -683,19 +691,23 @@ msgstr "選択(&S)"
 msgid "Main Toolbar"
 msgstr "メインツールバー"
 
-#: src/mainwindow.ui:193 src/settingsdialog.ui:255
+#: src/mainwindow.ui:193
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "プロジェクト・ツリー"
 
-#: src/mainwindow.ui:226 src/pluginsettings.ui:23
+#: src/mainwindow.ui:226
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "表示タイプ"
 
-#: src/mainwindow.ui:235 src/pluginsettings.ui:28
+#: src/mainwindow.ui:235
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "ツール"
 
-#: src/mainwindow.ui:256 src/mainwindow.ui:268
+#: src/mainwindow.ui:256
+#: src/mainwindow.ui:268
 msgid "&Open"
 msgstr "開く(&O)"
 
@@ -703,7 +715,8 @@ msgstr "開く(&O)"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:289
+#: src/mainwindow.ui:277
+#: src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "終了(&Q)"
 
@@ -719,7 +732,8 @@ msgstr "最近使用したファイル"
 msgid "&Clear Recent"
 msgstr "最近使用したファイル情報の削除(&C)"
 
-#: src/mainwindow.ui:308 src/mainwindow.ui:320
+#: src/mainwindow.ui:308
+#: src/mainwindow.ui:320
 msgid "&New"
 msgstr "新規作成(&N)"
 
@@ -727,7 +741,8 @@ msgstr "新規作成(&N)"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329 src/mainwindow.ui:341
+#: src/mainwindow.ui:329
+#: src/mainwindow.ui:341
 msgid "&Close"
 msgstr "閉じる(&C)"
 
@@ -735,7 +750,8 @@ msgstr "閉じる(&C)"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350 src/mainwindow.ui:362
+#: src/mainwindow.ui:350
+#: src/mainwindow.ui:362
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -924,11 +940,11 @@ msgid "All Molecules in File..."
 msgstr ""
 
 #: src/mainwindow.ui:679
-#, fuzzy
 msgid "Reset Display Types"
-msgstr "表示タイプ"
+msgstr ""
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "プラグイン"
 
@@ -940,11 +956,13 @@ msgstr "エクステンション"
 msgid "Details"
 msgstr "詳細"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "ツリー・アイテム"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "タイプ"
 
@@ -1012,7 +1030,8 @@ msgstr "エイリアス"
 msgid "Settings..."
 msgstr "設定 ..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr "全般"
 
@@ -1020,7 +1039,8 @@ msgstr "全般"
 msgid "Quality:"
 msgstr "品質 :"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "グローバル・レンダリング品質に設定"
 
@@ -1031,9 +1051,9 @@ msgstr "フォグ効果 :"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
-"Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro Team,"
-"Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo"
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro "
+"Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1042,6 +1062,7 @@ msgstr ",,,,,,,avogadro-devel@lists.sourceforge.net,,,,,"
 #~ msgid "Lithium"
 #~ msgstr "リチウム(Lithium）"
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 

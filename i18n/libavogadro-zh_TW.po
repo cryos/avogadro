@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-09 02:56+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 14:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -863,7 +863,8 @@ msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr "您的分子至少要有一個原子才能加入一限制條件"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr "您的分子至少要有兩個原子才能加入一化學鍵結的限制條件"
 
 #: src/extensions/constraintsdialog.cpp:378
@@ -999,9 +1000,7 @@ msgstr "力場"
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
-msgstr ""
-"使用分子力學力場 (molecular mechanics force fields) 以最適化分子及產生構形異"
-"構物"
+msgstr "使用分子力學力場 (molecular mechanics force fields) 以最適化分子及產生構形異構物"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1081,7 +1080,7 @@ msgstr "產生匯入檔給 GAMESS 量子化學套件"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619 :606 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "標題"
 
@@ -1171,8 +1170,7 @@ msgstr "Gaussian 輸入平台產生器警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
-"您希望更新預覽的文字嗎? 將會失去所有在 Gaussian 輸入工作區預覽框中的變更"
+msgstr "您希望更新預覽的文字嗎? 將會失去所有在 Gaussian 輸入工作區預覽框中的變更"
 
 #: src/extensions/gaussianinputdialog.cpp:233
 msgid "Save Gaussian Input Deck"
@@ -1216,7 +1214,8 @@ msgid "G03 Crashed."
 msgstr "G03 當機."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "無法順利執行 Gaussian. 可能是安裝不正確."
 
 #: src/extensions/mopacinputdialog.ui:307
@@ -1224,7 +1223,7 @@ msgstr "無法順利執行 Gaussian. 可能是安裝不正確."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1278
+#: src/extensions/qcheminputdialog.cpp:178 :1278
 msgid "Show Preview"
 msgstr "顯示預覽"
 
@@ -1236,7 +1235,7 @@ msgstr "顯示預覽"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "取消預覽"
 
@@ -1340,7 +1339,7 @@ msgstr "胜肽..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "插入胜肽"
 
@@ -1450,10 +1449,9 @@ msgid "&Properties"
 msgstr "性質"
 
 #: src/extensions/molecularpropextension.cpp:132
-#, fuzzy
 msgctxt "Dipole moment data not available."
 msgid "N/A"
-msgstr "無法使用"
+msgstr ""
 
 #: src/extensions/molecularpropextension.h:48
 msgid "Molecular Properties"
@@ -1653,9 +1651,7 @@ msgid ""
 "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
-msgstr ""
-"您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔"
-"案. 您確定要這樣做嗎?"
+msgstr "您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔案. 您確定要這樣做嗎?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -1737,7 +1733,7 @@ msgid "Conformer Properties"
 msgstr "異構物性質"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:462
+#: src/extensions/propextension.h:43 :462
 msgid "Properties"
 msgstr "性質"
 
@@ -1747,7 +1743,8 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr "這些視窗可以用來顯示原子, 鍵, 鍵角,及扭力性質等. 也包含直角座標編輯器."
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:353 :188
 msgid "Type"
 msgstr "種類"
 
@@ -1759,7 +1756,8 @@ msgstr "元素"
 msgid "Valence"
 msgstr "價"
 
-#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
+#: src/engines/labelsettingswidget.ui:85
+#: src/extensions/propmodel.cpp:359 :86
 msgid "Partial Charge"
 msgstr "部份電荷"
 
@@ -1845,7 +1843,7 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423:442
+#: src/extensions/propmodel.cpp:423 :442
 msgid "Energy"
 msgstr "能量"
 
@@ -1915,9 +1913,10 @@ msgstr "請輸入需要的 SMARTS 樣式"
 msgid "Select by residue"
 msgstr "依照殘基來選擇"
 
-#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:75
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :82 rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "殘基名稱"
 
@@ -1977,7 +1976,8 @@ msgstr "Open a shader parameters 檔案"
 msgid "Shader parameters files (*.params)"
 msgstr "Shader 參數檔案 (*.params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1486
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -1994,12 +1994,12 @@ msgid "Y Axis"
 msgstr "Y 軸"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1528
+#: src/extensions/spectradialog.cpp:152 :1528
 msgid "&Appearance"
 msgstr "外觀"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1572
+#: src/extensions/spectradialog.cpp:153 :1572
 msgid "E&xport Image"
 msgstr "匯出圖形"
 
@@ -2181,7 +2181,7 @@ msgid "Customi&ze <<"
 msgstr "客製化 <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736:1524
+#: src/extensions/spectradialog.cpp:736 :1524
 msgid "Customi&ze >>"
 msgstr "客製化 >>"
 
@@ -2206,8 +2206,7 @@ msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
-msgstr ""
-"您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
+msgstr "您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
 
 #: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
@@ -2423,7 +2422,7 @@ msgid "Apply"
 msgstr "套用"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:222
+#: src/extensions/unitcellparamdialog.cpp:97 :222
 msgid "OK"
 msgstr "確定"
 
@@ -2434,7 +2433,7 @@ msgstr "依照頻率將 %1 的振動加以分類排序..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1730
+#: src/extensions/vibrationdialog.cpp:213 :1730
 msgid "Start &Animation"
 msgstr "啟動動畫"
 
@@ -2452,7 +2451,7 @@ msgstr "振動..."
 
 #: src/extensions/gamessinputdialog.ui:2550
 #: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239:804
+#: src/extensions/vibrationextension.cpp:239 :804
 msgid "Vibrational Analysis"
 msgstr "振動分析"
 
@@ -2786,11 +2785,13 @@ msgstr "每次更新步數："
 msgid "Algorithm:"
 msgstr "演算法："
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:286 :252
 msgid "Steepest Descent"
 msgstr "Steepest Descent (最陡下降)"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:287 :254
 msgid "Conjugate Gradients"
 msgstr "共軛梯度"
 
@@ -2871,8 +2872,8 @@ msgstr "繞 Z 軸旋轉"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
-#: rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "重設"
 
@@ -2903,13 +2904,10 @@ msgstr ""
 "鍵中心調整工具\n"
 "旋轉, 放大縮小, 移動的功能與導覽工具相同\n"
 "*調整功能如下\n"
-"1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉"
-"該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
-"2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞"
-"著藍色平面改變鍵角.\n"
+"1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
+"2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞著藍色平面改變鍵角.\n"
 "3. 使用滑鼠右鍵可以改變鍵的長度\n"
-"譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到"
-"適當的形狀."
+"譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到適當的形狀."
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
@@ -3033,8 +3031,8 @@ msgstr "測量鍵長, 角度及二平面"
 msgid "Measure Settings"
 msgstr "測量功能設定"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
-#: src/tools/drawcommand.cpp:311:1750
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
 msgid "Add Atom"
 msgstr "新增原子"
 
@@ -3086,7 +3084,8 @@ msgstr "繪圖"
 msgid "Element:"
 msgstr "元素："
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:784:556
+#: src/extensions/gamessinputdialog.ui:1214
+#: src/tools/drawtool.cpp:784 :556
 msgid "Other..."
 msgstr "其他..."
 
@@ -3128,10 +3127,8 @@ msgid ""
 msgstr ""
 "調整工具（F10）\n"
 "\n"
-"滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平"
-"面)\n"
-"滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面"
-"的垂直方向移動) 。\n"
+"滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平面)\n"
+"滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面的垂直方向移動) 。\n"
 "滑鼠右鍵：點擊並拖曳可以旋轉所選的原子。"
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
@@ -3187,8 +3184,7 @@ msgstr ""
 "2. 可以點選原子或是鍵. 也使用拖曳 (會出現一個方框) 可以選擇特定範圍內的原子\n"
 "3. 使用 Ctrl 鍵來切換選擇，Shift 鍵來加入新的選項\n"
 "\n"
-"譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需"
-"要的原子"
+"譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需要的原子"
 
 #: src/tools/selectrotatetool.cpp:411
 msgid "Selection Mode:"
@@ -3234,7 +3230,8 @@ msgstr "二平面角"
 msgid "Z Matrix Editor..."
 msgstr "Z Matrix 編輯器..."
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
+#: src/extensions/gamessinputdialog.ui:1537
+#: src/tools/zmatrixtool.h:39 :614
 msgid "Z-Matrix"
 msgstr "Z-Matrix"
 
@@ -3274,12 +3271,14 @@ msgstr "原子半徑："
 msgid "Bond Radius:"
 msgstr "鍵的半徑："
 
-#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "不透明度:"
 
-#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "顯示多個鍵"
 
@@ -3376,7 +3375,8 @@ msgstr "原子標籤："
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2101
+#: src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr "無"
 
@@ -3507,7 +3507,8 @@ msgstr "動畫軌跡"
 msgid "Load File..."
 msgstr "載入檔案..."
 
-#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3515,7 +3516,8 @@ msgstr "0/0"
 msgid "Dynamic Bonds"
 msgstr "Dynamic Bonds (動態的鍵)"
 
-#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3546,8 +3548,10 @@ msgid "Number of conformers"
 msgstr "構形異構物的數目"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2560
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "方法"
@@ -3636,12 +3640,15 @@ msgstr "全部刪除"
 msgid "File Import..."
 msgstr "匯入檔案..."
 
-#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "檔名:"
 
-#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "瀏覽..."
@@ -3662,7 +3669,8 @@ msgstr "理解鍵嗎?"
 msgid "Setup Force Field"
 msgstr "建立力場"
 
-#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "力場"
 
@@ -4414,7 +4422,8 @@ msgstr "單位："
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "標題:"
 
@@ -4896,7 +4905,8 @@ msgstr "產生..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "關閉"
@@ -5296,7 +5306,8 @@ msgstr "從殘基名稱新增配位基"
 msgid "create ligand from file..."
 msgstr "從檔案新增配位基"
 
-#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "殘基名稱"
 
@@ -5479,7 +5490,8 @@ msgstr "povray"
 msgid "Render"
 msgstr "呈現"
 
-#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137
+#: src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "解析度:"
 
@@ -5563,7 +5575,8 @@ msgstr "片段 Shader:"
 msgid "Parameters:"
 msgstr "參數:"
 
-#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "指定 Shader"
 
@@ -5605,8 +5618,10 @@ msgstr "關閉"
 msgid "Calculated Spectra:"
 msgstr "計算的光譜:"
 
-#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168
+#: src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279
+#: src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "設定顏色..."
 
@@ -5622,7 +5637,8 @@ msgstr "字形:"
 msgid "Change Font..."
 msgstr "改變字形:"
 
-#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224
+#: src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "顯示"
 
@@ -5770,7 +5786,8 @@ msgstr "重設圖形的軸"
 msgid "Label Peaks:"
 msgstr "標示 peaks:"
 
-#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125
+#: src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5813,11 +5830,13 @@ msgstr "Surface 種類:"
 msgid "Van der Waals"
 msgstr "凡得瓦"
 
-#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46
+#: src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "靜電位能"
 
-#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "MO 666"
 
@@ -5998,17 +6017,14 @@ msgstr "移除原子"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang"
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com"
-
-#~ msgid "Estimated Dipole Moment (D):"
-#~ msgstr "估計的偶極矩 (D):"
 
 #~ msgid "Caesium"
 #~ msgstr "Caesium (銫)"
@@ -6031,12 +6047,15 @@ msgstr ""
 #~ msgid "Residues"
 #~ msgstr "殘基"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "距離（1->2）：%1 %2"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "距離（2->3）：%1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "距離（3->4）：%1 %2"
 
@@ -6176,12 +6195,9 @@ msgstr ""
 #~ msgstr "這檔案不含 3 D 坐標, 您可能無法編輯或是觀看該檔"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
-#~ msgstr ""
-#~ "這檔案還有多個分子的紀錄. Avogadro 將只會讀取第一個分子. 如果您存檔, 將會"
-#~ "失去其他分子的紀錄"
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ msgstr "這檔案還有多個分子的紀錄. Avogadro 將只會讀取第一個分子. 如果您存檔, 將會失去其他分子的紀錄"
 
 #~ msgid " Bonds: "
 #~ msgstr " 鍵 "
