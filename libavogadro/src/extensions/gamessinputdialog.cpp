@@ -339,7 +339,6 @@ namespace Avogadro {
 
   void GamessInputDialog::updatePreviewText()
   {
-    printf("FIRED UPDATE-PREVIEW\n");
     stringstream str;
     m_inputData->WriteInputFile( str );
     ui.previewText->setText( QString::fromAscii( str.str().c_str() ) );
@@ -2067,7 +2066,20 @@ namespace Avogadro {
 
   void GamessInputDialog::setTimeLimitUnits( int index )
   {
+    long oldTimeLimit, newTimeLimit;
+    double oldFactor, newFactor;
+
+    // get current information
+    oldTimeLimit = m_inputData->System->GetTimeLimit();
+    oldFactor = m_inputData->System->GetConvertedTime();
+
     m_inputData->System->SetTimeUnits((TimeUnit)( index + minuteUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedTime();
+
+    newTimeLimit = ( long ) round((oldTimeLimit * oldFactor / newFactor));
+    m_inputData->System->SetTimeLimit(newTimeLimit);
   }
 
   void GamessInputDialog::setSystemMemory( double val )
@@ -2077,7 +2089,19 @@ namespace Avogadro {
 
   void GamessInputDialog::setSystemMemoryUnits( int index )
   {
+    double oldMemory, newMemory, oldFactor, newFactor;
+
+    // get current information
+    oldMemory = m_inputData->System->GetMemory();
+    oldFactor = m_inputData->System->GetConvertedMem();
+
     m_inputData->System->SetMemUnits(( MemoryUnit )( index + megaWordsUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedMem();
+
+    newMemory = oldMemory * (oldFactor / newFactor);
+    m_inputData->System->SetMemory( newMemory );
   }
 
   void GamessInputDialog::setSystemDDI( double val )
@@ -2087,7 +2111,19 @@ namespace Avogadro {
 
   void GamessInputDialog::setSystemDDIUnits( int index )
   {
+    double oldMemory, newMemory, oldFactor, newFactor;
+
+    // get current information
+    oldMemory = m_inputData->System->GetMemDDI();
+    oldFactor = m_inputData->System->GetConvertedMemDDI();
+
     m_inputData->System->SetMemDDIUnits(( MemoryUnit )( index + megaWordsUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedMemDDI();
+
+    newMemory = oldMemory * (oldFactor / newFactor);
+    m_inputData->System->SetMemDDI( newMemory );
   }
 
   void GamessInputDialog::setSystemProduce( bool state )

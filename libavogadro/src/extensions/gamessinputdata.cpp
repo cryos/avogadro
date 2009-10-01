@@ -980,7 +980,7 @@ float GamessSystemGroup::GetConvertedTime( void ) const
 
   if ( TimeLimit ) result = TimeLimit;
 //  else result = 525600.0;
-  result = 0.0;
+  else result = 0.0;
 
   switch ( TimeUnits ) {
     case milleniaUnit:
@@ -1048,14 +1048,14 @@ double GamessSystemGroup::GetConvertedMem( void ) const
   // else result = 1000000;
 
   switch ( MemUnits ) {
-    case bytesUnit:
+    case megaBytesUnit:
       factor = 8.0;
       break;
-    case megaWordsUnit:
-      factor = 1.0/1000000.0;
+    case gigaWordsUnit:
+      factor = 1.0 / 1000.0;
       break;
-    case megaBytesUnit:
-      factor = 8.0/( 1024*1024 );
+    case gigaBytesUnit:
+      factor = 8.0 / 1000.0;
       break;
     default:
       break;
@@ -1073,13 +1073,13 @@ double GamessSystemGroup::SetConvertedMem( double NewMem )
 
   switch ( MemUnits ) {
     case megaBytesUnit:
-      factor = 1.0/8.0;
+      factor = 1.0 / 8.0;
       break;
     case gigaWordsUnit:
       factor = 1000.0;
       break;
     case gigaBytesUnit:
-      factor = 1000.0/8.0;
+      factor = 1000.0 / 8.0;
       break;
     default:
       break;
@@ -1109,10 +1109,10 @@ double GamessSystemGroup::GetConvertedMemDDI( void ) const
       factor = 8.0;
       break;
     case gigaWordsUnit:
-      factor = 1.0/1000.0;
+      factor = 1.0 / 1000.0;
       break;
     case gigaBytesUnit:
-      factor = 8.0/( 1000.0 );
+      factor = 8.0 / 1000.0;
       break;
     default:
       break;
@@ -1127,13 +1127,13 @@ double GamessSystemGroup::SetConvertedMemDDI( double NewMem )
 
   switch ( MemDDIUnits ) {
     case megaBytesUnit:
-      factor = 1.0/8.0;
+      factor = 1.0 / 8.0;
       break;
     case gigaWordsUnit:
       factor = 1000.0;
       break;
     case gigaBytesUnit:
-      factor = 1000.0/8.0;
+      factor = 1000.0 / 8.0;
       break;
     default:
       break;
