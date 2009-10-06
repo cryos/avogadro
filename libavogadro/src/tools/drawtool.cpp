@@ -2,7 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007,2008 Donald Ephraim Curtis
-  Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
   Copyright (C) 2008 Tim Vandermeersch
   Some Portions Copyright (C) 2007-2008 Geoffrey Hutchison
 
@@ -112,13 +112,12 @@ namespace Avogadro {
     }
 
     Molecule *molecule = widget->molecule();
-    if(!molecule) {
+    if(!molecule)
       return 0;
-    }
 
     QUndoCommand *undo = 0;
 
-    _buttons = event->buttons();
+    m_buttons = event->buttons();
 
     m_movedSinceButtonPressed = false;
     m_lastDraggingPosition = event->pos();
@@ -133,7 +132,12 @@ namespace Avogadro {
     // The draw tool always accepts mouse presses
     event->accept();
 
-    if(_buttons & Qt::LeftButton) {
+    if(m_buttons & Qt::LeftButton) {
+      // Try to acquire a write lock in order to change the molecule - before
+      // returning this lock must be unlocked
+      if (!molecule->lock()->tryLockForWrite())
+        return 0;
+
       // The user clicked on an atom
       if(m_hits.size() && (m_hits[0].type() == Primitive::AtomType)) {
         // "alchemy" -- change this atom to a new element
@@ -142,7 +146,6 @@ namespace Avogadro {
         if(m_beginAtom && (m_beginAtom->atomicNumber() != m_element)) {
           m_prevAtomElement = m_beginAtom->atomicNumber();
           m_beginAtom->setAtomicNumber(m_element);
-          m_beginAtom->update();
         }
       }
       else if(m_hits.size() && (m_hits[0].type() == Primitive::BondType)) {
@@ -153,8 +156,10 @@ namespace Avogadro {
           // do not try to change X-H bond order when adjust hydrogens is on
           if(m_addHydrogens) {
             if (molecule->atomById(bond->beginAtomId())->isHydrogen() ||
-                molecule->atomById(bond->endAtomId())->isHydrogen())
+                molecule->atomById(bond->endAtomId())->isHydrogen()) {
+              molecule->lock()->unlock();
               return 0;
+            }
           }
 
           unsigned int bondOrder, oldBondOrder;
@@ -181,8 +186,8 @@ namespace Avogadro {
         m_beginAtom = addAtom(widget, event->pos());
         m_beginAtomAdded = true;
         m_forceField->SetIgnoreAtom(m_beginAtom->index());
-        m_beginAtom->update();
       } // hits
+      molecule->lock()->unlock();
     } // left button
 
     return undo;
@@ -191,14 +196,17 @@ namespace Avogadro {
   QUndoCommand* DrawTool::mouseMoveEvent(GLWidget *widget, QMouseEvent *event)
   {
     Molecule *molecule = widget->molecule();
-    if(!molecule) {
+    if(!molecule)
       return 0;
-    }
 
     // The draw tool always accepts mouse presses
     event->accept();
 
-    if((_buttons & Qt::LeftButton) && m_beginAtom) {
+    if((m_buttons & Qt::LeftButton) && m_beginAtom) {
+      // Acquire a write lock - must unlock before returning
+      if (!molecule->lock()->tryLockForWrite())
+        return 0;
+
       m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
                             event->pos().y()-SEL_BOX_HALF_SIZE,
                             SEL_BOX_SIZE,
@@ -210,24 +218,20 @@ namespace Avogadro {
         // parse our hits.  we want to know
         // if we hit another existing atom that is not
         // the m_endAtom which we created
-        for(int i=0; i < m_hits.size() && !hitBeginAtom; ++i) {
+        for(int i = 0; i < m_hits.size() && !hitBeginAtom; ++i) {
           if(m_hits[i].type() == Primitive::AtomType) {
             // hit the beginning atom: either moved here from somewhere else
             // or were already here.
-            if(m_hits[i].name() == m_beginAtom->index()) {
+            if(m_hits[i].name() == m_beginAtom->index())
               hitBeginAtom = true;
-            }
             else if(!m_endAtom) {
               // we don't yet have an end atom but
               // hit another atom on screen -- bond to this
-
               existingAtom = molecule->atom(m_hits[i].name());
               // if we're auto-adding hydrogens and we hit a hydrogen
               // look for another target
               // (unless we've selected hydrogen as our element of choice)
-              if (m_addHydrogens
-                  && existingAtom->isHydrogen()
-                  && m_element != 1) {
+              if (m_addHydrogens && existingAtom->isHydrogen() && m_element != 1) {
                 existingAtom = NULL;
                 continue;
               }
@@ -235,9 +239,7 @@ namespace Avogadro {
             else if(m_hits[i].name() != m_endAtom->index()) {
               // hit a new atom which isn't our end atom
               existingAtom = molecule->atom(m_hits[i].name());
-              if (m_addHydrogens
-                  && existingAtom->isHydrogen()
-                  && m_element != 1) {
+              if (m_addHydrogens && existingAtom->isHydrogen() && m_element != 1) {
                 existingAtom = NULL;
                 continue;
               }
@@ -270,11 +272,13 @@ namespace Avogadro {
           // special case, dragging from hydrogen when adjust hydrogens is enabled....
           if (m_addHydrogens && (m_prevAtomElement == 1)) {
             // do not adjust hydrogens, the AddBond command will do this
-            m_hydrogenCommand = new ChangeElementDrawCommand(widget->molecule(), m_beginAtom,
-                m_prevAtomElement, 0);
-          } else {
-            m_beginAtom->setAtomicNumber(m_prevAtomElement);
+            m_hydrogenCommand = new ChangeElementDrawCommand(widget->molecule(),
+                                                             m_beginAtom,
+                                                             m_prevAtomElement,
+                                                             0);
           }
+          else
+            m_beginAtom->setAtomicNumber(m_prevAtomElement);
           m_prevAtomElement = 0;
         }
 
@@ -332,7 +336,6 @@ namespace Avogadro {
 
         // (!existingAtom && !hitBeginAtom)
         else if(!m_endAtom) {
-
           if(m_prevBond) {
             m_prevBond->setOrder(m_prevBondOrder);
             m_prevBond = 0;
@@ -342,17 +345,17 @@ namespace Avogadro {
           m_endAtomAdded = true;
           m_forceField->SetIgnoreAtom(m_endAtom->index());
 
-          if(!m_bond) {
+          if(!m_bond)
             m_bond = addBond(molecule, m_beginAtom, m_endAtom);
-          }
-          else {
+          else
             m_bond->setEnd(m_endAtom);
-          }
         }
-        else { // we're moving -- stretch a bond
+        else // we're moving -- stretch a bond
           moveAtom(widget, m_endAtom, event->pos());
-        }
       }
+      molecule->lock()->unlock();
+
+      // If we have done stuff then trigger a redraw of the molecule
       molecule->update();
     }
 
@@ -367,7 +370,11 @@ namespace Avogadro {
     // The draw tool always accepts mouse presses
     event->accept();
 
-    if(_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
+    // Acquire a write lock, before returning release the lock
+    if (!molecule->lock()->tryLockForWrite())
+      return 0;
+
+    if(m_buttons & Qt::LeftButton && (event->modifiers() == Qt::NoModifier)) {
 
       if(m_beginAtomAdded || m_bond) {
 
@@ -415,7 +422,7 @@ namespace Avogadro {
                   if (nbr->isHydrogen())
                     adjEnd |= AdjustHydrogens::RemoveOnRedo | AdjustHydrogens::AddOnUndo;
                 }
-              } 
+              }
             } else {
               adjBegin = adjEnd = AdjustHydrogens::AddOnRedo | AdjustHydrogens::RemoveOnUndo;
               // pre-existing atoms might need extra work
@@ -432,7 +439,7 @@ namespace Avogadro {
                   if (nbr->isHydrogen())
                     adjEnd |= AdjustHydrogens::RemoveOnRedo | AdjustHydrogens::AddOnUndo;
                 }
-              } 
+              }
             }
           }
 
@@ -467,7 +474,8 @@ namespace Avogadro {
         else {
           undo = beginAtomDrawCommand;
         }
-      } else if (m_prevBond) {
+      }
+      else if (m_prevBond) {
         // bug #1898118
         // both beginAtom, endAtom and bond exist, but the bond order has changed
         if (m_prevBond->order() != m_prevBondOrder) {
@@ -476,6 +484,7 @@ namespace Avogadro {
             if (molecule->atomById(m_prevBond->beginAtomId())->isHydrogen() ||
                 molecule->atomById(m_prevBond->endAtomId())->isHydrogen()) {
               m_prevBond->setOrder(1); // restore
+              molecule->lock()->unlock();
               return 0;
             }
           }
@@ -484,12 +493,14 @@ namespace Avogadro {
                                                 m_prevBondOrder, m_addHydrogens);
           undo->setText(tr("Change Bond Order"));
         }
-      } else if (m_beginAtom) {
+      }
+      else if (m_beginAtom) {
         if (m_hydrogenCommand) {
           dynamic_cast<ChangeElementDrawCommand*>(m_hydrogenCommand)->setAdjustHydrogens(m_addHydrogens);
           undo = m_hydrogenCommand;
         // beginAtom exists, but we have no bond, we change the element
-        } else if (m_beginAtom->atomicNumber() != m_prevAtomElement) {
+        }
+        else if (m_beginAtom->atomicNumber() != m_prevAtomElement) {
           undo = new ChangeElementDrawCommand(widget->molecule(),
                                               m_beginAtom,
                                               m_prevAtomElement,
@@ -510,17 +521,15 @@ namespace Avogadro {
 
       m_forceField->UnsetIgnoreAtom();
       m_forceField->UnsetFixAtom();
-
-      widget->molecule()->update();
-      return undo;
     }
 
     // Either use a three-button mouse
     // or hold down the Command key (ControlModifier in Qt notation)
     // or the Control key (MetaModifier in Qt notation)
-    else if( (_buttons & Qt::RightButton) ||
-             ((_buttons & Qt::LeftButton) && (event->modifiers() == Qt::ControlModifier || event->modifiers() == Qt::MetaModifier)) )
-    {
+    else if( (m_buttons & Qt::RightButton) ||
+             ((m_buttons & Qt::LeftButton) &&
+              (event->modifiers() == Qt::ControlModifier ||
+               event->modifiers() == Qt::MetaModifier)) ) {
       m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
                             event->pos().y()-SEL_BOX_HALF_SIZE,
                             SEL_BOX_SIZE,
@@ -530,25 +539,30 @@ namespace Avogadro {
         if(m_hits[0].type() == Primitive::AtomType) {
           // don't delete H-? atom when adjust hydrogens is on
           Atom *atom = widget->molecule()->atom(m_hits[0].name());
-          if (m_addHydrogens && atom->isHydrogen() && int(atom->valence()))
+          if (m_addHydrogens && atom->isHydrogen() && int(atom->valence())) {
+            molecule->lock()->unlock();
             return undo;
+          }
           undo = new DeleteAtomDrawCommand(widget->molecule(), m_hits[0].name(),
                                            m_addHydrogens);
         }
-        if(m_hits[0].type() == Primitive::BondType) {
+        else if(m_hits[0].type() == Primitive::BondType) {
           // don't delete ?-H bonds when adjust hydrogens is on
           Bond *bond = widget->molecule()->bond(m_hits[0].name());
-          if (m_addHydrogens)
+          if (m_addHydrogens) {
             if (molecule->atomById(bond->beginAtomId())->isHydrogen() ||
-                molecule->atomById(bond->endAtomId())->isHydrogen())
+                molecule->atomById(bond->endAtomId())->isHydrogen()) {
+              molecule->lock()->unlock();
               return undo;
+            }
+          }
           undo = new DeleteBondDrawCommand(widget->molecule(), m_hits[0].name(),
                                            m_addHydrogens);
         }
       }
-      widget->molecule()->update();
     }
 
+    molecule->lock()->unlock();
     return undo;
   }
 

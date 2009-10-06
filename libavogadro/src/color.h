@@ -1,11 +1,11 @@
 /**********************************************************************
   Color - Base class for handling color changes in OpenGL
 
-	Copyright (c) 2006-2008 Benoit Jacob
-	Copyright (c) 2007-2009 Geoff Hutchison
-	Copyright (c) 2007-2008 Donald Ephraim Curtis
-	Copyright (c) 2007 Carsten Niehaus
-	Copyright (c) 2007-2009 Marcus D. Hanwell
+    Copyright (c) 2006-2008 Benoit Jacob
+    Copyright (c) 2007-2009 Geoff Hutchison
+    Copyright (c) 2007-2008 Donald Ephraim Curtis
+    Copyright (c) 2007 Carsten Niehaus
+    Copyright (c) 2007-2009 Marcus D. Hanwell
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -35,7 +35,7 @@
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #else
-  #include <QGLWidget> // for GLfloat
+  #include <QGLWidget>
 #endif
 
 #include <QColor> // for returning QColor
@@ -90,8 +90,7 @@ namespace Avogadro {
      * @param alpha The opacity of the color
      * \sa set()
      */
-    Color(const GLfloat red, const GLfloat green,
-          const GLfloat blue, const GLfloat alpha = 1.0 );
+    Color(float red, float green, float blue, float alpha = 1.0 );
 
     /**
      * Set the color based on the supplied Primitive.
@@ -146,8 +145,8 @@ namespace Avogadro {
      * @param blue The blue component
      * @param alpha The opacity of the color
      */
-    virtual void setFromRgba(const GLfloat red, const GLfloat green,
-                             const GLfloat blue, const GLfloat alpha = 1.0 );
+    virtual void setFromRgba(float red, float green,float blue,
+                             float alpha = 1.0);
 
     /**
      * Set the color explicitly based on a QColor, copying RGB and Alpha levels.
@@ -175,7 +174,7 @@ namespace Avogadro {
      * Sets this color to be the one used by OpenGL for rendering
      * when lighting is disabled.
      */
-    inline virtual void apply()
+    virtual void apply()
     {
       glColor4fv(m_channels);
     }
@@ -246,10 +245,10 @@ namespace Avogadro {
 
   protected:
     /**
-     * \var GLfloat m_channels
+     * \var m_channels
      * The components of the color ranging from 0 to 1.
      */
-    GLfloat m_channels[4];
+    float m_channels[4];
 
     /**
      * The name of the class instance.

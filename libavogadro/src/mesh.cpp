@@ -23,8 +23,8 @@
  **********************************************************************/
 
 #include "mesh.h"
+#include "color3f.h"
 
-#include <QColor>
 #include <QReadWriteLock>
 #include <QDebug>
 
@@ -145,13 +145,13 @@ namespace Avogadro {
     }
   }
 
-  const vector<QColor> & Mesh::colors() const
+  const vector<Color3f> & Mesh::colors() const
   {
     QReadLocker lock(m_lock);
     return m_colors;
   }
 
-  const QColor * Mesh::color(int n) const
+  const Color3f * Mesh::color(int n) const
   {
     QReadLocker lock(m_lock);
     // If there is only one color return that, otherwise colored by vertex
@@ -163,7 +163,7 @@ namespace Avogadro {
     }
   }
 
-  bool Mesh::setColors(const vector<QColor> &values)
+  bool Mesh::setColors(const vector<Color3f> &values)
   {
     QWriteLocker lock(m_lock);
     m_colors.clear();
@@ -171,7 +171,7 @@ namespace Avogadro {
     return true;
   }
 
-  bool Mesh::addColors(const vector<QColor> &values)
+  bool Mesh::addColors(const vector<Color3f> &values)
   {
     QWriteLocker lock(m_lock);
     if (m_colors.capacity() < m_colors.size() + values.size()) {

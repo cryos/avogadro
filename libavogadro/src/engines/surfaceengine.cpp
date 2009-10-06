@@ -31,6 +31,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
+#include <avogadro/color3f.h>
 #include <avogadro/painterdevice.h>
 
 #include <QReadWriteLock>
@@ -78,23 +79,25 @@ namespace Avogadro {
     // Render the opaque surface if m_alpha is 1
     if (m_alpha >= 0.999) {
       if (m_mesh1) {
-        if (m_mesh1->stable()) {
+        if (m_mesh1->lock()->tryLockForRead()) {
           if (m_colored)
             pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
           else {
             pd->painter()->setColor(&m_posColor);
             pd->painter()->drawMesh(*m_mesh1, m_renderMode);
           }
+          m_mesh1->lock()->unlock();
         }
       }
       if (m_mesh2) {
-        if (m_mesh2->stable()) {
+        if (m_mesh2->lock()->tryLockForRead()) {
           if (m_colored)
             pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
           else {
             pd->painter()->setColor(&m_negColor);
             pd->painter()->drawMesh(*m_mesh2, m_renderMode);
           }
+          m_mesh2->lock()->unlock();
         }
       }
     }
@@ -110,7 +113,7 @@ namespace Avogadro {
     // Render the transparent surface if m_alpha is between 0 and 1.
     if (m_alpha > 0.001 && m_alpha < 0.999) {
       if (m_mesh1) {
-        if (m_mesh1->stable()) {
+        if (m_mesh1->lock()->tryLockForRead()) {
           if (m_colored) {
             pd->painter()->setColor(&m_posColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh1, m_renderMode);
@@ -119,10 +122,11 @@ namespace Avogadro {
             pd->painter()->setColor(&m_posColor);
             pd->painter()->drawMesh(*m_mesh1, m_renderMode);
           }
+          m_mesh1->lock()->unlock();
         }
       }
       if (m_mesh2) {
-        if (m_mesh2->stable()) {
+        if (m_mesh2->lock()->tryLockForRead()) {
           if (m_colored) {
             pd->painter()->setColor(&m_negColor); // For transparency
             pd->painter()->drawColorMesh(*m_mesh2, m_renderMode);
@@ -131,6 +135,7 @@ namespace Avogadro {
             pd->painter()->setColor(&m_negColor);
             pd->painter()->drawMesh(*m_mesh2, m_renderMode);
           }
+          m_mesh2->lock()->unlock();
         }
       }
     }
@@ -144,15 +149,17 @@ namespace Avogadro {
       renderMode = 2;
 
     if (m_mesh1) {
-      if (m_mesh1->stable()) {
+      if (m_mesh1->lock()->tryLockForRead()) {
         pd->painter()->setColor(&m_posColor);
         pd->painter()->drawMesh(*m_mesh1, renderMode);
+        m_mesh1->lock()->unlock();
       }
     }
     if (m_mesh2) {
-      if (m_mesh2->stable()) {
+      if (m_mesh2->lock()->tryLockForRead()) {
         pd->painter()->setColor(&m_negColor);
         pd->painter()->drawMesh(*m_mesh2, renderMode);
+        m_mesh2->lock()->unlock();
       }
     }
     if (m_drawBox)
@@ -283,6 +290,8 @@ namespace Avogadro {
       Cube *cube = m_molecule->cubeById(m_mesh1->cube());
       m_min = cube->min();
       m_max = cube->max();
+      if (m_mesh1->colors().size() == 0)
+          m_colored = false;
 
       // Enable the combo if appropriate for mapped color
       if (m_settingsWidget) {
@@ -470,6 +479,8 @@ namespace Avogadro {
       Cube *cube = m_molecule->cubeById(m_mesh1->cube());
       m_min = cube->min();
       m_max = cube->max();
+      if (m_mesh1->colors().size() == 0)
+        m_colored = false;
     }
   }
 

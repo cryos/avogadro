@@ -488,7 +488,7 @@ namespace Avogadro {
      * @param A boolean to indicate if the dipole is estimated or not
      * @return The dipole moment of the Molecule.
      */
-    const Eigen::Vector3d * dipoleMoment(bool *estimate = 0) const;
+    Eigen::Vector3d dipoleMoment(bool *estimate = 0) const;
 
     /**
      * Calculate the partial charges on each atom.
@@ -513,8 +513,36 @@ namespace Avogadro {
     Bond* bond(const Atom*, const Atom*);
 
     /**
-     * Add a new conformer to the Molecule. The conformers are mapped onto the
-     * unique ids of the atoms in the Molecule.
+     * Get the current conformer size to accommodate all atoms. Since atom
+     * positions are indexed by their uniaue id, this is not the same as the
+     * number of atoms
+     @code
+     Molecule *molecule;
+     ...
+     // create a correctly sized conformer and initialize its elements
+     std::vector<Eigen::Vector3d> newConformer(molecule->conformerSize(), Eigen::Vector3d::Zero())
+     // change the atom posistions in the conformer
+     foreach (Atom *atom, molecule->atoms()) {
+       newConformer[atom->id()] = ...;
+     }
+     // add the conformer to the end of the current list (i.e. index = numConformers())
+     molecule->addConformer(newConformer, molecule->numConformers())
+     @endcode
+     */
+    unsigned long conformerSize() { return m_atomPos->size(); }
+
+    /**
+     * Add a new conformer to the Molecule. If the index is an already existing
+     * conformer, this conformer will be overwritten. If there is a gap between
+     * the currently last index and the new index, new conformers will be
+     * created to make sure all indexes have a valid conformer. For example, if
+     * there is only one conformer and this method is called with @p index 9, a
+     * total of nine conformers are added (0 existed, 1-9 are created).
+     *
+     * @note Conformer atom positions are indexed by their unique id (Atom::id()).
+     * Use conformerSize() to check the current size needed to accommodate all
+     * atoms.
+     *
      * @param conformer A vector of Vector3d with all atom positions.
      * @param index The index of the conformer to add.
      */
@@ -522,13 +550,29 @@ namespace Avogadro {
                       unsigned int index);
 
     /**
-     * Add a new conformer and return a pointer to it.
+     * Add a new conformer and return a pointer to it. If the index is an
+     * already existing conformer, no new conformer will be created and a
+     * pointer to the already existing conformer is returned. If there is
+     * a gap between the currently last index and the new index, new
+     * conformers will be created to make sure all indexes have a valid
+     * conformer. For example, if there is only one conformer and this
+     * method is called with @p index 9, a total of nine conformers are
+     * added (0 existed, 1-9 are created) and a pointer to the last one is
+     * returned.
+     *
+     * @note Conformer atom positions are indexed by their unique id (Atom::id()).
+     * Use conformerSize() to check the current size needed to accommodate all
+     * atoms.
+     *
      * @param index The index of the new conformer.
      * @return Pointer to the conformer added.
      */
     std::vector<Eigen::Vector3d> * addConformer(unsigned int index);
 
     /**
+     * @note Conformer atom positions are indexed by their unique id (Atom::id()).
+     * Use conformerSize() to check the current size needed to accommodate all
+     * atoms.
      * @param index The index of the conformer to retrieve.
      * @return Pointer to an existing conformer, or NULL if the index doesn't exist.
      */
@@ -536,24 +580,40 @@ namespace Avogadro {
 
     /**
      * Get const reference to all conformers.
+     *
+     * @note Conformer atom positions are indexed by their unique id (Atom::id()).
+     * Use conformerSize() to check the current size needed to accommodate all
+     * atoms.
      */
     const std::vector<std::vector<Eigen::Vector3d> *>& conformers() const;
 
     /**
-     * Change the conformer to the one at the specified index.
+     * Change the conformer to the one at the specified index. Conformers are
+     * indexed from 0 to numConformers() - 1. When the index is invalid (i.e.
+     * >= numConformers()), this method returns false.
+     *
+     * @return True if the conformer index is valid.
      */
     bool setConformer(unsigned int index);
 
     /**
-     * Replace all conformers in the Molecule. The conformers are
-     * mapped onto the unique ids of the atoms in the Molecule.
-     * This will first clear all conformers.
+     * Replace all conformers in the Molecule. This will first clear all
+     * conformers. If the number of specified @p conformers is 0, this method
+     * behaves like clearConformers(). In any case, the current conformer is
+     * set to the first one (index 0).
+     *
+     * @note Conformer atom positions are indexed by their unique id (Atom::id()).
+     * Use conformerSize() to check the current size needed to accommodate all
+     * atoms.
+     *
      * @param conformer A vector of conformers (vector of Vector3d)
+     * @return True if successful (i.e. all conformers have the correct size: conformerSize()).
      */
-    void setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers);
+    bool setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers);
 
     /**
-     * Clear all conformers from the molecule, leaving just conformer zero.
+     * Clear all conformers from the molecule, leaving just conformer zero. This
+     * conformer will also be set as current conformer.
      */
     void clearConformers();
 
@@ -817,7 +877,6 @@ namespace Avogadro {
 
   inline Atom * Molecule::atom(int index) const
   {
-    QReadLocker lock(m_lock);
     if (index >= 0 && index < m_atomList.size())
       return m_atomList[index];
     else
@@ -826,7 +885,6 @@ namespace Avogadro {
 
   inline Atom * Molecule::atomById(unsigned long id) const
   {
-    QReadLocker lock(m_lock);
     if(id < m_atoms.size())
       return m_atoms[id];
     else
@@ -835,7 +893,6 @@ namespace Avogadro {
 
   inline const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
   {
-    QReadLocker lock(m_lock);
     if (id < m_atomPos->size())
       return &(*m_atomPos)[id];
     else
@@ -844,7 +901,6 @@ namespace Avogadro {
 
   inline Bond * Molecule::bond(int index) const
   {
-    QReadLocker lock(m_lock);
     if (index >= 0 && index < m_bondList.size())
       return m_bondList[index];
     else
@@ -853,7 +909,6 @@ namespace Avogadro {
 
   inline Bond * Molecule::bondById(unsigned long id) const
   {
-    QReadLocker lock(m_lock);
     if(id < m_bonds.size())
       return m_bonds[id];
     else

@@ -371,11 +371,17 @@ namespace Avogadro
               }
             }
           }
-          foreach (Atom *atom, m_molecule->atoms()) {
-            atom->setPos(Eigen::Vector3d(coordPtr));
-            coordPtr += 3;
+
+          // Try to acquire a write lock on the molecule, and update geometry
+          if (m_molecule->lock()->tryLockForWrite()) {
+            foreach (Atom *atom, m_molecule->atoms()) {
+              atom->setPos(Eigen::Vector3d(coordPtr));
+              coordPtr += 3;
+            }
+            m_molecule->lock()->unlock();
+            m_molecule->update();
           }
-          m_molecule->update();
+
           m_cycles++;
           steps += 5;
           m_mutex.lock();
@@ -408,12 +414,17 @@ namespace Avogadro
               }
             }
           }
- 
-          foreach (Atom *atom, m_molecule->atoms()) {
-            atom->setPos(Eigen::Vector3d(coordPtr));
-            coordPtr += 3;
+
+          // Try to acquire a write lock on the molecule, and update geometry
+          if (m_molecule->lock()->tryLockForWrite()) {
+            foreach (Atom *atom, m_molecule->atoms()) {
+              atom->setPos(Eigen::Vector3d(coordPtr));
+              coordPtr += 3;
+            }
+            m_molecule->lock()->unlock();
+            m_molecule->update();
           }
-          m_molecule->update();
+
           m_cycles++;
           steps += 5;
           m_mutex.lock();
@@ -531,9 +542,11 @@ namespace Avogadro
       else if ( m_task == 2)
         m_dialog = new QProgressDialog( QObject::tr( "Random Rotor Search" ),
                                         QObject::tr( "Cancel" ), 0,  100 );
-      else if ( m_task == 3)
+      else if ( m_task == 3) {
         m_dialog = new QProgressDialog( QObject::tr( "Weighted Rotor Search" ),
-                                        QObject::tr( "Cancel" ), 0,  100 );
+                                        QObject::tr( "Cancel" ), 0,  0 );
+        m_dialog->show();
+      }
 
 
       QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );

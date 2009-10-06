@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-08-03 14:19-0400\n"
+"POT-Creation-Date: 2009-09-08 22:59-0400\n"
 "PO-Revision-Date: 2009-07-30 16:26+0000\n"
 "Last-Translator: FJModrego <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-31 19:20+0000\n"
+"X-Launchpad-Export-Date: 2009-09-22 15:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -24,22 +24,25 @@ msgstr "Aceptar"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versión de la Aplicación: %2<br/><br/>Versión de la "
-"biblioteca: %3<br/><br/>Para mas información revise la <a href=\"http://"
-"avogadro.openmolecules.net/\">pagina de Avogadro</a>.<br/><br/>El programa "
-"es distribuido COMO ESTÁ sin GARANTÍA DE NINGÚN TIPO, INCLUYENDO LA GARANTÍA "
-"DE DISEÑO, COMERCIALIZACIÓN Y USO PARA UN USO EN PARTICULAR.<br/>"
+"biblioteca: %3<br/><br/>Para mas información revise la <a "
+"href=\"http://avogadro.openmolecules.net/\">pagina de "
+"Avogadro</a>.<br/><br/>El programa es distribuido COMO ESTÁ sin GARANTÍA DE "
+"NINGÚN TIPO, INCLUYENDO LA GARANTÍA DE DISEÑO, COMERCIALIZACIÓN Y USO PARA "
+"UN USO EN PARTICULAR.<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:798
-#: src/mainwindow.cpp:848 src/mainwindow.cpp:870 src/mainwindow.cpp:1026
-#: src/mainwindow.cpp:1048 src/mainwindow.cpp:1202 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:2430 src/mainwindow.cpp:2891:46
+#: src/mainwindow.ui:14
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:801 src/mainwindow.cpp:851
+#: src/mainwindow.cpp:873 src/mainwindow.cpp:1029 src/mainwindow.cpp:1051
+#: src/mainwindow.cpp:1203 src/mainwindow.cpp:1428 src/mainwindow.cpp:2411
+#: src/mainwindow.cpp:2886 :46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -63,13 +66,14 @@ msgstr "Borrar molécula"
 msgid "Clear Atoms"
 msgstr "Borrar átomos"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179
+#: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2909 src/mainwindow.cpp:2926:252 rc.cpp:260
+#: src/mainwindow.cpp:2904 src/mainwindow.cpp:2921 :254 rc.cpp:262
 msgid "Settings"
 msgstr "Preferencias"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:706
+#: src/importdialog.cpp:175 src/mainwindow.cpp:710
 msgid "Open File"
 msgstr "Abrir Archivo"
 
@@ -93,114 +97,114 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:366 src/mainwindow.cpp:1562
+#: src/mainwindow.cpp:366 src/mainwindow.cpp:1563
 msgid "Bring All to Front"
 msgstr "Traer todo al frente"
 
-#: src/mainwindow.cpp:637
+#: src/mainwindow.cpp:641
 msgid "&Tool Settings..."
 msgstr "Preferencias de &herramientas..."
 
-#: src/mainwindow.cpp:640
+#: src/mainwindow.cpp:644
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:645
+#: src/mainwindow.cpp:649
 msgid "&Display Settings..."
 msgstr "Preferencias de &pantalla..."
 
-#: src/mainwindow.cpp:648
+#: src/mainwindow.cpp:652
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:686 src/mainwindow.cpp:1141
+#: src/mainwindow.cpp:690 src/mainwindow.cpp:1142
 msgid "Common molecule formats"
 msgstr "Formatos comunes de geometría molecular"
 
-#: src/mainwindow.cpp:691 src/mainwindow.cpp:1138 src/mainwindow.cpp:1367
-#: src/mainwindow.cpp:1446
+#: src/mainwindow.cpp:695 src/mainwindow.cpp:1139 src/mainwindow.cpp:1368
+#: src/mainwindow.cpp:1447
 msgid "All files"
 msgstr "Todos los Archivos"
 
-#: src/mainwindow.cpp:692 src/mainwindow.cpp:1135 src/mainwindow.cpp:1147
+#: src/mainwindow.cpp:696 src/mainwindow.cpp:1136 src/mainwindow.cpp:1148
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:693
+#: src/mainwindow.cpp:697
 msgid "Computational Chemistry Output"
 msgstr "Salida de química computacional"
 
-#: src/mainwindow.cpp:694
+#: src/mainwindow.cpp:698
 msgid "Crystallographic Interchange CIF"
 msgstr "Intercambio Cristalográfico CIF"
 
-#: src/mainwindow.cpp:695
+#: src/mainwindow.cpp:699
 msgid "GAMESS-US Output"
 msgstr "Salida GAMESS-US"
 
-#: src/mainwindow.cpp:696
+#: src/mainwindow.cpp:700
 msgid "Gaussian 98/03 Output"
 msgstr "Salida de Gaussian 98/03"
 
-#: src/mainwindow.cpp:697
+#: src/mainwindow.cpp:701
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Fichero Checkpoint de Gaussian formateado"
 
-#: src/mainwindow.cpp:698
+#: src/mainwindow.cpp:702
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:699
+#: src/mainwindow.cpp:703
 msgid "MDL Mol"
 msgstr "Mol de MDL"
 
-#: src/mainwindow.cpp:700
+#: src/mainwindow.cpp:704
 msgid "NWChem Output"
 msgstr "Salida de NWChem"
 
-#: src/mainwindow.cpp:701 src/mainwindow.cpp:1152
+#: src/mainwindow.cpp:705 src/mainwindow.cpp:1153
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:702 src/mainwindow.cpp:1154
+#: src/mainwindow.cpp:706 src/mainwindow.cpp:1155
 msgid "Sybyl Mol2"
 msgstr "Mol2 de Sybyl"
 
-#: src/mainwindow.cpp:703 src/mainwindow.cpp:1155
+#: src/mainwindow.cpp:707 src/mainwindow.cpp:1156
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:775
+#: src/mainwindow.cpp:778
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Cargando %1..."
 
-#: src/mainwindow.cpp:779
+#: src/mainwindow.cpp:782
 #, qt-format
 msgid "Loading %1..."
 msgstr "Cargando %1..."
 
-#: src/mainwindow.cpp:799 src/mainwindow.cpp:1027
+#: src/mainwindow.cpp:802 src/mainwindow.cpp:1030
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Falló la lectura del archivo de moléculas, archivo %1"
 
-#: src/mainwindow.cpp:822
+#: src/mainwindow.cpp:825
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Leyendo archivo multimolecular. Puede tardar un rato..."
 
-#: src/mainwindow.cpp:849
+#: src/mainwindow.cpp:852
 msgid "This file does not contain 3D coordinates."
 msgstr "Este archivo no contiene coordenadas en 3D."
 
-#: src/mainwindow.cpp:853
+#: src/mainwindow.cpp:856
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "¿Quiere que Avogadro construya una geometría aproximada?"
 
-#: src/mainwindow.cpp:871
+#: src/mainwindow.cpp:874
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -208,202 +212,202 @@ msgstr ""
 "Este archivo no contiene coordenadas en 3D.\n"
 "Puede que no pueda verlo o editarlo adecuadamente."
 
-#: src/mainwindow.cpp:921
+#: src/mainwindow.cpp:924
 msgid "Select Molecule to View"
 msgstr "Seleccione una molécula para ver"
 
-#: src/mainwindow.cpp:946
+#: src/mainwindow.cpp:949
 msgid "Molecule Title"
 msgstr "Título de molécula"
 
-#: src/mainwindow.cpp:1019
+#: src/mainwindow.cpp:1022
 msgid "Atoms: "
 msgstr "Átomos: "
 
-#: src/mainwindow.cpp:1020
+#: src/mainwindow.cpp:1023
 msgid " Bonds: "
 msgstr " Enlaces: "
 
-#: src/mainwindow.cpp:1036
+#: src/mainwindow.cpp:1039
 msgid "File Loaded..."
 msgstr "Archivo Cargado..."
 
-#: src/mainwindow.cpp:1049
+#: src/mainwindow.cpp:1052
 msgid "Do you want to save the changes you made in the document?"
 msgstr "¿Quiere guardar los cambios realizados en el documento?"
 
-#: src/mainwindow.cpp:1058
+#: src/mainwindow.cpp:1061
 msgid "Your changes will be lost if you don't save them."
 msgstr "Perderá los cambios si no los guarda."
 
-#: src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1065
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1063
+#: src/mainwindow.cpp:1066
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1065
+#: src/mainwindow.cpp:1068
 msgid "Save..."
 msgstr "Guardar..."
 
-#: src/mainwindow.cpp:1065 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1068 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Guardar"
 
-#: src/mainwindow.cpp:1148
+#: src/mainwindow.cpp:1149
 msgid "GAMESS Input"
 msgstr "Entrada para GAMESS"
 
-#: src/mainwindow.cpp:1149
+#: src/mainwindow.cpp:1150
 msgid "Gaussian Cartesian Input"
 msgstr "Entrada para Gaussian en cartesianas"
 
-#: src/mainwindow.cpp:1150
+#: src/mainwindow.cpp:1151
 msgid "Gaussian Z-matrix Input"
 msgstr "Entrada para Gaussian en matriz-Z"
 
-#: src/mainwindow.cpp:1151
+#: src/mainwindow.cpp:1152
 msgid "MDL SDfile"
 msgstr "Archivo MDfile de MDL"
 
-#: src/mainwindow.cpp:1153
+#: src/mainwindow.cpp:1154
 msgid "NWChem Input"
 msgstr "Entrada para NWChem"
 
-#: src/mainwindow.cpp:1158
+#: src/mainwindow.cpp:1159
 msgid "Save Molecule As"
 msgstr "Guardar molécula como"
 
-#: src/mainwindow.cpp:1357 src/mainwindow.cpp:1369
+#: src/mainwindow.cpp:1358 src/mainwindow.cpp:1370
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1364
+#: src/mainwindow.cpp:1365
 msgid "Common image formats"
 msgstr "Formatos comunes de imagen"
 
-#: src/mainwindow.cpp:1368
+#: src/mainwindow.cpp:1369
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1370
+#: src/mainwindow.cpp:1371
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1455
+#: src/mainwindow.cpp:1377 src/mainwindow.cpp:1456
 msgid "Export Bitmap Graphics"
 msgstr "Exportar a Imagen de mapa de bits"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1429
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "No se puede guardar el archivo %1."
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1447
+#: src/mainwindow.cpp:1437 src/mainwindow.cpp:1448
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1443
+#: src/mainwindow.cpp:1444
 msgid "Common vector image formats"
 msgstr "Formatos comunes de imágen vectorial"
 
-#: src/mainwindow.cpp:1448
+#: src/mainwindow.cpp:1449
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1449
+#: src/mainwindow.cpp:1450
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1594
+#: src/mainwindow.cpp:1595
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sin título %1"
 
-#: src/mainwindow.cpp:1699
+#: src/mainwindow.cpp:1700
 msgid "Unable to paste molecule."
 msgstr "No se puede pegar la molécula"
 
-#: src/mainwindow.cpp:1728
+#: src/mainwindow.cpp:1729
 msgid "Paste failed (format unavailable)."
 msgstr "Falló al Pegar (formato no disponible)."
 
-#: src/mainwindow.cpp:1797
+#: src/mainwindow.cpp:1798
 msgid "Copy failed (mdl unavailable)."
 msgstr "Falló al copiar (mdl no disponible)."
 
-#: src/mainwindow.cpp:1923 src/mainwindow.cpp:1956 src/mainwindow.cpp:2023
-#: src/mainwindow.cpp:2559
+#: src/mainwindow.cpp:1924 src/mainwindow.cpp:1957 src/mainwindow.cpp:2024
+#: src/mainwindow.cpp:2554
 #, qt-format
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:1983
+#: src/mainwindow.cpp:1984
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:1992
+#: src/mainwindow.cpp:1993
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: vista separada"
 
-#: src/mainwindow.cpp:2158
+#: src/mainwindow.cpp:2159
 msgid "Normal Size"
 msgstr "Tamaño Normal"
 
-#: src/mainwindow.cpp:2171
+#: src/mainwindow.cpp:2172
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/mainwindow.cpp:2264
+#: src/mainwindow.cpp:2270
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2342 src/mainwindow.cpp:2377 src/savedialog.cpp:83
+#: src/mainwindow.cpp:2355 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "Sin título"
 
-#: src/mainwindow.cpp:2424
+#: src/mainwindow.cpp:2404
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2429
+#: src/mainwindow.cpp:2410
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2845
+#: src/mainwindow.cpp:2840
 msgid "Add"
 msgstr "Añadir"
 
-#: src/mainwindow.cpp:2850
+#: src/mainwindow.cpp:2845
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:2855
+#: src/mainwindow.cpp:2850
 msgid "Remove"
 msgstr "Borrar"
 
-#: src/mainwindow.cpp:2883
+#: src/mainwindow.cpp:2878
 msgid "No tools or engines loaded."
 msgstr "No se cargaron herramientas o motores."
 
-#: src/mainwindow.cpp:2885
+#: src/mainwindow.cpp:2880
 msgid "No engines loaded."
 msgstr "No se cargaron motores."
 
-#: src/mainwindow.cpp:2887
+#: src/mainwindow.cpp:2882
 msgid "No tools loaded."
 msgstr "No se cargaron herramientas."
 
-#: src/mainwindow.cpp:2888
+#: src/mainwindow.cpp:2883
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -411,15 +415,16 @@ msgstr ""
 " Es poco probable que la aplicación funcione correctamente. Por favor, "
 "corrija este error."
 
-#: src/mainwindow.cpp:2932
+#: src/mainwindow.cpp:2927
 msgid "Objects"
 msgstr "Objetos"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2938:212
+#: src/pluginsettings.ui:38
+#: src/mainwindow.cpp:2933 :214
 msgid "Colors"
 msgstr "Colores"
 
-#: src/mainwindow.cpp:2971
+#: src/mainwindow.cpp:2966
 msgid " copy"
 msgstr " copiar"
 
@@ -490,7 +495,8 @@ msgstr "Error"
 msgid "only labels can have sub items"
 msgstr "sólo las etiquetas pueden tener sub elementos"
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:250
+#: src/projecttreeeditor.ui:168
+#: src/projecttreemodel.cpp:65 :252
 msgid "Item"
 msgstr "Elemento"
 
@@ -503,7 +509,8 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "Baja"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:268
+#: src/settingsdialog.ui:86
+#: src/settingsdialog.cpp:107 :270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Media"
@@ -518,7 +525,8 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "Sin definir"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:274
+#: src/settingsdialog.ui:144
+#: src/settingsdialog.cpp:122 :276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Ninguna"
@@ -580,15 +588,18 @@ msgstr "Formulario"
 msgid "Color by:"
 msgstr "Color por:"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41
+#: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "Añadir Primitivas Seleccionadas"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55
+#: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "Quitar Primitivas Seleccionadas"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69
+#: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "Añadir Todas las Primitivas"
 
@@ -668,263 +679,276 @@ msgstr "&Construir"
 msgid "&View"
 msgstr "&Ver"
 
-#: src/mainwindow.ui:120
+#: src/mainwindow.ui:121
 msgid "&Edit"
 msgstr "&Editar..."
 
-#: src/mainwindow.ui:133
+#: src/mainwindow.ui:134
 msgid "E&xtensions"
 msgstr "E&xtensiones"
 
-#: src/mainwindow.ui:138
+#: src/mainwindow.ui:139
 msgid "&Select"
 msgstr "&Seleccionar"
 
-#: src/mainwindow.ui:155
+#: src/mainwindow.ui:156
 msgid "Main Toolbar"
 msgstr "Barra de Herramientas Principal"
 
-#: src/mainwindow.ui:192 src/settingsdialog.ui:255
+#: src/mainwindow.ui:193
+#: src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "Árbol del proyecto"
 
-#: src/mainwindow.ui:225 src/pluginsettings.ui:23
+#: src/mainwindow.ui:226
+#: src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "Mostrar Tipos"
 
-#: src/mainwindow.ui:234 src/pluginsettings.ui:28
+#: src/mainwindow.ui:235
+#: src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Herramientas"
 
-#: src/mainwindow.ui:255 src/mainwindow.ui:267
+#: src/mainwindow.ui:256
+#: src/mainwindow.ui:268
 msgid "&Open"
 msgstr "&Abrir"
 
-#: src/mainwindow.ui:258
+#: src/mainwindow.ui:259
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:276 src/mainwindow.ui:288
+#: src/mainwindow.ui:277
+#: src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "&Salir"
 
-#: src/mainwindow.ui:279
+#: src/mainwindow.ui:280
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: src/mainwindow.ui:293
+#: src/mainwindow.ui:294
 msgid "Recent"
 msgstr "Reciente"
 
-#: src/mainwindow.ui:298
+#: src/mainwindow.ui:299
 msgid "&Clear Recent"
 msgstr "&Limpiar Recientes"
 
-#: src/mainwindow.ui:307 src/mainwindow.ui:319
+#: src/mainwindow.ui:308
+#: src/mainwindow.ui:320
 msgid "&New"
 msgstr "&Nuevo"
 
-#: src/mainwindow.ui:310
+#: src/mainwindow.ui:311
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:328 src/mainwindow.ui:340
+#: src/mainwindow.ui:329
+#: src/mainwindow.ui:341
 msgid "&Close"
 msgstr "&Cerrar"
 
-#: src/mainwindow.ui:331
+#: src/mainwindow.ui:332
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:349 src/mainwindow.ui:361
+#: src/mainwindow.ui:350
+#: src/mainwindow.ui:362
 msgid "&Save"
 msgstr "&Guardar"
 
-#: src/mainwindow.ui:352
+#: src/mainwindow.ui:353
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.ui:370
+#: src/mainwindow.ui:371
 msgid "Save &As..."
 msgstr "Guardar &como..."
 
-#: src/mainwindow.ui:373
+#: src/mainwindow.ui:374
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#: src/mainwindow.ui:382
+#: src/mainwindow.ui:383
 msgid "Revert To Saved"
 msgstr "Volver al fichero guardado"
 
-#: src/mainwindow.ui:391
+#: src/mainwindow.ui:392
 msgid "&Graphics..."
 msgstr "&Gráficos..."
 
-#: src/mainwindow.ui:400
+#: src/mainwindow.ui:401
 msgid "&Full Screen Mode"
 msgstr "&Modo de Pantalla Completa"
 
-#: src/mainwindow.ui:403
+#: src/mainwindow.ui:404
 msgid "Esc"
 msgstr "Escape"
 
-#: src/mainwindow.ui:412
+#: src/mainwindow.ui:413
 msgid "Set &Background Color..."
 msgstr "Esta&blecer el color del fondo..."
 
-#: src/mainwindow.ui:417
+#: src/mainwindow.ui:418
 msgid "&About"
 msgstr "&Acerca de"
 
-#: src/mainwindow.ui:426
+#: src/mainwindow.ui:427
 msgid "&Undo"
 msgstr "&Deshacer"
 
-#: src/mainwindow.ui:429
+#: src/mainwindow.ui:430
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#: src/mainwindow.ui:438
+#: src/mainwindow.ui:439
 msgid "&Redo"
 msgstr "&Rehacer"
 
-#: src/mainwindow.ui:441
+#: src/mainwindow.ui:442
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#: src/mainwindow.ui:450
+#: src/mainwindow.ui:451
 msgid "New View"
 msgstr "Nueva Vista"
 
-#: src/mainwindow.ui:462
+#: src/mainwindow.ui:463
 msgid "Close View"
 msgstr "Cerrar vista"
 
-#: src/mainwindow.ui:471
+#: src/mainwindow.ui:472
 msgid "Center"
 msgstr "Centrar"
 
-#: src/mainwindow.ui:480
+#: src/mainwindow.ui:481
 msgid "&Paste"
 msgstr "&Pegar"
 
-#: src/mainwindow.ui:483
+#: src/mainwindow.ui:484
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: src/mainwindow.ui:492
+#: src/mainwindow.ui:493
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/mainwindow.ui:495
+#: src/mainwindow.ui:496
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: src/mainwindow.ui:504
+#: src/mainwindow.ui:505
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/mainwindow.ui:507
+#: src/mainwindow.ui:508
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#: src/mainwindow.ui:512
+#: src/mainwindow.ui:517
 msgid "Clear"
 msgstr "Borrar"
 
-#: src/mainwindow.ui:519
+#: src/mainwindow.ui:520
 msgid "Backspace"
 msgstr "Retroceso"
 
-#: src/mainwindow.ui:524
+#: src/mainwindow.ui:525
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/mainwindow.ui:527
+#: src/mainwindow.ui:528
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#: src/mainwindow.ui:532
+#: src/mainwindow.ui:533
 msgid "Select None"
 msgstr "No seleccionar nada"
 
-#: src/mainwindow.ui:535
+#: src/mainwindow.ui:536
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#: src/mainwindow.ui:544
+#: src/mainwindow.ui:545
 msgid "Configure Avogadro..."
 msgstr "Configurar Avogadro..."
 
-#: src/mainwindow.ui:552
+#: src/mainwindow.ui:553
 msgid "Tutorials"
 msgstr "Tutoriales"
 
-#: src/mainwindow.ui:557
+#: src/mainwindow.ui:562
 msgid "Duplicate View"
 msgstr "Duplicar Vista"
 
-#: src/mainwindow.ui:569
+#: src/mainwindow.ui:570
 msgid "Display Axes"
 msgstr "Mostrar Ejes"
 
-#: src/mainwindow.ui:577
+#: src/mainwindow.ui:578
 msgid "Debug Information"
 msgstr "Información de depuración"
 
-#: src/mainwindow.ui:585
+#: src/mainwindow.ui:586
 msgid "Avogadro Help"
 msgstr "Ayuda de Avogadro"
 
-#: src/mainwindow.ui:590
+#: src/mainwindow.ui:591
 msgid "Release Notes"
 msgstr "Notas de la versión"
 
-#: src/mainwindow.ui:595
+#: src/mainwindow.ui:596
 msgid "Report a Bug"
 msgstr "Reportar un error"
 
-#: src/mainwindow.ui:600
+#: src/mainwindow.ui:601
 msgid "FAQ"
 msgstr "Preguntas Frecuentes"
 
-#: src/mainwindow.ui:605
+#: src/mainwindow.ui:606
 msgid "Avogadro Website"
 msgstr "Página Web de Avogadro"
 
-#: src/mainwindow.ui:610
+#: src/mainwindow.ui:615
 msgid "Plugin Manager..."
 msgstr "Gestor de complementos..."
 
-#: src/mainwindow.ui:619
+#: src/mainwindow.ui:624
 msgid "Project Tree Editor..."
 msgstr "Editor del árbol del proyecto..."
 
-#: src/mainwindow.ui:628
+#: src/mainwindow.ui:633
 msgid "Detach View"
 msgstr "Separar vista"
 
-#: src/mainwindow.ui:637
+#: src/mainwindow.ui:642
 msgid "Molecule File..."
 msgstr "Archivo de molécula..."
 
-#: src/mainwindow.ui:652
+#: src/mainwindow.ui:653
 msgid "Use Quick Render"
 msgstr "Usar dibujo rápido"
 
-#: src/mainwindow.ui:657
+#: src/mainwindow.ui:658
 msgid "&Vector Graphics..."
 msgstr "Gráficos &vectoriales..."
 
-#: src/mainwindow.ui:665
+#: src/mainwindow.ui:666
 msgid "Display Unit Cell Axes"
 msgstr "Mostrar ejes de la celda unidad"
 
-#: src/mainwindow.ui:673
+#: src/mainwindow.ui:674
 msgid "All Molecules in File..."
 msgstr "Todas las moléculas en el archivo..."
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#: src/mainwindow.ui:679
+msgid "Reset Display Types"
+msgstr ""
+
+#: src/pluginsettings.ui:16
+#: src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "Complementos"
 
@@ -936,11 +960,13 @@ msgstr "Extensiones"
 msgid "Details"
 msgstr "Mostrar detalles"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17
+#: src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "Elementos del árbol"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34
+#: src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "Tipo"
 
@@ -1010,7 +1036,8 @@ msgstr "Alias"
 msgid "Settings..."
 msgstr "Configuración..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34
+#: src/settingsdialog.ui:237
 msgid "General"
 msgstr "General"
 
@@ -1018,7 +1045,8 @@ msgstr "General"
 msgid "Quality:"
 msgstr "Calidad:"
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49
+#: src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Asignar calidad de renderizado global."
 
@@ -1029,35 +1057,34 @@ msgstr "Niebla."
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo Fredz,"
-"Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,"
-"Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,"
-"cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
-"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,"
-"Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo "
-"A.,cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,Avogadro Team,"
-"DiegoJ,Edgardo Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
+",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
+"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
 "Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio "
-"Castillo A.,cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,"
-"Avogadro Team,DiegoJ,Edgardo Fredz,Enterhase,FJModrego,Feder Sáiz,Federico "
-"Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,"
-"Pablo Catarecha,Rogelio Castillo A.,cocoloco"
+"Castillo A.,cocoloco, ,Launchpad Contributions:,Andres Montejo "
+"Martinez,DiegoJ,Edgardo Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel "
+"Ruiz,Geoff Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo "
+"Catarecha,Rogelio Castillo A.,cocoloco, ,Launchpad Contributions:,Andres "
+"Montejo Martinez,Avogadro Team,DiegoJ,Edgardo Fredz,Enterhase,Feder "
+"Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,Javier García "
+"Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,cocoloco, ,Launchpad "
+"Contributions:,Andres Montejo Martinez,DiegoJ,Enterhase,FJModrego,Feder "
+"Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,Pablo "
+"Catarecha,Rogelio Castillo A.,cocoloco"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,"
-"patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
-"com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,"
-"diegojromerolopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,"
-"federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,"
-"jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,avogadro-devel@lists."
-"sourceforge.net,diegojromerolopez@gmail.com,medeshago@gmail.com,patricio."
-"oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,"
-"pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,avogadro-"
-"devel@lists.sourceforge.net,diegojromerolopez@gmail.com,medeshago@gmail.com,"
-"patricio.oshee@gmail.com,,federsaiz@googlemail.com,,debianmaster@gmail."
-"com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com"
+",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,pat"
+"ricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pc"
+"zoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojromero"
+"lopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,federsaiz@google"
+"mail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com"
+",,,Nathan_chud@hotmail.com,avogadro-"
+"devel@lists.sourceforge.net,diegojromerolopez@gmail.com,medeshago@gmail.com,p"
+"atricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,"
+"pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojrome"
+"rolopez@gmail.com,patricio.oshee@gmail.com,,federsaiz@googlemail.com,,debianm"
+"aster@gmail.com,,,pczoido@gmail.com,,jalvarezrom@gmail.com"
 
 #~ msgid "Hydrogen"
 #~ msgstr "Hidrógeno"
@@ -1392,21 +1419,26 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animación..."
 
+#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
 #~ msgid "Algorithm:"
 #~ msgstr "Algoritmo:"
 
+#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distancia (2->3): %1 %2"
 
+#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distancia (3->4): %1 %2"
 
+#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Ángulo: %1 %2"
 
+#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distancia (1->2): %1 %2"
 
@@ -1428,12 +1460,14 @@ msgstr ""
 #~ msgid "*4"
 #~ msgstr "*4"
 
+#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Falló lectura del archivo de trayectoria %1."
 
 #~ msgid "Force Field:"
 #~ msgstr "Forzar campo:"
 
+#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1446,9 +1480,11 @@ msgstr ""
 #~ msgid "AutoRotate"
 #~ msgstr "AutoRotar"
 
+#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Número de átomos: %1"
 
+#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Ángulo Diedro: %1 %2"
 
@@ -1461,6 +1497,7 @@ msgstr ""
 #~ msgid "Dipole"
 #~ msgstr "Dipolo"
 
+#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Número de enlaces rotables: %1"
 
@@ -1527,6 +1564,7 @@ msgstr ""
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "No se puede crear el campo de fuerza para esta molécula."
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energía = %1 %2"
 
@@ -1572,6 +1610,7 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Archivos de Avogadro (*.*)"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1579,6 +1618,10 @@ msgstr ""
 #~ "No se puede leer el archivo %1:\n"
 #~ "%2."
 
+#~ msgid "Reading molecular file failed."
+#~ msgstr "Lectura de archivo molecular falló."
+
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1586,6 +1629,7 @@ msgstr ""
 #~ "No se puede escribir en el archivo %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "No se puede escribir en el archivo %1."
 
@@ -1599,6 +1643,7 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1662,6 +1707,7 @@ msgstr ""
 #~ msgid "Start Atom"
 #~ msgstr "Átomo Inicial"
 
+#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Átomo %1"
 
@@ -1671,15 +1717,18 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotable"
 
+#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Enlace %1"
 
 #~ msgid "Vertex"
 #~ msgstr "Vértice"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Ángulo %1"
 
+#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsión %1"
 
@@ -1740,8 +1789,8 @@ msgstr ""
 #~ msgid ""
 #~ "Your molecule must contain at least four atoms to add a torsion constraint"
 #~ msgstr ""
-#~ "Tu molécula debe contener a lo menos cuatro átomos para añadir una fuerza "
-#~ "de torsión"
+#~ "Tu molécula debe contener a lo menos cuatro átomos para añadir una fuerza de "
+#~ "torsión"
 
 #~ msgid ""
 #~ "Your molecule must contain at least three atoms to add an angle constraint"
@@ -1752,8 +1801,8 @@ msgstr ""
 #~ msgid ""
 #~ "Your molecule must contain at least two atoms to add a bond constraint"
 #~ msgstr ""
-#~ "Tu molécula debe contener a lo menos dos átomos  para añadir una fuerza "
-#~ "de enlace."
+#~ "Tu molécula debe contener a lo menos dos átomos  para añadir una fuerza de "
+#~ "enlace."
 
 #~ msgid "Your molecule must contain at least one atom to add a constraint"
 #~ msgstr ""
@@ -1780,6 +1829,7 @@ msgstr ""
 #~ msgid "Conformers..."
 #~ msgstr "Confórmeros..."
 
+#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Confórmero %1"
 
@@ -2548,12 +2598,12 @@ msgstr ""
 #~ "vista\n"
 #~ "Botón derecho del ratón: Hacer clic y arrastrar para mover la vista\n"
 #~ "\n"
-#~ "Hacer clic y arrastrar con el botón izquierdo en un enlace para "
-#~ "establecer el plano de manipulación:\n"
-#~ "- Hacer clic y arrastrar con el botón izquierdo uno de los átomos del "
-#~ "enlace para cambiar de ángulo\n"
-#~ "- Hacer clic y arrastrar con el botón derecho uno de los átomos del "
-#~ "enlace para cambiar la longitud"
+#~ "Hacer clic y arrastrar con el botón izquierdo en un enlace para establecer "
+#~ "el plano de manipulación:\n"
+#~ "- Hacer clic y arrastrar con el botón izquierdo uno de los átomos del enlace "
+#~ "para cambiar de ángulo\n"
+#~ "- Hacer clic y arrastrar con el botón derecho uno de los átomos del enlace "
+#~ "para cambiar la longitud"
 
 #~ msgid "Measure"
 #~ msgstr "Mediciones"
@@ -2584,8 +2634,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run "
-#~ "any OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run any "
+#~ "OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Contexto OpenGL inválido.\n"
 #~ "Puede que algo esté completamente roto en la configuración de OpenGL "
@@ -2639,15 +2689,25 @@ msgstr ""
 #~ msgid "Open ligand file"
 #~ msgstr "Abrir archivo de ligandos"
 
+#~ msgid "Tool Settings"
+#~ msgstr "Ajustes de Herramientas"
+
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file does not contain 3D coordinates. You may not be able to edit or "
+#~ "view properly."
+#~ msgstr ""
+#~ "Este archivo no contiene coordenadas 3D. Es posible que no pueda editarlo ni "
+#~ "visualizarlo correctamente."
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Este archivo parece contener múltiples registros de moléculas. Avogadro "
 #~ "leerá solamente la primera molécula. Si guardas, las otras moléculas se "
 #~ "perderán."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "No se puede escribir el formato del archivo %1."
 
@@ -2863,17 +2923,18 @@ msgstr ""
 #~ msgstr ""
 #~ "Todos los átomos en el radio del ligando formarán parte del sitio de unión"
 
+#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
-#~ "aspect ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
+#~ "ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other "
-#~ "positive value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
-#~ "like 1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
+#~ "value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
+#~ "1000x1000 pixels."
 #~ msgstr ""
-#~ "La escena activa de Avogadro tiene %1x%2 píxeles, por lo que su relación "
-#~ "de aspecto es %3.\n"
+#~ "La escena activa de Avogadro tiene %1x%2 píxeles, por lo que su relación de "
+#~ "aspecto es %3.\n"
 #~ "Puede mantener este valor si, por ejemplo, pretende usar POV-Ray\n"
 #~ "para generar una imagen de %4x1000 píxeles, o bien puede introducir "
 #~ "cualquier otro valor positivo,\n"
@@ -3037,8 +3098,8 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Este archivo contiene solamente coordenadas 2D. ¿Quiere que Avogadro "
-#~ "escale los enlaces y  haga una optimización rápida?"
+#~ "Este archivo contiene solamente coordenadas 2D. ¿Quiere que Avogadro escale "
+#~ "los enlaces y  haga una optimización rápida?"
 
 #~ msgid ""
 #~ "Manipulation Tool (F10)\n"
@@ -3076,8 +3137,7 @@ msgstr ""
 #~ "Herramienta de selección (F11)\n"
 #~ "Pulsar para seleccionar átomos individuales, residuos o fragmentos\n"
 #~ "Arrastrar para seleccionar varios átomos\n"
-#~ "Usar Ctrl para conmutar la selección y Mayúsculas para añadir a la "
-#~ "selección"
+#~ "Usar Ctrl para conmutar la selección y Mayúsculas para añadir a la selección"
 
 #~ msgid "Stick"
 #~ msgstr "Varilla"
@@ -3422,27 +3482,28 @@ msgstr ""
 #~ msgid "could not set format to XYZ"
 #~ msgstr "no se pudo poner XYZ como formato"
 
+#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Hubo un problema leyendo el archivo de trayectoria %1"
 
+#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present "
-#~ "molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 #~ msgstr ""
-#~ "El archivo de trayectoria %1 indica que hay un número diferente de átomos "
-#~ "en la molécula actual"
+#~ "El archivo de trayectoria %1 indica que hay un número diferente de átomos en "
+#~ "la molécula actual"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dos moléculas tiene diferente número de átomos %1 %2"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr ""
-#~ "Nombre de película no válido. Se debe incluir la ruta completa del "
-#~ "directorio"
+#~ "Nombre de película no válido. Se debe incluir la ruta completa del directorio"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nombre de película no válido. Se debe incluir la ruta completa del "
 #~ "directorio y el nombre, terminado en .avi"
@@ -3549,8 +3610,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Herramienta de dibujo (F8)\n"
 #~ "\n"
-#~ "Botón izquierdo del ratón: \tPulsar y arrastrar para crear átomos y "
-#~ "enlaces\n"
+#~ "Botón izquierdo del ratón: \tPulsar y arrastrar para crear átomos y enlaces\n"
 #~ "Botón derecho del ratón: Borrar átomo"
 
 #~ msgid "Change Bond Order"
@@ -3839,6 +3899,7 @@ msgstr ""
 #~ msgid "Set the background color to be transparent"
 #~ msgstr "Poner el color de fondo transparente"
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "No se puede leer el archivo %1."
 
@@ -3911,18 +3972,22 @@ msgstr ""
 #~ msgid "Color by Residue"
 #~ msgstr "Color por radical"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "No se puede leer el formato del archivo %1."
 
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Entrada Q-Chen..."
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Ha fallado la lectura del archivo mol %1."
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Escribirá el archivo a %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Se ha escrito el archivo %1."
 
@@ -3938,8 +4003,8 @@ msgstr ""
 #~ "directorio"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nombre de archivo de vídeo no válido. Se debe incluir la ruta completa al "
 #~ "directorio y el nombre, acabado en .avi"
@@ -4012,8 +4077,7 @@ msgstr ""
 
 #~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 #~ msgstr ""
-#~ "Dibuja enlaces como alambres (líneas), ideal para (bio)moléculas muy "
-#~ "grandes"
+#~ "Dibuja enlaces como alambres (líneas), ideal para (bio)moléculas muy grandes"
 
 #~ msgid "Animate trajectories, reactions, and vibratins."
 #~ msgstr "Anima las trayectorias, reacciones y vibraciones"
@@ -4037,8 +4101,8 @@ msgstr ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
 #~ msgstr ""
-#~ "Las ventanas para mostrar propiedades de átomos, enlaces, ángulos y "
-#~ "torsión. Incluye también un editor de coordenadas cartesianas."
+#~ "Las ventanas para mostrar propiedades de átomos, enlaces, ángulos y torsión. "
+#~ "Incluye también un editor de coordenadas cartesianas."
 
 #~ msgid "Interactive python scripting terminal"
 #~ msgstr "Terminal interactiva para hacer scripts de python"
@@ -4053,11 +4117,11 @@ msgstr ""
 #~ msgstr "Súper Celda"
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a "
-#~ "unit cell."
+#~ "This document is currently an isolated molecule. You need to create a unit "
+#~ "cell."
 #~ msgstr ""
-#~ "Este documento es actualmente una molécula aislada. Necesita crear una "
-#~ "celda unitaria."
+#~ "Este documento es actualmente una molécula aislada. Necesita crear una celda "
+#~ "unitaria."
 
 #~ msgid "Warning"
 #~ msgstr "Advertencia"
@@ -4158,10 +4222,12 @@ msgstr ""
 #~ msgid "Intensity (a.u.)"
 #~ msgstr "Intensidad (a.u.)"
 
+#, qt-format
 #~ msgctxt "%1 is element, %L2 is atom index"
 #~ msgid "Atom %1 %L2"
 #~ msgstr "Átomo %1 %L2"
 
+#, qt-format
 #~ msgctxt "%L1 is bond index"
 #~ msgid "Bond %L1"
 #~ msgstr "Enlace %L1"
