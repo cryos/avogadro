@@ -16,8 +16,9 @@ set(LINK_LIBS "avogadro")
 #avogadro_plugin(templateextension templateextension.cpp)
 
 ### Dalton Input File Generator
+# Renamed to gasdaltonextension to make place it appropriately in the menu.
 set(daltonextension_SRCS daltonextension.cpp daltoninputdialog.cpp)
-avogadro_plugin(daltonextension "${daltonextension_SRCS}" "daltoninputdialog.ui")
+avogadro_plugin(gasdaltonextension "${daltonextension_SRCS}" "daltoninputdialog.ui")
 
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp

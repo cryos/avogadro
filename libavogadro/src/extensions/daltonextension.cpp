@@ -46,7 +46,7 @@ namespace Avogadro
 
   QString DaltonExtension::menuPath(QAction*) const
   {
-    return tr("&Dalton");
+    return tr("E&xtensions") + '>' + tr("&Dalton");
   }
 
   QUndoCommand* DaltonExtension::performAction(QAction *action, GLWidget *widget)
