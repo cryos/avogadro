@@ -89,7 +89,8 @@ template <> struct MetaData<Avogadro::Cube> { static const char* className() { r
 template <> struct MetaData<Avogadro::Engine> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::Extension> { static const char* className() { return "QObject";} }; 
 template <> struct MetaData<Avogadro::Fragment> { static const char* className() { return "QObject";} }; 
-template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QGLWidget";} }; 
+//template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QGLWidget";} }; 
+template <> struct MetaData<Avogadro::GLWidget> { static const char* className() { return "QWidget";} }; 
 template <> struct MetaData<Avogadro::Mesh> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::Molecule> { static const char* className() { return "QObject";} }; 
 template <> struct MetaData<Avogadro::Painter> { static const char* className() { return "QObject";} };
@@ -361,24 +362,30 @@ struct QList_QAction_from_python_list_PyQt
 template <typename T>
 PyObject* toPyQt(T *obj)
 {
-  if (!obj)
+  if (!obj) {
+    std::cout << "toPyQt: null pointer object";
     return incref(Py_None);
+  }
       
 #ifdef SIP_4_8
   const sipTypeDef *type = sip_API->api_find_type(MetaData<T>::className());
 #else
   sipWrapperType *type = sip_API->api_find_class(MetaData<T>::className());
 #endif
-  if (!type)
+  if (!type) {
+    std::cout << "toPyQt: could not determine type";
     return incref(Py_None);
+  }
       
 #ifdef SIP_4_8
   PyObject *sip_obj = sip_API->api_convert_from_type(obj, type, 0);
 #else
   PyObject *sip_obj = sip_API->api_convert_from_instance(obj, type, 0);
 #endif
-  if (!sip_obj)
+  if (!sip_obj) {
     return incref(Py_None);
+    std::cout << "toPyQt: could not convert";
+  }
 
   return incref(sip_obj);
 }
