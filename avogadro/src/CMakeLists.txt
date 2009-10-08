@@ -111,6 +111,14 @@ if(APPLE)
   install(FILES "mac/avogadro.icns" DESTINATION Resources)
   install(FILES "mac/AvogadroDocument.icns" DESTINATION Resources)
 
+  # install .nib file
+  set(QT_COCOA_NIB /Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib)
+  if(EXISTS ${QT_COCOA_NIB})
+            install(DIRECTORY ${QT_COCOA_NIB}
+                              DESTINATION Resources
+                              USE_SOURCE_PERMISSIONS)
+  endif(EXISTS ${QT_COCOA_NIB})
+
 # Install a .lproj directory for each translation
 # We're assuming that there will never be an libavogadro translation
 #  without a corresponding avogadro one.
