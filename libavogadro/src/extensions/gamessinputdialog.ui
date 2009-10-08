@@ -1663,11 +1663,6 @@
               <widget class="QComboBox" name="systemTimeCombo">
                <item>
                 <property name="text">
-                 <string>Seconds</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
                  <string>Minutes</string>
                 </property>
                </item>
@@ -1722,22 +1717,22 @@
               <widget class="QComboBox" name="systemMemoryCombo">
                <item>
                 <property name="text">
-                 <string>Words</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Bytes</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
                  <string>MegaWords</string>
                 </property>
                </item>
                <item>
                 <property name="text">
                  <string>MegaBytes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GigaWords</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GigaBytes</string>
                 </property>
                </item>
               </widget>
@@ -1766,22 +1761,22 @@
               <widget class="QComboBox" name="systemDDICombo">
                <item>
                 <property name="text">
-                 <string>Words</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Bytes</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
                  <string>MegaWords</string>
                 </property>
                </item>
                <item>
                 <property name="text">
                  <string>MegaBytes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GigaWords</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GigaBytes</string>
                 </property>
                </item>
               </widget>
@@ -1940,10 +1935,18 @@
             </spacer>
            </item>
            <item row="2" column="1">
-            <widget class="QDoubleSpinBox" name="systemDDIDouble"/>
+            <widget class="QDoubleSpinBox" name="systemDDIDouble">
+              <property name="maximum">
+                <double>1000</double>
+              </property>
+            </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QDoubleSpinBox" name="systemMemoryDouble"/>
+            <widget class="QDoubleSpinBox" name="systemMemoryDouble">
+              <property name="maximum">
+                <double>1000</double>
+              </property>
+            </widget>
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="systemTimeDouble"/>

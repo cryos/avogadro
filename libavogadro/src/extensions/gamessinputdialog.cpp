@@ -646,6 +646,13 @@ namespace Avogadro {
   {
     blockChildrenSignals( ui.systemWidget, true );
 
+    ui.systemTimeDouble->setValue( m_inputData->System->GetConvertedTime() );
+    ui.systemTimeCombo->setCurrentIndex( m_inputData->System->GetTimeUnits() - minuteUnit );
+
+    // Standard Memory Handler
+    ui.systemMemoryDouble->setValue( m_inputData->System->GetConvertedMem() );
+    ui.systemMemoryCombo->setCurrentIndex( m_inputData->System->GetMemUnits() - megaWordsUnit );
+
     // memDDI edit
     ui.systemDDIDouble->setValue( m_inputData->System->GetConvertedMemDDI() );
 
@@ -1098,6 +1105,34 @@ namespace Avogadro {
 
   void GamessInputDialog::connectSystem()
   {
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( setTimeLimit( double ) ) );
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemTimeDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( setTimeLimitUnits( int ) ) );
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemTimeCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( setSystemMemory( double ) ) );
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemMemoryDouble, SIGNAL( valueChanged( double ) ),
+        this, SLOT( advancedChanged() ) );
+
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( setSystemMemoryUnits( int ) ) );
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( updatePreviewText() ) );
+    connect( ui.systemMemoryCombo, SIGNAL( currentIndexChanged( int ) ),
+        this, SLOT( advancedChanged() ) );
+
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
         this, SLOT( setSystemDDI( double ) ) );
     connect( ui.systemDDIDouble, SIGNAL( valueChanged( double ) ),
@@ -2024,6 +2059,51 @@ namespace Avogadro {
   }
 
 
+  void GamessInputDialog::setTimeLimit( double val )
+  {
+    m_inputData->System->SetConvertedTime( val );
+  }
+
+  void GamessInputDialog::setTimeLimitUnits( int index )
+  {
+    long oldTimeLimit, newTimeLimit;
+    double oldFactor, newFactor;
+
+    // get current information
+    oldTimeLimit = m_inputData->System->GetTimeLimit();
+    oldFactor = m_inputData->System->GetConvertedTime();
+
+    m_inputData->System->SetTimeUnits((TimeUnit)( index + minuteUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedTime();
+
+    newTimeLimit = ( long ) round((oldTimeLimit * oldFactor / newFactor));
+    m_inputData->System->SetTimeLimit(newTimeLimit);
+  }
+
+  void GamessInputDialog::setSystemMemory( double val )
+  {
+    m_inputData->System->SetConvertedMem( val );
+  }
+
+  void GamessInputDialog::setSystemMemoryUnits( int index )
+  {
+    double oldMemory, newMemory, oldFactor, newFactor;
+
+    // get current information
+    oldMemory = m_inputData->System->GetMemory();
+    oldFactor = m_inputData->System->GetConvertedMem();
+
+    m_inputData->System->SetMemUnits(( MemoryUnit )( index + megaWordsUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedMem();
+
+    newMemory = oldMemory * (oldFactor / newFactor);
+    m_inputData->System->SetMemory( newMemory );
+  }
+
   void GamessInputDialog::setSystemDDI( double val )
   {
     m_inputData->System->SetConvertedMemDDI( val );
@@ -2031,7 +2111,19 @@ namespace Avogadro {
 
   void GamessInputDialog::setSystemDDIUnits( int index )
   {
+    double oldMemory, newMemory, oldFactor, newFactor;
+
+    // get current information
+    oldMemory = m_inputData->System->GetMemDDI();
+    oldFactor = m_inputData->System->GetConvertedMemDDI();
+
     m_inputData->System->SetMemDDIUnits(( MemoryUnit )( index + megaWordsUnit ) );
+
+    // get updated coefficient
+    newFactor = m_inputData->System->GetConvertedMemDDI();
+
+    newMemory = oldMemory * (oldFactor / newFactor);
+    m_inputData->System->SetMemDDI( newMemory );
   }
 
   void GamessInputDialog::setSystemProduce( bool state )
