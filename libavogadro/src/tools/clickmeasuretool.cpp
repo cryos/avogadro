@@ -227,16 +227,16 @@ namespace Avogadro {
       calculateParameters();
 
       // Try to put the labels in a reasonable place on the display
-      QPoint labelPos(95, widget->height()-25);
+      QPoint labelPos(70, widget->height()-25);
       QPoint distancePos[3];
       distancePos[0] = QPoint(180, widget->height()-25);
       distancePos[1] = QPoint(240, widget->height()-25);
       distancePos[2] = QPoint(300, widget->height()-25);
 
-      QPoint angleLabelPos(95, widget->height()-45);
+      QPoint angleLabelPos(70, widget->height()-45);
       QPoint anglePos(180, widget->height()-45);
 
-      QPoint dihedralLabelPos(95, widget->height()-65);
+      QPoint dihedralLabelPos(70, widget->height()-65);
       QPoint dihedralPos(180, widget->height()-65);
 
       glColor3f(1.0,0.0,0.0);
