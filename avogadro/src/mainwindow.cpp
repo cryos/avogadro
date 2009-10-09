@@ -341,6 +341,18 @@ namespace Avogadro
     // and make sure it ends up in the Mac Application menu
     ui.configureAvogadroAction->setMenuRole(QAction::PreferencesRole);
 
+    // Remove the last separator in the File menu
+    QList <QAction *> actions = ui.menuFile->actions();
+    QAction *lastAction;
+    if (actions.last()->isSeparator()) {
+      lastAction = actions.last();
+      ui.menuFile->removeAction(lastAction);
+    }
+    else if (actions[actions.size() - 2]->isSeparator()) {
+      lastAction = actions[actions.size() - 2];
+      ui.menuFile->removeAction(lastAction);
+    }
+
     // Turn off the file toolbar (not really Mac-native)
     // Fixes PR#1965004
     ui.menuToolbars->removeAction( ui.fileToolBar->toggleViewAction() );
@@ -361,12 +373,15 @@ namespace Avogadro
     ui.menuSettings->insertAction(firstAction, zoomAction);
     ui.menuSettings->insertSeparator(firstAction);
 
-    ui.menuSettings->addSeparator();
+    //    ui.menuSettings->addSeparator();
     QAction *raiseAction = new QAction(this);
     raiseAction->setText(tr("Bring All to Front"));
     connect(raiseAction, SIGNAL(triggered()), this, SLOT(bringAllToFront()));
     ui.menuSettings->addAction(raiseAction);
     ui.menuSettings->addSeparator();
+
+    // Remove the first separator in the help menu (this remains even though the "About" item moves).
+    ui.menuHelp->removeAction(ui.menuHelp->actions().first());
 
     updateWindowMenu();
 
@@ -393,6 +408,7 @@ namespace Avogadro
   {
     // delayed initialization
     if(event->type() == QEvent::Polish) {
+      
       reloadTools();
       if (d->toolSettingsDock)
         d->toolSettingsDock->hide();
@@ -404,6 +420,7 @@ namespace Avogadro
         if (menu->menu()->actions().isEmpty())
           continue;
 
+        menu->menu()->setSeparatorsCollapsible(true);
         removeThese.clear();
 
         QAction *firstAction = menu->menu()->actions().first();
@@ -2791,6 +2808,8 @@ namespace Avogadro
       itemIndex = 0;
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         menuItem->setEnabled( d->menuItemStatus[menuIndex][itemIndex] );
+        if (menuItem->menu() != 0) // submenu
+          menuItem->setEnabled(true);
         itemIndex++;
       }
       menuIndex++;
