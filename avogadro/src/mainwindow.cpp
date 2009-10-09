@@ -348,9 +348,19 @@ namespace Avogadro
       lastAction = actions.last();
       ui.menuFile->removeAction(lastAction);
     }
-    else if (actions[actions.size() - 2]->isSeparator()) {
+    else if (actions[actions.size() - 2]->isSeparator()) { // "Quit" menu item hasn't moved yet
       lastAction = actions[actions.size() - 2];
       ui.menuFile->removeAction(lastAction);
+    }
+
+    // Remove the first separator in the help menu (this remains even though the "About" item moves).
+    QAction *firstAction = ui.menuHelp->actions().first();
+    if (firstAction->isSeparator())
+      ui.menuHelp->removeAction(firstAction);
+    else { // the "About" menu item hasn't moved yet.
+      firstAction = ui.menuHelp->actions()[1];
+      if (firstAction->isSeparator())
+        ui.menuHelp->removeAction(firstAction);
     }
 
     // Turn off the file toolbar (not really Mac-native)
@@ -360,7 +370,7 @@ namespace Avogadro
 
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle(tr("Window"));
-    QAction *firstAction = ui.menuSettings->actions().first();
+    firstAction = ui.menuSettings->actions().first();
     QAction *minimizeAction = new QAction(this);
     minimizeAction->setText(tr("&Minimize"));
     minimizeAction->setShortcut(QKeySequence(tr("Ctrl+M")));
@@ -379,9 +389,6 @@ namespace Avogadro
     connect(raiseAction, SIGNAL(triggered()), this, SLOT(bringAllToFront()));
     ui.menuSettings->addAction(raiseAction);
     ui.menuSettings->addSeparator();
-
-    // Remove the first separator in the help menu (this remains even though the "About" item moves).
-    ui.menuHelp->removeAction(ui.menuHelp->actions().first());
 
     updateWindowMenu();
 
