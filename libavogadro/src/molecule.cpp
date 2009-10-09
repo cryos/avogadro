@@ -595,8 +595,38 @@ namespace Avogadro{
 
     // Construct an OBMol, call AddHydrogens and translate the changes
     OpenBabel::OBMol obmol = OBMol();
-    if (a)
-      obmol.AddHydrogens(obmol.GetAtom(a->index()+1));
+    if (a) {
+      OpenBabel::OBAtom *obatom = obmol.GetAtom(a->index()+1);
+      // Set implicit valence for unusual elements not handled by OpenBabel
+      // PR#2803076
+      switch (obatom->GetAtomicNum()) {
+      case 3:
+      case 11:
+      case 19:
+      case 37:
+      case 55:
+      case 87:
+        obatom->SetImplicitValence(1);
+        obatom->SetHyb(1);
+        obmol.SetImplicitValencePerceived();
+        break;
+
+      case 4:
+      case 12:
+      case 20:
+      case 38:
+      case 56:
+      case 88:
+        obatom->SetImplicitValence(2);
+        obatom->SetHyb(2);
+        obmol.SetImplicitValencePerceived();
+        break;
+
+      default: // do nothing
+        break;
+      }
+      obmol.AddHydrogens(obatom);
+    }
     else
       obmol.AddHydrogens();
     // All new atoms in the OBMol must be the additional hydrogens
