@@ -109,6 +109,7 @@ namespace Avogadro {
 
   void Animation::setFrame(int i)
   {
+    m_molecule->lock()->lockForWrite();
     m_molecule->setConformer(i);
     if (d->dynamicBonds) {
       // construct minimal OBMol
@@ -135,6 +136,7 @@ namespace Avogadro {
         bond->setOrder(obbond->GetBondOrder());
       }
     }
+    m_molecule->lock()->unlock();
     m_molecule->update();
     emit frameChanged(i);
   }
@@ -173,16 +175,22 @@ namespace Avogadro {
             this, SLOT(setFrame(int)));
 
     // restore original conformers
-    if (d->framesSet)
+    if (d->framesSet) {
+      m_molecule->lock()->lockForWrite();
       m_molecule->setAllConformers(m_originalConformers);
+      m_molecule->lock()->unlock();
+    }
     setFrame(1);
   }
 
   void Animation::start()
   {
     // set molecule conformers
-    if (d->framesSet)
+    if (d->framesSet) {
+      m_molecule->lock()->lockForWrite();
       m_molecule->setAllConformers(m_frames);
+      m_molecule->lock()->unlock();
+    }
 
     if (d->fps < 1.0)
       d->fps = 1.0;
