@@ -72,6 +72,11 @@
      </item>
      <item>
       <property name="text">
+       <string>Formal charge</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>Residue name</string>
       </property>
      </item>
@@ -82,7 +87,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Partial Charge</string>
+       <string>Partial charge</string>
       </property>
      </item>
      <item>
@@ -92,12 +97,12 @@
      </item>
      <item>
       <property name="text">
-       <string>Symbol &amp; Atom Number</string>
+       <string>Symbol &amp; Atom number</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Custom Data</string>
+       <string>Custom data</string>
       </property>
      </item>
     </widget>

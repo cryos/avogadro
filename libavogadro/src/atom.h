@@ -98,6 +98,11 @@ namespace Avogadro {
     }
 
     /**
+     * Set the formal charge of the atom.
+     */
+    void setFormalCharge(int charge);
+
+    /**
      * Set the force vector on the atom (e.g., used to display vibrations)
      */
     void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
@@ -151,6 +156,11 @@ namespace Avogadro {
      * @return Partial charge of the atom.
      */
     double partialCharge() const;
+
+    /**
+     * @return Formal charge of the atom (default = 0)
+     */
+    int formalCharge() const;
 
     /**
      * @return The force vector on this atom (if any)
@@ -227,13 +237,14 @@ namespace Avogadro {
      */
     void setResidue(const Residue *residue);
 
-    /* shared d_ptr with Primitive */
+    AtomPrivate * const d_ptr;
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
     int m_pos;
     int m_atomicNumber;
     unsigned long m_residue;
     QList<unsigned long> m_bonds;
     mutable double m_partialCharge;
+    int m_formalCharge;
     Eigen::Vector3d m_forceVector;
     Q_DECLARE_PRIVATE(Atom)
   };

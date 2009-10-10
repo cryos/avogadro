@@ -101,7 +101,7 @@ namespace Avogadro {
     Q_UNUSED(parent);
     switch (m_type) {
     case AtomType:
-      return 4;
+      return 5; // type, element, valence, formal charge, partial charge
     case BondType:
       return 5;
     case AngleType:
@@ -178,7 +178,9 @@ namespace Avogadro {
         return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
       case 2: // valence
         return atom->valence();
-      case 3: // partial charge
+      case 3: // formal charge
+        return atom->formalCharge();
+      case 4: // partial charge
         QString format("%L1");
         if (sortRole)
           return atom->partialCharge();
@@ -356,6 +358,8 @@ namespace Avogadro {
         case 2:
           return tr("Valence");
         case 3:
+          return tr("Formal Charge");
+        case 4:
           return tr("Partial Charge");
         }
       } else
@@ -437,7 +441,8 @@ namespace Avogadro {
     if (m_type == AtomType) {
       switch (index.column()) {
       case 1: // atomic number
-      case 3: // partial charge
+      case 3: // formal charge
+      case 4: // partial charge
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       case 0: // type
       case 2: // valence
@@ -510,7 +515,12 @@ namespace Avogadro {
         emit dataChanged(index, index);
         return true;
       }
-      case 3: // partial charge
+      case 3: // formal charge
+        bool ok;
+        int formalCharge = value.toInt(&ok);
+        if (ok)
+          atom->setFormalCharge(formalCharge);
+      case 4: // partial charge
         atom->setPartialCharge(value.toDouble());
         m_molecule->update();
         emit dataChanged(index, index);
