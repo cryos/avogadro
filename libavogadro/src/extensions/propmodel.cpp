@@ -515,11 +515,12 @@ namespace Avogadro {
         emit dataChanged(index, index);
         return true;
       }
-      case 3: // formal charge
+      case 3: {// formal charge
         bool ok;
         int formalCharge = value.toInt(&ok);
         if (ok)
           atom->setFormalCharge(formalCharge);
+      }
       case 4: // partial charge
         atom->setPartialCharge(value.toDouble());
         m_molecule->update();
