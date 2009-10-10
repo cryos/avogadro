@@ -186,6 +186,7 @@ namespace Avogadro {
 
     // and we remove the first frame (duplicate)
     m_animationFrames.erase(m_animationFrames.begin());
+    qDebug() << " about to set new frames ";
     m_animation->setFrames(m_animationFrames);
     if (m_animationSpeed) {
       // vibrations per femtosecond
@@ -199,8 +200,10 @@ namespace Avogadro {
         qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
-    if (m_animating)
+    if (m_animating) {
       m_animation->start();
+      qDebug() << " starting animation again ";
+    }
     m_molecule->update();
   }
 
