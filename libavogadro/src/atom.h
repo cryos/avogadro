@@ -239,7 +239,6 @@ namespace Avogadro {
 
     AtomPrivate * const d_ptr;
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
-    int m_pos;
     int m_atomicNumber;
     unsigned long m_residue;
     QList<unsigned long> m_bonds;
