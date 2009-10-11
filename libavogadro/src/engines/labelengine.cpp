@@ -45,7 +45,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-  m_atomType(1), m_bondType(0), m_settingsWidget(0)
+                                              m_atomType(1), m_bondType(0), m_settingsWidget(0)
   {
   }
 
@@ -95,41 +95,45 @@ namespace Avogadro {
     if(zDistance < 50.0) {
       QString str;
       switch(m_atomType) {
-        case 1: // Atom index
-          str = QString("%L1").arg(a->index() + 1);
-          break;
-        case 2: // Element name
-          str = ElementTranslator::name(a->atomicNumber());
-          break;
-        case 3: // Atomic Symbol
+      case 1: // Atom index
+        str = QString("%L1").arg(a->index() + 1);
+        break;
+      case 2: // Element name
+        str = ElementTranslator::name(a->atomicNumber());
+        break;
+      case 3: // Element Symbol
+        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        break;
+      case 4: // Formal charge
+        if (a->formalCharge())
+          str = QString("%L1").arg(a->formalCharge());
+        break;
+      case 5: // Residue name
+        if (a->residue())
+          str = a->residue()->name();
+        break;
+      case 6: // Residue number
+        if (a->residue())
+          str = a->residue()->number();
+        break;
+      case 7: // Partial charge
+        str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
+        break;
+      case 8: // Unique ID
+        str = QString("%L1").arg(a->id());
+        break;
+      case 9: // Symbol & Atom Number
+        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
+        break;
+      default: // some custom data -- if available
+        int customIndex = m_atomType - 7 - 1;
+        QList<QByteArray> propertyNames = a->dynamicPropertyNames();
+        // If this is a strange offset, use the element symbol
+        if ( customIndex < 0 || customIndex >= propertyNames.size()) {
           str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-          break;
-        case 4: // Residue name
-          if (a->residue())
-            str = a->residue()->name();
-          break;
-        case 5: // Residue number
-          if (a->residue())
-            str = a->residue()->number();
-          break;
-        case 6: // Partial charge
-          str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
-          break;
-        case 7: // Unique ID
-          str = QString("%L1").arg(a->id());
-          break;
-        case 8: // Symbol & Atom Number
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
-          break;
-        default: // some custom data -- if available
-          int customIndex = m_atomType - 7 - 1;
-          QList<QByteArray> propertyNames = a->dynamicPropertyNames();
-          // If this is a strange offset, use the element symbol
-          if ( customIndex < 0 || customIndex >= propertyNames.size()) {
-            str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-          }
-          else
-            str = a->property(propertyNames[customIndex].data()).toString();
+        }
+        else
+          str = a->property(propertyNames[customIndex].data()).toString();
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
@@ -171,18 +175,18 @@ namespace Avogadro {
     if(zDistance < 50.0) {
       QString str;
       switch(m_bondType) {
-        case 1:
-          str = format.arg(b->length(), 0, 'g', 4);
-          break;
-        case 2:
-          str = format.arg(b->index() + 1);
-          break;
-        case 4:
-          str = format.arg(b->id());
-          break;
-        case 3:
-        default:
-          str = format.arg(b->order());
+      case 1:
+        str = format.arg(b->length(), 0, 'g', 4);
+        break;
+      case 2:
+        str = format.arg(b->index() + 1);
+        break;
+      case 4:
+        str = format.arg(b->id());
+        break;
+      case 3:
+      default:
+        str = format.arg(b->order());
       }
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
@@ -209,14 +213,14 @@ namespace Avogadro {
   QWidget *LabelEngine::settingsWidget()
   {
     if(!m_settingsWidget)
-    {
-      m_settingsWidget = new LabelSettingsWidget();
-      m_settingsWidget->atomType->setCurrentIndex(m_atomType);
-      m_settingsWidget->bondType->setCurrentIndex(m_bondType);
-      connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
-      connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
-      connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
-    }
+      {
+        m_settingsWidget = new LabelSettingsWidget();
+        m_settingsWidget->atomType->setCurrentIndex(m_atomType);
+        m_settingsWidget->bondType->setCurrentIndex(m_bondType);
+        connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
+        connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
+        connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+      }
     return m_settingsWidget;
   }
 

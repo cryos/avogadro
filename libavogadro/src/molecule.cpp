@@ -43,6 +43,8 @@
 #include <openbabel/griddata.h>
 #include <openbabel/grid.h>
 #include <openbabel/generic.h>
+#include <openbabel/forcefield.h>
+#include <openbabel/obiter.h>
 
 #include <QDir>
 #include <QDebug>
@@ -599,8 +601,45 @@ namespace Avogadro{
 
     // Construct an OBMol, call AddHydrogens and translate the changes
     OpenBabel::OBMol obmol = OBMol();
-    if (a)
-      obmol.AddHydrogens(obmol.GetAtom(a->index()+1));
+    if (a) {
+      OpenBabel::OBAtom *obatom = obmol.GetAtom(a->index()+1);
+      // Set implicit valence for unusual elements not handled by OpenBabel
+      // PR#2803076
+      switch (obatom->GetAtomicNum()) {
+      case 3:
+      case 11:
+      case 19:
+      case 37:
+      case 55:
+      case 85:
+      case 87:
+        obatom->SetImplicitValence(1);
+        obatom->SetHyb(1);
+        obmol.SetImplicitValencePerceived();
+        break;
+
+      case 4:
+      case 12:
+      case 20:
+      case 38:
+      case 56:
+      case 88:
+        obatom->SetImplicitValence(2);
+        obatom->SetHyb(2);
+        obmol.SetImplicitValencePerceived();
+        break;
+
+      case 84: // Po
+        obatom->SetImplicitValence(2);
+        obatom->SetHyb(3);
+        obmol.SetImplicitValencePerceived();
+        break;        
+
+      default: // do nothing
+        break;
+      }
+      obmol.AddHydrogens(obatom);
+    }
     else
       obmol.AddHydrogens();
     // All new atoms in the OBMol must be the additional hydrogens
@@ -670,21 +709,34 @@ namespace Avogadro{
   void Molecule::setDipoleMoment(const Eigen::Vector3d &moment)
   {
     *m_dipoleMoment = moment;
-    m_estimatedDipoleMoment = true;
+    m_estimatedDipoleMoment = false;
   }
 
   Eigen::Vector3d Molecule::dipoleMoment(bool *estimate) const
   {
     if (m_dipoleMoment && !m_estimatedDipoleMoment) {
-      if (estimate)
+      if (estimate != NULL) // passed this as an argument
         *estimate = false; // genuine calculated dipole moment
       return *m_dipoleMoment;
     }
     else {
       // Calculate a new estimate (e.g., the geometry changed
       Vector3d dipoleMoment(0.0, 0.0, 0.0);
-      foreach (Atom *a, atoms())
-        dipoleMoment += *a->pos() * a->partialCharge();
+      // Use MMFF94 charges -- good estimate of dipole moment
+      OpenBabel::OBForceField *ff = OpenBabel::OBForceField::FindForceField("MMFF94");
+      OpenBabel::OBMol obmol = OBMol();
+      if (ff->Setup(obmol)) {
+        for( OpenBabel::OBMolAtomIter atom(obmol); atom; ++atom ) {
+          OpenBabel::OBPairData *chg = (OpenBabel::OBPairData*) atom->GetData("FFPartialCharge");
+          if (chg)
+            dipoleMoment += Vector3d(atom->GetVector().AsArray()) * atof(chg->GetValue().c_str());
+        }
+        dipoleMoment *= 3.60; // fit from regression, R^2 = 0.769
+      }
+      else {
+        foreach (Atom *a, atoms())
+          dipoleMoment += *a->pos() * a->partialCharge();
+      }
 
       if (estimate)
         *estimate = true;

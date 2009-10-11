@@ -207,6 +207,10 @@ namespace Avogadro
       void setDataSymmetry( bool state );
 
       //! System Slots;
+      void setTimeLimit( double val );
+      void setTimeLimitUnits( int index );
+      void setSystemMemory( double val );
+      void setSystemMemoryUnits( int index );
       void setSystemDDI( double val );
       void setSystemDDIUnits( int index );
       void setSystemProduce( bool state );

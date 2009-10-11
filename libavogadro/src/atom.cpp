@@ -41,11 +41,15 @@ using Eigen::Vector3d;
 
   class AtomPrivate {
     public:
-      AtomPrivate() {}
+    AtomPrivate(): assignedFormalCharge(false) {}
+    bool assignedFormalCharge;
   };
 
-  Atom::Atom(QObject *parent) : Primitive(AtomType, parent), m_atomicNumber(0),
+  Atom::Atom(QObject *parent) : Primitive(AtomType, parent),
+                                d_ptr(new AtomPrivate),
+                                m_atomicNumber(0),
                                 m_residue(FALSE_ID), m_partialCharge(0.0),
+                                m_formalCharge(0),
                                 m_forceVector(0.0, 0.0, 0.0)
   {
     if (!parent) {
@@ -126,6 +130,86 @@ using Eigen::Vector3d;
       return 0.0;
   }
 
+   void Atom::setFormalCharge(int charge)
+   {
+     Q_D(Atom);
+     d->assignedFormalCharge = true;
+     m_formalCharge = charge;
+   }
+
+   int Atom::formalCharge() const
+   {
+     Q_D(const Atom);
+     if (d->assignedFormalCharge)
+       return m_formalCharge;
+
+     // gotta guess it from bonding
+     int valenceE = 0;
+     int atomicNum = atomicNumber(); // save keystrokes
+     if (atomicNum <= 2)
+       valenceE = atomicNum;
+     else if (atomicNum <= 10)
+       valenceE = atomicNum - 2;
+     else if (atomicNum <= 18)
+       valenceE = atomicNum - 10;
+     else if (atomicNum <= 20)
+       valenceE = atomicNum - 18;
+     else if (atomicNum > 30 && atomicNum <= 36)
+       valenceE = atomicNum - 28;
+     else if (atomicNum == 37 || atomicNum == 38)
+       valenceE = atomicNum - 36;
+     else if (atomicNum > 48 && atomicNum <= 54)
+       valenceE = atomicNum - 46;
+     else if (atomicNum == 55 || atomicNum == 56)
+       valenceE = atomicNum - 54;
+     else if (atomicNum > 80 && atomicNum <= 86)
+       valenceE = atomicNum - 78;
+     else if (atomicNum == 87 || atomicNum == 88)
+       valenceE = atomicNum - 86;
+     else
+       return 0; // I don't quite know what to do for TM or other elements
+	
+     int formalcharge = 0;
+     int totalBonds = 0;
+     foreach(unsigned long id, m_bonds) {
+       const Bond *bond = m_molecule->bondById(id);
+       if (bond)
+         totalBonds += bond->order();
+     }
+
+     int fullShell = 8;
+     int loneE = 0;
+     // Work out lone pairs: special cases for hypervalent S, P, Br, I (i.e., for VSEPR exercises)
+     if (atomicNum == 16 || atomicNum == 34 || atomicNum == 52 || atomicNum == 84) { // Sulfur, Se, Te, ...
+       if ((totalBonds - valenceE) % 2 == 0)
+         loneE = valenceE - totalBonds;
+       else if (totalBonds == 1)
+         loneE = 6;
+       else if (totalBonds == 3)
+         loneE = 2;
+       else if (totalBonds == 5)
+         loneE = 0;
+     }
+     else if (atomicNum == 15 || atomicNum == 33 || atomicNum == 51 || atomicNum == 83) { // P, As, ...
+       if (totalBonds == 1)
+         loneE = 6;
+       else if (totalBonds == 2)
+         loneE = 4;
+       else if (totalBonds == 3)
+         loneE = 2;
+       else
+         loneE = 0;
+     }
+     else { // all other elements
+       if (totalBonds < valenceE)
+         loneE = fullShell - (2*totalBonds);
+     }
+		
+     formalcharge = valenceE - (totalBonds + loneE);
+	
+     return formalcharge;
+   }
+
   void Atom::setResidue(unsigned long id)
   {
     m_residue = id;
@@ -153,6 +237,7 @@ using Eigen::Vector3d;
     const Vector3d *v = m_molecule->atomPos(m_id);
     obatom.SetVector(v->x(), v->y(), v->z());
     obatom.SetAtomicNum(m_atomicNumber);
+    obatom.SetFormalCharge(m_formalCharge);
 
     // Add dynamic properties as OBPairData
     OpenBabel::OBPairData *obproperty;
@@ -171,6 +256,8 @@ using Eigen::Vector3d;
     // Copy all needed OBAtom data to our atom
     m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
     m_atomicNumber = obatom->GetAtomicNum();
+    if (obatom->GetFormalCharge() != 0)
+      m_formalCharge = obatom->GetFormalCharge();
 
     // And add any generic data as QObject properties
     std::vector<OpenBabel::OBGenericData*> data;
@@ -194,6 +281,7 @@ using Eigen::Vector3d;
     else
       qDebug() << "Atom position returned null.";
     m_atomicNumber = other.m_atomicNumber;
+    m_formalCharge = other.m_formalCharge;
     return *this;
   }
 
