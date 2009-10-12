@@ -31,9 +31,10 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
-# Should we build the update checking code?
+# Should we build the update checking code? Currently causes segfaults with Qt
+# 4.5.3 on both Arch and Gentoo 64 bit platforms (may be more)
 option(ENABLE_UPDATE_CHECKER
-  "Should the Avogadro update checking code be compiled?" ON)
+  "Should the Avogadro update checking code be compiled?" OFF)
 if(ENABLE_UPDATE_CHECKER)
   add_definitions(-DENABLE_UPDATE_CHECKER)
 else(ENABLE_UPDATE_CHECKER)

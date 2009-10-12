@@ -39,8 +39,8 @@ namespace Avogadro
   Q_OBJECT
 
   public:
-    UpdateCheck(QObject* parent = 0);
-    virtual ~UpdateCheck();
+    static UpdateCheck * getInstance(QObject* parent = 0);
+    ~UpdateCheck();
 
     /**
      * Save settings.
@@ -59,6 +59,11 @@ namespace Avogadro
     void checkForUpdates();
 
   private:
+    UpdateCheck(QObject* parent = 0); // Private constructor - singleton
+    UpdateCheck(UpdateCheck const&); // Private copy constructor
+    UpdateCheck& operator=(UpdateCheck const&); // Private assignment operator
+
+    static UpdateCheck *instance;
     QNetworkAccessManager *m_network;
     QString               *m_versionPrompted;
 
