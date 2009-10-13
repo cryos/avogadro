@@ -198,7 +198,8 @@ namespace Avogadro {
       }
 
       m_molecule->lock()->lockForWrite();
-      m_molecule->setAllConformers(m_frames);
+      // don't delete the existing conformers -- we save them as m_originalConformers
+      m_molecule->setAllConformers(m_frames, false);
       m_molecule->lock()->unlock();
     }
 

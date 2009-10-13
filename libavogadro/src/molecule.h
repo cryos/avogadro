@@ -607,9 +607,10 @@ namespace Avogadro {
      * atoms.
      *
      * @param conformer A vector of conformers (vector of Vector3d)
+     * @param deleteExisting Whether to free the memory from the existing conformers
      * @return True if successful (i.e. all conformers have the correct size: conformerSize()).
      */
-    bool setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers);
+    bool setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers, bool deleteExisting = true);
 
     /**
      * Clear all conformers from the molecule, leaving just conformer zero. This
