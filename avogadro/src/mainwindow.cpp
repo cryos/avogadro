@@ -407,7 +407,7 @@ namespace Avogadro
     ui.enginesDock->close();
 
 #ifdef ENABLE_UPDATE_CHECKER
-    m_updateCheck = new UpdateCheck(this);
+    m_updateCheck = UpdateCheck::getInstance(this);
 #endif
   }
 
@@ -467,7 +467,6 @@ namespace Avogadro
       updateWindowMenu();
     }
 #endif
-
     return QMainWindow::event(event);
   }
 
@@ -2598,8 +2597,10 @@ namespace Avogadro
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
-    m_updateCheck->readSettings(settings);
-    m_updateCheck->checkForUpdates();
+    if (m_updateCheck) {
+      m_updateCheck->readSettings(settings);
+      m_updateCheck->checkForUpdates();
+    }
 #endif
   }
 
@@ -2645,7 +2646,8 @@ namespace Avogadro
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Write the updated version configuration settings
-    m_updateCheck->writeSettings(settings);
+    if (m_updateCheck)
+      m_updateCheck->writeSettings(settings);
 #endif
   }
 
