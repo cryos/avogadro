@@ -726,6 +726,7 @@ namespace Avogadro{
       OpenBabel::OBForceField *ff = OpenBabel::OBForceField::FindForceField("MMFF94");
       OpenBabel::OBMol obmol = OBMol();
       if (ff->Setup(obmol)) {
+        ff->GetPartialCharges(obmol);
         for( OpenBabel::OBMolAtomIter atom(obmol); atom; ++atom ) {
           OpenBabel::OBPairData *chg = (OpenBabel::OBPairData*) atom->GetData("FFPartialCharge");
           if (chg)
@@ -930,7 +931,7 @@ namespace Avogadro{
     }
   }
 
-  bool Molecule::setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers)
+  bool Molecule::setAllConformers(const std::vector< std::vector<Eigen::Vector3d>* > conformers, bool deleteExisting)
   {
     if (!conformers.size()) {
       clearConformers();
@@ -939,8 +940,11 @@ namespace Avogadro{
     unsigned long size = m_atomPos->size();
 
     // delete any previous conformers
-    for (unsigned int i = 0; i < m_atomConformers.size(); ++i)
-      delete m_atomConformers[i];
+    // TODO: Combine this code with clearConformers()
+    if (deleteExisting) {
+      for (unsigned int i = 0; i < m_atomConformers.size(); ++i)
+        delete m_atomConformers[i];
+    }
     m_atomConformers.clear();
 
     // add the new conformers

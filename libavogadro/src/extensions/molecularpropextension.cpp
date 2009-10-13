@@ -61,6 +61,29 @@ namespace Avogadro {
       disconnect( m_molecule, 0, this, 0 );
 
     m_molecule = molecule;
+  }
+
+  QUndoCommand* MolecularPropertiesExtension::performAction(QAction *,
+                                                            GLWidget *widget)
+  {
+    if (!m_molecule)
+      return 0; // nothing we can do
+
+    // Disconnect in case we're attached to a new widget
+    if (m_widget)
+      disconnect( m_molecule, 0, this, 0 );
+
+    if (widget) {
+      connect(widget, SIGNAL(moleculeChanged(Molecule *)),
+              this, SLOT(moleculeChanged(Molecule*)));
+      m_widget = widget;
+    }
+
+    if (!m_dialog) {
+      m_dialog = new MolecularPropertiesDialog(m_widget);
+      connect(m_dialog, SIGNAL(accepted()), this, SLOT(disableUpdating()));
+      connect(m_dialog, SIGNAL(rejected()), this, SLOT(disableUpdating()));
+    }
 
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(update()));
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
@@ -83,27 +106,6 @@ namespace Avogadro {
             this, SLOT(updateBonds(Bond*)));
     connect(m_molecule, SIGNAL(bondUpdated(Bond *)),
             this, SLOT(updateBonds(Bond*)));
-  }
-
-  QUndoCommand* MolecularPropertiesExtension::performAction(QAction *,
-                                                            GLWidget *widget)
-  {
-    if (!m_molecule)
-      return 0; // nothing we can do
-
-    // Disconnect in case we're attached to a new widget
-    if (m_widget)
-      disconnect( m_molecule, 0, this, 0 );
-
-    if (widget) {
-      connect(widget, SIGNAL(moleculeChanged(Molecule *)),
-              this, SLOT(moleculeChanged(Molecule*)));
-      m_widget = widget;
-    }
-
-    if (!m_dialog) {
-      m_dialog = new MolecularPropertiesDialog(m_widget);
-    }
 
     update();
     m_dialog->show();
@@ -161,6 +163,12 @@ namespace Avogadro {
   void MolecularPropertiesExtension::moleculeChanged(Molecule *)
   {
     update();
+  }
+  
+  void MolecularPropertiesExtension::disableUpdating()
+  {
+    // don't ask for more updates
+    disconnect( m_molecule, 0, this, 0 );
   }
 
 } // end namespace Avogadro

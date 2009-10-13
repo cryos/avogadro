@@ -31,13 +31,14 @@
 #include <QList>
 #include <QString>
 #include <QUndoCommand>
+#include <QCloseEvent>
 
 namespace Avogadro {
 
   class MolecularPropertiesDialog : public QDialog, public Ui::MolecularPropertiesDialog
     {
-    public:
-    MolecularPropertiesDialog(QWidget *parent=0) : QDialog(parent) {
+      public:
+      MolecularPropertiesDialog(QWidget *parent=0) : QDialog(parent) {
         setupUi(this);
       }
     };
@@ -69,6 +70,8 @@ namespace Avogadro {
       void updateAtoms(Atom*);
       void updateBonds(Bond*);
       void moleculeChanged(Molecule *previous);
+
+      void disableUpdating();
 
     private:
       QList<QAction *> m_actions;

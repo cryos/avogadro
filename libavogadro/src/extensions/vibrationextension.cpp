@@ -98,19 +98,14 @@ namespace Avogadro {
     if (!m_molecule)
       return; //nothing to do
 
-    qDebug() << " updating mode " << mode;
-
     // stop animating
     if (m_animating) {
       m_animation->stop();
-      qDebug() << " called stop ";
     }
 
     if (mode == -1) {
       return; // signal to end updates
     }
-
-    qDebug() << " animation is stopping ";
 
     OBMol obmol = m_molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
@@ -154,7 +149,6 @@ namespace Avogadro {
 
     // delete any old frames
     clearAnimationFrames();
-    qDebug() << " deleted old frames ";
     // We do 4 "phases" of vibrations
     for (unsigned int frame = 0; frame < m_framesPerStep * 4; ++frame)
       m_animationFrames.push_back( new vector<Vector3d>(m_molecule->numAtoms()) );
@@ -199,8 +193,9 @@ namespace Avogadro {
         qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
-    if (m_animating)
+    if (m_animating) {
       m_animation->start();
+    }
     m_molecule->update();
   }
 
@@ -301,8 +296,6 @@ namespace Avogadro {
 
   void VibrationExtension::clearAnimationFrames()
   {
-    for (unsigned int frame = 0; frame < m_animationFrames.size(); ++frame)
-      delete m_animationFrames[frame];
     m_animationFrames.clear();
   }
 
