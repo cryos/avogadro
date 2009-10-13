@@ -757,7 +757,7 @@ namespace Avogadro
       }
 
       // if we have nothing open or modified
-      if ( d->fileName.isEmpty() && !isWindowModified() ) {
+      if ( isDefaultFileName(d->fileName) && !isWindowModified() ) {
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -783,6 +783,17 @@ namespace Avogadro
     if ( action ) {
       openFile( action->data().toString() );
     }
+  }
+
+  bool MainWindow::isDefaultFileName(const QString fileName)
+  {
+    QFileInfo fileInfo(fileName);
+    return (fileInfo.baseName() == tr("untitled"));
+  }
+
+  QString MainWindow::defaultFileName()
+  {
+    return (tr("untitled") + ".cml");
   }
 
   bool MainWindow::loadFile(const QString &fileName,
@@ -1088,7 +1099,7 @@ namespace Avogadro
       msgBox->button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
       msgBox->button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
       msgBox->setButtonText(QMessageBox::Save,
-                            d->fileName.isEmpty() ? tr("Save...") : tr("Save"));
+                            isDefaultFileName(d->fileName) ? tr("Save...") : tr("Save"));
 
       int ret = msgBox->exec();
 
@@ -1146,7 +1157,7 @@ namespace Avogadro
   bool MainWindow::save()
   {
     // we can't safely save to a gzipped file
-    if ( d->fileName.isEmpty() ||
+    if ( isDefaultFileName(d->fileName) ||
          d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
       return saveAs();
     }
@@ -1529,7 +1540,7 @@ namespace Avogadro
 
   void MainWindow::revert()
   {
-    if ( !d->fileName.isEmpty() ) {
+    if ( !isDefaultFileName(d->fileName) ) {
       loadFile( d->fileName );
     }
   }
@@ -1616,7 +1627,7 @@ namespace Avogadro
     ui.menuSettings->addSeparator();
     foreach (MainWindow *widget, mainWindowList) {
       QAction *windowAction = new QAction(widget);
-      if (!widget->d->fileName.isEmpty())
+      if (! isDefaultFileName(widget->d->fileName) )
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
         windowAction->setText(tr("Untitled %1").arg(++untitledCount));
@@ -2439,7 +2450,7 @@ namespace Avogadro
 
       // Check that the canonical file path exists - only update recent files
       // if it does. Should prevent empty list items on initial open etc.
-      if (!d->fileName.isEmpty()) {
+      if (! isDefaultFileName(d->fileName) ) {
         QSettings settings; // already set up properly via main.cpp
         QStringList files = settings.value("recentFileList").toStringList();
         files.removeAll(d->fileName);
@@ -2788,8 +2799,9 @@ namespace Avogadro
     // in multiple menus, e.g. "Select All"
     foreach( QAction *menu, menuBar()->actions() ) {
       foreach( QAction *menuItem, menu->menu()->actions() ) {
-        if (menuItem->menu() == 0) // ignore submenus
+        if (menuItem->menu() == 0) { // ignore submenus
           menuItem->setEnabled(false);
+        }
       }
     }
 
