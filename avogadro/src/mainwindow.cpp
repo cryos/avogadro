@@ -2788,7 +2788,8 @@ namespace Avogadro
     // in multiple menus, e.g. "Select All"
     foreach( QAction *menu, menuBar()->actions() ) {
       foreach( QAction *menuItem, menu->menu()->actions() ) {
-        menuItem->setEnabled(false);
+        if (menuItem->menu() == 0) // ignore submenus
+          menuItem->setEnabled(false);
       }
     }
 
