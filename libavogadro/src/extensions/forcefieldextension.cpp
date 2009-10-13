@@ -185,9 +185,11 @@ namespace Avogadro
       }
 
       energy = m_forceField->Energy();
+      if (m_forceField->GetUnit().find("kcal") != string::npos)
+        energy *= KCAL_TO_KJ;
       m_molecule->setEnergy(energy);
       msg = QString( tr( "Energy = %L1 %2" ))
-                     .arg(energy).arg(m_forceField->GetUnit().c_str());
+                     .arg(energy).arg("kJ/mol");
       QMessageBox::information( widget, tr( "Avogadro" ), msg);
 
       emit message( tr( buff.str().c_str() ) );
@@ -329,7 +331,13 @@ namespace Avogadro
     // copy the conformer energies
     if (obmol.HasData(OBGenericDataType::ConformerData)) {
       OBConformerData *cd = (OBConformerData*) obmol.GetData(OBGenericDataType::ConformerData);
-      m_molecule->setEnergies(cd->GetEnergies());
+      // Check to see if the force field is in kcal/mol (i.e., MMFF94)
+      std::vector<double> energies = cd->GetEnergies();
+      if (m_forceField->GetUnit().find("kcal") != string::npos) {
+        for (unsigned int i = 0; i < energies.size(); ++i)
+          energies[i] *= KCAL_TO_KJ;
+      }
+      m_molecule->setEnergies(energies);
     }
   }
 
@@ -470,7 +478,10 @@ namespace Avogadro
       copyConformers();
     }
 
-    m_molecule->setEnergy(m_forceField->Energy());
+    double energy = m_forceField->Energy();
+    if (m_forceField->GetUnit().find("kcal") != string::npos)
+      energy *= KCAL_TO_KJ;
+    m_molecule->setEnergy(energy);
     m_molecule->update();
 
     emit message( QObject::tr( buff.str().c_str() ) );
@@ -481,7 +492,11 @@ namespace Avogadro
   {
     QMutexLocker locker(&m_mutex);
     m_stop = true;
-    m_molecule->setEnergy(m_forceField->Energy());
+
+    double energy = m_forceField->Energy();
+    if (m_forceField->GetUnit().find("kcal") != string::npos)
+      energy *= KCAL_TO_KJ;
+    m_molecule->setEnergy(energy);
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
