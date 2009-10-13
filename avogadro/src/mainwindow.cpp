@@ -2801,6 +2801,15 @@ namespace Avogadro
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         if (menuItem->menu() == 0) { // ignore submenus
           menuItem->setEnabled(false);
+        } else { // submenu items
+
+          // Don't modify the "open recent" sub-menu
+          if (menuItem->menu() == ui.menuOpenRecent)
+            continue;
+
+          foreach( QAction *subMenuItem, menuItem->menu()->actions() ) {
+            subMenuItem->setEnabled(false); // disable submenus
+          }
         }
       }
     }
@@ -2809,7 +2818,6 @@ namespace Avogadro
     ui.actionAbout->setEnabled( true );
     ui.actionNew->setEnabled( true );
     ui.actionOpen->setEnabled( true );
-    ui.menuOpenRecent->menuAction()->setEnabled( true );
     ui.actionQuit->setEnabled( true );
 
     // Clear the molecule
@@ -2830,8 +2838,11 @@ namespace Avogadro
       itemIndex = 0;
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         menuItem->setEnabled( d->menuItemStatus[menuIndex][itemIndex] );
-        if (menuItem->menu() != 0) // submenu
-          menuItem->setEnabled(true);
+        if (menuItem->menu() != 0) { // submenu
+          foreach( QAction *subMenuItem, menuItem->menu()->actions() ) {
+            subMenuItem->setEnabled(true); // re-enable submenus
+          }
+        }
         itemIndex++;
       }
       menuIndex++;
