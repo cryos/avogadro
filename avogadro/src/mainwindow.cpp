@@ -998,7 +998,11 @@ namespace Avogadro
     if (d->moleculeFile == NULL)
       return;
     if (d->progressDialog) {
-      d->progressDialog->cancel();
+      d->progressDialog->reset();
+#ifdef Q_WS_MAC
+      d->progressDialog->deleteLater();
+      d->progressDialog = 0;
+#endif
     }
 
     ui.actionAllMolecules->setEnabled(false); // only one molecule right now
