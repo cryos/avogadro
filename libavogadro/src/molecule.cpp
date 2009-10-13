@@ -722,6 +722,7 @@ namespace Avogadro{
       OpenBabel::OBForceField *ff = OpenBabel::OBForceField::FindForceField("MMFF94");
       OpenBabel::OBMol obmol = OBMol();
       if (ff->Setup(obmol)) {
+        ff->GetPartialCharges(obmol);
         for( OpenBabel::OBMolAtomIter atom(obmol); atom; ++atom ) {
           OpenBabel::OBPairData *chg = (OpenBabel::OBPairData*) atom->GetData("FFPartialCharge");
           if (chg)
