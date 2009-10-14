@@ -917,13 +917,15 @@ namespace Avogadro
         // In OB-2.2.2 and later, builder will use 2D coordinates if present
         OBBuilder builder;
         builder.Build(*obMolecule);
-        obMolecule->AddHydrogens(false, true); // Add some hydrogens before running force field
+        obMolecule->AddHydrogens(); // Add some hydrogens before running force field
 
-        OBForceField* pFF =  OBForceField::FindForceField("UFF");
-        if (pFF && pFF->Setup(*obMolecule)) {
-          pFF->ConjugateGradients(250, 1.0e-4);
-          pFF->UpdateCoordinates(*obMolecule);
+        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
+        if (!pFF || !pFF->Setup(*obMolecule)) {
+          pFF = OBForceField::FindForceField("UFF");
+          if (!pFF || !pFF->Setup(*obMolecule)) return; // can't do anything more
         }
+        pFF->ConjugateGradients(250, 1.0e-4);
+        pFF->UpdateCoordinates(*obMolecule);
       } // building geometry
 
     } // check 3D coordinates
