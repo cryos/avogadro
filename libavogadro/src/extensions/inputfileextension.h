@@ -1,5 +1,5 @@
 /**********************************************************************
-  GaussianExtension - Extension for generating Gaussian input decks
+  InputFileExtension - Extension for generating input files
 
   Copyright (C) 2008 Marcus D. Hanwell
 
@@ -22,28 +22,30 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef GAUSSIANEXTENSION_H
-#define GAUSSIANEXTENSION_H
+#ifndef INPUTFILEEXTENSION_H
+#define INPUTFILEEXTENSION_H
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
+#include "daltoninputdialog.h"
 #include "gaussianinputdialog.h"
-#include "qcheminputdialog.h"
 #include "molproinputdialog.h"
-#include "nwcheminputdialog.h"
 #include "mopacinputdialog.h"
+#include "nwcheminputdialog.h"
+#include "qcheminputdialog.h"
+
 
 namespace Avogadro
 {
-  class GaussianExtension : public Extension
+  class InputFileExtension : public Extension
   {
   Q_OBJECT
-    AVOGADRO_EXTENSION("Gaussian Input Deck", tr("Gaussian Input Deck"), 
-                       tr("Create input files for quantum chemistry packages like Gaussian"))
+    AVOGADRO_EXTENSION("Input File Generators", tr("Input File Generators"), 
+                       tr("Create input files for quantum chemistry packages"))
   public:
-    GaussianExtension(QObject* parent = 0);
-    virtual ~GaussianExtension();
+    InputFileExtension(QObject* parent = 0);
+    virtual ~InputFileExtension();
 
     virtual QList<QAction *> actions() const;
 
@@ -69,11 +71,13 @@ namespace Avogadro
     void readOutputFile(const QString filename);
 
   private:
+    DaltonInputDialog* m_daltonInputDialog;
     GaussianInputDialog* m_gaussianInputDialog;
-    QChemInputDialog* m_qchemInputDialog;
+    MolproInputDialog* m_molproInputDialog;
     MOPACInputDialog* m_mopacInputDialog;
     NWChemInputDialog* m_nwchemInputDialog;
-    MolproInputDialog* m_molproInputDialog;
+    QChemInputDialog* m_qchemInputDialog;
+
     QList<QAction *> m_actions;
     Molecule *m_molecule;
     
@@ -81,11 +85,11 @@ namespace Avogadro
 
   };
 
-  class GaussianExtensionFactory : public QObject, public PluginFactory
+  class InputFileExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
     Q_INTERFACES(Avogadro::PluginFactory)
-    AVOGADRO_EXTENSION_FACTORY(GaussianExtension) 
+    AVOGADRO_EXTENSION_FACTORY(InputFileExtension) 
   };
 
 } // End namespace Avogadro

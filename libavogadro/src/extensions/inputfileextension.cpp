@@ -1,5 +1,5 @@
 /**********************************************************************
-  GaussianExtension - Extension for generating Gaussian input decks
+  InputFileExtension - Extension for generating input files
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
 
@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#include "gaussianextension.h"
+#include "inputfileextension.h"
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
@@ -38,33 +38,40 @@ using namespace std;
 namespace Avogadro
 {
 
-  GaussianExtension::GaussianExtension(QObject* parent) : Extension(parent),
-    m_gaussianInputDialog(0), m_qchemInputDialog(0), m_mopacInputDialog(0),
-    m_nwchemInputDialog(0), m_molproInputDialog(0), m_molecule(0)
+  InputFileExtension::InputFileExtension(QObject* parent) : Extension(parent),
+    m_daltonInputDialog(0), m_gaussianInputDialog(0), m_molproInputDialog(0),
+    m_mopacInputDialog(0), m_nwchemInputDialog(0), m_qchemInputDialog(0),
+    m_molecule(0)
   {
     QAction* action = new QAction(this);
-    action->setText(tr("Gaussian Input..."));
+    action = new QAction(this);
+    action->setText(tr("&Dalton..."));
+    action->setData("Dalton");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("&Gaussian..."));
     action->setData("Gaussian");
     m_actions.append(action);
 
     action = new QAction(this);
-    action->setText(tr("Q-Chem Input..."));
-    action->setData("QChem");
+    action->setText(tr("&MOLPRO..."));
+    action->setData("MOLPRO");
     m_actions.append(action);
 
     action = new QAction(this);
-    action->setText(tr("MOLPRO Input..."));
-    action->setData("Molpro");
-    m_actions.append(action);
-
-    action = new QAction(this);
-    action->setText(tr("MOPAC Input..."));
+    action->setText(tr("M&OPAC..."));
     action->setData("MOPAC");
     m_actions.append(action);
 
     action = new QAction(this);
-    action->setText(tr("&NWChem Input..."));
+    action->setText(tr("&NWChem..."));
     action->setData("NWChem");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("&Q-Chem..."));
+    action->setData("QChem");
     m_actions.append(action);
 
     action = new QAction(this);
@@ -72,25 +79,34 @@ namespace Avogadro
     m_actions.append(action);
   }
 
-  GaussianExtension::~GaussianExtension()
+  InputFileExtension::~InputFileExtension()
   {
   }
 
-  QList<QAction *> GaussianExtension::actions() const
+  QList<QAction *> InputFileExtension::actions() const
   {
     return m_actions;
   }
 
-  QString GaussianExtension::menuPath(QAction*) const
+  QString InputFileExtension::menuPath(QAction*) const
   {
-    return tr("E&xtensions");
+    return "E&xtensions";
   }
 
-  QUndoCommand* GaussianExtension::performAction(QAction *action, GLWidget *widget)
+  QUndoCommand* InputFileExtension::performAction(QAction *action, GLWidget *widget)
   {
     m_widget = widget;
 
-    if (action->data() == "Gaussian") {
+    if (action->data() == "Dalton") {
+      if (!m_daltonInputDialog) {
+        m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
+        m_daltonInputDialog->setMolecule(m_molecule);
+        m_daltonInputDialog->show();
+      }
+      else
+        m_daltonInputDialog->show();
+    }
+    else if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
         connect(m_gaussianInputDialog, SIGNAL(readOutput(QString)),
@@ -100,24 +116,6 @@ namespace Avogadro
       }
       else
         m_gaussianInputDialog->show();
-    }
-    else if (action->data() == "QChem") {
-      if (!m_qchemInputDialog) {
-        m_qchemInputDialog = new QChemInputDialog(static_cast<QWidget*>(parent()));
-        m_qchemInputDialog->setMolecule(m_molecule);
-        m_qchemInputDialog->show();
-      }
-      else
-        m_qchemInputDialog->show();
-    }
-    else if (action->data() == "NWChem") {
-      if (!m_nwchemInputDialog) {
-        m_nwchemInputDialog = new NWChemInputDialog(static_cast<QWidget*>(parent()));
-        m_nwchemInputDialog->setMolecule(m_molecule);
-        m_nwchemInputDialog->show();
-      }
-      else
-        m_nwchemInputDialog->show();
     }
     else if (action->data() == "Molpro") {
       if (!m_molproInputDialog) {
@@ -136,29 +134,48 @@ namespace Avogadro
         m_mopacInputDialog->setMolecule(m_molecule);
         m_mopacInputDialog->show();
       }
-      else {
+      else
         m_mopacInputDialog->show();
+    }
+    else if (action->data() == "NWChem") {
+      if (!m_nwchemInputDialog) {
+        m_nwchemInputDialog = new NWChemInputDialog(static_cast<QWidget*>(parent()));
+        m_nwchemInputDialog->setMolecule(m_molecule);
+        m_nwchemInputDialog->show();
       }
+      else
+        m_nwchemInputDialog->show();
+    }
+    else if (action->data() == "QChem") {
+      if (!m_qchemInputDialog) {
+        m_qchemInputDialog = new QChemInputDialog(static_cast<QWidget*>(parent()));
+        m_qchemInputDialog->setMolecule(m_molecule);
+        m_qchemInputDialog->show();
+      }
+      else
+        m_qchemInputDialog->show();
     }
     return 0;
   }
 
-  void GaussianExtension::setMolecule(Molecule *molecule)
+  void InputFileExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+    if (m_daltonInputDialog)
+      m_daltonInputDialog->setMolecule(m_molecule);
     if (m_gaussianInputDialog)
       m_gaussianInputDialog->setMolecule(m_molecule);
-    if (m_qchemInputDialog)
-      m_qchemInputDialog->setMolecule(m_molecule);
-    if (m_nwchemInputDialog)
-      m_nwchemInputDialog->setMolecule(m_molecule);
     if (m_molproInputDialog)
       m_molproInputDialog->setMolecule(m_molecule);
     if (m_mopacInputDialog)
       m_mopacInputDialog->setMolecule(m_molecule);
+    if (m_nwchemInputDialog)
+      m_nwchemInputDialog->setMolecule(m_molecule);
+    if (m_qchemInputDialog)
+      m_qchemInputDialog->setMolecule(m_molecule);
   }
 
-  void GaussianExtension::readOutputFile(const QString filename)
+  void InputFileExtension::readOutputFile(const QString filename)
   {
     QApplication::setOverrideCursor(Qt::WaitCursor);
     OBConversion conv;
@@ -192,7 +209,7 @@ namespace Avogadro
     QApplication::restoreOverrideCursor();
   }
 
-  void GaussianExtension::writeSettings(QSettings &settings) const
+  void InputFileExtension::writeSettings(QSettings &settings) const
   {
     Extension::writeSettings(settings);
     if (m_gaussianInputDialog) {
@@ -203,7 +220,7 @@ namespace Avogadro
     }
   }
 
-  void GaussianExtension::readSettings(QSettings &settings)
+  void InputFileExtension::readSettings(QSettings &settings)
   {
     Extension::readSettings(settings);
     if (m_gaussianInputDialog) {
@@ -230,8 +247,7 @@ namespace Avogadro
       }
     }
   }
-
 } // End namespace Avogadro
 
-Q_EXPORT_PLUGIN2(gaussianextension, Avogadro::GaussianExtensionFactory)
+Q_EXPORT_PLUGIN2(inputfileextension, Avogadro::InputFileExtensionFactory)
 
