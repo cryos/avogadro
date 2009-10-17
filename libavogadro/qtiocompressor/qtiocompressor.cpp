@@ -259,7 +259,7 @@ QtIOCompressor::QtIOCompressor(QIODevice *device, int compressionLevel, int buff
 {}
 
 /*!
-    Destroys the QtIOCompressor, closing it if neccesary.
+    Destroys the QtIOCompressor, closing it if necessary.
 */
 QtIOCompressor::~QtIOCompressor()
 {
