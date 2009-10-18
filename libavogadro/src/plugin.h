@@ -167,6 +167,6 @@ namespace Avogadro {
 
 Q_DECLARE_METATYPE(Avogadro::Plugin*)
 Q_DECLARE_INTERFACE(Avogadro::PluginFactory,
-                    "net.sourceforge.avogadro.pluginfactory/1.3")
+                    "net.sourceforge.avogadro.pluginfactory/1.4")
 
 #endif
