@@ -1,15 +1,15 @@
+cmake_minimum_required(VERSION 2.6.0)
 project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too
 set(Avogadro_VERSION_MAJOR 0)
 set(Avogadro_VERSION_MINOR 9)
-set(Avogadro_VERSION_PATCH 8)
+set(Avogadro_VERSION_PATCH 9)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
 set(CMAKE_MODULE_PATH ${Avogadro_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
