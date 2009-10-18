@@ -22,8 +22,13 @@ include_directories(
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Library translations
-file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.po")
-QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
+if(NOT WIN32)
+  file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.po")
+  QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
+else(NOT WIN32)
+  # don't attempt to create QM files on windows -- copy them from a linux build!
+  file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
+endif(NOT WIN32)
 
 file(GLOB libavogadro_SRCS "*.cpp")
 
