@@ -219,7 +219,7 @@ namespace Avogadro
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
-  const int MainWindow::m_configFileVersion = 2;
+  const int MainWindow::m_configFileVersion = 3;
 
   unsigned int getMainWindowCount()
   {
