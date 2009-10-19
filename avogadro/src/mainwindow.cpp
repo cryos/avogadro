@@ -757,7 +757,7 @@ namespace Avogadro
       }
 
       // if we have nothing open or modified
-      if ( isDefaultFileName(d->fileName) && !isWindowModified() ) {
+      if ( /*isDefaultFileName(d->fileName) &&*/ !isWindowModified() ) {
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
