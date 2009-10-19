@@ -599,11 +599,11 @@ namespace Avogadro
             << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
             << qSetFieldWidth(0);
         if (atom->index() > 0)
-          mol << ' ' << a->GetIdx() << " r" << atom->index();
+          mol << ' ' << a->GetIdx() << " B" << atom->index();
         if (atom->index() > 1)
-          mol << ' ' << b->GetIdx() << " a" << atom->index();
+          mol << ' ' << b->GetIdx() << " A" << atom->index();
         if (atom->index() > 2)
-          mol << ' ' << c->GetIdx() << " d" << atom->index();
+          mol << ' ' << c->GetIdx() << " D" << atom->index();
         mol << '\n';
       }
 
@@ -617,15 +617,15 @@ namespace Avogadro
         if (t < 0.0)
           t += 360.0;
         if (atom->index() > 0)
-          mol << "r" << atom->index() << qSetFieldWidth(15)
+          mol << "B" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << r << qSetFieldWidth(0) << '\n';
         if (atom->index() > 1)
-          mol << "a" << atom->index() << qSetFieldWidth(15)
+          mol << "A" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << w << qSetFieldWidth(0) << '\n';
         if (atom->index() > 2)
-          mol << "d" << atom->index() << qSetFieldWidth(15)
+          mol << "D" << atom->index() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << t << qSetFieldWidth(0) << '\n';
       }

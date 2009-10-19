@@ -1296,7 +1296,7 @@ namespace Avogadro{
     }
 
     // Copy energy
-    setEnergy(obmol->GetEnergy());
+    setEnergy(obmol->GetEnergy() * KCAL_TO_KJ);
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;

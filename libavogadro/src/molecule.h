@@ -629,12 +629,12 @@ namespace Avogadro {
     unsigned int currentConformer() const;
 
     /**
-     * @return The energies for all conformers.
+     * @return The energies for all conformers (in kJ/mol).
      */
     const std::vector<double>& energies() const;
 
     /**
-     * Get the energy of the supplied conformer, defaults to returning the
+     * Get the energy of the supplied conformer (in kJ/mol), defaults to returning the
      * energy of the current conformer.
      * @param index The conformer, defaults to the current conformer.
      * @return The energy of the Molecule (or current conformer).
@@ -642,20 +642,20 @@ namespace Avogadro {
     double energy(int index = -1) const;
 
     /**
-     * Set the energy for the current conformer.
+     * Set the energy for the current conformer (in kJ/mol).
      * @param energy The value for this conformer
      */
     void setEnergy(double energy);
 
     /**
-     * Set the energy for the specified conformer.
+     * Set the energy for the specified conformer (in kJ/mol).
      * @param index the index of the confomer
      * @param energy The energy for this conformer
      */
     void setEnergy(int index, double energy);
 
     /**
-     * Set the energies for all conformers.
+     * Set the energies for all conformers (in kJ/mol).
      * @param energies The vector of all energy values
      */
     void setEnergies(const std::vector<double>& energies);

@@ -189,14 +189,6 @@ namespace Avogadro {
   {
     // set molecule conformers
     if (d->framesSet) {
-
-      if (!m_originalConformers.empty())
-        m_originalConformers.clear();
-
-      for (unsigned int i = 0; i < m_molecule->numConformers(); ++i) {
-        m_originalConformers.push_back(m_molecule->conformer(i));
-      }
-
       m_molecule->lock()->lockForWrite();
       // don't delete the existing conformers -- we save them as m_originalConformers
       m_molecule->setAllConformers(m_frames, false);

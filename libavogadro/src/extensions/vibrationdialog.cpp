@@ -155,7 +155,7 @@ namespace Avogadro {
     hide();
   }
 
-  void VibrationDialog::currentCellChanged(int, int, int row, int)
+  void VibrationDialog::currentCellChanged(int row, int, int, int)
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);

@@ -35,7 +35,7 @@ namespace Avogadro
    *
    * This item delegate does some limited custom painting for engine items
    * used in the EngineViewWidget. Mainly to allow inline clicking of the
-   * configuration dialog, although it could be extended for further funtions.
+   * configuration dialog, although it could be extended for further functions.
    */
   class EngineItemDelegate : public QStyledItemDelegate
   {
