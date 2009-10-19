@@ -1093,7 +1093,7 @@ namespace Avogadro
     mol << "Atomtypes=" << natomtypes << " Angstrom";
     
     if (m_propType == exci) {
-       mol << "Nosymm" << '\n';
+       mol << " Nosymm" << '\n';
     } else {
        mol << '\n';
     }
