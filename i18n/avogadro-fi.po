@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-09 23:09-0400\n"
+"POT-Creation-Date: 2009-10-19 21:24-0400\n"
 "PO-Revision-Date: 2009-09-21 14:04+0000\n"
 "Last-Translator: Mikko Nissinen <mikko.n94@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -24,19 +24,17 @@ msgstr "OK"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:825 src/mainwindow.cpp:875
-#: src/mainwindow.cpp:897 src/mainwindow.cpp:1053 src/mainwindow.cpp:1075
-#: src/mainwindow.cpp:1228 src/mainwindow.cpp:1456 src/mainwindow.cpp:2439
-#: src/mainwindow.cpp:2916 :46
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:835
+#: src/mainwindow.cpp:885 src/mainwindow.cpp:907 src/mainwindow.cpp:1069
+#: src/mainwindow.cpp:1091 src/mainwindow.cpp:1244 src/mainwindow.cpp:1472
+#: src/mainwindow.cpp:2455 src/mainwindow.cpp:2948:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -60,14 +58,13 @@ msgstr ""
 msgid "Clear Atoms"
 msgstr ""
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2934 src/mainwindow.cpp:2951 :254 rc.cpp:262
+#: src/mainwindow.cpp:2966 src/mainwindow.cpp:2983:254 rc.cpp:262
 msgid "Settings"
 msgstr "Asetukset"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:734
+#: src/importdialog.cpp:175 src/mainwindow.cpp:733
 msgid "Open File"
 msgstr "Avaa tiedosto"
 
@@ -91,315 +88,316 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr ""
 
-#: src/mainwindow.cpp:388 src/mainwindow.cpp:1591
+#: src/mainwindow.cpp:388 src/mainwindow.cpp:1607
 msgid "Bring All to Front"
 msgstr "Tuo kaikki eteen"
 
-#: src/mainwindow.cpp:665
+#: src/mainwindow.cpp:664
 msgid "&Tool Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:668
+#: src/mainwindow.cpp:667
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:673
+#: src/mainwindow.cpp:672
 msgid "&Display Settings..."
 msgstr ""
 
-#: src/mainwindow.cpp:676
+#: src/mainwindow.cpp:675
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:714 src/mainwindow.cpp:1167
+#: src/mainwindow.cpp:713 src/mainwindow.cpp:1183
 msgid "Common molecule formats"
 msgstr "Yleiset molekyylitiedostomuodot"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1164 src/mainwindow.cpp:1396
-#: src/mainwindow.cpp:1475
+#: src/mainwindow.cpp:718 src/mainwindow.cpp:1180 src/mainwindow.cpp:1412
+#: src/mainwindow.cpp:1491
 msgid "All files"
 msgstr "Kaikki tiedostot"
 
-#: src/mainwindow.cpp:720 src/mainwindow.cpp:1161 src/mainwindow.cpp:1173
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1177 src/mainwindow.cpp:1189
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:721
+#: src/mainwindow.cpp:720
 msgid "Computational Chemistry Output"
 msgstr ""
 
-#: src/mainwindow.cpp:722
+#: src/mainwindow.cpp:721
 msgid "Crystallographic Interchange CIF"
 msgstr ""
 
-#: src/mainwindow.cpp:723
+#: src/mainwindow.cpp:722
 msgid "GAMESS-US Output"
 msgstr ""
 
-#: src/mainwindow.cpp:724
+#: src/mainwindow.cpp:723
 msgid "Gaussian 98/03 Output"
 msgstr ""
 
-#: src/mainwindow.cpp:725
+#: src/mainwindow.cpp:724
 msgid "Gaussian Formatted Checkpoint"
 msgstr ""
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:725
 msgid "HyperChem"
 msgstr ""
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:726
 msgid "MDL Mol"
 msgstr ""
 
-#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:727
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1178
+#: src/mainwindow.cpp:728 src/mainwindow.cpp:1194
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1180
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1196
 msgid "Sybyl Mol2"
 msgstr ""
 
-#: src/mainwindow.cpp:731 src/mainwindow.cpp:1181
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1197
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:802
+#: src/mainwindow.cpp:791 src/mainwindow.cpp:796 src/mainwindow.cpp:2399
+#: src/savedialog.cpp:83
+msgid "untitled"
+msgstr "nimetön"
+
+#: src/mainwindow.cpp:812
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Ladataan %1..."
 
-#: src/mainwindow.cpp:806
+#: src/mainwindow.cpp:816
 #, qt-format
 msgid "Loading %1..."
 msgstr "Ladataan %1..."
 
-#: src/mainwindow.cpp:826 src/mainwindow.cpp:1054
+#: src/mainwindow.cpp:836 src/mainwindow.cpp:1070
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr ""
 
-#: src/mainwindow.cpp:849
+#: src/mainwindow.cpp:859
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 
-#: src/mainwindow.cpp:876
+#: src/mainwindow.cpp:886
 msgid "This file does not contain 3D coordinates."
 msgstr ""
 
-#: src/mainwindow.cpp:880
+#: src/mainwindow.cpp:890
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:898
+#: src/mainwindow.cpp:908
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
 
-#: src/mainwindow.cpp:948
+#: src/mainwindow.cpp:960
 msgid "Select Molecule to View"
 msgstr ""
 
-#: src/mainwindow.cpp:973
+#: src/mainwindow.cpp:985
 msgid "Molecule Title"
 msgstr ""
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1062
 msgid "Atoms: "
 msgstr "Atomit: "
 
-#: src/mainwindow.cpp:1047
+#: src/mainwindow.cpp:1063
 msgid " Bonds: "
 msgstr " Sidokset: "
 
-#: src/mainwindow.cpp:1063
+#: src/mainwindow.cpp:1079
 msgid "File Loaded..."
 msgstr "Tiedosto ladattu..."
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1092
 msgid "Do you want to save the changes you made in the document?"
 msgstr ""
 
-#: src/mainwindow.cpp:1085
+#: src/mainwindow.cpp:1101
 msgid "Your changes will be lost if you don't save them."
 msgstr "Tallentamattomat muutokset menetetään!"
 
-#: src/mainwindow.cpp:1089
+#: src/mainwindow.cpp:1105
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1090
+#: src/mainwindow.cpp:1106
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1092
+#: src/mainwindow.cpp:1108
 msgid "Save..."
 msgstr ""
 
-#: src/mainwindow.cpp:1092 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1108 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Tallenna"
 
-#: src/mainwindow.cpp:1174
+#: src/mainwindow.cpp:1190
 msgid "GAMESS Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1175
+#: src/mainwindow.cpp:1191
 msgid "Gaussian Cartesian Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1176
+#: src/mainwindow.cpp:1192
 msgid "Gaussian Z-matrix Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1177
+#: src/mainwindow.cpp:1193
 msgid "MDL SDfile"
 msgstr ""
 
-#: src/mainwindow.cpp:1179
+#: src/mainwindow.cpp:1195
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1184
+#: src/mainwindow.cpp:1200
 msgid "Save Molecule As"
 msgstr "Tallenna molekyyli nimellä"
 
-#: src/mainwindow.cpp:1386 src/mainwindow.cpp:1398
+#: src/mainwindow.cpp:1402 src/mainwindow.cpp:1414
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1393
+#: src/mainwindow.cpp:1409
 msgid "Common image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1413
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1399
+#: src/mainwindow.cpp:1415
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1405 src/mainwindow.cpp:1484
+#: src/mainwindow.cpp:1421 src/mainwindow.cpp:1500
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1457
+#: src/mainwindow.cpp:1473
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Tiedostoa %1 ei voida tallentaa."
 
-#: src/mainwindow.cpp:1465 src/mainwindow.cpp:1476
+#: src/mainwindow.cpp:1481 src/mainwindow.cpp:1492
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1472
+#: src/mainwindow.cpp:1488
 msgid "Common vector image formats"
 msgstr ""
 
-#: src/mainwindow.cpp:1477
+#: src/mainwindow.cpp:1493
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1478
+#: src/mainwindow.cpp:1494
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1623
+#: src/mainwindow.cpp:1639
 #, qt-format
 msgid "Untitled %1"
 msgstr "Nimetön %1"
 
-#: src/mainwindow.cpp:1728
+#: src/mainwindow.cpp:1744
 msgid "Unable to paste molecule."
 msgstr "Molekyyliä ei voida liittää."
 
-#: src/mainwindow.cpp:1757
+#: src/mainwindow.cpp:1773
 msgid "Paste failed (format unavailable)."
 msgstr "Liittäminen epäonnistui."
 
-#: src/mainwindow.cpp:1826
+#: src/mainwindow.cpp:1842
 msgid "Copy failed (mdl unavailable)."
 msgstr ""
 
-#: src/mainwindow.cpp:1952 src/mainwindow.cpp:1985 src/mainwindow.cpp:2052
-#: src/mainwindow.cpp:2582
+#: src/mainwindow.cpp:1968 src/mainwindow.cpp:2001 src/mainwindow.cpp:2068
+#: src/mainwindow.cpp:2598
 #, qt-format
 msgid "View %1"
 msgstr "Näkymä %1"
 
-#: src/mainwindow.cpp:2012
+#: src/mainwindow.cpp:2028
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Näkymä %1"
 
-#: src/mainwindow.cpp:2021
+#: src/mainwindow.cpp:2037
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Erillinen näkymä"
 
-#: src/mainwindow.cpp:2187
+#: src/mainwindow.cpp:2203
 msgid "Normal Size"
 msgstr "Tavallinen koko"
 
-#: src/mainwindow.cpp:2200
+#: src/mainwindow.cpp:2216
 msgid "Full Screen"
 msgstr "Koko kuvaruutu"
 
-#: src/mainwindow.cpp:2298
+#: src/mainwindow.cpp:2314
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+askelpalautin"
 
-#: src/mainwindow.cpp:2383 src/savedialog.cpp:83
-msgid "untitled"
-msgstr "nimetön"
-
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2448
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2438
+#: src/mainwindow.cpp:2454
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2870
+#: src/mainwindow.cpp:2902
 msgid "Add"
 msgstr "Lisää"
 
-#: src/mainwindow.cpp:2875
+#: src/mainwindow.cpp:2907
 msgid "Duplicate"
 msgstr "Monista"
 
-#: src/mainwindow.cpp:2880
+#: src/mainwindow.cpp:2912
 msgid "Remove"
 msgstr "Poista"
 
-#: src/mainwindow.cpp:2908
+#: src/mainwindow.cpp:2940
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2942
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:2912
+#: src/mainwindow.cpp:2944
 msgid "No tools loaded."
 msgstr "Työkaluja ei ole ladattu."
 
-#: src/mainwindow.cpp:2913
+#: src/mainwindow.cpp:2945
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -407,16 +405,15 @@ msgstr ""
 " On epätodennäköistä että sovellus toimii oikein. Ole hyvä ja korjaa tämä "
 "virhe."
 
-#: src/mainwindow.cpp:2957
+#: src/mainwindow.cpp:2989
 msgid "Objects"
 msgstr ""
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2963 :214
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2995:214
 msgid "Colors"
 msgstr "Värit"
 
-#: src/mainwindow.cpp:2996
+#: src/mainwindow.cpp:3028
 msgid " copy"
 msgstr ""
 
@@ -487,8 +484,7 @@ msgstr "Virhe"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :252
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
 msgid "Item"
 msgstr ""
 
@@ -501,8 +497,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr ""
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :270
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -517,8 +512,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr ""
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :276
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -543,11 +537,11 @@ msgctxt "Level of fog in the scene"
 msgid "Undefined"
 msgstr ""
 
-#: src/updatecheck.cpp:81
+#: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
 msgstr ""
 
-#: src/updatecheck.cpp:82
+#: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
 msgstr ""
 
@@ -580,18 +574,15 @@ msgstr ""
 msgid "Color by:"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr ""
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr ""
 
@@ -687,23 +678,19 @@ msgstr "&Valitse"
 msgid "Main Toolbar"
 msgstr ""
 
-#: src/mainwindow.ui:193
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:193 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr ""
 
-#: src/mainwindow.ui:226
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:226 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr ""
 
-#: src/mainwindow.ui:235
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:235 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "Työkalut"
 
-#: src/mainwindow.ui:256
-#: src/mainwindow.ui:268
+#: src/mainwindow.ui:256 src/mainwindow.ui:268
 msgid "&Open"
 msgstr "&Avaa"
 
@@ -711,8 +698,7 @@ msgstr "&Avaa"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277
-#: src/mainwindow.ui:289
+#: src/mainwindow.ui:277 src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "&Lopeta"
 
@@ -728,8 +714,7 @@ msgstr ""
 msgid "&Clear Recent"
 msgstr ""
 
-#: src/mainwindow.ui:308
-#: src/mainwindow.ui:320
+#: src/mainwindow.ui:308 src/mainwindow.ui:320
 msgid "&New"
 msgstr "&Uusi"
 
@@ -737,8 +722,7 @@ msgstr "&Uusi"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329
-#: src/mainwindow.ui:341
+#: src/mainwindow.ui:329 src/mainwindow.ui:341
 msgid "&Close"
 msgstr "&Sulje"
 
@@ -746,8 +730,7 @@ msgstr "&Sulje"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350
-#: src/mainwindow.ui:362
+#: src/mainwindow.ui:350 src/mainwindow.ui:362
 msgid "&Save"
 msgstr "&Tallenna"
 
@@ -939,8 +922,7 @@ msgstr ""
 msgid "Reset Display Types"
 msgstr ""
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr ""
 
@@ -952,13 +934,11 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr ""
 
@@ -1026,8 +1006,7 @@ msgstr ""
 msgid "Settings..."
 msgstr "Asetukset..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr ""
 
@@ -1035,8 +1014,7 @@ msgstr ""
 msgid "Quality:"
 msgstr "Laatu:"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "Aseta globaali renderöintilaatu."
 
@@ -1047,16 +1025,14 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff "
-"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Ulla, ,Launchpad Contributions:,Mikko Nissinen,Ulla"
+",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff Hutchison,"
+"Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Ulla, ,"
+"Launchpad Contributions:,Mikko Nissinen,Ulla"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,mikko.n94@gmail.com,"
+msgstr ",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,mikko.n94@gmail.com,"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1064,11 +1040,9 @@ msgstr ""
 #~ "Tiedostoa %1 ei voida lukea:\n"
 #~ "%2"
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tiedoston %1 tiedostomuotoa ei voida lukea."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Tiedostoa %1 ei voida lukea."
 
@@ -1079,7 +1053,6 @@ msgstr ""
 #~ "Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
 #~ "skaalaa sidokset ja tekee nopean optimisaation?"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1090,7 +1063,6 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Tiedostoa tallennetaan."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Tiedostoon %1 ei voida kirjoittaa."
 
@@ -1100,7 +1072,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1485,7 +1456,6 @@ msgstr ""
 #~ msgid "Renders atoms as Van der Waals spheres"
 #~ msgstr "Renderöi atomit Van der Waals -palloina"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1498,7 +1468,6 @@ msgstr ""
 #~ msgid "video files (*.avi)"
 #~ msgstr "videotiedostot (*.avi)"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Atomien lukumäärä: %1"
 
@@ -1511,7 +1480,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Peruuta"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1597,13 +1565,13 @@ msgstr ""
 #~ msgstr "POV-Ray"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "Valintasi on olla käyttämättä suoraa POV-Ray-renderöintiä etkä halua "
-#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. Oletko "
-#~ "varma että haluat toimia näin?"
+#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. "
+#~ "Oletko varma että haluat toimia näin?"
 
 #~ msgid "&Properties"
 #~ msgstr "&Ominaisuudet"
@@ -1620,7 +1588,6 @@ msgstr ""
 #~ msgid "Partial Charge"
 #~ msgstr "Osittaisvaraus"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atomi %1"
 
@@ -1633,14 +1600,12 @@ msgstr ""
 #~ msgid "Length (Å)"
 #~ msgstr "Pituus (Å)"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Sidos %1"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Kulma (°)"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Kulma %1"
 
@@ -1690,7 +1655,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
+#~ msgstr ""
+#~ "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
 
 #~ msgid "Algorithm:"
 #~ msgstr "Algoritmi:"
@@ -1719,11 +1685,9 @@ msgstr ""
 #~ msgid " Show Angles"
 #~ msgstr " Näytä kulmat"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Etäisyys (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Etäisyys (1->2): %1 %2"
 
@@ -1739,11 +1703,9 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Etäisyys (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Kulma: %1 %2"
 
@@ -1757,8 +1719,8 @@ msgstr ""
 #~ "Right Mouse: Delete Atom"
 #~ msgstr ""
 #~ "Piirtotyökalu (F8)\n"
-#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi atomeja "
-#~ "ja sidoksia\n"
+#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi "
+#~ "atomeja ja sidoksia\n"
 #~ "Oikea hiiren painike: \tPoista atomi"
 
 #~ msgid "Add Atom"
@@ -2071,12 +2033,13 @@ msgstr ""
 #~ msgstr "Kulmat (°)"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
-#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro lukee "
-#~ "ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut molekyylit "
-#~ "saattavat kadota."
+#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro "
+#~ "lukee ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut "
+#~ "molekyylit saattavat kadota."
 
 #~ msgid ""
 #~ "The document has been modified.\n"
@@ -2114,7 +2077,6 @@ msgstr ""
 #~ msgid "Add constraint"
 #~ msgstr "Lisää rajoite"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Kierrettävien sidosten määrä: %1"
 
@@ -2151,7 +2113,6 @@ msgstr ""
 #~ msgid "Create Surfaces..."
 #~ msgstr "Luo pintoja..."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Kirjoitettiin tiedosto %1."
 
@@ -2173,7 +2134,6 @@ msgstr ""
 #~ msgid "Torsion (°)"
 #~ msgstr "Kiertokulma (°)"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Kiertokulma %1"
 
@@ -2219,7 +2179,6 @@ msgstr ""
 #~ msgid "Force Field:"
 #~ msgstr "Voimakenttä:"
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -2271,7 +2230,6 @@ msgstr ""
 #~ msgid "Measure"
 #~ msgstr "Mittaa"
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Kiertokulma: %1 %2"
 
@@ -2301,8 +2259,8 @@ msgstr ""
 #~ "\n"
 #~ "Vasen hiiren painike: Napsauta ja vedä painike pohjassa siirtääksesi "
 #~ "atomeita\n"
-#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs tai "
-#~ "kauemmas\n"
+#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs "
+#~ "tai kauemmas\n"
 #~ "Oikea hiiren painike: Napsauta ja vedä painike pohjassa pyörittääksesi "
 #~ "valittuja atomeita"
 
@@ -2319,7 +2277,8 @@ msgstr ""
 #~ "näkymää\n"
 #~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa lähentääksesi tai "
 #~ "loitontaaksesi näkymää\n"
-#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi näkymää"
+#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi "
+#~ "näkymää"
 
 #~ msgid "Save as .avi..."
 #~ msgstr "Tallenna muodossa .avi..."
