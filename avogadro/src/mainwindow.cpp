@@ -787,6 +787,9 @@ namespace Avogadro
 
   bool MainWindow::isDefaultFileName(const QString fileName)
   {
+    if (fileName.isEmpty())
+      return true;
+
     QFileInfo fileInfo(fileName);
     return (fileInfo.baseName() == tr("untitled"));
   }
@@ -1163,8 +1166,9 @@ namespace Avogadro
   bool MainWindow::save()
   {
     // we can't safely save to a gzipped file
-    if ( isDefaultFileName(d->fileName) ||
-         d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
+    if ( !QFileInfo(d->fileName).isReadable() 
+        || isDefaultFileName(d->fileName)
+        || d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
       return saveAs();
     }
     else
