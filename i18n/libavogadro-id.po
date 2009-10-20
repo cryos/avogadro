@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-16 20:36+0000\n"
+"X-Launchpad-Export-Date: 2009-10-20 14:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -563,7 +563,8 @@ msgstr "Bola dan Batang"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr "Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
+msgstr ""
+"Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
@@ -873,7 +874,8 @@ msgstr ""
 "atom"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Untuk menambah satu kendala ikatan, molekul anda harus mempunyai paling "
 "sedikit dua atom"
@@ -1028,17 +1030,15 @@ msgid "Input Generator..."
 msgstr "Masukan Pembuat..."
 
 #: src/extensions/gamessextension.cpp:70
-#, fuzzy
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr "Pemilihan EFP..."
+msgstr ""
 
 #: src/extensions/gamessextension.cpp:75
-#, fuzzy
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr "Pemilihan QM..."
+msgstr ""
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1102,7 +1102,7 @@ msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:608 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619 :608 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "Judul"
 
@@ -1194,7 +1194,8 @@ msgstr "Gagal menjalankan G03."
 
 #: src/extensions/gaussianinputdialog.cpp:289
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr "G03 tidak bisa dijalankan. Mungkin tidak bisa di instal dengan benar."
+msgstr ""
+"G03 tidak bisa dijalankan. Mungkin tidak bisa di instal dengan benar."
 
 #: src/extensions/gaussianinputdialog.cpp:294
 msgid "Running Gaussian calculation..."
@@ -1205,7 +1206,8 @@ msgid "G03 Crashed."
 msgstr "G03 Gagal."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian tidak bisa dijalankan dengan semestinya. Mungkin tidak di instal "
 "dengan benar."
@@ -1215,7 +1217,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1278
+#: src/extensions/qcheminputdialog.cpp:178 :1278
 msgid "Show Preview"
 msgstr "Mengeluarkan Pratampilan"
 
@@ -1227,7 +1229,7 @@ msgstr "Mengeluarkan Pratampilan"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Menyembunyikan Pratampilan"
 
@@ -1289,29 +1291,24 @@ msgid "Add or remove hydrogens"
 msgstr "Tambah atau hapus hidrogen"
 
 #: src/extensions/inputfileextension.cpp:49
-#, fuzzy
 msgid "&Gaussian..."
-msgstr "Masukan Gaussian..."
+msgstr ""
 
 #: src/extensions/inputfileextension.cpp:54
-#, fuzzy
 msgid "&MOLPRO..."
-msgstr "Masukan MOLPRO..."
+msgstr ""
 
 #: src/extensions/inputfileextension.cpp:59
-#, fuzzy
 msgid "M&OPAC..."
-msgstr "Masukan MOPAC..."
+msgstr ""
 
 #: src/extensions/inputfileextension.cpp:64
-#, fuzzy
 msgid "&NWChem..."
-msgstr "Masukan &NWChem..."
+msgstr ""
 
 #: src/extensions/inputfileextension.cpp:69
-#, fuzzy
 msgid "&Q-Chem..."
-msgstr "Masukan Q-Chem..."
+msgstr ""
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1320,14 +1317,12 @@ msgid "Cannot read file %1."
 msgstr "Tidak bisa membaca berkas %1."
 
 #: src/extensions/inputfileextension.h:44
-#, fuzzy
 msgid "Input File Generators"
-msgstr "Pembuat berkas masukan Dalton"
+msgstr ""
 
 #: src/extensions/inputfileextension.h:45
-#, fuzzy
 msgid "Create input files for quantum chemistry packages"
-msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
+msgstr ""
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1372,7 +1367,7 @@ msgstr "Peptide..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "Sisipkan Peptide"
 
@@ -1553,7 +1548,8 @@ msgstr "MOPAC gagal dijalankan."
 
 #: src/extensions/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
+msgstr ""
+"MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
 
 #: src/extensions/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
@@ -1784,7 +1780,7 @@ msgid "Conformer Properties"
 msgstr "Properti Conformer"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:464
+#: src/extensions/propextension.h:43 :464
 msgid "Properties"
 msgstr "Berbagai Properti"
 
@@ -1796,7 +1792,8 @@ msgstr ""
 "Jendela untuk menampilkan properti atom, ikatan, angle dan torsi. Termasuk "
 "penyunting koordinat cartesian."
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:355:190
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:355 :190
 msgid "Type"
 msgstr "Tipe"
 
@@ -1898,7 +1895,7 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:427:444
+#: src/extensions/propmodel.cpp:427 :444
 msgid "Energy"
 msgstr "Energi"
 
@@ -1968,9 +1965,10 @@ msgstr "Memilih pola SMARTS"
 msgid "Select by residue"
 msgstr "Pilih berdasarkan residu"
 
-#: src/engines/labelsettingswidget.ui:80 src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:84
-#: rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:80
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :84 rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "Nama residu"
 
@@ -2030,7 +2028,8 @@ msgstr "Buka berkas parameter shader"
 msgid "Shader parameters files (*.params)"
 msgstr "berkas parameter shader (*.params)"
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1486
 msgid "GLSL Shaders"
 msgstr "GLSL Shader"
 
@@ -2047,12 +2046,12 @@ msgid "Y Axis"
 msgstr "Sumbu Y"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1528
+#: src/extensions/spectradialog.cpp:152 :1528
 msgid "&Appearance"
 msgstr "Pen&ampilan"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1572
+#: src/extensions/spectradialog.cpp:153 :1572
 msgid "E&xport Image"
 msgstr "Ek&spor Gambar"
 
@@ -2234,7 +2233,7 @@ msgid "Customi&ze <<"
 msgstr "Tutup Pengaturan <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736:1524
+#: src/extensions/spectradialog.cpp:736 :1524
 msgid "Customi&ze >>"
 msgstr "&Buka Pengaturan >>"
 
@@ -2483,7 +2482,7 @@ msgid "Apply"
 msgstr "Terapkan"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:224
+#: src/extensions/unitcellparamdialog.cpp:97 :224
 msgid "OK"
 msgstr "Oke"
 
@@ -2494,7 +2493,7 @@ msgstr "Mengurutkan getaran %1 berdasarkan frekuensi..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1730
+#: src/extensions/vibrationdialog.cpp:213 :1730
 msgid "Start &Animation"
 msgstr "Memulai &Animasi"
 
@@ -2512,7 +2511,7 @@ msgstr "&Getaran..."
 
 #: src/extensions/gamessinputdialog.ui:2556
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:804
+#: src/extensions/vibrationextension.cpp:241 :804
 msgid "Vibrational Analysis"
 msgstr "Analisis Getaran"
 
@@ -2854,11 +2853,13 @@ msgstr "Jumlah Langkah setiap Pembaruan:"
 msgid "Algorithm:"
 msgstr "Algoritma:"
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:288:254
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:288 :254
 msgid "Steepest Descent"
 msgstr "Cara Steepest Descent"
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:289:256
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:289 :256
 msgid "Conjugate Gradients"
 msgstr "Cara Conjugate Gradients"
 
@@ -2939,8 +2940,8 @@ msgstr "rotasi z"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
-#: rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Tata Ulang"
 
@@ -3100,8 +3101,8 @@ msgstr "Pengukuran panajng ikatan, sudut, dan dihedral"
 msgid "Measure Settings"
 msgstr "Pengaturan Pengukuran"
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
-#: src/tools/drawcommand.cpp:311:1750
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
@@ -3153,7 +3154,8 @@ msgstr "Menggambar"
 msgid "Element:"
 msgstr "Unsur:"
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:798:558
+#: src/extensions/gamessinputdialog.ui:1214
+#: src/tools/drawtool.cpp:798 :558
 msgid "Other..."
 msgstr "Lainnya..."
 
@@ -3297,7 +3299,8 @@ msgstr "Sudut Dihedral"
 msgid "Z Matrix Editor..."
 msgstr "Penyunting Matriks Z"
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:616
+#: src/extensions/gamessinputdialog.ui:1537
+#: src/tools/zmatrixtool.h:39 :616
 msgid "Z-Matrix"
 msgstr "Matriks-Z"
 
@@ -3337,12 +3340,14 @@ msgstr "Jejari Atom:"
 msgid "Bond Radius:"
 msgstr "Jejari Ikatan:"
 
-#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr "Opasitas:"
 
-#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Tampilkan Ikatan Berganda"
 
@@ -3437,7 +3442,8 @@ msgstr "Label Atom:"
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2107 src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2107
+#: src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr "Kosong"
 
@@ -3576,7 +3582,8 @@ msgstr "Animasi Trayektori"
 msgid "Load File..."
 msgstr "Memuat Berkas..."
 
-#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3585,12 +3592,12 @@ msgid "Dynamic Bonds"
 msgstr "Ikatan Dinamik"
 
 #: src/extensions/animationdialog.ui:169
-#, fuzzy
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr "Loop"
+msgstr ""
 
-#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3621,8 +3628,10 @@ msgid "Number of conformers"
 msgstr "Jumlah dari conformer"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2566 src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2566
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Metoda"
@@ -3711,12 +3720,15 @@ msgstr "Hapus Semua"
 msgid "File Import..."
 msgstr "Impor Berkas..."
 
-#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Nama berkas:"
 
-#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Cari..."
@@ -3737,7 +3749,8 @@ msgstr "Melihat ikatan?"
 msgid "Setup Force Field"
 msgstr "Pengaturan Bidang Gaya"
 
-#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Bidang Gaya"
 
@@ -4489,7 +4502,8 @@ msgstr "Satuan:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Judul:"
 
@@ -4583,16 +4597,14 @@ msgid "Parallel Load Balance Type"
 msgstr "Tipe Keseimbangan Beban Paralel"
 
 #: src/extensions/gamessinputdialog.ui:1900
-#, fuzzy
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr "Loop"
+msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1910
-#, fuzzy
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr "Angka Selanjutnya"
+msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1923
 msgid "Use External Data Representation for Messages"
@@ -4975,7 +4987,8 @@ msgstr "Membuat..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Tutup"
@@ -5375,7 +5388,8 @@ msgstr "membuat ligand dari nama residu"
 msgid "create ligand from file..."
 msgstr "membuat ligand dari berkas..."
 
-#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "Nama residu nya"
 
@@ -5563,7 +5577,8 @@ msgstr "povray"
 msgid "Render"
 msgstr "Menggambar"
 
-#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137
+#: src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Resolusi:"
 
@@ -5589,7 +5604,8 @@ msgstr "Perintah:"
 
 #: src/extensions/povraydialog.ui:183
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
+msgstr ""
+"Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
 
 #: src/extensions/povraydialog.ui:186
 msgid "Render using POV-Ray"
@@ -5647,7 +5663,8 @@ msgstr "Fragmen Shader:"
 msgid "Parameters:"
 msgstr "Parameter:"
 
-#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "Terapkan Shader"
 
@@ -5689,8 +5706,10 @@ msgstr "T&utup"
 msgid "Calculated Spectra:"
 msgstr "Spektra Perhitungan:"
 
-#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168
+#: src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279
+#: src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "Atur Warna..."
 
@@ -5706,7 +5725,8 @@ msgstr "Huruf:"
 msgid "Change Font..."
 msgstr "Merubah Huruf..."
 
-#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224
+#: src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "Tampilkan"
 
@@ -5856,7 +5876,8 @@ msgstr "Tata Ulan Sumbu &Plot"
 msgid "Label Peaks:"
 msgstr "Label Peaks:"
 
-#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125
+#: src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5899,11 +5920,13 @@ msgstr "Tipe Permukaan:"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46
+#: src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "Potensial Elektrostatik"
 
-#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "MO 666"
 
@@ -6086,52 +6109,12 @@ msgstr "Hapus Atom"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:,"
-"Geoff Hutchison,Waluyo Adi Siswanto"
+",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad "
+"Contributions:,Geoff Hutchison,Waluyo Adi Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,,,,,"
-
-#~ msgid "&Dalton Input..."
-#~ msgstr "Masukan &Dalton..."
-
-#~ msgid "&Dalton"
-#~ msgstr "&Dalton"
-
-#~ msgid "Create input files for Dalton the quantum chemistry program"
-#~ msgstr "Buat berkas masukan untuk program kima kuantum Dalton"
-
-#~ msgid "Dalton Input File Generator Warning"
-#~ msgstr "Peringatan Pembuat Berkas Masukan Dalton"
-
-#~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the "
-#~ "Dalton input file preview pane?"
-#~ msgstr ""
-#~ "Apakah anda ingin memperbarui pratampilan teks, dan menghilangkan semua "
-#~ "perubahan pada pratampilan berkas masukan Dalton"
-
-#~ msgid "Save Dalton Input File"
-#~ msgstr "Simpan Berkas Masukuan Dalton"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Berkas Masukan Dalton (*.dal)"
-
-#~ msgid "Gaussian Input Deck"
-#~ msgstr "Masukan Program Gaussian"
-
-#~ msgid "Create input files for quantum chemistry packages like Gaussian"
-#~ msgstr "Membuat berkas masukan untuk program kimia kuantum seperti Gaussian"
-
-#~ msgid "Dalton Input"
-#~ msgstr "Masukan Dalton"
-
-#~ msgid "Calculate Properties"
-#~ msgstr "Menghitung Properties"
-
-#~ msgid "PBE0"
-#~ msgstr "PBE0"
 
 #~ msgid "Add Directory"
 #~ msgstr "Tambah Direktori"
@@ -6163,15 +6146,42 @@ msgstr ",,,,,,"
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
+#~ msgid "EFP Selection..."
+#~ msgstr "Pemilihan EFP..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "Pemilihan QM..."
+
+#~ msgid "Create input files for quantum chemistry packages like Gaussian"
+#~ msgstr "Membuat berkas masukan untuk program kimia kuantum seperti Gaussian"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Masukan Q-Chem..."
+
+#~ msgid "MOLPRO Input..."
+#~ msgstr "Masukan MOLPRO..."
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Masukan Gaussian..."
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "Masukan MOPAC..."
+
+#~ msgid "&NWChem Input..."
+#~ msgstr "Masukan &NWChem..."
+
 #~ msgid "VdW Cube"
 #~ msgstr "Kubus VdW"
+
+#~ msgid "Gaussian Input Deck"
+#~ msgstr "Masukan Program Gaussian"
 
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
 #~ msgstr ""
-#~ "Jendela untuk menampilkan properti atom, ikatan, sudut dan torsi, "
-#~ "termasuk penyunting koordinat kartesian."
+#~ "Jendela untuk menampilkan properti atom, ikatan, sudut dan torsi, termasuk "
+#~ "penyunting koordinat kartesian."
 
 #~ msgid "Aign Settings"
 #~ msgstr "Pengaturan Pelurusan"
@@ -6196,6 +6206,9 @@ msgstr ",,,,,,"
 
 #~ msgid "Words"
 #~ msgstr "Kata"
+
+#~ msgid "Next Value"
+#~ msgstr "Angka Selanjutnya"
 
 #~ msgid "Huckel"
 #~ msgstr "Huckel"
@@ -6276,8 +6289,8 @@ msgstr ",,,,,,"
 #~ "Load a second confromation and computer a linear interpolation with the "
 #~ "current conformation."
 #~ msgstr ""
-#~ "Memuat conformasi kedua dan penghitung interpolasi linier dengan "
-#~ "conformasi sekarang."
+#~ "Memuat conformasi kedua dan penghitung interpolasi linier dengan conformasi "
+#~ "sekarang."
 
 #~ msgid "Isosurfaces"
 #~ msgstr "PermukaanIso"
@@ -6291,16 +6304,19 @@ msgstr ",,,,,,"
 #~ msgid "Name"
 #~ msgstr "Nama"
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for writing."
-#~ msgstr ""
-#~ "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
+#~ msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
 
+#, qt-format
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for reading."
 #~ msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk dibaca."
 
+#, qt-format
 #~ msgid "File type '%1' is not a supported for writing."
 #~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."
 
