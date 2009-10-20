@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="modeTab">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="basicWidget">
       <attribute name="title">
@@ -427,7 +427,7 @@
           </sizepolicy>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="basisWidget">
           <layout class="QGridLayout">
@@ -1897,17 +1897,20 @@
               <item>
                <widget class="QRadioButton" name="systemLoopRadio">
                 <property name="text">
-                 <string>Loop</string>
+                 <string comment="&quot;Loop&quot; load balancing - set static node assignments">Loop</string>
                 </property>
                 <property name="checked">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QRadioButton" name="systemNextRadio">
                 <property name="text">
-                 <string>Next Value</string>
+                 <string comment="&quot;Next Value&quot; load balancing - dynamically assign nodes work">Next Value</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -1936,16 +1939,16 @@
            </item>
            <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="systemDDIDouble">
-              <property name="maximum">
-                <double>1000</double>
-              </property>
+             <property name="maximum">
+              <double>1000.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="systemMemoryDouble">
-              <property name="maximum">
-                <double>1000</double>
-              </property>
+             <property name="maximum">
+              <double>1000.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
