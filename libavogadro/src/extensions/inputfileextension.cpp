@@ -52,7 +52,7 @@ namespace Avogadro
 
     action = new QAction(this);
     action->setText(tr("&MOLPRO..."));
-    action->setData("MOLPRO");
+    action->setData("Molpro");
     m_actions.append(action);
 
     action = new QAction(this);
