@@ -2396,7 +2396,7 @@ namespace Avogadro
     setFileName(newFileName);
 
     if (newFileName.isEmpty())
-      setWindowFilePath(tr("untitled") + ".cml");
+      setWindowFilePath(defaultFileName());
 
     emit moleculeChanged(molecule);
 
