@@ -39,15 +39,11 @@ namespace Avogadro
 {
 
   InputFileExtension::InputFileExtension(QObject* parent) : Extension(parent),
-    m_daltonInputDialog(0), m_gaussianInputDialog(0), m_molproInputDialog(0),
+    m_gaussianInputDialog(0), m_molproInputDialog(0),
     m_mopacInputDialog(0), m_nwchemInputDialog(0), m_qchemInputDialog(0),
     m_molecule(0)
   {
-    QAction* action = new QAction(this);
-    action = new QAction(this);
-    action->setText(tr("&Dalton..."));
-    action->setData("Dalton");
-    m_actions.append(action);
+    QAction* action;
 
     action = new QAction(this);
     action->setText(tr("&Gaussian..."));
@@ -88,25 +84,20 @@ namespace Avogadro
     return m_actions;
   }
 
-  QString InputFileExtension::menuPath(QAction*) const
-  {
-    return "E&xtensions";
-  }
-
   QUndoCommand* InputFileExtension::performAction(QAction *action, GLWidget *widget)
   {
     m_widget = widget;
 
-    if (action->data() == "Dalton") {
-      if (!m_daltonInputDialog) {
-        m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
-        m_daltonInputDialog->setMolecule(m_molecule);
-        m_daltonInputDialog->show();
-      }
-      else
-        m_daltonInputDialog->show();
-    }
-    else if (action->data() == "Gaussian") {
+//     if (action->data() == "Dalton") {
+//       if (!m_daltonInputDialog) {
+//         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
+//         m_daltonInputDialog->setMolecule(m_molecule);
+//         m_daltonInputDialog->show();
+//       }
+//       else
+//         m_daltonInputDialog->show();
+//     }
+    if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
         connect(m_gaussianInputDialog, SIGNAL(readOutput(QString)),
@@ -161,8 +152,8 @@ namespace Avogadro
   void InputFileExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    if (m_daltonInputDialog)
-      m_daltonInputDialog->setMolecule(m_molecule);
+//     if (m_daltonInputDialog)
+//       m_daltonInputDialog->setMolecule(m_molecule);
     if (m_gaussianInputDialog)
       m_gaussianInputDialog->setMolecule(m_molecule);
     if (m_molproInputDialog)
