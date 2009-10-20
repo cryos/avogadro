@@ -1115,7 +1115,13 @@ namespace Avogadro{
         a = obmol.GetAtom(avoAtom->index() + 1);
         r->AddAtom(a);
         r->SetSerialNum(a, a->GetIdx());
-        r->SetAtomID(a, residue->atomId(atomId).toStdString());
+        QString atomLabel = residue->atomId(atomId);
+        if (!atomLabel.isEmpty())
+          r->SetAtomID(a, atomLabel.toStdString());
+        else {
+          r->SetAtomID(a, OpenBabel::etab.GetSymbol(avoAtom->atomicNumber()));
+          r->SetHetAtom(a, true);
+        }
       }
     }
     foreach(Cube *cube, d->cubeList) {

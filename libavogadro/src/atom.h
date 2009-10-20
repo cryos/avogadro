@@ -85,8 +85,9 @@ namespace Avogadro {
 
     /**
      * Set the atomic number of the atom.
+     * @note This will emit an updated signal
      */
-    void setAtomicNumber(int num) { m_atomicNumber = num; }
+    void setAtomicNumber(int num);
 
     /**
      * Set the partial charge of the atom.
