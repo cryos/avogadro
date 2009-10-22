@@ -55,22 +55,9 @@ namespace Avogadro
     enum ccpcvxzBasis{ccpCVDZ, ccpCVTZ, ccpCVQZ, ccpCV5Z, ccpwCVDZ, ccpwCVTZ, 
                      ccpwCVQZ, ccpwCV5Z};
     enum accpcvxzBasis{accpCVDZ, accpCVTZ, accpCVQZ, accpCV5Z};
+    enum xaugccBasis{sing, doub, trip, quad};
     enum dftGrid{coarse, normal, fine, ultrafine};
     enum propType{polari, exci};
-
-    /**
-     * Save the settings for this extension.
-     * @param settings Settings variable to write settings to.
-     */
-//    virtual void writeSettings(QSettings &settings) const;
-
-    /**
-     * Read the settings for this extension.
-     * @param settings Settings variable to read settings from.
-     */
-//    virtual void readSettings(QSettings &settings);
-
-//    QString pathToDalton() const;
 
   protected:
     /**
@@ -99,6 +86,7 @@ namespace Avogadro
     accpvxzBasis m_accpvxzBasis;
     ccpcvxzBasis m_ccpcvxzBasis;
     accpcvxzBasis m_accpcvxzBasis;
+    xaugccBasis m_xaugccBasis;
     dftGrid m_dftGrid;
     propType m_propType;
     int m_exci;
@@ -128,6 +116,7 @@ namespace Avogadro
     QString getaccpvxzBasis(accpvxzBasis t);
     QString getccpcvxzBasis(ccpcvxzBasis t);
     QString getaccpcvxzBasis(accpcvxzBasis t);
+    QString getxaugccBasis(xaugccBasis t);
     QString getdftGrid(dftGrid t);
     QString getPropType(propType t);
     // Enable/disable form elements
@@ -160,6 +149,7 @@ namespace Avogadro
     void setaccpvxzBasis(int);
     void setccpcvxzBasis(int);
     void setaccpcvxzBasis(int);
+    void setxaugccBasis(int);
     void setcoreBasis(int);
     void setdiffBasis(int);
     void setpolBasis(int);
