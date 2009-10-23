@@ -48,7 +48,7 @@ namespace Avogadro
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
     m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN),
-    m_dirty(false), m_warned(false)
+    m_dirty(false), m_warned(false), m_process(0), m_progress(0)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -147,6 +147,9 @@ namespace Avogadro
       if (key.startsWith(QLatin1String("PATH")))
         pathList = key.split('=').at(1).split(':');
     }
+
+    // Add default G03 and G09 directories
+    pathList << "/usr/local/g03" << "/usr/local/g09";
 
     // I don't know how this works for Windows -- probably need a different method
     foreach(const QString &path, pathList) {
