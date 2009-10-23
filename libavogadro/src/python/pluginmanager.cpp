@@ -14,8 +14,8 @@ using namespace boost::python;
 using namespace Avogadro;
 
 // thin wrappers to handle default arguments
-//void loadFactories1() { PluginManager::loadFactories(); }
-//void loadFactories2(const QString &dir) { PluginManager::loadFactories(dir); }
+void loadFactories1(PluginManager &self) { self.loadFactories(); }
+void loadFactories2(PluginManager &self, const QString &dir) { self.loadFactories(dir); }
 
 Tool* tool1(PluginManager &self, const QString &id) { return self.tool(id); }
 Extension* extension1(PluginManager &self, const QString &id) { return self.extension(id); }
@@ -35,7 +35,7 @@ void export_PluginManager()
           return_value_policy<reference_existing_object>()))
 
     // real functions
-/*    .def("loadFactories",
+    .def("loadFactories",
         &loadFactories1,
         "Find all plugins by looking through the search paths:\n"
         "   <bin_location>/../<lib_dir>/avogadro/engines\n"
@@ -53,10 +53,10 @@ void export_PluginManager()
         "   <bin_location>/../<lib_dir>/avogadro/colors\n"
         "   <bin_location>/../<lib_dir>/avogadro/contrib (external plugins)\n\n"
         "You can set AVOGADRO_PLUGINS to designate a path at runtime to search.")
-*/
-    //.def("factories", &PluginManager::factories)
+
+    .def("factories", &PluginManager::factories)
     //.staticmethod("factories")
-    //.def("factory", &PluginManager::factory, return_value_policy<reference_existing_object>())
+    .def("factory", &PluginManager::factory, return_value_policy<reference_existing_object>())
     //.staticmethod("factory")
 
     .def("extension", 
