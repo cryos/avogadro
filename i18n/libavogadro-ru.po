@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-10-19 21:25-0400\n"
-"PO-Revision-Date: 2009-10-19 14:59+0000\n"
+"PO-Revision-Date: 2009-10-22 11:05+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-20 14:56+0000\n"
+"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -67,7 +67,7 @@ msgstr "Раскрасить по элементу (углерод = серый,
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "Раскрасить по аминокислотному остатку"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
@@ -592,7 +592,7 @@ msgstr "Градиент"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr ""
+msgstr "Отображает градиенты на атомах"
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
@@ -670,13 +670,13 @@ msgstr "Отображать молекулы стержнями"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Ван-дер-Ваальсова поверхность, предел = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "Поверхность электронной плотности, предел = %L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
@@ -690,7 +690,7 @@ msgstr "Поверхности"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Отображает сетки молекулярных поверхностей"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -811,7 +811,7 @@ msgstr "Нужно указать правильное имя .avi файла"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr ""
+msgstr "GL виджеты не были правильно инициализированы для сохранения видео"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
@@ -1020,7 +1020,7 @@ msgstr ""
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
-msgstr ""
+msgstr "QM соответствует"
 
 #: src/extensions/gamessextension.cpp:65
 msgid "Input Generator..."
@@ -1030,12 +1030,12 @@ msgstr "Генератор входного файла..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "Выбор для EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "Выбор для QM..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1286,23 +1286,23 @@ msgstr "Добавить или удалить атомы водорода"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussian..."
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1312,11 +1312,11 @@ msgstr "Невозможно считать файл %1."
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Генераторы входных файлов"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Создает входные файлы для квантовохимических программ"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1508,7 +1508,7 @@ msgstr "Входной файл Molpro (*.qcin)"
 
 #: src/extensions/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "Предупреждение генератора входных файлов MOPAC"
 
 #: src/extensions/mopacinputdialog.cpp:133
 msgid ""
@@ -1629,7 +1629,7 @@ msgstr "Скачать файлы молекул по сети"
 
 #: src/extensions/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
-msgstr "Предупреждение генератора входный файлов NWChem"
+msgstr "Предупреждение генератора входных файлов NWChem"
 
 #: src/extensions/nwcheminputdialog.cpp:122
 msgid ""
@@ -2322,7 +2322,7 @@ msgstr "Электронная плотность"
 #: src/extensions/surfacedialog.cpp:258
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr ""
+msgstr "Молекулярная орбиталь"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
@@ -2986,7 +2986,7 @@ msgstr ""
 
 #: src/tools/bondcentrictool.h:66
 msgid "Manipulation of bond lengths, angles, and torsions"
-msgstr ""
+msgstr "Изменение длин связей, углов и двугранных углов"
 
 #: src/tools/bondcentrictool.h:67
 msgid "Bond Centric Manipulate Settings"
