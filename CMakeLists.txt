@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.6.0)
 project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too
-set(Avogadro_VERSION_MAJOR 0)
-set(Avogadro_VERSION_MINOR 9)
-set(Avogadro_VERSION_PATCH 9)
+set(Avogadro_VERSION_MAJOR 1)
+set(Avogadro_VERSION_MINOR 0)
+set(Avogadro_VERSION_PATCH 0)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
