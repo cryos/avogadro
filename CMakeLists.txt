@@ -318,7 +318,7 @@ install(FILES
   "${CMAKE_MODULE_PATH}/AvogadroUse.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake"
-  DESTINATION "${LIB_INSTALL_DIR}/avogadro")
+  DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
 
 # Install the find modules we require to be present
 install(FILES
