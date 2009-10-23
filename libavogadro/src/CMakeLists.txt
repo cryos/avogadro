@@ -151,7 +151,7 @@ endforeach(headerFile ${libavogadro_HDRS})
 
 add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_target_properties(avogadro
-  PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 0 )
+  PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 1 )
 target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
