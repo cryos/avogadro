@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.6.0)
 project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too
-set(Avogadro_VERSION_MAJOR 0)
-set(Avogadro_VERSION_MINOR 9)
-set(Avogadro_VERSION_PATCH 9)
+set(Avogadro_VERSION_MAJOR 1)
+set(Avogadro_VERSION_MINOR 1)
+set(Avogadro_VERSION_PATCH 0)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
@@ -318,7 +318,7 @@ install(FILES
   "${CMAKE_MODULE_PATH}/AvogadroUse.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroBuildSettings.cmake"
   "${Avogadro_BINARY_DIR}/AvogadroLibraryDeps.cmake"
-  DESTINATION "${LIB_INSTALL_DIR}/avogadro")
+  DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
 
 # Install the find modules we require to be present
 install(FILES

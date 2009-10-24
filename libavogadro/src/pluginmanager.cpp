@@ -253,7 +253,6 @@ namespace Avogadro {
     d->searchDirs << QDir::homePath() + "/."
                    + QString(INSTALL_PLUGIN_DIR) + "/plugins";
 #elif defined(Q_WS_MAC)
-    QCoreApplication::
     d->searchDirs << QDir::homePath() + "/Library/Application Support/"
                    + QString(INSTALL_PLUGIN_DIR) + "/Plugins";
 #elif defined(WIN32)
@@ -556,7 +555,7 @@ namespace Avogadro {
     QSettings settings;
     settings.beginGroup("Plugins");
 
-    #ifndef Q_WS_MAC
+#ifndef Q_WS_MAC
     QFileInfo info(QCoreApplication::applicationDirPath()
                    + "/../CMakeCache.txt");
     if (info.exists()) {// In a build directory
@@ -565,10 +564,11 @@ namespace Avogadro {
                     settings);
     }
 #else
-    QDir dir;
     // If we are in a Mac build dir things are a little different - if the
     // expected relative path does not exist try the build dir path
-    if (!dir.exists(path)) {
+    QFileInfo info(QCoreApplication::applicationDirPath()
+                   + "/../CMakeCache.txt");
+    if (info.exists()) {// In a build directory
         loadPluginDir(QCoreApplication::applicationDirPath()
                       + "/../../../../lib", settings);
     }
