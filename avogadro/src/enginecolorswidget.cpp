@@ -39,11 +39,13 @@ namespace Avogadro {
     EngineColorsWidgetPrivate() : engine(0), currentSettingsWidget(0) {};
     
     Engine *engine;
-    const PluginManager *pluginManager;
+    PluginManager *pluginManager;
     QWidget *currentSettingsWidget;
   };
 
-  EngineColorsWidget::EngineColorsWidget( const PluginManager *pluginManager, QWidget *parent ) : QWidget(parent), d(new EngineColorsWidgetPrivate)
+  EngineColorsWidget::EngineColorsWidget( PluginManager *pluginManager,
+                                          QWidget *parent )
+    : QWidget(parent), d(new EngineColorsWidgetPrivate)
   {
     ui.setupUi(this);
     d->pluginManager = pluginManager;

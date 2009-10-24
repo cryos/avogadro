@@ -44,7 +44,8 @@ namespace Avogadro
     Q_OBJECT
 
     public:
-      explicit EngineColorsWidget ( const PluginManager *pluginManager, QWidget *parent = 0 );
+      explicit EngineColorsWidget ( PluginManager *pluginManager,
+                                    QWidget *parent = 0 );
       ~EngineColorsWidget();
 
     public Q_SLOTS:

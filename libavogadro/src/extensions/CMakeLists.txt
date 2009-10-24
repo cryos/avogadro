@@ -17,14 +17,14 @@ set(LINK_LIBS "avogadro")
 
 ### Input File Extension
 set(inputfileextension_SRCS inputfileextension.cpp
-    daltoninputdialog.cpp
+#    daltoninputdialog.cpp
     gaussianinputdialog.cpp
     molproinputdialog.cpp
     mopacinputdialog.cpp
     nwcheminputdialog.cpp
     qcheminputdialog.cpp)
 avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
- "daltoninputdialog.ui;gaussianinputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
+ "gaussianinputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
 
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp

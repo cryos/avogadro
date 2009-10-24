@@ -186,6 +186,8 @@ namespace Avogadro {
         colorsLoaded(false) {}
       ~PluginManagerPrivate() {}
 
+      QStringList searchDirs;
+
       bool toolsLoaded;
       QList<Tool *> tools;
       bool extensionsLoaded;
@@ -228,6 +230,36 @@ namespace Avogadro {
   PluginManager::PluginManager(QObject *parent) : QObject(parent),
                                                   d(new PluginManagerPrivate)
   {
+    // This is where we compile a list of directories that will be searched
+    // for plugins. This is quite dependent up on operating system
+
+    // Environment variables can override default paths
+    foreach (const QString &variable, QProcess::systemEnvironment()) {
+      QStringList split1 = variable.split('=');
+      if (split1[0] == "AVOGADRO_PLUGINS")
+        foreach (const QString &path, split1[1].split(':'))
+          d->searchDirs << path;
+    }
+    // If no environment variables are set then find the plugins
+    if (!d->searchDirs.size()) {
+      // Make it relative
+      d->searchDirs << QCoreApplication::applicationDirPath()
+                     + "/../" + QString(INSTALL_LIB_DIR)
+                     + "/" + QString(INSTALL_PLUGIN_DIR);
+    }
+
+    // Now to search for the plugins in home directories
+#if defined(Q_WS_X11)
+    d->searchDirs << QDir::homePath() + "/."
+                   + QString(INSTALL_PLUGIN_DIR) + "/plugins";
+#elif defined(Q_WS_MAC)
+    QCoreApplication::
+    d->searchDirs << QDir::homePath() + "/Library/Application Support/"
+                   + QString(INSTALL_PLUGIN_DIR) + "/Plugins";
+#elif defined(WIN32)
+    const QString appdata = qgetenv("APPDATA");
+    d->searchDirs << appdata + "/" + QString(INSTALL_PLUGIN_DIR);
+#endif
   }
 
   PluginManager::~PluginManager()
@@ -247,7 +279,7 @@ namespace Avogadro {
     return obj;
   }
 
-  QList<Extension *> PluginManager::extensions(QObject *parent) const
+  QList<Extension *> PluginManager::extensions(QObject *parent)
   {
     loadFactories();
     if(d->extensionsLoaded)
@@ -265,7 +297,7 @@ namespace Avogadro {
     return d->extensions;
   }
 
-  QList<Tool *> PluginManager::tools(QObject *parent) const
+  QList<Tool *> PluginManager::tools(QObject *parent)
   {
     loadFactories();
     if(d->toolsLoaded)
@@ -346,7 +378,7 @@ namespace Avogadro {
     return scripts("extension");
   }
 
-  QList<Color *> PluginManager::colors(QObject *parent) const
+  QList<Color *> PluginManager::colors(QObject *parent)
   {
     loadFactories();
     if(d->colorsLoaded)
@@ -510,62 +542,46 @@ namespace Avogadro {
 
     // Load the static plugins first
     PluginFactory *bsFactory = qobject_cast<PluginFactory *>(new BSDYEngineFactory);
-    if (bsFactory) {
+    if (bsFactory)
       ef[bsFactory->type()].append(bsFactory);
-    }
-    else {
+    else
       qDebug() << "Instantiation of the static ball and sticks plugin failed.";
-    }
 
     PluginFactory *elementFactory = qobject_cast<PluginFactory *>(new ElementColorFactory);
-    if (elementFactory) {
+    if (elementFactory)
       ef[elementFactory->type()].append(elementFactory);
-    }
-    else {
+    else
       qDebug() << "Instantiation of the static element color plugin failed.";
-    }
-
-    // Set up the paths
-    QStringList pluginPaths;
-    // Environment variables can override default paths
-    foreach (const QString &variable, QProcess::systemEnvironment()) {
-      QStringList split1 = variable.split('=');
-      if (split1[0] == "AVOGADRO_PLUGINS") {
-        foreach (const QString &path, split1[1].split(':'))
-          pluginPaths << path;
-      }
-    }
-    // If no environment variables are set then find the plugins
-    if (!pluginPaths.size()) {
-      // Make it relative
-      pluginPaths << QCoreApplication::applicationDirPath()
-                     + "/../" + QString(INSTALL_LIBDIR);
-    }
 
     QSettings settings;
     settings.beginGroup("Plugins");
 
-    // Load the plugins
-    foreach (const QString& path, pluginPaths) {
-#ifndef Q_WS_MAC
-      QFileInfo info(path + "/../CMakeCache.txt");
-      if (info.exists()) // In a build directory
-        loadPluginDir(path, settings);
+    #ifndef Q_WS_MAC
+    QFileInfo info(QCoreApplication::applicationDirPath()
+                   + "/../CMakeCache.txt");
+    if (info.exists()) {// In a build directory
+      qDebug() << "In a build directory - loading alternative...";
+      loadPluginDir(QCoreApplication::applicationDirPath() + "/../lib",
+                    settings);
+    }
 #else
-      QDir dir;
-      // If we are in a Mac build dir things are a little different
-      if (!dir.exists(path)) {
-        loadPluginDir(QCoreApplication::applicationDirPath() +
-	              + "/../../../../" + QString(INSTALL_LIBDIR), settings);
-      }
+    QDir dir;
+    // If we are in a Mac build dir things are a little different - if the
+    // expected relative path does not exist try the build dir path
+    if (!dir.exists(path)) {
+        loadPluginDir(QCoreApplication::applicationDirPath()
+                      + "/../../../../lib", settings);
+    }
 #endif
-      else { // Installed file layout
-        loadPluginDir(path + "/avogadro/colors", settings);
-        loadPluginDir(path + "/avogadro/engines", settings);
-        loadPluginDir(path + "/avogadro/extensions", settings);
-        loadPluginDir(path + "/avogadro/tools", settings);
-        loadPluginDir(path + "/avogadro/contrib", settings);
-      }
+
+    // Load the plugins
+    foreach (const QString& path, d->searchDirs) {
+      qDebug() << "Loading plugins:" << path;
+      loadPluginDir(path + "/colors", settings);
+      loadPluginDir(path + "/engines", settings);
+      loadPluginDir(path + "/extensions", settings);
+      loadPluginDir(path + "/tools", settings);
+      loadPluginDir(path + "/contrib", settings);
     }
 
 #ifdef ENABLE_PYTHON
