@@ -196,7 +196,7 @@ namespace Avogadro
                            tr("Specified molecule could not be loaded: %1").arg(*m_moleculeName));
     }
     // We are responsible for deleting the reply object
-    delete reply;
+    reply->deleteLater();
   }
 
 } // End namespace Avogadro
