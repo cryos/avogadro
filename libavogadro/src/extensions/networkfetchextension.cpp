@@ -163,7 +163,7 @@ namespace Avogadro
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Download Failed"),
                            tr("Network timeout or other error."));
-      delete reply;
+      reply->deleteLater();
       return;
     }
 
@@ -174,7 +174,7 @@ namespace Avogadro
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Download Failed"),
                            tr("Specified molecule could not be found: %1").arg(*m_moleculeName));
-      delete reply;
+      reply->deleteLater();
       return;
     }
 
