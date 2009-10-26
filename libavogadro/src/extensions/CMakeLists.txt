@@ -15,6 +15,17 @@ set(LINK_LIBS "avogadro")
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
 
+### Input File Extension
+set(inputfileextension_SRCS inputfileextension.cpp
+#    daltoninputdialog.cpp
+    gaussianinputdialog.cpp
+    molproinputdialog.cpp
+    mopacinputdialog.cpp
+    nwcheminputdialog.cpp
+    qcheminputdialog.cpp)
+avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
+ "gaussianinputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
+
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
   gamessinputdialog.cpp
@@ -91,14 +102,6 @@ avogadro_plugin(vibrationextension
 avogadro_plugin(spectraextension
   "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp"
   "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
-
-### Gaussian input deck generator
-set(gaussianextension_SRCS gaussianextension.cpp
-  gaussianinputdialog.cpp qcheminputdialog.cpp molproinputdialog.cpp
-  nwcheminputdialog.cpp mopacinputdialog.cpp)
-avogadro_plugin(gaussianextension
-  "${gaussianextension_SRCS}"
-  "gaussianinputdialog.ui;qcheminputdialog.ui;molproinputdialog.ui;nwcheminputdialog.ui;mopacinputdialog.ui")
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal

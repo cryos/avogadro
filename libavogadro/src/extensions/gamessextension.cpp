@@ -67,12 +67,12 @@ namespace Avogadro
     action->setData( InputDeckAction );
 
     action = new QAction( this );
-    action->setText( tr("EFP Selection..." ));
+    action->setText( tr("EFP Selection...", "Selection to be used as an Effective Fragment Potential in calculations" ));
     m_actions.append( action );
     action->setData( EFPAction );
 
     action = new QAction( this );
-    action->setText( tr("QM Selection..." ));
+    action->setText( tr("QM Selection...", "Selection to be used for Quantum Mechanical calculations" ));
     m_actions.append( action );
     action->setData( QMAction );
 

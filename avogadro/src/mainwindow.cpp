@@ -219,7 +219,7 @@ namespace Avogadro
     QMap<Engine*, QWidget*> engineSettingsWindows;
   };
 
-  const int MainWindow::m_configFileVersion = 2;
+  const int MainWindow::m_configFileVersion = 3;
 
   unsigned int getMainWindowCount()
   {
@@ -341,6 +341,28 @@ namespace Avogadro
     // and make sure it ends up in the Mac Application menu
     ui.configureAvogadroAction->setMenuRole(QAction::PreferencesRole);
 
+    // Remove the last separator in the File menu
+    QList <QAction *> actions = ui.menuFile->actions();
+    QAction *lastAction;
+    if (actions.last()->isSeparator()) {
+      lastAction = actions.last();
+      ui.menuFile->removeAction(lastAction);
+    }
+    else if (actions[actions.size() - 2]->isSeparator()) { // "Quit" menu item hasn't moved yet
+      lastAction = actions[actions.size() - 2];
+      ui.menuFile->removeAction(lastAction);
+    }
+
+    // Remove the first separator in the help menu (this remains even though the "About" item moves).
+    QAction *firstAction = ui.menuHelp->actions().first();
+    if (firstAction->isSeparator())
+      ui.menuHelp->removeAction(firstAction);
+    else { // the "About" menu item hasn't moved yet.
+      firstAction = ui.menuHelp->actions()[1];
+      if (firstAction->isSeparator())
+        ui.menuHelp->removeAction(firstAction);
+    }
+
     // Turn off the file toolbar (not really Mac-native)
     // Fixes PR#1965004
     ui.menuToolbars->removeAction( ui.fileToolBar->toggleViewAction() );
@@ -348,7 +370,7 @@ namespace Avogadro
 
     // Change the "Settings" menu to be Window
     ui.menuSettings->setTitle(tr("Window"));
-    QAction *firstAction = ui.menuSettings->actions().first();
+    firstAction = ui.menuSettings->actions().first();
     QAction *minimizeAction = new QAction(this);
     minimizeAction->setText(tr("&Minimize"));
     minimizeAction->setShortcut(QKeySequence(tr("Ctrl+M")));
@@ -361,7 +383,7 @@ namespace Avogadro
     ui.menuSettings->insertAction(firstAction, zoomAction);
     ui.menuSettings->insertSeparator(firstAction);
 
-    ui.menuSettings->addSeparator();
+    //    ui.menuSettings->addSeparator();
     QAction *raiseAction = new QAction(this);
     raiseAction->setText(tr("Bring All to Front"));
     connect(raiseAction, SIGNAL(triggered()), this, SLOT(bringAllToFront()));
@@ -385,7 +407,7 @@ namespace Avogadro
     ui.enginesDock->close();
 
 #ifdef ENABLE_UPDATE_CHECKER
-    m_updateCheck = new UpdateCheck(this);
+    m_updateCheck = UpdateCheck::getInstance(this);
 #endif
   }
 
@@ -393,6 +415,7 @@ namespace Avogadro
   {
     // delayed initialization
     if(event->type() == QEvent::Polish) {
+      
       reloadTools();
       if (d->toolSettingsDock)
         d->toolSettingsDock->hide();
@@ -404,6 +427,7 @@ namespace Avogadro
         if (menu->menu()->actions().isEmpty())
           continue;
 
+        menu->menu()->setSeparatorsCollapsible(true);
         removeThese.clear();
 
         QAction *firstAction = menu->menu()->actions().first();
@@ -443,7 +467,6 @@ namespace Avogadro
       updateWindowMenu();
     }
 #endif
-
     return QMainWindow::event(event);
   }
 
@@ -734,7 +757,7 @@ namespace Avogadro
       }
 
       // if we have nothing open or modified
-      if ( d->fileName.isEmpty() && !isWindowModified() ) {
+      if ( /*isDefaultFileName(d->fileName) &&*/ !isWindowModified() ) {
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -760,6 +783,20 @@ namespace Avogadro
     if ( action ) {
       openFile( action->data().toString() );
     }
+  }
+
+  bool MainWindow::isDefaultFileName(const QString fileName)
+  {
+    if (fileName.isEmpty())
+      return true;
+
+    QFileInfo fileInfo(fileName);
+    return (fileInfo.baseName() == tr("untitled"));
+  }
+
+  QString MainWindow::defaultFileName()
+  {
+    return (tr("untitled") + ".cml");
   }
 
   bool MainWindow::loadFile(const QString &fileName,
@@ -883,13 +920,15 @@ namespace Avogadro
         // In OB-2.2.2 and later, builder will use 2D coordinates if present
         OBBuilder builder;
         builder.Build(*obMolecule);
-        obMolecule->AddHydrogens(false, true); // Add some hydrogens before running force field
+        obMolecule->AddHydrogens(); // Add some hydrogens before running force field
 
-        OBForceField* pFF =  OBForceField::FindForceField("UFF");
-        if (pFF && pFF->Setup(*obMolecule)) {
-          pFF->ConjugateGradients(250, 1.0e-4);
-          pFF->UpdateCoordinates(*obMolecule);
+        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
+        if (!pFF || !pFF->Setup(*obMolecule)) {
+          pFF = OBForceField::FindForceField("UFF");
+          if (!pFF || !pFF->Setup(*obMolecule)) return; // can't do anything more
         }
+        pFF->ConjugateGradients(250, 1.0e-4);
+        pFF->UpdateCoordinates(*obMolecule);
       } // building geometry
 
     } // check 3D coordinates
@@ -964,7 +1003,11 @@ namespace Avogadro
     if (d->moleculeFile == NULL)
       return;
     if (d->progressDialog) {
-      d->progressDialog->cancel();
+      d->progressDialog->reset();
+#ifdef Q_WS_MAC
+      d->progressDialog->deleteLater();
+      d->progressDialog = 0;
+#endif
     }
 
     ui.actionAllMolecules->setEnabled(false); // only one molecule right now
@@ -1065,7 +1108,7 @@ namespace Avogadro
       msgBox->button(QMessageBox::Save)->setShortcut(QKeySequence(tr("Ctrl+S", "Save")));
       msgBox->button(QMessageBox::Discard)->setShortcut(QKeySequence(tr("Ctrl+D", "Discard")));
       msgBox->setButtonText(QMessageBox::Save,
-                            d->fileName.isEmpty() ? tr("Save...") : tr("Save"));
+                            isDefaultFileName(d->fileName) ? tr("Save...") : tr("Save"));
 
       int ret = msgBox->exec();
 
@@ -1123,11 +1166,13 @@ namespace Avogadro
   bool MainWindow::save()
   {
     // we can't safely save to a gzipped file
-    if ( d->fileName.isEmpty() || d->fileName.endsWith(".gz"), Qt::CaseInsensitive) {
+    if ( !QFileInfo(d->fileName).isReadable() 
+        || isDefaultFileName(d->fileName)
+        || d->fileName.endsWith(".gz", Qt::CaseInsensitive)) {
       return saveAs();
-    } else {
-      return saveFile( d->fileName );
     }
+    else
+      return saveFile( d->fileName );
   }
 
   bool MainWindow::saveAs()
@@ -1205,6 +1250,7 @@ namespace Avogadro
       }
       else {
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
     }
@@ -1212,12 +1258,14 @@ namespace Avogadro
       if (d->moleculeFile->isConformerFile()) {
         MoleculeFile::writeConformers(d->molecule, fileName, formatType.trimmed());
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
       else { /// FIXME Add error checking
         // use MoleculeFile to save just the current slice of the file
         d->moleculeFile->replaceMolecule(d->currentIndex, d->molecule, fileName);
         QApplication::restoreOverrideCursor();
+        setWindowModified(false);
         return true;
       }
     }
@@ -1502,7 +1550,7 @@ namespace Avogadro
 
   void MainWindow::revert()
   {
-    if ( !d->fileName.isEmpty() ) {
+    if ( !isDefaultFileName(d->fileName) ) {
       loadFile( d->fileName );
     }
   }
@@ -1589,7 +1637,7 @@ namespace Avogadro
     ui.menuSettings->addSeparator();
     foreach (MainWindow *widget, mainWindowList) {
       QAction *windowAction = new QAction(widget);
-      if (!widget->d->fileName.isEmpty())
+      if (! isDefaultFileName(widget->d->fileName) )
         windowAction->setText(QFileInfo(widget->d->fileName).fileName());
       else
         windowAction->setText(tr("Untitled %1").arg(++untitledCount));
@@ -2352,7 +2400,7 @@ namespace Avogadro
     setFileName(newFileName);
 
     if (newFileName.isEmpty())
-      setWindowFilePath(tr("untitled") + ".cml");
+      setWindowFilePath(defaultFileName());
 
     emit moleculeChanged(molecule);
 
@@ -2412,7 +2460,7 @@ namespace Avogadro
 
       // Check that the canonical file path exists - only update recent files
       // if it does. Should prevent empty list items on initial open etc.
-      if (!d->fileName.isEmpty()) {
+      if (! isDefaultFileName(d->fileName) ) {
         QSettings settings; // already set up properly via main.cpp
         QStringList files = settings.value("recentFileList").toStringList();
         files.removeAll(d->fileName);
@@ -2570,8 +2618,10 @@ namespace Avogadro
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Load the updated version configuration settings and then run it
-    m_updateCheck->readSettings(settings);
-    m_updateCheck->checkForUpdates();
+    if (m_updateCheck) {
+      m_updateCheck->readSettings(settings);
+      m_updateCheck->checkForUpdates();
+    }
 #endif
   }
 
@@ -2617,7 +2667,8 @@ namespace Avogadro
 
 #ifdef ENABLE_UPDATE_CHECKER
     // Write the updated version configuration settings
-    m_updateCheck->writeSettings(settings);
+    if (m_updateCheck)
+      m_updateCheck->writeSettings(settings);
 #endif
   }
 
@@ -2758,7 +2809,18 @@ namespace Avogadro
     // in multiple menus, e.g. "Select All"
     foreach( QAction *menu, menuBar()->actions() ) {
       foreach( QAction *menuItem, menu->menu()->actions() ) {
-        menuItem->setEnabled(false);
+        if (menuItem->menu() == 0) { // ignore submenus
+          menuItem->setEnabled(false);
+        } else { // submenu items
+
+          // Don't modify the "open recent" sub-menu
+          if (menuItem->menu() == ui.menuOpenRecent)
+            continue;
+
+          foreach( QAction *subMenuItem, menuItem->menu()->actions() ) {
+            subMenuItem->setEnabled(false); // disable submenus
+          }
+        }
       }
     }
 
@@ -2766,7 +2828,6 @@ namespace Avogadro
     ui.actionAbout->setEnabled( true );
     ui.actionNew->setEnabled( true );
     ui.actionOpen->setEnabled( true );
-    ui.menuOpenRecent->menuAction()->setEnabled( true );
     ui.actionQuit->setEnabled( true );
 
     // Clear the molecule
@@ -2787,6 +2848,11 @@ namespace Avogadro
       itemIndex = 0;
       foreach( QAction *menuItem, menu->menu()->actions() ) {
         menuItem->setEnabled( d->menuItemStatus[menuIndex][itemIndex] );
+        if (menuItem->menu() != 0) { // submenu
+          foreach( QAction *subMenuItem, menuItem->menu()->actions() ) {
+            subMenuItem->setEnabled(true); // re-enable submenus
+          }
+        }
         itemIndex++;
       }
       menuIndex++;

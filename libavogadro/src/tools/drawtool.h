@@ -2,7 +2,7 @@
   DrawTool - Tool for drawing molecules
 
   Copyright (C) 2007 Donald Ephraim Curtis
-  Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2007-2009 Marcus D. Hanwell
   Copyright (C) 2008 Tim Vandermeersch
 
   This file is part of the Avogadro molecular editor project.
@@ -112,7 +112,7 @@ namespace Avogadro {
       void clearKeyPressBuffer();
 
     private:
-      Qt::MouseButtons    _buttons;
+      Qt::MouseButtons    m_buttons;
 
       bool                m_movedSinceButtonPressed;
 
@@ -131,7 +131,7 @@ namespace Avogadro {
       int m_bondOrder;
 
       int m_prevAtomElement;
- 
+
       Bond *m_prevBond;
       int m_prevBondOrder;
 

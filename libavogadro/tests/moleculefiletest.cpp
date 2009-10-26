@@ -212,7 +212,7 @@ void MoleculeFileTest::readWriteConformers()
   QCOMPARE( moleculeFile->isConformerFile(), true );
   QCOMPARE( moleculeFile->numMolecules(), static_cast<unsigned int>(1) );
   QCOMPARE( moleculeFile->conformers().size(), 
-      static_cast<std::vector<int>::size_type>(5) );
+      static_cast<std::vector<int>::size_type>(4) );
 }
 
 void MoleculeFileTest::replaceMolecule()

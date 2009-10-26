@@ -30,10 +30,11 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 
-#include <QFileInfo>
+#include <QStringList>
 
 class QDir;
 class QSettings;
+class QFileInfo;
 
 namespace Avogadro {
 
@@ -158,17 +159,17 @@ namespace Avogadro {
      *
      * @param dir Path of directory to search for plugins instead of the default paths
      */
-    static void loadFactories(const QString& dir = "");
+    void loadFactories(const QString& dir = "");
 
     /**
      * Get all the PluginFactory obacjects for a given type.
      */
-    static QList<PluginFactory *> factories( Plugin::Type type );
+    QList<PluginFactory *> factories( Plugin::Type type );
 
     /**
      * Get the PluginFactory of type @p type with plugin identifier @p id.
      */
-    static PluginFactory *factory(const QString &id, Plugin::Type type);
+    PluginFactory *factory(const QString &id, Plugin::Type type);
 
     /**
      * Get a new instance of the extension with identifier @p id.
@@ -212,43 +213,43 @@ namespace Avogadro {
     /**
      * Get a list of all extension (new instances).
      */
-    QList<Extension *> extensions(QObject *parent=0) const;
+    QList<Extension *> extensions(QObject *parent=0);
 
     /**
      * Get a list of all tools (new instances).
      */
-    QList<Tool *> tools(QObject *parent=0) const;
+    QList<Tool *> tools(QObject *parent=0);
 
     /**
      * Get a list of all colors (new instances).
      */
-    QList<Color *> colors(QObject *parent=0) const;
+    QList<Color *> colors(QObject *parent=0);
 
     /**
      * Write the settings of the PluginManager in order to save them to disk.
      */
-    static void writeSettings(QSettings &settings);
+    void writeSettings(QSettings &settings);
     /*static void readSettings(QSettings &settings);*/
 
     /**
      * Get a list of all python tool script filenames.
      */
-    static QList<QString> toolScripts();
+    QList<QString> toolScripts();
 
     /**
      * Get a list of all python engine script filenames.
      */
-    static QList<QString> engineScripts();
+    QList<QString> engineScripts();
 
     /**
      * Get a list of all python extension script filenames.
      */
-    static QList<QString> extensionScripts();
+    QList<QString> extensionScripts();
 
     /**
      * Use by the plugin manager settings dialog
      */
-    static QList<PluginItem *> pluginItems(Plugin::Type);
+    QList<PluginItem *> pluginItems(Plugin::Type);
 
   public Q_SLOTS:
     void reload();

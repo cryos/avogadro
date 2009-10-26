@@ -74,7 +74,7 @@ namespace Avogadro {
         m_originalConformers.push_back(molecule->conformer(i));
       }
     } else {
-      m_timeLine->setFrameRange(1, m_molecule->numConformers());
+      m_timeLine->setFrameRange(0, m_molecule->numConformers() - 1);
     }
   }
 
@@ -109,6 +109,7 @@ namespace Avogadro {
 
   void Animation::setFrame(int i)
   {
+    m_molecule->lock()->lockForWrite();
     m_molecule->setConformer(i);
     if (d->dynamicBonds) {
       // construct minimal OBMol
@@ -135,6 +136,7 @@ namespace Avogadro {
         bond->setOrder(obbond->GetBondOrder());
       }
     }
+    m_molecule->lock()->unlock();
     m_molecule->update();
     emit frameChanged(i);
   }
@@ -154,7 +156,9 @@ namespace Avogadro {
     if (frames.size() == 0)
       return; // nothing to do
 
-    if (m_originalConformers.empty() && m_molecule) {
+    if (!m_originalConformers.empty())
+      m_originalConformers.clear();
+    if (m_molecule) {
       for (unsigned int i = 0; i < m_molecule->numConformers(); ++i) {
         m_originalConformers.push_back(m_molecule->conformer(i));
       }
@@ -162,7 +166,7 @@ namespace Avogadro {
  
     d->framesSet = true;
     m_frames = frames;
-    m_timeLine->setFrameRange(1, frames.size());
+    m_timeLine->setFrameRange(0, frames.size() - 1);
   }
 
   void Animation::stop()
@@ -173,16 +177,23 @@ namespace Avogadro {
             this, SLOT(setFrame(int)));
 
     // restore original conformers
-    if (d->framesSet)
+    if (d->framesSet) {
+      m_molecule->lock()->lockForWrite();
       m_molecule->setAllConformers(m_originalConformers);
-    setFrame(1);
+      m_molecule->lock()->unlock();
+    }
+    setFrame(0);
   }
 
   void Animation::start()
   {
     // set molecule conformers
-    if (d->framesSet)
-      m_molecule->setAllConformers(m_frames);
+    if (d->framesSet) {
+      m_molecule->lock()->lockForWrite();
+      // don't delete the existing conformers -- we save them as m_originalConformers
+      m_molecule->setAllConformers(m_frames, false);
+      m_molecule->lock()->unlock();
+    }
 
     if (d->fps < 1.0)
       d->fps = 1.0;
@@ -190,7 +201,7 @@ namespace Avogadro {
     m_timeLine->setUpdateInterval(interval);
     int duration = interval * numFrames();
     m_timeLine->setDuration(duration);
-    setFrame(1);
+    setFrame(0);
 
     connect(m_timeLine, SIGNAL(frameChanged(int)),
             this, SLOT(setFrame(int)));

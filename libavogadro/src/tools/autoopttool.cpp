@@ -223,10 +223,12 @@ namespace Avogadro {
         widget->painter()->drawText(labelPos, tr("AutoOpt: Could not setup force field...."));
       } else {
         double energy = m_forceField->Energy(false);
-        widget->molecule()->setEnergy(m_forceField->Energy());
+        if (m_forceField->GetUnit().find("kcal") != string::npos)
+          energy *= KCAL_TO_KJ;
+        widget->molecule()->setEnergy(energy);
         widget->painter()->drawText(labelPos,
             tr("AutoOpt: E = %1 %2 (dE = %3)").arg(energy).
-            arg(m_forceField->GetUnit().c_str()).
+            arg("kJ/mol").
             arg( fabs(m_lastEnergy - energy) ));
         //widget->painter()->drawText(debugPos,
         //    tr("Num Constraints: %1").arg(m_forceField->GetConstraints().Size()));

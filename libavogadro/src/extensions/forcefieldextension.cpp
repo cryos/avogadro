@@ -185,9 +185,11 @@ namespace Avogadro
       }
 
       energy = m_forceField->Energy();
+      if (m_forceField->GetUnit().find("kcal") != string::npos)
+        energy *= KCAL_TO_KJ;
       m_molecule->setEnergy(energy);
       msg = QString( tr( "Energy = %L1 %2" ))
-                     .arg(energy).arg(m_forceField->GetUnit().c_str());
+                     .arg(energy).arg("kJ/mol");
       QMessageBox::information( widget, tr( "Avogadro" ), msg);
 
       emit message( tr( buff.str().c_str() ) );
@@ -329,7 +331,13 @@ namespace Avogadro
     // copy the conformer energies
     if (obmol.HasData(OBGenericDataType::ConformerData)) {
       OBConformerData *cd = (OBConformerData*) obmol.GetData(OBGenericDataType::ConformerData);
-      m_molecule->setEnergies(cd->GetEnergies());
+      // Check to see if the force field is in kcal/mol (i.e., MMFF94)
+      std::vector<double> energies = cd->GetEnergies();
+      if (m_forceField->GetUnit().find("kcal") != string::npos) {
+        for (unsigned int i = 0; i < energies.size(); ++i)
+          energies[i] *= KCAL_TO_KJ;
+      }
+      m_molecule->setEnergies(energies);
     }
   }
 
@@ -371,11 +379,17 @@ namespace Avogadro
               }
             }
           }
-          foreach (Atom *atom, m_molecule->atoms()) {
-            atom->setPos(Eigen::Vector3d(coordPtr));
-            coordPtr += 3;
+
+          // Try to acquire a write lock on the molecule, and update geometry
+          if (m_molecule->lock()->tryLockForWrite()) {
+            foreach (Atom *atom, m_molecule->atoms()) {
+              atom->setPos(Eigen::Vector3d(coordPtr));
+              coordPtr += 3;
+            }
+            m_molecule->lock()->unlock();
+            m_molecule->update();
           }
-          m_molecule->update();
+
           m_cycles++;
           steps += 5;
           m_mutex.lock();
@@ -408,12 +422,17 @@ namespace Avogadro
               }
             }
           }
- 
-          foreach (Atom *atom, m_molecule->atoms()) {
-            atom->setPos(Eigen::Vector3d(coordPtr));
-            coordPtr += 3;
+
+          // Try to acquire a write lock on the molecule, and update geometry
+          if (m_molecule->lock()->tryLockForWrite()) {
+            foreach (Atom *atom, m_molecule->atoms()) {
+              atom->setPos(Eigen::Vector3d(coordPtr));
+              coordPtr += 3;
+            }
+            m_molecule->lock()->unlock();
+            m_molecule->update();
           }
-          m_molecule->update();
+
           m_cycles++;
           steps += 5;
           m_mutex.lock();
@@ -459,7 +478,10 @@ namespace Avogadro
       copyConformers();
     }
 
-    m_molecule->setEnergy(m_forceField->Energy());
+    double energy = m_forceField->Energy();
+    if (m_forceField->GetUnit().find("kcal") != string::npos)
+      energy *= KCAL_TO_KJ;
+    m_molecule->setEnergy(energy);
     m_molecule->update();
 
     emit message( QObject::tr( buff.str().c_str() ) );
@@ -470,7 +492,11 @@ namespace Avogadro
   {
     QMutexLocker locker(&m_mutex);
     m_stop = true;
-    m_molecule->setEnergy(m_forceField->Energy());
+
+    double energy = m_forceField->Energy();
+    if (m_forceField->GetUnit().find("kcal") != string::npos)
+      energy *= KCAL_TO_KJ;
+    m_molecule->setEnergy(energy);
   }
 
   ForceFieldCommand::ForceFieldCommand( Molecule *molecule, OpenBabel::OBForceField* forceField,
@@ -531,9 +557,11 @@ namespace Avogadro
       else if ( m_task == 2)
         m_dialog = new QProgressDialog( QObject::tr( "Random Rotor Search" ),
                                         QObject::tr( "Cancel" ), 0,  100 );
-      else if ( m_task == 3)
+      else if ( m_task == 3) {
         m_dialog = new QProgressDialog( QObject::tr( "Weighted Rotor Search" ),
-                                        QObject::tr( "Cancel" ), 0,  100 );
+                                        QObject::tr( "Cancel" ), 0,  0 );
+        m_dialog->show();
+      }
 
 
       QObject::connect( m_thread, SIGNAL( stepsTaken( int ) ), m_dialog, SLOT( setValue( int ) ) );

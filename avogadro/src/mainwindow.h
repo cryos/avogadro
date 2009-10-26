@@ -218,6 +218,9 @@ namespace Avogadro {
       void setFileName(const QString &fileName);
       void updateRecentFileActions();
 
+      bool isDefaultFileName(const QString fileName);
+      QString defaultFileName();
+
       /***
        * Function for creating new GLWidgets
        * \return a pointer to a new GLWidget which has been added to the

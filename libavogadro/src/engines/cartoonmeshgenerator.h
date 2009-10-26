@@ -37,11 +37,12 @@
 #define CARTOONMESHGENERATOR_H
 
 #include <avogadro/global.h>
+#include <avogadro/color3f.h>
 
 #include <Eigen/Core>
 
 #include <QThread>
-#include <QColor>
+
 
 #include <vector>
 
@@ -89,15 +90,15 @@ namespace Avogadro {
     {
       m_quality = quality;
     }
-    void setHelixColor(const QColor &color)
+    void setHelixColor(const Color3f &color)
     {
       m_helixColor = color;
     }
-    void setSheetColor(const QColor &color)
+    void setSheetColor(const Color3f &color)
     {
       m_sheetColor = color;
     }
-    void setLoopColor(const QColor &color)
+    void setLoopColor(const Color3f &color)
     {
       m_loopColor = color;
     }
@@ -147,7 +148,7 @@ namespace Avogadro {
     Residue* nextResidue(Residue *residue, const QVector<Residue*> &chain) const;
     Atom* atomFromResidue(Residue *residue, const QString &atomID);
     
-    const QColor& color(Residue *residue) const;
+    const Color3f& color(Residue *residue) const;
     
     void findBackboneData();
     void findBackbonePoints(Residue *residue, const QVector<Residue*> &chain);
@@ -161,13 +162,13 @@ namespace Avogadro {
         const Eigen::Vector3f &v2, const Eigen::Vector3f v3);
     void interpolate(const Eigen::Vector3f &v1, const Eigen::Vector3f &v2, const Eigen::Vector3f &v3,
         Eigen::Vector3f &i1, Eigen::Vector3f &i2);
-    QColor mixColors(const QColor &c1, const QColor &c2);
+    Color3f mixColors(const Color3f &c1, const Color3f &c2);
     void drawBackboneStick(Residue *residue, const QVector<Residue*> &chain);
     void components(const Eigen::Vector3f &vec, const Eigen::Vector3f &ref,
         Eigen::Vector3f &parallel, Eigen::Vector3f &normal);
     void backboneRibbon(const Eigen::Vector3f &v1, const Eigen::Vector3f &v2,
         const Eigen::Vector3f &v3, const Eigen::Vector3f &v4, const Eigen::Vector3f &dir,
-        const Eigen::Vector3f &dir2, const QColor &c1, const QColor &c2,
+        const Eigen::Vector3f &dir2, const Color3f &c1, const Color3f &c2,
         const std::vector<Eigen::Vector3f> &shape1, const std::vector<Eigen::Vector3f> &shape2);
     
     
@@ -177,14 +178,14 @@ namespace Avogadro {
     std::vector<std::vector<Eigen::Vector3f> > m_backbonePoints;
     std::vector<Eigen::Vector3f> m_backboneDirections;
 
-    QColor m_helixColor;
-    QColor m_sheetColor;
-    QColor m_loopColor;
+    Color3f m_helixColor;
+    Color3f m_sheetColor;
+    Color3f m_loopColor;
 
     // mesh
     std::vector<Eigen::Vector3f> m_vertices;
     std::vector<Eigen::Vector3f> m_normals;
-    std::vector<QColor> m_colors;
+    std::vector<Color3f> m_colors;
 
     int m_quality;
     double m_aHelix, m_bHelix, m_cHelix;

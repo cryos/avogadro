@@ -57,9 +57,9 @@ namespace Avogadro {
     setHelixABC(1.0, 0.3, 1.0);
     setSheetABC(1.0, 0.3, 1.0);
     setLoopABC(0.2, 0.2, 0.0);
-    m_helixColor = QColor(255, 0, 0); // red
-    m_sheetColor = QColor(255, 255, 0); // yellow
-    m_loopColor = QColor(0, 255, 0); // purple
+    m_helixColor = Color3f(255, 0, 0); // red
+    m_sheetColor = Color3f(255, 255, 0); // yellow
+    m_loopColor = Color3f(0, 255, 0); // purple
   }
 
   CartoonMeshGenerator::CartoonMeshGenerator(const Molecule *molecule, Mesh *mesh, 
@@ -73,9 +73,9 @@ namespace Avogadro {
     setHelixABC(1.0, 0.3, 1.0);
     setSheetABC(1.0, 0.3, 1.0);
     setLoopABC(0.2, 0.2, 0.0);
-    m_helixColor = QColor(255, 0, 0); // red
-    m_sheetColor = QColor(255, 255, 0); // yellow
-    m_loopColor = QColor(0, 255, 0); // purple
+    m_helixColor = Color3f(255, 0, 0); // red
+    m_sheetColor = Color3f(255, 255, 0); // yellow
+    m_loopColor = Color3f(0, 255, 0); // purple
   }
     
   CartoonMeshGenerator::~CartoonMeshGenerator()
@@ -376,7 +376,7 @@ namespace Avogadro {
     }
   }
 
-  const QColor& CartoonMeshGenerator::color(Residue *residue) const
+  const Color3f& CartoonMeshGenerator::color(Residue *residue) const
   {
     if (m_protein->isHelix(residue))
       return m_helixColor;
@@ -385,13 +385,11 @@ namespace Avogadro {
     return m_loopColor;
   }
 
-  QColor CartoonMeshGenerator::mixColors(const QColor &c1, const QColor &c2) 
+  Color3f CartoonMeshGenerator::mixColors(const Color3f &c1, const Color3f &c2)
   {
-    QColor color;
-    color.setRgbF((float) (c1.redF()   + c2.redF()  ) * 0.5f,
-        (float) (c1.greenF() + c2.greenF()) * 0.5f,
-        (float) (c1.blueF()  + c2.blueF() ) * 0.5f,
-        (float) (c1.alphaF() + c2.alphaF()) * 0.5f);
+    Color3f color((c1.red()   + c2.red())   * 0.5f,
+                  (c1.green() + c2.green()) * 0.5f,
+                  (c1.blue()  + c2.blue())  * 0.5f);
     return color;
   }
 
@@ -416,7 +414,7 @@ namespace Avogadro {
             (m_cSheet * m_bSheet * sine3), cosine * m_aSheet, 0.));
     }
     std::vector<Eigen::Vector3f> *last_shape, *shape, *next_shape;
-    QColor last_col, col, next_col;
+    Color3f last_col, col, next_col;
     col = color(residue);
     last_col = col;
     next_col = col;
@@ -469,8 +467,8 @@ namespace Avogadro {
     std::vector<Eigen::Vector3f> points = backbonePoints(residue);
     addGuidePointsToBackbone(residue, chain, points);
 
-    QColor c2 = mixColors(last_col, col);
-    QColor c1 = mixColors(next_col, col);
+    Color3f c2 = mixColors(last_col, col);
+    Color3f c1 = mixColors(next_col, col);
 
     if (points.size () > 3) {
       double tot = ((double) points.size () -3);
@@ -480,11 +478,10 @@ namespace Avogadro {
         dt *= 0.5f;
         dt += 0.5f;
 
-        QColor cc1, cc2;
-        cc1.setRgbF((double)(c1.redF()*dt+c2.redF()*(1-dt)),
-            ((double) c1.greenF()*dt+c2.greenF()*(1-dt)),
-            (double) (c1.blueF()*dt+c2.blueF()*(1-dt)),
-            ((double) c1.alphaF()*dt+c2.alphaF()*(1-dt)));
+        Color3f cc1, cc2;
+        cc1.set((c1.red()*dt+c2.red()*(1-dt)),
+                (c1.green()*dt+c2.green()*(1-dt)),
+                (c1.blue()*dt+c2.blue()*(1-dt)));
         Eigen::Vector3f v1, v2;
         v2 = lastdir;
         v1 = nextdir;
@@ -506,10 +503,9 @@ namespace Avogadro {
         dt*= 0.5f;
         dt += 0.5f;
 
-        cc2.setRgbF((double)(c1.redF()*dt+c2.redF()*(1-dt)),
-            ((double) c1.greenF()*dt+c2.greenF()*(1-dt)),
-            (double) (c1.blueF()*dt+c2.blueF()*(1-dt)),
-            ((double) c1.alphaF()*dt+c2.alphaF()*(1-dt)));
+        cc2.set((c1.red()*dt+c2.red()*(1-dt)),
+                (c1.green()*dt+c2.green()*(1-dt)),
+                (c1.blue()*dt+c2.blue()*(1-dt)));
 
         for (unsigned int n = 0; n < n_points; n++) {
           Eigen::Vector3f vv2 = 0.5 * ((*last_shape)[n] + (*shape)[n]);
@@ -545,15 +541,15 @@ namespace Avogadro {
   class SurfVertex
   {
     public:
-      SurfVertex () : color(QColor(255, 255, 255)) {};
+      SurfVertex () : color(Color3f(255, 255, 255)) {};
       Eigen::Vector3f coords;
       Eigen::Vector3f normal;
-      QColor         color;
+      Color3f         color;
   };
   
   void CartoonMeshGenerator::backboneRibbon(const Eigen::Vector3f &v1, const Eigen::Vector3f &v2,
       const Eigen::Vector3f &v3, const Eigen::Vector3f &v4, const Eigen::Vector3f &dir,
-      const Eigen::Vector3f &dir2, const QColor &c1, const QColor &c2,
+      const Eigen::Vector3f &dir2, const Color3f &c1, const Color3f &c2,
       const std::vector<Eigen::Vector3f> &shape1, const std::vector<Eigen::Vector3f> &shape2)
   {
     //Sandri's method

@@ -47,6 +47,7 @@ namespace Avogadro {
     if (!m_atoms.contains(id))
       m_atoms.push_back(id);
     m_molecule->atomById(id)->setResidue(m_id);
+    connect(m_molecule->atomById(id), SIGNAL(updated()), this, SLOT(updateAtom()));
   }
 
   void Residue::removeAtom(unsigned long id)
@@ -59,6 +60,7 @@ namespace Avogadro {
       return;
 
     m_molecule->atomById(id)->setResidue(FALSE_ID);
+    disconnect(m_molecule->atomById(id), SIGNAL(updated()), this, SLOT(updateAtom()));
   }
 
   void Residue::setNumber(const QString& number)
@@ -138,6 +140,12 @@ namespace Avogadro {
   const QList<QString> & Residue::atomIds() const
   {
     return m_atomId;
+  }
+
+  void Residue::updateAtom()
+  {
+    // We can't trust our atom ids anymore, so we'll let Open Babel guess them.
+    m_atomId.clear();
   }
 
 } // End namespace Avogadro
