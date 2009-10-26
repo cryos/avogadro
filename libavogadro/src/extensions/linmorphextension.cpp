@@ -42,7 +42,7 @@ namespace Avogadro
     setFrameCount(10);
 
     QAction *action = new QAction(this);
-    action->setText(tr("Lin Morph..."));
+    action->setText(tr("Linear Morph...", "i.e., linear interpolation of coordinates during animation"));
     m_actions.append(action);
     
     action = new QAction( this );

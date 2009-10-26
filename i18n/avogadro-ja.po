@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-19 21:24-0400\n"
+"POT-Creation-Date: 2009-10-26 14:33-0400\n"
 "PO-Revision-Date: 2009-07-21 14:56+0000\n"
 "Last-Translator: tomo <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -24,23 +24,22 @@ msgstr "はい"
 #: src/aboutdialog.cpp:66
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
+"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>アプリケーション・バージョン: %2<br/><br/>ライブラリ・バージョン: "
-"%3<br/><br/>詳しくは、<a href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>をご確認ください。<br/><br/>本プログラムは、現状のまま提供され、設計、商品性、特定目的との適合性を含む、一切の保証を伴い"
-"ません。<br/>"
+"<h3>%1</h3><br/><br/>アプリケーション・バージョン: %2<br/><br/>ライブラリ・"
+"バージョン: %3<br/><br/>詳しくは、<a href=\"http://avogadro.openmolecules."
+"net/\">Avogadro homepage</a>をご確認ください。<br/><br/>本プログラムは、現状"
+"のまま提供され、設計、商品性、特定目的との適合性を含む、一切の保証を伴いませ"
+"ん。<br/>"
 
-#: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:835 src/mainwindow.cpp:885
-#: src/mainwindow.cpp:907 src/mainwindow.cpp:1069 src/mainwindow.cpp:1091
-#: src/mainwindow.cpp:1244 src/mainwindow.cpp:1472 src/mainwindow.cpp:2455
-#: src/mainwindow.cpp:2948 :46
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:838
+#: src/mainwindow.cpp:888 src/mainwindow.cpp:910 src/mainwindow.cpp:1072
+#: src/mainwindow.cpp:1094 src/mainwindow.cpp:1248 src/mainwindow.cpp:1476
+#: src/mainwindow.cpp:2459 src/mainwindow.cpp:2952:46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -64,16 +63,75 @@ msgstr "分子の消去"
 msgid "Clear Atoms"
 msgstr "原子の消去"
 
-#: src/projecttreeeditor.ui:179
-#: src/settingsdialog.ui:14
+#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2966 src/mainwindow.cpp:2983 :254 rc.cpp:262
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:254 rc.cpp:262
 msgid "Settings"
 msgstr "設定"
 
 #: src/importdialog.cpp:175 src/mainwindow.cpp:733
 msgid "Open File"
 msgstr "ファイルを開く"
+
+#: src/main.cpp:187
+msgctxt "Avogadro"
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:188
+msgctxt "This system does not support OpenGL."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:191
+msgctxt "System has OpenGL support."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:194
+msgctxt "About to test OpenGL capabilities."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:201
+msgctxt "OpenGL capabilities found: "
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:203
+msgctxt "Double Buffering."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:205
+msgctxt "Direct Rendering."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:207
+msgctxt "Antialiasing."
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:232
+msgctxt ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
+msgid "main.cpp"
+msgstr ""
+
+#: src/main.cpp:247
+msgctxt ""
+"Usage: %1 [options] [files]\n"
+"\n"
+"Advanced Molecular Editor (version %2)\n"
+"\n"
+"Options:\n"
+"  -h, --help\t\tShow help options (this)\n"
+"  -v, --version\t\tShow version information\n"
+msgid "main.cpp"
+msgstr ""
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
@@ -95,7 +153,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "ズーム(&Z)"
 
-#: src/mainwindow.cpp:388 src/mainwindow.cpp:1607
+#: src/mainwindow.cpp:388 src/mainwindow.cpp:1611
 msgid "Bring All to Front"
 msgstr "全てを前面に表示"
 
@@ -117,16 +175,16 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:713 src/mainwindow.cpp:1183
+#: src/mainwindow.cpp:713 src/mainwindow.cpp:1187
 msgid "Common molecule formats"
 msgstr "一般的な分子ファイル形式"
 
-#: src/mainwindow.cpp:718 src/mainwindow.cpp:1180 src/mainwindow.cpp:1412
-#: src/mainwindow.cpp:1491
+#: src/mainwindow.cpp:718 src/mainwindow.cpp:1184 src/mainwindow.cpp:1416
+#: src/mainwindow.cpp:1495
 msgid "All files"
 msgstr "全てのファイル"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1177 src/mainwindow.cpp:1189
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1181 src/mainwindow.cpp:1193
 msgid "CML"
 msgstr "CML"
 
@@ -162,52 +220,51 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "NWChem アウトプット"
 
-#: src/mainwindow.cpp:728 src/mainwindow.cpp:1194
+#: src/mainwindow.cpp:728 src/mainwindow.cpp:1198
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1200
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1197
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1201
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:791 src/mainwindow.cpp:796 src/mainwindow.cpp:2399
-#: src/savedialog.cpp:83
+#: src/mainwindow.cpp:794 src/mainwindow.cpp:799 src/savedialog.cpp:83
 msgid "untitled"
 msgstr "無題"
 
-#: src/mainwindow.cpp:812
+#: src/mainwindow.cpp:815
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "%1 ... 読み込み中"
 
-#: src/mainwindow.cpp:816
+#: src/mainwindow.cpp:819
 #, qt-format
 msgid "Loading %1..."
 msgstr "%1 ... 読み込み中"
 
-#: src/mainwindow.cpp:836 src/mainwindow.cpp:1070
+#: src/mainwindow.cpp:839 src/mainwindow.cpp:1073
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "分子ファイルの読み込みに失敗しました. ファイル %1"
 
-#: src/mainwindow.cpp:859
+#: src/mainwindow.cpp:862
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "multi-molecule ファイル読み込み中. しばらくお待ちください ..."
 
-#: src/mainwindow.cpp:886
+#: src/mainwindow.cpp:889
 msgid "This file does not contain 3D coordinates."
 msgstr "このファイルには、3D座標が含まれていません。"
 
-#: src/mainwindow.cpp:890
+#: src/mainwindow.cpp:893
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr ""
 
-#: src/mainwindow.cpp:908
+#: src/mainwindow.cpp:911
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -215,213 +272,213 @@ msgstr ""
 "このファイルには、3D座標が含まれていません。\n"
 "編集、表示を正しく行えない場合があります。"
 
-#: src/mainwindow.cpp:960
+#: src/mainwindow.cpp:963
 msgid "Select Molecule to View"
 msgstr "表示分子の選択"
 
-#: src/mainwindow.cpp:985
+#: src/mainwindow.cpp:988
 msgid "Molecule Title"
 msgstr "分子タイトル"
 
-#: src/mainwindow.cpp:1062
+#: src/mainwindow.cpp:1065
 msgid "Atoms: "
 msgstr "原子 : "
 
-#: src/mainwindow.cpp:1063
+#: src/mainwindow.cpp:1066
 msgid " Bonds: "
 msgstr " 結合 : "
 
-#: src/mainwindow.cpp:1079
+#: src/mainwindow.cpp:1082
 msgid "File Loaded..."
 msgstr "ファイルを読み込みました ..."
 
-#: src/mainwindow.cpp:1092
+#: src/mainwindow.cpp:1095
 msgid "Do you want to save the changes you made in the document?"
 msgstr "ドキュメントの変更内容を保存しますか？"
 
-#: src/mainwindow.cpp:1101
+#: src/mainwindow.cpp:1104
 msgid "Your changes will be lost if you don't save them."
 msgstr "保存しないと変更した部分は失われます。"
 
-#: src/mainwindow.cpp:1105
+#: src/mainwindow.cpp:1108
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1109
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1108
+#: src/mainwindow.cpp:1111
 msgid "Save..."
 msgstr "保存 ..."
 
-#: src/mainwindow.cpp:1108 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1111 src/savedialog.cpp:65
 msgid "Save"
 msgstr "保存"
 
-#: src/mainwindow.cpp:1190
+#: src/mainwindow.cpp:1194
 msgid "GAMESS Input"
 msgstr "GAMESS インプット"
 
-#: src/mainwindow.cpp:1191
+#: src/mainwindow.cpp:1195
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian Cartesian インプット"
 
-#: src/mainwindow.cpp:1192
+#: src/mainwindow.cpp:1196
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-matrix インプット"
 
-#: src/mainwindow.cpp:1193
+#: src/mainwindow.cpp:1197
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1195
+#: src/mainwindow.cpp:1199
 msgid "NWChem Input"
 msgstr "NWChem インプット"
 
-#: src/mainwindow.cpp:1200
+#: src/mainwindow.cpp:1204
 msgid "Save Molecule As"
 msgstr "名前を付けて分子を保存"
 
-#: src/mainwindow.cpp:1402 src/mainwindow.cpp:1414
+#: src/mainwindow.cpp:1406 src/mainwindow.cpp:1418
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1409
+#: src/mainwindow.cpp:1413
 msgid "Common image formats"
 msgstr "一般的な画像形式"
 
-#: src/mainwindow.cpp:1413
+#: src/mainwindow.cpp:1417
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1415
+#: src/mainwindow.cpp:1419
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1421 src/mainwindow.cpp:1500
+#: src/mainwindow.cpp:1425 src/mainwindow.cpp:1504
 msgid "Export Bitmap Graphics"
 msgstr "ビットマップ画像のエクスポート"
 
-#: src/mainwindow.cpp:1473
+#: src/mainwindow.cpp:1477
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "ファイル %1 を保存できません"
 
-#: src/mainwindow.cpp:1481 src/mainwindow.cpp:1492
+#: src/mainwindow.cpp:1485 src/mainwindow.cpp:1496
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1492
 msgid "Common vector image formats"
 msgstr "一般的なベクター画像形式"
 
-#: src/mainwindow.cpp:1493
+#: src/mainwindow.cpp:1497
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1494
+#: src/mainwindow.cpp:1498
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1639
+#: src/mainwindow.cpp:1643
 #, qt-format
 msgid "Untitled %1"
 msgstr "無題 %1"
 
-#: src/mainwindow.cpp:1744
+#: src/mainwindow.cpp:1748
 msgid "Unable to paste molecule."
 msgstr "分子を貼り付けできません"
 
-#: src/mainwindow.cpp:1773
+#: src/mainwindow.cpp:1777
 msgid "Paste failed (format unavailable)."
 msgstr "貼り付けに失敗しました ( この形式は利用できません )"
 
-#: src/mainwindow.cpp:1842
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "コピーに失敗しました ( mdl は利用できません )"
 
-#: src/mainwindow.cpp:1968 src/mainwindow.cpp:2001 src/mainwindow.cpp:2068
-#: src/mainwindow.cpp:2598
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "ビュー %1"
 
-#: src/mainwindow.cpp:2028
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "ビュー %1"
 
-#: src/mainwindow.cpp:2037
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 分離ビュー"
 
-#: src/mainwindow.cpp:2203
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "標準サイズ"
 
-#: src/mainwindow.cpp:2216
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "フルスクリーン"
 
-#: src/mainwindow.cpp:2314
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2448
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2454
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2902
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "追加"
 
-#: src/mainwindow.cpp:2907
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "複製"
 
-#: src/mainwindow.cpp:2912
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "除去"
 
-#: src/mainwindow.cpp:2940
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr "ツールまたはエンジンがロードされていません"
 
-#: src/mainwindow.cpp:2942
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr "エンジンがロードされていません"
 
-#: src/mainwindow.cpp:2944
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "ツールがロードされていません"
 
-#: src/mainwindow.cpp:2945
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr " アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
+msgstr ""
+" アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
 
-#: src/mainwindow.cpp:2989
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "オブジェクト"
 
-#: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2995 :214
+#: src/pluginsettings.ui:38 src/mainwindow.cpp:2999:214
 msgid "Colors"
 msgstr "色"
 
-#: src/mainwindow.cpp:3028
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " コピー"
 
@@ -492,8 +549,7 @@ msgstr "エラー"
 msgid "only labels can have sub items"
 msgstr ""
 
-#: src/projecttreeeditor.ui:168
-#: src/projecttreemodel.cpp:65 :252
+#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
 msgid "Item"
 msgstr "アイテム"
 
@@ -506,8 +562,7 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "低"
 
-#: src/settingsdialog.ui:86
-#: src/settingsdialog.cpp:107 :270
+#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "中"
@@ -522,8 +577,7 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "未定義"
 
-#: src/settingsdialog.ui:144
-#: src/settingsdialog.cpp:122 :276
+#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "なし"
@@ -585,18 +639,15 @@ msgstr "フォーム"
 msgid "Color by:"
 msgstr "配色 :"
 
-#: src/engineprimitiveswidget.ui:41
-#: src/engineprimitiveswidget.ui:44
+#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
 msgstr "選択済み基本要素を追加"
 
-#: src/engineprimitiveswidget.ui:55
-#: src/engineprimitiveswidget.ui:58
+#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
 msgstr "選択済み基本要素を削除"
 
-#: src/engineprimitiveswidget.ui:69
-#: src/engineprimitiveswidget.ui:72
+#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
 msgstr "全ての基本要素を追加"
 
@@ -692,23 +743,19 @@ msgstr "選択(&S)"
 msgid "Main Toolbar"
 msgstr "メインツールバー"
 
-#: src/mainwindow.ui:193
-#: src/settingsdialog.ui:255
+#: src/mainwindow.ui:193 src/settingsdialog.ui:255
 msgid "Project Tree"
 msgstr "プロジェクト・ツリー"
 
-#: src/mainwindow.ui:226
-#: src/pluginsettings.ui:23
+#: src/mainwindow.ui:226 src/pluginsettings.ui:23
 msgid "Display Types"
 msgstr "表示タイプ"
 
-#: src/mainwindow.ui:235
-#: src/pluginsettings.ui:28
+#: src/mainwindow.ui:235 src/pluginsettings.ui:28
 msgid "Tools"
 msgstr "ツール"
 
-#: src/mainwindow.ui:256
-#: src/mainwindow.ui:268
+#: src/mainwindow.ui:256 src/mainwindow.ui:268
 msgid "&Open"
 msgstr "開く(&O)"
 
@@ -716,8 +763,7 @@ msgstr "開く(&O)"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277
-#: src/mainwindow.ui:289
+#: src/mainwindow.ui:277 src/mainwindow.ui:289
 msgid "&Quit"
 msgstr "終了(&Q)"
 
@@ -733,8 +779,7 @@ msgstr "最近使用したファイル"
 msgid "&Clear Recent"
 msgstr "最近使用したファイル情報の削除(&C)"
 
-#: src/mainwindow.ui:308
-#: src/mainwindow.ui:320
+#: src/mainwindow.ui:308 src/mainwindow.ui:320
 msgid "&New"
 msgstr "新規作成(&N)"
 
@@ -742,8 +787,7 @@ msgstr "新規作成(&N)"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329
-#: src/mainwindow.ui:341
+#: src/mainwindow.ui:329 src/mainwindow.ui:341
 msgid "&Close"
 msgstr "閉じる(&C)"
 
@@ -751,8 +795,7 @@ msgstr "閉じる(&C)"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350
-#: src/mainwindow.ui:362
+#: src/mainwindow.ui:350 src/mainwindow.ui:362
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -944,8 +987,7 @@ msgstr ""
 msgid "Reset Display Types"
 msgstr ""
 
-#: src/pluginsettings.ui:16
-#: src/settingsdialog.ui:246
+#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
 msgid "Plugins"
 msgstr "プラグイン"
 
@@ -957,13 +999,11 @@ msgstr "エクステンション"
 msgid "Details"
 msgstr "詳細"
 
-#: src/projecttreeeditor.ui:17
-#: src/projecttreeeditor.ui:164
+#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
 msgid "Tree Items"
 msgstr "ツリー・アイテム"
 
-#: src/projecttreeeditor.ui:34
-#: src/projecttreeeditor.ui:201
+#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
 msgid "Type"
 msgstr "タイプ"
 
@@ -1031,8 +1071,7 @@ msgstr "エイリアス"
 msgid "Settings..."
 msgstr "設定 ..."
 
-#: src/settingsdialog.ui:34
-#: src/settingsdialog.ui:237
+#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
 msgid "General"
 msgstr "全般"
 
@@ -1040,8 +1079,7 @@ msgstr "全般"
 msgid "Quality:"
 msgstr "品質 :"
 
-#: src/settingsdialog.ui:49
-#: src/settingsdialog.ui:107
+#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
 msgid "Set the global rendering quality."
 msgstr "グローバル・レンダリング品質に設定"
 
@@ -1052,9 +1090,9 @@ msgstr "フォグ効果 :"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro "
-"Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo"
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
+"Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro Team,"
+"Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1063,7 +1101,6 @@ msgstr ",,,,,,,avogadro-devel@lists.sourceforge.net,,,,,"
 #~ msgid "Lithium"
 #~ msgstr "リチウム(Lithium）"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 

@@ -35,7 +35,7 @@ namespace Avogadro {
   class LinMorphExtension : public Extension
   {
     Q_OBJECT
-    AVOGADRO_EXTENSION("LinMorph", tr("Linear Morph"),
+      AVOGADRO_EXTENSION("LinMorph", tr("Linear Morph", "linear interpolation (morphing) for animations"),
                        tr("Create linear interpolation for animations"))
 
       public:
