@@ -1091,18 +1091,3 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,,,,avogadro-devel@lists.sourceforge.net,,,,,"
-
-#~ msgid "Hydrogen"
-#~ msgstr "수소"
-
-#~ msgid "Nitrogen"
-#~ msgstr "질소"
-
-#~ msgid "Carbon"
-#~ msgstr "탄소"
-
-#~ msgid "Oxygen"
-#~ msgstr "산소"
-
-#~ msgid "Phosphorus"
-#~ msgstr "인"

@@ -700,8 +700,8 @@ msgstr "Dradenframe"
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
-"Geef bindingen als draden (lijnen) weer, ideaal voor zeer grote "
-"(bio)moleculen"
+"Geef bindingen als draden (lijnen) weer, ideaal voor zeer grote (bio)"
+"moleculen"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -875,8 +875,7 @@ msgstr ""
 "toevoegen"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Je molecule moet minimum twee atomen bevatten om een bindingsbeperking te "
 "mogen toevoegen"
@@ -1103,7 +1102,7 @@ msgstr "Creëer input bestanden voor het GAMESS quantum chemistry pakket"
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :608 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619:608 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr "Titel"
 
@@ -1178,8 +1177,7 @@ msgstr "Gaussian Bezig."
 #: src/extensions/gaussianinputdialog.cpp:263
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr ""
-"Gaussian is al bezig. Dat arm beestje van een computer niet opjagen é."
+msgstr "Gaussian is al bezig. Dat arm beestje van een computer niet opjagen é."
 
 #: src/extensions/gaussianinputdialog.cpp:273
 msgid "Gaussian Not Installed."
@@ -1206,8 +1204,7 @@ msgid "G03 Crashed."
 msgstr "G03 Crashed."
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian is niet correct gestart. Misschien is het niet correct "
 "geïnstalleerd."
@@ -1217,7 +1214,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1278
+#: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
 msgstr "Toon Voorbeeld"
 
@@ -1229,7 +1226,7 @@ msgstr "Toon Voorbeeld"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Verberg Voorbeeld"
 
@@ -1367,7 +1364,7 @@ msgstr "Peptide..."
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr "Voeg Peptide in"
 
@@ -1777,7 +1774,7 @@ msgid "Conformer Properties"
 msgstr "Conformer Eigenschappen"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43 :464
+#: src/extensions/propextension.h:43:464
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -1789,8 +1786,7 @@ msgstr ""
 "Vensters om atoom, bindings, hoek en torsie eigenschappen te tonen. Er is "
 "ook een cartesiaanse coördinaten bewerker."
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:355 :190
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:355:190
 msgid "Type"
 msgstr "Type"
 
@@ -1892,7 +1888,7 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:427 :444
+#: src/extensions/propmodel.cpp:427:444
 msgid "Energy"
 msgstr "Energie"
 
@@ -1962,10 +1958,9 @@ msgstr "SMARTS patroon om te selecteren"
 msgid "Select by residue"
 msgstr "Selecteer per residu"
 
-#: src/engines/labelsettingswidget.ui:80
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :84 rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:80 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:84
+#: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr "Residu naam"
 
@@ -2025,8 +2020,7 @@ msgstr "Open een shader parameters bestand"
 msgid "Shader parameters files (*.params)"
 msgstr "Shader parameters bestanden (*.params)"
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1486
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -2043,12 +2037,12 @@ msgid "Y Axis"
 msgstr "Y As"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152 :1528
+#: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
 msgstr "&Uitzicht"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153 :1572
+#: src/extensions/spectradialog.cpp:153:1572
 msgid "E&xport Image"
 msgstr "E&xporteer Beeld"
 
@@ -2230,7 +2224,7 @@ msgid "Customi&ze <<"
 msgstr "Customi&ze <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736 :1524
+#: src/extensions/spectradialog.cpp:736:1524
 msgid "Customi&ze >>"
 msgstr "Customi&ze >>"
 
@@ -2479,7 +2473,7 @@ msgid "Apply"
 msgstr "Toepassen"
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :224
+#: src/extensions/unitcellparamdialog.cpp:97:224
 msgid "OK"
 msgstr "OK"
 
@@ -2490,7 +2484,7 @@ msgstr "Sorteer %1 vibraties per frequentie..."
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :1730
+#: src/extensions/vibrationdialog.cpp:213:1730
 msgid "Start &Animation"
 msgstr "Start &Animatie"
 
@@ -2508,7 +2502,7 @@ msgstr "&Vibraties..."
 
 #: src/extensions/gamessinputdialog.ui:2556
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241 :804
+#: src/extensions/vibrationextension.cpp:241:804
 msgid "Vibrational Analysis"
 msgstr "Vibratie Analyse"
 
@@ -2855,13 +2849,11 @@ msgstr "Stappen per Update:"
 msgid "Algorithm:"
 msgstr "Algoritme"
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:288 :254
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:288:254
 msgid "Steepest Descent"
 msgstr "Stijlste Afdaling"
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:289 :256
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:289:256
 msgid "Conjugate Gradients"
 msgstr "Vervoeg Gradienten"
 
@@ -2942,8 +2934,8 @@ msgstr "z-rotatie"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
+#: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Reset"
 
@@ -3106,8 +3098,8 @@ msgstr "Meet bindingslengtes, hoeken en diheralen"
 msgid "Measure Settings"
 msgstr "Meet instellingen"
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:1750
 msgid "Add Atom"
 msgstr "Voeg Atoom Toe"
 
@@ -3159,8 +3151,7 @@ msgstr "Teken"
 msgid "Element:"
 msgstr "Element:"
 
-#: src/extensions/gamessinputdialog.ui:1214
-#: src/tools/drawtool.cpp:798 :558
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:798:558
 msgid "Other..."
 msgstr "Ande..."
 
@@ -3305,8 +3296,7 @@ msgstr "Dihedrale Hoek"
 msgid "Z Matrix Editor..."
 msgstr "Z Matrix Editor..."
 
-#: src/extensions/gamessinputdialog.ui:1537
-#: src/tools/zmatrixtool.h:39 :616
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:616
 msgid "Z-Matrix"
 msgstr "Z-Matrix"
 
@@ -3346,14 +3336,12 @@ msgstr "Atoom Straal:"
 msgid "Bond Radius:"
 msgstr "Bindingsstraal:"
 
-#: src/engines/bsdysettingswidget.ui:76
-#: src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr ""
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr "Toon Meervoudige Bindingen"
 
@@ -3448,8 +3436,7 @@ msgstr "Atoom Labels:"
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2107
-#: src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2107 src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr "Geen"
 
@@ -3588,8 +3575,7 @@ msgstr "Animeer Baan"
 msgid "Load File..."
 msgstr "Bestand laden..."
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3602,8 +3588,7 @@ msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
 msgstr ""
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3634,10 +3619,8 @@ msgid "Number of conformers"
 msgstr "Aantal conformers"
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2566
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2566 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Methode"
@@ -3726,15 +3709,12 @@ msgstr "Delete alles"
 msgid "File Import..."
 msgstr "Importeer Bestand..."
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Bestandsnaam:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Bladeren..."
@@ -3755,8 +3735,7 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr "Stel Krachtveld In"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Krachtveld"
 
@@ -4508,8 +4487,7 @@ msgstr "Eenheden:"
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr "Titel"
 
@@ -4993,8 +4971,7 @@ msgstr "Genereer..."
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "SluitenG"
@@ -5394,8 +5371,7 @@ msgstr "creër brug van residu naam"
 msgid "create ligand from file..."
 msgstr "creëer brug van bestand..."
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr "De residunaam"
 
@@ -5580,8 +5556,7 @@ msgstr "povray"
 msgid "Render"
 msgstr ""
 
-#: src/extensions/povraydialog.ui:137
-#: src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Resolutie:"
 
@@ -5665,8 +5640,7 @@ msgstr "Fragment Shader:"
 msgid "Parameters:"
 msgstr "Parameters:"
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr "Wijs Shader toe"
 
@@ -5708,10 +5682,8 @@ msgstr "Sluiten"
 msgid "Calculated Spectra:"
 msgstr "Berekende Spectra:"
 
-#: src/extensions/spectradialog.ui:168
-#: src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279
-#: src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr "Zet Kleur..."
 
@@ -5727,8 +5699,7 @@ msgstr "Font:"
 msgid "Change Font..."
 msgstr "Wijzig Font..."
 
-#: src/extensions/spectradialog.ui:224
-#: src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr "Toon"
 
@@ -5879,8 +5850,7 @@ msgstr "Reset &Plot Assen"
 msgid "Label Peaks:"
 msgstr "Label Toppen:"
 
-#: src/extensions/spectratabnmr.ui:125
-#: src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr "ppm"
 
@@ -5923,13 +5893,11 @@ msgstr "Oppervlakte Type:"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfacedialog.ui:46
-#: src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr "Elektrostatisch Potentiaal"
 
-#: src/extensions/surfacedialog.ui:81
-#: src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr "MO 666"
 
@@ -6110,255 +6078,12 @@ msgstr "verwijder atoom"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, "
-",Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
+",Launchpad Contributions:,Kristof Bal,Sander Deryckere,Vincent Tijms,ubby, ,"
+"Launchpad Contributions:,Sander Deryckere, ,Launchpad Contributions:,Sander "
 "Deryckere,Water,cumulus007"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,sander"
-"d17@gmail.com,,,sanderd17@gmail.com,,cumulus0007@gmail.com"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesium"
-
-#~ msgid "Orbitals"
-#~ msgstr "Orbitalen"
-
-#~ msgid "Atoms"
-#~ msgstr "Atomen"
-
-#~ msgid "Bonds"
-#~ msgstr "Bindingen"
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Afstand (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Afstand (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Afstand (3->4): %1 %2"
-
-#~ msgid "Add Directory"
-#~ msgstr "Map toevoegen"
-
-#~ msgid "Cut Molecule"
-#~ msgstr "Knip Molecule"
-
-#~ msgid "Cut Atoms"
-#~ msgstr "Knip Atomen"
-
-#~ msgid "Paste"
-#~ msgstr "Plakken"
-
-#~ msgid "Clear Molecule"
-#~ msgstr "Molecule wissen"
-
-#~ msgid "Clear Atoms"
-#~ msgstr "Atomen wissen"
-
-#~ msgid "Open File"
-#~ msgstr "Bestand openen"
-
-#~ msgid "Messages"
-#~ msgstr "Berichten"
-
-#~ msgid "Window"
-#~ msgstr "Venster"
-
-#~ msgid "Common molecule formats"
-#~ msgstr "Veelvoorkomende moleculeformaten."
-
-#~ msgid "All files"
-#~ msgstr "Alle bestanden"
-
-#~ msgid "CML"
-#~ msgstr "CML"
-
-#~ msgid "Gaussian 98/03 Output"
-#~ msgstr "Gaussiaanse 98/03 Output"
-
-#~ msgid "XYZ"
-#~ msgstr "XYZ"
-
-#~ msgid "Loading %1..."
-#~ msgstr "%1aan het laden..."
-
-#~ msgid ""
-#~ "Cannot read file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Kan het bestand %1 niet lezen:\n"
-#~ "%2."
-
-#~ msgid ""
-#~ "This file does not contain 3D coordinates. You may not be able to edit or "
-#~ "view properly."
-#~ msgstr ""
-#~ "Dit bestand bevat geen 3D coördinaten. U kunt het mogelijk niet goed "
-#~ "bewerken of weergeven."
-
-#~ msgid "File Loaded..."
-#~ msgstr "Bestand Geladen..."
-
-#~ msgid "Cannot write to file format of file %1."
-#~ msgstr "Kan niet naar het bestandsformaat van het bestand %1 schrijven."
-
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Kan niet naar het bestand %1 schrijven:\n"
-#~ "%2"
-
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Kan niet naar het bestand %1 schrijven."
-
-#~ msgid "Saving file."
-#~ msgstr "Bezig met opslaan."
-
-#~ msgid "Save succeeded."
-#~ msgstr "Opslagen."
-
-#~ msgid "PNG"
-#~ msgstr "PNG"
-
-#~ msgid "Common image formats"
-#~ msgstr "Veelvoorkomende afbeeldingformaten."
-
-#~ msgid "BMP"
-#~ msgstr "BMP"
-
-#~ msgid "JPEG"
-#~ msgstr "JPEG"
-
-#~ msgid "Export Bitmap Graphics"
-#~ msgstr "Bitmap Graphics exporteren"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
-
-#~ msgid ""
-#~ "The document has been modified.\n"
-#~ "Do you want to save your changes?"
-#~ msgstr ""
-#~ "Het document is gewijzigd.\n"
-#~ "Wilt u uw wijzigingen opslaan?"
-
-#~ msgid "Untitled"
-#~ msgstr "naamloos"
-
-#~ msgid "Unable to paste molecule."
-#~ msgstr "Kan de molecule niet plakken."
-
-#~ msgid "Paste failed (format unavailable)."
-#~ msgstr "Plakken mislukt (formaat niet beschikbaar)."
-
-#~ msgid "Copy failed (mdl unavailable)."
-#~ msgstr "Kopieren mislukt (mdl niet beschikbaar)."
-
-#~ msgid "View %1"
-#~ msgstr "%1 weergeven"
-
-#~ msgid "Normal Size"
-#~ msgstr "Normale grootte"
-
-#~ msgid "Full Screen"
-#~ msgstr "Volledig scherm"
-
-#~ msgid "untitled"
-#~ msgstr "naamloos"
-
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
-
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
-
-#~ msgid "Settings..."
-#~ msgstr "Instellingen..."
-
-#~ msgid "Duplicate"
-#~ msgstr "Dupliceren"
-
-#~ msgid "Remove"
-#~ msgstr "Verwijderen"
-
-#~ msgid "No tools or engines loaded."
-#~ msgstr "Geen hulpmiddelen of engines geladen."
-
-#~ msgid "No engines loaded."
-#~ msgstr "Geen engines geladen."
-
-#~ msgid "No tools loaded."
-#~ msgstr "Geen hulpmiddelen geladen."
-
-#~ msgid ""
-#~ " It is unlikely this application will function correctly. Please correct "
-#~ "this error."
-#~ msgstr ""
-#~ " dit programma zal waarschijnlijk niet correct werken. Corrigeer a.u.b. de "
-#~ "fout."
-
-#~ msgid "Objects"
-#~ msgstr "Objecten"
-
-#~ msgid " copy"
-#~ msgstr " kopieren"
-
-#~ msgid "Name: "
-#~ msgstr "Naam: "
-
-#~ msgid "File: "
-#~ msgstr "Bestand: "
-
-#~ msgid "Description:\n"
-#~ msgstr "Beschrijving:\n"
-
-#~ msgid ""
-#~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr "Avogadro moet herstart worden om de veranderingen door te voeren."
-
-#~ msgid "bond %1"
-#~ msgstr "binding %1"
-
-#~ msgid "only labels can have sub items"
-#~ msgstr "Enkel labels kunnen sub items hebben"
-
-#~ msgid "tree"
-#~ msgstr "boom"
-
-#~ msgid "index"
-#~ msgstr "index"
-
-#~ msgid "Undefined"
-#~ msgstr "Ongedefinieerd"
-
-#~ msgid "Some"
-#~ msgstr "Enkele"
-
-#~ msgid "Mid"
-#~ msgstr "Mid"
-
-#~ msgid "Lots"
-#~ msgstr "Veel"
-
-#~ msgid "Type:"
-#~ msgstr "Type:"
-
-#~ msgid "Name:"
-#~ msgstr "Naam:"
-
-#~ msgid "Description:"
-#~ msgstr "Beschrijving:"
+",,kristof.bal@gmail.com,sanderd17@gmail.com,vincent_tijms@zonnet.nl,,,,"
+"sanderd17@gmail.com,,,sanderd17@gmail.com,,cumulus0007@gmail.com"

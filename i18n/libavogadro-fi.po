@@ -864,8 +864,7 @@ msgstr ""
 "rajoitteen"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid ""
-"Your molecule must contain at least two atoms to add a bond constraint"
+msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Molekyylisi täytyy koostua ainakin kahdesta atomista, jotta voit lisätä "
 "sidosrajoitteen"
@@ -1090,7 +1089,7 @@ msgstr ""
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619 :608 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619:608 rc.cpp:884 rc.cpp:1164
 msgid "Title"
 msgstr ""
 
@@ -1184,8 +1183,7 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid ""
-"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
 #: src/extensions/mopacinputdialog.ui:307
@@ -1193,7 +1191,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1278
+#: src/extensions/qcheminputdialog.cpp:178:1278
 msgid "Show Preview"
 msgstr "Näytä esikatselu"
 
@@ -1205,7 +1203,7 @@ msgstr "Näytä esikatselu"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
 msgstr "Piilota esikatselu"
 
@@ -1343,7 +1341,7 @@ msgstr ""
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1739,7 +1737,7 @@ msgid "Conformer Properties"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43 :464
+#: src/extensions/propextension.h:43:464
 msgid "Properties"
 msgstr "Ominaisuudet"
 
@@ -1749,8 +1747,7 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr ""
 
-#: src/extensions/constraintsdialog.ui:40
-#: src/extensions/propmodel.cpp:355 :190
+#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:355:190
 msgid "Type"
 msgstr ""
 
@@ -1852,7 +1849,7 @@ msgid "Z  %1"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:427 :444
+#: src/extensions/propmodel.cpp:427:444
 msgid "Energy"
 msgstr "Energia"
 
@@ -1922,10 +1919,9 @@ msgstr ""
 msgid "Select by residue"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:80
-#: src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55
-#: src/extensions/selectextension.cpp:230 :84 rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:80 src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:84
+#: rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
 msgstr ""
 
@@ -1985,8 +1981,7 @@ msgstr ""
 msgid "Shader parameters files (*.params)"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:19
-#: src/extensions/shaderextension.h:41 :1486
+#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2003,12 +1998,12 @@ msgid "Y Axis"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152 :1528
+#: src/extensions/spectradialog.cpp:152:1528
 msgid "&Appearance"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153 :1572
+#: src/extensions/spectradialog.cpp:153:1572
 msgid "E&xport Image"
 msgstr ""
 
@@ -2190,7 +2185,7 @@ msgid "Customi&ze <<"
 msgstr ""
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736 :1524
+#: src/extensions/spectradialog.cpp:736:1524
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2426,7 +2421,7 @@ msgid "Apply"
 msgstr ""
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97 :224
+#: src/extensions/unitcellparamdialog.cpp:97:224
 msgid "OK"
 msgstr ""
 
@@ -2437,7 +2432,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :1730
+#: src/extensions/vibrationdialog.cpp:213:1730
 msgid "Start &Animation"
 msgstr ""
 
@@ -2455,7 +2450,7 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:2556
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241 :804
+#: src/extensions/vibrationextension.cpp:241:804
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2793,13 +2788,11 @@ msgstr ""
 msgid "Algorithm:"
 msgstr "Algoritmi:"
 
-#: src/extensions/forcefielddialog.ui:90
-#: src/tools/autoopttool.cpp:288 :254
+#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:288:254
 msgid "Steepest Descent"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:95
-#: src/tools/autoopttool.cpp:289 :256
+#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:289:256
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2880,8 +2873,8 @@ msgstr "z-akselin kiertymä"
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446
-#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:296:946
+#: rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr "Palauta oletusarvot"
 
@@ -3032,8 +3025,8 @@ msgstr ""
 msgid "Measure Settings"
 msgstr ""
 
-#: src/tools/zmatrixdialog.ui:45
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
+#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:1750
 msgid "Add Atom"
 msgstr "Lisää atomi"
 
@@ -3085,8 +3078,7 @@ msgstr "Piirrä"
 msgid "Element:"
 msgstr "Alkuaine:"
 
-#: src/extensions/gamessinputdialog.ui:1214
-#: src/tools/drawtool.cpp:798 :558
+#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:798:558
 msgid "Other..."
 msgstr "Muu..."
 
@@ -3231,8 +3223,7 @@ msgstr ""
 msgid "Z Matrix Editor..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1537
-#: src/tools/zmatrixtool.h:39 :616
+#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:616
 msgid "Z-Matrix"
 msgstr "Z-matriisi"
 
@@ -3272,14 +3263,12 @@ msgstr "Atomin säde:"
 msgid "Bond Radius:"
 msgstr "Sidoksen säde:"
 
-#: src/engines/bsdysettingswidget.ui:76
-#: src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr ""
 
-#: src/engines/bsdysettingswidget.ui:119
-#: src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr ""
 
@@ -3374,8 +3363,7 @@ msgstr "Atomien nimikkeet:"
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2107
-#: src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2107 src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr ""
 
@@ -3514,8 +3502,7 @@ msgstr ""
 msgid "Load File..."
 msgstr ""
 
-#: src/extensions/animationdialog.ui:45
-#: src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr "0/0"
 
@@ -3528,8 +3515,7 @@ msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
 msgstr ""
 
-#: src/extensions/animationdialog.ui:189
-#: src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr "fps"
 
@@ -3560,10 +3546,8 @@ msgid "Number of conformers"
 msgstr ""
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2566
-#: src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34
-#: src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2566 src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr "Menetelmä"
@@ -3652,15 +3636,12 @@ msgstr "Poista kaikki"
 msgid "File Import..."
 msgstr ""
 
-#: src/extensions/fileimportdialog.ui:25
-#: src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr "Tiedoston nimi:"
 
-#: src/extensions/fileimportdialog.ui:37
-#: src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67
-#: src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr "Selaa..."
@@ -3681,8 +3662,7 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr "Aseta voimakenttä"
 
-#: src/extensions/forcefielddialog.ui:25
-#: src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr "Voimakenttä"
 
@@ -4434,8 +4414,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31
-#: src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr ""
 
@@ -4919,8 +4898,7 @@ msgstr ""
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469
-#: src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr "Sulje"
@@ -5320,8 +5298,7 @@ msgstr ""
 msgid "create ligand from file..."
 msgstr "luo ligandi tiedostosta..."
 
-#: src/extensions/liganddialog.ui:79
-#: src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr ""
 
@@ -5504,8 +5481,7 @@ msgstr "povray"
 msgid "Render"
 msgstr "Renderöi"
 
-#: src/extensions/povraydialog.ui:137
-#: src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr "Resoluutio:"
 
@@ -5589,8 +5565,7 @@ msgstr ""
 msgid "Parameters:"
 msgstr "Parametrit:"
 
-#: src/extensions/shaderdialog.ui:162
-#: src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr ""
 
@@ -5627,10 +5602,8 @@ msgstr "&Sulje"
 msgid "Calculated Spectra:"
 msgstr ""
 
-#: src/extensions/spectradialog.ui:168
-#: src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279
-#: src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr ""
 
@@ -5646,8 +5619,7 @@ msgstr ""
 msgid "Change Font..."
 msgstr ""
 
-#: src/extensions/spectradialog.ui:224
-#: src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr ""
 
@@ -5795,8 +5767,7 @@ msgstr ""
 msgid "Label Peaks:"
 msgstr ""
 
-#: src/extensions/spectratabnmr.ui:125
-#: src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr ""
 
@@ -5839,13 +5810,11 @@ msgstr ""
 msgid "Van der Waals"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:46
-#: src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:81
-#: src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
 msgid "MO 666"
 msgstr ""
 
@@ -6020,435 +5989,12 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff "
-"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison"
+",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff Hutchison,"
+"Ulla, ,Launchpad Contributions:,Avogadro Team, ,Launchpad Contributions:,"
+"Avogadro Team,Geoff Hutchison"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
-"devel@lists.sourceforge.net,"
-
-#~ msgid "Caesium"
-#~ msgstr "Cesium"
-
-#~ msgid "Orbitals"
-#~ msgstr "Orbitaalit"
-
-#~ msgid "Surface"
-#~ msgstr "Pinta"
-
-#~ msgid "Atomic Number"
-#~ msgstr "Järjestysluku"
-
-#~ msgid "Atoms"
-#~ msgstr "Atomit"
-
-#~ msgid "Bonds"
-#~ msgstr "Sidokset"
-
-#, qt-format
-#~ msgid "Distance (1->2): %1 %2"
-#~ msgstr "Etäisyys (1->2): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (2->3): %1 %2"
-#~ msgstr "Etäisyys (2->3): %1 %2"
-
-#, qt-format
-#~ msgid "Distance (3->4): %1 %2"
-#~ msgstr "Etäisyys (3->4): %1 %2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Color:"
-#~ msgstr "Väri:"
-
-#~ msgid "Electrostatic Potential (ESP)"
-#~ msgstr "Sähköstaattinen potentiaali (ESP)"
-
-#~ msgid "Seconds"
-#~ msgstr "Sekuntia"
-
-#~ msgid "Next Value"
-#~ msgstr "Seuraava arvo"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "z"
-#~ msgstr "z"
-
-#~ msgid "Origin:"
-#~ msgstr "Origo:"
-
-#~ msgid "Calculate Electron Density"
-#~ msgstr "Laske elektronitiheys"
-
-#~ msgid "Calculate Van der Waals Cube"
-#~ msgstr "Laske Van der Waals -kuutio"
-
-#~ msgid "Cube:"
-#~ msgstr "Kuutio:"
-
-#~ msgid "0.02"
-#~ msgstr "0.02"
-
-#~ msgid "0.000"
-#~ msgstr "0.000"
-
-#~ msgid "1.000"
-#~ msgstr "1.000"
-
-#~ msgid "Distance:"
-#~ msgstr "Etäisyys:"
-
-#~ msgid "0.0"
-#~ msgstr "0.0"
-
-#~ msgid "Add Directory"
-#~ msgstr "Lisää hakemisto"
-
-#~ msgid "Reset List"
-#~ msgstr "Nollaa lista"
-
-#~ msgid "Generate from SMILES:"
-#~ msgstr "Luo SMILES-tiedoista:"
-
-#~ msgid "Paste"
-#~ msgstr "Liitä"
-
-#~ msgid "Open File"
-#~ msgstr "Avaa tiedosto"
-
-#~ msgid "Window"
-#~ msgstr "Ikkuna"
-
-#~ msgid "Common molecule formats"
-#~ msgstr "Yleiset molekyylitiedostomuodot"
-
-#~ msgid "All files"
-#~ msgstr "Kaikki tiedostot"
-
-#~ msgid "CML"
-#~ msgstr "CML"
-
-#~ msgid "PDB"
-#~ msgstr "PDB"
-
-#~ msgid "XYZ"
-#~ msgstr "XYZ"
-
-#~ msgid ""
-#~ "Cannot read file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Tiedostoa %1 ei voida lukea:\n"
-#~ "%2"
-
-#~ msgid ""
-#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
-#~ "bonds and do a quick optimization?"
-#~ msgstr ""
-#~ "Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
-#~ "skaalaa sidokset ja tekee nopean optimisaation?"
-
-#~ msgid ""
-#~ "This file does not contain 3D coordinates. You may not be able to edit or "
-#~ "view properly."
-#~ msgstr ""
-#~ "Tämä tiedosto ei sisällä 3D-koordinaatteja. Voi olla, ettet pysty "
-#~ "muokkaamaan tai käyttämään näkymää kunnolla."
-
-#~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
-#~ msgstr ""
-#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro lukee "
-#~ "ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut molekyylit "
-#~ "saattavat kadota."
-
-#~ msgid " Bonds: "
-#~ msgstr " Sidokset: "
-
-#~ msgid "File Loaded..."
-#~ msgstr "Tiedosto ladattu..."
-
-#~ msgid ""
-#~ "Cannot write to the file %1:\n"
-#~ "%2."
-#~ msgstr ""
-#~ "Tiedostoon %1 ei voida kirjoittaa:\n"
-#~ "%2."
-
-#~ msgid "Cannot write to the file %1."
-#~ msgstr "Tiedostoon %1 ei voida kirjoittaa."
-
-#~ msgid "Saving file."
-#~ msgstr "Tiedostoa tallennetaan."
-
-#~ msgid "Save succeeded."
-#~ msgstr "Tallennus onnistui."
-
-#~ msgid "PNG"
-#~ msgstr "PNG"
-
-#~ msgid "BMP"
-#~ msgstr "BMP"
-
-#~ msgid "JPEG"
-#~ msgstr "JPEG"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "SVG"
-#~ msgstr "SVG"
-
-#~ msgid "EPS"
-#~ msgstr "EPS"
-
-#~ msgid ""
-#~ "The document has been modified.\n"
-#~ "Do you want to save your changes?"
-#~ msgstr ""
-#~ "Dokumenttia on muutettu.\n"
-#~ "Haluatko tallentaa muutokset?"
-
-#~ msgid "Unable to paste molecule."
-#~ msgstr "Molekyyliä ei voida liittää."
-
-#~ msgid "Paste failed (format unavailable)."
-#~ msgstr "Liittäminen epäonnistui."
-
-#~ msgid "View %1"
-#~ msgstr "Näkymä %1"
-
-#~ msgid "Avogadro: Detached View"
-#~ msgstr "Avogadro: Erillinen näkymä"
-
-#~ msgid "Normal Size"
-#~ msgstr "Tavallinen koko"
-
-#~ msgid "Full Screen"
-#~ msgstr "Koko kuvaruutu"
-
-#~ msgid "untitled"
-#~ msgstr "nimetön"
-
-#~ msgid "[*]Avogadro"
-#~ msgstr "[*]Avogadro"
-
-#~ msgid "%1[*] - %2"
-#~ msgstr "%1[*] - %2"
-
-#~ msgid "Settings..."
-#~ msgstr "Asetukset..."
-
-#~ msgid "Duplicate"
-#~ msgstr "Monista"
-
-#~ msgid "Remove"
-#~ msgstr "Poista"
-
-#~ msgid "No tools loaded."
-#~ msgstr "Työkaluja ei ole ladattu."
-
-#~ msgid ""
-#~ " It is unlikely this application will function correctly. Please correct "
-#~ "this error."
-#~ msgstr ""
-#~ " On epätodennäköistä että sovellus toimii oikein. Ole hyvä ja korjaa tämä "
-#~ "virhe."
-
-#~ msgid "Name: "
-#~ msgstr "Nimi: "
-
-#~ msgid "File: "
-#~ msgstr "Tiedosto: "
-
-#~ msgid "Description:\n"
-#~ msgstr "Kuvaus:\n"
-
-#~ msgid ""
-#~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
-
-#~ msgid "bond %1"
-#~ msgstr "sidos %1"
-
-#~ msgid "Undefined"
-#~ msgstr "Määrittelemätön"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid "Atom"
-#~ msgstr "Atomi"
-
-#~ msgid "Bond"
-#~ msgstr "Sidos"
-
-#~ msgid "Angle (°)"
-#~ msgstr "Kulma (°)"
-
-#~ msgid "Torsion (°)"
-#~ msgstr "Kiertokulma (°)"
-
-#~ msgid "X (Å)"
-#~ msgstr "X (Å)"
-
-#~ msgid "Y (Å)"
-#~ msgstr "Y (Å)"
-
-#~ msgid "Z (Å)"
-#~ msgstr "Z (Å)"
-
-#~ msgid "Description:"
-#~ msgstr "Kuvaus:"
-
-#~ msgid "Coordinates are in Ångstroms"
-#~ msgstr "Koordinaattien yksikkö on Ångström"
-
-#~ msgid "&Help"
-#~ msgstr "&Ohje"
-
-#~ msgid "&Open"
-#~ msgstr "&Avaa"
-
-#~ msgid "&Quit"
-#~ msgstr "&Lopeta"
-
-#~ msgid "Ctrl+Q"
-#~ msgstr "Ctrl+Q"
-
-#~ msgid "&New"
-#~ msgstr "&Uusi"
-
-#~ msgid "Ctrl+N"
-#~ msgstr "Ctrl+N"
-
-#~ msgid "Ctrl+W"
-#~ msgstr "Ctrl+W"
-
-#~ msgid "&Save"
-#~ msgstr "&Tallenna"
-
-#~ msgid "Ctrl+S"
-#~ msgstr "Ctrl+S"
-
-#~ msgid "Save &As..."
-#~ msgstr "Tallenna &nimellä..."
-
-#~ msgid "Ctrl+Shift+S"
-#~ msgstr "Ctrl+Shift+S"
-
-#~ msgid "&Graphics..."
-#~ msgstr "&Grafiikka..."
-
-#~ msgid "&Full Screen Mode"
-#~ msgstr "&Kokonäyttötila"
-
-#~ msgid "Set &Background Color..."
-#~ msgstr "Aseta &taustaväri..."
-
-#~ msgid "&Undo"
-#~ msgstr "&Kumoa"
-
-#~ msgid "Ctrl+Z"
-#~ msgstr "Ctrl+Z"
-
-#~ msgid "&Redo"
-#~ msgstr "&Tee uudelleen"
-
-#~ msgid "Ctrl+Shift+Z"
-#~ msgstr "Ctrl+Shift+Z"
-
-#~ msgid "New View"
-#~ msgstr "Uusi näkymä"
-
-#~ msgid "Close View"
-#~ msgstr "Sulje näkymä"
-
-#~ msgid "Center"
-#~ msgstr "Keskitä"
-
-#~ msgid "&Paste"
-#~ msgstr "&Liitä"
-
-#~ msgid "Ctrl+V"
-#~ msgstr "Ctrl+V"
-
-#~ msgid "Copy"
-#~ msgstr "Kopioi"
-
-#~ msgid "Ctrl+C"
-#~ msgstr "Ctrl+C"
-
-#~ msgid "Cut"
-#~ msgstr "Leikkaa"
-
-#~ msgid "Ctrl+X"
-#~ msgstr "Ctrl+X"
-
-#~ msgid "Clear"
-#~ msgstr "Tyhjennä"
-
-#~ msgid "Select All"
-#~ msgstr "Valitse kaikki"
-
-#~ msgid "Ctrl+A"
-#~ msgstr "Ctrl+A"
-
-#~ msgid "Select None"
-#~ msgstr "Poista valinnat"
-
-#~ msgid "Ctrl+Shift+A"
-#~ msgstr "Ctrl+Shift+A"
-
-#~ msgid "Tutorials"
-#~ msgstr "Opastukset"
-
-#~ msgid "Duplicate View"
-#~ msgstr "Monista näkymä"
-
-#~ msgid "Avogadro Help"
-#~ msgstr "Avogadron ohje"
-
-#~ msgid "Release Notes"
-#~ msgstr "Julkaisutiedot"
-
-#~ msgid "Report a Bug"
-#~ msgstr "Tee virheraportti"
-
-#~ msgid "FAQ"
-#~ msgstr "UKK"
-
-#~ msgid "Avogadro Website"
-#~ msgstr "Avogadron sivusto"
-
-#~ msgid "Molecule File..."
-#~ msgstr "Molekyylitiedosto..."
-
-#~ msgid "&Vector Graphics..."
-#~ msgstr "&Vektorigrafiikka"
-
-#~ msgid "Quality:"
-#~ msgstr "Laatu:"
-
-#~ msgid "Set the global rendering quality."
-#~ msgstr "Aseta globaali renderöintilaatu."
+",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists."
+"sourceforge.net,"

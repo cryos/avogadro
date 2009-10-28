@@ -1097,27 +1097,3 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,,,,,,avogadro-devel@lists.sourceforge.net,,,,,"
-
-#~ msgid "Lithium"
-#~ msgstr "リチウム(Lithium）"
-
-#~ msgid "%1/%2"
-#~ msgstr "%1/%2"
-
-#~ msgid "Algorithm:"
-#~ msgstr "アルゴリズム:"
-
-#~ msgid "*3"
-#~ msgstr "*3"
-
-#~ msgid "*2"
-#~ msgstr "*2"
-
-#~ msgid "*1"
-#~ msgstr "*1"
-
-#~ msgid "*4"
-#~ msgstr "*4"
-
-#~ msgid "Animation"
-#~ msgstr "アニメーション"
