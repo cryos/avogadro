@@ -21,6 +21,11 @@ i18n() calls so that xgettext can parse them.
 
 --context=name    : Give i18n calls a context name: i18nc("name", ...)
 --lines           : Include source line numbers in comments (deprecated, it is switched on by default now)
+--cstart=chars    : Start of to-EOL style comments in output, defaults to //
+--language=lang   : Create i18n calls appropriate for KDE bindings
+                    in the given language. Currently known languages:
+                    C++ (default), Python
+--ignore-no-input : Do not warn if there were no filenames specified
 --help|?          : Display this summary
 
 EOF
@@ -33,6 +38,7 @@ EOF
 use strict;
 use warnings;
 use Getopt::Long;
+use Data::Dumper;
 
 use constant TAG_GROUP => 
 {
@@ -43,6 +49,54 @@ use constant TAG_GROUP =>
 
 use constant TAG_GROUPS => join ", ", map "'$_'", sort keys %{&TAG_GROUP};
 
+# Specification to extract nice element-context for strings.
+use constant ECTX_SPEC =>
+{
+  # Data structure: extension => {tag => [ctxlevel, [attribute, ...]], ...}
+  # Order of attributes determines their order in the extracted comment.
+  "ui" => {
+    "widget" => [10, ["class", "name"]],
+    "item" => [15, []],
+    "property" => [20, ["name"]],
+    "attribute" => [20, ["name"]],
+  },
+  "rc" => {
+    "Menu" => [10, ["name"]],
+    "ToolBar" => [10, ["name"]],
+  },
+  "kcfg" => {
+    "group" => [10, ["name"]],
+    "entry" => [20, ["name"]],
+    "whatsthis" => [30, []],
+    "tooltip" => [30, []],
+    "label" => [30, []],
+  },
+};
+
+# Specification to exclude strings by trailing section of element-context.
+use constant ECTX_EXCLUDE =>
+[
+    # Data structure: [[tag, attribute, attrvalue], [...]]
+    # Empty ("") attribute means all elements with given tag,
+    # empty attrvalue means element with given tag and attribute of any value.
+    [["widget", "class", "KFontComboBox"], ["item", "", ""], ["property", "", ""]],
+    [["widget", "class", "KPushButton"], ["attribute", "name", "buttonGroup"]],
+    [["widget", "class", "QRadioButton"], ["attribute", "name", "buttonGroup"]],
+];
+
+# The parts between the tags of the extensions will be copied
+# verbatim
+my %EXTENSION_VERBATIM_TAGS = (
+       "kcfg"               => [ "code" ],
+     );
+
+# Add attribute lists as hashes, for membership checks.
+for my $ext ( keys %{&ECTX_SPEC} ) {
+  for my $tag ( keys %{ECTX_SPEC->{$ext}} ) {
+    my $arr = ECTX_SPEC->{$ext}{$tag}[1];
+    ECTX_SPEC->{$ext}{$tag}[2] = {map {$_ => 1} @{$arr}};
+  }
+}
 
 ###########################################################################################
 # Add options here as necessary - perldoc Getopt::Long for details on GetOptions
@@ -51,11 +105,14 @@ GetOptions ( "tag=s"       => \my @opt_extra_tags,
              "tag-group=s" => \my $opt_tag_group,
              "context=s"   => \my $opt_context,       # I18N context
              "lines"       => \my $opt_lines,
+             "cstart=s"    => \my $opt_cstart,
+             "language=s"  => \my $opt_language,
+             "ignore-no-input" => \my $opt_ignore_no_input,
              "help|?"      => \&usage );
 
 unless( @ARGV )
 {
-  warn "No filename specified";
+  warn "No filename specified" unless $opt_ignore_no_input;
   exit;
 }
 
@@ -67,7 +124,9 @@ die "Unknown tag group: '$opt_tag_group', should be one of " . TAG_GROUPS
 my $tags = TAG_GROUP->{$opt_tag_group};
 my $extra_tags  = join "", map "|" . quotemeta, @opt_extra_tags;
 my $text_string = qr/($tags$extra_tags)( [^>]*)?>/;    # Precompile regexp
-
+my $cstart = $opt_cstart; # no default, selected by language if not given
+my $language = $opt_language || "C++";
+my $ectx_known_exts = join "|", keys %{&ECTX_SPEC};
 
 ###########################################################################################
 #  Escape characters in string exactly like uic does.
@@ -88,6 +147,35 @@ sub escape_like_uic ($) {
 }
 
 ###########################################################################################
+
+sub dummy_call_infix {
+    my ($cstart, $stend, $ctxt, $text, @cmnts) = @_;
+    for my $cmnt (@cmnts) {
+        print qq|$cstart $cmnt\n|;
+    }
+    if (defined $text) {
+        $text = escape_like_uic($text);
+        if (defined $ctxt) {
+            $ctxt = escape_like_uic($ctxt);
+            print qq|i18nc("$ctxt", "$text")$stend\n|;
+        } else {
+            print qq|i18n("$text")$stend\n|;
+        }
+    }
+}
+
+my %dummy_calls = (
+    "C++" => sub {
+        dummy_call_infix($cstart || "//", ";", @_);
+    },
+    "Python" => sub {
+        dummy_call_infix($cstart || "#", "", @_);
+    },
+);
+
+die "unknown language '$language'" if not defined $dummy_calls{$language};
+my $dummy_call = $dummy_calls{$language};
+
 # Program start proper - NB $. is the current line number
 
 for my $file_name ( @ARGV )
@@ -100,6 +188,15 @@ for my $file_name ( @ARGV )
     next;
   }
 
+  # Ready element-context extraction.
+  my $ectx_ext;
+  my $ectx_string;
+  if ( $file_name =~ /\.($ectx_known_exts)(\.(in|cmake))?$/ ) {
+    $ectx_ext = $1;
+    my $ectx_tag_gr = join "|", keys %{ECTX_SPEC->{$ectx_ext}};
+    $ectx_string = qr/($ectx_tag_gr)( [^>]*)?>/; # precompile regexp
+  }
+
   my $string          = "";
   my $in_text         = 0;
   my $start_line_no   = 0;
@@ -107,6 +204,14 @@ for my $file_name ( @ARGV )
   my $tag = "";
   my $attr = "";
   my $context = "";
+  my $notr = "";
+
+  # Element-context data: [[level, tag, [[attribute, value], ...]], ...]
+  # such that subarrays are ordered increasing by level.
+  my @ectx = ();
+
+  # All comments to pending dummy call.
+  my @comments = ();
 
   while ( <$fh> )
   {
@@ -129,9 +234,38 @@ for my $file_name ( @ARGV )
      }
 
      $context = $opt_context unless $in_text;
+     $notr = "" unless $in_text;
 
      unless ( $in_skipped_prop or $in_text )
      {
+       # Check if this line contains context-worthy element.
+       if (    $ectx_ext
+           and ( ($tag, $attr) = $string =~ /<$ectx_string/ ) # no /o here
+           and exists ECTX_SPEC->{$ectx_ext}{$tag} )
+       {
+         my @atts;
+         for my $ectx_att ( @{ECTX_SPEC->{$ectx_ext}{$tag}[1]} )
+         {
+           if ( $attr and $attr =~ /\b$ectx_att\s*=\s*(["'])([^"']*?)\1/ )
+           {
+             my $aval = $2;
+             push @atts, [$ectx_att, $aval];
+           }
+         }
+         # Kill all tags in element-context with level higer or equal to this,
+         # and add it to the end.
+         my $clevel = ECTX_SPEC->{$ectx_ext}{$tag}[0];
+         for ( my $i = 0; $i < @ectx; ++$i )
+         {
+           if ( $clevel <= $ectx[$i][0] )
+           {
+             @ectx = @ectx[0 .. ($i - 1)];
+             last;
+           }
+         }
+         push @ectx, [$clevel, $tag, [@atts]];
+       }
+
        if ( ($tag, $attr) = $string =~ /<$text_string/o )
        {
          my ($attr_comment) = $attr =~ /\w*comment=\"([^\"]*)\"/ if $attr;
@@ -141,9 +275,15 @@ for my $file_name ( @ARGV )
          # It is unlikely that both attributes 'context' and 'comment'
          # will be present, but if so happens, 'context' has priority.
 
+         my ($attr_notr) = $attr =~ /\bnotr=\"([^\"]*)\"/ if $attr;
+         $notr = $attr_notr if $attr_notr;
+
          $string        =~ s/^.*<$text_string//so;
-         $in_text       =  1;
-         $start_line_no =  $.;
+         if ( not $attr or $attr !~ /\/ *$/ )
+         {
+           $in_text       =  1;
+           $start_line_no =  $.;
+         }
        }
        else
        {
@@ -159,30 +299,74 @@ for my $file_name ( @ARGV )
 
      if ( $text cmp "" )
      {
-       if ( not $context or $context ne "KDE::DoNotExtract" )
+       # See if the string should be excluded by trailing element-context.
+       my $exclude_by_ectx = 0;
+       my @rev_ectx = reverse @ectx;
+       for my $ectx_tail (@{&ECTX_EXCLUDE})
        {
-         print "//i18n: $file_name:$.\n";
-         print "// xgettext: no-c-format\n" if $text =~ /%/o;
-         if ( $context )
+         my @rev_ectx_tail = reverse @{$ectx_tail};
+         my $i = 0;
+         $exclude_by_ectx = (@rev_ectx > 0 and @rev_ectx_tail > 0);
+         while ($i < @rev_ectx and $i < @rev_ectx_tail)
          {
-           $context = escape_like_uic($context);
-           $text = escape_like_uic($text);
-           print qq|i18nc("$context","$text");\n|;
+           my ($tag, $attr, $aval) = @{$rev_ectx_tail[$i]};
+           $exclude_by_ectx = (not $tag or ($tag eq $rev_ectx[$i][1]));
+           if ($exclude_by_ectx and $attr)
+           {
+             $exclude_by_ectx = 0;
+             for my $ectx_attr_aval (@{$rev_ectx[$i][2]})
+             {
+               if ($attr eq $ectx_attr_aval->[0])
+               {
+                 $exclude_by_ectx = $aval ? $aval eq $ectx_attr_aval->[1] : 1;
+                 last;
+               }
+             }
+           }
+           last if not $exclude_by_ectx;
+           ++$i;
          }
-         else
-         {
-           $text = escape_like_uic($text);
-           print  qq|i18n("$text");\n|;
-         }
+         last if $exclude_by_ectx;
+       }
+
+       if (($context and $context eq "KDE::DoNotExtract") or ($notr eq "true"))
+       {
+         push @comments, "Manually excluded message at $file_name line $.";
+       }
+       elsif ( $exclude_by_ectx )
+       {
+         push @comments, "Automatically excluded message at $file_name line $.";
        }
        else
        {
-         print "// Manually excluded message at $file_name line $.\n";
+         (my $norm_fname = $file_name) =~ s/^\.\///;
+         push @comments, "i18n: file: $norm_fname:$.";
+         if ( @ectx ) {
+           # Format element-context.
+           my @tag_gr;
+           for my $tgr (reverse @ectx)
+           {
+             my @attr_gr;
+             for my $agr ( @{$tgr->[2]} )
+             {
+               #push @attr_gr, "$agr->[0]=$agr->[1]";
+               push @attr_gr, "$agr->[1]"; # no real nead for attribute name
+             }
+             my $attr = join(", ", @attr_gr);
+             push @tag_gr, "$tgr->[1] ($attr)" if $attr;
+             push @tag_gr, "$tgr->[1]" if not $attr;
+           }
+           my $ectx_str = join ", ", @tag_gr;
+           push @comments, "i18n: ectx: $ectx_str";
+         }
+         push @comments, "xgettext: no-c-format" if $text =~ /%/o;
+         $dummy_call->($context, $text, @comments);
+         @comments = ();
        }
      }
      else
      {
-       print "// Skipped empty message at $file_name line $.\n";
+       push @comments, "Skipped empty message at $file_name line $.";
      }
 
      $string  =~ s/^.*<\/$text_string//o;
@@ -196,5 +380,42 @@ for my $file_name ( @ARGV )
   close $fh or warn "Failed to close: '$file_name': $!";
 
   die "parsing error in $file_name" if $in_text;
-}
 
+  if ($ectx_ext && exists $EXTENSION_VERBATIM_TAGS{$ectx_ext})
+  {
+    unless ( open $fh, "<", $file_name )
+    {
+      # warn "Failed to open: '$file_name': $!";
+      next;
+    }
+
+    while ( <$fh> )
+    {
+      chomp;
+      $string .= "\n" . $_;
+
+      foreach $tag (@{ $EXTENSION_VERBATIM_TAGS{$ectx_ext} })
+      {
+        if ($string =~ /<$tag>(.*)<\/$tag>/s)
+        {
+          # Add comment before any line that has an i18n substring in it.
+          my @matched = split /\n/, $1;
+          my $mlno = $.;
+          (my $norm_fname = $file_name) =~ s/^\.\///;
+          for my $mline (@matched) {
+            # Assume verbatim code is in language given by --language.
+            # Therefore format only comment, and write code line as-is.
+            if ($mline =~ /i18n/) {
+              $dummy_call->(undef, undef, ("i18n: file: $norm_fname:$mlno"));
+            }
+            print "$mline\n";
+            ++$mlno;
+          }
+          $string = "";
+        }
+      }
+    }
+
+    close $fh or warn "Failed to close: '$file_name': $!";
+  }
+}
