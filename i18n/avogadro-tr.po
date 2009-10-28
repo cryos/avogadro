@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-26 14:33-0400\n"
+"POT-Creation-Date: 2009-10-28 16:00-0400\n"
 "PO-Revision-Date: 2009-10-07 20:36+0000\n"
 "Last-Translator: Efe Çiftci <efeciftci@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -17,16 +17,23 @@ msgstr ""
 "X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
+#: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "Tamam"
 
-#: src/aboutdialog.cpp:66
+#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
 #, qt-format
+msgctxt "%1 is the Git revision number."
+msgid "(Git revision: %1)"
+msgstr ""
+
+#: src/aboutdialog.cpp:68
+#, fuzzy, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>For more information check the <a href=\"http://avogadro.openmolecules."
-"net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
+"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a href=\"http://avogadro.openmolecules.net/"
+"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
 "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
 "FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
@@ -38,7 +45,7 @@ msgstr ""
 "INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
 "PARTICULAR PURPOSE).<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:73 src/mainwindow.cpp:838
+#: src/mainwindow.ui:14 src/aboutdialog.cpp:77 src/mainwindow.cpp:838
 #: src/mainwindow.cpp:888 src/mainwindow.cpp:910 src/mainwindow.cpp:1072
 #: src/mainwindow.cpp:1094 src/mainwindow.cpp:1248 src/mainwindow.cpp:1476
 #: src/mainwindow.cpp:2459 src/mainwindow.cpp:2952:46
@@ -75,47 +82,47 @@ msgstr "Ayarlar"
 msgid "Open File"
 msgstr "Dosya aç"
 
-#: src/main.cpp:187
+#: src/main.cpp:204
 msgctxt "Avogadro"
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:188
+#: src/main.cpp:205
 msgctxt "This system does not support OpenGL."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:191
+#: src/main.cpp:208
 msgctxt "System has OpenGL support."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:194
+#: src/main.cpp:211
 msgctxt "About to test OpenGL capabilities."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:201
+#: src/main.cpp:218
 msgctxt "OpenGL capabilities found: "
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:203
+#: src/main.cpp:220
 msgctxt "Double Buffering."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:205
+#: src/main.cpp:222
 msgctxt "Direct Rendering."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:207
+#: src/main.cpp:224
 msgctxt "Antialiasing."
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:232
+#: src/main.cpp:249
 msgctxt ""
 "Avogadro: \t%1 (Hash %2)\n"
 "LibAvogadro: \t%3 (Hash %4)\n"
@@ -123,7 +130,7 @@ msgctxt ""
 msgid "main.cpp"
 msgstr ""
 
-#: src/main.cpp:247
+#: src/main.cpp:264
 msgctxt ""
 "Usage: %1 [options] [files]\n"
 "\n"
@@ -766,7 +773,7 @@ msgstr "&Aç"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:289
+#: src/mainwindow.ui:277 src/mainwindow.ui:292
 msgid "&Quit"
 msgstr "&Çıkış"
 
@@ -774,219 +781,219 @@ msgstr "&Çıkış"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: src/mainwindow.ui:294
+#: src/mainwindow.ui:297
 msgid "Recent"
 msgstr "En Son Dosyalar"
 
-#: src/mainwindow.ui:299
+#: src/mainwindow.ui:302
 msgid "&Clear Recent"
 msgstr "En Son Dosyaları Temizle"
 
-#: src/mainwindow.ui:308 src/mainwindow.ui:320
+#: src/mainwindow.ui:311 src/mainwindow.ui:323
 msgid "&New"
 msgstr "Ye&ni"
 
-#: src/mainwindow.ui:311
+#: src/mainwindow.ui:314
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:329 src/mainwindow.ui:341
+#: src/mainwindow.ui:332 src/mainwindow.ui:344
 msgid "&Close"
 msgstr "&Kapat"
 
-#: src/mainwindow.ui:332
+#: src/mainwindow.ui:335
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:350 src/mainwindow.ui:362
+#: src/mainwindow.ui:353 src/mainwindow.ui:365
 msgid "&Save"
 msgstr "&Kaydet"
 
-#: src/mainwindow.ui:353
+#: src/mainwindow.ui:356
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.ui:371
+#: src/mainwindow.ui:374
 msgid "Save &As..."
 msgstr "&Farklı Kaydet..."
 
-#: src/mainwindow.ui:374
+#: src/mainwindow.ui:377
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#: src/mainwindow.ui:383
+#: src/mainwindow.ui:386
 msgid "Revert To Saved"
 msgstr "Kaydedilene Geri Döndür"
 
-#: src/mainwindow.ui:392
+#: src/mainwindow.ui:395
 msgid "&Graphics..."
 msgstr "&Grafik"
 
-#: src/mainwindow.ui:401
+#: src/mainwindow.ui:404
 msgid "&Full Screen Mode"
 msgstr "&Tam Ekran Modu"
 
-#: src/mainwindow.ui:404
+#: src/mainwindow.ui:407
 msgid "Esc"
 msgstr "Esc"
 
-#: src/mainwindow.ui:413
+#: src/mainwindow.ui:416
 msgid "Set &Background Color..."
 msgstr "Art Alan Rengini Ata..."
 
-#: src/mainwindow.ui:418
+#: src/mainwindow.ui:421
 msgid "&About"
 msgstr "Hakkında"
 
-#: src/mainwindow.ui:427
+#: src/mainwindow.ui:433
 msgid "&Undo"
 msgstr "&Geri Al"
 
-#: src/mainwindow.ui:430
+#: src/mainwindow.ui:436
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#: src/mainwindow.ui:439
+#: src/mainwindow.ui:445
 msgid "&Redo"
 msgstr "&Yinele"
 
-#: src/mainwindow.ui:442
+#: src/mainwindow.ui:448
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#: src/mainwindow.ui:451
+#: src/mainwindow.ui:457
 msgid "New View"
 msgstr "Yeni Görünüm"
 
-#: src/mainwindow.ui:463
+#: src/mainwindow.ui:469
 msgid "Close View"
 msgstr "Görünümü Kapat"
 
-#: src/mainwindow.ui:472
+#: src/mainwindow.ui:478
 msgid "Center"
 msgstr "Ortala"
 
-#: src/mainwindow.ui:481
+#: src/mainwindow.ui:487
 msgid "&Paste"
 msgstr "&Yapıştır"
 
-#: src/mainwindow.ui:484
+#: src/mainwindow.ui:490
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: src/mainwindow.ui:493
+#: src/mainwindow.ui:499
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/mainwindow.ui:496
+#: src/mainwindow.ui:502
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: src/mainwindow.ui:505
+#: src/mainwindow.ui:511
 msgid "Cut"
 msgstr "Kes"
 
-#: src/mainwindow.ui:508
+#: src/mainwindow.ui:514
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#: src/mainwindow.ui:517
+#: src/mainwindow.ui:523
 msgid "Clear"
 msgstr "Temizle"
 
-#: src/mainwindow.ui:520
+#: src/mainwindow.ui:526
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/mainwindow.ui:525
+#: src/mainwindow.ui:531
 msgid "Select All"
 msgstr "Hepsini Seç"
 
-#: src/mainwindow.ui:528
+#: src/mainwindow.ui:534
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#: src/mainwindow.ui:533
+#: src/mainwindow.ui:539
 msgid "Select None"
 msgstr "Hiçbirini Seçme"
 
-#: src/mainwindow.ui:536
+#: src/mainwindow.ui:542
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#: src/mainwindow.ui:545
+#: src/mainwindow.ui:551
 msgid "Configure Avogadro..."
 msgstr "Avagadro'yu Yapılandır..."
 
-#: src/mainwindow.ui:553
+#: src/mainwindow.ui:562
 msgid "Tutorials"
 msgstr "Bilgilendirici Rehberler"
 
-#: src/mainwindow.ui:562
+#: src/mainwindow.ui:571
 msgid "Duplicate View"
 msgstr "Görünümü Çoğalt"
 
-#: src/mainwindow.ui:570
+#: src/mainwindow.ui:579
 msgid "Display Axes"
 msgstr "Eksenleri Göster"
 
-#: src/mainwindow.ui:578
+#: src/mainwindow.ui:587
 msgid "Debug Information"
 msgstr "Hata Ayıklama Bilgisi"
 
-#: src/mainwindow.ui:586
+#: src/mainwindow.ui:595
 msgid "Avogadro Help"
 msgstr "Avagadro Yardımı"
 
-#: src/mainwindow.ui:591
+#: src/mainwindow.ui:600
 msgid "Release Notes"
 msgstr "Yayınlama Notları"
 
-#: src/mainwindow.ui:596
+#: src/mainwindow.ui:605
 msgid "Report a Bug"
 msgstr "Hata Bildir"
 
-#: src/mainwindow.ui:601
+#: src/mainwindow.ui:610
 msgid "FAQ"
 msgstr "SSS"
 
-#: src/mainwindow.ui:606
+#: src/mainwindow.ui:615
 msgid "Avogadro Website"
 msgstr "Avagadro Web Sitesi"
 
-#: src/mainwindow.ui:615
+#: src/mainwindow.ui:624
 msgid "Plugin Manager..."
 msgstr "Eklenti Yöneticisi..."
 
-#: src/mainwindow.ui:624
+#: src/mainwindow.ui:633
 msgid "Project Tree Editor..."
 msgstr "Proje Ağacı Düzenleyicisi..."
 
-#: src/mainwindow.ui:633
+#: src/mainwindow.ui:642
 msgid "Detach View"
 msgstr "Görünümü Ayır"
 
-#: src/mainwindow.ui:642
+#: src/mainwindow.ui:651
 msgid "Molecule File..."
 msgstr "Molekül Dosyası..."
 
-#: src/mainwindow.ui:653
+#: src/mainwindow.ui:662
 msgid "Use Quick Render"
 msgstr "Çabuk Kaplamayı Kullan"
 
-#: src/mainwindow.ui:658
+#: src/mainwindow.ui:667
 msgid "&Vector Graphics..."
 msgstr "&Vektörel Grafikler..."
 
-#: src/mainwindow.ui:666
+#: src/mainwindow.ui:675
 msgid "Display Unit Cell Axes"
 msgstr "Birim Hücre Eksenlerini Göster"
 
-#: src/mainwindow.ui:674
+#: src/mainwindow.ui:683
 msgid "All Molecules in File..."
 msgstr "Dosyadaki Bütün Moleküller..."
 
-#: src/mainwindow.ui:679
+#: src/mainwindow.ui:688
 msgid "Reset Display Types"
 msgstr ""
 
