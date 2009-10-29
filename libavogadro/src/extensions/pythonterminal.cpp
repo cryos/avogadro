@@ -150,7 +150,6 @@ namespace Avogadro
   void PythonTerminalEdit::setTextCursorToEnd()
   {
     QTextCursor cursor(textCursor());
-    qDebug() << "cursor pos: " << cursor.position();
     if (cursor.position() < m_cursorPos)
       cursor.setPosition(m_cursorPos);
     setTextCursor(cursor);
