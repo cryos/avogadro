@@ -92,7 +92,7 @@ namespace Avogadro
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Update Check Failed"),
                            tr("Network timeout or other error."));
-      delete reply;
+      reply->deleteLater();
       return;
     }
 
