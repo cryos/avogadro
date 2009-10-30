@@ -220,10 +220,8 @@ namespace Avogadro
 
   void PythonTerminalEdit::keyPressEvent(QKeyEvent *event)
   {
-    if(event->key() == Qt::Key_Up)
-    {
-      if(m_commandStack.size())
-      {
+    if(event->key() == Qt::Key_Up) {
+      if(m_commandStack.size()) {
         m_current--;
         if(m_current < 0) {
           m_current = m_commandStack.size();
@@ -248,26 +246,20 @@ namespace Avogadro
       }
       event->accept();
       return;
-    }
-    else if(event->key() == Qt::Key_Down)
-    {
-      if(m_commandStack.size())
-      {
+    } else if(event->key() == Qt::Key_Down) {
+      if(m_commandStack.size()) {
         m_current++;
         if(m_current > m_commandStack.size()) {
           m_current = 0;
         }
 
-        if(m_current == m_commandStack.size())
-        {
+        if(m_current == m_commandStack.size()) {
           // we've reached the last command, display empty prompt
           setText(toPlainText().left(m_cursorPos));
           QTextCursor cursor(textCursor());
           cursor.movePosition(QTextCursor::End);
           setTextCursor(cursor);
-        }
-        else
-        {
+        } else {
           // display cached command
           setText(toPlainText().left(m_cursorPos));
           QTextCursor cursor(textCursor());
@@ -280,9 +272,7 @@ namespace Avogadro
       }
       event->accept();
       return;
-    }
-    else if(event->key() == Qt::Key_Return)
-    {
+    } else if(event->key() == Qt::Key_Return) {
       QString text = toPlainText();
       QString t = text.right(text.size() - m_cursorPos);
 
@@ -308,14 +298,18 @@ namespace Avogadro
       runCommand();
       event->accept();
       return;
-    }
-    else if(event->key() == Qt::Key_Backspace)
-    {
+    } else if(event->key() == Qt::Key_Backspace) {
       QTextCursor cursor(textCursor());
       if (cursor.position() <= m_cursorPos) {
         event->accept();
         return;
       }
+    } else if(event->key() == Qt::Key_Home) {
+      QTextCursor cursor(textCursor());
+      cursor.setPosition(m_cursorPos);
+      setTextCursor(cursor);
+      event->accept();
+      return;
     }
 
     setTextCursorToEnd();
