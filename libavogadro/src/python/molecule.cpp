@@ -133,7 +133,7 @@ void export_Molecule()
         &Molecule::numZMatrices,
         "The total number of ZMatrix objects in the Molecule.")
     .add_property("numConformers",
-        &Molecule::numZMatrices,
+        &Molecule::numConformers,
         "The number of conformers.")
 
     .add_property("atoms",
