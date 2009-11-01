@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/edit" >
+        <file>icons/document-revert.png</file>
+        <file>icons/edit-paste.png</file>
+        <file>icons/edit-clear.png</file>
+        <file>icons/edit-copy.png</file>
+        <file>icons/edit-cut.png</file>
+    </qresource>
+</RCC>
