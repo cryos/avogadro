@@ -40,11 +40,6 @@ avogadro_plugin(gamessextension
 avogadro_plugin(propextension
    "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
 
-avogadro_plugin(cartesianextension
-        "cartesianextension.cpp"
-        cartesianeditor.ui
-        edit.qrc)
-
 avogadro_plugin(molecularpropextension
         "molecularpropextension.cpp"
         molecularpropdialog.ui)
