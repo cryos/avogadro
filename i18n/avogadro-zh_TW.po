@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-28 16:00-0400\n"
+"POT-Creation-Date: 2009-11-03 13:44-0500\n"
 "PO-Revision-Date: 2009-09-28 16:50+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -41,10 +41,12 @@ msgstr ""
 "訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
 "\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
 
-#: src/mainwindow.ui:14 src/aboutdialog.cpp:77 src/mainwindow.cpp:838
-#: src/mainwindow.cpp:888 src/mainwindow.cpp:910 src/mainwindow.cpp:1072
-#: src/mainwindow.cpp:1094 src/mainwindow.cpp:1248 src/mainwindow.cpp:1476
-#: src/mainwindow.cpp:2459 src/mainwindow.cpp:2952:46
+#. i18n: file: src/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
+#: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952:69
 msgid "Avogadro"
 msgstr "Avogadro 亞佛加厥"
 
@@ -68,9 +70,12 @@ msgstr "清除分子"
 msgid "Clear Atoms"
 msgstr "清除原子"
 
-#: src/projecttreeeditor.ui:179 src/settingsdialog.ui:14
+#. i18n: file: src/projecttreeeditor.ui:179
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:254 rc.cpp:262
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
 msgid "Settings"
 msgstr "設定"
 
@@ -476,7 +481,9 @@ msgstr " 這個應用程式無法正常使用. 請先更正錯誤."
 msgid "Objects"
 msgstr "物件"
 
-#: src/pluginsettings.ui:38 src/mainwindow.cpp:2999:214
+#. i18n: file: src/pluginsettings.ui:38
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+#: src/mainwindow.cpp:2999:321
 msgid "Colors"
 msgstr "顏色"
 
@@ -551,7 +558,9 @@ msgstr "錯誤"
 msgid "only labels can have sub items"
 msgstr "只有標籤才能有子項目"
 
-#: src/projecttreeeditor.ui:168 src/projecttreemodel.cpp:65:252
+#. i18n: file: src/projecttreeeditor.ui:168
+#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "項目"
 
@@ -564,7 +573,9 @@ msgctxt "Display quality setting"
 msgid "Low"
 msgstr "低"
 
-#: src/settingsdialog.ui:86 src/settingsdialog.cpp:107:270
+#. i18n: file: src/settingsdialog.ui:86
+#. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "中等"
@@ -579,7 +590,9 @@ msgctxt "Display quality setting"
 msgid "Undefined"
 msgstr "未設定"
 
-#: src/settingsdialog.ui:144 src/settingsdialog.cpp:122:276
+#. i18n: file: src/settingsdialog.ui:144
+#. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "無"
@@ -617,475 +630,625 @@ msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
 msgstr "有新版本的 Avogadro 可更新"
 
-#: src/addenginedialog.ui:13
+#. i18n: file: src/addenginedialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
 msgid "Add Display Type"
 msgstr "新增展示模式"
 
-#: src/addenginedialog.ui:19
+#. i18n: file: src/addenginedialog.ui:19
+#. i18n: ectx: property (text), widget (QLabel, baseLabe)
 msgid "Type:"
 msgstr "種類："
 
-#: src/addenginedialog.ui:32
+#. i18n: file: src/addenginedialog.ui:32
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
 msgid "Name:"
 msgstr "名稱:"
 
-#: src/addenginedialog.ui:45
+#. i18n: file: src/addenginedialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
 msgid "Description:"
 msgstr "描述:"
 
-#: src/enginecolorswidget.ui:13
+#. i18n: file: src/enginecolorswidget.ui:13
+#. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
 msgid "Form"
 msgstr "表格"
 
-#: src/enginecolorswidget.ui:24
+#. i18n: file: src/enginecolorswidget.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
 msgstr "顏色是依照:"
 
-#: src/engineprimitiveswidget.ui:41 src/engineprimitiveswidget.ui:44
+#. i18n: file: src/engineprimitiveswidget.ui:41
+#. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:44
+#. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
 msgstr "加入選擇的 Primitives"
 
-#: src/engineprimitiveswidget.ui:55 src/engineprimitiveswidget.ui:58
+#. i18n: file: src/engineprimitiveswidget.ui:55
+#. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:58
+#. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
 msgstr "移除選擇的 Primitives"
 
-#: src/engineprimitiveswidget.ui:69 src/engineprimitiveswidget.ui:72
+#. i18n: file: src/engineprimitiveswidget.ui:69
+#. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
+#. i18n: file: src/engineprimitiveswidget.ui:72
+#. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
 msgstr "選擇所有的 Primitives"
 
-#: src/engineprimitiveswidget.ui:83
+#. i18n: file: src/engineprimitiveswidget.ui:83
+#. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
 msgstr "只顯示所選取的 primitives"
 
-#: src/engineprimitiveswidget.ui:86
+#. i18n: file: src/engineprimitiveswidget.ui:86
+#. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
 msgstr "指定到所選擇的"
 
-#: src/importdialog.ui:13
+#. i18n: file: src/importdialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
 msgstr "匯入分子檔案"
 
-#: src/importdialog.ui:24
+#. i18n: file: src/importdialog.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Filename:"
 msgstr "檔名;"
 
-#: src/importdialog.ui:34
+#. i18n: file: src/importdialog.ui:34
+#. i18n: ectx: property (text), widget (QPushButton, selectButton)
 msgid "Select..."
 msgstr "選取..."
 
-#: src/importdialog.ui:45
+#. i18n: file: src/importdialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Format:"
 msgstr "格式:"
 
-#: src/importdialog.ui:53
+#. i18n: file: src/importdialog.ui:53
+#. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
 msgstr "由延伸功能自動偵測"
 
-#: src/importdialog.ui:63
+#. i18n: file: src/importdialog.ui:63
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
 msgstr "察覺鍵結"
 
-#: src/importdialog.ui:73
+#. i18n: file: src/importdialog.ui:73
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
 msgstr "察覺鍵級"
 
-#: src/importdialog.ui:83
+#. i18n: file: src/importdialog.ui:83
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
 msgstr "座標的單位是 Ångstroms"
 
-#: src/mainwindow.ui:32
+#. i18n: file: src/mainwindow.ui:32
+#. i18n: ectx: property (title), widget (QMenu, menuHelp)
 msgid "&Help"
 msgstr "說明"
 
-#: src/mainwindow.ui:46
+#. i18n: file: src/mainwindow.ui:46
+#. i18n: ectx: property (title), widget (QMenu, menuFile)
 msgid "&File"
 msgstr "檔案"
 
-#: src/mainwindow.ui:50
+#. i18n: file: src/mainwindow.ui:50
+#. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
 msgstr "開啟最近的"
 
-#: src/mainwindow.ui:55
+#. i18n: file: src/mainwindow.ui:55
+#. i18n: ectx: property (title), widget (QMenu, menuExport)
 msgid "Export"
 msgstr "匯出"
 
-#: src/mainwindow.ui:62
+#. i18n: file: src/mainwindow.ui:62
+#. i18n: ectx: property (title), widget (QMenu, menuImport)
 msgid "Import"
 msgstr "匯入"
 
-#: src/mainwindow.ui:81
+#. i18n: file: src/mainwindow.ui:81
+#. i18n: ectx: property (title), widget (QMenu, menuSettings)
 msgid "Se&ttings"
 msgstr "設定"
 
-#: src/mainwindow.ui:85
+#. i18n: file: src/mainwindow.ui:85
+#. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
 msgstr "工具列"
 
-#: src/mainwindow.ui:94
+#. i18n: file: src/mainwindow.ui:94
+#. i18n: ectx: property (title), widget (QMenu, menuBuild)
 msgid "&Build"
 msgstr "建立"
 
-#: src/mainwindow.ui:99
+#. i18n: file: src/mainwindow.ui:99
+#. i18n: ectx: property (title), widget (QMenu, menuView)
 msgid "&View"
 msgstr "檢視"
 
-#: src/mainwindow.ui:121
+#. i18n: file: src/mainwindow.ui:121
+#. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
 msgstr "編輯"
 
-#: src/mainwindow.ui:134
+#. i18n: file: src/mainwindow.ui:134
+#. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
 msgstr "延伸功能"
 
-#: src/mainwindow.ui:139
+#. i18n: file: src/mainwindow.ui:139
+#. i18n: ectx: property (title), widget (QMenu, menuSelect)
 msgid "&Select"
 msgstr "選取"
 
-#: src/mainwindow.ui:156
+#. i18n: file: src/mainwindow.ui:156
+#. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
 msgstr "主工具列"
 
-#: src/mainwindow.ui:193 src/settingsdialog.ui:255
+#. i18n: file: src/mainwindow.ui:193
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
+#. i18n: file: src/settingsdialog.ui:255
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
 msgstr "計劃數狀圖"
 
-#: src/mainwindow.ui:226 src/pluginsettings.ui:23
+#. i18n: file: src/mainwindow.ui:226
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
+#. i18n: file: src/pluginsettings.ui:23
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "顯示的項目"
 
-#: src/mainwindow.ui:235 src/pluginsettings.ui:28
+#. i18n: file: src/mainwindow.ui:235
+#. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
+#. i18n: file: src/pluginsettings.ui:28
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "工具"
 
-#: src/mainwindow.ui:256 src/mainwindow.ui:268
+#. i18n: file: src/mainwindow.ui:256
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:268
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Open"
 msgstr "開啟"
 
-#: src/mainwindow.ui:259
+#. i18n: file: src/mainwindow.ui:259
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: src/mainwindow.ui:277 src/mainwindow.ui:292
+#. i18n: file: src/mainwindow.ui:277
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:292
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Quit"
 msgstr "離開"
 
-#: src/mainwindow.ui:280
+#. i18n: file: src/mainwindow.ui:280
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: src/mainwindow.ui:297
+#. i18n: file: src/mainwindow.ui:297
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
 msgstr "最近的"
 
-#: src/mainwindow.ui:302
+#. i18n: file: src/mainwindow.ui:302
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
 msgstr "清除最近的"
 
-#: src/mainwindow.ui:311 src/mainwindow.ui:323
+#. i18n: file: src/mainwindow.ui:311
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:323
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&New"
 msgstr "新增..."
 
-#: src/mainwindow.ui:314
+#. i18n: file: src/mainwindow.ui:314
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: src/mainwindow.ui:332 src/mainwindow.ui:344
+#. i18n: file: src/mainwindow.ui:332
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:344
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Close"
 msgstr "關閉"
 
-#: src/mainwindow.ui:335
+#. i18n: file: src/mainwindow.ui:335
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: src/mainwindow.ui:353 src/mainwindow.ui:365
+#. i18n: file: src/mainwindow.ui:353
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:365
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Save"
 msgstr "儲存"
 
-#: src/mainwindow.ui:356
+#. i18n: file: src/mainwindow.ui:356
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.ui:374
+#. i18n: file: src/mainwindow.ui:374
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Save &As..."
 msgstr "另存新檔..."
 
-#: src/mainwindow.ui:377
+#. i18n: file: src/mainwindow.ui:377
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
 
-#: src/mainwindow.ui:386
+#. i18n: file: src/mainwindow.ui:386
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
 msgstr "恢復到舊檔"
 
-#: src/mainwindow.ui:395
+#. i18n: file: src/mainwindow.ui:395
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
 msgstr "圖形..."
 
-#: src/mainwindow.ui:404
+#. i18n: file: src/mainwindow.ui:404
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
 msgstr "全螢幕模式"
 
-#: src/mainwindow.ui:407
+#. i18n: file: src/mainwindow.ui:407
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
 msgstr "Esc"
 
-#: src/mainwindow.ui:416
+#. i18n: file: src/mainwindow.ui:416
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Set &Background Color..."
 msgstr "設定背景顏色..."
 
-#: src/mainwindow.ui:421
+#. i18n: file: src/mainwindow.ui:421
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&About"
 msgstr "關於本軟體"
 
-#: src/mainwindow.ui:433
+#. i18n: file: src/mainwindow.ui:433
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Undo"
 msgstr "復原"
 
-#: src/mainwindow.ui:436
+#. i18n: file: src/mainwindow.ui:436
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
 
-#: src/mainwindow.ui:445
+#. i18n: file: src/mainwindow.ui:445
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Redo"
 msgstr "取消復原"
 
-#: src/mainwindow.ui:448
+#. i18n: file: src/mainwindow.ui:448
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
 msgstr "Ctrl+Shift+Z"
 
-#: src/mainwindow.ui:457
+#. i18n: file: src/mainwindow.ui:457
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
 msgstr "增加新的工作視窗"
 
-#: src/mainwindow.ui:469
+#. i18n: file: src/mainwindow.ui:469
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Close View"
 msgstr "關閉工作視窗"
 
-#: src/mainwindow.ui:478
+#. i18n: file: src/mainwindow.ui:478
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Center"
 msgstr "將分子置於工作視窗中央"
 
-#: src/mainwindow.ui:487
+#. i18n: file: src/mainwindow.ui:487
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Paste"
 msgstr "貼上"
 
-#: src/mainwindow.ui:490
+#. i18n: file: src/mainwindow.ui:490
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: src/mainwindow.ui:499
+#. i18n: file: src/mainwindow.ui:499
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Copy"
 msgstr "複製"
 
-#: src/mainwindow.ui:502
+#. i18n: file: src/mainwindow.ui:502
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: src/mainwindow.ui:511
+#. i18n: file: src/mainwindow.ui:511
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Cut"
 msgstr "剪下"
 
-#: src/mainwindow.ui:514
+#. i18n: file: src/mainwindow.ui:514
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+X"
 msgstr "Ctrl+X"
 
-#: src/mainwindow.ui:523
+#. i18n: file: src/mainwindow.ui:523
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Clear"
 msgstr "清除"
 
-#: src/mainwindow.ui:526
+#. i18n: file: src/mainwindow.ui:526
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Backspace"
 msgstr "Backspace"
 
-#: src/mainwindow.ui:531
+#. i18n: file: src/mainwindow.ui:531
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select All"
 msgstr "全選"
 
-#: src/mainwindow.ui:534
+#. i18n: file: src/mainwindow.ui:534
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+A"
 msgstr "Ctrl+A"
 
-#: src/mainwindow.ui:539
+#. i18n: file: src/mainwindow.ui:539
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Select None"
 msgstr "不選擇"
 
-#: src/mainwindow.ui:542
+#. i18n: file: src/mainwindow.ui:542
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+A"
 msgstr "Ctrl+Shift+A"
 
-#: src/mainwindow.ui:551
+#. i18n: file: src/mainwindow.ui:551
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Configure Avogadro..."
 msgstr "設定 Avogadro (的顯示品質)"
 
-#: src/mainwindow.ui:562
+#. i18n: file: src/mainwindow.ui:562
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Tutorials"
 msgstr "教學"
 
-#: src/mainwindow.ui:571
+#. i18n: file: src/mainwindow.ui:571
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
 msgstr "複製工作視窗"
 
-#: src/mainwindow.ui:579
+#. i18n: file: src/mainwindow.ui:579
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
 msgstr "顯示坐標軸"
 
-#: src/mainwindow.ui:587
+#. i18n: file: src/mainwindow.ui:587
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Debug Information"
 msgstr "除錯訊息"
 
-#: src/mainwindow.ui:595
+#. i18n: file: src/mainwindow.ui:595
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Help"
 msgstr "Avogadro 說明"
 
-#: src/mainwindow.ui:600
+#. i18n: file: src/mainwindow.ui:600
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Release Notes"
 msgstr "發行說明"
 
-#: src/mainwindow.ui:605
+#. i18n: file: src/mainwindow.ui:605
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Report a Bug"
 msgstr "回報錯誤"
 
-#: src/mainwindow.ui:610
+#. i18n: file: src/mainwindow.ui:610
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
 msgstr "常見問題"
 
-#: src/mainwindow.ui:615
+#. i18n: file: src/mainwindow.ui:615
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Avogadro Website"
 msgstr "Avogadro 網頁"
 
-#: src/mainwindow.ui:624
+#. i18n: file: src/mainwindow.ui:624
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
 msgstr "外掛程式管理員..."
 
-#: src/mainwindow.ui:633
+#. i18n: file: src/mainwindow.ui:633
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
 msgstr "計劃樹狀圖編輯器..."
 
-#: src/mainwindow.ui:642
+#. i18n: file: src/mainwindow.ui:642
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
 msgstr "分離觀看"
 
-#: src/mainwindow.ui:651
+#. i18n: file: src/mainwindow.ui:651
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Molecule File..."
 msgstr "分子檔案..."
 
-#: src/mainwindow.ui:662
+#. i18n: file: src/mainwindow.ui:662
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
 msgstr "使用快速呈現"
 
-#: src/mainwindow.ui:667
+#. i18n: file: src/mainwindow.ui:667
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
 msgstr "向量圖形..."
 
-#: src/mainwindow.ui:675
+#. i18n: file: src/mainwindow.ui:675
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
 msgstr "顯示單位晶格的軸"
 
-#: src/mainwindow.ui:683
+#. i18n: file: src/mainwindow.ui:683
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "All Molecules in File..."
 msgstr "檔案中所有的分子..."
 
-#: src/mainwindow.ui:688
+#. i18n: file: src/mainwindow.ui:688
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
 msgstr "重設顯示種類"
 
-#: src/pluginsettings.ui:16 src/settingsdialog.ui:246
+#. i18n: file: src/pluginsettings.ui:16
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:246
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
 msgstr "外掛程式"
 
-#: src/pluginsettings.ui:33
+#. i18n: file: src/pluginsettings.ui:33
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
 msgstr "延伸功能"
 
-#: src/pluginsettings.ui:52
+#. i18n: file: src/pluginsettings.ui:52
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
 msgstr "細節"
 
-#: src/projecttreeeditor.ui:17 src/projecttreeeditor.ui:164
+#. i18n: file: src/projecttreeeditor.ui:17
+#. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
+#. i18n: file: src/projecttreeeditor.ui:164
+#. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
 msgstr "數狀圖項目"
 
-#: src/projecttreeeditor.ui:34 src/projecttreeeditor.ui:201
+#. i18n: file: src/projecttreeeditor.ui:34
+#. i18n: ectx: property (text), widget (QLabel, textLabel)
+#. i18n: file: src/projecttreeeditor.ui:201
+#. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Type"
 msgstr "種類"
 
-#: src/projecttreeeditor.ui:48
+#. i18n: file: src/projecttreeeditor.ui:48
+#. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
 msgid "New Item"
 msgstr "新的項目"
 
-#: src/projecttreeeditor.ui:51
+#. i18n: file: src/projecttreeeditor.ui:51
+#. i18n: ectx: property (text), widget (QToolButton, newItemButton)
 msgid "&New Item"
 msgstr "新增項目"
 
-#: src/projecttreeeditor.ui:62
+#. i18n: file: src/projecttreeeditor.ui:62
+#. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
 msgstr "新增子項目"
 
-#: src/projecttreeeditor.ui:65
+#. i18n: file: src/projecttreeeditor.ui:65
+#. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
 msgstr "新增子項目"
 
-#: src/projecttreeeditor.ui:76
+#. i18n: file: src/projecttreeeditor.ui:76
+#. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
 msgid "Delete Item"
 msgstr "刪除項目"
 
-#: src/projecttreeeditor.ui:79
+#. i18n: file: src/projecttreeeditor.ui:79
+#. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
 msgid "&Delete Item"
 msgstr "刪除項目"
 
-#: src/projecttreeeditor.ui:103
+#. i18n: file: src/projecttreeeditor.ui:103
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
 msgstr "項目左移 (在母項目之前)"
 
-#: src/projecttreeeditor.ui:106
+#. i18n: file: src/projecttreeeditor.ui:106
+#. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
 msgid "L"
 msgstr "L"
 
-#: src/projecttreeeditor.ui:117
+#. i18n: file: src/projecttreeeditor.ui:117
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
 msgstr "項目右移"
 
-#: src/projecttreeeditor.ui:120
+#. i18n: file: src/projecttreeeditor.ui:120
+#. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
 msgid "R"
 msgstr "R"
 
-#: src/projecttreeeditor.ui:133
+#. i18n: file: src/projecttreeeditor.ui:133
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
 msgid "Move Item Up"
 msgstr "項目上移"
 
-#: src/projecttreeeditor.ui:136
+#. i18n: file: src/projecttreeeditor.ui:136
+#. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
 msgid "U"
 msgstr "U"
 
-#: src/projecttreeeditor.ui:147
+#. i18n: file: src/projecttreeeditor.ui:147
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
 msgid "Move Item Down"
 msgstr "項目下移"
 
-#: src/projecttreeeditor.ui:150
+#. i18n: file: src/projecttreeeditor.ui:150
+#. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
 msgid "D"
 msgstr "D"
 
-#: src/projecttreeeditor.ui:187
+#. i18n: file: src/projecttreeeditor.ui:187
+#. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
 msgstr "別名"
 
-#: src/projecttreeeditor.ui:217
+#. i18n: file: src/projecttreeeditor.ui:217
+#. i18n: ectx: property (text), widget (QPushButton, settingsButton)
 msgid "Settings..."
 msgstr "設定..."
 
-#: src/settingsdialog.ui:34 src/settingsdialog.ui:237
+#. i18n: file: src/settingsdialog.ui:34
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:237
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "General"
 msgstr "一般"
 
-#: src/settingsdialog.ui:42
+#. i18n: file: src/settingsdialog.ui:42
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
 msgid "Quality:"
 msgstr "品質："
 
-#: src/settingsdialog.ui:49 src/settingsdialog.ui:107
+#. i18n: file: src/settingsdialog.ui:49
+#. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
+#. i18n: file: src/settingsdialog.ui:107
+#. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
 msgstr "設定整體呈現的品質"
 
-#: src/settingsdialog.ui:100
+#. i18n: file: src/settingsdialog.ui:100
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
 msgid "Fog:"
 msgstr "霧化:"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-28 16:17-0400\n"
+"POT-Creation-Date: 2009-11-03 13:44-0500\n"
 "PO-Revision-Date: 2009-06-12 14:10+0000\n"
 "Last-Translator: el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
@@ -712,7 +712,7 @@ msgstr "Obre un fitxer de trajectòria"
 msgid "Trajectory files (*.xtc *.xyz)"
 msgstr "Fitxers de trajectòria (*.xtc *.xyz)"
 
-#: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
+#: src/extensions/animationdialog.cpp:74
 #, qt-format
 msgid "%1/%2"
 msgstr "%1/%2"
@@ -744,19 +744,6 @@ msgstr "fitxers de vídeo (*.avi)"
 #: src/extensions/inputfileextension.cpp:186
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
-#: src/extensions/linmorphdialog.cpp:82
-#: src/extensions/linmorphextension.cpp:79
-#: src/extensions/linmorphextension.cpp:86
-#: src/extensions/linmorphextension.cpp:116
-#: src/extensions/linmorphextension.cpp:239
-#: src/extensions/linmorphextension.cpp:250
-#: src/extensions/linmorphextension.cpp:262
-#: src/extensions/linmorphextension.cpp:268
-#: src/extensions/linmorphextension.cpp:275
-#: src/extensions/linmorphextension.cpp:286
-#: src/extensions/linmorphextension.cpp:294
-#: src/extensions/linmorphextension.cpp:315
-#: src/extensions/linmorphextension.cpp:324
 #: src/extensions/selectextension.cpp:275
 #: src/extensions/selectextension.cpp:287
 #: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
@@ -767,7 +754,7 @@ msgstr "fitxers de vídeo (*.avi)"
 msgid "Avogadro"
 msgstr "Avogadro"
 
-#: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
+#: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
 msgstr "Afig l'extensió .avi"
 
@@ -778,20 +765,17 @@ msgstr "Animació…"
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
 #: src/extensions/gamessextension.cpp:97
-#: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
 #: src/extensions/surfaceextension.cpp:94
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
-#: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "E&xtensions"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
-#: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "No es pot llegir el format del fitxer %1"
@@ -803,8 +787,6 @@ msgstr "S'ha produït un error en llegir el fitxer %1 de trajectoria."
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
-#: src/extensions/linmorphextension.cpp:263
-#: src/extensions/linmorphextension.cpp:269
 msgid "Must specify a valid .avi file name"
 msgstr "Cal especificar un nom .avi vàlid"
 
@@ -1108,7 +1090,7 @@ msgstr "Crea fitxers d'entrada per al paquet químic quàntic GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1746
+#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Títol"
 
@@ -1219,7 +1201,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1917
+#: src/extensions/qcheminputdialog.cpp:178:1857
 msgid "Show Preview"
 msgstr "Mostra la previsualització"
 
@@ -1235,7 +1217,7 @@ msgstr "Mostra la previsualització"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1830 rc.cpp:2019
+#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Amaga la previsualització"
 
@@ -1383,102 +1365,6 @@ msgstr ""
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
 msgstr ""
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Open ligand file"
-msgstr "Obre un fitxer de lligand"
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Avogadro files (*.*)"
-msgstr "Fitxers de l'Avogradro (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:65
-msgid "Open mol file"
-msgstr "Obre un fitxer mol"
-
-#: src/extensions/linmorphdialog.cpp:66
-msgid "Any files (*.*)"
-msgstr "Qualsevol fitxer (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:75
-msgid "Save Movie File"
-msgstr "Alça el fitxer de pel·lícula"
-
-#: src/extensions/linmorphdialog.cpp:77
-msgid "movie files (*.avi)"
-msgstr "fitxers de vídeo (*.avi)"
-
-#: src/extensions/linmorphdialog.cpp:96
-msgid "Save Traj File"
-msgstr "Alça el fitxer Traj"
-
-#: src/extensions/linmorphdialog.cpp:98
-msgid "trajectory file (*.xyz)"
-msgstr "fitxer de trajectòria (*.xyz)"
-
-#: src/extensions/linmorphextension.cpp:45
-#, fuzzy
-msgctxt "i.e., linear interpolation of coordinates during animation"
-msgid "Linear Morph..."
-msgstr "Lin Morph..."
-
-#: src/extensions/linmorphextension.cpp:87
-#, qt-format
-msgid "Read mol file %1 failed."
-msgstr "Errada en la lectura del fitxer mol %1 ."
-
-#: src/extensions/linmorphextension.cpp:117
-#, qt-format
-msgid "Two molecules have different number atoms %1 %2"
-msgstr "Dues molècules tenen diferent nombre d'àtoms %1 %2"
-
-#: src/extensions/linmorphextension.cpp:240
-msgid "GL widget was not correctly initialized in order to save snapshots"
-msgstr ""
-"El estri GL no ha estat correctament inicialitzat per permetre alçar "
-"animacions"
-
-#: src/extensions/linmorphextension.cpp:251
-#, qt-format
-msgid "Cannot save file %1."
-msgstr "No es pot alçar el fitxer %1"
-
-#: src/extensions/linmorphextension.cpp:276
-msgid "GL widget was not correctly initialized in order to save movie"
-msgstr ""
-"El estri GL no ha estat correctament inicialitzat per permetre alçar vídeos"
-
-#: src/extensions/linmorphextension.cpp:287
-msgid "Invalid movie filename.  Must include full directory path"
-msgstr "Nom de vídeo no vàlid. Cal incloure el camí complet al directori"
-
-#: src/extensions/linmorphextension.cpp:295
-msgid ""
-"Invalid movie filename.  Must include full directory path and name, ending "
-"with .avi"
-msgstr ""
-"Nom de vídeo no vàlid. Cal incloure el camí complet al directori i el nom "
-"acabat en .avi"
-
-#: src/extensions/linmorphextension.cpp:316
-#, qt-format
-msgid "Would write file to %1."
-msgstr "Escriuria el fitxer a %1."
-
-#: src/extensions/linmorphextension.cpp:325
-#, qt-format
-msgid "Wrote file %1."
-msgstr "Es va escriure el fitxer %1."
-
-#: src/extensions/linmorphextension.h:38
-#, fuzzy
-msgctxt "linear interpolation (morphing) for animations"
-msgid "Linear Morph"
-msgstr "Linear Morph"
-
-#: src/extensions/linmorphextension.h:39
-msgid "Create linear interpolation for animations"
-msgstr "Crea interpolació linial per les animacions"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
@@ -1978,11 +1864,7 @@ msgstr "Selecciona per residu"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#. i18n: file: src/extensions/liganddialog.ui:60
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/pocketdialog.ui:55
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/extensions/selectextension.cpp:230:126 rc.cpp:1674 rc.cpp:2049
+#: src/extensions/selectextension.cpp:230:126
 msgid "Residue name"
 msgstr "Nom del residu"
 
@@ -2044,7 +1926,7 @@ msgstr "Fitxers de paràmetres shader (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2229
+#: src/extensions/shaderextension.h:41:2142
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -2062,13 +1944,13 @@ msgstr "Eix Y"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2290
+#: src/extensions/spectradialog.cpp:152:2203
 msgid "&Appearance"
 msgstr "&Aparició"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2356
+#: src/extensions/spectradialog.cpp:153:2269
 msgid "E&xport Image"
 msgstr "E&xporta Imatge"
 
@@ -2251,7 +2133,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2284
+#: src/extensions/spectradialog.cpp:736:2197
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2508,7 +2390,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2588
+#: src/extensions/vibrationdialog.cpp:213:2501
 msgid "Start &Animation"
 msgstr ""
 
@@ -2546,26 +2428,6 @@ msgstr "Vibració"
 #: src/extensions/vibrationextension.h:46
 msgid "Visualize vibrational modes from quantum chemistry calculations"
 msgstr "Mostra els modes vibracionals per als càlculs químics quàntics"
-
-#: src/extensions/wiitrackextension.cpp:58
-msgid "Connect"
-msgstr "Connecta"
-
-#: src/extensions/wiitrackextension.cpp:63
-msgid "Disconnect"
-msgstr "Desconnecta"
-
-#: src/extensions/wiitrackextension.cpp:83
-msgid "&WiiTrack"
-msgstr "&WiiTrack"
-
-#: src/extensions/wiitrackextension.h:40
-msgid "Wii Tracking"
-msgstr "Wii Tracking"
-
-#: src/extensions/wiitrackextension.h:41
-msgid "Track motion using Wii remotes"
-msgstr "Moviment de tracció utilitzant Wii remotes"
 
 #: src/glwidget.cpp:453
 msgid ""
@@ -2964,7 +2826,7 @@ msgstr "rotació z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1833 rc.cpp:1920
+#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Inicialització"
 
@@ -3131,7 +2993,7 @@ msgstr "Configuració de mesuraments"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2609
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
 msgid "Add Atom"
 msgstr "Afig un àtom"
 
@@ -3448,8 +3310,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:357
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#. i18n: file: src/extensions/linmorphdialog.ui:181
-#. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgid "Loop"
 msgstr "Cicle"
 
@@ -3706,8 +3566,6 @@ msgstr "Carrega un fitxer..."
 
 #. i18n: file: src/extensions/animationdialog.ui:45
 #. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
-#. i18n: file: src/extensions/linmorphdialog.ui:64
-#. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
 msgid "0/0"
 msgstr "0/0"
 
@@ -3723,8 +3581,6 @@ msgid "Loop"
 msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:189
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/linmorphdialog.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
 msgstr "fps"
@@ -3767,14 +3623,6 @@ msgstr "Nombre de confòrmers"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/extensions/gamessinputdialog.ui:2566
 #. i18n: ectx: property (title), widget (QGroupBox, hessianMethodBox)
-#. i18n: file: src/extensions/liganddialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/liganddialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
-#. i18n: file: src/extensions/pocketdialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/pocketdialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
 msgid "Method"
 msgstr "Mètode"
 
@@ -6051,84 +5899,6 @@ msgstr ""
 msgid "G"
 msgstr ""
 
-#. i18n: file: src/extensions/liganddialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LigandDialog)
-msgid "Create ligand"
-msgstr "Crea un lligand"
-
-#. i18n: file: src/extensions/liganddialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from current selection"
-msgstr "crea un lligand a partir de la selecció actual"
-
-#. i18n: file: src/extensions/liganddialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from residue name"
-msgstr "crea un lligand a partir del nom del residu"
-
-#. i18n: file: src/extensions/liganddialog.ui:48
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from file..."
-msgstr "crea un lligand des d'un fitxer…"
-
-#. i18n: file: src/extensions/liganddialog.ui:79
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-#. i18n: file: src/extensions/pocketdialog.ui:74
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-msgid "The residue name"
-msgstr "El nom del residu"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LinMorphDialog)
-msgid "Linear Morph Trajectory"
-msgstr "Trajectoria Linear Morph"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:24
-#. i18n: ectx: property (toolTip), widget (QPushButton, loadButton)
-msgid ""
-"Load a second conformation and compute a linear interpolation with the "
-"current conformation."
-msgstr ""
-
-#. i18n: file: src/extensions/linmorphdialog.ui:27
-#. i18n: ectx: property (whatsThis), widget (QPushButton, loadButton)
-msgid "button to load a second conformation from a file."
-msgstr "botó per a carregar un segon estereoisòmer des d'un fitxer."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:30
-#. i18n: ectx: property (text), widget (QPushButton, loadButton)
-msgid "Load Second Conformation ..."
-msgstr "Carrega un segon estereoisòmer..."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:41
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Num Frames"
-msgstr "Marc numèric"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:228
-#. i18n: ectx: property (toolTip), widget (QPushButton, saveTrajButton)
-msgid ""
-"Save snapshots of the trajectory as a series of POVRay files.  These can "
-"then be used to make a movie."
-msgstr ""
-"Pren captures de pantalla de la trajectòria com una sèries de fitxers "
-"POVRay. Estos podran utilitzar-se per a fer un vídeo."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:231
-#. i18n: ectx: property (whatsThis), widget (QPushButton, saveTrajButton)
-msgid "Button to save an .xyz trajectory."
-msgstr "Botó per alçar una trajectòria .xyz ."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:234
-#. i18n: ectx: property (text), widget (QPushButton, saveTrajButton)
-msgid "Save trajectory..."
-msgstr "Alça la trajectòria…"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:248
-#. i18n: ectx: property (text), widget (QPushButton, saveMovieButton)
-msgid "Save movie..."
-msgstr "Alça la pel·lícula…"
-
 #. i18n: file: src/extensions/molecularpropdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolecularPropertiesDialog)
 msgid "Molecule Properties"
@@ -6263,34 +6033,6 @@ msgstr "RM1"
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
 msgstr ""
-
-#. i18n: file: src/extensions/pocketdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, PocketDialog)
-msgid "Create binding pocket"
-msgstr "Crea una cavitat d'unió (binding pocket)"
-
-#. i18n: file: src/extensions/pocketdialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from current selection"
-msgstr "crea una cavitat (pocket) a partir de la selecció actual"
-
-#. i18n: file: src/extensions/pocketdialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from residue name"
-msgstr "crea una cavitat (pocket) a partir del residu"
-
-#. i18n: file: src/extensions/pocketdialog.ui:85
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "Radius"
-msgstr "Radi"
-
-#. i18n: file: src/extensions/pocketdialog.ui:98
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, radiusSpin)
-msgid ""
-"All atoms within radius from the ligand will be part of the binding pocket"
-msgstr ""
-"Tots els àtoms dins del radi del lligand formaran part de la cavitat d'unió "
-"(binding pocket)"
 
 #. i18n: file: src/extensions/povraydialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, POVRayDialog)
@@ -6954,6 +6696,154 @@ msgstr ""
 ",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
 "libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
 "devel@lists.sourceforge.net,,el.libre@gmail.com"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Obre un fitxer de lligand"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Fitxers de l'Avogradro (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Obre un fitxer mol"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Qualsevol fitxer (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Alça el fitxer de pel·lícula"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "fitxers de vídeo (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Alça el fitxer Traj"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "fitxer de trajectòria (*.xyz)"
+
+#, fuzzy
+#~ msgctxt "i.e., linear interpolation of coordinates during animation"
+#~ msgid "Linear Morph..."
+#~ msgstr "Lin Morph..."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Errada en la lectura del fitxer mol %1 ."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dues molècules tenen diferent nombre d'àtoms %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
+#~ "animacions"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "No es pot alçar el fitxer %1"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
+#~ "vídeos"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Nom de vídeo no vàlid. Cal incloure el camí complet al directori"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Nom de vídeo no vàlid. Cal incloure el camí complet al directori i el nom "
+#~ "acabat en .avi"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Escriuria el fitxer a %1."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Es va escriure el fitxer %1."
+
+#, fuzzy
+#~ msgctxt "linear interpolation (morphing) for animations"
+#~ msgid "Linear Morph"
+#~ msgstr "Linear Morph"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Crea interpolació linial per les animacions"
+
+#~ msgid "Connect"
+#~ msgstr "Connecta"
+
+#~ msgid "Disconnect"
+#~ msgstr "Desconnecta"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii Tracking"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Moviment de tracció utilitzant Wii remotes"
+
+#~ msgid "Create ligand"
+#~ msgstr "Crea un lligand"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "crea un lligand a partir de la selecció actual"
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "crea un lligand a partir del nom del residu"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "crea un lligand des d'un fitxer…"
+
+#~ msgid "The residue name"
+#~ msgstr "El nom del residu"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Trajectoria Linear Morph"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "botó per a carregar un segon estereoisòmer des d'un fitxer."
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Carrega un segon estereoisòmer..."
+
+#~ msgid "Num Frames"
+#~ msgstr "Marc numèric"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Pren captures de pantalla de la trajectòria com una sèries de fitxers "
+#~ "POVRay. Estos podran utilitzar-se per a fer un vídeo."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Botó per alçar una trajectòria .xyz ."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Alça la trajectòria…"
+
+#~ msgid "Save movie..."
+#~ msgstr "Alça la pel·lícula…"
+
+#~ msgid "Create binding pocket"
+#~ msgstr "Crea una cavitat d'unió (binding pocket)"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "crea una cavitat (pocket) a partir de la selecció actual"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "crea una cavitat (pocket) a partir del residu"
+
+#~ msgid "Radius"
+#~ msgstr "Radi"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr ""
+#~ "Tots els àtoms dins del radi del lligand formaran part de la cavitat "
+#~ "d'unió (binding pocket)"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"

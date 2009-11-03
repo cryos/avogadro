@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-28 16:17-0400\n"
+"POT-Creation-Date: 2009-11-03 13:44-0500\n"
 "PO-Revision-Date: 2009-09-29 04:39+0000\n"
 "Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -707,7 +707,7 @@ msgstr "打开轨迹文件"
 msgid "Trajectory files (*.xtc *.xyz)"
 msgstr "轨迹文件 (*.xtc *.xyz)"
 
-#: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
+#: src/extensions/animationdialog.cpp:74
 #, qt-format
 msgid "%1/%2"
 msgstr "%1/%2"
@@ -739,19 +739,6 @@ msgstr "视频文件 (*.avi)"
 #: src/extensions/inputfileextension.cpp:186
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
-#: src/extensions/linmorphdialog.cpp:82
-#: src/extensions/linmorphextension.cpp:79
-#: src/extensions/linmorphextension.cpp:86
-#: src/extensions/linmorphextension.cpp:116
-#: src/extensions/linmorphextension.cpp:239
-#: src/extensions/linmorphextension.cpp:250
-#: src/extensions/linmorphextension.cpp:262
-#: src/extensions/linmorphextension.cpp:268
-#: src/extensions/linmorphextension.cpp:275
-#: src/extensions/linmorphextension.cpp:286
-#: src/extensions/linmorphextension.cpp:294
-#: src/extensions/linmorphextension.cpp:315
-#: src/extensions/linmorphextension.cpp:324
 #: src/extensions/selectextension.cpp:275
 #: src/extensions/selectextension.cpp:287
 #: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
@@ -762,7 +749,7 @@ msgstr "视频文件 (*.avi)"
 msgid "Avogadro"
 msgstr "Avogadro"
 
-#: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
+#: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
 msgstr "添加.avi扩展名"
 
@@ -773,20 +760,17 @@ msgstr "动画"
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
 #: src/extensions/gamessextension.cpp:97
-#: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
 #: src/extensions/surfaceextension.cpp:94
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
-#: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "扩展(&X)"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
-#: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "无法读取文件 %1 的格式"
@@ -798,8 +782,6 @@ msgstr "读取轨迹文件 %1 失败"
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
-#: src/extensions/linmorphextension.cpp:263
-#: src/extensions/linmorphextension.cpp:269
 msgid "Must specify a valid .avi file name"
 msgstr "必须指定一个有效的.avi文件名"
 
@@ -1087,7 +1069,7 @@ msgstr "为GAMESS量子化学软件包创建输入文件"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1746
+#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "标题"
 
@@ -1197,7 +1179,7 @@ msgstr "Gaussian没有正常运行，也许是因为它没有被正确安装。"
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1917
+#: src/extensions/qcheminputdialog.cpp:178:1857
 msgid "Show Preview"
 msgstr "显示预览"
 
@@ -1213,7 +1195,7 @@ msgstr "显示预览"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1830 rc.cpp:2019
+#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "隐藏预览"
 
@@ -1361,97 +1343,6 @@ msgstr "插入多肽"
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
 msgstr "插入寡多肽序列"
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Open ligand file"
-msgstr "打开配体文件"
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Avogadro files (*.*)"
-msgstr "Avogadro 文件 (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:65
-msgid "Open mol file"
-msgstr "打开mol文件"
-
-#: src/extensions/linmorphdialog.cpp:66
-msgid "Any files (*.*)"
-msgstr "任何文件 (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:75
-msgid "Save Movie File"
-msgstr "保存视频文件"
-
-#: src/extensions/linmorphdialog.cpp:77
-msgid "movie files (*.avi)"
-msgstr "视频文件 (*.avi)"
-
-#: src/extensions/linmorphdialog.cpp:96
-msgid "Save Traj File"
-msgstr "保存轨道文件"
-
-#: src/extensions/linmorphdialog.cpp:98
-msgid "trajectory file (*.xyz)"
-msgstr "轨迹文件 (*.xyz)"
-
-#: src/extensions/linmorphextension.cpp:45
-#, fuzzy
-msgctxt "i.e., linear interpolation of coordinates during animation"
-msgid "Linear Morph..."
-msgstr "线性形态..."
-
-#: src/extensions/linmorphextension.cpp:87
-#, qt-format
-msgid "Read mol file %1 failed."
-msgstr "读取mol文件%1失败。"
-
-#: src/extensions/linmorphextension.cpp:117
-#, qt-format
-msgid "Two molecules have different number atoms %1 %2"
-msgstr "两个分子所含原子数不同 %1 %2"
-
-#: src/extensions/linmorphextension.cpp:240
-msgid "GL widget was not correctly initialized in order to save snapshots"
-msgstr "为保存快照用的GL小工具未能正确初始化"
-
-#: src/extensions/linmorphextension.cpp:251
-#, qt-format
-msgid "Cannot save file %1."
-msgstr "不能保存文件 %1。"
-
-#: src/extensions/linmorphextension.cpp:276
-msgid "GL widget was not correctly initialized in order to save movie"
-msgstr "为保存视频用的GL小工具未能正确初始化"
-
-#: src/extensions/linmorphextension.cpp:287
-msgid "Invalid movie filename.  Must include full directory path"
-msgstr "无效的视频文件名。必须包含完整的路径。"
-
-#: src/extensions/linmorphextension.cpp:295
-msgid ""
-"Invalid movie filename.  Must include full directory path and name, ending "
-"with .avi"
-msgstr "无效的视频文件名。必须包含完整的目录路径和名称，以.avi结尾。"
-
-#: src/extensions/linmorphextension.cpp:316
-#, qt-format
-msgid "Would write file to %1."
-msgstr "将要把文件写入%1。"
-
-#: src/extensions/linmorphextension.cpp:325
-#, qt-format
-msgid "Wrote file %1."
-msgstr "已写入文件%1。"
-
-#: src/extensions/linmorphextension.h:38
-#, fuzzy
-msgctxt "linear interpolation (morphing) for animations"
-msgid "Linear Morph"
-msgstr "线性形态"
-
-#: src/extensions/linmorphextension.h:39
-msgid "Create linear interpolation for animations"
-msgstr "为动画创建线性插值"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
@@ -1945,11 +1836,7 @@ msgstr "按残基选择"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#. i18n: file: src/extensions/liganddialog.ui:60
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/pocketdialog.ui:55
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/extensions/selectextension.cpp:230:126 rc.cpp:1674 rc.cpp:2049
+#: src/extensions/selectextension.cpp:230:126
 msgid "Residue name"
 msgstr "残基名称"
 
@@ -2011,7 +1898,7 @@ msgstr "着色器参数文件 (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2229
+#: src/extensions/shaderextension.h:41:2142
 msgid "GLSL Shaders"
 msgstr "GLSL着色器"
 
@@ -2029,13 +1916,13 @@ msgstr "Y 轴"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2290
+#: src/extensions/spectradialog.cpp:152:2203
 msgid "&Appearance"
 msgstr "外观(&A)"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2356
+#: src/extensions/spectradialog.cpp:153:2269
 msgid "E&xport Image"
 msgstr "导入图像(&X)"
 
@@ -2218,7 +2105,7 @@ msgstr "自定义(&Z) <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2284
+#: src/extensions/spectradialog.cpp:736:2197
 msgid "Customi&ze >>"
 msgstr "自定义(&Z) >>"
 
@@ -2472,7 +2359,7 @@ msgstr "按照频率对 %1 的振动进行分类..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2588
+#: src/extensions/vibrationdialog.cpp:213:2501
 msgid "Start &Animation"
 msgstr "开始动画(&A)"
 
@@ -2510,26 +2397,6 @@ msgstr "振动"
 #: src/extensions/vibrationextension.h:46
 msgid "Visualize vibrational modes from quantum chemistry calculations"
 msgstr "从量子化学计算中显示振动模式。"
-
-#: src/extensions/wiitrackextension.cpp:58
-msgid "Connect"
-msgstr "连接"
-
-#: src/extensions/wiitrackextension.cpp:63
-msgid "Disconnect"
-msgstr "断开"
-
-#: src/extensions/wiitrackextension.cpp:83
-msgid "&WiiTrack"
-msgstr "&Wii跟踪"
-
-#: src/extensions/wiitrackextension.h:40
-msgid "Wii Tracking"
-msgstr "Wii跟踪"
-
-#: src/extensions/wiitrackextension.h:41
-msgid "Track motion using Wii remotes"
-msgstr "使用Wii遥控器跟踪运动"
 
 #: src/glwidget.cpp:453
 msgid ""
@@ -2927,7 +2794,7 @@ msgstr "z轴旋转"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1833 rc.cpp:1920
+#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "重置"
 
@@ -3089,7 +2956,7 @@ msgstr "测量设置"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2609
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
 msgid "Add Atom"
 msgstr "添加原子"
 
@@ -3402,8 +3269,6 @@ msgstr "表格"
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:357
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#. i18n: file: src/extensions/linmorphdialog.ui:181
-#. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgid "Loop"
 msgstr "环"
 
@@ -3660,8 +3525,6 @@ msgstr "载入文件..."
 
 #. i18n: file: src/extensions/animationdialog.ui:45
 #. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
-#. i18n: file: src/extensions/linmorphdialog.ui:64
-#. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
 msgid "0/0"
 msgstr "0/0"
 
@@ -3677,8 +3540,6 @@ msgid "Loop"
 msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:189
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/linmorphdialog.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
 msgstr "帧/秒"
@@ -3721,14 +3582,6 @@ msgstr "构象异构体数量"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/extensions/gamessinputdialog.ui:2566
 #. i18n: ectx: property (title), widget (QGroupBox, hessianMethodBox)
-#. i18n: file: src/extensions/liganddialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/liganddialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
-#. i18n: file: src/extensions/pocketdialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/pocketdialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
 msgid "Method"
 msgstr "算法"
 
@@ -6005,82 +5858,6 @@ msgstr "F"
 msgid "G"
 msgstr "G"
 
-#. i18n: file: src/extensions/liganddialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LigandDialog)
-msgid "Create ligand"
-msgstr "创建配体"
-
-#. i18n: file: src/extensions/liganddialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from current selection"
-msgstr "从当前选择创建配体"
-
-#. i18n: file: src/extensions/liganddialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from residue name"
-msgstr "由残基名创建配体"
-
-#. i18n: file: src/extensions/liganddialog.ui:48
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from file..."
-msgstr "从文件创建配体..."
-
-#. i18n: file: src/extensions/liganddialog.ui:79
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-#. i18n: file: src/extensions/pocketdialog.ui:74
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-msgid "The residue name"
-msgstr "残基名称"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LinMorphDialog)
-msgid "Linear Morph Trajectory"
-msgstr "线性形态轨迹"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:24
-#. i18n: ectx: property (toolTip), widget (QPushButton, loadButton)
-msgid ""
-"Load a second conformation and compute a linear interpolation with the "
-"current conformation."
-msgstr "载入第二个构象，并和当前构象一起计算一个线性插值。"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:27
-#. i18n: ectx: property (whatsThis), widget (QPushButton, loadButton)
-msgid "button to load a second conformation from a file."
-msgstr "从文件中载入第二构象的按钮。"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:30
-#. i18n: ectx: property (text), widget (QPushButton, loadButton)
-msgid "Load Second Conformation ..."
-msgstr "载入第二构象 ..."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:41
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Num Frames"
-msgstr "数值框"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:228
-#. i18n: ectx: property (toolTip), widget (QPushButton, saveTrajButton)
-msgid ""
-"Save snapshots of the trajectory as a series of POVRay files.  These can "
-"then be used to make a movie."
-msgstr "将轨迹的快照保存为一系列POV-Ray文件。这些文件可以用于制作视频。"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:231
-#. i18n: ectx: property (whatsThis), widget (QPushButton, saveTrajButton)
-msgid "Button to save an .xyz trajectory."
-msgstr "保存为.xyz轨迹的按钮。"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:234
-#. i18n: ectx: property (text), widget (QPushButton, saveTrajButton)
-msgid "Save trajectory..."
-msgstr "保存轨迹..."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:248
-#. i18n: ectx: property (text), widget (QPushButton, saveMovieButton)
-msgid "Save movie..."
-msgstr "保存视频..."
-
 #. i18n: file: src/extensions/molecularpropdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolecularPropertiesDialog)
 msgid "Molecule Properties"
@@ -6215,32 +5992,6 @@ msgstr "RM1"
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
 msgstr "NWChem输入"
-
-#. i18n: file: src/extensions/pocketdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, PocketDialog)
-msgid "Create binding pocket"
-msgstr "创建结合域"
-
-#. i18n: file: src/extensions/pocketdialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from current selection"
-msgstr "由当前选择创建空穴结合位点"
-
-#. i18n: file: src/extensions/pocketdialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from residue name"
-msgstr "由残基名称创建空穴结合位点"
-
-#. i18n: file: src/extensions/pocketdialog.ui:85
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "Radius"
-msgstr "半径"
-
-#. i18n: file: src/extensions/pocketdialog.ui:98
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, radiusSpin)
-msgid ""
-"All atoms within radius from the ligand will be part of the binding pocket"
-msgstr "该配体一定半径内的原子均会成为结合域的一部分"
 
 #. i18n: file: src/extensions/povraydialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, POVRayDialog)
@@ -6908,6 +6659,149 @@ msgstr ""
 "sihanzheng@gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,"
 "yjjart@gmail.com,sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,"
 "cuiweicui1985@gmail.com,yjjart@gmail.com"
+
+#~ msgid "Open ligand file"
+#~ msgstr "打开配体文件"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Avogadro 文件 (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "打开mol文件"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "任何文件 (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "保存视频文件"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "视频文件 (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "保存轨道文件"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "轨迹文件 (*.xyz)"
+
+#, fuzzy
+#~ msgctxt "i.e., linear interpolation of coordinates during animation"
+#~ msgid "Linear Morph..."
+#~ msgstr "线性形态..."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "读取mol文件%1失败。"
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "两个分子所含原子数不同 %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "为保存快照用的GL小工具未能正确初始化"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "不能保存文件 %1。"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "为保存视频用的GL小工具未能正确初始化"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "无效的视频文件名。必须包含完整的路径。"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr "无效的视频文件名。必须包含完整的目录路径和名称，以.avi结尾。"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "将要把文件写入%1。"
+
+#~ msgid "Wrote file %1."
+#~ msgstr "已写入文件%1。"
+
+#, fuzzy
+#~ msgctxt "linear interpolation (morphing) for animations"
+#~ msgid "Linear Morph"
+#~ msgstr "线性形态"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "为动画创建线性插值"
+
+#~ msgid "Connect"
+#~ msgstr "连接"
+
+#~ msgid "Disconnect"
+#~ msgstr "断开"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&Wii跟踪"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii跟踪"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "使用Wii遥控器跟踪运动"
+
+#~ msgid "Create ligand"
+#~ msgstr "创建配体"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "从当前选择创建配体"
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "由残基名创建配体"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "从文件创建配体..."
+
+#~ msgid "The residue name"
+#~ msgstr "残基名称"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "线性形态轨迹"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr "载入第二个构象，并和当前构象一起计算一个线性插值。"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "从文件中载入第二构象的按钮。"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "载入第二构象 ..."
+
+#~ msgid "Num Frames"
+#~ msgstr "数值框"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr "将轨迹的快照保存为一系列POV-Ray文件。这些文件可以用于制作视频。"
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "保存为.xyz轨迹的按钮。"
+
+#~ msgid "Save trajectory..."
+#~ msgstr "保存轨迹..."
+
+#~ msgid "Save movie..."
+#~ msgstr "保存视频..."
+
+#~ msgid "Create binding pocket"
+#~ msgstr "创建结合域"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "由当前选择创建空穴结合位点"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "由残基名称创建空穴结合位点"
+
+#~ msgid "Radius"
+#~ msgstr "半径"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr "该配体一定半径内的原子均会成为结合域的一部分"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-28 16:17-0400\n"
+"POT-Creation-Date: 2009-11-03 13:44-0500\n"
 "PO-Revision-Date: 2009-09-23 09:42+0000\n"
 "Last-Translator: Keruskerfuerst <armin_mohring@web.de>\n"
 "Language-Team: <de@li.org>\n"
@@ -704,7 +704,7 @@ msgstr "Trajektorie-Datei öffnen"
 msgid "Trajectory files (*.xtc *.xyz)"
 msgstr "Trajektorie-Dateien (\".xtc *.xyz)"
 
-#: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
+#: src/extensions/animationdialog.cpp:74
 #, qt-format
 msgid "%1/%2"
 msgstr "%1/%2"
@@ -736,19 +736,6 @@ msgstr "Video-Dateien (*.avi)"
 #: src/extensions/inputfileextension.cpp:186
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
-#: src/extensions/linmorphdialog.cpp:82
-#: src/extensions/linmorphextension.cpp:79
-#: src/extensions/linmorphextension.cpp:86
-#: src/extensions/linmorphextension.cpp:116
-#: src/extensions/linmorphextension.cpp:239
-#: src/extensions/linmorphextension.cpp:250
-#: src/extensions/linmorphextension.cpp:262
-#: src/extensions/linmorphextension.cpp:268
-#: src/extensions/linmorphextension.cpp:275
-#: src/extensions/linmorphextension.cpp:286
-#: src/extensions/linmorphextension.cpp:294
-#: src/extensions/linmorphextension.cpp:315
-#: src/extensions/linmorphextension.cpp:324
 #: src/extensions/selectextension.cpp:275
 #: src/extensions/selectextension.cpp:287
 #: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
@@ -759,7 +746,7 @@ msgstr "Video-Dateien (*.avi)"
 msgid "Avogadro"
 msgstr "Avogadro"
 
-#: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
+#: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
 msgstr ".avi Erweiterung hinzufügen"
 
@@ -770,20 +757,17 @@ msgstr "Animation..."
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
 #: src/extensions/gamessextension.cpp:97
-#: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
 #: src/extensions/surfaceextension.cpp:94
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
-#: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "&Erweiterungen"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
-#: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "Das Dateiformat der Datei %1 kann nicht gelesen werden."
@@ -795,8 +779,6 @@ msgstr "Trajektorie-Dateien %1 konnte nicht gelesen werden."
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
-#: src/extensions/linmorphextension.cpp:263
-#: src/extensions/linmorphextension.cpp:269
 msgid "Must specify a valid .avi file name"
 msgstr "Es muss ein gültiger Dateiname einer \".avi-Datei angegeben werden"
 
@@ -1100,7 +1082,7 @@ msgstr "Erstelle Eingabedateien für das GAMESS-Quantenchemie-Paket"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1746
+#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Titel"
 
@@ -1213,7 +1195,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1917
+#: src/extensions/qcheminputdialog.cpp:178:1857
 msgid "Show Preview"
 msgstr "Vorschau anzeigen"
 
@@ -1229,7 +1211,7 @@ msgstr "Vorschau anzeigen"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1830 rc.cpp:2019
+#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Vorschau ausblenden"
 
@@ -1377,103 +1359,6 @@ msgstr "Peptid einfügen"
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
 msgstr "Oligopeptidsequenz einfügen"
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Open ligand file"
-msgstr "Ligand-Datei öffnen"
-
-#: src/extensions/liganddialog.cpp:63
-msgid "Avogadro files (*.*)"
-msgstr "Avogadro-Dateien (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:65
-msgid "Open mol file"
-msgstr "Öffne Mol-Datei"
-
-#: src/extensions/linmorphdialog.cpp:66
-msgid "Any files (*.*)"
-msgstr "Alle Dateien (*.*)"
-
-#: src/extensions/linmorphdialog.cpp:75
-msgid "Save Movie File"
-msgstr "Speichere Filmdatei"
-
-#: src/extensions/linmorphdialog.cpp:77
-msgid "movie files (*.avi)"
-msgstr "Filmdateien (*.avi)"
-
-#: src/extensions/linmorphdialog.cpp:96
-msgid "Save Traj File"
-msgstr "Speichere Traj-Datei"
-
-#: src/extensions/linmorphdialog.cpp:98
-msgid "trajectory file (*.xyz)"
-msgstr "Trajektorie-Datei (*.xyz)"
-
-#: src/extensions/linmorphextension.cpp:45
-#, fuzzy
-msgctxt "i.e., linear interpolation of coordinates during animation"
-msgid "Linear Morph..."
-msgstr "Lin Morph..."
-
-#: src/extensions/linmorphextension.cpp:87
-#, qt-format
-msgid "Read mol file %1 failed."
-msgstr "Einlesen der mol-Datei %1 fehlgeschlagen."
-
-#: src/extensions/linmorphextension.cpp:117
-#, qt-format
-msgid "Two molecules have different number atoms %1 %2"
-msgstr "Zwei Moleküle haben unterschiedliche Atomnummern %1 %2"
-
-#: src/extensions/linmorphextension.cpp:240
-msgid "GL widget was not correctly initialized in order to save snapshots"
-msgstr ""
-"Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den Schnappschuss "
-"zu speichern."
-
-#: src/extensions/linmorphextension.cpp:251
-#, qt-format
-msgid "Cannot save file %1."
-msgstr "Datei %1 konnte nicht gespeichert werden."
-
-#: src/extensions/linmorphextension.cpp:276
-msgid "GL widget was not correctly initialized in order to save movie"
-msgstr ""
-"Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den Film zu "
-"speichern."
-
-#: src/extensions/linmorphextension.cpp:287
-msgid "Invalid movie filename.  Must include full directory path"
-msgstr "Ungültiger Filmdateiname. Vollständiger Pfad muss angegeben werden."
-
-#: src/extensions/linmorphextension.cpp:295
-msgid ""
-"Invalid movie filename.  Must include full directory path and name, ending "
-"with .avi"
-msgstr ""
-"Ungültiger Filmdateiname. Vollständiger Pfad, Name und Endung .avi muss "
-"angegeben werden."
-
-#: src/extensions/linmorphextension.cpp:316
-#, qt-format
-msgid "Would write file to %1."
-msgstr "Datei wird nach %1 geschrieben."
-
-#: src/extensions/linmorphextension.cpp:325
-#, qt-format
-msgid "Wrote file %1."
-msgstr "Datei %1 wurde geschrieben."
-
-#: src/extensions/linmorphextension.h:38
-#, fuzzy
-msgctxt "linear interpolation (morphing) for animations"
-msgid "Linear Morph"
-msgstr "Linear Morph"
-
-#: src/extensions/linmorphextension.h:39
-msgid "Create linear interpolation for animations"
-msgstr "Kreiere eine lineare Interpolation für Animationen"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
@@ -1982,11 +1867,7 @@ msgstr "Auswahl nach Rest"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#. i18n: file: src/extensions/liganddialog.ui:60
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/pocketdialog.ui:55
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/extensions/selectextension.cpp:230:126 rc.cpp:1674 rc.cpp:2049
+#: src/extensions/selectextension.cpp:230:126
 msgid "Residue name"
 msgstr "Restname"
 
@@ -2048,7 +1929,7 @@ msgstr "Shader-Parameter-Dateien (\".params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2229
+#: src/extensions/shaderextension.h:41:2142
 msgid "GLSL Shaders"
 msgstr "GLSL-Shader"
 
@@ -2066,13 +1947,13 @@ msgstr "Y-Achse"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2290
+#: src/extensions/spectradialog.cpp:152:2203
 msgid "&Appearance"
 msgstr "&Aussehen"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2356
+#: src/extensions/spectradialog.cpp:153:2269
 msgid "E&xport Image"
 msgstr "E&xportiere Bild"
 
@@ -2255,7 +2136,7 @@ msgstr "&Einstellen <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2284
+#: src/extensions/spectradialog.cpp:736:2197
 msgid "Customi&ze >>"
 msgstr "&Einstellen >>"
 
@@ -2520,7 +2401,7 @@ msgstr "%1 Resonanzen nach Frequenz sortieren"
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2588
+#: src/extensions/vibrationdialog.cpp:213:2501
 msgid "Start &Animation"
 msgstr "Starte &Animation"
 
@@ -2558,26 +2439,6 @@ msgstr "Vibration"
 #: src/extensions/vibrationextension.h:46
 msgid "Visualize vibrational modes from quantum chemistry calculations"
 msgstr "Vibrationsmodi aus den Quantenchemieberechnungen visualisieren"
-
-#: src/extensions/wiitrackextension.cpp:58
-msgid "Connect"
-msgstr "Verbinden"
-
-#: src/extensions/wiitrackextension.cpp:63
-msgid "Disconnect"
-msgstr "Trennen"
-
-#: src/extensions/wiitrackextension.cpp:83
-msgid "&WiiTrack"
-msgstr "&WiiTrack"
-
-#: src/extensions/wiitrackextension.h:40
-msgid "Wii Tracking"
-msgstr "Wii-Tracking"
-
-#: src/extensions/wiitrackextension.h:41
-msgid "Track motion using Wii remotes"
-msgstr "Verfolge Bewegung mittels Wii-Fernbedienungen"
 
 #: src/glwidget.cpp:453
 msgid ""
@@ -2978,7 +2839,7 @@ msgstr "Rotation um z-Achse"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1833 rc.cpp:1920
+#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -3142,7 +3003,7 @@ msgstr "Einstellungen: Messen"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2609
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
 msgid "Add Atom"
 msgstr "Atom hinzufügen"
 
@@ -3454,8 +3315,6 @@ msgstr "Blatt"
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:357
 #. i18n: ectx: property (text), widget (QLabel, label_15)
-#. i18n: file: src/extensions/linmorphdialog.ui:181
-#. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgid "Loop"
 msgstr "Schleife"
 
@@ -3712,8 +3571,6 @@ msgstr "Datei laden..."
 
 #. i18n: file: src/extensions/animationdialog.ui:45
 #. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
-#. i18n: file: src/extensions/linmorphdialog.ui:64
-#. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
 msgid "0/0"
 msgstr "0/0"
 
@@ -3729,8 +3586,6 @@ msgid "Loop"
 msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:189
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/linmorphdialog.ui:201
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
 msgstr "FPS"
@@ -3773,14 +3628,6 @@ msgstr "Anzahl der Konformeren"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/extensions/gamessinputdialog.ui:2566
 #. i18n: ectx: property (title), widget (QGroupBox, hessianMethodBox)
-#. i18n: file: src/extensions/liganddialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/liganddialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
-#. i18n: file: src/extensions/pocketdialog.ui:21
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/pocketdialog.ui:34
-#. i18n: ectx: property (toolTip), widget (QComboBox, methodCombo)
 msgid "Method"
 msgstr "Methode"
 
@@ -6057,86 +5904,6 @@ msgstr "F"
 msgid "G"
 msgstr "G"
 
-#. i18n: file: src/extensions/liganddialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LigandDialog)
-msgid "Create ligand"
-msgstr "Ligand erstellen"
-
-#. i18n: file: src/extensions/liganddialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from current selection"
-msgstr "Ligand aus Auswahl erstellen"
-
-#. i18n: file: src/extensions/liganddialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from residue name"
-msgstr "Ligand aus Restname erstellen"
-
-#. i18n: file: src/extensions/liganddialog.ui:48
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create ligand from file..."
-msgstr "Ligand aus Datei erstellen..."
-
-#. i18n: file: src/extensions/liganddialog.ui:79
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-#. i18n: file: src/extensions/pocketdialog.ui:74
-#. i18n: ectx: property (toolTip), widget (QLineEdit, resnameText)
-msgid "The residue name"
-msgstr "Name des Restes"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, LinMorphDialog)
-msgid "Linear Morph Trajectory"
-msgstr "Lineare Verwandlungstrajektorie"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:24
-#. i18n: ectx: property (toolTip), widget (QPushButton, loadButton)
-msgid ""
-"Load a second conformation and compute a linear interpolation with the "
-"current conformation."
-msgstr ""
-"Lade die zweite Konformation und berechne eine lineare Interpolation mit der "
-"aktuellen Konformation."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:27
-#. i18n: ectx: property (whatsThis), widget (QPushButton, loadButton)
-msgid "button to load a second conformation from a file."
-msgstr "Button, um eine zweite Konformation aus einer Datei zu lesen."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:30
-#. i18n: ectx: property (text), widget (QPushButton, loadButton)
-msgid "Load Second Conformation ..."
-msgstr "Lade eine zweite Konformation..."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:41
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Num Frames"
-msgstr "Num Frames"
-
-#. i18n: file: src/extensions/linmorphdialog.ui:228
-#. i18n: ectx: property (toolTip), widget (QPushButton, saveTrajButton)
-msgid ""
-"Save snapshots of the trajectory as a series of POVRay files.  These can "
-"then be used to make a movie."
-msgstr ""
-"Speichere Schnappschüsse der Trajektorie als Reihe von POV-Ray-Dateien. "
-"Diese können dazu benutzt werden einen Film zu erstellen."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:231
-#. i18n: ectx: property (whatsThis), widget (QPushButton, saveTrajButton)
-msgid "Button to save an .xyz trajectory."
-msgstr "Button, um eine .xyz-Trajektorie zu speichern."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:234
-#. i18n: ectx: property (text), widget (QPushButton, saveTrajButton)
-msgid "Save trajectory..."
-msgstr "Speichere Trajektorie..."
-
-#. i18n: file: src/extensions/linmorphdialog.ui:248
-#. i18n: ectx: property (text), widget (QPushButton, saveMovieButton)
-msgid "Save movie..."
-msgstr "Speichere Film..."
-
 #. i18n: file: src/extensions/molecularpropdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolecularPropertiesDialog)
 msgid "Molecule Properties"
@@ -6271,32 +6038,6 @@ msgstr "RM1"
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
 msgstr "NWChem Eingabe"
-
-#. i18n: file: src/extensions/pocketdialog.ui:13
-#. i18n: ectx: property (windowTitle), widget (QDialog, PocketDialog)
-msgid "Create binding pocket"
-msgstr "Bindungstasche erstellen"
-
-#. i18n: file: src/extensions/pocketdialog.ui:38
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from current selection"
-msgstr "Bindungstasche aus Auswahl erstellen"
-
-#. i18n: file: src/extensions/pocketdialog.ui:43
-#. i18n: ectx: property (text), item, widget (QComboBox, methodCombo)
-msgid "create pocket from residue name"
-msgstr "Bindungstasche aus Restname erstellen"
-
-#. i18n: file: src/extensions/pocketdialog.ui:85
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "Radius"
-msgstr "Radius"
-
-#. i18n: file: src/extensions/pocketdialog.ui:98
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, radiusSpin)
-msgid ""
-"All atoms within radius from the ligand will be part of the binding pocket"
-msgstr "All Atome im Radius des Liganden werden Teil der Bindungstasche sein."
 
 #. i18n: file: src/extensions/povraydialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, POVRayDialog)
@@ -6965,6 +6706,160 @@ msgstr ""
 "com,,,soc@krg-nw.de,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
 "devel@lists.sourceforge.net,,armin_mohring@web.de,cniehaus@gmx.de,,,"
 "simon@ochsenreither.de"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Ligand-Datei öffnen"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Avogadro-Dateien (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Öffne Mol-Datei"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Alle Dateien (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Speichere Filmdatei"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "Filmdateien (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Speichere Traj-Datei"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "Trajektorie-Datei (*.xyz)"
+
+#, fuzzy
+#~ msgctxt "i.e., linear interpolation of coordinates during animation"
+#~ msgid "Linear Morph..."
+#~ msgstr "Lin Morph..."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Einlesen der mol-Datei %1 fehlgeschlagen."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Zwei Moleküle haben unterschiedliche Atomnummern %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den "
+#~ "Schnappschuss zu speichern."
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Datei %1 konnte nicht gespeichert werden."
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "Das GL-Widget wurde nicht ordnungsgemäss initialisiert, um den Film zu "
+#~ "speichern."
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Ungültiger Filmdateiname. Vollständiger Pfad muss angegeben werden."
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Ungültiger Filmdateiname. Vollständiger Pfad, Name und Endung .avi muss "
+#~ "angegeben werden."
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Datei wird nach %1 geschrieben."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Datei %1 wurde geschrieben."
+
+#, fuzzy
+#~ msgctxt "linear interpolation (morphing) for animations"
+#~ msgid "Linear Morph"
+#~ msgstr "Linear Morph"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Kreiere eine lineare Interpolation für Animationen"
+
+#~ msgid "Connect"
+#~ msgstr "Verbinden"
+
+#~ msgid "Disconnect"
+#~ msgstr "Trennen"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii-Tracking"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Verfolge Bewegung mittels Wii-Fernbedienungen"
+
+#~ msgid "Create ligand"
+#~ msgstr "Ligand erstellen"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "Ligand aus Auswahl erstellen"
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "Ligand aus Restname erstellen"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "Ligand aus Datei erstellen..."
+
+#~ msgid "The residue name"
+#~ msgstr "Name des Restes"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Lineare Verwandlungstrajektorie"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Lade die zweite Konformation und berechne eine lineare Interpolation mit "
+#~ "der aktuellen Konformation."
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "Button, um eine zweite Konformation aus einer Datei zu lesen."
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Lade eine zweite Konformation..."
+
+#~ msgid "Num Frames"
+#~ msgstr "Num Frames"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Speichere Schnappschüsse der Trajektorie als Reihe von POV-Ray-Dateien. "
+#~ "Diese können dazu benutzt werden einen Film zu erstellen."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Button, um eine .xyz-Trajektorie zu speichern."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Speichere Trajektorie..."
+
+#~ msgid "Save movie..."
+#~ msgstr "Speichere Film..."
+
+#~ msgid "Create binding pocket"
+#~ msgstr "Bindungstasche erstellen"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "Bindungstasche aus Auswahl erstellen"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "Bindungstasche aus Restname erstellen"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr ""
+#~ "All Atome im Radius des Liganden werden Teil der Bindungstasche sein."
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"
