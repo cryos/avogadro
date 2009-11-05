@@ -400,6 +400,7 @@ namespace Avogadro
   void CartesianEditor::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+    connect(m_molecule, SIGNAL(Avogadro::Primitive::updated()), this, SLOT(updateCoordinates()));
     connect(m_molecule, SIGNAL(atomUpdated(Atom*)), this, SLOT(updateAtoms(Atom*)));
     connect(m_molecule, SIGNAL(atomRemoved(Atom*)), this, SLOT(updateAtoms(Atom*)));
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(updateCoordinates()));
