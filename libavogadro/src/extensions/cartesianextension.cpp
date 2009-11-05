@@ -51,6 +51,7 @@ namespace Avogadro
   {
     setupUi(this);
     cartesianEdit->setTextColor(Qt::black);
+	cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
     connect(formatBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeFormat()));
