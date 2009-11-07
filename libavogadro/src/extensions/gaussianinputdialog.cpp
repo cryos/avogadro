@@ -48,7 +48,7 @@ namespace Avogadro
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
     m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN),
-    m_dirty(false), m_warned(false)
+    m_dirty(false), m_warned(false), m_process(0), m_progress(0)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -148,11 +148,17 @@ namespace Avogadro
         pathList = key.split('=').at(1).split(':');
     }
 
+    // Add default G03 and G09 directories
+    pathList << "/usr/local/g03" << "/usr/local/g09";
+
     // I don't know how this works for Windows -- probably need a different method
     foreach(const QString &path, pathList) {
-      QFileInfo info(path + '/' + "g03");
-      if (info.exists() && info.isExecutable())
-        returnPath = info.canonicalPath();
+      QFileInfo g03(path + '/' + "g03");
+      if (g03.exists() && g03.isExecutable())
+        returnPath = g03.canonicalFilePath();
+      QFileInfo g09(path + '/' + "g09");
+      if (g09.exists() && g09.isExecutable())
+        returnPath = g09.canonicalFilePath();
     }
 
     return returnPath;
@@ -268,7 +274,7 @@ namespace Avogadro
     if (fileName.isEmpty())
       return;
 
-    QFileInfo info(pathToG03() + '/' + "g03");
+    QFileInfo info(pathToG03());
     if (!info.exists() || !info.isExecutable()) {
       QMessageBox::warning(this, tr("Gaussian Not Installed."),
                            tr("The G03 executable, cannot be found."));
@@ -283,7 +289,7 @@ namespace Avogadro
     arguments << fileName;
     m_inputFile = fileName; // save for reading in output
 
-    m_process->start(pathToG03() + '/' + "g03", arguments);
+    m_process->start(pathToG03(), arguments);
     if (!m_process->waitForStarted()) {
       QMessageBox::warning(this, tr("G03 failed to start."),
                            tr("G03 did not start. Perhaps it is not installed correctly."));
@@ -341,7 +347,7 @@ namespace Avogadro
     QFileInfo checkpointFile(checkpointFileName);
     if (checkpointFile.exists() && checkpointFile.isReadable()) {
       // let's see if formchk exists
-      QString formchkFilePath = pathToG03() + '/' + "formchk";
+      QString formchkFilePath = QFileInfo(pathToG03()).canonicalPath() + '/' + "formchk";
       QFileInfo formchkInfo(formchkFilePath);
       if (formchkInfo.exists() && formchkInfo.isExecutable()) {
         QStringList arguments;

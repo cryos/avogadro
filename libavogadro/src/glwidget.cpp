@@ -643,9 +643,9 @@ namespace Avogadro {
       return d->colorMap;
     }
     else {
-      if(!d->defaultColorMap)
-      {
-        d->defaultColorMap = static_cast<Color*>(PluginManager::factories(Plugin::ColorType).at(0)->createInstance());
+      if(!d->defaultColorMap) {
+        PluginManager *plugins = PluginManager::instance();
+        d->defaultColorMap = static_cast<Color*>(plugins->factories(Plugin::ColorType).at(0)->createInstance());
       }
       return d->defaultColorMap;
     }
@@ -1863,8 +1863,9 @@ namespace Avogadro {
     for(int i=0; i<count; i++) {
       settings.setArrayIndex(i);
       QString engineClass = settings.value("engineID", QString()).toString();
-      PluginFactory *factory = PluginManager::factory(engineClass,
-                                                      Plugin::EngineType);
+      PluginManager *plugins = PluginManager::instance();
+      PluginFactory *factory = plugins->factory(engineClass,
+                                                Plugin::EngineType);
       if(!engineClass.isEmpty() && factory) {
         Engine *engine = static_cast<Engine *>(factory->createInstance(this));
         engine->readSettings(settings);
@@ -1884,7 +1885,8 @@ namespace Avogadro {
     foreach(Engine *engine, engines)
       this->removeEngine(engine);
 
-    foreach(PluginFactory *factory, PluginManager::factories(Plugin::EngineType)) {
+    PluginManager *plugins = PluginManager::instance();
+    foreach(PluginFactory *factory, plugins->factories(Plugin::EngineType)) {
       Engine *engine = static_cast<Engine *>(factory->createInstance(this));
       if (engine->name() == tr("Ball and Stick"))
         engine->setEnabled(true);
@@ -1918,8 +1920,9 @@ namespace Avogadro {
     for(int i=0; i<count; i++) {
       settings.setArrayIndex(i);
       QString engineClass = settings.value("engineID", QString()).toString();
-      PluginFactory *factory = PluginManager::factory(engineClass,
-                                                      Plugin::EngineType);
+      PluginManager *plugins = PluginManager::instance();
+      PluginFactory *factory = plugins->factory(engineClass,
+                                                Plugin::EngineType);
       if(!engineClass.isEmpty() && factory) {
         Engine *engine = static_cast<Engine *>(factory->createInstance(this));
         engine->readSettings(settings);

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>501</width>
-    <height>160</height>
+    <height>188</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -166,7 +166,7 @@
      <item>
       <widget class="QCheckBox" name="loopBox">
        <property name="text">
-        <string>Loop</string>
+        <string comment="Continually re-run the animation in a loop">Loop</string>
        </property>
       </widget>
      </item>

@@ -138,7 +138,7 @@ namespace Avogadro
          
     printPrompt();
 
-    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(setTextCursorToEnd()));
+//    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(setTextCursorToEnd()));
   }
 
   void PythonTerminalEdit::setMolecule(Molecule *molecule)
@@ -173,11 +173,11 @@ namespace Avogadro
  
       if (line.endsWith(':')) {
         indent += 2;
-        m_lines.append(text);
+        m_lines.append(text + "\n");
         append(QLatin1String(""));
       } else {
         if (indent && !m_lines.isEmpty()) {
-          m_lines.append(text);
+          m_lines.append(text + "\n");
           append(QLatin1String(""));
         } else {
           QString result = m_interpreter.exec(text);
@@ -279,6 +279,7 @@ namespace Avogadro
 
       }
       event->accept();
+      return;
     }
     else if(event->key() == Qt::Key_Return)
     {
@@ -317,8 +318,12 @@ namespace Avogadro
       }
     }
 
+    setTextCursorToEnd();
+
     QTextEdit::keyPressEvent(event);
   }
+
+
 }
 
 Q_EXPORT_PLUGIN2(pythonterminal, Avogadro::PythonTerminalFactory)

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-10-09 23:09-0400\n"
-"PO-Revision-Date: 2009-10-10 13:19+0000\n"
+"POT-Creation-Date: 2009-10-19 21:24-0400\n"
+"PO-Revision-Date: 2009-10-18 15:17+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-16 20:36+0000\n"
+"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:46 src/updatedialog.cpp:41
@@ -39,10 +39,10 @@ msgstr ""
 "КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #: src/mainwindow.ui:14
-#: src/aboutdialog.cpp:73 src/mainwindow.cpp:825 src/mainwindow.cpp:875
-#: src/mainwindow.cpp:897 src/mainwindow.cpp:1053 src/mainwindow.cpp:1075
-#: src/mainwindow.cpp:1228 src/mainwindow.cpp:1456 src/mainwindow.cpp:2439
-#: src/mainwindow.cpp:2916 :46
+#: src/aboutdialog.cpp:73 src/mainwindow.cpp:835 src/mainwindow.cpp:885
+#: src/mainwindow.cpp:907 src/mainwindow.cpp:1069 src/mainwindow.cpp:1091
+#: src/mainwindow.cpp:1244 src/mainwindow.cpp:1472 src/mainwindow.cpp:2455
+#: src/mainwindow.cpp:2948 :46
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -69,11 +69,11 @@ msgstr "Удалить атомы"
 #: src/projecttreeeditor.ui:179
 #: src/settingsdialog.ui:14
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2934 src/mainwindow.cpp:2951 :254 rc.cpp:262
+#: src/mainwindow.cpp:2966 src/mainwindow.cpp:2983 :254 rc.cpp:262
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:734
+#: src/importdialog.cpp:175 src/mainwindow.cpp:733
 msgid "Open File"
 msgstr "Открыть файл"
 
@@ -97,115 +97,120 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "Масштаб (&Z)"
 
-#: src/mainwindow.cpp:388 src/mainwindow.cpp:1591
+#: src/mainwindow.cpp:388 src/mainwindow.cpp:1607
 msgid "Bring All to Front"
 msgstr "Вынести всё на передний план"
 
-#: src/mainwindow.cpp:665
+#: src/mainwindow.cpp:664
 msgid "&Tool Settings..."
 msgstr "&Настройки инструментов..."
 
-#: src/mainwindow.cpp:668
+#: src/mainwindow.cpp:667
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:673
+#: src/mainwindow.cpp:672
 msgid "&Display Settings..."
 msgstr "&Настройки отображения..."
 
-#: src/mainwindow.cpp:676
+#: src/mainwindow.cpp:675
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:714 src/mainwindow.cpp:1167
+#: src/mainwindow.cpp:713 src/mainwindow.cpp:1183
 msgid "Common molecule formats"
 msgstr "Распространённые форматы молекул"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1164 src/mainwindow.cpp:1396
-#: src/mainwindow.cpp:1475
+#: src/mainwindow.cpp:718 src/mainwindow.cpp:1180 src/mainwindow.cpp:1412
+#: src/mainwindow.cpp:1491
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/mainwindow.cpp:720 src/mainwindow.cpp:1161 src/mainwindow.cpp:1173
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1177 src/mainwindow.cpp:1189
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:721
+#: src/mainwindow.cpp:720
 msgid "Computational Chemistry Output"
 msgstr "Выходной файл квантовохимической программы"
 
-#: src/mainwindow.cpp:722
+#: src/mainwindow.cpp:721
 msgid "Crystallographic Interchange CIF"
 msgstr "Кристаллографическая информация CIF"
 
-#: src/mainwindow.cpp:723
+#: src/mainwindow.cpp:722
 msgid "GAMESS-US Output"
 msgstr "Выдача GAMESS-US"
 
-#: src/mainwindow.cpp:724
+#: src/mainwindow.cpp:723
 msgid "Gaussian 98/03 Output"
 msgstr "Выдача Gaussian 98/03"
 
-#: src/mainwindow.cpp:725
+#: src/mainwindow.cpp:724
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Гаусс-форматированная контрольная точка"
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:725
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:726
 msgid "MDL Mol"
 msgstr "MDL Mol"
 
-#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:727
 msgid "NWChem Output"
 msgstr "Выходной файл NWChem"
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1178
+#: src/mainwindow.cpp:728 src/mainwindow.cpp:1194
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1180
+#: src/mainwindow.cpp:729 src/mainwindow.cpp:1196
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:731 src/mainwindow.cpp:1181
+#: src/mainwindow.cpp:730 src/mainwindow.cpp:1197
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:802
+#: src/mainwindow.cpp:791 src/mainwindow.cpp:796 src/mainwindow.cpp:2399
+#: src/savedialog.cpp:83
+msgid "untitled"
+msgstr "безымянный"
+
+#: src/mainwindow.cpp:812
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Загрузка %1..."
 
-#: src/mainwindow.cpp:806
+#: src/mainwindow.cpp:816
 #, qt-format
 msgid "Loading %1..."
 msgstr "Загрузка %1..."
 
-#: src/mainwindow.cpp:826 src/mainwindow.cpp:1054
+#: src/mainwindow.cpp:836 src/mainwindow.cpp:1070
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Сбой при чтении файла молекул, файл %1."
 
-#: src/mainwindow.cpp:849
+#: src/mainwindow.cpp:859
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr ""
 "Чтение мульти-молекульного файла. Это может занять некоторое время..."
 
-#: src/mainwindow.cpp:876
+#: src/mainwindow.cpp:886
 msgid "This file does not contain 3D coordinates."
 msgstr "Этот файл не содержит 3D-координат"
 
-#: src/mainwindow.cpp:880
+#: src/mainwindow.cpp:890
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "Хотите чтобы Avogadro построил грубую геометрию?"
 
-#: src/mainwindow.cpp:898
+#: src/mainwindow.cpp:908
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -213,202 +218,198 @@ msgstr ""
 "Этот файл не содержит 3D координат.\n"
 "Вы, возможно, не сможет изменить его или просмотреть верно."
 
-#: src/mainwindow.cpp:948
+#: src/mainwindow.cpp:960
 msgid "Select Molecule to View"
 msgstr "Выберите молекулу для просмотра"
 
-#: src/mainwindow.cpp:973
+#: src/mainwindow.cpp:985
 msgid "Molecule Title"
 msgstr "Название молекулы"
 
-#: src/mainwindow.cpp:1046
+#: src/mainwindow.cpp:1062
 msgid "Atoms: "
 msgstr "Атомы: "
 
-#: src/mainwindow.cpp:1047
+#: src/mainwindow.cpp:1063
 msgid " Bonds: "
 msgstr " Связи: "
 
-#: src/mainwindow.cpp:1063
+#: src/mainwindow.cpp:1079
 msgid "File Loaded..."
 msgstr "Файл загружен..."
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1092
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Вы хотите сохранить изменения в документе?"
 
-#: src/mainwindow.cpp:1085
+#: src/mainwindow.cpp:1101
 msgid "Your changes will be lost if you don't save them."
 msgstr "Изменения будут утеряны, если вы не сохраните их."
 
-#: src/mainwindow.cpp:1089
+#: src/mainwindow.cpp:1105
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1090
+#: src/mainwindow.cpp:1106
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1092
+#: src/mainwindow.cpp:1108
 msgid "Save..."
 msgstr "Сохранить"
 
-#: src/mainwindow.cpp:1092 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1108 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/mainwindow.cpp:1174
+#: src/mainwindow.cpp:1190
 msgid "GAMESS Input"
 msgstr "Входной файл GAMESS"
 
-#: src/mainwindow.cpp:1175
+#: src/mainwindow.cpp:1191
 msgid "Gaussian Cartesian Input"
 msgstr "Входной файл Gaussian (декартовы координаты)"
 
-#: src/mainwindow.cpp:1176
+#: src/mainwindow.cpp:1192
 msgid "Gaussian Z-matrix Input"
 msgstr "Входной файл Gaussian (Z-матрица)"
 
-#: src/mainwindow.cpp:1177
+#: src/mainwindow.cpp:1193
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1179
+#: src/mainwindow.cpp:1195
 msgid "NWChem Input"
 msgstr "Входной файл NWChem"
 
-#: src/mainwindow.cpp:1184
+#: src/mainwindow.cpp:1200
 msgid "Save Molecule As"
 msgstr "Сохранить молекулу как"
 
-#: src/mainwindow.cpp:1386 src/mainwindow.cpp:1398
+#: src/mainwindow.cpp:1402 src/mainwindow.cpp:1414
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1393
+#: src/mainwindow.cpp:1409
 msgid "Common image formats"
 msgstr "Распространенные форматы изображений"
 
-#: src/mainwindow.cpp:1397
+#: src/mainwindow.cpp:1413
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1399
+#: src/mainwindow.cpp:1415
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1405 src/mainwindow.cpp:1484
+#: src/mainwindow.cpp:1421 src/mainwindow.cpp:1500
 msgid "Export Bitmap Graphics"
 msgstr "Экспорт растрового изображения"
 
-#: src/mainwindow.cpp:1457
+#: src/mainwindow.cpp:1473
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Невозможно сохранить файл %1."
 
-#: src/mainwindow.cpp:1465 src/mainwindow.cpp:1476
+#: src/mainwindow.cpp:1481 src/mainwindow.cpp:1492
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1472
+#: src/mainwindow.cpp:1488
 msgid "Common vector image formats"
 msgstr "Распространенные форматы векторной графики"
 
-#: src/mainwindow.cpp:1477
+#: src/mainwindow.cpp:1493
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1478
+#: src/mainwindow.cpp:1494
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1623
+#: src/mainwindow.cpp:1639
 #, qt-format
 msgid "Untitled %1"
 msgstr "Безымянный %1"
 
-#: src/mainwindow.cpp:1728
+#: src/mainwindow.cpp:1744
 msgid "Unable to paste molecule."
 msgstr "Не удалось вставить молекулу."
 
-#: src/mainwindow.cpp:1757
+#: src/mainwindow.cpp:1773
 msgid "Paste failed (format unavailable)."
 msgstr "Вставка не удалась (формат недоступен)"
 
-#: src/mainwindow.cpp:1826
+#: src/mainwindow.cpp:1842
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:1952 src/mainwindow.cpp:1985 src/mainwindow.cpp:2052
-#: src/mainwindow.cpp:2582
+#: src/mainwindow.cpp:1968 src/mainwindow.cpp:2001 src/mainwindow.cpp:2068
+#: src/mainwindow.cpp:2598
 #, qt-format
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2012
+#: src/mainwindow.cpp:2028
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2021
+#: src/mainwindow.cpp:2037
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Открепленные виды"
 
-#: src/mainwindow.cpp:2187
+#: src/mainwindow.cpp:2203
 msgid "Normal Size"
 msgstr "Нормальный размер"
 
-#: src/mainwindow.cpp:2200
+#: src/mainwindow.cpp:2216
 msgid "Full Screen"
 msgstr "Полноэкранный режим"
 
-#: src/mainwindow.cpp:2298
+#: src/mainwindow.cpp:2314
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2383 src/savedialog.cpp:83
-msgid "untitled"
-msgstr "безымянный"
-
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2448
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2438
+#: src/mainwindow.cpp:2454
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2870
+#: src/mainwindow.cpp:2902
 msgid "Add"
 msgstr "Добавить"
 
-#: src/mainwindow.cpp:2875
+#: src/mainwindow.cpp:2907
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: src/mainwindow.cpp:2880
+#: src/mainwindow.cpp:2912
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/mainwindow.cpp:2908
+#: src/mainwindow.cpp:2940
 msgid "No tools or engines loaded."
 msgstr "Не загружены инструменты или движки."
 
-#: src/mainwindow.cpp:2910
+#: src/mainwindow.cpp:2942
 msgid "No engines loaded."
 msgstr "Не загружены движки."
 
-#: src/mainwindow.cpp:2912
+#: src/mainwindow.cpp:2944
 msgid "No tools loaded."
 msgstr "Не загружены инструменты."
 
-#: src/mainwindow.cpp:2913
+#: src/mainwindow.cpp:2945
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -416,16 +417,16 @@ msgstr ""
 " Маловероятно, что это приложение будет работать корректно. Пожалуста "
 "исправьте эту ошибку."
 
-#: src/mainwindow.cpp:2957
+#: src/mainwindow.cpp:2989
 msgid "Objects"
 msgstr "Объекты"
 
 #: src/pluginsettings.ui:38
-#: src/mainwindow.cpp:2963 :214
+#: src/mainwindow.cpp:2995 :214
 msgid "Colors"
 msgstr "Цвета"
 
-#: src/mainwindow.cpp:2996
+#: src/mainwindow.cpp:3028
 msgid " copy"
 msgstr " копировать"
 
@@ -503,7 +504,7 @@ msgstr "Объект"
 
 #: src/projecttreemodel.cpp:66
 msgid "Index"
-msgstr "индекс"
+msgstr "Номер"
 
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
@@ -552,11 +553,11 @@ msgctxt "Level of fog in the scene"
 msgid "Undefined"
 msgstr "Неопределено"
 
-#: src/updatecheck.cpp:81
+#: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
 msgstr "Сбой при проверке обновлений"
 
-#: src/updatecheck.cpp:82
+#: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
 msgstr "Тайм-аут сети или другая ошибка."
 
@@ -592,17 +593,17 @@ msgstr "Раскрашивать по:"
 #: src/engineprimitiveswidget.ui:41
 #: src/engineprimitiveswidget.ui:44
 msgid "Add Selected Primitives"
-msgstr "Добавить Выбранные Примитивы"
+msgstr "Добавить выбранные примитивы"
 
 #: src/engineprimitiveswidget.ui:55
 #: src/engineprimitiveswidget.ui:58
 msgid "Remove Selected Primitives"
-msgstr "Удалить Выбранные Примитивы"
+msgstr "Удалить выбранные примитивы"
 
 #: src/engineprimitiveswidget.ui:69
 #: src/engineprimitiveswidget.ui:72
 msgid "Add All Primitives"
-msgstr "Добавить Все Примитивы"
+msgstr "Добавить все примитивы"
 
 #: src/engineprimitiveswidget.ui:83
 msgid "Display Only Selected Primitives"
@@ -634,11 +635,11 @@ msgstr "Автоматически определить по расширени�
 
 #: src/importdialog.ui:63
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Распознать связи"
 
 #: src/importdialog.ui:73
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Распознать порядки связей"
 
 #: src/importdialog.ui:83
 msgid "Coordinates are in Ångstroms"
@@ -704,7 +705,7 @@ msgstr "Дерево структуры проекта"
 #: src/mainwindow.ui:226
 #: src/pluginsettings.ui:23
 msgid "Display Types"
-msgstr "Отображаемые типы"
+msgstr "Стили отображения"
 
 #: src/mainwindow.ui:235
 #: src/pluginsettings.ui:28
@@ -814,7 +815,7 @@ msgstr "Ctrl+Shift+Z"
 
 #: src/mainwindow.ui:451
 msgid "New View"
-msgstr "Новый вид"
+msgstr "Новое окно просмотра"
 
 #: src/mainwindow.ui:463
 msgid "Close View"
@@ -882,7 +883,7 @@ msgstr "Учебник"
 
 #: src/mainwindow.ui:562
 msgid "Duplicate View"
-msgstr "Дублировать вид"
+msgstr "Дублировать окно просмотра"
 
 #: src/mainwindow.ui:570
 msgid "Display Axes"
@@ -922,7 +923,7 @@ msgstr "Редактор структуры проекта..."
 
 #: src/mainwindow.ui:633
 msgid "Detach View"
-msgstr "Открепить вид"
+msgstr "Открепить окно просмотра"
 
 #: src/mainwindow.ui:642
 msgid "Molecule File..."
@@ -946,7 +947,7 @@ msgstr "Все молекулы в файле..."
 
 #: src/mainwindow.ui:679
 msgid "Reset Display Types"
-msgstr ""
+msgstr "Сбросить стили отображения"
 
 #: src/pluginsettings.ui:16
 #: src/settingsdialog.ui:246
@@ -1069,8 +1070,8 @@ msgstr ""
 "Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nkolay "
 "Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
 "Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010"
+"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr E. "
+"Antonov,Vasily Astanin,Vladimir Kurg,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1079,8 +1080,8 @@ msgstr ""
 "nnulen@yandex.ru,,,nik@sevpinro.ru,panda-"
 "yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@"
 "sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin"
-"@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@g"
-"mail.com,,madcad@yandex.ru,,dn2010@km.ru"
+"@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@"
+"gmail.com,,madcad@yandex.ru,,dn2010@km.ru"
 
 #~ msgid ""
 #~ "This file appears to contain multiple molecule records. Avogadro will only "

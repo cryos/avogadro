@@ -1,11 +1,11 @@
-/**********************************************************************
+/*************************************************************************
   DaltonInputDialog - Dialog for generating Dalton input files
 
   Jogvan Magnus Olsen
 
-  Source code shamelessly copied from gaussianinputdialog.cpp
+  Initial source code was shamelessly copied from gaussianinputdialog.cpp
 
- **********************************************************************/
+ *************************************************************************/
 
 #include "daltoninputdialog.h"
 
@@ -1090,7 +1090,13 @@ namespace Avogadro
       natoms[natomtypes] += 1;
     }
 
-    mol << "Atomtypes=" << natomtypes << " Angstrom" << '\n';
+    mol << "Atomtypes=" << natomtypes << " Angstrom";
+    
+    if (m_propType == exci) {
+       mol << " Nosymm" << '\n';
+    } else {
+       mol << '\n';
+    }
 
     newatomtype = 0;
     oldatomtype = 0;

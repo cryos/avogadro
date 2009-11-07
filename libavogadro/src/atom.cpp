@@ -37,98 +37,104 @@
 
 using Eigen::Vector3d;
 
- namespace Avogadro{
+ namespace Avogadro {
 
-  class AtomPrivate {
-    public:
-    AtomPrivate(): assignedFormalCharge(false) {}
-    bool assignedFormalCharge;
-  };
+   class AtomPrivate {
+   public:
+     AtomPrivate(): assignedFormalCharge(false) {}
+     bool assignedFormalCharge;
+   };
 
-  Atom::Atom(QObject *parent) : Primitive(AtomType, parent),
-                                d_ptr(new AtomPrivate),
-                                m_atomicNumber(0),
-                                m_residue(FALSE_ID), m_partialCharge(0.0),
-                                m_formalCharge(0),
-                                m_forceVector(0.0, 0.0, 0.0)
-  {
-    if (!parent) {
-      qDebug() << "I am an orphaned atom! I feel so invalid...";
-    }
-    m_molecule = static_cast<Molecule*>(parent);
-  }
+   Atom::Atom(QObject *parent) : Primitive(AtomType, parent),
+                                 d_ptr(new AtomPrivate),
+                                 m_atomicNumber(0),
+                                 m_residue(FALSE_ID), m_partialCharge(0.0),
+                                 m_formalCharge(0),
+                                 m_forceVector(0.0, 0.0, 0.0)
+   {
+     if (!parent) {
+       qDebug() << "I am an orphaned atom! I feel so invalid...";
+     }
+     m_molecule = static_cast<Molecule*>(parent);
+   }
 
-  Atom::~Atom()
-  {
-  }
+   Atom::~Atom()
+   {
+   }
 
-  const Eigen::Vector3d * Atom::pos() const
-  {
-    return m_molecule->atomPos(m_id);
-  }
+   const Eigen::Vector3d * Atom::pos() const
+   {
+     return m_molecule->atomPos(m_id);
+   }
 
-  void Atom::setPos(const Eigen::Vector3d &vec)
-  {
-    m_molecule->setAtomPos(m_id, vec);
-  }
+   void Atom::setPos(const Eigen::Vector3d &vec)
+   {
+     m_molecule->setAtomPos(m_id, vec);
+   }
 
-  void Atom::addBond(Bond* bond)
-  {
-    if (bond)
-      addBond(bond->id());
-  }
+   void Atom::setAtomicNumber(int num)
+   {
+     m_atomicNumber = num;
+     update(); // signal that the element has changed, to update residues
+   }
 
-  void Atom::addBond(unsigned long bond)
-  {
-    // Ensure that only unique bonds are added to the list
-    if (m_bonds.indexOf(bond) == -1)
-      m_bonds.push_back(bond);
-    else
-      // Should never happen - warn if it does...
-      qDebug() << "Atom" << m_id << "tried to add duplicate bond" << bond;
-  }
+   void Atom::addBond(Bond* bond)
+   {
+     if (bond)
+       addBond(bond->id());
+   }
 
-  void Atom::removeBond(Bond* bond)
-  {
-    if (bond)
-      removeBond(bond->id());
-  }
+   void Atom::addBond(unsigned long bond)
+   {
+     // Ensure that only unique bonds are added to the list
+     if (m_bonds.indexOf(bond) == -1)
+       m_bonds.push_back(bond);
+     else
+       // Should never happen - warn if it does...
+       qDebug() << "Atom" << m_id << "tried to add duplicate bond" << bond;
+   }
 
-  void Atom::removeBond(unsigned long bond)
-  {
-    int index = m_bonds.indexOf(bond);
-    if (index >= 0)
-      m_bonds.removeAt(index);
-  }
+   void Atom::removeBond(Bond* bond)
+   {
+     if (bond)
+       removeBond(bond->id());
+   }
 
-  QList<unsigned long> Atom::neighbors() const
-  {
-    if (m_molecule && m_bonds.size()) {
-      QList<unsigned long> list;
-      foreach(unsigned long id, m_bonds) {
-        const Bond *bond = m_molecule->bondById(id);
-        if (bond)
-          list.push_back(bond->otherAtom(m_id));
-      }
-      return list;
-    }
-    return QList<unsigned long>();
-  }
+   void Atom::removeBond(unsigned long bond)
+   {
+     int index = m_bonds.indexOf(bond);
+     if (index >= 0)
+       m_bonds.removeAt(index);
+   }
 
-  Bond * Atom::bond(const Atom *other) const
-  {
-    return m_molecule->bond(this, other);
-  }
+   QList<unsigned long> Atom::neighbors() const
+   {
+     if (m_molecule && m_bonds.size()) {
+       QList<unsigned long> list;
+       foreach(unsigned long id, m_bonds) {
+         const Bond *bond = m_molecule->bondById(id);
+         if (bond)
+           list.push_back(bond->otherAtom(m_id));
+       }
+       return list;
+     }
+     return QList<unsigned long>();
+   }
 
-  double Atom::partialCharge() const
-  {
-    if (m_molecule && m_atomicNumber) {
-      m_molecule->calculatePartialCharges();
-      return m_partialCharge;
-    }
-    else
-      return 0.0;
-  }
+   Bond * Atom::bond(const Atom *other) const
+   {
+     return m_molecule->bond(this, other);
+   }
+
+   double Atom::partialCharge() const
+   {
+     if (m_molecule && m_atomicNumber) {
+       m_molecule->calculatePartialCharges();
+       return m_partialCharge;
+     }
+     else
+       return 0.0;
+   }
 
    void Atom::setFormalCharge(int charge)
    {
@@ -210,81 +216,81 @@ using Eigen::Vector3d;
      return formalcharge;
    }
 
-  void Atom::setResidue(unsigned long id)
-  {
-    m_residue = id;
-  }
+   void Atom::setResidue(unsigned long id)
+   {
+     m_residue = id;
+   }
 
-  void Atom::setResidue(const Residue *residue)
-  {
-    m_residue = residue->id();
-  }
+   void Atom::setResidue(const Residue *residue)
+   {
+     m_residue = residue->id();
+   }
 
-  unsigned long Atom::residueId() const
-  {
-    return m_residue;
-  }
+   unsigned long Atom::residueId() const
+   {
+     return m_residue;
+   }
 
-  Residue * Atom::residue() const
-  {
-    return m_molecule->residueById(m_residue);
-  }
+   Residue * Atom::residue() const
+   {
+     return m_molecule->residueById(m_residue);
+   }
 
-  OpenBabel::OBAtom Atom::OBAtom()
-  {
-    // Need to copy all relevant data over to the OBAtom
-    OpenBabel::OBAtom obatom;
-    const Vector3d *v = m_molecule->atomPos(m_id);
-    obatom.SetVector(v->x(), v->y(), v->z());
-    obatom.SetAtomicNum(m_atomicNumber);
-    obatom.SetFormalCharge(m_formalCharge);
+   OpenBabel::OBAtom Atom::OBAtom()
+   {
+     // Need to copy all relevant data over to the OBAtom
+     OpenBabel::OBAtom obatom;
+     const Vector3d *v = m_molecule->atomPos(m_id);
+     obatom.SetVector(v->x(), v->y(), v->z());
+     obatom.SetAtomicNum(m_atomicNumber);
+     obatom.SetFormalCharge(m_formalCharge);
 
-    // Add dynamic properties as OBPairData
-    OpenBabel::OBPairData *obproperty;
-    foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
-      obproperty = new OpenBabel::OBPairData;
-      obproperty->SetAttribute(propertyName.data());
-      obproperty->SetValue(property(propertyName).toByteArray().data());
-      obatom.SetData(obproperty);
-    }
+     // Add dynamic properties as OBPairData
+     OpenBabel::OBPairData *obproperty;
+     foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute(propertyName.data());
+       obproperty->SetValue(property(propertyName).toByteArray().data());
+       obatom.SetData(obproperty);
+     }
 
-    return obatom;
-  }
+     return obatom;
+   }
 
-  bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
-  {
-    // Copy all needed OBAtom data to our atom
-    m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
-    m_atomicNumber = obatom->GetAtomicNum();
-    if (obatom->GetFormalCharge() != 0)
-      m_formalCharge = obatom->GetFormalCharge();
+   bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
+   {
+     // Copy all needed OBAtom data to our atom
+     m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
+     m_atomicNumber = obatom->GetAtomicNum();
+     if (obatom->GetFormalCharge() != 0)
+       m_formalCharge = obatom->GetFormalCharge();
 
-    // And add any generic data as QObject properties
-    std::vector<OpenBabel::OBGenericData*> data;
-    OpenBabel::OBDataIterator j;
-    OpenBabel::OBPairData *property;
+     // And add any generic data as QObject properties
+     std::vector<OpenBabel::OBGenericData*> data;
+     OpenBabel::OBDataIterator j;
+     OpenBabel::OBPairData *property;
 
-    data = obatom->GetAllData(OpenBabel::OBGenericDataType::PairData);
-    for (j = data.begin(); j != data.end(); ++j) {
-      property = static_cast<OpenBabel::OBPairData *>(*j);
-      setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
-    }
+     data = obatom->GetAllData(OpenBabel::OBGenericDataType::PairData);
+     for (j = data.begin(); j != data.end(); ++j) {
+       property = static_cast<OpenBabel::OBPairData *>(*j);
+       setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
+     }
 
-    return true;
-  }
+     return true;
+   }
 
-  Atom& Atom::operator=(const Atom& other)
-  {
-    // Virtually everything here is invariant apart from the index and possibly id
-    if (other.pos())
-      m_molecule->setAtomPos(m_id, *other.pos());
-    else
-      qDebug() << "Atom position returned null.";
-    m_atomicNumber = other.m_atomicNumber;
-    m_formalCharge = other.m_formalCharge;
-    return *this;
-  }
+   Atom& Atom::operator=(const Atom& other)
+   {
+     // Virtually everything here is invariant apart from the index and possibly id
+     if (other.pos())
+       m_molecule->setAtomPos(m_id, *other.pos());
+     else
+       qDebug() << "Atom position returned null.";
+     m_atomicNumber = other.m_atomicNumber;
+     m_formalCharge = other.m_formalCharge;
+     return *this;
+   }
 
-} // End namespace Avogadro
+ } // End namespace Avogadro
 
 #include "atom.moc"

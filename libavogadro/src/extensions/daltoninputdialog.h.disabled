@@ -1,11 +1,11 @@
-/**********************************************************************
+/*************************************************************************
   DaltonInputDialog - Dialog for generating Dalton input files
 
   Jogvan Magnus Olsen
 
-  Source code shamelessly copied from gaussianinputdialog.h
+  Initial source code was shamelessly copied from gaussianinputdialog.cpp
 
- **********************************************************************/
+ *************************************************************************/
 
 #ifndef DALTONINPUTDIALOG_H
 #define DALTONINPUTDIALOG_H
