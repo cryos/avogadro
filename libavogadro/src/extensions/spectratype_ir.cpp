@@ -45,6 +45,18 @@ namespace Avogadro {
 
     m_dialog = parent;
 
+    // Setup signals/slots
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(setScale(double)));
+    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(updateYAxis(QString)));
+
     readSettings();
   }
 
@@ -69,28 +81,17 @@ namespace Avogadro {
 
   void IRSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
-    setScale(settings.value("spectra/IR/scale", 1.0).toDouble());
+    ui.spin_scale->setValue(settings.value("spectra/IR/scale", 1.0).toDouble());
     ui.spin_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
     updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
+    emit plotDataChanged();
   }
 
   bool IRSpectra::checkForData(Molecule * mol) {
     OpenBabel::OBMol obmol = mol->OBMol();
     OpenBabel::OBVibrationData *vibrations = static_cast<OpenBabel::OBVibrationData*>(obmol.GetData(OpenBabel::OBGenericDataType::VibrationData));
     if (!vibrations) return false;
-
-    // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(setScale(double)));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));
 
     // OK, we have valid vibrations, so store them for later
     vector<double> wavenumbers = vibrations->GetFrequencies();
@@ -261,9 +262,9 @@ namespace Avogadro {
   }
 
   void IRSpectra::setScale(double scale) {
+    qDebug() << scale << " " << m_scale;
     if (scale == m_scale) return;
     m_scale = scale;
-    ui.spin_scale->setValue(scale);
     emit plotDataChanged();
   }
 
