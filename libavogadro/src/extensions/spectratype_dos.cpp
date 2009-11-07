@@ -45,6 +45,24 @@ namespace Avogadro {
 
     m_dialog = parent;
 
+    // Setup signals/slots
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateImportedSpectra()));
+    connect(ui.cb_toggleIntegrated, SIGNAL(toggled(bool)),
+            this, SLOT(toggleIntegratedDOS(bool)));
+    connect(ui.cb_scaleIntegrated, SIGNAL(toggled(bool)),
+            m_dialog, SLOT(regenerateImportedSpectra()));
+    connect(ui.combo_energy, SIGNAL(currentIndexChanged(int)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.combo_density, SIGNAL(currentIndexChanged(int)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.cb_fermi, SIGNAL(toggled(bool)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.spin_valence, SIGNAL(valueChanged(int)),
+            this, SIGNAL(plotDataChanged()));
+
     readSettings();
   }
 
@@ -92,24 +110,6 @@ namespace Avogadro {
 
     if (energies.size() == 0 || energies.size() != densities.size())
       return false;
-
-    // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateImportedSpectra()));
-    connect(ui.cb_toggleIntegrated, SIGNAL(toggled(bool)),
-            this, SLOT(toggleIntegratedDOS(bool)));
-    connect(ui.cb_scaleIntegrated, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateImportedSpectra()));
-    connect(ui.combo_energy, SIGNAL(currentIndexChanged(int)),
-            this, SIGNAL(plotDataChanged()));
-    connect(ui.combo_density, SIGNAL(currentIndexChanged(int)),
-            this, SIGNAL(plotDataChanged()));
-    connect(ui.cb_fermi, SIGNAL(toggled(bool)),
-            this, SIGNAL(plotDataChanged()));
-    connect(ui.spin_valence, SIGNAL(valueChanged(int)),
-            this, SIGNAL(plotDataChanged()));
 
     // Store in member vars
     m_numAtoms = mol->numAtoms();

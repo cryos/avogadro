@@ -48,6 +48,16 @@ namespace Avogadro {
 
     m_dialog = parent;
 
+    // Setup signals/slots
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SIGNAL(plotDataChanged()));
+    connect(ui.combo_rotatoryType, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(rotatoryTypeChanged(QString)));
+
     readSettings();
   }
 
@@ -80,16 +90,6 @@ namespace Avogadro {
     if (!etd) return false;
     if ( etd->GetRotatoryStrengthsVelocity().size() == 0 &&
          etd->GetRotatoryStrengthsLength().size() == 0 ) return false;
-
-    // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            this, SIGNAL(plotDataChanged()));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SIGNAL(plotDataChanged()));
-    connect(ui.combo_rotatoryType, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(rotatoryTypeChanged(QString)));
 
     // OK, we have valid data, so store them for later
     std::vector<double> wavelengths = etd->GetWavelengths();
