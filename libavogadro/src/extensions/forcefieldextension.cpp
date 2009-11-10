@@ -358,6 +358,17 @@ namespace Avogadro
       return;
     }
 
+    // Ignore dummy atoms -- all atoms with atomic # less than 1
+    if (m_constraints && m_forceField) {
+      foreach(const Atom *atom, m_molecule->atoms())
+        {
+          if (atom->atomicNumber() < 1)
+            m_constraints->addIgnore(atom->index() + 1);
+        }
+      
+      m_forceField->SetConstraints(m_constraints->constraints());
+    }
+
     if ( m_task == 0 ) {
       if ( m_algorithm == 0 ) {
         m_forceField->SteepestDescentInitialize( m_nSteps, pow( 10.0, -m_convergence )); // initialize sd
