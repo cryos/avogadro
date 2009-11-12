@@ -2,6 +2,7 @@
   PluginListView - View for listing plugins
 
   Copyright (C) 2007 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
