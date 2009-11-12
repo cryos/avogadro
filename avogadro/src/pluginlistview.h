@@ -39,11 +39,15 @@ namespace Avogadro {
 
       PluginItem* selectedPlugin() const;
 
+    protected Q_SLOTS:
+	  void currentChanged ( const QModelIndex & current, const QModelIndex & previous );
+	  
     private Q_SLOTS:
       void selectPlugin( const QModelIndex &index );
 
     Q_SIGNALS:
-      void clicked( PluginItem * );
+      void selectionChanged( PluginItem * );
+	  
   };
 
 }
