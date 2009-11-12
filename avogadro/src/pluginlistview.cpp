@@ -41,10 +41,16 @@ namespace Avogadro {
     
     if(plugin) 
     {
-      emit clicked(plugin);
+      emit selectionChanged(plugin);
     }
   }
 
+  void PluginListView::currentChanged ( const QModelIndex & current, const QModelIndex & previous )
+  {
+     QAbstractItemView::currentChanged(current,previous);
+     selectPlugin(current);
+  }
+  
   PluginItem* PluginListView::selectedPlugin() const
   {
     const QModelIndex idx = currentIndex();
