@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 by Geoffrey R. Hutchison
   Some portions Copyright (C) 2008 Tim Vandermeersch
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -39,11 +40,15 @@ namespace Avogadro {
 
       PluginItem* selectedPlugin() const;
 
+    protected Q_SLOTS:
+	  void currentChanged ( const QModelIndex & current, const QModelIndex & previous );
+	  
     private Q_SLOTS:
       void selectPlugin( const QModelIndex &index );
 
     Q_SIGNALS:
-      void clicked( PluginItem * );
+      void selectionChanged( PluginItem * );
+	  
   };
 
 }
