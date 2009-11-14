@@ -49,7 +49,7 @@ avogadro_plugin(polygonengine polygonengine.cpp)
 avogadro_plugin(surfaceengine surfaceengine.cpp surfacesettingswidget.ui)
 
 # Axes engine - display the axes
-avogadro_plugin(axesengine axesengine.cpp)
+avogadro_plugin(axesengine axesengine.cpp axessettingswidget.ui)
 
 # Dipole engine -- dipole moment
 avogadro_plugin(dipoleengine dipoleengine.cpp dipolesettingswidget.ui)
