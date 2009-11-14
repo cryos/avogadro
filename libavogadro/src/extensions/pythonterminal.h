@@ -79,7 +79,7 @@ namespace Avogadro {
 
     public:
       PythonTerminalEdit(QWidget *parent = 0);
-      virtual void keyPressEvent ( QKeyEvent * event );
+      void keyPressEvent(QKeyEvent *event);
 
       void setMolecule(Molecule *molecule); 
 
