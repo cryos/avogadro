@@ -216,7 +216,7 @@ namespace Avogadro {
   bool AutoOptTool::paint(GLWidget *widget)
   {
     QPoint labelPos(10, 10);
-    //QPoint debugPos(10, 50);
+    QPoint debugPos(10, 50);
     glColor3f(1.0,1.0,1.0);
     if (m_running) {
       if (m_setupFailed) {
@@ -230,8 +230,8 @@ namespace Avogadro {
             tr("AutoOpt: E = %1 %2 (dE = %3)").arg(energy).
             arg("kJ/mol").
             arg( fabs(m_lastEnergy - energy) ));
-        //widget->painter()->drawText(debugPos,
-        //    tr("Num Constraints: %1").arg(m_forceField->GetConstraints().Size()));
+        widget->painter()->drawText(debugPos,
+                                    tr("Num Constraints: %1").arg(m_forceField->GetConstraints().Size()));
         m_lastEnergy = energy;
       }
     }
@@ -517,6 +517,14 @@ namespace Avogadro {
      m_forceField->SetLogLevel(OBFF_LOGLVL_NONE);
 
      OBMol mol = m_molecule->OBMol();
+
+     // Ignore all atoms with atomic # less than 1
+     foreach(const Atom *atom, m_molecule->atoms())
+       {
+         if (atom->atomicNumber() < 1)
+           m_forceField->GetConstraints().AddIgnore(atom->index() + 1);
+       }
+
      if ( !m_forceField->Setup( mol ) ) {
        m_stop = true;
        emit setupFailed();

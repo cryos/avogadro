@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/amarok" >
-        <file>icons/amarok_pause.png</file>
-        <file>icons/amarok_play.png</file>
-        <file>icons/amarok_stop.png</file>
-    </qresource>
-</RCC>
