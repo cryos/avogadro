@@ -36,9 +36,7 @@ namespace Avogadro {
     PluginItemModel *model = new PluginItemModel(Plugin::EngineType);
     ui.listView->setModel(model);
 
-    connect(ui.listView, SIGNAL(clicked(QModelIndex)),
-        ui.listView, SLOT(selectPlugin(QModelIndex)));
-    connect(ui.listView, SIGNAL(clicked(PluginItem*)),
+    connect(ui.listView, SIGNAL(selectionChanged(PluginItem*)),
         this, SLOT(selectPlugin(PluginItem*)));
     connect(ui.comboBox, SIGNAL(currentIndexChanged(int)),
         this, SLOT(selectPluginType(int)));
