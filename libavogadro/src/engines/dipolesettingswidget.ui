@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>DipoleSettingsWidget</class>
- <widget class="QWidget" name="DipoleSettingsWidget" >
-  <property name="geometry" >
+ <widget class="QWidget" name="DipoleSettingsWidget">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,116 +10,198 @@
     <height>162</height>
    </rect>
   </property>
-  <property name="sizeIncrement" >
+  <property name="sizeIncrement">
    <size>
     <width>10</width>
     <height>0</height>
    </size>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
       <string>Dipole:</string>
      </property>
-     <property name="textFormat" >
+     <property name="textFormat">
       <enum>Qt::AutoText</enum>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="3" >
-    <widget class="QComboBox" name="dipoleType" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+   <item row="0" column="1" colspan="3">
+    <widget class="QComboBox" name="dipoleType">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>1</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="sizeIncrement" >
+     <property name="sizeIncrement">
       <size>
        <width>1</width>
        <height>0</height>
       </size>
      </property>
-     <property name="currentIndex" >
+     <property name="currentIndex">
       <number>0</number>
      </property>
-     <property name="modelColumn" >
+     <property name="modelColumn">
       <number>0</number>
      </property>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Dipole Moment</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Custom Value</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="customLabel" >
-     <property name="enabled" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="customLabel">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Custom:</string>
      </property>
-     <property name="textFormat" >
+     <property name="textFormat">
       <enum>Qt::AutoText</enum>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QDoubleSpinBox" name="xDipoleSpinBox" >
-     <property name="enabled" >
+   <item row="1" column="1">
+    <widget class="QDoubleSpinBox" name="xDipoleSpinBox">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="minimum" >
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
+      <double>-99.989999999999995</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QDoubleSpinBox" name="yDipoleSpinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
       <double>-99.989999999999995</double>
      </property>
     </widget>
    </item>
-   <item row="1" column="2" >
-    <widget class="QDoubleSpinBox" name="yDipoleSpinBox" >
-     <property name="enabled" >
+   <item row="1" column="3">
+    <widget class="QDoubleSpinBox" name="zDipoleSpinBox">
+     <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="minimum" >
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
       <double>-99.989999999999995</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
      </property>
     </widget>
    </item>
-   <item row="1" column="3" >
-    <widget class="QDoubleSpinBox" name="zDipoleSpinBox" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="minimum" >
-      <double>-99.989999999999995</double>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <spacer name="verticalSpacer" >
-     <property name="orientation" >
+   <item row="3" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>40</height>
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="originLabel">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>Origin:</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QDoubleSpinBox" name="xOriginSpinBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
+      <double>-99.989999999999995</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QDoubleSpinBox" name="yOriginSpinBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
+      <double>-99.989999999999995</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QDoubleSpinBox" name="zOriginSpinBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="decimals">
+      <number>6</number>
+     </property>
+     <property name="minimum">
+      <double>-99.989999999999995</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

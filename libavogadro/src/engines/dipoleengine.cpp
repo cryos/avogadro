@@ -2,6 +2,7 @@
   DipoleEngine - Engine to display a 3D vector such as the dipole moment
 
   Copyright (C) 2008      Marcus D. Hanwell
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -37,7 +38,7 @@ using namespace Eigen;
 namespace Avogadro {
 
   DipoleEngine::DipoleEngine(QObject *parent) : Engine(parent),
-    m_dipoleType(0), m_settingsWidget(0)
+    m_dipoleType(0), m_settingsWidget(0), m_origin(0,0,0)
   {
     m_dipole.x() = 0.0;
     m_dipole.y() = 0.0;
@@ -67,12 +68,11 @@ namespace Avogadro {
 
     updateDipole();
 
-    Vector3d origin = Vector3d(0.0, 0.0, 0.0); // start at the origin
-    Vector3d joint = 0.2 * m_dipole; // 80% along the length
+    Vector3d joint = m_origin+3*m_dipole*0.8; // 80% along the length
 
     pd->painter()->setColor(1.0, 0.0, 0.0);
-    pd->painter()->drawLine(m_dipole, joint, 3.0);
-    pd->painter()->drawCone(joint, origin, 0.4);
+    pd->painter()->drawCylinder(m_origin, joint, 0.05);
+    pd->painter()->drawCone(joint, m_origin+3*m_dipole, 0.4);
     // TODO: add a "cross" line for the <--+ look to the dipole moment)
 
     return true;
@@ -119,6 +119,12 @@ namespace Avogadro {
               this, SLOT(updateDipole(double)));
       connect(m_settingsWidget->zDipoleSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDipole(double)));
+      connect(m_settingsWidget->xOriginSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateOrigin(double)));
+      connect(m_settingsWidget->yOriginSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateOrigin(double)));
+      connect(m_settingsWidget->zOriginSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateOrigin(double)));
     }
     return m_settingsWidget;
   }
@@ -158,6 +164,14 @@ namespace Avogadro {
         m_dipole = m_molecule->dipoleMoment();
     }
     emit changed();
+  }
+
+  void DipoleEngine::updateOrigin(double = 0.0)
+  {
+      m_origin = Vector3d(m_settingsWidget->xOriginSpinBox->value(),
+                          m_settingsWidget->yOriginSpinBox->value(),
+                          m_settingsWidget->zOriginSpinBox->value());
+      emit changed();
   }
 
   void DipoleEngine::settingsWidgetDestroyed()
