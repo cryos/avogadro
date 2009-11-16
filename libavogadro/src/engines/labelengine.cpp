@@ -4,6 +4,7 @@
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007,2008 Marcus D. Hanwell
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -45,7 +46,8 @@ using namespace Eigen;
 namespace Avogadro {
 
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-                                              m_atomType(1), m_bondType(0), m_settingsWidget(0)
+                                              m_atomType(1), m_bondType(0), m_settingsWidget(0),
+                                              m_displacement(0,0,0) 
   {
   }
 
@@ -138,7 +140,7 @@ namespace Avogadro {
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
 
-      Vector3d drawPos = pos + zAxis * renderRadius;
+      Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
 
       glColor3f(1.0, 1.0, 1.0);
       pd->painter()->drawText(drawPos, str);
@@ -210,6 +212,14 @@ namespace Avogadro {
     emit changed();
   }
 
+  void LabelEngine::updateDisplacement(double)
+  {
+      m_displacement = Vector3d(m_settingsWidget->xDisplSpinBox->value(),
+                                m_settingsWidget->yDisplSpinBox->value(),
+                                m_settingsWidget->zDisplSpinBox->value());
+      emit changed();
+  }
+
   QWidget *LabelEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -220,6 +230,12 @@ namespace Avogadro {
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
+        connect(m_settingsWidget->xDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDisplacement(double)));
+        connect(m_settingsWidget->yDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDisplacement(double)));
+        connect(m_settingsWidget->zDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateDisplacement(double)));
       }
     return m_settingsWidget;
   }

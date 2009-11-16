@@ -4,6 +4,7 @@
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Marcus D. Hanwell
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -84,11 +85,13 @@ namespace Avogadro {
     private:
       int m_atomType;  // Atom label type
       int m_bondType;  // Bond label type
+	  Eigen::Vector3d m_displacement;
       LabelSettingsWidget* m_settingsWidget;
 
     private Q_SLOTS:
       void setAtomType(int value);
       void setBondType(int value);
+	  void updateDisplacement(double = 0.0);
       void settingsWidgetDestroyed();
 
   };
