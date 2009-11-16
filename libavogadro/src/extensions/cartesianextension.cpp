@@ -1,5 +1,5 @@
 /**********************************************************************
-  propextension.h - Properties Plugin for Avogadro
+  cartesianextension.cpp - Cartesian Editor for Avogadro
 
   Copyright (C) 2009 by Konstantin Tokarev
   Based on code written by Tim Vandermeersch and Geoffrey R. Hutchison
