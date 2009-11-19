@@ -1,0 +1,1618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DaltonInputDialog</class>
+ <widget class="QDialog" name="DaltonInputDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>680</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>680</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>680</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dalton Input</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetMinimumSize</enum>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>662</width>
+       <height>270</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>662</width>
+       <height>270</height>
+      </size>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="basicsTab">
+      <attribute name="title">
+       <string>Basics</string>
+      </attribute>
+      <widget class="QLabel" name="title">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>82</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Title:</string>
+       </property>
+       <property name="buddy">
+        <cstring>titleLine</cstring>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="titleLine">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>10</y>
+         <width>591</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Title</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="calculate">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>82</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calculate:</string>
+       </property>
+       <property name="buddy">
+        <cstring>calculationCombo</cstring>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="calculationCombo">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>50</y>
+         <width>185</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>Single Point Energy</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Properties</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="theory">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>59</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Theory:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="theoryCombo">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>90</y>
+         <width>86</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>HF</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>KS-DFT</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MP2</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="basis">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Basis Set:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ccpvxzCombo</cstring>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="ccpvxzCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>95</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>cc-pVDZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pVTZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pVQZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pV5Z</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pV6Z</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="basisCombo">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>130</y>
+         <width>288</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>STO-nG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pople-style</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Jensen's polarization consistent</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dunning's correlation consistent</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="accpvxzCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>aug-cc-pVDZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pVTZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pVQZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pV5Z</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pV6Z</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="ccpcvxzCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>119</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>cc-pCVDZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pCVTZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pCVQZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pCV5Z</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pwCVDZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pwCVTZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pwCVQZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cc-pwCV5Z</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="basiscoreCheck">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>200</y>
+         <width>241</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Core correlating functions</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="basisdiffCheck">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>170</y>
+         <width>171</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Diffuse functions</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="stoCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>87</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>STO-2G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>STO-3G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>STO-6G</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="popleCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>85</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>3-21G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4-31G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311G</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="basispolCheck">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>200</y>
+         <width>211</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Polarization functions</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="poplediffCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>103</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>3-21++G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31+G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31++G</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="poplepolCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>158</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>3-21G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31G**</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31G(3df,3pd)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311G**</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311G(2df,2pd)</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="poplediffpolCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>186</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>3-21++G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31+G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31++G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-31++G**</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311+G*</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311++G**</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311++G(2d,2p)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6-311++G(3df,3pd)</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="pcCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>63</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>pc-0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pc-1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pc-2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pc-3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pc-4</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="apcCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>73</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>apc-0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>apc-1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>apc-2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>apc-3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>apc-4</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="accpcvxzCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>142</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>aug-cc-pCVDZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pCVTZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pCVQZ</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>aug-cc-pCV5Z</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="directCheck">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>90</y>
+         <width>76</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Direct</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="parallelCheck">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>90</y>
+         <width>87</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Parallel</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="dftTab">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="title">
+       <string>DFT</string>
+      </attribute>
+      <widget class="QLabel" name="functional">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>90</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Functional:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="functionalCombo">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>10</y>
+         <width>124</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>B2PLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3LYPg</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3P86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3P86g</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B1LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B1PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BHandH</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BHandHLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B86VWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B86LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B86P86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B86PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BVWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BP86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BPW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BW</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BFW</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>CAMB3LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DBLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DBP86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DBPW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EDF1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EDF2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>G96VWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>G96LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>G96P86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>G96PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>G961LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>KMLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>KT1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>KT2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>KT3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>LDA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>LG1LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>OVWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>OLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>OP86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>OPW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPWVWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPWLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPWP86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPWPW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW1PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW3PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW1K</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW1N</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPW1S</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PBE0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PBE0PBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PBE1PBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PBEPBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>RPBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>revPBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mPBE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PW91VWN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PW91LYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PW91P86</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>PW91PW91</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SVWN3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SVWN5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>XLYP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>X3LYP</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="thresholds">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>367</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Thresholds</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="densitythresh">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>65</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Density:</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="dftthrdensSpin">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>120</y>
+         <width>91</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="prefix">
+        <string>1.0D-</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>30</number>
+       </property>
+       <property name="value">
+        <number>9</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="orbitalthresh">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>160</y>
+         <width>60</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Orbital:</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="dftthrorbSpin">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>160</y>
+         <width>91</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="prefix">
+        <string>1.0D-</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>30</number>
+       </property>
+       <property name="value">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="chargeint">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>157</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Charge Integration:</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="dftthrchargeSpin">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>80</y>
+         <width>63</width>
+         <height>30</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="gridspecs">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>50</y>
+         <width>151</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Grid Specification</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="partscheme">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>80</y>
+         <width>168</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Partitioning Scheme:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="dftgridpartCombo">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>80</y>
+         <width>161</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Becke</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Becke (original)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SSF</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="grid">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>160</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Grid Quality:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="dftgridCombo">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>160</y>
+         <width>96</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>coarse</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>normal</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>fine</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ultrafine</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="radscheme">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>120</y>
+         <width>126</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Radial Scheme:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="dftgridradCombo">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>120</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>LMG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>GC2</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="allfunctionalsCheck">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>10</y>
+         <width>201</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Show all functionals</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="propsTab">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="title">
+       <string>Properties</string>
+      </attribute>
+      <widget class="QLabel" name="property">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>77</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Property:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="propCombo">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>10</y>
+         <width>169</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>Polarizability</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Excitation Energy</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>10</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Frequency Dependent</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="exciSpin">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>50</y>
+         <width>81</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="excitations">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>No. excitations:</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="previewText">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>662</width>
+       <height>230</height>
+      </size>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="resetButton">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="enableFormButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Use Form</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>48</width>
+         <height>26</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="moreButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Hide Preview</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="generateButton">
+       <property name="text">
+        <string>Generate...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>previewText</tabstop>
+  <tabstop>generateButton</tabstop>
+  <tabstop>closeButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>enableFormButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DaltonInputDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>451</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

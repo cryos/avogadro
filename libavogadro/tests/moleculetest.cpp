@@ -137,6 +137,11 @@ private slots:
    * Tests the translation of the Molecule.
    */
   void translate();
+
+  /**
+   * Tests conformer support.
+   */ 
+  void conformers();
 };
 
 void MoleculeTest::prepareMolecule()
@@ -291,6 +296,82 @@ void MoleculeTest::translate()
   QCOMPARE(m_molecule->center().x(), 1.5 / 4.0 + 1.0);
   QCOMPARE(m_molecule->center().y(), 1.5 / 4.0 + 1.1);
   QCOMPARE(m_molecule->center().z(), 1.5 / 4.0 + 1.2);
+}
+
+void MoleculeTest::conformers()
+{
+  // note: the molecule has 4 atoms...
+  qDebug() << "# atoms =" << m_molecule->numAtoms();
+  
+  // we should have 1 conformer
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(1));
+ 
+  // test setConformer with various indexes
+  QCOMPARE(m_molecule->setConformer(0), true); // valid
+  QCOMPARE(m_molecule->setConformer(1), false); // invalid
+  QCOMPARE(m_molecule->setConformer(99), false); // invalid
+
+  // create a conformer for the 4 atoms
+  std::vector<Eigen::Vector3d> goodConformer(m_molecule->conformerSize(), Eigen::Vector3d::Zero());
+  std::vector<Eigen::Vector3d> toBigConformer(1000, Eigen::Vector3d::Zero());
+  std::vector<Eigen::Vector3d> toSmallConformer(2, Eigen::Vector3d::Zero());
+
+  // test addConformer(conformer, index)
+  QCOMPARE(m_molecule->addConformer(toSmallConformer, 9), false); // invalid
+  QCOMPARE(m_molecule->addConformer(toBigConformer, 9), false); // invalid
+  QCOMPARE(m_molecule->addConformer(goodConformer, 9), true); // valid
+  // check if conformers 1-9 got created
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(10));
+  QCOMPARE(m_molecule->setConformer(1), true); // should now be valid
+  QCOMPARE(m_molecule->setConformer(4), true); // should now be valid
+  QCOMPARE(m_molecule->setConformer(9), true); // should now be valid
+  QCOMPARE(m_molecule->setConformer(10), false); // should still be invalid
+
+  // test addConformer(index)
+  QCOMPARE(m_molecule->addConformer(1), m_molecule->conformer(1)); // should be the same
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(10));
+  QCOMPARE(m_molecule->addConformer(9), m_molecule->conformer(9)); // should be the same
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(10));
+  QVERIFY(m_molecule->addConformer(19));
+  // check if 10-19 got created
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(20));
+  QCOMPARE(m_molecule->setConformer(10), true); // should now be valid
+  QCOMPARE(m_molecule->setConformer(19), true); // should now be valid
+  QCOMPARE(m_molecule->setConformer(20), false); // should still be invalid
+
+  // test conformer(index)
+  QVERIFY(m_molecule->conformer(10)); // should be valid pointer
+  QVERIFY(m_molecule->conformer(19)); // should be valid pointer
+  QCOMPARE(m_molecule->conformer(20), static_cast<std::vector<Eigen::Vector3d>*>(0)); // invalid index, should be NULL
+
+  // test conformers()
+  const std::vector<std::vector<Eigen::Vector3d> *> &conformers = m_molecule->conformers();
+  QCOMPARE(conformers.size(), static_cast<std::vector<Eigen::Vector3d>::size_type>(20));
+  QCOMPARE(conformers.at(0)->size(), static_cast<std::vector<Eigen::Vector3d>::size_type>(m_molecule->conformerSize()));
+  QCOMPARE(conformers.at(10)->size(), static_cast<std::vector<Eigen::Vector3d>::size_type>(m_molecule->conformerSize()));
+
+  // test setConformer() / currentConformer()
+  QCOMPARE(m_molecule->setConformer(10), true);
+  QCOMPARE(m_molecule->currentConformer(), static_cast<unsigned int>(10)); 
+  QCOMPARE(m_molecule->setConformer(15), true);
+  QCOMPARE(m_molecule->currentConformer(), static_cast<unsigned int>(15)); 
+
+
+  // test replaceAllConformers
+  std::vector<std::vector<Eigen::Vector3d> *> newConformers;
+  for (int i = 0; i < 5; ++i)
+    newConformers.push_back( new std::vector<Eigen::Vector3d>(m_molecule->conformerSize(), Eigen::Vector3d::Zero()) );
+  QCOMPARE(m_molecule->setAllConformers(newConformers), true);
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(5));
+  QCOMPARE(m_molecule->currentConformer(), static_cast<unsigned int>(0));
+  QCOMPARE(m_molecule->setConformer(4), true);
+  QCOMPARE(m_molecule->setConformer(5), false);
+
+  // test clearConformers()
+  m_molecule->clearConformers();
+  QCOMPARE(m_molecule->numConformers(), static_cast<unsigned int>(1));
+  QCOMPARE(m_molecule->currentConformer(), static_cast<unsigned int>(0));
+
 }
 
 QTEST_MAIN(MoleculeTest)

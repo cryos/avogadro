@@ -1,15 +1,15 @@
+cmake_minimum_required(VERSION 2.6.0)
 project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too
-set(Avogadro_VERSION_MAJOR 0)
-set(Avogadro_VERSION_MINOR 9)
-set(Avogadro_VERSION_PATCH 7)
+set(Avogadro_VERSION_MAJOR 1)
+set(Avogadro_VERSION_MINOR 1)
+set(Avogadro_VERSION_PATCH 0)
 set(Avogadro_VERSION "${Avogadro_VERSION_MAJOR}.${Avogadro_VERSION_MINOR}")
 set(Avogadro_VERSION_FULL "${Avogadro_VERSION}.${Avogadro_VERSION_PATCH}")
 
 set(CMAKE_MODULE_PATH ${Avogadro_SOURCE_DIR}/cmake/modules)
 
-cmake_minimum_required(VERSION 2.6.0)
 cmake_policy(SET CMP0003 NEW)
 
 # this is adapted from KDE's FindKDE4Internal.cmake : default the build type to
@@ -202,21 +202,35 @@ if(ENABLE_AVO_PACKAGE)
   add_definitions(-DAVO_APP_BUNDLE)
 endif(ENABLE_AVO_PACKAGE)
 
+# Should a versioned plugin directory be used, i.e. avogadro/1.0.
+option(ENABLE_VERSIONED_PLUGIN_DIR "Enable versioned plugin directory" ON)
+mark_as_advanced(ENABLE_VERSIONED_PLUGIN_DIR)
+
 # Set up our path handling, inspired by the path handling used in KDE
 set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
 set(SHARE_INSTALL_PREFIX "share"
     CACHE PATH "Base directory for shared data")
 set(BIN_INSTALL_DIR      "bin"
     CACHE PATH "Install dir for binaries")
+
+# Set up the plugin directory
+if(ENABLE_VERSIONED_PLUGIN_DIR)
+  set(Plugin_Version "/${Avogadro_VERSION_MAJOR}_${Avogadro_VERSION_MINOR}")
+else(ENABLE_VERSIONED_PLUGIN_DIR)
+  set(Plugin_Version "")
+endif(ENABLE_VERSIONED_PLUGIN_DIR)
+
 if(UNIX)
   set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
       CACHE PATH "Install dir for libraries")
-  set(Avogadro_PLUGIN_INSTALL_DIR   "${LIB_INSTALL_DIR}/avogadro"
+  set(Avogadro_PLUGIN_INSTALL_DIR
+      "${LIB_INSTALL_DIR}/avogadro${Plugin_Version}"
       CACHE PATH "Install dir for plugins")
 else(UNIX)
   set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
       CACHE PATH "Install dir for libraries")
-  set(Avogadro_PLUGIN_INSTALL_DIR   "lib${LIB_SUFFIX}/avogadro"
+  set(Avogadro_PLUGIN_INSTALL_DIR
+      "lib${LIB_SUFFIX}/avogadro${Plugin_Version}"
       CACHE PATH "Install dir for plugins")
 endif(UNIX)
 set(INCLUDE_INSTALL_DIR  "include"
@@ -296,7 +310,7 @@ else(APPLE)
   install(FILES
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
-    DESTINATION "${Avogadro_PLUGIN_INSTALL_DIR}")
+    DESTINATION "${LIB_INSTALL_DIR}/avogadro")
 endif(APPLE)
 
 # Install the configuration files to help find Avogadro

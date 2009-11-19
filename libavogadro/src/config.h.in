@@ -28,7 +28,9 @@
 
 #define INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
 
-#define INSTALL_LIBDIR "lib@LIB_SUFFIX@"
+#define INSTALL_LIB_DIR "lib@LIB_SUFFIX@"
+
+#define INSTALL_PLUGIN_DIR "avogadro@Plugin_Version@"
 
 #define SCM_REVISION "@SCM_REVISION@"
 

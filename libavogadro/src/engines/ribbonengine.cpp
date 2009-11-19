@@ -53,7 +53,7 @@ namespace Avogadro {
   RibbonEngine::RibbonEngine(QObject *parent) : Engine(parent),
                                                 m_settingsWidget(0), m_type(0),
                                                 m_radius(1.0), m_update(true),
-                                                m_useNitrogens(2)
+                                                m_useNitrogens(0)
   {
   }
 
@@ -158,18 +158,17 @@ namespace Avogadro {
       return;
 
     m_chains.clear();
-    QList<Primitive *> list;
-    list = primitives().subList(Primitive::ResidueType);
+    QList<Residue *> list;
+//    list = primitives().subList(Primitive::ResidueType);
     unsigned int currentChain = 0;
     QVector<Vector3d> pts;
     // Get a list of residues for the molecule
     const Molecule *molecule = pd->molecule();
+    list = molecule->residues();
 
-    foreach(Primitive *p, list) {
-      Residue *r = static_cast<Residue *>(p);
-      if(r->name() =="HOH") {
+    foreach(Residue *r, list) {
+      if(r->name() =="HOH")
         continue;
-      }
 
       if(r->chainNumber() != currentChain) {
         // this residue is on a new chain
@@ -183,12 +182,10 @@ namespace Avogadro {
         // should be CA
         QString atomId = r->atomId(atom);
         atomId = atomId.trimmed();
-        if (atomId == "CA") {
+        if (atomId == "CA")
           pts.push_back(*molecule->atomById(atom)->pos());
-        }
-        else if (atomId == "N" && m_useNitrogens == 2) {
+        else if (atomId == "N" && m_useNitrogens == 2)
           pts.push_back(*molecule->atomById(atom)->pos());
-        }
       } // end atoms in residue
 
     } // end primitive list (i.e., all residues)
@@ -262,7 +259,7 @@ namespace Avogadro {
     Engine::readSettings(settings);
     setType(settings.value("type", 0).toInt());
     setRadius(settings.value("radius", 10).toInt());
-    setUseNitrogens(settings.value("useNitrogens", 2).toInt());
+    setUseNitrogens(settings.value("useNitrogens", 0).toInt());
     if (m_settingsWidget) {
       m_settingsWidget->renderType->setCurrentIndex(m_type);
       m_settingsWidget->radiusSlider->setValue(int(10 * m_radius));

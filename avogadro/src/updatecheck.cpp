@@ -36,6 +36,18 @@
 
 namespace Avogadro
 {
+  UpdateCheck * UpdateCheck::instance = NULL;
+
+  UpdateCheck * UpdateCheck::getInstance(QObject* parent)
+  {
+    if (!instance) {
+      instance = new UpdateCheck(parent);
+      return instance;
+    }
+    else
+      return instance;
+  }
+
   UpdateCheck::UpdateCheck(QObject* parent) : QObject(parent), m_network(0),
       m_versionPrompted(0)
   {
@@ -80,7 +92,7 @@ namespace Avogadro
       QMessageBox::warning(qobject_cast<QWidget*>(parent()),
                            tr("Network Update Check Failed"),
                            tr("Network timeout or other error."));
-      delete reply;
+      reply->deleteLater();
       return;
     }
 
@@ -112,7 +124,7 @@ namespace Avogadro
     *m_versionPrompted = version;
 
     // We are responsible for deleting the reply object
-    delete reply;
+    reply->deleteLater();
   }
 
   bool UpdateCheck::versionCompare(const QString& newVersion)

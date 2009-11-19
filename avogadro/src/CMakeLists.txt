@@ -31,9 +31,10 @@ include(${QT_USE_FILE})
 
 FILE(GLOB avogadro_SRCS "*.cpp")
 
-# Should we build the update checking code?
+# Should we build the update checking code? Currently causes segfaults with Qt
+# 4.5.3 on both Arch and Gentoo 64 bit platforms (may be more)
 option(ENABLE_UPDATE_CHECKER
-  "Should the Avogadro update checking code be compiled?" ON)
+  "Should the Avogadro update checking code be compiled?" OFF)
 if(ENABLE_UPDATE_CHECKER)
   add_definitions(-DENABLE_UPDATE_CHECKER)
 else(ENABLE_UPDATE_CHECKER)
@@ -59,8 +60,13 @@ qt4_automoc(${avogadro_SRCS})
 qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
-file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
-QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
+if(NOT WIN32)
+  file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
+  QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
+else(NOT WIN32)
+  # don't attempt to create QM files on windows -- copy them from a linux build!
+  file(GLOB_RECURSE avogadro_QM "${Avogadro_SOURCE_DIR}/avogadro/src/avogadro*.qm")
+endif(NOT WIN32)
 
 # Some relative rpath handling for Linux
 if(CMAKE_SYSTEM_NAME MATCHES Linux AND ENABLE_RPATH)
@@ -110,6 +116,14 @@ if(APPLE)
 
   install(FILES "mac/avogadro.icns" DESTINATION Resources)
   install(FILES "mac/AvogadroDocument.icns" DESTINATION Resources)
+
+  # install .nib file
+  set(QT_COCOA_NIB /Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib)
+  if(EXISTS ${QT_COCOA_NIB})
+            install(DIRECTORY ${QT_COCOA_NIB}
+                              DESTINATION Resources
+                              USE_SOURCE_PERMISSIONS)
+  endif(EXISTS ${QT_COCOA_NIB})
 
 # Install a .lproj directory for each translation
 # We're assuming that there will never be an libavogadro translation

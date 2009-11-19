@@ -7,47 +7,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-08-03 14:18-0400\n"
-"PO-Revision-Date: 2009-06-12 01:58+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2009-10-19 21:25-0400\n"
+"PO-Revision-Date: 2009-10-22 20:15+0000\n"
+"Last-Translator: Sang-hyeon Lee <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-31 19:24+0000\n"
+"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
-msgstr ""
+msgstr "색인에 따라 채색"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
+msgstr "색인에 따라 채색 (빨강, 오렌지색, 노랑, 녹색, 파랑, 보라색)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
-msgstr ""
+msgstr "부분 전하를 기반으로 채색"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr ""
+msgstr "부분 전하를 기반으로 채색 (파랑 = 양수, 빨강 = 음수)"
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
-msgstr ""
+msgstr "사용자 지정 색:"
 
 #: src/colors/customcolor.h:43
 msgid "Custom Color"
-msgstr ""
+msgstr "사용자 정의 색상"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "개체에 대한 사용자 색상 정의"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr ""
+msgstr "거리에 따라 채색"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
@@ -55,19 +55,19 @@ msgstr ""
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
-msgstr ""
+msgstr "색상요소를 기반으로 채색"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr ""
+msgstr "색상요소를 기반으로 채색 (탄소 = 회색, 산소 = 빨강, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "잔여부분 채색"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr ""
+msgstr "잔여부분 채색 (아미노산 타입, 광견병, ..."
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -75,19 +75,19 @@ msgstr "수소"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "헬륨"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "리튬"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr ""
+msgstr "베릴륨"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "붕소"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
@@ -103,27 +103,27 @@ msgstr "산소"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr ""
+msgstr "불소(플루오르)"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "네온"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "나트륨"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "마그네슘"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "알루미늄"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "규소"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
@@ -131,594 +131,594 @@ msgstr "인"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr ""
+msgstr "황"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr ""
+msgstr "염소"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "아르곤"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "칼륨"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "칼슘"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr ""
+msgstr "스칸듐"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "티타늄"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "바나듐"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "크롬"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "망간"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "철"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "코발트"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "니켈"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "구리"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "아연"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "갈륨"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "게르마늄"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "비소"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "셀레늄"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "브롬"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "크립톤"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "루비듐"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr ""
+msgstr "스트론튬"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr ""
+msgstr "이트륨"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "지르코늄"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr ""
+msgstr "니오브"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "몰리브덴"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr ""
+msgstr "테크네튬"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr ""
+msgstr "루테늄"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "로듐"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "팔라듐"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "은"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "카드뮴"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "인듐"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "주석"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "안티몬"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr ""
+msgstr "텔루르"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "요오드"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "크세논"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "세슘"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "바륨"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr ""
+msgstr "란탄"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "세륨"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr ""
+msgstr "프라세오디뮴"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr ""
+msgstr "네오디뮴"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr ""
+msgstr "프로메튬"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr ""
+msgstr "사마륨"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr ""
+msgstr "유로퓸"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr ""
+msgstr "가돌리늄"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr ""
+msgstr "테르븀"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr ""
+msgstr "디스프로슘"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr ""
+msgstr "홀뮴"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr ""
+msgstr "에르븀"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr ""
+msgstr "툴륨"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr ""
+msgstr "이테르븀"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr ""
+msgstr "루테튬"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr ""
+msgstr "하프늄"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr ""
+msgstr "탄탈"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr ""
+msgstr "텅스텐"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr ""
+msgstr "레늄"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr ""
+msgstr "오스뮴"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "이리듐"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "백금"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "금"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "수은"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr ""
+msgstr "탈륨"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "납"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "비스무트"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "폴로늄"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr ""
+msgstr "아스타틴"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "라돈"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr ""
+msgstr "프란슘"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "라듐"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "악티늄"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "토륨"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "프로탁티늄"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "우라늄"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "넵투늄"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "플루토늄"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr ""
+msgstr "아메리슘"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "퀴륨"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr ""
+msgstr "버클륨"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr ""
+msgstr "칼리포르늄"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr ""
+msgstr "아인슈타이늄"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr ""
+msgstr "페르뮴"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr ""
+msgstr "멘델레예븀"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr ""
+msgstr "노벨륨"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr ""
+msgstr "로렌슘"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr ""
+msgstr "러더퍼듐"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr ""
+msgstr "더브늄"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr ""
+msgstr "시보귬"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr ""
+msgstr "보륨"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr ""
+msgstr "하슘"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr ""
+msgstr "마이트너륨"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr ""
+msgstr "다름슈타튬"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr ""
+msgstr "뢴트게늄"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr ""
+msgstr "운운븀"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr ""
+msgstr "운운트리움"
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr ""
+msgstr "운운쿼듐"
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr ""
+msgstr "운운펜튬"
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr ""
+msgstr "운운헥슘"
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr ""
+msgstr "운운셉튬"
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr ""
+msgstr "운운옥튬"
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
-msgstr ""
+msgstr "알려지지 않음"
 
 #: src/engine.cpp:65
 msgid "Engines"
-msgstr ""
+msgstr "엔진"
 
 #: src/engines/axesengine.h:37
 msgid "Axes"
-msgstr ""
+msgstr "축"
 
 #: src/engines/axesengine.h:38
 msgid "Renders the x, y, and z axes at the origin"
-msgstr ""
+msgstr "x, y, z축을 기원으로 표현"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1878
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1889
 msgid "Ball and Stick"
-msgstr ""
+msgstr "공과 막대 모형"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr ""
+msgstr "공 (원자)과 막대 (결합)을 기본 요소로 표시"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
-msgstr ""
+msgstr "밑그림"
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr ""
+msgstr "단백질 이차 구조 표현"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
-msgstr ""
+msgstr "쌍극자"
 
 #: src/engines/dipoleengine.h:43
 msgid "Renders molecular dipole moments"
-msgstr ""
+msgstr "쌍극자 모멘트 분자 표시"
 
 #: src/engines/forceengine.h:38
 msgid "Force"
-msgstr ""
+msgstr "힘"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr ""
+msgstr "원자의 힘 변위 표시"
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
-msgstr ""
+msgstr "수소결합"
 
 #: src/engines/hbondengine.h:43
 msgid "Renders hydrogen bonds"
-msgstr ""
+msgstr "수소결합 표시"
 
 #: src/engines/labelengine.h:45
 msgid "Label"
-msgstr ""
+msgstr "라벨"
 
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
-msgstr ""
+msgstr "원자 및 결합 이름 표시"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
-msgstr ""
+msgstr "덧씌우기"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
-msgstr ""
+msgstr "변화도에 대한 색상 스케일을 표시"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
-msgstr ""
+msgstr "다각형"
 
 #: src/engines/polygonengine.h:40
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-msgstr ""
+msgstr "원자를 정사면체, 정팔면체, 기타 다각형으로 표시"
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
-msgstr ""
+msgstr "리본형"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
-msgstr ""
+msgstr "단백질 골격을 리본형으로 표시"
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
-msgstr ""
+msgstr "고리형"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
-msgstr ""
+msgstr "채색된 평면과 함께 고리형으로 표시"
 
 #: src/engines/simplewireengine.h:37
 msgid "Simple Wireframe"
-msgstr ""
+msgstr "단순한 와이어 프레임"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr ""
+msgstr "거대분자에 최적화된 선으로 결합 나타내기"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
-msgstr ""
+msgstr "반 데르 발스 구형"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr ""
+msgstr "원자를 발 데르 발스 구형으로 표시하기"
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
-msgstr ""
+msgstr "막대기"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr ""
+msgstr "막대 모형으로 분자를 표시하기"
 
-#: src/engines/surfaceengine.cpp:232
+#: src/engines/surfaceengine.cpp:239
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
-
-#: src/engines/surfaceengine.cpp:238
-#, qt-format
-msgctxt "Electron density isosurface with a cutoff of %1"
-msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "반 데르 발스, 등곡면 = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
+msgctxt "Electron density isosurface with a cutoff of %1"
+msgid "Electron density, isosurface = %L1"
+msgstr "전자 밀도, 등곡면 = %L1"
+
+#: src/engines/surfaceengine.cpp:252
+#, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, 등곡면 = %L2"
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
-msgstr ""
+msgstr "표면"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "등곡선 망상 분자 표시"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr ""
+msgstr "와이어프레임"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-msgstr ""
+msgstr "초거대분자에 최적화된 선형으로 결합 나타내기"
 
 #: src/extension.cpp:44
 msgid "Extensions"
-msgstr ""
+msgstr "확장 기능"
 
 #: src/extensions/animationdialog.cpp:65
 msgid "Open trajectory file"
-msgstr ""
+msgstr "궤도 파일 열기"
 
 #: src/extensions/animationdialog.cpp:66
 msgid "Trajectory files (*.xtc *.xyz)"
-msgstr ""
+msgstr "궤도 파일 (*.xtc *.xyz)"
 
 #: src/extensions/animationdialog.cpp:74 src/extensions/linmorphdialog.cpp:105
 #, qt-format
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: src/extensions/animationdialog.cpp:95
 msgid "Save Video File"
-msgstr ""
+msgstr "비디오 파일로 저장하기"
 
 #: src/extensions/animationdialog.cpp:97
 msgid "video files (*.avi)"
-msgstr ""
+msgstr "비디오 파일 (*.avi)"
 
 #: src/extensions/animationdialog.cpp:102
 #: src/extensions/animationextension.cpp:135
@@ -732,11 +732,11 @@ msgstr ""
 #: src/extensions/animationextension.cpp:245
 #: src/extensions/animationextension.cpp:251
 #: src/extensions/forcefieldextension.cpp:182
-#: src/extensions/forcefieldextension.cpp:191
-#: src/extensions/forcefieldextension.cpp:203
-#: src/extensions/forcefieldextension.cpp:223
-#: src/extensions/gaussianextension.cpp:168
-#: src/extensions/gaussianextension.cpp:178
+#: src/extensions/forcefieldextension.cpp:193
+#: src/extensions/forcefieldextension.cpp:205
+#: src/extensions/forcefieldextension.cpp:225
+#: src/extensions/inputfileextension.cpp:176
+#: src/extensions/inputfileextension.cpp:186
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/linmorphdialog.cpp:82
@@ -758,248 +758,248 @@ msgstr ""
 #: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
 #: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
-#: src/extensions/unitcellextension.cpp:94
+#: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/extensions/animationdialog.cpp:103 src/extensions/linmorphdialog.cpp:83
 msgid "Adding .avi extension"
-msgstr ""
+msgstr ".avi 확장기능 추가"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr ""
+msgstr "애니메이션..."
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
 #: src/extensions/gamessextension.cpp:97
-#: src/extensions/gaussianextension.cpp:86
 #: src/extensions/linmorphextension.cpp:103
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectraextension.cpp:78
-#: src/extensions/surfaceextension.cpp:92
+#: src/extensions/surfaceextension.cpp:94
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr ""
+msgstr "확장기능"
 
 #: src/extensions/animationextension.cpp:136
-#: src/extensions/gaussianextension.cpp:169
+#: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
 #: src/extensions/linmorphextension.cpp:80
 #, qt-format
 msgid "Cannot read file format of file %1."
-msgstr ""
+msgstr "%1 파일 포맷을 읽을 수 없습니다."
 
 #: src/extensions/animationextension.cpp:144
 #, qt-format
 msgid "Read trajectory file %1 failed."
-msgstr ""
+msgstr "%1 궤도 파일을 읽는 데에 실패했습니다."
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
 #: src/extensions/linmorphextension.cpp:263
 #: src/extensions/linmorphextension.cpp:269
 msgid "Must specify a valid .avi file name"
-msgstr ""
+msgstr "유효한 .avi 파일 이름을 지정해야 합니다"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr ""
+msgstr "GL 위젯이 비디오를 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr ""
+msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로를 포함해야 합니다"
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
+msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자로 끝나야 합니다."
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr ""
+msgstr "XYZ 형식으로 설정할 수 없습니다"
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr ""
+msgstr "궤도 파일 %1을 읽는데 문제가 있습니다"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-msgstr ""
+msgstr "궤도 파일 %1의 원자 수가 현재의 분자 수와 일치하지 않습니다."
 
 #: src/extensions/animationextension.h:39
 msgid "Animation"
-msgstr ""
+msgstr "애니메이션"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "궤도, 반응, 진동 애니메이션으로 표시"
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
 msgid "Number of atoms: %1"
-msgstr ""
+msgstr "원자의 수 : %1"
 
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr ""
+msgstr "회전할 수 있는 결합의 수: %1"
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr ""
+msgstr "구속을 추가"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
+msgstr "분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
+msgstr "분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
+msgstr "분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
-msgstr ""
+msgstr "궤도..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
-msgstr ""
+msgstr "&파일"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
-msgstr ""
+msgstr "불러오기"
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
-msgstr ""
+msgstr "화학 파일 포맷 열기"
 
 #: src/extensions/fileimportextension.cpp:200
 msgid "Chemical files (*.xyz)"
-msgstr ""
+msgstr "화학 파일 (*.xyz)"
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr ""
+msgstr "매개 변수 파일 열기"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
-msgstr ""
+msgstr "화학 파일 (*.parm7)"
 
 #: src/extensions/fileimportextension.h:43
 msgid "Import Trajectory"
-msgstr ""
+msgstr "궤도 가져오기"
 
 #: src/extensions/fileimportextension.h:44
 msgid "Import trajectory files"
-msgstr ""
+msgstr "궤도 파일 불러오기"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&구조 최적화"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr ""
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr ""
+msgstr "힘 영역 설정하기"
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr ""
+msgstr "에너지 계산"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "이형태체 검색..."
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
-msgstr ""
+msgstr "구속..."
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr ""
+msgstr "선택 무시"
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
-msgstr ""
+msgstr "선택한 원자를 고정"
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr ""
+msgstr "&분자 역학"
 
 #: src/extensions/forcefieldextension.cpp:183
-#: src/extensions/forcefieldextension.cpp:204
-#: src/extensions/forcefieldextension.cpp:224
+#: src/extensions/forcefieldextension.cpp:206
+#: src/extensions/forcefieldextension.cpp:226
 msgid "Cannot set up the force field for this molecule."
-msgstr ""
+msgstr "이 분자에 대해 힘 영역을 설정할 수 없습니다"
 
-#: src/extensions/forcefieldextension.cpp:189
+#: src/extensions/forcefieldextension.cpp:191
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "에너지 = %L1 %2"
 
-#: src/extensions/forcefieldextension.cpp:234
+#: src/extensions/forcefieldextension.cpp:236
 msgid "Geometric Optimization"
-msgstr ""
+msgstr "구조 최적화"
 
-#: src/extensions/forcefieldextension.cpp:526
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
-msgstr ""
+msgstr "힘 영역 최적화"
 
-#: src/extensions/forcefieldextension.cpp:527
-#: src/extensions/forcefieldextension.cpp:530
-#: src/extensions/forcefieldextension.cpp:533
-#: src/extensions/forcefieldextension.cpp:536
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
-#: src/extensions/forcefieldextension.cpp:529
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:532
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:535
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr ""
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr ""
+msgstr "힘 영역"
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
-msgstr ""
+msgstr "분자역학 힘 영역을 이용하여 분자를 최적화하고 이형태체를 형성"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1007,71 +1007,74 @@ msgstr ""
 
 #: src/extensions/gamessextension.cpp:65
 msgid "Input Generator..."
-msgstr ""
+msgstr "생성기 입력..."
 
 #: src/extensions/gamessextension.cpp:70
+msgctxt ""
+"Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP 선택..."
 
 #: src/extensions/gamessextension.cpp:75
+msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM 선택..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
-msgstr ""
+msgstr "&GAMESS"
 
 #: src/extensions/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
-msgstr ""
+msgstr "GAMESS EFP 정보"
 
 #: src/extensions/gamessextension.cpp:118
 msgid "Delete"
-msgstr ""
+msgstr "지우기"
 
 #: src/extensions/gamessextension.cpp:200
 msgid "No Atoms Selected"
-msgstr ""
+msgstr "선택된 원자가 없음"
 
 #: src/extensions/gamessextension.cpp:201
 msgid "You must make a selection!"
-msgstr ""
+msgstr "선택을 하여야 합니다"
 
 #: src/extensions/gamessextension.cpp:208
 msgid "SMILES Conversion Unavailable"
-msgstr ""
+msgstr "SMILES 변환이 불가능함"
 
 #: src/extensions/gamessextension.cpp:209
 msgid "SMILES Format Conversion Not Available!"
-msgstr ""
+msgstr "SMILES 포맷 변환이 불가능합니다!"
 
 #: src/extensions/gamessextension.cpp:469
 msgid "Group Name"
-msgstr ""
+msgstr "그룹 이름"
 
 #: src/extensions/gamessextension.cpp:522
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: src/extensions/gamessextension.cpp:523
 msgid "qm"
-msgstr ""
+msgstr "qm"
 
 #: src/extensions/gamessextension.cpp:523
 msgid "efp"
-msgstr ""
+msgstr "efp"
 
 #: src/extensions/gamessextension.cpp:524
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/extensions/gamessextension.h:44
 msgid "GAMESS"
-msgstr ""
+msgstr "GAMESS"
 
 #: src/extensions/gamessextension.h:45
 msgid "Create input files for the GAMESS quantum chemistry package"
-msgstr ""
+msgstr "GAMESS 양자 화학 패키지를 위해 입력 파일을 형성"
 
 #: src/extensions/gamessinputdialog.ui:1497
 #: src/extensions/gaussianinputdialog.ui:40
@@ -1079,145 +1082,118 @@ msgstr ""
 #: src/extensions/mopacinputdialog.ui:40
 #: src/extensions/nwcheminputdialog.ui:41
 #: src/extensions/qcheminputdialog.ui:41
-#: src/extensions/gamessinputdialog.cpp:619:606 rc.cpp:884 rc.cpp:1164
+#: src/extensions/gamessinputdialog.cpp:619 :608 rc.cpp:884 rc.cpp:1164
 msgid "Title"
-msgstr ""
+msgstr "제목"
 
-#: src/extensions/gamessinputdialog.cpp:1496
+#: src/extensions/gamessinputdialog.cpp:1531
 msgid "Advanced Settings Changed"
-msgstr ""
+msgstr "고급 설정이 변경됨"
 
-#: src/extensions/gamessinputdialog.cpp:1497
+#: src/extensions/gamessinputdialog.cpp:1532
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
 msgstr ""
+"고급 설정이 변경되었습니다.\n"
+"저장하지 않으시겠습니까?"
 
-#: src/extensions/gamessinputdialog.cpp:1518
+#: src/extensions/gamessinputdialog.cpp:1553
 msgid "Advanced Settings Reset"
-msgstr ""
+msgstr "고급 설정이 초기화됨"
 
-#: src/extensions/gamessinputdialog.cpp:1519
+#: src/extensions/gamessinputdialog.cpp:1554
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
 msgstr ""
+"고급 설정을 초기화 하시겠습니까?\n"
+"모든 변경사항을 잃게됩니다!"
 
-#: src/extensions/gamessinputdialog.cpp:1531
+#: src/extensions/gamessinputdialog.cpp:1566
 msgid "Basic Settings Reset"
-msgstr ""
+msgstr "기본 설정 초기화"
 
-#: src/extensions/gamessinputdialog.cpp:1532
+#: src/extensions/gamessinputdialog.cpp:1567
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
+"기본 설정 내용을 초기화 하시겠습니까?\n"
+"모든 변경사항을 잃게됩니다!"
 
-#: src/extensions/gamessinputdialog.cpp:1604
+#: src/extensions/gamessinputdialog.cpp:1639
 msgid "Export Input Deck"
-msgstr ""
+msgstr "입력 데크 내보내기"
 
-#: src/extensions/gamessinputdialog.cpp:1605
+#: src/extensions/gamessinputdialog.cpp:1640
 msgid "GAMESS Input Deck (*.inp)"
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:46
-msgid "Gaussian Input..."
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:51
-msgid "Q-Chem Input..."
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:56
-msgid "MOLPRO Input..."
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:61
-msgid "MOPAC Input..."
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:66
-msgid "&NWChem Input..."
-msgstr ""
-
-#: src/extensions/gaussianextension.cpp:179
-#: src/extensions/insertfragmentdialog.cpp:152
-#, qt-format
-msgid "Cannot read file %1."
-msgstr ""
-
-#: src/extensions/gaussianextension.h:42
-msgid "Gaussian Input Deck"
-msgstr ""
-
-#: src/extensions/gaussianextension.h:43
-msgid "Create input files for quantum chemistry packages like Gaussian"
-msgstr ""
+msgstr "GAMESS 입력 데크 (*.inp)"
 
 #: src/extensions/gaussianinputdialog.cpp:189
 msgid "Gaussian Input Deck Generator Warning"
-msgstr ""
+msgstr "가우스 입력 데크 생성기 경고"
 
 #: src/extensions/gaussianinputdialog.cpp:190
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
+msgstr "가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/gaussianinputdialog.cpp:233
 msgid "Save Gaussian Input Deck"
-msgstr ""
+msgstr "가우스 입력 데크 저장"
 
 #: src/extensions/gaussianinputdialog.cpp:234
 msgid "Gaussian Input Deck (*.com)"
-msgstr ""
+msgstr "가우스 입력 데크 (*.com)"
 
 #: src/extensions/gaussianinputdialog.cpp:262
 msgid "Gaussian Running."
-msgstr ""
+msgstr "가우스 실행중"
 
 #: src/extensions/gaussianinputdialog.cpp:263
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr ""
+msgstr "가우스가 이미 실행중입니다. 이전의 계산이 끝날 때까지 기다려 주십시오"
 
 #: src/extensions/gaussianinputdialog.cpp:273
 msgid "Gaussian Not Installed."
-msgstr ""
+msgstr "가우스가 설치되지 않았습니다."
 
 #: src/extensions/gaussianinputdialog.cpp:274
 msgid "The G03 executable, cannot be found."
-msgstr ""
+msgstr "실행가능한 G03이 발견되지 않았습니다"
 
 #: src/extensions/gaussianinputdialog.cpp:288
 msgid "G03 failed to start."
-msgstr ""
+msgstr "G03을 시작하는데 실패했습니다"
 
 #: src/extensions/gaussianinputdialog.cpp:289
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "G03이 시작하지 않았습니다. 아마도 완전히 설치되지 않은 것 같습니다."
 
 #: src/extensions/gaussianinputdialog.cpp:294
 msgid "Running Gaussian calculation..."
-msgstr ""
+msgstr "가우스 계산 실행중..."
 
 #: src/extensions/gaussianinputdialog.cpp:329
 msgid "G03 Crashed."
-msgstr ""
+msgstr "G03 충돌"
 
 #: src/extensions/gaussianinputdialog.cpp:330
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr "가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입니다."
 
 #: src/extensions/mopacinputdialog.ui:307
 #: src/extensions/gaussianinputdialog.cpp:365
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1278
+#: src/extensions/qcheminputdialog.cpp:178 :1278
 msgid "Show Preview"
-msgstr ""
+msgstr "미리보기"
 
 #: src/extensions/gaussianinputdialog.ui:469
 #: src/extensions/molproinputdialog.ui:407
@@ -1227,13 +1203,13 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:944 rc.cpp:1220 rc.cpp:1346
+#: src/extensions/qcheminputdialog.cpp:182 :944 rc.cpp:1220 rc.cpp:1346
 msgid "Hide Preview"
-msgstr ""
+msgstr "미리보기 숨기기"
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
-msgstr ""
+msgstr "수소를 메틸로 변경하기"
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -1241,347 +1217,381 @@ msgstr ""
 #: src/extensions/insertpeptideextension.cpp:75
 #: src/extensions/propextension.cpp:116
 #: src/extensions/supercellextension.cpp:72
-#: src/extensions/unitcellextension.cpp:70
+#: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
-msgstr ""
+msgstr "빌드(&B)"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
-msgstr ""
+msgstr "수소를 메틸로"
 
 #: src/extensions/h2methylextension.h:37
 msgid "H2Methyl"
-msgstr ""
+msgstr "H2Methyl"
 
 #: src/extensions/h2methylextension.h:38
 msgid "Transform hydrogens to methyl groups"
-msgstr ""
+msgstr "수소를 메틸기로 변경하기"
 
 #: src/extensions/hydrogensextension.cpp:44
 #: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
-msgstr ""
+msgstr "수소 추가"
 
 #: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
-msgstr ""
+msgstr "pH를 위해 수소 추가..."
 
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
-msgstr ""
+msgstr "수소 제거"
 
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
-msgstr ""
+msgstr "pH를 위해 수소 추가"
 
 #: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
-msgstr ""
+msgstr "pH"
 
 #: src/extensions/hydrogensextension.h:40
 msgid "Hydrogens"
-msgstr ""
+msgstr "수소"
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
-msgstr ""
+msgstr "수소를 추가하거나 제거"
+
+#: src/extensions/inputfileextension.cpp:49
+msgid "&Gaussian..."
+msgstr "&Gaussian..."
+
+#: src/extensions/inputfileextension.cpp:54
+msgid "&MOLPRO..."
+msgstr "&MOLPRO..."
+
+#: src/extensions/inputfileextension.cpp:59
+msgid "M&OPAC..."
+msgstr "M&OPAC..."
+
+#: src/extensions/inputfileextension.cpp:64
+msgid "&NWChem..."
+msgstr "&NWChem..."
+
+#: src/extensions/inputfileextension.cpp:69
+msgid "&Q-Chem..."
+msgstr "&Q-Chem..."
+
+#: src/extensions/inputfileextension.cpp:187
+#: src/extensions/insertfragmentdialog.cpp:152
+#, qt-format
+msgid "Cannot read file %1."
+msgstr "%1 파일을 읽을 수 없습니다."
+
+#: src/extensions/inputfileextension.h:44
+msgid "Input File Generators"
+msgstr "입력 파일 생성기"
+
+#: src/extensions/inputfileextension.h:45
+msgid "Create input files for quantum chemistry packages"
+msgstr "양자 화학 패키지를 위해 입력 파일을 생성"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
-msgstr ""
+msgstr "폴더 열기"
 
 #: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
-msgstr ""
+msgstr "조각..."
 
 #: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
-msgstr ""
+msgstr "SMILES..."
 
 #: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr ""
+msgstr "삽입(&I)"
 
 #: src/extensions/insertfragmentextension.cpp:104
 #: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
-msgstr ""
+msgstr "SMILES 삽입"
 
 #: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
-msgstr ""
+msgstr "SMILES 조각 삽입:"
 
 #: src/extensions/insertfragmentdialog.ui:45
 #: src/extensions/insertfragmentextension.cpp:171
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:986
+#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
-msgstr ""
+msgstr "조각 삽입"
 
 #: src/extensions/insertfragmentextension.h:35
 msgid "Insert molecular fragments for building larger molecules"
-msgstr ""
+msgstr "더 큰 분자를 만들기 위해 분자 조각 삽입"
 
 #: src/extensions/insertpeptideextension.cpp:58
 msgid "Peptide..."
-msgstr ""
+msgstr "펩티드..."
 
 #: src/extensions/insertpeptidedialog.ui:14
 #: src/extensions/insertpeptidedialog.ui:505
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:960 rc.cpp:1102
+#: src/extensions/insertpeptideextension.h:43 :960 rc.cpp:1102
 msgid "Insert Peptide"
-msgstr ""
+msgstr "펩티드 삽입"
 
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
-msgstr ""
+msgstr "올리고펩티트 배열 삽입"
 
 #: src/extensions/liganddialog.cpp:63
 msgid "Open ligand file"
-msgstr ""
+msgstr "리간드 파일 열기"
 
 #: src/extensions/liganddialog.cpp:63
 msgid "Avogadro files (*.*)"
-msgstr ""
+msgstr "Avogadro 파일 (*.*)"
 
 #: src/extensions/linmorphdialog.cpp:65
 msgid "Open mol file"
-msgstr ""
+msgstr "mol 파일 열기"
 
 #: src/extensions/linmorphdialog.cpp:66
 msgid "Any files (*.*)"
-msgstr ""
+msgstr "모든 파일 (*.*)"
 
 #: src/extensions/linmorphdialog.cpp:75
 msgid "Save Movie File"
-msgstr ""
+msgstr "동영상 파일 저장"
 
 #: src/extensions/linmorphdialog.cpp:77
 msgid "movie files (*.avi)"
-msgstr ""
+msgstr "동영상 파일 (*.avi)"
 
 #: src/extensions/linmorphdialog.cpp:96
 msgid "Save Traj File"
-msgstr ""
+msgstr "궤도 파일 저장"
 
 #: src/extensions/linmorphdialog.cpp:98
 msgid "trajectory file (*.xyz)"
-msgstr ""
+msgstr "궤도 파일 (*.xyz)"
 
 #: src/extensions/linmorphextension.cpp:45
 msgid "Lin Morph..."
-msgstr ""
+msgstr "Lin 형태..."
 
 #: src/extensions/linmorphextension.cpp:87
 #, qt-format
 msgid "Read mol file %1 failed."
-msgstr ""
+msgstr "%1 mol 파일 열기에 실패함"
 
 #: src/extensions/linmorphextension.cpp:117
 #, qt-format
 msgid "Two molecules have different number atoms %1 %2"
-msgstr ""
+msgstr "%1 %2 두 원자가 서로 다른 번호를 가지고 있습니다"
 
 #: src/extensions/linmorphextension.cpp:240
 msgid "GL widget was not correctly initialized in order to save snapshots"
-msgstr ""
+msgstr "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #: src/extensions/linmorphextension.cpp:251
 #, qt-format
 msgid "Cannot save file %1."
-msgstr ""
+msgstr "%1 파일을 저장할 수 없습니다"
 
 #: src/extensions/linmorphextension.cpp:276
 msgid "GL widget was not correctly initialized in order to save movie"
-msgstr ""
+msgstr "GL 위젯이 동영상을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #: src/extensions/linmorphextension.cpp:287
 msgid "Invalid movie filename.  Must include full directory path"
-msgstr ""
+msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함해야 합니다"
 
 #: src/extensions/linmorphextension.cpp:295
 msgid ""
 "Invalid movie filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
+msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나야 합니다"
 
 #: src/extensions/linmorphextension.cpp:316
 #, qt-format
 msgid "Would write file to %1."
-msgstr ""
+msgstr "%1 파일로 작성할 것입니다."
 
 #: src/extensions/linmorphextension.cpp:325
 #, qt-format
 msgid "Wrote file %1."
-msgstr ""
+msgstr "%1 파일로 작성됨"
 
 #: src/extensions/linmorphextension.h:38
 msgid "Linear Morph"
-msgstr ""
+msgstr "선형 형태"
 
 #: src/extensions/linmorphextension.h:39
 msgid "Create linear interpolation for animations"
-msgstr ""
+msgstr "애니메이션을 위한 선형 보간법을 생성"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
-msgstr ""
+msgstr "분자 속성..."
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
 msgid "&View"
-msgstr ""
+msgstr "보기(&V)"
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
-msgstr ""
+msgstr "속성(&P)"
 
-#: src/extensions/molecularpropextension.cpp:122
+#: src/extensions/molecularpropextension.cpp:134
 msgid "Estimated Dipole Moment (D):"
-msgstr ""
-
-#: src/extensions/molecularpropextension.h:48
-msgid "Molecular Properties"
-msgstr ""
+msgstr "쌍극자 모멘트 추정 (D):"
 
 #: src/extensions/molecularpropextension.h:49
+msgid "Molecular Properties"
+msgstr "분자 속성"
+
+#: src/extensions/molecularpropextension.h:50
 msgid "Display standard molecular properties."
-msgstr ""
+msgstr "일반적인 분자 속성을 보여주기"
 
 #: src/extensions/molproinputdialog.cpp:114
 #: src/extensions/qcheminputdialog.cpp:114
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Q-Chem 입력 데크 생성기 경고"
 
 #: src/extensions/molproinputdialog.cpp:115
 #: src/extensions/qcheminputdialog.cpp:115
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
-msgstr ""
+msgstr "Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
-msgstr ""
+msgstr "Molpro 입력 데크 저장"
 
 #: src/extensions/molproinputdialog.cpp:163
 msgid "Molpro Input Deck (*.qcin)"
-msgstr ""
+msgstr "Molpro 입력 데크 (*.qcin)"
 
 #: src/extensions/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "MOPAC 입력 경고"
 
 #: src/extensions/mopacinputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr ""
+msgstr "MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
-msgstr ""
+msgstr "MOPAC 실행중."
 
 #: src/extensions/mopacinputdialog.cpp:175
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr ""
+msgstr "MOPAC이 이미 실행중입니다. 이전의 계산이 끝날 때까지 기다려주십시오."
 
 #: src/extensions/mopacinputdialog.cpp:185
 msgid "MOPAC Not Installed."
-msgstr ""
+msgstr "MOPAC이 설치되지 않았습니다."
 
 #: src/extensions/mopacinputdialog.cpp:186
 msgid "The MOPAC executable, cannot be found."
-msgstr ""
+msgstr "실행할 수 있는 MOPAC을 찾지 못했습니다"
 
 #: src/extensions/mopacinputdialog.cpp:200
 msgid "MOPAC failed to start."
-msgstr ""
+msgstr "MOPAC을 시작하는데 실패했습니다"
 
 #: src/extensions/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
-msgstr ""
+msgstr "MOPAC 계산 실행중..."
 
 #: src/extensions/mopacinputdialog.cpp:241
 msgid "MOPAC Crashed."
-msgstr ""
+msgstr "MOPAC 충돌"
 
 #: src/extensions/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
-msgstr ""
+msgstr "MOPAC 입력 데크 저장"
 
 #: src/extensions/mopacinputdialog.cpp:295
 msgid "MOPAC Input Deck (*.mop)"
-msgstr ""
+msgstr "MOPAC 입력 데크 (*.mop)"
 
 #: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
-msgstr ""
+msgstr "PDB로 부터 가져오기..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "화학 구조 가져오기..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
-msgstr ""
+msgstr "URL로 부터 가져오기..."
 
 #: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
-msgstr ""
+msgstr "PDB 입력"
 
 #: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
-msgstr ""
+msgstr "다운로드 할 PDB 항목"
 
 #: src/extensions/networkfetchextension.cpp:110
 msgid "Chemical Name"
-msgstr ""
+msgstr "화학명"
 
 #: src/extensions/networkfetchextension.cpp:111
 msgid "Chemical structure to download."
-msgstr ""
+msgstr "다운로드 할 화학구조"
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
-msgstr ""
+msgstr "다운로드할 분자 URL"
 
 #: src/extensions/networkfetchextension.cpp:164
 #: src/extensions/networkfetchextension.cpp:175
 #: src/extensions/networkfetchextension.cpp:195
 msgid "Network Download Failed"
-msgstr ""
+msgstr "네트워크 다운로드에 실패함"
 
 #: src/extensions/networkfetchextension.cpp:165
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "네트워크 시간초과 또는 다른 오류발생."
 
 #: src/extensions/networkfetchextension.cpp:176
 #, qt-format
 msgid "Specified molecule could not be found: %1"
-msgstr ""
+msgstr "지정된 분자를 찾을 수 없습니다: %1"
 
 #: src/extensions/networkfetchextension.cpp:196
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
-msgstr ""
+msgstr "지정된 분자를 불러올 수 없습니다: %1"
 
 #: src/extensions/networkfetchextension.h:39
 msgid "Network Fetch"
@@ -1603,27 +1613,27 @@ msgstr ""
 
 #: src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
-msgstr ""
+msgstr "NWChem 입력 데크 저장"
 
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
-msgstr ""
+msgstr "NWChem 입력 데크 (*.nw)"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
-msgstr ""
+msgstr "렌더링된 POV-Ray 이미지 저장"
 
 #: src/extensions/povraydialog.cpp:152
 msgid "Image files (*.png *.pbm)"
-msgstr ""
+msgstr "이미지 파일 (*.png *.pbm)"
 
 #: src/extensions/povrayextension.cpp:49
 msgid "POV-Ray..."
-msgstr ""
+msgstr "POV-Ray..."
 
 #: src/extensions/povrayextension.cpp:64
 msgid "Export"
-msgstr ""
+msgstr "내보내기"
 
 #: src/extensions/povrayextension.cpp:130
 msgid "No filename supplied."
@@ -1635,7 +1645,7 @@ msgstr ""
 
 #: src/extensions/povrayextension.cpp:136
 msgid "Does not compute."
-msgstr ""
+msgstr "계산할 수 없습니다."
 
 #: src/extensions/povrayextension.cpp:137
 msgid ""
@@ -1647,18 +1657,18 @@ msgstr ""
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
 msgid "Cannot Write to File."
-msgstr ""
+msgstr "파일에 기록할 수 없습니다."
 
 #: src/extensions/povrayextension.cpp:160
 #: src/extensions/povrayextension.cpp:183
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
+msgstr "파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니까?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
-msgstr ""
+msgstr "POV-Ray를 시작하는데 실패했습니다."
 
 #: src/extensions/povrayextension.cpp:177
 msgid ""
@@ -1668,7 +1678,7 @@ msgstr ""
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
-msgstr ""
+msgstr "POV-Ray"
 
 #: src/extensions/povrayextension.h:41
 msgid ""
@@ -1677,56 +1687,56 @@ msgstr ""
 
 #: src/extensions/propextension.cpp:64
 msgid "Atom Properties..."
-msgstr ""
+msgstr "원자 정보..."
 
 #: src/extensions/propextension.cpp:69
 msgid "Bond Properties..."
-msgstr ""
+msgstr "결합 정보..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr ""
+msgstr "결합각 정보..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
-msgstr ""
+msgstr "비틀림 정보..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "이형태체 정보..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Cartesian Editor..."
-msgstr ""
+msgstr "Cartesian 편집기..."
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr ""
+msgstr "원자 정보"
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
-msgstr ""
+msgstr "결합 정보"
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr ""
+msgstr "결합각 정보"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
-msgstr ""
+msgstr "비틀림 정보"
 
 #: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
-msgstr ""
+msgstr "Cartesian 정보"
 
 #: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
-msgstr ""
+msgstr "이형태체 정보"
 
 #: src/extensions/gamessinputdialog.ui:867
-#: src/extensions/propextension.h:43:462
+#: src/extensions/propextension.h:43 :464
 msgid "Properties"
-msgstr ""
+msgstr "속성"
 
 #: src/extensions/propextension.h:44
 msgid ""
@@ -1734,153 +1744,158 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr ""
 
-#: src/extensions/constraintsdialog.ui:40 src/extensions/propmodel.cpp:353:188
+#: src/extensions/constraintsdialog.ui:40
+#: src/extensions/propmodel.cpp:355 :190
 msgid "Type"
-msgstr ""
-
-#: src/extensions/propmodel.cpp:355
-msgid "Element"
-msgstr ""
+msgstr "형식"
 
 #: src/extensions/propmodel.cpp:357
+msgid "Element"
+msgstr "원소"
+
+#: src/extensions/propmodel.cpp:359
 msgid "Valence"
-msgstr ""
+msgstr "원자가"
 
-#: src/engines/labelsettingswidget.ui:85 src/extensions/propmodel.cpp:359:86
+#: src/extensions/propmodel.cpp:361
+msgid "Formal Charge"
+msgstr "형식전하"
+
+#: src/extensions/propmodel.cpp:363
 msgid "Partial Charge"
-msgstr ""
+msgstr "부분 전하"
 
-#: src/extensions/propmodel.cpp:362 src/extensions/propmodel.cpp:418
+#: src/extensions/propmodel.cpp:366 src/extensions/propmodel.cpp:422
 #, qt-format
 msgid "Atom %1"
-msgstr ""
+msgstr "원자 %1"
 
-#: src/extensions/propmodel.cpp:367 src/extensions/propmodel.cpp:384
+#: src/extensions/propmodel.cpp:371 src/extensions/propmodel.cpp:388
 msgid "Start Atom"
-msgstr ""
+msgstr "원자 시작"
 
-#: src/extensions/propmodel.cpp:369 src/extensions/propmodel.cpp:388
+#: src/extensions/propmodel.cpp:373 src/extensions/propmodel.cpp:392
 msgid "End Atom"
-msgstr ""
-
-#: src/extensions/propmodel.cpp:371
-msgid "Bond Order"
-msgstr ""
-
-#: src/extensions/propmodel.cpp:373
-msgid "Rotatable"
-msgstr ""
+msgstr "원자 끝내기"
 
 #: src/extensions/propmodel.cpp:375
-#, qt-format
-msgctxt "in Angstrom"
-msgid "Length %1"
-msgstr ""
+msgid "Bond Order"
+msgstr "결합 차수"
+
+#: src/extensions/propmodel.cpp:377
+msgid "Rotatable"
+msgstr "회전가능한"
 
 #: src/extensions/propmodel.cpp:379
 #, qt-format
-msgid "Bond %1"
-msgstr ""
+msgctxt "in Angstrom"
+msgid "Length %1"
+msgstr "%1 길이"
 
-#: src/extensions/propmodel.cpp:386
-msgid "Vertex"
-msgstr ""
+#: src/extensions/propmodel.cpp:383
+#, qt-format
+msgid "Bond %1"
+msgstr "%1 결합"
 
 #: src/extensions/propmodel.cpp:390
+msgid "Vertex"
+msgstr "꼭지점"
+
+#: src/extensions/propmodel.cpp:394
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "각 %1"
 
-#: src/extensions/propmodel.cpp:393
+#: src/extensions/propmodel.cpp:397
 #, qt-format
 msgid "Angle %1"
-msgstr ""
+msgstr "각 %1"
 
-#: src/extensions/propmodel.cpp:401
+#: src/extensions/propmodel.cpp:405
 #, qt-format
 msgid "Atom Index %1"
-msgstr ""
+msgstr "원자 색인 %1"
 
-#: src/extensions/propmodel.cpp:403
+#: src/extensions/propmodel.cpp:407
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
-msgstr ""
+msgstr "비틀림 %1"
 
-#: src/extensions/propmodel.cpp:406
+#: src/extensions/propmodel.cpp:410
 #, qt-format
 msgid "Torsion %1"
-msgstr ""
-
-#: src/extensions/propmodel.cpp:411
-#, qt-format
-msgctxt "in Angstrom"
-msgid "X %1"
-msgstr ""
-
-#: src/extensions/propmodel.cpp:413
-#, qt-format
-msgctxt "in Angstrom"
-msgid "Y %1"
-msgstr ""
+msgstr "비틀림 %1"
 
 #: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
+msgid "X %1"
+msgstr "X %1"
+
+#: src/extensions/propmodel.cpp:417
+#, qt-format
+msgctxt "in Angstrom"
+msgid "Y %1"
+msgstr "Y %1"
+
+#: src/extensions/propmodel.cpp:419
+#, qt-format
+msgctxt "in Angstrom"
 msgid "Z  %1"
-msgstr ""
+msgstr "Z %1"
 
 #: src/extensions/gamessinputdialog.ui:817
-#: src/extensions/propmodel.cpp:423:442
+#: src/extensions/propmodel.cpp:427 :444
 msgid "Energy"
-msgstr ""
+msgstr "에너지"
 
-#: src/extensions/propmodel.cpp:426 src/moleculefile.cpp:723
+#: src/extensions/propmodel.cpp:430 src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
-msgstr ""
+msgstr "이형태체 %1"
 
 #: src/extensions/pythonterminalwidget.ui:14
 #: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
 msgid "Python Terminal"
-msgstr ""
+msgstr "파이썬 터미널"
 
 #: src/extensions/pythonterminal.cpp:71
 msgid "pythonTerminalDock"
-msgstr ""
+msgstr "파이썬 터미널 도크"
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
-msgstr ""
+msgstr "쌍방향 파이썬 스크립트 터미널"
 
 #: src/extensions/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
-msgstr ""
+msgstr "QChem 입력 데크 저장"
 
 #: src/extensions/qcheminputdialog.cpp:163
 msgid "QChem Input Deck (*.qcin)"
-msgstr ""
+msgstr "Qchem 입력 데크 (*.qcim)"
 
 #: src/extensions/selectextension.cpp:68
 msgid "&Invert Selection"
-msgstr ""
+msgstr "거꾸로 선택(&I)"
 
 #: src/extensions/selectextension.cpp:73
 msgid "Select SMARTS..."
-msgstr ""
+msgstr "SMARTS 선택..."
 
 #: src/extensions/selectextension.cpp:78
 msgid "Select by Element..."
-msgstr ""
+msgstr "원소에 의한 선택..."
 
 #: src/extensions/selectextension.cpp:83
 msgid "Select by Residue..."
-msgstr ""
+msgstr "잔류물에 의한 선택..."
 
 #: src/extensions/selectextension.cpp:88
 msgid "Select Solvent"
-msgstr ""
+msgstr "용매 선택"
 
 #: src/extensions/selectextension.cpp:98
 msgid "Add Named Selection..."
@@ -1888,29 +1903,30 @@ msgstr ""
 
 #: src/extensions/selectextension.cpp:114
 msgid "&Select"
-msgstr ""
+msgstr "선택(&S)"
 
 #: src/extensions/selectextension.cpp:170
 msgid "SMARTS Selection"
-msgstr ""
+msgstr "SMARTS 선택"
 
 #: src/extensions/selectextension.cpp:171
 msgid "SMARTS pattern to select"
-msgstr ""
+msgstr "선택할 SMARTS 패턴"
 
 #: src/extensions/selectextension.cpp:230
 msgid "Select by residue"
-msgstr ""
+msgstr "잔류물에 의한 선택"
 
-#: src/engines/labelsettingswidget.ui:75 src/extensions/liganddialog.ui:60
-#: src/extensions/pocketdialog.ui:55 src/extensions/selectextension.cpp:230:82
-#: rc.cpp:1116 rc.cpp:1366
+#: src/engines/labelsettingswidget.ui:80
+#: src/extensions/liganddialog.ui:60
+#: src/extensions/pocketdialog.ui:55
+#: src/extensions/selectextension.cpp:230 :84 rc.cpp:1116 rc.cpp:1366
 msgid "Residue name"
-msgstr ""
+msgstr "잔류물 이름"
 
 #: src/extensions/selectextension.cpp:276
 msgid "There is no current selection."
-msgstr ""
+msgstr "최근에 선택한 것이 없습니다."
 
 #: src/extensions/selectextension.cpp:282
 msgid "Add Named Selection"
@@ -1918,23 +1934,23 @@ msgstr ""
 
 #: src/extensions/selectextension.cpp:282
 msgid "name"
-msgstr ""
+msgstr "이름"
 
 #: src/extensions/selectextension.cpp:288
 msgid "Name cannot be empty."
-msgstr ""
+msgstr "이름이 비워져서는 안됩니다."
 
 #: src/extensions/selectextension.cpp:294
 msgid "There is already a selection with this name."
-msgstr ""
+msgstr "이미 이 이름을 선택한 경우가 있습니다."
 
 #: src/extensions/selectextension.h:41
 msgid "Selections"
-msgstr ""
+msgstr "선택"
 
 #: src/extensions/selectextension.h:42
 msgid "Select atoms, bonds, residues..."
-msgstr ""
+msgstr "원자, 결합, 잔류물 선택"
 
 #: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
@@ -1964,7 +1980,8 @@ msgstr ""
 msgid "Shader parameters files (*.params)"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:19 src/extensions/shaderextension.h:41:1486
+#: src/extensions/shaderdialog.ui:19
+#: src/extensions/shaderextension.h:41 :1486
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1974,55 +1991,55 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "X 축"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Y 축"
 
 #: src/extensions/spectradialog.ui:127
-#: src/extensions/spectradialog.cpp:152:1528
+#: src/extensions/spectradialog.cpp:152 :1528
 msgid "&Appearance"
-msgstr ""
+msgstr "모양(&A)"
 
 #: src/extensions/spectradialog.ui:426
-#: src/extensions/spectradialog.cpp:153:1572
+#: src/extensions/spectradialog.cpp:153 :1572
 msgid "E&xport Image"
-msgstr ""
+msgstr "이미지 내보내기(&E)"
 
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "적외선"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
-msgstr ""
+msgstr "적외선 스펙트럼 설정"
 
 #: src/extensions/spectradialog.cpp:165
 msgctxt "NMR spectra option"
 msgid "NMR"
-msgstr ""
+msgstr "NMR"
 
 #: src/extensions/spectradialog.cpp:166
 msgid "&NMR Spectra Settings"
-msgstr ""
+msgstr "NMR 스펙트럼 설정"
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
-msgstr ""
+msgstr "데이터 없음"
 
 #: src/extensions/spectradialog.cpp:250
 msgid "Dark"
-msgstr ""
+msgstr "어둡게"
 
 #: src/extensions/spectradialog.cpp:261
 msgid "Light"
-msgstr ""
+msgstr "밝게"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
-msgstr ""
+msgstr "출판"
 
 #: src/extensions/spectradialog.cpp:283
 msgid "Handdrawn"
@@ -2030,147 +2047,147 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "새 도표"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
-msgstr ""
+msgstr "도표 제거 확인"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "최근의 도표를 제거하시겠습니까?"
 
 #: src/extensions/spectradialog.cpp:327
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "도표 이름 변경"
 
 #: src/extensions/spectradialog.cpp:328
 msgid "Enter new name for current scheme:"
-msgstr ""
+msgstr "최근의 도표에 대한 새로운 이름 입력:"
 
 #: src/extensions/spectradialog.cpp:428
 msgid "Export Calculated Spectrum"
-msgstr ""
+msgstr "계산된 스펙트럼 내보내기"
 
 #: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:227
 msgid "Tab Separated Values (*.tsv)"
-msgstr ""
+msgstr "탭으로 분리된 값 (*.tsv)"
 
 #: src/extensions/spectradialog.cpp:452
 msgid "Tab Separated Values"
-msgstr ""
+msgstr "탭으로 분리된 값"
 
 #: src/extensions/spectradialog.cpp:453
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "쉼표로 분리된 값"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
 #: src/extensions/spectradialog.cpp:647
 msgid "All Files"
-msgstr ""
+msgstr "모든 파일"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
-msgstr ""
+msgstr "스펙트럼 가져오기"
 
 #: src/extensions/spectradialog.cpp:483
 msgid "Spectra Import"
-msgstr ""
+msgstr "스펙트럼 가져오기"
 
 #: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
-msgstr ""
+msgstr "알려지지 않은 확장자: %1"
 
 #: src/extensions/spectradialog.cpp:529
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
-msgstr ""
+msgstr "PWscf IR 데이터 (*.out)"
 
 #: src/extensions/spectradialog.cpp:530
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
-msgstr ""
+msgstr "Turbomole IR 데이터 (control)"
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
-msgstr ""
+msgstr "데이터 형식"
 
 #: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "형식:"
 
 #: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
-msgstr ""
+msgstr "스펙트럼 데이터 불러오기"
 
 #: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "PNG"
 
 #: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "선택된 이미지 파일 형식"
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
-msgstr ""
+msgstr "Windows 비트맵"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
-msgstr ""
+msgstr "휴대용 픽스맵(PPM)"
 
 #: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
-msgstr ""
+msgstr "X11 비트맵"
 
 #: src/extensions/spectradialog.cpp:646
 msgid "X11 Pixmap"
-msgstr ""
+msgstr "X11 픽스맵"
 
 #: src/extensions/spectradialog.cpp:650
 msgid "Save Spectra Image"
-msgstr ""
+msgstr "스펙트럼 이미지 저장"
 
 #: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
-msgstr ""
+msgstr "잘못된 파일명"
 
 #: src/extensions/spectradialog.cpp:701
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: src/extensions/spectradialog.cpp:701
 #, qt-format
 msgid "A problem occurred while writing file %1"
-msgstr ""
+msgstr "%1 파일을 기록하는 도중에 문제가 발생했습니다"
 
 #: src/extensions/spectradialog.cpp:703
 msgid "Success!"
-msgstr ""
+msgstr "성공!"
 
 #: src/extensions/spectradialog.cpp:703
 #, qt-format
 msgid "Image successfully written to %1"
-msgstr ""
+msgstr "%1 로 이미지가 성공적으로 쓰여졌습니다"
 
 #: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
-msgstr ""
+msgstr "설정변경(&Z) <<"
 
 #: src/extensions/spectradialog.ui:84
-#: src/extensions/spectradialog.cpp:736:1524
+#: src/extensions/spectradialog.cpp:736 :1524
 msgid "Customi&ze >>"
-msgstr ""
+msgstr "설정변경(&Z) >>"
 
 #: src/extensions/spectraextension.cpp:49
 msgid "&Spectra..."
@@ -2184,22 +2201,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:97
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:135
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:278
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2226,7 +2243,7 @@ msgid "Build and display crystallographic super cells"
 msgstr ""
 
 #: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
-#: src/extensions/surfaceextension.cpp:622
+#: src/extensions/surfaceextension.cpp:624
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2272,39 +2289,39 @@ msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:67
+#: src/extensions/surfaceextension.cpp:69
 msgid "Create Surfaces..."
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:356
-#: src/extensions/surfaceextension.cpp:386
-#: src/extensions/surfaceextension.cpp:413
-#: src/extensions/surfaceextension.cpp:447
-#: src/extensions/surfaceextension.cpp:475
+#: src/extensions/surfaceextension.cpp:358
+#: src/extensions/surfaceextension.cpp:388
+#: src/extensions/surfaceextension.cpp:415
+#: src/extensions/surfaceextension.cpp:449
+#: src/extensions/surfaceextension.cpp:477
 msgid "Abort Calculation"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:361
+#: src/extensions/surfaceextension.cpp:363
 msgid "Calculating VdW Cube"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:391
-#: src/extensions/surfaceextension.cpp:417
+#: src/extensions/surfaceextension.cpp:393
+#: src/extensions/surfaceextension.cpp:419
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:452
-#: src/extensions/surfaceextension.cpp:480
+#: src/extensions/surfaceextension.cpp:454
+#: src/extensions/surfaceextension.cpp:482
 msgid "Calculating Electron Density"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:566
+#: src/extensions/surfaceextension.cpp:568
 msgid "VdW"
 msgstr ""
 
-#: src/extensions/surfaceextension.cpp:594
+#: src/extensions/surfaceextension.cpp:596
 msgid "Electron Density"
 msgstr ""
 
@@ -2381,7 +2398,7 @@ msgstr ""
 msgid "Unit Cell Parameters..."
 msgstr ""
 
-#: src/extensions/unitcellextension.cpp:95
+#: src/extensions/unitcellextension.cpp:114
 msgid ""
 "This document is currently an isolated molecule.\n"
 "\n"
@@ -2402,7 +2419,7 @@ msgid "Apply"
 msgstr ""
 
 #: src/extensions/constraintsdialog.ui:212
-#: src/extensions/unitcellparamdialog.cpp:97:222
+#: src/extensions/unitcellparamdialog.cpp:97 :224
 msgid "OK"
 msgstr ""
 
@@ -2413,7 +2430,7 @@ msgstr ""
 
 #: src/extensions/vibrationdialog.ui:125
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:1730
+#: src/extensions/vibrationdialog.cpp:213 :1730
 msgid "Start &Animation"
 msgstr ""
 
@@ -2429,17 +2446,17 @@ msgstr ""
 msgid "&Vibrations..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2550
-#: src/extensions/vibrationextension.cpp:121
-#: src/extensions/vibrationextension.cpp:239:804
+#: src/extensions/gamessinputdialog.ui:2556
+#: src/extensions/vibrationextension.cpp:122
+#: src/extensions/vibrationextension.cpp:241 :804
 msgid "Vibrational Analysis"
 msgstr ""
 
-#: src/extensions/vibrationextension.cpp:121
+#: src/extensions/vibrationextension.cpp:122
 msgid "No vibrational displacements exist."
 msgstr ""
 
-#: src/extensions/vibrationextension.cpp:239
+#: src/extensions/vibrationextension.cpp:241
 msgid "No vibrations have been computed for this molecule."
 msgstr ""
 
@@ -2482,35 +2499,35 @@ msgstr ""
 msgid "OpenGL error"
 msgstr ""
 
-#: src/glwidget.cpp:1006
+#: src/glwidget.cpp:1012
 msgid "Debug Information"
 msgstr ""
 
-#: src/glwidget.cpp:1007
+#: src/glwidget.cpp:1013
 #, qt-format
 msgid "FPS: %L1"
 msgstr ""
 
-#: src/glwidget.cpp:1010
+#: src/glwidget.cpp:1016
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr ""
 
-#: src/glwidget.cpp:1012
+#: src/glwidget.cpp:1018
 msgid "No molecule set"
 msgstr ""
 
-#: src/glwidget.cpp:1017
+#: src/glwidget.cpp:1023
 #, qt-format
 msgid "Atoms: %L1"
 msgstr ""
 
-#: src/glwidget.cpp:1020
+#: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
 msgstr ""
 
-#: src/molecule.cpp:106
+#: src/molecule.cpp:111
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr ""
@@ -2737,61 +2754,63 @@ msgstr ""
 msgid "AutoOpt: Could not setup force field...."
 msgstr ""
 
-#: src/tools/autoopttool.cpp:228
+#: src/tools/autoopttool.cpp:230
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:257
+#: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:272
+#: src/tools/autoopttool.cpp:274
 msgid "Steps per Update:"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:283
+#: src/tools/autoopttool.cpp:285
 msgid "Algorithm:"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:90 src/tools/autoopttool.cpp:286:252
+#: src/extensions/forcefielddialog.ui:90
+#: src/tools/autoopttool.cpp:288 :254
 msgid "Steepest Descent"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:95 src/tools/autoopttool.cpp:287:254
+#: src/extensions/forcefielddialog.ui:95
+#: src/tools/autoopttool.cpp:289 :256
 msgid "Conjugate Gradients"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:288
+#: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (300K)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:289
+#: src/tools/autoopttool.cpp:291
 msgid "Molecular Dynamics (600K)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:290
+#: src/tools/autoopttool.cpp:292
 msgid "Molecular Dynamics (900K)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:292 src/tools/autoopttool.cpp:385
-#: src/tools/autorotatetool.cpp:232 src/tools/autorotatetool.cpp:293
+#: src/tools/autoopttool.cpp:294 src/tools/autoopttool.cpp:387
+#: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:294
+#: src/tools/autoopttool.cpp:296
 msgid "Fixed atoms are movable"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:295
+#: src/tools/autoopttool.cpp:297
 msgid "Ignored atoms are movable"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:352 src/tools/autorotatetool.cpp:222
+#: src/tools/autoopttool.cpp:354 src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:562
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -2807,31 +2826,31 @@ msgstr ""
 msgid "AutoOptimization Settings"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:52
+#: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:247
+#: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:253
+#: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:263
+#: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:268
+#: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:278
+#: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
 msgstr ""
 
-#: src/tools/autorotatetool.cpp:283
+#: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
 msgstr ""
 
@@ -2839,8 +2858,8 @@ msgstr ""
 #: src/extensions/molproinputdialog.ui:436
 #: src/extensions/mopacinputdialog.ui:347
 #: src/extensions/nwcheminputdialog.ui:432
-#: src/extensions/qcheminputdialog.ui:446 src/tools/autorotatetool.cpp:294:946
-#: rc.cpp:1222 rc.cpp:1280
+#: src/extensions/qcheminputdialog.ui:446
+#: src/tools/autorotatetool.cpp:296 :946 rc.cpp:1222 rc.cpp:1280
 msgid "Reset"
 msgstr ""
 
@@ -2985,28 +3004,28 @@ msgstr ""
 msgid "Measure Settings"
 msgstr ""
 
-#: src/tools/zmatrixdialog.ui:45 src/tools/drawcommand.cpp:275
-#: src/tools/drawcommand.cpp:289:1750
+#: src/tools/zmatrixdialog.ui:45
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :1750
 msgid "Add Atom"
 msgstr ""
 
-#: src/tools/drawcommand.cpp:383
+#: src/tools/drawcommand.cpp:415
 msgid "Delete Atom"
 msgstr ""
 
-#: src/tools/drawcommand.cpp:527 src/tools/drawcommand.cpp:546
+#: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
 msgstr ""
 
-#: src/tools/drawcommand.cpp:718
+#: src/tools/drawcommand.cpp:757
 msgid "Delete Bond"
 msgstr ""
 
-#: src/tools/drawcommand.cpp:787
+#: src/tools/drawcommand.cpp:833
 msgid "Change Element"
 msgstr ""
 
-#: src/tools/drawcommand.cpp:891 src/tools/drawtool.cpp:468
+#: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:494
 msgid "Change Bond Order"
 msgstr ""
 
@@ -3018,43 +3037,44 @@ msgid ""
 "Right Mouse: Delete Atom"
 msgstr ""
 
-#: src/tools/drawtool.cpp:397 src/tools/drawtool.cpp:403
+#: src/tools/drawtool.cpp:400 src/tools/drawtool.cpp:406
 msgid "Draw Atom"
 msgstr ""
 
-#: src/tools/drawtool.cpp:423
+#: src/tools/drawtool.cpp:447
 msgid "Draw Bond"
 msgstr ""
 
-#: src/tools/drawtool.cpp:432 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:456 src/tools/drawtool.h:53
 msgid "Draw"
 msgstr ""
 
-#: src/tools/drawtool.cpp:736
+#: src/tools/drawtool.cpp:771
 msgid "Element:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1214 src/tools/drawtool.cpp:763:556
+#: src/extensions/gamessinputdialog.ui:1214
+#: src/tools/drawtool.cpp:798 :558
 msgid "Other..."
 msgstr ""
 
-#: src/tools/drawtool.cpp:767
+#: src/tools/drawtool.cpp:802
 msgid "Bond Order:"
 msgstr ""
 
-#: src/tools/drawtool.cpp:772
+#: src/tools/drawtool.cpp:807
 msgid "Single"
 msgstr ""
 
-#: src/tools/drawtool.cpp:773
+#: src/tools/drawtool.cpp:808
 msgid "Double"
 msgstr ""
 
-#: src/tools/drawtool.cpp:774
+#: src/tools/drawtool.cpp:809
 msgid "Triple"
 msgstr ""
 
-#: src/tools/drawtool.cpp:789
+#: src/tools/drawtool.cpp:824
 msgid "Adjust Hydrogens"
 msgstr ""
 
@@ -3164,7 +3184,8 @@ msgstr ""
 msgid "Z Matrix Editor..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1537 src/tools/zmatrixtool.h:39:614
+#: src/extensions/gamessinputdialog.ui:1537
+#: src/tools/zmatrixtool.h:39 :616
 msgid "Z-Matrix"
 msgstr ""
 
@@ -3204,12 +3225,14 @@ msgstr ""
 msgid "Bond Radius:"
 msgstr ""
 
-#: src/engines/bsdysettingswidget.ui:76 src/engines/ringsettingswidget.ui:16
+#: src/engines/bsdysettingswidget.ui:76
+#: src/engines/ringsettingswidget.ui:16
 #: src/engines/surfacesettingswidget.ui:30
 msgid "Opacity:"
 msgstr ""
 
-#: src/engines/bsdysettingswidget.ui:119 src/engines/wiresettingswidget.ui:31
+#: src/engines/bsdysettingswidget.ui:119
+#: src/engines/wiresettingswidget.ui:31
 msgid "Show Multiple Bonds"
 msgstr ""
 
@@ -3247,8 +3270,6 @@ msgstr ""
 
 #: src/engines/cartoonsettingswidget.ui:209
 #: src/engines/cartoonsettingswidget.ui:357
-#: src/extensions/animationdialog.ui:169
-#: src/extensions/gamessinputdialog.ui:1905
 #: src/extensions/linmorphdialog.ui:181
 msgid "Loop"
 msgstr ""
@@ -3301,12 +3322,13 @@ msgid "Atom Labels:"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:55
-#: src/engines/labelsettingswidget.ui:140
+#: src/engines/labelsettingswidget.ui:145
 #: src/extensions/gamessinputdialog.ui:450
 #: src/extensions/gamessinputdialog.ui:999
 #: src/extensions/gamessinputdialog.ui:1069
 #: src/extensions/gamessinputdialog.ui:1115
-#: src/extensions/gamessinputdialog.ui:2101 src/extensions/shaderdialog.ui:207
+#: src/extensions/gamessinputdialog.ui:2107
+#: src/extensions/shaderdialog.ui:207
 msgid "None"
 msgstr ""
 
@@ -3322,36 +3344,44 @@ msgstr ""
 msgid "Element symbol"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:80
+#: src/engines/labelsettingswidget.ui:75
+msgid "Formal charge"
+msgstr ""
+
+#: src/engines/labelsettingswidget.ui:85
 msgid "Residue number"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:90
-#: src/engines/labelsettingswidget.ui:160
-msgid "Unique ID"
+msgid "Partial charge"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:95
-msgid "Symbol & Atom Number"
+#: src/engines/labelsettingswidget.ui:165
+msgid "Unique ID"
 msgstr ""
 
 #: src/engines/labelsettingswidget.ui:100
-msgid "Custom Data"
+msgid "Symbol & Atom number"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:108
+#: src/engines/labelsettingswidget.ui:105
+msgid "Custom data"
+msgstr ""
+
+#: src/engines/labelsettingswidget.ui:113
 msgid "Bond Labels:"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:145
+#: src/engines/labelsettingswidget.ui:150
 msgid "Bond length"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:150
+#: src/engines/labelsettingswidget.ui:155
 msgid "Bond number"
 msgstr ""
 
-#: src/engines/labelsettingswidget.ui:155
+#: src/engines/labelsettingswidget.ui:160
 msgid "Bond order"
 msgstr ""
 
@@ -3437,7 +3467,8 @@ msgstr ""
 msgid "Load File..."
 msgstr ""
 
-#: src/extensions/animationdialog.ui:45 src/extensions/linmorphdialog.ui:64
+#: src/extensions/animationdialog.ui:45
+#: src/extensions/linmorphdialog.ui:64
 msgid "0/0"
 msgstr ""
 
@@ -3445,7 +3476,13 @@ msgstr ""
 msgid "Dynamic Bonds"
 msgstr ""
 
-#: src/extensions/animationdialog.ui:189 src/extensions/linmorphdialog.ui:201
+#: src/extensions/animationdialog.ui:169
+msgctxt "Continually re-run the animation in a loop"
+msgid "Loop"
+msgstr ""
+
+#: src/extensions/animationdialog.ui:189
+#: src/extensions/linmorphdialog.ui:201
 msgid "fps"
 msgstr ""
 
@@ -3476,8 +3513,10 @@ msgid "Number of conformers"
 msgstr ""
 
 #: src/extensions/conformersearchdialog.ui:60
-#: src/extensions/gamessinputdialog.ui:2560 src/extensions/liganddialog.ui:21
-#: src/extensions/liganddialog.ui:34 src/extensions/pocketdialog.ui:21
+#: src/extensions/gamessinputdialog.ui:2566
+#: src/extensions/liganddialog.ui:21
+#: src/extensions/liganddialog.ui:34
+#: src/extensions/pocketdialog.ui:21
 #: src/extensions/pocketdialog.ui:34
 msgid "Method"
 msgstr ""
@@ -3566,12 +3605,15 @@ msgstr ""
 msgid "File Import..."
 msgstr ""
 
-#: src/extensions/fileimportdialog.ui:25 src/extensions/povraydialog.ui:127
+#: src/extensions/fileimportdialog.ui:25
+#: src/extensions/povraydialog.ui:127
 msgid "Filename:"
 msgstr ""
 
-#: src/extensions/fileimportdialog.ui:37 src/extensions/fileimportdialog.ui:58
-#: src/extensions/shaderdialog.ui:67 src/extensions/shaderdialog.ui:91
+#: src/extensions/fileimportdialog.ui:37
+#: src/extensions/fileimportdialog.ui:58
+#: src/extensions/shaderdialog.ui:67
+#: src/extensions/shaderdialog.ui:91
 #: src/extensions/shaderdialog.ui:115
 msgid "Browse..."
 msgstr ""
@@ -3592,7 +3634,8 @@ msgstr ""
 msgid "Setup Force Field"
 msgstr ""
 
-#: src/extensions/forcefielddialog.ui:25 src/extensions/forcefielddialog.ui:31
+#: src/extensions/forcefielddialog.ui:25
+#: src/extensions/forcefielddialog.ui:31
 msgid "Force Field"
 msgstr ""
 
@@ -3662,7 +3705,7 @@ msgid "RHF"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:48
-#: src/extensions/gamessinputdialog.ui:2279
+#: src/extensions/gamessinputdialog.ui:2285
 #: src/extensions/gaussianinputdialog.ui:164
 #: src/extensions/molproinputdialog.ui:143
 #: src/extensions/nwcheminputdialog.ui:143
@@ -3814,7 +3857,7 @@ msgid "Water"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:280
-#: src/extensions/gamessinputdialog.ui:2675
+#: src/extensions/gamessinputdialog.ui:2681
 #: src/extensions/surfacedialog.ui:335
 msgid "Calculate"
 msgstr ""
@@ -3978,7 +4021,7 @@ msgid "ECP Type:"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:717
-#: src/extensions/gamessinputdialog.ui:1848
+#: src/extensions/gamessinputdialog.ui:1843
 msgid "Default"
 msgstr ""
 
@@ -4344,7 +4387,8 @@ msgstr ""
 #: src/extensions/molproinputdialog.ui:31
 #: src/extensions/mopacinputdialog.ui:30
 #: src/extensions/nwcheminputdialog.ui:31
-#: src/extensions/qcheminputdialog.ui:31 src/extensions/spectradialog.ui:360
+#: src/extensions/qcheminputdialog.ui:31
+#: src/extensions/spectradialog.ui:360
 msgid "Title:"
 msgstr ""
 
@@ -4353,467 +4397,469 @@ msgid "Point Group:"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1666
-msgid "Seconds"
-msgstr ""
-
-#: src/extensions/gamessinputdialog.ui:1671
 msgid "Minutes"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1676
+#: src/extensions/gamessinputdialog.ui:1671
 msgid "Hours"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1681
+#: src/extensions/gamessinputdialog.ui:1676
 msgid "Days"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1686
+#: src/extensions/gamessinputdialog.ui:1681
 msgid "Weeks"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1691
+#: src/extensions/gamessinputdialog.ui:1686
 msgid "Years"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1696
+#: src/extensions/gamessinputdialog.ui:1691
 msgid "Millenia"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1720
+#: src/extensions/gamessinputdialog.ui:1764
+msgid "MegaWords"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1725
 #: src/extensions/gamessinputdialog.ui:1769
-msgid "Words"
+msgid "MegaBytes"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1730
 #: src/extensions/gamessinputdialog.ui:1774
-msgid "Bytes"
+msgid "GigaWords"
 msgstr ""
 
 #: src/extensions/gamessinputdialog.ui:1735
 #: src/extensions/gamessinputdialog.ui:1779
-msgid "MegaWords"
+msgid "GigaBytes"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1740
-#: src/extensions/gamessinputdialog.ui:1784
-msgid "MegaBytes"
-msgstr ""
-
-#: src/extensions/gamessinputdialog.ui:1812
+#: src/extensions/gamessinputdialog.ui:1807
 msgid "Force Parallel Methods"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1835
+#: src/extensions/gamessinputdialog.ui:1830
 msgid "Produce \"core\" file upon abort"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1853
+#: src/extensions/gamessinputdialog.ui:1848
 msgid "EVVRSP"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1858
+#: src/extensions/gamessinputdialog.ui:1853
 msgid "GIVEIS"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1863
+#: src/extensions/gamessinputdialog.ui:1858
 msgid "JACOBI"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1871
+#: src/extensions/gamessinputdialog.ui:1866
 msgid "Time Limit:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1878
+#: src/extensions/gamessinputdialog.ui:1873
 msgid "MemDDI:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1885
-#: src/extensions/gamessinputdialog.ui:2460
+#: src/extensions/gamessinputdialog.ui:1880
+#: src/extensions/gamessinputdialog.ui:2466
 msgid "Memory:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1892
+#: src/extensions/gamessinputdialog.ui:1887
 msgid "Diagonalization Method:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1899
+#: src/extensions/gamessinputdialog.ui:1894
 msgid "Parallel Load Balance Type"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1915
+#: src/extensions/gamessinputdialog.ui:1900
+msgctxt "\"Loop\" load balancing - set static node assignments"
+msgid "Loop"
+msgstr ""
+
+#: src/extensions/gamessinputdialog.ui:1910
+msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1925
+#: src/extensions/gamessinputdialog.ui:1923
 msgid "Use External Data Representation for Messages"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1973
+#: src/extensions/gamessinputdialog.ui:1979
 msgid "Initial Guess:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1984
+#: src/extensions/gamessinputdialog.ui:1990
 msgid "Hückel"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1989
+#: src/extensions/gamessinputdialog.ui:1995
 msgid "HCore"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1994
+#: src/extensions/gamessinputdialog.ui:2000
 msgid "MO Read ($VEC)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:1999
+#: src/extensions/gamessinputdialog.ui:2005
 msgid "MO Saved (DICTNRY)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2004
+#: src/extensions/gamessinputdialog.ui:2010
 msgid "Skip"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2027
+#: src/extensions/gamessinputdialog.ui:2033
 msgid "Rotate Alpha and Beta Orbitals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2034
+#: src/extensions/gamessinputdialog.ui:2040
 msgid "Print the Initial Guess"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2058
+#: src/extensions/gamessinputdialog.ui:2064
 msgid "GAMESS Interface to Other Codes"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2064
+#: src/extensions/gamessinputdialog.ui:2070
 msgid "MolPlt"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2071
+#: src/extensions/gamessinputdialog.ui:2077
 msgid "PltOrb"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2078
+#: src/extensions/gamessinputdialog.ui:2084
 msgid "AIMPAC"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2085
+#: src/extensions/gamessinputdialog.ui:2091
 msgid "RPAC"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2095
+#: src/extensions/gamessinputdialog.ui:2101
 msgid "Force a Check Run Type"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2111
+#: src/extensions/gamessinputdialog.ui:2117
 msgid "Hondo 8.2"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2118
+#: src/extensions/gamessinputdialog.ui:2124
 msgid "MELDF"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2125
+#: src/extensions/gamessinputdialog.ui:2131
 msgid "GAMESS (UK Version)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2132
+#: src/extensions/gamessinputdialog.ui:2138
 msgid "Gaussian 9x"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2139
+#: src/extensions/gamessinputdialog.ui:2145
 msgid "All"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2164
+#: src/extensions/gamessinputdialog.ui:2170
 msgid "Solvate with Water"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2203
+#: src/extensions/gamessinputdialog.ui:2209
 msgid "Generate UHF Natural Orbitals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2210
+#: src/extensions/gamessinputdialog.ui:2216
 msgid "Direct SCF"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2217
+#: src/extensions/gamessinputdialog.ui:2223
 msgid "Compute Only Changed in Fock Matrix"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2244
+#: src/extensions/gamessinputdialog.ui:2250
 msgid "Slater exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2249
+#: src/extensions/gamessinputdialog.ui:2255
 msgid "Becke 1988 exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2254
+#: src/extensions/gamessinputdialog.ui:2260
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2259
+#: src/extensions/gamessinputdialog.ui:2265
 msgid "LYP: Lee-Yang-Parr correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2264
+#: src/extensions/gamessinputdialog.ui:2270
 msgid "SVWN: Slater exchange + VWN correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2269
+#: src/extensions/gamessinputdialog.ui:2275
 msgid "BVWN: BECKE exchange + VWN5 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2274
+#: src/extensions/gamessinputdialog.ui:2280
 msgid "BLYP: BECKE exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2284
+#: src/extensions/gamessinputdialog.ui:2290
 msgid "Gill 1996 exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2289
+#: src/extensions/gamessinputdialog.ui:2295
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2294
+#: src/extensions/gamessinputdialog.ui:2300
 msgid "OP: One-parameter Progressive correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2299
+#: src/extensions/gamessinputdialog.ui:2305
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2304
+#: src/extensions/gamessinputdialog.ui:2310
 msgid "SOP: SLATER + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2309
+#: src/extensions/gamessinputdialog.ui:2315
 msgid "BOP: BECKE exchange + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2314
+#: src/extensions/gamessinputdialog.ui:2320
 msgid "BVWN: GILL exchange + VWN5 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2319
+#: src/extensions/gamessinputdialog.ui:2325
 msgid "GLYP: GILL exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2324
+#: src/extensions/gamessinputdialog.ui:2330
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2329
+#: src/extensions/gamessinputdialog.ui:2335
 msgid "PBELYP: PBE exchange +LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2334
+#: src/extensions/gamessinputdialog.ui:2340
 msgid "PBEOP: PBE exchange + OP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2339
+#: src/extensions/gamessinputdialog.ui:2345
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2365
+#: src/extensions/gamessinputdialog.ui:2371
 msgid "Grid"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2370
+#: src/extensions/gamessinputdialog.ui:2376
 msgid "Grid-Free"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2393
+#: src/extensions/gamessinputdialog.ui:2399
 msgid "DFT Functional:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2400
+#: src/extensions/gamessinputdialog.ui:2406
 #: src/extensions/mopacinputdialog.ui:186
 msgid "Method:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2424
+#: src/extensions/gamessinputdialog.ui:2430
 msgid "AO Integral Storage"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2433
+#: src/extensions/gamessinputdialog.ui:2439
 msgid "Duplicated on Each Node"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2440
+#: src/extensions/gamessinputdialog.ui:2446
 msgid "Distributed Across All Nodes"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2453
+#: src/extensions/gamessinputdialog.ui:2459
 msgid "words"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2467
+#: src/extensions/gamessinputdialog.ui:2473
 msgid "Compute MP2 Properties"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2474
+#: src/extensions/gamessinputdialog.ui:2480
 msgid "Integral Retention Cutoff:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2487
+#: src/extensions/gamessinputdialog.ui:2493
 msgid "Use Localized Orbitals"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2494
+#: src/extensions/gamessinputdialog.ui:2500
 msgid "# of Core Electrons:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2501
+#: src/extensions/gamessinputdialog.ui:2507
 msgid "Transformation Method"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2510
+#: src/extensions/gamessinputdialog.ui:2516
 msgid "Two Phase Bin Sort"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2517
+#: src/extensions/gamessinputdialog.ui:2523
 msgid "Segmented Transformation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2566
+#: src/extensions/gamessinputdialog.ui:2572
 msgid "Analytic"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2576
+#: src/extensions/gamessinputdialog.ui:2582
 msgid "Numeric"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2586
+#: src/extensions/gamessinputdialog.ui:2592
 msgid "Double Differenced Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2593
+#: src/extensions/gamessinputdialog.ui:2599
 msgid "Print Internal Force Constants"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2600
+#: src/extensions/gamessinputdialog.ui:2606
 msgid "Displacement Size:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2607
+#: src/extensions/gamessinputdialog.ui:2613
 msgid "Purify Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2614
+#: src/extensions/gamessinputdialog.ui:2620
 msgid "Frequency Scale Factor:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2621
+#: src/extensions/gamessinputdialog.ui:2627
 msgid "bohrs"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2655
+#: src/extensions/gamessinputdialog.ui:2661
 msgid "Initial Hessian"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2661
+#: src/extensions/gamessinputdialog.ui:2667
 msgid "Guess (+ define)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2668
+#: src/extensions/gamessinputdialog.ui:2674
 msgid "Read (from $HESS)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2685
+#: src/extensions/gamessinputdialog.ui:2691
 msgid "Update Step Size"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2695
+#: src/extensions/gamessinputdialog.ui:2701
 msgid "Print Orbs at Each Iteration"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2702
+#: src/extensions/gamessinputdialog.ui:2708
 msgid "Gradient Convergence Criteria:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2731
+#: src/extensions/gamessinputdialog.ui:2737
 msgid "Jump Size:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2738
+#: src/extensions/gamessinputdialog.ui:2744
 msgid "Stationary Point"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2748
+#: src/extensions/gamessinputdialog.ui:2754
 msgid "Optimization Method:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2758
+#: src/extensions/gamessinputdialog.ui:2764
 msgid "Step Size"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2764
+#: src/extensions/gamessinputdialog.ui:2770
 msgid "Maximum:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2771
+#: src/extensions/gamessinputdialog.ui:2777
 msgid "Minimum:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2781
+#: src/extensions/gamessinputdialog.ui:2787
 msgid "Initial:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2825
+#: src/extensions/gamessinputdialog.ui:2831
 msgid "Newton-Raphson"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2830
+#: src/extensions/gamessinputdialog.ui:2836
 msgid "Rational Function Optimization"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2835
+#: src/extensions/gamessinputdialog.ui:2841
 msgid "Quadratic Approximation"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2840
+#: src/extensions/gamessinputdialog.ui:2846
 msgid "Schlegel (quasi-NR)"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2845
+#: src/extensions/gamessinputdialog.ui:2851
 msgid "Constrained Optimization"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2858
+#: src/extensions/gamessinputdialog.ui:2864
 msgid "steps"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2880
+#: src/extensions/gamessinputdialog.ui:2886
 msgid "Recalculate Hessian Every:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2890
+#: src/extensions/gamessinputdialog.ui:2896
 msgid "Follow Mode:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2900
+#: src/extensions/gamessinputdialog.ui:2906
 msgid "Maximum Steps:"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2933
+#: src/extensions/gamessinputdialog.ui:2939
 msgid "Reset All"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2940
+#: src/extensions/gamessinputdialog.ui:2946
 msgid "Defaults"
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2963
+#: src/extensions/gamessinputdialog.ui:2969
 #: src/extensions/gaussianinputdialog.ui:528
 #: src/extensions/mopacinputdialog.ui:377
 #: src/extensions/qcheminputdialog.ui:476
 msgid "Compute..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2970
+#: src/extensions/gamessinputdialog.ui:2976
 #: src/extensions/gaussianinputdialog.ui:535
 #: src/extensions/molproinputdialog.ui:466
 #: src/extensions/mopacinputdialog.ui:384
@@ -4822,11 +4868,12 @@ msgstr ""
 msgid "Generate..."
 msgstr ""
 
-#: src/extensions/gamessinputdialog.ui:2977
+#: src/extensions/gamessinputdialog.ui:2983
 #: src/extensions/gaussianinputdialog.ui:542
 #: src/extensions/molproinputdialog.ui:473
 #: src/extensions/mopacinputdialog.ui:391
-#: src/extensions/nwcheminputdialog.ui:469 src/extensions/povraydialog.ui:118
+#: src/extensions/nwcheminputdialog.ui:469
+#: src/extensions/povraydialog.ui:118
 #: src/extensions/qcheminputdialog.ui:490
 msgid "Close"
 msgstr ""
@@ -5226,7 +5273,8 @@ msgstr ""
 msgid "create ligand from file..."
 msgstr ""
 
-#: src/extensions/liganddialog.ui:79 src/extensions/pocketdialog.ui:74
+#: src/extensions/liganddialog.ui:79
+#: src/extensions/pocketdialog.ui:74
 msgid "The residue name"
 msgstr ""
 
@@ -5409,7 +5457,8 @@ msgstr ""
 msgid "Render"
 msgstr ""
 
-#: src/extensions/povraydialog.ui:137 src/extensions/surfacedialog.ui:183
+#: src/extensions/povraydialog.ui:137
+#: src/extensions/surfacedialog.ui:183
 msgid "Resolution:"
 msgstr ""
 
@@ -5493,7 +5542,8 @@ msgstr ""
 msgid "Parameters:"
 msgstr ""
 
-#: src/extensions/shaderdialog.ui:162 src/extensions/shaderdialog.ui:245
+#: src/extensions/shaderdialog.ui:162
+#: src/extensions/shaderdialog.ui:245
 msgid "Assign Shader"
 msgstr ""
 
@@ -5530,8 +5580,10 @@ msgstr ""
 msgid "Calculated Spectra:"
 msgstr ""
 
-#: src/extensions/spectradialog.ui:168 src/extensions/spectradialog.ui:191
-#: src/extensions/spectradialog.ui:279 src/extensions/spectradialog.ui:305
+#: src/extensions/spectradialog.ui:168
+#: src/extensions/spectradialog.ui:191
+#: src/extensions/spectradialog.ui:279
+#: src/extensions/spectradialog.ui:305
 msgid "Set Color..."
 msgstr ""
 
@@ -5547,7 +5599,8 @@ msgstr ""
 msgid "Change Font..."
 msgstr ""
 
-#: src/extensions/spectradialog.ui:224 src/extensions/spectradialog.ui:237
+#: src/extensions/spectradialog.ui:224
+#: src/extensions/spectradialog.ui:237
 msgid "Show"
 msgstr ""
 
@@ -5695,7 +5748,8 @@ msgstr ""
 msgid "Label Peaks:"
 msgstr ""
 
-#: src/extensions/spectratabnmr.ui:125 src/extensions/spectratabnmr.ui:132
+#: src/extensions/spectratabnmr.ui:125
+#: src/extensions/spectratabnmr.ui:132
 msgid "ppm"
 msgstr ""
 
@@ -5710,73 +5764,75 @@ msgstr ""
 #: src/extensions/supercelldialog.ui:28
 #: src/extensions/unitcellparamdialog.ui:34
 msgid "A repeat:"
-msgstr ""
+msgstr "A 반복:"
 
 #: src/extensions/supercelldialog.ui:42
 #: src/extensions/unitcellparamdialog.ui:48
 msgid "B repeat:"
-msgstr ""
+msgstr "B 반복:"
 
 #: src/extensions/supercelldialog.ui:56
 #: src/extensions/unitcellparamdialog.ui:62
 msgid "C repeat:"
-msgstr ""
+msgstr "C 반복:"
 
 #: src/extensions/supercelldialog.ui:88
 msgid "Generate Cell"
-msgstr ""
+msgstr "세포 생성"
 
 #: src/extensions/surfacedialog.ui:14
 msgid "Create Surfaces"
-msgstr ""
+msgstr "표면 생성"
 
 #: src/extensions/surfacedialog.ui:25
 msgid "Surface Type:"
-msgstr ""
+msgstr "표면 형식:"
 
 #: src/extensions/surfacedialog.ui:41
 msgid "Van der Waals"
-msgstr ""
+msgstr "반 데르 발스"
 
-#: src/extensions/surfacedialog.ui:46 src/extensions/surfacedialog.ui:125
+#: src/extensions/surfacedialog.ui:46
+#: src/extensions/surfacedialog.ui:125
 msgid "Electrostatic Potential"
 msgstr ""
 
-#: src/extensions/surfacedialog.ui:81 src/extensions/surfacedialog.ui:160
+#: src/extensions/surfacedialog.ui:81
+#: src/extensions/surfacedialog.ui:160
 msgid "MO 666"
-msgstr ""
+msgstr "MO 666"
 
 #: src/extensions/surfacedialog.ui:104
 msgid "Color By:"
-msgstr ""
+msgstr "채색:"
 
 #: src/extensions/surfacedialog.ui:120
 msgid "Nothing"
-msgstr ""
+msgstr "없음"
 
 #: src/extensions/surfacedialog.ui:202
 msgctxt "low resolution"
 msgid "Low"
-msgstr ""
+msgstr "낮음"
 
 #: src/extensions/surfacedialog.ui:207
 msgctxt "medium resolution"
 msgid "Medium"
-msgstr ""
+msgstr "중간"
 
 #: src/extensions/surfacedialog.ui:212
 msgctxt "high resolution"
 msgid "High"
-msgstr ""
+msgstr "높음"
 
 #: src/extensions/surfacedialog.ui:217
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr ""
+msgstr "매우 높음"
 
 #: src/extensions/surfacedialog.ui:240
 msgid "Isosurface cutoff value"
-msgstr ""
+msgstr "등곡면 절단 값"
 
 #: src/extensions/surfacedialog.ui:243
 msgid "Iso Value:"
@@ -5787,100 +5843,100 @@ msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
-msgstr ""
+msgstr "표시 형식:"
 
 #: src/extensions/surfacedialog.ui:295
 msgid "New Display"
-msgstr ""
+msgstr "새로운 창"
 
 #: src/extensions/surfacedialog.ui:345
 msgid "Advanced..."
-msgstr ""
+msgstr "고급..."
 
 #: src/extensions/unitcellparamdialog.ui:13
 #: src/extensions/unitcellparamdialog.ui:110
 msgid "Unit Cell Parameters"
-msgstr ""
+msgstr "단위 세포 매개 변수"
 
 #: src/extensions/unitcellparamdialog.ui:28
 msgid "Unit Cell Display Options"
-msgstr ""
+msgstr "단위 세포 표시 설정"
 
 #: src/extensions/unitcellparamdialog.ui:81
 msgid "Delete Unit Cell"
-msgstr ""
+msgstr "단위 세포 삭제"
 
 #: src/extensions/unitcellparamdialog.ui:101
 msgid "Fill Unit Cell"
-msgstr ""
+msgstr "단위 세포 채우기"
 
 #: src/extensions/unitcellparamdialog.ui:131
 msgid "Axes (Å)"
-msgstr ""
+msgstr "축"
 
 #: src/extensions/unitcellparamdialog.ui:151
 msgid "Angles (°)"
-msgstr ""
+msgstr "각도"
 
 #: src/extensions/unitcellparamdialog.ui:175
 msgid "A:"
-msgstr ""
+msgstr "A:"
 
 #: src/extensions/unitcellparamdialog.ui:192
 msgid "alpha:"
-msgstr ""
+msgstr "알파:"
 
 #: src/extensions/unitcellparamdialog.ui:212
 msgid "B:"
-msgstr ""
+msgstr "B:"
 
 #: src/extensions/unitcellparamdialog.ui:229
 msgid "beta:"
-msgstr ""
+msgstr "베타:"
 
 #: src/extensions/unitcellparamdialog.ui:249
 msgid "C:"
-msgstr ""
+msgstr "C:"
 
 #: src/extensions/unitcellparamdialog.ui:266
 msgid "gamma:"
-msgstr ""
+msgstr "감마:"
 
 #: src/extensions/vibrationdialog.ui:14
 msgid "Molecular Vibrations"
-msgstr ""
+msgstr "분자 진동"
 
 #: src/extensions/vibrationdialog.ui:45
 msgid "Frequency (cm⁻¹)"
-msgstr ""
+msgstr "진동수 (cm⁻¹)"
 
 #: src/extensions/vibrationdialog.ui:50
 msgid "Intensity (km/mol)"
-msgstr ""
+msgstr "강도 (km/mol)"
 
 #: src/extensions/vibrationdialog.ui:66
 msgid "&Scale:"
-msgstr ""
+msgstr "규모(&S):"
 
 #: src/extensions/vibrationdialog.ui:97
 msgid "Display force &vectors"
-msgstr ""
+msgstr "힘, 벡터 표시"
 
 #: src/extensions/vibrationdialog.ui:107
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
+msgstr "고주파 진동은 빠른 운동을 보여줄 것입니다"
 
 #: src/extensions/vibrationdialog.ui:110
 msgid "Animation speed set by frequency"
-msgstr ""
+msgstr "진동수에 의한 애니메이션 속도 설정"
 
 #: src/extensions/vibrationdialog.ui:132
 msgid "E&xport..."
-msgstr ""
+msgstr "내보내기(&E)..."
 
 #: src/tools/navigatesettingswidget.ui:14
 msgid "Form"
-msgstr ""
+msgstr "형식"
 
 #: src/tools/navigatesettingswidget.ui:23
 msgctxt ""
@@ -5891,37 +5947,44 @@ msgid ""
 "     <property name=\"text\">\n"
 "      <string>Display visual cues"
 msgstr ""
+"\n"
+"     </속성>\n"
+"     <속성 이름=\"텍스트\">\n"
+"      <문자열>디스플레이 영상 신호"
 
 #: src/tools/navigatesettingswidget.ui:24
 msgid ""
 "Display visual cues</string>\n"
 "     </property>"
 msgstr ""
+"디스플레이 영상 신호</문자열>\n"
+"     </속성>"
 
 #: src/tools/pythonsettingswidget.ui:25
 msgid "Python Settings"
-msgstr ""
+msgstr "파이썬 설정"
 
 #: src/tools/zmatrixdialog.ui:14
 msgid "Z Matrix Editor"
-msgstr ""
+msgstr "Z 행렬 편집기"
 
 #: src/tools/zmatrixdialog.ui:25
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "선택된 원자 내보내기"
 
 #: src/tools/zmatrixdialog.ui:52
 msgid "Remove Atom"
-msgstr ""
+msgstr "원자 제거하기"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team, ,Launchpad Contributions:,Avogadro Team"
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Sang-"
+"hyeon Lee"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists.sourceforge."
-"net"
+",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,"

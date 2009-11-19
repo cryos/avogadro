@@ -45,6 +45,7 @@ namespace Avogadro
    * @sa Painter
    */
   class GLWidget;
+  class Color3f;
   class GLPainterPrivate;
   class GLPainter : public Painter
   {
@@ -407,7 +408,7 @@ namespace Avogadro
      */
     void setDynamicScaling(bool scaling);
 
-  private:
+  protected:
     GLPainterPrivate * const d;
 
     bool m_dynamicScaling;
@@ -440,6 +441,19 @@ namespace Avogadro
      * painted.
      */
     void resetName();
+
+    /**
+     * Sets this color to be the one used by OpenGL for rendering
+     * when lighting is disabled.
+     */
+    void apply(const Color3f &color);
+
+    /**
+     * Applies nice OpenGL materials using this color as the
+     * diffuse color while using different shades for the ambient and
+     * specular colors. This is only useful if lighting is enabled.
+     */
+    void applyAsMaterials(const Color3f &color, float alpha = 1.0);
   };
 } // end namespace Avogadro
 

@@ -237,11 +237,17 @@ namespace Avogadro {
     CartoonMeshGenerator *generator = new CartoonMeshGenerator(molecule, m_mesh);
 
     generator->setHelixABC(m_aHelix, m_bHelix, m_cHelix);
-    generator->setHelixColor(m_helixColor);
+    generator->setHelixColor(Color3f(float(m_helixColor.redF()),
+                                     m_helixColor.greenF(),
+                                     m_helixColor.blueF()));
     generator->setSheetABC(m_aSheet, m_bSheet, m_cSheet);
-    generator->setSheetColor(m_sheetColor);
+    generator->setSheetColor(Color3f(float(m_sheetColor.redF()),
+                                     m_sheetColor.greenF(),
+                                     m_sheetColor.blueF()));
     generator->setLoopABC(m_aLoop, m_bLoop, m_cLoop);
-    generator->setLoopColor(m_loopColor);
+    generator->setLoopColor(Color3f(float(m_loopColor.redF()),
+                                    m_loopColor.greenF(),
+                                    m_loopColor.blueF()));
 
     connect(generator, SIGNAL(finished()), this, SIGNAL(changed()));
     connect(generator, SIGNAL(finished()), generator, SLOT(deleteLater()));

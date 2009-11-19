@@ -61,6 +61,29 @@ namespace Avogadro {
       disconnect( m_molecule, 0, this, 0 );
 
     m_molecule = molecule;
+  }
+
+  QUndoCommand* MolecularPropertiesExtension::performAction(QAction *,
+                                                            GLWidget *widget)
+  {
+    if (!m_molecule)
+      return 0; // nothing we can do
+
+    // Disconnect in case we're attached to a new widget
+    if (m_widget)
+      disconnect( m_molecule, 0, this, 0 );
+
+    if (widget) {
+      connect(widget, SIGNAL(moleculeChanged(Molecule *)),
+              this, SLOT(moleculeChanged(Molecule*)));
+      m_widget = widget;
+    }
+
+    if (!m_dialog) {
+      m_dialog = new MolecularPropertiesDialog(m_widget);
+      connect(m_dialog, SIGNAL(accepted()), this, SLOT(disableUpdating()));
+      connect(m_dialog, SIGNAL(rejected()), this, SLOT(disableUpdating()));
+    }
 
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(update()));
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
@@ -83,30 +106,9 @@ namespace Avogadro {
             this, SLOT(updateBonds(Bond*)));
     connect(m_molecule, SIGNAL(bondUpdated(Bond *)),
             this, SLOT(updateBonds(Bond*)));
-  }
 
-  QUndoCommand* MolecularPropertiesExtension::performAction(QAction *,
-                                                            GLWidget *widget)
-  {
-    if (!m_molecule)
-      return 0; // nothing we can do
-
-    // Disconnect in case we're attached to a new widget
-    if (m_widget)
-      disconnect( m_molecule, 0, this, 0 );
-
-    if (widget) {
-      connect(widget, SIGNAL(moleculeChanged(Molecule *)),
-              this, SLOT(moleculeChanged(Molecule*)));
-      m_widget = widget;
-    }
-
-    if (!m_dialog) {
-      m_dialog = new MolecularPropertiesDialog(m_widget);
-    }
-
-    m_dialog->show();
     update();
+    m_dialog->show();
 
     return 0;
   }
@@ -129,7 +131,7 @@ namespace Avogadro {
     bool estimate = true; // estimated dipole
     m_dialog->dipoleMomentLine->setText(format.arg(m_molecule->dipoleMoment(&estimate).norm(), 0, 'f', 3));
     if (estimate)
-      m_dialog->dipoleMomentLine->setText(tr("N/A", "Dipole moment data not available."));
+      m_dialog->dipoleLabel->setText(tr("Estimated Dipole Moment (D):"));
     m_dialog->atomsLine->setText(format.arg(m_molecule->numAtoms()));
     m_dialog->bondsLine->setText(format.arg(m_molecule->numBonds()));
     if (m_molecule->numResidues() < 2) {
@@ -161,6 +163,12 @@ namespace Avogadro {
   void MolecularPropertiesExtension::moleculeChanged(Molecule *)
   {
     update();
+  }
+  
+  void MolecularPropertiesExtension::disableUpdating()
+  {
+    // don't ask for more updates
+    disconnect( m_molecule, 0, this, 0 );
   }
 
 } // end namespace Avogadro

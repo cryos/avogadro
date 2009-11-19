@@ -47,6 +47,20 @@ namespace Avogadro {
     m_NMRdata = new QHash<QString, QList<double>* >;
     m_dialog = parent;
 
+    // Setup signals/slots
+    connect(this, SIGNAL(plotDataChanged()),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.combo_type, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(setAtom(QString)));
+    connect(ui.spin_ref, SIGNAL(valueChanged(double)),
+            this, SLOT(setReference(double)));
+    connect(ui.push_resetAxes, SIGNAL(clicked()),
+            this, SLOT(updatePlotAxes()));
+    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
+            m_dialog, SLOT(regenerateCalculatedSpectra()));
+
     readSettings();
   }
 
@@ -203,19 +217,6 @@ namespace Avogadro {
         hasNMR = true;
 
     if (!hasNMR) return false;
-    // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.combo_type, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(setAtom(QString)));
-    connect(ui.spin_ref, SIGNAL(valueChanged(double)),
-            this, SLOT(setReference(double)));
-    connect(ui.push_resetAxes, SIGNAL(clicked()),
-            this, SLOT(updatePlotAxes()));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
 
     // Extract data from obmol
     FOR_ATOMS_OF_MOL(atom,obmol) {

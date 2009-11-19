@@ -99,8 +99,9 @@ namespace Avogadro {
       return; //nothing to do
 
     // stop animating
-    if (m_animating)
+    if (m_animating) {
       m_animation->stop();
+    }
 
     if (mode == -1) {
       return; // signal to end updates
@@ -192,8 +193,9 @@ namespace Avogadro {
         qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
-    if (m_animating)
+    if (m_animating) {
       m_animation->start();
+    }
     m_molecule->update();
   }
 
@@ -294,8 +296,6 @@ namespace Avogadro {
 
   void VibrationExtension::clearAnimationFrames()
   {
-    for (unsigned int frame = 0; frame < m_animationFrames.size(); ++frame)
-      delete m_animationFrames[frame];
     m_animationFrames.clear();
   }
 

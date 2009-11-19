@@ -31,6 +31,11 @@ void export_Atom()
         &Atom::setAtomicNumber,
         "The atomic number of the atom.")
 
+    .add_property("formalCharge", 
+        &Atom::formalCharge, 
+        &Atom::setFormalCharge,
+        "The formal charge of the atom.")
+
     .add_property("partialCharge", 
         &Atom::partialCharge, 
         &Atom::setPartialCharge,
