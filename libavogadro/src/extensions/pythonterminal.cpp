@@ -173,11 +173,11 @@ namespace Avogadro
  
       if (line.endsWith(':')) {
         indent += 2;
-        m_lines.append(text);
+        m_lines.append(text + "\n");
         append(QLatin1String(""));
       } else {
         if (indent && !m_lines.isEmpty()) {
-          m_lines.append(text);
+          m_lines.append(text + "\n");
           append(QLatin1String(""));
         } else {
           QString result = m_interpreter.exec(text);
