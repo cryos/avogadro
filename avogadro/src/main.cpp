@@ -35,6 +35,7 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QTranslator>
+#include <QSystemLocale>
 #include <QGLFormat>
 #include <QDebug>
 #include <QLibraryInfo>
@@ -132,13 +133,29 @@ int main(int argc, char *argv[])
     }
   }
 
-  QString translationCode = QLocale::system().name();
   translationPaths << QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
 #ifdef Q_WS_MAC
   translationPaths << QString(INSTALL_PREFIX) + "/share/avogadro/i18n/";
 #endif
 
+  // Get the locale for translations
+  QString translationCode = QLocale::system().name();
+
+  // The QLocale::system() call on Mac doesn't reflect the default language -- only the default locale formatting
+  // so we'll fine-tune the respone with QSystemLocale
+  // This only applies to Qt/Mac 4.6.x and later, which added the appropriate Carbon magic to QSystemLocale.
+#if (QT_VERSION >= QT_VERSION_CHECK(4, 6, 0))
+#ifdef Q_WS_MAC
+  QSystemLocale sysLocale;
+  QLocale::Language sysLanguage = static_cast<QLocale::Language>(sysLocale.query(QSystemLocale::LanguageId, QVariant()).toInt());
+  QLocale::Country sysCountry = static_cast<QLocale::Country>(sysLocale.query(QSystemLocale::CountryId, QVariant()).toInt());
+  QLocale macSystemPrefsLanguage(sysLanguage, sysCountry);
+  translationCode = macSystemPrefsLanguage.name();
+#endif
+#endif
+
   qDebug() << "Locale: " << translationCode;
+
   // Load Qt translations first
   bool tryLoadingQtTranslations = false;
   QString qtFilename = "qt_" + translationCode + ".qm";

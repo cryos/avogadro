@@ -40,11 +40,6 @@ avogadro_plugin(gamessextension
 avogadro_plugin(propextension
    "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
 
-avogadro_plugin(cartesianextension
-        "cartesianextension.cpp"
-        cartesianeditor.ui
-        edit.qrc)
-
 avogadro_plugin(molecularpropextension
         "molecularpropextension.cpp"
         molecularpropdialog.ui)
@@ -79,17 +74,6 @@ avogadro_plugin(insertpeptideextension
 
 ### h->methyl
 avogadro_plugin(h2methylextension h2methylextension.cpp)
-
-### WiiTrack
-#set(wiitrackextension_SRCS wiitrackextension.cpp)
-#set(CWIID_LIBRARIES /usr/lib/libcwiid.so)
-#qt4_automoc(${wiitrackextension_SRCS})
-#ADD_LIBRARY(wiitrackextension SHARED ${wiitrackextension_SRCS})
-#TARGET_LINK_LIBRARIES(wiitrackextension
-#        ${CWIID_LIBRARIES}
-#	avogadro
-#)
-#INSTALL(TARGETS wiitrackextension DESTINATION ${DESTINATION_DIR})
 
 ### Surfaces
 set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
@@ -126,14 +110,6 @@ avogadro_plugin(animationextension
   "${animationextension_SRCS}"
   animationdialog.ui
   animation.qrc)
-
-### Lin Morph Animation
-#set(linmorphextension_SRCS linmorphextension.cpp linmorphdialog.cpp
-#  trajvideomaker.cpp)
-#avogadro_plugin(linmorphextension
-#  "${linmorphextension_SRCS}"
-#  linmorphdialog.ui
-#  linmorph.qrc)
 
 ### POV-Ray extension
 avogadro_plugin("povrayextension"

@@ -31,11 +31,11 @@ namespace Avogadro
     m_basisType(STOnG), m_stoBasis(STO2G), m_popleBasis(p321G),
     m_poplediffBasis(p321ppG), m_poplepolBasis(p321Gs),
     m_poplediffpolBasis(p321ppGs), m_pcBasis(pc0), m_apcBasis(apc0),
-    m_ccpvxzBasis(ccpVDZ), m_accpvxzBasis(accpVDZ), m_ccpcvxzBasis(ccpCVDZ),
-    m_accpcvxzBasis(accpCVDZ), m_dftGrid(normal), m_propType(polari),
-    m_exci(1), m_coreBasis(false), m_diffBasis(false),m_polBasis(false),
-    m_directCheck(false), m_parallelCheck(false), m_dirty(false),
-    m_warned(false)
+    m_ccpvxzBasis(ccpVDZ), m_accpvxzBasis(accpVDZ),m_ccpcvxzBasis(ccpCVDZ),
+    m_accpcvxzBasis(accpCVDZ), m_xaugccBasis(sing), m_dftGrid(normal),
+    m_propType(polari), m_exci(1), m_coreBasis(false), m_diffBasis(false),
+    m_polBasis(false), m_directCheck(false), m_parallelCheck(false),
+    m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
@@ -71,6 +71,8 @@ namespace Avogadro
         this, SLOT(setccpcvxzBasis(int)));
     connect(ui.accpcvxzCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setaccpcvxzBasis(int)));
+    connect(ui.xaugccCombo, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(setxaugccBasis(int)));
     connect(ui.basiscoreCheck, SIGNAL(stateChanged(int)),
         this, SLOT(setcoreBasis(int)));
     connect(ui.basisdiffCheck, SIGNAL(stateChanged(int)),
@@ -157,6 +159,7 @@ namespace Avogadro
        ui.ccpcvxzCombo->hide();
        ui.accpvxzCombo->hide();
        ui.accpcvxzCombo->hide();
+       ui.xaugccCombo->hide();
        ui.popleCombo->hide();
        ui.poplediffCombo->hide();
        ui.poplepolCombo->hide();
@@ -176,6 +179,7 @@ namespace Avogadro
        ui.ccpcvxzCombo->hide();
        ui.accpvxzCombo->hide();
        ui.accpcvxzCombo->hide();
+       ui.xaugccCombo->hide();
        ui.stoCombo->hide();
        if (m_polBasis == false && m_diffBasis == false) {
           ui.popleCombo->show();
@@ -210,6 +214,7 @@ namespace Avogadro
        ui.ccpcvxzCombo->hide();
        ui.accpvxzCombo->hide();
        ui.accpcvxzCombo->hide();
+       ui.xaugccCombo->hide();
        ui.popleCombo->hide();
        ui.poplediffCombo->hide();
        ui.poplepolCombo->hide();
@@ -230,10 +235,11 @@ namespace Avogadro
        ui.basispolCheck->hide();
        ui.pcCombo->hide();
        ui.apcCombo->hide();
-       ui.ccpvxzCombo->show();
-       ui.ccpcvxzCombo->hide();
-       ui.accpvxzCombo->hide();
-       ui.accpcvxzCombo->hide();
+//       ui.ccpvxzCombo->show();
+//       ui.ccpcvxzCombo->hide();
+//       ui.accpvxzCombo->hide();
+//       ui.xaccpvxzCombo->hide();
+//       ui.accpcvxzCombo->hide();
        ui.popleCombo->hide();
        ui.poplediffCombo->hide();
        ui.poplepolCombo->hide();
@@ -244,24 +250,28 @@ namespace Avogadro
           ui.ccpcvxzCombo->hide();
           ui.accpvxzCombo->hide();
           ui.accpcvxzCombo->hide();
+          ui.xaugccCombo->hide();
        }
        else if (m_coreBasis == true && m_diffBasis == false) {
           ui.ccpvxzCombo->hide();
           ui.ccpcvxzCombo->show();
           ui.accpvxzCombo->hide();
           ui.accpcvxzCombo->hide();
+          ui.xaugccCombo->hide();
        }
        else if (m_coreBasis == false && m_diffBasis == true) {
           ui.ccpvxzCombo->hide();
           ui.ccpcvxzCombo->hide();
           ui.accpvxzCombo->show();
           ui.accpcvxzCombo->hide();
+          ui.xaugccCombo->show();
        }
        else if (m_coreBasis == true && m_diffBasis == true) {
           ui.ccpvxzCombo->hide();
           ui.ccpcvxzCombo->hide();
           ui.accpvxzCombo->hide();
           ui.accpcvxzCombo->show();
+          ui.xaugccCombo->show();
        }
     }
 
@@ -312,6 +322,7 @@ namespace Avogadro
     ui.ccpcvxzCombo->setCurrentIndex(0);
     ui.accpvxzCombo->setCurrentIndex(0);
     ui.accpcvxzCombo->setCurrentIndex(0);
+    ui.xaugccCombo->setCurrentIndex(0);
     ui.popleCombo->setCurrentIndex(0);
     ui.poplediffCombo->setCurrentIndex(0);
     ui.poplepolCombo->setCurrentIndex(0);
@@ -936,6 +947,28 @@ namespace Avogadro
     updatePreviewText();
   }
 
+  void DaltonInputDialog::setxaugccBasis(int n)
+  {
+    switch (n)
+    {
+      case 0:
+        m_xaugccBasis = sing;
+        break;
+      case 1:
+        m_xaugccBasis = doub;
+        break;
+      case 2:
+        m_xaugccBasis = trip;
+        break;
+      case 3:
+        m_xaugccBasis = quad;
+        break;
+      default:
+        m_xaugccBasis = sing;
+    }
+    updatePreviewText();
+  }
+
   void DaltonInputDialog::setcoreBasis(int n)
   {
     if (n) m_coreBasis = true;
@@ -1059,15 +1092,15 @@ namespace Avogadro
           mol << getccpcvxzBasis(m_ccpcvxzBasis) << '\n';
        }
        else if (m_coreBasis == false && m_diffBasis == true) {
-          mol << getaccpvxzBasis(m_accpvxzBasis) << '\n';
+          mol << getxaugccBasis(m_xaugccBasis) << getaccpvxzBasis(m_accpvxzBasis) << '\n';
        }
        else if (m_coreBasis == true && m_diffBasis == true) {
-          mol << getaccpcvxzBasis(m_accpcvxzBasis) << '\n';
+          mol << getxaugccBasis(m_xaugccBasis) << getaccpcvxzBasis(m_accpcvxzBasis) << '\n';
        }
     }
 
-    mol << " Generated by the Dalton Input File Plugin for Avogadro" << '\n';
     mol << " " << m_title << '\n';
+    mol << " Generated by the Dalton Input File Plugin for Avogadro" << '\n';
 
     natoms = new int[120];
 
@@ -1543,6 +1576,23 @@ namespace Avogadro
     }
   }
 
+  QString DaltonInputDialog::getxaugccBasis(xaugccBasis t)
+  {
+    switch (t)
+    {
+      case sing:
+        return "";
+      case doub:
+        return "d-";
+      case trip:
+        return "t-";
+      case quad:
+        return "q-";
+      default:
+        return "";
+    }
+  }
+
   QString DaltonInputDialog::getdftGrid(dftGrid t)
   {
     switch (t)
@@ -1587,6 +1637,7 @@ namespace Avogadro
     ui.ccpcvxzCombo->setEnabled(!dirty);
     ui.accpvxzCombo->setEnabled(!dirty);
     ui.accpcvxzCombo->setEnabled(!dirty);
+    ui.xaugccCombo->setEnabled(!dirty);
     ui.popleCombo->setEnabled(!dirty);
     ui.poplediffCombo->setEnabled(!dirty);
     ui.poplepolCombo->setEnabled(!dirty);

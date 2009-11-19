@@ -28,7 +28,12 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 
+#include "ui_axessettingswidget.h"
+
 namespace Avogadro {
+
+  //! Settings class
+  class AxesSettingsWidget;
 
   //! Axes Engine class.
   class AxesEngine : public Engine
@@ -57,9 +62,50 @@ namespace Avogadro {
       ColorTypes colorTypes() const;
 
       double radius(const PainterDevice *pd, const Primitive *p = 0) const;
+	  
+      //! Display a window for the user to pick axes' options
+      QWidget *settingsWidget();
 
+      bool hasSettings() { return true; }
+
+      /**
+       * Write the engine settings so that they can be saved between sessions.
+       */
+      void writeSettings(QSettings &settings) const;
+
+      /**
+       * Read in the settings that have been saved for the engine instance.
+       */
+      void readSettings(QSettings &settings);
+
+	private:
+      int m_axesType;
+	  Eigen::Vector3d m_origin;
+	  Eigen::Vector3d m_axis1;
+	  Eigen::Vector3d m_axis2;
+	  Eigen::Vector3d m_axis3;
+	  bool m_preserveNorms;
+	  AxesSettingsWidget* m_settingsWidget;
+
+	private Q_SLOTS:
+	  void setAxesType(int value);
+	  void settingsWidgetDestroyed();
+	  void updateAxes(double = 0.0);  
+	  void updateVectors();
+	  void updateOrigin(double = 0.0);
+	  void updateValues1(double = 0.0);
+	  void updateValues2(double = 0.0);
+	  void updateValues3(double = 0.0);
+	  void preserveNormsChanged(int value);
   };
-
+  
+  class AxesSettingsWidget : public QWidget, public Ui::AxesSettingsWidget
+  {
+    public:
+      AxesSettingsWidget(QWidget *parent=0) : QWidget(parent) {
+        setupUi(this);
+      }
+  };
   //! Generates instances of our AxesEngine class
   class AxesEngineFactory : public QObject, public PluginFactory
   {

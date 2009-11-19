@@ -2,6 +2,7 @@
   DipoleEngine - Engine to display a 3D vector such as the dipole moment
 
   Copyright (C) 2008      Geoffrey R. Hutchison
+  Some portions Copyright (C) 2009 Konstantin L. Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -70,6 +71,7 @@ namespace Avogadro {
 
       private:
         int m_dipoleType; // type of dipole to render
+        Eigen::Vector3d m_origin; // origin of dipole moment
         Eigen::Vector3d m_dipole; // cached dipole moment
         DipoleSettingsWidget* m_settingsWidget;
 
@@ -77,6 +79,7 @@ namespace Avogadro {
         void setDipoleType(int value);
         void settingsWidgetDestroyed();
         void updateDipole(double = 0.0);
+        void updateOrigin(double = 0.0);
 
   };
 

@@ -93,6 +93,10 @@
          <height>28</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Adds what you type in the title line of the input file for your own
+informative purposes.</string>
+       </property>
        <property name="text">
         <string>Title</string>
        </property>
@@ -273,7 +277,7 @@
       <widget class="QComboBox" name="accpvxzCombo">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>450</x>
          <y>130</y>
          <width>131</width>
          <height>31</height>
@@ -720,6 +724,9 @@
          <height>31</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string/>
+       </property>
        <property name="text">
         <string>Direct</string>
        </property>
@@ -733,9 +740,48 @@
          <height>31</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Run in parallel where possible. This is only possible for SCF
+wavefunctions and DFT calculations. Dalton only supports MPI
+in the current release and must be compiled and installed
+correctly. The number of nodes are set by using the &quot;-N #&quot; option when executing the &quot;dalton&quot; script.</string>
+       </property>
        <property name="text">
         <string>Parallel</string>
        </property>
+      </widget>
+      <widget class="QComboBox" name="xaugccCombo">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>130</y>
+         <width>43</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>d-</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>t-</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>q-</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QWidget" name="dftTab">
