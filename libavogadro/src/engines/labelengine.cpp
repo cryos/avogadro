@@ -127,6 +127,9 @@ namespace Avogadro {
       case 9: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
+      case 11: // Symbol & Number in Group
+        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
+		break;
       default: // some custom data -- if available
         int customIndex = m_atomType - 7 - 1;
         QList<QByteArray> propertyNames = a->dynamicPropertyNames();

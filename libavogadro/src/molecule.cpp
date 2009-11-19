@@ -172,6 +172,7 @@ namespace Avogadro{
     // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
     emit atomAdded(atom);
+    calculateGroupIndices();
     return atom;
   }
 
@@ -205,6 +206,7 @@ namespace Avogadro{
 
       disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
       emit atomRemoved(atom);
+      calculateGroupIndices();
     }
   }
 
@@ -767,6 +769,14 @@ namespace Avogadro{
     m_invalidAromaticity = false;
   }
 
+  void Molecule::calculateGroupIndices() const
+  {
+    OpenBabel::OBMol obmol = OBMol();
+    for (unsigned int i = 0; i < obmol.NumAtoms(); ++i) {
+      atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
+    }
+  }    
+
   unsigned int Molecule::numAtoms() const
   {
     return m_atomList.size();
@@ -822,6 +832,7 @@ namespace Avogadro{
     Q_D(Molecule);
     Atom *atom = qobject_cast<Atom *>(sender());
     d->invalidGeomInfo = true;
+    calculateGroupIndices();
     emit atomUpdated(atom);
   }
 
@@ -1564,6 +1575,8 @@ namespace Avogadro{
           d->farthestAtom = atom;
         }
       }
+      
+      calculateGroupIndices();
     }
     d->invalidGeomInfo = false;
   }

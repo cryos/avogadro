@@ -30,7 +30,8 @@
 
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
-
+#include <openbabel/babelconfig.h>
+#include <string>
 
 #include "ui_labelsettingswidget.h"
 
@@ -101,6 +102,8 @@ namespace Avogadro {
     public:
       LabelSettingsWidget(QWidget *parent=0) : QWidget(parent) {
         setupUi(this);
+        if (std::string(BABEL_VERSION) == "2.2.99")
+          this->atomType->addItem("Symbol & Number in Group");
       }
   };
 

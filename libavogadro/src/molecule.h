@@ -501,6 +501,11 @@ namespace Avogadro {
     void calculateAromaticity() const;
 
     /**
+     * Calculate the indices of atoms in groups of atoms of the same element.
+     */
+	void calculateGroupIndices() const;
+
+    /**
      * @return The bond between the two supplied atom ids if one exists,
      * otherwise 0 is returned.
      */
