@@ -1056,6 +1056,7 @@ namespace Avogadro {
       }
     }
     emit activated(this);
+    emit mousePress(event);
   }
 
   void GLWidget::mouseReleaseEvent( QMouseEvent * event )
@@ -1085,6 +1086,7 @@ namespace Avogadro {
 #endif
     // Render the scene at full quality now the mouse button has been released
     update();
+    emit mouseRelease(event);
   }
 
   void GLWidget::mouseMoveEvent( QMouseEvent * event )
@@ -1112,6 +1114,7 @@ namespace Avogadro {
         d->undoStack->push( command );
       }
     }
+    emit mouseMove(event);
   }
 
   void GLWidget::wheelEvent( QWheelEvent * event )
@@ -1129,6 +1132,7 @@ namespace Avogadro {
         d->undoStack->push( command );
       }
     }
+    emit wheel(event);
   }
 
   void GLWidget::keyPressEvent(QKeyEvent *event)
