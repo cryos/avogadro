@@ -17,6 +17,8 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
 #ifndef SPECTRATYPE_UV_H
 #define SPECTRATYPE_UV_H
 
@@ -67,4 +69,5 @@ namespace Avogadro {
   };
 }
 
+#endif
 #endif

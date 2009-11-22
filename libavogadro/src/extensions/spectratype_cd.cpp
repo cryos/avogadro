@@ -17,6 +17,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
 #include "spectratype_cd.h"
 #include "spectratype.h"
 #include "spectradialog.h"
@@ -211,3 +213,5 @@ namespace Avogadro {
   }
 
 }
+
+#endif

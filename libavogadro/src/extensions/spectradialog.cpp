@@ -22,9 +22,11 @@
 
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 #include "spectratype_dos.h"
 #include "spectratype_uv.h"
 #include "spectratype_cd.h"
+#endif
 
 #include <QPen>
 #include <QColor>
@@ -62,9 +64,11 @@ namespace Avogadro {
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
     m_spectra_dos = new DOSSpectra(this);
     m_spectra_uv = new UVSpectra(this);
     m_spectra_cd = new CDSpectra(this);
+#endif
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -135,9 +139,11 @@ namespace Avogadro {
     writeSettings();
     delete m_spectra_ir;
     delete m_spectra_nmr;
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
     delete m_spectra_dos;
     delete m_spectra_uv;
     delete m_spectra_cd;
+#endif
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
@@ -177,6 +183,8 @@ namespace Avogadro {
       m_spectra_nmr->setAtom(""); // Empty string will grab from current selection in the dialog.
     }
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
     // Check for DOS data
     bool hasDOS = m_spectra_dos->checkForData(m_molecule);
     if (hasDOS) {
@@ -197,6 +205,13 @@ namespace Avogadro {
       ui.combo_spectra->addItem(tr("CD", "Circular Dichromism spectrum"));
       ui.tab_widget->addTab(m_spectra_cd->getTabWidget(), tr("&CD Settings"));
     }
+
+#endif
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
+    bool hasDOS = false;
+    bool hasUV = false;
+    bool hasCD = false;
+#endif
 
     // Change this when other spectra are added!!
     if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD) { // Actions if there are no spectra loaded
@@ -559,8 +574,11 @@ namespace Avogadro {
     types
       << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
       << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" )
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       << tr("Turbomole UV data (spectrum)", "Do not remove 'UV' or '(spectrum)' -- needed for parsing later" )
-      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" );
+      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" )
+#endif
+;
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
@@ -663,6 +681,7 @@ namespace Avogadro {
       m_molecule->setOBMol(obmol);
     }
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
     else if (type.contains("CD")) { // We have CD data loaded
       // Set m_spectra
       m_spectra = "CD";
@@ -856,6 +875,7 @@ namespace Avogadro {
       obmol->SetData(etd);
       m_molecule->setOBMol(obmol);
     }
+#endif
     setMolecule(m_molecule);
   }
 
@@ -987,13 +1007,14 @@ namespace Avogadro {
       return m_spectra_ir;
     else if (m_spectra == "NMR")
       return m_spectra_nmr;
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
     else if (m_spectra == "DOS")
       return m_spectra_dos;
     else if (m_spectra == "UV")
       return m_spectra_uv;
     else if (m_spectra == "CD")
       return m_spectra_cd;
-
+#endif
     return NULL;
   }
 }
