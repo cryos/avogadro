@@ -37,14 +37,27 @@
 #include <avogadro/molecule.h>
 
 #include <QDebug>
+//#include <QtGui/QPainter>
 
 #include <openbabel/mol.h>
+
+//#define BABEL23  // Enable when my patch for OpenBabel is applied
 
 using namespace std;
 using namespace Eigen;
 
 namespace Avogadro {
 
+static PainterDevice *globalPD = 0;
+
+  LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent) {
+        setupUi(this);
+        if (QString(BABEL_VERSION) == "2.2.99") {
+          this->atomType->addItem("Symbol & Number in Group");
+	    }
+  }
+
+ 
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
                                               m_atomType(1), m_bondType(0), m_settingsWidget(0),
                                               m_displacement(0,0,0) 
@@ -75,6 +88,10 @@ namespace Avogadro {
       foreach(Bond *b, bonds())
         renderOpaque(pd, b);
     }
+	
+	if (globalPD == 0)
+	  globalPD = pd;
+	  
     return true;
   }
 
@@ -95,8 +112,26 @@ namespace Avogadro {
     double zDistance = pd->camera()->distance(pos);
 
     if(zDistance < 50.0) {
-      QString str;
-      switch(m_atomType) {
+      QString str = createAtomLabel(a);
+
+      Vector3d zAxis = pd->camera()->backTransformedZAxis();
+
+      Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
+
+      glColor3f(1.0, 1.0, 1.0);
+      pd->painter()->drawText(drawPos, str);
+    }
+
+	if (globalPD == 0)
+	  globalPD = pd;
+
+    return true;
+  }
+
+  QString LabelEngine::createAtomLabel(const Atom *a)
+  {
+	QString str;
+    switch(m_atomType) {
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
         break;
@@ -127,9 +162,11 @@ namespace Avogadro {
       case 9: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
+	  #ifdef BABEL23
       case 11: // Symbol & Number in Group
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
 		break;
+	  #endif
       default: // some custom data -- if available
         int customIndex = m_atomType - 7 - 1;
         QList<QByteArray> propertyNames = a->dynamicPropertyNames();
@@ -139,18 +176,31 @@ namespace Avogadro {
         }
         else
           str = a->property(propertyNames[customIndex].data()).toString();
-      }
-
-      Vector3d zAxis = pd->camera()->backTransformedZAxis();
-
-      Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
-
-      glColor3f(1.0, 1.0, 1.0);
-      pd->painter()->drawText(drawPos, str);
     }
-    return true;
+	return str;
   }
 
+  QString LabelEngine::createBondLabel(const Bond *b)
+  {
+      QString str;
+      switch(m_bondType) {
+        str = "";
+      case 1:
+        str = QString("%L1").arg(b->length(), 0, 'g', 4);
+        break;
+      case 2:
+        str = QString("%L1").arg(b->index() + 1);
+        break;
+      case 4:
+        str = QString("%L1").arg(b->id());
+        break;
+      case 3:
+      default:
+        str = QString("%L1").arg(b->order());
+      }
+	  return str;
+  }
+  
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Bond *b)
   {
     // Render bond labels
@@ -176,23 +226,8 @@ namespace Avogadro {
 
     double zDistance = pd->camera()->distance(pos);
 
-    QString format("%L1");
     if(zDistance < 50.0) {
-      QString str;
-      switch(m_bondType) {
-      case 1:
-        str = format.arg(b->length(), 0, 'g', 4);
-        break;
-      case 2:
-        str = format.arg(b->index() + 1);
-        break;
-      case 4:
-        str = format.arg(b->id());
-        break;
-      case 3:
-      default:
-        str = format.arg(b->order());
-      }
+	  QString str = createBondLabel(b);
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
       Vector3d drawPos = pos + zAxis * renderRadius;
@@ -200,18 +235,45 @@ namespace Avogadro {
       glColor3f(1.0, 1.0, 1.0);
       pd->painter()->drawText(drawPos, str);
     }
+
+	if (globalPD == 0)
+	  globalPD = pd;
+
     return true;
   }
 
   void LabelEngine::setAtomType(int value)
   {
     m_atomType = value;
+	if (globalPD != 0) {
+      const Molecule* m = globalPD->molecule();
+      if (m != 0) {
+        if (m->numAtoms() > 0) {
+          Atom* atom1 = m->atomById(0);
+          //QBrush brush(qRgb(0, 128, 0));
+          //QPainter p(m_settingsWidget->atomLabel);
+          //p.fillRect(m_settingsWidget->atomLabel->frameRect(), brush);          
+          m_settingsWidget->atomLabel->setText(createAtomLabel(atom1));
+          p.end();
+        }
+      }  
+    }
     emit changed();
   }
 
   void LabelEngine::setBondType(int value)
   {
     m_bondType = value;
+	if (globalPD != 0) {
+      const Molecule* m = globalPD->molecule();
+      if (m != 0) {
+        if (m->numBonds() > 0) {
+          Bond* bond1 = m->bondById(0);
+          //this->atomLabelColor->
+          m_settingsWidget->bondLabel->setText(createBondLabel(bond1));
+        }
+      }  
+    }
     emit changed();
   }
 
@@ -230,6 +292,8 @@ namespace Avogadro {
         m_settingsWidget = new LabelSettingsWidget();
         m_settingsWidget->atomType->setCurrentIndex(m_atomType);
         m_settingsWidget->bondType->setCurrentIndex(m_bondType);
+        setAtomType(m_atomType);
+        setBondType(m_bondType);
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));

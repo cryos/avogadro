@@ -31,7 +31,6 @@
 #include <avogadro/global.h>
 #include <avogadro/engine.h>
 #include <openbabel/babelconfig.h>
-#include <string>
 
 #include "ui_labelsettingswidget.h"
 
@@ -72,6 +71,9 @@ namespace Avogadro {
 
       bool hasSettings() { return true; }
 
+	  QString createAtomLabel(const Atom *a);
+	  QString createBondLabel(const Bond *b);
+
       /**
        * Write the engine settings so that they can be saved between sessions.
        */
@@ -100,11 +102,7 @@ namespace Avogadro {
   class LabelSettingsWidget : public QWidget, public Ui::LabelSettingsWidget
   {
     public:
-      LabelSettingsWidget(QWidget *parent=0) : QWidget(parent) {
-        setupUi(this);
-        if (std::string(BABEL_VERSION) == "2.2.99")
-          this->atomType->addItem("Symbol & Number in Group");
-      }
+      LabelSettingsWidget(QWidget *parent=0);
   };
 
   //! Generates instances of our LabelEngine class
