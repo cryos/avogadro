@@ -9,6 +9,8 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
+include (MacroEnsureVersion)
+
 if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
   # in cache already
   set(OPENBABEL2_FOUND TRUE)
@@ -102,3 +104,8 @@ else(OPENBABEL2_EXECUTABLE)
 
 endif(OPENBABEL2_EXECUTABLE)
 
+# Test if we are using trunk
+macro_ensure_version("2.2.99" "${OPENBABEL2_VERSION}" OPENBABEL_IS_NEWER_THAN_2_2_99)
+if (OPENBABEL_IS_NEWER_THAN_2_2_99)
+   add_definitions(-DOPENBABEL_IS_NEWER_THAN_2_2_99)
+endif(OPENBABEL_IS_NEWER_THAN_2_2_99)
