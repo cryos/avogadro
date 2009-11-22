@@ -89,8 +89,8 @@ avogadro_plugin(vibrationextension
 
 ### Spectra
 avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp"
-  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui")
+  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp"
+  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal

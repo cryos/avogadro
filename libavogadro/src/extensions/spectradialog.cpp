@@ -19,8 +19,14 @@
 
 #include "spectradialog.h"
 #include "spectratype.h"
+
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#include "spectratype_dos.h"
+#include "spectratype_uv.h"
+#include "spectratype_cd.h"
+#endif
 
 #include <QPen>
 #include <QColor>
@@ -58,6 +64,11 @@ namespace Avogadro {
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    m_spectra_dos = new DOSSpectra(this);
+    m_spectra_uv = new UVSpectra(this);
+    m_spectra_cd = new CDSpectra(this);
+#endif
 
     // Initialize vars
     m_schemes = new QList<QHash<QString, QVariant> >;
@@ -128,11 +139,16 @@ namespace Avogadro {
     writeSettings();
     delete m_spectra_ir;
     delete m_spectra_nmr;
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    delete m_spectra_dos;
+    delete m_spectra_uv;
+    delete m_spectra_cd;
+#endif
   }
 
   void SpectraDialog::setMolecule(Molecule *molecule)
   {
-    if (m_molecule == molecule || !molecule) {
+    if (!molecule) {
       return;
     }
     m_molecule = molecule;
@@ -167,8 +183,38 @@ namespace Avogadro {
       m_spectra_nmr->setAtom(""); // Empty string will grab from current selection in the dialog.
     }
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
+    // Check for DOS data
+    bool hasDOS = m_spectra_dos->checkForData(m_molecule);
+    if (hasDOS) {
+      ui.combo_spectra->addItem(tr("DOS", "Density of States"));
+      ui.tab_widget->addTab(m_spectra_dos->getTabWidget(), tr("&Density Of States Settings"));
+    }
+
+    // Check for UV data
+    bool hasUV = m_spectra_uv->checkForData(m_molecule);
+    if (hasUV) {
+      ui.combo_spectra->addItem(tr("UV", "Ultra-Violet spectrum"));
+      ui.tab_widget->addTab(m_spectra_uv->getTabWidget(), tr("&UV Settings"));
+    }
+
+    // Check for CD data
+    bool hasCD = m_spectra_cd->checkForData(m_molecule);
+    if (hasCD) {
+      ui.combo_spectra->addItem(tr("CD", "Circular Dichromism spectrum"));
+      ui.tab_widget->addTab(m_spectra_cd->getTabWidget(), tr("&CD Settings"));
+    }
+
+#endif
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
+    bool hasDOS = false;
+    bool hasUV = false;
+    bool hasCD = false;
+#endif
+
     // Change this when other spectra are added!!
-    if (!hasIR && !hasNMR) { // Actions if there are no spectra loaded
+    if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -488,7 +534,7 @@ namespace Avogadro {
     while (!in.atEnd()) {
       QString line = in.readLine();
       if (line.trimmed().startsWith('#')) continue; 	//discard comments
-      QStringList data = line.split(QRegExp(delim));
+      QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
       if (data.size() < 2) {
         qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename << ":\n\t\"" << line << "\"";
         continue;
@@ -527,7 +573,12 @@ namespace Avogadro {
     // Put the default file extension in (*.ext), i.e. (.out)
     types
       << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
-      << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" );
+      << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" )
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      << tr("Turbomole UV data (spectrum)", "Do not remove 'UV' or '(spectrum)' -- needed for parsing later" )
+      << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" )
+#endif
+;
     bool ok;
     QString type = QInputDialog::getItem(this, tr("Data Format"), tr("Format:", "noun, not verb"),
                                          types, 0, false, &ok);
@@ -600,7 +651,7 @@ namespace Avogadro {
           QString line = in.readLine();
           if (!end.isEmpty() && line.contains(end)) break;
           if (line.trimmed().startsWith('#')) continue; 	//discard comments
-          QStringList data = line.split(QRegExp(delim));
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
           if (data.size() < min) {
             qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
                        << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
@@ -621,17 +672,211 @@ namespace Avogadro {
 
       }
 
-      // Prepare a molecule with the data
-      OpenBabel::OBMol *obmol = new OpenBabel::OBMol;
+      // Attach data to m_molecule
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
       std::vector< std::vector< OpenBabel::vector3 > > Lx;
       OpenBabel::OBVibrationData *obvib = new OpenBabel::OBVibrationData;
       obvib->SetData(Lx, x.toVector().toStdVector(), y.toVector().toStdVector());
       obmol->SetData(obvib);
-      Molecule *mol = new Molecule;
-      mol->setOBMol(obmol);
-
-      setMolecule(mol);
+      m_molecule->setOBMol(obmol);
     }
+
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    else if (type.contains("CD")) { // We have CD data loaded
+      // Set m_spectra
+      m_spectra = "CD";
+
+      // Prepare lists
+      QList<double> x,y;
+
+      // If the file just contains values in columns, set the variables
+      // below. Otherwise, implement a new reader below  (data in rows, etc).
+      // Add the "easily parsed" types to the condition below:
+      if ( type.contains("Turbomole") ) {
+        // Set up some info by data type:
+        QString delim;
+        QString cue; // Skip to this line before reading data in
+        QString end; // This line terminates reading
+        int wavelength_idx;
+        int rotl_idx;
+
+        // Set the variables for each "easily parsed" type here...
+        if (type.contains("Turbomole")) {
+          delim = "\\s+"; // finds all whitespace
+          cue = "#  excitation energy";
+          end = "";
+          wavelength_idx= 0;
+          rotl_idx	= 1;
+        }
+
+        // Cue file
+        QString line;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (line.contains(cue)) break;
+        }
+
+        QString wl_units;
+        if (type.contains("Turbomole")) {
+          // The cue line contains the units for turbomole.
+          QStringList sl = line.split(QRegExp("\\s+"));
+          if (sl.size() < 5) {
+            QMessageBox::warning(this, tr("Spectra Import"), tr("Turbomole CD file is improperly formatted  : %1").arg(filename));
+            return;
+          }
+          wl_units = sl[4];
+        }
+
+        // Iterate through file
+        int min = (wavelength_idx < rotl_idx) ? wavelength_idx : rotl_idx;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (!end.isEmpty() && line.contains(end)) break;
+          if (line.trimmed().startsWith('#')) continue; 	//discard comments
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
+          if (data.size() < min) {
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+                       << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
+            continue;
+          }
+          if (data.at(wavelength_idx).toDouble() && data.at(rotl_idx).toDouble()) { // Check for valid conversions and non-zero data
+            x.append(data.at(wavelength_idx).toDouble());
+            y.append(data.at(rotl_idx).toDouble());
+            qDebug() << data.at(wavelength_idx).toDouble() << " "
+                     << data.at(rotl_idx).toDouble();
+            qDebug() << data;
+          }
+          else {
+            qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
+            continue;
+          }
+        }
+
+        // Convert wavelengths if needed...
+        qDebug() << wl_units;
+        if (wl_units == "cm^(-1)")
+          for ( int i = 0; i < x.size(); i++) {
+            qDebug() <<
+              x[i] << " into " << 1.0 / x.at(i) * 1e7;
+            x[i] = 1.0 / x.at(i) * 1e7;
+          }
+      } // end turbomole
+
+      // Attach data to m_molecule
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
+      std::vector<double> forces;
+      OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol->GetData("ElectronicTransitionData"));
+      if (!etd) {
+        etd = new OpenBabel::OBElectronicTransitionData;
+        forces = std::vector<double>(x.size(), 0.0);
+      }
+      else {
+        forces = etd->GetForces();
+      }
+      etd->SetData(x.toVector().toStdVector(), forces);
+      etd->SetRotatoryStrengthsLength(y.toVector().toStdVector());
+      obmol->SetData(etd);
+      m_molecule->setOBMol(obmol);
+    }
+
+    else if (type.contains("UV")) { // We have UV data loaded
+      // Set m_spectra
+      m_spectra = "UV";
+
+      // Prepare lists
+      QList<double> x,y;
+
+      // If the file just contains values in columns, set the variables
+      // below. Otherwise, implement a new reader below  (data in rows, etc).
+      // Add the "easily parsed" types to the condition below:
+      if ( type.contains("Turbomole") ) {
+        // Set up some info by data type:
+        QString delim;
+        QString cue; // Skip to this line before reading data in
+        QString end; // This line terminates reading
+        int wavelength_idx;
+        int edipole_idx;
+
+        // Set the variables for each "easily parsed" type here...
+        if (type.contains("Turbomole")) {
+          delim = "\\s+"; // finds all whitespace
+          cue = "#  excitation energy";
+          end = "";
+          wavelength_idx= 0;
+          edipole_idx	= 1;
+        }
+
+        // Cue file
+        QString line;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (line.contains(cue)) break;
+        }
+
+        QString wl_units;
+        if (type.contains("Turbomole")) {
+          // The cue line contains the units for turbomole.
+          QStringList sl = line.split(QRegExp("\\s+"));
+          if (sl.size() < 5) {
+            QMessageBox::warning(this, tr("Spectra Import"), tr("Turbomole CD file is improperly formatted  : %1").arg(filename));
+            return;
+          }
+          wl_units = sl[4];
+        }
+
+        // Iterate through file
+        int min = (wavelength_idx < edipole_idx) ? wavelength_idx : edipole_idx;
+        while (!in.atEnd()) {
+          line = in.readLine();
+          if (!end.isEmpty() && line.contains(end)) break;
+          if (line.trimmed().startsWith('#')) continue; 	//discard comments
+          QStringList data = line.split(QRegExp(delim), QString::SkipEmptyParts);
+          if (data.size() < min) {
+            qWarning() << "SpectraDialog::importSpectra Skipping invalid line in file " << filename 
+                       << ": Too few entries (need " << min << "\n\t\"" << line << "\"";
+            continue;
+          }
+          if (data.at(wavelength_idx).toDouble() && data.at(edipole_idx).toDouble()) { // Check for valid conversions and non-zero data
+            x.append(data.at(wavelength_idx).toDouble());
+            y.append(data.at(edipole_idx).toDouble());
+            qDebug() << data.at(wavelength_idx).toDouble() << " "
+                     << data.at(edipole_idx).toDouble();
+            qDebug() << data;
+          }
+          else {
+            qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
+            continue;
+          }
+        }
+
+        // Convert wavelengths if needed...
+        qDebug() << wl_units;
+        if (wl_units == "cm^(-1)")
+          for ( int i = 0; i < x.size(); i++) {
+            qDebug() <<
+              x[i] << " into " << 1.0 / x.at(i) * 1e7;
+            x[i] = 1.0 / x.at(i) * 1e7;
+          }
+      } // end turbomole
+
+      // Attach data to m_molecule
+      OpenBabel::OBMol *obmol = new OpenBabel::OBMol (m_molecule->OBMol());
+      std::vector<double> forces;
+      OpenBabel::OBElectronicTransitionData *etd = static_cast<OpenBabel::OBElectronicTransitionData*>(obmol->GetData("ElectronicTransitionData"));
+      if (!etd) {
+        etd = new OpenBabel::OBElectronicTransitionData;
+        forces = std::vector<double>(x.size(), 0.0);
+      }
+      else {
+        forces = etd->GetForces();
+      }
+      etd->SetData(x.toVector().toStdVector(), forces);
+      etd->SetEDipole(y.toVector().toStdVector());
+      obmol->SetData(etd);
+      m_molecule->setOBMol(obmol);
+    }
+#endif
+    setMolecule(m_molecule);
   }
 
   void SpectraDialog::saveImageFileDialog() {
@@ -753,6 +998,7 @@ namespace Avogadro {
 
   void SpectraDialog::updatePlot()
   {
+    if (currentSpectra()) currentSpectra()->setupPlot(ui.plot);
     ui.plot->update();
   }
 
@@ -761,7 +1007,14 @@ namespace Avogadro {
       return m_spectra_ir;
     else if (m_spectra == "NMR")
       return m_spectra_nmr;
-
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    else if (m_spectra == "DOS")
+      return m_spectra_dos;
+    else if (m_spectra == "UV")
+      return m_spectra_uv;
+    else if (m_spectra == "CD")
+      return m_spectra_cd;
+#endif
     return NULL;
   }
 }

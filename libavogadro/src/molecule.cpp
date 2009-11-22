@@ -59,7 +59,11 @@ namespace Avogadro{
     public:
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
                           invalidRings(true), obmol(0), obunitcell(0),
-                          obvibdata(0) {}
+                          obvibdata(0)
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+                        , obdosdata(0), obelectronictransitiondata(0)
+#endif
+    {}
     // These are logically cached variables and thus are marked as mutable.
     // Const objects should be logically constant (and not mutable)
     // http://www.highprogrammer.com/alan/rants/mutable.html
@@ -93,6 +97,11 @@ namespace Avogadro{
       // TODO: Cache an OBMol, in which case the vib. data (and others)
       //       won't be necessary
       OpenBabel::OBVibrationData *  obvibdata;
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      OpenBabel::OBDOSData *        obdosdata;
+      OpenBabel::OBElectronicTransitionData *
+                                    obelectronictransitiondata;
+#endif
   };
 
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
@@ -1164,6 +1173,17 @@ namespace Avogadro{
       obmol.SetData(d->obvibdata->Clone(&obmol));
     }
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99                          
+    // Copy dos, if needed
+    if (d->obdosdata != NULL) {
+      obmol.SetData(d->obdosdata->Clone(&obmol));
+    }
+
+    // Copy excited states data, if needed
+    if (d->obelectronictransitiondata != NULL) {
+      obmol.SetData(d->obelectronictransitiondata->Clone(&obmol));
+    }
+#endif
     return obmol;
   }
 
@@ -1273,6 +1293,21 @@ namespace Avogadro{
       d->obvibdata = vibData;
     }
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    // Copy DOS data
+    if (obmol->HasData(OpenBabel::OBGenericDataType::DOSData)) {
+      OpenBabel::OBDOSData *dosData = static_cast<OpenBabel::OBDOSData*>(obmol->GetData(OpenBabel::OBGenericDataType::DOSData));
+      d->obdosdata = dosData;
+    }
+
+    // Copy electronic transition data
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicTransitionData)) {
+      OpenBabel::OBElectronicTransitionData *etd = 
+        static_cast<OpenBabel::OBElectronicTransitionData*>
+        (obmol->GetData(OpenBabel::OBGenericDataType::ElectronicTransitionData));
+      d->obelectronictransitiondata = etd;
+    }
+#endif
     // Copy energy
     setEnergy(obmol->GetEnergy() * KCAL_TO_KJ);
 
