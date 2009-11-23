@@ -37,11 +37,12 @@
 #include <avogadro/molecule.h>
 
 #include <QDebug>
+#include <QtGui/QColorDialog>
+#include <QtGui/QFontDialog>
 //#include <QtGui/QPainter>
 
 #include <openbabel/mol.h>
 
-//#define BABEL23  // Enable when my patch for OpenBabel is applied
 
 using namespace std;
 using namespace Eigen;
@@ -52,15 +53,18 @@ static PainterDevice *globalPD = 0;
 
   LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent) {
         setupUi(this);
-        if (QString(BABEL_VERSION) == "2.2.99") {
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
           this->atomType->addItem("Symbol & Number in Group");
+#endif
 	    }
-  }
+  
 
  
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-                                              m_atomType(1), m_bondType(0), m_settingsWidget(0),
-                                              m_displacement(0,0,0) 
+                    m_atomType(1), m_bondType(0),
+                    m_atomColor(255,255,255), m_bondColor(255,255,255),
+					m_settingsWidget(0),
+                    m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
   {
   }
 
@@ -118,8 +122,11 @@ static PainterDevice *globalPD = 0;
 
       Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
 
-      glColor3f(1.0, 1.0, 1.0);
-      pd->painter()->drawText(drawPos, str);
+      //glColor3f(1.0, 1.0, 1.0);
+      glColor3f(m_atomColor.redF(), m_atomColor.greenF(), m_atomColor.blueF());
+      //pd->painter()->setPen(m_atomColor);
+      //pd->painter()->setFont(m_atomFont);
+      pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
     }
 
 	if (globalPD == 0)
@@ -162,7 +169,7 @@ static PainterDevice *globalPD = 0;
       case 9: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
-	  #ifdef BABEL23
+	  #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       case 11: // Symbol & Number in Group
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
 		break;
@@ -230,10 +237,13 @@ static PainterDevice *globalPD = 0;
 	  QString str = createBondLabel(b);
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
-      Vector3d drawPos = pos + zAxis * renderRadius;
+      Vector3d drawPos = pos + zAxis * renderRadius + m_bondDisplacement;
 
-      glColor3f(1.0, 1.0, 1.0);
-      pd->painter()->drawText(drawPos, str);
+      //glColor3f(1.0, 1.0, 1.0);
+      glColor3f(m_bondColor.redF(), m_bondColor.greenF(), m_bondColor.blueF());
+      //pd->painter()->setColor(m_bondColor);
+      //pd->painter()->setFont(m_bondFont);
+      pd->painter()->drawText(drawPos, str);//, m_bondFont, m_bondColor);
     }
 
 	if (globalPD == 0)
@@ -254,7 +264,7 @@ static PainterDevice *globalPD = 0;
           //QPainter p(m_settingsWidget->atomLabel);
           //p.fillRect(m_settingsWidget->atomLabel->frameRect(), brush);          
           m_settingsWidget->atomLabel->setText(createAtomLabel(atom1));
-          p.end();
+          //p.end();
         }
       }  
     }
@@ -285,6 +295,14 @@ static PainterDevice *globalPD = 0;
       emit changed();
   }
 
+  void LabelEngine::updateBondDisplacement(double)
+  {
+      m_bondDisplacement = Vector3d(m_settingsWidget->xBondDisplSpinBox->value(),
+                                m_settingsWidget->yBondDisplSpinBox->value(),
+                                m_settingsWidget->zBondDisplSpinBox->value());
+      emit changed();
+  }
+  
   QWidget *LabelEngine::settingsWidget()
   {
     if(!m_settingsWidget)
@@ -295,7 +313,11 @@ static PainterDevice *globalPD = 0;
         setAtomType(m_atomType);
         setBondType(m_bondType);
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
+        connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
+        connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
+        connect(m_settingsWidget->bondColor, SIGNAL(clicked()), this, SLOT(setBondColor()));
+        connect(m_settingsWidget->bondFont, SIGNAL(clicked()), this, SLOT(setBondFont()));        
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
         connect(m_settingsWidget->xDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
@@ -303,10 +325,60 @@ static PainterDevice *globalPD = 0;
               this, SLOT(updateDisplacement(double)));
         connect(m_settingsWidget->zDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
+        connect(m_settingsWidget->xBondDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateBondDisplacement(double)));
+        connect(m_settingsWidget->yBondDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateBondDisplacement(double)));
+        connect(m_settingsWidget->zBondDisplSpinBox, SIGNAL(valueChanged(double)),
+              this, SLOT(updateBondDisplacement(double)));
       }
     return m_settingsWidget;
   }
 
+  void LabelEngine::setAtomColor()
+  {
+    QColor current(m_atomColor);
+    QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Atom Labels Color"));
+    if (color.isValid() && color != current) {
+      m_atomColor = color;
+      emit changed();
+    }
+  }
+
+  void LabelEngine::setAtomFont()
+  {
+    bool ok;
+    QFont current(m_atomFont);
+    QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Atom Labels Font"));
+    if (ok) {
+      m_atomFont = font;
+      m_settingsWidget->atomLabel->setFont(m_atomFont);
+      emit changed();
+    }
+  }
+
+  void LabelEngine::setBondColor()
+  {
+    QColor current(m_bondColor);
+    QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Bond Labels Color"));
+    if (color.isValid() && color != current) {
+      m_bondColor = color;
+      emit changed();
+    }
+  }
+
+  void LabelEngine::setBondFont()
+  {
+    bool ok;
+    QFont current(m_bondFont);
+    QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Bond Labels Font"));
+    if (ok) {
+      m_bondFont = font;
+      m_settingsWidget->bondLabel->setFont(m_bondFont);
+      emit changed();
+    }
+  }
+  
   void LabelEngine::settingsWidgetDestroyed()
   {
     qDebug() << "Destroyed Settings Widget";

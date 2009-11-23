@@ -88,13 +88,23 @@ namespace Avogadro {
     private:
       int m_atomType;  // Atom label type
       int m_bondType;  // Bond label type
+	  QFont m_atomFont;
+	  QFont m_bondFont;
+	  QColor m_atomColor;
+	  QColor m_bondColor;
 	  Eigen::Vector3d m_displacement;
+	  Eigen::Vector3d m_bondDisplacement;
       LabelSettingsWidget* m_settingsWidget;
 
     private Q_SLOTS:
       void setAtomType(int value);
       void setBondType(int value);
+	  void setAtomColor();
+	  void setBondColor();
+	  void setAtomFont();
+	  void setBondFont();
 	  void updateDisplacement(double = 0.0);
+	  void updateBondDisplacement(double = 0.0);
       void settingsWidgetDestroyed();
 
   };

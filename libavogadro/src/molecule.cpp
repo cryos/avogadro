@@ -772,9 +772,11 @@ namespace Avogadro{
   void Molecule::calculateGroupIndices() const
   {
     OpenBabel::OBMol obmol = OBMol();
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
     for (unsigned int i = 0; i < obmol.NumAtoms(); ++i) {
       atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
     }
+#endif
   }    
 
   unsigned int Molecule::numAtoms() const

@@ -257,28 +257,28 @@
     </spacer>
    </item>
    <item row="1" column="2">
-    <widget class="QPushButton" name="changeAtomFont">
+    <widget class="QPushButton" name="atomFont">
      <property name="text">
       <string>Change Font</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="setAtomColor">
+    <widget class="QPushButton" name="atomColor">
      <property name="text">
       <string>Set Color</string>
      </property>
     </widget>
    </item>
    <item row="8" column="1">
-    <widget class="QPushButton" name="setBondColor">
+    <widget class="QPushButton" name="bondColor">
      <property name="text">
       <string>Set Color</string>
      </property>
     </widget>
    </item>
    <item row="8" column="2">
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="bondFont">
      <property name="text">
       <string>Change Font</string>
      </property>
