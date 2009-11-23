@@ -2,6 +2,7 @@
   propmodel.cpp - Models to hold properties
 
   Copyright (C) 2007 by Tim Vandermeersch
+  Copyright (C) 2009 by Konstantin Tokarev 
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
