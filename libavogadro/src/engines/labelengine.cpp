@@ -43,13 +43,27 @@
 
 #include <openbabel/mol.h>
 
-
 using namespace std;
 using namespace Eigen;
 
+
 namespace Avogadro {
 
-static PainterDevice *globalPD = 0;
+/*class DummyAtom : public Atom
+{
+    public:
+    DummyAtom() {
+        setIndex(0);
+        setGroupIndex(1);
+	    setAtomicNumber(12);
+	    setPartialCharge(0.1);
+	    setFormalCharge(0);
+        setResidue(1);
+    }
+};
+
+DummyAtom *dummyAtom;
+Bond *dummyBond;*/
 
   LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent) {
         setupUi(this);
@@ -66,6 +80,11 @@ static PainterDevice *globalPD = 0;
 					m_settingsWidget(0),
                     m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
   {
+    /*dummyAtom.setGroupIndex(1);
+	dummyAtom.setAtomicNumber(12);
+	dummyAtom.setPartialCharge(0.1);
+	dummyAtom.setFormalCharge(0);*/
+	//dummyAtom.set
   }
 
   Engine *LabelEngine::clone() const
@@ -92,9 +111,6 @@ static PainterDevice *globalPD = 0;
       foreach(Bond *b, bonds())
         renderOpaque(pd, b);
     }
-	
-	if (globalPD == 0)
-	  globalPD = pd;
 	  
     return true;
   }
@@ -122,15 +138,11 @@ static PainterDevice *globalPD = 0;
 
       Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
 
-      //glColor3f(1.0, 1.0, 1.0);
       glColor3f(m_atomColor.redF(), m_atomColor.greenF(), m_atomColor.blueF());
       //pd->painter()->setPen(m_atomColor);
       //pd->painter()->setFont(m_atomFont);
       pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
     }
-
-	if (globalPD == 0)
-	  globalPD = pd;
 
     return true;
   }
@@ -246,44 +258,29 @@ static PainterDevice *globalPD = 0;
       pd->painter()->drawText(drawPos, str);//, m_bondFont, m_bondColor);
     }
 
-	if (globalPD == 0)
-	  globalPD = pd;
-
     return true;
   }
 
   void LabelEngine::setAtomType(int value)
   {
     m_atomType = value;
-	if (globalPD != 0) {
-      const Molecule* m = globalPD->molecule();
-      if (m != 0) {
-        if (m->numAtoms() > 0) {
-          Atom* atom1 = m->atomById(0);
-          //QBrush brush(qRgb(0, 128, 0));
-          //QPainter p(m_settingsWidget->atomLabel);
-          //p.fillRect(m_settingsWidget->atomLabel->frameRect(), brush);          
-          m_settingsWidget->atomLabel->setText(createAtomLabel(atom1));
-          //p.end();
-        }
-      }  
-    }
+    //QBrush brush(qRgb(0, 128, 0));
+    //QPainter p(m_settingsWidget->atomLabel);
+    //p.fillRect(m_settingsWidget->atomLabel->frameRect(), brush);
+    //dummyAtom = new DummyAtom;
+    //m_settingsWidget->atomLabel->setText(createAtomLabel(dummyAtom));
+    //delete dummyAtom;
+   //p.end();
     emit changed();
   }
 
   void LabelEngine::setBondType(int value)
   {
     m_bondType = value;
-	if (globalPD != 0) {
-      const Molecule* m = globalPD->molecule();
-      if (m != 0) {
-        if (m->numBonds() > 0) {
-          Bond* bond1 = m->bondById(0);
-          //this->atomLabelColor->
-          m_settingsWidget->bondLabel->setText(createBondLabel(bond1));
-        }
-      }  
-    }
+    //this->atomLabelColor->
+    //dummyBond = new Bond;
+    //m_settingsWidget->bondLabel->setText(createBondLabel(0));
+    //delete dummyBond;
     emit changed();
   }
 
