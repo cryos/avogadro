@@ -147,6 +147,7 @@ Bond *dummyBond;*/
   QString LabelEngine::createAtomLabel(const Atom *a)
   {
 	QString str;
+    unsigned int gi;
     switch(m_atomType) {
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
@@ -180,7 +181,12 @@ Bond *dummyBond;*/
         break;
 	 // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       case 3: // Symbol & Number in Group
-        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
 		break;
 	//  #endif
       default: // some custom data -- if available

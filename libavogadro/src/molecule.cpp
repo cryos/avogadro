@@ -777,27 +777,39 @@ namespace Avogadro{
       atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
     }
 #endif*/
-    vector<unsigned int> group_number;   // numbers of atoms in each group
-    vector<unsigned int> group_ele;    // elements of each group
-    //vector<unsigned int> atomGroupNumber;
-    //atomGroupNumber.resize(numAtoms());
+    QVector<unsigned int> group_number;   // numbers of atoms in each group
+    QVector<unsigned int> group_ele;    // elements of each group
+    QVector<unsigned int> atomGroupNumber;
+    atomGroupNumber.resize(numAtoms());
 
     for (unsigned int i = 0; i < numAtoms(); ++i) {
       bool match = false;
-      for (unsigned int j=0; j<group_number.size(); j++)
-        {
+      for (unsigned int j=0; j<group_number.size(); j++) {
           if ((atom(i)->atomicNumber()) == group_ele.at(j)) {
             group_number[j] += 1;
-            atom(i)->setGroupIndex(group_number[j]);
+            atomGroupNumber[i] = group_number[j];
             match = true;
           }
-        }
+      }
       if (!match) {
         group_ele.push_back(atom(i)->atomicNumber());
         group_number.push_back(1);
-        atom(i)->setGroupIndex(1);
+        atomGroupNumber[i] = 1;
       }
     }
+    
+    for (unsigned int i = 0; i < numAtoms(); ++i) {
+      bool match = false;
+      for (unsigned int j=0; j<group_number.size(); j++) {
+        if ((atom(i)->atomicNumber()) == group_ele.at(j) && (group_number.at(j) == 1))
+          match = true;
+      }
+      if (match) {
+        atom(i)->setGroupIndex(0);
+      } else {
+        atom(i)->setGroupIndex(atomGroupNumber.at(i));
+      }
+    } 
   }    
 
   unsigned int Molecule::numAtoms() const
