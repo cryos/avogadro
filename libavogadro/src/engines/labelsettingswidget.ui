@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
+    <width>290</width>
     <height>291</height>
    </rect>
   </property>
@@ -62,17 +62,32 @@
      </item>
      <item>
       <property name="text">
-       <string>Element name</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>Element symbol</string>
       </property>
      </item>
      <item>
       <property name="text">
+       <string>Symbol &amp; Number in Group</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Symbol &amp; Atom number</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>Formal charge</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Partial charge</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Element name</string>
       </property>
      </item>
      <item>
@@ -87,22 +102,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Partial charge</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>Unique ID</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Symbol &amp; Atom number</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Symbol &amp; Number in Group</string>
       </property>
      </item>
      <item>

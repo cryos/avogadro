@@ -151,35 +151,35 @@ Bond *dummyBond;*/
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
         break;
-      case 2: // Element name
+      case 7: // Element name
         str = ElementTranslator::name(a->atomicNumber());
         break;
-      case 3: // Element Symbol
+      case 2: // Element Symbol
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
         break;
-      case 4: // Formal charge
+      case 5: // Formal charge
         if (a->formalCharge())
           str = QString("%L1").arg(a->formalCharge());
         break;
-      case 5: // Residue name
+      case 8: // Residue name
         if (a->residue())
           str = a->residue()->name();
         break;
-      case 6: // Residue number
+      case 9: // Residue number
         if (a->residue())
           str = a->residue()->number();
         break;
-      case 7: // Partial charge
+      case 6: // Partial charge
         str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
         break;
-      case 8: // Unique ID
+      case 10: // Unique ID
         str = QString("%L1").arg(a->id());
         break;
-      case 9: // Symbol & Atom Number
+      case 4: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
 	 // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-      case 10: // Symbol & Number in Group
+      case 3: // Symbol & Number in Group
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
 		break;
 	//  #endif
