@@ -102,6 +102,11 @@
      </item>
      <item>
       <property name="text">
+       <string>Symbol &amp; Number in Group</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>Custom data</string>
       </property>
      </item>

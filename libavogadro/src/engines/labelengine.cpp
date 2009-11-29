@@ -67,9 +67,6 @@ Bond *dummyBond;*/
 
   LabelSettingsWidget::LabelSettingsWidget(QWidget *parent) : QWidget(parent) {
         setupUi(this);
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-          this->atomType->addItem("Symbol & Number in Group");
-#endif
 	    }
   
 
@@ -181,11 +178,11 @@ Bond *dummyBond;*/
       case 9: // Symbol & Atom Number
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
-	  #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-      case 11: // Symbol & Number in Group
+	 // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      case 10: // Symbol & Number in Group
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->groupIndex());
 		break;
-	  #endif
+	//  #endif
       default: // some custom data -- if available
         int customIndex = m_atomType - 7 - 1;
         QList<QByteArray> propertyNames = a->dynamicPropertyNames();
