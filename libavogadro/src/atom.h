@@ -104,6 +104,11 @@ namespace Avogadro {
     void setFormalCharge(int charge);
 
     /**
+     * Set the number of the atom in group of atoms of the same element.
+     */
+    void setGroupIndex(unsigned int m_index);
+
+    /**
      * Set the force vector on the atom (e.g., used to display vibrations)
      */
     void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
@@ -148,6 +153,11 @@ namespace Avogadro {
      */
     double valence() const { return static_cast<double>(m_bonds.size()); }
 
+    /**
+     * The index of the atom in group of atoms of the same element in Molecule
+     */
+    unsigned int groupIndex() const { return m_groupIndex; }
+    
     /**
      * @return True if the atom is a hydrogen.
      */
@@ -241,6 +251,7 @@ namespace Avogadro {
     AtomPrivate * const d_ptr;
     Molecule *m_molecule; /** Parent molecule - should always be valid. **/
     int m_atomicNumber;
+    unsigned int m_groupIndex;
     unsigned long m_residue;
     QList<unsigned long> m_bonds;
     mutable double m_partialCharge;

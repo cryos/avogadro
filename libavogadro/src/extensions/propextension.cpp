@@ -2,6 +2,7 @@
   propextension.h - Properties Plugin for Avogadro
 
   Copyright (C) 2007-2008 by Tim Vandermeersch
+  Some portions Copyright (C) 2009 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -213,8 +214,11 @@ namespace Avogadro
     layout->addWidget(view);
     dialog->setWindowTitle(view->windowTitle());
     QSize dialogSize = dialog->size();
-    dialogSize.setWidth(550);
+    dialogSize.setWidth(model->columnCount()*120);
+	if (model->rowCount() < 10)
+	  dialogSize.setHeight(model->rowCount()*40);
     dialog->resize(dialogSize);
+	dialog->setWindowFlags(Qt::Window);
     dialog->show();
 
     return undo;
