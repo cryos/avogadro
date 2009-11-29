@@ -2,6 +2,7 @@
   propmodel.cpp - Models to hold properties
 
   Copyright (C) 2007 by Tim Vandermeersch
+  Copyright (C) 2009 by Konstantin Tokarev 
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -101,7 +102,7 @@ namespace Avogadro {
     Q_UNUSED(parent);
     switch (m_type) {
     case AtomType:
-      return 5; // type, element, valence, formal charge, partial charge
+      return 8; // type, element, valence, formal charge, partial charge, x, y, z
     case BondType:
       return 5;
     case AngleType:
@@ -165,7 +166,8 @@ namespace Avogadro {
         return QVariant();
 
       Atom *atom = m_molecule->atom(index.row());
-
+      QString format("%L1");
+      
       switch (index.column()) {
       case 0: // type
         {
@@ -181,11 +183,25 @@ namespace Avogadro {
       case 3: // formal charge
         return atom->formalCharge();
       case 4: // partial charge
-        QString format("%L1");
         if (sortRole)
           return atom->partialCharge();
         else
           return format.arg(atom->partialCharge(), 0, 'f', 3);
+      case 5:
+        if (sortRole)
+          return atom->pos()->x();
+        else
+          return format.arg(atom->pos()->x(), 0, 'f', 5);
+      case 6:
+        if (sortRole)
+          return atom->pos()->y();
+        else
+          return format.arg(atom->pos()->y(), 0, 'f', 5);
+      case 7:
+        if (sortRole)
+          return atom->pos()->z();
+        else
+          return format.arg(atom->pos()->z(), 0, 'f', 5);
       }
     }
     else if (m_type == BondType) {
@@ -361,6 +377,12 @@ namespace Avogadro {
           return tr("Formal Charge");
         case 4:
           return tr("Partial Charge");
+        case 5:
+          return trUtf8("X %1", "in Angstrom").arg("(\xC5)");
+        case 6:
+          return trUtf8("Y %1", "in Angstrom").arg("(\xC5)");
+        case 7:
+          return trUtf8("Z  %1", "in Angstrom").arg("(\xC5)");
         }
       } else
         return tr("Atom %1").arg(section + 1);
@@ -500,7 +522,8 @@ namespace Avogadro {
 
     if (m_type == AtomType) {
       Atom *atom = m_molecule->atom(index.row());
-
+      Eigen::Vector3d pos = *atom->pos();
+      
       switch (index.column()) {
       case 1: {// atomic number
         // Try first as a number
@@ -526,6 +549,14 @@ namespace Avogadro {
         m_molecule->update();
         emit dataChanged(index, index);
         return true;
+      case 5:
+      case 6:
+      case 7:
+        pos[index.column()] = value.toDouble();
+        atom->setPos(pos);
+        m_molecule->update();
+        emit dataChanged(index, index);
+        return true;      
       case 0: // type
       case 2: // valence
       default:

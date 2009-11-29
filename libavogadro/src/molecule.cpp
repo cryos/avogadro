@@ -181,6 +181,7 @@ namespace Avogadro{
     // now that the id is correct, emit the signal
     connect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
     emit atomAdded(atom);
+    calculateGroupIndices();
     return atom;
   }
 
@@ -214,6 +215,7 @@ namespace Avogadro{
 
       disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
       emit atomRemoved(atom);
+      calculateGroupIndices();
     }
   }
 
@@ -776,6 +778,49 @@ namespace Avogadro{
     m_invalidAromaticity = false;
   }
 
+  void Molecule::calculateGroupIndices() const
+  {
+/*    OpenBabel::OBMol obmol = OBMol();
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    for (unsigned int i = 0; i < obmol.NumAtoms(); ++i) {
+      atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
+    }
+#endif*/
+    QVector<unsigned int> group_number;   // numbers of atoms in each group
+    QVector<unsigned int> group_ele;    // elements of each group
+    QVector<unsigned int> atomGroupNumber;
+    atomGroupNumber.resize(numAtoms());
+
+    for (unsigned int i = 0; i < numAtoms(); ++i) {
+      bool match = false;
+      for (unsigned int j=0; j<group_number.size(); j++) {
+          if ((atom(i)->atomicNumber()) == group_ele.at(j)) {
+            group_number[j] += 1;
+            atomGroupNumber[i] = group_number[j];
+            match = true;
+          }
+      }
+      if (!match) {
+        group_ele.push_back(atom(i)->atomicNumber());
+        group_number.push_back(1);
+        atomGroupNumber[i] = 1;
+      }
+    }
+    
+    for (unsigned int i = 0; i < numAtoms(); ++i) {
+      bool match = false;
+      for (unsigned int j=0; j<group_number.size(); j++) {
+        if ((atom(i)->atomicNumber()) == group_ele.at(j) && (group_number.at(j) == 1))
+          match = true;
+      }
+      if (match) {
+        atom(i)->setGroupIndex(0);
+      } else {
+        atom(i)->setGroupIndex(atomGroupNumber.at(i));
+      }
+    } 
+  }    
+
   unsigned int Molecule::numAtoms() const
   {
     return m_atomList.size();
@@ -831,6 +876,7 @@ namespace Avogadro{
     Q_D(Molecule);
     Atom *atom = qobject_cast<Atom *>(sender());
     d->invalidGeomInfo = true;
+    calculateGroupIndices();
     emit atomUpdated(atom);
   }
 
@@ -1599,6 +1645,8 @@ namespace Avogadro{
           d->farthestAtom = atom;
         }
       }
+      
+      calculateGroupIndices();
     }
     d->invalidGeomInfo = false;
   }

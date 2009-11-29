@@ -226,6 +226,11 @@ using Eigen::Vector3d;
      m_residue = residue->id();
    }
 
+   void Atom::setGroupIndex(unsigned int index)
+   {
+	 m_groupIndex = index;
+   }
+
    unsigned long Atom::residueId() const
    {
      return m_residue;
