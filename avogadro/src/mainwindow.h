@@ -254,6 +254,9 @@ namespace Avogadro {
       //! Helper function to check for 3D coordinates from files
       void check3DCoords(OpenBabel::OBMol *molecule);
 
+      //! Helper function to guess text format for pasting
+      bool parseText(OpenBabel::OBMol *mol, const QString coord);
+
       //! Helper function for Mac -- hide main window and disable menus
       void hideMainWindowMac();
       //! Helper function for Mac -- show main window and re-enable menus
