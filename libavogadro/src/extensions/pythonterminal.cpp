@@ -272,13 +272,9 @@ namespace Avogadro
       }
       event->accept();
       return;
-<<<<<<< HEAD:libavogadro/src/extensions/pythonterminal.cpp
     }
     else if(event->key() == Qt::Key_Return)
     {
-=======
-    } else if(event->key() == Qt::Key_Return) {
->>>>>>> 1.0:libavogadro/src/extensions/pythonterminal.cpp
       QString text = toPlainText();
       QString t = text.right(text.size() - m_cursorPos);
 
