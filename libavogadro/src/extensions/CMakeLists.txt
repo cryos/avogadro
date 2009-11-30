@@ -24,7 +24,7 @@ set(inputfileextension_SRCS inputfileextension.cpp
     nwcheminputdialog.cpp
     qcheminputdialog.cpp)
 avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
- "gaussianinputdialog.ui;daltoinputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
+ "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
 
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
