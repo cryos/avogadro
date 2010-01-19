@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-en_GB\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-10 04:23+0000\n"
-"Last-Translator: Marcus D. Hanwell <Unknown>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-10-27 11:01+0000\n"
+"Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -554,7 +554,7 @@ msgstr "Axes"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Renders the x, y and z axes at the origin"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Ball and Stick"
 
@@ -950,27 +950,27 @@ msgstr "Energy = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Geometric Optimization"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Forcefield Optimization"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Systematic Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Random Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Weighted Rotor Search"
 
@@ -2138,11 +2138,11 @@ msgstr "Spectra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Visualise spectral data from quantum chemistry calculations"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "No intensities"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2152,11 +2152,11 @@ msgstr ""
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualisation."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Wavenumber (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2712,6 +2712,11 @@ msgstr "AutoOpt: Could not setup force field...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Constraints"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Force Field:"
@@ -2765,7 +2770,7 @@ msgstr "Ignored atoms are movable"
 msgid "Stop"
 msgstr "Stop"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "AutoOpt Molecule"
 
@@ -6678,7 +6683,8 @@ msgstr ""
 "Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,"
 "cocoloco, ,Launchpad Contributions:,Gabriel Ruiz,Geoff Hutchison,Jen Ockwell,"
 "Marcus D. Hanwell,kuede, ,Launchpad Contributions:,Avogadro Team, ,Launchpad "
-"Contributions:,Avogadro Team,Brian Burns,Geoff Hutchison,Marcus D. Hanwell"
+"Contributions:,Avogadro Team,Brian Burns,Geoff Hutchison,Marcus D. Hanwell, ,"
+"Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6687,7 +6693,7 @@ msgstr ""
 "patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
 "com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,debianmaster@gmail.com,,"
 "jenfraggleubuntu@googlemail.com,,,,,avogadro-devel@lists.sourceforge.net,,,"
-"avogadro-devel@lists.sourceforge.net,bburns@aundae.com,,"
+"avogadro-devel@lists.sourceforge.net,bburns@aundae.com,,,,"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Open ligand file"
@@ -6713,9 +6719,7 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "trajectory file (*.xyz)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
+#~ msgid "Lin Morph..."
 #~ msgstr "Lin Morph..."
 
 #~ msgid "Read mol file %1 failed."
@@ -6749,8 +6753,6 @@ msgstr ""
 #~ msgid "Wrote file %1."
 #~ msgstr "Wrote file %1."
 
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
 #~ msgid "Linear Morph"
 #~ msgstr "Linear Morph"
 
@@ -6789,13 +6791,6 @@ msgstr ""
 
 #~ msgid "Linear Morph Trajectory"
 #~ msgstr "Linear Morph Trajectory"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
 
 #~ msgid "button to load a second conformation from a file."
 #~ msgstr "button to load a second conformation from a file."
@@ -6838,6 +6833,13 @@ msgstr ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"

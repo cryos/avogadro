@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-08-13 06:18+0000\n"
-"Last-Translator: tomo <Unknown>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-10-27 11:04+0000\n"
+"Last-Translator: Geoff Hutchison <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:33+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "軸"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "原点に x, y, z 軸を表示"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "ボールとスティック"
 
@@ -948,27 +948,27 @@ msgstr ""
 msgid "Geometric Optimization"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr ""
 
@@ -2109,22 +2109,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2650,6 +2650,11 @@ msgstr ""
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "束縛 ..."
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr ""
@@ -2703,7 +2708,7 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -6573,10 +6578,10 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
 "Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,tomo"
+"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
-"sourceforge.net,,"
+"sourceforge.net,,,,"

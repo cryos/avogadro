@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-13 22:45+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-28 13:45+0000\n"
 "Last-Translator: Alexandre R Soares <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Eixos"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "renderizar eixos x, y e z na origem"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Bola e Bastão"
 
@@ -665,7 +665,7 @@ msgstr "Renderiza moléculas como bastões"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Van der Waals, isossuperfície = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -965,27 +965,27 @@ msgstr "Energia = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Otimização Geométrica"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Otimização do Campo de Força"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Busca sistemática de rotores"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Busca aleatória de rotores"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Busca ponderada de rotores"
 
@@ -1003,7 +1003,7 @@ msgstr ""
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
-msgstr ""
+msgstr "Resultados para MQ"
 
 #: src/extensions/gamessextension.cpp:65
 msgid "Input Generator..."
@@ -1013,12 +1013,12 @@ msgstr "Gerador de Entrada..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "Seleção de EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "Seleção MQ..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1026,7 +1026,7 @@ msgstr "&GAMESS"
 
 #: src/extensions/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
-msgstr ""
+msgstr "Informação GAMESS EFP"
 
 #: src/extensions/gamessextension.cpp:118
 msgid "Delete"
@@ -1058,11 +1058,11 @@ msgstr " ("
 
 #: src/extensions/gamessextension.cpp:523
 msgid "qm"
-msgstr ""
+msgstr "mq"
 
 #: src/extensions/gamessextension.cpp:523
 msgid "efp"
-msgstr ""
+msgstr "efp"
 
 #: src/extensions/gamessextension.cpp:524
 msgid ")"
@@ -1131,15 +1131,15 @@ msgstr ""
 
 #: src/extensions/gamessinputdialog.cpp:1642
 msgid "Export Input Deck"
-msgstr ""
+msgstr "Exportar Holerite"
 
 #: src/extensions/gamessinputdialog.cpp:1643
 msgid "GAMESS Input Deck (*.inp)"
-msgstr ""
+msgstr "Holerite GAMESS (*.inp)"
 
 #: src/extensions/gaussianinputdialog.cpp:195
 msgid "Gaussian Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite Gaussiano"
 
 #: src/extensions/gaussianinputdialog.cpp:196
 msgid ""
@@ -1149,11 +1149,11 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
-msgstr ""
+msgstr "Guardar Holerite Gaussiano"
 
 #: src/extensions/gaussianinputdialog.cpp:240
 msgid "Gaussian Input Deck (*.com)"
-msgstr ""
+msgstr "Holerite Gaussiano (*.com)"
 
 #: src/extensions/gaussianinputdialog.cpp:268
 msgid "Gaussian Running."
@@ -1278,23 +1278,23 @@ msgstr "Adiciona ou remove hidrogênios"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussiano..."
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1304,11 +1304,11 @@ msgstr "Não foi possível ler o arquivo %1."
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Geradores de Arquivo de Entrada"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Criar arquivos de entrada para pacotes de química quântica"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1393,7 +1393,7 @@ msgstr "Exibir propriedades moleculares padrões"
 #: src/extensions/molproinputdialog.cpp:114
 #: src/extensions/qcheminputdialog.cpp:114
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite Q-Chem"
 
 #: src/extensions/molproinputdialog.cpp:115
 #: src/extensions/qcheminputdialog.cpp:115
@@ -1401,24 +1401,28 @@ msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
 msgstr ""
+"Deseja atualizar o texto, perdendo todas as alterações feitas no holerite Q-"
+"Chem de segurança?"
 
 #: src/extensions/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
-msgstr ""
+msgstr "Guardar Holerite Molpro"
 
 #: src/extensions/molproinputdialog.cpp:163
 msgid "Molpro Input Deck (*.qcin)"
-msgstr ""
+msgstr "Holerite Molpro (*.qcin)"
 
 #: src/extensions/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "Alerta Holerite MOPAC"
 
 #: src/extensions/mopacinputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
+"Deseja atualizar o texto, perdendo todas as alterações feitas no holerite "
+"MOPAC de segurança?"
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
@@ -1461,11 +1465,11 @@ msgstr ""
 
 #: src/extensions/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
-msgstr ""
+msgstr "Guardar Holerite MOPAC"
 
 #: src/extensions/mopacinputdialog.cpp:295
 msgid "MOPAC Input Deck (*.mop)"
-msgstr ""
+msgstr "Holerite MOPAC (*.mop)"
 
 #: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
@@ -1489,11 +1493,11 @@ msgstr "Entrada PDB para download."
 
 #: src/extensions/networkfetchextension.cpp:110
 msgid "Chemical Name"
-msgstr ""
+msgstr "Nome Químico"
 
 #: src/extensions/networkfetchextension.cpp:111
 msgid "Chemical structure to download."
-msgstr ""
+msgstr "Estrutura química para baixar."
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
@@ -1533,7 +1537,7 @@ msgstr "Busca de arquivos de moléculas através da rede."
 
 #: src/extensions/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
-msgstr ""
+msgstr "Alerta do Gerador de Holerite NWChem"
 
 #: src/extensions/nwcheminputdialog.cpp:122
 msgid ""
@@ -1543,11 +1547,11 @@ msgstr ""
 
 #: src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
-msgstr ""
+msgstr "Guardar Holerite NWChem"
 
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
-msgstr ""
+msgstr "Holerite NWChem (*.nw)"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
@@ -1699,7 +1703,7 @@ msgstr "Valência"
 
 #: src/extensions/propmodel.cpp:361
 msgid "Formal Charge"
-msgstr ""
+msgstr "Carga Formal"
 
 #: src/extensions/propmodel.cpp:363
 msgid "Partial Charge"
@@ -1805,7 +1809,7 @@ msgstr "Terminal Python"
 
 #: src/extensions/pythonterminal.cpp:71
 msgid "pythonTerminalDock"
-msgstr ""
+msgstr "pythonTerminalDock"
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
@@ -1813,11 +1817,11 @@ msgstr "Console Interativo do Python"
 
 #: src/extensions/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
-msgstr ""
+msgstr "Guardar Holerite QChem"
 
 #: src/extensions/qcheminputdialog.cpp:163
 msgid "QChem Input Deck (*.qcin)"
-msgstr ""
+msgstr "Holerite QChem (*.qcin)"
 
 #: src/extensions/selectextension.cpp:68
 msgid "&Invert Selection"
@@ -2027,7 +2031,7 @@ msgstr "Valores Separados por Vírgula"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
 #: src/extensions/spectradialog.cpp:647
@@ -2080,7 +2084,7 @@ msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "Formato TIFF"
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
@@ -2088,7 +2092,7 @@ msgstr "Windows Bitmap"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
-msgstr ""
+msgstr "Portable Pixmap"
 
 #: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
@@ -2146,11 +2150,11 @@ msgstr "Espectro"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "Sem intensidades"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2160,11 +2164,11 @@ msgstr ""
 "intensidade. Intensidades foram configuradas para um valor arbitrário para a "
 "visualização."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Número de onda (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2217,22 +2221,22 @@ msgstr ""
 #: src/extensions/surfacedialog.cpp:251
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
-msgstr ""
+msgstr "Van der Waals"
 
 #: src/extensions/surfacedialog.cpp:253
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
-msgstr ""
+msgstr "Potencial Eletrostático"
 
 #: src/extensions/surfacedialog.cpp:256
 msgctxt "Electron density surface type"
 msgid "Electron Density"
-msgstr ""
+msgstr "Densidade Eletrônica"
 
 #: src/extensions/surfacedialog.cpp:258
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr ""
+msgstr "Orbital Molecular"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
@@ -2269,7 +2273,7 @@ msgstr "Calculando Densidade Eletrônica"
 
 #: src/extensions/surfaceextension.cpp:568
 msgid "VdW"
-msgstr ""
+msgstr "VdW"
 
 #: src/extensions/surfaceextension.cpp:596
 msgid "Electron Density"
@@ -2727,6 +2731,11 @@ msgstr "AutoOtimização: Não foi possível habilitar o campo de força..."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOtimização: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Restrições"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Campo de Força"
@@ -2780,7 +2789,7 @@ msgstr "Átomos ignorados são movíveis"
 msgid "Stop"
 msgstr "Parar"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "AutoOtimizar Molécula"
 
@@ -2979,7 +2988,7 @@ msgstr "Distância(s):"
 
 #: src/tools/clickmeasuretool.cpp:290
 msgid "Angle:"
-msgstr ""
+msgstr "Ângulo:"
 
 #: src/tools/clickmeasuretool.cpp:302
 msgid "Dihedral:"
@@ -3350,7 +3359,7 @@ msgstr "Largura:"
 #. i18n: file: src/engines/hbondsettingswidget.ui:57
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Cut-off radius:"
-msgstr ""
+msgstr "Raio de corte:"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:64
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
@@ -3371,7 +3380,7 @@ msgstr "°"
 #. i18n: file: src/engines/hbondsettingswidget.ui:90
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Cut-off angle:"
-msgstr ""
+msgstr "Ângulo de corte:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3415,7 +3424,7 @@ msgstr "Símbolo do Elemento"
 #. i18n: file: src/engines/labelsettingswidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Formal charge"
-msgstr ""
+msgstr "Carga formal"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3425,7 +3434,7 @@ msgstr "Número do Resíduo"
 #. i18n: file: src/engines/labelsettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
-msgstr ""
+msgstr "Carga parcial"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3825,7 +3834,7 @@ msgstr "10e-"
 #. i18n: file: src/extensions/gamessefpmatchdialog.ui:16
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessEfpMatchDialog)
 msgid "EFP Matches"
-msgstr ""
+msgstr "Resultados para EFP"
 
 #. i18n: file: src/extensions/gamessefpmatchdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4903,7 +4912,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "Próximo Valor"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
@@ -4913,7 +4922,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:1979
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Initial Guess:"
-msgstr ""
+msgstr "Estimativa Inicial"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1990
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
@@ -4948,7 +4957,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2040
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessPrintCheck)
 msgid "Print the Initial Guess"
-msgstr ""
+msgstr "Mostre a Estimativa Inicial"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2064
 #. i18n: ectx: property (title), widget (QGroupBox, miscInterfaceGroup)
@@ -6701,7 +6710,7 @@ msgstr ""
 "Henrique Gonçalves Freire,Rafael Porto Rodrigues,Rosiney Gomes Pereira, ,"
 "Launchpad Contributions:,Alexandre R Soares,Avogadro Team, ,Launchpad "
 "Contributions:,Alexandre R Soares,André Gondim,Avogadro Team,Felipe Vieira "
-"Borges,Geoff Hutchison,leoazul"
+"Borges,Geoff Hutchison,leoazul, ,Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6710,7 +6719,7 @@ msgstr ""
 "rafporto@gmail.com,rosiney.gp@gmail.com,,,,andregondim@ubuntu.com,"
 "ciniro@gmail.com,liverig@gmail.com,,,,,rafporto@gmail.com,rosiney.gp@gmail."
 "com,,,,avogadro-devel@lists.sourceforge.net,,,,andregondim@ubuntu.com,"
-"avogadro-devel@lists.sourceforge.net,,,"
+"avogadro-devel@lists.sourceforge.net,,,,,"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Abrir arquivo de ligantes"
@@ -6742,18 +6751,8 @@ msgstr ""
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Duas moléculas possuem diferentes números de átomos %1 %2"
 
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "O widget (elemento de interface) GL não foi inicializado corretamente "
-#~ "para poder salvar imagens instantâneas"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "Não foi possível salvar o arquivo %1."
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr ""
-#~ "O widget (elemento de interface) GL não foi inicializado corretamente "
-#~ "para poder salvar o filme"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr ""
@@ -6788,20 +6787,8 @@ msgstr ""
 #~ msgid "create ligand from current selection"
 #~ msgstr "criar ligante a partir da seleção"
 
-#~ msgid "create ligand from residue name"
-#~ msgstr "criar ligante a partir do nome do resíduo"
-
 #~ msgid "create ligand from file..."
 #~ msgstr "criar ligante a partir do arquivo..."
-
-#~ msgid "The residue name"
-#~ msgstr "O nome do resíduo"
-
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "Carregar Segunda Conformação ..."
-
-#~ msgid "Num Frames"
-#~ msgstr "Número de Quadros"
 
 #~ msgid "Button to save an .xyz trajectory."
 #~ msgstr "Botão para salvar uma trajetória .xyz."
@@ -6815,5 +6802,27 @@ msgstr ""
 #~ msgid "Radius"
 #~ msgstr "Raio"
 
+#~ msgid "create ligand from residue name"
+#~ msgstr "criar ligante a partir do nome do resíduo"
+
+#~ msgid "The residue name"
+#~ msgstr "O nome do resíduo"
+
+#~ msgid "Num Frames"
+#~ msgstr "Número de Quadros"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Carregar Segunda Conformação ..."
+
 #~ msgid "MO 666"
 #~ msgstr "OM 666"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "O widget (elemento de interface) GL não foi inicializado corretamente "
+#~ "para poder salvar imagens instantâneas"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "O widget (elemento de interface) GL não foi inicializado corretamente "
+#~ "para poder salvar o filme"

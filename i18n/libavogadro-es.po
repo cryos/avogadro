@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-10-21 18:48+0000\n"
-"Last-Translator: Angel Herráez <aherraez@users.sourceforge.net>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-10-30 22:51+0000\n"
+"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Ejes"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Renderiza los ejes x, y y z en el origen"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Bola y varilla"
 
@@ -961,27 +961,27 @@ msgstr "Energía = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Optimización Geométrica"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Optimización de campos de fuerza"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Búsqueda sistemática de rotores"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Búsqueda aleatoria de rotores"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Búsqueda ponderada de rotores"
 
@@ -1009,7 +1009,7 @@ msgstr "Generador de Entrada..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "Selección de EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
@@ -2155,11 +2155,11 @@ msgstr "Espectros"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Visualizar datos espectrales de cálculos de química cuántica"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "Sin intensidades"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2169,11 +2169,11 @@ msgstr ""
 "intensidad. Intensidades se han fijado a un valor arbitrario para la "
 "visualización."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Numero de onda  (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Desplazamiento (ppm)"
 
@@ -2736,6 +2736,11 @@ msgstr "Opt. autom.: No se puede establecer el campo de fuerza..."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Restricciones"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Forzar campo:"
@@ -2789,7 +2794,7 @@ msgstr "Los átomos ignorados se pueden mover"
 msgid "Stop"
 msgstr "Parar"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "Optimizar molécula automáticamente"
 
@@ -4906,7 +4911,7 @@ msgstr "Tipo de equilibrio de carga paralela"
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr ""
+msgstr "Bucle"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
@@ -6683,7 +6688,7 @@ msgstr "Forma"
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Mostrar indicaciones visuales"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6718,7 +6723,11 @@ msgstr ""
 "Contributions:,Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro Team,"
 "DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder Sáiz,Francisco J. Aviles "
 "Noreña,Geoff Hutchison,Mauro de Carvalho,Nicolás M. Zahlut,Victor Herrero,"
-"memaljo,niniocompu"
+"memaljo,niniocompu, ,Launchpad Contributions:,Alejandro Del Rincón,Angel "
+"Herráez,Ariel Cabral,Avogadro Team,Daniel Ferreira,DiegoJ,DiegoSuarez uy,"
+"Edgardo Fredz,FJModrego,Feder Sáiz,Francisco J. Aviles Noreña,Geoff "
+"Hutchison,Mauro de Carvalho,Nicolás M. Zahlut,Victor Herrero,memaljo,"
+"niniocompu, ,Launchpad Contributions:,DiegoJ"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6732,7 +6741,12 @@ msgstr ""
 "aherraez@users.sourceforge.net,,avogadro-devel@lists.sourceforge.net,"
 "diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,"
 "federsaiz@googlemail.com,fjavilesn@gmail.com,,mauro.dec@gmail.com,"
-"nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,"
+"nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,,aherraez@users."
+"sourceforge.net,,avogadro-devel@lists.sourceforge.net,spanish_nerdo@hotmail."
+"com,diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,"
+"federsaiz@googlemail.com,fjavilesn@gmail.com,,mauro.dec@gmail.com,"
+"nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,"
+"diegojromerolopez@gmail.com"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Abrir archivo de ligandos"
@@ -6758,27 +6772,14 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "archivo de trayectoria (*.xyz)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
-#~ msgstr "Morph Lin ..."
-
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Ha fallado la lectura del archivo mol %1."
 
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dos moléculas tiene diferente número de átomos %1 %2"
 
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "GL artilugio no se inicializa correctamente, a fin de guardar instantáneas"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "No se puede guardar el archivo %1."
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr ""
-#~ "GL artilugio no se inicializa correctamente, a fin de guardar instantáneas"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr ""
@@ -6798,11 +6799,6 @@ msgstr ""
 #~ msgid "Wrote file %1."
 #~ msgstr "Se ha escrito el archivo %1."
 
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
-#~ msgid "Linear Morph"
-#~ msgstr "Morph lineal"
-
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Crea interpolaciones lineales para las animaciones"
 
@@ -6815,15 +6811,6 @@ msgstr ""
 #~ msgid "&WiiTrack"
 #~ msgstr "&WiiTrack"
 
-#~ msgid "Wii Tracking"
-#~ msgstr "Seguimiento Wii"
-
-#~ msgid "Track motion using Wii remotes"
-#~ msgstr "Seguir movimiento utilizando mandos a distancia de Wii"
-
-#~ msgid "Create ligand"
-#~ msgstr "Crear ligando"
-
 #~ msgid "create ligand from current selection"
 #~ msgstr "crear ligando desde selección sctual"
 
@@ -6835,32 +6822,6 @@ msgstr ""
 
 #~ msgid "The residue name"
 #~ msgstr "Nombre del radical"
-
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "Trayectoria lineal Morph"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Carga una segunda conformación y calcula una interpolación lineal con la "
-#~ "actual conformación."
-
-#~ msgid "button to load a second conformation from a file."
-#~ msgstr "botón para cargar una segunda conformación de un archivo."
-
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "Segunda Conformación de carga ..."
-
-#~ msgid "Num Frames"
-#~ msgstr "Num. Marcos"
-
-#~ msgid ""
-#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
-#~ "then be used to make a movie."
-#~ msgstr ""
-#~ "Guardar instantáneas de la trayectoria como una serie de archivos POVRay. "
-#~ "Estos se pueden utilizar para hacer una película."
 
 #~ msgid "Button to save an .xyz trajectory."
 #~ msgstr "Botón para guardar una trayectoria .xyz."
@@ -6888,8 +6849,12 @@ msgstr ""
 #~ msgstr ""
 #~ "Todos los átomos en el radio del ligando formarán parte del sitio de unión"
 
-#~ msgid "MO 666"
-#~ msgstr "OM 666"
+#~ msgid ""
+#~ "Display visual cues</string>\n"
+#~ "     </property>"
+#~ msgstr ""
+#~ "Mostrar señales visuales </ string>\n"
+#~ "</ propiedad>"
 
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
@@ -6911,9 +6876,54 @@ msgstr ""
 #~ "Nota: Hay que / los espacios aquí. Cada uno representa un carácter de "
 #~ "espacio. Introduzca un espacio en el puesto equivalente en la traducción."
 
-#~ msgid ""
-#~ "Display visual cues</string>\n"
-#~ "     </property>"
+#~ msgid "Lin Morph..."
+#~ msgstr "Morph Lin ..."
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
-#~ "Mostrar señales visuales </ string>\n"
-#~ "</ propiedad>"
+#~ "GL artilugio no se inicializa correctamente, a fin de guardar instantáneas"
+
+#~ msgid "Linear Morph"
+#~ msgstr "Morph lineal"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "GL artilugio no se inicializa correctamente, a fin de guardar instantáneas"
+
+#~ msgid "Create ligand"
+#~ msgstr "Crear ligando"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Trayectoria lineal Morph"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Guardar instantáneas de la trayectoria como una serie de archivos POVRay. "
+#~ "Estos se pueden utilizar para hacer una película."
+
+#~ msgid "Num Frames"
+#~ msgstr "Num. Marcos"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Segunda Conformación de carga ..."
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "botón para cargar una segunda conformación de un archivo."
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Seguir movimiento utilizando mandos a distancia de Wii"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Seguimiento Wii"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Carga una segunda conformación y calcula una interpolación lineal con la "
+#~ "actual conformación."
+
+#~ msgid "MO 666"
+#~ msgstr "OM 666"

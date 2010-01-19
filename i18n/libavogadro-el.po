@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-07-22 08:30+0000\n"
-"Last-Translator: Anastasios Bourazanis <a.brzns@gmail.com>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-11-13 15:35+0000\n"
+"Last-Translator: farkoius <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -47,27 +47,27 @@ msgstr "Επιλογή προσαρμοσμένων χρωμάτων για τα
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr "Χρώμα ανά Απόσταση"
+msgstr "Χρώμα κατά Απόσταση"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr "Χρώμα ανά απόσταση από το πρώτο άτομο"
+msgstr "Χρώμα κατά απόσταση από το πρώτο άτομο"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
-msgstr "Χρώμα ανά Στοιχείο"
+msgstr "Χρώμα κατά Στοιχείο"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr "Χρώμα ανά Στοιχείο (άνθρακας = γκρι, οξυγόνο = κόκκινο, ...)."
+msgstr "Χρώμα κατά Στοιχείο (άνθρακας = γκρι, οξυγόνο = κόκκινο, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "Χρώμα κατα Τμήμα"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr ""
+msgstr "Χρώμα κατα Τμήμα (είδος αμινοξέος, υδροφοβία,...)"
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -119,7 +119,7 @@ msgstr "Μαγνήσιο"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr "Αλουμίνιο"
+msgstr "Αργίλιο"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
@@ -127,7 +127,7 @@ msgstr "Πυρίτιο"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr "Φώσφορος"
+msgstr "Φωσφόρος"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
@@ -355,7 +355,7 @@ msgstr "Λουτέτιο"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr "Αίφνιο"
+msgstr "Αφνιο"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
@@ -463,7 +463,7 @@ msgstr "Καλιφόρνιο"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr "Αϊνσταίνιο"
+msgstr "Αϊνσταϊνιο"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
@@ -491,11 +491,11 @@ msgstr "Δούβνιο"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr "Σιμπόργιο"
+msgstr "Σημπόργκιο"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr "Βόριο"
+msgstr "Μπόριο"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
@@ -507,7 +507,7 @@ msgstr "Μαϊτνέριο"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr "Νταρμστάντιο"
+msgstr "Δαρμστάτιο"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
@@ -557,13 +557,14 @@ msgstr "Άξονες"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr ""
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Σφαίρα και ράβδος"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
 msgstr ""
+"Εμφάνιση των πρωταρχικών χρησιμοποιώντας σφαίρες (άτομα) και ράβδους (δεσμοί)"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
@@ -571,7 +572,7 @@ msgstr "Καρτούν"
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr "Εμφάνιση δευτερεύουσας δομής της πρωτεΐνης"
+msgstr "Εμφάνιση δευτεροταγούς δομής της πρωτεΐνης"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
@@ -579,7 +580,7 @@ msgstr "Δίπολο"
 
 #: src/engines/dipoleengine.h:43
 msgid "Renders molecular dipole moments"
-msgstr ""
+msgstr "Εμφάνιση των μοριακών διπολικών ροπών"
 
 #: src/engines/forceengine.h:38
 msgid "Force"
@@ -603,7 +604,7 @@ msgstr "Ετικέτα"
 
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
-msgstr ""
+msgstr "Απόδοση ετικέτας ατόμων και δεσμών"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
@@ -611,7 +612,7 @@ msgstr "Επικάλυψη"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
-msgstr ""
+msgstr "Απόδοση χρωματικής κλίμακας"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -627,7 +628,7 @@ msgstr "Ταινία"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
-msgstr ""
+msgstr "Απόδοση πρωτεινικού σκελετου ως ταινίας"
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
@@ -635,11 +636,11 @@ msgstr "Δακτύλιος"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
-msgstr ""
+msgstr "Απόδωση δακτυλίων ως έγχρωμων επιπέδων"
 
 #: src/engines/simplewireengine.h:37
 msgid "Simple Wireframe"
-msgstr ""
+msgstr "Απλός σκελετός"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
@@ -659,25 +660,25 @@ msgstr "Ράβδος"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr "Αποδίδει μόρια ως ράβδους"
+msgstr "Αποδοση των μόρίων ως ράβδων"
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Van der Waals, ισοεπιφάνεια = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "Ηλεκτρονική πυκνότητα,ισοεπιφάνεια = %L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, ισοεπιφάνεια = %L2"
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
@@ -685,15 +686,15 @@ msgstr "Επιφάνειες"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Εμφανίζει το δικτύωμα των μοριακών ισοεπιφανειών"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr "Μόνο πλέγμα"
+msgstr "Απλός σκελετός"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-msgstr ""
+msgstr "Αποδίδει τους δεσμούς ως γραμμές,ιδανικό για πολύ μεγάλα (βιο)μόρια"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -755,7 +756,7 @@ msgstr "Προσθήκη κατάληξης .avi"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr ""
+msgstr "Κινούμενη απεικόνιση"
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
@@ -804,12 +805,12 @@ msgstr ""
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr ""
+msgstr "Αδυναμία μετάβασης σε τύπο αρχείου XYZ"
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr "Πρόβλημα κατά την ανάγνωση τροχ.αρχείου %1"
+msgstr "Πρόβλημα κατά την ανάγνωση αρχείου τροχιάς %1"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
@@ -819,11 +820,11 @@ msgstr ""
 
 #: src/extensions/animationextension.h:39
 msgid "Animation"
-msgstr "Γραφική Απεικόνιση"
+msgstr "Κινούμενη απεικόνιση"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr "Απεικόνισε τροχιές, αντιδράσεις, και δονήσεις."
+msgstr "Κινούμενη απεικόνιση τροχιών, αντιδράσεων, και δονήσεων."
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -833,7 +834,7 @@ msgstr "Αριθμός ατόμων: %1"
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr ""
+msgstr "Αριθμός περιστρέψιμων δεσμών: %1"
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
@@ -865,6 +866,8 @@ msgstr ""
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
 msgstr ""
+"Το μόριο πρέπει να περιλαμβάνει τουλάχιστον τέσσερα άτομα για να προσθέσετε "
+"έναν περιορισμό δίεδρης γωνίας"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -924,7 +927,7 @@ msgstr "Υπολογισμός ενέργειας"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "Αναζήτηση διαμορφομερούς"
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
@@ -957,27 +960,27 @@ msgstr "Ενέργεια = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Γεωμετρική Βελτιστοποίηση"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Βελτιστοποίηση Δυναμικού Πεδίου"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr ""
 
@@ -990,6 +993,8 @@ msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
 msgstr ""
+"Βελτιστοποίηση μορίων και δημιουργία διαμορφομερών  χρησιμοποιώντας δυναμικά "
+"πεδία μοριακής μηχανικής"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -2126,22 +2131,22 @@ msgstr "Φάσματα"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2667,6 +2672,11 @@ msgstr ""
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Περιορισμοί"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Δυναμικό πεδίο:"
@@ -2720,7 +2730,7 @@ msgstr "Τα αγνοημένα άτομα μπορούν να κινηθούν"
 msgid "Stop"
 msgstr "Στόπ"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "Μόριο αυτόματης βελτιστοποίησης"
 
@@ -6627,35 +6637,13 @@ msgstr "Αφαίρεση ατόμου"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas"
+msgstr ""
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, ,"
+"Launchpad Contributions:,farkoius"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com"
-
-#~ msgid "Open ligand file"
-#~ msgstr "Άνοιγμα αρχείου ligand"
-
-#~ msgid "Avogadro files (*.*)"
-#~ msgstr "Αρχεία Avogadro(*.*)"
-
-#~ msgid "Open mol file"
-#~ msgstr "Άνοιγμα αρχείου mol"
-
-#~ msgid "Save Traj File"
-#~ msgstr "Αποθήκευση αρχείου τροχ."
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "αρχείο τροχιάς (*.xyz)"
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "Δύο μόρια έχουν διαφορετικό αριθμό ατόμων %1 %2"
-
-#~ msgid "Cannot save file %1."
-#~ msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
+msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com,,,"
 
 #~ msgid "Connect"
 #~ msgstr "Σύνδεση"
@@ -6665,3 +6653,27 @@ msgstr ",,a.brzns@gmail.com,elkosmas@gmail.com"
 
 #~ msgid "Radius"
 #~ msgstr "Ακτίνα"
+
+#~ msgid "Open mol file"
+#~ msgstr "Άνοιγμα αρχείου mol"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Άνοιγμα αρχείου ligand"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Αρχεία Avogadro(*.*)"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "αρχείο τροχιάς (*.xyz)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Αποθήκευση αρχείου τροχ."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Δύο μόρια έχουν διαφορετικό αριθμό ατόμων %1 %2"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Μη δυνατή αποθήκευση του αρχείου %1"

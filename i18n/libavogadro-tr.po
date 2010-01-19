@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-08-02 01:42+0000\n"
-"Last-Translator: Efe Çiftci <efeciftci@gmail.com>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-26 23:45+0000\n"
+"Last-Translator: Serdar Delican <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Eksenler"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Merkezdeki x, y, ve x eksenlerini kaplar"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Top ve Çubuk"
 
@@ -665,7 +665,7 @@ msgstr "Molekülleri çubuklar olarak kaplar"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Van der Waals, eşyüzey = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -685,7 +685,7 @@ msgstr "Yüzeyler"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "moleküler eşyüzey ağı oluşturur"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -956,27 +956,27 @@ msgstr "Enerji = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Geometrik Optimizasyon"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Kuvvet Alanı Optimizasyonu"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Sistematik Döner Arama"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Rasgele Döner Arama"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Ağırlıklı Döner Arama"
 
@@ -1004,12 +1004,12 @@ msgstr "Girdi Üreteci..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP Seçimi..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM Seçimi..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -2141,22 +2141,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2682,6 +2682,11 @@ msgstr ""
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Kısıtlamalar..."
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr ""
@@ -2735,7 +2740,7 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -6533,17 +6538,17 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, VibrationDialog)
 msgid "Molecular Vibrations"
-msgstr ""
+msgstr "Moleküler titreşimler"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:45
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Frequency (cm⁻¹)"
-msgstr ""
+msgstr "Frekans (cm⁻¹)"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:50
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Intensity (km/mol)"
-msgstr ""
+msgstr "Yoğunluk (km/mol)"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:66
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -6553,12 +6558,12 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:97
 #. i18n: ectx: property (text), widget (QCheckBox, displayForcesCheckBox)
 msgid "Display force &vectors"
-msgstr ""
+msgstr "Kuvvet ve vektörleri göster"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
+msgstr "yüksek frekanslı titreşimler hızlı hareketi gösterir"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:110
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
@@ -6605,29 +6610,30 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Efe "
-"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan"
+"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
+"Mustafa Yılmaz,Serdar Delican"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,"
 "huseyinkozan@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,"
-"hayros@gmail.com,huseyinkozan@gmail.com"
-
-#~ msgid "Open ligand file"
-#~ msgstr "Ligand Dosyası Aç"
+"hayros@gmail.com,huseyinkozan@gmail.com,,,apshalasha@gmail.com,"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro dosyaları (*.*)"
 
+#~ msgid "Open ligand file"
+#~ msgstr "Ligand Dosyası Aç"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "eğri dosyası (*.xyz)"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph.."
+
 #~ msgid "Open mol file"
 #~ msgstr "Mol Dosyası Aç"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "Herhangi Bir Dosya (*.*)"
-
-#~ msgid "Save Movie File"
-#~ msgstr "Film Dosyası Kaydet"
 
 #~ msgid "movie files (*.avi)"
 #~ msgstr "film dosyası (*.avi)"
@@ -6635,33 +6641,43 @@ msgstr ""
 #~ msgid "Save Traj File"
 #~ msgstr "Eğri Dosyası Kaydet"
 
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "eğri dosyası (*.xyz)"
+#~ msgid "Any files (*.*)"
+#~ msgstr "Herhangi Bir Dosya (*.*)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
-#~ msgstr "Lin Morph.."
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "%1 mol dosyası okunamadı."
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "İki molekülün atom sayıları farklı %1 %2"
+#~ msgid "Save Movie File"
+#~ msgstr "Film Dosyası Kaydet"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
 #~ "GL aracı ekran görüntüsünü kaydetmek için düzgün bir şekilde "
 #~ "hazırlanmamış."
 
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "İki molekülün atom sayıları farklı %1 %2"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "%1 mol dosyası okunamadı."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Dosyaya yazıldı : %1"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Animasyonlar için doğrusal ekleme oluştur"
+
+#~ msgid "Linear Morph"
+#~ msgstr "Doğrusal Değişim"
+
 #~ msgid "Cannot save file %1."
 #~ msgstr "Dosya kadedilemiyor : %1"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Film dosya adı geçersiz. Dosya adı tam klasör yolunu içermeli."
 
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL aracı filmi kaydetmek için doğru bir şekilde hazırlanmamış"
 
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr "Film dosya adı geçersiz. Dosya adı tam klasör yolunu içermeli."
+#~ msgid "Would write file to %1."
+#~ msgstr "Dosyaya yazılacaktı : %1"
 
 #~ msgid ""
 #~ "Invalid movie filename.  Must include full directory path and name, "
@@ -6669,17 +6685,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Film dosya adı geçersiz. Dosya adı tam klasör yolunu ve dosya adını .avi "
 #~ "ile bitecek şekilde içermeli"
-
-#~ msgid "Would write file to %1."
-#~ msgstr "Dosyaya yazılacaktı : %1"
-
-#~ msgid "Wrote file %1."
-#~ msgstr "Dosyaya yazıldı : %1"
-
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
-#~ msgid "Linear Morph"
-#~ msgstr "Doğrusal Değişim"
-
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "Animasyonlar için doğrusal ekleme oluştur"

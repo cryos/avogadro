@@ -1,20 +1,21 @@
-# Translations for the Avogadro molecular library libavogadro.
-# Copyright (C) 2006-2009 The Avogadro Project
-# This file is distributed under the same license as the Avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hindi translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 1.0.1\n"
+"Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2010-01-16 18:49+0000\n"
+"Last-Translator: Geoff Hutchison <Unknown>\n"
+"Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -70,219 +71,219 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr ""
+msgstr "हाइड्रोजन"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "हीलियम"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "लीथियम"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr ""
+msgstr "बेरीलियम"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "बोरॉन"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr ""
+msgstr "कार्बन"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr ""
+msgstr "नाइट्रोजन"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr ""
+msgstr "आक्सीजन"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr ""
+msgstr "फ्लोरीन"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "नियॉन"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "सोडियम"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "मैग्नीशियम"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "एल्यूमिनियम"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "सिलिकॉन"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr ""
+msgstr "फॉस्फोरस"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr ""
+msgstr "सल्फर"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr ""
+msgstr "क्लोरीन"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "ऑर्गन"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "पोटेशियम"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "केल्शियम"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr ""
+msgstr "स्कैन्डियम"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "टाइटेनियम"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "वनेडियम"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "क्रोमियम"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "मैंगनीज़"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "लोहा"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "कोबॉल्ट"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "निकल"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "तांबा"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "ज़िंक"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "गैलियम"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "जर्मेनियम"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "ऑर्सेनिक"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "सेलेनियम"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "ब्रोमीन"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "क्रिप्टॉन"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "रूबीडियम"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr ""
+msgstr "स्ट्रांशियम"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr ""
+msgstr "विट्रियम"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "ज़िरकोनियम"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr ""
+msgstr "नियोबियम"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "मॉलीब्डेनम"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr ""
+msgstr "टेक्नेशियम"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr ""
+msgstr "रुदेनियम"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "रोडियम"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "पलेडियम"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "चाँदी"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "केडमियम"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "इंडियम"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "टिन"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "एंटिमनी"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr ""
+msgstr "टेलूरियम"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "आयोडीन"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "ज़ेनॉन"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
@@ -290,247 +291,247 @@ msgstr ""
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "बेरियम"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr ""
+msgstr "लैंथेनम"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "सीरियम"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr ""
+msgstr "प्रसोडमियम"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr ""
+msgstr "नियोडमियम"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr ""
+msgstr "प्रोमेथियम"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr ""
+msgstr "समरियम"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr ""
+msgstr "यूरोपियम"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr ""
+msgstr "गैडोलिनियम"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr ""
+msgstr "टर्बियम"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr ""
+msgstr "डायस्प्रोसियम"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr ""
+msgstr "होलमियम"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr ""
+msgstr "एरबियम"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr ""
+msgstr "थूलियम"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr ""
+msgstr "येटरबियम"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr ""
+msgstr "ल्यूटेशियम"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr ""
+msgstr "हाफनियम"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr ""
+msgstr "टैंटेलम"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr ""
+msgstr "टंग्सटन"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr ""
+msgstr "रेनियम"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr ""
+msgstr "ऑस्मियम"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "इरिडियम"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "प्लेटिनम"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "सोना"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "मर्क्यूरी"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr ""
+msgstr "थालियम"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "सीसा लीड 3 - कैलिओप"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "बिस्मथ"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "पोलोनियम"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr ""
+msgstr "अस्टाटाइन"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "राडोन"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr ""
+msgstr "फ्रांसियम"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "रेडियम"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "एक्टीनियम"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "थोरियम"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "प्रोटेक्टीनियम"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "यूरेनियम"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "नेप्च्यूनियम"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "प्लूटोनियम"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr ""
+msgstr "अमेरिसियम"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "क्यूरियम"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr ""
+msgstr "बर्केलियम"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr ""
+msgstr "केलिफोर्नियम"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr ""
+msgstr "आइंस्टीनियम"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr ""
+msgstr "फर्मियम"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr ""
+msgstr "मेंडेलेवियम"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr ""
+msgstr "नोबेलियम"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr ""
+msgstr "लारेंसियम"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr ""
+msgstr "रदरफोर्डियम"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr ""
+msgstr "डब्नियम"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr ""
+msgstr "सीबोर्जियम"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr ""
+msgstr "बोरियम"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr ""
+msgstr "हासियम"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr ""
+msgstr "मेटनेरियम"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr ""
+msgstr "डार्मस्टेडियम"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr ""
+msgstr "रोंटजेनियम"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr ""
+msgstr "उनुन्बियम"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr ""
+msgstr "उनुन्ट्रियम"
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr ""
+msgstr "उनुनक्वाडियम"
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr ""
+msgstr "उनुनपेंटियम"
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr ""
+msgstr "उनुनहेक्सियम"
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
@@ -1068,7 +1069,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr ""
 
@@ -1171,7 +1172,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1857
+#: src/extensions/qcheminputdialog.cpp:178:1857
 msgid "Show Preview"
 msgstr ""
 
@@ -1187,7 +1188,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr ""
 
@@ -1328,7 +1329,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1635,7 +1636,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43 :696
+#: src/extensions/propextension.h:43:696
 msgid "Properties"
 msgstr ""
 
@@ -1647,7 +1648,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355 :285
+#: src/extensions/propmodel.cpp:355:285
 msgid "Type"
 msgstr ""
 
@@ -1750,7 +1751,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427 :666
+#: src/extensions/propmodel.cpp:427:666
 msgid "Energy"
 msgstr ""
 
@@ -1823,7 +1824,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230 :126
+#: src/extensions/selectextension.cpp:230:126
 msgid "Residue name"
 msgstr ""
 
@@ -1885,7 +1886,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41 :2142
+#: src/extensions/shaderextension.h:41:2142
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1903,13 +1904,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152 :2203
+#: src/extensions/spectradialog.cpp:152:2203
 msgid "&Appearance"
 msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153 :2269
+#: src/extensions/spectradialog.cpp:153:2269
 msgid "E&xport Image"
 msgstr ""
 
@@ -2092,7 +2093,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736 :2197
+#: src/extensions/spectradialog.cpp:736:2197
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2327,7 +2328,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97 :336
+#: src/extensions/unitcellparamdialog.cpp:97:336
 msgid "OK"
 msgstr ""
 
@@ -2339,7 +2340,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :2501
+#: src/extensions/vibrationdialog.cpp:213:2501
 msgid "Start &Animation"
 msgstr ""
 
@@ -2358,7 +2359,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241 :1206
+#: src/extensions/vibrationextension.cpp:241:1206
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2668,13 +2669,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288 :381
+#: src/tools/autoopttool.cpp:288:381
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289 :384
+#: src/tools/autoopttool.cpp:289:384
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2761,7 +2762,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr ""
 
@@ -2908,7 +2909,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
 msgid "Add Atom"
 msgstr ""
 
@@ -2958,7 +2959,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798 :837
+#: src/tools/drawtool.cpp:798:837
 msgid "Other..."
 msgstr ""
 
@@ -3090,7 +3091,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39 :924
+#: src/tools/zmatrixtool.h:39:924
 msgid "Z-Matrix"
 msgstr ""
 
@@ -6574,8 +6575,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr " ,Launchpad Contributions:,Geoff Hutchison"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr ",,"

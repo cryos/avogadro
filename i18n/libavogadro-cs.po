@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-21 18:48+0000\n"
-"Last-Translator: Roman Horník <roman.hornik@gmail.com>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-11-27 20:14+0000\n"
+"Last-Translator: Pepa <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -560,7 +560,7 @@ msgstr "Osy"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Vykresluje osy x.y.z v počátku"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Koule a hole"
 
@@ -669,13 +669,13 @@ msgstr "Vykresluje molekuly jako tyčky"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Van der Waals, izopovrch = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "Elektronová hustota, izopovrch = %L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
@@ -689,7 +689,7 @@ msgstr "Povrchy"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Vykresluje molekulové izopovrchové sítě"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -964,27 +964,27 @@ msgstr "Energie = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Vyladění uspořádání"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Vyladění silového pole"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Soustavné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Náhodné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Zatížené hledání bodu otáčení"
 
@@ -1012,12 +1012,12 @@ msgstr "Tvůrce vstupu..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP výběr..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM výběr..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1025,7 +1025,7 @@ msgstr "&GAMESS"
 
 #: src/extensions/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
-msgstr "GAMESS EFP Informace"
+msgstr "Informace GAMESS EFP"
 
 #: src/extensions/gamessextension.cpp:118
 msgid "Delete"
@@ -1278,23 +1278,23 @@ msgstr "Přidat nebo odstranit vodíkové atomy"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussův..."
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1304,11 +1304,11 @@ msgstr "Nelze načíst soubor %1."
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Tvůrci vstupního souboru"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Vytvořit vstupní soubory pro balíčky kvantové chemie"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1376,7 +1376,7 @@ msgstr "&Pohled"
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
-msgstr "&Vlasnosti"
+msgstr "&Vlastnosti"
 
 #: src/extensions/molecularpropextension.cpp:134
 msgid "Estimated Dipole Moment (D):"
@@ -1476,7 +1476,7 @@ msgstr "Získat z PDB..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "Získat chemickou strukturu..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
@@ -1705,7 +1705,7 @@ msgstr "Valence"
 
 #: src/extensions/propmodel.cpp:361
 msgid "Formal Charge"
-msgstr ""
+msgstr "Formální náboj"
 
 #: src/extensions/propmodel.cpp:363
 msgid "Partial Charge"
@@ -1851,7 +1851,7 @@ msgstr "Přidat pojmenovaný výběr..."
 
 #: src/extensions/selectextension.cpp:114
 msgid "&Select"
-msgstr "&Vybrat"
+msgstr "&Výběr"
 
 #: src/extensions/selectextension.cpp:170
 msgid "SMARTS Selection"
@@ -2061,7 +2061,7 @@ msgstr "PWscf IR data (*.out)"
 #: src/extensions/spectradialog.cpp:530
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
-msgstr ""
+msgstr "Turbomole IR data (řízení)"
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
@@ -2152,11 +2152,11 @@ msgstr "Spektra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Zviditelnit údaje o spektru z výpočtů kvantové chemie"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "Žádná síla"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2165,11 +2165,11 @@ msgstr ""
 "Údaje o vibracích v molekule, které jste nahrál, nemají jakýkoli údaj o "
 "síle. Síly byly nastaveny kvůli zviditelnění na nahodilou hodnotu."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Vlnové číslo (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Posun (ppm)"
 
@@ -2237,7 +2237,7 @@ msgstr "Elektronová hustota"
 #: src/extensions/surfacedialog.cpp:258
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr ""
+msgstr "Molekulový orbital"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
@@ -2726,6 +2726,11 @@ msgstr "Automatické vyladění: Nelze nastavit silové pole..."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Automatické vyladění: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Omezení"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Silové pole:"
@@ -2779,7 +2784,7 @@ msgstr "Neuvažované atomy jsou pohyblivé"
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "Automatické vyladění molekuly"
 
@@ -2979,7 +2984,7 @@ msgstr "Úhel:"
 
 #: src/tools/clickmeasuretool.cpp:302
 msgid "Dihedral:"
-msgstr ""
+msgstr "Střechan:"
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
@@ -3412,7 +3417,7 @@ msgstr "Symbol prvku"
 #. i18n: file: src/engines/labelsettingswidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Formal charge"
-msgstr ""
+msgstr "Formální náboj"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3422,7 +3427,7 @@ msgstr "Číslo zbytku"
 #. i18n: file: src/engines/labelsettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
-msgstr ""
+msgstr "Částečný náboj"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3434,12 +3439,12 @@ msgstr "Jedinečné ID"
 #. i18n: file: src/engines/labelsettingswidget.ui:100
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
-msgstr ""
+msgstr "Symbol & číslo atomu"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:105
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Custom data"
-msgstr ""
+msgstr "Vlastní data"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:113
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3579,7 +3584,7 @@ msgstr "Dynamické vazby"
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr ""
+msgstr "Smyčka"
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4822,21 +4827,21 @@ msgstr "Ohromná slova"
 #. i18n: file: src/extensions/gamessinputdialog.ui:1769
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaBytes"
-msgstr "MegaByty"
+msgstr "MegaBajty"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1730
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1774
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaWords"
-msgstr ""
+msgstr "Obrovská slova"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1735
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1779
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaBytes"
-msgstr ""
+msgstr "GigaBajty"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1807
 #. i18n: ectx: property (text), widget (QCheckBox, systemForceCheck)
@@ -4894,13 +4899,13 @@ msgstr "Obdobný typ rozdělení zatížení"
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr ""
+msgstr "Smyčka"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "Další hodnota"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
@@ -6665,7 +6670,7 @@ msgstr "Formulář"
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Zobrazit vizuální vodítka"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6693,7 +6698,8 @@ msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
 "Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
 "Avogadro Team,fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,fri"
+"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
+"fri, ,Launchpad Contributions:,Pepa"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6702,19 +6708,40 @@ msgstr ""
 "vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
 "pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,pavelfric@seznam."
 "cz,,,avogadro-devel@lists.sourceforge.net,,roman.hornik@gmail.com,"
-"pavelfric@seznam.cz"
-
-#~ msgid "Open ligand file"
-#~ msgstr "Otevřít soubor s ligandem"
+"pavelfric@seznam.cz,,,"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Soubory Avogadro (*.*)"
 
-#~ msgid "Open mol file"
-#~ msgstr "Otevřít soubor s molekulami"
-
 #~ msgid "Any files (*.*)"
 #~ msgstr "Všechny soubory (*.*)"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Soubor bude zapsán do %1."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Soubor %1."
+
+#~ msgid "Connect"
+#~ msgstr "Připojit"
+
+#~ msgid "Disconnect"
+#~ msgstr "Odpojit"
+
+#~ msgid "Num Frames"
+#~ msgstr "Počet snímků"
+
+#~ msgid "Save movie..."
+#~ msgstr "Uložit film..."
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Nelze uložit soubor %1."
+
+#~ msgid "Open ligand file"
+#~ msgstr "Otevřít soubor s ligandem"
+
+#~ msgid "Open mol file"
+#~ msgstr "Otevřít soubor s molekulami"
 
 #~ msgid "Save Movie File"
 #~ msgstr "Uložit soubor s filmem"
@@ -6728,9 +6755,7 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "Soubor s drahami (*xyz)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
+#~ msgid "Lin Morph..."
 #~ msgstr "Přímočará proměna..."
 
 #~ msgid "Read mol file %1 failed."
@@ -6741,9 +6766,6 @@ msgstr ""
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr "GL prvek nebyl pro ukládání snímků obrazovky správně spuštěn"
-
-#~ msgid "Cannot save file %1."
-#~ msgstr "Nelze uložit soubor %1."
 
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL prvek nebyl pro ukládání filmu správně spuštěn"
@@ -6758,25 +6780,11 @@ msgstr ""
 #~ "Neplatný název filmu. Musíte zadat úplnou cestu k souboru a název končící "
 #~ "na .avi"
 
-#~ msgid "Would write file to %1."
-#~ msgstr "Soubor bude zapsán do %1."
-
-#~ msgid "Wrote file %1."
-#~ msgstr "Soubor %1."
-
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
 #~ msgid "Linear Morph"
 #~ msgstr "Přímočará proměna"
 
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Vytvořit přímočaré interpolace pro vykreslování"
-
-#~ msgid "Connect"
-#~ msgstr "Připojit"
-
-#~ msgid "Disconnect"
-#~ msgstr "Odpojit"
 
 #~ msgid "&WiiTrack"
 #~ msgstr "&WiiStopa"
@@ -6818,9 +6826,6 @@ msgstr ""
 #~ msgid "Load Second Conformation ..."
 #~ msgstr "Nahrát druhé prostorové uspořádání..."
 
-#~ msgid "Num Frames"
-#~ msgstr "Počet snímků"
-
 #~ msgid ""
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
 #~ "then be used to make a movie."
@@ -6833,9 +6838,6 @@ msgstr ""
 
 #~ msgid "Save trajectory..."
 #~ msgstr "Uložit dráhu..."
-
-#~ msgid "Save movie..."
-#~ msgstr "Uložit film..."
 
 #~ msgid "Create binding pocket"
 #~ msgstr "Vytvořit vázající kapsu"
