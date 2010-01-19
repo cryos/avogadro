@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-10-14 09:46+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-01 15:49+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:33+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Sumbu"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Menggambarkan sumbu x, y, dan z di titik pusat"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Bola dan Batang"
 
@@ -965,27 +965,27 @@ msgstr "Energi = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Optimisasi Geometrik"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Optimisasi Bidang Gaya"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Batalkan"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Pencarian Rotor Sistimatik"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Pnecarian Rotor Acak"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Pencarian Rotor Terbeban"
 
@@ -1013,12 +1013,12 @@ msgstr "Masukan Pembuat..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "Pemilihan EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "Pemilihan QM..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1281,23 +1281,23 @@ msgstr "Tambah atau hapus hidrogen"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussian..."
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1307,11 +1307,11 @@ msgstr "Tidak bisa membaca berkas %1."
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Pembuat Berkas Masukan"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Membuat berkas masukan untuk program kimia kuantum"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -2157,11 +2157,11 @@ msgstr "Spektra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Memvisualisasikan data spektral dari perhitungan kimia kuantum"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "Tanpa intensitas"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2170,11 +2170,11 @@ msgstr ""
 "Data getaran di molekul yang anda tambahkan tidak mempunyai data intensitas. "
 "Sembarang angka diberikan sebagai intensitas untuk tujuan penggambaran."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Nomor gelombang (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2732,6 +2732,11 @@ msgstr "AutoOpt: Tidak bisa mengatur bidang gaya...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Kendala"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Bidang Gaya:"
@@ -2785,7 +2790,7 @@ msgstr "Atom-atom yang lain dapat dipindahkan"
 msgid "Stop"
 msgstr "Berhenti"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "AutoOpt Molekul"
 
@@ -3582,7 +3587,7 @@ msgstr "Ikatan Dinamik"
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr ""
+msgstr "Perulangan"
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4897,13 +4902,13 @@ msgstr "Tipe Keseimbangan Beban Paralel"
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr ""
+msgstr "Perulangan"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "Angka Selanjutnya"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
@@ -6670,7 +6675,7 @@ msgstr "Bentuk"
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Tampilkan visual cues"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6696,26 +6701,21 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:,"
-"Geoff Hutchison,Waluyo Adi Siswanto"
+"Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Waluyo Adi "
+"Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,,,,,"
-
-#~ msgid "Open ligand file"
-#~ msgstr "Buka berkas ligand"
+msgstr ",,,,,,,,,"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Berkas Avogadro (*.*)"
 
-#~ msgid "Open mol file"
-#~ msgstr "Buka berkas mol"
-
 #~ msgid "Any files (*.*)"
 #~ msgstr "Sembarang berkas (*.*)"
 
-#~ msgid "Save Movie File"
-#~ msgstr "Simpan Berkas Film"
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "berkas trayektori (*.xyz)"
 
 #~ msgid "movie files (*.avi)"
 #~ msgstr "berkas film (*.avi)"
@@ -6723,28 +6723,32 @@ msgstr ",,,,,,"
 #~ msgid "Save Traj File"
 #~ msgstr "Simpan Berkas Traj"
 
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "berkas trayektori (*.xyz)"
-
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
-#~ msgstr "Lin Morph..."
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Gagal membaca berkas mol %1."
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan potret"
+#~ msgid "Save Movie File"
+#~ msgstr "Simpan Berkas Film"
 
 #~ msgid "Cannot save file %1."
 #~ msgstr "Tidak bisa menyimpan berkas %1."
 
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan filem"
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Gagal membaca berkas mol %1."
+
+#~ msgid "Linear Morph"
+#~ msgstr "Linear Morph"
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Sudah menulis berkas %1."
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Akan menulis berkas ke %1."
+
+#~ msgid "Open mol file"
+#~ msgstr "Buka berkas mol"
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Membuat interpolasi linier untuk animasi"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr ""
@@ -6757,104 +6761,11 @@ msgstr ",,,,,,"
 #~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap, "
 #~ "diakhiri dengan .avi"
 
-#~ msgid "Would write file to %1."
-#~ msgstr "Akan menulis berkas ke %1."
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph..."
 
-#~ msgid "Wrote file %1."
-#~ msgstr "Sudah menulis berkas %1."
-
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
-#~ msgid "Linear Morph"
-#~ msgstr "Linear Morph"
-
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "Membuat interpolasi linier untuk animasi"
-
-#~ msgid "Connect"
-#~ msgstr "Sambung"
-
-#~ msgid "Disconnect"
-#~ msgstr "Putus Sambungan"
-
-#~ msgid "&WiiTrack"
-#~ msgstr "&WiiTrack"
-
-#~ msgid "Wii Tracking"
-#~ msgstr "Wii Tracking"
-
-#~ msgid "Track motion using Wii remotes"
-#~ msgstr "Track motion menggunakan Wii remote"
-
-#~ msgid "Create ligand"
-#~ msgstr "Membuat ligand"
-
-#~ msgid "create ligand from current selection"
-#~ msgstr "membuat ligand dari pilihan sekarang"
-
-#~ msgid "create ligand from residue name"
-#~ msgstr "membuat ligand dari nama residu"
-
-#~ msgid "create ligand from file..."
-#~ msgstr "membuat ligand dari berkas..."
-
-#~ msgid "The residue name"
-#~ msgstr "Nama residu nya"
-
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "Trayektori Linear Morph"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Memuat conformation kedua dan menghitung dengan linier interpolasi "
-#~ "menggunakan conformation yang ada."
-
-#~ msgid "button to load a second conformation from a file."
-#~ msgstr "tombol untuk memuat konformasi kedua dari berkas"
-
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "Memuat Conformasi Kedua..."
-
-#~ msgid "Num Frames"
-#~ msgstr "Num Frames"
-
-#~ msgid ""
-#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
-#~ "then be used to make a movie."
-#~ msgstr ""
-#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas "
-#~ "ini dapat digunakan untuk membuat filem."
-
-#~ msgid "Button to save an .xyz trajectory."
-#~ msgstr "Tombol untuk menyimpan berkas trayektori .xyz"
-
-#~ msgid "Save trajectory..."
-#~ msgstr "Menyimpan trayektori..."
-
-#~ msgid "Save movie..."
-#~ msgstr "Menyimpan filem..."
-
-#~ msgid "Create binding pocket"
-#~ msgstr "Membuat ikatan poket"
-
-#~ msgid "create pocket from current selection"
-#~ msgstr "membuat poket dari pilihan"
-
-#~ msgid "create pocket from residue name"
-#~ msgstr "membuat poket dari nama residu"
-
-#~ msgid "Radius"
-#~ msgstr "Jejari"
-
-#~ msgid ""
-#~ "All atoms within radius from the ligand will be part of the binding pocket"
-#~ msgstr ""
-#~ "Semua atom dalam radius dari ligand akan menjadi bagian dari poket ikatan"
-
-#~ msgid "MO 666"
-#~ msgstr "MO 666"
+#~ msgid "Open ligand file"
+#~ msgstr "Buka berkas ligand"
 
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
@@ -6876,3 +6787,94 @@ msgstr ",,,,,,"
 #~ msgstr ""
 #~ "Menampilkan isyarat gambar</string>\n"
 #~ "     </property>"
+
+#~ msgid "Connect"
+#~ msgstr "Sambung"
+
+#~ msgid "Disconnect"
+#~ msgstr "Putus Sambungan"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan filem"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan potret"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "membuat ligand dari berkas..."
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "membuat ligand dari nama residu"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Trayektori Linear Morph"
+
+#~ msgid "The residue name"
+#~ msgstr "Nama residu nya"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "membuat ligand dari pilihan sekarang"
+
+#~ msgid "Create ligand"
+#~ msgstr "Membuat ligand"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "tombol untuk memuat konformasi kedua dari berkas"
+
+#~ msgid "Save movie..."
+#~ msgstr "Menyimpan filem..."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Menyimpan trayektori..."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Tombol untuk menyimpan berkas trayektori .xyz"
+
+#~ msgid "Radius"
+#~ msgstr "Jejari"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Track motion menggunakan Wii remote"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii Tracking"
+
+#~ msgid "Num Frames"
+#~ msgstr "Num Frames"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Memuat Conformasi Kedua..."
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "membuat poket dari nama residu"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "membuat poket dari pilihan"
+
+#~ msgid "Create binding pocket"
+#~ msgstr "Membuat ikatan poket"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr ""
+#~ "Semua atom dalam radius dari ligand akan menjadi bagian dari poket ikatan"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas "
+#~ "ini dapat digunakan untuk membuat filem."
+
+#~ msgid "MO 666"
+#~ msgstr "MO 666"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Memuat conformation kedua dan menghitung dengan linier interpolasi "
+#~ "menggunakan conformation yang ada."

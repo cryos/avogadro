@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-25 22:19+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-10-27 11:08+0000\n"
 "Last-Translator: Itai Molenaar <imolenaar28@gmail.com>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Axes"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Renders the x, y, and z axes at the origin"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Ball and Stick"
 
@@ -953,27 +953,27 @@ msgstr "Energy = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Geometric Optimization"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Forcefield Optimization"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Systematic Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Random Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Weighted Rotor Search"
 
@@ -2141,11 +2141,11 @@ msgstr "Spectra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Visualize spectral data from quantum chemistry calculations"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "No intensities"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2155,11 +2155,11 @@ msgstr ""
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Wavenumber (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2715,6 +2715,11 @@ msgstr "AutoOpt: Could not setup force field...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Constraints"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Force Field:"
@@ -2768,7 +2773,7 @@ msgstr "Ignored atoms are movable"
 msgid "Stop"
 msgstr "Stop"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "AutoOpt Molecule"
 
@@ -6677,13 +6682,14 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:,Itai "
-"Molenaar, ,Launchpad Contributions:,Brian Burns,Itai Molenaar"
+"Molenaar, ,Launchpad Contributions:,Brian Burns,Itai Molenaar, ,Launchpad "
+"Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,bburns@aundae.com,"
-"imolenaar28@gmail.com"
+"imolenaar28@gmail.com,,"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Open ligand file"
@@ -6709,9 +6715,7 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "trajectory file (*.xyz)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
+#~ msgid "Lin Morph..."
 #~ msgstr "Lin Morph..."
 
 #~ msgid "Read mol file %1 failed."
@@ -6745,8 +6749,6 @@ msgstr ""
 #~ msgid "Wrote file %1."
 #~ msgstr "Wrote file %1."
 
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
 #~ msgid "Linear Morph"
 #~ msgstr "Linear Morph"
 
@@ -6768,23 +6770,20 @@ msgstr ""
 #~ msgid "Track motion using Wii remotes"
 #~ msgstr "Track motion using Wii remotes"
 
-#~ msgid "Create ligand"
-#~ msgstr "Create ligand"
-
 #~ msgid "create ligand from current selection"
 #~ msgstr "create ligand from current selection"
-
-#~ msgid "create ligand from residue name"
-#~ msgstr "create ligand from residue name"
-
-#~ msgid "create ligand from file..."
-#~ msgstr "create ligand from file..."
 
 #~ msgid "The residue name"
 #~ msgstr "The residue name"
 
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "Linear Morph Trajectory"
+#~ msgid "Create ligand"
+#~ msgstr "Create ligand"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "create ligand from file..."
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "create ligand from residue name"
 
 #~ msgid ""
 #~ "Load a second conformation and compute a linear interpolation with the "
@@ -6792,48 +6791,51 @@ msgstr ""
 #~ msgstr ""
 #~ "Load a second conformation and compute a linear interpolation with the "
 #~ "current conformation."
-
-#~ msgid "button to load a second conformation from a file."
-#~ msgstr "button to load a second conformation from a file."
-
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "Load Second Conformation ..."
-
-#~ msgid "Num Frames"
-#~ msgstr "Num Frames"
-
-#~ msgid ""
-#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
-#~ "then be used to make a movie."
-#~ msgstr ""
-#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
-#~ "then be used to make a movie."
-
-#~ msgid "Button to save an .xyz trajectory."
-#~ msgstr "Button to save an .xyz trajectory."
-
-#~ msgid "Save trajectory..."
-#~ msgstr "Save trajectory..."
 
 #~ msgid "Save movie..."
 #~ msgstr "Save movie..."
 
-#~ msgid "Create binding pocket"
-#~ msgstr "Create binding pocket"
+#~ msgid "Save trajectory..."
+#~ msgstr "Save trajectory..."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Button to save an .xyz trajectory."
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+
+#~ msgid "Num Frames"
+#~ msgstr "Num Frames"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Load Second Conformation ..."
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Linear Morph Trajectory"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "button to load a second conformation from a file."
 
 #~ msgid "create pocket from current selection"
 #~ msgstr "create pocket from current selection"
 
-#~ msgid "create pocket from residue name"
-#~ msgstr "create pocket from residue name"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
+#~ msgid "Create binding pocket"
+#~ msgstr "Create binding pocket"
 
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "create pocket from residue name"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"

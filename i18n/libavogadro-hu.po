@@ -1,44 +1,46 @@
-# Translations for the Avogadro molecular library libavogadro.
-# Copyright (C) 2006-2009 The Avogadro Project
-# This file is distributed under the same license as the Avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Hungarian translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 1.0.1\n"
+"Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2010-01-14 15:00+0000\n"
+"Last-Translator: Balázs Attila <battila9@freemail.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
-msgstr ""
+msgstr "Szín index szerint"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
 msgstr ""
+"Szín index szerint (piros, narancssárga, citromsárga, zöld, kék,  lila)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
-msgstr ""
+msgstr "Szín parciális töltés szerint"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr ""
+msgstr "Szín atomi paricális töltés szerint (kék = pozitív, piros = negatív)"
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
-msgstr ""
+msgstr "Egyedi szín:"
 
 #: src/colors/customcolor.h:43
 msgid "Custom Color"
-msgstr ""
+msgstr "Egyedi szín"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
@@ -46,23 +48,23 @@ msgstr ""
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr ""
+msgstr "Szín távolság szerint"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr ""
+msgstr "Szín távolság szerint az első atomtól"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
-msgstr ""
+msgstr "Szín elemek szerint"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr ""
+msgstr "Színek elemek szerint (szén = zöld, oxigén = piros, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "Szín maradék szerint"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
@@ -70,511 +72,511 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr ""
+msgstr "Hidrogén"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "Hélium"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "Lítium"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr ""
+msgstr "Berillium"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "Bór"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr ""
+msgstr "Szén"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr ""
+msgstr "Nitrogén"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr ""
+msgstr "Oxigén"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr ""
+msgstr "Fluor"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "Nátrium"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "Magnézium"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "Alumínium"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "Szilícium"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr ""
+msgstr "Foszfor"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr ""
+msgstr "Kén"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr ""
+msgstr "Klór"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "Argon"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "Kálium"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "Kalcium"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr ""
+msgstr "Szkandium"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "Titán"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "Vanádium"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "Króm"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "Mangán"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "Vas"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "Kobalt"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "Nikkel"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "Réz"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "Cink"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "Gallium"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "Germánium"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "Arzén"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "Szelén"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "Bróm"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "Kripton"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "Rubídium"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr ""
+msgstr "Stroncium"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr ""
+msgstr "Ittrium"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "Cirkónium"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr ""
+msgstr "Nióbium"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "Molibdén"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr ""
+msgstr "Technécium"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr ""
+msgstr "Ruténium"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "Ródium"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "Palládium"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "Ezüst"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "Kadmium"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "Indium"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "Ón"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "Antimón"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr ""
+msgstr "Tellúr"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "Jód"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "Xenon"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "Cézium"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "Bárium"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr ""
+msgstr "Lantán"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "Cérium"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr ""
+msgstr "Prazeodímium"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr ""
+msgstr "Neodímium"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr ""
+msgstr "Promécium"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr ""
+msgstr "Szamárium"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr ""
+msgstr "Európium"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr ""
+msgstr "Gadolínium"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr ""
+msgstr "Terbium"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr ""
+msgstr "Diszprózium"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr ""
+msgstr "Holmium"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr ""
+msgstr "Erbium"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr ""
+msgstr "Túlium"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr ""
+msgstr "Itterbium"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr ""
+msgstr "Lutécium"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr ""
+msgstr "Hafnium"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr ""
+msgstr "Tantál"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr ""
+msgstr "Volfrám"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr ""
+msgstr "Rénium"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr ""
+msgstr "Ozmium"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "Irídium"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "Platina"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "Arany"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "Higany"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr ""
+msgstr "Tallium"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "Ólom"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "Bizmut"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "Polónium"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr ""
+msgstr "Asztácium"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "Radon"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr ""
+msgstr "Francium"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "Rádium"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "Aktínium"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "Tórium"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "Protaktínium"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "Urán"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "Neptúnium"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "Plutónium"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr ""
+msgstr "Amerícium"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "Kűrium"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr ""
+msgstr "Berkélium"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr ""
+msgstr "Kalifornium"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr ""
+msgstr "Einsteinium"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr ""
+msgstr "Fermium"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr ""
+msgstr "Mendelévium"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr ""
+msgstr "Nobélium"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr ""
+msgstr "Laurencium"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr ""
+msgstr "Rutherfordium"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr ""
+msgstr "Dubnium"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr ""
+msgstr "Seaborgium"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr ""
+msgstr "Borium"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr ""
+msgstr "Hasszium"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr ""
+msgstr "Meitnerium"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr ""
+msgstr "Darmstadtium"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr ""
+msgstr "Röntgenium"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr ""
+msgstr "Ununbium"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr ""
+msgstr "Ununtrium"
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr ""
+msgstr "Ununquadium"
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr ""
+msgstr "Ununpentium"
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr ""
+msgstr "Ununhexium"
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr ""
+msgstr "Ununseptium"
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr ""
+msgstr "Ununoctium"
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
-msgstr ""
+msgstr "Ismeretlen"
 
 #: src/engine.cpp:65
 msgid "Engines"
-msgstr ""
+msgstr "Név"
 
 #: src/engines/axesengine.h:37
 msgid "Axes"
-msgstr ""
+msgstr "Tengelyek"
 
 #: src/engines/axesengine.h:38
 msgid "Renders the x, y, and z axes at the origin"
-msgstr ""
+msgstr "x,y, és z tengelyek renderelése a kiinduláshoz"
 
 #: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
-msgstr ""
+msgstr "Golyók és pálcikák"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr ""
+msgstr "Primitívek renderelése gömböt (atom) és pálcát (kötés) használva"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
-msgstr ""
+msgstr "Rajzfilm"
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr ""
+msgstr "Protein másodlagos struktúra renderelés"
 
 #: src/engines/dipoleengine.h:42
 msgid "Dipole"
-msgstr ""
+msgstr "Dipól"
 
 #: src/engines/dipoleengine.h:43
 msgid "Renders molecular dipole moments"
@@ -590,23 +592,23 @@ msgstr ""
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
-msgstr ""
+msgstr "Hidrogén kötés"
 
 #: src/engines/hbondengine.h:43
 msgid "Renders hydrogen bonds"
-msgstr ""
+msgstr "Hidrogén kötések rajzolása"
 
 #: src/engines/labelengine.h:45
 msgid "Label"
-msgstr ""
+msgstr "Felirat"
 
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
-msgstr ""
+msgstr "Atom és kötés nevek rajzolása"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
-msgstr ""
+msgstr "Átfedés"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
@@ -614,15 +616,15 @@ msgstr ""
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
-msgstr ""
+msgstr "Sokszög"
 
 #: src/engines/polygonengine.h:40
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-msgstr ""
+msgstr "Atom tetrahedron, oktahedron és más poligonok rajzolása"
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
-msgstr ""
+msgstr "Szalag"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
@@ -630,7 +632,7 @@ msgstr ""
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
-msgstr ""
+msgstr "Gyűrű"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
@@ -646,19 +648,19 @@ msgstr ""
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
-msgstr ""
+msgstr "Van der Waals szférák"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr ""
+msgstr "Atomok Van der Waals szférájának rajzolása"
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
-msgstr ""
+msgstr "Pálca"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr ""
+msgstr "Molekulák és pálcák rajzolása"
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
@@ -670,17 +672,17 @@ msgstr ""
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "Elektron sűrűség, isosurface=%L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, isosurface = %L2"
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
-msgstr ""
+msgstr "Felületek"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
@@ -688,7 +690,7 @@ msgstr ""
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr ""
+msgstr "Drótváz"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
@@ -696,28 +698,28 @@ msgstr ""
 
 #: src/extension.cpp:44
 msgid "Extensions"
-msgstr ""
+msgstr "Kiterjesztések"
 
 #: src/extensions/animationdialog.cpp:65
 msgid "Open trajectory file"
-msgstr ""
+msgstr "Trajektória fájl megnyitása"
 
 #: src/extensions/animationdialog.cpp:66
 msgid "Trajectory files (*.xtc *.xyz)"
-msgstr ""
+msgstr "Trajektória fájlok (*.xtc *.xyz)"
 
 #: src/extensions/animationdialog.cpp:74
 #, qt-format
 msgid "%1/%2"
-msgstr ""
+msgstr "%1/%2"
 
 #: src/extensions/animationdialog.cpp:95
 msgid "Save Video File"
-msgstr ""
+msgstr "Video fájl mentése"
 
 #: src/extensions/animationdialog.cpp:97
 msgid "video files (*.avi)"
-msgstr ""
+msgstr "video fájlok (*.avi)"
 
 #: src/extensions/animationdialog.cpp:102
 #: src/extensions/animationextension.cpp:135
@@ -746,15 +748,15 @@ msgstr ""
 #: src/extensions/trajvideomaker.cpp:147
 #: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
-msgstr ""
+msgstr ".avi fájl kiterjesztés hozzáadása"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr ""
+msgstr "Animáció"
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
@@ -765,24 +767,24 @@ msgstr ""
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/vibrationextension.cpp:77
 msgid "E&xtensions"
-msgstr ""
+msgstr "Kiterjesztések"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
 #, qt-format
 msgid "Cannot read file format of file %1."
-msgstr ""
+msgstr "Nem olvasható a fájlformátum a %1 fájlban"
 
 #: src/extensions/animationextension.cpp:144
 #, qt-format
 msgid "Read trajectory file %1 failed."
-msgstr ""
+msgstr "%1 trajektória fájl beolvasása nem sikerült"
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
 msgid "Must specify a valid .avi file name"
-msgstr ""
+msgstr "Határozza meg az .avi fájl pontos nevét"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
@@ -790,13 +792,15 @@ msgstr ""
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr ""
+msgstr "Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat."
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
+"Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat, "
+"valamint a fájlnévnek .avi-ra kell végződnie."
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -805,17 +809,18 @@ msgstr ""
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr ""
+msgstr "Probléma a traj fájl olvasás közben: %1"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 msgstr ""
+"Trajektória fájlban %1 nem egyezik  az atomok száma a jelenlegi molekuláéval."
 
 #: src/extensions/animationextension.h:39
 msgid "Animation"
-msgstr ""
+msgstr "Animáció"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
@@ -824,7 +829,7 @@ msgstr ""
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
 msgid "Number of atoms: %1"
-msgstr ""
+msgstr "Atomok száma: %1"
 
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
@@ -836,20 +841,26 @@ msgstr ""
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr ""
+msgstr "Megszorítások hozzáadása"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr ""
+"A molekulának muszáj tartalmaznia legalább egy atomot hogy megszorításokat "
+"hozzá lehessen adni."
 
 #: src/extensions/constraintsdialog.cpp:369
 msgid "Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
+"A molekulának muszáj tartalmaznia legalább két hogy kötés megszorításokat "
+"hozzá lehessen adni."
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
 msgstr ""
+"A molekulának muszáj tartalmaznia legalább három atomot hogy szög "
+"megszorításokat hozzá lehessen adni."
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
@@ -858,51 +869,51 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
-msgstr ""
+msgstr "Trajektória..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
-msgstr ""
+msgstr "&Fájl"
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
-msgstr ""
+msgstr "Importálás"
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
-msgstr ""
+msgstr "Kémiai fájl formátum megnyitása"
 
 #: src/extensions/fileimportextension.cpp:200
 msgid "Chemical files (*.xyz)"
-msgstr ""
+msgstr "Kémiai fájlok (*.xyz)"
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr ""
+msgstr "Paraméter fájl megnyitása"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
-msgstr ""
+msgstr "Kémiai fájlok (*.parm7)"
 
 #: src/extensions/fileimportextension.h:43
 msgid "Import Trajectory"
-msgstr ""
+msgstr "Trajektória importálása"
 
 #: src/extensions/fileimportextension.h:44
 msgid "Import trajectory files"
-msgstr ""
+msgstr "Trajektória fájl importálása"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&geometria optimalizáció"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr ""
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
@@ -910,11 +921,11 @@ msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr ""
+msgstr "Energia kalkuláció"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "Konformerek keresése..."
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
@@ -922,15 +933,15 @@ msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr ""
+msgstr "Kijelölés megszűntetése"
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
-msgstr ""
+msgstr "Fix kiválasztott atomok"
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr ""
+msgstr "&molekula mechanika"
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:206
@@ -941,11 +952,11 @@ msgstr ""
 #: src/extensions/forcefieldextension.cpp:191
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "Energia = %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:236
 msgid "Geometric Optimization"
-msgstr ""
+msgstr "Geometria Optimalizálás"
 
 #: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
@@ -957,7 +968,7 @@ msgstr ""
 #: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
-msgstr ""
+msgstr "Mégsem"
 
 #: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
@@ -1002,59 +1013,59 @@ msgstr ""
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
-msgstr ""
+msgstr "&GAMESS"
 
 #: src/extensions/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
-msgstr ""
+msgstr "GAMESS EFP információ"
 
 #: src/extensions/gamessextension.cpp:118
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: src/extensions/gamessextension.cpp:200
 msgid "No Atoms Selected"
-msgstr ""
+msgstr "Nincs kiválaszva atom"
 
 #: src/extensions/gamessextension.cpp:201
 msgid "You must make a selection!"
-msgstr ""
+msgstr "Csinálnod kell egy kiválasztást!"
 
 #: src/extensions/gamessextension.cpp:208
 msgid "SMILES Conversion Unavailable"
-msgstr ""
+msgstr "SMILES konverzió nem elérhető"
 
 #: src/extensions/gamessextension.cpp:209
 msgid "SMILES Format Conversion Not Available!"
-msgstr ""
+msgstr "SMILES formátum konverzió nem választható!"
 
 #: src/extensions/gamessextension.cpp:469
 msgid "Group Name"
-msgstr ""
+msgstr "Csoport név"
 
 #: src/extensions/gamessextension.cpp:522
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: src/extensions/gamessextension.cpp:523
 msgid "qm"
-msgstr ""
+msgstr "qm"
 
 #: src/extensions/gamessextension.cpp:523
 msgid "efp"
-msgstr ""
+msgstr "efp"
 
 #: src/extensions/gamessextension.cpp:524
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/extensions/gamessextension.h:44
 msgid "GAMESS"
-msgstr ""
+msgstr "GAMESS"
 
 #: src/extensions/gamessextension.h:45
 msgid "Create input files for the GAMESS quantum chemistry package"
-msgstr ""
+msgstr "Kimeneti fájl generálása GAMESS kvantum kémiai csomaghoz"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1497
 #. i18n: ectx: property (text), widget (QLineEdit, dataTitleLine)
@@ -1068,9 +1079,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
-msgstr ""
+msgstr "Cím"
 
 #: src/extensions/gamessinputdialog.cpp:1534
 msgid "Advanced Settings Changed"
@@ -1130,32 +1141,32 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:268
 msgid "Gaussian Running."
-msgstr ""
+msgstr "Gaussian fut."
 
 #: src/extensions/gaussianinputdialog.cpp:269
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
-msgstr ""
+msgstr "Gaussian fut. Várjon amíg az előző kalkuláció befejeződik."
 
 #: src/extensions/gaussianinputdialog.cpp:279
 msgid "Gaussian Not Installed."
-msgstr ""
+msgstr "Gaussian nincs installálva."
 
 #: src/extensions/gaussianinputdialog.cpp:280
 msgid "The G03 executable, cannot be found."
-msgstr ""
+msgstr "A G03 futtatható nem található."
 
 #: src/extensions/gaussianinputdialog.cpp:294
 msgid "G03 failed to start."
-msgstr ""
+msgstr "G03 elindítása sikertelen."
 
 #: src/extensions/gaussianinputdialog.cpp:295
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "G03 nem indult el, talán nincs installálva megfelelően."
 
 #: src/extensions/gaussianinputdialog.cpp:300
 msgid "Running Gaussian calculation..."
-msgstr ""
+msgstr "Gaussian kalkuláci fut."
 
 #: src/extensions/gaussianinputdialog.cpp:335
 msgid "G03 Crashed."
@@ -1163,7 +1174,7 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:336
 msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "Gaussian nem fut megfelelően,  talán nincs installálva megfelelően."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1171,9 +1182,9 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :1857
+#: src/extensions/qcheminputdialog.cpp:178:1857
 msgid "Show Preview"
-msgstr ""
+msgstr "Előnézet megjelenítése"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:469
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1187,13 +1198,13 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
-msgstr ""
+msgstr "A gyorsnézet elrejtése"
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
-msgstr ""
+msgstr "H cseréje Metil csoportra"
 
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
@@ -1203,7 +1214,7 @@ msgstr ""
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/unitcellextension.cpp:66
 msgid "&Build"
-msgstr ""
+msgstr "&Felépítés"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
@@ -1211,20 +1222,20 @@ msgstr ""
 
 #: src/extensions/h2methylextension.h:37
 msgid "H2Methyl"
-msgstr ""
+msgstr "H2Metil"
 
 #: src/extensions/h2methylextension.h:38
 msgid "Transform hydrogens to methyl groups"
-msgstr ""
+msgstr "Hidrogéneket metil csoportokra transzformál"
 
 #: src/extensions/hydrogensextension.cpp:44
 #: src/extensions/hydrogensextension.cpp:114
 msgid "Add Hydrogens"
-msgstr ""
+msgstr "Hidrogének hozzáadása"
 
 #: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
-msgstr ""
+msgstr "Hidrogének hozzáadása pH szerint..."
 
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
@@ -1234,11 +1245,11 @@ msgstr ""
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
-msgstr ""
+msgstr "Hidrogének hozzáadása pH szerint"
 
 #: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
-msgstr ""
+msgstr "pH"
 
 #: src/extensions/hydrogensextension.h:40
 msgid "Hydrogens"
@@ -1246,37 +1257,37 @@ msgstr ""
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
-msgstr ""
+msgstr "Hidrogének hozzáadása vagy eltávolítása"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussian"
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "&MOPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "Copy text   \t &NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
 #, qt-format
 msgid "Cannot read file %1."
-msgstr ""
+msgstr "Nem olvasható a fájl: %1"
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Kimeneti fájl generátor"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
@@ -1328,7 +1339,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1635,7 +1646,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43 :696
+#: src/extensions/propextension.h:43:696
 msgid "Properties"
 msgstr ""
 
@@ -1647,7 +1658,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355 :285
+#: src/extensions/propmodel.cpp:355:285
 msgid "Type"
 msgstr ""
 
@@ -1750,7 +1761,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427 :666
+#: src/extensions/propmodel.cpp:427:666
 msgid "Energy"
 msgstr ""
 
@@ -1823,7 +1834,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230 :126
+#: src/extensions/selectextension.cpp:230:126
 msgid "Residue name"
 msgstr ""
 
@@ -1885,7 +1896,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41 :2142
+#: src/extensions/shaderextension.h:41:2142
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1903,13 +1914,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152 :2203
+#: src/extensions/spectradialog.cpp:152:2203
 msgid "&Appearance"
 msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153 :2269
+#: src/extensions/spectradialog.cpp:153:2269
 msgid "E&xport Image"
 msgstr ""
 
@@ -2092,7 +2103,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736 :2197
+#: src/extensions/spectradialog.cpp:736:2197
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2327,7 +2338,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97 :336
+#: src/extensions/unitcellparamdialog.cpp:97:336
 msgid "OK"
 msgstr ""
 
@@ -2339,7 +2350,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213 :2501
+#: src/extensions/vibrationdialog.cpp:213:2501
 msgid "Start &Animation"
 msgstr ""
 
@@ -2358,7 +2369,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241 :1206
+#: src/extensions/vibrationextension.cpp:241:1206
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2650,9 +2661,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:234
-#, qt-format
+#, fuzzy, qt-format
 msgid "Num Constraints: %1"
-msgstr ""
+msgstr "Atomok száma: %1"
 
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
@@ -2668,13 +2679,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288 :381
+#: src/tools/autoopttool.cpp:288:381
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289 :384
+#: src/tools/autoopttool.cpp:289:384
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2761,7 +2772,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr ""
 
@@ -2908,7 +2919,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
 msgid "Add Atom"
 msgstr ""
 
@@ -2958,7 +2969,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798 :837
+#: src/tools/drawtool.cpp:798:837
 msgid "Other..."
 msgstr ""
 
@@ -3090,7 +3101,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39 :924
+#: src/tools/zmatrixtool.h:39:924
 msgid "Z-Matrix"
 msgstr ""
 
@@ -6574,8 +6585,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr " ,Launchpad Contributions:,Balázs Attila"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr ",,battila9@freemail.hu"

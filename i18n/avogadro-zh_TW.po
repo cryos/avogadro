@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-28 16:50+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-23 15:57+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,10 +25,10 @@ msgstr "確定"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git 修正: %1)"
 
 #: src/aboutdialog.cpp:68
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
 "><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
@@ -37,16 +37,17 @@ msgid ""
 "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
 "FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更多資"
-"訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
+"<h3>%1</h3><br/><br/>應用程式版本: %2<br/><br/>函式庫版本: %3<br/><br/>Open "
+"Babel 版本: %4<br/><br/>Qt Version: %5<br/><br/>更多資訊請見 <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>使用本"
+"軟體不提供任何保證 (包括設計、銷售及是用於特定目的)<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
-#: src/mainwindow.cpp:2952:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
+#: src/mainwindow.cpp:3166:69
 msgid "Avogadro"
 msgstr "Avogadro 亞佛加厥"
 
@@ -75,7 +76,7 @@ msgstr "清除原子"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
+#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
 msgid "Settings"
 msgstr "設定"
 
@@ -84,55 +85,61 @@ msgid "Open File"
 msgstr "開啟檔案"
 
 #: src/main.cpp:204
-msgctxt "Avogadro"
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "Avogadro"
+msgstr "Avogadro 亞佛加厥"
 
 #: src/main.cpp:205
-msgctxt "This system does not support OpenGL."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "This system does not support OpenGL."
+msgstr "系統不支援 OpenGL"
 
 #: src/main.cpp:208
-msgctxt "System has OpenGL support."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "System has OpenGL support."
+msgstr "本系統支援 OpenGL"
 
 #: src/main.cpp:211
-msgctxt "About to test OpenGL capabilities."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "About to test OpenGL capabilities."
+msgstr "正要測試 OpenGL 之相容性"
 
 #: src/main.cpp:218
-msgctxt "OpenGL capabilities found: "
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "OpenGL capabilities found: "
+msgstr "找到 OpenGL 之相容: "
 
 #: src/main.cpp:220
-msgctxt "Double Buffering."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "Double Buffering."
+msgstr "雙重緩衝"
 
 #: src/main.cpp:222
-msgctxt "Direct Rendering."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "Direct Rendering."
+msgstr "直接呈現"
 
 #: src/main.cpp:224
-msgctxt "Antialiasing."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "Antialiasing."
+msgstr "反鋸齒"
 
 #: src/main.cpp:249
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Avogadro: \t%1 (Hash %2)\n"
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
-msgid "main.cpp"
 msgstr ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:264
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
 "Advanced Molecular Editor (version %2)\n"
@@ -140,8 +147,14 @@ msgctxt ""
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
-msgid "main.cpp"
 msgstr ""
+"使用: %1 [options] [files]\n"
+"\n"
+"進階分子編輯器 (版本 %2)\n"
+"\n"
+"選項:\n"
+"  -h, --help\t\t 顯示求助選項 (this)\n"
+"  -v, --version\t\t 顯示版本訊息\n"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
@@ -404,106 +417,106 @@ msgstr "無法貼上分子"
 msgid "Paste failed (format unavailable)."
 msgstr "無法貼上 (檔案格式無法使用)"
 
-#: src/mainwindow.cpp:1846
+#: src/mainwindow.cpp:2060
 msgid "Copy failed (mdl unavailable)."
 msgstr "無法複製"
 
-#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
+#: src/mainwindow.cpp:2816
 #, qt-format
 msgid "View %1"
 msgstr "檢視 %1"
 
-#: src/mainwindow.cpp:2032
+#: src/mainwindow.cpp:2246
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "觀看 %1"
 
-#: src/mainwindow.cpp:2041
+#: src/mainwindow.cpp:2255
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 分離觀看"
 
-#: src/mainwindow.cpp:2207
+#: src/mainwindow.cpp:2421
 msgid "Normal Size"
 msgstr "正常大小"
 
-#: src/mainwindow.cpp:2220
+#: src/mainwindow.cpp:2434
 msgid "Full Screen"
 msgstr "全螢幕"
 
-#: src/mainwindow.cpp:2318
+#: src/mainwindow.cpp:2532
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2452
+#: src/mainwindow.cpp:2666
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2458
+#: src/mainwindow.cpp:2672
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2906
+#: src/mainwindow.cpp:3120
 msgid "Add"
 msgstr "新增"
 
-#: src/mainwindow.cpp:2911
+#: src/mainwindow.cpp:3125
 msgid "Duplicate"
 msgstr "製作複本"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3130
 msgid "Remove"
 msgstr "移除"
 
-#: src/mainwindow.cpp:2944
+#: src/mainwindow.cpp:3158
 msgid "No tools or engines loaded."
 msgstr "沒有載入工具或引擎"
 
-#: src/mainwindow.cpp:2946
+#: src/mainwindow.cpp:3160
 msgid "No engines loaded."
 msgstr "沒有載入引擎"
 
-#: src/mainwindow.cpp:2948
+#: src/mainwindow.cpp:3162
 msgid "No tools loaded."
 msgstr "沒有載入工具"
 
-#: src/mainwindow.cpp:2949
+#: src/mainwindow.cpp:3163
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr " 這個應用程式無法正常使用. 請先更正錯誤."
 
-#: src/mainwindow.cpp:2993
+#: src/mainwindow.cpp:3207
 msgid "Objects"
 msgstr "物件"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:2999:321
+#: src/mainwindow.cpp:3213:321
 msgid "Colors"
 msgstr "顏色"
 
-#: src/mainwindow.cpp:3032
+#: src/mainwindow.cpp:3246
 msgid " copy"
 msgstr " 複製"
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:53
 msgid "Name: "
 msgstr "名字: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:54
 msgid "Identifier: "
 msgstr "識別號 "
 
-#: src/pluginsettings.cpp:57
+#: src/pluginsettings.cpp:55
 msgid "File: "
 msgstr "檔案: "
 
-#: src/pluginsettings.cpp:58
+#: src/pluginsettings.cpp:56
 msgid "Description:\n"
 msgstr "敘述:\n"
 
@@ -1256,10 +1269,22 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang"
+"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
+"Launchpad Contributions:,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
-"iychiang1809@gmail.com"
+"iychiang1809@gmail.com,,,iychiang1809@gmail.com"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更"
+#~ "多資訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
+#~ "\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"

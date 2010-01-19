@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-10-22 11:05+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-11-28 15:42+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -562,7 +562,7 @@ msgstr "Оси"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Отображает оси x, y, и z в начале координат"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Шаро-стержневая модель"
 
@@ -656,7 +656,7 @@ msgstr "Сферы Ван дер Ваальса"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr "Отображает атомы как сферы Ван дер Ваальса"
+msgstr "Отображает атомы как сферы Ван-дер-Ваальса"
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
@@ -664,7 +664,7 @@ msgstr "Стержни"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr "Отображать молекулы стержнями"
+msgstr "Отображает молекулы стержнями"
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
@@ -690,7 +690,7 @@ msgstr "Поверхности"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr "Отображает сетки молекулярных поверхностей"
+msgstr "Отображает молекулярные поверхности сетками"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -963,27 +963,27 @@ msgstr "Энергия = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Геометрическая оптимизация"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "Оптимизация с помощью силового поля"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Систематический поиск внутренних вращений"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Случайный поиск внутренних вращений"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Средневзвешенный поиск внутренних вращений"
 
@@ -1482,7 +1482,7 @@ msgstr "Получить с URL..."
 
 #: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
-msgstr ""
+msgstr "Запись PDB"
 
 #: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
@@ -1578,7 +1578,7 @@ msgstr "Не указано корректное имя фала."
 
 #: src/extensions/povrayextension.cpp:136
 msgid "Does not compute."
-msgstr ""
+msgstr "Не вычислять."
 
 #: src/extensions/povrayextension.cpp:137
 msgid ""
@@ -1586,6 +1586,9 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
+"Вы попросили не использовать прямой рендеринг в POV-Ray и не сохранять файл "
+"POV-Ray. Это приведет к тому, что результаты не будут сохранены. Вы уверены, "
+"что это то, что вы хотите?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -1621,24 +1624,24 @@ msgstr "POV-Ray"
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
 msgstr ""
-"Создать файлы POV-Ray и отрендерить их, используя консольную программу POV-"
-"Ray."
+"Создать входные файлы POV-Ray и отрендерить их, используя интерфейс "
+"командной строки POV-Ray"
 
 #: src/extensions/propextension.cpp:64
 msgid "Atom Properties..."
-msgstr "Свойства атома..."
+msgstr "Свойства атомов..."
 
 #: src/extensions/propextension.cpp:69
 msgid "Bond Properties..."
-msgstr "Свойства связи..."
+msgstr "Свойства связей..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr "Свойства угла..."
+msgstr "Свойства углов..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
-msgstr "Свойства двугранного угла..."
+msgstr "Свойства двугранных углов..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
@@ -1650,19 +1653,19 @@ msgstr "Редактор декартовых координат..."
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr "Свойства атома..."
+msgstr "Свойства атомов..."
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
-msgstr "Свойства связи"
+msgstr "Свойства связей"
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr "Свойства угла"
+msgstr "Свойства углов"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
-msgstr "Свойства двугранного угла"
+msgstr "Свойства двугранных углов"
 
 #: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
@@ -1890,7 +1893,7 @@ msgstr "Выделение с этим именем уже существует"
 
 #: src/extensions/selectextension.h:41
 msgid "Selections"
-msgstr ""
+msgstr "Выделение"
 
 #: src/extensions/selectextension.h:42
 msgid "Select atoms, bonds, residues..."
@@ -1902,7 +1905,7 @@ msgstr "GLSL шейдеры..."
 
 #: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
-msgstr ""
+msgstr "Открыть исходный файл вершинного шейдера"
 
 #: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
@@ -1910,11 +1913,11 @@ msgstr "Файлы вершинных шейдеров (*.vert)"
 
 #: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
-msgstr ""
+msgstr "открыть исходный файл пиксельного шейдера"
 
 #: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
-msgstr ""
+msgstr "Файлы шейдеров фрагментов (*.frag)"
 
 #: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
@@ -2075,7 +2078,7 @@ msgstr "Загрузить спектры"
 
 #: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "Переносимая сетевая графика (PNG)"
 
 #: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
@@ -2083,11 +2086,11 @@ msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "Размеченный формат файлов изображений (TIFF)"
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
-msgstr ""
+msgstr "Растровое изображение Windows"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
@@ -2149,11 +2152,11 @@ msgstr "Спектры"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Визуализировать спектральные данные из квантовохимических расчетов"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "Без интенсивностей"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2162,11 +2165,11 @@ msgstr ""
 "Информация о колебаниях данной молекулы не содержит интенсивностей. Для "
 "визуализации будут использованы произвольные значения интенсивностей"
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Волновое число (см<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "Химический сдвиг (м.д.)"
 
@@ -2255,7 +2258,7 @@ msgstr "Остановить расчёт"
 
 #: src/extensions/surfaceextension.cpp:363
 msgid "Calculating VdW Cube"
-msgstr ""
+msgstr "Расчет куба Ван-дер-Ваальса"
 
 #: src/extensions/surfaceextension.cpp:393
 #: src/extensions/surfaceextension.cpp:419
@@ -2313,7 +2316,7 @@ msgstr ""
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
-msgstr ""
+msgstr "В GL-виджете отсутствует молекула"
 
 #: src/extensions/trajvideomaker.cpp:62
 msgid "Building video "
@@ -2325,11 +2328,11 @@ msgstr "Видео файл не записан."
 
 #: src/extensions/trajvideomaker.cpp:124
 msgid "Could not run povray."
-msgstr "Не могу запустить POV-Ray"
+msgstr "Не удалось запустить POV-Ray"
 
 #: src/extensions/trajvideomaker.cpp:147
 msgid "Could not run mencoder."
-msgstr ""
+msgstr "Не удалось запустить mencoder"
 
 #: src/extensions/trajvideomaker.cpp:158
 msgid "Set Aspect Ratio"
@@ -2357,7 +2360,7 @@ msgstr ""
 
 #: src/extensions/unitcellextension.cpp:45
 msgid "Unit Cell Parameters..."
-msgstr "Параметры элементарной ячейки..."
+msgstr "Параметры ячейки..."
 
 #: src/extensions/unitcellextension.cpp:114
 msgid ""
@@ -2440,6 +2443,9 @@ msgid ""
 "Either something is completely broken in your OpenGL setup (can you run any "
 "OpenGL application?), or you found a bug."
 msgstr ""
+"Неправильный контекст OpenGL.\n"
+"Либо что-то нарушено в вашей инсталляции OpenGL (вы можете запустить какое-"
+"нибудь OpenGL-приложение?), либо вы нашли ошибку в программе."
 
 #: src/glwidget.cpp:458
 msgid "OpenGL error"
@@ -2502,7 +2508,7 @@ msgstr "Не удалось прочитать молекулу с номеро�
 #: src/moleculefile.cpp:184
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
-msgstr ""
+msgstr "replaceMolecule: номер %1 недостижим."
 
 #: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
 #, qt-format
@@ -2671,7 +2677,7 @@ msgstr "Ось:"
 
 #: src/tools/aligntool.cpp:267
 msgid "Align:"
-msgstr "Выровнять"
+msgstr "Выровнять:"
 
 #: src/tools/aligntool.cpp:272
 msgid "Everything"
@@ -2723,6 +2729,11 @@ msgstr "AutoOpt: Невозможно установить силовое пол
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "Ограничения"
 
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
@@ -2777,7 +2788,7 @@ msgstr "Игнорируемые атомы могут перемещаться"
 msgid "Stop"
 msgstr "Остановить"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "Автооптимизация молекулы"
 
@@ -2859,6 +2870,19 @@ msgid ""
 "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
 "- Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
+"Инструмент перемещения связей\n"
+"\n"
+"Левая кнопка мыши: Щелкните и потяните, чтобы повернуть молекулы\n"
+"Средняя кнопка мыши: Щелкните и потяните, чтобы увеличить или уменьшить "
+"масштаб\n"
+"Правая кнопка мыши: Щелкните и потяните, чтобы переместить молекулы\n"
+"\n"
+"Щелкните левой кнопкой связь и потяните, чтобы задать плоскость "
+"манипуляции:\n"
+"- Щелкните левой кнопкой и потяните один из атомов связи, чтобы изменить "
+"угол\n"
+"- Щелкните правой кнопкой и потяните один из атомов связи, чтобы изменить ее "
+"длину"
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
@@ -2880,11 +2904,11 @@ msgstr "Порог привязки: "
 
 #: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
 msgid "Bond Centric Manipulation"
-msgstr ""
+msgstr "Перемещение связей"
 
 #: src/tools/bondcentrictool.h:65
 msgid "Bond Centric Manipulate"
-msgstr ""
+msgstr "Перемещение связей"
 
 #: src/tools/bondcentrictool.h:66
 msgid "Manipulation of bond lengths, angles, and torsions"
@@ -2892,7 +2916,7 @@ msgstr "Изменение длин связей, углов и двугранн
 
 #: src/tools/bondcentrictool.h:67
 msgid "Bond Centric Manipulate Settings"
-msgstr ""
+msgstr "Настройки перемещения связей"
 
 #: src/tools/clickmeasuretool.cpp:56
 msgid ""
@@ -2976,7 +3000,7 @@ msgstr "Измерение"
 
 #: src/tools/clickmeasuretool.h:49
 msgid "Measure bond lengths, angles, and dihedrals"
-msgstr "Измерить длины связей, углы и двугранные углы"
+msgstr "Измерение длин связей, углов и двугранных углов"
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure Settings"
@@ -3060,11 +3084,13 @@ msgstr "Тройная"
 
 #: src/tools/drawtool.cpp:824
 msgid "Adjust Hydrogens"
-msgstr "Автодобавление водородов"
+msgstr ""
+"Автоматическое добавление\n"
+"атомов водорода"
 
 #: src/tools/drawtool.h:54
 msgid "Draw and edit atoms and bonds"
-msgstr "Нарисовать и редактировать атомы и связи"
+msgstr "Рисование и правка атомов и связей"
 
 #: src/tools/drawtool.h:55
 msgid "Draw Settings"
@@ -3087,19 +3113,19 @@ msgstr ""
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
 msgid "Manipulate Atom"
-msgstr "Переместить атом"
+msgstr "Перемещение атома"
 
 #: src/tools/manipulatetool.h:53
 msgid "Manipulate"
-msgstr ""
+msgstr "Перемещение"
 
 #: src/tools/manipulatetool.h:54
 msgid "Translate, rotate, and adjust atoms and fragments"
-msgstr "Переместить, повернуть и подогнать атомы и фрагменты"
+msgstr "Перемещение, поворот и подгонка атомов и фрагментов"
 
 #: src/tools/manipulatetool.h:55
 msgid "Manipulate Settings"
-msgstr ""
+msgstr "Настройки перемещения"
 
 #: src/tools/navigatetool.cpp:60
 msgid ""
@@ -3122,7 +3148,7 @@ msgstr "Навигация"
 
 #: src/tools/navigatetool.h:53
 msgid "Translate, rotate, and zoom around the current view"
-msgstr ""
+msgstr "Перемещение, поворот и масштабирование текущего окна просмотра"
 
 #: src/tools/navigatetool.h:54
 msgid "Navigate Settings"
@@ -3158,7 +3184,7 @@ msgstr "Выделение"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
-msgstr "Выделить атомы, остатки и молекулы"
+msgstr "Выделение атомов, аминокислотных остатков и молекул"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
@@ -3206,12 +3232,12 @@ msgstr "Настройка цветов аминокислотных остат�
 #. i18n: file: src/colors/residuecolorsettings.ui:19
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color residues by:"
-msgstr ""
+msgstr "Раскрашивать остатки:"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:27
 #. i18n: ectx: property (text), item, widget (QComboBox, colorStyleComboBox)
 msgid "Amino Colors"
-msgstr ""
+msgstr "Цветами аминокислот"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:32
 #. i18n: ectx: property (text), item, widget (QComboBox, colorStyleComboBox)
@@ -3252,7 +3278,7 @@ msgstr "Показывать кратные связи"
 #. i18n: file: src/engines/cartoonsettingswidget.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Shape"
-msgstr ""
+msgstr "Форма"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -3300,7 +3326,7 @@ msgstr "Лист"
 #. i18n: file: src/engines/cartoonsettingswidget.ui:357
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Loop"
-msgstr "Зациклить"
+msgstr "Петля"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:305
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -3310,7 +3336,7 @@ msgstr "Цвета"
 #. i18n: file: src/engines/dipolesettingswidget.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Dipole:"
-msgstr "Дипоь:"
+msgstr "Диполь:"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:54
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
@@ -3320,12 +3346,12 @@ msgstr "Дипольный момент"
 #. i18n: file: src/engines/dipolesettingswidget.ui:59
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
 msgid "Custom Value"
-msgstr ""
+msgstr "Произвольный вектор"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
 msgid "Custom:"
-msgstr ""
+msgstr "Произвольный:"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, labelWidth)
@@ -3422,7 +3448,7 @@ msgstr "Уникальный ID"
 #. i18n: file: src/engines/labelsettingswidget.ui:100
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
-msgstr "Символ и номер элемента"
+msgstr "Символ и номер атома"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:105
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3491,7 +3517,7 @@ msgstr "Орбиталь:"
 #. i18n: file: src/engines/surfacesettingswidget.ui:74
 #. i18n: ectx: property (text), widget (QLabel, renderLabel)
 msgid "Render:"
-msgstr ""
+msgstr "Отрисовка:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, renderCombo)
@@ -3506,7 +3532,7 @@ msgstr "Точки"
 #. i18n: file: src/engines/surfacesettingswidget.ui:103
 #. i18n: ectx: property (text), widget (QLabel, paddingLabel_2)
 msgid "Draw Box:"
-msgstr ""
+msgstr "Нарисовать ячейку:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:129
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_4)
@@ -3531,12 +3557,12 @@ msgstr "Цвета:"
 #. i18n: file: src/engines/surfacesettingswidget.ui:165
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_2)
 msgid "Positive"
-msgstr ""
+msgstr "Положительная"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:188
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_3)
 msgid "Negative"
-msgstr ""
+msgstr "Отрицательная"
 
 #. i18n: file: src/engines/wiresettingswidget.ui:18
 #. i18n: ectx: property (text), widget (QCheckBox, showDotsCheckBox)
@@ -3567,7 +3593,7 @@ msgstr "Динамические связи"
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr ""
+msgstr "Зациклить"
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3678,7 +3704,7 @@ msgstr "Угол"
 #. i18n: file: src/extensions/constraintsdialog.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Torsion angle"
-msgstr "Торсионный угол"
+msgstr "Двугранный угол"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3688,7 +3714,7 @@ msgstr "Значение ограничения"
 #. i18n: file: src/extensions/constraintsdialog.ui:101
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Atom Indices"
-msgstr ""
+msgstr "Номера атомов"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:120
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsAdd)
@@ -3743,17 +3769,17 @@ msgstr "Обзор..."
 #. i18n: file: src/extensions/fileimportdialog.ui:46
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Par File:"
-msgstr ""
+msgstr "Файл параметров:"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:67
 #. i18n: ectx: property (toolTip), widget (QCheckBox, perceiveBonds)
 msgid "Attempt to perceive bonds?"
-msgstr ""
+msgstr "Попытаться распознать связи?"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, perceiveBonds)
 msgid "Perceive bonds?"
-msgstr ""
+msgstr "Распознать связи?"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ForceFieldDialog)
@@ -3815,7 +3841,7 @@ msgstr "EFP соответствия"
 #. i18n: file: src/extensions/gamessefpmatchdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Group Label:"
-msgstr ""
+msgstr "Метка группы:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessInputDialog)
@@ -4014,7 +4040,7 @@ msgstr "Катион"
 #. i18n: file: src/extensions/gamessinputdialog.ui:162
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Neutral"
-msgstr "Нейтральная"
+msgstr "Нейтральный"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:167
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
@@ -4771,60 +4797,60 @@ msgstr "Точечная группа:"
 #. i18n: file: src/extensions/gamessinputdialog.ui:1666
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Minutes"
-msgstr "Минуты"
+msgstr "минут"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1671
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Hours"
-msgstr "Часы"
+msgstr "часов"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1676
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Days"
-msgstr "Дни"
+msgstr "дней"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1681
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Weeks"
-msgstr "недели"
+msgstr "недель"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1686
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Years"
-msgstr "Годы"
+msgstr "лет"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1691
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Millenia"
-msgstr "Тысячелетия"
+msgstr "тысячелетий"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1720
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1764
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaWords"
-msgstr "Мегаслов"
+msgstr "мегаслов"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1725
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1769
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaBytes"
-msgstr "Мегабайт"
+msgstr "мегабайт"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1730
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1774
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaWords"
-msgstr ""
+msgstr "гигаслов"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1735
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1779
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaBytes"
-msgstr ""
+msgstr "гигабайт"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1807
 #. i18n: ectx: property (text), widget (QCheckBox, systemForceCheck)
@@ -4854,12 +4880,12 @@ msgstr "Якоби"
 #. i18n: file: src/extensions/gamessinputdialog.ui:1866
 #. i18n: ectx: property (text), widget (QLabel, label_36)
 msgid "Time Limit:"
-msgstr "Ограничение Времени:"
+msgstr "Ограничение времени:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1873
 #. i18n: ectx: property (text), widget (QLabel, label_38)
 msgid "MemDDI:"
-msgstr "MemDDI:"
+msgstr "Память DDI:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1880
 #. i18n: ectx: property (text), widget (QLabel, label_37)
@@ -4876,7 +4902,7 @@ msgstr "Метод диагонализации:"
 #. i18n: file: src/extensions/gamessinputdialog.ui:1894
 #. i18n: ectx: property (title), widget (QGroupBox, systemParallelGroup)
 msgid "Parallel Load Balance Type"
-msgstr ""
+msgstr "Тип балансировки при параллельном выполнении"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1900
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
@@ -4888,7 +4914,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "Next Value"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
@@ -4978,7 +5004,7 @@ msgstr "MELDF"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2131
 #. i18n: ectx: property (text), widget (QRadioButton, miscGamessRadio)
 msgid "GAMESS (UK Version)"
-msgstr "GAMESS (UK Version)"
+msgstr "GAMESS (Версия UK)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2138
 #. i18n: ectx: property (text), widget (QRadioButton, miscGaussianRadio)
@@ -5013,97 +5039,97 @@ msgstr "Рассчитывать только изменения фокиана 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2250
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Slater exchange"
-msgstr ""
+msgstr "Slater (обменный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2255
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Becke 1988 exchange"
-msgstr ""
+msgstr "Becke 1988 (обменный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2260
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
-msgstr ""
+msgstr "VWN: Vosko-Wilk-Nusair (VWN5) (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2265
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "LYP: Lee-Yang-Parr correlation"
-msgstr ""
+msgstr "LYP: Lee-Yang-Parr (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2270
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SVWN: Slater exchange + VWN correlation"
-msgstr ""
+msgstr "SVWN: Slater (обменный) + VWN (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2275
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: BECKE exchange + VWN5 correlation"
-msgstr ""
+msgstr "BVWN: BECKE (обменный) + VWN5 (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2280
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BLYP: BECKE exchange + LYP correlation"
-msgstr ""
+msgstr "BLYP: BECKE (обменный) + LYP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2290
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Gill 1996 exchange"
-msgstr ""
+msgstr "Gill 1996 (обменный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2295
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
-msgstr ""
+msgstr "Perdew-Burke-Ernzerhof (PBE) (обменный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2300
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "OP: One-parameter Progressive correlation"
-msgstr ""
+msgstr "OP: однопараметрический прогрессивный (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2305
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
-msgstr ""
+msgstr "SLYP: SLATER (обменный) + Lee-Yang-Parr (LYP) (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2310
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SOP: SLATER + OP correlation"
-msgstr ""
+msgstr "SOP: SLATER (обменный) + OP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2315
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BOP: BECKE exchange + OP correlation"
-msgstr ""
+msgstr "BOP: BECKE (обменный) + OP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2320
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: GILL exchange + VWN5 correlation"
-msgstr ""
+msgstr "BVWN: GILL (обменный) + VWN5 (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2325
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "GLYP: GILL exchange + LYP correlation"
-msgstr ""
+msgstr "GLYP: GILL (обменный) + LYP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2330
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
-msgstr ""
+msgstr "PBEVWN: PBE (обменный) + VWN6 (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2335
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBELYP: PBE exchange +LYP correlation"
-msgstr ""
+msgstr "PBELYP: PBE (обменный) +LYP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2340
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEOP: PBE exchange + OP correlation"
-msgstr ""
+msgstr "PBEOP: PBE (обменный) + OP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2345
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
-msgstr ""
+msgstr "BHHLYP: HF and BECKE (обменный) + LYP (корреляционный)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2371
 #. i18n: ectx: property (text), item, widget (QComboBox, dftMethodCombo)
@@ -5210,7 +5236,7 @@ msgstr "Величина шага:"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2613
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPurifyCheck)
 msgid "Purify Hessian"
-msgstr ""
+msgstr "Спроецировать гессиан"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2620
 #. i18n: ectx: property (text), widget (QLabel, label_31)
@@ -5466,12 +5492,12 @@ msgstr "Заряд:"
 #. i18n: file: src/extensions/gaussianinputdialog.ui:330
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Output:"
-msgstr ""
+msgstr "Выдача:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:346
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Standard"
-msgstr ""
+msgstr "Обычная"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:351
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
@@ -6041,7 +6067,7 @@ msgstr "povray"
 #. i18n: file: src/extensions/povraydialog.ui:111
 #. i18n: ectx: property (text), widget (QPushButton, render)
 msgid "Render"
-msgstr ""
+msgstr "Старт"
 
 #. i18n: file: src/extensions/povraydialog.ui:137
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -6078,7 +6104,7 @@ msgstr "Команда:"
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Отрендерить молекулу с помощью консольного POV-Ray"
+msgstr "Отрендерить молекулу, используя интерфейс командной строки POV-Ray"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
@@ -6093,7 +6119,7 @@ msgstr "Сохранить входной файл POV-Ray после завер
 #. i18n: file: src/extensions/povraydialog.ui:199
 #. i18n: ectx: property (text), widget (QCheckBox, keepSource)
 msgid "Keep POV-Ray source after rendering"
-msgstr "Сохранить входной файл POV-Ray после рендеринга"
+msgstr "Сохранить входной файл POV-Ray"
 
 #. i18n: file: src/extensions/povraydialog.ui:209
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6143,7 +6169,7 @@ msgstr "Вершинный шейдер:"
 #. i18n: file: src/extensions/shaderdialog.ui:76
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Fragment Shader:"
-msgstr ""
+msgstr "Шейдер фрагмента:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, label_8)
@@ -6155,7 +6181,7 @@ msgstr "Параметры:"
 #. i18n: file: src/extensions/shaderdialog.ui:245
 #. i18n: ectx: property (text), widget (QPushButton, shaderButton)
 msgid "Assign Shader"
-msgstr ""
+msgstr "Назначить шейдер"
 
 #. i18n: file: src/extensions/shaderdialog.ui:170
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -6165,7 +6191,7 @@ msgstr "Тип отображения:"
 #. i18n: file: src/extensions/shaderdialog.ui:190
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Shader Program:"
-msgstr ""
+msgstr "Программа построения теней:"
 
 #. i18n: file: src/extensions/spectradialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SpectraDialog)
@@ -6486,7 +6512,7 @@ msgstr "Электростатический потенциал"
 #. i18n: file: src/extensions/surfacedialog.ui:104
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Color By:"
-msgstr ""
+msgstr "Раскрасить по:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:120
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
@@ -6497,30 +6523,30 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
-msgstr ""
+msgstr "Низкое"
 
 #. i18n: file: src/extensions/surfacedialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
-msgstr ""
+msgstr "Среднее"
 
 #. i18n: file: src/extensions/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
-msgstr ""
+msgstr "Высокое"
 
 #. i18n: file: src/extensions/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr ""
+msgstr "Наивысшее"
 
 #. i18n: file: src/extensions/surfacedialog.ui:240
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 msgid "Isosurface cutoff value"
-msgstr ""
+msgstr "Параметр отсечения изоповерхности"
 
 #. i18n: file: src/extensions/surfacedialog.ui:243
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -6533,7 +6559,7 @@ msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
-msgstr ""
+msgstr "В стиле отображения:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:295
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
@@ -6560,12 +6586,12 @@ msgstr "Параметры отображения элементарной яч�
 #. i18n: file: src/extensions/unitcellparamdialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, deleteUnitCell)
 msgid "Delete Unit Cell"
-msgstr "Удалить элементарную ячейку"
+msgstr "Удалить ячейку"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:101
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
 msgid "Fill Unit Cell"
-msgstr "Заполнить элементарную ячейку"
+msgstr "Заполнить ячейку"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:131
 #. i18n: ectx: property (text), widget (QLabel, AxesLabel)
@@ -6687,23 +6713,22 @@ msgstr ""
 "Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
 "Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
 "Contributions:,Konstantin Tokarev, ,Launchpad Contributions:,Konstantin "
-"Tokarev,Vasily Astanin"
+"Tokarev,Vasily Astanin, ,Launchpad Contributions:,Konstantin Tokarev,Vasily "
+"Astanin, ,Launchpad Contributions:,Solodukhin D.,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
 "annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,"
-"annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru"
+"annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru,,,annulen@yandex.ru,"
+"madcad@yandex.ru,,,hippi90ub@gmail.com,dn2010@km.ru"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Открыть файл лиганда"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Файлы Avogadro (*.*)"
-
-#~ msgid "Open mol file"
-#~ msgstr "Открыть файл mol"
 
 #~ msgid "Any files (*.*)"
 #~ msgstr "Все файлы (*.*)"
@@ -6720,31 +6745,8 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "файл траектории (*.xyz)"
 
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Не удалось прочитать mol-файл %1."
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "GL виджет не был корректно инициализирован для сохранения скриншотов"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "Невозможно сохранить файл %1."
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr "GL виджет не был корректно инициализирован для сохранения анимации"
-
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr "Неправильное имя файла анимации"
-
-#~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
-#~ msgstr ""
-#~ "Неправильное имя файла анимации. Имя должно содержать полный путь и "
-#~ "название, оканчивающееся на .avi"
-
-#~ msgid "Would write file to %1."
-#~ msgstr "Запись в файл %1."
 
 #~ msgid "Wrote file %1."
 #~ msgstr "Записан файл %1."
@@ -6752,29 +6754,14 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Добавить линейную интерполяцию в анимации"
 
-#~ msgid "Connect"
-#~ msgstr "Соединить"
-
-#~ msgid "Disconnect"
-#~ msgstr "Разъединить"
-
 #~ msgid "Create ligand"
 #~ msgstr "Создать лиганд"
 
 #~ msgid "create ligand from current selection"
 #~ msgstr "создать лиганд из текущего выделения"
 
-#~ msgid "create ligand from residue name"
-#~ msgstr "создать название лиганда из названия аминокислотного остатка"
-
 #~ msgid "create ligand from file..."
 #~ msgstr "создать лиганд из файла..."
-
-#~ msgid "The residue name"
-#~ msgstr "Название аминокислотного остатка"
-
-#~ msgid "button to load a second conformation from a file."
-#~ msgstr "кнопка для загрузки второй конформации из файла"
 
 #~ msgid "Load Second Conformation ..."
 #~ msgstr "Загрузить вторую конформацию..."
@@ -6786,9 +6773,6 @@ msgstr ""
 #~ "Сохранить снимки траектории как серию POVRay-файлов. Это может быть "
 #~ "использовано для изготовления видеоклипа"
 
-#~ msgid "Button to save an .xyz trajectory."
-#~ msgstr "Кнопка для сохранения .xyz траектории."
-
 #~ msgid "Save trajectory..."
 #~ msgstr "Сохранить траекторию..."
 
@@ -6797,6 +6781,44 @@ msgstr ""
 
 #~ msgid "Radius"
 #~ msgstr "Радиус"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Неправильное имя файла анимации"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Неправильное имя файла анимации. Имя должно содержать полный путь и "
+#~ "название, оканчивающееся на .avi"
+
+#~ msgid "Disconnect"
+#~ msgstr "Разъединить"
+
+#~ msgid "Connect"
+#~ msgstr "Соединить"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "GL виджет не был корректно инициализирован для сохранения скриншотов"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "GL виджет не был корректно инициализирован для сохранения анимации"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Запись в файл %1."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Кнопка для сохранения .xyz траектории."
+
+#~ msgid "The residue name"
+#~ msgstr "Название аминокислотного остатка"
+
+#~ msgid "Open mol file"
+#~ msgstr "Открыть файл mol"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "кнопка для загрузки второй конформации из файла"
 
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
@@ -6818,3 +6840,28 @@ msgstr ""
 #~ msgstr ""
 #~ "Отображать визуальные подсказки</string>\n"
 #~ "     </property>"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Не удалось прочитать mol-файл %1."
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "создать название лиганда из названия аминокислотного остатка"
+
+#~ msgid "Linear Morph"
+#~ msgstr "Линейная интерполяция"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Лин. интерполяция..."
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Линейная интерполяция траектории"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Загрузить вторую конформацию и рассчитать линейную интерполяцию от "
+#~ "текущей конформации"
+
+#~ msgid "Num Frames"
+#~ msgstr "Число кадров"

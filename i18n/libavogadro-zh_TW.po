@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-28 16:47+0000\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-23 15:44+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "軸"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "在開始就呈現 x, y, z 軸"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "球與棒 (原子與鍵)"
 
@@ -948,27 +948,27 @@ msgstr "能量 = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "幾何最佳化"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "力埸最佳化"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "取消"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "Systematic Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "Random Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "Weighted Rotor Search"
 
@@ -996,12 +996,12 @@ msgstr "匯入產生器..."
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP 選項..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM 選項..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1260,23 +1260,23 @@ msgstr "加入或移除氫"
 
 #: src/extensions/inputfileextension.cpp:49
 msgid "&Gaussian..."
-msgstr ""
+msgstr "高斯(&G)..."
 
 #: src/extensions/inputfileextension.cpp:54
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/inputfileextension.cpp:59
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/inputfileextension.cpp:64
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/inputfileextension.cpp:69
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
@@ -1286,11 +1286,11 @@ msgstr "無法讀取檔案 %1。"
 
 #: src/extensions/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "輸入檔案產生器"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "為量子化學套件產生輸入檔案"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1673,7 +1673,7 @@ msgstr "價"
 
 #: src/extensions/propmodel.cpp:361
 msgid "Formal Charge"
-msgstr ""
+msgstr "形式電荷"
 
 #: src/extensions/propmodel.cpp:363
 msgid "Partial Charge"
@@ -2120,11 +2120,11 @@ msgstr "光譜"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "從量子化學計算顯示光譜的資料"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "沒有強度"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2132,11 +2132,11 @@ msgid ""
 msgstr ""
 "您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波數 (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "化學位移 (ppm)"
 
@@ -2680,6 +2680,11 @@ msgstr "自動最佳化: 無法設定力場... (請檢查所繪製的分子是�
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "約束"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "力場"
@@ -2733,7 +2738,7 @@ msgstr "被忽略的原子可移動"
 msgid "Stop"
 msgstr "停止"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "自動最佳化分子"
 
@@ -3368,7 +3373,7 @@ msgstr "元素符號"
 #. i18n: file: src/engines/labelsettingswidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Formal charge"
-msgstr ""
+msgstr "形式電荷"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3378,7 +3383,7 @@ msgstr "殘基編號"
 #. i18n: file: src/engines/labelsettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
-msgstr ""
+msgstr "部份電荷"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3390,12 +3395,12 @@ msgstr "單一的 ID"
 #. i18n: file: src/engines/labelsettingswidget.ui:100
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
-msgstr ""
+msgstr "原子符號與原子序"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:105
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Custom data"
-msgstr ""
+msgstr "客製資料"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:113
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3535,7 +3540,7 @@ msgstr "Dynamic Bonds (動態的鍵)"
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr ""
+msgstr "迴圈 (重複播放動畫)"
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4785,14 +4790,14 @@ msgstr "MegaBytes"
 #. i18n: file: src/extensions/gamessinputdialog.ui:1774
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaWords"
-msgstr ""
+msgstr "GigaWords"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1735
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1779
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaBytes"
-msgstr ""
+msgstr "GigaBytes"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1807
 #. i18n: ectx: property (text), widget (QCheckBox, systemForceCheck)
@@ -4850,13 +4855,13 @@ msgstr "Parallel Load Balance Type"
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr ""
+msgstr "迴圈"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "下一個值"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
@@ -6619,7 +6624,7 @@ msgstr "Form (表格/形成)"
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "顯示視覺提示"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6645,13 +6650,14 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang"
+"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
+"Launchpad Contributions:,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
-"iychiang1809@gmail.com"
+"iychiang1809@gmail.com,,,iychiang1809@gmail.com"
 
 #~ msgid "Open ligand file"
 #~ msgstr "開啟配位基檔案"
@@ -6659,80 +6665,14 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro files (*.*)"
 
-#~ msgid "Open mol file"
-#~ msgstr "開啟 mol 檔"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "所有檔案 (*.*)"
-
-#~ msgid "Save Movie File"
-#~ msgstr "儲存影片檔"
-
-#~ msgid "movie files (*.avi)"
-#~ msgstr "影片檔 (*.avi)"
-
-#~ msgid "Save Traj File"
-#~ msgstr "儲存軌跡檔"
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "光跡追蹤檔 (*.xyz)"
-
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
-#~ msgstr "Lin Morph (變體)..."
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "無法讀取 mol 檔案 %1."
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "這兩個分子有不同的原子數目 %1 %2"
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr "GL widget (GL 界面工具集) 無法正確啟動所以無法儲存快照"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "無法存檔 %1"
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr "GL widget (GL 界面工具集) 無法正確啟動所以無法儲存影片"
-
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑"
-
-#~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
-#~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑及檔名, 且以 .avi 結尾"
-
-#~ msgid "Would write file to %1."
-#~ msgstr "將寫入檔案 %1"
-
-#~ msgid "Wrote file %1."
-#~ msgstr "寫入檔案 %1"
-
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
-#~ msgid "Linear Morph"
-#~ msgstr "線性變體 (Linear Morph)"
-
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "為動畫產生線性內插法"
 
 #~ msgid "Connect"
 #~ msgstr "連接"
 
 #~ msgid "Disconnect"
 #~ msgstr "斷線"
-
-#~ msgid "&WiiTrack"
-#~ msgstr "WiiTrack"
-
-#~ msgid "Wii Tracking"
-#~ msgstr "Wii 追蹤"
-
-#~ msgid "Track motion using Wii remotes"
-#~ msgstr "使用 Wii 遙控器作追蹤"
 
 #~ msgid "Create ligand"
 #~ msgstr "新增配位基"
@@ -6745,40 +6685,6 @@ msgstr ""
 
 #~ msgid "create ligand from file..."
 #~ msgstr "從檔案新增配位基"
-
-#~ msgid "The residue name"
-#~ msgstr "殘基名稱"
-
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "直線軌跡"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr "載入第二個構形以及計算目前的構形的線性內插"
-
-#~ msgid "button to load a second conformation from a file."
-#~ msgstr "按鈕, 可以自檔案中載入第二個構形"
-
-#~ msgid "Load Second Conformation ..."
-#~ msgstr "載入第二個構形"
-
-#~ msgid "Num Frames"
-#~ msgstr "Num 框"
-
-#~ msgid ""
-#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
-#~ "then be used to make a movie."
-#~ msgstr "將軌跡的螢幕截圖存成一系列 POV-Ray 當按. 這些檔案可以用來製作成影片"
-
-#~ msgid "Button to save an .xyz trajectory."
-#~ msgstr "按鈕, 可以存成 .xyz 軌跡"
-
-#~ msgid "Save trajectory..."
-#~ msgstr "儲存軌跡..."
-
-#~ msgid "Save movie..."
-#~ msgstr "儲存影片..."
 
 #~ msgid "Create binding pocket"
 #~ msgstr "新增鍵結結合區域"
@@ -6795,6 +6701,74 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr "配位基上此半徑範圍內的原子將會是鍵結結合區域的一部份"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph (變體)..."
+
+#~ msgid "Open mol file"
+#~ msgstr "開啟 mol 檔"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "影片檔 (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "儲存軌跡檔"
+
+#~ msgid "Save Movie File"
+#~ msgstr "儲存影片檔"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "無法讀取 mol 檔案 %1."
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "所有檔案 (*.*)"
+
+#~ msgid "Linear Morph"
+#~ msgstr "線性變體 (Linear Morph)"
+
+#~ msgid "Wrote file %1."
+#~ msgstr "寫入檔案 %1"
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "這兩個分子有不同的原子數目 %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "GL widget (GL 界面工具集) 無法正確啟動所以無法儲存快照"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "GL widget (GL 界面工具集) 無法正確啟動所以無法儲存影片"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "將寫入檔案 %1"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑及檔名, 且以 .avi 結尾"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "使用 Wii 遙控器作追蹤"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii 追蹤"
+
+#~ msgid "The residue name"
+#~ msgstr "殘基名稱"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "直線軌跡"
+
+#~ msgid "Save movie..."
+#~ msgstr "儲存影片..."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "儲存軌跡..."
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "載入第二個構形"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"
@@ -6819,3 +6793,31 @@ msgstr ""
 #~ msgstr ""
 #~ "顯示可見的 cues</字串>\n"
 #~ "     </性質>"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "為動畫產生線性內插法"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr "載入第二個構形以及計算目前的構形的線性內插"
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "按鈕, 可以存成 .xyz 軌跡"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr "將軌跡的螢幕截圖存成一系列 POV-Ray 當按. 這些檔案可以用來製作成影片"
+
+#~ msgid "Num Frames"
+#~ msgstr "Num 框"
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "按鈕, 可以自檔案中載入第二個構形"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "光跡追蹤檔 (*.xyz)"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "WiiTrack"

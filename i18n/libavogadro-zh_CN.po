@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-09-29 04:39+0000\n"
-"Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-20 04:38+0000\n"
+"Last-Translator: Ye, Qing <allen19920930@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "轴"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "在原点处渲染x，y和z轴"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "球和棍"
 
@@ -948,27 +948,27 @@ msgstr "能量 = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "几何优化"
 
-#: src/extensions/forcefieldextension.cpp:552
+#: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
 msgstr "力场优化"
 
-#: src/extensions/forcefieldextension.cpp:553
-#: src/extensions/forcefieldextension.cpp:556
-#: src/extensions/forcefieldextension.cpp:559
-#: src/extensions/forcefieldextension.cpp:562
+#: src/extensions/forcefieldextension.cpp:564
+#: src/extensions/forcefieldextension.cpp:567
+#: src/extensions/forcefieldextension.cpp:570
+#: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "取消"
 
-#: src/extensions/forcefieldextension.cpp:555
+#: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
 msgstr "系统性旋转搜索"
 
-#: src/extensions/forcefieldextension.cpp:558
+#: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
 msgstr "随机性旋转搜索"
 
-#: src/extensions/forcefieldextension.cpp:561
+#: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
 msgstr "权重旋转搜索"
 
@@ -2121,22 +2121,22 @@ msgstr "光谱"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "由量子化学计算结果将光谱数据可视化"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid "No intensities"
 msgstr "没有强度"
 
-#: src/extensions/spectratype_ir.cpp:102
+#: src/extensions/spectratype_ir.cpp:103
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr "您加载的分子振动数据没有任何强度数值。强度应当被赋予一个数值以便显示。"
 
-#: src/extensions/spectratype_ir.cpp:140
+#: src/extensions/spectratype_ir.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波数 (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:283
+#: src/extensions/spectratype_nmr.cpp:284
 msgid "Shift (ppm)"
 msgstr "位移 (ppm)"
 
@@ -2687,6 +2687,11 @@ msgstr "自动优化: 不能建立力场...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "自动优化: E = %1 %2 (dE = %3)"
 
+#: src/tools/autoopttool.cpp:234
+#, fuzzy, qt-format
+msgid "Num Constraints: %1"
+msgstr "约束"
+
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "力场:"
@@ -2740,7 +2745,7 @@ msgstr "设置已忽略的原子为可移动的"
 msgid "Stop"
 msgstr "停止"
 
-#: src/tools/autoopttool.cpp:564
+#: src/tools/autoopttool.cpp:572
 msgid "AutoOpt Molecule"
 msgstr "自动优化分子"
 
@@ -3380,7 +3385,7 @@ msgstr "残基序数"
 #. i18n: file: src/engines/labelsettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
-msgstr ""
+msgstr "部分电荷"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -6650,7 +6655,7 @@ msgstr ""
 ",Launchpad Contributions:,Tao Wei,cuiweicui,rainofchaos,yjjart,郑思涵, ,"
 "Launchpad Contributions:,Tao Wei,Yinghua Wang,cuiweicui,rainofchaos,yjjart,郑"
 "思涵, ,Launchpad Contributions:,Xinfeng,cuiweicui, ,Launchpad Contributions:,"
-"Xinfeng,cuiweicui,yjjart"
+"Xinfeng,cuiweicui,yjjart, ,Launchpad Contributions:,Ye, Qing"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6658,7 +6663,7 @@ msgstr ""
 ",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
 "sihanzheng@gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,"
 "yjjart@gmail.com,sihanzheng@gmail.com,,,,cuiweicui1985@gmail.com,,,,"
-"cuiweicui1985@gmail.com,yjjart@gmail.com"
+"cuiweicui1985@gmail.com,yjjart@gmail.com,,,allen19920930@gmail.com"
 
 #~ msgid "Open ligand file"
 #~ msgstr "打开配体文件"
@@ -6684,9 +6689,7 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "轨迹文件 (*.xyz)"
 
-#, fuzzy
-#~ msgctxt "i.e., linear interpolation of coordinates during animation"
-#~ msgid "Linear Morph..."
+#~ msgid "Lin Morph..."
 #~ msgstr "线性形态..."
 
 #~ msgid "Read mol file %1 failed."
@@ -6695,14 +6698,8 @@ msgstr ""
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "两个分子所含原子数不同 %1 %2"
 
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr "为保存快照用的GL小工具未能正确初始化"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "不能保存文件 %1。"
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr "为保存视频用的GL小工具未能正确初始化"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr "无效的视频文件名。必须包含完整的路径。"
@@ -6718,8 +6715,6 @@ msgstr ""
 #~ msgid "Wrote file %1."
 #~ msgstr "已写入文件%1。"
 
-#, fuzzy
-#~ msgctxt "linear interpolation (morphing) for animations"
 #~ msgid "Linear Morph"
 #~ msgstr "线性形态"
 
@@ -6731,9 +6726,6 @@ msgstr ""
 
 #~ msgid "Disconnect"
 #~ msgstr "断开"
-
-#~ msgid "&WiiTrack"
-#~ msgstr "&Wii跟踪"
 
 #~ msgid "Wii Tracking"
 #~ msgstr "Wii跟踪"
@@ -6758,11 +6750,6 @@ msgstr ""
 
 #~ msgid "Linear Morph Trajectory"
 #~ msgstr "线性形态轨迹"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr "载入第二个构象，并和当前构象一起计算一个线性插值。"
 
 #~ msgid "button to load a second conformation from a file."
 #~ msgstr "从文件中载入第二构象的按钮。"
@@ -6803,8 +6790,12 @@ msgstr ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr "该配体一定半径内的原子均会成为结合域的一部分"
 
-#~ msgid "MO 666"
-#~ msgstr "MO 666"
+#~ msgid ""
+#~ "Display visual cues</string>\n"
+#~ "     </property>"
+#~ msgstr ""
+#~ "显示可视化提示</string>\n"
+#~ "     </property>"
 
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
@@ -6820,9 +6811,19 @@ msgstr ""
 #~ "     <property name=\"text\">\n"
 #~ "      <string>显示可视化提示"
 
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "为保存视频用的GL小工具未能正确初始化"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "为保存快照用的GL小工具未能正确初始化"
+
+#~ msgid "MO 666"
+#~ msgstr "MO 666"
+
 #~ msgid ""
-#~ "Display visual cues</string>\n"
-#~ "     </property>"
-#~ msgstr ""
-#~ "显示可视化提示</string>\n"
-#~ "     </property>"
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr "载入第二个构象，并和当前构象一起计算一个线性插值。"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&Wii跟踪"

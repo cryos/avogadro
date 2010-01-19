@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
-"PO-Revision-Date: 2009-10-03 20:48+0000\n"
-"Last-Translator: Alkatron <gino@alkatron.it>\n"
+"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"PO-Revision-Date: 2009-12-24 06:00+0000\n"
+"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
+"net>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
+"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,10 +26,10 @@ msgstr "OK"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Revisione Git: %1)"
 
 #: src/aboutdialog.cpp:68
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
 "><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
@@ -37,18 +38,19 @@ msgid ""
 "WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
 "FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Versione applicazione: %2<br/><br/>Versione libreria: %"
-"3<br/><br/>Per maggiori informazioni visitare la <a href=\"http://avogadro."
-"openmolecules.net/\">Homepage di Avogadro</a>.<br/><br/>Il programma è "
-"fornito nella sua forma SENZA GARANZIE DI ALCUN TIPO, INCLUSA LA GARANZIA DI "
-"DESIGN, COMMERCIABILITA' E IDONEITA' AD UN PARTICOLARE UTILIZZO.<br/>"
+"<h3>%1</h3><br/><br/>Versione di Avogadro: %2<br/><br/>Versione della "
+"libreria: %3<br/><br/>Versione di Open Babel: %4<br/><br/>Versione Qt: %5<br/"
+"><br/>Per maggiori informazioni visita la <a href=\"http://avogadro."
+"openmolecules.net/\">homepage di Avogadro</a>.<br/><br/>Questo programma è "
+"fornito TALE E QUALE con NESSUNA SORTA DI GARANZIA, NE PER IL DESIGN, LA "
+"VENDIBILITA' ED IDONEITA' AD UN PARTICOLARE IMPIEGO.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
-#: src/mainwindow.cpp:2952:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
+#: src/mainwindow.cpp:3166:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -77,7 +79,7 @@ msgstr "Pulisci Atomi"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
+#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -86,55 +88,58 @@ msgid "Open File"
 msgstr "Apri File"
 
 #: src/main.cpp:204
-msgctxt "Avogadro"
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "Avogadro"
+msgstr "Avogadro"
 
 #: src/main.cpp:205
-msgctxt "This system does not support OpenGL."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "This system does not support OpenGL."
+msgstr "Questo sistema non supporta OpenGL."
 
 #: src/main.cpp:208
-msgctxt "System has OpenGL support."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "System has OpenGL support."
+msgstr "Questo sistema supporta OpenGL"
 
 #: src/main.cpp:211
-msgctxt "About to test OpenGL capabilities."
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "About to test OpenGL capabilities."
+msgstr "Stanno per essere testate le funzionalità di OpenGL"
 
 #: src/main.cpp:218
-msgctxt "OpenGL capabilities found: "
-msgid "main.cpp"
-msgstr ""
+msgctxt "main.cpp"
+msgid "OpenGL capabilities found: "
+msgstr "Funzionalità di OpenGL trovate: "
 
 #: src/main.cpp:220
-msgctxt "Double Buffering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Double Buffering."
 msgstr ""
 
 #: src/main.cpp:222
-msgctxt "Direct Rendering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Direct Rendering."
 msgstr ""
 
 #: src/main.cpp:224
-msgctxt "Antialiasing."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Antialiasing."
 msgstr ""
 
 #: src/main.cpp:249
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Avogadro: \t%1 (Hash %2)\n"
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
-msgid "main.cpp"
 msgstr ""
 
 #: src/main.cpp:264
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
 "Advanced Molecular Editor (version %2)\n"
@@ -142,8 +147,14 @@ msgctxt ""
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
-msgid "main.cpp"
 msgstr ""
+"Utilizzo: %1 [opzioni] [files]\n"
+"\n"
+"Editor Molecolare Avanzato (versione %2)\n"
+"\n"
+"Opzioni:\n"
+"  -h, --help\t\t Mostra le opzioni dispobili (queste)\n"
+"  -v, --versione\t\t Mostra la versione\n"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
@@ -202,7 +213,7 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:720
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Output Chimica Computazionale"
 
 #: src/mainwindow.cpp:721
 msgid "Crystallographic Interchange CIF"
@@ -230,7 +241,7 @@ msgstr "MDL Mol"
 
 #: src/mainwindow.cpp:727
 msgid "NWChem Output"
-msgstr ""
+msgstr "Output NWChem"
 
 #: src/mainwindow.cpp:728 src/mainwindow.cpp:1198
 msgid "PDB"
@@ -350,7 +361,7 @@ msgstr "MDL SDfile"
 
 #: src/mainwindow.cpp:1199
 msgid "NWChem Input"
-msgstr ""
+msgstr "Input NWChem"
 
 #: src/mainwindow.cpp:1204
 msgid "Save Molecule As"
@@ -410,74 +421,74 @@ msgstr "Impossibile incollare la moleola."
 msgid "Paste failed (format unavailable)."
 msgstr "Impossibile incollare (formato non disponibile)."
 
-#: src/mainwindow.cpp:1846
+#: src/mainwindow.cpp:2060
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copia fallita (mdl non disponibile)"
 
-#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
-#: src/mainwindow.cpp:2602
+#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
+#: src/mainwindow.cpp:2816
 #, qt-format
 msgid "View %1"
 msgstr "Vedi %1"
 
-#: src/mainwindow.cpp:2032
+#: src/mainwindow.cpp:2246
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Visualizza %1"
 
-#: src/mainwindow.cpp:2041
+#: src/mainwindow.cpp:2255
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: vista distaccata"
 
-#: src/mainwindow.cpp:2207
+#: src/mainwindow.cpp:2421
 msgid "Normal Size"
 msgstr "Dimensione normale"
 
-#: src/mainwindow.cpp:2220
+#: src/mainwindow.cpp:2434
 msgid "Full Screen"
 msgstr "Schermo intero"
 
-#: src/mainwindow.cpp:2318
+#: src/mainwindow.cpp:2532
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2452
+#: src/mainwindow.cpp:2666
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2458
+#: src/mainwindow.cpp:2672
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:2906
+#: src/mainwindow.cpp:3120
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/mainwindow.cpp:2911
+#: src/mainwindow.cpp:3125
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: src/mainwindow.cpp:2916
+#: src/mainwindow.cpp:3130
 msgid "Remove"
 msgstr "Elimina"
 
-#: src/mainwindow.cpp:2944
+#: src/mainwindow.cpp:3158
 msgid "No tools or engines loaded."
 msgstr "Nessuno strumento o motore caricati."
 
-#: src/mainwindow.cpp:2946
+#: src/mainwindow.cpp:3160
 msgid "No engines loaded."
 msgstr "Nessun motore caricato."
 
-#: src/mainwindow.cpp:2948
+#: src/mainwindow.cpp:3162
 msgid "No tools loaded."
 msgstr "Nessuno strumento caricato."
 
-#: src/mainwindow.cpp:2949
+#: src/mainwindow.cpp:3163
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -485,33 +496,33 @@ msgstr ""
 " Non è  detto che questa applicazione funzioni. Per favore correggete questo "
 "errore."
 
-#: src/mainwindow.cpp:2993
+#: src/mainwindow.cpp:3207
 msgid "Objects"
 msgstr "Oggetti"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:2999:321
+#: src/mainwindow.cpp:3213:321
 msgid "Colors"
 msgstr "Colori"
 
-#: src/mainwindow.cpp:3032
+#: src/mainwindow.cpp:3246
 msgid " copy"
 msgstr " copia"
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:53
 msgid "Name: "
 msgstr "Nome: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:54
 msgid "Identifier: "
 msgstr "Identificatore: "
 
-#: src/pluginsettings.cpp:57
+#: src/pluginsettings.cpp:55
 msgid "File: "
 msgstr "File: "
 
-#: src/pluginsettings.cpp:58
+#: src/pluginsettings.cpp:56
 msgid "Description:\n"
 msgstr "Descrizione:\n"
 
@@ -692,7 +703,7 @@ msgstr "Aggiungi tutte le primitive"
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr ""
+msgstr "Visualizza Solamente le Primitive Selezionate"
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
@@ -1113,7 +1124,7 @@ msgstr "&Grafiche vettoriali"
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
-msgstr ""
+msgstr "Visualizza gli Assi della Cella Unità"
 
 #. i18n: file: src/mainwindow.ui:683
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1275,7 +1286,8 @@ msgstr ""
 "Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Naldini,Paolo Signifredi,"
 "Sergio Zanchetta,Simone Oberti,mackos,nicola de mitri, ,Launchpad "
 "Contributions:,Alkatron,Geoff Hutchison,Guybrush88,Matteo Ferrabone,"
-"MeltingShell,Michele Gatti,Nikopol,Paolo Signifredi,Simone Oberti"
+"MeltingShell,Michele Gatti,Nikopol,Paolo Signifredi,Simone Oberti, ,"
+"Launchpad Contributions:,94thomas,Giampaolo Bozzali"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1286,4 +1298,19 @@ msgstr ""
 "aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas."
 "Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,"
 "aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,"
-"gino@alkatron.it,,,,,michel_gatti@yahoo.it,aegnor_isilra@hotmail.com,,"
+"gino@alkatron.it,,,,,michel_gatti@yahoo.it,aegnor_isilra@hotmail.com,,,,,"
+"Thomas.Bellotti@liceotosi.org,giampaolo.bozzali@gmail.com"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Versione applicazione: %2<br/><br/>Versione "
+#~ "libreria: %3<br/><br/>Per maggiori informazioni visitare la <a href="
+#~ "\"http://avogadro.openmolecules.net/\">Homepage di Avogadro</a>.<br/><br/"
+#~ ">Il programma è fornito nella sua forma SENZA GARANZIE DI ALCUN TIPO, "
+#~ "INCLUSA LA GARANZIA DI DESIGN, COMMERCIABILITA' E IDONEITA' AD UN "
+#~ "PARTICOLARE UTILIZZO.<br/>"
