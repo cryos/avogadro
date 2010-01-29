@@ -44,10 +44,11 @@ namespace Avogadro {
     QDialog( parent, f )
   {
     ui.setupUi(this);
-    
+
     // Make sure the columns span the whole width of the table widget
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
+
 
     m_indexMap = new std::vector<int>;
 
@@ -91,6 +92,16 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
+    #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      vector<double> raman_activities = m_vibrations->GetRamanActivities();
+      if (raman_activities.size() == 0) {
+        resize(506, height());
+        ui.vibrationTable->setColumnCount(2);
+      } else {
+        resize(567, height());
+        ui.vibrationTable->setColumnCount(3);
+      }
+    #endif
 
     // Generate an index vector to map sorted indicies to the old indices
     m_indexMap->clear();
@@ -140,9 +151,22 @@ namespace Avogadro {
       else {
         newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
       }
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        QTableWidgetItem *newRaman;
+        if (row >= raman_activities.size()) {
+          newRaman = new QTableWidgetItem("-");
+        }
+        else {
+          newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0, 'f', 1));
+        }
+        newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+      #endif
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        ui.vibrationTable->setItem(row, 2, newRaman);
+      #endif
     }
 
     // enable export button
