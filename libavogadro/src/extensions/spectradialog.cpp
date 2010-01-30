@@ -26,6 +26,7 @@
 #include "spectratype_dos.h"
 #include "spectratype_uv.h"
 #include "spectratype_cd.h"
+#include "spectratype_raman.h"
 #endif
 
 #include <QtGui/QPen>
@@ -68,6 +69,7 @@ namespace Avogadro {
     m_spectra_dos = new DOSSpectra(this);
     m_spectra_uv = new UVSpectra(this);
     m_spectra_cd = new CDSpectra(this);
+    m_spectra_raman = new RamanSpectra(this);
 #endif
 
     // Initialize vars
@@ -143,6 +145,7 @@ namespace Avogadro {
     delete m_spectra_dos;
     delete m_spectra_uv;
     delete m_spectra_cd;
+    delete m_spectra_raman;
 #endif
   }
 
@@ -205,6 +208,14 @@ namespace Avogadro {
       ui.combo_spectra->addItem(tr("CD", "Circular Dichromism spectrum"));
       ui.tab_widget->addTab(m_spectra_cd->getTabWidget(), tr("&CD Settings"));
     }
+
+    // Check for Raman data
+    bool hasRaman = m_spectra_raman->checkForData(m_molecule);
+    if (hasRaman) {
+      ui.combo_spectra->addItem(tr("Raman", "Raman spectrum"));
+      ui.tab_widget->addTab(m_spectra_raman->getTabWidget(), tr("&Raman Settings"));
+    }
+    
 
 #endif
 #ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
