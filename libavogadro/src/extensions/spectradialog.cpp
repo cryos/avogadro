@@ -28,21 +28,21 @@
 #include "spectratype_cd.h"
 #endif
 
-#include <QPen>
-#include <QColor>
-#include <QColorDialog>
-#include <QButtonGroup>
-#include <QDebug>
-#include <QDoubleValidator>
-#include <QFileDialog>
-#include <QFontDialog>
-#include <QInputDialog>
-#include <QMessageBox>
-#include <QFile>
-#include <QDir>
-#include <QPixmap>
-#include <QSettings>
-#include <QListWidgetItem>
+#include <QtGui/QPen>
+#include <QtGui/QColor>
+#include <QtGui/QColorDialog>
+#include <QtGui/QButtonGroup>
+#include <QtCore/QDebug>
+#include <QtGui/QDoubleValidator>
+#include <QtGui/QFileDialog>
+#include <QtGui/QFontDialog>
+#include <QtGui/QInputDialog>
+#include <QtGui/QMessageBox>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtGui/QPixmap>
+#include <QtCore/QSettings>
+#include <QtGui/QListWidgetItem>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>

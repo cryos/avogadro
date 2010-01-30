@@ -22,8 +22,8 @@
 #ifndef SPECTRATYPE_DOS_H
 #define SPECTRATYPE_DOS_H
 
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"

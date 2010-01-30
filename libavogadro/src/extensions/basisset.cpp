@@ -36,11 +36,11 @@
 
 #include <cmath>
 
-#include <QtConcurrentMap>
-#include <QFuture>
-#include <QFutureWatcher>
-#include <QReadWriteLock>
-#include <QDebug>
+#include <QtCore/QtConcurrentMap>
+#include <QtCore/QFuture>
+#include <QtCore/QFutureWatcher>
+#include <QtCore/QReadWriteLock>
+#include <QtCore/QDebug>
 
 using std::vector;
 using Eigen::Vector3d;

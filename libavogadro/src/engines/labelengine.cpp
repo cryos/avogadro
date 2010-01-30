@@ -36,7 +36,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
-#include <QDebug>
+#include <QtCore/QDebug>
 #include <QtGui/QColorDialog>
 #include <QtGui/QFontDialog>
 //#include <QtGui/QPainter>

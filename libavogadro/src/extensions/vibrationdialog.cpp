@@ -21,14 +21,14 @@
 
 #include "vibrationdialog.h"
 
-#include <QPushButton>
-#include <QButtonGroup>
-#include <QDebug>
-#include <QFileDialog>
+#include <QtGui/QPushButton>
+#include <QtGui/QButtonGroup>
+#include <QtCore/QDebug>
+#include <QtGui/QFileDialog>
 #include <QProgressDialog>
-#include <QFile>
-#include <QDir>
-#include <QHeaderView>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtGui/QHeaderView>
 
 #include <avogadro/molecule.h>
 

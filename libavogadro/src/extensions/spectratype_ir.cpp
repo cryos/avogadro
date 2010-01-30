@@ -21,9 +21,9 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtCore/QTextStream>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>

@@ -20,10 +20,10 @@
 #ifndef SPECTRATYPE_H
 #define SPECTRATYPE_H
 
-#include <QDialog>
-#include <QHash>
-#include <QVariant>
-#include <QSettings>
+#include <QtGui/QDialog>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
+#include <QtCore/QSettings>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
