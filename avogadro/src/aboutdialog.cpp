@@ -58,6 +58,7 @@ namespace Avogadro {
       QString scmVersion(SCM_REVISION);
       QString appVersion(VERSION);
       QLatin1String obVersion(BABEL_VERSION);
+      QLatin1String qtVersion(QT_VERSION_STR);
       if (scmVersion.length())
         appVersion += ' ' + QString(tr("(Git revision: %1)", "%1 is the Git revision number.")).arg(scmVersion);
       QString libVersion(Library::version());
@@ -68,13 +69,13 @@ namespace Avogadro {
           tr("<h3>%1</h3>"
             "<br/><br/>Application Version: %2"
             "<br/><br/>Library Version: %3"
-            "<br/><br/>Open Babel Version: %4"
-            "<br/><br/>Qt Version: %5"
+            "<br/><br/>Open Babel Version: %4").arg(tr("Avogadro")).arg(appVersion).arg(libVersion).arg(obVersion) +
+          tr("<br/><br/>Qt Version: %1"
             "<br/><br/>For more information check the <a href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>."
             "<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND,"
             " INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A"
             " PARTICULAR PURPOSE.<br/>"
-             ).arg(tr("Avogadro")).arg(appVersion).arg(libVersion).arg(obVersion).arg(QLatin1String(QT_VERSION_STR)));
+             ).arg(qtVersion));
 
       cmd->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       cmd->setDefault(true);
