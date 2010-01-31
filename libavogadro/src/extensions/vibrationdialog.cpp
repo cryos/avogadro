@@ -101,6 +101,8 @@ namespace Avogadro {
         resize(567, height());
         ui.vibrationTable->setColumnCount(3);
       }
+    #else
+        ui.vibrationTable->setColumnCount(2);
     #endif
 
     // Generate an index vector to map sorted indicies to the old indices
