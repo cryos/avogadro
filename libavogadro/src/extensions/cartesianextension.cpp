@@ -188,8 +188,6 @@ namespace Avogadro
     }
     else { // more columns
         for (int i=0; i<format.length(); i++) {
-            //if (format.at(i) == 'i')
-              //continue; // nothing valuable
               
             if ((format.at(i)=='d') || (format.length()==4 && format.at(i)=='i')) {
               // double
@@ -291,7 +289,6 @@ namespace Avogadro
     mol->ConnectTheDots();
     mol->PerceiveBondOrders();
     
-    //qDebug() << "molecule updated";
     return true;
   }
   
@@ -305,7 +302,6 @@ namespace Avogadro
     if (!m_molecule) {
         clear();
     } else {
-       // QList<Atom*> atomList = m_molecule->atoms();
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
@@ -458,7 +454,6 @@ namespace Avogadro
       return 0; // nothing we can do
 
     // Disconnect in case we're attached to a new widget
-    // TODO: detect if different molecule was load into the same widget
     if (m_widget) {
       disconnect( m_molecule, 0, 0, 0 );
       if (m_dialog) {
