@@ -73,18 +73,18 @@ namespace Avogadro {
   void RamanSpectra::writeSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
 
-    settings.setValue("spectra/IR/scale", m_scale);
-    settings.setValue("spectra/IR/gaussianWidth", ui.spin_FWHM->value());
-    settings.setValue("spectra/IR/labelPeaks", ui.cb_labelPeaks->isChecked());
-    settings.setValue("spectra/IR/yAxisUnits", ui.combo_yaxis->currentText());
+    settings.setValue("spectra/Raman/scale", m_scale);
+    settings.setValue("spectra/Raman/gaussianWidth", ui.spin_FWHM->value());
+    settings.setValue("spectra/Raman/labelPeaks", ui.cb_labelPeaks->isChecked());
+    settings.setValue("spectra/Raman/yAxisUnits", ui.combo_yaxis->currentText());
   }
 
   void RamanSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
-    ui.spin_scale->setValue(settings.value("spectra/IR/scale", 1.0).toDouble());
-    ui.spin_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
+    ui.spin_scale->setValue(settings.value("spectra/Raman/scale", 1.0).toDouble());
+    ui.spin_FWHM->setValue(settings.value("spectra/Raman/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
+    updateYAxis(settings.value("spectra/Raman/yAxisUnits","Absorbance (%)").toString());
     emit plotDataChanged();
   }
 
@@ -95,7 +95,7 @@ namespace Avogadro {
 
     // OK, we have valid vibrations, so store them for later
     vector<double> wavenumbers = vibrations->GetFrequencies();
-    vector<double> intensities = vibrations->GetRamanIntensities();
+    vector<double> intensities = vibrations->GetRamanActivities();
 
     // Case where there are no intensities, set all intensities to an arbitrary value, i.e. 1.0
     if (wavenumbers.size() > 0 && intensities.size() == 0) {
