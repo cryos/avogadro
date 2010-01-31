@@ -717,7 +717,7 @@ namespace Avogadro
           " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output)"
+        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output *.gamout *.g98 *.g03 *.nwo)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
