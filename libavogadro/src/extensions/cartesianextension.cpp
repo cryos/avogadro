@@ -305,7 +305,7 @@ namespace Avogadro
     if (!m_molecule) {
         clear();
     } else {
-        QList<Atom*> atomList = m_molecule->atoms();
+       // QList<Atom*> atomList = m_molecule->atoms();
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
@@ -320,7 +320,7 @@ namespace Avogadro
           break;
         }
         
-        for (int i=0; i<atomList.size(); i++) {
+        for (int i=0; i<m_molecule->numAtoms(); i++) {
           Atom *atom = m_molecule->atom(i);
           switch (m_format) {
           case XYZ:
@@ -439,9 +439,14 @@ namespace Avogadro
   void CartesianExtension::setMolecule(Molecule *molecule)
   {
     if (m_molecule)
-      disconnect( m_molecule, 0, this, 0 );
+      disconnect( m_molecule, 0, 0, 0 );
 
     m_molecule = molecule;
+
+    if (m_dialog) {
+      m_dialog->setMolecule(molecule);
+      m_dialog->updateCoordinates();
+    }
   }
 
   QUndoCommand* CartesianExtension::performAction(QAction *action,
@@ -454,8 +459,14 @@ namespace Avogadro
       return 0; // nothing we can do
 
     // Disconnect in case we're attached to a new widget
-    if (m_widget)
-      disconnect( m_molecule, 0, this, 0 );
+    // TODO: detect if different molecule was load into the same widget
+    if (m_widget) {
+      disconnect( m_molecule, 0, 0, 0 );
+      if (m_dialog) {
+        m_dialog->setMolecule(m_molecule);
+        m_dialog->updateCoordinates();
+      }
+    }
 
     if (widget)
       m_widget = widget;    
@@ -464,7 +475,7 @@ namespace Avogadro
       m_dialog = new CartesianEditor(m_widget);
       m_dialog->setMolecule(m_molecule);      
     }
-    
+     
     m_dialog->show();
     m_dialog->updateCoordinates();
 
