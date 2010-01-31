@@ -411,7 +411,7 @@ namespace Avogadro
     action->setSeparator(true);
     action->setData(-1);
     m_actions.append(action);
-    
+
     action = new QAction( this );
     action->setText( tr("Cartesian Editor..." ));
     m_actions.append( action );
