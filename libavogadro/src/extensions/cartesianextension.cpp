@@ -440,7 +440,6 @@ namespace Avogadro
 
     if (m_dialog) {
       m_dialog->setMolecule(molecule);
-      m_dialog->updateCoordinates();
     }
   }
 
@@ -458,7 +457,6 @@ namespace Avogadro
       disconnect( m_molecule, 0, 0, 0 );
       if (m_dialog) {
         m_dialog->setMolecule(m_molecule);
-        m_dialog->updateCoordinates();
       }
     }
 
