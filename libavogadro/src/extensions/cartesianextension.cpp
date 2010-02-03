@@ -44,7 +44,9 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   int GetAtomicNum(string name, int &iso);
+#endif
   
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
                            m_unit(0), m_format(0), m_illegalInput(false)
@@ -216,7 +218,11 @@ namespace Avogadro
               QString s = data.at(i);
               while (s.length()!=0) { // recognize name with number
                 iso = 0;
-                n = GetAtomicNum(s.toStdString(), iso);
+                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+                  n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
+                #else
+                  n = GetAtomicNum(s.toStdString(), iso);
+                #endif
                 if (iso != 0)
                   n = 1;
             
@@ -266,8 +272,12 @@ namespace Avogadro
               
               QString _s = s_data.at(i);
               while (_s.length()!=0) { // recognize name with number
-                _iso=0;  
-                _n = GetAtomicNum(_s.toStdString(), _iso);
+                _iso=0;
+                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99 
+                  _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
+                #else
+                  _n = GetAtomicNum(_s.toStdString(), _iso);
+                #endif
                 if (_iso != 0)
                   _n = 1;
             
@@ -474,6 +484,7 @@ namespace Avogadro
     return undo;
   }
 
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   //int OBElementTable::GetAtomicNum(string name, int &iso)
   int GetAtomicNum(string name, int &iso)
   {
@@ -504,7 +515,7 @@ namespace Avogadro
       iso = 0;
     return(0);
   }
-
+#endif
   
 } // end namespace Avogadro
 
