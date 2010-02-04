@@ -238,7 +238,7 @@ namespace Avogadro {
     bool hasDOS = false;
     bool hasUV = false;
     bool hasCD = false;
-    bool hasRaman = false
+    bool hasRaman = false;
     
 #endif
 
