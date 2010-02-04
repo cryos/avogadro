@@ -46,24 +46,14 @@ namespace Avogadro {
 
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
-
-    QWidget * getTabWidget();
-
+    
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
+  //  void setImportedData(const QList<double> & xList, const QList<double> & yList);
+  //  void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
-
-  public slots:
-
-  private slots:
-
-  signals:
-    void plotDataChanged();
 
   private:
     Ui::Tab_UV ui;
-    SpectraDialog *m_dialog;
     double m_fermi;
     uint m_numAtoms;
   };

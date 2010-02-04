@@ -23,9 +23,8 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -35,17 +34,9 @@ using namespace std;
 namespace Avogadro {
 
   DOSSpectra::DOSSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent), m_intDOS(0)
+    SpectraType( parent ), m_intDOS(0)
   {
-    m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
-
-    m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -69,13 +60,8 @@ namespace Avogadro {
   }
 
   DOSSpectra::~DOSSpectra() {
-    // TODO: Anything to delete?
-    delete m_xList;
-    delete m_yList;
-    delete m_xList_imp;
-    delete m_yList_imp;
-    delete m_tab_widget;
     writeSettings();
+    // TODO: Anything to delete?
   }
 
   void DOSSpectra::writeSettings() {
@@ -85,7 +71,9 @@ namespace Avogadro {
     settings.setValue("spectra/DOS/scaleIntegrated", ui.cb_scaleIntegrated->isChecked());
     settings.setValue("spectra/DOS/energyUnits", ui.combo_energy->currentIndex());
     settings.setValue("spectra/DOS/densityUnits", ui.combo_density->currentIndex());
+//qDebug() <<  ui.spin_valence->value();
     settings.setValue("spectra/DOS/valence", ui.spin_valence->value());
+    
   }
 
   void DOSSpectra::readSettings() {
@@ -95,7 +83,7 @@ namespace Avogadro {
     ui.cb_scaleIntegrated->setChecked(settings.value("spectra/DOS/scaleIntegrated", false).toBool());
     ui.combo_energy->setCurrentIndex(settings.value("spectra/DOS/energyUnits", ENERGY_EV).toInt());
     ui.combo_density->setCurrentIndex(settings.value("spectra/DOS/densityUnits", DENSITY_PER_CELL).toInt());
-    ui.spin_valence->setValue(settings.value("spectra/DOS/valence", 1).toDouble());
+    ui.spin_valence->setValue(settings.value("spectra/DOS/valence", 1).toInt());
   }
 
   bool DOSSpectra::checkForData(Molecule * mol) {
@@ -117,14 +105,14 @@ namespace Avogadro {
     m_numAtoms = mol->numAtoms();
     m_fermi = dos->GetFermiEnergy();
     ui.label_fermi->setText(QString::number(m_fermi));
-    m_xList->clear();
-    m_yList->clear();
+    m_xList.clear();
+    m_yList.clear();
     bool generateInt = false;
     if (m_intDOS->size() == 0) generateInt = true;
     for (uint i = 0; i < energies.size(); i++){
-      m_xList->append(energies.at(i));
+      m_xList.append(energies.at(i));
       double d = densities.at(i);
-      m_yList->append(d);
+      m_yList.append(d);
       if (generateInt) {
         if (i == 0)
           m_intDOS->push_back(d);
@@ -133,7 +121,7 @@ namespace Avogadro {
       }
     }
 
-    setImportedData(*m_xList,
+    setImportedData(m_xList,
                     QList<double>::fromVector(QVector<double>::fromStdVector(*m_intDOS)));
 
     return true;
@@ -161,7 +149,7 @@ namespace Avogadro {
     }
   }
 
-  QWidget * DOSSpectra::getTabWidget() {return m_tab_widget;}
+ // QWidget * DOSSpectra::getTabWidget() {return m_tab_widget;}
 
   void DOSSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -180,21 +168,21 @@ namespace Avogadro {
     else
       ui.spin_valence->setVisible(false);
 
-    for (int i = 0; i < m_yList->size(); i++) {
+    for (int i = 0; i < m_yList.size(); i++) {
       switch (energy_index) {
       case ENERGY_EV:
-        energy = m_xList->at(i);
+        energy = m_xList.at(i);
         break;
       }
       switch (density_index) {
       case DENSITY_PER_CELL:
-        density = m_yList->at(i);
+        density = m_yList.at(i);
         break;
       case DENSITY_PER_ATOM:
-        density = m_yList->at(i) / ((double)m_numAtoms);
+        density = m_yList.at(i) / ((double)m_numAtoms);
         break;
       case DENSITY_PER_VALENCE:
-        density = m_yList->at(i) / valence;
+        density = m_yList.at(i) / valence;
         break;
       }
       if (use_fermi) energy -= m_fermi;
@@ -202,10 +190,10 @@ namespace Avogadro {
     }
   } 
 
-  void DOSSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
+  /*void DOSSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
     m_yList_imp = new QList<double> (yList);
-  }
+  }*/
 
   void DOSSpectra::getImportedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -218,10 +206,10 @@ namespace Avogadro {
     double scale = 0; // leave at 0 if no scaling is to be done
     if (ui.cb_scaleIntegrated->isChecked()) {
       // Get scaling factors
-      double d_max = m_yList->at(0);
+      double d_max = m_yList.at(0);
       double i_max = m_intDOS->at(m_intDOS->size() - 1);
-      for (int i = 0; i < m_yList->size(); i++){
-        double d = m_yList->at(i);
+      for (int i = 0; i < m_yList.size(); i++){
+        double d = m_yList.at(i);
         if (d > d_max) d_max = d;
       }
 
@@ -238,21 +226,21 @@ namespace Avogadro {
     else
       ui.spin_valence->setVisible(false);
 
-    for (int i = 0; i < m_yList_imp->size(); i++) {
+    for (int i = 0; i < m_yList_imp.size(); i++) {
       switch (energy_index) {
       case ENERGY_EV:
-        energy = m_xList_imp->at(i);
+        energy = m_xList_imp.at(i);
         break;
       }
       switch (density_index) {
       case DENSITY_PER_CELL:
-        density = m_yList_imp->at(i);
+        density = m_yList_imp.at(i);
         break;
       case DENSITY_PER_ATOM:
-        density = m_yList_imp->at(i) / ((double)m_numAtoms);
+        density = m_yList_imp.at(i) / ((double)m_numAtoms);
         break;
       case DENSITY_PER_VALENCE:
-        density = m_yList_imp->at(i) / valence;
+        density = m_yList_imp.at(i) / valence;
         break;
       }
       if (use_fermi) energy -= m_fermi;
@@ -262,14 +250,15 @@ namespace Avogadro {
   }
 
   QString DOSSpectra::getTSV() {
-    QString str;
+    /*QString str;
     QTextStream out (&str);
     QString format = "%1\t%2\n";
     out << "Energy(eV)\tDensity(e/UC)\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 6, 'g').arg(m_yList->at(i), 6, 'g');
+    for(int i = 0; i< m_xList.size(); i++) {
+      out << format.arg(m_xList.at(i), 6, 'g').arg(m_yList.at(i), 6, 'g');
     }
-    return str;
+    return str;*/
+    return SpectraType::getTSV("Energy(eV)", "Density(e/UC)");
   }
 
   void DOSSpectra::toggleIntegratedDOS(bool b) {

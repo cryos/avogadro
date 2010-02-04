@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -17,11 +17,12 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
 #include "spectratype_raman.h"
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QtCore/QTextStream>
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 
@@ -33,17 +34,17 @@ using namespace std;
 namespace Avogadro {
 
   RamanSpectra::RamanSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent)
+    SpectraType( parent )//, m_dialog(parent)
   {
-    m_tab_widget = new QWidget;
+    //m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
 
-    m_xList = new QList<double>;
+    /*m_xList = new QList<double>;
     m_yList = new QList<double>;
     m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
+    m_yList_imp = new QList<double>;*/
 
-    m_dialog = parent;
+    //m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -63,11 +64,11 @@ namespace Avogadro {
    RamanSpectra::~RamanSpectra() {
      // TODO: Anything to delete?
      writeSettings();
-     delete m_xList;
+     /*delete m_xList;
      delete m_yList;
      delete m_xList_imp;
-     delete m_yList_imp;
-     delete m_tab_widget;
+     delete m_yList_imp;*/
+     //delete m_tab_widget;
    }
 
   void RamanSpectra::writeSettings() {
@@ -81,10 +82,11 @@ namespace Avogadro {
 
   void RamanSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
-    ui.spin_scale->setValue(settings.value("spectra/Raman/scale", 1.0).toDouble());
+    m_scale = settings.value("spectra/Raman/scale", 1.0).toDouble();
+    ui.spin_scale->setValue(m_scale);    
     ui.spin_FWHM->setValue(settings.value("spectra/Raman/gaussianWidth",0.0).toDouble());
-    ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/Raman/yAxisUnits","Absorbance (%)").toString());
+    ui.cb_labelPeaks->setChecked(settings.value("spectra/Raman/labelPeaks",false).toBool());
+    updateYAxis(settings.value("spectra/Raman/yAxisUnits","Raman Activity (A<sup>4</sup>/amu)").toString());
     emit plotDataChanged();
   }
 
@@ -97,16 +99,19 @@ namespace Avogadro {
     vector<double> wavenumbers = vibrations->GetFrequencies();
     vector<double> intensities = vibrations->GetRamanActivities();
 
-    // Case where there are no intensities, set all intensities to an arbitrary value, i.e. 1.0
+    if (wavenumbers.size() == 0 || intensities.size() == 0)
+      return false;
+
+    /* Case where there are no intensities, set all intensities to an arbitrary value, i.e. 1.0
     if (wavenumbers.size() > 0 && intensities.size() == 0) {
       // Warn user
-      QMessageBox::information(m_dialog, tr("No intensities"), tr("The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization."));
+      //QMessageBox::information(m_dialog, tr("No intensities"), tr("The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization."));
       for (uint i = 0; i < wavenumbers.size(); i++) {
         intensities.push_back(1.0);
       }
-    }
+    }*/
 
-    // Normalize intensities into transmittances
+    // 
     double maxIntensity=0;
     for (unsigned int i = 0; i < intensities.size(); i++) {
       if (intensities.at(i) >= maxIntensity) {
@@ -114,7 +119,7 @@ namespace Avogadro {
       }
     }
 
-    vector<double> transmittances;
+    /*vector<double> transmittances;
 
     for (unsigned int i = 0; i < intensities.size(); i++) {
       double t = intensities.at(i);
@@ -123,26 +128,26 @@ namespace Avogadro {
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
-    }
+    }*/
 
     // Store in member vars
-    m_xList->clear();
-    m_yList->clear();
+    m_xList.clear();
+    m_yList.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
-      m_xList->append(wavenumbers.at(i));
-      m_yList->append(transmittances.at(i));
+      m_xList.append(wavenumbers.at(i));
+      m_yList.append(intensities.at(i));
     }
 
     return true;
   }
 
   void RamanSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 5000.0, 0.0, 0.0, 100.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
 
-  QWidget * RamanSpectra::getTabWidget() {return m_tab_widget;}
+ // QWidget * RamanSpectra::getTabWidget() {return m_tab_widget;}
 
   void RamanSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -159,22 +164,23 @@ namespace Avogadro {
     }
 
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
-      plotObject->addPoint( 400, 100);
+      plotObject->addPoint( 0, 0);
 
-      for (int i = 0; i < m_yList->size(); i++) {
-        double wavenumber = m_xList->at(i) * m_scale;
-        double transmittance = m_yList->at(i);
-        plotObject->addPoint ( wavenumber, 100 );
+      for (int i = 0; i < m_yList.size(); i++) {
+        double wavenumber = m_xList.at(i) * m_scale;
+        double transmittance = m_yList.at(i);
+        plotObject->addPoint ( wavenumber, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
           // %L1 uses localized number format (e.g., 1.023,4 in Europe)
           plotObject->addPoint( wavenumber, transmittance, QString("%L1").arg(wavenumber, 0, 'f', 1) );
         }
         else {
           plotObject->addPoint( wavenumber, transmittance );
+          cerr << wavenumber << "\t" << transmittance << endl;
         }
-        plotObject->addPoint( wavenumber, 100 );
+        plotObject->addPoint( wavenumber, 0 );
       }
-      plotObject->addPoint( 4000, 100);
+      plotObject->addPoint( 5000, 0);
     } // End singlets
 
     else { // Get gaussians
@@ -186,11 +192,11 @@ namespace Avogadro {
       QList<double> xPoints = getXPoints(FWHM, 10);
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);
-        double y = 100;
-        for (int j = 0; j < m_yList->size(); j++) {
-          double t = m_yList->at(j);
-          double w = m_xList->at(j) * m_scale;
-          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+        double y = 0;
+        for (int j = 0; j < m_yList.size(); j++) {
+          double t = m_yList.at(j);
+          double w = m_xList.at(j) * m_scale;
+          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
       }
@@ -213,52 +219,54 @@ namespace Avogadro {
       }
     } // End gaussians
 
-    // Convert to absorbance?
+    /* 
     if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
       for(int i = 0; i< plotObject->points().size(); i++) {
         double absorbance = 100 - plotObject->points().at(i)->y();
         plotObject->points().at(i)->setY(absorbance);
       }
-    }
+    }*/
     return;
   } // End Raman spectra
 
-  void RamanSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
+  /*void RamanSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
     m_yList_imp = new QList<double> (yList);
+    SpectraType::setImportedData(xList, yList);
 
     // Convert y values to percents from fraction, if necessary...
     bool convert = true;
-    for (int i = 0; i < m_yList_imp->size(); i++) {
-      if (m_yList_imp->at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
+    for (int i = 0; i < m_yList_imp.size(); i++) {
+      if (m_yList_imp.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
         convert = false;
         break;
       }
     }
     if (convert) {
-      for (int i = 0; i < m_yList->size(); i++) {
-        double tmp = m_yList->at(i);
+      for (int i = 0; i < m_yList.size(); i++) {
+        double tmp = m_yList.at(i);
         tmp *= 100;
-        m_yList->replace(i, tmp);
+        m_yList.replace(i, tmp);
       }
     }
-  }
+  }*/
 
-  void RamanSpectra::getImportedPlotObject(PlotObject *plotObject) {
+  /*void RamanSpectra::getImportedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
-  }
+    for (int i = 0; i < m_xList_imp.size(); i++)
+      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
+  }*/
 
   QString RamanSpectra::getTSV() {
-    QString str;
+    /*QString str;
     QTextStream out (&str);
     QString format = "%1\t%2\n";
-    out << "Frequencies\tIntensities\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 0, 'g').arg(m_yList->at(i), 0, 'g');
+    out << "Frequencies\tActivities\n";
+    for(int i = 0; i< m_xList.size(); i++) {
+      out << format.arg(m_xList.at(i), 0, 'g').arg(m_yList.at(i), 0, 'g');
     }
-    return str;
+    return str;*/
+    return SpectraType::getTSV("Frequencies", "Activities");
   }
 
   void RamanSpectra::setScale(double scale) {
@@ -277,3 +285,6 @@ namespace Avogadro {
     emit plotDataChanged();
   }
 }
+
+#endif
+

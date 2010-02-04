@@ -45,11 +45,8 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
   public slots:
@@ -58,12 +55,8 @@ namespace Avogadro {
   private slots:
     void updateYAxis(QString);
 
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_IR ui;
-    SpectraDialog *m_dialog;
     double m_scale;
     QString m_yaxis;
 

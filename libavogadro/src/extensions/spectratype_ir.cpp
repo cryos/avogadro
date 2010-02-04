@@ -21,7 +21,6 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QtCore/QTextStream>
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 
@@ -33,17 +32,9 @@ using namespace std;
 namespace Avogadro {
 
   IRSpectra::IRSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent)
+    SpectraType( parent )
   {
-    m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
-
-    m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -57,17 +48,12 @@ namespace Avogadro {
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
 
-    readSettings();
+    readSettings();    
   }
 
    IRSpectra::~IRSpectra() {
      // TODO: Anything to delete?
      writeSettings();
-     delete m_xList;
-     delete m_yList;
-     delete m_xList_imp;
-     delete m_yList_imp;
-     delete m_tab_widget;
    }
 
   void IRSpectra::writeSettings() {
@@ -81,7 +67,8 @@ namespace Avogadro {
 
   void IRSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
-    ui.spin_scale->setValue(settings.value("spectra/IR/scale", 1.0).toDouble());
+    m_scale = settings.value("spectra/IR/scale", 1.0).toDouble();
+    ui.spin_scale->setValue(m_scale);    
     ui.spin_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
     updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
@@ -115,22 +102,26 @@ namespace Avogadro {
     }
 
     vector<double> transmittances;
-
+    
     for (unsigned int i = 0; i < intensities.size(); i++) {
       double t = intensities.at(i);
-      t = t / maxIntensity; 	// Normalize
+      if (maxIntensity != 0) {
+        t = t / maxIntensity; 	// Normalize
+      }
+      qDebug() << wavenumbers.at(i) << t;
       t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
+      qDebug() << t;
     }
 
     // Store in member vars
-    m_xList->clear();
-    m_yList->clear();
+    m_xList.clear();
+    m_yList.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
-      m_xList->append(wavenumbers.at(i));
-      m_yList->append(transmittances.at(i));
+      m_xList.append(wavenumbers.at(i));
+      m_yList.append(transmittances.at(i));
     }
 
     return true;
@@ -141,8 +132,6 @@ namespace Avogadro {
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
-
-  QWidget * IRSpectra::getTabWidget() {return m_tab_widget;}
 
   void IRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -161,9 +150,9 @@ namespace Avogadro {
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
       plotObject->addPoint( 400, 100);
 
-      for (int i = 0; i < m_yList->size(); i++) {
-        double wavenumber = m_xList->at(i) * m_scale;
-        double transmittance = m_yList->at(i);
+      for (int i = 0; i < m_yList.size(); i++) {
+        double wavenumber = m_xList.at(i) * m_scale;
+        double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 100 );
         if (ui.cb_labelPeaks->isChecked()) {
           // %L1 uses localized number format (e.g., 1.023,4 in Europe)
@@ -187,9 +176,9 @@ namespace Avogadro {
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);
         double y = 100;
-        for (int j = 0; j < m_yList->size(); j++) {
-          double t = m_yList->at(j);
-          double w = m_xList->at(j) * m_scale;
+        for (int j = 0; j < m_yList.size(); j++) {
+          double t = m_yList.at(j);
+          double w = m_xList.at(j) * m_scale;
           y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -224,45 +213,31 @@ namespace Avogadro {
   } // End IR spectra
 
   void IRSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
-    m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);
+    m_xList_imp = xList;
+    m_yList_imp = yList;    
 
     // Convert y values to percents from fraction, if necessary...
     bool convert = true;
-    for (int i = 0; i < m_yList_imp->size(); i++) {
-      if (m_yList_imp->at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
+    for (int i = 0; i < m_yList_imp.size(); i++) {
+      if (m_yList_imp.at(i) > 1.5) { // If transmittances exist greater than this, they're already in percent.
         convert = false;
         break;
       }
     }
     if (convert) {
-      for (int i = 0; i < m_yList->size(); i++) {
-        double tmp = m_yList->at(i);
+      for (int i = 0; i < m_yList_imp.size(); i++) {
+        double tmp = m_yList_imp.at(i);
         tmp *= 100;
-        m_yList->replace(i, tmp);
+        m_yList_imp.replace(i, tmp);
       }
     }
   }
 
-  void IRSpectra::getImportedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
-  }
-
   QString IRSpectra::getTSV() {
-    QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Frequencies\tIntensities\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 0, 'g').arg(m_yList->at(i), 0, 'g');
-    }
-    return str;
+    return SpectraType::getTSV("Frequencies", "Intensities");
   }
 
   void IRSpectra::setScale(double scale) {
-    qDebug() << scale << " " << m_scale;
     if (scale == m_scale) return;
     m_scale = scale;
     emit plotDataChanged();

@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -45,11 +45,9 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
+   // void setImportedData(const QList<double> & xList, const QList<double> & yList);
+   // void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
   public slots:
@@ -58,12 +56,8 @@ namespace Avogadro {
   private slots:
     void updateYAxis(QString);
 
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_Raman ui;
-    SpectraDialog *m_dialog;
     double m_scale;
     QString m_yaxis;
 

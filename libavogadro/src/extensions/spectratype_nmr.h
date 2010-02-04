@@ -38,17 +38,15 @@ namespace Avogadro {
     NMRSpectra( SpectraDialog *parent = 0 );
     ~NMRSpectra();
 
-    virtual void writeSettings();
-    virtual void readSettings();
+    void writeSettings();
+    void readSettings();
 
-    virtual bool checkForData(Molecule* mol);
-    virtual void setupPlot(PlotWidget * plot);
+    bool checkForData(Molecule* mol);
+    void setupPlot(PlotWidget * plot);
 
-    virtual QWidget * getTabWidget();
-
-    virtual void getCalculatedPlotObject(PlotObject *plotObject);
-    virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    virtual void getImportedPlotObject(PlotObject *plotObject);
+    void getCalculatedPlotObject(PlotObject *plotObject);
+    void setImportedData(const QList<double> & xList, const QList<double> & yList);
+   // virtual void getImportedPlotObject(PlotObject *plotObject);
     virtual QString getTSV();
 
   public slots:
@@ -58,12 +56,8 @@ namespace Avogadro {
     void setReference(double ref);
     void updatePlotAxes();
 
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_NMR ui;
-    SpectraDialog *m_dialog;
     double m_ref;
     QHash<QString, QList<double>* > *m_NMRdata;
   };
