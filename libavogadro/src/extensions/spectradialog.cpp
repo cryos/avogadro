@@ -44,6 +44,7 @@
 #include <QtGui/QPixmap>
 #include <QtCore/QSettings>
 #include <QtGui/QListWidgetItem>
+#include <QtGui/QDesktopWidget>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -61,6 +62,7 @@ namespace Avogadro {
       QDialog( parent, f )
   {
     ui.setupUi(this);
+    ui.dataTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
@@ -77,6 +79,8 @@ namespace Avogadro {
 
     // Hide advanced options initially
     ui.tab_widget->hide();
+    ui.dataTable->hide();
+    ui.push_exportData->hide();
 
     // setting the limits for the plot
     ui.plot->setAntialiasing(true);
@@ -124,6 +128,8 @@ namespace Avogadro {
             this, SLOT(importSpectra()));
     connect(ui.push_export, SIGNAL(clicked()),
             this, SLOT(exportSpectra()));
+    connect(ui.push_exportData, SIGNAL(clicked()),
+            this, SLOT(exportSpectra()));        
 
     // Misc. connections
     connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
@@ -155,6 +161,17 @@ namespace Avogadro {
       return;
     }
     m_molecule = molecule;
+
+    m_spectra_ir->clear();
+    m_spectra_nmr->clear();
+#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    m_spectra_dos->clear();
+    m_spectra_uv->clear();
+    m_spectra_cd->clear();
+    m_spectra_raman->clear();
+#endif
+
+    updatePlot();
 
     // set the filename in the image export widget
     QFileInfo defaultFile(m_molecule->fileName());
@@ -216,16 +233,17 @@ namespace Avogadro {
       ui.tab_widget->addTab(m_spectra_raman->getTabWidget(), tr("&Raman Settings"));
     }
     
+#else
 
-#endif
-#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
     bool hasDOS = false;
     bool hasUV = false;
     bool hasCD = false;
+    bool hasRaman = false
+    
 #endif
 
     // Change this when other spectra are added!!
-    if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD) { // Actions if there are no spectra loaded
+    if (!hasIR && !hasNMR && !hasDOS && !hasUV && !hasCD && !hasRaman) { // Actions if there are no spectra loaded
       qWarning() << "SpectraDialog::setMolecule: No spectra available!";
       ui.combo_spectra->addItem(tr("No data"));
       ui.push_colorCalculated->setEnabled(false);
@@ -238,13 +256,22 @@ namespace Avogadro {
       ui.cb_calculate->setChecked(true);
     }
     // Set the appearances tab to be opened by default
+    QSettings settings; // Already set up in avogadro/src/main.cpp
     ui.tab_widget->setCurrentIndex(0);
+    int i = settings.value("spectra/currentSpectra", 0).toInt();
+    if ((i < ui.combo_spectra->count()) && (i>0)) {
+      ui.combo_spectra->setCurrentIndex(i);
+    } else {
+      ui.combo_spectra->setCurrentIndex(0);
+    }
     updateCurrentSpectra( ui.combo_spectra->currentText() );
     regenerateCalculatedSpectra();
   }
 
   void SpectraDialog::writeSettings() const {
     QSettings settings; // Already set up in avogadro/src/main.cpp
+
+    settings.setValue("spectra/currentSpectra", ui.combo_spectra->currentIndex());
 
     settings.setValue("spectra/image/width", ui.spin_imageWidth->value());
     settings.setValue("spectra/image/height", ui.spin_imageHeight->value());
@@ -482,7 +509,7 @@ namespace Avogadro {
       defaultPath = QDir::homePath();
     }
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".tsv";
-    QString filename 	= QFileDialog::getSaveFileName(this, tr("Export Calculated Spectrum"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
+    QString filename = QFileDialog::getSaveFileName(this, tr("Export Calculated Spectrum"), defaultFileName, tr("Tab Separated Values (*.tsv)"));
 
     // Open file
     QFile file (filename);
@@ -552,7 +579,7 @@ namespace Avogadro {
       }
       if (data.at(0).toDouble() && data.at(1).toDouble()) {
         x.append(data.at(0).toDouble());
-        y.append(data.at(1).toDouble());
+        y.append(data.at(1).toDouble());        
       }
       else {
         qWarning() << "SpectraDialog::importSpectra Skipping entry as invalid:\n\t" << data;
@@ -984,32 +1011,49 @@ namespace Avogadro {
     if (ui.tab_widget->isHidden()) {
       ui.push_customize->setText(tr("Customi&ze <<"));
       ui.tab_widget->show();
+      ui.dataTable->show();
+      ui.push_exportData->show();
       QSize s = size();
+      s.setWidth(s.width() + ui.dataTable->size().width());
       s.setHeight(s.height() + ui.tab_widget->size().height());
       resize(s);
+      //adjustSize();
+      QRect rect = QApplication::desktop()->geometry();
+      move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
     else {
       ui.push_customize->setText(tr("Customi&ze >>"));
       QSize s = size();
+      s.setWidth(s.width() - ui.dataTable->size().width());
       s.setHeight(s.height() - ui.tab_widget->size().height());
       resize(s);
       ui.tab_widget->hide();
+      ui.dataTable->hide();
+      ui.push_exportData->hide();
+      //adjustSize();
+      QRect rect = QApplication::desktop()->geometry();
+      move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
   }
 
   void SpectraDialog::regenerateCalculatedSpectra() {
-    if (currentSpectra()) currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
+    if (currentSpectra()) {
+        currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
+        currentSpectra()->updateDataTable();
+    }
     updatePlot();
   }
 
   void SpectraDialog::regenerateImportedSpectra() {
-    if (currentSpectra()) currentSpectra()->getImportedPlotObject(m_importedSpectra);
+    if (currentSpectra())
+        currentSpectra()->getImportedPlotObject(m_importedSpectra);
     updatePlot();
   }
 
   void SpectraDialog::updatePlot()
   {
-    if (currentSpectra()) currentSpectra()->setupPlot(ui.plot);
+    if (currentSpectra())
+        currentSpectra()->setupPlot(ui.plot);
     ui.plot->update();
   }
 
@@ -1025,6 +1069,8 @@ namespace Avogadro {
       return m_spectra_uv;
     else if (m_spectra == "CD")
       return m_spectra_cd;
+    else if (m_spectra == "Raman")
+      return m_spectra_raman;
 #endif
     return NULL;
   }

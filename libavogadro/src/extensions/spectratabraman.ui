@@ -43,12 +43,7 @@
         </property>
         <item>
          <property name="text">
-          <string>Transmittance (%)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Absorbance (%)</string>
+          <string>Raman Activity (A^4/amu)</string>
          </property>
         </item>
        </widget>
