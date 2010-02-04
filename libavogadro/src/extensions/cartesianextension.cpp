@@ -44,7 +44,9 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   int GetAtomicNum(string name, int &iso);
+#endif
   
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
                            m_unit(0), m_format(0), m_illegalInput(false)
@@ -188,8 +190,6 @@ namespace Avogadro
     }
     else { // more columns
         for (int i=0; i<format.length(); i++) {
-            //if (format.at(i) == 'i')
-              //continue; // nothing valuable
               
             if ((format.at(i)=='d') || (format.length()==4 && format.at(i)=='i')) {
               // double
@@ -218,7 +218,11 @@ namespace Avogadro
               QString s = data.at(i);
               while (s.length()!=0) { // recognize name with number
                 iso = 0;
-                n = GetAtomicNum(s.toStdString(), iso);
+                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+                  n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
+                #else
+                  n = GetAtomicNum(s.toStdString(), iso);
+                #endif
                 if (iso != 0)
                   n = 1;
             
@@ -268,8 +272,12 @@ namespace Avogadro
               
               QString _s = s_data.at(i);
               while (_s.length()!=0) { // recognize name with number
-                _iso=0;  
-                _n = GetAtomicNum(_s.toStdString(), _iso);
+                _iso=0;
+                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99 
+                  _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
+                #else
+                  _n = GetAtomicNum(_s.toStdString(), _iso);
+                #endif
                 if (_iso != 0)
                   _n = 1;
             
@@ -291,7 +299,6 @@ namespace Avogadro
     mol->ConnectTheDots();
     mol->PerceiveBondOrders();
     
-    //qDebug() << "molecule updated";
     return true;
   }
   
@@ -305,7 +312,6 @@ namespace Avogadro
     if (!m_molecule) {
         clear();
     } else {
-        QList<Atom*> atomList = m_molecule->atoms();
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
@@ -320,7 +326,7 @@ namespace Avogadro
           break;
         }
         
-        for (int i=0; i<atomList.size(); i++) {
+        for (int i=0; i<m_molecule->numAtoms(); i++) {
           Atom *atom = m_molecule->atom(i);
           switch (m_format) {
           case XYZ:
@@ -400,7 +406,6 @@ namespace Avogadro
   void CartesianEditor::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    connect(m_molecule, SIGNAL(Avogadro::Primitive::updated()), this, SLOT(updateCoordinates()));
     connect(m_molecule, SIGNAL(atomUpdated(Atom*)), this, SLOT(updateAtoms(Atom*)));
     connect(m_molecule, SIGNAL(atomRemoved(Atom*)), this, SLOT(updateAtoms(Atom*)));
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(updateCoordinates()));
@@ -416,7 +421,7 @@ namespace Avogadro
     action->setSeparator(true);
     action->setData(-1);
     m_actions.append(action);
-    
+
     action = new QAction( this );
     action->setText( tr("Cartesian Editor..." ));
     m_actions.append( action );
@@ -439,9 +444,13 @@ namespace Avogadro
   void CartesianExtension::setMolecule(Molecule *molecule)
   {
     if (m_molecule)
-      disconnect( m_molecule, 0, this, 0 );
+      disconnect( m_molecule, 0, 0, 0 );
 
     m_molecule = molecule;
+
+    if (m_dialog) {
+      m_dialog->setMolecule(molecule);
+    }
   }
 
   QUndoCommand* CartesianExtension::performAction(QAction *action,
@@ -454,8 +463,12 @@ namespace Avogadro
       return 0; // nothing we can do
 
     // Disconnect in case we're attached to a new widget
-    if (m_widget)
-      disconnect( m_molecule, 0, this, 0 );
+    if (m_widget) {
+      disconnect( m_molecule, 0, 0, 0 );
+      if (m_dialog) {
+        m_dialog->setMolecule(m_molecule);
+      }
+    }
 
     if (widget)
       m_widget = widget;    
@@ -464,13 +477,14 @@ namespace Avogadro
       m_dialog = new CartesianEditor(m_widget);
       m_dialog->setMolecule(m_molecule);      
     }
-    
+     
     m_dialog->show();
     m_dialog->updateCoordinates();
 
     return undo;
   }
 
+#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   //int OBElementTable::GetAtomicNum(string name, int &iso)
   int GetAtomicNum(string name, int &iso)
   {
@@ -501,7 +515,7 @@ namespace Avogadro
       iso = 0;
     return(0);
   }
-
+#endif
   
 } // end namespace Avogadro
 

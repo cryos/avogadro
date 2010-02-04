@@ -84,7 +84,6 @@ namespace Avogadro {
        bool parseText(OBMol *mol);
 	   
        Molecule *m_molecule;
-       GLWidget *m_widget;
 	   CoordinateUnit m_unit;
 	   CoordinateFormat m_format;
 	   bool m_illegalInput;

@@ -2,6 +2,7 @@
   SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -20,10 +21,10 @@
 #ifndef SPECTRATYPE_H
 #define SPECTRATYPE_H
 
-#include <QDialog>
-#include <QHash>
-#include <QVariant>
-#include <QSettings>
+#include <QtGui/QDialog>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
+#include <QtCore/QSettings>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
@@ -36,6 +37,7 @@ namespace Avogadro {
 
   class SpectraDialog;
 
+  // Abstract data type - no instance of it can be created
   class SpectraType : public QObject
   {
     Q_OBJECT
@@ -44,30 +46,32 @@ namespace Avogadro {
     SpectraType( SpectraDialog *parent );
     virtual ~SpectraType();
 
-    virtual void writeSettings();
-    virtual void readSettings();
+    // Pure virtual functions - must be implemented in inherited classes
+    virtual void writeSettings() = 0;
+    virtual void readSettings() = 0;
+    virtual bool checkForData(Molecule* mol) = 0;
+    virtual void setupPlot(PlotWidget * plot) = 0;
+    virtual QString getTSV() = 0;
 
-    virtual bool checkForData(Molecule* mol);
-    virtual void setupPlot(PlotWidget * plot);
-
-    virtual QWidget * getTabWidget();
-
+    // These function have default implementations, but could be overridden
     virtual QList<double> getXPoints(double FWHM, uint dotsPerPeak);
     virtual void getCalculatedPlotObject(PlotObject *plotObject);
     virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
     virtual void getImportedPlotObject(PlotObject *plotObject);
-    virtual QString getTSV();
 
-  public slots:
-
-  private slots:
+    // No need to override these functions
+    void updateDataTable();
+    QWidget * getTabWidget() {return m_tab_widget;}
+    QString getTSV(QString xTitle, QString yTitle);
+    void clear();
 
   signals:
-    // Use: void plotDataChanged();
+    void plotDataChanged();
 
   protected:
+    SpectraDialog *m_dialog;
     QWidget *m_tab_widget;
-    QList<double> *m_xList, *m_yList, *m_xList_imp, *m_yList_imp;
+    QList<double> m_xList, m_yList, m_xList_imp, m_yList_imp;
   };
 }
 

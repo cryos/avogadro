@@ -22,8 +22,8 @@
 #ifndef SPECTRATYPE_DOS_H
 #define SPECTRATYPE_DOS_H
 
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
@@ -50,24 +50,16 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
     void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
   public slots:
     void toggleIntegratedDOS(bool b);
 
-  private slots:
-
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_DOS ui;
-    SpectraDialog *m_dialog;
     std::vector<double> *m_intDOS;
     double m_fermi;
     uint m_numAtoms;

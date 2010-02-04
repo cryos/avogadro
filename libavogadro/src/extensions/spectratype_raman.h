@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -16,30 +16,29 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public icense for more details.
  ***********************************************************************/
-
 #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#ifndef SPECTRATYPE_CD_H
-#define SPECTRATYPE_CD_H
+#ifndef SPECTRATYPE_RAMAN_H
+#define SPECTRATYPE_RAMAN_H
 
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabcd.h"
+#include "ui_spectratabraman.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class CDSpectra : public SpectraType
+  class RamanSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    CDSpectra( SpectraDialog *parent = 0 );
-    ~CDSpectra();
+    RamanSpectra( SpectraDialog *parent = 0 );
+    ~RamanSpectra();
 
     void writeSettings();
     void readSettings();
@@ -48,20 +47,21 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    //void getImportedPlotObject(PlotObject *plotObject);
+   // void setImportedData(const QList<double> & xList, const QList<double> & yList);
+   // void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
   public slots:
+    void setScale(double scale);
 
   private slots:
-    void rotatoryTypeChanged(const QString & str);
+    void updateYAxis(QString);
 
   private:
-    Ui::Tab_CD ui;
-    QList<double> *m_yListVelocity, *m_yListLength;
-    double m_fermi;
-    uint m_numAtoms;
+    Ui::Tab_Raman ui;
+    double m_scale;
+    QString m_yaxis;
+
   };
 }
 

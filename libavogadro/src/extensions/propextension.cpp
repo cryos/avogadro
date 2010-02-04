@@ -28,14 +28,14 @@
 #include <avogadro/bond.h>
 #include <avogadro/primitivelist.h>
 
-#include <QAbstractTableModel>
-#include <QSortFilterProxyModel>
-#include <QHeaderView>
-#include <QAction>
-#include <QDialog>
-#include <QVBoxLayout>
+#include <QtCore/QAbstractTableModel>
+#include <QtGui/QSortFilterProxyModel>
+#include <QtGui/QHeaderView>
+#include <QtGui/QAction>
+#include <QtGui/QDialog>
+#include <QtGui/QVBoxLayout>
 
-#include <QDebug>
+#include <QtCore/QDebug>
 
 using namespace std;
 using namespace OpenBabel;

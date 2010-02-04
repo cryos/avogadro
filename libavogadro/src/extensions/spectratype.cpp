@@ -2,6 +2,7 @@
   SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -20,8 +21,11 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QList>
-#include <QObject>
+#include <QtCore/QList>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QTextStream>
+#include <QtCore/QDebug>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
@@ -29,27 +33,98 @@
 
 namespace Avogadro {
 
-  SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent), m_tab_widget(0), m_xList(0), 
-                                                      m_yList(0), m_xList_imp(0), m_yList_imp(0) {}
-  SpectraType::~SpectraType() {}
+  SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent), m_dialog(parent)
+  {
+    m_tab_widget = new QWidget;
+    /*m_xList.clear();
+    m_yList.clear();
+    m_xList_imp.clear();
+    m_yList_imp.clear();
+    m_xList = new QList<double>;
+    m_yList = new QList<double>;
+    m_xList_imp = new QList<double>;
+    m_yList_imp = new QList<double>;*/
+  }
+  
+  SpectraType::~SpectraType()
+  {
+    clear();
+    delete m_tab_widget;
+  }
 
-  void SpectraType::writeSettings() {}
-  void SpectraType::readSettings() {}
+  void SpectraType::clear()
+  {
+    m_xList.clear();
+    m_yList.clear();
+    m_xList_imp.clear();
+    m_yList_imp.clear();
+  }
 
-  bool SpectraType::checkForData(Molecule* mol) {Q_UNUSED(mol);return false;}
-  void SpectraType::setupPlot(PlotWidget * plot) {Q_UNUSED(plot);}
+  void SpectraType::getCalculatedPlotObject(PlotObject *plotObject)
+  {
+    plotObject->clearPoints();
+    for (int i = 0; i < m_xList.size(); i++)
+      plotObject->addPoint(m_xList.at(i), m_yList.at(i));
+  }
+  
+  void SpectraType::setImportedData(const QList<double> & xList, const QList<double> & yList)
+  {
+    m_xList_imp = xList;
+    m_yList_imp = yList;
+    /*m_xList_imp = new QList<double> (xList);
+    m_yList_imp = new QList<double> (yList);    // it's not Java!
+    */
+  }
+  
+  void SpectraType::getImportedPlotObject(PlotObject *plotObject)
+  {
+    plotObject->clearPoints();
+    for (int i = 0; i < m_xList_imp.size(); i++) {
+      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
+    }
+  }
+  
+  QString SpectraType::getTSV(QString xTitle, QString yTitle)
+  {
+    QString str;
+    QTextStream out (&str);
+    QString format = "%1\t%2\n";
+    out << xTitle << "\t" << yTitle << "\n";
+    for(int i = 0; i< m_xList.size(); i++) {
+      out << format.arg(m_xList.at(i), 6, 'g').arg(m_yList.at(i), 6, 'g');
+    }
+    return str;
+  }
 
-  QWidget * SpectraType::getTabWidget() {return new QWidget;}
+  void SpectraType::updateDataTable()
+  {
+    if ((!m_dialog) || (m_xList.size()==0))
+      return;
+    //m_dialog->getUi()->dataTable->clear();
+    m_dialog->getUi()->dataTable->setRowCount(m_xList.size());
+    QString format("%1");
+    for (int i = 0; i < m_xList.size(); i++) {
+      QString xString = format.arg(m_xList.at(i), 0, 'f', 2);
+      QString yString = format.arg(m_yList.at(i), 0, 'f', 3);
+      if (!m_dialog->getUi()->dataTable->item(i,0)) {
+        QTableWidgetItem *newX = new QTableWidgetItem(xString);
+        newX->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        QTableWidgetItem *newY = new QTableWidgetItem(yString);
+        newY->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        m_dialog->getUi()->dataTable->setItem(i, 0, newX);
+        m_dialog->getUi()->dataTable->setItem(i, 1, newY);
+      } else {
+        m_dialog->getUi()->dataTable->item(i,0)->setText(xString);
+        m_dialog->getUi()->dataTable->item(i,1)->setText(yString);
+      }      
+    }
+  }
 
-  void SpectraType::getCalculatedPlotObject(PlotObject *plotObject) {Q_UNUSED(plotObject);}
-  void SpectraType::setImportedData(const QList<double> & xList, const QList<double> & yList) {Q_UNUSED(xList); Q_UNUSED(yList);}
-  void SpectraType::getImportedPlotObject(PlotObject *plotObject) {Q_UNUSED(plotObject);}
-  QString SpectraType::getTSV() {return QString("");}
-
-  QList<double> SpectraType::getXPoints(double FWHM, uint dotsPerPeak) {
+  QList<double> SpectraType::getXPoints(double FWHM, uint dotsPerPeak)
+  {
     QList<double> xPoints;
-    for (int i = 0; i < m_xList->size(); i++) {
-      double x = m_xList->at(i) - (2*FWHM);
+    for (int i = 0; i < m_xList.size(); i++) {
+      double x = m_xList.at(i) - (2*FWHM);
       for (uint j = 0; j < dotsPerPeak; j++) {
         xPoints << x;
         x += 4*FWHM / (int(dotsPerPeak));

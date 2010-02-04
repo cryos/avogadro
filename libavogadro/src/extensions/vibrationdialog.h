@@ -22,7 +22,7 @@
 #ifndef VIBRATIONDIALOG_H
 #define VIBRATIONDIALOG_H
 
-#include <QDialog>
+#include <QtGui/QDialog>
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>

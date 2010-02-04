@@ -36,7 +36,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/molecule.h>
 
-#include <QDebug>
+#include <QtCore/QDebug>
 #include <QtGui/QColorDialog>
 #include <QtGui/QFontDialog>
 //#include <QtGui/QPainter>
@@ -152,15 +152,29 @@ Bond *dummyBond;*/
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
         break;
-      case 7: // Element name
-        str = ElementTranslator::name(a->atomicNumber());
-        break;
       case 2: // Element Symbol
         str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        break;
+      case 3: // Symbol & Number in Group
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
+		break;
+      case 4: // Symbol & Atom Number
+        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
         break;
       case 5: // Formal charge
         if (a->formalCharge())
           str = QString("%L1").arg(a->formalCharge());
+        break;
+      case 6: // Partial charge
+        str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
+        break;
+      case 7: // Element name
+        str = ElementTranslator::name(a->atomicNumber());
         break;
       case 8: // Residue name
         if (a->residue())
@@ -170,25 +184,9 @@ Bond *dummyBond;*/
         if (a->residue())
           str = a->residue()->number();
         break;
-      case 6: // Partial charge
-        str = QString("%L1").arg(const_cast<Atom *>(a)->partialCharge(), 0, 'g', 2);
-        break;
       case 10: // Unique ID
         str = QString("%L1").arg(a->id());
         break;
-      case 4: // Symbol & Atom Number
-        str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(a->index() + 1);
-        break;
-	 // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-      case 3: // Symbol & Number in Group
-        gi = a->groupIndex();
-        if (gi != 0) {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
-        } else {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-        }
-		break;
-	//  #endif
       default: // some custom data -- if available
         int customIndex = m_atomType - 7 - 1;
         QList<QByteArray> propertyNames = a->dynamicPropertyNames();

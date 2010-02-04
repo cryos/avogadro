@@ -28,13 +28,13 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/toolgroup.h>
 
-#include <QAction>
-#include <QInputDialog>
-#include <QMessageBox>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QFileInfo>
-#include <QDebug>
+#include <QtGui/QAction>
+#include <QtGui/QInputDialog>
+#include <QtGui/QMessageBox>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
+#include <QtCore/QFileInfo>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>506</width>
+    <width>567</width>
     <height>459</height>
    </rect>
   </property>
@@ -34,11 +34,14 @@
      <property name="gridStyle">
       <enum>Qt::SolidLine</enum>
      </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
      <property name="rowCount">
       <number>0</number>
      </property>
      <property name="columnCount">
-      <number>2</number>
+      <number>3</number>
      </property>
      <column>
       <property name="text">
@@ -48,6 +51,11 @@
      <column>
       <property name="text">
        <string>Intensity (km/mol)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Raman Activity (A^4/amu)</string>
       </property>
      </column>
     </widget>

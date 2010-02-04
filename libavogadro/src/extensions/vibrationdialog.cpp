@@ -21,14 +21,14 @@
 
 #include "vibrationdialog.h"
 
-#include <QPushButton>
-#include <QButtonGroup>
-#include <QDebug>
-#include <QFileDialog>
+#include <QtGui/QPushButton>
+#include <QtGui/QButtonGroup>
+#include <QtCore/QDebug>
+#include <QtGui/QFileDialog>
 #include <QProgressDialog>
-#include <QFile>
-#include <QDir>
-#include <QHeaderView>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtGui/QHeaderView>
 
 #include <avogadro/molecule.h>
 
@@ -44,10 +44,11 @@ namespace Avogadro {
     QDialog( parent, f )
   {
     ui.setupUi(this);
-    
+
     // Make sure the columns span the whole width of the table widget
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
+
 
     m_indexMap = new std::vector<int>;
 
@@ -91,6 +92,19 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
+    #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      vector<double> raman_activities = m_vibrations->GetRamanActivities();
+      if (raman_activities.size() == 0) {
+        resize(450, height());
+        ui.vibrationTable->setColumnCount(2);
+      } else {
+        resize(567, height());
+        ui.vibrationTable->setColumnCount(3);
+      }
+    #else
+        resize(450, height());
+        ui.vibrationTable->setColumnCount(2);
+    #endif
 
     // Generate an index vector to map sorted indicies to the old indices
     m_indexMap->clear();
@@ -127,10 +141,10 @@ namespace Avogadro {
     }
 
     ui.vibrationTable->setRowCount(frequencies.size());
-    QString format("%L1");
+    QString format("%1");
 
     for (unsigned int row = 0; row < frequencies.size(); ++row) {
-      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
+      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 2));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       // Some codes don't provide intensity data. Display "-" in place of intensities.
       QTableWidgetItem *newInten;
@@ -138,11 +152,24 @@ namespace Avogadro {
         newInten = new QTableWidgetItem("-");
       }
       else {
-        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
       }
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        QTableWidgetItem *newRaman;
+        if (row >= raman_activities.size()) {
+          newRaman = new QTableWidgetItem("-");
+        }
+        else {
+          newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0, 'f', 3));
+        }
+        newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+      #endif
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        ui.vibrationTable->setItem(row, 2, newRaman);
+      #endif
     }
 
     // enable export button
