@@ -95,13 +95,14 @@ namespace Avogadro {
     #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       vector<double> raman_activities = m_vibrations->GetRamanActivities();
       if (raman_activities.size() == 0) {
-        resize(506, height());
+        resize(450, height());
         ui.vibrationTable->setColumnCount(2);
       } else {
         resize(567, height());
         ui.vibrationTable->setColumnCount(3);
       }
     #else
+        resize(450, height());
         ui.vibrationTable->setColumnCount(2);
     #endif
 
@@ -140,10 +141,10 @@ namespace Avogadro {
     }
 
     ui.vibrationTable->setRowCount(frequencies.size());
-    QString format("%L1");
+    QString format("%1");
 
     for (unsigned int row = 0; row < frequencies.size(); ++row) {
-      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 1));
+      QTableWidgetItem *newFreq = new QTableWidgetItem(format.arg(frequencies[row], 0, 'f', 2));
       newFreq->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       // Some codes don't provide intensity data. Display "-" in place of intensities.
       QTableWidgetItem *newInten;
@@ -151,7 +152,7 @@ namespace Avogadro {
         newInten = new QTableWidgetItem("-");
       }
       else {
-        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 1));
+        newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
       }
       #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
         QTableWidgetItem *newRaman;
@@ -159,7 +160,7 @@ namespace Avogadro {
           newRaman = new QTableWidgetItem("-");
         }
         else {
-          newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0, 'f', 1));
+          newRaman = new QTableWidgetItem(format.arg(raman_activities[row], 0, 'f', 3));
         }
         newRaman->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       #endif

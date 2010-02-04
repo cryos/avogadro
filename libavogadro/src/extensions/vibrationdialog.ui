@@ -34,6 +34,9 @@
      <property name="gridStyle">
       <enum>Qt::SolidLine</enum>
      </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
      <property name="rowCount">
       <number>0</number>
      </property>
@@ -52,7 +55,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Raman Activity</string>
+       <string>Raman Activity (A^4/amu)</string>
       </property>
      </column>
     </widget>
