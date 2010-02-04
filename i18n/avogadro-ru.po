@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
+"POT-Creation-Date: 2010-02-05 00:00+0300\n"
 "PO-Revision-Date: 2009-10-18 15:17+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -21,36 +21,42 @@ msgstr ""
 msgid "OK"
 msgstr "Готово"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
 msgstr ""
 
-#: src/aboutdialog.cpp:68
-#, fuzzy, qt-format
+#: src/aboutdialog.cpp:69
+#, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"><br/>Open Babel Version: %4"
+msgstr ""
+
+#. i18n: file: src/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:838 src/mainwindow.cpp:888
+#: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952:69
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/aboutdialog.cpp:73
+#, fuzzy, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %3<br/"
 "><br/>Дальнейшую информацию вы можете получить на <a href=\"http://avogadro."
 "openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа поставляется "
 "АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых гарантий "
 "КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
-
-#. i18n: file: src/mainwindow.ui:14
-#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
-#: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
-#: src/mainwindow.cpp:2952:69
-msgid "Avogadro"
-msgstr "Avogadro"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -86,55 +92,59 @@ msgid "Open File"
 msgstr "Открыть файл"
 
 #: src/main.cpp:204
-msgctxt "Avogadro"
-msgid "main.cpp"
-msgstr ""
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Avogadro"
+msgstr "Avogadro"
 
 #: src/main.cpp:205
-msgctxt "This system does not support OpenGL."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "This system does not support OpenGL."
 msgstr ""
 
 #: src/main.cpp:208
-msgctxt "System has OpenGL support."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "System has OpenGL support."
 msgstr ""
 
 #: src/main.cpp:211
-msgctxt "About to test OpenGL capabilities."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "About to test OpenGL capabilities."
 msgstr ""
 
 #: src/main.cpp:218
-msgctxt "OpenGL capabilities found: "
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "OpenGL capabilities found: "
 msgstr ""
 
 #: src/main.cpp:220
-msgctxt "Double Buffering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Double Buffering."
 msgstr ""
 
 #: src/main.cpp:222
-msgctxt "Direct Rendering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Direct Rendering."
 msgstr ""
 
 #: src/main.cpp:224
-msgctxt "Antialiasing."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Antialiasing."
 msgstr ""
 
 #: src/main.cpp:249
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Avogadro: \t%1 (Hash %2)\n"
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
-msgid "main.cpp"
 msgstr ""
 
 #: src/main.cpp:264
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
 "Advanced Molecular Editor (version %2)\n"
@@ -142,7 +152,6 @@ msgctxt ""
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
-msgid "main.cpp"
 msgstr ""
 
 #: src/mainwindow.cpp:301
@@ -487,7 +496,7 @@ msgstr ""
 msgid "Objects"
 msgstr "Объекты"
 
-#. i18n: file: src/pluginsettings.ui:38
+#. i18n: file: src/pluginsettings.ui:39
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 #: src/mainwindow.cpp:2999:321
 msgid "Colors"
@@ -497,19 +506,19 @@ msgstr "Цвета"
 msgid " copy"
 msgstr " копировать"
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:53
 msgid "Name: "
 msgstr "Название: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:54
 msgid "Identifier: "
 msgstr "Идентификатор: "
 
-#: src/pluginsettings.cpp:57
+#: src/pluginsettings.cpp:55
 msgid "File: "
 msgstr "Файл: "
 
-#: src/pluginsettings.cpp:58
+#: src/pluginsettings.cpp:56
 msgid "Description:\n"
 msgstr "Описание:\n"
 
@@ -811,14 +820,14 @@ msgstr "Дерево структуры проекта"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
-#. i18n: file: src/pluginsettings.ui:23
+#. i18n: file: src/pluginsettings.ui:24
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "Стили отображения"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
-#. i18n: file: src/pluginsettings.ui:28
+#. i18n: file: src/pluginsettings.ui:29
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "Инструменты"
@@ -1123,19 +1132,19 @@ msgstr "Все молекулы в файле..."
 msgid "Reset Display Types"
 msgstr "Сбросить стили отображения"
 
-#. i18n: file: src/pluginsettings.ui:16
+#. i18n: file: src/pluginsettings.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
 msgstr "Дополнения"
 
-#. i18n: file: src/pluginsettings.ui:33
+#. i18n: file: src/pluginsettings.ui:34
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
 msgstr "Расширения"
 
-#. i18n: file: src/pluginsettings.ui:52
+#. i18n: file: src/pluginsettings.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
 msgstr "Подробности"
