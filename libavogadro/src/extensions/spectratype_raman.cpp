@@ -191,7 +191,7 @@ namespace Avogadro {
       // create points
       QList<double> xPoints = getXPoints(FWHM, 10);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i);
+        double x = xPoints.at(i) * m_scale;
         double y = 0;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
