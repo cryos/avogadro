@@ -183,9 +183,9 @@ namespace Avogadro {
       double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
       // create points
-      QList<double> xPoints = getXPoints(FWHM, 10);
+      QList<double> xPoints = getXPoints(FWHM, 20);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i);
+        double x = xPoints.at(i) * m_scale;
         double y = 100;
         for (int j = 0; j < m_yList->size(); j++) {
           double t = m_yList->at(j);
