@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 00:00+0300\n"
-"PO-Revision-Date: 2009-10-22 11:05+0000\n"
+"PO-Revision-Date: 2010-02-05 01:52+0300\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,9 +23,7 @@ msgstr "Раскрасить по порядковому номеру атома
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
-"Раскрасить по порядковому номеру атома (красный, оранжевый, жёлтый, зелёный, "
-"синий, фиолетовый)."
+msgstr "Раскрасить по порядковому номеру атома (красный, оранжевый, жёлтый, зелёный, синий, фиолетовый)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -33,9 +31,7 @@ msgstr "Раскрасить по частичному заряду атома"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr ""
-"Раскрасить по частичному заряду атома (синий = положительный, красный = "
-"отрицательный)."
+msgstr "Раскрасить по частичному заряду атома (синий = положительный, красный = отрицательный)."
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
@@ -71,8 +67,7 @@ msgstr "Раскрасить по аминокислотному остатку"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr ""
-"Цвет согласно аминокислотному остатку (тип аминокислоты, гидрофобность, ...)"
+msgstr "Цвет согласно аминокислотному остатку (тип аминокислоты, гидрофобность, ...)"
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -546,7 +541,8 @@ msgstr "Унунсептий"
 msgid "Ununoctium"
 msgstr "Унуноктий"
 
-#: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
+#: src/elementtranslator.cpp:397
+#: src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
 msgstr "Неизвестный"
 
@@ -562,7 +558,8 @@ msgstr "Оси"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Отображает оси x, y, и z в начале координат"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41
+#: src/glwidget.cpp:1895
 msgid "Ball and Stick"
 msgstr "Шаро-стержневая модель"
 
@@ -603,19 +600,16 @@ msgid "Renders hydrogen bonds"
 msgstr "Отображает водородные связи"
 
 #: src/engines/labelengine.cpp:339
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Выбранные цвета"
+msgstr "Выбрать цвет подписей атомов"
 
 #: src/engines/labelengine.cpp:350
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Подписи атомов:"
+msgstr "Выбрать шрифт подписей атомов"
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Выбранные цвета"
+msgstr "Выбрать цвет подписей связей"
 
 #: src/engines/labelengine.cpp:372
 #, fuzzy
@@ -704,7 +698,8 @@ msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
 msgstr "%1, изоповерхность = %L2"
 
-#: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
+#: src/engines/surfaceengine.h:46
+#: src/extensions/surfaceextension.h:50
 msgid "Surfaces"
 msgstr "Поверхности"
 
@@ -718,8 +713,7 @@ msgstr "Каркас"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-msgstr ""
-"Отображает связи как каркас, отлично подходит для очень больших (био)молекул"
+msgstr "Отображает связи как каркас, отлично подходит для очень больших (био)молекул"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -767,9 +761,12 @@ msgstr "видео файлы (*.avi)"
 #: src/extensions/insertfragmentdialog.cpp:151
 #: src/extensions/selectextension.cpp:275
 #: src/extensions/selectextension.cpp:287
-#: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
-#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
-#: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
+#: src/extensions/selectextension.cpp:293
+#: src/extensions/trajvideomaker.cpp:47
+#: src/extensions/trajvideomaker.cpp:55
+#: src/extensions/trajvideomaker.cpp:105
+#: src/extensions/trajvideomaker.cpp:110
+#: src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
 #: src/extensions/unitcellextension.cpp:113
 msgid "Avogadro"
@@ -821,12 +818,8 @@ msgid "Invalid video filename.  Must include full directory path"
 msgstr "Неправильное имя видеофайла. Имя должно содержать полный путь"
 
 #: src/extensions/animationextension.cpp:210
-msgid ""
-"Invalid video filename.  Must include full directory path and name, ending "
-"with .avi"
-msgstr ""
-"Неправильное имя видеофайла. Имя должно содержать полный путь и название, "
-"оканчивающееся на .avi"
+msgid "Invalid video filename.  Must include full directory path and name, ending with .avi"
+msgstr "Неправильное имя видеофайла. Имя должно содержать полный путь и название, оканчивающееся на .avi"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -839,8 +832,7 @@ msgstr "Не удалось прочитать файл траектории %1"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
-msgid ""
-"Trajectory file %1 disagrees on the number of atoms in the present molecule"
+msgid "Trajectory file %1 disagrees on the number of atoms in the present molecule"
 msgstr "Файл траектории %1 не соответствует числу атомов в данной молекуле"
 
 #: src/extensions/animationextension.h:39
@@ -868,14 +860,12 @@ msgid "&Build"
 msgstr "П&остроение"
 
 #: src/extensions/cartesianextension.h:95
-#, fuzzy
 msgid "Cartesian editor"
-msgstr "Редактор декартовых координат..."
+msgstr "Редактор декартовых координат"
 
 #: src/extensions/cartesianextension.h:96
-#, fuzzy
 msgid "Cartesian coordinates editor"
-msgstr "Декартовы координаты"
+msgstr "Редактор декартовых координат"
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -896,28 +886,19 @@ msgstr "Добавить ограничение"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
-"В вашей молекуле должен быть как минимум один атом для добавления ограничения"
+msgstr "В вашей молекуле должен быть как минимум один атом для добавления ограничения"
 
 #: src/extensions/constraintsdialog.cpp:369
 msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
-"В вашей молекуле должно быть как минимум два атома для добавления "
-"ограничения связи"
+msgstr "В вашей молекуле должно быть как минимум два атома для добавления ограничения связи"
 
 #: src/extensions/constraintsdialog.cpp:378
-msgid ""
-"Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
-"В вашей молекуле должно быть как минимум три атома для добавления "
-"ограничения угла"
+msgid "Your molecule must contain at least three atoms to add an angle constraint"
+msgstr "В вашей молекуле должно быть как минимум три атома для добавления ограничения угла"
 
 #: src/extensions/constraintsdialog.cpp:388
-msgid ""
-"Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
-"В вашей молекуле должно быть как минимум четыре атома для добавления "
-"ограничения двугранного угла"
+msgid "Your molecule must contain at least four atoms to add a torsion constraint"
+msgstr "В вашей молекуле должно быть как минимум четыре атома для добавления ограничения двугранного угла"
 
 #: src/extensions/daltoninputdialog.cpp:284
 #, fuzzy
@@ -926,12 +907,8 @@ msgstr "Предупреждение генератора входных фай�
 
 #: src/extensions/daltoninputdialog.cpp:285
 #, fuzzy
-msgid ""
-"Would you like to update the preview text, losing all changes made in the "
-"Dalton input file preview pane?"
-msgstr ""
-"Вы хотите обновить текст входного файла Gaussian, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+msgid "Would you like to update the preview text, losing all changes made in the Dalton input file preview pane?"
+msgstr "Вы хотите обновить текст входного файла Gaussian, теряя все изменения, сделанные на панели предпросмотра?"
 
 #: src/extensions/daltoninputdialog.cpp:351
 #, fuzzy
@@ -940,7 +917,7 @@ msgstr "Сохранить входной файл Molpro"
 
 #: src/extensions/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
-msgstr ""
+msgstr "Входной файл Dalton (*.dal)"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -968,7 +945,9 @@ msgstr "Предпросмотр"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1072 rc.cpp:2158 rc.cpp:2512
+#: src/extensions/qcheminputdialog.cpp:182:1072
+#: rc.cpp:2158
+#: rc.cpp:2512
 msgid "Hide Preview"
 msgstr "Скрыть предпросмотр"
 
@@ -1092,12 +1071,8 @@ msgid "ForceField"
 msgstr "Силовое поле"
 
 #: src/extensions/forcefieldextension.h:55
-msgid ""
-"Optimize molecules and generate conformers using molecular mechanics force "
-"fields"
-msgstr ""
-"Оптимизировать молекулы и выбрать конформеры, используя "
-"молекулярномеханические силовые поля"
+msgid "Optimize molecules and generate conformers using molecular mechanics force fields"
+msgstr "Оптимизировать молекулы и выбрать конформеры, используя молекулярномеханические силовые поля"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1108,8 +1083,7 @@ msgid "Input Generator..."
 msgstr "Генератор входного файла..."
 
 #: src/extensions/gamessextension.cpp:70
-msgctxt ""
-"Selection to be used as an Effective Fragment Potential in calculations"
+msgctxt "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
 msgstr "Выбор для EFP..."
 
@@ -1188,7 +1162,9 @@ msgstr "Создать входные файлы для квантовохими
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:538 rc.cpp:1654 rc.cpp:2068
+#: src/extensions/gamessinputdialog.cpp:622:538
+#: rc.cpp:1654
+#: rc.cpp:2068
 msgid "Title"
 msgstr "Название"
 
@@ -1241,12 +1217,8 @@ msgid "Gaussian Input Deck Generator Warning"
 msgstr "Предупреждение генератора входных файлов Gaussian"
 
 #: src/extensions/gaussianinputdialog.cpp:196
-msgid ""
-"Would you like to update the preview text, losing all changes made in the "
-"Gaussian input deck preview pane?"
-msgstr ""
-"Вы хотите обновить текст входного файла Gaussian, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+msgid "Would you like to update the preview text, losing all changes made in the Gaussian input deck preview pane?"
+msgstr "Вы хотите обновить текст входного файла Gaussian, теряя все изменения, сделанные на панели предпросмотра?"
 
 #: src/extensions/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
@@ -1261,8 +1233,7 @@ msgid "Gaussian Running."
 msgstr "Gaussian запущен."
 
 #: src/extensions/gaussianinputdialog.cpp:269
-msgid ""
-"Gaussian is already running. Wait until the previous calculation is finished."
+msgid "Gaussian is already running. Wait until the previous calculation is finished."
 msgstr "Gaussian уже запущен. Подождите, пока закончится предыдущий расчет."
 
 #: src/extensions/gaussianinputdialog.cpp:279
@@ -1291,8 +1262,7 @@ msgstr "Работа G03 завершилась аварийно."
 
 #: src/extensions/gaussianinputdialog.cpp:336
 msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"Gaussian завершил работу некорректно. Возможно, он установлен неправильно."
+msgstr "Gaussian завершил работу некорректно. Возможно, он установлен неправильно."
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
@@ -1404,7 +1374,8 @@ msgstr "Вставить фрагмент, используя SMILES:"
 #. i18n: file: src/extensions/insertfragmentdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
 #: src/extensions/insertfragmentextension.cpp:171
-#: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
+#: src/extensions/insertfragmentextension.h:34
+#: src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
 msgstr "Вставить фрагмент"
 
@@ -1421,7 +1392,8 @@ msgstr "Пептид..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:2182 rc.cpp:2395
+#: src/extensions/insertpeptideextension.h:43:2182
+#: rc.cpp:2395
 msgid "Insert Peptide"
 msgstr "Вставить пептид"
 
@@ -1434,7 +1406,8 @@ msgid "Molecule Properties..."
 msgstr "Свойства молекулы..."
 
 #: src/extensions/molecularpropextension.cpp:55
-#: src/extensions/propextension.cpp:108 src/extensions/propextension.cpp:114
+#: src/extensions/propextension.cpp:108
+#: src/extensions/propextension.cpp:114
 msgid "&View"
 msgstr "&Вид"
 
@@ -1462,12 +1435,8 @@ msgstr "Предупреждение генератора входных фай�
 
 #: src/extensions/molproinputdialog.cpp:115
 #: src/extensions/qcheminputdialog.cpp:115
-msgid ""
-"Would you like to update the preview text, losing all changes made in the Q-"
-"Chem input deck preview pane?"
-msgstr ""
-"Вы хотите обновить текст входного файла Q-Chem, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+msgid "Would you like to update the preview text, losing all changes made in the Q-Chem input deck preview pane?"
+msgstr "Вы хотите обновить текст входного файла Q-Chem, теряя все изменения, сделанные на панели предпросмотра?"
 
 #: src/extensions/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
@@ -1482,20 +1451,15 @@ msgid "MOPAC Input Warning"
 msgstr "Предупреждение генератора входных файлов MOPAC"
 
 #: src/extensions/mopacinputdialog.cpp:133
-msgid ""
-"Would you like to update the preview text, losing all changes made in the "
-"MOPAC input deck preview pane?"
-msgstr ""
-"Вы хотите обновить текст входного файла MOPAC, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+msgid "Would you like to update the preview text, losing all changes made in the MOPAC input deck preview pane?"
+msgstr "Вы хотите обновить текст входного файла MOPAC, теряя все изменения, сделанные на панели предпросмотра?"
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
 msgstr "Идет расчет в MOPAC."
 
 #: src/extensions/mopacinputdialog.cpp:175
-msgid ""
-"MOPAC is already running. Wait until the previous calculation is finished."
+msgid "MOPAC is already running. Wait until the previous calculation is finished."
 msgstr "MOPAC уже запущен. Подождите завершения предыдущего расчета."
 
 #: src/extensions/mopacinputdialog.cpp:185
@@ -1603,12 +1567,8 @@ msgid "NWChem Input Deck Generator Warning"
 msgstr "Предупреждение генератора входных файлов NWChem"
 
 #: src/extensions/nwcheminputdialog.cpp:122
-msgid ""
-"Would you like to update the preview text, losing all changes made in the "
-"NWChem input deck preview pane?"
-msgstr ""
-"Вы хотите обновить текст входного файла NWChem, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+msgid "Would you like to update the preview text, losing all changes made in the NWChem input deck preview pane?"
+msgstr "Вы хотите обновить текст входного файла NWChem, теряя все изменения, сделанные на панели предпросмотра?"
 
 #: src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
@@ -1647,10 +1607,7 @@ msgid "Does not compute."
 msgstr ""
 
 #: src/extensions/povrayextension.cpp:137
-msgid ""
-"You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-"file. This will result in no output being saved. Are you sure that is what "
-"you want?"
+msgid "You requested no direct rendering using POV-Ray and not to keep the POV-Ray file. This will result in no output being saved. Are you sure that is what you want?"
 msgstr ""
 
 #: src/extensions/povrayextension.cpp:159
@@ -1661,34 +1618,24 @@ msgstr "Запись в файл невозможна."
 #: src/extensions/povrayextension.cpp:160
 #: src/extensions/povrayextension.cpp:183
 #, qt-format
-msgid ""
-"Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
-"Не удается записать файл %1. У вас есть разрешение на запись по указанному "
-"адресу?"
+msgid "Cannot write to file %1. Do you have permissions to write to that location?"
+msgstr "Не удается записать файл %1. У вас есть разрешение на запись по указанному адресу?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
 msgstr "Не удалось запустить POV-Ray."
 
 #: src/extensions/povrayextension.cpp:177
-msgid ""
-"POV-Ray failed to start. May be the path to the executable is not set "
-"correctly."
-msgstr ""
-"Не удалось запустить POV-Ray. Возможно, путь к исполняемому файлу указан "
-"неправильно."
+msgid "POV-Ray failed to start. May be the path to the executable is not set correctly."
+msgstr "Не удалось запустить POV-Ray. Возможно, путь к исполняемому файлу указан неправильно."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
 msgstr "POV-Ray"
 
 #: src/extensions/povrayextension.h:41
-msgid ""
-"Create POV-Ray files and render them using the command line POV-Ray program."
-msgstr ""
-"Создать файлы POV-Ray и отрендерить их, используя консольную программу POV-"
-"Ray."
+msgid "Create POV-Ray files and render them using the command line POV-Ray program."
+msgstr "Создать файлы POV-Ray и отрендерить их, используя консольную программу POV-Ray."
 
 #: src/extensions/propextension.cpp:65
 msgid "Atom Properties..."
@@ -1740,27 +1687,23 @@ msgstr "Свойства конформеров"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:547 rc.cpp:1048 rc.cpp:1438
+#: src/extensions/propextension.h:43:547
+#: rc.cpp:1048
+#: rc.cpp:1438
 msgid "Properties"
 msgstr "Свойства"
 
 #: src/extensions/propextension.h:44
-msgid ""
-"Windows for displaying atom, bond, angle and torsion properties. It also "
-"includes a cartesian coordinate editor."
-msgstr ""
-"Окна, отображающие свойства атомов, связей, валентных и двугранных углов. "
-"Также включает редактор декартовых координат."
+msgid "Windows for displaying atom, bond, angle and torsion properties. It also includes a cartesian coordinate editor."
+msgstr "Окна, отображающие свойства атомов, связей, валентных и двугранных углов. Также включает редактор декартовых координат."
 
 #: src/extensions/propmodel.cpp:226
-#, fuzzy
 msgid "Yes"
-msgstr "Годы"
+msgstr "Да"
 
 #: src/extensions/propmodel.cpp:228
-#, fuzzy
 msgid "No"
-msgstr "Неон"
+msgstr "Нет"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -1784,34 +1727,40 @@ msgstr "Формальный заряд"
 msgid "Partial Charge"
 msgstr "Частичный заряд"
 
-#: src/extensions/propmodel.cpp:385 src/extensions/propmodel.cpp:441
+#: src/extensions/propmodel.cpp:385
+#: src/extensions/propmodel.cpp:441
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
 msgstr "X %1"
 
-#: src/extensions/propmodel.cpp:387 src/extensions/propmodel.cpp:443
+#: src/extensions/propmodel.cpp:387
+#: src/extensions/propmodel.cpp:443
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr "Y %1"
 
-#: src/extensions/propmodel.cpp:389 src/extensions/propmodel.cpp:445
+#: src/extensions/propmodel.cpp:389
+#: src/extensions/propmodel.cpp:445
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr "Z  %1"
 
-#: src/extensions/propmodel.cpp:392 src/extensions/propmodel.cpp:448
+#: src/extensions/propmodel.cpp:392
+#: src/extensions/propmodel.cpp:448
 #, qt-format
 msgid "Atom %1"
 msgstr "Атом %1"
 
-#: src/extensions/propmodel.cpp:397 src/extensions/propmodel.cpp:414
+#: src/extensions/propmodel.cpp:397
+#: src/extensions/propmodel.cpp:414
 msgid "Start Atom"
 msgstr "Первый атом"
 
-#: src/extensions/propmodel.cpp:399 src/extensions/propmodel.cpp:418
+#: src/extensions/propmodel.cpp:399
+#: src/extensions/propmodel.cpp:418
 msgid "End Atom"
 msgstr "Последний атом"
 
@@ -1871,14 +1820,16 @@ msgstr "Двугранный угол %1"
 msgid "Energy"
 msgstr "Энергия"
 
-#: src/extensions/propmodel.cpp:456 src/moleculefile.cpp:723
+#: src/extensions/propmodel.cpp:456
+#: src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
 msgstr "Конформер %1"
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
-#: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
+#: src/extensions/pythonterminal.cpp:70
+#: src/extensions/pythonterminal.h:52
 msgid "Python Terminal"
 msgstr "Терминал Python"
 
@@ -1942,7 +1893,8 @@ msgstr "Выделить по аминокислотному остатку"
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 #. i18n: file: src/engines/old_labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:174 rc.cpp:243
+#: src/extensions/selectextension.cpp:230:174
+#: rc.cpp:243
 msgid "Residue name"
 msgstr "Название аминокислотного остатка"
 
@@ -2063,12 +2015,11 @@ msgstr "Настройки автоматического вращения"
 #: src/extensions/spectradialog.cpp:218
 msgctxt "Ultra-Violet spectrum"
 msgid "UV"
-msgstr ""
+msgstr "УФ"
 
 #: src/extensions/spectradialog.cpp:219
-#, fuzzy
 msgid "&UV Settings"
-msgstr "Настройки рисования"
+msgstr "Настройки &УФ"
 
 #: src/extensions/spectradialog.cpp:225
 #, fuzzy
@@ -2082,15 +2033,13 @@ msgid "&CD Settings"
 msgstr "Настройки рисования"
 
 #: src/extensions/spectradialog.cpp:232
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Радон"
+msgstr "КР"
 
 #: src/extensions/spectradialog.cpp:233
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "Настройки рисования"
+msgstr "Настройки &КР"
 
 #: src/extensions/spectradialog.cpp:248
 msgid "No data"
@@ -2136,7 +2085,8 @@ msgstr "Введите новое название для данной схем�
 msgid "Export Calculated Spectrum"
 msgstr "Экспорт рассчитанного спектра"
 
-#: src/extensions/spectradialog.cpp:512 src/extensions/vibrationdialog.cpp:254
+#: src/extensions/spectradialog.cpp:512
+#: src/extensions/vibrationdialog.cpp:254
 msgid "Tab Separated Values (*.tsv)"
 msgstr "Значения, разделенные табуляциями (*.tsv)"
 
@@ -2152,7 +2102,8 @@ msgstr "Значения, разделенные запятыми"
 msgid "JCAMP-DX"
 msgstr "JCAMP-DX"
 
-#: src/extensions/spectradialog.cpp:539 src/extensions/spectradialog.cpp:628
+#: src/extensions/spectradialog.cpp:539
+#: src/extensions/spectradialog.cpp:628
 #: src/extensions/spectradialog.cpp:930
 msgid "All Files"
 msgstr "Все файлы"
@@ -2161,12 +2112,14 @@ msgstr "Все файлы"
 msgid "Import Spectra"
 msgstr "Импорт спектров"
 
-#: src/extensions/spectradialog.cpp:567 src/extensions/spectradialog.cpp:762
+#: src/extensions/spectradialog.cpp:567
+#: src/extensions/spectradialog.cpp:762
 #: src/extensions/spectradialog.cpp:859
 msgid "Spectra Import"
 msgstr "Импорт спектров"
 
-#: src/extensions/spectradialog.cpp:567 src/extensions/spectradialog.cpp:951
+#: src/extensions/spectradialog.cpp:567
+#: src/extensions/spectradialog.cpp:951
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "Неизвестное расширение: %1"
@@ -2182,10 +2135,9 @@ msgid "Turbomole IR data (control)"
 msgstr "IR спектр из Turbomole (control)"
 
 #: src/extensions/spectradialog.cpp:616
-#, fuzzy
 msgctxt "Do not remove 'UV' or '(spectrum)' -- needed for parsing later"
 msgid "Turbomole UV data (spectrum)"
-msgstr "IR спектр из Turbomole (control)"
+msgstr "УФ спектр из Turbomole (spectrum)"
 
 #: src/extensions/spectradialog.cpp:617
 #, fuzzy
@@ -2206,7 +2158,8 @@ msgstr "Формат:"
 msgid "Load Spectral Data"
 msgstr "Загрузить спектры"
 
-#: src/extensions/spectradialog.cpp:762 src/extensions/spectradialog.cpp:859
+#: src/extensions/spectradialog.cpp:762
+#: src/extensions/spectradialog.cpp:859
 #, qt-format
 msgid "Turbomole CD file is improperly formatted  : %1"
 msgstr ""
@@ -2287,7 +2240,8 @@ msgstr "Спектры"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Визуализировать спектральные данные из квантовохимических расчетов"
 
-#: src/extensions/spectratype_cd.cpp:117 src/extensions/spectratype_uv.cpp:92
+#: src/extensions/spectratype_cd.cpp:117
+#: src/extensions/spectratype_uv.cpp:92
 msgid "Wavelength (nm)"
 msgstr ""
 
@@ -2297,9 +2251,8 @@ msgid "Intensity (arb. units)"
 msgstr "Интенсивность (km/моль)"
 
 #: src/extensions/spectratype_dos.cpp:134
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Энергия"
+msgstr "Энергия (eV)"
 
 #: src/extensions/spectratype_dos.cpp:141
 msgid "Density of States (states/cell)"
@@ -2318,13 +2271,8 @@ msgid "No intensities"
 msgstr "Без интенсивностей"
 
 #: src/extensions/spectratype_ir.cpp:90
-msgid ""
-"The vibration data in the molecule you have loaded does not have any "
-"intensity data. Intensities have been set to an arbitrary value for "
-"visualization."
-msgstr ""
-"Информация о колебаниях данной молекулы не содержит интенсивностей. Для "
-"визуализации будут использованы произвольные значения интенсивностей"
+msgid "The vibration data in the molecule you have loaded does not have any intensity data. Intensities have been set to an arbitrary value for visualization."
+msgstr "Информация о колебаниях данной молекулы не содержит интенсивностей. Для визуализации будут использованы произвольные значения интенсивностей"
 
 #: src/extensions/spectratype_ir.cpp:132
 #: src/extensions/spectratype_raman.cpp:146
@@ -2348,12 +2296,8 @@ msgid "Warning"
 msgstr "Предупреждение"
 
 #: src/extensions/supercellextension.cpp:92
-msgid ""
-"This document is currently an isolated molecule. You need to create a unit "
-"cell."
-msgstr ""
-"Сейчас в этом документе изолированная молекула. Вам нужно создать "
-"элементарную ячеку."
+msgid "This document is currently an isolated molecule. You need to create a unit cell."
+msgstr "Сейчас в этом документе изолированная молекула. Вам нужно создать элементарную ячеку."
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
@@ -2363,19 +2307,22 @@ msgstr "Надъячейка"
 msgid "Build and display crystallographic super cells"
 msgstr "Строит и отображает кристаллографические надъячейки"
 
-#: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
+#: src/extensions/surfacedialog.cpp:74
+#: src/extensions/surfacedialog.cpp:75
 #: src/extensions/surfaceextension.cpp:624
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
 msgstr "MO %L1"
 
-#: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
+#: src/extensions/surfacedialog.cpp:88
+#: src/extensions/surfacedialog.cpp:91
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
 msgstr "(ВЗМО)"
 
-#: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
+#: src/extensions/surfacedialog.cpp:98
+#: src/extensions/surfacedialog.cpp:100
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
 msgstr "(НСМО)"
@@ -2477,8 +2424,7 @@ msgstr "Пример расширения"
 
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
-msgstr ""
-"Невозможно создать видео, т.к. виджет GL не инициализировался корректно"
+msgstr "Невозможно создать видео, т.к. виджет GL не инициализировался корректно"
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
@@ -2507,22 +2453,15 @@ msgstr "Соотношение сторон"
 #: src/extensions/trajvideomaker.cpp:159
 #, qt-format
 msgid ""
-"The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-"ratio %3.\n"
+"The current Avogadro scene is %1x%2 pixels large, and therefore has aspect ratio %3.\n"
 "You may keep this value, for example if you intend to use POV-Ray\n"
-"to produce an image of %4x1000 pixels, or you may enter any other positive "
-"value,\n"
-"for example 1 if you intend to use POV-Ray to produce a square image, like "
-"1000x1000 pixels."
+"to produce an image of %4x1000 pixels, or you may enter any other positive value,\n"
+"for example 1 if you intend to use POV-Ray to produce a square image, like 1000x1000 pixels."
 msgstr ""
-"Текущее изображение в Avogadro имеет размер %1x%2 пикселей, и соотношение "
-"сторон составляет %3.\n"
-"Вы можете оставить это значение, например, если хотите получить с помощью "
-"POV-Ray\n"
-"изображение размером %4x1000 пикселей, или введите любое положительное "
-"число, например 1,\n"
-"если хотите получить с помощью POV-Ray квадратное изображение, например, "
-"1000x1000 пикселей."
+"Текущее изображение в Avogadro имеет размер %1x%2 пикселей, и соотношение сторон составляет %3.\n"
+"Вы можете оставить это значение, например, если хотите получить с помощью POV-Ray\n"
+"изображение размером %4x1000 пикселей, или введите любое положительное число, например 1,\n"
+"если хотите получить с помощью POV-Ray квадратное изображение, например, 1000x1000 пикселей."
 
 #: src/extensions/unitcellextension.cpp:45
 msgid "Unit Cell Parameters..."
@@ -2628,8 +2567,7 @@ msgstr ""
 #: src/glwidget.cpp:453
 msgid ""
 "Invalid OpenGL context.\n"
-"Either something is completely broken in your OpenGL setup (can you run any "
-"OpenGL application?), or you found a bug."
+"Either something is completely broken in your OpenGL setup (can you run any OpenGL application?), or you found a bug."
 msgstr ""
 
 #: src/glwidget.cpp:458
@@ -2674,13 +2612,17 @@ msgstr "без названия"
 msgid "OBMol: index %1 out of reach."
 msgstr "OBMol: номер %1 недостижим."
 
-#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:662
+#: src/moleculefile.cpp:139
+#: src/moleculefile.cpp:365
+#: src/moleculefile.cpp:662
 #: src/moleculefile.cpp:757
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr "Чтение типа файлов '%1' не поддерживается"
 
-#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:668
+#: src/moleculefile.cpp:145
+#: src/moleculefile.cpp:372
+#: src/moleculefile.cpp:668
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr "Для типа файлов файла '%1' не поддерживается чтение."
@@ -2695,12 +2637,16 @@ msgstr "Не удалось прочитать молекулу с номеро�
 msgid "replaceMolecule: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
+#: src/moleculefile.cpp:193
+#: src/moleculefile.cpp:441
+#: src/moleculefile.cpp:531
 #, qt-format
 msgid "File type '%1' is not supported for writing."
 msgstr "Для типа файлов '%1' не поддерживается запись."
 
-#: src/moleculefile.cpp:199 src/moleculefile.cpp:450 src/moleculefile.cpp:538
+#: src/moleculefile.cpp:199
+#: src/moleculefile.cpp:450
+#: src/moleculefile.cpp:538
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
 msgstr "Для типа файлов файла '%1' не поддерживается запись."
@@ -2720,36 +2666,36 @@ msgstr "Не удалось открыть файл '%1' для чтения."
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr "Замена молекулы с номером %1 в файле '%2' не удалась."
 
-#: src/moleculefile.cpp:355 src/moleculefile.cpp:651 src/moleculefile.cpp:746
+#: src/moleculefile.cpp:355
+#: src/moleculefile.cpp:651
+#: src/moleculefile.cpp:746
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr "Файл %1 не может быть открыт для чтения."
 
-#: src/moleculefile.cpp:398 src/moleculefile.cpp:772
+#: src/moleculefile.cpp:398
+#: src/moleculefile.cpp:772
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr "Не удалось прочитать молекулу из файла '%1'."
 
-#: src/moleculefile.cpp:413 src/moleculefile.cpp:427
+#: src/moleculefile.cpp:413
+#: src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
 msgstr "Файл %1 не может быть открыт для записи"
 
 #: src/moleculefile.cpp:476
 msgid "Saving molecular file failed - could not rename original file."
-msgstr ""
-"Не удалось сохранить файл молекулы - не получилось переименовать исходный  "
-"файл."
+msgstr "Не удалось сохранить файл молекулы - не получилось переименовать исходный  файл."
 
 #: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
-msgstr ""
-"Не удалось сохранить файл молекулы - не получилось переименовать новый файл."
+msgstr "Не удалось сохранить файл молекулы - не получилось переименовать новый файл."
 
 #: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
-msgstr ""
-"Не удалось сохранить файл молекулы - не получилось удалить старый файл."
+msgstr "Не удалось сохранить файл молекулы - не получилось удалить старый файл."
 
 #: src/moleculefile.cpp:501
 #, qt-format
@@ -2766,7 +2712,8 @@ msgstr "Файл %1не может быть открыт для записи."
 msgid "Writing conformers to file '%1' failed."
 msgstr "Не удалось записать конформеры в файл '%1'."
 
-#: src/moleculefile.cpp:725 src/moleculefile.cpp:766
+#: src/moleculefile.cpp:725
+#: src/moleculefile.cpp:766
 #, qt-format
 msgid "Molecule %1"
 msgstr "Молекула %1"
@@ -2784,18 +2731,24 @@ msgctxt "Default license for all Avogadro plugins"
 msgid "GPL2+"
 msgstr "GPL2+"
 
-#: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
+#: src/pythonengine_p.cpp:84
+#: src/pythonengine_p.cpp:92
 msgid "Unknown Python Engine"
 msgstr "Неизвестный движок Python"
 
-#: src/pythonengine_p.cpp:100 src/pythonengine_p.cpp:108
-#: src/pythonextension_p.cpp:86 src/pythonextension_p.cpp:96
-#: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
+#: src/pythonengine_p.cpp:100
+#: src/pythonengine_p.cpp:108
+#: src/pythonextension_p.cpp:86
+#: src/pythonextension_p.cpp:96
+#: src/pythontool_p.cpp:106
+#: src/pythontool_p.cpp:114
+#: src/pythontool_p.cpp:122
 #: src/pythontool_p.cpp:130
 msgid "N/A"
 msgstr "Н/Д"
 
-#: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
+#: src/pythonengine_p.cpp:241
+#: src/pythonengine_p.cpp:246
 msgid "PythonEngine: checking "
 msgstr "Движок на Python: проверка "
 
@@ -2803,20 +2756,24 @@ msgstr "Движок на Python: проверка "
 msgid "  - script has no 'Engine' class defined"
 msgstr "  - в сценарии не определен класс 'Engine'"
 
-#: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:338
+#: src/pythonengine_p.cpp:247
+#: src/pythonextension_p.cpp:338
 #: src/pythontool_p.cpp:342
 msgid "  - no module"
 msgstr "  - нет модуля"
 
-#: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
+#: src/pythonextension_p.cpp:69
+#: src/pythonextension_p.cpp:79
 msgid "Unknown Python Extension"
 msgstr "Неизвестное расширение Python"
 
-#: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
+#: src/pythonextension_p.cpp:127
+#: src/pythonextension_p.cpp:141
 msgid "&Scripts"
 msgstr "Сценарии"
 
-#: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
+#: src/pythonextension_p.cpp:332
+#: src/pythonextension_p.cpp:337
 msgid "PythonExtension: checking "
 msgstr "Расширение на Python: проверка "
 
@@ -2824,11 +2781,13 @@ msgstr "Расширение на Python: проверка "
 msgid "  - script has no 'Extension' class defined"
 msgstr "  - в сценарии не определен класс 'Extension'"
 
-#: src/pythontool_p.cpp:90 src/pythontool_p.cpp:98
+#: src/pythontool_p.cpp:90
+#: src/pythontool_p.cpp:98
 msgid "Unknown Python Tool"
 msgstr "Неизвестный инструмент на Python"
 
-#: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
+#: src/pythontool_p.cpp:336
+#: src/pythontool_p.cpp:341
 msgid "PythonTool: checking "
 msgstr "Инструмент на Python: проверка "
 
@@ -2868,11 +2827,13 @@ msgstr "Выровнять"
 msgid "Everything"
 msgstr "Всё"
 
-#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273
+#: src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
 msgstr "Молекула"
 
-#: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
+#: src/tools/aligntool.cpp:277
+#: src/tools/aligntool.h:40
 msgid "Align"
 msgstr "Выровнять"
 
@@ -2956,8 +2917,10 @@ msgstr "Молекулярная динамика (600K)"
 msgid "Molecular Dynamics (900K)"
 msgstr "Молекулярная динамика (900K)"
 
-#: src/tools/autoopttool.cpp:294 src/tools/autoopttool.cpp:387
-#: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
+#: src/tools/autoopttool.cpp:294
+#: src/tools/autoopttool.cpp:387
+#: src/tools/autorotatetool.cpp:234
+#: src/tools/autorotatetool.cpp:295
 msgid "Start"
 msgstr "Начать"
 
@@ -2969,7 +2932,8 @@ msgstr "Закреплённые атомы могут перемещаться"
 msgid "Ignored atoms are movable"
 msgstr "Игнорируемые атомы могут перемещаться"
 
-#: src/tools/autoopttool.cpp:354 src/tools/autorotatetool.cpp:224
+#: src/tools/autoopttool.cpp:354
+#: src/tools/autorotatetool.cpp:224
 msgid "Stop"
 msgstr "Остановить"
 
@@ -3029,7 +2993,9 @@ msgstr "вращение по оси Z:"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1066 rc.cpp:2161 rc.cpp:2515
+#: src/tools/autorotatetool.cpp:296:1066
+#: rc.cpp:2161
+#: rc.cpp:2515
 msgid "Reset"
 msgstr "Сброс"
 
@@ -3076,7 +3042,8 @@ msgstr " Привязка к связям"
 msgid "Snap-to Threshold: "
 msgstr "Порог привязки: "
 
-#: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
+#: src/tools/bondcentrictool.cpp:1657
+#: src/tools/bondcentrictool.cpp:1672
 msgid "Bond Centric Manipulation"
 msgstr ""
 
@@ -3182,7 +3149,8 @@ msgstr "Настройки измерения"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3354
+#: src/tools/drawcommand.cpp:298
+#: src/tools/drawcommand.cpp:311:3354
 msgid "Add Atom"
 msgstr "Добавить атом"
 
@@ -3190,7 +3158,8 @@ msgstr "Добавить атом"
 msgid "Delete Atom"
 msgstr "Удалить атом"
 
-#: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
+#: src/tools/drawcommand.cpp:561
+#: src/tools/drawcommand.cpp:580
 msgid "Add Bond"
 msgstr "Добавить связь"
 
@@ -3202,7 +3171,8 @@ msgstr "Удалить связь"
 msgid "Change Element"
 msgstr "Изменить элемент"
 
-#: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:494
+#: src/tools/drawcommand.cpp:944
+#: src/tools/drawtool.cpp:494
 msgid "Change Bond Order"
 msgstr "Изменить порядок связи"
 
@@ -3218,7 +3188,8 @@ msgstr ""
 "Левая кнопка мыши: \tЩелкните и потяните, чтобы создать атомы и связи\n"
 "Правая кнопка мыши: Удалить атом"
 
-#: src/tools/drawtool.cpp:400 src/tools/drawtool.cpp:406
+#: src/tools/drawtool.cpp:400
+#: src/tools/drawtool.cpp:406
 msgid "Draw Atom"
 msgstr "Нарисовать атом"
 
@@ -3226,7 +3197,8 @@ msgstr "Нарисовать атом"
 msgid "Draw Bond"
 msgstr "Нарисовать связь"
 
-#: src/tools/drawtool.cpp:456 src/tools/drawtool.h:53
+#: src/tools/drawtool.cpp:456
+#: src/tools/drawtool.h:53
 msgid "Draw"
 msgstr "Рисовать"
 
@@ -3279,11 +3251,11 @@ msgstr ""
 "Manipulation Tool (F10)\n"
 "\n"
 "Левая кнопка мыши: Щелкните и потяните, чтобы переместить атомы\n"
-"Средняя кнопка мыши: Щелкните и потяните, чтобы переместить атомы ближе или "
-"дальше\n"
+"Средняя кнопка мыши: Щелкните и потяните, чтобы переместить атомы ближе или дальше\n"
 "Правая кнопка мыши: Щелкните и потяните, чтобы повернуть выделенные атомы."
 
-#: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
+#: src/tools/manipulatetool.cpp:362
+#: src/tools/manipulatetool.cpp:371
 msgid "Manipulate Atom"
 msgstr "Переместить атом"
 
@@ -3310,8 +3282,7 @@ msgstr ""
 "Инструмент навигации (F9)\n"
 "\n"
 "Левая кнопка мыши: Щелкните и потяните, чтобы повернуть молекулы\n"
-"Средняя кнопка мыши: Щелкните и потяните, чтобы увеличить или уменьшить "
-"масштаб\n"
+"Средняя кнопка мыши: Щелкните и потяните, чтобы увеличить или уменьшить масштаб\n"
 "Правая кнопка мыши: Щелкните и потяните, чтобы переместить молекулы"
 
 #: src/tools/navigatetool.h:52
@@ -3423,9 +3394,8 @@ msgstr "Гидрофобность"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Оси"
+msgstr "Оси:"
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -3446,21 +3416,18 @@ msgstr "Произвольная информация"
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Ось:"
+msgstr "Ось 1:"
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Ось:"
+msgstr "Ось 2:"
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Ось:"
+msgstr "Ось 3:"
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3471,9 +3438,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Выровнять"
+msgstr "Центр:"
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3488,12 +3454,12 @@ msgstr ""
 #. i18n: file: src/engines/axessettingswidget.ui:468
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Norm"
-msgstr ""
+msgstr "Норма"
 
 #. i18n: file: src/engines/axessettingswidget.ui:478
 #. i18n: ectx: property (text), widget (QCheckBox, preserveNormsCheckBox)
 msgid "Preserve vector norms"
-msgstr ""
+msgstr "Сохранять нормы векторов"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:18
 #. i18n: ectx: property (text), widget (QLabel, atomRadiusLabel)
@@ -3591,9 +3557,8 @@ msgstr "Дипольный момент"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Другой цвет"
+msgstr "Произвольный вектор"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3670,9 +3635,8 @@ msgstr "Символ элемента"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#, fuzzy
 msgid "Symbol & Number in Group"
-msgstr "Символ и номер элемента"
+msgstr "Символ и номер в группе"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3766,17 +3730,15 @@ msgstr "Порядок связи"
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:288
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "Сменить шрифт..."
+msgstr "Сменить шрифт"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:274
 #. i18n: ectx: property (text), widget (QPushButton, atomColor)
 #. i18n: file: src/engines/labelsettingswidget.ui:281
 #. i18n: ectx: property (text), widget (QPushButton, bondColor)
-#, fuzzy
 msgid "Set Color"
-msgstr "Выбрать..."
+msgstr "Выбрать цвет"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:409
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
@@ -3787,9 +3749,8 @@ msgstr ""
 
 #. i18n: file: src/engines/old_labelsettingswidget.ui:129
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Displacement for Atom Labels:"
-msgstr "Величина шага:"
+msgstr "Смещение подписей атомов:"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3925,21 +3886,18 @@ msgstr "Сохранить как .avi..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#, fuzzy
 msgid "Cartesian Editor"
 msgstr "Редактор декартовых координат..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:52
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Angstroms"
-msgstr "Ангстрем"
+msgstr "Ангстремы"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:57
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Бор"
+msgstr "Боры"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:81
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3960,15 +3918,13 @@ msgstr "Входной файл GAMESS"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:96
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "GAMESS Input #2"
-msgstr "Входной файл GAMESS"
+msgstr "Входной файл GAMESS #2"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:101
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "Turbomole Input"
-msgstr "IR спектр из Turbomole (control)"
+msgstr "Входной файл Turbomole"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:106
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3982,9 +3938,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:136
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Сбросить всё"
+msgstr "Вырезать всё"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:139
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -4003,24 +3958,23 @@ msgstr "..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:156
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Удалить всё"
+msgstr "Очистить всё"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:176
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
 msgid "Copy All"
-msgstr ""
+msgstr "Копировать всё"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:202
 #. i18n: ectx: property (toolTip), widget (QToolButton, pasteButton)
 msgid "Paste to the End"
-msgstr ""
+msgstr "Вставить в конце"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:230
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid "Paste or edit atomic coordinates here"
-msgstr ""
+msgstr "Вставьте или редактируйте координаты атомов здесь"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:240
 #. i18n: ectx: property (toolTip), widget (QToolButton, revertButton)
@@ -4165,9 +4119,8 @@ msgstr "Удалить всё"
 
 #. i18n: file: src/extensions/daltoninputdialog.ui:32
 #. i18n: ectx: property (windowTitle), widget (QDialog, DaltonInputDialog)
-#, fuzzy
 msgid "Dalton Input"
-msgstr "Входной файл Gaussian"
+msgstr "Входной файл Dalton"
 
 #. i18n: file: src/extensions/daltoninputdialog.ui:69
 #. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
@@ -4697,8 +4650,7 @@ msgid ""
 "Run in parallel where possible. This is only possible for SCF\n"
 "wavefunctions and DFT calculations. Dalton only supports MPI\n"
 "in the current release and must be compiled and installed\n"
-"correctly. The number of nodes are set by using the \"-N #\" option when "
-"executing the \"dalton\" script."
+"correctly. The number of nodes are set by using the \"-N #\" option when executing the \"dalton\" script."
 msgstr ""
 
 #. i18n: file: src/extensions/daltoninputdialog.ui:750
@@ -7587,9 +7539,7 @@ msgstr "Показать"
 #. i18n: file: src/extensions/spectradialog.ui:253
 #. i18n: ectx: property (toolTip), widget (QPushButton, push_import)
 msgid "Imports a tsv of experimental spectra to overlay on the plot."
-msgstr ""
-"Импортирует экспериментальные спектры в формате tsv и отображает на том же "
-"графике"
+msgstr "Импортирует экспериментальные спектры в формате tsv и отображает на том же графике"
 
 #. i18n: file: src/extensions/spectradialog.ui:256
 #. i18n: ectx: property (text), widget (QPushButton, push_import)
@@ -7683,12 +7633,8 @@ msgstr "&Сохранить изображение..."
 
 #. i18n: file: src/extensions/spectradialog.ui:625
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_imageFontAdjust)
-msgid ""
-"Use an optimized value for the font size instead of the scheme-specified "
-"value (screen to image point sizes don't translate well!)"
-msgstr ""
-"Выбрать оптимизированный размер шрифта вместо заданного в схеме (точки "
-"экрана и изображения плохо согласуются!)"
+msgid "Use an optimized value for the font size instead of the scheme-specified value (screen to image point sizes don't translate well!)"
+msgstr "Выбрать оптимизированный размер шрифта вместо заданного в схеме (точки экрана и изображения плохо согласуются!)"
 
 #. i18n: file: src/extensions/spectradialog.ui:628
 #. i18n: ectx: property (text), widget (QCheckBox, cb_imageFontAdjust)
@@ -7792,7 +7738,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectratabdos.ui:94
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_energy)
 msgid "eV"
-msgstr ""
+msgstr "eV"
 
 #. i18n: file: src/extensions/spectratabdos.ui:102
 #. i18n: ectx: property (text), widget (QCheckBox, cb_fermi)
@@ -7999,9 +7945,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfacedialog.ui:276
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-msgctxt ""
-"Add the new surface to this particular display type (i.e., orbital or "
-"surface)"
+msgctxt "Add the new surface to this particular display type (i.e., orbital or surface)"
 msgid "In Display Type:"
 msgstr ""
 
@@ -8105,8 +8049,7 @@ msgstr "Показать векторы &градиентов"
 #. i18n: file: src/extensions/vibrationdialog.ui:115
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
-"более высокочастотные колебания будут отображаться более быстрыми движениями"
+msgstr "более высокочастотные колебания будут отображаться более быстрыми движениями"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:118
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
@@ -8150,118 +8093,79 @@ msgstr "Удалить атом"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
-"Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Konstantin Tokarev, ,Launchpad Contributions:,Konstantin "
-"Tokarev,Vasily Astanin"
+msgstr ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Konstantin Tokarev, ,Launchpad Contributions:,Konstantin Tokarev,Vasily Astanin"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,"
-"annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru"
+msgstr ",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Открыть файл лиганда"
-
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Файлы Avogadro (*.*)"
-
 #~ msgid "Open mol file"
 #~ msgstr "Открыть файл mol"
-
 #~ msgid "Any files (*.*)"
 #~ msgstr "Все файлы (*.*)"
-
 #~ msgid "Save Movie File"
 #~ msgstr "Сохранить Видеофайл"
-
 #~ msgid "movie files (*.avi)"
 #~ msgstr "видеофайлы (*.avi)"
-
 #~ msgid "Save Traj File"
 #~ msgstr "Сохранить файл траектории"
-
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "файл траектории (*.xyz)"
-
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Не удалось прочитать mol-файл %1."
-
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
 #~ "GL виджет не был корректно инициализирован для сохранения скриншотов"
-
 #~ msgid "Cannot save file %1."
 #~ msgstr "Невозможно сохранить файл %1."
-
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL виджет не был корректно инициализирован для сохранения анимации"
-
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr "Неправильное имя файла анимации"
-
 #~ msgid ""
 #~ "Invalid movie filename.  Must include full directory path and name, "
 #~ "ending with .avi"
 #~ msgstr ""
 #~ "Неправильное имя файла анимации. Имя должно содержать полный путь и "
 #~ "название, оканчивающееся на .avi"
-
 #~ msgid "Would write file to %1."
 #~ msgstr "Запись в файл %1."
-
 #~ msgid "Wrote file %1."
 #~ msgstr "Записан файл %1."
-
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Добавить линейную интерполяцию в анимации"
-
 #~ msgid "Create ligand"
 #~ msgstr "Создать лиганд"
-
 #~ msgid "create ligand from current selection"
 #~ msgstr "создать лиганд из текущего выделения"
-
 #~ msgid "create ligand from residue name"
 #~ msgstr "создать название лиганда из названия аминокислотного остатка"
-
 #~ msgid "create ligand from file..."
 #~ msgstr "создать лиганд из файла..."
-
 #~ msgid "The residue name"
 #~ msgstr "Название аминокислотного остатка"
-
 #~ msgid "button to load a second conformation from a file."
 #~ msgstr "кнопка для загрузки второй конформации из файла"
-
 #~ msgid "Load Second Conformation ..."
 #~ msgstr "Загрузить вторую конформацию..."
-
 #~ msgid ""
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
 #~ "then be used to make a movie."
 #~ msgstr ""
 #~ "Сохранить снимки траектории как серию POVRay-файлов. Это может быть "
 #~ "использовано для изготовления видеоклипа"
-
 #~ msgid "Button to save an .xyz trajectory."
 #~ msgstr "Кнопка для сохранения .xyz траектории."
-
 #~ msgid "Save trajectory..."
 #~ msgstr "Сохранить траекторию..."
-
 #~ msgid "Save movie..."
 #~ msgstr "Сохранить фильм..."
-
 #~ msgid "Radius"
 #~ msgstr "Радиус"
-
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
 #~ "place?"
@@ -8275,10 +8179,10 @@ msgstr ""
 #~ "     </property>\n"
 #~ "     <property name=\"text\">\n"
 #~ "      <string>Отображать визуальные подсказки"
-
 #~ msgid ""
 #~ "Display visual cues</string>\n"
 #~ "     </property>"
 #~ msgstr ""
 #~ "Отображать визуальные подсказки</string>\n"
 #~ "     </property>"
+

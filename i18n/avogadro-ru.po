@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 00:00+0300\n"
-"PO-Revision-Date: 2009-10-18 15:17+0000\n"
+"PO-Revision-Date: 2010-02-05 00:59+0300\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,46 +17,42 @@ msgstr ""
 "X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
+#: src/aboutdialog.cpp:47
+#: src/updatedialog.cpp:41
 msgid "OK"
 msgstr "Готово"
 
-#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
+#: src/aboutdialog.cpp:63
+#: src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Подверсия Git: %1)"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
-msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
-msgstr ""
+msgid "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/><br/>Open Babel Version: %4"
+msgstr "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %3<br/><br/>Версия Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:72 src/mainwindow.cpp:838 src/mainwindow.cpp:888
-#: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/aboutdialog.cpp:72
+#: src/mainwindow.cpp:838
+#: src/mainwindow.cpp:888
+#: src/mainwindow.cpp:910
+#: src/mainwindow.cpp:1072
+#: src/mainwindow.cpp:1094
+#: src/mainwindow.cpp:1248
+#: src/mainwindow.cpp:1476
+#: src/mainwindow.cpp:2459
 #: src/mainwindow.cpp:2952:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
-msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
-msgstr ""
-"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %3<br/"
-"><br/>Дальнейшую информацию вы можете получить на <a href=\"http://avogadro."
-"openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа поставляется "
-"АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых гарантий "
-"КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+#, qt-format
+msgid "<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+msgstr "<br/><br/>Версия Qt: %1<br/><br/>Дальнейшую информацию вы можете получить на <a href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -82,17 +78,20 @@ msgstr "Удалить атомы"
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
-#: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
+#: src/engineitemdelegate.cpp:47
+#: src/engineitemmodel.cpp:114
+#: src/mainwindow.cpp:2970
+#: src/mainwindow.cpp:2987:381
+#: rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:733
+#: src/importdialog.cpp:175
+#: src/mainwindow.cpp:733
 msgid "Open File"
 msgstr "Открыть файл"
 
 #: src/main.cpp:204
-#, fuzzy
 msgctxt "main.cpp"
 msgid "Avogadro"
 msgstr "Avogadro"
@@ -100,12 +99,12 @@ msgstr "Avogadro"
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr ""
+msgstr "Эта система не поддерживает OpenGL."
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr ""
+msgstr "Система поддерживает OpenGL."
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
@@ -115,7 +114,7 @@ msgstr ""
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr ""
+msgstr "Найденные возможности OpenGL:"
 
 #: src/main.cpp:220
 msgctxt "main.cpp"
@@ -130,7 +129,7 @@ msgstr ""
 #: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr ""
+msgstr "Сглаживание."
 
 #: src/main.cpp:249
 #, qt-format
@@ -174,7 +173,8 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "Масштаб (&Z)"
 
-#: src/mainwindow.cpp:388 src/mainwindow.cpp:1611
+#: src/mainwindow.cpp:388
+#: src/mainwindow.cpp:1611
 msgid "Bring All to Front"
 msgstr "Вынести всё на передний план"
 
@@ -196,16 +196,21 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:713 src/mainwindow.cpp:1187
+#: src/mainwindow.cpp:713
+#: src/mainwindow.cpp:1187
 msgid "Common molecule formats"
 msgstr "Распространённые форматы молекул"
 
-#: src/mainwindow.cpp:718 src/mainwindow.cpp:1184 src/mainwindow.cpp:1416
+#: src/mainwindow.cpp:718
+#: src/mainwindow.cpp:1184
+#: src/mainwindow.cpp:1416
 #: src/mainwindow.cpp:1495
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1181 src/mainwindow.cpp:1193
+#: src/mainwindow.cpp:719
+#: src/mainwindow.cpp:1181
+#: src/mainwindow.cpp:1193
 msgid "CML"
 msgstr "CML"
 
@@ -241,19 +246,24 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "Выходной файл NWChem"
 
-#: src/mainwindow.cpp:728 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:728
+#: src/mainwindow.cpp:1198
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1200
+#: src/mainwindow.cpp:729
+#: src/mainwindow.cpp:1200
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1201
+#: src/mainwindow.cpp:730
+#: src/mainwindow.cpp:1201
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:794 src/mainwindow.cpp:799 src/savedialog.cpp:83
+#: src/mainwindow.cpp:794
+#: src/mainwindow.cpp:799
+#: src/savedialog.cpp:83
 msgid "untitled"
 msgstr "безымянный"
 
@@ -268,7 +278,8 @@ msgstr "Загрузка %1..."
 msgid "Loading %1..."
 msgstr "Загрузка %1..."
 
-#: src/mainwindow.cpp:839 src/mainwindow.cpp:1073
+#: src/mainwindow.cpp:839
+#: src/mainwindow.cpp:1073
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Сбой при чтении файла молекул, файл %1."
@@ -335,7 +346,8 @@ msgstr "Ctrl+D"
 msgid "Save..."
 msgstr "Сохранить"
 
-#: src/mainwindow.cpp:1111 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1111
+#: src/savedialog.cpp:65
 msgid "Save"
 msgstr "Сохранить"
 
@@ -363,7 +375,8 @@ msgstr "Входной файл NWChem"
 msgid "Save Molecule As"
 msgstr "Сохранить молекулу как"
 
-#: src/mainwindow.cpp:1406 src/mainwindow.cpp:1418
+#: src/mainwindow.cpp:1406
+#: src/mainwindow.cpp:1418
 msgid "PNG"
 msgstr "PNG"
 
@@ -379,7 +392,8 @@ msgstr "BMP"
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1425 src/mainwindow.cpp:1504
+#: src/mainwindow.cpp:1425
+#: src/mainwindow.cpp:1504
 msgid "Export Bitmap Graphics"
 msgstr "Экспорт растрового изображения"
 
@@ -388,7 +402,8 @@ msgstr "Экспорт растрового изображения"
 msgid "Cannot save file %1."
 msgstr "Невозможно сохранить файл %1."
 
-#: src/mainwindow.cpp:1485 src/mainwindow.cpp:1496
+#: src/mainwindow.cpp:1485
+#: src/mainwindow.cpp:1496
 msgid "PDF"
 msgstr "PDF"
 
@@ -421,7 +436,9 @@ msgstr "Вставка не удалась (формат недоступен)"
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:1972
+#: src/mainwindow.cpp:2005
+#: src/mainwindow.cpp:2072
 #: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
@@ -485,12 +502,8 @@ msgid "No tools loaded."
 msgstr "Не загружены инструменты."
 
 #: src/mainwindow.cpp:2949
-msgid ""
-" It is unlikely this application will function correctly. Please correct "
-"this error."
-msgstr ""
-" Маловероятно, что это приложение будет работать корректно. Пожалуста "
-"исправьте эту ошибку."
+msgid " It is unlikely this application will function correctly. Please correct this error."
+msgstr " Маловероятно, что это приложение будет работать корректно. Пожалуста исправьте эту ошибку."
 
 #: src/mainwindow.cpp:2993
 msgid "Objects"
@@ -522,26 +535,35 @@ msgstr "Файл: "
 msgid "Description:\n"
 msgstr "Описание:\n"
 
-#: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/primitiveitemmodel.cpp:262
+#: src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60
+#: src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494
+#: src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Молекула"
 
-#: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/primitiveitemmodel.cpp:291
+#: src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61
+#: src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Атомы"
 
-#: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/primitiveitemmodel.cpp:293
+#: src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62
+#: src/projecttreeeditor.cpp:498
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Связи"
 
-#: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/primitiveitemmodel.cpp:295
+#: src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63
+#: src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Аминокислотые остатки"
@@ -554,14 +576,18 @@ msgstr "Аминокислотые остатки"
 msgid "bond %1"
 msgstr "связь %1"
 
-#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projectdelegates/labeldelegate.h:43
+#: src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122
+#: src/projecttreeeditor.cpp:492
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Метка"
 
-#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projectdelegates/selectiondelegate.h:43
+#: src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502
+#: src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Пользовательский выбор"
 
@@ -1269,27 +1295,9 @@ msgstr "Туман:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
-"Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,"
-"Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,"
-"Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,"
-"Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
-"Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,"
-"DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010"
+msgstr ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,panda-yuliya@mail.ru,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru"
+msgstr ",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,panda-yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,,madcad@yandex.ru,,dn2010@km.ru"
+
