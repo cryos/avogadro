@@ -34,20 +34,12 @@ using namespace std;
 namespace Avogadro {
 
   CDSpectra::CDSpectra( SpectraDialog *parent ) :
-    SpectraType( parent )//, m_dialog(parent)
+    SpectraType( parent )
   {
-    //m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    /*m_xList = new QList<double>;
-    m_yList = 0; // will point to one of the ylist types below
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;*/
 
     m_yListVelocity = new QList<double>;
     m_yListLength = new QList<double>;
-
-    //m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),

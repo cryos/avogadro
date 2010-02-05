@@ -147,8 +147,6 @@ namespace Avogadro {
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
 
- // QWidget * RamanSpectra::getTabWidget() {return m_tab_widget;}
-
   void RamanSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
@@ -258,19 +256,10 @@ namespace Avogadro {
   }*/
 
   QString RamanSpectra::getTSV() {
-    /*QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Frequencies\tActivities\n";
-    for(int i = 0; i< m_xList.size(); i++) {
-      out << format.arg(m_xList.at(i), 0, 'g').arg(m_yList.at(i), 0, 'g');
-    }
-    return str;*/
     return SpectraType::getTSV("Frequencies", "Activities");
   }
 
   void RamanSpectra::setScale(double scale) {
-    qDebug() << scale << " " << m_scale;
     if (scale == m_scale) return;
     m_scale = scale;
     emit plotDataChanged();

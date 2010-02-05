@@ -55,7 +55,6 @@ namespace Avogadro {
   private:
     Ui::Tab_UV ui;
     double m_fermi;
-    uint m_numAtoms;
   };
 }
 

@@ -41,9 +41,6 @@ namespace Avogadro {
     DOSSpectra( SpectraDialog *parent = 0 );
     ~DOSSpectra();
 
-    enum EnergyUnits	{ ENERGY_EV = 0 };
-    enum DensityUnits	{ DENSITY_PER_CELL = 0, DENSITY_PER_ATOM, DENSITY_PER_VALENCE };
-
     void writeSettings();
     void readSettings();
 
