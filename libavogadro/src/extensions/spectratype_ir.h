@@ -56,6 +56,8 @@ namespace Avogadro {
     void updateYAxis(QString);
 
   private:
+    double scale(double w);
+    
     Ui::Tab_IR ui;
     double m_scale;
     QString m_yaxis;
