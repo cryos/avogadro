@@ -93,8 +93,6 @@ namespace Avogadro {
     plot->axis(PlotWidget::LeftAxis)->setLabel(tr("<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"));
   }
 
- // QWidget * UVSpectra::getTabWidget() {return m_tab_widget;}
-
   void UVSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
@@ -165,14 +163,6 @@ namespace Avogadro {
   }*/
 
   QString UVSpectra::getTSV() {
-    /*QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Wavelength (nm)\tIntensity (arb)\n";
-    for(int i = 0; i< m_xList.size(); i++) {
-      out << format.arg(m_xList.at(i), 6, 'g').arg(m_yList.at(i), 6, 'g');
-    }
-    return str;*/
     return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
 

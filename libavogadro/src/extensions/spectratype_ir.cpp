@@ -174,11 +174,11 @@ namespace Avogadro {
       // create points
       QList<double> xPoints = getXPoints(FWHM, 20);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i) * m_scale;
+        double x = xPoints.at(i) * scale(xPoints.at(i));
         double y = 100;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
-          double w = m_xList.at(j) * m_scale;
+          double w = m_xList.at(j) * scale(m_xList.at(j));
           y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -250,5 +250,11 @@ namespace Avogadro {
     m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
     m_yaxis = text;
     emit plotDataChanged();
+  }
+
+  double IRSpectra::scale(double w)
+  {
+    //TODO: add other scaling algorithms
+    return m_scale;
   }
 }

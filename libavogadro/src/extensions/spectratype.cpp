@@ -36,14 +36,6 @@ namespace Avogadro {
   SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent), m_dialog(parent)
   {
     m_tab_widget = new QWidget;
-    /*m_xList.clear();
-    m_yList.clear();
-    m_xList_imp.clear();
-    m_yList_imp.clear();
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;*/
   }
   
   SpectraType::~SpectraType()
@@ -71,9 +63,6 @@ namespace Avogadro {
   {
     m_xList_imp = xList;
     m_yList_imp = yList;
-    /*m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);    // it's not Java!
-    */
   }
   
   void SpectraType::getImportedPlotObject(PlotObject *plotObject)

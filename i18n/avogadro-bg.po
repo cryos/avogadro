@@ -7,45 +7,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-10-29 03:27+0000\n"
+"POT-Creation-Date: 2010-02-05 00:00+0300\n"
+"PO-Revision-Date: 2009-07-22 10:59+0000\n"
 "Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "Добре"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
 msgstr ""
 
-#: src/aboutdialog.cpp:68
+#: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952:69
 msgid "Avogadro"
 msgstr "Avogadro"
+
+#: src/aboutdialog.cpp:73
+#, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
+msgstr ""
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -72,7 +78,7 @@ msgstr "Изчистване на атоми"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
@@ -81,9 +87,10 @@ msgid "Open File"
 msgstr "Отваряне на файл"
 
 #: src/main.cpp:204
+#, fuzzy
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
@@ -405,74 +412,74 @@ msgstr "Молекулата не може да бъде поставена"
 msgid "Paste failed (format unavailable)."
 msgstr "Поставянето се провали (не е начин формат)"
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирането се провали (не е наличен mdl)"
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "Преглеждане на %1"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Преглеждане на %1"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Отделен изглед"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "Нормален размер"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "Цял екран"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "Добавяне"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "Дублиране"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "Премахване"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "Не са заредени инструменти."
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -480,17 +487,17 @@ msgstr ""
 " Най-вероятно това приложение няма да работи коректно. Моля оправете тази "
 "грешка."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "Oбекти"
 
-#. i18n: file: src/pluginsettings.ui:38
+#. i18n: file: src/pluginsettings.ui:39
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:2999:321
 msgid "Colors"
 msgstr "Цветове"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " копиране"
 
@@ -808,14 +815,14 @@ msgstr "Проектно дърво"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
-#. i18n: file: src/pluginsettings.ui:23
+#. i18n: file: src/pluginsettings.ui:24
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "Типове дисплеи"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
-#. i18n: file: src/pluginsettings.ui:28
+#. i18n: file: src/pluginsettings.ui:29
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "Инструменти"
@@ -1120,19 +1127,19 @@ msgstr "Всички молекули във файла..."
 msgid "Reset Display Types"
 msgstr ""
 
-#. i18n: file: src/pluginsettings.ui:16
+#. i18n: file: src/pluginsettings.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
 msgstr "Приставки"
 
-#. i18n: file: src/pluginsettings.ui:33
+#. i18n: file: src/pluginsettings.ui:34
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
 msgstr "Разширения"
 
-#. i18n: file: src/pluginsettings.ui:52
+#. i18n: file: src/pluginsettings.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
 msgstr "Подробности"
@@ -1261,11 +1268,9 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,"
-"Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
-"Contributions:"
+"Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
-"com,,"
+",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
