@@ -46,7 +46,7 @@ namespace Avogadro {
     SpectraType( SpectraDialog *parent );
     virtual ~SpectraType();
 
-    // Pure virtual functions - must be implemented in inherited classes
+    // These functions must be implemented in inherited classes
     virtual void writeSettings() = 0;
     virtual void readSettings() = 0;
     virtual bool checkForData(Molecule* mol) = 0;
@@ -58,9 +58,9 @@ namespace Avogadro {
     virtual void getCalculatedPlotObject(PlotObject *plotObject);
     virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
     virtual void getImportedPlotObject(PlotObject *plotObject);
+    virtual void updateDataTable();
 
-    // No need to override these functions
-    void updateDataTable();
+    // No need to override these functions    
     QWidget * getTabWidget() {return m_tab_widget;}
     QString getTSV(QString xTitle, QString yTitle);
     void clear();
