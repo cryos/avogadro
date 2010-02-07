@@ -36,17 +36,31 @@ namespace Avogadro {
   {
     ui.setupUi(m_tab_widget);
 
-    // Setup signals/slots
+    // Setup signals/slots    
     connect(this, SIGNAL(plotDataChanged()),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
     connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(setScale(double)));
+            this, SLOT(updateScaleSlider(double)));
+    connect(ui.hs_scale, SIGNAL(sliderPressed()),
+            this, SLOT(scaleSliderPressed()));
+    connect(ui.hs_scale, SIGNAL(sliderReleased()),
+            this, SLOT(scaleSliderReleased()));
+    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
+            this, SLOT(updateScaleSpin(int)));
     connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
+            this, SLOT(updateFWHMSlider(double)));
+    connect(ui.hs_FWHM, SIGNAL(sliderPressed()),
+            this, SLOT(fwhmSliderPressed()));
+    connect(ui.hs_FWHM, SIGNAL(sliderReleased()),
+            this, SLOT(fwhmSliderReleased()));
+    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
+            this, SLOT(updateFWHMSpin(int)));
     connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateYAxis(QString)));
+    connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(changeScalingType(int)));
 
     readSettings();    
   }
@@ -68,8 +82,11 @@ namespace Avogadro {
   void IRSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     m_scale = settings.value("spectra/IR/scale", 1.0).toDouble();
-    ui.spin_scale->setValue(m_scale);    
-    ui.spin_FWHM->setValue(settings.value("spectra/IR/gaussianWidth",0.0).toDouble());
+    ui.spin_scale->setValue(m_scale);
+    ui.hs_scale->setValue(m_scale);
+    m_fwhm = settings.value("spectra/IR/gaussianWidth",0.0).toDouble();
+    ui.spin_FWHM->setValue(m_fwhm);
+    ui.hs_FWHM->setValue(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
     updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
     emit plotDataChanged();
@@ -108,12 +125,10 @@ namespace Avogadro {
       if (maxIntensity != 0) {
         t = t / maxIntensity; 	// Normalize
       }
-      qDebug() << wavenumbers.at(i) << t;
       t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
-      qDebug() << t;
     }
 
     // Store in member vars
@@ -136,22 +151,22 @@ namespace Avogadro {
   void IRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
-    if (ui.spin_FWHM->value() != 0.0 && ui.cb_labelPeaks->isEnabled()) {
+    if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setEnabled(false);
       ui.cb_labelPeaks->setChecked(false);
     }
-    if (ui.spin_FWHM->value() == 0.0 && !ui.cb_labelPeaks->isEnabled()) {
+    if (m_fwhm == 0.0 && !ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setEnabled(true);
     }
     if (!ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setChecked(false);
     }
 
-    if (ui.spin_FWHM->value() == 0.0) { // get singlets
+    if (m_fwhm == 0.0) { // get singlets
       plotObject->addPoint( 400, 100);
 
       for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i) * m_scale;
+        double wavenumber = m_xList.at(i)*scale(m_xList.at(i));
         double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 100 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -168,11 +183,11 @@ namespace Avogadro {
 
     else { // Get gaussians
       // convert FWHM to sigma squared
-      double FWHM = ui.spin_FWHM->value();
-      double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+      //double FWHM = ui.spin_FWHM->value();
+      double s2	= pow( (m_fwhm / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
       // create points
-      QList<double> xPoints = getXPoints(FWHM, 10);
+      QList<double> xPoints = getXPoints(m_fwhm, 10);
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i) * scale(xPoints.at(i));
         double y = 100;
@@ -237,12 +252,78 @@ namespace Avogadro {
     return SpectraType::getTSV("Frequencies", "Intensities");
   }
 
-  void IRSpectra::setScale(double scale) {
+  /*void IRSpectra::setScale(double scale) {
     if (scale == m_scale) return;
+    m_scale = scale;
+    emit plotDataChanged();
+  }*/
+
+  void IRSpectra::updateScaleSpin(int intScale)
+  {
+    double scale = intScale*0.01;
+    if (scale == m_scale) return;
+    m_scale = scale;
+    ui.spin_scale->setValue(scale);
+    emit plotDataChanged();
+  }
+
+  void IRSpectra::updateScaleSlider(double scale)
+  {
+    if (scale == m_scale) return;
+    int intScale = static_cast<int>(scale*100);
+    disconnect(ui.hs_scale, SIGNAL(valueChanged(int)),
+      this, SLOT(updateScaleSpin(int)));
+    ui.hs_scale->setValue(intScale);
+    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
+      this, SLOT(updateScaleSpin(int)));
     m_scale = scale;
     emit plotDataChanged();
   }
 
+  void IRSpectra::scaleSliderPressed()
+  {
+      disconnect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(updateScaleSlider(double)));
+  }
+
+  void IRSpectra::scaleSliderReleased()
+  {
+      connect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(updateScaleSlider(double)));
+  }
+  
+  void IRSpectra::updateFWHMSpin(int fwhm)
+  {
+    if (fwhm == m_fwhm) return;
+    m_fwhm = fwhm;
+    ui.spin_FWHM->setValue(m_fwhm);
+    emit plotDataChanged();
+  }
+  
+  void IRSpectra::updateFWHMSlider(double fwhm)
+  {
+    if (fwhm == m_fwhm) return;
+    disconnect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
+      this, SLOT(updateFWHMSpin(int)));
+    ui.hs_FWHM->setValue(fwhm);
+    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
+      this, SLOT(updateFWHMSpin(int)));
+    m_fwhm = fwhm;
+    emit plotDataChanged();
+  }
+  
+  void IRSpectra::fwhmSliderPressed()
+  {
+      disconnect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SLOT(updateFWHMSlider(double)));
+  }
+  
+  void IRSpectra::fwhmSliderReleased()
+  {
+      connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SLOT(updateFWHMSlider(double)));
+  }
+  
   void IRSpectra::updateYAxis(QString text) {
     if (m_yaxis == text) {
       return;
@@ -252,9 +333,24 @@ namespace Avogadro {
     emit plotDataChanged();
   }
 
+  void IRSpectra::changeScalingType(int type) {
+    m_scalingType = type;
+    emit plotDataChanged();
+  }    
+
   double IRSpectra::scale(double w)
   {
+    switch(m_scalingType) {
+      case LINEAR:
+        return m_scale;
+        break;
+      case RELATIVE:
+        return 1-w*(1-m_scale)/1000;
+        break;
     //TODO: add other scaling algorithms
-    return m_scale;
+      default:
+        return m_scale;
+    }
   }
+            
 }

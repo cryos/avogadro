@@ -31,6 +31,8 @@
 
 namespace Avogadro {
 
+  enum ScalingType { LINEAR, RELATIVE };
+
   class IRSpectra : public SpectraType
   {
     Q_OBJECT
@@ -49,19 +51,26 @@ namespace Avogadro {
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
     QString getTSV();
 
-  public slots:
-    void setScale(double scale);
-
   private slots:
+    void updateScaleSpin(int);
+    void updateScaleSlider(double);
+    void scaleSliderPressed();
+    void scaleSliderReleased();
+    void updateFWHMSpin(int);
+    void updateFWHMSlider(double);
+    void fwhmSliderPressed();
+    void fwhmSliderReleased();
     void updateYAxis(QString);
+    void changeScalingType(int);
 
   private:
     double scale(double w);
     
     Ui::Tab_IR ui;
     double m_scale;
+    double m_fwhm;
     QString m_yaxis;
-
+    ScalingType m_scalingType;
   };
 }
 
