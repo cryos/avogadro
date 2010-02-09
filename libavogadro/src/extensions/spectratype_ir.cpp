@@ -74,7 +74,8 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
 
     settings.setValue("spectra/IR/scale", m_scale);
-    settings.setValue("spectra/IR/gaussianWidth", ui.spin_FWHM->value());
+    qDebug() << "write m_scale=" << m_scale;
+    settings.setValue("spectra/IR/gaussianWidth", m_fwhm);
     settings.setValue("spectra/IR/labelPeaks", ui.cb_labelPeaks->isChecked());
     settings.setValue("spectra/IR/yAxisUnits", ui.combo_yaxis->currentText());
   }
@@ -83,10 +84,10 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     m_scale = settings.value("spectra/IR/scale", 1.0).toDouble();
     ui.spin_scale->setValue(m_scale);
-    ui.hs_scale->setValue(m_scale);
+    updateScaleSlider(m_scale);
     m_fwhm = settings.value("spectra/IR/gaussianWidth",0.0).toDouble();
     ui.spin_FWHM->setValue(m_fwhm);
-    ui.hs_FWHM->setValue(m_fwhm);
+    updateFWHMSlider(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
     updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
     emit plotDataChanged();
