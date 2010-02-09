@@ -53,14 +53,14 @@ namespace Avogadro {
     virtual void setupPlot(PlotWidget * plot) = 0;
     virtual QString getTSV() = 0;
 
-    // These function have default implementations, but could be overridden
-    virtual QList<double> getXPoints(double FWHM, uint dotsPerPeak);
+    // These function have default implementations, but may be overridden    
     virtual void getCalculatedPlotObject(PlotObject *plotObject);
     virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
     virtual void getImportedPlotObject(PlotObject *plotObject);
     virtual void updateDataTable();
 
-    // No need to override these functions    
+    // No need to override these functions
+    QList<double> getXPoints(double FWHM, uint dotsPerPeak);
     QWidget * getTabWidget() {return m_tab_widget;}
     QString getTSV(QString xTitle, QString yTitle);
     void clear();
