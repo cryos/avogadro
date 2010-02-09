@@ -64,11 +64,6 @@ namespace Avogadro {
    RamanSpectra::~RamanSpectra() {
      // TODO: Anything to delete?
      writeSettings();
-     /*delete m_xList;
-     delete m_yList;
-     delete m_xList_imp;
-     delete m_yList_imp;*/
-     //delete m_tab_widget;
    }
 
   void RamanSpectra::writeSettings() {
@@ -254,6 +249,10 @@ namespace Avogadro {
     for (int i = 0; i < m_xList_imp.size(); i++)
       plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
   }*/
+
+  /*
+   I = m_yList.at(i)/m_xList.at(i) * pow((m_W - m_xList.at(i)),4) * (1 + 1/exp(h*m_xList.at(i)/k/m_T))
+   */
 
   QString RamanSpectra::getTSV() {
     return SpectraType::getTSV("Frequencies", "Activities");

@@ -61,6 +61,8 @@ namespace Avogadro {
     Ui::Tab_Raman ui;
     double m_scale;
     QString m_yaxis;
+    double m_W;
+    double m_T;
 
   };
 }
