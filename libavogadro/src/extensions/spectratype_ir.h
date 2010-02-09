@@ -62,6 +62,7 @@ namespace Avogadro {
     void fwhmSliderReleased();
     void updateYAxis(QString);
     void changeScalingType(int);
+    void rescaleFrequencies();
 
   private:
     double scale(double w);
@@ -70,6 +71,7 @@ namespace Avogadro {
     double m_scale;
     double m_fwhm;
     QString m_yaxis;
+    QList<double> m_xList_noscale;
     ScalingType m_scalingType;
   };
 }

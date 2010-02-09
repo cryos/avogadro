@@ -134,9 +134,11 @@ namespace Avogadro {
 
     // Store in member vars
     m_xList.clear();
+    m_xList_noscale.clear();
     m_yList.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
       m_xList.append(wavenumbers.at(i));
+      m_xList_noscale.append(wavenumbers.at(i));
       m_yList.append(transmittances.at(i));
     }
 
@@ -167,7 +169,7 @@ namespace Avogadro {
       plotObject->addPoint( 400, 100);
 
       for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i)*scale(m_xList.at(i));
+        double wavenumber = m_xList.at(i);//*scale(m_xList.at(i));
         double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 100 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -190,11 +192,11 @@ namespace Avogadro {
       // create points
       QList<double> xPoints = getXPoints(m_fwhm, 10);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i) * scale(xPoints.at(i));
+        double x = xPoints.at(i);// * scale(xPoints.at(i));
         double y = 100;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
-          double w = m_xList.at(j) * scale(m_xList.at(j));
+          double w = m_xList.at(j);// * scale(m_xList.at(j));
           y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -252,6 +254,14 @@ namespace Avogadro {
   QString IRSpectra::getTSV() {
     return SpectraType::getTSV("Frequencies", "Intensities");
   }
+  
+  void IRSpectra::rescaleFrequencies()
+  {
+    for (int i=0; i<m_xList_noscale.size(); i++) {
+      m_xList[i] = m_xList_noscale.at(i) * scale(m_xList.at(i));
+    }
+    emit plotDataChanged();
+  }
 
   /*void IRSpectra::setScale(double scale) {
     if (scale == m_scale) return;
@@ -265,7 +275,7 @@ namespace Avogadro {
     if (scale == m_scale) return;
     m_scale = scale;
     ui.spin_scale->setValue(scale);
-    emit plotDataChanged();
+    rescaleFrequencies();
   }
 
   void IRSpectra::updateScaleSlider(double scale)
@@ -278,7 +288,7 @@ namespace Avogadro {
     connect(ui.hs_scale, SIGNAL(valueChanged(int)),
       this, SLOT(updateScaleSpin(int)));
     m_scale = scale;
-    emit plotDataChanged();
+    rescaleFrequencies();
   }
 
   void IRSpectra::scaleSliderPressed()
@@ -336,7 +346,7 @@ namespace Avogadro {
 
   void IRSpectra::changeScalingType(int type) {
     m_scalingType = type;
-    emit plotDataChanged();
+    rescaleFrequencies();
   }    
 
   double IRSpectra::scale(double w)
