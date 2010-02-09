@@ -134,11 +134,11 @@ namespace Avogadro {
 
     // Store in member vars
     m_xList.clear();
-    m_xList_noscale.clear();
+    m_xList_orig.clear();
     m_yList.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
       m_xList.append(wavenumbers.at(i));
-      m_xList_noscale.append(wavenumbers.at(i));
+      m_xList_orig.append(wavenumbers.at(i));
       m_yList.append(transmittances.at(i));
     }
 
@@ -257,8 +257,8 @@ namespace Avogadro {
   
   void IRSpectra::rescaleFrequencies()
   {
-    for (int i=0; i<m_xList_noscale.size(); i++) {
-      m_xList[i] = m_xList_noscale.at(i) * scale(m_xList.at(i));
+    for (int i=0; i<m_xList_orig.size(); i++) {
+      m_xList[i] = m_xList_orig.at(i) * scale(m_xList.at(i));
     }
     emit plotDataChanged();
   }

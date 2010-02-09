@@ -71,7 +71,7 @@ namespace Avogadro {
     double m_scale;
     double m_fwhm;
     QString m_yaxis;
-    QList<double> m_xList_noscale;
+    QList<double> m_xList_orig;
     ScalingType m_scalingType;
   };
 }
