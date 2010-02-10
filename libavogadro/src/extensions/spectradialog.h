@@ -77,6 +77,7 @@ namespace Avogadro {
     void schemeChanged();
     void updateScheme(int scheme);
     void updateCurrentSpectra(const QString & text);
+    void updateComboSpectra(int index);
     void addScheme();
     void removeScheme();
     void renameScheme();

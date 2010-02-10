@@ -134,6 +134,8 @@ namespace Avogadro {
     // Misc. connections
     connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateCurrentSpectra(QString)));
+    connect(ui.tab_widget, SIGNAL(currentChanged(int)),
+            this, SLOT(updateComboSpectra(int)));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
     connect(ui.push_loadSpectra, SIGNAL(clicked()),
@@ -498,6 +500,13 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
     regenerateImportedSpectra();
     updatePlot();
+  }
+
+  void SpectraDialog::updateComboSpectra(int index)
+  {
+    if (index >= 2) {
+      ui.combo_spectra->setCurrentIndex(index-2);
+    }
   }
 
   void SpectraDialog::exportSpectra()
