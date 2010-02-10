@@ -51,6 +51,7 @@ namespace Avogadro {
   {
     XYZ=0,
     XYZ_NUM,
+    XYZ_ONLY,
     GAMESS,
     GAMESS2,
     TURBOMOLE,

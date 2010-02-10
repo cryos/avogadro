@@ -367,6 +367,12 @@ namespace Avogadro
                 << pos.z() << endl;
             break;
 
+          case XYZ_ONLY:
+            coordStream.setFieldWidth(18);
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+                << pos.z() << endl;
+            break;
+
           case XYZ_NUM:
             coordStream.setFieldWidth(6);
             coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))+
