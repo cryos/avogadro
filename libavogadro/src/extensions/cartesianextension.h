@@ -42,80 +42,81 @@ namespace Avogadro {
 
   enum CoordinateUnit
   {
-	  ANGSTROM=0,
-	  BOHR
+    ANGSTROM=0,
+    BOHR,
+    FRACTIONAL
   };
 
   enum CoordinateFormat
   {
-	  XYZ=0,
-	  XYZ_NUM,
-	  GAMESS,
-	  GAMESS2,
-	  TURBOMOLE,
-	  PRIRODA
+    XYZ=0,
+    XYZ_NUM,
+    GAMESS,
+    GAMESS2,
+    TURBOMOLE,
+    PRIRODA
   };
 
   class CartesianEditor : public QDialog, Ui::CartesianEditorDialog 
   {
     Q_OBJECT
-     public:
-	   //! Constructor
-      CartesianEditor(QWidget *parent=0);
+      public:
+    //! Constructor
+    CartesianEditor(QWidget *parent=0);
 
-      void setMolecule (Molecule *molecule);
-      //void setWidget (GLWidget *widget);
+    void setMolecule (Molecule *molecule);
+    //void setWidget (GLWidget *widget);
 
-	public Q_SLOTS:
-      //! Slots to take signals from Molecules, and GLWidget
-      void updateCoordinates();
-	  void updateMolecule();
-      void updateAtoms(Atom*);
-      void moleculeChanged(Molecule *previous);
-	  void changeUnits();
-	  void changeFormat();
-	  void paste();
-	  void copy();
-	  void cut();
-	  void clear();
-	  void textChanged();
+    public Q_SLOTS:
+    //! Slots to take signals from Molecules, and GLWidget
+    void updateCoordinates();
+    void updateMolecule();
+    void updateAtoms(Atom*);
+    void moleculeChanged(Molecule *previous);
+    void changeUnits();
+    void changeFormat();
+    void paste();
+    void copy();
+    void cut();
+    void clear();
+    void textChanged();
 
-    private:
-       bool parseText(OBMol *mol);
+  private:
+    bool parseText(OBMol *mol);
 	   
-       Molecule *m_molecule;
-	   CoordinateUnit m_unit;
-	   CoordinateFormat m_format;
-	   bool m_illegalInput;
+    Molecule *m_molecule;
+    CoordinateUnit m_unit;
+    CoordinateFormat m_format;
+    bool m_illegalInput;
   };
 
   class CartesianExtension : public Extension
   {
     Q_OBJECT
-      AVOGADRO_EXTENSION("Cartesian editor", tr("Cartesian editor"),
+    AVOGADRO_EXTENSION("Cartesian editor", tr("Cartesian editor"),
                          tr("Cartesian coordinates editor"))
 
-    public:
-      //! Constructor
-      CartesianExtension(QObject *parent=0);
-      //! Deconstructor
-      virtual ~CartesianExtension();
+  public:
+    //! Constructor
+    CartesianExtension(QObject *parent=0);
+    //! Deconstructor
+    virtual ~CartesianExtension();
 
-      /** @return a menu path for the extension's actions */
-      virtual QString menuPath(QAction *action) const;
+    /** @return a menu path for the extension's actions */
+    virtual QString menuPath(QAction *action) const;
 
-      //! Perform Action
-      virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
-      //@}
+    //! Perform Action
+    virtual QList<QAction *> actions() const;
+    virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+    //@}
 
-      void setMolecule(Molecule *molecule);
+    void setMolecule(Molecule *molecule);
 
-	private:
-      QList<QAction *> m_actions;
-      Molecule *m_molecule;
-	  CartesianEditor *m_dialog;
-	  GLWidget *m_widget;
+  private:
+    QList<QAction *> m_actions;
+    Molecule *m_molecule;
+    CartesianEditor *m_dialog;
+    GLWidget *m_widget;
   };
 
   class CartesianExtensionFactory : public QObject, public PluginFactory
