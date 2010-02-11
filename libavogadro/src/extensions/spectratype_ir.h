@@ -25,7 +25,7 @@
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabir.h"
+#include "ui_spectratab_ir_raman.h"
 
 #include <avogadro/plotwidget.h>
 
@@ -33,7 +33,39 @@ namespace Avogadro {
 
   enum ScalingType { LINEAR, RELATIVE };
 
-  class IRSpectra : public SpectraType
+  // Abstract data type - no instance of it can be created
+  class AbstractIRSpectra : public SpectraType
+  {
+    Q_OBJECT
+
+  public:
+    AbstractIRSpectra( SpectraDialog *parent = 0 );
+    
+  protected slots:
+    void updateScaleSpin(int);
+    void updateScaleSlider(double);
+    void scaleSliderPressed();
+    void scaleSliderReleased();
+    void updateFWHMSpin(int);
+    void updateFWHMSlider(double);
+    void fwhmSliderPressed();
+    void fwhmSliderReleased();    
+    void changeScalingType(int);
+    void updateYAxis(QString);
+    void rescaleFrequencies();
+
+  protected:
+    double scale(double w);
+    
+    Ui::Tab_IR_Raman ui;
+    double m_scale;
+    double m_fwhm;
+    QString m_yaxis;
+    QList<double> m_xList_orig;
+    ScalingType m_scalingType;
+  };
+
+  class IRSpectra : public AbstractIRSpectra
   {
     Q_OBJECT
 
@@ -52,27 +84,12 @@ namespace Avogadro {
     QString getTSV();
 
   private slots:
-    void updateScaleSpin(int);
-    void updateScaleSlider(double);
-    void scaleSliderPressed();
-    void scaleSliderReleased();
-    void updateFWHMSpin(int);
-    void updateFWHMSlider(double);
-    void fwhmSliderPressed();
-    void fwhmSliderReleased();
-    void updateYAxis(QString);
-    void changeScalingType(int);
-    void rescaleFrequencies();
 
-  private:
-    double scale(double w);
     
-    Ui::Tab_IR ui;
-    double m_scale;
-    double m_fwhm;
-    QString m_yaxis;
-    QList<double> m_xList_orig;
-    ScalingType m_scalingType;
+
+  private:    
+    
+    //Ui::Tab_IR ui;
   };
 }
 

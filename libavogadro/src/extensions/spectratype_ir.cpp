@@ -18,8 +18,6 @@
  ***********************************************************************/
 
 #include "spectratype_ir.h"
-#include "spectratype.h"
-#include "spectradialog.h"
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
@@ -31,9 +29,9 @@ using namespace std;
 
 namespace Avogadro {
 
-  IRSpectra::IRSpectra( SpectraDialog *parent ) :
+  AbstractIRSpectra::AbstractIRSpectra( SpectraDialog *parent ) :
     SpectraType( parent )
-  {
+    {
     ui.setupUi(m_tab_widget);
 
     // Setup signals/slots    
@@ -61,7 +59,117 @@ namespace Avogadro {
             this, SLOT(updateYAxis(QString)));
     connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
             this, SLOT(changeScalingType(int)));
+    }
 
+  void AbstractIRSpectra::rescaleFrequencies()
+  {
+    for (int i=0; i<m_xList_orig.size(); i++) {
+      m_xList[i] = m_xList_orig.at(i) * scale(m_xList.at(i));
+    }
+    emit plotDataChanged();
+  }
+
+  void AbstractIRSpectra::updateScaleSpin(int intScale)
+  {
+    double scale = intScale*0.01;
+    if (scale == m_scale) return;
+    m_scale = scale;
+    ui.spin_scale->setValue(scale);
+    rescaleFrequencies();
+  }
+
+  void AbstractIRSpectra::updateScaleSlider(double scale)
+  {
+    int intScale = static_cast<int>(scale*100);
+    disconnect(ui.hs_scale, SIGNAL(valueChanged(int)),
+      this, SLOT(updateScaleSpin(int)));
+    ui.hs_scale->setValue(intScale);
+    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
+      this, SLOT(updateScaleSpin(int)));
+    m_scale = scale;
+    rescaleFrequencies();
+  }
+
+  void AbstractIRSpectra::scaleSliderPressed()
+  {
+      disconnect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(updateScaleSlider(double)));
+  }
+
+  void AbstractIRSpectra::scaleSliderReleased()
+  {
+      connect(ui.spin_scale, SIGNAL(valueChanged(double)),
+            this, SLOT(updateScaleSlider(double)));
+  }
+  
+  void AbstractIRSpectra::updateFWHMSpin(int fwhm)
+  {
+    if (fwhm == m_fwhm) return;
+    m_fwhm = fwhm;
+    ui.spin_FWHM->setValue(m_fwhm);
+    emit plotDataChanged();
+  }
+  
+  void AbstractIRSpectra::updateFWHMSlider(double fwhm)
+  {    
+    disconnect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
+      this, SLOT(updateFWHMSpin(int)));
+    ui.hs_FWHM->setValue(fwhm);
+    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
+      this, SLOT(updateFWHMSpin(int)));
+    m_fwhm = fwhm;
+    emit plotDataChanged();
+  }
+  
+  void AbstractIRSpectra::fwhmSliderPressed()
+  {
+      disconnect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SLOT(updateFWHMSlider(double)));
+  }
+  
+  void AbstractIRSpectra::fwhmSliderReleased()
+  {
+      connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
+            this, SLOT(updateFWHMSlider(double)));
+  }
+
+  void AbstractIRSpectra::updateYAxis(QString text) {
+    if (m_yaxis == text) {
+      return;
+    }
+    m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
+    m_yaxis = text;
+    emit plotDataChanged();
+  }
+
+  void AbstractIRSpectra::changeScalingType(int type) {
+    m_scalingType = type;
+    rescaleFrequencies();
+  }    
+
+  double AbstractIRSpectra::scale(double w)
+  {
+    switch(m_scalingType) {
+      case LINEAR:
+        return m_scale;
+        break;
+      case RELATIVE:
+        return 1-w*(1-m_scale)/1000;
+        break;
+    //TODO: add other scaling algorithms
+      default:
+        return m_scale;
+    }
+  }
+
+
+    
+  IRSpectra::IRSpectra( SpectraDialog *parent ) :
+    AbstractIRSpectra( parent )
+  {
+    ui.group_ramanIntensities->hide();
+    ui.combo_yaxis->addItem("Transmittance (%)");
+    ui.combo_yaxis->addItem("Absorbance (%)");
     readSettings();    
   }
 
@@ -74,7 +182,6 @@ namespace Avogadro {
     QSettings settings; // Already set up in avogadro/src/main.cpp
 
     settings.setValue("spectra/IR/scale", m_scale);
-    qDebug() << "write m_scale=" << m_scale;
     settings.setValue("spectra/IR/gaussianWidth", m_fwhm);
     settings.setValue("spectra/IR/labelPeaks", ui.cb_labelPeaks->isChecked());
     settings.setValue("spectra/IR/yAxisUnits", ui.combo_yaxis->currentText());
@@ -83,7 +190,7 @@ namespace Avogadro {
   void IRSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     m_scale = settings.value("spectra/IR/scale", 1.0).toDouble();
-    ui.spin_scale->setValue(m_scale);
+    ui.spin_scale->setValue(m_scale);    
     updateScaleSlider(m_scale);
     m_fwhm = settings.value("spectra/IR/gaussianWidth",0.0).toDouble();
     ui.spin_FWHM->setValue(m_fwhm);
@@ -137,8 +244,9 @@ namespace Avogadro {
     m_xList_orig.clear();
     m_yList.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
-      m_xList.append(wavenumbers.at(i));
-      m_xList_orig.append(wavenumbers.at(i));
+      double w = wavenumbers.at(i);
+      m_xList.append(w*scale(w));
+      m_xList_orig.append(w);
       m_yList.append(transmittances.at(i));
     }
 
@@ -169,7 +277,7 @@ namespace Avogadro {
       plotObject->addPoint( 400, 100);
 
       for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i);//*scale(m_xList.at(i));
+        double wavenumber = m_xList.at(i);// already scaled!
         double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 100 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -192,11 +300,11 @@ namespace Avogadro {
       // create points
       QList<double> xPoints = getXPoints(m_fwhm, 10);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i);// * scale(xPoints.at(i));
+        double x = xPoints.at(i);// already scaled!
         double y = 100;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
-          double w = m_xList.at(j);// * scale(m_xList.at(j));
+          double w = m_xList.at(j);// already scaled!
           y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -255,113 +363,4 @@ namespace Avogadro {
     return SpectraType::getTSV("Frequencies", "Intensities");
   }
   
-  void IRSpectra::rescaleFrequencies()
-  {
-    for (int i=0; i<m_xList_orig.size(); i++) {
-      m_xList[i] = m_xList_orig.at(i) * scale(m_xList.at(i));
-    }
-    emit plotDataChanged();
-  }
-
-  /*void IRSpectra::setScale(double scale) {
-    if (scale == m_scale) return;
-    m_scale = scale;
-    emit plotDataChanged();
-  }*/
-
-  void IRSpectra::updateScaleSpin(int intScale)
-  {
-    double scale = intScale*0.01;
-    if (scale == m_scale) return;
-    m_scale = scale;
-    ui.spin_scale->setValue(scale);
-    rescaleFrequencies();
-  }
-
-  void IRSpectra::updateScaleSlider(double scale)
-  {
-    if (scale == m_scale) return;
-    int intScale = static_cast<int>(scale*100);
-    disconnect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    ui.hs_scale->setValue(intScale);
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    m_scale = scale;
-    rescaleFrequencies();
-  }
-
-  void IRSpectra::scaleSliderPressed()
-  {
-      disconnect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-
-  void IRSpectra::scaleSliderReleased()
-  {
-      connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-  
-  void IRSpectra::updateFWHMSpin(int fwhm)
-  {
-    if (fwhm == m_fwhm) return;
-    m_fwhm = fwhm;
-    ui.spin_FWHM->setValue(m_fwhm);
-    emit plotDataChanged();
-  }
-  
-  void IRSpectra::updateFWHMSlider(double fwhm)
-  {
-    if (fwhm == m_fwhm) return;
-    disconnect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    ui.hs_FWHM->setValue(fwhm);
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    m_fwhm = fwhm;
-    emit plotDataChanged();
-  }
-  
-  void IRSpectra::fwhmSliderPressed()
-  {
-      disconnect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-  
-  void IRSpectra::fwhmSliderReleased()
-  {
-      connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-  
-  void IRSpectra::updateYAxis(QString text) {
-    if (m_yaxis == text) {
-      return;
-    }
-    m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
-    m_yaxis = text;
-    emit plotDataChanged();
-  }
-
-  void IRSpectra::changeScalingType(int type) {
-    m_scalingType = type;
-    rescaleFrequencies();
-  }    
-
-  double IRSpectra::scale(double w)
-  {
-    switch(m_scalingType) {
-      case LINEAR:
-        return m_scale;
-        break;
-      case RELATIVE:
-        return 1-w*(1-m_scale)/1000;
-        break;
-    //TODO: add other scaling algorithms
-      default:
-        return m_scale;
-    }
-  }
-            
 }
