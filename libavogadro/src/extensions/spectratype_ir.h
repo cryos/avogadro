@@ -82,14 +82,6 @@ namespace Avogadro {
     void getCalculatedPlotObject(PlotObject *plotObject);
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
     QString getTSV();
-
-  private slots:
-
-    
-
-  private:    
-    
-    //Ui::Tab_IR ui;
   };
 }
 

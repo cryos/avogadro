@@ -25,9 +25,6 @@
 #include <QtCore/QVariant>
 
 #include "spectratype_ir.h"
-//#include "ui_spectratabraman.h"
-
-//#include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
@@ -46,20 +43,9 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-   // void setImportedData(const QList<double> & xList, const QList<double> & yList);
-   // void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
-  //public slots:
-    //void setScale(double scale);
-
-  private slots:
-    //void updateYAxis(QString);
-
   private:
-   // Ui::Tab_Raman ui;
-    /*double m_scale;
-    QString m_yaxis;*/
     double m_W;
     double m_T;
 

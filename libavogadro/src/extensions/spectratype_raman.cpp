@@ -34,33 +34,9 @@ namespace Avogadro {
   RamanSpectra::RamanSpectra( SpectraDialog *parent ) :
     AbstractIRSpectra( parent )
   {
-    /*ui.setupUi(m_tab_widget);
-
     // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-    connect(ui.hs_scale, SIGNAL(sliderPressed()),
-            this, SLOT(scaleSliderPressed()));
-    connect(ui.hs_scale, SIGNAL(sliderReleased()),
-            this, SLOT(scaleSliderReleased()));
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-            this, SLOT(updateScaleSpin(int)));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-    connect(ui.hs_FWHM, SIGNAL(sliderPressed()),
-            this, SLOT(fwhmSliderPressed()));
-    connect(ui.hs_FWHM, SIGNAL(sliderReleased()),
-            this, SLOT(fwhmSliderReleased()));
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-            this, SLOT(updateFWHMSpin(int)));
-    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));
-    connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(changeScalingType(int)));*/
+    /*connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
+            this, SLOT(updateYAxis(QString)));*/
     ui.combo_yaxis->addItem("Activity (A^4/amu)");
     ui.combo_yaxis->addItem("Intensity");
     readSettings();
