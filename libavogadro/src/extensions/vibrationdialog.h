@@ -22,12 +22,14 @@
 #ifndef VIBRATIONDIALOG_H
 #define VIBRATIONDIALOG_H
 
-#include <QtGui/QDialog>
+//#include <QtGui/QDialog>
+#include <QtGui/QDockWidget>
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-#include "ui_vibrationdialog.h"
+//#include "ui_vibrationdialog.h"
+#include "ui_vibrationwidget.h"
 
 namespace OpenBabel {
   class OBVibrationData;
@@ -35,7 +37,8 @@ namespace OpenBabel {
 
 namespace Avogadro {
 
-  class VibrationDialog : public QDialog
+  //class VibrationDialog : public QDialog
+  class VibrationDialog : public QDockWidget
   {
       Q_OBJECT
 
@@ -69,7 +72,8 @@ namespace Avogadro {
       void toggleAnimation();
 
     private:
-      Ui::VibrationDialog ui;
+      //Ui::VibrationDialog ui;
+      Ui::VibrationWidget ui;
 
       GLWidget *m_widget;
       Molecule *m_molecule;
