@@ -27,18 +27,23 @@
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
+const double k=1.3806504e-23,
+             h=6.62606896e-34;
+
 using namespace std;
 
 namespace Avogadro {
 
   RamanSpectra::RamanSpectra( SpectraDialog *parent ) :
-    AbstractIRSpectra( parent )
+    AbstractIRSpectra( parent ), m_T(298.15), m_W(9398.5)
   {
     // Setup signals/slots
-    /*connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));*/
-    ui.combo_yaxis->addItem("Activity (A^4/amu)");
-    ui.combo_yaxis->addItem("Intensity");
+    connect(ui.spin_T, SIGNAL(valueChanged(double)),
+            this, SLOT(updateT(double)));
+    connect(ui.spin_W, SIGNAL(valueChanged(double)),
+            this, SLOT(updateW(double)));
+    ui.combo_yaxis->addItem(tr("Activity"));// (A<sup>4</sup>/amu)"));
+    ui.combo_yaxis->addItem(tr("Intensity"));
     readSettings();
   }
 
@@ -65,7 +70,7 @@ namespace Avogadro {
     ui.spin_FWHM->setValue(m_fwhm);
     updateFWHMSlider(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/Raman/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/Raman/yAxisUnits","Activity (A<sup>4</sup>/amu)").toString());
+    updateYAxis(settings.value("spectra/Raman/yAxisUnits",tr("Activity")).toString());
     emit plotDataChanged();
   }
 
@@ -113,11 +118,13 @@ namespace Avogadro {
     m_xList.clear();
     m_xList_orig.clear();
     m_yList.clear();
+    m_yList_orig.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
       double w = wavenumbers.at(i);
       m_xList.append(w*scale(w));
       m_xList_orig.append(w);
       m_yList.append(intensities.at(i));
+      m_yList_orig.append(intensities.at(i));
     }
 
     return true;
@@ -143,11 +150,21 @@ namespace Avogadro {
       ui.cb_labelPeaks->setChecked(false);
     }
 
+    for(int i = 0; i< m_yList.size(); i++) {
+      // Convert to intensities?
+      if (ui.combo_yaxis->currentIndex() == 1) {
+        m_yList[i] = m_yList_orig.at(i)/m_xList.at(i) * pow((m_W - m_xList.at(i)),4)
+         * (1 + 1/exp(h*m_xList.at(i)/k/m_T));
+      } else {
+        m_yList[i] = m_yList_orig.at(i);
+      }
+    }
+
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
       plotObject->addPoint( 0, 0);
 
       for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i) * m_scale;
+        double wavenumber = m_xList.at(i);
         double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -198,13 +215,6 @@ namespace Avogadro {
       }
     } // End gaussians
 
-    /* 
-    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double absorbance = 100 - plotObject->points().at(i)->y();
-        plotObject->points().at(i)->setY(absorbance);
-      }
-    }*/
     return;
   } // End Raman spectra
 
@@ -230,19 +240,21 @@ namespace Avogadro {
     }
   }*/
 
-  /*void RamanSpectra::getImportedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp.size(); i++)
-      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
-  }*/
-
-  /*
-   I = m_yList.at(i)/m_xList.at(i) * pow((m_W - m_xList.at(i)),4) * (1 + 1/exp(h*m_xList.at(i)/k/m_T))
-   */
-
   QString RamanSpectra::getTSV() {
     return SpectraType::getTSV("Frequencies", "Activities");
   }
+
+  void RamanSpectra::updateT(double T)
+  {
+    m_T = T;
+    emit plotDataChanged();
+  }
+
+  void RamanSpectra::updateW(double W)
+  {
+    m_W = W;
+    emit plotDataChanged();
+  }  
 }
 
 #endif

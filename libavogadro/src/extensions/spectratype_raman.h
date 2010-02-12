@@ -45,10 +45,14 @@ namespace Avogadro {
     void getCalculatedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
+  private slots:
+    void updateT(double);
+    void updateW(double);
+
   private:
     double m_W;
     double m_T;
-
+    QList<double> m_yList_orig;
   };
 }
 
