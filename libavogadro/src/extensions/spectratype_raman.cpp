@@ -28,7 +28,8 @@
 #include <openbabel/generic.h>
 
 const double k=1.3806504e-23,
-             h=6.62606896e-34;
+             h=6.62606896e-34,
+             c=2.99792458e10; // speed of light (cm/s!)
 
 using namespace std;
 
@@ -153,8 +154,8 @@ namespace Avogadro {
     for(int i = 0; i< m_yList.size(); i++) {
       // Convert to intensities?
       if (ui.combo_yaxis->currentIndex() == 1) {
-        m_yList[i] = m_yList_orig.at(i)/m_xList.at(i) * pow((m_W - m_xList.at(i)),4)
-         * (1 + 1/exp(h*m_xList.at(i)/k/m_T));
+        m_yList[i] = m_yList_orig.at(i)/m_xList.at(i) * pow(((m_W - m_xList.at(i))*c),4)
+         * (1 + 1/exp(h*c*m_xList.at(i)/(k*m_T)));
       } else {
         m_yList[i] = m_yList_orig.at(i);
       }
