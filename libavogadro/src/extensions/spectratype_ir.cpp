@@ -162,14 +162,14 @@ namespace Avogadro {
     }
   }
 
-
+  //------------------------------------------------
     
   IRSpectra::IRSpectra( SpectraDialog *parent ) :
     AbstractIRSpectra( parent )
   {
     ui.group_ramanIntensities->hide();
-    ui.combo_yaxis->addItem("Transmittance (%)");
-    ui.combo_yaxis->addItem("Absorbance (%)");
+    ui.combo_yaxis->addItem(tr("Transmittance (%)"));
+    ui.combo_yaxis->addItem(tr("Absorbance (%)"));
     readSettings();    
   }
 
@@ -196,7 +196,7 @@ namespace Avogadro {
     ui.spin_FWHM->setValue(m_fwhm);
     updateFWHMSlider(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/IR/yAxisUnits","Absorbance (%)").toString());
+    updateYAxis(settings.value("spectra/IR/yAxisUnits",tr("Absorbance (%)")).toString());
     emit plotDataChanged();
   }
 
@@ -329,7 +329,7 @@ namespace Avogadro {
     } // End gaussians
 
     // Convert to absorbance?
-    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
+    if (ui.combo_yaxis->currentIndex() == 1) {
       for(int i = 0; i< plotObject->points().size(); i++) {
         double absorbance = 100 - plotObject->points().at(i)->y();
         plotObject->points().at(i)->setY(absorbance);
