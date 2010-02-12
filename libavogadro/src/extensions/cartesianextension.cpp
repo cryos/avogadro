@@ -31,6 +31,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QDialog>
 #include <QtGui/QClipboard>
+#include <QtGui/QMessageBox>
 
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
@@ -49,7 +50,9 @@ namespace Avogadro
 #endif
   
   CartesianEditor::CartesianEditor(QWidget *parent) : QDialog(parent),
-                           m_unit(0), m_format(0), m_illegalInput(false)
+                                                      m_unit(CoordinateUnit(0)),
+                                                      m_format(CoordinateFormat(0)),
+                                                      m_illegalInput(false)
   {
     setupUi(this);
     cartesianEdit->setTextColor(Qt::black);
@@ -71,13 +74,23 @@ namespace Avogadro
 
   void CartesianEditor::changeUnits()
   {
-    m_unit = unitsBox->currentIndex();
+    if (unitsBox->currentIndex() == int(FRACTIONAL) && 
+        m_molecule->OBUnitCell() == 0) {
+      // no unit cell
+      QMessageBox::warning(this,
+                           tr("Cartesian Editor"),
+                           tr("No unit cell defined for molecule -- cannot use fractional coordinates."));
+      unitsBox->setCurrentIndex(ANGSTROM);
+      return;
+    }
+
+    m_unit = CoordinateUnit(unitsBox->currentIndex());
     updateCoordinates();
   }
 
   void CartesianEditor::changeFormat()
   {
-    m_format = formatBox->currentIndex();
+    m_format = CoordinateFormat(formatBox->currentIndex());
     updateCoordinates();
   }
     
@@ -117,8 +130,10 @@ namespace Avogadro
   void CartesianEditor::updateMolecule()
   {
     OBMol *tmpMol = new OBMol;
+    OBUnitCell *cell = new OBUnitCell (*(m_molecule->OBUnitCell()));
     if (parseText(tmpMol)) {
       m_molecule->setOBMol(tmpMol);
+      m_molecule->setOBUnitCell(cell);
       m_molecule->update();
       updateCoordinates();
     } else {
@@ -126,6 +141,7 @@ namespace Avogadro
       QString t = cartesianEdit->toPlainText();
       cartesianEdit->setText(t);
       m_illegalInput = true;
+      delete cell;
     }
     delete tmpMol;
   }
@@ -135,16 +151,21 @@ namespace Avogadro
     QString coord = cartesianEdit->toPlainText();
     QStringList coordStrings = coord.split(QRegExp("\n"));
     
-    double k;
+    matrix3x3 xform;
     switch (m_unit) {
     case ANGSTROM:
-      k=1.0;
+      for (int i = 0; i < 3; i++)
+        xform.Set(i,i,1.0);
       break;
     case BOHR:
-      k=BOHR_TO_ANGSTROM;
+      for (int i = 0; i < 3; i++)
+        xform.Set(i,i,BOHR_TO_ANGSTROM);
+      break;
+    case FRACTIONAL:
+      xform = m_molecule->OBUnitCell()->GetOrthoMatrix();
       break;
     }
-    
+
     // Guess format
 
     // split on any non-word symbol, except '.'
@@ -291,8 +312,9 @@ namespace Avogadro
         }
         if (!ok) return false;
         
+        vector3 pos (x, y, z);
         atom->SetAtomicNum(_n);
-        atom->SetVector(x*k,y*k,z*k); //set coordinates
+        atom->SetVector(xform * pos); //set coordinates
       }
     }
     mol->EndModify();
@@ -304,10 +326,10 @@ namespace Avogadro
   
   void CartesianEditor::updateCoordinates()
   {
-      m_illegalInput = false;
-      cartesianEdit->setTextColor(Qt::black);
-      QString t = cartesianEdit->toPlainText();
-      cartesianEdit->setText(t);
+    m_illegalInput = false;
+    cartesianEdit->setTextColor(Qt::black);
+    QString t = cartesianEdit->toPlainText();
+    cartesianEdit->setText(t);
 
     if (!m_molecule) {
         clear();
@@ -316,25 +338,39 @@ namespace Avogadro
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
 
-        double k;
+        matrix3x3 xform;
         switch (m_unit) {
         case ANGSTROM:
-          k=1.0;
+          for (int i = 0; i < 3; i++)
+            xform.Set(i,i,1.0);
           break;
         case BOHR:
-          k=ANGSTROM_TO_BOHR;
+          for (int i = 0; i < 3; i++)
+            xform.Set(i,i,ANGSTROM_TO_BOHR);
+          break;
+        case FRACTIONAL:
+          xform = m_molecule->OBUnitCell()->GetFractionalMatrix();
           break;
         }
-        
-        for (int i=0; i<m_molecule->numAtoms(); i++) {
+
+        vector3 pos;
+        for (unsigned int i=0; i< m_molecule->numAtoms(); i++) {
           Atom *atom = m_molecule->atom(i);
+          pos = xform * atom->OBAtom().GetVector();
+
           switch (m_format) {
           case XYZ:
             coordStream.setFieldWidth(3);
             coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
             coordStream.setFieldWidth(18);
-            coordStream << fixed << forcepoint << right << atom->pos()->x()*k << atom->pos()->y()*k
-                << atom->pos()->z()*k << endl;
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+                << pos.z() << endl;
+            break;
+
+          case XYZ_ONLY:
+            coordStream.setFieldWidth(18);
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+                << pos.z() << endl;
             break;
 
           case XYZ_NUM:
@@ -342,8 +378,8 @@ namespace Avogadro
             coordStream << left << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))+
             QString::number(i+1);
             coordStream.setFieldWidth(18);
-            coordStream << fixed << forcepoint << right << atom->pos()->x()*k << atom->pos()->y()*k
-              << atom->pos()->z()*k << endl;
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+              << pos.z() << endl;
             break;
             
           case GAMESS:
@@ -354,8 +390,8 @@ namespace Avogadro
             coordStream.setFieldWidth(2);
             coordStream << left << ".0";
             coordStream.setFieldWidth(18);
-            coordStream << fixed << forcepoint << right << atom->pos()->x()*k << atom->pos()->y()*k
-              << atom->pos()->z()*k << endl;
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+              << pos.z() << endl;
             break;
 
           case GAMESS2:
@@ -366,16 +402,16 @@ namespace Avogadro
             coordStream.setFieldWidth(2);
             coordStream << left << ".0";
             coordStream.setFieldWidth(18);
-            coordStream << fixed << forcepoint << right << atom->pos()->x()*k << atom->pos()->y()*k
-              << atom->pos()->z()*k << endl;
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+              << pos.z() << endl;
             break;          
 
           case TURBOMOLE:
             coordStream.setFieldWidth(14);
-            coordStream << fixed << forcepoint << left << right << atom->pos()->x()*k;
+            coordStream << fixed << forcepoint << left << right << pos.x();
             coordStream.setFieldWidth(18);
-            coordStream << atom->pos()->y()*k
-              << atom->pos()->z()*k;            
+            coordStream << pos.y()
+              << pos.z();            
             coordStream.setFieldWidth(5);
             coordStream << left << right << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber())) << endl;
             break;
@@ -384,8 +420,8 @@ namespace Avogadro
             coordStream.setFieldWidth(3);
             coordStream << left << atom->atomicNumber();
             coordStream.setFieldWidth(18);
-            coordStream << fixed << forcepoint << right << atom->pos()->x()*k << atom->pos()->y()*k
-              << atom->pos()->z()*k << endl;
+            coordStream << fixed << forcepoint << right << pos.x() << pos.y()
+              << pos.z() << endl;
           }
         }
         cartesianEdit->setText(*coord);
