@@ -134,6 +134,8 @@ namespace Avogadro {
     // Misc. connections
     connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
             this, SLOT(updateCurrentSpectra(QString)));
+    connect(ui.tab_widget, SIGNAL(currentChanged(int)),
+            this, SLOT(updateComboSpectra(int)));
     connect(ui.push_customize, SIGNAL(clicked()),
             this, SLOT(toggleCustomize()));
     connect(ui.push_loadSpectra, SIGNAL(clicked()),
@@ -498,6 +500,13 @@ namespace Avogadro {
     regenerateCalculatedSpectra();
     regenerateImportedSpectra();
     updatePlot();
+  }
+
+  void SpectraDialog::updateComboSpectra(int index)
+  {
+    if (index >= 2) {
+      ui.combo_spectra->setCurrentIndex(index-2);
+    }
   }
 
   void SpectraDialog::exportSpectra()
@@ -1009,7 +1018,7 @@ namespace Avogadro {
 
   void SpectraDialog::toggleCustomize() {
     if (ui.tab_widget->isHidden()) {
-      ui.push_customize->setText(tr("Customi&ze <<"));
+      ui.push_customize->setText(tr("&Advanced <<"));
       ui.tab_widget->show();
       ui.dataTable->show();
       ui.push_exportData->show();
@@ -1018,11 +1027,12 @@ namespace Avogadro {
       s.setHeight(s.height() + ui.tab_widget->size().height());
       resize(s);
       //adjustSize();
-      QRect rect = QApplication::desktop()->geometry();
+      //QRect rect = QApplication::desktop()->geometry();
+      QRect rect = QApplication::desktop()->screenGeometry();
       move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
     else {
-      ui.push_customize->setText(tr("Customi&ze >>"));
+      ui.push_customize->setText(tr("&Advanced >>"));
       QSize s = size();
       s.setWidth(s.width() - ui.dataTable->size().width());
       s.setHeight(s.height() - ui.tab_widget->size().height());
@@ -1031,7 +1041,8 @@ namespace Avogadro {
       ui.dataTable->hide();
       ui.push_exportData->hide();
       //adjustSize();
-      QRect rect = QApplication::desktop()->geometry();
+      //QRect rect = QApplication::desktop()->geometry();
+      QRect rect = QApplication::desktop()->screenGeometry();
       move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
   }

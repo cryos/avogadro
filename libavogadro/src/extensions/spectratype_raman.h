@@ -24,15 +24,11 @@
 #include <QtCore/QHash>
 #include <QtCore/QVariant>
 
-#include "spectradialog.h"
-#include "spectratype.h"
-#include "ui_spectratabraman.h"
-
-#include <avogadro/plotwidget.h>
+#include "spectratype_ir.h"
 
 namespace Avogadro {
 
-  class RamanSpectra : public SpectraType
+  class RamanSpectra : public AbstractIRSpectra
   {
     Q_OBJECT
 
@@ -47,21 +43,16 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-   // void setImportedData(const QList<double> & xList, const QList<double> & yList);
-   // void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
-  public slots:
-    void setScale(double scale);
-
   private slots:
-    void updateYAxis(QString);
+    void updateT(double);
+    void updateW(double);
 
   private:
-    Ui::Tab_Raman ui;
-    double m_scale;
-    QString m_yaxis;
-
+    double m_W;
+    double m_T;
+    QList<double> m_yList_orig;
   };
 }
 

@@ -84,7 +84,7 @@ Scroll wheel: Zoom to cursor</string>
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Customi&amp;ze &gt;&gt;</string>
+      <string>&amp;Advanced &gt;&gt;</string>
      </property>
     </widget>
    </item>
@@ -679,15 +679,6 @@ Scroll wheel: Zoom to cursor</string>
      </attribute>
      <attribute name="verticalHeaderVisible">
       <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderVisible">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderHighlightSections">
-      <bool>false</bool>
      </attribute>
      <column>
       <property name="text">

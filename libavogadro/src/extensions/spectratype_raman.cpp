@@ -20,8 +20,6 @@
 #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
 #include "spectratype_raman.h"
-#include "spectratype.h"
-#include "spectradialog.h"
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
@@ -29,53 +27,37 @@
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
+const double k=1.3806504e-23,
+             h=6.62606896e-34,
+             c=2.99792458e10; // speed of light (cm/s!)
+
 using namespace std;
 
 namespace Avogadro {
 
   RamanSpectra::RamanSpectra( SpectraDialog *parent ) :
-    SpectraType( parent )//, m_dialog(parent)
+    AbstractIRSpectra( parent ), m_T(298.15), m_W(9398.5)
   {
-    //m_tab_widget = new QWidget;
-    ui.setupUi(m_tab_widget);
-
-    /*m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;*/
-
-    //m_dialog = parent;
-
     // Setup signals/slots
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(setScale(double)));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));
-
+    connect(ui.spin_T, SIGNAL(valueChanged(double)),
+            this, SLOT(updateT(double)));
+    connect(ui.spin_W, SIGNAL(valueChanged(double)),
+            this, SLOT(updateW(double)));
+    ui.combo_yaxis->addItem(tr("Activity"));// (A<sup>4</sup>/amu)"));
+    ui.combo_yaxis->addItem(tr("Intensity"));
     readSettings();
   }
 
    RamanSpectra::~RamanSpectra() {
      // TODO: Anything to delete?
      writeSettings();
-     /*delete m_xList;
-     delete m_yList;
-     delete m_xList_imp;
-     delete m_yList_imp;*/
-     //delete m_tab_widget;
    }
 
   void RamanSpectra::writeSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
 
     settings.setValue("spectra/Raman/scale", m_scale);
-    settings.setValue("spectra/Raman/gaussianWidth", ui.spin_FWHM->value());
+    settings.setValue("spectra/Raman/gaussianWidth", m_fwhm);
     settings.setValue("spectra/Raman/labelPeaks", ui.cb_labelPeaks->isChecked());
     settings.setValue("spectra/Raman/yAxisUnits", ui.combo_yaxis->currentText());
   }
@@ -83,10 +65,13 @@ namespace Avogadro {
   void RamanSpectra::readSettings() {
     QSettings settings; // Already set up in avogadro/src/main.cpp
     m_scale = settings.value("spectra/Raman/scale", 1.0).toDouble();
-    ui.spin_scale->setValue(m_scale);    
-    ui.spin_FWHM->setValue(settings.value("spectra/Raman/gaussianWidth",0.0).toDouble());
+    ui.spin_scale->setValue(m_scale);
+    updateScaleSlider(m_scale);
+    m_fwhm = settings.value("spectra/Raman/gaussianWidth",0.0).toDouble();
+    ui.spin_FWHM->setValue(m_fwhm);
+    updateFWHMSlider(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/Raman/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/Raman/yAxisUnits","Raman Activity (A<sup>4</sup>/amu)").toString());
+    updateYAxis(settings.value("spectra/Raman/yAxisUnits",tr("Activity")).toString());
     emit plotDataChanged();
   }
 
@@ -132,10 +117,15 @@ namespace Avogadro {
 
     // Store in member vars
     m_xList.clear();
+    m_xList_orig.clear();
     m_yList.clear();
+    m_yList_orig.clear();
     for (uint i = 0; i < wavenumbers.size(); i++){
-      m_xList.append(wavenumbers.at(i));
+      double w = wavenumbers.at(i);
+      m_xList.append(w*scale(w));
+      m_xList_orig.append(w);
       m_yList.append(intensities.at(i));
+      m_yList_orig.append(intensities.at(i));
     }
 
     return true;
@@ -161,11 +151,21 @@ namespace Avogadro {
       ui.cb_labelPeaks->setChecked(false);
     }
 
+    for(int i = 0; i< m_yList.size(); i++) {
+      // Convert to intensities?
+      if (ui.combo_yaxis->currentIndex() == 1) {
+        m_yList[i] = m_yList_orig.at(i)/m_xList.at(i) * pow(((m_W - m_xList.at(i))*c),4)
+         * (1 + 1/exp(h*c*m_xList.at(i)/(k*m_T)));
+      } else {
+        m_yList[i] = m_yList_orig.at(i);
+      }
+    }
+
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
       plotObject->addPoint( 0, 0);
 
       for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i) * m_scale;
+        double wavenumber = m_xList.at(i);
         double transmittance = m_yList.at(i);
         plotObject->addPoint ( wavenumber, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -174,7 +174,6 @@ namespace Avogadro {
         }
         else {
           plotObject->addPoint( wavenumber, transmittance );
-          cerr << wavenumber << "\t" << transmittance << endl;
         }
         plotObject->addPoint( wavenumber, 0 );
       }
@@ -189,11 +188,11 @@ namespace Avogadro {
       // create points
       QList<double> xPoints = getXPoints(FWHM, 10);
       for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i) * m_scale;
+        double x = xPoints.at(i);// already scaled!
         double y = 0;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
-          double w = m_xList.at(j) * m_scale;
+          double w = m_xList.at(j);// already scaled!
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -217,13 +216,6 @@ namespace Avogadro {
       }
     } // End gaussians
 
-    /* 
-    if (ui.combo_yaxis->currentText() == "Absorbance (%)") {
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double absorbance = 100 - plotObject->points().at(i)->y();
-        plotObject->points().at(i)->setY(absorbance);
-      }
-    }*/
     return;
   } // End Raman spectra
 
@@ -249,30 +241,21 @@ namespace Avogadro {
     }
   }*/
 
-  /*void RamanSpectra::getImportedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp.size(); i++)
-      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
-  }*/
-
   QString RamanSpectra::getTSV() {
     return SpectraType::getTSV("Frequencies", "Activities");
   }
 
-  void RamanSpectra::setScale(double scale) {
-    if (scale == m_scale) return;
-    m_scale = scale;
+  void RamanSpectra::updateT(double T)
+  {
+    m_T = T;
     emit plotDataChanged();
   }
 
-  void RamanSpectra::updateYAxis(QString text) {
-    if (m_yaxis == text) {
-      return;
-    }
-    m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
-    m_yaxis = text;
+  void RamanSpectra::updateW(double W)
+  {
+    m_W = W;
     emit plotDataChanged();
-  }
+  }  
 }
 
 #endif

@@ -52,6 +52,8 @@ namespace Avogadro {
     void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
+    void updateDataTable() {}
+
   public slots:
     void toggleIntegratedDOS(bool b);
 

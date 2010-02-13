@@ -151,17 +151,6 @@ namespace Avogadro {
     }
   } 
 
-  /*void UVSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
-    m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);
-  }*/
-
-  /*void UVSpectra::getImportedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp.size(); i++)
-      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
-  }*/
-
   QString UVSpectra::getTSV() {
     return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }

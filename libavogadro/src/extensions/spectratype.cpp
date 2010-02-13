@@ -94,7 +94,12 @@ namespace Avogadro {
     QString format("%1");
     for (int i = 0; i < m_xList.size(); i++) {
       QString xString = format.arg(m_xList.at(i), 0, 'f', 2);
-      QString yString = format.arg(m_yList.at(i), 0, 'f', 3);
+      QString yString;
+      if (i < m_yList.size()) {
+        yString = format.arg(m_yList.at(i), 0, 'f', 3);
+      } else {
+        yString = "-";
+      }
       if (!m_dialog->getUi()->dataTable->item(i,0)) {
         QTableWidgetItem *newX = new QTableWidgetItem(xString);
         newX->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
