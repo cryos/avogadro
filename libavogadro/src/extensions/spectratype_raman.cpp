@@ -116,7 +116,7 @@ namespace Avogadro {
     /*vector<double> transmittances;*/
 
     for (unsigned int i = 0; i < intensities.size(); i++) {
-      intesities[i] = intensities.at(i) / maxIntensity; 	// Normalize
+      intensities[i] = intensities.at(i) / maxIntensity; 	// Normalize
     }
 
     // Store in member vars
