@@ -196,7 +196,10 @@ namespace Avogadro {
     ui.spin_FWHM->setValue(m_fwhm);
     updateFWHMSlider(m_fwhm);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/IR/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/IR/yAxisUnits",tr("Absorbance (%)")).toString());
+    QString yunit = settings.value("spectra/IR/yAxisUnits",tr("Transmittance (%)")).toString();
+    updateYAxis(yunit);
+    if (yunit == "Absorbance (%)")
+      ui.combo_yaxis->setCurrentIndex(1);
     emit plotDataChanged();
   }
 

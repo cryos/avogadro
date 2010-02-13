@@ -36,7 +36,7 @@ using namespace std;
 namespace Avogadro {
 
   RamanSpectra::RamanSpectra( SpectraDialog *parent ) :
-    AbstractIRSpectra( parent ), m_T(298.15), m_W(9398.5)
+    AbstractIRSpectra( parent )
   {
     // Setup signals/slots
     connect(ui.spin_T, SIGNAL(valueChanged(double)),
@@ -58,6 +58,8 @@ namespace Avogadro {
 
     settings.setValue("spectra/Raman/scale", m_scale);
     settings.setValue("spectra/Raman/gaussianWidth", m_fwhm);
+    settings.setValue("spectra/Raman/experimentTemperature", m_T);
+    settings.setValue("spectra/Raman/laserWavenumber", m_W);
     settings.setValue("spectra/Raman/labelPeaks", ui.cb_labelPeaks->isChecked());
     settings.setValue("spectra/Raman/yAxisUnits", ui.combo_yaxis->currentText());
   }
@@ -70,8 +72,15 @@ namespace Avogadro {
     m_fwhm = settings.value("spectra/Raman/gaussianWidth",0.0).toDouble();
     ui.spin_FWHM->setValue(m_fwhm);
     updateFWHMSlider(m_fwhm);
+    m_T = settings.value("spectra/Raman/experimentTemperature", 298.15).toDouble();
+    ui.spin_T->setValue(m_T);
+    m_W = settings.value("spectra/Raman/laserWavenumber", 9398.5).toDouble();
+    ui.spin_W->setValue(m_W);
     ui.cb_labelPeaks->setChecked(settings.value("spectra/Raman/labelPeaks",false).toBool());
-    updateYAxis(settings.value("spectra/Raman/yAxisUnits",tr("Activity")).toString());
+    QString yunit = settings.value("spectra/Raman/yAxisUnits",tr("Activity")).toString();
+    updateYAxis(yunit);
+    if (yunit == "Intensity")
+      ui.combo_yaxis->setCurrentIndex(1);
     emit plotDataChanged();
   }
 
@@ -154,8 +163,8 @@ namespace Avogadro {
     for(int i = 0; i< m_yList.size(); i++) {
       // Convert to intensities?
       if (ui.combo_yaxis->currentIndex() == 1) {
-        m_yList[i] = m_yList_orig.at(i)/m_xList.at(i) * pow(((m_W - m_xList.at(i))*c),4)
-         * (1 + 1/exp(h*c*m_xList.at(i)/(k*m_T)));
+        m_yList[i] = m_yList_orig.at(i)*1e-8/m_xList.at(i) * pow(((m_W - m_xList.at(i))),4)
+         * (1 + exp(-h*c*m_xList.at(i)/(k*m_T)));
       } else {
         m_yList[i] = m_yList_orig.at(i);
       }
