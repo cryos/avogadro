@@ -41,6 +41,8 @@ namespace Avogadro {
   SpectraType::~SpectraType()
   {
     clear();
+    disconnect(m_dialog->getUi()->combo_spectra, SIGNAL(currentIndexChanged(QString)),
+        m_dialog, SLOT(updateCurrentSpectra(QString)));    
     delete m_tab_widget;
   }
 
