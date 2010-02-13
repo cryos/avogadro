@@ -113,16 +113,11 @@ namespace Avogadro {
       }
     }
 
-    /*vector<double> transmittances;
+    /*vector<double> transmittances;*/
 
     for (unsigned int i = 0; i < intensities.size(); i++) {
-      double t = intensities.at(i);
-      t = t / maxIntensity; 	// Normalize
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
-      t = 1.0 - t; 		// Simulate transmittance
-      t *= 100.0;		// Convert to percent
-      transmittances.push_back(t);
-    }*/
+      intesities[i] = intensities.at(i) / maxIntensity; 	// Normalize
+    }
 
     // Store in member vars
     m_xList.clear();
