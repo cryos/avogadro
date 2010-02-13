@@ -345,7 +345,7 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Wavelength:</string>
+              <string>Laser Wavenumber:</string>
              </property>
             </widget>
            </item>
