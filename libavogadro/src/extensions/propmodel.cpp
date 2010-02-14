@@ -378,9 +378,9 @@ namespace Avogadro {
         case 2:
           return tr("Valence");
         case 3:
-          return tr("Formal Charge");
+          return QString(tr("Formal Charge")).replace(" ","\n");
         case 4:
-          return tr("Partial Charge");
+          return QString(tr("Partial Charge")).replace(" ","\n");
         case 5:
           return trUtf8("X %1", "in Angstrom").arg("(\xC5)");
         case 6:
@@ -428,7 +428,7 @@ namespace Avogadro {
         case 1:
         case 2:
         case 3:
-          return tr("Atom Index %1").arg(section +1);
+          return tr("Atom %1").arg(section +1);
         case 4:
           return trUtf8("Torsion %1", "Degree symbol").arg("(\xB0)");
         }

@@ -30,9 +30,11 @@
 
 #include <QtCore/QAbstractTableModel>
 #include <QtGui/QSortFilterProxyModel>
+#include <QtGui/QSizePolicy>
 #include <QtGui/QHeaderView>
 #include <QtGui/QAction>
 #include <QtGui/QDialog>
+#include <QtGui/QScrollBar>
 #include <QtGui/QVBoxLayout>
 
 #include <QtCore/QDebug>
@@ -133,6 +135,7 @@ namespace Avogadro
     PropertiesView  *view;
     QDialog *dialog = new QDialog(qobject_cast<QWidget *>(parent()));
     QVBoxLayout *layout = new QVBoxLayout(dialog);
+    dialog->setLayout(layout);
     // Don't show whitespace around the PropertiesView
     layout->setSpacing(0);
     layout->setContentsMargins(0,0,0,0);
@@ -210,13 +213,19 @@ namespace Avogadro
     view->setMolecule( m_molecule );
     view->setWidget( widget );
     view->setModel( proxyModel );
-
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->resizeColumnsToContents();
     layout->addWidget(view);
     dialog->setWindowTitle(view->windowTitle());
     QSize dialogSize = dialog->size();
-    dialogSize.setWidth(model->columnCount()*120);
-	if (model->rowCount() < 10)
-	  dialogSize.setHeight(model->rowCount()*40);
+    double width = view->horizontalHeader()->length()+view->verticalHeader()->width()+5;
+	if (model->rowCount() < 10) { // no scrollbar
+	  dialogSize.setHeight(view->horizontalHeader()->height()+model->rowCount()*30+5);
+      dialogSize.setWidth(width);
+    } else { // scrollbar is needed
+      dialogSize.setHeight(width/1.618);
+      dialogSize.setWidth(width+view->verticalScrollBar()->width());
+    }
     dialog->resize(dialogSize);
 	dialog->setWindowFlags(Qt::Window);
     dialog->show();
@@ -255,9 +264,12 @@ namespace Avogadro
     this->setWindowTitle(title);
 
     QHeaderView *horizontal = this->horizontalHeader();
-    horizontal->setResizeMode(QHeaderView::Stretch);
+    horizontal->setResizeMode(QHeaderView::Interactive);
+    horizontal->setMinimumSectionSize(75);
     QHeaderView *vertical = this->verticalHeader();
-    vertical->setResizeMode(QHeaderView::Stretch);
+    vertical->setResizeMode(QHeaderView::Interactive);
+    vertical->setMinimumSectionSize(30);
+    vertical->setDefaultAlignment(Qt::AlignCenter);
 
     // Don't allow selecting everything
     setCornerButtonEnabled(false);
