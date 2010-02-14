@@ -50,7 +50,7 @@ namespace Avogadro
     BondPropIndex,
     AnglePropIndex,
     TorsionPropIndex,
-    CartesianIndex,
+    //CartesianIndex,
     ConformerIndex
   };
 
@@ -88,10 +88,10 @@ namespace Avogadro
     action->setData(ConformerIndex);
     m_actions.append( action );
 
-    action = new QAction( this );
+    /*action = new QAction( this );
     action->setText( tr("Cartesian Editor..." ));
     action->setData(CartesianIndex);
-    m_actions.append( action );
+    m_actions.append( action );*/
   }
 
   PropertiesExtension::~PropertiesExtension()
@@ -114,7 +114,7 @@ namespace Avogadro
     case TorsionPropIndex:
     case ConformerIndex:
       return tr("&View") + '>' + tr("&Properties");
-    case CartesianIndex:
+    //case CartesianIndex:
     default:
       return tr("&Build");
       break;
@@ -178,7 +178,7 @@ namespace Avogadro
       // view will delete itself in PropertiesView::hideEvent using deleteLater().
       view = new PropertiesView(PropertiesView::TorsionType, widget);
       break;
-    case CartesianIndex: // cartesian editor
+    /*case CartesianIndex: // cartesian editor
       // m_angleModel will be deleted in PropertiesView::hideEvent using deleteLater().
       model = new PropertiesModel(PropertiesModel::CartesianType);
       model->setMolecule( m_molecule );
@@ -186,7 +186,7 @@ namespace Avogadro
       view = new PropertiesView(PropertiesView::CartesianType, widget);
       connect(m_molecule, SIGNAL(atomAdded(Atom*)), model, SLOT( atomAdded(Atom*)));
       connect(m_molecule, SIGNAL(atomRemoved(Atom*)), model, SLOT(atomRemoved(Atom*)));
-      break;
+      break;*/
     case ConformerIndex: // conformers
       // model will be deleted in PropertiesView::hideEvent using deleteLater().
       model = new PropertiesModel(PropertiesModel::ConformerType, dialog);
@@ -252,9 +252,9 @@ namespace Avogadro
     case TorsionType:
       title = tr("Torsion Properties");
       break;
-    case CartesianType:
+    /*case CartesianType:
       title = tr("Cartesian Properties");
-      break;
+      break;*/
     case ConformerType:
       title = tr("Conformer Properties");
       break;
@@ -288,7 +288,7 @@ namespace Avogadro
       if (!index.isValid())
         return;
 
-      if (m_type == AtomType || m_type == CartesianType) {
+      if (m_type == AtomType /*|| m_type == CartesianType*/) {
         if ((unsigned int) index.row() >= m_molecule->numAtoms())
           return;
 
