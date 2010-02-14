@@ -556,7 +556,7 @@ namespace Avogadro {
       case 5:
       case 6:
       case 7:
-        pos[index.column()] = value.toDouble();
+        pos[index.column()-5] = value.toDouble();
         atom->setPos(pos);
         m_molecule->update();
         emit dataChanged(index, index);

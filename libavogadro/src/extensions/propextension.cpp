@@ -354,12 +354,10 @@ namespace Avogadro
 
   void PropertiesView::hideEvent(QHideEvent *)
   {
-    if (m_widget)
+    if ((m_widget) && model()) {
       m_widget->clearSelected();
-
-    QAbstractItemModel *m_model = model();
-    if (m_model)
-      m_model->deleteLater();
+      model()->deleteLater();
+    }
 
     this->deleteLater();
   }
