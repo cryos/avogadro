@@ -84,7 +84,7 @@ namespace Avogadro {
 
   private:
     bool parseText(OBMol *mol);
-	   
+
     Molecule *m_molecule;
     CoordinateUnit m_unit;
     CoordinateFormat m_format;
