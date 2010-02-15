@@ -204,10 +204,14 @@ namespace Avogadro
 
     qDebug() << "Format is: " << format;
 
-    if (format.length() < 4)
+    if (format.length() < 3)
       return false; // invalid format
 
-    if (format == "iddd") { // special XYZ variant
+    if (format == "ddd") {
+      Xcol=0;
+      Ycol=1;
+      Zcol=2;
+    } else if (format == "iddd") { // special XYZ variant
       NameCol=0;
       Xcol=1;
       Ycol=2;
@@ -263,25 +267,28 @@ namespace Avogadro
         }
     }
 
-    if((NameCol==-1) || (Xcol==-1) || (Ycol==-1) || (Zcol==-1)) {
+    if((Xcol==-1) || (Ycol==-1) || (Zcol==-1)) {
+      return false;
+    }
+
+    if ((NameCol==-1) && format != "ddd") {
       return false;
     }
       
     // Read and apply coordinates
     mol->BeginModify();
     for (int N=0; N<coordStrings.size(); N++) {
-      if (coordStrings.at(N) == "") {
+      if (coordStrings.at(N).trimmed() == "") {
         continue;
-      }
-      
-      OBAtom *atom  = mol->NewAtom();
+      }      
+      double x=0, y=0, z=0;
+      int _n=0,_iso=0;      
+      OBAtom *atom  = mol->NewAtom();      
       QStringList s_data = coordStrings.at(N).trimmed().split(QRegExp("\\s+|,|;"));
       if (s_data.size() != data.size()) {
         return false;
       }
       for (int i=0; i<s_data.size(); i++) {
-        double x, y, z;
-        int _n,_iso;
         bool ok = true;
         if (i == Xcol) {
             x = s_data.at(i).toDouble(&ok);
@@ -315,11 +322,20 @@ namespace Avogadro
                 return false;
         }
         if (!ok) return false;
-        
-        vector3 pos (x, y, z);
-        atom->SetAtomicNum(_n);
-        atom->SetVector(xform * pos); //set coordinates
       }
+
+      vector3 pos (x, y, z);
+      if (format == "ddd") {
+        if (m_molecule) {
+          if (N < m_molecule->numAtoms())
+            atom->SetAtomicNum(m_molecule->atom(N)->atomicNumber());
+          else
+            atom->SetAtomicNum(0);
+        }
+      } else {
+          atom->SetAtomicNum(_n);
+      }
+      atom->SetVector(xform * pos); //set coordinates
     }
     mol->EndModify();
     mol->ConnectTheDots();
