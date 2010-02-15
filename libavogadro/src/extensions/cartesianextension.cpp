@@ -130,10 +130,13 @@ namespace Avogadro
   void CartesianEditor::updateMolecule()
   {
     OBMol *tmpMol = new OBMol;
-    OBUnitCell *cell = new OBUnitCell (*(m_molecule->OBUnitCell()));
+    OBUnitCell *cell = 0;
+    if (m_molecule->OBUnitCell())
+      cell = new OBUnitCell (*(m_molecule->OBUnitCell()));
     if (parseText(tmpMol)) {
       m_molecule->setOBMol(tmpMol);
-      m_molecule->setOBUnitCell(cell);
+      if (cell)
+        m_molecule->setOBUnitCell(cell);
       m_molecule->update();
       updateCoordinates();
     } else {
@@ -141,7 +144,8 @@ namespace Avogadro
       QString t = cartesianEdit->toPlainText();
       cartesianEdit->setText(t);
       m_illegalInput = true;
-      delete cell;
+      if (cell)
+        delete cell;
     }
     delete tmpMol;
   }
