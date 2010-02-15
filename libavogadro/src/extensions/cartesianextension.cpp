@@ -354,6 +354,7 @@ namespace Avogadro
         }
 
         vector3 pos;
+
         for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
           Atom *atom = m_molecule->atom(i);
           pos = xform * atom->OBAtom().GetVector();
