@@ -2,6 +2,7 @@
   VibrationExtension - Visualize vibrational modes from QM calculations
 
   Copyright (C) 2009 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -28,10 +29,11 @@
 #include <avogadro/extension.h>
 #include <avogadro/animation.h>
 
-#include <QObject>
-#include <QList>
-#include <QString>
-#include <QUndoCommand>
+#include <QtCore/QObject>
+#include <QtCore/QList>
+#include <QtCore/QString>
+#include <QtGui/QDockWidget>
+#include <QtGui/QUndoCommand>
 
 namespace OpenBabel {
   class OBVibrationData;
@@ -76,7 +78,8 @@ namespace Avogadro {
 
       OpenBabel::OBVibrationData *m_vibrations;
       int m_mode;
-      VibrationDialog *m_dialog;
+      VibrationWidget *m_dialog;
+      QDockWidget *m_dock;
       Molecule *m_molecule;
       GLWidget *m_widget;
       Animation *m_animation;
