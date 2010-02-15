@@ -10,10 +10,14 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro")
+set(LINK_LIBS avogadro)
+set(PLUGIN_LABEL engines)
+set(PLUGIN_TARGET engines)
+add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
 
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
+set_target_properties(labelengine PROPERTIES LABELS "Engine")
 
 # overlay engine
 avogadro_plugin(overlayengine overlayengine.cpp)

@@ -10,7 +10,10 @@ include_directories(
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro")
+set(LINK_LIBS avogadro)
+set(PLUGIN_LABEL extensions)
+set(PLUGIN_TARGET extensions)
+add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensions.")
 
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
