@@ -357,6 +357,31 @@ namespace Avogadro
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
+        
+        // Do sorting
+        // FIXME: add new function for it?
+        QMap<int, Atom*> tmpMap;
+        for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
+          tmpMap.insert(-m_molecule->atoms().at(i)->atomicNumber(),
+            m_molecule->atoms().at(i));
+        }
+        QMap<int, Atom*>::const_iterator it=tmpMap.constBegin();
+        for (int i=0; it !=tmpMap.constEnd(); i++,it++ ) {
+          m_molecule->atoms()[i] = it.value();
+        }     
+        /*for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
+          for (unsigned int j=i; j<m_molecule->numAtoms(); j++) {
+            if (m_molecule->atoms().at(i)->atomicNumber() 
+              > m_molecule->atoms().at(j)->atomicNumber()) 
+            {
+              Atom * t = m_molecule->atoms().at(i);
+              m_molecule->atoms()[i] = m_molecule->atoms().at(j);
+              m_molecule->atoms()[j] = t;
+              //m_molecule->atoms().swap(i,j);
+            }
+          }
+        }*/
+
 
         matrix3x3 xform;
         switch (m_unit) {
