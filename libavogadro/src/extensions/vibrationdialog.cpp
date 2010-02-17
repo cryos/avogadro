@@ -66,6 +66,8 @@ namespace Avogadro {
             this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
+    connect(ui.pauseButton, SIGNAL(clicked(bool)),
+            this, SLOT(pauseButtonClicked(bool)));
   }
 
   VibrationWidget::~VibrationWidget()
@@ -199,6 +201,7 @@ namespace Avogadro {
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
+      ui.pauseButton->setEnabled(true);
     }
     if (row == -1) emit selectedMode(row);
     else emit selectedMode(m_indexMap->at(row));
@@ -208,6 +211,7 @@ namespace Avogadro {
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
+      ui.pauseButton->setEnabled(true);
     }
     if (row == -1) emit selectedMode(row);
     else emit selectedMode(m_indexMap->at(row));
@@ -255,7 +259,18 @@ namespace Avogadro {
 
     emit toggleAnimation();
   }
-  
+
+  void VibrationWidget::pauseButtonClicked(bool)
+  {
+    if (ui.pauseButton->text() == tr("Pause")) {
+      ui.pauseButton->setText(tr("Continue"));
+    } else {
+      ui.pauseButton->setText(tr("Pause"));
+    }
+
+    emit pauseAnimation();
+  }
+    
   void VibrationWidget::exportVibrationData(bool)
   {
     QFileInfo defaultFile(m_molecule->fileName());

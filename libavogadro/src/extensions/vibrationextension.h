@@ -70,6 +70,7 @@ namespace Avogadro {
       void setDisplayForceVectors(bool enabled);
       void setAnimationSpeed(bool enabled);
       void toggleAnimation();
+      void pauseAnimation();
 
     private:
       void updateForcesAndFrames(); // helper when settings change
@@ -89,6 +90,7 @@ namespace Avogadro {
       bool m_displayVectors;
       bool m_animationSpeed;
       bool m_animating;
+      bool m_paused;
 
       std::vector< std::vector< Eigen::Vector3d> *> m_animationFrames;
   };

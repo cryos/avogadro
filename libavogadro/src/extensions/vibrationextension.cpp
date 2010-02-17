@@ -53,7 +53,8 @@ namespace Avogadro {
                                                             m_framesPerStep(8),
                                                             m_displayVectors(true),
                                                             m_animationSpeed(false),
-                                                            m_animating(false)
+                                                            m_animating(false),
+                                                            m_paused(false)
   {
     QAction *action = new QAction( this );
     action->setSeparator(true);
@@ -81,23 +82,14 @@ namespace Avogadro {
 
   QDockWidget * VibrationExtension::dockWidget()
   {
-    //if (m_molecule == NULL)
-      //return NULL;
-
-    m_widget = GLWidget::current(); // save for warnings in updateMode()
-
-    //OBMol obmol = m_molecule->OBMol();
-    //m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
-
     if (!m_dock) {
       m_dock = new QDockWidget(tr("Molecule Vibrations"));
       m_dock->setObjectName("vibrationDock");
-      m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
+      //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
     
-
-    //if (m_vibrations) {
       if (!m_dialog) {
         m_dialog = new VibrationWidget();
+        
         connect(m_dialog, SIGNAL(selectedMode(int)),
                 this, SLOT(updateMode(int)));
         connect(m_dialog, SIGNAL(scaleUpdated(double)),
@@ -108,28 +100,13 @@ namespace Avogadro {
                 this, SLOT(setAnimationSpeed(bool)));
         connect(m_dialog, SIGNAL(toggleAnimation()),
                 this, SLOT(toggleAnimation()));
+        connect(m_dialog, SIGNAL(pauseAnimation()),
+                this, SLOT(pauseAnimation()));
         m_dialog->setMolecule(m_molecule);
-        qDebug() << "w" << m_widget;
-
-        if (m_widget) {
-          foreach (Engine *engine, m_widget->engines()) {
-            if (engine->identifier() == "Force") {
-              m_dialog->setDisplayForceVectors(engine->isEnabled());
-              connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
-            }
-          }
-        }
-
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
         /*m_animation->setMolecule(m_molecule);*/
       }
-      //m_dialog->show();
-    /*}
-    else {
-      QMessageBox::warning(0, tr("Vibrational Analysis"), tr("No vibrations have been computed for this molecule."));
-      // show a warning
-    }*/
     }
     m_dock->setWidget(m_dialog);
     qDebug() << "return dock";
@@ -140,6 +117,17 @@ namespace Avogadro {
   void VibrationExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
+    GLWidget *widget = GLWidget::current();        
+    if (widget) {
+      m_widget = widget; // engines, extensions, warnings in updateMode()
+      foreach (Engine *engine, widget->engines()) {
+        if (engine->identifier() == "Force") {
+          m_dialog->setDisplayForceVectors(engine->isEnabled());
+          connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
+        }
+      }
+    }
+        
     if (m_dock) {
       if (molecule !=0) {
         if (molecule->OBMol().GetData(OBGenericDataType::VibrationData)) {
@@ -301,13 +289,14 @@ namespace Avogadro {
     
 
     m_displayVectors = enabled;
-    foreach (Engine *engine, GLWidget::current()->engines()) {
+    qDebug() << "m_widget" << m_widget;
+    foreach (Engine *engine, m_widget->engines()) {
       if (engine->identifier() == "Force") {
         engine->setEnabled(enabled);
       }
     }
 
-    GLWidget::current()->update();
+    m_widget->update();
   }
 
   void VibrationExtension::setAnimationSpeed(bool enabled)
@@ -333,6 +322,24 @@ namespace Avogadro {
     }
     else {
       m_animation->stop();
+    }
+  }
+
+  void VibrationExtension::pauseAnimation()
+  {
+    /*if (m_animationFrames.size() == 0) {
+      m_dialog->pauseButtonClicked(false);
+      return;
+    }*/
+
+    qDebug() << "paused" << m_paused;
+
+    m_paused = !m_paused;
+    if (m_paused) {
+      m_animation->pause();
+    }
+    else {
+      m_animation->start();
     }
   }
 

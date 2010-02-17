@@ -60,6 +60,7 @@ namespace Avogadro {
       void setDisplayForceVectors(bool checked);
       void setAnimationSpeed(bool checked);
       void animateButtonClicked(bool);
+      void pauseButtonClicked(bool);
       void exportVibrationData(bool);
 
     signals:
@@ -68,6 +69,7 @@ namespace Avogadro {
       void forceVectorUpdated(bool enabled);
       void animationSpeedUpdated(bool enabled);
       void toggleAnimation();
+      void pauseAnimation();
 
     private:
       Ui::VibrationWidget ui;
