@@ -75,8 +75,6 @@ namespace Avogadro {
     private:
       void updateForcesAndFrames(); // helper when settings change
 
-      QList<QAction *> m_actions;
-
       OpenBabel::OBVibrationData *m_vibrations;
       int m_mode;
       VibrationWidget *m_dialog;

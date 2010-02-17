@@ -56,13 +56,6 @@ namespace Avogadro {
                                                             m_animating(false),
                                                             m_paused(false)
   {
-    QAction *action = new QAction( this );
-    action->setSeparator(true);
-    m_actions.append( action );
-
-    action = new QAction(this);
-    action->setText(tr("&Vibrations..."));
-    m_actions.append(action);
   }
 
   VibrationExtension::~VibrationExtension()
@@ -72,12 +65,13 @@ namespace Avogadro {
 
   QList<QAction *> VibrationExtension::actions() const
   {
-    return m_actions;
+    return QList<QAction*>();
   }
 
-  QString VibrationExtension::menuPath(QAction *) const
+  QString VibrationExtension::menuPath(QAction *action) const
   {
-    return tr("E&xtensions");
+    Q_UNUSED(action);
+    return QString();
   }
 
   QDockWidget * VibrationExtension::dockWidget()
@@ -289,7 +283,6 @@ namespace Avogadro {
     
 
     m_displayVectors = enabled;
-    qDebug() << "m_widget" << m_widget;
     foreach (Engine *engine, m_widget->engines()) {
       if (engine->identifier() == "Force") {
         engine->setEnabled(enabled);
