@@ -90,12 +90,12 @@ target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
 ### Vibrations
 avogadro_plugin(vibrationextension
   "vibrationextension.cpp;vibrationdialog.cpp"
-  vibrationdialog.ui)
+  vibrationwidget.ui)
 
 ### Spectra
 avogadro_plugin(spectraextension
   "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp;spectratype_raman.cpp"
-  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui;spectratabraman.ui")
+  "spectradialog.ui;spectratab_ir_raman.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal

@@ -20,10 +20,10 @@
 #ifndef SPECTRADIALOG_H
 #define SPECTRADIALOG_H
 
-#include <QDialog>
-#include <QHash>
-#include <QVariant>
-#include <QSettings>
+#include <QtGui/QDialog>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
+#include <QtCore/QSettings>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
@@ -33,6 +33,7 @@
 #include <openbabel/generic.h>
 
 #include "ui_spectradialog.h"
+
 namespace Avogadro {
 
   class SpectraType;
@@ -77,6 +78,7 @@ namespace Avogadro {
     void schemeChanged();
     void updateScheme(int scheme);
     void updateCurrentSpectra(const QString & text);
+    void updateComboSpectra(int index);
     void addScheme();
     void removeScheme();
     void renameScheme();

@@ -71,7 +71,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>&amp;Scale:</string>
+           <string>Amplitude:</string>
           </property>
           <property name="buddy">
            <cstring>scaleSlider</cstring>

@@ -36,19 +36,13 @@ namespace Avogadro {
   SpectraType::SpectraType( SpectraDialog *parent ) : QObject(parent), m_dialog(parent)
   {
     m_tab_widget = new QWidget;
-    /*m_xList.clear();
-    m_yList.clear();
-    m_xList_imp.clear();
-    m_yList_imp.clear();
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;*/
   }
   
   SpectraType::~SpectraType()
   {
     clear();
+    disconnect(m_dialog->getUi()->combo_spectra, SIGNAL(currentIndexChanged(QString)),
+        m_dialog, SLOT(updateCurrentSpectra(QString)));    
     delete m_tab_widget;
   }
 
@@ -71,9 +65,6 @@ namespace Avogadro {
   {
     m_xList_imp = xList;
     m_yList_imp = yList;
-    /*m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);    // it's not Java!
-    */
   }
   
   void SpectraType::getImportedPlotObject(PlotObject *plotObject)
@@ -105,7 +96,12 @@ namespace Avogadro {
     QString format("%1");
     for (int i = 0; i < m_xList.size(); i++) {
       QString xString = format.arg(m_xList.at(i), 0, 'f', 2);
-      QString yString = format.arg(m_yList.at(i), 0, 'f', 3);
+      QString yString;
+      if (i < m_yList.size()) {
+        yString = format.arg(m_yList.at(i), 0, 'f', 3);
+      } else {
+        yString = "-";
+      }
       if (!m_dialog->getUi()->dataTable->item(i,0)) {
         QTableWidgetItem *newX = new QTableWidgetItem(xString);
         newX->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);

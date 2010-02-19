@@ -33,6 +33,9 @@ using namespace std;
 
 namespace Avogadro {
 
+  enum EnergyUnits	{ ENERGY_EV = 0 };
+  enum DensityUnits	{ DENSITY_PER_CELL = 0, DENSITY_PER_ATOM, DENSITY_PER_VALENCE };
+
   DOSSpectra::DOSSpectra( SpectraDialog *parent ) :
     SpectraType( parent ), m_intDOS(0)
   {
@@ -250,14 +253,6 @@ namespace Avogadro {
   }
 
   QString DOSSpectra::getTSV() {
-    /*QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Energy(eV)\tDensity(e/UC)\n";
-    for(int i = 0; i< m_xList.size(); i++) {
-      out << format.arg(m_xList.at(i), 6, 'g').arg(m_yList.at(i), 6, 'g');
-    }
-    return str;*/
     return SpectraType::getTSV("Energy(eV)", "Density(e/UC)");
   }
 

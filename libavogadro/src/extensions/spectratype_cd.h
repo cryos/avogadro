@@ -52,8 +52,6 @@ namespace Avogadro {
     //void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
-  public slots:
-
   private slots:
     void rotatoryTypeChanged(const QString & str);
 
@@ -61,7 +59,6 @@ namespace Avogadro {
     Ui::Tab_CD ui;
     QList<double> *m_yListVelocity, *m_yListLength;
     double m_fermi;
-    uint m_numAtoms;
   };
 }
 

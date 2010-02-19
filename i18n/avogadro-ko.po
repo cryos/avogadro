@@ -7,46 +7,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-12-24 06:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
-"net>\n"
+"POT-Creation-Date: 2010-02-05 00:00+0300\n"
+"PO-Revision-Date: 2009-10-22 14:33+0000\n"
+"Last-Translator: Sang-hyeon Lee <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2009-10-23 06:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "확인"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
 msgstr ""
 
-#: src/aboutdialog.cpp:68
+#: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952:69
 msgid "Avogadro"
 msgstr "Avogadro"
+
+#: src/aboutdialog.cpp:73
+#, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
+msgstr ""
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -73,7 +78,7 @@ msgstr "원자 제거"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987:381 rc.cpp:393
 msgid "Settings"
 msgstr "설정"
 
@@ -82,9 +87,10 @@ msgid "Open File"
 msgstr "파일 열기"
 
 #: src/main.cpp:204
+#, fuzzy
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
@@ -273,13 +279,13 @@ msgstr "이 파일은 3차원 좌표가 포함되어 있지 않습니다."
 
 #: src/mainwindow.cpp:893
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr "Avogadro에서 대강의 구조를 만들까요?"
+msgstr ""
 
 #: src/mainwindow.cpp:911
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
-msgstr "이 파일에는 3D 좌표 정보가 없습니다."
+msgstr ""
 
 #: src/mainwindow.cpp:963
 msgid "Select Molecule to View"
@@ -405,91 +411,91 @@ msgstr "분자를 붙여넣을 수 없습니다"
 msgid "Paste failed (format unavailable)."
 msgstr "붙여넣기 실패 (사용불가능한 포맷)"
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "복사 실패 (mdl 사용불가능)"
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "%1 보기"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 분리된 보기"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "보통 크기"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "전체 화면"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr "%1[*] - %2"
+msgstr ""
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "추가"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "복사"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "삭제"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr "도구나 엔진을 불러올 수 없습니다:"
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr "엔진을 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "도구를 불러오지 못했습니다"
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "개체"
 
-#. i18n: file: src/pluginsettings.ui:38
+#. i18n: file: src/pluginsettings.ui:39
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:2999:321
 msgid "Colors"
 msgstr "색상"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " 복사"
 
@@ -807,14 +813,14 @@ msgstr "프로젝트 트리"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
-#. i18n: file: src/pluginsettings.ui:23
+#. i18n: file: src/pluginsettings.ui:24
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "표시 형식"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
-#. i18n: file: src/pluginsettings.ui:28
+#. i18n: file: src/pluginsettings.ui:29
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "도구"
@@ -1119,19 +1125,19 @@ msgstr "파일에 있는 모든 분자..."
 msgid "Reset Display Types"
 msgstr "표시 형식 재설정"
 
-#. i18n: file: src/pluginsettings.ui:16
+#. i18n: file: src/pluginsettings.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
 msgstr "플러그인"
 
-#. i18n: file: src/pluginsettings.ui:33
+#. i18n: file: src/pluginsettings.ui:34
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
 msgstr "확장 기능"
 
-#. i18n: file: src/pluginsettings.ui:52
+#. i18n: file: src/pluginsettings.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
 msgstr "자세히"
@@ -1258,26 +1264,9 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,Kim "
-"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team"
+"Avogadro Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,"
+"Sang-hyeon Lee"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,,lordmiss@lordmiss.com,,,,"
-"avogadro-devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/"
-#~ "><br/>더 많은 정보를 위해 <a href=\"http://avogadro.openmolecules.net/"
-#~ "\">Avogadro 홈페이지</a>를 참조하세요.<br/><br/>The program is provided "
-#~ "AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, "
-#~ "MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+msgstr ",,,,,avogadro-devel@lists.sourceforge.net,,,,,"

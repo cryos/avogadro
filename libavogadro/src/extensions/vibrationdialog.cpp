@@ -21,13 +21,14 @@
 
 #include "vibrationdialog.h"
 
-#include <QtGui/QPushButton>
-#include <QtGui/QButtonGroup>
-#include <QtCore/QDebug>
-#include <QtGui/QFileDialog>
-#include <QProgressDialog>
 #include <QtCore/QFile>
 #include <QtCore/QDir>
+#include <QtCore/QDebug>
+
+#include <QtGui/QPushButton>
+#include <QtGui/QButtonGroup>
+#include <QtGui/QFileDialog>
+#include <QtGui/QProgressDialog>
 #include <QtGui/QHeaderView>
 
 #include <avogadro/molecule.h>
@@ -40,15 +41,17 @@ using namespace std;
 
 namespace Avogadro {
 
+  //VibrationDialog::VibrationDialog( QWidget *parent, Qt::WindowFlags f ) : 
+  //  QDialog( parent, f )
   VibrationDialog::VibrationDialog( QWidget *parent, Qt::WindowFlags f ) : 
-    QDialog( parent, f )
+    QDockWidget( parent, f )
   {
+    setAllowedAreas(Qt::RightDockWidgetArea);
     ui.setupUi(this);
 
     // Make sure the columns span the whole width of the table widget
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
-
 
     m_indexMap = new std::vector<int>;
 
@@ -59,14 +62,12 @@ namespace Avogadro {
 
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
-    connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
-            this, SLOT(setDisplayForceVectors(bool)));
+    /*connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setDisplayForceVectors(bool)));*/
     connect(ui.animationSpeedCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
-    connect(ui.exportButton, SIGNAL(clicked(bool)),
-            this, SLOT(exportVibrationData(bool)));
   }
 
   VibrationDialog::~VibrationDialog()
@@ -76,18 +77,25 @@ namespace Avogadro {
 
   void VibrationDialog::setMolecule(Molecule *molecule)
   {
-    m_molecule = molecule;
-
     // update table
     ui.vibrationTable->clearContents();
+      if (molecule == 0){
+        ui.vibrationTable->setRowCount(0);
+        ui.vibrationTable->horizontalHeader()->hide();
+        return;
+      }
+    m_molecule = molecule;
 
     OBMol obmol = molecule->OBMol();
     m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
     if (!m_vibrations) {
       ui.vibrationTable->setRowCount(0);
-      ui.exportButton->setEnabled(false);
+      ui.vibrationTable->horizontalHeader()->hide();
+      //ui.exportButton->setEnabled(false);
       return;
     }
+
+    ui.vibrationTable->horizontalHeader()->show();
 
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
@@ -173,7 +181,7 @@ namespace Avogadro {
     }
 
     // enable export button
-    ui.exportButton->setEnabled(true);
+    //ui.exportButton->setEnabled(true);
   }
 
   void VibrationDialog::accept()
@@ -218,10 +226,10 @@ namespace Avogadro {
 
   void VibrationDialog::setDisplayForceVectors(bool checked)
   {
-    if (checked != ui.displayForcesCheckBox->isChecked())
+    /*if (checked != ui.displayForcesCheckBox->isChecked())
       ui.displayForcesCheckBox->setChecked(checked);
 
-    emit forceVectorUpdated(checked);
+    emit forceVectorUpdated(checked);*/
   }
 
   void VibrationDialog::setAnimationSpeed(bool checked)
