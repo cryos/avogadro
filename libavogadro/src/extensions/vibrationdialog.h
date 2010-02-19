@@ -61,6 +61,7 @@ namespace Avogadro {
       void setAnimationSpeed(bool checked);
       void animateButtonClicked(bool);
       void pauseButtonClicked(bool);
+      void spectraButtonClicked();
       void exportVibrationData(bool);
 
     signals:
@@ -70,6 +71,7 @@ namespace Avogadro {
       void animationSpeedUpdated(bool enabled);
       void toggleAnimation();
       void pauseAnimation();
+      void showSpectra();
 
     private:
       Ui::VibrationWidget ui;

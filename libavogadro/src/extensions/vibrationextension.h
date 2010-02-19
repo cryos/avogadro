@@ -71,6 +71,7 @@ namespace Avogadro {
       void setAnimationSpeed(bool enabled);
       void toggleAnimation();
       void pauseAnimation();
+      void showSpectra();
 
     private:
       void updateForcesAndFrames(); // helper when settings change

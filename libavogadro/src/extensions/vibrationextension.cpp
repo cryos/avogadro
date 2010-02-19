@@ -21,6 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
+#include "../pluginmanager.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -96,6 +97,8 @@ namespace Avogadro {
                 this, SLOT(toggleAnimation()));
         connect(m_dialog, SIGNAL(pauseAnimation()),
                 this, SLOT(pauseAnimation()));
+        connect(m_dialog, SIGNAL(showSpectra()),
+                this, SLOT(showSpectra()));
         m_dialog->setMolecule(m_molecule);
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
@@ -257,7 +260,7 @@ namespace Avogadro {
         qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
-    if (m_animating) {
+    if (m_animating && !m_paused) {
       m_animation->start();
     }
     m_molecule->update();
@@ -304,22 +307,29 @@ namespace Avogadro {
 
   void VibrationExtension::toggleAnimation()
   {
+    QSettings settings;
+    
     if (m_animationFrames.size() == 0) {
       m_dialog->animateButtonClicked(false);
       return;
     }
 
     m_animating = !m_animating;
+    int q = m_widget->quality();
     if (m_animating) {
+      if (m_widget->quickRender() && (q > 0))
+        m_widget->setQuality(q-1);
       m_animation->start();
-    }
-    else {
+    } else {
       m_animation->stop();
+      if (m_widget->quickRender())
+        m_widget->setQuality(settings.value("quality", 2).toInt());
     }
   }
 
   void VibrationExtension::pauseAnimation()
   {
+    QSettings settings;
     /*if (m_animationFrames.size() == 0) {
       m_dialog->pauseButtonClicked(false);
       return;
@@ -328,10 +338,15 @@ namespace Avogadro {
     qDebug() << "paused" << m_paused;
 
     m_paused = !m_paused;
+    int q = m_widget->quality();
     if (m_paused) {
+      if (m_widget->quickRender())
+        m_widget->setQuality(settings.value("quality", 2).toInt());
       m_animation->pause();
     }
     else {
+      if (m_widget->quickRender() && (q > 0))
+        m_widget->setQuality(q-1);
       m_animation->start();
     }
   }
@@ -340,6 +355,13 @@ namespace Avogadro {
   {
     m_animationFrames.clear();
   }
+
+  void VibrationExtension::showSpectra()
+  {
+    qDebug() << "show spectra";
+    PluginManager *plugins = PluginManager::instance();
+    plugins->extension("Spectra")->performAction(0, m_widget);
+  } 
 
 } // end namespace Avogadro
 

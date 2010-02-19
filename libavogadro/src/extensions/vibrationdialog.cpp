@@ -68,6 +68,9 @@ namespace Avogadro {
             this, SLOT(animateButtonClicked(bool)));
     connect(ui.pauseButton, SIGNAL(clicked(bool)),
             this, SLOT(pauseButtonClicked(bool)));
+
+    connect(ui.spectraButton, SIGNAL(clicked()),
+            this, SLOT(spectraButtonClicked()));    
   }
 
   VibrationWidget::~VibrationWidget()
@@ -270,7 +273,12 @@ namespace Avogadro {
 
     emit pauseAnimation();
   }
-    
+
+  void VibrationWidget::spectraButtonClicked()
+  {
+    emit showSpectra();
+  }
+  
   void VibrationWidget::exportVibrationData(bool)
   {
     QFileInfo defaultFile(m_molecule->fileName());
