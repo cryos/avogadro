@@ -49,7 +49,14 @@ function(avogadro_plugin plugin_name src_list)
   install(TARGETS ${plugin_name} DESTINATION ${DESTINATION_DIR})
   set_target_properties(${plugin_name} PROPERTIES
                         OUTPUT_NAME ${plugin_name}
-			PREFIX "")
+			PREFIX ""
+			LABELS "${PLUGIN_LABEL}")
+  # If we have set the PLUGIN_TARGET variable add this plugin to the custom
+  # target. This assumes that the target was created before this function was
+  # called.
+  if(PLUGIN_TARGET)
+    add_dependencies(${PLUGIN_TARGET} ${plugin_name})
+  endif()
 endfunction(avogadro_plugin)
 
 # tell cmake to process CMakeLists.txt in that subdirectory

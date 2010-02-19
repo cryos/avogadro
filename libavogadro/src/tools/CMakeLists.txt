@@ -10,7 +10,10 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro")
+set(LINK_LIBS avogadro)
+set(PLUGIN_LABEL tools)
+set(PLUGIN_TARGET tools)
+add_custom_target(tools COMMENT "Meta target to build all Avogadro tools.")
 
 ### drawtool
 set(drawtool_SRCS

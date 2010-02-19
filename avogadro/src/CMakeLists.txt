@@ -81,7 +81,11 @@ add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_QM}
 )
 
-set_target_properties(avogadro-app PROPERTIES OUTPUT_NAME avogadro)
+set_target_properties(avogadro-app PROPERTIES
+  OUTPUT_NAME avogadro
+  LABELS avogadro-app)
+set_source_files_properties(${avogadro_SRCS}
+  PROPERTIES LABELS avogadro)
 
 target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
     avogadro)
