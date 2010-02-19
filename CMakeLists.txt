@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.6.2)
+cmake_minimum_required(VERSION 2.6.0)
+
 project(Avogadro) # the name of your project
 
 # The Avogadro version number, currently used by the Avogadro library too

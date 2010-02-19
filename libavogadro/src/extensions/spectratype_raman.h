@@ -16,7 +16,7 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public icense for more details.
  ***********************************************************************/
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
 #ifndef SPECTRATYPE_RAMAN_H
 #define SPECTRATYPE_RAMAN_H
@@ -57,4 +57,4 @@ namespace Avogadro {
 }
 
 #endif
-#endif
+//#endif

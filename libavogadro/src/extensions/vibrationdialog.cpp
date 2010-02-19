@@ -1,7 +1,8 @@
 /**********************************************************************
-  VibrationDialog - Visualize and animate vibrational modes
+  VibrationWidget - Visualize and animate vibrational modes
 
   Copyright (C) 2009 by Geoffrey Hutchison
+  Some portions Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -41,12 +42,9 @@ using namespace std;
 
 namespace Avogadro {
 
-  //VibrationDialog::VibrationDialog( QWidget *parent, Qt::WindowFlags f ) : 
-  //  QDialog( parent, f )
-  VibrationDialog::VibrationDialog( QWidget *parent, Qt::WindowFlags f ) : 
-    QDockWidget( parent, f )
-  {
-    setAllowedAreas(Qt::RightDockWidgetArea);
+  VibrationWidget::VibrationWidget( QWidget *parent, Qt::WindowFlags f ) : 
+    QWidget( parent, f )
+  {    
     ui.setupUi(this);
 
     // Make sure the columns span the whole width of the table widget
@@ -62,20 +60,25 @@ namespace Avogadro {
 
     connect(ui.scaleSlider, SIGNAL(valueChanged(int)),
             this, SLOT(setScale(int)));
-    /*connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
-            this, SLOT(setDisplayForceVectors(bool)));*/
+    connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setDisplayForceVectors(bool)));
     connect(ui.animationSpeedCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
             this, SLOT(animateButtonClicked(bool)));
+    connect(ui.pauseButton, SIGNAL(clicked(bool)),
+            this, SLOT(pauseButtonClicked(bool)));
+
+    connect(ui.spectraButton, SIGNAL(clicked()),
+            this, SLOT(spectraButtonClicked()));    
   }
 
-  VibrationDialog::~VibrationDialog()
+  VibrationWidget::~VibrationWidget()
   {
     // The real work is done in VibrationExtension
   }
 
-  void VibrationDialog::setMolecule(Molecule *molecule)
+  void VibrationWidget::setMolecule(Molecule *molecule)
   {
     // update table
     ui.vibrationTable->clearContents();
@@ -103,15 +106,22 @@ namespace Avogadro {
     #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       vector<double> raman_activities = m_vibrations->GetRamanActivities();
       if (raman_activities.size() == 0) {
-        resize(450, height());
+        //resize(274, height());
         ui.vibrationTable->setColumnCount(2);
+        if(parentWidget())
+          parentWidget()->setMinimumWidth(274);
       } else {
-        resize(567, height());
+        //resize(310, height());
         ui.vibrationTable->setColumnCount(3);
+        ui.vibrationTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Activity"));
+        if(parentWidget())
+          parentWidget()->setMinimumWidth(310);
       }
     #else
-        resize(450, height());
+        //resize(274, height());
         ui.vibrationTable->setColumnCount(2);
+        if(parentWidget())
+          parentWidget()->setMinimumWidth(274);
     #endif
 
     // Generate an index vector to map sorted indicies to the old indices
@@ -184,55 +194,57 @@ namespace Avogadro {
     //ui.exportButton->setEnabled(true);
   }
 
-  void VibrationDialog::accept()
+  void VibrationWidget::accept()
   {
     emit selectedMode(-1); // stop animating
     hide();
   }
 
-  void VibrationDialog::currentCellChanged(int row, int, int, int)
+  void VibrationWidget::currentCellChanged(int row, int, int, int)
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
+      ui.pauseButton->setEnabled(true);
     }
     if (row == -1) emit selectedMode(row);
     else emit selectedMode(m_indexMap->at(row));
   }
 
-  void VibrationDialog::cellClicked(int row, int)
+  void VibrationWidget::cellClicked(int row, int)
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
+      ui.pauseButton->setEnabled(true);
     }
     if (row == -1) emit selectedMode(row);
     else emit selectedMode(m_indexMap->at(row));
   }
 
-  void VibrationDialog::reject()
+  void VibrationWidget::reject()
   {
     emit selectedMode(-1); // stop animating
     hide();
   }
 
-  void VibrationDialog::setScale(int scale)
+  void VibrationWidget::setScale(int scale)
   {
     emit scaleUpdated(scale / 2.0);
   }
 
-  void VibrationDialog::setScale(double scale)
+  void VibrationWidget::setScale(double scale)
   {
     emit scaleUpdated(scale);
   }
 
-  void VibrationDialog::setDisplayForceVectors(bool checked)
+  void VibrationWidget::setDisplayForceVectors(bool checked)
   {
-    /*if (checked != ui.displayForcesCheckBox->isChecked())
+    if (checked != ui.displayForcesCheckBox->isChecked())
       ui.displayForcesCheckBox->setChecked(checked);
 
-    emit forceVectorUpdated(checked);*/
+    emit forceVectorUpdated(checked);
   }
 
-  void VibrationDialog::setAnimationSpeed(bool checked)
+  void VibrationWidget::setAnimationSpeed(bool checked)
   {
     if (checked != ui.animationSpeedCheckBox->isChecked())
       ui.animationSpeedCheckBox->setChecked(checked);
@@ -240,7 +252,7 @@ namespace Avogadro {
     emit animationSpeedUpdated(checked);
   }
 
-  void VibrationDialog::animateButtonClicked(bool)
+  void VibrationWidget::animateButtonClicked(bool)
   {
     if (ui.animationButton->text() == tr("Start &Animation")) {
       ui.animationButton->setText(tr("Stop &Animation"));
@@ -250,8 +262,24 @@ namespace Avogadro {
 
     emit toggleAnimation();
   }
+
+  void VibrationWidget::pauseButtonClicked(bool)
+  {
+    if (ui.pauseButton->text() == tr("Pause")) {
+      ui.pauseButton->setText(tr("Continue"));
+    } else {
+      ui.pauseButton->setText(tr("Pause"));
+    }
+
+    emit pauseAnimation();
+  }
+
+  void VibrationWidget::spectraButtonClicked()
+  {
+    emit showSpectra();
+  }
   
-  void VibrationDialog::exportVibrationData(bool)
+  void VibrationWidget::exportVibrationData(bool)
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();

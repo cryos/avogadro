@@ -2,6 +2,7 @@
   VibrationExtension - Visualize vibrational modes from QM calculations
 
   Copyright (C) 2009 by Geoffrey R. Hutchison
+  Some portions Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -20,6 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
+#include "../pluginmanager.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -44,6 +46,7 @@ namespace Avogadro {
   VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
                                                             m_mode(-1),
                                                             m_dialog(0),
+                                                            m_dock(0),
                                                             m_molecule(NULL),
                                                             m_widget(0),
                                                             m_animation(0),
@@ -51,15 +54,9 @@ namespace Avogadro {
                                                             m_framesPerStep(8),
                                                             m_displayVectors(true),
                                                             m_animationSpeed(false),
-                                                            m_animating(false)
+                                                            m_animating(false),
+                                                            m_paused(false)
   {
-    QAction *action = new QAction( this );
-    action->setSeparator(true);
-    m_actions.append( action );
-
-    action = new QAction(this);
-    action->setText(tr("&Vibrations..."));
-    m_actions.append(action);
   }
 
   VibrationExtension::~VibrationExtension()
@@ -69,27 +66,25 @@ namespace Avogadro {
 
   QList<QAction *> VibrationExtension::actions() const
   {
-    return m_actions;
+    return QList<QAction*>();
   }
 
-  QString VibrationExtension::menuPath(QAction *) const
+  QString VibrationExtension::menuPath(QAction *action) const
   {
-    return tr("E&xtensions");
+    Q_UNUSED(action);
+    return QString();
   }
 
   QDockWidget * VibrationExtension::dockWidget()
   {
-    //if (m_molecule == NULL)
-      //return NULL;
-
-    //m_widget = widget; // save for warnings in updateMode()
-
-    //OBMol obmol = m_molecule->OBMol();
-    //m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
-
-    //if (m_vibrations) {
+    if (!m_dock) {
+      m_dock = new QDockWidget(tr("Molecule Vibrations"));
+      m_dock->setObjectName("vibrationDock");
+      //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
+    
       if (!m_dialog) {
-        m_dialog = new VibrationDialog(qobject_cast<QWidget*>(parent()));
+        m_dialog = new VibrationWidget();
+        
         connect(m_dialog, SIGNAL(selectedMode(int)),
                 this, SLOT(updateMode(int)));
         connect(m_dialog, SIGNAL(scaleUpdated(double)),
@@ -100,46 +95,57 @@ namespace Avogadro {
                 this, SLOT(setAnimationSpeed(bool)));
         connect(m_dialog, SIGNAL(toggleAnimation()),
                 this, SLOT(toggleAnimation()));
+        connect(m_dialog, SIGNAL(pauseAnimation()),
+                this, SLOT(pauseAnimation()));
+        connect(m_dialog, SIGNAL(showSpectra()),
+                this, SLOT(showSpectra()));
         m_dialog->setMolecule(m_molecule);
-
-/*        foreach (Engine *engine, m_widget->engines()) {
-          if (engine->identifier() == "Force") {
-            m_dialog->setDisplayForceVectors(engine->isEnabled());
-            connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
-          }
-        }*/
-
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
         /*m_animation->setMolecule(m_molecule);*/
       }
-      //m_dialog->show();
-    /*}
-    else {
-      QMessageBox::warning(0, tr("Vibrational Analysis"), tr("No vibrations have been computed for this molecule."));
-      // show a warning
-    }*/
+    }
+    m_dock->setWidget(m_dialog);
     qDebug() << "return dock";
-    m_dialog->close();
-    return m_dialog;
+    m_dock->setVisible(false);
+    return m_dock;
   }
 
   void VibrationExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    if (m_dialog) {
+    GLWidget *widget = GLWidget::current();        
+    if (widget) {
+      m_widget = widget; // engines, extensions, warnings in updateMode()
+      foreach (Engine *engine, widget->engines()) {
+        if (engine->identifier() == "Force") {
+          m_dialog->setDisplayForceVectors(engine->isEnabled());
+          connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
+        }
+      }
+    }
+        
+    if (m_dock) {
       if (molecule !=0) {
         if (molecule->OBMol().GetData(OBGenericDataType::VibrationData)) {
           qDebug() << "show it!";
-          m_dialog->show();
+          m_dock->show();
+          //if (!m_dialog->toggleViewAction()->isChecked())
+          //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
         }
         else {
-          m_dialog->close();
+          m_dock->close();
+          //m_dialog->toggleViewAction()->setChecked(false);
+          //if (m_dialog->toggleViewAction()->isChecked())
+          //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
           qDebug() << "1:hide it!";
         }
       } else {
         qDebug() << "2:hide it!";
-        m_dialog->close();
+        m_dock->close();
+        //m_dialog->toggleViewAction()->setChecked(false);
+        //if (m_dialog->toggleViewAction()->isChecked())
+          //m_dialog->toggleViewAction()->activate(QAction::Trigger);
       }
       m_dialog->setMolecule(molecule);
     }
@@ -254,7 +260,7 @@ namespace Avogadro {
         qDebug() << vibPerFs << " fps " << fps * m_animationFrames.size();
       }
     }
-    if (m_animating) {
+    if (m_animating && !m_paused) {
       m_animation->start();
     }
     m_molecule->update();
@@ -262,47 +268,8 @@ namespace Avogadro {
 
   QUndoCommand* VibrationExtension::performAction( QAction *action, GLWidget *widget )
   {
-/*    if (m_molecule == NULL)
-      return NULL;
-
-    m_widget = widget; // save for warnings in updateMode()
-
-    OBMol obmol = m_molecule->OBMol();
-    m_vibrations = static_cast<OBVibrationData*>(obmol.GetData(OBGenericDataType::VibrationData));
-
-    if (m_vibrations) {
-      if (!m_dialog) {
-        m_dialog = new VibrationDialog(qobject_cast<QWidget*>(parent()));
-        connect(m_dialog, SIGNAL(selectedMode(int)),
-                this, SLOT(updateMode(int)));
-        connect(m_dialog, SIGNAL(scaleUpdated(double)),
-                this, SLOT(setScale(double)));
-        connect(m_dialog, SIGNAL(forceVectorUpdated(bool)),
-                this, SLOT(setDisplayForceVectors(bool)));
-        connect(m_dialog, SIGNAL(animationSpeedUpdated(bool)),
-                this, SLOT(setAnimationSpeed(bool)));
-        connect(m_dialog, SIGNAL(toggleAnimation()),
-                this, SLOT(toggleAnimation()));
-        m_dialog->setMolecule(m_molecule);
-
-        foreach (Engine *engine, m_widget->engines()) {
-          if (engine->identifier() == "Force") {
-            m_dialog->setDisplayForceVectors(engine->isEnabled());
-            connect(engine, SIGNAL(enableToggled(bool)), m_dialog, SLOT(setDisplayForceVectors(bool)));
-          }
-        }
-
-        m_animation = new Animation(this);
-        m_animation->setLoopCount(0); // continual loopback
-        m_animation->setMolecule(m_molecule);
-      }
-      m_dialog->show();
-    }
-    else {
-      QMessageBox::warning(widget, tr("Vibrational Analysis"), tr("No vibrations have been computed for this molecule."));
-      // show a warning
-    }
-*/
+    Q_UNUSED(action)
+    Q_UNUSED(widget)
     return NULL;
   }
 
@@ -316,8 +283,7 @@ namespace Avogadro {
   {
     if (m_displayVectors == enabled)
       return; // nothing to do
-    if (!m_widget)
-      return;
+    
 
     m_displayVectors = enabled;
     foreach (Engine *engine, m_widget->engines()) {
@@ -341,17 +307,47 @@ namespace Avogadro {
 
   void VibrationExtension::toggleAnimation()
   {
+    QSettings settings;
+    
     if (m_animationFrames.size() == 0) {
       m_dialog->animateButtonClicked(false);
       return;
     }
 
     m_animating = !m_animating;
+    int q = m_widget->quality();
     if (m_animating) {
+      if (m_widget->quickRender() && (q > 0))
+        m_widget->setQuality(q-1);
       m_animation->start();
+    } else {
+      m_animation->stop();
+      if (m_widget->quickRender())
+        m_widget->setQuality(settings.value("quality", 2).toInt());
+    }
+  }
+
+  void VibrationExtension::pauseAnimation()
+  {
+    QSettings settings;
+    /*if (m_animationFrames.size() == 0) {
+      m_dialog->pauseButtonClicked(false);
+      return;
+    }*/
+
+    qDebug() << "paused" << m_paused;
+
+    m_paused = !m_paused;
+    int q = m_widget->quality();
+    if (m_paused) {
+      if (m_widget->quickRender())
+        m_widget->setQuality(settings.value("quality", 2).toInt());
+      m_animation->pause();
     }
     else {
-      m_animation->stop();
+      if (m_widget->quickRender() && (q > 0))
+        m_widget->setQuality(q-1);
+      m_animation->start();
     }
   }
 
@@ -359,6 +355,13 @@ namespace Avogadro {
   {
     m_animationFrames.clear();
   }
+
+  void VibrationExtension::showSpectra()
+  {
+    qDebug() << "show spectra";
+    PluginManager *plugins = PluginManager::instance();
+    plugins->extension("Spectra")->performAction(0, m_widget);
+  } 
 
 } // end namespace Avogadro
 
