@@ -130,11 +130,13 @@ namespace Avogadro {
         if (molecule->OBMol().GetData(OBGenericDataType::VibrationData)) {
           qDebug() << "show it!";
           m_dock->show();
+          m_dialog->setEnabled(true);
           //if (!m_dialog->toggleViewAction()->isChecked())
           //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
         }
         else {
           m_dock->close();
+          m_dialog->setEnabled(false);
           //m_dialog->toggleViewAction()->setChecked(false);
           //if (m_dialog->toggleViewAction()->isChecked())
           //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
@@ -143,6 +145,7 @@ namespace Avogadro {
       } else {
         qDebug() << "2:hide it!";
         m_dock->close();
+        m_dialog->setEnabled(false);
         //m_dialog->toggleViewAction()->setChecked(false);
         //if (m_dialog->toggleViewAction()->isChecked())
           //m_dialog->toggleViewAction()->activate(QAction::Trigger);
@@ -358,9 +361,14 @@ namespace Avogadro {
 
   void VibrationExtension::showSpectra()
   {
-    qDebug() << "show spectra";
+    if(!m_molecule)
+      return;
+      
     PluginManager *plugins = PluginManager::instance();
-    plugins->extension("Spectra")->performAction(0, m_widget);
+    Extension * spectra = plugins->extension("Spectra", m_widget);
+    delete plugins;
+    spectra->setMolecule(m_molecule);
+    spectra->performAction(0, m_widget);
   } 
 
 } // end namespace Avogadro
