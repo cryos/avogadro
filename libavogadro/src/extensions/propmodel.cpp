@@ -214,11 +214,31 @@ namespace Avogadro {
       if (sortRole && index.column() == 4)
         return bond->GetLength();
 
+      Atom *a;
+      QString str;
+      unsigned int  gi;
+      
       switch (index.column()) {
       case 0: // atom 1
-        return bond->GetBeginAtomIdx();
+        //return bond->GetBeginAtomIdx();
+        a = m_molecule->atom(bond->GetBeginAtomIdx()-1);
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
+        return str;
       case 1: // atom 2
-        return bond->GetEndAtomIdx();
+        //return bond->GetEndAtomIdx();
+        a = m_molecule->atom(bond->GetEndAtomIdx()-1);
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
+        return str;
       case 2: // order
         return bond->GetBondOrder();
       case 3: // rotatable
