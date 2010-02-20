@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONDIALOG_H
-#define VIBRATIONDIALOG_H
+#ifndef VIBRATIONWIDGET_H
+#define VIBRATIONWIDGET_H
 
 #include <QtGui/QWidget>
 

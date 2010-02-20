@@ -20,7 +20,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "vibrationdialog.h"
+#include "vibrationwidget.h"
 
 #include <QtCore/QFile>
 #include <QtCore/QDir>

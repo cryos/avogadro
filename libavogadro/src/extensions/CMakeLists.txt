@@ -92,7 +92,7 @@ target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
 
 ### Vibrations
 avogadro_plugin(vibrationextension
-  "vibrationextension.cpp;vibrationdialog.cpp"
+  "vibrationextension.cpp;vibrationwidget.cpp"
   vibrationwidget.ui)
 
 ### Spectra

@@ -23,7 +23,7 @@
 #ifndef VIBRATIONEXTENSION_H
 #define VIBRATIONEXTENSION_H
 
-#include "vibrationdialog.h"
+#include "vibrationwidget.h"
 
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
