@@ -80,6 +80,7 @@ namespace Avogadro {
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
       std::vector<int> *m_indexMap;
+      int m_currentRow;
   };
 }
 

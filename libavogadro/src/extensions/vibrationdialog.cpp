@@ -204,20 +204,20 @@ namespace Avogadro {
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
-      ui.pauseButton->setEnabled(true);
     }
-    if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));
+    m_currentRow = row;
+    /*if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));*/
   }
 
   void VibrationWidget::cellClicked(int row, int)
   {
     if (row != -1 && !ui.animationButton->isEnabled()) {
       ui.animationButton->setEnabled(true);
-      ui.pauseButton->setEnabled(true);
     }
-    if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));
+    m_currentRow = row;
+    /*if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));*/
   }
 
   void VibrationWidget::reject()
@@ -256,8 +256,14 @@ namespace Avogadro {
   {
     if (ui.animationButton->text() == tr("Start &Animation")) {
       ui.animationButton->setText(tr("Stop &Animation"));
+      ui.pauseButton->setEnabled(true);
+      if (m_currentRow == -1)
+        emit selectedMode(m_currentRow);
+      else
+        emit selectedMode(m_indexMap->at(m_currentRow));
     } else {
       ui.animationButton->setText(tr("Start &Animation"));
+      ui.pauseButton->setEnabled(false);
     }
 
     emit toggleAnimation();
