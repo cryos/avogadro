@@ -102,7 +102,7 @@ namespace Avogadro {
     Q_UNUSED(parent);
     switch (m_type) {
     case AtomType:
-      return 8; // type, element, valence, formal charge, partial charge, x, y, z
+      return 8; // element, type, valence, formal charge, partial charge, x, y, z
     case BondType:
       return 5;
     case AngleType:
@@ -169,15 +169,15 @@ namespace Avogadro {
       QString format("%L1");
       
       switch (index.column()) {
-      case 0: // type
+      case 0: // atomic symbol
+        return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
+      case 1: // type
         {
           if (!m_validCache)
             cacheOBMol();
           OpenBabel::OBAtom *obatom = m_cachedOBMol->GetAtom(index.row() + 1);
           return obatom->GetType();
         }
-      case 1: // atomic symbol
-        return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
       case 2: // valence
         return atom->valence();
       case 3: // formal charge
@@ -372,9 +372,9 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Type");
-        case 1:
           return tr("Element");
+        case 1:
+          return tr("Type");
         case 2:
           return tr("Valence");
         case 3:
@@ -466,11 +466,11 @@ namespace Avogadro {
 
     if (m_type == AtomType) {
       switch (index.column()) {
-      case 1: // atomic number
+      case 0: // atomic number
       case 3: // formal charge
       case 4: // partial charge
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 0: // type
+      case 1: // type
       case 2: // valence
         return QAbstractItemModel::flags(index);
       }
@@ -529,7 +529,7 @@ namespace Avogadro {
       Eigen::Vector3d pos = *atom->pos();
       
       switch (index.column()) {
-      case 1: {// atomic number
+      case 0: {// atomic number
         // Try first as a number
         bool ok;
         int atomicNumber = value.toInt(&ok);
@@ -561,7 +561,7 @@ namespace Avogadro {
         m_molecule->update();
         emit dataChanged(index, index);
         return true;      
-      case 0: // type
+      case 1: // type
       case 2: // valence
       default:
         return false;
