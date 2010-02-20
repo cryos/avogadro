@@ -65,9 +65,9 @@ namespace Avogadro {
     else if (m_type == BondType) {
       return m_molecule->numBonds();
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       return m_molecule->numAtoms();
-    }
+    }*/
     else if (m_type == ConformerType) {
       return m_molecule->numConformers();
     }
@@ -109,8 +109,8 @@ namespace Avogadro {
       return 4;
     case TorsionType:
       return 5;
-    case CartesianType:
-      return 3;
+    /*case CartesianType:
+      return 3;*/
     case ConformerType:
       return 1;
     }
@@ -124,10 +124,10 @@ namespace Avogadro {
 
     // handle text alignments
     if (role == Qt::TextAlignmentRole) {
-      if (m_type == CartesianType) {
+      /*if (m_type == CartesianType) {
         return Qt::AlignRight + Qt::AlignVCenter; // XYZ coordinates
       }
-      else if (m_type == ConformerType) {
+      else*/ if (m_type == ConformerType) {
         return Qt::AlignRight + Qt::AlignVCenter; // energies
       }
       else if (m_type == AtomType) {
@@ -312,7 +312,7 @@ namespace Avogadro {
           rowCount++;
         }
       }
-    } else if (m_type == CartesianType) {
+    } /*else if (m_type == CartesianType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numAtoms())
         return QVariant();
 
@@ -336,7 +336,7 @@ namespace Avogadro {
         else
           return format.arg(atom->pos()->z(), 0, 'f', 5);
       }
-    } else if (m_type == ConformerType) {
+    }*/ else if (m_type == ConformerType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numConformers())
         return QVariant();
 
@@ -434,7 +434,7 @@ namespace Avogadro {
         }
       } else
         return tr("Torsion %1").arg(section + 1);
-    } else if (m_type == CartesianType) {
+    } /*else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
@@ -446,7 +446,7 @@ namespace Avogadro {
         }
       } else
         return tr("Atom %1").arg(section + 1);
-    } else if (m_type == ConformerType) {
+    }*/ else if (m_type == ConformerType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
@@ -499,9 +499,9 @@ namespace Avogadro {
         return QAbstractItemModel::flags(index);
       }
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-    }
+    }*/
     else if (m_type == ConformerType) {
       return QAbstractItemModel::flags(index);
     }
@@ -567,7 +567,7 @@ namespace Avogadro {
         return false;
       }
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       if (index.column() > 2)
         return false;
 
@@ -579,7 +579,7 @@ namespace Avogadro {
       m_molecule->update();
       emit dataChanged(index, index);
       return true;
-    }
+    }*/
     else if (m_type == BondType) {
       Bond *bond = m_molecule->bond(index.row());
       Eigen::Vector3d bondDirection = *(bond->beginPos()) - *(bond->endPos());
@@ -701,7 +701,7 @@ namespace Avogadro {
 
   void PropertiesModel::atomAdded(Atom *atom)
   {
-    if ( (m_type == AtomType) || (m_type == CartesianType) ) {
+    if ( (m_type == AtomType) /*|| (m_type == CartesianType)*/ ) {
       // insert a new row at the end
       beginInsertRows(QModelIndex(), atom->index(), atom->index());
       endInsertRows();
@@ -711,7 +711,7 @@ namespace Avogadro {
 
   void PropertiesModel::atomRemoved(Atom *atom)
   {
-    if ( (m_type == AtomType) || (m_type == CartesianType) )  {
+    if ( (m_type == AtomType) /*|| (m_type == CartesianType)*/ )  {
       // delete the row for this atom
       beginRemoveRows(QModelIndex(), atom->index(), atom->index());
       endRemoveRows();
