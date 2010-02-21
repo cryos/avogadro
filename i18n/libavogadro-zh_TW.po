@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-12-23 15:44+0000\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
+"PO-Revision-Date: 2010-01-21 07:14+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "軸"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "在開始就呈現 x, y, z 軸"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "球與棒 (原子與鍵)"
 
@@ -599,7 +599,7 @@ msgstr "繪出氫的結合鍵"
 
 #: src/engines/labelengine.h:45
 msgid "Label"
-msgstr "元素符號"
+msgstr "標記"
 
 #: src/engines/labelengine.h:45
 msgid "Renders atom and bond labels"
@@ -844,7 +844,8 @@ msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr "您的分子至少要有一個原子才能加入一限制條件"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr "您的分子至少要有兩個原子才能加入一化學鍵結的限制條件"
 
 #: src/extensions/constraintsdialog.cpp:378
@@ -948,27 +949,27 @@ msgstr "能量 = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "幾何最佳化"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "力埸最佳化"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "取消"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Systematic Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Random Rotor Search"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Weighted Rotor Search"
 
@@ -980,9 +981,7 @@ msgstr "力場"
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
-msgstr ""
-"使用分子力學力場 (molecular mechanics force fields) 以最適化分子及產生構形異"
-"構物"
+msgstr "使用分子力學力場 (molecular mechanics force fields) 以最適化分子及產生構形異構物"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1071,7 +1070,7 @@ msgstr "產生匯入檔給 GAMESS 量子化學套件"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "標題"
 
@@ -1127,8 +1126,7 @@ msgstr "Gaussian 輸入平台產生器警告"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
-"您希望更新預覽的文字嗎? 將會失去所有在 Gaussian 輸入工作區預覽框中的變更"
+msgstr "您希望更新預覽的文字嗎? 將會失去所有在 Gaussian 輸入工作區預覽框中的變更"
 
 #: src/extensions/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
@@ -1172,7 +1170,8 @@ msgid "G03 Crashed."
 msgstr "G03 當機."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "無法順利執行 Gaussian. 可能是安裝不正確."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
@@ -1181,7 +1180,7 @@ msgstr "無法順利執行 Gaussian. 可能是安裝不正確."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "顯示預覽"
 
@@ -1197,7 +1196,7 @@ msgstr "顯示預覽"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "取消預覽"
 
@@ -1338,7 +1337,7 @@ msgstr "胜肽..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "插入胜肽"
 
@@ -1562,9 +1561,7 @@ msgid ""
 "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
-msgstr ""
-"您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔"
-"案. 您確定要這樣做嗎?"
+msgstr "您要求非直接 POV-Ray 呈現及無要保存 POV-Ray 檔案. 這將導致無法儲存輸出的檔案. 您確定要這樣做嗎?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -1647,7 +1644,7 @@ msgstr "異構物性質"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "性質"
 
@@ -1659,7 +1656,7 @@ msgstr "這些視窗可以用來顯示原子, 鍵, 鍵角,及扭力性質等. �
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "種類"
 
@@ -1762,7 +1759,7 @@ msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "能量"
 
@@ -1835,7 +1832,7 @@ msgstr "依照殘基來選擇"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "殘基名稱"
 
@@ -1897,7 +1894,7 @@ msgstr "Shader 參數檔案 (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr "GLSL Shaders"
 
@@ -1915,13 +1912,13 @@ msgstr "Y 軸"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "外觀"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "匯出圖形"
 
@@ -2104,7 +2101,7 @@ msgstr "客製化 <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "客製化 >>"
 
@@ -2120,23 +2117,22 @@ msgstr "光譜"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "從量子化學計算顯示光譜的資料"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "沒有強度"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
-msgstr ""
-"您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
+msgstr "您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波數 (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "化學位移 (ppm)"
 
@@ -2347,7 +2343,7 @@ msgstr "套用"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "確定"
 
@@ -2359,7 +2355,7 @@ msgstr "依照頻率將 %1 的振動加以分類排序..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "啟動動畫"
 
@@ -2378,7 +2374,7 @@ msgstr "振動..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "振動分析"
 
@@ -2680,11 +2676,6 @@ msgstr "自動最佳化: 無法設定力場... (請檢查所繪製的分子是�
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "約束"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "力場"
@@ -2699,13 +2690,13 @@ msgstr "演算法："
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr "Steepest Descent (最陡下降)"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr "共軛梯度"
 
@@ -2738,7 +2729,7 @@ msgstr "被忽略的原子可移動"
 msgid "Stop"
 msgstr "停止"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "自動最佳化分子"
 
@@ -2792,7 +2783,7 @@ msgstr "繞 Z 軸旋轉"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "重設"
 
@@ -2823,13 +2814,10 @@ msgstr ""
 "鍵中心調整工具\n"
 "旋轉, 放大縮小, 移動的功能與導覽工具相同\n"
 "*調整功能如下\n"
-"1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉"
-"該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
-"2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞"
-"著藍色平面改變鍵角.\n"
+"1. 首先用滑鼠左鍵在特定的鍵點住不放就會出現一個藍色平面, 此時移動滑鼠可以選轉該平面並調整到適當的位置, 然後放開滑鼠左鍵.\n"
+"2. 使用滑鼠左鍵點擊左鍵並拖曳藍色平面兩端原子 (原先選定的鍵的兩端), 就可以繞著藍色平面改變鍵角.\n"
 "3. 使用滑鼠右鍵可以改變鍵的長度\n"
-"譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到"
-"適當的形狀."
+"譯者: 調整後的分子可能會變的奇形怪狀, 可以用延伸功能裏的最適化構形使分子回到適當的形狀."
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
@@ -2955,7 +2943,7 @@ msgstr "測量功能設定"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "新增原子"
 
@@ -3009,7 +2997,7 @@ msgstr "元素："
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "其他..."
 
@@ -3051,10 +3039,8 @@ msgid ""
 msgstr ""
 "調整工具（F10）\n"
 "\n"
-"滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平"
-"面)\n"
-"滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面"
-"的垂直方向移動) 。\n"
+"滑鼠左鍵：點擊並拖曳可以移動原子 (譯者: 在平面上移動, 平面是指螢幕顯示器的平面)\n"
+"滑鼠中鍵：點擊原子不放並拖曳向上會使原子遠離觀察者, 向下則接近觀察者 (在平面的垂直方向移動) 。\n"
 "滑鼠右鍵：點擊並拖曳可以旋轉所選的原子。"
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
@@ -3110,8 +3096,7 @@ msgstr ""
 "2. 可以點選原子或是鍵. 也使用拖曳 (會出現一個方框) 可以選擇特定範圍內的原子\n"
 "3. 使用 Ctrl 鍵來切換選擇，Shift 鍵來加入新的選項\n"
 "\n"
-"譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需"
-"要的原子"
+"譯者: 若需要點選多個, 可以按住鍵盤上的 Ctrl 或是 Shift 不放, 然後用滑鼠點選需要的原子"
 
 #: src/tools/selectrotatetool.cpp:411
 msgid "Selection Mode:"
@@ -3159,7 +3144,7 @@ msgstr "Z Matrix 編輯器..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr "Z-Matrix"
 
@@ -6649,9 +6634,9 @@ msgstr "移除原子"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang"
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, "
+",Launchpad Contributions:,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6665,6 +6650,7 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro files (*.*)"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "無法存檔 %1"
 
@@ -6717,6 +6703,7 @@ msgstr ""
 #~ msgid "Save Movie File"
 #~ msgstr "儲存影片檔"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "無法讀取 mol 檔案 %1."
 
@@ -6726,9 +6713,11 @@ msgstr ""
 #~ msgid "Linear Morph"
 #~ msgstr "線性變體 (Linear Morph)"
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "寫入檔案 %1"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "這兩個分子有不同的原子數目 %1 %2"
 
@@ -6741,12 +6730,13 @@ msgstr ""
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL widget (GL 界面工具集) 無法正確啟動所以無法儲存影片"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "將寫入檔案 %1"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑及檔名, 且以 .avi 結尾"
 
 #~ msgid "Track motion using Wii remotes"
@@ -6774,8 +6764,7 @@ msgstr ""
 #~ msgstr "MO 666"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"

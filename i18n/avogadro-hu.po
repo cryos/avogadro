@@ -6,22 +6,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-12-26 17:01+0000\n"
-"Last-Translator: Balázs Attila <battila9@freemail.hu>\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-11-06 10:48-0500\n"
+"PO-Revision-Date: 2010-01-28 05:50+0000\n"
+"Last-Translator: Csörföly Dániel <csorfolydaniel@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "OK"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63
+#: src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
@@ -30,26 +31,28 @@ msgstr "(Git verziója: %1)"
 #: src/aboutdialog.cpp:68
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+"he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+"PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Alkalmazás verzió: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Verzió: %4<br/><br/>Qt Version: %5<br/><br/>További "
-"információért látogass az <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro honlapjára</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Alkalmazás verzió: %2<br/><br/>Library verzió: "
+"%3<br/><br/>Open Babel verzió: %4<br/><br/>Qt verzió: %5<br/><br/>További "
+"információért látogass az <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"honlapjára</a>.<br/><br/>A PROGRAM A JELEN ÁLLAPOTÁBAN KERÜL KIADÁSRA, "
+"MINDENFÉLE GARANCIAVÁLLALÁS NÉLKÜL, BELEÉRTVE A TERVEZÉSRE, AZ ELADHATÓSÁGRA "
+"VAGY VALAMELY CÉLRA VALÓ ALKALMAZHATÓSÁGRA SZÁRMAZTATOTT GARANCIÁT IS.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -78,7 +81,7 @@ msgstr "Atomok törlése"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -319,7 +322,8 @@ msgstr "Fájl betöltve..."
 
 #: src/mainwindow.cpp:1095
 msgid "Do you want to save the changes you made in the document?"
-msgstr "El szeretné menteni a változtatásokat, amiket a dokumentumon végzett?"
+msgstr ""
+"El szeretné menteni a változtatásokat, amiket a dokumentumon végzett?"
 
 #: src/mainwindow.cpp:1104
 msgid "Your changes will be lost if you don't save them."
@@ -421,107 +425,107 @@ msgstr "A molekula beszúrása nem lehetséges"
 msgid "Paste failed (format unavailable)."
 msgstr "Beszúrás nem sikerült. (A formátum nem támogatott)"
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "Sikertelen másolás (mdl nem támogatott)"
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "Nézet %1"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Nézet sorszáma %1"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: leválasztott nézet"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "Normál méret"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "Teljes képernyő"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "Megkettőzés"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr "Nincsenek segédeszközök vagy motorok betöltve."
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr "Nincsenek motorok betöltve"
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "Nincsenek segédeszközök betöltve."
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
 " Ez az alkalmazás valószínűleg nem fog helyesen működni. Javítsa ezt a hibát."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "Objektumok"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:2999 :321
 msgid "Colors"
 msgstr "Színek"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " Másolás"
 
-#: src/pluginsettings.cpp:53
+#: src/pluginsettings.cpp:55
 msgid "Name: "
 msgstr "Név: "
 
-#: src/pluginsettings.cpp:54
+#: src/pluginsettings.cpp:56
 msgid "Identifier: "
 msgstr "Azonosító: "
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:57
 msgid "File: "
 msgstr "Fájl: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:58
 msgid "Description:\n"
 msgstr "Leírás:\n"
 
@@ -578,7 +582,7 @@ msgstr "Csak a feliratoknak lehetnek al-tételeik"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Tétel"
 
@@ -593,7 +597,7 @@ msgstr "Alacsony"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Közepes"
@@ -610,7 +614,7 @@ msgstr "Nincs megadva"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nincs"
@@ -737,12 +741,12 @@ msgstr "Kiterjesztés automatikus detektálása"
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Kötés érzékelése"
 
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Kötésrend érzékelése"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
@@ -1123,7 +1127,7 @@ msgstr "&Vektor grafika..."
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
-msgstr ""
+msgstr "Mutasd az elemi cella tengelyeket"
 
 #. i18n: file: src/mainwindow.ui:683
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1209,7 +1213,7 @@ msgstr "L"
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr ""
+msgstr "Elem mozgatása jobbra (legyen a következő testvér elem első aleleme)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
@@ -1274,8 +1278,8 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Andras Bibok, ,Launchpad Contributions:,Balázs "
-"Attila"
+"Attila,Csörföly Dániel"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,biboka@t-online.hu,,,battila9@freemail.hu"
+msgstr ",,biboka@t-online.hu,,,battila9@freemail.hu,csorfolydaniel@gmail.com"

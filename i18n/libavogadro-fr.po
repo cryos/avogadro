@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
 "PO-Revision-Date: 2009-11-05 11:43+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -554,7 +554,7 @@ msgstr "Axes"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Afficher les axes x, y et z à l'origine"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Boules et bâtonnets"
 
@@ -854,7 +854,8 @@ msgstr ""
 "contrainte"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Votre molécule doit contenir au moins deux atomes pour pouvoir ajouter une "
 "contrainte de liaison"
@@ -964,27 +965,27 @@ msgstr "Energie = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Optimisation géométrique"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "Optimisation par champ de force"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Recherche systématique de rotor"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Recherche aléatoire de rotor"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Recherche pondérée de rotor"
 
@@ -1087,7 +1088,7 @@ msgstr "Créer les fichiers d'entrée pour GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Titre"
 
@@ -1192,7 +1193,8 @@ msgid "G03 Crashed."
 msgstr "G03 s'est planté."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian n'a pas fonctionné correctement. Il n'est peut être pas "
 "correctement installé."
@@ -1203,7 +1205,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Afficher l'aperçu"
 
@@ -1219,7 +1221,7 @@ msgstr "Afficher l'aperçu"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Cacher l'aperçu"
 
@@ -1361,7 +1363,7 @@ msgstr "Peptides..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "Insérer un peptide"
 
@@ -1688,7 +1690,7 @@ msgstr "Propriétés des angles"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "Propriétés"
 
@@ -1702,7 +1704,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "Type"
 
@@ -1805,7 +1807,7 @@ msgstr "Z %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "Energie"
 
@@ -1878,7 +1880,7 @@ msgstr "Sélectionner par résidu"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "Nom du résidu"
 
@@ -1940,7 +1942,7 @@ msgstr "Fichiers de paramètres d'ombrage (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr "Ombrages GLSL"
 
@@ -1958,13 +1960,13 @@ msgstr "Axe Y"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "&Apparence"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "E&xporter l'image"
 
@@ -2147,7 +2149,7 @@ msgstr "Personnalis&er <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "Personnalis&er <<"
 
@@ -2163,11 +2165,11 @@ msgstr "Spectres"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Visualiser les données spectrales de calculs de chimie quantique"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Aucune intensité"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2177,11 +2179,11 @@ msgstr ""
 "pas de données  d'intensité. Les intensités ont été mises à une valeur "
 "arbitraite pour leur visualisation."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Fréquence (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "Déplacement chimique (ppm)"
 
@@ -2362,8 +2364,8 @@ msgid ""
 "for example 1 if you intend to use POV-Ray to produce a square image, like "
 "1000x1000 pixels."
 msgstr ""
-"La vue courante d'Avogadro mesure %1x%2 pixels, et a donc un rapport largeur/"
-"hauteur égal à %3.\n"
+"La vue courante d'Avogadro mesure %1x%2 pixels, et a donc un rapport "
+"largeur/hauteur égal à %3.\n"
 "Vous pouvez conserver cette valeur, par exemple si vous voulez utiliser POV-"
 "Ray\n"
 "pour produire une image de %4x1000 pixels, ou bien vous pouvez entrer toute "
@@ -2401,7 +2403,7 @@ msgstr "Appliquer"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "OK"
 
@@ -2413,7 +2415,7 @@ msgstr "Trie de %1 vibrations par fréquences..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "Commencer &L'animation"
 
@@ -2432,7 +2434,7 @@ msgstr "&Vibrations..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "Analyse vibrationnelle"
 
@@ -2751,11 +2753,6 @@ msgstr "Auto-optimisation: impossible de configurer le champ de force...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Contraintes"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Champ de force:"
@@ -2770,13 +2767,13 @@ msgstr "Algorithme:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr "Plus grande pente"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr "Gradients conjugués"
 
@@ -2809,7 +2806,7 @@ msgstr "Les atomes ignorés sont déplaçables"
 msgid "Stop"
 msgstr "Arrêter"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "Auto-optimiser molécule"
 
@@ -2863,7 +2860,7 @@ msgstr "rotation z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -3032,7 +3029,7 @@ msgstr "Paramètres des mesures"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "Ajouter atome"
 
@@ -3087,7 +3084,7 @@ msgstr "Elément:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "Autre..."
 
@@ -3236,7 +3233,7 @@ msgstr "Editeur de matrice Z..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr "Matrice Z"
 
@@ -6684,7 +6681,8 @@ msgstr "Affichage des forces et des vecteurs"
 #. i18n: file: src/extensions/vibrationdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr "Les fréquences de vibration élevées auront des mouvement plus rapides."
+msgstr ""
+"Les fréquences de vibration élevées auront des mouvement plus rapides."
 
 #. i18n: file: src/extensions/vibrationdialog.ui:110
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
@@ -6729,23 +6727,22 @@ msgstr "Effacer l'atome"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,"
-"Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,"
-"Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
-"Contributions:,Benoit Jacob,Louis Ricard,alfred002, ,Launchpad "
+",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, "
+",Launchpad Contributions:,Benoit Jacob,Louis Ricard,alfred002, ,Launchpad "
 "Contributions:,Benoit Jacob,Louis Ricard,alfred002,belbeoch, ,Launchpad "
 "Contributions:,Louis Ricard"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,"
-"psycojoker@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail."
-"com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
-"ricard@polytechnique.edu,,,nizar.kerkeni@gmail.com,,,jacob.benoit.1@gmail."
-"com,louis.ricard@polytechnique.edu,alfred002@gmail.com,,,jacob."
-"benoit.1@gmail.com,louis.ricard@polytechnique.edu,alfred002@gmail.com,"
-"simbelbeoch@hotmail.fr,,,louis.ricard@polytechnique.edu"
+"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,psycojoker"
+"@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail.com,,,jacob.be"
+"noit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizar"
+".kerkeni@gmail.com,,,jacob.benoit.1@gmail.com,louis.ricard@polytechnique.edu,"
+"alfred002@gmail.com,,,jacob.benoit.1@gmail.com,louis.ricard@polytechnique.edu"
+",alfred002@gmail.com,simbelbeoch@hotmail.fr,,,louis.ricard@polytechnique.edu"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Ouvrir fichier de ligand"
@@ -6774,9 +6771,11 @@ msgstr ""
 #~ msgid "Lin Morph..."
 #~ msgstr "Interpolation linéaire..."
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Erreur de lecture du fichier %1"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Les deux molécules n'ont pas le même nombre d'atomes: %1 contre %2"
 
@@ -6785,6 +6784,7 @@ msgstr ""
 #~ "Le widget GL n'a pas été initialisé correctement pour enregistrer les "
 #~ "instantanés"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Impossible d'enregistrer le fichier %1."
 
@@ -6798,15 +6798,17 @@ msgstr ""
 #~ "répertoire."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Nom de fichier film invalide. Il doit inclure le chemin complet du "
 #~ "répertoire et son nom, finissant en .avi"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Enregistrerait le fichier sous %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Le fichier %1 a été écrit."
 
@@ -6890,12 +6892,11 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
-#~ "Tous les atomes dont la distance à ce ligand est inférieure au rayon "
-#~ "feront partie de la poche de liaison"
+#~ "Tous les atomes dont la distance à ce ligand est inférieure au rayon feront "
+#~ "partie de la poche de liaison"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
@@ -6921,5 +6922,5 @@ msgstr ""
 #~ "Load a second conformation and compute a linear interpolation with the "
 #~ "current conformation."
 #~ msgstr ""
-#~ "Lire une deuxième conformation et calculer une interpolation linéaire "
-#~ "avec l'actuelle."
+#~ "Lire une deuxième conformation et calculer une interpolation linéaire avec "
+#~ "l'actuelle."

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-10-27 11:04+0000\n"
-"Last-Translator: Geoff Hutchison <Unknown>\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
+"PO-Revision-Date: 2010-02-04 23:37+0000\n"
+"Last-Translator: tomo <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -35,15 +35,15 @@ msgstr ""
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
-msgstr "カスタム色 :"
+msgstr "カスタムカラー:"
 
 #: src/colors/customcolor.h:43
 msgid "Custom Color"
-msgstr "カスタム色"
+msgstr "カスタムカラー"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "オブジェクトのカスタムカラーを設定"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr ""
+msgstr "第一原子からの距離によるカラー"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
@@ -557,7 +557,7 @@ msgstr "軸"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "原点に x, y, z 軸を表示"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "ボールとスティック"
 
@@ -665,13 +665,13 @@ msgstr "分子をスティックで表示"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "ファンデルワールス, 等値面 = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "電子密度, 等値面 = %L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
@@ -681,7 +681,7 @@ msgstr "%1, 等値面 = %L2"
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
-msgstr ""
+msgstr "サーフェス"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
@@ -787,32 +787,32 @@ msgstr "有効な .avi ファイル名を指定してください"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr ""
+msgstr "動画を保存するための、GLウィジェットが正しく初期化されませんでした"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr ""
+msgstr "無効な動画ファイル名. ディレクトリの完全パスを含める必要があります"
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
+msgstr "無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があります"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr ""
+msgstr "XYZ形式に設定できませんでした"
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr ""
+msgstr "トラジェクトリファイル %1 の読み込みに問題があります"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-msgstr ""
+msgstr "トラジェクトリファイル %1 の原子数が、現在の分子のものと一致しません"
 
 #: src/extensions/animationextension.h:39
 msgid "Animation"
@@ -820,7 +820,7 @@ msgstr "アニメーション"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "トラジェクトリ, 反応, 振動をアニメーションで表示"
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -837,25 +837,26 @@ msgstr "回転可能な結合数 : %1"
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr ""
+msgstr "拘束条件を追加"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
+msgstr "対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
+msgstr "対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
+msgstr "対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があります"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -882,7 +883,7 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr ""
+msgstr "パラメータファイルを開く"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
@@ -898,7 +899,7 @@ msgstr "トラジェクトリファイルのインポート"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&ジオメトリ最適化"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
@@ -907,15 +908,15 @@ msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr ""
+msgstr "力場のセットアップ"
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr ""
+msgstr "エネルギー計算"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "配座探索 ..."
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
@@ -923,64 +924,64 @@ msgstr "束縛 ..."
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr ""
+msgstr "選択を無視する"
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
-msgstr ""
+msgstr "選択した原子を固定"
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr ""
+msgstr "&分子力学"
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:206
 #: src/extensions/forcefieldextension.cpp:226
 msgid "Cannot set up the force field for this molecule."
-msgstr ""
+msgstr "この分子に力場を設定できません"
 
 #: src/extensions/forcefieldextension.cpp:191
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "エネルギー= %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:236
 msgid "Geometric Optimization"
-msgstr ""
+msgstr "構造最適化"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
-msgstr ""
+msgstr "力場最適化"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
-msgstr ""
+msgstr "システマティック・ローター検索"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
-msgstr ""
+msgstr "ランダム・ローター検索"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
-msgstr ""
+msgstr "重みづけローター検索"
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr ""
+msgstr "力場"
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
-msgstr ""
+msgstr "分子力学の力場を用いた分子の最適化と配座発生"
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1069,7 +1070,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr ""
 
@@ -1163,7 +1164,8 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
@@ -1172,7 +1174,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr ""
 
@@ -1188,7 +1190,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr ""
 
@@ -1329,7 +1331,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1636,7 +1638,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr ""
 
@@ -1648,7 +1650,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr ""
 
@@ -1751,7 +1753,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr ""
 
@@ -1824,7 +1826,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr ""
 
@@ -1886,7 +1888,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1904,13 +1906,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr ""
 
@@ -2093,7 +2095,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2109,22 +2111,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2328,7 +2330,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr ""
 
@@ -2340,7 +2342,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr ""
 
@@ -2359,7 +2361,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2650,11 +2652,6 @@ msgstr ""
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "束縛 ..."
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr ""
@@ -2669,13 +2666,13 @@ msgstr "アルゴリズム:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2708,7 +2705,7 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -2762,7 +2759,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr ""
 
@@ -2909,7 +2906,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr ""
 
@@ -2959,7 +2956,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr ""
 
@@ -3091,7 +3088,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr ""
 
@@ -6576,12 +6573,12 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
-"sourceforge.net,,,,"
+",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,"

@@ -7,50 +7,53 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"POT-Creation-Date: 2009-11-06 10:48-0500\n"
 "PO-Revision-Date: 2009-12-24 06:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
-"net>\n"
+"Last-Translator: Launchpad Translations Administrators "
+"<rosetta@launchpad.net>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "OK"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63
+#: src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr "(Ревизия git: %1)"
+msgstr "(Подверсия Git: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+"he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+"PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версия приложения: %2<br/><br/>Версия библиотеки: %3<br/"
-"><br/>Версия Open Babel: %4<br/><br/>Версия Qt: %5<br/><br/>Дополнительная "
-"информация на <a href=\"http://avogadro.openmolecules.net/\">Домашней "
-"странице Avogadro</a>.<br/><br/>Программа представлена КАК ЕСТЬ, без "
-"ВСЯЧЕСКИХ ГАРАНТИЙ, ВКЛЮЧАЯ ГАРАНТИИ ТОГО, ЧТО ОНА РАБОТАЕТ КАК ЗАДУМАНО, "
-"ПРИГОДНА ДЛЯ КАКОГО-ЛИБО ИСПОЛЬЗОВАНИЯ И ПРОДАЖИ.<br/>"
+"<h3>%1</h3><br/><br/>Версия приложения: %2<br/><br/>Версия библиотеки: "
+"%3<br/><br/>Версия Open Babel: %4<br/><br/>Версия Qt: "
+"%5<br/><br/>Дополнительная информация на <a "
+"href=\"http://avogadro.openmolecules.net/\">Домашней странице "
+"Avogadro</a>.<br/><br/>Программа представлена КАК ЕСТЬ, без ВСЯЧЕСКИХ "
+"ГАРАНТИЙ, ВКЛЮЧАЯ ГАРАНТИИ ТОГО, ЧТО ОНА РАБОТАЕТ КАК ЗАДУМАНО, ПРИГОДНА ДЛЯ "
+"КАКОГО-ЛИБО ИСПОЛЬЗОВАНИЯ И ПРОДАЖИ.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -79,7 +82,7 @@ msgstr "Удалить атомы"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
@@ -95,7 +98,7 @@ msgstr "Avogadro"
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr "Система не поддерживает OpenGL."
+msgstr "Эта система не поддерживает OpenGL."
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
@@ -110,7 +113,7 @@ msgstr "О тестировании OpenGL возможностей."
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr "Следующие возможности OpenGL обнаружены: "
+msgstr "Найденные возможности OpenGL: "
 
 #: src/main.cpp:220
 msgctxt "main.cpp"
@@ -422,74 +425,74 @@ msgstr "Не удалось вставить молекулу."
 msgid "Paste failed (format unavailable)."
 msgstr "Вставка не удалась (формат недоступен)"
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирование не удалось (mdl недоступен)"
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Просмотр %1"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Открепленные виды"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "Нормальный размер"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "Полноэкранный режим"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "Добавить"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr "Не загружены инструменты или движки."
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr "Не загружены движки."
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "Не загружены инструменты."
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -497,33 +500,33 @@ msgstr ""
 " Маловероятно, что это приложение будет работать корректно. Пожалуста "
 "исправьте эту ошибку."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "Объекты"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:2999 :321
 msgid "Colors"
 msgstr "Цвета"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " копировать"
 
-#: src/pluginsettings.cpp:53
+#: src/pluginsettings.cpp:55
 msgid "Name: "
 msgstr "Название: "
 
-#: src/pluginsettings.cpp:54
+#: src/pluginsettings.cpp:56
 msgid "Identifier: "
 msgstr "Идентификатор: "
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:57
 msgid "File: "
 msgstr "Файл: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:58
 msgid "Description:\n"
 msgstr "Описание:\n"
 
@@ -580,7 +583,7 @@ msgstr "только метки могут иметь вложенные зна�
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Объект"
 
@@ -595,7 +598,7 @@ msgstr "Низкий"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Средний"
@@ -612,7 +615,7 @@ msgstr "Неопределенный"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Нет"
@@ -764,7 +767,7 @@ msgstr "&Файл"
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr "По&следние файлы"
+msgstr "Пр&едыдущие документы"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
@@ -869,7 +872,7 @@ msgstr "Недавние"
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr "Очистить список"
+msgstr "очистить текущее"
 
 #. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1085,7 +1088,7 @@ msgstr "Сообщить об ошибке"
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Часто задаваемые вопросы"
 
 #. i18n: file: src/mainwindow.ui:615
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1159,7 +1162,7 @@ msgstr "Подробности"
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr "Элементы дерева"
+msgstr "элементы дерева"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -1211,7 +1214,8 @@ msgstr "Л"
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr "Переместить элемент вправо (как первый подэлемент следующего элемента)"
+msgstr ""
+"Переместить элемент вправо (как первый подэлемент следующего элемента)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
@@ -1241,7 +1245,7 @@ msgstr "Д"
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr "Псевдоним"
+msgstr "привязка"
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
@@ -1277,39 +1281,28 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
 "Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,"
-"Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,"
-"Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,"
-"Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
-"Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,"
-"DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,"
-"Konstantin Tokarev,Michael Rybinsky,Nkolay Parukhin,Solodukhin D.,dn2010"
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Koptev "
+"Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nkolay "
+"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr E. "
+"Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Konstantin Tokarev,Michael Rybinsky,Nkolay "
+"Parukhin,Solodukhin D.,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,panda-yuliya@mail.ru,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,annulen@yandex.ru,,parukhin@gmail.com,hippi90ub@gmail.com,"
-"dn2010@km.ru"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %"
-#~ "3<br/><br/>Дальнейшую информацию вы можете получить на <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа "
-#~ "поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых "
-#~ "гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,panda-"
+"yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@"
+"sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin"
+"@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@"
+"gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,annulen@yandex.ru,,parukhin@gmail"
+".com,hippi90ub@gmail.com,dn2010@km.ru"

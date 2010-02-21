@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
 "PO-Revision-Date: 2009-12-01 15:49+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,13 +557,14 @@ msgstr "Sumbu"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Menggambarkan sumbu x, y, dan z di titik pusat"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Bola dan Batang"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr "Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
+msgstr ""
+"Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
@@ -855,7 +856,8 @@ msgstr ""
 "atom"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Untuk menambah satu kendala ikatan, molekul anda harus mempunyai paling "
 "sedikit dua atom"
@@ -965,27 +967,27 @@ msgstr "Energi = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Optimisasi Geometrik"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "Optimisasi Bidang Gaya"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Batalkan"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Pencarian Rotor Sistimatik"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Pnecarian Rotor Acak"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Pencarian Rotor Terbeban"
 
@@ -1088,7 +1090,7 @@ msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Judul"
 
@@ -1180,7 +1182,8 @@ msgstr "Gagal menjalankan G03."
 
 #: src/extensions/gaussianinputdialog.cpp:295
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr "G03 tidak bisa dijalankan. Mungkin tidak bisa di instal dengan benar."
+msgstr ""
+"G03 tidak bisa dijalankan. Mungkin tidak bisa di instal dengan benar."
 
 #: src/extensions/gaussianinputdialog.cpp:300
 msgid "Running Gaussian calculation..."
@@ -1191,7 +1194,8 @@ msgid "G03 Crashed."
 msgstr "G03 Gagal."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian tidak bisa dijalankan dengan semestinya. Mungkin tidak di instal "
 "dengan benar."
@@ -1202,7 +1206,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Mengeluarkan Pratampilan"
 
@@ -1218,7 +1222,7 @@ msgstr "Mengeluarkan Pratampilan"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Menyembunyikan Pratampilan"
 
@@ -1359,7 +1363,7 @@ msgstr "Peptide..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "Sisipkan Peptide"
 
@@ -1450,7 +1454,8 @@ msgstr "MOPAC gagal dijalankan."
 
 #: src/extensions/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
+msgstr ""
+"MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
 
 #: src/extensions/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
@@ -1682,7 +1687,7 @@ msgstr "Properti Conformer"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "Berbagai Properti"
 
@@ -1696,7 +1701,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "Tipe"
 
@@ -1799,7 +1804,7 @@ msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "Energi"
 
@@ -1872,7 +1877,7 @@ msgstr "Pilih berdasarkan residu"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "Nama residu"
 
@@ -1934,7 +1939,7 @@ msgstr "berkas parameter shader (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr "GLSL Shader"
 
@@ -1952,13 +1957,13 @@ msgstr "Sumbu Y"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "Pen&ampilan"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "Ek&spor Gambar"
 
@@ -2141,7 +2146,7 @@ msgstr "Tutup Pengaturan <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "&Buka Pengaturan >>"
 
@@ -2157,11 +2162,11 @@ msgstr "Spektra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Memvisualisasikan data spektral dari perhitungan kimia kuantum"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Tanpa intensitas"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2170,11 +2175,11 @@ msgstr ""
 "Data getaran di molekul yang anda tambahkan tidak mempunyai data intensitas. "
 "Sembarang angka diberikan sebagai intensitas untuk tujuan penggambaran."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Nomor gelombang (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2391,7 +2396,7 @@ msgstr "Terapkan"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "Oke"
 
@@ -2403,7 +2408,7 @@ msgstr "Mengurutkan getaran %1 berdasarkan frekuensi..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "Memulai &Animasi"
 
@@ -2422,7 +2427,7 @@ msgstr "&Getaran..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "Analisis Getaran"
 
@@ -2732,11 +2737,6 @@ msgstr "AutoOpt: Tidak bisa mengatur bidang gaya...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Kendala"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Bidang Gaya:"
@@ -2751,13 +2751,13 @@ msgstr "Algoritma:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr "Cara Steepest Descent"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr "Cara Conjugate Gradients"
 
@@ -2790,7 +2790,7 @@ msgstr "Atom-atom yang lain dapat dipindahkan"
 msgid "Stop"
 msgstr "Berhenti"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "AutoOpt Molekul"
 
@@ -2844,7 +2844,7 @@ msgstr "rotasi z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Tata Ulang"
 
@@ -3006,7 +3006,7 @@ msgstr "Pengaturan Pengukuran"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "Tambah Atom"
 
@@ -3060,7 +3060,7 @@ msgstr "Unsur:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "Lainnya..."
 
@@ -3206,7 +3206,7 @@ msgstr "Penyunting Matriks Z"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr "Matriks-Z"
 
@@ -6098,7 +6098,8 @@ msgstr "Perintah:"
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
+msgstr ""
+"Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
@@ -6700,9 +6701,9 @@ msgstr "Hapus Atom"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:,"
-"Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Waluyo Adi "
-"Siswanto"
+",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad "
+"Contributions:,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
+"Contributions:,Waluyo Adi Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -6726,24 +6727,29 @@ msgstr ",,,,,,,,,"
 #~ msgid "Save Movie File"
 #~ msgstr "Simpan Berkas Film"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Tidak bisa menyimpan berkas %1."
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Gagal membaca berkas mol %1."
 
 #~ msgid "Linear Morph"
 #~ msgstr "Linear Morph"
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Sudah menulis berkas %1."
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Akan menulis berkas ke %1."
 
 #~ msgid "Open mol file"
 #~ msgstr "Buka berkas mol"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
 
@@ -6755,8 +6761,8 @@ msgstr ",,,,,,,,,"
 #~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap, "
 #~ "diakhiri dengan .avi"
@@ -6768,8 +6774,7 @@ msgstr ",,,,,,,,,"
 #~ msgstr "Buka berkas ligand"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
@@ -6866,8 +6871,8 @@ msgstr ",,,,,,,,,"
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
 #~ "then be used to make a movie."
 #~ msgstr ""
-#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas "
-#~ "ini dapat digunakan untuk membuat filem."
+#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas ini "
+#~ "dapat digunakan untuk membuat filem."
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"

@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2010-01-14 15:00+0000\n"
-"Last-Translator: Balázs Attila <battila9@freemail.hu>\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
+"PO-Revision-Date: 2010-01-28 11:39+0000\n"
+"Last-Translator: Csörföly Dániel <csorfolydaniel@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -24,7 +24,7 @@ msgstr "Szín index szerint"
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
 msgstr ""
-"Szín index szerint (piros, narancssárga, citromsárga, zöld, kék,  lila)"
+"Szín index szerint (piros, narancssárga, citromsárga, zöld, kék, lila)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -44,7 +44,7 @@ msgstr "Egyedi szín"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "Saját színek beállítása objektumokra"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -64,11 +64,11 @@ msgstr "Színek elemek szerint (szén = zöld, oxigén = piros, ...)."
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr "Szín maradék szerint"
+msgstr "Szín molekularész szerint"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr ""
+msgstr "Szín molekularész szerint (aminosav-típus, hidrofobicitás, ..."
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -558,7 +558,7 @@ msgstr "Tengelyek"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "x,y, és z tengelyek renderelése a kiinduláshoz"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Golyók és pálcikák"
 
@@ -580,15 +580,15 @@ msgstr "Dipól"
 
 #: src/engines/dipoleengine.h:43
 msgid "Renders molecular dipole moments"
-msgstr ""
+msgstr "Molekula dipólusmomentumainak megjelenítése."
 
 #: src/engines/forceengine.h:38
 msgid "Force"
-msgstr ""
+msgstr "Erő"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr ""
+msgstr "Megjeleníti az erőeltolódásokat az atomokon."
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
@@ -612,7 +612,7 @@ msgstr "Átfedés"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
-msgstr ""
+msgstr "Színskála megjelenítése a gradienseken"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -628,7 +628,7 @@ msgstr "Szalag"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
-msgstr ""
+msgstr "A fehérjevázat szalagként jelenítse meg."
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
@@ -636,15 +636,16 @@ msgstr "Gyűrű"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
-msgstr ""
+msgstr "A gyűrűket színes síkoknak mutatja"
 
 #: src/engines/simplewireengine.h:37
 msgid "Simple Wireframe"
-msgstr ""
+msgstr "Egyszerű drótváz"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
 msgstr ""
+"a kötéseket drótként (vonalként) mutatja, ideális nagy molekulák esetén"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
@@ -666,7 +667,7 @@ msgstr "Molekulák és pálcák rajzolása"
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "van der Waals, izofelület = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
@@ -686,7 +687,7 @@ msgstr "Felületek"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Molekuláris izofelület-vázak megjelenítése"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -695,6 +696,7 @@ msgstr "Drótváz"
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
+"A kötéseket pálcikáknak mutatja, ez ideális nagyon nagy (bio)molekulák esetén"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -789,10 +791,13 @@ msgstr "Határozza meg az .avi fájl pontos nevét"
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
 msgstr ""
+"GL widget nincs megfelelően inicializálva ezért a video mentése nem "
+"lehetséges."
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr "Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat."
+msgstr ""
+"Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat."
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
@@ -804,7 +809,7 @@ msgstr ""
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr ""
+msgstr "XYZ formátum nem állítható be."
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
@@ -824,7 +829,7 @@ msgstr "Animáció"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "Animált trajektóriák, reakciók és vibrációk."
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -834,7 +839,7 @@ msgstr "Atomok száma: %1"
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr ""
+msgstr "Az elforduló kötések száma: %1"
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
@@ -850,7 +855,8 @@ msgstr ""
 "hozzá lehessen adni."
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "A molekulának muszáj tartalmaznia legalább két hogy kötés megszorításokat "
 "hozzá lehessen adni."
@@ -866,6 +872,8 @@ msgstr ""
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
 msgstr ""
+"A molekulának legalább négy atomot kell tartalmaznia hogy térszög "
+"megszorítást lehessen hozzáadni."
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -917,7 +925,7 @@ msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr ""
+msgstr "Erőtér beállítása..."
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
@@ -929,7 +937,7 @@ msgstr "Konformerek keresése..."
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
-msgstr ""
+msgstr "Megszorítások..."
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
@@ -947,7 +955,7 @@ msgstr "&molekula mechanika"
 #: src/extensions/forcefieldextension.cpp:206
 #: src/extensions/forcefieldextension.cpp:226
 msgid "Cannot set up the force field for this molecule."
-msgstr ""
+msgstr "Nem lehet erőteret beállítani erre a molekulára."
 
 #: src/extensions/forcefieldextension.cpp:191
 #, qt-format
@@ -958,58 +966,60 @@ msgstr "Energia = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Geometria Optimalizálás"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
-msgstr ""
+msgstr "Erőtér optimalizálás"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
-msgstr ""
+msgstr "Szisztematikus forgópont-keresés"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
-msgstr ""
+msgstr "Véletlenszerű forgópont-keresés"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
-msgstr ""
+msgstr "Súlyozott forgópont-keresés"
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr ""
+msgstr "erőtér"
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
 msgstr ""
+"Molekulageometria optimalizálása és konformerek létrehozása a molekuláris "
+"mechanikai erőterek használatával."
 
 #: src/extensions/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
-msgstr ""
+msgstr "QM-egyezések"
 
 #: src/extensions/gamessextension.cpp:65
 msgid "Input Generator..."
-msgstr ""
+msgstr "Bemenet-generátor..."
 
 #: src/extensions/gamessextension.cpp:70
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP kiválasztás..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM választás..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1079,47 +1089,54 @@ msgstr "Kimeneti fájl generálása GAMESS kvantum kémiai csomaghoz"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Cím"
 
 #: src/extensions/gamessinputdialog.cpp:1534
 msgid "Advanced Settings Changed"
-msgstr ""
+msgstr "A speciális beállítások megváltoztak"
 
 #: src/extensions/gamessinputdialog.cpp:1535
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
 msgstr ""
+"A speciális beállítások megváltoztak.\n"
+"Biztos ne mentsük?"
 
 #: src/extensions/gamessinputdialog.cpp:1556
 msgid "Advanced Settings Reset"
-msgstr ""
+msgstr "Speciális beállítások visszaállítása"
 
 #: src/extensions/gamessinputdialog.cpp:1557
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
 msgstr ""
+"Biztos, hogy visszaállítod a speciális beállításokat?\n"
+"Minden változtatás el fog veszni!"
 
 #: src/extensions/gamessinputdialog.cpp:1569
 msgid "Basic Settings Reset"
-msgstr ""
+msgstr "Alapbeállítások visszaállítása az eredeti értékre."
 
 #: src/extensions/gamessinputdialog.cpp:1570
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
+"Biztos vagy benne hogy visszaállítod az alapértelmezett beállításokra az "
+"alapbeállításokat?\n"
+"Minden beállításod elveszik."
 
 #: src/extensions/gamessinputdialog.cpp:1642
 msgid "Export Input Deck"
-msgstr ""
+msgstr "Beviteli panel exportálása"
 
 #: src/extensions/gamessinputdialog.cpp:1643
 msgid "GAMESS Input Deck (*.inp)"
-msgstr ""
+msgstr "GAMESS beviteli panel (*.inp)"
 
 #: src/extensions/gaussianinputdialog.cpp:195
 msgid "Gaussian Input Deck Generator Warning"
@@ -1133,11 +1150,11 @@ msgstr ""
 
 #: src/extensions/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
-msgstr ""
+msgstr "Gauss-i beviteli panel mentése"
 
 #: src/extensions/gaussianinputdialog.cpp:240
 msgid "Gaussian Input Deck (*.com)"
-msgstr ""
+msgstr "Gauss-i beviteli panel (*.com)"
 
 #: src/extensions/gaussianinputdialog.cpp:268
 msgid "Gaussian Running."
@@ -1170,10 +1187,11 @@ msgstr "Gaussian kalkuláci fut."
 
 #: src/extensions/gaussianinputdialog.cpp:335
 msgid "G03 Crashed."
-msgstr ""
+msgstr "A G03 összeomlott."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussian nem fut megfelelően,  talán nincs installálva megfelelően."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
@@ -1182,7 +1200,7 @@ msgstr "Gaussian nem fut megfelelően,  talán nincs installálva megfelelően."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Előnézet megjelenítése"
 
@@ -1198,7 +1216,7 @@ msgstr "Előnézet megjelenítése"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "A gyorsnézet elrejtése"
 
@@ -1218,7 +1236,7 @@ msgstr "&Felépítés"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
-msgstr ""
+msgstr "H metilcsoportra"
 
 #: src/extensions/h2methylextension.h:37
 msgid "H2Methyl"
@@ -1240,7 +1258,7 @@ msgstr "Hidrogének hozzáadása pH szerint..."
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
 msgid "Remove Hydrogens"
-msgstr ""
+msgstr "Hidrogének eltávolítása"
 
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
@@ -1253,7 +1271,7 @@ msgstr "pH"
 
 #: src/extensions/hydrogensextension.h:40
 msgid "Hydrogens"
-msgstr ""
+msgstr "Hidrogénatomok"
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
@@ -1291,92 +1309,92 @@ msgstr "Kimeneti fájl generátor"
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Beviteli fájlok létrehozása kvantumkémiai csomagok számára"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
-msgstr ""
+msgstr "Könyvtár megnyitása"
 
 #: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
-msgstr ""
+msgstr "Töredék..."
 
 #: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
-msgstr ""
+msgstr "SMILES..."
 
 #: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
-msgstr ""
+msgstr "&Beszúrás"
 
 #: src/extensions/insertfragmentextension.cpp:104
 #: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
-msgstr ""
+msgstr "SMILES beillesztése"
 
 #: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
-msgstr ""
+msgstr "SMILES-töredék beillesztése"
 
 #. i18n: file: src/extensions/insertfragmentdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
 #: src/extensions/insertfragmentextension.cpp:171
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
-msgstr ""
+msgstr "Molekulatöredék beillesztése"
 
 #: src/extensions/insertfragmentextension.h:35
 msgid "Insert molecular fragments for building larger molecules"
-msgstr ""
+msgstr "Molekulatöredék beillesztése nagyobb molekulák létrehozásához."
 
 #: src/extensions/insertpeptideextension.cpp:58
 msgid "Peptide..."
-msgstr ""
+msgstr "Peptid..."
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, InsertPeptideDialog)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
-msgstr ""
+msgstr "Peptid beillesztése"
 
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
-msgstr ""
+msgstr "Oligopeptid-szekvencia  beillesztése"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
-msgstr ""
+msgstr "Molekula tulajdonságai..."
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:107 src/extensions/propextension.cpp:113
 msgid "&View"
-msgstr ""
+msgstr "Né&zet"
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:113
 msgid "&Properties"
-msgstr ""
+msgstr "&Tulajdonságok"
 
 #: src/extensions/molecularpropextension.cpp:134
 msgid "Estimated Dipole Moment (D):"
-msgstr ""
+msgstr "Becsült dipólusmomentum (D):"
 
 #: src/extensions/molecularpropextension.h:49
 msgid "Molecular Properties"
-msgstr ""
+msgstr "Molekula tulajdonságai"
 
 #: src/extensions/molecularpropextension.h:50
 msgid "Display standard molecular properties."
-msgstr ""
+msgstr "Standard molekulatulajdonságok megjelenítése"
 
 #: src/extensions/molproinputdialog.cpp:114
 #: src/extensions/qcheminputdialog.cpp:114
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Q-Chem beviteli panel generátor figyelmeztetés"
 
 #: src/extensions/molproinputdialog.cpp:115
 #: src/extensions/qcheminputdialog.cpp:115
@@ -1387,15 +1405,15 @@ msgstr ""
 
 #: src/extensions/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
-msgstr ""
+msgstr "Molpro beviteli panel mentése"
 
 #: src/extensions/molproinputdialog.cpp:163
 msgid "Molpro Input Deck (*.qcin)"
-msgstr ""
+msgstr "Molpro beviteli panel (*.qcin)"
 
 #: src/extensions/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "MOPAC-bevitel figyelmeztetés"
 
 #: src/extensions/mopacinputdialog.cpp:133
 msgid ""
@@ -1405,116 +1423,116 @@ msgstr ""
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
-msgstr ""
+msgstr "A MOPAC fut"
 
 #: src/extensions/mopacinputdialog.cpp:175
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr ""
+msgstr "A MOPAC már fut. Várd meg amíg az előző számítás befejeződik."
 
 #: src/extensions/mopacinputdialog.cpp:185
 msgid "MOPAC Not Installed."
-msgstr ""
+msgstr "A MOPAC nincs telepítve."
 
 #: src/extensions/mopacinputdialog.cpp:186
 msgid "The MOPAC executable, cannot be found."
-msgstr ""
+msgstr "A MOPAC futtatható fájlt nem találom."
 
 #: src/extensions/mopacinputdialog.cpp:200
 msgid "MOPAC failed to start."
-msgstr ""
+msgstr "A MOPAC indítása nem sikerült."
 
 #: src/extensions/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "A MOPAC nem indult el. Lehet hogy nincs megfelelően telepítve."
 
 #: src/extensions/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
-msgstr ""
+msgstr "MOPAC-számítás indítása..."
 
 #: src/extensions/mopacinputdialog.cpp:241
 msgid "MOPAC Crashed."
-msgstr ""
+msgstr "A MOPAC összeomlott."
 
 #: src/extensions/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "A MOPAC nem fut megfelelő módon. Lehet hogy nincs jól telepítve."
 
 #: src/extensions/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
-msgstr ""
+msgstr "MOPAC beviteli panel mentése"
 
 #: src/extensions/mopacinputdialog.cpp:295
 msgid "MOPAC Input Deck (*.mop)"
-msgstr ""
+msgstr "MOPAC beviteli panel (*.mop)"
 
 #: src/extensions/networkfetchextension.cpp:52
 msgid "Fetch from PDB..."
-msgstr ""
+msgstr "Betöltés PDB-ből..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "Kémiai szerkezet betöltése..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
-msgstr ""
+msgstr "Betöltés URL-ről..."
 
 #: src/extensions/networkfetchextension.cpp:95
 msgid "PDB Entry"
-msgstr ""
+msgstr "PDB bejegyzés"
 
 #: src/extensions/networkfetchextension.cpp:96
 msgid "PDB entry to download."
-msgstr ""
+msgstr "Letöltendő PDB bejegyzés"
 
 #: src/extensions/networkfetchextension.cpp:110
 msgid "Chemical Name"
-msgstr ""
+msgstr "Kémiai név"
 
 #: src/extensions/networkfetchextension.cpp:111
 msgid "Chemical structure to download."
-msgstr ""
+msgstr "Letöltendő kémiai szerkezet."
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/extensions/networkfetchextension.cpp:127
 msgid "URL of molecule to download."
-msgstr ""
+msgstr "Letöltendő molekula URL-je."
 
 #: src/extensions/networkfetchextension.cpp:164
 #: src/extensions/networkfetchextension.cpp:175
 #: src/extensions/networkfetchextension.cpp:195
 msgid "Network Download Failed"
-msgstr ""
+msgstr "Hálózati letöltés megszakadt."
 
 #: src/extensions/networkfetchextension.cpp:165
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Hálózati időtúllépés vagy más probléma."
 
 #: src/extensions/networkfetchextension.cpp:176
 #, qt-format
 msgid "Specified molecule could not be found: %1"
-msgstr ""
+msgstr "A megadott molekulát nem találtam: %1"
 
 #: src/extensions/networkfetchextension.cpp:196
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
-msgstr ""
+msgstr "A megadott molekulát nem lehet betölteni: %1"
 
 #: src/extensions/networkfetchextension.h:39
 msgid "Network Fetch"
-msgstr ""
+msgstr "Hálózati letöltés"
 
 #: src/extensions/networkfetchextension.h:40
 msgid "Fetch molecule files over the network."
-msgstr ""
+msgstr "Molekulafájlok letöltése a hálózatról."
 
 #: src/extensions/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
-msgstr ""
+msgstr "NWChem beviteli panel generátor figyelmeztetés"
 
 #: src/extensions/nwcheminputdialog.cpp:122
 msgid ""
@@ -1524,39 +1542,39 @@ msgstr ""
 
 #: src/extensions/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
-msgstr ""
+msgstr "NWChem beviteli panel mentése"
 
 #: src/extensions/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
-msgstr ""
+msgstr "NWChem beviteli panel (*.nw)"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
-msgstr ""
+msgstr "POV-Ray által létrehozott kép tárolása"
 
 #: src/extensions/povraydialog.cpp:152
 msgid "Image files (*.png *.pbm)"
-msgstr ""
+msgstr "Képfájlok (*.png *.pbm)"
 
 #: src/extensions/povrayextension.cpp:49
 msgid "POV-Ray..."
-msgstr ""
+msgstr "POV-Ray..."
 
 #: src/extensions/povrayextension.cpp:64
 msgid "Export"
-msgstr ""
+msgstr "Exportálás"
 
 #: src/extensions/povrayextension.cpp:130
 msgid "No filename supplied."
-msgstr ""
+msgstr "Nincs megadva fájlnév."
 
 #: src/extensions/povrayextension.cpp:131
 msgid "No valid filename was supplied."
-msgstr ""
+msgstr "Nincs megadva érvényes fájlnév."
 
 #: src/extensions/povrayextension.cpp:136
 msgid "Does not compute."
-msgstr ""
+msgstr "Számítás nem fut."
 
 #: src/extensions/povrayextension.cpp:137
 msgid ""
@@ -1568,648 +1586,657 @@ msgstr ""
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
 msgid "Cannot Write to File."
-msgstr ""
+msgstr "Nem tud írni fájlba."
 
 #: src/extensions/povrayextension.cpp:160
 #: src/extensions/povrayextension.cpp:183
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
+msgstr "Nem tud írni %1 fájlba. Van írási engedélyed erre a helyre?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
-msgstr ""
+msgstr "POV-Ray nem indult el."
 
 #: src/extensions/povrayextension.cpp:177
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
 msgstr ""
+"A POV-Ray nem indult el. Lehetséges hogy nem lett megfelelően megadva az "
+"útvonal a futtatható fájlhoz."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
-msgstr ""
+msgstr "POV-Ray"
 
 #: src/extensions/povrayextension.h:41
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
 msgstr ""
+"POV-Ray fájlok létrehozása és megjelenítése a parancssori POV-Ray programmal"
 
 #: src/extensions/propextension.cpp:64
 msgid "Atom Properties..."
-msgstr ""
+msgstr "Atom tulajdonságai..."
 
 #: src/extensions/propextension.cpp:69
 msgid "Bond Properties..."
-msgstr ""
+msgstr "Kötés tulajdonságai..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr ""
+msgstr "Szög tulajdonságai..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
-msgstr ""
+msgstr "Torzió tulajdonságai..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "Konformer tulajdonságai..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Cartesian Editor..."
-msgstr ""
+msgstr "Descartes-i szerkesztő"
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr ""
+msgstr "Atom tulajdonságai"
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
-msgstr ""
+msgstr "Kötés tulajdonságai"
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr ""
+msgstr "Szög tulajdonságai"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
-msgstr ""
+msgstr "Torzió tulajdonságai"
 
 #: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
-msgstr ""
+msgstr "Descartes-féle tulajdonságok"
 
 #: src/extensions/propextension.cpp:246
 msgid "Conformer Properties"
-msgstr ""
+msgstr "Konformer tulajdonságai"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
-msgstr ""
+msgstr "Tulajdonságok"
 
 #: src/extensions/propextension.h:44
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
+"Atom, kötés, szög és torziós tulajdonságokat mutató ablak. Tartalmaz "
+"Descartes-i koorinátaszerkesztőt is."
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: src/extensions/propmodel.cpp:357
 msgid "Element"
-msgstr ""
+msgstr "Elem"
 
 #: src/extensions/propmodel.cpp:359
 msgid "Valence"
-msgstr ""
+msgstr "Vegyérték"
 
 #: src/extensions/propmodel.cpp:361
 msgid "Formal Charge"
-msgstr ""
+msgstr "Formális töltés"
 
 #: src/extensions/propmodel.cpp:363
 msgid "Partial Charge"
-msgstr ""
+msgstr "Részleges töltés"
 
 #: src/extensions/propmodel.cpp:366 src/extensions/propmodel.cpp:422
 #, qt-format
 msgid "Atom %1"
-msgstr ""
+msgstr "Atom %1"
 
 #: src/extensions/propmodel.cpp:371 src/extensions/propmodel.cpp:388
 msgid "Start Atom"
-msgstr ""
+msgstr "Első atom"
 
 #: src/extensions/propmodel.cpp:373 src/extensions/propmodel.cpp:392
 msgid "End Atom"
-msgstr ""
+msgstr "Utolsó atom"
 
 #: src/extensions/propmodel.cpp:375
 msgid "Bond Order"
-msgstr ""
+msgstr "Kötésrend"
 
 #: src/extensions/propmodel.cpp:377
 msgid "Rotatable"
-msgstr ""
+msgstr "Forgatható"
 
 #: src/extensions/propmodel.cpp:379
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
-msgstr ""
+msgstr "Hossz %1"
 
 #: src/extensions/propmodel.cpp:383
 #, qt-format
 msgid "Bond %1"
-msgstr ""
+msgstr "Kötés %1"
 
 #: src/extensions/propmodel.cpp:390
 msgid "Vertex"
-msgstr ""
+msgstr "Csúcs"
 
 #: src/extensions/propmodel.cpp:394
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "Szög %1"
 
 #: src/extensions/propmodel.cpp:397
 #, qt-format
 msgid "Angle %1"
-msgstr ""
+msgstr "Szög %1"
 
 #: src/extensions/propmodel.cpp:405
 #, qt-format
 msgid "Atom Index %1"
-msgstr ""
+msgstr "Atommutató %1"
 
 #: src/extensions/propmodel.cpp:407
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
-msgstr ""
+msgstr "Torzió %1"
 
 #: src/extensions/propmodel.cpp:410
 #, qt-format
 msgid "Torsion %1"
-msgstr ""
+msgstr "Torzió %1"
 
 #: src/extensions/propmodel.cpp:415
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
-msgstr ""
+msgstr "X %1"
 
 #: src/extensions/propmodel.cpp:417
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
-msgstr ""
+msgstr "Y %1"
 
 #: src/extensions/propmodel.cpp:419
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
-msgstr ""
+msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 #: src/extensions/propmodel.cpp:430 src/moleculefile.cpp:723
 #, qt-format
 msgid "Conformer %1"
-msgstr ""
+msgstr "Konformer %1"
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
 #: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
 msgid "Python Terminal"
-msgstr ""
+msgstr "Python terminál"
 
 #: src/extensions/pythonterminal.cpp:71
 msgid "pythonTerminalDock"
-msgstr ""
+msgstr "Python terminál ablak"
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
-msgstr ""
+msgstr "Interaktív Python parancsnyelvi terminál"
 
 #: src/extensions/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
-msgstr ""
+msgstr "QChem beviteli panel mentése"
 
 #: src/extensions/qcheminputdialog.cpp:163
 msgid "QChem Input Deck (*.qcin)"
-msgstr ""
+msgstr "QChem beviteli panel (*.qcin)"
 
 #: src/extensions/selectextension.cpp:68
 msgid "&Invert Selection"
-msgstr ""
+msgstr "&Kijelölés megfordítása"
 
 #: src/extensions/selectextension.cpp:73
 msgid "Select SMARTS..."
-msgstr ""
+msgstr "SMARTS kijelölés..."
 
 #: src/extensions/selectextension.cpp:78
 msgid "Select by Element..."
-msgstr ""
+msgstr "Kijelölés elem szerent..."
 
 #: src/extensions/selectextension.cpp:83
 msgid "Select by Residue..."
-msgstr ""
+msgstr "Kijelölés molekularész szerint..."
 
 #: src/extensions/selectextension.cpp:88
 msgid "Select Solvent"
-msgstr ""
+msgstr "Oldószer választás"
 
 #: src/extensions/selectextension.cpp:98
 msgid "Add Named Selection..."
-msgstr ""
+msgstr "Megnevezett kijelölés hozzáadása..."
 
 #: src/extensions/selectextension.cpp:114
 msgid "&Select"
-msgstr ""
+msgstr "&Kijelölés"
 
 #: src/extensions/selectextension.cpp:170
 msgid "SMARTS Selection"
-msgstr ""
+msgstr "SMARTS kijelölés"
 
 #: src/extensions/selectextension.cpp:171
 msgid "SMARTS pattern to select"
-msgstr ""
+msgstr "Kijelölendő SMARTS-minta"
 
 #: src/extensions/selectextension.cpp:230
 msgid "Select by residue"
-msgstr ""
+msgstr "Kijelölés molekularész szerint"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
-msgstr ""
+msgstr "Molekularész neve"
 
 #: src/extensions/selectextension.cpp:276
 msgid "There is no current selection."
-msgstr ""
+msgstr "Jelenleg nincs kijelölés."
 
 #: src/extensions/selectextension.cpp:282
 msgid "Add Named Selection"
-msgstr ""
+msgstr "Megnevezett kijelölés hozzáadása"
 
 #: src/extensions/selectextension.cpp:282
 msgid "name"
-msgstr ""
+msgstr "név"
 
 #: src/extensions/selectextension.cpp:288
 msgid "Name cannot be empty."
-msgstr ""
+msgstr "A név nem lehet üres."
 
 #: src/extensions/selectextension.cpp:294
 msgid "There is already a selection with this name."
-msgstr ""
+msgstr "Van már kijelölés ezzel a névvel."
 
 #: src/extensions/selectextension.h:41
 msgid "Selections"
-msgstr ""
+msgstr "Kijelölések"
 
 #: src/extensions/selectextension.h:42
 msgid "Select atoms, bonds, residues..."
-msgstr ""
+msgstr "Atomok, kötések, molekularészek kijelölése..."
 
 #: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
-msgstr ""
+msgstr "GLSL árnyékolók..."
 
 #: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
-msgstr ""
+msgstr "Csúcs árnyékoló forrásfájl megnyitása"
 
 #: src/extensions/shaderextension.cpp:322
 msgid "Vertex shader files (*.vert)"
-msgstr ""
+msgstr "Csúcs árnyékoló fájlok (*.vert)"
 
 #: src/extensions/shaderextension.cpp:342
 msgid "Open a fragment shader source file"
-msgstr ""
+msgstr "Molekularész árnyékoló forrásfájl megnyitása"
 
 #: src/extensions/shaderextension.cpp:343
 msgid "Fragment shader files (*.frag)"
-msgstr ""
+msgstr "Molekularész árnyékoló fájlok (*.frag)"
 
 #: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
-msgstr ""
+msgstr "Árnyékoló paraméterfájl megnyitása"
 
 #: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
-msgstr ""
+msgstr "Árnyékoló paraméterfájlok (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
-msgstr ""
+msgstr "GLSL árnyékolók"
 
 #: src/extensions/shaderextension.h:42
 msgid "Load and use OpenGL 2.0 GLSL shaders"
-msgstr ""
+msgstr "OpenGL 2.0 GLSL árnyékolók betöltése és használata"
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "X tengely"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Y tengely"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
-msgstr ""
+msgstr "Meg&jelenés"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
-msgstr ""
+msgstr "Kép e&xportálása"
 
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "Infravörös"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
-msgstr ""
+msgstr "&Infravörös spektumok beállítása"
 
 #: src/extensions/spectradialog.cpp:165
 msgctxt "NMR spectra option"
 msgid "NMR"
-msgstr ""
+msgstr "NMR"
 
 #: src/extensions/spectradialog.cpp:166
 msgid "&NMR Spectra Settings"
-msgstr ""
+msgstr "&NMR spektumok beállítása"
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
-msgstr ""
+msgstr "Nincs adat"
 
 #: src/extensions/spectradialog.cpp:250
 msgid "Dark"
-msgstr ""
+msgstr "Sötét"
 
 #: src/extensions/spectradialog.cpp:261
 msgid "Light"
-msgstr ""
+msgstr "Világos"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
-msgstr ""
+msgstr "Publikálás"
 
 #: src/extensions/spectradialog.cpp:283
 msgid "Handdrawn"
-msgstr ""
+msgstr "Kézzel rajzolt"
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "Új séma"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
-msgstr ""
+msgstr "Séma eltávolításának megerősítése"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "Tényleg eltávolítod a jelenlegi sémát?"
 
 #: src/extensions/spectradialog.cpp:327
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "Séma nevének megváltoztatása"
 
 #: src/extensions/spectradialog.cpp:328
 msgid "Enter new name for current scheme:"
-msgstr ""
+msgstr "Adj meg egy új nevet a jelenlegi sémának."
 
 #: src/extensions/spectradialog.cpp:428
 msgid "Export Calculated Spectrum"
-msgstr ""
+msgstr "Számított spektrum exportálása"
 
 #: src/extensions/spectradialog.cpp:428 src/extensions/vibrationdialog.cpp:227
 msgid "Tab Separated Values (*.tsv)"
-msgstr ""
+msgstr "Tabulátorral elválasztott értékek (*.tsv)"
 
 #: src/extensions/spectradialog.cpp:452
 msgid "Tab Separated Values"
-msgstr ""
+msgstr "Tabulátorral elválasztott értékek"
 
 #: src/extensions/spectradialog.cpp:453
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "Vesszővel elválasztott értékek (CSV)"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
 #: src/extensions/spectradialog.cpp:647
 msgid "All Files"
-msgstr ""
+msgstr "Minden fájl"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
-msgstr ""
+msgstr "Spektrum importálása"
 
 #: src/extensions/spectradialog.cpp:483
 msgid "Spectra Import"
-msgstr ""
+msgstr "Spektrum importálása"
 
 #: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
-msgstr ""
+msgstr "Ismeretlen kiterjesztés: %1"
 
 #: src/extensions/spectradialog.cpp:529
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
-msgstr ""
+msgstr "PWscf IR adatok (*.out)"
 
 #: src/extensions/spectradialog.cpp:530
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
-msgstr ""
+msgstr "Turbomole IR adatok (control)"
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
-msgstr ""
+msgstr "Adatformátum"
 
 #: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "Formátum:"
 
 #: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
-msgstr ""
+msgstr "Spektrumadatok betöltése"
 
 #: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "Portable Network Graphics (PNG)"
 
 #: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "TIFF (Tagged Image File Format)"
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
-msgstr ""
+msgstr "Windows bittérkép"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
-msgstr ""
+msgstr "hordozható pixeltérkép"
 
 #: src/extensions/spectradialog.cpp:645
 msgid "X11 Bitmap"
-msgstr ""
+msgstr "X11 bittérkép"
 
 #: src/extensions/spectradialog.cpp:646
 msgid "X11 Pixmap"
-msgstr ""
+msgstr "X11 pixeltérkép"
 
 #: src/extensions/spectradialog.cpp:650
 msgid "Save Spectra Image"
-msgstr ""
+msgstr "Spektrumkép mentése"
 
 #: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
-msgstr ""
+msgstr "Érvénytelen fájlnév"
 
 #: src/extensions/spectradialog.cpp:701
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #: src/extensions/spectradialog.cpp:701
 #, qt-format
 msgid "A problem occurred while writing file %1"
-msgstr ""
+msgstr "Probléma merült fel %1 írása közben."
 
 #: src/extensions/spectradialog.cpp:703
 msgid "Success!"
-msgstr ""
+msgstr "Sikerült!"
 
 #: src/extensions/spectradialog.cpp:703
 #, qt-format
 msgid "Image successfully written to %1"
-msgstr ""
+msgstr "Képet sikerült elmenteni %1 néven."
 
 #: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
-msgstr ""
+msgstr "&Testreszabás <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
-msgstr ""
+msgstr "&Testreszabás >>"
 
 #: src/extensions/spectraextension.cpp:49
 msgid "&Spectra..."
-msgstr ""
+msgstr "&Spektrumok..."
 
 #: src/extensions/spectraextension.h:39
 msgid "Spectra"
-msgstr ""
+msgstr "Spektrumok"
 
 #: src/extensions/spectraextension.h:40
 msgid "Visualize spectral data from quantum chemistry calculations"
-msgstr ""
+msgstr "Kvantumkémiai számításokból származó spektrumadatok megjelenítése"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
-msgstr ""
+msgstr "Nincs intenzitás"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
+"A feltöltött molekula rezgési adatai nem tartalmaznak intenzitás értékeket. "
+"Az intenzitásokat tetszőleges értékekre állítottam a vizualizáció miatt."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
-msgstr ""
+msgstr "Hullámszám (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
-msgstr ""
+msgstr "Eltolódás (ppm)"
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
-msgstr ""
+msgstr "Szupercella építő..."
 
 #: src/extensions/supercellextension.cpp:91
 msgid "Warning"
-msgstr ""
+msgstr "Figyelmeztetés"
 
 #: src/extensions/supercellextension.cpp:92
 msgid ""
 "This document is currently an isolated molecule. You need to create a unit "
 "cell."
 msgstr ""
+"A dokumentum jelenleg egy izolált molekulát tartalmaz. Létre kell hozni egy "
+"egységcellát."
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
-msgstr ""
+msgstr "Szupercella"
 
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
-msgstr ""
+msgstr "Krisztallográfiai szupercella építése és megjelenítése"
 
 #: src/extensions/surfacedialog.cpp:74 src/extensions/surfacedialog.cpp:75
 #: src/extensions/surfaceextension.cpp:624
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
-msgstr ""
+msgstr "MO %L1"
 
 #: src/extensions/surfacedialog.cpp:88 src/extensions/surfacedialog.cpp:91
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
-msgstr ""
+msgstr "(HOMO)"
 
 #: src/extensions/surfacedialog.cpp:98 src/extensions/surfacedialog.cpp:100
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
-msgstr ""
+msgstr "(LUMO)"
 
 #: src/extensions/surfacedialog.cpp:249
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
-msgstr ""
+msgstr "Semmi"
 
 #: src/extensions/surfacedialog.cpp:251
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
-msgstr ""
+msgstr "van der Waals"
 
 #: src/extensions/surfacedialog.cpp:253
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
-msgstr ""
+msgstr "Elektrosztatikus potenciál"
 
 #: src/extensions/surfacedialog.cpp:256
 msgctxt "Electron density surface type"
 msgid "Electron Density"
-msgstr ""
+msgstr "Elektronsűrűség"
 
 #: src/extensions/surfacedialog.cpp:258
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr ""
+msgstr "Molekulapálya"
 
 #: src/extensions/surfacedialog.cpp:260
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
-msgstr ""
+msgstr "Hiba - nem definiált típus"
 
 #: src/extensions/surfaceextension.cpp:69
 msgid "Create Surfaces..."
-msgstr ""
+msgstr "Felszín létrehozása..."
 
 #: src/extensions/surfaceextension.cpp:358
 #: src/extensions/surfaceextension.cpp:388
@@ -2217,88 +2244,88 @@ msgstr ""
 #: src/extensions/surfaceextension.cpp:449
 #: src/extensions/surfaceextension.cpp:477
 msgid "Abort Calculation"
-msgstr ""
+msgstr "Számítás megszakítása"
 
 #: src/extensions/surfaceextension.cpp:363
 msgid "Calculating VdW Cube"
-msgstr ""
+msgstr "VdW kocka számítása folyamatban"
 
 #: src/extensions/surfaceextension.cpp:393
 #: src/extensions/surfaceextension.cpp:419
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
-msgstr ""
+msgstr "MO %L1 számítása folyamatban"
 
 #: src/extensions/surfaceextension.cpp:454
 #: src/extensions/surfaceextension.cpp:482
 msgid "Calculating Electron Density"
-msgstr ""
+msgstr "Elektronsűrűség számítása"
 
 #: src/extensions/surfaceextension.cpp:568
 msgid "VdW"
-msgstr ""
+msgstr "VdW"
 
 #: src/extensions/surfaceextension.cpp:596
 msgid "Electron Density"
-msgstr ""
+msgstr "Elektronsűrűség"
 
 #: src/extensions/surfaceextension.h:51
 msgid "Calculate molecular orbitals and other surfaces"
-msgstr ""
+msgstr "Moleklulapályák és más felszínek számítása"
 
 #: src/extensions/templateextension.cpp:42
 msgid "First Action"
-msgstr ""
+msgstr "Első akció"
 
 #: src/extensions/templateextension.cpp:48
 msgid "Second Action"
-msgstr ""
+msgstr "Második akció"
 
 #: src/extensions/templateextension.cpp:70
 #: src/extensions/templateextension.cpp:73
 msgid "&Template"
-msgstr ""
+msgstr "&Sablon"
 
 #: src/extensions/templateextension.cpp:73
 msgid "&Edit"
-msgstr ""
+msgstr "Sze&rkesztés"
 
 #: src/extensions/templateextension.h:34
 msgid "Template"
-msgstr ""
+msgstr "Sablon"
 
 #: src/extensions/templateextension.h:35
 msgid "Example extension"
-msgstr ""
+msgstr "Kiterjesztés példa"
 
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
-msgstr ""
+msgstr "A GL widget nem megfelelően indult a video készítéséhez"
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
-msgstr ""
+msgstr "A GL widgetben nincs molekula"
 
 #: src/extensions/trajvideomaker.cpp:62
 msgid "Building video "
-msgstr ""
+msgstr "Video létrehozása "
 
 #: src/extensions/trajvideomaker.cpp:109
 msgid "Video file not written."
-msgstr ""
+msgstr "Videofájlt nem sikerült menteni."
 
 #: src/extensions/trajvideomaker.cpp:124
 msgid "Could not run povray."
-msgstr ""
+msgstr "Nem sikerült futtatni a povray-t."
 
 #: src/extensions/trajvideomaker.cpp:147
 msgid "Could not run mencoder."
-msgstr ""
+msgstr "Nem sikerült futtatni a mencoder-t."
 
 #: src/extensions/trajvideomaker.cpp:158
 msgid "Set Aspect Ratio"
-msgstr ""
+msgstr "Oldalarányok beállítása"
 
 #: src/extensions/trajvideomaker.cpp:159
 #, qt-format
@@ -2314,7 +2341,7 @@ msgstr ""
 
 #: src/extensions/unitcellextension.cpp:45
 msgid "Unit Cell Parameters..."
-msgstr ""
+msgstr "Egységcelle paraméterei..."
 
 #: src/extensions/unitcellextension.cpp:114
 msgid ""
@@ -2322,72 +2349,75 @@ msgid ""
 "\n"
 "Do you want to create a crystal unit cell?"
 msgstr ""
+"Ez a dokumentum jelenleg egy izolált molekula.\n"
+"\n"
+"Szeretne kritstály egységcellát létrehozni?"
 
 #: src/extensions/unitcellextension.h:34
 msgid "Unit Cell"
-msgstr ""
+msgstr "Egységcella"
 
 #: src/extensions/unitcellextension.h:35
 msgid "Build and display crystallographic unit cells"
-msgstr ""
+msgstr "Krisztallográfiai egységcella építése és megjelenítése"
 
 #: src/extensions/unitcellparamdialog.cpp:94
 #: src/extensions/unitcellparamdialog.cpp:99
 msgid "Apply"
-msgstr ""
+msgstr "Alkalmaz"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/extensions/vibrationdialog.cpp:101
 #, qt-format
 msgid "Sorting %1 vibrations by frequency..."
-msgstr ""
+msgstr "%1 rezgések rendezése frekvencia szerint..."
 
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
-msgstr ""
+msgstr "&Animáció indítása"
 
 #: src/extensions/vibrationdialog.cpp:211
 msgid "Stop &Animation"
-msgstr ""
+msgstr "&Animáció leállítása"
 
 #: src/extensions/vibrationdialog.cpp:227
 msgid "Export Vibrational Data"
-msgstr ""
+msgstr "Rezgési adatok exportálása"
 
 #: src/extensions/vibrationextension.cpp:61
 msgid "&Vibrations..."
-msgstr ""
+msgstr "&Rezgés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
-msgstr ""
+msgstr "Rezgési analízis"
 
 #: src/extensions/vibrationextension.cpp:122
 msgid "No vibrational displacements exist."
-msgstr ""
+msgstr "Nincs vibrációs eltolódás"
 
 #: src/extensions/vibrationextension.cpp:241
 msgid "No vibrations have been computed for this molecule."
-msgstr ""
+msgstr "Nem készült vibrációs számítás a molekulán"
 
 #: src/extensions/vibrationextension.h:45
 msgid "Vibration"
-msgstr ""
+msgstr "Vibráció"
 
 #: src/extensions/vibrationextension.h:46
 msgid "Visualize vibrational modes from quantum chemistry calculations"
-msgstr ""
+msgstr "Vibrációs módok vizualizációja kvantumkémiai számításokból"
 
 #: src/glwidget.cpp:453
 msgid ""
@@ -2398,207 +2428,210 @@ msgstr ""
 
 #: src/glwidget.cpp:458
 msgid "OpenGL error"
-msgstr ""
+msgstr "OpenGL hiba"
 
 #: src/glwidget.cpp:1012
 msgid "Debug Information"
-msgstr ""
+msgstr "Hibakeresési információk"
 
 #: src/glwidget.cpp:1013
 #, qt-format
 msgid "FPS: %L1"
-msgstr ""
+msgstr "FPS: %L1"
 
 #: src/glwidget.cpp:1016
 #, qt-format
 msgid "View Size: %L1 x %L2"
-msgstr ""
+msgstr "Méret megjelenítése: %L1 x %L2"
 
 #: src/glwidget.cpp:1018
 msgid "No molecule set"
-msgstr ""
+msgstr "Nincs megadva molekula"
 
 #: src/glwidget.cpp:1023
 #, qt-format
 msgid "Atoms: %L1"
-msgstr ""
+msgstr "Atomok: %L1"
 
 #: src/glwidget.cpp:1026
 #, qt-format
 msgid "Bonds: %L1"
-msgstr ""
+msgstr "Kötések: %L1"
 
 #: src/molecule.cpp:111
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
-msgstr ""
+msgstr "névtelen"
 
 #: src/moleculefile.cpp:130
 #, qt-format
 msgid "OBMol: index %1 out of reach."
-msgstr ""
+msgstr "OBMol: %1 index nem elérhető."
 
 #: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:662
 #: src/moleculefile.cpp:757
 #, qt-format
 msgid "File type '%1' is not supported for reading."
-msgstr ""
+msgstr "'%1' fájltípus olvasása nem támogatott."
 
 #: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:668
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
-msgstr ""
+msgstr "'%1' fájltípus olvasása nem támogatott."
 
 #: src/moleculefile.cpp:172
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
-msgstr ""
+msgstr "%1 indexű molekula beolvasása '%2' fájlból nem sikerült."
 
 #: src/moleculefile.cpp:184
 #, qt-format
 msgid "replaceMolecule: index %1 out of reach."
-msgstr ""
+msgstr "Molekula csere: %1 index nem elérhető"
 
 #: src/moleculefile.cpp:193 src/moleculefile.cpp:441 src/moleculefile.cpp:531
 #, qt-format
 msgid "File type '%1' is not supported for writing."
-msgstr ""
+msgstr "'%1' fájltípus írása nem támogatott."
 
 #: src/moleculefile.cpp:199 src/moleculefile.cpp:450 src/moleculefile.cpp:538
 #, qt-format
 msgid "File type for file '%1' is not supported for writing."
-msgstr ""
+msgstr "'%1' fájl típusának írása nem támogatott."
 
 #: src/moleculefile.cpp:209
 #, qt-format
 msgid "Could not open file '%1' for writing."
-msgstr ""
+msgstr "Nem sikerült megnyitni '%1' fájlt íráshoz."
 
 #: src/moleculefile.cpp:216
 #, qt-format
 msgid "Could not open file '%1' for reading."
-msgstr ""
+msgstr "Nem sikerült megnyitni '%1' fájlt olvasáshoz."
 
 #: src/moleculefile.cpp:225
 #, qt-format
 msgid "Replacing molecule with index %1 in file '%2' failed."
-msgstr ""
+msgstr "%1 indexű molekula cseréje '%2' fájlban nem sikerült."
 
 #: src/moleculefile.cpp:355 src/moleculefile.cpp:651 src/moleculefile.cpp:746
 #, qt-format
 msgid "File %1 cannot be opened for reading."
-msgstr ""
+msgstr "%1 fájlt nem sikerült olvasásra megnyitni"
 
 #: src/moleculefile.cpp:398 src/moleculefile.cpp:772
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
-msgstr ""
+msgstr "Molekula beolvasása '%1' fájlból sikertelen."
 
 #: src/moleculefile.cpp:413 src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
-msgstr ""
+msgstr "Nem lehet megnyitni %1 fájlt íráshoz."
 
 #: src/moleculefile.cpp:476
 msgid "Saving molecular file failed - could not rename original file."
 msgstr ""
+"Molekulafájl mentése sikertelen - nem lehet átnevezni az eredeti fájlt."
 
 #: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
-msgstr ""
+msgstr "Molekulafájl mentése sikertelen - nem lehet átnevezni az új fájlt."
 
 #: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
 msgstr ""
+"Molekulafájl mentése sikertelen - nem lehet törölni az eredeti fájlt."
 
 #: src/moleculefile.cpp:501
 #, qt-format
 msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
 msgstr ""
+"Molekula írása '%1' fájlba nem sikerült. OpenBabel függvény nem működik"
 
 #: src/moleculefile.cpp:518
 #, qt-format
 msgid "File %1 cannot be opened for writing."
-msgstr ""
+msgstr "Nem sikerült megnyitni %1 fájlt olvasáshoz."
 
 #: src/moleculefile.cpp:570
 #, qt-format
 msgid "Writing conformers to file '%1' failed."
-msgstr ""
+msgstr "Nem sikerült a konformereket '%1' fájlba menteni."
 
 #: src/moleculefile.cpp:725 src/moleculefile.cpp:766
 #, qt-format
 msgid "Molecule %1"
-msgstr ""
+msgstr "Molekula %1"
 
 #: src/periodictableview.cpp:43
 msgid "Periodic Table"
-msgstr ""
+msgstr "Periódusos rendszer"
 
 #: src/plugin.cpp:42
 msgid "No Description"
-msgstr ""
+msgstr "Nincs leírás"
 
 #: src/plugin.cpp:47
 msgctxt "Default license for all Avogadro plugins"
 msgid "GPL2+"
-msgstr ""
+msgstr "GPL2+"
 
 #: src/pythonengine_p.cpp:84 src/pythonengine_p.cpp:92
 msgid "Unknown Python Engine"
-msgstr ""
+msgstr "Ismeretlen Python motor"
 
 #: src/pythonengine_p.cpp:100 src/pythonengine_p.cpp:108
 #: src/pythonextension_p.cpp:86 src/pythonextension_p.cpp:96
 #: src/pythontool_p.cpp:106 src/pythontool_p.cpp:114 src/pythontool_p.cpp:122
 #: src/pythontool_p.cpp:130
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
 msgid "PythonEngine: checking "
-msgstr ""
+msgstr "Python motor: ellenőrzés "
 
 #: src/pythonengine_p.cpp:242
 msgid "  - script has no 'Engine' class defined"
-msgstr ""
+msgstr "  - parancsfájlban nincs meghatásűrozva 'Engine' osztály"
 
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:338
 #: src/pythontool_p.cpp:342
 msgid "  - no module"
-msgstr ""
+msgstr "  - nincs modul"
 
 #: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
 msgid "Unknown Python Extension"
-msgstr ""
+msgstr "Ismeretlen Python bővítmény"
 
 #: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
 msgid "&Scripts"
-msgstr ""
+msgstr "&Szkriptek"
 
 #: src/pythonextension_p.cpp:332 src/pythonextension_p.cpp:337
 msgid "PythonExtension: checking "
-msgstr ""
+msgstr "Python bővítmény ellenőrzése "
 
 #: src/pythonextension_p.cpp:333
 msgid "  - script has no 'Extension' class defined"
-msgstr ""
+msgstr "  - parancsfájlban nincs definiálva 'bővítmény' osztály"
 
 #: src/pythontool_p.cpp:90 src/pythontool_p.cpp:98
 msgid "Unknown Python Tool"
-msgstr ""
+msgstr "Ismeretlne Python eszköz"
 
 #: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
 msgid "PythonTool: checking "
-msgstr ""
+msgstr "Python eszköz: ellenőrzés "
 
 #: src/pythontool_p.cpp:337
 msgid "  - script has no 'Tool' class defined"
-msgstr ""
+msgstr "  - parancsfájlban nincs definiálva 'eszköz' osztály"
 
 #: src/tool.cpp:57
 msgid "Tools"
-msgstr ""
+msgstr "Eszközök"
 
 #: src/tools/aligntool.cpp:62
 msgid ""
@@ -2612,31 +2645,31 @@ msgstr ""
 
 #: src/tools/aligntool.cpp:256
 msgid "Axis:"
-msgstr ""
+msgstr "Tengely:"
 
 #: src/tools/aligntool.cpp:267
 msgid "Align:"
-msgstr ""
+msgstr "Igazítás:"
 
 #: src/tools/aligntool.cpp:272
 msgid "Everything"
-msgstr ""
+msgstr "Minden"
 
 #: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
 msgid "Molecule"
-msgstr ""
+msgstr "Molekula"
 
 #: src/tools/aligntool.cpp:277 src/tools/aligntool.h:40
 msgid "Align"
-msgstr ""
+msgstr "Rendezés"
 
 #: src/tools/aligntool.h:41
 msgid "Align molecules to a Cartesian axis"
-msgstr ""
+msgstr "Molekulák rendezése Descates-tengelyre"
 
 #: src/tools/aligntool.h:42
 msgid "Align Settings"
-msgstr ""
+msgstr "Rendezés beállításai"
 
 #: src/tools/autoopttool.cpp:59
 msgid ""
@@ -2653,114 +2686,109 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:223
 msgid "AutoOpt: Could not setup force field...."
-msgstr ""
+msgstr "AutoOpt: Nem sikerült beállítani erőteret..."
 
 #: src/tools/autoopttool.cpp:230
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
-msgstr ""
-
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Atomok száma: %1"
+msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
-msgstr ""
+msgstr "Erőtér:"
 
 #: src/tools/autoopttool.cpp:274
 msgid "Steps per Update:"
-msgstr ""
+msgstr "Frissítésenkénti lépések:"
 
 #: src/tools/autoopttool.cpp:285
 msgid "Algorithm:"
-msgstr ""
+msgstr "Algoritmus:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
-msgstr ""
+msgstr "Legmeredekebb ereszkedés"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
-msgstr ""
+msgstr "Konjugált grádiensek"
 
 #: src/tools/autoopttool.cpp:290
 msgid "Molecular Dynamics (300K)"
-msgstr ""
+msgstr "Mulekuladinamika (300K)"
 
 #: src/tools/autoopttool.cpp:291
 msgid "Molecular Dynamics (600K)"
-msgstr ""
+msgstr "Mulekuladinamika (600K)"
 
 #: src/tools/autoopttool.cpp:292
 msgid "Molecular Dynamics (900K)"
-msgstr ""
+msgstr "Mulekuladinamika (900K)"
 
 #: src/tools/autoopttool.cpp:294 src/tools/autoopttool.cpp:387
 #: src/tools/autorotatetool.cpp:234 src/tools/autorotatetool.cpp:295
 msgid "Start"
-msgstr ""
+msgstr "Indítás"
 
 #: src/tools/autoopttool.cpp:296
 msgid "Fixed atoms are movable"
-msgstr ""
+msgstr "Fix atomok mozgathatók"
 
 #: src/tools/autoopttool.cpp:297
 msgid "Ignored atoms are movable"
-msgstr ""
+msgstr "Kihagyott atomok mozgathatók"
 
 #: src/tools/autoopttool.cpp:354 src/tools/autorotatetool.cpp:224
 msgid "Stop"
-msgstr ""
+msgstr "Leállítás"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
-msgstr ""
+msgstr "AutoOpt molekula"
 
 #: src/tools/autoopttool.h:94
 msgid "AutoOptimization"
-msgstr ""
+msgstr "AutoOptimalizálás"
 
 #: src/tools/autoopttool.h:95
 msgid "Automatic optimization of molecular geometry"
-msgstr ""
+msgstr "Molekulageometria Automatikus optimalizálása"
 
 #: src/tools/autoopttool.h:96
 msgid "AutoOptimization Settings"
-msgstr ""
+msgstr "AutoOptimalizálás beállításai"
 
 #: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
-msgstr ""
+msgstr "Automatikus forgatás eszköz"
 
 #: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
-msgstr ""
+msgstr "x forgatás:"
 
 #: src/tools/autorotatetool.cpp:255
 msgid "x rotation"
-msgstr ""
+msgstr "x forgatás"
 
 #: src/tools/autorotatetool.cpp:265
 msgid "y rotation:"
-msgstr ""
+msgstr "y forgatás:"
 
 #: src/tools/autorotatetool.cpp:270
 msgid "y rotation"
-msgstr ""
+msgstr "y forgatás"
 
 #: src/tools/autorotatetool.cpp:280
 msgid "z rotation:"
-msgstr ""
+msgstr "z forgatás:"
 
 #: src/tools/autorotatetool.cpp:285
 msgid "z rotation"
-msgstr ""
+msgstr "z forgatás"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:498
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
@@ -2772,21 +2800,21 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
-msgstr ""
+msgstr "Visszaállítás"
 
 #: src/tools/autorotatetool.h:53
 msgid "AutoRotate"
-msgstr ""
+msgstr "AutoForgatás"
 
 #: src/tools/autorotatetool.h:54
 msgid "Automatic rotation of molecules"
-msgstr ""
+msgstr "Molekulák automatikus forgatása"
 
 #: src/tools/autorotatetool.h:55
 msgid "AutoRotate Settings"
-msgstr ""
+msgstr "AutoForgatás beállításai"
 
 #: src/tools/bondcentrictool.cpp:79
 msgid ""
@@ -2805,11 +2833,11 @@ msgstr ""
 #, qt-format
 msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
-msgstr ""
+msgstr "Kötéshossz: %L1"
 
 #: src/tools/bondcentrictool.cpp:1597
 msgid " Show Angles"
-msgstr ""
+msgstr " Szögek megjelenítése"
 
 #: src/tools/bondcentrictool.cpp:1600
 msgid " Snap-to Bonds"
@@ -2860,88 +2888,88 @@ msgstr ""
 #: src/tools/clickmeasuretool.cpp:174
 #, qt-format
 msgid "Angle: %L1 °"
-msgstr ""
+msgstr "Szög: %L1 °"
 
 #: src/tools/clickmeasuretool.cpp:194
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
-msgstr ""
+msgstr "Távolság (3->4): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:210
 #, qt-format
 msgid "Dihedral Angle: %1 °"
-msgstr ""
+msgstr "Diéderes szög: %1 °"
 
 #: src/tools/clickmeasuretool.cpp:250
 msgctxt "*1 is a number. You most likely do not need to translate this"
 msgid "*1"
-msgstr ""
+msgstr "*1"
 
 #: src/tools/clickmeasuretool.cpp:258
 msgctxt "*2 is a number. You most likely do not need to translate this"
 msgid "*2"
-msgstr ""
+msgstr "*2"
 
 #: src/tools/clickmeasuretool.cpp:267
 msgctxt "*3 is a number. You most likely do not need to translate this"
 msgid "*3"
-msgstr ""
+msgstr "*3"
 
 #: src/tools/clickmeasuretool.cpp:276
 msgctxt "*4 is a number. You most likely do not need to translate this"
 msgid "*4"
-msgstr ""
+msgstr "*4"
 
 #: src/tools/clickmeasuretool.cpp:280
 msgid "Distance(s):"
-msgstr ""
+msgstr "Távolság:"
 
 #: src/tools/clickmeasuretool.cpp:290
 msgid "Angle:"
-msgstr ""
+msgstr "Szög:"
 
 #: src/tools/clickmeasuretool.cpp:302
 msgid "Dihedral:"
-msgstr ""
+msgstr "Diéderes:"
 
 #: src/tools/clickmeasuretool.h:48
 msgid "Measure"
-msgstr ""
+msgstr "Mérés"
 
 #: src/tools/clickmeasuretool.h:49
 msgid "Measure bond lengths, angles, and dihedrals"
-msgstr ""
+msgstr "Kötéshosszak, szögek, és diéderek mérése"
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure Settings"
-msgstr ""
+msgstr "Mérési beállítások"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
-msgstr ""
+msgstr "Atom hozzáadása"
 
 #: src/tools/drawcommand.cpp:415
 msgid "Delete Atom"
-msgstr ""
+msgstr "Atom törlése"
 
 #: src/tools/drawcommand.cpp:561 src/tools/drawcommand.cpp:580
 msgid "Add Bond"
-msgstr ""
+msgstr "Kötés hozzáadása"
 
 #: src/tools/drawcommand.cpp:757
 msgid "Delete Bond"
-msgstr ""
+msgstr "Kötés törlése"
 
 #: src/tools/drawcommand.cpp:833
 msgid "Change Element"
-msgstr ""
+msgstr "Elem cseréje"
 
 #: src/tools/drawcommand.cpp:944 src/tools/drawtool.cpp:494
 msgid "Change Bond Order"
-msgstr ""
+msgstr "Kötésrend megváltoztatása"
 
 #: src/tools/drawtool.cpp:85
 msgid ""
@@ -2953,53 +2981,53 @@ msgstr ""
 
 #: src/tools/drawtool.cpp:400 src/tools/drawtool.cpp:406
 msgid "Draw Atom"
-msgstr ""
+msgstr "Atom rajzolása"
 
 #: src/tools/drawtool.cpp:447
 msgid "Draw Bond"
-msgstr ""
+msgstr "Kötés rajzolása"
 
 #: src/tools/drawtool.cpp:456 src/tools/drawtool.h:53
 msgid "Draw"
-msgstr ""
+msgstr "Rajzolás"
 
 #: src/tools/drawtool.cpp:771
 msgid "Element:"
-msgstr ""
+msgstr "Elem"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
-msgstr ""
+msgstr "Egyéb..."
 
 #: src/tools/drawtool.cpp:802
 msgid "Bond Order:"
-msgstr ""
+msgstr "Kötésrend:"
 
 #: src/tools/drawtool.cpp:807
 msgid "Single"
-msgstr ""
+msgstr "Egyszeres"
 
 #: src/tools/drawtool.cpp:808
 msgid "Double"
-msgstr ""
+msgstr "Kettős"
 
 #: src/tools/drawtool.cpp:809
 msgid "Triple"
-msgstr ""
+msgstr "Hármas"
 
 #: src/tools/drawtool.cpp:824
 msgid "Adjust Hydrogens"
-msgstr ""
+msgstr "Hidrogénatomok beállítása"
 
 #: src/tools/drawtool.h:54
 msgid "Draw and edit atoms and bonds"
-msgstr ""
+msgstr "Atomok és kötések rajzolása és szerkesztése"
 
 #: src/tools/drawtool.h:55
 msgid "Draw Settings"
-msgstr ""
+msgstr "Rajzolás beállításai"
 
 #: src/tools/manipulatetool.cpp:51
 msgid ""
@@ -3045,7 +3073,7 @@ msgstr ""
 
 #: src/tools/navigatetool.h:54
 msgid "Navigate Settings"
-msgstr ""
+msgstr "Navigálás beállításai"
 
 #: src/tools/selectrotatetool.cpp:58
 msgid ""
@@ -3057,76 +3085,76 @@ msgstr ""
 
 #: src/tools/selectrotatetool.cpp:411
 msgid "Selection Mode:"
-msgstr ""
+msgstr "Kijelölés módja"
 
 #: src/tools/selectrotatetool.cpp:416
 msgid "Atom/Bond"
-msgstr ""
+msgstr "Atom/Kötés"
 
 #: src/tools/selectrotatetool.cpp:417
 msgid "Residue"
-msgstr ""
+msgstr "Molekularész"
 
 #: src/tools/selectrotatetool.h:51
 msgid "Selection"
-msgstr ""
+msgstr "Kijelölés"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
-msgstr ""
+msgstr "Atomol, molekularészek és molekulák kijelölése"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
-msgstr ""
+msgstr "Kijelölés beállításai"
 
 #: src/tools/zmatrixmodel.cpp:78
 msgid "Symbol"
-msgstr ""
+msgstr "Szimbólum"
 
 #: src/tools/zmatrixmodel.cpp:86
 msgid "Bond Length"
-msgstr ""
+msgstr "Kötéshossz"
 
 #: src/tools/zmatrixmodel.cpp:89
 msgid "Bond Angle"
-msgstr ""
+msgstr "Kötési szög"
 
 #: src/tools/zmatrixmodel.cpp:92
 msgid "Dihedral Angle"
-msgstr ""
+msgstr "Diéderes szög"
 
 #: src/tools/zmatrixtool.cpp:90
 msgid "Z Matrix Editor..."
-msgstr ""
+msgstr "Z-mátrix szerkesztő..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
-msgstr ""
+msgstr "Z-mátrix"
 
 #: src/tools/zmatrixtool.h:40
 msgid "Create/edit a z-matrix"
-msgstr ""
+msgstr "Z-mátrix létrehozása/szerkesztése"
 
 #: src/tools/zmatrixtool.h:41
 msgid "Z-Matrix Settings"
-msgstr ""
+msgstr "Z-mátrix beállításai"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:13
 #. i18n: ectx: property (windowTitle), widget (QWidget, ResidueColorSettings)
 msgid "Residue Color Settings"
-msgstr ""
+msgstr "Molekularész színbeállításai"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:19
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color residues by:"
-msgstr ""
+msgstr "Molekularészek színezése:"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:27
 #. i18n: ectx: property (text), item, widget (QComboBox, colorStyleComboBox)
 msgid "Amino Colors"
-msgstr ""
+msgstr "Amino színek"
 
 #. i18n: file: src/colors/residuecolorsettings.ui:32
 #. i18n: ectx: property (text), item, widget (QComboBox, colorStyleComboBox)
@@ -3136,17 +3164,17 @@ msgstr ""
 #. i18n: file: src/colors/residuecolorsettings.ui:37
 #. i18n: ectx: property (text), item, widget (QComboBox, colorStyleComboBox)
 msgid "Hydrophobicity"
-msgstr ""
+msgstr "Hidrofobicitás"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:18
 #. i18n: ectx: property (text), widget (QLabel, atomRadiusLabel)
 msgid "Atom Radius:"
-msgstr ""
+msgstr "Atomsugár:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:47
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel)
 msgid "Bond Radius:"
-msgstr ""
+msgstr "Kötés sugara:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, opacitySliderLabel)
@@ -3162,19 +3190,19 @@ msgstr ""
 #. i18n: file: src/engines/wiresettingswidget.ui:31
 #. i18n: ectx: property (text), widget (QCheckBox, showMultipleCheckBox)
 msgid "Show Multiple Bonds"
-msgstr ""
+msgstr "Többszörös kötések megjelenítése"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Shape"
-msgstr ""
+msgstr "Alak"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:311
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 msgid "Helix"
-msgstr ""
+msgstr "Hélix"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3183,7 +3211,7 @@ msgstr ""
 #. i18n: file: src/engines/cartoonsettingswidget.ui:231
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "a"
-msgstr ""
+msgstr "a"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:68
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3201,63 +3229,63 @@ msgstr ""
 #. i18n: file: src/engines/cartoonsettingswidget.ui:277
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "c"
-msgstr ""
+msgstr "c"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:116
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:334
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "Sheet"
-msgstr ""
+msgstr "Redő"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:209
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 #. i18n: file: src/engines/cartoonsettingswidget.ui:357
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Loop"
-msgstr ""
+msgstr "Hurok"
 
 #. i18n: file: src/engines/cartoonsettingswidget.ui:305
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Colors"
-msgstr ""
+msgstr "Színek"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Dipole:"
-msgstr ""
+msgstr "Dipólus"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:54
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
 msgid "Dipole Moment"
-msgstr ""
+msgstr "Dipólusmomentum"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:59
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
 msgid "Custom Value"
-msgstr ""
+msgstr "Egyéni érték"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:70
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
 msgid "Custom:"
-msgstr ""
+msgstr "Egyéni"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, labelWidth)
 msgid "Width:"
-msgstr ""
+msgstr "Szélesség"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:57
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Cut-off radius:"
-msgstr ""
+msgstr "Levágási sugár"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:64
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:454
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:74
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, angleSpin)
@@ -3266,17 +3294,17 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:410
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, psiSpin)
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #. i18n: file: src/engines/hbondsettingswidget.ui:90
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Cut-off angle:"
-msgstr ""
+msgstr "Levágási szög:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Atom Labels:"
-msgstr ""
+msgstr "Atom cimkéi:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3295,209 +3323,209 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, shaderPrograms)
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Atom number"
-msgstr ""
+msgstr "Atom száma"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Element name"
-msgstr ""
+msgstr "Elem neve"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Element symbol"
-msgstr ""
+msgstr "Elem szimbóluma"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Formal charge"
-msgstr ""
+msgstr "Formális töltés"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Residue number"
-msgstr ""
+msgstr "Molekularész szám"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
-msgstr ""
+msgstr "Parciális töltés"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 #. i18n: file: src/engines/labelsettingswidget.ui:165
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Unique ID"
-msgstr ""
+msgstr "Egyedi azonosító"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:100
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
-msgstr ""
+msgstr "Szimbólum és atomszám"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:105
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Custom data"
-msgstr ""
+msgstr "Egyéni adatok"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:113
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Bond Labels:"
-msgstr ""
+msgstr "Kötés cimkéi:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:150
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond length"
-msgstr ""
+msgstr "Kötéshossz"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:155
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond number"
-msgstr ""
+msgstr "Kötésszám"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:160
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond order"
-msgstr ""
+msgstr "Kötésrend:"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Rendering:"
-msgstr ""
+msgstr "Megjelenítés:"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:24
 #. i18n: ectx: property (text), item, widget (QComboBox, renderType)
 msgid "Backbone"
-msgstr ""
+msgstr "Szerkezeti váz"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:29
 #. i18n: ectx: property (text), item, widget (QComboBox, renderType)
 #. i18n: file: src/engines/surfacesettingswidget.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, renderCombo)
 msgid "Lines"
-msgstr ""
+msgstr "Vonalak"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:37
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel_2)
 #. i18n: file: src/engines/sticksettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, radiusLabel)
 msgid "Radius:"
-msgstr ""
+msgstr "Sugár:"
 
 #. i18n: file: src/engines/ribbonsettingswidget.ui:91
 #. i18n: ectx: property (text), widget (QCheckBox, useNitrogens)
 msgid "Include Nitrogens"
-msgstr ""
+msgstr "Nitrogének használata"
 
 #. i18n: file: src/engines/spheresettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel_2)
 msgid "VdW Opacity:"
-msgstr ""
+msgstr "VdW opacitás:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:17
 #. i18n: ectx: property (text), widget (QLabel, orbitalLabel)
 msgid "Orbital:"
-msgstr ""
+msgstr "Pálya:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:74
 #. i18n: ectx: property (text), widget (QLabel, renderLabel)
 msgid "Render:"
-msgstr ""
+msgstr "Képalkotás:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, renderCombo)
 msgid "Fill"
-msgstr ""
+msgstr "Kitöltés"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, renderCombo)
 msgid "Points"
-msgstr ""
+msgstr "Pontok"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:103
 #. i18n: ectx: property (text), widget (QLabel, paddingLabel_2)
 msgid "Draw Box:"
-msgstr ""
+msgstr "Rajzoló doboz"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:129
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_4)
 msgid "Style:"
-msgstr ""
+msgstr "Stílus:"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:140
 #. i18n: ectx: property (text), item, widget (QComboBox, colorCombo)
 msgid "Selected Colors"
-msgstr ""
+msgstr "Kiválasztott színek"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:145
 #. i18n: ectx: property (text), item, widget (QComboBox, colorCombo)
 msgid "Mapped Colors"
-msgstr ""
+msgstr "Térképezett színek"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:153
 #. i18n: ectx: property (text), widget (QLabel, colorLabel)
 msgid "Colors:"
-msgstr ""
+msgstr "Színek"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:165
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_2)
 msgid "Positive"
-msgstr ""
+msgstr "Pozitív"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:188
 #. i18n: ectx: property (text), widget (QLabel, colorLabel_3)
 msgid "Negative"
-msgstr ""
+msgstr "Negatív"
 
 #. i18n: file: src/engines/wiresettingswidget.ui:18
 #. i18n: ectx: property (text), widget (QCheckBox, showDotsCheckBox)
 msgid "Show Atoms"
-msgstr ""
+msgstr "Atomok megjelenítése"
 
 #. i18n: file: src/extensions/animationdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, AnimationDialog)
 msgid "Animate Trajectory"
-msgstr ""
+msgstr "Röppálya animálása"
 
 #. i18n: file: src/extensions/animationdialog.ui:25
 #. i18n: ectx: property (text), widget (QPushButton, loadButton)
 msgid "Load File..."
-msgstr ""
+msgstr "Fájl betöltése..."
 
 #. i18n: file: src/extensions/animationdialog.ui:45
 #. i18n: ectx: property (text), widget (QLineEdit, frameEdit)
 msgid "0/0"
-msgstr ""
+msgstr "0/0"
 
 #. i18n: file: src/extensions/animationdialog.ui:162
 #. i18n: ectx: property (text), widget (QCheckBox, dynBondsBox)
 msgid "Dynamic Bonds"
-msgstr ""
+msgstr "Dinamikus kötések"
 
 #. i18n: file: src/extensions/animationdialog.ui:169
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr ""
+msgstr "Ciklus"
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #. i18n: file: src/extensions/animationdialog.ui:216
 #. i18n: ectx: property (text), widget (QPushButton, saveVideoButton)
 msgid "Save as .avi..."
-msgstr ""
+msgstr "Mentési formátum: .avi..."
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConformerSearchDialog)
 msgid "Conformer Search"
-msgstr ""
+msgstr "Konformer keresés"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:19
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -3506,141 +3534,141 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:58
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Options"
-msgstr ""
+msgstr "Beállítások"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, atomLabel)
 msgid "Number of atoms:"
-msgstr ""
+msgstr "Atomok száma:"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:32
 #. i18n: ectx: property (text), widget (QLabel, bondsLabel)
 msgid "Number of rotatable bonds:"
-msgstr ""
+msgstr "Forgó kötések száma"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Number of conformers"
-msgstr ""
+msgstr "Konformerek száma"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:60
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/extensions/gamessinputdialog.ui:2566
 #. i18n: ectx: property (title), widget (QGroupBox, hessianMethodBox)
 msgid "Method"
-msgstr ""
+msgstr "Módszer"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:66
 #. i18n: ectx: property (text), widget (QRadioButton, systematicRadio)
 msgid "Systematic rotor search"
-msgstr ""
+msgstr "Rendszeres rotor keresés"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:73
 #. i18n: ectx: property (text), widget (QRadioButton, randomRadio)
 msgid "Random rotor search"
-msgstr ""
+msgstr "Véletlen rotor keresés"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:80
 #. i18n: ectx: property (text), widget (QRadioButton, weightedRadio)
 msgid "Weighted rotor search"
-msgstr ""
+msgstr "Súlyozott rotor keresés"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ConstraintsDialog)
 msgid "Constraints"
-msgstr ""
+msgstr "Megszorítások"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:26
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Add Constraints"
-msgstr ""
+msgstr "Megszorítások hozzáadása"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Ignore Atom"
-msgstr ""
+msgstr "Atom elrejtése"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Fix Atom"
-msgstr ""
+msgstr "Fix Atom"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Fix Atom X"
-msgstr ""
+msgstr "Fix Atom X"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Fix Atom Y"
-msgstr ""
+msgstr "Fix Atom Y"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Fix Atom Z"
-msgstr ""
+msgstr "Fix Atom Z"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Distance"
-msgstr ""
+msgstr "Távolság"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Angle"
-msgstr ""
+msgstr "Szög"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Torsion angle"
-msgstr ""
+msgstr "Torziós szög"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Constraint Value"
-msgstr ""
+msgstr "Megszorítási érték"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:101
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Atom Indices"
-msgstr ""
+msgstr "Atom indexek"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:120
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsAdd)
 msgid "Add"
-msgstr ""
+msgstr "Hozzáadás"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:143
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsSave)
 msgid "Save"
-msgstr ""
+msgstr "Mentés"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:153
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsLoad)
 msgid "Load"
-msgstr ""
+msgstr "Betöltés"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:185
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsDelete)
 msgid "Delete Selected"
-msgstr ""
+msgstr "Kijelöltek törlése"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:192
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsDeleteAll)
 msgid "Delete All"
-msgstr ""
+msgstr "Minden törlése"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, FileImportDialog)
 msgid "File Import..."
-msgstr ""
+msgstr "Fájl importálása..."
 
 #. i18n: file: src/extensions/fileimportdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/extensions/povraydialog.ui:127
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Filename:"
-msgstr ""
+msgstr "Fájl neve:"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:37
 #. i18n: ectx: property (text), widget (QPushButton, selectFileName)
@@ -3653,39 +3681,39 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:115
 #. i18n: ectx: property (text), widget (QPushButton, paramsFileButton)
 msgid "Browse..."
-msgstr ""
+msgstr "Böngészés..."
 
 #. i18n: file: src/extensions/fileimportdialog.ui:46
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Par File:"
-msgstr ""
+msgstr "Par fájl:"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:67
 #. i18n: ectx: property (toolTip), widget (QCheckBox, perceiveBonds)
 msgid "Attempt to perceive bonds?"
-msgstr ""
+msgstr "Próbáljak kötést érzékelni?"
 
 #. i18n: file: src/extensions/fileimportdialog.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, perceiveBonds)
 msgid "Perceive bonds?"
-msgstr ""
+msgstr "Kötések érzékelése?"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ForceFieldDialog)
 msgid "Setup Force Field"
-msgstr ""
+msgstr "Erőtér beállítása"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/extensions/forcefielddialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Force Field"
-msgstr ""
+msgstr "Erőtér"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:42
 #. i18n: ectx: property (text), item, widget (QComboBox, ForceFieldComboBox)
 msgid "Ghemical"
-msgstr ""
+msgstr "Ghemical"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:59
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -3700,47 +3728,47 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Geometry Optimization"
-msgstr ""
+msgstr "Geometria optimalizálása"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Number of steps"
-msgstr ""
+msgstr "Lépések száma"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:82
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritmus"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:103
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Convergence"
-msgstr ""
+msgstr "Konvergencia"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:113
 #. i18n: ectx: property (prefix), widget (QSpinBox, ConvergenceSpinBox)
 msgid "10e-"
-msgstr ""
+msgstr "10e-"
 
 #. i18n: file: src/extensions/gamessefpmatchdialog.ui:16
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessEfpMatchDialog)
 msgid "EFP Matches"
-msgstr ""
+msgstr "EFP egyezések"
 
 #. i18n: file: src/extensions/gamessefpmatchdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Group Label:"
-msgstr ""
+msgstr "Csoport cimkéje"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessInputDialog)
 msgid "GAMESS Input"
-msgstr ""
+msgstr "GAMESS bevitel"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:24
 #. i18n: ectx: attribute (title), widget (QWidget, basicWidget)
 msgid "&Basic Setup"
-msgstr ""
+msgstr "&Alap beállítások"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3751,7 +3779,7 @@ msgstr ""
 #. i18n: file: src/extensions/mopacinputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "AM1"
-msgstr ""
+msgstr "AM1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3762,7 +3790,7 @@ msgstr ""
 #. i18n: file: src/extensions/mopacinputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PM3"
-msgstr ""
+msgstr "PM3"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:43
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3771,7 +3799,7 @@ msgstr ""
 #. i18n: file: src/extensions/gaussianinputdialog.ui:159
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "RHF"
-msgstr ""
+msgstr "RHF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3786,7 +3814,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP"
-msgstr ""
+msgstr "B3LYP"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3801,7 +3829,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MP2"
-msgstr ""
+msgstr "MP2"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
@@ -3810,7 +3838,7 @@ msgstr ""
 #. i18n: file: src/extensions/molproinputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD(T)"
-msgstr ""
+msgstr "CCSD(T)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:67
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
@@ -3825,14 +3853,14 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "STO-3G"
-msgstr ""
+msgstr "STO-3G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:72
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:561
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "MINI"
-msgstr ""
+msgstr "MINI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:77
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
@@ -3847,7 +3875,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "3-21G"
-msgstr ""
+msgstr "3-21G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:82
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
@@ -3860,7 +3888,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d)"
-msgstr ""
+msgstr "6-31G(d)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:87
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
@@ -3873,78 +3901,78 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d,p)"
-msgstr ""
+msgstr "6-31G(d,p)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-31+G(d,p)"
-msgstr ""
+msgstr "6-31+G(d,p)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:97
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-31+G(2d,p)"
-msgstr ""
+msgstr "6-31+G(2d,p)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:102
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-311++G(2d,p)"
-msgstr ""
+msgstr "6-311++G(2d,p)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "Core Potential"
-msgstr ""
+msgstr "Mag potenciál"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
 #. i18n: file: src/extensions/mopacinputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Singlet"
-msgstr ""
+msgstr "Szinglett"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
 #. i18n: file: src/extensions/mopacinputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Doublet"
-msgstr ""
+msgstr "Dublett"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
 #. i18n: file: src/extensions/mopacinputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Triplet"
-msgstr ""
+msgstr "Triplett"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:152
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Dication"
-msgstr ""
+msgstr "Dikation"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:157
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Cation"
-msgstr ""
+msgstr "Kation"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:162
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Neutral"
-msgstr ""
+msgstr "Semleges"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:167
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Anion"
-msgstr ""
+msgstr "Anion"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:172
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Dianion"
-msgstr ""
+msgstr "Dianion"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:195
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "On:"
-msgstr ""
+msgstr "Ezen:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:211
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
@@ -3959,17 +3987,17 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Single Point Energy"
-msgstr ""
+msgstr "Egyetlen pont energiája"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:216
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
 msgid "Equilibrium Geometry"
-msgstr ""
+msgstr "Egyensúlyi geometria"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:221
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
 msgid "Transition State"
-msgstr ""
+msgstr "Átmeneti állapot"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:226
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
@@ -3984,17 +4012,17 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Frequencies"
-msgstr ""
+msgstr "Frekvenciák"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:252
 #. i18n: ectx: property (text), item, widget (QComboBox, basicInCombo)
 msgid "Gas"
-msgstr ""
+msgstr "Gáz"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:257
 #. i18n: ectx: property (text), item, widget (QComboBox, basicInCombo)
 msgid "Water"
-msgstr ""
+msgstr "Víz"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:280
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -4003,99 +4031,99 @@ msgstr ""
 #. i18n: file: src/extensions/surfacedialog.ui:335
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
-msgstr ""
+msgstr "Számítás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:290
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "With:"
-msgstr ""
+msgstr "Ezzel:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:300
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "In:"
-msgstr ""
+msgstr "Ebben:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:327
 #. i18n: ectx: attribute (title), widget (QWidget, advancedWidget)
 msgid "&Advanced Setup"
-msgstr ""
+msgstr "&Haladó beállítások"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:361
 #. i18n: ectx: property (text), widget (QTreeWidget, navigationTree)
 msgid "Advanced"
-msgstr ""
+msgstr "Haladó"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:366
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Basis"
-msgstr ""
+msgstr "Bázis"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:371
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Control"
-msgstr ""
+msgstr "Kontroll"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:375
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "SCF"
-msgstr ""
+msgstr "SCF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:380
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "DFT"
-msgstr ""
+msgstr "DFT"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:390
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 #. i18n: file: src/extensions/gamessinputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Hessian"
-msgstr ""
+msgstr "Hess-i"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:395
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Stat Point"
-msgstr ""
+msgstr "Stat pont"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:401
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Data"
-msgstr ""
+msgstr "Adatok"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:406
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "System"
-msgstr ""
+msgstr "Rendszer"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:411
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "MO Guess"
-msgstr ""
+msgstr "MO becslés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:416
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Misc"
-msgstr ""
+msgstr "Egyéb"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:437
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 msgid "#D Heavy Atom Polarization Functions:"
-msgstr ""
+msgstr "#D nehézatom polarizációs függvény:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:455
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Read"
-msgstr ""
+msgstr "Olvasás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:460
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "SBKJC"
-msgstr ""
+msgstr "SBKJC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:465
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Hay-Wadt"
-msgstr ""
+msgstr "Hay-Wadt"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:490
 #. i18n: ectx: property (text), widget (QCheckBox, basisSCheck)
@@ -4115,171 +4143,171 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:566
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "MIDI"
-msgstr ""
+msgstr "MIDI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:571
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-2G"
-msgstr ""
+msgstr "STO-2G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:581
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-4G"
-msgstr ""
+msgstr "STO-4G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:586
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-5G"
-msgstr ""
+msgstr "STO-5G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:591
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-6G"
-msgstr ""
+msgstr "STO-6G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:601
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-21G"
-msgstr ""
+msgstr "6-21G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:606
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "4-31G"
-msgstr ""
+msgstr "4-31G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:611
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "5-31G"
-msgstr ""
+msgstr "5-31G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:616
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-31G"
-msgstr ""
+msgstr "6-31G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:621
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-311G"
-msgstr ""
+msgstr "6-311G"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:626
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Double Zeta Valence"
-msgstr ""
+msgstr "Dupla zéta vegyérték"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:631
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Dunning/Hay DZ"
-msgstr ""
+msgstr "Dunning/Hay DZ"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:636
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Triple Zeta Valence"
-msgstr ""
+msgstr "Tripla zéta vegyérték"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:641
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "McLean/Chandler"
-msgstr ""
+msgstr "McLean/Chandler"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:646
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "SBKJA Valence"
-msgstr ""
+msgstr "SBKJA vegyérték"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:651
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Hay/Wadt Valence"
-msgstr ""
+msgstr "Hay/Wadt vegyérték"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:656
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 #. i18n: file: src/extensions/mopacinputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO"
-msgstr ""
+msgstr "MNDO"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:703
 #. i18n: ectx: property (text), widget (QLabel, label_22)
 msgid "ECP Type:"
-msgstr ""
+msgstr "ECP típus:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:717
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1843
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "Default"
-msgstr ""
+msgstr "Alapbeállítás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:722
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople"
-msgstr ""
+msgstr "Pople"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:727
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople N311"
-msgstr ""
+msgstr "Pople N311"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:732
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:737
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Huzinaga"
-msgstr ""
+msgstr "Huzinaga"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:742
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Hondo7"
-msgstr ""
+msgstr "Hondo7"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:750
 #. i18n: ectx: property (text), widget (QLabel, label_20)
 msgid "#F Heavy Atom Polarization Functions:"
-msgstr ""
+msgstr "#F nehézatom polarizációs függvény"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:760
 #. i18n: ectx: property (text), widget (QLabel, label_21)
 msgid "#light Atom Polarization Functions:"
-msgstr ""
+msgstr "#könnyű atom polarizációs függvény"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:777
 #. i18n: ectx: property (text), widget (QLabel, label_23)
 msgid "Polar:"
-msgstr ""
+msgstr "Poláris:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:807
 #. i18n: ectx: property (text), widget (QLabel, label_30)
 msgid "Max SCF Iterations:"
-msgstr ""
+msgstr "maximális  SCF iterációk:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:822
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Gradient"
-msgstr ""
+msgstr "Grádiens"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:832
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Optimization"
-msgstr ""
+msgstr "Optimalizálás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:837
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Trudge"
-msgstr ""
+msgstr "Trudge"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:842
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Saddle Point"
-msgstr ""
+msgstr "Nyeregpont"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:847
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:852
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -4289,17 +4317,17 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:857
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "DRC"
-msgstr ""
+msgstr "DRC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:862
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Energy Surface"
-msgstr ""
+msgstr "Energiafelület"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:872
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Morokuma"
-msgstr ""
+msgstr "Morokuma"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:877
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
@@ -4309,117 +4337,117 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:882
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Spin Orbit"
-msgstr ""
+msgstr "Spin orbitál"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:887
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Finite Electric Field"
-msgstr ""
+msgstr "Véges elektromos mező"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:892
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "TDHF"
-msgstr ""
+msgstr "TDHF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:897
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Global Optimization"
-msgstr ""
+msgstr "Globális optimalizálás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "VSCF"
-msgstr ""
+msgstr "VSCF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:907
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "FMO Optimization"
-msgstr ""
+msgstr "FMO optimalizálás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:912
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Raman Intensities"
-msgstr ""
+msgstr "Raman intenzitás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:917
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "NMR"
-msgstr ""
+msgstr "NMR"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:922
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Make EFP"
-msgstr ""
+msgstr "EFP készítés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:953
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "UHF"
-msgstr ""
+msgstr "UHF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:958
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "ROHF"
-msgstr ""
+msgstr "ROHF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:963
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "GVB"
-msgstr ""
+msgstr "GVB"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:968
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "MCSCF"
-msgstr ""
+msgstr "MCSCF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:973
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "None (CI)"
-msgstr ""
+msgstr "Nincs (CI)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1004
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Foster-Boys"
-msgstr ""
+msgstr "Foster-Boys"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1009
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Edmistron-Ruedenberg"
-msgstr ""
+msgstr "Edmistron-Ruedenberg"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1014
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Pipek-Mezey"
-msgstr ""
+msgstr "Pipek-Mezey"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1037
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "SCF Type:"
-msgstr ""
+msgstr "SCF típus:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1044
 #. i18n: ectx: property (text), widget (QLabel, label_28)
 msgid "Localization Method:"
-msgstr ""
+msgstr "Lokalizációs módszer"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1054
 #. i18n: ectx: property (text), widget (QLabel, label_26)
 msgid "Exec Type:"
-msgstr ""
+msgstr "Exec típus:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1061
 #. i18n: ectx: property (text), widget (QLabel, label_29)
 msgid "CI:"
-msgstr ""
+msgstr "CI:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1074
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "GUGA"
-msgstr ""
+msgstr "GUGA"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1079
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Ames Lab. Determinant"
-msgstr ""
+msgstr "Ames Lab. determináns"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1084
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
@@ -4429,57 +4457,57 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:1089
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "CI Singles"
-msgstr ""
+msgstr "CI egyszeres"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1094
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Full Second Order CI"
-msgstr ""
+msgstr "Teljes másodrendű CI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1099
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "General CI"
-msgstr ""
+msgstr "Általános CI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "CC:"
-msgstr ""
+msgstr "CC:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1120
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "LCCD: Linearized CC"
-msgstr ""
+msgstr "LCCD: Linearizált CC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1125
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CCD: CC with Doubles"
-msgstr ""
+msgstr "CCD: CC duplákkal"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1130
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CCSD: CC with Singles and Doubles"
-msgstr ""
+msgstr "CCSD: CC szimplákkal és duplákkal"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1140
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "R-CC"
-msgstr ""
+msgstr "R-CC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1145
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CR-CC"
-msgstr ""
+msgstr "CR-CC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1150
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "EOM-CCSD"
-msgstr ""
+msgstr "EOM-CCSD"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1155
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CR-EOM"
-msgstr ""
+msgstr "CR-EOM"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, label_25)
@@ -4494,172 +4522,172 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:307
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Multiplicity:"
-msgstr ""
+msgstr "Multiplicitás:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1199
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Normal Run"
-msgstr ""
+msgstr "Normális futtatás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1204
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Check"
-msgstr ""
+msgstr "Ellenőrzés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1209
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Debug"
-msgstr ""
+msgstr "Hibakeresés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1238
 #. i18n: ectx: property (text), widget (QLabel, label_18)
 msgid "Molecule Charge:"
-msgstr ""
+msgstr "Molekulatöltés:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1250
 #. i18n: ectx: property (text), widget (QLabel, label_27)
 msgid "Run Type:"
-msgstr ""
+msgstr "Futtatás típusa"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1272
 #. i18n: ectx: property (text), widget (QCheckBox, controlMP2Check)
 msgid "Use MP2"
-msgstr ""
+msgstr "MP2 használata"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1298
 #. i18n: ectx: property (text), widget (QCheckBox, controlDFTCheck)
 msgid "Use DFT"
-msgstr ""
+msgstr "DFT használata"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1347
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "# of Z-Matrix Variables"
-msgstr ""
+msgstr "Z-Matrix változók száma"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1357
 #. i18n: ectx: property (text), item, widget (QComboBox, dataUnitsCombo)
 msgid "Ǻngstrom"
-msgstr ""
+msgstr "Ǻngstrom"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1362
 #. i18n: ectx: property (text), item, widget (QComboBox, dataUnitsCombo)
 msgid "Bohr"
-msgstr ""
+msgstr "Bohr"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1385
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Order of Principal Axis:"
-msgstr ""
+msgstr "Főtengely rendje"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1392
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "Coordinate Type:"
-msgstr ""
+msgstr "Koordinátatípus:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1402
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "C1"
-msgstr ""
+msgstr "C1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1407
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CS"
-msgstr ""
+msgstr "CS"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1412
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CI"
-msgstr ""
+msgstr "CI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1417
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CnH"
-msgstr ""
+msgstr "CnH"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1422
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CnV"
-msgstr ""
+msgstr "CnV"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1427
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "Cn"
-msgstr ""
+msgstr "Cn"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1432
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "S2n"
-msgstr ""
+msgstr "S2n"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1437
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "DnD"
-msgstr ""
+msgstr "DnD"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1442
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "DnH"
-msgstr ""
+msgstr "DnH"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1447
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "Dn"
-msgstr ""
+msgstr "Dn"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1452
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "TD"
-msgstr ""
+msgstr "TD"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1457
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "TH"
-msgstr ""
+msgstr "TH"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1462
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "T"
-msgstr ""
+msgstr "T"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1467
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "OH"
-msgstr ""
+msgstr "OH"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1472
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "O"
-msgstr ""
+msgstr "O"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1522
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Unique cartesian Coords."
-msgstr ""
+msgstr "Egyedi Descartes-koordináták"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1527
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Hilderbrant internals"
-msgstr ""
+msgstr "Hilderbrant internálok"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1532
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Cartesian coordinates"
-msgstr ""
+msgstr "Descartes-koordináták"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1542
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "MOPAC Z-Matrix"
-msgstr ""
+msgstr "MOPAC Z-mátrix"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1565
 #. i18n: ectx: property (text), widget (QCheckBox, dataSymmetryCheck)
 msgid "Use Symmetry During Calculation"
-msgstr ""
+msgstr "Szimmetria használata számítás során"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1575
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 msgid "Units:"
-msgstr ""
+msgstr "Mértékegységek:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1582
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -4676,179 +4704,179 @@ msgstr ""
 #. i18n: file: src/extensions/spectradialog.ui:360
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Title:"
-msgstr ""
+msgstr "Cím:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1639
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 msgid "Point Group:"
-msgstr ""
+msgstr "Pont csoport"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1666
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Minutes"
-msgstr ""
+msgstr "Perc"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1671
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Hours"
-msgstr ""
+msgstr "Óra"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1676
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Days"
-msgstr ""
+msgstr "Nap"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1681
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Weeks"
-msgstr ""
+msgstr "Hét"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1686
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Years"
-msgstr ""
+msgstr "Év"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1691
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Millenia"
-msgstr ""
+msgstr "Évezred"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1720
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1764
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaWords"
-msgstr ""
+msgstr "MegaWord"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1725
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1769
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaBytes"
-msgstr ""
+msgstr "MegaBájt"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1730
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1774
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaWords"
-msgstr ""
+msgstr "GigaWord"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1735
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
 #. i18n: file: src/extensions/gamessinputdialog.ui:1779
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaBytes"
-msgstr ""
+msgstr "GigaBájt"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1807
 #. i18n: ectx: property (text), widget (QCheckBox, systemForceCheck)
 msgid "Force Parallel Methods"
-msgstr ""
+msgstr "Párhuzamos módszerek használata"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1830
 #. i18n: ectx: property (text), widget (QCheckBox, systemCoreCheck)
 msgid "Produce \"core\" file upon abort"
-msgstr ""
+msgstr "\"core\" fájl létrehozása megszakításkor"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1848
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "EVVRSP"
-msgstr ""
+msgstr "EVVRSP"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1853
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "GIVEIS"
-msgstr ""
+msgstr "GIVEIS"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1858
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "JACOBI"
-msgstr ""
+msgstr "JACOBI"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1866
 #. i18n: ectx: property (text), widget (QLabel, label_36)
 msgid "Time Limit:"
-msgstr ""
+msgstr "Időkorlát:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1873
 #. i18n: ectx: property (text), widget (QLabel, label_38)
 msgid "MemDDI:"
-msgstr ""
+msgstr "MemDDI:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1880
 #. i18n: ectx: property (text), widget (QLabel, label_37)
 #. i18n: file: src/extensions/gamessinputdialog.ui:2466
 #. i18n: ectx: property (text), widget (QLabel, label_43)
 msgid "Memory:"
-msgstr ""
+msgstr "Memória:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1887
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid "Diagonalization Method:"
-msgstr ""
+msgstr "Hibakereső módszer"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1894
 #. i18n: ectx: property (title), widget (QGroupBox, systemParallelGroup)
 msgid "Parallel Load Balance Type"
-msgstr ""
+msgstr "Párhuzamos töltési egyensúly típus"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1900
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
-msgstr ""
+msgstr "Ciklus"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr ""
+msgstr "Következő érték"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
 msgid "Use External Data Representation for Messages"
-msgstr ""
+msgstr "Külső adatmegjelenítés használata üzenetekhez"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1979
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Initial Guess:"
-msgstr ""
+msgstr "Kezdeti becslés:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1990
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "Hückel"
-msgstr ""
+msgstr "Hückel"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1995
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "HCore"
-msgstr ""
+msgstr "HCore"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2000
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "MO Read ($VEC)"
-msgstr ""
+msgstr "MO beolvasva ($VEC)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2005
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "MO Saved (DICTNRY)"
-msgstr ""
+msgstr "MO elmentve (DICTNRY)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2010
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "Skip"
-msgstr ""
+msgstr "Kihagyás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2033
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessRotateCheck)
 msgid "Rotate Alpha and Beta Orbitals"
-msgstr ""
+msgstr "Alfa és béta pályák forgatása"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2040
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessPrintCheck)
 msgid "Print the Initial Guess"
-msgstr ""
+msgstr "Kezdeti becslés kiírása"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2064
 #. i18n: ectx: property (title), widget (QGroupBox, miscInterfaceGroup)
@@ -4858,22 +4886,22 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2070
 #. i18n: ectx: property (text), widget (QCheckBox, miscMolPltCheck)
 msgid "MolPlt"
-msgstr ""
+msgstr "MolPlt"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2077
 #. i18n: ectx: property (text), widget (QCheckBox, miscPltOrbCheck)
 msgid "PltOrb"
-msgstr ""
+msgstr "PltOrb"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2084
 #. i18n: ectx: property (text), widget (QCheckBox, miscAIMPACCheck)
 msgid "AIMPAC"
-msgstr ""
+msgstr "AIMPAC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2091
 #. i18n: ectx: property (text), widget (QCheckBox, miscRPACCheck)
 msgid "RPAC"
-msgstr ""
+msgstr "RPAC"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2101
 #. i18n: ectx: property (title), widget (QGroupBox, miscForceGroup)
@@ -4883,27 +4911,27 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2117
 #. i18n: ectx: property (text), widget (QRadioButton, miscHondoRadio)
 msgid "Hondo 8.2"
-msgstr ""
+msgstr "Hondo 8.2"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2124
 #. i18n: ectx: property (text), widget (QRadioButton, miscMELDFRadio)
 msgid "MELDF"
-msgstr ""
+msgstr "MELDF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2131
 #. i18n: ectx: property (text), widget (QRadioButton, miscGamessRadio)
 msgid "GAMESS (UK Version)"
-msgstr ""
+msgstr "GAMESS (UK verzió)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2138
 #. i18n: ectx: property (text), widget (QRadioButton, miscGaussianRadio)
 msgid "Gaussian 9x"
-msgstr ""
+msgstr "Gauss-i 9x"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2145
 #. i18n: ectx: property (text), widget (QRadioButton, miscAllRadio)
 msgid "All"
-msgstr ""
+msgstr "Mind"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2170
 #. i18n: ectx: property (text), widget (QCheckBox, miscWaterCheck)
@@ -4918,7 +4946,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2216
 #. i18n: ectx: property (text), widget (QCheckBox, scfDirectCheck)
 msgid "Direct SCF"
-msgstr ""
+msgstr "Direkt SCF"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2223
 #. i18n: ectx: property (text), widget (QCheckBox, scfComputeCheck)
@@ -4928,102 +4956,102 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2250
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Slater exchange"
-msgstr ""
+msgstr "Slater csere"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2255
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Becke 1988 exchange"
-msgstr ""
+msgstr "Becke 1988 csere"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2260
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
-msgstr ""
+msgstr "VWN: Vosko-Wilk-Nusair (VWN5) korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2265
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "LYP: Lee-Yang-Parr correlation"
-msgstr ""
+msgstr "LYP: Lee-Yang-Parr korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2270
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SVWN: Slater exchange + VWN correlation"
-msgstr ""
+msgstr "SVWN: Slater csere + VWN korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2275
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: BECKE exchange + VWN5 correlation"
-msgstr ""
+msgstr "BVWN: BECKE csere + VWN5 korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2280
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BLYP: BECKE exchange + LYP correlation"
-msgstr ""
+msgstr "BLYP: BECKE csere + LYP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2290
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Gill 1996 exchange"
-msgstr ""
+msgstr "Gill 1996 csere"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2295
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
-msgstr ""
+msgstr "Perdew-Burke-Ernzerhof (PBE) csere"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2300
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "OP: One-parameter Progressive correlation"
-msgstr ""
+msgstr "OP: egy-paraméteres progresszív korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2305
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
-msgstr ""
+msgstr "SLYP: SLATER + Lee-Yang-Parr (LYP) korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2310
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SOP: SLATER + OP correlation"
-msgstr ""
+msgstr "SOP: SLATER + OP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2315
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BOP: BECKE exchange + OP correlation"
-msgstr ""
+msgstr "BOP: BECKE csere + OP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2320
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: GILL exchange + VWN5 correlation"
-msgstr ""
+msgstr "BVWN: GILL csere + VWN5 korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2325
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "GLYP: GILL exchange + LYP correlation"
-msgstr ""
+msgstr "GLYP: GILL csere + LYP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2330
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
-msgstr ""
+msgstr "PBEVWN: PBE csere + VWN6 korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2335
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBELYP: PBE exchange +LYP correlation"
-msgstr ""
+msgstr "PBELYP: PBE csere +LYP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2340
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEOP: PBE exchange + OP correlation"
-msgstr ""
+msgstr "PBEOP: PBE csere + OP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2345
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
-msgstr ""
+msgstr "BHHLYP: HF és BECKE csere + LYP korreláció"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2371
 #. i18n: ectx: property (text), item, widget (QComboBox, dftMethodCombo)
 msgid "Grid"
-msgstr ""
+msgstr "Rács"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2376
 #. i18n: ectx: property (text), item, widget (QComboBox, dftMethodCombo)
@@ -5040,7 +5068,7 @@ msgstr ""
 #. i18n: file: src/extensions/mopacinputdialog.ui:186
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Method:"
-msgstr ""
+msgstr "Módszer:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2430
 #. i18n: ectx: property (title), widget (QGroupBox, mp2IntegralGroup)
@@ -5060,12 +5088,12 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2459
 #. i18n: ectx: property (text), widget (QLabel, label_45)
 msgid "words"
-msgstr ""
+msgstr "szavak"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2473
 #. i18n: ectx: property (text), widget (QCheckBox, mp2ComputeCheck)
 msgid "Compute MP2 Properties"
-msgstr ""
+msgstr "MP2 tulajdonságok számítása"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2480
 #. i18n: ectx: property (text), widget (QLabel, label_44)
@@ -5075,12 +5103,12 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2493
 #. i18n: ectx: property (text), widget (QCheckBox, mp2LocalizedCheck)
 msgid "Use Localized Orbitals"
-msgstr ""
+msgstr "lokalizált orbitálok használata"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2500
 #. i18n: ectx: property (text), widget (QLabel, label_42)
 msgid "# of Core Electrons:"
-msgstr ""
+msgstr "magelektronok száma"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2507
 #. i18n: ectx: property (title), widget (QGroupBox, mp2TransformationGroup)
@@ -5095,17 +5123,17 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2523
 #. i18n: ectx: property (text), widget (QRadioButton, mp2SegmentedRadio)
 msgid "Segmented Transformation"
-msgstr ""
+msgstr "szegmentált átalakítás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2572
 #. i18n: ectx: property (text), widget (QRadioButton, hessianAnalyticRadio)
 msgid "Analytic"
-msgstr ""
+msgstr "Analitikus"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2582
 #. i18n: ectx: property (text), widget (QRadioButton, hessianNumericRadio)
 msgid "Numeric"
-msgstr ""
+msgstr "Numerikus"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2592
 #. i18n: ectx: property (text), widget (QCheckBox, hessianDoubleCheck)
@@ -5115,12 +5143,12 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2599
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPrintCheck)
 msgid "Print Internal Force Constants"
-msgstr ""
+msgstr "Belső erőkonstansok megjelenítése"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2606
 #. i18n: ectx: property (text), widget (QLabel, label_33)
 msgid "Displacement Size:"
-msgstr ""
+msgstr "Eltolódás mérete"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2613
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPurifyCheck)
@@ -5150,12 +5178,12 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2674
 #. i18n: ectx: property (text), widget (QRadioButton, statPointReadButton)
 msgid "Read (from $HESS)"
-msgstr ""
+msgstr "Olvas ($HESS - ből)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2691
 #. i18n: ectx: property (text), widget (QCheckBox, statPointUpdateCheck)
 msgid "Update Step Size"
-msgstr ""
+msgstr "Lépésméret frissítése"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2701
 #. i18n: ectx: property (text), widget (QCheckBox, statPointPrintCheck)
@@ -5170,67 +5198,67 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2737
 #. i18n: ectx: property (text), widget (QLabel, label_50)
 msgid "Jump Size:"
-msgstr ""
+msgstr "Ugrás nagysága"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2744
 #. i18n: ectx: property (text), widget (QCheckBox, statPointStationaryCheck)
 msgid "Stationary Point"
-msgstr ""
+msgstr "Álló pont"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2754
 #. i18n: ectx: property (text), widget (QLabel, label_51)
 msgid "Optimization Method:"
-msgstr ""
+msgstr "Optimalizálási módszer"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2764
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 msgid "Step Size"
-msgstr ""
+msgstr "Lépés mérete"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2770
 #. i18n: ectx: property (text), widget (QLabel, label_47)
 msgid "Maximum:"
-msgstr ""
+msgstr "Maximum:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2777
 #. i18n: ectx: property (text), widget (QLabel, label_48)
 msgid "Minimum:"
-msgstr ""
+msgstr "Minimum:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2787
 #. i18n: ectx: property (text), widget (QLabel, label_49)
 msgid "Initial:"
-msgstr ""
+msgstr "Kezdeti:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2831
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Newton-Raphson"
-msgstr ""
+msgstr "Newton-Raphson"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2836
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Rational Function Optimization"
-msgstr ""
+msgstr "Racionális függvény optimalizálás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2841
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Quadratic Approximation"
-msgstr ""
+msgstr "Kvadratikus megközelítés"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2846
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Schlegel (quasi-NR)"
-msgstr ""
+msgstr "Schlegel (kvázi-NR)"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2851
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Constrained Optimization"
-msgstr ""
+msgstr "Szűkített optimalizálás"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2864
 #. i18n: ectx: property (text), widget (QLabel, label_53)
 msgid "steps"
-msgstr ""
+msgstr "lépések"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2886
 #. i18n: ectx: property (text), widget (QLabel, label_46)
@@ -5240,22 +5268,22 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2896
 #. i18n: ectx: property (text), widget (QLabel, label_52)
 msgid "Follow Mode:"
-msgstr ""
+msgstr "Követési mód:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2906
 #. i18n: ectx: property (text), widget (QLabel, label_34)
 msgid "Maximum Steps:"
-msgstr ""
+msgstr "Maximális lépés:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2939
 #. i18n: ectx: property (text), widget (QPushButton, resetAllButton)
 msgid "Reset All"
-msgstr ""
+msgstr "Mindent visszaállít"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2946
 #. i18n: ectx: property (text), widget (QPushButton, defaultsButton)
 msgid "Defaults"
-msgstr ""
+msgstr "Alapértelmezések"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2969
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
@@ -5266,7 +5294,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:476
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
 msgid "Compute..."
-msgstr ""
+msgstr "Számítás..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2976
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -5281,7 +5309,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:483
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 msgid "Generate..."
-msgstr ""
+msgstr "Létrehoz..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2983
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
@@ -5298,7 +5326,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:490
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
@@ -5316,12 +5344,12 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Calculation:"
-msgstr ""
+msgstr "Számítás:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:96
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Processors:"
-msgstr ""
+msgstr "Processzorok:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -5332,7 +5360,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Theory:"
-msgstr ""
+msgstr "Elmélet:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:174
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -5343,7 +5371,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD"
-msgstr ""
+msgstr "CCSD"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:197
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -5354,7 +5382,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:186
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Basis:"
-msgstr ""
+msgstr "Bázis:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:233
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5363,7 +5391,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:242
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LANL2DZ"
-msgstr ""
+msgstr "LANL2DZ"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:256
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -5376,32 +5404,32 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:270
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Charge:"
-msgstr ""
+msgstr "Töltés:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:330
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Output:"
-msgstr ""
+msgstr "Kimenet:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:346
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Standard"
-msgstr ""
+msgstr "Szabványos"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:351
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molden"
-msgstr ""
+msgstr "Molden"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:356
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molekel"
-msgstr ""
+msgstr "Molekel"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:379
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Checkpoint:"
-msgstr ""
+msgstr "Ellenőrzőpont:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:396
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -5414,7 +5442,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:344
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Format:"
-msgstr ""
+msgstr "Formátum:"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:415
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
@@ -5427,7 +5455,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:363
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Cartesian"
-msgstr ""
+msgstr "Descartes-féle"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:420
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
@@ -5440,7 +5468,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:368
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Z-matrix"
-msgstr ""
+msgstr "Z-mátrix"
 
 #. i18n: file: src/extensions/gaussianinputdialog.ui:425
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
@@ -5474,212 +5502,212 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:20
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Peptide Builder"
-msgstr ""
+msgstr "Peptid építő"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:46
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton)
 msgid "Alanine"
-msgstr ""
+msgstr "Alanin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:49
 #. i18n: ectx: property (text), widget (QToolButton, toolButton)
 msgid "Ala"
-msgstr ""
+msgstr "Ala"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:56
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_2)
 msgid "Arginine"
-msgstr ""
+msgstr "Arginin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:59
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_2)
 msgid "Arg"
-msgstr ""
+msgstr "Arg"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:66
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_3)
 msgid "Asparagine"
-msgstr ""
+msgstr "Aszparagin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:69
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_3)
 msgid "Asn"
-msgstr ""
+msgstr "Asn"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_4)
 msgid "Aspartic acid"
-msgstr ""
+msgstr "Aszparaginsav"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_4)
 msgid "Asp"
-msgstr ""
+msgstr "Asp"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:86
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_5)
 msgid "Cysteine"
-msgstr ""
+msgstr "Cisztein"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:89
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_5)
 msgid "Cys"
-msgstr ""
+msgstr "Cys"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:96
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_6)
 msgid "Glutamic acid"
-msgstr ""
+msgstr "Glutaminsav"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:99
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_6)
 msgid "Glu"
-msgstr ""
+msgstr "Glu"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:106
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_7)
 msgid "Glutamine"
-msgstr ""
+msgstr "Glutamin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:109
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_7)
 msgid "Gln"
-msgstr ""
+msgstr "Gln"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:116
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_8)
 msgid "Glycine"
-msgstr ""
+msgstr "Glicin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:119
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_8)
 msgid "Gly"
-msgstr ""
+msgstr "Gly"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:126
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_9)
 msgid "Histidine"
-msgstr ""
+msgstr "Hisztidin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:129
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_9)
 msgid "His"
-msgstr ""
+msgstr "His"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:136
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_10)
 msgid "Isoleucine"
-msgstr ""
+msgstr "Izoleucin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:139
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_10)
 msgid "Ile"
-msgstr ""
+msgstr "Ile"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:146
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_19)
 msgid "Valine"
-msgstr ""
+msgstr "Valin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:149
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_19)
 msgid "Val"
-msgstr ""
+msgstr "Val"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:156
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_18)
 msgid "Tyrosine"
-msgstr ""
+msgstr "Tirozin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:159
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_18)
 msgid "Tyr"
-msgstr ""
+msgstr "Tyr"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:166
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_17)
 msgid "Tryptophan"
-msgstr ""
+msgstr "Triptofán"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:169
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_17)
 msgid "Trp"
-msgstr ""
+msgstr "Trp"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:176
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_16)
 msgid "Threonine"
-msgstr ""
+msgstr "Treonin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:179
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_16)
 msgid "Thr"
-msgstr ""
+msgstr "Thr"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:186
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_15)
 msgid "Serine"
-msgstr ""
+msgstr "Szerin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:189
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_15)
 msgid "Ser"
-msgstr ""
+msgstr "Ser"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:196
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_14)
 msgid "Proline"
-msgstr ""
+msgstr "Prolin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:199
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_14)
 msgid "Pro"
-msgstr ""
+msgstr "Pro"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:206
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_13)
 msgid "Phenylalanine"
-msgstr ""
+msgstr "Fenilalanin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:209
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_13)
 msgid "Phe"
-msgstr ""
+msgstr "Phe"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:216
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_12)
 msgid "Methionine"
-msgstr ""
+msgstr "Metionin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:219
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_12)
 msgid "Met"
-msgstr ""
+msgstr "Met"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:226
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_11)
 msgid "Lysine"
-msgstr ""
+msgstr "Lizin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:229
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_11)
 msgid "Lys"
-msgstr ""
+msgstr "Lys"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:236
 #. i18n: ectx: property (toolTip), widget (QToolButton, toolButton_20)
 msgid "Leucine"
-msgstr ""
+msgstr "Leucin"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, toolButton_20)
 msgid "Leu"
-msgstr ""
+msgstr "Leu"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:263
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Amino Acids:"
-msgstr ""
+msgstr "Aminosavak:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:270
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -5689,7 +5717,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:280
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Stereochemistry:"
-msgstr ""
+msgstr "Sztereokémia:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:289
 #. i18n: ectx: property (text), widget (QRadioButton, lStereoButton)
@@ -5716,137 +5744,137 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:325
 #. i18n: ectx: property (text), item, widget (QComboBox, nGroupCombo)
 msgid "NH₂"
-msgstr ""
+msgstr "NH₂"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:330
 #. i18n: ectx: property (text), item, widget (QComboBox, nGroupCombo)
 msgid "NH₃⁺"
-msgstr ""
+msgstr "NH₃⁺"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:339
 #. i18n: ectx: property (text), item, widget (QComboBox, cGroupCombo)
 msgid "CO₂H"
-msgstr ""
+msgstr "CO₂H"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:344
 #. i18n: ectx: property (text), item, widget (QComboBox, cGroupCombo)
 msgid "CO₂⁻"
-msgstr ""
+msgstr "CO₂⁻"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:354
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Structure:"
-msgstr ""
+msgstr "Szerkezet:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:362
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
 msgid "Straight Chain"
-msgstr ""
+msgstr "Egyenes lánc"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:367
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
 msgid "Alpha Helix"
-msgstr ""
+msgstr "Alfa hélix"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:372
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
 msgid "Beta Sheet"
-msgstr ""
+msgstr "Béta redő"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:377
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
 msgid "Other"
-msgstr ""
+msgstr "Egyéb"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:387
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Phi:"
-msgstr ""
+msgstr "Phi:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:426
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Psi:"
-msgstr ""
+msgstr "Psi:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:440
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Chain Number:"
-msgstr ""
+msgstr "Láncszám:"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:447
 #. i18n: ectx: property (toolTip), widget (QComboBox, chainNumberCombo)
 msgid "The chain number for the new peptide"
-msgstr ""
+msgstr "Az új peptid lánc-száma"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:459
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:464
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:474
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:479
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:484
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolecularPropertiesDialog)
 msgid "Molecule Properties"
-msgstr ""
+msgstr "Molekula tulajdonságai"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:22
 #. i18n: ectx: property (text), widget (QLabel, molWeightLabel)
 msgid "Molecular Weight (g/mol):"
-msgstr ""
+msgstr "Molekulasúly  (g/mol):"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:29
 #. i18n: ectx: property (text), widget (QLabel, formulaLabel)
 msgid "Chemical Formula:"
-msgstr ""
+msgstr "Kémiai képlet:"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:36
 #. i18n: ectx: property (text), widget (QLabel, atomsLabel)
 msgid "Number of Atoms:"
-msgstr ""
+msgstr "Atomok száma:"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:43
 #. i18n: ectx: property (text), widget (QLabel, bondsLabel)
 msgid "Number of Bonds:"
-msgstr ""
+msgstr "Kötések száma:"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:50
 #. i18n: ectx: property (text), widget (QLabel, residuesLabel)
 msgid "Number of Residues:"
-msgstr ""
+msgstr "Molekularészek száma:"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:57
 #. i18n: ectx: property (text), widget (QLabel, energyLabel)
 msgid "Energy (kJ/mol):"
-msgstr ""
+msgstr "Energia (kJ/mol)"
 
 #. i18n: file: src/extensions/molecularpropdialog.ui:64
 #. i18n: ectx: property (text), widget (QLabel, dipoleLabel)
 msgid "Dipole Moment (D):"
-msgstr ""
+msgstr "Dipólusmomentum (D):"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolproInputDialog)
 msgid "MOLPRO Input"
-msgstr ""
+msgstr "MOLPRO bevitel"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -5855,7 +5883,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "HF"
-msgstr ""
+msgstr "HF"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5864,7 +5892,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31+G(d)"
-msgstr ""
+msgstr "6-31+G(d)"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5873,7 +5901,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-311G(d)"
-msgstr ""
+msgstr "6-311G(d)"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5882,7 +5910,7 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:232
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "cc-pVDZ"
-msgstr ""
+msgstr "cc-pVDZ"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5891,79 +5919,79 @@ msgstr ""
 #. i18n: file: src/extensions/qcheminputdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "cc-pVTZ"
-msgstr ""
+msgstr "cc-pVTZ"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:232
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "AUG-cc-pVDZ"
-msgstr ""
+msgstr "AUG-cc-pVDZ"
 
 #. i18n: file: src/extensions/molproinputdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "AUG-cc-pVTZ"
-msgstr ""
+msgstr "AUG-cc-pVTZ"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
 msgid "MOPAC Input"
-msgstr ""
+msgstr "MOPAC bevitel"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quartet"
-msgstr ""
+msgstr "Kvartett"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quintet"
-msgstr ""
+msgstr "Kvintett"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO-d"
-msgstr ""
+msgstr "MNDO-d"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PM6"
-msgstr ""
+msgstr "PM6"
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "RM1"
-msgstr ""
+msgstr "RM1"
 
 #. i18n: file: src/extensions/nwcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
-msgstr ""
+msgstr "NWChem bevitel"
 
 #. i18n: file: src/extensions/povraydialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, POVRayDialog)
 msgid "POV-Ray Export"
-msgstr ""
+msgstr "POV-Ray Exportálás"
 
 #. i18n: file: src/extensions/povraydialog.ui:30
 #. i18n: ectx: property (text), widget (QPushButton, selectFileName)
 msgid "Select..."
-msgstr ""
+msgstr "Kijelölés…"
 
 #. i18n: file: src/extensions/povraydialog.ui:64
 #. i18n: ectx: property (text), widget (QLineEdit, povrayPath)
 msgid "povray"
-msgstr ""
+msgstr "povray"
 
 #. i18n: file: src/extensions/povraydialog.ui:111
 #. i18n: ectx: property (text), widget (QPushButton, render)
 msgid "Render"
-msgstr ""
+msgstr "Megjelenítés"
 
 #. i18n: file: src/extensions/povraydialog.ui:137
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/surfacedialog.ui:183
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Resolution:"
-msgstr ""
+msgstr "Felbontás:"
 
 #. i18n: file: src/extensions/povraydialog.ui:147
 #. i18n: ectx: property (toolTip), widget (QCheckBox, antialias)
@@ -5973,87 +6001,88 @@ msgstr ""
 #. i18n: file: src/extensions/povraydialog.ui:150
 #. i18n: ectx: property (text), widget (QCheckBox, antialias)
 msgid "Antialias"
-msgstr ""
+msgstr "Antialias"
 
 #. i18n: file: src/extensions/povraydialog.ui:160
 #. i18n: ectx: property (toolTip), widget (QCheckBox, transparency)
 msgid "Set the background color to be transparent"
-msgstr ""
+msgstr "Háttérszín áttetszőre állítása"
 
 #. i18n: file: src/extensions/povraydialog.ui:163
 #. i18n: ectx: property (text), widget (QCheckBox, transparency)
 msgid "Alpha transparency"
-msgstr ""
+msgstr "Alpha-áttetszőség"
 
 #. i18n: file: src/extensions/povraydialog.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Command:"
-msgstr ""
+msgstr "Parancs:"
 
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
 msgstr ""
+"Molekula megjelenítése közvetlenül a parancssori POV-Ray használatával"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
 msgid "Render using POV-Ray"
-msgstr ""
+msgstr "Megjelenítés  POV-Ray használatával"
 
 #. i18n: file: src/extensions/povraydialog.ui:196
 #. i18n: ectx: property (toolTip), widget (QCheckBox, keepSource)
 msgid "Keep the POV-Ray source after rendering has completed"
-msgstr ""
+msgstr "POV-Ray forrás megtartása megjelenítés befejezése után"
 
 #. i18n: file: src/extensions/povraydialog.ui:199
 #. i18n: ectx: property (text), widget (QCheckBox, keepSource)
 msgid "Keep POV-Ray source after rendering"
-msgstr ""
+msgstr "POV-Ray forrás megtartása megjelenítés után"
 
 #. i18n: file: src/extensions/povraydialog.ui:209
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Path:"
-msgstr ""
+msgstr "Útvonal:"
 
 #. i18n: file: src/extensions/qcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, QChemInputDialog)
 msgid "Q-Chem Input"
-msgstr ""
+msgstr "Q-Chem bevitel"
 
 #. i18n: file: src/extensions/qcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP5"
-msgstr ""
+msgstr "B3LYP5"
 
 #. i18n: file: src/extensions/qcheminputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "EDF1"
-msgstr ""
+msgstr "EDF1"
 
 #. i18n: file: src/extensions/qcheminputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "M06-2X"
-msgstr ""
+msgstr "M06-2X"
 
 #. i18n: file: src/extensions/qcheminputdialog.ui:247
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LACVP"
-msgstr ""
+msgstr "LACVP"
 
 #. i18n: file: src/extensions/shaderdialog.ui:29
 #. i18n: ectx: attribute (title), widget (QWidget, loadTab)
 msgid "Load Shaders"
-msgstr ""
+msgstr "Árnyékolók betöltése"
 
 #. i18n: file: src/extensions/shaderdialog.ui:35
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Shader Name:"
-msgstr ""
+msgstr "Árnyékoló neve:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:52
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Vertex Shader:"
-msgstr ""
+msgstr "Csúcs árnyékoló:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:76
 #. i18n: ectx: property (text), widget (QLabel, label_7)
@@ -6063,7 +6092,7 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Parameters:"
-msgstr ""
+msgstr "Paraméterek:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:162
 #. i18n: ectx: attribute (title), widget (QWidget, shaderTab)
@@ -6075,17 +6104,17 @@ msgstr ""
 #. i18n: file: src/extensions/shaderdialog.ui:170
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Display Type:"
-msgstr ""
+msgstr "Meglenítés típusa:"
 
 #. i18n: file: src/extensions/shaderdialog.ui:190
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Shader Program:"
-msgstr ""
+msgstr "Árnyékoló program:"
 
 #. i18n: file: src/extensions/spectradialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, SpectraDialog)
 msgid "Spectra Visualization"
-msgstr ""
+msgstr "Spektrum vizualizáció"
 
 #. i18n: file: src/extensions/spectradialog.ui:42
 #. i18n: ectx: property (toolTip), widget (Avogadro::PlotWidget, plot)
@@ -6100,17 +6129,17 @@ msgstr ""
 #. i18n: file: src/extensions/spectradialog.ui:71
 #. i18n: ectx: property (text), widget (QPushButton, push_loadSpectra)
 msgid "&Load data..."
-msgstr ""
+msgstr "&Adatok betöltése..."
 
 #. i18n: file: src/extensions/spectradialog.ui:110
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 msgid "&Close"
-msgstr ""
+msgstr "&Bezárás"
 
 #. i18n: file: src/extensions/spectradialog.ui:155
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Calculated Spectra:"
-msgstr ""
+msgstr "Számított spektrum:"
 
 #. i18n: file: src/extensions/spectradialog.ui:168
 #. i18n: ectx: property (text), widget (QPushButton, push_colorCalculated)
@@ -6121,29 +6150,29 @@ msgstr ""
 #. i18n: file: src/extensions/spectradialog.ui:305
 #. i18n: ectx: property (text), widget (QPushButton, push_colorForeground)
 msgid "Set Color..."
-msgstr ""
+msgstr "Színbeállítás..."
 
 #. i18n: file: src/extensions/spectradialog.ui:175
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Imported Spectra:"
-msgstr ""
+msgstr "Importált spektrum:"
 
 #. i18n: file: src/extensions/spectradialog.ui:198
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Font:"
-msgstr ""
+msgstr "Betűtípus:"
 
 #. i18n: file: src/extensions/spectradialog.ui:211
 #. i18n: ectx: property (text), widget (QPushButton, push_font)
 msgid "Change Font..."
-msgstr ""
+msgstr "A betűtípus megváltoztatása..."
 
 #. i18n: file: src/extensions/spectradialog.ui:224
 #. i18n: ectx: property (text), widget (QCheckBox, cb_calculate)
 #. i18n: file: src/extensions/spectradialog.ui:237
 #. i18n: ectx: property (text), widget (QCheckBox, cb_import)
 msgid "Show"
-msgstr ""
+msgstr "Megjelenítés"
 
 #. i18n: file: src/extensions/spectradialog.ui:250
 #. i18n: ectx: property (toolTip), widget (QPushButton, push_import)
@@ -6153,97 +6182,97 @@ msgstr ""
 #. i18n: file: src/extensions/spectradialog.ui:253
 #. i18n: ectx: property (text), widget (QPushButton, push_import)
 msgid "&Import..."
-msgstr ""
+msgstr "&Importálás..."
 
 #. i18n: file: src/extensions/spectradialog.ui:266
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Background:"
-msgstr ""
+msgstr "Háttér:"
 
 #. i18n: file: src/extensions/spectradialog.ui:292
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Foreground:"
-msgstr ""
+msgstr "Előtér:"
 
 #. i18n: file: src/extensions/spectradialog.ui:321
 #. i18n: ectx: property (text), widget (QPushButton, push_newScheme)
 msgid "New..."
-msgstr ""
+msgstr "Új..."
 
 #. i18n: file: src/extensions/spectradialog.ui:337
 #. i18n: ectx: property (text), widget (QPushButton, push_removeScheme)
 msgid "Remove..."
-msgstr ""
+msgstr "Eltávolítás..."
 
 #. i18n: file: src/extensions/spectradialog.ui:350
 #. i18n: ectx: property (text), widget (QPushButton, push_renameScheme)
 msgid "Rename..."
-msgstr ""
+msgstr "Átnevezés..."
 
 #. i18n: file: src/extensions/spectradialog.ui:376
 #. i18n: ectx: property (text), widget (QLineEdit, lineEdit)
 msgid "TODO"
-msgstr ""
+msgstr "Tennivalók"
 
 #. i18n: file: src/extensions/spectradialog.ui:389
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "&Schemes:"
-msgstr ""
+msgstr "&Sémák:"
 
 #. i18n: file: src/extensions/spectradialog.ui:405
 #. i18n: ectx: property (text), widget (QPushButton, push_export)
 msgid "&Export..."
-msgstr ""
+msgstr "&Exportálás…"
 
 #. i18n: file: src/extensions/spectradialog.ui:445
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 msgid "&DPI:"
-msgstr ""
+msgstr "&DPI:"
 
 #. i18n: file: src/extensions/spectradialog.ui:461
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 msgid "&Width:"
-msgstr ""
+msgstr "&Szélesség:"
 
 #. i18n: file: src/extensions/spectradialog.ui:490
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "&Height"
-msgstr ""
+msgstr "&Magasság"
 
 #. i18n: file: src/extensions/spectradialog.ui:513
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "&Filename:"
-msgstr ""
+msgstr "&Fájlnév:"
 
 #. i18n: file: src/extensions/spectradialog.ui:549
 #. i18n: ectx: property (text), widget (QToolButton, push_imageFilename)
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. i18n: file: src/extensions/spectradialog.ui:560
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #. i18n: file: src/extensions/spectradialog.ui:565
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 #. i18n: file: src/extensions/spectradialog.ui:570
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #. i18n: file: src/extensions/spectradialog.ui:575
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #. i18n: file: src/extensions/spectradialog.ui:589
 #. i18n: ectx: property (text), widget (QPushButton, push_imageSave)
 msgid "&Save Image..."
-msgstr ""
+msgstr "Kép &mentése..."
 
 #. i18n: file: src/extensions/spectradialog.ui:622
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_imageFontAdjust)
@@ -6255,64 +6284,64 @@ msgstr ""
 #. i18n: file: src/extensions/spectradialog.ui:625
 #. i18n: ectx: property (text), widget (QCheckBox, cb_imageFontAdjust)
 msgid "Auto-adjust F&ont Size"
-msgstr ""
+msgstr "&Betűméret automatikus beállítása"
 
 #. i18n: file: src/extensions/spectratabir.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_IR)
 msgid "tab_IR"
-msgstr ""
+msgstr "tab_IR"
 
 #. i18n: file: src/extensions/spectratabir.ui:29
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "&Y Axis Units:"
-msgstr ""
+msgstr "&Y tengely egysége:"
 
 #. i18n: file: src/extensions/spectratabir.ui:46
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_yaxis)
 #, no-c-format
 msgid "Transmittance (%)"
-msgstr ""
+msgstr "Transzmittancia (%)"
 
 #. i18n: file: src/extensions/spectratabir.ui:51
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_yaxis)
 #, no-c-format
 msgid "Absorbance (%)"
-msgstr ""
+msgstr "Abszorbancia (%)"
 
 #. i18n: file: src/extensions/spectratabir.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Sc&ale:"
-msgstr ""
+msgstr "&Skála:"
 
 #. i18n: file: src/extensions/spectratabir.ui:94
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "&Gaussian Width:"
-msgstr ""
+msgstr "Gauss-&szélesség:"
 
 #. i18n: file: src/extensions/spectratabir.ui:123
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
 msgid "&Label peaks"
-msgstr ""
+msgstr "&Csúcsok cimkézése"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_NMR)
 msgid "tab_NMR"
-msgstr ""
+msgstr "tab_NMR"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Nucleus:"
-msgstr ""
+msgstr "Mag:"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:36
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "&Reference:"
-msgstr ""
+msgstr "&Referencia:"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:46
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "Gaussian &Width:"
-msgstr ""
+msgstr "Gauss-&szélesség:"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:69
 #. i18n: ectx: property (text), widget (QPushButton, push_resetAxes)
@@ -6322,116 +6351,116 @@ msgstr ""
 #. i18n: file: src/extensions/spectratabnmr.ui:105
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
 msgid "Label Peaks:"
-msgstr ""
+msgstr "Csúcsok cimkézése:"
 
 #. i18n: file: src/extensions/spectratabnmr.ui:125
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/spectratabnmr.ui:132
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "ppm"
-msgstr ""
+msgstr "ppm"
 
 #. i18n: file: src/extensions/supercelldialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SuperCellDialog)
 msgid "Super Cell Parameters"
-msgstr ""
+msgstr "Szupercella paraméterei"
 
 #. i18n: file: src/extensions/supercelldialog.ui:22
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Super Cell Options"
-msgstr ""
+msgstr "Szupercella beállításai"
 
 #. i18n: file: src/extensions/supercelldialog.ui:28
 #. i18n: ectx: property (text), widget (QLabel, aRepeatLabel)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:34
 #. i18n: ectx: property (text), widget (QLabel, aRepeatLabel)
 msgid "A repeat:"
-msgstr ""
+msgstr "A ismétlése:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:42
 #. i18n: ectx: property (text), widget (QLabel, bRepeatLabel)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, bRepeatLabel)
 msgid "B repeat:"
-msgstr ""
+msgstr "B ismétlése:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:56
 #. i18n: ectx: property (text), widget (QLabel, cRepeaLabel)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:62
 #. i18n: ectx: property (text), widget (QLabel, cRepeaLabel)
 msgid "C repeat:"
-msgstr ""
+msgstr "C ismétlése:"
 
 #. i18n: file: src/extensions/supercelldialog.ui:88
 #. i18n: ectx: property (text), widget (QPushButton, generateCell)
 msgid "Generate Cell"
-msgstr ""
+msgstr "Cella létrehozása"
 
 #. i18n: file: src/extensions/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
 msgid "Create Surfaces"
-msgstr ""
+msgstr "Felszínek létrehozása"
 
 #. i18n: file: src/extensions/surfacedialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Surface Type:"
-msgstr ""
+msgstr "Felszín típusa:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:41
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 msgid "Van der Waals"
-msgstr ""
+msgstr "van der Waals"
 
 #. i18n: file: src/extensions/surfacedialog.ui:46
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 #. i18n: file: src/extensions/surfacedialog.ui:125
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
 msgid "Electrostatic Potential"
-msgstr ""
+msgstr "Elektrosztatikus potenciál"
 
 #. i18n: file: src/extensions/surfacedialog.ui:104
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Color By:"
-msgstr ""
+msgstr "Eszerint színez:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:120
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
 msgid "Nothing"
-msgstr ""
+msgstr "Semmi"
 
 #. i18n: file: src/extensions/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
-msgstr ""
+msgstr "Alacsony"
 
 #. i18n: file: src/extensions/surfacedialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
-msgstr ""
+msgstr "Közepes"
 
 #. i18n: file: src/extensions/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
-msgstr ""
+msgstr "Magas"
 
 #. i18n: file: src/extensions/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr ""
+msgstr "Nagyon magas"
 
 #. i18n: file: src/extensions/surfacedialog.ui:240
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 msgid "Isosurface cutoff value"
-msgstr ""
+msgstr "Izofelület levágási érték"
 
 #. i18n: file: src/extensions/surfacedialog.ui:243
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
-msgstr ""
+msgstr "Iso érték:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:276
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -6439,119 +6468,119 @@ msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
 "surface)"
 msgid "In Display Type:"
-msgstr ""
+msgstr "Ebben a megjelenítés típusban:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:295
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
 msgid "New Display"
-msgstr ""
+msgstr "Új megjelenítés"
 
 #. i18n: file: src/extensions/surfacedialog.ui:345
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
-msgstr ""
+msgstr "Haladó..."
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, UnitCellParamDialog)
 #. i18n: file: src/extensions/unitcellparamdialog.ui:110
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Unit Cell Parameters"
-msgstr ""
+msgstr "Egységcella paraméterek"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:28
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Unit Cell Display Options"
-msgstr ""
+msgstr "Egységcella megjelenítési beállítások"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, deleteUnitCell)
 msgid "Delete Unit Cell"
-msgstr ""
+msgstr "Egységcella törlése"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:101
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
 msgid "Fill Unit Cell"
-msgstr ""
+msgstr "Egységcella kitöltése"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:131
 #. i18n: ectx: property (text), widget (QLabel, AxesLabel)
 msgid "Axes (Å)"
-msgstr ""
+msgstr "Tengelyek (Å)"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:151
 #. i18n: ectx: property (text), widget (QLabel, anglesLabel)
 msgid "Angles (°)"
-msgstr ""
+msgstr "Szögek (°)"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:175
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "A:"
-msgstr ""
+msgstr "A:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:192
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "alpha:"
-msgstr ""
+msgstr "alfa:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:212
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "B:"
-msgstr ""
+msgstr "B:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:229
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "beta:"
-msgstr ""
+msgstr "béta:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:249
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "C:"
-msgstr ""
+msgstr "C:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:266
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "gamma:"
-msgstr ""
+msgstr "gamma:"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, VibrationDialog)
 msgid "Molecular Vibrations"
-msgstr ""
+msgstr "Molekularezgés:"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:45
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Frequency (cm⁻¹)"
-msgstr ""
+msgstr "Frekvencia (cm⁻¹)"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:50
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Intensity (km/mol)"
-msgstr ""
+msgstr "Intenzitás (km/mol)"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:66
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "&Scale:"
-msgstr ""
+msgstr "&Skála:"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:97
 #. i18n: ectx: property (text), widget (QCheckBox, displayForcesCheckBox)
 msgid "Display force &vectors"
-msgstr ""
+msgstr "Erő és vektorok megjelenítése"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
+msgstr "magasabb frekvenciájó rezgések esetéb gyorsabb mozgást mutat"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:110
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
 msgid "Animation speed set by frequency"
-msgstr ""
+msgstr "Animáció sebességét a frekvencia állítja be"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:132
 #. i18n: ectx: property (text), widget (QPushButton, exportButton)
 msgid "E&xport..."
-msgstr ""
+msgstr "E&xportálás..."
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
@@ -6566,27 +6595,27 @@ msgstr ""
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Python Settings"
-msgstr ""
+msgstr "Python beállítások"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, ZMatrixDialog)
 msgid "Z Matrix Editor"
-msgstr ""
+msgstr "Z mátrix szerkesztő"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:25
 #. i18n: ectx: property (text), widget (QPushButton, importButton)
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "Kijelölt atomok importálása"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:52
 #. i18n: ectx: property (text), widget (QPushButton, removeButton)
 msgid "Remove Atom"
-msgstr ""
+msgstr "Atom eltávolítása"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,Balázs Attila"
+msgstr " ,Launchpad Contributions:,Balázs Attila,Csörföly Dániel"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,battila9@freemail.hu"
+msgstr ",,battila9@freemail.hu,csorfolydaniel@gmail.com"

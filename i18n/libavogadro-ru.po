@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-11-28 15:42+0000\n"
-"Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
+"PO-Revision-Date: 2010-02-20 10:07+0000\n"
+"Last-Translator: Nkolay Parukhin <parukhin@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -562,7 +562,7 @@ msgstr "Оси"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Отображает оси x, y, и z в начале координат"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Шаро-стержневая модель"
 
@@ -656,7 +656,7 @@ msgstr "Сферы Ван дер Ваальса"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr "Отображает атомы как сферы Ван-дер-Ваальса"
+msgstr "Отображает атомы как сферы Ван дер Ваальса"
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
@@ -664,7 +664,7 @@ msgstr "Стержни"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr "Отображает молекулы стержнями"
+msgstr "Отображать молекулы стержнями"
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
@@ -690,7 +690,7 @@ msgstr "Поверхности"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr "Отображает молекулярные поверхности сетками"
+msgstr "Отображает сетки молекулярных поверхностей"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -853,7 +853,8 @@ msgstr ""
 "В вашей молекуле должен быть как минимум один атом для добавления ограничения"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "В вашей молекуле должно быть как минимум два атома для добавления "
 "ограничения связи"
@@ -963,27 +964,27 @@ msgstr "Энергия = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Геометрическая оптимизация"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "Оптимизация с помощью силового поля"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Систематический поиск внутренних вращений"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Случайный поиск внутренних вращений"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Средневзвешенный поиск внутренних вращений"
 
@@ -1086,7 +1087,7 @@ msgstr "Создать входные файлы для квантовохими
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Название"
 
@@ -1188,7 +1189,8 @@ msgid "G03 Crashed."
 msgstr "Работа G03 завершилась аварийно."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian завершил работу некорректно. Возможно, он установлен неправильно."
 
@@ -1198,7 +1200,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Предпросмотр"
 
@@ -1214,7 +1216,7 @@ msgstr "Предпросмотр"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Скрыть предпросмотр"
 
@@ -1355,7 +1357,7 @@ msgstr "Пептид..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "Вставить пептид"
 
@@ -1624,24 +1626,24 @@ msgstr "POV-Ray"
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
 msgstr ""
-"Создать входные файлы POV-Ray и отрендерить их, используя интерфейс "
-"командной строки POV-Ray"
+"Создать файлы POV-Ray и отрендерить их, используя консольную программу POV-"
+"Ray."
 
 #: src/extensions/propextension.cpp:64
 msgid "Atom Properties..."
-msgstr "Свойства атомов..."
+msgstr "Свойства атома..."
 
 #: src/extensions/propextension.cpp:69
 msgid "Bond Properties..."
-msgstr "Свойства связей..."
+msgstr "Свойства связи..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Angle Properties..."
-msgstr "Свойства углов..."
+msgstr "Свойства угла..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Torsion Properties..."
-msgstr "Свойства двугранных углов..."
+msgstr "Свойства двугранного угла..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Conformer Properties..."
@@ -1653,19 +1655,19 @@ msgstr "Редактор декартовых координат..."
 
 #: src/extensions/propextension.cpp:231
 msgid "Atom Properties"
-msgstr "Свойства атомов..."
+msgstr "Свойства атома..."
 
 #: src/extensions/propextension.cpp:234
 msgid "Bond Properties"
-msgstr "Свойства связей"
+msgstr "Свойства связи"
 
 #: src/extensions/propextension.cpp:237
 msgid "Angle Properties"
-msgstr "Свойства углов"
+msgstr "Свойства угла"
 
 #: src/extensions/propextension.cpp:240
 msgid "Torsion Properties"
-msgstr "Свойства двугранных углов"
+msgstr "Свойства двугранного угла"
 
 #: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
@@ -1677,7 +1679,7 @@ msgstr "Свойства конформеров"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "Свойства"
 
@@ -1691,7 +1693,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "Тип"
 
@@ -1794,7 +1796,7 @@ msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "Энергия"
 
@@ -1867,7 +1869,7 @@ msgstr "Выделить по аминокислотному остатку"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "Название аминокислотного остатка"
 
@@ -1929,7 +1931,7 @@ msgstr "Файл параметров шейдеров (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr "GLSL шейдеры"
 
@@ -1947,13 +1949,13 @@ msgstr "Ось Y"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "Внешний вид"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "Э&кспорт изображения"
 
@@ -2136,7 +2138,7 @@ msgstr "Настроить <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "Настроить >>"
 
@@ -2152,11 +2154,11 @@ msgstr "Спектры"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Визуализировать спектральные данные из квантовохимических расчетов"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Без интенсивностей"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2165,11 +2167,11 @@ msgstr ""
 "Информация о колебаниях данной молекулы не содержит интенсивностей. Для "
 "визуализации будут использованы произвольные значения интенсивностей"
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Волновое число (см<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "Химический сдвиг (м.д.)"
 
@@ -2274,7 +2276,7 @@ msgstr "Расчет электронной плотности"
 
 #: src/extensions/surfaceextension.cpp:568
 msgid "VdW"
-msgstr ""
+msgstr "Ван-дер-Ваальс"
 
 #: src/extensions/surfaceextension.cpp:596
 msgid "Electron Density"
@@ -2328,7 +2330,7 @@ msgstr "Видео файл не записан."
 
 #: src/extensions/trajvideomaker.cpp:124
 msgid "Could not run povray."
-msgstr "Не удалось запустить POV-Ray"
+msgstr "Не могу запустить POV-Ray"
 
 #: src/extensions/trajvideomaker.cpp:147
 msgid "Could not run mencoder."
@@ -2360,7 +2362,7 @@ msgstr ""
 
 #: src/extensions/unitcellextension.cpp:45
 msgid "Unit Cell Parameters..."
-msgstr "Параметры ячейки..."
+msgstr "Параметры элементарной ячейки..."
 
 #: src/extensions/unitcellextension.cpp:114
 msgid ""
@@ -2386,7 +2388,7 @@ msgstr "Применить"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "Готово"
 
@@ -2398,7 +2400,7 @@ msgstr "Сортировка %1 колебаний по частоте..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "Начать &анимацию"
 
@@ -2417,7 +2419,7 @@ msgstr "&Колебания..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "Колебательный анализ"
 
@@ -2730,11 +2732,6 @@ msgstr "AutoOpt: Невозможно установить силовое пол
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Ограничения"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Силовое поле:"
@@ -2749,13 +2746,13 @@ msgstr "Алгоритм:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr "Наискорейший спуск"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr "Сопряжённые градиенты"
 
@@ -2788,7 +2785,7 @@ msgstr "Игнорируемые атомы могут перемещаться"
 msgid "Stop"
 msgstr "Остановить"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "Автооптимизация молекулы"
 
@@ -2842,7 +2839,7 @@ msgstr "вращение по оси Z:"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Сброс"
 
@@ -3000,7 +2997,7 @@ msgstr "Измерение"
 
 #: src/tools/clickmeasuretool.h:49
 msgid "Measure bond lengths, angles, and dihedrals"
-msgstr "Измерение длин связей, углов и двугранных углов"
+msgstr "Измерить длины связей, углы и двугранные углы"
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure Settings"
@@ -3008,7 +3005,7 @@ msgstr "Настройки измерения"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "Добавить атом"
 
@@ -3062,7 +3059,7 @@ msgstr "Элемент:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "Другой..."
 
@@ -3084,13 +3081,11 @@ msgstr "Тройная"
 
 #: src/tools/drawtool.cpp:824
 msgid "Adjust Hydrogens"
-msgstr ""
-"Автоматическое добавление\n"
-"атомов водорода"
+msgstr "Автодобавление водородов"
 
 #: src/tools/drawtool.h:54
 msgid "Draw and edit atoms and bonds"
-msgstr "Рисование и правка атомов и связей"
+msgstr "Нарисовать и редактировать атомы и связи"
 
 #: src/tools/drawtool.h:55
 msgid "Draw Settings"
@@ -3121,7 +3116,7 @@ msgstr "Перемещение"
 
 #: src/tools/manipulatetool.h:54
 msgid "Translate, rotate, and adjust atoms and fragments"
-msgstr "Перемещение, поворот и подгонка атомов и фрагментов"
+msgstr "Переместить, повернуть и подогнать атомы и фрагменты"
 
 #: src/tools/manipulatetool.h:55
 msgid "Manipulate Settings"
@@ -3184,7 +3179,7 @@ msgstr "Выделение"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
-msgstr "Выделение атомов, аминокислотных остатков и молекул"
+msgstr "Выделить атомы, остатки и молекулы"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
@@ -3212,7 +3207,7 @@ msgstr "Редактор Z-матриц"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr "Z-матрица"
 
@@ -3336,7 +3331,7 @@ msgstr "Цвета"
 #. i18n: file: src/engines/dipolesettingswidget.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Dipole:"
-msgstr "Диполь:"
+msgstr "Дипоь:"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:54
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
@@ -3448,7 +3443,7 @@ msgstr "Уникальный ID"
 #. i18n: file: src/engines/labelsettingswidget.ui:100
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
-msgstr "Символ и номер атома"
+msgstr "Символ и номер элемента"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:105
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3593,7 +3588,7 @@ msgstr "Динамические связи"
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
-msgstr "Зациклить"
+msgstr ""
 
 #. i18n: file: src/extensions/animationdialog.ui:189
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -3704,7 +3699,7 @@ msgstr "Угол"
 #. i18n: file: src/extensions/constraintsdialog.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
 msgid "Torsion angle"
-msgstr "Двугранный угол"
+msgstr "Торсионный угол"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -4040,7 +4035,7 @@ msgstr "Катион"
 #. i18n: file: src/extensions/gamessinputdialog.ui:162
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Neutral"
-msgstr "Нейтральный"
+msgstr "Нейтральная"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:167
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
@@ -4360,7 +4355,7 @@ msgstr "Поляризационных функций на легких атом
 #. i18n: file: src/extensions/gamessinputdialog.ui:777
 #. i18n: ectx: property (text), widget (QLabel, label_23)
 msgid "Polar:"
-msgstr ""
+msgstr "Полярный:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:807
 #. i18n: ectx: property (text), widget (QLabel, label_30)
@@ -4914,12 +4909,12 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
-msgstr "Next Value"
+msgstr "Следующее значение"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
 msgid "Use External Data Representation for Messages"
-msgstr ""
+msgstr "Использовать внешнее представление данных для сообщений"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1979
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -5029,7 +5024,7 @@ msgstr "Сгенерировать натуральные орбитали UHF"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2216
 #. i18n: ectx: property (text), widget (QCheckBox, scfDirectCheck)
 msgid "Direct SCF"
-msgstr ""
+msgstr "Прямое ССП"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2223
 #. i18n: ectx: property (text), widget (QCheckBox, scfComputeCheck)
@@ -5201,12 +5196,12 @@ msgstr "Метод трансформации"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2516
 #. i18n: ectx: property (text), widget (QRadioButton, mp2TwoRadio)
 msgid "Two Phase Bin Sort"
-msgstr ""
+msgstr "Двухфазная бинарная сортировка"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2523
 #. i18n: ectx: property (text), widget (QRadioButton, mp2SegmentedRadio)
 msgid "Segmented Transformation"
-msgstr ""
+msgstr "Сегментное преобразование"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2572
 #. i18n: ectx: property (text), widget (QRadioButton, hessianAnalyticRadio)
@@ -5281,7 +5276,7 @@ msgstr "Критерии сходимости градиента:"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2737
 #. i18n: ectx: property (text), widget (QLabel, label_50)
 msgid "Jump Size:"
-msgstr ""
+msgstr "Размер перехода:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2744
 #. i18n: ectx: property (text), widget (QCheckBox, statPointStationaryCheck)
@@ -5311,7 +5306,7 @@ msgstr "Минимум:"
 #. i18n: file: src/extensions/gamessinputdialog.ui:2787
 #. i18n: ectx: property (text), widget (QLabel, label_49)
 msgid "Initial:"
-msgstr ""
+msgstr "Исходный:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:2831
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
@@ -5575,7 +5570,7 @@ msgstr "Z-матрица (компактная)"
 #. i18n: file: src/extensions/qcheminputdialog.ui:456
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 msgid "Use Form"
-msgstr ""
+msgstr "Использовать форму"
 
 #. i18n: file: src/extensions/insertfragmentdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, InsertFragmentDialog)
@@ -6104,7 +6099,7 @@ msgstr "Команда:"
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Отрендерить молекулу, используя интерфейс командной строки POV-Ray"
+msgstr "Отрендерить молекулу с помощью консольного POV-Ray"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
@@ -6119,7 +6114,7 @@ msgstr "Сохранить входной файл POV-Ray после завер
 #. i18n: file: src/extensions/povraydialog.ui:199
 #. i18n: ectx: property (text), widget (QCheckBox, keepSource)
 msgid "Keep POV-Ray source after rendering"
-msgstr "Сохранить входной файл POV-Ray"
+msgstr "Сохранить входной файл POV-Ray после рендеринга"
 
 #. i18n: file: src/extensions/povraydialog.ui:209
 #. i18n: ectx: property (text), widget (QLabel, label_6)
@@ -6551,7 +6546,7 @@ msgstr "Параметр отсечения изоповерхности"
 #. i18n: file: src/extensions/surfacedialog.ui:243
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
-msgstr ""
+msgstr "Значение Iso:"
 
 #. i18n: file: src/extensions/surfacedialog.ui:276
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -6586,12 +6581,12 @@ msgstr "Параметры отображения элементарной яч�
 #. i18n: file: src/extensions/unitcellparamdialog.ui:81
 #. i18n: ectx: property (text), widget (QPushButton, deleteUnitCell)
 msgid "Delete Unit Cell"
-msgstr "Удалить ячейку"
+msgstr "Удалить элементарную ячейку"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:101
 #. i18n: ectx: property (text), widget (QPushButton, fillUnitCell)
 msgid "Fill Unit Cell"
-msgstr "Заполнить ячейку"
+msgstr "Заполнить элементарную ячейку"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:131
 #. i18n: ectx: property (text), widget (QLabel, AxesLabel)
@@ -6677,12 +6672,12 @@ msgstr "&Экспорт"
 #. i18n: file: src/tools/navigatesettingswidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
 msgid "Form"
-msgstr ""
+msgstr "Форма"
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Показать визуальные метки"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -6709,20 +6704,20 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
 "Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Konstantin Tokarev, ,Launchpad Contributions:,Konstantin "
-"Tokarev,Vasily Astanin, ,Launchpad Contributions:,Konstantin Tokarev,Vasily "
-"Astanin, ,Launchpad Contributions:,Solodukhin D.,dn2010"
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
+"Kurg,dn2010, ,Launchpad Contributions:,Konstantin Tokarev, ,Launchpad "
+"Contributions:,Konstantin Tokarev,Vasily Astanin, ,Launchpad "
+"Contributions:,Nkolay Parukhin,Solodukhin D.,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,"
-"annulen@yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru,,,annulen@yandex.ru,"
-"madcad@yandex.ru,,,hippi90ub@gmail.com,dn2010@km.ru"
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,annulen@"
+"yandex.ru,,,annulen@yandex.ru,madcad@yandex.ru,,,parukhin@gmail.com,hippi90ub"
+"@gmail.com,dn2010@km.ru"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Открыть файл лиганда"
@@ -6745,9 +6740,11 @@ msgstr ""
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "файл траектории (*.xyz)"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Невозможно сохранить файл %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Записан файл %1."
 
@@ -6786,8 +6783,8 @@ msgstr ""
 #~ msgstr "Неправильное имя файла анимации"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
 #~ "Неправильное имя файла анимации. Имя должно содержать полный путь и "
 #~ "название, оканчивающееся на .avi"
@@ -6799,12 +6796,12 @@ msgstr ""
 #~ msgstr "Соединить"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "GL виджет не был корректно инициализирован для сохранения скриншотов"
+#~ msgstr "GL виджет не был корректно инициализирован для сохранения скриншотов"
 
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL виджет не был корректно инициализирован для сохранения анимации"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Запись в файл %1."
 
@@ -6821,8 +6818,7 @@ msgstr ""
 #~ msgstr "кнопка для загрузки второй конформации из файла"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
@@ -6841,27 +6837,9 @@ msgstr ""
 #~ "Отображать визуальные подсказки</string>\n"
 #~ "     </property>"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Не удалось прочитать mol-файл %1."
 
 #~ msgid "create ligand from residue name"
 #~ msgstr "создать название лиганда из названия аминокислотного остатка"
-
-#~ msgid "Linear Morph"
-#~ msgstr "Линейная интерполяция"
-
-#~ msgid "Lin Morph..."
-#~ msgstr "Лин. интерполяция..."
-
-#~ msgid "Linear Morph Trajectory"
-#~ msgstr "Линейная интерполяция траектории"
-
-#~ msgid ""
-#~ "Load a second conformation and compute a linear interpolation with the "
-#~ "current conformation."
-#~ msgstr ""
-#~ "Загрузить вторую конформацию и рассчитать линейную интерполяцию от "
-#~ "текущей конформации"
-
-#~ msgid "Num Frames"
-#~ msgstr "Число кадров"

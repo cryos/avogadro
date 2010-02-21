@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
 "PO-Revision-Date: 2009-12-12 12:56+0000\n"
 "Last-Translator: Sang-hyeon Lee <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "축"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "x, y, z축을 기원으로 표현"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "공과 막대 모형"
 
@@ -797,9 +797,7 @@ msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로를 포함�
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
-"잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자"
-"로 끝나야 합니다."
+msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자로 끝나야 합니다."
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -843,28 +841,22 @@ msgstr "구속을 추가"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
-"분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
+msgstr "분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
-"분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합"
-"니다"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
-"분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니"
-"다"
+msgstr "분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
-"분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 "
-"합니다"
+msgstr "분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -957,27 +949,27 @@ msgstr "에너지 = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "구조 최적화"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "힘 영역 최적화"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "취소"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr ""
 
@@ -1078,7 +1070,7 @@ msgstr "GAMESS 양자 화학 패키지를 위해 입력 파일을 형성"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "제목"
 
@@ -1134,9 +1126,7 @@ msgstr "가우스 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
-"가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트"
-"를 업데이트 하시겠습니까?"
+msgstr "가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
@@ -1180,10 +1170,9 @@ msgid "G03 Crashed."
 msgstr "G03 충돌"
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입"
-"니다."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr "가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입니다."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1191,7 +1180,7 @@ msgstr ""
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "미리보기"
 
@@ -1207,7 +1196,7 @@ msgstr "미리보기"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "미리보기 숨기기"
 
@@ -1348,7 +1337,7 @@ msgstr "펩티드..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "펩티드 삽입"
 
@@ -1392,9 +1381,7 @@ msgstr "Q-Chem 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
-msgstr ""
-"Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
-"업데이트 하시겠습니까?"
+msgstr "Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
@@ -1412,9 +1399,7 @@ msgstr "MOPAC 입력 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr ""
-"MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
-"업데이트 하시겠습니까?"
+msgstr "MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
@@ -1439,8 +1424,7 @@ msgstr "MOPAC을 시작하는데 실패했습니다"
 
 #: src/extensions/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr ""
-"MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
+msgstr "MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
@@ -1452,9 +1436,7 @@ msgstr "MOPAC 충돌"
 
 #: src/extensions/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니"
-"다."
+msgstr "MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
@@ -1580,8 +1562,8 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
-"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습"
-"니다. 이렇게 하면 아무 결과도 저장되지 않습니다. 정말로 이렇게 할까요?"
+"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습니다. 이렇게 하면 아무 결과도 저장되지 "
+"않습니다. 정말로 이렇게 할까요?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -1593,9 +1575,7 @@ msgstr "파일에 기록할 수 없습니다."
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
-"파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니"
-"까?"
+msgstr "파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니까?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
@@ -1605,9 +1585,7 @@ msgstr "POV-Ray를 시작하는데 실패했습니다."
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
-msgstr ""
-"POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것"
-"입니다."
+msgstr "POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것입니다."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
@@ -1668,7 +1646,7 @@ msgstr "이형태체 정보"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "속성"
 
@@ -1676,13 +1654,11 @@ msgstr "속성"
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
-msgstr ""
-"원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포"
-"함하고 있음."
+msgstr "원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포함하고 있음."
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "형식"
 
@@ -1785,7 +1761,7 @@ msgstr "Z %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "에너지"
 
@@ -1858,7 +1834,7 @@ msgstr "잔류물에 의한 선택"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "잔류물 이름"
 
@@ -1920,7 +1896,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1938,13 +1914,13 @@ msgstr "Y 축"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "모양(&A)"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "이미지 내보내기(&E)"
 
@@ -2127,7 +2103,7 @@ msgstr "설정변경(&Z) <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "설정변경(&Z) >>"
 
@@ -2143,24 +2119,23 @@ msgstr "스펙트럼"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "양자화학 계산 결과로부터 스펙트럼을 보여줌"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Intensity 값 없음"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
-"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각"
-"화를 위해 임의의 값이 주어집니다."
+"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각화를 위해 임의의 값이 주어집니다."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2364,7 +2339,7 @@ msgstr "적용"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "OK"
 
@@ -2376,7 +2351,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "애니메이션 시작(&A)"
 
@@ -2395,7 +2370,7 @@ msgstr "진동(&V)..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "진동 계산"
 
@@ -2686,11 +2661,6 @@ msgstr "자동설정: 힘영역을 설정할 수 없습니다...."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "자동설정: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "제약조건"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "역장:"
@@ -2705,13 +2675,13 @@ msgstr "알고리즘:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2744,7 +2714,7 @@ msgstr "무시된 원자를 움직일 수 있습니다"
 msgid "Stop"
 msgstr "중지"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "분자 자동설정"
 
@@ -2798,7 +2768,7 @@ msgstr "z 회전"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "초기화"
 
@@ -2945,7 +2915,7 @@ msgstr "측정 설정"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "원자 추가"
 
@@ -2995,7 +2965,7 @@ msgstr "원소:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "기타..."
 
@@ -3127,7 +3097,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr ""
 
@@ -6612,17 +6582,17 @@ msgstr "원자 제거하기"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon "
-"Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, ,"
-"Launchpad Contributions:"
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim "
+"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-"
+"hyeon Lee, ,Launchpad Contributions:"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists.sourceforge."
-"net,lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
-"lordmiss@lordmiss.com,,,"
+",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro 파일 (*.*)"
@@ -6648,18 +6618,20 @@ msgstr ""
 #~ msgid "Save Movie File"
 #~ msgstr "동영상 파일 저장"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "%1 mol 파일 열기에 실패함"
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "%1 %2 두 원자가 서로 다른 번호를 가지고 있습니다"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "%1 파일을 저장할 수 없습니다"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
+#~ msgstr "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #~ msgid "Save Traj File"
 #~ msgstr "궤도 파일 저장"
@@ -6667,6 +6639,7 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "애니메이션을 위한 선형 보간법을 생성"
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "%1 파일로 작성됨"
 
@@ -6679,19 +6652,17 @@ msgstr ""
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL 위젯이 동영상을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "%1 파일로 작성할 것입니다."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
-#~ msgstr ""
-#~ "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나"
-#~ "야 합니다"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나야 합니다"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"

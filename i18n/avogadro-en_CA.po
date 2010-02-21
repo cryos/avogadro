@@ -7,43 +7,52 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-10-29 03:28+0000\n"
+"POT-Creation-Date: 2009-11-06 10:48-0500\n"
+"PO-Revision-Date: 2010-02-14 00:05+0000\n"
 "Last-Translator: Itai Molenaar <imolenaar28@gmail.com>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:24+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
 msgstr "OK"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63
+#: src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git revision: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+"he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+"PURPOSE.<br/>"
 msgstr ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+"he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+"PURPOSE.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
+#: src/mainwindow.cpp:2952 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -72,7 +81,7 @@ msgstr "Clear Atoms"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:2970 src/mainwindow.cpp:2987 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Settings"
 
@@ -83,42 +92,42 @@ msgstr "Open File"
 #: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr ""
+msgstr "This system does not support OpenGL."
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr ""
+msgstr "System has OpenGL support."
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
 msgid "About to test OpenGL capabilities."
-msgstr ""
+msgstr "About to test OpenGL capabilities."
 
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr ""
+msgstr "OpenGL capabilities found: "
 
 #: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr ""
+msgstr "Double Buffering."
 
 #: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr ""
+msgstr "Direct Rendering."
 
 #: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr ""
+msgstr "Antialiasing."
 
 #: src/main.cpp:249
 #, qt-format
@@ -128,6 +137,9 @@ msgid ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 msgstr ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:264
 #, qt-format
@@ -141,6 +153,13 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
+"Usage: %1 [options] [files]\n"
+"\n"
+"Advanced Molecular Editor (version %2)\n"
+"\n"
+"Options:\n"
+"  -h, --help\t\tShow help options (this)\n"
+"  -v, --version\t\tShow version information\n"
 
 #: src/mainwindow.cpp:301
 msgid "Messages"
@@ -405,74 +424,74 @@ msgstr "Unable to paste molecule."
 msgid "Paste failed (format unavailable)."
 msgstr "Paste failed (format unavailable)."
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:1846
 msgid "Copy failed (mdl unavailable)."
 msgstr "Copy failed (mdl unavailable)."
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:1972 src/mainwindow.cpp:2005 src/mainwindow.cpp:2072
+#: src/mainwindow.cpp:2602
 #, qt-format
 msgid "View %1"
 msgstr "View %1"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2032
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "View %1"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Detached View"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2207
 msgid "Normal Size"
 msgstr "Normal Size"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2220
 msgid "Full Screen"
 msgstr "Full Screen"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2318
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2452
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2458
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:2906
 msgid "Add"
 msgstr "Add"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:2911
 msgid "Duplicate"
 msgstr "Duplicate"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:2916
 msgid "Remove"
 msgstr "Remove"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:2944
 msgid "No tools or engines loaded."
 msgstr "No tools or engines loaded."
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:2946
 msgid "No engines loaded."
 msgstr "No engines loaded."
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:2948
 msgid "No tools loaded."
 msgstr "No tools loaded."
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:2949
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -480,33 +499,33 @@ msgstr ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:2993
 msgid "Objects"
 msgstr "Objects"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:2999 :321
 msgid "Colors"
 msgstr "Colours"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3032
 msgid " copy"
 msgstr " copy"
 
-#: src/pluginsettings.cpp:53
+#: src/pluginsettings.cpp:55
 msgid "Name: "
 msgstr "Name: "
 
-#: src/pluginsettings.cpp:54
+#: src/pluginsettings.cpp:56
 msgid "Identifier: "
 msgstr "Identifier: "
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:57
 msgid "File: "
 msgstr "File: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:58
 msgid "Description:\n"
 msgstr "Description:\n"
 
@@ -563,7 +582,7 @@ msgstr "only labels can have sub items"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Item"
 
@@ -578,7 +597,7 @@ msgstr "Low"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Medium"
@@ -595,7 +614,7 @@ msgstr "Undefined"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "None"
@@ -1259,9 +1278,11 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:,Itai "
-"Molenaar, ,Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:"
+"Molenaar, ,Launchpad Contributions:,Itai Molenaar, ,Launchpad "
+"Contributions:,Itai Molenaar"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,"
+",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,imo"
+"lenaar28@gmail.com"

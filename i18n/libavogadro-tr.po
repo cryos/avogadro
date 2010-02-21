@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-12-26 23:45+0000\n"
-"Last-Translator: Serdar Delican <Unknown>\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
+"PO-Revision-Date: 2010-02-06 14:34+0000\n"
+"Last-Translator: Yiğit Ateş <yigitates52@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:29+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -557,7 +557,7 @@ msgstr "Eksenler"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Merkezdeki x, y, ve x eksenlerini kaplar"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Top ve Çubuk"
 
@@ -643,7 +643,8 @@ msgstr "Basit Telekafes"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr "Bağları tel (düz çizgi) olarak kaplar, büyük moleküller için uygundur"
+msgstr ""
+"Bağları tel (düz çizgi) olarak kaplar, büyük moleküller için uygundur"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
@@ -849,7 +850,8 @@ msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr "Kısıtlama ekleyebilmek için molekülünüzde en az bir atom bulunmalı"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Bağ kısıtlaması ekleyebilmek için molekülünüzde en az iki atom bulunmalı"
 
@@ -956,27 +958,27 @@ msgstr "Enerji = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Geometrik Optimizasyon"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "Kuvvet Alanı Optimizasyonu"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Sistematik Döner Arama"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Rasgele Döner Arama"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Ağırlıklı Döner Arama"
 
@@ -1079,7 +1081,7 @@ msgstr "GAMESS kuantum kimya paketi için girdi dosyası oluştur"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Başlık"
 
@@ -1181,7 +1183,8 @@ msgid "G03 Crashed."
 msgstr "G03 Çöktü."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussian doğru çalışmadı. Muhtemelen düzgün bir şekilde kurulmamış."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
@@ -1190,7 +1193,7 @@ msgstr "Gaussian doğru çalışmadı. Muhtemelen düzgün bir şekilde kurulmam
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Önizleme Göster"
 
@@ -1206,7 +1209,7 @@ msgstr "Önizleme Göster"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Önizlemeyi Gizle"
 
@@ -1299,7 +1302,7 @@ msgstr ""
 
 #: src/extensions/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Kuantum kimya paketleri için girdi dosyaları yarat"
 
 #: src/extensions/insertfragmentdialog.cpp:186
 msgid "Open Directory"
@@ -1347,7 +1350,7 @@ msgstr "Peptit..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "Peptit Ekle"
 
@@ -1466,7 +1469,7 @@ msgstr "PDB'den Al..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "Kimyasal yapı getiriliyor..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
@@ -1482,11 +1485,11 @@ msgstr "İndirmek için PDB kaydı."
 
 #: src/extensions/networkfetchextension.cpp:110
 msgid "Chemical Name"
-msgstr ""
+msgstr "Kimyasal Ad"
 
 #: src/extensions/networkfetchextension.cpp:111
 msgid "Chemical structure to download."
-msgstr ""
+msgstr "İndirme işlemi için kimyasal yapı"
 
 #: src/extensions/networkfetchextension.cpp:126
 msgid "URL"
@@ -1668,7 +1671,7 @@ msgstr "Uydurma Özellikleri"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "Özellikler"
 
@@ -1680,7 +1683,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "Tip"
 
@@ -1745,7 +1748,7 @@ msgstr "Açı %1"
 #: src/extensions/propmodel.cpp:397
 #, qt-format
 msgid "Angle %1"
-msgstr ""
+msgstr "Açı %1"
 
 #: src/extensions/propmodel.cpp:405
 #, qt-format
@@ -1783,7 +1786,7 @@ msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "Enerji"
 
@@ -1856,7 +1859,7 @@ msgstr "Kalan ile Seç"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "Kalan İsmi"
 
@@ -1910,7 +1913,7 @@ msgstr ""
 
 #: src/extensions/shaderextension.cpp:353
 msgid "Open a shader parameters file"
-msgstr ""
+msgstr "Gölgelendirici parametreleri dosyası aç"
 
 #: src/extensions/shaderextension.cpp:354
 msgid "Shader parameters files (*.params)"
@@ -1918,7 +1921,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1928,28 +1931,28 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:71
 msgid "X Axis"
-msgstr ""
+msgstr "X Ekseni"
 
 #: src/extensions/spectradialog.cpp:72
 msgid "Y Axis"
-msgstr ""
+msgstr "Y Ekseni"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
-msgstr ""
+msgstr "&Görünüm"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr ""
 
 #: src/extensions/spectradialog.cpp:158
 msgctxt "Infrared spectra option"
 msgid "Infrared"
-msgstr ""
+msgstr "Kızılötesi"
 
 #: src/extensions/spectradialog.cpp:159
 msgid "&Infrared Spectra Settings"
@@ -1966,15 +1969,15 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:173
 msgid "No data"
-msgstr ""
+msgstr "Veri yok"
 
 #: src/extensions/spectradialog.cpp:250
 msgid "Dark"
-msgstr ""
+msgstr "Karanlık"
 
 #: src/extensions/spectradialog.cpp:261
 msgid "Light"
-msgstr ""
+msgstr "Açık"
 
 #: src/extensions/spectradialog.cpp:272
 msgid "Publication"
@@ -1986,23 +1989,23 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:309
 msgid "New Scheme"
-msgstr ""
+msgstr "Yeni Şema"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Confirm Scheme Removal"
-msgstr ""
+msgstr "Şema Kaldırılmasını Onayla"
 
 #: src/extensions/spectradialog.cpp:317
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "Gerçekten geçerli şemayı kaldırmak istiyor musunuz?"
 
 #: src/extensions/spectradialog.cpp:327
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "Şema Adını Değiştir"
 
 #: src/extensions/spectradialog.cpp:328
 msgid "Enter new name for current scheme:"
-msgstr ""
+msgstr "Geçerli şema için yeni bir ad giriniz:"
 
 #: src/extensions/spectradialog.cpp:428
 msgid "Export Calculated Spectrum"
@@ -2018,7 +2021,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:453
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "Virgülle Ayrılmış Değerler"
 
 #: src/extensions/spectradialog.cpp:454
 msgid "JCAMP-DX"
@@ -2027,7 +2030,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:455 src/extensions/spectradialog.cpp:539
 #: src/extensions/spectradialog.cpp:647
 msgid "All Files"
-msgstr ""
+msgstr "Bütün Dosyalar"
 
 #: src/extensions/spectradialog.cpp:457
 msgid "Import Spectra"
@@ -2040,7 +2043,7 @@ msgstr ""
 #: src/extensions/spectradialog.cpp:483 src/extensions/spectradialog.cpp:668
 #, qt-format
 msgid "Unknown extension: %1"
-msgstr ""
+msgstr "Bilinmeyen eklenti: %1"
 
 #: src/extensions/spectradialog.cpp:529
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
@@ -2054,12 +2057,12 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:532
 msgid "Data Format"
-msgstr ""
+msgstr "Veri Biçimi"
 
 #: src/extensions/spectradialog.cpp:532
 msgctxt "noun, not verb"
 msgid "Format:"
-msgstr ""
+msgstr "Biçim:"
 
 #: src/extensions/spectradialog.cpp:541
 msgid "Load Spectral Data"
@@ -2067,11 +2070,11 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:640
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "Taşınabilir Ağ Grafikleri"
 
 #: src/extensions/spectradialog.cpp:641
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: src/extensions/spectradialog.cpp:642
 msgid "Tagged Image File Format"
@@ -2079,7 +2082,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:643
 msgid "Windows Bitmap"
-msgstr ""
+msgstr "Windows Bitmap"
 
 #: src/extensions/spectradialog.cpp:644
 msgid "Portable Pixmap"
@@ -2099,7 +2102,7 @@ msgstr ""
 
 #: src/extensions/spectradialog.cpp:668
 msgid "Invalid Filename"
-msgstr ""
+msgstr "Geçersiz Dosya Adı"
 
 #: src/extensions/spectradialog.cpp:701
 msgid "Error"
@@ -2125,7 +2128,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr ""
 
@@ -2141,22 +2144,22 @@ msgstr ""
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr ""
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr ""
 
@@ -2360,7 +2363,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "Tamam"
 
@@ -2372,7 +2375,7 @@ msgstr ""
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr ""
 
@@ -2391,7 +2394,7 @@ msgstr ""
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2682,11 +2685,6 @@ msgstr ""
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Kısıtlamalar..."
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr ""
@@ -2701,13 +2699,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2740,7 +2738,7 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr ""
 
@@ -2794,7 +2792,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr ""
 
@@ -2941,7 +2939,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr ""
 
@@ -2991,7 +2989,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr ""
 
@@ -3123,7 +3121,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr ""
 
@@ -6610,15 +6608,15 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
 "Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Efe "
-"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
-"Mustafa Yılmaz,Serdar Delican"
+"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad "
+"Contributions:,Mustafa Yılmaz,Serdar Delican,Yiğit Ateş"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,"
-"huseyinkozan@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,"
-"hayros@gmail.com,huseyinkozan@gmail.com,,,apshalasha@gmail.com,"
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,huseyinkoz"
+"an@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,hayros@gmail.com,hus"
+"eyinkozan@gmail.com,,,apshalasha@gmail.com,,yigitates52@gmail.com"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro dosyaları (*.*)"
@@ -6649,15 +6647,17 @@ msgstr ""
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
-#~ "GL aracı ekran görüntüsünü kaydetmek için düzgün bir şekilde "
-#~ "hazırlanmamış."
+#~ "GL aracı ekran görüntüsünü kaydetmek için düzgün bir şekilde hazırlanmamış."
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "İki molekülün atom sayıları farklı %1 %2"
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "%1 mol dosyası okunamadı."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Dosyaya yazıldı : %1"
 
@@ -6667,6 +6667,7 @@ msgstr ""
 #~ msgid "Linear Morph"
 #~ msgstr "Doğrusal Değişim"
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Dosya kadedilemiyor : %1"
 
@@ -6676,12 +6677,13 @@ msgstr ""
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr "GL aracı filmi kaydetmek için doğru bir şekilde hazırlanmamış"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Dosyaya yazılacaktı : %1"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
-#~ "Film dosya adı geçersiz. Dosya adı tam klasör yolunu ve dosya adını .avi "
-#~ "ile bitecek şekilde içermeli"
+#~ "Film dosya adı geçersiz. Dosya adı tam klasör yolunu ve dosya adını .avi ile "
+#~ "bitecek şekilde içermeli"

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
+"POT-Creation-Date: 2009-11-05 12:55-0500\n"
 "PO-Revision-Date: 2009-11-27 20:14+0000\n"
 "Last-Translator: Pepa <Unknown>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-02-21 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -24,7 +24,8 @@ msgstr "Barva podle indexu"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr "Barva podle indexu (červená, oranžová, žlutá, zelená, modrá, fialová)."
+msgstr ""
+"Barva podle indexu (červená, oranžová, žlutá, zelená, modrá, fialová)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -560,7 +561,7 @@ msgstr "Osy"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "Vykresluje osy x.y.z v počátku"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1895
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1891
 msgid "Ball and Stick"
 msgstr "Koule a hole"
 
@@ -698,8 +699,8 @@ msgstr "Drátěná kostra"
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
-"Vykresluje vazby jako dráty (čáry), což je ideální pro velmi rozsáhlé (bio)"
-"molekuly"
+"Vykresluje vazby jako dráty (čáry), což je ideální pro velmi rozsáhlé "
+"(bio)molekuly"
 
 #: src/extension.cpp:44
 msgid "Extensions"
@@ -804,8 +805,8 @@ msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
-"Neplatný název videosouboru. Musíte určit úplnou cestu k souboru a název,"
-"včetně koncovky .avi"
+"Neplatný název videosouboru. Musíte určit úplnou cestu k souboru a "
+"název,včetně koncovky .avi"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -854,7 +855,8 @@ msgstr ""
 "omezení"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Vaše molekula musí obsahovat alespoň dva atomy, aby mohlo být přidáno "
 "vazební omezení"
@@ -964,27 +966,27 @@ msgstr "Energie = %L1 %2"
 msgid "Geometric Optimization"
 msgstr "Vyladění uspořádání"
 
-#: src/extensions/forcefieldextension.cpp:563
+#: src/extensions/forcefieldextension.cpp:552
 msgid "Forcefield Optimization"
 msgstr "Vyladění silového pole"
 
-#: src/extensions/forcefieldextension.cpp:564
-#: src/extensions/forcefieldextension.cpp:567
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
+#: src/extensions/forcefieldextension.cpp:553
+#: src/extensions/forcefieldextension.cpp:556
+#: src/extensions/forcefieldextension.cpp:559
+#: src/extensions/forcefieldextension.cpp:562
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/extensions/forcefieldextension.cpp:566
+#: src/extensions/forcefieldextension.cpp:555
 msgid "Systematic Rotor Search"
 msgstr "Soustavné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:558
 msgid "Random Rotor Search"
 msgstr "Náhodné hledání bodu otáčení"
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:561
 msgid "Weighted Rotor Search"
 msgstr "Zatížené hledání bodu otáčení"
 
@@ -1087,7 +1089,7 @@ msgstr "Vytvořit vstupní soubory pro GAMESS balíček pro kvantovou chemii"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622:912 rc.cpp:1326 rc.cpp:1686
+#: src/extensions/gamessinputdialog.cpp:622 :912 rc.cpp:1326 rc.cpp:1686
 msgid "Title"
 msgstr "Název"
 
@@ -1190,7 +1192,8 @@ msgid "G03 Crashed."
 msgstr "G03 havaroval."
 
 #: src/extensions/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussovský neběžel správně. Snad není správně nainstalován."
 
 #. i18n: file: src/extensions/mopacinputdialog.ui:307
@@ -1199,7 +1202,7 @@ msgstr "Gaussovský neběžel správně. Snad není správně nainstalován."
 #: src/extensions/molproinputdialog.cpp:178
 #: src/extensions/mopacinputdialog.cpp:262
 #: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178:1857
+#: src/extensions/qcheminputdialog.cpp:178 :1857
 msgid "Show Preview"
 msgstr "Ukázat náhled"
 
@@ -1215,7 +1218,7 @@ msgstr "Ukázat náhled"
 #: src/extensions/molproinputdialog.cpp:182
 #: src/extensions/mopacinputdialog.cpp:267
 #: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182:1416 rc.cpp:1770 rc.cpp:1959
+#: src/extensions/qcheminputdialog.cpp:182 :1416 rc.cpp:1770 rc.cpp:1959
 msgid "Hide Preview"
 msgstr "Skrýt náhled"
 
@@ -1356,7 +1359,7 @@ msgstr "Peptid..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:1440 rc.cpp:1653
+#: src/extensions/insertpeptideextension.h:43 :1440 rc.cpp:1653
 msgid "Insert Peptide"
 msgstr "Vložit peptid"
 
@@ -1677,7 +1680,7 @@ msgstr "Vlastnosti podobnosti"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:696
+#: src/extensions/propextension.h:43 :696
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -1691,7 +1694,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:355:285
+#: src/extensions/propmodel.cpp:355 :285
 msgid "Type"
 msgstr "Typ"
 
@@ -1794,7 +1797,7 @@ msgstr "Z  %1"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:427:666
+#: src/extensions/propmodel.cpp:427 :666
 msgid "Energy"
 msgstr "Energie"
 
@@ -1867,7 +1870,7 @@ msgstr "Výběr podle zbytku"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230:126
+#: src/extensions/selectextension.cpp:230 :126
 msgid "Residue name"
 msgstr "Název zbytku"
 
@@ -1929,7 +1932,7 @@ msgstr "Soubory s parametry tónovače (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2142
+#: src/extensions/shaderextension.h:41 :2142
 msgid "GLSL Shaders"
 msgstr "GLSL tónovače"
 
@@ -1947,13 +1950,13 @@ msgstr "Osa Y"
 
 #. i18n: file: src/extensions/spectradialog.ui:127
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectradialog.cpp:152:2203
+#: src/extensions/spectradialog.cpp:152 :2203
 msgid "&Appearance"
 msgstr "&Vzhled"
 
 #. i18n: file: src/extensions/spectradialog.ui:426
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectradialog.cpp:153:2269
+#: src/extensions/spectradialog.cpp:153 :2269
 msgid "E&xport Image"
 msgstr "Vy&vést obrázek do souboru"
 
@@ -2136,7 +2139,7 @@ msgstr "Uzpůso&bit <<"
 
 #. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:736:2197
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "Uzpůso&bit >>"
 
@@ -2152,11 +2155,11 @@ msgstr "Spektra"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Zviditelnit údaje o spektru z výpočtů kvantové chemie"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid "No intensities"
 msgstr "Žádná síla"
 
-#: src/extensions/spectratype_ir.cpp:103
+#: src/extensions/spectratype_ir.cpp:102
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2165,11 +2168,11 @@ msgstr ""
 "Údaje o vibracích v molekule, které jste nahrál, nemají jakýkoli údaj o "
 "síle. Síly byly nastaveny kvůli zviditelnění na nahodilou hodnotu."
 
-#: src/extensions/spectratype_ir.cpp:141
+#: src/extensions/spectratype_ir.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Vlnové číslo (cm<sup>-1</sup>)"
 
-#: src/extensions/spectratype_nmr.cpp:284
+#: src/extensions/spectratype_nmr.cpp:283
 msgid "Shift (ppm)"
 msgstr "Posun (ppm)"
 
@@ -2385,7 +2388,7 @@ msgstr "Použít"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:97:336
+#: src/extensions/unitcellparamdialog.cpp:97 :336
 msgid "OK"
 msgstr "OK"
 
@@ -2397,7 +2400,7 @@ msgstr "Třídí se %1 vibrace podle kmitočtu..."
 #. i18n: file: src/extensions/vibrationdialog.ui:125
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/vibrationdialog.cpp:210
-#: src/extensions/vibrationdialog.cpp:213:2501
+#: src/extensions/vibrationdialog.cpp:213 :2501
 msgid "Start &Animation"
 msgstr "Spustit &animaci"
 
@@ -2416,7 +2419,7 @@ msgstr "&Vibrace..."
 #. i18n: file: src/extensions/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
 #: src/extensions/vibrationextension.cpp:122
-#: src/extensions/vibrationextension.cpp:241:1206
+#: src/extensions/vibrationextension.cpp:241 :1206
 msgid "Vibrational Analysis"
 msgstr "Rozbor vibrací"
 
@@ -2556,7 +2559,8 @@ msgstr ""
 
 #: src/moleculefile.cpp:483
 msgid "Saving molecular file failed - could not rename new file."
-msgstr "Uložení molekulového souboru selhalo - novýí soubor nelze přejmenovat."
+msgstr ""
+"Uložení molekulového souboru selhalo - novýí soubor nelze přejmenovat."
 
 #: src/moleculefile.cpp:492
 msgid "Saving molecular file failed - could not remove old file."
@@ -2726,11 +2730,6 @@ msgstr "Automatické vyladění: Nelze nastavit silové pole..."
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Automatické vyladění: E = %1 %2 (dE = %3)"
 
-#: src/tools/autoopttool.cpp:234
-#, fuzzy, qt-format
-msgid "Num Constraints: %1"
-msgstr "Omezení"
-
 #: src/tools/autoopttool.cpp:259
 msgid "Force Field:"
 msgstr "Silové pole:"
@@ -2745,13 +2744,13 @@ msgstr "Algoritmus:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:381
+#: src/tools/autoopttool.cpp:288 :381
 msgid "Steepest Descent"
 msgstr "Nejstrmější pokles"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289:384
+#: src/tools/autoopttool.cpp:289 :384
 msgid "Conjugate Gradients"
 msgstr "Sdružovat přechody"
 
@@ -2784,7 +2783,7 @@ msgstr "Neuvažované atomy jsou pohyblivé"
 msgid "Stop"
 msgstr "Zastavit"
 
-#: src/tools/autoopttool.cpp:572
+#: src/tools/autoopttool.cpp:564
 msgid "AutoOpt Molecule"
 msgstr "Automatické vyladění molekuly"
 
@@ -2838,7 +2837,7 @@ msgstr "Otáčení kolem osy z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1419 rc.cpp:1773 rc.cpp:1860
+#: src/tools/autorotatetool.cpp:296 :1419 rc.cpp:1773 rc.cpp:1860
 msgid "Reset"
 msgstr "Obnovit"
 
@@ -3000,7 +2999,7 @@ msgstr "Nastavení měření"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:2522
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :2522
 msgid "Add Atom"
 msgstr "Přidat atom"
 
@@ -3054,7 +3053,7 @@ msgstr "Prvek:"
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798:837
+#: src/tools/drawtool.cpp:798 :837
 msgid "Other..."
 msgstr "Ostatní:"
 
@@ -3203,7 +3202,7 @@ msgstr "Editor matice Z..."
 
 #. i18n: file: src/extensions/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:924
+#: src/tools/zmatrixtool.h:39 :924
 msgid "Z-Matrix"
 msgstr "Matice Z"
 
@@ -6696,19 +6695,19 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
-"Avogadro Team,fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
-"fri, ,Launchpad Contributions:,Pepa"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,fri, ,Launchpad Contributions:,Avogadro "
+"Team,Geoff Hutchison,fri, ,Launchpad Contributions:,Avogadro Team,Geoff "
+"Hutchison,Roman Horník,fri, ,Launchpad Contributions:,Pepa"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
-"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,pavelfric@seznam."
-"cz,,,avogadro-devel@lists.sourceforge.net,,roman.hornik@gmail.com,"
-"pavelfric@seznam.cz,,,"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
+"ech.trefny@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,pavelfric@seznam.cz,,,avogadro-"
+"devel@lists.sourceforge.net,,pavelfric@seznam.cz,,,avogadro-"
+"devel@lists.sourceforge.net,,roman.hornik@gmail.com,pavelfric@seznam.cz,,,"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Soubory Avogadro (*.*)"
@@ -6716,9 +6715,11 @@ msgstr ""
 #~ msgid "Any files (*.*)"
 #~ msgstr "Všechny soubory (*.*)"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Soubor bude zapsán do %1."
 
+#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Soubor %1."
 
@@ -6734,6 +6735,7 @@ msgstr ""
 #~ msgid "Save movie..."
 #~ msgstr "Uložit film..."
 
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Nelze uložit soubor %1."
 
@@ -6758,9 +6760,11 @@ msgstr ""
 #~ msgid "Lin Morph..."
 #~ msgstr "Přímočará proměna..."
 
+#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Načítání souboru s molekulami %1 selhalo."
 
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dvě molekuly mají odlišný počet atomů %1 %2"
 
@@ -6774,11 +6778,11 @@ msgstr ""
 #~ msgstr "Neplatný název filmu. Musíte zadat úplnou cestu k souboru."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
 #~ msgstr ""
-#~ "Neplatný název filmu. Musíte zadat úplnou cestu k souboru a název končící "
-#~ "na .avi"
+#~ "Neplatný název filmu. Musíte zadat úplnou cestu k souboru a název končící na "
+#~ ".avi"
 
 #~ msgid "Linear Morph"
 #~ msgstr "Přímočará proměna"
@@ -6830,8 +6834,8 @@ msgstr ""
 #~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
 #~ "then be used to make a movie."
 #~ msgstr ""
-#~ "Ukládat snímky obrazovky dráhy jako řadu souborů POVRay. Dají se použít "
-#~ "pro vytvoření filmu."
+#~ "Ukládat snímky obrazovky dráhy jako řadu souborů POVRay. Dají se použít pro "
+#~ "vytvoření filmu."
 
 #~ msgid "Button to save an .xyz trajectory."
 #~ msgstr "Tlačítko pro uložení dráhy .xyz"
@@ -6854,15 +6858,13 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
-#~ "Všechny atomy, které jsou uvnitř poloměru ligandu, budou částí vázající "
-#~ "kapsy"
+#~ "Všechny atomy, které jsou uvnitř poloměru ligandu, budou částí vázající kapsy"
 
 #~ msgid "MO 666"
 #~ msgstr "MO 666"
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
