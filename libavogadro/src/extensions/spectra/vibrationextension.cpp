@@ -43,7 +43,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
+  VibrationExtension::VibrationExtension(QObject *parent) : DockExtension(parent),
                                                             m_mode(-1),
                                                             m_dialog(0),
                                                             m_dock(0),
@@ -62,17 +62,6 @@ namespace Avogadro {
   VibrationExtension::~VibrationExtension()
   {
     clearAnimationFrames();
-  }
-
-  QList<QAction *> VibrationExtension::actions() const
-  {
-    return QList<QAction*>();
-  }
-
-  QString VibrationExtension::menuPath(QAction *action) const
-  {
-    Q_UNUSED(action);
-    return QString();
   }
 
   QDockWidget * VibrationExtension::dockWidget()
@@ -102,7 +91,6 @@ namespace Avogadro {
         m_dialog->setMolecule(m_molecule);
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
-        /*m_animation->setMolecule(m_molecule);*/
       }
     }
     m_dock->setWidget(m_dialog);
@@ -137,18 +125,12 @@ namespace Avogadro {
         else {
           m_dock->close();
           m_dialog->setEnabled(false);
-          //m_dialog->toggleViewAction()->setChecked(false);
-          //if (m_dialog->toggleViewAction()->isChecked())
-          //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
           qDebug() << "1:hide it!";
         }
       } else {
         qDebug() << "2:hide it!";
         m_dock->close();
         m_dialog->setEnabled(false);
-        //m_dialog->toggleViewAction()->setChecked(false);
-        //if (m_dialog->toggleViewAction()->isChecked())
-          //m_dialog->toggleViewAction()->activate(QAction::Trigger);
       }
       m_dialog->setMolecule(molecule);
     }
@@ -269,13 +251,6 @@ namespace Avogadro {
     m_molecule->update();
   }
 
-  QUndoCommand* VibrationExtension::performAction( QAction *action, GLWidget *widget )
-  {
-    Q_UNUSED(action)
-    Q_UNUSED(widget)
-    return NULL;
-  }
-
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
@@ -333,12 +308,6 @@ namespace Avogadro {
   void VibrationExtension::pauseAnimation()
   {
     QSettings settings;
-    /*if (m_animationFrames.size() == 0) {
-      m_dialog->pauseButtonClicked(false);
-      return;
-    }*/
-
-    qDebug() << "paused" << m_paused;
 
     m_paused = !m_paused;
     int q = m_widget->quality();

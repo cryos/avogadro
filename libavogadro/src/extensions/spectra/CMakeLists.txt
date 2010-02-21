@@ -1,3 +1,13 @@
+include_directories(
+  ../
+  ${CMAKE_CURRENT_BINARY_DIR}
+)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
+
+set(LINK_LIBS avogadro)
+set(PLUGIN_LABEL extensions)
+set(PLUGIN_TARGET extensions)
+
 ### Vibrations
 avogadro_plugin(vibrationextension
   "vibrationextension.cpp;vibrationwidget.cpp"
