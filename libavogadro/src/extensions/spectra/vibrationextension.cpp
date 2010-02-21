@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
-#include "../pluginmanager.h"
+#include "../../pluginmanager.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
