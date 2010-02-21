@@ -20,8 +20,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONDIALOG_H
-#define VIBRATIONDIALOG_H
+#ifndef VIBRATIONWIDGET_H
+#define VIBRATIONWIDGET_H
 
 #include <QtGui/QWidget>
 
@@ -80,6 +80,7 @@ namespace Avogadro {
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
       std::vector<int> *m_indexMap;
+      int m_currentRow;
   };
 }
 

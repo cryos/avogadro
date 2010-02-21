@@ -65,9 +65,9 @@ namespace Avogadro {
     else if (m_type == BondType) {
       return m_molecule->numBonds();
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       return m_molecule->numAtoms();
-    }
+    }*/
     else if (m_type == ConformerType) {
       return m_molecule->numConformers();
     }
@@ -102,15 +102,15 @@ namespace Avogadro {
     Q_UNUSED(parent);
     switch (m_type) {
     case AtomType:
-      return 8; // type, element, valence, formal charge, partial charge, x, y, z
+      return 8; // element, type, valence, formal charge, partial charge, x, y, z
     case BondType:
       return 5;
     case AngleType:
       return 4;
     case TorsionType:
       return 5;
-    case CartesianType:
-      return 3;
+    /*case CartesianType:
+      return 3;*/
     case ConformerType:
       return 1;
     }
@@ -124,10 +124,10 @@ namespace Avogadro {
 
     // handle text alignments
     if (role == Qt::TextAlignmentRole) {
-      if (m_type == CartesianType) {
+      /*if (m_type == CartesianType) {
         return Qt::AlignRight + Qt::AlignVCenter; // XYZ coordinates
       }
-      else if (m_type == ConformerType) {
+      else*/ if (m_type == ConformerType) {
         return Qt::AlignRight + Qt::AlignVCenter; // energies
       }
       else if (m_type == AtomType) {
@@ -169,15 +169,15 @@ namespace Avogadro {
       QString format("%L1");
       
       switch (index.column()) {
-      case 0: // type
+      case 0: // atomic symbol
+        return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
+      case 1: // type
         {
           if (!m_validCache)
             cacheOBMol();
           OpenBabel::OBAtom *obatom = m_cachedOBMol->GetAtom(index.row() + 1);
           return obatom->GetType();
         }
-      case 1: // atomic symbol
-        return QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()));
       case 2: // valence
         return atom->valence();
       case 3: // formal charge
@@ -214,11 +214,31 @@ namespace Avogadro {
       if (sortRole && index.column() == 4)
         return bond->GetLength();
 
+      Atom *a;
+      QString str;
+      unsigned int  gi;
+      
       switch (index.column()) {
       case 0: // atom 1
-        return bond->GetBeginAtomIdx();
+        //return bond->GetBeginAtomIdx();
+        a = m_molecule->atom(bond->GetBeginAtomIdx()-1);
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
+        return str;
       case 1: // atom 2
-        return bond->GetEndAtomIdx();
+        //return bond->GetEndAtomIdx();
+        a = m_molecule->atom(bond->GetEndAtomIdx()-1);
+        gi = a->groupIndex();
+        if (gi != 0) {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+        } else {
+          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+        }
+        return str;
       case 2: // order
         return bond->GetBondOrder();
       case 3: // rotatable
@@ -312,7 +332,7 @@ namespace Avogadro {
           rowCount++;
         }
       }
-    } else if (m_type == CartesianType) {
+    } /*else if (m_type == CartesianType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numAtoms())
         return QVariant();
 
@@ -336,7 +356,7 @@ namespace Avogadro {
         else
           return format.arg(atom->pos()->z(), 0, 'f', 5);
       }
-    } else if (m_type == ConformerType) {
+    }*/ else if (m_type == ConformerType) {
       if (static_cast<unsigned int>(index.row()) >= m_molecule->numConformers())
         return QVariant();
 
@@ -372,9 +392,9 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Type");
-        case 1:
           return tr("Element");
+        case 1:
+          return tr("Type");
         case 2:
           return tr("Valence");
         case 3:
@@ -434,7 +454,7 @@ namespace Avogadro {
         }
       } else
         return tr("Torsion %1").arg(section + 1);
-    } else if (m_type == CartesianType) {
+    } /*else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
@@ -446,7 +466,7 @@ namespace Avogadro {
         }
       } else
         return tr("Atom %1").arg(section + 1);
-    } else if (m_type == ConformerType) {
+    }*/ else if (m_type == ConformerType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
@@ -466,11 +486,11 @@ namespace Avogadro {
 
     if (m_type == AtomType) {
       switch (index.column()) {
-      case 1: // atomic number
+      case 0: // atomic number
       case 3: // formal charge
       case 4: // partial charge
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-      case 0: // type
+      case 1: // type
       case 2: // valence
         return QAbstractItemModel::flags(index);
       }
@@ -499,9 +519,9 @@ namespace Avogadro {
         return QAbstractItemModel::flags(index);
       }
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
-    }
+    }*/
     else if (m_type == ConformerType) {
       return QAbstractItemModel::flags(index);
     }
@@ -529,7 +549,7 @@ namespace Avogadro {
       Eigen::Vector3d pos = *atom->pos();
       
       switch (index.column()) {
-      case 1: {// atomic number
+      case 0: {// atomic number
         // Try first as a number
         bool ok;
         int atomicNumber = value.toInt(&ok);
@@ -561,13 +581,13 @@ namespace Avogadro {
         m_molecule->update();
         emit dataChanged(index, index);
         return true;      
-      case 0: // type
+      case 1: // type
       case 2: // valence
       default:
         return false;
       }
     }
-    else if (m_type == CartesianType) {
+    /*else if (m_type == CartesianType) {
       if (index.column() > 2)
         return false;
 
@@ -579,7 +599,7 @@ namespace Avogadro {
       m_molecule->update();
       emit dataChanged(index, index);
       return true;
-    }
+    }*/
     else if (m_type == BondType) {
       Bond *bond = m_molecule->bond(index.row());
       Eigen::Vector3d bondDirection = *(bond->beginPos()) - *(bond->endPos());
@@ -701,7 +721,7 @@ namespace Avogadro {
 
   void PropertiesModel::atomAdded(Atom *atom)
   {
-    if ( (m_type == AtomType) || (m_type == CartesianType) ) {
+    if ( (m_type == AtomType) /*|| (m_type == CartesianType)*/ ) {
       // insert a new row at the end
       beginInsertRows(QModelIndex(), atom->index(), atom->index());
       endInsertRows();
@@ -711,7 +731,7 @@ namespace Avogadro {
 
   void PropertiesModel::atomRemoved(Atom *atom)
   {
-    if ( (m_type == AtomType) || (m_type == CartesianType) )  {
+    if ( (m_type == AtomType) /*|| (m_type == CartesianType)*/ )  {
       // delete the row for this atom
       beginRemoveRows(QModelIndex(), atom->index(), atom->index());
       endRemoveRows();
