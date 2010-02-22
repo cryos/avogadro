@@ -570,9 +570,12 @@ namespace Avogadro
     /**
      * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines()
      * for each GLWidget.
+    gl->setExtensions(d->pluginManager.extensions(this));
      */
-    foreach (GLWidget *glwidget, d->glWidgets)
+    foreach (GLWidget *glwidget, d->glWidgets) {
       glwidget->reloadEngines();
+      glwidget->setExtensions(d->pluginManager.extensions(this));
+    }
 
 
     int count = d->enginesStacked->count();
@@ -3104,6 +3107,9 @@ namespace Avogadro
     gl->setUndoStack( d->undoStack );
     gl->setToolGroup( d->toolGroup );
     d->glWidgets.append(gl);
+    
+    // Set the extensions (needed for Extension::paint) 
+    gl->setExtensions(d->pluginManager.extensions(this));
 
     // engine list wiget contains all the buttons too
     QWidget *engineListWidget = new QWidget(ui.enginesWidget);
