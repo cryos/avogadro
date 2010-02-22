@@ -67,7 +67,7 @@ namespace Avogadro {
   QDockWidget * VibrationExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new QDockWidget(tr("Molecule Vibrations"));
+      m_dock = new QDockWidget( tr("Molecule Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
       //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
     
@@ -94,7 +94,6 @@ namespace Avogadro {
       }
     }
     m_dock->setWidget(m_dialog);
-    qDebug() << "return dock";
     m_dock->setVisible(false);
     return m_dock;
   }

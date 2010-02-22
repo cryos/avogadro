@@ -48,7 +48,12 @@ namespace Avogadro {
 
   Qt::DockWidgetArea DockExtension::preferredDockArea() const
   {
-      return Qt::AllDockWidgetAreas;
+      return Qt::RightDockWidgetArea;
+  }
+
+  int DockExtension::dockOrder() const
+  {
+      return 0;
   }
 }
 

@@ -56,6 +56,10 @@ namespace Avogadro {
      * @return default DockWidgetArea for dock
      */
     virtual Qt::DockWidgetArea preferredDockArea() const;
+    /**
+     * @return Determines the ordering of the docks
+     */
+    virtual int dockOrder() const;
   };
   
 }

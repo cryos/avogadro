@@ -21,6 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include <avogadro/dockextension.h>
+
 #include "mainwindow.h"
 
 #include "config.h" // krazy:exclude=includes
@@ -2954,7 +2956,12 @@ namespace Avogadro
 
       QDockWidget *dockWidget = extension->dockWidget();
       if(dockWidget) {
-        addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        Qt::DockWidgetArea area = Qt::RightDockWidgetArea;
+        DockExtension *dock = qobject_cast<DockExtension *>(extension);
+        if (dock) {
+          area = dock->preferredDockArea();
+        }
+        addDockWidget(area, dockWidget);
         dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
