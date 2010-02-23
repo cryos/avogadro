@@ -26,7 +26,7 @@
 #include "vibrationwidget.h"
 
 #include <avogadro/glwidget.h>
-#include <avogadro/extension.h>
+#include <avogadro/dockextension.h>
 #include <avogadro/animation.h>
 
 #include <QtCore/QObject>
@@ -41,7 +41,7 @@ namespace OpenBabel {
 
 namespace Avogadro {
 
- class VibrationExtension : public Extension
+ class VibrationExtension : public DockExtension
   {
     Q_OBJECT
     AVOGADRO_EXTENSION("Vibration", tr("Vibration"),
@@ -53,12 +53,7 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~VibrationExtension();
 
-      //! Perform Action
-      virtual QList<QAction *> actions() const;
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
-      virtual QString menuPath(QAction *action) const;
       QDockWidget * dockWidget();
-
       virtual void setMolecule(Molecule *molecule);
 
       void clearAnimationFrames();

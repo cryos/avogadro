@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
-#include "../pluginmanager.h"
+#include "../../pluginmanager.h"
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -43,7 +43,7 @@ using namespace Eigen;
 
 namespace Avogadro {
 
-  VibrationExtension::VibrationExtension(QObject *parent) : Extension(parent),
+  VibrationExtension::VibrationExtension(QObject *parent) : DockExtension(parent),
                                                             m_mode(-1),
                                                             m_dialog(0),
                                                             m_dock(0),
@@ -64,21 +64,10 @@ namespace Avogadro {
     clearAnimationFrames();
   }
 
-  QList<QAction *> VibrationExtension::actions() const
-  {
-    return QList<QAction*>();
-  }
-
-  QString VibrationExtension::menuPath(QAction *action) const
-  {
-    Q_UNUSED(action);
-    return QString();
-  }
-
   QDockWidget * VibrationExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new QDockWidget(tr("Molecule Vibrations"));
+      m_dock = new QDockWidget( tr("Molecule Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
       //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
     
@@ -102,11 +91,9 @@ namespace Avogadro {
         m_dialog->setMolecule(m_molecule);
         m_animation = new Animation(this);
         m_animation->setLoopCount(0); // continual loopback
-        /*m_animation->setMolecule(m_molecule);*/
       }
     }
     m_dock->setWidget(m_dialog);
-    qDebug() << "return dock";
     m_dock->setVisible(false);
     return m_dock;
   }
@@ -137,18 +124,12 @@ namespace Avogadro {
         else {
           m_dock->close();
           m_dialog->setEnabled(false);
-          //m_dialog->toggleViewAction()->setChecked(false);
-          //if (m_dialog->toggleViewAction()->isChecked())
-          //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
           qDebug() << "1:hide it!";
         }
       } else {
         qDebug() << "2:hide it!";
         m_dock->close();
         m_dialog->setEnabled(false);
-        //m_dialog->toggleViewAction()->setChecked(false);
-        //if (m_dialog->toggleViewAction()->isChecked())
-          //m_dialog->toggleViewAction()->activate(QAction::Trigger);
       }
       m_dialog->setMolecule(molecule);
     }
@@ -269,13 +250,6 @@ namespace Avogadro {
     m_molecule->update();
   }
 
-  QUndoCommand* VibrationExtension::performAction( QAction *action, GLWidget *widget )
-  {
-    Q_UNUSED(action)
-    Q_UNUSED(widget)
-    return NULL;
-  }
-
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
@@ -333,12 +307,6 @@ namespace Avogadro {
   void VibrationExtension::pauseAnimation()
   {
     QSettings settings;
-    /*if (m_animationFrames.size() == 0) {
-      m_dialog->pauseButtonClicked(false);
-      return;
-    }*/
-
-    qDebug() << "paused" << m_paused;
 
     m_paused = !m_paused;
     int q = m_widget->quality();
