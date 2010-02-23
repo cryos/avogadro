@@ -157,7 +157,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-    ifs.open(QFile::encodeName(m_fileName)); // This handles utf8 file names etc
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     ifs.seekg(d->streampos.at(i));
  
     if (!ifs) // Should not happen, already checked file could be opened
@@ -203,7 +203,7 @@ namespace Avogadro {
 
     // Now attempt to open the file.new for writing
     ofstream ofs;
-    QString newFilename(QFile::encodeName(m_fileName) + QLatin1String(".new"));
+    QString newFilename(m_fileName.toLocal8Bit() + QLatin1String(".new"));
     ofs.open(newFilename.toAscii().data()); // This handles utf8 file names etc
     if (!ofs) {
       m_error.append(tr("Could not open file '%1' for writing.").arg(m_fileName));
@@ -211,7 +211,7 @@ namespace Avogadro {
     }
     // Copy molecules 0 to i-1 to .new file
     ifstream ifs;
-    ifs.open(QFile::encodeName(m_fileName)); // This handles utf8 file names etc
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) {
       m_error.append(tr("Could not open file '%1' for reading.").arg(m_fileName));
       return false;

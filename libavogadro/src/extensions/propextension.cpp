@@ -114,10 +114,6 @@ namespace Avogadro
     case TorsionPropIndex:
     case ConformerIndex:
       return tr("&View") + '>' + tr("&Properties");
-    //case CartesianIndex:
-    default:
-      return tr("&Build");
-      break;
     };
     return QString();
   }

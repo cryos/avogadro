@@ -17,46 +17,50 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#ifndef SPECTRATYPE_UV_H
-#define SPECTRATYPE_UV_H
+#ifndef SPECTRATYPE_CD_H
+#define SPECTRATYPE_CD_H
 
-#include <QtCore/QHash>
-#include <QtCore/QVariant>
+#include <QHash>
+#include <QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabuv.h"
+#include "ui_spectratabcd.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class UVSpectra : public SpectraType
+  class CDSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    UVSpectra( SpectraDialog *parent = 0 );
-    ~UVSpectra();
+    CDSpectra( SpectraDialog *parent = 0 );
+    ~CDSpectra();
 
     void writeSettings();
     void readSettings();
 
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
-    
+
     void getCalculatedPlotObject(PlotObject *plotObject);
-  //  void setImportedData(const QList<double> & xList, const QList<double> & yList);
-  //  void getImportedPlotObject(PlotObject *plotObject);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    //void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
+  private slots:
+    void rotatoryTypeChanged(const QString & str);
+
   private:
-    Ui::Tab_UV ui;
+    Ui::Tab_CD ui;
+    QList<double> *m_yListVelocity, *m_yListLength;
     double m_fermi;
   };
 }
 
 #endif
-#endif
+//#endif

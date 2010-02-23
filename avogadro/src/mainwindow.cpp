@@ -21,6 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include <avogadro/dockextension.h>
+
 #include "mainwindow.h"
 
 #include "config.h" // krazy:exclude=includes
@@ -570,9 +572,12 @@ namespace Avogadro
     /**
      * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines()
      * for each GLWidget.
+    gl->setExtensions(d->pluginManager.extensions(this));
      */
-    foreach (GLWidget *glwidget, d->glWidgets)
+    foreach (GLWidget *glwidget, d->glWidgets) {
       glwidget->reloadEngines();
+      glwidget->setExtensions(d->pluginManager.extensions(this));
+    }
 
 
     int count = d->enginesStacked->count();
@@ -2954,7 +2959,12 @@ namespace Avogadro
 
       QDockWidget *dockWidget = extension->dockWidget();
       if(dockWidget) {
-        addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        Qt::DockWidgetArea area = Qt::RightDockWidgetArea;
+        DockExtension *dock = qobject_cast<DockExtension *>(extension);
+        if (dock) {
+          area = dock->preferredDockArea();
+        }
+        addDockWidget(area, dockWidget);
         dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
@@ -3104,6 +3114,9 @@ namespace Avogadro
     gl->setUndoStack( d->undoStack );
     gl->setToolGroup( d->toolGroup );
     d->glWidgets.append(gl);
+    
+    // Set the extensions (needed for Extension::paint) 
+    gl->setExtensions(d->pluginManager.extensions(this));
 
     // engine list wiget contains all the buttons too
     QWidget *engineListWidget = new QWidget(ui.enginesWidget);

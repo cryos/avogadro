@@ -90,16 +90,6 @@ set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
 avogadro_plugin(surfaceextension "${surfaceextension_SRCS}" surfacedialog.ui)
 target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
 
-### Vibrations
-avogadro_plugin(vibrationextension
-  "vibrationextension.cpp;vibrationdialog.cpp"
-  vibrationwidget.ui)
-
-### Spectra
-avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp;spectratype_raman.cpp"
-  "spectradialog.ui;spectratab_ir_raman.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
-
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
@@ -146,3 +136,4 @@ avogadro_plugin(supercellextension
 
 avogadro_plugin(networkfetchextension networkfetchextension.cpp)
 
+add_subdirectory(spectra)

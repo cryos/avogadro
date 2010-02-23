@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2010 by Konstantin Tokarev
+  Copyright (C) 2009 by David Lonie
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -16,25 +16,30 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public icense for more details.
  ***********************************************************************/
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#ifndef SPECTRATYPE_RAMAN_H
-#define SPECTRATYPE_RAMAN_H
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+
+#ifndef SPECTRATYPE_DOS_H
+#define SPECTRATYPE_DOS_H
 
 #include <QtCore/QHash>
 #include <QtCore/QVariant>
 
-#include "spectratype_ir.h"
+#include "spectradialog.h"
+#include "spectratype.h"
+#include "ui_spectratabdos.h"
+
+#include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class RamanSpectra : public AbstractIRSpectra
+  class DOSSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    RamanSpectra( SpectraDialog *parent = 0 );
-    ~RamanSpectra();
+    DOSSpectra( SpectraDialog *parent = 0 );
+    ~DOSSpectra();
 
     void writeSettings();
     void readSettings();
@@ -43,18 +48,22 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
-  private slots:
-    void updateT(double);
-    void updateW(double);
+    void updateDataTable() {}
+
+  public slots:
+    void toggleIntegratedDOS(bool b);
 
   private:
-    double m_W;
-    double m_T;
-    QList<double> m_yList_orig;
+    Ui::Tab_DOS ui;
+    std::vector<double> *m_intDOS;
+    double m_fermi;
+    uint m_numAtoms;
   };
 }
 
 #endif
-#endif
+//#endif

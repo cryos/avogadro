@@ -1,7 +1,8 @@
 /**********************************************************************
-  VibrationDialog - Visualize and animate vibrational modes
+  VibrationWidget - Visualize and animate vibrational modes
 
   Copyright (C) 2009 by Geoffrey Hutchison
+  Some portions Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -19,16 +20,14 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef VIBRATIONDIALOG_H
-#define VIBRATIONDIALOG_H
+#ifndef VIBRATIONWIDGET_H
+#define VIBRATIONWIDGET_H
 
-//#include <QtGui/QDialog>
-#include <QtGui/QDockWidget>
+#include <QtGui/QWidget>
 
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
-//#include "ui_vibrationdialog.h"
 #include "ui_vibrationwidget.h"
 
 namespace OpenBabel {
@@ -37,16 +36,15 @@ namespace OpenBabel {
 
 namespace Avogadro {
 
-  //class VibrationDialog : public QDialog
-  class VibrationDialog : public QDockWidget
+  class VibrationWidget : public QWidget
   {
       Q_OBJECT
 
     public:
       //! Constructor
-      explicit VibrationDialog( QWidget *parent = 0, Qt::WindowFlags f = 0 );
+      explicit VibrationWidget( QWidget *parent = 0, Qt::WindowFlags f = 0 );
       //! Deconstructor
-      ~VibrationDialog();
+      ~VibrationWidget();
 
       void setMolecule(Molecule *molecule);
       void setWidget(GLWidget *widget) {m_widget = widget; }
@@ -62,6 +60,8 @@ namespace Avogadro {
       void setDisplayForceVectors(bool checked);
       void setAnimationSpeed(bool checked);
       void animateButtonClicked(bool);
+      void pauseButtonClicked(bool);
+      void spectraButtonClicked();
       void exportVibrationData(bool);
 
     signals:
@@ -70,15 +70,17 @@ namespace Avogadro {
       void forceVectorUpdated(bool enabled);
       void animationSpeedUpdated(bool enabled);
       void toggleAnimation();
+      void pauseAnimation();
+      void showSpectra();
 
     private:
-      //Ui::VibrationDialog ui;
       Ui::VibrationWidget ui;
 
       GLWidget *m_widget;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
       std::vector<int> *m_indexMap;
+      int m_currentRow;
   };
 }
 

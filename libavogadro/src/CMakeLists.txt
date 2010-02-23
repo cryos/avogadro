@@ -42,6 +42,7 @@ set(libavogadro_HDRS
   color.h
   colorbutton.h
   cube.h
+  dockextension.h
   elementtranslator.h
   engine.h
   extension.h

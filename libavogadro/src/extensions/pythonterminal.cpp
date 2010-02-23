@@ -40,7 +40,7 @@ using namespace boost::python;
 namespace Avogadro
 {
 
-  PythonTerminal::PythonTerminal( QObject *parent ) : Extension( parent ), m_molecule(0), m_terminalDock(0)
+  PythonTerminal::PythonTerminal( QObject *parent ) : DockExtension( parent ), m_molecule(0), m_terminalDock(0)
   {
   }
 
@@ -51,7 +51,7 @@ namespace Avogadro
       //m_terminalDock->deleteLater();
   }
 
-  QList<QAction *> PythonTerminal::actions() const
+  /*QList<QAction *> PythonTerminal::actions() const
   {
     return QList<QAction*>();
   }
@@ -61,7 +61,7 @@ namespace Avogadro
   {
     Q_UNUSED(action);
     return QString();
-  }
+  }*/
 
   QDockWidget * PythonTerminal::dockWidget()
   {
@@ -84,12 +84,12 @@ namespace Avogadro
     m_terminalEdit->setMolecule(molecule);
   }
 
-  QUndoCommand* PythonTerminal::performAction( QAction *action, GLWidget *widget )
+  /*QUndoCommand* PythonTerminal::performAction( QAction *action, GLWidget *widget )
   {
     Q_UNUSED(action);
     Q_UNUSED(widget);
     return 0;
-  }
+  }*/
 
   /*
   PythonTerminalWidget::PythonTerminalWidget( QWidget *parent ) : QWidget(parent)

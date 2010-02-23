@@ -145,6 +145,10 @@ namespace Avogadro {
     PluginManager(QObject *parent = 0);
     ~PluginManager();
 
+    /**
+     * Get the singleton instance of the PluginManager. Always use this function
+     * when using the PluginManager class. This pointer never has to be deleted.
+     */ 
     static PluginManager* instance();
 
     /**

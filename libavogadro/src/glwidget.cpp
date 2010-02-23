@@ -35,11 +35,13 @@
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
+  #include "pythonextension_p.h"
 #endif
 
 #include <avogadro/painterdevice.h>
 #include <avogadro/tool.h>
 #include <avogadro/toolgroup.h>
+#include <avogadro/extension.h>
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 #include <avogadro/residue.h>
@@ -201,6 +203,7 @@ namespace Avogadro {
 
     Tool                  *tool;
     ToolGroup             *toolGroup;
+    QList<Extension*>     extensions;
 
     GLuint                *selectBuf;
     int                    selectBufSize;
@@ -773,6 +776,16 @@ namespace Avogadro {
       if ( d->tool ) {
         d->tool->paint( this );
       }
+
+#ifdef ENABLE_PYTHON
+      // Render the extensions (for now: python only)
+      foreach (Extension *extension, d->extensions) {
+        PythonExtension *pyext = qobject_cast<PythonExtension*>(extension);
+        if (pyext)
+          pyext->paint(this);
+      }
+#endif
+
 
       // Now render transparent
       glEnable(GL_BLEND);
@@ -1388,6 +1401,11 @@ namespace Avogadro {
   {
     d->tool = 0;
     m_navigateTool = 0;
+  }
+      
+  void GLWidget::setExtensions(QList<Extension*> extensions)
+  {
+    d->extensions = extensions;
   }
 
 
