@@ -41,6 +41,8 @@
 
 using namespace std;
 using namespace OpenBabel;
+using OpenBabel::OBGenericDataType::AngleData;
+using OpenBabel::OBGenericDataType::TorsionData;
 
 namespace Avogadro
 {
@@ -301,27 +303,55 @@ namespace Avogadro
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == AngleType && model() != 0) {
-        int aIndex = model()->data(index.sibling(index.row(), 0)).toInt();
-        int bIndex = model()->data(index.sibling(index.row(), 1)).toInt();
-        int cIndex = model()->data(index.sibling(index.row(), 2)).toInt();
+        OBMol *mol = new OBMol(m_molecule->OBMol());
+        mol->FindAngles();
+        OBAngleData *ad = static_cast<OBAngleData *>(mol->GetData(AngleData));
+        if (!ad)
+          return;
+        vector<vector<unsigned int> > angles;
+        ad->FillAngleArray(angles);
+        delete mol;
+
+        Atom *startAtom = m_molecule->atom((angles[index.row()][1]));
+        Atom *vertex = m_molecule->atom((angles[index.row()][0]));
+        Atom *endAtom = m_molecule->atom((angles[index.row()][2]));
+        Bond *bond1 = startAtom->bond(vertex);
+        Bond *bond2 = vertex->bond(endAtom);
         
-        matchedPrimitives.append( m_molecule->atom( aIndex - 1) );
-        matchedPrimitives.append( m_molecule->atom( bIndex - 1) );
-        matchedPrimitives.append( m_molecule->atom( cIndex - 1) );
+        matchedPrimitives.append( startAtom );
+        matchedPrimitives.append( vertex );
+        matchedPrimitives.append( endAtom );
+        matchedPrimitives.append( bond1 );
+        matchedPrimitives.append( bond2 );
 
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
       } else if (m_type == TorsionType && model() != 0) {
-        int aIndex = model()->data(index.sibling(index.row(), 0)).toInt();
-        int bIndex = model()->data(index.sibling(index.row(), 1)).toInt();
-        int cIndex = model()->data(index.sibling(index.row(), 2)).toInt();
-        int dIndex = model()->data(index.sibling(index.row(), 3)).toInt();
+        OBMol *mol = new OBMol(m_molecule->OBMol());
+        mol->FindTorsions();
+        OBTorsionData *td = static_cast<OBTorsionData *>(mol->GetData(TorsionData));
+        if (!td)
+          return;
+        vector<vector<unsigned int> > torsions;
+        td->FillTorsionArray(torsions);
+        delete mol;
+
+        Atom *a = m_molecule->atom( torsions[index.row()][0] );
+        Atom *b = m_molecule->atom( torsions[index.row()][1] );
+        Atom *c = m_molecule->atom( torsions[index.row()][2] );
+        Atom *d = m_molecule->atom( torsions[index.row()][3] );
+        Bond *bond1 = a->bond(b);
+        Bond *bond2 = b->bond(c);
+        Bond *bond3 = c->bond(d);
         
-        matchedPrimitives.append( m_molecule->atom( aIndex - 1) );
-        matchedPrimitives.append( m_molecule->atom( bIndex - 1) );
-        matchedPrimitives.append( m_molecule->atom( cIndex - 1) );
-        matchedPrimitives.append( m_molecule->atom( dIndex - 1) );
+        matchedPrimitives.append(a);
+        matchedPrimitives.append(b);
+        matchedPrimitives.append(c);
+        matchedPrimitives.append(d);
+        matchedPrimitives.append(bond1);
+        matchedPrimitives.append(bond2);
+        matchedPrimitives.append(bond3);
 
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
@@ -334,7 +364,6 @@ namespace Avogadro
         m_molecule->update();
         return;
       }
-      // TODO: Highlight angles and torsions
     }
   }
 

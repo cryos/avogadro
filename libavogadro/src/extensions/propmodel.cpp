@@ -759,7 +759,7 @@ namespace Avogadro {
 
     m_validCache = true;
   }
-
+  
   void PropertiesModel::atomAdded(Atom *atom)
   {
     if ( (m_type == AtomType) /*|| (m_type == CartesianType)*/ ) {
