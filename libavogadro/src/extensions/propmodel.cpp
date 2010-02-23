@@ -527,6 +527,9 @@ namespace Avogadro {
       case 0: // atomic number
       case 3: // formal charge
       case 4: // partial charge
+      case 5:
+      case 6:
+      case 7:
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       case 1: // type
       case 2: // valence
@@ -535,7 +538,7 @@ namespace Avogadro {
     }
     else if (m_type == BondType) {
       switch (index.column()) {
-      case 4: // bond length
+      case 5: // bond length
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
@@ -543,7 +546,7 @@ namespace Avogadro {
     }
     else if (m_type == AngleType) {
       switch (index.column()) {
-      case 3: // angle
+      case 4: // angle
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
@@ -551,7 +554,7 @@ namespace Avogadro {
     }
     else if (m_type == TorsionType) {
       switch (index.column()) {
-      case 4: // dihedral
+      case 5: // dihedral
         return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
       default:
         return QAbstractItemModel::flags(index);
@@ -645,7 +648,7 @@ namespace Avogadro {
       SkeletonTree zMatrixTree;
 
       switch (index.column()) {
-      case 4: // length
+      case 5: // length
         lengthScale = (value.toDouble() - bond->length()) / bond->length();
         // scale our bond vector to match the new length
         bondDirection *= lengthScale;
@@ -681,7 +684,7 @@ namespace Avogadro {
       }
 
       switch (index.column()) {
-      case 3: // angle
+      case 4: // angle
         abVector = *(startAtom->pos()) - *(vertex->pos());
         bcVector = *(endAtom->pos()) - *(vertex->pos());
         crossProductVector = abVector.cross(bcVector).normalized();
@@ -724,7 +727,7 @@ namespace Avogadro {
       }
 
       switch (index.column()) {
-      case 4: // dihedral angle
+      case 5: // dihedral angle
         bcVector = (*(b->pos()) - *(c->pos())).normalized();
         rotationAdjustment = (value.toDouble() - initialAngle) * cDegToRad;
 
