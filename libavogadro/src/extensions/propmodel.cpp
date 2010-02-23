@@ -49,6 +49,16 @@ namespace Avogadro {
   using OpenBabel::OBGenericDataType::TorsionData;
   using OpenBabel::OBAtom;
 
+  QString atomGroupIndexString (Atom *a)
+  {
+    unsigned int gi = a->groupIndex();
+    if (gi != 0) {
+      return QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
+    } else {
+      return QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
+    }
+  }
+
   PropertiesModel::PropertiesModel(Type type, QObject *parent)
     : QAbstractTableModel(parent), m_type(type), m_rowCount(0), m_molecule(0),
       m_validCache(false), m_cachedOBMol(0)
@@ -213,32 +223,14 @@ namespace Avogadro {
       OpenBabel::OBBond *bond = m_cachedOBMol->GetBond(index.row());
       if (sortRole && index.column() == 4)
         return bond->GetLength();
-
-      Atom *a;
-      QString str;
-      unsigned int  gi;
       
       switch (index.column()) {
       case 0: // atom 1
         //return bond->GetBeginAtomIdx();
-        a = m_molecule->atom(bond->GetBeginAtomIdx()-1);
-        gi = a->groupIndex();
-        if (gi != 0) {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
-        } else {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-        }
-        return str;
+        return atomGroupIndexString(m_molecule->atom(bond->GetBeginAtomIdx()-1));
       case 1: // atom 2
         //return bond->GetEndAtomIdx();
-        a = m_molecule->atom(bond->GetEndAtomIdx()-1);
-        gi = a->groupIndex();
-        if (gi != 0) {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + QString("%L1").arg(gi);
-        } else {
-          str = QString(OpenBabel::etab.GetSymbol(a->atomicNumber()));
-        }
-        return str;
+        return atomGroupIndexString(m_molecule->atom(bond->GetEndAtomIdx()-1));
       case 2: // order
         return bond->GetBondOrder();
       case 3: // rotatable
@@ -266,11 +258,11 @@ namespace Avogadro {
       double angle;
       switch (index.column()) {
       case 0: // start atom
-        return (angles[index.row()][1] + 1);
+        return atomGroupIndexString(m_molecule->atom(angles[index.row()][1]));
       case 1: // vertex -- yes, angles are filled by Open Babel with the vertex first
-        return (angles[index.row()][0] + 1);
+        return atomGroupIndexString(m_molecule->atom(angles[index.row()][0]));
       case 2: // end atom
-        return (angles[index.row()][2] + 1);
+        return atomGroupIndexString(m_molecule->atom(angles[index.row()][2]));
       case 3:
         angle = m_cachedOBMol->GetAngle(m_cachedOBMol->GetAtom(angles[index.row()][1] + 1),
                                         m_cachedOBMol->GetAtom(angles[index.row()][0] + 1),
@@ -306,13 +298,13 @@ namespace Avogadro {
           if (rowCount == index.row()) {
             switch (index.column()) {
             case 0:
-              return j->first->GetIdx();
+              return atomGroupIndexString(m_molecule->atom(j->first->GetIdx()-1));
             case 1:
-              return torsionBC.first->GetIdx();
+              return atomGroupIndexString(m_molecule->atom(torsionBC.first->GetIdx()-1));
             case 2:
-              return torsionBC.second->GetIdx();
+              return atomGroupIndexString(m_molecule->atom(torsionBC.second->GetIdx()-1));
             case 3:
-              return j->second->GetIdx();
+              return atomGroupIndexString(m_molecule->atom(j->second->GetIdx()-1));
             case 4:
               dihedralAngle = m_cachedOBMol->GetTorsion(j->first,
                                                         torsionBC.first,
