@@ -35,6 +35,7 @@
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
+  #include "pythonextension_p.h"
 #endif
 
 #include <avogadro/painterdevice.h>
@@ -51,7 +52,6 @@
 #include "engines/bsdyengine.h"
 
 #include "pluginmanager.h"
-#include "pythonextension_p.h"
 
 #include <QDebug>
 #include <QUndoStack>
@@ -777,12 +777,14 @@ namespace Avogadro {
         d->tool->paint( this );
       }
 
+#ifdef ENABLE_PYTHON
       // Render the extensions (for now: python only)
       foreach (Extension *extension, d->extensions) {
         PythonExtension *pyext = qobject_cast<PythonExtension*>(extension);
         if (pyext)
           pyext->paint(this);
       }
+#endif
 
 
       // Now render transparent
