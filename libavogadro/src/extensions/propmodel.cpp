@@ -59,6 +59,12 @@ namespace Avogadro {
     }
   }
 
+  inline QString bondTypeString (Atom *a, Atom *b)
+  {
+    return QString(OpenBabel::etab.GetSymbol(a->atomicNumber())) + '-' +
+      QString(OpenBabel::etab.GetSymbol(b->atomicNumber()));
+  }
+
   PropertiesModel::PropertiesModel(Type type, QObject *parent)
     : QAbstractTableModel(parent), m_type(type), m_rowCount(0), m_molecule(0),
       m_validCache(false), m_cachedOBMol(0)
@@ -114,7 +120,7 @@ namespace Avogadro {
     case AtomType:
       return 8; // element, type, valence, formal charge, partial charge, x, y, z
     case BondType:
-      return 5;
+      return 6;
     case AngleType:
       return 4;
     case TorsionType:
@@ -147,7 +153,7 @@ namespace Avogadro {
           return Qt::AlignHCenter + Qt::AlignVCenter;
       }
       else if (m_type == BondType) {
-        if (index.column() == 4)
+        if (index.column() == 5)
           return Qt::AlignRight + Qt::AlignVCenter; // bond length
         else
           return Qt::AlignHCenter + Qt::AlignVCenter;
@@ -225,21 +231,22 @@ namespace Avogadro {
         return bond->GetLength();
       
       switch (index.column()) {
-      case 0: // atom 1
-        //return bond->GetBeginAtomIdx();
+      case 0: // type
+        return bondTypeString(m_molecule->atom(bond->GetBeginAtomIdx()-1),
+          m_molecule->atom(bond->GetEndAtomIdx()-1));
+      case 1: // atom 1
         return atomGroupIndexString(m_molecule->atom(bond->GetBeginAtomIdx()-1));
-      case 1: // atom 2
-        //return bond->GetEndAtomIdx();
+      case 2: // atom 2
         return atomGroupIndexString(m_molecule->atom(bond->GetEndAtomIdx()-1));
-      case 2: // order
+      case 3: // order
         return bond->GetBondOrder();
-      case 3: // rotatable
+      case 4: // rotatable
         if (bond->IsRotor()) {
             return tr("Yes");
         } else {
             return tr("No");
         }
-      case 4: // length
+      case 5: // length
         QString format("%L1");
         return format.arg(bond->GetLength(), 0, 'f', 4);
       }
@@ -406,14 +413,16 @@ namespace Avogadro {
       if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:
-          return tr("Start Atom");
+          return tr("Type");
         case 1:
-          return tr("End Atom");
+          return tr("Start Atom");
         case 2:
-          return tr("Bond Order");
+          return tr("End Atom");
         case 3:
-          return tr("Rotatable");
+          return tr("Bond Order");
         case 4:
+          return tr("Rotatable");
+        case 5:
           return tr("Length %1", "in Angstrom").arg("(\xC5)");
         }
       } else
