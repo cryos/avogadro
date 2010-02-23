@@ -248,6 +248,26 @@ namespace Avogadro
   {
     m_dockWidget = 0;
   }
+      
+  bool PythonExtension::paint(GLWidget *widget)
+  {
+    PythonThread pt;
+    if (!PyObject_HasAttrString(m_instance.ptr(), "paint"))
+      return false;
+
+    try {
+      prepareToCatchError();
+      boost::python::reference_existing_object::apply<GLWidget*>::type converter;
+      PyObject *obj = converter(widget);
+      object real_obj = object(handle<>(obj));
+
+      m_instance.attr("paint")(real_obj);
+    } catch(error_already_set const &) {
+      catchError();
+    }
+
+    return true;
+  }
 
   void PythonExtension::readSettings(QSettings &settings)
   {

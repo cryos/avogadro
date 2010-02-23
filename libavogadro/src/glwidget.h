@@ -55,6 +55,7 @@ namespace Avogadro {
   class Painter;
   class Tool;
   class ToolGroup;
+  class Extension;
   class Color;
   class Engine;
   class Painter;
@@ -310,6 +311,11 @@ namespace Avogadro {
        * @return the ToolGroup of the GLWidget.
        */
       ToolGroup * toolGroup() const;
+
+      /**
+       * Set the extensions.
+       */
+      void setExtensions(QList<Extension*> extensions);
 
       /** Returns the Painter of this widget. For instance, to draw a sphere in this
         * widget, you could do:
