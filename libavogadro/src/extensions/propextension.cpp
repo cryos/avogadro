@@ -281,16 +281,20 @@ namespace Avogadro
   void PropertiesView::selectionChanged(const QItemSelection &selected, const QItemSelection &)
   {
     QList<Primitive *> matchedPrimitives;
+    bool ok = false;
 
     foreach (const QModelIndex &index, selected.indexes()) {
       if (!index.isValid())
         return;
-
+      int rowNum = model()->headerData(index.row(), Qt::Vertical).toString().split(" ").at(1).toLong(&ok) - 1;
+      if (!ok)
+        return;
+      
       if (m_type == AtomType /*|| m_type == CartesianType*/) {
         if ((unsigned int) index.row() >= m_molecule->numAtoms())
           return;
 
-        matchedPrimitives.append( m_molecule->atom(index.row()) );
+        matchedPrimitives.append( m_molecule->atom(rowNum) );
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
@@ -298,7 +302,7 @@ namespace Avogadro
         if((unsigned int) index.row() >= m_molecule->numBonds())
           return;
 
-        matchedPrimitives.append( m_molecule->bond(index.row()) );
+        matchedPrimitives.append( m_molecule->bond(rowNum) );
         m_widget->clearSelected();
         m_widget->setSelected(matchedPrimitives, true);
         m_widget->update();
@@ -312,9 +316,9 @@ namespace Avogadro
         ad->FillAngleArray(angles);
         delete mol;
 
-        Atom *startAtom = m_molecule->atom((angles[index.row()][1]));
-        Atom *vertex = m_molecule->atom((angles[index.row()][0]));
-        Atom *endAtom = m_molecule->atom((angles[index.row()][2]));
+        Atom *startAtom = m_molecule->atom((angles[rowNum][1]));
+        Atom *vertex = m_molecule->atom((angles[rowNum][0]));
+        Atom *endAtom = m_molecule->atom((angles[rowNum][2]));
         Bond *bond1 = startAtom->bond(vertex);
         Bond *bond2 = vertex->bond(endAtom);
         
@@ -337,10 +341,10 @@ namespace Avogadro
         td->FillTorsionArray(torsions);
         delete mol;
 
-        Atom *a = m_molecule->atom( torsions[index.row()][0] );
-        Atom *b = m_molecule->atom( torsions[index.row()][1] );
-        Atom *c = m_molecule->atom( torsions[index.row()][2] );
-        Atom *d = m_molecule->atom( torsions[index.row()][3] );
+        Atom *a = m_molecule->atom( torsions[rowNum][0] );
+        Atom *b = m_molecule->atom( torsions[rowNum][1] );
+        Atom *c = m_molecule->atom( torsions[rowNum][2] );
+        Atom *d = m_molecule->atom( torsions[rowNum][3] );
         Bond *bond1 = a->bond(b);
         Bond *bond2 = b->bond(c);
         Bond *bond3 = c->bond(d);
@@ -360,7 +364,7 @@ namespace Avogadro
         if (index.row() >= static_cast<int>(m_molecule->numConformers()))
           return;
 
-        m_molecule->setConformer(index.row());
+        m_molecule->setConformer(rowNum);
         m_molecule->update();
         return;
       }
