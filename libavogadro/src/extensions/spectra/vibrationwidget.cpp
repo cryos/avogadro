@@ -99,6 +99,7 @@ namespace Avogadro {
     }
 
     ui.vibrationTable->horizontalHeader()->show();
+    ui.vibrationTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
