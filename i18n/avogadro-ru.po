@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-02-05 00:00+0300\n"
-"PO-Revision-Date: 2010-02-05 00:59+0300\n"
+"PO-Revision-Date: 2010-02-24 03:31+0300\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -119,12 +119,12 @@ msgstr "Найденные возможности OpenGL:"
 #: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr ""
+msgstr "Двойная буферизация."
 
 #: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr ""
+msgstr "Прямой рендеринг."
 
 #: src/main.cpp:224
 msgctxt "main.cpp"
@@ -171,7 +171,7 @@ msgstr "Ctrl+M"
 
 #: src/mainwindow.cpp:381
 msgid "&Zoom"
-msgstr "Масштаб (&Z)"
+msgstr "&Масштаб"
 
 #: src/mainwindow.cpp:388
 #: src/mainwindow.cpp:1611
@@ -232,7 +232,7 @@ msgstr "Выдача Gaussian 98/03"
 
 #: src/mainwindow.cpp:724
 msgid "Gaussian Formatted Checkpoint"
-msgstr "Гаусс-форматированная контрольная точка"
+msgstr "Форматированная контрольная точка Gaussian"
 
 #: src/mainwindow.cpp:725
 msgid "HyperChem"
@@ -286,7 +286,7 @@ msgstr "Сбой при чтении файла молекул, файл %1."
 
 #: src/mainwindow.cpp:862
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr "Чтение мульти-молекульного файла. Это может занять некоторое время..."
+msgstr "Файл содержит несколько молекул. Его чтение может занять некоторое время..."
 
 #: src/mainwindow.cpp:889
 msgid "This file does not contain 3D coordinates."
@@ -301,8 +301,8 @@ msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
 msgstr ""
-"Этот файл не содержит 3D координат.\n"
-"Вы, возможно, не сможет изменить его или просмотреть верно."
+"Этот файл не содержит 3D-координат.\n"
+"Вы, возможно, не сможет изменить или корректно просмотреть его."
 
 #: src/mainwindow.cpp:963
 msgid "Select Molecule to View"
@@ -452,7 +452,7 @@ msgstr "Просмотр %1"
 
 #: src/mainwindow.cpp:2041
 msgid "Avogadro: Detached View"
-msgstr "Avogadro: Открепленные виды"
+msgstr "Avogadro: Открепленное окно просмотра"
 
 #: src/mainwindow.cpp:2207
 msgid "Normal Size"
@@ -612,24 +612,24 @@ msgstr "Номер"
 #: src/settingsdialog.cpp:104
 msgctxt "Display quality setting"
 msgid "Low"
-msgstr "Низкий"
+msgstr "Низкое"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
 #: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
-msgstr "Средний"
+msgstr "Среднее"
 
 #: src/settingsdialog.cpp:111
 msgctxt "Display quality setting"
 msgid "High"
-msgstr "Высокий"
+msgstr "Высокое"
 
 #: src/settingsdialog.cpp:114
 msgctxt "Display quality setting"
 msgid "Undefined"
-msgstr "Неопределенный"
+msgstr "Неопределенное"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
@@ -664,7 +664,7 @@ msgstr "Сбой при проверке обновлений"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr "Тайм-аут сети или другая ошибка."
+msgstr "Истекло время ожидания сети или другая ошибка."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
@@ -885,12 +885,12 @@ msgstr "Ctrl+Q"
 #. i18n: file: src/mainwindow.ui:297
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Recent"
-msgstr "Недавние"
+msgstr "Последние документы"
 
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr "очистить текущее"
+msgstr "Очистить последние"
 
 #. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -956,7 +956,7 @@ msgstr "&Полноэкранный режим"
 #. i18n: file: src/mainwindow.ui:407
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Esc"
-msgstr "выход"
+msgstr "Esc"
 
 #. i18n: file: src/mainwindow.ui:416
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1141,7 +1141,7 @@ msgstr "Использовать быструю прорисовку"
 #. i18n: file: src/mainwindow.ui:667
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr "Векторная графика..."
+msgstr "&Векторная графика..."
 
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1180,7 +1180,7 @@ msgstr "Подробности"
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr "элементы дерева"
+msgstr "Элементы дерева"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -1202,12 +1202,12 @@ msgstr "&Новый элемент"
 #. i18n: file: src/projecttreeeditor.ui:62
 #. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
 msgid "New Subitem"
-msgstr "новый подчинённый объект"
+msgstr "Новый подъэлемент"
 
 #. i18n: file: src/projecttreeeditor.ui:65
 #. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
 msgid "New &Subitem"
-msgstr "новый подчинённый объект"
+msgstr "Новый &подъэлемент"
 
 #. i18n: file: src/projecttreeeditor.ui:76
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
@@ -1262,7 +1262,7 @@ msgstr "Д"
 #. i18n: file: src/projecttreeeditor.ui:187
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Alias"
-msgstr "привязка"
+msgstr "Псевдоним"
 
 #. i18n: file: src/projecttreeeditor.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, settingsButton)
