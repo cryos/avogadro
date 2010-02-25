@@ -222,6 +222,11 @@ namespace Avogadro {
     else if (second->identifier() == "ElementColor")
       return false; // always the top!
 
+    if (first->identifier() == "CustomColor")
+      return false; // always the bottom!
+    else if (second->identifier() == "CustomColor")
+      return true; // always the bottom!
+
     // locale aware returns less-than, greater-than, or 0 
     // Required for sorting lists.
     return (QString::localeAwareCompare(first->name(), second->name()) < 0);
