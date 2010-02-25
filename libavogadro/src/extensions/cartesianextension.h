@@ -64,9 +64,11 @@ namespace Avogadro {
       public:
     //! Constructor
     CartesianEditor(QWidget *parent=0);
+    ~CartesianEditor();
 
     void setMolecule (Molecule *molecule);
-    //void setWidget (GLWidget *widget);
+    void writeSettings() const;
+    void readSettings();
 
     public Q_SLOTS:
     //! Slots to take signals from Molecules, and GLWidget

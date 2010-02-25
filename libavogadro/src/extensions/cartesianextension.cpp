@@ -55,6 +55,8 @@ namespace Avogadro
                                                       m_illegalInput(false)
   {
     setupUi(this);
+    readSettings();
+    
     cartesianEdit->setTextColor(Qt::black);
 	cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
@@ -70,6 +72,11 @@ namespace Avogadro
 
     connect(applyButton, SIGNAL(clicked()), this, SLOT(updateMolecule()));
     connect(revertButton, SIGNAL(clicked()), this, SLOT(updateCoordinates()));
+  }
+
+  CartesianEditor::~CartesianEditor()
+  {
+    writeSettings();
   }
 
   void CartesianEditor::changeUnits()
@@ -494,6 +501,23 @@ namespace Avogadro
     updateCoordinates();
   }
 
+  void CartesianEditor::writeSettings() const
+  {
+    QSettings settings;
+    settings.setValue("cartesian/unit", m_unit);
+    if (m_format != FRACTIONAL)
+      settings.setValue("cartesian/format", m_format);      
+  }
+  
+  void CartesianEditor::readSettings()
+  {
+    QSettings settings;
+    m_unit = settings.value("cartesian/unit", 0).toInt();
+    unitsBox->setCurrentIndex(m_unit);
+    m_format = settings.value("cartesian/format", 0).toInt();
+    formatBox->setCurrentIndex(m_format);
+  }
+
 
   CartesianExtension::CartesianExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_dialog(0)
   {
@@ -565,7 +589,9 @@ namespace Avogadro
 
     return undo;
   }
+  
 
+  
 #ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   //int OBElementTable::GetAtomicNum(string name, int &iso)
   int GetAtomicNum(string name, int &iso)
@@ -577,11 +603,6 @@ namespace Avogadro
       return n;  // other element symbols
 
     // not match => we've got IUPAC name
-
-    /*vector<OBElement*>::iterator i;
-    for (i = _element.begin();i != _element.end();++i)
-      if (name == (*i)->GetSymbol())
-        return((*i)->GetAtomicNum());*/
 
     for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
       if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))
