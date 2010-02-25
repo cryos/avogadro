@@ -86,6 +86,7 @@ namespace Avogadro {
 
       double m_atomRadiusPercentage;
       double m_bondRadius;
+      int m_atomRadiusType;
       int m_showMulti;
 
       double m_alpha; // transparency of the balls & sticks
@@ -97,7 +98,10 @@ namespace Avogadro {
        * @param percent percentage of the VdwRad
        */
       void setAtomRadiusPercentage(int percent);
-
+      /**
+       * @param value determines if covalent or VdW radii are used
+       */
+      void setAtomRadiusType(int value);
       /**
        * @param value radius of the bonds * 10
        */

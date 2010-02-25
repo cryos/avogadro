@@ -1,134 +1,175 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BSDYSettingsWidget</class>
- <widget class="QWidget" name="BSDYSettingsWidget" >
-  <property name="geometry" >
+ <widget class="QWidget" name="BSDYSettingsWidget">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
+    <width>255</width>
     <height>285</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" >
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QGridLayout" name="gridLayout" >
-     <item row="0" column="0" >
-      <widget class="QLabel" name="atomRadiusLabel" >
-       <property name="text" >
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0" rowspan="2">
+      <widget class="QLabel" name="atomRadiusLabel">
+       <property name="text">
         <string>Atom Radius:</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="2" >
-      <widget class="QSlider" name="atomRadiusSlider" >
-       <property name="minimum" >
+     <item row="0" column="2">
+      <widget class="QSlider" name="atomRadiusSlider">
+       <property name="minimum">
         <number>5</number>
        </property>
-       <property name="maximum" >
+       <property name="maximum">
         <number>65</number>
        </property>
-       <property name="pageStep" >
+       <property name="pageStep">
         <number>10</number>
        </property>
-       <property name="value" >
-        <number>15</number>
+       <property name="value">
+        <number>25</number>
        </property>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="tickPosition" >
+       <property name="tickPosition">
         <enum>QSlider::TicksBothSides</enum>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" >
-      <widget class="QLabel" name="bondRadiusLabel" >
-       <property name="text" >
+     <item row="5" column="0">
+      <widget class="QLabel" name="bondRadiusLabel">
+       <property name="text">
         <string>Bond Radius:</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="2" >
-      <widget class="QSlider" name="bondRadiusSlider" >
-       <property name="minimum" >
+     <item row="5" column="2">
+      <widget class="QSlider" name="bondRadiusSlider">
+       <property name="minimum">
         <number>1</number>
        </property>
-       <property name="maximum" >
+       <property name="maximum">
         <number>6</number>
        </property>
-       <property name="pageStep" >
+       <property name="pageStep">
         <number>1</number>
        </property>
-       <property name="value" >
+       <property name="value">
         <number>2</number>
        </property>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="tickPosition" >
+       <property name="tickPosition">
         <enum>QSlider::TicksBothSides</enum>
        </property>
       </widget>
      </item>
-     <item row="2" column="0" >
-      <widget class="QLabel" name="opacitySliderLabel" >
-       <property name="text" >
+     <item row="8" column="0">
+      <widget class="QLabel" name="opacitySliderLabel">
+       <property name="text">
         <string>Opacity:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="2" >
-      <widget class="QSlider" name="opacitySlider" >
-       <property name="minimum" >
+     <item row="8" column="2">
+      <widget class="QSlider" name="opacitySlider">
+       <property name="minimum">
         <number>0</number>
        </property>
-       <property name="maximum" >
+       <property name="maximum">
         <number>20</number>
        </property>
-       <property name="singleStep" >
+       <property name="singleStep">
         <number>1</number>
        </property>
-       <property name="pageStep" >
+       <property name="pageStep">
         <number>2</number>
        </property>
-       <property name="value" >
+       <property name="value">
         <number>20</number>
        </property>
-       <property name="sliderPosition" >
+       <property name="sliderPosition">
         <number>20</number>
        </property>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="invertedAppearance" >
+       <property name="invertedAppearance">
         <bool>false</bool>
        </property>
-       <property name="tickPosition" >
+       <property name="tickPosition">
         <enum>QSlider::TicksBothSides</enum>
        </property>
-       <property name="tickInterval" >
+       <property name="tickInterval">
         <number>4</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QComboBox" name="combo_radius">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>Covalent</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Van der Waals</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QCheckBox" name="showMulti" >
-     <property name="text" >
+    <widget class="QCheckBox" name="showMulti">
+     <property name="text">
       <string>Show Multiple Bonds</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer" >
-     <property name="orientation" >
+    <spacer name="verticalSpacer">
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>40</height>

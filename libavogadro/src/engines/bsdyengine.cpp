@@ -87,7 +87,7 @@ namespace Avogadro
 
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
-      m_showMulti(2), m_alpha(1.)
+      m_atomRadiusType(0), m_showMulti(2), m_alpha(1.)
   {  }
 
   Engine *BSDYEngine::clone() const
@@ -97,6 +97,7 @@ namespace Avogadro
     engine->m_atomRadiusPercentage = m_atomRadiusPercentage;
     engine->m_bondRadius = m_bondRadius;
     engine->m_showMulti = m_showMulti;
+    engine->m_atomRadiusType = m_atomRadiusType;
     engine->m_alpha = m_alpha;
     engine->setEnabled(isEnabled());
 
@@ -326,15 +327,26 @@ namespace Avogadro
 
   inline double BSDYEngine::radius(const Atom *atom) const
   {
-    if (atom->atomicNumber())
-      //return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+    if (atom->atomicNumber()) {
+      switch (m_atomRadiusType) {
+        case 0:
+          return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+        case 1:
+          return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+      }
+    }
     return m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )
   {
     m_atomRadiusPercentage = 0.02 * percent;
+    emit changed();
+  }
+
+  void BSDYEngine::setAtomRadiusType(int type)
+  {
+    m_atomRadiusType = type;
     emit changed();
   }
 
@@ -395,6 +407,8 @@ namespace Avogadro
       m_settingsWidget = new BSDYSettingsWidget();
       connect(m_settingsWidget->atomRadiusSlider, SIGNAL(valueChanged(int)),
               this, SLOT(setAtomRadiusPercentage(int)));
+      connect(m_settingsWidget->combo_radius, SIGNAL(currentIndexChanged(int)),
+              this, SLOT(setAtomRadiusType(int)));
       connect(m_settingsWidget->bondRadiusSlider, SIGNAL(valueChanged(int)),
               this, SLOT(setBondRadius(int)));
       connect(m_settingsWidget->showMulti, SIGNAL(stateChanged(int)),
