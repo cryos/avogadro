@@ -417,10 +417,13 @@ namespace Avogadro
   {
     // delayed initialization
     if(event->type() == QEvent::Polish) {
+
+      // read settings
+      readSettings();
       
       reloadTools();
-      if (d->toolSettingsDock)
-        d->toolSettingsDock->hide();
+      //if (d->toolSettingsDock)
+      //  d->toolSettingsDock->hide();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -458,8 +461,6 @@ namespace Avogadro
       if(!molecule())
         loadFile();
 
-      // read settings
-      readSettings();
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
