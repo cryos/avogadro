@@ -55,6 +55,8 @@ namespace Avogadro {
 
       QDockWidget * dockWidget();
       virtual void setMolecule(Molecule *molecule);
+      void writeSettings(QSettings &settings) const;
+      void readSettings(QSettings &settings);
 
       void clearAnimationFrames();
 
@@ -85,6 +87,7 @@ namespace Avogadro {
       bool m_animationSpeed;
       bool m_animating;
       bool m_paused;
+      QByteArray m_geometry;
 
       std::vector< std::vector< Eigen::Vector3d> *> m_animationFrames;
   };

@@ -55,7 +55,8 @@ namespace Avogadro {
                                                             m_displayVectors(true),
                                                             m_animationSpeed(false),
                                                             m_animating(false),
-                                                            m_paused(false)
+                                                            m_paused(false),
+                                                            m_geometry("")
   {
   }
 
@@ -69,6 +70,8 @@ namespace Avogadro {
     if (!m_dock) {
       m_dock = new QDockWidget( tr("Molecule Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
+      qDebug() << "geom" << m_geometry.size();
+      m_dock->restoreGeometry(m_geometry);
       //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
     
       if (!m_dialog) {
@@ -338,6 +341,18 @@ namespace Avogadro {
     spectra->setMolecule(m_molecule);
     spectra->performAction(0, m_widget);
   } 
+  
+  void VibrationExtension::writeSettings(QSettings &settings) const
+  {
+  	if (m_dock)
+  	  settings.setValue("vibration/geometry", m_dock->saveGeometry());
+  }
+  
+  void VibrationExtension::readSettings(QSettings &settings)
+  {
+  	m_geometry = settings.value("vibration/geometry").toByteArray();
+  	qDebug() << "readSettings";
+  }
 
 } // end namespace Avogadro
 
