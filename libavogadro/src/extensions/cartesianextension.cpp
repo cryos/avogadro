@@ -60,6 +60,7 @@ namespace Avogadro
     cartesianEdit->setTextColor(Qt::black);
 	cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
+    connect(sortBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSort()));
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
     connect(formatBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeFormat()));
     
@@ -77,6 +78,12 @@ namespace Avogadro
   CartesianEditor::~CartesianEditor()
   {
     writeSettings();
+  }
+
+  void CartesianEditor::changeSort()
+  {
+    m_sort = SortingType(sortBox->currentIndex());
+    updateCoordinates();
   }
 
   void CartesianEditor::changeUnits()
@@ -367,29 +374,35 @@ namespace Avogadro
         
         // Do sorting
         // FIXME: add new function for it?
-        QMap<int, Atom*> tmpMap;
-        for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
-          tmpMap.insert(-m_molecule->atoms().at(i)->atomicNumber(),
-            m_molecule->atoms().at(i));
-        }
-        QMap<int, Atom*>::const_iterator it=tmpMap.constBegin();
-        for (int i=0; it !=tmpMap.constEnd(); i++,it++ ) {
-          m_molecule->atoms()[i] = it.value();
-        }     
-        /*for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
-          for (unsigned int j=i; j<m_molecule->numAtoms(); j++) {
-            if (m_molecule->atoms().at(i)->atomicNumber() 
-              > m_molecule->atoms().at(j)->atomicNumber()) 
-            {
-              Atom * t = m_molecule->atoms().at(i);
-              m_molecule->atoms()[i] = m_molecule->atoms().at(j);
-              m_molecule->atoms()[j] = t;
-              //m_molecule->atoms().swap(i,j);
-            }
+        QList<Atom *> localAtom;
+        QMultiMap<double, Atom*> tmpMap;
+        QMultiMap<double, Atom*>::const_iterator it;
+        
+        foreach (Atom *a, m_molecule->atoms()) {
+          double key;          
+          switch (m_sort) {
+          case ELEMENT:
+            key = static_cast<double>(-1*a->atomicNumber());
+            break;
+          case X:
+            key = a->pos()->x();
+            break;
+          case Y:
+            key = a->pos()->y();
+            break;
+          case Z:
+            key = a->pos()->z();
+            break;
+          default:
+            key = 0;
           }
-        }*/
-
-
+          tmpMap.insert(key, a);
+        }
+        
+        it=tmpMap.constBegin();
+        for (int i=0; it !=tmpMap.constEnd(); i++,it++ )
+          localAtom.push_back(it.value());
+        
         matrix3x3 xform;
         switch (m_unit) {
         case ANGSTROM:
@@ -408,7 +421,8 @@ namespace Avogadro
         vector3 pos;
 
         for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
-          Atom *atom = m_molecule->atom(i);
+          //Atom *atom = m_molecule->atom(i);
+          Atom *atom = localAtom.at(i);
           pos = xform * atom->OBAtom().GetVector();
 
           switch (m_format) {
@@ -504,17 +518,20 @@ namespace Avogadro
   void CartesianEditor::writeSettings() const
   {
     QSettings settings;
-    settings.setValue("cartesian/unit", m_unit);
-    if (m_format != FRACTIONAL)
-      settings.setValue("cartesian/format", m_format);      
+    settings.setValue("cartesian/sort", m_sort);
+    settings.setValue("cartesian/format", m_format);
+    if (m_unit != FRACTIONAL)
+      settings.setValue("cartesian/unit", m_unit);    
   }
   
   void CartesianEditor::readSettings()
   {
     QSettings settings;
-    m_unit = settings.value("cartesian/unit", 0).toInt();
+    m_sort = SortingType(settings.value("cartesian/sort", NONE).toInt());
+    sortBox->setCurrentIndex(m_sort);
+    m_unit = CoordinateUnit(settings.value("cartesian/unit", ANGSTROM).toInt());
     unitsBox->setCurrentIndex(m_unit);
-    m_format = settings.value("cartesian/format", 0).toInt();
+    m_format = CoordinateFormat(settings.value("cartesian/format", XYZ).toInt());
     formatBox->setCurrentIndex(m_format);
   }
 
