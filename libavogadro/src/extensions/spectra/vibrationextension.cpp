@@ -68,7 +68,7 @@ namespace Avogadro {
   QDockWidget * VibrationExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new QDockWidget( tr("Molecule Vibrations"), qobject_cast<QWidget *>(parent()) );
+      m_dock = new QDockWidget( tr("Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
       qDebug() << "geom" << m_geometry.size();
       m_dock->restoreGeometry(m_geometry);
