@@ -207,8 +207,8 @@ namespace Avogadro {
       ui.animationButton->setEnabled(true);
     }
     m_currentRow = row;
-    /*if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));*/
+    if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationWidget::cellClicked(int row, int)
@@ -217,8 +217,8 @@ namespace Avogadro {
       ui.animationButton->setEnabled(true);
     }
     m_currentRow = row;
-    /*if (row == -1) emit selectedMode(row);
-    else emit selectedMode(m_indexMap->at(row));*/
+    if (row == -1) emit selectedMode(row);
+    else emit selectedMode(m_indexMap->at(row));
   }
 
   void VibrationWidget::reject()
