@@ -118,20 +118,21 @@ namespace Avogadro {
     if (m_dock) {
       if (molecule !=0) {
         if (molecule->OBMol().GetData(OBGenericDataType::VibrationData)) {
-          qDebug() << "show it!";
-          m_dock->show();
+          //m_dock->show();
           m_dialog->setEnabled(true);
-          //if (!m_dialog->toggleViewAction()->isChecked())
-          //  m_dialog->toggleViewAction()->activate(QAction::Trigger);
+          if (!m_dock->toggleViewAction()->isChecked())
+            m_dock->toggleViewAction()->activate(QAction::Trigger);
         }
         else {
-          m_dock->close();
+          //m_dock->close();
           m_dialog->setEnabled(false);
-          qDebug() << "1:hide it!";
+          if (m_dock->toggleViewAction()->isChecked())
+            m_dock->toggleViewAction()->activate(QAction::Trigger);
         }
       } else {
-        qDebug() << "2:hide it!";
         m_dock->close();
+          if (m_dock->toggleViewAction()->isChecked())
+            m_dock->toggleViewAction()->activate(QAction::Trigger);
         m_dialog->setEnabled(false);
       }
       m_dialog->setMolecule(molecule);
