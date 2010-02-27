@@ -26,6 +26,8 @@
 
 #include "unitcellparamdialog.h"
 
+#include <QtGui/QColor>
+
 namespace Avogadro {
 
   class UnitCellExtension : public Extension
@@ -45,6 +47,8 @@ namespace Avogadro {
     QUndoCommand* performAction(QAction *action, GLWidget *widget);
     QString menuPath(QAction *action) const;
     void setMolecule(Molecule *molecule);
+    virtual void writeSettings(QSettings &settings) const;
+    virtual void readSettings(QSettings &settings);
 
   public Q_SLOTS:
     void unitCellDisplayChanged(int a, int b, int c);
@@ -53,12 +57,14 @@ namespace Avogadro {
 
     void deleteUnitCell();
     void fillUnitCell();
+    void changeColor();
 
   private:
     QList<QAction *> m_actions;
     UnitCellParamDialog *m_dialog;
     GLWidget *m_widget;
     Molecule *m_molecule;
+    QColor m_color;
   };
 
   class UnitCellExtensionFactory : public QObject, public PluginFactory

@@ -434,6 +434,12 @@ namespace Avogadro {
       void setUnitCells(int a, int b, int c);
 
       /**
+       * Set the color of unit cells
+       * @param c color of unit cells
+       */
+       void setUnitCellColor(const QColor c);
+
+      /**
        * Clear the unit cell data.
        */
       void clearUnitCell();
