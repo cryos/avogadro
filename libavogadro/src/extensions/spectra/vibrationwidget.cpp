@@ -257,6 +257,8 @@ namespace Avogadro {
   {
     if (ui.animationButton->text() == tr("Start &Animation")) {
       ui.animationButton->setText(tr("Stop &Animation"));
+      ui.animationButton->setIcon(QIcon(":/amarok/icons/amarok_stop.png"));
+      ui.pauseButton->setText(tr("Pause"));
       ui.pauseButton->setEnabled(true);
       if (m_currentRow == -1)
         emit selectedMode(m_currentRow);
@@ -264,6 +266,8 @@ namespace Avogadro {
         emit selectedMode(m_indexMap->at(m_currentRow));
     } else {
       ui.animationButton->setText(tr("Start &Animation"));
+      ui.animationButton->setIcon(QIcon(":/amarok/icons/amarok_play.png"));
+      ui.pauseButton->setText(tr("Pause"));
       ui.pauseButton->setEnabled(false);
     }
 

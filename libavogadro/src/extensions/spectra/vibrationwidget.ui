@@ -137,6 +137,10 @@
         <property name="text">
          <string>Start &amp;Animation</string>
         </property>
+        <property name="icon">
+         <iconset resource="../animation.qrc">
+          <normaloff>:/amarok/icons/amarok_play.png</normaloff>:/amarok/icons/amarok_play.png</iconset>
+        </property>
        </widget>
       </item>
       <item row="5" column="1">
@@ -152,6 +156,10 @@
         </property>
         <property name="text">
          <string>Pause</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../animation.qrc">
+          <normaloff>:/amarok/icons/amarok_pause.png</normaloff>:/amarok/icons/amarok_pause.png</iconset>
         </property>
        </widget>
       </item>
@@ -193,6 +201,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../animation.qrc"/>
+ </resources>
  <connections/>
 </ui>
