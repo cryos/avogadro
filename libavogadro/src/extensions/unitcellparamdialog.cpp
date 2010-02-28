@@ -43,6 +43,7 @@ namespace Avogadro {
     
     connect(ui.deleteUnitCell, SIGNAL(clicked()), this, SLOT(deleteCellClicked()));
     connect(ui.fillUnitCell, SIGNAL(clicked()), this, SLOT(fillCellClicked()));
+    connect(ui.changeColor, SIGNAL(clicked()), this, SLOT(changeColorClicked()));
     
     connect(ui.aCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
     connect(ui.bCellSpinBox, SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));    
@@ -228,6 +229,11 @@ namespace Avogadro {
   void UnitCellParamDialog::fillCellClicked()
   {
     emit fillUnitCell();
+  }
+
+  void UnitCellParamDialog::changeColorClicked()
+  {
+    emit changeColor();
   }
   
 }

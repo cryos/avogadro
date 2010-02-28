@@ -217,7 +217,7 @@ namespace Avogadro
     dialog->setWindowTitle(view->windowTitle());
     QSize dialogSize = dialog->size();
     double width = view->horizontalHeader()->length()+view->verticalHeader()->width()+5;
-	if (model->rowCount() < 10) { // no scrollbar
+	if (model->rowCount() < 13) { // no scrollbar
 	  dialogSize.setHeight(view->horizontalHeader()->height()+model->rowCount()*30+5);
       dialogSize.setWidth(width);
     } else { // scrollbar is needed
