@@ -50,8 +50,9 @@ namespace Avogadro {
       void setWidget(GLWidget *widget) {m_widget = widget; }
 
     public slots:
-      void accept();
+//      void accept();
       void reject();
+      void changeFilter(QString);
       void cellClicked(int, int);
       void currentCellChanged(int, int, int, int);
 
@@ -62,7 +63,7 @@ namespace Avogadro {
       void animateButtonClicked(bool);
       void pauseButtonClicked(bool);
       void spectraButtonClicked();
-      void exportVibrationData(bool);
+      //void exportVibrationData(bool);
 
     signals:
       void selectedMode(int);
@@ -79,8 +80,11 @@ namespace Avogadro {
       GLWidget *m_widget;
       Molecule *m_molecule;
       OpenBabel::OBVibrationData *m_vibrations;
+      std::vector<double> m_frequencies;
+      std::vector<double> m_intensities;
       std::vector<int> *m_indexMap;
       int m_currentRow;
+      double m_filter;
   };
 }
 

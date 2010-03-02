@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
-#include "../../pluginmanager.h"
+#include <avogadro/pluginmanager.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -33,15 +33,32 @@
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QAction>
+#include <QtGui/QCloseEvent>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
+
+  class VibrationDock : public QDockWidget
+  {
+  public:
+    VibrationDock( const QString & title, QWidget * parent = 0,
+      Qt::WindowFlags flags = 0 ) : QDockWidget(title, parent, flags) {}
+      
+  protected: 
+    void closeEvent ( QCloseEvent * event )
+    {
+      VibrationWidget *w = qobject_cast<VibrationWidget *>(widget());
+      if (w)
+        w->reject();
+      event->accept();
+    }
+  };
 
   VibrationExtension::VibrationExtension(QObject *parent) : DockExtension(parent),
                                                             m_mode(-1),
@@ -68,7 +85,7 @@ namespace Avogadro {
   QDockWidget * VibrationExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new QDockWidget( tr("Vibrations"), qobject_cast<QWidget *>(parent()) );
+      m_dock = new VibrationDock( tr("Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
       qDebug() << "geom" << m_geometry.size();
       m_dock->restoreGeometry(m_geometry);
