@@ -73,6 +73,7 @@ namespace Avogadro
       void buttonClicked(QAbstractButton *button);
       void deleteCellClicked();
       void fillCellClicked();
+      void changeColorClicked();
 
     signals:
       void unitCellDisplayChanged(int a, int b, int c);
@@ -81,6 +82,7 @@ namespace Avogadro
 
       void deleteUnitCell();
       void fillUnitCell();
+      void changeColor();
 
     private:
       Ui::UnitCellParamDialog ui;

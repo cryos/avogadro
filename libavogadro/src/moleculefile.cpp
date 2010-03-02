@@ -384,7 +384,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-    ifs.open(QFile::encodeName(fileName)); // This handles utf8 file names etc
+    ifs.open(fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
     OpenBabel::OBMol *obMol = new OpenBabel::OBMol;
@@ -454,7 +454,7 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-    ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) {// Should not happen, already checked file could be opened
       qDebug() << "ofs is bad";
       return false;
@@ -547,7 +547,7 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-    ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) // Should not happen, already checked file could be opened
       return false;
     
@@ -686,7 +686,7 @@ namespace Avogadro {
 
         // Now attempt to read the molecule in
         ifstream ifs;
-        ifs.open(QFile::encodeName(m_moleculeFile->m_fileName)); // This handles utf8 file names etc
+        ifs.open(m_moleculeFile->m_fileName.toLocal8Bit()); // This handles utf8 file names etc
         if (!ifs) // Should not happen, already checked file could be opened
           return;
       
@@ -767,7 +767,7 @@ namespace Avogadro {
       moleculeFile->setConformerFile(false);
       // Now attempt to read the molecule in
       moleculeFile->d->specialCaseOBMol = new OpenBabel::OBMol;
-      if (conv.ReadFile(moleculeFile->d->specialCaseOBMol, QFile::encodeName(fileName).data())) {
+      if (conv.ReadFile(moleculeFile->d->specialCaseOBMol, fileName.toLocal8Bit().data())) {
         moleculeFile->titlesRef().push_back(tr("Molecule %1").arg(1));
       } else {
         delete moleculeFile->d->specialCaseOBMol;

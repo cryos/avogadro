@@ -140,6 +140,7 @@ namespace Avogadro {
   public:
     GLWidgetPrivate() : background( 0,0,0,0 ),
                         aCells( 1 ), bCells( 1 ), cCells( 1 ),
+                        cellColor( 255,255,255 ),
                         molecule( 0 ),
                         camera( new Camera ),
                         tool( 0 ),
@@ -196,6 +197,8 @@ namespace Avogadro {
     unsigned char          aCells;
     unsigned char          bCells;
     unsigned char          cCells;
+
+    QColor                 cellColor;
 
     Molecule              *molecule;
 
@@ -879,7 +882,8 @@ namespace Avogadro {
     v5 = v4 + v1;
 
     glDisable(GL_LIGHTING);
-    glColor4f(1.0, 1.0, 1.0, 0.7);
+    glColor4f(d->cellColor.redF(), d->cellColor.greenF(), d->cellColor.blueF(), 0.7);
+    //glColor4f(1.0, 1.0, 1.0, 0.7);
     glLineWidth(2.0);
     for (int a = 0; a < d->aCells; a++) {
       for (int b = 0; b < d->bCells; b++)  {
@@ -1794,6 +1798,17 @@ namespace Avogadro {
     updateGeometry();
     d->camera->initializeViewPoint();
     update();
+  }
+
+  void GLWidget::setUnitCellColor(const QColor c)
+  {
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.lock();
+#endif
+    d->cellColor = c;
+#ifdef ENABLE_THREADED_GL
+    d->renderMutex.unlock();
+#endif
   }
 
   void GLWidget::clearUnitCell()
