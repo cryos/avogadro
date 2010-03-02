@@ -35,6 +35,13 @@
      <item>
       <widget class="QLineEdit" name="editFilter"/>
      </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>km/mol</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
