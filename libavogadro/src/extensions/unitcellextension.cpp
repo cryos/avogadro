@@ -244,7 +244,11 @@ namespace Avogadro {
     foreach(OBAtom *atom, atoms) {
       uniqueV = atom->GetVector();
       // Assert: won't crash because we already ensure uc != NULL
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      uniqueV = uc->CartesianToFractional(uniqueV);
+      #else
       uniqueV *= uc->GetFractionalMatrix();
+      #endif
       uniqueV = transformedFractionalCoordinate(uniqueV);
       coordinates.push_back(uniqueV);
 
@@ -270,11 +274,19 @@ namespace Avogadro {
 
         addAtom = mol.NewAtom();
         addAtom->Duplicate(atom);
+        #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        addAtom->SetVector(uc->FractionalToCartesian(updatedCoordinate));
+        #else
         addAtom->SetVector(uc->GetOrthoMatrix() * updatedCoordinate);
+        #endif
       } // end loop of transformed atoms
 
       // Put the original atom into the proper space in the unit cell too
+      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      atom->SetVector(uc->FractionalToCartesian(uniqueV));
+      #else
       atom->SetVector(uc->GetOrthoMatrix() * uniqueV);
+      #endif
     } // end loop of atoms
 
     // m_molecule->ConnectTheDots();
