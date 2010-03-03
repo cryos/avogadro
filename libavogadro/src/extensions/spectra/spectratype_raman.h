@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -16,30 +16,25 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public icense for more details.
  ***********************************************************************/
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#ifndef SPECTRATYPE_RAMAN_H
+#define SPECTRATYPE_RAMAN_H
 
-#ifndef SPECTRATYPE_UV_H
-#define SPECTRATYPE_UV_H
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
-#include <QHash>
-#include <QVariant>
-
-#include "spectradialog.h"
-#include "spectratype.h"
-#include "ui_spectratabuv.h"
-
-#include <avogadro/plotwidget.h>
+#include "spectratype_ir.h"
 
 namespace Avogadro {
 
-  class UVSpectra : public SpectraType
+  class RamanSpectra : public AbstractIRSpectra
   {
     Q_OBJECT
 
   public:
-    UVSpectra( SpectraDialog *parent = 0 );
-    ~UVSpectra();
+    RamanSpectra( SpectraDialog *parent = 0 );
+    ~RamanSpectra();
 
     void writeSettings();
     void readSettings();
@@ -47,27 +42,19 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
-  public slots:
-
   private slots:
-
-  signals:
-    void plotDataChanged();
+    void updateT(double);
+    void updateW(double);
 
   private:
-    Ui::Tab_UV ui;
-    SpectraDialog *m_dialog;
-    double m_fermi;
-    uint m_numAtoms;
+    double m_W;
+    double m_T;
+    QList<double> m_yList_orig;
   };
 }
 
 #endif
-#endif
+//#endif

@@ -1316,21 +1316,48 @@ namespace Avogadro{
     }
     // (that could return NULL, but other methods know they could get NULL)
 
-    // Copy forces, if present and valid
-    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
-    OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
-    if (cd) {
-      std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
+    // Copy conformers, if present
+    if (obmol->NumConformers() > 1) {
+      for (unsigned int i = 0; i < obmol->NumConformers(); ++i) {
+        obmol->SetConformer(i);
+        // copy the coordinates
+        double *coordPtr = obmol->GetCoordinates();
+        std::vector<Eigen::Vector3d> conformer;
+        foreach (Atom *atom, atoms()) {
+          while (conformer.size() < atom->id())
+            conformer.push_back(Eigen::Vector3d(0.0, 0.0, 0.0));
+          conformer.push_back(Eigen::Vector3d(coordPtr));
+          coordPtr += 3;
+        } // end foreach atom
+        addConformer(conformer, i);
+      } // end for(conformers)
+      setConformer(obmol->NumConformers() - 1);
+      // energies and forces will be set below
+    } else {
+      // one conformer, so use setEnergy
+      setEnergy(obmol->GetEnergy() * KCAL_TO_KJ);
+    }
 
-      // check for validity (i.e., we have some forces, one for each atom
-      if (allForces.size() && allForces[0].size() == numAtoms()) {
-        OpenBabel::vector3 force;
-        foreach (Atom *atom, m_atomList) { // loop through each atom
+    // Copy conformer data (e.g., energies, forces) if present and valid
+    if (obmol->HasData(OpenBabel::OBGenericDataType::ConformerData)) {
+      OpenBabel::OBConformerData *cd = static_cast<OpenBabel::OBConformerData*>(obmol->GetData(OpenBabel::OBGenericDataType::ConformerData));
+      if (cd) {
+        // copy energies -- should be one for each conformer
+        std::vector<double> energies = cd->GetEnergies();
+        for (unsigned int i = 0; i < energies.size(); ++i)
+          energies[i] *= KCAL_TO_KJ;
+        setEnergies(energies);
+        
+        // check for validity (i.e., we have some forces, one for each atom
+        std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
+        if (allForces.size() && allForces[0].size() == numAtoms()) {
+          OpenBabel::vector3 force;
+          foreach (Atom *atom, m_atomList) { // loop through each atom
             force = allForces[0][atom->index()];
             atom->setForceVector(Eigen::Vector3d(force.x(), force.y(), force.z()));
           } // end setting forces on each atom
-        }
-      }
+        } // forces
+      } // end if (cd)
     }  // end HasData(ConformerData)
 
     // Copy any vibration data if possible
@@ -1354,8 +1381,6 @@ namespace Avogadro{
       d->obelectronictransitiondata = etd;
     }
 #endif
-    // Copy energy
-    setEnergy(obmol->GetEnergy() * KCAL_TO_KJ);
 
     // Finally, sync OBPairData to dynamic properties
     OpenBabel::OBDataIterator dIter;

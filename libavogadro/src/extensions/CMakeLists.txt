@@ -10,21 +10,24 @@ include_directories(
 )
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS "avogadro")
+set(LINK_LIBS avogadro)
+set(PLUGIN_LABEL extensions)
+set(PLUGIN_TARGET extensions)
+add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensions.")
 
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
 
 ### Input File Extension
 set(inputfileextension_SRCS inputfileextension.cpp
-#    daltoninputdialog.cpp
+    daltoninputdialog.cpp
     gaussianinputdialog.cpp
     molproinputdialog.cpp
     mopacinputdialog.cpp
     nwcheminputdialog.cpp
     qcheminputdialog.cpp)
 avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
- "gaussianinputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
+ "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
 
 ### gamess
 set(gamessextension_SRCS gamessextension.cpp
@@ -87,16 +90,6 @@ set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
 avogadro_plugin(surfaceextension "${surfaceextension_SRCS}" surfacedialog.ui)
 target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
 
-### Vibrations
-avogadro_plugin(vibrationextension
-  "vibrationextension.cpp;vibrationdialog.cpp"
-  vibrationdialog.ui)
-
-### Spectra
-avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp"
-  "spectradialog.ui;spectratabir.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
-
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
@@ -143,3 +136,4 @@ avogadro_plugin(supercellextension
 
 avogadro_plugin(networkfetchextension networkfetchextension.cpp)
 
+add_subdirectory(spectra)

@@ -23,9 +23,8 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -35,18 +34,9 @@ using namespace std;
 namespace Avogadro {
 
   UVSpectra::UVSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent)
+    SpectraType( parent )
   {
-    m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
-
-    m_dialog = parent;
-
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
@@ -60,11 +50,6 @@ namespace Avogadro {
 
   UVSpectra::~UVSpectra() {
     // TODO: Anything to delete?
-    delete m_xList;
-    delete m_yList;
-    delete m_xList_imp;
-    delete m_yList_imp;
-    delete m_tab_widget;;
     writeSettings();
   }
 
@@ -92,11 +77,11 @@ namespace Avogadro {
     std::vector<double> edipole= etd->GetEDipole();
 
     // Store in member vars
-    m_xList->clear();
-    m_yList->clear();
+    m_xList.clear();
+    m_yList.clear();
     for (uint i = 0; i < wavelengths.size(); i++){
-      m_xList->append(wavelengths.at(i));
-      m_yList->append(edipole.at(i));
+      m_xList.append(wavelengths.at(i));
+      m_yList.append(edipole.at(i));
     }
 
     return true;
@@ -107,8 +92,6 @@ namespace Avogadro {
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavelength (nm)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(tr("<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"));
   }
-
-  QWidget * UVSpectra::getTabWidget() {return m_tab_widget;}
 
   void UVSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -124,7 +107,7 @@ namespace Avogadro {
       ui.cb_labelPeaks->setChecked(false);
     }
 
-    if (m_xList->size() < 1 && m_yList->size() < 1) return;
+    if (m_xList.size() < 1 && m_yList.size() < 1) return;
 
     double wavelength, intensity;
     double FWHM = ui.spin_FWHM->value();
@@ -140,9 +123,9 @@ namespace Avogadro {
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);
         double y = 0.0;
-        for (int j = 0; j < m_yList->size(); j++) {
-          double t = m_yList->at(j);
-          double w = m_xList->at(j);
+        for (int j = 0; j < m_yList.size(); j++) {
+          double t = m_yList.at(j);
+          double w = m_xList.at(j);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) *
             // Normalization factor: (CP, 224 (1997) 143-155)
             2.87e4 / sqrt(2 * M_PI * s2);
@@ -151,9 +134,9 @@ namespace Avogadro {
       }
     }
     else {
-      for (int i = 0; i < m_yList->size(); i++) {
-        wavelength = m_xList->at(i);
-        intensity = m_yList->at(i) *
+      for (int i = 0; i < m_yList.size(); i++) {
+        wavelength = m_xList.at(i);
+        intensity = m_yList.at(i) *
           // Normalization factor:
           2.87e4;
         plotObject->addPoint ( wavelength, 0 );
@@ -168,26 +151,8 @@ namespace Avogadro {
     }
   } 
 
-  void UVSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
-    m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);
-  }
-
-  void UVSpectra::getImportedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
-  }
-
   QString UVSpectra::getTSV() {
-    QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Wavelength (nm)\tIntensity (arb)\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 6, 'g').arg(m_yList->at(i), 6, 'g');
-    }
-    return str;
+    return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
 
 }

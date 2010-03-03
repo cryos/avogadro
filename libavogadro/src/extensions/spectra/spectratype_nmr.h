@@ -17,27 +17,26 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifndef SPECTRATYPE_IR_H
-#define SPECTRATYPE_IR_H
+#ifndef SPECTRATYPE_NMR_H
+#define SPECTRATYPE_NMR_H
 
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QHash>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabir.h"
+#include "ui_spectratabnmr.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class IRSpectra : public SpectraType
+  class NMRSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    IRSpectra( SpectraDialog *parent = 0 );
-    ~IRSpectra();
+    NMRSpectra( SpectraDialog *parent = 0 );
+    ~NMRSpectra();
 
     void writeSettings();
     void readSettings();
@@ -45,28 +44,22 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
     void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
-    QString getTSV();
+   // virtual void getImportedPlotObject(PlotObject *plotObject);
+    virtual QString getTSV();
 
   public slots:
-    void setScale(double scale);
+    void setAtom(QString symbol);
 
   private slots:
-    void updateYAxis(QString);
-
-  signals:
-    void plotDataChanged();
+    void setReference(double ref);
+    void updatePlotAxes();
 
   private:
-    Ui::Tab_IR ui;
-    SpectraDialog *m_dialog;
-    double m_scale;
-    QString m_yaxis;
-
+    Ui::Tab_NMR ui;
+    double m_ref;
+    QHash<QString, QList<double>* > *m_NMRdata;
   };
 }
 

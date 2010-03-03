@@ -23,7 +23,7 @@
 #ifndef PYTHONTERMINAL_H
 #define PYTHONTERMINAL_H
 
-#include <avogadro/extension.h>
+#include <avogadro/dockextension.h>
 #include <avogadro/primitive.h>
 #include <avogadro/glwidget.h>
 
@@ -46,7 +46,7 @@ class QDockWidget;
 namespace Avogadro {
 
   class PythonTerminalEdit;
-  class PythonTerminal : public Extension
+  class PythonTerminal : public DockExtension
   {
     Q_OBJECT
       AVOGADRO_EXTENSION("Python Terminal", tr("Python Terminal"),
@@ -58,11 +58,11 @@ namespace Avogadro {
       //! Deconstructor
       virtual ~PythonTerminal();
 
-      virtual QList<QAction *> actions() const;
-      virtual QString menuPath(QAction *action) const;
+      //virtual QList<QAction *> actions() const;
+      //virtual QString menuPath(QAction *action) const;
 
       virtual QDockWidget * dockWidget();
-      virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
+      //virtual QUndoCommand* performAction(QAction *action, GLWidget *widget);
 
       void setMolecule(Molecule *molecule);
 

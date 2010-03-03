@@ -17,7 +17,7 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
 #ifndef SPECTRATYPE_CD_H
 #define SPECTRATYPE_CD_H
@@ -47,29 +47,20 @@ namespace Avogadro {
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    //void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
-
-  public slots:
 
   private slots:
     void rotatoryTypeChanged(const QString & str);
 
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_CD ui;
     QList<double> *m_yListVelocity, *m_yListLength;
-    SpectraDialog *m_dialog;
     double m_fermi;
-    uint m_numAtoms;
   };
 }
 
 #endif
-#endif
+//#endif

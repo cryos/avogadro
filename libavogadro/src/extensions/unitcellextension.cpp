@@ -29,8 +29,9 @@
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
 
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QColorDialog>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 using namespace std;
 using namespace OpenBabel;
@@ -39,7 +40,8 @@ namespace Avogadro {
 
   UnitCellExtension::UnitCellExtension(QObject *parent) : Extension(parent),
                                                           m_widget(NULL),
-                                                          m_molecule(NULL)
+                                                          m_molecule(NULL),
+                                                          m_color(255,255,255)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Unit Cell Parameters..."));
@@ -50,6 +52,8 @@ namespace Avogadro {
             this, SLOT(deleteUnitCell()));
     connect(m_dialog, SIGNAL(fillUnitCell()),
             this, SLOT(fillUnitCell()));
+    connect(m_dialog, SIGNAL(changeColor()),
+            this, SLOT(changeColor()));
   }
 
   UnitCellExtension::~UnitCellExtension()
@@ -94,6 +98,16 @@ namespace Avogadro {
             this, SLOT(unitCellParametersChanged(double, double, double, double, double, double)));
   }
 
+  void UnitCellExtension::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("unitcell/color", m_color);
+  }
+
+  void UnitCellExtension::readSettings(QSettings &settings)
+  {
+    m_color = settings.value("unitcell/color", QColor(Qt::white)).value<QColor>();
+  }
+
   QUndoCommand* UnitCellExtension::performAction(QAction *, GLWidget *widget)
   {
     // FIXME: this is bad mmmkay
@@ -125,6 +139,7 @@ namespace Avogadro {
         m_molecule->setOBUnitCell(uc);
 
         widget->setUnitCells(1, 1, 1);
+        widget->setUnitCellColor(m_color);
       } else { // do nothing -- user picked "Cancel"
         return NULL;
       }
@@ -194,6 +209,18 @@ namespace Avogadro {
 
     m_widget->clearUnitCell();
   }
+
+  void UnitCellExtension::changeColor()
+  {
+    if (m_widget) {
+      QColor current(m_color);
+      QColor color = QColorDialog::getColor(current, m_dialog, tr("Select Unit Cell Color"));
+      m_widget->setUnitCellColor(color);
+      m_color = color;
+      if (m_molecule)
+        m_molecule->update();
+    }
+  }  
 
   vector3 transformedFractionalCoordinate(vector3 originalCoordinate)
   {

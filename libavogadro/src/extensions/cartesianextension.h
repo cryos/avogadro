@@ -40,15 +40,13 @@ namespace Avogadro {
   class Molecule;
   class Atom;
 
-  enum CoordinateUnit
-  {
+  enum CoordinateUnit {
     ANGSTROM=0,
     BOHR,
     FRACTIONAL
   };
 
-  enum CoordinateFormat
-  {
+  enum CoordinateFormat {
     XYZ=0,
     XYZ_NUM,
     XYZ_ONLY,
@@ -58,15 +56,25 @@ namespace Avogadro {
     PRIRODA
   };
 
+  enum SortingType {
+    NONE=0,
+    ELEMENT,
+    X,
+    Y,
+    Z
+  };
+
   class CartesianEditor : public QDialog, Ui::CartesianEditorDialog 
   {
     Q_OBJECT
       public:
     //! Constructor
     CartesianEditor(QWidget *parent=0);
+    ~CartesianEditor();
 
     void setMolecule (Molecule *molecule);
-    //void setWidget (GLWidget *widget);
+    void writeSettings() const;
+    void readSettings();
 
     public Q_SLOTS:
     //! Slots to take signals from Molecules, and GLWidget
@@ -74,6 +82,7 @@ namespace Avogadro {
     void updateMolecule();
     void updateAtoms(Atom*);
     void moleculeChanged(Molecule *previous);
+    void changeSort();
     void changeUnits();
     void changeFormat();
     void paste();
@@ -84,10 +93,11 @@ namespace Avogadro {
 
   private:
     bool parseText(OBMol *mol);
-	   
+
     Molecule *m_molecule;
     CoordinateUnit m_unit;
     CoordinateFormat m_format;
+    SortingType m_sort;
     bool m_illegalInput;
   };
 

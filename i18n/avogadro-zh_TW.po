@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-11-03 13:44-0500\n"
+"POT-Creation-Date: 2010-02-05 00:00+0300\n"
 "PO-Revision-Date: 2009-09-28 16:50+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -21,34 +21,40 @@ msgstr ""
 msgid "OK"
 msgstr "確定"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
 msgstr ""
 
-#: src/aboutdialog.cpp:68
-#, fuzzy, qt-format
+#: src/aboutdialog.cpp:69
+#, qt-format
 msgid ""
 "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更多資"
-"訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:838 src/mainwindow.cpp:888
 #: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
 #: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2459
 #: src/mainwindow.cpp:2952:69
 msgid "Avogadro"
 msgstr "Avogadro 亞佛加厥"
+
+#: src/aboutdialog.cpp:73
+#, fuzzy, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
+msgstr ""
+"<h3>%1</h3><br/><br/>應用軟體版本: %2<br/><br/>函式庫版本: %3<br/><br/>更多資"
+"訊請上 Avogadro 的網站 <a href=\"http://avogadro.openmolecules.net/"
+"\">Avogadro homepage</a>.<br/><br/>本軟體以現況提供, 不提供任何保證.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -84,55 +90,59 @@ msgid "Open File"
 msgstr "開啟檔案"
 
 #: src/main.cpp:204
-msgctxt "Avogadro"
-msgid "main.cpp"
-msgstr ""
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Avogadro"
+msgstr "Avogadro 亞佛加厥"
 
 #: src/main.cpp:205
-msgctxt "This system does not support OpenGL."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "This system does not support OpenGL."
 msgstr ""
 
 #: src/main.cpp:208
-msgctxt "System has OpenGL support."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "System has OpenGL support."
 msgstr ""
 
 #: src/main.cpp:211
-msgctxt "About to test OpenGL capabilities."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "About to test OpenGL capabilities."
 msgstr ""
 
 #: src/main.cpp:218
-msgctxt "OpenGL capabilities found: "
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "OpenGL capabilities found: "
 msgstr ""
 
 #: src/main.cpp:220
-msgctxt "Double Buffering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Double Buffering."
 msgstr ""
 
 #: src/main.cpp:222
-msgctxt "Direct Rendering."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Direct Rendering."
 msgstr ""
 
 #: src/main.cpp:224
-msgctxt "Antialiasing."
-msgid "main.cpp"
+msgctxt "main.cpp"
+msgid "Antialiasing."
 msgstr ""
 
 #: src/main.cpp:249
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Avogadro: \t%1 (Hash %2)\n"
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
-msgid "main.cpp"
 msgstr ""
 
 #: src/main.cpp:264
-msgctxt ""
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
 "Advanced Molecular Editor (version %2)\n"
@@ -140,7 +150,6 @@ msgctxt ""
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
-msgid "main.cpp"
 msgstr ""
 
 #: src/mainwindow.cpp:301
@@ -481,7 +490,7 @@ msgstr " 這個應用程式無法正常使用. 請先更正錯誤."
 msgid "Objects"
 msgstr "物件"
 
-#. i18n: file: src/pluginsettings.ui:38
+#. i18n: file: src/pluginsettings.ui:39
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 #: src/mainwindow.cpp:2999:321
 msgid "Colors"
@@ -491,19 +500,19 @@ msgstr "顏色"
 msgid " copy"
 msgstr " 複製"
 
-#: src/pluginsettings.cpp:55
+#: src/pluginsettings.cpp:53
 msgid "Name: "
 msgstr "名字: "
 
-#: src/pluginsettings.cpp:56
+#: src/pluginsettings.cpp:54
 msgid "Identifier: "
 msgstr "識別號 "
 
-#: src/pluginsettings.cpp:57
+#: src/pluginsettings.cpp:55
 msgid "File: "
 msgstr "檔案: "
 
-#: src/pluginsettings.cpp:58
+#: src/pluginsettings.cpp:56
 msgid "Description:\n"
 msgstr "敘述:\n"
 
@@ -805,14 +814,14 @@ msgstr "計劃數狀圖"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
-#. i18n: file: src/pluginsettings.ui:23
+#. i18n: file: src/pluginsettings.ui:24
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
 msgstr "顯示的項目"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
-#. i18n: file: src/pluginsettings.ui:28
+#. i18n: file: src/pluginsettings.ui:29
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Tools"
 msgstr "工具"
@@ -1117,19 +1126,19 @@ msgstr "檔案中所有的分子..."
 msgid "Reset Display Types"
 msgstr "重設顯示種類"
 
-#. i18n: file: src/pluginsettings.ui:16
+#. i18n: file: src/pluginsettings.ui:17
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: file: src/settingsdialog.ui:246
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Plugins"
 msgstr "外掛程式"
 
-#. i18n: file: src/pluginsettings.ui:33
+#. i18n: file: src/pluginsettings.ui:34
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Extensions"
 msgstr "延伸功能"
 
-#. i18n: file: src/pluginsettings.ui:52
+#. i18n: file: src/pluginsettings.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 msgid "Details"
 msgstr "細節"

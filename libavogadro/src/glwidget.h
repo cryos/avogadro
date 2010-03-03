@@ -55,6 +55,7 @@ namespace Avogadro {
   class Painter;
   class Tool;
   class ToolGroup;
+  class Extension;
   class Color;
   class Engine;
   class Painter;
@@ -311,6 +312,11 @@ namespace Avogadro {
        */
       ToolGroup * toolGroup() const;
 
+      /**
+       * Set the extensions.
+       */
+      void setExtensions(QList<Extension*> extensions);
+
       /** Returns the Painter of this widget. For instance, to draw a sphere in this
         * widget, you could do:
         * @code
@@ -426,6 +432,12 @@ namespace Avogadro {
        * @param c number of unit cells to display along the c axis.
        */
       void setUnitCells(int a, int b, int c);
+
+      /**
+       * Set the color of unit cells
+       * @param c color of unit cells
+       */
+       void setUnitCellColor(const QColor c);
 
       /**
        * Clear the unit cell data.

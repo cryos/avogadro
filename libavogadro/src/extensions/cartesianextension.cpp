@@ -55,9 +55,12 @@ namespace Avogadro
                                                       m_illegalInput(false)
   {
     setupUi(this);
+    readSettings();
+    
     cartesianEdit->setTextColor(Qt::black);
 	cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
+    connect(sortBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSort()));
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
     connect(formatBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeFormat()));
     
@@ -70,6 +73,17 @@ namespace Avogadro
 
     connect(applyButton, SIGNAL(clicked()), this, SLOT(updateMolecule()));
     connect(revertButton, SIGNAL(clicked()), this, SLOT(updateCoordinates()));
+  }
+
+  CartesianEditor::~CartesianEditor()
+  {
+    writeSettings();
+  }
+
+  void CartesianEditor::changeSort()
+  {
+    m_sort = SortingType(sortBox->currentIndex());
+    updateCoordinates();
   }
 
   void CartesianEditor::changeUnits()
@@ -130,10 +144,13 @@ namespace Avogadro
   void CartesianEditor::updateMolecule()
   {
     OBMol *tmpMol = new OBMol;
-    OBUnitCell *cell = new OBUnitCell (*(m_molecule->OBUnitCell()));
+    OBUnitCell *cell = 0;
+    if (m_molecule->OBUnitCell())
+      cell = new OBUnitCell (*(m_molecule->OBUnitCell()));
     if (parseText(tmpMol)) {
       m_molecule->setOBMol(tmpMol);
-      m_molecule->setOBUnitCell(cell);
+      if (cell)
+        m_molecule->setOBUnitCell(cell);
       m_molecule->update();
       updateCoordinates();
     } else {
@@ -141,7 +158,8 @@ namespace Avogadro
       QString t = cartesianEdit->toPlainText();
       cartesianEdit->setText(t);
       m_illegalInput = true;
-      delete cell;
+      if (cell)
+        delete cell;
     }
     delete tmpMol;
   }
@@ -201,10 +219,14 @@ namespace Avogadro
 
     qDebug() << "Format is: " << format;
 
-    if (format.length() < 4)
+    if (format.length() < 3)
       return false; // invalid format
 
-    if (format == "iddd") { // special XYZ variant
+    if (format == "ddd") {
+      Xcol=0;
+      Ycol=1;
+      Zcol=2;
+    } else if (format == "iddd") { // special XYZ variant
       NameCol=0;
       Xcol=1;
       Ycol=2;
@@ -260,25 +282,28 @@ namespace Avogadro
         }
     }
 
-    if((NameCol==-1) || (Xcol==-1) || (Ycol==-1) || (Zcol==-1)) {
+    if((Xcol==-1) || (Ycol==-1) || (Zcol==-1)) {
+      return false;
+    }
+
+    if ((NameCol==-1) && format != "ddd") {
       return false;
     }
       
     // Read and apply coordinates
     mol->BeginModify();
     for (int N=0; N<coordStrings.size(); N++) {
-      if (coordStrings.at(N) == "") {
+      if (coordStrings.at(N).trimmed() == "") {
         continue;
-      }
-      
-      OBAtom *atom  = mol->NewAtom();
+      }      
+      double x=0, y=0, z=0;
+      int _n=0,_iso=0;      
+      OBAtom *atom  = mol->NewAtom();      
       QStringList s_data = coordStrings.at(N).trimmed().split(QRegExp("\\s+|,|;"));
       if (s_data.size() != data.size()) {
         return false;
       }
       for (int i=0; i<s_data.size(); i++) {
-        double x, y, z;
-        int _n,_iso;
         bool ok = true;
         if (i == Xcol) {
             x = s_data.at(i).toDouble(&ok);
@@ -312,19 +337,28 @@ namespace Avogadro
                 return false;
         }
         if (!ok) return false;
-        
-        vector3 pos (x, y, z);
-        atom->SetAtomicNum(_n);
-        if (xform == matrix3x3(0.0) { // fractional coordinates
-          #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-          atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
-          #else
-          atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix * pos);
-          #endif
-        }         
-        else {
-          atom->SetVector(xform * pos); //set coordinates
+      }
+
+      vector3 pos (x, y, z);
+      if (format == "ddd") {
+        if (m_molecule) {
+          if (N < m_molecule->numAtoms())
+            atom->SetAtomicNum(m_molecule->atom(N)->atomicNumber());
+          else
+            atom->SetAtomicNum(0);
         }
+      } else {
+          atom->SetAtomicNum(_n);
+      }
+      if (xform == matrix3x3(0.0)) { // fractional coordinates
+        #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
+        #else
+        atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix * pos);
+        #endif
+      }         
+      else {
+        atom->SetVector(xform * pos);
       }
     }
     mol->EndModify();
@@ -347,7 +381,38 @@ namespace Avogadro
         QString *coord = new QString;
         QTextStream coordStream(coord);
         coordStream.setRealNumberPrecision(10);
-
+        
+        // Do sorting
+        // FIXME: add new function for it?
+        QList<Atom *> localAtom;
+        QMultiMap<double, Atom*> tmpMap;
+        QMultiMap<double, Atom*>::const_iterator it;
+        
+        foreach (Atom *a, m_molecule->atoms()) {
+          double key;          
+          switch (m_sort) {
+          case ELEMENT:
+            key = static_cast<double>(-1*a->atomicNumber());
+            break;
+          case X:
+            key = a->pos()->x();
+            break;
+          case Y:
+            key = a->pos()->y();
+            break;
+          case Z:
+            key = a->pos()->z();
+            break;
+          default:
+            key = 0;
+          }
+          tmpMap.insert(key, a);
+        }
+        
+        it=tmpMap.constBegin();
+        for (int i=0; it !=tmpMap.constEnd(); i++,it++ )
+          localAtom.push_back(it.value());
+        
         matrix3x3 xform;
         switch (m_unit) {
         case ANGSTROM:
@@ -364,9 +429,11 @@ namespace Avogadro
         }
 
         vector3 pos;
-        for (uint i=0; i< m_molecule->numAtoms(); i++) {
-          Atom *atom = m_molecule->atom(i);
-          if (xform == matrix3x3(0.0) { // fractional coordinates
+
+        for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
+          //Atom *atom = m_molecule->atom(i);
+          Atom *atom = localAtom.at(i);
+          if (xform == matrix3x3(0.0)) { // fractional coordinates
             #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
             pos = m_molecule->OBUnitCell()->CartesianToFractional(atom->OBAtom().GetVector());
             #else
@@ -374,9 +441,8 @@ namespace Avogadro
             #endif
           }         
           else {
-          pos = xform * atom->OBAtom().GetVector();
+            pos = xform * atom->OBAtom().GetVector();
           }
-
   
           switch (m_format) {
           case XYZ:
@@ -468,6 +534,26 @@ namespace Avogadro
     updateCoordinates();
   }
 
+  void CartesianEditor::writeSettings() const
+  {
+    QSettings settings;
+    settings.setValue("cartesian/sort", m_sort);
+    settings.setValue("cartesian/format", m_format);
+    if (m_unit != FRACTIONAL)
+      settings.setValue("cartesian/unit", m_unit);    
+  }
+  
+  void CartesianEditor::readSettings()
+  {
+    QSettings settings;
+    m_sort = SortingType(settings.value("cartesian/sort", NONE).toInt());
+    sortBox->setCurrentIndex(m_sort);
+    m_unit = CoordinateUnit(settings.value("cartesian/unit", ANGSTROM).toInt());
+    unitsBox->setCurrentIndex(m_unit);
+    m_format = CoordinateFormat(settings.value("cartesian/format", XYZ).toInt());
+    formatBox->setCurrentIndex(m_format);
+  }
+
 
   CartesianExtension::CartesianExtension( QObject *parent ) : Extension( parent ), m_molecule(0), m_dialog(0)
   {
@@ -539,7 +625,9 @@ namespace Avogadro
 
     return undo;
   }
+  
 
+  
 #ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
   //int OBElementTable::GetAtomicNum(string name, int &iso)
   int GetAtomicNum(string name, int &iso)
@@ -551,11 +639,6 @@ namespace Avogadro
       return n;  // other element symbols
 
     // not match => we've got IUPAC name
-
-    /*vector<OBElement*>::iterator i;
-    for (i = _element.begin();i != _element.end();++i)
-      if (name == (*i)->GetSymbol())
-        return((*i)->GetAtomicNum());*/
 
     for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
       if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))

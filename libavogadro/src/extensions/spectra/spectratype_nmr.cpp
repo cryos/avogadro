@@ -21,9 +21,8 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -35,17 +34,10 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   NMRSpectra::NMRSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent), m_NMRdata(0)
+    SpectraType( parent )
   {
-    m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    m_xList = new QList<double>;
-    m_yList = new QList<double>;
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
     m_NMRdata = new QHash<QString, QList<double>* >;
-    m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -68,11 +60,6 @@ namespace Avogadro {
   {
     // TODO: Anything to delete?
     writeSettings();
-    delete m_xList;
-    delete m_yList;
-    delete m_xList_imp;
-    delete m_yList_imp;
-    delete m_tab_widget;
   }
 
   void NMRSpectra::writeSettings()
@@ -91,15 +78,15 @@ namespace Avogadro {
     ui.cb_labelPeaks->setChecked(settings.value("spectra/NMR/labelPeaks",false).toBool());
   }
 
-  QWidget * NMRSpectra::getTabWidget()
+ /* QWidget * NMRSpectra::getTabWidget()
   {
     return m_tab_widget;
-  }
+  }*/
 
   void NMRSpectra::getCalculatedPlotObject(PlotObject *plotObject)
   {
     plotObject->clearPoints();
-    if (m_xList->isEmpty()) {
+    if (m_xList.isEmpty()) {
       qWarning() << "NMRSpectra::getCalculatedPlotObject: Empty xList? Refusing to plot.";
       return;
     }
@@ -115,8 +102,8 @@ namespace Avogadro {
     }
 
     if (ui.spin_FWHM->value() == 0.0) { // get singlets
-      for (int i = 0; i < m_xList->size(); i++) {
-        double shift = m_xList->at(i) - m_ref;
+      for (int i = 0; i < m_xList.size(); i++) {
+        double shift = m_xList.at(i) - m_ref;
         //      double intensity = m_NMRintensities.at(i);
         plotObject->addPoint ( shift, 0);
         if (ui.cb_labelPeaks->isChecked()) {
@@ -140,9 +127,9 @@ namespace Avogadro {
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);
         double y = 0;
-        for (int j = 0; j < m_xList->size(); j++) {
+        for (int j = 0; j < m_xList.size(); j++) {
           double t = 1.0; //m_NMRintensities.at(i);
-          double w = m_xList->at(j) - m_ref;
+          double w = m_xList.at(j) - m_ref;
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
@@ -171,38 +158,40 @@ namespace Avogadro {
   void NMRSpectra::setImportedData(const QList<double> & xList,
                                    const QList<double> & yList)
   {
-    m_xList_imp = new QList<double> (xList);
-    m_yList_imp = new QList<double> (yList);
+    /*m_xList_imp = new QList<double> (xList);
+    m_yList_imp = new QList<double> (yList);*/
+    SpectraType::setImportedData(xList, yList);
 
     // Normalize intensities
-    double max = m_yList_imp->first();
-    for (int i = 0; i < m_yList_imp->size(); i++) {
-      if (m_yList_imp->at(i) > max) max = m_yList_imp->at(i);
+    double max = m_yList_imp.first();
+    for (int i = 0; i < m_yList_imp.size(); i++) {
+      if (m_yList_imp.at(i) > max) max = m_yList_imp.at(i);
     }
-    for (int i = 0; i < m_yList_imp->size(); i++) {
-      double tmp = m_yList_imp->at(i);
+    for (int i = 0; i < m_yList_imp.size(); i++) {
+      double tmp = m_yList_imp.at(i);
       tmp /= max;
-      m_yList_imp->replace(i,tmp);
+      m_yList_imp.replace(i,tmp);
     }
   }
 
-  void NMRSpectra::getImportedPlotObject(PlotObject *plotObject)
+  /*void NMRSpectra::getImportedPlotObject(PlotObject *plotObject)
   {
     plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
-  }
+    for (int i = 0; i < m_xList_imp.size(); i++)
+      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
+  }*/
 
   QString NMRSpectra::getTSV()
   {
-    QString str;
+    /*QString str;
     QTextStream out (&str);
     QString format = "%1\t%2\n";
     out << "Isotropic Shift\tIntensities\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 0, 'g').arg(m_yList->at(i), 0, 'g');
+    for(int i = 0; i< m_xList.size(); i++) {
+      out << format.arg(m_xList.at(i), 0, 'g').arg(m_yList.at(i), 0, 'g');
     }
-    return str;
+    return str;*/
+    return SpectraType::getTSV("Isotropic Shift", "Intensities");
   }
 
   bool NMRSpectra::checkForData(Molecule * mol)
@@ -210,6 +199,7 @@ namespace Avogadro {
     OpenBabel::OBMol obmol = mol->OBMol();
     qDeleteAll(*m_NMRdata);
     m_NMRdata->clear();
+    ui.combo_type->clear();
     // Test for "NMR Isotropic Shift" in first atom
     bool hasNMR = false;
     if (obmol.NumAtoms() > 0)
@@ -240,14 +230,14 @@ namespace Avogadro {
   {
     if (symbol.isEmpty()) symbol = ui.combo_type->currentText();
     if (!m_NMRdata->contains(symbol)) return;
-    m_xList = m_NMRdata->value(symbol);
+    m_xList = (*m_NMRdata->value(symbol));
     updatePlotAxes();
     m_dialog->regenerateCalculatedSpectra();
   }
 
   void NMRSpectra::updatePlotAxes()
   {
-    QList<double> tmp (*m_xList);
+    QList<double> tmp (m_xList);
     qSort(tmp);
     double FWHM = ui.spin_FWHM->value();
     if (tmp.size() == 1) {

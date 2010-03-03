@@ -17,13 +17,13 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
 #ifndef SPECTRATYPE_DOS_H
 #define SPECTRATYPE_DOS_H
 
-#include <QHash>
-#include <QVariant>
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
@@ -41,33 +41,24 @@ namespace Avogadro {
     DOSSpectra( SpectraDialog *parent = 0 );
     ~DOSSpectra();
 
-    enum EnergyUnits	{ ENERGY_EV = 0 };
-    enum DensityUnits	{ DENSITY_PER_CELL = 0, DENSITY_PER_ATOM, DENSITY_PER_VALENCE };
-
     void writeSettings();
     void readSettings();
 
     bool checkForData(Molecule* mol);
     void setupPlot(PlotWidget * plot);
 
-    QWidget * getTabWidget();
-
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
     void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
+
+    void updateDataTable() {}
 
   public slots:
     void toggleIntegratedDOS(bool b);
 
-  private slots:
-
-  signals:
-    void plotDataChanged();
-
   private:
     Ui::Tab_DOS ui;
-    SpectraDialog *m_dialog;
     std::vector<double> *m_intDOS;
     double m_fermi;
     uint m_numAtoms;
@@ -75,4 +66,4 @@ namespace Avogadro {
 }
 
 #endif
-#endif
+//#endif

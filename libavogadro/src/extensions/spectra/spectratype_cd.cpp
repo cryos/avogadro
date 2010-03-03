@@ -23,9 +23,8 @@
 #include "spectratype.h"
 #include "spectradialog.h"
 
-#include <QTextStream>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
 #include <openbabel/generic.h>
@@ -35,20 +34,12 @@ using namespace std;
 namespace Avogadro {
 
   CDSpectra::CDSpectra( SpectraDialog *parent ) :
-    SpectraType( parent ), m_dialog(parent)
+    SpectraType( parent )
   {
-    m_tab_widget = new QWidget;
     ui.setupUi(m_tab_widget);
-
-    m_xList = new QList<double>;
-    m_yList = 0; // will point to one of the ylist types below
-    m_xList_imp = new QList<double>;
-    m_yList_imp = new QList<double>;
 
     m_yListVelocity = new QList<double>;
     m_yListLength = new QList<double>;
-
-    m_dialog = parent;
 
     // Setup signals/slots
     connect(this, SIGNAL(plotDataChanged()),
@@ -65,11 +56,6 @@ namespace Avogadro {
 
   CDSpectra::~CDSpectra() {
     // TODO: Anything to delete?
-    delete m_xList;
-    delete m_yList;
-    delete m_xList_imp;
-    delete m_yList_imp;
-    delete m_tab_widget;
     writeSettings();
   }
 
@@ -103,10 +89,10 @@ namespace Avogadro {
     if (rotv.size() != 0) ui.combo_rotatoryType->addItem("Velocity");
 
     // Store in member vars
-    m_xList->clear();
-    m_yList->clear();
+    m_xList.clear();
+    m_yList.clear();
     for (uint i = 0; i < wavelengths.size(); i++)
-      m_xList->append(wavelengths.at(i));
+      m_xList.append(wavelengths.at(i));
     for (uint i = 0; i < rotl.size(); i++)
       m_yListLength->append(rotl.at(i));
     for (uint i = 0; i < rotv.size(); i++)
@@ -124,7 +110,7 @@ namespace Avogadro {
     plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Intensity (arb. units)"));
   }
 
-  QWidget * CDSpectra::getTabWidget() {return m_tab_widget;}
+//  QWidget * CDSpectra::getTabWidget() {return m_tab_widget;}
 
   void CDSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
@@ -140,7 +126,7 @@ namespace Avogadro {
       ui.cb_labelPeaks->setChecked(false);
     }
 
-    if (m_xList->size() < 1 && m_yList->size() < 1) return;
+    if (m_xList.size() < 1 && m_yList.size() < 1) return;
 
     double wavelength, intensity;
     double FWHM = ui.spin_FWHM->value();
@@ -155,9 +141,9 @@ namespace Avogadro {
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);
         double y = 0.0;
-        for (int j = 0; j < m_yList->size(); j++) {
-          double t = m_yList->at(j);
-          double w = m_xList->at(j);
+        for (int j = 0; j < m_yList.size(); j++) {
+          double t = m_yList.at(j);
+          double w = m_xList.at(j);
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) ) / 
             (22.97 * x / 1241) // <-- normalization constant (22.97 / X_0)
             / sqrt(2 * M_PI * s2); // <-- gaussian normalization
@@ -166,9 +152,9 @@ namespace Avogadro {
       }
     }
     else {
-      for (int i = 0; i < m_yList->size(); i++) {
-        wavelength = m_xList->at(i);
-        intensity = m_yList->at(i) /
+      for (int i = 0; i < m_yList.size(); i++) {
+        wavelength = m_xList.at(i);
+        intensity = m_yList.at(i) /
           (22.97 * wavelength / 1241) ; // <-- normalization constant (22.97 / X_0)
         plotObject->addPoint ( wavelength, 0 );
         if (ui.cb_labelPeaks->isChecked()) {
@@ -182,33 +168,26 @@ namespace Avogadro {
     }
   } 
 
-  void CDSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
+  /*void CDSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);
     m_yList_imp = new QList<double> (yList);
-  }
+  }*/
 
-  void CDSpectra::getImportedPlotObject(PlotObject *plotObject) {
+  /*void CDSpectra::getImportedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
-    for (int i = 0; i < m_xList_imp->size(); i++)
-      plotObject->addPoint(m_xList_imp->at(i), m_yList_imp->at(i));
-  }
+    for (int i = 0; i < m_xList_imp.size(); i++)
+      plotObject->addPoint(m_xList_imp.at(i), m_yList_imp.at(i));
+  }*/
 
   QString CDSpectra::getTSV() {
-    QString str;
-    QTextStream out (&str);
-    QString format = "%1\t%2\n";
-    out << "Wavelength (nm)\tIntensity (arb)\n";
-    for(int i = 0; i< m_xList->size(); i++) {
-      out << format.arg(m_xList->at(i), 6, 'g').arg(m_yList->at(i), 6, 'g');
-    }
-    return str;
+    return SpectraType::getTSV("Wavelength (nm)", "Intensity (arb)");
   }
 
   void CDSpectra::rotatoryTypeChanged(const QString & str) {
     if (str == "Velocity")
-      m_yList = m_yListVelocity;
+      m_yList = (*m_yListVelocity);
     else if (str == "Length")
-      m_yList = m_yListLength;
+      m_yList = (*m_yListLength);
     emit plotDataChanged();
   }
 

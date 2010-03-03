@@ -35,6 +35,7 @@
 
 #include <QFile>
 #include <QDebug>
+#include <QApplication>
 #include <Eigen/Geometry>
 
 namespace Avogadro
@@ -343,8 +344,18 @@ namespace Avogadro
     return 0;
   }
 
-  int POVPainter::drawText(const Vector3d &, const QString &)
+  int POVPainter::drawText(const Vector3d &center, const QString &str)
   {
+      
+       /*qDebug() << "text {\n"
+        //<< "\t<" << center.x() << ", " << center.y() << ", " << center.z() << ">\n"
+        << "\tttf " << "\"timrom.ttf\"" << str << "1, 0\n"
+        << "\tpigment { White }" << "\n}\n\n";
+       *(d->output) << "text {\n"        
+        << "\tttf " << "\"timrom.ttf\" \"" << str << "\" 1, 0\n"
+        << "\tpigment { rgbt <" << d->color.red() << ", " << d->color.green()
+      << ", " << d->color.blue() << "," << 1.0 - d->color.alpha() << "> }\n"
+      << "\ttranslate<" << center.x() << ", " << center.y() << ", " << center.z() << ">\n" << "}\n\n";*/
     return 0;
   }
 

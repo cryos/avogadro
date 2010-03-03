@@ -17,56 +17,46 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifndef SPECTRATYPE_NMR_H
-#define SPECTRATYPE_NMR_H
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#include <QHash>
+#ifndef SPECTRATYPE_UV_H
+#define SPECTRATYPE_UV_H
+
+#include <QtCore/QHash>
+#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabnmr.h"
+#include "ui_spectratabuv.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class NMRSpectra : public SpectraType
+  class UVSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    NMRSpectra( SpectraDialog *parent = 0 );
-    ~NMRSpectra();
+    UVSpectra( SpectraDialog *parent = 0 );
+    ~UVSpectra();
 
-    virtual void writeSettings();
-    virtual void readSettings();
+    void writeSettings();
+    void readSettings();
 
-    virtual bool checkForData(Molecule* mol);
-    virtual void setupPlot(PlotWidget * plot);
-
-    virtual QWidget * getTabWidget();
-
-    virtual void getCalculatedPlotObject(PlotObject *plotObject);
-    virtual void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    virtual void getImportedPlotObject(PlotObject *plotObject);
-    virtual QString getTSV();
-
-  public slots:
-    void setAtom(QString symbol);
-
-  private slots:
-    void setReference(double ref);
-    void updatePlotAxes();
-
-  signals:
-    void plotDataChanged();
+    bool checkForData(Molecule* mol);
+    void setupPlot(PlotWidget * plot);
+    
+    void getCalculatedPlotObject(PlotObject *plotObject);
+  //  void setImportedData(const QList<double> & xList, const QList<double> & yList);
+  //  void getImportedPlotObject(PlotObject *plotObject);
+    QString getTSV();
 
   private:
-    Ui::Tab_NMR ui;
-    SpectraDialog *m_dialog;
-    double m_ref;
-    QHash<QString, QList<double>* > *m_NMRdata;
+    Ui::Tab_UV ui;
+    double m_fermi;
   };
 }
 
 #endif
+//#endif

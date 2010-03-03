@@ -21,6 +21,8 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
+#include <avogadro/dockextension.h>
+
 #include "mainwindow.h"
 
 #include "config.h" // krazy:exclude=includes
@@ -415,10 +417,13 @@ namespace Avogadro
   {
     // delayed initialization
     if(event->type() == QEvent::Polish) {
+
+      // read settings
+      readSettings();
       
       reloadTools();
-      if (d->toolSettingsDock)
-        d->toolSettingsDock->hide();
+      //if (d->toolSettingsDock)
+      //  d->toolSettingsDock->hide();
       loadExtensions();
 
       // Check every menu for "extra" separators
@@ -456,8 +461,6 @@ namespace Avogadro
       if(!molecule())
         loadFile();
 
-      // read settings
-      readSettings();
       // if we don't have a molecule then load a blank file
       d->initialized = true;
     }
@@ -570,9 +573,12 @@ namespace Avogadro
     /**
      * Engines: Clear all the EngineListViews and call GLWidget::reloadEngines()
      * for each GLWidget.
+    gl->setExtensions(d->pluginManager.extensions(this));
      */
-    foreach (GLWidget *glwidget, d->glWidgets)
+    foreach (GLWidget *glwidget, d->glWidgets) {
       glwidget->reloadEngines();
+      glwidget->setExtensions(d->pluginManager.extensions(this));
+    }
 
 
     int count = d->enginesStacked->count();
@@ -717,7 +723,7 @@ namespace Avogadro
           " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output)"
+        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output *.gamout *.g98 *.g03 *.nwo)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
@@ -1778,23 +1784,237 @@ namespace Avogadro
       return false;
     }
 
-    if ( conv.ReadString( &newMol, text.data() )
+    bool validMol = false;
+    if ( conv.ReadString( &newMol, text.constData() ) // Can we read with OB formats?
          && newMol.NumAtoms() != 0 ) {
-      vector3 offset; // small offset so that pasted mols don't fall on top
-      offset.randomUnitVector();
-      offset *= 0.2;
-
-      newMol.Translate(offset);
-      Molecule newMolecule;
-      newMolecule.setOBMol(&newMol);
-      PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
-      d->undoStack->push(command);
-      d->toolGroup->setActiveTool("Manipulate"); // set the tool to manipulate, so we can immediate move the selection
-    } else {
-      return false;
+      validMol = true;
     }
+
+    if (!validMol) { // We failed as an authentic format, try annulen's heuristics
+      validMol = parseText(&newMol, QString(text));
+    }
+    
+    if (validMol && newMol.NumAtoms() == 0)
+      return false;
+
+    // We've got something we can paste
+    vector3 offset; // small offset so that pasted mols don't fall on top
+    offset.randomUnitVector();
+    offset *= 0.1;
+    
+    newMol.Translate(offset);
+    Molecule newMolecule;
+    newMolecule.setOBMol(&newMol);
+    PasteCommand *command = new PasteCommand(d->molecule, newMolecule, d->glWidget);
+    d->undoStack->push(command);
+    d->toolGroup->setActiveTool("Manipulate"); // set the tool to manipulate, so we can immediate move the selection
     return true;
   }
+
+  int GetAtomicNum(string name, int &iso)
+  {
+    int n = OpenBabel::etab.GetAtomicNum(name.c_str(), iso);
+    if (iso != 0)
+      return 0;  // "D" ot "T"
+    if (n != 0)
+      return n;  // other element symbols
+    
+    // not match => we've got IUPAC name
+    
+    /*vector<OBElement*>::iterator i;
+      for (i = _element.begin();i != _element.end();++i)
+      if (name == (*i)->GetSymbol())
+      return((*i)->GetAtomicNum());*/
+    
+    for (unsigned int i=0; i<etab.GetNumberOfElements(); i++)
+      if (!QString::compare(name.c_str(), etab.GetName(i).c_str(), Qt::CaseInsensitive))
+	      return i;
+	  
+    if (!QString::compare(name.c_str(), "Deuterium", Qt::CaseInsensitive))
+      {
+        iso = 2;
+        return(1);
+      }
+    else if (!QString::compare(name.c_str(), "Tritium", Qt::CaseInsensitive))
+      {
+        iso = 3;
+        return(1);
+      }
+    else
+      iso = 0;
+    return(0);
+  }
+
+  bool MainWindow::parseText(OBMol *mol, const QString coord)
+  {
+    QStringList coordStrings = coord.split(QRegExp("\n"));
+	
+    double k = 1.0; // ANGSTROM -- set to 0.529 for Bohr
+	
+    // Guess format
+    
+    // split on any non-word symbol, except '.'
+    QStringList data = coordStrings.at(0).trimmed().split(QRegExp("\\s+|,|;")); 
+    //QList<double>
+    // Format definition, will be used for parsing
+    int NameCol=-1, Xcol=-1, Ycol=-1, Zcol=-1;
+    QString format("");
+    int a;
+    double b;
+    bool ok;
+    for (int i=0; i<data.size(); i++)
+      {
+        if (data.at(i) == "") continue;
+        
+        a = data.at(i).toInt(&ok);
+        if (ok)
+          {
+            format += "i";
+            continue;
+          }
+        
+        b = data.at(i).toDouble(&ok);
+        if (ok)
+          {
+            if ((int)b == b && b!=0)
+              format += "i";	// non-zero integer found - not likely to be coordinate
+            else
+              format += "d";
+          }
+        else
+          format += "s";
+      }
+    
+    qDebug() << "Format is: " << format;
+    
+    if (format.length() < 4)
+      return false; // invalid format
+    
+    if (format == "iddd") // special XYZ variant
+      {
+        NameCol=0;
+        Xcol=1;
+        Ycol=2;
+        Zcol=3;
+      }
+    else // more columns
+      {
+        for (int i=0; i<format.length(); i++)
+          {
+            //if (format.at(i) == 'i')
+            //continue; // nothing valuable
+            
+            if ((format.at(i)=='d') || (format.length()==4 && format.at(i)=='i'))
+              {
+                // double
+                if (Xcol==-1)
+                  {
+                    Xcol=i;
+                    continue;
+                  }
+                if (Ycol==-1)
+                  {
+                    Ycol=i;
+                    continue;
+                  }
+                if (Zcol==-1)
+                  {
+                    Zcol=i;
+                    continue;
+                  }
+                continue; // nothing valuable
+              }
+
+            if (format.at(i) == 's')
+              {
+                // string
+                if (NameCol != -1)  // just found
+                  continue;
+        
+                // Try to find element name or symbol inside it
+                int n,iso;
+                QString s = data.at(i);
+                while (s.length()!=0)  // recognize name with number
+                  {
+                    iso = 0;
+                    n = GetAtomicNum(s.toStdString(), iso);
+                    if (iso != 0)
+                      n = 1;
+            
+                    if (n!=0)
+                      {
+                        NameCol=i;
+                        break;
+                      }
+                    else
+                      s.chop(1);
+                  }
+              }
+            continue;
+          }
+      }
+    
+    if((NameCol==-1) || (Xcol==-1) || (Ycol==-1) || (Zcol==-1))
+      return false;
+	  
+    // Read and apply coordinates
+    mol->BeginModify();
+    for (int N=0; N<coordStrings.size(); N++)
+      {
+        if (coordStrings.at(N) == "") continue;
+        
+        OBAtom *atom  = mol->NewAtom();
+        QStringList s_data = coordStrings.at(N).trimmed().split(QRegExp("\\s+|,|;"));
+        if (s_data.size() != data.size())
+          return false;
+        for (int i=0; i<s_data.size(); i++)
+          {
+            double x, y, z;
+            int _n,_iso;
+            bool ok = true;
+            if (i == Xcol)
+              x = s_data.at(i).toDouble(&ok);
+            else if (i == Ycol)
+              y = s_data.at(i).toDouble(&ok);
+            else if (i == Zcol)
+              z = s_data.at(i).toDouble(&ok);
+            else if ((i == NameCol)	&& (format == "iddd"))
+              _n = s_data.at(i).toInt(&ok);
+            else if (i == NameCol)
+              {
+                
+                // Try to find element name or symbol inside it
+                
+                QString _s = s_data.at(i);
+                while (_s.length()!=0)  // recognize name with number
+                  {
+                    _iso=0;  
+                    _n = GetAtomicNum(_s.toStdString(), _iso);
+                    if (_iso != 0)
+                      _n = 1;
+                    
+                    if (_n!=0)
+                      break;
+                    else
+                      _s.chop(1);
+                  }
+                if (_n==0)
+                  return false;
+              }
+            if (!ok) return false;
+            
+            atom->SetAtomicNum(_n);
+            atom->SetVector(x*k,y*k,z*k); //set coordinates
+          }
+      }
+    mol->EndModify();
+    mol->ConnectTheDots();
+    mol->PerceiveBondOrders();
+    
+    //qDebug() << "molecule updated";
+    return true;
+  }
+
 
   // Helper function -- works for "cut" or "copy"
   // FIXME add parameter to set "Copy" or "Cut" in messages
@@ -2740,7 +2960,12 @@ namespace Avogadro
 
       QDockWidget *dockWidget = extension->dockWidget();
       if(dockWidget) {
-        addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+        Qt::DockWidgetArea area = Qt::RightDockWidgetArea;
+        DockExtension *dock = qobject_cast<DockExtension *>(extension);
+        if (dock) {
+          area = dock->preferredDockArea();
+        }
+        addDockWidget(area, dockWidget);
         dockWidget->hide();
         ui.menuToolbars->addAction(dockWidget->toggleViewAction());
       }
@@ -2890,6 +3115,9 @@ namespace Avogadro
     gl->setUndoStack( d->undoStack );
     gl->setToolGroup( d->toolGroup );
     d->glWidgets.append(gl);
+    
+    // Set the extensions (needed for Extension::paint) 
+    gl->setExtensions(d->pluginManager.extensions(this));
 
     // engine list wiget contains all the buttons too
     QWidget *engineListWidget = new QWidget(ui.enginesWidget);
