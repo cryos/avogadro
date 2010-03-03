@@ -48,6 +48,7 @@ namespace Avogadro {
 
       void setMolecule(Molecule *molecule);
       void setWidget(GLWidget *widget) {m_widget = widget; }
+      Ui::VibrationWidget * getUi() {return &ui;};
 
     public slots:
 //      void accept();
@@ -59,6 +60,7 @@ namespace Avogadro {
       void setScale(int scale);
       void setScale(double scale);
       void setDisplayForceVectors(bool checked);
+      void setNormalize(bool checked);
       void setAnimationSpeed(bool checked);
       void animateButtonClicked(bool);
       void pauseButtonClicked(bool);
@@ -68,6 +70,7 @@ namespace Avogadro {
     signals:
       void selectedMode(int);
       void scaleUpdated(double scale);
+      void normalizeUpdated(bool enabled);
       void forceVectorUpdated(bool enabled);
       void animationSpeedUpdated(bool enabled);
       void toggleAnimation();

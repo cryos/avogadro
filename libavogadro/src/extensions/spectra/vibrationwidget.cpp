@@ -68,6 +68,8 @@ namespace Avogadro {
             this, SLOT(setScale(int)));
     connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setDisplayForceVectors(bool)));
+    connect(ui.normalizeDispCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setNormalize(bool)));
     connect(ui.animationSpeedCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
@@ -253,6 +255,14 @@ namespace Avogadro {
   void VibrationWidget::setScale(double scale)
   {
     emit scaleUpdated(scale);
+  }
+
+  void VibrationWidget::setNormalize(bool checked)
+  {
+    if (checked != ui.normalizeDispCheckBox->isChecked())
+      ui.normalizeDispCheckBox->setChecked(checked);
+
+    emit normalizeUpdated(checked);
   }
 
   void VibrationWidget::setDisplayForceVectors(bool checked)
