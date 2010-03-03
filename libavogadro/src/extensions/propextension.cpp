@@ -225,7 +225,7 @@ namespace Avogadro
       dialogSize.setWidth(width+view->verticalScrollBar()->width());
     }
     dialog->resize(dialogSize);
-	dialog->setWindowFlags(Qt::Window);
+	//dialog->setWindowFlags(Qt::Window);
     dialog->show();
 
     return undo;
