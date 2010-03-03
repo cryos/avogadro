@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-10-19 21:25-0400\n"
-"PO-Revision-Date: 2010-02-25 13:40+0300\n"
+"PO-Revision-Date: 2010-03-03 01:01+0300\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -992,12 +992,12 @@ msgstr "Генератор входного файла..."
 #: src/extensions/gamessextension.cpp:70
 msgctxt "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr "Выбор для EFP..."
+msgstr "Фрагмент EFP..."
 
 #: src/extensions/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr "Выбор для QM..."
+msgstr "Фрагмент QM..."
 
 #: src/extensions/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -6704,7 +6704,7 @@ msgstr "Раскрасить по:"
 #. i18n: file: src/extensions/surfacedialog.ui:120
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
 msgid "Nothing"
-msgstr ""
+msgstr "(Нет)"
 
 #. i18n: file: src/extensions/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
@@ -6831,7 +6831,7 @@ msgstr "Частота (см⁻¹)"
 #. i18n: file: src/extensions/vibrationdialog.ui:50
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Intensity (km/mol)"
-msgstr "Интенсивность (km/моль)"
+msgstr "Интенсивность (км/моль)"
 
 #. i18n: file: src/extensions/vibrationdialog.ui:66
 #. i18n: ectx: property (text), widget (QLabel, label)

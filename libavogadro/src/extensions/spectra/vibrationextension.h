@@ -65,6 +65,7 @@ namespace Avogadro {
 
       void setScale(double scale);
       void setDisplayForceVectors(bool enabled);
+      void setNormalize(bool enabled);
       void setAnimationSpeed(bool enabled);
       void toggleAnimation();
       void pauseAnimation();
@@ -83,6 +84,7 @@ namespace Avogadro {
 
       double m_scale;
       unsigned int m_framesPerStep;
+      bool m_normalize;
       bool m_displayVectors;
       bool m_animationSpeed;
       bool m_animating;

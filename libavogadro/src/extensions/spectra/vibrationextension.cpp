@@ -21,7 +21,7 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
-#include "../../pluginmanager.h"
+#include <avogadro/pluginmanager.h>
 
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
@@ -33,15 +33,32 @@
 #include <openbabel/generic.h>
 #include <openbabel/mol.h>
 
-#include <QAction>
-#include <QMessageBox>
-#include <QDebug>
+#include <QtGui/QAction>
+#include <QtGui/QCloseEvent>
+#include <QtGui/QMessageBox>
+#include <QtCore/QDebug>
 
 using namespace std;
 using namespace OpenBabel;
 using namespace Eigen;
 
 namespace Avogadro {
+
+  class VibrationDock : public QDockWidget
+  {
+  public:
+    VibrationDock( const QString & title, QWidget * parent = 0,
+      Qt::WindowFlags flags = 0 ) : QDockWidget(title, parent, flags) {}
+      
+  protected: 
+    void closeEvent ( QCloseEvent * event )
+    {
+      VibrationWidget *w = qobject_cast<VibrationWidget *>(widget());
+      if (w)
+        w->reject();
+      event->accept();
+    }
+  };
 
   VibrationExtension::VibrationExtension(QObject *parent) : DockExtension(parent),
                                                             m_mode(-1),
@@ -53,6 +70,7 @@ namespace Avogadro {
                                                             m_scale(1.0),
                                                             m_framesPerStep(8),
                                                             m_displayVectors(true),
+                                                            m_normalize(true),
                                                             m_animationSpeed(false),
                                                             m_animating(false),
                                                             m_paused(false),
@@ -68,14 +86,19 @@ namespace Avogadro {
   QDockWidget * VibrationExtension::dockWidget()
   {
     if (!m_dock) {
-      m_dock = new QDockWidget( tr("Vibrations"), qobject_cast<QWidget *>(parent()) );
+      m_dock = new VibrationDock( tr("Vibrations"), qobject_cast<QWidget *>(parent()) );
       m_dock->setObjectName("vibrationDock");
-      qDebug() << "geom" << m_geometry.size();
+      //qDebug() << "geom" << m_geometry.size();
       m_dock->restoreGeometry(m_geometry);
       //m_dock->setAllowedAreas(Qt::RightDockWidgetArea);
     
       if (!m_dialog) {
         m_dialog = new VibrationWidget();
+
+        m_dialog->getUi()->normalizeDispCheckBox->setChecked(m_normalize);
+        m_dialog->getUi()->displayForcesCheckBox->setChecked(m_displayVectors);
+        m_dialog->getUi()->animationSpeedCheckBox->setChecked(m_animationSpeed);
+        //m_dialog->setScale(m_scale);        
         
         connect(m_dialog, SIGNAL(selectedMode(int)),
                 this, SLOT(updateMode(int)));
@@ -83,6 +106,8 @@ namespace Avogadro {
                 this, SLOT(setScale(double)));
         connect(m_dialog, SIGNAL(forceVectorUpdated(bool)),
                 this, SLOT(setDisplayForceVectors(bool)));
+        connect(m_dialog, SIGNAL(normalizeUpdated(bool)),
+                this, SLOT(setNormalize(bool)));
         connect(m_dialog, SIGNAL(animationSpeedUpdated(bool)),
                 this, SLOT(setAnimationSpeed(bool)));
         connect(m_dialog, SIGNAL(toggleAnimation()),
@@ -201,6 +226,7 @@ namespace Avogadro {
 
     vector3 obDisplacement;
     Eigen::Vector3d displacement, atomPos;
+    double norm = 1;
 
     // delete any old frames
     clearAnimationFrames();
@@ -211,12 +237,25 @@ namespace Avogadro {
     if (m_displayVectors)
       setDisplayForceVectors(true);
 
+     if (m_normalize) {
+       norm = 0;
+       foreach (Atom *atom, m_molecule->atoms()) {
+          obDisplacement = displacementVectors[atom->index()];
+          displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());      
+          norm += displacement.norm();
+        }
+      }
+
     foreach (Atom *atom, m_molecule->atoms()) {
       obDisplacement = displacementVectors[atom->index()];
-      displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());
+      displacement = Eigen::Vector3d(obDisplacement.x(), obDisplacement.y(), obDisplacement.z());      
+
+      if (m_normalize) {        
+        displacement /= norm;
+      }
 
       if (m_displayVectors)
-        atom->setForceVector(displacement);
+        atom->setForceVector(displacement*5);
 
       // We'll create frames for 4 "steps"
       // 1) current coordinates -> + displacement
@@ -257,6 +296,12 @@ namespace Avogadro {
   void VibrationExtension::setScale(double scale)
   {
     m_scale = scale;
+    updateMode(m_mode);
+  }
+
+  void VibrationExtension::setNormalize(bool normalize)
+  {
+    m_normalize = normalize;
     updateMode(m_mode);
   }
 
@@ -344,15 +389,21 @@ namespace Avogadro {
   } 
   
   void VibrationExtension::writeSettings(QSettings &settings) const
-  {
+  {    
   	if (m_dock)
   	  settings.setValue("vibration/geometry", m_dock->saveGeometry());
+    settings.setValue("vibration/normalize", m_normalize);
+    settings.setValue("vibration/forces", m_displayVectors);
+    settings.setValue("vibration/speed", m_animationSpeed);
   }
   
   void VibrationExtension::readSettings(QSettings &settings)
   {
   	m_geometry = settings.value("vibration/geometry").toByteArray();
-  	qDebug() << "readSettings";
+    m_normalize = settings.value("vibration/normalize", true).toBool();
+    m_displayVectors = settings.value("vibration/forces", true).toBool();
+    m_animationSpeed = settings.value("vibration/speed", false).toBool();
+    //m_scale = settings.value("vibration/scale").toDouble();
   }
 
 } // end namespace Avogadro
