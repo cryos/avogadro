@@ -460,6 +460,11 @@ namespace Avogadro {
       return false;
     }
     OpenBabel::OBMol obmol = molecule->OBMol();
+      
+    OpenBabel::OBChainsParser chainparser;
+    obmol.UnsetFlag(OB_CHAINS_MOL);
+    chainparser.PerceiveChains(obmol);
+ 
     if (conv.Write(&obmol, &ofs)) {
       ofs.close();
       if (replaceExistingFile) {
