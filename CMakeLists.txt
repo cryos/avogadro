@@ -359,8 +359,8 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
 # avopkg
 if(UNIX)
   configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in
-    ${CMAKE_CURRENT_BINARY_DIR}/avopkg
+    "${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
   )
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
@@ -368,6 +368,17 @@ if(UNIX)
     PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
   )
 endif(UNIX)
+
+# .prf file for QMake projects
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.prf.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+)
+
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+  DESTINATION "${QT_MKSPECS_DIR}/features"
+)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
