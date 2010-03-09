@@ -1,0 +1,122 @@
+#!/bin/sh
+
+#  Avogadro Package Manager v 1.0
+#  Copyright (C) 2010 Konstantin Tokarev
+#
+#  For more information about Avogadro, see
+#  <http://avogadro.openmolecules.net/>
+#
+#  Permission to use, copy, modify, distribute, and sell this software and its
+#  documentation for any purpose is hereby granted without fee, provided that
+#  the above copyright notice appear in all copies and that both that
+#  copyright notice and this permission notice appear in supporting
+#  documentation.
+#
+#  The above copyright notice and this permission notice shall be included in
+#  all copies or substantial portions of the Software.
+
+PREFIX="@CMAKE_INSTALL_PREFIX@"
+LIB_DIR="lib@LIB_SUFFIX@"
+PLUGIN_DIR="avogadro@Plugin_Version@"
+
+# Helper functions
+
+# /**
+#  * Returns value of variable from package configuration
+#  * @param $1 package description file name
+#  * @param $2 variable name
+#  * @returns variable value (may NOT contain spaces!)
+#  */
+getVar()
+{
+    #extract last field of string using ' ' as delimiter
+	echo `cat $1 | grep $2 | awk '{print $NF}'`
+}
+
+# /**
+#  * Returns value of multi-string variable from package configuration
+#  * @param $1 package description file name
+#  * @param $2 variable name
+#  * @returns variable value (may contain spaces!)
+#  */
+getMultiVar()
+{
+    #extract last field of string using ':' as delimiter
+	echo `cat $1 | grep $2 | awk -F':' '{print $NF}'`
+}
+
+# Main script
+
+echo "Avopkg v1.0"
+if test "$1" = "-pack"
+then
+    # Create package
+    if test -e $2
+    then        
+        echo "Building package for $(getMultiVar $2 Name) ..."
+    else
+        echo Usage: $0 -pack filename
+        exit 0
+    fi
+    
+    
+    #echo Package files: $files
+    # Use tar.gz compression
+    package=$(getVar $2 Package)
+    files="$(getMultiVar $2 Files)"
+    rm -rf .tmp
+    mkdir -p .tmp/$package
+    cp $2 .tmp/$package/$package    
+    cp -t .tmp/$package $files # Will fail if some file is missing
+    cd .tmp
+    tar czf ../$package.avo $package
+    cd ..
+    rm -rf .tmp
+    echo Done!
+else
+    # Install package
+
+    if test -e $1
+    then
+        package=`basename $1 .avo`
+        echo Unpacking $1...           
+    else
+        echo Usage: $0 filename
+        exit 0
+    fi
+    
+    rm -rf .tmp
+    mkdir .tmp
+    cd .tmp
+    tar xzf ../$1
+    if ! test $? = 0
+    then
+        echo $1 is not an Avogadro extension!
+        exit 0
+    fi
+    
+    cd $package
+    echo -n Installing package $package
+    pkg=$package
+    if test $USER = root
+    then
+        echo " for all users..."
+        dest=$PREFIX/$LIB_DIR/$PLUGIN_DIR/$(getVar $pkg Category) 
+    else
+        echo " for user $USER"
+        dest=$HOME/.$PLUGIN_DIR/plugins/$(getVar $pkg Category)
+    fi
+
+    if ! test -d $dest
+    then
+        echo Creating directory $dest...
+        mkdir -p $dest
+    fi
+
+    cp -t $dest $(getMultiVar $pkg Files)
+
+    cd ../..
+    rm -rf .tmp
+    echo Done.       
+    
+fi

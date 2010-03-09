@@ -349,11 +349,36 @@ add_subdirectory(doc)
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 
+
 # When installing, make sure to install some fragments
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
         DESTINATION ${avogadro_FRAGMENTS})
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
         DESTINATION ${avogadro_FRAGMENTS})
+
+# avopkg
+if(UNIX)
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
+  )
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
+    DESTINATION ${BIN_INSTALL_DIR}
+    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+  )
+endif(UNIX)
+
+# .prf file for QMake projects
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.prf.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+)
+
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+  DESTINATION "${QT_MKSPECS_DIR}/features"
+)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
