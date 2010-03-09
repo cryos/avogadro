@@ -763,7 +763,12 @@ namespace Avogadro
       }
 
       // if we have nothing open or modified
-      if ( /*isDefaultFileName(d->fileName) &&*/ !isWindowModified() ) {
+      bool loadInNewWindow = isWindowModified();
+#ifdef (Q_WS_MAC)
+      loadInNewWindow = true; // always load into a new window on Mac PR#2945916
+#endif
+
+      if ( !loadInNewWindow ) {
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -779,7 +784,7 @@ namespace Avogadro
         other->move( x() + 25, y() + 25 );
 #endif
         other->show();
-      }
+      } // if (loadInNewWindow)
     }
   }
 
