@@ -1,7 +1,6 @@
-/* $Id: gl2psTestSimple.c,v 1.16 2007/05/02 20:57:15 geuzaine Exp $ */
 /*
  * GL2PS, an OpenGL to PostScript Printing Library
- * Copyright (C) 1999-2007 Christophe Geuzaine <geuz@geuz.org>
+ * Copyright (C) 1999-2009 Christophe Geuzaine <geuz@geuz.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of either:
@@ -28,7 +27,9 @@
  * library in the file named "COPYING.GL2PS"; if not, I will be glad
  * to provide one.
  *
- * For the latest info about gl2ps, see http://www.geuz.org/gl2ps/.
+ * For the latest info about gl2ps and a full list of contributors,
+ * see http://www.geuz.org/gl2ps/.
+ *
  * Please report all bugs and problems to <gl2ps@geuz.org>.
  */
 
@@ -49,7 +50,8 @@
 #include <string.h>
 #include "gl2ps.h"
 
-void display(void){
+void display()
+{
   unsigned int i;
   int N = 50;
   char *help = "Press 's' to save image or 'q' to quit";  
@@ -89,7 +91,8 @@ void display(void){
   glFlush();
 }
 
-void keyboard(unsigned char key, int x, int y){
+void keyboard(unsigned char key, int x, int y)
+{
   FILE *fp;
   int state = GL2PS_OVERFLOW, buffsize = 0;
 
@@ -114,8 +117,9 @@ void keyboard(unsigned char key, int x, int y){
   }
 }
 
-int main(int argc, char **argv){
-  GLfloat pos[4]={1.,1.,-1.,0.};
+int main(int argc, char **argv)
+{
+  GLfloat pos[4] = {1., 1., -1., 0.};
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DEPTH);

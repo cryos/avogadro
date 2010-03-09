@@ -1,7 +1,6 @@
-/* $Id: gl2psTest.c,v 1.84 2007/05/02 20:57:15 geuzaine Exp $ */
 /*
  * GL2PS, an OpenGL to PostScript Printing Library
- * Copyright (C) 1999-2007 Christophe Geuzaine <geuz@geuz.org>
+ * Copyright (C) 1999-2009 Christophe Geuzaine <geuz@geuz.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of either:
@@ -28,12 +27,9 @@
  * library in the file named "COPYING.GL2PS"; if not, I will be glad
  * to provide one.
  *
- * Contributors:
- *   Rouben Rostamian <rostamian@umbc.edu>
- *   Guy Barrand <barrand@lal.in2p3.fr>
- *   Micha Bieber <bieber@traits.de>
+ * For the latest info about gl2ps and a full list of contributors,
+ * see http://www.geuz.org/gl2ps/.
  *
- * For the latest info about gl2ps, see http://www.geuz.org/gl2ps/.
  * Please report all bugs and problems to <gl2ps@geuz.org>.
  */
 
@@ -136,7 +132,8 @@ static char *pixmap[] = {
   "*..............................................................*",
   "****************************************************************"};
 
-void triangles(void){
+void triangles()
+{
   /* two intersecting triangles */
   glBegin(GL_TRIANGLES);
   
@@ -157,7 +154,8 @@ void triangles(void){
   glEnd();
 }
 
-void extras(void){
+void extras()
+{
   glColor3f(1., 0., 0.);
 
   glPointSize(1.);
@@ -225,7 +223,8 @@ void extras(void){
   gl2psLineWidth(1);
 }
 
-void objects(void){
+void objects()
+{
   glPushMatrix();
   glEnable(GL_LIGHTING);
   glRotatef(rotation, 2., 0., 1.);
@@ -240,7 +239,8 @@ void objects(void){
   glPopMatrix();
 }
 
-void printstring(char *string){
+void printstring(char *string, float angle)
+{
   unsigned int i;
   char *fonts[] = 
     { "Times-Roman", "Times-Bold", "Times-Italic", "Times-BoldItalic",
@@ -250,38 +250,50 @@ void printstring(char *string){
   
   /* call gl2psText before the glut function since glutBitmapCharacter
      changes the raster position... */
-  gl2psText(string, fonts[4], 12);
+  gl2psTextOpt(string, fonts[4], 12, GL2PS_TEXT_BL, angle);
 
   for (i = 0; i < strlen(string); i++)
     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, string[i]);
 }
 
-void text(void){
+void text()
+{
   double x = -1.25, y = -0.33, dy = 0.13;
 
   glColor3f(1., 1., 0.);
 
-  glRasterPos2d(x, y); y -= dy;
-  printstring("Press:");  
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  p: to change the print format (PS, EPS, PDF, ...)");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  s: to save the images");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  t: to alternate between teapot and torus");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  v: to alternate between single and multiple viewport modes");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  b: to change the blending mode (transparency)");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("  q: to quit");
-  glRasterPos2d(x, y); y -= dy;
-  printstring("Click and move the mouse to rotate the objects");
+  glRasterPos2d(x, y);
+  printstring("Press:", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  p: to change the print format (PS, EPS, PDF, ...)", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  s: to save the images", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  t: to alternate between teapot and torus", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  v: to alternate between single and multiple viewport modes", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  b: to change the blending mode (transparency)", 0.);
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("  q: to quit", 0.), 0.;
+  y -= dy;
+  glRasterPos2d(x, y);
+  printstring("Click and move the mouse to rotate the objects", 0.);
+
+  glRasterPos2d(0, 0.75);
+  printstring("rotated", 45.);
 
   gl2psSpecial(GL2PS_TEX, "% This should only be printed in LaTeX output!");
 }
 
-void cube(void){
+void cube()
+{
   glColor3d (0.0,1.0,0.);   
   glBegin(GL_POLYGON);
   glVertex3d( 0.5,-0.5,-0.5);
@@ -316,7 +328,8 @@ void cube(void){
   glEnd();
 }
 
-void image(float x, float y, GLboolean opaque){
+void image(float x, float y, GLboolean opaque)
+{
   int w = 64, h = 66, row, col, pos = 0;
   float *pixels, r = 0., g = 0., b = 0.;
 
@@ -369,7 +382,8 @@ void image(float x, float y, GLboolean opaque){
 }
 
 /* A simple drawing function, using the default viewport */
-void draw_single(void){
+void draw_single()
+{
   glScissor(0, 0, window_w, window_h);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   triangles();
@@ -380,7 +394,8 @@ void draw_single(void){
 }
 
 /* A more complex drawing function, using 2 separate viewports */
-void draw_multi(void){
+void draw_multi()
+{
   GLint viewport[4];
 
   glScissor(0, 0, window_w, window_h);
@@ -439,7 +454,8 @@ void draw_multi(void){
   glFlush();
 }
 
-void display(void){
+void display()
+{
   GLfloat spec[4] = {0.6, 0.6, 0.6, 1.0};
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LESS);
@@ -465,7 +481,8 @@ void display(void){
   }
 }
 
-void reshape(int w, int h){
+void reshape(int w, int h)
+{
   window_w = w;
   window_h = h;
 
@@ -480,7 +497,8 @@ void reshape(int w, int h){
 }
 
 void writefile(int format, int sort, int options, int nbcol,
-               char *filename, const char *extension){
+               char *filename, const char *extension)
+{
   FILE *fp;
   char file[256];
   int state = GL2PS_OVERFLOW, buffsize = 0;
@@ -520,7 +538,8 @@ void writefile(int format, int sort, int options, int nbcol,
   fflush(stdout);
 }
 
-void keyboard(unsigned char key, int x, int y){
+void keyboard(unsigned char key, int x, int y)
+{
   int opt;
   char ext[32];
   static int format = GL2PS_PS;
@@ -588,12 +607,14 @@ void keyboard(unsigned char key, int x, int y){
   }
 }
 
-void motion(int x, int y){
+void motion(int x, int y)
+{
   rotation += 10.;
   display();
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_DEPTH);
   glutInitWindowSize(400, 600);
