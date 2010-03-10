@@ -13,14 +13,15 @@ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c
     "import numpy; print numpy.get_include()"
     OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
 
-if (EXISTS ${NUMPY_INCLUDE_DIR})
+
+if (NUMPY_INCLUDE_DIR)
   # successful
   set (NUMPY_FOUND TRUE)
   set (NUMPY_INCLUDE_DIR ${NUMPY_INCLUDE_DIR} CACHE STRING "Numpy include path")
-else (EXISTS ${NUMPY_INCLUDE_DIR})
+else (NUMPY_INCLUDE_DIR)
   # Did not successfully include numpy
   set(NUMPY_FOUND FALSE)
-endif (EXISTS ${NUMPY_INCLUDE_DIR})
+endif (NUMPY_INCLUDE_DIR)
 
 if (${NUMPY_FOUND})
   if (NOT ${NUMPY_FIND_QUIETLY})
