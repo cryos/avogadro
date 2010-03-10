@@ -61,7 +61,7 @@ qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
 if(NOT WIN32)
-  file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro*.po")
+  file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro/avogadro*.po")
   QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!
