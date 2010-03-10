@@ -1,0 +1,5079 @@
+# Simplified Chinese translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-03-09 19:06-0500\n"
+"PO-Revision-Date: 2009-12-12 13:17+0000\n"
+"Last-Translator: Ye, Qing <allen19920930@gmail.com>\n"
+"Language-Team: Simplified Chinese <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
+msgid "OK"
+msgstr "确定"
+
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
+#, qt-format
+msgctxt "%1 is the Git revision number."
+msgid "(Git revision: %1)"
+msgstr ""
+
+#: src/aboutdialog.cpp:69
+#, qt-format
+msgid ""
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
+msgstr ""
+
+#. i18n: file: src/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
+#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
+#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
+#: src/mainwindow.cpp:3185:69
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/aboutdialog.cpp:73
+#, fuzzy, qt-format
+msgid ""
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
+msgstr ""
+"<h3>%1</h3><br/><br/>应用程序版本: %2<br/><br/>资源库版本: %3<br/><br/>更多信"
+"息请访问 <a href=\"http://avogadro.openmolecules.net/\">Avogadro主页</a>.<br/"
+"><br/>该程序是按其现状提供的，不附带任何担保，包括其设计、适销性和特定目的下"
+"适用性的担保。<br/>"
+
+#: src/editcommands.cpp:44
+msgid "Cut Molecule"
+msgstr "剪切分子"
+
+#: src/editcommands.cpp:46
+msgid "Cut Atoms"
+msgstr "剪切原子"
+
+#: src/editcommands.cpp:97
+msgid "Paste"
+msgstr "粘贴"
+
+#: src/editcommands.cpp:132
+msgid "Clear Molecule"
+msgstr "清除分子"
+
+#: src/editcommands.cpp:134
+msgid "Clear Atoms"
+msgstr "清除原子"
+
+#. i18n: file: src/projecttreeeditor.ui:179
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
+#: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+msgid "Settings"
+msgstr "设置"
+
+#: src/importdialog.cpp:175 src/mainwindow.cpp:739
+msgid "Open File"
+msgstr "打开文件"
+
+#: src/main.cpp:204
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Avogadro"
+msgstr "Avogadro"
+
+#: src/main.cpp:205
+msgctxt "main.cpp"
+msgid "This system does not support OpenGL."
+msgstr ""
+
+#: src/main.cpp:208
+msgctxt "main.cpp"
+msgid "System has OpenGL support."
+msgstr ""
+
+#: src/main.cpp:211
+msgctxt "main.cpp"
+msgid "About to test OpenGL capabilities."
+msgstr ""
+
+#: src/main.cpp:218
+msgctxt "main.cpp"
+msgid "OpenGL capabilities found: "
+msgstr ""
+
+#: src/main.cpp:220
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Double Buffering."
+msgstr "双微分Hessian"
+
+#: src/main.cpp:222
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Direct Rendering."
+msgstr "渲染："
+
+#: src/main.cpp:224
+#, fuzzy
+msgctxt "main.cpp"
+msgid "Antialiasing."
+msgstr "抗锯齿"
+
+#: src/main.cpp:249
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
+msgstr ""
+
+#: src/main.cpp:264
+#, qt-format
+msgctxt "main.cpp"
+msgid ""
+"Usage: %1 [options] [files]\n"
+"\n"
+"Advanced Molecular Editor (version %2)\n"
+"\n"
+"Options:\n"
+"  -h, --help\t\tShow help options (this)\n"
+"  -v, --version\t\tShow version information\n"
+msgstr ""
+
+#: src/mainwindow.cpp:303
+msgid "Messages"
+msgstr "消息"
+
+#: src/mainwindow.cpp:374
+msgid "Window"
+msgstr "窗口"
+
+#: src/mainwindow.cpp:377
+msgid "&Minimize"
+msgstr "最小化(&M)"
+
+#: src/mainwindow.cpp:378
+msgid "Ctrl+M"
+msgstr "Ctrl+M"
+
+#: src/mainwindow.cpp:383
+msgid "&Zoom"
+msgstr "缩放(&Z)"
+
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+msgid "Bring All to Front"
+msgstr "前置全部窗口"
+
+#: src/mainwindow.cpp:670
+msgid "&Tool Settings..."
+msgstr "工具设置(&T)"
+
+#: src/mainwindow.cpp:673
+msgctxt "Tool Settings shortcut"
+msgid "Ctrl+T"
+msgstr "Ctrl+T"
+
+#: src/mainwindow.cpp:678
+msgid "&Display Settings..."
+msgstr "显示设置(&D)..."
+
+#: src/mainwindow.cpp:681
+msgctxt "Display Settings shortcut"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+msgid "Common molecule formats"
+msgstr "普通分子格式"
+
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:1506
+msgid "All files"
+msgstr "所有文件"
+
+#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+msgid "CML"
+msgstr "CML"
+
+#: src/mainwindow.cpp:726
+msgid "Computational Chemistry Output"
+msgstr "计算化学输出"
+
+#: src/mainwindow.cpp:727
+msgid "Crystallographic Interchange CIF"
+msgstr "晶体信息CIF文件"
+
+#: src/mainwindow.cpp:728
+msgid "GAMESS-US Output"
+msgstr "GAMESS-US 输出"
+
+#: src/mainwindow.cpp:729
+msgid "Gaussian 98/03 Output"
+msgstr "Gaussian 98/03 输出"
+
+#: src/mainwindow.cpp:730
+msgid "Gaussian Formatted Checkpoint"
+msgstr "Gaussian 格式化检查点"
+
+#: src/mainwindow.cpp:731
+msgid "HyperChem"
+msgstr "HyperChem"
+
+#: src/mainwindow.cpp:732
+msgid "MDL Mol"
+msgstr "MDL Mol"
+
+#: src/mainwindow.cpp:733
+msgid "NWChem Output"
+msgstr "NWChem输出"
+
+#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+msgid "PDB"
+msgstr "PDB"
+
+#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+msgid "Sybyl Mol2"
+msgstr "Sybyl Mol2"
+
+#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
+msgid "untitled"
+msgstr "未命名"
+
+#: src/mainwindow.cpp:826
+#, qt-format
+msgctxt "%1 is a filename"
+msgid "Loading %1..."
+msgstr "载入%1..."
+
+#: src/mainwindow.cpp:830
+#, qt-format
+msgid "Loading %1..."
+msgstr "载入 %1..."
+
+#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#, qt-format
+msgid "Reading molecular file failed, file %1."
+msgstr "读取分子文件失败，文件 %1."
+
+#: src/mainwindow.cpp:873
+msgid "Reading multi-molecule file. This may take a while..."
+msgstr "读取多分子文件。这可能需要一些时间..."
+
+#: src/mainwindow.cpp:900
+msgid "This file does not contain 3D coordinates."
+msgstr "该文件不包含3D坐标。"
+
+#: src/mainwindow.cpp:904
+msgid "Do you want Avogadro to build a rough geometry?"
+msgstr "您是否希望Avogadro构建一个粗略的几何体？"
+
+#: src/mainwindow.cpp:922
+msgid ""
+"This file does not contain 3D coordinates.\n"
+"You may not be able to edit or view properly."
+msgstr ""
+"该文件不包含3D坐标信息。\n"
+"您可能无法正常编辑或查看。"
+
+#: src/mainwindow.cpp:974
+msgid "Select Molecule to View"
+msgstr "选择分子以查看"
+
+#: src/mainwindow.cpp:999
+msgid "Molecule Title"
+msgstr "分子名称"
+
+#: src/mainwindow.cpp:1076
+msgid "Atoms: "
+msgstr "原子: "
+
+#: src/mainwindow.cpp:1077
+msgid " Bonds: "
+msgstr " 键: "
+
+#: src/mainwindow.cpp:1093
+msgid "File Loaded..."
+msgstr "文件已载入..."
+
+#: src/mainwindow.cpp:1106
+msgid "Do you want to save the changes you made in the document?"
+msgstr "您是否希望保存文档中的修改？"
+
+#: src/mainwindow.cpp:1115
+msgid "Your changes will be lost if you don't save them."
+msgstr "如果您不保存，您所做的修改会丢失。"
+
+#: src/mainwindow.cpp:1119
+msgctxt "Save"
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#: src/mainwindow.cpp:1120
+msgctxt "Discard"
+msgid "Ctrl+D"
+msgstr "Ctrl+D"
+
+#: src/mainwindow.cpp:1122
+msgid "Save..."
+msgstr "保存..."
+
+#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+msgid "Save"
+msgstr "保存"
+
+#: src/mainwindow.cpp:1205
+msgid "GAMESS Input"
+msgstr "GAMESS输入"
+
+#: src/mainwindow.cpp:1206
+msgid "Gaussian Cartesian Input"
+msgstr "Gaussian笛卡尔坐标型输入"
+
+#: src/mainwindow.cpp:1207
+msgid "Gaussian Z-matrix Input"
+msgstr "Gaussian Z-矩阵输入"
+
+#: src/mainwindow.cpp:1208
+msgid "MDL SDfile"
+msgstr "MDL SD文件"
+
+#: src/mainwindow.cpp:1210
+msgid "NWChem Input"
+msgstr "NWChem输入"
+
+#: src/mainwindow.cpp:1215
+msgid "Save Molecule As"
+msgstr "将分子保存为"
+
+#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+msgid "PNG"
+msgstr "PNG"
+
+#: src/mainwindow.cpp:1424
+msgid "Common image formats"
+msgstr "普通图像格式"
+
+#: src/mainwindow.cpp:1428
+msgid "BMP"
+msgstr "BMP"
+
+#: src/mainwindow.cpp:1430
+msgid "JPEG"
+msgstr "JPEG"
+
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+msgid "Export Bitmap Graphics"
+msgstr "导出为位图"
+
+#: src/mainwindow.cpp:1488
+#, qt-format
+msgid "Cannot save file %1."
+msgstr "不能保存文件 %1。"
+
+#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+msgid "PDF"
+msgstr "PDF"
+
+#: src/mainwindow.cpp:1503
+msgid "Common vector image formats"
+msgstr "普通矢量图格式"
+
+#: src/mainwindow.cpp:1508
+msgid "SVG"
+msgstr "SVG"
+
+#: src/mainwindow.cpp:1509
+msgid "EPS"
+msgstr "EPS"
+
+#: src/mainwindow.cpp:1654
+#, qt-format
+msgid "Untitled %1"
+msgstr "未命名 %1"
+
+#: src/mainwindow.cpp:1759
+msgid "Unable to paste molecule."
+msgstr "不能粘贴分子。"
+
+#: src/mainwindow.cpp:1788
+msgid "Paste failed (format unavailable)."
+msgstr "粘贴失败 (格式不可用)"
+
+#: src/mainwindow.cpp:2071
+msgid "Copy failed (mdl unavailable)."
+msgstr "复制失败 (mdl不可用)"
+
+#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
+#: src/mainwindow.cpp:2827
+#, qt-format
+msgid "View %1"
+msgstr "视图 %1"
+
+#: src/mainwindow.cpp:2257
+#, qt-format
+msgctxt "View number (from 1 on)"
+msgid "View %1"
+msgstr "视图 %1"
+
+#: src/mainwindow.cpp:2266
+msgid "Avogadro: Detached View"
+msgstr "Avogadro: 独立视图"
+
+#: src/mainwindow.cpp:2432
+msgid "Normal Size"
+msgstr "普通大小"
+
+#: src/mainwindow.cpp:2445
+msgid "Full Screen"
+msgstr "全屏"
+
+#: src/mainwindow.cpp:2543
+msgid "Ctrl+Backspace"
+msgstr "Ctrl+Backspace"
+
+#: src/mainwindow.cpp:2677
+msgctxt "[*] indicates that this is a modified view...."
+msgid "[*]Avogadro"
+msgstr "[*]Avogadro"
+
+#: src/mainwindow.cpp:2683
+#, qt-format
+msgctxt "Window title: %1 is file name, %2 is Avogadro"
+msgid "%1[*] - %2"
+msgstr "%1[*] - %2"
+
+#: src/mainwindow.cpp:3139
+msgid "Add"
+msgstr "添加"
+
+#: src/mainwindow.cpp:3144
+msgid "Duplicate"
+msgstr "创建副本"
+
+#: src/mainwindow.cpp:3149
+msgid "Remove"
+msgstr "删除"
+
+#: src/mainwindow.cpp:3177
+msgid "No tools or engines loaded."
+msgstr "没有工具或引擎被载入。"
+
+#: src/mainwindow.cpp:3179
+msgid "No engines loaded."
+msgstr "没有引擎被载入。"
+
+#: src/mainwindow.cpp:3181
+msgid "No tools loaded."
+msgstr "没有工具被载入。"
+
+#: src/mainwindow.cpp:3182
+msgid ""
+" It is unlikely this application will function correctly. Please correct "
+"this error."
+msgstr " 该程序似乎不会正确工作。请修正这个错误。"
+
+#: src/mainwindow.cpp:3226
+msgid "Objects"
+msgstr "对象"
+
+#. i18n: file: src/pluginsettings.ui:38
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+#: src/mainwindow.cpp:3232:321
+msgid "Colors"
+msgstr "颜色"
+
+#: src/mainwindow.cpp:3265
+msgid " copy"
+msgstr " 复制"
+
+#: src/pluginsettings.cpp:53
+msgid "Name: "
+msgstr "名称: "
+
+#: src/pluginsettings.cpp:54
+msgid "Identifier: "
+msgstr "标识符: "
+
+#: src/pluginsettings.cpp:55
+msgid "File: "
+msgstr "文件: "
+
+#: src/pluginsettings.cpp:56
+msgid "Description:\n"
+msgstr "描述:\n"
+
+#: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
+#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+msgid "Molecule"
+msgstr "分子"
+
+#: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreemodel.cpp:210
+msgid "Atoms"
+msgstr "原子"
+
+#: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreemodel.cpp:208
+msgid "Bonds"
+msgstr "键"
+
+#: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreemodel.cpp:212
+msgid "Residues"
+msgstr "残基"
+
+#: src/projectdelegates/bonddelegate.cpp:83
+#: src/projectdelegates/bonddelegate.cpp:101
+#: src/projectdelegates/bonddelegate.cpp:119
+#: src/projectdelegates/bonddelegate.cpp:134
+#, qt-format
+msgid "bond %1"
+msgstr "键 %1"
+
+#: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreemodel.cpp:204
+msgid "Label"
+msgstr "标签"
+
+#: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
+#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+msgid "User Selections"
+msgstr "用户选择"
+
+#: src/projecttreeeditor.cpp:123
+msgid "Error"
+msgstr "错误"
+
+#: src/projecttreeeditor.cpp:123
+msgid "only labels can have sub items"
+msgstr "只有标签能拥有子项目"
+
+#. i18n: file: src/projecttreeeditor.ui:168
+#. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
+#: src/projecttreemodel.cpp:65:378
+msgid "Item"
+msgstr "项目"
+
+#: src/projecttreemodel.cpp:66
+msgid "Index"
+msgstr "索引"
+
+#: src/settingsdialog.cpp:104
+msgctxt "Display quality setting"
+msgid "Low"
+msgstr "低"
+
+#. i18n: file: src/settingsdialog.ui:86
+#. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
+#: src/settingsdialog.cpp:107:405
+msgctxt "Display quality setting"
+msgid "Medium"
+msgstr "中"
+
+#: src/settingsdialog.cpp:111
+msgctxt "Display quality setting"
+msgid "High"
+msgstr "高"
+
+#: src/settingsdialog.cpp:114
+msgctxt "Display quality setting"
+msgid "Undefined"
+msgstr "未定义"
+
+#. i18n: file: src/settingsdialog.ui:144
+#. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
+#: src/settingsdialog.cpp:122:414
+msgctxt "Level of fog in the scene"
+msgid "None"
+msgstr "无"
+
+#: src/settingsdialog.cpp:127
+msgctxt "Level of fog in the scene"
+msgid "Some"
+msgstr "薄"
+
+#: src/settingsdialog.cpp:132
+msgctxt "Level of fog in the scene"
+msgid "Mid"
+msgstr "适中"
+
+#: src/settingsdialog.cpp:137
+msgctxt "Level of fog in the scene"
+msgid "Lots"
+msgstr "厚"
+
+#: src/settingsdialog.cpp:140
+msgctxt "Level of fog in the scene"
+msgid "Undefined"
+msgstr "未定义"
+
+#: src/updatecheck.cpp:93
+msgid "Network Update Check Failed"
+msgstr "网络更新检查失败"
+
+#: src/updatecheck.cpp:94
+msgid "Network timeout or other error."
+msgstr "网络超时或发生其它错误."
+
+#: src/updatedialog.cpp:37
+msgctxt "Indicates an updated Avogadro version is available"
+msgid "Updated Version of Avogadro Available"
+msgstr "Avogadro有更新版本"
+
+#. i18n: file: src/addenginedialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
+msgid "Add Display Type"
+msgstr "添加显示模式"
+
+#. i18n: file: src/addenginedialog.ui:19
+#. i18n: ectx: property (text), widget (QLabel, baseLabe)
+msgid "Type:"
+msgstr "类型："
+
+#. i18n: file: src/addenginedialog.ui:32
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_2)
+msgid "Name:"
+msgstr "名称："
+
+#. i18n: file: src/addenginedialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, baseLabe_3)
+msgid "Description:"
+msgstr "描述:"
+
+#. i18n: file: src/enginecolorswidget.ui:13
+#. i18n: ectx: property (windowTitle), widget (QWidget, EngineColorsWidget)
+msgid "Form"
+msgstr "表单"
+
+#. i18n: file: src/enginecolorswidget.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Color by:"
+msgstr "着色方式按:"
+
+#. i18n: file: src/engineprimitiveswidget.ui:41
+#. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:44
+#. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
+msgid "Add Selected Primitives"
+msgstr "添加选定基本几何体"
+
+#. i18n: file: src/engineprimitiveswidget.ui:55
+#. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
+#. i18n: file: src/engineprimitiveswidget.ui:58
+#. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
+msgid "Remove Selected Primitives"
+msgstr "删除选定基本几何体"
+
+#. i18n: file: src/engineprimitiveswidget.ui:69
+#. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
+#. i18n: file: src/engineprimitiveswidget.ui:72
+#. i18n: ectx: property (text), widget (QToolButton, resetButton)
+msgid "Add All Primitives"
+msgstr "添加所有基本几何体"
+
+#. i18n: file: src/engineprimitiveswidget.ui:83
+#. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
+msgid "Display Only Selected Primitives"
+msgstr "仅显示选择的几何体"
+
+#. i18n: file: src/engineprimitiveswidget.ui:86
+#. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
+msgid "Assign to Selection"
+msgstr "指定到选择对象"
+
+#. i18n: file: src/importdialog.ui:13
+#. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
+msgid "Import Molecule File"
+msgstr "导入分子文件"
+
+#. i18n: file: src/importdialog.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Filename:"
+msgstr "文件名:"
+
+#. i18n: file: src/importdialog.ui:34
+#. i18n: ectx: property (text), widget (QPushButton, selectButton)
+msgid "Select..."
+msgstr "选择..."
+
+#. i18n: file: src/importdialog.ui:45
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Format:"
+msgstr "格式："
+
+#. i18n: file: src/importdialog.ui:53
+#. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
+msgid "Automatically detect from extension"
+msgstr "根据扩展名自动检测"
+
+#. i18n: file: src/importdialog.ui:63
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
+msgid "Perceive bonding"
+msgstr "检测成键状态"
+
+#. i18n: file: src/importdialog.ui:73
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
+msgid "Perceive bond orders"
+msgstr "检测键级"
+
+#. i18n: file: src/importdialog.ui:83
+#. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
+msgid "Coordinates are in Ångstroms"
+msgstr "坐标以埃（Å）为单位"
+
+#. i18n: file: src/mainwindow.ui:32
+#. i18n: ectx: property (title), widget (QMenu, menuHelp)
+msgid "&Help"
+msgstr "帮助(&H)"
+
+#. i18n: file: src/mainwindow.ui:46
+#. i18n: ectx: property (title), widget (QMenu, menuFile)
+msgid "&File"
+msgstr "文件(&F)"
+
+#. i18n: file: src/mainwindow.ui:50
+#. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
+msgid "Open &Recent"
+msgstr "打开最近访问的(&R)"
+
+#. i18n: file: src/mainwindow.ui:55
+#. i18n: ectx: property (title), widget (QMenu, menuExport)
+msgid "Export"
+msgstr "导出"
+
+#. i18n: file: src/mainwindow.ui:62
+#. i18n: ectx: property (title), widget (QMenu, menuImport)
+msgid "Import"
+msgstr "导入"
+
+#. i18n: file: src/mainwindow.ui:81
+#. i18n: ectx: property (title), widget (QMenu, menuSettings)
+msgid "Se&ttings"
+msgstr "设置(&T)"
+
+#. i18n: file: src/mainwindow.ui:85
+#. i18n: ectx: property (title), widget (QMenu, menuToolbars)
+msgid "Toolbars"
+msgstr "工具栏"
+
+#. i18n: file: src/mainwindow.ui:94
+#. i18n: ectx: property (title), widget (QMenu, menuBuild)
+msgid "&Build"
+msgstr "构建(&B)"
+
+#. i18n: file: src/mainwindow.ui:99
+#. i18n: ectx: property (title), widget (QMenu, menuView)
+msgid "&View"
+msgstr "视图(&V)"
+
+#. i18n: file: src/mainwindow.ui:121
+#. i18n: ectx: property (title), widget (QMenu, menuEdit)
+msgid "&Edit"
+msgstr "编辑(&E)"
+
+#. i18n: file: src/mainwindow.ui:134
+#. i18n: ectx: property (title), widget (QMenu, menuExtensions)
+msgid "E&xtensions"
+msgstr "扩展(&X)"
+
+#. i18n: file: src/mainwindow.ui:139
+#. i18n: ectx: property (title), widget (QMenu, menuSelect)
+msgid "&Select"
+msgstr "选择(&S)"
+
+#. i18n: file: src/mainwindow.ui:156
+#. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
+msgid "Main Toolbar"
+msgstr "主工具栏"
+
+#. i18n: file: src/mainwindow.ui:193
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
+#. i18n: file: src/settingsdialog.ui:255
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "Project Tree"
+msgstr "项目树"
+
+#. i18n: file: src/mainwindow.ui:226
+#. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
+#. i18n: file: src/pluginsettings.ui:23
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Display Types"
+msgstr "显示模式"
+
+#. i18n: file: src/mainwindow.ui:235
+#. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
+#. i18n: file: src/pluginsettings.ui:28
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Tools"
+msgstr "工具"
+
+#. i18n: file: src/mainwindow.ui:256
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:268
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Open"
+msgstr "打开(&O)"
+
+#. i18n: file: src/mainwindow.ui:259
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+O"
+msgstr "Ctrl+O"
+
+#. i18n: file: src/mainwindow.ui:277
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:292
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Quit"
+msgstr "退出(&Q)"
+
+#. i18n: file: src/mainwindow.ui:280
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#. i18n: file: src/mainwindow.ui:297
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Recent"
+msgstr "最近的"
+
+#. i18n: file: src/mainwindow.ui:302
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Clear Recent"
+msgstr "清除最近使用（&C)"
+
+#. i18n: file: src/mainwindow.ui:311
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:323
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&New"
+msgstr "新建(&N)"
+
+#. i18n: file: src/mainwindow.ui:314
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+N"
+msgstr "Ctrl+N"
+
+#. i18n: file: src/mainwindow.ui:332
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:344
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Close"
+msgstr "关闭(&C)"
+
+#. i18n: file: src/mainwindow.ui:335
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#. i18n: file: src/mainwindow.ui:353
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+#. i18n: file: src/mainwindow.ui:365
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Save"
+msgstr "保存(&S)"
+
+#. i18n: file: src/mainwindow.ui:356
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+S"
+msgstr "Ctrl+S"
+
+#. i18n: file: src/mainwindow.ui:374
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Save &As..."
+msgstr "另存为(&A)..."
+
+#. i18n: file: src/mainwindow.ui:377
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+S"
+msgstr "Ctrl+Shift+S"
+
+#. i18n: file: src/mainwindow.ui:386
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Revert To Saved"
+msgstr "恢复到已保存"
+
+#. i18n: file: src/mainwindow.ui:395
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Graphics..."
+msgstr "图像(&G)..."
+
+#. i18n: file: src/mainwindow.ui:404
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Full Screen Mode"
+msgstr "全屏模式(&F)"
+
+#. i18n: file: src/mainwindow.ui:407
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Esc"
+msgstr "Esc"
+
+#. i18n: file: src/mainwindow.ui:416
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Set &Background Color..."
+msgstr "设定背景颜色(&B)..."
+
+#. i18n: file: src/mainwindow.ui:421
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&About"
+msgstr "关于(&A)"
+
+#. i18n: file: src/mainwindow.ui:433
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Undo"
+msgstr "撤销(&U)"
+
+#. i18n: file: src/mainwindow.ui:436
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Z"
+msgstr "Ctrl+Z"
+
+#. i18n: file: src/mainwindow.ui:445
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Redo"
+msgstr "重做(&R)"
+
+#. i18n: file: src/mainwindow.ui:448
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+Z"
+msgstr "Ctrl+Shift+Z"
+
+#. i18n: file: src/mainwindow.ui:457
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "New View"
+msgstr "新建视图"
+
+#. i18n: file: src/mainwindow.ui:469
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Close View"
+msgstr "关闭视图"
+
+#. i18n: file: src/mainwindow.ui:478
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Center"
+msgstr "居中"
+
+#. i18n: file: src/mainwindow.ui:487
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Paste"
+msgstr "粘贴(&P)"
+
+#. i18n: file: src/mainwindow.ui:490
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#. i18n: file: src/mainwindow.ui:499
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Copy"
+msgstr "复制"
+
+#. i18n: file: src/mainwindow.ui:502
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#. i18n: file: src/mainwindow.ui:511
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Cut"
+msgstr "剪切"
+
+#. i18n: file: src/mainwindow.ui:514
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+X"
+msgstr "Ctrl+X"
+
+#. i18n: file: src/mainwindow.ui:523
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Clear"
+msgstr "清除"
+
+#. i18n: file: src/mainwindow.ui:526
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Backspace"
+msgstr "Backspace"
+
+#. i18n: file: src/mainwindow.ui:531
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Select All"
+msgstr "全选"
+
+#. i18n: file: src/mainwindow.ui:534
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+A"
+msgstr "Ctrl+A"
+
+#. i18n: file: src/mainwindow.ui:539
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Select None"
+msgstr "全不选"
+
+#. i18n: file: src/mainwindow.ui:542
+#. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#. i18n: file: src/mainwindow.ui:551
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Configure Avogadro..."
+msgstr "配置Avogadro..."
+
+#. i18n: file: src/mainwindow.ui:562
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Tutorials"
+msgstr "教程"
+
+#. i18n: file: src/mainwindow.ui:571
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Duplicate View"
+msgstr "复制视图"
+
+#. i18n: file: src/mainwindow.ui:579
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Display Axes"
+msgstr "显示坐标轴"
+
+#. i18n: file: src/mainwindow.ui:587
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Debug Information"
+msgstr "调试信息"
+
+#. i18n: file: src/mainwindow.ui:595
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Avogadro Help"
+msgstr "Avogadro帮助"
+
+#. i18n: file: src/mainwindow.ui:600
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Release Notes"
+msgstr "发行说明"
+
+#. i18n: file: src/mainwindow.ui:605
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Report a Bug"
+msgstr "报告缺陷"
+
+#. i18n: file: src/mainwindow.ui:610
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "FAQ"
+msgstr "常见问题"
+
+#. i18n: file: src/mainwindow.ui:615
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Avogadro Website"
+msgstr "Avogadro网站"
+
+#. i18n: file: src/mainwindow.ui:624
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Plugin Manager..."
+msgstr "插件管理器..."
+
+#. i18n: file: src/mainwindow.ui:633
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Project Tree Editor..."
+msgstr "项目树编辑器..."
+
+#. i18n: file: src/mainwindow.ui:642
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Detach View"
+msgstr "拆分视图"
+
+#. i18n: file: src/mainwindow.ui:651
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Molecule File..."
+msgstr "分子文件..."
+
+#. i18n: file: src/mainwindow.ui:662
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Use Quick Render"
+msgstr "使用快速渲染器"
+
+#. i18n: file: src/mainwindow.ui:667
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "&Vector Graphics..."
+msgstr "矢量图形(&V)..."
+
+#. i18n: file: src/mainwindow.ui:675
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Display Unit Cell Axes"
+msgstr "显示单位晶胞轴"
+
+#. i18n: file: src/mainwindow.ui:683
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "All Molecules in File..."
+msgstr "文件中的所有分子..."
+
+#. i18n: file: src/mainwindow.ui:688
+#. i18n: ectx: property (text), widget (QToolBar, toolBar)
+msgid "Reset Display Types"
+msgstr "重设显示模式"
+
+#. i18n: file: src/pluginsettings.ui:16
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:246
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "Plugins"
+msgstr "插件"
+
+#. i18n: file: src/pluginsettings.ui:33
+#. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
+msgid "Extensions"
+msgstr "扩展"
+
+#. i18n: file: src/pluginsettings.ui:52
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+msgid "Details"
+msgstr "详情"
+
+#. i18n: file: src/projecttreeeditor.ui:17
+#. i18n: ectx: property (title), widget (QGroupBox, itemsBox)
+#. i18n: file: src/projecttreeeditor.ui:164
+#. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
+msgid "Tree Items"
+msgstr "树型图项目"
+
+#. i18n: file: src/projecttreeeditor.ui:34
+#. i18n: ectx: property (text), widget (QLabel, textLabel)
+#. i18n: file: src/projecttreeeditor.ui:201
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Type"
+msgstr "类型"
+
+#. i18n: file: src/projecttreeeditor.ui:48
+#. i18n: ectx: property (toolTip), widget (QToolButton, newItemButton)
+msgid "New Item"
+msgstr "新建项目"
+
+#. i18n: file: src/projecttreeeditor.ui:51
+#. i18n: ectx: property (text), widget (QToolButton, newItemButton)
+msgid "&New Item"
+msgstr "新建项目(&N)"
+
+#. i18n: file: src/projecttreeeditor.ui:62
+#. i18n: ectx: property (toolTip), widget (QToolButton, newSubItemButton)
+msgid "New Subitem"
+msgstr "新建子项目"
+
+#. i18n: file: src/projecttreeeditor.ui:65
+#. i18n: ectx: property (text), widget (QToolButton, newSubItemButton)
+msgid "New &Subitem"
+msgstr "新建子项目(&S)"
+
+#. i18n: file: src/projecttreeeditor.ui:76
+#. i18n: ectx: property (toolTip), widget (QToolButton, deleteItemButton)
+msgid "Delete Item"
+msgstr "删除项目"
+
+#. i18n: file: src/projecttreeeditor.ui:79
+#. i18n: ectx: property (text), widget (QToolButton, deleteItemButton)
+msgid "&Delete Item"
+msgstr "删除项目(&D)"
+
+#. i18n: file: src/projecttreeeditor.ui:103
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
+msgid "Move Item Left (before Parent Item)"
+msgstr "左移项目（在父项目之前）"
+
+#. i18n: file: src/projecttreeeditor.ui:106
+#. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
+msgid "L"
+msgstr "L"
+
+#. i18n: file: src/projecttreeeditor.ui:117
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
+msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
+msgstr "右移项目（作为下一个姐妹项目的子项目）"
+
+#. i18n: file: src/projecttreeeditor.ui:120
+#. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
+msgid "R"
+msgstr "R"
+
+#. i18n: file: src/projecttreeeditor.ui:133
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
+msgid "Move Item Up"
+msgstr "上移项目"
+
+#. i18n: file: src/projecttreeeditor.ui:136
+#. i18n: ectx: property (text), widget (QToolButton, moveItemUpButton)
+msgid "U"
+msgstr "U"
+
+#. i18n: file: src/projecttreeeditor.ui:147
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveItemDownButton)
+msgid "Move Item Down"
+msgstr "下移项目"
+
+#. i18n: file: src/projecttreeeditor.ui:150
+#. i18n: ectx: property (text), widget (QToolButton, moveItemDownButton)
+msgid "D"
+msgstr "D"
+
+#. i18n: file: src/projecttreeeditor.ui:187
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Alias"
+msgstr "别名"
+
+#. i18n: file: src/projecttreeeditor.ui:217
+#. i18n: ectx: property (text), widget (QPushButton, settingsButton)
+msgid "Settings..."
+msgstr "设置..."
+
+#. i18n: file: src/settingsdialog.ui:34
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: file: src/settingsdialog.ui:237
+#. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
+msgid "General"
+msgstr "通用"
+
+#. i18n: file: src/settingsdialog.ui:42
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel)
+msgid "Quality:"
+msgstr "品质："
+
+#. i18n: file: src/settingsdialog.ui:49
+#. i18n: ectx: property (toolTip), widget (QSlider, qualitySlider)
+#. i18n: file: src/settingsdialog.ui:107
+#. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
+msgid "Set the global rendering quality."
+msgstr "设置全局渲染质量。"
+
+#. i18n: file: src/settingsdialog.ui:100
+#. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
+msgid "Fog:"
+msgstr "雾效:"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Tao Wei,cuiweicui,rainofchaos,yjjart,郑思涵, ,"
+"Launchpad Contributions:,Tao Wei,Yinghua Wang,cuiweicui,rainofchaos,yjjart,郑"
+"思涵, ,Launchpad Contributions:,Tao Wei,Xinfeng,Yinghua Wang,cuiweicui,"
+"rainofchaos,yjjart,郑思涵, ,Launchpad Contributions:,Xinfeng,Yinghua Wang,"
+"cuiweicui,yjjart,冯超, ,Launchpad Contributions:,Tao Wei,Xinfeng,cuiweicui,"
+"yjjart,冯超,王英华,郑思涵"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,yjjart@gmail.com,"
+"sihanzheng@gmail.com,,,,,cuiweicui1985@gmail.com,rainofchaos@gmail.com,"
+"yjjart@gmail.com,sihanzheng@gmail.com,,,,,,cuiweicui1985@gmail.com,"
+"rainofchaos@gmail.com,yjjart@gmail.com,sihanzheng@gmail.com,,,,,"
+"cuiweicui1985@gmail.com,yjjart@gmail.com,rainofchaos@gmail.com,,,"
+"weitao1979@gmail.com,,cuiweicui1985@gmail.com,yjjart@gmail.com,"
+"rainofchaos@gmail.com,wantinghard@gmail.com,sihanzheng@gmail.com"
+
+#~ msgid "Load File..."
+#~ msgstr "载入文件..."
+
+#~ msgid "Align"
+#~ msgstr "对齐"
+
+#~ msgid "Everything"
+#~ msgstr "所有内容"
+
+#~ msgid "Axis:"
+#~ msgstr "轴"
+
+#~ msgid "Animation..."
+#~ msgstr "动画"
+
+#~ msgid "Algorithm:"
+#~ msgstr "算法："
+
+#~ msgid "Axes"
+#~ msgstr "轴"
+
+#~ msgid "AutoRotate"
+#~ msgstr "自动翻转"
+
+#~ msgid "Measure"
+#~ msgstr "测量"
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "帧/秒"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "动画轨迹"
+
+#~ msgid "Align:"
+#~ msgstr "对齐："
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "打开轨迹文件"
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "读取轨迹文件 %1 失败"
+
+#~ msgid "Force Field:"
+#~ msgstr "力场:"
+
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "自动优化: E = %1 %2 (dE = %3)"
+
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "自动优化: 不能建立力场...."
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "自动优化工具\n"
+#~ "\n"
+#~ "在空区域内点击以启用导航功能.\n"
+#~ "鼠标左键: 旋转空间\n"
+#~ "鼠标中键: 缩放空间\n"
+#~ "鼠标右键: 平移空间\n"
+#~ "\n"
+#~ "运行时的附加功能\n"
+#~ "鼠标左键: 点击并拖动原子以移动它们"
+
+#~ msgid "Steps per Update:"
+#~ msgstr "每次更新步骤数:"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "分子动力学 (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "分子动力学 (600K)"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "自动优化"
+
+#~ msgid "x rotation:"
+#~ msgstr "x轴旋转"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "自动旋转工具"
+
+#~ msgid "y rotation:"
+#~ msgstr "y轴旋转"
+
+#~ msgid "x rotation"
+#~ msgstr "x轴旋转"
+
+#~ msgid "y rotation"
+#~ msgstr "y轴旋转"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "分子动力学 (900K)"
+
+#~ msgid "z rotation"
+#~ msgstr "z轴旋转"
+
+#~ msgid "z rotation:"
+#~ msgstr "z轴旋转"
+
+#~ msgid " Show Angles"
+#~ msgstr " 显示键角"
+
+#~ msgid "Distance (2->3): %1 %2"
+#~ msgstr "距离 (2->3): %1 %2"
+
+#~ msgid "Dihedral Angle: %1 %2"
+#~ msgstr "二面角: %1 %2"
+
+#~ msgid "Angle: %1 %2"
+#~ msgstr "角度: %1 %2"
+
+#~ msgid "Distance (1->2): %1 %2"
+#~ msgstr "距离 (1->2): %1 %2"
+
+#~ msgid "Distance (3->4): %1 %2"
+#~ msgstr "距离 (3->4): %1 %2"
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "原子个数: %1"
+
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "可旋转化学键个数: %1"
+
+#~ msgid "Distance(s):"
+#~ msgstr "距离(s):"
+
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Dipole"
+#~ msgstr "偶极"
+
+#~ msgid "Draw"
+#~ msgstr "绘制"
+
+#~ msgid "Element:"
+#~ msgstr "元素"
+
+#~ msgid "Draw Atom"
+#~ msgstr "绘制原子"
+
+#~ msgid "Draw Bond"
+#~ msgstr "绘制化学键"
+
+#~ msgid "Beryllium"
+#~ msgstr "铍"
+
+#~ msgid "Boron"
+#~ msgstr "硼"
+
+#~ msgid "Fragment Library..."
+#~ msgstr "分子片段库"
+
+#~ msgid "Helium"
+#~ msgstr "氦"
+
+#~ msgid "Lithium"
+#~ msgstr "锂"
+
+#~ msgid "Hydrogen"
+#~ msgstr "氢"
+
+#~ msgid "Phosphorus"
+#~ msgstr "磷"
+
+#~ msgid "Silicon"
+#~ msgstr "硅"
+
+#~ msgid "Nitrogen"
+#~ msgstr "氮"
+
+#~ msgid "Carbon"
+#~ msgstr "碳"
+
+#~ msgid "Fluorine"
+#~ msgstr "氟"
+
+#~ msgid "Oxygen"
+#~ msgstr "氧"
+
+#~ msgid "Sodium"
+#~ msgstr "钠"
+
+#~ msgid "Neon"
+#~ msgstr "氖"
+
+#~ msgid "Aluminum"
+#~ msgstr "铝"
+
+#~ msgid "Magnesium"
+#~ msgstr "镁"
+
+#~ msgid "Calcium"
+#~ msgstr "钙"
+
+#~ msgid "Scandium"
+#~ msgstr "钪"
+
+#~ msgid "Titanium"
+#~ msgstr "钛"
+
+#~ msgid "Vanadium"
+#~ msgstr "钒"
+
+#~ msgid "Sulfur"
+#~ msgstr "硫"
+
+#~ msgid "Chlorine"
+#~ msgstr "氯"
+
+#~ msgid "Argon"
+#~ msgstr "氩"
+
+#~ msgid "Chromium"
+#~ msgstr "铬"
+
+#~ msgid "Manganese"
+#~ msgstr "锰"
+
+#~ msgid "Potassium"
+#~ msgstr "钾"
+
+#~ msgid "Copper"
+#~ msgstr "铜"
+
+#~ msgid "Nickel"
+#~ msgstr "镍"
+
+#~ msgid "Cobalt"
+#~ msgstr "钴"
+
+#~ msgid "Iron"
+#~ msgstr "铁"
+
+#~ msgid "Arsenic"
+#~ msgstr "砷"
+
+#~ msgid "Germanium"
+#~ msgstr "锗"
+
+#~ msgid "Gallium"
+#~ msgstr "镓"
+
+#~ msgid "Zinc"
+#~ msgstr "锌"
+
+#~ msgid "Bromine"
+#~ msgstr "溴"
+
+#~ msgid "Selenium"
+#~ msgstr "硒"
+
+#~ msgid "Molybdenum"
+#~ msgstr "钼"
+
+#~ msgid "Technetium"
+#~ msgstr "锝"
+
+#~ msgid "Zirconium"
+#~ msgstr "锆"
+
+#~ msgid "Niobium"
+#~ msgstr "铌"
+
+#~ msgid "Strontium"
+#~ msgstr "锶"
+
+#~ msgid "Yttrium"
+#~ msgstr "钇"
+
+#~ msgid "Krypton"
+#~ msgstr "氪"
+
+#~ msgid "Rubidium"
+#~ msgstr "铷"
+
+#~ msgid "Ruthenium"
+#~ msgstr "钌"
+
+#~ msgid "Rhodium"
+#~ msgstr "铑"
+
+#~ msgid "Antimony"
+#~ msgstr "锑"
+
+#~ msgid "Tin"
+#~ msgstr "锡"
+
+#~ msgid "Iodine"
+#~ msgstr "碘"
+
+#~ msgid "Tellurium"
+#~ msgstr "碲"
+
+#~ msgid "Silver"
+#~ msgstr "银"
+
+#~ msgid "Palladium"
+#~ msgstr "钯"
+
+#~ msgid "Indium"
+#~ msgstr "铟"
+
+#~ msgid "Cadmium"
+#~ msgstr "镉"
+
+#~ msgid "Caesium"
+#~ msgstr "铯"
+
+#~ msgid "Xenon"
+#~ msgstr "氙"
+
+#~ msgid "Gadolinium"
+#~ msgstr "钆"
+
+#~ msgid "Barium"
+#~ msgstr "钡"
+
+#~ msgid "Lanthanum"
+#~ msgstr "镧"
+
+#~ msgid "Cerium"
+#~ msgstr "铈"
+
+#~ msgid "Praseodymium"
+#~ msgstr "镨"
+
+#~ msgid "Neodymium"
+#~ msgstr "钕"
+
+#~ msgid "Promethium"
+#~ msgstr "钷"
+
+#~ msgid "Samarium"
+#~ msgstr "钐"
+
+#~ msgid "Europium"
+#~ msgstr "铕"
+
+#~ msgid "Terbium"
+#~ msgstr "铽"
+
+#~ msgid "Tungsten"
+#~ msgstr "钨"
+
+#~ msgid "Rhenium"
+#~ msgstr "铼"
+
+#~ msgid "Tantalum"
+#~ msgstr "钽"
+
+#~ msgid "Hafnium"
+#~ msgstr "铪"
+
+#~ msgid "Lutetium"
+#~ msgstr "镥"
+
+#~ msgid "Ytterbium"
+#~ msgstr "镱"
+
+#~ msgid "Thulium"
+#~ msgstr "铥"
+
+#~ msgid "Erbium"
+#~ msgstr "铒"
+
+#~ msgid "Holmium"
+#~ msgstr "钬"
+
+#~ msgid "Dysprosium"
+#~ msgstr "镝"
+
+#~ msgid "Astatine"
+#~ msgstr "砹"
+
+#~ msgid "Platinum"
+#~ msgstr "铂"
+
+#~ msgid "Gold"
+#~ msgstr "金"
+
+#~ msgid "Osmium"
+#~ msgstr "锇"
+
+#~ msgid "Iridium"
+#~ msgstr "铱"
+
+#~ msgid "Lead"
+#~ msgstr "铅"
+
+#~ msgid "Bismuth"
+#~ msgstr "铋"
+
+#~ msgid "Mercury"
+#~ msgstr "汞"
+
+#~ msgid "Thallium"
+#~ msgstr "铊"
+
+#~ msgid "Polonium"
+#~ msgstr "钋"
+
+#~ msgid "Americium"
+#~ msgstr "镅"
+
+#~ msgid "Francium"
+#~ msgstr "钫"
+
+#~ msgid "Radon"
+#~ msgstr "氡"
+
+#~ msgid "Actinium"
+#~ msgstr "锕"
+
+#~ msgid "Radium"
+#~ msgstr "镭"
+
+#~ msgid "Protactinium"
+#~ msgstr "镤"
+
+#~ msgid "Thorium"
+#~ msgstr "钍"
+
+#~ msgid "Neptunium"
+#~ msgstr "镎"
+
+#~ msgid "Uranium"
+#~ msgstr "铀"
+
+#~ msgid "Plutonium"
+#~ msgstr "钚"
+
+#~ msgid "Lawrencium"
+#~ msgstr "铹"
+
+#~ msgid "Dubnium"
+#~ msgstr "钅杜"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "钅卢"
+
+#~ msgid "Berkelium"
+#~ msgstr "锫"
+
+#~ msgid "Einsteinium"
+#~ msgstr "锿"
+
+#~ msgid "Californium"
+#~ msgstr "锎"
+
+#~ msgid "Mendelevium"
+#~ msgstr "钔"
+
+#~ msgid "Fermium"
+#~ msgstr "镄"
+
+#~ msgid "Nobelium"
+#~ msgstr "锘"
+
+#~ msgid "Hassium"
+#~ msgstr "钅黑"
+
+#~ msgid "Meitnerium"
+#~ msgstr "钅麦"
+
+#~ msgid "Seaborgium"
+#~ msgstr "钅喜"
+
+#~ msgid "Bohrium"
+#~ msgstr "钅波"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "钅达"
+
+#~ msgid "Roentgenium"
+#~ msgstr "钅仑"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "搜寻构象异构体"
+
+#~ msgid "Optimize Geometry"
+#~ msgstr "几何优化"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "计算能量"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "建立力场..."
+
+#~ msgid "Force"
+#~ msgstr "力"
+
+#~ msgid "Constraints..."
+#~ msgstr "限制条件"
+
+#~ msgid ""
+#~ "Invalid OpenGL context.\n"
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
+#~ msgstr ""
+#~ "不正确的OpenGL内容.\n"
+#~ "也许您的OpenGL安装被完全破坏 (您是否在运行某些OpenGL程序? ), 或者您遇到了"
+#~ "一个Bug."
+
+#~ msgid "OpenGL error"
+#~ msgstr "OpenGL 错误"
+
+#~ msgid "Energy = %1 %2"
+#~ msgstr "能量 = %1 %2"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "无法为该分子建立力场"
+
+#~ msgid "Ignore Selection"
+#~ msgstr "忽略选择"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "修正所选择的原子"
+
+#~ msgid "FPS"
+#~ msgstr "帧每秒"
+
+#~ msgid "View Size"
+#~ msgstr "查看大小"
+
+#~ msgid "QM Selection..."
+#~ msgstr "量子力学选择..."
+
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "SMILES 格式转换不能使用"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "SMILES 不能转换"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "您必须进行选择"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "没有选择原子"
+
+#~ msgid "Delete"
+#~ msgstr "删除"
+
+#~ msgid ", "
+#~ msgstr "， "
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "GAMESS EFP 信息"
+
+#~ msgid "gamessEfpDock"
+#~ msgstr "gamessEfp堆叠"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "Group Name"
+#~ msgstr "群组名称"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "您确定要重设高级设置吗?\n"
+#~ "所有改动都将丢失!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "基本设置重设"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "高级设置已更改.\n"
+#~ "要放弃吗?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "重设高级设置"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "高级设置更改"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "您确定要重设基本设置吗?\n"
+#~ "所有改动都将丢失!"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "将氢替换为甲基"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian 输入卡片 (*.com)"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "保存Gaussian输入卡片"
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Gaussian输入..."
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS输入卡片 (*.inp)"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "导出输入卡片"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "渲染氢键"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "氢键"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Open Directory"
+#~ msgstr "打开目录"
+
+#~ msgid "Stop Inserting"
+#~ msgstr "停止插入"
+
+#~ msgid "Open ligand file"
+#~ msgstr "打开配体文件"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Avogadro 文件 (*.*)"
+
+#~ msgid "Tool Settings"
+#~ msgstr "工具设置"
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "不能读取文件 %1:\n"
+#~ "%2."
+
+#~ msgid ""
+#~ "This file does not contain 3D coordinates. You may not be able to edit or "
+#~ "view properly."
+#~ msgstr "该文件不包含3D坐标。您可能无法正确地查看或进行编辑。"
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
+#~ msgstr ""
+#~ "该文件似乎包含多个分子记录。Avogadro将仅读取第一个分子。如果您进行保存，所"
+#~ "有其它分子可能会丢失。"
+
+#~ msgid "Reading molecular file failed."
+#~ msgstr "读取分子文件失败。"
+
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "不能写入到文件 %1:\n"
+#~ "%2."
+
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "不能将文件 %1 写为该文件格式"
+
+#~ msgid "Saving file."
+#~ msgstr "保存文件中。"
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "不能写入文件 %1."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "保存分子文件失败。"
+
+#~ msgid "Save succeeded."
+#~ msgstr "保存成功。"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "该文档已被修改过。\n"
+#~ "您想保存您的修改吗?"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "操纵工具 (F10)\n"
+#~ "\n"
+#~ "鼠标左键: 点击并拖动以移动原子\n"
+#~ "鼠标中键: 点击并拖动以将原子拉近或移远\n"
+#~ "鼠标右键: 点击并拖动以旋转选定的原子。"
+
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "该文件仅包含2D坐标。你是否希望Avogadro将化学键进行缩放并进行快速优化？"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "导航工具 (F9)\n"
+#~ "\n"
+#~ "鼠标左键: 点击并拖动以旋转视图\n"
+#~ "鼠标中键: 点击并拖动以缩放视图\n"
+#~ "鼠标右键: 点击并拖动以平移视图"
+
+#~ msgid "Curium"
+#~ msgstr "锔"
+
+#~ msgid "QM Matches"
+#~ msgstr "量子力学匹配"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "放弃计算"
+
+#~ msgid "MO "
+#~ msgstr "分子轨道 "
+
+#~ msgid "Polygon"
+#~ msgstr "多边形"
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "笛卡尔坐标编辑器..."
+
+#~ msgid "Atom Properties..."
+#~ msgstr "原子属性..."
+
+#~ msgid "Conformers..."
+#~ msgstr "构象异构体..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "扭转属性..."
+
+#~ msgid "Angles Properties..."
+#~ msgstr "键角属性..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "键属性..."
+
+#~ msgid "Atom %1"
+#~ msgstr "原子 %1"
+
+#~ msgid "Valence"
+#~ msgstr "化合价"
+
+#~ msgid "Bond Order"
+#~ msgstr "键级"
+
+#~ msgid "Start Atom"
+#~ msgstr "起始原子"
+
+#~ msgid "End Atom"
+#~ msgstr "结束原子"
+
+#~ msgid "Atomic Number"
+#~ msgstr "原子序数"
+
+#~ msgid "Rotatable"
+#~ msgstr "可旋转的"
+
+#~ msgid "Bond %1"
+#~ msgstr "键 %1"
+
+#~ msgid "Vertex"
+#~ msgstr "顶点"
+
+#~ msgid "Angle %1"
+#~ msgstr "角度 %1"
+
+#~ msgid "Torsion %1"
+#~ msgstr "扭转 %1"
+
+#~ msgid "Conformer"
+#~ msgstr "构象异构体"
+
+#~ msgid "Torsion"
+#~ msgstr "扭转"
+
+#~ msgid "Conformer %1"
+#~ msgstr "构象异构体%1"
+
+#~ msgid "Save QChem Input Deck"
+#~ msgstr "保存QChem输入卡片"
+
+#~ msgid "pythonTerminalDock"
+#~ msgstr "python终端托盘"
+
+#~ msgid "Ribbon"
+#~ msgstr "条带"
+
+#~ msgid "Select Solvent"
+#~ msgstr "选择溶剂"
+
+#~ msgid "Select by Residue..."
+#~ msgstr "按残基选择..."
+
+#~ msgid "Select by Element..."
+#~ msgstr "按元素选择..."
+
+#~ msgid "Ring"
+#~ msgstr "环"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "选择SMARTS..."
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "添加已命名的选择"
+
+#~ msgid "name"
+#~ msgstr "名称"
+
+#~ msgid "There is no current selection."
+#~ msgstr "当前没有选择。"
+
+#~ msgid "Add Named Selection"
+#~ msgstr "添加已命名的选择"
+
+#~ msgid "Select by residue"
+#~ msgstr "按残基选择"
+
+#~ msgid "SMARTS pattern to select"
+#~ msgstr "SMARTS模版选择"
+
+#~ msgid "SMARTS Selection"
+#~ msgstr "SMARTS选择"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "原子/键"
+
+#~ msgid ""
+#~ "Selection Tool (F11)\n"
+#~ "Click to pick individual atoms, residues, or fragments\n"
+#~ "Drag to select a range of atoms\n"
+#~ "Use Ctrl to toggle the selection and shift to add to the selection"
+#~ msgstr ""
+#~ "选择工具 (F11)\n"
+#~ "点击以选取单个原子、残基或者片段\n"
+#~ "拖动以选择一定范围内的原子\n"
+#~ "使用Ctrl以显示选择，使用Shift以添加到选择"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "选择模式:"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "名称不能为空。"
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "该名称已经有对应的选择了。"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "将原子渲染为Van der Waals球体"
+
+#~ msgid "First Action"
+#~ msgstr "初始动作"
+
+#~ msgid "Surface"
+#~ msgstr "表面"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van der Waals球体"
+
+#~ msgid "Stick"
+#~ msgstr "棒状"
+
+#~ msgid "Second Action"
+#~ msgstr "第二个动作"
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "晶胞参数..."
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "该文档目前仅包含一个游离分子。\n"
+#~ "\n"
+#~ "您想为它创建一个晶胞吗?"
+
+#~ msgid "Conformer Search"
+#~ msgstr "搜索构象异构体"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "键半径:"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "原子半径:"
+
+#~ msgid "Wireframe"
+#~ msgstr "线框"
+
+#~ msgid "Disconnect"
+#~ msgstr "断开"
+
+#~ msgid "Connect"
+#~ msgstr "连接"
+
+#~ msgid "Random rotor search"
+#~ msgstr "随机旋转搜索"
+
+#~ msgid "Weighted rotor search"
+#~ msgstr "权重旋转搜索"
+
+#~ msgid "Systematic rotor search"
+#~ msgstr "系统性旋转搜索"
+
+#~ msgid "Constraints"
+#~ msgstr "约束"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "原子数量"
+
+#~ msgid "Number of rotatable bonds:"
+#~ msgstr "可旋转键数量"
+
+#~ msgid "Number of conformers"
+#~ msgstr "构象异构体数量"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "忽略原子"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "修正原子Z"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "修正原子Y"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "修正原子X"
+
+#~ msgid "Fix Atom"
+#~ msgstr "修正原子"
+
+#~ msgid "Constraint Value"
+#~ msgstr "限制阈值"
+
+#~ msgid "Torsion angle"
+#~ msgstr "扭转角"
+
+#~ msgid "Distance"
+#~ msgstr "距离"
+
+#~ msgid "Delete All"
+#~ msgstr "全部删除"
+
+#~ msgid "Atom Indices"
+#~ msgstr "原子索引"
+
+#~ msgid "Delete Selected"
+#~ msgstr "删除选定项"
+
+#~ msgid "Force Field"
+#~ msgstr "力场"
+
+#~ msgid "Ghemical"
+#~ msgstr "Ghemical"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "建立力场"
+
+#~ msgid "Algorithm"
+#~ msgstr "算法"
+
+#~ msgid "Number of steps"
+#~ msgstr "步骤数"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "EFP Matches"
+#~ msgstr "EFP匹配"
+
+#~ msgid "Convergence"
+#~ msgstr "会聚"
+
+#~ msgid "Group Label:"
+#~ msgstr "群组标签:"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "Anion"
+#~ msgstr "阴离子"
+
+#~ msgid "Neutral"
+#~ msgstr "中性"
+
+#~ msgid "Triplet"
+#~ msgstr "三线态"
+
+#~ msgid "Doublet"
+#~ msgstr "双线态"
+
+#~ msgid "Memory:"
+#~ msgstr "内存："
+
+#~ msgid "Singlet"
+#~ msgstr "单线态"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Core Potential"
+#~ msgstr "核心势"
+
+#~ msgid "Dianion"
+#~ msgstr "二价阴离子"
+
+#~ msgid "Equilibrium Geometry"
+#~ msgstr "平衡态几何体"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "单点进入"
+
+#~ msgid "Transition State"
+#~ msgstr "过渡态"
+
+#~ msgid "Water"
+#~ msgstr "水"
+
+#~ msgid "Gas"
+#~ msgstr "气体"
+
+#~ msgid "Advanced"
+#~ msgstr "高级"
+
+#~ msgid "In:"
+#~ msgstr "输入："
+
+#~ msgid "Time Limit:"
+#~ msgstr "时间限制"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "Hessian"
+#~ msgstr "Hessian"
+
+#~ msgid "Basis"
+#~ msgstr "基准"
+
+#~ msgid "Control"
+#~ msgstr "控制"
+
+#~ msgid "Data"
+#~ msgstr "数据"
+
+#~ msgid "MO Guess"
+#~ msgstr "分子轨道猜测"
+
+#~ msgid "Misc"
+#~ msgstr "其它"
+
+#~ msgid "System"
+#~ msgstr "系统"
+
+#~ msgid "Stat Point"
+#~ msgstr "起始点"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "Read"
+#~ msgstr "读取"
+
+#~ msgid "#D Heavy Atom Polarization Functions:"
+#~ msgstr "#D 重原子极化函数:"
+
+#~ msgid "Basis Set:"
+#~ msgstr "基本集:"
+
+#~ msgid "Diffuse L-Shell on Heavy Atoms"
+#~ msgstr "散射重原子的L壳层"
+
+#~ msgid "Diffuse S-Shell on Heavy Atoms"
+#~ msgstr "散射重原子的S壳层"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#~ msgid "Double Zeta Valence"
+#~ msgstr "双Zeta化合价"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "Dunning/Hay DZ"
+#~ msgstr "Dunning/Hay DZ"
+
+#~ msgid "Default"
+#~ msgstr "默认"
+
+#~ msgid "ECP Type:"
+#~ msgstr "ECP 类型:"
+
+#~ msgid "Pople N311"
+#~ msgstr "Pople N311"
+
+#~ msgid "Pople"
+#~ msgstr "Pople"
+
+#~ msgid "SBKJA Valence"
+#~ msgstr "SBKJA化合价"
+
+#~ msgid "McLean/Chandler"
+#~ msgstr "McLean/Chandler"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "Hay/Wadt Valence"
+#~ msgstr "Hay/Wadt 化合价"
+
+#~ msgid "Dunning"
+#~ msgstr "Dunning"
+
+#~ msgid "Triple Zeta Valence"
+#~ msgstr "三Zeta化合价"
+
+#~ msgid "Optimization"
+#~ msgstr "优化"
+
+#~ msgid "Max SCF Iterations:"
+#~ msgstr "最大 SCF 迭代:"
+
+#~ msgid "Gradient"
+#~ msgstr "渐变"
+
+#~ msgid "#light Atom Polarization Functions:"
+#~ msgstr "#氢原子极化函数:"
+
+#~ msgid "Polar:"
+#~ msgstr "极化:"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "#F Heavy Atom Polarization Functions:"
+#~ msgstr "#F 重原子极化函数:"
+
+#~ msgid "Trudge"
+#~ msgstr "Trudge"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Saddle Point"
+#~ msgstr "马鞍点"
+
+#~ msgid "Finite Electric Field"
+#~ msgstr "有限电场"
+
+#~ msgid "Spin Orbit"
+#~ msgstr "自旋轨道"
+
+#~ msgid "Radiative Transition mom."
+#~ msgstr "放射性过渡力矩"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "Energy Surface"
+#~ msgstr "能量面"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "Gradient Extremal"
+#~ msgstr "渐变极值"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "FMO Optimization"
+#~ msgstr "FMO 优化"
+
+#~ msgid "Raman Intensities"
+#~ msgstr "Raman强度"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "Make EFP"
+#~ msgstr "构建 EFP"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "Global Optimization"
+#~ msgstr "全局优化"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "None (CI)"
+#~ msgstr "无 (CI)"
+
+#~ msgid "Foster-Boys"
+#~ msgstr "Foster-Boys"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Localization Method:"
+#~ msgstr "本地化方式:"
+
+#~ msgid "SCF Type:"
+#~ msgstr "SCF 类型:"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "Exec Type:"
+#~ msgstr "执行类型:"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "Ames Lab. Determinant"
+#~ msgstr "Ames Lab. Determinant"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "LCCD: Linearized CC"
+#~ msgstr "LCCD: 线性化CC"
+
+#~ msgid "Full Second Order CI"
+#~ msgstr "完全二级 CI"
+
+#~ msgid "General CI"
+#~ msgstr "通用 CI"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CI Singles"
+#~ msgstr "CI 单体"
+
+#~ msgid "Occupation Restricted Multiple Active Space"
+#~ msgstr "被限制占据的多重活动空间"
+
+#~ msgid "Molecule Charge:"
+#~ msgstr "分子电荷:"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Check"
+#~ msgstr "检查"
+
+#~ msgid "Debug"
+#~ msgstr "调试"
+
+#~ msgid "Normal Run"
+#~ msgstr "正常运行"
+
+#~ msgid "Run Type:"
+#~ msgstr "运行模式:"
+
+#~ msgid "Order of Principal Axis:"
+#~ msgstr "主轴级数:"
+
+#~ msgid "Bohr"
+#~ msgstr "玻尔"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "坐标类型:"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "Use MP2"
+#~ msgstr "使用 MP2"
+
+#~ msgid "Use DFT"
+#~ msgstr "使用 DFT"
+
+#~ msgid "# of Z-Matrix Variables"
+#~ msgstr "# 个Z-矩阵变量"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "埃"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "Use Symmetry During Calculation"
+#~ msgstr "计算中使用对称性"
+
+#~ msgid "MOPAC Z-Matrix"
+#~ msgstr "MOPAC Z-矩阵"
+
+#~ msgid "Z-Matrix"
+#~ msgstr "Z-矩阵"
+
+#~ msgid "Cartesian coordinates"
+#~ msgstr "笛卡尔坐标"
+
+#~ msgid "Units:"
+#~ msgstr "单位："
+
+#~ msgid "Unique cartesian Coords."
+#~ msgstr "独立笛卡尔坐标."
+
+#~ msgid "Hilderbrant internals"
+#~ msgstr "Hilderbrant internals"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Hours"
+#~ msgstr "时"
+
+#~ msgid "Minutes"
+#~ msgstr "分"
+
+#~ msgid "Seconds"
+#~ msgstr "秒"
+
+#~ msgid "Point Group:"
+#~ msgstr "点群:"
+
+#~ msgid "Words"
+#~ msgstr "词"
+
+#~ msgid "Years"
+#~ msgstr "年"
+
+#~ msgid "Millenia"
+#~ msgstr "千年"
+
+#~ msgid "Days"
+#~ msgstr "日"
+
+#~ msgid "Weeks"
+#~ msgstr "周"
+
+#~ msgid "MegaWords"
+#~ msgstr "百万词"
+
+#~ msgid "Bytes"
+#~ msgstr "字节"
+
+#~ msgid "Diagonalization Method:"
+#~ msgstr "可对角化方式:"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "Force Parallel Methods"
+#~ msgstr "力平行方式"
+
+#~ msgid "Produce \"core\" file upon abort"
+#~ msgstr "当取消时创建\"核心\"文件"
+
+#~ msgid "MegaBytes"
+#~ msgstr "兆字节"
+
+#~ msgid "Huckel"
+#~ msgstr "Huckel"
+
+#~ msgid "Initial Guess:"
+#~ msgstr "初始猜测:"
+
+#~ msgid "Use External Data Representation for Messages"
+#~ msgstr "使用外部数据来表示信息"
+
+#~ msgid "Next Value"
+#~ msgstr "下一个值"
+
+#~ msgid "Print the Initial Guess"
+#~ msgstr "打印初始猜测"
+
+#~ msgid "HCore"
+#~ msgstr "H核"
+
+#~ msgid "MO Read ($VEC)"
+#~ msgstr "MO 读取 ($VEC)"
+
+#~ msgid "MO Saved (DICTNRY)"
+#~ msgstr "MO 已保存 (DICTNRY)"
+
+#~ msgid "Skip"
+#~ msgstr "跳过"
+
+#~ msgid "Rotate Alpha and Beta Orbitals"
+#~ msgstr "旋转Alpha和Beta轨道"
+
+#~ msgid "Gaussian 9x"
+#~ msgstr "Gaussian 9x"
+
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (UK版)"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "Force a Check Run Type"
+#~ msgstr "强制检查运行类型"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "GAMESS Interface to Other Codes"
+#~ msgstr "GAMESS界面到其它编码"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "Solvate with Water"
+#~ msgstr "使用水进行溶剂化"
+
+#~ msgid "All"
+#~ msgstr "全部"
+
+#~ msgid "Direct SCF"
+#~ msgstr "直接 SCF"
+
+#~ msgid "Generate UHF Natural Orbitals"
+#~ msgstr "Generate UHF 自然轨道"
+
+#~ msgid "Becke 1988 exchange"
+#~ msgstr "Becke 1988 交换"
+
+#~ msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+#~ msgstr "VWN: Vosko-Wilk-Nusair (VWN5) 相关"
+
+#~ msgid "Compute Only Changed in Fock Matrix"
+#~ msgstr "在Fock矩阵中仅计算改变项"
+
+#~ msgid "Slater exchange"
+#~ msgstr "Slater交换"
+
+#~ msgid "LYP: Lee-Yang-Parr correlation"
+#~ msgstr "LYP: Lee-Yang-Parr 相关"
+
+#~ msgid "SVWN: Slater exhange + VWN correlation"
+#~ msgstr "SVWN: Slater 交换 + VWN 相关"
+
+#~ msgid "Gill 1996 exchange"
+#~ msgstr "Gill 1996 交换"
+
+#~ msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+#~ msgstr "Perdew-Burke-Ernzerhof (PBE) 交换"
+
+#~ msgid "BVWN: BECKE exchange + VWN5 correlation"
+#~ msgstr "BVWN: BECKE 交换 + VWN5 相关"
+
+#~ msgid "BLYP: BECKE exchange + LYP correlation"
+#~ msgstr "BLYP: BECKE 交换 + LYP 相关"
+
+#~ msgid "GLYP: GILL exchange + LYP correlation"
+#~ msgstr "GLYP: GILL 交换 + LYP 相关"
+
+#~ msgid "SOP: SLATER + OP correlation"
+#~ msgstr "SOP: SLATER + OP 相关"
+
+#~ msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+#~ msgstr "SLYP: SLATER + Lee-Yang-Parr (LYP) 相关"
+
+#~ msgid "OP: One-parameter Progressive correlation"
+#~ msgstr "OP: One-parameter Progressive 相关"
+
+#~ msgid "BOP: BECKE exchange + OP correlation"
+#~ msgstr "BOP: BECKE 交换 + OP 相关"
+
+#~ msgid "BVWN: GILL exchange + VWN5 correlation"
+#~ msgstr "BVWN: GILL 交换 + VWN5 相关"
+
+#~ msgid "Method:"
+#~ msgstr "方式："
+
+#~ msgid "DFT Functional:"
+#~ msgstr "DFT 功能性:"
+
+#~ msgid "Grid-Free"
+#~ msgstr "无网格"
+
+#~ msgid "Grid"
+#~ msgstr "网格"
+
+#~ msgid "Duplicated on Each Node"
+#~ msgstr "在每个节点上复制"
+
+#~ msgid "AO Integral Storage"
+#~ msgstr "AO 整合存储"
+
+#~ msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+#~ msgstr "BHHLYP: HF and BECKE 交换 + LYP 相关"
+
+#~ msgid "PBEOP: PBE exchange + OP correlation"
+#~ msgstr "PBEOP: PBE 交换 + OP 相关"
+
+#~ msgid "PBELYP: PBE exchange +LYP correlation"
+#~ msgstr "PBELYP: PBE 交换 +LYP 相关"
+
+#~ msgid "PBEVWN: PBE exchange + VWN6 correlation"
+#~ msgstr "PBEVWN: PBE 交换 + VWN6 相关"
+
+#~ msgid "Segmented Transformation"
+#~ msgstr "片段化变形"
+
+#~ msgid "Vibrational Analysis"
+#~ msgstr "振动分析"
+
+#~ msgid "Use Localized Orbitals"
+#~ msgstr "使用定域轨道"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "# 个核心电子:"
+
+#~ msgid "Transformation Method"
+#~ msgstr "变形方式"
+
+#~ msgid "Two Phase Bin Sort"
+#~ msgstr "两相贮存分类"
+
+#~ msgid "Integral Retention Cutoff:"
+#~ msgstr "整合阻拦切断"
+
+#~ msgid "Compute MP2 Properties"
+#~ msgstr "计算MP2属性"
+
+#~ msgid "words"
+#~ msgstr "词"
+
+#~ msgid "Distributed Across All Nodes"
+#~ msgstr "穿过所有节点进行分布"
+
+#~ msgid "Analytic"
+#~ msgstr "分析"
+
+#~ msgid "Numeric"
+#~ msgstr "数值"
+
+#~ msgid "Print Internal Force Constants"
+#~ msgstr "打印内部力常数"
+
+#~ msgid "Purify Hessian"
+#~ msgstr "纯Hessian"
+
+#~ msgid "Displacement Size:"
+#~ msgstr "置换尺寸"
+
+#~ msgid "bohrs"
+#~ msgstr "玻尔"
+
+#~ msgid "Initial Hessian"
+#~ msgstr "初始Hessian"
+
+#~ msgid "Frequency Scale Factor:"
+#~ msgstr "频率缩放因子"
+
+#~ msgid "Update Step Size"
+#~ msgstr "更新步长"
+
+#~ msgid "Optimization Method:"
+#~ msgstr "优化方式:"
+
+#~ msgid "Step Size"
+#~ msgstr "步长"
+
+#~ msgid "Jump Size:"
+#~ msgstr "跳转尺度:"
+
+#~ msgid "Stationary Point"
+#~ msgstr "不动点"
+
+#~ msgid "Maximum:"
+#~ msgstr "最大值："
+
+#~ msgid "Guess (+ define)"
+#~ msgstr "猜测 (+ 定义)"
+
+#~ msgid "Read (from $HESS)"
+#~ msgstr "读取 (从 $HESS)"
+
+#~ msgid "Gradient Convergence Criteria:"
+#~ msgstr "渐变聚合标准"
+
+#~ msgid "Print Orbs at Each Iteration"
+#~ msgstr "每次迭代后打印轨道"
+
+#~ msgid "Constrained Optimization"
+#~ msgstr "限制性优化"
+
+#~ msgid "Initial:"
+#~ msgstr "初始"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Newton-Raphson"
+
+#~ msgid "Minimum:"
+#~ msgstr "最小值："
+
+#~ msgid "Quadratic Approximation"
+#~ msgstr "二次近似"
+
+#~ msgid "Rational Function Optimization"
+#~ msgstr "有理函数优化"
+
+#~ msgid "Follow Mode:"
+#~ msgstr "跟随模式:"
+
+#~ msgid "Recalculate Hessian Every:"
+#~ msgstr "重新计算Hessian在每:"
+
+#~ msgid "steps"
+#~ msgstr "步骤"
+
+#~ msgid "Schlegel (quasi-NR)"
+#~ msgstr "Schlegel (类-NR)"
+
+#~ msgid "Defaults"
+#~ msgstr "默认"
+
+#~ msgid "Maximum Steps:"
+#~ msgstr "最大步数:"
+
+#~ msgid "Gaussian Input"
+#~ msgstr "Gaussian输入"
+
+#~ msgid "Molekel"
+#~ msgstr "Molekel"
+
+#~ msgid "Molden"
+#~ msgstr "Molden"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "Width:"
+#~ msgstr "宽度："
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Cut-off angle:"
+#~ msgstr "截断角度:"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "插入片段..."
+
+#~ msgid "Add Directory"
+#~ msgstr "添加目录"
+
+#~ msgid "Reset List"
+#~ msgstr "重设列表"
+
+#~ msgid "Atom number"
+#~ msgstr "原子序数"
+
+#~ msgid "Element symbol"
+#~ msgstr "元素符号"
+
+#~ msgid "Element name"
+#~ msgstr "元素名称"
+
+#~ msgid "Residue number"
+#~ msgstr "残基序数"
+
+#~ msgid "Generate from SMILES:"
+#~ msgstr "从SMILES生成:"
+
+#~ msgid "Bond number"
+#~ msgstr "键序数:"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "从文件创建配体..."
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "由残基名创建配体"
+
+#~ msgid "Bond length"
+#~ msgstr "键长"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "从当前选择创建配体"
+
+#~ msgid "Create ligand"
+#~ msgstr "创建配体"
+
+#~ msgid "Bond order"
+#~ msgstr "键级"
+
+#~ msgid "Origin:"
+#~ msgstr "原点:"
+
+#~ msgid "Steps:"
+#~ msgstr "步骤："
+
+#~ msgid "Orbital:"
+#~ msgstr "轨道:"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "由当前选择创建空穴结合位点"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "由残基名称创建空穴结合位点"
+
+#~ msgid "Positive"
+#~ msgstr "正"
+
+#~ msgid "Negative"
+#~ msgstr "负"
+
+#~ msgid "Radius"
+#~ msgstr "半径"
+
+#~ msgid ""
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
+#~ "You may keep this value, for example if you intend to use POV-Ray\n"
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
+#~ msgstr ""
+#~ "当前Avogadro场景有 %1x%2 像素大小，因此长宽比为 %3。\n"
+#~ "您可以保留这个数值，例如当您想使用POV-Ray的时候。\n"
+#~ "要生成 %4x1000 像素的图像，或者您可以输入任何正值，\n"
+#~ "例如您想用POV-Ray生成正方形的像 1000x1000 像素的图像."
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "设置长宽比"
+
+#~ msgid "Animation"
+#~ msgstr "动画"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "力场优化"
+
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "系统性旋转搜索"
+
+#~ msgid "Random Rotor Search"
+#~ msgstr "随机性旋转搜索"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "几何优化"
+
+#~ msgid "Gaussian Input Deck"
+#~ msgstr "Gaussian输入卡片"
+
+#~ msgid "H to Methyl"
+#~ msgstr "氢到甲基"
+
+#~ msgid "Weighted Rotor Search"
+#~ msgstr "权重旋转搜索"
+
+#~ msgid "ForceField"
+#~ msgstr "力场"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Hydrogens"
+#~ msgstr "氢"
+
+#~ msgid "No Description"
+#~ msgstr "无描述"
+
+#~ msgid "Template"
+#~ msgstr "模版"
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "操纵原子"
+
+#~ msgid "Delete Atom"
+#~ msgstr "删除原子"
+
+#~ msgid "Delete Bond"
+#~ msgstr "删除键"
+
+#~ msgid "Change Element"
+#~ msgstr "更改元素"
+
+#~ msgid "AutoOpt Molecule"
+#~ msgstr "自动优化分子"
+
+#~ msgid "Overlay"
+#~ msgstr "叠加"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "包含氮"
+
+#~ msgid "Backbone"
+#~ msgstr "骨架"
+
+#~ msgid "Tabbed Tools"
+#~ msgstr "标签工具"
+
+#~ msgid "Medium"
+#~ msgstr "中"
+
+#~ msgid "VdW Opacity:"
+#~ msgstr "VdW 不透明度:"
+
+#~ msgid "Custom Color:"
+#~ msgstr "自定义颜色："
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "静电势 (ESP)"
+
+#~ msgid "Custom Color"
+#~ msgstr "自定义颜色"
+
+#~ msgid "B repeat:"
+#~ msgstr "B 重复:"
+
+#~ msgid "A repeat:"
+#~ msgstr "A 重复:"
+
+#~ msgid "Unit Cell Display Options"
+#~ msgstr "晶胞显示选项"
+
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "晶胞参数"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "轴 (Å)"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "填充晶胞"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "删除晶胞"
+
+#~ msgid "C repeat:"
+#~ msgstr "C 重复:"
+
+#~ msgid "Angles (°)"
+#~ msgstr "角 (°)"
+
+#~ msgid "Show Atoms"
+#~ msgstr "显示原子"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "alpha:"
+#~ msgstr "alpha:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP选择..."
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr "该配体一定半径内的原子均会成为结合域的一部分"
+
+#~ msgid "Create binding pocket"
+#~ msgstr "创建结合域"
+
+#~ msgid "Bond Order:"
+#~ msgstr "键级："
+
+#~ msgid "Cation"
+#~ msgstr "阳离子"
+
+#~ msgid "Reset All"
+#~ msgstr "全部重置"
+
+#~ msgid "On:"
+#~ msgstr "On:"
+
+#~ msgid "H2Methyl"
+#~ msgstr "氢到甲基"
+
+#~ msgid "With:"
+#~ msgstr "为："
+
+#~ msgid "Cut-off radius:"
+#~ msgstr "截断半径："
+
+#~ msgid "Draw Box:"
+#~ msgstr "绘制盒："
+
+#~ msgid "Ununbium"
+#~ msgstr "Uub"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Uut"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Uuq"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Uup"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Uus"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Uuo"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Uuh"
+
+#~ msgid "Single Point Energy"
+#~ msgstr "单点能"
+
+#~ msgid "Single"
+#~ msgstr "单键"
+
+#~ msgid "Double"
+#~ msgstr "双键"
+
+#~ msgid "Triple"
+#~ msgstr "三键"
+
+#~ msgid "Conjugate Gradients"
+#~ msgstr "共轭梯度法"
+
+#~ msgid "Navigate"
+#~ msgstr "导航"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "无法读取文件 %1 的格式"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "不能读取文件 %1。"
+
+#~ msgid "Manipulate"
+#~ msgstr "操纵"
+
+#~ msgid "Low"
+#~ msgstr "低"
+
+#~ msgid "High"
+#~ msgstr "高"
+
+#~ msgid "tree"
+#~ msgstr "树"
+
+#~ msgid "Mid"
+#~ msgstr "中"
+
+#~ msgid "Color by Index"
+#~ msgstr "按索引着色"
+
+#~ msgid "Color by Element"
+#~ msgstr "按元素着色"
+
+#~ msgid "Lots"
+#~ msgstr "很多"
+
+#~ msgid "Color by Residue"
+#~ msgstr "按残基着色"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "按索引着色 (红，橙，黄，绿，蓝，紫)"
+
+#~ msgid "None"
+#~ msgstr "无"
+
+#~ msgid "Undefined"
+#~ msgstr "未定义"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "按元素着色 (碳=灰色，氧=红色，...)"
+
+#~ msgid "Some"
+#~ msgstr "部分"
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "球和棍"
+
+#~ msgid "Engines"
+#~ msgstr "引擎"
+
+#~ msgid "Orbitals"
+#~ msgstr "轨道"
+
+#~ msgid "Python script rendering"
+#~ msgstr "Python脚本渲染"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "添加.avi扩展名"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "视频文件 (*.avi)"
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "必须指定一个有效的.avi文件名"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "无法将格式设置为XYZ"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "读取轨道文件%1时出现问题"
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr "GL小工具没有正确初始化并保存视频"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "无效的文件名。必须包含完整路径。"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr "无效的文件名。必须包含完整路径和文件名，以.avi结尾。"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "化学文件 (*.parm7)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "打开参数文件"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "化学文件 (*.xyz)"
+
+#~ msgid "Open chemical file format"
+#~ msgstr "打开化学文件格式"
+
+#~ msgid "Show Preview"
+#~ msgstr "显示预览"
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "Title"
+#~ msgstr "标题"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Q-Chem输入t..."
+
+#~ msgid "Hide Preview"
+#~ msgstr "隐藏预览"
+
+#~ msgid "Open mol file"
+#~ msgstr "打开mol文件"
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "删除氢原子"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "添加氢原子"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "添加特定pH下的氢原子"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "视频文件 (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "保存轨道文件"
+
+#~ msgid "Save Movie File"
+#~ msgstr "保存视频文件"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "任何文件 (*.*)"
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "两个分子所含原子数不同 %1 %2"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "读取mol文件%1失败。"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "将要把文件写入%1。"
+
+#~ msgid "Wrote file %1."
+#~ msgstr "已写入文件%1。"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "GL小工具未能正确初始化并保存视频"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "无效的视频文件名。必须包含完整的路径。"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr "无效的视频文件名。必须包含完整的目录路径和名称，以.avi结尾。"
+
+#~ msgid "Calculating Electron Density"
+#~ msgstr "计算电子密度"
+
+#~ msgid "Electron Density"
+#~ msgstr "电子密度"
+
+#~ msgid "Calculating MO "
+#~ msgstr "计算分子轨道 "
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "创建表面..."
+
+#~ msgid "Surfaces"
+#~ msgstr "表面"
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "计算VdW立方体"
+
+#~ msgid "VdW Cube"
+#~ msgstr "VdW立方体"
+
+#~ msgid "Does not compute."
+#~ msgstr "没有计算。"
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "没有提供有效的文件名。"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "POV-Ray启动失败。"
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
+#~ msgstr ""
+#~ "你要求不要直接用POV-Ray渲染，并且不保存POV-Ray文件。这会导致没有任何输出被"
+#~ "保存。你确定这是你希望的么？"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "图像文件 (*.png *.pbm)"
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "保存用POV-Ray渲染的图像"
+
+#~ msgid "No filename supplied."
+#~ msgstr "没有提供文件名。"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "Cartesian"
+#~ msgstr "笛卡尔"
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr "POV-Ray未能启动。可能是因为可执行文件的路径设置不正确。"
+
+#~ msgid "Angle"
+#~ msgstr "键角"
+
+#~ msgid "Atom"
+#~ msgstr "原子"
+
+#~ msgid "Bond"
+#~ msgstr "键"
+
+#~ msgid "Properties"
+#~ msgstr "属性"
+
+#~ msgid "Length (Å)"
+#~ msgstr "键长 (Å)"
+
+#~ msgid "Partial Charge"
+#~ msgstr "部分电荷"
+
+#~ msgid "Angle (°)"
+#~ msgstr "键角 (°)"
+
+#~ msgid "Torsion (°)"
+#~ msgstr "键矩 (°)"
+
+#~ msgid "X (Å)"
+#~ msgstr "X (Å)"
+
+#~ msgid "Y (Å)"
+#~ msgstr "Y (Å)"
+
+#~ msgid "Z (Å)"
+#~ msgstr "Z (Å)"
+
+#~ msgid "Selections"
+#~ msgstr "选择"
+
+#~ msgid "Residue name"
+#~ msgstr "残基名称"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Python终端"
+
+#~ msgid "Energy"
+#~ msgstr "能量"
+
+#~ msgid "Shader parameters files (*.params)"
+#~ msgstr "着色器参数文件 (*.params)"
+
+#~ msgid "Open a shader parameters file"
+#~ msgstr "打开着色器参数文件"
+
+#~ msgid "Fragment shader files (*.frag)"
+#~ msgstr "片段着色器文件 (*.frag)"
+
+#~ msgid "Open a fragment shader source file"
+#~ msgstr "打开片段着色器源文件"
+
+#~ msgid "Vertex shader files (*.vert)"
+#~ msgstr "顶点着色器文件 (*.vert)"
+
+#~ msgid "Open a vertex shader source file"
+#~ msgstr "打开顶点着色器源文件"
+
+#~ msgid "GLSL Shaders..."
+#~ msgstr "GLSL着色器..."
+
+#~ msgid "GL widget was not correctly initialized in order to make a video"
+#~ msgstr "GL小工具未能正确启动以制作视频"
+
+#~ msgid "GL widget has no molecule"
+#~ msgstr "GL小工具未包含任何分子"
+
+#~ msgid "Building video "
+#~ msgstr "建构视频 "
+
+#~ msgid "cancel"
+#~ msgstr "取消"
+
+#~ msgid "Video file not written."
+#~ msgstr "视频文件没有写入。"
+
+#~ msgid "Residue"
+#~ msgstr "残基"
+
+#~ msgid "Plugin Manager"
+#~ msgstr "插件管理器"
+
+#~ msgid ""
+#~ "Avogadro needs to be restarted in order for the changes to take effect"
+#~ msgstr "Avogadro需要重启以使改动生效。"
+
+#~ msgid "Apply"
+#~ msgstr "应用"
+
+#~ msgid ""
+#~ "Align Molecules\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to two atoms.\n"
+#~ "\tThe first atom is centered at the origin.\n"
+#~ "\tThe second atom is aligned to the selected axis.\n"
+#~ "Right Mouse: \tReset alignment."
+#~ msgstr ""
+#~ "对齐分子\n"
+#~ "\n"
+#~ "鼠标左键：\t 选定两个原子。\n"
+#~ "\t 第一个原子被放置在原点。\n"
+#~ "\t 第二个原子对齐到选中的轴上。\n"
+#~ "鼠标右键：\t 重置对齐。"
+
+#~ msgid "Reset"
+#~ msgstr "重置"
+
+#~ msgid "Start"
+#~ msgstr "开始"
+
+#~ msgid "Steepest Descent"
+#~ msgstr "最速下降法"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "更改键级"
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "点击以测量(F12)\n"
+#~ "\n"
+#~ "鼠标左键： \t 选定三个原子。\n"
+#~ "\t 1-2 和2-3 的距离将被测量\n"
+#~ "\t 以2作为顶点，1-3之间的角度将被测量\n"
+#~ "鼠标右键：重置测量。"
+
+#~ msgid "Bond Length: "
+#~ msgstr "键长: "
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "绘制工具(F8)\n"
+#~ "\n"
+#~ "鼠标左键：\t 点击并拖动以创建原子和化学键\n"
+#~ "鼠标右键：删除原子"
+
+#~ msgid "Other..."
+#~ msgstr "其它..."
+
+#~ msgid "Insert Fragment"
+#~ msgstr "插入片段"
+
+#~ msgid "Click to insert the fragment at that position."
+#~ msgstr "点击以在该位置插入片段"
+
+#~ msgid "Selection"
+#~ msgstr "选择"
+
+#~ msgid "Right"
+#~ msgstr "右侧"
+
+#~ msgid "Left"
+#~ msgstr "左侧"
+
+#~ msgid "Enable the tabbed tool layout."
+#~ msgstr "允许标签式工具栏布局。"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "Top"
+#~ msgstr "顶部"
+
+#~ msgid "Bottom"
+#~ msgstr "底部"
+
+#~ msgid "Show Multiple Bonds"
+#~ msgstr "显示多重键"
+
+#~ msgid "Smooth Transitions"
+#~ msgstr "平滑过渡"
+
+#~ msgid ""
+#~ "Enables the use of transitional animations when performing automatic "
+#~ "positioning of the GLWidget."
+#~ msgstr "在使用GL小工具的自动定位时允许使用过渡态动画。"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "偶极矩"
+
+#~ msgid "Dipole:"
+#~ msgstr "偶极:"
+
+#~ msgid "Smooths animations of various functions where availabe."
+#~ msgstr "在允许的地方对各种功能的动画进行平滑处理。"
+
+#~ msgid "Tab Position"
+#~ msgstr "标签位置"
+
+#~ msgid "Custom:"
+#~ msgstr "自定义:"
+
+#~ msgid "Custom Value"
+#~ msgstr "自定义值"
+
+#~ msgid "Unique ID"
+#~ msgstr "唯一D"
+
+#~ msgid "Loop"
+#~ msgstr "环"
+
+#~ msgid "Radius:"
+#~ msgstr "半径："
+
+#~ msgid "Python Settings"
+#~ msgstr "Python设置"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "保存为.avi文件..."
+
+#~ msgid "Color:"
+#~ msgstr "颜色:"
+
+#~ msgid "Points"
+#~ msgstr "点"
+
+#~ msgid "Lines"
+#~ msgstr "直线"
+
+#~ msgid "Fill"
+#~ msgstr "填充"
+
+#~ msgid "Render:"
+#~ msgstr "渲染:"
+
+#~ msgid "Opacity:"
+#~ msgstr "不透明度："
+
+#~ msgid "Options"
+#~ msgstr "选项"
+
+#~ msgid "Method"
+#~ msgstr "算法"
+
+#~ msgid "Geometry Optimization"
+#~ msgstr "几何优化"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "File Import..."
+#~ msgstr "导入文件..."
+
+#~ msgid "Browse..."
+#~ msgstr "浏览..."
+
+#~ msgid "Par File:"
+#~ msgstr "Par文件:"
+
+#~ msgid "Attempt to perceive bonds?"
+#~ msgstr "尝试检测化学键？"
+
+#~ msgid "Perceive bonds?"
+#~ msgstr "检测化学键？"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "Dication"
+#~ msgstr "双阳离子"
+
+#~ msgid "Frequencies"
+#~ msgstr "频率"
+
+#~ msgid "Calculate"
+#~ msgstr "计算"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "RHF"
+#~ msgstr "RHF"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "Title:"
+#~ msgstr "标题:"
+
+#~ msgid "Theory:"
+#~ msgstr "理论:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Processors:"
+#~ msgstr "处理器："
+
+#~ msgid "Calculation:"
+#~ msgstr "计算:"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "多重性："
+
+#~ msgid "Close"
+#~ msgstr "关闭"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "调整氢原子数目"
+
+#~ msgid "Output:"
+#~ msgstr "输出："
+
+#~ msgid "Standard"
+#~ msgstr "标准"
+
+#~ msgid "Z-matrix"
+#~ msgstr "Z-矩阵"
+
+#~ msgid "Basis:"
+#~ msgstr "基准:"
+
+#~ msgid "Charge:"
+#~ msgstr "电荷:"
+
+#~ msgid "The residue name"
+#~ msgstr "残基名称"
+
+#~ msgid "Use Form"
+#~ msgstr "使用表单"
+
+#~ msgid "Checkpoint:"
+#~ msgstr "检查点:"
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Z-matrix (compact)"
+#~ msgstr "Z-矩阵 (致密的)"
+
+#~ msgid "Cubes"
+#~ msgstr "立方体"
+
+#~ msgid "Save trajectory..."
+#~ msgstr "保存轨迹..."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "保存为.xyz轨迹的按钮。"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr "将轨迹的快照保存为一系列POV-Ray文件。这些文件可以用于制作视频。"
+
+#~ msgid "Num Frames"
+#~ msgstr "数值框"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "载入第二构象 ..."
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "从文件中载入第二构象的按钮。"
+
+#~ msgid ""
+#~ "Load a second confromation and computer a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr "载入第二个构象并和当前构象一起计算线性插值。"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "线性形态轨迹"
+
+#~ msgid "Save movie..."
+#~ msgstr "保存视频..."
+
+#~ msgid "Parallel Load Balance Type"
+#~ msgstr "平行载入平衡类型"
+
+#~ msgid "Load and use OpenGL 2.0 GLSL shaders"
+#~ msgstr "载入并使用OpenGL 2.0 GLSL着色器"
+
+#~ msgid "Load"
+#~ msgstr "载入"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "GL小工具未能正确初始化并保存快照"
+
+#~ msgid "Load Shaders"
+#~ msgstr "载入着色器"
+
+#~ msgid "Step Size:"
+#~ msgstr "步长:"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "计算电子密度"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "计算Van der Waals立方体"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "立方体维度"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "计算所有MO"
+
+#~ msgid "Max:"
+#~ msgstr "最大:"
+
+#~ msgid "Calculate MO"
+#~ msgstr "计算MO"
+
+#~ msgid "Van der Waals Surface"
+#~ msgstr "Van der Waals表面"
+
+#~ msgid "Color By:"
+#~ msgstr "着色按:"
+
+#~ msgid "Cube:"
+#~ msgstr "立方体:"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "Iso Value:"
+#~ msgstr "Iso值:"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "Cube Range:"
+#~ msgstr "立方体范围:"
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "计算网格"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "Isosurfaces"
+#~ msgstr "Iso表面"
+
+#~ msgid "Distance:"
+#~ msgstr "距离："
+
+#~ msgid "Render"
+#~ msgstr "渲染"
+
+#~ msgid "Resolution:"
+#~ msgstr "分辨率："
+
+#~ msgid "Use full scene antialiasing"
+#~ msgstr "使用全场景抗锯齿"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Range:"
+#~ msgstr "范围:"
+
+#~ msgid "POV-Ray Export"
+#~ msgstr "POV-Ray导出"
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "设置背景色为透明"
+
+#~ msgid "Keep the POV-Ray source after rendering has completed"
+#~ msgstr "渲染完成后保留POV-Ray源文件"
+
+#~ msgid "Render using POV-Ray"
+#~ msgstr "使用POV-Ray渲染"
+
+#~ msgid "Render the molecule directly using command line POV-Ray"
+#~ msgstr "使用命令行POV-Ray直接渲染分子"
+
+#~ msgid "Command:"
+#~ msgstr "命令:"
+
+#~ msgid "GLSL Shaders"
+#~ msgstr "GLSL着色器"
+
+#~ msgid "Q-Chem Input"
+#~ msgstr "Q-Chem导入"
+
+#~ msgid "Path:"
+#~ msgstr "路径:"
+
+#~ msgid "Keep POV-Ray source after rendering"
+#~ msgstr "渲染后保留POV-Ray源文件"
+
+#~ msgid "Shader Name:"
+#~ msgstr "着色器名称:"
+
+#~ msgid "Alpha transparency"
+#~ msgstr "Alpha透明"
+
+#~ msgid "Shader Program:"
+#~ msgstr "着色器程序："
+
+#~ msgid "Parameters:"
+#~ msgstr "参数："
+
+#~ msgid "Assign Shader"
+#~ msgstr "指定着色器"
+
+#~ msgid "Vertex Shader:"
+#~ msgstr "顶点着色器:"
+
+#~ msgid "Fragment Shader:"
+#~ msgstr "片段着色器:"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "对齐至起点: "
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "设置固定的原子为可移动的"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "设置已忽略的原子为可移动的"
+
+#~ msgid "Display Type:"
+#~ msgstr "显示模式："
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "添加pH为...时的氢键"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr "您的分子必须包含至少四个原子以添加扭转限制条件"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr "您的分子必须包含至少三个原子以添加键角限制条件"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr "您的分子必须包含至少两个原子以添加化学键限制条件"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr "您的分子必须包含至少一个原子才能添加限制条件"
+
+#~ msgid "Add constraint"
+#~ msgstr "添加限制条件"
+
+#~ msgid "Add Atom"
+#~ msgstr "添加原子"
+
+#~ msgid "Add Bond"
+#~ msgstr "添加键"
+
+#~ msgid "Add Constraints"
+#~ msgstr "添加限制"
+
+#~ msgid "&Properties"
+#~ msgstr "属性"
+
+#~ msgid "&Template"
+#~ msgstr "模版"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "反向选择"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "分子机理"
+
+#~ msgid "&Scripts"
+#~ msgstr "脚本"
+
+#~ msgid "&Advanced Setup"
+#~ msgstr "高级设置"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "基本设置"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr "按原子部分电荷着色（蓝色=正电荷，红色=负电荷。）"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "按部分电荷着色"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "按与第一个原子的距离远近着色。"
+
+#~ msgid "Color by Distance"
+#~ msgstr "按距离着色"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "在原点处渲染x，y和z轴"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "按残基着色（氨基酸类型，疏水性，...）"
+
+#~ msgid "Cartoon"
+#~ msgstr "卡通"
+
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr "以球（原子）和棍（键）模式渲染几何体"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "渲染原子轨道"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "为渐变色渲染色差度"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "渲染蛋白质二级结构"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "渲染分子偶极矩"
+
+#~ msgid "Renders force displacements on atoms"
+#~ msgstr "渲染原子上的力位移"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "将环渲染为彩色平面"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "将分子渲染为棍状"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "将原子渲染为正四面体，正八面体，以及其它多面体"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "将蛋白质骨架渲染为带状"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "动画显示轨道，反应和振动"
+
+#~ msgid "Save Video File"
+#~ msgstr "保存视频文件"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr "将键渲染为线框（线），对于大的（生物）分子很理想"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "渲染计算出的分子表面"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
+#~ msgstr "优化分子并用分子动力学力场生成构象异构体"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "导入轨迹"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "轨迹文件 (*.xtc *.xyz)"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "轨迹文件 (*.xyz)"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr "轨迹文件%1与当前分子中的原子数不符"
+
+#~ msgid "Trajectory..."
+#~ msgstr "轨迹..."
+
+#~ msgid "Import trajectory files"
+#~ msgstr "导入轨迹文件"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "渲染原子和键标签"
+
+#~ msgid "Atom Labels:"
+#~ msgstr "原子标签"
+
+#~ msgid "Bond Labels:"
+#~ msgstr "键标签:"
+
+#~ msgid "Linear Morph"
+#~ msgstr "线性形态"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "为动画创建线性插值"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "将氢原子转换为甲基"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Gaussian input deck preview pane?"
+#~ msgstr ""
+#~ "您是否希望更新预览文本，并丢失所有在Gaussian输入卡片预览面板中所做的修改？"
+
+#~ msgid "Gaussian Input Deck Generator Warning"
+#~ msgstr "Gaussian输入卡片生成器警告"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "添加或删除氢原子"
+
+#~ msgid "Create input files for quantum chemistry packages like Gaussian"
+#~ msgstr "为Gaussian那样的量子化学软件包创建输入文件"
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "MOPAC输入..."
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "为GAMESS量子化学软件包创建输入文件"
+
+#~ msgid "Input Generator..."
+#~ msgstr "输入生成器..."
+
+#~ msgid "MOPAC Crashed."
+#~ msgstr "MOPAC崩溃了。"
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "运行MOPAC计算..."
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "未能找到MOPAC可执行文件。"
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC没有安装。"
+
+#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC没有启动。也是是因为它没有被正确安装。"
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "MOPAC未能启动。"
+
+#~ msgid "MOPAC Running."
+#~ msgstr "MOPAC正在运行。"
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr "MOPAC已经在运行了。请等待前期计算的完成。"
+
+#~ msgid "MOPAC Input Warning"
+#~ msgstr "MOPAC输入警告"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "MOPAC input deck preview pane?"
+#~ msgstr ""
+#~ "您是否希望更新预览文本，并丢失所有在MOPAC输入卡片预览面板中所做的修改？"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "保存MOPAC输入卡片"
+
+#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC没有正确运行。也许是因为它没有被正确安装。"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC输入卡片（*.mop）"
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "计算分子轨道和其它表面"
+
+#~ msgid ""
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
+#~ msgstr "创建POV-Ray文件并用命令行POV-Ray程序渲染。"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "用于显示原子，键，键角和扭转属性的窗口。它还含有一个笛卡尔坐标编辑器。"
+
+#~ msgid "Atom Index %1"
+#~ msgstr "原子索引%1"
+
+#~ msgid "Interactive python scripting terminal"
+#~ msgstr "交互式Python脚本终端"
+
+#~ msgid "Q-Chem Input Deck Generator Warning"
+#~ msgstr "Q-Chem输入卡片生成器警告"
+
+#~ msgid "Could not run povray."
+#~ msgstr "无法运行povray。"
+
+#~ msgid "Example extension"
+#~ msgstr "范例扩展"
+
+#~ msgid "Build and display crystallographic super cells"
+#~ msgstr "构建并显示晶体学中的超晶胞"
+
+#~ msgid "Super Cell"
+#~ msgstr "超晶胞"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
+#~ msgstr "该文档目前是一个单独的分子。你需要创建一个单位晶胞。"
+
+#~ msgid "Warning"
+#~ msgstr "警告"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "选择原子，键，残基..."
+
+#~ msgid "Super Cell Builder..."
+#~ msgstr "超晶胞构建器..."
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
+#~ msgstr ""
+#~ "您是否想更新预览文本，并丢失所有在Q-Chem输入卡片预览面板中所做的修改？"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Q-Chem输入卡片 (*.qcin)"
+
+#~ msgid "Unit Cell"
+#~ msgstr "单位晶胞"
+
+#~ msgid "Could not run mencoder."
+#~ msgstr "无法运行mencoder。"
+
+#~ msgid "Build and display crystallographic unit cells"
+#~ msgstr "构建并显示晶体学中的单位晶胞。"
+
+#~ msgid "No vibrational displacements exist."
+#~ msgstr "没有振动位移存在。"
+
+#~ msgid "No vibrations have been computed for this molecule."
+#~ msgstr "该分子没有被计算出任何振动。"
+
+#~ msgid "Vibration"
+#~ msgstr "振动"
+
+#~ msgid "Unknown Python Extension"
+#~ msgstr "未知Python扩展"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "使用Wii遥控器跟踪运动"
+
+#~ msgid "Unknown Python Engine"
+#~ msgstr "未知Python引擎"
+
+#~ msgid "Visualize vibrational modes from quantum chemistry calculations"
+#~ msgstr "从量子化学计算中显示振动模式。"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii跟踪"
+
+#~ msgid "PythonEngine: checking "
+#~ msgstr "Python引擎: 检查中 "
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "  - script has no 'Engine' class defined"
+#~ msgstr "  - 脚本没有定义“引擎”种类"
+
+#~ msgid "PythonExtension: checking "
+#~ msgstr "Python扩展: 检查中 "
+
+#~ msgid "  - no module"
+#~ msgstr "  - 没有模块"
+
+#~ msgid "Manipulation of bond lengths, angles, and torsions"
+#~ msgstr "操纵键长，键角和扭转"
+
+#~ msgid "Automatic rotation of molecules"
+#~ msgstr "自动旋转分子"
+
+#~ msgid "Automatic optimization of molecular geometry"
+#~ msgstr "自动优化分子几何构型"
+
+#~ msgid "Align molecules to a Cartesian axis"
+#~ msgstr "将分子对齐到一个笛卡尔坐标轴"
+
+#~ msgid "Measure bond lengths, angles, and dihedrals"
+#~ msgstr "测量键长，键角和二面角"
+
+#~ msgid "  - script has no 'Tool' class defined"
+#~ msgstr "  - 脚本没有定义“工具”类型"
+
+#~ msgid "PythonTool: checking "
+#~ msgstr "Python工具: 检查中 "
+
+#~ msgid "Unknown Python Tool"
+#~ msgstr "未知Python工具"
+
+#~ msgid "  - script has no 'Extension' class defined"
+#~ msgstr "  - 脚本没有定义“扩展”类型"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "选择原子，残基和分子"
+
+#~ msgid "Translate, rotate, and zoom around the current view"
+#~ msgstr "平移，旋转并在当前视图内缩放"
+
+#~ msgid "Translate, rotate, and adjust atoms and fragments"
+#~ msgstr "平移，旋转并调整原子和片段"
+
+#~ msgid "Amino Colors"
+#~ msgstr "氨基颜色"
+
+#~ msgid "Shapely Colors"
+#~ msgstr "优美的颜色"
+
+#~ msgid "Color residues by:"
+#~ msgstr "给残基着色按："
+
+#~ msgid "Quintet"
+#~ msgstr "五重"
+
+#~ msgid "Quartet"
+#~ msgstr "四重"
+
+#~ msgid "PM6"
+#~ msgstr "PM6"
+
+#~ msgid "MNDO-d"
+#~ msgstr "MNDO-d"
+
+#~ msgid "Generate..."
+#~ msgstr "生成..."
+
+#~ msgid "MOPAC Input"
+#~ msgstr "MOPAC输入"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "疏水性"
+
+#~ msgid "Custom Data"
+#~ msgstr "自定义数据"
+
+#~ msgid "Frequency (cm-1)"
+#~ msgstr "频率 (cm-1)"
+
+#~ msgid "Intensity (a.u.)"
+#~ msgstr "强度 (a.u.)"
+
+#~ msgid "Generate Cell"
+#~ msgstr "生成晶胞"
+
+#~ msgid "Molecular Vibrations"
+#~ msgstr "分子振动"
+
+#~ msgid "Super Cell Parameters"
+#~ msgstr "超晶胞参数"
+
+#~ msgid "Compute..."
+#~ msgstr "计算..."
+
+#~ msgid "RM1"
+#~ msgstr "RM1"
+
+#~ msgid "HF"
+#~ msgstr "HF"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (近似的)"
+
+#~ msgid "Super Cell Options"
+#~ msgstr "超晶胞选项"
+
+#~ msgid "Residue Color Settings"
+#~ msgstr "残基颜色设置"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "线性形态..."
+
+#~ msgid "&WiiTrack"
+#~ msgstr "Wii跟踪"
+
+#~ msgid "Draw and edit atoms and bonds"
+#~ msgstr "绘制并编辑原子和键"
+
+#~ msgid ""
+#~ "Bond Centric Manipulation Tool\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view\n"
+#~ "\n"
+#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
+#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
+#~ msgstr ""
+#~ "化学键操纵工具\n"
+#~ "\n"
+#~ "鼠标左键: 点击并拖动以旋转视图\n"
+#~ "鼠标中键: 点击并拖动以缩放视图\n"
+#~ "鼠标右键: 点击并拖动以平移视图\n"
+#~ "\n"
+#~ "在化学键上左击并拖动以设定操纵平面:\n"
+#~ "- 左击并拖动键上的一个原子以改变键角\n"
+#~ "- 右击并拖动键上的一个原子以改变键长"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " 对齐至键"
+
+#~ msgid "Bond Centric Manipulate"
+#~ msgstr "化学键操纵"
+
+#~ msgid "Bond Centric Manipulation"
+#~ msgstr "化学键操纵"
+
+#~ msgid "Fetch from PDB..."
+#~ msgstr "从 PCB 获取..."
+
+#~ msgid "Y Axis"
+#~ msgstr "Y 轴"
+
+#~ msgid "E&xport Image"
+#~ msgstr "导入图像(&X)"
+
+#~ msgid "X Axis"
+#~ msgstr "X 轴"
+
+#~ msgid "Infrared"
+#~ msgstr "红外线"
+
+#~ msgid "&Appearance"
+#~ msgstr "外观(&A)"
+
+#~ msgid "No data"
+#~ msgstr "没有数据"
+
+#~ msgid "Light"
+#~ msgstr "明亮"
+
+#~ msgid "Dark"
+#~ msgstr "灰暗"
+
+#~ msgid "New Scheme"
+#~ msgstr "新原理图"
+
+#~ msgid "Enter new name for current scheme:"
+#~ msgstr "为当前原理图输入新名字:"
+
+#~ msgid "Change Scheme Name"
+#~ msgstr "改变原理图名称"
+
+#~ msgid "Really remove current scheme?"
+#~ msgstr "真的要移除当前原理图吗?"
+
+#~ msgid "Confirm Scheme Removal"
+#~ msgstr "确认移除原理图"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows 位图"
+
+#~ msgid "Unknown extension: %1"
+#~ msgstr "未知扩展名: %1"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "便携式网络图形(PNG)"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "All Files"
+#~ msgstr "所有文件"
+
+#~ msgid "A problem occurred while writing file %1"
+#~ msgstr "写入文件 %1 时发生错误"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "文件名无效"
+
+#~ msgid "Image successfully written to %1"
+#~ msgstr "图像成功写入 %1"
+
+#~ msgid "Success!"
+#~ msgstr "完成!"
+
+#~ msgid "Symbol"
+#~ msgstr "符号"
+
+#~ msgid "Selected Colors"
+#~ msgstr "已选的颜色"
+
+#~ msgid "Colors:"
+#~ msgstr "颜色:"
+
+#~ msgid "Set Color..."
+#~ msgstr "设置颜色..."
+
+#~ msgid "Font:"
+#~ msgstr "字体:"
+
+#~ msgid "Change Font..."
+#~ msgstr "更换字体..."
+
+#~ msgid "Remove..."
+#~ msgstr "移除..."
+
+#~ msgid "Show"
+#~ msgstr "显示"
+
+#~ msgid "&Import..."
+#~ msgstr "导入(&I)..."
+
+#~ msgid "Background:"
+#~ msgstr "背景:"
+
+#~ msgid "Foreground:"
+#~ msgstr "前景:"
+
+#~ msgid "New..."
+#~ msgstr "新建..."
+
+#~ msgid "Rename..."
+#~ msgstr "改名..."
+
+#~ msgid "mm"
+#~ msgstr "毫米"
+
+#~ msgid "in"
+#~ msgstr "英寸"
+
+#~ msgid "px"
+#~ msgstr "点"
+
+#~ msgid "cm"
+#~ msgstr "厘米"
+
+#~ msgid "&Width:"
+#~ msgstr "宽度(&W):"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "&Filename:"
+#~ msgstr "文件名(&F):"
+
+#~ msgid "&Height"
+#~ msgstr "高度(&H)"
+
+#~ msgid "&DPI:"
+#~ msgstr "&DPI:"
+
+#~ msgid "&Export..."
+#~ msgstr "导出(&E)..."
+
+#~ msgid "&Save Image..."
+#~ msgstr "保存图像(&S)..."
+
+#~ msgid "&Y Axis Units:"
+#~ msgstr "Y轴单位(&Y):"
+
+#~ msgid "Auto-adjust F&ont Size"
+#~ msgstr "自动调整字体大小(&O)"
+
+#~ msgid "Sc&ale:"
+#~ msgstr "缩放比例(&A):"
+
+#~ msgid "&Scale:"
+#~ msgstr "缩放(&S):"
+
+#~ msgid "E&xport..."
+#~ msgstr "导出(&E)..."
+
+#~ msgid ""
+#~ "Use an optimized value for the font size instead of the scheme-specified "
+#~ "value (screen to image point sizes don't translate well!)"
+#~ msgstr ""
+#~ "使用优化的字体大小而非原理图定义的值(屏幕与图像点大小将不能很好地转换!)"
+
+#~ msgid "&Schemes:"
+#~ msgstr "原理图(&S):"
+
+#~ msgid "Network Fetch"
+#~ msgstr "网络获取"
+
+#~ msgid "Tagged Image File Format"
+#~ msgstr "标签图像文件格式(TIFF)"
+
+#~ msgid "&Infrared Spectra Settings"
+#~ msgstr "红外光谱设置(&I)"
+
+#~ msgid "Publication"
+#~ msgstr "发布"
+
+#~ msgid "Tab Separated Values (*.tsv)"
+#~ msgstr "制表符分隔数值格式 (*.tsv)"
+
+#~ msgid "X11 Bitmap"
+#~ msgstr "X11 位图"
+
+#~ msgid "X11 Pixmap"
+#~ msgstr "X11 点阵图"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "自定义(&Z) >>"
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "自定义(&Z) <<"
+
+#~ msgid "Mapped Colors"
+#~ msgstr "映射的颜色"
+
+#~ msgid "Style:"
+#~ msgstr "样式:"
+
+#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
+#~ msgstr "将化学键渲染为线框 (线)，对大分子较合适"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "简单线框"
+
+#~ msgid "Fetch from URL..."
+#~ msgstr "从URL获取..."
+
+#~ msgid "MOLPRO Input..."
+#~ msgstr "MOLPRO输入..."
+
+#~ msgid "&NWChem Input..."
+#~ msgstr "NWChem输入..."
+
+#~ msgid "Save Molpro Input Deck"
+#~ msgstr "保存Molpro输入卡片"
+
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro输入卡片 (*.qcin)"
+
+#~ msgid "PDB Entry"
+#~ msgstr "PDB项目"
+
+#~ msgid "Fetch molecule files over the network."
+#~ msgstr "从网络获取分子文件。"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "NWChem input deck preview pane?"
+#~ msgstr ""
+#~ "您是否希望更新预览文字，并丢失所有在NWChem输入卡片预览面板中所做的更改？"
+
+#~ msgid "NWChem Input Deck Generator Warning"
+#~ msgstr "NWChem输入卡片生成器警告"
+
+#~ msgid "Specified molecule could not be found: "
+#~ msgstr "特定的分子没有找到: "
+
+#~ msgid "Specified molecule could not be loaded: "
+#~ msgstr "特定的分子无法加载: "
+
+#~ msgid "URL of molecule to download."
+#~ msgstr "从URL下载分子。"
+
+#~ msgid "Network Download Failed"
+#~ msgstr "网络下载失败"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "PDB entry to download."
+#~ msgstr "下载PDB项目。"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem输入卡片 (*.nw)"
+
+#~ msgid "Save NWChem Input Deck"
+#~ msgstr "保存NWChem输入卡片"
+
+#~ msgid "&NMR Spectra Settings"
+#~ msgstr "NMR光谱设置"
+
+#~ msgid "No intensities"
+#~ msgstr "没有强度"
+
+#~ msgid ""
+#~ "The vibration data in the molecule you have loaded does not have any "
+#~ "intensity data. Intensities have been set to an arbitrary value for "
+#~ "visualization."
+#~ msgstr ""
+#~ "您加载的分子振动数据没有任何强度数值。强度应当被赋予一个数值以便显示。"
+
+#~ msgid "Handdrawn"
+#~ msgstr "手绘"
+
+#~ msgid "Shift (ppm)"
+#~ msgstr "位移 (ppm)"
+
+#~ msgid "Export Calculated Spectrum"
+#~ msgstr "导出光谱计算结果"
+
+#~ msgid "Wavenumber (cm<sup>-1</sup>)"
+#~ msgstr "波数 (cm<sup>-1</sup>)"
+
+#~ msgid "Spectra"
+#~ msgstr "光谱"
+
+#~ msgid ""
+#~ "Tab Separated Values (*.tsv);;Comma Separated Values (*.csv);;JCAMP-DX (*."
+#~ "jdx);;All Files (* *.*)"
+#~ msgstr ""
+#~ "标签分离数值文件 (*.tsv);;逗号分离数值文件 (*.csv);;JCAMP-DX (*.jdx);;所有"
+#~ "文件 (* *.*)"
+
+#~ msgid "Save Spectra Image"
+#~ msgstr "保存光谱图像"
+
+#~ msgid "Stop &Animation"
+#~ msgstr "停止动画"
+
+#~ msgid "Portable Pixmap"
+#~ msgstr "可移动点阵图"
+
+#~ msgid "Start &Animation"
+#~ msgstr "开始动画"
+
+#~ msgid "Spectra Import"
+#~ msgstr "导入光谱"
+
+#~ msgid "&Spectra..."
+#~ msgstr "光谱..."
+
+#~ msgid "Import Spectra"
+#~ msgstr "导入光谱"
+
+#~ msgid "Bond Angle"
+#~ msgstr "键角"
+
+#~ msgid "Dihedral Angle"
+#~ msgstr "二面角"
+
+#~ msgid "Bond Length"
+#~ msgstr "键长"
+
+#~ msgid "&Vibrations..."
+#~ msgstr "振动..."
+
+#~ msgid "Periodic Table"
+#~ msgstr "元素周期表"
+
+#~ msgid "Export Vibrational Data"
+#~ msgstr "到处振动数据"
+
+#~ msgid "Z Matrix Editor..."
+#~ msgstr "Z矩阵编辑器..."
+
+#~ msgid "Create/edit a z-matrix"
+#~ msgstr "创建/编辑一个Z矩阵"
+
+#~ msgid "M06-2X"
+#~ msgstr "M06-2X"
+
+#~ msgid "EDF1"
+#~ msgstr "EDF1"
+
+#~ msgid "AUG-cc-pVDZ"
+#~ msgstr "AUG-cc-pVDZ"
+
+#~ msgid "cc-pVTZ"
+#~ msgstr "cc-pVTZ"
+
+#~ msgid "B3LYP5"
+#~ msgstr "B3LYP5"
+
+#~ msgid "AUG-cc-pVTZ"
+#~ msgstr "AUG-cc-pVTZ"
+
+#~ msgid "MOLPRO Input"
+#~ msgstr "MOLPRO输入"
+
+#~ msgid "6-31+G(d)"
+#~ msgstr "6-31+G(d)"
+
+#~ msgid "6-311G(d)"
+#~ msgstr "6-311G(d)"
+
+#~ msgid "cc-pVDZ"
+#~ msgstr "cc-pVDZ"
+
+#~ msgid "Spectra Visualization"
+#~ msgstr "光谱可视化"
+
+#~ msgid "LACVP"
+#~ msgstr "LACVP"
+
+#~ msgid "Calculated Spectra:"
+#~ msgstr "计算光谱:"
+
+#~ msgid "Transmittance (%)"
+#~ msgstr "透射比 (%)"
+
+#~ msgid "Absorbance (%)"
+#~ msgstr "吸光度 (%)"
+
+#~ msgid "&Gaussian Width:"
+#~ msgstr "Gaussian宽度:"
+
+#~ msgid "Imported Spectra:"
+#~ msgstr "导入光谱:"
+
+#~ msgid "Imports a tsv of experimental spectra to overlay on the plot."
+#~ msgstr "导入一个实验光谱的tsv文件以覆盖当前绘图。"
+
+#~ msgid "&Label peaks"
+#~ msgstr "标记谱峰"
+
+#~ msgid "TODO"
+#~ msgstr "TODO"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "NMR类型:"
+
+#~ msgid "&Reference:"
+#~ msgstr "参考:"
+
+#~ msgid "Remove Atom"
+#~ msgstr "删除原子"
+
+#~ msgid "Gaussian &Width:"
+#~ msgstr "Gaussian宽度:"
+
+#~ msgid "Reset &Plot Axes"
+#~ msgstr "重设作图坐标"
+
+#~ msgid ""
+#~ "Controls:\n"
+#~ "Double left click: Restore default axis limits\n"
+#~ "Right click + drag: Move plot\n"
+#~ "Middle click + drag: Zoom to region\n"
+#~ "Scroll wheel: Zoom to cursor"
+#~ msgstr ""
+#~ "控制:\n"
+#~ "双击左键: 恢复默认坐标轴范围\n"
+#~ "右击+拖动: 移动绘图\n"
+#~ "中击+拖动: 缩放到区域\n"
+#~ "滚轮: 按光标缩放"
+
+#~ msgid "Display Force &Vectors"
+#~ msgstr "显示力矢量"
+
+#~ msgid "Import Selected Atoms"
+#~ msgstr "导入选择的原子"
+
+#~ msgid "Z Matrix Editor"
+#~ msgstr "Z矩阵编辑器"
+
+#~ msgid "Visualize spectral data from quantum chemistry calculations"
+#~ msgstr "由量子化学计算结果将光谱数据可视化"
+
+#~ msgctxt "%1 is element, %L2 is atom index"
+#~ msgid "Atom %1 %L2"
+#~ msgstr "原子 %1 %L2"
+
+#~ msgctxt "%L1 is bond index"
+#~ msgid "Bond %L1"
+#~ msgstr "键 %L1"
+
+#~ msgctxt "%1 is residue name, %2 is residue index"
+#~ msgid "Residue %1 %2"
+#~ msgstr "残基%1 %2"
