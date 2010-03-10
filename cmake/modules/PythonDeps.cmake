@@ -47,12 +47,12 @@ else(Boost_PYTHON_FOUND AND PYTHONLIBS_FOUND AND NUMPY_FOUND)
   # Numpy
   message(STATUS "[4/5] Numpy Module")
   find_package(Numpy)
-  if (NOT ${NUMPY_FOUND})
+  if (NOT NUMPY_FOUND)
     message(STATUS "Numpy NOT found - Python support disabled.")
   #  message(STATUS "debian/ubuntu: install the python-numpy package.")
     set(ALL_PYTHON_FOUND FALSE CACHE BOOL "True if all Python dependencies satisfied.")
     return()
-  endif (NOT ${NUMPY_FOUND})
+  endif (NOT NUMPY_FOUND)
 
   # SIP
   message(STATUS "[5/5] SIP Module")
