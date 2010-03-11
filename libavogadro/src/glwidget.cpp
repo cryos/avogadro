@@ -78,8 +78,7 @@
 using namespace OpenBabel;
 using namespace Eigen;
 
-namespace Avogadro {
-	
+QT_BEGIN_NAMESPACE
   static void qt_gl_draw_text(QPainter *p, int x, int y, const QString &str, const QFont &font)
   {
     qDebug() << "Overloaded qt_gl_draw_text called";
@@ -98,7 +97,10 @@ namespace Avogadro {
     p->setPen(old_pen);
     p->setFont(old_font);
   }
+QT_END_NAMESPACE
 
+namespace Avogadro {
+	
   bool engineLessThan( const Engine* lhs, const Engine* rhs )
   {
     Engine::Layers lhsLayers = lhs->layers();
