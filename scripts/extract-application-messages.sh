@@ -9,7 +9,7 @@ PATCHVERSION=`grep 'set(Avogadro_VERSION_PATCH' CMakeLists.txt | cut -f 2 -d ' '
 VERSION="${MAJORVERSION}.${MINORVERSION}.${PATCHVERSION}"
 BUGADDR="avogadro-devel@lists.sourceforge.net"	# MSGID-Bugs
 WDIR=`pwd`		# working dir
-I18NDIR="i18n"          # i18n dir
+I18NDIR="i18n/avogadro"          # i18n dir
 
 echo "Preparing rc files"
 cd ${BASEDIR}

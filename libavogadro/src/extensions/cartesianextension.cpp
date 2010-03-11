@@ -180,7 +180,8 @@ namespace Avogadro
         xform.Set(i,i,BOHR_TO_ANGSTROM);
       break;
     case FRACTIONAL:
-      xform = m_molecule->OBUnitCell()->GetOrthoMatrix();
+      // Fractional coordinates -- convert below
+      xform = matrix3x3(0.0);
       break;
     }
 
@@ -349,7 +350,16 @@ namespace Avogadro
       } else {
           atom->SetAtomicNum(_n);
       }
-      atom->SetVector(xform * pos); //set coordinates
+      if (xform.determinant() == 0.0) { // fractional coordinates
+        #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+        atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
+        #else
+        atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix * pos);
+        #endif
+      }         
+      else {
+        atom->SetVector(xform * pos);
+      }
     }
     mol->EndModify();
     mol->ConnectTheDots();
@@ -414,7 +424,7 @@ namespace Avogadro
             xform.Set(i,i,ANGSTROM_TO_BOHR);
           break;
         case FRACTIONAL:
-          xform = m_molecule->OBUnitCell()->GetFractionalMatrix();
+          xform = matrix3x3(0.0); // Check below and use proper conversions
           break;
         }
 
@@ -423,8 +433,17 @@ namespace Avogadro
         for (unsigned int i=0; i<m_molecule->numAtoms(); i++) {
           //Atom *atom = m_molecule->atom(i);
           Atom *atom = localAtom.at(i);
-          pos = xform * atom->OBAtom().GetVector();
-
+          if (xform.determinant() == 0.0) { // fractional coordinates
+            #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+            pos = m_molecule->OBUnitCell()->CartesianToFractional(atom->OBAtom().GetVector());
+            #else
+            pos = m_molecule->OBUnitCell()->GetFractionalMatrix() * atom->OBAtom().GetVector();
+            #endif
+          }         
+          else {
+            pos = xform * atom->OBAtom().GetVector();
+          }
+  
           switch (m_format) {
           case XYZ:
             coordStream.setFieldWidth(3);
