@@ -19,6 +19,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/moleculefile.h>
+#include <avogadro/meshgenerator.h>
 
 #include <QObject>
 #include <QList>
@@ -100,6 +101,7 @@ template <> struct MetaData<Avogadro::Residue> { static const char* className() 
 template <> struct MetaData<Avogadro::Tool> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::ToolGroup> { static const char* className() { return "QObject";} };
 template <> struct MetaData<Avogadro::MoleculeFile> { static const char* className() { return "QObject";} };
+template <> struct MetaData<Avogadro::MeshGenerator> { static const char* className() { return "QThread";} };
 
 
 template <> struct MetaData<QObject> { static const char* className() { return "QObject";} };
@@ -414,6 +416,7 @@ void export_sip()
   def("toPyQt", &toPyQt<Avogadro::Tool>);
   def("toPyQt", &toPyQt<Avogadro::ToolGroup>);
   def("toPyQt", &toPyQt<Avogadro::MoleculeFile>);
+  def("toPyQt", &toPyQt<Avogadro::MeshGenerator>);
   
   // QClass* <--> PyQt objects 
   QClass_converters<QObject>();
