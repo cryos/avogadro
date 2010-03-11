@@ -241,7 +241,7 @@ namespace Avogadro {
        * Signals that something has been changed and the engine needs to render
        * after these changes were made.
        */
-      virtual void changed();
+      void changed();
 
   protected:
     /**

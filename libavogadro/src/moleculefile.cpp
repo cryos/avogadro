@@ -157,7 +157,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-    ifs.open(QFile::encodeName(m_fileName)); // This handles utf8 file names etc
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     ifs.seekg(d->streampos.at(i));
  
     if (!ifs) // Should not happen, already checked file could be opened
@@ -203,7 +203,7 @@ namespace Avogadro {
 
     // Now attempt to open the file.new for writing
     ofstream ofs;
-    QString newFilename(QFile::encodeName(m_fileName) + QLatin1String(".new"));
+    QString newFilename(m_fileName.toLocal8Bit() + QLatin1String(".new"));
     ofs.open(newFilename.toAscii().data()); // This handles utf8 file names etc
     if (!ofs) {
       m_error.append(tr("Could not open file '%1' for writing.").arg(m_fileName));
@@ -211,7 +211,7 @@ namespace Avogadro {
     }
     // Copy molecules 0 to i-1 to .new file
     ifstream ifs;
-    ifs.open(QFile::encodeName(m_fileName)); // This handles utf8 file names etc
+    ifs.open(m_fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) {
       m_error.append(tr("Could not open file '%1' for reading.").arg(m_fileName));
       return false;
@@ -384,7 +384,7 @@ namespace Avogadro {
 
     // Now attempt to read the molecule in
     ifstream ifs;
-    ifs.open(QFile::encodeName(fileName)); // This handles utf8 file names etc
+    ifs.open(fileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ifs) // Should not happen, already checked file could be opened
       return 0;
     OpenBabel::OBMol *obMol = new OpenBabel::OBMol;
@@ -454,12 +454,17 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-    ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) {// Should not happen, already checked file could be opened
       qDebug() << "ofs is bad";
       return false;
     }
     OpenBabel::OBMol obmol = molecule->OBMol();
+      
+    OpenBabel::OBChainsParser chainparser;
+    obmol.UnsetFlag(OB_CHAINS_MOL);
+    chainparser.PerceiveChains(obmol);
+ 
     if (conv.Write(&obmol, &ofs)) {
       ofs.close();
       if (replaceExistingFile) {
@@ -542,7 +547,7 @@ namespace Avogadro {
 
     // Now attempt to write the molecule in
     ofstream ofs;
-    ofs.open(QFile::encodeName(newFileName)); // This handles utf8 file names etc
+    ofs.open(newFileName.toLocal8Bit()); // This handles utf8 file names etc
     if (!ofs) // Should not happen, already checked file could be opened
       return false;
     
@@ -681,7 +686,7 @@ namespace Avogadro {
 
         // Now attempt to read the molecule in
         ifstream ifs;
-        ifs.open(QFile::encodeName(m_moleculeFile->m_fileName)); // This handles utf8 file names etc
+        ifs.open(m_moleculeFile->m_fileName.toLocal8Bit()); // This handles utf8 file names etc
         if (!ifs) // Should not happen, already checked file could be opened
           return;
       
@@ -762,7 +767,7 @@ namespace Avogadro {
       moleculeFile->setConformerFile(false);
       // Now attempt to read the molecule in
       moleculeFile->d->specialCaseOBMol = new OpenBabel::OBMol;
-      if (conv.ReadFile(moleculeFile->d->specialCaseOBMol, QFile::encodeName(fileName).data())) {
+      if (conv.ReadFile(moleculeFile->d->specialCaseOBMol, fileName.toLocal8Bit().data())) {
         moleculeFile->titlesRef().push_back(tr("Molecule %1").arg(1));
       } else {
         delete moleculeFile->d->specialCaseOBMol;

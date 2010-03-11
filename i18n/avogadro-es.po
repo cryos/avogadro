@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-01-19 13:35-0500\n"
-"PO-Revision-Date: 2009-11-18 01:27+0000\n"
-"Last-Translator: Eduardo <Unknown>\n"
+"POT-Creation-Date: 2009-11-06 10:48-0500\n"
+"PO-Revision-Date: 2010-02-12 13:16+0000\n"
+"Last-Translator: elias425945 <elias425945@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-19 18:28+0000\n"
+"X-Launchpad-Export-Date: 2010-03-10 13:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
 msgid "OK"
-msgstr "Acepto"
+msgstr "Aceptar"
 
-#: src/aboutdialog.cpp:62 src/aboutdialog.cpp:65
+#: src/aboutdialog.cpp:63 src/aboutdialog.cpp:66
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
@@ -30,26 +30,28 @@ msgstr "(revisión Git: %1)"
 #: src/aboutdialog.cpp:68
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
-"information check the <a href=\"http://avogadro.openmolecules.net/"
-"\">Avogadro homepage</a>.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4<br/><br/>Qt Version: %5<br/><br/>For more "
+"information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>T"
+"he program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
+"PURPOSE.<br/>"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versión de la aplicación: %2<br/><br/>Versión de la "
-"biblioteca: %3<br/><br/>Versión de Open Babel: %4<br/><br/>Versión de Qt: %"
-"5<br/><br/>Para más información, visita la <a href=\"http://avogadro."
-"openmolecules.net/\">Página de Avogadro </a>.<br/><br/>El programa es "
-"distribuido TAL CUAL SIN GARANTÍA DE NINGUNA CLASE, INCLUYENDO LAS GARANTÍAS "
-"DE DISEÑO, MERCANTILES Y DE CONVENIENCIA PARA UN PROPÓSITO PARTICULAR.<br/>"
+"biblioteca: %3<br/><br/>Versión de Open Babel: %4<br/><br/>Versión de Qt: "
+"%5<br/><br/>Para más información, visita la <a "
+"href=\"http://avogadro.openmolecules.net/\">Página de Avogadro "
+"</a>.<br/><br/>El programa es distribuido TAL CUAL SIN GARANTÍA DE NINGUNA "
+"CLASE, INCLUYENDO LAS GARANTÍAS DE DISEÑO, MERCANTILES Y DE CONVENIENCIA "
+"PARA UN PROPÓSITO PARTICULAR.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: src/aboutdialog.cpp:77 src/mainwindow.cpp:838 src/mainwindow.cpp:888
-#: src/mainwindow.cpp:910 src/mainwindow.cpp:1072 src/mainwindow.cpp:1094
-#: src/mainwindow.cpp:1248 src/mainwindow.cpp:1476 src/mainwindow.cpp:2673
-#: src/mainwindow.cpp:3166:69
+#: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
+#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
+#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
+#: src/mainwindow.cpp:3185 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -78,13 +80,13 @@ msgstr "Borrar átomos"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3184 src/mainwindow.cpp:3201:381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Preferencias"
 
-#: src/importdialog.cpp:175 src/mainwindow.cpp:733
+#: src/importdialog.cpp:175 src/mainwindow.cpp:739
 msgid "Open File"
-msgstr "Abrir Archivo"
+msgstr "Abrir archivo"
 
 #: src/main.cpp:204
 msgctxt "main.cpp"
@@ -124,7 +126,7 @@ msgstr "Renderizado directo."
 #: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr "Antialias"
+msgstr "Antialias."
 
 #: src/main.cpp:249
 #, qt-format
@@ -158,138 +160,138 @@ msgstr ""
 "  -h, --help\t\tMuestra las opciones de ayuda (éstas)\n"
 "  -v, --version\t\tMuestra información sobre la versión\n"
 
-#: src/mainwindow.cpp:301
+#: src/mainwindow.cpp:303
 msgid "Messages"
 msgstr "Mensajes"
 
-#: src/mainwindow.cpp:372
+#: src/mainwindow.cpp:374
 msgid "Window"
 msgstr "Ventana"
 
-#: src/mainwindow.cpp:375
+#: src/mainwindow.cpp:377
 msgid "&Minimize"
 msgstr "&Minimizar"
 
-#: src/mainwindow.cpp:376
+#: src/mainwindow.cpp:378
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: src/mainwindow.cpp:381
+#: src/mainwindow.cpp:383
 msgid "&Zoom"
 msgstr "&Zoom"
 
-#: src/mainwindow.cpp:388 src/mainwindow.cpp:1611
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
 msgid "Bring All to Front"
 msgstr "Traer todo al frente"
 
-#: src/mainwindow.cpp:664
+#: src/mainwindow.cpp:670
 msgid "&Tool Settings..."
 msgstr "Preferencias de &herramientas..."
 
-#: src/mainwindow.cpp:667
+#: src/mainwindow.cpp:673
 msgctxt "Tool Settings shortcut"
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: src/mainwindow.cpp:672
+#: src/mainwindow.cpp:678
 msgid "&Display Settings..."
 msgstr "Preferencias de &pantalla..."
 
-#: src/mainwindow.cpp:675
+#: src/mainwindow.cpp:681
 msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:713 src/mainwindow.cpp:1187
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
 msgid "Common molecule formats"
 msgstr "Formatos comunes de geometría molecular"
 
-#: src/mainwindow.cpp:718 src/mainwindow.cpp:1184 src/mainwindow.cpp:1416
-#: src/mainwindow.cpp:1495
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
+#: src/mainwindow.cpp:1506
 msgid "All files"
-msgstr "Todos los Archivos"
+msgstr "Todos los archivos"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1181 src/mainwindow.cpp:1193
+#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
 msgid "CML"
 msgstr "CML"
 
-#: src/mainwindow.cpp:720
+#: src/mainwindow.cpp:726
 msgid "Computational Chemistry Output"
 msgstr "Salida de química computacional"
 
-#: src/mainwindow.cpp:721
+#: src/mainwindow.cpp:727
 msgid "Crystallographic Interchange CIF"
 msgstr "Intercambio Cristalográfico CIF"
 
-#: src/mainwindow.cpp:722
+#: src/mainwindow.cpp:728
 msgid "GAMESS-US Output"
-msgstr "Salida GAMESS-US"
+msgstr "Salida de GAMESS-US"
 
-#: src/mainwindow.cpp:723
+#: src/mainwindow.cpp:729
 msgid "Gaussian 98/03 Output"
 msgstr "Salida de Gaussian 98/03"
 
-#: src/mainwindow.cpp:724
+#: src/mainwindow.cpp:730
 msgid "Gaussian Formatted Checkpoint"
 msgstr "Fichero Checkpoint de Gaussian formateado"
 
-#: src/mainwindow.cpp:725
+#: src/mainwindow.cpp:731
 msgid "HyperChem"
 msgstr "HyperChem"
 
-#: src/mainwindow.cpp:726
+#: src/mainwindow.cpp:732
 msgid "MDL Mol"
 msgstr "Mol de MDL"
 
-#: src/mainwindow.cpp:727
+#: src/mainwindow.cpp:733
 msgid "NWChem Output"
 msgstr "Salida de NWChem"
 
-#: src/mainwindow.cpp:728 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:729 src/mainwindow.cpp:1200
+#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
 msgid "Sybyl Mol2"
 msgstr "Mol2 de Sybyl"
 
-#: src/mainwindow.cpp:730 src/mainwindow.cpp:1201
+#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/mainwindow.cpp:794 src/mainwindow.cpp:799 src/savedialog.cpp:83
+#: src/mainwindow.cpp:805 src/mainwindow.cpp:810 src/savedialog.cpp:83
 msgid "untitled"
-msgstr "Sin título"
+msgstr "sin título"
 
-#: src/mainwindow.cpp:815
+#: src/mainwindow.cpp:826
 #, qt-format
 msgctxt "%1 is a filename"
 msgid "Loading %1..."
 msgstr "Cargando %1..."
 
-#: src/mainwindow.cpp:819
+#: src/mainwindow.cpp:830
 #, qt-format
 msgid "Loading %1..."
 msgstr "Cargando %1..."
 
-#: src/mainwindow.cpp:839 src/mainwindow.cpp:1073
+#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "Falló la lectura del archivo de moléculas, archivo %1"
 
-#: src/mainwindow.cpp:862
+#: src/mainwindow.cpp:873
 msgid "Reading multi-molecule file. This may take a while..."
 msgstr "Leyendo archivo multimolecular. Puede tardar un rato..."
 
-#: src/mainwindow.cpp:889
+#: src/mainwindow.cpp:900
 msgid "This file does not contain 3D coordinates."
 msgstr "Este archivo no contiene coordenadas en 3D."
 
-#: src/mainwindow.cpp:893
+#: src/mainwindow.cpp:904
 msgid "Do you want Avogadro to build a rough geometry?"
 msgstr "¿Quiere que Avogadro construya una geometría aproximada?"
 
-#: src/mainwindow.cpp:911
+#: src/mainwindow.cpp:922
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
@@ -297,198 +299,198 @@ msgstr ""
 "Este archivo no contiene coordenadas en 3D.\n"
 "Puede que no pueda verlo o editarlo adecuadamente."
 
-#: src/mainwindow.cpp:963
+#: src/mainwindow.cpp:974
 msgid "Select Molecule to View"
 msgstr "Seleccione una molécula para ver"
 
-#: src/mainwindow.cpp:988
+#: src/mainwindow.cpp:999
 msgid "Molecule Title"
 msgstr "Título de molécula"
 
-#: src/mainwindow.cpp:1065
+#: src/mainwindow.cpp:1076
 msgid "Atoms: "
 msgstr "Átomos: "
 
-#: src/mainwindow.cpp:1066
+#: src/mainwindow.cpp:1077
 msgid " Bonds: "
 msgstr " Enlaces: "
 
-#: src/mainwindow.cpp:1082
+#: src/mainwindow.cpp:1093
 msgid "File Loaded..."
-msgstr "Archivo Cargado..."
+msgstr "Archivo cargado..."
 
-#: src/mainwindow.cpp:1095
+#: src/mainwindow.cpp:1106
 msgid "Do you want to save the changes you made in the document?"
 msgstr "¿Quiere guardar los cambios realizados en el documento?"
 
-#: src/mainwindow.cpp:1104
+#: src/mainwindow.cpp:1115
 msgid "Your changes will be lost if you don't save them."
 msgstr "Perderá los cambios si no los guarda."
 
-#: src/mainwindow.cpp:1108
+#: src/mainwindow.cpp:1119
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1109
+#: src/mainwindow.cpp:1120
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1111
+#: src/mainwindow.cpp:1122
 msgid "Save..."
 msgstr "Guardar..."
 
-#: src/mainwindow.cpp:1111 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Guardar"
 
-#: src/mainwindow.cpp:1194
+#: src/mainwindow.cpp:1205
 msgid "GAMESS Input"
 msgstr "Entrada para GAMESS"
 
-#: src/mainwindow.cpp:1195
+#: src/mainwindow.cpp:1206
 msgid "Gaussian Cartesian Input"
 msgstr "Entrada para Gaussian en cartesianas"
 
-#: src/mainwindow.cpp:1196
+#: src/mainwindow.cpp:1207
 msgid "Gaussian Z-matrix Input"
 msgstr "Entrada para Gaussian en matriz-Z"
 
-#: src/mainwindow.cpp:1197
+#: src/mainwindow.cpp:1208
 msgid "MDL SDfile"
-msgstr "Archivo MDfile de MDL"
+msgstr "Archivo SD de MDL"
 
-#: src/mainwindow.cpp:1199
+#: src/mainwindow.cpp:1210
 msgid "NWChem Input"
 msgstr "Entrada para NWChem"
 
-#: src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:1215
 msgid "Save Molecule As"
 msgstr "Guardar molécula como"
 
-#: src/mainwindow.cpp:1406 src/mainwindow.cpp:1418
+#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1413
+#: src/mainwindow.cpp:1424
 msgid "Common image formats"
 msgstr "Formatos comunes de imagen"
 
-#: src/mainwindow.cpp:1417
+#: src/mainwindow.cpp:1428
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1419
+#: src/mainwindow.cpp:1430
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1425 src/mainwindow.cpp:1504
+#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
 msgid "Export Bitmap Graphics"
-msgstr "Exportar a Imagen de mapa de bits"
+msgstr "Exportar a imagen de mapa de bits"
 
-#: src/mainwindow.cpp:1477
+#: src/mainwindow.cpp:1488
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "No se puede guardar el archivo %1."
 
-#: src/mainwindow.cpp:1485 src/mainwindow.cpp:1496
+#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1492
+#: src/mainwindow.cpp:1503
 msgid "Common vector image formats"
-msgstr "Formatos comunes de imágen vectorial"
+msgstr "Formatos comunes de imagen vectorial"
 
-#: src/mainwindow.cpp:1497
+#: src/mainwindow.cpp:1508
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1498
+#: src/mainwindow.cpp:1509
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1643
+#: src/mainwindow.cpp:1654
 #, qt-format
 msgid "Untitled %1"
 msgstr "Sin título %1"
 
-#: src/mainwindow.cpp:1748
+#: src/mainwindow.cpp:1759
 msgid "Unable to paste molecule."
 msgstr "No se puede pegar la molécula"
 
-#: src/mainwindow.cpp:1777
+#: src/mainwindow.cpp:1788
 msgid "Paste failed (format unavailable)."
-msgstr "Falló al Pegar (formato no disponible)."
+msgstr "Falló al pegar (formato no disponible)."
 
-#: src/mainwindow.cpp:2060
+#: src/mainwindow.cpp:2071
 msgid "Copy failed (mdl unavailable)."
 msgstr "Falló al copiar (mdl no disponible)."
 
-#: src/mainwindow.cpp:2186 src/mainwindow.cpp:2219 src/mainwindow.cpp:2286
-#: src/mainwindow.cpp:2816
+#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
+#: src/mainwindow.cpp:2827
 #, qt-format
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:2246
+#: src/mainwindow.cpp:2257
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Ver %1"
 
-#: src/mainwindow.cpp:2255
+#: src/mainwindow.cpp:2266
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: vista separada"
 
-#: src/mainwindow.cpp:2421
+#: src/mainwindow.cpp:2432
 msgid "Normal Size"
-msgstr "Tamaño Normal"
+msgstr "Tamaño normal"
 
-#: src/mainwindow.cpp:2434
+#: src/mainwindow.cpp:2445
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/mainwindow.cpp:2532
+#: src/mainwindow.cpp:2543
 msgid "Ctrl+Backspace"
-msgstr "Ctrl+Backspace"
+msgstr "Ctrl+retroceso"
 
-#: src/mainwindow.cpp:2666
+#: src/mainwindow.cpp:2677
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2672
+#: src/mainwindow.cpp:2683
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3120
+#: src/mainwindow.cpp:3139
 msgid "Add"
 msgstr "Añadir"
 
-#: src/mainwindow.cpp:3125
+#: src/mainwindow.cpp:3144
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/mainwindow.cpp:3130
+#: src/mainwindow.cpp:3149
 msgid "Remove"
 msgstr "Borrar"
 
-#: src/mainwindow.cpp:3158
+#: src/mainwindow.cpp:3177
 msgid "No tools or engines loaded."
 msgstr "No se cargaron herramientas o motores."
 
-#: src/mainwindow.cpp:3160
+#: src/mainwindow.cpp:3179
 msgid "No engines loaded."
 msgstr "No se cargaron motores."
 
-#: src/mainwindow.cpp:3162
+#: src/mainwindow.cpp:3181
 msgid "No tools loaded."
 msgstr "No se cargaron herramientas."
 
-#: src/mainwindow.cpp:3163
+#: src/mainwindow.cpp:3182
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -496,17 +498,17 @@ msgstr ""
 " Es poco probable que la aplicación funcione correctamente. Por favor, "
 "corrija este error."
 
-#: src/mainwindow.cpp:3207
+#: src/mainwindow.cpp:3226
 msgid "Objects"
 msgstr "Objetos"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3213:321
+#: src/mainwindow.cpp:3232 :321
 msgid "Colors"
 msgstr "Colores"
 
-#: src/mainwindow.cpp:3246
+#: src/mainwindow.cpp:3265
 msgid " copy"
 msgstr " copiar"
 
@@ -579,7 +581,7 @@ msgstr "sólo las etiquetas pueden tener sub elementos"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Elemento"
 
@@ -594,7 +596,7 @@ msgstr "Baja"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Media"
@@ -611,15 +613,15 @@ msgstr "Sin definir"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
-msgstr "Ninguna"
+msgstr "Ninguno"
 
 #: src/settingsdialog.cpp:127
 msgctxt "Level of fog in the scene"
 msgid "Some"
-msgstr "Alguna"
+msgstr "Algunas"
 
 #: src/settingsdialog.cpp:132
 msgctxt "Level of fog in the scene"
@@ -629,7 +631,7 @@ msgstr "Media"
 #: src/settingsdialog.cpp:137
 msgctxt "Level of fog in the scene"
 msgid "Lots"
-msgstr "Mucha"
+msgstr ""
 
 #: src/settingsdialog.cpp:140
 msgctxt "Level of fog in the scene"
@@ -647,7 +649,7 @@ msgstr "Venció el tiempo de red u otro error."
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
 msgid "Updated Version of Avogadro Available"
-msgstr "Versión actualizada de Avogadro disponible"
+msgstr "Hay disponible una versión actualizada de Avogadro"
 
 #. i18n: file: src/addenginedialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, AddEngineDialog)
@@ -684,31 +686,31 @@ msgstr "Color por:"
 #. i18n: file: src/engineprimitiveswidget.ui:44
 #. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
-msgstr "Añadir Primitivas Seleccionadas"
+msgstr "Añadir las primitivas seleccionadas"
 
 #. i18n: file: src/engineprimitiveswidget.ui:55
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
-msgstr "Quitar Primitivas Seleccionadas"
+msgstr "Quitar las primitivas seleccionadas"
 
 #. i18n: file: src/engineprimitiveswidget.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr "Añadir Todas las Primitivas"
+msgstr "Añadir todas las primitivas"
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr "Mostrar Solo las Primitivas Seleccionadas"
+msgstr "Mostrar sólo las primitivas seleccionadas"
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr "Asignar a la Selección"
+msgstr "Asignar a la selección"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
@@ -743,12 +745,12 @@ msgstr "Ver enlaces"
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr "Ver órdenes de enlace"
+msgstr "Detectar orden de enlace"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr "Las coordinadas están en Ångstroms"
+msgstr "Las coordenadas están en Ångstroms"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
@@ -763,7 +765,7 @@ msgstr "&Archivo"
 #. i18n: file: src/mainwindow.ui:50
 #. i18n: ectx: property (title), widget (QMenu, menuOpenRecent)
 msgid "Open &Recent"
-msgstr "Abrir &Reciente"
+msgstr "Abrir &reciente"
 
 #. i18n: file: src/mainwindow.ui:55
 #. i18n: ectx: property (title), widget (QMenu, menuExport)
@@ -783,7 +785,7 @@ msgstr "Pre&ferencias"
 #. i18n: file: src/mainwindow.ui:85
 #. i18n: ectx: property (title), widget (QMenu, menuToolbars)
 msgid "Toolbars"
-msgstr "Barras de Herramientas"
+msgstr "Barras de herramientas"
 
 #. i18n: file: src/mainwindow.ui:94
 #. i18n: ectx: property (title), widget (QMenu, menuBuild)
@@ -798,7 +800,7 @@ msgstr "&Ver"
 #. i18n: file: src/mainwindow.ui:121
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
 msgid "&Edit"
-msgstr "&Editar..."
+msgstr "&Editar"
 
 #. i18n: file: src/mainwindow.ui:134
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
@@ -813,7 +815,7 @@ msgstr "&Seleccionar"
 #. i18n: file: src/mainwindow.ui:156
 #. i18n: ectx: property (windowTitle), widget (QToolBar, fileToolBar)
 msgid "Main Toolbar"
-msgstr "Barra de Herramientas Principal"
+msgstr "Barra de herramientas principal"
 
 #. i18n: file: src/mainwindow.ui:193
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, projectDock)
@@ -868,7 +870,7 @@ msgstr "Reciente"
 #. i18n: file: src/mainwindow.ui:302
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Clear Recent"
-msgstr "&Limpiar Recientes"
+msgstr "&Limpiar recientes"
 
 #. i18n: file: src/mainwindow.ui:311
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -914,7 +916,7 @@ msgstr "Guardar &como..."
 #. i18n: file: src/mainwindow.ui:377
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+S"
-msgstr "Ctrl+Shift+S"
+msgstr "Ctrl+Mays.+S"
 
 #. i18n: file: src/mainwindow.ui:386
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -929,7 +931,7 @@ msgstr "&Gráficos..."
 #. i18n: file: src/mainwindow.ui:404
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Full Screen Mode"
-msgstr "&Modo de Pantalla Completa"
+msgstr "&Modo de pantalla completa"
 
 #. i18n: file: src/mainwindow.ui:407
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
@@ -964,12 +966,12 @@ msgstr "&Rehacer"
 #. i18n: file: src/mainwindow.ui:448
 #. i18n: ectx: property (shortcut), widget (QToolBar, toolBar)
 msgid "Ctrl+Shift+Z"
-msgstr "Ctrl+Shift+Z"
+msgstr "Ctrl+Mays.+Z"
 
 #. i18n: file: src/mainwindow.ui:457
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "New View"
-msgstr "Nueva Vista"
+msgstr "Nueva vista"
 
 #. i18n: file: src/mainwindow.ui:469
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1054,12 +1056,12 @@ msgstr "Tutoriales"
 #. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr "Duplicar Vista"
+msgstr "Duplicar la vista"
 
 #. i18n: file: src/mainwindow.ui:579
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr "Mostrar Ejes"
+msgstr "Mostrar los ejes"
 
 #. i18n: file: src/mainwindow.ui:587
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1084,7 +1086,7 @@ msgstr "Reportar un error"
 #. i18n: file: src/mainwindow.ui:610
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "FAQ"
-msgstr "Preguntas Frecuentes"
+msgstr "Preguntas frecuentes"
 
 #. i18n: file: src/mainwindow.ui:615
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1104,7 +1106,7 @@ msgstr "Editor del árbol del proyecto..."
 #. i18n: file: src/mainwindow.ui:642
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
-msgstr "Separar vista"
+msgstr "Separar la vista"
 
 #. i18n: file: src/mainwindow.ui:651
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1271,58 +1273,39 @@ msgstr "Asignar calidad de renderizado global."
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
 msgid "Fog:"
-msgstr "Niebla."
+msgstr "Niebla:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo Fredz,"
-"Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,"
-"Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,"
-"cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
-"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,"
-"Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo "
-"A.,cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,Avogadro Team,"
-"DiegoJ,Edgardo Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
+",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
+"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
 "Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio "
-"Castillo A.,cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,"
-"DiegoJ,Enterhase,FJModrego,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
-"Hutchison,Gothmog,Pablo Catarecha,Rogelio Castillo A.,Victor Herrero,"
-"cocolocotero, ,Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,"
-"Edgardo Fredz,Enterhase,FJModrego,Feder Sáiz,Federico Vera,Gabriel Ruiz,"
-"Geoff Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,"
-"Rogelio Castillo A.,Victor Herrero,cocolocotero,guillermo.abruza, ,Launchpad "
-"Contributions:,Alfonso E. Romero,Eduardo,Javier García Díaz,guillermo.abruza"
+"Castillo A.,cocoloco, ,Launchpad Contributions:,Andres Montejo "
+"Martinez,DiegoJ,Edgardo Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel "
+"Ruiz,Geoff Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo "
+"Catarecha,Rogelio Castillo A.,cocoloco, ,Launchpad Contributions:,Andres "
+"Montejo Martinez,Avogadro Team,DiegoJ,Edgardo Fredz,Enterhase,Feder "
+"Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,Javier García "
+"Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,cocoloco, ,Launchpad "
+"Contributions:,Andres Montejo Martinez,DiegoJ,Enterhase,FJModrego,Feder "
+"Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,Pablo "
+"Catarecha,Rogelio Castillo A.,Victor Herrero,cocolocotero, ,Launchpad "
+"Contributions:,Alfonso E. Romero,Angel Herráez,Eduardo,Javier García "
+"Díaz,guillermo.abruza"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,"
-"patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
-"com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,"
-"diegojromerolopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,"
-"federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,"
-"jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,avogadro-devel@lists."
-"sourceforge.net,diegojromerolopez@gmail.com,medeshago@gmail.com,patricio."
-"oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,"
-"pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,"
-"diegojromerolopez@gmail.com,patricio.oshee@gmail.com,,federsaiz@googlemail."
-"com,,debianmaster@gmail.com,,,pczoido@gmail.com,,victorhera@gmail.com,"
-"jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,"
-"medeshago@gmail.com,patricio.oshee@gmail.com,,federsaiz@googlemail.com,,"
-"debianmaster@gmail.com,,,,,pczoido@gmail.com,,victorhera@gmail.com,"
-"jalvarezrom@gmail.com,,,,alfonsoeromero@gmail.com,,,"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Versión de la Aplicación: %2<br/><br/>Versión de la "
-#~ "biblioteca: %3<br/><br/>Para mas información revise la <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">pagina de Avogadro</a>.<br/><br/>El "
-#~ "programa es distribuido COMO ESTÁ sin GARANTÍA DE NINGÚN TIPO, INCLUYENDO "
-#~ "LA GARANTÍA DE DISEÑO, COMERCIALIZACIÓN Y USO PARA UN USO EN PARTICULAR."
-#~ "<br/>"
+",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,pat"
+"ricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pc"
+"zoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojromero"
+"lopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,federsaiz@google"
+"mail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com"
+",,,Nathan_chud@hotmail.com,avogadro-"
+"devel@lists.sourceforge.net,diegojromerolopez@gmail.com,medeshago@gmail.com,p"
+"atricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,"
+"pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojrome"
+"rolopez@gmail.com,patricio.oshee@gmail.com,,federsaiz@googlemail.com,,debianm"
+"aster@gmail.com,,,pczoido@gmail.com,,victorhera@gmail.com,jalvarezrom@gmail.c"
+"om,,,alfonsoeromero@gmail.com,aherraez@users.sourceforge.net,,,"

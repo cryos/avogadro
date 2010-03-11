@@ -717,7 +717,7 @@ namespace Avogadro
           " *.mol2 *.nwo *.out *.log *.pqr)"
         << tr("All files") + " (* *.*)"
         << tr("CML") + " (*.cml)"
-        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output)"
+        << tr("Computational Chemistry Output") + " (*.out *.log *.dat *.output *.gamout *.g98 *.g03 *.nwo)"
         << tr("Crystallographic Interchange CIF") + " (*.cif)"
         << tr("GAMESS-US Output") + " (*.gamout)"
         << tr("Gaussian 98/03 Output") + " (*.g98 *.g03)"
@@ -757,7 +757,12 @@ namespace Avogadro
       }
 
       // if we have nothing open or modified
-      if ( /*isDefaultFileName(d->fileName) &&*/ !isWindowModified() ) {
+      bool loadInNewWindow = isWindowModified();
+#ifdef Q_WS_MAC
+      loadInNewWindow = true; // always load into a new window on Mac PR#2945916
+#endif
+
+      if ( !loadInNewWindow ) {
         loadFile( fileName );
       } else {
         // ONLY if we have loaded settings then we can write them
@@ -773,7 +778,7 @@ namespace Avogadro
         other->move( x() + 25, y() + 25 );
 #endif
         other->show();
-      }
+      } // if (loadInNewWindow)
     }
   }
 

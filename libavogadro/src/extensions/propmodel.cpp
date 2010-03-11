@@ -206,7 +206,11 @@ namespace Avogadro {
       case 2: // order
         return bond->GetBondOrder();
       case 3: // rotatable
-        return bond->IsRotor();
+        if (bond->IsRotor()) {
+            return tr("Yes");
+        } else {
+            return tr("No");
+        }
       case 4: // length
         QString format("%L1");
         return format.arg(bond->GetLength(), 0, 'f', 4);

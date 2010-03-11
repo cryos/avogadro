@@ -769,6 +769,10 @@ namespace Avogadro {
 #endif
     qDebug() << "Searching for plugins in" << directory;
     foreach (const QString& fileName, dir.entryList(QDir::Files)) {
+#ifdef Q_WS_X11
+      if ((fileName.indexOf("libavogadro.so") != -1) || (fileName.indexOf("Avogadro.so") != -1))
+        continue;
+#endif
       // load the factory
       QPluginLoader loader(dir.absoluteFilePath(fileName));
       QObject *instance = loader.instance();
