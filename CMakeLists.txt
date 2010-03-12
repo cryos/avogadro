@@ -375,10 +375,14 @@ configure_file(
   "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
 )
 
-install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
-  DESTINATION "${QT_MKSPECS_DIR}/features"
-)
+if(QT_MKSPECS_DIR)
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+    DESTINATION "${QT_MKSPECS_DIR}/features"
+  )
+else(QT_MKSPECS_DIR)
+  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will not be installed.")
+endif(QT_MKSPECS_DIR)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
