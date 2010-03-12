@@ -33,6 +33,9 @@
 #include "glpainter_p.h"
 #include "glhit.h"
 
+#include <QtGui/QPen>
+#include <QtGui/QPainter>
+
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
   #include "pythonextension_p.h"
@@ -75,8 +78,29 @@
 using namespace OpenBabel;
 using namespace Eigen;
 
-namespace Avogadro {
+QT_BEGIN_NAMESPACE
+  static void qt_gl_draw_text(QPainter *p, int x, int y, const QString &str, const QFont &font)
+  {
+    qDebug() << "Overloaded qt_gl_draw_text called";
+    GLfloat color[4];
+    glGetFloatv(GL_CURRENT_COLOR, &color[0]);
 
+    QColor col;
+    col.setRgbF(color[0], color[1], color[2],color[3]);
+    QPen old_pen = p->pen();
+    QFont old_font = p->font();
+
+    p->setPen(col);
+    p->setFont(font);
+    p->drawText(x, y, str);
+
+    p->setPen(old_pen);
+    p->setFont(old_font);
+  }
+QT_END_NAMESPACE
+
+namespace Avogadro {
+	
   bool engineLessThan( const Engine* lhs, const Engine* rhs )
   {
     Engine::Layers lhsLayers = lhs->layers();
