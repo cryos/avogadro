@@ -511,7 +511,7 @@ namespace Avogadro {
     }
 
     // Pass 2: render the outline
-    glColor4f(0,0,0,1);
+    glColor4f((1-color[0])/2,(1-color[1])/2,(1-color[2])/2,1); // use opposite color, but make it darker
     glPushMatrix();
     for( i = 0; i < string.size(); ++i )
     {
