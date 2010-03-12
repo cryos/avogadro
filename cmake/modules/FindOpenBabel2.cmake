@@ -14,6 +14,19 @@ if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
   set(OPENBABEL2_FOUND TRUE)
 
 else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
+  if(EMBED_OPENBABEL)
+    # Building a super-package, rely on the embedded paths
+    set(OPENBABEL2_VERSION_MET TRUE)
+    set(OPENBABEL2_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../openbabel/include")
+    # This is a kludge -- need to ask Marcus how to handle it better
+    find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
+      PATHS
+      ${_obLinkDir}
+      ${GNUWIN32_DIR}/lib
+      $ENV{OPENBABEL2_LIBRARIES}
+    )
+  else(EMBED_OPENBABEL)
+  # Typical case -- find an installed OpenBabel
   if(NOT WIN32)
 
     # Use the newer PkgConfig stuff
@@ -31,13 +44,6 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
   endif(NOT WIN32)
 
   if(OPENBABEL2_VERSION_MET)
-
-   # find_path(OPENBABEL2_INCLUDE_DIR openbabel/obconversion.h
-   #   PATHS
-   #   ${_obIncDir}
-   #   ${GNUWIN32_DIR}/include
-   #   $ENV{OPENBABEL2_INCLUDE_DIR}
-   # )
 
     if(WIN32)
       if(NOT OPENBABEL2_INCLUDE_DIR)
@@ -60,6 +66,7 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
       $ENV{OPENBABEL2_LIBRARIES}
     )
   endif(OPENBABEL2_VERSION_MET)
+  endif(EMBED_OPENBABEL)
 
   if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
     set(OPENBABEL2_FOUND TRUE)
