@@ -23,7 +23,7 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Library translations
 if(NOT WIN32)
-  file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro*.po")
+  file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
   QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!

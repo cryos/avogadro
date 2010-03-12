@@ -20,6 +20,12 @@
    <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="topMargin">
+    <number>5</number>
+   </property>
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
    <item row="3" column="2">
     <spacer name="horizontalSpacer">
      <property name="orientation">

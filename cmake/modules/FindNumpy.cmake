@@ -13,23 +13,24 @@ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c
     "import numpy; print numpy.get_include()"
     OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
 
-if (NUMPY_INCLUDE_DIR MATCHES "Traceback")
-# Did not successfully include numpy
-  set(NUMPY_FOUND FALSE)
-else (NUMPY_INCLUDE_DIR MATCHES "Traceback")
-# successful
+
+if (NUMPY_INCLUDE_DIR)
+  # successful
   set (NUMPY_FOUND TRUE)
   set (NUMPY_INCLUDE_DIR ${NUMPY_INCLUDE_DIR} CACHE STRING "Numpy include path")
-endif (NUMPY_INCLUDE_DIR MATCHES "Traceback")
+else (NUMPY_INCLUDE_DIR)
+  # Did not successfully include numpy
+  set(NUMPY_FOUND FALSE)
+endif (NUMPY_INCLUDE_DIR)
 
-if (NUMPY_FOUND)
-  if (NOT NUMPY_FIND_QUIETLY)
+if (${NUMPY_FOUND})
+  if (NOT ${NUMPY_FIND_QUIETLY})
     message (STATUS "Numpy headers found")
-  endif (NOT NUMPY_FIND_QUIETLY)
-else (NUMPY_FOUND)
-  if (NUMPY_FIND_REQUIRED)
+  endif (NOT ${NUMPY_FIND_QUIETLY})
+else (${NUMPY_FOUND})
+  if (${NUMPY_FIND_REQUIRED})
     message (FATAL_ERROR "Numpy headers missing")
-  endif (NUMPY_FIND_REQUIRED)
-endif (NUMPY_FOUND)
+  endif (${NUMPY_FIND_REQUIRED})
+endif (${NUMPY_FOUND})
 
 MARK_AS_ADVANCED (NUMPY_INCLUDE_DIR)

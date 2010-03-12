@@ -26,11 +26,12 @@
 #include <QtCore/QDir>
 #include <QtCore/QDebug>
 
-#include <QtGui/QPushButton>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QDoubleValidator>
 #include <QtGui/QFileDialog>
-#include <QtGui/QProgressDialog>
 #include <QtGui/QHeaderView>
+#include <QtGui/QProgressDialog>
+#include <QtGui/QPushButton>
 
 #include <avogadro/molecule.h>
 
@@ -43,15 +44,20 @@ using namespace std;
 namespace Avogadro {
 
   VibrationWidget::VibrationWidget( QWidget *parent, Qt::WindowFlags f ) : 
-    QWidget( parent, f )
+    QWidget( parent, f ), m_filter(0), m_currentRow(0), m_widget(0),
+    m_molecule(0), m_vibrations(0), m_indexMap(0)
   {    
     ui.setupUi(this);
 
     // Make sure the columns span the whole width of the table widget
     QHeaderView *horizontal = ui.vibrationTable->horizontalHeader();
     horizontal->setResizeMode(QHeaderView::Stretch);
+    ui.editFilter->setValidator(new QDoubleValidator(0, 1e6, 10, ui.editFilter));
 
     m_indexMap = new std::vector<int>;
+
+    connect(ui.editFilter, SIGNAL(textChanged(QString)),
+            this, SLOT(changeFilter(QString)));
 
     connect(ui.vibrationTable, SIGNAL(currentCellChanged(int, int, int, int)),
             this, SLOT(currentCellChanged(int, int, int, int)));
@@ -62,6 +68,8 @@ namespace Avogadro {
             this, SLOT(setScale(int)));
     connect(ui.displayForcesCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setDisplayForceVectors(bool)));
+    connect(ui.normalizeDispCheckBox, SIGNAL(toggled(bool)),
+            this, SLOT(setNormalize(bool)));
     connect(ui.animationSpeedCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(setAnimationSpeed(bool)));
     connect(ui.animationButton, SIGNAL(clicked(bool)),
@@ -76,6 +84,8 @@ namespace Avogadro {
   VibrationWidget::~VibrationWidget()
   {
     // The real work is done in VibrationExtension
+    emit selectedMode(-1); // stop animating
+    hide();
   }
 
   void VibrationWidget::setMolecule(Molecule *molecule)
@@ -104,6 +114,8 @@ namespace Avogadro {
     // OK, we have valid vibrations, so add them to the table
     vector<double> frequencies = m_vibrations->GetFrequencies();
     vector<double> intensities = m_vibrations->GetIntensities();
+    m_frequencies = frequencies;
+    m_intensities = intensities;
     #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
       vector<double> raman_activities = m_vibrations->GetRamanActivities();
       if (raman_activities.size() == 0) {
@@ -195,10 +207,18 @@ namespace Avogadro {
     //ui.exportButton->setEnabled(true);
   }
 
-  void VibrationWidget::accept()
-  {
-    emit selectedMode(-1); // stop animating
-    hide();
+  void VibrationWidget::changeFilter(QString str)
+  {      
+    m_filter = str.toDouble();
+    for (int i=0; i<m_frequencies.size(); i++) {
+      if (i<m_intensities.size()) {
+        if (m_intensities.at(i) > m_filter) {
+          ui.vibrationTable->showRow(i);          
+      }
+        else
+          ui.vibrationTable->hideRow(i);
+      }
+    }
   }
 
   void VibrationWidget::currentCellChanged(int row, int, int, int)
@@ -235,6 +255,14 @@ namespace Avogadro {
   void VibrationWidget::setScale(double scale)
   {
     emit scaleUpdated(scale);
+  }
+
+  void VibrationWidget::setNormalize(bool checked)
+  {
+    if (checked != ui.normalizeDispCheckBox->isChecked())
+      ui.normalizeDispCheckBox->setChecked(checked);
+
+    emit normalizeUpdated(checked);
   }
 
   void VibrationWidget::setDisplayForceVectors(bool checked)
@@ -290,7 +318,7 @@ namespace Avogadro {
     emit showSpectra();
   }
   
-  void VibrationWidget::exportVibrationData(bool)
+/*  void VibrationWidget::exportVibrationData(bool)
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
@@ -335,7 +363,7 @@ namespace Avogadro {
     file.close();
 
     return;
-  }
+  }*/
 
 } // namespace Avogadro
 
