@@ -361,6 +361,7 @@ if(UNIX)
   configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in"
     "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
+	@ONLY
   )
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
@@ -373,6 +374,7 @@ endif(UNIX)
 configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.prf.in"
   "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+  @ONLY
 )
 
 if(QT_MKSPECS_DIR)
