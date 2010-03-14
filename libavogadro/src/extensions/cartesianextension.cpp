@@ -342,7 +342,7 @@ namespace Avogadro
       vector3 pos (x, y, z);
       if (format == "ddd") {
         if (m_molecule) {
-          if (N < m_molecule->numAtoms())
+          if (N < static_cast<int>(m_molecule->numAtoms()))
             atom->SetAtomicNum(m_molecule->atom(N)->atomicNumber());
           else
             atom->SetAtomicNum(0);
@@ -354,7 +354,7 @@ namespace Avogadro
         #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
         atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
         #else
-        atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix * pos);
+        atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix() * pos);
         #endif
       }         
       else {
