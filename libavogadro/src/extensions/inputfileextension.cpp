@@ -152,8 +152,8 @@ namespace Avogadro
   void InputFileExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-     if (m_daltonInputDialog)
-       m_daltonInputDialog->setMolecule(m_molecule);
+    if (m_daltonInputDialog)
+      m_daltonInputDialog->setMolecule(m_molecule);
     if (m_gaussianInputDialog)
       m_gaussianInputDialog->setMolecule(m_molecule);
     if (m_molproInputDialog)
