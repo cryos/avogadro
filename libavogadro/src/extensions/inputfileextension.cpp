@@ -88,15 +88,15 @@ namespace Avogadro
   {
     m_widget = widget;
 
-//     if (action->data() == "Dalton") {
-//       if (!m_daltonInputDialog) {
-//         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
-//         m_daltonInputDialog->setMolecule(m_molecule);
-//         m_daltonInputDialog->show();
-//       }
-//       else
-//         m_daltonInputDialog->show();
-//     }
+     if (action->data() == "Dalton") {
+       if (!m_daltonInputDialog) {
+         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
+         m_daltonInputDialog->setMolecule(m_molecule);
+         m_daltonInputDialog->show();
+       }
+       else
+         m_daltonInputDialog->show();
+     }
     if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
