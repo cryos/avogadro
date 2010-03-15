@@ -250,6 +250,13 @@ namespace Avogadro {
 
     const SpaceGroup *sg = uc->GetSpaceGroup(); // the actual space group and transformations for this unit cell
 
+    if (!sg) {
+      QMessageBox::warning(qobject_cast<QWidget*>(parent()),
+                           tr("Avogadro"),
+                           tr("This unit cell does not have an associated spacegroup."));
+      return;
+    }
+
     // We operate on a copy of the Avogadro molecule
     // For each atom, we loop through:
     // * convert the coords back to inverse space
