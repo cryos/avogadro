@@ -27,5 +27,7 @@ else( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
 endif( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
 
 # Manpages
-file(GLOB man_1 *.1)
-install(FILES ${man_1} DESTINATION share/man/man1)
+if(UNIX)
+   file(GLOB man_1 *.1)
+   install(FILES ${man_1} DESTINATION share/man/man1)
+endif(UNIX)
