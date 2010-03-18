@@ -29,6 +29,7 @@
 
 #include <avogadro/elementtranslator.h>
 #include <avogadro/camera.h>
+#include <avogadro/glwidget.h>
 #include <avogadro/painter.h>
 #include <avogadro/painterdevice.h>
 #include <avogadro/atom.h>
@@ -72,7 +73,7 @@ Bond *dummyBond;*/
 
  
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-                    m_atomType(1), m_bondType(0),
+                    m_atomType(3), m_bondType(0),                    
                     m_atomColor(255,255,255), m_bondColor(255,255,255),
 					m_settingsWidget(0),
                     m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
@@ -139,6 +140,7 @@ Bond *dummyBond;*/
       //pd->painter()->setPen(m_atomColor);
       //pd->painter()->setFont(m_atomFont);
       pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
+      //GLWidget::current()->renderText(pos.x(), pos.y(), pos.z(), str, m_atomFont);
     }
 
     return true;
@@ -257,6 +259,7 @@ Bond *dummyBond;*/
       //pd->painter()->setColor(m_bondColor);
       //pd->painter()->setFont(m_bondFont);
       pd->painter()->drawText(drawPos, str);//, m_bondFont, m_bondColor);
+      //(QGLWidget*)GLWidget::current()->renderText(pos.x(), pos.y(), pos.z(), 
     }
 
     return true;
@@ -403,7 +406,7 @@ Bond *dummyBond;*/
   void LabelEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    setAtomType(settings.value("atomLabel", 1).toInt());
+    setAtomType(settings.value("atomLabel", 3).toInt());
     setBondType(settings.value("bondLabel", 0).toInt());
     if(m_settingsWidget) {
       m_settingsWidget->atomType->setCurrentIndex(m_atomType);
