@@ -166,7 +166,7 @@ namespace Avogadro {
     emit changed();
   }
 
-  void DipoleEngine::updateOrigin(double = 0.0)
+  void DipoleEngine::updateOrigin(double)
   {
       m_origin = Vector3d(m_settingsWidget->xOriginSpinBox->value(),
                           m_settingsWidget->yOriginSpinBox->value(),

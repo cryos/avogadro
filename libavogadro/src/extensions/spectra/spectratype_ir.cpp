@@ -143,7 +143,7 @@ namespace Avogadro {
   }
 
   void AbstractIRSpectra::changeScalingType(int type) {
-    m_scalingType = type;
+    m_scalingType = static_cast<ScalingType>(type);
     rescaleFrequencies();
   }    
 
