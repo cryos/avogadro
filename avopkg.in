@@ -18,6 +18,12 @@
 PREFIX="@CMAKE_INSTALL_PREFIX@"
 LIB_DIR="lib@LIB_SUFFIX@"
 PLUGIN_DIR="avogadro@Plugin_Version@"
+PYTHON_ENABLED="@ENABLE_PYTHON@"
+IS_UNIX="@UNIX@"
+IS_MAC="@APPLE@"
+
+PACK_CMD="tar czf"
+EXTRACT_CMD="tar xzf"
 
 # Helper functions
 
@@ -45,17 +51,31 @@ getMultiVar()
 	echo `cat $1 | grep $2 | awk -F':' '{print $NF}'`
 }
 
+# /**
+#  * Returns value of boolean variable from package configuration
+#  * @param $1 package description file name
+#  * @param $2 variable name
+#  * @returns 0 if string $2 was found in file $1
+#  */
+getBoolVar()
+{
+    #exit 0 if file contains string $2    
+    echo test x`cat $1 | grep $2` != x
+    #echo $?
+}
+
 # Main script
 
 echo "Avopkg v1.0"
 if test "$1" = "-pack"
 then
-    # Create package
+            ########## Create package ########## 
     if test -e $2
     then        
         echo "Building package for $(getMultiVar $2 Name) ..."
     else
-        echo Usage: $0 -pack filename
+        echo "Usage: $0 -pack filename"
+        echo "Type 'man avopkg' for more details"
         exit 0
     fi
     
@@ -66,57 +86,106 @@ then
     files="$(getMultiVar $2 Files)"
     rm -rf .tmp
     mkdir -p .tmp/$package
-    cp $2 .tmp/$package/$package    
+    cp $2 .tmp/$package/$package.mf    
     cp -t .tmp/$package $files # Will fail if some file is missing
     cd .tmp
-    tar czf ../$package.avo $package
+    $PACK_CMD ../$package.avo $package
     cd ..
     rm -rf .tmp
     echo Done!
 else
-    # Install package
+            ########## Install package ########## 
 
     if test -e $1
     then
         package=`basename $1 .avo`
         echo Unpacking $1...           
     else
-        echo Usage: $0 filename
+        echo "Usage: $0 filename"
+        echo "Type 'man avopkg' for more details"
         exit 0
     fi
-    
+
+    # Create temporary dir and unpack content
     rm -rf .tmp
     mkdir .tmp
     cd .tmp
-    tar xzf ../$1
+    $EXTRACT_CMD ../$1
     if ! test $? = 0
     then
-        echo $1 is not an Avogadro extension!
-        exit 0
-    fi
-    
-    cd $package
-    echo -n Installing package $package
-    pkg=$package
-    if test $USER = root
-    then
-        echo " for all users..."
-        dest=$PREFIX/$LIB_DIR/$PLUGIN_DIR/$(getVar $pkg Category) 
-    else
-        echo " for user $USER"
-        dest=$HOME/.$PLUGIN_DIR/plugins/$(getVar $pkg Category)
+        echo "$1 is not an Avogadro plugin package!"
+        echo "Installation failed."
+        exit 1
     fi
 
-    if ! test -d $dest
+    # Check manifest
+    cd $package
+    manifest=$package.mf
+    if ! test -f $manifest
+    then
+        echo "Manifest $manifest is missing in package!"
+        echo "Installation failed."
+        exit 1
+    fi
+
+    # Find out where to install package
+    if ($(getBoolVar $manifest Python))
+    then
+        #Check Python support in Avogadro
+        if test $PYTHON_ENABLED = "OFF"
+        then
+            echo "Plugin $package needs Python, but Avogadro was compiled"
+            echo "without Python support. To install and use this plugin, you need to change CMake"
+            echo "option ENABLE_PYTHON to ON value, resolve dependencies and re-compile Avogadro"
+            echo
+            echo "Installation failed."
+            exit 1
+        fi
+        
+        echo -n Installing Python plugin $package
+        if test $USER = root
+        then
+            echo " for all users..."
+            dest="$PREFIX/share/libavogadro/$(getVar $manifest Category)Scripts"
+        else
+            echo " for user $USER"
+            if test "$IS_MAC" = 1
+            then
+                dest="$HOME/Library/Application Support/Avogadro/$(getVar $manifest Category)Scripts"
+            else
+                dest="$HOME/.avogadro/$(getVar $manifest Category)Scripts"
+            fi
+        fi
+    else       
+        echo -n Installing plugin $package
+        if test $USER = root
+        then
+            echo " for all users..."
+            dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$(getVar $manifest Category)"
+        else
+            echo " for user $USER"
+            if test "$IS_MAC" = 1
+            then
+                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$(getVar $manifest Category)"
+            else
+                dest="$HOME/.$PLUGIN_DIR/plugins/$(getVar $manifest Category)"
+            fi
+        fi
+    fi
+
+    # Copy files
+    if ! test -d "$dest"
     then
         echo Creating directory $dest...
-        mkdir -p $dest
+        mkdir -p "$dest"
     fi
+    echo "Copying files to $dest..."
+    cp -t "$dest" $(getMultiVar $manifest Files)
 
-    cp -t $dest $(getMultiVar $pkg Files)
-
+    # Clean up
     cd ../..
     rm -rf .tmp
+    
     echo Done.       
     
 fi

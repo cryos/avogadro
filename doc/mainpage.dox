@@ -17,6 +17,7 @@ libavogadro interfaces: Plugins for extending Avogadro
 - Painter : General interface for graphical output: OpenGL, POVRay, etc.
 - Engine : Interface for display types: graphical styles for molecules and other data
 - Extension : Interface for user menu commands
+- DockExtension : Interface for dock widgets
 - Tool : Interface for mouse tools
 - Color : Interface for coloring atoms, bonds, etc.
 

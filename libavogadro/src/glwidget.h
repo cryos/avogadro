@@ -119,6 +119,7 @@ namespace Avogadro {
        */
       ~GLWidget();
 
+      void renderText(double x, double y, double z, const QString &str, const QFont &font, int listBase=2000);
       /**
        * @param enabled True if quick render is desired when moving the view.
        */
@@ -749,6 +750,7 @@ namespace Avogadro {
        */
       void unitCellAxesRenderChanged(bool enabled);
 
+      
   };
 
 } // end namespace Avogadro

@@ -28,7 +28,7 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
-//#include "daltoninputdialog.h" -- disabled for 1.0 release
+#include "daltoninputdialog.h"
 #include "gaussianinputdialog.h"
 #include "molproinputdialog.h"
 #include "mopacinputdialog.h"
@@ -69,7 +69,7 @@ namespace Avogadro
     void readOutputFile(const QString filename);
 
   private:
-    //    DaltonInputDialog* m_daltonInputDialog;
+    DaltonInputDialog* m_daltonInputDialog;
     GaussianInputDialog* m_gaussianInputDialog;
     MolproInputDialog* m_molproInputDialog;
     MOPACInputDialog* m_mopacInputDialog;
