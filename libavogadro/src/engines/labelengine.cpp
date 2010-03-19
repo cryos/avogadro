@@ -73,7 +73,8 @@ Bond *dummyBond;*/
 
  
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-                    m_atomType(3), m_bondType(0),                    
+                    m_atomType(3), m_bondType(0),
+                    m_atomTextRendering(0), m_bondTextRendering(0),                    
                     m_atomColor(255,255,255), m_bondColor(255,255,255),
 					m_settingsWidget(0),
                     m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
@@ -139,8 +140,10 @@ Bond *dummyBond;*/
       glColor3f(m_atomColor.redF(), m_atomColor.greenF(), m_atomColor.blueF());
       //pd->painter()->setPen(m_atomColor);
       //pd->painter()->setFont(m_atomFont);
-      pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
-      //GLWidget::current()->renderText(pos.x(), pos.y(), pos.z(), str, m_atomFont);
+      if (m_atomTextRendering == 0)
+        pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
+      else
+        GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_atomFont);
     }
 
     return true;
@@ -278,6 +281,12 @@ Bond *dummyBond;*/
     emit changed();
   }
 
+  void LabelEngine::setAtomRendering(int value)
+  {
+    m_atomTextRendering = value;
+    emit changed();
+  }
+
   void LabelEngine::setBondType(int value)
   {
     m_bondType = value;
@@ -314,6 +323,7 @@ Bond *dummyBond;*/
         setAtomType(m_atomType);
         setBondType(m_bondType);
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
+        connect(m_settingsWidget->atomRendering, SIGNAL(activated(int)), this, SLOT(setAtomRendering(int)));
         connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
         connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
