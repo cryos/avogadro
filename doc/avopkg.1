@@ -1,0 +1,26 @@
+.Dd March 15, 2010
+.Os "Avopkg" 1.0
+.Dt avopkg 1 URM
+.Sh NAME
+.Nm avopkg
+.Nd "Avogadro Package Manager"
+.Sh SYNOPSIS
+.Nm
+.Op Fl pack
+.Ar filename
+.Sh DESCRIPTION
+Avopkg is a command-line tool for easy packaging and installation
+of Avogadro plugins on Unix platforms
+.Sh OPTIONS
+.Bl -tag -width flag
+.It Fl pack Ar manifest
+Create package using manifest as package description file
+.It Ar file
+Install plugin from chosen package file
+.El
+.Sh SEE ALSO
+.Xr avogadro 1 .
+For more information about Avogadro, see 
+\%<\fBhttp://avogadro.openmolecules.net/\fR>
+.Sh AUTHOR
+Konstantin Tokarev
