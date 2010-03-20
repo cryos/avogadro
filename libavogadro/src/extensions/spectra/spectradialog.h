@@ -21,9 +21,12 @@
 #define SPECTRADIALOG_H
 
 #include <QtGui/QDialog>
+#include <QtGui/QShowEvent>
+
 #include <QtCore/QHash>
 #include <QtCore/QVariant>
 #include <QtCore/QSettings>
+#include <QtCore/QTime>
 
 #include <avogadro/primitive.h>
 #include <avogadro/plotwidget.h>
@@ -84,8 +87,10 @@ namespace Avogadro {
     void renameScheme();
     void exportSpectra();
     void saveImageFileDialog();
+    void showCoordinates(double x,double y);
 
-  signals:
+  protected:
+    void showEvent(QShowEvent * event);
 
   private:
     Ui::SpectraDialog ui;
@@ -108,6 +113,9 @@ namespace Avogadro {
     PlotObject *m_calculatedSpectra;
     PlotObject *m_importedSpectra;
     PlotObject *m_nullSpectra;
+
+    QTime m_time;
+    int m_lastUpdate;
   };
 }
 

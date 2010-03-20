@@ -88,8 +88,8 @@ namespace Avogadro {
     private:
       int m_atomType;  // Atom label type
       int m_bondType;  // Bond label type
-      int m_atomTextRendering;
-      int m_bondTextRendering;
+      int m_textRendering;
+      int m_lengthPrecision;
 	  QFont m_atomFont;
 	  QFont m_bondFont;
 	  QColor m_atomColor;
@@ -100,8 +100,9 @@ namespace Avogadro {
 
     private Q_SLOTS:
       void setAtomType(int value);
-      void setAtomRendering(int value);
+      void setTextRendering(int value);
       void setBondType(int value);
+      void setLengthPrecision(int value);
 	  void setAtomColor();
 	  void setBondColor();
 	  void setAtomFont();
