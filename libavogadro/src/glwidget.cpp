@@ -35,6 +35,7 @@
 
 #include <QtGui/QPen>
 #include <QtGui/QPainter>
+#include <QtGui/QPaintEngine>
 
 #ifdef ENABLE_PYTHON
   #include "pythonthread_p.h"
@@ -78,29 +79,8 @@
 using namespace OpenBabel;
 using namespace Eigen;
 
-QT_BEGIN_NAMESPACE
-  static void qt_gl_draw_text(QPainter *p, int x, int y, const QString &str, const QFont &font)
-  {
-    qDebug() << "Overloaded qt_gl_draw_text called";
-    GLfloat color[4];
-    glGetFloatv(GL_CURRENT_COLOR, &color[0]);
-
-    QColor col;
-    col.setRgbF(color[0], color[1], color[2],color[3]);
-    QPen old_pen = p->pen();
-    QFont old_font = p->font();
-
-    p->setPen(col);
-    p->setFont(font);
-    p->drawText(x, y, str);
-
-    p->setPen(old_pen);
-    p->setFont(old_font);
-  }
-QT_END_NAMESPACE
-
 namespace Avogadro {
-	
+
   bool engineLessThan( const Engine* lhs, const Engine* rhs )
   {
     Engine::Layers lhsLayers = lhs->layers();
@@ -2021,6 +2001,218 @@ namespace Avogadro {
   {
     // Something changed and we need to invalidate the display lists
     d->updateCache = true;
+  }
+
+// Copied from current sources of Qt 4.7  
+#ifndef QT_OPENGL_ES
+
+static void save_gl_state()
+{
+    glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glMatrixMode(GL_TEXTURE);
+    glPushMatrix();
+    glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+
+    glShadeModel(GL_FLAT);
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_STENCIL_TEST);
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+static void restore_gl_state()
+{
+    glMatrixMode(GL_TEXTURE);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glPopAttrib();
+    glPopClientAttrib();
+}
+
+  void gl_draw_text(QPainter *p, int x, int y, const QString &str, const QFont &font, double zoom)
+  {
+    GLfloat color[4];
+    glGetFloatv(GL_CURRENT_COLOR, &color[0]);
+
+    QFont fore_font = font;
+    qreal size = font.pointSizeF() * zoom;
+    fore_font.setPointSizeF(size);
+
+    QColor col, outline;
+    col.setRgbF(color[0], color[1], color[2],color[3]);
+    outline.setRgbF((1-color[0])/2,(1-color[1])/2,(1-color[2])/2); // use opposite color, but make it darker
+    if(!p) return;  // prevent segfaults
+    
+    QPen old_pen = p->pen();
+    QFont old_font = p->font();
+
+    // Outline
+    p->setPen(outline);
+    //QFont out_font = fore_font;
+    //out_font.setWeight(font.weight()+10);
+    p->setFont(fore_font);
+   // p->drawText(x+2, y, str);
+    p->drawText(x+1, y, str);
+    p->drawText(x-1, y, str);
+   // p->drawText(x-2, y, str);
+    p->drawText(x, y+1, str);
+   // p->drawText(x, y+2, str);
+    p->drawText(x, y-1, str);
+   // p->drawText(x, y-2, str);
+
+    // Foreground
+    p->setPen(col);
+    p->setFont(fore_font);
+    p->drawText(x, y, str);
+
+    p->setPen(old_pen);
+    p->setFont(old_font);
+  }
+
+static inline void transform_point(GLdouble out[4], const GLdouble m[16], const GLdouble in[4])
+{
+#define M(row,col)  m[col*4+row]
+    out[0] =
+        M(0, 0) * in[0] + M(0, 1) * in[1] + M(0, 2) * in[2] + M(0, 3) * in[3];
+    out[1] =
+        M(1, 0) * in[0] + M(1, 1) * in[1] + M(1, 2) * in[2] + M(1, 3) * in[3];
+    out[2] =
+        M(2, 0) * in[0] + M(2, 1) * in[1] + M(2, 2) * in[2] + M(2, 3) * in[3];
+    out[3] =
+        M(3, 0) * in[0] + M(3, 1) * in[1] + M(3, 2) * in[2] + M(3, 3) * in[3];
+#undef M
+}
+
+static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
+           const GLdouble model[16], const GLdouble proj[16],
+           const GLint viewport[4],
+           GLdouble * winx, GLdouble * winy, GLdouble * winz)
+{
+   GLdouble in[4], out[4];
+
+   in[0] = objx;
+   in[1] = objy;
+   in[2] = objz;
+   in[3] = 1.0;
+   transform_point(out, model, in);
+   transform_point(in, proj, out);
+
+   if (in[3] == 0.0)
+      return GL_FALSE;
+
+   in[0] /= in[3];
+   in[1] /= in[3];
+   in[2] /= in[3];
+
+   *winx = viewport[0] + (1 + in[0]) * viewport[2] / 2;
+   *winy = viewport[1] + (1 + in[1]) * viewport[3] / 2;
+
+   *winz = (1 + in[2]) / 2;
+   return GL_TRUE;
+}
+
+#endif
+
+  // Based on Qt code
+  void GLWidget::renderText(double x, double y, double z, const QString &str, const QFont &font, int i)
+  {
+    //QGLWidget::renderText(x,y,z,str,font, i);
+    
+#ifndef QT_OPENGL_ES
+    if (str.isEmpty() || !isValid())
+        return;
+
+    bool auto_swap = autoBufferSwap();
+
+    int width = d->pd->width();
+    int height = d->pd->height();
+    GLdouble model[4][4], proj[4][4];
+    GLint view[4];
+    glGetDoublev(GL_MODELVIEW_MATRIX, &model[0][0]);
+    glGetDoublev(GL_PROJECTION_MATRIX, &proj[0][0]);
+    glGetIntegerv(GL_VIEWPORT, &view[0]);
+    GLdouble win_x = 0, win_y = 0, win_z = 0;
+    gluProject(x, y, z, &model[0][0], &proj[0][0], &view[0],
+                &win_x, &win_y, &win_z);
+    win_y = height - win_y; // y is inverted
+
+    //QPaintEngine::Type oldEngineType = qgl_engine_selector()->preferredPaintEngine();
+    //QPaintEngine::Type oldEngineType = QGL::preferredPaintEngine();
+    QPaintEngine *engine = paintEngine();
+
+    //if (engine && (oldEngineType == QPaintEngine::OpenGL2) && engine->isActive()) {
+    //    qWarning("QGLWidget::renderText(): Calling renderText() while a GL 2 paint engine is"
+    //             " active on the same device is not allowed.");
+    //    return;
+    //}
+
+    // this changes what paintEngine() returns
+    //QGL::setPreferredPaintEngine(QPaintEngine::OpenGL);
+    //qgl_engine_selector()->setPreferredPaintEngine(QPaintEngine::OpenGL);
+    engine = paintEngine();
+    QPainter *p;
+    bool reuse_painter = false;
+    bool use_depth_testing = glIsEnabled(GL_DEPTH_TEST);
+    bool use_scissor_testing = glIsEnabled(GL_SCISSOR_TEST);
+
+    if (engine->isActive()) {
+        reuse_painter = true;
+        p = engine->painter();
+        save_gl_state();
+    } else {
+        setAutoBufferSwap(false);
+        // disable glClear() as a result of QPainter::begin()
+        //d->disable_clear_on_painter_begin = true;
+        p = new QPainter(this);
+    }
+
+    QRect viewport(view[0], view[1], view[2], view[3]);
+    if (!use_scissor_testing && viewport != rect()) {
+        glScissor(view[0], view[1], view[2], view[3]);
+        glEnable(GL_SCISSOR_TEST);
+    } else if (use_scissor_testing) {
+        glEnable(GL_SCISSOR_TEST);
+    }
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glViewport(0, 0, width, height);
+    glOrtho(0, width, height, 0, 0, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glAlphaFunc(GL_GREATER, 0.0);
+    glEnable(GL_ALPHA_TEST);
+    if (use_depth_testing)
+        glEnable(GL_DEPTH_TEST);
+    glTranslated(0, 0, -win_z);
+    gl_draw_text(p, qRound(win_x), qRound(win_y), str, font, sqrt(20.0/camera()->distance(Vector3d(0,0,0))));
+
+    if (reuse_painter) {
+        restore_gl_state();
+    } else {
+        p->end();
+        delete p;
+        setAutoBufferSwap(auto_swap);
+      //  d->disable_clear_on_painter_begin = false;
+    }
+    //qgl_engine_selector()->setPreferredPaintEngine(oldEngineType);
+#else // QT_OPENGL_ES
+    Q_UNUSED(x);
+    Q_UNUSED(y);
+    Q_UNUSED(z);
+    Q_UNUSED(str);
+    Q_UNUSED(font);
+    qWarning("QGLWidget::renderText is not supported under OpenGL/ES");
+#endif
   }
 }
 
