@@ -25,3 +25,9 @@ if( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
 else( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
    message(STATUS "docbook tools not found, doc targets disabled")
 endif( DOCBOOK2PDF_EXECUTABLE AND DOCBOOK2HTML_EXECUTABLE )
+
+# Manpages
+if(UNIX)
+   file(GLOB man_1 *.1)
+   install(FILES ${man_1} DESTINATION share/man/man1)
+endif(UNIX)

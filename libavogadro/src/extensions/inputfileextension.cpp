@@ -40,7 +40,8 @@ namespace Avogadro
 
   InputFileExtension::InputFileExtension(QObject* parent) : Extension(parent),
     m_gaussianInputDialog(0), m_molproInputDialog(0),
-    m_mopacInputDialog(0), m_nwchemInputDialog(0), m_qchemInputDialog(0),
+    m_mopacInputDialog(0), m_nwchemInputDialog(0), 
+	m_qchemInputDialog(0), m_daltonInputDialog(0),
     m_molecule(0)
   {
     QAction* action;
@@ -69,6 +70,11 @@ namespace Avogadro
     action->setText(tr("&Q-Chem..."));
     action->setData("QChem");
     m_actions.append(action);
+	
+	action = new QAction(this);
+    action->setText(tr("&Dalton..."));
+    action->setData("Dalton");
+    m_actions.append(action);	
 
     action = new QAction(this);
     action->setSeparator(true);
@@ -88,15 +94,15 @@ namespace Avogadro
   {
     m_widget = widget;
 
-//     if (action->data() == "Dalton") {
-//       if (!m_daltonInputDialog) {
-//         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
-//         m_daltonInputDialog->setMolecule(m_molecule);
-//         m_daltonInputDialog->show();
-//       }
-//       else
-//         m_daltonInputDialog->show();
-//     }
+     if (action->data() == "Dalton") {
+       if (!m_daltonInputDialog) {
+         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
+         m_daltonInputDialog->setMolecule(m_molecule);
+         m_daltonInputDialog->show();
+       }
+       else
+         m_daltonInputDialog->show();
+     }
     if (action->data() == "Gaussian") {
       if (!m_gaussianInputDialog) {
         m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
@@ -152,8 +158,8 @@ namespace Avogadro
   void InputFileExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-//     if (m_daltonInputDialog)
-//       m_daltonInputDialog->setMolecule(m_molecule);
+    if (m_daltonInputDialog)
+      m_daltonInputDialog->setMolecule(m_molecule);
     if (m_gaussianInputDialog)
       m_gaussianInputDialog->setMolecule(m_molecule);
     if (m_molproInputDialog)
