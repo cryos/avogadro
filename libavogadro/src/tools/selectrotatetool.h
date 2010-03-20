@@ -83,6 +83,7 @@ namespace Avogadro {
       void selectionBox(float sx, float sy, float ex, float ey);
 
       bool                m_leftButtonPressed;  // rotation
+	  bool                m_rightButtonPressed;
       bool                m_movedSinceButtonPressed;
 
       //! Temporary var for adding selection box
