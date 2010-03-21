@@ -73,10 +73,9 @@ Bond *dummyBond;*/
 
  
   LabelEngine::LabelEngine(QObject *parent) : Engine(parent),
-                    m_atomType(3), m_bondType(0),
-                    m_atomTextRendering(0), m_bondTextRendering(0),                    
+                    m_atomType(3), m_bondType(0), m_textRendering(0),
                     m_atomColor(255,255,255), m_bondColor(255,255,255),
-					m_settingsWidget(0),
+					m_settingsWidget(0), m_lengthPrecision(3),
                     m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
   {
     /*dummyAtom.setGroupIndex(1);
@@ -140,7 +139,7 @@ Bond *dummyBond;*/
       glColor3f(m_atomColor.redF(), m_atomColor.greenF(), m_atomColor.blueF());
       //pd->painter()->setPen(m_atomColor);
       //pd->painter()->setFont(m_atomFont);
-      if (m_atomTextRendering == 0)
+      if (m_textRendering == 0)
         pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
       else
         GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_atomFont);
@@ -211,7 +210,7 @@ Bond *dummyBond;*/
       switch(m_bondType) {
         str = "";
       case 1:
-        str = QString("%L1").arg(b->length(), 0, 'g', 4);
+        str = QString("%L1").arg(b->length(), 0, 'g', 1+m_lengthPrecision);
         break;
       case 2:
         str = QString("%L1").arg(b->index() + 1);
@@ -261,8 +260,10 @@ Bond *dummyBond;*/
       glColor3f(m_bondColor.redF(), m_bondColor.greenF(), m_bondColor.blueF());
       //pd->painter()->setColor(m_bondColor);
       //pd->painter()->setFont(m_bondFont);
-      pd->painter()->drawText(drawPos, str);//, m_bondFont, m_bondColor);
-      //(QGLWidget*)GLWidget::current()->renderText(pos.x(), pos.y(), pos.z(), 
+      if (m_textRendering == 0)
+        pd->painter()->drawText(drawPos, str); //, m_bondFont, m_bondColor)
+      else
+        GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_bondFont);
     }
 
     return true;
@@ -281,15 +282,30 @@ Bond *dummyBond;*/
     emit changed();
   }
 
-  void LabelEngine::setAtomRendering(int value)
+  void LabelEngine::setTextRendering(int value)
   {
-    m_atomTextRendering = value;
+    m_textRendering = value;
+    if (!m_settingsWidget)
+      return;
+    if (value == 0) {
+      m_settingsWidget->atomFont->setEnabled(false);
+      m_settingsWidget->bondFont->setEnabled(false);
+    } else {
+      m_settingsWidget->atomFont->setEnabled(true);
+      m_settingsWidget->bondFont->setEnabled(true);
+    }
     emit changed();
   }
 
   void LabelEngine::setBondType(int value)
   {
     m_bondType = value;
+    if (!m_settingsWidget)
+      return;
+    if (value == 1)
+      m_settingsWidget->lengthPrecision->setEnabled(true);
+    else
+      m_settingsWidget->lengthPrecision->setEnabled(false);
     //this->atomLabelColor->
     //dummyBond = new Bond;
     //m_settingsWidget->bondLabel->setText(createBondLabel(0));
@@ -297,6 +313,14 @@ Bond *dummyBond;*/
     emit changed();
   }
 
+  void LabelEngine::setLengthPrecision(int value)
+  {
+    m_lengthPrecision = value;
+    if (!m_settingsWidget)
+      return;
+    emit changed();
+  }
+  
   void LabelEngine::updateDisplacement(double)
   {
       m_displacement = Vector3d(m_settingsWidget->xDisplSpinBox->value(),
@@ -323,10 +347,11 @@ Bond *dummyBond;*/
         setAtomType(m_atomType);
         setBondType(m_bondType);
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
-        connect(m_settingsWidget->atomRendering, SIGNAL(activated(int)), this, SLOT(setAtomRendering(int)));
+        connect(m_settingsWidget->textRendering, SIGNAL(activated(int)), this, SLOT(setTextRendering(int)));
         connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
         connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
+        connect(m_settingsWidget->lengthPrecision, SIGNAL(valueChanged(int)), this, SLOT(setLengthPrecision(int)));
         connect(m_settingsWidget->bondColor, SIGNAL(clicked()), this, SLOT(setBondColor()));
         connect(m_settingsWidget->bondFont, SIGNAL(clicked()), this, SLOT(setBondFont()));        
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
@@ -363,7 +388,7 @@ Bond *dummyBond;*/
     QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Atom Labels Font"));
     if (ok) {
       m_atomFont = font;
-      m_settingsWidget->atomLabel->setFont(m_atomFont);
+      //m_settingsWidget->atomLabel->setFont(m_atomFont);
       emit changed();
     }
   }
@@ -385,7 +410,7 @@ Bond *dummyBond;*/
     QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Bond Labels Font"));
     if (ok) {
       m_bondFont = font;
-      m_settingsWidget->bondLabel->setFont(m_bondFont);
+      //m_settingsWidget->bondLabel->setFont(m_bondFont);
       emit changed();
     }
   }
@@ -411,6 +436,11 @@ Bond *dummyBond;*/
     Engine::writeSettings(settings);
     settings.setValue("atomLabel", m_atomType);
     settings.setValue("bondLabel", m_bondType);
+    settings.setValue("m_lengthPrecision", m_lengthPrecision);
+    settings.setValue("atomFont", m_atomFont);
+    settings.setValue("bondFont", m_bondFont);
+    settings.setValue("atomColor", m_atomColor);
+    settings.setValue("bondColor", m_bondColor);
   }
 
   void LabelEngine::readSettings(QSettings &settings)
@@ -418,11 +448,16 @@ Bond *dummyBond;*/
     Engine::readSettings(settings);
     setAtomType(settings.value("atomLabel", 3).toInt());
     setBondType(settings.value("bondLabel", 0).toInt());
+    m_lengthPrecision = settings.value("m_lengthPrecision", 3).toInt();
+    m_atomFont = settings.value("atomFont", QApplication::font()).value<QFont>();
+    m_bondFont = settings.value("bondFont", QApplication::font()).value<QFont>();
+    m_atomColor = settings.value("atomColor", QColor(Qt::white)).value<QColor>();
+    m_bondColor = settings.value("bondColor", QColor(Qt::white)).value<QColor>();
     if(m_settingsWidget) {
       m_settingsWidget->atomType->setCurrentIndex(m_atomType);
       m_settingsWidget->bondType->setCurrentIndex(m_bondType);
+      m_settingsWidget->lengthPrecision->setValue(m_lengthPrecision);
     }
-
   }
 }
 
