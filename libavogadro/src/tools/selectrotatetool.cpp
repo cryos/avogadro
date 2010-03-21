@@ -58,6 +58,7 @@ namespace Avogadro {
     action->setToolTip(tr("Selection Tool (F11)\n"
           "Click to pick individual atoms, residues, or fragments\n"
           "Drag to select a range of atoms\n"
+          "Right click outside the molecule to clear selection\n"
           "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
   }
@@ -84,7 +85,7 @@ namespace Avogadro {
     m_hits = widget->hits(event->pos().x()-SEL_BOX_HALF_SIZE,
         event->pos().y()-SEL_BOX_HALF_SIZE,
         SEL_BOX_SIZE, SEL_BOX_SIZE);
-
+        
     if (event->buttons() & Qt::LeftButton && !m_hits.size()) {
       m_leftButtonPressed = true;
       event->accept();
@@ -92,10 +93,14 @@ namespace Avogadro {
     }
     else if (event->buttons() & Qt::LeftButton) {
       m_leftButtonPressed = true;
-    }
-    else
+    } else
       m_leftButtonPressed = false;
-
+    
+    if (event->buttons() & Qt::RightButton) {
+      m_rightButtonPressed = true;
+    } else
+      m_rightButtonPressed = false;
+      
     if(!m_selectionBox) {
       widget->setCursor(Qt::CrossCursor);
     }
@@ -271,9 +276,7 @@ namespace Avogadro {
           break;
       }
 
-    }
-    else if(m_movedSinceButtonPressed && !m_hits.size())
-    {
+    } else if(m_leftButtonPressed && m_movedSinceButtonPressed && !m_hits.size()) {
       // Selection box picking - need to figure out which atoms were in the box
       int sx = qMin(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
       int ex = qMax(m_initialDraggingPosition.x(), m_lastDraggingPosition.x());
@@ -310,6 +313,13 @@ namespace Avogadro {
         widget->clearSelected();
       // Set the selection
       widget->setSelected(hitList, true);
+    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
+      event->accept();
+      if (m_hits.size()) {
+        qDebug() << "TODO: show popup menu with properties";
+      } else {
+        widget->clearSelected();
+      }
     }
 
     widget->update();
@@ -329,7 +339,7 @@ namespace Avogadro {
       m_lastDraggingPosition = event->pos();
       widget->update();
     }
-    else if (m_leftButtonPressed) {
+    else /*if (m_leftButtonPressed)*/ {
       if((event->pos() - m_initialDraggingPosition).manhattanLength() > 2)
         m_movedSinceButtonPressed = true;
       else

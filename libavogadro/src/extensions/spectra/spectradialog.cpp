@@ -23,28 +23,30 @@
 #include "spectratype_ir.h"
 #include "spectratype_nmr.h"
 #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-#include "spectratype_dos.h"
-#include "spectratype_uv.h"
-#include "spectratype_cd.h"
-#include "spectratype_raman.h"
+  #include "spectratype_dos.h"
+  #include "spectratype_uv.h"
+  #include "spectratype_cd.h"
+  #include "spectratype_raman.h"
 #endif
 
 #include <QtGui/QPen>
 #include <QtGui/QColor>
 #include <QtGui/QColorDialog>
 #include <QtGui/QButtonGroup>
-#include <QtCore/QDebug>
 #include <QtGui/QDoubleValidator>
 #include <QtGui/QFileDialog>
 #include <QtGui/QFontDialog>
 #include <QtGui/QInputDialog>
 #include <QtGui/QMessageBox>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
 #include <QtGui/QPixmap>
 #include <QtCore/QSettings>
 #include <QtGui/QListWidgetItem>
 #include <QtGui/QDesktopWidget>
+#include <QtGui/QToolTip>
+
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
 
 #include <avogadro/molecule.h>
 #include <avogadro/plotwidget.h>
@@ -56,7 +58,7 @@
 using namespace OpenBabel;
 using namespace std;
 
-namespace Avogadro {
+namespace Avogadro {  
 
   SpectraDialog::SpectraDialog( QWidget *parent, Qt::WindowFlags f ) :
       QDialog( parent, f )
@@ -84,6 +86,7 @@ namespace Avogadro {
 
     // setting the limits for the plot
     ui.plot->setAntialiasing(true);
+    ui.plot->setMouseTracking(true);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("X Axis"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Y Axis"));
@@ -129,7 +132,9 @@ namespace Avogadro {
     connect(ui.push_export, SIGNAL(clicked()),
             this, SLOT(exportSpectra()));
     connect(ui.push_exportData, SIGNAL(clicked()),
-            this, SLOT(exportSpectra()));        
+            this, SLOT(exportSpectra()));
+    connect(ui.plot, SIGNAL(mouseOverPoint(double,double)),
+            this, SLOT(showCoordinates(double,double)));
 
     // Misc. connections
     connect(ui.combo_spectra, SIGNAL(currentIndexChanged(QString)),
@@ -1068,7 +1073,8 @@ namespace Avogadro {
     ui.plot->update();
   }
 
-  SpectraType * SpectraDialog::currentSpectra() {
+  SpectraType * SpectraDialog::currentSpectra()
+  {
     if (m_spectra == "Infrared")
       return m_spectra_ir;
     else if (m_spectra == "NMR")
@@ -1084,6 +1090,29 @@ namespace Avogadro {
       return m_spectra_raman;
 #endif
     return NULL;
+  }
+
+  void SpectraDialog::showCoordinates(double x, double y)
+  {
+    // Don't show coordinates outside rectangle of plot
+    if (!ui.plot->dataRect().contains(x,y)) {
+      ui.currentCoordinates->setText("");
+      return;
+    }
+    // Don't update coordinates more often than once in 0.1 sec
+    int t = m_time.elapsed();
+    if (t - m_lastUpdate > 100) {
+      ui.currentCoordinates->setText("("+QString::number(x)+";"+QString::number(y)+")");
+      m_lastUpdate = m_time.elapsed();
+    }
+  }
+
+  void SpectraDialog::showEvent ( QShowEvent * event )
+  {
+    m_lastUpdate = 0;
+    m_time.restart();
+    qDebug() << "Timer restarted";
+    event->accept();
   }
 }
 

@@ -122,6 +122,36 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   endif(WITH_SSE2)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
+
+# Intel C++ Compiler
+# Note: Windows version uses different options!
+if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+  add_definitions (-D_BSD_SOURCE)   
+  check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
+  set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
+  if(HAVE_INTEL_VISIBILITY)
+    add_definitions(-DHAVE_GCC_VISIBILITY)
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+	check_cxx_compiler_flag(-fvisibility-inlines-hidden HAVE_INTEL_VISIBILITY_INLINES)
+	set(HAVE_INTEL_VISIBILITY_INLINES ${HAVE_INTEL_VISIBILITY_INLINES} CACHE BOOL "Intel Compiler support for -fvisibility-inlines-hidden")
+	if(HAVE_INTEL_VISIBILITY_INLINES)
+	  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+	endif(HAVE_INTEL_VISIBILITY_INLINES)
+  endif(HAVE_INTEL_VISIBILITY)
+  
+  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  
+  # define WITH_SSE2 to enable the SSE2 instruction set.
+  # Available on Pentium 4, Athlon 64, and newer CPUs.
+  # If SSE2 is enabled, Eigen uses it by default; this can be disabled by
+  # definining EIGEN_DONT_VECTORIZE.
+  if((CMAKE_SIZEOF_VOID_P EQUAL 8) OR WITH_SSE2)
+    message(STATUS "Enabling the SSE2 instruction set")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
+  endif((CMAKE_SIZEOF_VOID_P EQUAL 8) OR WITH_SSE2)
+endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+
 set(QT_MIN_VERSION "4.5.1") # we need at least version 4.5.1
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
