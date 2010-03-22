@@ -236,7 +236,7 @@ namespace Avogadro {
       if (maxIntensity != 0) {
         t = t / maxIntensity; 	// Normalize
       }
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+      //t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
@@ -257,7 +257,7 @@ namespace Avogadro {
   }
 
   void IRSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 3500.0, 400.0, 0.0, 100.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
@@ -327,7 +327,8 @@ namespace Avogadro {
         // 100 / (max - min)	: Conversion factor for current spread -> percent
         // * 0.97 + 3		: makes plot stay away from 0 transmittance
         //			: (easier to see multiple peaks on strong signals)
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
       }
     } // End gaussians
 

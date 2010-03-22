@@ -136,7 +136,7 @@ namespace Avogadro {
   }
 
   void RamanSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 5000.0, 0.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 3500.0, 0.0, 0.0, 100.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
