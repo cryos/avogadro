@@ -155,10 +155,10 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   # Available on Pentium 4, Athlon 64, and newer CPUs.
   # If SSE2 is enabled, Eigen uses it by default; this can be disabled by
   # definining EIGEN_DONT_VECTORIZE.
-  if((CMAKE_SIZEOF_VOID_P EQUAL 8) OR WITH_SSE2)
+  if(CMAKE_SIZEOF_VOID_P EQUAL 8 OR WITH_SSE2)
     message(STATUS "Enabling the SSE2 instruction set")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2")
-  endif((CMAKE_SIZEOF_VOID_P EQUAL 8) OR WITH_SSE2)
+  endif(CMAKE_SIZEOF_VOID_P EQUAL 8 OR WITH_SSE2)
 endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
 set(QT_MIN_VERSION "4.5.1") # we need at least version 4.5.1
