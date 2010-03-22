@@ -64,19 +64,38 @@ getBoolVar()
     #echo $?
 }
 
+printUsage()
+{
+   echo "Usage:"
+   echo "   "`basename $0`" filename             Install package"
+   echo "   "`basename $0`" -pack filename       Create new package"
+   echo "Type 'man "`basename $0`"' for more details"
+}
+
 # Main script
 
 echo "Avopkg v1.0"
+
+if test "x$1" = "x"
+then
+    printUsage
+    exit 255
+fi
+
 if test "$1" = "-pack"
 then
-            ########## Create package ########## 
-    if test -e $2
+            ########## Create package ##########
+    if test "x$2" = "x"
+    then
+        printUsage
+        exit 255
+    fi
+    if test -f $2
     then        
         echo "Building package for $(getMultiVar $2 Name) ..."
     else
-        echo "Usage: $0 -pack filename"
-        echo "Type 'man avopkg' for more details"
-        exit 0
+        printUsage
+        exit 255
     fi
     
     
@@ -101,9 +120,8 @@ else
         package=`basename $1 .avo`
         echo Unpacking $1...           
     else
-        echo "Usage: $0 filename"
-        echo "Type 'man avopkg' for more details"
-        exit 0
+        printUsage
+        exit 255
     fi
 
     # Create temporary dir and unpack content
@@ -125,7 +143,7 @@ else
     then
         echo "Manifest $manifest is missing in package!"
         echo "Installation failed."
-        exit 1
+        exit 2
     fi
 
     # Find out where to install package
@@ -139,7 +157,7 @@ else
             echo "option ENABLE_PYTHON to ON value, resolve dependencies and re-compile Avogadro"
             echo
             echo "Installation failed."
-            exit 1
+            exit 3
         fi
         
         echo -n Installing Python plugin $package
