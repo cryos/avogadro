@@ -145,6 +145,12 @@ namespace Avogadro {
          * @sa scaleLimits() setDefaultLimits()
          */
         void setLimits( double x1, double x2, double y1, double y2 );
+        /**
+         * Set new data limits for the plot.
+         * @param rect rectangle containing all possible values of X and Y in data units
+         * @sa scaleLimits() setDefaultLimits()
+         */
+        void setLimits( QRectF &rect);
 
         /**
          * Determine the limits of the plot by examining the PlotPoints.
@@ -166,6 +172,8 @@ namespace Avogadro {
          * @sa setLimits() unsetDefaultLimits()
          */
         void setDefaultLimits( double x1, double x2, double y1, double y2 );
+
+        void setDefaultLimits( QRectF &rect);
 
         /**
          * Clears the default limits and disables double click restoration.

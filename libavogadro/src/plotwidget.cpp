@@ -93,6 +93,7 @@ namespace Avogadro {
     PlotWidget *q;
 
     void calcDataRectLimits( double x1, double x2, double y1, double y2 );
+    void calcDataRectLimits( QRectF & rect);
     /**
      * @return a value indicating how well the given rectangle is
      * avoiding masked regions in the plot.  A higher returned value
@@ -168,6 +169,12 @@ namespace Avogadro {
     update();
   }
 
+  void PlotWidget::setLimits( QRectF & rect)
+  {
+    d->calcDataRectLimits(rect);
+    update();
+  }
+
   void PlotWidget::scaleLimits(PlotObject * po) {
     double xmin=0, xmax=0, ymin=0, ymax=0;
     if (po) {
@@ -225,6 +232,12 @@ namespace Avogadro {
     setLimits( x1, x2, y1, y2 );
   }
 
+  void PlotWidget::setDefaultLimits( QRectF & rect)
+  {
+    d->defaultDataRect = rect;
+    setLimits(rect);
+  }
+
   void PlotWidget::unsetDefaultLimits()
   {
     if (!defaultDataRect().isNull()) {
@@ -253,6 +266,19 @@ namespace Avogadro {
 
     dataRect = QRectF( XA1, YA1, XA2 - XA1, YA2 - YA1 );
 
+    q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
+    q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
+
+    if ( secondDataRect.isNull() )
+    {
+      q->axis( RightAxis )->setTickMarks( dataRect.y(), dataRect.height() );
+      q->axis( TopAxis )->setTickMarks( dataRect.x(), dataRect.width() );
+    }
+  }
+
+  void PlotWidget::Private::calcDataRectLimits( QRectF & rect)
+  {
+    dataRect = rect;
     q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
     q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
 

@@ -1054,15 +1054,15 @@ namespace Avogadro {
 
   void SpectraDialog::regenerateCalculatedSpectra() {
     if (currentSpectra()) {
-        currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
-        currentSpectra()->updateDataTable();
+      currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
+      currentSpectra()->updateDataTable();
     }
     updatePlot();
   }
 
   void SpectraDialog::regenerateImportedSpectra() {
     if (currentSpectra())
-        currentSpectra()->getImportedPlotObject(m_importedSpectra);
+      currentSpectra()->getImportedPlotObject(m_importedSpectra);
     updatePlot();
   }
 
@@ -1070,6 +1070,48 @@ namespace Avogadro {
   {
     if (currentSpectra())
         currentSpectra()->setupPlot(ui.plot);
+    QList< PlotObject* > plotObjectList = ui.plot->plotObjects();
+    QList< PlotPoint* > pointList;
+    PlotObject *obj;
+    PlotPoint *p;
+    double minX=0, maxX=0, minY=0, maxY=0, x=0, y=0;
+    double x1, x2, y1, y2;
+    foreach(obj, plotObjectList) {
+      foreach (p, obj->points()) {
+        //if (!ui.plot->defaultDataRect().contains(p->position()))
+        x = p->x();
+        y = p->y();
+        if (x < minX)
+          minX = x;
+        if (x > maxX)
+          maxX = x;
+         if (y < minY)
+          minY = y;
+        if (y > maxY)
+          maxY = y;
+      }
+    }
+    QRectF defaultRect = ui.plot->defaultDataRect();
+    x1 = minX-(maxX-minX)*0.01;    
+    x2 = maxX+(maxX-minX)*0.01;
+    y1 = minY-(maxY-minY)*0.03;
+    y2 = maxY+(maxY-minY)*0.03;
+    QRectF dataRect(x1,y1,x2,y2);
+    QRectF fullRect(defaultRect.united(dataRect));         
+    if (defaultRect.width() < 0) {
+      x1 = fullRect.left();
+      x2 = fullRect.right();
+      fullRect.setLeft(x2);
+      fullRect.setRight(x1);
+    }
+    if (defaultRect.height() < 0) {
+      x1 = fullRect.bottom();
+      x2 = fullRect.top();
+      fullRect.setBottom(x2);
+      fullRect.setTop(x1);
+    }
+    ui.plot->setDefaultLimits(fullRect);    
+    qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
     ui.plot->update();
   }
 
@@ -1111,7 +1153,6 @@ namespace Avogadro {
   {
     m_lastUpdate = 0;
     m_time.restart();
-    qDebug() << "Timer restarted";
     event->accept();
   }
 }
