@@ -292,7 +292,7 @@ namespace Avogadro {
         }
         plotObject->addPoint( wavenumber, 100 );
       }
-      plotObject->addPoint( 4000, 100);
+      plotObject->addPoint( 3500, 100);
     } // End singlets
 
     else { // Get gaussians
