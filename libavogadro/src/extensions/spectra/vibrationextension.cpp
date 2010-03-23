@@ -21,8 +21,8 @@
  ***********************************************************************/
 
 #include "vibrationextension.h"
-#include <avogadro/pluginmanager.h>
 
+#include <avogadro/pluginmanager.h>
 #include <avogadro/primitive.h>
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
@@ -383,7 +383,8 @@ namespace Avogadro {
       
     PluginManager *plugins = PluginManager::instance();
     Extension * spectra = plugins->extension("Spectra", m_widget);
-    delete plugins;
+    if (!spectra)
+      return;
     spectra->setMolecule(m_molecule);
     spectra->performAction(0, m_widget);
   } 
