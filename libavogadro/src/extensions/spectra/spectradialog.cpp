@@ -272,7 +272,7 @@ namespace Avogadro {
       ui.combo_spectra->setCurrentIndex(0);
     }
     updateCurrentSpectra( ui.combo_spectra->currentText() );
-    regenerateCalculatedSpectra();
+    //regenerateCalculatedSpectra();
   }
 
   void SpectraDialog::writeSettings() const {
@@ -609,6 +609,7 @@ namespace Avogadro {
     // Update plot and plot objects
     if (currentSpectra()) currentSpectra()->setImportedData(x,y);
     regenerateImportedSpectra();
+    updatePlot();
   }
 
   void SpectraDialog::loadSpectra()
@@ -1057,13 +1058,13 @@ namespace Avogadro {
       currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
       currentSpectra()->updateDataTable();
     }
-    updatePlot();
+    //updatePlot();
   }
 
   void SpectraDialog::regenerateImportedSpectra() {
     if (currentSpectra())
       currentSpectra()->getImportedPlotObject(m_importedSpectra);
-    updatePlot();
+    //updatePlot();
   }
 
   void SpectraDialog::updatePlot()
