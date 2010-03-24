@@ -449,7 +449,7 @@ namespace Avogadro
     setBondRadius(settings.value("bondRadius", 2).toInt());
     setShowMulti(settings.value("showMulti", 2).toInt());
     setOpacity(settings.value("opacity", 100).toInt());
-    setAtomRadiusType(settings.value("radiusType", 0).toInt());
+    setAtomRadiusType(settings.value("radiusType", 1).toInt());
 
     if (m_settingsWidget) {
       m_settingsWidget->atomRadiusSlider->setValue(int(50*m_atomRadiusPercentage));
