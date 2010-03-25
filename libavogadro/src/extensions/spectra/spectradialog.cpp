@@ -88,6 +88,7 @@ namespace Avogadro {
     ui.plot->setAntialiasing(true);
     ui.plot->setMouseTracking(true);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    ui.plot->setJailedInDefaults(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("X Axis"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Y Axis"));
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
@@ -504,7 +505,7 @@ namespace Avogadro {
     // Regenerate spectra plot objects and redraw plot
     regenerateCalculatedSpectra();
     regenerateImportedSpectra();
-    updatePlot();
+//    updatePlot();
   }
 
   void SpectraDialog::updateComboSpectra(int index)
@@ -609,7 +610,7 @@ namespace Avogadro {
     // Update plot and plot objects
     if (currentSpectra()) currentSpectra()->setImportedData(x,y);
     regenerateImportedSpectra();
-    updatePlot();
+    //updatePlot();
   }
 
   void SpectraDialog::loadSpectra()
@@ -1058,13 +1059,13 @@ namespace Avogadro {
       currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
       currentSpectra()->updateDataTable();
     }
-    //updatePlot();
+    updatePlot();
   }
 
   void SpectraDialog::regenerateImportedSpectra() {
     if (currentSpectra())
       currentSpectra()->getImportedPlotObject(m_importedSpectra);
-    //updatePlot();
+    updatePlot();
   }
 
   void SpectraDialog::updatePlot()
@@ -1112,7 +1113,7 @@ namespace Avogadro {
       fullRect.setTop(x1);
     }
     ui.plot->setDefaultLimits(fullRect);    
-    qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
+    //qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
     ui.plot->update();
   }
 

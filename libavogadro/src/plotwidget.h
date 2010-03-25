@@ -595,6 +595,11 @@ namespace Avogadro {
          * @sa selectPoint() clearAndSelectPoint() selectPoints() clearAndSelectPoints() clearSelection()
          */
         void setPointFollowMouse(bool b);
+        
+        /**
+         * Don't permit moving away from default limits
+         */
+        void setJailedInDefaults(bool b);
 
     protected:
         /**
