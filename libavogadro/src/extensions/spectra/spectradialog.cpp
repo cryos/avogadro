@@ -291,17 +291,7 @@ namespace Avogadro {
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < m_schemes->size(); ++i) {
       settings.setArrayIndex(i);
-      ////////////////////////////////////////////////////////////////
-      // FIXME: When we bump to Qt 4.5, change the following
-      //      settings.setValue("scheme", m_schemes->at(i));
-      settings.beginGroup("hash");
-      QHashIterator<QString, QVariant> iter(m_schemes->at(i));
-      while (iter.hasNext()) {
-          iter.next();
-          settings.setValue(iter.key(), iter.value());
-        }
-      settings.endGroup();
-      ////////////////////////////////////////////////////////////////
+      settings.setValue("scheme", m_schemes->at(i));
     }
     settings.endArray();
   }
@@ -320,17 +310,7 @@ namespace Avogadro {
     m_schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex(i);
-      ////////////////////////////////////////////////////////////////
-      // FIXME: QVariant::toHash() isn't around until Qt 4.5
-      //      m_schemes->append(settings.value("scheme").toHash());
-      settings.beginGroup("hash");
-      QHash<QString, QVariant> hash;
-      QStringList keys = settings.allKeys();
-      foreach (const QString &key, settings.allKeys())
-        hash[key] = settings.value(key);
-      m_schemes->append(hash);
-      settings.endGroup();
-      ////////////////////////////////////////////////////////////////
+      m_schemes->append(settings.value("scheme").toHash());
       new QListWidgetItem(m_schemes->at(i)["name"].toString(), ui.list_schemes);
     }
     settings.endArray();
@@ -430,7 +410,7 @@ namespace Avogadro {
   void SpectraDialog::changeBackgroundColor()
   {
     QColor current (m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Background Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["backgroundColor"] = color;
       schemeChanged();
@@ -440,7 +420,7 @@ namespace Avogadro {
   void SpectraDialog::changeForegroundColor()
   {
     QColor current (m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Foreground Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["foregroundColor"] = color;
       schemeChanged();
@@ -450,7 +430,7 @@ namespace Avogadro {
   void SpectraDialog::changeCalculatedSpectraColor()
   {
     QColor current (m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Calculated Spectra Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["calculatedColor"] = color;
       schemeChanged();
@@ -460,7 +440,7 @@ namespace Avogadro {
   void SpectraDialog::changeImportedSpectraColor()
   {
     QColor current (m_schemes->at(m_scheme)["importedColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Imported Spectra Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["importedColor"] = color;
       schemeChanged();
