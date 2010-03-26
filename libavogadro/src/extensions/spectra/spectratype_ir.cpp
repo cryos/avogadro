@@ -236,7 +236,7 @@ namespace Avogadro {
       if (maxIntensity != 0) {
         t = t / maxIntensity; 	// Normalize
       }
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+      //t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
@@ -257,7 +257,7 @@ namespace Avogadro {
   }
 
   void IRSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 3500.0, 400.0, 0.0, 100.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
@@ -265,7 +265,7 @@ namespace Avogadro {
   void IRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
-    if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
+    /*if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setEnabled(false);
       ui.cb_labelPeaks->setChecked(false);
     }
@@ -274,7 +274,7 @@ namespace Avogadro {
     }
     if (!ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setChecked(false);
-    }
+    }*/
 
     if (m_fwhm == 0.0) { // get singlets
       plotObject->addPoint( 400, 100);
@@ -292,7 +292,7 @@ namespace Avogadro {
         }
         plotObject->addPoint( wavenumber, 100 );
       }
-      plotObject->addPoint( 4000, 100);
+      plotObject->addPoint( 3500, 100);
     } // End singlets
 
     else { // Get gaussians
@@ -327,7 +327,8 @@ namespace Avogadro {
         // 100 / (max - min)	: Conversion factor for current spread -> percent
         // * 0.97 + 3		: makes plot stay away from 0 transmittance
         //			: (easier to see multiple peaks on strong signals)
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
       }
     } // End gaussians
 
@@ -336,6 +337,62 @@ namespace Avogadro {
       for(int i = 0; i< plotObject->points().size(); i++) {
         double absorbance = 100 - plotObject->points().at(i)->y();
         plotObject->points().at(i)->setY(absorbance);
+      }
+    }
+
+    // Add labels for gaussians?    
+    if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
+      for(int i = 1; i< plotObject->points().size()-1; i++) { // No border extremal points
+        double y, y1, y2;
+        int m, n;
+        if (ui.combo_yaxis->currentIndex() == 1) {
+        // Find maxima
+          y = plotObject->points().at(i)->y();
+          m = 1; n = 1;
+          do {
+            y1 = plotObject->points().at(i-m)->y();
+            y2 = plotObject->points().at(i+n)->y();
+            if (y > y1 && y > y2) {
+              // Point between y1 and y2 is maximum
+              int k = ((i-m)+(i+n))/2;
+              double wavenumber = plotObject->points().at(k)->x();
+              plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
+              i = i + n;
+              break;
+            }
+            if (y < y1 || y < y2)
+              break; // Is not maximum
+            if ((y == y1) && (i-m-1 >= 0))
+              m++;
+            if ((y == y2) && (i+n+1 < plotObject->points().size()))
+              n++;
+            
+          }while (y >= y1 && y >=y2);
+          
+        } else {
+        // Find minima
+          y = plotObject->points().at(i)->y();
+          m = 1; n = 1;
+          do {
+            y1 = plotObject->points().at(i-m)->y();
+            y2 = plotObject->points().at(i+n)->y();
+            if (y < y1 && y < y2) {
+              // Point between y1 and y2 is mimimum
+              int k = ((i-m)+(i+n))/2;
+              double wavenumber = plotObject->points().at(k)->x();
+              plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
+              i = i + n;
+              break;
+            }
+            if (y > y1 || y > y2)
+              break; // Is not minimum
+            if ((y == y1) && (i-m-1 >= 0))
+              m++;
+            if ((y == y2) && (i+n+1 < plotObject->points().size()))
+              n++;
+            
+          }while (y <= y1 && y <=y2);
+        }
       }
     }
     return;

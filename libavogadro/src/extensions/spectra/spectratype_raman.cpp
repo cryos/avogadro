@@ -136,7 +136,7 @@ namespace Avogadro {
   }
 
   void RamanSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 5000.0, 0.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 3500.0, 0.0, 0.0, 1.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
@@ -181,7 +181,7 @@ namespace Avogadro {
         }
         plotObject->addPoint( wavenumber, 0 );
       }
-      plotObject->addPoint( 5000, 0);
+      plotObject->addPoint( 3500, 0);
     } // End singlets
 
     else { // Get gaussians
@@ -216,7 +216,8 @@ namespace Avogadro {
         // 100 / (max - min)	: Conversion factor for current spread -> percent
         // * 0.97 + 3		: makes plot stay away from 0 transmittance
         //			: (easier to see multiple peaks on strong signals)
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
       }
     } // End gaussians
 

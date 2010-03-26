@@ -61,7 +61,7 @@ namespace Avogadro {
       : q( qq ),
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
         showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-        font( QFont() ), followingMouse(false)
+        font( QFont() ), followingMouse(false), jailedInDefaults(false)
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -93,6 +93,7 @@ namespace Avogadro {
     PlotWidget *q;
 
     void calcDataRectLimits( double x1, double x2, double y1, double y2 );
+    void calcDataRectLimits( QRectF & rect);
     /**
      * @return a value indicating how well the given rectangle is
      * avoiding masked regions in the plot.  A higher returned value
@@ -121,12 +122,14 @@ namespace Avogadro {
     QRectF dataRect, secondDataRect, defaultDataRect;
     // Limits of the plot area in pixel units
     QRect pixRect;
-    //Array holding the mask of "used" regions of the plot
+    // Array holding the mask of "used" regions of the plot
     QImage plotMask;
-    //Font properties
+    // Font properties
     QFont font;
-    //Whether to highlight the point nearest the mouse
+    // Whether to highlight the point nearest the mouse
     bool followingMouse;
+    // Wether can move away default limits rectangle
+    bool jailedInDefaults;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -165,6 +168,12 @@ namespace Avogadro {
   void PlotWidget::setLimits( double x1, double x2, double y1, double y2 )
   {
     d->calcDataRectLimits( x1, x2, y1, y2 );
+    update();
+  }
+
+  void PlotWidget::setLimits( QRectF & rect)
+  {
+    d->calcDataRectLimits(rect);
     update();
   }
 
@@ -225,6 +234,12 @@ namespace Avogadro {
     setLimits( x1, x2, y1, y2 );
   }
 
+  void PlotWidget::setDefaultLimits( QRectF & rect)
+  {
+    d->defaultDataRect = rect;
+    setLimits(rect);
+  }
+
   void PlotWidget::unsetDefaultLimits()
   {
     if (!defaultDataRect().isNull()) {
@@ -253,6 +268,19 @@ namespace Avogadro {
 
     dataRect = QRectF( XA1, YA1, XA2 - XA1, YA2 - YA1 );
 
+    q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
+    q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
+
+    if ( secondDataRect.isNull() )
+    {
+      q->axis( RightAxis )->setTickMarks( dataRect.y(), dataRect.height() );
+      q->axis( TopAxis )->setTickMarks( dataRect.x(), dataRect.width() );
+    }
+  }
+
+  void PlotWidget::Private::calcDataRectLimits( QRectF & rect)
+  {
+    dataRect = rect;
     q->axis( LeftAxis )->setTickMarks( dataRect.y(), dataRect.height() );
     q->axis( BottomAxis )->setTickMarks( dataRect.x(), dataRect.width() );
 
@@ -354,6 +382,17 @@ namespace Avogadro {
     setMouseTracking(b);
     d->followingMouse = b;
     update();
+  }
+
+  void PlotWidget::setJailedInDefaults(bool b)
+  {
+    d->jailedInDefaults = b;
+    // TODO: refactor shared code with mouseDoubleClick
+    double x1 = defaultDataRect().x();
+    double x2 = x1 + defaultDataRect().width();
+    double y1 = defaultDataRect().y();
+    double y2 = y1 + defaultDataRect().height();
+    setLimits(x1, x2, y1, y2);
   }
 
   void PlotWidget::addPlotObject( PlotObject *object )
@@ -585,8 +624,31 @@ namespace Avogadro {
       float newY1 = dataRect().y() + unitDelta.y();
       float newY2 = dataRect().y() + unitDelta.y() + dataRect().height();
 
-      setLimits(newX1, newX2, newY1, newY2);// Update axis
-
+      if (d->jailedInDefaults) {
+        if (defaultDataRect().width() > 0) {
+          if (newX1 < defaultDataRect().left() || (newX2 > defaultDataRect().right())) {
+            newX1 = dataRect().x();
+            newX2 = dataRect().x() + dataRect().width();
+          }
+        } else {
+          if (newX1 > defaultDataRect().left() || (newX2 < defaultDataRect().right())) {
+            newX1 = dataRect().x();
+            newX2 = dataRect().x() + dataRect().width();
+          }            
+        }
+        if (defaultDataRect().height() > 0) {
+          if (newY1 < defaultDataRect().top() || (newY2 > defaultDataRect().bottom())) {
+            newY1 = dataRect().y();
+            newY2 = dataRect().y() + dataRect().height();
+          }
+        } else {
+          if (newY1 < defaultDataRect().bottom() || (newY2 > defaultDataRect().top())){
+            newY1 = dataRect().y();
+            newY2 = dataRect().y() + dataRect().height();
+          }
+        }
+      }      
+      setLimits(newX1, newX2, newY1, newY2);
       mouseClickOrigin = event->posF();
     }
 
@@ -641,6 +703,7 @@ namespace Avogadro {
   void PlotWidget::mouseDoubleClickEvent(QMouseEvent *event)
   {
     if ((event->buttons() & Qt::LeftButton) && !defaultDataRect().isNull()) {
+      // TODO: refactor shared code with setJailedInDefaults
       double x1 = defaultDataRect().x();
       double x2 = x1 + defaultDataRect().width();
       double y1 = defaultDataRect().y();

@@ -88,6 +88,7 @@ namespace Avogadro {
     ui.plot->setAntialiasing(true);
     ui.plot->setMouseTracking(true);
     ui.plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    ui.plot->setJailedInDefaults(true);
     ui.plot->axis(PlotWidget::BottomAxis)->setLabel(tr("X Axis"));
     ui.plot->axis(PlotWidget::LeftAxis)->setLabel(tr("Y Axis"));
     m_calculatedSpectra = new PlotObject (Qt::red, PlotObject::Lines, 2);
@@ -272,7 +273,7 @@ namespace Avogadro {
       ui.combo_spectra->setCurrentIndex(0);
     }
     updateCurrentSpectra( ui.combo_spectra->currentText() );
-    regenerateCalculatedSpectra();
+    //regenerateCalculatedSpectra();
   }
 
   void SpectraDialog::writeSettings() const {
@@ -290,17 +291,7 @@ namespace Avogadro {
     settings.beginWriteArray("spectra/schemes");
     for (int i = 0; i < m_schemes->size(); ++i) {
       settings.setArrayIndex(i);
-      ////////////////////////////////////////////////////////////////
-      // FIXME: When we bump to Qt 4.5, change the following
-      //      settings.setValue("scheme", m_schemes->at(i));
-      settings.beginGroup("hash");
-      QHashIterator<QString, QVariant> iter(m_schemes->at(i));
-      while (iter.hasNext()) {
-          iter.next();
-          settings.setValue(iter.key(), iter.value());
-        }
-      settings.endGroup();
-      ////////////////////////////////////////////////////////////////
+      settings.setValue("scheme", m_schemes->at(i));
     }
     settings.endArray();
   }
@@ -319,17 +310,7 @@ namespace Avogadro {
     m_schemes = new QList<QHash<QString, QVariant> >;
     for (int i = 0; i < size; ++i) {
       settings.setArrayIndex(i);
-      ////////////////////////////////////////////////////////////////
-      // FIXME: QVariant::toHash() isn't around until Qt 4.5
-      //      m_schemes->append(settings.value("scheme").toHash());
-      settings.beginGroup("hash");
-      QHash<QString, QVariant> hash;
-      QStringList keys = settings.allKeys();
-      foreach (const QString &key, settings.allKeys())
-        hash[key] = settings.value(key);
-      m_schemes->append(hash);
-      settings.endGroup();
-      ////////////////////////////////////////////////////////////////
+      m_schemes->append(settings.value("scheme").toHash());
       new QListWidgetItem(m_schemes->at(i)["name"].toString(), ui.list_schemes);
     }
     settings.endArray();
@@ -429,7 +410,7 @@ namespace Avogadro {
   void SpectraDialog::changeBackgroundColor()
   {
     QColor current (m_schemes->at(m_scheme)["backgroundColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Background Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Background Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["backgroundColor"] = color;
       schemeChanged();
@@ -439,7 +420,7 @@ namespace Avogadro {
   void SpectraDialog::changeForegroundColor()
   {
     QColor current (m_schemes->at(m_scheme)["foregroundColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Foreground Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Foreground Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["foregroundColor"] = color;
       schemeChanged();
@@ -449,7 +430,7 @@ namespace Avogadro {
   void SpectraDialog::changeCalculatedSpectraColor()
   {
     QColor current (m_schemes->at(m_scheme)["calculatedColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Calculated Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Calculated Spectra Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["calculatedColor"] = color;
       schemeChanged();
@@ -459,7 +440,7 @@ namespace Avogadro {
   void SpectraDialog::changeImportedSpectraColor()
   {
     QColor current (m_schemes->at(m_scheme)["importedColor"].value<QColor>());
-    QColor color = QColorDialog::getColor(current, this);//, tr("Select Imported Spectra Color")); <-- Title not supported until Qt 4.5 bump.
+    QColor color = QColorDialog::getColor(current, this, tr("Select Imported Spectra Color"));
     if (color.isValid() && color != current) {
       (*m_schemes)[m_scheme]["importedColor"] = color;
       schemeChanged();
@@ -504,7 +485,7 @@ namespace Avogadro {
     // Regenerate spectra plot objects and redraw plot
     regenerateCalculatedSpectra();
     regenerateImportedSpectra();
-    updatePlot();
+//    updatePlot();
   }
 
   void SpectraDialog::updateComboSpectra(int index)
@@ -609,6 +590,7 @@ namespace Avogadro {
     // Update plot and plot objects
     if (currentSpectra()) currentSpectra()->setImportedData(x,y);
     regenerateImportedSpectra();
+    //updatePlot();
   }
 
   void SpectraDialog::loadSpectra()
@@ -1054,15 +1036,15 @@ namespace Avogadro {
 
   void SpectraDialog::regenerateCalculatedSpectra() {
     if (currentSpectra()) {
-        currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
-        currentSpectra()->updateDataTable();
+      currentSpectra()->getCalculatedPlotObject(m_calculatedSpectra);
+      currentSpectra()->updateDataTable();
     }
     updatePlot();
   }
 
   void SpectraDialog::regenerateImportedSpectra() {
     if (currentSpectra())
-        currentSpectra()->getImportedPlotObject(m_importedSpectra);
+      currentSpectra()->getImportedPlotObject(m_importedSpectra);
     updatePlot();
   }
 
@@ -1070,6 +1052,48 @@ namespace Avogadro {
   {
     if (currentSpectra())
         currentSpectra()->setupPlot(ui.plot);
+    QList< PlotObject* > plotObjectList = ui.plot->plotObjects();
+    QList< PlotPoint* > pointList;
+    PlotObject *obj;
+    PlotPoint *p;
+    double minX=0, maxX=0, minY=0, maxY=0, x=0, y=0;
+    double x1, x2, y1, y2;
+    foreach(obj, plotObjectList) {
+      foreach (p, obj->points()) {
+        //if (!ui.plot->defaultDataRect().contains(p->position()))
+        x = p->x();
+        y = p->y();
+        if (x < minX)
+          minX = x;
+        if (x > maxX)
+          maxX = x;
+         if (y < minY)
+          minY = y;
+        if (y > maxY)
+          maxY = y;
+      }
+    }
+    QRectF defaultRect = ui.plot->defaultDataRect();
+    x1 = minX-(maxX-minX)*0.01;    
+    x2 = maxX+(maxX-minX)*0.01;
+    y1 = minY-(maxY-minY)*0.03;
+    y2 = maxY+(maxY-minY)*0.03;
+    QRectF dataRect(x1,y1,x2,y2);
+    QRectF fullRect(defaultRect.united(dataRect));         
+    if (defaultRect.width() < 0) {
+      x1 = fullRect.left();
+      x2 = fullRect.right();
+      fullRect.setLeft(x2);
+      fullRect.setRight(x1);
+    }
+    if (defaultRect.height() < 0) {
+      x1 = fullRect.bottom();
+      x2 = fullRect.top();
+      fullRect.setBottom(x2);
+      fullRect.setTop(x1);
+    }
+    ui.plot->setDefaultLimits(fullRect);    
+    //qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
     ui.plot->update();
   }
 
@@ -1111,7 +1135,6 @@ namespace Avogadro {
   {
     m_lastUpdate = 0;
     m_time.restart();
-    qDebug() << "Timer restarted";
     event->accept();
   }
 }
