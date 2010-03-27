@@ -17,8 +17,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "spectratype_nmr.h"
-#include "spectratype.h"
+#include "nmr.h"
 #include "spectradialog.h"
 
 #include <QtGui/QMessageBox>

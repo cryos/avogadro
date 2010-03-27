@@ -20,7 +20,7 @@
 #ifndef SPECTRATYPE_IR_H
 #define SPECTRATYPE_IR_H
 
-#include "spectratype_abstract_ir.h"
+#include "abstract_ir.h"
 
 namespace Avogadro {
 

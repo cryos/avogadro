@@ -19,9 +19,7 @@
 
 #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#include "spectratype_cd.h"
-#include "spectratype.h"
-#include "spectradialog.h"
+#include "cd.h"
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>

@@ -18,7 +18,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "spectratype_abstract_ir.h"
+#include "abstract_ir.h"
 
 using namespace std;
 

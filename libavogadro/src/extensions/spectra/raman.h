@@ -21,7 +21,7 @@
 #ifndef SPECTRATYPE_RAMAN_H
 #define SPECTRATYPE_RAMAN_H
 
-#include "spectratype_abstract_ir.h"
+#include "abstract_ir.h"
 
 namespace Avogadro {
 
