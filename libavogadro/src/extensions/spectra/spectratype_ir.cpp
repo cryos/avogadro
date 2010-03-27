@@ -2,6 +2,7 @@
   SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -29,141 +30,6 @@ using namespace std;
 
 namespace Avogadro {
 
-  AbstractIRSpectra::AbstractIRSpectra( SpectraDialog *parent ) :
-    SpectraType( parent )
-    {
-    ui.setupUi(m_tab_widget);
-
-    // Setup signals/slots    
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-    connect(ui.hs_scale, SIGNAL(sliderPressed()),
-            this, SLOT(scaleSliderPressed()));
-    connect(ui.hs_scale, SIGNAL(sliderReleased()),
-            this, SLOT(scaleSliderReleased()));
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-            this, SLOT(updateScaleSpin(int)));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-    connect(ui.hs_FWHM, SIGNAL(sliderPressed()),
-            this, SLOT(fwhmSliderPressed()));
-    connect(ui.hs_FWHM, SIGNAL(sliderReleased()),
-            this, SLOT(fwhmSliderReleased()));
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-            this, SLOT(updateFWHMSpin(int)));
-    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));
-    connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(changeScalingType(int)));
-    }
-
-  void AbstractIRSpectra::rescaleFrequencies()
-  {
-    for (int i=0; i<m_xList_orig.size(); i++) {
-      m_xList[i] = m_xList_orig.at(i) * scale(m_xList.at(i));
-    }
-    emit plotDataChanged();
-  }
-
-  void AbstractIRSpectra::updateScaleSpin(int intScale)
-  {
-    double scale = intScale*0.01;
-    if (scale == m_scale) return;
-    m_scale = scale;
-    ui.spin_scale->setValue(scale);
-    rescaleFrequencies();
-  }
-
-  void AbstractIRSpectra::updateScaleSlider(double scale)
-  {
-    int intScale = static_cast<int>(scale*100);
-    disconnect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    ui.hs_scale->setValue(intScale);
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    m_scale = scale;
-    rescaleFrequencies();
-  }
-
-  void AbstractIRSpectra::scaleSliderPressed()
-  {
-      disconnect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-
-  void AbstractIRSpectra::scaleSliderReleased()
-  {
-      connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-  
-  void AbstractIRSpectra::updateFWHMSpin(int fwhm)
-  {
-    if (fwhm == m_fwhm) return;
-    m_fwhm = fwhm;
-    ui.spin_FWHM->setValue(m_fwhm);
-    emit plotDataChanged();
-  }
-  
-  void AbstractIRSpectra::updateFWHMSlider(double fwhm)
-  {    
-    disconnect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    ui.hs_FWHM->setValue(fwhm);
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    m_fwhm = fwhm;
-    emit plotDataChanged();
-  }
-  
-  void AbstractIRSpectra::fwhmSliderPressed()
-  {
-      disconnect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-  
-  void AbstractIRSpectra::fwhmSliderReleased()
-  {
-      connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-
-  void AbstractIRSpectra::updateYAxis(QString text) {
-    if (m_yaxis == text) {
-      return;
-    }
-    m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
-    m_yaxis = text;
-    emit plotDataChanged();
-  }
-
-  void AbstractIRSpectra::changeScalingType(int type) {
-    m_scalingType = static_cast<ScalingType>(type);
-    rescaleFrequencies();
-  }    
-
-  double AbstractIRSpectra::scale(double w)
-  {
-    switch(m_scalingType) {
-      case LINEAR:
-        return m_scale;
-        break;
-      case RELATIVE:
-        return 1-w*(1-m_scale)/1000;
-        break;
-    //TODO: add other scaling algorithms
-      default:
-        return m_scale;
-    }
-  }
-
-  //------------------------------------------------
-    
   IRSpectra::IRSpectra( SpectraDialog *parent ) :
     AbstractIRSpectra( parent )
   {
@@ -342,58 +208,10 @@ namespace Avogadro {
 
     // Add labels for gaussians?    
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
-      for(int i = 1; i< plotObject->points().size()-1; i++) { // No border extremal points
-        double y, y1, y2;
-        int m, n;
-        if (ui.combo_yaxis->currentIndex() == 1) {
-        // Find maxima
-          y = plotObject->points().at(i)->y();
-          m = 1; n = 1;
-          do {
-            y1 = plotObject->points().at(i-m)->y();
-            y2 = plotObject->points().at(i+n)->y();
-            if (y > y1 && y > y2) {
-              // Point between y1 and y2 is maximum
-              int k = ((i-m)+(i+n))/2;
-              double wavenumber = plotObject->points().at(k)->x();
-              plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
-              i = i + n;
-              break;
-            }
-            if (y < y1 || y < y2)
-              break; // Is not maximum
-            if ((y == y1) && (i-m-1 >= 0))
-              m++;
-            if ((y == y2) && (i+n+1 < plotObject->points().size()))
-              n++;
-            
-          }while (y >= y1 && y >=y2);
-          
-        } else {
-        // Find minima
-          y = plotObject->points().at(i)->y();
-          m = 1; n = 1;
-          do {
-            y1 = plotObject->points().at(i-m)->y();
-            y2 = plotObject->points().at(i+n)->y();
-            if (y < y1 && y < y2) {
-              // Point between y1 and y2 is mimimum
-              int k = ((i-m)+(i+n))/2;
-              double wavenumber = plotObject->points().at(k)->x();
-              plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
-              i = i + n;
-              break;
-            }
-            if (y > y1 || y > y2)
-              break; // Is not minimum
-            if ((y == y1) && (i-m-1 >= 0))
-              m++;
-            if ((y == y2) && (i+n+1 < plotObject->points().size()))
-              n++;
-            
-          }while (y <= y1 && y <=y2);
-        }
-      }
+      if (ui.combo_yaxis->currentIndex() == 1)
+        assignGaussianLabels(plotObject, true);
+      else
+        assignGaussianLabels(plotObject, false);
     }
     return;
   } // End IR spectra

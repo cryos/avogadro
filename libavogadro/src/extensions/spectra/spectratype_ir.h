@@ -20,51 +20,9 @@
 #ifndef SPECTRATYPE_IR_H
 #define SPECTRATYPE_IR_H
 
-#include <QtCore/QHash>
-#include <QtCore/QVariant>
-
-#include "spectradialog.h"
-#include "spectratype.h"
-#include "ui_spectratab_ir_raman.h"
-
-#include <avogadro/plotwidget.h>
+#include "spectratype_abstract_ir.h"
 
 namespace Avogadro {
-
-  enum ScalingType { LINEAR, RELATIVE };
-
-  // Abstract data type - no instance of it can be created
-  class AbstractIRSpectra : public SpectraType
-  {
-    Q_OBJECT
-
-  public:
-    AbstractIRSpectra( SpectraDialog *parent = 0 );
-    virtual void setupPlot(PlotWidget * plot) = 0;
-    
-  protected slots:
-    void updateScaleSpin(int);
-    void updateScaleSlider(double);
-    void scaleSliderPressed();
-    void scaleSliderReleased();
-    void updateFWHMSpin(int);
-    void updateFWHMSlider(double);
-    void fwhmSliderPressed();
-    void fwhmSliderReleased();    
-    void changeScalingType(int);
-    void updateYAxis(QString);
-    void rescaleFrequencies();
-
-  protected:
-    double scale(double w);
-    
-    Ui::Tab_IR_Raman ui;
-    double m_scale;
-    double m_fwhm;
-    QString m_yaxis;
-    QList<double> m_xList_orig;
-    ScalingType m_scalingType;
-  };
 
   class IRSpectra : public AbstractIRSpectra
   {

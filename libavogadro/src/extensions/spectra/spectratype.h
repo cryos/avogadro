@@ -64,6 +64,7 @@ namespace Avogadro {
     QWidget * getTabWidget() {return m_tab_widget;}
     QString getTSV(QString xTitle, QString yTitle);
     void clear();
+    static void assignGaussianLabels(PlotObject *plotObject, bool findMax);
 
   signals:
     void plotDataChanged();

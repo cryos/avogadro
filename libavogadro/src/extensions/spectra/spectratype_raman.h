@@ -21,10 +21,7 @@
 #ifndef SPECTRATYPE_RAMAN_H
 #define SPECTRATYPE_RAMAN_H
 
-#include <QtCore/QHash>
-#include <QtCore/QVariant>
-
-#include "spectratype_ir.h"
+#include "spectratype_abstract_ir.h"
 
 namespace Avogadro {
 

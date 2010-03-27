@@ -129,6 +129,59 @@ namespace Avogadro {
     qSort(xPoints);
     return xPoints;
   }
+
+  void SpectraType::assignGaussianLabels(PlotObject *plotObject, bool findMax)
+  {
+    for(int i = 1; i< plotObject->points().size()-1; i++) { // No border extremal points
+      double y, y1, y2;
+      int m, n;
+      if (findMax) {
+        y = plotObject->points().at(i)->y();
+        m = 1; n = 1;
+        do {
+          y1 = plotObject->points().at(i-m)->y();
+          y2 = plotObject->points().at(i+n)->y();
+          if (y > y1 && y > y2) {
+            // Point between y1 and y2 is maximum
+            int k = ((i-m)+(i+n))/2;
+            double wavenumber = plotObject->points().at(k)->x();
+            plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
+            i = i + n;
+            break;
+          }
+          if (y < y1 || y < y2)
+            break; // Is not maximum
+          if ((y == y1) && (i-m-1 >= 0))
+            m++;
+          if ((y == y2) && (i+n+1 < plotObject->points().size()))
+            n++;
+          
+        }while (y >= y1 && y >=y2);
+        
+      } else {
+      // Find minima
+        y = plotObject->points().at(i)->y();
+        m = 1; n = 1;
+        do {
+          y1 = plotObject->points().at(i-m)->y();
+          y2 = plotObject->points().at(i+n)->y();
+          if (y < y1 && y < y2) {
+            // Point between y1 and y2 is mimimum
+            int k = ((i-m)+(i+n))/2;
+            double wavenumber = plotObject->points().at(k)->x();
+            plotObject->points().at(k)->setLabel(QString("%L1").arg(wavenumber, 0, 'f', 1));
+            i = i + n;
+            break;
+          }
+          if (y > y1 || y > y2)
+            break; // Is not minimum
+          if ((y == y1) && (i-m-1 >= 0))
+            m++;
+          if ((y == y2) && (i+n+1 < plotObject->points().size()))
+            n++;
+          
+        }while (y <= y1 && y <=y2);
+      }
+    }
+  }
 }
-
-
