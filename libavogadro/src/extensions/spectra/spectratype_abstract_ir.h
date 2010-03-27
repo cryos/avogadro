@@ -23,7 +23,7 @@
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratab_ir_raman.h"
+#include "ui_tab_ir_raman.h"
 
 #include <avogadro/plotwidget.h>
 

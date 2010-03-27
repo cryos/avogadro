@@ -27,7 +27,7 @@
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabuv.h"
+#include "ui_tab_uv.h"
 
 #include <avogadro/plotwidget.h>
 
