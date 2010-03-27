@@ -417,10 +417,18 @@ configure_file(
 )
 
 if(QT_MKSPECS_DIR)
-  install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
-    DESTINATION "${QT_MKSPECS_DIR}/features"
-  )
+  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+    string(REPLACE 
+      "${CMAKE_INSTALL_PREFIX}" 
+      "" 
+      QT_MKSPECS_RELATIVE 
+      "${QT_MKSPECS_DIR}"
+    )
+    install(FILES
+      "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+      DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
+    )
+  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
 else(QT_MKSPECS_DIR)
   message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will not be installed.")
 endif(QT_MKSPECS_DIR)
