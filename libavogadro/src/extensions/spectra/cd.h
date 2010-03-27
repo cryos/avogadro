@@ -17,26 +17,29 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-#ifndef SPECTRATYPE_NMR_H
-#define SPECTRATYPE_NMR_H
+//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#include <QtCore/QHash>
+#ifndef SPECTRATYPE_CD_H
+#define SPECTRATYPE_CD_H
+
+#include <QHash>
+#include <QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabnmr.h"
+#include "ui_tab_cd.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class NMRSpectra : public SpectraType
+  class CDSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    NMRSpectra( SpectraDialog *parent = 0 );
-    ~NMRSpectra();
+    CDSpectra( SpectraDialog *parent = 0 );
+    ~CDSpectra();
 
     void writeSettings();
     void readSettings();
@@ -45,22 +48,19 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-   // virtual void getImportedPlotObject(PlotObject *plotObject);
-    virtual QString getTSV();
-
-  public slots:
-    void setAtom(QString symbol);
+    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
+    //void getImportedPlotObject(PlotObject *plotObject);
+    QString getTSV();
 
   private slots:
-    void setReference(double ref);
-    void updatePlotAxes();
+    void rotatoryTypeChanged(const QString & str);
 
   private:
-    Ui::Tab_NMR ui;
-    double m_ref;
-    QHash<QString, QList<double>* > *m_NMRdata;
+    Ui::Tab_CD ui;
+    QList<double> *m_yListVelocity, *m_yListLength;
+    double m_fermi;
   };
 }
 
 #endif
+//#endif

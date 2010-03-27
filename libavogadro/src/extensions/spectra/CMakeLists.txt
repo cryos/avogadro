@@ -16,10 +16,10 @@ avogadro_plugin(vibrationextension
 ### Spectra
 if(OPENBABEL_IS_NEWER_THAN_2_2_99)
   avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp;spectratype_dos.cpp;spectratype_uv.cpp;spectratype_cd.cpp;spectratype_raman.cpp"
-  "spectradialog.ui;spectratab_ir_raman.ui;spectratabnmr.ui;spectratabdos.ui;spectratabuv.ui;spectratabcd.ui")
+  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;abstract_ir.cpp;ir.cpp;nmr.cpp;dos.cpp;uv.cpp;cd.cpp;raman.cpp"
+  "spectradialog.ui;tab_ir_raman.ui;tab_nmr.ui;tab_dos.ui;tab_uv.ui;tab_cd.ui")
 else(OPENBABEL_IS_NEWER_THAN_2_2_99)
   avogadro_plugin(spectraextension
-  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;spectratype_ir.cpp;spectratype_nmr.cpp"
-  "spectradialog.ui;spectratab_ir_raman.ui;spectratabnmr.ui")
+  "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;abstract_ir.cpp;ir.cpp;nmr.cpp"
+  "spectradialog.ui;tab_ir_raman.ui;tab_nmr.ui")
 endif(OPENBABEL_IS_NEWER_THAN_2_2_99)

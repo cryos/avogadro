@@ -1,7 +1,7 @@
 /**********************************************************************
   SpectraDialog - Visualize spectral data from QM calculations
 
-  Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -16,30 +16,22 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public icense for more details.
  ***********************************************************************/
-
 //#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
 
-#ifndef SPECTRATYPE_CD_H
-#define SPECTRATYPE_CD_H
+#ifndef SPECTRATYPE_RAMAN_H
+#define SPECTRATYPE_RAMAN_H
 
-#include <QHash>
-#include <QVariant>
-
-#include "spectradialog.h"
-#include "spectratype.h"
-#include "ui_spectratabcd.h"
-
-#include <avogadro/plotwidget.h>
+#include "abstract_ir.h"
 
 namespace Avogadro {
 
-  class CDSpectra : public SpectraType
+  class RamanSpectra : public AbstractIRSpectra
   {
     Q_OBJECT
 
   public:
-    CDSpectra( SpectraDialog *parent = 0 );
-    ~CDSpectra();
+    RamanSpectra( SpectraDialog *parent = 0 );
+    ~RamanSpectra();
 
     void writeSettings();
     void readSettings();
@@ -48,17 +40,16 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    //void getImportedPlotObject(PlotObject *plotObject);
     QString getTSV();
 
   private slots:
-    void rotatoryTypeChanged(const QString & str);
+    void updateT(double);
+    void updateW(double);
 
   private:
-    Ui::Tab_CD ui;
-    QList<double> *m_yListVelocity, *m_yListLength;
-    double m_fermi;
+    double m_W;
+    double m_T;
+    QList<double> m_yList_orig;
   };
 }
 

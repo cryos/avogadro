@@ -6,7 +6,7 @@
 .Nd "Avogadro Package Manager"
 .Sh SYNOPSIS
 .Nm
-.Op Fl pack
+.Op Fl pack | Fl f
 .Ar filename
 .Sh DESCRIPTION
 Avopkg is a command-line tool for easy packaging and installation
@@ -17,6 +17,23 @@ of Avogadro plugins on Unix platforms
 Create package using manifest as package description file
 .It Ar file
 Install plugin from chosen package file
+.It Fl -f Ar file
+Install plugin from chosen package file disregarding OS and CPU architecture
+.El
+.Sh ERROR CODES
+.Bl -tag -width flag
+.It 1
+Specified file is not a plugin
+.It 2
+Manifest is missing in package
+.It 3
+Trying to install Python plugin on Avogadro compiled without Python
+.It 4
+OS mismatch
+.It 5
+CPU architecture mismatch
+.It 255
+Incorrect usage
 .El
 .Sh SEE ALSO
 .Xr avogadro 1 .

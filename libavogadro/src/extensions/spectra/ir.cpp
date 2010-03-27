@@ -2,6 +2,7 @@
   SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -17,7 +18,7 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#include "spectratype_ir.h"
+#include "ir.h"
 
 #include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
@@ -29,141 +30,6 @@ using namespace std;
 
 namespace Avogadro {
 
-  AbstractIRSpectra::AbstractIRSpectra( SpectraDialog *parent ) :
-    SpectraType( parent )
-    {
-    ui.setupUi(m_tab_widget);
-
-    // Setup signals/slots    
-    connect(this, SIGNAL(plotDataChanged()),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
-    connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-    connect(ui.hs_scale, SIGNAL(sliderPressed()),
-            this, SLOT(scaleSliderPressed()));
-    connect(ui.hs_scale, SIGNAL(sliderReleased()),
-            this, SLOT(scaleSliderReleased()));
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-            this, SLOT(updateScaleSpin(int)));
-    connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-    connect(ui.hs_FWHM, SIGNAL(sliderPressed()),
-            this, SLOT(fwhmSliderPressed()));
-    connect(ui.hs_FWHM, SIGNAL(sliderReleased()),
-            this, SLOT(fwhmSliderReleased()));
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-            this, SLOT(updateFWHMSpin(int)));
-    connect(ui.combo_yaxis, SIGNAL(currentIndexChanged(QString)),
-            this, SLOT(updateYAxis(QString)));
-    connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(changeScalingType(int)));
-    }
-
-  void AbstractIRSpectra::rescaleFrequencies()
-  {
-    for (int i=0; i<m_xList_orig.size(); i++) {
-      m_xList[i] = m_xList_orig.at(i) * scale(m_xList.at(i));
-    }
-    emit plotDataChanged();
-  }
-
-  void AbstractIRSpectra::updateScaleSpin(int intScale)
-  {
-    double scale = intScale*0.01;
-    if (scale == m_scale) return;
-    m_scale = scale;
-    ui.spin_scale->setValue(scale);
-    rescaleFrequencies();
-  }
-
-  void AbstractIRSpectra::updateScaleSlider(double scale)
-  {
-    int intScale = static_cast<int>(scale*100);
-    disconnect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    ui.hs_scale->setValue(intScale);
-    connect(ui.hs_scale, SIGNAL(valueChanged(int)),
-      this, SLOT(updateScaleSpin(int)));
-    m_scale = scale;
-    rescaleFrequencies();
-  }
-
-  void AbstractIRSpectra::scaleSliderPressed()
-  {
-      disconnect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-
-  void AbstractIRSpectra::scaleSliderReleased()
-  {
-      connect(ui.spin_scale, SIGNAL(valueChanged(double)),
-            this, SLOT(updateScaleSlider(double)));
-  }
-  
-  void AbstractIRSpectra::updateFWHMSpin(int fwhm)
-  {
-    if (fwhm == m_fwhm) return;
-    m_fwhm = fwhm;
-    ui.spin_FWHM->setValue(m_fwhm);
-    emit plotDataChanged();
-  }
-  
-  void AbstractIRSpectra::updateFWHMSlider(double fwhm)
-  {    
-    disconnect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    ui.hs_FWHM->setValue(fwhm);
-    connect(ui.hs_FWHM, SIGNAL(valueChanged(int)),
-      this, SLOT(updateFWHMSpin(int)));
-    m_fwhm = fwhm;
-    emit plotDataChanged();
-  }
-  
-  void AbstractIRSpectra::fwhmSliderPressed()
-  {
-      disconnect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-  
-  void AbstractIRSpectra::fwhmSliderReleased()
-  {
-      connect(ui.spin_FWHM, SIGNAL(valueChanged(double)),
-            this, SLOT(updateFWHMSlider(double)));
-  }
-
-  void AbstractIRSpectra::updateYAxis(QString text) {
-    if (m_yaxis == text) {
-      return;
-    }
-    m_dialog->getUi()->plot->axis(PlotWidget::LeftAxis)->setLabel(text);
-    m_yaxis = text;
-    emit plotDataChanged();
-  }
-
-  void AbstractIRSpectra::changeScalingType(int type) {
-    m_scalingType = static_cast<ScalingType>(type);
-    rescaleFrequencies();
-  }    
-
-  double AbstractIRSpectra::scale(double w)
-  {
-    switch(m_scalingType) {
-      case LINEAR:
-        return m_scale;
-        break;
-      case RELATIVE:
-        return 1-w*(1-m_scale)/1000;
-        break;
-    //TODO: add other scaling algorithms
-      default:
-        return m_scale;
-    }
-  }
-
-  //------------------------------------------------
-    
   IRSpectra::IRSpectra( SpectraDialog *parent ) :
     AbstractIRSpectra( parent )
   {
@@ -236,7 +102,7 @@ namespace Avogadro {
       if (maxIntensity != 0) {
         t = t / maxIntensity; 	// Normalize
       }
-      t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
+      //t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
       t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
       transmittances.push_back(t);
@@ -257,7 +123,7 @@ namespace Avogadro {
   }
 
   void IRSpectra::setupPlot(PlotWidget * plot) {
-    plot->setDefaultLimits( 4000.0, 400.0, 0.0, 100.0 );
+    plot->setDefaultLimits( 3500.0, 400.0, 0.0, 100.0 );
     plot->axis(PlotWidget::BottomAxis)->setLabel(tr("Wavenumber (cm<sup>-1</sup>)"));
     plot->axis(PlotWidget::LeftAxis)->setLabel(m_yaxis);
   }
@@ -265,7 +131,7 @@ namespace Avogadro {
   void IRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
     plotObject->clearPoints();
 
-    if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
+    /*if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setEnabled(false);
       ui.cb_labelPeaks->setChecked(false);
     }
@@ -274,7 +140,7 @@ namespace Avogadro {
     }
     if (!ui.cb_labelPeaks->isEnabled()) {
       ui.cb_labelPeaks->setChecked(false);
-    }
+    }*/
 
     if (m_fwhm == 0.0) { // get singlets
       plotObject->addPoint( 400, 100);
@@ -292,7 +158,7 @@ namespace Avogadro {
         }
         plotObject->addPoint( wavenumber, 100 );
       }
-      plotObject->addPoint( 4000, 100);
+      plotObject->addPoint( 3500, 100);
     } // End singlets
 
     else { // Get gaussians
@@ -327,7 +193,8 @@ namespace Avogadro {
         // 100 / (max - min)	: Conversion factor for current spread -> percent
         // * 0.97 + 3		: makes plot stay away from 0 transmittance
         //			: (easier to see multiple peaks on strong signals)
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
       }
     } // End gaussians
 
@@ -337,6 +204,14 @@ namespace Avogadro {
         double absorbance = 100 - plotObject->points().at(i)->y();
         plotObject->points().at(i)->setY(absorbance);
       }
+    }
+
+    // Add labels for gaussians?    
+    if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
+      if (ui.combo_yaxis->currentIndex() == 1)
+        assignGaussianLabels(plotObject, true);
+      else
+        assignGaussianLabels(plotObject, false);
     }
     return;
   } // End IR spectra

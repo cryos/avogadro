@@ -2,6 +2,7 @@
   SpectraDialog - Visualize spectral data from QM calculations
 
   Copyright (C) 2009 by David Lonie
+  Copyright (C) 2010 by Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -14,23 +15,20 @@
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public icense for more details.
+  GNU General Public License for more details.
  ***********************************************************************/
 
-#ifndef SPECTRATYPE_IR_H
-#define SPECTRATYPE_IR_H
-
-#include <QtCore/QHash>
-#include <QtCore/QVariant>
+#ifndef SPECTRATYPE_ABSTRACT_IR_H
+#define SPECTRATYPE_ABSTRACT_IR_H
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratab_ir_raman.h"
+#include "ui_tab_ir_raman.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
-
+    
   enum ScalingType { LINEAR, RELATIVE };
 
   // Abstract data type - no instance of it can be created
@@ -64,25 +62,6 @@ namespace Avogadro {
     QString m_yaxis;
     QList<double> m_xList_orig;
     ScalingType m_scalingType;
-  };
-
-  class IRSpectra : public AbstractIRSpectra
-  {
-    Q_OBJECT
-
-  public:
-    IRSpectra( SpectraDialog *parent = 0 );
-    ~IRSpectra();
-
-    void writeSettings();
-    void readSettings();
-
-    bool checkForData(Molecule* mol);
-    void setupPlot(PlotWidget * plot);
-
-    void getCalculatedPlotObject(PlotObject *plotObject);
-    void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    QString getTSV();
   };
 }
 

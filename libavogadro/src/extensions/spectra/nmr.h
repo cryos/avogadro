@@ -17,29 +17,26 @@
   GNU General Public icense for more details.
  ***********************************************************************/
 
-//#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-
-#ifndef SPECTRATYPE_DOS_H
-#define SPECTRATYPE_DOS_H
+#ifndef SPECTRATYPE_NMR_H
+#define SPECTRATYPE_NMR_H
 
 #include <QtCore/QHash>
-#include <QtCore/QVariant>
 
 #include "spectradialog.h"
 #include "spectratype.h"
-#include "ui_spectratabdos.h"
+#include "ui_tab_nmr.h"
 
 #include <avogadro/plotwidget.h>
 
 namespace Avogadro {
 
-  class DOSSpectra : public SpectraType
+  class NMRSpectra : public SpectraType
   {
     Q_OBJECT
 
   public:
-    DOSSpectra( SpectraDialog *parent = 0 );
-    ~DOSSpectra();
+    NMRSpectra( SpectraDialog *parent = 0 );
+    ~NMRSpectra();
 
     void writeSettings();
     void readSettings();
@@ -48,22 +45,22 @@ namespace Avogadro {
     void setupPlot(PlotWidget * plot);
 
     void getCalculatedPlotObject(PlotObject *plotObject);
-    //void setImportedData(const QList<double> & xList, const QList<double> & yList);
-    void getImportedPlotObject(PlotObject *plotObject);
-    QString getTSV();
-
-    void updateDataTable() {}
+    void setImportedData(const QList<double> & xList, const QList<double> & yList);
+   // virtual void getImportedPlotObject(PlotObject *plotObject);
+    virtual QString getTSV();
 
   public slots:
-    void toggleIntegratedDOS(bool b);
+    void setAtom(QString symbol);
+
+  private slots:
+    void setReference(double ref);
+    void updatePlotAxes();
 
   private:
-    Ui::Tab_DOS ui;
-    std::vector<double> *m_intDOS;
-    double m_fermi;
-    uint m_numAtoms;
+    Ui::Tab_NMR ui;
+    double m_ref;
+    QHash<QString, QList<double>* > *m_NMRdata;
   };
 }
 
 #endif
-//#endif
