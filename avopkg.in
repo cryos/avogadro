@@ -21,6 +21,8 @@ PLUGIN_DIR="avogadro@Plugin_Version@"
 PYTHON_ENABLED="@ENABLE_PYTHON@"
 IS_UNIX="@UNIX@"
 IS_MAC="@APPLE@"
+SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
+SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
 
 PACK_CMD="tar czf"
 EXTRACT_CMD="tar xzf"
@@ -68,6 +70,7 @@ printUsage()
 {
    echo "Usage:"
    echo "   "`basename $0`" filename             Install package"
+   echo "   "`basename $0`" -f filename          Install package disregarding OS and arch"
    echo "   "`basename $0`" -pack filename       Create new package"
    echo "Type 'man "`basename $0`"' for more details"
 }
@@ -97,16 +100,30 @@ then
         printUsage
         exit 255
     fi
-    
-    
-    #echo Package files: $files
-    # Use tar.gz compression
+   
     package=$(getVar $2 Package)
     files="$(getMultiVar $2 Files)"
     rm -rf .tmp
     mkdir -p .tmp/$package
-    cp $2 .tmp/$package/$package.mf    
+    cp $2 .tmp/$package/$package.mf
+	
+	if !($(getBoolVar $2 Python))
+	then
+		# Add OS & CPU architecture information to manifest 
+		# (if not already specified)
+		if test x$(getVar $2 System) = x
+		then
+			echo "System: $SYSTEM_NAME" >> .tmp/$package/$package.mf
+		fi
+		if test x$(getVar $2 SizeofVoidP) = x
+		then
+			echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.mf
+		fi
+	fi
+	
+	# Copy installable content
     cp -t .tmp/$package $files # Will fail if some file is missing
+	
     cd .tmp
     $PACK_CMD ../$package.avo $package
     cd ..
@@ -114,11 +131,21 @@ then
     echo Done!
 else
             ########## Install package ########## 
+	
+	# Check -f (ignore OS and arch)
+	if test "$1" = "-f"
+	then
+		force=1
+		filename=$2
+	else
+		force=0
+		filename=$1
+	fi
 
-    if test -e $1
+    if test -e $filename
     then
-        package=`basename $1 .avo`
-        echo Unpacking $1...           
+        package=`basename $filename .avo`
+        echo Unpacking $filename...           
     else
         printUsage
         exit 255
@@ -128,7 +155,7 @@ else
     rm -rf .tmp
     mkdir .tmp
     cd .tmp
-    $EXTRACT_CMD ../$1
+    $EXTRACT_CMD ../$filename
     if ! test $? = 0
     then
         echo "$1 is not an Avogadro plugin package!"
@@ -145,7 +172,7 @@ else
         echo "Installation failed."
         exit 2
     fi
-
+	
     # Find out where to install package
     if ($(getBoolVar $manifest Python))
     then
@@ -174,7 +201,42 @@ else
                 dest="$HOME/.avogadro/$(getVar $manifest Category)Scripts"
             fi
         fi
-    else       
+    else
+		if test $force = 0
+		then
+			# Verify OS
+			if test $(getVar $manifest System) != $SYSTEM_NAME
+			then
+				echo "This plugin was built for $(getVar $manifest System)"
+				echo "Can't install it on $SYSTEM_NAME"
+				exit 4
+			fi
+	
+			# Verify CPU architecture
+			arch=$(getVar $manifest SizeofVoidP)
+			if test $arch != $SIZEOF_VOID_P
+			then
+				echo "CPU architecture doesn't match"
+				if test $SIZEOF_VOID_P = 4
+				then
+					echo "Arch of avogadro: x86"
+				fi
+				if test $SIZEOF_VOID_P = 8
+				then
+					echo "Arch of avogadro: x86_64"
+				fi
+				if test $arch = 4
+				then
+					echo "Arch of plugin: x86"
+				fi
+				if test $arch = 8
+				then
+					echo "Arch of plugin: x86_64"
+				fi
+				exit 5
+			fi
+		fi
+		
         echo -n Installing plugin $package
         if test $USER = root
         then

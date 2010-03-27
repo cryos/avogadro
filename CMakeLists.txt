@@ -126,7 +126,16 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 # Intel C++ Compiler
 # Note: Windows version uses different options!
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
-  add_definitions (-D_BSD_SOURCE)   
+  add_definitions (-D_BSD_SOURCE)
+  # Set some linker flags
+  if(CMAKE_SYSTEM_NAME MATCHES Linux)
+    set(CMAKE_SHARED_LINKER_FLAGS
+      "-lc ${CMAKE_SHARED_LINKER_FLAGS}")
+    set(CMAKE_MODULE_LINKER_FLAGS
+      "-lc ${CMAKE_MODULE_LINKER_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS
+      "-lc ${CMAKE_EXE_LINKER_FLAGS}")
+  endif (CMAKE_SYSTEM_NAME MATCHES Linux)
   check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
