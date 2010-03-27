@@ -18,27 +18,6 @@ add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensio
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
 
-### Input File Extension
-set(inputfileextension_SRCS inputfileextension.cpp
-    daltoninputdialog.cpp
-    gaussianinputdialog.cpp
-    molproinputdialog.cpp
-    mopacinputdialog.cpp
-    nwcheminputdialog.cpp
-    qcheminputdialog.cpp)
-avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
- "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
-
-### gamess
-set(gamessextension_SRCS gamessextension.cpp
-  gamessinputdialog.cpp
-  gamessinputdata.cpp
-  gamesshighlighter.cpp
-  gamessefpmatchdialog.cpp)
-avogadro_plugin(gamessextension
-  "${gamessextension_SRCS}"
-  "gamessinputdialog.ui;gamessefpmatchdialog.ui")
-
 ### Properties
 avogadro_plugin(propextension
    "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
@@ -137,3 +116,4 @@ avogadro_plugin(supercellextension
 avogadro_plugin(networkfetchextension networkfetchextension.cpp)
 
 add_subdirectory(spectra)
+add_subdirectory(quantuminput)
