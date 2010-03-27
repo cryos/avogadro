@@ -20,13 +20,13 @@
 #include "spectradialog.h"
 #include "spectratype.h"
 
-#include "spectratype_ir.h"
-#include "spectratype_nmr.h"
+#include "ir.h"
+#include "nmr.h"
 #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-  #include "spectratype_dos.h"
-  #include "spectratype_uv.h"
-  #include "spectratype_cd.h"
-  #include "spectratype_raman.h"
+  #include "dos.h"
+  #include "uv.h"
+  #include "cd.h"
+  #include "raman.h"
 #endif
 
 #include <QtGui/QPen>
