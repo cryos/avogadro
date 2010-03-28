@@ -193,9 +193,11 @@ ${Index_RemoveFilesAndSubDirs}-done:
 # Installer languages
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
 !insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "Russian"
 
 !include "installer_languages\english.nsh"
 !include "installer_languages\german.nsh"
+!include "installer_languages\russian.nsh"
 
 
 # Installer attributes
