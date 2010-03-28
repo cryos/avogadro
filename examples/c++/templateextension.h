@@ -56,10 +56,10 @@ namespace Avogadro {
 
   };
 
-  class TemplateExtensionFactory : public QObject, public ExtensionFactory
+  class TemplateExtensionFactory : public QObject, public PluginFactory
   {
     Q_OBJECT
-    Q_INTERFACES(Avogadro::ExtensionFactory)
+    Q_INTERFACES(Avogadro::PluginFactory)
     AVOGADRO_EXTENSION_FACTORY(TemplateExtension)
   };
 
