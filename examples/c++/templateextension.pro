@@ -1,5 +1,7 @@
 ######################################################################
-# This is an example QMake project for building Avogadro extension
+# Example QMake project building a 3rd party extension against 
+# installed Avogadro library. 
+# See http://avogadro.openmolecules.net/ for more information.
 ######################################################################
 
 TEMPLATE = lib
