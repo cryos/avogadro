@@ -15,17 +15,22 @@
 #  The above copyright notice and this permission notice shall be included in
 #  all copies or substantial portions of the Software.
 
-PREFIX="@CMAKE_INSTALL_PREFIX@"
-LIB_DIR="lib@LIB_SUFFIX@"
-PLUGIN_DIR="avogadro@Plugin_Version@"
-PYTHON_ENABLED="@ENABLE_PYTHON@"
-IS_UNIX="@UNIX@"
-IS_MAC="@APPLE@"
-SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
-SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
+# -----    Configured on Avogadro build     ----- #
+  PREFIX="@CMAKE_INSTALL_PREFIX@"
+  LIB_DIR="lib@LIB_SUFFIX@"
+  PLUGIN_DIR="avogadro@Plugin_Version@"
+  PYTHON_ENABLED="@ENABLE_PYTHON@"
+  IS_UNIX="@UNIX@"
+  IS_MAC="@APPLE@"
+  SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
+  SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
+# ----- End of configured on Avogadro build ----- #
 
+# Settings
 PACK_CMD="tar czf"
 EXTRACT_CMD="tar xzf"
+PKG_EXT="avo"
+MANIFEST_EXT="mf"
 
 # Helper functions
 
@@ -60,18 +65,35 @@ getMultiVar()
 #  * @returns 0 if string $2 was found in file $1
 #  */
 getBoolVar()
-{
-    #exit 0 if file contains string $2    
+{    
     echo test x`cat $1 | grep $2` != x
-    #echo $?
 }
 
+# /**
+#  * Asks user for string input and returns default is input is empty 
+#  * @param $1 default value
+#  * @returns string typed by user or default value (may contain spaces!)
+#  */
+readString()
+{
+    read string
+    if test "x$string" = "x"
+    then
+        string=$1
+    fi
+    echo "$string"
+}
+
+# /**
+#  * Prints all available parameters of script
+#  */
 printUsage()
 {
    echo "Usage:"
-   echo "   "`basename $0`" filename             Install package"
-   echo "   "`basename $0`" -f filename          Install package disregarding OS and arch"
-   echo "   "`basename $0`" -pack filename       Create new package"
+   echo " "`basename $0`" filename                Install package"
+   echo " "`basename $0`" -f filename             Install package disregarding OS and arch"
+   echo " "`basename $0`" -pack manifest          Create new package"
+   echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
    echo "Type 'man "`basename $0`"' for more details"
 }
 
@@ -85,16 +107,126 @@ then
     exit 255
 fi
 
+if test "$1" = "-wizard"
+then
+            ########## Create manifest ##########
+
+    echo "This wizard will help you to create description file for new package"
+    echo "Default values of answers will be shown in []"
+    echo -n "    Press ENTER to continue"
+    read buffer
+    echo
+
+    # Check if we are given package name
+    batch_mode=0
+    if test "x$2" != "x"
+    then
+        package="$2"
+        manifest=$package.$MANIFEST_EXT
+        batch_mode=1
+    else
+        default_package="`basename $PWD`"
+        echo -n "0. Name of package (try to avoid spaces) [$default_package]:"
+        package=$(readString "$default_package")
+
+        # Check if manifest already exists
+        manifest=$package.$MANIFEST_EXT
+        if test -f $manifest
+        then
+            echo -n "File $manifest already exisits. Overwrite(y/n)? [n]"
+            result=$(readString "n")
+            if test $result != y
+            then
+                exit 0
+            fi
+        fi
+    fi    
+    
+    echo -n "1. Full name of your plugin [$package]:"
+    name=$(readString "$package")
+    
+    echo -n "2. Author's name []:"
+    author=$(readString "")
+
+    echo -n "" > $manifest # Clean old manifest
+    echo "Name: $name" >> $manifest
+    echo "Author: $author" >> $manifest
+    echo "Package: $package" >> $manifest
+
+    echo -n "3. Is it a Python plugin (y/n)? [n]"
+    python=$(readString "n")
+    if test "$python" = "y"
+    then
+        echo "Python" >> $manifest
+        
+        echo -n "4. List of files to distribute [`ls *.py`]:"
+        files=$(readString "`ls *.py`")
+
+        echo "5. Choose a category for your Python plugin from list:"
+        echo "* engineScripts\n* extensionScripts\n* toolScripts"
+        category=$(readString "")
+    else    
+        echo -n "4. List of files to distribute [`ls *.so`]:"
+        files=$(readString "`ls *.so`")
+
+        echo "5. Choose a category for your plugin from list:"
+        echo "* colors\n* engines\n* extensions\n* tools"
+        echo "* contrib\n* you may add new if no other is suitable"
+        echo -n "Category [contrib]:"
+        category=$(readString "contrib")
+    fi
+
+    echo "Files: $files" >> $manifest
+    echo "Category: $category" >> $manifest
+
+    # In make chain don't ask anything else
+    if test $batch_mode = 1
+    then
+      exit 0
+    fi
+    
+    # Ready to build
+    echo "Manifest $manifest was successfully created"
+    echo -n "Build package $package.$PKG_EXT(y/n)? [y]"
+    build=$(readString "y")
+    if test "$build" = "y"
+    then
+        echo
+        # Recursive call
+        $0 -pack $manifest
+        # On success ask for installation
+        if test $?
+        then
+            echo
+            echo -n "Install package $package.$PKG_EXT(y/n)? [y]"
+            install=$(readString "y")
+            if test "$install" = "y"
+            then
+                echo
+                # Recursive call
+                $0 $package.$PKG_EXT
+            else
+                echo "Done!"
+            fi
+        fi
+    else
+        echo "Done!"
+    fi
+    exit 0
+fi
+
 if test "$1" = "-pack"
 then
-            ########## Create package ##########
+            ########## Build package ##########
+
     if test "x$2" = "x"
     then
         printUsage
         exit 255
     fi
+
     if test -f $2
-    then        
+    then
         echo "Building package for $(getMultiVar $2 Name) ..."
     else
         printUsage
@@ -105,7 +237,7 @@ then
     files="$(getMultiVar $2 Files)"
     rm -rf .tmp
     mkdir -p .tmp/$package
-    cp $2 .tmp/$package/$package.mf
+    cp $2 .tmp/$package/$package.$MANIFEST_EXT
 	
 	if !($(getBoolVar $2 Python))
 	then
@@ -113,11 +245,11 @@ then
 		# (if not already specified)
 		if test x$(getVar $2 System) = x
 		then
-			echo "System: $SYSTEM_NAME" >> .tmp/$package/$package.mf
+			echo "System: $SYSTEM_NAME" >> .tmp/$package/$package.$MANIFEST_EXT
 		fi
 		if test x$(getVar $2 SizeofVoidP) = x
 		then
-			echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.mf
+			echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.$MANIFEST_EXT
 		fi
 	fi
 	
@@ -125,10 +257,12 @@ then
     cp -t .tmp/$package $files # Will fail if some file is missing
 	
     cd .tmp
-    $PACK_CMD ../$package.avo $package
+    $PACK_CMD ../$package.$PKG_EXT $package
     cd ..
     rm -rf .tmp
-    echo Done!
+
+    echo "Done!"
+    exit 0
 else
             ########## Install package ########## 
 	
@@ -165,7 +299,7 @@ else
 
     # Check manifest
     cd $package
-    manifest=$package.mf
+    manifest=$package.$MANIFEST_EXT
     if ! test -f $manifest
     then
         echo "Manifest $manifest is missing in package!"
@@ -191,14 +325,14 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            dest="$PREFIX/share/libavogadro/$(getVar $manifest Category)Scripts"
+            dest="$PREFIX/share/libavogadro/$(getVar $manifest Category)"
         else
             echo " for user $USER"
             if test "$IS_MAC" = 1
             then
-                dest="$HOME/Library/Application Support/Avogadro/$(getVar $manifest Category)Scripts"
+                dest="$HOME/Library/Application Support/Avogadro/$(getVar $manifest Category)"
             else
-                dest="$HOME/.avogadro/$(getVar $manifest Category)Scripts"
+                dest="$HOME/.avogadro/$(getVar $manifest Category)"
             fi
         fi
     else
@@ -266,6 +400,6 @@ else
     cd ../..
     rm -rf .tmp
     
-    echo Done.       
-    
+    echo "Done!"
+    exit 0
 fi
