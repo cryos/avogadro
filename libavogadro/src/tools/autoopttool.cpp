@@ -52,7 +52,7 @@ namespace Avogadro {
   AutoOptTool::AutoOptTool(QObject *parent) : Tool(parent), m_clickedAtom(0),
   m_leftButtonPressed(false), m_midButtonPressed(false), m_rightButtonPressed(false),
   m_running(false), m_block(false), m_setupFailed(false), m_timerId(0) ,m_toolGroup(0),
-  m_settingsWidget(0), m_lastEnergy(0.0)
+  m_settingsWidget(0), m_lastEnergy(0.0), m_thread(0)
   {
     QAction *action = activateAction();
     action->setIcon(QIcon(QString::fromUtf8(":/autoopttool/autoopttool.png")));
