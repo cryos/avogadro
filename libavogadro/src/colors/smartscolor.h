@@ -57,9 +57,21 @@ namespace Avogadro {
      * Set the color based on the supplied Primitive
      * If NULL is passed, do nothing */
     void setFromPrimitive(const Primitive *);
+
+    virtual QWidget* settingsWidget();
+    virtual void writeSettings(QSettings &settings) const;
+    virtual void readSettings(QSettings &settings);
+
+  private Q_SLOTS:
+      void settingsWidgetDestroyed();
+      void smartsChanged(QString);
+      void colorChanged(QColor);
+
   private:
     OpenBabel::OBSmartsPattern *_pattern;
-    QString _smarts;
+    QString                     _smartsString;
+    QColor                      _highlightColor;
+    QWidget                    *_settingsWidget;
   };
 
   class SmartsColorFactory : public QObject, public PluginFactory

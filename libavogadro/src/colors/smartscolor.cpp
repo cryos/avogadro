@@ -1,7 +1,7 @@
 /**********************************************************************
   SmartsColor -  Map atom colors based on atom partial charge
 
-  Copyright (C) 2009 Geoffrey R. Hutchison
+  Copyright (C) 2010 Geoffrey R. Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -27,21 +27,27 @@
 #include <avogadro/primitive.h>
 #include <avogadro/molecule.h>
 #include <avogadro/atom.h>
-#include <QtPlugin>
+#include <avogadro/colorbutton.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/atom.h>
 #include <openbabel/parsmart.h>
+
+#include <QtPlugin>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
 
 using namespace OpenBabel;
 
 namespace Avogadro {
 
   /// Constructor
-  SmartsColor::SmartsColor()
+  SmartsColor::SmartsColor() : _highlightColor(255, 0, 128), _settingsWidget(NULL)
   { 
     _pattern = new OBSmartsPattern;
-    _pattern->Init("[#7]");
+    _smartsString.clear();
   }
 
   /// Destructor
@@ -51,6 +57,69 @@ namespace Avogadro {
       delete _pattern;
       _pattern = NULL;
     }
+
+    if (_settingsWidget)
+      _settingsWidget->deleteLater();
+  }
+
+  void SmartsColor::settingsWidgetDestroyed()
+  {
+    _settingsWidget = 0;
+  }
+
+  QWidget *SmartsColor::settingsWidget()
+  {
+    if (!_settingsWidget) {
+      _settingsWidget = new QWidget();
+      QHBoxLayout *layout = new QHBoxLayout(_settingsWidget);
+      QVBoxLayout *vlayout1 = new QVBoxLayout(_settingsWidget);
+      QVBoxLayout *vlayout2 = new QVBoxLayout(_settingsWidget);
+      QLabel *label1 = new QLabel(tr("SMARTS Pattern:"), _settingsWidget);
+      vlayout1->addWidget(label1);
+      QLineEdit *smartsLine = new QLineEdit(_smartsString, _settingsWidget);
+      vlayout2->addWidget(smartsLine);
+      QLabel *label2 = new QLabel(tr("Highlight Color:"), _settingsWidget);
+      ColorButton *button = new ColorButton(_highlightColor, _settingsWidget);
+      vlayout1->addWidget(label2);
+      vlayout2->addWidget(button);
+      layout->addLayout(vlayout1);
+      layout->addLayout(vlayout2);
+
+      connect(button, SIGNAL(colorChanged(QColor)),
+              this, SLOT(colorChanged(QColor)));
+      connect(smartsLine, SIGNAL(textChanged(QString)),
+              this, SLOT(smartsChanged(QString)));
+      connect(_settingsWidget, SIGNAL(destroyed()),
+              this, SLOT(settingsWidgetDestroyed()));
+    }
+
+    return _settingsWidget;
+  }
+
+  void SmartsColor::colorChanged(QColor newColor)
+  {
+    _highlightColor = newColor;
+    emit changed();
+  }
+
+  void SmartsColor::smartsChanged(QString newPattern)
+  {
+    _smartsString = newPattern;
+    _pattern->Init(_smartsString.toAscii());
+    emit changed();
+  }
+
+  void SmartsColor::writeSettings(QSettings &settings) const
+  {
+    settings.setValue("highlightcolor", _highlightColor);
+    settings.setValue("SMARTS", _smartsString);
+  }
+
+  void SmartsColor::readSettings(QSettings &settings)
+  {
+    _highlightColor = settings.value("highlightcolor", QColor(Qt::magenta)).value<QColor>();
+    _smartsString = settings.value("SMARTS").toString();
+    smartsChanged(_smartsString);
   }
 
   void SmartsColor::setFromPrimitive(const Primitive *p)
@@ -73,30 +142,33 @@ namespace Avogadro {
     if (!molecule || !_pattern)
       return;
 
-    OBMol obmol = molecule->OBMol();
-    _pattern->Match(obmol);
-    std::vector<std::vector<int> > mlist = _pattern->GetUMapList();
-    std::vector<std::vector<int> >::iterator match;
     bool matched = false;
-    for (match = mlist.begin(); match != mlist.end(); ++match) { // iterate through matches
-      for (unsigned idx = 0; idx < (*match).size(); ++idx) { // iterate through atoms in match
-        if (atom->index() == ((*match)[idx] - 1)) { // TODO: OB uses index from 1
-          matched = true;
-          break;
-        }
-      } // atoms in match
-      if (matched)
-        break; // no need to check other matches
-    } // matches
+    if (!_smartsString.isEmpty() && _pattern->IsValid()) { // finite, valid SMARTS, so let's go for it!
+      OBMol obmol = molecule->OBMol();
+      bool moleculeMatched = _pattern->Match(obmol);
 
-    // OK, now highlight aromatic nitrogens
-    if (matched) {
-      newcolor.setRgb(255, 0, 128);
-      setFromQColor(newcolor);
-    }
+      if (moleculeMatched) {
+        std::vector<std::vector<int> > mlist = _pattern->GetUMapList();
+        std::vector<std::vector<int> >::iterator match;
+        for (match = mlist.begin(); match != mlist.end(); ++match) { // iterate through matches
+          for (unsigned idx = 0; idx < (*match).size(); ++idx) { // iterate through atoms in match
+            if (atom->index() == ((*match)[idx] - 1)) { // TODO: OB uses index from 1
+              matched = true;
+              break;
+            }
+          } // atoms in match
+          if (matched)
+            break; // no need to check other matches
+        } // matches
+        
+      } // matched molecule
+    } // finite, valid SMARTS
+
+    // OK, now highlight the SMARTS match
+    if (matched)
+      setFromQColor(_highlightColor);
     else
       setFromQColor(newcolor.darker());
-    
     m_channels[3] = 1.0;
   }
 
