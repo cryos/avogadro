@@ -759,7 +759,7 @@ namespace Avogadro
       // if we have nothing open or modified
       bool loadInNewWindow = isWindowModified();
 #ifdef Q_WS_MAC
-      loadInNewWindow = true; // always load into a new window on Mac PR#2945916
+      loadInNewWindow = !isDefaultFileName(d->fileName); // always load into a new window on Mac PR#2945916
 #endif
 
       if ( !loadInNewWindow ) {
