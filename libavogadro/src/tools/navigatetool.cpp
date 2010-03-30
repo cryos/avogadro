@@ -264,6 +264,7 @@ namespace Avogadro {
     switch (event->key()) {
       case Qt::Key_Left: // Left arrow
       case Qt::Key_H:    // Vi style left
+      case Qt::Key_A:    // CS style left
         // On Mac OS X, the arrow keys are considered part of the keypad!?
         // http://doc.trolltech.com/4.4/qt.html#KeyboardModifier-enum
         if (event->modifiers() == Qt::NoModifier
@@ -277,6 +278,7 @@ namespace Avogadro {
         break;
       case Qt::Key_Right: // Right arrow
       case Qt::Key_L:     // Vi style right
+      case Qt::Key_D:     // CS style right
         if (event->modifiers() == Qt::NoModifier
             || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 5, 0);
@@ -288,6 +290,7 @@ namespace Avogadro {
         break;
       case Qt::Key_Up: // Up arrow
       case Qt::Key_K:  // Vi style up
+      case Qt::Key_W:  // CS style up
         if (event->modifiers() == Qt::NoModifier
             || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 0, -5);
@@ -299,6 +302,7 @@ namespace Avogadro {
         break;
       case Qt::Key_Down: // Down arrow
       case Qt::Key_J:    // Vi style down
+      case Qt::Key_S:    // CS style down
         if (event->modifiers() == Qt::NoModifier
             || event->modifiers() == Qt::KeypadModifier)
           Navigate::rotate(widget, m_referencePoint, 0, 5);
