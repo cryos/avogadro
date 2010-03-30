@@ -32,3 +32,6 @@ avogadro_plugin(distancecolor distancecolor.cpp)
 
 ## custom color
 avogadro_plugin(customcolor customcolor.cpp)
+
+## smartscolor
+avogadro_plugin(smartscolor smartscolor.cpp)
