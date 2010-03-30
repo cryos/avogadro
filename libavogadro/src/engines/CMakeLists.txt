@@ -18,6 +18,7 @@ add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
 set_target_properties(labelengine PROPERTIES LABELS "Engine")
+target_link_libraries(labelengine ${AVO_LINK_LIBRARIES} periodictable)
 
 # overlay engine
 avogadro_plugin(overlayengine overlayengine.cpp)

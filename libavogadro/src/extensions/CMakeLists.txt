@@ -43,6 +43,7 @@ avogadro_plugin(hydrogenextension hydrogensextension.cpp)
 
 ### Selections
 avogadro_plugin(selectextension selectextension.cpp)
+target_link_libraries(selectextension ${AVO_LINK_LIBRARIES} periodictable)
 
 ### unit cells
 avogadro_plugin(unitcellextension

@@ -19,7 +19,7 @@ include_directories(
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
-link_directories(${OPENBABEL2_LIBRARY_DIRS})
+link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_BINARY_DIR}/lib)
 
 # Library translations
 if(NOT WIN32)
@@ -45,7 +45,7 @@ set(libavogadro_HDRS
   colorbutton.h
   cube.h
   dockextension.h
-  elementtranslator.h
+#  elementtranslator.h
   engine.h
   extension.h
   fragment.h
@@ -65,7 +65,7 @@ set(libavogadro_HDRS
   neighborlist.h
   painter.h
   painterdevice.h
-  periodictableview.h
+#  periodictableview.h
   plugin.h
   pluginmanager.h
   primitive.h
