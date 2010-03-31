@@ -8,6 +8,9 @@
 .Nm
 .Op Fl pack | Fl f
 .Ar filename
+.br
+.Nm
+.Fl wizard Op package_name
 .Sh DESCRIPTION
 Avopkg is a command-line tool for easy packaging and installation
 of Avogadro plugins on Unix platforms
@@ -15,10 +18,13 @@ of Avogadro plugins on Unix platforms
 .Bl -tag -width flag
 .It Fl pack Ar manifest
 Create package using manifest as package description file
-.It Ar file
-Install plugin from chosen package file
-.It Fl -f Ar file
-Install plugin from chosen package file disregarding OS and CPU architecture
+.It Ar filename
+Install plugin from chosen package "filename"
+.It Fl -f Ar filename
+Install plugin from chosen package "filename" disregarding OS and CPU architecture
+.It Fl -wizard Op package_name
+Interactively create manifest for new package. Specifying package_name disables some 
+interactivity of the wizard (e.g., for use in scripts).
 .El
 .Sh ERROR CODES
 .Bl -tag -width flag
