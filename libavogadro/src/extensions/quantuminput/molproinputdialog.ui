@@ -184,6 +184,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QComboBox" name="basisCombo">
+         <property name="accessibleDescription">
+          <string notr="true"/>
+         </property>
          <property name="currentIndex">
           <number>2</number>
          </property>
