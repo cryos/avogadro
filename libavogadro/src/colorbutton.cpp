@@ -30,7 +30,7 @@
 namespace Avogadro {
 
   ColorButton::ColorButton(QWidget *parent)
-    : QAbstractButton(parent), m_color(Qt::white)
+    : QAbstractButton(parent), m_color(Qt::white), m_title("")
   {
     setMinimumSize(35, 20);
 
@@ -48,7 +48,10 @@ namespace Avogadro {
   void ColorButton::changeColor()
   {
     // This could be an ifdef for KColorDialog if KDE is present
-    m_color = QColorDialog::getColor(m_color, this);
+    if (m_title == "")
+      m_color = QColorDialog::getColor(m_color, this);
+    else
+      m_color = QColorDialog::getColor(m_color, this, m_title);
     update();
 
     emit colorChanged(m_color);
@@ -60,6 +63,11 @@ namespace Avogadro {
     update();
 
     emit colorChanged(m_color);
+  }
+
+  void ColorButton::setDialogTitle(const QString title)
+  {
+    m_title = title;
   }
 
   QColor ColorButton::color() const

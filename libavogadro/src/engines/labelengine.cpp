@@ -346,14 +346,25 @@ Bond *dummyBond;*/
         m_settingsWidget->bondType->setCurrentIndex(m_bondType);
         setAtomType(m_atomType);
         setBondType(m_bondType);
+        m_settingsWidget->atomFont->setCurrentFont(m_atomFont);
+        m_settingsWidget->bondFont->setCurrentFont(m_bondFont);
+        m_settingsWidget->atomColor->setColor(m_atomColor);
+        m_settingsWidget->atomColor->setDialogTitle(tr("Select Atom Labels Color"));
+        m_settingsWidget->bondColor->setColor(m_bondColor);
+        m_settingsWidget->bondColor->setDialogTitle(tr("Select Bond Labels Color"));
+        
         connect(m_settingsWidget->atomType, SIGNAL(activated(int)), this, SLOT(setAtomType(int)));
         connect(m_settingsWidget->textRendering, SIGNAL(activated(int)), this, SLOT(setTextRendering(int)));
-        connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
-        connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
+        //connect(m_settingsWidget->atomColor, SIGNAL(clicked()), this, SLOT(setAtomColor()));
+        connect(m_settingsWidget->atomColor, SIGNAL(colorChanged(QColor)), this, SLOT(setAtomColor(QColor)));
+        //connect(m_settingsWidget->atomFont, SIGNAL(clicked()), this, SLOT(setAtomFont()));
+        connect(m_settingsWidget->atomFont, SIGNAL(currentFontChanged(QFont)), this, SLOT(setAtomFont(QFont)));
         connect(m_settingsWidget->bondType, SIGNAL(activated(int)), this, SLOT(setBondType(int)));
         connect(m_settingsWidget->lengthPrecision, SIGNAL(valueChanged(int)), this, SLOT(setLengthPrecision(int)));
-        connect(m_settingsWidget->bondColor, SIGNAL(clicked()), this, SLOT(setBondColor()));
-        connect(m_settingsWidget->bondFont, SIGNAL(clicked()), this, SLOT(setBondFont()));        
+        //connect(m_settingsWidget->bondColor, SIGNAL(clicked()), this, SLOT(setBondColor()));
+        connect(m_settingsWidget->bondColor, SIGNAL(colorChanged(QColor)), this, SLOT(setBondColor(QColor)));
+        //connect(m_settingsWidget->bondFont, SIGNAL(clicked()), this, SLOT(setBondFont()));
+        connect(m_settingsWidget->bondFont, SIGNAL(currentFontChanged(QFont)), this, SLOT(setBondFont(QFont)));
         connect(m_settingsWidget, SIGNAL(destroyed()), this, SLOT(settingsWidgetDestroyed()));
         connect(m_settingsWidget->xDisplSpinBox, SIGNAL(valueChanged(double)),
               this, SLOT(updateDisplacement(double)));
@@ -371,48 +382,48 @@ Bond *dummyBond;*/
     return m_settingsWidget;
   }
 
-  void LabelEngine::setAtomColor()
+  void LabelEngine::setAtomColor(QColor color)
   {
-    QColor current(m_atomColor);
-    QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Atom Labels Color"));
-    if (color.isValid() && color != current) {
+    //QColor current(m_atomColor);
+    //QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Atom Labels Color"));
+    //if (color.isValid() && color != current) {
       m_atomColor = color;
       emit changed();
-    }
+    //}
   }
 
-  void LabelEngine::setAtomFont()
+  void LabelEngine::setAtomFont(QFont font)
   {
-    bool ok;
-    QFont current(m_atomFont);
-    QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Atom Labels Font"));
-    if (ok) {
+    //bool ok;
+    //QFont current(m_atomFont);
+    //QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Atom Labels Font"));
+    //if (ok) {
       m_atomFont = font;
       //m_settingsWidget->atomLabel->setFont(m_atomFont);
       emit changed();
-    }
+    //}
   }
 
-  void LabelEngine::setBondColor()
+  void LabelEngine::setBondColor(QColor color)
   {
-    QColor current(m_bondColor);
-    QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Bond Labels Color"));
-    if (color.isValid() && color != current) {
+    //QColor current(m_bondColor);
+    //QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Bond Labels Color"));
+    //if (color.isValid() && color != current) {
       m_bondColor = color;
       emit changed();
-    }
+    //}
   }
 
-  void LabelEngine::setBondFont()
+  void LabelEngine::setBondFont(QFont font)
   {
-    bool ok;
-    QFont current(m_bondFont);
-    QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Bond Labels Font"));
-    if (ok) {
+    //bool ok;
+    //QFont current(m_bondFont);
+    //QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Bond Labels Font"));
+    //if (ok) {
       m_bondFont = font;
       //m_settingsWidget->bondLabel->setFont(m_bondFont);
       emit changed();
-    }
+    //}
   }
   
   void LabelEngine::settingsWidgetDestroyed()
