@@ -43,7 +43,7 @@ avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
 
 ### Selections
 avogadro_plugin_nogl(selectextension selectextension.cpp)
-target_link_libraries(selectextension ${AVO_LINK_LIBRARIES} periodictable)
+target_link_libraries(selectextension periodictable)
 
 ### unit cells
 avogadro_plugin_nogl(unitcellextension
@@ -117,7 +117,6 @@ avogadro_plugin_nogl(supercellextension
 # Network fetch
 avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
 target_link_libraries(networkfetchextension
-  ${AVO_LINK_LIBRARIES}
   ${QT_QTNETWORK_LIBRARY}
 )
 

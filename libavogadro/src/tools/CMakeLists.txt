@@ -22,9 +22,7 @@ set(drawtool_SRCS
 avogadro_plugin(drawtool
   "${drawtool_SRCS}"
   drawtool.qrc)
-target_link_libraries(drawtool
-  ${AVO_LINK_LIBRARIES}
-  periodictable)
+target_link_libraries(drawtool periodictable)
 
 option(ENABLE_ZMATRIX_TOOL "Enable the z-matrix tool (experimental)" OFF)
 if(ENABLE_ZMATRIX_TOOL)

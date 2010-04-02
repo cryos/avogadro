@@ -21,7 +21,7 @@ set(periodictable_HDRS
   periodictableview.h
 )
 
-set(PERIODICTABLE_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES})
+set(PERIODICTABLE_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 qt4_automoc(${periodictable_SRCS})
 
@@ -42,7 +42,8 @@ endforeach(headerFile ${periodictable_HDRS})
 
 add_library(periodictable SHARED
   ${periodictable_SRCS} )
-set_target_properties(periodictable PROPERTIES 
+set_target_properties(periodictable PROPERTIES
+  LINK_INTERFACE_LIBRARIES ""
   VERSION ${Avogadro_VERSION_FULL}
   SOVERSION 1
   LABELS periodictable)
