@@ -89,7 +89,7 @@ set_target_properties(avogadro-app PROPERTIES
 set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 
-target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+target_link_libraries(avogadro-app ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
     avogadro)
 
 if(APPLE)
