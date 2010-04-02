@@ -2,7 +2,7 @@ include(${QT_USE_FILE})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/engines)
+set(DESTINATION_DIR ${avogadro_plugin_INSTALL_DIR}/engines)
 
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_PLUGIN)
@@ -18,7 +18,8 @@ add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
 set_target_properties(labelengine PROPERTIES LABELS "Engine")
-target_link_libraries(labelengine ${AVO_LINK_LIBRARIES} periodictable)
+add_dependencies(labelengine periodictable)
+target_link_libraries(labelengine periodictable)
 
 # overlay engine
 avogadro_plugin(overlayengine overlayengine.cpp)

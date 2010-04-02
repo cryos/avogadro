@@ -18,7 +18,7 @@ set(inputfileextension_SRCS inputfileextension.cpp
     mopacinputdialog.cpp
     nwcheminputdialog.cpp
     qcheminputdialog.cpp)
-avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
+avogadro_plugin_nogl(inputfileextension "${inputfileextension_SRCS}"
  "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
 
 ### gamess
@@ -27,6 +27,6 @@ set(gamessextension_SRCS gamessextension.cpp
   gamessinputdata.cpp
   gamesshighlighter.cpp
   gamessefpmatchdialog.cpp)
-avogadro_plugin(gamessextension
+avogadro_plugin_nogl(gamessextension
   "${gamessextension_SRCS}"
   "gamessinputdialog.ui;gamessefpmatchdialog.ui")
