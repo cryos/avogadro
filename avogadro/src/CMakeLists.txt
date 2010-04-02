@@ -21,6 +21,7 @@ include_directories(
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
+  "${libavogadro_SOURCE_DIR}/gl2ps"
 )
 
 if(GLEW_FOUND)
@@ -44,8 +45,6 @@ endif(ENABLE_UPDATE_CHECKER)
 
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
-# Add GL2PS to the executable
-set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)

@@ -53,7 +53,7 @@
 //#endif
 
 // Include the GL2PS header
-#include "../gl2ps/gl2ps.h"
+#include "gl2ps.h"
 
 #include <avogadro/pluginmanager.h>
 

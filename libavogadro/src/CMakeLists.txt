@@ -35,48 +35,57 @@ endif(NOT WIN32)
 file(GLOB libavogadro_SRCS "*.cpp")
 
 # Only headers with exported symbols should actually be installed
-set(libavogadro_HDRS
-  animation.h
+set(libavogadrocore_HDRS
   atom.h
   bond.h
+  cube.h
+  global.h
+  idlist.h
+  mesh.h
+  meshgenerator.h
+  molecule.h
+  moleculefile.h
+  primitive.h
+  primitivelist.h
+  protein.h
+  residue.h
+)
+
+set(libavogadrowidget_HDRS
+  animation.h
   camera.h
   color3f.h
   color.h
   colorbutton.h
-  cube.h
   dockextension.h
-#  elementtranslator.h
   engine.h
   extension.h
   fragment.h
   glhit.h
   glwidget.h
-  global.h
-  idlist.h
-  plotaxis.h # dlonie: Are these necessary here?
-  plotobject.h
-  plotpoint.h
-  plotwidget.h
-  mesh.h
-  meshgenerator.h
-  molecule.h
-  moleculefile.h
   navigate.h
   neighborlist.h
   painter.h
   painterdevice.h
-#  periodictableview.h
   plugin.h
   pluginmanager.h
-  primitive.h
-  primitivelist.h
-  protein.h
-  residue.h
   tool.h
   toolgroup.h
   undosequence.h
   zmatrix.h
 )
+
+set(libplotwidget_HDRS
+  plotaxis.h # dlonie: Are these necessary here?
+  plotobject.h
+  plotpoint.h
+  plotwidget.h
+)
+
+set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS}
+  ${libplotwidget_HDRS})
+
+#set(libavogadro_HDRS ${libavogadro_HDRS} "../gl2ps/gl2ps.h")
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 # Also add in the qtiocompressor class
@@ -91,9 +100,13 @@ set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
+# Add GL2PS to the library
+set(libavogadro_SRCS ${libavogadro_SRCS} "../gl2ps/gl2ps.c")
+
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
                        ${QT_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
+                       #${OPENGL_LIBRARIES}
+                       ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
                        )
 
 if(GLEW_FOUND)
