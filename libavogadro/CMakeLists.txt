@@ -61,7 +61,7 @@ endfunction(avogadro_plugin_nogl)
 
 function(avogadro_plugin plugin_name src_list)
   avogadro_plugin_nogl("${plugin_name}" "${src_list}")
-  target_link_libraries(${plugin_name} ${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES})  
+  target_link_libraries(${plugin_name} ${OPENGL_LIBRARIES})  
 endfunction(avogadro_plugin)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
