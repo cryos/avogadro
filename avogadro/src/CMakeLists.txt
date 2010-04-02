@@ -1,5 +1,5 @@
 set(QT_USE_QTOPENGL true)
-set(QT_USE_QTNETWORK true)
+#set(QT_USE_QTNETWORK true)
 
 if(WIN32)
   set(QT_USE_QTMAIN true)
@@ -10,7 +10,7 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/config.h
 )
 
-link_directories(${OPENBABEL2_LIBRARY_DIRS})
+#link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
