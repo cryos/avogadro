@@ -46,6 +46,7 @@ set_target_properties(periodictable PROPERTIES
   LINK_INTERFACE_LIBRARIES ""
   VERSION ${Avogadro_VERSION_FULL}
   SOVERSION 1
+  OUTPUT_NAME QPeriodicTable
   LABELS periodictable)
 set_source_files_properties(${periodictable_SRCS}
   PROPERTIES LABELS periodictable)
