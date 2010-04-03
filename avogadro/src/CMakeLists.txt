@@ -1,5 +1,5 @@
 set(QT_USE_QTOPENGL true)
-#set(QT_USE_QTNETWORK true)
+set(QT_USE_QTNETWORK true)
 
 if(WIN32)
   set(QT_USE_QTMAIN true)
@@ -90,6 +90,10 @@ set_source_files_properties(${avogadro_SRCS}
 
 target_link_libraries(avogadro-app ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
     avogadro)
+
+if(ENABLE_UPDATE_CHECKER)
+  target_link_libraries(avogadro-app ${QT_QTNETWORK_LIBRARY})
+endif(ENABLE_UPDATE_CHECKER)
 
 if(APPLE)
   set(MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${Avogadro_VERSION_FULL}")
