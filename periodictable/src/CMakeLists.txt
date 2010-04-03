@@ -11,7 +11,7 @@ include_directories(
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
-link_directories(${OPENBABEL2_LIBRARY_DIRS})
+link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 file(GLOB periodictable_SRCS "*.cpp")
 
