@@ -106,7 +106,7 @@ set(libavogadro_SRCS ${libavogadro_SRCS} "../gl2ps/gl2ps.c")
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
                        ${QT_LIBRARIES}
                        #${OPENGL_LIBRARIES}
-                       ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
+                       #${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
                        )
 
 if(GLEW_FOUND)
