@@ -332,18 +332,22 @@ namespace Avogadro {
   void ProjectTreeEditor::on_aliasEdit_textEdited(const QString &)
   {
     QTreeWidgetItem *current = ui.treeWidget->currentItem();
-    m_hash.value(current)->setAlias( ui.aliasEdit->text() );
+    if (current)
+      m_hash.value(current)->setAlias( ui.aliasEdit->text() );
   }
 
   void ProjectTreeEditor::on_settingsButton_clicked()
   {
     QTreeWidgetItem *current = ui.treeWidget->currentItem();
-    m_hash.value(current)->settingsWidget()->show();
+    if (current)
+      m_hash.value(current)->settingsWidget()->show();
   }
 
   void ProjectTreeEditor::updateEditor()
   {
     QTreeWidgetItem *current = ui.treeWidget->currentItem();
+	if (!current)
+	  return;
 
     bool itemsEnabled = false;
     bool currentItemEnabled = false;
