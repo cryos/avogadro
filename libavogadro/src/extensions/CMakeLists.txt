@@ -63,13 +63,6 @@ avogadro_plugin_nogl(insertpeptideextension
 ### h->methyl
 avogadro_plugin_nogl(h2methylextension h2methylextension.cpp)
 
-### Surfaces
-set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
-  basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp molpro.cpp
-  vdwsurface.cpp ../../qtiocompressor/qtiocompressor.cpp)
-avogadro_plugin_nogl(surfaceextension "${surfaceextension_SRCS}" surfacedialog.ui)
-target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
-
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
@@ -121,4 +114,5 @@ target_link_libraries(networkfetchextension
 )
 
 add_subdirectory(spectra)
+add_subdirectory(surfaces)
 add_subdirectory(quantuminput)
