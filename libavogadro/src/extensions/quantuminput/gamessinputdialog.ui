@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="modeTab">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="basicWidget">
       <attribute name="title">
@@ -62,6 +62,9 @@
          </item>
          <item>
           <widget class="QComboBox" name="basicWithRightCombo">
+           <property name="accessibleDescription">
+            <string notr="true"/>
+           </property>
            <item>
             <property name="text">
              <string>STO-3G</string>
@@ -2964,11 +2967,11 @@
       </spacer>
      </item>
      <item>
-     <widget class="QPushButton" name="computeButton">
+      <widget class="QPushButton" name="computeButton">
        <property name="text">
-         <string>Compute...</string>
+        <string>Compute...</string>
        </property>
-     </widget>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="generateButton">
