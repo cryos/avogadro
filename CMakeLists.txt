@@ -98,7 +98,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	endif (NOT APPLE)
   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
   # they will not replace them.
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
     "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline ${CMAKE_CXX_FLAGS_WARN}")
@@ -148,8 +148,8 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 	endif(HAVE_INTEL_VISIBILITY_INLINES)
   endif(HAVE_INTEL_VISIBILITY)
   
-  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   
   # define WITH_SSE2 to enable the SSE2 instruction set.
   # Available on Pentium 4, Athlon 64, and newer CPUs.
