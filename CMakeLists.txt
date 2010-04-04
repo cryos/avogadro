@@ -348,15 +348,41 @@ endif(APPLE)
 
 if (UNIX)
   if(ENABLE_AVO_PACKAGE)
-  # Make sure to copy Qt plugins and translations
-  file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
-  install(FILES ${qt_TRANSLATIONS}
-	DESTINATION "${I18N_INSTALL_DIR}"
-	)
-  # FIXME: These need to have the install-name tool run on them
-  install(DIRECTORY "${QT_PLUGINS_DIR}"
-	DESTINATION "${CMAKE_INSTALL_PREFIX}"
-	)
+    if(APPLE)
+      # Make sure to copy Qt plugins and translations
+      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+      install(FILES ${qt_TRANSLATIONS}
+    	DESTINATION "${I18N_INSTALL_DIR}"
+    	)
+      # FIXME: These need to have the install-name tool run on them
+      install(DIRECTORY "${QT_PLUGINS_DIR}"
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}"
+    	)
+    else(APPLE)
+      # Make sure to copy Qt plugins and translations
+      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+      install(FILES ${qt_TRANSLATIONS}
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+    	)
+      # FIXME: These need to have the install-name tool run on them
+      install(DIRECTORY "${QT_PLUGINS_DIR}"
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+    	)
+      install(FILES ${QT_LIBRARIES}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+        )
+      # FIXME: Add others
+      set(X11_LIBRARIES ${X11_ICE_LIB} ${X11_SM_LIB} ${X11_X11_LIB})
+      install(FILES ${X11_LIBRARIES}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/X11"
+        )
+      install(FILES ${OPENGL_LIBRARIES}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gl"
+        )
+      install (FILES ${ZLIB_LIBRARY}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        )
+    endif(APPLE)
   endif(ENABLE_AVO_PACKAGE)
 endif (UNIX)
 
