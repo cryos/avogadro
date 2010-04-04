@@ -235,10 +235,12 @@ namespace Avogadro {
     m_colorTypes << Cube::None << Cube::ESP;
 
     // Connect to the molecule signals to check for addition/removal of cubes
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
+    if (m_molecule) {
+      connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
             this, SLOT(addCube(Primitive *)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
+      connect(m_molecule, SIGNAL(primitiveRemoved(Primitive *)),
             this, SLOT(removeCube(Primitive *)));
+    }
     updateCubes();
   }
 
