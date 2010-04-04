@@ -438,7 +438,11 @@ if(QT_MKSPECS_DIR)
     )
   endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
 else(QT_MKSPECS_DIR)
-  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will not be installed.")
+  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+    DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
+  ) 
 endif(QT_MKSPECS_DIR)
 
 # Use CPack to do some of our packaging
