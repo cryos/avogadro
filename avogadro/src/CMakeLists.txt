@@ -10,7 +10,7 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/config.h
 )
 
-#link_directories(${OPENBABEL2_LIBRARY_DIRS})
+link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
@@ -88,7 +88,7 @@ set_target_properties(avogadro-app PROPERTIES
 set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 
-target_link_libraries(avogadro-app ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
+target_link_libraries(avogadro-app ${QT_LIBRARIES} ${OPENBABEL2_LIBRARIES}
     avogadro)
 
 if(ENABLE_UPDATE_CHECKER)
