@@ -339,24 +339,26 @@ if(APPLE)
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION Resources)
 
-if(ENABLE_AVO_PACKAGE)
-# Make sure to copy Qt plugins and translations
-file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
-install(FILES ${qt_TRANSLATIONS}
-	DESTINATION "${I18N_INSTALL_DIR}"
-	)
-# FIXME: These need to have the install-name tool run on them
-install(DIRECTORY "${QT_PLUGINS_DIR}"
-	DESTINATION "${CMAKE_INSTALL_PREFIX}"
-	)
-endif(ENABLE_AVO_PACKAGE)
-
 else(APPLE)
   install(FILES
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION "${LIB_INSTALL_DIR}/avogadro")
 endif(APPLE)
+
+if (UNIX)
+  if(ENABLE_AVO_PACKAGE)
+  # Make sure to copy Qt plugins and translations
+  file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+  install(FILES ${qt_TRANSLATIONS}
+	DESTINATION "${I18N_INSTALL_DIR}"
+	)
+  # FIXME: These need to have the install-name tool run on them
+  install(DIRECTORY "${QT_PLUGINS_DIR}"
+	DESTINATION "${CMAKE_INSTALL_PREFIX}"
+	)
+  endif(ENABLE_AVO_PACKAGE)
+endif (UNIX)
 
 # Install the configuration files to help find Avogadro
 install(FILES
