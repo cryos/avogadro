@@ -1,2 +1,13 @@
+CMakeFiles
 build
-
+*.[ao]
+*.so*
+*.qm
+*.ts
+*.moc
+*.log
+ui_*.h
+moc_*.cxx
+qrc_*.cxx
+cmake_install*
+cmake_uninstall*
