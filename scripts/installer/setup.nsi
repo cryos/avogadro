@@ -19,8 +19,8 @@ RequestExecutionLevel user
 
 # general definitions
 # you only need to change this section for new releases
-VIProductVersion "0.9.0.0" # file version for the installer in the scheme "x.x.x.x"
-!define VERSION "0.9.0"
+VIProductVersion "1.1.0.0" # file version for the installer in the scheme "x.x.x.x"
+!define VERSION "1.1.0"
 Name "Avogadro"
 !define REGKEY "SOFTWARE\Avogadro"
 !define COMPANY "Avogadro Team"
