@@ -201,27 +201,29 @@ int main(int argc, char *argv[])
   }
 
   if (!QGLFormat::hasOpenGL()) {
-    QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
-        QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));
+  //  QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
+  //      QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));
+      QMessageBox::information(0, "Avogadro", "This system does not support OpenGL.");
     return -1;
   }
-  qDebug() << QCoreApplication::translate("main.cpp", "System has OpenGL support.");
+  qDebug() << /*QCoreApplication::translate("main.cpp", */"System has OpenGL support."/*)*/;
 
   // Extra debug messages to check out where some init segfaults are happening
-  qDebug() << QCoreApplication::translate("main.cpp", "About to test OpenGL capabilities.");
+  qDebug() << /*QCoreApplication::translate("main.cpp", */"About to test OpenGL capabilities."/*)*/;
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);
 
   // Test what capabilities we have
-  qDebug() << QCoreApplication::translate("main.cpp", "OpenGL capabilities found: ");
+  //qDebug() << /*QCoreApplication::translate("main.cpp", */"OpenGL capabilities found: "/*)*/;
+  std::cout << "OpenGL capabilities found: " << std::endl;
   if (defFormat.doubleBuffer())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Double Buffering.");
+    std::cout << "\t" << "Double Buffering." << std::endl;
   if (defFormat.directRendering())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Direct Rendering.");
+    std::cout << "\t" << "Direct Rendering." << std::endl;
   if (defFormat.sampleBuffers())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Antialiasing.");
+    std::cout << "\t" << "Antialiasing." << std::endl;
 
   // Now load any files supplied on the command-line or via launching a file
   MainWindow *window = new MainWindow();
