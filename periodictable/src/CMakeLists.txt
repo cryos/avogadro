@@ -1,5 +1,10 @@
 include(${QT_USE_FILE})
 
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/config.h
+)
+
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
 set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
@@ -52,7 +57,14 @@ set_source_files_properties(${periodictable_SRCS}
   PROPERTIES LABELS periodictable)
 target_link_libraries(periodictable ${PERIODICTABLE_LINK_LIBRARIES})
 
+# Standalone periodic table
+qt4_automoc(qperiodictable.cpp)
+add_executable(qperiodictable qperiodictable.cpp)
+target_link_libraries(qperiodictable periodictable ${OPENBABEL2_LIBRARIES}
+  ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+
 install(TARGETS periodictable DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS qperiodictable DESTINATION ${BIN_INSTALL_DIR})
 install(FILES ${periodictable_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
 
