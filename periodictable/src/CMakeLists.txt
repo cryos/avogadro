@@ -8,7 +8,7 @@ configure_file(
 # Ensure the Avogadro include directory is always first
 get_directory_property(tmp_include_dirs INCLUDE_DIRECTORIES)
 set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES
-  "${periodictable_BINARY_DIR}/include;${tmp_include_dirs}")
+  "${libavogadro_BINARY_DIR}/include;${tmp_include_dirs}")
 include_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
   ${EIGEN2_INCLUDE_DIR}

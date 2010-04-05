@@ -2,7 +2,8 @@ include(${QT_USE_FILE})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-set(DESTINATION_DIR ${avogadro_plugin_INSTALL_DIR}/engines)
+set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/engines)
+message("${DESTINATION_DIR}")
 
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_PLUGIN)
