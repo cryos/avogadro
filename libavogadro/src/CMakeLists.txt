@@ -23,10 +23,10 @@ link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_BINARY_DIR}/lib)
 
 # Library translations
 if(NOT WIN32)
-  if(QT_LCONVERT_EXECUTABLE)
+  if(Linguist_FOUND)
     file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
     QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
-  endif(QT_LCONVERT_EXECUTABLE)
+  endif(Linguist_FOUND)
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")

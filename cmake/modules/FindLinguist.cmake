@@ -20,7 +20,9 @@ FIND_PROGRAM(QT_LUPDATE_EXECUTABLE NAMES lupdate-qt4 lupdate PATHS
 if(QT_LUPDATE_EXECUTABLE)
   message(STATUS "Found lupdate: ${QT_LUPDATE_EXECUTABLE}")
 else(QT_LUPDATE_EXECUTABLE)
-  message(FATAL_ERROR "Could NOT find lupdate")
+  if(Linguist_FIND_REQUIRED)
+    message(FATAL_ERROR "Could NOT find lupdate")
+  endif(Linguist_FIND_REQUIRED)
 endif(QT_LUPDATE_EXECUTABLE)
 
 FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt4 lrelease PATHS
@@ -32,7 +34,9 @@ FIND_PROGRAM(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt4 lrelease PATHS
 if(QT_LRELEASE_EXECUTABLE)
   message(STATUS "Found lrelease: ${QT_LRELEASE_EXECUTABLE}")
 else(QT_LRELEASE_EXECUTABLE)
-  message(FATAL_ERROR "Could NOT find lrelease")
+  if(Linguist_FIND_REQUIRED)
+    message(FATAL_ERROR "Could NOT find lrelease")
+  endif(Linguist_FIND_REQUIRED)
 endif(QT_LRELEASE_EXECUTABLE)
 
 FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert-qt4 lconvert PATHS
@@ -44,10 +48,15 @@ FIND_PROGRAM(QT_LCONVERT_EXECUTABLE NAMES lconvert-qt4 lconvert PATHS
 if(QT_LCONVERT_EXECUTABLE)
   message(STATUS "Found lconvert: ${QT_LCONVERT_EXECUTABLE}")
 else(QT_LCONVERT_EXECUTABLE)
-  message(FATAL_ERROR "Could NOT find lconvert")
+  if(Linguist_FIND_REQUIRED)
+    message(FATAL_ERROR "Could NOT find lconvert")
+  endif(Linguist_FIND_REQUIRED)
 endif(QT_LCONVERT_EXECUTABLE)
 
 mark_as_advanced(QT_LUPDATE_EXECUTABLE QT_LRELEASE_EXECUTABLE QT_LCONVERT_EXECUTABLE)
+
+if(QT_LUPDATE_EXECUTABLE AND QT_LRELEASE_EXECUTABLE AND QT_LCONVERT_EXECUTABLE)
+  set(Linguist_FOUND TRUE)
 
 # QT4_WRAP_TS(outfiles infiles ...)
 # outfiles receives .qm generated files from
@@ -104,3 +113,7 @@ MACRO (QT4_WRAP_PO outfiles)
       SET(${outfiles} ${${outfiles}} ${qmfile})
    ENDFOREACH (it)
 ENDMACRO (QT4_WRAP_PO)
+
+else(QT_LUPDATE_EXECUTABLE AND QT_LRELEASE_EXECUTABLE AND QT_LCONVERT_EXECUTABLE)
+  set(Linguist_FOUND FALSE)
+endif(QT_LUPDATE_EXECUTABLE AND QT_LRELEASE_EXECUTABLE AND QT_LCONVERT_EXECUTABLE)
