@@ -140,7 +140,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
     add_definitions(-DHAVE_GCC_VISIBILITY)
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+#	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
 	check_cxx_compiler_flag(-fvisibility-inlines-hidden HAVE_INTEL_VISIBILITY_INLINES)
 	set(HAVE_INTEL_VISIBILITY_INLINES ${HAVE_INTEL_VISIBILITY_INLINES} CACHE BOOL "Intel Compiler support for -fvisibility-inlines-hidden")
 	if(HAVE_INTEL_VISIBILITY_INLINES)
@@ -450,26 +450,27 @@ configure_file(
   @ONLY
 )
 
-if(QT_MKSPECS_DIR)
-  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
-    string(REPLACE 
-      "${CMAKE_INSTALL_PREFIX}" 
-      "" 
-      QT_MKSPECS_RELATIVE 
-      "${QT_MKSPECS_DIR}"
-    )
+option(INSTALL_QMAKE_PRF "Install QMake integration files to Qt prefix" ON)
+if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
+#  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+#    string(REPLACE 
+#      "${CMAKE_INSTALL_PREFIX}" 
+#      "" 
+#      QT_MKSPECS_RELATIVE 
+#      "${QT_MKSPECS_DIR}"
+#    )
     install(FILES
       "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
       DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
     )
-  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
-else(QT_MKSPECS_DIR)
+#  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+else(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
   message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
     DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
   ) 
-endif(QT_MKSPECS_DIR)
+endif(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
