@@ -1,6 +1,9 @@
 # check for lupdate and lrelease: we can't
 # do it using qmake as it doesn't have
 # QMAKE_LUPDATE and QMAKE_LRELEASE variables :(
+#
+#  I18N_LANGUAGE - if not empty, wraps only chosen language
+#
 
 # One problem is that FindQt4.cmake will look for these and cache the results
 # If users have lrelease from Qt3 (e.g., Debian, Ubuntu)
@@ -94,13 +97,24 @@ MACRO (QT4_WRAP_PO outfiles)
       GET_FILENAME_COMPONENT(it ${it} ABSOLUTE)
       # PO files are foo-en_GB.po not foo_en_GB.po like Qt expects
       GET_FILENAME_COMPONENT(fileWithDash ${it} NAME_WE)
-      STRING(REPLACE "-" "_" filenameBase "${fileWithDash}")
-      SET(tsfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.ts)
-      SET(qmfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.qm)
+      if(NOT I18N_LANGUAGE)
+        set(do_wrap ON)
+      else(NOT I18N_LANGUAGE)
+        string(REGEX MATCH "${I18N_LANGUAGE}" ln ${fileWithDash})
+        if(ln)
+          set(do_wrap ON)
+        else(ln)
+          set(do_wrap OFF)
+        endif(ln)
+      endif(NOT I18N_LANGUAGE)      
+      if(do_wrap)
+        STRING(REPLACE "-" "_" filenameBase "${fileWithDash}")
+        SET(tsfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.ts)
+        SET(qmfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.qm)
 
-      # lconvert from PO to TS and then run lupdate to generate the correct strings
-      # finally run lrelease as used above
-      ADD_CUSTOM_COMMAND(OUTPUT ${qmfile}
+        # lconvert from PO to TS and then run lupdate to generate the correct strings
+        # finally run lrelease as used above
+        ADD_CUSTOM_COMMAND(OUTPUT ${qmfile}
                          COMMAND ${QT_LCONVERT_EXECUTABLE}
                          ARGS -i ${it} -o ${tsfile}
                          COMMAND ${QT_LUPDATE_EXECUTABLE}
@@ -110,7 +124,8 @@ MACRO (QT4_WRAP_PO outfiles)
                          DEPENDS ${it}
                          )
 
-      SET(${outfiles} ${${outfiles}} ${qmfile})
+        SET(${outfiles} ${${outfiles}} ${qmfile})
+      endif(do_wrap)
    ENDFOREACH (it)
 ENDMACRO (QT4_WRAP_PO)
 

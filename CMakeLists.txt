@@ -161,6 +161,8 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   endif(CMAKE_SIZEOF_VOID_P EQUAL 8 OR WITH_SSE2)
 endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
+set(I18N_LANGUAGE "" CACHE STRING "Build i18n only for selected language")
+
 set(QT_MIN_VERSION "4.5.1") # we need at least version 4.5.1
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
