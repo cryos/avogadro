@@ -140,7 +140,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
     add_definitions(-DHAVE_GCC_VISIBILITY)
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+#	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
 	check_cxx_compiler_flag(-fvisibility-inlines-hidden HAVE_INTEL_VISIBILITY_INLINES)
 	set(HAVE_INTEL_VISIBILITY_INLINES ${HAVE_INTEL_VISIBILITY_INLINES} CACHE BOOL "Intel Compiler support for -fvisibility-inlines-hidden")
 	if(HAVE_INTEL_VISIBILITY_INLINES)
@@ -148,8 +148,8 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 	endif(HAVE_INTEL_VISIBILITY_INLINES)
   endif(HAVE_INTEL_VISIBILITY)
   
-  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
+  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   
   # define WITH_SSE2 to enable the SSE2 instruction set.
   # Available on Pentium 4, Athlon 64, and newer CPUs.
@@ -364,26 +364,27 @@ if (UNIX)
       # Make sure to copy Qt plugins and translations
       file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
       install(FILES ${qt_TRANSLATIONS}
-    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt/translations"
     	)
       # FIXME: These need to have the install-name tool run on them
       install(DIRECTORY "${QT_PLUGINS_DIR}"
     	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
     	)
-      install(FILES ${QT_LIBRARIES}
+      file(GLOB qt_libs "${QT_LIBRARY_DIR}/libQtCore.so* ${QT_LIBRARY_DIR}/libQtGui.so* ${QT_LIBRARY_DIR}/libQtOpenGL.so* ${QT_LIBRARY_DIR}/libQtNetwork.so*")
+      install(FILES ${qt_libs}
         DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
         )
       # FIXME: Add others
-      set(X11_LIBRARIES ${X11_ICE_LIB} ${X11_SM_LIB} ${X11_X11_LIB})
-      install(FILES ${X11_LIBRARIES}
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/X11"
-        )
-      install(FILES ${OPENGL_LIBRARIES}
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gl"
-        )
-      install (FILES ${ZLIB_LIBRARY}
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
-        )
+#      set(X11_LIBRARIES ${X11_ICE_LIB} ${X11_SM_LIB} ${X11_X11_LIB})
+#      install(LIBRARY ${X11_LIBRARIES}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/X11"
+#        )
+#      install(LIBRARY ${OPENGL_LIBRARIES}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gl"
+#        )
+#      install (LIBRARY ${ZLIB_LIBRARY}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+#        )
     endif(APPLE)
   endif(ENABLE_AVO_PACKAGE)
 endif (UNIX)
@@ -452,26 +453,27 @@ configure_file(
   @ONLY
 )
 
-if(QT_MKSPECS_DIR)
-  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
-    string(REPLACE 
-      "${CMAKE_INSTALL_PREFIX}" 
-      "" 
-      QT_MKSPECS_RELATIVE 
-      "${QT_MKSPECS_DIR}"
-    )
+option(INSTALL_QMAKE_PRF "Install QMake integration files to Qt prefix" ON)
+if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
+#  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+#    string(REPLACE 
+#      "${CMAKE_INSTALL_PREFIX}" 
+#      "" 
+#      QT_MKSPECS_RELATIVE 
+#      "${QT_MKSPECS_DIR}"
+#    )
     install(FILES
       "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
       DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
     )
-  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
-else(QT_MKSPECS_DIR)
+#  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+else(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
   message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
     DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
   ) 
-endif(QT_MKSPECS_DIR)
+endif(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)
