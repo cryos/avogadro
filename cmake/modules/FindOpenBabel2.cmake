@@ -17,6 +17,7 @@ if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
 
 else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
   if(EMBED_OPENBABEL)
+    MESSAGE(STATUS "Using Open Babel from superpackage")
     # Building a super-package, rely on the embedded paths
     set(OPENBABEL2_VERSION_MET TRUE)
     set(OPENBABEL2_INCLUDE_DIR ${super_SOURCE_DIR}/openbabel/include ${super_BINARY_DIR}/openbabel/include)
@@ -27,6 +28,8 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
       ${GNUWIN32_DIR}/lib
       $ENV{OPENBABEL2_LIBRARIES}
     )
+    # We know the embedded OB will be trunk
+    set (OPENBABEL_IS_NEWER_THAN_2_2_99 TRUE)
   else(EMBED_OPENBABEL)
   # Typical case -- find an installed OpenBabel
   if(NOT WIN32)
