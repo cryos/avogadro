@@ -102,13 +102,15 @@ int main(int argc, char *argv[])
 #ifdef AVO_APP_BUNDLE
   // Set up the babel data and plugin directories for Mac - relocatable
   // This also works for the Windows package, but BABEL_LIBDIR is ignored
-  QByteArray babelDataDir(("BABEL_DATADIR="
+
+  // Make sure to enclose the environment variable in quotes, or spaces will cause problems
+  QByteArray babelDataDir(("BABEL_DATADIR=\""
                            + QCoreApplication::applicationDirPath()
                            + "/../share/openbabel/"
-                           + BABEL_VERSION).toAscii());
-  QByteArray babelLibDir(("BABEL_LIBDIR="
+                           + BABEL_VERSION + '"').toAscii());
+  QByteArray babelLibDir(("BABEL_LIBDIR=\""
                           + QCoreApplication::applicationDirPath()
-                          + "/../lib/openbabel").toAscii());
+                          + "/../lib/openbabel\"").toAscii());
   int res1 = putenv(babelDataDir.data());
   int res2 = putenv(babelLibDir.data());
 
