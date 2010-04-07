@@ -28,4 +28,6 @@
 
 #define INSTALL_LIB_DIR "lib@LIB_SUFFIX@"
 
+#define INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
+
 #endif  // AVOCONFIG_H
