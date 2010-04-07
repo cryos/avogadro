@@ -20,7 +20,7 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
     MESSAGE(STATUS "Using Open Babel from superpackage")
     # Building a super-package, rely on the embedded paths
     set(OPENBABEL2_VERSION_MET TRUE)
-    set(OPENBABEL2_INCLUDE_DIR ${super_SOURCE_DIR}/openbabel/include ${super_BINARY_DIR}/openbabel/include)
+    set(OPENBABEL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/openbabel/include ${CMAKE_BINARY_DIR}/openbabel/include)
     # This is a kludge -- need to ask Marcus how to handle it better
     find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
       PATHS
