@@ -104,18 +104,19 @@ int main(int argc, char *argv[])
   // This also works for the Windows package, but BABEL_LIBDIR is ignored
 
   // Make sure to enclose the environment variable in quotes, or spaces will cause problems
-  QByteArray babelDataDir(("BABEL_DATADIR=\""
-                           + QCoreApplication::applicationDirPath()
-                           + "/../share/openbabel/"
-                           + BABEL_VERSION + '"').toAscii());
-  QByteArray babelLibDir(("BABEL_LIBDIR=\""
-                          + QCoreApplication::applicationDirPath()
-                          + "/../lib/openbabel\"").toAscii());
-  int res1 = putenv(babelDataDir.data());
-  int res2 = putenv(babelLibDir.data());
+  QString escapedAppPath = QCoreApplication::applicationDirPath().replace(' ', "\ ");
+  QByteArray babelDataDir((QCoreApplication::applicationDirPath()
+                          + "/../share/openbabel/"
+                           + BABEL_VERSION).toAscii());
+  QByteArray babelLibDir((QCoreApplication::applicationDirPath()
+                         + "/../lib/openbabel").toAscii());
+  int res1 = setenv("BABEL_DATADIR", babelDataDir.data(), 1);
+  int res2 = setenv("BABEL_LIBDIR", babelLibDir.data(), 1);
+
+  qDebug() << "BABEL_LIBDIR" << babelLibDir.data();
 
   if (res1 != 0 || res2 != 0)
-    qDebug() << "Error: putenv failed." << res1 << res2;
+    qDebug() << "Error: setenv failed." << res1 << res2;
 
   // Override the Qt plugin search path too
   QStringList pluginSearchPaths;
