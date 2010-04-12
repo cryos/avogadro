@@ -25,8 +25,7 @@
  **********************************************************************/
 
 #include "elementdetail_p.h"
-
-#include <avogadro/elementtranslator.h>
+#include "elementtranslator.h"
 
 #include <openbabel/mol.h>
 

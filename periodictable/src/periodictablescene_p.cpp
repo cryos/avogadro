@@ -26,8 +26,7 @@
 #include "periodictablescene_p.h"
 #include "elementitem_p.h"
 #include "elementdetail_p.h"
-
-#include <avogadro/elementtranslator.h>
+#include "elementtranslator.h"
 
 #include <openbabel/data.h>
 
