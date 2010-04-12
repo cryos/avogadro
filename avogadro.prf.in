@@ -6,3 +6,22 @@ INCLUDEPATH += . \
                @EIGEN2_INCLUDE_DIR@
 LIBS += -L$$AVOGADRO_PREFIX/lib -lavogadro \
         -L$$OPENBABEL_PREFIX/lib -lopenbabel
+
+unix {
+    manifest_.target = $$eval(TARGET).mf
+    manifest_.commands = avopkg -wizard $(QMAKE_TARGET)
+    manifest_.depends = first
+
+    manifest.depends = $$eval(TARGET).mf
+
+    package_.target = $$eval(TARGET).avo
+    package_.commands = avopkg -pack $$eval(TARGET).mf
+    #package_.depends = $$eval(TARGET).mf
+
+    package.depends = $$eval(TARGET).avo
+
+    install.commands = avopkg $$eval(TARGET).avo
+    install.depends = $$eval(TARGET).avo
+
+    QMAKE_EXTRA_TARGETS += manifest_ manifest package_ package install
+}

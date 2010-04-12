@@ -119,7 +119,8 @@ namespace Avogadro {
     else { // Get gaussians
       // convert FWHM to sigma squared
       double FWHM = ui.spin_FWHM->value();
-      double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+      gaussianWiden(plotObject, FWHM);
+      /*double s2	= pow( (FWHM / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
 
       // create points
       QList<double> xPoints = getXPoints(FWHM, 10);
@@ -132,7 +133,7 @@ namespace Avogadro {
           y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
-      }
+      }*/
 
       // Normalization is probably screwed up, so renormalize the data
       double max = plotObject->points().first()->y();

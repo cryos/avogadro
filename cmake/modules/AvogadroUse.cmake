@@ -45,7 +45,29 @@ function(avogadro_plugin plugin_name src_list)
   add_library(${plugin_name} MODULE ${src_list} ${plugin_UIS_H}
               ${plugin_RC_SRCS})
   target_link_libraries(${plugin_name} avogadro)
-  install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/contrib")
+
+  if(UNIX)
+    add_custom_target("${CMAKE_PROJECT_NAME}.mf"
+      COMMAND avopkg -wizard "${CMAKE_PROJECT_NAME}"
+    )
+    add_custom_target(manifest
+      DEPENDS "${CMAKE_PROJECT_NAME}.mf"
+    )
+    add_custom_target("${CMAKE_PROJECT_NAME}.avo"
+      COMMAND avopkg -pack "${CMAKE_PROJECT_NAME}.mf"
+    )
+    add_custom_target(package
+      DEPENDS "${CMAKE_PROJECT_NAME}.avo"
+    )
+    add_custom_target(install
+      COMMAND avopkg "${CMAKE_PROJECT_NAME}.avo"
+      DEPENDS "${CMAKE_PROJECT_NAME}.avo"
+    )
+  else(UNIX)
+    # Windows lacks avopkg
+    install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/contrib")
+  endif(UNIX)
+  
   set_target_properties(${plugin_name} PROPERTIES
                         OUTPUT_NAME ${plugin_name}
                         PREFIX "")

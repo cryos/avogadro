@@ -14,7 +14,7 @@ endif (WIN32)
 # DESTINATION_DIR to determine where the plugin will be installed.
 # ARGV2 is scanned for ui and or qrc files, ARGV3 is scanned for grc files
 # in order to maintain compatibility.
-function(avogadro_plugin plugin_name src_list)
+function(avogadro_plugin_nogl plugin_name src_list)
   # Assume all MOC stuff is in the headers, replace .cpp and use qt4_wrap_cpp
   # We should probably scan the header to verify the Q_OBJECT macro is used
   string(REPLACE ".cpp" ".h" hdr_list "${src_list}")
@@ -45,7 +45,7 @@ function(avogadro_plugin plugin_name src_list)
   endif(NOT "${qrc_plugin_files}" STREQUAL "")
   add_library(${plugin_name} MODULE ${src_list} ${moc_files} ${plugin_UIS_H}
               ${plugin_RC_SRCS})
-  target_link_libraries(${plugin_name} ${LINK_LIBS})
+  target_link_libraries(${plugin_name} ${LINK_LIBS} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${OPENBABEL2_LIBRARIES})
   install(TARGETS ${plugin_name} DESTINATION ${DESTINATION_DIR})
   set_target_properties(${plugin_name} PROPERTIES
                         OUTPUT_NAME ${plugin_name}
@@ -57,6 +57,13 @@ function(avogadro_plugin plugin_name src_list)
   if(PLUGIN_TARGET)
     add_dependencies(${PLUGIN_TARGET} ${plugin_name})
   endif()
+endfunction(avogadro_plugin_nogl)
+
+function(avogadro_plugin plugin_name src_list)
+  avogadro_plugin_nogl("${plugin_name}" "${src_list}")
+  target_link_libraries(${plugin_name}
+  #${OPENGL_LIBRARIES}
+  ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY})  
 endfunction(avogadro_plugin)
 
 # tell cmake to process CMakeLists.txt in that subdirectory

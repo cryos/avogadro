@@ -24,7 +24,7 @@
 
 #include "gaussianfchk.h"
 #include "basisset.h"
-#include "../../qtiocompressor/qtiocompressor.h"
+#include "qtiocompressor/qtiocompressor.h"
 
 #include <QFile>
 #include <QStringList>

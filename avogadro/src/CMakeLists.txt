@@ -21,6 +21,7 @@ include_directories(
   ${OPENBABEL2_INCLUDE_DIR}
   ${EIGEN2_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
+  "${libavogadro_SOURCE_DIR}/gl2ps"
 )
 
 if(GLEW_FOUND)
@@ -44,8 +45,6 @@ endif(ENABLE_UPDATE_CHECKER)
 
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
-# Add GL2PS to the executable
-set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
 
 if( WIN32 )
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
@@ -61,8 +60,10 @@ qt4_add_resources(avogadro_RC_SRCS ${avogadro_RCS})
 qt4_wrap_ui(avogadro_UIS_H ${avogadro_UIS})
 
 if(NOT WIN32)
-  file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro/avogadro*.po")
-  QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
+  if(Linguist_FOUND)
+    file(GLOB_RECURSE avogadro_PO "${Avogadro_SOURCE_DIR}/i18n/avogadro/avogadro*.po")
+    QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
+  endif(Linguist_FOUND)
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE avogadro_QM "${Avogadro_SOURCE_DIR}/avogadro/src/avogadro*.qm")
@@ -87,8 +88,12 @@ set_target_properties(avogadro-app PROPERTIES
 set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 
-target_link_libraries(avogadro-app ${OPENBABEL2_LIBRARIES} ${QT_LIBRARIES}
+target_link_libraries(avogadro-app ${QT_LIBRARIES} ${OPENBABEL2_LIBRARIES}
     avogadro)
+
+if(ENABLE_UPDATE_CHECKER)
+  target_link_libraries(avogadro-app ${QT_QTNETWORK_LIBRARY})
+endif(ENABLE_UPDATE_CHECKER)
 
 if(APPLE)
   set(MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${Avogadro_VERSION_FULL}")
@@ -172,11 +177,11 @@ if(APPLE AND ENABLE_AVO_PACKAGE)
   install(SCRIPT "${OSX_MAKE_STANDALONE_BUNDLE_CMAKE_SCRIPT}")
 endif(APPLE AND ENABLE_AVO_PACKAGE)
 
-# Install a .desktop file and icon for Linux users
-if (CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME MATCHES kFreeBSD)
+# Install a .desktop file and icon for users of XDG-aware OSes
+if(${XDG_APPS_INSTALL_DIR} AND ${XDG_ICON_INSTALL_DIR})
   install(FILES "avogadro.desktop" DESTINATION ${XDG_APPS_INSTALL_DIR})
   install(FILES "icons/avogadro-icon.png" DESTINATION ${XDG_ICON_INSTALL_DIR})
-endif(CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME MATCHES kFreeBSD)
+endif(${XDG_APPS_INSTALL_DIR} AND ${XDG_ICON_INSTALL_DIR})
 
 #add_subdirectory(projectplugins)
 

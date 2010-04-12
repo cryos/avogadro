@@ -103,8 +103,8 @@ namespace Avogadro {
       void setTextRendering(int value);
       void setBondType(int value);
       void setLengthPrecision(int value);
-	  void setAtomColor();
-	  void setBondColor();
+	  void setAtomColor(QColor);
+	  void setBondColor(QColor);
 	  void setAtomFont();
 	  void setBondFont();
 	  void updateDisplacement(double = 0.0);

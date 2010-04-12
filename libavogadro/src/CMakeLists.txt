@@ -1,5 +1,5 @@
 set(QT_USE_QTOPENGL true)
-set(QT_USE_QTNETWORK true)
+#set(QT_USE_QTNETWORK true)
 
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
@@ -19,12 +19,14 @@ include_directories(
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
-link_directories(${OPENBABEL2_LIBRARY_DIRS})
+link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_BINARY_DIR}/lib)
 
 # Library translations
 if(NOT WIN32)
-  file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
-  QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
+  if(Linguist_FOUND)
+    file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
+    QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
+  endif(Linguist_FOUND)
 else(NOT WIN32)
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
@@ -33,48 +35,57 @@ endif(NOT WIN32)
 file(GLOB libavogadro_SRCS "*.cpp")
 
 # Only headers with exported symbols should actually be installed
-set(libavogadro_HDRS
-  animation.h
+set(libavogadrocore_HDRS
   atom.h
   bond.h
+  cube.h
+  global.h
+  idlist.h
+  mesh.h
+  meshgenerator.h
+  molecule.h
+  moleculefile.h
+  primitive.h
+  primitivelist.h
+  protein.h
+  residue.h
+)
+
+set(libavogadrowidget_HDRS
+  animation.h
   camera.h
   color3f.h
   color.h
   colorbutton.h
-  cube.h
   dockextension.h
-  elementtranslator.h
   engine.h
   extension.h
   fragment.h
   glhit.h
   glwidget.h
-  global.h
-  idlist.h
-  plotaxis.h # dlonie: Are these necessary here?
-  plotobject.h
-  plotpoint.h
-  plotwidget.h
-  mesh.h
-  meshgenerator.h
-  molecule.h
-  moleculefile.h
   navigate.h
   neighborlist.h
   painter.h
   painterdevice.h
-  periodictableview.h
   plugin.h
   pluginmanager.h
-  primitive.h
-  primitivelist.h
-  protein.h
-  residue.h
   tool.h
   toolgroup.h
   undosequence.h
   zmatrix.h
 )
+
+set(libplotwidget_HDRS
+  plotaxis.h # dlonie: Are these necessary here?
+  plotobject.h
+  plotpoint.h
+  plotwidget.h
+)
+
+set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS}
+  ${libplotwidget_HDRS})
+
+#set(libavogadro_HDRS ${libavogadro_HDRS} "../gl2ps/gl2ps.h")
 
 set(libavogadro_SRCS ${libavogadro_SRCS} ${libavogadro_UIS})
 # Also add in the qtiocompressor class
@@ -89,9 +100,13 @@ set(libavogadro_SRCS ${libavogadro_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
 set(elementcolor_SRCS colors/elementcolor.cpp)
 set(libavogadro_SRCS ${libavogadro_SRCS} ${elementcolor_SRCS})
 
+# Add GL2PS to the library
+set(libavogadro_SRCS ${libavogadro_SRCS} "../gl2ps/gl2ps.c")
+
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
                        ${QT_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
+                       #${OPENGL_LIBRARIES}
+                       #${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
                        )
 
 if(GLEW_FOUND)
@@ -152,13 +167,15 @@ endforeach(headerFile ${libavogadro_HDRS})
 
 add_library(avogadro SHARED
   ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
-set_target_properties(avogadro PROPERTIES 
-  VERSION ${Avogadro_VERSION_FULL}
-  SOVERSION 1
-  LABELS avogadro)
 set_source_files_properties(${libavogadro_SRCS}
   PROPERTIES LABELS avogadro)
-target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
+set_target_properties(avogadro PROPERTIES 
+  VERSION ${Avogadro_VERSION_FULL}
+  LINK_INTERFACE_LIBRARIES ""
+  SOVERSION 1
+  LABELS avogadro)
+target_link_libraries(avogadro
+  ${AVO_LINK_LIBRARIES})
 
 install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
 install(FILES ${libavogadro_HDRS}

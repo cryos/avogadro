@@ -813,6 +813,9 @@ correctly. The number of nodes are set by using the &quot;-N #&quot; option when
          <height>31</height>
         </rect>
        </property>
+	   <property name="accessibleDescription">
+         <string notr="true"/>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>

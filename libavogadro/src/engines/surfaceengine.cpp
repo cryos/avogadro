@@ -422,13 +422,14 @@ namespace Avogadro {
   void SurfaceEngine::setMolecule(const Molecule *molecule)
   {
     Engine::setMolecule(molecule);
-
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
+    if (m_molecule) {
+      connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
             this, SLOT(addPrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
+      connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
             this, SLOT(updatePrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
+      connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
             this, SLOT(removePrimitive(Primitive*)));
+    }
 
     updateOrbitalCombo();
   }
@@ -436,13 +437,14 @@ namespace Avogadro {
   void SurfaceEngine::setMolecule(Molecule *molecule)
   {
     Engine::setMolecule(molecule);
-
-    connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
+    if (m_molecule) {
+      connect(m_molecule, SIGNAL(primitiveAdded(Primitive*)),
             this, SLOT(addPrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
+      connect(m_molecule, SIGNAL(primitiveUpdated(Primitive*)),
             this, SLOT(updatePrimitive(Primitive*)));
-    connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
+      connect(m_molecule, SIGNAL(primitiveRemoved(Primitive*)),
             this, SLOT(removePrimitive(Primitive*)));
+    }
 
     updateOrbitalCombo();
   }

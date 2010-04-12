@@ -24,7 +24,6 @@
 #include <QAction>
 
 using namespace std;
-using namespace OpenBabel;
 
 namespace Avogadro
 {

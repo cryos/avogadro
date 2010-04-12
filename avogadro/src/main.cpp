@@ -102,18 +102,21 @@ int main(int argc, char *argv[])
 #ifdef AVO_APP_BUNDLE
   // Set up the babel data and plugin directories for Mac - relocatable
   // This also works for the Windows package, but BABEL_LIBDIR is ignored
-  QByteArray babelDataDir(("BABEL_DATADIR="
-                           + QCoreApplication::applicationDirPath()
-                           + "/../share/openbabel/"
+
+  // Make sure to enclose the environment variable in quotes, or spaces will cause problems
+  QString escapedAppPath = QCoreApplication::applicationDirPath().replace(' ', "\ ");
+  QByteArray babelDataDir((QCoreApplication::applicationDirPath()
+                          + "/../share/openbabel/"
                            + BABEL_VERSION).toAscii());
-  QByteArray babelLibDir(("BABEL_LIBDIR="
-                          + QCoreApplication::applicationDirPath()
-                          + "/../lib/openbabel").toAscii());
-  int res1 = putenv(babelDataDir.data());
-  int res2 = putenv(babelLibDir.data());
+  QByteArray babelLibDir((QCoreApplication::applicationDirPath()
+                         + "/../lib/openbabel").toAscii());
+  int res1 = setenv("BABEL_DATADIR", babelDataDir.data(), 1);
+  int res2 = setenv("BABEL_LIBDIR", babelLibDir.data(), 1);
+
+  qDebug() << "BABEL_LIBDIR" << babelLibDir.data();
 
   if (res1 != 0 || res2 != 0)
-    qDebug() << "Error: putenv failed." << res1 << res2;
+    qDebug() << "Error: setenv failed." << res1 << res2;
 
   // Override the Qt plugin search path too
   QStringList pluginSearchPaths;
@@ -201,27 +204,29 @@ int main(int argc, char *argv[])
   }
 
   if (!QGLFormat::hasOpenGL()) {
-    QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
-        QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));
+  //  QMessageBox::information(0, QCoreApplication::translate("main.cpp", "Avogadro"),
+  //      QCoreApplication::translate("main.cpp", "This system does not support OpenGL."));
+      QMessageBox::information(0, "Avogadro", "This system does not support OpenGL.");
     return -1;
   }
-  qDebug() << QCoreApplication::translate("main.cpp", "System has OpenGL support.");
+  qDebug() << /*QCoreApplication::translate("main.cpp", */"System has OpenGL support."/*)*/;
 
   // Extra debug messages to check out where some init segfaults are happening
-  qDebug() << QCoreApplication::translate("main.cpp", "About to test OpenGL capabilities.");
+  qDebug() << /*QCoreApplication::translate("main.cpp", */"About to test OpenGL capabilities."/*)*/;
   // use multi-sample (anti-aliased) OpenGL if available
   QGLFormat defFormat = QGLFormat::defaultFormat();
   defFormat.setSampleBuffers(true);
   QGLFormat::setDefaultFormat(defFormat);
 
   // Test what capabilities we have
-  qDebug() << QCoreApplication::translate("main.cpp", "OpenGL capabilities found: ");
+  //qDebug() << /*QCoreApplication::translate("main.cpp", */"OpenGL capabilities found: "/*)*/;
+  std::cout << "OpenGL capabilities found: " << std::endl;
   if (defFormat.doubleBuffer())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Double Buffering.");
+    std::cout << "\t" << "Double Buffering." << std::endl;
   if (defFormat.directRendering())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Direct Rendering.");
+    std::cout << "\t" << "Direct Rendering." << std::endl;
   if (defFormat.sampleBuffers())
-    qDebug() << "\t" << QCoreApplication::translate("main.cpp", "Antialiasing.");
+    std::cout << "\t" << "Antialiasing." << std::endl;
 
   // Now load any files supplied on the command-line or via launching a file
   MainWindow *window = new MainWindow();

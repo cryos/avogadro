@@ -1507,7 +1507,7 @@ namespace Avogadro {
 
     // returning to normal rendering mode
     hit_count = glRenderMode( GL_RENDER );
-
+    
     glMatrixMode( GL_PROJECTION );
     glPopMatrix();
     glMatrixMode( GL_MODELVIEW );
@@ -2194,7 +2194,8 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
     if (use_depth_testing)
         glEnable(GL_DEPTH_TEST);
     glTranslated(0, 0, -win_z);
-    gl_draw_text(p, qRound(win_x), qRound(win_y), str, font, 20.0/camera()->distance(Vector3d(0,0,0)));
+    
+    gl_draw_text(p, qRound(win_x), qRound(win_y), str, font, 10.0/camera()->distance(Vector3d(0,0,0)));
 
     if (reuse_painter) {
         restore_gl_state();

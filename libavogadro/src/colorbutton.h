@@ -66,6 +66,11 @@ namespace Avogadro {
     void setColor(const QColor& color);
 
     /**
+     * @param custom title for color choice dialog
+     */
+    void setDialogTitle(const QString title = "");
+
+    /**
      * @return the current color
      */
     QColor color() const;
@@ -90,6 +95,7 @@ namespace Avogadro {
     bool event(QEvent *e);
 
     QColor m_color; //!< The current color
+    QString m_title;//!< The current dialog title
   };
 
 } // end namespace Avogadro

@@ -130,7 +130,25 @@ namespace Avogadro {
     return xPoints;
   }
 
-  void SpectraType::assignGaussianLabels(PlotObject *plotObject, bool findMax)
+  void SpectraType::gaussianWiden(PlotObject *plotObject, const double fwhm)
+  {
+      double s2	= pow( (fwhm / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
+
+      // create points
+      QList<double> xPoints = getXPoints(fwhm, 10);
+      for (int i = 0; i < xPoints.size(); i++) {
+        double x = xPoints.at(i);// already scaled!
+        double y = 100;
+        for (int j = 0; j < m_yList.size(); j++) {
+          double t = m_yList.at(j);
+          double w = m_xList.at(j);// already scaled!
+          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+        }
+        plotObject->addPoint(x,y);
+      }
+  }
+
+  void SpectraType::assignGaussianLabels(PlotObject *plotObject, const bool findMax)
   {
     for(int i = 1; i< plotObject->points().size()-1; i++) { // No border extremal points
       double y, y1, y2;

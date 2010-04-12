@@ -164,20 +164,7 @@ namespace Avogadro {
     else { // Get gaussians
       // convert FWHM to sigma squared
       //double FWHM = ui.spin_FWHM->value();
-      double s2	= pow( (m_fwhm / (2.0 * sqrt(2.0 * log(2.0)))), 2.0);
-
-      // create points
-      QList<double> xPoints = getXPoints(m_fwhm, 10);
-      for (int i = 0; i < xPoints.size(); i++) {
-        double x = xPoints.at(i);// already scaled!
-        double y = 100;
-        for (int j = 0; j < m_yList.size(); j++) {
-          double t = m_yList.at(j);
-          double w = m_xList.at(j);// already scaled!
-          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
-        }
-        plotObject->addPoint(x,y);
-      }
+      gaussianWiden(plotObject, m_fwhm);
 
       // Normalization is probably screwed up, so renormalize the data
       double min, max;

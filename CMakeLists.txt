@@ -98,7 +98,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	endif (NOT APPLE)
   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
   # they will not replace them.
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
     "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline ${CMAKE_CXX_FLAGS_WARN}")
@@ -140,7 +140,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
     add_definitions(-DHAVE_GCC_VISIBILITY)
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+#	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
 	check_cxx_compiler_flag(-fvisibility-inlines-hidden HAVE_INTEL_VISIBILITY_INLINES)
 	set(HAVE_INTEL_VISIBILITY_INLINES ${HAVE_INTEL_VISIBILITY_INLINES} CACHE BOOL "Intel Compiler support for -fvisibility-inlines-hidden")
 	if(HAVE_INTEL_VISIBILITY_INLINES)
@@ -148,8 +148,8 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 	endif(HAVE_INTEL_VISIBILITY_INLINES)
   endif(HAVE_INTEL_VISIBILITY)
   
-  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+  set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   
   # define WITH_SSE2 to enable the SSE2 instruction set.
   # Available on Pentium 4, Athlon 64, and newer CPUs.
@@ -161,10 +161,15 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   endif(CMAKE_SIZEOF_VOID_P EQUAL 8 OR WITH_SSE2)
 endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
+set(I18N_LANGUAGE "" CACHE STRING "Build i18n only for selected language")
+
 set(QT_MIN_VERSION "4.5.1") # we need at least version 4.5.1
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 find_package(OpenGL REQUIRED) # find and setup OpenGL
-find_package(Linguist REQUIRED) # find and setup Linguist
+find_package(Linguist) # find and setup Linguist
+if(NOT Linguist_FOUND)
+  message(WARNING " Qt4 Linguist >= 4.5 not found, please install it if you want Avogadro translations")
+endif(NOT Linguist_FOUND)
 find_package(Eigen2 REQUIRED) # find and setup Eigen2
 find_package(ZLIB REQUIRED)
 find_package(OpenBabel2 REQUIRED) # find and setup OpenBabel
@@ -286,9 +291,6 @@ set(XDG_ICON_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/pixmaps"
 option(ENABLE_RPATH "Enable rpath support on Linux and Mac" ON)
 if(UNIX AND ENABLE_RPATH)
   message(STATUS "RPath support enabled for installed binaries and libraries")
-  set(CMAKE_SKIP_BUILD_RPATH FALSE)
-  set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
   if(APPLE)
     # Funky path logic in order to get the Avogadro application bundle working
     set(CMAKE_BUNDLE_LOCATION "/Applications")
@@ -299,6 +301,11 @@ if(UNIX AND ENABLE_RPATH)
     endif(USE_VERSIONED_BUNDLE_LOCATION)
     set(CMAKE_INSTALL_PREFIX "/Applications/${CMAKE_BUNDLE_NAME}.app/Contents")
     set(CMAKE_INSTALL_NAME_DIR "@executable_path/../${LIB_INSTALL_DIR}")
+  else(APPLE)
+    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
+    set(CMAKE_SKIP_BUILD_RPATH FALSE)
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
   endif(APPLE)
 endif(UNIX AND ENABLE_RPATH)
 
@@ -334,24 +341,60 @@ if(APPLE)
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION Resources)
 
-if(ENABLE_AVO_PACKAGE)
-# Make sure to copy Qt plugins and translations
-file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
-install(FILES ${qt_TRANSLATIONS}
-	DESTINATION "${I18N_INSTALL_DIR}"
-	)
-# FIXME: These need to have the install-name tool run on them
-install(DIRECTORY "${QT_PLUGINS_DIR}"
-	DESTINATION "${CMAKE_INSTALL_PREFIX}"
-	)
-endif(ENABLE_AVO_PACKAGE)
-
 else(APPLE)
   install(FILES
     "${Avogadro_BINARY_DIR}/AvogadroConfig.cmake"
     "${Avogadro_BINARY_DIR}/AvogadroConfigVersion.cmake"
     DESTINATION "${LIB_INSTALL_DIR}/avogadro")
 endif(APPLE)
+
+if (UNIX)
+  if(ENABLE_AVO_PACKAGE)
+    if(APPLE)
+      # Make sure to copy Qt plugins and translations
+      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+      install(FILES ${qt_TRANSLATIONS}
+    	DESTINATION "${I18N_INSTALL_DIR}"
+    	)
+      # FIXME: These need to have the install-name tool run on them
+      install(DIRECTORY "${QT_PLUGINS_DIR}"
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}"
+    	)
+    else(APPLE)
+      # Make sure to copy Qt plugins and translations
+      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+      install(FILES ${qt_TRANSLATIONS}
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt/translations"
+    	)
+      # FIXME: These need to have the install-name tool run on them
+      install(DIRECTORY "${QT_PLUGINS_DIR}"
+    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+    	)
+      file(GLOB qt_libs "${QT_LIBRARY_DIR}/libQtCore.so* ${QT_LIBRARY_DIR}/libQtGui.so* ${QT_LIBRARY_DIR}/libQtOpenGL.so* ${QT_LIBRARY_DIR}/libQtNetwork.so*")
+      install(FILES ${qt_libs}
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+        )
+      # FIXME: Add others
+#      set(X11_LIBRARIES ${X11_ICE_LIB} ${X11_SM_LIB} ${X11_X11_LIB})
+#      install(LIBRARY ${X11_LIBRARIES}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/X11"
+#        )
+#      install(LIBRARY ${OPENGL_LIBRARIES}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gl"
+#        )
+#      install (LIBRARY ${ZLIB_LIBRARY}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+#        )
+       set(about_files ${CMAKE_CURRENT_SOURCE_DIR}/README 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/COPYING 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS
+         )
+       install(FILES ${about_files}
+         DESTINATION "${CMAKE_INSTALL_PREFIX}"
+         )
+    endif(APPLE)
+  endif(ENABLE_AVO_PACKAGE)
+endif (UNIX)
 
 # Install the configuration files to help find Avogadro
 install(FILES
@@ -381,6 +424,7 @@ mark_as_advanced(CMAKE_LIBRARY_OUTPUT_DIRECTORY
   CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
+add_subdirectory(periodictable)
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
@@ -416,14 +460,27 @@ configure_file(
   @ONLY
 )
 
-if(QT_MKSPECS_DIR)
+option(INSTALL_QMAKE_PRF "Install QMake integration files to Qt prefix" ON)
+if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
+#  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+#    string(REPLACE 
+#      "${CMAKE_INSTALL_PREFIX}" 
+#      "" 
+#      QT_MKSPECS_RELATIVE 
+#      "${QT_MKSPECS_DIR}"
+#    )
+    install(FILES
+      "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+      DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
+    )
+#  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+else(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
+  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
-    DESTINATION "${QT_MKSPECS_DIR}/features"
-  )
-else(QT_MKSPECS_DIR)
-  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will not be installed.")
-endif(QT_MKSPECS_DIR)
+    DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
+  ) 
+endif(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 
 # Use CPack to do some of our packaging
 include(AvoCPack)

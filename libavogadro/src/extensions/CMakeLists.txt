@@ -18,82 +18,55 @@ add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensio
 ### Template extension - template for extensions
 #avogadro_plugin(templateextension templateextension.cpp)
 
-### Input File Extension
-set(inputfileextension_SRCS inputfileextension.cpp
-    daltoninputdialog.cpp
-    gaussianinputdialog.cpp
-    molproinputdialog.cpp
-    mopacinputdialog.cpp
-    nwcheminputdialog.cpp
-    qcheminputdialog.cpp)
-avogadro_plugin(inputfileextension "${inputfileextension_SRCS}"
- "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
-
-### gamess
-set(gamessextension_SRCS gamessextension.cpp
-  gamessinputdialog.cpp
-  gamessinputdata.cpp
-  gamesshighlighter.cpp
-  gamessefpmatchdialog.cpp)
-avogadro_plugin(gamessextension
-  "${gamessextension_SRCS}"
-  "gamessinputdialog.ui;gamessefpmatchdialog.ui")
-
 ### Properties
-avogadro_plugin(propextension
+avogadro_plugin_nogl(propextension
    "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
 
-avogadro_plugin(cartesianextension
+avogadro_plugin_nogl(cartesianextension
         "cartesianextension.cpp"
         cartesianeditor.ui
         edit.qrc)
 
-avogadro_plugin(molecularpropextension
+avogadro_plugin_nogl(molecularpropextension
         "molecularpropextension.cpp"
         molecularpropdialog.ui)
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
   constraintsdialog.cpp constraintsmodel.cpp conformersearchdialog.cpp)
-avogadro_plugin(forcefieldextension
+avogadro_plugin_nogl(forcefieldextension
   "${forcefieldextension_SRCS}"
   "forcefielddialog.ui;constraintsdialog.ui;conformersearchdialog.ui")
 
 ### hydrogens
-avogadro_plugin(hydrogenextension hydrogensextension.cpp)
+avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
 
 ### Selections
-avogadro_plugin(selectextension selectextension.cpp)
+avogadro_plugin_nogl(selectextension selectextension.cpp)
+target_link_libraries(selectextension periodictable)
 
 ### unit cells
-avogadro_plugin(unitcellextension
+avogadro_plugin_nogl(unitcellextension
   "unitcellextension.cpp;unitcellparamdialog.cpp"
   unitcellparamdialog.ui)
 
 ### insert fragment
-avogadro_plugin(insertfragmentextension
+avogadro_plugin_nogl(insertfragmentextension
 "insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
   insertfragmentdialog.ui)
 
 ### insert peptide (builder)
-avogadro_plugin(insertpeptideextension
+avogadro_plugin_nogl(insertpeptideextension
   "insertpeptideextension.cpp;insertcommand.cpp"
   insertpeptidedialog.ui)
 
 ### h->methyl
-avogadro_plugin(h2methylextension h2methylextension.cpp)
-
-### Surfaces
-set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
-  basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp molpro.cpp
-  vdwsurface.cpp ../../qtiocompressor/qtiocompressor.cpp)
-avogadro_plugin(surfaceextension "${surfaceextension_SRCS}" surfacedialog.ui)
-target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})
+avogadro_plugin_nogl(h2methylextension h2methylextension.cpp)
 
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   ### python terminal
   message(STATUS "Enabled python terminal")
-  avogadro_plugin(pythonterminal
+  avogadro_plugin_nogl(pythonterminal
     "pythonterminal.cpp;highlighter.cpp"
     pythonterminalwidget.ui)
 
@@ -104,18 +77,18 @@ endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 ### Animation
 set(animationextension_SRCS animationextension.cpp animationdialog.cpp
   povpainter.cpp trajvideomaker.cpp)
-avogadro_plugin(animationextension
+avogadro_plugin_nogl(animationextension
   "${animationextension_SRCS}"
   animationdialog.ui
   animation.qrc)
 
 ### POV-Ray extension
-avogadro_plugin("povrayextension"
+avogadro_plugin_nogl("povrayextension"
   "povrayextension.cpp;povpainter.cpp;povraydialog.cpp"
   "povraydialog.ui")
 
 ### File import extension
-avogadro_plugin(fileimportextension fileimportextension.cpp fileimportdialog.ui)
+avogadro_plugin_nogl(fileimportextension fileimportextension.cpp fileimportdialog.ui)
 
 ### Shader extension
 if(GLEW_FOUND)
@@ -130,10 +103,16 @@ if(GLEW_FOUND)
 endif(GLEW_FOUND)
 
 ### super cells
-avogadro_plugin(supercellextension
+avogadro_plugin_nogl(supercellextension
   "supercellextension.cpp;supercelldialog.cpp"
   supercelldialog.ui)
 
-avogadro_plugin(networkfetchextension networkfetchextension.cpp)
+# Network fetch
+avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
+target_link_libraries(networkfetchextension
+  ${QT_QTNETWORK_LIBRARY}
+)
 
 add_subdirectory(spectra)
+add_subdirectory(surfaces)
+add_subdirectory(quantuminput)
