@@ -105,7 +105,7 @@ set(libavogadro_SRCS ${libavogadro_SRCS} "../gl2ps/gl2ps.c")
 
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
                        ${QT_LIBRARIES}
-                       #${OPENGL_LIBRARIES}
+                       ${OPENGL_LIBRARIES}
                        #${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
                        )
 if (APPLE)
@@ -185,7 +185,7 @@ set_target_properties(avogadro PROPERTIES
 target_link_libraries(avogadro
   ${AVO_LINK_LIBRARIES})
 
-install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
 install(FILES ${libavogadro_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
@@ -200,3 +200,6 @@ add_subdirectory(colors)
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   add_subdirectory(python)
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+
+install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
+
