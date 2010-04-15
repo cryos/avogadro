@@ -95,6 +95,7 @@ if(GLEW_FOUND)
   avogadro_plugin(shaderextension
     shaderextension.cpp
     shaderdialog.ui)
+  target_link_libraries(shaderextension ${GLEW_LIBRARY})
   file(GLOB shader_VERT "shaders/*.vert")
   file(GLOB shader_FRAG "shaders/*.frag")
   file(GLOB shader_PARAMS "shaders/*.params")
