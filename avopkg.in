@@ -396,6 +396,7 @@ else
     do
         if test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
         then
+            # File already exists in some package, figure out in what
             installed_package=`cat "$DB_FILE" | grep "$category/$file" | awk '{print $NF}'`
 
             # If package was previously installed, every file will be
@@ -414,7 +415,7 @@ else
                 if test $force = 0
                 then
                     echo "Use -f to owerwrite it."
-                    exit 0
+                    exit 6
                 else
                     echo "Overwriting it since -f is given."
                 fi

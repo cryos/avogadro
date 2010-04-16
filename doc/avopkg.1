@@ -6,7 +6,7 @@
 .Nd "Avogadro Package Manager"
 .Sh SYNOPSIS
 .Nm
-.Op Fl pack | Fl f
+.Op Fl info | Fl pack | Fl f
 .Ar filename
 .br
 .Nm
@@ -21,7 +21,7 @@ Create package using manifest as package description file
 .It Ar filename
 Install plugin from chosen package "filename"
 .It Fl -f Ar filename
-Install plugin from chosen package "filename" disregarding OS and CPU architecture
+Force installation of plugin, disregarding OS/CPU architecture, possible file overwrites, etc.
 .It Fl -wizard Op package_name
 Interactively create manifest for new package. Specifying package_name disables some 
 interactivity of the wizard (e.g., for use in scripts).
@@ -38,6 +38,8 @@ Trying to install Python plugin on Avogadro compiled without Python
 OS mismatch
 .It 5
 CPU architecture mismatch
+.It 6
+Package overwrites existing file
 .It 255
 Incorrect usage
 .El
