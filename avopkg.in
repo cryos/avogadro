@@ -21,6 +21,7 @@
 # -----    Configured on Avogadro build     ----- #
   PREFIX="@CMAKE_INSTALL_PREFIX@"
   LIB_DIR="lib@LIB_SUFFIX@"
+  SHARE_DIR="@SHARE_INSTALL_PREFIX@"
   PLUGIN_DIR="avogadro@Plugin_Version@"
   PYTHON_ENABLED="@ENABLE_PYTHON@"
   IS_UNIX="@UNIX@"
@@ -34,6 +35,7 @@ PACK_CMD="tar czf"
 EXTRACT_CMD="tar xzf"
 PKG_EXT="avo"
 MANIFEST_EXT="mf"
+DB_FILE="$HOME/.avogadro/plugins"
 
 # Helper functions
 
@@ -98,6 +100,14 @@ printUsage()
    echo " "`basename $0`" -pack manifest          Create new package"
    echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
    echo "Type 'man "`basename $0`"' for more details"
+}
+
+# /**
+#  * Copies list of pre-installed plugin files to user directory
+#  */
+initDB()
+{
+    cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
 }
 
 # Main script
@@ -309,6 +319,14 @@ else
         echo "Installation failed."
         exit 2
     fi
+
+    # Check for possible overwrites
+    if ! test -f "$HOME/.avogadro/packages"
+    then
+        initDB
+    fi
+
+    grep
 	
     # Find out where to install package
     if ($(getBoolVar $manifest Python))
@@ -398,6 +416,18 @@ else
     fi
     echo "Copying files to $dest..."
     cp -t "$dest" $(getMultiVar $manifest Files)
+
+    # Register plugin
+    echo >> "$DB_FILE"
+    echo -n "[$package] " >> "$DB_FILE"
+    cat $manifest | grep -v "Package:" | grep -v "System:" | grep -v \
+        "SizeofVoidP:" | grep -v "Files:" > .temp
+    for file in $(getMultiVar $manifest Files)
+    do
+        echo $(getVar $manifest Category)/$file >> .temp
+    done
+    cat .temp | grep -c "" >> "$DB_FILE"
+    cat .temp >> "$DB_FILE"
 
     # Clean up
     cd ../..
