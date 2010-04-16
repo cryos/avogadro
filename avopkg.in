@@ -32,6 +32,7 @@
 # Settings
 PACK_CMD="tar czf"
 EXTRACT_CMD="tar xzf"
+EXTRACT_ONE_CMD="tar xzf"
 PKG_EXT="avo"
 MANIFEST_EXT="mf"
 
@@ -97,6 +98,7 @@ printUsage()
    echo " "`basename $0`" -f filename             Install package disregarding OS and arch"
    echo " "`basename $0`" -pack manifest          Create new package"
    echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
+   echo " "`basename $0`" -info filename          Show information about package"
    echo "Type 'man "`basename $0`"' for more details"
 }
 
@@ -104,6 +106,7 @@ printUsage()
 
 echo "Avopkg v1.0"
 
+# Running without args is senseless
 if test "x$1" = "x"
 then
     printUsage
@@ -218,6 +221,60 @@ then
     exit 0
 fi
 
+if test "$1" = "-info"
+then
+        ########## Show package metadata ##########
+	
+    if test "x$2" = "x"
+    then
+        printUsage
+        exit 255
+    fi
+
+    if test -f $2
+    then
+        package=`basename $2 .$PKG_EXT`
+    else
+        printUsage
+        exit 255
+    fi
+	
+    # Create temporary dir and unpack manifest
+    rm -rf .tmp
+    mkdir .tmp
+    cd .tmp
+	manifest=$package.$MANIFEST_EXT
+    $EXTRACT_ONE_CMD ../$2 $package/$manifest
+    if ! test $? = 0
+    then
+        echo "$1 is not an Avogadro plugin package!"
+        exit 1
+    fi
+	
+	cd $package
+	echo "Avogadro plugin \"$(getMultiVar $manifest Name)\""
+	if !($(getBoolVar $manifest Python))
+	then
+	  if test $(getVar $manifest SizeofVoidP) = 4
+	  then
+	    echo "  for $(getVar $manifest System) 32-bit"
+	  fi
+	  if test $(getVar $manifest SizeofVoidP) = 8
+	  then
+	    echo "  for $(getVar $manifest System) 64-bit"
+	  fi
+	else
+	  echo "  OS-independent (Python)"
+	fi
+	echo "  by $(getMultiVar $manifest Author)"
+	
+    # Clean up
+    cd ../..
+    rm -rf .tmp
+
+    exit 0	
+fi
+
 if test "$1" = "-pack"
 then
             ########## Build package ##########
@@ -279,9 +336,9 @@ else
 		filename=$1
 	fi
 
-    if test -e $filename
+    if test -f $filename
     then
-        package=`basename $filename .avo`
+        package=`basename $filename .$PKG_EXT`
         echo Unpacking $filename...           
     else
         printUsage
