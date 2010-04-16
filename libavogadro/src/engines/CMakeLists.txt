@@ -32,6 +32,9 @@ avogadro_plugin(hbondengine hbondengine.cpp hbondsettingswidget.ui)
 
 # force engine
 avogadro_plugin(forceengine forceengine.cpp)
+if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+  set_target_properties(forceengine PROPERTIES COMPILE_FLAGS "-fvisibility=default")
+endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
 # sphere
 avogadro_plugin(sphereengine sphereengine.cpp spheresettingswidget.ui)

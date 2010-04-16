@@ -37,6 +37,9 @@ set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
 avogadro_plugin_nogl(forcefieldextension
   "${forcefieldextension_SRCS}"
   "forcefielddialog.ui;constraintsdialog.ui;conformersearchdialog.ui")
+if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+  set_target_properties(forcefieldextension PROPERTIES COMPILE_FLAGS "-fvisibility=default")
+endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
 ### hydrogens
 avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)

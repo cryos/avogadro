@@ -47,6 +47,9 @@ avogadro_plugin(selectrotatetool selectrotatetool.cpp selectrotatetool.qrc)
 
 ### autoopttool
 avogadro_plugin(autoopttool autoopttool.cpp autoopttool.qrc)
+if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+  set_target_properties(autoopttool PROPERTIES COMPILE_FLAGS "-fvisibility=default")
+endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
 
 ### navigatetool
 avogadro_plugin(navigatetool
