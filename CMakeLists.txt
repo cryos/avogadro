@@ -385,6 +385,13 @@ if (UNIX)
 #      install (LIBRARY ${ZLIB_LIBRARY}
 #        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
 #        )
+       set(about_files ${CMAKE_CURRENT_SOURCE_DIR}/README 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/COPYING 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS
+         )
+       install(FILES ${about_files}
+         DESTINATION "${CMAKE_INSTALL_PREFIX}"
+         )
     endif(APPLE)
   endif(ENABLE_AVO_PACKAGE)
 endif (UNIX)

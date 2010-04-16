@@ -178,10 +178,10 @@ if(APPLE AND ENABLE_AVO_PACKAGE)
 endif(APPLE AND ENABLE_AVO_PACKAGE)
 
 # Install a .desktop file and icon for users of XDG-aware OSes
-if(${XDG_APPS_INSTALL_DIR} AND ${XDG_ICON_INSTALL_DIR})
-  install(FILES "avogadro.desktop" DESTINATION ${XDG_APPS_INSTALL_DIR})
-  install(FILES "icons/avogadro-icon.png" DESTINATION ${XDG_ICON_INSTALL_DIR})
-endif(${XDG_APPS_INSTALL_DIR} AND ${XDG_ICON_INSTALL_DIR})
+if(XDG_APPS_INSTALL_DIR AND XDG_ICON_INSTALL_DIR)
+  install(FILES "avogadro.desktop" DESTINATION "${XDG_APPS_INSTALL_DIR}")
+  install(FILES "icons/avogadro-icon.png" DESTINATION "${XDG_ICON_INSTALL_DIR}")
+endif(XDG_APPS_INSTALL_DIR AND XDG_ICON_INSTALL_DIR)
 
 #add_subdirectory(projectplugins)
 
