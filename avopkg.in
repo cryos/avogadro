@@ -97,7 +97,7 @@ printUsage()
 {
    echo "Usage:"
    echo " "`basename $0`" filename                Install package"
-   echo " "`basename $0`" -f filename             Install package disregarding OS and arch"
+   echo " "`basename $0`" -f filename             Force installation"
    echo " "`basename $0`" -pack manifest          Create new package"
    echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
    echo " "`basename $0`" -info filename          Show information about package"
@@ -109,7 +109,10 @@ printUsage()
 #  */
 initDB()
 {
-    cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
+    if ! test -f "$DB_FILE"
+    then
+        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
+    fi    
 }
 
 # Main script
@@ -277,6 +280,12 @@ then
 	  echo "  OS-independent (Python)"
 	fi
 	echo "  by $(getMultiVar $manifest Author)"
+    echo "  Provided files:"
+    for file in $(getMultiVar $manifest Files)
+    do
+        echo "    $file"
+    done
+    echo "  will be installed to \'$(getVar $manifest Category)\' directory"
 	
     # Clean up
     cd ../..
@@ -376,14 +385,42 @@ else
         echo "Installation failed."
         exit 2
     fi
+        
+    files=$(getMultiVar $manifest Files)
+    category=$(getVar $manifest Category)
+    reinstall=0
 
     # Check for possible overwrites
-    if ! test -f "$HOME/.avogadro/packages"
-    then
-        initDB
-    fi
+    initDB
+    for file in $files
+    do
+        if test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
+        then
+            installed_package=`cat "$DB_FILE" | grep "$category/$file" | awk '{print $NF}'`
 
-    grep
+            # If package was previously installed, every file will be
+            # overwritten. But we want to warn once
+            if test $reinstall = 0
+            then
+                if test $installed_package = $package
+                then
+                    echo "WARNING! Package $package is already installed."
+                    reinstall=1
+                else
+                    echo "WARNING! File $file is already installed in package $installed_package."
+                fi
+
+                # -f key forces installation
+                if test $force = 0
+                then
+                    echo "Use -f to owerwrite it."
+                    exit 0
+                else
+                    echo "Overwriting it since -f is given."
+                fi
+            fi
+        fi
+    done
 	
     # Find out where to install package
     if ($(getBoolVar $manifest Python))
@@ -403,14 +440,14 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            dest="$PREFIX/share/libavogadro/$(getVar $manifest Category)"
+            dest="$PREFIX/share/libavogadro/$category"
         else
             echo " for user $USER"
             if test "$IS_MAC" = 1
             then
-                dest="$HOME/Library/Application Support/Avogadro/$(getVar $manifest Category)"
+                dest="$HOME/Library/Application Support/Avogadro/$category"
             else
-                dest="$HOME/.avogadro/$(getVar $manifest Category)"
+                dest="$HOME/.avogadro/$category"
             fi
         fi
     else
@@ -453,14 +490,14 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$(getVar $manifest Category)"
+            dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$category"
         else
             echo " for user $USER"
             if test "$IS_MAC" = 1
             then
-                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$(getVar $manifest Category)"
+                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$category"
             else
-                dest="$HOME/.$PLUGIN_DIR/plugins/$(getVar $manifest Category)"
+                dest="$HOME/.$PLUGIN_DIR/plugins/$category"
             fi
         fi
     fi
@@ -472,16 +509,16 @@ else
         mkdir -p "$dest"
     fi
     echo "Copying files to $dest..."
-    cp -t "$dest" $(getMultiVar $manifest Files)
+    cp -t "$dest" $files
 
     # Register plugin
     echo >> "$DB_FILE"
     echo -n "[$package] " >> "$DB_FILE"
     cat $manifest | grep -v "Package:" | grep -v "System:" | grep -v \
         "SizeofVoidP:" | grep -v "Files:" > .temp
-    for file in $(getMultiVar $manifest Files)
+    for file in $files
     do
-        echo $(getVar $manifest Category)/$file >> .temp
+        echo $category/$file $package >> .temp
     done
     cat .temp | grep -c "" >> "$DB_FILE"
     cat .temp >> "$DB_FILE"
