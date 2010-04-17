@@ -424,6 +424,7 @@ mark_as_advanced(CMAKE_LIBRARY_OUTPUT_DIRECTORY
   CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
+add_subdirectory(plotwidget)
 add_subdirectory(periodictable)
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)

@@ -75,15 +75,7 @@ set(libavogadrowidget_HDRS
   zmatrix.h
 )
 
-set(libplotwidget_HDRS
-  plotaxis.h # dlonie: Are these necessary here?
-  plotobject.h
-  plotpoint.h
-  plotwidget.h
-)
-
-set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS}
-  ${libplotwidget_HDRS})
+set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
 
 #set(libavogadro_HDRS ${libavogadro_HDRS} "../gl2ps/gl2ps.h")
 
