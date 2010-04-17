@@ -1076,8 +1076,13 @@ namespace Avogadro {
     QRectF defaultRect = ui.plot->defaultDataRect();
     x1 = minX-(maxX-minX)*0.01;    
     x2 = maxX+(maxX-minX)*0.01;
-    y1 = minY-(maxY-minY)*0.03;
-    y2 = maxY+(maxY-minY)*0.03;
+    if (m_labelsUp) {
+      y1 = minY-(maxY-minY)*0.03;    
+      y2 = maxY+(maxY-minY)*0.1;
+    } else {
+      y1 = minY-(maxY-minY)*0.1;    
+      y2 = maxY+(maxY-minY)*0.03;
+    }
     QRectF dataRect(x1,y1,x2,y2);
     QRectF fullRect(defaultRect.united(dataRect));         
     if (defaultRect.width() < 0) {
@@ -1095,6 +1100,15 @@ namespace Avogadro {
     ui.plot->setDefaultLimits(fullRect);    
     //qDebug() << fullRect.left() << fullRect.right() << fullRect.top() << fullRect.bottom();
     ui.plot->update();
+  }
+
+  void SpectraDialog::labelsUp(bool up)
+  {
+    m_labelsUp = up;
+    if (up)
+      ui.plot->setLabelShiftDirection(PlotWidget::Up);
+    else
+      ui.plot->setLabelShiftDirection(PlotWidget::Down);
   }
 
   SpectraType * SpectraDialog::currentSpectra()

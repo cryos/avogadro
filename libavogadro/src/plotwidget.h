@@ -125,7 +125,19 @@ namespace Avogadro {
                 RightAxis,     ///< the right axis
                 TopAxis        ///< the top axis
             };
-
+            
+        /**
+         * The four directions for label shift.
+         */
+        enum Direction
+            {
+                None = 0,
+                Left,  ///< 
+                Down,    ///<
+                Right,     ///< 
+                Up        ///< 
+            };
+            
         /**
          *@return suggested minimum size for the plot widget
          */
@@ -600,6 +612,8 @@ namespace Avogadro {
          * Don't permit moving away from default limits
          */
         void setJailedInDefaults(bool b);
+
+        void setLabelShiftDirection(Direction dir, float priority=2.0);
 
     protected:
         /**

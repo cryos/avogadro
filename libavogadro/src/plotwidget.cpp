@@ -61,7 +61,8 @@ namespace Avogadro {
       : q( qq ),
         cBackground( Qt::black ), cForeground( Qt::white ), cGrid( Qt::gray ),
         showGrid( false ), showObjectToolTip( true ), useAntialias( false ),
-        font( QFont() ), followingMouse(false), jailedInDefaults(false)
+        font( QFont() ), followingMouse(false), jailedInDefaults(false),
+        labelShiftDirection(None)
     {
       // create the axes and setting their default properties
       PlotAxis *leftAxis = new PlotAxis();
@@ -130,6 +131,7 @@ namespace Avogadro {
     bool followingMouse;
     // Wether can move away default limits rectangle
     bool jailedInDefaults;
+    Direction labelShiftDirection;
   };
 
   PlotWidget::PlotWidget( QWidget * parent )
@@ -393,6 +395,11 @@ namespace Avogadro {
     double y1 = defaultDataRect().y();
     double y2 = y1 + defaultDataRect().height();
     setLimits(x1, x2, y1, y2);
+  }
+
+  void PlotWidget::setLabelShiftDirection(Direction dir, float priority)
+  {
+    d->labelShiftDirection = dir;
   }
 
   void PlotWidget::addPlotObject( PlotObject *object )
@@ -910,7 +917,23 @@ namespace Avogadro {
     QRectF bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
     float xStep = 0.5*bestRect.width();
     float yStep = 0.5*bestRect.height();
-    float maxCost = 0.05 * bestRect.width() * bestRect.height();
+     switch(d->labelShiftDirection) {
+      case Up:        
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y()-3*yStep, 1, 1 ), textFlags, pp->label() );
+        break;
+      case Down:
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y()+3*yStep, 1, 1 ), textFlags, pp->label() );
+        break;
+      case Left:
+        bestRect = fm.boundingRect( QRectF( pos.x()-3*xStep, pos.y(), 1, 1 ), textFlags, pp->label() );
+        break;
+      case Right:
+        bestRect = fm.boundingRect( QRectF( pos.x()+3*xStep, pos.y(), 1, 1 ), textFlags, pp->label() );
+        break;
+      default:
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
+    }
+    float maxCost = 0.01 * bestRect.width() * bestRect.height();
     float bestCost = d->rectCost( bestRect );
 
     //We will travel along a path defined by the maximum decrease in
@@ -925,6 +948,7 @@ namespace Avogadro {
     int iter = 0;
     QList<int> TriedPathIndex;
     float bestBadCost = 10000;
+    float upCost=100000, downCost=100000, leftCost=100000, rightCost=100000;
     QRectF bestBadRect;
 
     //needed to halt iteration from inside the switch
@@ -935,16 +959,22 @@ namespace Avogadro {
       //step provides the lowest cost
       QRectF upRect = bestRect;
       upRect.moveTop( upRect.top() + yStep );
-      float upCost = d->rectCost( upRect );
+      if (d->labelShiftDirection != Down)
+        upCost = d->rectCost( upRect );        
       QRectF downRect = bestRect;
       downRect.moveTop( downRect.top() - yStep );
-      float downCost = d->rectCost( downRect );
+      if (d->labelShiftDirection != Up)
+        downCost = d->rectCost( downRect );
+      //else
+      //  qDebug() << "no down!" << upCost << downCost << leftCost << rightCost;
       QRectF leftRect = bestRect;
       leftRect.moveLeft( leftRect.left() - xStep );
-      float leftCost = d->rectCost( leftRect );
+      if (d->labelShiftDirection != Right)
+        leftCost = d->rectCost( leftRect );
       QRectF rightRect = bestRect;
       rightRect.moveLeft( rightRect.left() + xStep );
-      float rightCost = d->rectCost( rightRect );
+      if (d->labelShiftDirection != Left)
+        rightCost = d->rectCost( rightRect );
 
       //which direction leads to the lowest cost?
       QList<float> costList;
@@ -982,6 +1012,7 @@ namespace Avogadro {
       case 1: //down
         bestRect.moveTop( downRect.top() );
         bestCost = downCost;
+        qDebug() << "down" << downCost;
         break;
       case 2: //left
         bestRect.moveLeft( leftRect.left() );
@@ -997,6 +1028,7 @@ namespace Avogadro {
           bestBadCost = bestCost;
           bestBadRect = bestRect;
         }
+        qDebug() << "min" << pp->label() << bestCost;
 
         //If all of the first-step paths have now been searched, we'll
         //have to adopt the bestBadRect
@@ -1009,7 +1041,23 @@ namespace Avogadro {
         //If we haven't yet tried all of the first-step paths, start over
         if ( TriedPathIndex.size() < 4 ) {
           iter = -1; //anticipating the ++iter below
-          bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
+    // TODO: remove code duplication
+     switch(d->labelShiftDirection) {
+      case Up:        
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y()-3*yStep, 1, 1 ), textFlags, pp->label() );
+        break;
+      case Down:
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y()+3*yStep, 1, 1 ), textFlags, pp->label() );
+        break;
+      case Left:
+        bestRect = fm.boundingRect( QRectF( pos.x()-3*xStep, pos.y(), 1, 1 ), textFlags, pp->label() );
+        break;
+      case Right:
+        bestRect = fm.boundingRect( QRectF( pos.x()+3*xStep, pos.y(), 1, 1 ), textFlags, pp->label() );
+        break;
+      default:
+        bestRect = fm.boundingRect( QRectF( pos.x(), pos.y(), 1, 1 ), textFlags, pp->label() );
+    }
           bestCost = d->rectCost( bestRect );
         }
         break;
@@ -1025,19 +1073,24 @@ namespace Avogadro {
       ++iter;
     }
 
+    QPen oldpen = painter->pen();      
+    QPen pen(oldpen);
+    pen.setColor(QColor(0,0,0));    
+    painter->setPen( pen );
+      
     //Place label
     painter->drawText( bestRect, textFlags, pp->label() );
 
     //Is a line needed to connect the label to the point?
     float deltax = pos.x() - bestRect.center().x();
     float deltay = pos.y() - bestRect.center().y();
-    float rbest = sqrt( deltax*deltax + deltay*deltay );
-    if ( rbest > 20.0 ) {
+    //float rbest = sqrt( deltax*deltax + deltay*deltay );
+    //if ( rbest > 20.0 ) {
+    //if (fabs(deltax) <= 4*xStep && fabs(deltay) <= 4*yStep) {
       //Draw a rectangle around the label
       painter->setBrush( QBrush() );
-      //QPen pen = painter->pen();
+
       //pen.setStyle( Qt::DotLine );
-      //painter->setPen( pen );
       painter->drawRoundRect( bestRect );
 
       //Now connect the label to the point with a line.
@@ -1055,7 +1108,8 @@ namespace Avogadro {
         yline = bestRect.bottom();
 
       painter->drawLine( QPointF( xline, yline ), pos );
-    }
+    //}
+    painter->setPen( oldpen );
 
     //Mask the label's rectangle so other labels won't overlap it.
     maskRect( bestRect );

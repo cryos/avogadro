@@ -195,10 +195,13 @@ namespace Avogadro {
 
     // Add labels for gaussians?    
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
-      if (ui.combo_yaxis->currentIndex() == 1)
+      if (ui.combo_yaxis->currentIndex() == 1) {
         assignGaussianLabels(plotObject, true);
-      else
+        m_dialog->labelsUp(true);
+      } else {
         assignGaussianLabels(plotObject, false);
+        m_dialog->labelsUp(false);
+      }
     }
     return;
   } // End IR spectra

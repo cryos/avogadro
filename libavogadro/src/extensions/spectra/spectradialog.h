@@ -60,6 +60,7 @@ namespace Avogadro {
     void writeSettings() const;
     void readSettings();
     Ui::SpectraDialog * getUi() {return &ui;};
+    void labelsUp(bool up);
 
   public slots:
     void regenerateCalculatedSpectra();
@@ -116,6 +117,7 @@ namespace Avogadro {
 
     QTime m_time;
     int m_lastUpdate;
+    bool m_labelsUp;
   };
 }
 
