@@ -100,7 +100,8 @@ printUsage()
    echo " "`basename $0`" -f filename             Force installation"
    echo " "`basename $0`" -pack manifest          Create new package"
    echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
-   echo " "`basename $0`" -info filename          Show information about package"
+   echo " "`basename $0`" -info filename          Show information about package in filename"
+   echo " "`basename $0`" -query [package_name]   Show information about installed package"
    echo "Type 'man "`basename $0`"' for more details"
 }
 
@@ -293,6 +294,21 @@ then
 
     exit 0	
 fi
+
+if test "$1" = "-query"
+then
+     ####### Show package metadata from registry #######
+    N=`cat "$DB_FILE" | grep "\[$2\]" | awk '{print $NF}'`
+    echo $N
+    if test "x$N" = "x"
+    then
+        echo "Package $2 is not installed"
+        exit 0
+    fi
+
+    cat "$DB_FILE" | grep -C $N "\[$2\]"
+    exit 0
+fi    
 
 if test "$1" = "-pack"
 then

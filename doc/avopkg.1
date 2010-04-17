@@ -6,7 +6,7 @@
 .Nd "Avogadro Package Manager"
 .Sh SYNOPSIS
 .Nm
-.Op Fl info | Fl pack | Fl f
+.Op Fl info | Fl query | Fl pack | Fl f
 .Ar filename
 .br
 .Nm
@@ -25,6 +25,10 @@ Force installation of plugin, disregarding OS/CPU architecture, possible file ov
 .It Fl -wizard Op package_name
 Interactively create manifest for new package. Specifying package_name disables some 
 interactivity of the wizard (e.g., for use in scripts).
+.It Fl -info Op filename
+Show information about package in file "filename"
+.It Fl -query Op package_name
+Show information about installed package "package_name"
 .El
 .Sh ERROR CODES
 .Bl -tag -width flag
