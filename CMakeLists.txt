@@ -126,6 +126,19 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 # Intel C++ Compiler
 # Note: Windows version uses different options!
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+  # Disable warnings:
+  # 981 - operands are evaluated in unspecified order
+  # 1599 - foreach
+  set (CMAKE_CXX_FLAGS_WARN "-Wnon-virtual-dtor -ansi -Wcheck -Wall -Wpointer-arith -wd981,1599")
+  option(EXTRA_WARNINGS
+    "Enable extra Intel Compiler warnings and remarks" OFF)
+  if(EXTRA_WARNINGS)
+    # Enable extra compiler warnings for extra checking
+    set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -w2 -Weffc++ -wd2012,2015")
+  else(EXTRA_WARNINGS)
+    # 810 - conversion to float
+    set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -wd810")
+  endif(EXTRA_WARNINGS)
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags
   if(CMAKE_SYSTEM_NAME MATCHES Linux)
@@ -150,7 +163,19 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   
   set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
-  
+
+  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+    "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
+  set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline ${CMAKE_CXX_FLAGS_WARN}")
+
+  TEST_IF_WE_NEED_FPERMISSIVE(NEED_FPERMISSIVE)
+  if(NEED_FPERMISSIVE)
+    #OK, adding -fpermissive to the C++ compiler flags
+    #Workaround for a problem with Boost.Python and GCC >= 4.3.1
+    #Further information: cmake/modules/TestIfWeNeedFPermissive.cmake
+    set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
+  endif(NEED_FPERMISSIVE)
+    
   # define WITH_SSE2 to enable the SSE2 instruction set.
   # Available on Pentium 4, Athlon 64, and newer CPUs.
   # If SSE2 is enabled, Eigen uses it by default; this can be disabled by
