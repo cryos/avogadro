@@ -93,7 +93,10 @@ namespace Avogadro
   const double   PAINTER_CYLINDERS_DETAIL_COEFF
   = static_cast<double> ( PAINTER_MAX_DETAIL_LEVEL - 1 )
     / ( PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL );
-  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.8;
+//  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.8;
+
+  inline void GLPainter::applyAsMaterials(const Color3f &c, float alpha);
+  inline void GLPainter::apply(const Color3f &color);
 
   class GLPainterPrivate
   {
@@ -1172,12 +1175,12 @@ namespace Avogadro
       }
   }
 
-  inline void GLPainter::apply(const Color3f &color)
+  void GLPainter::apply(const Color3f &color)
   {
     glColor3fv(color.data());
   }
 
-  inline void GLPainter::applyAsMaterials(const Color3f &c, float alpha)
+  void GLPainter::applyAsMaterials(const Color3f &c, float alpha)
   {
     float color[] = {c.red(), c.green(), c.blue(), alpha};
     float ambientColor [] = {color[0] / 3.0f,
