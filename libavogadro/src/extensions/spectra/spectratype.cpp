@@ -138,11 +138,11 @@ namespace Avogadro {
       QList<double> xPoints = getXPoints(fwhm, 10);
       for (int i = 0; i < xPoints.size(); i++) {
         double x = xPoints.at(i);// already scaled!
-        double y = 100;
+        double y = 0;
         for (int j = 0; j < m_yList.size(); j++) {
           double t = m_yList.at(j);
           double w = m_xList.at(j);// already scaled!
-          y += (t-100) * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
+          y += t * exp( - ( pow( (x - w), 2 ) ) / (2 * s2) );
         }
         plotObject->addPoint(x,y);
       }

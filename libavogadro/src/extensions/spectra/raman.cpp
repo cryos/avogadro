@@ -142,19 +142,6 @@ namespace Avogadro {
   }
 
   void RamanSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-
-    if (ui.spin_FWHM->value() != 0.0 && ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setEnabled(false);
-      ui.cb_labelPeaks->setChecked(false);
-    }
-    if (ui.spin_FWHM->value() == 0.0 && !ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setEnabled(true);
-    }
-    if (!ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setChecked(false);
-    }
-
     for(int i = 0; i< m_yList.size(); i++) {
       // Convert to intensities?
       if (ui.combo_yaxis->currentIndex() == 1) {
@@ -165,51 +152,14 @@ namespace Avogadro {
       }
     }
 
-    if (ui.spin_FWHM->value() == 0.0) { // get singlets
-      plotObject->addPoint( 0, 0);
-
-      for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i);
-        double transmittance = m_yList.at(i);
-        plotObject->addPoint ( wavenumber, 0 );
-        if (ui.cb_labelPeaks->isChecked()) {
-          // %L1 uses localized number format (e.g., 1.023,4 in Europe)
-          plotObject->addPoint( wavenumber, transmittance, QString("%L1").arg(wavenumber, 0, 'f', 1) );
-        }
-        else {
-          plotObject->addPoint( wavenumber, transmittance );
-        }
-        plotObject->addPoint( wavenumber, 0 );
-      }
-      plotObject->addPoint( 3500, 0);
-    } // End singlets
-
-    else { // Get gaussians
-      // convert FWHM to sigma squared
-      double FWHM = ui.spin_FWHM->value();
-      gaussianWiden(plotObject, FWHM);
-
-      // Normalization is probably screwed up, so renormalize the data
-      double min, max;
-      min = max = plotObject->points().first()->y();
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        if (cur < min) min = cur;
-        if (cur > max) max = cur;
-      }
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        // cur - min 		: Shift lowest point of plot to be at zero
-        // 100 / (max - min)	: Conversion factor for current spread -> percent
-        // * 0.97 + 3		: makes plot stay away from 0 transmittance
-        //			: (easier to see multiple peaks on strong signals)
-        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
-      }
-    } // End gaussians
-
-    return;
-  } // End Raman spectra
+    AbstractIRSpectra::getCalculatedPlotObject(plotObject);
+    
+    // Add labels for gaussians?    
+    if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
+      assignGaussianLabels(plotObject, true);
+      m_dialog->labelsUp(true);      
+    }    
+  } 
 
   /*void RamanSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = new QList<double> (xList);

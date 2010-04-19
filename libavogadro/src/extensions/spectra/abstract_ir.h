@@ -39,6 +39,7 @@ namespace Avogadro {
   public:
     AbstractIRSpectra( SpectraDialog *parent = 0 );
     virtual void setupPlot(PlotWidget * plot) = 0;
+    void getCalculatedPlotObject(PlotObject *plotObject);
     
   protected slots:
     void updateScaleSpin(int);

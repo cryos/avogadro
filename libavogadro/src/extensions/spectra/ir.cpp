@@ -95,17 +95,15 @@ namespace Avogadro {
       }
     }
 
-    vector<double> transmittances;
+    vector<double> absorbances;
     
     for (unsigned int i = 0; i < intensities.size(); i++) {
       double t = intensities.at(i);
       if (maxIntensity != 0) {
         t = t / maxIntensity; 	// Normalize
       }
-      //t = 0.97 * t;		// Keeps the peaks from extending to the limits of the plot
-      t = 1.0 - t; 		// Simulate transmittance
       t *= 100.0;		// Convert to percent
-      transmittances.push_back(t);
+      absorbances.push_back(t);
     }
 
     // Store in member vars
@@ -116,7 +114,7 @@ namespace Avogadro {
       double w = wavenumbers.at(i);
       m_xList.append(w*scale(w));
       m_xList_orig.append(w);
-      m_yList.append(transmittances.at(i));
+      m_yList.append(absorbances.at(i));
     }
 
     return true;
@@ -129,70 +127,14 @@ namespace Avogadro {
   }
 
   void IRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
-    plotObject->clearPoints();
-
-    /*if (m_fwhm != 0.0 && ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setEnabled(false);
-      ui.cb_labelPeaks->setChecked(false);
-    }
-    if (m_fwhm == 0.0 && !ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setEnabled(true);
-    }
-    if (!ui.cb_labelPeaks->isEnabled()) {
-      ui.cb_labelPeaks->setChecked(false);
-    }*/
-
-    if (m_fwhm == 0.0) { // get singlets
-      plotObject->addPoint( 400, 100);
-
-      for (int i = 0; i < m_yList.size(); i++) {
-        double wavenumber = m_xList.at(i);// already scaled!
-        double transmittance = m_yList.at(i);
-        plotObject->addPoint ( wavenumber, 100 );
-        if (ui.cb_labelPeaks->isChecked()) {
-          // %L1 uses localized number format (e.g., 1.023,4 in Europe)
-          plotObject->addPoint( wavenumber, transmittance, QString("%L1").arg(wavenumber, 0, 'f', 1) );
-        }
-        else {
-          plotObject->addPoint( wavenumber, transmittance );
-        }
-        plotObject->addPoint( wavenumber, 100 );
-      }
-      plotObject->addPoint( 3500, 100);
-    } // End singlets
-
-    else { // Get gaussians
-      // convert FWHM to sigma squared
-      //double FWHM = ui.spin_FWHM->value();
-      gaussianWiden(plotObject, m_fwhm);
-
-      // Normalization is probably screwed up, so renormalize the data
-      double min, max;
-      min = max = plotObject->points().first()->y();
+    AbstractIRSpectra::getCalculatedPlotObject(plotObject);
+    // Convert to transmittance?
+    if (ui.combo_yaxis->currentIndex() == 0) {
       for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        if (cur < min) min = cur;
-        if (cur > max) max = cur;
-      }
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double cur = plotObject->points().at(i)->y();
-        // cur - min 		: Shift lowest point of plot to be at zero
-        // 100 / (max - min)	: Conversion factor for current spread -> percent
-        // * 0.97 + 3		: makes plot stay away from 0 transmittance
-        //			: (easier to see multiple peaks on strong signals)
-        //plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min) * 0.97 + 3);
-        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
-      }
-    } // End gaussians
-
-    // Convert to absorbance?
-    if (ui.combo_yaxis->currentIndex() == 1) {
-      for(int i = 0; i< plotObject->points().size(); i++) {
-        double absorbance = 100 - plotObject->points().at(i)->y();
-        plotObject->points().at(i)->setY(absorbance);
+        double transmittance = 100 - plotObject->points().at(i)->y();
+        plotObject->points().at(i)->setY(transmittance);
       }
     }
-
     // Add labels for gaussians?    
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
       if (ui.combo_yaxis->currentIndex() == 1) {
@@ -203,8 +145,7 @@ namespace Avogadro {
         m_dialog->labelsUp(false);
       }
     }
-    return;
-  } // End IR spectra
+  }
 
   void IRSpectra::setImportedData(const QList<double> & xList, const QList<double> & yList) {
     m_xList_imp = xList;

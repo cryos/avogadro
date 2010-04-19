@@ -53,7 +53,48 @@ namespace Avogadro {
             this, SLOT(updateYAxis(QString)));
     connect(ui.combo_scalingType, SIGNAL(currentIndexChanged(int)),
             this, SLOT(changeScalingType(int)));
-    }
+  }
+
+  void AbstractIRSpectra::getCalculatedPlotObject(PlotObject *plotObject) {
+    plotObject->clearPoints();
+
+    if (m_fwhm == 0.0) { // get singlets
+      plotObject->addPoint( 400, 0);
+
+      for (int i = 0; i < m_yList.size(); i++) {
+        double wavenumber = m_xList.at(i);// already scaled!
+        double transmittance = m_yList.at(i);
+        plotObject->addPoint ( wavenumber, 0 );
+        if (ui.cb_labelPeaks->isChecked()) {
+          // %L1 uses localized number format (e.g., 1.023,4 in Europe)
+          plotObject->addPoint( wavenumber, transmittance, QString("%L1").arg(wavenumber, 0, 'f', 1) );
+        }
+        else {
+          plotObject->addPoint( wavenumber, transmittance );
+        }
+        plotObject->addPoint( wavenumber, 0 );
+      }
+      plotObject->addPoint( 3500, 0);
+    } // End singlets
+
+    else { // Get gaussians
+      // convert FWHM to sigma squared
+      gaussianWiden(plotObject, m_fwhm);
+
+      // Normalization is probably screwed up, so renormalize the data
+      double min, max;
+      min = max = plotObject->points().first()->y();
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        if (cur < min) min = cur;
+        if (cur > max) max = cur;
+      }
+      for(int i = 0; i< plotObject->points().size(); i++) {
+        double cur = plotObject->points().at(i)->y();
+        plotObject->points().at(i)->setY( (cur - min) * 100 / (max - min));
+      }
+    } // End gaussians
+  }
 
   void AbstractIRSpectra::rescaleFrequencies()
   {
