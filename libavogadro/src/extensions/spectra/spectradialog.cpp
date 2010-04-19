@@ -142,8 +142,8 @@ namespace Avogadro {
             this, SLOT(updateCurrentSpectra(QString)));
     connect(ui.tab_widget, SIGNAL(currentChanged(int)),
             this, SLOT(updateComboSpectra(int)));
-    connect(ui.push_customize, SIGNAL(clicked()),
-            this, SLOT(toggleCustomize()));
+    connect(ui.push_advanced, SIGNAL(clicked()),
+            this, SLOT(toggleAdvanced()));
     connect(ui.push_loadSpectra, SIGNAL(clicked()),
             this, SLOT(loadSpectra()));
 
@@ -1003,9 +1003,9 @@ namespace Avogadro {
     updatePlot();
   }
 
-  void SpectraDialog::toggleCustomize() {
+  void SpectraDialog::toggleAdvanced() {
     if (ui.tab_widget->isHidden()) {
-      ui.push_customize->setText(tr("&Advanced <<"));
+      ui.push_advanced->setText(tr("&Advanced <<"));
       ui.tab_widget->show();
       ui.dataTable->show();
       ui.push_exportData->show();
@@ -1019,7 +1019,7 @@ namespace Avogadro {
       move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
     else {
-      ui.push_customize->setText(tr("&Advanced >>"));
+      ui.push_advanced->setText(tr("&Advanced >>"));
       QSize s = size();
       s.setWidth(s.width() - ui.dataTable->size().width());
       s.setHeight(s.height() - ui.tab_widget->size().height());

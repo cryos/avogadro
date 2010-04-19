@@ -78,7 +78,7 @@ namespace Avogadro {
     void toggleImported(bool state);
     void toggleCalculated(bool state);
     void saveImage();
-    void toggleCustomize();
+    void toggleAdvanced();
     void schemeChanged();
     void updateScheme(int scheme);
     void updateCurrentSpectra(const QString & text);
