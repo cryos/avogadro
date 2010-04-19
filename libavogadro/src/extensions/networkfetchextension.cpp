@@ -53,7 +53,7 @@ namespace Avogadro
     action->setData("PDB");
     m_actions.append(action);
     action = new QAction(this);
-    action->setText(tr("Fetch chemical structure..."));
+    action->setText(tr("Fetch by chemical name..."));
     action->setData("NIH");
     m_actions.append(action);
     action = new QAction(this);
