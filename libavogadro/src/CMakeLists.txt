@@ -100,14 +100,6 @@ set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
                        ${OPENGL_LIBRARIES}
                        #${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
                        )
-if (APPLE)
-# Mac requires OpenGL in linking above
-set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
-                       ${OPENGL_gl_LIBRARY}
-                       ${OPENGL_glu_LIBRARY}
-      )
-endif(APPLE)
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
