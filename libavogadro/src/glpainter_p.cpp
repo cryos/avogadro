@@ -95,9 +95,6 @@ namespace Avogadro
     / ( PAINTER_CYLINDERS_SQRT_LIMIT_MAX_LEVEL - PAINTER_CYLINDERS_SQRT_LIMIT_MIN_LEVEL );
 //  const double   PAINTER_FRUSTUM_CULL_TRESHOLD = -0.8;
 
-  inline void GLPainter::applyAsMaterials(const Color3f &c, float alpha);
-  inline void GLPainter::apply(const Color3f &color);
-
   class GLPainterPrivate
   {
   public:
