@@ -32,17 +32,18 @@ qt4_automoc(${periodictable_SRCS})
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
-make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
+make_directory("${libavogadro_BINARY_DIR}/include/qperiodictable")
 if(UNIX)
   set(header_cmd "create_symlink")
 else(UNIX)
   set(header_cmd "copy_if_different")
 endif(UNIX)
-foreach(headerFile ${periodictable_HDRS})
+foreach(headerFile ${periodictable_HDRS} global.h)
   set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
-  set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
+  set(to   "${libavogadro_BINARY_DIR}/include/qperiodictable/${headerFile}")
   execute_process(
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
+  message("${from} ${to}")
 endforeach(headerFile ${periodictable_HDRS})
 
 add_library(periodictable SHARED
@@ -67,4 +68,6 @@ install(TARGETS periodictable DESTINATION ${LIB_INSTALL_DIR})
 install(TARGETS qperiodictable DESTINATION ${BIN_INSTALL_DIR})
 install(FILES ${periodictable_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
-
+install(FILES ${periodictable_HDRS} global.h
+  DESTINATION "${INCLUDE_INSTALL_DIR}/qperiodictable")
+  

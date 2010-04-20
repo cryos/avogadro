@@ -29,11 +29,13 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QStringList>
+#include <QtCore/QPointer>
 #include <QtCore/QProcess>
+#include <QtCore/QTranslator>
 
 #include <openbabel/mol.h>
 
-#include "elementtranslator.h"
+#include <qperiodictable/elementtranslator.h>
 #include "qperiodictable.h"
 #include "config.h"
 

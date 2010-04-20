@@ -286,7 +286,7 @@ namespace Avogadro
     foreach (const QModelIndex &index, selected.indexes()) {
       if (!index.isValid())
         return;
-      int rowNum = model()->headerData(index.row(), Qt::Vertical).toString().split(" ").at(1).toLong(&ok) - 1;
+      int rowNum = model()->headerData(index.row(), Qt::Vertical).toString().split(" ").last().toLong(&ok) - 1;
       if (!ok)
         return;
       

@@ -25,7 +25,7 @@
 #ifndef PERIODICTABLEVIEW_H
 #define PERIODICTABLEVIEW_H
 
-#include <avogadro/global.h>
+#include <qperiodictable/global.h>
 
 #include <QGraphicsView>
 

@@ -386,20 +386,20 @@ if (UNIX)
     	DESTINATION "${CMAKE_INSTALL_PREFIX}"
     	)
     else(APPLE)
-      # Make sure to copy Qt plugins and translations
-      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
-      install(FILES ${qt_TRANSLATIONS}
-    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt/translations"
-    	)
-      # FIXME: These need to have the install-name tool run on them
-      install(DIRECTORY "${QT_PLUGINS_DIR}"
-    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
-    	)
-      file(GLOB qt_libs "${QT_LIBRARY_DIR}/libQtCore.so* ${QT_LIBRARY_DIR}/libQtGui.so* ${QT_LIBRARY_DIR}/libQtOpenGL.so* ${QT_LIBRARY_DIR}/libQtNetwork.so*")
-      install(FILES ${qt_libs}
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
-        )
-      # FIXME: Add others
+#      # Make sure to copy Qt plugins and translations
+#      file(GLOB qt_TRANSLATIONS "${QT_TRANSLATIONS_DIR}/qt*.qm")
+#      install(FILES ${qt_TRANSLATIONS}
+#    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt/translations"
+#    	)
+#      # FIXME: These need to have the install-name tool run on them
+#      install(DIRECTORY "${QT_PLUGINS_DIR}"
+#    	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+#    	)
+#      file(GLOB qt_libs "${QT_LIBRARY_DIR}/libQtCore.so* ${QT_LIBRARY_DIR}/libQtGui.so* ${QT_LIBRARY_DIR}/libQtOpenGL.so* ${QT_LIBRARY_DIR}/libQtNetwork.so*")
+#      install(FILES ${qt_libs}
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/qt"
+#        )
+#      # FIXME: Add others
 #      set(X11_LIBRARIES ${X11_ICE_LIB} ${X11_SM_LIB} ${X11_X11_LIB})
 #      install(LIBRARY ${X11_LIBRARIES}
 #        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/X11"
@@ -449,11 +449,16 @@ mark_as_advanced(CMAKE_LIBRARY_OUTPUT_DIRECTORY
   CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 # tell cmake to process CMakeLists.txt in that subdirectory
-add_subdirectory(plotwidget)
-add_subdirectory(periodictable)
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
+add_subdirectory(plotwidget)
+add_subdirectory(periodictable)
 add_subdirectory(doc)
+
+add_dependencies(labelengine periodictable)
+add_dependencies(drawtool periodictable)
+add_dependencies(selectextension periodictable)
+add_dependencies(spectraextension plotwidget)
 
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
@@ -467,6 +472,11 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
 
 # avopkg
 if(UNIX)
+  if(ENABLE_AVO_PACKAGE)
+    set(AVOPKG_PREFIX "$prefix$")
+  else(ENABLE_AVO_PACKAGE)
+    set(AVOPKG_PREFIX ${CMAKE_INSTALL_PREFIX})
+  endif(ENABLE_AVO_PACKAGE)
   configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in"
     "${CMAKE_CURRENT_BINARY_DIR}/avopkg"

@@ -24,15 +24,15 @@ qt4_automoc(${plotwidget_SRCS})
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
-make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
+make_directory("${libavogadro_BINARY_DIR}/include/qplotwidget")
 if(UNIX)
   set(header_cmd "create_symlink")
 else(UNIX)
   set(header_cmd "copy_if_different")
 endif(UNIX)
-foreach(headerFile ${plotwidget_HDRS})
+foreach(headerFile ${plotwidget_HDRS} global.h)
   set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
-  set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
+  set(to   "${libavogadro_BINARY_DIR}/include/qplotwidget/${headerFile}")
   execute_process(
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${periodictable_HDRS})
@@ -52,4 +52,6 @@ target_link_libraries(plotwidget ${PLOTWIDGET_LINK_LIBRARIES})
 install(TARGETS plotwidget DESTINATION ${LIB_INSTALL_DIR})
 install(FILES ${plotwidget_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
+install(FILES ${plotwidget_HDRS} global.h
+  DESTINATION "${INCLUDE_INSTALL_DIR}/qplotwidget")
 

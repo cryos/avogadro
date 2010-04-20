@@ -28,7 +28,6 @@
 #include <QtCore/QDebug>
 
 #include <avogadro/primitive.h>
-#include <avogadro/plotwidget.h>
 #include <avogadro/molecule.h>
 
 namespace Avogadro {

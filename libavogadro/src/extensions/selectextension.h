@@ -24,7 +24,7 @@
 #define SELECTEXTENSION_H
 
 #include <avogadro/extension.h>
-#include <avogadro/periodictableview.h>
+#include <qperiodictable/periodictableview.h>
 
 #include <QObject>
 #include <QList>
