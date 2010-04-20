@@ -472,6 +472,11 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
 
 # avopkg
 if(UNIX)
+  if(ENABLE_AVO_PACKAGE)
+    set(AVOPKG_PREFIX "$prefix$")
+  else(ENABLE_AVO_PACKAGE)
+    set(AVOPKG_PREFIX ${CMAKE_INSTALL_PREFIX})
+  endif(ENABLE_AVO_PACKAGE)
   configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/avopkg.in"
     "${CMAKE_CURRENT_BINARY_DIR}/avopkg"
