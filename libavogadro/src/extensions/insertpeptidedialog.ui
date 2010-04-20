@@ -374,6 +374,16 @@
         </item>
         <item>
          <property name="text">
+          <string>3-10 Helix</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pi Helix</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Other</string>
          </property>
         </item>

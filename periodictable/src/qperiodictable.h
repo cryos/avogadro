@@ -27,22 +27,22 @@
 #define QPERIODICTABLE_H
 
 #include <QtGui/QPlainTextEdit>
-#include <avogadro/periodictableview.h>
+#include "periodictableview.h"
 
 class PeriodicTableWatcher : public QObject
 {
   Q_OBJECT
 
   public:
-    PeriodicTableWatcher(Avogadro::PeriodicTableView *periodicTable,
+  PeriodicTableWatcher(Avogadro::PeriodicTableView *periodicTable,
                          QPlainTextEdit *elementInfo);
     
   public slots:
     void elementChanged(int);
 
   private:
-  Avogadro::PeriodicTableView *m_periodicTable;
-  QPlainTextEdit *m_elementInfo;
+    Avogadro::PeriodicTableView *m_periodicTable;
+    QPlainTextEdit *m_elementInfo;
 
 };
 

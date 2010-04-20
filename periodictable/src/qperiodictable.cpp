@@ -32,12 +32,14 @@
 #include <QtCore/QProcess>
 
 #include <openbabel/mol.h>
-#include <avogadro/elementtranslator.h>
 
+#include "elementtranslator.h"
 #include "qperiodictable.h"
 #include "config.h"
 
-PeriodicTableWatcher::PeriodicTableWatcher(Avogadro::PeriodicTableView *periodicTable,
+using namespace Avogadro;
+
+PeriodicTableWatcher::PeriodicTableWatcher(PeriodicTableView *periodicTable,
                         QPlainTextEdit *elementInfo)
 {
   m_periodicTable = periodicTable;
@@ -49,17 +51,17 @@ PeriodicTableWatcher::PeriodicTableWatcher(Avogadro::PeriodicTableView *periodic
 void PeriodicTableWatcher::elementChanged(int n)
 {  
   m_elementInfo->setPlainText(
-    tr("Official Name") + ": " + Avogadro::ElementTranslator::name(n)
-    + "\n" +tr("Atomic Number") +": " + QString::number(n)
-    + "\n" +tr("Atomic Weight") +": " + QString::number(OpenBabel::etab.GetMass(n)) + " a.u."
-    + "\n" +tr("Monoisotopic Weight") + ": " + QString::number(OpenBabel::isotab.GetExactMass(n)) + " a.u."
-    + "\n" +tr("Covalent Radius") + ": "  + QString::number(OpenBabel::etab.GetCovalentRad(n)) + " \xC5"
-    + "\n" +tr("VdW Radius") + ": "  + QString::number(OpenBabel::etab.GetVdwRad(n)) + " \xC5"
-    + "\n" +tr("Pauling Electronegativity") + ": "  + QString::number(OpenBabel::etab.GetElectroNeg(n))
-    + "\n" +tr("Allred-Rochow Electronegativity") + ": "  + QString::number(OpenBabel::etab.GetAllredRochowElectroNeg(n))
-    + "\n" +tr("Ionization Potential") + ": "  + QString::number(OpenBabel::etab.GetIonization(n)) + " eV"
-    + "\n" +tr("Electron Affinity") + ": "  + QString::number(OpenBabel::etab.GetElectronAffinity(n)) + " eV"
-    );
+                              tr("Official Name") + ": " + Avogadro::ElementTranslator::name(n)
+                              + "\n" +tr("Atomic Number") +": " + QString::number(n)
+                              + "\n" +tr("Atomic Weight") +": " + QString::number(OpenBabel::etab.GetMass(n)) + " a.u."
+                              + "\n" +tr("Monoisotopic Weight") + ": " + QString::number(OpenBabel::isotab.GetExactMass(n)) + " a.u."
+                              + "\n" +tr("Covalent Radius") + ": "  + QString::number(OpenBabel::etab.GetCovalentRad(n)) + " \xC5"
+                              + "\n" +tr("VdW Radius") + ": "  + QString::number(OpenBabel::etab.GetVdwRad(n)) + " \xC5"
+                              + "\n" +tr("Pauling Electronegativity") + ": "  + QString::number(OpenBabel::etab.GetElectroNeg(n))
+                              + "\n" +tr("Allred-Rochow Electronegativity") + ": "  + QString::number(OpenBabel::etab.GetAllredRochowElectroNeg(n))
+                              + "\n" +tr("Ionization Potential") + ": "  + QString::number(OpenBabel::etab.GetIonization(n)) + " eV"
+                              + "\n" +tr("Electron Affinity") + ": "  + QString::number(OpenBabel::etab.GetElectronAffinity(n)) + " eV"
+                              );
 }
 
 
@@ -113,7 +115,7 @@ int main(int argc, char **argv)
   }
 
   // Construct Periodic Table
-  Avogadro::PeriodicTableView* periodicTable = new Avogadro::PeriodicTableView;
+  PeriodicTableView* periodicTable = new PeriodicTableView;
   periodicTable->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
   QMainWindow *window = new QMainWindow();
   window->setWindowTitle("Periodic System of D.I.Mendeleyev");

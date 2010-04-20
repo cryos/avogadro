@@ -352,6 +352,18 @@ namespace Avogadro {
       m_dialog->phiSpin->setValue(phi);
       m_dialog->psiSpin->setValue(psi);
       break;
+    case 3: // 3-10 helix
+      setPhi(-74.0);
+      setPsi(-4.0);
+      m_dialog->phiSpin->setValue(phi);
+      m_dialog->psiSpin->setValue(psi);
+      break;
+    case 4: // pi helix
+      setPhi(-57.0);
+      setPsi(-70.0);
+      m_dialog->phiSpin->setValue(phi);
+      m_dialog->psiSpin->setValue(psi);
+      break;
     default: // arbitrary value
       break;
     }
