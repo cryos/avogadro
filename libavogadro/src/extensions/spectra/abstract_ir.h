@@ -42,6 +42,8 @@ namespace Avogadro {
     void getCalculatedPlotObject(PlotObject *plotObject);
     
   protected slots:
+    void toggleLabels(bool);
+    void updateThreshold(double);
     void updateScaleSpin(int);
     void updateScaleSlider(double);
     void scaleSliderPressed();
@@ -60,6 +62,7 @@ namespace Avogadro {
     Ui::Tab_IR_Raman ui;
     double m_scale;
     double m_fwhm;
+    double m_labelYThreshold;
     QString m_yaxis;
     QList<double> m_xList_orig;
     ScalingType m_scalingType;

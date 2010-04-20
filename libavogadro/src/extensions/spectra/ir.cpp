@@ -138,10 +138,10 @@ namespace Avogadro {
     // Add labels for gaussians?    
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
       if (ui.combo_yaxis->currentIndex() == 1) {
-        assignGaussianLabels(plotObject, true);
+        assignGaussianLabels(plotObject, true, m_labelYThreshold);
         m_dialog->labelsUp(true);
       } else {
-        assignGaussianLabels(plotObject, false);
+        assignGaussianLabels(plotObject, false, 100-m_labelYThreshold);
         m_dialog->labelsUp(false);
       }
     }

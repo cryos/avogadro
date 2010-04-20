@@ -148,7 +148,7 @@ namespace Avogadro {
       }
   }
 
-  void SpectraType::assignGaussianLabels(PlotObject *plotObject, const bool findMax)
+  void SpectraType::assignGaussianLabels(PlotObject *plotObject, bool findMax, double yThreshold)
   {
     for(int i = 1; i< plotObject->points().size()-1; i++) { // No border extremal points
       double y, y1, y2;
@@ -159,7 +159,7 @@ namespace Avogadro {
         do {
           y1 = plotObject->points().at(i-m)->y();
           y2 = plotObject->points().at(i+n)->y();
-          if (y > y1 && y > y2) {
+          if (y > y1 && y > y2 && y >= yThreshold) {
             // Point between y1 and y2 is maximum
             int k = ((i-m)+(i+n))/2;
             double wavenumber = plotObject->points().at(k)->x();
@@ -174,7 +174,7 @@ namespace Avogadro {
           if ((y == y2) && (i+n+1 < plotObject->points().size()))
             n++;
           
-        }while (y >= y1 && y >=y2);
+        }while (y >= y1 && y >=y2 && y >= yThreshold);
         
       } else {
       // Find minima
@@ -183,7 +183,7 @@ namespace Avogadro {
         do {
           y1 = plotObject->points().at(i-m)->y();
           y2 = plotObject->points().at(i+n)->y();
-          if (y < y1 && y < y2) {
+          if (y < y1 && y < y2 && y <= yThreshold) {
             // Point between y1 and y2 is mimimum
             int k = ((i-m)+(i+n))/2;
             double wavenumber = plotObject->points().at(k)->x();
@@ -198,7 +198,7 @@ namespace Avogadro {
           if ((y == y2) && (i+n+1 < plotObject->points().size()))
             n++;
           
-        }while (y <= y1 && y <=y2);
+        }while (y <= y1 && y <=y2 && y <= yThreshold);
       }
     }
   }

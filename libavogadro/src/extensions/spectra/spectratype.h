@@ -65,7 +65,7 @@ namespace Avogadro {
     QString getTSV(QString xTitle, QString yTitle);
     void clear();
     void gaussianWiden(PlotObject *plotObject, const double fwhm);
-    static void assignGaussianLabels(PlotObject *plotObject, const bool findMax);
+    static void assignGaussianLabels(PlotObject *plotObject, bool findMax, double yThreshold=0);
 
   signals:
     void plotDataChanged();

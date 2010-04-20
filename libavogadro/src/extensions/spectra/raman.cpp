@@ -156,7 +156,7 @@ namespace Avogadro {
     
     // Add labels for gaussians?    
     if ((m_fwhm != 0.0) && (ui.cb_labelPeaks->isChecked())) {
-      assignGaussianLabels(plotObject, true);
+      assignGaussianLabels(plotObject, true, m_labelYThreshold);
       m_dialog->labelsUp(true);      
     }    
   } 

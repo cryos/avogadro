@@ -24,7 +24,7 @@ using namespace std;
 
 namespace Avogadro {
   AbstractIRSpectra::AbstractIRSpectra( SpectraDialog *parent ) :
-    SpectraType( parent )
+    SpectraType( parent ), m_scale(0.0), m_fwhm(0.0), m_labelYThreshold(0.0)
     {
     ui.setupUi(m_tab_widget);
 
@@ -32,7 +32,9 @@ namespace Avogadro {
     connect(this, SIGNAL(plotDataChanged()),
             m_dialog, SLOT(regenerateCalculatedSpectra()));
     connect(ui.cb_labelPeaks, SIGNAL(toggled(bool)),
-            m_dialog, SLOT(regenerateCalculatedSpectra()));
+            this, SLOT(toggleLabels(bool)));
+    connect(ui.spin_threshold, SIGNAL(valueChanged(double)),
+            this, SLOT(updateThreshold(double)));
     connect(ui.spin_scale, SIGNAL(valueChanged(double)),
             this, SLOT(updateScaleSlider(double)));
     connect(ui.hs_scale, SIGNAL(sliderPressed()),
@@ -177,10 +179,23 @@ namespace Avogadro {
     emit plotDataChanged();
   }
 
-  void AbstractIRSpectra::changeScalingType(int type) {
+  void AbstractIRSpectra::changeScalingType(int type)
+  {
     m_scalingType = static_cast<ScalingType>(type);
     rescaleFrequencies();
-  }    
+  }
+
+  void AbstractIRSpectra::toggleLabels(bool enabled)
+  {
+    ui.spin_threshold->setEnabled(enabled);   
+    emit plotDataChanged();
+  }
+
+  void AbstractIRSpectra::updateThreshold(double t)
+  {
+    m_labelYThreshold = t;
+    emit plotDataChanged();
+  }
 
   double AbstractIRSpectra::scale(double w)
   {
