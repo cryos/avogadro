@@ -38,11 +38,15 @@
 
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
+#include <openbabel/builder.h>
+#include <openbabel/forcefield.h>
 
 namespace Avogadro
 {
   using OpenBabel::OBConversion;
   using OpenBabel::OBMol;
+  using OpenBabel::OBBuilder;
+  using OpenBabel::OBForceField;
 
   NetworkFetchExtension::NetworkFetchExtension(QObject* parent)
     : Extension(parent),
@@ -115,9 +119,9 @@ namespace Avogadro
         return 0;
       // Hard coding the PDB download URL - this could be used for other services
       m_network->get(QNetworkRequest(
-          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf")));
+          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/smiles")));
 
-      *m_moleculeName = structureName + ".sdf";
+      *m_moleculeName = structureName + ".smi";
     }
     else if (action->data() == "URL") {
       // Prompt for a URL
@@ -184,6 +188,18 @@ namespace Avogadro
     conv.SetInFormat(info.suffix().toAscii());
     OBMol *obmol = new OBMol;
     if (conv.ReadString(obmol, QString(data).toStdString())) {
+	  if (info.suffix() == "smi") {
+	    OBBuilder builder;
+	    builder.Build(*obmol);
+	    obmol->AddHydrogens(); // Add some hydrogens before running force field
+        OBForceField* pFF =  OBForceField::FindForceField("MMFF94");
+        if (!pFF || !pFF->Setup(*obmol)) {
+          pFF = OBForceField::FindForceField("UFF");
+          if (!pFF || !pFF->Setup(*obmol)) return; // can't do anything more
+        }
+        pFF->ConjugateGradients(250, 1.0e-4);
+        pFF->UpdateCoordinates(*obmol);
+	  }
       Molecule *mol = new Molecule;
       mol->setOBMol(obmol);
       mol->setFileName(*m_moleculeName);
