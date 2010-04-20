@@ -16,6 +16,7 @@ set(plotwidget_HDRS
   plotobject.h
   plotpoint.h
   plotwidget.h
+  plotexport.h
 )
 
 set(PLOTWIDGET_LINK_LIBRARIES ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
