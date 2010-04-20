@@ -455,11 +455,6 @@ add_subdirectory(plotwidget)
 add_subdirectory(periodictable)
 add_subdirectory(doc)
 
-add_dependencies(labelengine periodictable)
-add_dependencies(drawtool periodictable)
-add_dependencies(selectextension periodictable)
-add_dependencies(spectraextension plotwidget)
-
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 
