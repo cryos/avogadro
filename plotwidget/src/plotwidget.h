@@ -29,7 +29,6 @@
 #ifndef PLOTWIDGET_H
 #define PLOTWIDGET_H
 
-#include <avogadro/global.h>
 #include <avogadro/plotaxis.h>
 #include <avogadro/plotpoint.h>
 #include <avogadro/plotobject.h>
