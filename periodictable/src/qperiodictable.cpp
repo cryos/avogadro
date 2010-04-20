@@ -35,7 +35,7 @@
 
 #include <openbabel/mol.h>
 
-#include "elementtranslator.h"
+#include <qperiodictable/elementtranslator.h>
 #include "qperiodictable.h"
 #include "config.h"
 

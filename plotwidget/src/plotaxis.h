@@ -32,7 +32,7 @@
 #include <QtCore/QString>
 #include <QtCore/QList>
 
-#include "plotexport.h"
+#include <qplotwidget/global.h>
 
 namespace Avogadro {
 

@@ -32,7 +32,7 @@
 #include <QtCore/QString>
 #include <QtGui/QColor>
 
-#include "plotexport.h"
+#include <qplotwidget/global.h>
 
 class QBrush;
 class QPainter;

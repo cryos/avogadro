@@ -26,8 +26,6 @@
 #include "spectratype.h"
 #include "ui_tab_nmr.h"
 
-#include <avogadro/plotwidget.h>
-
 namespace Avogadro {
 
   class NMRSpectra : public SpectraType

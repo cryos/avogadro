@@ -27,7 +27,7 @@
 
 #include "labelengine.h"
 
-#include <avogadro/elementtranslator.h>
+#include <qperiodictable/elementtranslator.h>
 #include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/painter.h>

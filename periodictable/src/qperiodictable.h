@@ -27,7 +27,7 @@
 #define QPERIODICTABLE_H
 
 #include <QtGui/QPlainTextEdit>
-#include "periodictableview.h"
+#include <qperiodictable/periodictableview.h>
 
 class PeriodicTableWatcher : public QObject
 {

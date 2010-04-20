@@ -29,8 +29,6 @@
 #include "spectratype.h"
 #include "ui_tab_uv.h"
 
-#include <avogadro/plotwidget.h>
-
 namespace Avogadro {
 
   class UVSpectra : public SpectraType

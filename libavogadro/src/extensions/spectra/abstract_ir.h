@@ -25,8 +25,6 @@
 #include "spectratype.h"
 #include "ui_tab_ir_raman.h"
 
-#include <avogadro/plotwidget.h>
-
 namespace Avogadro {
     
   enum ScalingType { LINEAR, RELATIVE };

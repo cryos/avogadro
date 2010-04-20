@@ -29,9 +29,9 @@
 #ifndef PLOTWIDGET_H
 #define PLOTWIDGET_H
 
-#include "plotaxis.h"
-#include "plotpoint.h"
-#include "plotobject.h"
+#include <qplotwidget/plotaxis.h>
+#include <qplotwidget/plotpoint.h>
+#include <qplotwidget/plotobject.h>
 
 #include <QtGui/QFrame>
 #include <QtCore/QList>

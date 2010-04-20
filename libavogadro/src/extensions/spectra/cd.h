@@ -29,8 +29,6 @@
 #include "spectratype.h"
 #include "ui_tab_cd.h"
 
-#include <avogadro/plotwidget.h>
-
 namespace Avogadro {
 
   class CDSpectra : public SpectraType

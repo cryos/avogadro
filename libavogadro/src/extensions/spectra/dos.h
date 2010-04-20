@@ -29,8 +29,6 @@
 #include "spectratype.h"
 #include "ui_tab_dos.h"
 
-#include <avogadro/plotwidget.h>
-
 namespace Avogadro {
 
   class DOSSpectra : public SpectraType

@@ -28,7 +28,7 @@
 #include "drawtool.h"
 #include "drawcommand.h"
 
-#include <avogadro/periodictableview.h>
+#include <qperiodictable/periodictableview.h>
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -37,7 +37,7 @@
 #include <avogadro/color.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
-#include <avogadro/elementtranslator.h>
+#include <qperiodictable/elementtranslator.h>
 
 #include <Eigen/Core>
 

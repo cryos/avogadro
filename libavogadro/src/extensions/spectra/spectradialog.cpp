@@ -49,7 +49,6 @@
 #include <QtCore/QDir>
 
 #include <avogadro/molecule.h>
-#include <avogadro/plotwidget.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/obiter.h>
