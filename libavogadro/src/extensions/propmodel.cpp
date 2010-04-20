@@ -441,7 +441,7 @@ namespace Avogadro {
           return trUtf8("Z  %1", "in Angstrom").arg("(\xC5)");
         }
       } else
-        return tr("Atom %1").arg(section + 1);
+        return tr("Atom") + QString(" %1").arg(section + 1);
     } else if (m_type == BondType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
@@ -460,7 +460,7 @@ namespace Avogadro {
         }
       } else
         // Bond ordering starts at 0
-        return tr("Bond %1").arg(section + 1);
+        return tr("Bond") + QString(" %1").arg(section + 1);
     } else if (m_type == AngleType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
@@ -476,7 +476,7 @@ namespace Avogadro {
           return tr("Angle %1", "Degree symbol").arg("(\xB0)");
         }
       } else
-        return tr("Angle %1").arg(section + 1);
+        return tr("Angle") + QString(" %1").arg(section + 1);
     } else if (m_type == TorsionType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
@@ -491,7 +491,7 @@ namespace Avogadro {
           return trUtf8("Torsion %1", "Degree symbol").arg("(\xB0)");
         }
       } else
-        return tr("Torsion %1").arg(section + 1);
+        return tr("Torsion") + QString(" %1").arg(section + 1);
     } /*else if (m_type == CartesianType) {
       if (orientation == Qt::Horizontal) {
         switch (section) {
@@ -511,7 +511,7 @@ namespace Avogadro {
           return tr("Energy");
         }
       } else
-        return tr("Conformer %1").arg(section + 1);
+        return tr("Conformer") + QString(" %1").arg(section + 1);
     }
 
     return QVariant();
