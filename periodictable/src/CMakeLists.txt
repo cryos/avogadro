@@ -18,7 +18,13 @@ include_directories(
 # I think this is necessary now in order to tell the linker where openbabel is
 link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
-file(GLOB periodictable_SRCS "*.cpp")
+file(GLOB periodictable_SRCS
+  elementdetail_p.cpp
+  elementitem_p.cpp
+  elementtranslator.cpp
+  periodictablescene_p.cpp
+  periodictableview.cpp
+)
 
 # Only headers with exported symbols should actually be installed
 set(periodictable_HDRS
