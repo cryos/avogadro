@@ -32,18 +32,14 @@
 #include <openbabel/mol.h>
 #include <openbabel/forcefield.h>
 
-#include <QGLWidget>
-#include <QObject>
-#include <QStringList>
-#include <QImage>
-#include <QAction>
-#include <QWidget>
-#include <QPushButton>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QSpinBox>
-#include <QUndoStack>
-#include <QMutex>
+#include <QtCore/QMutex>
+#include <QtCore/QThread>
+#include <QtGui/QAction>
+#include <QtGui/QPushButton>
+#include <QtGui/QComboBox>
+#include <QtGui/QCheckBox>
+#include <QtGui/QSpinBox>
+#include <QtGui/QUndoStack>
 
 namespace Avogadro {
 

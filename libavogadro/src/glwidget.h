@@ -29,14 +29,9 @@
 
 #include <avogadro/global.h>
 
-#ifdef ENABLE_GLSL
-  #include <GL/glew.h>
-#endif
 #include <QGLWidget>
 
 #include <avogadro/glhit.h>
-
-#include <QThread>
 
 #include <Eigen/Core>
 
@@ -60,6 +55,8 @@ namespace Avogadro {
   class Engine;
   class Painter;
   class PrimitiveList;
+
+  bool engineLessThan( const Engine* lhs, const Engine* rhs );
 
   /**
    * @class GLWidget glwidget.h <avogadro/glwidget.h>

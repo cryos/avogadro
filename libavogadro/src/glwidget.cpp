@@ -66,8 +66,13 @@
 #include <QMessageBox>
 
 #ifdef ENABLE_THREADED_GL
-#include <QWaitCondition>
-#include <QMutex>
+  #include <QWaitCondition>
+  #include <QMutex>
+  #include <QThread>
+#endif
+
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
 #endif
 
 #include <cstdio>

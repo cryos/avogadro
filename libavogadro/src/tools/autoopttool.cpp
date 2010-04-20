@@ -37,11 +37,10 @@
 #include <openbabel/obiter.h>
 #include <openbabel/mol.h>
 
-#include <QDebug>
-#include <QtPlugin>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QCheckBox>
+#include <QtCore/QDebug>
+#include <QtCore/QtPlugin>
+#include <QtGui/QLabel>
+#include <QtGui/QVBoxLayout>
 
 using namespace std;
 using namespace OpenBabel;
