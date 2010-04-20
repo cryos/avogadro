@@ -36,7 +36,20 @@ EXTRACT_CMD="tar xzf"
 EXTRACT_ONE_CMD="tar xzf"
 PKG_EXT="avo"
 MANIFEST_EXT="mf"
-DB_FILE="$HOME/.avogadro/plugins"
+
+# Paths
+GLOBAL_NATIVE_PLUGIN_PATH="$PREFIX/$LIB_DIR/$PLUGIN_DIR"
+GLOBAL_PYTHON_PLUGIN_PATH="$PREFIX/share/libavogadro"
+if test "$IS_MAC" = 1
+then
+    USER_NATIVE_PLUGIN_PATH="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins"
+    USER_PYTHON_PLUGIN_PATH="$HOME/Library/Application Support/Avogadro"
+    DB_FILE="$HOME/Library/Application Support/Avogadro/plugindb"
+else
+    USER_NATIVE_PLUGIN_PATH="$HOME/.$PLUGIN_DIR/plugins"
+    USER_PYTHON_PLUGIN_PATH="$HOME/.avogadro"
+    DB_FILE="$HOME/.avogadro/plugindb"
+fi
 
 # Helper functions
 
@@ -112,7 +125,12 @@ initDB()
 {
     if ! test -f "$DB_FILE"
     then
-        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
+        if ! test -d `dirname "$DB_FILE"`
+        then
+            mkdir -p `dirname "$DB_FILE"`
+        fi
+#        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
+        echo "## This file is maintained by `basename $0`. Please, don't edit it" > "$DB_FILE"
     fi    
 }
 
@@ -196,6 +214,10 @@ then
         category=$(readString "contrib")
     fi
 
+    echo -n "6. Type version number (unsigned integer) [1]:"
+    version=$(readString "1")
+
+    echo "Version: $version" >> $manifest
     echo "Files: $files" >> $manifest
     echo "Category: $category" >> $manifest
 
@@ -295,20 +317,69 @@ then
     exit 0	
 fi
 
+if test "$1" = "-list"
+then
+         ########## Show package list ##########
+    echo "Installed plugins:"
+    cat "$DB_FILE" | grep "\[" | awk '{print $1}' | sed -e 's/\[//' | sed -e 's/\]//'
+    exit 0
+fi
+
 if test "$1" = "-query"
 then
      ####### Show package metadata from registry #######
     N=`cat "$DB_FILE" | grep "\[$2\]" | awk '{print $NF}'`
-    echo $N
     if test "x$N" = "x"
     then
         echo "Package $2 is not installed"
         exit 0
     fi
 
-    cat "$DB_FILE" | grep -C $N "\[$2\]"
+    cat "$DB_FILE" | grep '##' | grep -C $N "\[$2\]" | grep -v "\[$2\]"
     exit 0
-fi    
+fi
+
+if test "$1" = "-remove"
+then
+            ########## Remove package ##########
+    N=`cat "$DB_FILE" | grep "\[$2\]" | awk '{print $NF}'`
+    if test "x$N" = "x"
+    then
+        echo "Package $2 is not installed"
+        exit 0
+    fi
+
+    echo "Uninstalling package $2..."
+    cat "$DB_FILE" | grep '##' | grep -C $N "\[$2\]"| grep -v "\[$2\]" > .temp
+
+    for file in `cat "$DB_FILE" | grep "$2" | grep -v "\[$2\]" |  sed -e "s/:$2//"`
+    do
+     	if ($(getBoolVar .temp Python))
+	    then
+            if test "$IS_MAC" = 1
+            then
+                dest="$HOME/Library/Application Support/Avogadro"
+            else
+                dest="$HOME/.avogadro"
+            fi
+        else
+            if test "$IS_MAC" = 1
+            then
+                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins"
+            else
+                dest="$HOME/.$PLUGIN_DIR/plugins"
+            fi
+        fi
+        #echo "Removing $file"
+        #rm "$file"
+    done
+    rm .temp
+    echo "Cleaning db..."
+    sed -n -e "/\[$2\]/,/^\$/d;p" "$DB_FILE" > "$DB_FILE~"
+    mv "$DB_FILE~" "$DB_FILE"
+    echo "Done!"
+    exit 0
+fi
 
 if test "$1" = "-pack"
 then
@@ -347,6 +418,12 @@ then
 			echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.$MANIFEST_EXT
 		fi
 	fi
+
+	# Add version = 1 if missing
+	if test x$(getVar $2 Version) = x
+	then
+		echo "Version: 1" >> .tmp/$package/$package.$MANIFEST_EXT
+    fi
 	
 	# Copy installable content
     cp -t .tmp/$package $files # Will fail if some file is missing
@@ -404,7 +481,7 @@ else
         
     files=$(getMultiVar $manifest Files)
     category=$(getVar $manifest Category)
-    reinstall=0
+    reinstall=0 # 1- reinstall, 2- upgrade to newer
 
     # Check for possible overwrites
     initDB
@@ -413,7 +490,7 @@ else
         if test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
         then
             # File already exists in some package, figure out in what
-            installed_package=`cat "$DB_FILE" | grep "$category/$file" | awk '{print $NF}'`
+            installed_package=`cat "$DB_FILE" | grep "$category/$file" | awk -F':' '{print $NF}'`
 
             # If package was previously installed, every file will be
             # overwritten. But we want to warn once
@@ -421,19 +498,37 @@ else
             then
                 if test $installed_package = $package
                 then
-                    echo "WARNING! Package $package is already installed."
-                    reinstall=1
+                    # Check version
+                    N=`cat "$DB_FILE" | grep "\[$installed_package\]" | awk '{print $NF}'`
+                    cat "$DB_FILE" | grep -C $N "\[$installed_package\]" \
+                        | grep -v "\[$2\]" > .mf
+                    if test $(getVar $manifest Version) -gt $(getVar .mf Version)
+                    then
+                        echo "Upgrading package $package..."
+                        $0 -remove $package >& /dev/null
+                        reinstall=2
+                    else
+                        echo "WARNING! Package $package is already installed."                    
+                        reinstall=1
+                    fi
+                    rm .mf
                 else
                     echo "WARNING! File $file is already installed in package $installed_package."
                 fi
+                echo $installed_package $package
 
                 # -f key forces installation
-                if test $force = 0
+                if test $force = 0 -a reinstall != 2
                 then
                     echo "Use -f to owerwrite it."
                     exit 6
                 else
                     echo "Overwriting it since -f is given."
+                    if test reinstall = 1
+                    then
+                        echo "Reinstalling package $package..."
+                        $0 -remove $package 
+                    fi
                 fi
             fi
         fi
@@ -457,15 +552,17 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            dest="$PREFIX/share/libavogadro/$category"
+            #dest="$PREFIX/share/libavogadro/$category"
+            dest="$GLOBAL_PYTHON_PLUGIN_PATH/$category"
         else
             echo " for user $USER"
-            if test "$IS_MAC" = 1
-            then
-                dest="$HOME/Library/Application Support/Avogadro/$category"
-            else
-                dest="$HOME/.avogadro/$category"
-            fi
+#            if test "$IS_MAC" = 1
+#            then
+#                dest="$HOME/Library/Application Support/Avogadro/$category"
+#            else
+#                dest="$HOME/.avogadro/$category"
+#            fi
+            dest="$USER_PYTHON_PLUGIN_PATH/$category"
         fi
     else
 		if test $force = 0
@@ -507,15 +604,17 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$category"
+            #dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$category"
+            dest="$GLOBAL_NATIVE_PLUGIN_PATH/$category"
         else
             echo " for user $USER"
-            if test "$IS_MAC" = 1
-            then
-                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$category"
-            else
-                dest="$HOME/.$PLUGIN_DIR/plugins/$category"
-            fi
+#            if test "$IS_MAC" = 1
+#            then
+#                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$category"
+#            else
+#                dest="$HOME/.$PLUGIN_DIR/plugins/$category"
+#            fi
+            dest="$USER_NATIVE_PLUGIN_PATH/$category"
         fi
     fi
 
@@ -535,7 +634,7 @@ else
         "SizeofVoidP:" | grep -v "Files:" > .temp
     for file in $files
     do
-        echo $category/$file $package >> .temp
+        echo $category/$file :$package >> .temp
     done
     cat .temp | grep -c "" >> "$DB_FILE"
     cat .temp >> "$DB_FILE"
