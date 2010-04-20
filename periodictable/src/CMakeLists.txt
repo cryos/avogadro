@@ -49,7 +49,6 @@ foreach(headerFile ${periodictable_HDRS} global.h)
   set(to   "${libavogadro_BINARY_DIR}/include/qperiodictable/${headerFile}")
   execute_process(
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
-  message("${from} ${to}")
 endforeach(headerFile ${periodictable_HDRS})
 
 add_library(periodictable SHARED
