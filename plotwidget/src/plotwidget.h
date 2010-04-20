@@ -29,9 +29,9 @@
 #ifndef PLOTWIDGET_H
 #define PLOTWIDGET_H
 
-#include <avogadro/plotaxis.h>
-#include <avogadro/plotpoint.h>
-#include <avogadro/plotobject.h>
+#include "plotaxis.h"
+#include "plotpoint.h"
+#include "plotobject.h"
 
 #include <QtGui/QFrame>
 #include <QtCore/QList>
