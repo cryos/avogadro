@@ -298,6 +298,7 @@ namespace Avogadro
     int drawText (int x, int y, const QString &string);
     int drawText (const QPoint& pos, const QString &string);
     int drawText (const Vector3d & pos, const QString &string);
+    int drawText (const Vector3d & pos, const QString &string, const QFont &font);
 
     /**
      * Placeholder to draw a box.

@@ -344,6 +344,8 @@ namespace Avogadro
      */
     int drawText(const Eigen::Vector3d & pos, const QString &string);
 
+    int drawText(const Eigen::Vector3d &pos, const QString &string, const QFont &font);
+
     /**
      * Placeholder to draw a box.
      * @param corner1 First corner of the box.

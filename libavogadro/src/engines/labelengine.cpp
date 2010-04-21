@@ -142,7 +142,8 @@ Bond *dummyBond;*/
       if (m_textRendering == 0)
         pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
       else
-        GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_atomFont);
+        //GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_atomFont);
+        pd->painter()->drawText(drawPos, str, m_atomFont);
     }
 
     return true;
@@ -263,7 +264,8 @@ Bond *dummyBond;*/
       if (m_textRendering == 0)
         pd->painter()->drawText(drawPos, str); //, m_bondFont, m_bondColor)
       else
-        GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_bondFont);
+        //GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_bondFont);
+        pd->painter()->drawText(drawPos, str, m_bondFont);
     }
 
     return true;

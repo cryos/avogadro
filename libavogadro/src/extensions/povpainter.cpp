@@ -359,6 +359,9 @@ namespace Avogadro
     return 0;
   }
 
+  int POVPainter::drawText(const Vector3d &center, const QString &str, const QFont &font)
+  {}
+
   void POVPainter::drawBox(const Eigen::Vector3d &,
                            const Eigen::Vector3d &)
   {

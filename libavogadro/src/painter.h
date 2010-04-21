@@ -31,6 +31,7 @@
 #include <avogadro/primitive.h>
 
 class QColor;
+class QFont;
 
 namespace Avogadro
 {
@@ -367,6 +368,21 @@ namespace Avogadro
      */
     virtual int drawText(const Eigen::Vector3d & pos,
                           const QString &string) = 0;
+
+    /**
+     * Draws text at a given scene position, inside the scene, using given font
+     * @param pos the scene coordinates of the top-left corner of the text to
+     * render.
+     * @param string The string to render. All character encodings are allowed
+     * but superposed characters are not supported yet. For accented letters,
+     * use a character giving the whole accented letter, not a separate
+     * character for the accent.
+     * @param font The font to use for rendering
+     * @sa begin(), drawText(const QPoint&, const QString &) const,
+     *     drawText(int, int, const QString &) const
+     */
+    virtual int drawText(const Eigen::Vector3d & pos,
+                          const QString &string, const QFont &font) = 0;
 
     /**
      * Placeholder to draw a box.

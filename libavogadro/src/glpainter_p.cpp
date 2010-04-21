@@ -1083,6 +1083,13 @@ namespace Avogadro
     return val;
   }
 
+  int GLPainter::drawText(const Eigen::Vector3d &pos, const QString &string, const QFont &font)
+  {
+    if(!d->isValid()) { return 0; }
+    d->widget->renderText(pos.x(), pos.y(), pos.z(), string, font);
+    return 0;
+  }
+
   void GLPainter::drawBox(const Eigen::Vector3d &,
                           const Eigen::Vector3d &)
   {
