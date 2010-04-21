@@ -125,6 +125,8 @@ set(libavogadropython_SRCS
   pythonextension_p.cpp
 )
 
+qt4_automoc(${libavogadrocore_SRCS})
+
 add_library(avogadrocore SHARED
   ${libavogadrocore_SRCS})
 set_source_files_properties(${libavogadrocore_SRCS}
