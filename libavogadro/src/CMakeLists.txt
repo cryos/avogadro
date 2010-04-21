@@ -21,27 +21,8 @@ include_directories(
 link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_BINARY_DIR}/lib)
 
 set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                       ${QT_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
+                       ${QT_QTCORE_LIBRARY}
                        )
-
-if(GLEW_FOUND)
-  include_directories(${GLEW_INCLUDE_DIR})
-  link_directories(${GLEW_LIBRARY_DIR})
-  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
-endif(GLEW_FOUND)
-
-
-# Library translations
-if(NOT WIN32)
-  if(Linguist_FOUND)
-    file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
-    QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
-  endif(Linguist_FOUND)
-else(NOT WIN32)
-  # don't attempt to create QM files on windows -- copy them from a linux build!
-  file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
-endif(NOT WIN32)
 
 # Only headers with exported symbols should actually be installed
 set(libavogadrocore_HDRS
@@ -156,6 +137,28 @@ set_target_properties(avogadrocore PROPERTIES
   LABELS avogadrocore)
 target_link_libraries(avogadrocore
   ${AVO_LINK_LIBRARIES})
+
+set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
+                       ${QT_LIBRARIES}
+                       ${OPENGL_LIBRARIES}
+                       )
+
+if(GLEW_FOUND)
+  include_directories(${GLEW_INCLUDE_DIR})
+  link_directories(${GLEW_LIBRARY_DIR})
+  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
+endif(GLEW_FOUND)
+
+# Library translations
+if(NOT WIN32)
+  if(Linguist_FOUND)
+    file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
+    QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
+  endif(Linguist_FOUND)
+else(NOT WIN32)
+  # don't attempt to create QM files on windows -- copy them from a linux build!
+  file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
+endif(NOT WIN32)
 
 set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
 file(GLOB libavogadro_SRCS ${libavogadrowidget_SRCS})
