@@ -1,5 +1,5 @@
 /**********************************************************************
-  main.cpp - Global library functions
+  global.cpp - Global library functions
 
   Copyright (C) 2007 by Donald Ephraim Curtis
   Copyright (C) 2009 Marcus D. Hanwell
