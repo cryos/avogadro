@@ -465,12 +465,37 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/builder"
         DESTINATION ${avogadro_FRAGMENTS})
 
-# Prefix to use in avopkg and QMake integration
+# Prefix to use in avopkg, pkg-config and QMake integration
 if(ENABLE_AVO_PACKAGE)
   set(USER_PREFIX "@prefix@")
 else(ENABLE_AVO_PACKAGE)
   set(USER_PREFIX ${CMAKE_INSTALL_PREFIX})
 endif(ENABLE_AVO_PACKAGE)
+
+# pkg-config
+if(NOT MSVC) # Or UNIX ?
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.pc.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/avogadro.pc" 
+	@ONLY
+  )
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroCore.pc.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroCore.pc" 
+	@ONLY
+  )
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroWidget.pc.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroWidget.pc" 
+	@ONLY
+  )
+  set(PC_FILES 
+    "${CMAKE_CURRENT_BINARY_DIR}/avogadro.pc"
+	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroCore.pc"
+	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroWidget.pc"
+  )
+  install(FILES ${PC_FILES} DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+endif(NOT MSVC)
   
 # avopkg
 if(UNIX)
