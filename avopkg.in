@@ -395,14 +395,19 @@ then
     # Iterate over them, removing :package label from line endings
     for file in `cat .temp | grep ":$2" |  sed -e "s/:$2//"`
     do
-     	if ($(getBoolVar .temp Python))
-	    then
-            dest="$USER_PYTHON_PLUGIN_PATH"
-        else
-            dest="$USER_NATIVE_PLUGIN_PATH"
+     	#if ($(getBoolVar .temp Python))
+	    #then
+        #    dest="$USER_PYTHON_PLUGIN_PATH"
+        #else
+        #    dest="$USER_NATIVE_PLUGIN_PATH"
+        #fi
+        echo "Removing $file"
+        rm "$file"
+        if test $? != 0
+        then
+            echo "Can't remove files!"
+            exit 8
         fi
-        echo "Removing $dest/$file"
-        rm "$dest/$file"
     done
     #rm .temp
     echo "Cleaning db..."
@@ -656,7 +661,7 @@ else
         "SizeofVoidP:" | grep -v "Files:" > .temp
     for file in $files
     do
-        echo $category/$file :$package >> .temp
+        echo "$dest/$file" :$package >> .temp
     done
     cat .temp | grep -c "" >> "$DB_FILE"
     cat .temp >> "$DB_FILE"
