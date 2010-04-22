@@ -546,36 +546,3 @@ msgstr " ,Launchpad Contributions:,Geoff Hutchison"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,"
-
-#, fuzzy
-#~ msgid "No"
-#~ msgstr "नियॉन"
-
-#, fuzzy
-#~ msgid "Activity"
-#~ msgstr "एक्टीनियम"
-
-#, fuzzy
-#~ msgctxt "Raman spectrum"
-#~ msgid "Raman"
-#~ msgstr "राडोन"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "क्लोरीन"
-
-#, fuzzy
-#~ msgid "Bohrs"
-#~ msgstr "बोरियम"
-
-#, fuzzy
-#~ msgid "(None)"
-#~ msgstr "नियॉन"
-
-#, fuzzy
-#~ msgid "fine"
-#~ msgstr "आयोडीन"
-
-#, fuzzy
-#~ msgid "Linear"
-#~ msgstr "सीसा लीड 3 - कैलिओप"
