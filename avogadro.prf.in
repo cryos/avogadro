@@ -1,11 +1,11 @@
-AVOGADRO_PREFIX = @CMAKE_INSTALL_PREFIX@
-OPENBABEL_PREFIX = @OPENBABEL2_INCLUDE_DIR@/../..
+AVOGADRO_PREFIX = "@USER_PREFIX@"
+OPENBABEL_PREFIX = "@OPENBABEL2_INCLUDE_DIR@/../.."
 INCLUDEPATH += . \
-               $$AVOGADRO_PREFIX/include \
-               @OPENBABEL2_INCLUDE_DIR@ \
-               @EIGEN2_INCLUDE_DIR@
-LIBS += -L$$AVOGADRO_PREFIX/lib -lavogadro \
-        -L$$OPENBABEL_PREFIX/lib -lopenbabel
+               "$$AVOGADRO_PREFIX/include" \
+               "@OPENBABEL2_INCLUDE_DIR@ \
+               "@EIGEN2_INCLUDE_DIR@"
+LIBS += -L"$$AVOGADRO_PREFIX/lib" -lAvogadroCore -lAvogadroWidget \
+        -L"$$OPENBABEL_PREFIX/lib" -lopenbabel
 
 unix {
     manifest_.target = $$eval(TARGET).mf

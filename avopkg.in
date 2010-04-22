@@ -19,7 +19,7 @@
 #  OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 # -----    Configured on Avogadro build     ----- #
-  PREFIX="@AVOPKG_PREFIX@"
+  PREFIX="@USER_PREFIX@"
   LIB_DIR="lib@LIB_SUFFIX@"
   SHARE_DIR="@SHARE_INSTALL_PREFIX@"
   PLUGIN_DIR="avogadro@Plugin_Version@"
