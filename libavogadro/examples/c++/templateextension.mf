@@ -1,0 +1,6 @@
+Name: Template of extension
+Author: Avogadro Team 
+Package: templateextension
+Files: libtemplateextension.so
+Category: contrib
+Version: 1
