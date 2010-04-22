@@ -11,6 +11,7 @@
 #include <avogadro/fragment.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
+#include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/engine.h>
 #include <avogadro/tool.h>

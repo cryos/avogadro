@@ -18,9 +18,9 @@ SET_TARGET_PROPERTIES(python-module PROPERTIES OUTPUT_NAME Avogadro)
 SET_TARGET_PROPERTIES(python-module PROPERTIES PREFIX "")
 if (WIN32)
   SET_TARGET_PROPERTIES(python-module PROPERTIES SUFFIX ".pyd")
-  TARGET_LINK_LIBRARIES(python-module avogadro)
+  TARGET_LINK_LIBRARIES(python-module avogadro ${PYTHON_LIBRARIES})
 else (WIN32)
-  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro)
+  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro ${PYTHON_LIBRARIES} periodictable)
 endif (WIN32)
 
 # Let's try to use this instead:

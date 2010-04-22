@@ -28,8 +28,8 @@
 // krazy:excludeall=includes
 #include "config.h"
 
-#include "glwidget.h"
 #include "camera.h"
+#include "glwidget.h"
 #include "glpainter_p.h"
 #include "glhit.h"
 

@@ -26,6 +26,14 @@
 #include "color.h"
 #include <cmath> // for fabs()
 
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+#include <GL/gl.h>
+
+#include <QGLWidget>
+
+
 namespace Avogadro {
 
   using std::fabs;
@@ -150,6 +158,11 @@ namespace Avogadro {
   QString Color::identifier() const
   {
     return "Generic Color";
+  }
+  
+  void Color::apply()
+  {
+    glColor4fv(m_channels);
   }
 }
 

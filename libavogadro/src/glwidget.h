@@ -29,8 +29,13 @@
 
 #include <avogadro/global.h>
 
-#include <QGLWidget>
 #include <Eigen/Core>
+
+#ifdef ENABLE_GLSL
+  #include <GL/glew.h>
+#endif
+
+#include <QtOpenGL/QGLWidget>
 
 class QUndoStack;
 class QMouseEvent;

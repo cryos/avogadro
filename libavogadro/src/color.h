@@ -32,12 +32,6 @@
 #include <avogadro/global.h>
 #include <avogadro/plugin.h>
 
-#ifdef ENABLE_GLSL
-  #include <GL/glew.h>
-#else
-  #include <QGLWidget>
-#endif
-
 #include <QColor> // for returning QColor
 
 #define AVOGADRO_COLOR(i, t, d)                 \
@@ -174,11 +168,7 @@ namespace Avogadro {
      * Sets this color to be the one used by OpenGL for rendering
      * when lighting is disabled.
      */
-    virtual void apply()
-    {
-      glColor4fv(m_channels);
-    }
-
+    virtual void apply();
     /**
      * Applies nice OpenGL materials using this color as the
      * diffuse color while using different shades for the ambient and

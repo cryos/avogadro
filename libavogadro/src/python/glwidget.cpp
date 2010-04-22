@@ -7,6 +7,7 @@
 #include <avogadro/residue.h>
 #include <avogadro/cube.h>
 #include <avogadro/molecule.h>
+#include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/painter.h>
 #include <avogadro/camera.h>

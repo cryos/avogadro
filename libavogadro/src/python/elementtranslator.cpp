@@ -1,7 +1,7 @@
 // Last update: timvdm 18 June 2009
 #include <boost/python.hpp>
 
-#include <avogadro/elementtranslator.h>
+#include <qperiodictable/elementtranslator.h>
 
 using namespace boost::python;
 using namespace Avogadro;

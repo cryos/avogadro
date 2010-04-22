@@ -4,6 +4,7 @@
 
 #include <avogadro/color.h>
 #include <avogadro/primitive.h>
+#include <GL/gl.h>
 
 using namespace boost::python;
 using namespace Avogadro;
