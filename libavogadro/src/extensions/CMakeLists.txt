@@ -73,6 +73,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   avogadro_plugin_nogl(pythonterminal
     "pythonterminal.cpp;highlighter.cpp"
     pythonterminalwidget.ui)
+  target_link_libraries(pythonterminal ${PYTHON_LIBRARIES})
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)

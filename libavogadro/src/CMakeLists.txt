@@ -206,8 +206,6 @@ set(libavogadrowidget_SRCS ${libavogadrowidget_SRCS} ${elementcolor_SRCS})
 #  endforeach(P_ITEM ${PYTHON_SRCS})
 #endif(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
 
-qt4_automoc(${libavogadro_SRCS})
-
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   include_directories(
@@ -221,6 +219,8 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
   set(libavogadrowidget_HDRS ${libavogadrowidget_HDRS} ${libavogadropython_HDRS})
   set(libavogadrowidget_SRCS ${libavogadrowidget_SRCS} ${libavogadropython_SRCS})
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+
+qt4_automoc(${libavogadrowidget_SRCS})
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
