@@ -44,7 +44,7 @@ function(avogadro_plugin plugin_name src_list)
   endif(NOT "${ARGV3}" STREQUAL "")
   add_library(${plugin_name} MODULE ${src_list} ${plugin_UIS_H}
               ${plugin_RC_SRCS})
-  target_link_libraries(${plugin_name} avogadro)
+  target_link_libraries(${plugin_name} AvogadroCore AvogadroWidget)
 
   if(UNIX)
     add_custom_target("${CMAKE_PROJECT_NAME}.mf"

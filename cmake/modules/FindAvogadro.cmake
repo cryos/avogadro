@@ -7,7 +7,8 @@ FIND_PATH(AVOGADRO_INCLUDE_DIR NAMES avogadro/glwidget.h
 
 FIND_LIBRARY(AVOGADRO_LIBRARY
 	NAMES
-		avogadro
+        AvogadroCore
+		AvogadroWidget
 	PATH
 		${CMAKE_INSTALL_PREFIX}/lib
 		/usr/lib
