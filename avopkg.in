@@ -119,6 +119,36 @@ printUsage()
 }
 
 # /**
+#  * Tests OS capabilities
+#  */
+testSystem()
+{
+    var="\[xxx\] 2\n...\n..."
+    echo $var > .temp1
+    cat -s .temp1 > .temp2
+    if ! test -f .temp2 -a $? = 0
+    then
+        echo "System doesn't have cat -s"
+    fi
+    cat .temp1 | grep -A 2 "\[xxx\]" | grep -v "\[xxx\]" > .temp3
+    if ! test -f .temp3 -a $? = 0
+    then
+        echo "System doesn't have proper grep"
+    fi
+    N=`cat .temp1 | grep "\[xxx\]" | awk '{print $NF}'`
+    if ! test $? = 0
+    then
+        echo "System doesn't have proper awk"
+    fi
+    cat .temp1 | grep "\[" | awk '{print $1}' | sed -e 's/\[//' | sed -e 's/\]//' > .temp4
+    if ! test -f .temp4 -a $? = 0
+    then
+        echo "System doesn't have proper sed"
+    fi
+    rm .temp1 .temp2 .temp3 .temp4
+}
+
+# /**
 #  * Copies list of pre-installed plugin files to user directory
 #  */
 initDB()
@@ -131,6 +161,7 @@ initDB()
         fi
 #        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
         echo "## This file is maintained by `basename \"$0\"`. Please, don't edit it" > "$DB_FILE"
+        testSystem
     fi    
 }
 
@@ -145,6 +176,7 @@ cleanupDB()
 
 # Main script
 
+initDB
 echo "Avopkg v1.0"
 
 # Running without args is senseless
@@ -490,7 +522,6 @@ else
     reinstall=0 # 1- reinstall, 2- upgrade to newer
 
     # Check for possible overwrites
-    initDB
     for file in $files
     do
         if test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
