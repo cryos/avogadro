@@ -22,6 +22,7 @@ file(GLOB periodictable_SRCS
   elementdetail_p.cpp
   elementitem_p.cpp
   elementtranslator.cpp
+  global.cpp
   periodictablescene_p.cpp
   periodictableview.cpp
 )
@@ -51,8 +52,20 @@ foreach(headerFile ${periodictable_HDRS} global.h)
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${periodictable_HDRS})
 
+# Library translations
+if(NOT WIN32)
+  if(Linguist_FOUND)
+    file(GLOB_RECURSE periodictable_PO "${Avogadro_SOURCE_DIR}/i18n/libqperiodictable/libqperiodictable*.po")
+    message(${periodictable_PO})
+    QT4_WRAP_PO(periodictable_QM ${periodictable_PO})
+  endif(Linguist_FOUND)
+else(NOT WIN32)
+  # don't attempt to create QM files on windows -- copy them from a linux build!
+  file(GLOB_RECURSE periodictable_QM "${Avogadro_SOURCE_DIR}/periodictable/src/libqperiodictable*.qm")
+endif(NOT WIN32)
+
 add_library(periodictable SHARED
-  ${periodictable_SRCS} )
+  ${periodictable_SRCS} ${periodictable_QM})
 set_target_properties(periodictable PROPERTIES
   LINK_INTERFACE_LIBRARIES ""
   VERSION ${Avogadro_VERSION_FULL}
@@ -71,6 +84,7 @@ target_link_libraries(qperiodictable periodictable ${OPENBABEL2_LIBRARIES}
 
 install(TARGETS periodictable DESTINATION ${LIB_INSTALL_DIR})
 install(TARGETS qperiodictable DESTINATION ${BIN_INSTALL_DIR})
+install(FILES ${periodictable_QM} DESTINATION ${I18N_INSTALL_DIR})
 install(FILES ${periodictable_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
 install(FILES ${periodictable_HDRS} global.h

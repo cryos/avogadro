@@ -273,7 +273,7 @@ endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
 set(libavogadro_SRCS ${libavogadrocore_SRCS} ${libavogadrowidget_SRCS})
 add_library(avogadro-full SHARED
-  ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
+  ${libavogadro_SRCS} ${pythontool_RC_SRCS})
 set_target_properties(avogadro-full PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES ""
