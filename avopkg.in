@@ -109,13 +109,13 @@ readString()
 printUsage()
 {
    echo "Usage:"
-   echo " "`basename $0`" filename                Install package"
-   echo " "`basename $0`" -f filename             Force installation"
-   echo " "`basename $0`" -pack manifest          Create new package"
-   echo " "`basename $0`" -wizard [package_name]  Interactively create new package manifest"
-   echo " "`basename $0`" -info filename          Show information about package in filename"
-   echo " "`basename $0`" -query [package_name]   Show information about installed package"
-   echo "Type 'man "`basename $0`"' for more details"
+   echo " "`basename "$0"`" filename                Install package"
+   echo " "`basename "$0"`" -f filename             Force installation"
+   echo " "`basename "$0"`" -pack manifest          Create new package"
+   echo " "`basename "$0"`" -wizard [package_name]  Interactively create new package manifest"
+   echo " "`basename "$0"`" -info filename          Show information about package in filename"
+   echo " "`basename "$0"`" -query [package_name]   Show information about installed package"
+   echo "Type 'man "`basename "$0"`"' for more details"
 }
 
 # /**
@@ -130,8 +130,17 @@ initDB()
             mkdir -p `dirname "$DB_FILE"`
         fi
 #        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
-        echo "## This file is maintained by `basename $0`. Please, don't edit it" > "$DB_FILE"
+        echo "## This file is maintained by `basename \"$0\"`. Please, don't edit it" > "$DB_FILE"
     fi    
+}
+
+# /**
+#  * Removes double empty lines
+#  */
+cleanupDB()
+{
+    cat -s "$DB_FILE" > "$DB_FILE~"
+    mv "$DB_FILE~" "$DB_FILE"
 }
 
 # Main script
@@ -235,7 +244,7 @@ then
     then
         echo
         # Recursive call
-        $0 -pack $manifest
+        "$0" -pack $manifest
         # On success ask for installation
         if test $?
         then
@@ -246,7 +255,7 @@ then
             then
                 echo
                 # Recursive call
-                $0 $package.$PKG_EXT
+                "$0" $package.$PKG_EXT
             else
                 echo "Done!"
             fi
@@ -332,51 +341,48 @@ then
     if test "x$N" = "x"
     then
         echo "Package $2 is not installed"
-        exit 0
+        exit 7
     fi
-
-    cat "$DB_FILE" | grep '##' | grep -C $N "\[$2\]" | grep -v "\[$2\]"
+    cat "$DB_FILE" | grep -A $N "\[$2\]" | grep -v "\[$2\]"
     exit 0
 fi
 
 if test "$1" = "-remove"
 then
-            ########## Remove package ##########
-    N=`cat "$DB_FILE" | grep "\[$2\]" | awk '{print $NF}'`
-    if test "x$N" = "x"
+            ########## Remove package ##########    
+    # Get manifest of package
+    "$0" -query $2 > .temp
+    if ! test $? = 0
     then
         echo "Package $2 is not installed"
-        exit 0
+        exit 7
     fi
 
     echo "Uninstalling package $2..."
-    cat "$DB_FILE" | grep '##' | grep -C $N "\[$2\]"| grep -v "\[$2\]" > .temp
-
-    for file in `cat "$DB_FILE" | grep "$2" | grep -v "\[$2\]" |  sed -e "s/:$2//"`
+        
+    # Iterate over them, removing :package label from line endings
+    for file in `cat .temp | grep ":$2" |  sed -e "s/:$2//"`
     do
      	if ($(getBoolVar .temp Python))
 	    then
-            if test "$IS_MAC" = 1
-            then
-                dest="$HOME/Library/Application Support/Avogadro"
-            else
-                dest="$HOME/.avogadro"
-            fi
+            dest="$USER_PYTHON_PLUGIN_PATH"
         else
-            if test "$IS_MAC" = 1
-            then
-                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins"
-            else
-                dest="$HOME/.$PLUGIN_DIR/plugins"
-            fi
+            dest="$USER_NATIVE_PLUGIN_PATH"
         fi
-        #echo "Removing $file"
-        #rm "$file"
+        echo "Removing $dest/$file"
+        rm "$dest/$file"
     done
-    rm .temp
+    #rm .temp
     echo "Cleaning db..."
+    
+    # Read file, delete record from [package] up to the emty line (^$),
+    # write to temporary file
     sed -n -e "/\[$2\]/,/^\$/d;p" "$DB_FILE" > "$DB_FILE~"
+    
+    # Replace old db with temporary file
     mv "$DB_FILE~" "$DB_FILE"
+    cleanupDB
+    
     echo "Done!"
     exit 0
 fi
@@ -505,7 +511,7 @@ else
                     if test $(getVar $manifest Version) -gt $(getVar .mf Version)
                     then
                         echo "Upgrading package $package..."
-                        $0 -remove $package >& /dev/null
+                        "$0" -remove $package >& /dev/null
                         reinstall=2
                     else
                         echo "WARNING! Package $package is already installed."                    
@@ -514,25 +520,24 @@ else
                     rm .mf
                 else
                     echo "WARNING! File $file is already installed in package $installed_package."
-                fi
-                echo $installed_package $package
+                fi # test $installed_package = $package
 
                 # -f key forces installation
-                if test $force = 0 -a reinstall != 2
+                if test $force = 0 -a $reinstall != 2
                 then
                     echo "Use -f to owerwrite it."
                     exit 6
                 else
                     echo "Overwriting it since -f is given."
-                    if test reinstall = 1
+                    if test $reinstall = 1
                     then
                         echo "Reinstalling package $package..."
-                        $0 -remove $package 
+                        "$0" -remove $package
                     fi
                 fi
-            fi
-        fi
-    done
+            fi # test $reinstall = 0
+        fi # test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
+    done # for file in $files
 	
     # Find out where to install package
     if ($(getBoolVar $manifest Python))
@@ -552,16 +557,9 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            #dest="$PREFIX/share/libavogadro/$category"
             dest="$GLOBAL_PYTHON_PLUGIN_PATH/$category"
         else
             echo " for user $USER"
-#            if test "$IS_MAC" = 1
-#            then
-#                dest="$HOME/Library/Application Support/Avogadro/$category"
-#            else
-#                dest="$HOME/.avogadro/$category"
-#            fi
             dest="$USER_PYTHON_PLUGIN_PATH/$category"
         fi
     else
@@ -604,16 +602,9 @@ else
         if test $USER = root
         then
             echo " for all users..."
-            #dest="$PREFIX/$LIB_DIR/$PLUGIN_DIR/$category"
             dest="$GLOBAL_NATIVE_PLUGIN_PATH/$category"
         else
             echo " for user $USER"
-#            if test "$IS_MAC" = 1
-#            then
-#                dest="$HOME/Library/Application Support/$PLUGIN_DIR/Plugins/$category"
-#            else
-#                dest="$HOME/.$PLUGIN_DIR/plugins/$category"
-#            fi
             dest="$USER_NATIVE_PLUGIN_PATH/$category"
         fi
     fi
@@ -638,6 +629,7 @@ else
     done
     cat .temp | grep -c "" >> "$DB_FILE"
     cat .temp >> "$DB_FILE"
+    cleanupDB
 
     # Clean up
     cd ../..
