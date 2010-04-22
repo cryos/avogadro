@@ -1,20 +1,21 @@
-# Translations for the QPeriodicTable library.
-# Copyright (C) 2006-2009 The Avogadro Project
-# This file is distributed under the same license as the Avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ukrainian translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 1.1.0\n"
+"Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-22 13:46+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-06-12 03:37+0000\n"
+"Last-Translator: svv <skrypnychuk@gmail.com>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
 msgid "Official Name"
@@ -33,12 +34,14 @@ msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
 msgid "Covalent Radius"
-msgstr ""
+msgstr "Кобальт"
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
 msgid "VdW Radius"
-msgstr ""
+msgstr "Радій"
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
 msgid "Pauling Electronegativity"
@@ -58,219 +61,219 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr ""
+msgstr "Водень"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "Гелій"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "Літій"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr ""
+msgstr "Берилій"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "Бор"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr ""
+msgstr "Вуглець"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr ""
+msgstr "Азот"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr ""
+msgstr "Кисень"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr ""
+msgstr "Фтор"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "Неон"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "Натрій"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "Магній"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "Алюміній"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "Кремній"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr ""
+msgstr "Фосфор"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr ""
+msgstr "Сірка"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr ""
+msgstr "Хлор"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "Аргон"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "Калій"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "Кальцій"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr ""
+msgstr "Скандій"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "Титан"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "Ванадій"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "Хром"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "Марганець"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "Залізо"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "Кобальт"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "Нікель"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "Мідь"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "Цинк"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "Галій"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "Германій"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "Миш'як"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "Селен"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "Бром"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "Криптон"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "Рубідій"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr ""
+msgstr "Стронцій"
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr ""
+msgstr "Ітрій"
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "Цирконій"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr ""
+msgstr "Ніобій"
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "Молібден"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr ""
+msgstr "Техніцій"
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr ""
+msgstr "Рутеній"
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "Родій"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "Паладій"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "Срібло"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "Кадмій"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "Індій"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "Олово"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "Стибій"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr ""
+msgstr "Телур"
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "Йод"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "Ксенон"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
@@ -278,227 +281,227 @@ msgstr ""
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "Барій"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr ""
+msgstr "Лантан"
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "Церій"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr ""
+msgstr "Празеодим"
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr ""
+msgstr "Неодим"
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr ""
+msgstr "Прометій"
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr ""
+msgstr "Самарій"
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr ""
+msgstr "Європій"
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr ""
+msgstr "Гадоліній"
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr ""
+msgstr "Тербій"
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr ""
+msgstr "Диспрозій"
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr ""
+msgstr "Гольмій"
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr ""
+msgstr "Ербій"
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr ""
+msgstr "Тулій"
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr ""
+msgstr "Ітербій"
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr ""
+msgstr "Лютецій"
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr ""
+msgstr "Гафній"
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr ""
+msgstr "Тантал"
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr ""
+msgstr "Вольфрам"
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr ""
+msgstr "Реній"
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr ""
+msgstr "Осмій"
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "Іридій"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "Платина"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "Золото"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "Ртуть"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr ""
+msgstr "Талій"
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "Свинець"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "Вісмут"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "Полоній"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr ""
+msgstr "Астат"
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "Радон"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr ""
+msgstr "Францій"
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "Радій"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "Актиній"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "Торій"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "Протактиній"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "Уран"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "Нептуній"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "Плутоній"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr ""
+msgstr "Америцій"
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "Кюрій"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr ""
+msgstr "Берклій"
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr ""
+msgstr "Каліфорній"
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr ""
+msgstr "Ейнштейній"
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr ""
+msgstr "Фермій"
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr ""
+msgstr "Менделєвій"
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr ""
+msgstr "Нобелій"
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr ""
+msgstr "Лоуренсій"
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr ""
+msgstr "Резерфордій"
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr ""
+msgstr "Дубній"
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr ""
+msgstr "Сіборгій"
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr ""
+msgstr "Борій"
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr ""
+msgstr "Гасій"
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr ""
+msgstr "Майтнерій"
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr ""
+msgstr "Дармштадтій"
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr ""
+msgstr "Рентгеній"
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
@@ -539,7 +542,161 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
+",Launchpad Contributions:,Vladimir Kurg,svv, ,Launchpad Contributions:,svv, ,"
+"Launchpad Contributions:,svv, ,Launchpad Contributions:,svv"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
+",,,skrypnychuk@gmail.com,,,skrypnychuk@gmail.com,,,skrypnychuk@gmail.com,,,"
+"skrypnychuk@gmail.com"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "відеофайли (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Cancel"
+#~ msgstr "Скасувати"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "&Insert"
+#~ msgstr "Вставити"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Неон"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Актиній"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Радон"
+
+#, fuzzy
+#~ msgid "Pause"
+#~ msgstr "Вставити"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Хлор"
+
+#~ msgid "OK"
+#~ msgstr "Гаразд"
+
+#~ msgid "Navigate"
+#~ msgstr "Навігація"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Вирізати атоми"
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Борій"
+
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Вирізати атоми"
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Стерти атоми"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Неон"
+
+#~ msgid "Add"
+#~ msgstr "Додати"
+
+#~ msgid "Save"
+#~ msgstr "Зберегти"
+
+#, fuzzy
+#~ msgid "PBE"
+#~ msgstr "PDB"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "Йод"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Свинець"
+
+#~ msgid "Caesium"
+#~ msgstr "Цезій"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Версія додатка: %2<br/><br/>Версія бібліотеки: %3<br/"
+#~ "><br/>За додатковою інформацією зверніться до <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Домашньої сторінки Avogadro</a>.<br/><br/>Програма "
+#~ "надається ЯК Є без ЖОДНОЇ ГАРАНТІЇ БУДЬ_ЯКОГО ВИДУ, ВКЛЮЧАЮЧИ ГАРАНТІЮ "
+#~ "ДИЗАЙНУ ЧИ ПРИДАТНОСТІ ДЛЯ ТИХ ЧИ ІНШИХ ЦІЛЕЙ.<br/>"
+
+#~ msgid "Clear Molecule"
+#~ msgstr "Стерти молекулу"
+
+#~ msgid "Open File"
+#~ msgstr "Відкрити файл"
+
+#~ msgid "Messages"
+#~ msgstr "Повідомлення"
+
+#~ msgid "Window"
+#~ msgstr "Вікно"
+
+#~ msgid "&Minimize"
+#~ msgstr "&Мінімізувати"
+
+#~ msgid "&Zoom"
+#~ msgstr "&Масштаб"
+
+#~ msgid "All files"
+#~ msgstr "Усі файли"
+
+#~ msgid "HyperChem"
+#~ msgstr "HyperChem"
+
+#~ msgid "MDL Mol"
+#~ msgstr "MDL Mol"
+
+#~ msgid "Sybyl Mol2"
+#~ msgstr "Sybyl Mol2"
+
+#~ msgid "PNG"
+#~ msgstr "PNG"
+
+#~ msgid "BMP"
+#~ msgstr "BMP"
+
+#~ msgid "JPEG"
+#~ msgstr "JPEG"
+
+#~ msgid "Full Screen"
+#~ msgstr "На весь екран"
+
+#~ msgid "untitled"
+#~ msgstr "без назви"
+
+#~ msgid "Remove"
+#~ msgstr "Видалити"
+
+#~ msgid "Objects"
+#~ msgstr "Об'єкти"

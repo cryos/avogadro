@@ -1,0 +1,2004 @@
+# Turkish translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-22 13:46+0400\n"
+"PO-Revision-Date: 2009-08-02 01:42+0000\n"
+"Last-Translator: Efe Çiftci <efe.ciftci@linux.org.tr>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+#, fuzzy
+msgid "Official Name"
+msgstr "Kimyasal Ad"
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+msgid "Atomic Number"
+msgstr ""
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Kobalt"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Radyum"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+#, fuzzy
+msgid "Pauling Electronegativity"
+msgstr "Elektron Yoğunluğu Hesaplanıyor"
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+msgid "Ionization Potential"
+msgstr ""
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+#, fuzzy
+msgid "Electron Affinity"
+msgstr "Elektron Yoğunluğu"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Hidrojen"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Helyum"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Lithyum"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Berilyum"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Bor"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Karbon"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Nitrojen"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Oksijen"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Flor"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Neon"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Sodyum"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Magnezyum"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Aliminyum"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Silikon"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Sülfür"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Klor"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Argon"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Potasyum"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Kalsiyum"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Skandiyum"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Titanyum"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Vanadyum"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Krom"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Manganez"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Demir"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Kobalt"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Nikel"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Bakır"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Çinko"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Galyum"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Germanyum"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Arsenik"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Selenyum"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Brom"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Kripton"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Rubidyum"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Stronsiyum"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "İtriyum"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Zirkonyum"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Niyobyum"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Molibden"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Teknetyum"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Rutenyum"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Rodyum"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Palladyum"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Gümüş"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Kadmiyum"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "İndiyum"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Kalay"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Antimon"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Tellür"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "İyot"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Ksenon"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "Sezyum"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Baryum"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Lantan"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Seryum"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Praseodim"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Neodim"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Prometyum"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Samaryum"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Evropyum"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Gadolinyum"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Terbiyum"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Disporsiyum"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Holmiyum"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Erbiyum"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Tülyum"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "İterbiyum"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Lutesyum"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Hafniyum"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Tantal"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Tungsten"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Renyum"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Osmiyum"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "İridyum"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Platin"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Altın"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Cıva"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Talyum"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Kurşun"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Bizmut"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Plonyum"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Astatin"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Radon"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Fransiyum"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Radyum"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Aktinyum"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Toryum"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Protaktinyum"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Uranyum"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Neptünyum"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Plutonyum"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Amerikyum"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Küriyum"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Berkelyum"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Kaliforniyum"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Aynştaynyum"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Fermiyum"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Mendelevyum"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Nobelyum"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Lavrensiyum"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Rutherdfordyum"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Dubniyum"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Seaborgiyum"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Bohriyum"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Hassiyum"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Meitneriyum"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Darmstadtiyum"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Röntgenyum"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ununbiyum"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ununtriyum"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ununkuadyum"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ununpentiyum"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ununheksiyum"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ununseptiyum"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ununoktiyum"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr ""
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Osman Tosun,Yahuda,aLsanCaK,hknrgl, ,Launchpad "
+"Contributions:,Osman Tosun,huseyinkozan, ,Launchpad Contributions:,Efe "
+"Çiftci,Osman Tosun,hayrettin çevik,huseyinkozan, ,Launchpad Contributions:,"
+"Efe Çiftci,Mustafa Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin "
+"çevik,huseyinkozan"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,rainman.neu@gmail.com,,,hknrgl@gmail.com,,,rainman.neu@gmail.com,"
+"huseyinkozan@gmail.com,,,efeciftci@gmail.com,rainman.neu@gmail.com,"
+"hayros@gmail.com,huseyinkozan@gmail.com,,,efe.ciftci@linux.org.tr,"
+"apshalasha@gmail.com,rainman.neu@gmail.com,,yigitates52@gmail.com,"
+"hayros@gmail.com,huseyinkozan@gmail.com"
+
+#~ msgid "Color by Index"
+#~ msgstr "İndekse Göre Renk"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "İndekse Göre Renk (kırmızı, turuncu, sarı, yeşil, mavi, mor)"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Kısmı Yüke Göre Renk"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr "Atomik Kısmı Yüke Göre Renk (mavi = pozitif, kırmızı = negatif)"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Özel Renk:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Özel Renk"
+
+#~ msgid "Set custom colors for objects"
+#~ msgstr "Nesneler için özel renkler belirle"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Uzaklığa göre Renk"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "İlk atomdan başlayarak uzaklığa göre renk."
+
+#~ msgid "Color by Element"
+#~ msgstr "Elemente Göre Renk"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Elemente Göre Renk (karbon = gri, oksijen = kırmızı, ...)."
+
+#~ msgid "Color by Residue"
+#~ msgstr "Kalıntıya Göre Renk"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Kalıntıya Göre Renk (amino asit tipi, kuzu hastalığına ait,...)"
+
+#, fuzzy
+#~ msgid "SMARTS Pattern:"
+#~ msgstr "Seçmek için SMARTS deseni"
+
+#~ msgid "Engines"
+#~ msgstr "Motorlar"
+
+#~ msgid "Axes"
+#~ msgstr "Eksenler"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Merkezdeki x, y, ve x eksenlerini kaplar"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Top ve Çubuk"
+
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr ""
+#~ "Primitifleri Toplar (Atomlar) ve Çubuklar (Bağlar) kullanarak kaplar"
+
+#~ msgid "Cartoon"
+#~ msgstr "Karikatür"
+
+#~ msgid "Renders protein secondary structure"
+#~ msgstr "Proteinin ikinci yapısını kaplar"
+
+#~ msgid "Dipole"
+#~ msgstr "Çift Kutuplu"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Moleküler çift Kutuplu aralığı kaplar"
+
+#~ msgid "Force"
+#~ msgstr "Kuvvet"
+
+#~ msgid "Renders force displacements on atoms"
+#~ msgstr "Atomlar üzerindeki kuvvet yerdeğişimlerini kaplar"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Hidrojen Bağları"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Hidrojen bağlarını kaplar"
+
+#~ msgid "Label"
+#~ msgstr "Etiket"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Atom ve bağ etiketlerini kaplar"
+
+#~ msgid "Overlay"
+#~ msgstr "Örtü"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Gradyanlar için renk ölçekleme kaplaması"
+
+#~ msgid "Polygon"
+#~ msgstr "Çokgen"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Atomları dört yüzlü, sekiz yüzlü ve diğer çokgenler olarak kaplar"
+
+#~ msgid "Ribbon"
+#~ msgstr "Şerit"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "Protein omurgasını şerit olarak kaplar"
+
+#~ msgid "Ring"
+#~ msgstr "Halka"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "Halkaları renklendirilmiş düzlemler olarak kaplar"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "Basit Telekafes"
+
+#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
+#~ msgstr ""
+#~ "Bağları tel (düz çizgi) olarak kaplar, büyük moleküller için uygundur"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van der Waals Küreleri"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Atomları Van der Waals Küreleri olarak kaplar"
+
+#~ msgid "Stick"
+#~ msgstr "Çubuk"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "Molekülleri çubuklar olarak kaplar"
+
+#~ msgctxt "Van der Waals isosurface with a cutoff of %1"
+#~ msgid "Van der Waals, isosurface = %L1"
+#~ msgstr "Van der Waals, eşyüzey = %L1"
+
+#~ msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+#~ msgid "%1, isosurface = %L2"
+#~ msgstr "%1, eşyüzey = %L2"
+
+#~ msgid "Surfaces"
+#~ msgstr "Yüzeyler"
+
+#~ msgid "Renders molecular isosurface meshes"
+#~ msgstr "moleküler eşyüzey ağı oluşturur"
+
+#~ msgid "Wireframe"
+#~ msgstr "Telekafes"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr ""
+#~ "Bağları tel (düz çizgi) olarak kaplar, büyük (biyo)moleküller için "
+#~ "uygundur"
+
+#~ msgid "Extensions"
+#~ msgstr "Genişletmeler"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Eğri Dosyası Aç"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Eğri Dosyaları (*.xtc *.xyz)"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Save Video File"
+#~ msgstr "Video Dosyası Kaydet"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "video dosyaları (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr ".avi uzantısı ekleniyor"
+
+#~ msgid "Animation..."
+#~ msgstr "Animasyon..."
+
+#~ msgid "E&xtensions"
+#~ msgstr "Genişletmeler"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "%1 dosyasının dosya biçimi okunamıyor."
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "%1 eğri dosyası okunamadı."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Geçerli bir .avi dosyası belirtilmeli."
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr "GL aracı videoyu kaydetmek için düzgün bir şekilde hazırlanmamış"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "Geçersiz video dosya adı. Klasör adı dahil tam yolu içermeli"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Geçersiz video dosya adı. Klasör adı dahil tam yolu .avi ile bitecek "
+#~ "şekilde içermeli"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "XYZ biçimine ayarlanamıyor"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "%1 eğri dosyasını okurken sorun"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "%1 eğri dosyasındaki atom sayısı şimdiki moleküldeki atom sayısıyla "
+#~ "uyuşmuyor."
+
+#~ msgid "Animation"
+#~ msgstr "Animasyon"
+
+#~ msgid "Animate trajectories, reactions, and vibrations."
+#~ msgstr "Yörüngeleri, reaksiyonları ve titreşimleri canlandırır."
+
+#, fuzzy
+#~ msgid "Cartesian Editor"
+#~ msgstr "Kartezyen Düzenleyici..."
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Kartezyen Düzenleyici..."
+
+#~ msgid "&Build"
+#~ msgstr "İnşa Et"
+
+#, fuzzy
+#~ msgid "Cartesian editor"
+#~ msgstr "Kartezyen Düzenleyici..."
+
+#, fuzzy
+#~ msgid "Cartesian coordinates editor"
+#~ msgstr "Kartezyen Düzenleyici..."
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Atom sayısı: %1"
+
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Döndürülebilir bağ sayısı: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Kısıtlama ekle"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr "Kısıtlama ekleyebilmek için molekülünüzde en az bir atom bulunmalı"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Bağ kısıtlaması ekleyebilmek için molekülünüzde en az iki atom bulunmalı"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Açı kısıtlaması ekleyebilmek için molekülünüzde en az üç atom bulunmalı"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Bükülme kısıtlaması ekleyebilmek için molekülünüzde en az dört atom "
+#~ "bulunmalı"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Eğri..."
+
+#~ msgid "&File"
+#~ msgstr "&Dosya"
+
+#~ msgid "Import"
+#~ msgstr "İçe Aktar"
+
+#~ msgid "Open chemical file format"
+#~ msgstr "Kimyasal dosya biçimi aç"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Kimyasal dosyalar (*.xyz)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Parametre dosyası aç"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Kimyasal dosyalar (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Eğri İçe Aktar"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Eğri dosyalarını içe aktar"
+
+#~ msgid "&Optimize Geometry"
+#~ msgstr "Geometriyi &Optimize Et"
+
+#~ msgctxt "Shortcut key for optimize geometry"
+#~ msgid "Ctrl+Alt+O"
+#~ msgstr "Ctrl+Alt+O"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Kuvvet Alanı Kur..."
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Enerjiyi Hesapla"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "Uyumlu Arama..."
+
+#~ msgid "Constraints..."
+#~ msgstr "Kısıtlamalar..."
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Seçilenleri İhmal Et"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Seçilen Atomları Düzelt"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Moleküler Mekanik"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Bu molekül için kuvvet alanı kurulamıyor."
+
+#~ msgid "Energy = %L1 %2"
+#~ msgstr "Enerji = %L1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Geometrik Optimizasyon"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Kuvvet Alanı Optimizasyonu"
+
+#~ msgid "Cancel"
+#~ msgstr "İptal"
+
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "Sistematik Döner Arama"
+
+#~ msgid "Random Rotor Search"
+#~ msgstr "Rasgele Döner Arama"
+
+#~ msgid "Weighted Rotor Search"
+#~ msgstr "Ağırlıklı Döner Arama"
+
+#~ msgid "ForceField"
+#~ msgstr "Kuvvet Alanı"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
+#~ msgstr ""
+#~ "Molekülleri optimize et ve moleküler kuvvet alanları kullanarak uygun "
+#~ "hale getir"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "H'den Methyl'e Çevir"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H'den Methyl'e"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H2Methyl"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Hidrojenleri metil grubuna dönüştür"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Hidrojenleri Ekle"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "pH için Hidrojenleri Ekle..."
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Hidrojenleri Kaldır"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "pH için Hidrojenleri Ekle"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Hidrojenler"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Hidrojenleri ekle veya kaldır"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "%1 dosyası okunamıyor."
+
+#~ msgid "Open Directory"
+#~ msgstr "Dizin Aç"
+
+#~ msgid "Fragment..."
+#~ msgstr "Parçala..."
+
+#~ msgid "SMILES..."
+#~ msgstr "SMILES..."
+
+#~ msgid "&Insert"
+#~ msgstr "&Ekle"
+
+#~ msgid "Insert SMILES"
+#~ msgstr "SMILES Ekle"
+
+#~ msgid "Insert SMILES fragment:"
+#~ msgstr "SMILES parçası ekle"
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Parça Ekle"
+
+#~ msgid "Insert molecular fragments for building larger molecules"
+#~ msgstr "Daha büyük moleküller inşa etmek için molekül parçaları ekle"
+
+#~ msgid "Peptide..."
+#~ msgstr "Peptit..."
+
+#~ msgid "Insert Peptide"
+#~ msgstr "Peptit Ekle"
+
+#~ msgid "Insert oligopeptide sequences"
+#~ msgstr "Zayıf peptit dizisi ekle"
+
+#~ msgid "Molecule Properties..."
+#~ msgstr "Molekük Özellikleri..."
+
+#~ msgid "&View"
+#~ msgstr "&Görünüm"
+
+#~ msgid "&Properties"
+#~ msgstr "&Özellikler"
+
+#~ msgid "Estimated Dipole Moment (D):"
+#~ msgstr "Tahmini Çift Kutuplu Zamanı (D):"
+
+#~ msgid "Molecular Properties"
+#~ msgstr "Molekül Özellikleri"
+
+#~ msgid "Display standard molecular properties."
+#~ msgstr "Standart molekül özelliklerini göster."
+
+#~ msgid "Fetch from PDB..."
+#~ msgstr "PDB'den Al..."
+
+#~ msgid "Fetch chemical structure..."
+#~ msgstr "Kimyasal yapı getiriliyor..."
+
+#~ msgid "Fetch from URL..."
+#~ msgstr "URL'den Al..."
+
+#~ msgid "PDB Entry"
+#~ msgstr "PDB Kaydı"
+
+#~ msgid "PDB entry to download."
+#~ msgstr "İndirmek için PDB kaydı."
+
+#~ msgid "Chemical structure to download."
+#~ msgstr "İndirme işlemi için kimyasal yapı"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "URL of molecule to download."
+#~ msgstr "İndirmek için molekül URL'i"
+
+#~ msgid "Network Download Failed"
+#~ msgstr "Ağdan İndirme Başarısız"
+
+#~ msgid "Network timeout or other error."
+#~ msgstr "Ağ zaman aşımı veya başka bir hata."
+
+#~ msgid "Specified molecule could not be found: %1"
+#~ msgstr "Belirtilen molekül bulunamadı : %1"
+
+#~ msgid "Specified molecule could not be loaded: %1"
+#~ msgstr "Belirtilen molekül yüklenemedi : %1"
+
+#~ msgid "Network Fetch"
+#~ msgstr "Ağdan Alım"
+
+#~ msgid "Fetch molecule files over the network."
+#~ msgstr "Ağ üstünden molekül dosyalarını al."
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "POV-Ray kaplama resmini kaydet"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Resim Dosyaları (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "Export"
+#~ msgstr "Dışa Aktar"
+
+#~ msgid "No filename supplied."
+#~ msgstr "Herhangi bir dosya adı belirtilmedi."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "HErhangi bir geçerli dosya adı belirtilmedi."
+
+#~ msgid "Does not compute."
+#~ msgstr "Hesaplanmaz."
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
+#~ msgstr ""
+#~ "Doğrudan POV-Ray kullanarak kaplamak ve POV-Ray dosyasını korumak "
+#~ "istemediniz. Bu, çıktının kaydedilmemesine sebep olacak. Bunu "
+#~ "istediğinizden emin misiniz ?"
+
+#~ msgid "Cannot Write to File."
+#~ msgstr "Dosyaya yazılamıyor."
+
+#~ msgid ""
+#~ "Cannot write to file %1. Do you have permissions to write to that "
+#~ "location?"
+#~ msgstr ""
+#~ "%1 dosyasına yazılamıyor. Dosyanın konumuna yazma izninizin olduğundan "
+#~ "emin misiniz ?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "POV-Ray başlatılamadı."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "POV-Ray başlatılamadı. Belki de çalıştırılabilir dosyanın yolu yanlıştır."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid ""
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
+#~ msgstr ""
+#~ "POV-Ray dosyalarını oluştur ve POV-Ray komut satırı programını kullanarak "
+#~ "kaplama yap."
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Atom Özellikleri..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Bağ Özellikleri..."
+
+#~ msgid "Angle Properties..."
+#~ msgstr "Açı Özellikleri..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Bükülme Özellikleri..."
+
+#~ msgid "Conformer Properties..."
+#~ msgstr "Uydurma Özellikleri..."
+
+#~ msgid "Atom Properties"
+#~ msgstr "Atom Özellikleri"
+
+#~ msgid "Bond Properties"
+#~ msgstr "Bağ Özellikleri"
+
+#~ msgid "Angle Properties"
+#~ msgstr "Açı Özellikleri"
+
+#~ msgid "Torsion Properties"
+#~ msgstr "Bükülme Özellikleri"
+
+#~ msgid "Conformer Properties"
+#~ msgstr "Uydurma Özellikleri"
+
+#~ msgid "Properties"
+#~ msgstr "Özellikler"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Neon"
+
+#~ msgid "Element"
+#~ msgstr "Element"
+
+#~ msgid "Type"
+#~ msgstr "Tip"
+
+#~ msgid "Valence"
+#~ msgstr "Değerlik"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Kısmi Yük"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "X %1"
+#~ msgstr "X %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Y %1"
+#~ msgstr "Y %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Z  %1"
+#~ msgstr "Z  %1"
+
+#~ msgid "Atom %1"
+#~ msgstr "Atom %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Atom Başlat"
+
+#~ msgid "End Atom"
+#~ msgstr "Atom Bitir"
+
+#~ msgid "Bond Order"
+#~ msgstr "Bağ SIrası"
+
+#~ msgid "Rotatable"
+#~ msgstr "Döndürülebilir"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Length %1"
+#~ msgstr "Uzunluk %1"
+
+#~ msgid "Bond %1"
+#~ msgstr "Bağ %1"
+
+#~ msgid "Vertex"
+#~ msgstr "Köşe"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Angle %1"
+#~ msgstr "Açı %1"
+
+#~ msgid "Angle %1"
+#~ msgstr "Açı %1"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Torsion %1"
+#~ msgstr "Bükülme %1"
+
+#~ msgid "Torsion %1"
+#~ msgstr "Bükülme %1"
+
+#~ msgid "Energy"
+#~ msgstr "Enerji"
+
+#~ msgid "Conformer %1"
+#~ msgstr "Uydurucu %1"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Python Terminali"
+
+#~ msgid "Interactive python scripting terminal"
+#~ msgstr "Etkileşimli Python Betik Terminali"
+
+#, fuzzy
+#~ msgid "Dalton Input File Generator Warning"
+#~ msgstr "Gaussian Girdi Destesi Üreteci Uyarısı"
+
+#, fuzzy
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Dalton input file preview pane?"
+#~ msgstr ""
+#~ "Önceki yazıyı değiştirmek istiyor musunuz, Gaussian girdi destesinin "
+#~ "önizleme bölmesinde yapılan değişikliklerin hepsi kaybedilecek ?"
+
+#, fuzzy
+#~ msgid "Save Dalton Input File"
+#~ msgstr "Molpro Girdi Destesini Kaydet"
+
+#~ msgid "Show Preview"
+#~ msgstr "Önizleme Göster"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Önizlemeyi Gizle"
+
+#~ msgid "QM Matches"
+#~ msgstr "QM Eşleşmeleri"
+
+#~ msgid "Input Generator..."
+#~ msgstr "Girdi Üreteci..."
+
+#~ msgctxt ""
+#~ "Selection to be used as an Effective Fragment Potential in calculations"
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP Seçimi..."
+
+#~ msgctxt "Selection to be used for Quantum Mechanical calculations"
+#~ msgid "QM Selection..."
+#~ msgstr "QM Seçimi..."
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "GAMESS EFP Bilgisi"
+
+#~ msgid "Delete"
+#~ msgstr "Sil"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Herhangi Bir Atom Seçilmedi"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Bir seçim yapmalısınız !"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "SMILES Dönüşümü Kullanılamaz"
+
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "SMILES Biçim Dönüşümü Mevcut Değil"
+
+#~ msgid "Group Name"
+#~ msgstr "Grup Adı"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "efp"
+#~ msgstr "efp"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "GAMESS kuantum kimya paketi için girdi dosyası oluştur"
+
+#~ msgid "Title"
+#~ msgstr "Başlık"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Gelişmiş Ayarlar Değişti"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Gelişmiş Ayarlar Değişti\n"
+#~ "Vazgeçilsin mi ?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Gelişmiş Ayarları Sıfırla"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Gelişmiş Ayarları Sıfırlamak istiyor musunuz ?\n"
+#~ "Bütün değişiklikler kaybedilecek!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Basit Ayarları Sıfırla"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Basit Ayarları Sıfırlamak istiyor musunuz ?\n"
+#~ "Bütün değişiklikler kaybedilecek!"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Giriş Destesini Dışa Aktar"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS Girdi Destesi (*.inp)"
+
+#~ msgid "Gaussian Input Deck Generator Warning"
+#~ msgstr "Gaussian Girdi Destesi Üreteci Uyarısı"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Gaussian input deck preview pane?"
+#~ msgstr ""
+#~ "Önceki yazıyı değiştirmek istiyor musunuz, Gaussian girdi destesinin "
+#~ "önizleme bölmesinde yapılan değişikliklerin hepsi kaybedilecek ?"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Gaussian Girdi Destesini Kaydet"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian Girdi Destesi (*.com)"
+
+#~ msgid "Gaussian Running."
+#~ msgstr "Gaussian Çalışıyor."
+
+#~ msgid ""
+#~ "Gaussian is already running. Wait until the previous calculation is "
+#~ "finished."
+#~ msgstr "Gaussian hala çalışıyor. Önceki hesaplamanın bitmesini bekleyin."
+
+#~ msgid "Gaussian Not Installed."
+#~ msgstr "Gaussian Kurulu Değil."
+
+#~ msgid "The G03 executable, cannot be found."
+#~ msgstr "G03 çalıştırılabilir dosyası bulunamıyor."
+
+#~ msgid "G03 failed to start."
+#~ msgstr "G03 başlatılamadı."
+
+#~ msgid "G03 did not start. Perhaps it is not installed correctly."
+#~ msgstr "G03 başlamadı. Muhtemelen düzgün bir şekilde kurulmamış."
+
+#~ msgid "Running Gaussian calculation..."
+#~ msgstr "Gaussian hesaplaması çalışıyor..."
+
+#~ msgid "G03 Crashed."
+#~ msgstr "G03 Çöktü."
+
+#~ msgid ""
+#~ "Gaussian did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr "Gaussian doğru çalışmadı. Muhtemelen düzgün bir şekilde kurulmamış."
+
+#, fuzzy
+#~ msgid "&Dalton..."
+#~ msgstr "Animasyon..."
+
+#~ msgid "Create input files for quantum chemistry packages"
+#~ msgstr "Kuantum kimya paketleri için girdi dosyaları yarat"
+
+#~ msgid "Q-Chem Input Deck Generator Warning"
+#~ msgstr "Q-Chem Girdi Destesi Üreteci Uyarısı"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
+#~ msgstr ""
+#~ "Q-Chem girdi destesi önizleme bölmesindeki değişiklikleri kaybederek, "
+#~ "önizleme yazısını güncellemek istiyor musunuz ?"
+
+#~ msgid "Save Molpro Input Deck"
+#~ msgstr "Molpro Girdi Destesini Kaydet"
+
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro Girdi Destesi (*.qcin)"
+
+#~ msgid "MOPAC Input Warning"
+#~ msgstr "MOPAC Girdi Uyarısı"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "MOPAC input deck preview pane?"
+#~ msgstr ""
+#~ "MOPAC girdi destesi önizleme bölmesindeki değişiklikleri kaybederek, "
+#~ "önizleme yazısını güncellemek istiyor musunuz ?"
+
+#~ msgid "MOPAC Running."
+#~ msgstr "MOPAC Çalışıyor."
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr "MOPAC hala çalışıyor. Önceki hesaplamanın bitmesini bekleyin."
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC Kurulu değil."
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "MOPAC çalıştırılabilir dosyası bulunamıyor."
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "MOPAC başlatılamadı."
+
+#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC başlamadı. Muhtemelen düzgün kurulmamış."
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "MOPAC hesaplaması çalışıyor..."
+
+#~ msgid "MOPAC Crashed."
+#~ msgstr "MOPAC Göçtü."
+
+#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC düzgün çalışmıyor. Muhtemelen düzgün kurulmamış."
+
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "MOPAC Girdi Destesini Kaydet"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC Girdi Destesi (*.mop)"
+
+#~ msgid "NWChem Input Deck Generator Warning"
+#~ msgstr "NWChem Girdi Destesi Üretici Uyarısı"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "NWChem input deck preview pane?"
+#~ msgstr ""
+#~ "Önceki yazıyı değiştirmek istiyor musunuz, NWChem girdi destesinin "
+#~ "önizleme bölmesinde yapılan değişikliklerin hepsi kaybedilecek ?"
+
+#~ msgid "Save NWChem Input Deck"
+#~ msgstr "NWChem Girdi Destesini Kaydet"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem Girdi Destesi (*.nw)"
+
+#~ msgid "Save QChem Input Deck"
+#~ msgstr "QChem Girdi Destesini Kaydet"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem Girdi Destesi (*.qcin)"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "Seçimi &Ters Çevir"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "SMARTS'ı Seç..."
+
+#~ msgid "Select by Element..."
+#~ msgstr "Element ile Seç..."
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Kalan ile Seç..."
+
+#~ msgid "Select Solvent"
+#~ msgstr "Çözücü Seç"
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "İsimlendirilmiş Seçim Ekle..."
+
+#~ msgid "&Select"
+#~ msgstr "&Seç"
+
+#~ msgid "SMARTS Selection"
+#~ msgstr "SMARTS Seçimi"
+
+#~ msgid "SMARTS pattern to select"
+#~ msgstr "Seçmek için SMARTS deseni"
+
+#~ msgid "Select by residue"
+#~ msgstr "Kalan ile Seç"
+
+#~ msgid "Residue name"
+#~ msgstr "Kalan İsmi"
+
+#~ msgid "There is no current selection."
+#~ msgstr "Herhangi bir seçim yok."
+
+#~ msgid "Add Named Selection"
+#~ msgstr "İsimlendirilmiş Seçim Ekle"
+
+#~ msgid "name"
+#~ msgstr "isim"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "İsim boş olamaz."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Bu isimde bir seçim var."
+
+#~ msgid "Selections"
+#~ msgstr "Seçimler"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Seçilmiş atomlar, bağlar, kalanlar..."
+
+#~ msgid "GLSL Shaders..."
+#~ msgstr "GLSL Gölgelendiricileri..."
+
+#~ msgid "Open a vertex shader source file"
+#~ msgstr "Köşe gölgelendirici (vertex shader) kaynak dosyası aç"
+
+#~ msgid "Open a shader parameters file"
+#~ msgstr "Gölgelendirici parametreleri dosyası aç"
+
+#, fuzzy
+#~ msgid "Intensity (arb. units)"
+#~ msgstr "Yoğunluk (km/mol)"
+
+#, fuzzy
+#~ msgid "Energy (eV)"
+#~ msgstr "Enerji"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Aktinyum"
+
+#, fuzzy
+#~ msgid "Intensity"
+#~ msgstr "Yoğunluk (km/mol)"
+
+#~ msgid "X Axis"
+#~ msgstr "X Ekseni"
+
+#~ msgid "Y Axis"
+#~ msgstr "Y Ekseni"
+
+#~ msgid "&Appearance"
+#~ msgstr "&Görünüm"
+
+#~ msgctxt "Infrared spectra option"
+#~ msgid "Infrared"
+#~ msgstr "Kızılötesi"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Radon"
+
+#~ msgid "No data"
+#~ msgstr "Veri yok"
+
+#~ msgid "Dark"
+#~ msgstr "Karanlık"
+
+#~ msgid "Light"
+#~ msgstr "Açık"
+
+#~ msgid "New Scheme"
+#~ msgstr "Yeni Şema"
+
+#~ msgid "Confirm Scheme Removal"
+#~ msgstr "Şema Kaldırılmasını Onayla"
+
+#~ msgid "Really remove current scheme?"
+#~ msgstr "Gerçekten geçerli şemayı kaldırmak istiyor musunuz?"
+
+#~ msgid "Change Scheme Name"
+#~ msgstr "Şema Adını Değiştir"
+
+#~ msgid "Enter new name for current scheme:"
+#~ msgstr "Geçerli şema için yeni bir ad giriniz:"
+
+#~ msgid "Comma Separated Values"
+#~ msgstr "Virgülle Ayrılmış Değerler"
+
+#~ msgid "All Files"
+#~ msgstr "Bütün Dosyalar"
+
+#~ msgid "Unknown extension: %1"
+#~ msgstr "Bilinmeyen eklenti: %1"
+
+#~ msgid "Data Format"
+#~ msgstr "Veri Biçimi"
+
+#~ msgctxt "noun, not verb"
+#~ msgid "Format:"
+#~ msgstr "Biçim:"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Taşınabilir Ağ Grafikleri"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows Bitmap"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Geçersiz Dosya Adı"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "Moleküler titreşimler"
+
+#, fuzzy
+#~ msgid "Pause"
+#~ msgstr "Yapıştır"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Klor"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "MO %L1"
+#~ msgstr "MO %L1"
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Yüzeyleri oluştur..."
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Hesaplamayı İptal Et"
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "VdW Cube Hesaplanıyor"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "Calculating MO %L1"
+#~ msgstr "MO %L1 Hesaplanıyor"
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "Molekül yörüngesi ve diğer yüzeyleri hesapla"
+
+#~ msgid "OK"
+#~ msgstr "Tamam"
+
+#, fuzzy
+#~ msgid "Num Constraints: %1"
+#~ msgstr "Kısıtlamalar..."
+
+#~ msgid "Draw Bond"
+#~ msgstr "Bağ Çiz"
+
+#~ msgid "Draw"
+#~ msgstr "Çiz"
+
+#~ msgid "Navigate"
+#~ msgstr "Gezinme"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "Eksenler"
+
+#, fuzzy
+#~ msgid "Cartesian Axes"
+#~ msgstr "Kartezyen Özellikleri"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Özel Renk"
+
+#, fuzzy
+#~ msgid "Axis 1:"
+#~ msgstr "X Ekseni"
+
+#, fuzzy
+#~ msgid "Axis 2:"
+#~ msgstr "X Ekseni"
+
+#, fuzzy
+#~ msgid "Axis 3:"
+#~ msgstr "X Ekseni"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "Özel Renk"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "Etiket"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "Etiket"
+
+#~ msgid "None"
+#~ msgstr "Hiçbiri"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "Özel Renk"
+
+#, fuzzy
+#~ msgid "Change Font"
+#~ msgstr "H'den Methyl'e Çevir"
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "Etiket"
+
+#~ msgid "Load File..."
+#~ msgstr "Dosya yükle..."
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Bohriyum"
+
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#, fuzzy
+#~ msgid "GAMESS Input #2"
+#~ msgstr "GAMESS Girdi Destesi (*.inp)"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Atomları kes"
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Atomları temizle"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Hiçbiri"
+
+#, fuzzy
+#~ msgid "Calculate:"
+#~ msgstr "Enerjiyi Hesapla"
+
+#, fuzzy
+#~ msgid "Direct"
+#~ msgstr "Dizin Aç"
+
+#, fuzzy
+#~ msgid "PBE"
+#~ msgstr "PDB"
+
+#, fuzzy
+#~ msgid "Grid Specification"
+#~ msgstr "Geometrik Optimizasyon"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "Biçim:"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "İyot"
+
+#, fuzzy
+#~ msgid "Property:"
+#~ msgstr "Özellikler"
+
+#, fuzzy
+#~ msgid "Excitation Energy"
+#~ msgstr "Enerjiyi Hesapla"
+
+#, fuzzy
+#~ msgid "Export Data"
+#~ msgstr "Dışa Aktar"
+
+#, fuzzy
+#~ msgid "Energy units:"
+#~ msgstr "Enerji"
+
+#, fuzzy
+#~ msgid "Fermi Energy: "
+#~ msgstr "Enerji"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "Etiket"
+
+#, fuzzy
+#~ msgid "States / Atom"
+#~ msgstr "Atom Başlat"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Doğrusal Değişim"
+
+#~ msgid "Molecular Vibrations"
+#~ msgstr "Moleküler titreşimler"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "&Dosya"
+
+#, fuzzy
+#~ msgid "ν (cm⁻¹)"
+#~ msgstr "Frekans (cm⁻¹)"
+
+#, fuzzy
+#~ msgid "I (km/mol)"
+#~ msgstr "Yoğunluk (km/mol)"
+
+#~ msgid "higher frequency vibrations will show faster movement"
+#~ msgstr "yüksek frekanslı titreşimler hızlı hareketi gösterir"
+
+#~ msgid "Display force &vectors"
+#~ msgstr "Kuvvet ve vektörleri göster"
+
+#, fuzzy
+#~ msgid "Change Color"
+#~ msgstr "H'den Methyl'e Çevir"
+
+#~ msgid "Z Matrix Editor"
+#~ msgstr "Z Matris Editörü"
+
+#~ msgid "Import Selected Atoms"
+#~ msgstr "Seçilen Atomları Yükle"
+
+#~ msgid "Remove Atom"
+#~ msgstr "Atomu Kaldır"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Ligand Dosyası Aç"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Avogadro dosyaları (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Mol Dosyası Aç"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Herhangi Bir Dosya (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Film Dosyası Kaydet"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "film dosyası (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Eğri Dosyası Kaydet"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "eğri dosyası (*.xyz)"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph.."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "%1 mol dosyası okunamadı."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "İki molekülün atom sayıları farklı %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "GL aracı ekran görüntüsünü kaydetmek için düzgün bir şekilde "
+#~ "hazırlanmamış."
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Dosya kadedilemiyor : %1"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "GL aracı filmi kaydetmek için doğru bir şekilde hazırlanmamış"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Film dosya adı geçersiz. Dosya adı tam klasör yolunu içermeli."
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Film dosya adı geçersiz. Dosya adı tam klasör yolunu ve dosya adını .avi "
+#~ "ile bitecek şekilde içermeli"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Dosyaya yazılacaktı : %1"
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Dosyaya yazıldı : %1"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Animasyonlar için doğrusal ekleme oluştur"
+
+#~ msgid "Atom Index %1"
+#~ msgstr "Atom Indeksi %1"
+
+#~ msgid "Clear Molecule"
+#~ msgstr "Molekülü temizle"
+
+#~ msgid "Open File"
+#~ msgstr "Dosya aç"
+
+#~ msgid "Messages"
+#~ msgstr "Mesajlar"
+
+#~ msgid "Window"
+#~ msgstr "Pencere"
+
+#~ msgid "&Minimize"
+#~ msgstr "&Simge Durumuna Küçült"
+
+#~ msgid "&Zoom"
+#~ msgstr "&Yakınlaş"
+
+#~ msgid "Bring All to Front"
+#~ msgstr "Hepsini Öne Getir"
+
+#~ msgid "All files"
+#~ msgstr "Tüm Dosyalar"
+
+#~ msgid "MDL Mol"
+#~ msgstr "MDL Mol"
+
+#~ msgid "Sybyl Mol2"
+#~ msgstr "Sybyl Mol2"
+
+#~ msgid "Loading %1..."
+#~ msgstr "Yükleniyor %1..."
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Dosya Okunamıyor %1:\n"
+#~ "%2."
+
+#~ msgid "untitled"
+#~ msgstr "Adsız"
+
+#~ msgid "Caesium"
+#~ msgstr "Sezyum"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Proteinin ikinci yapısını kaplar"
+
+#~ msgid "Orbitals"
+#~ msgstr "Yörüngeler"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Molekül yörüngelerini kaplar"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Hesaplanmış moleküler yüzeyler olarak kaplar"
+
+#~ msgid "Surface"
+#~ msgstr "Yüzey"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Eğrileri, reaksiyonları ve titreşimleri canlandır."
+
+#~ msgid "Name"
+#~ msgstr "İsim"
+
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP Seçimi..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "QM Seçimi..."
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Q-Chem Girdisi..."
+
+#~ msgid "MOLPRO Input..."
+#~ msgstr "MOLPRO Girdisi..."
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Gaussian Girdisi..."
+
+#~ msgid "Gaussian Input Deck"
+#~ msgstr "Gaussian Girdi Destesi"
+
+#~ msgid "Create input files for quantum chemistry packages like Gaussian"
+#~ msgstr "Gaussian benzeri kuantum kimya paketi için girdi oluştur."
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "MOPAC Girdisi..."
+
+#~ msgid "&NWChem Input..."
+#~ msgstr "&NWChem Girdisi..."
+
+#~ msgid "VdW Cube"
+#~ msgstr "VdW Kübü"
+
+#~ msgid "ESP"
+#~ msgstr "ESP"

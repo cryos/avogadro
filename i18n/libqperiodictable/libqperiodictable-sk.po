@@ -1,0 +1,3227 @@
+# Slovak translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# Ivan Masár <helix84@centrum.sk>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-22 13:46+0400\n"
+"PO-Revision-Date: 2009-06-05 22:54+0000\n"
+"Last-Translator: helix84 <Unknown>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+msgid "Official Name"
+msgstr ""
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+#, fuzzy
+msgid "Atomic Number"
+msgstr "Atómové číslo"
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Kobalt"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Radius Väzby:"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+#, fuzzy
+msgid "Pauling Electronegativity"
+msgstr "Prebieha výpočet elektrónovej hustoty"
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+msgid "Ionization Potential"
+msgstr ""
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+#, fuzzy
+msgid "Electron Affinity"
+msgstr "Elektrónová hustota"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Vodík"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Hélium"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Lítium"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Berýlium"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Bór"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Uhlík"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Dusík"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Kyslík"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Fluór"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Neón"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Sodík"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Horčík"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Hliník"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Kremík"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Síra"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Chlór"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Argón"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Draslík"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Vápnik"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Skandium"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Titánium"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Vanád"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Chróm"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Mangán"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Železo"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Kobalt"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Nikel"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Meď"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Zinok"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Gálium"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Germánium"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Arzén"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Selén"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Bróm"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Kryptón"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Rubídium"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Stroncium"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Ytrium"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Zirkón"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Niób"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Molybdén"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Technécium"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Ruténium"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Ródium"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Paládium"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Striebro"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Kadmium"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Indium"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Cín"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Antimón"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Telúr"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Jód"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Xenón"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr ""
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Bárium"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Lantán"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Cér"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Prazeodým"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Neodým"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Prométium"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Samárium"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Európium"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Gadolínium"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Terbium"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Dysprózium"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Holmium"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Erbium"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Túlium"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Yterbium"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Lutécium"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Hafnium"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Tantal"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Volfrám"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Rénium"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Osmium"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Irídium"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Platina"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Zlato"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Ortuť"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Tálium"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Olovo"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Bizmut"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Polónium"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Astát"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Radón"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Francium"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Rádium"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Aktínium"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Tórium"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Protaktínium"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Urán"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Neptúnium"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Plutónium"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Amerícium"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Curium"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Berkélium"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Kalifornium"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Einsteinium"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Fermium"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Mendelevium"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Nobelium"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Lawrencium"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Rutherfordium"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Dubnium"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Seaborgium"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Bohrium"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Hassium"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Meitnerium"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Darmstadtium"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Roentgenium"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ununbium"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ununtrium"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ununquadium"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ununpentium"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ununhexium"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ununseptium"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ununoctium"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Neznámy"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Periodická Tabuľka"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro Team,"
+"helix84,milboy, ,Launchpad Contributions:,Avogadro Team,helix84,milboy, ,"
+"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,helix84,milboy"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-devel@lists."
+"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,"
+
+#~ msgid "Color by Index"
+#~ msgstr "Farba podľa indexu"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "Farba podľa indexu (červená, oranžová, zelená, modrá, fialová)"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Farba podľa čiastkového náboja"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr ""
+#~ "Farba podľa čiastkového atomového náboja (modrá = kladný, červená = "
+#~ "záporný)"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Vlastná farba:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Vlastná farba"
+
+#~ msgid "Set custom colors for objects"
+#~ msgstr "Nastaviť vlastné farby objektov"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Farba podľa vzdialenosti"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Farba podľa vzdialenosti od prvého atómu."
+
+#~ msgid "Color by Element"
+#~ msgstr "Farba podľa prvku"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Farba podľa prvku (uhlík = šedá, kyslík = červená, ...)."
+
+#~ msgid "Color by Residue"
+#~ msgstr "Farba podľa zvyšku"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Farba podľa zvyšku (typ aminokyselín, hydrofobicita, ..."
+
+#~ msgid "Axes"
+#~ msgstr "Osy"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Vykresliť osi x,y, a z na začiatku sústavy"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Guľa a tyčinka"
+
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr "Vykreslí jednoducho pomocou guľôčok (atómy) a tyčiniek (väzby)"
+
+#~ msgid "Cartoon"
+#~ msgstr "Náčrtok"
+
+#~ msgid "Dipole"
+#~ msgstr "Dipól"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Vykreslí molekulárne dipólne momenty"
+
+#~ msgid "Force"
+#~ msgstr "Sila"
+
+#~ msgid "Renders force displacements on atoms"
+#~ msgstr "Vykreslí silu posunu na atómy"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Vodíkové väzby"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Vykresliť vodíkové väzby"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Color"
+#~ msgstr "Vybrané Farby"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Font"
+#~ msgstr "Štítok Atómu:"
+
+#, fuzzy
+#~ msgid "Select Bond Labels Color"
+#~ msgstr "Vybrané Farby"
+
+#~ msgid "Label"
+#~ msgstr "Označenie"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Vykreslí atómy a väzby"
+
+#~ msgid "Overlay"
+#~ msgstr "Vrstva"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Vykreslí farebnú stupnicu prechodov"
+
+#~ msgid "Polygon"
+#~ msgstr "Mnohouholník"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Vykresľuje atómy ako štvorsteny, osemsteny a ďalšie mnohouholníky"
+
+#~ msgid "Ring"
+#~ msgstr "Kruh"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "Vykreslí kruhy s farebnými rovinami"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "Jednoduchý drôtený model"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Van der Waalsove gule"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Vykreslí atómy ako Van der Waalsove gule"
+
+#~ msgid "Stick"
+#~ msgstr "Tyčinka"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "Vykreslí molekuly ako tyčinky"
+
+#~ msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+#~ msgid "%1, isosurface = %L2"
+#~ msgstr "%1, isosurface = %L2"
+
+#~ msgid "Surfaces"
+#~ msgstr "Povrchy"
+
+#~ msgid "Wireframe"
+#~ msgstr "Drôtený model"
+
+#~ msgid "Extensions"
+#~ msgstr "Rozšírenia"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Otvoriť súbor trajektórie"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Súbory trajektórie (*.xtc *.xyz)"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Save Video File"
+#~ msgstr "Uložiť video súbor"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "video súbory (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Pridávanie prípony .avi"
+
+#~ msgid "Animation..."
+#~ msgstr "Animácia..."
+
+#~ msgid "E&xtensions"
+#~ msgstr "R&ozšírenia"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Nie je možné prečítať formát súboru %1."
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Čítanie súboru trajektórie %1 zlyhalo."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Musíte zadať platný názov .avi súboru"
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr ""
+#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
+#~ "možné uložiť video"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "Neplatný názov video súboru. Musí obsahovať úplnú cestu"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov končiaci "
+#~ "na .avi"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "nedá sa nastaviť formát do XYZ"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "Súbor trajektorie %1 nesúhlasí s počtom atómov v aktuálnej molekule."
+
+#~ msgid "Animation"
+#~ msgstr "Animácia"
+
+#, fuzzy
+#~ msgid "Cartesian Editor"
+#~ msgstr "Karteziánsky editor..."
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Karteziánsky editor..."
+
+#~ msgid "&Build"
+#~ msgstr "&Zostaviť"
+
+#, fuzzy
+#~ msgid "Cartesian editor"
+#~ msgstr "Karteziánsky editor..."
+
+#, fuzzy
+#~ msgid "Cartesian coordinates editor"
+#~ msgstr "Kartézské súradnice"
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Počet atómov: %1"
+
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Počet rotačných väzieb: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Pridať obmedzenie"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať "
+#~ "obmedzenie"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať "
+#~ "obmedzenie väzby"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať "
+#~ "obmedzenie uhla"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať "
+#~ "obmedzenie uhla krútenia"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Trajektória..."
+
+#~ msgid "&File"
+#~ msgstr "&Súbor"
+
+#~ msgid "Import"
+#~ msgstr "Import"
+
+#~ msgid "Open chemical file format"
+#~ msgstr "Otvoriť formát chemického súboru"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Chemické súbory (*.xyz)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Otvorte súbor parameter"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Chemické súbory (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Import trajektórie"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Import súborov trajektórie"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Nastaviť silové pole..."
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Vypočítať energiu"
+
+#~ msgid "Constraints..."
+#~ msgstr "Obmedzenia..."
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Ignorovať výber"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Fixovať vybrané atómy"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Mechanika molekúl"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Nedá sa nastaviť silové pole pre túto molekulu."
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Geometrická optimalizácia"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Optimalizácia silového poľa"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušiť"
+
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "Systematické vyhľadávanie rotora"
+
+#~ msgid "ForceField"
+#~ msgstr "SilovéPole"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
+#~ msgstr ""
+#~ "Optimalizácia a generovanie prispôsobenia molekúl pomocou molekulárnej "
+#~ "mechaniky silových polí"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Zmeniť H na metyl"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H na metyl"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H na metyl"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Transformácia vodíkov na metylové skupiny"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Pridať vodíky"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Pridať vodíky pre pH..."
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Odstrániť vodíky"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Pridať vodíky pre pH"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Vodíky"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Pridať alebo odstrániť vodíky"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Nie je možné prečítať súbor %1."
+
+#~ msgid "Open Directory"
+#~ msgstr "Otvoriť adresár"
+
+#~ msgid "Fragment..."
+#~ msgstr "Zlomok..."
+
+#~ msgid "SMILES..."
+#~ msgstr "SMILES..."
+
+#~ msgid "&Insert"
+#~ msgstr "&Vložiť"
+
+#~ msgid "Insert SMILES"
+#~ msgstr "Vložiť SMILES"
+
+#~ msgid "Insert SMILES fragment:"
+#~ msgstr "Vložiť zlomky SMILES..."
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Vložiť fragment"
+
+#~ msgid "Insert molecular fragments for building larger molecules"
+#~ msgstr "Vložiť fragmenty molekúl na stavbu väčších molekúl"
+
+#~ msgid "Peptide..."
+#~ msgstr "Peptid..."
+
+#~ msgid "Insert Peptide"
+#~ msgstr "Vložiť peptid"
+
+#~ msgid "Molecule Properties..."
+#~ msgstr "Vlastnosti molekuly..."
+
+#~ msgid "&View"
+#~ msgstr "&Zobrazenie"
+
+#~ msgid "&Properties"
+#~ msgstr "&Vlastnosti"
+
+#~ msgid "Molecular Properties"
+#~ msgstr "Vlastnosti molekuly"
+
+#~ msgid "Display standard molecular properties."
+#~ msgstr "Zobraziť štandardné vlastnosti molekuly."
+
+#~ msgid "PDB Entry"
+#~ msgstr "Záznam PDB"
+
+#~ msgid "PDB entry to download."
+#~ msgstr "Záznam PDB na stiahnutie."
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "URL of molecule to download."
+#~ msgstr "URL molekuly na stiahnutie."
+
+#~ msgid "Network Download Failed"
+#~ msgstr "Stiahnutie zo siete zlyhalo"
+
+#~ msgid "Network timeout or other error."
+#~ msgstr "Uplynul časový limit siete alebo iná chyba."
+
+#~ msgid "Fetch molecule files over the network."
+#~ msgstr "Získať súbory molekúl prostredníctvom siete."
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Súbory obrázkov (*.png *.pbm)"
+
+#~ msgid "Export"
+#~ msgstr "Export"
+
+#~ msgid "No filename supplied."
+#~ msgstr "Nezadaný názov súboru."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "Nezadaný platný názov súboru."
+
+#~ msgid "Cannot Write to File."
+#~ msgstr "Nedá sa zapísať do súboru."
+
+#~ msgid ""
+#~ "Cannot write to file %1. Do you have permissions to write to that "
+#~ "location?"
+#~ msgstr ""
+#~ "Nedá sa zapisovať do súboru %1. Máte oprávnenie zapisovať do tohto miesta?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "Zlyhalo spustenie POV-Ray."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "Zlyhalo spustenie POV-Ray. Cesta k spustiteľnému súboru nie je správne "
+#~ "nastavená."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Vlastnosti atómu..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Vlastnosti väzieb..."
+
+#~ msgid "Angle Properties..."
+#~ msgstr "Vlastnosti uhla..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Vlastnosti krútenia..."
+
+#~ msgid "Atom Properties"
+#~ msgstr "Vlastnosti atómu"
+
+#~ msgid "Bond Properties"
+#~ msgstr "Vlastnosti väzby"
+
+#~ msgid "Angle Properties"
+#~ msgstr "Vlastnosti uhla"
+
+#~ msgid "Torsion Properties"
+#~ msgstr "Vlastnosti krútenia"
+
+#~ msgid "Properties"
+#~ msgstr "Vlastnosti"
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "Roky"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Neón"
+
+#~ msgid "Element"
+#~ msgstr "Prvok"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "Valence"
+#~ msgstr "Mocenstvo"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Čiastočne Nabitý"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "X %1"
+#~ msgstr "X %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Y %1"
+#~ msgstr "Y %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Z  %1"
+#~ msgstr "Z %1"
+
+#~ msgid "Atom %1"
+#~ msgstr "Atóm %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Štart Atómu"
+
+#~ msgid "End Atom"
+#~ msgstr "Koniec Atómu"
+
+#~ msgid "Bond Order"
+#~ msgstr "Objednať Väzby"
+
+#~ msgid "Rotatable"
+#~ msgstr "Otočný"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Length %1"
+#~ msgstr "Dĺžka %1"
+
+#~ msgid "Bond %1"
+#~ msgstr "Väzba %1"
+
+#~ msgid "Vertex"
+#~ msgstr "Vrchol"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Angle %1"
+#~ msgstr "Uhol %1"
+
+#~ msgid "Angle %1"
+#~ msgstr "Uhol %1"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Torsion %1"
+#~ msgstr "Krútenie %1"
+
+#~ msgid "Torsion %1"
+#~ msgstr "Krútenie %1"
+
+#~ msgid "Energy"
+#~ msgstr "Energia"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Python Terminál"
+
+#, fuzzy
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Dalton input file preview pane?"
+#~ msgstr ""
+#~ "Chcete aktualizovať náhľad textu, pričom stratíte všetky zmeny vykonané "
+#~ "vo vstupnom náhľade súboru Q-Chem?"
+
+#, fuzzy
+#~ msgid "Save Dalton Input File"
+#~ msgstr "Uložiť súbor trajektórie"
+
+#~ msgid "Show Preview"
+#~ msgstr "Zobraziť náhľad"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Skryť náhľad"
+
+#~ msgid "QM Matches"
+#~ msgstr "QM Zhoda"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&HRY"
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "GAMESS EFP Informácie"
+
+#~ msgid "Delete"
+#~ msgstr "Zmazať"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Nie sú vybrané atómy"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Musíte vybrať!"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "SMILES Konverzia nie je k dispozícii"
+
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "SMILES Konverzia formátu nie je k dispozícii!"
+
+#~ msgid "Group Name"
+#~ msgstr "Názov skupiny"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "efp"
+#~ msgstr "efp"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "Vytvorenie vstupných súborov pre balík kvantovej chémie GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Názov"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Pokročilé nastavenia zmenené"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Pokročilé nastavenia boli zmenené.\n"
+#~ "Zahodiť?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Obnovenie pokročilých nastavení"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Ste si istý že chcete vymazať pokročilé nastavenia?\n"
+#~ "Všetky zmeny sa stratia!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Obnovenie základných nastavení"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Ste si istý že chcete vymazať základné nastavenia?\n"
+#~ "Všetky zmeny sa stratia!"
+
+#, fuzzy
+#~ msgid "&Dalton..."
+#~ msgstr "&Vibrácie..."
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
+#~ msgstr ""
+#~ "Chcete aktualizovať náhľad textu, pričom stratíte všetky zmeny vykonané "
+#~ "vo vstupnom náhľade súboru Q-Chem?"
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr "MOPAC je už spustený. Počkajte, kým skončí predchádzajúci výpočet."
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC nie je nainštalovaný."
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "Spustiteľný súbor MOPAC sa nenašiel."
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "Nepodarilo sa spustiť MOPAC."
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "Prebiehajú výpočty MOPAC..."
+
+#~ msgid "MOPAC Crashed."
+#~ msgstr "MOPAC havaroval."
+
+#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr "MOPAC nefunguje správne. Možno nie je správne nainštalovaný."
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Invertovať Výber"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Vybrať podľa Prvku..."
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Vybrať podľa Zvyšku..."
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "Pridať Pomenovaný výber..."
+
+#~ msgid "&Select"
+#~ msgstr "&Výber"
+
+#~ msgid "Select by residue"
+#~ msgstr "Vybrať podľa zvyškov"
+
+#~ msgid "Residue name"
+#~ msgstr "Názov zvyškov"
+
+#~ msgid "name"
+#~ msgstr "názov"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Názov nesmie byť prázdny."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "V súčasnosti už existuje výber s týmto názvom."
+
+#~ msgid "Selections"
+#~ msgstr "Výbery"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Výber atómov, väzieb, zvyškov..."
+
+#, fuzzy
+#~ msgid "Energy (eV)"
+#~ msgstr "Energia"
+
+#~ msgid "No intensities"
+#~ msgstr "Žiadna intenzita"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Aktínium"
+
+#, fuzzy
+#~ msgid "Intensity"
+#~ msgstr "Žiadna intenzita"
+
+#~ msgid "X Axis"
+#~ msgstr "Osa X"
+
+#~ msgid "Y Axis"
+#~ msgstr "Osa Y"
+
+#~ msgid "&Appearance"
+#~ msgstr "&Vzhľad"
+
+#~ msgid "E&xport Image"
+#~ msgstr "E&xport Obrázku"
+
+#~ msgctxt "Infrared spectra option"
+#~ msgid "Infrared"
+#~ msgstr "Infračervený"
+
+#~ msgid "&Infrared Spectra Settings"
+#~ msgstr "Nastavenie &Infračerveného Spektra"
+
+#~ msgctxt "NMR spectra option"
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "&NMR Spectra Settings"
+#~ msgstr "&NMR Nastavenie Spektra"
+
+#, fuzzy
+#~ msgid "&Density Of States Settings"
+#~ msgstr "Nastavenie Automatického Otáčania"
+
+#, fuzzy
+#~ msgid "&UV Settings"
+#~ msgstr "Nastavenie Zarovnania"
+
+#, fuzzy
+#~ msgctxt "Circular Dichromism spectrum"
+#~ msgid "CD"
+#~ msgstr "CCSD"
+
+#, fuzzy
+#~ msgid "&CD Settings"
+#~ msgstr "Nastavenie Zarovnania"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Radón"
+
+#, fuzzy
+#~ msgid "&Raman Settings"
+#~ msgstr "Nastavenie Zarovnania"
+
+#~ msgid "No data"
+#~ msgstr "Žiadne údaje"
+
+#~ msgid "Dark"
+#~ msgstr "Tmavý"
+
+#~ msgid "Light"
+#~ msgstr "Svetlý"
+
+#~ msgid "Publication"
+#~ msgstr "Uverejnenie"
+
+#~ msgid "Handdrawn"
+#~ msgstr "Ručné kreslenie"
+
+#~ msgid "New Scheme"
+#~ msgstr "Nová schéma"
+
+#~ msgid "Confirm Scheme Removal"
+#~ msgstr "Potvrdenie odstránenia schémy"
+
+#~ msgid "Really remove current scheme?"
+#~ msgstr "Skutočne odstrániť aktuálnu schému?"
+
+#~ msgid "Change Scheme Name"
+#~ msgstr "Zmeniť názov schémy"
+
+#~ msgid "Enter new name for current scheme:"
+#~ msgstr "Vložte nový názov pre schému:"
+
+#, fuzzy
+#~ msgid "Select Background Color"
+#~ msgstr "Vybrané Farby"
+
+#, fuzzy
+#~ msgid "Select Foreground Color"
+#~ msgstr "Vybrané Farby"
+
+#, fuzzy
+#~ msgid "Select Calculated Spectra Color"
+#~ msgstr "Export vypočítaného spektra"
+
+#, fuzzy
+#~ msgid "Select Imported Spectra Color"
+#~ msgstr "Importovať Spectra"
+
+#~ msgid "Export Calculated Spectrum"
+#~ msgstr "Export vypočítaného spektra"
+
+#~ msgid "Tab Separated Values (*.tsv)"
+#~ msgstr "Hodnoty oddelené tabulátorom (*.tsv)"
+
+#~ msgid "Tab Separated Values"
+#~ msgstr "Hodnoty oddelené tabulátorom"
+
+#~ msgid "All Files"
+#~ msgstr "Všetky súbory"
+
+#~ msgid "Import Spectra"
+#~ msgstr "Importovať Spectra"
+
+#~ msgid "Data Format"
+#~ msgstr "Formát dát"
+
+#~ msgctxt "noun, not verb"
+#~ msgid "Format:"
+#~ msgstr "Formát:"
+
+#~ msgid "Load Spectral Data"
+#~ msgstr "Načítať spektrálne údaje"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Portable Network Graphics"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "Tagged Image File Format"
+#~ msgstr "Tagged Image File Format"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows Bitmap"
+
+#~ msgid "Portable Pixmap"
+#~ msgstr "Prenosná Pixmapa"
+
+#~ msgid "X11 Bitmap"
+#~ msgstr "Bitmapa X11"
+
+#~ msgid "X11 Pixmap"
+#~ msgstr "Pixmapa X11"
+
+#~ msgid "Save Spectra Image"
+#~ msgstr "Uložiť obrázok Spectra"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Nesprávny názov súboru"
+
+#~ msgid "Error"
+#~ msgstr "Chyba"
+
+#~ msgid "Success!"
+#~ msgstr "Úspešné!"
+
+#, fuzzy
+#~ msgid "&Advanced <<"
+#~ msgstr "Pokročilé"
+
+#, fuzzy
+#~ msgid "&Advanced >>"
+#~ msgstr "Pokročilé"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "Vibrácie"
+
+#~ msgid "Vibration"
+#~ msgstr "Vibrácie"
+
+#~ msgid "Start &Animation"
+#~ msgstr "Spustiť &animáciu"
+
+#~ msgid "Stop &Animation"
+#~ msgstr "Zastaviť &animáciu"
+
+#, fuzzy
+#~ msgid "Pause"
+#~ msgstr "Vlož"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Pripojiť"
+
+#~ msgid "Warning"
+#~ msgstr "Upozornenie"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "MO %L1"
+#~ msgstr "MO %L1"
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Vytvoriť povrchy ..."
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Zrušiť výpočet"
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "Prebieha výpočet VdW kocky"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "Calculating MO %L1"
+#~ msgstr "Prebieha výpočet MO %L1"
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "Spočítať molekulárne orbitály a iné povrchy"
+
+#~ msgid "GL widget has no molecule"
+#~ msgstr "Ovládací prvok grafickej knižnice nemá molekulu"
+
+#~ msgid "Building video "
+#~ msgstr "Vytvára sa video "
+
+#~ msgid "Video file not written."
+#~ msgstr "Video súbor nebol zapísaný."
+
+#~ msgid "Could not run povray."
+#~ msgstr "Nemožno spustiť povray."
+
+#~ msgid "Could not run mencoder."
+#~ msgstr "Nemožno spustiť mencoder."
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Nastaviť pomer strán"
+
+#, fuzzy
+#~ msgid "Select Unit Cell Color"
+#~ msgstr "Vybrané Farby"
+
+#~ msgid "Apply"
+#~ msgstr "Použiť"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Connect"
+#~ msgstr "Pripojiť"
+
+#~ msgid "Disconnect"
+#~ msgstr "Odpojiť"
+
+#~ msgid "OpenGL error"
+#~ msgstr "Chyba OpenGL"
+
+#~ msgid "Debug Information"
+#~ msgstr "Ladiace informácie"
+
+#~ msgid "FPS: %L1"
+#~ msgstr "FPS: %L1"
+
+#~ msgid "View Size: %L1 x %L2"
+#~ msgstr "Zobrazenie veľkosti: %L1 x %L2"
+
+#~ msgid "Atoms: %L1"
+#~ msgstr "Atómy: %L1"
+
+#~ msgid "Bonds: %L1"
+#~ msgstr "Väzby: %L1"
+
+#~ msgctxt "Name of a new, untitled molecule file"
+#~ msgid "untitled"
+#~ msgstr "bez názvu"
+
+#~ msgid "File type '%1' is not supported for reading."
+#~ msgstr "Súbor typu '%1' nie je podporovaný pre čítanie."
+
+#~ msgid "File type for file '%1' is not supported for reading."
+#~ msgstr "Súbor typu pre súbor '%1' nie je podporovaný pre čítanie."
+
+#~ msgid "File %1 can not be opened for writing."
+#~ msgstr "Súbor %1 sa nedá otvoriť pre zapisovanie."
+
+#~ msgid "Molecule %1"
+#~ msgstr "Molekula %1"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "  - no module"
+#~ msgstr "  - žiaden modul"
+
+#~ msgid "Unknown Python Extension"
+#~ msgstr "Neznáme Python Rozšírenie"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Skripty"
+
+#~ msgid "PythonExtension: checking "
+#~ msgstr "PythonRozšírenie: kontrolovanie "
+
+#~ msgid "Unknown Python Tool"
+#~ msgstr "Neznáme PythonNástroje"
+
+#~ msgid "PythonTool: checking "
+#~ msgstr "PythonNástroje: kontrolovanie "
+
+#~ msgid "Tools"
+#~ msgstr "Nástroje"
+
+#~ msgid "Axis:"
+#~ msgstr "Osa:"
+
+#~ msgid "Align:"
+#~ msgstr "Zarovnať:"
+
+#~ msgid "Everything"
+#~ msgstr "Všetko"
+
+#~ msgid "Molecule"
+#~ msgstr "Molekula"
+
+#~ msgid "Align"
+#~ msgstr "Zarovnať"
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "Auto Optimalizačné Nástroje\n"
+#~ "\n"
+#~ "Navigačné Funkcie po Kliknutí na voľné miesto.\n"
+#~ "Ľavé tlačítko myši: Otáčať\n"
+#~ "Stredné tlačítko myši: Priblížiť\n"
+#~ "Pravé tlačítko myši: Premiestniť\n"
+#~ "\n"
+#~ "Extra Funkcie pri spustení\n"
+#~ "Ľavé tlačítko myši: Kliknutím a ťahaním atomov s nimi pohybovať"
+
+#, fuzzy
+#~ msgid "Num Constraints: %1"
+#~ msgstr "Obmedzenia"
+
+#~ msgid "Force Field:"
+#~ msgstr "Silové Pole:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Algoritmy"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Molekulárna Dynamika (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Molekulárna Dynamika (600K)"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Molekulárna Dynamika (900K)"
+
+#~ msgid "Start"
+#~ msgstr "Štart"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Pevné atómy sú pohyblivé"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Ignorované atómy sú pohyblivé"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "AutoOptimalizácia"
+
+#~ msgid "Automatic optimization of molecular geometry"
+#~ msgstr "Automatická optimalizácia geometrie molekuly"
+
+#~ msgid "AutoOptimization Settings"
+#~ msgstr "AutomatickáOptimalizácia Nastavenia"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Nástroje pre Atomatické Otáčanie"
+
+#~ msgid "x rotation:"
+#~ msgstr "x otáčanie:"
+
+#~ msgid "x rotation"
+#~ msgstr "x otáčanie"
+
+#~ msgid "y rotation:"
+#~ msgstr "y otáčanie:"
+
+#~ msgid "y rotation"
+#~ msgstr "y otáčanie"
+
+#~ msgid "z rotation:"
+#~ msgstr "z otáčanie:"
+
+#~ msgid "z rotation"
+#~ msgstr "z otáčanie"
+
+#~ msgid "Reset"
+#~ msgstr "Vynulovanie"
+
+#~ msgid "AutoRotate"
+#~ msgstr "AutomatickéOtáčanie"
+
+#~ msgid "Automatic rotation of molecules"
+#~ msgstr "Automatické otáčanie molekúl"
+
+#~ msgid "AutoRotate Settings"
+#~ msgstr "Nastavenie Automatického Otáčania"
+
+#~ msgctxt "%L1 is the length of the bond"
+#~ msgid "Bond Length: %L1"
+#~ msgstr "Dĺžka Väzby: %L1"
+
+#~ msgid " Show Angles"
+#~ msgstr " Zobraziť Uholníky"
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (1->2): %L1 %2"
+#~ msgstr "Vzdialenosť (1->2): %L1 %2"
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (2->3): %L1 %2"
+#~ msgstr "Vzdialenosť (2->3): %L1 %2"
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (3->4): %L1 %2"
+#~ msgstr "Vzdialenosť (3->4): %L1 %2"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Vzdialenosť(i):"
+
+#~ msgid "Measure"
+#~ msgstr "Rozsah"
+
+#~ msgid "Measure Settings"
+#~ msgstr "Rozsah Nastavenia"
+
+#~ msgid "Add Atom"
+#~ msgstr "Pridať Atóm"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Odstrániť Atóm"
+
+#~ msgid "Add Bond"
+#~ msgstr "Pridať Väzby"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Odstrániť Väzby"
+
+#~ msgid "Change Element"
+#~ msgstr "Zmeniť Prvok"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Kresliť Atóm"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Kresliť Väzby"
+
+#~ msgid "Draw"
+#~ msgstr "Kresliť"
+
+#~ msgid "Element:"
+#~ msgstr "Prvok:"
+
+#~ msgid "Other..."
+#~ msgstr "Ďaľšie..."
+
+#~ msgid "Single"
+#~ msgstr "Jednoduchý"
+
+#~ msgid "Double"
+#~ msgstr "Dvojitý"
+
+#~ msgid "Triple"
+#~ msgstr "Trojitý"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Upravte Vodíky"
+
+#~ msgid "Draw and edit atoms and bonds"
+#~ msgstr "Kresliť a upraviť atómy a väzby"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "Nástroje na Manipuláciu (F10)\n"
+#~ "\n"
+#~ "Ľavé Tlačítko myši: Kliknúť a ťahaním hýbať atómami\n"
+#~ "Stredné Tlačítko myši: Kliknúť a ťahaním presunúť atómy ďalej alebo "
+#~ "bližšie\n"
+#~ "Pravé Tlačítko myši: Kliknúť a ťahaním otáčať vybranými atómami."
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Manipulácia s Atómom"
+
+#~ msgid "Manipulate"
+#~ msgstr "Spravovať"
+
+#~ msgid "Translate, rotate, and adjust atoms and fragments"
+#~ msgstr "Preložiť, otočiť a nastaviť atómy a úlomky"
+
+#~ msgid "Manipulate Settings"
+#~ msgstr "Nastavenie Manipulácie"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "Nástroje na Manipuláciu (F9)\n"
+#~ "\n"
+#~ "Ľavé Tlačítko myši: Kliknúť a ťahaním otáčať pohľad\n"
+#~ "Stredné Tlačítko myši: Kliknúť a ťahaním približovať a vzdalovať\n"
+#~ "Pravé Tlačítko myši: Kliknúť a ťahaním posunúť pohľad"
+
+#~ msgid "Navigate"
+#~ msgstr "Navigovať"
+
+#~ msgid "Translate, rotate, and zoom around the current view"
+#~ msgstr "Preložiť, otáčať, a približovať okolo aktuálneho pohľadu"
+
+#~ msgid "Navigate Settings"
+#~ msgstr "Nastavenie Navigácie"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Atóm/Väzba"
+
+#~ msgid "Residue"
+#~ msgstr "Zvyšok"
+
+#~ msgid "Selection"
+#~ msgstr "Výber"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "Vyber atómy, zvyšky a molekuly"
+
+#~ msgid "Selection Settings"
+#~ msgstr "Nastavenia Výberu"
+
+#~ msgid "Symbol"
+#~ msgstr "Symbol"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Hydrofóbia"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "Osy"
+
+#, fuzzy
+#~ msgid "Cartesian Axes"
+#~ msgstr "Kartézské súradnice"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Vlastné Hodnoty"
+
+#, fuzzy
+#~ msgid "Axis 1:"
+#~ msgstr "Osa:"
+
+#, fuzzy
+#~ msgid "Axis 2:"
+#~ msgstr "Osa:"
+
+#, fuzzy
+#~ msgid "Axis 3:"
+#~ msgstr "Osa:"
+
+#, fuzzy
+#~ msgid "Origin:"
+#~ msgstr "Zarovnať:"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Radius Atómu:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Priehľadnosť:"
+
+#~ msgid "a"
+#~ msgstr "a"
+
+#~ msgid "b"
+#~ msgstr "b"
+
+#~ msgid "c"
+#~ msgstr "c"
+
+#~ msgid "Sheet"
+#~ msgstr "List"
+
+#~ msgid "Loop"
+#~ msgstr "Slučka"
+
+#~ msgid "Colors"
+#~ msgstr "Farby"
+
+#~ msgid "Dipole:"
+#~ msgstr "Dipól:"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "Vlastná farba"
+
+#~ msgid "Custom:"
+#~ msgstr "Vlastné:"
+
+#~ msgid "Width:"
+#~ msgstr "Šírka"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#, fuzzy
+#~ msgid "Rendering Engine:"
+#~ msgstr "Vykreslenie:"
+
+#, fuzzy
+#~ msgid "QPainter"
+#~ msgstr "Voda"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "Štítok Atómu:"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "Označenie"
+
+#~ msgid "None"
+#~ msgstr "Nič"
+
+#~ msgid "Element symbol"
+#~ msgstr "Značka Prvku"
+
+#, fuzzy
+#~ msgid "Symbol & Number in Group"
+#~ msgstr "Značka & Atómové číslo"
+
+#~ msgid "Element name"
+#~ msgstr "Názov prvku"
+
+#~ msgid "Residue number"
+#~ msgstr "Číslo zvyšku"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "Vybrané Farby"
+
+#, fuzzy
+#~ msgid "Change Font"
+#~ msgstr "Zmeniť Prvok"
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "Štítok Atómu:"
+
+#~ msgid "Rendering:"
+#~ msgstr "Vykreslenie:"
+
+#~ msgid "Backbone"
+#~ msgstr "Hlavný Reťazec"
+
+#~ msgid "Radius:"
+#~ msgstr "Rádius:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Zahrnúť Vodíky"
+
+#~ msgid "Style:"
+#~ msgstr "Štýl:"
+
+#~ msgid "Selected Colors"
+#~ msgstr "Vybrané Farby"
+
+#~ msgid "Colors:"
+#~ msgstr "Farby:"
+
+#~ msgid "Positive"
+#~ msgstr "Pozitívne"
+
+#~ msgid "Negative"
+#~ msgstr "Negatívne"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Zobraziť Atómy"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Animovať Trajektórie"
+
+#~ msgid "Load File..."
+#~ msgstr "Nahrať Súbor..."
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Uložiť ako .avi..."
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Bohrium"
+
+#, fuzzy
+#~ msgid "Fractional"
+#~ msgstr "Prvá operácia"
+
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#~ msgid "GAMESS Input"
+#~ msgstr "Vstup GAMESS"
+
+#, fuzzy
+#~ msgid "GAMESS Input #2"
+#~ msgstr "Vstup GAMESS"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Obnoviť Všetko"
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Vyčisti Atómy"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Nič"
+
+#~ msgid "Options"
+#~ msgstr "Nastavenia"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Počet atómov:"
+
+#~ msgid "Method"
+#~ msgstr "Metóda"
+
+#~ msgid "Constraints"
+#~ msgstr "Obmedzenia"
+
+#~ msgid "Add Constraints"
+#~ msgstr "Pridať Obmedzenia"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Ignorovať Atóm"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Opraviť atóm"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Opraviť atóm X"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Opraviť atóm Y"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Opraviť atóm Z"
+
+#~ msgid "Distance"
+#~ msgstr "Vzdialenosť"
+
+#~ msgid "Angle"
+#~ msgstr "Uhol"
+
+#~ msgid "Constraint Value"
+#~ msgstr "Hodnoty Obmedzení"
+
+#~ msgid "Add"
+#~ msgstr "Pridať"
+
+#~ msgid "Save"
+#~ msgstr "Ulož"
+
+#~ msgid "Load"
+#~ msgstr "Načítať"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Odstráň vybrané"
+
+#~ msgid "Delete All"
+#~ msgstr "Odstráň Všetko"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "Nastaviť Silové Pole"
+
+#~ msgid "Force Field"
+#~ msgstr "Silové Pole"
+
+#~ msgid "Number of steps"
+#~ msgstr "Počet krokov"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritmus"
+
+#~ msgid "Convergence"
+#~ msgstr "Konvergencia"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "Vložiť Zlomok"
+
+#~ msgid "Close"
+#~ msgstr "Zatvoriť"
+
+#, fuzzy
+#~ msgid "Basics"
+#~ msgstr "Jednoduché"
+
+#~ msgid "Title:"
+#~ msgstr "Názov:"
+
+#, fuzzy
+#~ msgid "Calculate:"
+#~ msgstr "Vypočítať"
+
+#~ msgid "Theory:"
+#~ msgstr "Teória:"
+
+#, fuzzy
+#~ msgid "KS-DFT"
+#~ msgstr "DFT"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#, fuzzy
+#~ msgid "STO-nG"
+#~ msgstr "STO-3G"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "3-21++G"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31+G"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "3-21G*"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31G**"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31G(3df,3pd)"
+#~ msgstr "6-31G(d,p)"
+
+#, fuzzy
+#~ msgid "6-311G*"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311G**"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311G(2df,2pd)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "3-21++G*"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31+G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G**"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-311+G*"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311++G**"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311++G(2d,2p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "6-311++G(3df,3pd)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "Direct"
+#~ msgstr "Odpojiť"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#, fuzzy
+#~ msgid "Functional:"
+#~ msgstr "Východiskový"
+
+#, fuzzy
+#~ msgid "B2PLYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B3LYPg"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B3P86"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B1LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B86LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "BLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "CAMB3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "DBLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "EDF2"
+#~ msgstr "MELDF"
+
+#, fuzzy
+#~ msgid "KMLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "OLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "PBE"
+#~ msgstr "PDB"
+
+#, fuzzy
+#~ msgid "XLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "X3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "1.0D-"
+#~ msgstr "10e-"
+
+#, fuzzy
+#~ msgid "Charge Integration:"
+#~ msgstr "Max SCF Iterácia:"
+
+#, fuzzy
+#~ msgid "Grid Specification"
+#~ msgstr "Geometrická optimalizácia"
+
+#, fuzzy
+#~ msgid "Becke"
+#~ msgstr "Hlavný Reťazec"
+
+#, fuzzy
+#~ msgid "SSF"
+#~ msgstr "SCF"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "Spustiť Normálne"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "Jód"
+
+#, fuzzy
+#~ msgid "Property:"
+#~ msgstr "Vlastnosti"
+
+#, fuzzy
+#~ msgid "Excitation Energy"
+#~ msgstr "Vypočítať energiu"
+
+#, fuzzy
+#~ msgid "Frequency Dependent"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Use Form"
+#~ msgstr "Použite formulár"
+
+#~ msgid "Generate..."
+#~ msgstr "Vygenerovať ..."
+
+#~ msgid "EFP Matches"
+#~ msgstr "EFP Výsledky"
+
+#~ msgid "Group Label:"
+#~ msgstr "Označenie Skupiny:"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "&Jednoduché Nastavenia"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Neutral"
+#~ msgstr "Neutrálny"
+
+#~ msgid "Anion"
+#~ msgstr "Anion"
+
+#~ msgid "Frequencies"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Gas"
+#~ msgstr "Plyn"
+
+#~ msgid "Water"
+#~ msgstr "Voda"
+
+#~ msgid "Calculate"
+#~ msgstr "Vypočítať"
+
+#~ msgid "With:"
+#~ msgstr "S:"
+
+#~ msgid "In:"
+#~ msgstr "V:"
+
+#~ msgid "&Advanced Setup"
+#~ msgstr "&Pokročilé Nastavenia"
+
+#~ msgid "Advanced"
+#~ msgstr "Pokročilé"
+
+#~ msgid "Basis"
+#~ msgstr "Jednoduché"
+
+#~ msgid "Control"
+#~ msgstr "Ovládanie"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "Data"
+#~ msgstr "Údaje"
+
+#~ msgid "System"
+#~ msgstr "Systém"
+
+#~ msgid "MO Guess"
+#~ msgstr "MO Odhad"
+
+#~ msgid "Read"
+#~ msgstr "Čítať"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "ECP Type:"
+#~ msgstr "ECP Typ:"
+
+#~ msgid "Default"
+#~ msgstr "Predvolené"
+
+#~ msgid "Max SCF Iterations:"
+#~ msgstr "Max SCF Iterácia:"
+
+#~ msgid "Optimization"
+#~ msgstr "Optimalizácia"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "Energy Surface"
+#~ msgstr "Povrchová Energia"
+
+#~ msgid "Finite Electric Field"
+#~ msgstr "Obmedzené Elektrické Pole"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "Global Optimization"
+#~ msgstr "Celková Optimalizácia"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "FMO Optimization"
+#~ msgstr "FMO Optimalizácia"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "Make EFP"
+#~ msgstr "Realizácia EFP"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "None (CI)"
+#~ msgstr "Žiadny (CI)"
+
+#~ msgid "SCF Type:"
+#~ msgstr "Typ SCF:"
+
+#~ msgid "Localization Method:"
+#~ msgstr "Lokalizačná Metóda"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "General CI"
+#~ msgstr "Všeobecné CI"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "Mnohorakosť:"
+
+#~ msgid "Normal Run"
+#~ msgstr "Spustiť Normálne"
+
+#~ msgid "Check"
+#~ msgstr "Kontrola"
+
+#~ msgid "Debug"
+#~ msgstr "Ladenie"
+
+#~ msgid "Use MP2"
+#~ msgstr "Použiť MP2"
+
+#~ msgid "Use DFT"
+#~ msgstr "Použiť DFT"
+
+#~ msgid "Order of Principal Axis:"
+#~ msgstr "Poradie Hlavnej Osi"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "Typ Súradnice:"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Hilderbrant internals"
+#~ msgstr "Vnútorný Hilderbrant"
+
+#~ msgid "Cartesian coordinates"
+#~ msgstr "Kartézské súradnice"
+
+#~ msgid "Units:"
+#~ msgstr "Jednotky:"
+
+#~ msgid "Point Group:"
+#~ msgstr "Bod Skupiny:"
+
+#~ msgid "Minutes"
+#~ msgstr "Minúty"
+
+#~ msgid "Hours"
+#~ msgstr "Hodiny"
+
+#~ msgid "Days"
+#~ msgstr "Dni"
+
+#~ msgid "Weeks"
+#~ msgstr "Týždne"
+
+#~ msgid "Years"
+#~ msgstr "Roky"
+
+#~ msgid "Millenia"
+#~ msgstr "Tisícročia"
+
+#~ msgid "MegaBytes"
+#~ msgstr "MegaByty"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "Time Limit:"
+#~ msgstr "Časový Limit:"
+
+#~ msgid "Memory:"
+#~ msgstr "Pamäť:"
+
+#~ msgid "Diagonalization Method:"
+#~ msgstr "Diagonalizačná Metóda:"
+
+#~ msgid "Use External Data Representation for Messages"
+#~ msgstr "Použite External Data Representation pre Správy"
+
+#~ msgid "MO Saved (DICTNRY)"
+#~ msgstr "MO Uložené (DICTNRY)"
+
+#~ msgid "Skip"
+#~ msgstr "Preskočiť"
+
+#~ msgid "GAMESS Interface to Other Codes"
+#~ msgstr "GAMESS Rozhranie pre Iné Kódy"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (UK Verzia)"
+
+#~ msgid "All"
+#~ msgstr "Všetko"
+
+#~ msgid "Grid"
+#~ msgstr "Mriežka"
+
+#~ msgid "Grid-Free"
+#~ msgstr "Voľná-Mriežka"
+
+#~ msgid "Method:"
+#~ msgstr "Metóda:"
+
+#~ msgid "words"
+#~ msgstr "slová"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "# z Jadra Elektrónov:"
+
+#~ msgid "Transformation Method"
+#~ msgstr "Transformačná Metóda"
+
+#~ msgid "Segmented Transformation"
+#~ msgstr "Segmentovaná Transformácia"
+
+#~ msgid "Analytic"
+#~ msgstr "Analytický"
+
+#~ msgid "Numeric"
+#~ msgstr "Číselný"
+
+#~ msgid "Displacement Size:"
+#~ msgstr "Presunutá Veľkosť:"
+
+#~ msgid "Read (from $HESS)"
+#~ msgstr "Čítať (z $HESS)"
+
+#~ msgid "Update Step Size"
+#~ msgstr "Aktualizovať Veľkosť Kroku"
+
+#~ msgid "Stationary Point"
+#~ msgstr "Stacionárny bod"
+
+#~ msgid "Optimization Method:"
+#~ msgstr "Optimalizačná metóda:"
+
+#~ msgid "Step Size"
+#~ msgstr "Veťkosť Kroku"
+
+#~ msgid "Maximum:"
+#~ msgstr "Maximum:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Minimum:"
+
+#~ msgid "Initial:"
+#~ msgstr "Východiskový"
+
+#~ msgid "Quadratic Approximation"
+#~ msgstr "Kvadratická Aproximatizácia"
+
+#~ msgid "Constrained Optimization"
+#~ msgstr "Obmedzená Optimalizácia"
+
+#~ msgid "steps"
+#~ msgstr "kroky"
+
+#~ msgid "Follow Mode:"
+#~ msgstr "Dodržiavajte režim:"
+
+#~ msgid "Maximum Steps:"
+#~ msgstr "Maximum Krokov:"
+
+#~ msgid "Reset All"
+#~ msgstr "Obnoviť Všetko"
+
+#~ msgid "Defaults"
+#~ msgstr "Predvolené"
+
+#~ msgid "Calculation:"
+#~ msgstr "Výpočet:"
+
+#~ msgid "Processors:"
+#~ msgstr "Spracovatelia:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Basis:"
+#~ msgstr "Základ:"
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Output:"
+#~ msgstr "Výstup:"
+
+#~ msgid "Standard"
+#~ msgstr "Štandard"
+
+#~ msgid "Checkpoint:"
+#~ msgstr "Checkpoint:"
+
+#~ msgid "Format:"
+#~ msgstr "Formát:"
+
+#~ msgid "NWChem Input"
+#~ msgstr "Vstup NWChem"
+
+#, fuzzy
+#~ msgid "Export Data"
+#~ msgstr "Export"
+
+#, fuzzy
+#~ msgid "Spectra Tab"
+#~ msgstr "Načítať spektrálne údaje"
+
+#, fuzzy
+#~ msgid "Energy units:"
+#~ msgstr "Energia"
+
+#, fuzzy
+#~ msgid "Fermi Energy: "
+#~ msgstr "Energia"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "Označenie"
+
+#, fuzzy
+#~ msgid "States / Atom"
+#~ msgstr "Štart Atómu"
+
+#, fuzzy
+#~ msgid "Scaling Type:"
+#~ msgstr "Typ SCF:"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Olovo"
+
+#, fuzzy
+#~ msgid "Relative"
+#~ msgstr "Negatívne"
+
+#, fuzzy
+#~ msgid "Intensities"
+#~ msgstr "Žiadna intenzita"
+
+#, fuzzy
+#~ msgid "Temperature:"
+#~ msgstr "Šablóna"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "&Súbor"
+
+#, fuzzy
+#~ msgid "&Show Spectra..."
+#~ msgstr "Importovať Spectra"
+
+#, fuzzy
+#~ msgid "Change Color"
+#~ msgstr "Zmeniť Prvok"
+
+#~ msgid "First Action"
+#~ msgstr "Prvá operácia"
+
+#~ msgid "Second Action"
+#~ msgstr "Druhá operácia"
+
+#~ msgid "&Template"
+#~ msgstr "Š&ablóna"
+
+#~ msgid "&Edit"
+#~ msgstr "&Upraviť"
+
+#~ msgid "Template"
+#~ msgstr "Šablóna"
+
+#~ msgid "Example extension"
+#~ msgstr "Príklad rozšírenia"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Otvoriť súbor ligand"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Všetky súbory (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Uložiť video súbor"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "video súbory (*.avi)"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "súbor trajektórie (*.xyz)"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Načítanie súboru molekúl %1 zlyhalo."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dve molekuly majú rozdielny počet atómov %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
+#~ "možné ukladať snímky"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Nedá sa uložiť súbor %1."
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
+#~ "možné uložiť video"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Neplatný názov video súboru. Musí obsahovať úplnú cestu"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov s "
+#~ "príponou .avi"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Súbor by bol zapísaný do %1."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Zapísaný súbor %1."
+
+#~ msgid "Atom Index %1"
+#~ msgstr "Obsah Atómu %1"
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "&Prispôsobiť <<"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "Prispôso&biť >>"
+
+#~ msgid ""
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
+#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
+#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
+#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
+#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ msgstr ""
+#~ "<h3>%1</h3><br/><br/>Verzia aplikácie: %2<br/><br/>Verzia knižnice: %3<br/"
+#~ "><br/>Pre viac informácií navštívte <a href=\"http://avogadro."
+#~ "openmolecules.net/\">domovskú stránku projektu</a>.<br/><br/>Program je "
+#~ "poskytovaný TAK AKO JE BEZ AKEJKOLVEK ZÁRUKY, VRÁTANE ZÁRUKY PREDAJNOSTI "
+#~ "ALEBO POUŽITELNOSTI PRE NEJAKÝ ÚČEL.<br/>"
+
+#~ msgid "Cut Atoms"
+#~ msgstr "Vystrihni Atóm"
+
+#~ msgid "Clear Molecule"
+#~ msgstr "Vyčisti Molekulu"
+
+#~ msgid "Open File"
+#~ msgstr "Otvor Súbor"
+
+#~ msgid "Messages"
+#~ msgstr "Správy"
+
+#~ msgid "Window"
+#~ msgstr "Okno"
+
+#~ msgid "&Minimize"
+#~ msgstr "&Minimalizuj"
+
+#~ msgid "Ctrl+M"
+#~ msgstr "Ctrl+M"
+
+#~ msgid "&Zoom"
+#~ msgstr "&Priblíž"
+
+#~ msgid "Bring All to Front"
+#~ msgstr "Pridaj všetko do fronty"
+
+#~ msgid "Common molecule formats"
+#~ msgstr "Základné molekuly"
+
+#~ msgid "All files"
+#~ msgstr "Všetky súbory"
+
+#~ msgid "CML"
+#~ msgstr "CML"
+
+#~ msgid "GAMESS-US Output"
+#~ msgstr "Výstup GAMESS-US"
+
+#~ msgid "Gaussian 98/03 Output"
+#~ msgstr "Výstup 98/03 Gaussian"
+
+#~ msgid "Gaussian Formatted Checkpoint"
+#~ msgstr "Gaussian Bod Formátovania"
+
+#~ msgid "HyperChem"
+#~ msgstr "HyperChem"
+
+#~ msgid "MDL Mol"
+#~ msgstr "MDL Mol"
+
+#~ msgid "NWChem Output"
+#~ msgstr "Výstup NWChem"
+
+#~ msgid "Sybyl Mol2"
+#~ msgstr "Sybyl Mol2"
+
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Nemôžem načítať súbor %1\n"
+#~ "%2"
+
+#~ msgid ""
+#~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
+#~ "bonds and do a quick optimization?"
+#~ msgstr ""
+#~ "Tento súbor obsahuje iba 2D koordináty. Chcete aby sa ich Avodagro "
+#~ "pokúsil načítať a optimalizovať?"
+
+#~ msgid ""
+#~ "This file does not contain 3D coordinates. You may not be able to edit or "
+#~ "view properly."
+#~ msgstr ""
+#~ "Tento súbor obsahuje iba 3D koordináty. Môžu nastať problémy s úpravou "
+#~ "alebo správnym čítaním."
+
+#~ msgid ""
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
+#~ msgstr ""
+#~ "Tento súbor asi obsahuje viac záznamov molekúl. Avogadro načíta iba prvú "
+#~ "molekulu. Ak budete prácu ukladať, ostatné molekuly môžu byť stratené."
+
+#~ msgid "Reading molecular file failed."
+#~ msgstr "Načítanie súboru molekúl zlyhalo."
+
+#~ msgid "File Loaded..."
+#~ msgstr "Súbor spustený...."
+
+#~ msgid "Gaussian Cartesian Input"
+#~ msgstr "Vstup Gaussian Cartesian"
+
+#~ msgid "Gaussian Z-matrix Input"
+#~ msgstr "Vstup Gaussian Z-matrix"
+
+#~ msgid "MDL SDfile"
+#~ msgstr "MDL SDfile"
+
+#~ msgid "Cannot write to file format of file %1."
+#~ msgstr "Nemôžem zapisovať do formátu súboru %1:"
+
+#~ msgid ""
+#~ "Cannot write to the file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Nemôžem zapisovať do súboru %1:\n"
+#~ "%2."
+
+#~ msgid "Cannot write to the file %1."
+#~ msgstr "Nemôžem zapisovať do súboru %1:"
+
+#~ msgid "Saving file."
+#~ msgstr "Ukladám súbor."
+
+#~ msgid "Save succeeded."
+#~ msgstr "Uloženie prebehlo v poriadku."
+
+#~ msgid "Saving molecular file failed."
+#~ msgstr "Uloženie molekulárneho súboru zlyhalo."
+
+#~ msgid "PNG"
+#~ msgstr "PNG"
+
+#~ msgid "Common image formats"
+#~ msgstr "Bežné formáty obrázkov"
+
+#~ msgid "BMP"
+#~ msgstr "BMP"
+
+#~ msgid "JPEG"
+#~ msgstr "JPEG"
+
+#~ msgid "Export Bitmap Graphics"
+#~ msgstr "Exportovať Bitmapove Obrázky"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Common vector image formats"
+#~ msgstr "Bežné vektorové formáty"
+
+#~ msgid "SVG"
+#~ msgstr "SVG"
+
+#~ msgid "EPS"
+#~ msgstr "EPS"
+
+#~ msgid ""
+#~ "The document has been modified.\n"
+#~ "Do you want to save your changes?"
+#~ msgstr ""
+#~ "Dokument bol zmenený.\n"
+#~ "Chcete zmeny uložiť?"
+
+#~ msgid "Untitled"
+#~ msgstr "Nepomenované"
+
+#~ msgid "Unable to paste molecule."
+#~ msgstr "Nemôžem vložiť molekulu."
+
+#~ msgid "Paste failed (format unavailable)."
+#~ msgstr "Vloženie zlyhalo (nedostupný formát)"
+
+#~ msgid "Copy failed (mdl unavailable)."
+#~ msgstr "Kopírovanie zlyhalo (mdl nedostupné)"
+
+#~ msgid "View %1"
+#~ msgstr "Zobraziť %1"
+
+#~ msgid "Avogadro: Detached View"
+#~ msgstr "Avogadro: Odelený pohľad"
+
+#~ msgid "Normal Size"
+#~ msgstr "Normálna Veľkosť"
+
+#~ msgid "Full Screen"
+#~ msgstr "Celá Obrazovka"
+
+#~ msgid "untitled"
+#~ msgstr "nepomenované"
+
+#~ msgid "[*]Avogadro"
+#~ msgstr "[*]Avogadro"
+
+#~ msgid "%1[*] - %2"
+#~ msgstr "%1[*] - %2"
+
+#~ msgid "Settings..."
+#~ msgstr "Nastavenia..."
+
+#~ msgid "Duplicate"
+#~ msgstr "Duplikovať"
+
+#~ msgid "Remove"
+#~ msgstr "Odstrániť"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbitály"
+
+#~ msgid "Surface"
+#~ msgstr "Povrch"
+
+#~ msgid "Name"
+#~ msgstr "Názov"
+
+#~ msgid "Energy = %1 %2"
+#~ msgstr "Energia = %1 %2"
+
+#~ msgid "QM Selection..."
+#~ msgstr "QM Výber ..."
+
+#~ msgid "EFP Selection..."
+#~ msgstr "EFP Výber..."
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "VdW Cube"
+#~ msgstr "VdW Kocka"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Okno pre zobrazenie atomu, väzieb a krútivých vlastností. Tiež obsahuje "
+#~ "súradnicový editor."
+
+#~ msgid "File %1 can not be opened for reading."
+#~ msgstr "Súbor %1 sa nedá otvoriť pre čítanie."
+
+#~ msgid "Writing a molecule to file '%1' failed."
+#~ msgstr "Zapísanie molekuly do súboru '%1' zlyhalo."
+
+#~ msgid "File type for file '%1' is not a supported for writing."
+#~ msgstr "Súbor typu pre súbor %1 nie je podporovaný pre zapisovanie."
+
+#~ msgid "File type '%1' is not a supported for reading."
+#~ msgstr "Súbor typu %1 nie je podporovaný pre čítanie."
+
+#~ msgid "File type for file '%1' is not a supported for reading."
+#~ msgstr "Súbor typu pre súbor %1 nie je podporovaný pre čítanie."
+
+#~ msgid "File type '%1' is not a supported for writing."
+#~ msgstr "Súbor typu %1 nie je podporovaný pre zapisovanie."
+
+#~ msgid "Custom Data"
+#~ msgstr "Vlastné Údaje"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Elektrostatický potenciál (ESP)"
+
+#~ msgid "Color:"
+#~ msgstr "Farba:"
+
+#~ msgid "Caesium"
+#~ msgstr "Cézium"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Vykreslí sekundárnu štruktúru proteinov"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Vykreslí molekulárne orbitály"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Vykreslí vypočítaný molekulárny povrch"
+
+#~ msgid "Optimize Geometry"
+#~ msgstr "Optimalizovať geometriu"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Vstup Q-Chem..."
+
+#~ msgid "MOLPRO Input..."
+#~ msgstr "Vstup MOLPRO..."
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "Vstup MOPAC..."
+
+#~ msgid "&NWChem Input..."
+#~ msgstr "Vstup &NWChem..."

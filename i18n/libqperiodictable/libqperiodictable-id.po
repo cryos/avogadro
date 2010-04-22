@@ -1,0 +1,5337 @@
+# Indonesian translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-22 13:46+0400\n"
+"PO-Revision-Date: 2009-11-11 04:02+0000\n"
+"Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+#, fuzzy
+msgid "Official Name"
+msgstr "Nama Kimia"
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+#, fuzzy
+msgid "Atomic Number"
+msgstr "Nomor atom"
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Kobalt"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Jejari"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+#, fuzzy
+msgid "Pauling Electronegativity"
+msgstr "Menghitung Kepadatan Elektron"
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+#, fuzzy
+msgid "Ionization Potential"
+msgstr "Potensial Elektrostatik"
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+#, fuzzy
+msgid "Electron Affinity"
+msgstr "Kepadatan Elektron"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Hidrogen"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Helium"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Litium"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Berilium"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Boron"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Karbon"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Nitrogen"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Oksigen"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Fluor"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Neon"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Sodium"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Magnesium"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Aluminum"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Silikon"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Belerang"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Klor"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Argon"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Potasium"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Kalsium"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Skandium"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Titanium"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Vanadium"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Krom"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Mangan"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Besi"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Kobalt"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Nikel"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Tembaga"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Seng"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Galium"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Germanium"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Arsen"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Selenium"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Brom"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Kripton"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Rubidium"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Strontium"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Itrium"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Zirkonium"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Niobium"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Molibden"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Teknetium"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Rutenium"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Rodium"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Paladium"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Perak"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Kadmium"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Indium"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Timah"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Antimon"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Telurium"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Yodium"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Xenon"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "Sesium"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Barium"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Lantanum"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Serium"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Praseodimium"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Neodimium"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Prometium"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Samarium"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Europium"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Gadolinium"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Terbium"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Disprosium"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Holmium"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Erbium"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Tulium"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Iterbium"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Lutetium"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Hafnium"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Tantalum"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Wolfram"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Renium"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Osmium"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Iridium"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Platina"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Emas"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Raksa"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Talium"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Timbal"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Bismut"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Polonium"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Astatin"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Radon"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Fransium"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Radium"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Aktinium"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Torium"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Protaktinium"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Uranium"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Neptunium"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Plutonium"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Amerisium"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Kurium"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Berkelium"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Kalifornium"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Einsteinium"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Fermium"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Mendelevium"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Nobelium"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Lawrensium"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Rutherfordium"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Dubnium"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Seaborgium"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Bohrium"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Hassium"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Meitnerium"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Darmstadtium"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Roentgenium"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ununbium"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ununtrium"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ununquadium"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ununpentium"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ununheksium"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ununseptium"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ununoktium"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Tidak dikenal"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Tabel Periodik"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:,"
+"Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Geoff "
+"Hutchison,Waluyo Adi Siswanto"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,,,,,,,,,"
+
+#~ msgid "Color by Index"
+#~ msgstr "Warna berdasarkan Indeks"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr ""
+#~ "Warna berdasarkan Indeks (merah, oranye, kuning, hijau, biru, ungu)."
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Warna berdasarkan Muatan Parsial"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr "Warna berdasarkan muatan parsial (biru = positif, merah = negatif)"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Warna Atur Sendiri:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Warna Atur Sendiri"
+
+#~ msgid "Set custom colors for objects"
+#~ msgstr "Atur warna untuk obyek"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Warna berdasrkan Jarak"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Warna berdasarkan jarak dari atom pertama"
+
+#~ msgid "Color by Element"
+#~ msgstr "Warna berdasarkan Unsur"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Warna berdasarkan Unsur (karbon = kelabu, oksigen = merah, ...)."
+
+#~ msgid "Color by Residue"
+#~ msgstr "Warna berdasarkan Residu"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Warna berdasarkan Residu (tipe asam amino, hidrofobisitas, ..."
+
+#, fuzzy
+#~ msgid "SMARTS Pattern:"
+#~ msgstr "Memilih pola SMARTS"
+
+#~ msgid "Engines"
+#~ msgstr "Mesin"
+
+#~ msgid "Axes"
+#~ msgstr "Sumbu"
+
+#~ msgid "Renders the x, y, and z axes at the origin"
+#~ msgstr "Menggambarkan sumbu x, y, dan z di titik pusat"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Bola dan Batang"
+
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr ""
+#~ "Menggambarkan bentuk dasar menggunakan Bola (atom) dan Batang (ikatan)"
+
+#~ msgid "Cartoon"
+#~ msgstr "Karton"
+
+#~ msgid "Renders protein secondary structure"
+#~ msgstr "Menggambar protein sebagai struktur sekunder"
+
+#~ msgid "Dipole"
+#~ msgstr "Dua kutup"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Menggambarkan momen molekul dua kutup"
+
+#~ msgid "Force"
+#~ msgstr "Gaya"
+
+#~ msgid "Renders force displacements on atoms"
+#~ msgstr "Menggambarkan gaya simpangan pada atom"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Ikatan Hidrogen"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Menggambarkan ikatan hidrogen"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Color"
+#~ msgstr "Warna Pilihan"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Font"
+#~ msgstr "Label Atom:"
+
+#, fuzzy
+#~ msgid "Select Bond Labels Color"
+#~ msgstr "Warna Pilihan"
+
+#, fuzzy
+#~ msgid "Select Bond Labels Font"
+#~ msgstr "Label Ikatan:"
+
+#~ msgid "Label"
+#~ msgstr "Label"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Menggambarkan atom dan label ikatan"
+
+#~ msgid "Overlay"
+#~ msgstr "Overlay"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Menggambarkan perubahan skala warna"
+
+#~ msgid "Polygon"
+#~ msgstr "Poligon"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr ""
+#~ "Menggambarkan atom sebagai bentuk tetrahedral, oktahedral, dan bentuk "
+#~ "poligon"
+
+#~ msgid "Ribbon"
+#~ msgstr "Pita"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "Menggambar struktur utama protein dengan pita"
+
+#~ msgid "Ring"
+#~ msgstr "Cincin"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "Menggambar cincin dengan bidang berwarna"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "Wireframe sederhana"
+
+#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
+#~ msgstr "Menggambar ikatan dengan jaring (garis), sesuai untuk melekul besar"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Bola Van der Waals"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Menggambar atom sebagai bola Van der Waals"
+
+#~ msgid "Stick"
+#~ msgstr "Batang"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "Menggambar molekul dengan batang"
+
+#~ msgctxt "Van der Waals isosurface with a cutoff of %1"
+#~ msgid "Van der Waals, isosurface = %L1"
+#~ msgstr "Van der Waals, isosurface = %L1"
+
+#~ msgctxt "Electron density isosurface with a cutoff of %1"
+#~ msgid "Electron density, isosurface = %L1"
+#~ msgstr "Kepadatan elektron, isosurface = %L1"
+
+#~ msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+#~ msgid "%1, isosurface = %L2"
+#~ msgstr "%1, PermukaanIso = %L2"
+
+#~ msgid "Surfaces"
+#~ msgstr "Bidang Permukaan"
+
+#~ msgid "Renders molecular isosurface meshes"
+#~ msgstr "Menggambar jaring permukaan molekuler"
+
+#~ msgid "Wireframe"
+#~ msgstr "Wireframe"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr ""
+#~ "Membuat gambar ikatan dengan jaringan (garis), sesuai untuk (bio)molekul "
+#~ "yang sangat besar"
+
+#~ msgid "Extensions"
+#~ msgstr "Ekstensi"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Buka berkas trayektori"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Berkas Trayektori (*.xtc *.xyz)"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Save Video File"
+#~ msgstr "Simpan berkas video"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "berkas video (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Menambah ekstensi .avi"
+
+#~ msgid "Animation..."
+#~ msgstr "Animasi..."
+
+#~ msgid "E&xtensions"
+#~ msgstr "E&kstensi"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Tidak bisa membaca format dari berkas %1."
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Gagal membaca berkas trayektori %1."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Perlu menyatakan nama berkas .avi yang sahih."
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr "Alat GL tidak di inisiasi dengan benar untuk menyimpan video"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr ""
+#~ "Nama berkas video tidak sahih.  Perlu menyertakan direktori berkas secara "
+#~ "lengkap"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Nama berkas video tidak sahih. Perlu menyertakan direktori berkas secara "
+#~ "lengkap, diakhiri dengan .avi"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "tidak bisa merubah ke format XYZ"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "Ada masalah ketika membaca berkas trayektori %1"
+
+#~ msgid ""
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "Berkas trayektori %1 mempunyai jumlah atom yang tidak sesuai dengan "
+#~ "molekul yang ada"
+
+#~ msgid "Animation"
+#~ msgstr "Animasi"
+
+#~ msgid "Animate trajectories, reactions, and vibrations."
+#~ msgstr "Animasi trayektori, reaksi dan getaran."
+
+#, fuzzy
+#~ msgid "Cartesian Editor"
+#~ msgstr "Pneyunting Kartesian..."
+
+#~ msgid "Cartesian Editor..."
+#~ msgstr "Pneyunting Kartesian..."
+
+#~ msgid "&Build"
+#~ msgstr "Mem&bangun"
+
+#, fuzzy
+#~ msgid "Cartesian editor"
+#~ msgstr "Pneyunting Kartesian..."
+
+#, fuzzy
+#~ msgid "Cartesian coordinates editor"
+#~ msgstr "Koordinat Cartesian"
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Jumlah atom: %1"
+
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Jumlah ikatan yang bisa diputar: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Tambahkan kendala"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "Untuk menambah kendala, molekul anda harus terdiri dari paling tidak satu "
+#~ "atom"
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Untuk menambah satu kendala ikatan, molekul anda harus mempunyai paling "
+#~ "sedikit dua atom"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Untuk menambah satu kendala sudut, molekul anda harus mempunyai paling "
+#~ "sedikit tiga atom"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Untuk menambah satu kendala torsi, molekul anda harus mempunyai paling "
+#~ "sedikit empat atom"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Trajektori..."
+
+#~ msgid "&File"
+#~ msgstr "&Berkas"
+
+#~ msgid "Import"
+#~ msgstr "Impor"
+
+#~ msgid "Open chemical file format"
+#~ msgstr "Buka format berkas kimia"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Berkas kimia (*.xyz)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Buka berkas parameter"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Berkas kimia (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Impor Trayektori"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Impor berkas trayektori"
+
+#~ msgid "&Optimize Geometry"
+#~ msgstr "&Optimisasi Geometri"
+
+#~ msgctxt "Shortcut key for optimize geometry"
+#~ msgid "Ctrl+Alt+O"
+#~ msgstr "Ctrl+Alt+O"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Pengaturan Bidang Gaya..."
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Menghitung Energi"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "Pencarian Conformer..."
+
+#~ msgid "Constraints..."
+#~ msgstr "Kendala..."
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Lupakan Pilihan"
+
+#~ msgid "Fix Selected Atoms"
+#~ msgstr "Menetapkan Pilihan Atom"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Mekanika Molekuler"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Tidak bisa pengatur bidang gaya untuk molekul ini"
+
+#~ msgid "Energy = %L1 %2"
+#~ msgstr "Energi = %L1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Optimisasi Geometrik"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Optimisasi Bidang Gaya"
+
+#~ msgid "Cancel"
+#~ msgstr "Batalkan"
+
+#~ msgid "Systematic Rotor Search"
+#~ msgstr "Pencarian Rotor Sistimatik"
+
+#~ msgid "Random Rotor Search"
+#~ msgstr "Pnecarian Rotor Acak"
+
+#~ msgid "Weighted Rotor Search"
+#~ msgstr "Pencarian Rotor Terbeban"
+
+#~ msgid "ForceField"
+#~ msgstr "BidangGaya"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
+#~ msgstr ""
+#~ "Optimalkan molekul dan membentuk conformer menggunakan mekanika molekular "
+#~ "bidang gaya"
+
+#~ msgid "Change H to Methyl"
+#~ msgstr "Meruba H ke Metil"
+
+#~ msgid "H to Methyl"
+#~ msgstr "H ke Metil"
+
+#~ msgid "H2Methyl"
+#~ msgstr "H2Methyl"
+
+#~ msgid "Transform hydrogens to methyl groups"
+#~ msgstr "Transformasi hidrogen ke grup metil"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Tambah Hidrogen"
+
+#~ msgid "Add Hydrogens for pH..."
+#~ msgstr "Tambah Hidrogen untuk pH..."
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Hapus Hidrogen"
+
+#~ msgid "Add Hydrogens for pH"
+#~ msgstr "Tambah Hidrogen untuk pH"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Hidrogen"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Tambah atau hapus hidrogen"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Tidak bisa membaca berkas %1."
+
+#~ msgid "Open Directory"
+#~ msgstr "Buka Direktori"
+
+#~ msgid "Fragment..."
+#~ msgstr "Fragmen..."
+
+#~ msgid "SMILES..."
+#~ msgstr "SMILES..."
+
+#~ msgid "&Insert"
+#~ msgstr "S&isipan"
+
+#~ msgid "Insert SMILES"
+#~ msgstr "Sisipkan SMILES"
+
+#~ msgid "Insert SMILES fragment:"
+#~ msgstr "Sisipkan SMILES fragmen:"
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Sisipkan Fragmen"
+
+#~ msgid "Insert molecular fragments for building larger molecules"
+#~ msgstr "Sisipkan fragmen molekul untuk membuat molekul yang lebih besar"
+
+#~ msgid "Peptide..."
+#~ msgstr "Peptide..."
+
+#~ msgid "Insert Peptide"
+#~ msgstr "Sisipkan Peptide"
+
+#~ msgid "Insert oligopeptide sequences"
+#~ msgstr "Sisipkan urutan oligopeptide"
+
+#~ msgid "Molecule Properties..."
+#~ msgstr "Properti Molekul..."
+
+#~ msgid "&View"
+#~ msgstr "Tam&pilan"
+
+#~ msgid "&Properties"
+#~ msgstr "&Properti"
+
+#~ msgid "Estimated Dipole Moment (D):"
+#~ msgstr "Perkiraan Momen Dipol (D):"
+
+#~ msgid "Molecular Properties"
+#~ msgstr "Properti Molekul"
+
+#~ msgid "Display standard molecular properties."
+#~ msgstr "Tampilkan properti molekul standar"
+
+#~ msgid "Fetch from PDB..."
+#~ msgstr "Mengambil dari PDB..."
+
+#~ msgid "Fetch chemical structure..."
+#~ msgstr "Mengambil struktur kimia..."
+
+#~ msgid "Fetch from URL..."
+#~ msgstr "Mengambil dari URL..."
+
+#~ msgid "PDB Entry"
+#~ msgstr "Entri PDB"
+
+#~ msgid "PDB entry to download."
+#~ msgstr "Entri PDB untuk muaturun."
+
+#~ msgid "Chemical structure to download."
+#~ msgstr "Muat turun struktur kimia"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "URL of molecule to download."
+#~ msgstr "URL molekul untuk muaturun."
+
+#~ msgid "Network Download Failed"
+#~ msgstr "Muaturun Jaringan Gagal"
+
+#~ msgid "Network timeout or other error."
+#~ msgstr "Bataswaktu jaringan atau kesalahan lain."
+
+#~ msgid "Specified molecule could not be found: %1"
+#~ msgstr "Molekul yang dikehendaki tidak ditemukan: %1"
+
+#~ msgid "Specified molecule could not be loaded: %1"
+#~ msgstr "Molekul yang dikehendaki tidak bisa dimuat: %1"
+
+#~ msgid "Network Fetch"
+#~ msgstr "Pengambilan dari Jaringan"
+
+#~ msgid "Fetch molecule files over the network."
+#~ msgstr "Mengambil berkas molekul dari jaringan."
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Menyimpan gambar hasil POV-Ray"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Berkas gambar (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "Export"
+#~ msgstr "Ekspor"
+
+#~ msgid "No filename supplied."
+#~ msgstr "Nama berkas belum diberikan."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "Nama berkas yang diberikan tidak sahih."
+
+#~ msgid "Does not compute."
+#~ msgstr "Tidak melakukan perhitungan"
+
+#~ msgid ""
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
+#~ msgstr ""
+#~ "Anda meminta tidak menggambar langsung menggunakan POV-Ray dan tidak "
+#~ "menyimpan berkas POV-Ray. Keluaran yang dihasilkan tidak akan disimpan. "
+#~ "Apakah ini anda inginkan?"
+
+#~ msgid "Cannot Write to File."
+#~ msgstr "Tidak Bisa Menulis ke Berkas"
+
+#~ msgid ""
+#~ "Cannot write to file %1. Do you have permissions to write to that "
+#~ "location?"
+#~ msgstr ""
+#~ "Tidak bisa menulis ke berkas %1. Apakah anda mempunyai hak menulis ke "
+#~ "lokasi tersebut?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "POV-Ray gagal dijalankan."
+
+#~ msgid ""
+#~ "POV-Ray failed to start. May be the path to the executable is not set "
+#~ "correctly."
+#~ msgstr ""
+#~ "POV-Ray gagal dijalankan. Kemungkinan karena lokasi berkas yang "
+#~ "dijalankan tidak tepat."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid ""
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
+#~ msgstr ""
+#~ "Membuat berkas POV-Ray dan memunculkan gambar hasil menggunakan perintah "
+#~ "baris program POV-Ray."
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Properti Atom..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Properti Ikatan..."
+
+#~ msgid "Angle Properties..."
+#~ msgstr "Properti Sudut..."
+
+#~ msgid "Torsion Properties..."
+#~ msgstr "Properti Torsi..."
+
+#~ msgid "Conformer Properties..."
+#~ msgstr "Properti Conformer..."
+
+#~ msgid "Atom Properties"
+#~ msgstr "Properti Atom"
+
+#~ msgid "Bond Properties"
+#~ msgstr "Properti Ikatan"
+
+#~ msgid "Angle Properties"
+#~ msgstr "Properti Sudut"
+
+#~ msgid "Torsion Properties"
+#~ msgstr "Properti Torsi"
+
+#~ msgid "Conformer Properties"
+#~ msgstr "Properti Conformer"
+
+#~ msgid "Properties"
+#~ msgstr "Berbagai Properti"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and torsion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Jendela untuk menampilkan properti atom, ikatan, angle dan torsi. "
+#~ "Termasuk penyunting koordinat cartesian."
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "Tahun"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Neon"
+
+#~ msgid "Element"
+#~ msgstr "Unsur"
+
+#~ msgid "Type"
+#~ msgstr "Tipe"
+
+#~ msgid "Valence"
+#~ msgstr "Valensi"
+
+#~ msgid "Formal Charge"
+#~ msgstr "Muatan Formal"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Muatan Parsial"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "X %1"
+#~ msgstr "X %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Y %1"
+#~ msgstr "Y %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Z  %1"
+#~ msgstr "Z  %1"
+
+#~ msgid "Atom %1"
+#~ msgstr "Atom %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Awal Atom"
+
+#~ msgid "End Atom"
+#~ msgstr "Akhir Atom"
+
+#~ msgid "Bond Order"
+#~ msgstr "Orde Ikatan"
+
+#~ msgid "Rotatable"
+#~ msgstr "Dapat diputar"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Length %1"
+#~ msgstr "Panjang %1"
+
+#~ msgid "Bond %1"
+#~ msgstr "Ikatan %1"
+
+#~ msgid "Vertex"
+#~ msgstr "Verteks"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Angle %1"
+#~ msgstr "Sudut %1"
+
+#~ msgid "Angle %1"
+#~ msgstr "Sudut %1"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Torsion %1"
+#~ msgstr "Torsi %1"
+
+#~ msgid "Torsion %1"
+#~ msgstr "Torsi %1"
+
+#~ msgid "Energy"
+#~ msgstr "Energi"
+
+#~ msgid "Conformer %1"
+#~ msgstr "Conformer %1"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Terminal Python"
+
+#~ msgid "pythonTerminalDock"
+#~ msgstr "pythonTerminalDock"
+
+#~ msgid "Interactive python scripting terminal"
+#~ msgstr "Terminal interaktif untuk skrip python"
+
+#, fuzzy
+#~ msgid "Dalton Input File Generator Warning"
+#~ msgstr "Pembuat Peringatan Masukan Program Gaussian"
+
+#, fuzzy
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Dalton input file preview pane?"
+#~ msgstr ""
+#~ "Apakah anda akan memperbarui teks pratampilan, semua perubahan pada "
+#~ "masukan progam Gaussian di jendela pratampilan akan terhapus?"
+
+#, fuzzy
+#~ msgid "Save Dalton Input File"
+#~ msgstr "Simpan Masukan Program Molpro"
+
+#~ msgid "Show Preview"
+#~ msgstr "Mengeluarkan Pratampilan"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Menyembunyikan Pratampilan"
+
+#~ msgid "QM Matches"
+#~ msgstr "QM Sesuai"
+
+#~ msgid "Input Generator..."
+#~ msgstr "Masukan Pembuat..."
+
+#~ msgctxt ""
+#~ "Selection to be used as an Effective Fragment Potential in calculations"
+#~ msgid "EFP Selection..."
+#~ msgstr "Pemilihan EFP..."
+
+#~ msgctxt "Selection to be used for Quantum Mechanical calculations"
+#~ msgid "QM Selection..."
+#~ msgstr "Pemilihan QM..."
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "Informasi GAMESS EFP"
+
+#~ msgid "Delete"
+#~ msgstr "Hapus"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Tidak ada Atom yang dipilih"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Anda harus memilih salah satu!"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "Konversi SMILES tidak tersedia"
+
+#~ msgid "SMILES Format Conversion Not Available!"
+#~ msgstr "Konversi Format SMILES Tidak Tersedia!"
+
+#~ msgid "Group Name"
+#~ msgstr "Nama Grup"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "efp"
+#~ msgstr "efp"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "Membuat berkas masukan untuk program kimia kuantum GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Judul"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Pengaturan Lanjut Berubah"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Pengaturan lanjut sudah dipilih.\n"
+#~ "Dibatalkan?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Tata Ulang Pengaturan Lanjut"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Anda yakin ingin menata ulang pengaturan lanjut?\n"
+#~ "Semua perubahan akan terhapus!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Tata Ulang Pengaturan Dasar"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Anda yakin ingin menata ulang pengaturan dasar?\n"
+#~ "Semua perubahan akan terhapus!"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Ekspor Masukan Program"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "Masukan Program GAMESS (*.inp)"
+
+#~ msgid "Gaussian Input Deck Generator Warning"
+#~ msgstr "Pembuat Peringatan Masukan Program Gaussian"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Gaussian input deck preview pane?"
+#~ msgstr ""
+#~ "Apakah anda akan memperbarui teks pratampilan, semua perubahan pada "
+#~ "masukan progam Gaussian di jendela pratampilan akan terhapus?"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Simpan Masukan Program Gaussian"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Masukan Program Gaussian (*.com)"
+
+#~ msgid "Gaussian Running."
+#~ msgstr "Gaussian Sedang Berjalan."
+
+#~ msgid ""
+#~ "Gaussian is already running. Wait until the previous calculation is "
+#~ "finished."
+#~ msgstr ""
+#~ "Gaussian sedang berjalan. Tunggu sampai perhitungan sebelumnya selesai."
+
+#~ msgid "Gaussian Not Installed."
+#~ msgstr "Gaussian Tidak Di Instal."
+
+#~ msgid "The G03 executable, cannot be found."
+#~ msgstr "G03 yang bisa dijalankan, tidak ditemukan."
+
+#~ msgid "G03 failed to start."
+#~ msgstr "Gagal menjalankan G03."
+
+#~ msgid "G03 did not start. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "G03 tidak bisa dijalankan. Mungkin tidak bisa di instal dengan benar."
+
+#~ msgid "Running Gaussian calculation..."
+#~ msgstr "Menjalankan perhitungan Gaussian..."
+
+#~ msgid "G03 Crashed."
+#~ msgstr "G03 Gagal."
+
+#~ msgid ""
+#~ "Gaussian did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "Gaussian tidak bisa dijalankan dengan semestinya. Mungkin tidak di instal "
+#~ "dengan benar."
+
+#~ msgid "&Gaussian..."
+#~ msgstr "&Gaussian..."
+
+#~ msgid "&MOLPRO..."
+#~ msgstr "&MOLPRO..."
+
+#~ msgid "M&OPAC..."
+#~ msgstr "M&OPAC..."
+
+#~ msgid "&NWChem..."
+#~ msgstr "&NWChem..."
+
+#~ msgid "&Q-Chem..."
+#~ msgstr "&Q-Chem..."
+
+#, fuzzy
+#~ msgid "&Dalton..."
+#~ msgstr "&Getaran..."
+
+#~ msgid "Input File Generators"
+#~ msgstr "Pembuat Berkas Masukan"
+
+#~ msgid "Create input files for quantum chemistry packages"
+#~ msgstr "Membuat berkas masukan untuk program kimia kuantum"
+
+#~ msgid "Q-Chem Input Deck Generator Warning"
+#~ msgstr "Pembuat Peringatan Masukan Program Q-Chem"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
+#~ msgstr ""
+#~ "Apakah anda akan memperbarui teks pratampilan, semua perubahan pada "
+#~ "masukan progam Q-Chem di jendela pratampilan akan terhapus?"
+
+#~ msgid "Save Molpro Input Deck"
+#~ msgstr "Simpan Masukan Program Molpro"
+
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Masukan Program Molpro (*.qcin)"
+
+#~ msgid "MOPAC Input Warning"
+#~ msgstr "Peringatan Masukan MOPAC"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "MOPAC input deck preview pane?"
+#~ msgstr ""
+#~ "Apakah anda akan memperbarui teks pratampilan, semua perubahan pada "
+#~ "masukan progam MOPAC di jendela pratampilan akan terhapus?"
+
+#~ msgid "MOPAC Running."
+#~ msgstr "MOPAC sedang berjalan."
+
+#~ msgid ""
+#~ "MOPAC is already running. Wait until the previous calculation is finished."
+#~ msgstr ""
+#~ "MOPAC sedang berjalan. Tunggu sampai perhitungan sebelumnya selesai."
+
+#~ msgid "MOPAC Not Installed."
+#~ msgstr "MOPAC Belum di instal."
+
+#~ msgid "The MOPAC executable, cannot be found."
+#~ msgstr "Berkas program MOPAC yang bisa dijalankan tidak ditemukan."
+
+#~ msgid "MOPAC failed to start."
+#~ msgstr "MOPAC gagal dijalankan."
+
+#~ msgid "MOPAC did not start. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "MOPAC tidak bisa dijalankan. Kemungkinan tidak di instal dengan benar."
+
+#~ msgid "Running MOPAC calculation..."
+#~ msgstr "Perhitungan MOPAC sedang berlangsung..."
+
+#~ msgid "MOPAC Crashed."
+#~ msgstr "MOPAC Bertabrakan."
+
+#~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr ""
+#~ "MOPAC tidak berjalan dengan benar. Kemungkingan tidak di instal dengan "
+#~ "benar."
+
+#~ msgid "Save MOPAC Input Deck"
+#~ msgstr "Simpan Masukan Program MOPAC"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Masukan Program MOPAC (*.mop)"
+
+#~ msgid "NWChem Input Deck Generator Warning"
+#~ msgstr "Pembuat Peringatan Masukan Program NWChem"
+
+#~ msgid ""
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "NWChem input deck preview pane?"
+#~ msgstr ""
+#~ "Apakah anda akan memperbarui teks pratampilan, semua perubahan pada "
+#~ "masukan progam NWChem di jendela pratampilan akan terhapus?"
+
+#~ msgid "Save NWChem Input Deck"
+#~ msgstr "Simpan Masukan Program NWChem"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "Masukan Program NWChem (*.nw)"
+
+#~ msgid "Save QChem Input Deck"
+#~ msgstr "Simpan Masukan Program QChem"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Masukan Program QChem (*.qcin)"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Membalikan Pilihan"
+
+#~ msgid "Select SMARTS..."
+#~ msgstr "Pemilihan SMARTS..."
+
+#~ msgid "Select by Element..."
+#~ msgstr "Pilih berdasarkan Unsur..."
+
+#~ msgid "Select by Residue..."
+#~ msgstr "Pilih berdasarkan Residu..."
+
+#~ msgid "Select Solvent"
+#~ msgstr "Pilih Pelarut"
+
+#~ msgid "Add Named Selection..."
+#~ msgstr "Tambah Pilihan Yang Dinamai..."
+
+#~ msgid "&Select"
+#~ msgstr "&Pilihan"
+
+#~ msgid "SMARTS Selection"
+#~ msgstr "Pilihan SMARTS"
+
+#~ msgid "SMARTS pattern to select"
+#~ msgstr "Memilih pola SMARTS"
+
+#~ msgid "Select by residue"
+#~ msgstr "Pilih berdasarkan residu"
+
+#~ msgid "Residue name"
+#~ msgstr "Nama residu"
+
+#~ msgid "There is no current selection."
+#~ msgstr "Sekarang belum ada pilihan"
+
+#~ msgid "Add Named Selection"
+#~ msgstr "Tambah Pilihan Yang Dinamai"
+
+#~ msgid "name"
+#~ msgstr "nama"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Nama tidak boleh kosong."
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Sudah ada pilihan dengan nama ini"
+
+#~ msgid "Selections"
+#~ msgstr "Pilihan"
+
+#~ msgid "Select atoms, bonds, residues..."
+#~ msgstr "Pilih atom, ikatan, residu..."
+
+#~ msgid "GLSL Shaders..."
+#~ msgstr "GLSL Shader..."
+
+#~ msgid "Open a vertex shader source file"
+#~ msgstr "Buka berkas sumber vertex shader"
+
+#~ msgid "Vertex shader files (*.vert)"
+#~ msgstr "Berkas vertex shader (*.vert)"
+
+#~ msgid "Open a fragment shader source file"
+#~ msgstr "Buka berkas sumber fragmen shader"
+
+#~ msgid "Fragment shader files (*.frag)"
+#~ msgstr "Berkas fragmen shader (*.frag)"
+
+#~ msgid "Open a shader parameters file"
+#~ msgstr "Buka berkas parameter shader"
+
+#~ msgid "Shader parameters files (*.params)"
+#~ msgstr "berkas parameter shader (*.params)"
+
+#~ msgid "GLSL Shaders"
+#~ msgstr "GLSL Shader"
+
+#~ msgid "Load and use OpenGL 2.0 GLSL shaders"
+#~ msgstr "Memuat dan menggunakan OpenGL 2.0 GLSL shader"
+
+#, fuzzy
+#~ msgid "Intensity (arb. units)"
+#~ msgstr "Intensitas (km/mol)"
+
+#, fuzzy
+#~ msgid "Energy (eV)"
+#~ msgstr "Energi"
+
+#~ msgid "Transmittance (%)"
+#~ msgstr "Transmitansi (%)"
+
+#~ msgid "Absorbance (%)"
+#~ msgstr "Absorbansi (%)"
+
+#~ msgid "No intensities"
+#~ msgstr "Tanpa intensitas"
+
+#~ msgid ""
+#~ "The vibration data in the molecule you have loaded does not have any "
+#~ "intensity data. Intensities have been set to an arbitrary value for "
+#~ "visualization."
+#~ msgstr ""
+#~ "Data getaran di molekul yang anda tambahkan tidak mempunyai data "
+#~ "intensitas. Sembarang angka diberikan sebagai intensitas untuk tujuan "
+#~ "penggambaran."
+
+#~ msgid "Wavenumber (cm<sup>-1</sup>)"
+#~ msgstr "Nomor gelombang (cm<sup>-1</sup>)"
+
+#~ msgid "Shift (ppm)"
+#~ msgstr "Shift (ppm)"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Aktinium"
+
+#, fuzzy
+#~ msgid "Intensity"
+#~ msgstr "Intensitas (km/mol)"
+
+#~ msgid "X Axis"
+#~ msgstr "Sumbu X"
+
+#~ msgid "Y Axis"
+#~ msgstr "Sumbu Y"
+
+#~ msgid "&Appearance"
+#~ msgstr "Pen&ampilan"
+
+#~ msgid "E&xport Image"
+#~ msgstr "Ek&spor Gambar"
+
+#~ msgctxt "Infrared spectra option"
+#~ msgid "Infrared"
+#~ msgstr "InfraMerah"
+
+#~ msgid "&Infrared Spectra Settings"
+#~ msgstr "Pengaturak Spektra &Inframerah"
+
+#~ msgctxt "NMR spectra option"
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "&NMR Spectra Settings"
+#~ msgstr "Pengaturan Spektra &NMR"
+
+#, fuzzy
+#~ msgid "&Density Of States Settings"
+#~ msgstr "Pengaturan PutaranOtomatis"
+
+#, fuzzy
+#~ msgid "&UV Settings"
+#~ msgstr "Pengaturan Menggambar"
+
+#, fuzzy
+#~ msgctxt "Circular Dichromism spectrum"
+#~ msgid "CD"
+#~ msgstr "CCSD"
+
+#, fuzzy
+#~ msgid "&CD Settings"
+#~ msgstr "Pengaturan Menggambar"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Radon"
+
+#, fuzzy
+#~ msgid "&Raman Settings"
+#~ msgstr "Pengaturan Menggambar"
+
+#~ msgid "No data"
+#~ msgstr "Tidak ada data"
+
+#~ msgid "Dark"
+#~ msgstr "Gelap"
+
+#~ msgid "Light"
+#~ msgstr "Terang"
+
+#~ msgid "Publication"
+#~ msgstr "Publikasi"
+
+#~ msgid "Handdrawn"
+#~ msgstr "Gambaran tangan"
+
+#~ msgid "New Scheme"
+#~ msgstr "Skema Baru"
+
+#~ msgid "Confirm Scheme Removal"
+#~ msgstr "Konfirmasi Menghapus Skema"
+
+#~ msgid "Really remove current scheme?"
+#~ msgstr "Apakah akam menghapus skema yang ada?"
+
+#~ msgid "Change Scheme Name"
+#~ msgstr "Merubah Nama Skema"
+
+#~ msgid "Enter new name for current scheme:"
+#~ msgstr "Tuliskan nama baru untuk sekema yang sekarang"
+
+#, fuzzy
+#~ msgid "Select Background Color"
+#~ msgstr "Warna Pilihan"
+
+#, fuzzy
+#~ msgid "Select Foreground Color"
+#~ msgstr "Warna Pilihan"
+
+#, fuzzy
+#~ msgid "Select Calculated Spectra Color"
+#~ msgstr "Spektra Perhitungan:"
+
+#, fuzzy
+#~ msgid "Select Imported Spectra Color"
+#~ msgstr "Spektra yang diimpor:"
+
+#~ msgid "Export Calculated Spectrum"
+#~ msgstr "Ekspor Spektrum Hasil Perhitungan"
+
+#~ msgid "Tab Separated Values (*.tsv)"
+#~ msgstr "Angka Dipisahkan Tab (*.tsv)"
+
+#~ msgid "Tab Separated Values"
+#~ msgstr "Angka Dipisahkan Tab"
+
+#~ msgid "Comma Separated Values"
+#~ msgstr "Angka Dispisahkan Koma"
+
+#~ msgid "JCAMP-DX"
+#~ msgstr "JCAMP-DX"
+
+#~ msgid "All Files"
+#~ msgstr "Semua Berkas"
+
+#~ msgid "Import Spectra"
+#~ msgstr "Impor Spektra"
+
+#~ msgid "Spectra Import"
+#~ msgstr "Impor Spektra"
+
+#~ msgid "Unknown extension: %1"
+#~ msgstr "Ekstensi tidak dikenal: %1"
+
+#~ msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
+#~ msgid "PWscf IR data (*.out)"
+#~ msgstr "PWscf IR data (*.out)"
+
+#~ msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
+#~ msgid "Turbomole IR data (control)"
+#~ msgstr "Data Turbomole IR (kontrol)"
+
+#, fuzzy
+#~ msgctxt "Do not remove 'UV' or '(spectrum)' -- needed for parsing later"
+#~ msgid "Turbomole UV data (spectrum)"
+#~ msgstr "Data Turbomole IR (kontrol)"
+
+#, fuzzy
+#~ msgctxt "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later"
+#~ msgid "Turbomole CD data (cdspectrum)"
+#~ msgstr "Data Turbomole IR (kontrol)"
+
+#~ msgid "Data Format"
+#~ msgstr "Format Data"
+
+#~ msgctxt "noun, not verb"
+#~ msgid "Format:"
+#~ msgstr "Format:"
+
+#~ msgid "Load Spectral Data"
+#~ msgstr "Memuat Data Spektral"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Portable Network Graphics"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "Tagged Image File Format"
+#~ msgstr "Tagged Image File Format"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows Bitmap"
+
+#~ msgid "Portable Pixmap"
+#~ msgstr "Portable Pixmap"
+
+#~ msgid "X11 Bitmap"
+#~ msgstr "X11 Bitmap"
+
+#~ msgid "X11 Pixmap"
+#~ msgstr "X11 Pixmap"
+
+#~ msgid "Save Spectra Image"
+#~ msgstr "Simpan Gambar Spektral"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Nama berkas tidak sahih"
+
+#~ msgid "Error"
+#~ msgstr "Kesalahan"
+
+#~ msgid "A problem occurred while writing file %1"
+#~ msgstr "Ada masalah ketika menulis berkas %1"
+
+#~ msgid "Success!"
+#~ msgstr "Sukses!"
+
+#~ msgid "Image successfully written to %1"
+#~ msgstr "Gambar berhasil disimpan ke %1"
+
+#, fuzzy
+#~ msgid "&Advanced <<"
+#~ msgstr "Lanjut"
+
+#, fuzzy
+#~ msgid "&Advanced >>"
+#~ msgstr "Lanjut"
+
+#~ msgid "&Spectra..."
+#~ msgstr "&Spektra..."
+
+#~ msgid "Spectra"
+#~ msgstr "Spektra"
+
+#~ msgid "Visualize spectral data from quantum chemistry calculations"
+#~ msgstr "Memvisualisasikan data spektral dari perhitungan kimia kuantum"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "Getaran"
+
+#~ msgid "Vibrational Analysis"
+#~ msgstr "Analisis Getaran"
+
+#~ msgid "No vibrational displacements exist."
+#~ msgstr "Tidak ada simpangan getaran"
+
+#~ msgid "Vibration"
+#~ msgstr "Getaran"
+
+#~ msgid "Visualize vibrational modes from quantum chemistry calculations"
+#~ msgstr "Menggambarkan pola getaran dari perhitungan kimia kuantum"
+
+#~ msgid "Sorting %1 vibrations by frequency..."
+#~ msgstr "Mengurutkan getaran %1 berdasarkan frekuensi..."
+
+#~ msgid "Start &Animation"
+#~ msgstr "Memulai &Animasi"
+
+#~ msgid "Stop &Animation"
+#~ msgstr "Menghentikan &Animasi"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Sambung"
+
+#~ msgid "Super Cell Builder..."
+#~ msgstr "Pembangun Super Sel..."
+
+#~ msgid "Warning"
+#~ msgstr "Peringatan"
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
+#~ msgstr ""
+#~ "Dokumen ini merupakan molekul yang di isolasi saat ini. Anda perlu "
+#~ "membuat satu sel."
+
+#~ msgid "Super Cell"
+#~ msgstr "Super Sel"
+
+#~ msgid "Build and display crystallographic super cells"
+#~ msgstr "Membangun dan menampilkan kristalografi super sel"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "MO %L1"
+#~ msgstr "MO %L1"
+
+#~ msgctxt "Highest occupied MO"
+#~ msgid "(HOMO)"
+#~ msgstr "(HOMO)"
+
+#~ msgctxt "Lowest unoccupied MO"
+#~ msgid "(LUMO)"
+#~ msgstr "(LUMO)"
+
+#~ msgctxt "A cube type of nothing - empty cube"
+#~ msgid "Nothing"
+#~ msgstr "Kosong"
+
+#~ msgctxt "Van der Waals surface type"
+#~ msgid "Van der Waals"
+#~ msgstr "Van der Waals"
+
+#~ msgctxt "Electrostatic potential surface type"
+#~ msgid "Electrostatic Potential"
+#~ msgstr "Potensial Elektrostatik"
+
+#~ msgctxt "Electron density surface type"
+#~ msgid "Electron Density"
+#~ msgstr "Kepadatan Elektron"
+
+#~ msgctxt "Molecular orbital surface type"
+#~ msgid "Molecular Orbital"
+#~ msgstr "Orbit Molekuler"
+
+#~ msgctxt "Undefined cube type"
+#~ msgid "Error - undefined type"
+#~ msgstr "Salah - tipe tidak terdefinisi"
+
+#~ msgid "Create Surfaces..."
+#~ msgstr "Membuat Permukaan..."
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Membatalkan perhitungan"
+
+#~ msgid "Calculating VdW Cube"
+#~ msgstr "Menghitung kubus VdW"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "Calculating MO %L1"
+#~ msgstr "Menghitung MO %L1"
+
+#~ msgid "VdW"
+#~ msgstr "VdW"
+
+#~ msgid "Calculate molecular orbitals and other surfaces"
+#~ msgstr "Menghitung orbit melekul dan bidang lainnya"
+
+#~ msgid "GL widget was not correctly initialized in order to make a video"
+#~ msgstr "Alat GL tidak di inisiasi dengan benar untuk membuat filem"
+
+#~ msgid "GL widget has no molecule"
+#~ msgstr "Alat GL tidak memiliki molekul"
+
+#~ msgid "Building video "
+#~ msgstr "Membuat gambar filem "
+
+#~ msgid "Video file not written."
+#~ msgstr "Berkas filem tidak direkam"
+
+#~ msgid "Could not run povray."
+#~ msgstr "Tidak dapat menjalankan povray"
+
+#~ msgid "Could not run mencoder."
+#~ msgstr "Tidak dapat menjalankan mencoder"
+
+#~ msgid "Set Aspect Ratio"
+#~ msgstr "Atur Aspek Rasio"
+
+#~ msgid ""
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
+#~ "You may keep this value, for example if you intend to use POV-Ray\n"
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
+#~ msgstr ""
+#~ "Pengaturan sekarang untuk layar adalah %1x%2 piksel, dan mempunyai aspek "
+#~ "rasio %3.\n"
+#~ "Anda dapat memakai ukuran ini, apabila anda ingin menggunakan misalnya "
+#~ "POV-Ray\n"
+#~ "untuk mendapatkan gambar of %4x1000 piksel, atau anda bisa mengganti "
+#~ "dengan ukuran lain,\n"
+#~ "apabila anda ingin menggunakan POV-Ray untuk membuat gambar, seperti "
+#~ "ukuran 1000x1000 piksel."
+
+#~ msgid "Unit Cell Parameters..."
+#~ msgstr "Parameter Unit Sel..."
+
+#~ msgid ""
+#~ "This document is currently an isolated molecule.\n"
+#~ "\n"
+#~ "Do you want to create a crystal unit cell?"
+#~ msgstr ""
+#~ "Dokumen ini merupakan molekul yang terisolasi sekarang.\n"
+#~ "\n"
+#~ "Apakah anda akan membuat satu sel kristal?"
+
+#, fuzzy
+#~ msgid "Select Unit Cell Color"
+#~ msgstr "Hapus Unit Sel"
+
+#~ msgid "Unit Cell"
+#~ msgstr "Satu Sel"
+
+#~ msgid "Build and display crystallographic unit cells"
+#~ msgstr "Membangun dan menampilkan kristalografi unit sel"
+
+#~ msgid "Apply"
+#~ msgstr "Terapkan"
+
+#~ msgid "OK"
+#~ msgstr "Oke"
+
+#~ msgid "Connect"
+#~ msgstr "Sambung"
+
+#~ msgid "Disconnect"
+#~ msgstr "Putus Sambungan"
+
+#~ msgid "&WiiTrack"
+#~ msgstr "&WiiTrack"
+
+#~ msgid "Wii Tracking"
+#~ msgstr "Wii Tracking"
+
+#~ msgid "Track motion using Wii remotes"
+#~ msgstr "Track motion menggunakan Wii remote"
+
+#~ msgid ""
+#~ "Invalid OpenGL context.\n"
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
+#~ msgstr ""
+#~ "Konteks OpenGL ada kesalahan.\n"
+#~ "Kemungkingan ada kesalahan dalam pengaturan OpenGL (apakah anda bisa "
+#~ "menjalankan aplikasi OpenGL lainnya?), atau mungkin anda menemukan kutu."
+
+#~ msgid "OpenGL error"
+#~ msgstr "Kesalahan OpenGL"
+
+#~ msgid "Debug Information"
+#~ msgstr "Informasi Awakutu"
+
+#~ msgid "FPS: %L1"
+#~ msgstr "FPS: %L1"
+
+#~ msgid "View Size: %L1 x %L2"
+#~ msgstr "Ukuran Tampilan: %L1 x %L2"
+
+#~ msgid "No molecule set"
+#~ msgstr "Tidak ada atur molekul"
+
+#~ msgid "Atoms: %L1"
+#~ msgstr "Atom: %L1"
+
+#~ msgid "Bonds: %L1"
+#~ msgstr "Ikatan: %L1"
+
+#~ msgctxt "Name of a new, untitled molecule file"
+#~ msgid "untitled"
+#~ msgstr "tanpa judul"
+
+#~ msgid "OBMol: index %1 out of reach."
+#~ msgstr "OBMol: indeks %1 diluar jangkauan."
+
+#~ msgid "File type '%1' is not supported for reading."
+#~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#~ msgid "File type for file '%1' is not supported for reading."
+#~ msgstr ""
+#~ "Tipe berkas pada berkas  '%1' tidak mempunyai dukungan untuk dibaca."
+
+#~ msgid "Reading molecule with index %1 from file '%2' failed."
+#~ msgstr "Gagal membaca molekul dengan indeks %1 dari berkas '%2'."
+
+#~ msgid "replaceMolecule: index %1 out of reach."
+#~ msgstr "mengganti Molekul: indeks %1 diluar jangkauan."
+
+#~ msgid "File type '%1' is not supported for writing."
+#~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#~ msgid "File type for file '%1' is not supported for writing."
+#~ msgstr ""
+#~ "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#~ msgid "Could not open file '%1' for writing."
+#~ msgstr "Tidak bisa membuka berkas '%1' untuk ditulis."
+
+#~ msgid "Could not open file '%1' for reading."
+#~ msgstr "Tidak bisa membuka berkas '%1' untuk dibaca."
+
+#~ msgid "Replacing molecule with index %1 in file '%2' failed."
+#~ msgstr "Gagal mengganti molekul dengan indeks %1 pada berkas '%2'"
+
+#~ msgid "File %1 cannot be opened for reading."
+#~ msgstr "Berkas %1 tidak bisa dibuka untuk dibaca."
+
+#~ msgid "Reading a molecule from file '%1' failed."
+#~ msgstr "Gagal membaca molekul pada berkas '%1'."
+
+#~ msgid "File %1 can not be opened for writing."
+#~ msgstr "Berkas %1 tidak bisa dibuka untuk ditulis."
+
+#~ msgid "Saving molecular file failed - could not rename original file."
+#~ msgstr "Gagal menyimpan berkas molekul - tidak bisa menamai ulang."
+
+#~ msgid "Saving molecular file failed - could not rename new file."
+#~ msgstr "Gagal menyimpan berkas molekul - tidak bisa memberikan nama baru."
+
+#~ msgid "Saving molecular file failed - could not remove old file."
+#~ msgstr ""
+#~ "Gagal menyimpan berkas molekul - tidak bisa menghapus nama berkas lama."
+
+#~ msgid "Writing a molecule to file '%1' failed. OpenBabel function failed."
+#~ msgstr "Gagal menulis molekul ke berkas'%1'. Fungsi OpenBabel gagal."
+
+#~ msgid "File %1 cannot be opened for writing."
+#~ msgstr "Berkas %1 tidak bisa dibuka untuk ditulis."
+
+#~ msgid "Writing conformers to file '%1' failed."
+#~ msgstr "Gagal menulis conformer ke berkas '%1'."
+
+#~ msgid "Molecule %1"
+#~ msgstr "Molekul %1"
+
+#~ msgid "No Description"
+#~ msgstr "Tidak ada penjelasan"
+
+#~ msgctxt "Default license for all Avogadro plugins"
+#~ msgid "GPL2+"
+#~ msgstr "GPL2+"
+
+#~ msgid "Unknown Python Engine"
+#~ msgstr "Enjin Python Tidak Dikenal"
+
+#~ msgid "N/A"
+#~ msgstr "TidakAda"
+
+#~ msgid "PythonEngine: checking "
+#~ msgstr "PythonEngine: memeriksa "
+
+#~ msgid "  - script has no 'Engine' class defined"
+#~ msgstr "  - skrip belum mendefinisikan 'Enjin' class"
+
+#~ msgid "  - no module"
+#~ msgstr "  - tidak ada modul"
+
+#~ msgid "Unknown Python Extension"
+#~ msgstr "Ekstensi Python Tidak Dikenal"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Skrip"
+
+#~ msgid "PythonExtension: checking "
+#~ msgstr "PythonExtension: pengecekan "
+
+#~ msgid "  - script has no 'Extension' class defined"
+#~ msgstr "  - skrip belum mendefiniskan 'Ekstensi' class"
+
+#~ msgid "Unknown Python Tool"
+#~ msgstr "Alat Python Tidak Dikenal"
+
+#~ msgid "PythonTool: checking "
+#~ msgstr "PythonTool: pengecekan "
+
+#~ msgid "  - script has no 'Tool' class defined"
+#~ msgstr "  - skrip tidak mempunyai definisi 'Tool' class"
+
+#~ msgid "Tools"
+#~ msgstr "Alat-alat"
+
+#~ msgid ""
+#~ "Align Molecules\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to two atoms.\n"
+#~ "\tThe first atom is centered at the origin.\n"
+#~ "\tThe second atom is aligned to the selected axis.\n"
+#~ "Right Mouse: \tReset alignment."
+#~ msgstr ""
+#~ "Pelurusan Molekul\n"
+#~ "\n"
+#~ "Tetikus Kiri: \tMemilih sampai dua atom.\n"
+#~ "\tAtom pertama ditengahkan pada titik pusat.\n"
+#~ "\tAtom kedua diluruskan menurut sumbu yang dipilih.\n"
+#~ "Tetikus Kanan: \tTata ulang pelurusan."
+
+#~ msgid "Axis:"
+#~ msgstr "Sumbu:"
+
+#~ msgid "Align:"
+#~ msgstr "Pelurusan:"
+
+#~ msgid "Everything"
+#~ msgstr "Semuanya"
+
+#~ msgid "Molecule"
+#~ msgstr "Molekul"
+
+#~ msgid "Align"
+#~ msgstr "Pelurusan"
+
+#~ msgid "Align molecules to a Cartesian axis"
+#~ msgstr "Pelurusan molekul menurut sumbu Kartesian"
+
+#~ msgid "Align Settings"
+#~ msgstr "Pengaturan pelurusan"
+
+#~ msgid ""
+#~ "Auto Optimization Tool\n"
+#~ "\n"
+#~ "Navigation Functions when Clicking in empty space.\n"
+#~ "Left Mouse: Rotate Space\n"
+#~ "Middle Mouse: Zoom Space\n"
+#~ "Right Mouse: Move Space\n"
+#~ "\n"
+#~ "Extra Function when running\n"
+#~ "Left Mouse: Click and drag atoms to move them"
+#~ msgstr ""
+#~ "Bantuan Optimisasi Otomatis\n"
+#~ "\n"
+#~ "Fungsi navigasi ketika klik ruang kosong.\n"
+#~ "Tetikus Kiri: Memutar Ruang\n"
+#~ "Tetikus Tengah: Memperbesar Ruang\n"
+#~ "Tetikus Kanan: Menggerakkan Ruang\n"
+#~ "\n"
+#~ "Fungsi tambahan ketika proses\n"
+#~ "Tetikus Kiri: Kilk dan menyeret atom untuk menggeser"
+
+#~ msgid "AutoOpt: Could not setup force field...."
+#~ msgstr "AutoOpt: Tidak bisa mengatur bidang gaya...."
+
+#~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
+#~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
+
+#, fuzzy
+#~ msgid "Num Constraints: %1"
+#~ msgstr "Kendala"
+
+#~ msgid "Force Field:"
+#~ msgstr "Bidang Gaya:"
+
+#~ msgid "Steps per Update:"
+#~ msgstr "Jumlah Langkah setiap Pembaruan:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Algoritma:"
+
+#~ msgid "Steepest Descent"
+#~ msgstr "Cara Steepest Descent"
+
+#~ msgid "Conjugate Gradients"
+#~ msgstr "Cara Conjugate Gradients"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Dinamika Molekuler (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Dinamika Molekuler (600K)"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Dinamika Molekuler (900K)"
+
+#~ msgid "Start"
+#~ msgstr "Mulai"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Atom-atom tetap dapat dipindahkan"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Atom-atom yang lain dapat dipindahkan"
+
+#~ msgid "Stop"
+#~ msgstr "Berhenti"
+
+#~ msgid "AutoOpt Molecule"
+#~ msgstr "AutoOpt Molekul"
+
+#~ msgid "AutoOptimization"
+#~ msgstr "OptimisasiOtomatis"
+
+#~ msgid "Automatic optimization of molecular geometry"
+#~ msgstr "Optimisasi otomatis untuk geometri molekul"
+
+#~ msgid "AutoOptimization Settings"
+#~ msgstr "Pengaturan OptimisasiOtomatis"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Bantuan Putaran Otomatis"
+
+#~ msgid "x rotation:"
+#~ msgstr "rotasi x:"
+
+#~ msgid "x rotation"
+#~ msgstr "rotasi x"
+
+#~ msgid "y rotation:"
+#~ msgstr "rotasi y:"
+
+#~ msgid "y rotation"
+#~ msgstr "rotasi y"
+
+#~ msgid "z rotation:"
+#~ msgstr "rotasi z:"
+
+#~ msgid "z rotation"
+#~ msgstr "rotasi z"
+
+#~ msgid "Reset"
+#~ msgstr "Tata Ulang"
+
+#~ msgid "AutoRotate"
+#~ msgstr "RotasiOtomatis"
+
+#~ msgid "Automatic rotation of molecules"
+#~ msgstr "Putaran otomatis molekul"
+
+#~ msgid "AutoRotate Settings"
+#~ msgstr "Pengaturan PutaranOtomatis"
+
+#~ msgid ""
+#~ "Bond Centric Manipulation Tool\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view\n"
+#~ "\n"
+#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
+#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
+#~ msgstr ""
+#~ "Bantuan Manipulasi Ikatan Sentrik\n"
+#~ "\n"
+#~ "Tetikus Kiri:   Klik dan seret untuk memutar pandangan\n"
+#~ "Tetikus Tengah: Klik dan seret untuk memperbesar dan memperkecil\n"
+#~ "Tetikus Kanan:  Klik dan seret untuk menggeser\n"
+#~ "\n"
+#~ "Klik kiri & Seret pada suatu Ikatan untuk mengatur Bidang Manipulasi:\n"
+#~ "- Kik Kiri & Seret salah satu Atom pada Ikatan untuk mengubah sudut\n"
+#~ "- Kik Kiri & Seret salah satu Atom pada Ikatan untuk mengubah panjangnya"
+
+#~ msgctxt "%L1 is the length of the bond"
+#~ msgid "Bond Length: %L1"
+#~ msgstr "Panjang Ikatan: %L1"
+
+#~ msgid " Show Angles"
+#~ msgstr " Tampilkan Sudut"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " Kancingkan ke Ikatan"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Kancingkan ke Batas: "
+
+#~ msgid "Bond Centric Manipulation"
+#~ msgstr "Manipulasi Ikatan Sentrik"
+
+#~ msgid "Bond Centric Manipulate"
+#~ msgstr "Memanipulasi Ikatan Sentrik"
+
+#~ msgid "Manipulation of bond lengths, angles, and torsions"
+#~ msgstr "Manipulasi panjang ikatan, sudut dan torsi"
+
+#~ msgid "Bond Centric Manipulate Settings"
+#~ msgstr "Pengaturan Manipulasi Ikatan Sentrik"
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "Klik untuk Pengukuran (F12)\n"
+#~ "\n"
+#~ "Tetikus Kiri: \tPilih sampai tiga Atom.\n"
+#~ "\tJarak diukur antara 1-2 dan 2-3\n"
+#~ "\tSudut diukur antara 1-3 menggunakan 2 sebagai titik acuan\n"
+#~ "Tetikus Kanan: Tata ulang cara pengukuran."
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (1->2): %L1 %2"
+#~ msgstr "Jarak (1->2): %L1 %2"
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (2->3): %L1 %2"
+#~ msgstr "Jarak (2->3): %L1 %2"
+
+#~ msgid "Angle: %L1 °"
+#~ msgstr "Sudut: %L1 °"
+
+#~ msgctxt "%L1 is distance, %2 is Angstrom symbol"
+#~ msgid "Distance (3->4): %L1 %2"
+#~ msgstr "Jarak (3->4): %L1 %2"
+
+#~ msgid "Dihedral Angle: %1 °"
+#~ msgstr "Sudut Dihedral: %1 °"
+
+#~ msgctxt "*1 is a number. You most likely do not need to translate this"
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgctxt "*2 is a number. You most likely do not need to translate this"
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgctxt "*3 is a number. You most likely do not need to translate this"
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgctxt "*4 is a number. You most likely do not need to translate this"
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Jarak:"
+
+#~ msgid "Angle:"
+#~ msgstr "Sudut:"
+
+#~ msgid "Dihedral:"
+#~ msgstr "Dihedral:"
+
+#~ msgid "Measure"
+#~ msgstr "Pengukuran"
+
+#~ msgid "Measure bond lengths, angles, and dihedrals"
+#~ msgstr "Pengukuran panajng ikatan, sudut, dan dihedral"
+
+#~ msgid "Measure Settings"
+#~ msgstr "Pengaturan Pengukuran"
+
+#~ msgid "Add Atom"
+#~ msgstr "Tambah Atom"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Hapus Atom"
+
+#~ msgid "Add Bond"
+#~ msgstr "Tambah Ikatan"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Hapus Ikatan"
+
+#~ msgid "Change Element"
+#~ msgstr "Merubah Unsur"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Merubah Orde Ikatan"
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "Bantuan Menggambar (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Menggambar Atom"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Menggambar Ikatan"
+
+#~ msgid "Draw"
+#~ msgstr "Menggambar"
+
+#~ msgid "Element:"
+#~ msgstr "Unsur:"
+
+#~ msgid "Other..."
+#~ msgstr "Lainnya..."
+
+#~ msgid "Bond Order:"
+#~ msgstr "Orde Ikatan:"
+
+#~ msgid "Single"
+#~ msgstr "Tunggal"
+
+#~ msgid "Double"
+#~ msgstr "Dua"
+
+#~ msgid "Triple"
+#~ msgstr "Tiga Kali"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Atur Hidrogen"
+
+#~ msgid "Draw and edit atoms and bonds"
+#~ msgstr "Menggambar dan menyunting atom serta ikatan"
+
+#~ msgid "Draw Settings"
+#~ msgstr "Pengaturan Menggambar"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "Alat Manipulasi (F10)\n"
+#~ "\n"
+#~ "Tetikus Kiri:   Klik dan seret untuk menggeser atom\n"
+#~ "Tetikus Tengah: Klik dan seret untuk menjauhkan dan mendekatkan atom\n"
+#~ "Tetikus Kanan:  Klik dan seret untuk memutar atom tertentu."
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Manipulasi Atom"
+
+#~ msgid "Manipulate"
+#~ msgstr "Manipulasi"
+
+#~ msgid "Translate, rotate, and adjust atoms and fragments"
+#~ msgstr "Menggeser, memutar dan mengatur atom serta fragmen"
+
+#~ msgid "Manipulate Settings"
+#~ msgstr "Pengaturan Manipulasi"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "Alat Navigasi (F9)\n"
+#~ "\n"
+#~ "Tetikus Kiri:   Klik dan seret untuk memutar tampilan\n"
+#~ "Tetikus Tengah: Klik dan seret untuk memperbesar atau memperkecil "
+#~ "tampilan\n"
+#~ "Tetikus Kanan:  Klik dan seret untuk menggeser tampilan"
+
+#~ msgid "Navigate"
+#~ msgstr "Navigasi"
+
+#~ msgid "Translate, rotate, and zoom around the current view"
+#~ msgstr "Menggeser, memutar dan mengatur besar kecil tampilan"
+
+#~ msgid "Navigate Settings"
+#~ msgstr "Pengaturan Navigasi"
+
+#, fuzzy
+#~ msgid ""
+#~ "Selection Tool (F11)\n"
+#~ "Click to pick individual atoms, residues, or fragments\n"
+#~ "Drag to select a range of atoms\n"
+#~ "Right click outside the molecule to clear selection\n"
+#~ "Use Ctrl to toggle the selection and shift to add to the selection"
+#~ msgstr ""
+#~ "Alat Bantuan Pemilihan (F11)\n"
+#~ "Klik untuk memilih  atom, residu, atau fragmen\n"
+#~ "Seret untuk memilih beberapa atom\n"
+#~ "Gunakan Ctrl to untuk menandai pilihan dan Shift untuk menambah pilihan"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Mode Pemilihan:"
+
+#~ msgid "Atom/Bond"
+#~ msgstr "Atom/Ikatan"
+
+#~ msgid "Residue"
+#~ msgstr "Residu"
+
+#~ msgid "Selection"
+#~ msgstr "Pemilihan"
+
+#~ msgid "Select atoms, residues, and molecules"
+#~ msgstr "Pemilihan atom, residu dan molekul"
+
+#~ msgid "Selection Settings"
+#~ msgstr "Pengaturan Pilihan"
+
+#~ msgid "Symbol"
+#~ msgstr "Simbol"
+
+#~ msgid "Bond Length"
+#~ msgstr "Panjang Ikatan"
+
+#~ msgid "Bond Angle"
+#~ msgstr "Sudut Ikatan"
+
+#~ msgid "Dihedral Angle"
+#~ msgstr "Sudut Dihedral"
+
+#~ msgid "Z Matrix Editor..."
+#~ msgstr "Penyunting Matriks Z"
+
+#~ msgid "Z-Matrix"
+#~ msgstr "Matriks-Z"
+
+#~ msgid "Create/edit a z-matrix"
+#~ msgstr "Membuat/menyunting matriks-z"
+
+#~ msgid "Z-Matrix Settings"
+#~ msgstr "Pengaturan Matriks-Z"
+
+#~ msgid "Residue Color Settings"
+#~ msgstr "Pengaturan Warna Residu"
+
+#~ msgid "Color residues by:"
+#~ msgstr "Warna Residu berdasarkan:"
+
+#~ msgid "Amino Colors"
+#~ msgstr "Warna Amino"
+
+#~ msgid "Shapely Colors"
+#~ msgstr "Warna pilihan"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Hidrofobisitas"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "Sumbu"
+
+#, fuzzy
+#~ msgid "Cartesian Axes"
+#~ msgstr "Cartesian"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Angka Penyesuaian"
+
+#, fuzzy
+#~ msgid "Axis 1:"
+#~ msgstr "Sumbu:"
+
+#, fuzzy
+#~ msgid "Axis 2:"
+#~ msgstr "Sumbu:"
+
+#, fuzzy
+#~ msgid "Axis 3:"
+#~ msgstr "Sumbu:"
+
+#~ msgid "Origin:"
+#~ msgstr "Titik Asal:"
+
+#, fuzzy
+#~ msgid "Norm"
+#~ msgstr "Bentuk"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Jejari Atom:"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Jejari Ikatan:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Opasitas:"
+
+#~ msgid "Van der Waals"
+#~ msgstr "Van der Waals"
+
+#~ msgid "Show Multiple Bonds"
+#~ msgstr "Tampilkan Ikatan Berganda"
+
+#~ msgid "Shape"
+#~ msgstr "Bentuk"
+
+#~ msgid "Helix"
+#~ msgstr "Heliks"
+
+#~ msgid "a"
+#~ msgstr "a"
+
+#~ msgid "b"
+#~ msgstr "b"
+
+#~ msgid "c"
+#~ msgstr "c"
+
+#~ msgid "Sheet"
+#~ msgstr "Lembar"
+
+#~ msgid "Loop"
+#~ msgstr "Loop"
+
+#~ msgid "Colors"
+#~ msgstr "Warna"
+
+#~ msgid "Dipole:"
+#~ msgstr "Duakutub:"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Momen Duakutub:"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "Warna Atur Sendiri"
+
+#~ msgid "Custom:"
+#~ msgstr "Penyesuaian:"
+
+#~ msgid "Width:"
+#~ msgstr "Lebar:"
+
+#~ msgid "Cut-off radius:"
+#~ msgstr "Jejari potong:"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "°"
+#~ msgstr "°"
+
+#~ msgid "Cut-off angle:"
+#~ msgstr "Sudut potong:"
+
+#, fuzzy
+#~ msgid "Rendering Engine:"
+#~ msgstr "Penggambaran:"
+
+#, fuzzy
+#~ msgid "TextRenderer"
+#~ msgstr "Menggambar"
+
+#, fuzzy
+#~ msgid "QPainter"
+#~ msgstr "Quintet"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "Label Atom:"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "Label Peaks:"
+
+#~ msgid "None"
+#~ msgstr "Kosong"
+
+#~ msgid "Element symbol"
+#~ msgstr "Simbol unsur"
+
+#, fuzzy
+#~ msgid "Symbol & Number in Group"
+#~ msgstr "Simbol & Nomor Atom"
+
+#~ msgid "Symbol & Atom number"
+#~ msgstr "Simbol & nomor Atom"
+
+#~ msgid "Formal charge"
+#~ msgstr "Muatan formal"
+
+#~ msgid "Partial charge"
+#~ msgstr "Muatan parsial"
+
+#~ msgid "Element name"
+#~ msgstr "Nama Unsur"
+
+#~ msgid "Residue number"
+#~ msgstr "Nomor residu"
+
+#~ msgid "Unique ID"
+#~ msgstr "ID khusus"
+
+#~ msgid "Custom data"
+#~ msgstr "Data sendiri"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "Atur Warna..."
+
+#, fuzzy
+#~ msgid "Change Font"
+#~ msgstr "Merubah Huruf..."
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "Label Ikatan:"
+
+#~ msgid "Bond length"
+#~ msgstr "Panjang Ikatan"
+
+#~ msgid "Bond number"
+#~ msgstr "Nomor Ikatan"
+
+#~ msgid "Bond order"
+#~ msgstr "Orde Ikatan"
+
+#~ msgid "Rendering:"
+#~ msgstr "Penggambaran:"
+
+#~ msgid "Backbone"
+#~ msgstr "Tulangpunggung"
+
+#~ msgid "Lines"
+#~ msgstr "Garis-garis"
+
+#~ msgid "Radius:"
+#~ msgstr "Jejari:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Termasuk Nitrogen"
+
+#~ msgid "VdW Opacity:"
+#~ msgstr "Opasitas VdW:"
+
+#~ msgid "Orbital:"
+#~ msgstr "Orbit:"
+
+#~ msgid "Render:"
+#~ msgstr "Menggambar:"
+
+#~ msgid "Fill"
+#~ msgstr "Berisi"
+
+#~ msgid "Points"
+#~ msgstr "Titik-titik"
+
+#~ msgid "Draw Box:"
+#~ msgstr "Menggambar Kotak:"
+
+#~ msgid "Style:"
+#~ msgstr "Corak Gaya:"
+
+#~ msgid "Selected Colors"
+#~ msgstr "Warna Pilihan"
+
+#~ msgid "Mapped Colors"
+#~ msgstr "Peta Warna"
+
+#~ msgid "Colors:"
+#~ msgstr "Warna-warna:"
+
+#~ msgid "Positive"
+#~ msgstr "Positif"
+
+#~ msgid "Negative"
+#~ msgstr "Negatif"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Perlihatkan Atom"
+
+#~ msgid "Animate Trajectory"
+#~ msgstr "Animasi Trayektori"
+
+#~ msgid "Load File..."
+#~ msgstr "Memuat Berkas..."
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "Dynamic Bonds"
+#~ msgstr "Ikatan Dinamik"
+
+#~ msgctxt "Continually re-run the animation in a loop"
+#~ msgid "Loop"
+#~ msgstr "Perulangan"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#~ msgid "Save as .avi..."
+#~ msgstr "Simpan sebagai .avi..."
+
+#, fuzzy
+#~ msgid "Angstroms"
+#~ msgstr "Ǻngstrom"
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Bohr"
+
+#, fuzzy
+#~ msgid "Fractional"
+#~ msgstr "DFT Fungsional:"
+
+#~ msgid "GAMESS Input"
+#~ msgstr "Masukan GAMESS"
+
+#, fuzzy
+#~ msgid "GAMESS Input #2"
+#~ msgstr "Masukan GAMESS"
+
+#, fuzzy
+#~ msgid "Turbomole Input"
+#~ msgstr "Data Turbomole IR (kontrol)"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Tata Ulang Semua"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Hapus Semua"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Kosong"
+
+#~ msgid "Conformer Search"
+#~ msgstr "Pencarian Conformer"
+
+#~ msgid "Options"
+#~ msgstr "Pilihan"
+
+#~ msgid "Number of atoms:"
+#~ msgstr "Jumlah atom:"
+
+#~ msgid "Number of rotatable bonds:"
+#~ msgstr "Jumlah ikatan yang bisa diputar:"
+
+#~ msgid "Number of conformers"
+#~ msgstr "Jumlah dari conformer"
+
+#~ msgid "Method"
+#~ msgstr "Metoda"
+
+#~ msgid "Systematic rotor search"
+#~ msgstr "Pencarian rotor sistematik"
+
+#~ msgid "Random rotor search"
+#~ msgstr "Pencarian rotor acak"
+
+#~ msgid "Weighted rotor search"
+#~ msgstr "Pencarian rotor terbeban"
+
+#~ msgid "Constraints"
+#~ msgstr "Kendala"
+
+#~ msgid "Add Constraints"
+#~ msgstr "Tambah kendala"
+
+#~ msgid "Ignore Atom"
+#~ msgstr "Tidak Hiraukan Atom"
+
+#~ msgid "Fix Atom"
+#~ msgstr "Atom tetap"
+
+#~ msgid "Fix Atom X"
+#~ msgstr "Atom Tetap X"
+
+#~ msgid "Fix Atom Y"
+#~ msgstr "Atom Tetap Y"
+
+#~ msgid "Fix Atom Z"
+#~ msgstr "Atom Tetap Z"
+
+#~ msgid "Distance"
+#~ msgstr "Jarak"
+
+#~ msgid "Angle"
+#~ msgstr "Sudut"
+
+#~ msgid "Torsion angle"
+#~ msgstr "Sudut Torsi"
+
+#~ msgid "Constraint Value"
+#~ msgstr "Angka Kendala"
+
+#~ msgid "Atom Indices"
+#~ msgstr "Indeks Atom"
+
+#~ msgid "Add"
+#~ msgstr "Tambah"
+
+#~ msgid "Save"
+#~ msgstr "Simpan"
+
+#~ msgid "Load"
+#~ msgstr "Muat"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Hapus Pilihan"
+
+#~ msgid "Delete All"
+#~ msgstr "Hapus Semua"
+
+#~ msgid "File Import..."
+#~ msgstr "Impor Berkas..."
+
+#~ msgid "Filename:"
+#~ msgstr "Nama berkas:"
+
+#~ msgid "Browse..."
+#~ msgstr "Cari..."
+
+#~ msgid "Par File:"
+#~ msgstr "Berkas Par:"
+
+#~ msgid "Attempt to perceive bonds?"
+#~ msgstr "Berusaha melihat ikatan?"
+
+#~ msgid "Perceive bonds?"
+#~ msgstr "Melihat ikatan?"
+
+#~ msgid "Setup Force Field"
+#~ msgstr "Pengaturan Bidang Gaya"
+
+#~ msgid "Force Field"
+#~ msgstr "Bidang Gaya"
+
+#~ msgid "Ghemical"
+#~ msgstr "Kimia"
+
+#~ msgid "Geometry Optimization"
+#~ msgstr "Optimisasi Geometri"
+
+#~ msgid "Number of steps"
+#~ msgstr "Jumlah Langkah"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritma"
+
+#~ msgid "Convergence"
+#~ msgstr "Konvergensi"
+
+#~ msgid "10e-"
+#~ msgstr "10e-"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "Sisipkan Fragmen..."
+
+#~ msgid "Peptide Builder"
+#~ msgstr "Pembuat Peptide"
+
+#~ msgid "Alanine"
+#~ msgstr "Alanin"
+
+#~ msgid "Ala"
+#~ msgstr "Ala"
+
+#~ msgid "Arginine"
+#~ msgstr "Arginin"
+
+#~ msgid "Arg"
+#~ msgstr "Arg"
+
+#~ msgid "Asparagine"
+#~ msgstr "Asparagin"
+
+#~ msgid "Asn"
+#~ msgstr "Asn"
+
+#~ msgid "Aspartic acid"
+#~ msgstr "Asam Aspartik"
+
+#~ msgid "Asp"
+#~ msgstr "Asp"
+
+#~ msgid "Cysteine"
+#~ msgstr "Sistein"
+
+#~ msgid "Cys"
+#~ msgstr "Cys"
+
+#~ msgid "Glutamic acid"
+#~ msgstr "Asam Glutamik"
+
+#~ msgid "Glu"
+#~ msgstr "Glu"
+
+#~ msgid "Glutamine"
+#~ msgstr "Glutamin"
+
+#~ msgid "Gln"
+#~ msgstr "Gln"
+
+#~ msgid "Glycine"
+#~ msgstr "Glisin"
+
+#~ msgid "Gly"
+#~ msgstr "Gly"
+
+#~ msgid "Histidine"
+#~ msgstr "Histidin"
+
+#~ msgid "His"
+#~ msgstr "His"
+
+#~ msgid "Isoleucine"
+#~ msgstr "Isoleusin"
+
+#~ msgid "Ile"
+#~ msgstr "Ile"
+
+#~ msgid "Valine"
+#~ msgstr "Valin"
+
+#~ msgid "Val"
+#~ msgstr "Val"
+
+#~ msgid "Tyrosine"
+#~ msgstr "Tirosin"
+
+#~ msgid "Tyr"
+#~ msgstr "Tyr"
+
+#~ msgid "Tryptophan"
+#~ msgstr "Triptopan"
+
+#~ msgid "Trp"
+#~ msgstr "Trp"
+
+#~ msgid "Threonine"
+#~ msgstr "Treonin"
+
+#~ msgid "Thr"
+#~ msgstr "Thr"
+
+#~ msgid "Serine"
+#~ msgstr "Serin"
+
+#~ msgid "Ser"
+#~ msgstr "Ser"
+
+#~ msgid "Proline"
+#~ msgstr "Prolin"
+
+#~ msgid "Pro"
+#~ msgstr "Pro"
+
+#~ msgid "Phenylalanine"
+#~ msgstr "Phenilalanin"
+
+#~ msgid "Phe"
+#~ msgstr "Phe"
+
+#~ msgid "Methionine"
+#~ msgstr "Metionin"
+
+#~ msgid "Met"
+#~ msgstr "Met"
+
+#~ msgid "Lysine"
+#~ msgstr "Lisin"
+
+#~ msgid "Lys"
+#~ msgstr "Lys"
+
+#~ msgid "Leucine"
+#~ msgstr "Leusin"
+
+#~ msgid "Leu"
+#~ msgstr "Leu"
+
+#~ msgid "Amino Acids:"
+#~ msgstr "Asam Amino:"
+
+#~ msgid "Sequence (N to C):"
+#~ msgstr "Urutan (N ke C):"
+
+#~ msgid "Stereochemistry:"
+#~ msgstr "Stereokimia:"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "N Terminus:"
+#~ msgstr "N Terminus:"
+
+#~ msgid "C Terminus:"
+#~ msgstr "C Terminus:"
+
+#~ msgid "NH₂"
+#~ msgstr "NH₂"
+
+#~ msgid "NH₃⁺"
+#~ msgstr "NH₃⁺"
+
+#~ msgid "CO₂H"
+#~ msgstr "CO₂H"
+
+#~ msgid "CO₂⁻"
+#~ msgstr "CO₂⁻"
+
+#~ msgid "Structure:"
+#~ msgstr "Struktur:"
+
+#~ msgid "Straight Chain"
+#~ msgstr "Rantai Lurus"
+
+#~ msgid "Alpha Helix"
+#~ msgstr "Alpha Helix"
+
+#~ msgid "Beta Sheet"
+#~ msgstr "Lembar Beta"
+
+#~ msgid "Other"
+#~ msgstr "Lainnya"
+
+#~ msgid "Phi:"
+#~ msgstr "Phi:"
+
+#~ msgid "Psi:"
+#~ msgstr "Psi:"
+
+#~ msgid "Chain Number:"
+#~ msgstr "Nomor Rantai:"
+
+#~ msgid "The chain number for the new peptide"
+#~ msgstr "Nomor rantai untuk peptide baru"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "G"
+#~ msgstr "G"
+
+#~ msgid "Molecule Properties"
+#~ msgstr "Properti Molekul"
+
+#~ msgid "Molecular Weight (g/mol):"
+#~ msgstr "Berat Molekul (g/mol):"
+
+#~ msgid "Chemical Formula:"
+#~ msgstr "Rumus Kimia:"
+
+#~ msgid "Number of Atoms:"
+#~ msgstr "Nomor dari Atom:"
+
+#~ msgid "Number of Bonds:"
+#~ msgstr "Nomor dari Ikatan:"
+
+#~ msgid "Number of Residues:"
+#~ msgstr "Nomor dari Residu:"
+
+#~ msgid "Energy (kJ/mol):"
+#~ msgstr "Energi (kJ/mol):"
+
+#~ msgid "Dipole Moment (D):"
+#~ msgstr "Momen Dipol (D):"
+
+#~ msgid "POV-Ray Export"
+#~ msgstr "Ekspor POV-Ray"
+
+#~ msgid "Select..."
+#~ msgstr "Pilih..."
+
+#~ msgid "povray"
+#~ msgstr "povray"
+
+#~ msgid "Render"
+#~ msgstr "Menggambar"
+
+#~ msgid "Close"
+#~ msgstr "Tutup"
+
+#~ msgid "Resolution:"
+#~ msgstr "Resolusi:"
+
+#~ msgid "Use full scene antialiasing"
+#~ msgstr "Menggunakan antialiasing penuh"
+
+#~ msgid "Antialias"
+#~ msgstr "Antialias"
+
+#~ msgid "Set the background color to be transparent"
+#~ msgstr "Ubah warna latar dengan transparan"
+
+#~ msgid "Alpha transparency"
+#~ msgstr "Transparansi Alfa"
+
+#~ msgid "Command:"
+#~ msgstr "Perintah:"
+
+#~ msgid "Render the molecule directly using command line POV-Ray"
+#~ msgstr ""
+#~ "Menggambar molekul secara langsung menggunakan perintah baris POV-Ray"
+
+#~ msgid "Render using POV-Ray"
+#~ msgstr "Menggambar dengan POV-Ray"
+
+#~ msgid "Keep the POV-Ray source after rendering has completed"
+#~ msgstr "Simpan perintah POV-Ray setelah penggambaran selesai"
+
+#~ msgid "Keep POV-Ray source after rendering"
+#~ msgstr "Simpan perintah POV-Ray setelah penggambaran"
+
+#~ msgid "Path:"
+#~ msgstr "Path:"
+
+#, fuzzy
+#~ msgid "Dalton Input"
+#~ msgstr "Masukan Gaussian"
+
+#, fuzzy
+#~ msgid "Basics"
+#~ msgstr "Basis"
+
+#~ msgid "Title:"
+#~ msgstr "Judul:"
+
+#, fuzzy
+#~ msgid "Calculate:"
+#~ msgstr "Menghitung"
+
+#~ msgid "Single Point Energy"
+#~ msgstr "Energi Satu Titik"
+
+#~ msgid "Theory:"
+#~ msgstr "Teori:"
+
+#~ msgid "HF"
+#~ msgstr "HF"
+
+#, fuzzy
+#~ msgid "KS-DFT"
+#~ msgstr "DFT"
+
+#~ msgid "MP2"
+#~ msgstr "MP2"
+
+#~ msgid "Basis Set:"
+#~ msgstr "Aturan Dasar:"
+
+#~ msgid "cc-pVDZ"
+#~ msgstr "cc-pVDZ"
+
+#~ msgid "cc-pVTZ"
+#~ msgstr "cc-pVTZ"
+
+#, fuzzy
+#~ msgid "cc-pVQZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pV5Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pV6Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "STO-nG"
+#~ msgstr "STO-3G"
+
+#, fuzzy
+#~ msgid "Pople-style"
+#~ msgstr "Pople"
+
+#, fuzzy
+#~ msgid "aug-cc-pVDZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pVTZ"
+#~ msgstr "cc-pVTZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pVQZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pV5Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pV6Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pCVDZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pCVTZ"
+#~ msgstr "cc-pVTZ"
+
+#, fuzzy
+#~ msgid "cc-pCVQZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pCV5Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pwCVDZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pwCVTZ"
+#~ msgstr "cc-pVTZ"
+
+#, fuzzy
+#~ msgid "cc-pwCVQZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "cc-pwCV5Z"
+#~ msgstr "cc-pVDZ"
+
+#~ msgid "STO-2G"
+#~ msgstr "STO-2G"
+
+#~ msgid "STO-3G"
+#~ msgstr "STO-3G"
+
+#~ msgid "STO-6G"
+#~ msgstr "STO-6G"
+
+#~ msgid "3-21G"
+#~ msgstr "3-21G"
+
+#~ msgid "4-31G"
+#~ msgstr "4-31G"
+
+#~ msgid "6-31G"
+#~ msgstr "6-31G"
+
+#~ msgid "6-311G"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "Polarization functions"
+#~ msgstr "#light Fungsi Polarisasi Atom:"
+
+#, fuzzy
+#~ msgid "3-21++G"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31+G"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "3-21G*"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31G**"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31G(3df,3pd)"
+#~ msgstr "6-31G(d,p)"
+
+#, fuzzy
+#~ msgid "6-311G*"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311G**"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311G(2df,2pd)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "3-21++G*"
+#~ msgstr "3-21G"
+
+#, fuzzy
+#~ msgid "6-31+G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G*"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-31++G**"
+#~ msgstr "6-31G"
+
+#, fuzzy
+#~ msgid "6-311+G*"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311++G**"
+#~ msgstr "6-311G"
+
+#, fuzzy
+#~ msgid "6-311++G(2d,2p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "6-311++G(3df,3pd)"
+#~ msgstr "6-311++G(2d,p)"
+
+#, fuzzy
+#~ msgid "aug-cc-pCVDZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pCVTZ"
+#~ msgstr "cc-pVTZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pCVQZ"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "aug-cc-pCV5Z"
+#~ msgstr "cc-pVDZ"
+
+#, fuzzy
+#~ msgid "Direct"
+#~ msgstr "SCF Langsung"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#, fuzzy
+#~ msgid "Functional:"
+#~ msgstr "DFT Fungsional:"
+
+#, fuzzy
+#~ msgid "B2PLYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "B3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B3LYPg"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B3P86"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B1LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "B86LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "BLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "BW"
+#~ msgstr "B"
+
+#, fuzzy
+#~ msgid "CAMB3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "DBLYP"
+#~ msgstr "B3LYP"
+
+#~ msgid "EDF1"
+#~ msgstr "EDF1"
+
+#, fuzzy
+#~ msgid "EDF2"
+#~ msgstr "EDF1"
+
+#, fuzzy
+#~ msgid "KMLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "OLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "XLYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "X3LYP"
+#~ msgstr "B3LYP"
+
+#, fuzzy
+#~ msgid "Thresholds"
+#~ msgstr "Kancingkan ke Batas: "
+
+#, fuzzy
+#~ msgid "1.0D-"
+#~ msgstr "10e-"
+
+#, fuzzy
+#~ msgid "Charge Integration:"
+#~ msgstr "Iterasi SCF Max:"
+
+#, fuzzy
+#~ msgid "Grid Specification"
+#~ msgstr "Optimisasi Geometrik"
+
+#, fuzzy
+#~ msgid "Becke"
+#~ msgstr "Tulangpunggung"
+
+#, fuzzy
+#~ msgid "SSF"
+#~ msgstr "SCF"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "Dijalankan Normal"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "Garis-garis"
+
+#, fuzzy
+#~ msgid "ultrafine"
+#~ msgstr "Glutamin"
+
+#, fuzzy
+#~ msgid "Radial Scheme:"
+#~ msgstr "&Skema:"
+
+#, fuzzy
+#~ msgid "Property:"
+#~ msgstr "Berbagai Properti"
+
+#, fuzzy
+#~ msgid "Excitation Energy"
+#~ msgstr "Menghitung Energi"
+
+#, fuzzy
+#~ msgid "Frequency Dependent"
+#~ msgstr "Frekuensi"
+
+#, fuzzy
+#~ msgid "No. excitations:"
+#~ msgstr "Tidak ada penjelasan"
+
+#~ msgid "Use Form"
+#~ msgstr "Gunakan Bentuk"
+
+#~ msgid "Generate..."
+#~ msgstr "Membuat..."
+
+#~ msgid "EFP Matches"
+#~ msgstr "EFP Matches"
+
+#~ msgid "Group Label:"
+#~ msgstr "Label Grup:"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "Pengaturan Dasar"
+
+#~ msgid "AM1"
+#~ msgstr "AM1"
+
+#~ msgid "PM3"
+#~ msgstr "PM3"
+
+#~ msgid "RHF"
+#~ msgstr "RHF"
+
+#~ msgid "CCSD(T)"
+#~ msgstr "CCSD(T)"
+
+#~ msgid "MINI"
+#~ msgstr "MINI"
+
+#~ msgid "6-31G(d)"
+#~ msgstr "6-31G(d)"
+
+#~ msgid "6-31G(d,p)"
+#~ msgstr "6-31G(d,p)"
+
+#~ msgid "6-31+G(d,p)"
+#~ msgstr "6-31+G(d,p)"
+
+#~ msgid "6-31+G(2d,p)"
+#~ msgstr "6-31+G(2d,p)"
+
+#~ msgid "6-311++G(2d,p)"
+#~ msgstr "6-311++G(2d,p)"
+
+#~ msgid "Core Potential"
+#~ msgstr "Inti Potensial"
+
+#~ msgid "Singlet"
+#~ msgstr "Singlet"
+
+#~ msgid "Doublet"
+#~ msgstr "Kembar"
+
+#~ msgid "Triplet"
+#~ msgstr "Kembar tiga"
+
+#~ msgid "Dication"
+#~ msgstr "Dication"
+
+#~ msgid "Cation"
+#~ msgstr "Cation"
+
+#~ msgid "Neutral"
+#~ msgstr "Netral"
+
+#~ msgid "Anion"
+#~ msgstr "Anion"
+
+#~ msgid "Dianion"
+#~ msgstr "Dianion"
+
+#~ msgid "On:"
+#~ msgstr "Aktif:"
+
+#~ msgid "Equilibrium Geometry"
+#~ msgstr "Kesetimbangan Geometri"
+
+#~ msgid "Transition State"
+#~ msgstr "Keadaan Transisi"
+
+#~ msgid "Frequencies"
+#~ msgstr "Frekuensi"
+
+#~ msgid "Gas"
+#~ msgstr "Gas"
+
+#~ msgid "Water"
+#~ msgstr "Air"
+
+#~ msgid "Calculate"
+#~ msgstr "Menghitung"
+
+#~ msgid "With:"
+#~ msgstr "Dengan:"
+
+#~ msgid "In:"
+#~ msgstr "Dalam:"
+
+#~ msgid "&Advanced Setup"
+#~ msgstr "Pengaturan Lanjut"
+
+#~ msgid "Advanced"
+#~ msgstr "Lanjut"
+
+#~ msgid "Basis"
+#~ msgstr "Basis"
+
+#~ msgid "Control"
+#~ msgstr "Kontrol"
+
+#~ msgid "SCF"
+#~ msgstr "SCF"
+
+#~ msgid "Hessian"
+#~ msgstr "Hessian"
+
+#~ msgid "Stat Point"
+#~ msgstr "Poin Stat"
+
+#~ msgid "Data"
+#~ msgstr "Data"
+
+#~ msgid "System"
+#~ msgstr "Sistem"
+
+#~ msgid "MO Guess"
+#~ msgstr "Kiraan MO"
+
+#~ msgid "Misc"
+#~ msgstr "Lain-lain"
+
+#~ msgid "#D Heavy Atom Polarization Functions:"
+#~ msgstr "#D Fungsi Polarisasi Atom Berat:"
+
+#~ msgid "Read"
+#~ msgstr "Baca"
+
+#~ msgid "SBKJC"
+#~ msgstr "SBKJC"
+
+#~ msgid "Hay-Wadt"
+#~ msgstr "Hay-Wadt"
+
+#~ msgid "Diffuse S-Shell on Heavy Atoms"
+#~ msgstr "Menghamburkan S-Shell pada Atom"
+
+#~ msgid "Diffuse L-Shell on Heavy Atoms"
+#~ msgstr "Hamburkan L-Shell pada Atom Berat"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "STO-4G"
+#~ msgstr "STO-4G"
+
+#~ msgid "STO-5G"
+#~ msgstr "STO-5G"
+
+#~ msgid "6-21G"
+#~ msgstr "6-21G"
+
+#~ msgid "5-31G"
+#~ msgstr "5-31G"
+
+#~ msgid "Double Zeta Valence"
+#~ msgstr "Valensi Dua Zeta"
+
+#~ msgid "Dunning/Hay DZ"
+#~ msgstr "Dunning/Hay DZ"
+
+#~ msgid "Triple Zeta Valence"
+#~ msgstr "Valensi Tiga Zeta"
+
+#~ msgid "McLean/Chandler"
+#~ msgstr "McLean/Chandler"
+
+#~ msgid "SBKJA Valence"
+#~ msgstr "Valensi SBKJA"
+
+#~ msgid "Hay/Wadt Valence"
+#~ msgstr "Valensi Hay/Wadt"
+
+#~ msgid "MNDO"
+#~ msgstr "MNDO"
+
+#~ msgid "ECP Type:"
+#~ msgstr "Tipe ECP:"
+
+#~ msgid "Default"
+#~ msgstr "Bawaan"
+
+#~ msgid "Pople"
+#~ msgstr "Pople"
+
+#~ msgid "Pople N311"
+#~ msgstr "Pople N311"
+
+#~ msgid "Dunning"
+#~ msgstr "Dunning"
+
+#~ msgid "Huzinaga"
+#~ msgstr "Huzinaga"
+
+#~ msgid "Hondo7"
+#~ msgstr "Hondo7"
+
+#~ msgid "#F Heavy Atom Polarization Functions:"
+#~ msgstr "#F Fungsi Polarisasi Atom Berat:"
+
+#~ msgid "#light Atom Polarization Functions:"
+#~ msgstr "#light Fungsi Polarisasi Atom:"
+
+#~ msgid "Polar:"
+#~ msgstr "Kutub:"
+
+#~ msgid "Max SCF Iterations:"
+#~ msgstr "Iterasi SCF Max:"
+
+#~ msgid "Gradient"
+#~ msgstr "Gradient"
+
+#~ msgid "Optimization"
+#~ msgstr "Optimisasi"
+
+#~ msgid "Trudge"
+#~ msgstr "Tertatih"
+
+#~ msgid "Saddle Point"
+#~ msgstr "Titik Duduk"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "Gradient Extremal"
+#~ msgstr "Gradient Extremal"
+
+#~ msgid "DRC"
+#~ msgstr "DRC"
+
+#~ msgid "Energy Surface"
+#~ msgstr "Permukaan Energi"
+
+#~ msgid "Morokuma"
+#~ msgstr "Morokuma"
+
+#~ msgid "Radiative Transition mom."
+#~ msgstr "Radiasi Transisi mom."
+
+#~ msgid "Spin Orbit"
+#~ msgstr "Orbit Putaran"
+
+#~ msgid "Finite Electric Field"
+#~ msgstr "Bidang Elektrik Terhingga"
+
+#~ msgid "TDHF"
+#~ msgstr "TDHF"
+
+#~ msgid "Global Optimization"
+#~ msgstr "Optimisasi global"
+
+#~ msgid "VSCF"
+#~ msgstr "VSCF"
+
+#~ msgid "FMO Optimization"
+#~ msgstr "Optimisasi FMO"
+
+#~ msgid "Raman Intensities"
+#~ msgstr "Intensitas Raman"
+
+#~ msgid "NMR"
+#~ msgstr "NMR"
+
+#~ msgid "Make EFP"
+#~ msgstr "Membuat EFP"
+
+#~ msgid "UHF"
+#~ msgstr "UHF"
+
+#~ msgid "ROHF"
+#~ msgstr "ROHF"
+
+#~ msgid "GVB"
+#~ msgstr "GVB"
+
+#~ msgid "MCSCF"
+#~ msgstr "MCSCF"
+
+#~ msgid "None (CI)"
+#~ msgstr "Kosong (Cl)"
+
+#~ msgid "Foster-Boys"
+#~ msgstr "Foster-Boys"
+
+#~ msgid "Edmistron-Ruedenberg"
+#~ msgstr "Edmistron-Ruedenberg"
+
+#~ msgid "Pipek-Mezey"
+#~ msgstr "Pipek-Mezey"
+
+#~ msgid "SCF Type:"
+#~ msgstr "Tipe SCF:"
+
+#~ msgid "Localization Method:"
+#~ msgstr "Metoda Localisasi:"
+
+#~ msgid "Exec Type:"
+#~ msgstr "Tipe Exec:"
+
+#~ msgid "CI:"
+#~ msgstr "CI:"
+
+#~ msgid "GUGA"
+#~ msgstr "GUGA"
+
+#~ msgid "Ames Lab. Determinant"
+#~ msgstr "Determinan Ames Lab."
+
+#~ msgid "Occupation Restricted Multiple Active Space"
+#~ msgstr "Penempatan Terbatas Ruang Aktif Berganda"
+
+#~ msgid "CI Singles"
+#~ msgstr "CI Tunggal"
+
+#~ msgid "Full Second Order CI"
+#~ msgstr "Orde Dua Cl Penuh"
+
+#~ msgid "General CI"
+#~ msgstr "CI Umum"
+
+#~ msgid "CC:"
+#~ msgstr "CC:"
+
+#~ msgid "LCCD: Linearized CC"
+#~ msgstr "LCCD:  CC Linier"
+
+#~ msgid "CCD: CC with Doubles"
+#~ msgstr "CCD: CC dengan Berganda"
+
+#~ msgid "CCSD: CC with Singles and Doubles"
+#~ msgstr "CCSD: CC dengan Tunggal dan Berganda"
+
+#~ msgid "R-CC"
+#~ msgstr "R-CC"
+
+#~ msgid "CR-CC"
+#~ msgstr "CR-CC"
+
+#~ msgid "EOM-CCSD"
+#~ msgstr "EOM-CCSD"
+
+#~ msgid "CR-EOM"
+#~ msgstr "CR-EOM"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "Pengalian:"
+
+#~ msgid "Normal Run"
+#~ msgstr "Dijalankan Normal"
+
+#~ msgid "Check"
+#~ msgstr "Periksa"
+
+#~ msgid "Debug"
+#~ msgstr "Awakutu"
+
+#~ msgid "Molecule Charge:"
+#~ msgstr "Muatan Molekul:"
+
+#~ msgid "Run Type:"
+#~ msgstr "Tipe Run:"
+
+#~ msgid "Use MP2"
+#~ msgstr "Gunakan MP2"
+
+#~ msgid "Use DFT"
+#~ msgstr "Gunakan DFT"
+
+#~ msgid "# of Z-Matrix Variables"
+#~ msgstr "# dari Variabel Matriks-Z"
+
+#~ msgid "Ǻngstrom"
+#~ msgstr "Ǻngstrom"
+
+#~ msgid "Bohr"
+#~ msgstr "Bohr"
+
+#~ msgid "Order of Principal Axis:"
+#~ msgstr "Orde Sumbu Utama:"
+
+#~ msgid "Coordinate Type:"
+#~ msgstr "Tipe Koordinat:"
+
+#~ msgid "C1"
+#~ msgstr "C1"
+
+#~ msgid "CS"
+#~ msgstr "CS"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "CnH"
+#~ msgstr "CnH"
+
+#~ msgid "CnV"
+#~ msgstr "CnV"
+
+#~ msgid "Cn"
+#~ msgstr "Cn"
+
+#~ msgid "S2n"
+#~ msgstr "S2n"
+
+#~ msgid "DnD"
+#~ msgstr "DnD"
+
+#~ msgid "DnH"
+#~ msgstr "DnH"
+
+#~ msgid "Dn"
+#~ msgstr "Dn"
+
+#~ msgid "TD"
+#~ msgstr "TD"
+
+#~ msgid "TH"
+#~ msgstr "TH"
+
+#~ msgid "T"
+#~ msgstr "T"
+
+#~ msgid "OH"
+#~ msgstr "OH"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "Unique cartesian Coords."
+#~ msgstr "Koordinat Cartesian."
+
+#~ msgid "Hilderbrant internals"
+#~ msgstr "Internal Hilderbrant"
+
+#~ msgid "Cartesian coordinates"
+#~ msgstr "Koordinat Cartesian"
+
+#~ msgid "MOPAC Z-Matrix"
+#~ msgstr "MOPAC Matriks-Z"
+
+#~ msgid "Use Symmetry During Calculation"
+#~ msgstr "Gunakan Simetri Ketika Menghitung"
+
+#~ msgid "Units:"
+#~ msgstr "Satuan:"
+
+#~ msgid "Point Group:"
+#~ msgstr "Grup Poin:"
+
+#~ msgid "Minutes"
+#~ msgstr "Menit"
+
+#~ msgid "Hours"
+#~ msgstr "Jam"
+
+#~ msgid "Days"
+#~ msgstr "Hari"
+
+#~ msgid "Weeks"
+#~ msgstr "Minggu"
+
+#~ msgid "Years"
+#~ msgstr "Tahun"
+
+#~ msgid "Millenia"
+#~ msgstr "Millenia"
+
+#~ msgid "MegaWords"
+#~ msgstr "MegaWords"
+
+#~ msgid "MegaBytes"
+#~ msgstr "MegaBytes"
+
+#~ msgid "GigaWords"
+#~ msgstr "GigaWords"
+
+#~ msgid "GigaBytes"
+#~ msgstr "GigaBytes"
+
+#~ msgid "Force Parallel Methods"
+#~ msgstr "Metoda Gaya Paralel"
+
+#~ msgid "Produce \"core\" file upon abort"
+#~ msgstr "Mnghasilkan berkas \"core\" saat membatalkan"
+
+#~ msgid "EVVRSP"
+#~ msgstr "EVVRSP"
+
+#~ msgid "GIVEIS"
+#~ msgstr "GIVEIS"
+
+#~ msgid "JACOBI"
+#~ msgstr "JACOBI"
+
+#~ msgid "Time Limit:"
+#~ msgstr "Batas Waktu:"
+
+#~ msgid "MemDDI:"
+#~ msgstr "MemDDI:"
+
+#~ msgid "Memory:"
+#~ msgstr "Memori:"
+
+#~ msgid "Diagonalization Method:"
+#~ msgstr "Metoda Diagonalisasi"
+
+#~ msgid "Parallel Load Balance Type"
+#~ msgstr "Tipe Keseimbangan Beban Paralel"
+
+#~ msgctxt "\"Loop\" load balancing - set static node assignments"
+#~ msgid "Loop"
+#~ msgstr "Perulangan"
+
+#~ msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
+#~ msgid "Next Value"
+#~ msgstr "Angka Selanjutnya"
+
+#~ msgid "Use External Data Representation for Messages"
+#~ msgstr "Gunakan Representasi Data Eksternal untuk Pesan Catatan"
+
+#~ msgid "Initial Guess:"
+#~ msgstr "Terkaan Awal:"
+
+#~ msgid "Hückel"
+#~ msgstr "Hückel"
+
+#~ msgid "HCore"
+#~ msgstr "HCore"
+
+#~ msgid "MO Read ($VEC)"
+#~ msgstr "MO Dibaca ($VEC)"
+
+#~ msgid "MO Saved (DICTNRY)"
+#~ msgstr "MO Disimpan (DICTNRY)"
+
+#~ msgid "Skip"
+#~ msgstr "Lewati"
+
+#~ msgid "Rotate Alpha and Beta Orbitals"
+#~ msgstr "Putar Orbit Alfa dan Beta"
+
+#~ msgid "Print the Initial Guess"
+#~ msgstr "Cetak Terkaan Awal"
+
+#~ msgid "GAMESS Interface to Other Codes"
+#~ msgstr "Antarmuka GAMESS dengan Program Lain"
+
+#~ msgid "MolPlt"
+#~ msgstr "MolPlt"
+
+#~ msgid "PltOrb"
+#~ msgstr "PltOrb"
+
+#~ msgid "AIMPAC"
+#~ msgstr "AIMPAC"
+
+#~ msgid "RPAC"
+#~ msgstr "RPAC"
+
+#~ msgid "Force a Check Run Type"
+#~ msgstr "Paksa pada Tipe Check Run"
+
+#~ msgid "Hondo 8.2"
+#~ msgstr "Hondo 8.2"
+
+#~ msgid "MELDF"
+#~ msgstr "MELDF"
+
+#~ msgid "GAMESS (UK Version)"
+#~ msgstr "GAMESS (UK Version)"
+
+#~ msgid "Gaussian 9x"
+#~ msgstr "Gaussian 9x"
+
+#~ msgid "All"
+#~ msgstr "Semua"
+
+#~ msgid "Solvate with Water"
+#~ msgstr "Solvate dengan Air"
+
+#~ msgid "Generate UHF Natural Orbitals"
+#~ msgstr "Membuat Orbit UHF Alami"
+
+#~ msgid "Direct SCF"
+#~ msgstr "SCF Langsung"
+
+#~ msgid "Compute Only Changed in Fock Matrix"
+#~ msgstr "Menghitung Hanya Perubahan di Matriks Fock"
+
+#~ msgid "Slater exchange"
+#~ msgstr "Pergantian Slater"
+
+#~ msgid "Becke 1988 exchange"
+#~ msgstr "Pertukaran Becke 1988"
+
+#~ msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
+#~ msgstr "VWN: Korelasi Vosko-Wilk-Nusair (VWN5)"
+
+#~ msgid "LYP: Lee-Yang-Parr correlation"
+#~ msgstr "LYP: Korelasi Lee-Yang-Parr"
+
+#~ msgid "SVWN: Slater exchange + VWN correlation"
+#~ msgstr "SVWN: pertukaran Slater + korelasi VWN"
+
+#~ msgid "BVWN: BECKE exchange + VWN5 correlation"
+#~ msgstr "BVWN: Pertukaran BECKE + korelasi VWN5"
+
+#~ msgid "BLYP: BECKE exchange + LYP correlation"
+#~ msgstr "BLYP: pertukaran BECKE + korelasi LYP"
+
+#~ msgid "Gill 1996 exchange"
+#~ msgstr "Pertukaran Gill 1996"
+
+#~ msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
+#~ msgstr "Pertukaran Perdew-Burke-Ernzerhof (PBE)"
+
+#~ msgid "OP: One-parameter Progressive correlation"
+#~ msgstr "OP: Korelasi progresif satu-parameter"
+
+#~ msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
+#~ msgstr "SLYP: Korelasi SLATER + Lee-Yang-Parr (LYP)"
+
+#~ msgid "SOP: SLATER + OP correlation"
+#~ msgstr "SOP: Korelasi SLATER + OP"
+
+#~ msgid "BOP: BECKE exchange + OP correlation"
+#~ msgstr "BOP: Pertukaran BECKE + korelasi OP"
+
+#~ msgid "BVWN: GILL exchange + VWN5 correlation"
+#~ msgstr "BVWN: pertukaran GILL + korelasi VWN5"
+
+#~ msgid "GLYP: GILL exchange + LYP correlation"
+#~ msgstr "GLYP: pertukaran GILL + korelasi LYP"
+
+#~ msgid "PBEVWN: PBE exchange + VWN6 correlation"
+#~ msgstr "PBEVWN: pertukaran PBE + korelasi VWN6"
+
+#~ msgid "PBELYP: PBE exchange +LYP correlation"
+#~ msgstr "PBELYP: pertukaran PBE + korelasi LYP"
+
+#~ msgid "PBEOP: PBE exchange + OP correlation"
+#~ msgstr "PBEOP: pertukaran PBE + korelasi OP"
+
+#~ msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
+#~ msgstr "BHHLYP: pertukaran HF dan BECKE + korelasi LYP"
+
+#~ msgid "Grid"
+#~ msgstr "Grid"
+
+#~ msgid "Grid-Free"
+#~ msgstr "Tanpa-Grid"
+
+#~ msgid "DFT Functional:"
+#~ msgstr "DFT Fungsional:"
+
+#~ msgid "Method:"
+#~ msgstr "Metoda:"
+
+#~ msgid "AO Integral Storage"
+#~ msgstr "Penyimpanan AO Integral"
+
+#~ msgid "Duplicated on Each Node"
+#~ msgstr "Ditiru pada Setiap Nodal"
+
+#~ msgid "Distributed Across All Nodes"
+#~ msgstr "Terdistribusi Pada Semua Nodal"
+
+#~ msgid "words"
+#~ msgstr "kata"
+
+#~ msgid "Compute MP2 Properties"
+#~ msgstr "Menghitung Properti MP2"
+
+#~ msgid "Integral Retention Cutoff:"
+#~ msgstr "Pemotongan Integral Retensi:"
+
+#~ msgid "Use Localized Orbitals"
+#~ msgstr "Gunakan Orbit Lokal"
+
+#~ msgid "# of Core Electrons:"
+#~ msgstr "# dari Elektron Inti:"
+
+#~ msgid "Transformation Method"
+#~ msgstr "Metoda Transformasi"
+
+#~ msgid "Two Phase Bin Sort"
+#~ msgstr "Two Phase Bin Sort"
+
+#~ msgid "Segmented Transformation"
+#~ msgstr "Transformasi Tersegmentasi"
+
+#~ msgid "Analytic"
+#~ msgstr "Analitik"
+
+#~ msgid "Numeric"
+#~ msgstr "Numerik"
+
+#~ msgid "Double Differenced Hessian"
+#~ msgstr "Double Differenced Hessian"
+
+#~ msgid "Print Internal Force Constants"
+#~ msgstr "Cetak Konstanta Gaya Internal"
+
+#~ msgid "Displacement Size:"
+#~ msgstr "Ukuran Simpangan:"
+
+#~ msgid "Purify Hessian"
+#~ msgstr "Bersihkan Hessian"
+
+#~ msgid "Frequency Scale Factor:"
+#~ msgstr "Faktor Skala Frekuensi:"
+
+#~ msgid "bohrs"
+#~ msgstr "bohrs"
+
+#~ msgid "Initial Hessian"
+#~ msgstr "Hessian Awal"
+
+#~ msgid "Guess (+ define)"
+#~ msgstr "Kiraan (+ definisi)"
+
+#~ msgid "Read (from $HESS)"
+#~ msgstr "Baca (dari $HESS)"
+
+#~ msgid "Update Step Size"
+#~ msgstr "Perbarui Ukuran Langkah"
+
+#~ msgid "Print Orbs at Each Iteration"
+#~ msgstr "Cetak Orbit pada setiap iterasi"
+
+#~ msgid "Gradient Convergence Criteria:"
+#~ msgstr "Kriteria Konvergensi Gradient:"
+
+#~ msgid "Jump Size:"
+#~ msgstr "Ukuran Lompatan:"
+
+#~ msgid "Stationary Point"
+#~ msgstr "Titik Stasioner"
+
+#~ msgid "Optimization Method:"
+#~ msgstr "Metoda Optimisasi:"
+
+#~ msgid "Step Size"
+#~ msgstr "Ukuran Step"
+
+#~ msgid "Maximum:"
+#~ msgstr "Maksimum:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Minimum:"
+
+#~ msgid "Initial:"
+#~ msgstr "Awal:"
+
+#~ msgid "Newton-Raphson"
+#~ msgstr "Newton-Raphson"
+
+#~ msgid "Rational Function Optimization"
+#~ msgstr "Fungsi Rasional Optimisasi"
+
+#~ msgid "Quadratic Approximation"
+#~ msgstr "Pendekatan Kuadrat"
+
+#~ msgid "Schlegel (quasi-NR)"
+#~ msgstr "Schlegel (quasi-NR)"
+
+#~ msgid "Constrained Optimization"
+#~ msgstr "Optimisasi dengan Kendala"
+
+#~ msgid "steps"
+#~ msgstr "step"
+
+#~ msgid "Recalculate Hessian Every:"
+#~ msgstr "Menghitung Ulang Setiap Hessian:"
+
+#~ msgid "Follow Mode:"
+#~ msgstr "Follow Mode:"
+
+#~ msgid "Maximum Steps:"
+#~ msgstr "Maksimum Step:"
+
+#~ msgid "Reset All"
+#~ msgstr "Tata Ulang Semua"
+
+#~ msgid "Defaults"
+#~ msgstr "Bawaan"
+
+#~ msgid "Compute..."
+#~ msgstr "Menghitung..."
+
+#~ msgid "Gaussian Input"
+#~ msgstr "Masukan Gaussian"
+
+#~ msgid "Calculation:"
+#~ msgstr "Perhitungan:"
+
+#~ msgid "Processors:"
+#~ msgstr "Prosesor:"
+
+#~ msgid "CCSD"
+#~ msgstr "CCSD"
+
+#~ msgid "Basis:"
+#~ msgstr "Basis:"
+
+#~ msgid "LANL2DZ"
+#~ msgstr "LANL2DZ"
+
+#~ msgid "Charge:"
+#~ msgstr "Muatan:"
+
+#~ msgid "Output:"
+#~ msgstr "Keluaran:"
+
+#~ msgid "Standard"
+#~ msgstr "Standar"
+
+#~ msgid "Molden"
+#~ msgstr "Molden"
+
+#~ msgid "Molekel"
+#~ msgstr "Molekel"
+
+#~ msgid "Checkpoint:"
+#~ msgstr "Checkpoint:"
+
+#~ msgid "Format:"
+#~ msgstr "Format:"
+
+#~ msgid "Cartesian"
+#~ msgstr "Cartesian"
+
+#~ msgid "Z-matrix"
+#~ msgstr "Matriks-Z"
+
+#~ msgid "Z-matrix (compact)"
+#~ msgstr "Matrix-Z (ringkas)"
+
+#~ msgid "MOLPRO Input"
+#~ msgstr "Masukan MOLPRO"
+
+#~ msgid "6-31+G(d)"
+#~ msgstr "6-31+G(d)"
+
+#~ msgid "6-311G(d)"
+#~ msgstr "6-311G(d)"
+
+#~ msgid "AUG-cc-pVDZ"
+#~ msgstr "AUG-cc-pVDZ"
+
+#~ msgid "AUG-cc-pVTZ"
+#~ msgstr "AUG-cc-pVTZ"
+
+#~ msgid "MOPAC Input"
+#~ msgstr "Masukan MOPAC"
+
+#~ msgid "Quartet"
+#~ msgstr "Quartet"
+
+#~ msgid "Quintet"
+#~ msgstr "Quintet"
+
+#~ msgid "MNDO-d"
+#~ msgstr "MNDO-d"
+
+#~ msgid "PM6"
+#~ msgstr "PM6"
+
+#~ msgid "RM1"
+#~ msgstr "RM1"
+
+#~ msgid "NWChem Input"
+#~ msgstr "Masukan NWChem"
+
+#~ msgid "Q-Chem Input"
+#~ msgstr "Masukan Q-Chem"
+
+#~ msgid "B3LYP5"
+#~ msgstr "B3LYP5"
+
+#~ msgid "M06-2X"
+#~ msgstr "M06-2X"
+
+#~ msgid "LACVP"
+#~ msgstr "LACVP"
+
+#~ msgid "Load Shaders"
+#~ msgstr "Memuat Shader"
+
+#~ msgid "Shader Name:"
+#~ msgstr "Nama Shader:"
+
+#~ msgid "Vertex Shader:"
+#~ msgstr "Vertex Shader:"
+
+#~ msgid "Fragment Shader:"
+#~ msgstr "Fragmen Shader:"
+
+#~ msgid "Parameters:"
+#~ msgstr "Parameter:"
+
+#~ msgid "Assign Shader"
+#~ msgstr "Terapkan Shader"
+
+#~ msgid "Display Type:"
+#~ msgstr "Tipe Monitor:"
+
+#~ msgid "Shader Program:"
+#~ msgstr "Program Shader:"
+
+#~ msgid "Spectra Visualization"
+#~ msgstr "Visualisasi Spektra"
+
+#~ msgid ""
+#~ "Controls:\n"
+#~ "Double left click: Restore default axis limits\n"
+#~ "Right click + drag: Move plot\n"
+#~ "Middle click + drag: Zoom to region\n"
+#~ "Scroll wheel: Zoom to cursor"
+#~ msgstr ""
+#~ "Kontrol:\n"
+#~ "Klik kiri dua kali: Mengembalikan batas sumbu bawaan\n"
+#~ "Klik kanan + seret: Menggeser Plot\n"
+#~ "Klik tengah + seret: Perbesar atau perkecil daerah\n"
+#~ "Putar roda tetikus: Perbesar atau perkecil menurut kursor"
+
+#~ msgid "&Load data..."
+#~ msgstr "&Muat data..."
+
+#~ msgid "&Close"
+#~ msgstr "T&utup"
+
+#~ msgid "Calculated Spectra:"
+#~ msgstr "Spektra Perhitungan:"
+
+#~ msgid "Set Color..."
+#~ msgstr "Atur Warna..."
+
+#~ msgid "Imported Spectra:"
+#~ msgstr "Spektra yang diimpor:"
+
+#~ msgid "Font:"
+#~ msgstr "Huruf:"
+
+#~ msgid "Change Font..."
+#~ msgstr "Merubah Huruf..."
+
+#~ msgid "Show"
+#~ msgstr "Tampilkan"
+
+#~ msgid "Imports a tsv of experimental spectra to overlay on the plot."
+#~ msgstr "Impor spektra hasil eksperimen sebagai tambahan dalam plot"
+
+#~ msgid "&Import..."
+#~ msgstr "&Impor..."
+
+#~ msgid "Background:"
+#~ msgstr "Latar Belakang:"
+
+#~ msgid "Foreground:"
+#~ msgstr "Latar Depan:"
+
+#~ msgid "New..."
+#~ msgstr "Baru..."
+
+#~ msgid "Remove..."
+#~ msgstr "Hapus..."
+
+#~ msgid "Rename..."
+#~ msgstr "Namai ulang..."
+
+#~ msgid "TODO"
+#~ msgstr "Perlu Dikerjakan"
+
+#~ msgid "&Schemes:"
+#~ msgstr "&Skema:"
+
+#~ msgid "&Export..."
+#~ msgstr "&Ekspor..."
+
+#~ msgid "&DPI:"
+#~ msgstr "&DPI:"
+
+#~ msgid "&Width:"
+#~ msgstr "Lebar:"
+
+#~ msgid "&Height"
+#~ msgstr "Tinggi"
+
+#~ msgid "&Filename:"
+#~ msgstr "Nama Berkas:"
+
+#~ msgid "cm"
+#~ msgstr "cm"
+
+#~ msgid "mm"
+#~ msgstr "mm"
+
+#~ msgid "in"
+#~ msgstr "in"
+
+#~ msgid "px"
+#~ msgstr "px"
+
+#~ msgid "&Save Image..."
+#~ msgstr "&Simpan gambar..."
+
+#~ msgid ""
+#~ "Use an optimized value for the font size instead of the scheme-specified "
+#~ "value (screen to image point sizes don't translate well!)"
+#~ msgstr ""
+#~ "Gunakan ukuran huruf yang optimal sebagai ganti dari angka dinyatakan "
+#~ "melalui skema"
+
+#~ msgid "Auto-adjust F&ont Size"
+#~ msgstr "Pengaturan Otomatis Ukuran Huru&f"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "y"
+#~ msgstr "y"
+
+#, fuzzy
+#~ msgid "Export Data"
+#~ msgstr "Ekspor"
+
+#, fuzzy
+#~ msgid "Spectra Tab"
+#~ msgstr "Spektra"
+
+#~ msgid "&Gaussian Width:"
+#~ msgstr "Lebar &Gaussian:"
+
+#~ msgid "&Label peaks"
+#~ msgstr "&Label peaks"
+
+#, fuzzy
+#~ msgid "Energy units:"
+#~ msgstr "Energi"
+
+#, fuzzy
+#~ msgid "Fermi Energy: "
+#~ msgstr "Energi"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "Label"
+
+#, fuzzy
+#~ msgid "States / Cell"
+#~ msgstr "Menghasilkan Sel"
+
+#, fuzzy
+#~ msgid "States / Atom"
+#~ msgstr "Awal Atom"
+
+#, fuzzy
+#~ msgid "tab_IR_Raman"
+#~ msgstr "tab_IR"
+
+#~ msgid "&Y Axis Units:"
+#~ msgstr "Satuan Sumbu &Y:"
+
+#, fuzzy
+#~ msgid "Scaling Type:"
+#~ msgstr "Tipe SCF:"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Garis-garis"
+
+#, fuzzy
+#~ msgid "Relative"
+#~ msgstr "Negatif"
+
+#, fuzzy
+#~ msgid "Scale &Factor:"
+#~ msgstr "Faktor Skala Frekuensi:"
+
+#, fuzzy
+#~ msgid "Intensities"
+#~ msgstr "Tanpa intensitas"
+
+#, fuzzy
+#~ msgid "Temperature:"
+#~ msgstr "Templet"
+
+#~ msgid "tab_NMR"
+#~ msgstr "tab_NMR"
+
+#~ msgid "Nucleus:"
+#~ msgstr "Nukleus:"
+
+#~ msgid "&Reference:"
+#~ msgstr "&Referensi:"
+
+#~ msgid "Gaussian &Width:"
+#~ msgstr "Le&bar Gaussian:"
+
+#~ msgid "Reset &Plot Axes"
+#~ msgstr "Tata Ulan Sumbu &Plot"
+
+#~ msgid "Label Peaks:"
+#~ msgstr "Label Peaks:"
+
+#~ msgid "ppm"
+#~ msgstr "ppm"
+
+#~ msgid "Molecular Vibrations"
+#~ msgstr "Getaran molekuler"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "&Berkas"
+
+#, fuzzy
+#~ msgid "ν (cm⁻¹)"
+#~ msgstr "Frekuensi (cm⁻¹)"
+
+#, fuzzy
+#~ msgid "I (km/mol)"
+#~ msgstr "Intensitas (km/mol)"
+
+#, fuzzy
+#~ msgid "&Show Spectra..."
+#~ msgstr "&Spektra..."
+
+#~ msgid "higher frequency vibrations will show faster movement"
+#~ msgstr ""
+#~ "getaran dengan frekuensi lebih tinggi akan memperlihatkan pergerakan "
+#~ "lebih cepat"
+
+#~ msgid "Animation speed set by frequency"
+#~ msgstr "Kecepatan animasi diatur dengan frekuensi"
+
+#~ msgid "Display force &vectors"
+#~ msgstr "Menampilkan &vektor gaya"
+
+#, fuzzy
+#~ msgid "&Normalize displacements"
+#~ msgstr "Tidak ada simpangan getaran"
+
+#~ msgid "Super Cell Parameters"
+#~ msgstr "Parameter Super Sel"
+
+#~ msgid "Super Cell Options"
+#~ msgstr "Pilihan Super Sel"
+
+#~ msgid "A repeat:"
+#~ msgstr "Ulang A:"
+
+#~ msgid "B repeat:"
+#~ msgstr "Ulang B:"
+
+#~ msgid "C repeat:"
+#~ msgstr "Ulang C:"
+
+#~ msgid "Generate Cell"
+#~ msgstr "Menghasilkan Sel"
+
+#~ msgid "Create Surfaces"
+#~ msgstr "Membuat Permukaan"
+
+#~ msgid "Surface Type:"
+#~ msgstr "Tipe Permukaan:"
+
+#~ msgid "Color By:"
+#~ msgstr "Warna Berdasarkan:"
+
+#~ msgid "Nothing"
+#~ msgstr "Kosong"
+
+#~ msgctxt "low resolution"
+#~ msgid "Low"
+#~ msgstr "Rendah"
+
+#~ msgctxt "medium resolution"
+#~ msgid "Medium"
+#~ msgstr "Sedang"
+
+#~ msgctxt "high resolution"
+#~ msgid "High"
+#~ msgstr "Tinggi"
+
+#~ msgctxt "very high resolution"
+#~ msgid "Very High"
+#~ msgstr "Sangat Tinggi"
+
+#~ msgid "Isosurface cutoff value"
+#~ msgstr "Angka potong Permukaan Iso"
+
+#~ msgid "Iso Value:"
+#~ msgstr "Angka Iso:"
+
+#~ msgctxt ""
+#~ "Add the new surface to this particular display type (i.e., orbital or "
+#~ "surface)"
+#~ msgid "In Display Type:"
+#~ msgstr "Tipe Ditampilkan:"
+
+#~ msgid "New Display"
+#~ msgstr "Tampilan Baru"
+
+#~ msgid "Advanced..."
+#~ msgstr "Pengaturan Lanjut..."
+
+#~ msgid "Unit Cell Parameters"
+#~ msgstr "Parameter Unit Sel"
+
+#~ msgid "Unit Cell Display Options"
+#~ msgstr "Pilihan Tampilan Unit Sel"
+
+#~ msgid "Delete Unit Cell"
+#~ msgstr "Hapus Unit Sel"
+
+#~ msgid "Fill Unit Cell"
+#~ msgstr "Isi Unit Sel"
+
+#, fuzzy
+#~ msgid "Change Color"
+#~ msgstr "Warna pilihan"
+
+#~ msgid "A:"
+#~ msgstr "A:"
+
+#~ msgid "alpha:"
+#~ msgstr "alpha:"
+
+#~ msgid "B:"
+#~ msgstr "B:"
+
+#~ msgid "beta:"
+#~ msgstr "beta:"
+
+#~ msgid "C:"
+#~ msgstr "C:"
+
+#~ msgid "gamma:"
+#~ msgstr "gamma:"
+
+#~ msgid "Axes (Å)"
+#~ msgstr "Sumbu (Å)"
+
+#~ msgid "Angles (°)"
+#~ msgstr "Sudut (°)"
+
+#~ msgid "Form"
+#~ msgstr "Bentuk"
+
+#~ msgid "Python Settings"
+#~ msgstr "Setelan Python"
+
+#~ msgid "Z Matrix Editor"
+#~ msgstr "Penyunting Z Matrix"
+
+#~ msgid "Import Selected Atoms"
+#~ msgstr "Impor Atom Terpilih"
+
+#~ msgid "Remove Atom"
+#~ msgstr "Hapus Atom"
+
+#~ msgid "First Action"
+#~ msgstr "Aksi Pertama"
+
+#~ msgid "Second Action"
+#~ msgstr "Aksi Kedua"
+
+#~ msgid "&Template"
+#~ msgstr "&Templet"
+
+#~ msgid "&Edit"
+#~ msgstr "S&untingan"
+
+#~ msgid "Template"
+#~ msgstr "Templet"
+
+#~ msgid "Example extension"
+#~ msgstr "Contoh ekstensi"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Buka berkas ligand"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Berkas Avogadro (*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Buka berkas mol"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Sembarang berkas (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Simpan Berkas Film"
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "berkas film (*.avi)"
+
+#~ msgid "Save Traj File"
+#~ msgstr "Simpan Berkas Traj"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "berkas trayektori (*.xyz)"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin Morph..."
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Gagal membaca berkas mol %1."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dua molekul mempunyai nomor atom berbeda %1 %2"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan potret"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Tidak bisa menyimpan berkas %1."
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "Alat GL tidak di inisialisasi dengan benar untuk menyimpan filem"
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr ""
+#~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Berkas filem tidak sahih. Harus ditulis direktori berkas dengan lengkap, "
+#~ "diakhiri dengan .avi"
+
+#~ msgid "Would write file to %1."
+#~ msgstr "Akan menulis berkas ke %1."
+
+#~ msgid "Wrote file %1."
+#~ msgstr "Sudah menulis berkas %1."
+
+#~ msgid "Linear Morph"
+#~ msgstr "Linear Morph"
+
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "Membuat interpolasi linier untuk animasi"
+
+#~ msgid "Cartesian Properties"
+#~ msgstr "Properti Kartesian"
+
+#~ msgid "Atom Index %1"
+#~ msgstr "Indeks Atom %1"
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "Tutup Pengaturan <<"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "&Buka Pengaturan >>"
+
+#~ msgid "Export Vibrational Data"
+#~ msgstr "Ekspor Data Getaran"
+
+#~ msgid "No vibrations have been computed for this molecule."
+#~ msgstr "Tidak ada perhitungan getaran untuk molekul ini"
+
+#~ msgid "Create ligand"
+#~ msgstr "Membuat ligand"
+
+#~ msgid "create ligand from current selection"
+#~ msgstr "membuat ligand dari pilihan sekarang"
+
+#~ msgid "create ligand from residue name"
+#~ msgstr "membuat ligand dari nama residu"
+
+#~ msgid "create ligand from file..."
+#~ msgstr "membuat ligand dari berkas..."
+
+#~ msgid "The residue name"
+#~ msgstr "Nama residu nya"
+
+#~ msgid "Linear Morph Trajectory"
+#~ msgstr "Trayektori Linear Morph"
+
+#~ msgid ""
+#~ "Load a second conformation and compute a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Memuat conformation kedua dan menghitung dengan linier interpolasi "
+#~ "menggunakan conformation yang ada."
+
+#~ msgid "button to load a second conformation from a file."
+#~ msgstr "tombol untuk memuat konformasi kedua dari berkas"
+
+#~ msgid "Load Second Conformation ..."
+#~ msgstr "Memuat Conformasi Kedua..."
+
+#~ msgid "Num Frames"
+#~ msgstr "Num Frames"
+
+#~ msgid ""
+#~ "Save snapshots of the trajectory as a series of POVRay files.  These can "
+#~ "then be used to make a movie."
+#~ msgstr ""
+#~ "Simpan cuplikan layar dari trayektori sebagai berkas seri POVRay. Berkas "
+#~ "ini dapat digunakan untuk membuat filem."
+
+#~ msgid "Button to save an .xyz trajectory."
+#~ msgstr "Tombol untuk menyimpan berkas trayektori .xyz"
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Menyimpan trayektori..."
+
+#~ msgid "Save movie..."
+#~ msgstr "Menyimpan filem..."
+
+#~ msgid "Create binding pocket"
+#~ msgstr "Membuat ikatan poket"
+
+#~ msgid "create pocket from current selection"
+#~ msgstr "membuat poket dari pilihan"
+
+#~ msgid "create pocket from residue name"
+#~ msgstr "membuat poket dari nama residu"
+
+#~ msgid ""
+#~ "All atoms within radius from the ligand will be part of the binding pocket"
+#~ msgstr ""
+#~ "Semua atom dalam radius dari ligand akan menjadi bagian dari poket ikatan"
+
+#~ msgid "Sc&ale:"
+#~ msgstr "Sk&ala:"
+
+#~ msgid "MO 666"
+#~ msgstr "MO 666"
+
+#~ msgid "&Scale:"
+#~ msgstr "&Skala:"
+
+#~ msgid "E&xport..."
+#~ msgstr "Eksp&or"
+
+#~ msgctxt ""
+#~ "Should the navigate tool display visual cues about the action taking "
+#~ "place?"
+#~ msgid ""
+#~ "\n"
+#~ "     </property>\n"
+#~ "     <property name=\"text\">\n"
+#~ "      <string>Display visual cues"
+#~ msgstr ""
+#~ "\n"
+#~ "     </property>\n"
+#~ "     <property name=\"text\">\n"
+#~ "      <string>Menampilkan isyarat gambar"
+
+#~ msgid ""
+#~ "Display visual cues</string>\n"
+#~ "     </property>"
+#~ msgstr ""
+#~ "Menampilkan isyarat gambar</string>\n"
+#~ "     </property>"
+
+#~ msgid "Add Directory"
+#~ msgstr "Tambah Direktori"
+
+#~ msgid "Reset List"
+#~ msgstr "Tata Ulang Senarai"
+
+#~ msgid "Caesium"
+#~ msgstr "Sesium"
+
+#~ msgid "Renders protein secundary structure"
+#~ msgstr "Menggambarkan struktur protein sekunder"
+
+#~ msgid "Orbitals"
+#~ msgstr "Orbit"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Menggambarkan orbit molekul"
+
+#~ msgid "Surface"
+#~ msgstr "Permukaan"
+
+#~ msgid "Renders computed molecular surfaces"
+#~ msgstr "Membuat gambar permukaan molekul hasil perhitungan"
+
+#~ msgid "Animate trajectories, reactions, and vibratins."
+#~ msgstr "Animasi trayektori, reaksi, dan vibratin."
+
+#~ msgid "ESP"
+#~ msgstr "ESP"
+
+#~ msgid "EFP Selection..."
+#~ msgstr "Pemilihan EFP..."
+
+#~ msgid "QM Selection..."
+#~ msgstr "Pemilihan QM..."
+
+#~ msgid "Create input files for quantum chemistry packages like Gaussian"
+#~ msgstr "Membuat berkas masukan untuk program kimia kuantum seperti Gaussian"
+
+#~ msgid "Q-Chem Input..."
+#~ msgstr "Masukan Q-Chem..."
+
+#~ msgid "MOLPRO Input..."
+#~ msgstr "Masukan MOLPRO..."
+
+#~ msgid "Gaussian Input..."
+#~ msgstr "Masukan Gaussian..."
+
+#~ msgid "MOPAC Input..."
+#~ msgstr "Masukan MOPAC..."
+
+#~ msgid "&NWChem Input..."
+#~ msgstr "Masukan &NWChem..."
+
+#~ msgid "VdW Cube"
+#~ msgstr "Kubus VdW"
+
+#~ msgid "Gaussian Input Deck"
+#~ msgstr "Masukan Program Gaussian"
+
+#~ msgid ""
+#~ "Windows for displaying atom, bond, angle and tosion properties. It also "
+#~ "includes a cartesian coordinate editor."
+#~ msgstr ""
+#~ "Jendela untuk menampilkan properti atom, ikatan, sudut dan torsi, "
+#~ "termasuk penyunting koordinat kartesian."
+
+#~ msgid "Aign Settings"
+#~ msgstr "Pengaturan Pelurusan"
+
+#~ msgid "Color:"
+#~ msgstr "Warna:"
+
+#~ msgid "Custom Data"
+#~ msgstr "Data Penyesuaian"
+
+#~ msgid "Electrostatic Potential (ESP)"
+#~ msgstr "Potensial Elektrostatik (ESP)"
+
+#~ msgid "Single Point Entry"
+#~ msgstr "Entri Satu Poin"
+
+#~ msgid "Seconds"
+#~ msgstr "Detik"
+
+#~ msgid "Bytes"
+#~ msgstr "Bytes"
+
+#~ msgid "Words"
+#~ msgstr "Kata"
+
+#~ msgid "Next Value"
+#~ msgstr "Angka Selanjutnya"
+
+#~ msgid "Huckel"
+#~ msgstr "Huckel"
+
+#~ msgid "Step Size:"
+#~ msgstr "Ukuran Langkah:"
+
+#~ msgid "z"
+#~ msgstr "z"
+
+#~ msgid "Max:"
+#~ msgstr "Maks:"
+
+#~ msgid "Cubes"
+#~ msgstr "Kubus"
+
+#~ msgid "Cube Dimensions"
+#~ msgstr "Dimensi Kubus"
+
+#~ msgid "Steps:"
+#~ msgstr "Langkah:"
+
+#~ msgid "Calculate Van der Waals Cube"
+#~ msgstr "Menghitung Kubus Van der Waals"
+
+#~ msgid "0.02"
+#~ msgstr "0.02"
+
+#~ msgid "Cube:"
+#~ msgstr "Kubus:"
+
+#~ msgid "Calculate Electron Density"
+#~ msgstr "Menghitung Densitas Elektron"
+
+#~ msgid "Calculate MO"
+#~ msgstr "Menghitung MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Menghitung Semua MO"
+
+#~ msgid "Van der Waals Surface"
+#~ msgstr "Permukaan Van der Waals"
+
+#~ msgid "Calculate Mesh"
+#~ msgstr "Mengitung Mesh"
+
+#~ msgid "1.000"
+#~ msgstr "1.000"
+
+#~ msgid "0.000"
+#~ msgstr "0.000"
+
+#~ msgid "0.0"
+#~ msgstr "0.0"
+
+#~ msgid "Distance:"
+#~ msgstr "Jarak:"
+
+#~ msgid "ESP (approximate)"
+#~ msgstr "ESP (perkiraan)"
+
+#~ msgid "SVWN: Slater exhange + VWN correlation"
+#~ msgstr "SVWN: Pertukaran Slater + Korelasi VWN"
+
+#~ msgid "NMR &Type:"
+#~ msgstr "NMR &Tipe:"
+
+#~ msgid ""
+#~ "Load a second confromation and computer a linear interpolation with the "
+#~ "current conformation."
+#~ msgstr ""
+#~ "Memuat conformasi kedua dan penghitung interpolasi linier dengan "
+#~ "conformasi sekarang."
+
+#~ msgid "Isosurfaces"
+#~ msgstr "PermukaanIso"
+
+#~ msgid "Range:"
+#~ msgstr "Jangkauan:"
+
+#~ msgid "Cube Range:"
+#~ msgstr "Jakauan Kubus:"
+
+#~ msgid "Name"
+#~ msgstr "Nama"
+
+#~ msgid "File type for file '%1' is not a supported for writing."
+#~ msgstr ""
+#~ "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk ditulis."
+
+#~ msgid "File type '%1' is not a supported for reading."
+#~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#~ msgid "File type for file '%1' is not a supported for reading."
+#~ msgstr "Tipe berkas pada berkas '%1' tidak mempunyai dukungan untuk dibaca."
+
+#~ msgid "File type '%1' is not a supported for writing."
+#~ msgstr "Tipe berkas '%1' tidak mempunyai dukungan untuk ditulis."

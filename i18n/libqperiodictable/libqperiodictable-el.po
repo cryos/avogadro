@@ -1,0 +1,2085 @@
+# Greek translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-22 13:46+0400\n"
+"PO-Revision-Date: 2009-07-22 08:30+0000\n"
+"Last-Translator: Anastasios Bourazanis <a.brzns@gmail.com>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+msgid "Official Name"
+msgstr ""
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+msgid "Atomic Number"
+msgstr ""
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Κοβάλτιο"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Ακτίνα"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+msgid "Pauling Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+msgid "Ionization Potential"
+msgstr ""
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+msgid "Electron Affinity"
+msgstr ""
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Υδρογόνο"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Ήλιο"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Λίθιο"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Βηρύλλιο"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Βόριο"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Άνθρακας"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Άζωτο"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Οξυγόνο"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Φθόριο"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Νέον"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Νάτριο"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Μαγνήσιο"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Αργίλιο"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Πυρίτιο"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Φωσφόρος"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Θείο"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Χλώριο"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Αργό"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Κάλιο"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Ασβέστιο"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Σκάνδιο"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Τιτάνιο"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Βανάδιο"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Χρώμιο"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Μαγγάνιο"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Σίδηρος"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Κοβάλτιο"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Νικέλιο"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Χαλκός"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Ψευδάργυρος"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Γάλλιο"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Γερμάνιο"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Αρσενικό"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Σελήνιο"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Βρώμιο"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Κρυπτό"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Ρουβίδιο"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Στρόντιο"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Ύττριο"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Ζιρκόνιο"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Νιόβιο"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Μόλυβδος"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Τεχνήτιο"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Ρουθήνιο"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Ρόδιο"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Παλλάδιο"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Άργυρος"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Κάδμιο"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Ίνδιο"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Κασσίτερος"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Αντιμόνιο"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Τελλούριο"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Ιώδιο"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Ξένον"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "Καίσιο"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Βάριο"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Λανθάνιο"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Δημήτριο"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Πρασεοδύμιο"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Νεοδύμιο"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Προμήθειο"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Σαμάριο"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Ευρώπιο"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Γαδολίνιο"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Τέρβιο"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Δυσπρόσιο"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Όλμιο"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Έρβιο"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Θούλιο"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Υττέρβιο"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Λουτέτιο"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Αφνιο"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Ταντάλιο"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Βολφράμιο"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Ρήνιο"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "'Οσμιο"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Ιρίδιο"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Λευκόχρυσος"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Χρυσός"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Υδράργυρος"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Θάλλιο"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Μόλυβδος"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Βισμούθιο"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Πολώνιο"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Αστάτιο"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Ραδόνιο"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Φράγκιο"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Ράδιο"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Ακτίνιο"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Θόριο"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Πρωτακτίνιο"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Ουράνιο"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Ποσειδώνιο"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Πλουτώνιο"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Αμερίκιο"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Κιούριο"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Μπερκέλιο"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Καλιφόρνιο"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Αϊνσταϊνιο"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Φέρμιο"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Μεντελέβιο"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Νομπέλιο"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Λωρέντζιο"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Ρουδεφόρδιο"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Δούβνιο"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Σημπόργκιο"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Μπόριο"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Χάσσιο"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Μαϊτνέριο"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Δαρμστάτιο"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Ρεντγκένιο"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ονούμβιο"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ουνούτριο"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ουνουνκουάδιο"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ουνουνπέντιο"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ουνουνέξιο"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ουνουνσέπτιο"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ουνουνόκτιο"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Περιοδικός Πίνακας"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, ,"
+"Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,a.brzns@gmail.com,elkosmas@gmail.com,,,a.brzns@gmail.com,elkosmas@gmail."
+"com,"
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Χρώμα ανά Μερικό Φορτίο"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr "Χρώμα ανά μερικό φορτίο ατόμου ( μπλε = θετικό, κόκκινο = αρνητικό."
+
+#~ msgid "Custom Color:"
+#~ msgstr "Προσαρμοσμένο Χρώμα:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Προσαρμοσμένο Χρώμα"
+
+#~ msgid "Set custom colors for objects"
+#~ msgstr "Επιλογή προσαρμοσμένων χρωμάτων για τα αντικείμενα"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Χρώμα κατά Απόσταση"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Χρώμα κατά απόσταση από το πρώτο άτομο"
+
+#~ msgid "Color by Element"
+#~ msgstr "Χρώμα κατά Στοιχείο"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Χρώμα κατά Στοιχείο (άνθρακας = γκρι, οξυγόνο = κόκκινο, ...)."
+
+#~ msgid "Color by Residue"
+#~ msgstr "Χρώμα κατα Τμήμα"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Χρώμα κατα Τμήμα (είδος αμινοξέος, υδροφοβία,...)"
+
+#~ msgid "Engines"
+#~ msgstr "Μηχανές"
+
+#~ msgid "Axes"
+#~ msgstr "Άξονες"
+
+#~ msgid "Ball and Stick"
+#~ msgstr "Σφαίρα και ράβδος"
+
+#~ msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
+#~ msgstr ""
+#~ "Εμφάνιση των πρωταρχικών χρησιμοποιώντας σφαίρες (άτομα) και ράβδους "
+#~ "(δεσμοί)"
+
+#~ msgid "Cartoon"
+#~ msgstr "Καρτούν"
+
+#~ msgid "Renders protein secondary structure"
+#~ msgstr "Εμφάνιση δευτεροταγούς δομής της πρωτεΐνης"
+
+#~ msgid "Dipole"
+#~ msgstr "Δίπολο"
+
+#~ msgid "Renders molecular dipole moments"
+#~ msgstr "Εμφάνιση των μοριακών διπολικών ροπών"
+
+#~ msgid "Force"
+#~ msgstr "Δύναμη"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Δεσμός υδρογόνου"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Αποτύπωση δεσμών υδρογόνου"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#, fuzzy
+#~ msgid "Select Atom Labels Font"
+#~ msgstr "Ετικέτες ατόμων:"
+
+#, fuzzy
+#~ msgid "Select Bond Labels Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#, fuzzy
+#~ msgid "Select Bond Labels Font"
+#~ msgstr "Ετικέτες δεσμών:"
+
+#~ msgid "Label"
+#~ msgstr "Ετικέτα"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Απόδοση ετικέτας ατόμων και δεσμών"
+
+#~ msgid "Overlay"
+#~ msgstr "Επικάλυψη"
+
+#~ msgid "Renders color scale for gradients"
+#~ msgstr "Απόδοση χρωματικής κλίμακας"
+
+#~ msgid "Polygon"
+#~ msgstr "Πολύγωνο"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Αποδίδει άτομα ως τετράεδρα,οκτάεδρα και άλλα πολύγωνα"
+
+#~ msgid "Ribbon"
+#~ msgstr "Ταινία"
+
+#~ msgid "Renders protein backbones as ribbons"
+#~ msgstr "Απόδοση πρωτεινικού σκελετου ως ταινίας"
+
+#~ msgid "Ring"
+#~ msgstr "Δακτύλιος"
+
+#~ msgid "Renders rings with colored planes"
+#~ msgstr "Απόδωση δακτυλίων ως έγχρωμων επιπέδων"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "Απλός σκελετός"
+
+#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
+#~ msgstr "Αποδίδει δεσμούς ως γραμμές,ιδανικό για μεγάλα μόρια"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Σφαίρες Van der Waals"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Αποτύπωση ατόμων ως σφαίρες Van der Waals"
+
+#~ msgid "Stick"
+#~ msgstr "Ράβδος"
+
+#~ msgid "Renders molecules as sticks"
+#~ msgstr "Αποδοση των μόρίων ως ράβδων"
+
+#~ msgctxt "Van der Waals isosurface with a cutoff of %1"
+#~ msgid "Van der Waals, isosurface = %L1"
+#~ msgstr "Van der Waals, ισοεπιφάνεια = %L1"
+
+#~ msgctxt "Electron density isosurface with a cutoff of %1"
+#~ msgid "Electron density, isosurface = %L1"
+#~ msgstr "Ηλεκτρονική πυκνότητα,ισοεπιφάνεια = %L1"
+
+#~ msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
+#~ msgid "%1, isosurface = %L2"
+#~ msgstr "%1, ισοεπιφάνεια = %L2"
+
+#~ msgid "Surfaces"
+#~ msgstr "Επιφάνειες"
+
+#~ msgid "Renders molecular isosurface meshes"
+#~ msgstr "Εμφανίζει το δικτύωμα των μοριακών ισοεπιφανειών"
+
+#~ msgid "Wireframe"
+#~ msgstr "Απλός σκελετός"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr "Αποδίδει τους δεσμούς ως γραμμές,ιδανικό για πολύ μεγάλα (βιο)μόρια"
+
+#~ msgid "Extensions"
+#~ msgstr "Επεκτάσεις"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Άνοιγμα αρχείου τροχιάς"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Αρχεία τροχιάς (*.xtc *xyz)"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Save Video File"
+#~ msgstr "Αποθήκευση αρχείου video"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "αρχεία video (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Προσθήκη κατάληξης .avi"
+
+#~ msgid "Animation..."
+#~ msgstr "Κινούμενη απεικόνιση"
+
+#~ msgid "E&xtensions"
+#~ msgstr "&Επεκτάσεις"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Αδυναμία ανάγνωσης μορφής του αρχείου %1."
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Ανάγνωση αρχείου τροχιάς %1 απέτυχε."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Ορίστε ένα έγκυρο όνομα αρχείου .avi"
+
+#~ msgid "GL widget was not correctly initialized in order to save video"
+#~ msgstr ""
+#~ "To GL widget δεν αρχικοποιήθηκε σωστά προκειμένου να αποθηκεύσει video"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr ""
+#~ "Μη έγκυρο όνομα αρχείου video.Πρέπει να περιλαμβάνει την πλήρη διαδρομή."
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Μη έγκυρο όνομα αρχείου video.Πρέπει να περιλαμβάνει την πλήρη διαδρομή "
+#~ "και όνομα με κατάληξη .avi"
+
+#~ msgid "could not set format to XYZ"
+#~ msgstr "Αδυναμία μετάβασης σε τύπο αρχείου XYZ"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "Πρόβλημα κατά την ανάγνωση αρχείου τροχιάς %1"
+
+#~ msgid "Animation"
+#~ msgstr "Κινούμενη απεικόνιση"
+
+#~ msgid "Animate trajectories, reactions, and vibrations."
+#~ msgstr "Κινούμενη απεικόνιση τροχιών, αντιδράσεων, και δονήσεων."
+
+#, fuzzy
+#~ msgid "Cartesian Editor"
+#~ msgstr "Επεξεργαστής μητρώου Z"
+
+#~ msgid "&Build"
+#~ msgstr "&Κατασκευή"
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Αριθμός ατόμων: %1"
+
+#~ msgid "Number of rotatable bonds: %1"
+#~ msgstr "Αριθμός περιστρέψιμων δεσμών: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Προσθήκη περιορισμού"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "Το μόριο πρέπει να περιλαμβάνει τουλάχιστον ένα άτομο για να προσθέσετε "
+#~ "περιορισμό."
+
+#~ msgid ""
+#~ "Your molecule must contain at least two atoms to add a bond constraint"
+#~ msgstr ""
+#~ "Το μόριο πρέπει να περιλαμβάνει τουλάχιστον δύο άτομα για να προσθέσετε "
+#~ "έναν περιορισμό δεσμού"
+
+#~ msgid ""
+#~ "Your molecule must contain at least three atoms to add an angle constraint"
+#~ msgstr ""
+#~ "Το μόριο πρέπει να περιλαμβάνει τουλάχιστον τρία άτομα για να προσθέσετε "
+#~ "έναν περιορισμό γωνίας"
+
+#~ msgid ""
+#~ "Your molecule must contain at least four atoms to add a torsion constraint"
+#~ msgstr ""
+#~ "Το μόριο πρέπει να περιλαμβάνει τουλάχιστον τέσσερα άτομα για να "
+#~ "προσθέσετε έναν περιορισμό δίεδρης γωνίας"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Τροχιά..."
+
+#~ msgid "&File"
+#~ msgstr "&Αρχείο"
+
+#~ msgid "Import"
+#~ msgstr "Εισαγωγή"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Άνοιγμα αρχείου παραμέτρων"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Εισαγωγή τροχιάς"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Εισαγωγή αρχείων τροχιάς"
+
+#~ msgid "&Optimize Geometry"
+#~ msgstr "&Βελτιστοποίηση Γεωμετρίας"
+
+#~ msgctxt "Shortcut key for optimize geometry"
+#~ msgid "Ctrl+Alt+O"
+#~ msgstr "Ctrl+Alt+O"
+
+#~ msgid "Setup Force Field..."
+#~ msgstr "Ρύθμιση Δυναμικού πεδίου"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Υπολογισμός ενέργειας"
+
+#~ msgid "Conformer Search..."
+#~ msgstr "Αναζήτηση διαμορφομερούς"
+
+#~ msgid "Constraints..."
+#~ msgstr "Περιορισμοί..."
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Παράβλεψη Επιλογής"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Μοριακή Μηχανική"
+
+#~ msgid "Cannot set up the force field for this molecule."
+#~ msgstr "Το δυναμικό πεδίο του συγκεκριμένου μορίου ήταν αδύνατο να οριστεί"
+
+#~ msgid "Energy = %L1 %2"
+#~ msgstr "Ενέργεια = %L1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Γεωμετρική Βελτιστοποίηση"
+
+#~ msgid "Forcefield Optimization"
+#~ msgstr "Βελτιστοποίηση Δυναμικού Πεδίου"
+
+#~ msgid "Cancel"
+#~ msgstr "Ακύρωση"
+
+#~ msgid "ForceField"
+#~ msgstr "Δυναμικό Πεδίο"
+
+#~ msgid ""
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
+#~ msgstr ""
+#~ "Βελτιστοποίηση μορίων και δημιουργία διαμορφομερών  χρησιμοποιώντας "
+#~ "δυναμικά πεδία μοριακής μηχανικής"
+
+#~ msgid "Add Hydrogens"
+#~ msgstr "Προσθήκη υδρογόνων"
+
+#~ msgid "Remove Hydrogens"
+#~ msgstr "Αφαίρεση Υδρογόνων"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Hydrogens"
+#~ msgstr "Υδρογόνα"
+
+#~ msgid "Add or remove hydrogens"
+#~ msgstr "Προσθήκη ή αφαίρεση Υδρογόνων"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Αδυναμία ανάγνωσης αρχείου %1."
+
+#~ msgid "Open Directory"
+#~ msgstr "Άνοιγμα καταλόγου"
+
+#~ msgid "SMILES..."
+#~ msgstr "SMILES..."
+
+#~ msgid "&Insert"
+#~ msgstr "&Εισαγωγή"
+
+#~ msgid "Insert SMILES"
+#~ msgstr "Εισαγωγή SMILES"
+
+#~ msgid "Insert Fragment"
+#~ msgstr "Εισαγωγή τμήματος"
+
+#~ msgid "Peptide..."
+#~ msgstr "Πεπτίδιο..."
+
+#~ msgid "Insert Peptide"
+#~ msgstr "Εισαγωγή Πεπτιδίου"
+
+#~ msgid "&View"
+#~ msgstr "Π&ροβολή"
+
+#~ msgid "&Properties"
+#~ msgstr "&Ιδιότητες"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Export"
+#~ msgstr "Εξαγωγή"
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Properties"
+#~ msgstr "Ιδιότητες"
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "Έτη"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Νέον"
+
+#~ msgid "Element"
+#~ msgstr "Στοιχείο"
+
+#~ msgid "Partial Charge"
+#~ msgstr "Μερικό φορτίου"
+
+#~ msgid "Energy"
+#~ msgstr "Ενέργεια"
+
+#, fuzzy
+#~ msgid "Save Dalton Input File"
+#~ msgstr "Αποθήκευση αρχείου τροχ."
+
+#~ msgid "Show Preview"
+#~ msgstr "Εμφάνιση προεπισκόπησης"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Απόκρυψη προεπισκόπησης"
+
+#~ msgid "&GAMESS"
+#~ msgstr "&GAMESS"
+
+#~ msgid "GAMESS EFP Information"
+#~ msgstr "Πληροφορίες GAMESS EFP"
+
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Δεν έχουν επιλεχθεί άτομα"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Παρακαλώ επιλέξτε!"
+
+#~ msgid "SMILES Conversion Unavailable"
+#~ msgstr "Η μετατροπή SMILES είναι μη διαθέσιμη"
+
+#~ msgid "Group Name"
+#~ msgstr "Όνομα Ομάδας"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "efp"
+#~ msgstr "efp"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Create input files for the GAMESS quantum chemistry package"
+#~ msgstr "Δημιουργία αρχείων εισόδου για το πακέτο κβαντικής χημείας GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Τίτλος"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Οι Προχωρημένες Ρυθμίσεις μεταβλήθηκαν."
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Οι Προχωρημένες Ρυθμίσεις έχουν μεταβληθεί.\n"
+#~ "Απόρριψη?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Επαναφορά Προχωρημένων Ρυθμίσεων"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Σίγουρα επιθυμείτε να επαναφέρετε τις Προχωρημένες Ρυθμίσεις;\n"
+#~ "Όλες οι αλλαγές θα χαθούν!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Επαναφορά Βασικών Ρυθμίσεων"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Σίγουρα επιθυμείτε να επαναφέρετε τις Βασικές Ρυθμίσεις;\n"
+#~ "Όλες οι αλλαγές θα χαθούν!"
+
+#~ msgid "Gaussian Running."
+#~ msgstr "Το Gaussian εκτελείται."
+
+#~ msgid ""
+#~ "Gaussian is already running. Wait until the previous calculation is "
+#~ "finished."
+#~ msgstr ""
+#~ "Το Gaussian εκτελείται ήδη.Παρακαλώ περιμένετε μέχρι να ολοκληρωθεί ο "
+#~ "προηγούμενος υπολογισμός."
+
+#~ msgid "Gaussian Not Installed."
+#~ msgstr "Το Gaussian δεν έχει εγκατασταθεί."
+
+#~ msgid "The G03 executable, cannot be found."
+#~ msgstr "Το εκτελέσιμο G03  δεν βρέθηκε."
+
+#~ msgid "G03 did not start. Perhaps it is not installed correctly."
+#~ msgstr "Το G03 δεν ξεκίνησε.Ίσως δεν έχει εγκατασταθεί σωστά."
+
+#~ msgid "Running Gaussian calculation..."
+#~ msgstr "Εκτέλεση υπολογισμού Gaussian"
+
+#~ msgid ""
+#~ "Gaussian did not run correctly. Perhaps it is not installed correctly."
+#~ msgstr "Το Gaussian δεν εκτελέστηκε σωστά.Ίσως δεν έχει εγκατασταθεί σωστά."
+
+#, fuzzy
+#~ msgid "&Dalton..."
+#~ msgstr "Κινούμενη απεικόνιση"
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Αντιστροφή επιλογής"
+
+#~ msgid "&Select"
+#~ msgstr "&Επιλογή"
+
+#~ msgid "Residue name"
+#~ msgstr "Όνομα υπολοίπου"
+
+#~ msgid "name"
+#~ msgstr "όνομα"
+
+#, fuzzy
+#~ msgid "Energy (eV)"
+#~ msgstr "Ενέργεια"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Ακτίνιο"
+
+#~ msgid "X Axis"
+#~ msgstr "Άξονας X"
+
+#~ msgid "Y Axis"
+#~ msgstr "Άξονας Υ"
+
+#~ msgid "&Appearance"
+#~ msgstr "Εμφ&άνιση"
+
+#~ msgctxt "Infrared spectra option"
+#~ msgid "Infrared"
+#~ msgstr "Υπέρυθρο"
+
+#, fuzzy
+#~ msgid "&UV Settings"
+#~ msgstr "Ρυθμίσεις Python"
+
+#, fuzzy
+#~ msgid "&CD Settings"
+#~ msgstr "Ρυθμίσεις Python"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Ραδόνιο"
+
+#, fuzzy
+#~ msgid "&Raman Settings"
+#~ msgstr "Ρυθμίσεις Python"
+
+#~ msgid "No data"
+#~ msgstr "Χωρίς δεδομένα"
+
+#~ msgid "Dark"
+#~ msgstr "Σκοτεινό"
+
+#~ msgid "Light"
+#~ msgstr "Φωτεινό"
+
+#~ msgid "New Scheme"
+#~ msgstr "Νέο θέμα"
+
+#, fuzzy
+#~ msgid "Select Background Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#, fuzzy
+#~ msgid "Select Foreground Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#, fuzzy
+#~ msgid "Select Calculated Spectra Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#, fuzzy
+#~ msgid "Select Imported Spectra Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#~ msgid "All Files"
+#~ msgstr "Όλα τα Αρχεία"
+
+#~ msgid "Data Format"
+#~ msgstr "Μορφή δεδομένων"
+
+#~ msgctxt "noun, not verb"
+#~ msgid "Format:"
+#~ msgstr "Μορφή:"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Φορητά Δικτυακά Γραφικά (PNG)"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "Tagged Image File Format"
+#~ msgstr "Μορφή αρχείου εικόνας με ετικέτες"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows Bitmap"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Άκυρο όνομα αρχείου"
+
+#~ msgid "Error"
+#~ msgstr "Σφάλμα"
+
+#~ msgid "Success!"
+#~ msgstr "Επιτυχία!"
+
+#, fuzzy
+#~ msgid "&Advanced <<"
+#~ msgstr "Για προχωρημένους"
+
+#, fuzzy
+#~ msgid "&Advanced >>"
+#~ msgstr "Για προχωρημένους"
+
+#~ msgid "Spectra"
+#~ msgstr "Φάσματα"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "Κινούμενη απεικόνιση"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Σύνδεση"
+
+#~ msgid "Warning"
+#~ msgstr "Προειδοποίηση"
+
+#, fuzzy
+#~ msgid "Select Unit Cell Color"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#~ msgid "Apply"
+#~ msgstr "Εφαρμογή"
+
+#~ msgid "OK"
+#~ msgstr "Εντάξει"
+
+#~ msgid "Connect"
+#~ msgstr "Σύνδεση"
+
+#~ msgid "Disconnect"
+#~ msgstr "Αποσύνδεση"
+
+#~ msgid "OpenGL error"
+#~ msgstr "Σφάλμα OpenGL"
+
+#~ msgctxt "Name of a new, untitled molecule file"
+#~ msgid "untitled"
+#~ msgstr "χωρίς τίτλο"
+
+#~ msgid "No Description"
+#~ msgstr "Χωρίς περιγραφή"
+
+#~ msgid "N/A"
+#~ msgstr "Μη διαθέσιμο"
+
+#~ msgid "&Scripts"
+#~ msgstr "&Σενάρια"
+
+#~ msgid "Tools"
+#~ msgstr "Εργαλεία"
+
+#~ msgid "Axis:"
+#~ msgstr "Άξονας:"
+
+#~ msgid "Align:"
+#~ msgstr "Στοίχιση:"
+
+#~ msgid "Everything"
+#~ msgstr "Όλα"
+
+#~ msgid "Align"
+#~ msgstr "Στοίχιση"
+
+#, fuzzy
+#~ msgid "Num Constraints: %1"
+#~ msgstr "Περιορισμοί"
+
+#~ msgid "Force Field:"
+#~ msgstr "Δυναμικό πεδίο:"
+
+#~ msgid "Steps per Update:"
+#~ msgstr "Βήματα ανά ενημέρωση:"
+
+#~ msgid "Algorithm:"
+#~ msgstr "Αλγόριθμος:"
+
+#~ msgid "Molecular Dynamics (300K)"
+#~ msgstr "Μοριακή δυναμική (300K)"
+
+#~ msgid "Molecular Dynamics (600K)"
+#~ msgstr "Μοριακή δυναμική (600K)"
+
+#~ msgid "Molecular Dynamics (900K)"
+#~ msgstr "Μοριακή δυναμική (900K)"
+
+#~ msgid "Start"
+#~ msgstr "Εκκίνηση"
+
+#~ msgid "Fixed atoms are movable"
+#~ msgstr "Τα σταθερά άτομα μπορούν να κινηθούν"
+
+#~ msgid "Ignored atoms are movable"
+#~ msgstr "Τα αγνοημένα άτομα μπορούν να κινηθούν"
+
+#~ msgid "Stop"
+#~ msgstr "Στόπ"
+
+#~ msgid "AutoOpt Molecule"
+#~ msgstr "Μόριο αυτόματης βελτιστοποίησης"
+
+#~ msgid "Auto Rotation Tool"
+#~ msgstr "Εργαλείο αυτόματης περιστροφής"
+
+#~ msgid "x rotation:"
+#~ msgstr "περιστροφή x:"
+
+#~ msgid "x rotation"
+#~ msgstr "περιστροφή x"
+
+#~ msgid "y rotation:"
+#~ msgstr "περιστροφή y:"
+
+#~ msgid "y rotation"
+#~ msgstr "περιστροφή y"
+
+#~ msgid "z rotation:"
+#~ msgstr "περιστροφή z:"
+
+#~ msgid "z rotation"
+#~ msgstr "περιστροφή z"
+
+#~ msgid "Reset"
+#~ msgstr "Επαναφορά"
+
+#~ msgid ""
+#~ "Bond Centric Manipulation Tool\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view\n"
+#~ "\n"
+#~ "Left Click & drag on a Bond to set the Manipulation Plane:\n"
+#~ "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
+#~ "- Right Click & Drag one of the Atoms in the Bond to change the length"
+#~ msgstr ""
+#~ "Εργαλείο δεσμοκεντρικού χειρισμού\n"
+#~ "\n"
+#~ "Αριστερό πλήκτρο ποντικιού: Κλικ και σύρσιμο για την περιστροφή της "
+#~ "προβολής\n"
+#~ "Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μεγέθυνση ή σμίκρυνση\n"
+#~ "Δεξί πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μετακίνηση της προβολής\n"
+#~ "\n"
+#~ "Αριστερό κλικ & σύρσιμο σε ένα δεσμό για τον ορισμό του επιπέδου "
+#~ "χειρισμού:\n"
+#~ "- Αριστερό κλικ & σύρσιμο σε ένα από τα άτομα του δεσμού για την "
+#~ "τροποποίηση της γωνίας\n"
+#~ "- Δεξί κλικ & σύρσιμο σε ένα από τα άτομα του δεσμού για την τροποποίηση "
+#~ "του μήκους"
+
+#~ msgid " Show Angles"
+#~ msgstr " Εμφάνιση γωνιών"
+
+#~ msgid " Snap-to Bonds"
+#~ msgstr " Προσαρμογή στους δεσμούς"
+
+#~ msgid "Snap-to Threshold: "
+#~ msgstr "Κατώφλι προσαρμογής: "
+
+#~ msgid "Bond Centric Manipulation"
+#~ msgstr "Δεσμοκεντρικός χειρισμός"
+
+#~ msgid ""
+#~ "Click to Measure (F12)\n"
+#~ "\n"
+#~ "Left Mouse: \tSelect up to three Atoms.\n"
+#~ "\tDistances are measured between 1-2 and 2-3\n"
+#~ "\tAngle is measured between 1-3 using 2 as the common point\n"
+#~ "Right Mouse: Reset the measurements."
+#~ msgstr ""
+#~ "Κλικ για μετρήσεις (F12)\n"
+#~ "\n"
+#~ "Αριστερό πλήκτρο ποντικιού: \tΕπιλέξτε έως τρία άτομα.\n"
+#~ "\tΜετρούνται οι αποστάσεις μεταξύ των 1-2 και 2-3\n"
+#~ "\tΜετράται η γωνία μεταξύ των 1-3 με το 2 ως κορυφή\n"
+#~ "Δεξί πλήκτρο ποντικιού: Μηδενισμός των μετρήσεων."
+
+#~ msgctxt "*1 is a number. You most likely do not need to translate this"
+#~ msgid "*1"
+#~ msgstr "*1"
+
+#~ msgctxt "*2 is a number. You most likely do not need to translate this"
+#~ msgid "*2"
+#~ msgstr "*2"
+
+#~ msgctxt "*3 is a number. You most likely do not need to translate this"
+#~ msgid "*3"
+#~ msgstr "*3"
+
+#~ msgctxt "*4 is a number. You most likely do not need to translate this"
+#~ msgid "*4"
+#~ msgstr "*4"
+
+#~ msgid "Distance(s):"
+#~ msgstr "Απόσταση(εις):"
+
+#~ msgid "Measure"
+#~ msgstr "Μέτρηση"
+
+#~ msgid "Add Atom"
+#~ msgstr "Προσθήκη ατόμου"
+
+#~ msgid "Delete Atom"
+#~ msgstr "Διαγραφή ατόμου"
+
+#~ msgid "Add Bond"
+#~ msgstr "Προσθήκη δεσμού"
+
+#~ msgid "Delete Bond"
+#~ msgstr "Διαγραφή δεσμού"
+
+#~ msgid "Change Element"
+#~ msgstr "Τροποποίηση στοιχείου"
+
+#~ msgid "Change Bond Order"
+#~ msgstr "Τροποποίηση σειράς δεσμών"
+
+#~ msgid ""
+#~ "Draw Tool (F8)\n"
+#~ "\n"
+#~ "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
+#~ "Right Mouse: Delete Atom"
+#~ msgstr ""
+#~ "Εργαλείο σχεδίασης (F8)\n"
+#~ "\n"
+#~ "Αριστερό πλήκτρο ποντικιού: \tΚλικ και σύρσιμο για τη δημιουργία ατόμων "
+#~ "και δεσμών\n"
+#~ "Δεξί πλήκτρο ποντικιού: Διαγραφή ατόμου"
+
+#~ msgid "Draw Atom"
+#~ msgstr "Σχεδίαση ατόμου"
+
+#~ msgid "Draw Bond"
+#~ msgstr "Σχεδίαση δεσμού"
+
+#~ msgid "Draw"
+#~ msgstr "Σχεδίαση"
+
+#~ msgid "Element:"
+#~ msgstr "Στοιχείο:"
+
+#~ msgid "Other..."
+#~ msgstr "Άλλο..."
+
+#~ msgid "Bond Order:"
+#~ msgstr "Σειρά δεσμού:"
+
+#~ msgid "Single"
+#~ msgstr "Απλή"
+
+#~ msgid "Adjust Hydrogens"
+#~ msgstr "Προσαρμογή υδρογόνων"
+
+#~ msgid ""
+#~ "Manipulation Tool (F10)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to move atoms\n"
+#~ "Middle Mouse: Click and drag to move atoms further away or closer\n"
+#~ "Right Mouse:  Click and drag to rotate selected atoms."
+#~ msgstr ""
+#~ "Εργαλείο χειρισμού (F10)\n"
+#~ "\n"
+#~ "Αριστερό πλήκτρο ποντικιού:   Κλικ και σύρσιμο για τη μετακίνηση ατόμων\n"
+#~ "Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για τη μετακίνηση ατόμων σε "
+#~ "μεγαλύτερη ή μικρότερη εγγύτητα\n"
+#~ "Δεξί πλήκτρο ποντικιού:  Κλικ και σύρσιμο για την περιστροφή των "
+#~ "επιλεγμένων ατόμων."
+
+#~ msgid "Manipulate Atom"
+#~ msgstr "Χειρισμός ατόμου"
+
+#~ msgid ""
+#~ "Navigation Tool (F9)\n"
+#~ "\n"
+#~ "Left Mouse:   Click and drag to rotate the view\n"
+#~ "Middle Mouse: Click and drag to zoom in or out\n"
+#~ "Right Mouse:  Click and drag to move the view"
+#~ msgstr ""
+#~ "Εργαλείο πλοήγησης (F9)\n"
+#~ "\n"
+#~ "Αριστερό πλήκτρο ποντικιού:   Κλικ και σύρσιμο για την περιστροφή "
+#~ "προβολής\n"
+#~ "Μεσαίο πλήκτρο ποντικιού: Κλικ και σύρσιμο για μεγέθυνση ή σμίκρυνση\n"
+#~ "Δεξί πλήκτρο ποντικιού:  Κλικ και σύρσιμο για τη μετακίνηση της προβολής"
+
+#~ msgid "Navigate"
+#~ msgstr "Πλοήγηση"
+
+#, fuzzy
+#~ msgid ""
+#~ "Selection Tool (F11)\n"
+#~ "Click to pick individual atoms, residues, or fragments\n"
+#~ "Drag to select a range of atoms\n"
+#~ "Right click outside the molecule to clear selection\n"
+#~ "Use Ctrl to toggle the selection and shift to add to the selection"
+#~ msgstr ""
+#~ "Εργαλείο επιλογής (F11)\n"
+#~ "Κλικ για την επιλογή ατόμων, υπολοίπων, ή τμημάτων\n"
+#~ "Σύρσιμο για την επιλογή ενός εύρους ατόμων\n"
+#~ "Χρησιμοποιήστε το Ctrl για την εναλλαγή της επιλογής και το shift για την "
+#~ "προσθήκη στην επιλογή"
+
+#~ msgid "Selection Mode:"
+#~ msgstr "Λειτουργία επιλογής:"
+
+#~ msgid "Residue"
+#~ msgstr "Υπόλοιπο"
+
+#~ msgid "Selection"
+#~ msgstr "Επιλογή"
+
+#~ msgid "Symbol"
+#~ msgstr "Σύμβολο"
+
+#~ msgid "Residue Color Settings"
+#~ msgstr "Ρυθμίσεις χρώματος υπολοίπου"
+
+#~ msgid "Color residues by:"
+#~ msgstr "Υπόλοιπα χρώματος κατά:"
+
+#~ msgid "Amino Colors"
+#~ msgstr "Χρώματα αμίνων"
+
+#~ msgid "Shapely Colors"
+#~ msgstr "Χρώματα σχημάτων"
+
+#~ msgid "Hydrophobicity"
+#~ msgstr "Υδροφοβία"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "Άξονες"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Προσαρμοσμένη τιμή"
+
+#, fuzzy
+#~ msgid "Axis 1:"
+#~ msgstr "Άξονας:"
+
+#, fuzzy
+#~ msgid "Axis 2:"
+#~ msgstr "Άξονας:"
+
+#, fuzzy
+#~ msgid "Axis 3:"
+#~ msgstr "Άξονας:"
+
+#, fuzzy
+#~ msgid "Origin:"
+#~ msgstr "Στοίχιση:"
+
+#, fuzzy
+#~ msgid "Norm"
+#~ msgstr "Φόρμα"
+
+#~ msgid "Atom Radius:"
+#~ msgstr "Ακτίνα ατόμου:"
+
+#~ msgid "Bond Radius:"
+#~ msgstr "Ακτίνα δεσμού:"
+
+#~ msgid "Opacity:"
+#~ msgstr "Αδιαφάνεια:"
+
+#~ msgid "Van der Waals"
+#~ msgstr "Van der Waals"
+
+#~ msgid "Loop"
+#~ msgstr "Βρόχος"
+
+#~ msgid "Colors"
+#~ msgstr "Χρώματα"
+
+#~ msgid "Dipole:"
+#~ msgstr "Δίπολο:"
+
+#~ msgid "Dipole Moment"
+#~ msgstr "Ροπή διπόλου"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "Προσαρμοσμένο Χρώμα"
+
+#~ msgid "Custom:"
+#~ msgstr "Προσαρμοσμένο:"
+
+#~ msgid "Width:"
+#~ msgstr "Πλάτος:"
+
+#~ msgid "Cut-off radius:"
+#~ msgstr "Ακτίνα αποκοπής:"
+
+#~ msgid "Cut-off angle:"
+#~ msgstr "Γωνία αποκοπής:"
+
+#, fuzzy
+#~ msgid "Rendering Engine:"
+#~ msgstr "Αποτύπωση:"
+
+#, fuzzy
+#~ msgid "QPainter"
+#~ msgstr "Νερό"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "Ετικέτες ατόμων:"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "Ετικέτα"
+
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "Element symbol"
+#~ msgstr "Σύμβολο στοιχείου"
+
+#~ msgid "Element name"
+#~ msgstr "Όνομα στοιχείου"
+
+#~ msgid "Residue number"
+#~ msgstr "Αριθμός υπολοίπου"
+
+#~ msgid "Unique ID"
+#~ msgstr "Μοναδικό ID"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "Καθορισμός χρώματος..."
+
+#, fuzzy
+#~ msgid "Change Font"
+#~ msgstr "Αλλαγή γραμματοσειράς..."
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "Ετικέτες δεσμών:"
+
+#~ msgid "Bond length"
+#~ msgstr "Μήκος δεσμού"
+
+#~ msgid "Bond number"
+#~ msgstr "Αριθμός δεσμού"
+
+#~ msgid "Bond order"
+#~ msgstr "Σειρά δεσμού"
+
+#~ msgid "Rendering:"
+#~ msgstr "Αποτύπωση:"
+
+#~ msgid "Backbone"
+#~ msgstr "Κύρια στήριξη"
+
+#~ msgid "Radius:"
+#~ msgstr "Ακτίνα:"
+
+#~ msgid "Include Nitrogens"
+#~ msgstr "Συμπερίληψη αζώτου"
+
+#~ msgid "VdW Opacity:"
+#~ msgstr "Αδιαφάνεια VdW:"
+
+#~ msgid "Style:"
+#~ msgstr "Στυλ:"
+
+#~ msgid "Selected Colors"
+#~ msgstr "Επιλεγμένα χρώματα"
+
+#~ msgid "Mapped Colors"
+#~ msgstr "Αντιστοιχισμένα χρώματα"
+
+#~ msgid "Colors:"
+#~ msgstr "Χρώματα:"
+
+#~ msgid "Positive"
+#~ msgstr "Θετικό"
+
+#~ msgid "Negative"
+#~ msgstr "Αρνητικό"
+
+#~ msgid "Show Atoms"
+#~ msgstr "Εμφάνιση ατόμων"
+
+#~ msgid "Load File..."
+#~ msgstr "Φόρτωση αρχείου..."
+
+#~ msgid "0/0"
+#~ msgstr "0/0"
+
+#~ msgid "fps"
+#~ msgstr "fps"
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Μπόριο"
+
+#, fuzzy
+#~ msgid "Fractional"
+#~ msgstr "περιστροφή x"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Όλα"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Διαγραφή 'Ολων"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Κανένα"
+
+#~ msgid "Options"
+#~ msgstr "Επιλογές"
+
+#~ msgid "Method"
+#~ msgstr "Μέθοδος"
+
+#~ msgid "Constraints"
+#~ msgstr "Περιορισμοί"
+
+#~ msgid "Distance"
+#~ msgstr "Απόσταση"
+
+#~ msgid "Angle"
+#~ msgstr "Γωνία"
+
+#~ msgid "Add"
+#~ msgstr "Προσθήκη"
+
+#~ msgid "Save"
+#~ msgstr "Αποθήκευση"
+
+#~ msgid "Load"
+#~ msgstr "Φόρτωση"
+
+#~ msgid "Delete Selected"
+#~ msgstr "Διαγραφή επιλεγμένων"
+
+#~ msgid "Delete All"
+#~ msgstr "Διαγραφή 'Ολων"
+
+#~ msgid "Filename:"
+#~ msgstr "Όνομα αρχείου:"
+
+#~ msgid "Browse..."
+#~ msgstr "Περιήγηση..."
+
+#~ msgid "Number of steps"
+#~ msgstr "Αριθμός βημάτων"
+
+#~ msgid "Algorithm"
+#~ msgstr "Αλγόριθμος"
+
+#~ msgid "Insert Fragment..."
+#~ msgstr "Εισαγωγή τμήματος..."
+
+#~ msgid "Other"
+#~ msgstr "Άλλο"
+
+#~ msgid "Select..."
+#~ msgstr "Επιλογή..."
+
+#~ msgid "Close"
+#~ msgstr "Κλείσιμο"
+
+#~ msgid "Resolution:"
+#~ msgstr "Ανάλυση:"
+
+#~ msgid "Antialias"
+#~ msgstr "Εξομάλυνση"
+
+#~ msgid "Command:"
+#~ msgstr "Εντολή:"
+
+#~ msgid "Path:"
+#~ msgstr "Διαδρομή:"
+
+#, fuzzy
+#~ msgid "Basics"
+#~ msgstr "Βάση"
+
+#~ msgid "Title:"
+#~ msgstr "Τίτλος:"
+
+#, fuzzy
+#~ msgid "Calculate:"
+#~ msgstr "Υπολογισμός"
+
+#, fuzzy
+#~ msgid "Direct"
+#~ msgstr "Αποσύνδεση"
+
+#, fuzzy
+#~ msgid "Thresholds"
+#~ msgstr "Κατώφλι προσαρμογής: "
+
+#, fuzzy
+#~ msgid "Grid Specification"
+#~ msgstr "Γεωμετρική Βελτιστοποίηση"
+
+#, fuzzy
+#~ msgid "Becke"
+#~ msgstr "Κύρια στήριξη"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "Μορφή:"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "ιν"
+
+#, fuzzy
+#~ msgid "Property:"
+#~ msgstr "Ιδιότητες"
+
+#, fuzzy
+#~ msgid "Excitation Energy"
+#~ msgstr "Υπολογισμός ενέργειας"
+
+#, fuzzy
+#~ msgid "Frequency Dependent"
+#~ msgstr "Συχνότητες"
+
+#, fuzzy
+#~ msgid "No. excitations:"
+#~ msgstr "Χωρίς περιγραφή"
+
+#~ msgid "&Basic Setup"
+#~ msgstr "&Βασικές ρυθμίσεις"
+
+#~ msgid "Neutral"
+#~ msgstr "Ουδέτερο"
+
+#~ msgid "Frequencies"
+#~ msgstr "Συχνότητες"
+
+#~ msgid "Gas"
+#~ msgstr "Αέριο"
+
+#~ msgid "Water"
+#~ msgstr "Νερό"
+
+#~ msgid "Calculate"
+#~ msgstr "Υπολογισμός"
+
+#~ msgid "With:"
+#~ msgstr "Με:"
+
+#~ msgid "Advanced"
+#~ msgstr "Για προχωρημένους"
+
+#~ msgid "Basis"
+#~ msgstr "Βάση"
+
+#~ msgid "Data"
+#~ msgstr "Δεδομένα"
+
+#~ msgid "System"
+#~ msgstr "Σύστημα"
+
+#~ msgid "Misc"
+#~ msgstr "Διάφορα"
+
+#~ msgid "Read"
+#~ msgstr "Ανάγνωση"
+
+#~ msgid "MIDI"
+#~ msgstr "MIDI"
+
+#~ msgid "Default"
+#~ msgstr "Προκαθορισμένο"
+
+#~ msgid "Gradient"
+#~ msgstr "Διαβάθμιση χρώματος"
+
+#~ msgid "Multiplicity:"
+#~ msgstr "Πολλαπλότητα:"
+
+#~ msgid "Check"
+#~ msgstr "Επιλογή"
+
+#~ msgid "Debug"
+#~ msgstr "Αποσφαλμάτωση"
+
+#~ msgid "Units:"
+#~ msgstr "Μονάδες:"
+
+#~ msgid "Minutes"
+#~ msgstr "Λεπτά"
+
+#~ msgid "Hours"
+#~ msgstr "Ώρες"
+
+#~ msgid "Days"
+#~ msgstr "Ημέρες"
+
+#~ msgid "Weeks"
+#~ msgstr "Εβδομάδες"
+
+#~ msgid "Years"
+#~ msgstr "Έτη"
+
+#~ msgid "Memory:"
+#~ msgstr "Μνήμη:"
+
+#~ msgid "Skip"
+#~ msgstr "Παράλειψη"
+
+#~ msgid "All"
+#~ msgstr "Όλα"
+
+#~ msgid "Grid"
+#~ msgstr "Πλέγμα"
+
+#~ msgid "Method:"
+#~ msgstr "Μέθοδος:"
+
+#~ msgid "Analytic"
+#~ msgstr "Αναλυτικοί"
+
+#~ msgid "Step Size"
+#~ msgstr "Μέγεθος βήματος"
+
+#~ msgid "Maximum:"
+#~ msgstr "Μέγιστο:"
+
+#~ msgid "Minimum:"
+#~ msgstr "Ελάχιστο:"
+
+#~ msgid "Defaults"
+#~ msgstr "Προκαθορισμένα"
+
+#~ msgid "Output:"
+#~ msgstr "Έξοδος:"
+
+#~ msgid "Standard"
+#~ msgstr "Τυπικό"
+
+#~ msgid "Format:"
+#~ msgstr "Μορφή:"
+
+#~ msgid "Parameters:"
+#~ msgstr "Παράμετροι:"
+
+#~ msgid "&Close"
+#~ msgstr "&Κλείσιμο"
+
+#~ msgid "Set Color..."
+#~ msgstr "Καθορισμός χρώματος..."
+
+#~ msgid "Font:"
+#~ msgstr "Γραμματοσειρά:"
+
+#~ msgid "Change Font..."
+#~ msgstr "Αλλαγή γραμματοσειράς..."
+
+#~ msgid "Show"
+#~ msgstr "Εμφάνιση"
+
+#~ msgid "&Import..."
+#~ msgstr "&Εισαγωγή..."
+
+#~ msgid "Background:"
+#~ msgstr "Φόντο:"
+
+#~ msgid "Foreground:"
+#~ msgstr "Προσκήνιο:"
+
+#~ msgid "New..."
+#~ msgstr "Νέο..."
+
+#~ msgid "Remove..."
+#~ msgstr "Αφαίρεση..."
+
+#~ msgid "Rename..."
+#~ msgstr "Μετονομασία..."
+
+#~ msgid "TODO"
+#~ msgstr "ΠΡΟΣ ΥΛΟΠΟΙΗΣΗ"
+
+#~ msgid "&Export..."
+#~ msgstr "Ε&ξαγωγή..."
+
+#~ msgid "&Width:"
+#~ msgstr "&Πλάτος:"
+
+#~ msgid "&Height"
+#~ msgstr "Ύ&ψος"
+
+#~ msgid "&Filename:"
+#~ msgstr "Ό&νομα αρχείου:"
+
+#~ msgid "cm"
+#~ msgstr "cm"
+
+#~ msgid "mm"
+#~ msgstr "mm"
+
+#~ msgid "in"
+#~ msgstr "ιν"
+
+#~ msgid "px"
+#~ msgstr "px"
+
+#~ msgid "&Save Image..."
+#~ msgstr "&Αποθήκευση εικόνας..."
+
+#, fuzzy
+#~ msgid "x"
+#~ msgstr "px"
+
+#, fuzzy
+#~ msgid "Export Data"
+#~ msgstr "Εξαγωγή"
+
+#, fuzzy
+#~ msgid "Spectra Tab"
+#~ msgstr "Φάσματα"
+
+#, fuzzy
+#~ msgid "Energy units:"
+#~ msgstr "Ενέργεια"
+
+#, fuzzy
+#~ msgid "Fermi Energy: "
+#~ msgstr "Ενέργεια"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "Ετικέτα"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Μόλυβδος"
+
+#, fuzzy
+#~ msgid "Relative"
+#~ msgstr "Αρνητικό"
+
+#, fuzzy
+#~ msgid "Temperature:"
+#~ msgstr "Πρότυπο"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "&Αρχείο"
+
+#, fuzzy
+#~ msgid "&Show Spectra..."
+#~ msgstr "Φάσματα"
+
+#, fuzzy
+#~ msgid "Change Color"
+#~ msgstr "Χρώματα σχημάτων"
+
+#~ msgid "Form"
+#~ msgstr "Φόρμα"
+
+#~ msgid "Python Settings"
+#~ msgstr "Ρυθμίσεις Python"
+
+#~ msgid "Z Matrix Editor"
+#~ msgstr "Επεξεργαστής μητρώου Z"
+
+#~ msgid "Remove Atom"
+#~ msgstr "Αφαίρεση ατόμου"
+
+#~ msgid "&Edit"
+#~ msgstr "&Επεξεργασία"
+
+#~ msgid "Template"
+#~ msgstr "Πρότυπο"
+
+#~ msgid "Open ligand file"
+#~ msgstr "Άνοιγμα αρχείου ligand"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Αρχεία Avogadro(*.*)"
+
+#~ msgid "Open mol file"
+#~ msgstr "Άνοιγμα αρχείου mol"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "αρχείο τροχιάς (*.xyz)"
+
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
+
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Δύο μόρια έχουν διαφορετικό αριθμό ατόμων %1 %2"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
+
+#~ msgid "E&xport..."
+#~ msgstr "Ε&ξαγωγή..."

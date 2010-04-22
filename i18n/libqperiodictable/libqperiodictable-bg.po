@@ -1,0 +1,1418 @@
+# Bulgarian translation for avogadro
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-22 13:46+0400\n"
+"PO-Revision-Date: 2009-10-07 13:07+0000\n"
+"Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+msgid "Official Name"
+msgstr ""
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+msgid "Atomic Number"
+msgstr ""
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Кобалт"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Радий"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+#, fuzzy
+msgid "Pauling Electronegativity"
+msgstr "Изчисляване плътността на електроните"
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+msgid "Ionization Potential"
+msgstr ""
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+#, fuzzy
+msgid "Electron Affinity"
+msgstr "Плътност на електроните"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Водород"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Хелий"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Литий"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Берилий"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Бор"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Въглерод"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Азот"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Кислород"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Флуор"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Неон"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Натрий"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Магнезий"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Алуминий"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Силиций"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Фосфор"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Сяра"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Хлор"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Аргон"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Калий"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Калций"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Скандий"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Титан"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Ванадий"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Хром"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Манган"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Желязо"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Кобалт"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Никел"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Мед"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Цинк"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Галий"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "Германий"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Арсен"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Селен"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Бром"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Криптон"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Рубидий"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Стронций"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Итрий"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Цирконий"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Ниобий"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Молибден"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Технеций"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Рутений"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Родий"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Паладий"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Сребро"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Кадмий"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Индий"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Калай"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Антимон"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Телурий"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Йод"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Ксенон"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "Цезий"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Барий"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Лантан"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Церий"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Празводим"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Неодим"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Прометий"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Самарий"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Европий"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Гадолиний"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Тербий"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Диспросий"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Холмий"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Ербий"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Тулий"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Итербий"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Лутеций"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Хафний"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Тантал"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Волфрам"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Рений"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Осмий"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Иридий"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Платина"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Злато"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Живак"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Талий"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Олово"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Бисмут"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Полоний"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Астат"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Радон"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Франций"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Радий"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Актиний"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Торий"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Протактиний"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Уран"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Нептуний"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Плутоний"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Америций"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Кюрий"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Берклий"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Калифорний"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Айнщайний"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Фермий"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Менделевий"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Нобелий"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Лоуренсий"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Рутерфордий"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Дъбний"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Сиборгий"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Бохрий"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Хасий"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Метерий"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Дармщадий"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Рентгий"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr ""
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Унунбий"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr ""
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Унунпентиум"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Унунхексий"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Унунсептий"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Унуноктий"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Неизвестен"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr ""
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,"
+"Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+"Contributions:,Svetoslav Stefanov"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
+"com,,,svetlisashkov@yahoo.com"
+
+#~ msgid "Color by Index"
+#~ msgstr "Цвят по индекс"
+
+#~ msgid "Color by Index (red, orange, yellow, green, blue, violet)."
+#~ msgstr "Цвят по индекс (червен, оранжев, жълт, зелен, син, лилав)."
+
+#~ msgid "Color by Partial Charge"
+#~ msgstr "Цвят по частичен заряд"
+
+#~ msgid "Color by atomic partial charge (blue = positive, red = negative."
+#~ msgstr ""
+#~ "Цвят по атомен частичен заряд (син = положителен, червен = отрицателен)"
+
+#~ msgid "Custom Color:"
+#~ msgstr "Потребителски цвят:"
+
+#~ msgid "Custom Color"
+#~ msgstr "Потребителски цвят"
+
+#~ msgid "Set custom colors for objects"
+#~ msgstr "Задаване потребителски цветове за обектите"
+
+#~ msgid "Color by Distance"
+#~ msgstr "Цвят по разстояние"
+
+#~ msgid "Color by distance from the first atom."
+#~ msgstr "Цвят по разстояние от първият атом."
+
+#~ msgid "Color by Element"
+#~ msgstr "Цвят по елемент"
+
+#~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
+#~ msgstr "Цвят по елемент (въглерод = сив, кислород = червен, ...)"
+
+#~ msgid "Color by Residue"
+#~ msgstr "Цвят по група"
+
+#~ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
+#~ msgstr "Цвят по група (тип на амино киелината, хидрофобност, ...)"
+
+#~ msgid "Engines"
+#~ msgstr "Системи"
+
+#~ msgid "Axes"
+#~ msgstr "Оси"
+
+#~ msgid "Cartoon"
+#~ msgstr "Анимационна"
+
+#~ msgid "Dipole"
+#~ msgstr "Диелектрик"
+
+#~ msgid "Force"
+#~ msgstr "Сила"
+
+#~ msgid "Hydrogen Bond"
+#~ msgstr "Водородна връзка"
+
+#~ msgid "Renders hydrogen bonds"
+#~ msgstr "Рендерира водородни връзки"
+
+#~ msgid "Label"
+#~ msgstr "Етикет"
+
+#~ msgid "Renders atom and bond labels"
+#~ msgstr "Рендерира етикети на атоми и връзки"
+
+#~ msgid "Polygon"
+#~ msgstr "Многоъгълник"
+
+#~ msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
+#~ msgstr "Рендерира атомите като тетраедър, октаедър и други многоъгълници"
+
+#~ msgid "Ring"
+#~ msgstr "Пръстени"
+
+#~ msgid "Simple Wireframe"
+#~ msgstr "Проста решетка"
+
+#~ msgid "Renders bonds as wires (lines), ideal for large molecules"
+#~ msgstr "Рендерира връзките като въжета (линии), идеално за големи молекули"
+
+#~ msgid "Van der Waals Spheres"
+#~ msgstr "Сфери на Van der Waal"
+
+#~ msgid "Renders atoms as Van der Waals spheres"
+#~ msgstr "Рендерира атомите като сфери на Van der Waal"
+
+#~ msgid "Surfaces"
+#~ msgstr "Повърхности"
+
+#~ msgid "Wireframe"
+#~ msgstr "Контури"
+
+#~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
+#~ msgstr ""
+#~ "Рендерира връзките като въжета (линии), идеално за много големи (био)"
+#~ "молекули"
+
+#~ msgid "Extensions"
+#~ msgstr "Разширения"
+
+#~ msgid "Open trajectory file"
+#~ msgstr "Отваряне на файл с траектория"
+
+#~ msgid "Trajectory files (*.xtc *.xyz)"
+#~ msgstr "Файлове с траектория (*.xtc *.xyz)"
+
+#~ msgid "%1/%2"
+#~ msgstr "%1/%2"
+
+#~ msgid "Save Video File"
+#~ msgstr "Запазване на видео файл"
+
+#~ msgid "video files (*.avi)"
+#~ msgstr "видео файлове (*.avi)"
+
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Adding .avi extension"
+#~ msgstr "Добавяне на разширение .avi"
+
+#~ msgid "Animation..."
+#~ msgstr "Анимация..."
+
+#~ msgid "E&xtensions"
+#~ msgstr "&Разширения"
+
+#~ msgid "Cannot read file format of file %1."
+#~ msgstr "Файловият формат на файла %1 не може да бъде прочетен."
+
+#~ msgid "Read trajectory file %1 failed."
+#~ msgstr "Четенето на файла с траектория %1 се провали."
+
+#~ msgid "Must specify a valid .avi file name"
+#~ msgstr "Трябва да се зададе валидно име на файл .avi"
+
+#~ msgid "Invalid video filename.  Must include full directory path"
+#~ msgstr "Невалидно име на видео файл. Трябва да включва пълния път за достъп"
+
+#~ msgid ""
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Невалидно име на видео файл. Трябва да включва пълния път за достъп и "
+#~ "име, завършващо с .avi"
+
+#~ msgid "Problem reading traj file %1"
+#~ msgstr "Проблем с четенето на файла с траектория %1"
+
+#~ msgid "Animation"
+#~ msgstr "Анимация"
+
+#~ msgid "Animate trajectories, reactions, and vibrations."
+#~ msgstr "Анимиране на траектории, взаимодействия и вибрации."
+
+#~ msgid "&Build"
+#~ msgstr "&Изграждане"
+
+#~ msgid "Number of atoms: %1"
+#~ msgstr "Брой атоми: %1"
+
+#~ msgid "Add constraint"
+#~ msgstr "Добавяне на ограничение"
+
+#~ msgid "Your molecule must contain at least one atom to add a constraint"
+#~ msgstr ""
+#~ "За да се добави ограничение, молекулата трябва да съдържа поне един атом"
+
+#~ msgid "Trajectory..."
+#~ msgstr "Траектория..."
+
+#~ msgid "&File"
+#~ msgstr "&Файл"
+
+#~ msgid "Import"
+#~ msgstr "Внасяне"
+
+#~ msgid "Open chemical file format"
+#~ msgstr "Отваряне на химически файлов формат"
+
+#~ msgid "Chemical files (*.xyz)"
+#~ msgstr "Химически файлове (*.xyz)"
+
+#~ msgid "Open parameter file"
+#~ msgstr "Отваряне на файл с параметри"
+
+#~ msgid "Chemical files (*.parm7)"
+#~ msgstr "Химически файлове (*.parm7)"
+
+#~ msgid "Import Trajectory"
+#~ msgstr "Внасяне на траектория"
+
+#~ msgid "Import trajectory files"
+#~ msgstr "Внасяне на файлове с траектория"
+
+#~ msgid "&Optimize Geometry"
+#~ msgstr "&Oптимизиране на геометрията"
+
+#~ msgctxt "Shortcut key for optimize geometry"
+#~ msgid "Ctrl+Alt+O"
+#~ msgstr "Ctrl+Alt+O"
+
+#~ msgid "Calculate Energy"
+#~ msgstr "Изчисляване на енергията"
+
+#~ msgid "Ignore Selection"
+#~ msgstr "Игнориране на избраното"
+
+#~ msgid "&Molecular Mechanics"
+#~ msgstr "&Молекулярна механика"
+
+#~ msgid "Energy = %L1 %2"
+#~ msgstr "Енергия = %L1 %2"
+
+#~ msgid "Geometric Optimization"
+#~ msgstr "Геометрична оптимизация"
+
+#~ msgid "Cancel"
+#~ msgstr "Отказ"
+
+#~ msgid "pH"
+#~ msgstr "pH"
+
+#~ msgid "Cannot read file %1."
+#~ msgstr "Файлът %1 не може да бъде прочетен."
+
+#~ msgid "Open Directory"
+#~ msgstr "Отваряне на директория"
+
+#~ msgid "&Insert"
+#~ msgstr "&Вмъкване"
+
+#~ msgid "Peptide..."
+#~ msgstr "Пептид..."
+
+#~ msgid "Insert Peptide"
+#~ msgstr "Вмъкване на пептид"
+
+#~ msgid "Molecule Properties..."
+#~ msgstr "Свойства на молекулата..."
+
+#~ msgid "&View"
+#~ msgstr "&Изглед"
+
+#~ msgid "&Properties"
+#~ msgstr "&Свойства"
+
+#~ msgid "Molecular Properties"
+#~ msgstr "Молекулярни свойства"
+
+#~ msgid "Display standard molecular properties."
+#~ msgstr "Показване на стандартни молекулярни свойства"
+
+#~ msgid "Fetch from PDB..."
+#~ msgstr "Добиване от PDB..."
+
+#~ msgid "Fetch from URL..."
+#~ msgstr "Добиване от URL..."
+
+#~ msgid "URL"
+#~ msgstr "Адрес"
+
+#~ msgid "URL of molecule to download."
+#~ msgstr "Адрес на молекулата за изтегляне"
+
+#~ msgid "Specified molecule could not be found: %1"
+#~ msgstr "Посочената молекула не може да бъде открита: %1"
+
+#~ msgid "Specified molecule could not be loaded: %1"
+#~ msgstr "Посочената молекула не може да бъде заредена: %1"
+
+#~ msgid "Network Fetch"
+#~ msgstr "Добиване от мрежата"
+
+#~ msgid "Fetch molecule files over the network."
+#~ msgstr "Добиване на файлове с молекули от мрежата"
+
+#~ msgid "Save POV-Ray rendered image"
+#~ msgstr "Запазване на изображение, рендерирано с POV-Ray"
+
+#~ msgid "Image files (*.png *.pbm)"
+#~ msgstr "Изображения (*.png *.pbm)"
+
+#~ msgid "POV-Ray..."
+#~ msgstr "POV-Ray..."
+
+#~ msgid "Export"
+#~ msgstr "Изнасяне"
+
+#~ msgid "No filename supplied."
+#~ msgstr "Не е въведено име на файл."
+
+#~ msgid "No valid filename was supplied."
+#~ msgstr "Не е въведено валидно име на файл."
+
+#~ msgid "Cannot Write to File."
+#~ msgstr "Не може да се направи запис във файл."
+
+#~ msgid ""
+#~ "Cannot write to file %1. Do you have permissions to write to that "
+#~ "location?"
+#~ msgstr ""
+#~ "Не може да се направи запис във файлът %1. Имате ли права за запис в това "
+#~ "местоположение?"
+
+#~ msgid "POV-Ray failed to start."
+#~ msgstr "POV-Ray не успя да се пусне."
+
+#~ msgid "POV-Ray"
+#~ msgstr "POV-Ray"
+
+#~ msgid "Atom Properties..."
+#~ msgstr "Свойства на атома..."
+
+#~ msgid "Bond Properties..."
+#~ msgstr "Свойства на връзка..."
+
+#~ msgid "Angle Properties..."
+#~ msgstr "Свойства на връзката..."
+
+#~ msgid "Atom Properties"
+#~ msgstr "Свойства на атома"
+
+#~ msgid "Bond Properties"
+#~ msgstr "Свойства на връзката"
+
+#~ msgid "Angle Properties"
+#~ msgstr "Свойства на ъгъла"
+
+#~ msgid "Properties"
+#~ msgstr "Свойства"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Неон"
+
+#~ msgid "Element"
+#~ msgstr "Елемент"
+
+#~ msgid "Type"
+#~ msgstr "Вид"
+
+#~ msgid "Valence"
+#~ msgstr "Валентност"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "X %1"
+#~ msgstr "X %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Y %1"
+#~ msgstr "Y %1"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Z  %1"
+#~ msgstr "Z  %1"
+
+#~ msgid "Atom %1"
+#~ msgstr "Атом %1"
+
+#~ msgid "Start Atom"
+#~ msgstr "Начален атом"
+
+#~ msgid "End Atom"
+#~ msgstr "Краен атом"
+
+#~ msgid "Bond Order"
+#~ msgstr "Ред на връзките"
+
+#~ msgctxt "in Angstrom"
+#~ msgid "Length %1"
+#~ msgstr "Дължина %1"
+
+#~ msgid "Bond %1"
+#~ msgstr "Връзка %1"
+
+#~ msgid "Vertex"
+#~ msgstr "Връх"
+
+#~ msgctxt "Degree symbol"
+#~ msgid "Angle %1"
+#~ msgstr "Ъгъл %1"
+
+#~ msgid "Angle %1"
+#~ msgstr "Ъгъл %1"
+
+#~ msgid "Energy"
+#~ msgstr "Енергия"
+
+#~ msgid "Python Terminal"
+#~ msgstr "Терминал на Python"
+
+#, fuzzy
+#~ msgid "Save Dalton Input File"
+#~ msgstr "Запазване на файл с траектория"
+
+#~ msgid "Show Preview"
+#~ msgstr "Предварителен преглед"
+
+#~ msgid "Hide Preview"
+#~ msgstr "Скриване на прегледа"
+
+#~ msgid "Delete"
+#~ msgstr "Изтриване"
+
+#~ msgid "No Atoms Selected"
+#~ msgstr "Няма избрани атоми"
+
+#~ msgid "You must make a selection!"
+#~ msgstr "Трябва да направите избиране!"
+
+#~ msgid "Group Name"
+#~ msgstr "Име на група"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid "qm"
+#~ msgstr "qm"
+
+#~ msgid "efp"
+#~ msgstr "efp"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "GAMESS"
+#~ msgstr "GAMESS"
+
+#~ msgid "Title"
+#~ msgstr "Име"
+
+#~ msgid "Advanced Settings Changed"
+#~ msgstr "Разширените настройки са променени"
+
+#~ msgid ""
+#~ "Advanced settings have changed.\n"
+#~ "Discard?"
+#~ msgstr ""
+#~ "Разширените настройки са променени.\n"
+#~ "Отмяна?"
+
+#~ msgid "Advanced Settings Reset"
+#~ msgstr "Връщане на разширените настройки"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset advanced settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Сигурни ли сте, че желаете да върнете разширените настройки?\n"
+#~ "Всички промени ще бъдат изгубени!"
+
+#~ msgid "Basic Settings Reset"
+#~ msgstr "Връщане на основните настройки"
+
+#~ msgid ""
+#~ "Are you sure you wish to reset basic settings?\n"
+#~ "All changes will be lost!"
+#~ msgstr ""
+#~ "Сигурни ли сте, че желаете да върнете основните настройки?\n"
+#~ "Всички промени ще бъдат изгубени!"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS Input Deck (*.inp)"
+
+#, fuzzy
+#~ msgid "&Dalton..."
+#~ msgstr "Анимация..."
+
+#~ msgid "&Invert Selection"
+#~ msgstr "&Обръщане на избора"
+
+#~ msgid "Select by Element..."
+#~ msgstr "Избиране по елемент..."
+
+#~ msgid "&Select"
+#~ msgstr "&Избиране"
+
+#~ msgid "There is no current selection."
+#~ msgstr "Няма текуща селекция."
+
+#~ msgid "name"
+#~ msgstr "име"
+
+#~ msgid "Name cannot be empty."
+#~ msgstr "Името не може да бъде празно"
+
+#~ msgid "There is already a selection with this name."
+#~ msgstr "Вече има селекция с такова име."
+
+#, fuzzy
+#~ msgid "Energy (eV)"
+#~ msgstr "Енергия"
+
+#, fuzzy
+#~ msgid "Activity"
+#~ msgstr "Актиний"
+
+#~ msgid "X Axis"
+#~ msgstr "Ос X"
+
+#~ msgid "Y Axis"
+#~ msgstr "Ос Y"
+
+#~ msgid "&Appearance"
+#~ msgstr "&Външен вид"
+
+#~ msgid "E&xport Image"
+#~ msgstr "&Изнасяне на изображение"
+
+#~ msgctxt "Infrared spectra option"
+#~ msgid "Infrared"
+#~ msgstr "Инфрачервен"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "Радон"
+
+#~ msgid "No data"
+#~ msgstr "Липсват данни"
+
+#~ msgid "Publication"
+#~ msgstr "Публикация"
+
+#~ msgid "New Scheme"
+#~ msgstr "Нова схема"
+
+#~ msgid "Confirm Scheme Removal"
+#~ msgstr "Потвърждение премахването на схемата"
+
+#~ msgid "Really remove current scheme?"
+#~ msgstr "Наистина ли да бъде премахната текущата схема"
+
+#~ msgid "Change Scheme Name"
+#~ msgstr "Промяна името на схемата"
+
+#~ msgid "Enter new name for current scheme:"
+#~ msgstr "Въведете ново име за текущата схема:"
+
+#, fuzzy
+#~ msgid "Select Calculated Spectra Color"
+#~ msgstr "Изнасяне на изчислен спектър"
+
+#, fuzzy
+#~ msgid "Select Imported Spectra Color"
+#~ msgstr "Внасяне на спектър"
+
+#~ msgid "Export Calculated Spectrum"
+#~ msgstr "Изнасяне на изчислен спектър"
+
+#~ msgid "All Files"
+#~ msgstr "Всички файлове"
+
+#~ msgid "Import Spectra"
+#~ msgstr "Внасяне на спектър"
+
+#~ msgid "Spectra Import"
+#~ msgstr "Внасяне на спектър"
+
+#~ msgid "Unknown extension: %1"
+#~ msgstr "Неизвестно разширение: %1"
+
+#~ msgid "Data Format"
+#~ msgstr "Формат на данните"
+
+#~ msgctxt "noun, not verb"
+#~ msgid "Format:"
+#~ msgstr "Формат:"
+
+#~ msgid "Load Spectral Data"
+#~ msgstr "Зареждане на спектрални данни"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Portable Network Graphics"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "Tagged Image File Format"
+#~ msgstr "Tagged Image File Format"
+
+#~ msgid "Windows Bitmap"
+#~ msgstr "Windows Bitmap"
+
+#~ msgid "Portable Pixmap"
+#~ msgstr "Portable Pixmap"
+
+#~ msgid "X11 Bitmap"
+#~ msgstr "X11 Bitmap"
+
+#~ msgid "X11 Pixmap"
+#~ msgstr "X11 Pixmap"
+
+#~ msgid "Invalid Filename"
+#~ msgstr "Грешно име на файл"
+
+#~ msgid "Error"
+#~ msgstr "Грешка"
+
+#~ msgid "A problem occurred while writing file %1"
+#~ msgstr "Възникна грешка по време на записа на файла %1"
+
+#~ msgid "Success!"
+#~ msgstr "Успех!"
+
+#~ msgid "Image successfully written to %1"
+#~ msgstr "Изображението е успешна записано в %1"
+
+#~ msgid "Spectra"
+#~ msgstr "Спектри"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "Анимация"
+
+#, fuzzy
+#~ msgid "Pause"
+#~ msgstr "Поставяне"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Хлор"
+
+#~ msgid "Warning"
+#~ msgstr "Внимание"
+
+#~ msgid "Super Cell"
+#~ msgstr "Супер клетка"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "MO %L1"
+#~ msgstr "MO %L1"
+
+#~ msgid "Abort Calculation"
+#~ msgstr "Прекъсване на изчислението"
+
+#~ msgctxt "Molecular Orbital"
+#~ msgid "Calculating MO %L1"
+#~ msgstr "Изчисляване на MO %L1"
+
+#~ msgid "Building video "
+#~ msgstr "Изграждане на видео "
+
+#~ msgid "Video file not written."
+#~ msgstr "Видео файлът не е записан."
+
+#~ msgid "OK"
+#~ msgstr "Добре"
+
+#, fuzzy
+#~ msgid "Num Constraints: %1"
+#~ msgstr "Брой атоми: %1"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "Оси"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "Потребителски цвят"
+
+#, fuzzy
+#~ msgid "Axis 1:"
+#~ msgstr "Ос X"
+
+#, fuzzy
+#~ msgid "Axis 2:"
+#~ msgstr "Ос X"
+
+#, fuzzy
+#~ msgid "Axis 3:"
+#~ msgstr "Ос X"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "Потребителски цвят"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "Етикет"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "Етикет"
+
+#~ msgid "None"
+#~ msgstr "Без"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "Потребителски цвят"
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "Етикет"
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "Бохрий"
+
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#, fuzzy
+#~ msgid "GAMESS Input #2"
+#~ msgstr "GAMESS Input Deck (*.inp)"
+
+#, fuzzy
+#~ msgid "Cut All"
+#~ msgstr "Азрязване на атоми"
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Изчистване на атоми"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "Без"
+
+#, fuzzy
+#~ msgid "Calculate:"
+#~ msgstr "Изчисляване на енергията"
+
+#, fuzzy
+#~ msgid "Direct"
+#~ msgstr "Отваряне на директория"
+
+#, fuzzy
+#~ msgid "Grid Specification"
+#~ msgstr "Геометрична оптимизация"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "Формат:"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "Йод"
+
+#, fuzzy
+#~ msgid "Property:"
+#~ msgstr "Свойства"
+
+#, fuzzy
+#~ msgid "Excitation Energy"
+#~ msgstr "Изчисляване на енергията"
+
+#, fuzzy
+#~ msgid "Export Data"
+#~ msgstr "Изнасяне"
+
+#, fuzzy
+#~ msgid "Spectra Tab"
+#~ msgstr "Спектри"
+
+#, fuzzy
+#~ msgid "Energy units:"
+#~ msgstr "Енергия"
+
+#, fuzzy
+#~ msgid "Fermi Energy: "
+#~ msgstr "Енергия"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "Етикет"
+
+#, fuzzy
+#~ msgid "States / Cell"
+#~ msgstr "Супер клетка"
+
+#, fuzzy
+#~ msgid "States / Atom"
+#~ msgstr "Начален атом"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "Олово"
+
+#, fuzzy
+#~ msgid "Relative"
+#~ msgstr "Шаблон"
+
+#, fuzzy
+#~ msgid "Temperature:"
+#~ msgstr "Шаблон"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "&Файл"
+
+#, fuzzy
+#~ msgid "&Show Spectra..."
+#~ msgstr "Спектри"
+
+#~ msgid "&Template"
+#~ msgstr "&Шаблон"
+
+#~ msgid "&Edit"
+#~ msgstr "&Редактиране"
+
+#~ msgid "Template"
+#~ msgstr "Шаблон"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Файлове на Avogadro (*.*)"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Всякакви файлове (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Запазване на видео файл"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "файл с траектория (*.xyz)"
+
+#~ msgid "Cannot save file %1."
+#~ msgstr "Не може да бъде запазен файлът %1."
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr ""
+#~ "Невалидно име на видео файл. Трябва да включва пълният път за достъп"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
+#~ msgstr ""
+#~ "Невалидно име на видео файл. Трябва да включва пълният път за достъп и "
+#~ "името, завършващо с .avi"
+
+#~ msgid "Atom Index %1"
+#~ msgstr "Атомен индекс %1"
+
+#~ msgid "Clear Molecule"
+#~ msgstr "Изчистване на молекула"
+
+#~ msgid "Open File"
+#~ msgstr "Отваряне на файл"
+
+#~ msgid "Messages"
+#~ msgstr "Съобщения"
+
+#~ msgid "Window"
+#~ msgstr "Прозорец"
+
+#~ msgid "&Minimize"
+#~ msgstr "&Минимизиране"
+
+#~ msgid "&Zoom"
+#~ msgstr "&Мащаб"
+
+#~ msgid "All files"
+#~ msgstr "Всички файлове"
+
+#~ msgid "CML"
+#~ msgstr "CML"
+
+#~ msgid "Sybyl Mol2"
+#~ msgstr "Sybyl Mol2"

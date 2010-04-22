@@ -1,20 +1,21 @@
-# Translations for the QPeriodicTable library.
-# Copyright (C) 2006-2009 The Avogadro Project
-# This file is distributed under the same license as the Avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Kannada translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Avogadro 1.1.0\n"
+"Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-22 13:46+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2010-02-17 11:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Kannada <kn@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
 msgid "Official Name"
@@ -33,12 +34,14 @@ msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
 msgid "Covalent Radius"
-msgstr ""
+msgstr "ಕೋಬಾಲ್ಟ್‌"
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
 msgid "VdW Radius"
-msgstr ""
+msgstr "ರೇಡಿಯಮ್"
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
 msgid "Pauling Electronegativity"
@@ -58,151 +61,151 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr ""
+msgstr "ಹೈಡ್ರೋಜನ್"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "ಹಿಲೀಯಂ"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "ಲಿಥೀಯಮ್"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr ""
+msgstr "ಬೆರಿಲಿಯಂ"
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "ಬೋರಾನ್"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr ""
+msgstr "ಇಂಗಾಲ"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr ""
+msgstr "ಸಾರಜನಕ"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr ""
+msgstr "ಆಮ್ಲಜನಕ"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr ""
+msgstr "ಫ್ಲೂರಿನ್"
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "ನಿಯಾನ್"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "ಸೋಡಿಯಂ"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "ಮೆಗ್ನಿಷಿಯಮ್"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "ಅಲ್ಯುಮಿನಿಯಂ"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "ಸಿಲಿಕಾನ್"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr ""
+msgstr "ರಂಜಕ"
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr ""
+msgstr "ಗಂಧಕ"
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr ""
+msgstr "ಕ್ಲೋರಿನ್"
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "ಆರ್ಗನ್"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "ಪೊಟ್ಯಷಿಯಮ್"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "ಕ್ಯಾಲ್ಸಿಯಮ್"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr ""
+msgstr "ಸ್ಕ್ಯಾಂಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr ""
+msgstr "ಟೈಟಾನಿಯಂ"
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr ""
+msgstr "ವೆನಡಿಯಂ"
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr ""
+msgstr "ಕ್ರೊಮಿಯಂ"
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr ""
+msgstr "ಮ್ಯಾಂಗನೀಸ್"
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr ""
+msgstr "ಕಬ್ಬಿಣ"
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "ಕೋಬಾಲ್ಟ್‌"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr ""
+msgstr "ನಿಕ್ಕೆಲ್"
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr ""
+msgstr "ತಾಮ್ರ"
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "ಸತು"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "ಗೇಲಿಯಮ್"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "ಜೆರ್ಮೇನಿಯಮ್"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "ಆರ್ಸೆನಿಕ್"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "ಸೆಲೆನಿಯಮ್"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr ""
+msgstr "ಬ್ರೋಮಿನ್"
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr ""
+msgstr "ಕ್ರಿಪ್ಟಾನ್"
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "ರುಬಿಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
@@ -214,7 +217,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr ""
+msgstr "ಜರ್ಕೋನಿಯಮ್"
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
@@ -222,7 +225,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr ""
+msgstr "ಮಾಲಿಬ್ಡಿನಮ್"
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
@@ -234,7 +237,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr ""
+msgstr "ರೋಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
@@ -242,23 +245,23 @@ msgstr ""
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "ಬೆಳ್ಳಿ"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "ಕ್ಯಾಡ್ಮಿಯಮ್"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "ಇಂಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr ""
+msgstr "ತವರ"
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr ""
+msgstr "ಆಂಟಿಮನಿ"
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
@@ -266,19 +269,19 @@ msgstr ""
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr ""
+msgstr "ಅಯೋಡಿನ್"
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "ಝೆನಾನ್"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr ""
+msgstr "ಸೀಸಿಯಮ್"
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "ಬೇರಿಯಮ್"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
@@ -362,19 +365,19 @@ msgstr ""
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr ""
+msgstr "ಇರಿಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "ಪ್ಲಾಟಿನಮ್"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "ಬಂಗಾರ"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "ಪಾದರಸ"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
@@ -382,15 +385,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr ""
+msgstr "ಸೀಸಾ"
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr ""
+msgstr "ಬಿಸ್ಮತ್"
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr ""
+msgstr "ಪೊಲೋನಿಯಂ"
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
@@ -398,7 +401,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr ""
+msgstr "ರೆಡಾನ್"
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
@@ -406,7 +409,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "ರೇಡಿಯಮ್"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
@@ -414,7 +417,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr ""
+msgstr "ಥೋರಿಯಮ್"
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
@@ -422,15 +425,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "ಯುರೇನಿಯಮ್"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "ನೆಪ್ಚೂನಿಯಮ್"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "ಪ್ಲುಟೋನಿಯಮ್"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
@@ -438,7 +441,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr ""
+msgstr "ಕ್ಯುರಿಯಂ"
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
@@ -530,7 +533,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:397
 msgid "Unknown"
-msgstr ""
+msgstr "ತಿಳಿಯದ"
 
 #: src/periodictableview.cpp:43
 msgid "Periodic Table"
@@ -538,8 +541,173 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr " ,Launchpad Contributions:,ಸುಧೀಂದ್ರ,ಸುಭಾಸ್ ಭಟ್(Subhas Bhat)"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr ",,,"
+
+#~ msgid "Custom Color:"
+#~ msgstr "ನನ್ನಿಚ್ಛೆಯ ಬಣ್ಣ:"
+
+#~ msgid "Custom Color"
+#~ msgstr "ನನ್ನಿಚ್ಛೆಯ ಬಣ್ಣ"
+
+#~ msgid "Axes"
+#~ msgstr "ಅಕ್ಷರೇಖೆಗಳು"
+
+#~ msgid "Cartoon"
+#~ msgstr "ಕಾರ್ಟೂನ್"
+
+#~ msgid "Dipole"
+#~ msgstr "ದ್ವಿಧ್ರುವ"
+
+#~ msgid "Force"
+#~ msgstr "ಒತ್ತಾಯಪೂರ್ವಕ"
+
+#~ msgid "Label"
+#~ msgstr "ಗುರುತುಪಟ್ಟಿ"
+
+#~ msgid "Polygon"
+#~ msgstr "ಬಹುಭುಜಾಕೃತಿ"
+
+#~ msgid "Ribbon"
+#~ msgstr "ರಿಬ್ಬನ್"
+
+#~ msgid "Ring"
+#~ msgstr "ರಿಂಗ್"
+
+#~ msgid "Extensions"
+#~ msgstr "ವಿಸ್ತರಣೆಗಳು"
+
+#~ msgid "Avogadro"
+#~ msgstr "ಅವೊಗಡ್ರೊ"
+
+#~ msgid "Animation"
+#~ msgstr "ಅನಿಮೇಶನ್"
+
+#~ msgid "&File"
+#~ msgstr "ಕಡತ(&F)"
+
+#~ msgid "Import"
+#~ msgstr "ಆಮದು"
+
+#~ msgid "Ignore Selection"
+#~ msgstr "ಆಯ್ಕೆಯನ್ನು ನಿರ್ಲಕ್ಷಿಸು"
+
+#~ msgid "Cancel"
+#~ msgstr "ರದ್ದುಮಾಡು"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "ನಿಯಾನ್"
+
+#~ msgid "Delete"
+#~ msgstr "ಅಳಿಸು"
+
+#~ msgid "Group Name"
+#~ msgstr "ಗುಂಪಿನ ಹೆಸರು"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "Title"
+#~ msgstr "ಶೀರ್ಷಿಕೆ"
+
+#, fuzzy
+#~ msgctxt "Raman spectrum"
+#~ msgid "Raman"
+#~ msgstr "ರೆಡಾನ್"
+
+#, fuzzy
+#~ msgid "Vibrations"
+#~ msgstr "ಅನಿಮೇಶನ್"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "ಕ್ಲೋರಿನ್"
+
+#, fuzzy
+#~ msgid "Axes:"
+#~ msgstr "ಅಕ್ಷರೇಖೆಗಳು"
+
+#, fuzzy
+#~ msgid "Custom Axes"
+#~ msgstr "ನನ್ನಿಚ್ಛೆಯ ಬಣ್ಣ"
+
+#, fuzzy
+#~ msgid "Norm"
+#~ msgstr "ಫಾರ್ಮ್"
+
+#, fuzzy
+#~ msgid "Custom Vector"
+#~ msgstr "ನನ್ನಿಚ್ಛೆಯ ಬಣ್ಣ"
+
+#, fuzzy
+#~ msgid "Atom Labels"
+#~ msgstr "ಗುರುತುಪಟ್ಟಿ"
+
+#, fuzzy
+#~ msgid "Label Text:"
+#~ msgstr "ಗುರುತುಪಟ್ಟಿ"
+
+#, fuzzy
+#~ msgid "Set Color"
+#~ msgstr "ನನ್ನಿಚ್ಛೆಯ ಬಣ್ಣ"
+
+#, fuzzy
+#~ msgid "Bond Labels"
+#~ msgstr "ಗುರುತುಪಟ್ಟಿ"
+
+#, fuzzy
+#~ msgid "Bohrs"
+#~ msgstr "ಬೋರಾನ್"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "ನಿಯಾನ್"
+
+#, fuzzy
+#~ msgid "normal"
+#~ msgstr "ಫಾರ್ಮ್"
+
+#, fuzzy
+#~ msgid "fine"
+#~ msgstr "ಅಯೋಡಿನ್"
+
+#, fuzzy
+#~ msgid "TextLabel"
+#~ msgstr "ಗುರುತುಪಟ್ಟಿ"
+
+#, fuzzy
+#~ msgid "Linear"
+#~ msgstr "ಸೀಸಾ"
+
+#, fuzzy
+#~ msgid "Filter: "
+#~ msgstr "ಕಡತ(&F)"
+
+#~ msgid "Nothing"
+#~ msgstr "ಏನೂ ಇಲ್ಲ"
+
+#~ msgctxt "low resolution"
+#~ msgid "Low"
+#~ msgstr "ಕಡಿಮೆ"
+
+#~ msgctxt "medium resolution"
+#~ msgid "Medium"
+#~ msgstr "ಮಧ್ಯಮ"
+
+#~ msgctxt "high resolution"
+#~ msgid "High"
+#~ msgstr "ಹೆಚ್ಚು"
+
+#~ msgctxt "very high resolution"
+#~ msgid "Very High"
+#~ msgstr "ಇನ್ನೂ ಹೆಚ್ಚಿನ"
+
+#~ msgid "Form"
+#~ msgstr "ಫಾರ್ಮ್"
