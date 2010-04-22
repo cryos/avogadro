@@ -29,6 +29,7 @@
 #include <avogadro/molecule.h>
 #include <avogadro/residue.h>
 #include <avogadro/color.h>
+#include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/primitivelist.h>
 

@@ -30,9 +30,6 @@
 #include <avogadro/global.h>
 
 #include <QGLWidget>
-
-#include <avogadro/glhit.h>
-
 #include <Eigen/Core>
 
 class QUndoStack;
@@ -76,6 +73,7 @@ namespace Avogadro {
    * one queue containing only the atoms which would allow bonds and atoms
    * to be rendered by two different engines.
    */
+  class GLHit;
   class GLThread;
   class GLWidgetPrivate;
   class GLPainterDevice;

@@ -35,6 +35,7 @@
 #include <avogadro/bond.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
+#include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
 #include <qperiodictable/elementtranslator.h>

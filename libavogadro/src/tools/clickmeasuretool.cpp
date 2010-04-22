@@ -30,6 +30,7 @@
 #include <avogadro/atom.h>
 #include <avogadro/molecule.h>
 #include <avogadro/color.h>
+#include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/painter.h>
 
