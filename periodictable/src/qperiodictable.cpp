@@ -71,50 +71,10 @@ int main(int argc, char **argv)
 {
   QApplication app(argc, argv);
 
-  // Before we do much else, load translations
-  QStringList translationPaths;
-  foreach (const QString &variable, QProcess::systemEnvironment()) {
-    QStringList split1 = variable.split('=');
-    if (split1[0] == "AVOGADRO_TRANSLATIONS") {
-      foreach (const QString &path, split1[1].split(':'))
-        translationPaths << path;
-    }
-  }
-  translationPaths << QCoreApplication::applicationDirPath() + "/../share/avogadro/i18n/";
-#ifdef Q_WS_MAC
-  translationPaths << QString(INSTALL_PREFIX) + "/share/avogadro/i18n/";
-#endif
-
-  // Get the locale for translations
-  QString translationCode = QLocale::system().name();
-
-  // The QLocale::system() call on Mac doesn't reflect the default language -- only the default locale formatting
-  // so we'll fine-tune the respone with QSystemLocale
-  // This only applies to Qt/Mac 4.6.x and later, which added the appropriate Carbon magic to QSystemLocale.
-#if (QT_VERSION >= QT_VERSION_CHECK(4, 6, 0))
-#ifdef Q_WS_MAC
-  QSystemLocale sysLocale;
-  QLocale::Language sysLanguage = static_cast<QLocale::Language>(sysLocale.query(QSystemLocale::LanguageId, QVariant()).toInt());
-  QLocale::Country sysCountry = static_cast<QLocale::Country>(sysLocale.query(QSystemLocale::CountryId, QVariant()).toInt());
-  QLocale macSystemPrefsLanguage(sysLanguage, sysCountry);
-  translationCode = macSystemPrefsLanguage.name();
-#endif
-#endif
-
-  std::cout << "Locale: " << qPrintable (translationCode) << std::endl;
-
-  // Load the libavogadro translations
-  QString fileName = "libavogadro_" + translationCode + ".qm";
-  
-  // Load the Avogadro translations
-  QPointer<QTranslator> translator = new QTranslator(0);
-  foreach (const QString &translationPath, translationPaths) {
-      std::cout << qPrintable (fileName) << "\n";
-    if (translator->load(fileName, translationPath)) {
-      app.installTranslator(translator);      
-      break;
-    }
-  }
+    // Load the Periodic Table translations
+    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
+    if (ptTranslator)
+      qApp->installTranslator(ptTranslator);
 
   // Construct Periodic Table
   PeriodicTableView* periodicTable = new PeriodicTableView;

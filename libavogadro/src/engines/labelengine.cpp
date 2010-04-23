@@ -83,6 +83,11 @@ Bond *dummyBond;*/
 	dummyAtom.setPartialCharge(0.1);
 	dummyAtom.setFormalCharge(0);*/
 	//dummyAtom.set
+    
+    // Load the Periodic Table translations
+    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
+    if (ptTranslator)
+      qApp->installTranslator(ptTranslator);
   }
 
   Engine *LabelEngine::clone() const

@@ -26,6 +26,9 @@
 #ifndef PERIODICTABLEEXPORT_H
 #define PERIODICTABLEEXPORT_H
 
+#include <QPointer>
+#include <QTranslator>
+
 #ifdef WIN32
 # ifndef NOMINMAX
 #  define NOMINMAX 1
@@ -63,6 +66,18 @@
 #ifndef A_HIDE
   #define A_HIDE A_DECL_HIDDEN
 #endif
+
+namespace Avogadro
+{
+  class A_EXPORT QPeriodicTable
+  {
+    public:
+      /**
+       * Create a translator instance for the Avogadro library.
+       */
+      static QPointer<QTranslator> createTranslator();
+  };
+}
 
 #endif  // PERIODICTABLEEXPORT_H
 

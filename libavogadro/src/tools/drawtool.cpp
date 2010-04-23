@@ -28,7 +28,6 @@
 #include "drawtool.h"
 #include "drawcommand.h"
 
-#include <qperiodictable/periodictableview.h>
 #include <avogadro/navigate.h>
 #include <avogadro/primitive.h>
 #include <avogadro/atom.h>
@@ -38,7 +37,9 @@
 #include <avogadro/glhit.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
+
 #include <qperiodictable/elementtranslator.h>
+#include <qperiodictable/periodictableview.h>
 
 #include <Eigen/Core>
 
@@ -48,6 +49,7 @@
 
 #include <QtPlugin>
 #include <QAction>
+#include <QApplication>
 #include <QLabel>
 #include <QCheckBox>
 #include <QVBoxLayout>
@@ -89,6 +91,11 @@ namespace Avogadro {
     action->setShortcut(Qt::Key_F8);
 
     m_forceField = OBForceField::FindForceField("MMFF94");
+    
+    // Load the Periodic Table translations
+    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
+    if (ptTranslator)
+      qApp->installTranslator(ptTranslator);
   }
 
   DrawTool::~DrawTool()

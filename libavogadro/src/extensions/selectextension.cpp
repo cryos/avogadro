@@ -38,6 +38,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QAction>
+#include <QApplication>
 #include <QDockWidget>
 #include <QDebug>
 
@@ -59,6 +60,11 @@ namespace Avogadro {
 
   SelectExtension::SelectExtension(QObject *parent) : Extension(parent)
   {
+    // Load the Periodic Table translations
+    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
+    if (ptTranslator)
+      qApp->installTranslator(ptTranslator);
+
     m_periodicTable = new PeriodicTableView(qobject_cast<QWidget*>(parent));
     connect( m_periodicTable, SIGNAL( elementChanged(int) ),
         this, SLOT( selectElement(int) ));
