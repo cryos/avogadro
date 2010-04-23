@@ -475,7 +475,7 @@
      <normaloff>:/icons/navigate.png</normaloff>:/icons/navigate.png</iconset>
    </property>
    <property name="text">
-    <string>Center</string>
+    <string>Better View</string>
    </property>
   </action>
   <action name="actionPaste">
