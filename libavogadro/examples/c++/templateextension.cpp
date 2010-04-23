@@ -36,7 +36,7 @@ namespace Avogadro
 
   TemplateExtension::TemplateExtension( QObject *parent ) : Extension( parent )  
   {
-    // create an action for our second action
+    // create an action for our first action
     QAction *action = new QAction( this );
     action->setText( tr("First Action" ));
     m_actions.append( action );
