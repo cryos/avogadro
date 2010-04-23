@@ -269,7 +269,7 @@ void printHelp(const QString &appName)
   std::cout << "  -v, --version\t\tShow version information" << std::endl;
   #else
   std::wcout << QCoreApplication::translate("main.cpp", "Usage: %1 [options] [files]\n\n"
-      "Advanced Molecular Editor (version %2)\n\n"
+      "Avogadro - Advanced Molecular Editor (version %2)\n\n"
       "Options:\n"
       "  -h, --help\t\tShow help options (this)\n"
       "  -v, --version\t\tShow version information\n"
