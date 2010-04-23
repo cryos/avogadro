@@ -455,6 +455,13 @@ add_subdirectory(plotwidget)
 add_subdirectory(periodictable)
 add_subdirectory(doc)
 
+if(ENABLE_AVO_PACKAGE)
+  # Prevent race condition on parallel build
+  add_dependencies(avogadro openbabel)
+  add_dependencies(avogadro-app openbabel)
+  add_dependencies(periodictable openbabel)
+endif(ENABLE_AVO_PACKAGE)
+
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
 
