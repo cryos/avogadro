@@ -198,7 +198,8 @@ int main(int argc, char *argv[])
     printVersion(arguments[0]);
     return 0;
   }
-  else if(arguments.contains("-h") || arguments.contains("--help")) {
+  else if(arguments.contains("-h") || arguments.contains("-help") 
+  	|| arguments.contains("--help")) {
     printHelp(arguments[0]);
     return 0;
   }
@@ -254,6 +255,7 @@ void printVersion(const QString &)
   std::wcout << QCoreApplication::translate("main.cpp", "Avogadro: \t%1 (Hash %2)\n"
       "LibAvogadro: \t%3 (Hash %4)\n"
       "Qt: \t\t%5\n").arg(VERSION, SCM_REVISION, Library::version(), Library::scmRevision(), qVersion()).toStdWString();
+  std::wcout << "OpenBabel: \t" << BABEL_VERSION << std::endl;
   #endif
 }
 
@@ -261,7 +263,7 @@ void printHelp(const QString &appName)
 {
   #ifdef WIN32
   std::cout << "Usage: avogadro [options] [files]" << std::endl << std::endl;
-  std::cout << "Advanced Molecular Editor (version " << VERSION << ')' << std::endl << std::endl;
+  std::cout << "Avogadro - Advanced Molecular Editor (version " << VERSION << ')' << std::endl << std::endl;
   std::cout << "Options:" << std::endl;
   std::cout << "  -h, --help\t\tShow help options (this)" << std::endl;
   std::cout << "  -v, --version\t\tShow version information" << std::endl;
