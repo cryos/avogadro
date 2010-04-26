@@ -1,5 +1,5 @@
 # Translations for the Avogadro molecular editor.
-# Copyright (C) 2006-2009 The Avogadro Project
+# Copyright (C) 2006-2010 The Avogadro Project
 # This file is distributed under the same license as the Avogadro package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.1.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-03-29 22:23-0400\n"
+"POT-Creation-Date: 2010-04-26 12:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,47 +85,7 @@ msgstr ""
 msgid "Open File"
 msgstr ""
 
-#: src/main.cpp:204
-msgctxt "main.cpp"
-msgid "Avogadro"
-msgstr ""
-
-#: src/main.cpp:205
-msgctxt "main.cpp"
-msgid "This system does not support OpenGL."
-msgstr ""
-
-#: src/main.cpp:208
-msgctxt "main.cpp"
-msgid "System has OpenGL support."
-msgstr ""
-
-#: src/main.cpp:211
-msgctxt "main.cpp"
-msgid "About to test OpenGL capabilities."
-msgstr ""
-
-#: src/main.cpp:218
-msgctxt "main.cpp"
-msgid "OpenGL capabilities found: "
-msgstr ""
-
-#: src/main.cpp:220
-msgctxt "main.cpp"
-msgid "Double Buffering."
-msgstr ""
-
-#: src/main.cpp:222
-msgctxt "main.cpp"
-msgid "Direct Rendering."
-msgstr ""
-
-#: src/main.cpp:224
-msgctxt "main.cpp"
-msgid "Antialiasing."
-msgstr ""
-
-#: src/main.cpp:249
+#: src/main.cpp:255
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -134,13 +94,13 @@ msgid ""
 "Qt: \t\t%5\n"
 msgstr ""
 
-#: src/main.cpp:264
+#: src/main.cpp:271
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
-"Advanced Molecular Editor (version %2)\n"
+"Avogadro - Advanced Molecular Editor (version %2)\n"
 "\n"
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
@@ -512,25 +472,25 @@ msgid "Description:\n"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr ""
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr ""
@@ -544,13 +504,13 @@ msgid "bond %1"
 msgstr ""
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr ""
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr ""
 
@@ -963,7 +923,7 @@ msgstr ""
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Center"
+msgid "Better View"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:487

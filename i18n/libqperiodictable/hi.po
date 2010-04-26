@@ -1,0 +1,548 @@
+# Hindi translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-26 12:26-0400\n"
+"PO-Revision-Date: 2010-01-16 18:43+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <hi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+msgid "Official Name"
+msgstr ""
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+msgid "Atomic Number"
+msgstr ""
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "कोबॉल्ट"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "रेडियम"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+msgid "Pauling Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+msgid "Ionization Potential"
+msgstr ""
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+msgid "Electron Affinity"
+msgstr ""
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "हाइड्रोजन"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "हीलियम"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "लीथियम"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "बेरीलियम"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "बोरॉन"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "कार्बन"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "नाइट्रोजन"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "आक्सीजन"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "फ्लोरीन"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "नियॉन"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "सोडियम"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "मैग्नीशियम"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "एल्यूमिनियम"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "सिलिकॉन"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "फॉस्फोरस"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "सल्फर"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "क्लोरीन"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "ऑर्गन"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "पोटेशियम"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "केल्शियम"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "स्कैन्डियम"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "टाइटेनियम"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "वनेडियम"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "क्रोमियम"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "मैंगनीज़"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "लोहा"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "कोबॉल्ट"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "निकल"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "तांबा"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "ज़िंक"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "गैलियम"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "जर्मेनियम"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "ऑर्सेनिक"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "सेलेनियम"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "ब्रोमीन"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "क्रिप्टॉन"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "रूबीडियम"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "स्ट्रांशियम"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "विट्रियम"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "ज़िरकोनियम"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "नियोबियम"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "मॉलीब्डेनम"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "टेक्नेशियम"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "रुदेनियम"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "रोडियम"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "पलेडियम"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "चाँदी"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "केडमियम"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "इंडियम"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "टिन"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "एंटिमनी"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "टेलूरियम"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "आयोडीन"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "ज़ेनॉन"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr ""
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "बेरियम"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "लैंथेनम"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "सीरियम"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "प्रसोडमियम"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "नियोडमियम"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "प्रोमेथियम"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "समरियम"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "यूरोपियम"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "गैडोलिनियम"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "टर्बियम"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "डायस्प्रोसियम"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "होलमियम"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "एरबियम"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "थूलियम"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "येटरबियम"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "ल्यूटेशियम"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "हाफनियम"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "टैंटेलम"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "टंग्सटन"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "रेनियम"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "ऑस्मियम"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "इरिडियम"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "प्लेटिनम"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "सोना"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "मर्क्यूरी"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "थालियम"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "सीसा लीड 3 - कैलिओप"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "बिस्मथ"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "पोलोनियम"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "अस्टाटाइन"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "राडोन"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "फ्रांसियम"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "रेडियम"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "एक्टीनियम"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "थोरियम"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "प्रोटेक्टीनियम"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "यूरेनियम"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "नेप्च्यूनियम"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "प्लूटोनियम"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "अमेरिसियम"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "क्यूरियम"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "बर्केलियम"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "केलिफोर्नियम"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "आइंस्टीनियम"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "फर्मियम"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "मेंडेलेवियम"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "नोबेलियम"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "लारेंसियम"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "रदरफोर्डियम"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "डब्नियम"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "सीबोर्जियम"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "बोरियम"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "हासियम"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "मेटनेरियम"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "डार्मस्टेडियम"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "रोंटजेनियम"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "उनुन्बियम"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "उनुन्ट्रियम"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "उनुनक्वाडियम"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "उनुनपेंटियम"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "उनुनहेक्सियम"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr ""
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr ""
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr ""
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr ""
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr " ,Launchpad Contributions:,Geoff Hutchison"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ",,"

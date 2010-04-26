@@ -1,0 +1,557 @@
+# Polish translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-26 12:26-0400\n"
+"PO-Revision-Date: 2009-06-12 02:01+0000\n"
+"Last-Translator: Geoff Hutchison <Unknown>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+msgid "Official Name"
+msgstr ""
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+msgid "Atomic Number"
+msgstr "Liczba atomowa"
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+#, fuzzy
+msgid "Atomic Weight"
+msgstr "Liczba atomowa"
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "Kobalt"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "Promień:"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+msgid "Pauling Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+#, fuzzy
+msgid "Ionization Potential"
+msgstr "Potencjał elektrostatyczny"
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+msgid "Electron Affinity"
+msgstr ""
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "Wodór"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "Hel"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "Lit"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "Beryl"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "Bor"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "Węgiel"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "Azot"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "Tlen"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "Fluor"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "Neon"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "Sód"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "Magnez"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "Glin"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "Krzem"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "Fosfor"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "Siarka"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "Chlor"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "Argon"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "Potas"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "Wapń"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "Skand"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "Tytan"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "Wanad"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "Chrom"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "Mangan"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "Żelazo"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "Kobalt"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "Nikiel"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "Miedź"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "Cynk"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "Gal"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "German"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "Arsen"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "Selen"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "Brom"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "Krypton"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "Rubid"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "Stront"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "Itr"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "Cyrkon"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "Niob"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "Molibden"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "Technet"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "Ruten"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "Rod"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "Pallad"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "Srebro"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "Kadm"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "Ind"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "Cyna"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "Antymon"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "Tellur"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "Jod"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "Ksenon"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "Cez"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "Bar"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "Lantan"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "Cer"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "Prazeodym"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "Neodym"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "Promet"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "Samar"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "Europ"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "Gadolin"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "Terb"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "Dysproz"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "Holm"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "Erb"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "Tul"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "Iterb"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "Lutet"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "Hafn"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "Tantal"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "Wolfram"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "Ren"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "Osm"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "Iryd"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "Platinum"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "Złoto"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "Rtęć"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "Tal"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "Ołów"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "Bizmut"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "Polon"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "Astat"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "Radon"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "Frans"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "Rad"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "Aktyn"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "Tor"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "Protaktyn"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "Uran"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "Neptun"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "Pluton"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "Ameryk"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "Kiur"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "Berkel"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "Kaliforn"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "Einstein"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "Ferm"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "Mendelew"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "Nobel"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "Lorens"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "Rutherford"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "Dubn"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "Seaborg"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "Borium"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "Has"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "Meitner"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "Samar"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "Roentgen"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "Ununbium"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "Ununtrium"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "Ununquadium"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "Ununpentium"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "Ununhexium"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "Ununseptium"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "Ununoctium"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "Nieznany"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "Układ okresowy"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Roman "
+"Skrzypiński, ,Launchpad Contributions:,Avogadro Team, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad Contributions:,"
+"Avogadro Team,Bartosz Kaszubowski,Geoff Hutchison,Krzysztof Wittek"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,romano473@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,"
+"gosimek@gmail.com,,"

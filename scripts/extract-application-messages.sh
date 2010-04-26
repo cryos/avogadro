@@ -40,7 +40,7 @@ echo "Done extracting messages"
 # Replace some boilerplate strings
 sed -e "s/SOME DESCRIPTIVE TITLE/Translations for the Avogadro molecular editor/" <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
-sed -e 's/Copyright (C) YEAR/Copyright (C) 2006-2009/' <${PROJECT}.pot >${PROJECT}.new
+sed -e 's/Copyright (C) YEAR/Copyright (C) 2006-2010/' <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
 sed -e 's/as the PACKAGE package/as the Avogadro package/' <${PROJECT}.pot >${PROJECT}.new
 mv ${PROJECT}.new ${PROJECT}.pot
@@ -55,7 +55,7 @@ mv ${PROJECT}.pot ${I18NDIR}
 
 cd ${I18NDIR} 
 echo "Merging translations"
-catalogs=`find . -name "avogadro*.po"`
+catalogs=`find . -name "*.po"`
 for cat in $catalogs; do
   echo $cat
   # remove any \r escapes
@@ -63,6 +63,7 @@ for cat in $catalogs; do
   mv $cat.new $cat
   msgmerge -o $cat.new $cat ${PROJECT}.pot
   mv $cat.new $cat
+  msgmerge -U $cat ${PROJECT}.pot
 done
 echo "Done merging translations"
  

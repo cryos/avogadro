@@ -1,0 +1,561 @@
+# Korean translation for avogadro
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the avogadro package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: avogadro\n"
+"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2010-04-26 12:26-0400\n"
+"PO-Revision-Date: 2009-10-30 05:16+0000\n"
+"Last-Translator: Kim Hanjo <lordmiss@lordmiss.com>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
+#, fuzzy
+msgid "Official Name"
+msgstr "화학명"
+
+#: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
+#, fuzzy
+msgid "Atomic Number"
+msgstr "원자 번호"
+
+#: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
+msgid "Atomic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
+msgid "Monoisotopic Weight"
+msgstr ""
+
+#: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
+#, fuzzy
+msgid "Covalent Radius"
+msgstr "코발트"
+
+#: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
+#, fuzzy
+msgid "VdW Radius"
+msgstr "결합 반지름:"
+
+#: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
+#, fuzzy
+msgid "Pauling Electronegativity"
+msgstr "전자 밀도 계산하기"
+
+#: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
+msgid "Allred-Rochow Electronegativity"
+msgstr ""
+
+#: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
+#, fuzzy
+msgid "Ionization Potential"
+msgstr "정전기 전위"
+
+#: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
+#, fuzzy
+msgid "Electron Affinity"
+msgstr "전자 밀도"
+
+#: src/elementtranslator.cpp:42
+msgid "Hydrogen"
+msgstr "수소"
+
+#: src/elementtranslator.cpp:45
+msgid "Helium"
+msgstr "헬륨"
+
+#: src/elementtranslator.cpp:48
+msgid "Lithium"
+msgstr "리튬"
+
+#: src/elementtranslator.cpp:51
+msgid "Beryllium"
+msgstr "베릴륨"
+
+#: src/elementtranslator.cpp:54
+msgid "Boron"
+msgstr "붕소"
+
+#: src/elementtranslator.cpp:57
+msgid "Carbon"
+msgstr "탄소"
+
+#: src/elementtranslator.cpp:60
+msgid "Nitrogen"
+msgstr "질소"
+
+#: src/elementtranslator.cpp:63
+msgid "Oxygen"
+msgstr "산소"
+
+#: src/elementtranslator.cpp:66
+msgid "Fluorine"
+msgstr "불소(플루오르)"
+
+#: src/elementtranslator.cpp:69
+msgid "Neon"
+msgstr "네온"
+
+#: src/elementtranslator.cpp:72
+msgid "Sodium"
+msgstr "나트륨"
+
+#: src/elementtranslator.cpp:75
+msgid "Magnesium"
+msgstr "마그네슘"
+
+#: src/elementtranslator.cpp:78
+msgid "Aluminum"
+msgstr "알루미늄"
+
+#: src/elementtranslator.cpp:81
+msgid "Silicon"
+msgstr "규소"
+
+#: src/elementtranslator.cpp:84
+msgid "Phosphorus"
+msgstr "인"
+
+#: src/elementtranslator.cpp:87
+msgid "Sulfur"
+msgstr "황"
+
+#: src/elementtranslator.cpp:90
+msgid "Chlorine"
+msgstr "염소"
+
+#: src/elementtranslator.cpp:93
+msgid "Argon"
+msgstr "아르곤"
+
+#: src/elementtranslator.cpp:96
+msgid "Potassium"
+msgstr "칼륨"
+
+#: src/elementtranslator.cpp:99
+msgid "Calcium"
+msgstr "칼슘"
+
+#: src/elementtranslator.cpp:102
+msgid "Scandium"
+msgstr "스칸듐"
+
+#: src/elementtranslator.cpp:105
+msgid "Titanium"
+msgstr "티타늄"
+
+#: src/elementtranslator.cpp:108
+msgid "Vanadium"
+msgstr "바나듐"
+
+#: src/elementtranslator.cpp:111
+msgid "Chromium"
+msgstr "크롬"
+
+#: src/elementtranslator.cpp:114
+msgid "Manganese"
+msgstr "망간"
+
+#: src/elementtranslator.cpp:117
+msgid "Iron"
+msgstr "철"
+
+#: src/elementtranslator.cpp:120
+msgid "Cobalt"
+msgstr "코발트"
+
+#: src/elementtranslator.cpp:123
+msgid "Nickel"
+msgstr "니켈"
+
+#: src/elementtranslator.cpp:126
+msgid "Copper"
+msgstr "구리"
+
+#: src/elementtranslator.cpp:129
+msgid "Zinc"
+msgstr "아연"
+
+#: src/elementtranslator.cpp:132
+msgid "Gallium"
+msgstr "갈륨"
+
+#: src/elementtranslator.cpp:135
+msgid "Germanium"
+msgstr "게르마늄"
+
+#: src/elementtranslator.cpp:138
+msgid "Arsenic"
+msgstr "비소"
+
+#: src/elementtranslator.cpp:141
+msgid "Selenium"
+msgstr "셀레늄"
+
+#: src/elementtranslator.cpp:144
+msgid "Bromine"
+msgstr "브롬"
+
+#: src/elementtranslator.cpp:147
+msgid "Krypton"
+msgstr "크립톤"
+
+#: src/elementtranslator.cpp:150
+msgid "Rubidium"
+msgstr "루비듐"
+
+#: src/elementtranslator.cpp:153
+msgid "Strontium"
+msgstr "스트론튬"
+
+#: src/elementtranslator.cpp:156
+msgid "Yttrium"
+msgstr "이트륨"
+
+#: src/elementtranslator.cpp:159
+msgid "Zirconium"
+msgstr "지르코늄"
+
+#: src/elementtranslator.cpp:162
+msgid "Niobium"
+msgstr "니오브"
+
+#: src/elementtranslator.cpp:165
+msgid "Molybdenum"
+msgstr "몰리브덴"
+
+#: src/elementtranslator.cpp:168
+msgid "Technetium"
+msgstr "테크네튬"
+
+#: src/elementtranslator.cpp:171
+msgid "Ruthenium"
+msgstr "루테늄"
+
+#: src/elementtranslator.cpp:174
+msgid "Rhodium"
+msgstr "로듐"
+
+#: src/elementtranslator.cpp:177
+msgid "Palladium"
+msgstr "팔라듐"
+
+#: src/elementtranslator.cpp:180
+msgid "Silver"
+msgstr "은"
+
+#: src/elementtranslator.cpp:183
+msgid "Cadmium"
+msgstr "카드뮴"
+
+#: src/elementtranslator.cpp:186
+msgid "Indium"
+msgstr "인듐"
+
+#: src/elementtranslator.cpp:189
+msgid "Tin"
+msgstr "주석"
+
+#: src/elementtranslator.cpp:192
+msgid "Antimony"
+msgstr "안티몬"
+
+#: src/elementtranslator.cpp:195
+msgid "Tellurium"
+msgstr "텔루르"
+
+#: src/elementtranslator.cpp:198
+msgid "Iodine"
+msgstr "요오드"
+
+#: src/elementtranslator.cpp:201
+msgid "Xenon"
+msgstr "크세논"
+
+#: src/elementtranslator.cpp:204
+msgid "Cesium"
+msgstr "세슘"
+
+#: src/elementtranslator.cpp:207
+msgid "Barium"
+msgstr "바륨"
+
+#: src/elementtranslator.cpp:210
+msgid "Lanthanum"
+msgstr "란탄"
+
+#: src/elementtranslator.cpp:213
+msgid "Cerium"
+msgstr "세륨"
+
+#: src/elementtranslator.cpp:216
+msgid "Praseodymium"
+msgstr "프라세오디뮴"
+
+#: src/elementtranslator.cpp:219
+msgid "Neodymium"
+msgstr "네오디뮴"
+
+#: src/elementtranslator.cpp:222
+msgid "Promethium"
+msgstr "프로메튬"
+
+#: src/elementtranslator.cpp:225
+msgid "Samarium"
+msgstr "사마륨"
+
+#: src/elementtranslator.cpp:228
+msgid "Europium"
+msgstr "유로퓸"
+
+#: src/elementtranslator.cpp:231
+msgid "Gadolinium"
+msgstr "가돌리늄"
+
+#: src/elementtranslator.cpp:234
+msgid "Terbium"
+msgstr "테르븀"
+
+#: src/elementtranslator.cpp:237
+msgid "Dysprosium"
+msgstr "디스프로슘"
+
+#: src/elementtranslator.cpp:240
+msgid "Holmium"
+msgstr "홀뮴"
+
+#: src/elementtranslator.cpp:243
+msgid "Erbium"
+msgstr "에르븀"
+
+#: src/elementtranslator.cpp:246
+msgid "Thulium"
+msgstr "툴륨"
+
+#: src/elementtranslator.cpp:249
+msgid "Ytterbium"
+msgstr "이테르븀"
+
+#: src/elementtranslator.cpp:252
+msgid "Lutetium"
+msgstr "루테튬"
+
+#: src/elementtranslator.cpp:255
+msgid "Hafnium"
+msgstr "하프늄"
+
+#: src/elementtranslator.cpp:258
+msgid "Tantalum"
+msgstr "탄탈"
+
+#: src/elementtranslator.cpp:261
+msgid "Tungsten"
+msgstr "텅스텐"
+
+#: src/elementtranslator.cpp:264
+msgid "Rhenium"
+msgstr "레늄"
+
+#: src/elementtranslator.cpp:267
+msgid "Osmium"
+msgstr "오스뮴"
+
+#: src/elementtranslator.cpp:270
+msgid "Iridium"
+msgstr "이리듐"
+
+#: src/elementtranslator.cpp:273
+msgid "Platinum"
+msgstr "백금"
+
+#: src/elementtranslator.cpp:276
+msgid "Gold"
+msgstr "금"
+
+#: src/elementtranslator.cpp:279
+msgid "Mercury"
+msgstr "수은"
+
+#: src/elementtranslator.cpp:282
+msgid "Thallium"
+msgstr "탈륨"
+
+#: src/elementtranslator.cpp:285
+msgid "Lead"
+msgstr "납"
+
+#: src/elementtranslator.cpp:288
+msgid "Bismuth"
+msgstr "비스무트"
+
+#: src/elementtranslator.cpp:291
+msgid "Polonium"
+msgstr "폴로늄"
+
+#: src/elementtranslator.cpp:294
+msgid "Astatine"
+msgstr "아스타틴"
+
+#: src/elementtranslator.cpp:297
+msgid "Radon"
+msgstr "라돈"
+
+#: src/elementtranslator.cpp:300
+msgid "Francium"
+msgstr "프란슘"
+
+#: src/elementtranslator.cpp:303
+msgid "Radium"
+msgstr "라듐"
+
+#: src/elementtranslator.cpp:306
+msgid "Actinium"
+msgstr "악티늄"
+
+#: src/elementtranslator.cpp:309
+msgid "Thorium"
+msgstr "토륨"
+
+#: src/elementtranslator.cpp:312
+msgid "Protactinium"
+msgstr "프로탁티늄"
+
+#: src/elementtranslator.cpp:315
+msgid "Uranium"
+msgstr "우라늄"
+
+#: src/elementtranslator.cpp:318
+msgid "Neptunium"
+msgstr "넵투늄"
+
+#: src/elementtranslator.cpp:321
+msgid "Plutonium"
+msgstr "플루토늄"
+
+#: src/elementtranslator.cpp:324
+msgid "Americium"
+msgstr "아메리슘"
+
+#: src/elementtranslator.cpp:327
+msgid "Curium"
+msgstr "퀴륨"
+
+#: src/elementtranslator.cpp:330
+msgid "Berkelium"
+msgstr "버클륨"
+
+#: src/elementtranslator.cpp:333
+msgid "Californium"
+msgstr "칼리포르늄"
+
+#: src/elementtranslator.cpp:336
+msgid "Einsteinium"
+msgstr "아인슈타이늄"
+
+#: src/elementtranslator.cpp:339
+msgid "Fermium"
+msgstr "페르뮴"
+
+#: src/elementtranslator.cpp:342
+msgid "Mendelevium"
+msgstr "멘델레예븀"
+
+#: src/elementtranslator.cpp:345
+msgid "Nobelium"
+msgstr "노벨륨"
+
+#: src/elementtranslator.cpp:348
+msgid "Lawrencium"
+msgstr "로렌슘"
+
+#: src/elementtranslator.cpp:351
+msgid "Rutherfordium"
+msgstr "러더퍼듐"
+
+#: src/elementtranslator.cpp:354
+msgid "Dubnium"
+msgstr "더브늄"
+
+#: src/elementtranslator.cpp:357
+msgid "Seaborgium"
+msgstr "시보귬"
+
+#: src/elementtranslator.cpp:360
+msgid "Bohrium"
+msgstr "보륨"
+
+#: src/elementtranslator.cpp:363
+msgid "Hassium"
+msgstr "하슘"
+
+#: src/elementtranslator.cpp:366
+msgid "Meitnerium"
+msgstr "마이트너륨"
+
+#: src/elementtranslator.cpp:369
+msgid "Darmstadtium"
+msgstr "다름슈타튬"
+
+#: src/elementtranslator.cpp:372
+msgid "Roentgenium"
+msgstr "뢴트게늄"
+
+#: src/elementtranslator.cpp:375
+msgid "Ununbium"
+msgstr "운운븀"
+
+#: src/elementtranslator.cpp:378
+msgid "Ununtrium"
+msgstr "운운트리움"
+
+#: src/elementtranslator.cpp:381
+msgid "Ununquadium"
+msgstr "운운쿼듐"
+
+#: src/elementtranslator.cpp:384
+msgid "Ununpentium"
+msgstr "운운펜튬"
+
+#: src/elementtranslator.cpp:387
+msgid "Ununhexium"
+msgstr "운운헥슘"
+
+#: src/elementtranslator.cpp:390
+msgid "Ununseptium"
+msgstr "운운셉튬"
+
+#: src/elementtranslator.cpp:393
+msgid "Ununoctium"
+msgstr "운운옥튬"
+
+#: src/elementtranslator.cpp:397
+msgid "Unknown"
+msgstr "알려지지 않음"
+
+#: src/periodictableview.cpp:43
+msgid "Periodic Table"
+msgstr "주기율표"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
+"Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon "
+"Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, ,"
+"Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists.sourceforge."
+"net,lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
+"lordmiss@lordmiss.com,"

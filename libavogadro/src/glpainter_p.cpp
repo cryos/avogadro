@@ -43,8 +43,6 @@
 #include <QVarLengthArray>
 #include <Eigen/Geometry>
 
-#include <GL/gl.h>
-
 namespace Avogadro
 {
 
