@@ -869,6 +869,7 @@ namespace Avogadro {
     Tool::writeSettings(settings);
     settings.setValue("currentElement", element());
     settings.setValue("addHydrogens", m_addHydrogens);
+    settings.setValue("bondOrder", m_bondOrder);
   }
 
   void DrawTool::readSettings(QSettings &settings)
@@ -876,6 +877,7 @@ namespace Avogadro {
     Tool::readSettings(settings);
     setAddHydrogens(settings.value("addHydrogens", 2).toInt());
     setElement(settings.value("currentElement", 6).toInt());
+    setBondOrder(settings.value("bondOrder", 1).toInt());
     if (m_comboElements)
     {
       int index = 0;
