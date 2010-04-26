@@ -29,7 +29,6 @@
 #ifdef ENABLE_GLSL
   #include <GL/glew.h>
 #endif
-#include <GL/gl.h>
 
 #include <QGLWidget>
 

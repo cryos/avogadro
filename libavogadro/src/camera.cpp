@@ -26,8 +26,6 @@
 #include "glwidget.h"
 #include <avogadro/molecule.h>
 
-#include <GL/gl.h>
-
 using namespace Eigen;
 
 namespace Avogadro
