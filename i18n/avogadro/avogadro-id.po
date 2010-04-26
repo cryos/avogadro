@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-03-29 22:23-0400\n"
+"POT-Creation-Date: 2010-04-26 12:26-0400\n"
 "PO-Revision-Date: 2009-11-11 04:04+0000\n"
 "Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -91,48 +91,7 @@ msgstr "Setelan"
 msgid "Open File"
 msgstr "Buka Berkas"
 
-#: src/main.cpp:204
-#, fuzzy
-msgctxt "main.cpp"
-msgid "Avogadro"
-msgstr "Avogadro"
-
-#: src/main.cpp:205
-msgctxt "main.cpp"
-msgid "This system does not support OpenGL."
-msgstr ""
-
-#: src/main.cpp:208
-msgctxt "main.cpp"
-msgid "System has OpenGL support."
-msgstr ""
-
-#: src/main.cpp:211
-msgctxt "main.cpp"
-msgid "About to test OpenGL capabilities."
-msgstr ""
-
-#: src/main.cpp:218
-msgctxt "main.cpp"
-msgid "OpenGL capabilities found: "
-msgstr ""
-
-#: src/main.cpp:220
-msgctxt "main.cpp"
-msgid "Double Buffering."
-msgstr ""
-
-#: src/main.cpp:222
-msgctxt "main.cpp"
-msgid "Direct Rendering."
-msgstr ""
-
-#: src/main.cpp:224
-msgctxt "main.cpp"
-msgid "Antialiasing."
-msgstr ""
-
-#: src/main.cpp:249
+#: src/main.cpp:255
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -141,13 +100,13 @@ msgid ""
 "Qt: \t\t%5\n"
 msgstr ""
 
-#: src/main.cpp:264
+#: src/main.cpp:271
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
 "Usage: %1 [options] [files]\n"
 "\n"
-"Advanced Molecular Editor (version %2)\n"
+"Avogadro - Advanced Molecular Editor (version %2)\n"
 "\n"
 "Options:\n"
 "  -h, --help\t\tShow help options (this)\n"
@@ -523,25 +482,25 @@ msgid "Description:\n"
 msgstr "Deskripsi:\n"
 
 #: src/primitiveitemmodel.cpp:262 src/projectdelegates/moleculedelegate.h:43
-#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:464
-#: src/projecttreeeditor.cpp:494 src/projecttreemodel.cpp:206
+#: src/projecttreeeditor.cpp:60 src/projecttreeeditor.cpp:468
+#: src/projecttreeeditor.cpp:498 src/projecttreemodel.cpp:206
 msgid "Molecule"
 msgstr "Molekul"
 
 #: src/primitiveitemmodel.cpp:291 src/projectdelegates/atomdelegate.h:43
-#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:496
+#: src/projecttreeeditor.cpp:61 src/projecttreeeditor.cpp:500
 #: src/projecttreemodel.cpp:210
 msgid "Atoms"
 msgstr "Atom"
 
 #: src/primitiveitemmodel.cpp:293 src/projectdelegates/bonddelegate.h:43
-#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:498
+#: src/projecttreeeditor.cpp:62 src/projecttreeeditor.cpp:502
 #: src/projecttreemodel.cpp:208
 msgid "Bonds"
 msgstr "Ikatan"
 
 #: src/primitiveitemmodel.cpp:295 src/projectdelegates/residuedelegate.h:43
-#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:500
+#: src/projecttreeeditor.cpp:63 src/projecttreeeditor.cpp:504
 #: src/projecttreemodel.cpp:212
 msgid "Residues"
 msgstr "Residu"
@@ -555,13 +514,13 @@ msgid "bond %1"
 msgstr "ikatan %1"
 
 #: src/projectdelegates/labeldelegate.h:43 src/projecttreeeditor.cpp:59
-#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:492
+#: src/projecttreeeditor.cpp:122 src/projecttreeeditor.cpp:496
 #: src/projecttreemodel.cpp:204
 msgid "Label"
 msgstr "Label"
 
 #: src/projectdelegates/selectiondelegate.h:43 src/projecttreeeditor.cpp:64
-#: src/projecttreeeditor.cpp:502 src/projecttreemodel.cpp:214
+#: src/projecttreeeditor.cpp:506 src/projecttreemodel.cpp:214
 msgid "User Selections"
 msgstr "Pilihan Pengguna"
 
@@ -974,8 +933,9 @@ msgstr "Tutup Tampilan"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Center"
-msgstr "Tengah"
+#, fuzzy
+msgid "Better View"
+msgstr "Pisahkan Tampilan"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1277,6 +1237,14 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ",,,,,,,,"
+
+#, fuzzy
+#~ msgctxt "main.cpp"
+#~ msgid "Avogadro"
+#~ msgstr "Avogadro"
+
+#~ msgid "Center"
+#~ msgstr "Tengah"
 
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tidak bisa membaca format berkas %1."
