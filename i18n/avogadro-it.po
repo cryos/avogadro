@@ -8,14 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2009-12-24 06:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2010-04-12 01:35+0000\n"
+"Last-Translator: VitoArnetta <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-10 13:48+0000\n"
+"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -117,17 +116,17 @@ msgstr "Funzionalità di OpenGL trovate: "
 #: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr ""
+msgstr "Buffering doppio"
 
 #: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr ""
+msgstr "Rendering Diretto"
 
 #: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr ""
+msgstr "Quinconce."
 
 #: src/main.cpp:249
 #, qt-format
@@ -1289,7 +1288,8 @@ msgstr ""
 "Naldini,Paolo Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de "
 "mitri, ,Launchpad Contributions:,Alkatron,Geoff Hutchison,Guybrush88,Matteo "
 "Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Signifredi,Simone Oberti, "
-",Launchpad Contributions:,94thomas,Giampaolo Bozzali"
+",Launchpad Contributions:,94thomas,Alkatron,Calogero Bonasia,Giampaolo "
+"Bozzali,VitoArnetta,iTuxer"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -1301,4 +1301,4 @@ msgstr ""
 "i@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_isilra@h"
 "otmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,gino@alkatron.it,,,,,m"
 "ichel_gatti@yahoo.it,aegnor_isilra@hotmail.com,,,,,Thomas.Bellotti@liceotosi."
-"org,giampaolo.bozzali@gmail.com"
+"org,alkatron@alkatron.it,,giampaolo.bozzali@gmail.com,,"

@@ -8,14 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-11-06 10:48-0500\n"
-"PO-Revision-Date: 2009-12-24 06:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2010-04-06 15:23+0000\n"
+"Last-Translator: Bundo <bundo@bundo.biz>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-10 13:48+0000\n"
+"X-Launchpad-Export-Date: 2010-04-26 16:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -26,7 +25,7 @@ msgstr "확인"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git 리비전: %1)"
 
 #: src/aboutdialog.cpp:68
 #, qt-format
@@ -39,6 +38,12 @@ msgid ""
 "WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR "
 "PURPOSE.<br/>"
 msgstr ""
+"<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>Open Babel "
+"버전: %4<br/><br/>Qt 버전: %5<br/><br/>자세한 내용은  <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro 홈페이지</a>를 참조 "
+"하십시오.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY KIND, "
+"INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -85,42 +90,42 @@ msgstr "파일 열기"
 #: src/main.cpp:204
 msgctxt "main.cpp"
 msgid "Avogadro"
-msgstr ""
+msgstr "Avogadro"
 
 #: src/main.cpp:205
 msgctxt "main.cpp"
 msgid "This system does not support OpenGL."
-msgstr ""
+msgstr "이 시스템은 OpenGL을 지원하지 않습니다."
 
 #: src/main.cpp:208
 msgctxt "main.cpp"
 msgid "System has OpenGL support."
-msgstr ""
+msgstr "이 시스템은 Open GL을 지원합니다."
 
 #: src/main.cpp:211
 msgctxt "main.cpp"
 msgid "About to test OpenGL capabilities."
-msgstr ""
+msgstr "OpenGL 능력 시험"
 
 #: src/main.cpp:218
 msgctxt "main.cpp"
 msgid "OpenGL capabilities found: "
-msgstr ""
+msgstr "OpenGL 능력을 찾았습니다. "
 
 #: src/main.cpp:220
 msgctxt "main.cpp"
 msgid "Double Buffering."
-msgstr ""
+msgstr "더블 버퍼링."
 
 #: src/main.cpp:222
 msgctxt "main.cpp"
 msgid "Direct Rendering."
-msgstr ""
+msgstr "다이렉트 랜더링."
 
 #: src/main.cpp:224
 msgctxt "main.cpp"
 msgid "Antialiasing."
-msgstr ""
+msgstr "안티알리아싱."
 
 #: src/main.cpp:249
 #, qt-format
@@ -130,6 +135,9 @@ msgid ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 msgstr ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:264
 #, qt-format
@@ -143,6 +151,13 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
+"사용법: %1 [옵션] [파일]\n"
+"\n"
+"고급 분자 편집기 (version %2)\n"
+"\n"
+"옵션:\n"
+"  -h, --help\t\t이 도움말 보기\n"
+"  -v, --version\t\t버전 정보 보기\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
@@ -205,7 +220,7 @@ msgstr "계산 화학 결과"
 
 #: src/mainwindow.cpp:727
 msgid "Crystallographic Interchange CIF"
-msgstr ""
+msgstr "Crystallographic Interchange CIF"
 
 #: src/mainwindow.cpp:728
 msgid "GAMESS-US Output"
@@ -273,13 +288,13 @@ msgstr "이 파일은 3차원 좌표가 포함되어 있지 않습니다."
 
 #: src/mainwindow.cpp:904
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Avogadro에서 대강의 구조를 만들까요?"
 
 #: src/mainwindow.cpp:922
 msgid ""
 "This file does not contain 3D coordinates.\n"
 "You may not be able to edit or view properly."
-msgstr ""
+msgstr "이 파일에는 3D 좌표 정보가 없습니다."
 
 #: src/mainwindow.cpp:974
 msgid "Select Molecule to View"
@@ -446,7 +461,7 @@ msgstr "[*]Avogadro"
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
-msgstr ""
+msgstr "%1[*] - %2"
 
 #: src/mainwindow.cpp:3139
 msgid "Add"
@@ -1259,10 +1274,10 @@ msgstr ""
 ",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
 "Contributions:,Geoff Hutchison,Sang-hyeon Lee, ,Launchpad "
-"Contributions:,Avogadro Team,dlonie"
+"Contributions:,Avogadro Team,Bundo,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,,avogadro-devel@lists.sourceforge.net,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,loniedavid@gmail.com"
+"devel@lists.sourceforge.net,bundo@bundo.biz,loniedavid@gmail.com"

@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-10 13:48+0000\n"
+"X-Launchpad-Export-Date: 2010-04-26 16:33+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -558,7 +558,7 @@ msgstr "Eixos"
 msgid "Renders the x, y, and z axes at the origin"
 msgstr "renderizar eixos x, y e z na origem"
 
-#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1928
+#: src/engines/bsdyengine.h:41 src/glwidget.cpp:1932
 msgid "Ball and Stick"
 msgstr "Bola e Bastão"
 
@@ -679,7 +679,7 @@ msgstr ""
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr ""
+msgstr "%1, isosurface = %L2"
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
@@ -687,7 +687,7 @@ msgstr "Superfícies"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Processa malhas moleculares de isosurface"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
@@ -739,10 +739,10 @@ msgstr "arquivos de video (*.avi)"
 #: src/extensions/forcefieldextension.cpp:193
 #: src/extensions/forcefieldextension.cpp:205
 #: src/extensions/forcefieldextension.cpp:225
-#: src/extensions/inputfileextension.cpp:176
-#: src/extensions/inputfileextension.cpp:186
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
+#: src/extensions/quantuminput/inputfileextension.cpp:182
+#: src/extensions/quantuminput/inputfileextension.cpp:192
 #: src/extensions/selectextension.cpp:275
 #: src/extensions/selectextension.cpp:287
 #: src/extensions/selectextension.cpp:293 src/extensions/trajvideomaker.cpp:47
@@ -750,6 +750,7 @@ msgstr "arquivos de video (*.avi)"
 #: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
 #: src/extensions/trajvideomaker.cpp:147
 #: src/extensions/unitcellextension.cpp:127
+#: src/extensions/unitcellextension.cpp:255
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -763,18 +764,17 @@ msgstr "Animação..."
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
-#: src/extensions/gamessextension.cpp:97
+#: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
 #: src/extensions/surfaceextension.cpp:94
-#: src/extensions/templateextension.cpp:70
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "E&xtensões"
 
 #: src/extensions/animationextension.cpp:136
-#: src/extensions/inputfileextension.cpp:177
 #: src/extensions/insertfragmentdialog.cpp:144
+#: src/extensions/quantuminput/inputfileextension.cpp:183
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr "Não foi possível ler a extensão do arquivo %1."
@@ -828,7 +828,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39 :3180
+#: src/extensions/animationextension.h:39 :3213
 msgid "Animation"
 msgstr "Animação"
 
@@ -1006,105 +1006,105 @@ msgstr ""
 "Optimiza moléculas e gera conformações (confórmeros) por meio de campos de "
 "força de mecânica molecular (MM)"
 
-#: src/extensions/gamessefpmatchdialog.cpp:49
+#: src/extensions/quantuminput/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
 msgstr "Resultados para MQ"
 
-#: src/extensions/gamessextension.cpp:65
+#: src/extensions/quantuminput/gamessextension.cpp:65
 msgid "Input Generator..."
 msgstr "Gerador de Entrada..."
 
-#: src/extensions/gamessextension.cpp:70
+#: src/extensions/quantuminput/gamessextension.cpp:70
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
 msgstr "Seleção de EFP..."
 
-#: src/extensions/gamessextension.cpp:75
+#: src/extensions/quantuminput/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
 msgstr "Seleção MQ..."
 
-#: src/extensions/gamessextension.cpp:97
+#: src/extensions/quantuminput/gamessextension.cpp:97
 msgid "&GAMESS"
 msgstr "&GAMESS"
 
-#: src/extensions/gamessextension.cpp:103
+#: src/extensions/quantuminput/gamessextension.cpp:103
 msgid "GAMESS EFP Information"
 msgstr "Informação GAMESS EFP"
 
-#: src/extensions/gamessextension.cpp:118
+#: src/extensions/quantuminput/gamessextension.cpp:118
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/extensions/gamessextension.cpp:200
+#: src/extensions/quantuminput/gamessextension.cpp:200
 msgid "No Atoms Selected"
 msgstr "Nenhum Átomo Selecionado"
 
-#: src/extensions/gamessextension.cpp:201
+#: src/extensions/quantuminput/gamessextension.cpp:201
 msgid "You must make a selection!"
 msgstr "Você deve fazer uma seleção!"
 
-#: src/extensions/gamessextension.cpp:208
+#: src/extensions/quantuminput/gamessextension.cpp:208
 msgid "SMILES Conversion Unavailable"
 msgstr "Conversão para SMILES Indisponível"
 
-#: src/extensions/gamessextension.cpp:209
+#: src/extensions/quantuminput/gamessextension.cpp:209
 msgid "SMILES Format Conversion Not Available!"
 msgstr "Conversão para o Formato SMILES Não Disponível!"
 
-#: src/extensions/gamessextension.cpp:469
+#: src/extensions/quantuminput/gamessextension.cpp:469
 msgid "Group Name"
 msgstr "Nome do Grupo"
 
-#: src/extensions/gamessextension.cpp:522
+#: src/extensions/quantuminput/gamessextension.cpp:522
 msgid " ("
 msgstr " ("
 
-#: src/extensions/gamessextension.cpp:523
+#: src/extensions/quantuminput/gamessextension.cpp:523
 msgid "qm"
 msgstr "mq"
 
-#: src/extensions/gamessextension.cpp:523
+#: src/extensions/quantuminput/gamessextension.cpp:523
 msgid "efp"
 msgstr "efp"
 
-#: src/extensions/gamessextension.cpp:524
+#: src/extensions/quantuminput/gamessextension.cpp:524
 msgid ")"
 msgstr ")"
 
-#: src/extensions/gamessextension.h:44
+#: src/extensions/quantuminput/gamessextension.h:44
 msgid "GAMESS"
 msgstr "GAMESS"
 
-#: src/extensions/gamessextension.h:45
+#: src/extensions/quantuminput/gamessextension.h:45
 msgid "Create input files for the GAMESS quantum chemistry package"
 msgstr ""
 "Criar arquivos de entrada de dados para o pacote de química quântica GAMESS"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:101
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:101
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1497
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1497
 #. i18n: ectx: property (text), widget (QLineEdit, dataTitleLine)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:40
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:40
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#. i18n: file: src/extensions/molproinputdialog.ui:41
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#. i18n: file: src/extensions/mopacinputdialog.ui:40
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:40
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:41
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#. i18n: file: src/extensions/qcheminputdialog.ui:41
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/gamessinputdialog.cpp:622 :515 rc.cpp:1631 rc.cpp:2045
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :902
 msgid "Title"
 msgstr "Título"
 
-#: src/extensions/gamessinputdialog.cpp:1534
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1534
 msgid "Advanced Settings Changed"
 msgstr "Configurações Avançadas Modificadas"
 
-#: src/extensions/gamessinputdialog.cpp:1535
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1535
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
@@ -1112,11 +1112,11 @@ msgstr ""
 "As configurações avançadas foram modificadas.\n"
 "Descartar?"
 
-#: src/extensions/gamessinputdialog.cpp:1556
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1556
 msgid "Advanced Settings Reset"
 msgstr "Restaurar Configurações Avançadas"
 
-#: src/extensions/gamessinputdialog.cpp:1557
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1557
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
@@ -1124,11 +1124,11 @@ msgstr ""
 "Tem certeza que deseja restaurar as configurações avançadas?\n"
 "Todas as modificações serão perdidas!"
 
-#: src/extensions/gamessinputdialog.cpp:1569
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1569
 msgid "Basic Settings Reset"
 msgstr "Restaurar Configurações Básicas"
 
-#: src/extensions/gamessinputdialog.cpp:1570
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
@@ -1136,99 +1136,99 @@ msgstr ""
 "Tem certeza que deseja restaurar as configurações básicas?\n"
 "Todas as modificações serão perdidas!"
 
-#: src/extensions/gamessinputdialog.cpp:1642
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1642
 msgid "Export Input Deck"
 msgstr "Exportar Holerite"
 
-#: src/extensions/gamessinputdialog.cpp:1643
+#: src/extensions/quantuminput/gamessinputdialog.cpp:1643
 msgid "GAMESS Input Deck (*.inp)"
 msgstr "Holerite GAMESS (*.inp)"
 
-#: src/extensions/gaussianinputdialog.cpp:195
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:195
 msgid "Gaussian Input Deck Generator Warning"
 msgstr "Alerta do Gerador de Holerite Gaussiano"
 
-#: src/extensions/gaussianinputdialog.cpp:196
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:196
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
 msgstr ""
 
-#: src/extensions/gaussianinputdialog.cpp:239
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
 msgstr "Guardar Holerite Gaussiano"
 
-#: src/extensions/gaussianinputdialog.cpp:240
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:240
 msgid "Gaussian Input Deck (*.com)"
 msgstr "Holerite Gaussiano (*.com)"
 
-#: src/extensions/gaussianinputdialog.cpp:268
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:268
 msgid "Gaussian Running."
 msgstr "A rodar Gaussian."
 
-#: src/extensions/gaussianinputdialog.cpp:269
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:269
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
 msgstr ""
 "Gaussian já está a rodar. Espere até que os cálculos sejam concluídos."
 
-#: src/extensions/gaussianinputdialog.cpp:279
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:279
 msgid "Gaussian Not Installed."
 msgstr "Gaussian Não Instalado."
 
-#: src/extensions/gaussianinputdialog.cpp:280
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:280
 msgid "The G03 executable, cannot be found."
 msgstr "O executável do G03 não foi encontrado."
 
-#: src/extensions/gaussianinputdialog.cpp:294
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:294
 msgid "G03 failed to start."
 msgstr "Falha ao iniciar o G03."
 
-#: src/extensions/gaussianinputdialog.cpp:295
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:295
 msgid "G03 did not start. Perhaps it is not installed correctly."
 msgstr "G03 não iniciou. Talvez ele não esteja corretamente instalado."
 
-#: src/extensions/gaussianinputdialog.cpp:300
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:300
 msgid "Running Gaussian calculation..."
 msgstr "A rodar cálculo Gaussian..."
 
-#: src/extensions/gaussianinputdialog.cpp:335
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:335
 msgid "G03 Crashed."
 msgstr "G03 Travou."
 
-#: src/extensions/gaussianinputdialog.cpp:336
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:336
 msgid ""
 "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian não rodou corretamente. Talvez não esteja corretamente instalado."
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:307
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:307
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#: src/extensions/daltoninputdialog.cpp:377
-#: src/extensions/gaussianinputdialog.cpp:371
-#: src/extensions/molproinputdialog.cpp:178
-#: src/extensions/mopacinputdialog.cpp:262
-#: src/extensions/nwcheminputdialog.cpp:185
-#: src/extensions/qcheminputdialog.cpp:178 :2576
+#: src/extensions/quantuminput/daltoninputdialog.cpp:377
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:371
+#: src/extensions/quantuminput/molproinputdialog.cpp:178
+#: src/extensions/quantuminput/mopacinputdialog.cpp:262
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:185
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2663
 msgid "Show Preview"
 msgstr "Mostrar Pré-visualização"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:1616
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1616
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:469
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:469
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/molproinputdialog.ui:407
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:407
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:403
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:403
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#. i18n: file: src/extensions/qcheminputdialog.ui:417
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:417
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
-#: src/extensions/daltoninputdialog.cpp:381
-#: src/extensions/gaussianinputdialog.cpp:375
-#: src/extensions/molproinputdialog.cpp:182
-#: src/extensions/mopacinputdialog.cpp:267
-#: src/extensions/nwcheminputdialog.cpp:189
-#: src/extensions/qcheminputdialog.cpp:182 :1049 rc.cpp:2135 rc.cpp:2489
+#: src/extensions/quantuminput/daltoninputdialog.cpp:381
+#: src/extensions/quantuminput/gaussianinputdialog.cpp:375
+#: src/extensions/quantuminput/molproinputdialog.cpp:182
+#: src/extensions/quantuminput/mopacinputdialog.cpp:267
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:189
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1436
 msgid "Hide Preview"
 msgstr "Ocultar Pré-visualização"
 
@@ -1289,37 +1289,37 @@ msgstr "Hidrogênios"
 msgid "Add or remove hydrogens"
 msgstr "Adiciona ou remove hidrogênios"
 
-#: src/extensions/inputfileextension.cpp:49
+#: src/extensions/quantuminput/inputfileextension.cpp:50
 msgid "&Gaussian..."
 msgstr "&Gaussiano..."
 
-#: src/extensions/inputfileextension.cpp:54
+#: src/extensions/quantuminput/inputfileextension.cpp:55
 msgid "&MOLPRO..."
 msgstr "&MOLPRO..."
 
-#: src/extensions/inputfileextension.cpp:59
+#: src/extensions/quantuminput/inputfileextension.cpp:60
 msgid "M&OPAC..."
 msgstr "M&OPAC..."
 
-#: src/extensions/inputfileextension.cpp:64
+#: src/extensions/quantuminput/inputfileextension.cpp:65
 msgid "&NWChem..."
 msgstr "&NWChem..."
 
-#: src/extensions/inputfileextension.cpp:69
+#: src/extensions/quantuminput/inputfileextension.cpp:70
 msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
 
-#: src/extensions/inputfileextension.cpp:187
 #: src/extensions/insertfragmentdialog.cpp:152
+#: src/extensions/quantuminput/inputfileextension.cpp:193
 #, qt-format
 msgid "Cannot read file %1."
 msgstr "Não foi possível ler o arquivo %1."
 
-#: src/extensions/inputfileextension.h:44
+#: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
 msgstr "Geradores de Arquivo de Entrada"
 
-#: src/extensions/inputfileextension.h:45
+#: src/extensions/quantuminput/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
 msgstr "Criar arquivos de entrada para pacotes de química quântica"
 
@@ -1369,7 +1369,7 @@ msgstr "Peptídeo..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:505
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43 :2159 rc.cpp:2372
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:808
 msgid "Insert Peptide"
 msgstr "Inserir Peptídeo"
 
@@ -1403,13 +1403,13 @@ msgstr "Propriedades Moleculares"
 msgid "Display standard molecular properties."
 msgstr "Exibir propriedades moleculares padrões"
 
-#: src/extensions/molproinputdialog.cpp:114
-#: src/extensions/qcheminputdialog.cpp:114
+#: src/extensions/quantuminput/molproinputdialog.cpp:114
+#: src/extensions/quantuminput/qcheminputdialog.cpp:114
 msgid "Q-Chem Input Deck Generator Warning"
 msgstr "Alerta do Gerador de Holerite Q-Chem"
 
-#: src/extensions/molproinputdialog.cpp:115
-#: src/extensions/qcheminputdialog.cpp:115
+#: src/extensions/quantuminput/molproinputdialog.cpp:115
+#: src/extensions/quantuminput/qcheminputdialog.cpp:115
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
@@ -1417,19 +1417,19 @@ msgstr ""
 "Deseja atualizar o texto, perdendo todas as alterações feitas no holerite Q-"
 "Chem de segurança?"
 
-#: src/extensions/molproinputdialog.cpp:162
+#: src/extensions/quantuminput/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
 msgstr "Guardar Holerite Molpro"
 
-#: src/extensions/molproinputdialog.cpp:163
+#: src/extensions/quantuminput/molproinputdialog.cpp:163
 msgid "Molpro Input Deck (*.qcin)"
 msgstr "Holerite Molpro (*.qcin)"
 
-#: src/extensions/mopacinputdialog.cpp:132
+#: src/extensions/quantuminput/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
 msgstr "Alerta Holerite MOPAC"
 
-#: src/extensions/mopacinputdialog.cpp:133
+#: src/extensions/quantuminput/mopacinputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
@@ -1437,50 +1437,50 @@ msgstr ""
 "Deseja atualizar o texto, perdendo todas as alterações feitas no holerite "
 "MOPAC de segurança?"
 
-#: src/extensions/mopacinputdialog.cpp:174
+#: src/extensions/quantuminput/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
 msgstr "Executando MOPAC."
 
-#: src/extensions/mopacinputdialog.cpp:175
+#: src/extensions/quantuminput/mopacinputdialog.cpp:175
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
 msgstr "MOPAC já está em execução. Aguarde até que termine os cálculos."
 
-#: src/extensions/mopacinputdialog.cpp:185
+#: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Not Installed."
 msgstr "MOPAC não está instalado."
 
-#: src/extensions/mopacinputdialog.cpp:186
+#: src/extensions/quantuminput/mopacinputdialog.cpp:186
 msgid "The MOPAC executable, cannot be found."
 msgstr "O executável MOPAC não foi encontrado."
 
-#: src/extensions/mopacinputdialog.cpp:200
+#: src/extensions/quantuminput/mopacinputdialog.cpp:200
 msgid "MOPAC failed to start."
 msgstr "Falha ao iniciar MOPAC."
 
-#: src/extensions/mopacinputdialog.cpp:201
+#: src/extensions/quantuminput/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
 msgstr "MOPAC não iniciou. Talvez não esteja corretamente instalado."
 
-#: src/extensions/mopacinputdialog.cpp:206
+#: src/extensions/quantuminput/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
 msgstr "Executando cálculo do MOPAC..."
 
-#: src/extensions/mopacinputdialog.cpp:241
+#: src/extensions/quantuminput/mopacinputdialog.cpp:241
 msgid "MOPAC Crashed."
 msgstr "MOPAC trancou."
 
-#: src/extensions/mopacinputdialog.cpp:242
+#: src/extensions/quantuminput/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "MOPAC não foi executado corretamente. Talvez não esteja corretamente "
 "instalado."
 
-#: src/extensions/mopacinputdialog.cpp:294
+#: src/extensions/quantuminput/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
 msgstr "Guardar Holerite MOPAC"
 
-#: src/extensions/mopacinputdialog.cpp:295
+#: src/extensions/quantuminput/mopacinputdialog.cpp:295
 msgid "MOPAC Input Deck (*.mop)"
 msgstr "Holerite MOPAC (*.mop)"
 
@@ -1490,7 +1490,7 @@ msgstr "Buscar no PDB..."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch chemical structure..."
-msgstr ""
+msgstr "Buscar estrutura química..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch from URL..."
@@ -1548,21 +1548,21 @@ msgstr "Busca da Rede"
 msgid "Fetch molecule files over the network."
 msgstr "Busca de arquivos de moléculas através da rede."
 
-#: src/extensions/nwcheminputdialog.cpp:121
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
 msgstr "Alerta do Gerador de Holerite NWChem"
 
-#: src/extensions/nwcheminputdialog.cpp:122
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:122
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
 
-#: src/extensions/nwcheminputdialog.cpp:169
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
 msgstr "Guardar Holerite NWChem"
 
-#: src/extensions/nwcheminputdialog.cpp:170
+#: src/extensions/quantuminput/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
 msgstr "Holerite NWChem (*.nw)"
 
@@ -1678,7 +1678,7 @@ msgstr "Propriedades do Ângulo"
 msgid "Torsion Properties"
 msgstr "Propriedades de Torsão"
 
-#: src/extensions/propextension.cpp:247
+#: src/extensions/propextension.cpp:243
 msgid "Cartesian Properties"
 msgstr "Propriedades Cartesianas"
 
@@ -1686,13 +1686,13 @@ msgstr "Propriedades Cartesianas"
 msgid "Conformer Properties"
 msgstr "Propriedades do Confórmero"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:142
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/daltoninputdialog.ui:1449
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1449
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
-#. i18n: file: src/extensions/gamessinputdialog.ui:867
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43 :524 rc.cpp:1025 rc.cpp:1415
+#: src/extensions/propextension.h:43 :911 rc.cpp:1412 rc.cpp:1748
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -1713,7 +1713,7 @@ msgstr "Tipo"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427 :400
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Elemento"
 
@@ -1776,7 +1776,7 @@ msgstr "Ângulo %1"
 msgid "Angle %1"
 msgstr "Ângulo %1"
 
-#: src/extensions/propmodel.cpp:431
+#: src/extensions/propmodel.cpp:405
 #, qt-format
 msgid "Atom Index %1"
 msgstr "Índice do Átomo %1"
@@ -1810,9 +1810,9 @@ msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr "Z %1"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:817
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:817
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511 :1385
+#: src/extensions/propmodel.cpp:511 :1718
 msgid "Energy"
 msgstr "Energia"
 
@@ -1835,11 +1835,11 @@ msgstr "pythonTerminalDock"
 msgid "Interactive python scripting terminal"
 msgstr "Console Interativo do Python"
 
-#: src/extensions/qcheminputdialog.cpp:162
+#: src/extensions/quantuminput/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
 msgstr "Guardar Holerite QChem"
 
-#: src/extensions/qcheminputdialog.cpp:163
+#: src/extensions/quantuminput/qcheminputdialog.cpp:163
 msgid "QChem Input Deck (*.qcin)"
 msgstr "Holerite QChem (*.qcin)"
 
@@ -1883,9 +1883,9 @@ msgstr ""
 msgid "Select by residue"
 msgstr "Selecionar por Resíduo"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:95
+#. i18n: file: src/engines/labelsettingswidget.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:230 :180
+#: src/extensions/selectextension.cpp:230 :195
 msgid "Residue name"
 msgstr "Nome do Resíduo"
 
@@ -1947,7 +1947,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41 :2861
+#: src/extensions/shaderextension.h:41 :2894
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1955,210 +1955,210 @@ msgstr ""
 msgid "Load and use OpenGL 2.0 GLSL shaders"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:88
+#: src/extensions/spectra/spectradialog.cpp:92
 msgid "X Axis"
 msgstr "Eixo X"
 
-#: src/extensions/spectra/spectradialog.cpp:89
+#: src/extensions/spectra/spectradialog.cpp:93
 msgid "Y Axis"
 msgstr "Eixo Y"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:130
+#. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:190 :2922
+#: src/extensions/spectra/spectradialog.cpp:196 :2955
 msgid "&Appearance"
 msgstr "&Aparência"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:429
+#. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:191 :2988
+#: src/extensions/spectra/spectradialog.cpp:197 :3021
 msgid "E&xport Image"
 msgstr "E&xportar Imagem"
 
-#: src/extensions/spectra/spectradialog.cpp:196
+#: src/extensions/spectra/spectradialog.cpp:202
 msgctxt "Infrared spectra option"
 msgid "Infrared"
 msgstr "Infravermelho"
 
-#: src/extensions/spectra/spectradialog.cpp:197
+#: src/extensions/spectra/spectradialog.cpp:203
 msgid "&Infrared Spectra Settings"
 msgstr "Configurações do Espectro de &Infravermelho"
 
-#: src/extensions/spectra/spectradialog.cpp:203
+#: src/extensions/spectra/spectradialog.cpp:209
 msgctxt "NMR spectra option"
 msgid "NMR"
 msgstr "NMR"
 
-#: src/extensions/spectra/spectradialog.cpp:204
+#: src/extensions/spectra/spectradialog.cpp:210
 msgid "&NMR Spectra Settings"
 msgstr "Configurações do Espectro &RMN"
 
-#: src/extensions/spectra/spectradialog.cpp:250
+#: src/extensions/spectra/spectradialog.cpp:256
 msgid "No data"
 msgstr "Sem dados"
 
-#: src/extensions/spectra/spectradialog.cpp:336
+#: src/extensions/spectra/spectradialog.cpp:322
 msgid "Dark"
 msgstr "Escuro"
 
-#: src/extensions/spectra/spectradialog.cpp:347
+#: src/extensions/spectra/spectradialog.cpp:333
 msgid "Light"
 msgstr "Claro"
 
-#: src/extensions/spectra/spectradialog.cpp:358
+#: src/extensions/spectra/spectradialog.cpp:344
 msgid "Publication"
 msgstr "Publicação"
 
-#: src/extensions/spectra/spectradialog.cpp:369
+#: src/extensions/spectra/spectradialog.cpp:355
 msgid "Handdrawn"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:395
+#: src/extensions/spectra/spectradialog.cpp:381
 msgid "New Scheme"
 msgstr "Novo Esquema"
 
-#: src/extensions/spectra/spectradialog.cpp:403
+#: src/extensions/spectra/spectradialog.cpp:389
 msgid "Confirm Scheme Removal"
 msgstr "Conformar Remoção de Esquema"
 
-#: src/extensions/spectra/spectradialog.cpp:403
+#: src/extensions/spectra/spectradialog.cpp:389
 msgid "Really remove current scheme?"
 msgstr "Remover esquema atual?"
 
-#: src/extensions/spectra/spectradialog.cpp:413
+#: src/extensions/spectra/spectradialog.cpp:399
 msgid "Change Scheme Name"
 msgstr "Alterar Nome do Esquema"
 
-#: src/extensions/spectra/spectradialog.cpp:414
+#: src/extensions/spectra/spectradialog.cpp:400
 msgid "Enter new name for current scheme:"
 msgstr "Fornça novo nome ao esquema atual:"
 
-#: src/extensions/spectra/spectradialog.cpp:521
+#: src/extensions/spectra/spectradialog.cpp:507
 msgid "Export Calculated Spectrum"
 msgstr "Exportar espectro Calculado"
 
-#: src/extensions/spectra/spectradialog.cpp:521
+#: src/extensions/spectra/spectradialog.cpp:507
 msgid "Tab Separated Values (*.tsv)"
 msgstr "Valores Separados por Tabulação (*.tsv)"
 
-#: src/extensions/spectra/spectradialog.cpp:545
+#: src/extensions/spectra/spectradialog.cpp:531
 msgid "Tab Separated Values"
 msgstr "Valores Separados por Tabulação"
 
-#: src/extensions/spectra/spectradialog.cpp:546
+#: src/extensions/spectra/spectradialog.cpp:532
 msgid "Comma Separated Values"
 msgstr "Valores Separados por Vírgula"
 
-#: src/extensions/spectra/spectradialog.cpp:547
+#: src/extensions/spectra/spectradialog.cpp:533
 msgid "JCAMP-DX"
 msgstr "JCAMP-DX"
 
-#: src/extensions/spectra/spectradialog.cpp:548
-#: src/extensions/spectra/spectradialog.cpp:637
-#: src/extensions/spectra/spectradialog.cpp:939
+#: src/extensions/spectra/spectradialog.cpp:534
+#: src/extensions/spectra/spectradialog.cpp:624
+#: src/extensions/spectra/spectradialog.cpp:926
 msgid "All Files"
 msgstr "Todos os Arquivos"
 
-#: src/extensions/spectra/spectradialog.cpp:550
+#: src/extensions/spectra/spectradialog.cpp:536
 msgid "Import Spectra"
 msgstr "Importar Espectro"
 
-#: src/extensions/spectra/spectradialog.cpp:576
-#: src/extensions/spectra/spectradialog.cpp:771
-#: src/extensions/spectra/spectradialog.cpp:868
+#: src/extensions/spectra/spectradialog.cpp:562
+#: src/extensions/spectra/spectradialog.cpp:758
+#: src/extensions/spectra/spectradialog.cpp:855
 msgid "Spectra Import"
 msgstr "Importar Espectro"
 
-#: src/extensions/spectra/spectradialog.cpp:576
-#: src/extensions/spectra/spectradialog.cpp:960
+#: src/extensions/spectra/spectradialog.cpp:562
+#: src/extensions/spectra/spectradialog.cpp:947
 #, qt-format
 msgid "Unknown extension: %1"
 msgstr "Extensão desconhecida: %1"
 
-#: src/extensions/spectra/spectradialog.cpp:622
+#: src/extensions/spectra/spectradialog.cpp:609
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:623
+#: src/extensions/spectra/spectradialog.cpp:610
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
 msgid "Turbomole IR data (control)"
 msgstr ""
 
-#: src/extensions/spectra/spectradialog.cpp:630
+#: src/extensions/spectra/spectradialog.cpp:617
 msgid "Data Format"
 msgstr "Formato de Dados"
 
-#: src/extensions/spectra/spectradialog.cpp:630
+#: src/extensions/spectra/spectradialog.cpp:617
 msgctxt "noun, not verb"
 msgid "Format:"
 msgstr "Formato"
 
-#: src/extensions/spectra/spectradialog.cpp:639
+#: src/extensions/spectra/spectradialog.cpp:626
 msgid "Load Spectral Data"
 msgstr "Carregar Dados Espectrais"
 
-#: src/extensions/spectra/spectradialog.cpp:932
+#: src/extensions/spectra/spectradialog.cpp:919
 msgid "Portable Network Graphics"
 msgstr "Portable Network Graphics"
 
-#: src/extensions/spectra/spectradialog.cpp:933
+#: src/extensions/spectra/spectradialog.cpp:920
 msgid "jpeg"
 msgstr "jpeg"
 
-#: src/extensions/spectra/spectradialog.cpp:934
+#: src/extensions/spectra/spectradialog.cpp:921
 msgid "Tagged Image File Format"
 msgstr "Formato TIFF"
 
-#: src/extensions/spectra/spectradialog.cpp:935
+#: src/extensions/spectra/spectradialog.cpp:922
 msgid "Windows Bitmap"
 msgstr "Windows Bitmap"
 
-#: src/extensions/spectra/spectradialog.cpp:936
+#: src/extensions/spectra/spectradialog.cpp:923
 msgid "Portable Pixmap"
 msgstr "Portable Pixmap"
 
-#: src/extensions/spectra/spectradialog.cpp:937
+#: src/extensions/spectra/spectradialog.cpp:924
 msgid "X11 Bitmap"
 msgstr "X11 Bitmap"
 
-#: src/extensions/spectra/spectradialog.cpp:938
+#: src/extensions/spectra/spectradialog.cpp:925
 msgid "X11 Pixmap"
 msgstr "X11 Pixmap"
 
-#: src/extensions/spectra/spectradialog.cpp:942
+#: src/extensions/spectra/spectradialog.cpp:929
 msgid "Save Spectra Image"
 msgstr "salvar Imagem do Espectro"
 
-#: src/extensions/spectra/spectradialog.cpp:960
+#: src/extensions/spectra/spectradialog.cpp:947
 msgid "Invalid Filename"
 msgstr "Nome de Arquivo Inválido"
 
-#: src/extensions/spectra/spectradialog.cpp:993
+#: src/extensions/spectra/spectradialog.cpp:980
 msgid "Error"
 msgstr "Erro"
 
-#: src/extensions/spectra/spectradialog.cpp:993
+#: src/extensions/spectra/spectradialog.cpp:980
 #, qt-format
 msgid "A problem occurred while writing file %1"
 msgstr "Houve um problema ao escrever arquivo %1"
 
-#: src/extensions/spectra/spectradialog.cpp:995
+#: src/extensions/spectra/spectradialog.cpp:982
 msgid "Success!"
 msgstr "Sucesso!"
 
-#: src/extensions/spectra/spectradialog.cpp:995
+#: src/extensions/spectra/spectradialog.cpp:982
 #, qt-format
 msgid "Image successfully written to %1"
 msgstr "Imagem escrita com sucesso em %1"
 
-#: src/extensions/spectradialog.cpp:1012
+#: src/extensions/spectradialog.cpp:729
 msgid "Customi&ze <<"
 msgstr "Personali&ze <<"
 
-#. i18n: file: src/extensions/spectradialog.ui:87
+#. i18n: file: src/extensions/spectradialog.ui:84
 #. i18n: ectx: property (text), widget (QPushButton, push_customize)
-#: src/extensions/spectradialog.cpp:1025:2939
+#: src/extensions/spectradialog.cpp:736 :2197
 msgid "Customi&ze >>"
 msgstr "Personali&ze >>"
 
@@ -2174,11 +2174,11 @@ msgstr "Espectro"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr ""
 
-#: src/extensions/spectra/spectratype_ir.cpp:218
+#: src/extensions/spectra/ir.cpp:84
 msgid "No intensities"
 msgstr "Sem intensidades"
 
-#: src/extensions/spectra/spectratype_ir.cpp:218
+#: src/extensions/spectra/ir.cpp:84
 msgid ""
 "The vibration data in the molecule you have loaded does not have any "
 "intensity data. Intensities have been set to an arbitrary value for "
@@ -2188,12 +2188,11 @@ msgstr ""
 "intensidade. Intensidades foram configuradas para um valor arbitrário para a "
 "visualização."
 
-#: src/extensions/spectra/spectratype_ir.cpp:261
-#: src/extensions/spectra/spectratype_raman.cpp:140
+#: src/extensions/spectra/ir.cpp:127 src/extensions/spectra/raman.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Número de onda (cm<sup>-1</sup>)"
 
-#: src/extensions/spectra/spectratype_nmr.cpp:274
+#: src/extensions/spectra/nmr.cpp:273
 msgid "Shift (ppm)"
 msgstr "Shift (ppm)"
 
@@ -2406,13 +2405,13 @@ msgstr "Criar e mostrar células unitárias cristalográficas"
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100 :357
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Aplicar"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98 :499
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "OK"
 
@@ -2424,7 +2423,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296 :3192
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3225
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
@@ -2432,7 +2431,7 @@ msgstr "Iniciar &Animação"
 msgid "Stop &Animation"
 msgstr "Parar &Animação"
 
-#: src/extensions/vibrationdialog.cpp:254
+#: src/extensions/vibrationdialog.cpp:227
 msgid "Export Vibrational Data"
 msgstr "Exportar Dados Vibracionais"
 
@@ -2440,9 +2439,9 @@ msgstr "Exportar Dados Vibracionais"
 msgid "&Vibrations..."
 msgstr "&Vibrações..."
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2556
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2556
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202 :1925
+#: src/extensions/spectra/vibrationextension.cpp:202 :2258
 msgid "Vibrational Analysis"
 msgstr "Análise Vibracional"
 
@@ -2462,7 +2461,7 @@ msgstr "Vibração"
 msgid "Visualize vibrational modes from quantum chemistry calculations"
 msgstr ""
 
-#: src/glwidget.cpp:459
+#: src/glwidget.cpp:463
 msgid ""
 "Invalid OpenGL context.\n"
 "Either something is completely broken in your OpenGL setup (can you run any "
@@ -2472,34 +2471,34 @@ msgstr ""
 "Algo está totalmente danificado em sua instalação OpenGL (você consegue "
 "executar qualquer aplicação OpenGL?), ou você encontrou um bug."
 
-#: src/glwidget.cpp:464
+#: src/glwidget.cpp:468
 msgid "OpenGL error"
 msgstr "Erro OpenGL"
 
-#: src/glwidget.cpp:1029
+#: src/glwidget.cpp:1033
 msgid "Debug Information"
 msgstr "Informações de Debug"
 
-#: src/glwidget.cpp:1030
+#: src/glwidget.cpp:1034
 #, qt-format
 msgid "FPS: %L1"
 msgstr "FPS: %L1"
 
-#: src/glwidget.cpp:1033
+#: src/glwidget.cpp:1037
 #, qt-format
 msgid "View Size: %L1 x %L2"
 msgstr "Tamanho da Visualização: %L1 x %L2"
 
-#: src/glwidget.cpp:1035
+#: src/glwidget.cpp:1039
 msgid "No molecule set"
 msgstr "Nenhuma molécula definida"
 
-#: src/glwidget.cpp:1040
+#: src/glwidget.cpp:1044
 #, qt-format
 msgid "Atoms: %L1"
 msgstr "Átomos: %L1"
 
-#: src/glwidget.cpp:1043
+#: src/glwidget.cpp:1047
 #, qt-format
 msgid "Bonds: %L1"
 msgstr "Ligações: %L1"
@@ -2710,7 +2709,7 @@ msgstr "Alinhar:"
 msgid "Everything"
 msgstr "Tudo"
 
-#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:418
+#: src/tools/aligntool.cpp:273 src/tools/selectrotatetool.cpp:428
 msgid "Molecule"
 msgstr "Molécula"
 
@@ -2771,13 +2770,13 @@ msgstr "Algoritmo:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288 :1100
+#: src/tools/autoopttool.cpp:288 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:289 :1103
+#: src/tools/autoopttool.cpp:289 :580
 msgid "Conjugate Gradients"
 msgstr "Conjugar Gradientes"
 
@@ -2854,19 +2853,19 @@ msgstr "Rotação em z:"
 msgid "z rotation"
 msgstr "Rotação em z"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:1577
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1577
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:498
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:498
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/molproinputdialog.ui:436
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:436
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/mopacinputdialog.ui:347
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:347
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:432
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:432
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/qcheminputdialog.ui:446
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296 :1043 rc.cpp:2138 rc.cpp:2492
+#: src/tools/autorotatetool.cpp:296 :1430 rc.cpp:2471 rc.cpp:2579
 msgid "Reset"
 msgstr "Restaurar"
 
@@ -3031,7 +3030,7 @@ msgstr "Configurações de Medidas"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3344
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3377
 msgid "Add Atom"
 msgstr "Adicionar Átomo"
 
@@ -3083,9 +3082,9 @@ msgstr "Desenho"
 msgid "Element:"
 msgstr "Elemento:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1214
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1214
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:798 :1556
+#: src/tools/drawtool.cpp:798 :1889
 msgid "Other..."
 msgstr "Outro..."
 
@@ -3187,15 +3186,15 @@ msgstr ""
 "Clique & Arraste para selecionar vários átomos\n"
 "Use Ctrl para alternar a seleção e shift para adicionar elementos"
 
-#: src/tools/selectrotatetool.cpp:411
+#: src/tools/selectrotatetool.cpp:421
 msgid "Selection Mode:"
 msgstr "Modo de Seleção:"
 
-#: src/tools/selectrotatetool.cpp:416
+#: src/tools/selectrotatetool.cpp:426
 msgid "Atom/Bond"
 msgstr "Átomo/Ligação"
 
-#: src/tools/selectrotatetool.cpp:417
+#: src/tools/selectrotatetool.cpp:427
 msgid "Residue"
 msgstr "Resíduo"
 
@@ -3231,9 +3230,9 @@ msgstr "Ângulo Diédrico"
 msgid "Z Matrix Editor..."
 msgstr "Editor Matriz Z..."
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1537
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1537
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39 :1643
+#: src/tools/zmatrixtool.h:39 :1976
 msgid "Z-Matrix"
 msgstr "Matriz-Z"
 
@@ -3289,7 +3288,7 @@ msgstr "Raio das Ligações:"
 msgid "Opacity:"
 msgstr "Opacidade:"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:160
+#. i18n: file: src/engines/bsdysettingswidget.ui:163
 #. i18n: ectx: property (text), widget (QCheckBox, showMulti)
 #. i18n: file: src/engines/wiresettingswidget.ui:31
 #. i18n: ectx: property (text), widget (QCheckBox, showMultipleCheckBox)
@@ -3410,68 +3409,68 @@ msgstr "Ângulo de corte:"
 msgid "Atom Labels:"
 msgstr "Rótulos dos Átomos:"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:55
+#. i18n: file: src/engines/labelsettingswidget.ui:97
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#. i18n: file: src/engines/labelsettingswidget.ui:226
+#. i18n: file: src/engines/labelsettingswidget.ui:345
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
-#. i18n: file: src/extensions/gamessinputdialog.ui:450
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:450
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:999
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:999
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1069
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1069
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1115
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1115
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2107
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2107
 #. i18n: ectx: property (text), widget (QRadioButton, miscNoneRadio)
 #. i18n: file: src/extensions/shaderdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, shaderPrograms)
 msgid "None"
 msgstr "Nenhum"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:60
+#. i18n: file: src/engines/labelsettingswidget.ui:102
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Atom number"
 msgstr "Número Atômico"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:90
+#. i18n: file: src/engines/labelsettingswidget.ui:132
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Element name"
 msgstr "Nome do Elemento"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:65
+#. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Element symbol"
 msgstr "Símbolo do Elemento"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:80
+#. i18n: file: src/engines/labelsettingswidget.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Formal charge"
 msgstr "Carga formal"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:100
+#. i18n: file: src/engines/labelsettingswidget.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Residue number"
 msgstr "Número do Resíduo"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:85
+#. i18n: file: src/engines/labelsettingswidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Partial charge"
 msgstr "Carga parcial"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:105
+#. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#. i18n: file: src/engines/labelsettingswidget.ui:246
+#. i18n: file: src/engines/labelsettingswidget.ui:365
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Unique ID"
 msgstr ""
 
-#. i18n: file: src/engines/labelsettingswidget.ui:75
+#. i18n: file: src/engines/labelsettingswidget.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Symbol & Atom number"
 msgstr ""
 
-#. i18n: file: src/engines/labelsettingswidget.ui:110
+#. i18n: file: src/engines/labelsettingswidget.ui:152
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
 msgid "Custom data"
 msgstr ""
@@ -3481,17 +3480,17 @@ msgstr ""
 msgid "Bond Labels:"
 msgstr "Rótulos das Ligações:"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:231
+#. i18n: file: src/engines/labelsettingswidget.ui:350
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond length"
 msgstr "Comprimento da ligação"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:236
+#. i18n: file: src/engines/labelsettingswidget.ui:355
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond number"
 msgstr "Número da Ligação"
 
-#. i18n: file: src/engines/labelsettingswidget.ui:241
+#. i18n: file: src/engines/labelsettingswidget.ui:360
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
 msgid "Bond order"
 msgstr "Ordem da Ligação"
@@ -3532,7 +3531,7 @@ msgstr "Opacidade VdW"
 
 #. i18n: file: src/engines/surfacesettingswidget.ui:17
 #. i18n: ectx: property (text), widget (QLabel, orbitalLabel)
-#. i18n: file: src/extensions/daltoninputdialog.ui:1232
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1232
 #. i18n: ectx: property (text), widget (QLabel, orbitalthresh)
 msgid "Orbital:"
 msgstr "Orbital:"
@@ -3657,7 +3656,7 @@ msgstr "Número de confórmeros"
 
 #. i18n: file: src/extensions/conformersearchdialog.ui:60
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2566
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2566
 #. i18n: ectx: property (title), widget (QGroupBox, hessianMethodBox)
 msgid "Method"
 msgstr "Método"
@@ -3821,15 +3820,15 @@ msgstr "Ghemical"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:59
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:68
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:69
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:68
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:69
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:69
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Geometry Optimization"
 msgstr "Otimização Geométrica"
@@ -3854,1782 +3853,1782 @@ msgstr "Convergência"
 msgid "10e-"
 msgstr "10e-"
 
-#. i18n: file: src/extensions/gamessefpmatchdialog.ui:16
+#. i18n: file: src/extensions/quantuminput/gamessefpmatchdialog.ui:16
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessEfpMatchDialog)
 msgid "EFP Matches"
 msgstr "Resultados para EFP"
 
-#. i18n: file: src/extensions/gamessefpmatchdialog.ui:25
+#. i18n: file: src/extensions/quantuminput/gamessefpmatchdialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Group Label:"
 msgstr "Rótulo do Grupo"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#. i18n: file: src/extensions/gamessinputdialog.ui:14
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, GamessInputDialog)
 msgid "GAMESS Input"
 msgstr "Entrada GAMESS"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:24
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:24
 #. i18n: ectx: attribute (title), widget (QWidget, basicWidget)
 msgid "&Basic Setup"
 msgstr "Configuração &Básica"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:33
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:33
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:661
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:661
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:149
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:149
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:202
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "AM1"
 msgstr "AM1"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:38
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:666
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:666
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:154
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:154
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:217
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PM3"
 msgstr "PM3"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:43
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:43
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:948
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:948
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:159
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:159
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "RHF"
 msgstr "RHF"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:829
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:829
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:48
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2285
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2285
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:164
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:164
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:143
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:143
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:143
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP"
 msgstr "B3LYP"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:183
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:183
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:53
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:385
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:385
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:169
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:169
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:138
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:138
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:138
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MP2"
 msgstr "MP2"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:58
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1135
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1135
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:153
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD(T)"
 msgstr "CCSD(T)"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:425
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:425
 #. i18n: ectx: property (text), item, widget (QComboBox, stoCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:67
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:67
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:576
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:576
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:213
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:213
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:192
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:192
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:187
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:187
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:202
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "STO-3G"
 msgstr "STO-3G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:72
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:72
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:561
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:561
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "MINI"
 msgstr "MINI"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:448
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:448
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:77
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:77
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:596
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:596
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:218
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:218
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:197
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:197
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:192
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:192
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:207
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "3-21G"
 msgstr "3-21G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:82
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:82
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:223
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:223
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:202
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:197
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:197
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:212
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d)"
 msgstr "6-31G(d)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:87
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:87
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:228
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:228
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:207
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:202
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:217
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31G(d,p)"
 msgstr "6-31G(d,p)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:92
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-31+G(d,p)"
 msgstr "6-31+G(d,p)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:97
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:97
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-31+G(2d,p)"
 msgstr "6-31+G(2d,p)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:102
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:102
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "6-311++G(2d,p)"
 msgstr "6-311++G(2d,p)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:107
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 msgid "Core Potential"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:143
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Singlet"
 msgstr "Singlete"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:138
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:138
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:148
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Doublet"
 msgstr "Dublete"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:143
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:143
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnLeftCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:153
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Triplet"
 msgstr "Triplete"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:152
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:152
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Dication"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:157
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:157
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Cation"
 msgstr "Cátion"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:162
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:162
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Neutral"
 msgstr "Neutro"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:167
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:167
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Anion"
 msgstr "Ânion"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:172
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:172
 #. i18n: ectx: property (text), item, widget (QComboBox, basicOnRightCombo)
 msgid "Dianion"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:195
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:195
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "On:"
 msgstr "Em;"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:137
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:211
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:211
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:63
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:64
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:63
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:64
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:64
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Single Point Energy"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:216
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:216
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
 msgid "Equilibrium Geometry"
 msgstr "Geometria de Equilíbio"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:221
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:221
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
 msgid "Transition State"
 msgstr "Estado de Transição"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:226
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:226
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:73
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:74
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:73
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:73
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:74
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:74
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 msgid "Frequencies"
 msgstr "Freqüências"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:252
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:252
 #. i18n: ectx: property (text), item, widget (QComboBox, basicInCombo)
 msgid "Gas"
 msgstr "Gás"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:257
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:257
 #. i18n: ectx: property (text), item, widget (QComboBox, basicInCombo)
 msgid "Water"
 msgstr "Água"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:280
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:280
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2681
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2681
 #. i18n: ectx: property (text), widget (QRadioButton, statPointCalculateButton)
 #. i18n: file: src/extensions/surfacedialog.ui:335
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
 msgstr "Calcular"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:290
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:290
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "With:"
 msgstr "Com:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:300
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:300
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "In:"
 msgstr "Em:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:327
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:327
 #. i18n: ectx: attribute (title), widget (QWidget, advancedWidget)
 msgid "&Advanced Setup"
 msgstr "Configurações &Avançadas"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:361
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:361
 #. i18n: ectx: property (text), widget (QTreeWidget, navigationTree)
 msgid "Advanced"
 msgstr "Avançado"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:366
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:366
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Basis"
 msgstr "Base"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:371
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:371
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Control"
 msgstr "Controle"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:375
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:375
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "SCF"
 msgstr "SCF"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:792
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:792
 #. i18n: ectx: attribute (title), widget (QWidget, dftTab)
-#. i18n: file: src/extensions/gamessinputdialog.ui:380
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:380
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "DFT"
 msgstr "DFT"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:390
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:390
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
-#. i18n: file: src/extensions/gamessinputdialog.ui:827
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Hessian"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:395
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:395
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Stat Point"
 msgstr "Ponto Inicial"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:401
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:401
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Data"
 msgstr "Dados"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:406
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:406
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "System"
 msgstr "Sistema"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:411
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:411
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "MO Guess"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:416
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:416
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
 msgid "Misc"
 msgstr "Misc"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:437
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:437
 #. i18n: ectx: property (text), widget (QLabel, label_24)
 msgid "#D Heavy Atom Polarization Functions:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:455
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:455
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Read"
 msgstr "Ler"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:460
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:460
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "SBKJC"
 msgstr "SBKJC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:465
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:465
 #. i18n: ectx: property (text), item, widget (QComboBox, basisECPCombo)
 msgid "Hay-Wadt"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:490
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:490
 #. i18n: ectx: property (text), widget (QCheckBox, basisSCheck)
 msgid "Diffuse S-Shell on Heavy Atoms"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:497
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:497
 #. i18n: ectx: property (text), widget (QCheckBox, basisLCheck)
 msgid "Diffuse L-Shell on Heavy Atoms"
 msgstr ""
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:197
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:197
 #. i18n: ectx: property (text), widget (QLabel, basis)
-#. i18n: file: src/extensions/gamessinputdialog.ui:547
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:547
 #. i18n: ectx: property (text), widget (QLabel, label_19)
 msgid "Basis Set:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:566
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:566
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "MIDI"
 msgstr "MIDI"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:420
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:420
 #. i18n: ectx: property (text), item, widget (QComboBox, stoCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:571
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:571
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-2G"
 msgstr "STO-2G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:581
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:581
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-4G"
 msgstr "STO-4G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:586
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:586
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-5G"
 msgstr "STO-5G"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:430
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:430
 #. i18n: ectx: property (text), item, widget (QComboBox, stoCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:591
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:591
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "STO-6G"
 msgstr "STO-6G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:601
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:601
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-21G"
 msgstr "6-21G"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:453
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:453
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:606
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:606
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "4-31G"
 msgstr "4-31G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:611
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:611
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "5-31G"
 msgstr "5-31G"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:458
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:458
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:616
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:616
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-31G"
 msgstr "6-31G"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:463
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:463
 #. i18n: ectx: property (text), item, widget (QComboBox, popleCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:621
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:621
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "6-311G"
 msgstr "6-311G"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:626
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:626
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Double Zeta Valence"
 msgstr "Valência Duplo Zeta"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:631
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:631
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Dunning/Hay DZ"
 msgstr "Dunning/Hay DZ"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:636
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:636
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Triple Zeta Valence"
 msgstr "Valência Triplo Zeta"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:641
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:641
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "McLean/Chandler"
 msgstr "McLean/Chandler"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:646
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:646
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "SBKJA Valence"
 msgstr "Valência SBKJA"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:651
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:651
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
 msgid "Hay/Wadt Valence"
 msgstr "Valência Hay/Wadt"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:656
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:656
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:207
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO"
 msgstr "MNDO"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:703
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:703
 #. i18n: ectx: property (text), widget (QLabel, label_22)
 msgid "ECP Type:"
 msgstr "Tipo ECP:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:717
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:717
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1843
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1843
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "Default"
 msgstr "Padrão"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:722
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:722
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople"
 msgstr "Pople"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:727
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:727
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Pople N311"
 msgstr "Pople N311"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:732
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:732
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Dunning"
 msgstr "Dunning"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:737
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:737
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Huzinaga"
 msgstr "Huzinaga"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:742
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:742
 #. i18n: ectx: property (text), item, widget (QComboBox, basisPolarCombo)
 msgid "Hondo7"
 msgstr "Hondo7"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:750
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:750
 #. i18n: ectx: property (text), widget (QLabel, label_20)
 msgid "#F Heavy Atom Polarization Functions:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:760
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:760
 #. i18n: ectx: property (text), widget (QLabel, label_21)
 msgid "#light Atom Polarization Functions:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:777
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:777
 #. i18n: ectx: property (text), widget (QLabel, label_23)
 msgid "Polar:"
 msgstr "Polar:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:807
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:807
 #. i18n: ectx: property (text), widget (QLabel, label_30)
 msgid "Max SCF Iterations:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:822
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:822
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Gradient"
 msgstr "Gradiente"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:832
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:832
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Optimization"
 msgstr "Otimização"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:837
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:837
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Trudge"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:842
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:842
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Saddle Point"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:847
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:847
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "IRC"
 msgstr "IRC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:852
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:852
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Gradient Extremal"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:857
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:857
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "DRC"
 msgstr "DRC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:862
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:862
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Energy Surface"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:872
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:872
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Morokuma"
 msgstr "Morokuma"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:877
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:877
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Radiative Transition mom."
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:882
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:882
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Spin Orbit"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:887
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:887
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Finite Electric Field"
 msgstr "Campo Elétrico Finito"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:892
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:892
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "TDHF"
 msgstr "TDHF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:897
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:897
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Global Optimization"
 msgstr "Otimização Global"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:902
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "VSCF"
 msgstr "VSCF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:907
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:907
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "FMO Optimization"
 msgstr "Otimização de FMO"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:912
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:912
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Raman Intensities"
 msgstr "Intensidades Raman"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:917
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:917
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "NMR"
 msgstr "RMN"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:922
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:922
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
 msgid "Make EFP"
 msgstr "Construir EFP"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:953
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:953
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "UHF"
 msgstr "UHF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:958
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:958
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "ROHF"
 msgstr "ROHF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:963
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:963
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "GVB"
 msgstr "GVB"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:968
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:968
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "MCSCF"
 msgstr "MCSCF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:973
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:973
 #. i18n: ectx: property (text), item, widget (QComboBox, controlSCFCombo)
 msgid "None (CI)"
 msgstr "Nenhum"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1004
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1004
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Foster-Boys"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1009
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1009
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Edmistron-Ruedenberg"
 msgstr "Edmistron-Ruedenberg"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1014
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1014
 #. i18n: ectx: property (text), item, widget (QComboBox, controlLocalizationCombo)
 msgid "Pipek-Mezey"
 msgstr "Pipek-Mezey"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1037
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1037
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "SCF Type:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1044
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1044
 #. i18n: ectx: property (text), widget (QLabel, label_28)
 msgid "Localization Method:"
 msgstr "Método de Localização:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1054
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1054
 #. i18n: ectx: property (text), widget (QLabel, label_26)
 msgid "Exec Type:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1061
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1061
 #. i18n: ectx: property (text), widget (QLabel, label_29)
 msgid "CI:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1074
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1074
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "GUGA"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1079
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1079
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Ames Lab. Determinant"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1084
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1084
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Occupation Restricted Multiple Active Space"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1089
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1089
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "CI Singles"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1094
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1094
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "Full Second Order CI"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1099
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1099
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCICombo)
 msgid "General CI"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1107
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1107
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "CC:"
 msgstr "CC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1120
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1120
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "LCCD: Linearized CC"
 msgstr "LCCD: Linearizado CC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1125
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1125
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CCD: CC with Doubles"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1130
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1130
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CCSD: CC with Singles and Doubles"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1140
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1140
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "R-CC"
 msgstr "R-CC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1145
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1145
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CR-CC"
 msgstr "CR-CC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1150
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1150
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "EOM-CCSD"
 msgstr "EOM-CCSD"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1155
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1155
 #. i18n: ectx: property (text), item, widget (QComboBox, controlCCCombo)
 msgid "CR-EOM"
 msgstr "CR-EOM"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1184
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, label_25)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:293
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:293
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#. i18n: file: src/extensions/molproinputdialog.ui:297
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:297
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#. i18n: file: src/extensions/mopacinputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:290
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:290
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#. i18n: file: src/extensions/qcheminputdialog.ui:307
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:307
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Multiplicity:"
 msgstr "Multiplicidade:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1199
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1199
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Normal Run"
 msgstr "Execução Normal"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1204
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1204
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Check"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1209
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1209
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
 msgid "Debug"
 msgstr "Depurar"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1238
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1238
 #. i18n: ectx: property (text), widget (QLabel, label_18)
 msgid "Molecule Charge:"
 msgstr "Carga da Molécula:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1250
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1250
 #. i18n: ectx: property (text), widget (QLabel, label_27)
 msgid "Run Type:"
 msgstr "Tipo de Excução:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1272
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1272
 #. i18n: ectx: property (text), widget (QCheckBox, controlMP2Check)
 msgid "Use MP2"
 msgstr "Usar MP2"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1298
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1298
 #. i18n: ectx: property (text), widget (QCheckBox, controlDFTCheck)
 msgid "Use DFT"
 msgstr "Usar DFT"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1347
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1347
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "# of Z-Matrix Variables"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1357
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1357
 #. i18n: ectx: property (text), item, widget (QComboBox, dataUnitsCombo)
 msgid "Ǻngstrom"
 msgstr "Ǻngstrom"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1362
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1362
 #. i18n: ectx: property (text), item, widget (QComboBox, dataUnitsCombo)
 msgid "Bohr"
 msgstr "Bohr"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1385
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1385
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Order of Principal Axis:"
 msgstr "Ordem do Eixo Principal:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1392
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1392
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "Coordinate Type:"
 msgstr "Tipo de Coordenada:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1402
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1402
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "C1"
 msgstr "C1"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1407
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1407
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CS"
 msgstr "CS"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1412
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1412
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CI"
 msgstr "CI"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1417
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1417
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CnH"
 msgstr "CnH"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1422
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1422
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "CnV"
 msgstr "CnV"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1427
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1427
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "Cn"
 msgstr "Cn"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1432
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1432
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "S2n"
 msgstr "S2n"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1437
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1437
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "DnD"
 msgstr "DnD"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1442
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1442
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "DnH"
 msgstr "DnH"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1447
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1447
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "Dn"
 msgstr "Dn"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1452
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1452
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "TD"
 msgstr "TD"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1457
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1457
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "TH"
 msgstr "TH"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1462
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1462
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "T"
 msgstr "T"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1467
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1467
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "OH"
 msgstr "OH"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1472
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1472
 #. i18n: ectx: property (text), item, widget (QComboBox, dataPointCombo)
 msgid "O"
 msgstr "O"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1522
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1522
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Unique cartesian Coords."
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1527
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1527
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Hilderbrant internals"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1532
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1532
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "Cartesian coordinates"
 msgstr "Coordenadas cartesianas"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1542
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1542
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
 msgid "MOPAC Z-Matrix"
 msgstr "Matriz-Z MOPAC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1565
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1565
 #. i18n: ectx: property (text), widget (QCheckBox, dataSymmetryCheck)
 msgid "Use Symmetry During Calculation"
 msgstr "Usar Simetria Durante Cálculo"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1575
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1575
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 msgid "Units:"
 msgstr "Unidades:"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:81
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:81
 #. i18n: ectx: property (text), widget (QLabel, title)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1582
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1582
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:30
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:30
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#. i18n: file: src/extensions/molproinputdialog.ui:31
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#. i18n: file: src/extensions/mopacinputdialog.ui:30
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:30
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:31
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#. i18n: file: src/extensions/qcheminputdialog.ui:31
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:363
+#. i18n: file: src/extensions/spectra/spectradialog.ui:366
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 msgid "Title:"
 msgstr "Título:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1639
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1639
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 msgid "Point Group:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1666
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1666
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Minutes"
 msgstr "Minutos"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1671
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1671
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Hours"
 msgstr "Horas"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1676
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1676
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Days"
 msgstr "Dias"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1681
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1681
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Weeks"
 msgstr "Semanas"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1686
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1686
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Years"
 msgstr "Anos"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1691
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1691
 #. i18n: ectx: property (text), item, widget (QComboBox, systemTimeCombo)
 msgid "Millenia"
 msgstr "Milênio"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1720
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1720
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1764
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1764
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaWords"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1725
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1725
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1769
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1769
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "MegaBytes"
 msgstr "MegaBytes"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1730
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1730
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1774
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1774
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaWords"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1735
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1735
 #. i18n: ectx: property (text), item, widget (QComboBox, systemMemoryCombo)
-#. i18n: file: src/extensions/gamessinputdialog.ui:1779
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1779
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDDICombo)
 msgid "GigaBytes"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1807
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1807
 #. i18n: ectx: property (text), widget (QCheckBox, systemForceCheck)
 msgid "Force Parallel Methods"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1830
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1830
 #. i18n: ectx: property (text), widget (QCheckBox, systemCoreCheck)
 msgid "Produce \"core\" file upon abort"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1848
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1848
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "EVVRSP"
 msgstr "EVVRSP"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1853
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1853
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "GIVEIS"
 msgstr "GIVEIS"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1858
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1858
 #. i18n: ectx: property (text), item, widget (QComboBox, systemDiagonalizationCombo)
 msgid "JACOBI"
 msgstr "JACOBI"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1866
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1866
 #. i18n: ectx: property (text), widget (QLabel, label_36)
 msgid "Time Limit:"
 msgstr "Limite de Tempo:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1873
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1873
 #. i18n: ectx: property (text), widget (QLabel, label_38)
 msgid "MemDDI:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1880
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1880
 #. i18n: ectx: property (text), widget (QLabel, label_37)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2466
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2466
 #. i18n: ectx: property (text), widget (QLabel, label_43)
 msgid "Memory:"
 msgstr "Memória:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1887
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1887
 #. i18n: ectx: property (text), widget (QLabel, label_39)
 msgid "Diagonalization Method:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1894
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1894
 #. i18n: ectx: property (title), widget (QGroupBox, systemParallelGroup)
 msgid "Parallel Load Balance Type"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1900
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1900
 #. i18n: ectx: property (text), widget (QRadioButton, systemLoopRadio)
 msgctxt "\"Loop\" load balancing - set static node assignments"
 msgid "Loop"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1910
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1910
 #. i18n: ectx: property (text), widget (QRadioButton, systemNextRadio)
 msgctxt "\"Next Value\" load balancing - dynamically assign nodes work"
 msgid "Next Value"
 msgstr "Próximo Valor"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1923
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1923
 #. i18n: ectx: property (text), widget (QCheckBox, systemExternalCheck)
 msgid "Use External Data Representation for Messages"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1979
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1979
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Initial Guess:"
 msgstr "Estimativa Inicial"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1990
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1990
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "Hückel"
 msgstr "Hückel"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:1995
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1995
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "HCore"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2000
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2000
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "MO Read ($VEC)"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2005
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2005
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "MO Saved (DICTNRY)"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2010
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2010
 #. i18n: ectx: property (text), item, widget (QComboBox, moGuessInitialCombo)
 msgid "Skip"
 msgstr "Pular"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2033
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2033
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessRotateCheck)
 msgid "Rotate Alpha and Beta Orbitals"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2040
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2040
 #. i18n: ectx: property (text), widget (QCheckBox, moGuessPrintCheck)
 msgid "Print the Initial Guess"
 msgstr "Mostre a Estimativa Inicial"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2064
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2064
 #. i18n: ectx: property (title), widget (QGroupBox, miscInterfaceGroup)
 msgid "GAMESS Interface to Other Codes"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2070
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2070
 #. i18n: ectx: property (text), widget (QCheckBox, miscMolPltCheck)
 msgid "MolPlt"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2077
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2077
 #. i18n: ectx: property (text), widget (QCheckBox, miscPltOrbCheck)
 msgid "PltOrb"
 msgstr "PltOrb"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2084
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2084
 #. i18n: ectx: property (text), widget (QCheckBox, miscAIMPACCheck)
 msgid "AIMPAC"
 msgstr "AIMPAC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2091
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2091
 #. i18n: ectx: property (text), widget (QCheckBox, miscRPACCheck)
 msgid "RPAC"
 msgstr "RPAC"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2101
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2101
 #. i18n: ectx: property (title), widget (QGroupBox, miscForceGroup)
 msgid "Force a Check Run Type"
 msgstr "Verificar a força o tipo de execução"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2117
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2117
 #. i18n: ectx: property (text), widget (QRadioButton, miscHondoRadio)
 msgid "Hondo 8.2"
 msgstr "Hondo 8.2"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2124
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2124
 #. i18n: ectx: property (text), widget (QRadioButton, miscMELDFRadio)
 msgid "MELDF"
 msgstr "Copy text   \t MELDF"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2131
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2131
 #. i18n: ectx: property (text), widget (QRadioButton, miscGamessRadio)
 msgid "GAMESS (UK Version)"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2138
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2138
 #. i18n: ectx: property (text), widget (QRadioButton, miscGaussianRadio)
 msgid "Gaussian 9x"
 msgstr "Gaussian 9x"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2145
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2145
 #. i18n: ectx: property (text), widget (QRadioButton, miscAllRadio)
 msgid "All"
 msgstr "Todos"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2170
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2170
 #. i18n: ectx: property (text), widget (QCheckBox, miscWaterCheck)
 msgid "Solvate with Water"
 msgstr "Solvatar com Água"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2209
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2209
 #. i18n: ectx: property (text), widget (QCheckBox, scfGenerateCheck)
 msgid "Generate UHF Natural Orbitals"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2216
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2216
 #. i18n: ectx: property (text), widget (QCheckBox, scfDirectCheck)
 msgid "Direct SCF"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2223
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2223
 #. i18n: ectx: property (text), widget (QCheckBox, scfComputeCheck)
 msgid "Compute Only Changed in Fock Matrix"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2250
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2250
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Slater exchange"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2255
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2255
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Becke 1988 exchange"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2260
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2260
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "VWN: Vosko-Wilk-Nusair (VWN5) correlation"
 msgstr "VWN: correlação Vosko-Wilk-Nusair (VWN5)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2265
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2265
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "LYP: Lee-Yang-Parr correlation"
 msgstr "LYP: correlação Lee-Yang-Parr"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2270
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2270
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SVWN: Slater exchange + VWN correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2275
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2275
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: BECKE exchange + VWN5 correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2280
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2280
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BLYP: BECKE exchange + LYP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2290
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2290
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Gill 1996 exchange"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2295
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2295
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "Perdew-Burke-Ernzerhof (PBE) exchange"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2300
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2300
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "OP: One-parameter Progressive correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2305
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2305
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SLYP: SLATER + Lee-Yang-Parr (LYP) correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2310
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2310
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "SOP: SLATER + OP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2315
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2315
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BOP: BECKE exchange + OP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2320
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2320
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BVWN: GILL exchange + VWN5 correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2325
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2325
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "GLYP: GILL exchange + LYP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2330
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2330
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEVWN: PBE exchange + VWN6 correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2335
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2335
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBELYP: PBE exchange +LYP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2340
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2340
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "PBEOP: PBE exchange + OP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2345
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2345
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BHHLYP: HF and BECKE exchange + LYP correlation"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2371
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2371
 #. i18n: ectx: property (text), item, widget (QComboBox, dftMethodCombo)
 msgid "Grid"
 msgstr "Grade"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2376
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2376
 #. i18n: ectx: property (text), item, widget (QComboBox, dftMethodCombo)
 msgid "Grid-Free"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2399
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2399
 #. i18n: ectx: property (text), widget (QLabel, label_41)
 msgid "DFT Functional:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2406
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2406
 #. i18n: ectx: property (text), widget (QLabel, label_40)
-#. i18n: file: src/extensions/mopacinputdialog.ui:186
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:186
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Method:"
 msgstr "Método:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2430
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2430
 #. i18n: ectx: property (title), widget (QGroupBox, mp2IntegralGroup)
 msgid "AO Integral Storage"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2439
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2439
 #. i18n: ectx: property (text), widget (QRadioButton, mp2DuplicatedRadio)
 msgid "Duplicated on Each Node"
 msgstr "Duplicado em Cada Nó"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2446
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2446
 #. i18n: ectx: property (text), widget (QRadioButton, mp2DistributedRadio)
 msgid "Distributed Across All Nodes"
 msgstr "Distribuído por Todos os Nós"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2459
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2459
 #. i18n: ectx: property (text), widget (QLabel, label_45)
 msgid "words"
 msgstr "palavras"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2473
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2473
 #. i18n: ectx: property (text), widget (QCheckBox, mp2ComputeCheck)
 msgid "Compute MP2 Properties"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2480
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2480
 #. i18n: ectx: property (text), widget (QLabel, label_44)
 msgid "Integral Retention Cutoff:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2493
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2493
 #. i18n: ectx: property (text), widget (QCheckBox, mp2LocalizedCheck)
 msgid "Use Localized Orbitals"
 msgstr "Usar Orbitais  Localizados"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2500
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2500
 #. i18n: ectx: property (text), widget (QLabel, label_42)
 msgid "# of Core Electrons:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2507
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2507
 #. i18n: ectx: property (title), widget (QGroupBox, mp2TransformationGroup)
 msgid "Transformation Method"
 msgstr "Método de Transformação"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2516
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2516
 #. i18n: ectx: property (text), widget (QRadioButton, mp2TwoRadio)
 msgid "Two Phase Bin Sort"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2523
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2523
 #. i18n: ectx: property (text), widget (QRadioButton, mp2SegmentedRadio)
 msgid "Segmented Transformation"
 msgstr "Transformação Segmentada"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2572
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2572
 #. i18n: ectx: property (text), widget (QRadioButton, hessianAnalyticRadio)
 msgid "Analytic"
 msgstr "Analítica"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2582
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2582
 #. i18n: ectx: property (text), widget (QRadioButton, hessianNumericRadio)
 msgid "Numeric"
 msgstr "Numérica"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2592
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2592
 #. i18n: ectx: property (text), widget (QCheckBox, hessianDoubleCheck)
 msgid "Double Differenced Hessian"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2599
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2599
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPrintCheck)
 msgid "Print Internal Force Constants"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2606
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2606
 #. i18n: ectx: property (text), widget (QLabel, label_33)
 msgid "Displacement Size:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2613
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2613
 #. i18n: ectx: property (text), widget (QCheckBox, hessianPurifyCheck)
 msgid "Purify Hessian"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2620
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2620
 #. i18n: ectx: property (text), widget (QLabel, label_31)
 msgid "Frequency Scale Factor:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2627
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2627
 #. i18n: ectx: property (text), widget (QLabel, label_32)
 msgid "bohrs"
 msgstr "bohrs"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2661
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2661
 #. i18n: ectx: property (title), widget (QGroupBox, statPointHessianGroup)
 msgid "Initial Hessian"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2667
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2667
 #. i18n: ectx: property (text), widget (QRadioButton, statPointGuessButton)
 msgid "Guess (+ define)"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2674
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2674
 #. i18n: ectx: property (text), widget (QRadioButton, statPointReadButton)
 msgid "Read (from $HESS)"
 msgstr "Ler (de $HESS)"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2691
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2691
 #. i18n: ectx: property (text), widget (QCheckBox, statPointUpdateCheck)
 msgid "Update Step Size"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2701
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2701
 #. i18n: ectx: property (text), widget (QCheckBox, statPointPrintCheck)
 msgid "Print Orbs at Each Iteration"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2708
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2708
 #. i18n: ectx: property (text), widget (QLabel, label_35)
 msgid "Gradient Convergence Criteria:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2737
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2737
 #. i18n: ectx: property (text), widget (QLabel, label_50)
 msgid "Jump Size:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2744
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2744
 #. i18n: ectx: property (text), widget (QCheckBox, statPointStationaryCheck)
 msgid "Stationary Point"
 msgstr "Ponto Estacionário"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2754
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2754
 #. i18n: ectx: property (text), widget (QLabel, label_51)
 msgid "Optimization Method:"
 msgstr "Método de Otimização:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2764
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2764
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 msgid "Step Size"
 msgstr "Tamanho do Passo"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2770
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2770
 #. i18n: ectx: property (text), widget (QLabel, label_47)
 msgid "Maximum:"
 msgstr "Máximo:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2777
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2777
 #. i18n: ectx: property (text), widget (QLabel, label_48)
 msgid "Minimum:"
 msgstr "Mínimo:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2787
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2787
 #. i18n: ectx: property (text), widget (QLabel, label_49)
 msgid "Initial:"
 msgstr "Inicial:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2831
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2831
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Newton-Raphson"
 msgstr "Newton-Raphson"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2836
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2836
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Rational Function Optimization"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2841
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2841
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Quadratic Approximation"
 msgstr "Aproximação Quadrática"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2846
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2846
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Schlegel (quasi-NR)"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2851
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2851
 #. i18n: ectx: property (text), item, widget (QComboBox, statPointOptimizationCombo)
 msgid "Constrained Optimization"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2864
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2864
 #. i18n: ectx: property (text), widget (QLabel, label_53)
 msgid "steps"
 msgstr "passos"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2886
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2886
 #. i18n: ectx: property (text), widget (QLabel, label_46)
 msgid "Recalculate Hessian Every:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2896
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2896
 #. i18n: ectx: property (text), widget (QLabel, label_52)
 msgid "Follow Mode:"
 msgstr ""
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2906
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2906
 #. i18n: ectx: property (text), widget (QLabel, label_34)
 msgid "Maximum Steps:"
 msgstr "Máximo de Passos:"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2939
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2939
 #. i18n: ectx: property (text), widget (QPushButton, resetAllButton)
 msgid "Reset All"
 msgstr "Limpar Tudo"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2946
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2946
 #. i18n: ectx: property (text), widget (QPushButton, defaultsButton)
 msgid "Defaults"
 msgstr "Padrões"
 
-#. i18n: file: src/extensions/gamessinputdialog.ui:2969
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2969
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:528
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:528
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/mopacinputdialog.ui:377
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:377
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
-#. i18n: file: src/extensions/qcheminputdialog.ui:476
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:476
 #. i18n: ectx: property (text), widget (QPushButton, computeButton)
 msgid "Compute..."
 msgstr "Computar..."
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:1623
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1623
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2976
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2976
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:535
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:535
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/molproinputdialog.ui:466
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:466
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/mopacinputdialog.ui:384
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:384
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:462
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:462
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/qcheminputdialog.ui:483
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:483
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 msgid "Generate..."
 msgstr "Gerar..."
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:1630
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/gamessinputdialog.ui:2983
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:542
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/molproinputdialog.ui:473
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/mopacinputdialog.ui:391
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:469
-#. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/povraydialog.ui:118
 #. i18n: ectx: property (text), widget (QPushButton, close)
-#. i18n: file: src/extensions/qcheminputdialog.ui:490
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1630
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2983
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:542
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:473
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:391
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:469
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:490
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 msgid "Close"
 msgstr "Fechar"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:19
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
 msgid "Gaussian Input"
 msgstr "Entrada Gaussiana"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:47
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/molproinputdialog.ui:48
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/mopacinputdialog.ui:47
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:48
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/qcheminputdialog.ui:48
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Calculation:"
 msgstr "Cálculo:"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:96
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:96
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Processors:"
 msgstr "Processadores:"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:156
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:156
 #. i18n: ectx: property (text), widget (QLabel, theory)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:133
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/molproinputdialog.ui:114
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:114
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/extensions/qcheminputdialog.ui:114
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Theory:"
 msgstr "Teoria:"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:174
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:174
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:148
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:148
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:163
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD"
 msgstr "CCSD"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:197
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:197
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#. i18n: file: src/extensions/molproinputdialog.ui:176
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:171
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:171
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#. i18n: file: src/extensions/qcheminputdialog.ui:186
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:186
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Basis:"
 msgstr ""
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:233
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:233
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:227
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:242
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:242
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LANL2DZ"
 msgstr "LANL2DZ"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:256
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:256
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/extensions/molproinputdialog.ui:260
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:260
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/extensions/mopacinputdialog.ui:96
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:96
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:250
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:250
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/extensions/qcheminputdialog.ui:270
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:270
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Charge:"
 msgstr "Carga:"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:330
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:330
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "Output:"
 msgstr "Saída:"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:346
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:346
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Standard"
 msgstr "Padrão"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:351
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:351
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molden"
 msgstr ""
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:356
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:356
 #. i18n: ectx: property (text), item, widget (QComboBox, outputCombo)
 msgid "Molekel"
 msgstr ""
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:379
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:379
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Checkpoint:"
 msgstr ""
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:396
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:396
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/molproinputdialog.ui:334
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:334
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/mopacinputdialog.ui:250
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:250
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:330
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:330
 #. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/qcheminputdialog.ui:344
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:344
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "Format:"
 msgstr "Formato:"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:415
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:415
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:353
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:353
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:269
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:269
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:349
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:349
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:363
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:363
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Cartesian"
 msgstr "Cartesiano"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:420
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:420
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:358
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:358
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/mopacinputdialog.ui:274
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:274
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:354
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:354
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:368
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:368
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Z-matrix"
 msgstr "Matriz-Z"
 
-#. i18n: file: src/extensions/gaussianinputdialog.ui:425
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:425
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:363
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:363
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:359
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:359
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:373
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:373
 #. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
 msgid "Z-matrix (compact)"
 msgstr ""
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:1587
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1587
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/gaussianinputdialog.ui:508
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:508
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/molproinputdialog.ui:446
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:446
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/mopacinputdialog.ui:357
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:357
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:442
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:442
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/qcheminputdialog.ui:456
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:456
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 msgid "Use Form"
 msgstr ""
@@ -6011,103 +6010,103 @@ msgstr "Energia (kj/mol)"
 msgid "Dipole Moment (D):"
 msgstr "Momento Dipolar (D):"
 
-#. i18n: file: src/extensions/molproinputdialog.ui:20
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MolproInputDialog)
 msgid "MOLPRO Input"
 msgstr ""
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:173
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:173
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:133
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "HF"
 msgstr "HF"
 
-#. i18n: file: src/extensions/molproinputdialog.ui:212
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:207
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:222
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-31+G(d)"
 msgstr "6-31+G(d)"
 
-#. i18n: file: src/extensions/molproinputdialog.ui:217
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:212
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:227
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "6-311G(d)"
 msgstr "6-311G(d)"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:220
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:222
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:217
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:232
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:232
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "cc-pVDZ"
 msgstr "cc-pVDZ"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:225
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:225
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
-#. i18n: file: src/extensions/molproinputdialog.ui:227
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/nwcheminputdialog.ui:222
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:237
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "cc-pVTZ"
 msgstr "cc-pVTZ"
 
-#. i18n: file: src/extensions/molproinputdialog.ui:232
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:232
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "AUG-cc-pVDZ"
 msgstr "AUG-cc-pVDZ"
 
-#. i18n: file: src/extensions/molproinputdialog.ui:237
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:237
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "AUG-cc-pVTZ"
 msgstr "AUG-cc-pVTZ"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:19
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
 msgid "MOPAC Input"
 msgstr "Entrada MOPAC"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:158
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quartet"
 msgstr "Quarteto"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:163
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, multiplicityCombo)
 msgid "Quintet"
 msgstr "Quinteto"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:212
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "MNDO-d"
 msgstr "MNDO-d"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:222
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "PM6"
 msgstr "PM6"
 
-#. i18n: file: src/extensions/mopacinputdialog.ui:227
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "RM1"
 msgstr "RM1"
 
-#. i18n: file: src/extensions/nwcheminputdialog.ui:20
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, NWChemInputDialog)
 msgid "NWChem Input"
 msgstr ""
@@ -6189,29 +6188,29 @@ msgstr "Manter fonte POV-Ray após renderizar"
 msgid "Path:"
 msgstr "Caminho:"
 
-#. i18n: file: src/extensions/qcheminputdialog.ui:20
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, QChemInputDialog)
 msgid "Q-Chem Input"
 msgstr "Entrada Q-Chem"
 
-#. i18n: file: src/extensions/qcheminputdialog.ui:148
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:148
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "B3LYP5"
 msgstr "B3LYP5"
 
-#. i18n: file: src/extensions/daltoninputdialog.ui:944
+#. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:944
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#. i18n: file: src/extensions/qcheminputdialog.ui:153
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:153
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "EDF1"
 msgstr "EDF1"
 
-#. i18n: file: src/extensions/qcheminputdialog.ui:158
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:158
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "M06-2X"
 msgstr "M06-2X"
 
-#. i18n: file: src/extensions/qcheminputdialog.ui:247
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:247
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "LACVP"
 msgstr "LACVP"
@@ -6263,7 +6262,7 @@ msgstr ""
 msgid "Spectra Visualization"
 msgstr "Visualizar Espectro"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:45
+#. i18n: file: src/extensions/spectra/spectradialog.ui:48
 #. i18n: ectx: property (toolTip), widget (Avogadro::PlotWidget, plot)
 msgid ""
 "Controls:\n"
@@ -6278,120 +6277,120 @@ msgstr ""
 "Clique do meio + arrastar: Zoom na região\n"
 "Roda do mouse: Zoom para o cursor"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:74
+#. i18n: file: src/extensions/spectra/spectradialog.ui:77
 #. i18n: ectx: property (text), widget (QPushButton, push_loadSpectra)
 msgid "&Load data..."
 msgstr "&Carregar dados..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:113
+#. i18n: file: src/extensions/spectra/spectradialog.ui:116
 #. i18n: ectx: property (text), widget (QPushButton, pushButton)
 msgid "&Close"
 msgstr "&Fechar"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:158
+#. i18n: file: src/extensions/spectra/spectradialog.ui:161
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Calculated Spectra:"
 msgstr "Espectro Calculado:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:171
+#. i18n: file: src/extensions/spectra/spectradialog.ui:174
 #. i18n: ectx: property (text), widget (QPushButton, push_colorCalculated)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:194
+#. i18n: file: src/extensions/spectra/spectradialog.ui:197
 #. i18n: ectx: property (text), widget (QPushButton, push_colorImported)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:282
+#. i18n: file: src/extensions/spectra/spectradialog.ui:285
 #. i18n: ectx: property (text), widget (QPushButton, push_colorBackground)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:308
+#. i18n: file: src/extensions/spectra/spectradialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, push_colorForeground)
 msgid "Set Color..."
 msgstr "Mudar Cor..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:178
+#. i18n: file: src/extensions/spectra/spectradialog.ui:181
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Imported Spectra:"
 msgstr "Espectro Importado:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:201
+#. i18n: file: src/extensions/spectra/spectradialog.ui:204
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "Font:"
 msgstr "Fonte:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:214
+#. i18n: file: src/extensions/spectra/spectradialog.ui:217
 #. i18n: ectx: property (text), widget (QPushButton, push_font)
 msgid "Change Font..."
 msgstr "Mudar Fonte..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:227
+#. i18n: file: src/extensions/spectra/spectradialog.ui:230
 #. i18n: ectx: property (text), widget (QCheckBox, cb_calculate)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:240
+#. i18n: file: src/extensions/spectra/spectradialog.ui:243
 #. i18n: ectx: property (text), widget (QCheckBox, cb_import)
 msgid "Show"
 msgstr "Mostrar"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:253
+#. i18n: file: src/extensions/spectra/spectradialog.ui:256
 #. i18n: ectx: property (toolTip), widget (QPushButton, push_import)
 msgid "Imports a tsv of experimental spectra to overlay on the plot."
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:256
+#. i18n: file: src/extensions/spectra/spectradialog.ui:259
 #. i18n: ectx: property (text), widget (QPushButton, push_import)
 msgid "&Import..."
 msgstr "&Importar..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:269
+#. i18n: file: src/extensions/spectra/spectradialog.ui:272
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Background:"
 msgstr "Fundo:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:295
+#. i18n: file: src/extensions/spectra/spectradialog.ui:298
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "Foreground:"
 msgstr "Frente:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:324
+#. i18n: file: src/extensions/spectra/spectradialog.ui:327
 #. i18n: ectx: property (text), widget (QPushButton, push_newScheme)
 msgid "New..."
 msgstr "Novo..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:340
+#. i18n: file: src/extensions/spectra/spectradialog.ui:343
 #. i18n: ectx: property (text), widget (QPushButton, push_removeScheme)
 msgid "Remove..."
 msgstr "Remover..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:353
+#. i18n: file: src/extensions/spectra/spectradialog.ui:356
 #. i18n: ectx: property (text), widget (QPushButton, push_renameScheme)
 msgid "Rename..."
 msgstr "Renomear..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:379
+#. i18n: file: src/extensions/spectra/spectradialog.ui:382
 #. i18n: ectx: property (text), widget (QLineEdit, lineEdit)
 msgid "TODO"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:392
+#. i18n: file: src/extensions/spectra/spectradialog.ui:395
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "&Schemes:"
 msgstr "E&squemas:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:408
+#. i18n: file: src/extensions/spectra/spectradialog.ui:411
 #. i18n: ectx: property (text), widget (QPushButton, push_export)
 msgid "&Export..."
 msgstr "&Exportar..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:448
+#. i18n: file: src/extensions/spectra/spectradialog.ui:451
 #. i18n: ectx: property (text), widget (QLabel, label_12)
 msgid "&DPI:"
 msgstr "&DPI:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:464
+#. i18n: file: src/extensions/spectra/spectradialog.ui:467
 #. i18n: ectx: property (text), widget (QLabel, label_14)
 msgid "&Width:"
 msgstr "&Largura:"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:493
+#. i18n: file: src/extensions/spectra/spectradialog.ui:496
 #. i18n: ectx: property (text), widget (QLabel, label_13)
 msgid "&Height"
 msgstr "&Altura"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:516
+#. i18n: file: src/extensions/spectra/spectradialog.ui:519
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "&Filename:"
 msgstr "&Nome do Arquivo:"
@@ -6406,37 +6405,37 @@ msgstr "&Nome do Arquivo:"
 #. i18n: ectx: property (text), widget (QToolButton, pasteButton)
 #. i18n: file: src/extensions/cartesianeditor.ui:241
 #. i18n: ectx: property (text), widget (QToolButton, revertButton)
-#. i18n: file: src/extensions/spectra/spectradialog.ui:552
+#. i18n: file: src/extensions/spectra/spectradialog.ui:555
 #. i18n: ectx: property (text), widget (QToolButton, push_imageFilename)
 msgid "..."
 msgstr "..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:563
+#. i18n: file: src/extensions/spectra/spectradialog.ui:566
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "cm"
 msgstr "cm"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:568
+#. i18n: file: src/extensions/spectra/spectradialog.ui:571
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "mm"
 msgstr "mm"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:573
+#. i18n: file: src/extensions/spectra/spectradialog.ui:576
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "in"
 msgstr "pol"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:578
+#. i18n: file: src/extensions/spectra/spectradialog.ui:581
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_imageUnits)
 msgid "px"
 msgstr "px"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:592
+#. i18n: file: src/extensions/spectra/spectradialog.ui:595
 #. i18n: ectx: property (text), widget (QPushButton, push_imageSave)
 msgid "&Save Image..."
 msgstr "&Salvar Imagem..."
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:625
+#. i18n: file: src/extensions/spectra/spectradialog.ui:628
 #. i18n: ectx: property (toolTip), widget (QCheckBox, cb_imageFontAdjust)
 msgid ""
 "Use an optimized value for the font size instead of the scheme-specified "
@@ -6445,7 +6444,7 @@ msgstr ""
 "Usar um valor otimizado para o tamanho da fonte em vez de valor especificado "
 "(a conversão da tela para pontos de imagem não é boa!)"
 
-#. i18n: file: src/extensions/spectra/spectradialog.ui:628
+#. i18n: file: src/extensions/spectra/spectradialog.ui:631
 #. i18n: ectx: property (text), widget (QCheckBox, cb_imageFontAdjust)
 msgid "Auto-adjust F&ont Size"
 msgstr "Tamanho de Fonte Auto-ajustado"
@@ -6455,78 +6454,75 @@ msgstr "Tamanho de Fonte Auto-ajustado"
 msgid "tab_IR"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratab_ir_raman.ui:29
+#. i18n: file: src/extensions/spectra/tab_ir_raman.ui:29
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 msgid "&Y Axis Units:"
 msgstr "Unidades do Eixo &Y:"
 
-#: src/extensions/spectra/spectratype_ir.cpp:171
-#: src/extensions/spectra/spectratype_ir.cpp:199
+#: src/extensions/spectra/ir.cpp:37 src/extensions/spectra/ir.cpp:65
 msgid "Transmittance (%)"
 msgstr "Transmitância (%)"
 
-#: src/extensions/spectra/spectratype_ir.cpp:172
+#: src/extensions/spectra/ir.cpp:38
 msgid "Absorbance (%)"
 msgstr "Absorbância (%)"
 
 #. i18n: file: src/extensions/spectratabir.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/spectratabraman.ui:73
-#. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Sc&ale:"
 msgstr "Esc&ala:"
 
-#. i18n: file: src/extensions/spectra/spectratab_ir_raman.ui:216
+#. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
-#. i18n: file: src/extensions/spectra/spectratabcd.ui:26
+#. i18n: file: src/extensions/spectra/tab_ir_raman.ui:216
 #. i18n: ectx: property (text), widget (QLabel, label_9)
-#. i18n: file: src/extensions/spectra/spectratabuv.ui:26
+#. i18n: file: src/extensions/spectra/tab_uv.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "&Gaussian Width:"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratab_ir_raman.ui:81
+#. i18n: file: src/extensions/spectra/tab_cd.ui:68
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
-#. i18n: file: src/extensions/spectra/spectratabcd.ui:68
+#. i18n: file: src/extensions/spectra/tab_ir_raman.ui:81
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
-#. i18n: file: src/extensions/spectra/spectratabuv.ui:68
+#. i18n: file: src/extensions/spectra/tab_uv.ui:68
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
 msgid "&Label peaks"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:14
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_NMR)
 msgid "tab_NMR"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:23
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_15)
 msgid "Nucleus:"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:36
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:36
 #. i18n: ectx: property (text), widget (QLabel, label_16)
 msgid "&Reference:"
 msgstr "&Referência:"
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:46
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:46
 #. i18n: ectx: property (text), widget (QLabel, label_17)
 msgid "Gaussian &Width:"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:69
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:69
 #. i18n: ectx: property (text), widget (QPushButton, push_resetAxes)
 msgid "Reset &Plot Axes"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:105
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:105
 #. i18n: ectx: property (text), widget (QCheckBox, cb_labelPeaks)
 msgid "Label Peaks:"
 msgstr ""
 
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:125
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:125
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/extensions/spectra/spectratabnmr.ui:132
+#. i18n: file: src/extensions/spectra/tab_nmr.ui:132
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "ppm"
 msgstr "ppm"
@@ -6577,7 +6573,7 @@ msgstr "Criar Superfícies"
 msgid "Surface Type:"
 msgstr "Tipo de Superfície:"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:136
+#. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 #. i18n: file: src/extensions/surfacedialog.ui:41
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
@@ -6720,7 +6716,7 @@ msgstr "gama:"
 msgid "Molecular Vibrations"
 msgstr "Vibrações Moleculares"
 
-#. i18n: file: src/extensions/vibrationdialog.ui:48
+#. i18n: file: src/extensions/vibrationdialog.ui:45
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Frequency (cm⁻¹)"
 msgstr "Frequencia (cm⁻¹)"
@@ -6730,7 +6726,7 @@ msgstr "Frequencia (cm⁻¹)"
 msgid "Intensity (km/mol)"
 msgstr "Intensidade (km/mol)"
 
-#. i18n: file: src/extensions/vibrationdialog.ui:74
+#. i18n: file: src/extensions/vibrationdialog.ui:66
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "&Scale:"
 msgstr "E&scala:"
@@ -6750,7 +6746,7 @@ msgstr ""
 msgid "Animation speed set by frequency"
 msgstr ""
 
-#. i18n: file: src/extensions/vibrationdialog.ui:140
+#. i18n: file: src/extensions/vibrationdialog.ui:132
 #. i18n: ectx: property (text), widget (QPushButton, exportButton)
 msgid "E&xport..."
 msgstr "E&xportar..."

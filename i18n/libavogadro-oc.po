@@ -1,16 +1,16 @@
-# Japanese translation for avogadro
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# Occitan (post 1500) translation for avogadro
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the avogadro package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
-"Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-11-05 12:55-0500\n"
-"PO-Revision-Date: 2010-03-11 09:34+0000\n"
-"Last-Translator: hide D <Unknown>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"PO-Revision-Date: 2010-04-22 12:10+0000\n"
+"Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
-msgstr ""
+msgstr "Coloriar segon l'indici"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
+msgstr "Coloriar segon l'indici (roge, irange, jaune, verd, blau, violet)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -35,15 +35,15 @@ msgstr ""
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
-msgstr "カスタムカラー:"
+msgstr "Color personalizada :"
 
 #: src/colors/customcolor.h:43
 msgid "Custom Color"
-msgstr "カスタムカラー"
+msgstr "Color personalizada"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr "オブジェクトのカスタムカラーを設定"
+msgstr ""
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr "第一原子からの距離によるカラー"
+msgstr ""
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
@@ -71,617 +71,617 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr "水素 (Hydrogen)"
+msgstr "Idrogèn"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr "ヘリウム (Helium)"
+msgstr "Èli"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr "リチウム(Lithium）"
+msgstr "Liti"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
-msgstr "ベリリウム (Beryllium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr "ホウ素 (Boron)"
+msgstr "Boròni"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr "炭素 (Carbon)"
+msgstr "Carbòni"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr "窒素 (Nitrogen)"
+msgstr "Nitrogèn"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr "酸素 (Oxygen)"
+msgstr "Oxigèn"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
-msgstr "フッ素 (Fluorine)"
+msgstr ""
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr "ネオン (Neon)"
+msgstr "Neon"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr "ナトリウム (Sodium)"
+msgstr "Sòdi"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr "マグネシウム (Magnesium)"
+msgstr "Magnèsi"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr "アルミニウム (Aluminum)"
+msgstr "Alumini"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr "ケイ素 (Silicon)"
+msgstr "Silicòn"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
-msgstr "リン (Phosphorus)"
+msgstr ""
 
 #: src/elementtranslator.cpp:87
 msgid "Sulfur"
-msgstr "硫黄 (Sulfur)"
+msgstr ""
 
 #: src/elementtranslator.cpp:90
 msgid "Chlorine"
-msgstr "塩素 (Chlorine)"
+msgstr ""
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr "アルゴン (Argon)"
+msgstr "Argon"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr "カリウム (Potassium)"
+msgstr "Potassi"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr "カルシウム (Calcium)"
+msgstr "Calci"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
-msgstr "スカンジウム (Scandium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:105
 msgid "Titanium"
-msgstr "チタン (Titanium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:108
 msgid "Vanadium"
-msgstr "バナジウム (Vanadium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:111
 msgid "Chromium"
-msgstr "クロム (Chromium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:114
 msgid "Manganese"
-msgstr "マンガン (Manganese)"
+msgstr ""
 
 #: src/elementtranslator.cpp:117
 msgid "Iron"
-msgstr "鉄 (Iron)"
+msgstr ""
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr "コバルト (Cobalt)"
+msgstr "Cobalt"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
-msgstr "ニッケル (Nickel)"
+msgstr ""
 
 #: src/elementtranslator.cpp:126
 msgid "Copper"
-msgstr "銅 (Copper)"
+msgstr ""
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr "亜鉛 (Zinc)"
+msgstr "Zinc"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr "ガリウム (Gallium)"
+msgstr "Galli"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr "ゲルマニウム (Germanium)"
+msgstr "Germani"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr "ヒ素 (Arsenic)"
+msgstr "Arsenic"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr "セレン (Selenium)"
+msgstr "Selèni"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
-msgstr "臭素 (Bromine)"
+msgstr ""
 
 #: src/elementtranslator.cpp:147
 msgid "Krypton"
-msgstr "クリプトン (Krypton)"
+msgstr ""
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr "ルビジウム (Rubidium)"
+msgstr "Rubidi"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
-msgstr "ストロンチウム (Strontium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:156
 msgid "Yttrium"
-msgstr "イットリウム (Yttrium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:159
 msgid "Zirconium"
-msgstr "ジルコニウム (Zirconium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:162
 msgid "Niobium"
-msgstr "ニオブ (Niobium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:165
 msgid "Molybdenum"
-msgstr "モリブデン (Molybdenum)"
+msgstr ""
 
 #: src/elementtranslator.cpp:168
 msgid "Technetium"
-msgstr "テクネチウム (Technetium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:171
 msgid "Ruthenium"
-msgstr "ルテニウム (Ruthenium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:174
 msgid "Rhodium"
-msgstr "ロジウム (Rhodium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr "パラジウム (Palladium)"
+msgstr "Palladi"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr "銀 (Silver)"
+msgstr "Argent"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr "カドミウム (Cadmium)"
+msgstr "Cadmi"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr "インジウム (Indium)"
+msgstr "Indi"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
-msgstr "スズ (Tin)"
+msgstr ""
 
 #: src/elementtranslator.cpp:192
 msgid "Antimony"
-msgstr "アンチモン (Antimony)"
+msgstr ""
 
 #: src/elementtranslator.cpp:195
 msgid "Tellurium"
-msgstr "テルル (Tellurium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:198
 msgid "Iodine"
-msgstr "ヨウ素 (Iodine)"
+msgstr ""
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr "キセノン (Xenon)"
+msgstr "Xenon"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
-msgstr "セシウム (Cesium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr "バリウム (Barium)"
+msgstr "Bari"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
-msgstr "ランタン (Lanthanum)"
+msgstr ""
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr "セリウム (Cerium)"
+msgstr "Ceri"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
-msgstr "プラセオジム (Praseodymium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:219
 msgid "Neodymium"
-msgstr "ネオジム (Neodymium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:222
 msgid "Promethium"
-msgstr "プロメチウム (Promethium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:225
 msgid "Samarium"
-msgstr "サマリウム (Samarium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:228
 msgid "Europium"
-msgstr "ユウロピウム (Europium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:231
 msgid "Gadolinium"
-msgstr "ガドリニウム (Gadolinium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:234
 msgid "Terbium"
-msgstr "テルビウム (Terbium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:237
 msgid "Dysprosium"
-msgstr "ジスプロシウム (Dysprosium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:240
 msgid "Holmium"
-msgstr "ホルミウム (Holmium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:243
 msgid "Erbium"
-msgstr "エルビウム (Erbium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:246
 msgid "Thulium"
-msgstr "ツリウム (Thulium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:249
 msgid "Ytterbium"
-msgstr "イッテルビウム (Ytterbium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:252
 msgid "Lutetium"
-msgstr "ルテチウム (Lutetium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:255
 msgid "Hafnium"
-msgstr "ハフニウム (Hafnium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:258
 msgid "Tantalum"
-msgstr "タンタル (Tantalum)"
+msgstr ""
 
 #: src/elementtranslator.cpp:261
 msgid "Tungsten"
-msgstr "タングステン (Tungsten)"
+msgstr ""
 
 #: src/elementtranslator.cpp:264
 msgid "Rhenium"
-msgstr "レニウム (Rhenium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:267
 msgid "Osmium"
-msgstr "オスミウム (Osmium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:270
 msgid "Iridium"
-msgstr "イリジウム (Iridium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr "白金 (Platinum)"
+msgstr "Platini"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr "金 (Gold)"
+msgstr "Aur"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr "水銀 (Mercury)"
+msgstr "Mercuri"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
-msgstr "タリウム (Thallium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:285
 msgid "Lead"
-msgstr "鉛 (Lead)"
+msgstr ""
 
 #: src/elementtranslator.cpp:288
 msgid "Bismuth"
-msgstr "ビスマス (Bismuth)"
+msgstr ""
 
 #: src/elementtranslator.cpp:291
 msgid "Polonium"
-msgstr "ポロニウム (Polonium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:294
 msgid "Astatine"
-msgstr "アスタチン (Astatine)"
+msgstr ""
 
 #: src/elementtranslator.cpp:297
 msgid "Radon"
-msgstr "ラドン (Radon)"
+msgstr ""
 
 #: src/elementtranslator.cpp:300
 msgid "Francium"
-msgstr "フランシウム (Francium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr "ラジウム (Radium)"
+msgstr "Radi"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr "アクチニウム (Actinium)"
+msgstr "Actini"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
-msgstr "トリウム (Thorium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr "プロトアクチニウム (Protactinium)"
+msgstr "Protactini"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr "ウラン (Uranium)"
+msgstr "Urani"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr "ネプツニウム (Neptunium)"
+msgstr "Neptuni"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr "プルトニウム (Plutonium)"
+msgstr "Plutoni"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
-msgstr "アメリシウム (Americium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:327
 msgid "Curium"
-msgstr "キュリウム (Curium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:330
 msgid "Berkelium"
-msgstr "バークリウム (Berkelium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:333
 msgid "Californium"
-msgstr "カルホルニウム (Californium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:336
 msgid "Einsteinium"
-msgstr "アインスタイニウム (Einsteinium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:339
 msgid "Fermium"
-msgstr "フェルミウム (Fermium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:342
 msgid "Mendelevium"
-msgstr "メンデレビウム (Mendelevium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:345
 msgid "Nobelium"
-msgstr "ノーベリウム (Nobelium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:348
 msgid "Lawrencium"
-msgstr "ローレンシウム (Lawrencium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:351
 msgid "Rutherfordium"
-msgstr "ラザホージウム (Rutherfordium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:354
 msgid "Dubnium"
-msgstr "ドブニウム (Dubnium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:357
 msgid "Seaborgium"
-msgstr "シーボーギウム (Seaborgium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:360
 msgid "Bohrium"
-msgstr "ボーリウム (Bohrium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:363
 msgid "Hassium"
-msgstr "ハッシウム (Hassium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:366
 msgid "Meitnerium"
-msgstr "マイトネリウム (Meitnerium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:369
 msgid "Darmstadtium"
-msgstr "ダルムスタチウム (Darmstadtium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:372
 msgid "Roentgenium"
-msgstr "レントゲニウム (Roentgenium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:375
 msgid "Ununbium"
-msgstr "ウンウンビウム (Ununbium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
-msgstr "ウンウントリウム (Ununtrium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:381
 msgid "Ununquadium"
-msgstr "ウンウンクアジウム (Ununquadium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:384
 msgid "Ununpentium"
-msgstr "ウンウンペンチウム (Ununpentium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:387
 msgid "Ununhexium"
-msgstr "ウンウンヘキシウム (Ununhexium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:390
 msgid "Ununseptium"
-msgstr "ウンウンセプチウム (Ununseptium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:393
 msgid "Ununoctium"
-msgstr "ウンウンオクチウム (Ununoctium)"
+msgstr ""
 
 #: src/elementtranslator.cpp:397 src/tools/zmatrixmodel.cpp:95
 msgid "Unknown"
-msgstr "不明"
+msgstr ""
 
 #: src/engine.cpp:65
 msgid "Engines"
-msgstr "エンジン"
+msgstr ""
 
 #: src/engines/axesengine.h:42
 msgid "Axes"
-msgstr "軸"
+msgstr ""
 
 #: src/engines/axesengine.h:43
 msgid "Renders the x, y, and z axes at the origin"
-msgstr "原点に x, y, z 軸を表示"
+msgstr ""
 
 #: src/engines/bsdyengine.h:41 src/glwidget.cpp:1932
 msgid "Ball and Stick"
-msgstr "ボールとスティック"
+msgstr ""
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr "ボール ( 原子 ) とスティック ( 結合 ) で基本要素を表示"
+msgstr ""
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
-msgstr "カートゥーン"
+msgstr ""
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr "タンパク質二次構造を表示"
+msgstr ""
 
 #: src/engines/dipoleengine.h:43
 msgid "Dipole"
-msgstr "双極子"
+msgstr ""
 
 #: src/engines/dipoleengine.h:44
 msgid "Renders molecular dipole moments"
-msgstr "分子の双極子モーメントを表示"
+msgstr ""
 
 #: src/engines/forceengine.h:38
 msgid "Force"
-msgstr "力"
+msgstr ""
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr "原子上に力の変位を表示"
+msgstr ""
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
-msgstr "水素結合"
+msgstr ""
 
 #: src/engines/hbondengine.h:43
 msgid "Renders hydrogen bonds"
-msgstr "水素結合を表示"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
-msgstr "ラベル"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
-msgstr "原子と結合のラベルを表示"
+msgstr ""
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
-msgstr "オーバーレイ"
+msgstr ""
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
-msgstr "カラースケール ( グラデーション ) を表示"
+msgstr ""
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
-msgstr "ポリゴン"
+msgstr ""
 
 #: src/engines/polygonengine.h:40
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-msgstr "原子を四面体, 八面体, その他ポリゴンで表示"
+msgstr ""
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
-msgstr "リボン"
+msgstr ""
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
-msgstr "タンパク質骨格をリボンで表示"
+msgstr ""
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
-msgstr "リング"
+msgstr ""
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
-msgstr "色付平面と共にリングを表示"
+msgstr ""
 
 #: src/engines/simplewireengine.h:37
 msgid "Simple Wireframe"
-msgstr "シンプル・ワイヤフレーム"
+msgstr ""
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr "結合をワイヤ ( 直線 ) で表示, 巨大分子に最適"
+msgstr ""
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
-msgstr "ファンデルワールス球"
+msgstr ""
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
-msgstr "原子をファン・デル・ワールス球として表示"
+msgstr ""
 
 #: src/engines/stickengine.h:43
 msgid "Stick"
-msgstr "スティック"
+msgstr ""
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr "分子をスティックで表示"
+msgstr ""
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr "ファンデルワールス, 等値面 = %L1"
+msgstr ""
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr "電子密度, 等値面 = %L1"
+msgstr ""
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
 msgctxt "%1 is mesh name, %2 is the isosurface cutoff"
 msgid "%1, isosurface = %L2"
-msgstr "%1, 等値面 = %L2"
+msgstr ""
 
 #: src/engines/surfaceengine.h:46 src/extensions/surfaceextension.h:50
 msgid "Surfaces"
-msgstr "サーフェス"
+msgstr ""
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
@@ -689,36 +689,36 @@ msgstr ""
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr "ワイヤーフレーム"
+msgstr ""
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
-msgstr "結合をワイヤ ( 直線 ) で表示, 巨大 ( 生体 ) 分子に最適"
+msgstr ""
 
 #: src/extension.cpp:44
 msgid "Extensions"
-msgstr "エクステンション"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:65
 msgid "Open trajectory file"
-msgstr "トラジェクトリファイルを開く"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:66
 msgid "Trajectory files (*.xtc *.xyz)"
-msgstr "トラジェクトリファイル (*.xtc *.xyz)"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:74
 #, qt-format
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:95
 msgid "Save Video File"
-msgstr "動画ファイルを保存"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:97
 msgid "video files (*.avi)"
-msgstr "動画ファイル (*.avi)"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:102
 #: src/extensions/animationextension.cpp:135
@@ -748,15 +748,15 @@ msgstr "動画ファイル (*.avi)"
 #: src/extensions/unitcellextension.cpp:127
 #: src/extensions/unitcellextension.cpp:255
 msgid "Avogadro"
-msgstr "Avogadro"
+msgstr ""
 
 #: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
-msgstr "拡張子 .avi を追加"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
-msgstr "アニメーション ...."
+msgstr ""
 
 #: src/extensions/animationextension.cpp:75
 #: src/extensions/forcefieldextension.cpp:144
@@ -766,114 +766,114 @@ msgstr "アニメーション ...."
 #: src/extensions/surfaceextension.cpp:94
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr "エクステンション(&x)"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/insertfragmentdialog.cpp:144
 #: src/extensions/quantuminput/inputfileextension.cpp:183
 #, qt-format
 msgid "Cannot read file format of file %1."
-msgstr "ファイル %1 のファイル形式を読めません"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:144
 #, qt-format
 msgid "Read trajectory file %1 failed."
-msgstr "トラジェクトリファイル %1 の読み込みに失敗しました"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
 msgid "Must specify a valid .avi file name"
-msgstr "有効な .avi ファイル名を指定してください"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr "動画を保存するための、GLウィジェットが正しく初期化されませんでした"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr "無効な動画ファイル名. ディレクトリの完全パスを含める必要があります"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr "無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があります"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr "XYZ形式に設定できませんでした"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr "トラジェクトリファイル %1 の読み込みに問題があります"
+msgstr ""
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-msgstr "トラジェクトリファイル %1 の原子数が、現在の分子のものと一致しません"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: src/extensions/animationextension.h:39 :3213
 msgid "Animation"
-msgstr "アニメーション"
+msgstr ""
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr "トラジェクトリ, 反応, 振動をアニメーションで表示"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
 msgid "Number of atoms: %1"
-msgstr "原子数 : %1"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr "回転可能な結合数 : %1"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr "拘束条件を追加"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr "対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:369
 msgid ""
 "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr "対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要があります"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr "対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要があります"
+msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr "対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があります"
+msgstr ""
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
-msgstr "トラジェクトリ ..."
+msgstr ""
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 #: src/extensions/povrayextension.cpp:64
 msgid "&File"
-msgstr "ファイル(&F)"
+msgstr ""
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:77
 msgid "Import"
-msgstr "インポート"
+msgstr ""
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
@@ -885,7 +885,7 @@ msgstr ""
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr "パラメータファイルを開く"
+msgstr ""
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
@@ -893,67 +893,67 @@ msgstr ""
 
 #: src/extensions/fileimportextension.h:43
 msgid "Import Trajectory"
-msgstr "トラジェクトリのインポート"
+msgstr ""
 
 #: src/extensions/fileimportextension.h:44
 msgid "Import trajectory files"
-msgstr "トラジェクトリファイルのインポート"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr "&ジオメトリ最適化"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr "Ctrl+Alt+O"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr "力場のセットアップ"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr "エネルギー計算"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr "配座探索 ..."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
-msgstr "束縛 ..."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr "選択を無視する"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
-msgstr "選択した原子を固定"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr "&分子力学"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:206
 #: src/extensions/forcefieldextension.cpp:226
 msgid "Cannot set up the force field for this molecule."
-msgstr "この分子に力場を設定できません"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:191
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr "エネルギー= %L1 %2"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:236
 msgid "Geometric Optimization"
-msgstr "構造最適化"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
-msgstr "力場最適化"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:564
 #: src/extensions/forcefieldextension.cpp:567
@@ -961,29 +961,29 @@ msgstr "力場最適化"
 #: src/extensions/forcefieldextension.cpp:573
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
-msgstr "システマティック・ローター検索"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
-msgstr "ランダム・ローター検索"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
-msgstr "重みづけローター検索"
+msgstr ""
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr "力場"
+msgstr ""
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
-msgstr "分子力学の力場を用いた分子の最適化と配座発生"
+msgstr ""
 
 #: src/extensions/quantuminput/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
@@ -1100,7 +1100,7 @@ msgstr ""
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1569
 msgid "Basic Settings Reset"
-msgstr "基本的な設定をリセットする。"
+msgstr ""
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid ""
@@ -2682,7 +2682,7 @@ msgstr ""
 
 #: src/tools/autoopttool.cpp:285
 msgid "Algorithm:"
-msgstr "アルゴリズム:"
+msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
@@ -6654,14 +6654,8 @@ msgstr ""
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
-",Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad "
-"Contributions:,hide D"
+msgstr " ,Launchpad Contributions:,Cédric VALMARY (Tot en òc)"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
-",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,"
+msgstr ",,cvalmary@yahoo.fr"
