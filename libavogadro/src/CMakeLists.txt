@@ -172,7 +172,11 @@ endif(GLEW_FOUND)
 # Library translations
 if(NOT WIN32)
   if(Linguist_FOUND)
-    file(GLOB_RECURSE libavogadro_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/libavogadro*.po")
+    file(GLOB_RECURSE lang_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/*.po")
+    foreach(po ${lang_PO})
+               string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/libavogadro-\\2.po" po ${po})
+               set(libavogadro_PO ${libavogadro_PO} ${po})
+    endforeach(po)
     QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
   endif(Linguist_FOUND)
 else(NOT WIN32)
@@ -285,5 +289,6 @@ install(FILES ${libavogadro_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
 install(TARGETS avogadro-full DESTINATION ${LIB_INSTALL_DIR})
 
+if(NOT APPLE)
 install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
-
+endif (NOT APPLE)

@@ -112,6 +112,12 @@ MACRO (QT4_WRAP_PO outfiles)
         SET(tsfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.ts)
         SET(qmfile ${CMAKE_CURRENT_BINARY_DIR}/${filenameBase}.qm)
 
+        if (NOT EXISTS "${it}")
+           GET_FILENAME_COMPONENT(path ${it} PATH)
+           STRING(REGEX MATCH "[^-]+$" lang "${fileWithDash}")
+           set (it "${path}/${lang}.po")
+        endif (NOT EXISTS "${it}")
+
         # lconvert from PO to TS and then run lupdate to generate the correct strings
         # finally run lrelease as used above
         ADD_CUSTOM_COMMAND(OUTPUT ${qmfile}
