@@ -136,13 +136,13 @@ readString()
 printUsage()
 {
    echo "Usage:"
-   echo " "`basename "$0"`" filename                Install package"
-   echo " "`basename "$0"`" -f filename             Force installation"
-   echo " "`basename "$0"`" -pack manifest          Create new package"
-   echo " "`basename "$0"`" -wizard [package_name]  Interactively create new package manifest"
-   echo " "`basename "$0"`" -info filename          Show information about package in filename"
-   echo " "`basename "$0"`" -query [package_name]   Show information about installed package"
-   echo "Type 'man "`basename "$0"`"' for more details"
+   echo " $WHOAMI filename                Install package"
+   echo " $WHOAMI -f filename             Force installation"
+   echo " $WHOAMI -pack manifest          Create new package"
+   echo " $WHOAMI -wizard [package_name]  Interactively create new package manifest"
+   echo " $WHOAMI -info filename          Show information about package in filename"
+   echo " $WHOAMI -query [package_name]   Show information about installed package"
+   echo "Type 'man $WHOAMI' for more details"
 }
 
 # /**
