@@ -30,6 +30,9 @@
   SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
 # ----- End of configured on Avogadro build ----- #
 
+# My name
+WHOAMI="`basename \"$0\"`" # "avopkg" by default
+
 # Settings
 PACK_CMD="tar czf"
 EXTRACT_CMD="tar xzf"
@@ -54,6 +57,30 @@ fi
 # Helper functions
 
 # /**
+#  * Tries to use given path for temporary files storage
+#  * Sets TMP_PATH variable on success
+#  * @param $1 path to try 
+#  */
+tmpPath()
+{
+    if test "x$1" != "x"
+    then
+        mkdir -p "$1/$WHOAMI-$USER"
+        echo 0 > "$1/$WHOAMI-$USER/test"
+        if test -f "$1/$WHOAMI-$USER/test"
+        then
+            TMP_PATH="$1/$WHOAMI-$USER"
+            rm "$1/$WHOAMI-$USER/test"
+        else
+            TMP_PATH=""
+        fi
+    else
+        # Empty path is not valid
+        TMP_PATH=""
+    fi
+}
+
+# /**
 #  * Returns value of variable from package configuration
 #  * @param $1 package description file name
 #  * @param $2 variable name
@@ -62,7 +89,7 @@ fi
 getVar()
 {
     #extract last field of string using ' ' as delimiter
-	echo `cat $1 | grep $2 | awk '{print $NF}'`
+    echo `cat $1 | grep $2 | awk '{print $NF}'`
 }
 
 # /**
@@ -74,7 +101,7 @@ getVar()
 getMultiVar()
 {
     #extract last field of string using ':' as delimiter
-	echo `cat $1 | grep $2 | awk -F':' '{print $NF}'`
+    echo `cat $1 | grep $2 | awk -F':' '{print $NF}'`
 }
 
 # /**
@@ -119,33 +146,53 @@ printUsage()
 }
 
 # /**
+#  * Remove all our temporary files
+#  */
+cleanupTmp()
+{
+    rm -rf "$TMP_PATH"/*
+}
+
+# /**
 #  * Tests OS capabilities
 #  */
 testSystem()
 {
-    var="\[xxx\] 2\n...\n..."
-    echo $var > .temp1
-    cat -s .temp1 > .temp2
-    if ! test -f .temp2 -a $? = 0
+    temp1="$TMP_PATH/temp1"
+    temp2="$TMP_PATH/temp2"
+    temp3="$TMP_PATH/temp3"
+    
+    echo '[xxx] 2' > "$temp1"
+    echo '...' >> "$temp1"
+    echo '...' >> "$temp1"
+    cat -s "$temp1" > "$temp2"
+    if ! test -f "$temp2" -a $? = 0
     then
-        echo "System doesn't have cat -s"
+        echo "Error! System doesn't have cat -s"
+        cleanupTmp
+        exit 100
     fi
-    cat .temp1 | grep -A 2 "\[xxx\]" | grep -v "\[xxx\]" > .temp3
-    if ! test -f .temp3 -a $? = 0
+    cat "$temp1" | grep -A 2 "\[xxx\]" | grep -v "\[xxx\]" > "$temp3"
+    if ! test -f "$temp3" -a $? = 0
     then
-        echo "System doesn't have proper grep"
+        echo "Error! System doesn't have proper grep"
+        cleanupTmp
+        exit 100
     fi
-    N=`cat .temp1 | grep "\[xxx\]" | awk '{print $NF}'`
-    if ! test $? = 0
+    N=`cat "$temp1" | grep "\[xxx\]" | awk '{print $NF}'`
+    if test $? != 0
     then
-        echo "System doesn't have proper awk"
+        echo "Error! System doesn't have proper awk"
+        cleanupTmp
+        exit 100
     fi
-    cat .temp1 | grep "\[" | awk '{print $1}' | sed -e 's/\[//' | sed -e 's/\]//' > .temp4
-    if ! test -f .temp4 -a $? = 0
+    N=`cat "$temp1" | grep "\[" | awk '{print $1}' | sed -e 's/\[//' | sed -e 's/\]//'`
+    if test "$N" != "xxx" -o $? != 0
     then
-        echo "System doesn't have proper sed"
-    fi
-    rm .temp1 .temp2 .temp3 .temp4
+        echo "Error! System doesn't have proper sed"
+        cleanupTmp
+        exit 100
+    fi    
 }
 
 # /**
@@ -174,10 +221,39 @@ cleanupDB()
     mv "$DB_FILE~" "$DB_FILE"
 }
 
-# Main script
+################################################################
+#                     Main script                              #
+################################################################
+
+echo "Avopkg v1.0"
+
+# Find directory for temporary files (stored in $TMP_PATH)
+# 1. Check $TMPDIR variable
+# 2. If it fails, try to use /tmp
+# 3. If /tmp fails, try .
+# 4. If . fails, try $HOME
+# 4. If all else fails, use fire^W^W exit
+tmpPath "$TMPDIR"
+if test "x$TMP_PATH" = "x"
+then
+    tmpPath /tmp
+    if test "x$TMP_PATH" = "x"
+    then
+        tmpPath .
+        if test "x$TMP_PATH" = "x"
+        then
+            tmpPath "$HOME"
+            if test "x$TMP_PATH" = "x"
+            then
+                echo "Can't find any directory for temporary files"
+                echo "Please, specify its path in environment variable TMPDIR"
+                exit 127
+            fi  # $HOME failed
+        fi  # . failed
+    fi  # /tmp failed
+fi  # $TMPDIR failed
 
 initDB
-echo "Avopkg v1.0"
 
 # Running without args is senseless
 if test "x$1" = "x"
@@ -216,6 +292,7 @@ then
             result=$(readString "n")
             if test $result != y
             then
+                cleanupTmp
                 exit 0
             fi
         fi
@@ -301,7 +378,8 @@ fi
 if test "$1" = "-info"
 then
         ########## Show package metadata ##########
-	
+
+    # $2 is package file
     if test "x$2" = "x"
     then
         printUsage
@@ -310,52 +388,52 @@ then
 
     if test -f $2
     then
-        package=`basename $2 .$PKG_EXT`
+        package=`basename $2 .$PKG_EXT` #package name
     else
         printUsage
         exit 255
     fi
-	
-    # Create temporary dir and unpack manifest
-    rm -rf .tmp
-    mkdir .tmp
-    cd .tmp
-	manifest=$package.$MANIFEST_EXT
-    $EXTRACT_ONE_CMD ../$2 $package/$manifest
+    
+    # Unpack manifest to temporary dir
+    oldpwd="$PWD"
+    cd "$TMP_PATH"
+    manifest=$package.$MANIFEST_EXT
+    $EXTRACT_ONE_CMD "$oldpwd/$2" $package/$manifest
     if ! test $? = 0
     then
         echo "$1 is not an Avogadro plugin package!"
+        cleanupTmp
         exit 1
     fi
-	
-	cd $package
-	echo "Avogadro plugin \"$(getMultiVar $manifest Name)\""
-	if !($(getBoolVar $manifest Python))
-	then
-	  if test $(getVar $manifest SizeofVoidP) = 4
-	  then
-	    echo "  for $(getVar $manifest System) 32-bit"
-	  fi
-	  if test $(getVar $manifest SizeofVoidP) = 8
-	  then
-	    echo "  for $(getVar $manifest System) 64-bit"
-	  fi
-	else
-	  echo "  OS-independent (Python)"
-	fi
-	echo "  by $(getMultiVar $manifest Author)"
+    
+    cd $package
+    echo "Avogadro plugin \"$(getMultiVar $manifest Name)\""
+    if !($(getBoolVar $manifest Python))
+    then
+      if test $(getVar $manifest SizeofVoidP) = 4
+      then
+        echo "  for $(getVar $manifest System) 32-bit"
+      fi
+      if test $(getVar $manifest SizeofVoidP) = 8
+      then
+        echo "  for $(getVar $manifest System) 64-bit"
+      fi
+    else
+      echo "  OS-independent (Python)"
+    fi
+    echo "  by $(getMultiVar $manifest Author)"
     echo "  Provided files:"
     for file in $(getMultiVar $manifest Files)
     do
         echo "    $file"
     done
     echo "  will be installed to \'$(getVar $manifest Category)\' directory"
-	
+    
     # Clean up
-    cd ../..
-    rm -rf .tmp
+    cd "$oldpwd"
+    cleanupTmp
 
-    exit 0	
+    exit 0  
 fi
 
 if test "$1" = "-list"
@@ -383,33 +461,30 @@ if test "$1" = "-remove"
 then
             ########## Remove package ##########    
     # Get manifest of package
-    "$0" -query $2 > .temp
+    temp="$TMP_PATH/temp"
+    "$0" -query $2 > "$temp"
     if ! test $? = 0
     then
         echo "Package $2 is not installed"
+        rm "$temp"
         exit 7
     fi
 
     echo "Uninstalling package $2..."
         
     # Iterate over them, removing :package label from line endings
-    for file in `cat .temp | grep ":$2" |  sed -e "s/:$2//"`
+    for file in `cat "$temp" | grep ":$2" |  sed -e "s/:$2//"`
     do
-     	#if ($(getBoolVar .temp Python))
-	    #then
-        #    dest="$USER_PYTHON_PLUGIN_PATH"
-        #else
-        #    dest="$USER_NATIVE_PLUGIN_PATH"
-        #fi
         echo "Removing $file"
         rm "$file"
         if test $? != 0
         then
             echo "Can't remove files!"
+            rm "$temp"
             exit 8
         fi
     done
-    #rm .temp
+    rm "$temp"
     echo "Cleaning db..."
     
     # Read file, delete record from [package] up to the emty line (^$),
@@ -447,30 +522,30 @@ then
     rm -rf .tmp
     mkdir -p .tmp/$package
     cp $2 .tmp/$package/$package.$MANIFEST_EXT
-	
-	if !($(getBoolVar $2 Python))
-	then
-		# Add OS & CPU architecture information to manifest 
-		# (if not already specified)
-		if test x$(getVar $2 System) = x
-		then
-			echo "System: $SYSTEM_NAME" >> .tmp/$package/$package.$MANIFEST_EXT
-		fi
-		if test x$(getVar $2 SizeofVoidP) = x
-		then
-			echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.$MANIFEST_EXT
-		fi
-	fi
-
-	# Add version = 1 if missing
-	if test x$(getVar $2 Version) = x
-	then
-		echo "Version: 1" >> .tmp/$package/$package.$MANIFEST_EXT
+    
+    if !($(getBoolVar $2 Python))
+    then
+        # Add OS & CPU architecture information to manifest 
+        # (if not already specified)
+        if test x$(getVar $2 System) = x
+        then
+            echo "System: $SYSTEM_NAME" >> .tmp/$package/$package.$MANIFEST_EXT
+        fi
+        if test x$(getVar $2 SizeofVoidP) = x
+        then
+            echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.$MANIFEST_EXT
+        fi
     fi
-	
-	# Copy installable content
+
+    # Add version = 1 if missing
+    if test x$(getVar $2 Version) = x
+    then
+        echo "Version: 1" >> .tmp/$package/$package.$MANIFEST_EXT
+    fi
+    
+    # Copy installable content
     cp -t .tmp/$package $files # Will fail if some file is missing
-	
+    
     cd .tmp
     $PACK_CMD ../$package.$PKG_EXT $package
     cd ..
@@ -480,16 +555,16 @@ then
     exit 0
 else
             ########## Install package ########## 
-	
-	# Check -f (ignore OS and arch)
-	if test "$1" = "-f"
-	then
-		force=1
-		filename=$2
-	else
-		force=0
-		filename=$1
-	fi
+    
+    # Check -f (ignore OS and arch)
+    if test "$1" = "-f"
+    then
+        force=1
+        filename=$2
+    else
+        force=0
+        filename=$1
+    fi
 
     if test -f $filename
     then
@@ -501,14 +576,16 @@ else
     fi
 
     # Create temporary dir and unpack content
-    rm -rf .tmp
-    mkdir .tmp
-    cd .tmp
-    $EXTRACT_CMD ../$filename
+    #rm -rf .tmp
+    #mkdir .tmp
+    oldpwd="$PWD"
+    cd "$TMP_PATH"
+    $EXTRACT_CMD "$oldpwd/$filename"
     if ! test $? = 0
     then
         echo "$1 is not an Avogadro plugin package!"
         echo "Installation failed."
+        cleanupTmp
         exit 1
     fi
 
@@ -519,6 +596,7 @@ else
     then
         echo "Manifest $manifest is missing in package!"
         echo "Installation failed."
+        cleanupTmp
         exit 2
     fi
         
@@ -553,7 +631,6 @@ else
                         echo "WARNING! Package $package is already installed."                    
                         reinstall=1
                     fi
-                    rm .mf
                 else
                     echo "WARNING! File $file is already installed in package $installed_package."
                 fi # test $installed_package = $package
@@ -562,6 +639,7 @@ else
                 if test $force = 0 -a $reinstall != 2
                 then
                     echo "Use -f to owerwrite it."
+                    cleanupTmp
                     exit 6
                 else
                     echo "Overwriting it since -f is given."
@@ -574,7 +652,7 @@ else
             fi # test $reinstall = 0
         fi # test `cat "$DB_FILE" | grep -c "$category/$file"` != 0
     done # for file in $files
-	
+    
     # Find out where to install package
     if ($(getBoolVar $manifest Python))
     then
@@ -586,6 +664,7 @@ else
             echo "option ENABLE_PYTHON to ON value, resolve dependencies and re-compile Avogadro"
             echo
             echo "Installation failed."
+            cleanupTmp
             exit 3
         fi
         
@@ -599,41 +678,43 @@ else
             dest="$USER_PYTHON_PLUGIN_PATH/$category"
         fi
     else
-		if test $force = 0
-		then
-			# Verify OS
-			if test $(getVar $manifest System) != $SYSTEM_NAME
-			then
-				echo "This plugin was built for $(getVar $manifest System)"
-				echo "Can't install it on $SYSTEM_NAME"
-				exit 4
-			fi
-	
-			# Verify CPU architecture
-			arch=$(getVar $manifest SizeofVoidP)
-			if test $arch != $SIZEOF_VOID_P
-			then
-				echo "CPU architecture doesn't match"
-				if test $SIZEOF_VOID_P = 4
-				then
-					echo "Arch of avogadro: x86"
-				fi
-				if test $SIZEOF_VOID_P = 8
-				then
-					echo "Arch of avogadro: x86_64"
-				fi
-				if test $arch = 4
-				then
-					echo "Arch of plugin: x86"
-				fi
-				if test $arch = 8
-				then
-					echo "Arch of plugin: x86_64"
-				fi
-				exit 5
-			fi
-		fi
-		
+        if test $force = 0
+        then
+            # Verify OS
+            if test $(getVar $manifest System) != $SYSTEM_NAME
+            then
+                echo "This plugin was built for $(getVar $manifest System)"
+                echo "Can't install it on $SYSTEM_NAME"
+                cleanupTmp
+                exit 4
+            fi
+    
+            # Verify CPU architecture
+            arch=$(getVar $manifest SizeofVoidP)
+            if test $arch != $SIZEOF_VOID_P
+            then
+                echo "CPU architecture doesn't match"
+                if test $SIZEOF_VOID_P = 4
+                then
+                    echo "Arch of avogadro: x86"
+                fi
+                if test $SIZEOF_VOID_P = 8
+                then
+                    echo "Arch of avogadro: x86_64"
+                fi
+                if test $arch = 4
+                then
+                    echo "Arch of plugin: x86"
+                fi
+                if test $arch = 8
+                then
+                    echo "Arch of plugin: x86_64"
+                fi
+                cleanupTmp
+                exit 5
+            fi
+        fi
+        
         echo -n Installing plugin $package
         if test $USER = root
         then
@@ -668,8 +749,8 @@ else
     cleanupDB
 
     # Clean up
-    cd ../..
-    rm -rf .tmp
+    cd "$oldpwd"
+    cleanupTmp
     
     echo "Done!"
     exit 0
