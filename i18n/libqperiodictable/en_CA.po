@@ -8,61 +8,54 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-09-25 22:19+0000\n"
+"PO-Revision-Date: 2010-04-26 19:18+0000\n"
 "Last-Translator: Itai Molenaar <imolenaar28@gmail.com>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
-#, fuzzy
 msgid "Official Name"
-msgstr "Chemical Name"
+msgstr ""
 
 #: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
 msgid "Atomic Number"
 msgstr "Atomic Number"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Atomic Number"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Cobalt"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Radius"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Calculating Electron Density"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Electrostatic Potential"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Electron Density"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -549,10 +542,12 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Itai Molenaar, ,Launchpad Contributions:,Itai "
 "Molenaar, ,Launchpad Contributions:,Brian Burns,Itai Molenaar, ,Launchpad "
-"Contributions:,Brian Burns,Itai Molenaar"
+"Contributions:,Brian Burns,Itai Molenaar, ,Launchpad Contributions:,Itai "
+"Molenaar"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,bburns@aundae.com,"
-"imolenaar28@gmail.com,,,bburns@aundae.com,imolenaar28@gmail.com"
+",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,bburns@aundae.com,imolenaar"
+"28@gmail.com,,,bburns@aundae.com,imolenaar28@gmail.com,,,imolenaar28@gmail.co"
+"m"

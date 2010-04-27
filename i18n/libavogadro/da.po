@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-01-02 18:09+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-04-26 20:37+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -34,12 +34,11 @@ msgstr "Anden handling"
 #: src/extensions/surfaces/surfaceextension.cpp:94
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr ""
+msgstr "Udvidelser"
 
 #: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
-#, fuzzy
 msgid "&Template"
-msgstr "Skabelon"
+msgstr "&Skabelon"
 
 #: examples/c++/templateextension.cpp:72
 msgid "&Edit"
@@ -51,23 +50,23 @@ msgstr "Skabelon"
 
 #: examples/c++/templateextension.h:35
 msgid "Example extension"
-msgstr ""
+msgstr "Exempel udvidelse"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
-msgstr ""
+msgstr "Farv efter Index"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr ""
+msgstr "Farv efter Index (rød, orange, gul, grøn, blå, violet)."
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
-msgstr ""
+msgstr "Farv efter delvis ladning"
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr ""
+msgstr "Farv efter atomlading (blå = positiv, rød = negativ)"
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
@@ -79,31 +78,31 @@ msgstr "Brugerdefineret farve"
 
 #: src/colors/customcolor.h:44
 msgid "Set custom colors for objects"
-msgstr ""
+msgstr "Vælg brugerdefinerede farver for objekter"
 
 #: src/colors/distancecolor.h:44
 msgid "Color by Distance"
-msgstr ""
+msgstr "Farv efter afstand"
 
 #: src/colors/distancecolor.h:45
 msgid "Color by distance from the first atom."
-msgstr ""
+msgstr "Farv efter afstand fra det første atom"
 
 #: src/colors/elementcolor.h:45
 msgid "Color by Element"
-msgstr ""
+msgstr "Farv efter grundstof"
 
 #: src/colors/elementcolor.h:46
 msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-msgstr ""
+msgstr "Farv efter grundstof (kulstof = grå, oxygen = rød, ... )"
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "Farv efter rest"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
-msgstr ""
+msgstr "Farv efter rest (aminosyrere, hydrofobi, ..."
 
 #: src/colors/smartscolor.cpp:77
 msgid "SMARTS Pattern:"
@@ -131,7 +130,7 @@ msgstr "Akser"
 
 #: src/engines/axesengine.h:43
 msgid "Renders the x, y, and z axes at the origin"
-msgstr ""
+msgstr "Render x, y og z akserne ved origo"
 
 #: src/engines/bsdyengine.h:41 src/glwidget.cpp:1937
 msgid "Ball and Stick"
@@ -139,7 +138,7 @@ msgstr "Bold og stav"
 
 #: src/engines/bsdyengine.h:42
 msgid "Renders primitives using Balls (atoms) and Sticks (bonds)"
-msgstr ""
+msgstr "Render primitiver med kugler (atomer) og stave (bindinger)"
 
 #: src/engines/cartoonengine.h:44
 msgid "Cartoon"
@@ -147,15 +146,15 @@ msgstr "Tegneserie"
 
 #: src/engines/cartoonengine.h:45
 msgid "Renders protein secondary structure"
-msgstr ""
+msgstr "Render protein sekundære struktur"
 
 #: src/engines/dipoleengine.h:43
 msgid "Dipole"
-msgstr ""
+msgstr "dipolære"
 
 #: src/engines/dipoleengine.h:44
 msgid "Renders molecular dipole moments"
-msgstr ""
+msgstr "Render molekylære dipolaritet"
 
 #: src/engines/forceengine.h:38
 msgid "Force"
@@ -163,35 +162,31 @@ msgstr "Kraft"
 
 #: src/engines/forceengine.h:39
 msgid "Renders force displacements on atoms"
-msgstr ""
+msgstr "Render kraftforskydning på atomer"
 
 #: src/engines/hbondengine.h:42
 msgid "Hydrogen Bond"
-msgstr ""
+msgstr "Hydrogen-binding"
 
 #: src/engines/hbondengine.h:43
 msgid "Renders hydrogen bonds"
-msgstr ""
+msgstr "Gengiver hydrogen-bindinger"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Atometiketter:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
-#, fuzzy
 msgid "Select Bond Labels Font"
-msgstr "Bindingsetiketter:"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -199,7 +194,7 @@ msgstr "Etiket"
 
 #: src/engines/labelengine.h:46
 msgid "Renders atom and bond labels"
-msgstr ""
+msgstr "Render atom- og bindingsetiketter"
 
 #: src/engines/overlayengine.h:37
 msgid "Overlay"
@@ -207,7 +202,7 @@ msgstr "Læg over"
 
 #: src/engines/overlayengine.h:38
 msgid "Renders color scale for gradients"
-msgstr ""
+msgstr "Render farveskala til farveovergange"
 
 #: src/engines/polygonengine.h:39
 msgid "Polygon"
@@ -215,7 +210,7 @@ msgstr "Polygon"
 
 #: src/engines/polygonengine.h:40
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
-msgstr ""
+msgstr "Render atomer som tetraeder, oktraeder eller andre polygoner"
 
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
@@ -223,7 +218,7 @@ msgstr "Bånd"
 
 #: src/engines/ribbonengine.h:42
 msgid "Renders protein backbones as ribbons"
-msgstr ""
+msgstr "Render protein-rygrad som bånd"
 
 #: src/engines/ringengine.h:42
 msgid "Ring"
@@ -231,19 +226,19 @@ msgstr "Ring"
 
 #: src/engines/ringengine.h:43
 msgid "Renders rings with colored planes"
-msgstr ""
+msgstr "Render ringe med farvede flader"
 
 #: src/engines/simplewireengine.h:37
 msgid "Simple Wireframe"
-msgstr ""
+msgstr "Simpel trådramme"
 
 #: src/engines/simplewireengine.h:38
 msgid "Renders bonds as wires (lines), ideal for large molecules"
-msgstr ""
+msgstr "Render bindinger som tråde (linier), godt til store molekyler"
 
 #: src/engines/sphereengine.h:44
 msgid "Van der Waals Spheres"
-msgstr ""
+msgstr "Van der Waals sfærer"
 
 #: src/engines/sphereengine.h:45
 msgid "Renders atoms as Van der Waals spheres"
@@ -255,19 +250,19 @@ msgstr "Stang"
 
 #: src/engines/stickengine.h:44
 msgid "Renders molecules as sticks"
-msgstr ""
+msgstr "Render molekyler som pinde"
 
 #: src/engines/surfaceengine.cpp:239
 #, qt-format
 msgctxt "Van der Waals isosurface with a cutoff of %1"
 msgid "Van der Waals, isosurface = %L1"
-msgstr ""
+msgstr "Van der Waals, isooverflade = %L1"
 
 #: src/engines/surfaceengine.cpp:245
 #, qt-format
 msgctxt "Electron density isosurface with a cutoff of %1"
 msgid "Electron density, isosurface = %L1"
-msgstr ""
+msgstr "Elektrontæthed, isooverflade = %L1"
 
 #: src/engines/surfaceengine.cpp:252
 #, qt-format
@@ -282,27 +277,28 @@ msgstr "Overflader"
 
 #: src/engines/surfaceengine.h:47
 msgid "Renders molecular isosurface meshes"
-msgstr ""
+msgstr "Render molekylær isooverflade struktur"
 
 #: src/engines/wireengine.h:44
 msgid "Wireframe"
-msgstr ""
+msgstr "Trådramme"
 
 #: src/engines/wireengine.h:45
 msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 msgstr ""
+"Render bindinger sim tråde (linier), godt til meget store (bio) molekyler"
 
 #: src/extension.cpp:44
 msgid "Extensions"
-msgstr ""
+msgstr "Udvidelser"
 
 #: src/extensions/animationdialog.cpp:65
 msgid "Open trajectory file"
-msgstr ""
+msgstr "Åben banefile"
 
 #: src/extensions/animationdialog.cpp:66
 msgid "Trajectory files (*.xtc *.xyz)"
-msgstr ""
+msgstr "Banefiler (*.xtc *.xyz)"
 
 #: src/extensions/animationdialog.cpp:74
 #, qt-format
@@ -349,7 +345,7 @@ msgstr "Avogadro"
 
 #: src/extensions/animationdialog.cpp:103
 msgid "Adding .avi extension"
-msgstr ""
+msgstr "Tilføj .avi filendelse"
 
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
@@ -365,65 +361,69 @@ msgstr "Kan ikke læse filformatet på filen %1."
 #: src/extensions/animationextension.cpp:144
 #, qt-format
 msgid "Read trajectory file %1 failed."
-msgstr ""
+msgstr "Læsning af banefil %1 fejlede."
 
 #: src/extensions/animationextension.cpp:179
 #: src/extensions/animationextension.cpp:185
 msgid "Must specify a valid .avi file name"
-msgstr ""
+msgstr "Skal vælge en gyldig .avi fil"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
 msgstr ""
+"GL widget bliv ikke initialiseret korrekt, så videoen kan ikke gemmes"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr ""
+msgstr "Ugyldigt video filnavn. Hele stien til filen skal inkluderes"
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
+"Ugyldigt video filnavn. Hele stien til filen, samt filnavnet med .avi "
+"endelse, skal inkluderes"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
-msgstr ""
+msgstr "kunne ikke sætte formatet til XYZ"
 
 #: src/extensions/animationextension.cpp:246
 #, qt-format
 msgid "Problem reading traj file %1"
-msgstr ""
+msgstr "Problemer med at læse taj filen %1"
 
 #: src/extensions/animationextension.cpp:252
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-msgstr ""
+msgstr "Banefil %1 er ikke enig med antallet af atomer i nuværende molekyle"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Animation"
 
 #: src/extensions/animationextension.h:40
 msgid "Animate trajectories, reactions, and vibrations."
-msgstr ""
+msgstr "Animer bane, reaktioner og vibrationer"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
 msgid "Cartesian Editor..."
-msgstr ""
+msgstr "Kartesiansk editor..."
 
 #: src/extensions/cartesianextension.cpp:583
 #: src/extensions/h2methylextension.cpp:62
@@ -451,36 +451,44 @@ msgstr "Antal atomer: %1"
 #: src/extensions/conformersearchdialog.cpp:134
 #, qt-format
 msgid "Number of rotatable bonds: %1"
-msgstr ""
+msgstr "Antal af roterbare bindinger: %1"
 
 #: src/extensions/constraintsdialog.cpp:345
 #: src/extensions/constraintsdialog.cpp:368
 #: src/extensions/constraintsdialog.cpp:377
 #: src/extensions/constraintsdialog.cpp:387
 msgid "Add constraint"
-msgstr ""
+msgstr "Tilføj afhængighed"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
 msgstr ""
+"Dit molekyle skal indeholde mindst et atom for at kunne tilfæje en "
+"afhængighed"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
+"Dit molekyle skal indeholde mindst to bindinger for at kunne tilføje en "
+"bindingsafhængighed"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
 msgstr ""
+"Dit molekyle skal indeholde mindst tre atomer for at kunne tilføje en "
+"vinkelafhængighed"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
 msgstr ""
+"Dit molekyle skal have mindst 4 atomer for at tilføje en drejningsgrænse"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
-msgstr ""
+msgstr "Bane..."
 
 #: src/extensions/fileimportextension.cpp:73
 #: src/extensions/networkfetchextension.cpp:81
@@ -495,83 +503,83 @@ msgstr "Importér"
 
 #: src/extensions/fileimportextension.cpp:199
 msgid "Open chemical file format"
-msgstr ""
+msgstr "Åben chemical filformatet"
 
 #: src/extensions/fileimportextension.cpp:200
 msgid "Chemical files (*.xyz)"
-msgstr ""
+msgstr "Chemical filer (*.xyz)"
 
 #: src/extensions/fileimportextension.cpp:207
 msgid "Open parameter file"
-msgstr ""
+msgstr "Åben parameter fil"
 
 #: src/extensions/fileimportextension.cpp:208
 msgid "Chemical files (*.parm7)"
-msgstr ""
+msgstr "Chemical filer (*.parm7)"
 
 #: src/extensions/fileimportextension.h:43
 msgid "Import Trajectory"
-msgstr ""
+msgstr "Importer bane"
 
 #: src/extensions/fileimportextension.h:44
 msgid "Import trajectory files"
-msgstr ""
+msgstr "Importer banefil"
 
 #: src/extensions/forcefieldextension.cpp:69
 msgid "&Optimize Geometry"
-msgstr ""
+msgstr "&Optimer geometri"
 
 #: src/extensions/forcefieldextension.cpp:71
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
-msgstr ""
+msgstr "Ctrl+Alt+O"
 
 #: src/extensions/forcefieldextension.cpp:75
 msgid "Setup Force Field..."
-msgstr ""
+msgstr "Indstil kraftfelt"
 
 #: src/extensions/forcefieldextension.cpp:85
 msgid "Calculate Energy"
-msgstr ""
+msgstr "Udregn energi"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "Søg efter konformationer"
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
-msgstr ""
+msgstr "Afhængigheder"
 
 #: src/extensions/forcefieldextension.cpp:105
 msgid "Ignore Selection"
-msgstr ""
+msgstr "Ignorér markering"
 
 #: src/extensions/forcefieldextension.cpp:110
 msgid "Fix Selected Atoms"
-msgstr ""
+msgstr "Ret valgte atomer"
 
 #: src/extensions/forcefieldextension.cpp:144
 msgid "&Molecular Mechanics"
-msgstr ""
+msgstr "&Molekylær Mekanik"
 
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:206
 #: src/extensions/forcefieldextension.cpp:226
 msgid "Cannot set up the force field for this molecule."
-msgstr ""
+msgstr "Kan ikke indstille kraftfelt for dette molekyle"
 
 #: src/extensions/forcefieldextension.cpp:191
 #, qt-format
 msgid "Energy = %L1 %2"
-msgstr ""
+msgstr "Energi = %L1 %2"
 
 #: src/extensions/forcefieldextension.cpp:236
 msgid "Geometric Optimization"
-msgstr ""
+msgstr "Geometrisk Optimering"
 
 #: src/extensions/forcefieldextension.cpp:563
 msgid "Forcefield Optimization"
-msgstr ""
+msgstr "Kraftfelt Optimering"
 
 #: src/extensions/forcefieldextension.cpp:564
 #: src/extensions/forcefieldextension.cpp:567
@@ -583,41 +591,43 @@ msgstr "Annullér"
 
 #: src/extensions/forcefieldextension.cpp:566
 msgid "Systematic Rotor Search"
-msgstr ""
+msgstr "Systematisk rotor søgning"
 
 #: src/extensions/forcefieldextension.cpp:569
 msgid "Random Rotor Search"
-msgstr ""
+msgstr "Tilfældig rotor søgning"
 
 #: src/extensions/forcefieldextension.cpp:572
 msgid "Weighted Rotor Search"
-msgstr ""
+msgstr "Vægtet rotor søgning"
 
 #: src/extensions/forcefieldextension.h:54
 msgid "ForceField"
-msgstr ""
+msgstr "KraftFelt"
 
 #: src/extensions/forcefieldextension.h:55
 msgid ""
 "Optimize molecules and generate conformers using molecular mechanics force "
 "fields"
 msgstr ""
+"Optimiser molekyler og generer konformationer ved at bruge mekanisk "
+"kraftfelter"
 
 #: src/extensions/h2methylextension.cpp:43
 msgid "Change H to Methyl"
-msgstr ""
+msgstr "Ændre H til Methyl"
 
 #: src/extensions/h2methylextension.cpp:85
 msgid "H to Methyl"
-msgstr ""
+msgstr "H til Methyl"
 
 #: src/extensions/h2methylextension.h:37
 msgid "H2Methyl"
-msgstr ""
+msgstr "H2Methyl"
 
 #: src/extensions/h2methylextension.h:38
 msgid "Transform hydrogens to methyl groups"
-msgstr ""
+msgstr "Ændre hydrogen til metylgrupper"
 
 #: src/extensions/hydrogensextension.cpp:44
 #: src/extensions/hydrogensextension.cpp:114
@@ -626,7 +636,7 @@ msgstr "Tilføj brintatomer"
 
 #: src/extensions/hydrogensextension.cpp:48
 msgid "Add Hydrogens for pH..."
-msgstr ""
+msgstr "Tilføj H til pH"
 
 #: src/extensions/hydrogensextension.cpp:52
 #: src/extensions/hydrogensextension.cpp:120
@@ -636,7 +646,7 @@ msgstr "Fjern brintatomer"
 #: src/extensions/hydrogensextension.cpp:89
 #: src/extensions/hydrogensextension.cpp:117
 msgid "Add Hydrogens for pH"
-msgstr ""
+msgstr "Til hydrogen til pH"
 
 #: src/extensions/hydrogensextension.cpp:89
 msgid "pH"
@@ -644,11 +654,11 @@ msgstr "pH"
 
 #: src/extensions/hydrogensextension.h:40
 msgid "Hydrogens"
-msgstr ""
+msgstr "Hydrogen"
 
 #: src/extensions/hydrogensextension.h:41
 msgid "Add or remove hydrogens"
-msgstr ""
+msgstr "Tilføj eller fjern hydrogen"
 
 #: src/extensions/insertfragmentdialog.cpp:152
 #: src/extensions/quantuminput/inputfileextension.cpp:193
@@ -662,11 +672,11 @@ msgstr "Åben katalog"
 
 #: src/extensions/insertfragmentextension.cpp:53
 msgid "Fragment..."
-msgstr ""
+msgstr "Fragment..."
 
 #: src/extensions/insertfragmentextension.cpp:58
 msgid "SMILES..."
-msgstr ""
+msgstr "SMILES,,,"
 
 #: src/extensions/insertfragmentextension.cpp:81
 #: src/extensions/insertpeptideextension.cpp:75
@@ -676,11 +686,11 @@ msgstr "&Indsæt"
 #: src/extensions/insertfragmentextension.cpp:104
 #: src/extensions/insertfragmentextension.cpp:129
 msgid "Insert SMILES"
-msgstr ""
+msgstr "Indsæt SMILES"
 
 #: src/extensions/insertfragmentextension.cpp:105
 msgid "Insert SMILES fragment:"
-msgstr ""
+msgstr "Indsæt SMILES fragment:"
 
 #. i18n: file: src/extensions/insertfragmentdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
@@ -691,28 +701,28 @@ msgstr "Indsæt fragment"
 
 #: src/extensions/insertfragmentextension.h:35
 msgid "Insert molecular fragments for building larger molecules"
-msgstr ""
+msgstr "Indsæt molekylærfragmenter for at bygge størrer molekyler"
 
 #: src/extensions/insertpeptideextension.cpp:58
 msgid "Peptide..."
-msgstr ""
+msgstr "Peptid..."
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, InsertPeptideDialog)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
-msgstr ""
+msgstr "Indsæt peptid"
 
 #: src/extensions/insertpeptideextension.h:44
 msgid "Insert oligopeptide sequences"
-msgstr ""
+msgstr "Indsæt oligopeptide sekvenser"
 
 #: src/extensions/molecularpropextension.cpp:40
 msgid "Molecule Properties..."
-msgstr ""
+msgstr "Molekyle egenskaber..."
 
 #: src/extensions/molecularpropextension.cpp:55
 #: src/extensions/propextension.cpp:112 src/extensions/propextension.cpp:118
@@ -726,19 +736,19 @@ msgstr "&Egenskaber"
 
 #: src/extensions/molecularpropextension.cpp:134
 msgid "Estimated Dipole Moment (D):"
-msgstr ""
+msgstr "Estimer dipolaritet (D):"
 
 #: src/extensions/molecularpropextension.h:49
 msgid "Molecular Properties"
-msgstr ""
+msgstr "Molekylære egenskaber"
 
 #: src/extensions/molecularpropextension.h:50
 msgid "Display standard molecular properties."
-msgstr ""
+msgstr "Vis standard molekylære egenskaber."
 
 #: src/extensions/networkfetchextension.cpp:56
 msgid "Fetch from PDB..."
-msgstr ""
+msgstr "Hent fra PDB..."
 
 #: src/extensions/networkfetchextension.cpp:60
 msgid "Fetch by chemical name..."
@@ -746,23 +756,23 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:64
 msgid "Fetch from URL..."
-msgstr ""
+msgstr "Hent fra URL..."
 
 #: src/extensions/networkfetchextension.cpp:99
 msgid "PDB Entry"
-msgstr ""
+msgstr "PDB element"
 
 #: src/extensions/networkfetchextension.cpp:100
 msgid "PDB entry to download."
-msgstr ""
+msgstr "PDB element der skal hentes."
 
 #: src/extensions/networkfetchextension.cpp:114
 msgid "Chemical Name"
-msgstr ""
+msgstr "Kemisk navn"
 
 #: src/extensions/networkfetchextension.cpp:115
 msgid "Chemical structure to download."
-msgstr ""
+msgstr "Kemisk struktur som skal hentes."
 
 #: src/extensions/networkfetchextension.cpp:130
 msgid "URL"
@@ -770,47 +780,47 @@ msgstr "URL"
 
 #: src/extensions/networkfetchextension.cpp:131
 msgid "URL of molecule to download."
-msgstr ""
+msgstr "URL til molekylerne som skal hentes."
 
 #: src/extensions/networkfetchextension.cpp:168
 #: src/extensions/networkfetchextension.cpp:179
 #: src/extensions/networkfetchextension.cpp:211
 msgid "Network Download Failed"
-msgstr ""
+msgstr "Netværkhentningsfejl"
 
 #: src/extensions/networkfetchextension.cpp:169
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Netværks timeout eller anden fejl."
 
 #: src/extensions/networkfetchextension.cpp:180
 #, qt-format
 msgid "Specified molecule could not be found: %1"
-msgstr ""
+msgstr "Det angivne molekyle kunne ikke findes: %1"
 
 #: src/extensions/networkfetchextension.cpp:212
 #, qt-format
 msgid "Specified molecule could not be loaded: %1"
-msgstr ""
+msgstr "Det angivne molekyle kunne ikke indlæses: %1"
 
 #: src/extensions/networkfetchextension.h:39
 msgid "Network Fetch"
-msgstr ""
+msgstr "Hent fra netværk"
 
 #: src/extensions/networkfetchextension.h:40
 msgid "Fetch molecule files over the network."
-msgstr ""
+msgstr "Hent molekyle filer fra netværk"
 
 #: src/extensions/povraydialog.cpp:151
 msgid "Save POV-Ray rendered image"
-msgstr ""
+msgstr "Gem POV-Ray renderet billede"
 
 #: src/extensions/povraydialog.cpp:152
 msgid "Image files (*.png *.pbm)"
-msgstr ""
+msgstr "Billedfiler (*.png, *pbm)"
 
 #: src/extensions/povrayextension.cpp:49
 msgid "POV-Ray..."
-msgstr ""
+msgstr "POV-Ray..."
 
 #: src/extensions/povrayextension.cpp:64
 msgid "Export"
@@ -818,15 +828,15 @@ msgstr "Eksportér"
 
 #: src/extensions/povrayextension.cpp:130
 msgid "No filename supplied."
-msgstr ""
+msgstr "Ingen filnavn angivet."
 
 #: src/extensions/povrayextension.cpp:131
 msgid "No valid filename was supplied."
-msgstr ""
+msgstr "Intet gyldigt filnavn angivet."
 
 #: src/extensions/povrayextension.cpp:136
 msgid "Does not compute."
-msgstr ""
+msgstr "Kan ikke behandles."
 
 #: src/extensions/povrayextension.cpp:137
 msgid ""
@@ -834,6 +844,9 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
+"Du har valgt ikke at bruge direkte rendering med POV-Ray og ikke at gemme "
+"POV-Ray filen. Dette betyder at der ikke vil blive gemt noget output. Er du "
+"sikker på det er hvad du vil ?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -846,65 +859,69 @@ msgstr "Kan ikke skrive til fil."
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
 msgstr ""
+"Kan ikke skrive til filen %1. Har du tilladelse til at skrive til denne "
+"lokation."
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
-msgstr ""
+msgstr "POV-Ray kunne ikke startes."
 
 #: src/extensions/povrayextension.cpp:177
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
 msgstr ""
+"POV-Ray kunne ikke startes. Måske er stien til den kørbarefil ikke korrekt."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
-msgstr ""
+msgstr "POV-Ray"
 
 #: src/extensions/povrayextension.h:41
 msgid ""
 "Create POV-Ray files and render them using the command line POV-Ray program."
 msgstr ""
+"Skab POV-Ray filer og render dem med kommandolinie programmet POV-Ray."
 
 #: src/extensions/propextension.cpp:69
 msgid "Atom Properties..."
-msgstr ""
+msgstr "Atom Egenskaber..."
 
 #: src/extensions/propextension.cpp:74
 msgid "Bond Properties..."
-msgstr ""
+msgstr "Bindings Egenskaber..."
 
 #: src/extensions/propextension.cpp:79
 msgid "Angle Properties..."
-msgstr ""
+msgstr "Vinkel Egenskaber..."
 
 #: src/extensions/propextension.cpp:84
 msgid "Torsion Properties..."
-msgstr ""
+msgstr "Drejningsegenskaber..."
 
 #: src/extensions/propextension.cpp:89
 msgid "Conformer Properties..."
-msgstr ""
+msgstr "Konformationsegenskaber..."
 
 #: src/extensions/propextension.cpp:242
 msgid "Atom Properties"
-msgstr ""
+msgstr "Atom Egenskaber..."
 
 #: src/extensions/propextension.cpp:245
 msgid "Bond Properties"
-msgstr ""
+msgstr "Bindings Egenskaber"
 
 #: src/extensions/propextension.cpp:248
 msgid "Angle Properties"
-msgstr ""
+msgstr "Vinkel Egenskaber"
 
 #: src/extensions/propextension.cpp:251
 msgid "Torsion Properties"
-msgstr ""
+msgstr "Drejningsegenskaber"
 
 #: src/extensions/propextension.cpp:257
 msgid "Conformer Properties"
-msgstr ""
+msgstr "Konformationsegenskaber"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -912,7 +929,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Egenskaber"
 
@@ -921,19 +938,20 @@ msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
 msgstr ""
+"Vindue til at vise atomer-, binding-, vinkle- og drejningsegenskaber. Det "
+"inkludere også en kartesiansk editor"
 
 #: src/extensions/propmodel.cpp:269
 msgid "Yes"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Neon"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Element"
 
@@ -946,15 +964,15 @@ msgstr "Type"
 
 #: src/extensions/propmodel.cpp:431
 msgid "Valence"
-msgstr ""
+msgstr "Valens"
 
 #: src/extensions/propmodel.cpp:433
 msgid "Formal Charge"
-msgstr ""
+msgstr "Formel ladning"
 
 #: src/extensions/propmodel.cpp:435
 msgid "Partial Charge"
-msgstr ""
+msgstr "Delvis ladning"
 
 #: src/extensions/propmodel.cpp:437
 #, qt-format
@@ -975,9 +993,8 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Atom %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -989,11 +1006,11 @@ msgstr "Slut Atom"
 
 #: src/extensions/propmodel.cpp:455
 msgid "Bond Order"
-msgstr ""
+msgstr "Bindingsorden"
 
 #: src/extensions/propmodel.cpp:457
 msgid "Rotatable"
-msgstr ""
+msgstr "Roterbar"
 
 #: src/extensions/propmodel.cpp:459
 #, qt-format
@@ -1002,23 +1019,22 @@ msgid "Length %1"
 msgstr "Længde %1"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Tilføj binding"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
-msgstr ""
+msgstr "Vertex"
 
 #: src/extensions/propmodel.cpp:476
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
-msgstr ""
+msgstr "Vinkel %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "Vinkel"
 
@@ -1031,37 +1047,35 @@ msgstr "Atom %1"
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
-msgstr ""
+msgstr "Drejning %1"
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Tin"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Energi"
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "Bindingsorden"
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
 #: src/extensions/pythonterminal.cpp:70 src/extensions/pythonterminal.h:52
 msgid "Python Terminal"
-msgstr ""
+msgstr "Python terminal"
 
 #: src/extensions/pythonterminal.cpp:71
 msgid "pythonTerminalDock"
-msgstr ""
+msgstr "pythonterminal"
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
-msgstr ""
+msgstr "Interaktiv pythonskript terminal."
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:284
 msgid "Dalton Input File Generator Warning"
@@ -1088,7 +1102,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Se forhåndsvisning"
 
@@ -1107,28 +1121,28 @@ msgstr "Se forhåndsvisning"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
-msgstr ""
+msgstr "Skjul miniature"
 
 #: src/extensions/quantuminput/gamessefpmatchdialog.cpp:49
 msgid "QM Matches"
-msgstr ""
+msgstr "Ens QM'er"
 
 #: src/extensions/quantuminput/gamessextension.cpp:65
 msgid "Input Generator..."
-msgstr ""
+msgstr "Input Generator"
 
 #: src/extensions/quantuminput/gamessextension.cpp:70
 msgctxt ""
 "Selection to be used as an Effective Fragment Potential in calculations"
 msgid "EFP Selection..."
-msgstr ""
+msgstr "EFP Valg..."
 
 #: src/extensions/quantuminput/gamessextension.cpp:75
 msgctxt "Selection to be used for Quantum Mechanical calculations"
 msgid "QM Selection..."
-msgstr ""
+msgstr "QM Valg..."
 
 #: src/extensions/quantuminput/gamessextension.cpp:97
 msgid "&GAMESS"
@@ -1148,15 +1162,15 @@ msgstr "Ingen atomer valgt"
 
 #: src/extensions/quantuminput/gamessextension.cpp:201
 msgid "You must make a selection!"
-msgstr "Du skal lave et valf!"
+msgstr "Du skal lave et valg!"
 
 #: src/extensions/quantuminput/gamessextension.cpp:208
 msgid "SMILES Conversion Unavailable"
-msgstr ""
+msgstr "SMILES konvertering ikke tilgængelig"
 
 #: src/extensions/quantuminput/gamessextension.cpp:209
 msgid "SMILES Format Conversion Not Available!"
-msgstr ""
+msgstr "SMILES format konvertering ikke tilgængelig!"
 
 #: src/extensions/quantuminput/gamessextension.cpp:469
 msgid "Group Name"
@@ -1184,7 +1198,7 @@ msgstr "GAMESS"
 
 #: src/extensions/quantuminput/gamessextension.h:45
 msgid "Create input files for the GAMESS quantum chemistry package"
-msgstr ""
+msgstr "Skab inputfil til GAMESS kvantekemipakken"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:101
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
@@ -1200,140 +1214,151 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Titel"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1534
 msgid "Advanced Settings Changed"
-msgstr ""
+msgstr "Advancerede Indstillinger er ændret"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1535
 msgid ""
 "Advanced settings have changed.\n"
 "Discard?"
 msgstr ""
+"Advancerede Indstillinger er ændret.\n"
+"Kassere?"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1556
 msgid "Advanced Settings Reset"
-msgstr ""
+msgstr "Advancerede Indstillinger Nulstilling"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1557
 msgid ""
 "Are you sure you wish to reset advanced settings?\n"
 "All changes will be lost!"
 msgstr ""
+"Er du sikker på du ønsker at nulstille de advancerede indstillinger ?\n"
+"Alle ændringer vil gå tabt!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1569
 msgid "Basic Settings Reset"
-msgstr ""
+msgstr "Grundlæggende indstillinger nulstilling"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid ""
 "Are you sure you wish to reset basic settings?\n"
 "All changes will be lost!"
 msgstr ""
+"Er du sikker på du ønsker at nulstille de gundlæggende indstillinger ?\n"
+"Alle ændringer vil gå tabt!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1642
 msgid "Export Input Deck"
-msgstr ""
+msgstr "Exporter inputplatform"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1643
 msgid "GAMESS Input Deck (*.inp)"
-msgstr ""
+msgstr "GAMESS inputplatform (*.inp)"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:195
 msgid "Gaussian Input Deck Generator Warning"
-msgstr ""
+msgstr "Gaussisk inputplatform generation advarsel"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:196
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
 msgstr ""
+"Vil du opdatere forhåndsvisningsteksten, du mister alle ændringer i den "
+"gaussiske inputplatform forhåndsvisningspanelet?"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
-msgstr ""
+msgstr "Gem gauissik inputplatform"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:240
 msgid "Gaussian Input Deck (*.com)"
-msgstr ""
+msgstr "Gaussisk inputplatform (*.com)"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:268
 msgid "Gaussian Running."
-msgstr ""
+msgstr "Gaussisk afvikles."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:269
 msgid ""
 "Gaussian is already running. Wait until the previous calculation is finished."
 msgstr ""
+"Gaussisk afvikles allerede. Vent til den tidligere udregning er færdiggjort."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:279
 msgid "Gaussian Not Installed."
-msgstr ""
+msgstr "Gaussisk ikke installeret."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:280
 msgid "The G03 executable, cannot be found."
-msgstr ""
+msgstr "G03 kørbare fil, kan ikke findes."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:294
 msgid "G03 failed to start."
-msgstr ""
+msgstr "G03 kunne ikke startes."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:295
 msgid "G03 did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "G03 kunne ikke startes. Måske er den ikke installeret korrekt."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:300
 msgid "Running Gaussian calculation..."
-msgstr ""
+msgstr "Afvikler Gaussiske beregninger..."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:335
 msgid "G03 Crashed."
-msgstr ""
+msgstr "G03 havde et nedbrud."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
+"Gaussisk blev ikke afviklet korrekt. Måske er programmet ikke installeret "
+"korrekt."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
 msgid "&Gaussian..."
-msgstr ""
+msgstr "&Gaussisk..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:55
 msgid "&MOLPRO..."
-msgstr ""
+msgstr "&MOLPRO..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:60
 msgid "M&OPAC..."
-msgstr ""
+msgstr "M&OPAC..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:65
 msgid "&NWChem..."
-msgstr ""
+msgstr "&NWChem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:70
 msgid "&Q-Chem..."
-msgstr ""
+msgstr "&Q-Chem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "Animation..."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
-msgstr ""
+msgstr "Inputfil generator"
 
 #: src/extensions/quantuminput/inputfileextension.h:45
 msgid "Create input files for quantum chemistry packages"
-msgstr ""
+msgstr "Skab inputfiler for kvantekemiske pakker"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:114
 #: src/extensions/quantuminput/qcheminputdialog.cpp:114
 msgid "Q-Chem Input Deck Generator Warning"
-msgstr ""
+msgstr "Q-Chem input platform advarsel"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:115
 #: src/extensions/quantuminput/qcheminputdialog.cpp:115
@@ -1341,119 +1366,126 @@ msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
 msgstr ""
+"Vil du opdatere forhåndsvisningsteksten, du mister alle ændringer i Q-Chem "
+"input platform forhåndsvisningspanelet?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
-msgstr ""
+msgstr "Gem Molpro inputplatform"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:163
 msgid "Molpro Input Deck (*.qcin)"
-msgstr ""
+msgstr "Molpro Input platform (*.qcin)"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:132
 msgid "MOPAC Input Warning"
-msgstr ""
+msgstr "MOPAC input advarsel"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:133
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
 msgstr ""
+"Vil du opdatere forhåndsvisningsteksten, du mister alle ændringer lavet i "
+"MOPAC forhåndsvisningspanelet?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
-msgstr ""
+msgstr "MOPAC afvikles."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:175
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr ""
+msgstr "MOPAC beregner. Vent til den nuværende beregning færdiggøres."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Not Installed."
-msgstr ""
+msgstr "MOPAC er ikke installeret."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:186
 msgid "The MOPAC executable, cannot be found."
-msgstr ""
+msgstr "MOPAC kørbar fil kan ikke findes."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:200
 msgid "MOPAC failed to start."
-msgstr ""
+msgstr "MOPAC kunne ikke startes."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr ""
+msgstr "MOPAC kunne ikke startes. Måske er det ikke korrekt installeret."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
-msgstr ""
+msgstr "Afvikler MOPAC beregninger..."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:241
 msgid "MOPAC Crashed."
-msgstr ""
+msgstr "MOPAC brød ned."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
+"MOPAC blev ikke afviklet korrekt. Måske er der ikke installeret korrekt."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
-msgstr ""
+msgstr "Gem MOPAC inputplatform"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:295
 msgid "MOPAC Input Deck (*.mop)"
-msgstr ""
+msgstr "MOPAC inputplatform (*.mop)"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:121
 msgid "NWChem Input Deck Generator Warning"
-msgstr ""
+msgstr "NWChem inputplatform generator advarsel"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:122
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "NWChem input deck preview pane?"
 msgstr ""
+"Vil du opdatere forhåndsvisningsteksten, du mister alle ændringer lavet i "
+"NWChem forhåndsvisningspanelet?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:169
 msgid "Save NWChem Input Deck"
-msgstr ""
+msgstr "Gem NWChem inputplatform"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:170
 msgid "NWChem Input Deck (*.nw)"
-msgstr ""
+msgstr "NWChem inputplatform (*.nw)"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:162
 msgid "Save QChem Input Deck"
-msgstr ""
+msgstr "Gem QChem inputplatform"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:163
 msgid "QChem Input Deck (*.qcin)"
-msgstr ""
+msgstr "QChem Inputplatform (*.qcin)"
 
 #: src/extensions/selectextension.cpp:74
 msgid "&Invert Selection"
-msgstr ""
+msgstr "&Invertér markering"
 
 #: src/extensions/selectextension.cpp:79
 msgid "Select SMARTS..."
-msgstr ""
+msgstr "Vælg SMARTS..."
 
 #: src/extensions/selectextension.cpp:84
 msgid "Select by Element..."
-msgstr ""
+msgstr "Vælg efter element..."
 
 #: src/extensions/selectextension.cpp:89
 msgid "Select by Residue..."
-msgstr ""
+msgstr "Vælg efter rest..."
 
 #: src/extensions/selectextension.cpp:94
 msgid "Select Solvent"
-msgstr ""
+msgstr "Vælg opløsning"
 
 #: src/extensions/selectextension.cpp:104
 msgid "Add Named Selection..."
-msgstr ""
+msgstr "Tilføj navngivet sektion..."
 
 #: src/extensions/selectextension.cpp:120
 msgid "&Select"
@@ -1461,29 +1493,29 @@ msgstr "&Vælg"
 
 #: src/extensions/selectextension.cpp:176
 msgid "SMARTS Selection"
-msgstr ""
+msgstr "SMARTS udvalg"
 
 #: src/extensions/selectextension.cpp:177
 msgid "SMARTS pattern to select"
-msgstr ""
+msgstr "SMARTS mønster som skal vælges"
 
 #: src/extensions/selectextension.cpp:236
 msgid "Select by residue"
-msgstr ""
+msgstr "Vælg efter rest..."
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
-msgstr ""
+msgstr "Restnavn"
 
 #: src/extensions/selectextension.cpp:282
 msgid "There is no current selection."
-msgstr ""
+msgstr "Der er ikke truffet nogen valg."
 
 #: src/extensions/selectextension.cpp:288
 msgid "Add Named Selection"
-msgstr ""
+msgstr "Tilføj navngivet sektion."
 
 #: src/extensions/selectextension.cpp:288
 msgid "name"
@@ -1495,19 +1527,19 @@ msgstr "Navn kan ikke være tomt."
 
 #: src/extensions/selectextension.cpp:300
 msgid "There is already a selection with this name."
-msgstr ""
+msgstr "Der er allerede en valg med dette navn."
 
 #: src/extensions/selectextension.h:41
 msgid "Selections"
-msgstr ""
+msgstr "Valg"
 
 #: src/extensions/selectextension.h:42
 msgid "Select atoms, bonds, residues..."
-msgstr ""
+msgstr "Vælg atomer, bindinger, restprodukter..."
 
 #: src/extensions/shaderextension.cpp:167
 msgid "GLSL Shaders..."
-msgstr ""
+msgstr "GLSL shaders..."
 
 #: src/extensions/shaderextension.cpp:321
 msgid "Open a vertex shader source file"
@@ -1535,7 +1567,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1552,9 +1584,8 @@ msgid "Intensity (arb. units)"
 msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Energi"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1578,7 +1609,7 @@ msgstr ""
 
 #: src/extensions/spectra/ir.cpp:84
 msgid "No intensities"
-msgstr ""
+msgstr "Ingen intensiteter"
 
 #: src/extensions/spectra/ir.cpp:84
 msgid ""
@@ -1586,14 +1617,16 @@ msgid ""
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
+"Vibrations data i det molekyle du har indlæst har ingen intensitetsdata. "
+"Intensiteter er blevet sat til forvalgte værdier for visualisering."
 
 #: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
-msgstr ""
+msgstr "Bølgenummer (cm<sup>-1</sup>)"
 
 #: src/extensions/spectra/nmr.cpp:274
 msgid "Shift (ppm)"
-msgstr ""
+msgstr "Skift (ppm)"
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
 msgid "Activity"
@@ -1613,15 +1646,15 @@ msgstr "Y-akse"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "&Udseende"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
-msgstr ""
+msgstr "E&xporter billede"
 
 #: src/extensions/spectra/spectradialog.cpp:201
 msgctxt "Infrared spectra option"
@@ -1630,7 +1663,7 @@ msgstr "Infrarød"
 
 #: src/extensions/spectra/spectradialog.cpp:202
 msgid "&Infrared Spectra Settings"
-msgstr ""
+msgstr "&Infrarød spektrum indstillinger"
 
 #: src/extensions/spectra/spectradialog.cpp:208
 msgctxt "NMR spectra option"
@@ -1639,7 +1672,7 @@ msgstr "NMR"
 
 #: src/extensions/spectra/spectradialog.cpp:209
 msgid "&NMR Spectra Settings"
-msgstr ""
+msgstr "&NMR spektrum indstillinger"
 
 #: src/extensions/spectra/spectradialog.cpp:218
 msgctxt "Density of States"
@@ -1669,10 +1702,9 @@ msgid "&CD Settings"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Radon"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
 msgid "&Raman Settings"
@@ -1692,11 +1724,11 @@ msgstr "Lys"
 
 #: src/extensions/spectra/spectradialog.cpp:343
 msgid "Publication"
-msgstr ""
+msgstr "Udgivelse"
 
 #: src/extensions/spectra/spectradialog.cpp:354
 msgid "Handdrawn"
-msgstr ""
+msgstr "Håndtegnet"
 
 #: src/extensions/spectra/spectradialog.cpp:380
 msgid "New Scheme"
@@ -1704,59 +1736,55 @@ msgstr "Nyt skema"
 
 #: src/extensions/spectra/spectradialog.cpp:388
 msgid "Confirm Scheme Removal"
-msgstr ""
+msgstr "Bekræft skema fjernelse"
 
 #: src/extensions/spectra/spectradialog.cpp:388
 msgid "Really remove current scheme?"
-msgstr ""
+msgstr "Er du sikker på at det nuværende skema skal fjernes?"
 
 #: src/extensions/spectra/spectradialog.cpp:398
 msgid "Change Scheme Name"
-msgstr ""
+msgstr "Ændre skemanavn"
 
 #: src/extensions/spectra/spectradialog.cpp:399
 msgid "Enter new name for current scheme:"
-msgstr ""
+msgstr "Indtast det nye navn for det nuværende skema:"
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
-msgstr ""
+msgstr "Exporter udregnet spektrum"
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Tab Separated Values (*.tsv)"
-msgstr ""
+msgstr "Tabulator separerede værdier (*.tsv)"
 
 #: src/extensions/spectra/spectradialog.cpp:530
 msgid "Tab Separated Values"
-msgstr ""
+msgstr "Tabulator separerede værdier"
 
 #: src/extensions/spectra/spectradialog.cpp:531
 msgid "Comma Separated Values"
-msgstr ""
+msgstr "Komma separerede værdier"
 
 #: src/extensions/spectra/spectradialog.cpp:532
 msgid "JCAMP-DX"
-msgstr ""
+msgstr "JCAMP-DX"
 
 #: src/extensions/spectra/spectradialog.cpp:533
 #: src/extensions/spectra/spectradialog.cpp:623
@@ -1766,24 +1794,24 @@ msgstr "Alle filer"
 
 #: src/extensions/spectra/spectradialog.cpp:535
 msgid "Import Spectra"
-msgstr ""
+msgstr "Importer spektrum"
 
 #: src/extensions/spectra/spectradialog.cpp:561
 #: src/extensions/spectra/spectradialog.cpp:757
 #: src/extensions/spectra/spectradialog.cpp:854
 msgid "Spectra Import"
-msgstr ""
+msgstr "Importer spektrum"
 
 #: src/extensions/spectra/spectradialog.cpp:561
 #: src/extensions/spectra/spectradialog.cpp:946
 #, qt-format
 msgid "Unknown extension: %1"
-msgstr ""
+msgstr "Ukendt udvidelse: %1"
 
 #: src/extensions/spectra/spectradialog.cpp:608
 msgctxt "Do not remove 'IR' or '(*.out)' -- needed for parsing later"
 msgid "PWscf IR data (*.out)"
-msgstr ""
+msgstr "PWscf IR data (*.out)"
 
 #: src/extensions/spectra/spectradialog.cpp:609
 msgctxt "Do not remove 'IR' or '(control)' -- needed for parsing later"
@@ -1811,7 +1839,7 @@ msgstr "Format:"
 
 #: src/extensions/spectra/spectradialog.cpp:625
 msgid "Load Spectral Data"
-msgstr ""
+msgstr "Indlæs spektrum data:"
 
 #: src/extensions/spectra/spectradialog.cpp:757
 #: src/extensions/spectra/spectradialog.cpp:854
@@ -1821,7 +1849,7 @@ msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:918
 msgid "Portable Network Graphics"
-msgstr ""
+msgstr "Portable Network Graphics"
 
 #: src/extensions/spectra/spectradialog.cpp:919
 msgid "jpeg"
@@ -1829,7 +1857,7 @@ msgstr "jpeg"
 
 #: src/extensions/spectra/spectradialog.cpp:920
 msgid "Tagged Image File Format"
-msgstr ""
+msgstr "Tagged Image File Format"
 
 #: src/extensions/spectra/spectradialog.cpp:921
 msgid "Windows Bitmap"
@@ -1849,7 +1877,7 @@ msgstr "X11 Pixmap"
 
 #: src/extensions/spectra/spectradialog.cpp:928
 msgid "Save Spectra Image"
-msgstr ""
+msgstr "Gem spektrumbillede"
 
 #: src/extensions/spectra/spectradialog.cpp:946
 msgid "Invalid Filename"
@@ -1862,7 +1890,7 @@ msgstr "Fejl"
 #: src/extensions/spectra/spectradialog.cpp:979
 #, qt-format
 msgid "A problem occurred while writing file %1"
-msgstr ""
+msgstr "Der opstod et problem da der blev skrevet til filen: %1"
 
 #: src/extensions/spectra/spectradialog.cpp:981
 msgid "Success!"
@@ -1871,7 +1899,7 @@ msgstr "Succes!"
 #: src/extensions/spectra/spectradialog.cpp:981
 #, qt-format
 msgid "Image successfully written to %1"
-msgstr ""
+msgstr "Billedet blev gemt med filnavnet %1 uden fejl"
 
 #: src/extensions/spectra/spectradialog.cpp:1007
 msgid "&Advanced <<"
@@ -1879,13 +1907,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
 msgstr ""
 
 #: src/extensions/spectra/spectraextension.cpp:49
 msgid "&Spectra..."
-msgstr ""
+msgstr "&Spektrum"
 
 #: src/extensions/spectra/spectraextension.h:39
 msgid "Spectra"
@@ -1893,20 +1921,19 @@ msgstr "Spektre"
 
 #: src/extensions/spectra/spectraextension.h:40
 msgid "Visualize spectral data from quantum chemistry calculations"
-msgstr ""
+msgstr "Visualiser spektraldata fra kvantekemiske beregninger"
 
 #: src/extensions/spectra/uv.cpp:92
 msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Animation"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -1916,7 +1943,7 @@ msgstr ""
 
 #: src/extensions/spectra/vibrationextension.h:47
 msgid "Vibration"
-msgstr ""
+msgstr "Vibration"
 
 #: src/extensions/spectra/vibrationextension.h:48
 msgid "Visualize vibrational modes from quantum chemistry calculations"
@@ -1925,36 +1952,35 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:146
 #, qt-format
 msgid "Sorting %1 vibrations by frequency..."
-msgstr ""
+msgstr "Sorterer %1 vibrationer efter frekvens..."
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
-msgstr ""
+msgstr "Start &Animation"
 
 #: src/extensions/spectra/vibrationwidget.cpp:287
 msgid "Stop &Animation"
-msgstr ""
+msgstr "Stop &Animation"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:182
 #. i18n: ectx: property (text), widget (QPushButton, pauseButton)
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
 msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Begrænsninger"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
-msgstr ""
+msgstr "Super celle bygger..."
 
 #: src/extensions/supercellextension.cpp:91
 msgid "Warning"
@@ -1964,11 +1990,11 @@ msgstr "Advarsel"
 msgid ""
 "This document is currently an isolated molecule. You need to create a unit "
 "cell."
-msgstr ""
+msgstr "Dette dokument er et isoleret molekyle. Du skal skabe en celleenhed."
 
 #: src/extensions/supercellextension.h:38
 msgid "Super Cell"
-msgstr ""
+msgstr "Supercelle"
 
 #: src/extensions/supercellextension.h:39
 msgid "Build and display crystallographic super cells"
@@ -1980,24 +2006,24 @@ msgstr ""
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
-msgstr ""
+msgstr "MO %L1"
 
 #: src/extensions/surfaces/surfacedialog.cpp:88
 #: src/extensions/surfaces/surfacedialog.cpp:91
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
-msgstr ""
+msgstr "(HOMO)"
 
 #: src/extensions/surfaces/surfacedialog.cpp:98
 #: src/extensions/surfaces/surfacedialog.cpp:100
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
-msgstr ""
+msgstr "(LUMO)"
 
 #: src/extensions/surfaces/surfacedialog.cpp:251
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
-msgstr ""
+msgstr "Ingenting"
 
 #: src/extensions/surfaces/surfacedialog.cpp:253
 msgctxt "Van der Waals surface type"
@@ -2007,26 +2033,26 @@ msgstr "Van der Waals"
 #: src/extensions/surfaces/surfacedialog.cpp:255
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
-msgstr ""
+msgstr "Elektrostatisk Potentiale"
 
 #: src/extensions/surfaces/surfacedialog.cpp:258
 msgctxt "Electron density surface type"
 msgid "Electron Density"
-msgstr ""
+msgstr "Elektrontæthed"
 
 #: src/extensions/surfaces/surfacedialog.cpp:260
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
-msgstr ""
+msgstr "Molekylær omløbsbane"
 
 #: src/extensions/surfaces/surfacedialog.cpp:262
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
-msgstr ""
+msgstr "Fejl - udefineret type"
 
 #: src/extensions/surfaces/surfaceextension.cpp:69
 msgid "Create Surfaces..."
-msgstr ""
+msgstr "Skab overflade..."
 
 #: src/extensions/surfaces/surfaceextension.cpp:358
 #: src/extensions/surfaces/surfaceextension.cpp:388
@@ -2034,23 +2060,23 @@ msgstr ""
 #: src/extensions/surfaces/surfaceextension.cpp:449
 #: src/extensions/surfaces/surfaceextension.cpp:477
 msgid "Abort Calculation"
-msgstr ""
+msgstr "Afbryd udregning"
 
 #: src/extensions/surfaces/surfaceextension.cpp:363
 msgid "Calculating VdW Cube"
-msgstr ""
+msgstr "Udregner VdW Kube"
 
 #: src/extensions/surfaces/surfaceextension.cpp:393
 #: src/extensions/surfaces/surfaceextension.cpp:419
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
-msgstr ""
+msgstr "Udregner MO %L1"
 
 #: src/extensions/surfaces/surfaceextension.cpp:454
 #: src/extensions/surfaces/surfaceextension.cpp:482
 msgid "Calculating Electron Density"
-msgstr ""
+msgstr "Udregner elektrontæthed"
 
 #: src/extensions/surfaces/surfaceextension.cpp:568
 msgid "VdW"
@@ -2058,35 +2084,35 @@ msgstr "VdW"
 
 #: src/extensions/surfaces/surfaceextension.cpp:596
 msgid "Electron Density"
-msgstr ""
+msgstr "Elektrontæthed"
 
 #: src/extensions/surfaces/surfaceextension.h:51
 msgid "Calculate molecular orbitals and other surfaces"
-msgstr ""
+msgstr "Udregner molekyle orbitaler og andre overflader"
 
 #: src/extensions/trajvideomaker.cpp:48
 msgid "GL widget was not correctly initialized in order to make a video"
-msgstr ""
+msgstr "GL widget blev ikke initializeret korrekt så video kan ikke skabes"
 
 #: src/extensions/trajvideomaker.cpp:56
 msgid "GL widget has no molecule"
-msgstr ""
+msgstr "GL widget har ikke noget molekyle"
 
 #: src/extensions/trajvideomaker.cpp:62
 msgid "Building video "
-msgstr ""
+msgstr "Bygger video "
 
 #: src/extensions/trajvideomaker.cpp:109
 msgid "Video file not written."
-msgstr ""
+msgstr "Videofil kunne ikke skrives."
 
 #: src/extensions/trajvideomaker.cpp:124
 msgid "Could not run povray."
-msgstr ""
+msgstr "Kunne ikke afvikle povray."
 
 #: src/extensions/trajvideomaker.cpp:147
 msgid "Could not run mencoder."
-msgstr ""
+msgstr "Kunne ikke afvikle mencoder."
 
 #: src/extensions/trajvideomaker.cpp:158
 msgid "Set Aspect Ratio"
@@ -2116,9 +2142,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "Valgte farver"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2135,13 +2160,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Anvend"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "OK"
 
@@ -2181,12 +2206,12 @@ msgstr "OpenGL-fejl"
 
 #: src/glwidget.cpp:1038
 msgid "Debug Information"
-msgstr ""
+msgstr "Fejlretningsinformation"
 
 #: src/glwidget.cpp:1039
 #, qt-format
 msgid "FPS: %L1"
-msgstr ""
+msgstr "FPS: %L1"
 
 #: src/glwidget.cpp:1042
 #, qt-format
@@ -2200,12 +2225,12 @@ msgstr ""
 #: src/glwidget.cpp:1049
 #, qt-format
 msgid "Atoms: %L1"
-msgstr ""
+msgstr "Atomer: %L1"
 
 #: src/glwidget.cpp:1052
 #, qt-format
 msgid "Bonds: %L1"
-msgstr ""
+msgstr "Bindinger: %L1"
 
 #: src/molecule.cpp:120
 msgctxt "Name of a new, untitled molecule file"
@@ -2221,12 +2246,12 @@ msgstr ""
 #: src/moleculefile.cpp:762
 #, qt-format
 msgid "File type '%1' is not supported for reading."
-msgstr ""
+msgstr "Filtype '%1' er ikke understøttet ved læsning"
 
 #: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:673
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
-msgstr ""
+msgstr "Filtype for filen '%1' er ikke understøttet ved læsning"
 
 #: src/moleculefile.cpp:172
 #, qt-format
@@ -2251,12 +2276,12 @@ msgstr ""
 #: src/moleculefile.cpp:209
 #, qt-format
 msgid "Could not open file '%1' for writing."
-msgstr ""
+msgstr "Kunne ikke åbne fil '%1'  for at skrive til den."
 
 #: src/moleculefile.cpp:216
 #, qt-format
 msgid "Could not open file '%1' for reading."
-msgstr ""
+msgstr "Kunne ikke åbne fil '%1' for at læse fra den."
 
 #: src/moleculefile.cpp:225
 #, qt-format
@@ -2266,29 +2291,29 @@ msgstr ""
 #: src/moleculefile.cpp:355 src/moleculefile.cpp:656 src/moleculefile.cpp:751
 #, qt-format
 msgid "File %1 cannot be opened for reading."
-msgstr ""
+msgstr "Kunne ikke åbne fil '%1' for at læse den."
 
 #: src/moleculefile.cpp:398 src/moleculefile.cpp:777
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
-msgstr ""
+msgstr "Læsning fra fil '%1' fejlede."
 
 #: src/moleculefile.cpp:413 src/moleculefile.cpp:427
 #, qt-format
 msgid "File %1 can not be opened for writing."
-msgstr ""
+msgstr "Kunne ikke åbne fil '%1' for at at skrive til den."
 
 #: src/moleculefile.cpp:481
 msgid "Saving molecular file failed - could not rename original file."
-msgstr ""
+msgstr "Kunne ikke gemme molekylefil - kunne ikke omdøbe den originale fil."
 
 #: src/moleculefile.cpp:488
 msgid "Saving molecular file failed - could not rename new file."
-msgstr ""
+msgstr "Kunne ikke gemme molekylefil - kunne ikke omdøbe den nye fil."
 
 #: src/moleculefile.cpp:497
 msgid "Saving molecular file failed - could not remove old file."
-msgstr ""
+msgstr "Kunne ikke gemme molekylefil - kunne ikke fjerne den gamle fil."
 
 #: src/moleculefile.cpp:506
 #, qt-format
@@ -2298,7 +2323,7 @@ msgstr ""
 #: src/moleculefile.cpp:523
 #, qt-format
 msgid "File %1 cannot be opened for writing."
-msgstr ""
+msgstr "Filen %1 kunne ikke åbnes for at skrive til den."
 
 #: src/moleculefile.cpp:575
 #, qt-format
@@ -2308,12 +2333,12 @@ msgstr ""
 #: src/moleculefile.cpp:728
 #, qt-format
 msgid "Conformer %1"
-msgstr ""
+msgstr "Konformation %1"
 
 #: src/moleculefile.cpp:730 src/moleculefile.cpp:771
 #, qt-format
 msgid "Molecule %1"
-msgstr ""
+msgstr "Molekyle %1"
 
 #: src/plugin.cpp:42
 msgid "No Description"
@@ -2337,16 +2362,16 @@ msgstr "Ikke tilgængelig"
 
 #: src/pythonengine_p.cpp:241 src/pythonengine_p.cpp:246
 msgid "PythonEngine: checking "
-msgstr ""
+msgstr "PythonEngine: checking "
 
 #: src/pythonengine_p.cpp:242
 msgid "  - script has no 'Engine' class defined"
-msgstr ""
+msgstr "  - scriptet har ikke defineret en \"Engine\"-klasse"
 
 #: src/pythonengine_p.cpp:247 src/pythonextension_p.cpp:358
 #: src/pythontool_p.cpp:342
 msgid "  - no module"
-msgstr ""
+msgstr "  - intet modul"
 
 #: src/pythonextension_p.cpp:69 src/pythonextension_p.cpp:79
 msgid "Unknown Python Extension"
@@ -2354,15 +2379,15 @@ msgstr "Ukendt Python-udvidelse"
 
 #: src/pythonextension_p.cpp:127 src/pythonextension_p.cpp:141
 msgid "&Scripts"
-msgstr ""
+msgstr "&Scripts"
 
 #: src/pythonextension_p.cpp:352 src/pythonextension_p.cpp:357
 msgid "PythonExtension: checking "
-msgstr ""
+msgstr "PythonExtension: checker "
 
 #: src/pythonextension_p.cpp:353
 msgid "  - script has no 'Extension' class defined"
-msgstr ""
+msgstr "  - scriptet har ikke defineret en \"Extension\"-klasse"
 
 #: src/pythontool_p.cpp:90 src/pythontool_p.cpp:98
 msgid "Unknown Python Tool"
@@ -2370,11 +2395,11 @@ msgstr "Ukendt Python-værktøj"
 
 #: src/pythontool_p.cpp:336 src/pythontool_p.cpp:341
 msgid "PythonTool: checking "
-msgstr ""
+msgstr "PythonTool: checking "
 
 #: src/pythontool_p.cpp:337
 msgid "  - script has no 'Tool' class defined"
-msgstr ""
+msgstr "  - scriptet har ikke defineret en \"Tool\"-klasse"
 
 #: src/tool.cpp:57
 msgid "Tools"
@@ -2389,6 +2414,12 @@ msgid ""
 "\tThe second atom is aligned to the selected axis.\n"
 "Right Mouse: \tReset alignment."
 msgstr ""
+"Ret molekyler ind\n"
+"\n"
+"Venstre museknap: \tVælg indtil to atomer.\n"
+"\tDet første atom centreres på oprindelsesstedet.\n"
+"\tDet andet atom rettes ind på de valgte akser.\n"
+"Højre museknap: \tNulstil indretning."
 
 #: src/tools/aligntool.cpp:257
 msgid "Axis:"
@@ -2430,20 +2461,29 @@ msgid ""
 "Extra Function when running\n"
 "Left Mouse: Click and drag atoms to move them"
 msgstr ""
+"Værktøj til autooptimering\n"
+"\n"
+"Navigeringsfunktioner når der klikkes i et tomt rum.\n"
+"Venstre museknap: Rotér rum\n"
+"Midterste museknap: Zoom rum\n"
+"Højre museknap: Flyt rum\n"
+"\n"
+"Ekstra funktion under kørsel\n"
+"Venstre museknap. Klik og træk atomer for at flytte dem"
 
 #: src/tools/autoopttool.cpp:222
 msgid "AutoOpt: Could not setup force field...."
-msgstr ""
+msgstr "AutoOpt: kunne ikke sætte et kraftfelt op...."
 
 #: src/tools/autoopttool.cpp:229
 #, qt-format
 msgid "AutoOpt: E = %1 %2 (dE = %3)"
-msgstr ""
+msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Begrænsninger"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2459,13 +2499,13 @@ msgstr "Algoritme:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr "Stejleste nedgang"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr "Konjugér gradienter"
 
@@ -2500,23 +2540,23 @@ msgstr "Stop"
 
 #: src/tools/autoopttool.cpp:571
 msgid "AutoOpt Molecule"
-msgstr ""
+msgstr "AutoOpt molekyle"
 
 #: src/tools/autoopttool.h:90
 msgid "AutoOptimization"
-msgstr ""
+msgstr "AutoOptimiser"
 
 #: src/tools/autoopttool.h:91
 msgid "Automatic optimization of molecular geometry"
-msgstr ""
+msgstr "Automatisk optimerisering af molekylære geometri"
 
 #: src/tools/autoopttool.h:92
 msgid "AutoOptimization Settings"
-msgstr ""
+msgstr "AutoOptimization indstillinger"
 
 #: src/tools/autorotatetool.cpp:54
 msgid "Auto Rotation Tool"
-msgstr ""
+msgstr "Værktøj til auto-rotation"
 
 #: src/tools/autorotatetool.cpp:249
 msgid "x rotation:"
@@ -2554,21 +2594,21 @@ msgstr "z-rotation"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "Nulstil"
 
 #: src/tools/autorotatetool.h:53
 msgid "AutoRotate"
-msgstr ""
+msgstr "Autoroter"
 
 #: src/tools/autorotatetool.h:54
 msgid "Automatic rotation of molecules"
-msgstr ""
+msgstr "Automatisk rotation af molekyler"
 
 #: src/tools/autorotatetool.h:55
 msgid "AutoRotate Settings"
-msgstr ""
+msgstr "Autoroter indstillinger"
 
 #: src/tools/bondcentrictool.cpp:79
 msgid ""
@@ -2582,12 +2622,21 @@ msgid ""
 "- Left Click & Drag one of the Atoms in the Bond to change the angle\n"
 "- Right Click & Drag one of the Atoms in the Bond to change the length"
 msgstr ""
+"Bindingscentreret manipulationsværktøj\n"
+"\n"
+"Venstre museknap:   Klik og træk for at rotere visningen\n"
+"Midterste museknap: Klik og træk for at zoome ind og ud\n"
+"Højre museknap:     Klik og træk for at flytte visningen\n"
+"\n"
+"Venstreklik og træk en binding for at sætte manipulationsplanen:\n"
+"- Venstreklik og træk en af atomerne i bindingen for at ændre vinklen\n"
+"- Højreklik og træk en af atomerne i bindingen for at ændre længden"
 
 #: src/tools/bondcentrictool.cpp:791
 #, qt-format
 msgctxt "%L1 is the length of the bond"
 msgid "Bond Length: %L1"
-msgstr ""
+msgstr "Bindingslængde: %L1"
 
 #: src/tools/bondcentrictool.cpp:1597
 msgid " Show Angles"
@@ -2603,15 +2652,15 @@ msgstr "Hægt på tærskel: "
 
 #: src/tools/bondcentrictool.cpp:1657 src/tools/bondcentrictool.cpp:1672
 msgid "Bond Centric Manipulation"
-msgstr ""
+msgstr "Bindingscentreret manipulation"
 
 #: src/tools/bondcentrictool.h:65
 msgid "Bond Centric Manipulate"
-msgstr ""
+msgstr "Bindingscentreret manipuler"
 
 #: src/tools/bondcentrictool.h:66
 msgid "Manipulation of bond lengths, angles, and torsions"
-msgstr ""
+msgstr "Manipulation af bindingslængder, vinkler og drejninger"
 
 #: src/tools/bondcentrictool.h:67
 msgid "Bond Centric Manipulate Settings"
@@ -2626,29 +2675,35 @@ msgid ""
 "\tAngle is measured between 1-3 using 2 as the common point\n"
 "Right Mouse: Reset the measurements."
 msgstr ""
+"Klik for at måle (F12)\n"
+"\n"
+"Venstre museknap: \tVælg op til tre atomer.\n"
+"\tAfstanden måles mellem 1-2 og 2-3 \tVinklen måles mellem 1 og 3 med 2 som "
+"skæringspunkt\n"
+"Højre museknap: Nulstiller målinger."
 
 #: src/tools/clickmeasuretool.cpp:148
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (1->2): %L1 %2"
-msgstr ""
+msgstr "Afstand (1->2): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:166
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (2->3): %L1 %2"
-msgstr ""
+msgstr "Afstand (2->3): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:175
 #, qt-format
 msgid "Angle: %L1 °"
-msgstr ""
+msgstr "Vinkel: %L1 °"
 
 #: src/tools/clickmeasuretool.cpp:195
 #, qt-format
 msgctxt "%L1 is distance, %2 is Angstrom symbol"
 msgid "Distance (3->4): %L1 %2"
-msgstr ""
+msgstr "Afstand  (3->4): %L1 %2"
 
 #: src/tools/clickmeasuretool.cpp:211
 #, qt-format
@@ -2697,11 +2752,11 @@ msgstr ""
 
 #: src/tools/clickmeasuretool.h:50
 msgid "Measure Settings"
-msgstr ""
+msgstr "Målingsindstillinger"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "Tilføj atom"
 
@@ -2732,6 +2787,10 @@ msgid ""
 "Left Mouse: \tClick and Drag to create Atoms and Bonds\n"
 "Right Mouse: Delete Atom"
 msgstr ""
+"Tegningsværktøj (F8)\n"
+"\n"
+"Venstre museknap: \tKlik og træk for at oprette atomer og bindinger\n"
+"Højre museknap: Slet atom"
 
 #: src/tools/drawtool.cpp:408 src/tools/drawtool.cpp:414
 msgid "Draw Atom"
@@ -2751,13 +2810,13 @@ msgstr "Element:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "Andet..."
 
 #: src/tools/drawtool.cpp:810
 msgid "Bond Order:"
-msgstr ""
+msgstr "Sammenhængsorden:"
 
 #: src/tools/drawtool.cpp:815
 msgid "Single"
@@ -2777,11 +2836,11 @@ msgstr "Juster brintatomer"
 
 #: src/tools/drawtool.h:54
 msgid "Draw and edit atoms and bonds"
-msgstr ""
+msgstr "Tegn og rediger atomer og bindinger"
 
 #: src/tools/drawtool.h:55
 msgid "Draw Settings"
-msgstr ""
+msgstr "Tegningsindstillinger"
 
 #: src/tools/manipulatetool.cpp:51
 msgid ""
@@ -2791,6 +2850,12 @@ msgid ""
 "Middle Mouse: Click and drag to move atoms further away or closer\n"
 "Right Mouse:  Click and drag to rotate selected atoms."
 msgstr ""
+"Manipulationsværktøj (F10)\n"
+"\n"
+"Venstre museknap:   Klik og træk for at flytte atomer\n"
+"Midterste museknap: Klik og træk for at flytte atomer længere væk/tættere "
+"på\n"
+"Højre museknap:     Klik og træk for at rotere valgte atomer."
 
 #: src/tools/manipulatetool.cpp:362 src/tools/manipulatetool.cpp:371
 msgid "Manipulate Atom"
@@ -2802,11 +2867,11 @@ msgstr "Manipulér"
 
 #: src/tools/manipulatetool.h:54
 msgid "Translate, rotate, and adjust atoms and fragments"
-msgstr ""
+msgstr "Flyt, roter og tilpas atomer og fragmenter"
 
 #: src/tools/manipulatetool.h:55
 msgid "Manipulate Settings"
-msgstr ""
+msgstr "Manipulationsindstillinger"
 
 #: src/tools/navigatetool.cpp:60
 msgid ""
@@ -2816,6 +2881,11 @@ msgid ""
 "Middle Mouse: Click and drag to zoom in or out\n"
 "Right Mouse:  Click and drag to move the view"
 msgstr ""
+"Navigationsværktøj (F9)\n"
+"\n"
+"Venstre museknap:   Klik og træk for at rotere visningen\n"
+"Midterste museknap: Klik og træk for at zoome ind og ud\n"
+"Højre museknap:     Klik og træk for at flytte visningen"
 
 #: src/tools/navigatetool.h:52
 msgid "Navigate"
@@ -2827,7 +2897,7 @@ msgstr ""
 
 #: src/tools/navigatetool.h:54
 msgid "Navigate Settings"
-msgstr ""
+msgstr "Navigationsindstillinger"
 
 #: src/tools/selectrotatetool.cpp:59
 msgid ""
@@ -2840,7 +2910,7 @@ msgstr ""
 
 #: src/tools/selectrotatetool.cpp:422
 msgid "Selection Mode:"
-msgstr ""
+msgstr "Udvælgelsestilstand:"
 
 #: src/tools/selectrotatetool.cpp:427
 msgid "Atom/Bond"
@@ -2856,7 +2926,7 @@ msgstr "Udvalg"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Select atoms, residues, and molecules"
-msgstr ""
+msgstr "Vælg atomer, rester og molekyler"
 
 #: src/tools/selectrotatetool.h:53
 msgid "Selection Settings"
@@ -2888,7 +2958,7 @@ msgstr "Z-matrix-editor..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2927,9 +2997,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Akser"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -2943,27 +3012,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Brugervalgt værdi"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Akser:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Akser:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Akser:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -2976,9 +3041,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Ret ind:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3025,16 +3089,15 @@ msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Kobolt"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:41
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 msgid "Van der Waals"
-msgstr ""
+msgstr "Van der Waals"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:163
 #. i18n: ectx: property (text), widget (QCheckBox, showMulti)
@@ -3113,9 +3176,8 @@ msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Brugerdefineret farve"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3170,25 +3232,22 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Atometiketter:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Etiket"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "Farver:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3265,9 +3324,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "Skift element"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3299,9 +3357,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Bindingsetiketter:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3462,9 +3519,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "Første handling"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3530,9 +3586,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Slet alt"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3552,10 +3607,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3567,9 +3622,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Ingen"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4318,9 +4372,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Manipulér"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4760,9 +4813,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Åben katalog"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -5162,9 +5214,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
-#, fuzzy
 msgid "Thresholds"
-msgstr "Hægt på tærskel: "
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1197
 #. i18n: ectx: property (text), widget (QLabel, densitythresh)
@@ -5220,15 +5271,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Format:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "Linjer"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
@@ -5257,9 +5306,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Egenskaber"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5278,9 +5326,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
-#, fuzzy
 msgid "No. excitations:"
-msgstr "Ingen beskrivelse"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7182,9 +7229,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Eksportér"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7192,9 +7238,8 @@ msgstr "Eksportér"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Spektre"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7221,9 +7266,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Energi"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7232,15 +7276,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Energi"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Etiket"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7249,9 +7291,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "Start Atom"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7300,15 +7341,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Linjer"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Negativ"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7322,9 +7361,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Skabelon"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7343,9 +7381,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Threshold:"
-msgstr "Hægt på tærskel: "
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_NMR)
@@ -7382,18 +7419,17 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:132
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "ppm"
-msgstr ""
+msgstr "ppm"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, VibrationWidget)
 msgid "Molecular Vibrations"
-msgstr ""
+msgstr "Molekylære vibrationer"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Fil"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7417,24 +7453,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "Spektre"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr ""
+msgstr "højere frekvens vibrationer vil vise hurtigere bevægelser"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:136
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
 msgid "Animation speed set by frequency"
-msgstr ""
+msgstr "Animationshastighed sat af frekvens"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:143
 #. i18n: ectx: property (text), widget (QCheckBox, displayForcesCheckBox)
 msgid "Display force &vectors"
-msgstr ""
+msgstr "Vis kraft&vektorer"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:195
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7485,53 +7520,53 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
 msgid "Create Surfaces"
-msgstr ""
+msgstr "Skab overflader"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:25
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Surface Type:"
-msgstr ""
+msgstr "Overflade type:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:46
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:125
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
 msgid "Electrostatic Potential"
-msgstr ""
+msgstr "Elektrostatisk Potentiale"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:104
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Color By:"
-msgstr ""
+msgstr "Farv efter:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:120
 #. i18n: ectx: property (text), item, widget (QComboBox, colorByCombo)
 msgid "Nothing"
-msgstr ""
+msgstr "Ingenting"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
-msgstr ""
+msgstr "Lav"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
-msgstr ""
+msgstr "Høj"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
-msgstr ""
+msgstr "Meget høj"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:240
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
@@ -7541,7 +7576,7 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:243
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
-msgstr ""
+msgstr "Iso værdi:"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:276
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -7559,7 +7594,7 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:345
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
-msgstr ""
+msgstr "Avanceret..."
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, UnitCellParamDialog)
@@ -7585,87 +7620,91 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "Ændr bindingsorden"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "A:"
-msgstr ""
+msgstr "A:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:153
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "alpha:"
-msgstr ""
+msgstr "alpha:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgid "B:"
-msgstr ""
+msgstr "B:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:190
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 msgid "beta:"
-msgstr ""
+msgstr "beta:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:210
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 msgid "C:"
-msgstr ""
+msgstr "C:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:227
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 msgid "gamma:"
-msgstr ""
+msgstr "gamma:"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:247
 #. i18n: ectx: property (text), widget (QLabel, AxesLabel)
 msgid "Axes (Å)"
-msgstr ""
+msgstr "Akser (Å)"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:254
 #. i18n: ectx: property (text), widget (QLabel, anglesLabel)
 msgid "Angles (°)"
-msgstr ""
+msgstr "Vinkler (°)"
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
 msgid "Form"
-msgstr ""
+msgstr "Form"
 
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
-msgstr ""
+msgstr "Vis visuelle tegn"
 
 #. i18n: file: src/tools/pythonsettingswidget.ui:25
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 msgid "Python Settings"
-msgstr ""
+msgstr "Python-indstillinger"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, ZMatrixDialog)
 msgid "Z Matrix Editor"
-msgstr ""
+msgstr "Z-matrix-editor"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:25
 #. i18n: ectx: property (text), widget (QPushButton, importButton)
 msgid "Import Selected Atoms"
-msgstr ""
+msgstr "Importer valgte atomer"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:52
 #. i18n: ectx: property (text), widget (QPushButton, removeButton)
 msgid "Remove Atom"
-msgstr ""
+msgstr "Fjern atom"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,nanker"
+msgstr ""
+",Launchpad Contributions:,nanker, ,Launchpad "
+"Contributions:,dlonie,nanker,olegb"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,"
+msgstr ",,,,,loniedavid@gmail.com,,"
+
+#~ msgid "Carbon"
+#~ msgstr "Kulstof"
 
 #~ msgid "Helium"
 #~ msgstr "Helium"
@@ -7673,17 +7712,11 @@ msgstr ",,"
 #~ msgid "Beryllium"
 #~ msgstr "Beryllium"
 
-#~ msgid "Carbon"
-#~ msgstr "Kulstof"
+#~ msgid "Chlorine"
+#~ msgstr "Klor"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Kvælstof"
-
-#~ msgid "Oxygen"
-#~ msgstr "Ilt"
-
-#~ msgid "Neon"
-#~ msgstr "Neon"
+#~ msgid "Phosphorus"
+#~ msgstr "Fosfor"
 
 #~ msgid "Magnesium"
 #~ msgstr "Magnesium"
@@ -7691,35 +7724,29 @@ msgstr ",,"
 #~ msgid "Aluminum"
 #~ msgstr "Aluminium"
 
-#~ msgid "Phosphorus"
-#~ msgstr "Fosfor"
-
 #~ msgid "Sulfur"
 #~ msgstr "Svovl"
 
-#~ msgid "Chlorine"
-#~ msgstr "Klor"
+#~ msgid "Neon"
+#~ msgstr "Neon"
 
 #~ msgid "Argon"
 #~ msgstr "Argon"
 
-#~ msgid "Iron"
-#~ msgstr "Jern"
-
 #~ msgid "Cobalt"
 #~ msgstr "Kobolt"
 
-#~ msgid "Nickel"
-#~ msgstr "Nikkel"
+#~ msgid "Iron"
+#~ msgstr "Jern"
 
 #~ msgid "Copper"
 #~ msgstr "Kobber"
 
+#~ msgid "Nickel"
+#~ msgstr "Nikkel"
+
 #~ msgid "Zinc"
 #~ msgstr "Zink"
-
-#~ msgid "Bromine"
-#~ msgstr "Brom"
 
 #~ msgid "Krypton"
 #~ msgstr "Krypton"
@@ -7727,45 +7754,45 @@ msgstr ",,"
 #~ msgid "Rubidium"
 #~ msgstr "Rubidium"
 
-#~ msgid "Strontium"
-#~ msgstr "Strontium"
+#~ msgid "Bromine"
+#~ msgstr "Brom"
 
 #~ msgid "Silver"
 #~ msgstr "Sølv"
 
+#~ msgid "Strontium"
+#~ msgstr "Strontium"
+
 #~ msgid "Xenon"
 #~ msgstr "Xenon"
-
-#~ msgid "Platinum"
-#~ msgstr "Platin"
-
-#~ msgid "Gold"
-#~ msgstr "Guld"
 
 #~ msgid "Mercury"
 #~ msgstr "Kviksølv"
 
-#~ msgid "Lead"
-#~ msgstr "Bly"
+#~ msgid "Gold"
+#~ msgstr "Guld"
+
+#~ msgid "Platinum"
+#~ msgstr "Platin"
 
 #~ msgid "Radon"
 #~ msgstr "Radon"
 
+#~ msgid "Lead"
+#~ msgstr "Bly"
+
 #~ msgid "Radium"
 #~ msgstr "Radium"
-
-#~ msgid "Uranium"
-#~ msgstr "Uran"
 
 #~ msgid "Plutonium"
 #~ msgstr "Plutonium"
 
-#~ msgid "Periodic Table"
-#~ msgstr "Periodisk tabel"
+#~ msgid "Uranium"
+#~ msgstr "Uran"
 
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "Valgte farver"
-
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Atom indeks %1"
+
+#~ msgid "Periodic Table"
+#~ msgstr "Periodisk tabel"

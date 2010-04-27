@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-10-07 13:07+0000\n"
+"PO-Revision-Date: 2010-04-26 20:09+0000\n"
 "Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -49,9 +49,8 @@ msgid "Template"
 msgstr "Шаблон"
 
 #: examples/c++/templateextension.h:35
-#, fuzzy
 msgid "Example extension"
-msgstr "Разширения"
+msgstr ""
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -403,7 +402,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Анимация"
 
@@ -413,12 +412,13 @@ msgstr "Анимиране на траектории, взаимодействи
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -466,7 +466,8 @@ msgstr ""
 "За да се добави ограничение, молекулата трябва да съдържа поне един атом"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 
 #: src/extensions/constraintsdialog.cpp:378
@@ -703,7 +704,7 @@ msgstr "Пептид..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "Вмъкване на пептид"
 
@@ -915,7 +916,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Свойства"
 
@@ -930,13 +931,12 @@ msgid "Yes"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Неон"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Елемент"
 
@@ -978,9 +978,8 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Атом %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1005,9 +1004,8 @@ msgid "Length %1"
 msgstr "Дължина %1"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Връзка %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1021,7 +1019,7 @@ msgstr "Ъгъл %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr ""
 
@@ -1037,13 +1035,12 @@ msgid "Torsion %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Бор"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Енергия"
 
@@ -1076,9 +1073,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:351
-#, fuzzy
 msgid "Save Dalton Input File"
-msgstr "Запазване на файл с траектория"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
@@ -1091,7 +1087,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Предварителен преглед"
 
@@ -1110,7 +1106,7 @@ msgstr "Предварителен преглед"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "Скриване на прегледа"
 
@@ -1203,7 +1199,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Име"
 
@@ -1303,7 +1299,8 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
@@ -1327,9 +1324,8 @@ msgid "&Q-Chem..."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "Анимация..."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1482,7 +1478,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr ""
 
@@ -1544,7 +1540,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1561,9 +1557,8 @@ msgid "Intensity (arb. units)"
 msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Енергия"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1605,9 +1600,8 @@ msgid "Shift (ppm)"
 msgstr ""
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "Актиний"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
 msgid "Intensity"
@@ -1623,13 +1617,13 @@ msgstr "Ос Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "&Външен вид"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr "&Изнасяне на изображение"
 
@@ -1679,10 +1673,9 @@ msgid "&CD Settings"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Радон"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
 msgid "&Raman Settings"
@@ -1737,14 +1730,12 @@ msgid "Select Foreground Color"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Изнасяне на изчислен спектър"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Внасяне на спектър"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1887,7 +1878,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
 msgstr ""
 
@@ -1908,13 +1899,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Анимация"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -1938,7 +1928,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr ""
 
@@ -1951,15 +1941,13 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
-#, fuzzy
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
-msgstr "Поставяне"
+msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Хлор"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2143,13 +2131,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "Добре"
 
@@ -2446,9 +2434,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Брой атоми: %1"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2464,13 +2452,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2559,7 +2547,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr ""
 
@@ -2706,7 +2694,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr ""
 
@@ -2756,7 +2744,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr ""
 
@@ -2893,7 +2881,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2932,9 +2920,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Оси"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -2948,27 +2935,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Потребителски цвят"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Ос X"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Ос X"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Ос X"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3029,9 +3012,8 @@ msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Кобалт"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3117,9 +3099,8 @@ msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Потребителски цвят"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3174,25 +3155,22 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Етикет"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Етикет"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "Потребителски цвят"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3302,9 +3280,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Етикет"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3460,9 +3437,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Бохрий"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
@@ -3493,9 +3469,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:112
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "GAMESS Input #2"
-msgstr "GAMESS Input Deck (*.inp)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3514,9 +3489,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Азрязване на атоми"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3535,9 +3509,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Изчистване на атоми"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3557,10 +3530,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3572,9 +3545,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Без"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4323,9 +4295,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Изчисляване на енергията"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4765,9 +4736,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Отваряне на директория"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -5189,9 +5159,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "Геометрична оптимизация"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5225,15 +5194,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Формат:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "Йод"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
@@ -5262,9 +5229,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Свойства"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5273,9 +5239,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "Изчисляване на енергията"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
@@ -7187,9 +7152,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Изнасяне"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7197,9 +7161,8 @@ msgstr "Изнасяне"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Спектри"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7226,9 +7189,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Енергия"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7237,27 +7199,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Енергия"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Етикет"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Cell"
-msgstr "Супер клетка"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "Начален атом"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7306,15 +7264,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Олово"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Шаблон"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7328,9 +7284,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Шаблон"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7396,9 +7351,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Файл"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7422,9 +7376,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "Спектри"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -7666,392 +7619,16 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,"
-"Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+"Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav "
+"Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
 "Contributions:,Svetoslav Stefanov"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
-"com,,,svetlisashkov@yahoo.com"
-
-#~ msgid "Hydrogen"
-#~ msgstr "Водород"
-
-#~ msgid "Helium"
-#~ msgstr "Хелий"
-
-#~ msgid "Lithium"
-#~ msgstr "Литий"
-
-#~ msgid "Beryllium"
-#~ msgstr "Берилий"
-
-#~ msgid "Carbon"
-#~ msgstr "Въглерод"
-
-#~ msgid "Nitrogen"
-#~ msgstr "Азот"
-
-#~ msgid "Oxygen"
-#~ msgstr "Кислород"
-
-#~ msgid "Fluorine"
-#~ msgstr "Флуор"
-
-#~ msgid "Neon"
-#~ msgstr "Неон"
-
-#~ msgid "Sodium"
-#~ msgstr "Натрий"
-
-#~ msgid "Magnesium"
-#~ msgstr "Магнезий"
-
-#~ msgid "Aluminum"
-#~ msgstr "Алуминий"
-
-#~ msgid "Silicon"
-#~ msgstr "Силиций"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Фосфор"
-
-#~ msgid "Sulfur"
-#~ msgstr "Сяра"
-
-#~ msgid "Chlorine"
-#~ msgstr "Хлор"
-
-#~ msgid "Argon"
-#~ msgstr "Аргон"
-
-#~ msgid "Potassium"
-#~ msgstr "Калий"
-
-#~ msgid "Calcium"
-#~ msgstr "Калций"
-
-#~ msgid "Scandium"
-#~ msgstr "Скандий"
-
-#~ msgid "Titanium"
-#~ msgstr "Титан"
-
-#~ msgid "Vanadium"
-#~ msgstr "Ванадий"
-
-#~ msgid "Chromium"
-#~ msgstr "Хром"
-
-#~ msgid "Manganese"
-#~ msgstr "Манган"
-
-#~ msgid "Iron"
-#~ msgstr "Желязо"
-
-#~ msgid "Cobalt"
-#~ msgstr "Кобалт"
-
-#~ msgid "Nickel"
-#~ msgstr "Никел"
-
-#~ msgid "Copper"
-#~ msgstr "Мед"
-
-#~ msgid "Zinc"
-#~ msgstr "Цинк"
-
-#~ msgid "Gallium"
-#~ msgstr "Галий"
-
-#~ msgid "Germanium"
-#~ msgstr "Германий"
-
-#~ msgid "Arsenic"
-#~ msgstr "Арсен"
-
-#~ msgid "Selenium"
-#~ msgstr "Селен"
-
-#~ msgid "Bromine"
-#~ msgstr "Бром"
-
-#~ msgid "Krypton"
-#~ msgstr "Криптон"
-
-#~ msgid "Rubidium"
-#~ msgstr "Рубидий"
-
-#~ msgid "Strontium"
-#~ msgstr "Стронций"
-
-#~ msgid "Yttrium"
-#~ msgstr "Итрий"
-
-#~ msgid "Zirconium"
-#~ msgstr "Цирконий"
-
-#~ msgid "Niobium"
-#~ msgstr "Ниобий"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Молибден"
-
-#~ msgid "Technetium"
-#~ msgstr "Технеций"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Рутений"
-
-#~ msgid "Rhodium"
-#~ msgstr "Родий"
-
-#~ msgid "Palladium"
-#~ msgstr "Паладий"
-
-#~ msgid "Silver"
-#~ msgstr "Сребро"
-
-#~ msgid "Cadmium"
-#~ msgstr "Кадмий"
-
-#~ msgid "Indium"
-#~ msgstr "Индий"
-
-#~ msgid "Tin"
-#~ msgstr "Калай"
-
-#~ msgid "Antimony"
-#~ msgstr "Антимон"
-
-#~ msgid "Tellurium"
-#~ msgstr "Телурий"
-
-#~ msgid "Iodine"
-#~ msgstr "Йод"
-
-#~ msgid "Xenon"
-#~ msgstr "Ксенон"
-
-#~ msgid "Cesium"
-#~ msgstr "Цезий"
-
-#~ msgid "Barium"
-#~ msgstr "Барий"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Лантан"
-
-#~ msgid "Cerium"
-#~ msgstr "Церий"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Празводим"
-
-#~ msgid "Neodymium"
-#~ msgstr "Неодим"
-
-#~ msgid "Promethium"
-#~ msgstr "Прометий"
-
-#~ msgid "Samarium"
-#~ msgstr "Самарий"
-
-#~ msgid "Europium"
-#~ msgstr "Европий"
-
-#~ msgid "Gadolinium"
-#~ msgstr "Гадолиний"
-
-#~ msgid "Terbium"
-#~ msgstr "Тербий"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Диспросий"
-
-#~ msgid "Holmium"
-#~ msgstr "Холмий"
-
-#~ msgid "Erbium"
-#~ msgstr "Ербий"
-
-#~ msgid "Thulium"
-#~ msgstr "Тулий"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Итербий"
-
-#~ msgid "Lutetium"
-#~ msgstr "Лутеций"
-
-#~ msgid "Hafnium"
-#~ msgstr "Хафний"
-
-#~ msgid "Tantalum"
-#~ msgstr "Тантал"
-
-#~ msgid "Tungsten"
-#~ msgstr "Волфрам"
-
-#~ msgid "Rhenium"
-#~ msgstr "Рений"
-
-#~ msgid "Osmium"
-#~ msgstr "Осмий"
-
-#~ msgid "Iridium"
-#~ msgstr "Иридий"
-
-#~ msgid "Platinum"
-#~ msgstr "Платина"
-
-#~ msgid "Gold"
-#~ msgstr "Злато"
-
-#~ msgid "Mercury"
-#~ msgstr "Живак"
-
-#~ msgid "Thallium"
-#~ msgstr "Талий"
-
-#~ msgid "Lead"
-#~ msgstr "Олово"
-
-#~ msgid "Bismuth"
-#~ msgstr "Бисмут"
-
-#~ msgid "Polonium"
-#~ msgstr "Полоний"
-
-#~ msgid "Astatine"
-#~ msgstr "Астат"
-
-#~ msgid "Radon"
-#~ msgstr "Радон"
-
-#~ msgid "Francium"
-#~ msgstr "Франций"
-
-#~ msgid "Radium"
-#~ msgstr "Радий"
-
-#~ msgid "Actinium"
-#~ msgstr "Актиний"
-
-#~ msgid "Thorium"
-#~ msgstr "Торий"
-
-#~ msgid "Protactinium"
-#~ msgstr "Протактиний"
-
-#~ msgid "Uranium"
-#~ msgstr "Уран"
-
-#~ msgid "Neptunium"
-#~ msgstr "Нептуний"
-
-#~ msgid "Plutonium"
-#~ msgstr "Плутоний"
-
-#~ msgid "Americium"
-#~ msgstr "Америций"
-
-#~ msgid "Curium"
-#~ msgstr "Кюрий"
-
-#~ msgid "Berkelium"
-#~ msgstr "Берклий"
-
-#~ msgid "Californium"
-#~ msgstr "Калифорний"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Айнщайний"
-
-#~ msgid "Fermium"
-#~ msgstr "Фермий"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Менделевий"
-
-#~ msgid "Nobelium"
-#~ msgstr "Нобелий"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Лоуренсий"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Рутерфордий"
-
-#~ msgid "Dubnium"
-#~ msgstr "Дъбний"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Сиборгий"
-
-#~ msgid "Bohrium"
-#~ msgstr "Бохрий"
-
-#~ msgid "Hassium"
-#~ msgstr "Хасий"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Метерий"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "Дармщадий"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Рентгий"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Унунбий"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Унунпентиум"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Унунхексий"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Унунсептий"
-
-#~ msgid "Ununoctium"
-#~ msgstr "Унуноктий"
-
-#~ msgid "Angle %1"
-#~ msgstr "Ъгъл %1"
-
-#~ msgid "Avogadro files (*.*)"
-#~ msgstr "Файлове на Avogadro (*.*)"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "Всякакви файлове (*.*)"
-
-#~ msgid "Save Movie File"
-#~ msgstr "Запазване на видео файл"
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "файл с траектория (*.xyz)"
-
-#~ msgid "Cannot save file %1."
-#~ msgstr "Не може да бъде запазен файлът %1."
-
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr ""
-#~ "Невалидно име на видео файл. Трябва да включва пълният път за достъп"
-
-#~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
-#~ msgstr ""
-#~ "Невалидно име на видео файл. Трябва да включва пълният път за достъп и "
-#~ "името, завършващо с .avi"
-
-#~ msgid "Atom Index %1"
-#~ msgstr "Атомен индекс %1"
+",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
+",,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"
 
 #~ msgid "Clear Molecule"
 #~ msgstr "Изчистване на молекула"
@@ -8079,3 +7656,382 @@ msgstr ""
 
 #~ msgid "Sybyl Mol2"
 #~ msgstr "Sybyl Mol2"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Азот"
+
+#~ msgid "Carbon"
+#~ msgstr "Въглерод"
+
+#~ msgid "Lithium"
+#~ msgstr "Литий"
+
+#~ msgid "Helium"
+#~ msgstr "Хелий"
+
+#~ msgid "Beryllium"
+#~ msgstr "Берилий"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Водород"
+
+#~ msgid "Sulfur"
+#~ msgstr "Сяра"
+
+#~ msgid "Silicon"
+#~ msgstr "Силиций"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Фосфор"
+
+#~ msgid "Magnesium"
+#~ msgstr "Магнезий"
+
+#~ msgid "Aluminum"
+#~ msgstr "Алуминий"
+
+#~ msgid "Chlorine"
+#~ msgstr "Хлор"
+
+#~ msgid "Sodium"
+#~ msgstr "Натрий"
+
+#~ msgid "Neon"
+#~ msgstr "Неон"
+
+#~ msgid "Fluorine"
+#~ msgstr "Флуор"
+
+#~ msgid "Oxygen"
+#~ msgstr "Кислород"
+
+#~ msgid "Calcium"
+#~ msgstr "Калций"
+
+#~ msgid "Scandium"
+#~ msgstr "Скандий"
+
+#~ msgid "Argon"
+#~ msgstr "Аргон"
+
+#~ msgid "Potassium"
+#~ msgstr "Калий"
+
+#~ msgid "Chromium"
+#~ msgstr "Хром"
+
+#~ msgid "Manganese"
+#~ msgstr "Манган"
+
+#~ msgid "Vanadium"
+#~ msgstr "Ванадий"
+
+#~ msgid "Titanium"
+#~ msgstr "Титан"
+
+#~ msgid "Cobalt"
+#~ msgstr "Кобалт"
+
+#~ msgid "Iron"
+#~ msgstr "Желязо"
+
+#~ msgid "Copper"
+#~ msgstr "Мед"
+
+#~ msgid "Nickel"
+#~ msgstr "Никел"
+
+#~ msgid "Gallium"
+#~ msgstr "Галий"
+
+#~ msgid "Zinc"
+#~ msgstr "Цинк"
+
+#~ msgid "Krypton"
+#~ msgstr "Криптон"
+
+#~ msgid "Rubidium"
+#~ msgstr "Рубидий"
+
+#~ msgid "Germanium"
+#~ msgstr "Германий"
+
+#~ msgid "Arsenic"
+#~ msgstr "Арсен"
+
+#~ msgid "Selenium"
+#~ msgstr "Селен"
+
+#~ msgid "Bromine"
+#~ msgstr "Бром"
+
+#~ msgid "Palladium"
+#~ msgstr "Паладий"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Рутений"
+
+#~ msgid "Rhodium"
+#~ msgstr "Родий"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Молибден"
+
+#~ msgid "Technetium"
+#~ msgstr "Технеций"
+
+#~ msgid "Silver"
+#~ msgstr "Сребро"
+
+#~ msgid "Strontium"
+#~ msgstr "Стронций"
+
+#~ msgid "Yttrium"
+#~ msgstr "Итрий"
+
+#~ msgid "Zirconium"
+#~ msgstr "Цирконий"
+
+#~ msgid "Niobium"
+#~ msgstr "Ниобий"
+
+#~ msgid "Iodine"
+#~ msgstr "Йод"
+
+#~ msgid "Tellurium"
+#~ msgstr "Телурий"
+
+#~ msgid "Xenon"
+#~ msgstr "Ксенон"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Лантан"
+
+#~ msgid "Barium"
+#~ msgstr "Барий"
+
+#~ msgid "Cesium"
+#~ msgstr "Цезий"
+
+#~ msgid "Cadmium"
+#~ msgstr "Кадмий"
+
+#~ msgid "Indium"
+#~ msgstr "Индий"
+
+#~ msgid "Tin"
+#~ msgstr "Калай"
+
+#~ msgid "Antimony"
+#~ msgstr "Антимон"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Празводим"
+
+#~ msgid "Cerium"
+#~ msgstr "Церий"
+
+#~ msgid "Promethium"
+#~ msgstr "Прометий"
+
+#~ msgid "Neodymium"
+#~ msgstr "Неодим"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Диспросий"
+
+#~ msgid "Holmium"
+#~ msgstr "Холмий"
+
+#~ msgid "Samarium"
+#~ msgstr "Самарий"
+
+#~ msgid "Europium"
+#~ msgstr "Европий"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Гадолиний"
+
+#~ msgid "Terbium"
+#~ msgstr "Тербий"
+
+#~ msgid "Tungsten"
+#~ msgstr "Волфрам"
+
+#~ msgid "Tantalum"
+#~ msgstr "Тантал"
+
+#~ msgid "Hafnium"
+#~ msgstr "Хафний"
+
+#~ msgid "Iridium"
+#~ msgstr "Иридий"
+
+#~ msgid "Osmium"
+#~ msgstr "Осмий"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Итербий"
+
+#~ msgid "Lutetium"
+#~ msgstr "Лутеций"
+
+#~ msgid "Erbium"
+#~ msgstr "Ербий"
+
+#~ msgid "Thulium"
+#~ msgstr "Тулий"
+
+#~ msgid "Thallium"
+#~ msgstr "Талий"
+
+#~ msgid "Mercury"
+#~ msgstr "Живак"
+
+#~ msgid "Gold"
+#~ msgstr "Злато"
+
+#~ msgid "Platinum"
+#~ msgstr "Платина"
+
+#~ msgid "Francium"
+#~ msgstr "Франций"
+
+#~ msgid "Radon"
+#~ msgstr "Радон"
+
+#~ msgid "Polonium"
+#~ msgstr "Полоний"
+
+#~ msgid "Astatine"
+#~ msgstr "Астат"
+
+#~ msgid "Lead"
+#~ msgstr "Олово"
+
+#~ msgid "Bismuth"
+#~ msgstr "Бисмут"
+
+#~ msgid "Thorium"
+#~ msgstr "Торий"
+
+#~ msgid "Radium"
+#~ msgstr "Радий"
+
+#~ msgid "Berkelium"
+#~ msgstr "Берклий"
+
+#~ msgid "Curium"
+#~ msgstr "Кюрий"
+
+#~ msgid "Neptunium"
+#~ msgstr "Нептуний"
+
+#~ msgid "Uranium"
+#~ msgstr "Уран"
+
+#~ msgid "Americium"
+#~ msgstr "Америций"
+
+#~ msgid "Plutonium"
+#~ msgstr "Плутоний"
+
+#~ msgid "Protactinium"
+#~ msgstr "Протактиний"
+
+#~ msgid "Actinium"
+#~ msgstr "Актиний"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Менделевий"
+
+#~ msgid "Fermium"
+#~ msgstr "Фермий"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Айнщайний"
+
+#~ msgid "Californium"
+#~ msgstr "Калифорний"
+
+#~ msgid "Nobelium"
+#~ msgstr "Нобелий"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Лоуренсий"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Рутерфордий"
+
+#~ msgid "Dubnium"
+#~ msgstr "Дъбний"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Сиборгий"
+
+#~ msgid "Bohrium"
+#~ msgstr "Бохрий"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Дармщадий"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Рентгий"
+
+#~ msgid "Hassium"
+#~ msgstr "Хасий"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Метерий"
+
+#~ msgid "Avogadro files (*.*)"
+#~ msgstr "Файлове на Avogadro (*.*)"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "файл с траектория (*.xyz)"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Всякакви файлове (*.*)"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Запазване на видео файл"
+
+#, qt-format
+#~ msgid "Cannot save file %1."
+#~ msgstr "Не може да бъде запазен файлът %1."
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Невалидно име на видео файл. Трябва да включва пълният път за достъп"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr ""
+#~ "Невалидно име на видео файл. Трябва да включва пълният път за достъп и "
+#~ "името, завършващо с .avi"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Ъгъл %1"
+
+#, qt-format
+#~ msgid "Atom Index %1"
+#~ msgstr "Атомен индекс %1"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Унунбий"
+
+#~ msgid "Rhenium"
+#~ msgstr "Рений"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Унунпентиум"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Унуноктий"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Унунсептий"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Унунхексий"

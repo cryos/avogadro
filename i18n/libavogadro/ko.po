@@ -8,24 +8,22 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-10-30 05:16+0000\n"
+"PO-Revision-Date: 2010-04-26 19:46+0000\n"
 "Last-Translator: Kim Hanjo <lordmiss@lordmiss.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
-#, fuzzy
 msgid "First Action"
-msgstr "진동"
+msgstr ""
 
 #: examples/c++/templateextension.cpp:47
-#, fuzzy
 msgid "Second Action"
-msgstr "선택"
+msgstr ""
 
 #: examples/c++/templateextension.cpp:69
 #: src/extensions/animationextension.cpp:75
@@ -107,9 +105,8 @@ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
 msgstr "잔여부분 채색 (아미노산 타입, 광견병, ..."
 
 #: src/colors/smartscolor.cpp:77
-#, fuzzy
 msgid "SMARTS Pattern:"
-msgstr "선택할 SMARTS 패턴"
+msgstr ""
 
 #: src/colors/smartscolor.cpp:81
 msgid "Highlight Color:"
@@ -176,24 +173,20 @@ msgid "Renders hydrogen bonds"
 msgstr "수소결합 표시"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "선택된 색상"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "선택된 색상"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "원자 라벨:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
-#, fuzzy
 msgid "Select Bond Labels Font"
-msgstr "결합 라벨:"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -386,9 +379,7 @@ msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로를 포함�
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
-"잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자"
-"로 끝나야 합니다."
+msgstr "잘못된 비디오 파일이름. 전체 디렉토리 경로와 파일이름을 포함하고, avi 확장자로 끝나야 합니다."
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -407,7 +398,7 @@ msgstr "궤도 파일 %1의 원자 수가 현재의 분자 수와 일치하지 �
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "애니메이션"
 
@@ -417,13 +408,13 @@ msgstr "궤도, 반응, 진동 애니메이션으로 표시"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
-#, fuzzy
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
-msgstr "Cartesian 편집기..."
+msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -441,14 +432,12 @@ msgid "&Build"
 msgstr "빌드(&B)"
 
 #: src/extensions/cartesianextension.h:107
-#, fuzzy
 msgid "Cartesian editor"
-msgstr "Cartesian 편집기..."
+msgstr ""
 
 #: src/extensions/cartesianextension.h:108
-#, fuzzy
 msgid "Cartesian coordinates editor"
-msgstr "Cartesian 편집기..."
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -469,28 +458,22 @@ msgstr "구속을 추가"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
-"분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
+msgstr "분자에 구속을 추가하기 위해서는 최소한 하나의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
-"분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합"
-"니다"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "분자에 결합 구속을 추가하기 위해서는 최소한 두 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
-"분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니"
-"다"
+msgstr "분자에 각 구속을 추가하기 위해서는 최소한 세 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
-"분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 "
-"합니다"
+msgstr "분자에 비틀림 구속를 추가하기 위해서는 최소한 네 개의 원자를 포함하고 있어야 합니다"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -716,7 +699,7 @@ msgstr "펩티드..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "펩티드 삽입"
 
@@ -755,9 +738,8 @@ msgid "Fetch from PDB..."
 msgstr "PDB로 부터 가져오기..."
 
 #: src/extensions/networkfetchextension.cpp:60
-#, fuzzy
 msgid "Fetch by chemical name..."
-msgstr "화학 구조 가져오기..."
+msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:64
 msgid "Fetch from URL..."
@@ -849,8 +831,8 @@ msgid ""
 "file. This will result in no output being saved. Are you sure that is what "
 "you want?"
 msgstr ""
-"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습"
-"니다. 이렇게 하면 아무 결과도 저장되지 않습니다. 정말로 이렇게 할까요?"
+"POV-Ray를 사용해서 렌더링하지 않고, POV-Ray 파일을 저장하지도 않도록 요청했습니다. 이렇게 하면 아무 결과도 저장되지 "
+"않습니다. 정말로 이렇게 할까요?"
 
 #: src/extensions/povrayextension.cpp:159
 #: src/extensions/povrayextension.cpp:182
@@ -862,9 +844,7 @@ msgstr "파일에 기록할 수 없습니다."
 #, qt-format
 msgid ""
 "Cannot write to file %1. Do you have permissions to write to that location?"
-msgstr ""
-"파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니"
-"까?"
+msgstr "파일 %1에 기록할 수 없습니다. 그 장소에 기록할 수 있는 승인을 가지고 있습니까?"
 
 #: src/extensions/povrayextension.cpp:176
 msgid "POV-Ray failed to start."
@@ -874,9 +854,7 @@ msgstr "POV-Ray를 시작하는데 실패했습니다."
 msgid ""
 "POV-Ray failed to start. May be the path to the executable is not set "
 "correctly."
-msgstr ""
-"POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것"
-"입니다."
+msgstr "POV-Ray를 시작하지 못했습니다. 아마도 실행 파일 위치가 잘못 설정되어 있을 것입니다."
 
 #: src/extensions/povrayextension.h:40
 msgid "POV-Ray"
@@ -933,7 +911,7 @@ msgstr "이형태체 정보"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "속성"
 
@@ -941,23 +919,19 @@ msgstr "속성"
 msgid ""
 "Windows for displaying atom, bond, angle and torsion properties. It also "
 "includes a cartesian coordinate editor."
-msgstr ""
-"원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포"
-"함하고 있음."
+msgstr "원자, 결합, 각도, 비틀림 속성을 보여주는 창. Cartesian coordinate 편집기도 포함하고 있음."
 
 #: src/extensions/propmodel.cpp:269
-#, fuzzy
 msgid "Yes"
-msgstr "년"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "네온"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "원소"
 
@@ -999,9 +973,8 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "원자 %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1026,9 +999,8 @@ msgid "Length %1"
 msgstr "%1 길이"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "%1 결합"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1042,7 +1014,7 @@ msgstr "각 %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "각도"
 
@@ -1058,20 +1030,18 @@ msgid "Torsion %1"
 msgstr "비틀림 %1"
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "비틀림 %1"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "에너지"
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "이형태체 %1"
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -1088,23 +1058,18 @@ msgid "Interactive python scripting terminal"
 msgstr "쌍방향 파이썬 스크립트 터미널"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:284
-#, fuzzy
 msgid "Dalton Input File Generator Warning"
-msgstr "가우스 입력 데크 생성기 경고"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:285
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Dalton input file preview pane?"
 msgstr ""
-"가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트"
-"를 업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:351
-#, fuzzy
 msgid "Save Dalton Input File"
-msgstr "Molpro 입력 데크 저장"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
@@ -1117,7 +1082,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "미리보기"
 
@@ -1136,7 +1101,7 @@ msgstr "미리보기"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "미리보기 숨기기"
 
@@ -1229,7 +1194,7 @@ msgstr "GAMESS 양자 화학 패키지를 위해 입력 파일을 형성"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "제목"
 
@@ -1285,9 +1250,7 @@ msgstr "가우스 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Gaussian input deck preview pane?"
-msgstr ""
-"가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트"
-"를 업데이트 하시겠습니까?"
+msgstr "가우스 입력 데크 미리보기 창에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:239
 msgid "Save Gaussian Input Deck"
@@ -1331,10 +1294,9 @@ msgid "G03 Crashed."
 msgstr "G03 충돌"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입"
-"니다."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgstr "가우스가 정확하게 동작하지 않습니다. 아마도 완전히 설치되지 않은 것으로 보입니다."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
 msgid "&Gaussian..."
@@ -1357,9 +1319,8 @@ msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "진동(&V)..."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1379,9 +1340,7 @@ msgstr "Q-Chem 입력 데크 생성기 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the Q-"
 "Chem input deck preview pane?"
-msgstr ""
-"Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
-"업데이트 하시겠습니까?"
+msgstr "Q-Chem 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:162
 msgid "Save Molpro Input Deck"
@@ -1399,9 +1358,7 @@ msgstr "MOPAC 입력 경고"
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "MOPAC input deck preview pane?"
-msgstr ""
-"MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 "
-"업데이트 하시겠습니까?"
+msgstr "MOPAC 입력 데크 미리보기에서 만들어진 모든 변경사항을 잃고, 이전의 텍스트를 업데이트 하시겠습니까?"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 msgid "MOPAC Running."
@@ -1426,8 +1383,7 @@ msgstr "MOPAC을 시작하는데 실패했습니다"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr ""
-"MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
+msgstr "MOPAC이 시작되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
@@ -1439,9 +1395,7 @@ msgstr "MOPAC 충돌"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:242
 msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
-msgstr ""
-"MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니"
-"다."
+msgstr "MOPAC이 올바르게 실행되지 않았습니다. 아마도 올바르게 설치되지 않은 것 같습니다."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:294
 msgid "Save MOPAC Input Deck"
@@ -1519,7 +1473,7 @@ msgstr "잔류물에 의한 선택"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr "잔류물 이름"
 
@@ -1581,7 +1535,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1594,14 +1548,12 @@ msgid "Wavelength (nm)"
 msgstr ""
 
 #: src/extensions/spectra/cd.cpp:108
-#, fuzzy
 msgid "Intensity (arb. units)"
-msgstr "강도 (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "에너지"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1633,8 +1585,7 @@ msgid ""
 "intensity data. Intensities have been set to an arbitrary value for "
 "visualization."
 msgstr ""
-"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각"
-"화를 위해 임의의 값이 주어집니다."
+"지금 연 분자의 vibration 데이터에는 intensity 값이 없습니다. Intensity는 시각화를 위해 임의의 값이 주어집니다."
 
 #: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:140
 msgid "Wavenumber (cm<sup>-1</sup>)"
@@ -1645,14 +1596,12 @@ msgid "Shift (ppm)"
 msgstr ""
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "악티늄"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
-#, fuzzy
 msgid "Intensity"
-msgstr "강도 (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:91
 msgid "X Axis"
@@ -1664,13 +1613,13 @@ msgstr "Y 축"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "모양(&A)"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr "이미지 내보내기(&E)"
 
@@ -1698,9 +1647,8 @@ msgid "DOS"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:219
-#, fuzzy
 msgid "&Density Of States Settings"
-msgstr "자동 회전 설정"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:225
 msgctxt "Ultra-Violet spectrum"
@@ -1708,31 +1656,26 @@ msgid "UV"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:226
-#, fuzzy
 msgid "&UV Settings"
-msgstr "그리기 설정"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:232
-#, fuzzy
 msgctxt "Circular Dichromism spectrum"
 msgid "CD"
-msgstr "D"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:233
-#, fuzzy
 msgid "&CD Settings"
-msgstr "그리기 설정"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "라돈"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "그리기 설정"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:255
 msgid "No data"
@@ -1775,24 +1718,20 @@ msgid "Enter new name for current scheme:"
 msgstr "최근의 도표에 대한 새로운 이름 입력:"
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "선택된 색상"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "선택된 색상"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "계산된 스펙트럼:"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "가져온 스펙트럼:"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1847,16 +1786,14 @@ msgid "Turbomole IR data (control)"
 msgstr "Turbomole IR 데이터 (control)"
 
 #: src/extensions/spectra/spectradialog.cpp:611
-#, fuzzy
 msgctxt "Do not remove 'UV' or '(spectrum)' -- needed for parsing later"
 msgid "Turbomole UV data (spectrum)"
-msgstr "Turbomole IR 데이터 (control)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:612
-#, fuzzy
 msgctxt "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later"
 msgid "Turbomole CD data (cdspectrum)"
-msgstr "Turbomole IR 데이터 (control)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:616
 msgid "Data Format"
@@ -1932,16 +1869,14 @@ msgid "Image successfully written to %1"
 msgstr "%1 로 이미지가 성공적으로 쓰여졌습니다"
 
 #: src/extensions/spectra/spectradialog.cpp:1007
-#, fuzzy
 msgid "&Advanced <<"
-msgstr "고급"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
-#, fuzzy
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
-msgstr "고급"
+msgstr ""
 
 #: src/extensions/spectra/spectraextension.cpp:49
 msgid "&Spectra..."
@@ -1960,13 +1895,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "진동"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr "진동 계산"
 
@@ -1990,7 +1924,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr "애니메이션 시작(&A)"
 
@@ -2003,14 +1937,13 @@ msgstr "애니메이션 중지(&A)"
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
 msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "제약조건"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2176,9 +2109,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "단위 세포 삭제"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2195,13 +2127,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "적용"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "OK"
 
@@ -2498,9 +2430,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "자동설정: E = %1 %2 (dE = %3)"
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "제약조건"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2516,13 +2448,13 @@ msgstr "알고리즘:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2611,7 +2543,7 @@ msgstr "z 회전"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "초기화"
 
@@ -2758,7 +2690,7 @@ msgstr "측정 설정"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "원자 추가"
 
@@ -2808,7 +2740,7 @@ msgstr "원소:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "기타..."
 
@@ -2945,7 +2877,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2984,15 +2916,13 @@ msgstr "소수성"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "축"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Cartesian Axes"
-msgstr "Cartesian 정보"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -3001,27 +2931,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "사용자 정의 값"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "축:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "축:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "축:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3034,9 +2960,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "정렬:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3054,9 +2979,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:468
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Norm"
-msgstr "형식"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:478
 #. i18n: ectx: property (text), widget (QCheckBox, preserveNormsCheckBox)
@@ -3084,9 +3008,8 @@ msgstr "투명도:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "코발트"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3172,9 +3095,8 @@ msgstr "쌍극자 모멘트"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "사용자 정의 색상"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3214,43 +3136,37 @@ msgstr "각 잘라내기:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#, fuzzy
 msgid "Rendering Engine:"
-msgstr "렌더링:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:40
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "TextRenderer"
-msgstr "렌더링"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:45
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "QPainter"
-msgstr "물"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "원자 라벨:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "라벨"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "색상:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3283,9 +3199,8 @@ msgstr "원소 기호"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#, fuzzy
 msgid "Symbol & Number in Group"
-msgstr "기호 & 원자 번호"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3328,9 +3243,8 @@ msgstr "사용자 설정 값"
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "글꼴 변경..."
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3362,9 +3276,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "결합 라벨:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3520,15 +3433,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "보륨"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "진동"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3554,15 +3465,13 @@ msgstr "GAMESS 입력"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:112
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "GAMESS Input #2"
-msgstr "GAMESS 입력"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "Turbomole Input"
-msgstr "Turbomole IR 데이터 (control)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3576,9 +3485,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "모두 초기화"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3597,9 +3505,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "모두 지우기"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3619,10 +3526,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3634,9 +3541,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "없음"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4153,15 +4059,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:377
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "3-10 Helix"
-msgstr "나선"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:382
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "Pi Helix"
-msgstr "나선"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:387
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
@@ -4387,9 +4291,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "계산"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4829,9 +4732,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "폴더 열기"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -4979,9 +4881,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:917
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "BW"
-msgstr "B"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:922
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5244,9 +5145,8 @@ msgstr ""
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrdensSpin)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1251
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrorbSpin)
-#, fuzzy
 msgid "1.0D-"
-msgstr "10e-"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1273
 #. i18n: ectx: property (text), widget (QLabel, chargeint)
@@ -5255,9 +5155,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "구조 최적화"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5291,27 +5190,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "형식:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "in"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "ultrafine"
-msgstr "글루타민"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1404
 #. i18n: ectx: property (text), widget (QLabel, radscheme)
-#, fuzzy
 msgid "Radial Scheme:"
-msgstr "도표(&S):"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1421
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
@@ -5330,9 +5225,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "속성"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5341,21 +5235,18 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "에너지 계산"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
-#, fuzzy
 msgid "Frequency Dependent"
-msgstr "진동수"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
-#, fuzzy
 msgid "No. excitations:"
-msgstr "설명 없음"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7247,9 +7138,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:688
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
-#, fuzzy
 msgid "x"
-msgstr "픽셀"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:693
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
@@ -7258,9 +7148,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "내보내기"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7268,9 +7157,8 @@ msgstr "내보내기"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "스펙트럼"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7297,9 +7185,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "에너지"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7308,27 +7195,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "에너지"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "라벨"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Cell"
-msgstr "세포 생성"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "원자 시작"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7372,21 +7255,18 @@ msgstr "Y 축 단위:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:75
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Scaling Type:"
-msgstr "표면 형식:"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "선형 형태"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "음수"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7395,15 +7275,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#, fuzzy
 msgid "Intensities"
-msgstr "Intensity 값 없음"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "서식"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7469,9 +7347,8 @@ msgstr "분자 진동"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&파일"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7480,15 +7357,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:90
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "ν (cm⁻¹)"
-msgstr "진동수 (cm⁻¹)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:95
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "I (km/mol)"
-msgstr "강도 (km/mol)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:100
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
@@ -7497,9 +7372,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "스펙트럼"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -7665,9 +7539,8 @@ msgstr "단위 세포 채우기"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "매핑된 색상"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -7742,33 +7615,23 @@ msgstr "원자 제거하기"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon "
-"Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, ,"
-"Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee"
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Kim "
+"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-"
+"hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee, "
+",Launchpad Contributions:,Avogadro Team,Kim Hanjo,Sang-hyeon Lee,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-devel@lists.sourceforge."
-"net,lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
-"lordmiss@lordmiss.com,,,,avogadro-devel@lists.sourceforge.net,"
-"lordmiss@lordmiss.com,"
+",,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,lordmiss@lordmiss.com,,loniedavid@gmail.com"
 
 #~ msgid "Hydrogen"
 #~ msgstr "수소"
-
-#~ msgid "Helium"
-#~ msgstr "헬륨"
-
-#~ msgid "Lithium"
-#~ msgstr "리튬"
-
-#~ msgid "Beryllium"
-#~ msgstr "베릴륨"
-
-#~ msgid "Boron"
-#~ msgstr "붕소"
 
 #~ msgid "Carbon"
 #~ msgstr "탄소"
@@ -7779,26 +7642,20 @@ msgstr ""
 #~ msgid "Oxygen"
 #~ msgstr "산소"
 
-#~ msgid "Fluorine"
-#~ msgstr "불소(플루오르)"
-
-#~ msgid "Neon"
-#~ msgstr "네온"
-
-#~ msgid "Sodium"
-#~ msgstr "나트륨"
-
-#~ msgid "Magnesium"
-#~ msgstr "마그네슘"
-
-#~ msgid "Aluminum"
-#~ msgstr "알루미늄"
-
-#~ msgid "Silicon"
-#~ msgstr "규소"
-
 #~ msgid "Phosphorus"
 #~ msgstr "인"
+
+#~ msgid "Lithium"
+#~ msgstr "리튬"
+
+#~ msgid "Helium"
+#~ msgstr "헬륨"
+
+#~ msgid "Boron"
+#~ msgstr "붕소"
+
+#~ msgid "Beryllium"
+#~ msgstr "베릴륨"
 
 #~ msgid "Sulfur"
 #~ msgstr "황"
@@ -7806,11 +7663,23 @@ msgstr ""
 #~ msgid "Chlorine"
 #~ msgstr "염소"
 
-#~ msgid "Argon"
-#~ msgstr "아르곤"
+#~ msgid "Silicon"
+#~ msgstr "규소"
 
-#~ msgid "Potassium"
-#~ msgstr "칼륨"
+#~ msgid "Magnesium"
+#~ msgstr "마그네슘"
+
+#~ msgid "Aluminum"
+#~ msgstr "알루미늄"
+
+#~ msgid "Neon"
+#~ msgstr "네온"
+
+#~ msgid "Fluorine"
+#~ msgstr "불소(플루오르)"
+
+#~ msgid "Sodium"
+#~ msgstr "나트륨"
 
 #~ msgid "Calcium"
 #~ msgstr "칼슘"
@@ -7818,35 +7687,47 @@ msgstr ""
 #~ msgid "Scandium"
 #~ msgstr "스칸듐"
 
-#~ msgid "Titanium"
-#~ msgstr "티타늄"
+#~ msgid "Argon"
+#~ msgstr "아르곤"
 
-#~ msgid "Vanadium"
-#~ msgstr "바나듐"
-
-#~ msgid "Chromium"
-#~ msgstr "크롬"
+#~ msgid "Potassium"
+#~ msgstr "칼륨"
 
 #~ msgid "Manganese"
 #~ msgstr "망간"
 
-#~ msgid "Iron"
-#~ msgstr "철"
+#~ msgid "Vanadium"
+#~ msgstr "바나듐"
+
+#~ msgid "Titanium"
+#~ msgstr "티타늄"
 
 #~ msgid "Cobalt"
 #~ msgstr "코발트"
 
-#~ msgid "Nickel"
-#~ msgstr "니켈"
+#~ msgid "Iron"
+#~ msgstr "철"
+
+#~ msgid "Chromium"
+#~ msgstr "크롬"
 
 #~ msgid "Copper"
 #~ msgstr "구리"
 
-#~ msgid "Zinc"
-#~ msgstr "아연"
+#~ msgid "Nickel"
+#~ msgstr "니켈"
 
 #~ msgid "Gallium"
 #~ msgstr "갈륨"
+
+#~ msgid "Zinc"
+#~ msgstr "아연"
+
+#~ msgid "Rubidium"
+#~ msgstr "루비듐"
+
+#~ msgid "Krypton"
+#~ msgstr "크립톤"
 
 #~ msgid "Germanium"
 #~ msgstr "게르마늄"
@@ -7860,11 +7741,23 @@ msgstr ""
 #~ msgid "Bromine"
 #~ msgstr "브롬"
 
-#~ msgid "Krypton"
-#~ msgstr "크립톤"
+#~ msgid "Palladium"
+#~ msgstr "팔라듐"
 
-#~ msgid "Rubidium"
-#~ msgstr "루비듐"
+#~ msgid "Ruthenium"
+#~ msgstr "루테늄"
+
+#~ msgid "Rhodium"
+#~ msgstr "로듐"
+
+#~ msgid "Molybdenum"
+#~ msgstr "몰리브덴"
+
+#~ msgid "Technetium"
+#~ msgstr "테크네튬"
+
+#~ msgid "Silver"
+#~ msgstr "은"
 
 #~ msgid "Strontium"
 #~ msgstr "스트론튬"
@@ -7878,23 +7771,23 @@ msgstr ""
 #~ msgid "Niobium"
 #~ msgstr "니오브"
 
-#~ msgid "Molybdenum"
-#~ msgstr "몰리브덴"
+#~ msgid "Iodine"
+#~ msgstr "요오드"
 
-#~ msgid "Technetium"
-#~ msgstr "테크네튬"
+#~ msgid "Tellurium"
+#~ msgstr "텔루르"
 
-#~ msgid "Ruthenium"
-#~ msgstr "루테늄"
+#~ msgid "Xenon"
+#~ msgstr "크세논"
 
-#~ msgid "Rhodium"
-#~ msgstr "로듐"
+#~ msgid "Lanthanum"
+#~ msgstr "란탄"
 
-#~ msgid "Palladium"
-#~ msgstr "팔라듐"
+#~ msgid "Barium"
+#~ msgstr "바륨"
 
-#~ msgid "Silver"
-#~ msgstr "은"
+#~ msgid "Cesium"
+#~ msgstr "세슘"
 
 #~ msgid "Cadmium"
 #~ msgstr "카드뮴"
@@ -7908,35 +7801,23 @@ msgstr ""
 #~ msgid "Antimony"
 #~ msgstr "안티몬"
 
-#~ msgid "Tellurium"
-#~ msgstr "텔루르"
-
-#~ msgid "Iodine"
-#~ msgstr "요오드"
-
-#~ msgid "Xenon"
-#~ msgstr "크세논"
-
-#~ msgid "Cesium"
-#~ msgstr "세슘"
-
-#~ msgid "Barium"
-#~ msgstr "바륨"
-
-#~ msgid "Lanthanum"
-#~ msgstr "란탄"
+#~ msgid "Praseodymium"
+#~ msgstr "프라세오디뮴"
 
 #~ msgid "Cerium"
 #~ msgstr "세륨"
 
-#~ msgid "Praseodymium"
-#~ msgstr "프라세오디뮴"
+#~ msgid "Promethium"
+#~ msgstr "프로메튬"
 
 #~ msgid "Neodymium"
 #~ msgstr "네오디뮴"
 
-#~ msgid "Promethium"
-#~ msgstr "프로메튬"
+#~ msgid "Holmium"
+#~ msgstr "홀뮴"
+
+#~ msgid "Dysprosium"
+#~ msgstr "디스프로슘"
 
 #~ msgid "Samarium"
 #~ msgstr "사마륨"
@@ -7950,17 +7831,23 @@ msgstr ""
 #~ msgid "Terbium"
 #~ msgstr "테르븀"
 
-#~ msgid "Dysprosium"
-#~ msgstr "디스프로슘"
+#~ msgid "Rhenium"
+#~ msgstr "레늄"
 
-#~ msgid "Holmium"
-#~ msgstr "홀뮴"
+#~ msgid "Tungsten"
+#~ msgstr "텅스텐"
 
-#~ msgid "Erbium"
-#~ msgstr "에르븀"
+#~ msgid "Tantalum"
+#~ msgstr "탄탈"
 
-#~ msgid "Thulium"
-#~ msgstr "툴륨"
+#~ msgid "Hafnium"
+#~ msgstr "하프늄"
+
+#~ msgid "Iridium"
+#~ msgstr "이리듐"
+
+#~ msgid "Osmium"
+#~ msgstr "오스뮴"
 
 #~ msgid "Ytterbium"
 #~ msgstr "이테르븀"
@@ -7968,47 +7855,26 @@ msgstr ""
 #~ msgid "Lutetium"
 #~ msgstr "루테튬"
 
-#~ msgid "Hafnium"
-#~ msgstr "하프늄"
+#~ msgid "Erbium"
+#~ msgstr "에르븀"
 
-#~ msgid "Tantalum"
-#~ msgstr "탄탈"
-
-#~ msgid "Tungsten"
-#~ msgstr "텅스텐"
-
-#~ msgid "Rhenium"
-#~ msgstr "레늄"
-
-#~ msgid "Osmium"
-#~ msgstr "오스뮴"
-
-#~ msgid "Iridium"
-#~ msgstr "이리듐"
-
-#~ msgid "Platinum"
-#~ msgstr "백금"
-
-#~ msgid "Gold"
-#~ msgstr "금"
+#~ msgid "Thulium"
+#~ msgstr "툴륨"
 
 #~ msgid "Mercury"
 #~ msgstr "수은"
 
+#~ msgid "Gold"
+#~ msgstr "금"
+
+#~ msgid "Platinum"
+#~ msgstr "백금"
+
 #~ msgid "Thallium"
 #~ msgstr "탈륨"
 
-#~ msgid "Lead"
-#~ msgstr "납"
-
-#~ msgid "Bismuth"
-#~ msgstr "비스무트"
-
 #~ msgid "Polonium"
 #~ msgstr "폴로늄"
-
-#~ msgid "Astatine"
-#~ msgstr "아스타틴"
 
 #~ msgid "Radon"
 #~ msgstr "라돈"
@@ -8016,11 +7882,32 @@ msgstr ""
 #~ msgid "Francium"
 #~ msgstr "프란슘"
 
-#~ msgid "Radium"
-#~ msgstr "라듐"
+#~ msgid "Astatine"
+#~ msgstr "아스타틴"
 
-#~ msgid "Actinium"
-#~ msgstr "악티늄"
+#~ msgid "Lead"
+#~ msgstr "납"
+
+#~ msgid "Bismuth"
+#~ msgstr "비스무트"
+
+#~ msgid "Berkelium"
+#~ msgstr "버클륨"
+
+#~ msgid "Curium"
+#~ msgstr "퀴륨"
+
+#~ msgid "Neptunium"
+#~ msgstr "넵투늄"
+
+#~ msgid "Uranium"
+#~ msgstr "우라늄"
+
+#~ msgid "Americium"
+#~ msgstr "아메리슘"
+
+#~ msgid "Plutonium"
+#~ msgstr "플루토늄"
 
 #~ msgid "Thorium"
 #~ msgstr "토륨"
@@ -8028,35 +7915,26 @@ msgstr ""
 #~ msgid "Protactinium"
 #~ msgstr "프로탁티늄"
 
-#~ msgid "Uranium"
-#~ msgstr "우라늄"
+#~ msgid "Radium"
+#~ msgstr "라듐"
 
-#~ msgid "Neptunium"
-#~ msgstr "넵투늄"
+#~ msgid "Actinium"
+#~ msgstr "악티늄"
 
-#~ msgid "Plutonium"
-#~ msgstr "플루토늄"
-
-#~ msgid "Americium"
-#~ msgstr "아메리슘"
-
-#~ msgid "Curium"
-#~ msgstr "퀴륨"
-
-#~ msgid "Berkelium"
-#~ msgstr "버클륨"
-
-#~ msgid "Californium"
-#~ msgstr "칼리포르늄"
-
-#~ msgid "Einsteinium"
-#~ msgstr "아인슈타이늄"
+#~ msgid "Mendelevium"
+#~ msgstr "멘델레예븀"
 
 #~ msgid "Fermium"
 #~ msgstr "페르뮴"
 
-#~ msgid "Mendelevium"
-#~ msgstr "멘델레예븀"
+#~ msgid "Einsteinium"
+#~ msgstr "아인슈타이늄"
+
+#~ msgid "Californium"
+#~ msgstr "칼리포르늄"
+
+#~ msgid "Bohrium"
+#~ msgstr "보륨"
 
 #~ msgid "Nobelium"
 #~ msgstr "노벨륨"
@@ -8073,14 +7951,23 @@ msgstr ""
 #~ msgid "Seaborgium"
 #~ msgstr "시보귬"
 
-#~ msgid "Bohrium"
-#~ msgstr "보륨"
+#~ msgid "Ununseptium"
+#~ msgstr "운운셉튬"
 
-#~ msgid "Hassium"
-#~ msgstr "하슘"
+#~ msgid "Ununhexium"
+#~ msgstr "운운헥슘"
 
-#~ msgid "Meitnerium"
-#~ msgstr "마이트너륨"
+#~ msgid "Ununpentium"
+#~ msgstr "운운펜튬"
+
+#~ msgid "Ununquadium"
+#~ msgstr "운운쿼듐"
+
+#~ msgid "Ununtrium"
+#~ msgstr "운운트리움"
+
+#~ msgid "Ununbium"
+#~ msgstr "운운븀"
 
 #~ msgid "Darmstadtium"
 #~ msgstr "다름슈타튬"
@@ -8088,39 +7975,14 @@ msgstr ""
 #~ msgid "Roentgenium"
 #~ msgstr "뢴트게늄"
 
-#~ msgid "Ununbium"
-#~ msgstr "운운븀"
+#~ msgid "Hassium"
+#~ msgstr "하슘"
 
-#~ msgid "Ununtrium"
-#~ msgstr "운운트리움"
-
-#~ msgid "Ununquadium"
-#~ msgstr "운운쿼듐"
-
-#~ msgid "Ununpentium"
-#~ msgstr "운운펜튬"
-
-#~ msgid "Ununhexium"
-#~ msgstr "운운헥슘"
-
-#~ msgid "Ununseptium"
-#~ msgstr "운운셉튬"
+#~ msgid "Meitnerium"
+#~ msgstr "마이트너륨"
 
 #~ msgid "Ununoctium"
 #~ msgstr "운운옥튬"
-
-#~ msgid "Angle %1"
-#~ msgstr "각 %1"
-
-#~ msgid "Periodic Table"
-#~ msgstr "주기율표"
-
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "선택된 색상"
-
-#~ msgid "Open ligand file"
-#~ msgstr "리간드 파일 열기"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro 파일 (*.*)"
@@ -8128,80 +7990,83 @@ msgstr ""
 #~ msgid "Open mol file"
 #~ msgstr "mol 파일 열기"
 
+#~ msgid "Open ligand file"
+#~ msgstr "리간드 파일 열기"
+
+#~ msgid "Lin Morph..."
+#~ msgstr "Lin 형태..."
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "동영상 파일 (*.avi)"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "궤도 파일 (*.xyz)"
+
 #~ msgid "Any files (*.*)"
 #~ msgstr "모든 파일 (*.*)"
 
 #~ msgid "Save Movie File"
 #~ msgstr "동영상 파일 저장"
 
-#~ msgid "movie files (*.avi)"
-#~ msgstr "동영상 파일 (*.avi)"
+#, qt-format
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "%1 mol 파일 열기에 실패함"
+
+#, qt-format
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "%1 %2 두 원자가 서로 다른 번호를 가지고 있습니다"
+
+#, qt-format
+#~ msgid "Cannot save file %1."
+#~ msgstr "%1 파일을 저장할 수 없습니다"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
 #~ msgid "Save Traj File"
 #~ msgstr "궤도 파일 저장"
 
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "궤도 파일 (*.xyz)"
+#~ msgid "Create linear interpolation for animations"
+#~ msgstr "애니메이션을 위한 선형 보간법을 생성"
 
-#~ msgid "Lin Morph..."
-#~ msgstr "Lin 형태..."
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "%1 mol 파일 열기에 실패함"
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "%1 %2 두 원자가 서로 다른 번호를 가지고 있습니다"
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "GL 위젯이 촬영한 사진을 저장하기 위해 올바르게 초기화되지 않았습니다"
-
-#~ msgid "Cannot save file %1."
-#~ msgstr "%1 파일을 저장할 수 없습니다"
-
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr "GL 위젯이 동영상을 저장하기 위해 올바르게 초기화되지 않았습니다"
+#, qt-format
+#~ msgid "Wrote file %1."
+#~ msgstr "%1 파일로 작성됨"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함해야 합니다"
 
-#~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
-#~ msgstr ""
-#~ "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나"
-#~ "야 합니다"
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr "GL 위젯이 동영상을 저장하기 위해 올바르게 초기화되지 않았습니다"
 
+#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "%1 파일로 작성할 것입니다."
 
-#~ msgid "Wrote file %1."
-#~ msgstr "%1 파일로 작성됨"
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr "정확하지 않은 동영상 파일이름. 전체 디렉토리 경로를 포함하고, .avi로 끝나야 합니다"
 
-#~ msgid "Create linear interpolation for animations"
-#~ msgstr "애니메이션을 위한 선형 보간법을 생성"
-
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "원자 색인 %1"
 
-#~ msgid "Customi&ze <<"
-#~ msgstr "설정변경(&Z) <<"
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "각 %1"
 
 #~ msgid "Customi&ze >>"
 #~ msgstr "설정변경(&Z) >>"
 
-#~ msgid "MO 666"
-#~ msgstr "MO 666"
-
-#~ msgid "&Scale:"
-#~ msgstr "규모(&S):"
+#~ msgid "Customi&ze <<"
+#~ msgstr "설정변경(&Z) <<"
 
 #~ msgid "E&xport..."
 #~ msgstr "내보내기(&E)..."
 
 #~ msgctxt ""
-#~ "Should the navigate tool display visual cues about the action taking "
-#~ "place?"
+#~ "Should the navigate tool display visual cues about the action taking place?"
 #~ msgid ""
 #~ "\n"
 #~ "     </property>\n"
@@ -8219,3 +8084,12 @@ msgstr ""
 #~ msgstr ""
 #~ "디스플레이 영상 신호</문자열>\n"
 #~ "     </속성>"
+
+#~ msgid "&Scale:"
+#~ msgstr "규모(&S):"
+
+#~ msgid "MO 666"
+#~ msgstr "MO 666"
+
+#~ msgid "Periodic Table"
+#~ msgstr "주기율표"

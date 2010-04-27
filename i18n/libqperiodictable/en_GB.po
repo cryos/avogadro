@@ -5,61 +5,54 @@ msgstr ""
 "Project-Id-Version: _avogadro-en_GB\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-09-10 04:23+0000\n"
-"Last-Translator: Marcus D. Hanwell <Unknown>\n"
+"PO-Revision-Date: 2010-04-26 19:58+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
-#, fuzzy
 msgid "Official Name"
-msgstr "Chemical Name"
+msgstr ""
 
 #: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
 msgid "Atomic Number"
 msgstr "Atomic Number"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Atomic Number"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Cobalt"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Radius"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Calculating Electron Density"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Electrostatic Potential"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Electron Density"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -544,21 +537,23 @@ msgstr "Periodic Table"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo Fredz,"
-"Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,"
-"Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,"
-"cocoloco, ,Launchpad Contributions:,Gabriel Ruiz,Geoff Hutchison,Jen Ockwell,"
-"Marcus D. Hanwell,kuede, ,Launchpad Contributions:,Avogadro Team, ,Launchpad "
-"Contributions:,Avogadro Team,Brian Burns,Geoff Hutchison,Marcus D. Hanwell, ,"
-"Launchpad Contributions:,Avogadro Team,Brian Burns,Geoff Hutchison,Marcus D. "
-"Hanwell,ascenseur"
+",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
+"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
+"Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio "
+"Castillo A.,cocoloco, ,Launchpad Contributions:,Gabriel Ruiz,Geoff "
+"Hutchison,Jen Ockwell,Marcus D. Hanwell,kuede, ,Launchpad "
+"Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro Team,Brian "
+"Burns,Geoff Hutchison,Marcus D. Hanwell, ,Launchpad Contributions:,Avogadro "
+"Team,Brian Burns,Geoff Hutchison,Marcus D. Hanwell,ascenseur, ,Launchpad "
+"Contributions:,Avogadro Team"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,"
-"patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
-"com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,debianmaster@gmail.com,,"
-"jenfraggleubuntu@googlemail.com,,,,,avogadro-devel@lists.sourceforge.net,,,"
-"avogadro-devel@lists.sourceforge.net,bburns@aundae.com,,,,,avogadro-"
-"devel@lists.sourceforge.net,bburns@aundae.com,,,joseph.odell@googlemail.com"
+",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,pat"
+"ricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pc"
+"zoido@gmail.com,,jalvarezrom@gmail.com,,,debianmaster@gmail.com,,jenfraggleub"
+"untu@googlemail.com,,,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,bburns@aundae.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,bburns@aundae.com,,,joseph.odell@googlemail.com,,"
+",avogadro-devel@lists.sourceforge.net"

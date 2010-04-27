@@ -3,61 +3,54 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-11-03 17:28+0000\n"
+"PO-Revision-Date: 2010-04-26 20:40+0000\n"
 "Last-Translator: Louis Ricard <louis.ricard@polytechnique.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
-#, fuzzy
 msgid "Official Name"
-msgstr "Nom chimique"
+msgstr ""
 
 #: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
 msgid "Atomic Number"
 msgstr "Numéro atomique"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Numéro atomique"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Cobalt"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Rayon"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Calcul de la densité électronique en cours"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Potentiel électrostatique"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Densité électronique"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -542,21 +535,22 @@ msgstr "Tableau périodique"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis Ricard,Maijin,"
-"Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff Hutchison,"
-"Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, ,Launchpad "
-"Contributions:,Benoit Jacob,Louis Ricard,alfred002, ,Launchpad "
+",Launchpad Contributions:,Geoff Hutchison,Laurent Peuch,Louis "
+"Ricard,Maijin,Nizar Kerkeni, ,Launchpad Contributions:,Benoit Jacob,Geoff "
+"Hutchison,Laurent Peuch,Louis Ricard,Maijin,Mathieu Pasquet,Nizar Kerkeni, "
+",Launchpad Contributions:,Benoit Jacob,Louis Ricard,alfred002, ,Launchpad "
 "Contributions:,Benoit Jacob,Louis Ricard,alfred002,belbeoch, ,Launchpad "
-"Contributions:,Benoit Jacob,Louis Ricard,alfred002,belbeoch"
+"Contributions:,Benoit Jacob,Louis Ricard,alfred002,belbeoch, ,Launchpad "
+"Contributions:,Louis Ricard"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,"
-"psycojoker@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail."
-"com,,,jacob.benoit.1@gmail.com,,psycojoker@gmail.com,louis."
-"ricard@polytechnique.edu,,,nizar.kerkeni@gmail.com,,,jacob.benoit.1@gmail."
-"com,louis.ricard@polytechnique.edu,alfred002@gmail.com,,,jacob."
-"benoit.1@gmail.com,louis.ricard@polytechnique.edu,alfred002@gmail.com,"
-"simbelbeoch@hotmail.fr,,,jacob.benoit.1@gmail.com,louis.ricard@polytechnique."
-"edu,alfred002@gmail.com,simbelbeoch@hotmail.fr"
+"benoitjacob@users.sourceforge.net,louis.ricard@polytechnique.fr,,,,psycojoker"
+"@gmail.com,louis.ricard@polytechnique.edu,,nizar.kerkeni@gmail.com,,,jacob.be"
+"noit.1@gmail.com,,psycojoker@gmail.com,louis.ricard@polytechnique.edu,,,nizar"
+".kerkeni@gmail.com,,,jacob.benoit.1@gmail.com,louis.ricard@polytechnique.edu,"
+"alfred002@gmail.com,,,jacob.benoit.1@gmail.com,louis.ricard@polytechnique.edu"
+",alfred002@gmail.com,simbelbeoch@hotmail.fr,,,jacob.benoit.1@gmail.com,louis."
+"ricard@polytechnique.edu,alfred002@gmail.com,simbelbeoch@hotmail.fr,,,louis.r"
+"icard@polytechnique.edu"
