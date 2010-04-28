@@ -427,7 +427,7 @@ then
     do
         echo "    $file"
     done
-    echo "  will be installed to \'$(getVar $manifest Category)\' directory"
+    echo "  will be installed to '$(getVar $manifest Category)' directory"
     
     # Clean up
     cd "$oldpwd"
