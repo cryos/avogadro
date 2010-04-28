@@ -2906,7 +2906,12 @@ namespace Avogadro
         QStringList menuPath = menuPathString.split( '>' );
         // Root menus are a special case, we need to check menuBar()
         foreach( QAction *menu, menuBar()->actions() ) {
-          if ( menu->text() == menuPath.at( 0 ) ) {
+          // Strip "&" off of comparison to prevent "duplicate" menus.
+          QString cleanedExtensionMenu = menuPath.at(0);
+          QString cleanedMenu = menu->text();
+          cleanedExtensionMenu.remove('&');
+          cleanedMenu.remove('&');
+          if (cleanedMenu == cleanedExtensionMenu) {
             path = menu->menu();
             break;
           }
