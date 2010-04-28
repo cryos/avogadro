@@ -49,8 +49,9 @@ class Extension(QObject):
 
     return actions
 
+  # "&" indicates keyboard accelerator (S) which is default.
   def menuPath(self, action):
-    return "Scripts"
+    return "&Scripts"
 
   def performAction(self, action, glwidget):
     self.emit(SIGNAL("message(const QString&)"), "performing action...")
