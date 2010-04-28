@@ -408,7 +408,7 @@ then
     
     cd $package
     echo "Avogadro plugin \"$(getMultiVar $manifest Name)\""
-    if !($(getBoolVar $manifest Python))
+    if ! $(getBoolVar $manifest Python)
     then
       if test $(getVar $manifest SizeofVoidP) = 4
       then
@@ -523,7 +523,7 @@ then
     mkdir -p .tmp/$package
     cp $2 .tmp/$package/$package.$MANIFEST_EXT
     
-    if !($(getBoolVar $2 Python))
+    if ! $(getBoolVar $2 Python)
     then
         # Add OS & CPU architecture information to manifest 
         # (if not already specified)
