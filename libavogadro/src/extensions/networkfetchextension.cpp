@@ -115,7 +115,7 @@ namespace Avogadro
         return 0;
       // Hard coding the PDB download URL - this could be used for other services
       m_network->get(QNetworkRequest(
-          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf")));
+          QUrl("http://cactus.nci.nih.gov/chemical/structure/" + structureName + "/sdf?get3d=true")));
 
       *m_moleculeName = structureName + ".sdf";
     }
