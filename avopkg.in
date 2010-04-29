@@ -625,7 +625,7 @@ else
                     if test $(getVar $manifest Version) -gt $(getVar .mf Version)
                     then
                         echo "Upgrading package $package..."
-                        "$0" -remove $package >& /dev/null
+                        "$0" -remove $package > /dev/null
                         reinstall=2
                     else
                         echo "WARNING! Package $package is already installed."                    
