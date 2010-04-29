@@ -27,19 +27,22 @@
 #include <avogadro/atom.h>
 #include <avogadro/bond.h>
 
-#include <QPushButton>
-#include <QButtonGroup>
-#include <QDebug>
-#include <QFileDialog>
-#include <QFile>
-#include <QMessageBox>
+#include <QtGui/QPushButton>
+#include <QtGui/QButtonGroup>
+#include <QtGui/QMessageBox>
+#include <QtGui/QFileDialog>
+
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtCore/QSettings>
 
 namespace Avogadro {
 
   GamessInputDialog::GamessInputDialog( GamessInputData *inputData,
     QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ),
-    m_inputData(NULL), m_advancedChanged( false )
+    m_inputData(NULL), m_advancedChanged( false ), m_savePath("")
   {
+    readSettings();
     setInputData(inputData);
 
     ui.setupUi(this);
@@ -66,7 +69,9 @@ namespace Avogadro {
   // TODO on SHOW we need to update the current view.
 
   GamessInputDialog::~GamessInputDialog()
-  {}
+  {
+      writeSettings();
+  }
 
   void GamessInputDialog::setInputData(GamessInputData *inputData)
   {
@@ -1635,8 +1640,12 @@ namespace Avogadro {
   {
     QFileInfo defaultFile(m_inputData->m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
+    if(m_savePath == "") {
+      if (defaultPath.isEmpty())
+        defaultPath = QDir::homePath();
+    } else {
+      defaultPath = m_savePath;
+    }
 
     QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
@@ -1648,6 +1657,7 @@ namespace Avogadro {
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
 
     file.write(ui.previewText->toPlainText().toUtf8());
+    m_savePath = QFileInfo(file).absolutePath();
   }
 
   // Basic Slots
@@ -2414,6 +2424,18 @@ namespace Avogadro {
   void GamessInputDialog::setStatPointFollow( int val )
   {
     m_inputData->StatPt->SetModeFollow(val);
+  }
+  
+  void GamessInputDialog::readSettings()
+  {
+    QSettings settings;
+    m_savePath = settings.value("gamess/savepath").toString();
+  }
+  
+  void GamessInputDialog::writeSettings()
+  {
+    QSettings settings;
+    settings.setValue("gamess/savepath", m_savePath);
   }
 }
 

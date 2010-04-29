@@ -44,6 +44,8 @@ namespace Avogadro
       ~GamessInputDialog();
 
       void setInputData ( GamessInputData *inputData );
+      void readSettings();
+      void writeSettings();
 
     protected:
       //! Create dialog tabs
@@ -68,6 +70,7 @@ namespace Avogadro
 
     private:
       Ui::GamessInputDialog ui;
+      QString m_savePath;
       GamessInputData *m_inputData;
       GamessHighlighter *m_highlighter;
 
