@@ -372,7 +372,7 @@ namespace Avogadro {
       result = tr("Roentgenium");
       break;
     case 112:
-      result = tr("Ununbium");
+      result = tr("Copernicium");
       break;
     case 113:
       result = tr("Ununtrium");
