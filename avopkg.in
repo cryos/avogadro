@@ -262,6 +262,13 @@ then
     exit 255
 fi
 
+if test "$1" = "-test"
+then
+               ########## Run tests ##########
+    testSystem
+    exit 0
+fi
+
 if test "$1" = "-wizard"
 then
             ########## Create manifest ##########
