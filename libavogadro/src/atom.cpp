@@ -216,6 +216,17 @@ using Eigen::Vector3d;
      return formalcharge;
    }
 
+   QString Atom::customLabel() const
+   {
+     #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99     
+      // qDebug() << "label=" << 
+      // return QString(m_molecule->OBMol()->);
+       return "A";
+     #else
+       return "";
+     #endif
+   }
+
    void Atom::setResidue(unsigned long id)
    {
      m_residue = id;
@@ -242,6 +253,27 @@ using Eigen::Vector3d;
    }
 
    OpenBabel::OBAtom Atom::OBAtom()
+   {
+     // Need to copy all relevant data over to the OBAtom
+     OpenBabel::OBAtom obatom;
+     const Vector3d *v = m_molecule->atomPos(m_id);
+     obatom.SetVector(v->x(), v->y(), v->z());
+     obatom.SetAtomicNum(m_atomicNumber);
+     obatom.SetFormalCharge(m_formalCharge);
+
+     // Add dynamic properties as OBPairData
+     OpenBabel::OBPairData *obproperty;
+     foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute(propertyName.data());
+       obproperty->SetValue(property(propertyName).toByteArray().data());
+       obatom.SetData(obproperty);
+     }
+
+     return obatom;
+   }
+
+   const OpenBabel::OBAtom Atom::OBAtom() const
    {
      // Need to copy all relevant data over to the OBAtom
      OpenBabel::OBAtom obatom;
