@@ -325,7 +325,7 @@ namespace Avogadro
     return true;
   }
 
-  inline double BSDYEngine::radius(const Atom *atom) const
+  double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->atomicNumber()) {
       switch (m_atomRadiusType) {

@@ -63,6 +63,7 @@ namespace Avogadro {
       QDialog( parent, f )
   {
     ui.setupUi(this);
+    setWindowFlags(Qt::Window);
     ui.dataTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
     // Set up spectra variables
@@ -1011,10 +1012,10 @@ namespace Avogadro {
       QSize s = size();
       s.setWidth(s.width() + ui.dataTable->size().width());
       s.setHeight(s.height() + ui.tab_widget->size().height());
-      resize(s);
-      //adjustSize();
-      //QRect rect = QApplication::desktop()->geometry();
       QRect rect = QApplication::desktop()->screenGeometry();
+      if (s.width() > rect.width() || s.height() > rect.height())
+        s = rect.size()*0.9;
+      resize(s);
       move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }
     else {
@@ -1026,8 +1027,6 @@ namespace Avogadro {
       ui.tab_widget->hide();
       ui.dataTable->hide();
       ui.push_exportData->hide();
-      //adjustSize();
-      //QRect rect = QApplication::desktop()->geometry();
       QRect rect = QApplication::desktop()->screenGeometry();
       move(rect.width()/2 - s.width()/2, rect.height()/2 - s.height()/2);
     }

@@ -137,7 +137,9 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -w2 -Weffc++ -wd2012,2015")
   else(EXTRA_WARNINGS)
     # 810 - conversion to float
-    set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -wd810")
+    # 383 - value copied to temporary, reference to temporary used
+    # 1418 - external function definition with no prior declaration
+    set (CMAKE_CXX_FLAGS_WARN "${CMAKE_CXX_FLAGS_WARN} -wd383,810,1418")
   endif(EXTRA_WARNINGS)
   add_definitions (-D_BSD_SOURCE)
   # Set some linker flags

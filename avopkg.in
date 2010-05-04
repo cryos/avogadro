@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#  Avogadro Package Manager v 1.0
+#  Avogadro Package Manager v 1.1
 #  Copyright (C) 2010 Konstantin Tokarev
 #
 #  For more information about Avogadro, see
@@ -260,6 +260,13 @@ if test "x$1" = "x"
 then
     printUsage
     exit 255
+fi
+
+if test "$1" = "-test"
+then
+               ########## Run tests ##########
+    testSystem
+    exit 0
 fi
 
 if test "$1" = "-wizard"
