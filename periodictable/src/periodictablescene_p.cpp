@@ -162,8 +162,8 @@ namespace Avogadro {
     addItem(item);
 
     element = 103;
-
-    for (int i = 2; i < 16; ++i) {
+    // Goes up to element 118
+    for (int i = 2; i < 18; ++i) {
       item = new ElementItem(element++);
       item->setPos(i * width, 6 * height);
       addItem(item);
