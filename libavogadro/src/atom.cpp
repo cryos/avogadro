@@ -51,16 +51,18 @@ using Eigen::Vector3d;
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
                                  m_forceVector(0.0, 0.0, 0.0),
-                                 m_customLabel(""), m_customColor(0,0,0)
+                                 m_customLabel("")
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
      }
      m_molecule = static_cast<Molecule*>(parent);
+     m_customColor = new QColor;
    }
 
    Atom::~Atom()
    {
+     delete m_customColor;
    }
 
    const Eigen::Vector3d * Atom::pos() const

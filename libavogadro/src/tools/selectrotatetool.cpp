@@ -332,7 +332,6 @@ namespace Avogadro {
             widget->clearSelected();
             break;
           }
-          qDebug() << "TODO: show popup menu with bond properties";
         }
       } else {
         widget->clearSelected();
@@ -482,11 +481,18 @@ namespace Avogadro {
   void SelectRotateTool::changeAtomColor()
   {
      QColor color;
+     QColor *oldColor = 0;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
-       if (!a) return;     
-       color = QColorDialog::getColor(a->customColor(), 0, tr("Change color of atom"));
-       if (color.isValid() && color != a->customColor())
+       if (!a) return;
+       oldColor = a->customColor();
+       if(!oldColor->isValid()) {
+         Color *map = GLWidget::current()->colorMap(); // fall back to global color map
+         map->setFromPrimitive(a);
+         oldColor->setRgb(map->color().rgb());
+       }
+       color = QColorDialog::getColor(*oldColor, 0, tr("Change color of atom"));
+       if (color.isValid() && color != *(a->customColor()))
          a->setCustomColor(color);
      }
   }

@@ -116,7 +116,7 @@ namespace Avogadro {
 
     void setCustomLabel(const QString &label) {  m_customLabel = label; }
 
-    void setCustomColor(const QColor &color) { m_customColor = color; }
+    void setCustomColor(const QColor &color) { m_customColor->setRgb(color.rgb()); }
     /** @} */
 
 
@@ -180,7 +180,7 @@ namespace Avogadro {
 
     QString customLabel() const { return m_customLabel; }
 
-    QColor customColor() const {return m_customColor; }
+    QColor* customColor() const {return m_customColor; }
 
     /**
      * @return The force vector on this atom (if any)
@@ -268,7 +268,7 @@ namespace Avogadro {
     int m_formalCharge;
     Eigen::Vector3d m_forceVector;
     QString m_customLabel;
-    QColor m_customColor;
+    QColor *m_customColor;
     Q_DECLARE_PRIVATE(Atom)
   };
 
