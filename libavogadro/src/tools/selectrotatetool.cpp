@@ -44,6 +44,8 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 #include <QDebug>
+#include <QColorDialog>
+#include <QInputDialog>
 
 using namespace std;
 using namespace OpenBabel;
@@ -62,6 +64,9 @@ namespace Avogadro {
           "Right click outside the molecule to clear selection\n"
           "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
+    m_contextMenu = new QMenu;
+    m_contextMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
+    m_contextMenu->addAction("Change color...", this, SLOT(changeAtomColor()));
   }
 
   SelectRotateTool::~SelectRotateTool()
@@ -69,6 +74,7 @@ namespace Avogadro {
     if(m_settingsWidget) {
       m_settingsWidget->deleteLater();
     }
+    m_contextMenu->deleteLater();
   }
 
   int SelectRotateTool::usefulness() const
@@ -314,13 +320,24 @@ namespace Avogadro {
         widget->clearSelected();
       // Set the selection
       widget->setSelected(hitList, true);
-    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
-      event->accept();
+    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {      
       if (m_hits.size()) {
-        qDebug() << "TODO: show popup menu with properties";
+        foreach(const GLHit& hit, m_hits) {
+          if(hit.type() == Primitive::AtomType) {// Atom selection
+            Atom *atom = molecule->atom(hit.name());
+            hitList.append(atom);
+            widget->toggleSelected(hitList);
+            m_currentPrimitive = atom;
+            m_contextMenu->exec(event->globalPos());
+            widget->clearSelected();
+            break;
+          }
+          qDebug() << "TODO: show popup menu with bond properties";
+        }
       } else {
         widget->clearSelected();
       }
+      event->accept();
     }
 
     widget->update();
@@ -461,6 +478,33 @@ namespace Avogadro {
 
     return true;
   }
+
+  void SelectRotateTool::changeAtomColor()
+  {
+     QColor color;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;     
+       color = QColorDialog::getColor(a->customColor(), 0, tr("Change color of atom"));
+       if (color.isValid() && color != a->customColor())
+         a->setCustomColor(color);
+     }
+  }
+
+  void SelectRotateTool::changeAtomLabel()
+  {
+     bool ok;
+     QString label;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;     
+       label = QInputDialog::getText(0, tr("Change atom label"),
+                    tr("New atom label:"), QLineEdit::Normal,a->customLabel(), &ok);
+       if (ok && !label.isEmpty())
+         a->setCustomLabel(label);
+     }
+  }
+
 }
 
 Q_EXPORT_PLUGIN2(selectrotatetool, Avogadro::SelectRotateToolFactory)

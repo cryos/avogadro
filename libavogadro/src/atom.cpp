@@ -50,7 +50,8 @@ using Eigen::Vector3d;
                                  m_atomicNumber(0),
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
-                                 m_forceVector(0.0, 0.0, 0.0)
+                                 m_forceVector(0.0, 0.0, 0.0),
+                                 m_customLabel(""), m_customColor(0,0,0)
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
@@ -216,17 +217,6 @@ using Eigen::Vector3d;
      return formalcharge;
    }
 
-   QString Atom::customLabel() const
-   {
-     #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99     
-      // qDebug() << "label=" << 
-      // return QString(m_molecule->OBMol()->);
-       return "A";
-     #else
-       return "";
-     #endif
-   }
-
    void Atom::setResidue(unsigned long id)
    {
      m_residue = id;
@@ -299,6 +289,9 @@ using Eigen::Vector3d;
      // Copy all needed OBAtom data to our atom
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
+     // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+     // m_customLabel = obatom->GetCustomLabel();
+     // #endif
      if (obatom->GetFormalCharge() != 0)
        m_formalCharge = obatom->GetFormalCharge();
 
@@ -325,6 +318,8 @@ using Eigen::Vector3d;
        qDebug() << "Atom position returned null.";
      m_atomicNumber = other.m_atomicNumber;
      m_formalCharge = other.m_formalCharge;
+     m_customLabel = other.m_customLabel;
+     m_customColor = other.m_customColor;
      return *this;
    }
 

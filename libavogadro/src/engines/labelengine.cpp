@@ -160,7 +160,7 @@ Bond *dummyBond;*/
     unsigned int gi;
     
     str = QString(a->customLabel());
-    if (str.length() == 0) {
+    if (str.isEmpty()) {
      switch(m_atomType) {
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
