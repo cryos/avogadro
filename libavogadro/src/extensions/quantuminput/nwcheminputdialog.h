@@ -28,12 +28,11 @@
 
 #include <QDialog>
 
-#include <avogadro/glwidget.h>
-
 #include "ui_nwcheminputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;
   class NWChemInputDialog : public QDialog
   {
   Q_OBJECT

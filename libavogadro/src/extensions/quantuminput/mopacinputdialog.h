@@ -29,13 +29,13 @@
 #include <QDialog>
 #include <QProcess>
 #include <QProgressDialog>
-
-#include <avogadro/glwidget.h>
+#include <QSettings>
 
 #include "ui_mopacinputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;
   class MOPACInputDialog : public QDialog
   {
   Q_OBJECT
@@ -45,7 +45,6 @@ namespace Avogadro
     ~MOPACInputDialog();
 
     void setMolecule(Molecule *molecule);
-    void setWidget(GLWidget *widget);
 
     enum calculationType{SP, OPT, FREQ};
     enum theoryType{AM1, MNDO, MNDOD, PM3, PM6, RM1};

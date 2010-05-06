@@ -27,12 +27,11 @@
 
 #include <QDialog>
 
-#include <avogadro/glwidget.h>
-
 #include "ui_molproinputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;
   class MolproInputDialog : public QDialog
   {
   Q_OBJECT
