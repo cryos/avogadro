@@ -2,6 +2,7 @@
   MolproInputDialog - Dialog for generating MOLPRO input decks
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
+  Some portions (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -111,8 +112,8 @@ namespace Avogadro
       m_warned = true;
       QMessageBox msgBox;
 
-      msgBox.setWindowTitle(tr("Q-Chem Input Deck Generator Warning"));
-      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Q-Chem input deck preview pane?"));
+      msgBox.setWindowTitle(tr("Molpro Input Deck Generator Warning"));
+      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Molpro input deck preview pane?"));
       msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 
       switch (msgBox.exec()) {
@@ -158,9 +159,9 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".qcin";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Molpro Input Deck"),
-                                defaultFileName, tr("Molpro Input Deck (*.qcin)"));
+                                defaultFileName, tr("Molpro Input Deck (*.inp)"));
     QFile file(fileName);
     // FIXME This really should pop up a warning if the file cannot be opened
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
