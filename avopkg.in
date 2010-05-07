@@ -51,7 +51,7 @@ then
 else
     USER_NATIVE_PLUGIN_PATH="$HOME/.$PLUGIN_DIR/plugins"
     USER_PYTHON_PLUGIN_PATH="$HOME/.avogadro"
-    DB_FILE="$HOME/.avogadro/plugindb"
+    DB_FILE="$HOME/.$PLUGIN_DIR/plugindb"
 fi
 
 # Helper functions
