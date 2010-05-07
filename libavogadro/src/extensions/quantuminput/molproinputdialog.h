@@ -27,12 +27,11 @@
 
 #include <QDialog>
 
-#include <avogadro/glwidget.h>
-
 #include "ui_molproinputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;
   class MolproInputDialog : public QDialog
   {
   Q_OBJECT
@@ -60,6 +59,7 @@ namespace Avogadro
 
     // Internal data structure for the calculation
     QString m_title;
+    bool m_2009;
     calculationType m_calculationType;
     theoryType m_theoryType;
     basisType m_basisType;
@@ -94,6 +94,7 @@ namespace Avogadro
     void previewEdited();
 
     void setTitle();
+    void setVersion(int);
     void setCalculation(int);
     void setTheory(int);
     void setBasis(int);

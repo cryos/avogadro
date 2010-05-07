@@ -12,12 +12,11 @@
 
 #include <QDialog>
 
-#include <avogadro/glwidget.h>
-
 #include "ui_daltoninputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;
   class DaltonInputDialog : public QDialog
   {
     Q_OBJECT
