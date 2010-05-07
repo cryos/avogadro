@@ -29,13 +29,13 @@
 #include <QDialog>
 #include <QProcess>
 #include <QProgressDialog>
-
-#include <avogadro/glwidget.h>
+#include <QSettings>
 
 #include "ui_gaussianinputdialog.h"
 
 namespace Avogadro
 {
+  class Molecule;    
   class GaussianInputDialog : public QDialog
   {
     Q_OBJECT
