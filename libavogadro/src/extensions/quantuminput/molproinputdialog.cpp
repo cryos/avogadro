@@ -2,6 +2,7 @@
   MolproInputDialog - Dialog for generating MOLPRO input decks
 
   Copyright (C) 2008-2009 Marcus D. Hanwell
+  Some portions (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -42,12 +43,14 @@ namespace Avogadro
   MolproInputDialog::MolproInputDialog(QWidget *parent, Qt::WindowFlags f)
     : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
     m_theoryType(RHF), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
-    m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
+    m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_2009(false)
   {
     ui.setupUi(this);
     // Connect the GUI elements to the correct slots
     connect(ui.titleLine, SIGNAL(editingFinished()),
         this, SLOT(setTitle()));
+    connect(ui.versionCombo, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(setVersion(int)));
     connect(ui.calculationCombo, SIGNAL(currentIndexChanged(int)),
         this, SLOT(setCalculation(int)));
     connect(ui.theoryCombo, SIGNAL(currentIndexChanged(int)),
@@ -111,8 +114,8 @@ namespace Avogadro
       m_warned = true;
       QMessageBox msgBox;
 
-      msgBox.setWindowTitle(tr("Q-Chem Input Deck Generator Warning"));
-      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Q-Chem input deck preview pane?"));
+      msgBox.setWindowTitle(tr("Molpro Input Deck Generator Warning"));
+      msgBox.setText(tr("Would you like to update the preview text, losing all changes made in the Molpro input deck preview pane?"));
       msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 
       switch (msgBox.exec()) {
@@ -158,9 +161,9 @@ namespace Avogadro
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
 
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".qcin";
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Molpro Input Deck"),
-                                defaultFileName, tr("Molpro Input Deck (*.qcin)"));
+                                defaultFileName, tr("Molpro Input Deck (*.inp)"));
     QFile file(fileName);
     // FIXME This really should pop up a warning if the file cannot be opened
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -198,6 +201,15 @@ namespace Avogadro
   void MolproInputDialog::setTitle()
   {
     m_title = ui.titleLine->text();
+    updatePreviewText();
+  }
+
+  void MolproInputDialog::setVersion(int n)
+  {
+    if (n == 1)
+      m_2009 = true;
+    else
+      m_2009 = false;
     updatePreviewText();
   }
 
@@ -262,10 +274,14 @@ namespace Avogadro
     // Cartesian coordinates
     if (m_molecule && m_coordType == CARTESIAN)
     {
-      mol << "geomtyp=xyz" << '\n';
+      if (!m_2009) {
+        mol << "geomtyp=xyz" << '\n';
+      }
       mol << "geometry={" << '\n';
-      mol << m_molecule->numAtoms() << '\n';
-      mol << '\n';
+      if (!m_2009) {
+        mol << m_molecule->numAtoms() << '\n';
+        mol << '\n';
+      }
       QList<Atom *> atoms = m_molecule->atoms();
       foreach (Atom *atom, atoms) {
         mol << qSetFieldWidth(2) << left
@@ -303,20 +319,25 @@ namespace Avogadro
         if (atom->GetIdx() > 1)
           mol << "   r" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << r << qSetFieldWidth(0) << '\n';
+              << r << qSetFieldWidth(0) << " ang\n";
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << '\n';
+              << w << qSetFieldWidth(0) << " ang\n";
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << '\n';
+              << t << qSetFieldWidth(0) << " ang\n";
+      }
+      if(m_2009) {
+        mol << "symmetry,nosym" << '\n';
       }
       mol << "geometry={" << '\n';
-      mol << '\n';
-      mol << "nosym" << '\n'; /* FIXME */
-      mol << "ang" << '\n';
+      //mol << '\n';
+      if(!m_2009) {
+        mol << "nosym" << '\n'; /* FIXME */
+        mol << "ang" << '\n';
+      }
       FOR_ATOMS_OF_MOL(atom, &obmol)
       {
         a = vic[atom->GetIdx()]->_a;
@@ -346,8 +367,10 @@ namespace Avogadro
       double r, w, t;
 
       mol << "geometry={" << '\n';
-      mol << "nosym" << '\n'; /* FIXME */
-      mol << "ang" << '\n';
+      if(!m_2009) {
+        mol << "nosym" << '\n'; /* FIXME */
+        mol << "ang" << '\n';
+      }
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
       vic.push_back((OpenBabel::OBInternalCoord*)NULL);
