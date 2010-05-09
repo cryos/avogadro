@@ -119,7 +119,12 @@ namespace Avogadro{
     //painter->setPen(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter());
 
     //painter->fillRect(rect, *m_color);
+    QFont f = painter->font();
+    f.setBold(true);
+    painter->setFont(f);
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
+    f.setBold(false);
+    painter->setFont(f);
   }
 
 } // End namespace Avogadro
