@@ -32,6 +32,7 @@
 
 # My name
 WHOAMI="`basename \"$0\"`" # "avopkg" by default
+VERSION_INFO="Avopkg 1.1"
 
 # Settings
 PACK_CMD="tar czf"
@@ -225,7 +226,7 @@ cleanupDB()
 #                     Main script                              #
 ################################################################
 
-echo "Avopkg v1.0"
+echo $VERSION_INFO
 
 # Find directory for temporary files (stored in $TMP_PATH)
 # 1. Check $TMPDIR variable
