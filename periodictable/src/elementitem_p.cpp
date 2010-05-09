@@ -3,6 +3,7 @@
  Avogadro
 
  Copyright (C) 2007-2009 by Marcus D. Hanwell
+ Some portions (C) 2010 by Konstantin Tokarev
 
  This file is part of the Avogadro molecular editor project.
  For more information, see <http://avogadro.openmolecules.net/>
@@ -102,15 +103,20 @@ namespace Avogadro{
         pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
       else {*/
         //painter->setPen(Qt::black);
+
+      // In, Sn, and Sb don't look good when not selected,
+      // Pb when selected
+      if (((m_element >= 49) && (m_element <= 51) && !isSelected())
+           || ((m_element == 82) && isSelected())) {
+        pen.setColor(Qt::black);
+      } else {
         if (bgColor.value() < 105)
           pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter(150));
-          //pen.setColor(Qt::white);
         else if (bgColor.value() > 200)
           pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
-          //pen.setColor(Qt::black);
         else
           pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())));
-     // }
+      }
     pen.setWidth(2);
     if (m_element <103)
       painter->setPen(pen);
