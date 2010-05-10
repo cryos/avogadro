@@ -15,7 +15,7 @@
 #  The above copyright notice and this permission notice shall be included in
 #  all copies or substantial portions of the Software.
 
-PREFIX="@CMAKE_INSTALL_PREFIX@"
+PREFIX="@USER_PREFIX@"
 LIB_DIR="lib@LIB_SUFFIX@"
 PLUGIN_DIR="avogadro@Plugin_Version@"
 PYTHON_ENABLED="@ENABLE_PYTHON@"
