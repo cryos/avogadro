@@ -16,7 +16,7 @@
 
 #include <QString>
 #include <QTextStream>
-#include <QFileDialog>
+//#include <QFileDialog>
 #include <QMessageBox>
 #include <QSettings>
 
@@ -26,7 +26,7 @@ namespace Avogadro
 {
 
   DaltonInputDialog::DaltonInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"),
+    : InputDialog(parent, f),
     m_calculationType(SP), m_theoryType(HF), m_functionalType(B3LYP),
     m_basisType(STOnG), m_stoBasis(STO2G), m_popleBasis(p321G),
     m_poplediffBasis(p321ppG), m_poplepolBasis(p321Gs),
@@ -98,6 +98,9 @@ namespace Avogadro
     connect(ui.moreButton, SIGNAL(clicked()),
         this, SLOT(moreClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+    
     // Generate an initial preview of the input deck
     resetClicked();
     updatePreviewText();
@@ -105,6 +108,8 @@ namespace Avogadro
 
   DaltonInputDialog::~DaltonInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void DaltonInputDialog::showEvent(QShowEvent *)
@@ -338,7 +343,7 @@ namespace Avogadro
     ui.exciSpin->setValue(1);
   }
 
-  QString DaltonInputDialog::saveInputFile()
+  /*QString DaltonInputDialog::saveInputFile()
   {
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
@@ -360,13 +365,14 @@ namespace Avogadro
 
     QTextStream out(&file);
     out << previewText;
+    
 
     return fileName;
-  }
+  }*/
 
   void DaltonInputDialog::generateClicked()
   {
-    saveInputFile();
+    saveInputFile(ui.previewText->toPlainText(), tr("Dalton Input File"), QString("dal"));
   }
 
   void DaltonInputDialog::moreClicked()
@@ -1652,5 +1658,14 @@ namespace Avogadro
     ui.propCombo->setEnabled(!dirty);
   }
 
+  void DaltonInputDialog::readSettings(QSettings& settings)
+  {
+    m_savePath = settings.value("dalton/savepath").toString();
+  }
+  
+  void DaltonInputDialog::writeSettings(QSettings& settings) const
+  {
+    settings.setValue("dalton/savepath", m_savePath);
+  }
 }
 

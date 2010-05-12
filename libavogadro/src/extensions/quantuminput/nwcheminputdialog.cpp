@@ -31,7 +31,7 @@
 #include <openbabel/mol.h>
 
 #include <QString>
-#include <QTextStream>
+//#include <QTextStream>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
@@ -41,8 +41,8 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   NWChemInputDialog::NWChemInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    : InputDialog(parent, f), m_calculationType(OPT),
+    m_theoryType(B3LYP), m_basisType(B631Gd),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
@@ -73,12 +73,17 @@ namespace Avogadro
     connect(ui.enableFormButton, SIGNAL(clicked()),
         this, SLOT(enableFormClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+    
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
   NWChemInputDialog::~NWChemInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void NWChemInputDialog::setMolecule(Molecule *molecule)
@@ -160,7 +165,7 @@ namespace Avogadro
 
   void NWChemInputDialog::generateClicked()
   {
-    QFileInfo defaultFile(m_molecule->fileName());
+    /*QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
     if (defaultPath.isEmpty())
       defaultPath = QDir::homePath();
@@ -174,7 +179,8 @@ namespace Avogadro
       return;
 
     QTextStream out(&file);
-    out << ui.previewText->toPlainText();
+    out << ui.previewText->toPlainText();*/
+    saveInputFile(ui.previewText->toPlainText(), tr("NWChem Input Deck"), QString("nw"));
   }
 
   void NWChemInputDialog::moreClicked()
@@ -529,5 +535,14 @@ namespace Avogadro
     ui.enableFormButton->setEnabled(dirty);
   }
 
+  void NWChemInputDialog::readSettings(QSettings& settings)
+  {
+    m_savePath = settings.value("nwchem/savepath").toString();
+  }
+  
+  void NWChemInputDialog::writeSettings(QSettings& settings) const
+  {
+    settings.setValue("nwchem/savepath", m_savePath);
+  }
 }
 

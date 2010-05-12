@@ -10,14 +10,13 @@
 #ifndef DALTONINPUTDIALOG_H
 #define DALTONINPUTDIALOG_H
 
-#include <QDialog>
-
+#include "inputdialog.h"
 #include "ui_daltoninputdialog.h"
 
 namespace Avogadro
 {
   class Molecule;
-  class DaltonInputDialog : public QDialog
+  class DaltonInputDialog : public InputDialog
   {
     Q_OBJECT
 
@@ -26,6 +25,8 @@ namespace Avogadro
     ~DaltonInputDialog();
 
     void setMolecule(Molecule *molecule);
+    void readSettings(QSettings&);
+    void writeSettings(QSettings&) const;
 
     enum calculationType{SP, PROP};
     enum theoryType{HF, DFT, MP2};
@@ -66,10 +67,10 @@ namespace Avogadro
 
   private:
     Ui::DaltonInputDialog ui;
-    Molecule* m_molecule;
+//    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+//    QString m_title;
     calculationType m_calculationType;
     theoryType m_theoryType;
     functionalType m_functionalType;
@@ -121,7 +122,7 @@ namespace Avogadro
     // Enable/disable form elements
     void deckDirty(bool);
     
-    QString saveInputFile();
+    //QString saveInputFile();
 
   public Q_SLOTS:
     void updatePreviewText();
