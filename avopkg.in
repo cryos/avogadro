@@ -40,6 +40,11 @@ EXTRACT_CMD="tar xzf"
 EXTRACT_ONE_CMD="tar xzf"
 PKG_EXT="avo"
 MANIFEST_EXT="mf"
+# Package integrity verification
+ENABLE_HASH=1
+CHECKSUMS_FILE=md5sums
+HASH_CMD=md5sum  # Alternatives: md4sum, sha1sum, shaXXXsum
+                 # All use -c key for check
 
 # Paths
 GLOBAL_NATIVE_PLUGIN_PATH="$PREFIX/$LIB_DIR/$PLUGIN_DIR"
@@ -550,7 +555,16 @@ then
     then
         echo "Version: 1" >> .tmp/$package/$package.$MANIFEST_EXT
     fi
-    
+
+    # Write checksums
+    if test $ENABLE_HASH = 1
+    then
+        for file in $files
+        do
+            $HASH_CMD $file >> .tmp/$package/$CHECKSUMS_FILE 2>/dev/null
+        done
+    fi
+        
     # Copy installable content
     cp -t .tmp/$package $files # Will fail if some file is missing
     
@@ -612,6 +626,31 @@ else
     category=$(getVar $manifest Category)
     reinstall=0 # 1- reinstall, 2- upgrade to newer
 
+    # Check integrity of installable content
+    if test $ENABLE_HASH = 1
+    then
+        if ! test -f $CHECKSUMS_FILE
+        then
+            echo "WARNING! Cannot verify package integrity:"
+            echo "  $CHECKSUMS_FILE is missing in the package"
+            echo "Will proceed anyway..."
+        elif test -z `which $HASH_CMD`
+        then
+            echo "WARNING! Cannot verify package integrity:"
+            echo "  $HASH_CMD is not properly installed in your system"
+            echo "Will proceed anyway..."
+        else
+            "$HASH_CMD" -c $CHECKSUMS_FILE
+            if test $? != 0
+            then
+                echo "Package is corrupted!"
+                echo "Installation failed."
+                cleanupTmp
+                exit 9
+            fi
+        fi
+    fi
+    
     # Check for possible overwrites
     for file in $files
     do
