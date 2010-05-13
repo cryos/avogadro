@@ -165,21 +165,6 @@ namespace Avogadro
 
   void NWChemInputDialog::generateClicked()
   {
-    /*QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".nw";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save NWChem Input Deck"),
-                                defaultFileName, tr("NWChem Input Deck (*.nw)"));
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
-
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();*/
     saveInputFile(ui.previewText->toPlainText(), tr("NWChem Input Deck"), QString("nw"));
   }
 

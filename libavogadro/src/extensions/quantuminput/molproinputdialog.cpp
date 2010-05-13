@@ -161,21 +161,6 @@ namespace Avogadro
 
   void MolproInputDialog::generateClicked()
   {
-    /*QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Molpro Input Deck"),
-                                defaultFileName, tr("Molpro Input Deck (*.inp)"));
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
-
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();*/
     saveInputFile(ui.previewText->toPlainText(), tr("Molpro Input Deck"), QString("inp"));
   }
 

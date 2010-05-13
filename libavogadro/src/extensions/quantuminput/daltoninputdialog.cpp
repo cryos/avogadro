@@ -343,33 +343,6 @@ namespace Avogadro
     ui.exciSpin->setValue(1);
   }
 
-  /*QString DaltonInputDialog::saveInputFile()
-  {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName()
-       + ".dal";
-    QString fileName = QFileDialog::getSaveFileName(this,
-       tr("Save Dalton Input File"), defaultFileName,
-       tr("Dalton Input File (*.dal)"));
-
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return QString();
-
-    QString previewText = ui.previewText->toPlainText();
-
-    QTextStream out(&file);
-    out << previewText;
-    
-
-    return fileName;
-  }*/
-
   void DaltonInputDialog::generateClicked()
   {
     saveInputFile(ui.previewText->toPlainText(), tr("Dalton Input File"), QString("dal"));
