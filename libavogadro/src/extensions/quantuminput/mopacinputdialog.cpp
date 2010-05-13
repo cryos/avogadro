@@ -552,22 +552,22 @@ namespace Avogadro
 
   void MOPACInputDialog::writeSettings(QSettings &settings) const
   {
-    settings.setValue("MOPACCalcType", ui.calculationCombo->currentIndex());
-    settings.setValue("MOPACTheory", ui.theoryCombo->currentIndex());
-    settings.setValue("MOPACCoord", ui.coordCombo->currentIndex());
-    settings.setValue("MOPACPreview", m_previewVisible);
+    settings.setValue("mopac/CalcType", ui.calculationCombo->currentIndex());
+    settings.setValue("mopac/Theory", ui.theoryCombo->currentIndex());
+    settings.setValue("mopac/Coord", ui.coordCombo->currentIndex());
+    settings.setValue("mopac/Preview", m_previewVisible);
     settings.setValue("mopac/savepath", m_savePath);
   }
 
   void MOPACInputDialog::readSettings(QSettings &settings)
   {
-    setCalculation(settings.value("MOPACCalcType", 1).toInt());
+    setCalculation(settings.value("mopac/CalcType", 1).toInt());
     ui.calculationCombo->setCurrentIndex(m_calculationType);
-    setTheory(settings.value("MOPACTheory", 4).toInt());
+    setTheory(settings.value("mopac/Theory", 4).toInt());
     ui.theoryCombo->setCurrentIndex(m_theoryType);
-    setCoords(settings.value("MOPACCoord", 0).toInt());
+    setCoords(settings.value("mopac/Coord", 0).toInt());
     ui.coordCombo->setCurrentIndex(m_coordType);
-    ui.previewText->setVisible(settings.value("MOPACPreview", false).toBool());
+    ui.previewText->setVisible(settings.value("mopac/Preview", false).toBool());
     m_savePath = settings.value("mopac/savepath").toString();
   }
 

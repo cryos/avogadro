@@ -100,32 +100,32 @@ namespace Avogadro
 
   void GaussianInputDialog::writeSettings(QSettings &settings) const
   {
-    settings.setValue("gaussianCalcType", ui.calculationCombo->currentIndex());
-    settings.setValue("gaussianProcs", ui.procSpin->value());
-    settings.setValue("gaussianTheory", ui.theoryCombo->currentIndex());
-    settings.setValue("gaussianBasis", ui.basisCombo->currentIndex());
-    settings.setValue("gaussianOutput", ui.outputCombo->currentIndex());
-    settings.setValue("gaussianChk", ui.checkpointCheck->isChecked());
-    settings.setValue("gaussianCoord", ui.coordCombo->currentIndex());
+    settings.setValue("gaussian/CalcType", ui.calculationCombo->currentIndex());
+    settings.setValue("gaussian/Procs", ui.procSpin->value());
+    settings.setValue("gaussian/Theory", ui.theoryCombo->currentIndex());
+    settings.setValue("gaussian/Basis", ui.basisCombo->currentIndex());
+    settings.setValue("gaussian/Output", ui.outputCombo->currentIndex());
+    settings.setValue("gaussian/Chk", ui.checkpointCheck->isChecked());
+    settings.setValue("gaussian/Coord", ui.coordCombo->currentIndex());
     settings.setValue("gaussian/savepath", m_savePath);
   }
 
   void GaussianInputDialog::readSettings(QSettings &settings)
   {
-    setProcs(settings.value("gaussianProcs", 2).toInt());
-    ui.procSpin->setValue(settings.value("gaussianProcs", 1).toInt());
-    setCalculation(settings.value("gaussianCalcType", 1).toInt());
-    ui.calculationCombo->setCurrentIndex(settings.value("gaussianCalcType", 1).toInt());
-    setTheory(settings.value("gaussianTheory", 3).toInt());
-    ui.theoryCombo->setCurrentIndex(settings.value("gaussianTheory", 3).toInt());
-    setBasis(settings.value("gaussianBasis", 2).toInt());
-    ui.basisCombo->setCurrentIndex(settings.value("gaussianBasis", 2).toInt());
-    setOutput(settings.value("gaussianOutput", 0).toInt());
-    ui.outputCombo->setCurrentIndex(settings.value("gaussianOutput", 0).toInt());
-    setChk(settings.value("gaussianChk", false).toBool());
-    ui.checkpointCheck->setChecked(settings.value("gaussianChk", false).toBool());
-    setCoords(settings.value("gaussianCoord", 0).toInt());
-    ui.coordCombo->setCurrentIndex(settings.value("gaussianCoord", 0).toInt());
+    setProcs(settings.value("gaussian/Procs", 2).toInt());
+    ui.procSpin->setValue(settings.value("gaussian/Procs", 1).toInt());
+    setCalculation(settings.value("gaussian/CalcType", 1).toInt());
+    ui.calculationCombo->setCurrentIndex(settings.value("gaussian/CalcType", 1).toInt());
+    setTheory(settings.value("gaussian/Theory", 3).toInt());
+    ui.theoryCombo->setCurrentIndex(settings.value("gaussian/Theory", 3).toInt());
+    setBasis(settings.value("gaussian/Basis", 2).toInt());
+    ui.basisCombo->setCurrentIndex(settings.value("gaussian/Basis", 2).toInt());
+    setOutput(settings.value("gaussian/Output", 0).toInt());
+    ui.outputCombo->setCurrentIndex(settings.value("gaussian/Output", 0).toInt());
+    setChk(settings.value("gaussian/Chk", false).toBool());
+    ui.checkpointCheck->setChecked(settings.value("gaussian/Chk", false).toBool());
+    setCoords(settings.value("gaussian/Coord", 0).toInt());
+    ui.coordCombo->setCurrentIndex(settings.value("gaussian/Coord", 0).toInt());
     m_savePath = settings.value("gaussian/savepath").toString();
   }
 
