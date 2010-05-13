@@ -143,17 +143,11 @@ namespace Avogadro
       if (m_showMulti) order = b->order();
 
       map->setFromPrimitive(atom1);
-      if (!atom1->customColor()->isValid())
-        pd->painter()->setColor( map );
-      else
-        pd->painter()->setColor(atom1->customColor());
+      pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v1, v3, m_bondRadius, order, shift );
 
       map->setFromPrimitive(atom2);
-      if (!atom2->customColor()->isValid())
-        pd->painter()->setColor( map );
-      else
-        pd->painter()->setColor(atom2->customColor());
+      pd->painter()->setColor( map );
       pd->painter()->drawMultiCylinder( v3, v2, m_bondRadius, order, shift );
     }
 
@@ -163,10 +157,7 @@ namespace Avogadro
     // Render the atoms
     foreach(const Atom *a, atoms()) {
       map->setFromPrimitive(a);
-      if (!a->customColor()->isValid())
-        pd->painter()->setColor( map );
-      else
-        pd->painter()->setColor(a->customColor());
+      pd->painter()->setColor(map);
       pd->painter()->drawSphere(a->pos(), radius(a));
     }
 

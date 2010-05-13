@@ -31,9 +31,9 @@
 
 #include <Eigen/Core>
 
-#include <QtCore/QString>
-#include <QtCore/QPoint>
-#include <QtGui/QMenu>
+#include <QObject>
+#include <QString>
+#include <QPoint>
 
 class QMouseEvent;
 class QWheelEvent;
@@ -78,8 +78,6 @@ namespace Avogadro {
 
     public Q_SLOTS:
       void selectionModeChanged( int index );
-      void changeAtomColor();
-      void changeAtomLabel();
 
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);
@@ -104,8 +102,6 @@ namespace Avogadro {
       QVBoxLayout        *m_layout;
 
       QWidget            *m_settingsWidget;
-      QMenu              *m_contextMenu;
-      Primitive          *m_currentPrimitive;
 
     private Q_SLOTS:
       void settingsWidgetDestroyed();

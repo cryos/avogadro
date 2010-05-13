@@ -50,19 +50,16 @@ using Eigen::Vector3d;
                                  m_atomicNumber(0),
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
-                                 m_forceVector(0.0, 0.0, 0.0),
-                                 m_customLabel("")
+                                 m_forceVector(0.0, 0.0, 0.0)
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
      }
      m_molecule = static_cast<Molecule*>(parent);
-     m_customColor = new QColor;
    }
 
    Atom::~Atom()
    {
-     delete m_customColor;
    }
 
    const Eigen::Vector3d * Atom::pos() const
@@ -265,35 +262,11 @@ using Eigen::Vector3d;
      return obatom;
    }
 
-   const OpenBabel::OBAtom Atom::OBAtom() const
-   {
-     // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;
-     const Vector3d *v = m_molecule->atomPos(m_id);
-     obatom.SetVector(v->x(), v->y(), v->z());
-     obatom.SetAtomicNum(m_atomicNumber);
-     obatom.SetFormalCharge(m_formalCharge);
-
-     // Add dynamic properties as OBPairData
-     OpenBabel::OBPairData *obproperty;
-     foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
-       obproperty = new OpenBabel::OBPairData;
-       obproperty->SetAttribute(propertyName.data());
-       obproperty->SetValue(property(propertyName).toByteArray().data());
-       obatom.SetData(obproperty);
-     }
-
-     return obatom;
-   }
-
    bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
    {
      // Copy all needed OBAtom data to our atom
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
-     // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-     // m_customLabel = obatom->GetCustomLabel();
-     // #endif
      if (obatom->GetFormalCharge() != 0)
        m_formalCharge = obatom->GetFormalCharge();
 
@@ -320,8 +293,6 @@ using Eigen::Vector3d;
        qDebug() << "Atom position returned null.";
      m_atomicNumber = other.m_atomicNumber;
      m_formalCharge = other.m_formalCharge;
-     m_customLabel = other.m_customLabel;
-     m_customColor = other.m_customColor;
      return *this;
    }
 
