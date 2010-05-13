@@ -76,6 +76,15 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   if (NOT _gcc_version)
     string (REGEX REPLACE ".*\\(GCC\\).* ([34]\\.[0-9]) .*" "\\1.0" _gcc_version "${_gcc_version_info}")
   endif (NOT _gcc_version)
+
+  # No RTTI flag
+  check_cxx_compiler_flag(-fno-rtti HAVE_NO_RTTI)
+  if(HAVE_NO_RTTI)
+    set(NO_RTTI_FLAG "-fno-rtti")
+  else(HAVE_NO_RTTI)
+    set(NO_RTTI_FLAG "")
+  endif(HAVE_NO_RTTI)
+  
   if (NOT APPLE) # Mac GCC42 compiler has bug
     check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
     set(HAVE_GCC_VISIBILITY ${HAVE_GCC_VISIBILITY} CACHE BOOL "GCC support for hidden visibility")
@@ -151,6 +160,15 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     set (CMAKE_EXE_LINKER_FLAGS
       "-lc ${CMAKE_EXE_LINKER_FLAGS}")
   endif (CMAKE_SYSTEM_NAME MATCHES Linux)
+
+  # No RTTI flag
+  check_cxx_compiler_flag(-fno-rtti HAVE_NO_RTTI)
+  if(HAVE_NO_RTTI)
+    set(NO_RTTI_FLAG "-fno-rtti")
+  else(HAVE_NO_RTTI)
+    set(NO_RTTI_FLAG "")
+  endif(HAVE_NO_RTTI)
+  
   check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
