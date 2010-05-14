@@ -24,6 +24,13 @@
 
 #include "inputfileextension.h"
 
+#include "daltoninputdialog.h"
+#include "gaussianinputdialog.h"
+#include "molproinputdialog.h"
+#include "mopacinputdialog.h"
+#include "nwcheminputdialog.h"
+#include "qcheminputdialog.h"
+
 #include <openbabel/mol.h>
 #include <openbabel/obconversion.h>
 
@@ -31,6 +38,7 @@
 
 #include <QMessageBox>
 #include <QFile>
+#include <QDebug>
 
 using namespace OpenBabel;
 using namespace std;
@@ -39,12 +47,14 @@ namespace Avogadro
 {
 
   InputFileExtension::InputFileExtension(QObject* parent) : Extension(parent),
-    m_gaussianInputDialog(0), m_molproInputDialog(0),
-    m_mopacInputDialog(0), m_nwchemInputDialog(0), 
-	m_qchemInputDialog(0), m_daltonInputDialog(0),
     m_molecule(0)
   {
     QAction* action;
+	
+    action = new QAction(this);
+    action->setText(tr("&Dalton..."));
+    action->setData("Dalton");
+    m_actions.append(action);
 
     action = new QAction(this);
     action->setText(tr("&Gaussian..."));
@@ -70,15 +80,20 @@ namespace Avogadro
     action->setText(tr("&Q-Chem..."));
     action->setData("QChem");
     m_actions.append(action);
-	
-	action = new QAction(this);
-    action->setText(tr("&Dalton..."));
-    action->setData("Dalton");
-    m_actions.append(action);	
 
     action = new QAction(this);
     action->setSeparator(true);
     m_actions.append(action);
+
+    m_hasDialog["Dalton"] = false;
+    m_hasDialog["Gaussian"] = false;
+    m_hasDialog["Molpro"] = false;
+    m_hasDialog["MOPAC"] = false;
+    m_hasDialog["NWChem"] = false;
+    m_hasDialog["QChem"] = false;
+    
+    //connect(m_dialog["MOPAC"], SIGNAL(readOutput(QString)),
+      //  this, SLOT(readOutputFile(QString)));
   }
 
   InputFileExtension::~InputFileExtension()
@@ -92,84 +107,38 @@ namespace Avogadro
 
   QUndoCommand* InputFileExtension::performAction(QAction *action, GLWidget *widget)
   {
+    QSettings settings;
     m_widget = widget;
+    QString data(action->data().toString());
+    InputDialog *dialog = m_dialog[data];
 
-     if (action->data() == "Dalton") {
-       if (!m_daltonInputDialog) {
-         m_daltonInputDialog = new DaltonInputDialog(static_cast<QWidget*>(parent()));
-         m_daltonInputDialog->setMolecule(m_molecule);
-         m_daltonInputDialog->show();
-       }
-       else
-         m_daltonInputDialog->show();
-     }
-    if (action->data() == "Gaussian") {
-      if (!m_gaussianInputDialog) {
-        m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
-        connect(m_gaussianInputDialog, SIGNAL(readOutput(QString)),
+    // If dialog was not called earlier, create it now
+    if (!m_hasDialog[data]) {
+      dialog = createInputDialog(data);
+      if (!dialog) {
+        // We don't know anything about this menu action.
+        // If you're adding new generator, modify createInputDialog function
+        qDebug() << "No dialog for " + data + "! Something went wrong!";
+        return 0;
+      }
+      if(m_molecule)
+       dialog->setMolecule(m_molecule);
+      m_dialog[data] = dialog;
+      m_hasDialog[data] = true;
+      connect(m_dialog[data], SIGNAL(readOutput(QString)),
           this, SLOT(readOutputFile(QString)));
-        m_gaussianInputDialog->setMolecule(m_molecule);
-        m_gaussianInputDialog->show();
-      }
-      else
-        m_gaussianInputDialog->show();
     }
-    else if (action->data() == "Molpro") {
-      if (!m_molproInputDialog) {
-        m_molproInputDialog = new MolproInputDialog(static_cast<QWidget*>(parent()));
-        m_molproInputDialog->setMolecule(m_molecule);
-        m_molproInputDialog->show();
-      }
-      else
-        m_molproInputDialog->show();
-    }
-    else if (action->data() == "MOPAC") {
-      if (!m_mopacInputDialog) {
-        m_mopacInputDialog = new MOPACInputDialog(static_cast<QWidget*>(parent()));
-        connect(m_mopacInputDialog, SIGNAL(readOutput(QString)),
-          this, SLOT(readOutputFile(QString)));
-        m_mopacInputDialog->setMolecule(m_molecule);
-        m_mopacInputDialog->show();
-      }
-      else
-        m_mopacInputDialog->show();
-    }
-    else if (action->data() == "NWChem") {
-      if (!m_nwchemInputDialog) {
-        m_nwchemInputDialog = new NWChemInputDialog(static_cast<QWidget*>(parent()));
-        m_nwchemInputDialog->setMolecule(m_molecule);
-        m_nwchemInputDialog->show();
-      }
-      else
-        m_nwchemInputDialog->show();
-    }
-    else if (action->data() == "QChem") {
-      if (!m_qchemInputDialog) {
-        m_qchemInputDialog = new QChemInputDialog(static_cast<QWidget*>(parent()));
-        m_qchemInputDialog->setMolecule(m_molecule);
-        m_qchemInputDialog->show();
-      }
-      else
-        m_qchemInputDialog->show();
-    }
+    dialog->show();
     return 0;
   }
 
   void InputFileExtension::setMolecule(Molecule *molecule)
   {
     m_molecule = molecule;
-    if (m_daltonInputDialog)
-      m_daltonInputDialog->setMolecule(m_molecule);
-    if (m_gaussianInputDialog)
-      m_gaussianInputDialog->setMolecule(m_molecule);
-    if (m_molproInputDialog)
-      m_molproInputDialog->setMolecule(m_molecule);
-    if (m_mopacInputDialog)
-      m_mopacInputDialog->setMolecule(m_molecule);
-    if (m_nwchemInputDialog)
-      m_nwchemInputDialog->setMolecule(m_molecule);
-    if (m_qchemInputDialog)
-      m_qchemInputDialog->setMolecule(m_molecule);
+    foreach (InputDialog *dialog, m_dialog) {
+      if (dialog)
+        dialog->setMolecule(m_molecule);
+    }
   }
 
   void InputFileExtension::readOutputFile(const QString filename)
@@ -209,41 +178,31 @@ namespace Avogadro
   void InputFileExtension::writeSettings(QSettings &settings) const
   {
     Extension::writeSettings(settings);
-    if (m_gaussianInputDialog) {
-      m_gaussianInputDialog->writeSettings(settings);
-    }
-    if (m_mopacInputDialog) {
-      m_mopacInputDialog->writeSettings(settings);
-    }
   }
 
   void InputFileExtension::readSettings(QSettings &settings)
   {
     Extension::readSettings(settings);
-    if (m_gaussianInputDialog) {
-      m_gaussianInputDialog->readSettings(settings);
-    }
-    else {
-      m_gaussianInputDialog = new GaussianInputDialog(static_cast<QWidget*>(parent()));
-      m_gaussianInputDialog->readSettings(settings);
-      if (m_molecule) {
-        m_gaussianInputDialog->setMolecule(m_molecule);
-      }
-    }
-
-    if (m_mopacInputDialog) {
-      m_mopacInputDialog->readSettings(settings);
-    }
-    else {
-      m_mopacInputDialog = new MOPACInputDialog(static_cast<QWidget*>(parent()));
-      connect(m_mopacInputDialog, SIGNAL(readOutput(QString)),
-        this, SLOT(readOutputFile(QString)));
-      m_mopacInputDialog->readSettings(settings);
-      if (m_molecule) {
-        m_mopacInputDialog->setMolecule(m_molecule);
-      }
-    }
   }
+
+  InputDialog* InputFileExtension::createInputDialog(QString name)
+  {
+    // Returns 0 if dialog name is invalid
+    if (name == "Dalton")
+      return new DaltonInputDialog(static_cast<QWidget*>(parent()));;
+    if (name == "Gaussian")
+      return new GaussianInputDialog(static_cast<QWidget*>(parent()));;
+    if (name == "Molpro")
+      return new MolproInputDialog(static_cast<QWidget*>(parent()));
+    if (name == "MOPAC")
+      return new MOPACInputDialog(static_cast<QWidget*>(parent()));
+    if (name == "NWChem")
+      return new NWChemInputDialog(static_cast<QWidget*>(parent()));
+    if (name == "QChem")
+      return new QChemInputDialog(static_cast<QWidget*>(parent()));
+    return 0;
+  }
+  
 } // End namespace Avogadro
 
 Q_EXPORT_PLUGIN2(inputfileextension, Avogadro::InputFileExtensionFactory)

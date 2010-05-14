@@ -25,14 +25,13 @@
 #ifndef MOLPROINPUTDIALOG_H
 #define MOLPROINPUTDIALOG_H
 
-#include <QDialog>
-
+#include "inputdialog.h"
 #include "ui_molproinputdialog.h"
 
 namespace Avogadro
 {
   class Molecule;
-  class MolproInputDialog : public QDialog
+  class MolproInputDialog : public InputDialog
   {
   Q_OBJECT
 
@@ -41,7 +40,9 @@ namespace Avogadro
     ~MolproInputDialog();
 
     void setMolecule(Molecule *molecule);
-
+    void readSettings(QSettings&);
+    void writeSettings(QSettings&) const;
+      
     enum calculationType{SP, OPT, FREQ};
     enum theoryType{RHF, MP2, B3LYP, CCSD, CCSDT};
     enum basisType{STO3G, B321G, B631Gd, B631Gdp, B631plusGd, B6311Gd, ccpVDZ, ccpVTZ, AUGccpVDZ, AUGccpVTZ};
@@ -55,16 +56,16 @@ namespace Avogadro
 
   private:
     Ui::MolproInputDialog ui;
-    Molecule* m_molecule;
+//    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+//    QString m_title;
     bool m_2009;
     calculationType m_calculationType;
     theoryType m_theoryType;
     basisType m_basisType;
-    int m_multiplicity;
-    int m_charge;
+    //int m_multiplicity;
+    //int m_charge;
     int m_num_elec;
     QString m_output;
     coordType m_coordType;

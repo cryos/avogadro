@@ -25,14 +25,13 @@
 #ifndef QCHEMINPUTDIALOG_H
 #define QCHEMINPUTDIALOG_H
 
-#include <QDialog>
-
+#include "inputdialog.h"
 #include "ui_qcheminputdialog.h"
 
 namespace Avogadro
 {
   class Molecule;
-  class QChemInputDialog : public QDialog
+  class QChemInputDialog : public InputDialog
   {
   Q_OBJECT
 
@@ -41,11 +40,12 @@ namespace Avogadro
     ~QChemInputDialog();
 
     void setMolecule(Molecule *molecule);
+    void readSettings(QSettings&);
+    void writeSettings(QSettings&) const;
 
     enum calculationType{SP, OPT, FREQ};
     enum theoryType{RHF, MP2, B3LYP, B3LYP5, EDF1, M062X, CCSD};
     enum basisType{STO3G, B321G, B631Gd, B631Gdp, B631plusGd, B6311Gd, ccpVDZ, ccpVTZ, LANL2DZ, LACVP};
-    enum coordType{CARTESIAN, ZMATRIX, ZMATRIX_COMPACT};
 
   protected:
     /**
@@ -55,15 +55,15 @@ namespace Avogadro
 
   private:
     Ui::QChemInputDialog ui;
-    Molecule* m_molecule;
+//    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+    //QString m_title;
     calculationType m_calculationType;
     theoryType m_theoryType;
     basisType m_basisType;
-    int m_multiplicity;
-    int m_charge;
+    //int m_multiplicity;
+    //int m_charge;
     QString m_output;
     coordType m_coordType;
     bool m_dirty;

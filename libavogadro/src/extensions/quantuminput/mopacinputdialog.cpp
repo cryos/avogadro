@@ -31,7 +31,7 @@
 #include <openbabel/mol.h>
 
 #include <QString>
-#include <QTextStream>
+//#include <QTextStream>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSettings>
@@ -51,8 +51,8 @@ namespace Avogadro
 #endif
 
   MOPACInputDialog::MOPACInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"),
-      m_calculationType(OPT), m_theoryType(PM6), m_multiplicity(1), m_charge(0),
+    : InputDialog(parent, f),
+      m_calculationType(OPT), m_theoryType(PM6),
       m_coordType(CARTESIAN), m_dirty(false), m_warned(false),
       m_previewVisible(false), m_process(0), m_progress(0)
   {
@@ -83,12 +83,17 @@ namespace Avogadro
     connect(ui.enableFormButton, SIGNAL(clicked()),
             this, SLOT(enableFormClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+    
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
   MOPACInputDialog::~MOPACInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void MOPACInputDialog::setMolecule(Molecule *molecule)
@@ -165,7 +170,8 @@ namespace Avogadro
 
   void MOPACInputDialog::generateClicked()
   {
-    saveInputFile();
+    //saveInputFile();
+    saveInputFile(ui.previewText->toPlainText(), tr("MOPAC Input Deck"), QString("mop"));
   }
 
   void MOPACInputDialog::computeClicked()
@@ -176,7 +182,7 @@ namespace Avogadro
       return;
     }
 
-    QString fileName = saveInputFile();
+    QString fileName = saveInputFile(ui.previewText->toPlainText(), tr("MOPAC Input Deck"), QString("mop"));
     if (fileName.isEmpty())
       return;
 
@@ -281,28 +287,6 @@ namespace Avogadro
       deckDirty(true);
     else
       deckDirty(false);
-  }
-
-  QString MOPACInputDialog::saveInputFile()
-  {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".mop";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save MOPAC Input Deck"),
-                                                    defaultFileName, tr("MOPAC Input Deck (*.mop)"));
-    if (!fileName.isEmpty()) {
-    QFile file(fileName);
-      // FIXME This really should pop up a warning if the file cannot be opened
-      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return "";
-
-      QTextStream out(&file);
-      out << ui.previewText->toPlainText();
-    }
-    return fileName;
   }
 
   void MOPACInputDialog::setTitle()
@@ -546,21 +530,23 @@ namespace Avogadro
 
   void MOPACInputDialog::writeSettings(QSettings &settings) const
   {
-    settings.setValue("MOPACCalcType", ui.calculationCombo->currentIndex());
-    settings.setValue("MOPACTheory", ui.theoryCombo->currentIndex());
-    settings.setValue("MOPACCoord", ui.coordCombo->currentIndex());
-    settings.setValue("MOPACPreview", m_previewVisible);
+    settings.setValue("mopac/CalcType", ui.calculationCombo->currentIndex());
+    settings.setValue("mopac/Theory", ui.theoryCombo->currentIndex());
+    settings.setValue("mopac/Coord", ui.coordCombo->currentIndex());
+    settings.setValue("mopac/Preview", m_previewVisible);
+    settings.setValue("mopac/savepath", m_savePath);
   }
 
   void MOPACInputDialog::readSettings(QSettings &settings)
   {
-    setCalculation(settings.value("MOPACCalcType", 1).toInt());
+    setCalculation(settings.value("mopac/CalcType", 1).toInt());
     ui.calculationCombo->setCurrentIndex(m_calculationType);
-    setTheory(settings.value("MOPACTheory", 4).toInt());
+    setTheory(settings.value("mopac/Theory", 4).toInt());
     ui.theoryCombo->setCurrentIndex(m_theoryType);
-    setCoords(settings.value("MOPACCoord", 0).toInt());
+    setCoords(settings.value("mopac/Coord", 0).toInt());
     ui.coordCombo->setCurrentIndex(m_coordType);
-    ui.previewText->setVisible(settings.value("MOPACPreview", false).toBool());
+    ui.previewText->setVisible(settings.value("mopac/Preview", false).toBool());
+    m_savePath = settings.value("mopac/savepath").toString();
   }
 
 }

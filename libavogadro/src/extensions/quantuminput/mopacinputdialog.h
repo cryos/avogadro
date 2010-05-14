@@ -26,7 +26,8 @@
 #ifndef MOPACINPUTDIALOG_H
 #define MOPACINPUTDIALOG_H
 
-#include <QDialog>
+#include "inputdialog.h"
+
 #include <QProcess>
 #include <QProgressDialog>
 #include <QSettings>
@@ -36,7 +37,7 @@
 namespace Avogadro
 {
   class Molecule;
-  class MOPACInputDialog : public QDialog
+  class MOPACInputDialog : public InputDialog
   {
   Q_OBJECT
 
@@ -70,14 +71,14 @@ namespace Avogadro
 
   private:
     Ui::MOPACInputDialog ui;
-    Molecule* m_molecule;
+//    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+//    QString m_title;
     calculationType m_calculationType;
     theoryType m_theoryType;
-    int m_multiplicity;
-    int m_charge;
+    //int m_multiplicity;
+    //int m_charge;
     coordType m_coordType;
     bool m_dirty;
     bool m_warned;
@@ -86,7 +87,7 @@ namespace Avogadro
     QProgressDialog *m_progress;
     QString m_inputFile;
 
-    QString saveInputFile();
+    //QString saveInputFile();
 
     // Generate an input deck as a string
     QString generateInputDeck();
@@ -99,8 +100,8 @@ namespace Avogadro
     // Enable/disable form elements
     void deckDirty(bool);
 
-  Q_SIGNALS:
-    void readOutput(const QString outputFileName);
+//  Q_SIGNALS:
+//    void readOutput(const QString outputFileName);
 
   public Q_SLOTS:
     void updatePreviewText();

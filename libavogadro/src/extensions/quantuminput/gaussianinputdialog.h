@@ -26,17 +26,16 @@
 #ifndef GAUSSIANINPUTDIALOG_H
 #define GAUSSIANINPUTDIALOG_H
 
-#include <QDialog>
 #include <QProcess>
 #include <QProgressDialog>
-#include <QSettings>
 
+#include "inputdialog.h"
 #include "ui_gaussianinputdialog.h"
 
 namespace Avogadro
 {
   class Molecule;    
-  class GaussianInputDialog : public QDialog
+  class GaussianInputDialog : public InputDialog
   {
     Q_OBJECT
 
@@ -70,18 +69,18 @@ namespace Avogadro
      * Reimplemented to update the dialog when it is shown
      */
     void showEvent(QShowEvent *event);
+    QString saveInputFile(QString inputDeck, QString fileType, QString ext);
 
   private:
     Ui::GaussianInputDialog ui;
-    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+ //   QString m_title;
     calculationType m_calculationType;
     theoryType m_theoryType;
     basisType m_basisType;
-    int m_multiplicity;
-    int m_charge;
+   // int m_multiplicity;
+   // int m_charge;
     int m_procs;
     QString m_output;
     bool m_chk;
@@ -101,11 +100,9 @@ namespace Avogadro
 
     // Enable/disable form elements
     void deckDirty(bool);
-    
-    QString saveInputFile();
 
-  Q_SIGNALS:
-    void readOutput(const QString outputFileName);
+//  Q_SIGNALS:
+//    void readOutput(const QString outputFileName);
 
   public Q_SLOTS:
     void updatePreviewText();
