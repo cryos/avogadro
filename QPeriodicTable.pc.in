@@ -1,0 +1,11 @@
+prefix=@USER_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@LIB_INSTALL_DIR@
+includedir=${prefix}/include
+pkgincludedir=${includedir}/qperiodictable
+
+Name: QPeriodicTable
+Description: Qt periodict table widget
+Version: @Avogadro_VERSION_FULL@
+Libs: -L${libdir} -lQPeriodicTable
+Cflags: -I${pkgincludedir}

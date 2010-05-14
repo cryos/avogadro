@@ -502,24 +502,36 @@ endif(ENABLE_AVO_PACKAGE)
 # pkg-config
 if(NOT MSVC) # Or UNIX ?
   configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.pc.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.pc.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/avogadro.pc" 
 	@ONLY
   )
   configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroCore.pc.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroCore.pc.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroCore.pc" 
 	@ONLY
   )
   configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroWidget.pc.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/AvogadroWidget.pc.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroWidget.pc" 
+	@ONLY
+  )
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/QPlotWidget.pc.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/QPlotWidget.pc" 
+	@ONLY
+  )
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/QPeriodicTable.pc.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/QPeriodicTable.pc" 
 	@ONLY
   )
   set(PC_FILES 
     "${CMAKE_CURRENT_BINARY_DIR}/avogadro.pc"
 	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroCore.pc"
 	"${CMAKE_CURRENT_BINARY_DIR}/AvogadroWidget.pc"
+    "${CMAKE_CURRENT_BINARY_DIR}/QPlotWidget.pc"
+    "${CMAKE_CURRENT_BINARY_DIR}/QPeriodicTable.pc"
   )
   install(FILES ${PC_FILES} DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
 endif(NOT MSVC)
