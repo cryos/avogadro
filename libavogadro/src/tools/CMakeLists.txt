@@ -24,6 +24,8 @@ avogadro_plugin(drawtool
   drawtool.qrc)
 add_dependencies(drawtool periodictable)
 target_link_libraries(drawtool periodictable)
+set_target_properties(drawtool PROPERTIES
+                        COMPILE_FLAGS "${RTTI_FLAG}")
 
 option(ENABLE_ZMATRIX_TOOL "Enable the z-matrix tool (experimental)" OFF)
 if(ENABLE_ZMATRIX_TOOL)
