@@ -156,9 +156,12 @@ Bond *dummyBond;*/
 
   QString LabelEngine::createAtomLabel(const Atom *a)
   {
-	QString str;
+	QString str = "";
     unsigned int gi;
-    switch(m_atomType) {
+    
+    str = QString(a->customLabel());
+    if (str.isEmpty()) {
+     switch(m_atomType) {
       case 1: // Atom index
         str = QString("%L1").arg(a->index() + 1);
         break;
@@ -206,15 +209,15 @@ Bond *dummyBond;*/
         }
         else
           str = a->property(propertyNames[customIndex].data()).toString();
-    }
+     }
+    } // str.length() == 0
 	return str;
   }
 
   QString LabelEngine::createBondLabel(const Bond *b)
   {
-      QString str;
+      QString str= "";
       switch(m_bondType) {
-        str = "";
       case 1:
         str = QString("%L1").arg(b->length(), 0, 'g', 1+m_lengthPrecision);
         break;
