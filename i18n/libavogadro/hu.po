@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-12-26 14:56+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-04-26 20:13+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -58,7 +58,8 @@ msgstr "Szín index szerint"
 
 #: src/colors/atomindexcolor.h:45
 msgid "Color by Index (red, orange, yellow, green, blue, violet)."
-msgstr "Szín index szerint (piros, narancssárga, citromsárga, zöld, kék, lila)"
+msgstr ""
+"Szín index szerint (piros, narancssárga, citromsárga, zöld, kék, lila)"
 
 #: src/colors/chargecolor.h:44
 msgid "Color by Partial Charge"
@@ -105,9 +106,8 @@ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
 msgstr "Szín molekularész szerint (aminosav-típus, hidrofobicitás, ..."
 
 #: src/colors/smartscolor.cpp:77
-#, fuzzy
 msgid "SMARTS Pattern:"
-msgstr "Kijelölendő SMARTS-minta"
+msgstr ""
 
 #: src/colors/smartscolor.cpp:81
 msgid "Highlight Color:"
@@ -174,24 +174,20 @@ msgid "Renders hydrogen bonds"
 msgstr "Hidrogén kötések rajzolása"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Kiválasztott színek"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Kiválasztott színek"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Atom cimkéi:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
-#, fuzzy
 msgid "Select Bond Labels Font"
-msgstr "Kötés cimkéi:"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -382,7 +378,8 @@ msgstr ""
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
-msgstr "Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat."
+msgstr ""
+"Érvénytelen video fájl név. Tartalmaznia kell az teljes elérési utat."
 
 #: src/extensions/animationextension.cpp:210
 msgid ""
@@ -410,7 +407,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Animáció"
 
@@ -420,13 +417,13 @@ msgstr "Animált trajektóriák, reakciók és vibrációk."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
-#, fuzzy
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
-msgstr "Descartes-i szerkesztő"
+msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -444,14 +441,12 @@ msgid "&Build"
 msgstr "&Felépítés"
 
 #: src/extensions/cartesianextension.h:107
-#, fuzzy
 msgid "Cartesian editor"
-msgstr "Descartes-i szerkesztő"
+msgstr ""
 
 #: src/extensions/cartesianextension.h:108
-#, fuzzy
 msgid "Cartesian coordinates editor"
-msgstr "Descartes-koordináták"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -477,7 +472,8 @@ msgstr ""
 "hozzá lehessen adni."
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "A molekulának muszáj tartalmaznia legalább két hogy kötés megszorításokat "
 "hozzá lehessen adni."
@@ -722,7 +718,7 @@ msgstr "Peptid..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "Peptid beillesztése"
 
@@ -761,9 +757,8 @@ msgid "Fetch from PDB..."
 msgstr "Betöltés PDB-ből..."
 
 #: src/extensions/networkfetchextension.cpp:60
-#, fuzzy
 msgid "Fetch by chemical name..."
-msgstr "Kémiai szerkezet betöltése..."
+msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:64
 msgid "Fetch from URL..."
@@ -936,7 +931,7 @@ msgstr "Konformer tulajdonságai"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Tulajdonságok"
 
@@ -949,18 +944,16 @@ msgstr ""
 "Descartes-i koorinátaszerkesztőt is."
 
 #: src/extensions/propmodel.cpp:269
-#, fuzzy
 msgid "Yes"
-msgstr "Év"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Neon"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Elem"
 
@@ -1002,9 +995,8 @@ msgid "Z  %1"
 msgstr "Z  %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Atom %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1029,9 +1021,8 @@ msgid "Length %1"
 msgstr "Hossz %1"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Kötés %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1045,7 +1036,7 @@ msgstr "Szög %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "Szög"
 
@@ -1061,20 +1052,18 @@ msgid "Torsion %1"
 msgstr "Torzió %1"
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Torzió %1"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Energia"
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "Konformer %1"
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -1091,9 +1080,8 @@ msgid "Interactive python scripting terminal"
 msgstr "Interaktív Python parancsnyelvi terminál"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:284
-#, fuzzy
 msgid "Dalton Input File Generator Warning"
-msgstr "Q-Chem beviteli panel generátor figyelmeztetés"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:285
 msgid ""
@@ -1102,9 +1090,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:351
-#, fuzzy
 msgid "Save Dalton Input File"
-msgstr "Molpro beviteli panel mentése"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
@@ -1117,7 +1104,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Előnézet megjelenítése"
 
@@ -1136,7 +1123,7 @@ msgstr "Előnézet megjelenítése"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "A gyorsnézet elrejtése"
 
@@ -1229,7 +1216,7 @@ msgstr "Kimeneti fájl generálása GAMESS kvantum kémiai csomaghoz"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Cím"
 
@@ -1330,7 +1317,8 @@ msgid "G03 Crashed."
 msgstr "A G03 összeomlott."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Gaussian nem fut megfelelően,  talán nincs installálva megfelelően."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
@@ -1354,9 +1342,8 @@ msgid "&Q-Chem..."
 msgstr "&Q-Chem..."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "&Rezgés"
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1509,7 +1496,7 @@ msgstr "Kijelölés molekularész szerint"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr "Molekularész neve"
 
@@ -1571,7 +1558,7 @@ msgstr "Árnyékoló paraméterfájlok (*.params)"
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr "GLSL árnyékolók"
 
@@ -1584,14 +1571,12 @@ msgid "Wavelength (nm)"
 msgstr ""
 
 #: src/extensions/spectra/cd.cpp:108
-#, fuzzy
 msgid "Intensity (arb. units)"
-msgstr "Intenzitás (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Energia"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1635,14 +1620,12 @@ msgid "Shift (ppm)"
 msgstr "Eltolódás (ppm)"
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "Aktínium"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
-#, fuzzy
 msgid "Intensity"
-msgstr "Intenzitás (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:91
 msgid "X Axis"
@@ -1654,13 +1637,13 @@ msgstr "Y tengely"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "Meg&jelenés"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr "Kép e&xportálása"
 
@@ -1688,9 +1671,8 @@ msgid "DOS"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:219
-#, fuzzy
 msgid "&Density Of States Settings"
-msgstr "AutoForgatás beállításai"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:225
 msgctxt "Ultra-Violet spectrum"
@@ -1698,31 +1680,26 @@ msgid "UV"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:226
-#, fuzzy
 msgid "&UV Settings"
-msgstr "Rajzolás beállításai"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:232
-#, fuzzy
 msgctxt "Circular Dichromism spectrum"
 msgid "CD"
-msgstr "CCSD"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:233
-#, fuzzy
 msgid "&CD Settings"
-msgstr "Rajzolás beállításai"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Radon"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "Rajzolás beállításai"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:255
 msgid "No data"
@@ -1765,24 +1742,20 @@ msgid "Enter new name for current scheme:"
 msgstr "Adj meg egy új nevet a jelenlegi sémának."
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "Kiválasztott színek"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "Kiválasztott színek"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Számított spektrum:"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Importált spektrum:"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1837,16 +1810,14 @@ msgid "Turbomole IR data (control)"
 msgstr "Turbomole IR adatok (control)"
 
 #: src/extensions/spectra/spectradialog.cpp:611
-#, fuzzy
 msgctxt "Do not remove 'UV' or '(spectrum)' -- needed for parsing later"
 msgid "Turbomole UV data (spectrum)"
-msgstr "Turbomole IR adatok (control)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:612
-#, fuzzy
 msgctxt "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later"
 msgid "Turbomole CD data (cdspectrum)"
-msgstr "Turbomole IR adatok (control)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:616
 msgid "Data Format"
@@ -1922,16 +1893,14 @@ msgid "Image successfully written to %1"
 msgstr "Képet sikerült elmenteni %1 néven."
 
 #: src/extensions/spectra/spectradialog.cpp:1007
-#, fuzzy
 msgid "&Advanced <<"
-msgstr "Haladó"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
-#, fuzzy
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
-msgstr "Haladó"
+msgstr ""
 
 #: src/extensions/spectra/spectraextension.cpp:49
 msgid "&Spectra..."
@@ -1950,13 +1919,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Vibráció"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr "Rezgési analízis"
 
@@ -1980,7 +1948,7 @@ msgstr "%1 rezgések rendezése frekvencia szerint..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr "&Animáció indítása"
 
@@ -1993,14 +1961,13 @@ msgstr "&Animáció leállítása"
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
 msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Megszorítási érték"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2171,9 +2138,8 @@ msgstr ""
 "Szeretne kritstály egységcellát létrehozni?"
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "Egységcella törlése"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2190,13 +2156,13 @@ msgstr "Krisztallográfiai egységcella építése és megjelenítése"
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Alkalmaz"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "OK"
 
@@ -2341,7 +2307,8 @@ msgstr "Molekulafájl mentése sikertelen - nem lehet átnevezni az új fájlt."
 
 #: src/moleculefile.cpp:497
 msgid "Saving molecular file failed - could not remove old file."
-msgstr "Molekulafájl mentése sikertelen - nem lehet törölni az eredeti fájlt."
+msgstr ""
+"Molekulafájl mentése sikertelen - nem lehet törölni az eredeti fájlt."
 
 #: src/moleculefile.cpp:506
 #, qt-format
@@ -2495,9 +2462,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Megszorítások"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2513,13 +2480,13 @@ msgstr "Algoritmus:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr "Legmeredekebb ereszkedés"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr "Konjugált grádiensek"
 
@@ -2608,7 +2575,7 @@ msgstr "z forgatás"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "Visszaállítás"
 
@@ -2755,7 +2722,7 @@ msgstr "Mérési beállítások"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "Atom hozzáadása"
 
@@ -2805,7 +2772,7 @@ msgstr "Elem"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "Egyéb..."
 
@@ -2942,7 +2909,7 @@ msgstr "Z-mátrix szerkesztő..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr "Z-mátrix"
 
@@ -2981,15 +2948,13 @@ msgstr "Hidrofobicitás"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Tengelyek"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Cartesian Axes"
-msgstr "Descartes-féle"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -2998,27 +2963,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Egyéni érték"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Tengely:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Tengely:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Tengely:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3031,9 +2992,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Igazítás:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3080,9 +3040,8 @@ msgstr "Átlátszóság"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Kobalt"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3168,9 +3127,8 @@ msgstr "Dipólusmomentum"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Egyedi szín"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3210,43 +3168,37 @@ msgstr "Levágási szög:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#, fuzzy
 msgid "Rendering Engine:"
-msgstr "Megjelenítés:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:40
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "TextRenderer"
-msgstr "Megjelenítés"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:45
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "QPainter"
-msgstr "Kvintett"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Atom cimkéi:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Csúcsok cimkézése:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "Színek"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3279,9 +3231,8 @@ msgstr "Elem szimbóluma"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#, fuzzy
 msgid "Symbol & Number in Group"
-msgstr "Szimbólum és atomszám"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3324,9 +3275,8 @@ msgstr "Egyéni adatok"
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "A betűtípus megváltoztatása..."
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3358,9 +3308,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Kötés cimkéi:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3511,21 +3460,18 @@ msgstr "Mentési formátum: .avi..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Angstroms"
-msgstr "Ǻngstrom"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Bohr"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "Első akció"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3551,15 +3497,13 @@ msgstr "GAMESS bevitel"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:112
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "GAMESS Input #2"
-msgstr "GAMESS bevitel"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "Turbomole Input"
-msgstr "Turbomole IR adatok (control)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3573,9 +3517,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Mindent visszaállít"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3594,9 +3537,8 @@ msgstr "..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Minden törlése"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3616,10 +3558,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3631,9 +3573,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Nincs"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4150,15 +4091,13 @@ msgstr "Béta redő"
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:377
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "3-10 Helix"
-msgstr "Hélix"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:382
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "Pi Helix"
-msgstr "Hélix"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:387
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
@@ -4324,7 +4263,8 @@ msgstr "Parancs:"
 #. i18n: file: src/extensions/povraydialog.ui:183
 #. i18n: ectx: property (toolTip), widget (QCheckBox, renderDirect)
 msgid "Render the molecule directly using command line POV-Ray"
-msgstr "Molekula megjelenítése közvetlenül a parancssori POV-Ray használatával"
+msgstr ""
+"Molekula megjelenítése közvetlenül a parancssori POV-Ray használatával"
 
 #. i18n: file: src/extensions/povraydialog.ui:186
 #. i18n: ectx: property (text), widget (QCheckBox, renderDirect)
@@ -4353,9 +4293,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:69
 #. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
-#, fuzzy
 msgid "Basics"
-msgstr "Bázis"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:81
 #. i18n: ectx: property (text), widget (QLabel, title)
@@ -4385,9 +4324,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Számítás"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4432,9 +4370,8 @@ msgstr "HF"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:178
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#, fuzzy
 msgid "KS-DFT"
-msgstr "DFT"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:183
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -4484,33 +4421,28 @@ msgstr "cc-pVTZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:230
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
-#, fuzzy
 msgid "cc-pVQZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:235
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
-#, fuzzy
 msgid "cc-pV5Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:240
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
-#, fuzzy
 msgid "cc-pV6Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:258
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#, fuzzy
 msgid "STO-nG"
-msgstr "STO-3G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:263
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#, fuzzy
 msgid "Pople-style"
-msgstr "Pople"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:268
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -4524,81 +4456,68 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:294
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
-#, fuzzy
 msgid "aug-cc-pVDZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:299
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
-#, fuzzy
 msgid "aug-cc-pVTZ"
-msgstr "cc-pVTZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:304
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
-#, fuzzy
 msgid "aug-cc-pVQZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:309
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
-#, fuzzy
 msgid "aug-cc-pV5Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:314
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
-#, fuzzy
 msgid "aug-cc-pV6Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:335
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pCVDZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:340
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pCVTZ"
-msgstr "cc-pVTZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:345
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pCVQZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:350
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pCV5Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:355
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pwCVDZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:360
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pwCVTZ"
-msgstr "cc-pVTZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:365
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pwCVQZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:370
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
-#, fuzzy
 msgid "cc-pwCV5Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:387
 #. i18n: ectx: property (text), widget (QCheckBox, basiscoreCheck)
@@ -4681,117 +4600,98 @@ msgstr "6-311G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:477
 #. i18n: ectx: property (text), widget (QCheckBox, basispolCheck)
-#, fuzzy
 msgid "Polarization functions"
-msgstr "#könnyű atom polarizációs függvény"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:494
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "3-21++G"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:499
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "6-31+G"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:504
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "6-31++G"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:522
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "3-21G*"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:527
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:532
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G**"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:537
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G(3df,3pd)"
-msgstr "6-31G(d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:542
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G*"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:547
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G**"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:552
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G(2df,2pd)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:570
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "3-21++G*"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:575
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31+G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:580
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31++G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:585
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31++G**"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:590
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311+G*"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:595
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G**"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:600
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G(2d,2p)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:605
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G(3df,3pd)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:623
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
@@ -4845,33 +4745,28 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:699
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
-#, fuzzy
 msgid "aug-cc-pCVDZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:704
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
-#, fuzzy
 msgid "aug-cc-pCVTZ"
-msgstr "cc-pVTZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:709
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
-#, fuzzy
 msgid "aug-cc-pCVQZ"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
-#, fuzzy
 msgid "aug-cc-pCV5Z"
-msgstr "cc-pVDZ"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Direkt SCF"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -4912,15 +4807,13 @@ msgstr "DFT"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:804
 #. i18n: ectx: property (text), widget (QLabel, functional)
-#, fuzzy
 msgid "Functional:"
-msgstr "Kezdeti:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B2PLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:832
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4941,15 +4834,13 @@ msgstr "B3LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:837
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B3LYPg"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:842
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B3P86"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:847
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4963,9 +4854,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:857
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B1LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:862
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4989,9 +4879,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:882
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B86LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:887
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5010,9 +4899,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "BLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:907
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5026,9 +4914,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:917
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "BW"
-msgstr "B"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:922
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5037,15 +4924,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:927
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "CAMB3LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:932
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "DBLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:937
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5066,9 +4951,8 @@ msgstr "EDF1"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:952
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "EDF2"
-msgstr "EDF1"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:957
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5097,9 +4981,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:982
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "KMLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:987
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5133,9 +5016,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1017
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "OLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1022
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5274,15 +5156,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1157
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "XLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1162
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "X3LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
@@ -5298,21 +5178,18 @@ msgstr ""
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrdensSpin)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1251
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrorbSpin)
-#, fuzzy
 msgid "1.0D-"
-msgstr "10e-"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1273
 #. i18n: ectx: property (text), widget (QLabel, chargeint)
-#, fuzzy
 msgid "Charge Integration:"
-msgstr "maximális  SCF iterációk:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "Geometria Optimalizálás"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5321,9 +5198,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1334
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "Becke"
-msgstr "Szerkezeti váz"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1339
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
@@ -5332,9 +5208,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1344
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "SSF"
-msgstr "SCF"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1358
 #. i18n: ectx: property (text), widget (QLabel, grid)
@@ -5348,27 +5223,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Normális futtatás"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "Vonalak"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "ultrafine"
-msgstr "Glutamin"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1404
 #. i18n: ectx: property (text), widget (QLabel, radscheme)
-#, fuzzy
 msgid "Radial Scheme:"
-msgstr "&Sémák:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1421
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
@@ -5387,9 +5258,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Tulajdonságok"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5398,21 +5268,18 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "Energia kalkuláció"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
-#, fuzzy
 msgid "Frequency Dependent"
-msgstr "Frekvenciák"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
-#, fuzzy
 msgid "No. excitations:"
-msgstr "Nincs leírás"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7304,9 +7171,8 @@ msgstr "&Betűméret automatikus beállítása"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:688
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
-#, fuzzy
 msgid "x"
-msgstr "px"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:693
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
@@ -7315,9 +7181,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Exportálás"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7325,9 +7190,8 @@ msgstr "Exportálás"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Spektrumok"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7354,9 +7218,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7365,27 +7228,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Felirat"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Cell"
-msgstr "Cella létrehozása"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "Első atom"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7419,9 +7278,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_IR_Raman)
-#, fuzzy
 msgid "tab_IR_Raman"
-msgstr "tab_IR"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:29
 #. i18n: ectx: property (text), widget (QLabel, label_8)
@@ -7430,21 +7288,18 @@ msgstr "&Y tengely egysége:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:75
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Scaling Type:"
-msgstr "SCF típus:"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Vonalak"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Negatív"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7453,15 +7308,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#, fuzzy
 msgid "Intensities"
-msgstr "Nincs intenzitás"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Sablon"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7527,9 +7380,8 @@ msgstr "Molekularezgés:"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Fájl"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7538,15 +7390,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:90
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "ν (cm⁻¹)"
-msgstr "Frekvencia (cm⁻¹)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:95
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "I (km/mol)"
-msgstr "Intenzitás (km/mol)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:100
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
@@ -7555,9 +7405,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "&Spektrumok..."
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -7581,9 +7430,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:229
 #. i18n: ectx: property (text), widget (QCheckBox, normalizeDispCheckBox)
-#, fuzzy
 msgid "&Normalize displacements"
-msgstr "Nincs vibrációs eltolódás"
+msgstr ""
 
 #. i18n: file: src/extensions/supercelldialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SuperCellDialog)
@@ -7724,9 +7572,8 @@ msgstr "Egységcella kitöltése"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "Térképezett színek"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -7801,57 +7648,38 @@ msgstr "Atom eltávolítása"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-" ,Launchpad Contributions:,Balázs Attila,Csörföly Dániel,Krasznecz Zoltán"
+",Launchpad Contributions:,Balázs Attila,Csörföly Dániel,Krasznecz Zoltán, "
+",Launchpad Contributions:,Avogadro Team,Balázs Attila,Csörföly "
+"Dániel,Krasznecz Zoltán"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,battila9@freemail.hu,csorfolydaniel@gmail.com,krasznecz.zoltan@gmail.com"
+",,battila9@freemail.hu,csorfolydaniel@gmail.com,krasznecz.zoltan@gmail.com,,,"
+"avogadro-"
+"devel@lists.sourceforge.net,battila9@freemail.hu,csorfolydaniel@gmail.com,zol"
+"tan.krasznecz@gmail.com"
 
 #~ msgid "Hydrogen"
 #~ msgstr "Hidrogén"
 
-#~ msgid "Helium"
-#~ msgstr "Hélium"
-
-#~ msgid "Lithium"
-#~ msgstr "Lítium"
-
-#~ msgid "Beryllium"
-#~ msgstr "Berillium"
-
-#~ msgid "Boron"
-#~ msgstr "Bór"
+#~ msgid "Nitrogen"
+#~ msgstr "Nitrogén"
 
 #~ msgid "Carbon"
 #~ msgstr "Szén"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Nitrogén"
+#~ msgid "Lithium"
+#~ msgstr "Lítium"
 
-#~ msgid "Oxygen"
-#~ msgstr "Oxigén"
+#~ msgid "Helium"
+#~ msgstr "Hélium"
 
-#~ msgid "Fluorine"
-#~ msgstr "Fluor"
+#~ msgid "Boron"
+#~ msgstr "Bór"
 
-#~ msgid "Neon"
-#~ msgstr "Neon"
-
-#~ msgid "Sodium"
-#~ msgstr "Nátrium"
-
-#~ msgid "Magnesium"
-#~ msgstr "Magnézium"
-
-#~ msgid "Aluminum"
-#~ msgstr "Alumínium"
-
-#~ msgid "Silicon"
-#~ msgstr "Szilícium"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Foszfor"
+#~ msgid "Beryllium"
+#~ msgstr "Berillium"
 
 #~ msgid "Sulfur"
 #~ msgstr "Kén"
@@ -7859,11 +7687,29 @@ msgstr ""
 #~ msgid "Chlorine"
 #~ msgstr "Klór"
 
-#~ msgid "Argon"
-#~ msgstr "Argon"
+#~ msgid "Silicon"
+#~ msgstr "Szilícium"
 
-#~ msgid "Potassium"
-#~ msgstr "Kálium"
+#~ msgid "Phosphorus"
+#~ msgstr "Foszfor"
+
+#~ msgid "Magnesium"
+#~ msgstr "Magnézium"
+
+#~ msgid "Aluminum"
+#~ msgstr "Alumínium"
+
+#~ msgid "Sodium"
+#~ msgstr "Nátrium"
+
+#~ msgid "Neon"
+#~ msgstr "Neon"
+
+#~ msgid "Fluorine"
+#~ msgstr "Fluor"
+
+#~ msgid "Oxygen"
+#~ msgstr "Oxigén"
 
 #~ msgid "Calcium"
 #~ msgstr "Kalcium"
@@ -7871,11 +7717,11 @@ msgstr ""
 #~ msgid "Scandium"
 #~ msgstr "Szkandium"
 
-#~ msgid "Titanium"
-#~ msgstr "Titán"
+#~ msgid "Argon"
+#~ msgstr "Argon"
 
-#~ msgid "Vanadium"
-#~ msgstr "Vanádium"
+#~ msgid "Potassium"
+#~ msgstr "Kálium"
 
 #~ msgid "Chromium"
 #~ msgstr "Króm"
@@ -7883,23 +7729,35 @@ msgstr ""
 #~ msgid "Manganese"
 #~ msgstr "Mangán"
 
-#~ msgid "Iron"
-#~ msgstr "Vas"
+#~ msgid "Vanadium"
+#~ msgstr "Vanádium"
+
+#~ msgid "Titanium"
+#~ msgstr "Titán"
 
 #~ msgid "Cobalt"
 #~ msgstr "Kobalt"
 
-#~ msgid "Nickel"
-#~ msgstr "Nikkel"
+#~ msgid "Iron"
+#~ msgstr "Vas"
 
 #~ msgid "Copper"
 #~ msgstr "Réz"
 
-#~ msgid "Zinc"
-#~ msgstr "Cink"
+#~ msgid "Nickel"
+#~ msgstr "Nikkel"
 
 #~ msgid "Gallium"
 #~ msgstr "Gallium"
+
+#~ msgid "Zinc"
+#~ msgstr "Cink"
+
+#~ msgid "Krypton"
+#~ msgstr "Kripton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubídium"
 
 #~ msgid "Germanium"
 #~ msgstr "Germánium"
@@ -7913,11 +7771,23 @@ msgstr ""
 #~ msgid "Bromine"
 #~ msgstr "Bróm"
 
-#~ msgid "Krypton"
-#~ msgstr "Kripton"
+#~ msgid "Palladium"
+#~ msgstr "Palládium"
 
-#~ msgid "Rubidium"
-#~ msgstr "Rubídium"
+#~ msgid "Ruthenium"
+#~ msgstr "Ruténium"
+
+#~ msgid "Rhodium"
+#~ msgstr "Ródium"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molibdén"
+
+#~ msgid "Technetium"
+#~ msgstr "Technécium"
+
+#~ msgid "Silver"
+#~ msgstr "Ezüst"
 
 #~ msgid "Strontium"
 #~ msgstr "Stroncium"
@@ -7931,23 +7801,23 @@ msgstr ""
 #~ msgid "Niobium"
 #~ msgstr "Nióbium"
 
-#~ msgid "Molybdenum"
-#~ msgstr "Molibdén"
+#~ msgid "Iodine"
+#~ msgstr "Jód"
 
-#~ msgid "Technetium"
-#~ msgstr "Technécium"
+#~ msgid "Tellurium"
+#~ msgstr "Tellúr"
 
-#~ msgid "Ruthenium"
-#~ msgstr "Ruténium"
+#~ msgid "Xenon"
+#~ msgstr "Xenon"
 
-#~ msgid "Rhodium"
-#~ msgstr "Ródium"
+#~ msgid "Lanthanum"
+#~ msgstr "Lantán"
 
-#~ msgid "Palladium"
-#~ msgstr "Palládium"
+#~ msgid "Barium"
+#~ msgstr "Bárium"
 
-#~ msgid "Silver"
-#~ msgstr "Ezüst"
+#~ msgid "Cesium"
+#~ msgstr "Cézium"
 
 #~ msgid "Cadmium"
 #~ msgstr "Kadmium"
@@ -7961,35 +7831,23 @@ msgstr ""
 #~ msgid "Antimony"
 #~ msgstr "Antimón"
 
-#~ msgid "Tellurium"
-#~ msgstr "Tellúr"
-
-#~ msgid "Iodine"
-#~ msgstr "Jód"
-
-#~ msgid "Xenon"
-#~ msgstr "Xenon"
-
-#~ msgid "Cesium"
-#~ msgstr "Cézium"
-
-#~ msgid "Barium"
-#~ msgstr "Bárium"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lantán"
+#~ msgid "Praseodymium"
+#~ msgstr "Prazeodímium"
 
 #~ msgid "Cerium"
 #~ msgstr "Cérium"
 
-#~ msgid "Praseodymium"
-#~ msgstr "Prazeodímium"
+#~ msgid "Promethium"
+#~ msgstr "Promécium"
 
 #~ msgid "Neodymium"
 #~ msgstr "Neodímium"
 
-#~ msgid "Promethium"
-#~ msgstr "Promécium"
+#~ msgid "Dysprosium"
+#~ msgstr "Diszprózium"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmium"
 
 #~ msgid "Samarium"
 #~ msgstr "Szamárium"
@@ -8003,17 +7861,20 @@ msgstr ""
 #~ msgid "Terbium"
 #~ msgstr "Terbium"
 
-#~ msgid "Dysprosium"
-#~ msgstr "Diszprózium"
+#~ msgid "Rhenium"
+#~ msgstr "Rénium"
 
-#~ msgid "Holmium"
-#~ msgstr "Holmium"
+#~ msgid "Tungsten"
+#~ msgstr "Volfrám"
 
-#~ msgid "Erbium"
-#~ msgstr "Erbium"
+#~ msgid "Tantalum"
+#~ msgstr "Tantál"
 
-#~ msgid "Thulium"
-#~ msgstr "Túlium"
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Iridium"
+#~ msgstr "Irídium"
 
 #~ msgid "Ytterbium"
 #~ msgstr "Itterbium"
@@ -8021,47 +7882,26 @@ msgstr ""
 #~ msgid "Lutetium"
 #~ msgstr "Lutécium"
 
-#~ msgid "Hafnium"
-#~ msgstr "Hafnium"
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
 
-#~ msgid "Tantalum"
-#~ msgstr "Tantál"
-
-#~ msgid "Tungsten"
-#~ msgstr "Volfrám"
-
-#~ msgid "Rhenium"
-#~ msgstr "Rénium"
+#~ msgid "Thulium"
+#~ msgstr "Túlium"
 
 #~ msgid "Osmium"
 #~ msgstr "Ozmium"
 
-#~ msgid "Iridium"
-#~ msgstr "Irídium"
-
-#~ msgid "Platinum"
-#~ msgstr "Platina"
-
-#~ msgid "Gold"
-#~ msgstr "Arany"
+#~ msgid "Thallium"
+#~ msgstr "Tallium"
 
 #~ msgid "Mercury"
 #~ msgstr "Higany"
 
-#~ msgid "Thallium"
-#~ msgstr "Tallium"
+#~ msgid "Gold"
+#~ msgstr "Arany"
 
-#~ msgid "Lead"
-#~ msgstr "Ólom"
-
-#~ msgid "Bismuth"
-#~ msgstr "Bizmut"
-
-#~ msgid "Polonium"
-#~ msgstr "Polónium"
-
-#~ msgid "Astatine"
-#~ msgstr "Asztácium"
+#~ msgid "Platinum"
+#~ msgstr "Platina"
 
 #~ msgid "Radon"
 #~ msgstr "Radon"
@@ -8069,11 +7909,35 @@ msgstr ""
 #~ msgid "Francium"
 #~ msgstr "Francium"
 
-#~ msgid "Radium"
-#~ msgstr "Rádium"
+#~ msgid "Polonium"
+#~ msgstr "Polónium"
 
-#~ msgid "Actinium"
-#~ msgstr "Aktínium"
+#~ msgid "Astatine"
+#~ msgstr "Asztácium"
+
+#~ msgid "Lead"
+#~ msgstr "Ólom"
+
+#~ msgid "Bismuth"
+#~ msgstr "Bizmut"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkélium"
+
+#~ msgid "Curium"
+#~ msgstr "Kűrium"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptúnium"
+
+#~ msgid "Uranium"
+#~ msgstr "Urán"
+
+#~ msgid "Americium"
+#~ msgstr "Amerícium"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutónium"
 
 #~ msgid "Thorium"
 #~ msgstr "Tórium"
@@ -8081,44 +7945,32 @@ msgstr ""
 #~ msgid "Protactinium"
 #~ msgstr "Protaktínium"
 
-#~ msgid "Uranium"
-#~ msgstr "Urán"
+#~ msgid "Radium"
+#~ msgstr "Rádium"
 
-#~ msgid "Neptunium"
-#~ msgstr "Neptúnium"
+#~ msgid "Actinium"
+#~ msgstr "Aktínium"
 
-#~ msgid "Plutonium"
-#~ msgstr "Plutónium"
-
-#~ msgid "Americium"
-#~ msgstr "Amerícium"
-
-#~ msgid "Curium"
-#~ msgstr "Kűrium"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkélium"
-
-#~ msgid "Californium"
-#~ msgstr "Kalifornium"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einsteinium"
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelévium"
 
 #~ msgid "Fermium"
 #~ msgstr "Fermium"
 
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelévium"
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteinium"
+
+#~ msgid "Californium"
+#~ msgstr "Kalifornium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
 
 #~ msgid "Nobelium"
 #~ msgstr "Nobélium"
 
 #~ msgid "Lawrencium"
 #~ msgstr "Laurencium"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfordium"
 
 #~ msgid "Dubnium"
 #~ msgstr "Dubnium"
@@ -8129,11 +7981,23 @@ msgstr ""
 #~ msgid "Bohrium"
 #~ msgstr "Borium"
 
-#~ msgid "Hassium"
-#~ msgstr "Hasszium"
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
 
-#~ msgid "Meitnerium"
-#~ msgstr "Meitnerium"
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentium"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptium"
 
 #~ msgid "Darmstadtium"
 #~ msgstr "Darmstadtium"
@@ -8141,40 +8005,32 @@ msgstr ""
 #~ msgid "Roentgenium"
 #~ msgstr "Röntgenium"
 
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
+#~ msgid "Hassium"
+#~ msgstr "Hasszium"
 
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrium"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadium"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Ununpentium"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Ununseptium"
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnerium"
 
 #~ msgid "Ununoctium"
 #~ msgstr "Ununoctium"
 
+#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Szög %1"
 
 #~ msgid "Periodic Table"
 #~ msgstr "Periódusos rendszer"
 
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "Színbeállítás..."
+#~ msgid "&Scale:"
+#~ msgstr "&Skála:"
+
+#~ msgid "E&xport..."
+#~ msgstr "E&xportálás..."
 
 #~ msgid "Cartesian Properties"
 #~ msgstr "Descartes-féle tulajdonságok"
 
+#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Atommutató %1"
 
@@ -8192,9 +8048,3 @@ msgstr ""
 
 #~ msgid "Sc&ale:"
 #~ msgstr "&Skála:"
-
-#~ msgid "&Scale:"
-#~ msgstr "&Skála:"
-
-#~ msgid "E&xport..."
-#~ msgstr "E&xportálás..."

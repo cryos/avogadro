@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-01-02 17:27+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-04-26 19:07+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,8 +30,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -39,18 +39,18 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:3185 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -78,7 +78,7 @@ msgstr "Ryd atom"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -165,43 +165,43 @@ msgstr "CML"
 
 #: src/mainwindow.cpp:726
 msgid "Computational Chemistry Output"
-msgstr ""
+msgstr "Beregningsmuligt kemisk output"
 
 #: src/mainwindow.cpp:727
 msgid "Crystallographic Interchange CIF"
-msgstr ""
+msgstr "Krystallografisk udvekslings CIF"
 
 #: src/mainwindow.cpp:728
 msgid "GAMESS-US Output"
-msgstr ""
+msgstr "GAMESS-US Output"
 
 #: src/mainwindow.cpp:729
 msgid "Gaussian 98/03 Output"
-msgstr ""
+msgstr "Gaussian 98/03 Output"
 
 #: src/mainwindow.cpp:730
 msgid "Gaussian Formatted Checkpoint"
-msgstr ""
+msgstr "Gaussisk formateret checkpoint"
 
 #: src/mainwindow.cpp:731
 msgid "HyperChem"
-msgstr ""
+msgstr "HyperChem"
 
 #: src/mainwindow.cpp:732
 msgid "MDL Mol"
-msgstr ""
+msgstr "MDL Mol"
 
 #: src/mainwindow.cpp:733
 msgid "NWChem Output"
-msgstr ""
+msgstr "NWChem Output"
 
 #: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
 msgid "PDB"
-msgstr ""
+msgstr "PDB"
 
 #: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
 msgid "Sybyl Mol2"
-msgstr ""
+msgstr "Sybyl Mol2"
 
 #: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
 msgid "XYZ"
@@ -237,7 +237,7 @@ msgstr "Denne fil indeholder ikke 3D koordinater."
 
 #: src/mainwindow.cpp:904
 msgid "Do you want Avogadro to build a rough geometry?"
-msgstr ""
+msgstr "Vil du have Avogadro til at bygge en grov geometri?"
 
 #: src/mainwindow.cpp:922
 msgid ""
@@ -261,7 +261,7 @@ msgstr "Atomer: "
 
 #: src/mainwindow.cpp:1077
 msgid " Bonds: "
-msgstr " bindinger: "
+msgstr " Bindinger: "
 
 #: src/mainwindow.cpp:1093
 msgid "File Loaded..."
@@ -283,7 +283,7 @@ msgstr "Ctrl+G"
 #: src/mainwindow.cpp:1120
 msgctxt "Discard"
 msgid "Ctrl+D"
-msgstr ""
+msgstr "Ctrl+D"
 
 #: src/mainwindow.cpp:1122
 msgid "Save..."
@@ -348,7 +348,7 @@ msgstr "PDF"
 
 #: src/mainwindow.cpp:1503
 msgid "Common vector image formats"
-msgstr ""
+msgstr "Almindelige vektorgrafikformater"
 
 #: src/mainwindow.cpp:1508
 msgid "SVG"
@@ -389,7 +389,7 @@ msgstr "Vis %1"
 
 #: src/mainwindow.cpp:2266
 msgid "Avogadro: Detached View"
-msgstr ""
+msgstr "Avogadro: Separat visning"
 
 #: src/mainwindow.cpp:2432
 msgid "Normal Size"
@@ -401,7 +401,7 @@ msgstr "Fuld skærm"
 
 #: src/mainwindow.cpp:2543
 msgid "Ctrl+Backspace"
-msgstr ""
+msgstr "Ctrl+Backspace"
 
 #: src/mainwindow.cpp:2677
 msgctxt "[*] indicates that this is a modified view...."
@@ -428,11 +428,11 @@ msgstr "Fjern"
 
 #: src/mainwindow.cpp:3177
 msgid "No tools or engines loaded."
-msgstr ""
+msgstr "Ingen værktøj eller motorer indlæst."
 
 #: src/mainwindow.cpp:3179
 msgid "No engines loaded."
-msgstr ""
+msgstr "Ingen motorer indlæst."
 
 #: src/mainwindow.cpp:3181
 msgid "No tools loaded."
@@ -443,6 +443,7 @@ msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr ""
+" Det er tvivlsomt om programmet fungerer korrekt. Ret venligst denne fejl."
 
 #: src/mainwindow.cpp:3226
 msgid "Objects"
@@ -450,13 +451,13 @@ msgstr "Objekter"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3232 :321
 msgid "Colors"
 msgstr "Farver"
 
 #: src/mainwindow.cpp:3265
 msgid " copy"
-msgstr ""
+msgstr " Kopier"
 
 #: src/pluginsettings.cpp:53
 msgid "Name: "
@@ -464,7 +465,7 @@ msgstr "Navn: "
 
 #: src/pluginsettings.cpp:54
 msgid "Identifier: "
-msgstr ""
+msgstr "Kendetegn: "
 
 #: src/pluginsettings.cpp:55
 msgid "File: "
@@ -523,11 +524,11 @@ msgstr "Fejl"
 
 #: src/projecttreeeditor.cpp:123
 msgid "only labels can have sub items"
-msgstr ""
+msgstr "Kun etiketter kan have underemner"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Emne"
 
@@ -542,7 +543,7 @@ msgstr "Lav"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Medium"
@@ -559,7 +560,7 @@ msgstr "Ikke defineret"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Ingen"
@@ -586,11 +587,11 @@ msgstr "Ikke defineret"
 
 #: src/updatecheck.cpp:93
 msgid "Network Update Check Failed"
-msgstr ""
+msgstr "Netværksopdatering check fejlede"
 
 #: src/updatecheck.cpp:94
 msgid "Network timeout or other error."
-msgstr ""
+msgstr "Netværks timeout eller anden fejl."
 
 #: src/updatedialog.cpp:37
 msgctxt "Indicates an updated Avogadro version is available"
@@ -625,43 +626,43 @@ msgstr "Formular"
 #. i18n: file: src/enginecolorswidget.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Color by:"
-msgstr ""
+msgstr "Farve efter:"
 
 #. i18n: file: src/engineprimitiveswidget.ui:41
 #. i18n: ectx: property (toolTip), widget (QToolButton, addSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:44
 #. i18n: ectx: property (text), widget (QToolButton, addSelectionButton)
 msgid "Add Selected Primitives"
-msgstr ""
+msgstr "Tilføj valgte primitiver"
 
 #. i18n: file: src/engineprimitiveswidget.ui:55
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeSelectionButton)
 #. i18n: file: src/engineprimitiveswidget.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, removeSelectionButton)
 msgid "Remove Selected Primitives"
-msgstr ""
+msgstr "Fjern valgte primitiver"
 
 #. i18n: file: src/engineprimitiveswidget.ui:69
 #. i18n: ectx: property (toolTip), widget (QToolButton, resetButton)
 #. i18n: file: src/engineprimitiveswidget.ui:72
 #. i18n: ectx: property (text), widget (QToolButton, resetButton)
 msgid "Add All Primitives"
-msgstr ""
+msgstr "Tilføj alle primitiver"
 
 #. i18n: file: src/engineprimitiveswidget.ui:83
 #. i18n: ectx: property (toolTip), widget (QToolButton, fromSelectionButton)
 msgid "Display Only Selected Primitives"
-msgstr ""
+msgstr "Vis kun de valgte primitiver"
 
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr ""
+msgstr "Tildel til valg"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
 msgid "Import Molecule File"
-msgstr ""
+msgstr "Importer Molekylefil"
 
 #. i18n: file: src/importdialog.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -681,22 +682,22 @@ msgstr "Format:"
 #. i18n: file: src/importdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, formatComboBox)
 msgid "Automatically detect from extension"
-msgstr ""
+msgstr "Genkend automatisk efter filnavn"
 
 #. i18n: file: src/importdialog.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBonding)
 msgid "Perceive bonding"
-msgstr ""
+msgstr "Opfat bindinger"
 
 #. i18n: file: src/importdialog.ui:73
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxBondOrders)
 msgid "Perceive bond orders"
-msgstr ""
+msgstr "Opfat bindingsorden"
 
 #. i18n: file: src/importdialog.ui:83
 #. i18n: ectx: property (text), widget (QCheckBox, checkBoxAngstroms)
 msgid "Coordinates are in Ångstroms"
-msgstr ""
+msgstr "Koordinaterne er i Ångstrom"
 
 #. i18n: file: src/mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuHelp)
@@ -751,7 +752,7 @@ msgstr "&Redigér"
 #. i18n: file: src/mainwindow.ui:134
 #. i18n: ectx: property (title), widget (QMenu, menuExtensions)
 msgid "E&xtensions"
-msgstr ""
+msgstr "Udvidelser"
 
 #. i18n: file: src/mainwindow.ui:139
 #. i18n: ectx: property (title), widget (QMenu, menuSelect)
@@ -768,14 +769,14 @@ msgstr "Hovedværktøjslinje"
 #. i18n: file: src/settingsdialog.ui:255
 #. i18n: ectx: property (text), item, widget (QListWidget, listWidget)
 msgid "Project Tree"
-msgstr ""
+msgstr "Projekttræ"
 
 #. i18n: file: src/mainwindow.ui:226
 #. i18n: ectx: property (windowTitle), widget (QDockWidget, enginesDock)
 #. i18n: file: src/pluginsettings.ui:23
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
 msgid "Display Types"
-msgstr ""
+msgstr "Visningstyper"
 
 #. i18n: file: src/mainwindow.ui:235
 #. i18n: ectx: property (windowTitle), widget (QToolBar, toolBar)
@@ -867,12 +868,12 @@ msgstr "Ctrl+Shift+S"
 #. i18n: file: src/mainwindow.ui:386
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Revert To Saved"
-msgstr ""
+msgstr "Tilbage til gemte"
 
 #. i18n: file: src/mainwindow.ui:395
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Graphics..."
-msgstr ""
+msgstr "&Grafik..."
 
 #. i18n: file: src/mainwindow.ui:404
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -926,9 +927,8 @@ msgstr "Luk visning"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Better View"
-msgstr "Ny visning"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1003,12 +1003,12 @@ msgstr "Selvstudier"
 #. i18n: file: src/mainwindow.ui:571
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Duplicate View"
-msgstr ""
+msgstr "Dubliker visning"
 
 #. i18n: file: src/mainwindow.ui:579
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Axes"
-msgstr ""
+msgstr "Vis Akser"
 
 #. i18n: file: src/mainwindow.ui:587
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1043,17 +1043,17 @@ msgstr "Avogadro's hjemmeside"
 #. i18n: file: src/mainwindow.ui:624
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Plugin Manager..."
-msgstr ""
+msgstr "Plugin Manager..."
 
 #. i18n: file: src/mainwindow.ui:633
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Project Tree Editor..."
-msgstr ""
+msgstr "Projekt Træ Editor..."
 
 #. i18n: file: src/mainwindow.ui:642
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Detach View"
-msgstr ""
+msgstr "Fraskil visning"
 
 #. i18n: file: src/mainwindow.ui:651
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1063,17 +1063,17 @@ msgstr "Molekylefil..."
 #. i18n: file: src/mainwindow.ui:662
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Use Quick Render"
-msgstr ""
+msgstr "Brug hurtig rendering"
 
 #. i18n: file: src/mainwindow.ui:667
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "&Vector Graphics..."
-msgstr ""
+msgstr "&Vektor Grafik..."
 
 #. i18n: file: src/mainwindow.ui:675
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Display Unit Cell Axes"
-msgstr ""
+msgstr "Vis enhed celle akser"
 
 #. i18n: file: src/mainwindow.ui:683
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1083,7 +1083,7 @@ msgstr "Alle molekyler i fil..."
 #. i18n: file: src/mainwindow.ui:688
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
 msgid "Reset Display Types"
-msgstr ""
+msgstr "Nulstil Visningstyper"
 
 #. i18n: file: src/pluginsettings.ui:16
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
@@ -1107,7 +1107,7 @@ msgstr "Detaljer"
 #. i18n: file: src/projecttreeeditor.ui:164
 #. i18n: ectx: property (toolTip), widget (QTreeWidget, treeWidget)
 msgid "Tree Items"
-msgstr ""
+msgstr "Træ element"
 
 #. i18n: file: src/projecttreeeditor.ui:34
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -1149,22 +1149,22 @@ msgstr "&Slet punkt"
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr ""
+msgstr "Flyt enhed med venstre"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr ""
+msgstr "Flyt enhed mod højre"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #. i18n: file: src/projecttreeeditor.ui:133
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemUpButton)
@@ -1213,7 +1213,7 @@ msgstr "Kvalitet:"
 #. i18n: file: src/settingsdialog.ui:107
 #. i18n: ectx: property (toolTip), widget (QSlider, fogSlider)
 msgid "Set the global rendering quality."
-msgstr ""
+msgstr "Indstil den globale renderingskvalitet."
 
 #. i18n: file: src/settingsdialog.ui:100
 #. i18n: ectx: property (text), widget (QLabel, qualityLabel_2)
@@ -1222,13 +1222,14 @@ msgstr "Tåge:"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr " ,Launchpad Contributions:,nanker"
+msgstr ""
+",Launchpad Contributions:,nanker, ,Launchpad "
+"Contributions:,dlonie,nanker,olegb"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,"
+msgstr ",,,,,loniedavid@gmail.com,,"
 
-#, fuzzy
 #~ msgctxt "main.cpp"
 #~ msgid "Avogadro"
 #~ msgstr "Avogadro"

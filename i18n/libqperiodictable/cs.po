@@ -9,61 +9,54 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-10-25 14:18+0000\n"
+"PO-Revision-Date: 2010-04-26 19:54+0000\n"
 "Last-Translator: fri <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
-#, fuzzy
 msgid "Official Name"
-msgstr "Chemický název"
+msgstr ""
 
 #: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
 msgid "Atomic Number"
 msgstr "Atomové číslo"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Atomové číslo"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Kobalt"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Poloměr"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Počítá se elektronová hustotu"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Elektrostatický potenciál"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Elektronová hustota"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -549,17 +542,20 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
-"Avogadro Team,fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
-"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,fri"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
+"Contributions:,Avogadro Team,fri, ,Launchpad Contributions:,Avogadro "
+"Team,Geoff Hutchison,fri, ,Launchpad Contributions:,Avogadro Team,Geoff "
+"Hutchison,Roman Horník,fri, ,Launchpad Contributions:,Avogadro Team,Geoff "
+"Hutchison,Roman Horník,fri, ,Launchpad Contributions:,fri"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
-"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
-"pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,pavelfric@seznam."
-"cz,,,avogadro-devel@lists.sourceforge.net,,roman.hornik@gmail.com,"
-"pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,roman."
-"hornik@gmail.com,pavelfric@seznam.cz"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
+"ech.trefny@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,pavelfric@seznam.cz,,,avogadro-"
+"devel@lists.sourceforge.net,,pavelfric@seznam.cz,,,avogadro-"
+"devel@lists.sourceforge.net,,roman.hornik@gmail.com,pavelfric@seznam.cz,,,avo"
+"gadro-"
+"devel@lists.sourceforge.net,,roman.hornik@gmail.com,pavelfric@seznam.cz,,,pav"
+"elfric@seznam.cz"

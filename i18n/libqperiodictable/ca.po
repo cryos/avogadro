@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-06-12 14:10+0000\n"
+"PO-Revision-Date: 2010-04-26 19:49+0000\n"
 "Last-Translator: el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
@@ -29,42 +29,36 @@ msgid "Atomic Number"
 msgstr "Nombre atòmic"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Nombre atòmic"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Cobalt"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Radi"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Calcula la densitat d'electrons"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Potencial base"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Densitat d'electrons"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -551,16 +545,18 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
-"Launchpad Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro "
+"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, "
+",Launchpad Contributions:,Avogadro Team, ,Launchpad Contributions:,Avogadro "
 "Team,Geoff Hutchison,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,el_libre - http://www.catmidia."
-"cat  XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+"Contributions:,Avogadro Team,Geoff Hutchison,el_libre - "
+"http://www.catmidia.cat  XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
+"Contributions:,el_libre - http://www.catmidia.cat  "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
-"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
-"devel@lists.sourceforge.net,,el.libre@gmail.com,,,avogadro-devel@lists."
-"sourceforge.net,,el.libre@gmail.com"
+",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el.li"
+"bre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
+"devel@lists.sourceforge.net,,el.libre@gmail.com,,,avogadro-"
+"devel@lists.sourceforge.net,,el.libre@gmail.com,,,el.libre@gmail.com"
