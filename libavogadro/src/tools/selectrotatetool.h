@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007,2008 by Marcus D. Hanwell
+  Copyright (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -79,7 +80,11 @@ namespace Avogadro {
     public Q_SLOTS:
       void selectionModeChanged( int index );
       void changeAtomColor();
+      void resetAtomColor();
       void changeAtomLabel();
+      void resetAtomLabel();
+      void changeAtomRadius();
+      void resetAtomRadius();
 
     protected:
       void selectionBox(float sx, float sy, float ex, float ey);

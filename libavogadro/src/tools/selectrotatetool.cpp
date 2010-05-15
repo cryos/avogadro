@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007,2008 by Marcus D. Hanwell
+  Copyright (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -64,9 +65,15 @@ namespace Avogadro {
           "Right click outside the molecule to clear selection\n"
           "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
+
     m_contextMenu = new QMenu;
     m_contextMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
+    m_contextMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
+    
+    m_contextMenu->addSeparator();
+    
     m_contextMenu->addAction("Change color...", this, SLOT(changeAtomColor()));
+    m_contextMenu->addAction("Reset color", this, SLOT(resetAtomColor()));
   }
 
   SelectRotateTool::~SelectRotateTool()
@@ -497,6 +504,15 @@ namespace Avogadro {
      }
   }
 
+  void SelectRotateTool::resetAtomColor()
+  {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomColorName("");
+     }
+  }
+
   void SelectRotateTool::changeAtomLabel()
   {
      bool ok;
@@ -510,6 +526,21 @@ namespace Avogadro {
          a->setCustomLabel(label);
      }
   }
+
+  void SelectRotateTool::resetAtomLabel()
+  {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomLabel("");
+     }
+  }
+
+  void changeAtomRadius()
+  {}
+
+  void resetAtomRadius()
+  {}
 
 }
 
