@@ -481,19 +481,19 @@ namespace Avogadro {
   void SelectRotateTool::changeAtomColor()
   {
      QColor color;
-     QColor *oldColor = 0;
+     QColor oldColor;
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
        if (!a) return;
-       oldColor = a->customColor();
-       if(!oldColor->isValid()) {
+       oldColor.setNamedColor(a->customColorName());
+       if(!oldColor.isValid()) {
          Color *map = GLWidget::current()->colorMap(); // fall back to global color map
          map->setFromPrimitive(a);
-         oldColor->setRgb(map->color().rgb());
+         oldColor.setRgb(map->color().rgb());
        }
-       color = QColorDialog::getColor(*oldColor, 0, tr("Change color of atom"));
-       if (color.isValid() && color != *(a->customColor()))
-         a->setCustomColor(color);
+       color = QColorDialog::getColor(oldColor, 0, tr("Change color of atom"));
+       if (color.isValid() && color != oldColor)
+         a->setCustomColorName(color.name());
      }
   }
 

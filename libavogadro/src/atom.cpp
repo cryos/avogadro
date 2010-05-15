@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (c) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -51,18 +52,16 @@ using Eigen::Vector3d;
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
                                  m_forceVector(0.0, 0.0, 0.0),
-                                 m_customLabel("")
+                                 m_customLabel(""), m_customColorName("")
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
      }
      m_molecule = static_cast<Molecule*>(parent);
-     m_customColor = new QColor;
    }
 
    Atom::~Atom()
    {
-     delete m_customColor;
    }
 
    const Eigen::Vector3d * Atom::pos() const
@@ -321,7 +320,7 @@ using Eigen::Vector3d;
      m_atomicNumber = other.m_atomicNumber;
      m_formalCharge = other.m_formalCharge;
      m_customLabel = other.m_customLabel;
-     m_customColor = other.m_customColor;
+     m_customColorName = other.m_customColorName;
      return *this;
    }
 

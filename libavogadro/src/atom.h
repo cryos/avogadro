@@ -2,8 +2,9 @@
   Atom - Atom class derived from the base Primitive class
 
   Copyright (C) 2007 Donald Ephraim Curtis
-	Copyright (c) 2008-2009 Geoff Hutchison
-	Copyright (c) 2008-2009 Marcus D. Hanwell
+  Copyright (c) 2008-2009 Geoff Hutchison
+  Copyright (c) 2008-2009 Marcus D. Hanwell
+  Copyright (c) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -28,8 +29,7 @@
 #define ATOM_H
 
 #include <avogadro/primitive.h>
-#include <QColor>
-#include <QList>
+#include <QtCore/QList>
 
 namespace OpenBabel {
   class OBAtom;
@@ -114,9 +114,15 @@ namespace Avogadro {
      */
     void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
 
+    /**
+     * Set the custom label for the atom
+     */
     void setCustomLabel(const QString &label) {  m_customLabel = label; }
 
-    void setCustomColor(const QColor &color) { m_customColor->setRgb(color.rgb()); }
+    /**
+     * Set the custom color for the atom using color name
+     */
+    void setCustomColorName(const QString &name) { m_customColorName = name; }
     /** @} */
 
 
@@ -180,7 +186,7 @@ namespace Avogadro {
 
     QString customLabel() const { return m_customLabel; }
 
-    QColor* customColor() const {return m_customColor; }
+    QString customColorName() const {return m_customColorName; }
 
     /**
      * @return The force vector on this atom (if any)
@@ -268,7 +274,7 @@ namespace Avogadro {
     int m_formalCharge;
     Eigen::Vector3d m_forceVector;
     QString m_customLabel;
-    QColor *m_customColor;
+    QString m_customColorName;
     Q_DECLARE_PRIVATE(Atom)
   };
 
