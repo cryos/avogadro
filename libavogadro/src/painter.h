@@ -113,6 +113,12 @@ namespace Avogadro
      * @param alpha component of the color.
      */
     virtual void setColor(float red, float green, float blue, float alpha = 1.0) = 0;
+    
+    /**
+     * Set the color to paint elements by its name 
+     * @param name name of the color to be used
+     */    
+    virtual void setColor(QString name) = 0;
 
     /**
      * Draws a sphere, leaving the Painter choose the appropriate detail level based on the

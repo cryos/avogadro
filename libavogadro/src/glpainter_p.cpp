@@ -320,6 +320,11 @@ namespace Avogadro
     d->color.setFromRgba(red, green, blue, alpha);
   }
 
+  void GLPainter::setColor(QString name)
+  {
+    d->color.setFromQColor(QColor(name));
+  }
+
   void GLPainter::drawSphere (const Eigen::Vector3d &center, double radius)
   {
     if(!d->isValid())
