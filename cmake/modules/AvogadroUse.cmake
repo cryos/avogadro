@@ -59,15 +59,14 @@ function(avogadro_plugin plugin_name src_list)
     add_custom_target(package
       DEPENDS "${CMAKE_PROJECT_NAME}.avo"
     )
-    add_custom_target(install
+    add_custom_target(install_package
       COMMAND avopkg "${CMAKE_PROJECT_NAME}.avo"
       DEPENDS "${CMAKE_PROJECT_NAME}.avo"
     )
-  else(UNIX)
-    # Windows lacks avopkg
-    install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/contrib")
   endif(UNIX)
-  
+    
+  install(TARGETS ${plugin_name} DESTINATION "${Avogadro_PLUGIN_DIR}/contrib")
+
   set_target_properties(${plugin_name} PROPERTIES
                         OUTPUT_NAME ${plugin_name}
                         PREFIX "")
