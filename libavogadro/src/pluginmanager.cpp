@@ -781,6 +781,11 @@ namespace Avogadro {
         || (fileName.indexOf("libQPlotWidget.so") != -1))
           continue;
 #endif
+
+#ifndef ENABLE_PYTHON
+      if (fileName.indexOf("pythonterminal") != -1)
+        continue;
+#endif
       // load the factory
       QPluginLoader loader(dir.absoluteFilePath(fileName));
       QObject *instance = loader.instance();
