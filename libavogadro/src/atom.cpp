@@ -246,14 +246,30 @@ using Eigen::Vector3d;
    OpenBabel::OBAtom Atom::OBAtom()
    {
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;
+     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBPairData *obproperty;     
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
      obatom.SetFormalCharge(m_formalCharge);
 
+     // Save custom label
+     if (!m_customLabel.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("label");
+       obproperty->SetValue(m_customLabel.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+
+     // Save custom color
+     if(!m_customColorName.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("color");
+       obproperty->SetValue(m_customColorName.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+       
      // Add dynamic properties as OBPairData
-     OpenBabel::OBPairData *obproperty;
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute(propertyName.data());
@@ -264,17 +280,33 @@ using Eigen::Vector3d;
      return obatom;
    }
 
-   const OpenBabel::OBAtom Atom::OBAtom() const
+/*   const OpenBabel::OBAtom Atom::OBAtom() const
    {
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;
+     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBPairData *obproperty;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
      obatom.SetFormalCharge(m_formalCharge);
 
+     // Save custom label
+     if (!m_customLabel.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("label");
+       obproperty->SetValue(m_customLabel.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+
+     // Save custom color
+     if(!m_customColorName.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("color");
+       obproperty->SetValue(m_customColorName.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+     
      // Add dynamic properties as OBPairData
-     OpenBabel::OBPairData *obproperty;
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute(propertyName.data());
@@ -283,7 +315,7 @@ using Eigen::Vector3d;
      }
 
      return obatom;
-   }
+   }*/
 
    bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
    {
@@ -304,6 +336,15 @@ using Eigen::Vector3d;
      data = obatom->GetAllData(OpenBabel::OBGenericDataType::PairData);
      for (j = data.begin(); j != data.end(); ++j) {
        property = static_cast<OpenBabel::OBPairData *>(*j);
+       if (property->GetAttribute() == "label") {
+         m_customLabel = property->GetAttribute().c_str();
+         qDebug() << "label" << m_customLabel;
+         continue;
+       }
+       if (property->GetAttribute() == "color") {
+         m_customColorName = property->GetAttribute().c_str();
+         continue;
+       }
        setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
      }
 

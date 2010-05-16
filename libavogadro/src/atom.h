@@ -214,7 +214,7 @@ namespace Avogadro {
      * @return An OpenBabel::OBAtom copy of the atom.
      */
     OpenBabel::OBAtom OBAtom();
-    const OpenBabel::OBAtom OBAtom() const;
+    //const OpenBabel::OBAtom OBAtom() const;
 
     /**
      * Copies the data from an OpenBabel::OBAtom to the atom.

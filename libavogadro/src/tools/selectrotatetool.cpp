@@ -536,11 +536,13 @@ namespace Avogadro {
      }
   }
 
-  void changeAtomRadius()
-  {}
+  void SelectRotateTool::changeAtomRadius()
+  {
+  }
 
-  void resetAtomRadius()
-  {}
+  void SelectRotateTool::resetAtomRadius()
+  {
+  }
 
 }
 
