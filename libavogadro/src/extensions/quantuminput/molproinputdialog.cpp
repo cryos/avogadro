@@ -314,11 +314,11 @@ namespace Avogadro
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << " ang\n";
+              << w << qSetFieldWidth(0) << " degree\n";
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << " ang\n";
+              << t << qSetFieldWidth(0) << " degree\n";
       }
       if(m_2009) {
         mol << "symmetry,nosym" << '\n';
@@ -359,9 +359,9 @@ namespace Avogadro
 
       mol << "geometry={" << '\n';
       if(!m_2009) {
-        mol << "nosym" << '\n'; /* FIXME */
-        mol << "ang" << '\n';
+        mol << "nosym" << '\n'; /* FIXME */        
       }
+      mol << "ang" << '\n';
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
       vic.push_back((OpenBabel::OBInternalCoord*)NULL);
