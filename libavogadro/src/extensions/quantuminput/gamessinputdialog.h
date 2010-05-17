@@ -28,12 +28,13 @@
 
 #include "ui_gamessinputdialog.h"
 #include "gamessinputdata.h"
+#include "inputdialog.h"
 
 namespace Avogadro
 {
   class GamessHighlighter;
 
-  class GamessInputDialog : public QDialog
+  class GamessInputDialog : public InputDialog
   {
       Q_OBJECT
 
@@ -44,8 +45,8 @@ namespace Avogadro
       ~GamessInputDialog();
 
       void setInputData ( GamessInputData *inputData );
-      void readSettings();
-      void writeSettings();
+      void readSettings(QSettings&);
+      void writeSettings(QSettings&) const;
 
     protected:
       //! Create dialog tabs
@@ -70,7 +71,6 @@ namespace Avogadro
 
     private:
       Ui::GamessInputDialog ui;
-      QString m_savePath;
       GamessInputData *m_inputData;
       GamessHighlighter *m_highlighter;
 
@@ -137,7 +137,7 @@ namespace Avogadro
       //! Update Stat Point Widgets
       void updateStatPointWidgets();
 
-    private Q_SLOTS:
+    protected Q_SLOTS:
       //! Button Slots
       void defaultsClicked();
       void resetClicked();

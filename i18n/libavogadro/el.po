@@ -8,24 +8,22 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-07-22 08:30+0000\n"
+"PO-Revision-Date: 2010-04-26 21:01+0000\n"
 "Last-Translator: Anastasios Bourazanis <a.brzns@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
-#, fuzzy
 msgid "First Action"
-msgstr "περιστροφή x"
+msgstr ""
 
 #: examples/c++/templateextension.cpp:47
-#, fuzzy
 msgid "Second Action"
-msgstr "Επιλογή"
+msgstr ""
 
 #: examples/c++/templateextension.cpp:69
 #: src/extensions/animationextension.cpp:75
@@ -39,9 +37,8 @@ msgid "E&xtensions"
 msgstr "&Επεκτάσεις"
 
 #: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
-#, fuzzy
 msgid "&Template"
-msgstr "Πρότυπο"
+msgstr ""
 
 #: examples/c++/templateextension.cpp:72
 msgid "&Edit"
@@ -52,9 +49,8 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: examples/c++/templateextension.h:35
-#, fuzzy
 msgid "Example extension"
-msgstr "Επεκτάσεις"
+msgstr ""
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -178,24 +174,20 @@ msgid "Renders hydrogen bonds"
 msgstr "Αποτύπωση δεσμών υδρογόνου"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Ετικέτες ατόμων:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
-#, fuzzy
 msgid "Select Bond Labels Font"
-msgstr "Ετικέτες δεσμών:"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -378,7 +370,8 @@ msgstr "Ορίστε ένα έγκυρο όνομα αρχείου .avi"
 
 #: src/extensions/animationextension.cpp:191
 msgid "GL widget was not correctly initialized in order to save video"
-msgstr "To GL widget δεν αρχικοποιήθηκε σωστά προκειμένου να αποθηκεύσει video"
+msgstr ""
+"To GL widget δεν αρχικοποιήθηκε σωστά προκειμένου να αποθηκεύσει video"
 
 #: src/extensions/animationextension.cpp:202
 msgid "Invalid video filename.  Must include full directory path"
@@ -410,7 +403,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Κινούμενη απεικόνιση"
 
@@ -420,13 +413,13 @@ msgstr "Κινούμενη απεικόνιση τροχιών, αντιδράσ
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
-#, fuzzy
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
-msgstr "Επεξεργαστής μητρώου Z"
+msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -475,7 +468,8 @@ msgstr ""
 "περιορισμό."
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Το μόριο πρέπει να περιλαμβάνει τουλάχιστον δύο άτομα για να προσθέσετε έναν "
 "περιορισμό δεσμού"
@@ -720,7 +714,7 @@ msgstr "Πεπτίδιο..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "Εισαγωγή Πεπτιδίου"
 
@@ -930,7 +924,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Ιδιότητες"
 
@@ -941,18 +935,16 @@ msgid ""
 msgstr ""
 
 #: src/extensions/propmodel.cpp:269
-#, fuzzy
 msgid "Yes"
-msgstr "Έτη"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Νέον"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Στοιχείο"
 
@@ -994,9 +986,8 @@ msgid "Z  %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Προσθήκη ατόμου"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1021,9 +1012,8 @@ msgid "Length %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Βόριο"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1037,7 +1027,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "Γωνία"
 
@@ -1053,20 +1043,18 @@ msgid "Torsion %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Βόριο"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Ενέργεια"
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "Αναζήτηση διαμορφομερούς"
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -1093,9 +1081,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:351
-#, fuzzy
 msgid "Save Dalton Input File"
-msgstr "Αποθήκευση αρχείου τροχ."
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
@@ -1108,7 +1095,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Εμφάνιση προεπισκόπησης"
 
@@ -1127,7 +1114,7 @@ msgstr "Εμφάνιση προεπισκόπησης"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "Απόκρυψη προεπισκόπησης"
 
@@ -1220,7 +1207,7 @@ msgstr "Δημιουργία αρχείων εισόδου για το πακέ�
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Τίτλος"
 
@@ -1322,7 +1309,8 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr "Το Gaussian δεν εκτελέστηκε σωστά.Ίσως δεν έχει εγκατασταθεί σωστά."
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
@@ -1346,9 +1334,8 @@ msgid "&Q-Chem..."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "Κινούμενη απεικόνιση"
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1501,7 +1488,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr "Όνομα υπολοίπου"
 
@@ -1563,7 +1550,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1580,9 +1567,8 @@ msgid "Intensity (arb. units)"
 msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Ενέργεια"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1624,9 +1610,8 @@ msgid "Shift (ppm)"
 msgstr ""
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "Ακτίνιο"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
 msgid "Intensity"
@@ -1642,13 +1627,13 @@ msgstr "Άξονας Υ"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "Εμφ&άνιση"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr ""
 
@@ -1685,9 +1670,8 @@ msgid "UV"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:226
-#, fuzzy
 msgid "&UV Settings"
-msgstr "Ρυθμίσεις Python"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:232
 msgctxt "Circular Dichromism spectrum"
@@ -1695,20 +1679,17 @@ msgid "CD"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:233
-#, fuzzy
 msgid "&CD Settings"
-msgstr "Ρυθμίσεις Python"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Ραδόνιο"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "Ρυθμίσεις Python"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:255
 msgid "No data"
@@ -1751,24 +1732,20 @@ msgid "Enter new name for current scheme:"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1906,16 +1883,14 @@ msgid "Image successfully written to %1"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:1007
-#, fuzzy
 msgid "&Advanced <<"
-msgstr "Για προχωρημένους"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
-#, fuzzy
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
-msgstr "Για προχωρημένους"
+msgstr ""
 
 #: src/extensions/spectra/spectraextension.cpp:49
 msgid "&Spectra..."
@@ -1934,13 +1909,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Κινούμενη απεικόνιση"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -1964,7 +1938,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr ""
 
@@ -1977,14 +1951,13 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
 msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Σύνδεση"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2150,9 +2123,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "Επιλεγμένα χρώματα"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2169,13 +2141,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Εφαρμογή"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "Εντάξει"
 
@@ -2472,9 +2444,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Περιορισμοί"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2490,13 +2462,13 @@ msgstr "Αλγόριθμος:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2585,7 +2557,7 @@ msgstr "περιστροφή z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -2750,7 +2722,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "Προσθήκη ατόμου"
 
@@ -2805,7 +2777,7 @@ msgstr "Στοιχείο:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "Άλλο..."
 
@@ -2896,7 +2868,6 @@ msgid "Navigate Settings"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:59
-#, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
 "Click to pick individual atoms, residues, or fragments\n"
@@ -2904,11 +2875,6 @@ msgid ""
 "Right click outside the molecule to clear selection\n"
 "Use Ctrl to toggle the selection and shift to add to the selection"
 msgstr ""
-"Εργαλείο επιλογής (F11)\n"
-"Κλικ για την επιλογή ατόμων, υπολοίπων, ή τμημάτων\n"
-"Σύρσιμο για την επιλογή ενός εύρους ατόμων\n"
-"Χρησιμοποιήστε το Ctrl για την εναλλαγή της επιλογής και το shift για την "
-"προσθήκη στην επιλογή"
 
 #: src/tools/selectrotatetool.cpp:422
 msgid "Selection Mode:"
@@ -2960,7 +2926,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2999,9 +2965,8 @@ msgstr "Υδροφοβία"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Άξονες"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -3015,27 +2980,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Προσαρμοσμένη τιμή"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Άξονας:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Άξονας:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Άξονας:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3048,9 +3009,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Στοίχιση:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3068,9 +3028,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:468
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Norm"
-msgstr "Φόρμα"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:478
 #. i18n: ectx: property (text), widget (QCheckBox, preserveNormsCheckBox)
@@ -3098,9 +3057,8 @@ msgstr "Αδιαφάνεια:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Κοβάλτιο"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3186,9 +3144,8 @@ msgstr "Ροπή διπόλου"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Προσαρμοσμένο Χρώμα"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3228,9 +3185,8 @@ msgstr "Γωνία αποκοπής:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#, fuzzy
 msgid "Rendering Engine:"
-msgstr "Αποτύπωση:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:40
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
@@ -3239,31 +3195,27 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:45
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "QPainter"
-msgstr "Νερό"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Ετικέτες ατόμων:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Ετικέτα"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "Χρώματα:"
+msgstr "Χρώμα:"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3340,9 +3292,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "Αλλαγή γραμματοσειράς..."
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3374,9 +3325,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Ετικέτες δεσμών:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3532,15 +3482,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Μπόριο"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "περιστροφή x"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3586,9 +3534,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Όλα"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3607,9 +3554,8 @@ msgstr "..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Διαγραφή 'Ολων"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3629,10 +3575,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3644,9 +3590,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Κανένα"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4364,9 +4309,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:69
 #. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
-#, fuzzy
 msgid "Basics"
-msgstr "Βάση"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:81
 #. i18n: ectx: property (text), widget (QLabel, title)
@@ -4396,9 +4340,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Υπολογισμός"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4838,9 +4781,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Αποσύνδεση"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -5240,9 +5182,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
-#, fuzzy
 msgid "Thresholds"
-msgstr "Κατώφλι προσαρμογής: "
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1197
 #. i18n: ectx: property (text), widget (QLabel, densitythresh)
@@ -5263,9 +5204,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "Γεωμετρική Βελτιστοποίηση"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5274,9 +5214,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1334
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "Becke"
-msgstr "Κύρια στήριξη"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1339
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
@@ -5300,15 +5239,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Μορφή:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "ιν"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
@@ -5337,9 +5274,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Ιδιότητες"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5348,21 +5284,18 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "Υπολογισμός ενέργειας"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
-#, fuzzy
 msgid "Frequency Dependent"
-msgstr "Συχνότητες"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
-#, fuzzy
 msgid "No. excitations:"
-msgstr "Χωρίς περιγραφή"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7254,9 +7187,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:688
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
-#, fuzzy
 msgid "x"
-msgstr "px"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:693
 #. i18n: ectx: property (text), widget (QTableWidget, dataTable)
@@ -7265,9 +7197,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Εξαγωγή"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7275,9 +7206,8 @@ msgstr "Εξαγωγή"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Φάσματα"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7304,9 +7234,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Ενέργεια"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7315,15 +7244,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Ενέργεια"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Ετικέτα"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7382,15 +7309,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Μόλυβδος"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Αρνητικό"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7404,9 +7329,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Πρότυπο"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7425,9 +7349,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Threshold:"
-msgstr "Κατώφλι προσαρμογής: "
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_NMR)
@@ -7473,9 +7396,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Αρχείο"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7499,9 +7421,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "Φάσματα"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -7667,9 +7588,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "Χρώματα σχημάτων"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -7744,56 +7664,33 @@ msgstr "Αφαίρεση ατόμου"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, ,"
-"Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius"
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius, "
+",Launchpad Contributions:,Anastasios Bourazanis,Eleftherios Kosmas,farkoius"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,a.brzns@gmail.com,elkosmas@gmail.com,,,a.brzns@gmail.com,elkosmas@gmail."
-"com,"
+",,a.brzns@gmail.com,elkosmas@gmail.com,,,a.brzns@gmail.com,elkosmas@gmail.com"
+",,,,a.brzns@gmail.com,elkosmas@gmail.com,"
 
 #~ msgid "Hydrogen"
 #~ msgstr "Υδρογόνο"
 
-#~ msgid "Helium"
-#~ msgstr "Ήλιο"
-
-#~ msgid "Lithium"
-#~ msgstr "Λίθιο"
-
-#~ msgid "Beryllium"
-#~ msgstr "Βηρύλλιο"
+#~ msgid "Nitrogen"
+#~ msgstr "Άζωτο"
 
 #~ msgid "Carbon"
 #~ msgstr "Άνθρακας"
 
-#~ msgid "Nitrogen"
-#~ msgstr "Άζωτο"
+#~ msgid "Lithium"
+#~ msgstr "Λίθιο"
 
-#~ msgid "Oxygen"
-#~ msgstr "Οξυγόνο"
+#~ msgid "Helium"
+#~ msgstr "Ήλιο"
 
-#~ msgid "Fluorine"
-#~ msgstr "Φθόριο"
-
-#~ msgid "Neon"
-#~ msgstr "Νέον"
-
-#~ msgid "Sodium"
-#~ msgstr "Νάτριο"
-
-#~ msgid "Magnesium"
-#~ msgstr "Μαγνήσιο"
-
-#~ msgid "Aluminum"
-#~ msgstr "Αργίλιο"
-
-#~ msgid "Silicon"
-#~ msgstr "Πυρίτιο"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Φωσφόρος"
+#~ msgid "Beryllium"
+#~ msgstr "Βηρύλλιο"
 
 #~ msgid "Sulfur"
 #~ msgstr "Θείο"
@@ -7801,11 +7698,23 @@ msgstr ""
 #~ msgid "Chlorine"
 #~ msgstr "Χλώριο"
 
-#~ msgid "Argon"
-#~ msgstr "Αργό"
+#~ msgid "Silicon"
+#~ msgstr "Πυρίτιο"
 
-#~ msgid "Potassium"
-#~ msgstr "Κάλιο"
+#~ msgid "Magnesium"
+#~ msgstr "Μαγνήσιο"
+
+#~ msgid "Sodium"
+#~ msgstr "Νάτριο"
+
+#~ msgid "Neon"
+#~ msgstr "Νέον"
+
+#~ msgid "Fluorine"
+#~ msgstr "Φθόριο"
+
+#~ msgid "Oxygen"
+#~ msgstr "Οξυγόνο"
 
 #~ msgid "Calcium"
 #~ msgstr "Ασβέστιο"
@@ -7813,35 +7722,47 @@ msgstr ""
 #~ msgid "Scandium"
 #~ msgstr "Σκάνδιο"
 
-#~ msgid "Titanium"
-#~ msgstr "Τιτάνιο"
+#~ msgid "Argon"
+#~ msgstr "Αργό"
 
-#~ msgid "Vanadium"
-#~ msgstr "Βανάδιο"
-
-#~ msgid "Chromium"
-#~ msgstr "Χρώμιο"
+#~ msgid "Potassium"
+#~ msgstr "Κάλιο"
 
 #~ msgid "Manganese"
 #~ msgstr "Μαγγάνιο"
 
-#~ msgid "Iron"
-#~ msgstr "Σίδηρος"
+#~ msgid "Vanadium"
+#~ msgstr "Βανάδιο"
+
+#~ msgid "Titanium"
+#~ msgstr "Τιτάνιο"
 
 #~ msgid "Cobalt"
 #~ msgstr "Κοβάλτιο"
 
-#~ msgid "Nickel"
-#~ msgstr "Νικέλιο"
+#~ msgid "Iron"
+#~ msgstr "Σίδηρος"
+
+#~ msgid "Chromium"
+#~ msgstr "Χρώμιο"
+
+#~ msgid "Krypton"
+#~ msgstr "Κρυπτό"
 
 #~ msgid "Copper"
 #~ msgstr "Χαλκός"
 
-#~ msgid "Zinc"
-#~ msgstr "Ψευδάργυρος"
+#~ msgid "Nickel"
+#~ msgstr "Νικέλιο"
 
 #~ msgid "Gallium"
 #~ msgstr "Γάλλιο"
+
+#~ msgid "Zinc"
+#~ msgstr "Ψευδάργυρος"
+
+#~ msgid "Rubidium"
+#~ msgstr "Ρουβίδιο"
 
 #~ msgid "Germanium"
 #~ msgstr "Γερμάνιο"
@@ -7855,11 +7776,23 @@ msgstr ""
 #~ msgid "Bromine"
 #~ msgstr "Βρώμιο"
 
-#~ msgid "Krypton"
-#~ msgstr "Κρυπτό"
+#~ msgid "Palladium"
+#~ msgstr "Παλλάδιο"
 
-#~ msgid "Rubidium"
-#~ msgstr "Ρουβίδιο"
+#~ msgid "Ruthenium"
+#~ msgstr "Ρουθήνιο"
+
+#~ msgid "Rhodium"
+#~ msgstr "Ρόδιο"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Μόλυβδος"
+
+#~ msgid "Technetium"
+#~ msgstr "Τεχνήτιο"
+
+#~ msgid "Silver"
+#~ msgstr "Άργυρος"
 
 #~ msgid "Strontium"
 #~ msgstr "Στρόντιο"
@@ -7873,26 +7806,20 @@ msgstr ""
 #~ msgid "Niobium"
 #~ msgstr "Νιόβιο"
 
-#~ msgid "Molybdenum"
-#~ msgstr "Μόλυβδος"
+#~ msgid "Iodine"
+#~ msgstr "Ιώδιο"
 
-#~ msgid "Technetium"
-#~ msgstr "Τεχνήτιο"
+#~ msgid "Tellurium"
+#~ msgstr "Τελλούριο"
 
-#~ msgid "Ruthenium"
-#~ msgstr "Ρουθήνιο"
+#~ msgid "Xenon"
+#~ msgstr "Ξένον"
 
-#~ msgid "Rhodium"
-#~ msgstr "Ρόδιο"
+#~ msgid "Lanthanum"
+#~ msgstr "Λανθάνιο"
 
-#~ msgid "Palladium"
-#~ msgstr "Παλλάδιο"
-
-#~ msgid "Silver"
-#~ msgstr "Άργυρος"
-
-#~ msgid "Cadmium"
-#~ msgstr "Κάδμιο"
+#~ msgid "Cesium"
+#~ msgstr "Καίσιο"
 
 #~ msgid "Indium"
 #~ msgstr "Ίνδιο"
@@ -7903,35 +7830,29 @@ msgstr ""
 #~ msgid "Antimony"
 #~ msgstr "Αντιμόνιο"
 
-#~ msgid "Tellurium"
-#~ msgstr "Τελλούριο"
-
-#~ msgid "Iodine"
-#~ msgstr "Ιώδιο"
-
-#~ msgid "Xenon"
-#~ msgstr "Ξένον"
-
-#~ msgid "Cesium"
-#~ msgstr "Καίσιο"
+#~ msgid "Cadmium"
+#~ msgstr "Κάδμιο"
 
 #~ msgid "Barium"
 #~ msgstr "Βάριο"
 
-#~ msgid "Lanthanum"
-#~ msgstr "Λανθάνιο"
-
-#~ msgid "Cerium"
-#~ msgstr "Δημήτριο"
+#~ msgid "Promethium"
+#~ msgstr "Προμήθειο"
 
 #~ msgid "Praseodymium"
 #~ msgstr "Πρασεοδύμιο"
 
+#~ msgid "Cerium"
+#~ msgstr "Δημήτριο"
+
 #~ msgid "Neodymium"
 #~ msgstr "Νεοδύμιο"
 
-#~ msgid "Promethium"
-#~ msgstr "Προμήθειο"
+#~ msgid "Dysprosium"
+#~ msgstr "Δυσπρόσιο"
+
+#~ msgid "Holmium"
+#~ msgstr "Όλμιο"
 
 #~ msgid "Samarium"
 #~ msgstr "Σαμάριο"
@@ -7945,17 +7866,20 @@ msgstr ""
 #~ msgid "Terbium"
 #~ msgstr "Τέρβιο"
 
-#~ msgid "Dysprosium"
-#~ msgstr "Δυσπρόσιο"
+#~ msgid "Rhenium"
+#~ msgstr "Ρήνιο"
 
-#~ msgid "Holmium"
-#~ msgstr "Όλμιο"
+#~ msgid "Tungsten"
+#~ msgstr "Βολφράμιο"
 
-#~ msgid "Erbium"
-#~ msgstr "Έρβιο"
+#~ msgid "Tantalum"
+#~ msgstr "Ταντάλιο"
 
-#~ msgid "Thulium"
-#~ msgstr "Θούλιο"
+#~ msgid "Iridium"
+#~ msgstr "Ιρίδιο"
+
+#~ msgid "Osmium"
+#~ msgstr "'Οσμιο"
 
 #~ msgid "Ytterbium"
 #~ msgstr "Υττέρβιο"
@@ -7963,47 +7887,26 @@ msgstr ""
 #~ msgid "Lutetium"
 #~ msgstr "Λουτέτιο"
 
-#~ msgid "Hafnium"
-#~ msgstr "Αφνιο"
+#~ msgid "Erbium"
+#~ msgstr "Έρβιο"
 
-#~ msgid "Tantalum"
-#~ msgstr "Ταντάλιο"
-
-#~ msgid "Tungsten"
-#~ msgstr "Βολφράμιο"
-
-#~ msgid "Rhenium"
-#~ msgstr "Ρήνιο"
-
-#~ msgid "Osmium"
-#~ msgstr "'Οσμιο"
-
-#~ msgid "Iridium"
-#~ msgstr "Ιρίδιο"
-
-#~ msgid "Platinum"
-#~ msgstr "Λευκόχρυσος"
-
-#~ msgid "Gold"
-#~ msgstr "Χρυσός"
-
-#~ msgid "Mercury"
-#~ msgstr "Υδράργυρος"
+#~ msgid "Thulium"
+#~ msgstr "Θούλιο"
 
 #~ msgid "Thallium"
 #~ msgstr "Θάλλιο"
 
-#~ msgid "Lead"
-#~ msgstr "Μόλυβδος"
+#~ msgid "Mercury"
+#~ msgstr "Υδράργυρος"
 
-#~ msgid "Bismuth"
-#~ msgstr "Βισμούθιο"
+#~ msgid "Gold"
+#~ msgstr "Χρυσός"
 
 #~ msgid "Polonium"
 #~ msgstr "Πολώνιο"
 
-#~ msgid "Astatine"
-#~ msgstr "Αστάτιο"
+#~ msgid "Platinum"
+#~ msgstr "Λευκόχρυσος"
 
 #~ msgid "Radon"
 #~ msgstr "Ραδόνιο"
@@ -8011,11 +7914,32 @@ msgstr ""
 #~ msgid "Francium"
 #~ msgstr "Φράγκιο"
 
-#~ msgid "Radium"
-#~ msgstr "Ράδιο"
+#~ msgid "Astatine"
+#~ msgstr "Αστάτιο"
 
-#~ msgid "Actinium"
-#~ msgstr "Ακτίνιο"
+#~ msgid "Lead"
+#~ msgstr "Μόλυβδος"
+
+#~ msgid "Bismuth"
+#~ msgstr "Βισμούθιο"
+
+#~ msgid "Berkelium"
+#~ msgstr "Μπερκέλιο"
+
+#~ msgid "Curium"
+#~ msgstr "Κιούριο"
+
+#~ msgid "Neptunium"
+#~ msgstr "Ποσειδώνιο"
+
+#~ msgid "Uranium"
+#~ msgstr "Ουράνιο"
+
+#~ msgid "Americium"
+#~ msgstr "Αμερίκιο"
+
+#~ msgid "Plutonium"
+#~ msgstr "Πλουτώνιο"
 
 #~ msgid "Thorium"
 #~ msgstr "Θόριο"
@@ -8023,35 +7947,20 @@ msgstr ""
 #~ msgid "Protactinium"
 #~ msgstr "Πρωτακτίνιο"
 
-#~ msgid "Uranium"
-#~ msgstr "Ουράνιο"
+#~ msgid "Radium"
+#~ msgstr "Ράδιο"
 
-#~ msgid "Neptunium"
-#~ msgstr "Ποσειδώνιο"
+#~ msgid "Actinium"
+#~ msgstr "Ακτίνιο"
 
-#~ msgid "Plutonium"
-#~ msgstr "Πλουτώνιο"
-
-#~ msgid "Americium"
-#~ msgstr "Αμερίκιο"
-
-#~ msgid "Curium"
-#~ msgstr "Κιούριο"
-
-#~ msgid "Berkelium"
-#~ msgstr "Μπερκέλιο"
-
-#~ msgid "Californium"
-#~ msgstr "Καλιφόρνιο"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Αϊνσταϊνιο"
+#~ msgid "Mendelevium"
+#~ msgstr "Μεντελέβιο"
 
 #~ msgid "Fermium"
 #~ msgstr "Φέρμιο"
 
-#~ msgid "Mendelevium"
-#~ msgstr "Μεντελέβιο"
+#~ msgid "Californium"
+#~ msgstr "Καλιφόρνιο"
 
 #~ msgid "Nobelium"
 #~ msgstr "Νομπέλιο"
@@ -8065,11 +7974,20 @@ msgstr ""
 #~ msgid "Dubnium"
 #~ msgstr "Δούβνιο"
 
-#~ msgid "Seaborgium"
-#~ msgstr "Σημπόργκιο"
+#~ msgid "Ununseptium"
+#~ msgstr "Ουνουνσέπτιο"
 
-#~ msgid "Bohrium"
-#~ msgstr "Μπόριο"
+#~ msgid "Ununquadium"
+#~ msgstr "Ουνουνκουάδιο"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ουνούτριο"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ονούμβιο"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Ρεντγκένιο"
 
 #~ msgid "Hassium"
 #~ msgstr "Χάσσιο"
@@ -8077,29 +7995,11 @@ msgstr ""
 #~ msgid "Meitnerium"
 #~ msgstr "Μαϊτνέριο"
 
-#~ msgid "Darmstadtium"
-#~ msgstr "Δαρμστάτιο"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Ρεντγκένιο"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ονούμβιο"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ουνούτριο"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ουνουνκουάδιο"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Ουνουνπέντιο"
-
 #~ msgid "Ununhexium"
 #~ msgstr "Ουνουνέξιο"
 
-#~ msgid "Ununseptium"
-#~ msgstr "Ουνουνσέπτιο"
+#~ msgid "Ununpentium"
+#~ msgstr "Ουνουνπέντιο"
 
 #~ msgid "Ununoctium"
 #~ msgstr "Ουνουνόκτιο"
@@ -8107,9 +8007,14 @@ msgstr ""
 #~ msgid "Periodic Table"
 #~ msgstr "Περιοδικός Πίνακας"
 
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "Καθορισμός χρώματος..."
+#~ msgid "Radius"
+#~ msgstr "Ακτίνα"
+
+#~ msgid "E&xport..."
+#~ msgstr "Ε&ξαγωγή..."
+
+#~ msgid "Open mol file"
+#~ msgstr "Άνοιγμα αρχείου mol"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Άνοιγμα αρχείου ligand"
@@ -8117,23 +8022,38 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Αρχεία Avogadro(*.*)"
 
-#~ msgid "Open mol file"
-#~ msgstr "Άνοιγμα αρχείου mol"
-
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "αρχείο τροχιάς (*.xyz)"
 
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
-
+#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Δύο μόρια έχουν διαφορετικό αριθμό ατόμων %1 %2"
 
+#, qt-format
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Ανάγνωση αρχείου mol %1 απέτυχε."
+
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Μη δυνατή αποθήκευση του αρχείου %1"
 
-#~ msgid "Radius"
-#~ msgstr "Ακτίνα"
+#~ msgid "Phosphorus"
+#~ msgstr "Φωσφόρος"
 
-#~ msgid "E&xport..."
-#~ msgstr "Ε&ξαγωγή..."
+#~ msgid "Aluminum"
+#~ msgstr "Αργίλιο"
+
+#~ msgid "Hafnium"
+#~ msgstr "Αφνιο"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Αϊνσταϊνιο"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Σημπόργκιο"
+
+#~ msgid "Bohrium"
+#~ msgstr "Μπόριο"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Δαρμστάτιο"

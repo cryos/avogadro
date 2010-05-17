@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-02-20 15:05+0000\n"
-"Last-Translator: oops <Unknown>\n"
+"PO-Revision-Date: 2010-04-26 19:39+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,38 +25,34 @@ msgstr "확인"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Git 리비전: %1)"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
+"<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>오픈 바벨 버전: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:3185 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>프로그램 버전: %2<br/><br/>라이브러리 버전: %3<br/><br/>"
-"더 많은 정보를 위해 <a href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"홈페이지</a>를 참조하세요.<br/><br/>The program is provided AS IS with NO "
-"WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND "
-"FITNESS FOR A PARTICULAR PURPOSE.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -83,7 +79,7 @@ msgstr "원자 제거"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
 msgid "Settings"
 msgstr "설정"
 
@@ -99,6 +95,9 @@ msgid ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 msgstr ""
+"Avogadro: \t%1 (Hash %2)\n"
+"LibAvogadro: \t%3 (Hash %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:271
 #, qt-format
@@ -174,7 +173,7 @@ msgstr "계산 화학 결과"
 
 #: src/mainwindow.cpp:727
 msgid "Crystallographic Interchange CIF"
-msgstr ""
+msgstr "Crystallographic Interchange CIF"
 
 #: src/mainwindow.cpp:728
 msgid "GAMESS-US Output"
@@ -234,8 +233,7 @@ msgstr "%1 분자모형 파일을 읽는 데 실패함"
 
 #: src/mainwindow.cpp:873
 msgid "Reading multi-molecule file. This may take a while..."
-msgstr ""
-"Multi-분자 파일을 읽고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다..."
+msgstr "Multi-분자 파일을 읽고 있습니다. 이 작업은 시간이 좀 걸릴 수 있습니다..."
 
 #: src/mainwindow.cpp:900
 msgid "This file does not contain 3D coordinates."
@@ -446,8 +444,7 @@ msgstr "도구를 불러오지 못했습니다"
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr ""
-" 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
+msgstr " 응용프로그램이 올바르게 작동하지 않는 것 같습니다. 오류를 수정하십시오."
 
 #: src/mainwindow.cpp:3226
 msgid "Objects"
@@ -455,7 +452,7 @@ msgstr "개체"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3232 :321
 msgid "Colors"
 msgstr "색상"
 
@@ -532,7 +529,7 @@ msgstr "오직 라벨만 하위 항목을 가질 수 있습니다"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "항목"
 
@@ -547,7 +544,7 @@ msgstr "낮음"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "미디어"
@@ -564,7 +561,7 @@ msgstr "정의되지 않음"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "없음"
@@ -931,9 +928,8 @@ msgstr "보기 닫기"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Better View"
-msgstr "분리해서 보기"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1228,26 +1224,23 @@ msgstr "안개:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,Kim "
-"Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad Contributions:,Avogadro Team,"
-"Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee"
+",Launchpad Contributions:,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
+"Contributions:,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Kim Hanjo,Sang-hyeon Lee, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Kim Hanjo,Sang-hyeon "
+"Lee, ,Launchpad Contributions:,Avogadro Team,Bundo,Geoff Hutchison,Kim "
+"Hanjo,Sang-hyeon Lee,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,,lordmiss@lordmiss.com,,,,"
-"avogadro-devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
-"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,"
-
-#, fuzzy
-#~ msgctxt "main.cpp"
-#~ msgid "Avogadro"
-#~ msgstr "Avogadro"
-
-#~ msgid "Center"
-#~ msgstr "중앙"
+",,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,,lordmiss@lordmiss.com,,,,avogadro-"
+"devel@lists.sourceforge.net,bundo@bundo.biz,,lordmiss@lordmiss.com,,loniedavi"
+"d@gmail.com"
 
 #~ msgid "Hydrogen"
 #~ msgstr "수소"
@@ -1263,3 +1256,6 @@ msgstr ""
 
 #~ msgid "Phosphorus"
 #~ msgstr "인"
+
+#~ msgid "Center"
+#~ msgstr "중앙"

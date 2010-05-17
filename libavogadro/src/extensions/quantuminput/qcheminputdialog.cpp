@@ -31,7 +31,7 @@
 
 #include <QString>
 #include <QTextStream>
-#include <QFileDialog>
+//#include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
 
@@ -40,8 +40,8 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   QChemInputDialog::QChemInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    : InputDialog(parent, f), m_calculationType(OPT),
+    m_theoryType(B3LYP), m_basisType(B631Gd),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false)
   {
     ui.setupUi(this);
@@ -71,12 +71,17 @@ namespace Avogadro
     connect(ui.enableFormButton, SIGNAL(clicked()),
         this, SLOT(enableFormClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+    
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
   QChemInputDialog::~QChemInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void QChemInputDialog::setMolecule(Molecule *molecule)
@@ -153,21 +158,7 @@ namespace Avogadro
 
   void QChemInputDialog::generateClicked()
   {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".qcin";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save QChem Input Deck"),
-                                defaultFileName, tr("QChem Input Deck (*.qcin)"));
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
-
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();
+    saveInputFile(ui.previewText->toPlainText(), tr("QChem Input Deck"), QString("qcin"));
   }
 
   void QChemInputDialog::moreClicked()
@@ -487,5 +478,14 @@ namespace Avogadro
     ui.enableFormButton->setEnabled(dirty);
   }
 
+  void QChemInputDialog::readSettings(QSettings& settings)
+  {
+    m_savePath = settings.value("qchem/savepath").toString();
+  }
+  
+  void QChemInputDialog::writeSettings(QSettings& settings) const
+  {
+    settings.setValue("qchem/savepath", m_savePath);
+  }
 }
 

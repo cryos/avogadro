@@ -11,7 +11,9 @@ set(PLUGIN_TARGET extensions)
 # These are two independent extensions, but they may be merged in future
 
 ### Input File Extension
-set(inputfileextension_SRCS inputfileextension.cpp
+set(inputfileextension_SRCS
+    inputfileextension.cpp
+    inputdialog.cpp
     daltoninputdialog.cpp
     gaussianinputdialog.cpp
     molproinputdialog.cpp
@@ -22,7 +24,9 @@ avogadro_plugin_nogl(inputfileextension "${inputfileextension_SRCS}"
  "gaussianinputdialog.ui;daltoninputdialog.ui;molproinputdialog.ui;mopacinputdialog.ui;nwcheminputdialog.ui;qcheminputdialog.ui")
 
 ### gamess
-set(gamessextension_SRCS gamessextension.cpp
+set(gamessextension_SRCS
+  inputdialog.cpp
+  gamessextension.cpp
   gamessinputdialog.cpp
   gamessinputdata.cpp
   gamesshighlighter.cpp

@@ -28,13 +28,9 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/extension.h>
 
-#include "daltoninputdialog.h"
-#include "gaussianinputdialog.h"
-#include "molproinputdialog.h"
-#include "mopacinputdialog.h"
-#include "nwcheminputdialog.h"
-#include "qcheminputdialog.h"
+#include <QtCore/QHash>
 
+#include "inputdialog.h"
 
 namespace Avogadro
 {
@@ -69,12 +65,9 @@ namespace Avogadro
     void readOutputFile(const QString filename);
 
   private:
-    DaltonInputDialog* m_daltonInputDialog;
-    GaussianInputDialog* m_gaussianInputDialog;
-    MolproInputDialog* m_molproInputDialog;
-    MOPACInputDialog* m_mopacInputDialog;
-    NWChemInputDialog* m_nwchemInputDialog;
-    QChemInputDialog* m_qchemInputDialog;
+    InputDialog* createInputDialog(QString name);
+    QHash<QString,InputDialog*> m_dialog;
+    QHash<QString,bool> m_hasDialog;
 
     QList<QAction *> m_actions;
     Molecule *m_molecule;

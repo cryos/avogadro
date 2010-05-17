@@ -30,7 +30,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QMessageBox>
-#include <QtGui/QFileDialog>
+//#include <QtGui/QFileDialog>
 
 #include <QtCore/QDebug>
 #include <QtCore/QFile>
@@ -39,10 +39,9 @@
 namespace Avogadro {
 
   GamessInputDialog::GamessInputDialog( GamessInputData *inputData,
-    QWidget *parent, Qt::WindowFlags f ) : QDialog( parent, f ),
-    m_inputData(NULL), m_advancedChanged( false ), m_savePath("")
+    QWidget *parent, Qt::WindowFlags f ) : InputDialog( parent, f ),
+    m_inputData(NULL), m_advancedChanged( false )
   {
-    readSettings();
     setInputData(inputData);
 
     ui.setupUi(this);
@@ -64,13 +63,17 @@ namespace Avogadro {
     updateBasicWidgets();
     updateAdvancedWidgets();
     updatePreviewText();
+    
+    QSettings settings;
+    readSettings(settings);
   }
 
   // TODO on SHOW we need to update the current view.
 
   GamessInputDialog::~GamessInputDialog()
   {
-      writeSettings();
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void GamessInputDialog::setInputData(GamessInputData *inputData)
@@ -81,6 +84,7 @@ namespace Avogadro {
       disconnect(m_inputData->m_molecule, 0, this, 0);
 
     m_inputData = inputData;
+    m_molecule = m_inputData->m_molecule;
 
     connect(m_inputData->m_molecule, SIGNAL(primitiveAdded( Primitive* )),
         this, SLOT(updatePreviewText()));
@@ -1638,26 +1642,7 @@ namespace Avogadro {
 
   void GamessInputDialog::generateClicked()
   {
-    QFileInfo defaultFile(m_inputData->m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if(m_savePath == "") {
-      if (defaultPath.isEmpty())
-        defaultPath = QDir::homePath();
-    } else {
-      defaultPath = m_savePath;
-    }
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Export Input Deck"),
-        defaultFileName, tr("GAMESS Input Deck (*.inp)"));
-
-    if(fileName == "") return;
-
-    QFile file(fileName);
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
-
-    file.write(ui.previewText->toPlainText().toUtf8());
-    m_savePath = QFileInfo(file).absolutePath();
+    saveInputFile(ui.previewText->toPlainText(), tr("GAMESS Input Deck"), QString("inp"));
   }
 
   // Basic Slots
@@ -2426,15 +2411,13 @@ namespace Avogadro {
     m_inputData->StatPt->SetModeFollow(val);
   }
   
-  void GamessInputDialog::readSettings()
+  void GamessInputDialog::readSettings(QSettings& settings)
   {
-    QSettings settings;
     m_savePath = settings.value("gamess/savepath").toString();
   }
   
-  void GamessInputDialog::writeSettings()
+  void GamessInputDialog::writeSettings(QSettings& settings) const
   {
-    QSettings settings;
     settings.setValue("gamess/savepath", m_savePath);
   }
 }

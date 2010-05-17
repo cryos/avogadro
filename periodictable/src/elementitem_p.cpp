@@ -3,6 +3,7 @@
  Avogadro
 
  Copyright (C) 2007-2009 by Marcus D. Hanwell
+ Some portions (C) 2010 by Konstantin Tokarev
 
  This file is part of the Avogadro molecular editor project.
  For more information, see <http://avogadro.openmolecules.net/>
@@ -88,34 +89,19 @@ namespace Avogadro{
     QRectF rect(-m_width/2, -m_height/2, m_width, m_height);
     painter->drawRect(rect);
     // Handle the case where the item is selected
-//    if (m_color->value() > 240) {
-    /*if (m_element == 1 || m_element == 2 || m_element == 9 || m_element == 47
-        || m_element == 78) {
-      if (isSelected())
-        painter->setPen(Qt::darkGray);
-      else
-        painter->setPen(Qt::black);
-    }
-    else {*/
-      /*if (isSelected())
-        //painter->setPen(Qt::white);
-        pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
-      else {*/
-        //painter->setPen(Qt::black);
         if (bgColor.value() < 150)
-          //pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter(150));
           pen.setColor(Qt::white);
         else
           pen.setColor(Qt::black);
-          //pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())));
-     // }
-    pen.setWidth(2);
+    
+    /*pen.setWidth(2);
     if (m_element <103)
       painter->setPen(pen);
     else
       painter->setPen(Qt::black);
     //painter->setPen(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter());
-
+*/
+painter->setPen(pen);
     //painter->fillRect(rect, *m_color);
     QFont f = painter->font();
     //f.setBold(true);

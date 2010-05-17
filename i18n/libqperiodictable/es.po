@@ -8,61 +8,54 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-10-26 18:12+0000\n"
+"PO-Revision-Date: 2010-04-26 20:37+0000\n"
 "Last-Translator: Daniel Ferreira <spanish_nerdo@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/qperiodictable.cpp:27 src/qperiodictable.cpp:56
-#, fuzzy
 msgid "Official Name"
-msgstr "Nombre quimico"
+msgstr ""
 
 #: examples/qperiodictable.cpp:28 src/qperiodictable.cpp:57
 msgid "Atomic Number"
 msgstr "Número Atómico"
 
 #: examples/qperiodictable.cpp:29 src/qperiodictable.cpp:58
-#, fuzzy
 msgid "Atomic Weight"
-msgstr "Número Atómico"
+msgstr ""
 
 #: examples/qperiodictable.cpp:30 src/qperiodictable.cpp:59
 msgid "Monoisotopic Weight"
 msgstr ""
 
 #: examples/qperiodictable.cpp:31 src/qperiodictable.cpp:60
-#, fuzzy
 msgid "Covalent Radius"
-msgstr "Cobalto"
+msgstr ""
 
 #: examples/qperiodictable.cpp:32 src/qperiodictable.cpp:61
-#, fuzzy
 msgid "VdW Radius"
-msgstr "Radio"
+msgstr ""
 
 #: examples/qperiodictable.cpp:33 src/qperiodictable.cpp:62
-#, fuzzy
 msgid "Pauling Electronegativity"
-msgstr "Calculando densidad electrónica"
+msgstr ""
 
 #: examples/qperiodictable.cpp:34 src/qperiodictable.cpp:63
 msgid "Allred-Rochow Electronegativity"
 msgstr ""
 
 #: examples/qperiodictable.cpp:35 src/qperiodictable.cpp:64
-#, fuzzy
 msgid "Ionization Potential"
-msgstr "Potencial Electrostático"
+msgstr ""
 
 #: examples/qperiodictable.cpp:36 src/qperiodictable.cpp:65
-#, fuzzy
 msgid "Electron Affinity"
-msgstr "Densidad electrónica"
+msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
@@ -547,43 +540,46 @@ msgstr "Tabla periódica"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo Fredz,"
-"Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,Gothmog,"
-"Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo A.,"
-"cocoloco, ,Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
-"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff Hutchison,"
-"Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio Castillo "
-"A.,cocoloco, ,Launchpad Contributions:,Avogadro Team,niniocompu, ,Launchpad "
-"Contributions:,Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro Team,"
-"DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder Sáiz,Francisco J. Aviles "
-"Noreña,Geoff Hutchison,Mauro de Carvalho,Nicolás M. Zahlut,Victor Herrero,"
-"memaljo,niniocompu, ,Launchpad Contributions:,Alejandro Del Rincón,Angel "
-"Herráez,Ariel Cabral,Avogadro Team,Daniel Ferreira,DiegoJ,DiegoSuarez uy,"
-"Edgardo Fredz,FJModrego,Feder Sáiz,Francisco J. Aviles Noreña,Geoff "
-"Hutchison,Mauro de Carvalho,Nicolás M. Zahlut,Victor Herrero,memaljo,"
-"niniocompu, ,Launchpad Contributions:,Alejandro Del Rincón,Angel Herráez,"
-"Ariel Cabral,Avogadro Team,Daniel Ferreira,DiegoJ,DiegoSuarez uy,Edgardo "
+",Launchpad Contributions:,Andres Montejo Martinez,DiegoJ,Edgardo "
+"Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel Ruiz,Geoff "
+"Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo Catarecha,Rogelio "
+"Castillo A.,cocoloco, ,Launchpad Contributions:,Andres Montejo "
+"Martinez,DiegoJ,Edgardo Fredz,Enterhase,Feder Sáiz,Federico Vera,Gabriel "
+"Ruiz,Geoff Hutchison,Gothmog,Javier García Díaz,Luis J. Claros,Pablo "
+"Catarecha,Rogelio Castillo A.,cocoloco, ,Launchpad Contributions:,Avogadro "
+"Team,niniocompu, ,Launchpad Contributions:,Alejandro Del Rincón,Angel "
+"Herráez,Ariel Cabral,Avogadro Team,DiegoJ,DiegoSuarez uy,Edgardo "
 "Fredz,FJModrego,Feder Sáiz,Francisco J. Aviles Noreña,Geoff Hutchison,Mauro "
-"de Carvalho,Nicolás M. Zahlut,Victor Herrero,memaljo,niniocompu"
+"de Carvalho,Nicolás M. Zahlut,Victor Herrero,memaljo,niniocompu, ,Launchpad "
+"Contributions:,Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro "
+"Team,Daniel Ferreira,DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder "
+"Sáiz,Francisco J. Aviles Noreña,Geoff Hutchison,Mauro de Carvalho,Nicolás M. "
+"Zahlut,Victor Herrero,memaljo,niniocompu, ,Launchpad "
+"Contributions:,Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro "
+"Team,Daniel Ferreira,DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder "
+"Sáiz,Francisco J. Aviles Noreña,Geoff Hutchison,Mauro de Carvalho,Nicolás M. "
+"Zahlut,Victor Herrero,memaljo,niniocompu, ,Launchpad Contributions:,Daniel "
+"Ferreira"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,"
-"patricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail."
-"com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,"
-"diegojromerolopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,"
-"federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,"
-"jalvarezrom@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,,,"
-"aherraez@users.sourceforge.net,,avogadro-devel@lists.sourceforge.net,"
-"diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,"
-"federsaiz@googlemail.com,fjavilesn@gmail.com,,mauro.dec@gmail.com,"
-"nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,,aherraez@users."
-"sourceforge.net,,avogadro-devel@lists.sourceforge.net,spanish_nerdo@hotmail."
-"com,diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,"
-"federsaiz@googlemail.com,fjavilesn@gmail.com,,mauro.dec@gmail.com,"
-"nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,,aherraez@users."
-"sourceforge.net,,avogadro-devel@lists.sourceforge.net,spanish_nerdo@hotmail."
-"com,diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail."
-"com,,,fjavilesn@gmail.com,,mauro.dec@gmail.com,nzahlut@live.com,"
-"victorhera@gmail.com,memaljo@yahoo.com,"
+",,Nathan_chud@hotmail.com,diegojromerolopez@gmail.com,medeshago@gmail.com,pat"
+"ricio.oshee@gmail.com,federsaiz@googlemail.com,,debianmaster@gmail.com,,,,,pc"
+"zoido@gmail.com,,jalvarezrom@gmail.com,,,Nathan_chud@hotmail.com,diegojromero"
+"lopez@gmail.com,medeshago@gmail.com,patricio.oshee@gmail.com,federsaiz@google"
+"mail.com,,debianmaster@gmail.com,,,,,pczoido@gmail.com,,jalvarezrom@gmail.com"
+",,,avogadro-"
+"devel@lists.sourceforge.net,,,,,aherraez@users.sourceforge.net,,avogadro-"
+"devel@lists.sourceforge.net,diegojromerolopez@gmail.com,jdiegosuarez@hotmail."
+"es,medeshago@gmail.com,,federsaiz@googlemail.com,fjavilesn@gmail.com,,mauro.d"
+"ec@gmail.com,nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,,aher"
+"raez@users.sourceforge.net,,avogadro-"
+"devel@lists.sourceforge.net,spanish_nerdo@hotmail.com,diegojromerolopez@gmail"
+".com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,federsaiz@googlemail.com,fj"
+"avilesn@gmail.com,,mauro.dec@gmail.com,nzahlut@live.com,victorhera@gmail.com,"
+"memaljo@yahoo.com,,,,,aherraez@users.sourceforge.net,,avogadro-"
+"devel@lists.sourceforge.net,spanish_nerdo@hotmail.com,diegojromerolopez@gmail"
+".com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,,fjavilesn@gmail.com,,mauro"
+".dec@gmail.com,nzahlut@live.com,victorhera@gmail.com,memaljo@yahoo.com,,,,spa"
+"nish_nerdo@hotmail.com"

@@ -32,7 +32,7 @@
 
 #include <QString>
 #include <QTextStream>
-#include <QFileDialog>
+//#include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
 
@@ -41,8 +41,8 @@ using namespace OpenBabel;
 namespace Avogadro
 {
   MolproInputDialog::MolproInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(RHF), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    : InputDialog(parent, f), m_calculationType(OPT),
+    m_theoryType(RHF), m_basisType(B631Gd),
     m_output(), m_coordType(CARTESIAN), m_dirty(false), m_warned(false), m_2009(false)
   {
     ui.setupUi(this);
@@ -74,12 +74,17 @@ namespace Avogadro
     connect(ui.enableFormButton, SIGNAL(clicked()),
         this, SLOT(enableFormClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+    
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
   MolproInputDialog::~MolproInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void MolproInputDialog::setMolecule(Molecule *molecule)
@@ -156,21 +161,7 @@ namespace Avogadro
 
   void MolproInputDialog::generateClicked()
   {
-    QFileInfo defaultFile(m_molecule->fileName());
-    QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
-
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".inp";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Molpro Input Deck"),
-                                defaultFileName, tr("Molpro Input Deck (*.inp)"));
-    QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return;
-
-    QTextStream out(&file);
-    out << ui.previewText->toPlainText();
+    saveInputFile(ui.previewText->toPlainText(), tr("Molpro Input Deck"), QString("inp"));
   }
 
   void MolproInputDialog::moreClicked()
@@ -323,11 +314,11 @@ namespace Avogadro
         if (atom->GetIdx() > 2)
           mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << w << qSetFieldWidth(0) << " ang\n";
+              << w << qSetFieldWidth(0) << " degree\n";
         if (atom->GetIdx() > 3)
           mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
-              << t << qSetFieldWidth(0) << " ang\n";
+              << t << qSetFieldWidth(0) << " degree\n";
       }
       if(m_2009) {
         mol << "symmetry,nosym" << '\n';
@@ -368,9 +359,9 @@ namespace Avogadro
 
       mol << "geometry={" << '\n';
       if(!m_2009) {
-        mol << "nosym" << '\n'; /* FIXME */
-        mol << "ang" << '\n';
+        mol << "nosym" << '\n'; /* FIXME */        
       }
+      mol << "ang" << '\n';
       /* Taken from OpenBabel's gzmat file format converter */
       std::vector<OBInternalCoord*> vic;
       vic.push_back((OpenBabel::OBInternalCoord*)NULL);
@@ -528,6 +519,16 @@ namespace Avogadro
     ui.multiplicitySpin->setEnabled(!dirty);
     ui.chargeSpin->setEnabled(!dirty);
     ui.enableFormButton->setEnabled(dirty);
+  }
+
+  void MolproInputDialog::readSettings(QSettings& settings)
+  {
+    m_savePath = settings.value("molpro/savepath").toString();
+  }
+  
+  void MolproInputDialog::writeSettings(QSettings& settings) const
+  {
+    settings.setValue("molpro/savepath", m_savePath);
   }
 
 }

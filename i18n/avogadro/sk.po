@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-06-12 02:27+0000\n"
+"PO-Revision-Date: 2010-04-26 20:24+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:52+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,8 +30,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -39,24 +39,19 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:3185 :69
 msgid "Avogadro"
 msgstr "Avodagro"
 
 #: src/aboutdialog.cpp:73
-#, fuzzy, qt-format
+#, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
-"<h3>%1</h3><br/><br/>Verzia aplikácie: %2<br/><br/>Verzia knižnice: %3<br/"
-"><br/>Pre viac informácií navštívte <a href=\"http://avogadro.openmolecules."
-"net/\">domovskú stránku projektu</a>.<br/><br/>Program je poskytovaný TAK "
-"AKO JE BEZ AKEJKOLVEK ZÁRUKY, VRÁTANE ZÁRUKY PREDAJNOSTI ALEBO POUŽITELNOSTI "
-"PRE NEJAKÝ ÚČEL.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -83,7 +78,7 @@ msgstr "Vyčisti Atómy"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
 msgid "Settings"
 msgstr ""
 
@@ -453,7 +448,7 @@ msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3232 :321
 msgid "Colors"
 msgstr ""
 
@@ -530,7 +525,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr ""
 
@@ -545,7 +540,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -562,7 +557,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -1225,24 +1220,20 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro Team,"
-"milboy, ,Launchpad Contributions:, ,Launchpad Contributions:,Avogadro Team,"
-"milboy"
+",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro "
+"Team,milboy, ,Launchpad Contributions:, ,Launchpad Contributions:,Avogadro "
+"Team,milboy, ,Launchpad Contributions:,Avogadro Team,milboy"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,,,avogadro-devel@lists."
-"sourceforge.net,"
-
-#, fuzzy
-#~ msgctxt "main.cpp"
-#~ msgid "Avogadro"
-#~ msgstr "Avodagro"
+",,,,,avogadro-devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,"
 
 #~ msgid "Navigate"
 #~ msgstr "Navigovať"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1250,16 +1241,17 @@ msgstr ""
 #~ "Nemôžem načítať súbor %1\n"
 #~ "%2"
 
+#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Nemôžem rozpoznať typ súboru %1."
 
+#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Nemôžem prečítať súbor %1."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Tento súbor asi obsahuje viac záznamov molekúl. Avogadro načíta iba prvú "
 #~ "molekulu. Ak budete prácu ukladať, ostatné molekuly môžu byť stratené."
@@ -1268,9 +1260,10 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Tento súbor obsahuje iba 2D koordináty. Chcete aby sa ich Avodagro "
-#~ "pokúsil načítať a optimalizovať?"
+#~ "Tento súbor obsahuje iba 2D koordináty. Chcete aby sa ich Avodagro pokúsil "
+#~ "načítať a optimalizovať?"
 
+#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1278,9 +1271,11 @@ msgstr ""
 #~ "Nemôžem zapisovať do súboru %1:\n"
 #~ "%2."
 
+#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Nemôžem zapisovať do formátu súboru %1:"
 
+#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Nemôžem zapisovať do súboru %1:"
 
@@ -1306,5 +1301,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
+#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"

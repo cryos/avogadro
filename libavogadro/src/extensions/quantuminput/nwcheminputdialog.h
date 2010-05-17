@@ -26,14 +26,13 @@
 #ifndef NWCHEMINPUTDIALOG_H
 #define NWCHEMINPUTDIALOG_H
 
-#include <QDialog>
-
+#include "inputdialog.h"
 #include "ui_nwcheminputdialog.h"
 
 namespace Avogadro
 {
   class Molecule;
-  class NWChemInputDialog : public QDialog
+  class NWChemInputDialog : public InputDialog
   {
   Q_OBJECT
 
@@ -42,7 +41,9 @@ namespace Avogadro
     ~NWChemInputDialog();
 
     void setMolecule(Molecule *molecule);
-
+    void readSettings(QSettings&);
+    void writeSettings(QSettings&) const;
+      
     enum calculationType{SP, OPT, FREQ};
     enum theoryType{RHF, MP2, B3LYP, CCSD};
     enum basisType{STO3G, B321G, B631Gd, B631Gdp, B631plusGd, B6311Gd, ccpVDZ, ccpVTZ, LANL2DZ};
@@ -56,15 +57,15 @@ namespace Avogadro
 
   private:
     Ui::NWChemInputDialog ui;
-    Molecule* m_molecule;
+//    Molecule* m_molecule;
 
     // Internal data structure for the calculation
-    QString m_title;
+    //QString m_title;
     calculationType m_calculationType;
     theoryType m_theoryType;
     basisType m_basisType;
-    int m_multiplicity;
-    int m_charge;
+    //int m_multiplicity;
+    //int m_charge;
     QString m_output;
     coordType m_coordType;
     bool m_dirty;

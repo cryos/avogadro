@@ -45,8 +45,8 @@ namespace Avogadro
 {
 
   GaussianInputDialog::GaussianInputDialog(QWidget *parent, Qt::WindowFlags f)
-    : QDialog(parent, f), m_molecule(0), m_title("Title"), m_calculationType(OPT),
-    m_theoryType(B3LYP), m_basisType(B631Gd), m_multiplicity(1), m_charge(0),
+    : InputDialog(parent, f), m_calculationType(OPT),
+    m_theoryType(B3LYP), m_basisType(B631Gd),
     m_procs(1), m_output(""), m_chk(false), m_coordType(CARTESIAN),
     m_dirty(false), m_warned(false), m_process(0), m_progress(0)
   {
@@ -85,41 +85,48 @@ namespace Avogadro
     connect(ui.enableFormButton, SIGNAL(clicked()),
         this, SLOT(enableFormClicked()));
 
+    QSettings settings;
+    readSettings(settings);
+
     // Generate an initial preview of the input deck
     updatePreviewText();
   }
 
   GaussianInputDialog::~GaussianInputDialog()
   {
+      QSettings settings;
+      writeSettings(settings);
   }
 
   void GaussianInputDialog::writeSettings(QSettings &settings) const
   {
-    settings.setValue("gaussianCalcType", ui.calculationCombo->currentIndex());
-    settings.setValue("gaussianProcs", ui.procSpin->value());
-    settings.setValue("gaussianTheory", ui.theoryCombo->currentIndex());
-    settings.setValue("gaussianBasis", ui.basisCombo->currentIndex());
-    settings.setValue("gaussianOutput", ui.outputCombo->currentIndex());
-    settings.setValue("gaussianChk", ui.checkpointCheck->isChecked());
-    settings.setValue("gaussianCoord", ui.coordCombo->currentIndex());
+    settings.setValue("gaussian/CalcType", ui.calculationCombo->currentIndex());
+    settings.setValue("gaussian/Procs", ui.procSpin->value());
+    settings.setValue("gaussian/Theory", ui.theoryCombo->currentIndex());
+    settings.setValue("gaussian/Basis", ui.basisCombo->currentIndex());
+    settings.setValue("gaussian/Output", ui.outputCombo->currentIndex());
+    settings.setValue("gaussian/Chk", ui.checkpointCheck->isChecked());
+    settings.setValue("gaussian/Coord", ui.coordCombo->currentIndex());
+    settings.setValue("gaussian/savepath", m_savePath);
   }
 
   void GaussianInputDialog::readSettings(QSettings &settings)
   {
-    setProcs(settings.value("gaussianProcs", 2).toInt());
-    ui.procSpin->setValue(settings.value("gaussianProcs", 1).toInt());
-    setCalculation(settings.value("gaussianCalcType", 1).toInt());
-    ui.calculationCombo->setCurrentIndex(settings.value("gaussianCalcType", 1).toInt());
-    setTheory(settings.value("gaussianTheory", 3).toInt());
-    ui.theoryCombo->setCurrentIndex(settings.value("gaussianTheory", 3).toInt());
-    setBasis(settings.value("gaussianBasis", 2).toInt());
-    ui.basisCombo->setCurrentIndex(settings.value("gaussianBasis", 2).toInt());
-    setOutput(settings.value("gaussianOutput", 0).toInt());
-    ui.outputCombo->setCurrentIndex(settings.value("gaussianOutput", 0).toInt());
-    setChk(settings.value("gaussianChk", false).toBool());
-    ui.checkpointCheck->setChecked(settings.value("gaussianChk", false).toBool());
-    setCoords(settings.value("gaussianCoord", 0).toInt());
-    ui.coordCombo->setCurrentIndex(settings.value("gaussianCoord", 0).toInt());
+    setProcs(settings.value("gaussian/Procs", 2).toInt());
+    ui.procSpin->setValue(settings.value("gaussian/Procs", 1).toInt());
+    setCalculation(settings.value("gaussian/CalcType", 1).toInt());
+    ui.calculationCombo->setCurrentIndex(settings.value("gaussian/CalcType", 1).toInt());
+    setTheory(settings.value("gaussian/Theory", 3).toInt());
+    ui.theoryCombo->setCurrentIndex(settings.value("gaussian/Theory", 3).toInt());
+    setBasis(settings.value("gaussian/Basis", 2).toInt());
+    ui.basisCombo->setCurrentIndex(settings.value("gaussian/Basis", 2).toInt());
+    setOutput(settings.value("gaussian/Output", 0).toInt());
+    ui.outputCombo->setCurrentIndex(settings.value("gaussian/Output", 0).toInt());
+    setChk(settings.value("gaussian/Chk", false).toBool());
+    ui.checkpointCheck->setChecked(settings.value("gaussian/Chk", false).toBool());
+    setCoords(settings.value("gaussian/Coord", 0).toInt());
+    ui.coordCombo->setCurrentIndex(settings.value("gaussian/Coord", 0).toInt());
+    m_savePath = settings.value("gaussian/savepath").toString();
   }
 
   void GaussianInputDialog::showEvent(QShowEvent *)
@@ -228,38 +235,50 @@ namespace Avogadro
     ui.procSpin->setValue(1);
   }
 
-  QString GaussianInputDialog::saveInputFile()
+  QString GaussianInputDialog::saveInputFile(QString inputDeck, QString fileType, QString ext)
   {
+// Fragment copied from InputDialog
+    // Try to set default save path for dialog using the next sequence:
+    //  1) directory of current file (if any);
+    //  2) directory where previous deck was saved;
+    //  3) $HOME
     QFileInfo defaultFile(m_molecule->fileName());
     QString defaultPath = defaultFile.canonicalPath();
-    if (defaultPath.isEmpty())
-      defaultPath = QDir::homePath();
+    if(m_savePath == "") {
+      if (defaultPath.isEmpty())
+        defaultPath = QDir::homePath();
+    } else {
+      defaultPath = m_savePath;
+    }
 
-    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + ".com";
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Gaussian Input Deck"),
-                                defaultFileName, tr("Gaussian Input Deck (*.com)"));
+    QString defaultFileName = defaultPath + '/' + defaultFile.baseName() + "." + ext;
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save Input Deck"),
+        defaultFileName, fileType + " (*." + ext + ")");
+
+    if(fileName == "")
+      return fileName;
 
     QFile file(fileName);
-    // FIXME This really should pop up a warning if the file cannot be opened
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-      return QString();
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) return QString();
+// end of copied
 
-    QString previewText = ui.previewText->toPlainText();
+    // checkpoint
     QString checkpointName = QFileInfo(fileName).baseName();
     checkpointName.prepend("%Chk=");
     checkpointName.append(".chk");
+    inputDeck.replace(QLatin1String("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
 
-    previewText.replace(QLatin1String("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
-
-    QTextStream out(&file);
-    out << previewText;
-
+// Fragment copied from InputDialog
+    file.write(inputDeck.toLocal8Bit()); // prevent troubles in Windows
+    file.close(); // flush buffer!
+    m_savePath = QFileInfo(file).absolutePath();
     return fileName;
   }
 
   void GaussianInputDialog::generateClicked()
   {
-    saveInputFile();
+    saveInputFile(ui.previewText->toPlainText(),
+                          tr("Gaussian Input Deck"), QString("com"));
   }
 
   void GaussianInputDialog::computeClicked()
@@ -270,7 +289,8 @@ namespace Avogadro
       return;
     }
 
-    QString fileName = saveInputFile();
+    QString fileName = saveInputFile(ui.previewText->toPlainText(),
+                          tr("Gaussian Input Deck"), QString("com"));
     if (fileName.isEmpty())
       return;
 

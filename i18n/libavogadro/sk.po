@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-06-05 22:54+0000\n"
-"Last-Translator: helix84 <Unknown>\n"
+"PO-Revision-Date: 2010-04-26 18:53+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -174,19 +174,16 @@ msgid "Renders hydrogen bonds"
 msgstr "Vykresliť vodíkové väzby"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Vybrané Farby"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Vybrané Farby"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Štítok Atómu:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
 msgid "Select Bond Labels Font"
@@ -386,8 +383,8 @@ msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
-"Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov končiaci na ."
-"avi"
+"Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov končiaci na "
+".avi"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -406,7 +403,7 @@ msgstr "Súbor trajektorie %1 nesúhlasí s počtom atómov v aktuálnej molekul
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Animácia"
 
@@ -416,13 +413,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
-#, fuzzy
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
-msgstr "Karteziánsky editor..."
+msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -440,14 +437,12 @@ msgid "&Build"
 msgstr "&Zostaviť"
 
 #: src/extensions/cartesianextension.h:107
-#, fuzzy
 msgid "Cartesian editor"
-msgstr "Karteziánsky editor..."
+msgstr ""
 
 #: src/extensions/cartesianextension.h:108
-#, fuzzy
 msgid "Cartesian coordinates editor"
-msgstr "Kartézské súradnice"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -472,7 +467,8 @@ msgstr ""
 "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať obmedzenie"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "Vaša molekula musí obsahovať aspoň jeden atóm aby ste mohli pridať "
 "obmedzenie väzby"
@@ -717,7 +713,7 @@ msgstr "Peptid..."
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "Vložiť peptid"
 
@@ -930,7 +926,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -941,18 +937,16 @@ msgid ""
 msgstr ""
 
 #: src/extensions/propmodel.cpp:269
-#, fuzzy
 msgid "Yes"
-msgstr "Roky"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Neón"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Prvok"
 
@@ -994,9 +988,8 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Atóm %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1021,9 +1014,8 @@ msgid "Length %1"
 msgstr "Dĺžka %1"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Väzba %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1037,7 +1029,7 @@ msgstr "Uhol %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "Uhol"
 
@@ -1053,13 +1045,12 @@ msgid "Torsion %1"
 msgstr "Krútenie %1"
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Krútenie %1"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Energia"
 
@@ -1086,18 +1077,14 @@ msgid "Dalton Input File Generator Warning"
 msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:285
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Dalton input file preview pane?"
 msgstr ""
-"Chcete aktualizovať náhľad textu, pričom stratíte všetky zmeny vykonané vo "
-"vstupnom náhľade súboru Q-Chem?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:351
-#, fuzzy
 msgid "Save Dalton Input File"
-msgstr "Uložiť súbor trajektórie"
+msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:352
 msgid "Dalton Input File (*.dal)"
@@ -1110,7 +1097,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Zobraziť náhľad"
 
@@ -1129,7 +1116,7 @@ msgstr "Zobraziť náhľad"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "Skryť náhľad"
 
@@ -1222,7 +1209,7 @@ msgstr "Vytvorenie vstupných súborov pre balík kvantovej chémie GAMESS"
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Názov"
 
@@ -1322,7 +1309,8 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
@@ -1346,9 +1334,8 @@ msgid "&Q-Chem..."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "&Vibrácie..."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1503,7 +1490,7 @@ msgstr "Vybrať podľa zvyškov"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr "Názov zvyškov"
 
@@ -1565,7 +1552,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1582,9 +1569,8 @@ msgid "Intensity (arb. units)"
 msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Energia"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1626,14 +1612,12 @@ msgid "Shift (ppm)"
 msgstr ""
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "Aktínium"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
-#, fuzzy
 msgid "Intensity"
-msgstr "Žiadna intenzita"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:91
 msgid "X Axis"
@@ -1645,13 +1629,13 @@ msgstr "Osa Y"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "&Vzhľad"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr "E&xport Obrázku"
 
@@ -1679,9 +1663,8 @@ msgid "DOS"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:219
-#, fuzzy
 msgid "&Density Of States Settings"
-msgstr "Nastavenie Automatického Otáčania"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:225
 msgctxt "Ultra-Violet spectrum"
@@ -1689,31 +1672,26 @@ msgid "UV"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:226
-#, fuzzy
 msgid "&UV Settings"
-msgstr "Nastavenie Zarovnania"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:232
-#, fuzzy
 msgctxt "Circular Dichromism spectrum"
 msgid "CD"
-msgstr "CCSD"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:233
-#, fuzzy
 msgid "&CD Settings"
-msgstr "Nastavenie Zarovnania"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Radón"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "Nastavenie Zarovnania"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:255
 msgid "No data"
@@ -1756,24 +1734,20 @@ msgid "Enter new name for current scheme:"
 msgstr "Vložte nový názov pre schému:"
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "Vybrané Farby"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "Vybrané Farby"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Export vypočítaného spektra"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Importovať Spectra"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1911,16 +1885,14 @@ msgid "Image successfully written to %1"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:1007
-#, fuzzy
 msgid "&Advanced <<"
-msgstr "Pokročilé"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
-#, fuzzy
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
-msgstr "Pokročilé"
+msgstr ""
 
 #: src/extensions/spectra/spectraextension.cpp:49
 msgid "&Spectra..."
@@ -1939,13 +1911,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Vibrácie"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -1969,7 +1940,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr "Spustiť &animáciu"
 
@@ -1982,15 +1953,13 @@ msgstr "Zastaviť &animáciu"
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
-#, fuzzy
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
-msgstr "Vlož"
+msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Pripojiť"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2156,9 +2125,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "Vybrané Farby"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2175,13 +2143,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Použiť"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "OK"
 
@@ -2487,9 +2455,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Obmedzenia"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2505,13 +2473,13 @@ msgstr "Algoritmy"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2600,7 +2568,7 @@ msgstr "z otáčanie"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "Vynulovanie"
 
@@ -2747,7 +2715,7 @@ msgstr "Rozsah Nastavenia"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "Pridať Atóm"
 
@@ -2797,7 +2765,7 @@ msgstr "Prvok:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "Ďaľšie..."
 
@@ -2944,7 +2912,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2983,15 +2951,13 @@ msgstr "Hydrofóbia"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Osy"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Cartesian Axes"
-msgstr "Kartézské súradnice"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -3000,27 +2966,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Vlastné Hodnoty"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Osa:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Osa:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Osa:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3033,9 +2995,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Zarovnať:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3082,9 +3043,8 @@ msgstr "Priehľadnosť:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Kobalt"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3170,9 +3130,8 @@ msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Vlastná farba"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3212,9 +3171,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#, fuzzy
 msgid "Rendering Engine:"
-msgstr "Vykreslenie:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:40
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
@@ -3223,23 +3181,20 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:45
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "QPainter"
-msgstr "Voda"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Štítok Atómu:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Označenie"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -3279,9 +3234,8 @@ msgstr "Značka Prvku"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#, fuzzy
 msgid "Symbol & Number in Group"
-msgstr "Značka & Atómové číslo"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3324,9 +3278,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "Zmeniť Prvok"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3358,9 +3311,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Štítok Atómu:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3516,15 +3468,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Bohrium"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "Prvá operácia"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3550,9 +3500,8 @@ msgstr "Vstup GAMESS"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:112
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
-#, fuzzy
 msgid "GAMESS Input #2"
-msgstr "Vstup GAMESS"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:117
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3571,9 +3520,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Obnoviť Všetko"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3592,9 +3540,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Vyčisti Atómy"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3614,10 +3561,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3629,9 +3576,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Nič"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4349,9 +4295,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:69
 #. i18n: ectx: attribute (title), widget (QWidget, basicsTab)
-#, fuzzy
 msgid "Basics"
-msgstr "Jednoduché"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:81
 #. i18n: ectx: property (text), widget (QLabel, title)
@@ -4381,9 +4326,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Vypočítať"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4428,9 +4372,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:178
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
-#, fuzzy
 msgid "KS-DFT"
-msgstr "DFT"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:183
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -4495,9 +4438,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:258
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
-#, fuzzy
 msgid "STO-nG"
-msgstr "STO-3G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:263
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -4665,111 +4607,93 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:494
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "3-21++G"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:499
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "6-31+G"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:504
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
-#, fuzzy
 msgid "6-31++G"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:522
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "3-21G*"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:527
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:532
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G**"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:537
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-31G(3df,3pd)"
-msgstr "6-31G(d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:542
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G*"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:547
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G**"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:552
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
-#, fuzzy
 msgid "6-311G(2df,2pd)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:570
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "3-21++G*"
-msgstr "3-21G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:575
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31+G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:580
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31++G*"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:585
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-31++G**"
-msgstr "6-31G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:590
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311+G*"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:595
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G**"
-msgstr "6-311G"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:600
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G(2d,2p)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:605
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
-#, fuzzy
 msgid "6-311++G(3df,3pd)"
-msgstr "6-311++G(2d,p)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:623
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
@@ -4843,9 +4767,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Odpojiť"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -4886,15 +4809,13 @@ msgstr "DFT"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:804
 #. i18n: ectx: property (text), widget (QLabel, functional)
-#, fuzzy
 msgid "Functional:"
-msgstr "Východiskový"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B2PLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:832
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4915,15 +4836,13 @@ msgstr "B3LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:837
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B3LYPg"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:842
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B3P86"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:847
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4937,9 +4856,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:857
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B1LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:862
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4963,9 +4881,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:882
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "B86LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:887
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -4984,9 +4901,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "BLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:907
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5010,15 +4926,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:927
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "CAMB3LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:932
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "DBLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:937
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5039,9 +4953,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:952
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "EDF2"
-msgstr "MELDF"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:957
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5070,9 +4983,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:982
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "KMLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:987
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5106,9 +5018,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1017
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "OLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1022
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5187,9 +5098,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1097
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "PBE"
-msgstr "PDB"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1102
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5248,15 +5158,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1157
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "XLYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1162
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
-#, fuzzy
 msgid "X3LYP"
-msgstr "B3LYP"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
@@ -5272,21 +5180,18 @@ msgstr ""
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrdensSpin)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1251
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrorbSpin)
-#, fuzzy
 msgid "1.0D-"
-msgstr "10e-"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1273
 #. i18n: ectx: property (text), widget (QLabel, chargeint)
-#, fuzzy
 msgid "Charge Integration:"
-msgstr "Max SCF Iterácia:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "Geometrická optimalizácia"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5295,9 +5200,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1334
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "Becke"
-msgstr "Hlavný Reťazec"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1339
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
@@ -5306,9 +5210,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1344
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "SSF"
-msgstr "SCF"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1358
 #. i18n: ectx: property (text), widget (QLabel, grid)
@@ -5322,15 +5225,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Spustiť Normálne"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "Jód"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
@@ -5359,9 +5260,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Vlastnosti"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5370,15 +5270,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "Vypočítať energiu"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
-#, fuzzy
 msgid "Frequency Dependent"
-msgstr "Frekvencia"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
@@ -7285,9 +7183,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Export"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7295,9 +7192,8 @@ msgstr "Export"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Načítať spektrálne údaje"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7324,9 +7220,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7335,15 +7230,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Označenie"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7352,9 +7245,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "Štart Atómu"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7398,21 +7290,18 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:75
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Scaling Type:"
-msgstr "Typ SCF:"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Olovo"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Negatívne"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7421,15 +7310,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#, fuzzy
 msgid "Intensities"
-msgstr "Žiadna intenzita"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Šablóna"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7495,9 +7382,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Súbor"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7521,9 +7407,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "Importovať Spectra"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -7689,9 +7574,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "Zmeniť Prvok"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -7766,448 +7650,35 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro Team,"
-"helix84,milboy, ,Launchpad Contributions:,Avogadro Team,helix84,milboy, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,helix84,milboy"
+",Launchpad Contributions:,milboy, ,Launchpad Contributions:,Avogadro "
+"Team,helix84,milboy, ,Launchpad Contributions:,Avogadro Team,helix84,milboy, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,helix84,milboy, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,helix84,milboy"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-devel@lists."
-"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,"
-
-#~ msgid "Hydrogen"
-#~ msgstr "Vodík"
-
-#~ msgid "Helium"
-#~ msgstr "Hélium"
-
-#~ msgid "Lithium"
-#~ msgstr "Lítium"
-
-#~ msgid "Beryllium"
-#~ msgstr "Berýlium"
-
-#~ msgid "Boron"
-#~ msgstr "Bór"
-
-#~ msgid "Carbon"
-#~ msgstr "Uhlík"
-
-#~ msgid "Nitrogen"
-#~ msgstr "Dusík"
-
-#~ msgid "Oxygen"
-#~ msgstr "Kyslík"
-
-#~ msgid "Fluorine"
-#~ msgstr "Fluór"
-
-#~ msgid "Neon"
-#~ msgstr "Neón"
-
-#~ msgid "Sodium"
-#~ msgstr "Sodík"
-
-#~ msgid "Magnesium"
-#~ msgstr "Horčík"
-
-#~ msgid "Aluminum"
-#~ msgstr "Hliník"
-
-#~ msgid "Silicon"
-#~ msgstr "Kremík"
-
-#~ msgid "Phosphorus"
-#~ msgstr "Fosfor"
-
-#~ msgid "Sulfur"
-#~ msgstr "Síra"
-
-#~ msgid "Chlorine"
-#~ msgstr "Chlór"
-
-#~ msgid "Argon"
-#~ msgstr "Argón"
-
-#~ msgid "Potassium"
-#~ msgstr "Draslík"
-
-#~ msgid "Calcium"
-#~ msgstr "Vápnik"
-
-#~ msgid "Scandium"
-#~ msgstr "Skandium"
-
-#~ msgid "Titanium"
-#~ msgstr "Titánium"
-
-#~ msgid "Vanadium"
-#~ msgstr "Vanád"
-
-#~ msgid "Chromium"
-#~ msgstr "Chróm"
-
-#~ msgid "Manganese"
-#~ msgstr "Mangán"
-
-#~ msgid "Iron"
-#~ msgstr "Železo"
-
-#~ msgid "Cobalt"
-#~ msgstr "Kobalt"
-
-#~ msgid "Nickel"
-#~ msgstr "Nikel"
-
-#~ msgid "Copper"
-#~ msgstr "Meď"
-
-#~ msgid "Zinc"
-#~ msgstr "Zinok"
-
-#~ msgid "Gallium"
-#~ msgstr "Gálium"
-
-#~ msgid "Germanium"
-#~ msgstr "Germánium"
-
-#~ msgid "Arsenic"
-#~ msgstr "Arzén"
-
-#~ msgid "Selenium"
-#~ msgstr "Selén"
-
-#~ msgid "Bromine"
-#~ msgstr "Bróm"
-
-#~ msgid "Krypton"
-#~ msgstr "Kryptón"
-
-#~ msgid "Rubidium"
-#~ msgstr "Rubídium"
-
-#~ msgid "Strontium"
-#~ msgstr "Stroncium"
-
-#~ msgid "Yttrium"
-#~ msgstr "Ytrium"
-
-#~ msgid "Zirconium"
-#~ msgstr "Zirkón"
-
-#~ msgid "Niobium"
-#~ msgstr "Niób"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Molybdén"
-
-#~ msgid "Technetium"
-#~ msgstr "Technécium"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Ruténium"
-
-#~ msgid "Rhodium"
-#~ msgstr "Ródium"
-
-#~ msgid "Palladium"
-#~ msgstr "Paládium"
-
-#~ msgid "Silver"
-#~ msgstr "Striebro"
-
-#~ msgid "Cadmium"
-#~ msgstr "Kadmium"
-
-#~ msgid "Indium"
-#~ msgstr "Indium"
-
-#~ msgid "Tin"
-#~ msgstr "Cín"
-
-#~ msgid "Antimony"
-#~ msgstr "Antimón"
-
-#~ msgid "Tellurium"
-#~ msgstr "Telúr"
-
-#~ msgid "Iodine"
-#~ msgstr "Jód"
-
-#~ msgid "Xenon"
-#~ msgstr "Xenón"
-
-#~ msgid "Barium"
-#~ msgstr "Bárium"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lantán"
-
-#~ msgid "Cerium"
-#~ msgstr "Cér"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Prazeodým"
-
-#~ msgid "Neodymium"
-#~ msgstr "Neodým"
-
-#~ msgid "Promethium"
-#~ msgstr "Prométium"
-
-#~ msgid "Samarium"
-#~ msgstr "Samárium"
-
-#~ msgid "Europium"
-#~ msgstr "Európium"
-
-#~ msgid "Gadolinium"
-#~ msgstr "Gadolínium"
-
-#~ msgid "Terbium"
-#~ msgstr "Terbium"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Dysprózium"
-
-#~ msgid "Holmium"
-#~ msgstr "Holmium"
-
-#~ msgid "Erbium"
-#~ msgstr "Erbium"
-
-#~ msgid "Thulium"
-#~ msgstr "Túlium"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Yterbium"
-
-#~ msgid "Lutetium"
-#~ msgstr "Lutécium"
-
-#~ msgid "Hafnium"
-#~ msgstr "Hafnium"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tantal"
-
-#~ msgid "Tungsten"
-#~ msgstr "Volfrám"
-
-#~ msgid "Rhenium"
-#~ msgstr "Rénium"
-
-#~ msgid "Osmium"
-#~ msgstr "Osmium"
-
-#~ msgid "Iridium"
-#~ msgstr "Irídium"
-
-#~ msgid "Platinum"
-#~ msgstr "Platina"
-
-#~ msgid "Gold"
-#~ msgstr "Zlato"
-
-#~ msgid "Mercury"
-#~ msgstr "Ortuť"
-
-#~ msgid "Thallium"
-#~ msgstr "Tálium"
-
-#~ msgid "Lead"
-#~ msgstr "Olovo"
-
-#~ msgid "Bismuth"
-#~ msgstr "Bizmut"
-
-#~ msgid "Polonium"
-#~ msgstr "Polónium"
-
-#~ msgid "Astatine"
-#~ msgstr "Astát"
-
-#~ msgid "Radon"
-#~ msgstr "Radón"
-
-#~ msgid "Francium"
-#~ msgstr "Francium"
-
-#~ msgid "Radium"
-#~ msgstr "Rádium"
-
-#~ msgid "Actinium"
-#~ msgstr "Aktínium"
-
-#~ msgid "Thorium"
-#~ msgstr "Tórium"
-
-#~ msgid "Protactinium"
-#~ msgstr "Protaktínium"
-
-#~ msgid "Uranium"
-#~ msgstr "Urán"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptúnium"
-
-#~ msgid "Plutonium"
-#~ msgstr "Plutónium"
-
-#~ msgid "Americium"
-#~ msgstr "Amerícium"
-
-#~ msgid "Curium"
-#~ msgstr "Curium"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berkélium"
-
-#~ msgid "Californium"
-#~ msgstr "Kalifornium"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einsteinium"
-
-#~ msgid "Fermium"
-#~ msgstr "Fermium"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelevium"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobelium"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Lawrencium"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfordium"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dubnium"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seaborgium"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bohrium"
-
-#~ msgid "Hassium"
-#~ msgstr "Hassium"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Meitnerium"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "Darmstadtium"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Roentgenium"
-
-#~ msgid "Ununbium"
-#~ msgstr "Ununbium"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrium"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadium"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Ununpentium"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexium"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Ununseptium"
-
-#~ msgid "Ununoctium"
-#~ msgstr "Ununoctium"
-
-#~ msgid "Angle %1"
-#~ msgstr "Uhol %1"
-
-#~ msgid "Periodic Table"
-#~ msgstr "Periodická Tabuľka"
-
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "Vybrané Farby"
-
-#~ msgid "Open ligand file"
-#~ msgstr "Otvoriť súbor ligand"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "Všetky súbory (*.*)"
-
-#~ msgid "Save Movie File"
-#~ msgstr "Uložiť video súbor"
-
-#~ msgid "movie files (*.avi)"
-#~ msgstr "video súbory (*.avi)"
-
-#~ msgid "trajectory file (*.xyz)"
-#~ msgstr "súbor trajektórie (*.xyz)"
-
-#~ msgid "Read mol file %1 failed."
-#~ msgstr "Načítanie súboru molekúl %1 zlyhalo."
-
-#~ msgid "Two molecules have different number atoms %1 %2"
-#~ msgstr "Dve molekuly majú rozdielny počet atómov %1 %2"
-
-#~ msgid "GL widget was not correctly initialized in order to save snapshots"
-#~ msgstr ""
-#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
-#~ "možné ukladať snímky"
-
+",,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,"
+
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Nedá sa uložiť súbor %1."
 
-#~ msgid "GL widget was not correctly initialized in order to save movie"
-#~ msgstr ""
-#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
-#~ "možné uložiť video"
-
-#~ msgid "Invalid movie filename.  Must include full directory path"
-#~ msgstr "Neplatný názov video súboru. Musí obsahovať úplnú cestu"
-
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, "
-#~ "ending with .avi"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov s "
-#~ "príponou .avi"
-
-#~ msgid "Would write file to %1."
-#~ msgstr "Súbor by bol zapísaný do %1."
-
-#~ msgid "Wrote file %1."
-#~ msgstr "Zapísaný súbor %1."
-
-#~ msgid "Atom Index %1"
-#~ msgstr "Obsah Atómu %1"
-
-#~ msgid "Customi&ze <<"
-#~ msgstr "&Prispôsobiť <<"
-
-#~ msgid "Customi&ze >>"
-#~ msgstr "Prispôso&biť >>"
-
-#~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
-#~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Verzia aplikácie: %2<br/><br/>Verzia knižnice: %3<br/"
-#~ "><br/>Pre viac informácií navštívte <a href=\"http://avogadro."
-#~ "openmolecules.net/\">domovskú stránku projektu</a>.<br/><br/>Program je "
-#~ "poskytovaný TAK AKO JE BEZ AKEJKOLVEK ZÁRUKY, VRÁTANE ZÁRUKY PREDAJNOSTI "
-#~ "ALEBO POUŽITELNOSTI PRE NEJAKÝ ÚČEL.<br/>"
+#~ "<h3>%1</h3><br/><br/>Verzia aplikácie: %2<br/><br/>Verzia knižnice: "
+#~ "%3<br/><br/>Pre viac informácií navštívte <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">domovskú stránku "
+#~ "projektu</a>.<br/><br/>Program je poskytovaný TAK AKO JE BEZ AKEJKOLVEK "
+#~ "ZÁRUKY, VRÁTANE ZÁRUKY PREDAJNOSTI ALEBO POUŽITELNOSTI PRE NEJAKÝ ÚČEL.<br/>"
 
 #~ msgid "Cut Atoms"
 #~ msgstr "Vystrihni Atóm"
@@ -8277,20 +7748,19 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Tento súbor obsahuje iba 2D koordináty. Chcete aby sa ich Avodagro "
-#~ "pokúsil načítať a optimalizovať?"
+#~ "Tento súbor obsahuje iba 2D koordináty. Chcete aby sa ich Avodagro pokúsil "
+#~ "načítať a optimalizovať?"
 
 #~ msgid ""
 #~ "This file does not contain 3D coordinates. You may not be able to edit or "
 #~ "view properly."
 #~ msgstr ""
-#~ "Tento súbor obsahuje iba 3D koordináty. Môžu nastať problémy s úpravou "
-#~ "alebo správnym čítaním."
+#~ "Tento súbor obsahuje iba 3D koordináty. Môžu nastať problémy s úpravou alebo "
+#~ "správnym čítaním."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
 #~ "Tento súbor asi obsahuje viac záznamov molekúl. Avogadro načíta iba prvú "
 #~ "molekulu. Ak budete prácu ukladať, ostatné molekuly môžu byť stratené."
@@ -8408,6 +7878,264 @@ msgstr ""
 #~ msgid "Remove"
 #~ msgstr "Odstrániť"
 
+#~ msgid "Hydrogen"
+#~ msgstr "Vodík"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Dusík"
+
+#~ msgid "Carbon"
+#~ msgstr "Uhlík"
+
+#~ msgid "Lithium"
+#~ msgstr "Lítium"
+
+#~ msgid "Helium"
+#~ msgstr "Hélium"
+
+#~ msgid "Boron"
+#~ msgstr "Bór"
+
+#~ msgid "Beryllium"
+#~ msgstr "Berýlium"
+
+#~ msgid "Sulfur"
+#~ msgstr "Síra"
+
+#~ msgid "Chlorine"
+#~ msgstr "Chlór"
+
+#~ msgid "Silicon"
+#~ msgstr "Kremík"
+
+#~ msgid "Phosphorus"
+#~ msgstr "Fosfor"
+
+#~ msgid "Aluminum"
+#~ msgstr "Hliník"
+
+#~ msgid "Neon"
+#~ msgstr "Neón"
+
+#~ msgid "Oxygen"
+#~ msgstr "Kyslík"
+
+#~ msgid "Sodium"
+#~ msgstr "Sodík"
+
+#~ msgid "Calcium"
+#~ msgstr "Vápnik"
+
+#~ msgid "Scandium"
+#~ msgstr "Skandium"
+
+#~ msgid "Argon"
+#~ msgstr "Argón"
+
+#~ msgid "Potassium"
+#~ msgstr "Draslík"
+
+#~ msgid "Chromium"
+#~ msgstr "Chróm"
+
+#~ msgid "Titanium"
+#~ msgstr "Titánium"
+
+#~ msgid "Cobalt"
+#~ msgstr "Kobalt"
+
+#~ msgid "Iron"
+#~ msgstr "Železo"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubídium"
+
+#~ msgid "Copper"
+#~ msgstr "Meď"
+
+#~ msgid "Nickel"
+#~ msgstr "Nikel"
+
+#~ msgid "Zinc"
+#~ msgstr "Zinok"
+
+#~ msgid "Krypton"
+#~ msgstr "Kryptón"
+
+#~ msgid "Germanium"
+#~ msgstr "Germánium"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arzén"
+
+#~ msgid "Selenium"
+#~ msgstr "Selén"
+
+#~ msgid "Bromine"
+#~ msgstr "Bróm"
+
+#~ msgid "Palladium"
+#~ msgstr "Paládium"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruténium"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molybdén"
+
+#~ msgid "Silver"
+#~ msgstr "Striebro"
+
+#~ msgid "Strontium"
+#~ msgstr "Stroncium"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zirkón"
+
+#~ msgid "Iodine"
+#~ msgstr "Jód"
+
+#~ msgid "Cadmium"
+#~ msgstr "Kadmium"
+
+#~ msgid "Indium"
+#~ msgstr "Indium"
+
+#~ msgid "Tin"
+#~ msgstr "Cín"
+
+#~ msgid "Antimony"
+#~ msgstr "Antimón"
+
+#~ msgid "Holmium"
+#~ msgstr "Holmium"
+
+#~ msgid "Europium"
+#~ msgstr "Európium"
+
+#~ msgid "Terbium"
+#~ msgstr "Terbium"
+
+#~ msgid "Rhenium"
+#~ msgstr "Rénium"
+
+#~ msgid "Tantalum"
+#~ msgstr "Tantal"
+
+#~ msgid "Hafnium"
+#~ msgstr "Hafnium"
+
+#~ msgid "Iridium"
+#~ msgstr "Irídium"
+
+#~ msgid "Osmium"
+#~ msgstr "Osmium"
+
+#~ msgid "Erbium"
+#~ msgstr "Erbium"
+
+#~ msgid "Thallium"
+#~ msgstr "Tálium"
+
+#~ msgid "Mercury"
+#~ msgstr "Ortuť"
+
+#~ msgid "Gold"
+#~ msgstr "Zlato"
+
+#~ msgid "Platinum"
+#~ msgstr "Platina"
+
+#~ msgid "Radon"
+#~ msgstr "Radón"
+
+#~ msgid "Francium"
+#~ msgstr "Francium"
+
+#~ msgid "Polonium"
+#~ msgstr "Polónium"
+
+#~ msgid "Astatine"
+#~ msgstr "Astát"
+
+#~ msgid "Lead"
+#~ msgstr "Olovo"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptúnium"
+
+#~ msgid "Uranium"
+#~ msgstr "Urán"
+
+#~ msgid "Americium"
+#~ msgstr "Amerícium"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutónium"
+
+#~ msgid "Radium"
+#~ msgstr "Rádium"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelevium"
+
+#~ msgid "Fermium"
+#~ msgstr "Fermium"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einsteinium"
+
+#~ msgid "Californium"
+#~ msgstr "Kalifornium"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Lawrencium"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfordium"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dubnium"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seaborgium"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bohrium"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptium"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexium"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadium"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrium"
+
+#~ msgid "Ununbium"
+#~ msgstr "Ununbium"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstadtium"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Roentgenium"
+
+#~ msgid "Hassium"
+#~ msgstr "Hassium"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnerium"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentium"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Ununoctium"
+
 #~ msgid "Orbitals"
 #~ msgstr "Orbitály"
 
@@ -8417,6 +8145,7 @@ msgstr ""
 #~ msgid "Name"
 #~ msgstr "Názov"
 
+#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -8425,6 +8154,23 @@ msgstr ""
 
 #~ msgid "EFP Selection..."
 #~ msgstr "EFP Výber..."
+
+#~ msgid "movie files (*.avi)"
+#~ msgstr "video súbory (*.avi)"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Všetky súbory (*.*)"
+
+#, qt-format
+#~ msgid "Two molecules have different number atoms %1 %2"
+#~ msgstr "Dve molekuly majú rozdielny počet atómov %1 %2"
+
+#, qt-format
+#~ msgid "Read mol file %1 failed."
+#~ msgstr "Načítanie súboru molekúl %1 zlyhalo."
+
+#~ msgid "Invalid movie filename.  Must include full directory path"
+#~ msgstr "Neplatný názov video súboru. Musí obsahovať úplnú cestu"
 
 #~ msgid "ESP"
 #~ msgstr "ESP"
@@ -8439,21 +8185,41 @@ msgstr ""
 #~ "Okno pre zobrazenie atomu, väzieb a krútivých vlastností. Tiež obsahuje "
 #~ "súradnicový editor."
 
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Uhol %1"
+
+#, qt-format
+#~ msgid "Atom Index %1"
+#~ msgstr "Obsah Atómu %1"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "Prispôso&biť >>"
+
+#, qt-format
 #~ msgid "File %1 can not be opened for reading."
 #~ msgstr "Súbor %1 sa nedá otvoriť pre čítanie."
 
+#~ msgid "Periodic Table"
+#~ msgstr "Periodická Tabuľka"
+
+#, qt-format
 #~ msgid "Writing a molecule to file '%1' failed."
 #~ msgstr "Zapísanie molekuly do súboru '%1' zlyhalo."
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for writing."
 #~ msgstr "Súbor typu pre súbor %1 nie je podporovaný pre zapisovanie."
 
+#, qt-format
 #~ msgid "File type '%1' is not a supported for reading."
 #~ msgstr "Súbor typu %1 nie je podporovaný pre čítanie."
 
+#, qt-format
 #~ msgid "File type for file '%1' is not a supported for reading."
 #~ msgstr "Súbor typu pre súbor %1 nie je podporovaný pre čítanie."
 
+#, qt-format
 #~ msgid "File type '%1' is not a supported for writing."
 #~ msgstr "Súbor typu %1 nie je podporovaný pre zapisovanie."
 
@@ -8463,8 +8229,101 @@ msgstr ""
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Elektrostatický potenciál (ESP)"
 
+#~ msgid "Magnesium"
+#~ msgstr "Horčík"
+
+#~ msgid "Fluorine"
+#~ msgstr "Fluór"
+
+#~ msgid "Vanadium"
+#~ msgstr "Vanád"
+
+#~ msgid "Manganese"
+#~ msgstr "Mangán"
+
+#~ msgid "Gallium"
+#~ msgstr "Gálium"
+
+#~ msgid "Niobium"
+#~ msgstr "Niób"
+
+#~ msgid "Rhodium"
+#~ msgstr "Ródium"
+
+#~ msgid "Technetium"
+#~ msgstr "Technécium"
+
+#~ msgid "Yttrium"
+#~ msgstr "Ytrium"
+
+#~ msgid "Tellurium"
+#~ msgstr "Telúr"
+
 #~ msgid "Caesium"
 #~ msgstr "Cézium"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lantán"
+
+#~ msgid "Barium"
+#~ msgstr "Bárium"
+
+#~ msgid "Xenon"
+#~ msgstr "Xenón"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Prazeodým"
+
+#~ msgid "Cerium"
+#~ msgstr "Cér"
+
+#~ msgid "Promethium"
+#~ msgstr "Prométium"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodým"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Dysprózium"
+
+#~ msgid "Samarium"
+#~ msgstr "Samárium"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Gadolínium"
+
+#~ msgid "Tungsten"
+#~ msgstr "Volfrám"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Yterbium"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutécium"
+
+#~ msgid "Thulium"
+#~ msgstr "Túlium"
+
+#~ msgid "Bismuth"
+#~ msgstr "Bizmut"
+
+#~ msgid "Actinium"
+#~ msgstr "Aktínium"
+
+#~ msgid "Thorium"
+#~ msgstr "Tórium"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protaktínium"
+
+#~ msgid "Curium"
+#~ msgstr "Curium"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berkélium"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobelium"
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Vykreslí sekundárnu štruktúru proteinov"
@@ -8489,3 +8348,40 @@ msgstr ""
 
 #~ msgid "&NWChem Input..."
 #~ msgstr "Vstup &NWChem..."
+
+#~ msgid "Open ligand file"
+#~ msgstr "Otvoriť súbor ligand"
+
+#~ msgid "Save Movie File"
+#~ msgstr "Uložiť video súbor"
+
+#~ msgid "trajectory file (*.xyz)"
+#~ msgstr "súbor trajektórie (*.xyz)"
+
+#~ msgid "GL widget was not correctly initialized in order to save snapshots"
+#~ msgstr ""
+#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
+#~ "možné ukladať snímky"
+
+#~ msgid "GL widget was not correctly initialized in order to save movie"
+#~ msgstr ""
+#~ "Ovládací prvok grafickej knižnice nebol správne inicializovaný aby bolo "
+#~ "možné uložiť video"
+
+#~ msgid ""
+#~ "Invalid movie filename.  Must include full directory path and name, ending "
+#~ "with .avi"
+#~ msgstr ""
+#~ "Neplatný názov video súboru. Musí obsahovať úplnú cestu a názov s príponou "
+#~ ".avi"
+
+#, qt-format
+#~ msgid "Would write file to %1."
+#~ msgstr "Súbor by bol zapísaný do %1."
+
+#, qt-format
+#~ msgid "Wrote file %1."
+#~ msgstr "Zapísaný súbor %1."
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "&Prispôsobiť <<"

@@ -504,8 +504,10 @@ namespace Avogadro {
       }
       else if (m_beginAtom) {
         if (m_hydrogenCommand) {
-          dynamic_cast<ChangeElementDrawCommand*>(m_hydrogenCommand)->setAdjustHydrogens(m_addHydrogens);
-          undo = m_hydrogenCommand;
+            ChangeElementDrawCommand* cmd = dynamic_cast<ChangeElementDrawCommand*>(m_hydrogenCommand);
+            if(cmd)
+              cmd->setAdjustHydrogens(m_addHydrogens);
+          undo = cmd;
         // beginAtom exists, but we have no bond, we change the element
         }
         else if (m_beginAtom->atomicNumber() != m_prevAtomElement) {

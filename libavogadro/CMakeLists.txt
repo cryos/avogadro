@@ -51,6 +51,8 @@ function(avogadro_plugin_nogl plugin_name src_list)
                         OUTPUT_NAME ${plugin_name}
 			PREFIX ""
 			LABELS "${PLUGIN_LABEL}")
+  set_target_properties(${plugin_name} PROPERTIES
+                        COMPILE_FLAGS "${NO_RTTI_FLAG}")
   # If we have set the PLUGIN_TARGET variable add this plugin to the custom
   # target. This assumes that the target was created before this function was
   # called.
