@@ -102,14 +102,12 @@ namespace Avogadro{
         pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
       else {*/
         //painter->setPen(Qt::black);
-        if (bgColor.value() < 105)
-          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter(150));
-          //pen.setColor(Qt::white);
-        else if (bgColor.value() > 200)
-          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
-          //pen.setColor(Qt::black);
+        if (bgColor.value() < 150)
+          //pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter(150));
+          pen.setColor(Qt::white);
         else
-          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())));
+          pen.setColor(Qt::black);
+          //pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())));
      // }
     pen.setWidth(2);
     if (m_element <103)
@@ -120,10 +118,10 @@ namespace Avogadro{
 
     //painter->fillRect(rect, *m_color);
     QFont f = painter->font();
-    f.setBold(true);
+    //f.setBold(true);
     painter->setFont(f);
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
-    f.setBold(false);
+    //f.setBold(false);
     painter->setFont(f);
   }
 
