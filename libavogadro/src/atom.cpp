@@ -337,12 +337,11 @@ using Eigen::Vector3d;
      for (j = data.begin(); j != data.end(); ++j) {
        property = static_cast<OpenBabel::OBPairData *>(*j);
        if (property->GetAttribute() == "label") {
-         m_customLabel = property->GetAttribute().c_str();
-         qDebug() << "label" << m_customLabel;
+         m_customLabel = property->GetValue().c_str();
          continue;
        }
        if (property->GetAttribute() == "color") {
-         m_customColorName = property->GetAttribute().c_str();
+         m_customColorName = property->GetValue().c_str();
          continue;
        }
        setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
