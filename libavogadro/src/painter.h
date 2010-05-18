@@ -4,6 +4,7 @@
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007-2008 Marcus D. Hanwell
+  Copyright (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -113,6 +114,12 @@ namespace Avogadro
      * @param alpha component of the color.
      */
     virtual void setColor(float red, float green, float blue, float alpha = 1.0) = 0;
+    
+    /**
+     * Set the color to paint elements by its name 
+     * @param name name of the color to be used
+     */    
+    virtual void setColor(QString name) = 0;
 
     /**
      * Draws a sphere, leaving the Painter choose the appropriate detail level based on the

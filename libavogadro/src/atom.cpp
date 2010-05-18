@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2008 Marcus D. Hanwell
+  Copyright (c) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -50,7 +51,9 @@ using Eigen::Vector3d;
                                  m_atomicNumber(0),
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
-                                 m_forceVector(0.0, 0.0, 0.0)
+                                 m_forceVector(0.0, 0.0, 0.0),
+                                 m_customLabel(""), m_customColorName(""),
+                                 m_customRadius(0)
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
@@ -244,14 +247,38 @@ using Eigen::Vector3d;
    OpenBabel::OBAtom Atom::OBAtom()
    {
      // Need to copy all relevant data over to the OBAtom
-     OpenBabel::OBAtom obatom;
+     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBPairData *obproperty;     
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
      obatom.SetFormalCharge(m_formalCharge);
 
+     // Save custom label
+     if (!m_customLabel.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("label");
+       obproperty->SetValue(m_customLabel.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+
+     // Save custom color
+     if(!m_customColorName.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("color");
+       obproperty->SetValue(m_customColorName.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+
+     // Save custom radius
+     if (m_customRadius) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("radius");
+       obproperty->SetValue(QString::number(m_customRadius).toAscii().data());
+       obatom.SetData(obproperty);
+     }
+            
      // Add dynamic properties as OBPairData
-     OpenBabel::OBPairData *obproperty;
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
        obproperty->SetAttribute(propertyName.data());
@@ -262,11 +289,51 @@ using Eigen::Vector3d;
      return obatom;
    }
 
+/*   const OpenBabel::OBAtom Atom::OBAtom() const
+   {
+     // Need to copy all relevant data over to the OBAtom
+     OpenBabel::OBAtom obatom;     
+     OpenBabel::OBPairData *obproperty;
+     const Vector3d *v = m_molecule->atomPos(m_id);
+     obatom.SetVector(v->x(), v->y(), v->z());
+     obatom.SetAtomicNum(m_atomicNumber);
+     obatom.SetFormalCharge(m_formalCharge);
+
+     // Save custom label
+     if (!m_customLabel.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("label");
+       obproperty->SetValue(m_customLabel.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+
+     // Save custom color
+     if(!m_customColorName.isEmpty()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("color");
+       obproperty->SetValue(m_customColorName.toAscii().data());
+       obatom.SetData(obproperty);
+     }
+     
+     // Add dynamic properties as OBPairData
+     foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute(propertyName.data());
+       obproperty->SetValue(property(propertyName).toByteArray().data());
+       obatom.SetData(obproperty);
+     }
+
+     return obatom;
+   }*/
+
    bool Atom::setOBAtom(OpenBabel::OBAtom *obatom)
    {
      // Copy all needed OBAtom data to our atom
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
+     // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+     // m_customLabel = obatom->GetCustomLabel();
+     // #endif
      if (obatom->GetFormalCharge() != 0)
        m_formalCharge = obatom->GetFormalCharge();
 
@@ -278,6 +345,18 @@ using Eigen::Vector3d;
      data = obatom->GetAllData(OpenBabel::OBGenericDataType::PairData);
      for (j = data.begin(); j != data.end(); ++j) {
        property = static_cast<OpenBabel::OBPairData *>(*j);
+       if (property->GetAttribute() == "label") {
+         m_customLabel = property->GetValue().c_str();
+         continue;
+       }
+       if (property->GetAttribute() == "color") {
+         m_customColorName = property->GetValue().c_str();
+         continue;
+       }
+       if (property->GetAttribute() == "radius") {
+         m_customRadius = QString(property->GetValue().c_str()).toDouble();
+         continue;
+       }
        setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
      }
 
@@ -293,6 +372,9 @@ using Eigen::Vector3d;
        qDebug() << "Atom position returned null.";
      m_atomicNumber = other.m_atomicNumber;
      m_formalCharge = other.m_formalCharge;
+     m_customLabel = other.m_customLabel;
+     m_customColorName = other.m_customColorName;
+     m_customRadius = other.m_customRadius;
      return *this;
    }
 

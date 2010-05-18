@@ -387,9 +387,10 @@ namespace Avogadro
         QList<Atom *> localAtom;
         QMultiMap<double, Atom*> tmpMap;
         QMultiMap<double, Atom*>::const_iterator it;
-        
+
+        int n=0;   
         foreach (Atom *a, m_molecule->atoms()) {
-          double key;          
+          double key;  
           switch (m_sort) {
           case ELEMENT:
             key = static_cast<double>(-1*a->atomicNumber());
@@ -404,7 +405,8 @@ namespace Avogadro
             key = a->pos()->z();
             break;
           default:
-            key = 0;
+            key = n;
+            n++;
           }
           tmpMap.insert(key, a);
         }

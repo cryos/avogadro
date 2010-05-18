@@ -94,6 +94,11 @@ namespace Avogadro
     d->color.setFromRgba(red, green, blue, alpha);
   }
 
+  void POVPainter::setColor(QString name)
+  {
+    d->color.setFromQColor(QColor(name));
+  }
+  
   void POVPainter::setPlaneNormal (Vector3d planeNormalVector)
   {
     // Set the plane normal, multiCylinders are drawn relative to this

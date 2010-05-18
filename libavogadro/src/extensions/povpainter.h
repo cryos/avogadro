@@ -96,6 +96,12 @@ namespace Avogadro
     void setColor (const QColor *color);
 
     /**
+     * Set the color to paint elements by its name 
+     * @param name name of the color to be used
+     */    
+    void setColor(QString name);
+
+    /**
      * Set the color to paint elements with where 0.0 is the minimum and 1.0
      * is the maximum.
      * @param red component of the color.

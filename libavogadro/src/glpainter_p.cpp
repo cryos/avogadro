@@ -4,6 +4,7 @@
   Copyright (C) 2007 Benoit Jacob
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007-2009 Marcus D. Hanwell
+  Copyright (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -318,6 +319,11 @@ namespace Avogadro
   void GLPainter::setColor ( float red, float green, float blue, float alpha )
   {
     d->color.setFromRgba(red, green, blue, alpha);
+  }
+
+  void GLPainter::setColor(QString name)
+  {
+    d->color.setFromQColor(QColor(name));
   }
 
   void GLPainter::drawSphere (const Eigen::Vector3d &center, double radius)

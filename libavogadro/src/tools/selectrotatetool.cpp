@@ -3,6 +3,7 @@
 
   Copyright (C) 2007 Donald Ephraim Curtis
   Copyright (C) 2007,2008 by Marcus D. Hanwell
+  Copyright (C) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -44,6 +45,8 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 #include <QDebug>
+#include <QColorDialog>
+#include <QInputDialog>
 
 using namespace std;
 using namespace OpenBabel;
@@ -62,6 +65,20 @@ namespace Avogadro {
           "Right click outside the molecule to clear selection\n"
           "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
+
+    m_contextMenu = new QMenu;
+    m_contextMenu->addAction("Change radius...", this, SLOT(changeAtomRadius()));
+    m_contextMenu->addAction("Reset radius", this, SLOT(resetAtomRadius()));
+
+    m_contextMenu->addSeparator();
+
+    m_contextMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
+    m_contextMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
+    
+    m_contextMenu->addSeparator();
+    
+    m_contextMenu->addAction("Change color...", this, SLOT(changeAtomColor()));
+    m_contextMenu->addAction("Reset color", this, SLOT(resetAtomColor()));
   }
 
   SelectRotateTool::~SelectRotateTool()
@@ -69,6 +86,7 @@ namespace Avogadro {
     if(m_settingsWidget) {
       m_settingsWidget->deleteLater();
     }
+    m_contextMenu->deleteLater();
   }
 
   int SelectRotateTool::usefulness() const
@@ -314,13 +332,23 @@ namespace Avogadro {
         widget->clearSelected();
       // Set the selection
       widget->setSelected(hitList, true);
-    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
-      event->accept();
+    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {      
       if (m_hits.size()) {
-        qDebug() << "TODO: show popup menu with properties";
+        foreach(const GLHit& hit, m_hits) {
+          if(hit.type() == Primitive::AtomType) {// Atom selection
+            Atom *atom = molecule->atom(hit.name());
+            hitList.append(atom);
+            widget->toggleSelected(hitList);
+            m_currentPrimitive = atom;
+            m_contextMenu->exec(event->globalPos());
+            widget->clearSelected();
+            break;
+          }
+        }
       } else {
         widget->clearSelected();
       }
+      event->accept();
     }
 
     widget->update();
@@ -461,6 +489,86 @@ namespace Avogadro {
 
     return true;
   }
+
+  void SelectRotateTool::changeAtomColor()
+  {
+     QColor color;
+     QColor oldColor;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       oldColor.setNamedColor(a->customColorName());
+       if(!oldColor.isValid()) {
+         Color *map = GLWidget::current()->colorMap(); // fall back to global color map
+         map->setFromPrimitive(a);
+         oldColor.setRgb(map->color().rgb());
+       }
+       color = QColorDialog::getColor(oldColor, 0, tr("Change color of the atom"));
+       if (color.isValid() && color != oldColor)
+         a->setCustomColorName(color.name());
+     }
+  }
+
+  void SelectRotateTool::resetAtomColor()
+  {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomColorName("");
+     }
+  }
+
+  void SelectRotateTool::changeAtomLabel()
+  {
+     bool ok;
+     QString label;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;     
+       label = QInputDialog::getText(0, tr("Change label of the atom"),
+         tr("New Label:"), QLineEdit::Normal,a->customLabel(), &ok);
+       if (ok && !label.isEmpty())
+         a->setCustomLabel(label);
+     }
+  }
+
+  void SelectRotateTool::resetAtomLabel()
+  {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomLabel("");
+     }
+  }
+
+  void SelectRotateTool::changeAtomRadius()
+  {
+     bool ok;
+     QString radius_str;
+     double radius, oldRadius;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       radius_str = QInputDialog::getText(0, tr("Change radius of the atom"),
+         tr("New Radius, %1:", "in Angstrom").arg("(\xC5)"),
+         QLineEdit::Normal,QString::number(a->customRadius()), &ok);
+       if (!ok && radius_str.isEmpty())
+         return;
+       radius = radius_str.toDouble();
+       if (radius)
+         a->setCustomRadius(radius);
+     }
+  }
+
+  void SelectRotateTool::resetAtomRadius()
+  {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomRadius(0);
+     }
+  }
+
 }
 
 Q_EXPORT_PLUGIN2(selectrotatetool, Avogadro::SelectRotateToolFactory)

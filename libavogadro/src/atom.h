@@ -2,8 +2,9 @@
   Atom - Atom class derived from the base Primitive class
 
   Copyright (C) 2007 Donald Ephraim Curtis
-	Copyright (c) 2008-2009 Geoff Hutchison
-	Copyright (c) 2008-2009 Marcus D. Hanwell
+  Copyright (c) 2008-2009 Geoff Hutchison
+  Copyright (c) 2008-2009 Marcus D. Hanwell
+  Copyright (c) 2010 Konstantin Tokarev
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>
@@ -28,7 +29,7 @@
 #define ATOM_H
 
 #include <avogadro/primitive.h>
-#include <QList>
+#include <QtCore/QList>
 
 namespace OpenBabel {
   class OBAtom;
@@ -112,6 +113,21 @@ namespace Avogadro {
      * Set the force vector on the atom (e.g., used to display vibrations)
      */
     void setForceVector(const Eigen::Vector3d &force) { m_forceVector = force; }
+
+    /**
+     * Set the custom label for the atom
+     */
+    void setCustomLabel(const QString &label) {  m_customLabel = label; }
+
+    /**
+     * Set the custom color for the atom using color name
+     */
+    void setCustomColorName(const QString &name) { m_customColorName = name; }
+
+    /**
+     * Set the custom radius for the atom
+     */
+    void setCustomRadius(const double radius) { m_customRadius = radius; }
     /** @} */
 
 
@@ -173,6 +189,12 @@ namespace Avogadro {
      */
     int formalCharge() const;
 
+    QString customLabel() const { return m_customLabel; }
+
+    QString customColorName() const {return m_customColorName; }
+
+    double customRadius() const { return m_customRadius; }
+
     /**
      * @return The force vector on this atom (if any)
      */
@@ -199,6 +221,7 @@ namespace Avogadro {
      * @return An OpenBabel::OBAtom copy of the atom.
      */
     OpenBabel::OBAtom OBAtom();
+    //const OpenBabel::OBAtom OBAtom() const;
 
     /**
      * Copies the data from an OpenBabel::OBAtom to the atom.
@@ -257,6 +280,9 @@ namespace Avogadro {
     mutable double m_partialCharge;
     int m_formalCharge;
     Eigen::Vector3d m_forceVector;
+    QString m_customLabel;
+    QString m_customColorName;
+    double m_customRadius;
     Q_DECLARE_PRIVATE(Atom)
   };
 
