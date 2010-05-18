@@ -397,7 +397,7 @@ namespace Avogadro {
     setLimits(x1, x2, y1, y2);
   }
 
-  void PlotWidget::setLabelShiftDirection(Direction dir, float priority)
+  void PlotWidget::setLabelShiftDirection(Direction dir, float /*priority*/)
   {
     d->labelShiftDirection = dir;
   }
@@ -1012,7 +1012,7 @@ namespace Avogadro {
       case 1: //down
         bestRect.moveTop( downRect.top() );
         bestCost = downCost;
-        qDebug() << "down" << downCost;
+        //qDebug() << "down" << downCost;
         break;
       case 2: //left
         bestRect.moveLeft( leftRect.left() );
@@ -1028,7 +1028,7 @@ namespace Avogadro {
           bestBadCost = bestCost;
           bestBadRect = bestRect;
         }
-        qDebug() << "min" << pp->label() << bestCost;
+        //qDebug() << "min" << pp->label() << bestCost;
 
         //If all of the first-step paths have now been searched, we'll
         //have to adopt the bestBadRect
@@ -1075,15 +1075,15 @@ namespace Avogadro {
 
     QPen oldpen = painter->pen();      
     QPen pen(oldpen);
-    pen.setColor(QColor(0,0,0));    
+    pen.setColor(d->cForeground);    
     painter->setPen( pen );
       
     //Place label
     painter->drawText( bestRect, textFlags, pp->label() );
 
     //Is a line needed to connect the label to the point?
-    float deltax = pos.x() - bestRect.center().x();
-    float deltay = pos.y() - bestRect.center().y();
+    //float deltax = pos.x() - bestRect.center().x();
+    //float deltay = pos.y() - bestRect.center().y();
     //float rbest = sqrt( deltax*deltax + deltay*deltay );
     //if ( rbest > 20.0 ) {
     //if (fabs(deltax) <= 4*xStep && fabs(deltay) <= 4*yStep) {
