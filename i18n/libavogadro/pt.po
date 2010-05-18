@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-01-21 00:39+0000\n"
-"Last-Translator: Tiago Silva <Unknown>\n"
+"PO-Revision-Date: 2010-04-26 20:44+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:53+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -49,9 +49,8 @@ msgid "Template"
 msgstr "Modelo"
 
 #: examples/c++/templateextension.h:35
-#, fuzzy
 msgid "Example extension"
-msgstr "Extensões"
+msgstr ""
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -67,7 +66,8 @@ msgstr "Côr por carga parcial."
 
 #: src/colors/chargecolor.h:45
 msgid "Color by atomic partial charge (blue = positive, red = negative."
-msgstr "Côr por carga atómica parcial (azuL = positivo, vermelho = negativo)."
+msgstr ""
+"Côr por carga atómica parcial (azuL = positivo, vermelho = negativo)."
 
 #: src/colors/customcolor.cpp:63
 msgid "Custom Color:"
@@ -106,9 +106,8 @@ msgid "Color by Residue (amino acid type, hydrophobicity, ..."
 msgstr "Cor por resíudo (tipo de aminoácido, hidrofobicidade, ..."
 
 #: src/colors/smartscolor.cpp:77
-#, fuzzy
 msgid "SMARTS Pattern:"
-msgstr "Seleccionar padrões SMART"
+msgstr ""
 
 #: src/colors/smartscolor.cpp:81
 msgid "Highlight Color:"
@@ -175,24 +174,20 @@ msgid "Renders hydrogen bonds"
 msgstr "Mostra as pontes de hidrogénio"
 
 #: src/engines/labelengine.cpp:359
-#, fuzzy
 msgid "Select Atom Labels Color"
-msgstr "Cores Seleccionadas"
+msgstr ""
 
 #: src/engines/labelengine.cpp:361
-#, fuzzy
 msgid "Select Bond Labels Color"
-msgstr "Cores Seleccionadas"
+msgstr ""
 
 #: src/engines/labelengine.cpp:405
-#, fuzzy
 msgid "Select Atom Labels Font"
-msgstr "Legendas dos Átomos:"
+msgstr ""
 
 #: src/engines/labelengine.cpp:427
-#, fuzzy
 msgid "Select Bond Labels Font"
-msgstr "Legendas das Ligações:"
+msgstr ""
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -411,7 +406,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "Animação"
 
@@ -421,13 +416,13 @@ msgstr "Animar trajectórias, reacções e vibrações."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
-#, fuzzy
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
-msgstr "Editor Cartesiano"
+msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -445,14 +440,12 @@ msgid "&Build"
 msgstr "&Construir"
 
 #: src/extensions/cartesianextension.h:107
-#, fuzzy
 msgid "Cartesian editor"
-msgstr "Editor Cartesiano"
+msgstr ""
 
 #: src/extensions/cartesianextension.h:108
-#, fuzzy
 msgid "Cartesian coordinates editor"
-msgstr "Coordenadas Cartesianas:"
+msgstr ""
 
 #: src/extensions/conformersearchdialog.cpp:133
 #, qt-format
@@ -478,7 +471,8 @@ msgstr ""
 "restrição."
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
 msgstr ""
 "A molécula deve conter pelo menos dois átomos para poder adicionar uma "
 "restrição à ligação."
@@ -721,7 +715,7 @@ msgstr "Peptídeo"
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr "Inserir Peptídeo"
 
@@ -760,9 +754,8 @@ msgid "Fetch from PDB..."
 msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:60
-#, fuzzy
 msgid "Fetch by chemical name..."
-msgstr "Procurando estrutura química..."
+msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:64
 msgid "Fetch from URL..."
@@ -934,7 +927,7 @@ msgstr "Propriedades da conformação"
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -951,13 +944,12 @@ msgid "Yes"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "Néon"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr "Elemento"
 
@@ -999,9 +991,8 @@ msgid "Z  %1"
 msgstr "Z %1"
 
 #: src/extensions/propmodel.cpp:444
-#, fuzzy
 msgid "Atom"
-msgstr "Átomo %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
 msgid "Start Atom"
@@ -1026,9 +1017,8 @@ msgid "Length %1"
 msgstr "Comprimento %1"
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "Ligação %1"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1042,7 +1032,7 @@ msgstr "Ângulo %1"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr "Ângulo"
 
@@ -1058,20 +1048,18 @@ msgid "Torsion %1"
 msgstr "Torsão %1"
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "Torsão %1"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr "Energia"
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "Conformação %1"
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -1112,7 +1100,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr "Mostrar a Antevisão"
 
@@ -1131,7 +1119,7 @@ msgstr "Mostrar a Antevisão"
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr "Esconder a Antevisão"
 
@@ -1224,7 +1212,7 @@ msgstr "Criar ficheiros de dados para a aplicação de química quântica GAMESS
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr "Título"
 
@@ -1325,7 +1313,8 @@ msgid "G03 Crashed."
 msgstr "G03 falhou."
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 "Gaussian não consegue ser correctamente executado. Poderá não estar "
 "correctamente instalado."
@@ -1351,9 +1340,8 @@ msgid "&Q-Chem..."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "&Vibrações..."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1400,7 +1388,8 @@ msgstr "MOPAC em execução."
 #: src/extensions/quantuminput/mopacinputdialog.cpp:175
 msgid ""
 "MOPAC is already running. Wait until the previous calculation is finished."
-msgstr "MOPAC já está em execução. Aguarde até que o cálculo tenha terminado."
+msgstr ""
+"MOPAC já está em execução. Aguarde até que o cálculo tenha terminado."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
 msgid "MOPAC Not Installed."
@@ -1416,7 +1405,8 @@ msgstr "MOPAC falhou em iniciar."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:201
 msgid "MOPAC did not start. Perhaps it is not installed correctly."
-msgstr "MOPAC não consegue iniciar. Poderá não estar correctamente instalado."
+msgstr ""
+"MOPAC não consegue iniciar. Poderá não estar correctamente instalado."
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:206
 msgid "Running MOPAC calculation..."
@@ -1508,7 +1498,7 @@ msgstr "Seleccionar por resíduo"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr "Nome do resíduo"
 
@@ -1570,7 +1560,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1583,14 +1573,12 @@ msgid "Wavelength (nm)"
 msgstr ""
 
 #: src/extensions/spectra/cd.cpp:108
-#, fuzzy
 msgid "Intensity (arb. units)"
-msgstr "Intensidade (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:135
-#, fuzzy
 msgid "Energy (eV)"
-msgstr "Energia"
+msgstr ""
 
 #: src/extensions/spectra/dos.cpp:142
 msgid "Density of States (states/cell)"
@@ -1635,14 +1623,12 @@ msgid "Shift (ppm)"
 msgstr "Fase (ppm)"
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "Actínio"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
-#, fuzzy
 msgid "Intensity"
-msgstr "Intensidade (km/mol)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:91
 msgid "X Axis"
@@ -1654,13 +1640,13 @@ msgstr "Eixo YY"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr "%Aspecto"
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr "E&xportar imagem"
 
@@ -1688,9 +1674,8 @@ msgid "DOS"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:219
-#, fuzzy
 msgid "&Density Of States Settings"
-msgstr "Definições de rotação automática"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:225
 msgctxt "Ultra-Violet spectrum"
@@ -1698,9 +1683,8 @@ msgid "UV"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:226
-#, fuzzy
 msgid "&UV Settings"
-msgstr "Definições de Desenho"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:232
 msgctxt "Circular Dichromism spectrum"
@@ -1708,20 +1692,17 @@ msgid "CD"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:233
-#, fuzzy
 msgid "&CD Settings"
-msgstr "Definições de Desenho"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "Rádon"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
-#, fuzzy
 msgid "&Raman Settings"
-msgstr "Definições de Desenho"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:255
 msgid "No data"
@@ -1764,24 +1745,20 @@ msgid "Enter new name for current scheme:"
 msgstr "Digite novo nome para o esquema."
 
 #: src/extensions/spectra/spectradialog.cpp:412
-#, fuzzy
 msgid "Select Background Color"
-msgstr "Cores Seleccionadas"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:422
-#, fuzzy
 msgid "Select Foreground Color"
-msgstr "Cores Seleccionadas"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:432
-#, fuzzy
 msgid "Select Calculated Spectra Color"
-msgstr "Exportar o espectro calculado"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:442
-#, fuzzy
 msgid "Select Imported Spectra Color"
-msgstr "Importar espectro"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:506
 msgid "Export Calculated Spectrum"
@@ -1924,7 +1901,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
 msgstr ""
 
@@ -1945,13 +1922,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "Vibração"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr "Análise Vibracional"
 
@@ -1976,7 +1952,7 @@ msgstr "Ordenado %1 vibrações por frequência..."
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr "Iniciar &Animação"
 
@@ -1989,15 +1965,13 @@ msgstr "Parar &Animação"
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
-#, fuzzy
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
-msgstr "Colar"
+msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "Valor da Restrição"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2168,9 +2142,8 @@ msgstr ""
 "Pretende criar uma célula cristalina unitária?"
 
 #: src/extensions/unitcellextension.cpp:217
-#, fuzzy
 msgid "Select Unit Cell Color"
-msgstr "Apagar Célula Unitária"
+msgstr ""
 
 #: src/extensions/unitcellextension.cpp:256
 msgid "This unit cell does not have an associated spacegroup."
@@ -2187,13 +2160,13 @@ msgstr "Criar e visualizar células unitárias cristalográficas"
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr "Aplicar"
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr "Aceitar"
 
@@ -2283,7 +2256,8 @@ msgstr "O tipo de ficheiro '%1'  não é suportado para leitura."
 #: src/moleculefile.cpp:172
 #, qt-format
 msgid "Reading molecule with index %1 from file '%2' failed."
-msgstr "A leitura da molécula com índice %1 a partir do ficheiro '%2' falhou."
+msgstr ""
+"A leitura da molécula com índice %1 a partir do ficheiro '%2' falhou."
 
 #: src/moleculefile.cpp:184
 #, qt-format
@@ -2514,9 +2488,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr "Opç. Auto: E = %1 %2 (dE = %3)"
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "Restrições"
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2532,13 +2506,13 @@ msgstr "Algoritmo:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr "Descida Inclinada"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr "Conjugar os Gradientes"
 
@@ -2627,7 +2601,7 @@ msgstr "rotação em Z"
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr "Reiniciar"
 
@@ -2789,7 +2763,7 @@ msgstr "Definições de medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr "Adicionar um Átomo"
 
@@ -2843,7 +2817,7 @@ msgstr "Elemento:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr "Outro..."
 
@@ -2932,7 +2906,6 @@ msgid "Navigate Settings"
 msgstr "Definições de Navegação"
 
 #: src/tools/selectrotatetool.cpp:59
-#, fuzzy
 msgid ""
 "Selection Tool (F11)\n"
 "Click to pick individual atoms, residues, or fragments\n"
@@ -2940,10 +2913,6 @@ msgid ""
 "Right click outside the molecule to clear selection\n"
 "Use Ctrl to toggle the selection and shift to add to the selection"
 msgstr ""
-"Ferramenta de Selecção (F11)\n"
-"Carregue para escolher os átomos, resíduos ou fragmentos\n"
-"Arraste para seleccionar um intervalo de átomos\n"
-"Use o Ctrl para comutar a selecção e o Shift para adicionar à selecção"
 
 #: src/tools/selectrotatetool.cpp:422
 msgid "Selection Mode:"
@@ -2995,7 +2964,7 @@ msgstr "Editor da Matriz Z..."
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr "Matriz-Z"
 
@@ -3034,15 +3003,13 @@ msgstr "Hidrofobia"
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "Eixos"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Cartesian Axes"
-msgstr "Propriedades Cartesianas"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -3051,27 +3018,23 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "Valor Personalizado"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
-#, fuzzy
 msgid "Axis 1:"
-msgstr "Eixo:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:171
 #. i18n: ectx: property (text), widget (QLabel, vector2Label)
-#, fuzzy
 msgid "Axis 2:"
-msgstr "Eixo:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:266
 #. i18n: ectx: property (text), widget (QLabel, vector3Label)
-#, fuzzy
 msgid "Axis 3:"
-msgstr "Eixo:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:422
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -3084,9 +3047,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
 #. i18n: file: src/engines/dipolesettingswidget.ui:145
 #. i18n: ectx: property (text), widget (QLabel, originLabel)
-#, fuzzy
 msgid "Origin:"
-msgstr "Alinhamento:"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:448
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -3104,9 +3066,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:468
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Norm"
-msgstr "Formulário"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:478
 #. i18n: ectx: property (text), widget (QCheckBox, preserveNormsCheckBox)
@@ -3134,9 +3095,8 @@ msgstr "Opacidade:"
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "Cobalto"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3222,9 +3182,8 @@ msgstr "Momento Dipolar"
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "Cor Personalizada"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3274,31 +3233,27 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:45
 #. i18n: ectx: property (text), item, widget (QComboBox, textRendering)
-#, fuzzy
 msgid "QPainter"
-msgstr "Quinteto"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "Legendas dos Átomos:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "Nome"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "Cores:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3331,9 +3286,8 @@ msgstr "Símbolo do elemento"
 
 #. i18n: file: src/engines/labelsettingswidget.ui:122
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#, fuzzy
 msgid "Symbol & Number in Group"
-msgstr "Símbolo e Número Atómico"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:127
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3376,9 +3330,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, atomFont)
 #. i18n: file: src/engines/labelsettingswidget.ui:519
 #. i18n: ectx: property (text), widget (QPushButton, bondFont)
-#, fuzzy
 msgid "Change Font"
-msgstr "Modificar o Elemento"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:216
 #. i18n: ectx: property (prefix), widget (QDoubleSpinBox, xDisplSpinBox)
@@ -3410,9 +3363,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "Legendas das Ligações:"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3563,21 +3515,18 @@ msgstr "Guardar como .avi..."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Angstroms"
-msgstr "Ǻngstrom"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "Bohr"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Fractional"
-msgstr "Primeira Acção"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:92
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -3623,9 +3572,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:152
 #. i18n: ectx: property (toolTip), widget (QToolButton, cutButton)
-#, fuzzy
 msgid "Cut All"
-msgstr "Apagar todos"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:155
 #. i18n: ectx: property (text), widget (QToolButton, cutButton)
@@ -3644,9 +3592,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:172
 #. i18n: ectx: property (toolTip), widget (QToolButton, clearButton)
-#, fuzzy
 msgid "Clear All"
-msgstr "Limpar Átomos"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:192
 #. i18n: ectx: property (toolTip), widget (QToolButton, copyButton)
@@ -3666,10 +3613,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3681,9 +3628,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "Nenhum"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4200,15 +4146,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:377
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "3-10 Helix"
-msgstr "Hélice"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:382
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
-#, fuzzy
 msgid "Pi Helix"
-msgstr "Hélice"
+msgstr ""
 
 #. i18n: file: src/extensions/insertpeptidedialog.ui:387
 #. i18n: ectx: property (text), item, widget (QComboBox, structureCombo)
@@ -4434,9 +4378,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "Calcular energia"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -4876,9 +4819,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
-#, fuzzy
 msgid "Direct"
-msgstr "Adicionar Pasta"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:747
 #. i18n: ectx: property (toolTip), widget (QCheckBox, parallelCheck)
@@ -4919,9 +4861,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:804
 #. i18n: ectx: property (text), widget (QLabel, functional)
-#, fuzzy
 msgid "Functional:"
-msgstr "Início:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5279,15 +5220,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
-#, fuzzy
 msgid "Thresholds"
-msgstr "Limiar de Acoplagem: "
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1197
 #. i18n: ectx: property (text), widget (QLabel, densitythresh)
-#, fuzzy
 msgid "Density:"
-msgstr "Descrição:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1213
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrdensSpin)
@@ -5303,9 +5242,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "Optimização da geometria"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5314,9 +5252,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1334
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
-#, fuzzy
 msgid "Becke"
-msgstr "Núcleo"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1339
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
@@ -5340,27 +5277,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "normal"
-msgstr "Execução Normal"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "Linhas"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "ultrafine"
-msgstr "Glutamina"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1404
 #. i18n: ectx: property (text), widget (QLabel, radscheme)
-#, fuzzy
 msgid "Radial Scheme:"
-msgstr "&Esquemas:"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1421
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
@@ -5379,9 +5312,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1464
 #. i18n: ectx: property (text), widget (QLabel, property)
-#, fuzzy
 msgid "Property:"
-msgstr "Propriedades"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5390,9 +5322,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "Calcular energia"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
@@ -5401,9 +5332,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
-#, fuzzy
 msgid "No. excitations:"
-msgstr "Sem Descrição"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7305,9 +7235,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:701
 #. i18n: ectx: property (text), widget (QPushButton, push_exportData)
-#, fuzzy
 msgid "Export Data"
-msgstr "Exportar"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_CD)
@@ -7315,9 +7244,8 @@ msgstr "Exportar"
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_DOS)
 #. i18n: file: src/extensions/spectra/tab_uv.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_UV)
-#, fuzzy
 msgid "Spectra Tab"
-msgstr "Espectro"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_cd.ui:26
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -7344,9 +7272,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Energy units:"
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7355,27 +7282,23 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Fermi Energy: "
-msgstr "Energia"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "Nome"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Cell"
-msgstr "Gerar Célula"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
-#, fuzzy
 msgid "States / Atom"
-msgstr "Iniciar Átomo"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7419,39 +7342,33 @@ msgstr "Unidades Eixo &Y"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:75
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Scaling Type:"
-msgstr "Tipo de Execução:"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "Linhas"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Relative"
-msgstr "Negativo"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Scale &Factor:"
-msgstr "Factor da Escala de Frequências:"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
-#, fuzzy
 msgid "Intensities"
-msgstr "Sem intensidades."
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "Temperature:"
-msgstr "Modelo"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
@@ -7470,9 +7387,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Threshold:"
-msgstr "Limiar de Acoplagem: "
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_nmr.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_NMR)
@@ -7518,9 +7434,8 @@ msgstr "Vibrações Moleculares"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "&Ficheiro"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7529,15 +7444,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:90
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "ν (cm⁻¹)"
-msgstr "Frequência (cm⁻¹)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:95
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
-#, fuzzy
 msgid "I (km/mol)"
-msgstr "Intensidade (km/mol)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:100
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
@@ -7546,14 +7459,14 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
-#, fuzzy
 msgid "&Show Spectra..."
-msgstr "E&spectro..."
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
 msgid "higher frequency vibrations will show faster movement"
-msgstr "frequências de vibração elevadas irão mostrar movimentos mais rápidos"
+msgstr ""
+"frequências de vibração elevadas irão mostrar movimentos mais rápidos"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:136
 #. i18n: ectx: property (text), widget (QCheckBox, animationSpeedCheckBox)
@@ -7714,9 +7627,8 @@ msgstr "Preencher Célula Unitária"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
-#, fuzzy
 msgid "Change Color"
-msgstr "Cores de Formas"
+msgstr ""
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -7791,46 +7703,22 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago Silva,"
-"nitrofurano, ,Launchpad Contributions:,Ivo Fernandes, ,Launchpad "
-"Contributions:,Arrepiadd,Ivo Fernandes, ,Launchpad Contributions:,Arrepiadd,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva"
+",Launchpad Contributions:,Ivo Fernandes,Leandro Boscariol,Tiago "
+"Silva,nitrofurano, ,Launchpad Contributions:,Ivo Fernandes, ,Launchpad "
+"Contributions:,Arrepiadd,Ivo Fernandes, ,Launchpad "
+"Contributions:,Arrepiadd,Frederico Tavares,Geoff Hutchison,Ivo "
+"Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro "
+"Team,Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,"
-"ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,"
-
-#~ msgid "Hydrogen"
-#~ msgstr "Hidrogénio"
-
-#~ msgid "Helium"
-#~ msgstr "Hélio"
-
-#~ msgid "Lithium"
-#~ msgstr "Lítio"
-
-#~ msgid "Beryllium"
-#~ msgstr "Berílio"
-
-#~ msgid "Boron"
-#~ msgstr "Boro"
-
-#~ msgid "Carbon"
-#~ msgstr "Cabono"
-
-#~ msgid "Nitrogen"
-#~ msgstr "Azoto"
+",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,ivofernandes12@gm"
+"ail.com,,,,,,ivofernandes12@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,"
 
 #~ msgid "Oxygen"
 #~ msgstr "Oxigénio"
-
-#~ msgid "Fluorine"
-#~ msgstr "Flúor"
-
-#~ msgid "Neon"
-#~ msgstr "Néon"
 
 #~ msgid "Sodium"
 #~ msgstr "Sódio"
@@ -7841,203 +7729,8 @@ msgstr ""
 #~ msgid "Aluminum"
 #~ msgstr "Alumínio"
 
-#~ msgid "Silicon"
-#~ msgstr "Silício"
-
 #~ msgid "Phosphorus"
 #~ msgstr "Fósforo"
-
-#~ msgid "Sulfur"
-#~ msgstr "Enxofre"
-
-#~ msgid "Chlorine"
-#~ msgstr "Cloro"
-
-#~ msgid "Argon"
-#~ msgstr "Árgon"
-
-#~ msgid "Potassium"
-#~ msgstr "Potássio"
-
-#~ msgid "Calcium"
-#~ msgstr "Cálcio"
-
-#~ msgid "Scandium"
-#~ msgstr "Escândio"
-
-#~ msgid "Titanium"
-#~ msgstr "Titânio"
-
-#~ msgid "Vanadium"
-#~ msgstr "Vanádio"
-
-#~ msgid "Chromium"
-#~ msgstr "Crómio"
-
-#~ msgid "Manganese"
-#~ msgstr "Manganésio"
-
-#~ msgid "Iron"
-#~ msgstr "Ferro"
-
-#~ msgid "Cobalt"
-#~ msgstr "Cobalto"
-
-#~ msgid "Nickel"
-#~ msgstr "Níquel"
-
-#~ msgid "Copper"
-#~ msgstr "Cobre"
-
-#~ msgid "Zinc"
-#~ msgstr "Zinco"
-
-#~ msgid "Gallium"
-#~ msgstr "Gálio"
-
-#~ msgid "Germanium"
-#~ msgstr "Germânio"
-
-#~ msgid "Arsenic"
-#~ msgstr "Arsénio"
-
-#~ msgid "Selenium"
-#~ msgstr "Selénio"
-
-#~ msgid "Bromine"
-#~ msgstr "Bromo"
-
-#~ msgid "Krypton"
-#~ msgstr "Crípton"
-
-#~ msgid "Rubidium"
-#~ msgstr "Rubídio"
-
-#~ msgid "Strontium"
-#~ msgstr "Estrôncio"
-
-#~ msgid "Yttrium"
-#~ msgstr "Ítrio"
-
-#~ msgid "Zirconium"
-#~ msgstr "Zircónio"
-
-#~ msgid "Niobium"
-#~ msgstr "Nióbio"
-
-#~ msgid "Molybdenum"
-#~ msgstr "Molibdénio"
-
-#~ msgid "Technetium"
-#~ msgstr "Tecnécio"
-
-#~ msgid "Ruthenium"
-#~ msgstr "Ruténio"
-
-#~ msgid "Rhodium"
-#~ msgstr "Ródio"
-
-#~ msgid "Palladium"
-#~ msgstr "Paládio"
-
-#~ msgid "Silver"
-#~ msgstr "Prata"
-
-#~ msgid "Cadmium"
-#~ msgstr "Cádmio"
-
-#~ msgid "Indium"
-#~ msgstr "Índio"
-
-#~ msgid "Tin"
-#~ msgstr "Estanho"
-
-#~ msgid "Antimony"
-#~ msgstr "Antimónio"
-
-#~ msgid "Tellurium"
-#~ msgstr "Telúrio"
-
-#~ msgid "Iodine"
-#~ msgstr "Iodo"
-
-#~ msgid "Xenon"
-#~ msgstr "Xénon"
-
-#~ msgid "Cesium"
-#~ msgstr "Césio"
-
-#~ msgid "Barium"
-#~ msgstr "Bário"
-
-#~ msgid "Lanthanum"
-#~ msgstr "Lantânio"
-
-#~ msgid "Cerium"
-#~ msgstr "Cério"
-
-#~ msgid "Praseodymium"
-#~ msgstr "Praseodímio"
-
-#~ msgid "Neodymium"
-#~ msgstr "Neodímio"
-
-#~ msgid "Promethium"
-#~ msgstr "Promécio"
-
-#~ msgid "Samarium"
-#~ msgstr "Samário"
-
-#~ msgid "Europium"
-#~ msgstr "Európio"
-
-#~ msgid "Gadolinium"
-#~ msgstr "Gadolínio"
-
-#~ msgid "Terbium"
-#~ msgstr "Térbio"
-
-#~ msgid "Dysprosium"
-#~ msgstr "Disprósio"
-
-#~ msgid "Holmium"
-#~ msgstr "Hólmio"
-
-#~ msgid "Erbium"
-#~ msgstr "Érbio"
-
-#~ msgid "Thulium"
-#~ msgstr "Túlio"
-
-#~ msgid "Ytterbium"
-#~ msgstr "Itérbio"
-
-#~ msgid "Lutetium"
-#~ msgstr "Lutécio"
-
-#~ msgid "Hafnium"
-#~ msgstr "Háfnio"
-
-#~ msgid "Tantalum"
-#~ msgstr "Tântalo"
-
-#~ msgid "Tungsten"
-#~ msgstr "Tungsténio"
-
-#~ msgid "Rhenium"
-#~ msgstr "Rénio"
-
-#~ msgid "Osmium"
-#~ msgstr "Ósmio"
-
-#~ msgid "Iridium"
-#~ msgstr "Irídio"
-
-#~ msgid "Platinum"
-#~ msgstr "Platina"
-
-#~ msgid "Gold"
-#~ msgstr "Ouro"
 
 #~ msgid "Mercury"
 #~ msgstr "Mercúrio"
@@ -8051,15 +7744,6 @@ msgstr ""
 #~ msgid "Bismuth"
 #~ msgstr "Bismuto"
 
-#~ msgid "Polonium"
-#~ msgstr "Polónio"
-
-#~ msgid "Astatine"
-#~ msgstr "Ástato"
-
-#~ msgid "Radon"
-#~ msgstr "Rádon"
-
 #~ msgid "Francium"
 #~ msgstr "Frâncio"
 
@@ -8069,135 +7753,9 @@ msgstr ""
 #~ msgid "Actinium"
 #~ msgstr "Actínio"
 
-#~ msgid "Thorium"
-#~ msgstr "Tório"
-
-#~ msgid "Protactinium"
-#~ msgstr "Protactínio"
-
-#~ msgid "Uranium"
-#~ msgstr "Urânio"
-
-#~ msgid "Neptunium"
-#~ msgstr "Neptúnio"
-
-#~ msgid "Plutonium"
-#~ msgstr "Plutónio"
-
-#~ msgid "Americium"
-#~ msgstr "Amerício"
-
-#~ msgid "Curium"
-#~ msgstr "Cúrio"
-
-#~ msgid "Berkelium"
-#~ msgstr "Berquélio"
-
-#~ msgid "Californium"
-#~ msgstr "Califórnio"
-
-#~ msgid "Einsteinium"
-#~ msgstr "Einstêinio"
-
-#~ msgid "Fermium"
-#~ msgstr "Férmio"
-
-#~ msgid "Mendelevium"
-#~ msgstr "Mendelévio"
-
-#~ msgid "Nobelium"
-#~ msgstr "Nobélio"
-
-#~ msgid "Lawrencium"
-#~ msgstr "Laurêncio"
-
-#~ msgid "Rutherfordium"
-#~ msgstr "Rutherfórdio"
-
-#~ msgid "Dubnium"
-#~ msgstr "Dúbnio"
-
-#~ msgid "Seaborgium"
-#~ msgstr "Seabórgio"
-
-#~ msgid "Bohrium"
-#~ msgstr "Bóhrio"
-
-#~ msgid "Hassium"
-#~ msgstr "Hássio"
-
-#~ msgid "Meitnerium"
-#~ msgstr "Meitnério"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "Darmstádio"
-
-#~ msgid "Roentgenium"
-#~ msgstr "Roentgénio"
-
-#~ msgid "Ununbium"
-#~ msgstr "Copernício"
-
-#~ msgid "Ununtrium"
-#~ msgstr "Ununtrio"
-
-#~ msgid "Ununquadium"
-#~ msgstr "Ununquadio"
-
-#~ msgid "Ununpentium"
-#~ msgstr "Ununpentio"
-
-#~ msgid "Ununhexium"
-#~ msgstr "Ununhexio"
-
-#~ msgid "Ununseptium"
-#~ msgstr "Ununseptio"
-
-#~ msgid "Ununoctium"
-#~ msgstr "Ununóctio"
-
-#~ msgid "Angle %1"
-#~ msgstr "Ângulo %1"
-
-#~ msgid "Periodic Table"
-#~ msgstr "Tabela Periódica"
-
-#, fuzzy
-#~ msgid "Set Color"
-#~ msgstr "Cores Seleccionadas"
-
-#~ msgid "Any files (*.*)"
-#~ msgstr "Todos os ficheiros (*.*)"
-
+#, qt-format
 #~ msgid "Cannot save file %1."
 #~ msgstr "Não foi possível salvar o arquivo %1."
-
-#~ msgid "Atom Index %1"
-#~ msgstr "Índice Atómico %1"
-
-#~ msgid "Customi&ze <<"
-#~ msgstr "Personali&zar"
-
-#~ msgid "Customi&ze >>"
-#~ msgstr "Personali&zar  >>"
-
-#~ msgid "No vibrations have been computed for this molecule."
-#~ msgstr "Não foram calculadas vibrações para esta molécula."
-
-#~ msgid "Save trajectory..."
-#~ msgstr "Guardar trajectória..."
-
-#~ msgid "Save movie..."
-#~ msgstr "Guardar filme..."
-
-#~ msgid "Sc&ale:"
-#~ msgstr "Esc&ala"
-
-#~ msgid "&Scale:"
-#~ msgstr "&Escala"
-
-#~ msgid "E&xport..."
-#~ msgstr "E&xportar..."
 
 #~ msgid "Reset List"
 #~ msgstr "Resetar Lista"
@@ -8260,12 +7818,11 @@ msgstr ""
 #~ "visualizar adequadamente."
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will "
-#~ "only read the first molecule. If you save, all other molecules may be "
-#~ "lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will only "
+#~ "read the first molecule. If you save, all other molecules may be lost."
 #~ msgstr ""
-#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá "
-#~ "ler apenas a primeira molécula. Se você salvar, todas as outras moléculas "
+#~ "Este arquivo aparenta conter dados de mais de uma molécula. Avogadro irá ler "
+#~ "apenas a primeira molécula. Se você salvar, todas as outras moléculas "
 #~ "poderão ser perdidas."
 
 #~ msgid "File Loaded..."
@@ -8374,3 +7931,359 @@ msgstr ""
 
 #~ msgid "Name:"
 #~ msgstr "Nome:"
+
+#~ msgid "Hydrogen"
+#~ msgstr "Hidrogénio"
+
+#~ msgid "Nitrogen"
+#~ msgstr "Azoto"
+
+#~ msgid "Carbon"
+#~ msgstr "Cabono"
+
+#~ msgid "Lithium"
+#~ msgstr "Lítio"
+
+#~ msgid "Helium"
+#~ msgstr "Hélio"
+
+#~ msgid "Boron"
+#~ msgstr "Boro"
+
+#~ msgid "Beryllium"
+#~ msgstr "Berílio"
+
+#~ msgid "Sulfur"
+#~ msgstr "Enxofre"
+
+#~ msgid "Chlorine"
+#~ msgstr "Cloro"
+
+#~ msgid "Silicon"
+#~ msgstr "Silício"
+
+#~ msgid "Neon"
+#~ msgstr "Néon"
+
+#~ msgid "Fluorine"
+#~ msgstr "Flúor"
+
+#~ msgid "Calcium"
+#~ msgstr "Cálcio"
+
+#~ msgid "Scandium"
+#~ msgstr "Escândio"
+
+#~ msgid "Argon"
+#~ msgstr "Árgon"
+
+#~ msgid "Potassium"
+#~ msgstr "Potássio"
+
+#~ msgid "Chromium"
+#~ msgstr "Crómio"
+
+#~ msgid "Manganese"
+#~ msgstr "Manganésio"
+
+#~ msgid "Vanadium"
+#~ msgstr "Vanádio"
+
+#~ msgid "Titanium"
+#~ msgstr "Titânio"
+
+#~ msgid "Cobalt"
+#~ msgstr "Cobalto"
+
+#~ msgid "Iron"
+#~ msgstr "Ferro"
+
+#~ msgid "Copper"
+#~ msgstr "Cobre"
+
+#~ msgid "Nickel"
+#~ msgstr "Níquel"
+
+#~ msgid "Gallium"
+#~ msgstr "Gálio"
+
+#~ msgid "Zinc"
+#~ msgstr "Zinco"
+
+#~ msgid "Krypton"
+#~ msgstr "Crípton"
+
+#~ msgid "Rubidium"
+#~ msgstr "Rubídio"
+
+#~ msgid "Germanium"
+#~ msgstr "Germânio"
+
+#~ msgid "Arsenic"
+#~ msgstr "Arsénio"
+
+#~ msgid "Selenium"
+#~ msgstr "Selénio"
+
+#~ msgid "Bromine"
+#~ msgstr "Bromo"
+
+#~ msgid "Palladium"
+#~ msgstr "Paládio"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruténio"
+
+#~ msgid "Rhodium"
+#~ msgstr "Ródio"
+
+#~ msgid "Molybdenum"
+#~ msgstr "Molibdénio"
+
+#~ msgid "Technetium"
+#~ msgstr "Tecnécio"
+
+#~ msgid "Silver"
+#~ msgstr "Prata"
+
+#~ msgid "Strontium"
+#~ msgstr "Estrôncio"
+
+#~ msgid "Yttrium"
+#~ msgstr "Ítrio"
+
+#~ msgid "Zirconium"
+#~ msgstr "Zircónio"
+
+#~ msgid "Niobium"
+#~ msgstr "Nióbio"
+
+#~ msgid "Iodine"
+#~ msgstr "Iodo"
+
+#~ msgid "Tellurium"
+#~ msgstr "Telúrio"
+
+#~ msgid "Xenon"
+#~ msgstr "Xénon"
+
+#~ msgid "Lanthanum"
+#~ msgstr "Lantânio"
+
+#~ msgid "Barium"
+#~ msgstr "Bário"
+
+#~ msgid "Cesium"
+#~ msgstr "Césio"
+
+#~ msgid "Cadmium"
+#~ msgstr "Cádmio"
+
+#~ msgid "Indium"
+#~ msgstr "Índio"
+
+#~ msgid "Tin"
+#~ msgstr "Estanho"
+
+#~ msgid "Antimony"
+#~ msgstr "Antimónio"
+
+#~ msgid "Praseodymium"
+#~ msgstr "Praseodímio"
+
+#~ msgid "Cerium"
+#~ msgstr "Cério"
+
+#~ msgid "Promethium"
+#~ msgstr "Promécio"
+
+#~ msgid "Neodymium"
+#~ msgstr "Neodímio"
+
+#~ msgid "Dysprosium"
+#~ msgstr "Disprósio"
+
+#~ msgid "Holmium"
+#~ msgstr "Hólmio"
+
+#~ msgid "Samarium"
+#~ msgstr "Samário"
+
+#~ msgid "Europium"
+#~ msgstr "Európio"
+
+#~ msgid "Gadolinium"
+#~ msgstr "Gadolínio"
+
+#~ msgid "Terbium"
+#~ msgstr "Térbio"
+
+#~ msgid "Rhenium"
+#~ msgstr "Rénio"
+
+#~ msgid "Tungsten"
+#~ msgstr "Tungsténio"
+
+#~ msgid "Tantalum"
+#~ msgstr "Tântalo"
+
+#~ msgid "Hafnium"
+#~ msgstr "Háfnio"
+
+#~ msgid "Iridium"
+#~ msgstr "Irídio"
+
+#~ msgid "Osmium"
+#~ msgstr "Ósmio"
+
+#~ msgid "Ytterbium"
+#~ msgstr "Itérbio"
+
+#~ msgid "Lutetium"
+#~ msgstr "Lutécio"
+
+#~ msgid "Erbium"
+#~ msgstr "Érbio"
+
+#~ msgid "Thulium"
+#~ msgstr "Túlio"
+
+#~ msgid "Gold"
+#~ msgstr "Ouro"
+
+#~ msgid "Platinum"
+#~ msgstr "Platina"
+
+#~ msgid "Radon"
+#~ msgstr "Rádon"
+
+#~ msgid "Polonium"
+#~ msgstr "Polónio"
+
+#~ msgid "Astatine"
+#~ msgstr "Ástato"
+
+#~ msgid "Berkelium"
+#~ msgstr "Berquélio"
+
+#~ msgid "Curium"
+#~ msgstr "Cúrio"
+
+#~ msgid "Neptunium"
+#~ msgstr "Neptúnio"
+
+#~ msgid "Uranium"
+#~ msgstr "Urânio"
+
+#~ msgid "Americium"
+#~ msgstr "Amerício"
+
+#~ msgid "Plutonium"
+#~ msgstr "Plutónio"
+
+#~ msgid "Thorium"
+#~ msgstr "Tório"
+
+#~ msgid "Protactinium"
+#~ msgstr "Protactínio"
+
+#~ msgid "Mendelevium"
+#~ msgstr "Mendelévio"
+
+#~ msgid "Fermium"
+#~ msgstr "Férmio"
+
+#~ msgid "Einsteinium"
+#~ msgstr "Einstêinio"
+
+#~ msgid "Californium"
+#~ msgstr "Califórnio"
+
+#~ msgid "Dubnium"
+#~ msgstr "Dúbnio"
+
+#~ msgid "Seaborgium"
+#~ msgstr "Seabórgio"
+
+#~ msgid "Nobelium"
+#~ msgstr "Nobélio"
+
+#~ msgid "Lawrencium"
+#~ msgstr "Laurêncio"
+
+#~ msgid "Rutherfordium"
+#~ msgstr "Rutherfórdio"
+
+#~ msgid "Bohrium"
+#~ msgstr "Bóhrio"
+
+#~ msgid "Ununseptium"
+#~ msgstr "Ununseptio"
+
+#~ msgid "Ununhexium"
+#~ msgstr "Ununhexio"
+
+#~ msgid "Ununpentium"
+#~ msgstr "Ununpentio"
+
+#~ msgid "Ununquadium"
+#~ msgstr "Ununquadio"
+
+#~ msgid "Ununtrium"
+#~ msgstr "Ununtrio"
+
+#~ msgid "Ununbium"
+#~ msgstr "Copernício"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "Darmstádio"
+
+#~ msgid "Roentgenium"
+#~ msgstr "Roentgénio"
+
+#~ msgid "Hassium"
+#~ msgstr "Hássio"
+
+#~ msgid "Meitnerium"
+#~ msgstr "Meitnério"
+
+#~ msgid "Ununoctium"
+#~ msgstr "Ununóctio"
+
+#~ msgid "Any files (*.*)"
+#~ msgstr "Todos os ficheiros (*.*)"
+
+#, qt-format
+#~ msgid "Angle %1"
+#~ msgstr "Ângulo %1"
+
+#~ msgid "Customi&ze <<"
+#~ msgstr "Personali&zar"
+
+#~ msgid "Customi&ze >>"
+#~ msgstr "Personali&zar  >>"
+
+#~ msgid "No vibrations have been computed for this molecule."
+#~ msgstr "Não foram calculadas vibrações para esta molécula."
+
+#~ msgid "&Scale:"
+#~ msgstr "&Escala"
+
+#~ msgid "Save movie..."
+#~ msgstr "Guardar filme..."
+
+#~ msgid "Save trajectory..."
+#~ msgstr "Guardar trajectória..."
+
+#~ msgid "Sc&ale:"
+#~ msgstr "Esc&ala"
+
+#, qt-format
+#~ msgid "Atom Index %1"
+#~ msgstr "Índice Atómico %1"
+
+#~ msgid "Periodic Table"
+#~ msgstr "Tabela Periódica"
+
+#~ msgid "E&xport..."
+#~ msgstr "E&xportar..."

@@ -74,10 +74,10 @@ else(NOT WIN32)
 endif(NOT WIN32)
 
 # Some relative rpath handling for Linux
-if(CMAKE_SYSTEM_NAME MATCHES Linux AND ENABLE_RPATH)
+if(UNIX AND ENABLE_RPATH AND NOT APPLE)
   # Set a relative rpath on Linux - just testing right now...
   set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
-endif(CMAKE_SYSTEM_NAME MATCHES Linux AND ENABLE_RPATH)
+endif(UNIX AND ENABLE_RPATH AND NOT APPLE)
 
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_SRCS}

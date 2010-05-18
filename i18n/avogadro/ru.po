@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-02-24 14:14+0000\n"
+"PO-Revision-Date: 2010-03-10 02:43+0000\n"
 "Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-02-24 14:20+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,40 +25,40 @@ msgstr "OK"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Подверсия Git: %1)"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
-"><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+"%3<br/><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %3<br/"
-"><br/>Версия Open Babel: %4"
+"<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
+"%3<br/><br/>Версия Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:3185 :69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
-"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
-"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
-"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
-">"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
+"href=\"http://avogadro.openmolecules.net/\">Avogadro "
+"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE.<br/>"
 msgstr ""
 "<br/><br/>Версия Qt: %1<br/><br/>Дальнейшую информацию вы можете получить на "
-"<a href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/"
-">Эта программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
-"подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
-"КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+"<a href=\"http://avogadro.openmolecules.net/\">сайте "
+"Avogadro</a>.<br/><br/>Эта программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ "
+"ГАРАНТИЙ; даже без подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или "
+"ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,7 +85,7 @@ msgstr "Удалить атомы"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
@@ -101,6 +101,9 @@ msgid ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 msgstr ""
+"Avogadro: \t%1 (Хэш %2)\n"
+"LibAvogadro: \t%3 (Хэш %4)\n"
+"Qt: \t\t%5\n"
 
 #: src/main.cpp:271
 #, qt-format
@@ -460,7 +463,7 @@ msgstr "Объекты"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3232 :321
 msgid "Colors"
 msgstr "Цвета"
 
@@ -537,7 +540,7 @@ msgstr "только метки могут иметь вложенные зна�
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65:378
+#: src/projecttreemodel.cpp:65 :378
 msgid "Item"
 msgstr "Объект"
 
@@ -552,7 +555,7 @@ msgstr "Низкое"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107:405
+#: src/settingsdialog.cpp:107 :405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Среднее"
@@ -569,7 +572,7 @@ msgstr "Неопределенное"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122:414
+#: src/settingsdialog.cpp:122 :414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Нет"
@@ -936,9 +939,8 @@ msgstr "Закрыть окно просмотра"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-#, fuzzy
 msgid "Better View"
-msgstr "Открепить окно просмотра"
+msgstr ""
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1169,7 +1171,8 @@ msgstr "Л"
 #. i18n: file: src/projecttreeeditor.ui:117
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemRightButton)
 msgid "Move Item Right (as a First Subitem of the Next Sibling Item)"
-msgstr "Переместить элемент вправо (как первый подэлемент следующего элемента)"
+msgstr ""
+"Переместить элемент вправо (как первый подэлемент следующего элемента)"
 
 #. i18n: file: src/projecttreeeditor.ui:120
 #. i18n: ectx: property (text), widget (QToolButton, moveItemRightButton)
@@ -1235,49 +1238,53 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,Konstantin "
 "Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,Petr E. Antonov,Vasily "
-"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,"
-"Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay "
-"Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,"
-"Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
-"Bushmelyov,Konstantin Tokarev,Koptev Oleg,Nick Gorbunov,Nkolay Parukhin,"
-"Panda-Yuliya,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
-"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,"
-"Konstantin Tokarev,Nkolay Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir "
-"Kurg,dn2010, ,Launchpad Contributions:,Alexei Klimenko,Andrey Smolenkov,"
-"DooMka,Egor Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr "
-"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,"
-"Alexei Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,"
-"Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr E. Antonov,Vasily Astanin,"
-"Vladimir Kurg,dn2010"
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,Konstantin Tokarev,Koptev Oleg,Nick "
+"Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Koptev "
+"Oleg,Nick Gorbunov,Nkolay Parukhin,Panda-Yuliya,Petr E. Antonov,Vasily "
+"Astanin,Vladimir Kurg,dn2010, ,Launchpad Contributions:,Alexei "
+"Klimenko,Andrey Smolenkov,DooMka,Egor Bushmelyov,Konstantin Tokarev,Nkolay "
+"Parukhin,Petr E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Petr E. "
+"Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
+"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010, ,Launchpad "
+"Contributions:,Alexei Klimenko,Andrey Smolenkov,DooMka,Egor "
+"Bushmelyov,Konstantin Tokarev,Nick Gorbunov,Nkolay Parukhin,Oleg Koptev,Petr "
+"E. Antonov,Vasily Astanin,Vladimir Kurg,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,"
-"annulen@yandex.ru,,,nik@sevpinro.ru,panda-yuliya@mail.ru,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@sevpinro.ru,,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,,madcad@yandex.ru,,"
-"dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail."
-"com,,madcad@yandex.ru,,dn2010@km.ru"
-
-#, fuzzy
-#~ msgctxt "main.cpp"
-#~ msgid "Avogadro"
-#~ msgstr "Avogadro"
+",,,,annulen@yandex.ru,,,nik@sevpinro.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,a"
+"nnulen@yandex.ru,,,nik@sevpinro.ru,panda-"
+"yuliya@mail.ru,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,,nik@"
+"sevpinro.ru,,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,parukhin"
+"@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@"
+"gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@yandex.ru,,parukhin@g"
+"mail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010@km.ru,,,,,,,annulen@"
+"yandex.ru,,parukhin@gmail.com,koptev.oleg@gmail.com,,madcad@yandex.ru,,dn2010"
+"@km.ru"
 
 #~ msgid "Center"
 #~ msgstr "По центру"
 
+#, qt-format
 #~ msgid ""
-#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %"
-#~ "3<br/><br/>For more information check the <a href=\"http://avogadro."
-#~ "openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The program is "
-#~ "provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF "
-#~ "DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/>"
+#~ "<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
+#~ "%3<br/><br/>For more information check the <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">Avogadro "
+#~ "homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
+#~ "KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.<br/>"
 #~ msgstr ""
-#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: %"
-#~ "3<br/><br/>Дальнейшую информацию вы можете получить на <a href=\"http://"
-#~ "avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта программа "
-#~ "поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без подразумеваемых "
-#~ "гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ.<br/>"
+#~ "<h3>%1</h3><br/><br/>Версия программы: %2<br/><br/>Версия библиотеки: "
+#~ "%3<br/><br/>Дальнейшую информацию вы можете получить на <a "
+#~ "href=\"http://avogadro.openmolecules.net/\">сайте Avogadro</a>.<br/><br/>Эта "
+#~ "программа поставляется АБСОЛЮТНО БЕЗ ВСЯКИХ ГАРАНТИЙ; даже без "
+#~ "подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+#~ "КОНКРЕТНОЙ ЦЕЛИ.<br/>"

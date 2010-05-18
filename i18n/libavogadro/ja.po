@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2009-08-13 06:18+0000\n"
-"Last-Translator: tomo <Unknown>\n"
+"PO-Revision-Date: 2010-04-26 18:47+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-04 01:54+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 12:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -49,9 +49,8 @@ msgid "Template"
 msgstr ""
 
 #: examples/c++/templateextension.h:35
-#, fuzzy
 msgid "Example extension"
-msgstr "エクステンション"
+msgstr ""
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -380,9 +379,7 @@ msgstr "無効な動画ファイル名. ディレクトリの完全パスを含�
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
-msgstr ""
-"無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があり"
-"ます"
+msgstr "無効な動画ファイル名. .avi で終了するディレクトリの完全パスを含める必要があります"
 
 #: src/extensions/animationextension.cpp:233
 msgid "could not set format to XYZ"
@@ -401,7 +398,7 @@ msgstr "トラジェクトリファイル %1 の原子数が、現在の分子�
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3222
+#: src/extensions/animationextension.h:39 :3222
 msgid "Animation"
 msgstr "アニメーション"
 
@@ -411,12 +408,13 @@ msgstr "トラジェクトリ, 反応, 振動をアニメーションで表示"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
+#: src/extensions/cartesianextension.cpp:95 :354
 msgid "Cartesian Editor"
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:96
-msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
+msgid ""
+"No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 
 #: src/extensions/cartesianextension.cpp:568
@@ -460,28 +458,22 @@ msgstr "拘束条件を追加"
 
 #: src/extensions/constraintsdialog.cpp:346
 msgid "Your molecule must contain at least one atom to add a constraint"
-msgstr ""
-"対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
+msgstr "対象とする分子の少なくとも1つの原子に1つの拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:369
-msgid "Your molecule must contain at least two atoms to add a bond constraint"
-msgstr ""
-"対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要がありま"
-"す"
+msgid ""
+"Your molecule must contain at least two atoms to add a bond constraint"
+msgstr "対象とする分子の少なくとも2つの原子に1つの結合拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:378
 msgid ""
 "Your molecule must contain at least three atoms to add an angle constraint"
-msgstr ""
-"対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要がありま"
-"す"
+msgstr "対象とする分子の少なくとも3つの原子に1つの角度拘束条件を追加する必要があります"
 
 #: src/extensions/constraintsdialog.cpp:388
 msgid ""
 "Your molecule must contain at least four atoms to add a torsion constraint"
-msgstr ""
-"対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があ"
-"ります"
+msgstr "対象とする分子の少なくとも4つの原子に1つのねじれ角拘束条件を追加する必要があります"
 
 #: src/extensions/fileimportextension.cpp:54
 msgid "Trajectory..."
@@ -707,7 +699,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43 :595 rc.cpp:814
 msgid "Insert Peptide"
 msgstr ""
 
@@ -917,7 +909,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:870
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1754
+#: src/extensions/propextension.h:43 :917 rc.cpp:1418 rc.cpp:1754
 msgid "Properties"
 msgstr ""
 
@@ -932,13 +924,12 @@ msgid "Yes"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:271
-#, fuzzy
 msgid "No"
-msgstr "ネオン (Neon)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:427 :433
 msgid "Element"
 msgstr ""
 
@@ -1006,9 +997,8 @@ msgid "Length %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:463
-#, fuzzy
 msgid "Bond"
-msgstr "ホウ素 (Boron)"
+msgstr ""
 
 #: src/extensions/propmodel.cpp:472
 msgid "Vertex"
@@ -1022,7 +1012,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:479 :502
 msgid "Angle"
 msgstr ""
 
@@ -1038,20 +1028,18 @@ msgid "Torsion %1"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:494
-#, fuzzy
 msgid "Torsion"
-msgstr "ホウ素 (Boron)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:820
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1724
+#: src/extensions/propmodel.cpp:511 :1724
 msgid "Energy"
 msgstr ""
 
 #: src/extensions/propmodel.cpp:514
-#, fuzzy
 msgid "Conformer"
-msgstr "配座探索 ..."
+msgstr ""
 
 #. i18n: file: src/extensions/pythonterminalwidget.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, PythonTerminalWidget)
@@ -1092,7 +1080,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:178
 #: src/extensions/quantuminput/mopacinputdialog.cpp:262
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:185
-#: src/extensions/quantuminput/qcheminputdialog.cpp:178:2669
+#: src/extensions/quantuminput/qcheminputdialog.cpp:178 :2669
 msgid "Show Preview"
 msgstr ""
 
@@ -1111,7 +1099,7 @@ msgstr ""
 #: src/extensions/quantuminput/molproinputdialog.cpp:182
 #: src/extensions/quantuminput/mopacinputdialog.cpp:267
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:189
-#: src/extensions/quantuminput/qcheminputdialog.cpp:182:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:182 :1442
 msgid "Hide Preview"
 msgstr ""
 
@@ -1204,7 +1192,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:622:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:622 :908
 msgid "Title"
 msgstr ""
 
@@ -1230,7 +1218,7 @@ msgstr ""
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1569
 msgid "Basic Settings Reset"
-msgstr ""
+msgstr "基本的な設定をリセットする。"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1570
 msgid ""
@@ -1298,7 +1286,8 @@ msgid "G03 Crashed."
 msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:336
-msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
+msgid ""
+"Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:50
@@ -1322,9 +1311,8 @@ msgid "&Q-Chem..."
 msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.cpp:75
-#, fuzzy
 msgid "&Dalton..."
-msgstr "アニメーション ...."
+msgstr ""
 
 #: src/extensions/quantuminput/inputfileextension.h:44
 msgid "Input File Generators"
@@ -1477,7 +1465,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:236:198
+#: src/extensions/selectextension.cpp:236 :198
 msgid "Residue name"
 msgstr ""
 
@@ -1539,7 +1527,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2900
+#: src/extensions/shaderextension.h:41 :2900
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -1599,9 +1587,8 @@ msgid "Shift (ppm)"
 msgstr ""
 
 #: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
-#, fuzzy
 msgid "Activity"
-msgstr "アクチニウム (Actinium)"
+msgstr ""
 
 #: src/extensions/spectra/raman.cpp:47
 msgid "Intensity"
@@ -1617,13 +1604,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:195:2961
+#: src/extensions/spectra/spectradialog.cpp:195 :2961
 msgid "&Appearance"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:196:3027
+#: src/extensions/spectra/spectradialog.cpp:196 :3027
 msgid "E&xport Image"
 msgstr ""
 
@@ -1673,10 +1660,9 @@ msgid "&CD Settings"
 msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:239
-#, fuzzy
 msgctxt "Raman spectrum"
 msgid "Raman"
-msgstr "ラドン (Radon)"
+msgstr ""
 
 #: src/extensions/spectra/spectradialog.cpp:240
 msgid "&Raman Settings"
@@ -1879,7 +1865,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1021:2955
+#: src/extensions/spectra/spectradialog.cpp:1021 :2955
 msgid "&Advanced >>"
 msgstr ""
 
@@ -1900,13 +1886,12 @@ msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
 #: src/extensions/spectra/vibrationextension.cpp:89
-#, fuzzy
 msgid "Vibrations"
-msgstr "アニメーション"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2559
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2264
+#: src/extensions/spectra/vibrationextension.cpp:202 :2264
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -1930,7 +1915,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3234
+#: src/extensions/spectra/vibrationwidget.cpp:296 :3234
 msgid "Start &Animation"
 msgstr ""
 
@@ -1943,14 +1928,13 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3237
+#: src/extensions/spectra/vibrationwidget.cpp:310 :3237
 msgid "Pause"
 msgstr ""
 
 #: src/extensions/spectra/vibrationwidget.cpp:308
-#, fuzzy
 msgid "Continue"
-msgstr "塩素 (Chlorine)"
+msgstr ""
 
 #: src/extensions/supercellextension.cpp:57
 msgid "Super Cell Builder..."
@@ -2134,13 +2118,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100 :390
 msgid "Apply"
 msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98 :532
 msgid "OK"
 msgstr ""
 
@@ -2437,9 +2421,9 @@ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 msgstr ""
 
 #: src/tools/autoopttool.cpp:233
-#, fuzzy, qt-format
+#, qt-format
 msgid "Num Constraints: %1"
-msgstr "束縛 ..."
+msgstr ""
 
 #: src/tools/autoopttool.cpp:258
 msgid "Force Field:"
@@ -2455,13 +2439,13 @@ msgstr "アルゴリズム:"
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287 :577
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288 :580
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -2550,7 +2534,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2477 rc.cpp:2585
+#: src/tools/autorotatetool.cpp:296 :1436 rc.cpp:2477 rc.cpp:2585
 msgid "Reset"
 msgstr ""
 
@@ -2697,7 +2681,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3386
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311 :3386
 msgid "Add Atom"
 msgstr ""
 
@@ -2747,7 +2731,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1217
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:806:1895
+#: src/tools/drawtool.cpp:806 :1895
 msgid "Other..."
 msgstr ""
 
@@ -2884,7 +2868,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1540
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1982
+#: src/tools/zmatrixtool.h:39 :1982
 msgid "Z-Matrix"
 msgstr ""
 
@@ -2923,9 +2907,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Axes:"
-msgstr "軸"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:55
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
@@ -2939,9 +2922,8 @@ msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:65
 #. i18n: ectx: property (text), item, widget (QComboBox, axesType)
-#, fuzzy
 msgid "Custom Axes"
-msgstr "カスタムカラー"
+msgstr ""
 
 #. i18n: file: src/engines/axessettingswidget.ui:76
 #. i18n: ectx: property (text), widget (QLabel, vector1Label)
@@ -3017,9 +2999,8 @@ msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:134
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
-#, fuzzy
 msgid "Covalent"
-msgstr "コバルト (Cobalt)"
+msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:139
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
@@ -3105,9 +3086,8 @@ msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:60
 #. i18n: ectx: property (text), item, widget (QComboBox, dipoleType)
-#, fuzzy
 msgid "Custom Vector"
-msgstr "カスタムカラー"
+msgstr ""
 
 #. i18n: file: src/engines/dipolesettingswidget.ui:71
 #. i18n: ectx: property (text), widget (QLabel, customLabel)
@@ -3162,25 +3142,22 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:53
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#, fuzzy
 msgid "Atom Labels"
-msgstr "ラベル"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:65
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/engines/labelsettingswidget.ui:532
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Text:"
-msgstr "ラベル"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:78
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #. i18n: file: src/engines/labelsettingswidget.ui:486
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#, fuzzy
 msgid "Color:"
-msgstr "カスタムカラー"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
@@ -3290,9 +3267,8 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:343
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#, fuzzy
 msgid "Bond Labels"
-msgstr "ラベル"
+msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:574
 #. i18n: ectx: property (text), item, widget (QComboBox, bondType)
@@ -3448,9 +3424,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
-#, fuzzy
 msgid "Bohrs"
-msgstr "ボーリウム (Bohrium)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
@@ -3542,10 +3517,10 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:270
 #. i18n: ectx: property (toolTip), widget (QTextEdit, cartesianEdit)
 msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Monospace'; font-size:9pt; font-"
 "weight:400; font-style:normal;\">\n"
@@ -3557,9 +3532,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:281
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#, fuzzy
 msgid "(None)"
-msgstr "ネオン (Neon)"
+msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:309
 #. i18n: ectx: property (text), widget (QLabel, sortLabel)
@@ -4308,9 +4282,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
-#, fuzzy
 msgid "Calculate:"
-msgstr "エネルギー計算"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -5173,9 +5146,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1304
 #. i18n: ectx: property (text), widget (QLabel, gridspecs)
-#, fuzzy
 msgid "Grid Specification"
-msgstr "構造最適化"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1317
 #. i18n: ectx: property (text), widget (QLabel, partscheme)
@@ -5214,9 +5186,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
-#, fuzzy
 msgid "fine"
-msgstr "ヨウ素 (Iodine)"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
@@ -5255,9 +5226,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
-#, fuzzy
 msgid "Excitation Energy"
-msgstr "エネルギー計算"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
@@ -7221,9 +7191,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:67
 #. i18n: ectx: property (text), widget (QLabel, label_fermi)
-#, fuzzy
 msgid "TextLabel"
-msgstr "ラベル"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_density)
@@ -7282,9 +7251,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
-#, fuzzy
 msgid "Linear"
-msgstr "鉛 (Lead)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
@@ -7370,9 +7338,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Filter: "
-msgstr "ファイル(&F)"
+msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7639,64 +7606,48 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
-"Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
-"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,"
-"Avogadro Team,Geoff Hutchison,tomo"
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
+",Launchpad Contributions:,Avogadro Team,Geoff Hutchison, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,tomo, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,hide D,tomo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-devel@lists."
-"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,"
+",,,,,,avogadro-devel@lists.sourceforge.net,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,,"
 
 #~ msgid "Hydrogen"
 #~ msgstr "水素 (Hydrogen)"
 
-#~ msgid "Helium"
-#~ msgstr "ヘリウム (Helium)"
-
-#~ msgid "Lithium"
-#~ msgstr "リチウム(Lithium）"
-
 #~ msgid "Beryllium"
 #~ msgstr "ベリリウム (Beryllium)"
-
-#~ msgid "Carbon"
-#~ msgstr "炭素 (Carbon)"
-
-#~ msgid "Nitrogen"
-#~ msgstr "窒素 (Nitrogen)"
-
-#~ msgid "Oxygen"
-#~ msgstr "酸素 (Oxygen)"
-
-#~ msgid "Fluorine"
-#~ msgstr "フッ素 (Fluorine)"
 
 #~ msgid "Neon"
 #~ msgstr "ネオン (Neon)"
 
-#~ msgid "Sodium"
-#~ msgstr "ナトリウム (Sodium)"
+#~ msgid "Nitrogen"
+#~ msgstr "窒素 (Nitrogen)"
 
-#~ msgid "Magnesium"
-#~ msgstr "マグネシウム (Magnesium)"
+#~ msgid "Carbon"
+#~ msgstr "炭素 (Carbon)"
 
-#~ msgid "Aluminum"
-#~ msgstr "アルミニウム (Aluminum)"
+#~ msgid "Fluorine"
+#~ msgstr "フッ素 (Fluorine)"
 
-#~ msgid "Silicon"
-#~ msgstr "ケイ素 (Silicon)"
+#~ msgid "Oxygen"
+#~ msgstr "酸素 (Oxygen)"
 
-#~ msgid "Phosphorus"
-#~ msgstr "リン (Phosphorus)"
+#~ msgid "Lithium"
+#~ msgstr "リチウム(Lithium）"
 
-#~ msgid "Sulfur"
-#~ msgstr "硫黄 (Sulfur)"
+#~ msgid "Helium"
+#~ msgstr "ヘリウム (Helium)"
 
-#~ msgid "Chlorine"
-#~ msgstr "塩素 (Chlorine)"
+#~ msgid "Calcium"
+#~ msgstr "カルシウム (Calcium)"
 
 #~ msgid "Argon"
 #~ msgstr "アルゴン (Argon)"
@@ -7704,32 +7655,47 @@ msgstr ""
 #~ msgid "Potassium"
 #~ msgstr "カリウム (Potassium)"
 
-#~ msgid "Calcium"
-#~ msgstr "カルシウム (Calcium)"
+#~ msgid "Sulfur"
+#~ msgstr "硫黄 (Sulfur)"
+
+#~ msgid "Chlorine"
+#~ msgstr "塩素 (Chlorine)"
+
+#~ msgid "Silicon"
+#~ msgstr "ケイ素 (Silicon)"
+
+#~ msgid "Phosphorus"
+#~ msgstr "リン (Phosphorus)"
+
+#~ msgid "Magnesium"
+#~ msgstr "マグネシウム (Magnesium)"
+
+#~ msgid "Aluminum"
+#~ msgstr "アルミニウム (Aluminum)"
+
+#~ msgid "Sodium"
+#~ msgstr "ナトリウム (Sodium)"
 
 #~ msgid "Scandium"
 #~ msgstr "スカンジウム (Scandium)"
 
-#~ msgid "Titanium"
-#~ msgstr "チタン (Titanium)"
-
-#~ msgid "Vanadium"
-#~ msgstr "バナジウム (Vanadium)"
+#~ msgid "Manganese"
+#~ msgstr "マンガン (Manganese)"
 
 #~ msgid "Chromium"
 #~ msgstr "クロム (Chromium)"
 
-#~ msgid "Manganese"
-#~ msgstr "マンガン (Manganese)"
+#~ msgid "Vanadium"
+#~ msgstr "バナジウム (Vanadium)"
 
-#~ msgid "Iron"
-#~ msgstr "鉄 (Iron)"
+#~ msgid "Titanium"
+#~ msgstr "チタン (Titanium)"
 
 #~ msgid "Cobalt"
 #~ msgstr "コバルト (Cobalt)"
 
-#~ msgid "Nickel"
-#~ msgstr "ニッケル (Nickel)"
+#~ msgid "Iron"
+#~ msgstr "鉄 (Iron)"
 
 #~ msgid "Copper"
 #~ msgstr "銅 (Copper)"
@@ -7737,11 +7703,26 @@ msgstr ""
 #~ msgid "Zinc"
 #~ msgstr "亜鉛 (Zinc)"
 
-#~ msgid "Gallium"
-#~ msgstr "ガリウム (Gallium)"
+#~ msgid "Nickel"
+#~ msgstr "ニッケル (Nickel)"
+
+#~ msgid "Rubidium"
+#~ msgstr "ルビジウム (Rubidium)"
 
 #~ msgid "Germanium"
 #~ msgstr "ゲルマニウム (Germanium)"
+
+#~ msgid "Gallium"
+#~ msgstr "ガリウム (Gallium)"
+
+#~ msgid "Krypton"
+#~ msgstr "クリプトン (Krypton)"
+
+#~ msgid "Strontium"
+#~ msgstr "ストロンチウム (Strontium)"
+
+#~ msgid "Yttrium"
+#~ msgstr "イットリウム (Yttrium)"
 
 #~ msgid "Arsenic"
 #~ msgstr "ヒ素 (Arsenic)"
@@ -7752,29 +7733,8 @@ msgstr ""
 #~ msgid "Bromine"
 #~ msgstr "臭素 (Bromine)"
 
-#~ msgid "Krypton"
-#~ msgstr "クリプトン (Krypton)"
-
-#~ msgid "Rubidium"
-#~ msgstr "ルビジウム (Rubidium)"
-
-#~ msgid "Strontium"
-#~ msgstr "ストロンチウム (Strontium)"
-
-#~ msgid "Yttrium"
-#~ msgstr "イットリウム (Yttrium)"
-
 #~ msgid "Zirconium"
 #~ msgstr "ジルコニウム (Zirconium)"
-
-#~ msgid "Niobium"
-#~ msgstr "ニオブ (Niobium)"
-
-#~ msgid "Molybdenum"
-#~ msgstr "モリブデン (Molybdenum)"
-
-#~ msgid "Technetium"
-#~ msgstr "テクネチウム (Technetium)"
 
 #~ msgid "Ruthenium"
 #~ msgstr "ルテニウム (Ruthenium)"
@@ -7782,53 +7742,74 @@ msgstr ""
 #~ msgid "Rhodium"
 #~ msgstr "ロジウム (Rhodium)"
 
+#~ msgid "Molybdenum"
+#~ msgstr "モリブデン (Molybdenum)"
+
+#~ msgid "Technetium"
+#~ msgstr "テクネチウム (Technetium)"
+
+#~ msgid "Indium"
+#~ msgstr "インジウム (Indium)"
+
 #~ msgid "Palladium"
 #~ msgstr "パラジウム (Palladium)"
 
 #~ msgid "Silver"
 #~ msgstr "銀 (Silver)"
 
-#~ msgid "Cadmium"
-#~ msgstr "カドミウム (Cadmium)"
-
-#~ msgid "Indium"
-#~ msgstr "インジウム (Indium)"
-
 #~ msgid "Tin"
 #~ msgstr "スズ (Tin)"
 
-#~ msgid "Antimony"
-#~ msgstr "アンチモン (Antimony)"
-
-#~ msgid "Tellurium"
-#~ msgstr "テルル (Tellurium)"
+#~ msgid "Niobium"
+#~ msgstr "ニオブ (Niobium)"
 
 #~ msgid "Iodine"
 #~ msgstr "ヨウ素 (Iodine)"
 
+#~ msgid "Tellurium"
+#~ msgstr "テルル (Tellurium)"
+
+#~ msgid "Caesium"
+#~ msgstr "セシウム (Caesium)"
+
 #~ msgid "Xenon"
 #~ msgstr "キセノン (Xenon)"
-
-#~ msgid "Cesium"
-#~ msgstr "セシウム (Cesium)"
-
-#~ msgid "Barium"
-#~ msgstr "バリウム (Barium)"
 
 #~ msgid "Lanthanum"
 #~ msgstr "ランタン (Lanthanum)"
 
-#~ msgid "Cerium"
-#~ msgstr "セリウム (Cerium)"
+#~ msgid "Barium"
+#~ msgstr "バリウム (Barium)"
 
 #~ msgid "Praseodymium"
 #~ msgstr "プラセオジム (Praseodymium)"
 
+#~ msgid "Cerium"
+#~ msgstr "セリウム (Cerium)"
+
 #~ msgid "Neodymium"
 #~ msgstr "ネオジム (Neodymium)"
 
+#~ msgid "Antimony"
+#~ msgstr "アンチモン (Antimony)"
+
 #~ msgid "Promethium"
 #~ msgstr "プロメチウム (Promethium)"
+
+#~ msgid "Holmium"
+#~ msgstr "ホルミウム (Holmium)"
+
+#~ msgid "Ytterbium"
+#~ msgstr "イッテルビウム (Ytterbium)"
+
+#~ msgid "Dysprosium"
+#~ msgstr "ジスプロシウム (Dysprosium)"
+
+#~ msgid "Erbium"
+#~ msgstr "エルビウム (Erbium)"
+
+#~ msgid "Thulium"
+#~ msgstr "ツリウム (Thulium)"
 
 #~ msgid "Samarium"
 #~ msgstr "サマリウム (Samarium)"
@@ -7842,71 +7823,41 @@ msgstr ""
 #~ msgid "Terbium"
 #~ msgstr "テルビウム (Terbium)"
 
-#~ msgid "Dysprosium"
-#~ msgstr "ジスプロシウム (Dysprosium)"
-
-#~ msgid "Holmium"
-#~ msgstr "ホルミウム (Holmium)"
-
-#~ msgid "Erbium"
-#~ msgstr "エルビウム (Erbium)"
-
-#~ msgid "Thulium"
-#~ msgstr "ツリウム (Thulium)"
-
-#~ msgid "Ytterbium"
-#~ msgstr "イッテルビウム (Ytterbium)"
-
-#~ msgid "Lutetium"
-#~ msgstr "ルテチウム (Lutetium)"
-
-#~ msgid "Hafnium"
-#~ msgstr "ハフニウム (Hafnium)"
-
-#~ msgid "Tantalum"
-#~ msgstr "タンタル (Tantalum)"
-
-#~ msgid "Tungsten"
-#~ msgstr "タングステン (Tungsten)"
+#~ msgid "Mercury"
+#~ msgstr "水銀 (Mercury)"
 
 #~ msgid "Rhenium"
 #~ msgstr "レニウム (Rhenium)"
 
-#~ msgid "Osmium"
-#~ msgstr "オスミウム (Osmium)"
+#~ msgid "Tungsten"
+#~ msgstr "タングステン (Tungsten)"
 
-#~ msgid "Iridium"
-#~ msgstr "イリジウム (Iridium)"
+#~ msgid "Tantalum"
+#~ msgstr "タンタル (Tantalum)"
 
-#~ msgid "Platinum"
-#~ msgstr "白金 (Platinum)"
+#~ msgid "Hafnium"
+#~ msgstr "ハフニウム (Hafnium)"
 
 #~ msgid "Gold"
 #~ msgstr "金 (Gold)"
 
-#~ msgid "Mercury"
-#~ msgstr "水銀 (Mercury)"
+#~ msgid "Platinum"
+#~ msgstr "白金 (Platinum)"
+
+#~ msgid "Iridium"
+#~ msgstr "イリジウム (Iridium)"
+
+#~ msgid "Osmium"
+#~ msgstr "オスミウム (Osmium)"
+
+#~ msgid "Lutetium"
+#~ msgstr "ルテチウム (Lutetium)"
 
 #~ msgid "Thallium"
 #~ msgstr "タリウム (Thallium)"
 
-#~ msgid "Lead"
-#~ msgstr "鉛 (Lead)"
-
-#~ msgid "Bismuth"
-#~ msgstr "ビスマス (Bismuth)"
-
-#~ msgid "Polonium"
-#~ msgstr "ポロニウム (Polonium)"
-
-#~ msgid "Astatine"
-#~ msgstr "アスタチン (Astatine)"
-
-#~ msgid "Radon"
-#~ msgstr "ラドン (Radon)"
-
-#~ msgid "Francium"
-#~ msgstr "フランシウム (Francium)"
+#~ msgid "Thorium"
+#~ msgstr "トリウム (Thorium)"
 
 #~ msgid "Radium"
 #~ msgstr "ラジウム (Radium)"
@@ -7914,41 +7865,62 @@ msgstr ""
 #~ msgid "Actinium"
 #~ msgstr "アクチニウム (Actinium)"
 
-#~ msgid "Thorium"
-#~ msgstr "トリウム (Thorium)"
+#~ msgid "Radon"
+#~ msgstr "ラドン (Radon)"
 
-#~ msgid "Protactinium"
-#~ msgstr "プロトアクチニウム (Protactinium)"
+#~ msgid "Francium"
+#~ msgstr "フランシウム (Francium)"
 
-#~ msgid "Uranium"
-#~ msgstr "ウラン (Uranium)"
+#~ msgid "Polonium"
+#~ msgstr "ポロニウム (Polonium)"
 
-#~ msgid "Neptunium"
-#~ msgstr "ネプツニウム (Neptunium)"
+#~ msgid "Astatine"
+#~ msgstr "アスタチン (Astatine)"
 
-#~ msgid "Plutonium"
-#~ msgstr "プルトニウム (Plutonium)"
+#~ msgid "Lead"
+#~ msgstr "鉛 (Lead)"
 
-#~ msgid "Americium"
-#~ msgstr "アメリシウム (Americium)"
-
-#~ msgid "Curium"
-#~ msgstr "キュリウム (Curium)"
+#~ msgid "Bismuth"
+#~ msgstr "ビスマス (Bismuth)"
 
 #~ msgid "Berkelium"
 #~ msgstr "バークリウム (Berkelium)"
 
-#~ msgid "Californium"
-#~ msgstr "カルホルニウム (Californium)"
+#~ msgid "Plutonium"
+#~ msgstr "プルトニウム (Plutonium)"
+
+#~ msgid "Curium"
+#~ msgstr "キュリウム (Curium)"
 
 #~ msgid "Einsteinium"
 #~ msgstr "アインスタイニウム (Einsteinium)"
+
+#~ msgid "Californium"
+#~ msgstr "カルホルニウム (Californium)"
+
+#~ msgid "Neptunium"
+#~ msgstr "ネプツニウム (Neptunium)"
+
+#~ msgid "Uranium"
+#~ msgstr "ウラン (Uranium)"
+
+#~ msgid "Americium"
+#~ msgstr "アメリシウム (Americium)"
+
+#~ msgid "Protactinium"
+#~ msgstr "プロトアクチニウム (Protactinium)"
 
 #~ msgid "Fermium"
 #~ msgstr "フェルミウム (Fermium)"
 
 #~ msgid "Mendelevium"
 #~ msgstr "メンデレビウム (Mendelevium)"
+
+#~ msgid "Meitnerium"
+#~ msgstr "マイトネリウム (Meitnerium)"
+
+#~ msgid "Darmstadtium"
+#~ msgstr "ダルムスタチウム (Darmstadtium)"
 
 #~ msgid "Nobelium"
 #~ msgstr "ノーベリウム (Nobelium)"
@@ -7971,38 +7943,29 @@ msgstr ""
 #~ msgid "Hassium"
 #~ msgstr "ハッシウム (Hassium)"
 
-#~ msgid "Meitnerium"
-#~ msgstr "マイトネリウム (Meitnerium)"
-
-#~ msgid "Darmstadtium"
-#~ msgstr "ダルムスタチウム (Darmstadtium)"
-
-#~ msgid "Roentgenium"
-#~ msgstr "レントゲニウム (Roentgenium)"
-
-#~ msgid "Ununbium"
-#~ msgstr "ウンウンビウム (Ununbium)"
-
-#~ msgid "Ununtrium"
-#~ msgstr "ウンウントリウム (Ununtrium)"
-
-#~ msgid "Ununquadium"
-#~ msgstr "ウンウンクアジウム (Ununquadium)"
-
-#~ msgid "Ununpentium"
-#~ msgstr "ウンウンペンチウム (Ununpentium)"
-
-#~ msgid "Ununhexium"
-#~ msgstr "ウンウンヘキシウム (Ununhexium)"
+#~ msgid "Ununoctium"
+#~ msgstr "ウンウンオクチウム (Ununoctium)"
 
 #~ msgid "Ununseptium"
 #~ msgstr "ウンウンセプチウム (Ununseptium)"
 
-#~ msgid "Ununoctium"
-#~ msgstr "ウンウンオクチウム (Ununoctium)"
+#~ msgid "Ununhexium"
+#~ msgstr "ウンウンヘキシウム (Ununhexium)"
 
-#~ msgid "Caesium"
-#~ msgstr "セシウム (Caesium)"
+#~ msgid "Ununpentium"
+#~ msgstr "ウンウンペンチウム (Ununpentium)"
+
+#~ msgid "Ununquadium"
+#~ msgstr "ウンウンクアジウム (Ununquadium)"
+
+#~ msgid "Ununtrium"
+#~ msgstr "ウンウントリウム (Ununtrium)"
+
+#~ msgid "Ununbium"
+#~ msgstr "ウンウンビウム (Ununbium)"
+
+#~ msgid "Roentgenium"
+#~ msgstr "レントゲニウム (Roentgenium)"
 
 #~ msgid "*1"
 #~ msgstr "*1"
@@ -8015,3 +7978,9 @@ msgstr ""
 
 #~ msgid "*4"
 #~ msgstr "*4"
+
+#~ msgid "Cesium"
+#~ msgstr "セシウム (Cesium)"
+
+#~ msgid "Cadmium"
+#~ msgstr "カドミウム (Cadmium)"

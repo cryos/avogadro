@@ -73,27 +73,58 @@ namespace Avogadro{
                           QWidget *)
   {
     // Fill the rectangle with the element colour
-    painter->setBrush(*m_color);
-
+    QColor bgColor;
+    QPen pen;
+    if (isSelected()) {
+      bgColor = QColor(*m_color).lighter(150);
+      pen.setColor(QColor(*m_color).darker(150));
+      pen.setWidth(4);
+    } else {
+      bgColor = QColor(*m_color);
+      pen.setColor(Qt::black);
+    }
+    painter->setPen(pen);
+    painter->setBrush(bgColor);
+    QRectF rect(-m_width/2, -m_height/2, m_width, m_height);
+    painter->drawRect(rect);
     // Handle the case where the item is selected
 //    if (m_color->value() > 240) {
-    if (m_element == 1 || m_element == 2 || m_element == 9 || m_element == 47
+    /*if (m_element == 1 || m_element == 2 || m_element == 9 || m_element == 47
         || m_element == 78) {
       if (isSelected())
         painter->setPen(Qt::darkGray);
       else
         painter->setPen(Qt::black);
     }
-    else {
-      if (isSelected())
-        painter->setPen(Qt::white);
-      else
-        painter->setPen(Qt::black);
-    }
+    else {*/
+      /*if (isSelected())
+        //painter->setPen(Qt::white);
+        pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
+      else {*/
+        //painter->setPen(Qt::black);
+        if (bgColor.value() < 105)
+          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter(150));
+          //pen.setColor(Qt::white);
+        else if (bgColor.value() > 200)
+          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).darker(200));
+          //pen.setColor(Qt::black);
+        else
+          pen.setColor(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())));
+     // }
+    pen.setWidth(2);
+    if (m_element <103)
+      painter->setPen(pen);
+    else
+      painter->setPen(Qt::black);
+    //painter->setPen(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter());
 
-    QRectF rect(-m_width/2, -m_height/2, m_width, m_height);
-    painter->drawRect(rect);
+    //painter->fillRect(rect, *m_color);
+    QFont f = painter->font();
+    f.setBold(true);
+    painter->setFont(f);
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
+    f.setBold(false);
+    painter->setFont(f);
   }
 
 } // End namespace Avogadro
