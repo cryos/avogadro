@@ -123,6 +123,11 @@ namespace Avogadro {
      * Set the custom color for the atom using color name
      */
     void setCustomColorName(const QString &name) { m_customColorName = name; }
+
+    /**
+     * Set the custom radius for the atom
+     */
+    void setCustomRadius(const double radius) { m_customRadius = radius; }
     /** @} */
 
 
@@ -187,6 +192,8 @@ namespace Avogadro {
     QString customLabel() const { return m_customLabel; }
 
     QString customColorName() const {return m_customColorName; }
+
+    double customRadius() const { return m_customRadius; }
 
     /**
      * @return The force vector on this atom (if any)
@@ -275,6 +282,7 @@ namespace Avogadro {
     Eigen::Vector3d m_forceVector;
     QString m_customLabel;
     QString m_customColorName;
+    double m_customRadius;
     Q_DECLARE_PRIVATE(Atom)
   };
 

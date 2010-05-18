@@ -52,7 +52,8 @@ using Eigen::Vector3d;
                                  m_residue(FALSE_ID), m_partialCharge(0.0),
                                  m_formalCharge(0),
                                  m_forceVector(0.0, 0.0, 0.0),
-                                 m_customLabel(""), m_customColorName("")
+                                 m_customLabel(""), m_customColorName(""),
+                                 m_customRadius(0)
    {
      if (!parent) {
        qDebug() << "I am an orphaned atom! I feel so invalid...";
@@ -268,7 +269,15 @@ using Eigen::Vector3d;
        obproperty->SetValue(m_customColorName.toAscii().data());
        obatom.SetData(obproperty);
      }
-       
+
+     // Save custom radius
+     if (m_customRadius) {
+       obproperty = new OpenBabel::OBPairData;
+       obproperty->SetAttribute("radius");
+       obproperty->SetValue(QString::number(m_customRadius).toAscii().data());
+       obatom.SetData(obproperty);
+     }
+            
      // Add dynamic properties as OBPairData
      foreach(const QByteArray &propertyName, dynamicPropertyNames()) {
        obproperty = new OpenBabel::OBPairData;
@@ -344,6 +353,10 @@ using Eigen::Vector3d;
          m_customColorName = property->GetValue().c_str();
          continue;
        }
+       if (property->GetAttribute() == "radius") {
+         m_customRadius = QString(property->GetValue().c_str()).toDouble();
+         continue;
+       }
        setProperty(property->GetAttribute().c_str(), property->GetValue().c_str());
      }
 
@@ -361,6 +374,7 @@ using Eigen::Vector3d;
      m_formalCharge = other.m_formalCharge;
      m_customLabel = other.m_customLabel;
      m_customColorName = other.m_customColorName;
+     m_customRadius = other.m_customRadius;
      return *this;
    }
 

@@ -67,6 +67,11 @@ namespace Avogadro {
     action->setShortcut(Qt::Key_F11);
 
     m_contextMenu = new QMenu;
+    m_contextMenu->addAction("Change radius...", this, SLOT(changeAtomRadius()));
+    m_contextMenu->addAction("Reset radius", this, SLOT(resetAtomRadius()));
+
+    m_contextMenu->addSeparator();
+
     m_contextMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
     m_contextMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
     
@@ -498,7 +503,7 @@ namespace Avogadro {
          map->setFromPrimitive(a);
          oldColor.setRgb(map->color().rgb());
        }
-       color = QColorDialog::getColor(oldColor, 0, tr("Change color of atom"));
+       color = QColorDialog::getColor(oldColor, 0, tr("Change color of the atom"));
        if (color.isValid() && color != oldColor)
          a->setCustomColorName(color.name());
      }
@@ -520,8 +525,8 @@ namespace Avogadro {
      if(m_currentPrimitive->type() == Primitive::AtomType) {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
        if (!a) return;     
-       label = QInputDialog::getText(0, tr("Change atom label"),
-                    tr("New atom label:"), QLineEdit::Normal,a->customLabel(), &ok);
+       label = QInputDialog::getText(0, tr("Change label of the atom"),
+         tr("New Label:"), QLineEdit::Normal,a->customLabel(), &ok);
        if (ok && !label.isEmpty())
          a->setCustomLabel(label);
      }
@@ -538,10 +543,30 @@ namespace Avogadro {
 
   void SelectRotateTool::changeAtomRadius()
   {
+     bool ok;
+     QString radius_str;
+     double radius, oldRadius;
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       radius_str = QInputDialog::getText(0, tr("Change radius of the atom"),
+         tr("New Radius, %1:", "in Angstrom").arg("(\xC5)"),
+         QLineEdit::Normal,QString::number(a->customRadius()), &ok);
+       if (!ok && radius_str.isEmpty())
+         return;
+       radius = radius_str.toDouble();
+       if (radius)
+         a->setCustomRadius(radius);
+     }
   }
 
   void SelectRotateTool::resetAtomRadius()
   {
+     if(m_currentPrimitive->type() == Primitive::AtomType) {
+       Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
+       if (!a) return;
+       a->setCustomRadius(0);
+     }
   }
 
 }

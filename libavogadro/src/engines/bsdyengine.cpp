@@ -336,15 +336,19 @@ namespace Avogadro
 
   double BSDYEngine::radius(const Atom *atom) const
   {
-    if (atom->atomicNumber()) {
-      switch (m_atomRadiusType) {
-        case 0:
-          return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-        case 1:
-          return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+    if (atom->customRadius())
+      return atom->customRadius()* m_atomRadiusPercentage;
+    else {
+      if (atom->atomicNumber()) {
+        switch (m_atomRadiusType) {
+          case 0:
+            return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+          case 1:
+            return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
+        }
       }
+      return m_atomRadiusPercentage;
     }
-    return m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )
