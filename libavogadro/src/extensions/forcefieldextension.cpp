@@ -180,8 +180,10 @@ namespace Avogadro
       mol = m_molecule->OBMol();
       if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
-          tr( "Cannot set up the force field for this molecule." ));
-        break;
+          tr( "Cannot set up the currently selected force field for this molecule. Switching to UFF." ));
+        m_forceField = OBForceField::FindForceField("UFF");
+        m_forceField->SetLogFile( &buff );
+        m_forceField->SetLogLevel( OBFF_LOGLVL_HIGH );
       }
 
       energy = m_forceField->Energy();
@@ -203,8 +205,10 @@ namespace Avogadro
       mol = m_molecule->OBMol();
       if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
-          tr( "Cannot set up the force field for this molecule." ));
-        break;
+          tr( "Cannot set up the currently selected force field for this molecule. Switching to UFF." ));
+        m_forceField = OBForceField::FindForceField("UFF");
+        m_forceField->SetLogFile( &buff );
+        m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
       }
 
       if (!m_conformerDialog)
@@ -223,8 +227,10 @@ namespace Avogadro
       mol = m_molecule->OBMol();
       if ( !m_forceField->Setup( mol, m_constraints->constraints() ) ) {
         QMessageBox::warning( widget, tr( "Avogadro" ),
-          tr( "Cannot set up the force field for this molecule." ));
-        break;
+          tr( "Cannot set up the currently selected force field for this molecule. Switching to UFF." ));
+        m_forceField = OBForceField::FindForceField("UFF");
+        m_forceField->SetLogFile( &buff );
+        m_forceField->SetLogLevel( OBFF_LOGLVL_LOW );
       }
 
       undo = new ForceFieldCommand( m_molecule, m_forceField, m_constraints,
