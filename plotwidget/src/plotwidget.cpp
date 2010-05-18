@@ -1075,7 +1075,7 @@ namespace Avogadro {
 
     QPen oldpen = painter->pen();      
     QPen pen(oldpen);
-    pen.setColor(d->cForeground);    
+    pen.setColor(d->cForeground);
     painter->setPen( pen );
       
     //Place label
