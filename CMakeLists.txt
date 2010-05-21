@@ -299,7 +299,7 @@ if(ENABLE_THREADEDGL)
   message(STATUS "Threaded OpenGL rendering enabled - needs more testing")
 else(ENABLE_THREADEDGL)
   set(THREADED_GL false)
-  message(STATUS "Threaded OpenGL rendering not enabled")
+  message(STATUS "Threaded OpenGL rendering disabled")
 endif(ENABLE_THREADEDGL)
 
 # Should a self-contained package be created?
