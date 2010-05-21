@@ -92,6 +92,12 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif(HAVE_NO_RTTI)
+
+  # No exceptions flag
+  check_cxx_compiler_flag(-fno-exceptions HAVE_NO_EXCEPTIONS)
+  if(HAVE_NO_EXCEPTIONS)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+  endif(HAVE_NO_EXCEPTIONS)
   
   if (NOT APPLE) # Mac GCC42 compiler has bug
     check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
@@ -184,7 +190,13 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif(HAVE_NO_RTTI)
-  
+
+  # No exceptions flag
+  check_cxx_compiler_flag(-fno-exceptions HAVE_NO_EXCEPTIONS)
+  if(HAVE_NO_EXCEPTIONS)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+  endif(HAVE_NO_EXCEPTIONS)
+    
   check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
