@@ -213,7 +213,7 @@ initDB()
             mkdir -p `dirname "$DB_FILE"`
         fi
 #        cp "$PREFIX/$SHARE_DIR/libavogadro/plugins" "$DB_FILE"
-        echo "## This file is maintained by `basename \"$0\"`. Please, don't edit it" > "$DB_FILE"
+        echo "## This file is maintained by $WHOAMI. Please, don't edit it" > "$DB_FILE"
         testSystem
     fi    
 }
