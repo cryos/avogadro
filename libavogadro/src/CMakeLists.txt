@@ -240,20 +240,20 @@ foreach(headerFile ${libavogadrowidget_HDRS})
     COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
 endforeach(headerFile ${libavogadrowidget_HDRS})
 
-add_library(avogadro SHARED
+add_library(avogadrowidget SHARED
   ${libavogadrowidget_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
 set_source_files_properties(${libavogadrowidget_SRCS}
-  PROPERTIES LABELS avogadro)
-set_target_properties(avogadro PROPERTIES 
+  PROPERTIES LABELS avogadrowidget)
+set_target_properties(avogadrowidget PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES avogadrocore
   SOVERSION 1
   OUTPUT_NAME AvogadroWidget
-  LABELS avogadro)
-target_link_libraries(avogadro avogadrocore
+  LABELS avogadrowidget)
+target_link_libraries(avogadrowidget avogadrocore
   ${AVO_LINK_LIBRARIES})
 
-install(TARGETS avogadrocore avogadro DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
+install(TARGETS avogadrocore avogadrowidget DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
 install(FILES ${libavogadrocore_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro/AvogadroCore")
 install(FILES ${libavogadrowidget_HDRS}
@@ -276,22 +276,27 @@ endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 # Monolith libavogadro (deprecated)
 file(GLOB plotwidget_SRCS "../../plotwidget/src/*.cpp")
 file(GLOB periodictable_SRCS "../../periodictable/src/*.cpp")
+qt4_automoc(${plotwidget_SRCS} ${periodictable_SRCS})
+include_directories(
+  ${CMAKE_BINARY_DIR}/plotwidget/src
+  ${CMAKE_BINARY_DIR}/periodictable/src
+)
 set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
 set(libavogadro_SRCS ${libavogadrocore_SRCS} ${libavogadrowidget_SRCS})
-add_library(avogadro-full SHARED
+add_library(avogadro SHARED
   ${libavogadro_SRCS} ${pythontool_RC_SRCS}
   ${plotwidget_SRCS} ${periodictable_SRCS}
 )
-set_target_properties(avogadro-full PROPERTIES 
+set_target_properties(avogadro PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES ""
   SOVERSION 1
   OUTPUT_NAME avogadro
   LABELS avogadro)
-target_link_libraries(avogadro-full ${AVO_LINK_LIBRARIES})
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 install(FILES ${libavogadro_HDRS}
   DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
-install(TARGETS avogadro-full DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
 
 if(NOT APPLE)
 install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
