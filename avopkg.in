@@ -28,6 +28,7 @@
   IS_MAC="@APPLE@"
   SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
   SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
+  ABI_VERSION="1.1" 
 # ----- End of configured on Avogadro build ----- #
 
 # My name
@@ -548,6 +549,10 @@ then
         then
             echo "SizeofVoidP: $SIZEOF_VOID_P" >> .tmp/$package/$package.$MANIFEST_EXT
         fi
+        if test x$(getVar $2 AbiVersion) = x
+        then
+            echo "AbiVersion: $ABI_VERSION" >> .tmp/$package/$package.$MANIFEST_EXT
+        fi
     fi
 
     # Add version = 1 if missing
@@ -759,6 +764,18 @@ else
                 fi
                 cleanupTmp
                 exit 5
+            fi
+
+            # Verify ABI version
+            abi=$(getVar $manifest AbiVersion)
+            if test $abi != $ABI_VERSION
+            then
+                echo "ABI version doesn't match"
+                echo "Required ABI version: $ABI_VERSION"
+                echo "ABI version of plugin: $abi"
+                echo "Installation failed"
+                cleanupTmp
+                exit 10
             fi
         fi
         
