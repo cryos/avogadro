@@ -10,7 +10,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-set(LINK_LIBS avogadro)
+set(LINK_LIBS avogadrocore avogadrowidget)
 set(PLUGIN_LABEL engines)
 set(PLUGIN_TARGET engines)
 add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
