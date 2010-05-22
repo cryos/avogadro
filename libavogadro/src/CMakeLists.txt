@@ -274,10 +274,14 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
 # Monolith libavogadro (deprecated)
+file(GLOB plotwidget_SRCS "../../plotwidget/src/*.cpp")
+file(GLOB periodictable_SRCS "../../periodictable/src/*.cpp")
 set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
 set(libavogadro_SRCS ${libavogadrocore_SRCS} ${libavogadrowidget_SRCS})
 add_library(avogadro-full SHARED
-  ${libavogadro_SRCS} ${pythontool_RC_SRCS})
+  ${libavogadro_SRCS} ${pythontool_RC_SRCS}
+  ${plotwidget_SRCS} ${periodictable_SRCS}
+)
 set_target_properties(avogadro-full PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES ""
