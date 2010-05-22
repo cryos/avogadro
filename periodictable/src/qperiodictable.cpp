@@ -52,7 +52,10 @@ PeriodicTableWatcher::PeriodicTableWatcher(PeriodicTableView *periodicTable,
 
 void PeriodicTableWatcher::elementChanged(int n)
 {  
-  m_elementInfo->setPlainText(
+  if (n == 110)
+    m_elementInfo->setPlainText("");  // prevent crash from OB
+  else
+    m_elementInfo->setPlainText(
                               tr("Official Name") + ": " + Avogadro::ElementTranslator::name(n)
                               + "\n" +tr("Atomic Number") +": " + QString::number(n)
                               + "\n" +tr("Atomic Weight") +": " + QString::number(OpenBabel::etab.GetMass(n)) + " a.u."
