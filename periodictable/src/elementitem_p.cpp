@@ -40,12 +40,14 @@
 namespace Avogadro{
 
   ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26),
-    m_element(elementNumber)
+    m_element(elementNumber), m_valid(false)
   {
     // Want these items to be selectable
     setFlags(QGraphicsItem::ItemIsSelectable);
 
     m_symbol = OpenBabel::etab.GetSymbol(m_element);
+    if(!m_symbol.isEmpty())
+	  m_valid = true;
     std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
     m_color = new QColor();
     m_color->setRgbF(color[0], color[1], color[2]);
@@ -73,6 +75,9 @@ namespace Avogadro{
   void ElementItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
                           QWidget *)
   {
+	if(!m_valid)
+	  return;
+
     // Fill the rectangle with the element colour
     QColor bgColor;
     QPen pen;
@@ -82,7 +87,7 @@ namespace Avogadro{
       pen.setWidth(4);
     } else {
       bgColor = QColor(*m_color);
-      pen.setColor(Qt::black);
+      //pen.setColor(Qt::black);
     }
     painter->setPen(pen);
     painter->setBrush(bgColor);
@@ -93,22 +98,8 @@ namespace Avogadro{
           pen.setColor(Qt::white);
         else
           pen.setColor(Qt::black);
-    
-    /*pen.setWidth(2);
-    if (m_element <103)
-      painter->setPen(pen);
-    else
-      painter->setPen(Qt::black);
-    //painter->setPen(QColor((255-bgColor.red()),(255-bgColor.green()),(255-bgColor.blue())).lighter());
-*/
-painter->setPen(pen);
-    //painter->fillRect(rect, *m_color);
-    QFont f = painter->font();
-    //f.setBold(true);
-    painter->setFont(f);
+    painter->setPen(pen);
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
-    //f.setBold(false);
-    painter->setFont(f);
   }
 
 } // End namespace Avogadro

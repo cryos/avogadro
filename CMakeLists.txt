@@ -92,6 +92,12 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif(HAVE_NO_RTTI)
+
+  # No exceptions flag
+  check_cxx_compiler_flag(-fno-exceptions HAVE_NO_EXCEPTIONS)
+  if(HAVE_NO_EXCEPTIONS)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+  endif(HAVE_NO_EXCEPTIONS)
   
   if (NOT APPLE) # Mac GCC42 compiler has bug
     check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
@@ -184,7 +190,13 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif(HAVE_NO_RTTI)
-  
+
+  # No exceptions flag
+  check_cxx_compiler_flag(-fno-exceptions HAVE_NO_EXCEPTIONS)
+  if(HAVE_NO_EXCEPTIONS)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+  endif(HAVE_NO_EXCEPTIONS)
+    
   check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
@@ -566,11 +578,26 @@ if(UNIX)
   )
 endif(UNIX)
 
-# .prf file for QMake projects
+# .prf files for QMake projects
 configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/avogadro.prf.in"
   "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
   @ONLY
+)
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/qplotwidget.prf.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/qplotwidget.prf"
+  @ONLY
+)
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/qperiodictable.prf.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/qperiodictable.prf"
+  @ONLY
+)
+set(PRF_FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+  "${CMAKE_CURRENT_BINARY_DIR}/qplotwidget.prf"
+  "${CMAKE_CURRENT_BINARY_DIR}/qperiodictable.prf"
 )
 
 option(INSTALL_QMAKE_PRF "Install QMake integration files to Qt prefix" ON)
@@ -582,15 +609,13 @@ if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 #      QT_MKSPECS_RELATIVE 
 #      "${QT_MKSPECS_DIR}"
 #    )
-    install(FILES
-      "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+    install(FILES ${PRF_FILES}
       DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
     )
 #  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
 else(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
-  message(WARNING "Qt mkspecs directory not found. File 'avogadro.prf' will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
-  install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+  message(WARNING "Qt mkspecs directory not found. QMake integration will be installed to ${SHARE_INSTALL_PREFIX}/avogadro/qmake.")
+  install(FILES ${PRF_FILES}
     DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
   ) 
 endif(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)

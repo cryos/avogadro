@@ -94,7 +94,7 @@ set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 
 target_link_libraries(avogadro-app ${QT_LIBRARIES} ${OPENBABEL2_LIBRARIES}
-    avogadro)
+    avogadrocore avogadrowidget)
 
 if(ENABLE_PYTHON)
   target_link_libraries(avogadro-app ${Boost_LIBRARIES})
