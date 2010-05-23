@@ -450,15 +450,8 @@ add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
 add_subdirectory(doc)
 
-if(ENABLE_AVO_PACKAGE)
-  # Prevent race condition on parallel build
-  add_dependencies(avogadro openbabel)
-  add_dependencies(avogadro-app openbabel)
-endif(ENABLE_AVO_PACKAGE)
-
 # Linux/Windows default: ${PREFIX}/share/avogadro/fragments
 set(avogadro_FRAGMENTS ${SHARE_INSTALL_PREFIX}/avogadro)
-
 
 # When installing, make sure to install some fragments
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/fragments"

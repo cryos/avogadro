@@ -16,31 +16,6 @@ if (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
   set(OPENBABEL2_FOUND TRUE)
 
 else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
-  if(EMBED_OPENBABEL)
-    MESSAGE(STATUS "Using Open Babel from superpackage")
-    # Building a super-package, rely on the embedded paths
-    set(OPENBABEL2_VERSION_MET TRUE)
-    set(OPENBABEL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/openbabel/include ${CMAKE_BINARY_DIR}/openbabel/include)
-    # This is a kludge -- need to ask Marcus how to handle it better
-    find_library(OPENBABEL2_LIBRARIES NAMES openbabel openbabel-2
-      PATHS
-      ${_obLinkDir}
-      ${GNUWIN32_DIR}/lib
-      $ENV{OPENBABEL2_LIBRARIES}
-    )
-    if (NOT OPENBABEL2_LIBRARIES)
-       # look in superpackage
-       if (APPLE)
-          set(OPENBABEL2_LIBRARIES ${CMAKE_BINARY_DIR}/lib/libopenbabel.dylib)
-       endif(APPLE)
-       if (UNIX AND NOT APPLE)
-          set(OPENBABEL2_LIBRARIES ${CMAKE_BINARY_DIR}/lib/libopenbabel.so)
-       endif(UNIX AND NOT APPLE)
-    endif (NOT OPENBABEL2_LIBRARIES)
-    # We know the embedded OB will be trunk
-    set (OPENBABEL_IS_NEWER_THAN_2_2_99 TRUE)
-  else(EMBED_OPENBABEL)
-  # Typical case -- find an installed OpenBabel
   if(NOT WIN32)
 
     # Use the newer PkgConfig stuff
@@ -80,7 +55,6 @@ else (OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET
       $ENV{OPENBABEL2_LIBRARIES}
     )
   endif(OPENBABEL2_VERSION_MET)
-  endif(EMBED_OPENBABEL)
 
   if(OPENBABEL2_INCLUDE_DIR AND OPENBABEL2_LIBRARIES AND OPENBABEL2_VERSION_MET)
     set(OPENBABEL2_FOUND TRUE)
