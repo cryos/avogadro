@@ -193,7 +193,7 @@ namespace Avogadro {
       m_error.append(tr("File type '%1' is not supported for writing.").arg(m_fileType));
       return false;
     } else {
-      outFormat = conv.FormatFromExt(m_fileName.toAscii());
+      outFormat = conv.FormatFromExt(m_fileName.toLocal8Bit());
       if (!outFormat || !conv.SetOutFormat(outFormat)) {
         // Output format not supported
         m_error.append(tr("File type for file '%1' is not supported for writing.").arg(m_fileName));
