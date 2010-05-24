@@ -81,8 +81,12 @@ namespace Avogadro
               this, SLOT(replyFinished(QNetworkReply*)));
     }
 
-    // Check the URL for the latest release version of Avogadro
+    // Check the URL for the latest unstable version of Avogadro
+#ifdef AVOGADRO_STABLE
     m_network->get(QNetworkRequest(QUrl("http://avogadro.openmolecules.net/version.txt")));
+#else
+    m_network->get(QNetworkRequest(QUrl("http://avogadro.openmolecules.net/unstable.txt")));
+#endif
   }
 
   void UpdateCheck::replyFinished(QNetworkReply *reply)
