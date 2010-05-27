@@ -20,7 +20,7 @@ if (WIN32)
   SET_TARGET_PROPERTIES(python-module PROPERTIES SUFFIX ".pyd")
   TARGET_LINK_LIBRARIES(python-module avogadro ${PYTHON_LIBRARIES})
 else (WIN32)
-  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro periodictable
+  TARGET_LINK_LIBRARIES(python-module stdc++ avogadro
     ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
 endif (WIN32)
 

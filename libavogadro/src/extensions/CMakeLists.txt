@@ -48,8 +48,6 @@ avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
 
 ### Selections
 avogadro_plugin_nogl(selectextension selectextension.cpp)
-add_dependencies(selectextension periodictable)
-target_link_libraries(selectextension periodictable)
 
 ### unit cells
 avogadro_plugin_nogl(unitcellextension

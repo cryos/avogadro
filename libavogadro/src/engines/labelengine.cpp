@@ -27,7 +27,7 @@
 
 #include "labelengine.h"
 
-#include <qperiodictable/elementtranslator.h>
+#include <avogadro/elementtranslator.h>
 #include <avogadro/camera.h>
 #include <avogadro/glwidget.h>
 #include <avogadro/painter.h>
@@ -78,16 +78,6 @@ Bond *dummyBond;*/
 					m_settingsWidget(0), m_lengthPrecision(3),
                     m_displacement(0,0,0),  m_bondDisplacement(0,0,0)
   {
-    /*dummyAtom.setGroupIndex(1);
-	dummyAtom.setAtomicNumber(12);
-	dummyAtom.setPartialCharge(0.1);
-	dummyAtom.setFormalCharge(0);*/
-	//dummyAtom.set
-    
-    // Load the Periodic Table translations
-    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
-    if (ptTranslator)
-      qApp->installTranslator(ptTranslator);
   }
 
   Engine *LabelEngine::clone() const

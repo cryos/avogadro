@@ -487,8 +487,6 @@ mark_as_advanced(CMAKE_LIBRARY_OUTPUT_DIRECTORY
 # tell cmake to process CMakeLists.txt in that subdirectory
 add_subdirectory(libavogadro)
 add_subdirectory(avogadro)
-add_subdirectory(plotwidget)
-add_subdirectory(periodictable)
 add_subdirectory(doc)
 
 if(ENABLE_AVO_PACKAGE)

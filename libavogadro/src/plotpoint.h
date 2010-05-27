@@ -29,7 +29,7 @@
 #ifndef PLOTPOINT_H
 #define PLOTPOINT_H
 
-#include <qplotwidget/global.h>
+#include <avogadro/global.h>
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>

@@ -22,8 +22,6 @@ set(drawtool_SRCS
 avogadro_plugin(drawtool
   "${drawtool_SRCS}"
   drawtool.qrc)
-add_dependencies(drawtool periodictable)
-target_link_libraries(drawtool periodictable)
 set_target_properties(drawtool PROPERTIES
                         COMPILE_FLAGS "${RTTI_FLAG}")
 

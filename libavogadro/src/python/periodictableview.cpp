@@ -2,7 +2,7 @@
 
 #include <boost/python.hpp>
 
-#include <qperiodictable/periodictableview.h>
+#include <avogadro/periodictableview.h>
 
 using namespace boost::python;
 using namespace Avogadro;
