@@ -4,11 +4,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/extensions)
 
-include_directories(
-  ../
-  ${CMAKE_CURRENT_BINARY_DIR}
-)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL extensions)
@@ -20,16 +16,16 @@ add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensio
 
 ### Properties
 avogadro_plugin_nogl(propextension
-   "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
+  "../tools/skeletontree.cpp;propmodel.cpp;propextension.cpp")
 
 avogadro_plugin_nogl(cartesianextension
-        "cartesianextension.cpp"
-        cartesianeditor.ui
-        edit.qrc)
+  cartesianextension.cpp
+  cartesianeditor.ui
+  edit.qrc)
 
 avogadro_plugin_nogl(molecularpropextension
-        "molecularpropextension.cpp"
-        molecularpropdialog.ui)
+  molecularpropextension.cpp
+  molecularpropdialog.ui)
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
@@ -41,15 +37,13 @@ set_target_properties(forcefieldextension PROPERTIES
                         COMPILE_FLAGS "${RTTI_FLAG}")
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(forcefieldextension PROPERTIES COMPILE_FLAGS "-fvisibility=default")
-endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+endif()
 
 ### hydrogens
 avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
 
 ### Selections
 avogadro_plugin_nogl(selectextension selectextension.cpp)
-add_dependencies(selectextension periodictable)
-target_link_libraries(selectextension periodictable)
 
 ### unit cells
 avogadro_plugin_nogl(unitcellextension
@@ -58,7 +52,7 @@ avogadro_plugin_nogl(unitcellextension
 
 ### insert fragment
 avogadro_plugin_nogl(insertfragmentextension
-"insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
+  "insertfragmentextension.cpp;insertfragmentdialog.cpp;insertcommand.cpp"
   insertfragmentdialog.ui)
 
 ### insert peptide (builder)
@@ -81,7 +75,7 @@ if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
 
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/extensionScripts)
-endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+endif()
 
 ### Animation
 set(animationextension_SRCS animationextension.cpp animationdialog.cpp
@@ -92,9 +86,9 @@ avogadro_plugin_nogl(animationextension
   animation.qrc)
 
 ### POV-Ray extension
-avogadro_plugin_nogl("povrayextension"
+avogadro_plugin_nogl(povrayextension
   "povrayextension.cpp;povpainter.cpp;povraydialog.cpp"
-  "povraydialog.ui")
+  povraydialog.ui)
 
 ### File import extension
 avogadro_plugin_nogl(fileimportextension fileimportextension.cpp fileimportdialog.ui)
@@ -109,8 +103,8 @@ if(GLEW_FOUND)
   file(GLOB shader_FRAG "shaders/*.frag")
   file(GLOB shader_PARAMS "shaders/*.params")
   install(FILES ${shader_VERT} ${shader_FRAG} ${shader_PARAMS}
-          DESTINATION share/libavogadro/shaders)
-endif(GLEW_FOUND)
+    DESTINATION share/libavogadro/shaders)
+endif()
 
 ### super cells
 avogadro_plugin_nogl(supercellextension
@@ -119,9 +113,7 @@ avogadro_plugin_nogl(supercellextension
 
 # Network fetch
 avogadro_plugin_nogl(networkfetchextension networkfetchextension.cpp)
-target_link_libraries(networkfetchextension
-  ${QT_QTNETWORK_LIBRARY}
-)
+target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
 
 add_subdirectory(spectra)
 add_subdirectory(surfaces)

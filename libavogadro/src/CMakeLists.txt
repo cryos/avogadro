@@ -1,9 +1,7 @@
 set(QT_USE_QTOPENGL true)
 
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/config.h
-)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 include(${QT_USE_FILE})
 
@@ -18,247 +16,188 @@ include_directories(
 )
 
 # I think this is necessary now in order to tell the linker where openbabel is
-link_directories(${OPENBABEL2_LIBRARY_DIRS} ${CMAKE_BINARY_DIR}/lib)
-
-set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                       ${QT_QTCORE_LIBRARY}
-                       )
+link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
 # Only headers with exported symbols should actually be installed
-set(libavogadrocore_HDRS
+set(libavogadro_HDRS
+  animation.h
   atom.h
   bond.h
+  camera.h
+  color3f.h
+  colorbutton.h
+  color.h
   cube.h
+  dockextension.h
+  elementtranslator.h
+  engine.h
+  extension.h
   fragment.h
+  glhit.h
   global.h
+  glwidget.h
   idlist.h
-  mesh.h
   meshgenerator.h
-  molecule.h
+  mesh.h
   moleculefile.h
+  molecule.h
+  navigate.h
   neighborlist.h
+  painterdevice.h
+  painter.h
+  periodictableview.h
+  plotaxis.h
+  plotobject.h
+  plotpoint.h
+  plotwidget.h
+  plugin.h
+  pluginmanager.h
   primitive.h
   primitivelist.h
   protein.h
   residue.h
+  toolgroup.h
+  tool.h
+  undosequence.h
   zmatrix.h
 )
 
-set(libavogadrocore_SRCS
+set(libavogadro_SRCS
+  ../gl2ps/gl2ps.c
+  animation.cpp
   atom.cpp
   bond.cpp
+  camera.cpp
+  color.cpp
+  colorbutton.cpp
   cube.cpp
+  cylinder_p.cpp
+  dockextension.cpp
+  elementdetail_p.cpp
+  elementitem_p.cpp
+  elementtranslator.cpp
+  engine.cpp
+  extension.cpp
   fragment.cpp
+  glhit.cpp
   global.cpp
+  glpainter_p.cpp
+  glwidget.cpp
   idlist.cpp
   mesh.cpp
   meshgenerator.cpp
   molecule.cpp
   moleculefile.cpp
+  navigate.cpp
   neighborlist.cpp
+  painter.cpp
+  periodictablescene_p.cpp
+  periodictableview.cpp
+  plotaxis.cpp
+  plotobject.cpp
+  plotpoint.cpp
+  plotwidget.cpp
+  plugin.cpp
+  pluginmanager.cpp
   primitive.cpp
   primitivelist.cpp
   protein.cpp
   residue.cpp
-  zmatrix.cpp
-)
-
-set(libavogadrowidget_HDRS
-  animation.h
-  camera.h
-  color3f.h
-  color.h
-  colorbutton.h
-  dockextension.h
-  engine.h
-  extension.h
-  glhit.h
-  glwidget.h
-  navigate.h
-  painter.h
-  painterdevice.h
-  plugin.h
-  pluginmanager.h
-  tool.h
-  toolgroup.h
-  undosequence.h
-)
-
-file(GLOB libavogadrowidget_SRCS
-  ../gl2ps/gl2ps.c
-  animation.cpp
-  camera.cpp
-  color3f.cpp
-  color.cpp
-  colorbutton.cpp
-  cylinder_p.cpp
-  dockextension.cpp
-  engine.cpp
-  extension.cpp
-  glhit.cpp
-  glpainter_p.cpp
-  glwidget.cpp
-  navigate.cpp
-  painter.cpp
-  painterdevice.cpp
-  plugin.cpp
-  pluginmanager.cpp
   sphere_p.cpp
   textrenderer_p.cpp
   tool.cpp
   toolgroup.cpp
   undosequence.cpp
-)
-
-set(libavogadropython_HDRS
-  pythoninterpreter.h
-  pythonscript.h
-  pythonerror.h
-)
-
-set(libavogadropython_SRCS
-  pythoninterpreter.cpp
-  pythonscript.cpp
-  pythonerror.cpp
-  pythontool_p.cpp
-  pythonengine_p.cpp
-  pythonextension_p.cpp
+  zmatrix.cpp
 )
 
 # Also add in the qtiocompressor class
 #set(libavogadrocore_SRCS ${libavogadrocore_SRCS} ../qtiocompressor/qtiocompressor.cpp)
 
-# Set up the include directory and symlink/copy all headers to it.
-# Note: Windows lacks symlinks and so the files must be copied.
-make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
-if(UNIX)
-  set(header_cmd "create_symlink")
-else(UNIX)
-  set(header_cmd "copy_if_different")
-endif(UNIX)
-foreach(headerFile ${libavogadrocore_HDRS})
-  set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
-  set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
-  execute_process(
-    COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
-endforeach(headerFile ${libavogadrocore_HDRS})
-
-qt4_automoc(${libavogadrocore_SRCS})
-
-add_library(avogadrocore SHARED
-  ${libavogadrocore_SRCS})
-set_source_files_properties(${libavogadrocore_SRCS}
-  PROPERTIES LABELS avogadro)
-set_target_properties(avogadrocore PROPERTIES 
-  VERSION ${Avogadro_VERSION_FULL}
-  LINK_INTERFACE_LIBRARIES ""
-  SOVERSION 1
-  OUTPUT_NAME AvogadroCore
-  LABELS avogadro)
-target_link_libraries(avogadrocore
-  ${AVO_LINK_LIBRARIES})
-
-set(AVO_LINK_LIBRARIES ${OPENBABEL2_LIBRARIES}
-                       ${QT_LIBRARIES}
-                       ${OPENGL_LIBRARIES}
-                       )
+set(AVO_LINK_LIBRARIES
+  ${OPENBABEL2_LIBRARIES}
+  ${QT_LIBRARIES}
+  ${OPENGL_LIBRARIES}
+)
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
   link_directories(${GLEW_LIBRARY_DIR})
-  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${GLEW_LIBRARY})
-endif(GLEW_FOUND)
+  list(APPEND AVO_LINK_LIBRARIES ${GLEW_LIBRARY})
+endif()
 
 # Library translations
 if(NOT WIN32)
   if(Linguist_FOUND)
     file(GLOB_RECURSE lang_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/*.po")
     foreach(po ${lang_PO})
-               string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/libavogadro-\\2.po" po ${po})
-               set(libavogadro_PO ${libavogadro_PO} ${po})
-    endforeach(po)
+      string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/libavogadro-\\2.po" po ${po})
+      set(libavogadro_PO ${libavogadro_PO} ${po})
+    endforeach()
     QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
-  endif(Linguist_FOUND)
-else(NOT WIN32)
+  endif()
+else()
   # don't attempt to create QM files on windows -- copy them from a linux build!
-  file(GLOB_RECURSE libavogadro_QM "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
-endif(NOT WIN32)
-
-set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
-file(GLOB libavogadro_SRCS ${libavogadrowidget_SRCS})
+  file(GLOB_RECURSE libavogadro_QM 
+    "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
+endif()
 
 # Statically link the core engines and tools so that users have a working
 # system even if no plugins can be found.
 set(bsdyengine_SRCS engines/bsdyengine.cpp)
 qt4_wrap_ui(bsdyengine_UIS engines/bsdysettingswidget.ui)
-set(libavogadrowidget_SRCS ${libavogadrowidget_SRCS} ${bsdyengine_SRCS} ${bsdyengine_UIS})
-
+list(APPEND libavogadro_SRCS ${bsdyengine_SRCS} ${bsdyengine_UIS})
 set(elementcolor_SRCS colors/elementcolor.cpp)
-set(libavogadrowidget_SRCS ${libavogadrowidget_SRCS} ${elementcolor_SRCS})
-
-# If python dependencies aren't found, remove the Avogadro Python source files
-#if(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
-#  set(PYTHON_SRCS
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythoninterpreter.cpp
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythonscript.cpp
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythonerror.cpp
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythontool_p.cpp
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythonengine_p.cpp
-#    ${CMAKE_CURRENT_SOURCE_DIR}/pythonextension_p.cpp)
-#  foreach(P_ITEM ${PYTHON_SRCS})
-#    list(REMOVE_ITEM libavogadro_SRCS "${P_ITEM}")
-#  endforeach(P_ITEM ${PYTHON_SRCS})
-#endif(NOT ENABLE_PYTHON OR NOT ALL_PYTHON_FOUND)
+list(APPEND libavogadro_SRCS ${elementcolor_SRCS})
 
 # you have to add link_directories before you add the target
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+  message(STATUS "Setting new boost python libraries")
   include_directories(
     ${Boost_INCLUDE_DIRS}
     ${PYTHON_INCLUDE_PATH})
   qt4_add_resources(pythontool_RC_SRCS pythontool.qrc)
+  list(APPEND AVO_LINK_LIBRARIES ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
+  list(APPEND libavogadro_HDRS
+    pythoninterpreter.h
+    pythonscript.h
+    pythonerror.h)
+  list(APPEND libavogadro_SRCS
+    pythoninterpreter.cpp
+    pythonscript.cpp
+    pythonerror.cpp
+    pythontool_p.cpp
+    pythonengine_p.cpp
+    pythonextension_p.cpp)
+endif()
 
-  message(STATUS "Setting new boost python libraries")
-  set(AVO_LINK_LIBRARIES ${AVO_LINK_LIBRARIES} ${PYTHON_LIBRARIES}
-                         ${Boost_LIBRARIES})
-  set(libavogadrowidget_HDRS ${libavogadrowidget_HDRS} ${libavogadropython_HDRS})
-  set(libavogadrowidget_SRCS ${libavogadrowidget_SRCS} ${libavogadropython_SRCS})
-endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-
-qt4_automoc(${libavogadrowidget_SRCS})
+qt4_automoc(${libavogadro_SRCS})
 
 # Set up the include directory and symlink/copy all headers to it.
 # Note: Windows lacks symlinks and so the files must be copied.
+make_directory("${libavogadro_BINARY_DIR}/include/avogadro")
 if(UNIX)
   set(header_cmd "create_symlink")
-else(UNIX)
+else()
   set(header_cmd "copy_if_different")
-endif(UNIX)
-foreach(headerFile ${libavogadrowidget_HDRS})
+endif()
+foreach(headerFile ${libavogadro_HDRS})
   set(from "${CMAKE_CURRENT_SOURCE_DIR}/${headerFile}")
   set(to   "${libavogadro_BINARY_DIR}/include/avogadro/${headerFile}")
-  execute_process(
-    COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
-endforeach(headerFile ${libavogadrowidget_HDRS})
+  execute_process(COMMAND ${CMAKE_COMMAND} -E ${header_cmd} "${from}" "${to}")
+endforeach()
 
 add_library(avogadro SHARED
-  ${libavogadrowidget_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
-set_source_files_properties(${libavogadrowidget_SRCS}
-  PROPERTIES LABELS avogadro)
+  ${libavogadro_SRCS} ${pythontool_RC_SRCS})
 set_target_properties(avogadro PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
-  LINK_INTERFACE_LIBRARIES avogadrocore
-  SOVERSION 1
-  OUTPUT_NAME AvogadroWidget
+  LINK_INTERFACE_LIBRARIES ""
+  SOVERSION ${AVO_SOVERSION}
   LABELS avogadro)
-target_link_libraries(avogadro avogadrocore
-  ${AVO_LINK_LIBRARIES})
-
-install(TARGETS avogadrocore avogadro DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
-install(FILES ${libavogadrocore_HDRS}
-  DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro/AvogadroCore")
-install(FILES ${libavogadrowidget_HDRS}
-  DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro/AvogadroWidget")
-install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
+target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
+install(FILES ${libavogadro_HDRS}
+  DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
+install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR} EXPORT AvogadroTargets)
 
 # Add the engiens, tools and extensions directories
 add_subdirectory(engines)
@@ -268,27 +207,11 @@ add_subdirectory(colors)
 
 # Add the boost python module if the boost::python was found
 if(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
-  install(FILES ${libavogadropython_HDRS}
-    DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro/AvogadroPython")
   add_subdirectory(python)
-endif(ENABLE_PYTHON AND ALL_PYTHON_FOUND)
+endif()
 
-# Monolith libavogadro (deprecated)
-set(libavogadro_HDRS ${libavogadrocore_HDRS} ${libavogadrowidget_HDRS})
-set(libavogadro_SRCS ${libavogadrocore_SRCS} ${libavogadrowidget_SRCS})
-add_library(avogadro-full SHARED
-  ${libavogadro_SRCS} ${pythontool_RC_SRCS})
-set_target_properties(avogadro-full PROPERTIES 
-  VERSION ${Avogadro_VERSION_FULL}
-  LINK_INTERFACE_LIBRARIES ""
-  SOVERSION 1
-  OUTPUT_NAME avogadro
-  LABELS avogadro)
-target_link_libraries(avogadro-full ${AVO_LINK_LIBRARIES})
-install(FILES ${libavogadro_HDRS}
-  DESTINATION "${INCLUDE_INSTALL_DIR}/avogadro")
-install(TARGETS avogadro-full DESTINATION ${LIB_INSTALL_DIR})
+install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
 if(NOT APPLE)
-install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
-endif (NOT APPLE)
+  install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
+endif()

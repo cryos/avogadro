@@ -1,8 +1,4 @@
-include_directories(
-  ../
-  ${CMAKE_CURRENT_BINARY_DIR}
-)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL extensions)
@@ -23,5 +19,3 @@ else(OPENBABEL_IS_NEWER_THAN_2_2_99)
   "spectraextension.cpp;spectradialog.cpp;spectratype.cpp;abstract_ir.cpp;ir.cpp;nmr.cpp"
   "spectradialog.ui;tab_ir_raman.ui;tab_nmr.ui")
 endif(OPENBABEL_IS_NEWER_THAN_2_2_99)
-add_dependencies(spectraextension plotwidget)
-target_link_libraries(spectraextension plotwidget)

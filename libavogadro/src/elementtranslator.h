@@ -25,7 +25,7 @@
 #ifndef ELEMENTTRANSLATOR_H
 #define ELEMENTTRANSLATOR_H
 
-#include <qperiodictable/global.h>
+#include <avogadro/global.h>
 #include <QObject>
 
 namespace Avogadro {

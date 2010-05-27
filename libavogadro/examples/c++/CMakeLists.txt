@@ -22,8 +22,8 @@ find_package(Qt4 REQUIRED)
 # Set up the build environment
 include(${Avogadro_USE_FILE})
 include_directories(
-	${CMAKE_CURRENT_BINARY_DIR}
-	${OPENBABEL2_INCLUDE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${OPENBABEL2_INCLUDE_DIR}
 )
 link_directories(${OPENBABEL2_LIBRARY_DIRS})
 
