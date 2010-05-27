@@ -3,7 +3,7 @@ set(QT_USE_QTNETWORK true)
 
 if(WIN32)
   set(QT_USE_QTMAIN true)
-endif(WIN32)
+endif()
 
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
@@ -26,7 +26,7 @@ include_directories(
 
 if(GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_DIR})
-endif(GLEW_FOUND)
+endif()
 
 include(${QT_USE_FILE})
 
@@ -38,17 +38,17 @@ option(ENABLE_UPDATE_CHECKER
   "Should the Avogadro update checking code be compiled?" OFF)
 if(ENABLE_UPDATE_CHECKER)
   add_definitions(-DENABLE_UPDATE_CHECKER)
-else(ENABLE_UPDATE_CHECKER)
+else()
   list(REMOVE_ITEM avogadro_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/updatecheck.cpp")
   list(REMOVE_ITEM avogadro_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/updatedialog.cpp")
-endif(ENABLE_UPDATE_CHECKER)
+endif()
 
 FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
 set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
 
-if( WIN32 )
+if(WIN32)
   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
-endif( WIN32)
+endif()
 
 file(GLOB avogadro_RCS "*.qrc")
 
@@ -67,17 +67,17 @@ if(NOT WIN32)
                set(avogadro_PO ${avogadro_PO} ${po})
     endforeach(po)
     QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
-  endif(Linguist_FOUND)
-else(NOT WIN32)
+  endif()
+else()
   # don't attempt to create QM files on windows -- copy them from a linux build!
   file(GLOB_RECURSE avogadro_QM "${Avogadro_SOURCE_DIR}/avogadro/src/avogadro*.qm")
-endif(NOT WIN32)
+endif()
 
 # Some relative rpath handling for Linux
 if(UNIX AND ENABLE_RPATH AND NOT APPLE)
   # Set a relative rpath on Linux - just testing right now...
   set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib${LIB_SUFFIX}")
-endif(UNIX AND ENABLE_RPATH AND NOT APPLE)
+endif()
 
 add_executable(avogadro-app WIN32 MACOSX_BUNDLE
   ${avogadro_SRCS}
@@ -98,11 +98,11 @@ target_link_libraries(avogadro-app ${QT_LIBRARIES} ${OPENBABEL2_LIBRARIES}
 
 if(ENABLE_PYTHON)
   target_link_libraries(avogadro-app ${Boost_LIBRARIES})
-endif(ENABLE_PYTHON)
+endif()
 
 if(ENABLE_UPDATE_CHECKER)
   target_link_libraries(avogadro-app ${QT_QTNETWORK_LIBRARY})
-endif(ENABLE_UPDATE_CHECKER)
+endif()
 
 if(APPLE)
   set(MACOSX_BUNDLE_INFO_STRING "Avogadro - version ${Avogadro_VERSION_FULL}")
@@ -153,11 +153,11 @@ if(APPLE)
   string(REGEX MATCHALL "-[a-z]+\\.po" langresult "${avogadro_PO}")
   string(REGEX REPLACE "-([^.]+)\\.po" "\\1" languages "${langresult}")
 # This one gives us languages for country codes (e.g., avogadro_zh_CN.ts)
- string(REGEX MATCHALL "-[a-z]+_[A-Z]+\\.po" langresult "${avogadro_PO}")
- string(REGEX REPLACE "-([^_]+_[^.]+)\\.po" "\\1" fulllangs "${langresult}")
- set (LANGUAGES "${languages};${fulllangs};en;en_US")
+  string(REGEX MATCHALL "-[a-z]+_[A-Z]+\\.po" langresult "${avogadro_PO}")
+  string(REGEX REPLACE "-([^_]+_[^.]+)\\.po" "\\1" fulllangs "${langresult}")
+  set (LANGUAGES "${languages};${fulllangs};en;en_US")
 
-    foreach(lang ${LANGUAGES})
+  foreach(lang ${LANGUAGES})
     set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
     install(CODE "EXECUTE_PROCESS(COMMAND
           mkdir ${MAC_LANG_DIR}
@@ -165,8 +165,8 @@ if(APPLE)
     install(CODE "EXECUTE_PROCESS(COMMAND
           ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${Avogadro_VERSION_FULL} ${lang}
           OUTPUT_QUIET)")
-  endforeach(lang ${TRANSLATIONS})
-endif(APPLE)
+  endforeach()
+endif()
 
 install(TARGETS avogadro-app RUNTIME DESTINATION ${BIN_INSTALL_DIR}
   ${Avogadro_INSTALL_DESTINATIONS_ARGS})
@@ -184,13 +184,13 @@ if(APPLE AND ENABLE_AVO_PACKAGE)
   configure_file("${MACOSX_SRC_DIR}/CreateBundle.sh.in"
     "${OSX_MAKE_STANDALONE_BUNDLE_BASH_SCRIPT}" @ONLY IMMEDIATE)
   install(SCRIPT "${OSX_MAKE_STANDALONE_BUNDLE_CMAKE_SCRIPT}")
-endif(APPLE AND ENABLE_AVO_PACKAGE)
+endif()
 
 # Install a .desktop file and icon for users of XDG-aware OSes
 if(XDG_APPS_INSTALL_DIR AND XDG_ICON_INSTALL_DIR)
   install(FILES "avogadro.desktop" DESTINATION "${XDG_APPS_INSTALL_DIR}")
   install(FILES "icons/avogadro-icon.png" DESTINATION "${XDG_ICON_INSTALL_DIR}")
-endif(XDG_APPS_INSTALL_DIR AND XDG_ICON_INSTALL_DIR)
+endif()
 
 #add_subdirectory(projectplugins)
 

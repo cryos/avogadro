@@ -8,8 +8,6 @@ set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/colors)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
-
 set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL colors)
 set(PLUGIN_TARGET colors)

@@ -53,7 +53,7 @@ foreach (test ${tests})
   set_property(SOURCE ${test_SRCS} PROPERTY LABELS avogadro)
   set_property(TARGET ${test}test PROPERTY LABELS avogadro)
   set_property(TEST ${test}Test PROPERTY LABELS avogadro)
-endforeach (test ${tests})
+endforeach ()
 
 # More complicated tests (i.e., with linking)
 #message(STATUS "Test:  primitivemodeltest")

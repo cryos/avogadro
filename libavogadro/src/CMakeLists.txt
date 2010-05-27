@@ -192,7 +192,7 @@ add_library(avogadro SHARED
 set_target_properties(avogadro PROPERTIES 
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES ""
-  SOVERSION 1
+  SOVERSION ${AVO_SOVERSION}
   LABELS avogadro)
 target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
 install(FILES ${libavogadro_HDRS}
@@ -213,5 +213,5 @@ endif()
 install(FILES ${libavogadro_QM} DESTINATION ${I18N_INSTALL_DIR})
 
 if(NOT APPLE)
-install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
+  install(EXPORT AvogadroTargets DESTINATION ${LIB_INSTALL_DIR}/avogadro)
 endif()
