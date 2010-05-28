@@ -132,13 +132,13 @@ if(NOT WIN32)
     file(GLOB_RECURSE lang_PO "${Avogadro_SOURCE_DIR}/i18n/libavogadro/*.po")
     foreach(po ${lang_PO})
       string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/libavogadro-\\2.po" po ${po})
-      set(libavogadro_PO ${libavogadro_PO} ${po})
+      list(APPEND libavogadro_PO ${po})
     endforeach()
     QT4_WRAP_PO(libavogadro_QM ${libavogadro_PO})
   endif()
 else()
   # don't attempt to create QM files on windows -- copy them from a linux build!
-  file(GLOB_RECURSE libavogadro_QM 
+  file(GLOB_RECURSE libavogadro_QM
     "${Avogadro_SOURCE_DIR}/libavogadro/src/libavogadro*.qm")
 endif()
 
@@ -188,8 +188,10 @@ foreach(headerFile ${libavogadro_HDRS})
 endforeach()
 
 add_library(avogadro SHARED
-  ${libavogadro_SRCS} ${pythontool_RC_SRCS})
-set_target_properties(avogadro PROPERTIES 
+  ${libavogadro_SRCS}
+  ${libavogadro_QM}
+  ${pythontool_RC_SRCS})
+set_target_properties(avogadro PROPERTIES
   VERSION ${Avogadro_VERSION_FULL}
   LINK_INTERFACE_LIBRARIES ""
   SOVERSION ${AVO_SOVERSION}
