@@ -334,7 +334,7 @@ namespace Avogadro
     return true;
   }
 
-  double BSDYEngine::radius(const Atom *atom) const
+  inline double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->customRadius())
       return atom->customRadius()* m_atomRadiusPercentage;
