@@ -63,9 +63,9 @@ if(NOT WIN32)
   if(Linguist_FOUND)
     file(GLOB_RECURSE lang_PO  "${Avogadro_SOURCE_DIR}/i18n/avogadro/*.po")
     foreach(po ${lang_PO})
-               string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/avogadro-\\2.po" po ${po})
-               set(avogadro_PO ${avogadro_PO} ${po})
-    endforeach(po)
+      string(REGEX REPLACE "(.*)/([^.]+)\\.po" "\\1/avogadro-\\2.po" po ${po})
+      list(APPEND avogadro_PO ${po})
+    endforeach()
     QT4_WRAP_PO(avogadro_QM ${avogadro_PO})
   endif()
 else()
@@ -93,8 +93,10 @@ set_target_properties(avogadro-app PROPERTIES
 set_source_files_properties(${avogadro_SRCS}
   PROPERTIES LABELS avogadro)
 
-target_link_libraries(avogadro-app ${QT_LIBRARIES} ${OPENBABEL2_LIBRARIES}
-    avogadro)
+target_link_libraries(avogadro-app
+  ${QT_LIBRARIES}
+  ${OPENBABEL2_LIBRARIES}
+  avogadro)
 
 if(ENABLE_PYTHON)
   target_link_libraries(avogadro-app ${Boost_LIBRARIES})
@@ -138,10 +140,10 @@ if(APPLE)
   # install .nib file
   set(QT_COCOA_NIB /Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib)
   if(EXISTS ${QT_COCOA_NIB})
-            install(DIRECTORY ${QT_COCOA_NIB}
-                              DESTINATION Resources
-                              USE_SOURCE_PERMISSIONS)
-  endif(EXISTS ${QT_COCOA_NIB})
+    install(DIRECTORY ${QT_COCOA_NIB}
+      DESTINATION Resources
+      USE_SOURCE_PERMISSIONS)
+  endif()
 
 # Install a .lproj directory for each translation
 # We're assuming that there will never be an libavogadro translation
@@ -160,11 +162,11 @@ if(APPLE)
   foreach(lang ${LANGUAGES})
     set( MAC_LANG_DIR "${CMAKE_INSTALL_PREFIX}/Resources/${lang}.lproj" )
     install(CODE "EXECUTE_PROCESS(COMMAND
-          mkdir ${MAC_LANG_DIR}
-          ERROR_QUIET)")
+      mkdir ${MAC_LANG_DIR}
+      ERROR_QUIET)")
     install(CODE "EXECUTE_PROCESS(COMMAND
-          ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${Avogadro_VERSION_FULL} ${lang}
-          OUTPUT_QUIET)")
+      ${MACOSX_SRC_DIR}/lang.sh ${MACOSX_SRC_DIR} ${MAC_LANG_DIR} ${Avogadro_VERSION_FULL} ${lang}
+      OUTPUT_QUIET)")
   endforeach()
 endif()
 
@@ -191,6 +193,3 @@ if(XDG_APPS_INSTALL_DIR AND XDG_ICON_INSTALL_DIR)
   install(FILES "avogadro.desktop" DESTINATION "${XDG_APPS_INSTALL_DIR}")
   install(FILES "icons/avogadro-icon.png" DESTINATION "${XDG_ICON_INSTALL_DIR}")
 endif()
-
-#add_subdirectory(projectplugins)
-
