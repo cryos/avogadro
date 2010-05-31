@@ -73,6 +73,10 @@ namespace Avogadro{
 
   private:
     /**
+     * Indicates if element is well-formed (e.g., has non-empty symbol)
+     */
+    bool m_valid;
+    /**
      * The element numbers symbol.
      */
     QString m_symbol;
