@@ -80,7 +80,7 @@ namespace Avogadro {
 
 
     private:
-      inline double radius(const Atom *atom) const;
+      double radius(const Atom *atom) const;
 
       BSDYSettingsWidget *m_settingsWidget;
 
