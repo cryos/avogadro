@@ -42,9 +42,9 @@ function(avogadro_plugin plugin_name src_list)
     # Process the RC file and add it to the plugin
     qt4_add_resources(plugin_RC_SRCS ${ARGV3})
   endif(NOT "${ARGV3}" STREQUAL "")
-  add_library(${plugin_name} MODULE ${src_list} ${plugin_UIS_H}
+  add_library(${plugin_name} SHARED ${src_list} ${plugin_UIS_H}
               ${plugin_RC_SRCS})
-  target_link_libraries(${plugin_name} AvogadroCore AvogadroWidget)
+  target_link_libraries(${plugin_name} avogadro)
 
   if(UNIX)
     add_custom_target("${CMAKE_PROJECT_NAME}.mf"
