@@ -99,12 +99,10 @@ Bond *dummyBond;*/
         renderOpaque(pd, a);
     }
 
-    if (m_bondType > 0) {
-      // Now render the bond labels
-      foreach(Bond *b, bonds())
-        renderOpaque(pd, b);
-    }
-	  
+    // Now render the bond labels
+    foreach(Bond *b, bonds())
+      renderOpaque(pd, b);
+
     return true;
   }
 
@@ -132,12 +130,9 @@ Bond *dummyBond;*/
       Vector3d drawPos = pos + zAxis * renderRadius + m_displacement;
 
       glColor3f(m_atomColor.redF(), m_atomColor.greenF(), m_atomColor.blueF());
-      //pd->painter()->setPen(m_atomColor);
-      //pd->painter()->setFont(m_atomFont);
       if (m_textRendering == 0)
-        pd->painter()->drawText(drawPos, str); //, m_atomFont, m_atomColor);
+        pd->painter()->drawText(drawPos, str);
       else
-        //GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_atomFont);
         pd->painter()->drawText(drawPos, str, m_atomFont);
     }
 
@@ -146,10 +141,8 @@ Bond *dummyBond;*/
 
   QString LabelEngine::createAtomLabel(const Atom *a)
   {
-	QString str = "";
     unsigned int gi;
-    
-    str = QString(a->customLabel());
+    QString str = QString(a->customLabel());
     if (str.isEmpty()) {
      switch(m_atomType) {
       case 1: // Atom index
@@ -200,13 +193,14 @@ Bond *dummyBond;*/
         else
           str = a->property(propertyNames[customIndex].data()).toString();
      }
-    } // str.length() == 0
-	return str;
+    } // str.isEmpty()
+    return str;
   }
 
   QString LabelEngine::createBondLabel(const Bond *b)
   {
-      QString str= "";
+    QString str = QString(b->customLabel());
+    if (str.isEmpty()) {
       switch(m_bondType) {
       case 1:
         str = QString("%L1").arg(b->length(), 0, 'g', 1+m_lengthPrecision);
@@ -218,10 +212,10 @@ Bond *dummyBond;*/
         str = QString("%L1").arg(b->id());
         break;
       case 3:
-      default:
         str = QString("%L1").arg(b->order());
       }
-	  return str;
+    }
+    return str;
   }
   
   bool LabelEngine::renderOpaque(PainterDevice *pd, const Bond *b)
@@ -250,19 +244,15 @@ Bond *dummyBond;*/
     double zDistance = pd->camera()->distance(pos);
 
     if(zDistance < 50.0) {
-	  QString str = createBondLabel(b);
+      QString str = createBondLabel(b);
 
       Vector3d zAxis = pd->camera()->backTransformedZAxis();
       Vector3d drawPos = pos + zAxis * renderRadius + m_bondDisplacement;
 
-      //glColor3f(1.0, 1.0, 1.0);
       glColor3f(m_bondColor.redF(), m_bondColor.greenF(), m_bondColor.blueF());
-      //pd->painter()->setColor(m_bondColor);
-      //pd->painter()->setFont(m_bondFont);
       if (m_textRendering == 0)
-        pd->painter()->drawText(drawPos, str); //, m_bondFont, m_bondColor)
+        pd->painter()->drawText(drawPos, str);
       else
-        //GLWidget::current()->renderText(drawPos.x(), drawPos.y(), drawPos.z(), str, m_bondFont);
         pd->painter()->drawText(drawPos, str, m_bondFont);
     }
 
@@ -383,12 +373,8 @@ Bond *dummyBond;*/
 
   void LabelEngine::setAtomColor(QColor color)
   {
-    //QColor current(m_atomColor);
-    //QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Atom Labels Color"));
-    //if (color.isValid() && color != current) {
-      m_atomColor = color;
-      emit changed();
-    //}
+    m_atomColor = color;
+    emit changed();
   }
 
   void LabelEngine::setAtomFont()
@@ -398,19 +384,14 @@ Bond *dummyBond;*/
     QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Atom Labels Font"));
     if (ok) {
       m_atomFont = font;
-      //m_settingsWidget->atomLabel->setFont(m_atomFont);
       emit changed();
     }
   }
 
   void LabelEngine::setBondColor(QColor color)
   {
-    //QColor current(m_bondColor);
-    //QColor color = QColorDialog::getColor(current, m_settingsWidget, tr("Select Bond Labels Color"));
-    //if (color.isValid() && color != current) {
-      m_bondColor = color;
-      emit changed();
-    //}
+    m_bondColor = color;
+    emit changed();
   }
 
   void LabelEngine::setBondFont()
@@ -420,7 +401,6 @@ Bond *dummyBond;*/
     QFont font = QFontDialog::getFont(&ok, current, m_settingsWidget, tr("Select Bond Labels Font"));
     if (ok) {
       m_bondFont = font;
-      //m_settingsWidget->bondLabel->setFont(m_bondFont);
       emit changed();
     }
   }

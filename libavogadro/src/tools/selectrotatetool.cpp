@@ -66,19 +66,23 @@ namespace Avogadro {
           "Use Ctrl to toggle the selection and shift to add to the selection"));
     action->setShortcut(Qt::Key_F11);
 
-    m_contextMenu = new QMenu;
-    m_contextMenu->addAction("Change radius...", this, SLOT(changeAtomRadius()));
-    m_contextMenu->addAction("Reset radius", this, SLOT(resetAtomRadius()));
+    m_atomMenu = new QMenu;
+    m_atomMenu->addAction("Change radius...", this, SLOT(changeAtomRadius()));
+    m_atomMenu->addAction("Reset radius", this, SLOT(resetAtomRadius()));
 
-    m_contextMenu->addSeparator();
+    m_atomMenu->addSeparator();
 
-    m_contextMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
-    m_contextMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
-    
-    m_contextMenu->addSeparator();
-    
-    m_contextMenu->addAction("Change color...", this, SLOT(changeAtomColor()));
-    m_contextMenu->addAction("Reset color", this, SLOT(resetAtomColor()));
+    m_atomMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
+    m_atomMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
+
+    m_atomMenu->addSeparator();
+
+    m_atomMenu->addAction("Change color...", this, SLOT(changeAtomColor()));
+    m_atomMenu->addAction("Reset color", this, SLOT(resetAtomColor()));
+
+    m_bondMenu = new QMenu;
+    m_bondMenu->addAction("Change label...", this, SLOT(changeAtomLabel()));
+    m_bondMenu->addAction("Reset label", this, SLOT(resetAtomLabel()));
   }
 
   SelectRotateTool::~SelectRotateTool()
@@ -86,7 +90,8 @@ namespace Avogadro {
     if(m_settingsWidget) {
       m_settingsWidget->deleteLater();
     }
-    m_contextMenu->deleteLater();
+    m_atomMenu->deleteLater();
+    m_bondMenu->deleteLater();
   }
 
   int SelectRotateTool::usefulness() const
@@ -332,15 +337,24 @@ namespace Avogadro {
         widget->clearSelected();
       // Set the selection
       widget->setSelected(hitList, true);
-    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {      
-      if (m_hits.size()) {
+    } else if(m_rightButtonPressed && !m_movedSinceButtonPressed) {
+      if (m_hits.size() == 1 && m_hits.at(0).type() == Primitive::BondType) {
+        // Bond selection
+        Bond *bond = molecule->bond(m_hits.at(0).name());
+        hitList.append(bond);
+        widget->clearSelected();
+        widget->toggleSelected(hitList);
+        m_currentPrimitive = bond;
+        m_bondMenu->exec(event->globalPos());
+        widget->clearSelected();
+      } else if (m_hits.size()) {
         foreach(const GLHit& hit, m_hits) {
           if(hit.type() == Primitive::AtomType) {// Atom selection
             Atom *atom = molecule->atom(hit.name());
             hitList.append(atom);
             widget->toggleSelected(hitList);
             m_currentPrimitive = atom;
-            m_contextMenu->exec(event->globalPos());
+            m_atomMenu->exec(event->globalPos());
             widget->clearSelected();
             break;
           }
@@ -529,6 +543,13 @@ namespace Avogadro {
          tr("New Label:"), QLineEdit::Normal,a->customLabel(), &ok);
        if (ok && !label.isEmpty())
          a->setCustomLabel(label);
+     } else if(m_currentPrimitive->type() == Primitive::BondType) {
+       Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
+       if(!b) return;
+       label = QInputDialog::getText(0, tr("Change label of the bond"),
+         tr("New Label:"), QLineEdit::Normal,b->customLabel(), &ok);
+       if (ok && !label.isEmpty())
+         b->setCustomLabel(label);
      }
   }
 
@@ -538,6 +559,10 @@ namespace Avogadro {
        Atom *a = qobject_cast<Atom*>(m_currentPrimitive);
        if (!a) return;
        a->setCustomLabel("");
+     } else if(m_currentPrimitive->type() == Primitive::BondType) {
+       Bond *b = qobject_cast<Bond*>(m_currentPrimitive);
+       if(!b) return;
+       b->setCustomLabel("");
      }
   }
 

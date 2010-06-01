@@ -109,7 +109,8 @@ namespace Avogadro {
       QVBoxLayout        *m_layout;
 
       QWidget            *m_settingsWidget;
-      QMenu              *m_contextMenu;
+      QMenu              *m_atomMenu;
+      QMenu              *m_bondMenu;
       Primitive          *m_currentPrimitive;
 
     private Q_SLOTS:
