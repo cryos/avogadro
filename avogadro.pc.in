@@ -7,5 +7,5 @@ pkgincludedir=${includedir}/avogadro
 Name: Avogadro
 Description: Avogadro libraries
 Version: @Avogadro_VERSION_FULL@
-Libs: -L${libdir} -lAvogadroCore -lAvogadroWidget
+Libs: -L${libdir} -lavogadro
 Cflags: -I${pkgincludedir}

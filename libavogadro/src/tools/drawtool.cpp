@@ -38,8 +38,8 @@
 #include <avogadro/glwidget.h>
 #include <avogadro/undosequence.h>
 
-#include <qperiodictable/elementtranslator.h>
-#include <qperiodictable/periodictableview.h>
+#include <avogadro/elementtranslator.h>
+#include <avogadro/periodictableview.h>
 
 #include <Eigen/Core>
 
@@ -91,11 +91,6 @@ namespace Avogadro {
     action->setShortcut(Qt::Key_F8);
 
     m_forceField = OBForceField::FindForceField("MMFF94");
-    
-    // Load the Periodic Table translations
-    QPointer <QTranslator> ptTranslator = QPeriodicTable::createTranslator();
-    if (ptTranslator)
-      qApp->installTranslator(ptTranslator);
   }
 
   DrawTool::~DrawTool()

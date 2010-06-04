@@ -1,16 +1,14 @@
 include(${QT_USE_FILE})
 
-ADD_DEFINITIONS(${QT_DEFINITIONS})
-ADD_DEFINITIONS(-DQT_PLUGIN)
-ADD_DEFINITIONS(-DQT_SHARED)
+add_definitions(${QT_DEFINITIONS})
+add_definitions(-DQT_PLUGIN)
+add_definitions(-DQT_SHARED)
 
 set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/tools)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
-
-set(LINK_LIBS avogadrocore avogadrowidget)
+set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL tools)
 set(PLUGIN_TARGET tools)
 add_custom_target(tools COMMENT "Meta target to build all Avogadro tools.")
@@ -22,8 +20,6 @@ set(drawtool_SRCS
 avogadro_plugin(drawtool
   "${drawtool_SRCS}"
   drawtool.qrc)
-add_dependencies(drawtool periodictable)
-target_link_libraries(drawtool periodictable)
 set_target_properties(drawtool PROPERTIES
                         COMPILE_FLAGS "${RTTI_FLAG}")
 
@@ -52,7 +48,7 @@ avogadro_plugin(selectrotatetool selectrotatetool.cpp selectrotatetool.qrc)
 avogadro_plugin(autoopttool autoopttool.cpp autoopttool.qrc)
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(autoopttool PROPERTIES COMPILE_FLAGS "-fvisibility=default")
-endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+endif()
 
 ### navigatetool
 avogadro_plugin(navigatetool
@@ -71,5 +67,4 @@ avogadro_plugin(aligntool aligntool.cpp aligntool.qrc)
 if(ALL_PYTHON_FOUND)
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/toolScripts)
-endif(ALL_PYTHON_FOUND)
-
+endif()

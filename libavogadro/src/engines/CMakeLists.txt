@@ -17,9 +17,6 @@ add_custom_target(engines COMMENT "Meta target to build all Avogadro engines.")
 
 # label engine
 avogadro_plugin(labelengine labelengine.cpp labelsettingswidget.ui)
-set_target_properties(labelengine PROPERTIES LABELS "Engine")
-add_dependencies(labelengine periodictable)
-target_link_libraries(labelengine periodictable)
 
 # overlay engine
 avogadro_plugin(overlayengine overlayengine.cpp)
@@ -34,7 +31,7 @@ avogadro_plugin(hbondengine hbondengine.cpp hbondsettingswidget.ui)
 avogadro_plugin(forceengine forceengine.cpp)
 if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
   set_target_properties(forceengine PROPERTIES COMPILE_FLAGS "-fvisibility=default")
-endif(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
+endif()
 
 # sphere
 avogadro_plugin(sphereengine sphereengine.cpp spheresettingswidget.ui)
@@ -69,4 +66,4 @@ avogadro_plugin(simplewireengine simplewireengine.cpp)
 if(ALL_PYTHON_FOUND)
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/engineScripts)
-endif(ALL_PYTHON_FOUND)
+endif()

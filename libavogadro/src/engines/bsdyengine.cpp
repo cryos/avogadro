@@ -87,7 +87,7 @@ namespace Avogadro
 
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
-      m_atomRadiusType(0), m_showMulti(2), m_alpha(1.)
+      m_atomRadiusType(1), m_showMulti(2), m_alpha(1.)
   {  }
 
   Engine *BSDYEngine::clone() const
@@ -334,7 +334,7 @@ namespace Avogadro
     return true;
   }
 
-  double BSDYEngine::radius(const Atom *atom) const
+  inline double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->customRadius())
       return atom->customRadius()* m_atomRadiusPercentage;
@@ -470,6 +470,7 @@ namespace Avogadro
       m_settingsWidget->bondRadiusSlider->setValue(int(20*m_bondRadius));
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
       m_settingsWidget->opacitySlider->setValue(int(20*m_alpha));
+      m_settingsWidget->combo_radius->setCurrentIndex(m_atomRadiusType);
     }
   }
 

@@ -47,7 +47,7 @@ namespace Avogadro{
 
     m_symbol = OpenBabel::etab.GetSymbol(m_element);
     if(!m_symbol.isEmpty())
-	  m_valid = true;
+      m_valid = true;
     std::vector<double> color = OpenBabel::etab.GetRGB(m_element);
     m_color = new QColor();
     m_color->setRgbF(color[0], color[1], color[2]);
@@ -75,8 +75,8 @@ namespace Avogadro{
   void ElementItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
                           QWidget *)
   {
-	if(!m_valid)
-	  return;
+    if(!m_valid)
+      return;
 
     // Fill the rectangle with the element colour
     QColor bgColor;
@@ -87,17 +87,16 @@ namespace Avogadro{
       pen.setWidth(4);
     } else {
       bgColor = QColor(*m_color);
-      //pen.setColor(Qt::black);
     }
     painter->setPen(pen);
     painter->setBrush(bgColor);
     QRectF rect(-m_width/2, -m_height/2, m_width, m_height);
     painter->drawRect(rect);
     // Handle the case where the item is selected
-        if (bgColor.value() < 150)
-          pen.setColor(Qt::white);
-        else
-          pen.setColor(Qt::black);
+    if (bgColor.value() < 150)
+      pen.setColor(Qt::white);
+    else
+      pen.setColor(Qt::black);
     painter->setPen(pen);
     painter->drawText(rect, Qt::AlignCenter, m_symbol);
   }

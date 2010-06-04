@@ -27,7 +27,7 @@
 #include <QtCore/QSettings>
 
 #include <avogadro/primitive.h>
-#include <qplotwidget/plotwidget.h>
+#include <avogadro/plotwidget.h>
 #include <avogadro/molecule.h>
 
 #include <openbabel/mol.h>

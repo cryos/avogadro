@@ -4,7 +4,7 @@ INCLUDEPATH += . \
                "$$AVOGADRO_PREFIX/include" \
                "@OPENBABEL2_INCLUDE_DIR@ \
                "@EIGEN2_INCLUDE_DIR@"
-LIBS += -L"$$AVOGADRO_PREFIX/lib" -lAvogadroCore -lAvogadroWidget \
+LIBS += -L"$$AVOGADRO_PREFIX/lib" -lavogadro \
         -L"$$OPENBABEL_PREFIX/lib" -lopenbabel
 
 unix {
