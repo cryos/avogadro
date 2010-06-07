@@ -6,7 +6,7 @@ set(DESTINATION_DIR ${Avogadro_PLUGIN_INSTALL_DIR}/extensions)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-set(LINK_LIBS avogadrocore avogadrowidget)
+set(LINK_LIBS avogadro)
 set(PLUGIN_LABEL extensions)
 set(PLUGIN_TARGET extensions)
 add_custom_target(extensions COMMENT "Meta target to build all Avogadro extensions.")
