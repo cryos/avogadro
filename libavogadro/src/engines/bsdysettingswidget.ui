@@ -52,25 +52,22 @@
      <item row="5" column="2">
       <widget class="QSlider" name="bondRadiusSlider">
        <property name="minimum">
-        <number>2</number>
+        <number>1</number>
        </property>
        <property name="maximum">
-        <number>12</number>
+        <number>6</number>
        </property>
        <property name="pageStep">
         <number>1</number>
        </property>
        <property name="value">
-        <number>4</number>
+        <number>2</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="tickPosition">
         <enum>QSlider::TicksBothSides</enum>
-       </property>
-       <property name="tickInterval">
-        <number>2</number>
        </property>
       </widget>
      </item>

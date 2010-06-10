@@ -157,8 +157,6 @@ namespace Avogadro {
           this, SLOT(updateValues3(double)));
         connect(m_settingsWidget->preserveNormsCheckBox, SIGNAL(stateChanged(int)),
           this, SLOT(preserveNormsChanged(int)));
-
-        m_settingsWidget->axesType->setCurrentIndex(m_axesType);
       }
     return m_settingsWidget;
   }
@@ -406,18 +404,16 @@ namespace Avogadro {
   void AxesEngine::writeSettings(QSettings &settings) const
   {
     Engine::writeSettings(settings);
-    settings.setValue("axesType", m_axesType);
+    //settings.setValue("atomLabel", m_atomType);
     //settings.setValue("bondLabel", m_bondType);
   }
 
   void AxesEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    m_axesType = settings.value("axesType", 0).toInt();
     //setAtomType(settings.value("atomLabel", 1).toInt());
     //setBondType(settings.value("bondLabel", 0).toInt());
     if(m_settingsWidget) {
-      m_settingsWidget->axesType->setCurrentIndex(m_axesType);
       //m_settingsWidget->atomType->setCurrentIndex(m_atomType);
       //m_settingsWidget->bondType->setCurrentIndex(m_bondType);
     }

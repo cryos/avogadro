@@ -28,11 +28,7 @@
   IS_MAC="@APPLE@"
   SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
   SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
-<<<<<<< HEAD
-  ABI_VERSION="1.1" 
-=======
   ABI_VERSION="1.1"
->>>>>>> 92dd086855e5d20e25401b7fea145c7f5773976d
 # ----- End of configured on Avogadro build ----- #
 
 # My name

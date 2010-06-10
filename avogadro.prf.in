@@ -20,8 +20,8 @@ unix {
 
     package.depends = $$eval(TARGET).avo
 
-    install_package.commands = avopkg $$eval(TARGET).avo
-    install_package.depends = $$eval(TARGET).avo
+    install.commands = avopkg $$eval(TARGET).avo
+    install.depends = $$eval(TARGET).avo
 
-    QMAKE_EXTRA_TARGETS += manifest_ manifest package_ package install_package
+    QMAKE_EXTRA_TARGETS += manifest_ manifest package_ package install
 }
