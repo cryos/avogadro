@@ -28,7 +28,11 @@
   IS_MAC="@APPLE@"
   SYSTEM_NAME="@CMAKE_SYSTEM_NAME@"
   SIZEOF_VOID_P="@CMAKE_SIZEOF_VOID_P@"
+<<<<<<< HEAD
   ABI_VERSION="1.1" 
+=======
+  ABI_VERSION="1.1"
+>>>>>>> 92dd086855e5d20e25401b7fea145c7f5773976d
 # ----- End of configured on Avogadro build ----- #
 
 # My name
@@ -310,11 +314,11 @@ then
                 exit 0
             fi
         fi
-    fi    
-    
+    fi
+
     echo -n "1. Full name of your plugin [$package]:"
     name=$(readString "$package")
-    
+
     echo -n "2. Author's name []:"
     author=$(readString "")
 
@@ -328,14 +332,14 @@ then
     if test "$python" = "y"
     then
         echo "Python" >> $manifest
-        
+
         echo -n "4. List of files to distribute [`ls *.py`]:"
         files=$(readString "`ls *.py`")
 
         echo "5. Choose a category for your Python plugin from list:"
         echo "* engineScripts\n* extensionScripts\n* toolScripts"
         category=$(readString "")
-    else    
+    else
         echo -n "4. List of files to distribute [`ls *.so`]:"
         files=$(readString "`ls *.so`")
 
@@ -530,7 +534,7 @@ then
         printUsage
         exit 255
     fi
-   
+
     package=$(getVar $2 Package)
     files="$(getMultiVar $2 Files)"
     rm -rf .tmp
@@ -569,10 +573,10 @@ then
             $HASH_CMD $file >> .tmp/$package/$CHECKSUMS_FILE 2>/dev/null
         done
     fi
-        
+
     # Copy installable content
     cp -t .tmp/$package $files # Will fail if some file is missing
-    
+
     cd .tmp
     $PACK_CMD ../$package.$PKG_EXT $package
     cd ..
@@ -582,7 +586,7 @@ then
     exit 0
 else
             ########## Install package ########## 
-    
+
     # Check -f (ignore OS and arch)
     if test "$1" = "-f"
     then
@@ -626,7 +630,7 @@ else
         cleanupTmp
         exit 2
     fi
-        
+
     files=$(getMultiVar $manifest Files)
     category=$(getVar $manifest Category)
     reinstall=0 # 1- reinstall, 2- upgrade to newer
@@ -655,7 +659,7 @@ else
             fi
         fi
     fi
-    
+
     # Check for possible overwrites
     for file in $files
     do
@@ -680,7 +684,7 @@ else
                         "$0" -remove $package > /dev/null
                         reinstall=2
                     else
-                        echo "WARNING! Package $package is already installed."                    
+                        echo "WARNING! Package $package is already installed."               
                         reinstall=1
                     fi
                 else
@@ -719,7 +723,7 @@ else
             cleanupTmp
             exit 3
         fi
-        
+
         echo -n Installing Python plugin $package
         if test $USER = root
         then
@@ -740,7 +744,7 @@ else
                 cleanupTmp
                 exit 4
             fi
-    
+
             # Verify CPU architecture
             arch=$(getVar $manifest SizeofVoidP)
             if test $arch != $SIZEOF_VOID_P
@@ -778,7 +782,7 @@ else
                 exit 10
             fi
         fi
-        
+
         echo -n Installing plugin $package
         if test $USER = root
         then
@@ -815,7 +819,7 @@ else
     # Clean up
     cd "$oldpwd"
     cleanupTmp
-    
+
     echo "Done!"
     exit 0
 fi
