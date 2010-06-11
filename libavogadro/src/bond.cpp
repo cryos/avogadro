@@ -41,7 +41,7 @@
 
   Bond::Bond(QObject *parent) : Primitive(BondType, parent),
     m_beginAtomId(FALSE_ID), m_endAtomId(FALSE_ID), m_order(1),
-    m_isAromatic(false)
+    m_isAromatic(false), m_customLabel("")
   {
     m_molecule = static_cast<Molecule*>(parent);
     m_id = ULONG_MAX;
