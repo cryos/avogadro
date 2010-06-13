@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef SURAFCEEXTENSION_H
+#ifndef SURFACEEXTENSION_H
 #define SURFACEEXTENSION_H
 
 #include "surfacedialog.h"
