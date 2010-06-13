@@ -222,7 +222,7 @@ namespace Avogadro
         m_surfaceDialog->setMOs(m_slater->numMOs());
         m_moCubes.resize(m_slater->numMOs());
         m_moCubes.fill(FALSE_ID);
-        for (int i = 0; i < m_slater->numMOs(); ++i) {
+        for (unsigned int i = 0; i < m_slater->numMOs(); ++i) {
           if (m_slater->HOMO(i)) m_surfaceDialog->setHOMO(i);
           else if (m_slater->LUMO(i)) m_surfaceDialog->setLUMO(i);
         }
