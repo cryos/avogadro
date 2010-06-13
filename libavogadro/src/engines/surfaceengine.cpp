@@ -56,9 +56,6 @@ namespace Avogadro {
     m_settingsWidget(0), m_mesh1(0), m_mesh2(0), m_min(0., 0., 0.), m_max(0.,0.,0.),
     m_alpha(0.75), m_renderMode(0), m_drawBox(false), m_colored(false)
   {
-    // default is red for negative, blue for positive
-    m_negColor.setFromRgba(1.0, 0.0, 0.0, m_alpha);
-    m_posColor.setFromRgba(0.0, 0.0, 1.0, m_alpha);
   }
 
   SurfaceEngine::~SurfaceEngine()
@@ -460,16 +457,28 @@ namespace Avogadro {
       settings.setValue("mesh1Id", static_cast<int>(m_mesh1->id()));
     if (m_mesh2)
       settings.setValue("mesh2Id", static_cast<int>(m_mesh2->id()));
-//    settings.setValue("posColor", m_posColor);
-//    settings.setValue("posColor", m_negColor);
+    settings.setValue("posColor/r", m_posColor.red());
+    settings.setValue("posColor/g", m_posColor.green());
+    settings.setValue("posColor/b", m_posColor.blue());
+    settings.setValue("negColor/r", m_negColor.red());
+    settings.setValue("negColor/g", m_negColor.green());
+    settings.setValue("negColor/b", m_negColor.blue());
   }
 
   void SurfaceEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
     m_alpha = settings.value("alpha", 0.5).toDouble();
-    m_posColor.setAlpha(m_alpha);
-    m_negColor.setAlpha(m_alpha);
+    // Default: Positive = blue
+    m_posColor.setFromRgba( settings.value("posColor/r", 0.0).toFloat(),
+                            settings.value("posColor/g", 0.0).toFloat(),
+                            settings.value("posColor/b", 1.0).toFloat(),
+                            m_alpha );
+    // Default: Negative = red
+    m_negColor.setFromRgba( settings.value("negColor/r", 1.0).toFloat(),
+                            settings.value("negColor/g", 0.0).toFloat(),
+                            settings.value("negColor/b", 0.0).toFloat(),
+                            m_alpha );
     m_renderMode = settings.value("renderMode", 0).toInt();
     m_colored = settings.value("colorMode", false).toBool();
     m_drawBox = settings.value("drawBox", false).toBool();
