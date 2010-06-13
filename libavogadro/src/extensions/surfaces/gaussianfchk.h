@@ -32,18 +32,18 @@
 
 namespace Avogadro
 {
-  class BasisSet;
+  class GaussianSet;
 
   class GaussianFchk
   {
   public:
-    GaussianFchk(const QString &filename, BasisSet *basis);
+    GaussianFchk(const QString &filename, GaussianSet *basis);
     ~GaussianFchk();
     void outputAll();
   private:
     QIODevice *m_in;
     void processLine();
-    void load(BasisSet* basis);
+    void load(GaussianSet* basis);
     std::vector<int> readArrayI(unsigned int n);
     std::vector<double> readArrayD(unsigned int n, int width = 0);
     bool readDensityMatrix(unsigned int n, int width = 0);
