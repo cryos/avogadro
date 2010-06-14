@@ -34,6 +34,6 @@ set(gamessextension_SRCS
   gamessinputdata.cpp
   gamesshighlighter.cpp
   gamessefpmatchdialog.cpp)
-#avogadro_plugin_nogl(gamessextension
-#  "${gamessextension_SRCS}"
-#  "gamessinputdialog.ui;gamessefpmatchdialog.ui")
+avogadro_plugin_nogl(gamessextension
+  "${gamessextension_SRCS}"
+  "gamessinputdialog.ui;gamessefpmatchdialog.ui")
