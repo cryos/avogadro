@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 19:59+0000\n"
-"Last-Translator: Alkatron <Unknown>\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-19 23:51+0000\n"
+"Last-Translator: Trugis <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,8 +30,8 @@ msgstr "(Revisione Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 "<h3>%1</h3><br/><br/>Versione dell'Applicazione: %2<br/><br/>Versione delle "
 "Librerie: %3<br/><br/>Versione di Open Babel: %4"
@@ -41,19 +41,24 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
+"<br/><br/>Qt Versione: %1<br/><br/>Per maggiori informazioni controlla l'<a "
+"href=\"http://avogadro.openmolecules.net/\">hompage di Avogadro</a>.<br/><br/"
+">Il programma è fornito COSI' COM'E' SENZA GARANZIA DI ALCUN TIPO, INCLUSE "
+"LA GARANZIA DI PROGETTAZIONE, COMMERCIABILITA' E IDONEITA' PER UN "
+"PARTICOLARE SCOPO<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -80,7 +85,7 @@ msgstr "Pulisci Atomi"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -109,6 +114,13 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
+"Uso: %1 [opzioni] [file]\n"
+"\n"
+"Avogadro - Editor Molecolare Avanzato (versione %2)\n"
+"\n"
+"Opzioni:\n"
+"  -h, --help\t\tMostra questo aiuto\n"
+"  -v, --version\t\tMostra informazioni sulla versione del programma\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
@@ -456,7 +468,7 @@ msgstr "Oggetti"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Colori"
 
@@ -533,7 +545,7 @@ msgstr "solo le etichette possono avere sotto-elementi"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Elemento"
 
@@ -548,7 +560,7 @@ msgstr "Bassa"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Media"
@@ -565,7 +577,7 @@ msgstr "Non impostata"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Nessuno"
@@ -932,8 +944,8 @@ msgstr "Chiudi Visuale"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Al centro"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1230,39 +1242,46 @@ msgstr "Nebbia:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca "
-"Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo "
-"Naldini,Paolo Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de "
-"mitri, ,Launchpad Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca "
-"Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo "
-"Naldini,Paolo Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de "
-"mitri, ,Launchpad Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca "
-"Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo "
-"Naldini,Paolo Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de "
-"mitri, ,Launchpad Contributions:,Alkatron,Geoff Hutchison,Guybrush88,Matteo "
-"Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Signifredi,Simone Oberti, "
-",Launchpad Contributions:,94thomas,Alkatron,Daniele Baitieri,Geoff "
-"Hutchison,Guybrush88,Luca Brivio,Matteo Ferrabone,MeltingShell,Michele "
-"Gatti,Nikopol,Paolo Naldini,Paolo Signifredi,Simone Oberti,mackos, "
-",Launchpad Contributions:,94thomas,Alkatron,Alkatron,Calogero "
-"Bonasia,Daniele Baitieri,Geoff Hutchison,Guybrush88,Luca Brivio,Matteo "
-"Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Naldini,Paolo "
-"Signifredi,Simone Oberti,VitoArnetta,giantkiar,iTuxer,mackos"
+",Launchpad Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca Brivio,"
+"Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Naldini,Paolo "
+"Signifredi,Sergio Zanchetta,Simone Oberti,mackos,nicola de mitri, ,Launchpad "
+"Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca Brivio,Matteo "
+"Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Naldini,Paolo Signifredi,"
+"Sergio Zanchetta,Simone Oberti,mackos,nicola de mitri, ,Launchpad "
+"Contributions:,94thomas,Daniele Baitieri,Guybrush88,Luca Brivio,Matteo "
+"Ferrabone,MeltingShell,Michele Gatti,Nikopol,Paolo Naldini,Paolo Signifredi,"
+"Sergio Zanchetta,Simone Oberti,mackos,nicola de mitri, ,Launchpad "
+"Contributions:,Alkatron,Geoff Hutchison,Guybrush88,Matteo Ferrabone,"
+"MeltingShell,Michele Gatti,Nikopol,Paolo Signifredi,Simone Oberti, ,"
+"Launchpad Contributions:,94thomas,Alkatron,Daniele Baitieri,Geoff Hutchison,"
+"Guybrush88,Luca Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,"
+"Paolo Naldini,Paolo Signifredi,Simone Oberti,mackos, ,Launchpad "
+"Contributions:,94thomas,Alkatron,Alkatron,Calogero Bonasia,Daniele Baitieri,"
+"Geoff Hutchison,Guybrush88,Luca Brivio,Matteo Ferrabone,MeltingShell,Michele "
+"Gatti,Nikopol,Paolo Naldini,Paolo Signifredi,Simone Oberti,VitoArnetta,"
+"giantkiar,iTuxer,mackos, ,Launchpad Contributions:,94thomas,Alkatron,"
+"Alkatron,Avogadro Team,Calogero Bonasia,Daniele Baitieri,Geoff Hutchison,"
+"Guybrush88,Luca Brivio,Matteo Ferrabone,MeltingShell,Michele Gatti,Nikopol,"
+"Paolo Naldini,Paolo Signifredi,Simone Oberti,Trugis,VitoArnetta,giantkiar,"
+"iTuxer,mackos"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,Thomas.Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it"
-",aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas"
-".Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_"
-"isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas.Bellott"
-"i@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_isilra@h"
-"otmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,gino@alkatron.it,,,,,m"
-"ichel_gatti@yahoo.it,aegnor_isilra@hotmail.com,,,,,Thomas.Bellotti@liceotosi."
-"org,gino@alkatron.it,,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_is"
-"ilra@hotmail.com,hattory@ubuntu.com,,,,,,Thomas.Bellotti@liceotosi.org,alkatr"
-"on@alkatron.it,,,,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,aegnor_isilra"
-"@hotmail.com,hattory@ubuntu.com,,,,,,"
+",,Thomas.Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo."
+"it,aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,"
+"Thomas.Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,"
+"aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,Thomas."
+"Bellotti@liceotosi.org,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,"
+"aegnor_isilra@hotmail.com,hattory@ubuntu.com,,primes2h@gmail.com,,,,,,"
+"gino@alkatron.it,,,,,michel_gatti@yahoo.it,aegnor_isilra@hotmail.com,,,,,"
+"Thomas.Bellotti@liceotosi.org,gino@alkatron.it,,,,lucab83@infinito.it,,,"
+"michel_gatti@yahoo.it,aegnor_isilra@hotmail.com,hattory@ubuntu.com,,,,,,"
+"Thomas.Bellotti@liceotosi.org,alkatron@alkatron.it,,,,,,lucab83@infinito."
+"it,,,michel_gatti@yahoo.it,aegnor_isilra@hotmail.com,hattory@ubuntu."
+"com,,,,,,,,,Thomas.Bellotti@liceotosi.org,alkatron@alkatron.it,,avogadro-"
+"devel@lists.sourceforge.net,,,,,lucab83@infinito.it,,,michel_gatti@yahoo.it,"
+"aegnor_isilra@hotmail.com,hattory@ubuntu.com,,,,,,,"
 
 #~ msgid "0/0"
 #~ msgstr "0/0"
@@ -1288,14 +1307,12 @@ msgstr ""
 #~ msgid "Align"
 #~ msgstr "Allinea"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Lettura della traiettoria del file %1 fallita."
 
 #~ msgid "Animation..."
 #~ msgstr "Animazione..."
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1353,15 +1370,12 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distanza (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distanza (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distanza (1->2): %1 %2"
 
@@ -1371,18 +1385,15 @@ msgstr ""
 #~ msgid "*4"
 #~ msgstr "*4"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Angolo: %1 %2"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Numeri di atomi: %1"
 
 #~ msgid "Force Field:"
 #~ msgstr "Campo di Forza:"
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1407,23 +1418,21 @@ msgstr ""
 #~ msgid ""
 #~ "Your molecule must contain at least three atoms to add an angle constraint"
 #~ msgstr ""
-#~ "La molecola deve contenere almeno tre atomi per poter aggiungere un vincolo "
-#~ "angolare"
+#~ "La molecola deve contenere almeno tre atomi per poter aggiungere un "
+#~ "vincolo angolare"
 
 #~ msgid ""
 #~ "Your molecule must contain at least two atoms to add a bond constraint"
 #~ msgstr ""
-#~ "La molecola deve contenere almeno due atomi per poter aggiungere un vincolo "
-#~ "di legame"
+#~ "La molecola deve contenere almeno due atomi per poter aggiungere un "
+#~ "vincolo di legame"
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Angolo Diedro: %1 %2"
 
 #~ msgid "Add constraint"
 #~ msgstr "Aggiungi vincolo"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Numero di legami ruotabili: %1"
 
@@ -1851,7 +1860,6 @@ msgstr ""
 #~ msgid "Cannot set up the force field for this molecule."
 #~ msgstr "Impossibile definire il campo di forza per questa molecola."
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1931,7 +1939,6 @@ msgstr ""
 #~ msgid "Tool Settings"
 #~ msgstr "Impostazioni Strumenti"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1969,28 +1976,28 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run any "
-#~ "OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Contesto OpenGL non valido.\n"
-#~ "Può trattarsi di un errore nel setup di OpenGL (puoi eseguire applicazioni "
-#~ "OpenGL?), altrimenti hai trovato un bug."
+#~ "Può trattarsi di un errore nel setup di OpenGL (puoi eseguire "
+#~ "applicazioni OpenGL?), altrimenti hai trovato un bug."
 
 #~ msgid "Adjust Hydrogens"
 #~ msgstr "Satura con Idrogeni"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
-#~ "Questo file sembra contenere diverse strutture molecolari. Avogadro leggerà "
-#~ "solo la prima molecola. In caso di salvataggio del file tutte le altre "
-#~ "molecole potrebbero andare perdute."
+#~ "Questo file sembra contenere diverse strutture molecolari. Avogadro "
+#~ "leggerà solo la prima molecola. In caso di salvataggio del file tutte le "
+#~ "altre molecole potrebbero andare perdute."
 
 #~ msgid "Reading molecular file failed."
 #~ msgstr "Lettura del file moleolare fallita."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1998,11 +2005,9 @@ msgstr ""
 #~ "Impossibile scrivere il file %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Impossibile scrivere nel formato del file %1."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Impossibile scrivere il file  %1."
 
@@ -2025,7 +2030,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -2047,8 +2051,8 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Questo file contiene solamente coordinate 2D. Si desidera che Avogadro scali "
-#~ "i legami e faccia una rapida ottimizzazione??"
+#~ "Questo file contiene solamente coordinate 2D. Si desidera che Avogadro "
+#~ "scali i legami e faccia una rapida ottimizzazione??"
 
 #~ msgid ""
 #~ "Navigation Tool (F9)\n"
@@ -2060,7 +2064,8 @@ msgstr ""
 #~ "Strumento di Navigazione (F9)\n"
 #~ "\n"
 #~ "Tasto sinistro del  Mouse:   Clicca e trascina per ruotare la visuale\n"
-#~ "Tasto centrale del Mouse: Clicca e trascina per ingrandire e rimpicciolire\n"
+#~ "Tasto centrale del Mouse: Clicca e trascina per ingrandire e "
+#~ "rimpicciolire\n"
 #~ "Tasto destro del Mouse:  Clicca e trascina per spostare la visuale"
 
 #~ msgid "Polygon"
@@ -2105,7 +2110,6 @@ msgstr ""
 #~ msgid "Start Atom"
 #~ msgstr "Atomo Iniziale"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atomo %1"
 
@@ -2115,22 +2119,18 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Ruotabile"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Legame %1"
 
 #~ msgid "Vertex"
 #~ msgstr "Vertica"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Angolo %1"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsione %1"
 
-#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Conformero %1"
 
@@ -3121,9 +3121,6 @@ msgstr ""
 #~ msgid "create ligand from residue name"
 #~ msgstr "crea ligando dal nome del residuo"
 
-#~ msgid "Center"
-#~ msgstr "Al centro"
-
 #~ msgid "Origin:"
 #~ msgstr "Origine:"
 
@@ -3148,22 +3145,21 @@ msgstr ""
 #~ msgid "Animation"
 #~ msgstr "Animazione"
 
-#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-#~ "ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
-#~ "value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
-#~ "1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
 #~ msgstr ""
 #~ "La visuale corrente di Avogadro è larga %1x%2 pixels, e perciò ha un "
 #~ "rapporto di aspetto  %3.\n"
-#~ "Puoi tenere questo rapporto se, ad esempio, vuoi usare POV-Ray per produrre "
-#~ "un'immagine di  %4x1000 pixels, o puoi inserire un altro valore positivo, ad "
-#~ "esempio 1, se vuoi che POV-Ray produca un'immagine quadrata, per esempio "
-#~ "1000x1000 pixels."
+#~ "Puoi tenere questo rapporto se, ad esempio, vuoi usare POV-Ray per "
+#~ "produrre un'immagine di  %4x1000 pixels, o puoi inserire un altro valore "
+#~ "positivo, ad esempio 1, se vuoi che POV-Ray produca un'immagine quadrata, "
+#~ "per esempio 1000x1000 pixels."
 
 #~ msgid "Geometric Optimization"
 #~ msgstr "Ottimizzazione di Geometria"
@@ -3422,7 +3418,8 @@ msgstr ""
 #~ "Colori secondo l'indice(rosso, arancione, giallo, verde. blu e viola)."
 
 #~ msgid "Color by Element (carbon = grey, oxygen = red, ...)."
-#~ msgstr "Colori a seconda dell'elemento (carbonio=grigio, ossigeno=rosso,...)"
+#~ msgstr ""
+#~ "Colori a seconda dell'elemento (carbonio=grigio, ossigeno=rosso,...)"
 
 #~ msgid "ForceField"
 #~ msgstr "Campo di forze"
@@ -3433,11 +3430,9 @@ msgstr ""
 #~ msgid "Navigate"
 #~ msgstr "Naviga"
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Impossibile leggere il formato del file %1."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Impossibile leggere il file %1."
 
@@ -3511,25 +3506,24 @@ msgstr ""
 #~ "Nome del file video non valido. Necessario includere il percorso intero"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
-#~ "Nome del file video non valido. Necessario includere il percorso intero ed "
-#~ "il nome, con estensione .avi"
+#~ "Nome del file video non valido. Necessario includere il percorso intero "
+#~ "ed il nome, con estensione .avi"
 
 #~ msgid "could not set format to XYZ"
 #~ msgstr "impossibile reglare il formato su XYZ"
 
-#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "Problemi a leggere il file traiettoria %1"
 
-#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
 #~ msgstr ""
-#~ "Il file traiettoria %1 è in disaccordo con il numero di atomi nella molecola "
-#~ "attuale"
+#~ "Il file traiettoria %1 è in disaccordo con il numero di atomi nella "
+#~ "molecola attuale"
 
 #~ msgid "Chemical files (*.parm7)"
 #~ msgstr "File chimici (*.parm7)"
@@ -3603,11 +3597,9 @@ msgstr ""
 #~ msgid "Any files (*.*)"
 #~ msgstr "Qualsiasi file (*.*)"
 
-#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Due molecola hanno numeri differenti di atomi %1 %2"
 
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Lettura del file molecola %1 fallita"
 
@@ -3619,7 +3611,6 @@ msgstr ""
 #~ msgid "Create Surfaces..."
 #~ msgstr "Crea superfici"
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Scritto file %1"
 
@@ -3634,8 +3625,8 @@ msgstr ""
 #~ "completo della cartella"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Nome del file filmato non corretto. Deve includere tutto l'indirizzo "
 #~ "completo della cartella, e finire con .avi"
@@ -3740,9 +3731,9 @@ msgstr ""
 #~ msgstr "L'inizializzazione di POV-Ray è fallita."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "Hai richiesto di non usare una rappresentazione diretta con il metodo POV-"
 #~ "Ray e di non mantenere il file POV-Ray. Il risultato sarà che non sarà "
@@ -3761,8 +3752,8 @@ msgstr ""
 #~ "POV-Ray failed to start. May be the path to the executable is not set "
 #~ "correctly."
 #~ msgstr ""
-#~ "L'inizializzazione di POV-Ray è fallita. Forse il percorso all'esecutibile "
-#~ "non è regolato correttamente."
+#~ "L'inizializzazione di POV-Ray è fallita. Forse il percorso "
+#~ "all'esecutibile non è regolato correttamente."
 
 #~ msgid "VdW Cube"
 #~ msgstr "Cubo VdW"
@@ -4101,8 +4092,8 @@ msgstr ""
 #~ "Load a second confromation and computer a linear interpolation with the "
 #~ "current conformation."
 #~ msgstr ""
-#~ "Carica una seconda conformazione e calcola un'interpolazione lineare con la "
-#~ "conformazione corrente."
+#~ "Carica una seconda conformazione e calcola un'interpolazione lineare con "
+#~ "la conformazione corrente."
 
 #~ msgid "Use Form"
 #~ msgstr "Usa Form"
@@ -4180,8 +4171,8 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
-#~ "Tutti gli atomi con un legame con il ligando saranno parte della cavità di "
-#~ "legame"
+#~ "Tutti gli atomi con un legame con il ligando saranno parte della cavità "
+#~ "di legame"
 
 #~ msgid "Distance:"
 #~ msgstr "Distanza:"

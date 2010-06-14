@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 19:51+0000\n"
-"Last-Translator: fri <pavelfric@seznam.cz>\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-14 14:14+0000\n"
+"Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -31,29 +31,29 @@ msgstr "(Git revize: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: "
-"%3<br/><br/>Verze Open Babel: %4"
+"<h3>%1</h3><br/><br/>Verze aplikace: %2<br/><br/>Verze knihovny: %3<br/><br/"
+">Verze Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -81,7 +81,7 @@ msgstr "Smazat atomy"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -458,7 +458,7 @@ msgstr "Předměty"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Barvy"
 
@@ -535,7 +535,7 @@ msgstr "pouze popisky mohou mít podčlánky"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Článek"
 
@@ -550,7 +550,7 @@ msgstr "Nízký"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Střední"
@@ -567,7 +567,7 @@ msgstr "Neurčen"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Žádný"
@@ -934,8 +934,8 @@ msgstr "Zavřít pohled"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Vystředit"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1233,25 +1233,29 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
-"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad "
-"Contributions:,Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, Pavel Fric, "
-",Launchpad Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad "
-"Contributions:,Konki,Vaclav Rehak,Vojtěch Trefný,fri"
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
+"Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, ,Launchpad Contributions:,"
+"Avogadro Team,Vaclav Rehak,Vojtěch Trefný,milboy, Pavel Fric, ,Launchpad "
+"Contributions:,Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,"
+"Vaclav Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav "
+"Rehak,Vojtěch Trefný,fri, ,Launchpad Contributions:,Konki,Vaclav Rehak,"
+"Vojtěch Trefný,fri"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,vojt"
-"ech.trefny@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,"
-",avogadro-"
-"devel@lists.sourceforge.net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com, "
-"pavelfric@seznam.cz,,,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfri"
-"c@seznam.cz,,,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam"
-".cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,p"
-"avelfric@seznam.cz"
+",,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,,,venca.rehak@seznam.cz,"
+"vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge.net,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,,,,avogadro-devel@lists.sourceforge."
+"net,venca.rehak@seznam.cz,vojtech.trefny@gmail.com, pavelfric@seznam.cz,,,"
+"venca.rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,venca."
+"rehak@seznam.cz,vojtech.trefny@gmail.com,pavelfric@seznam.cz,,,pavel."
+"konkol@seznam.cz,venca.rehak@seznam.cz,vojtech.trefny@gmail.com,"
+"pavelfric@seznam.cz,,,pavel.konkol@seznam.cz,venca.rehak@seznam.cz,vojtech."
+"trefny@gmail.com,pavelfric@seznam.cz"
+
+#~ msgid "Better View"
+#~ msgstr "Lepší pohled"
 
 #~ msgid "Load File..."
 #~ msgstr "Otveřít soubor..."
@@ -1277,7 +1281,6 @@ msgstr ""
 #~ msgid "Axis:"
 #~ msgstr "souřadnice"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1285,11 +1288,9 @@ msgstr ""
 #~ "Nemohu načíst soubor %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Nemohu rozpoznat typ souboru %1."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Nemohu načíst soubor %1."
 
@@ -1297,14 +1298,14 @@ msgstr ""
 #~ msgstr "Navigace"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Tento soubor nejspíš obsahuje více záznamů molekul. Avogadro načte pouze "
 #~ "první molekulu. Pokud budete práci ukládat, ostatní molekuly mohou být "
 #~ "ztraceny."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1315,7 +1316,6 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Ukládám soubor."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Nemohu zapisovat do souboru %1."
 
@@ -1332,7 +1332,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1726,7 +1725,6 @@ msgstr ""
 #~ msgid "video files (*.avi)"
 #~ msgstr "Video soubory (*.avi)"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1746,14 +1744,12 @@ msgstr ""
 #~ msgid "Polygon"
 #~ msgstr "Polygon"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Počet atomů: %1"
 
 #~ msgid "Animation"
 #~ msgstr "Animace"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Počet rotačních vazeb: %1"
 
@@ -1784,7 +1780,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Ukončit"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energie = %1 %2"
 
@@ -1905,7 +1900,6 @@ msgstr ""
 #~ msgid "Valence"
 #~ msgstr "Valence"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
@@ -1930,18 +1924,15 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Rotace"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Vazba %1"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Úhel %1"
 
 #~ msgid "Torsion (°)"
 #~ msgstr "Zkroucení (°)"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Zkroucení %1"
 
@@ -2027,19 +2018,15 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Vzdálenost (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Úhel: %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Vzdálenost (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Vzdálenost (1->2): %1 %2"
 
@@ -2688,7 +2675,6 @@ msgstr ""
 #~ msgid "Surface"
 #~ msgstr "Povrch"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Načítání souboru trajektorie %1 selahalo."
 
@@ -2698,10 +2684,11 @@ msgstr ""
 #~ msgid "Invalid video filename.  Must include full directory path"
 #~ msgstr "Neplatný soubor, Musíte uvést úplnou cestu"
 
-#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
-#~ msgstr "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
+#~ msgstr ""
+#~ "Soubor trajektorie %1 nesouhlasí s počtem atomů v aktuální molekule."
 
 #~ msgid "ForceField"
 #~ msgstr "Silové pole"
@@ -2760,15 +2747,12 @@ msgstr ""
 #~ msgid "Save Traj File"
 #~ msgstr "Uložit soubor trajektorie"
 
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Načítání souboru molekul %1 selhalo."
 
-#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Soubor bude zapsán do %1."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Soubor %1."
 
@@ -2776,16 +2760,16 @@ msgstr ""
 #~ msgstr "Neplatný název videa. Musíte zadat plnou cestu k souboru."
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
-#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící na "
-#~ ".avi"
+#~ "Neplatný název videa. Musíte zadat plnou cestu k souboru a název končící "
+#~ "na .avi"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "Zvolili jste nepoužít přímé vykreslování pomocí POV-Ray a zrušení souboru "
 #~ "POV-Ray. To znamená, že nebude uložen žádný výstup. Jste si jisti?"
@@ -2878,8 +2862,8 @@ msgstr ""
 #~ msgstr "Musíte určit platný soubor .avi"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Neplatný název souboru. Musíte určit kompletní cestu k souboru a jméno "
 #~ "včetně koncovky .avi"
@@ -2949,9 +2933,6 @@ msgstr ""
 
 #~ msgid "Select atoms, residues, and molecules"
 #~ msgstr "Vybrat atomy, radikály a molekuly"
-
-#~ msgid "Center"
-#~ msgstr "Vystředit"
 
 #~ msgid "Atom Labels:"
 #~ msgstr "Popisky atomů:"

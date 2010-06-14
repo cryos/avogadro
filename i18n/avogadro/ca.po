@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 18:41+0000\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-11 05:23+0000\n"
 "Last-Translator: el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -33,8 +33,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -42,18 +42,18 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -81,7 +81,7 @@ msgstr "Esborra els atoms"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Configuració"
 
@@ -453,7 +453,7 @@ msgstr "Objectes"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Colors"
 
@@ -530,7 +530,7 @@ msgstr "només les etiquetes poden tindre subelements"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Ítem"
 
@@ -545,7 +545,7 @@ msgstr "Baix"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Mitjà"
@@ -562,7 +562,7 @@ msgstr "No definit"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Cap"
@@ -929,8 +929,8 @@ msgstr "Tanca la vista"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Centre"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1228,10 +1228,12 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Geoff Hutchison,Toni "
-"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, "
-",Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso "
-"Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
+"Hermoso Pulido,carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,"
+"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Toni Hermoso Pulido,"
+"carles ferrando,el_libre XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad "
 "Contributions:,Toni Hermoso Pulido,carles ferrando,el_libre "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
+"Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
 "Hermoso Pulido,carles ferrando,el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,Toni "
@@ -1241,12 +1243,13 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el.li"
-"bre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net,,toniher@softcatala.cat,,el.libre@gmail.com,,,ton"
-"iher@softcatala.cat,,el.libre@gmail.com,,,avogadro-"
-"devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com,,,avog"
-"adro-devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail.com"
+",,toniher@softcatala.cat,,el.libre@gmail.com,,,,toniher@softcatala.cat,,el."
+"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,toniher@softcatala."
+"cat,,el.libre@gmail.com,,,toniher@softcatala.cat,,el.libre@gmail.com,,,"
+"avogadro-devel@lists.sourceforge.net,toniher@softcatala.cat,,el.libre@gmail."
+"com,,,avogadro-devel@lists.sourceforge.net,toniher@softcatala.cat,,el."
+"libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,toniher@softcatala."
+"cat,,el.libre@gmail.com"
 
 #~ msgid "Axis:"
 #~ msgstr "Eix:"
@@ -1257,7 +1260,6 @@ msgstr ""
 #~ msgid "Align:"
 #~ msgstr "Alinia:"
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -1279,7 +1281,6 @@ msgstr ""
 #~ msgid "fps"
 #~ msgstr "fps"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1292,19 +1293,15 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Distància (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Angle: %1 %2"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Distància (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Distància (1->2): %1 %2"
 
@@ -1692,7 +1689,6 @@ msgstr ""
 #~ msgid "Plutonium"
 #~ msgstr "Plutoni"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1702,7 +1698,6 @@ msgstr ""
 #~ msgid "MO "
 #~ msgstr "MO "
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1715,7 +1710,6 @@ msgstr ""
 #~ msgid "Polygon"
 #~ msgstr "Polígon"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Àtom %1"
 
@@ -1728,14 +1722,12 @@ msgstr ""
 #~ msgid "Vertex"
 #~ msgstr "Vèrtex"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Angle %1"
 
 #~ msgid "Disconnect"
 #~ msgstr "Desconnecta"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Torsió %1"
 
@@ -2129,9 +2121,6 @@ msgstr ""
 #~ msgid "Width:"
 #~ msgstr "Amplada:"
 
-#~ msgid "Center"
-#~ msgstr "Centre"
-
 #~ msgid "Group Name"
 #~ msgstr "Nom del grup"
 
@@ -2159,7 +2148,6 @@ msgstr ""
 #~ msgid "Steps:"
 #~ msgstr "Passos:"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -2167,11 +2155,9 @@ msgstr ""
 #~ "No es pot llegir el fitxer %1: \n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "No es pot llegir el format del fitxer %1"
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "No és pot llegir el fitxer %1"
 
@@ -2179,12 +2165,13 @@ msgstr ""
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie l'escala "
-#~ "dels enllaços i faça una optimització ràpida?"
+#~ "Este fitxer només conté coordenades 2D. Voleu que l'Avogadro canvie "
+#~ "l'escala dels enllaços i faça una optimització ràpida?"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Este fitxer sembla que conté múltiples molècules. L'Avogadro només pot "
 #~ "llegir la primera molècula. Si l'alceu, totes les altres molècules es "
@@ -2193,11 +2180,9 @@ msgstr ""
 #~ msgid "Navigate"
 #~ msgstr "Navega"
 
-#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "No es pot escriure el fitxer amb format %1."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -2205,7 +2190,6 @@ msgstr ""
 #~ "No es pot escriure el fitxer %1: \n"
 #~ " %2."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "No es pot escriure el fitxer %1."
 
@@ -2345,7 +2329,6 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animació…"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "S'ha produït un error en llegir el fitxer %1 de trajectoria."
 
@@ -2358,26 +2341,25 @@ msgstr ""
 
 #~ msgid "Invalid video filename.  Must include full directory path"
 #~ msgstr ""
-#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del directori "
-#~ "complet"
+#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del "
+#~ "directori complet"
 
 #~ msgid ""
-#~ "Invalid video filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid video filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
-#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del directori "
-#~ "complet i el nom, acabat en .avi"
+#~ "El nom de fitxer del vídeo no és vàlid. Cal incloure el camí del "
+#~ "directori complet i el nom, acabat en .avi"
 
 #~ msgid "could not set format to XYZ"
 #~ msgstr "no es pot posar en format XYZ"
 
-#, qt-format
 #~ msgid "Problem reading traj file %1"
 #~ msgstr "S'ha produït un error en llegir el fitxer traj %1"
 
-#, qt-format
 #~ msgid ""
-#~ "Trajectory file %1 disagrees on the number of atoms in the present molecule"
+#~ "Trajectory file %1 disagrees on the number of atoms in the present "
+#~ "molecule"
 #~ msgstr ""
 #~ "El fitxer trajectòria %1 no concorda amb el nombre d'àtoms de l'actual "
 #~ "molècula"
@@ -2385,11 +2367,9 @@ msgstr ""
 #~ msgid "Animation"
 #~ msgstr "Animació"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Nombre d'àtoms: %1"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Nombre d'enllaços angulars: %1"
 
@@ -2410,14 +2390,14 @@ msgstr ""
 #~ msgid ""
 #~ "Your molecule must contain at least three atoms to add an angle constraint"
 #~ msgstr ""
-#~ "La vostra molècula ha de contindre al menys tres àtoms per a afegir-hi una "
-#~ "restricció angular"
+#~ "La vostra molècula ha de contindre al menys tres àtoms per a afegir-hi "
+#~ "una restricció angular"
 
 #~ msgid ""
 #~ "Your molecule must contain at least four atoms to add a torsion constraint"
 #~ msgstr ""
-#~ "La vostra molècula ha de contindre al menys quatre àtoms per a afegir-hi una "
-#~ "restricció de torsió"
+#~ "La vostra molècula ha de contindre al menys quatre àtoms per a afegir-hi "
+#~ "una restricció de torsió"
 
 #~ msgid "Trajectory..."
 #~ msgstr "Trajectòria..."
@@ -2632,11 +2612,9 @@ msgstr ""
 #~ msgid "Lin Morph..."
 #~ msgstr "Lin Morph..."
 
-#, qt-format
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Errada en la lectura del fitxer mol %1 ."
 
-#, qt-format
 #~ msgid "Two molecules have different number atoms %1 %2"
 #~ msgstr "Dues molècules tenen diferent nombre d'àtoms %1 %2"
 
@@ -2647,23 +2625,22 @@ msgstr ""
 
 #~ msgid "GL widget was not correctly initialized in order to save movie"
 #~ msgstr ""
-#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar vídeos"
+#~ "El estri GL no ha estat correctament inicialitzat per permetre alçar "
+#~ "vídeos"
 
 #~ msgid "Invalid movie filename.  Must include full directory path"
 #~ msgstr "Nom de vídeo no vàlid. Cal incloure el camí complet al directori"
 
 #~ msgid ""
-#~ "Invalid movie filename.  Must include full directory path and name, ending "
-#~ "with .avi"
+#~ "Invalid movie filename.  Must include full directory path and name, "
+#~ "ending with .avi"
 #~ msgstr ""
 #~ "Nom de vídeo no vàlid. Cal incloure el camí complet al directori i el nom "
 #~ "acabat en .avi"
 
-#, qt-format
 #~ msgid "Would write file to %1."
 #~ msgstr "Escriuria el fitxer a %1."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Es va escriure el fitxer %1."
 
@@ -2710,9 +2687,9 @@ msgstr ""
 #~ msgstr "No concorda."
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "No heu demanat cap generació POV-Ray i no podeu utilitzar cap fitxer POV-"
 #~ "Ray.  Així no podreu alçar cap resultat. Esteu segur que això és el que "
@@ -2725,8 +2702,8 @@ msgstr ""
 #~ "POV-Ray failed to start. May be the path to the executable is not set "
 #~ "correctly."
 #~ msgstr ""
-#~ "S'ha produït un error en iniciar el POV-Ray. Tal vegada podríeu comprovar el "
-#~ "camí a l'executable."
+#~ "S'ha produït un error en iniciar el POV-Ray. Tal vegada podríeu comprovar "
+#~ "el camí a l'executable."
 
 #~ msgid "POV-Ray"
 #~ msgstr "POV-Ray"
@@ -2788,7 +2765,6 @@ msgstr ""
 #~ msgid "Rotatable"
 #~ msgstr "Angular"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Enllaç %1"
 
@@ -2810,7 +2786,6 @@ msgstr ""
 #~ msgid "Energy"
 #~ msgstr "Energia"
 
-#, qt-format
 #~ msgid "Conformer %1"
 #~ msgstr "Concordança %1"
 
@@ -2920,22 +2895,22 @@ msgstr ""
 #~ msgid "Set Aspect Ratio"
 #~ msgstr "Configura la relació d'aspecte"
 
-#, qt-format
 #~ msgid ""
-#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
-#~ "ratio %3.\n"
+#~ "The current Avogadro scene is %1x%2 pixels large, and therefore has "
+#~ "aspect ratio %3.\n"
 #~ "You may keep this value, for example if you intend to use POV-Ray\n"
-#~ "to produce an image of %4x1000 pixels, or you may enter any other positive "
-#~ "value,\n"
-#~ "for example 1 if you intend to use POV-Ray to produce a square image, like "
-#~ "1000x1000 pixels."
+#~ "to produce an image of %4x1000 pixels, or you may enter any other "
+#~ "positive value,\n"
+#~ "for example 1 if you intend to use POV-Ray to produce a square image, "
+#~ "like 1000x1000 pixels."
 #~ msgstr ""
 #~ "L'actual escena d'Avogadro té %1x%2 pixels d'ample i tanmateix té relació "
 #~ "d'aspecte %3.\n"
-#~ "Podeu utilitzar aquest valor, per exemple per utilitzar POV-Ray per produir "
-#~ "una imatge de %4x1000 pixels , o podeu entrar un altre valor positiu, \n"
-#~ "per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada de "
-#~ "d'aproximadament 1000x1000 pixels."
+#~ "Podeu utilitzar aquest valor, per exemple per utilitzar POV-Ray per "
+#~ "produir una imatge de %4x1000 pixels , o podeu entrar un altre valor "
+#~ "positiu, \n"
+#~ "per exemple 1 si voleu utilitzar POV-Ray per produir una imatge quadrada "
+#~ "de d'aproximadament 1000x1000 pixels."
 
 #~ msgid "Unit Cell Parameters..."
 #~ msgstr "Paràmetres de la cel·la unitat..."
@@ -2954,8 +2929,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "Invalid OpenGL context.\n"
-#~ "Either something is completely broken in your OpenGL setup (can you run any "
-#~ "OpenGL application?), or you found a bug."
+#~ "Either something is completely broken in your OpenGL setup (can you run "
+#~ "any OpenGL application?), or you found a bug."
 #~ msgstr ""
 #~ "Contexte OpenGL no vàlid. \n"
 #~ "Alguna cosa està completament trencada en la configuració OpenGL (podeu "
@@ -2976,8 +2951,8 @@ msgstr ""
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
 #~ msgstr ""
-#~ "Avogadro necessita que reinicieu el programa per tal que els canvis tinguen "
-#~ "efecte."
+#~ "Avogadro necessita que reinicieu el programa per tal que els canvis "
+#~ "tinguen efecte."
 
 #~ msgid "Residue"
 #~ msgstr "Residu"
@@ -3129,7 +3104,6 @@ msgstr ""
 #~ "\t L'angle està mesurat entre 1-3 utilitzant 2 com un punt comú\n"
 #~ "Botó secundari (dret) del ratolí: Inicialitza les mesures."
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Angle dièdric : %1%2"
 
@@ -3223,7 +3197,8 @@ msgstr ""
 #~ "Botó primari (esquerre) del ratolí:  Cliqueu i arrossegueu per a girar la "
 #~ "vista\n"
 #~ "Botó del mig: Cliqueu i arrossegueu per a moure el zoom avant i arrere\n"
-#~ "Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la vista."
+#~ "Botó secundari (dret) del ratolí: Cliqueu i arrossegueu per a moure la "
+#~ "vista."
 
 #~ msgid ""
 #~ "Selection Tool (F11)\n"
@@ -3276,7 +3251,8 @@ msgstr ""
 #~ "Enables the use of transitional animations when performing automatic "
 #~ "positioning of the GLWidget."
 #~ msgstr ""
-#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament GLWidget."
+#~ "Habilita l'ús d'animacions transitòries quan activeu automàticament "
+#~ "GLWidget."
 
 #~ msgid "Smooth Transitions"
 #~ msgstr "Transicions suaus"
@@ -4168,8 +4144,8 @@ msgstr ""
 #~ msgid ""
 #~ "All atoms within radius from the ligand will be part of the binding pocket"
 #~ msgstr ""
-#~ "Tots els àtoms dins del radi del lligand formaran part de la cavitat d'unió "
-#~ "(binding pocket)"
+#~ "Tots els àtoms dins del radi del lligand formaran part de la cavitat "
+#~ "d'unió (binding pocket)"
 
 #~ msgid "POV-Ray Export"
 #~ msgstr "Exporta a POV-Ray"
@@ -4303,7 +4279,8 @@ msgstr ""
 #~ msgstr "Color de la càrrega parcial."
 
 #~ msgid "Color by atomic partial charge (blue = positive, red = negative."
-#~ msgstr "Color de la càrrega atòmica parcial ( blau= positiva, roja=negativa."
+#~ msgstr ""
+#~ "Color de la càrrega atòmica parcial ( blau= positiva, roja=negativa."
 
 #~ msgid "Color by Distance"
 #~ msgstr "Color de la distància"
@@ -4359,8 +4336,8 @@ msgstr ""
 
 #~ msgid "Renders bonds as wires (lines), ideal for very large (bio)molecules"
 #~ msgstr ""
-#~ "Renderitza enllaços com línies (simplificades), ideal per  biomolècules molt "
-#~ "grans"
+#~ "Renderitza enllaços com línies (simplificades), ideal per  biomolècules "
+#~ "molt grans"
 
 #~ msgid "Save Video File"
 #~ msgstr "Alça el fitxer de vídeo"
@@ -4372,8 +4349,8 @@ msgstr ""
 #~ msgstr "Importa fitxers de trajectòria"
 
 #~ msgid ""
-#~ "Optimize molecules and generate conformers using molecular mechanics force "
-#~ "fields"
+#~ "Optimize molecules and generate conformers using molecular mechanics "
+#~ "force fields"
 #~ msgstr ""
 #~ "Optimitza molècules i genera confòrmers utilitzant camps de força mecànic "
 #~ "moleculars"
@@ -4389,7 +4366,8 @@ msgstr ""
 
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr ""
-#~ "Crea fitxers d'entrada per al paquets químics quàntics semblants al Gaussià"
+#~ "Crea fitxers d'entrada per al paquets químics quàntics semblants al "
+#~ "Gaussià"
 
 #~ msgid "Gaussian Input Deck Generator Warning"
 #~ msgstr "Avís del generador d'entrada Gaussiana"
@@ -4450,7 +4428,8 @@ msgstr ""
 
 #~ msgid "MOPAC did not run correctly. Perhaps it is not installed correctly."
 #~ msgstr ""
-#~ "MOPAC no s'executa correctament. Tal vegada no està correctament instal·lat"
+#~ "MOPAC no s'executa correctament. Tal vegada no està correctament "
+#~ "instal·lat"
 
 #~ msgid "Save MOPAC Input Deck"
 #~ msgstr "Alça l'entrada MOPAC"
@@ -4465,9 +4444,11 @@ msgstr ""
 #~ msgstr "Calcula orbitals moleulars i altres superfícies"
 
 #~ msgid ""
-#~ "Create POV-Ray files and render them using the command line POV-Ray program."
+#~ "Create POV-Ray files and render them using the command line POV-Ray "
+#~ "program."
 #~ msgstr ""
-#~ "Crea fitxers POV-Ray i renderitza'ls utilitzant el programa d'ordres POV-Ray."
+#~ "Crea fitxers POV-Ray i renderitza'ls utilitzant el programa d'ordres POV-"
+#~ "Ray."
 
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
@@ -4476,7 +4457,6 @@ msgstr ""
 #~ "Finestra per mostrar àtoms, enllaços, angles i propietats de torsió. Això "
 #~ "inclou un editor de coordenades cartesianes."
 
-#, qt-format
 #~ msgid "Atom Index %1"
 #~ msgstr "Índex atòmic %1"
 
@@ -4487,8 +4467,8 @@ msgstr ""
 #~ msgstr "Avís del generador d'entrades Q-Chem"
 
 #~ msgid ""
-#~ "Would you like to update the preview text, losing all changes made in the Q-"
-#~ "Chem input deck preview pane?"
+#~ "Would you like to update the preview text, losing all changes made in the "
+#~ "Q-Chem input deck preview pane?"
 #~ msgstr ""
 #~ "Voleu actualitzar el text d'abans, perdent tots els canvis fets al panell "
 #~ "d'entrada de Q-Chem ?"
@@ -4506,10 +4486,11 @@ msgstr ""
 #~ msgstr "Avís"
 
 #~ msgid ""
-#~ "This document is currently an isolated molecule. You need to create a unit "
-#~ "cell."
+#~ "This document is currently an isolated molecule. You need to create a "
+#~ "unit cell."
 #~ msgstr ""
-#~ "Este document és d'una molècula aïllada. Necessiteu crear una cel·la unitat."
+#~ "Este document és d'una molècula aïllada. Necessiteu crear una cel·la "
+#~ "unitat."
 
 #~ msgid "Super Cell"
 #~ msgstr "Super cel·la"
