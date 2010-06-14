@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 20:21+0000\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-11 06:33+0000\n"
 "Last-Translator: Mikko Nissinen <mikko.n94@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,8 +30,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -39,18 +39,18 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -78,7 +78,7 @@ msgstr ""
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -450,7 +450,7 @@ msgstr ""
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Värit"
 
@@ -527,7 +527,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr ""
 
@@ -542,7 +542,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr ""
@@ -559,7 +559,7 @@ msgstr ""
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr ""
@@ -926,8 +926,8 @@ msgstr "Sulje näkymä"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Keskitä"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1222,21 +1222,21 @@ msgstr ""
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff "
-"Hutchison,Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff "
-"Hutchison,Ulla, ,Launchpad Contributions:,Mikko Nissinen,Ulla, ,Launchpad "
-"Contributions:,Avogadro Team,Mikko Nissinen,Ulla, ,Launchpad "
-"Contributions:,Avogadro Team,Mikko Nissinen,Ulla"
+",Launchpad Contributions:,Ulla, ,Launchpad Contributions:,Geoff Hutchison,"
+"Ulla, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Ulla, ,"
+"Launchpad Contributions:,Mikko Nissinen,Ulla, ,Launchpad Contributions:,"
+"Avogadro Team,Mikko Nissinen,Ulla, ,Launchpad Contributions:,Avogadro Team,"
+"Mikko Nissinen,Ulla, ,Launchpad Contributions:,Avogadro Team,Mikko Nissinen,"
+"Ulla"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,mikko.n94@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,mikko.n94@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,mikko.n94@gmail.com,"
+",,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,mikko.n94@gmail.com,,,,"
+"avogadro-devel@lists.sourceforge.net,mikko.n94@gmail.com,,,,avogadro-"
+"devel@lists.sourceforge.net,mikko.n94@gmail.com,,,,avogadro-devel@lists."
+"sourceforge.net,mikko.n94@gmail.com,"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1244,11 +1244,9 @@ msgstr ""
 #~ "Tiedostoa %1 ei voida lukea:\n"
 #~ "%2"
 
-#, qt-format
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tiedoston %1 tiedostomuotoa ei voida lukea."
 
-#, qt-format
 #~ msgid "Cannot read file %1."
 #~ msgstr "Tiedostoa %1 ei voida lukea."
 
@@ -1259,7 +1257,6 @@ msgstr ""
 #~ "Tämä tiedosto sisältää vain 2D-koordinaatteja. Haluatko, että Avogadro "
 #~ "skaalaa sidokset ja tekee nopean optimisaation?"
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1270,7 +1267,6 @@ msgstr ""
 #~ msgid "Saving file."
 #~ msgstr "Tiedostoa tallennetaan."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Tiedostoon %1 ei voida kirjoittaa."
 
@@ -1280,7 +1276,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -1665,7 +1660,6 @@ msgstr ""
 #~ msgid "Renders atoms as Van der Waals spheres"
 #~ msgstr "Renderöi atomit Van der Waals -palloina"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1678,7 +1672,6 @@ msgstr ""
 #~ msgid "video files (*.avi)"
 #~ msgstr "videotiedostot (*.avi)"
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Atomien lukumäärä: %1"
 
@@ -1691,7 +1684,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "Peruuta"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1777,13 +1769,13 @@ msgstr ""
 #~ msgstr "POV-Ray"
 
 #~ msgid ""
-#~ "You requested no direct rendering using POV-Ray and not to keep the POV-Ray "
-#~ "file. This will result in no output being saved. Are you sure that is what "
-#~ "you want?"
+#~ "You requested no direct rendering using POV-Ray and not to keep the POV-"
+#~ "Ray file. This will result in no output being saved. Are you sure that is "
+#~ "what you want?"
 #~ msgstr ""
 #~ "Valintasi on olla käyttämättä suoraa POV-Ray-renderöintiä etkä halua "
-#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. Oletko "
-#~ "varma että haluat toimia näin?"
+#~ "säilyttää POV-Ray-tiedostoa. Tällöin tulosta ei tulla tallettamaan. "
+#~ "Oletko varma että haluat toimia näin?"
 
 #~ msgid "&Properties"
 #~ msgstr "&Ominaisuudet"
@@ -1800,7 +1792,6 @@ msgstr ""
 #~ msgid "Partial Charge"
 #~ msgstr "Osittaisvaraus"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atomi %1"
 
@@ -1813,14 +1804,12 @@ msgstr ""
 #~ msgid "Length (Å)"
 #~ msgstr "Pituus (Å)"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Sidos %1"
 
 #~ msgid "Angle (°)"
 #~ msgstr "Kulma (°)"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Kulma %1"
 
@@ -1870,7 +1859,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
-#~ msgstr "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
+#~ msgstr ""
+#~ "Avogadro pitää käynnistää uudelleen, jotta muutokset tulevat voimaan"
 
 #~ msgid "Algorithm:"
 #~ msgstr "Algoritmi:"
@@ -1899,11 +1889,9 @@ msgstr ""
 #~ msgid " Show Angles"
 #~ msgstr " Näytä kulmat"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Etäisyys (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Etäisyys (1->2): %1 %2"
 
@@ -1919,11 +1907,9 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Etäisyys (3->4): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Kulma: %1 %2"
 
@@ -1937,8 +1923,8 @@ msgstr ""
 #~ "Right Mouse: Delete Atom"
 #~ msgstr ""
 #~ "Piirtotyökalu (F8)\n"
-#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi atomeja "
-#~ "ja sidoksia\n"
+#~ "Vasen hiiren painike: \tNapsauta ja vedä painike pohjassa luodaksesi "
+#~ "atomeja ja sidoksia\n"
 #~ "Oikea hiiren painike: \tPoista atomi"
 
 #~ msgid "Add Atom"
@@ -2000,9 +1986,6 @@ msgstr ""
 
 #~ msgid "Selection Mode:"
 #~ msgstr "Valintatila:"
-
-#~ msgid "Center"
-#~ msgstr "Keskitä"
 
 #~ msgid "Bond Radius:"
 #~ msgstr "Sidoksen säde:"
@@ -2254,12 +2237,13 @@ msgstr ""
 #~ msgstr "Kulmat (°)"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
-#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro lukee "
-#~ "ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut molekyylit "
-#~ "saattavat kadota."
+#~ "Tämä tiedosto näyttää sisältävän useita molekyylitallenteita. Avogadro "
+#~ "lukee ainoastaan ensimmäisen molekyylin. Jos tallennat, kaikki muut "
+#~ "molekyylit saattavat kadota."
 
 #~ msgid ""
 #~ "The document has been modified.\n"
@@ -2297,7 +2281,6 @@ msgstr ""
 #~ msgid "Add constraint"
 #~ msgstr "Lisää rajoite"
 
-#, qt-format
 #~ msgid "Number of rotatable bonds: %1"
 #~ msgstr "Kierrettävien sidosten määrä: %1"
 
@@ -2334,7 +2317,6 @@ msgstr ""
 #~ msgid "Create Surfaces..."
 #~ msgstr "Luo pintoja..."
 
-#, qt-format
 #~ msgid "Wrote file %1."
 #~ msgstr "Kirjoitettiin tiedosto %1."
 
@@ -2356,7 +2338,6 @@ msgstr ""
 #~ msgid "Torsion (°)"
 #~ msgstr "Kiertokulma (°)"
 
-#, qt-format
 #~ msgid "Torsion %1"
 #~ msgstr "Kiertokulma %1"
 
@@ -2402,7 +2383,6 @@ msgstr ""
 #~ msgid "Force Field:"
 #~ msgstr "Voimakenttä:"
 
-#, qt-format
 #~ msgid "AutoOpt: E = %1 %2 (dE = %3)"
 #~ msgstr "AutoOpt: E = %1 %2 (dE = %3)"
 
@@ -2454,7 +2434,6 @@ msgstr ""
 #~ msgid "Measure"
 #~ msgstr "Mittaa"
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Kiertokulma: %1 %2"
 
@@ -2484,8 +2463,8 @@ msgstr ""
 #~ "\n"
 #~ "Vasen hiiren painike: Napsauta ja vedä painike pohjassa siirtääksesi "
 #~ "atomeita\n"
-#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs tai "
-#~ "kauemmas\n"
+#~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa atomeita lähemmäs "
+#~ "tai kauemmas\n"
 #~ "Oikea hiiren painike: Napsauta ja vedä painike pohjassa pyörittääksesi "
 #~ "valittuja atomeita"
 
@@ -2502,7 +2481,8 @@ msgstr ""
 #~ "näkymää\n"
 #~ "Hiiren keskipainike: Napsauta ja vedä painike pohjassa lähentääksesi tai "
 #~ "loitontaaksesi näkymää\n"
-#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi näkymää"
+#~ "Oikea hiiren painike: Napsauta tai vedä painike pohjassa siirtääksesi "
+#~ "näkymää"
 
 #~ msgid "Save as .avi..."
 #~ msgstr "Tallenna muodossa .avi..."

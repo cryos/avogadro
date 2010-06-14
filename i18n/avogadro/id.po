@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 20:41+0000\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-11 08:09+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,35 +30,35 @@ msgstr "(Revisi Git: %1)"
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
-"<h3>%1</h3><br/><br/>Aplikasi Versi: %2<br/><br/>Versi Pustaka: "
-"%3<br/><br/>Versi Open Babel: %4"
+"<h3>%1</h3><br/><br/>Aplikasi Versi: %2<br/><br/>Versi Pustaka: %3<br/><br/"
+">Versi Open Babel: %4"
 
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
-"<br/><br/>Versi Qt: %1<br/><br/>Informasi lanjut kinjungi <a "
-"href=\"http://avogadro.openmolecules.net/\">Halaman Utama "
-"Avogadro</a>.<br/><br/>Program ini harap diterima APA ADANYA dan TIDAK "
-"MEMBERIKAN JAMINAN DALAM BENTUK APAPUN, TIDAK ADA JAMINAN RANCANG BANGUN, "
-"PERDANGANGAN DAN KESESUAIAN UNTUK TUJUAN TERTENTU.<br/>"
+"<br/><br/>Versi Qt: %1<br/><br/>Informasi lanjut kinjungi <a href=\"http://"
+"avogadro.openmolecules.net/\">Halaman Utama Avogadro</a>.<br/><br/>Program "
+"ini harap diterima APA ADANYA dan TIDAK MEMBERIKAN JAMINAN DALAM BENTUK "
+"APAPUN, TIDAK ADA JAMINAN RANCANG BANGUN, PERDANGANGAN DAN KESESUAIAN UNTUK "
+"TUJUAN TERTENTU.<br/>"
 
 #: src/editcommands.cpp:44
 msgid "Cut Molecule"
@@ -85,7 +85,7 @@ msgstr "Hapus Atom"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Setelan"
 
@@ -117,6 +117,13 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
+"Penggunaan: %1 [options] [files]\n"
+"\n"
+"Avogadro - Advanced Molecular Editor (version %2)\n"
+"\n"
+"Pilihan:\n"
+"  -h, --help\t\tMenampilkan bantuan (seperti ini)\n"
+"  -v, --version\t\tMenampilkan informasi versi\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
@@ -462,7 +469,7 @@ msgstr "Obyek"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Warna"
 
@@ -539,7 +546,7 @@ msgstr "hanya label yang mempunyai sub item"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "Item"
 
@@ -554,7 +561,7 @@ msgstr "Rendah"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Sedang"
@@ -571,7 +578,7 @@ msgstr "Tidak Didefinisikan"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Kosong"
@@ -938,8 +945,8 @@ msgstr "Tutup Tampilan"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Tengah"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1235,19 +1242,23 @@ msgstr "Kabut:"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:, "
-",Launchpad Contributions:,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
+",Launchpad Contributions:,Waluyo Adi Siswanto, ,Launchpad Contributions:, ,"
+"Launchpad Contributions:,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
+"Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad "
 "Contributions:,Avogadro Team,Geoff Hutchison,Waluyo Adi Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
+msgstr ""
+",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-devel@lists."
+"sourceforge.net,,"
 
-#, qt-format
+#~ msgid "Better View"
+#~ msgstr "Tampilan Lebih Cantik"
+
 #~ msgid "Cannot read file format of file %1."
 #~ msgstr "Tidak bisa membaca format berkas %1."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot read file %1:\n"
 #~ "%2."
@@ -1261,7 +1272,6 @@ msgstr ",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgid "Saving molecular file failed."
 #~ msgstr "Tidak berhasil menyimpan berkas molekul."
 
-#, qt-format
 #~ msgid ""
 #~ "Cannot write to the file %1:\n"
 #~ "%2."
@@ -1269,14 +1279,12 @@ msgstr ",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "Tidak bisa menulis dalaam berkas %1:\n"
 #~ "%2."
 
-#, qt-format
 #~ msgid "Cannot write to file format of file %1."
 #~ msgstr "Tidak bisa menulis dalam format dari berkas %1."
 
 #~ msgid "Saving file."
 #~ msgstr "Menyimpan berkas."
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Tidak bisa menulis berkas %1."
 
@@ -1284,8 +1292,9 @@ msgstr ",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ msgstr "1"
 
 #~ msgid ""
-#~ "This file appears to contain multiple molecule records. Avogadro will only "
-#~ "read the first molecule. If you save, all other molecules may be lost."
+#~ "This file appears to contain multiple molecule records. Avogadro will "
+#~ "only read the first molecule. If you save, all other molecules may be "
+#~ "lost."
 #~ msgstr ""
 #~ "Berkas ini mempunyai catatan berbagai molekul. Avogadro hanya membaca "
 #~ "molekul pertama saja. Apabila anda menyimpan, data molekul lain akan "
@@ -1295,23 +1304,17 @@ msgstr ",,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,"
 #~ "This file contains 2D coordinates only. Do you want Avogadro to scale the "
 #~ "bonds and do a quick optimization?"
 #~ msgstr ""
-#~ "Berkas ini hanya mengandung koordinat 2D. Apakah anda menghendaki Avogadro "
-#~ "merubah skala ikatan dan melakukan optimisasi cepat?"
+#~ "Berkas ini hanya mengandung koordinat 2D. Apakah anda menghendaki "
+#~ "Avogadro merubah skala ikatan dan melakukan optimisasi cepat?"
 
-#~ msgid "Center"
-#~ msgstr "Tengah"
-
-#, qt-format
 #~ msgctxt "%1 is element, %L2 is atom index"
 #~ msgid "Atom %1 %L2"
 #~ msgstr "Atom %1 %L2"
 
-#, qt-format
 #~ msgctxt "%1 is residue name, %2 is residue index"
 #~ msgid "Residue %1 %2"
 #~ msgstr "Residu %1 %2"
 
-#, qt-format
 #~ msgctxt "%L1 is bond index"
 #~ msgid "Bond %L1"
 #~ msgstr "Ikatan %L1"
