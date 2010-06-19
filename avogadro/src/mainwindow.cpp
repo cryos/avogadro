@@ -1034,6 +1034,7 @@ namespace Avogadro
 
       Molecule *mol = new Molecule;
       mol->setOBMol(obMolecule);
+      mol->setFileName(d->moleculeFile->fileName());
       setMolecule(mol);
       // Now unroll any settings we saved in the file
       // This is disabled for version 1.0-release
