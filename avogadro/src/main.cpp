@@ -104,8 +104,7 @@ int main(int argc, char *argv[])
   // This also works for the Windows package, but BABEL_LIBDIR is ignored
   QByteArray babelDataDir(("BABEL_DATADIR="
                            + QCoreApplication::applicationDirPath()
-                           + "/../share/openbabel/"
-                           + BABEL_VERSION).toAscii());
+                           + "/../share/openbabel/").toAscii());
   QByteArray babelLibDir(("BABEL_LIBDIR="
                           + QCoreApplication::applicationDirPath()
                           + "/../lib/openbabel").toAscii());
