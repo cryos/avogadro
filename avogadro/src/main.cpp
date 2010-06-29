@@ -106,8 +106,7 @@ int main(int argc, char *argv[])
   // Make sure to enclose the environment variable in quotes, or spaces will cause problems
   QString escapedAppPath = QCoreApplication::applicationDirPath().replace(' ', "\ ");
   QByteArray babelDataDir((QCoreApplication::applicationDirPath()
-                          + "/../share/openbabel/"
-                           + BABEL_VERSION).toAscii());
+                          + "/../share/openbabel/").toAscii());
   QByteArray babelLibDir((QCoreApplication::applicationDirPath()
                          + "/../lib/openbabel").toAscii());
   int res1 = setenv("BABEL_DATADIR", babelDataDir.data(), 1);
