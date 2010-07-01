@@ -116,7 +116,7 @@ namespace Avogadro {
     vector<double> intensities = m_vibrations->GetIntensities();
     m_frequencies = frequencies;
     m_intensities = intensities;
-    #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+    #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
       vector<double> raman_activities = m_vibrations->GetRamanActivities();
       if (raman_activities.size() == 0) {
         //resize(274, height());
@@ -185,7 +185,7 @@ namespace Avogadro {
       else {
         newInten = new QTableWidgetItem(format.arg(intensities[row], 0, 'f', 3));
       }
-      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
         QTableWidgetItem *newRaman;
         if (row >= raman_activities.size()) {
           newRaman = new QTableWidgetItem("-");
@@ -198,7 +198,7 @@ namespace Avogadro {
       newInten->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
       ui.vibrationTable->setItem(row, 0, newFreq);
       ui.vibrationTable->setItem(row, 1, newInten);
-      #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+      #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
         ui.vibrationTable->setItem(row, 2, newRaman);
       #endif
     }
