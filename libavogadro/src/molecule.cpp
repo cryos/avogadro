@@ -60,7 +60,7 @@ namespace Avogadro{
       MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
                           invalidRings(true), obmol(0), obunitcell(0),
                           obvibdata(0)
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
                         , obdosdata(0), obelectronictransitiondata(0)
 #endif
     {}
@@ -97,7 +97,7 @@ namespace Avogadro{
       // TODO: Cache an OBMol, in which case the vib. data (and others)
       //       won't be necessary
       OpenBabel::OBVibrationData *  obvibdata;
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
       OpenBabel::OBDOSData *        obdosdata;
       OpenBabel::OBElectronicTransitionData *
                                     obelectronictransitiondata;
@@ -781,7 +781,7 @@ namespace Avogadro{
   void Molecule::calculateGroupIndices() const
   {
 /*    OpenBabel::OBMol obmol = OBMol();
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     for (unsigned int i = 0; i < obmol.NumAtoms(); ++i) {
       atom(i)->setGroupIndex(obmol.GetAtomGroupNumbers().at(i));
     }
@@ -1219,7 +1219,7 @@ namespace Avogadro{
       obmol.SetData(d->obvibdata->Clone(&obmol));
     }
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99                          
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     // Copy dos, if needed
     if (d->obdosdata != NULL) {
       obmol.SetData(d->obdosdata->Clone(&obmol));
@@ -1366,7 +1366,7 @@ namespace Avogadro{
       d->obvibdata = vibData;
     }
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     // Copy DOS data
     if (obmol->HasData(OpenBabel::OBGenericDataType::DOSData)) {
       OpenBabel::OBDOSData *dosData = static_cast<OpenBabel::OBDOSData*>(obmol->GetData(OpenBabel::OBGenericDataType::DOSData));
