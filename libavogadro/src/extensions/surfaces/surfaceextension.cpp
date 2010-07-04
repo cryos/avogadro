@@ -24,7 +24,7 @@
 
 #include "surfaceextension.h"
 
-#include "basisset.h"
+#include "gaussianset.h"
 #include "slaterset.h"
 #include "gaussianfchk.h"
 #include "molpro.h"
@@ -61,7 +61,7 @@ using Eigen::Vector3i;
 namespace Avogadro
 {
   SurfaceExtension::SurfaceExtension(QObject* parent) : Extension(parent),
-    m_glwidget(0), m_surfaceDialog(0), m_molecule(0), m_basis(0), m_slater(0),
+    m_glwidget(0), m_surfaceDialog(0), m_molecule(0), m_gaussian(0), m_slater(0),
     m_progress(0), m_mesh1(0), m_mesh2(0), m_meshGen1(0), m_meshGen2(0),
     m_VdWsurface(0)
   {
@@ -72,8 +72,8 @@ namespace Avogadro
 
   SurfaceExtension::~SurfaceExtension()
   {
-    delete m_basis;
-    m_basis = 0;
+    delete m_gaussian;
+    m_gaussian = 0;
     delete m_slater;
     m_slater = 0;
     delete m_meshGen1;
@@ -121,8 +121,8 @@ namespace Avogadro
     // Stuff we manage that will not be valid any longer
     delete m_slater;
     m_slater = 0;
-    delete m_basis;
-    m_basis = 0;
+    delete m_gaussian;
+    m_gaussian = 0;
     delete m_VdWsurface;
     m_VdWsurface = 0;
     m_loadedFileName = QString();
@@ -187,21 +187,21 @@ namespace Avogadro
           delete m_slater;
           m_slater = 0;
         }
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
+        if (m_gaussian) {
+          delete m_gaussian;
+          m_gaussian = 0;
         }
-        m_basis = new BasisSet;
-        GaussianFchk fchk(fullFileName, m_basis);
+        m_gaussian = new GaussianSet;
+        GaussianFchk fchk(fullFileName, m_gaussian);
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;
-        m_surfaceDialog->setMOs(m_basis->numMOs());
-        m_moCubes.resize(m_basis->numMOs());
+        m_surfaceDialog->setMOs(m_gaussian->numMOs());
+        m_moCubes.resize(m_gaussian->numMOs());
         m_moCubes.fill(FALSE_ID);
-        for (int i = 0; i < m_basis->numMOs(); ++i) {
-          if (m_basis->HOMO(i)) m_surfaceDialog->setHOMO(i);
-          else if (m_basis->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        for (unsigned int i = 0; i < m_gaussian->numMOs(); ++i) {
+          if (m_gaussian->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_gaussian->LUMO(i)) m_surfaceDialog->setLUMO(i);
         }
         return true;
       }
@@ -210,9 +210,9 @@ namespace Avogadro
           delete m_slater;
           m_slater = 0;
         }
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
+        if (m_gaussian) {
+          delete m_gaussian;
+          m_gaussian = 0;
         }
         m_slater = new SlaterSet;
         MopacAux aux(fullFileName, m_slater);
@@ -233,22 +233,22 @@ namespace Avogadro
           delete m_slater;
           m_slater = 0;
         }
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
+        if (m_gaussian) {
+          delete m_gaussian;
+          m_gaussian = 0;
         }
-        m_basis = new BasisSet;
-        Molpro mpo(fullFileName, m_basis);
-        qDebug() << "numMOs: " << m_basis->numMOs();
+        m_gaussian = new GaussianSet;
+        Molpro mpo(fullFileName, m_gaussian);
+        qDebug() << "numMOs: " << m_gaussian->numMOs();
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;
-        m_surfaceDialog->setMOs(m_basis->numMOs());
-        m_moCubes.resize(m_basis->numMOs());
+        m_surfaceDialog->setMOs(m_gaussian->numMOs());
+        m_moCubes.resize(m_gaussian->numMOs());
         m_moCubes.fill(FALSE_ID);
-        for (int i = 0; i < m_basis->numMOs(); ++i) {
-          if (m_basis->HOMO(i)) m_surfaceDialog->setHOMO(i);
-          else if (m_basis->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        for (int i = 0; i < m_gaussian->numMOs(); ++i) {
+          if (m_gaussian->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_gaussian->LUMO(i)) m_surfaceDialog->setLUMO(i);
         }
         return true;
       }
@@ -406,8 +406,8 @@ namespace Avogadro
       connect(&m_slater->watcher(), SIGNAL(finished()),
               this, SLOT(calculateDone()));
     }
-    else if (m_basis) {
-      m_basis->calculateCubeMO(cube, mo);
+    else if (m_gaussian) {
+      m_gaussian->calculateCubeMO(cube, mo);
 
      // Set up a progress dialog
       if (!m_progress) {
@@ -417,19 +417,19 @@ namespace Avogadro
 
       // Set up the progress bar
       m_progress->setWindowTitle(tr("Calculating MO %L1", "Molecular Orbital").arg(mo));
-      m_progress->setRange(m_basis->watcher().progressMinimum(),
-                           m_basis->watcher().progressMaximum());
-      m_progress->setValue(m_basis->watcher().progressValue());
+      m_progress->setRange(m_gaussian->watcher().progressMinimum(),
+                           m_gaussian->watcher().progressMaximum());
+      m_progress->setValue(m_gaussian->watcher().progressValue());
       m_progress->show();
 
       // Connect signals and slots
-      connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+      connect(&m_gaussian->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
-      connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+      connect(&m_gaussian->watcher(), SIGNAL(progressRangeChanged(int, int)),
               m_progress, SLOT(setRange(int, int)));
       connect(m_progress, SIGNAL(canceled()),
               this, SLOT(calculateCanceled()));
-      connect(m_basis, SIGNAL(finished()),
+      connect(m_gaussian, SIGNAL(finished()),
               this, SLOT(calculateDone()));
     }
     m_surfaceDialog->enableCalculation(false);
@@ -437,7 +437,7 @@ namespace Avogadro
 
   void SurfaceExtension::calculateElectronDensity(Cube *cube)
   {
-    if (!m_basis && !m_slater)
+    if (!m_gaussian && !m_slater)
       return;
 
     if (m_slater) {
@@ -467,9 +467,9 @@ namespace Avogadro
       connect(&m_slater->watcher(), SIGNAL(finished()),
               this, SLOT(calculateDone()));
     }
-    else if (m_basis) {
+    else if (m_gaussian) {
       // Gaussian type orbital
-      m_basis->calculateCubeDensity(cube);
+      m_gaussian->calculateCubeDensity(cube);
 
       // Set up a progress dialog
       if (!m_progress) {
@@ -480,19 +480,19 @@ namespace Avogadro
 
       // Set up the progress bar
       m_progress->setWindowTitle(tr("Calculating Electron Density"));
-      m_progress->setRange(m_basis->watcher().progressMinimum(),
-                           m_basis->watcher().progressMinimum());
-      m_progress->setValue(m_basis->watcher().progressValue());
+      m_progress->setRange(m_gaussian->watcher().progressMinimum(),
+                           m_gaussian->watcher().progressMinimum());
+      m_progress->setValue(m_gaussian->watcher().progressValue());
       m_progress->show();
 
       // Connect the signals and slots
-      connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+      connect(&m_gaussian->watcher(), SIGNAL(progressValueChanged(int)),
               m_progress, SLOT(setValue(int)));
-      connect(&m_basis->watcher(), SIGNAL(progressRangeChanged(int, int)),
+      connect(&m_gaussian->watcher(), SIGNAL(progressRangeChanged(int, int)),
               m_progress, SLOT(setRange(int, int)));
       connect(m_progress, SIGNAL(canceled()),
               this, SLOT(calculateCanceled()));
-      connect(m_basis, SIGNAL(finished()),
+      connect(m_gaussian, SIGNAL(finished()),
               this, SLOT(calculateDone()));
     }
     m_surfaceDialog->enableCalculation(false);
@@ -687,8 +687,8 @@ namespace Avogadro
         // Disconnect the signals and slots that we are now finished with
         if (m_surfaceDialog->cubeType() == Cube::MO ||
             m_surfaceDialog->cubeType() == Cube::ElectronDensity) {
-          if (m_basis)
-            disconnect(&m_basis->watcher(), 0, this, 0);
+          if (m_gaussian)
+            disconnect(&m_gaussian->watcher(), 0, this, 0);
           else if (m_slater)
             disconnect(&m_slater->watcher(), 0, this, 0);
         }

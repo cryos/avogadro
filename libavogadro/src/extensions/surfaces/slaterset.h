@@ -25,6 +25,8 @@
 #ifndef SLATERSET_H
 #define SLATERSET_H
 
+#include "basisset.h"
+
 #include <QObject>
 #include <QFuture>
 #include <QFutureWatcher>
@@ -57,7 +59,7 @@ namespace Avogadro
   class Cube;
   struct SlaterShell;
 
-  class SlaterSet : public QObject
+  class SlaterSet : public BasisSet
   {
   Q_OBJECT
 
@@ -110,11 +112,6 @@ namespace Avogadro
     bool addPQNs(const std::vector<int> &pqns);
 
     /**
-     * The number of electrons in the molecule.
-     */
-    bool setNumElectrons(double electrons);
-
-    /**
      * The overlap matrix.
      * @param m Matrix containing the overlap matrix for the basis.
      */
@@ -137,28 +134,6 @@ namespace Avogadro
      */
     unsigned int numMOs();
 
-    /**
-     * Check if the given MO number is the HOMO or not.
-     * @param n The MO number.
-     * @return True if the given MO number is the HOMO.
-     */
-    bool HOMO(unsigned int n)
-    {
-      if (n+1 == static_cast<unsigned int>(m_electrons / 2)) return true;
-      else return false;
-    }
-
-    /**
-     * Check if the given MO number is the LUMO or not.
-     * @param n The MO number.
-     * @return True if the given MO number is the LUMO.
-     */
-    bool LUMO(unsigned int n)
-    {
-      if (n == static_cast<unsigned int>(m_electrons / 2)) return true;
-      else return false;
-    }
-
     void outputAll();
 
     bool calculateCubeMO(Cube *cube, unsigned int state = 1);
@@ -180,7 +155,6 @@ namespace Avogadro
     std::vector<double> m_zetas;
     std::vector<int> m_pqns, m_PQNs;
 
-    unsigned int m_electrons;
     std::vector<double> m_factors;
     Eigen::MatrixXd m_overlap;
     Eigen::MatrixXd m_eigenVectors;
