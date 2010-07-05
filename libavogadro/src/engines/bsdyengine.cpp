@@ -334,15 +334,19 @@ namespace Avogadro
     return true;
   }
 
-  double radiusCovalent(const Atom *atom)
+  // Protect globally declared functions in an anonymous namespace
+  namespace
   {
-    return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
-  }
+    double radiusCovalent(const Atom *atom)
+    {
+      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
+    }
 
-  double radiusVdW(const Atom *atom)
-  {
-    return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
-  }
+    double radiusVdW(const Atom *atom)
+    {
+      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+    }
+  } // End of anonymous namespace
 
   inline double BSDYEngine::radius(const Atom *atom) const
   {
