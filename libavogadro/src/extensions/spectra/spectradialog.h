@@ -42,7 +42,7 @@ namespace Avogadro {
   class SpectraType;
   class IRSpectra;
   class NMRSpectra;
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
   class DOSSpectra;
   class UVSpectra;
   class CDSpectra;
@@ -98,7 +98,7 @@ namespace Avogadro {
 
     IRSpectra *m_spectra_ir;
     NMRSpectra *m_spectra_nmr;
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     DOSSpectra *m_spectra_dos;
     UVSpectra *m_spectra_uv;
     CDSpectra *m_spectra_cd;

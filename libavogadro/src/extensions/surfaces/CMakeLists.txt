@@ -6,7 +6,7 @@ set(PLUGIN_TARGET extensions)
 
 ### Surfaces
 set(surfaceextension_SRCS surfaceextension.cpp surfacedialog.cpp
-  basisset.cpp gaussianfchk.cpp slaterset.cpp mopacaux.cpp molpro.cpp
+  basisset.cpp gaussianfchk.cpp gaussianset.cpp slaterset.cpp mopacaux.cpp molpro.cpp
   vdwsurface.cpp qtiocompressor/qtiocompressor.cpp)
 avogadro_plugin_nogl(surfaceextension "${surfaceextension_SRCS}" surfacedialog.ui)
 target_link_libraries(surfaceextension ${LINK_LIBS} ${ZLIB_LIBRARIES})

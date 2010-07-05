@@ -22,7 +22,7 @@
 
 #include "ir.h"
 #include "nmr.h"
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
   #include "dos.h"
   #include "uv.h"
   #include "cd.h"
@@ -69,7 +69,7 @@ namespace Avogadro {
     // Set up spectra variables
     m_spectra_ir = new IRSpectra(this);
     m_spectra_nmr = new NMRSpectra(this);
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     m_spectra_dos = new DOSSpectra(this);
     m_spectra_uv = new UVSpectra(this);
     m_spectra_cd = new CDSpectra(this);
@@ -155,7 +155,7 @@ namespace Avogadro {
     writeSettings();
     delete m_spectra_ir;
     delete m_spectra_nmr;
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     delete m_spectra_dos;
     delete m_spectra_uv;
     delete m_spectra_cd;
@@ -172,7 +172,7 @@ namespace Avogadro {
 
     m_spectra_ir->clear();
     m_spectra_nmr->clear();
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     m_spectra_dos->clear();
     m_spectra_uv->clear();
     m_spectra_cd->clear();
@@ -211,7 +211,7 @@ namespace Avogadro {
       m_spectra_nmr->setAtom(""); // Empty string will grab from current selection in the dialog.
     }
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
 
     // Check for DOS data
     bool hasDOS = m_spectra_dos->checkForData(m_molecule);
@@ -608,7 +608,7 @@ namespace Avogadro {
     types
       << tr("PWscf IR data (*.out)", "Do not remove 'IR' or '(*.out)' -- needed for parsing later" )
       << tr("Turbomole IR data (control)", "Do not remove 'IR' or '(control)' -- needed for parsing later" )
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
       << tr("Turbomole UV data (spectrum)", "Do not remove 'UV' or '(spectrum)' -- needed for parsing later" )
       << tr("Turbomole CD data (cdspectrum)", "Do not remove 'CD' or '(cdspectrum)' -- needed for parsing later" )
 #endif
@@ -715,7 +715,7 @@ namespace Avogadro {
       m_molecule->setOBMol(obmol);
     }
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     else if (type.contains("CD")) { // We have CD data loaded
       // Set m_spectra
       m_spectra = "CD";
@@ -1115,7 +1115,7 @@ namespace Avogadro {
       return m_spectra_ir;
     else if (m_spectra == "NMR")
       return m_spectra_nmr;
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
     else if (m_spectra == "DOS")
       return m_spectra_dos;
     else if (m_spectra == "UV")

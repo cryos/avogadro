@@ -106,12 +106,6 @@ namespace Avogadro
     return true;
   }
 
-  bool SlaterSet::setNumElectrons(double electrons)
-  {
-    m_electrons = electrons;
-    return true;
-  }
-
   bool SlaterSet::addOverlapMatrix(const Eigen::MatrixXd &m)
   {
     m_overlap.resize(m.rows(), m.cols());

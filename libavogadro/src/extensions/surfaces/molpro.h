@@ -34,12 +34,12 @@
 
 namespace Avogadro
 {
-  class BasisSet;
+  class GaussianSet;
 
   class Molpro
   {
   public:
-    Molpro(const QString &filename, BasisSet *basis);
+    Molpro(const QString &filename, GaussianSet *basis);
     ~Molpro();
     void outputAll();
     void reorderD5Orbitals();
