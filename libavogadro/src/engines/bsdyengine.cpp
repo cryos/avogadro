@@ -334,21 +334,29 @@ namespace Avogadro
     return true;
   }
 
+  // Protect globally declared functions in an anonymous namespace
+  namespace
+  {
+    double radiusCovalent(const Atom *atom)
+    {
+      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
+    }
+
+    double radiusVdW(const Atom *atom)
+    {
+      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+    }
+  } // End of anonymous namespace
+
   inline double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->customRadius())
       return atom->customRadius()* m_atomRadiusPercentage;
     else {
-      if (atom->atomicNumber()) {
-        switch (m_atomRadiusType) {
-          case 0:
-            return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-          case 1:
-            return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-        }
-      }
-      return m_atomRadiusPercentage;
+      if (atom->atomicNumber())
+        return pRadius(atom) * m_atomRadiusPercentage;
     }
+    return m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )
@@ -360,6 +368,10 @@ namespace Avogadro
   void BSDYEngine::setAtomRadiusType(int type)
   {
     m_atomRadiusType = type;
+    if (type == 0)
+      pRadius = radiusCovalent;
+    else
+      pRadius = radiusVdW;
     emit changed();
   }
 
