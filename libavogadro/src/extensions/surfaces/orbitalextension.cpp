@@ -180,8 +180,8 @@ namespace Avogadro
       // Determine HOMO
       unsigned int homo = ceil( m_basis->numElectrons() / 2.0 );
 
-      // Initialize prioritizer at HOMO's index + 1
-      int priority = homo + 1;
+      // Initialize prioritizer at HOMO's index
+      int priority = homo;
 
       // Loop through all MOs, submitting calculations with increasing
       // priority until HOMO is reached, submit both HOMO and LUMO at
@@ -196,8 +196,8 @@ namespace Avogadro
                               priority);
 
         // Update priority. Stays the same when i = homo.
-        if ( i < homo ) priority--;
-        else if ( i > homo + 1 ) priority++;
+        if ( i + 1 < homo ) priority--;
+        else if ( i + 1 > homo) priority++;
       }
     }
     checkQueue();
@@ -222,7 +222,8 @@ namespace Avogadro
     // Set progress to show 0%
     m_widget->calculationQueued(newCalc.orbital);
 
-    qDebug() << "New calculation added:" << newCalc.orbital;
+    qDebug() << "New calculation added:" << newCalc.orbital
+             << "Priority:" << newCalc.priority;
   }
 
   void OrbitalExtension::startCalculation(unsigned int queueIndex)
