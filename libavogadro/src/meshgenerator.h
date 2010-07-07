@@ -57,6 +57,7 @@
 
   class A_EXPORT MeshGenerator : public QThread
   {
+    Q_OBJECT
   public:
     /**
      * Constructor.
@@ -109,6 +110,22 @@
      */
     void clear();
 
+    /**
+     * @return The minimum value of the progress value.
+     */
+    int progressMinimum() {return m_progmin;};
+
+    /**
+     * @return The maximum value of the progress value.
+     */
+    int progressMaximum() {return m_progmax;};
+
+  signals:
+    /**
+     * The current value of the calculation's progress.
+     */
+    void progressValueChanged(int);
+
   protected:
     /**
      * Get the normal to the supplied point. This operation is quite expensive
@@ -143,6 +160,8 @@
     Eigen::Vector3i m_dim; /** The dimensions of the cube. */
     std::vector<Eigen::Vector3f> m_vertices, m_normals;
     std::vector<unsigned int> m_indices;
+    int m_progmin;
+    int m_progmax;
 
     /**
      * These are the tables of constants for the marching cubes and tetrahedra
