@@ -37,8 +37,8 @@ namespace Avogadro {
     m_sortedTableModel->setSourceModel(m_tableModel);
 
     ui.table->setModel(m_sortedTableModel);
-
     ui.table->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    ui.table->setItemDelegateForColumn(OrbitalTableModel::C_Status, new ProgressBarDelegate(this));
 
     connect(ui.table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(tableClicked(const QItemSelection&)));
