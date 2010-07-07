@@ -1,8 +1,9 @@
 Requirements
 ============
- -- CMake 2.6.0 or later
+ -- CMake 2.6.0 or later (2.8.0 recommended)
  -- Qt 4.5.0 or later (4.5.3 recommended)
- -- OpenBabel 2.2.2 or later (2.2.3 recommended)
+ -- OpenBabel 2.2.2 or later (development version from 
+  http://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk is recommended)
  -- Eigen 2.0.3 or later (2.0.9 recommended)
 
 
