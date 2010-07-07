@@ -219,6 +219,9 @@ namespace Avogadro
     // Add new calculation
     m_queue.append(newCalc);
 
+    // Set progress to show 0%
+    m_widget->calculationQueued(newCalc.orbital);
+
     qDebug() << "New calculation added:" << newCalc.orbital;
   }
 
@@ -277,7 +280,14 @@ namespace Avogadro
     connect(&m_basis->watcher(), SIGNAL(finished()),
             this, SLOT(calculateCubeDone()));
 
-    // TODO set up progress dialog if priority is zero
+    m_widget->initializeProgress(info->orbital,
+                                 m_basis->watcher().progressMinimum(),
+                                 m_basis->watcher().progressMaximum(),
+                                 1, 3);
+
+    connect(&m_basis->watcher(), SIGNAL(progressValueChanged(int)),
+            this, SLOT(updateProgress(int)));
+
     qDebug() << info->orbital << " Cube calculation started.";
   }
 
@@ -311,6 +321,7 @@ namespace Avogadro
                  << "\tOrbital " << cI->orbital << "\n"
                  << "\tResolution " << cI->resolution << "\n"
                  << "\tIsovalue " << cI->isovalue;
+        m_widget->nextProgressStage(info->orbital, 0, 100);
         calculateNegMesh();
         return;
       }
@@ -333,11 +344,17 @@ namespace Avogadro
     connect(m_meshGen, SIGNAL(finished()),
             this, SLOT(calculatePosMeshDone()));
 
-    // TODO set up progress dialog if priority is zero
-
     m_meshGen->initialize(cube, mesh, info->isovalue);
 
+    m_widget->nextProgressStage(info->orbital,
+                                m_meshGen->progressMinimum(),
+                                m_meshGen->progressMaximum());
+
     m_meshGen->start();
+
+    connect(m_meshGen, SIGNAL(progressValueChanged(int)),
+            this, SLOT(updateProgress(int)));
+
     qDebug() << info->orbital << " posMesh calculation started.";
   }
 
@@ -371,6 +388,7 @@ namespace Avogadro
                  << "\tOrbital " << cI->orbital << "\n"
                  << "\tResolution " << cI->resolution << "\n"
                  << "\tIsovalue " << cI->isovalue;
+        m_widget->nextProgressStage(info->orbital, 0, 100);
         calculationComplete();
         return;
       }
@@ -393,12 +411,18 @@ namespace Avogadro
     connect(m_meshGen, SIGNAL(finished()),
             this, SLOT(calculateNegMeshDone()));
 
-    // TODO set up progress dialog if priority is zero
-
     m_meshGen->initialize(cube, mesh, 0.0 - info->isovalue,
                           true); // Reverse the surface
 
+    m_widget->nextProgressStage(info->orbital,
+                                m_meshGen->progressMinimum(),
+                                m_meshGen->progressMaximum());
+
     m_meshGen->start();
+
+    connect(m_meshGen, SIGNAL(progressValueChanged(int)),
+            this, SLOT(updateProgress(int)));
+
     qDebug() << info->orbital << " negMesh calculation started.";
   }
 
@@ -416,6 +440,8 @@ namespace Avogadro
   void OrbitalExtension::calculationComplete()
   {
     calcInfo *info = &m_queue[m_currentRunningCalculation];
+
+    m_widget->calculationComplete(info->orbital);
 
     info->state = Completed;
     m_currentRunningCalculation = -1;
@@ -576,6 +602,13 @@ namespace Avogadro
     }
 
     return false;
+  }
+
+  void OrbitalExtension::updateProgress(int current)
+  {
+    calcInfo *info = &m_queue[m_currentRunningCalculation];
+    int orbital = info->orbital;
+    m_widget->updateProgress(orbital, current);
   }
 
 } // End namespace Avogadro

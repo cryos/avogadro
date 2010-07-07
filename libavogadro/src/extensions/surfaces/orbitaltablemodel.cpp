@@ -43,14 +43,19 @@ namespace Avogadro {
       return orb.description;
     case C_Energy:
       return QString::number(orb.energy, 'g', 5);
-    case C_Status:
+    case C_Status: {
       // Check for divide by zero
       if (orb.max == orb.min)
-        return -1;
-      return int( (orb.current - orb.min) /
-                  (orb.max - orb.min) );
+        return "--";
+      int percent = 100 * (orb.current - orb.min) / float(orb.max - orb.min);
+      // Adjust for stages
+      int stages = (orb.totalStages == 0) ? 1 : orb.totalStages;
+      percent /= float(stages);
+      percent += (orb.stage - 1) * ( 100.0 / float(stages) );
+      return QString("%1%").arg(QString::number(percent));
+    }
     default:
-      case COUNT:
+    case COUNT:
       return QVariant();
 
     }
@@ -111,6 +116,8 @@ namespace Avogadro {
       orb.min = 0;
       orb.max = 0;
       orb.current = 0;
+      orb.stage = 0;
+      orb.totalStages = 0;
 
       beginInsertRows(QModelIndex(), m_orbitals.size(), index);
       for (int i = 0; i <= index - m_orbitals.size() + 1; i++) {
@@ -132,6 +139,81 @@ namespace Avogadro {
     return true;
   }
 
+  void OrbitalTableModel::setOrbitalProgressRange(int orbital, int min, int max, int stage, int totalStages)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->min = min;
+    orb->current = min;
+    orb->max = max;
+    orb->stage = stage;
+    orb->totalStages = totalStages;
+    // Update display
+    QModelIndex status = index(orbital - 1, int(C_Status), QModelIndex());
+    emit dataChanged(status, status);
+  }
+
+  void OrbitalTableModel::incrementStage(int orbital, int newmin, int newmax)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->stage++;
+    orb->min = newmin;
+    orb->current = newmin;
+    orb->max = newmax;
+    // Update display
+    QModelIndex status = index(orbital - 1, C_Status, QModelIndex());
+    emit dataChanged(status, status);
+  }
+
+  void OrbitalTableModel::setOrbitalProgressValue(int orbital, int currentValue)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->current = currentValue;
+    // Update display
+    QModelIndex status = index(orbital - 1, C_Status, QModelIndex());
+    emit dataChanged(status, status);
+  }
+
+  void OrbitalTableModel::finishProgress(int orbital)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->stage = 1;
+    orb->totalStages = 1;
+    orb->min = 0;
+    orb->current = 1;
+    orb->max = 1;
+
+    // Update display
+    QModelIndex status = index(orbital - 1, C_Status, QModelIndex());
+    emit dataChanged(status, status);
+  }
+
+  void OrbitalTableModel::resetProgress(int orbital)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->stage = 1;
+    orb->totalStages = 1;
+    orb->min = 0;
+    orb->current = 0;
+    orb->max = 0;
+
+    // Update display
+    QModelIndex status = index(orbital - 1, C_Status, QModelIndex());
+    emit dataChanged(status, status);
+  }
+
+  void OrbitalTableModel::setProgressToZero(int orbital)
+  {
+    Orbital *orb = &m_orbitals[orbital - 1];
+    orb->stage = 1;
+    orb->totalStages = 1;
+    orb->min = 0;
+    orb->current = 0;
+    orb->max = 1;
+
+    // Update display
+    QModelIndex status = index(orbital - 1, C_Status, QModelIndex());
+    emit dataChanged(status, status);
+  }
 
 } // namespace Avogadro
 
