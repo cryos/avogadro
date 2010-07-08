@@ -155,6 +155,10 @@ namespace Avogadro
      */
     void renderOrbital(unsigned int orbital);
 
+    /**
+     * Update the progress of the current calculation
+     */
+    void updateProgress(int current);
 
   private:
 

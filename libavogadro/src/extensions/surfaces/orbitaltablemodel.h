@@ -37,6 +37,8 @@ namespace Avogadro {
     int min;
     int max;
     int current;
+    int stage;
+    int totalStages;
   };
 
   // Used for sorting:
@@ -91,6 +93,14 @@ namespace Avogadro {
 
     bool setOrbital(const Orbital &Orbital);
     bool clearOrbitals();
+
+    // Stages are used for multi-step processes, e.g. cube, posmesh, negmesh, etc
+    void setOrbitalProgressRange(int orbital, int min, int max, int stage, int totalStages);
+    void incrementStage(int orbital, int newmin, int newmax);
+    void setOrbitalProgressValue(int orbital, int currentValue);
+    void finishProgress(int orbital);
+    void resetProgress(int orbital);
+    void setProgressToZero(int orbital);
 
   private:
     QList<Orbital> m_orbitals;
