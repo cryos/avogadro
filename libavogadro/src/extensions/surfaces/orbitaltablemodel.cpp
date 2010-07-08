@@ -46,13 +46,13 @@ namespace Avogadro {
     case C_Status: {
       // Check for divide by zero
       if (orb.max == orb.min)
-        return "--";
+        return 0;
       int percent = 100 * (orb.current - orb.min) / float(orb.max - orb.min);
       // Adjust for stages
       int stages = (orb.totalStages == 0) ? 1 : orb.totalStages;
       percent /= float(stages);
       percent += (orb.stage - 1) * ( 100.0 / float(stages) );
-      return QString("%1%").arg(QString::number(percent));
+      return percent;
     }
     default:
     case COUNT:

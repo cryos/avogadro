@@ -21,8 +21,10 @@
 
 #include "orbitalextension.h"
 
+#include <QApplication>
 #include <QAbstractTableModel>
 #include <QSortFilterProxyModel>
+#include <QStyledItemDelegate>
 
 namespace Avogadro {
 
@@ -61,6 +63,27 @@ namespace Avogadro {
     }
   private:
     bool m_HOMOFirst;
+  };
+
+  // Allow progress bars to be embedded in the table
+  class ProgressBarDelegate : public QStyledItemDelegate
+  {
+    Q_OBJECT
+  public:
+    ProgressBarDelegate(QObject *parent = 0) : QStyledItemDelegate(parent) {};
+    QSize sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const {
+      return QSize(120, 30);};
+    void paint(QPainter *p, const QStyleOptionViewItem &o, const QModelIndex &ind) const {
+      QStyleOptionProgressBarV2 opt;
+      opt.rect = o.rect;
+      opt.minimum = 1;
+      opt.maximum = 100;
+      opt.textVisible = true;
+      int percent = ind.model()->data(ind, Qt::DisplayRole).toInt();
+      opt.progress = percent;
+      opt.text = QString("%1%").arg(QString::number(percent));
+      QApplication::style()->drawControl(QStyle::CE_ProgressBar, &opt, p);
+    }
   };
 
   class OrbitalTableModel : public QAbstractTableModel
