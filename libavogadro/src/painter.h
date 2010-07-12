@@ -385,11 +385,13 @@ namespace Avogadro
      * use a character giving the whole accented letter, not a separate
      * character for the accent.
      * @param font The font to use for rendering
+     * @todo make it pure virtual in 2.0
      * @sa begin(), drawText(const QPoint&, const QString &) const,
      *     drawText(int, int, const QString &) const
      */
     virtual int drawText(const Eigen::Vector3d & pos,
-                          const QString &string, const QFont &font) = 0;
+                          const QString &string, const QFont &font) {
+      Q_UNUSED(pos); Q_UNUSED(string); Q_UNUSED(font); return 0; }
 
     /**
      * Placeholder to draw a box.
