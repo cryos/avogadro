@@ -100,7 +100,8 @@ endif(OPENBABEL2_EXECUTABLE)
 # Test if we are using trunk
 if(NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
   macro_ensure_version("2.2.99" "${OPENBABEL2_VERSION}" OPENBABEL_IS_NEWER_THAN_2_2_99)
-endif(NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
-if (OPENBABEL_IS_NEWER_THAN_2_2_99)
-   add_definitions(-DOPENBABEL_IS_NEWER_THAN_2_2_99)
-endif(OPENBABEL_IS_NEWER_THAN_2_2_99)
+endif()
+
+if (NOT OPENBABEL_IS_NEWER_THAN_2_2_99)
+  add_definitions("-DOB_VERSION=0" "-D'OB_VERSION_CHECK(x,y,z)=1'")
+endif()
