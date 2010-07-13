@@ -37,8 +37,8 @@ namespace Avogadro {
     m_sortedTableModel->setSourceModel(m_tableModel);
 
     ui.table->setModel(m_sortedTableModel);
-
     ui.table->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    ui.table->setItemDelegateForColumn(OrbitalTableModel::C_Status, new ProgressBarDelegate(this));
 
     connect(ui.table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(tableClicked(const QItemSelection&)));
@@ -189,6 +189,31 @@ namespace Avogadro {
     m_isovalue = i;
     m_sortedTableModel->HOMOFirst(HOMOFirst);
     m_sortedTableModel->sort(0, Qt::AscendingOrder);
+  }
+
+  void OrbitalWidget::initializeProgress(int orbital, int min, int max, int stage, int totalStages)
+  {
+    m_tableModel->setOrbitalProgressRange(orbital, min, max, stage, totalStages);
+  }
+
+  void OrbitalWidget::nextProgressStage(int orbital, int newmin, int newmax)
+  {
+    m_tableModel->incrementStage(orbital, newmin, newmax);
+  }
+
+  void OrbitalWidget::updateProgress(int orbital, int current)
+  {
+    m_tableModel->setOrbitalProgressValue(orbital, current);
+  }
+
+  void OrbitalWidget::calculationComplete(int orbital)
+  {
+    m_tableModel->finishProgress(orbital);
+  }
+
+  void OrbitalWidget::calculationQueued(int orbital)
+  {
+    m_tableModel->setProgressToZero(orbital);
   }
 
 } // namespace Avogadro

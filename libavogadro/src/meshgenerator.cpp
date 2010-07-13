@@ -36,9 +36,17 @@ using Eigen::Vector3i;
 
 namespace Avogadro {
 
-  MeshGenerator::MeshGenerator(QObject *parent) : QThread(parent), m_iso(0.0),
-    m_reverseWinding(false), m_cube(0), m_mesh(0), m_stepSize(0.0),
-    m_min(0.0, 0.0, 0.0), m_dim(0,0,0)
+  MeshGenerator::MeshGenerator(QObject *parent) :
+    QThread(parent),
+    m_iso(0.0),
+    m_reverseWinding(false),
+    m_cube(0),
+    m_mesh(0),
+    m_stepSize(0.0),
+    m_min(0.0, 0.0, 0.0),
+    m_dim(0,0,0),
+    m_progmin(0),
+    m_progmax(0)
   {
   }
 
@@ -70,6 +78,7 @@ namespace Avogadro {
     m_stepSize = m_cube->spacing().x();
     m_min = m_cube->min().cast<float>();
     m_dim = m_cube->dimensions();
+    m_progmax = m_dim.x();
     m_cube->lock()->unlock();
     return true;
   }
@@ -102,6 +111,7 @@ namespace Avogadro {
         m_vertices.reserve(m_vertices.capacity()*2);
         m_normals.reserve(m_normals.capacity()*2);
       }
+      emit progressValueChanged(i);
     }
 
     m_cube->lock()->unlock();
@@ -124,6 +134,8 @@ namespace Avogadro {
     m_stepSize = 0.0;
     m_min.setZero();
     m_dim.setZero();
+    m_progmin = 0;
+    m_progmax = 0;
   }
 
   Vector3f MeshGenerator::normal(const Vector3f &pos)
@@ -642,3 +654,4 @@ namespace Avogadro {
 
 } // End namespace Avogadro
 
+#include "meshgenerator.moc"
