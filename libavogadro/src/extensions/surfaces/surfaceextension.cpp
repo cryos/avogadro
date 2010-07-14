@@ -26,6 +26,7 @@
 
 #include "basisset.h"
 #include "slaterset.h"
+#include "gamessukout.h"
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
@@ -193,6 +194,29 @@ namespace Avogadro
         }
         m_basis = new BasisSet;
         GaussianFchk fchk(fullFileName, m_basis);
+
+        // Set up the MOs along with the electron density maps
+        m_cubes << FALSE_ID;
+        m_surfaceDialog->setMOs(m_basis->numMOs());
+        m_moCubes.resize(m_basis->numMOs());
+        m_moCubes.fill(FALSE_ID);
+        for (int i = 0; i < m_basis->numMOs(); ++i) {
+          if (m_basis->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_basis->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        }
+        return true;
+      }
+      else if (completeSuffix.contains("gukout", Qt::CaseInsensitive)) {
+        if (m_slater) {
+          delete m_slater;
+          m_slater = 0;
+        }
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        m_basis = new BasisSet;
+        GamessukOut gukout(fullFileName, m_basis);
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;
