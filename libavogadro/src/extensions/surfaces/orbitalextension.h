@@ -32,6 +32,7 @@
 #include <QVector>
 #include <QMutex>
 #include <QList>
+#include <QTime>
 
 class QProgressDialog;
 
@@ -172,6 +173,7 @@ namespace Avogadro
     BasisSet *m_basis;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
+    QTime m_time;
   };
 
   class OrbitalExtensionFactory : public QObject, public PluginFactory

@@ -24,6 +24,7 @@
  **********************************************************************/
 
 #include "gaussianset.h"
+#include "approxmath.h"
 
 #ifdef WIN32
 #define _USE_MATH_DEFINES
@@ -256,7 +257,7 @@ namespace Avogadro
           // Normalization of the S-type orbitals (normalization used in JMol)
           // (8 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.71270547);
+            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 0.75) * 0.71270547);
           }
           break;
         case P:
@@ -266,7 +267,7 @@ namespace Avogadro
           // Normalization of the P-type orbitals (normalization used in JMol)
           // (128 alpha^5 / pi^3)^0.25 * [x|y|z]exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.25) * 1.425410941);
+            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.25) * 1.425410941);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
           }
@@ -281,11 +282,11 @@ namespace Avogadro
           // xx|yy|zz: (2048 alpha^7/9pi^3)^0.25 [xx|yy|zz]exp(-alpha r^2)
           // xy|xz|yz: (2048 alpha^7/pi^3)^0.25 [xy|xz|yz]exp(-alpha r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.75) * 1.645922781);
+            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.75) * 1.645922781);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
 
-            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.75) * 2.850821881);
+            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.75) * 2.850821881);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
           }
@@ -298,15 +299,15 @@ namespace Avogadro
           indexMO += 5;
           m_cIndices.push_back(m_gtoCN.size());
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * pow(2048.0 * pow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
                           / (9.0 * M_PI*M_PI*M_PI), 0.25));
-            m_gtoCN.push_back(m_gtoC[j] * pow(2048.0 * pow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
             m_gtoCN.push_back(m_gtoCN.back());
             // I think this is correct but reaally need to check...
-            m_gtoCN.push_back(m_gtoC[j] * pow(128.0 * pow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * apow(128 * apow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
-            m_gtoCN.push_back(m_gtoC[j] * pow(2048.0 * pow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
           }
           break;
@@ -455,7 +456,7 @@ namespace Avogadro
     unsigned int cIndex = set->m_cIndices[moIndex];
     for (unsigned int i = set->m_gtoIndices[moIndex];
          i < set->m_gtoIndices[moIndex+1]; ++i) {
-      tmp += set->m_gtoCN[cIndex++] * exp(-set->m_gtoA[i] * dr2);
+      tmp += set->m_gtoCN[cIndex++] * aexpfnx(-set->m_gtoA[i] * dr2);
     }
     // There is one MO coefficient per S shell basis
     return tmp * set->m_moMatrix.coeffRef(set->m_moIndices[moIndex], indexMO);
@@ -474,7 +475,7 @@ namespace Avogadro
     unsigned int cIndex = set->m_cIndices[moIndex];
     for (unsigned int i = set->m_gtoIndices[moIndex];
          i < set->m_gtoIndices[moIndex+1]; ++i) {
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       x += set->m_gtoCN[cIndex++] * delta.x() * tmpGTO;
       y += set->m_gtoCN[cIndex++] * delta.y() * tmpGTO;
       z += set->m_gtoCN[cIndex++] * delta.z() * tmpGTO;
@@ -502,7 +503,7 @@ namespace Avogadro
     for (unsigned int i = set->m_gtoIndices[moIndex];
          i < set->m_gtoIndices[moIndex+1]; ++i) {
       // Calculate the common factor
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       xx += set->m_gtoCN[cIndex++] * tmpGTO; // Dxx
       yy += set->m_gtoCN[cIndex++] * tmpGTO; // Dyy
       zz += set->m_gtoCN[cIndex++] * tmpGTO; // Dzz
@@ -541,7 +542,7 @@ namespace Avogadro
     for (unsigned int i = set->m_gtoIndices[moIndex];
          i < set->m_gtoIndices[moIndex+1]; ++i) {
       // Calculate the common factor
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       d0  += set->m_gtoCN[cIndex++] * tmpGTO;
       d1p += set->m_gtoCN[cIndex++] * tmpGTO;
       d1n += set->m_gtoCN[cIndex++] * tmpGTO;
@@ -574,7 +575,7 @@ namespace Avogadro
     unsigned int cIndex = set->m_cIndices[basis];
     for (unsigned int i = set->m_gtoIndices[basis];
          i < set->m_gtoIndices[basis+1]; ++i) {
-      tmp += set->m_gtoCN[cIndex++] * exp(-set->m_gtoA[i] * dr2);
+      tmp += set->m_gtoCN[cIndex++] * aexpfnx(-set->m_gtoA[i] * dr2);
     }
     out.coeffRef(set->m_moIndices[basis], 0) = tmp;
   }
@@ -589,7 +590,7 @@ namespace Avogadro
     unsigned int cIndex = set->m_cIndices[basis];
     for (unsigned int i = set->m_gtoIndices[basis];
          i < set->m_gtoIndices[basis+1]; ++i) {
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       x += set->m_gtoCN[cIndex++] * tmpGTO;
       y += set->m_gtoCN[cIndex++] * tmpGTO;
       z += set->m_gtoCN[cIndex++] * tmpGTO;
@@ -615,7 +616,7 @@ namespace Avogadro
     for (unsigned int i = set->m_gtoIndices[basis];
          i < set->m_gtoIndices[basis+1]; ++i) {
       // Calculate the common factor
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       xx += set->m_gtoCN[cIndex++] * tmpGTO; // Dxx
       yy += set->m_gtoCN[cIndex++] * tmpGTO; // Dyy
       zz += set->m_gtoCN[cIndex++] * tmpGTO; // Dzz
@@ -647,7 +648,7 @@ namespace Avogadro
     for (unsigned int i = set->m_gtoIndices[basis];
          i < set->m_gtoIndices[basis+1]; ++i) {
       // Calculate the common factor
-      double tmpGTO = exp(-set->m_gtoA[i] * dr2);
+      double tmpGTO = aexpfnx(-set->m_gtoA[i] * dr2);
       d0  += set->m_gtoCN[cIndex++] * tmpGTO;
       d1p += set->m_gtoCN[cIndex++] * tmpGTO;
       d1n += set->m_gtoCN[cIndex++] * tmpGTO;

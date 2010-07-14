@@ -44,6 +44,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QTime>
 
 namespace Avogadro
 {
@@ -163,6 +164,7 @@ namespace Avogadro
       m_widget->fillTable(list);
     }
 
+    m_time.start();
     precalculateOrbitals();
   }
 
@@ -529,7 +531,7 @@ namespace Avogadro
     // Do nothing if all calcs are finished.
     if (hash.size() == 0) {
       m_runningMutex->unlock();
-      qDebug() << "Finished queue.";
+      qDebug("Finished queue. Time elapsed: %10.4f s", (m_time.elapsed() / 1000.0f));
       return;
     }
 
