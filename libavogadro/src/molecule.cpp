@@ -1152,6 +1152,14 @@ namespace Avogadro{
 
       obmol.AddBond(beginAtom->index() + 1,
                     endAtom->index() + 1, bond->order());
+
+      QString label = bond->customLabel();
+      if(!label.isEmpty()) {
+        OpenBabel::OBPairData *dp = new OpenBabel::OBPairData();
+        dp->SetAttribute("label");
+        dp->SetValue(label.toLatin1());
+        obmol.GetBond(obmol.NumBonds()-1)->SetData(dp);
+      }
     }
     // We're doing this after copying all atoms, so we can grab them ourselves
     foreach(Residue *residue, d->residueList) {
@@ -1258,6 +1266,9 @@ namespace Avogadro{
       bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
                      obbond->GetEndAtom()->GetIdx()-1,
                      obbond->GetBondOrder());
+
+      if (obbond->HasData("label"))
+        bond->setCustomLabel(obbond->GetData("label")->GetValue().c_str());
     }
 
     // Now for the volumetric data
