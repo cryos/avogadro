@@ -17,7 +17,9 @@
   GNU General Public License for more details.
  ***********************************************************************/
 
-#ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+#include <openbabel/generic.h>
+
+#if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
 
 #include "raman.h"
 
@@ -25,7 +27,6 @@
 #include <QtCore/QDebug>
 
 #include <openbabel/mol.h>
-#include <openbabel/generic.h>
 
 const double k=1.3806504e-23,
              h=6.62606896e-34,

@@ -26,7 +26,7 @@
  **********************************************************************/
 
 #include "molpro.h"
-#include "basisset.h"
+#include "gaussianset.h"
 
 #include <QFile>
 #include <QStringList>
@@ -39,7 +39,7 @@ using std::vector;
 namespace Avogadro
 {
 
-  Molpro::Molpro(const QString &filename, BasisSet* basis)
+  Molpro::Molpro(const QString &filename, GaussianSet *basis)
   {
     // Open the file for reading and process it
     QFile file(filename);
@@ -80,7 +80,7 @@ namespace Avogadro
         // get rid of the +/- signs after the values
         alpha.chop(1);
         beta.chop(1);
-        basis->setElectrons(alpha.toInt() + beta.toInt());
+        basis->setNumElectrons(alpha.toInt() + beta.toInt());
 	m_electrons = alpha.toInt() + beta.toInt();
       }
       else if (line.indexOf( "NUMBER OF CONTRACTIONS" ) != -1 ) {

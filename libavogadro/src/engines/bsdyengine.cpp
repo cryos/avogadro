@@ -334,21 +334,29 @@ namespace Avogadro
     return true;
   }
 
+  // Protect globally declared functions in an anonymous namespace
+  namespace
+  {
+    double radiusCovalent(const Atom *atom)
+    {
+      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
+    }
+
+    double radiusVdW(const Atom *atom)
+    {
+      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+    }
+  } // End of anonymous namespace
+
   inline double BSDYEngine::radius(const Atom *atom) const
   {
     if (atom->customRadius())
       return atom->customRadius()* m_atomRadiusPercentage;
     else {
-      if (atom->atomicNumber()) {
-        switch (m_atomRadiusType) {
-          case 0:
-            return OpenBabel::etab.GetCovalentRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-          case 1:
-            return OpenBabel::etab.GetVdwRad(atom->atomicNumber()) * m_atomRadiusPercentage;
-        }
-      }
-      return m_atomRadiusPercentage;
+      if (atom->atomicNumber())
+        return pRadius(atom) * m_atomRadiusPercentage;
     }
+    return m_atomRadiusPercentage;
   }
 
   void BSDYEngine::setAtomRadiusPercentage( int percent )
@@ -360,12 +368,16 @@ namespace Avogadro
   void BSDYEngine::setAtomRadiusType(int type)
   {
     m_atomRadiusType = type;
+    if (type == 0)
+      pRadius = radiusCovalent;
+    else
+      pRadius = radiusVdW;
     emit changed();
   }
 
   void BSDYEngine::setBondRadius( int value )
   {
-    m_bondRadius = value * 0.05;
+    m_bondRadius = value * 0.025;
     emit changed();
   }
 
@@ -431,7 +443,7 @@ namespace Avogadro
       connect(m_settingsWidget, SIGNAL(destroyed()),
               this, SLOT(settingsWidgetDestroyed()));
       m_settingsWidget->atomRadiusSlider->setValue(int(50*m_atomRadiusPercentage));
-      m_settingsWidget->bondRadiusSlider->setValue(int(20*m_bondRadius));
+      m_settingsWidget->bondRadiusSlider->setValue(int(50*m_bondRadius));
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
       m_settingsWidget->opacitySlider->setValue(int(20*m_alpha));
       m_settingsWidget->combo_radius->setCurrentIndex(m_atomRadiusType);
@@ -450,7 +462,7 @@ namespace Avogadro
     Engine::writeSettings(settings);
     settings.setValue("atomRadius", 50*m_atomRadiusPercentage);
     settings.setValue("radiusType", m_atomRadiusType);
-    settings.setValue("bondRadius", 20*m_bondRadius);
+    settings.setValue("bondRadius", 50*m_bondRadius);
     settings.setValue("showMulti", m_showMulti);
     settings.setValue("opacity", 20*m_alpha);
   }
@@ -458,8 +470,8 @@ namespace Avogadro
   void BSDYEngine::readSettings(QSettings &settings)
   {
     Engine::readSettings(settings);
-    setAtomRadiusPercentage(settings.value("atomRadius", 25).toInt());
-    setBondRadius(settings.value("bondRadius", 2).toInt());
+    setAtomRadiusPercentage(settings.value("atomRadius", 25).toDouble());
+    setBondRadius(settings.value("bondRadius", 4).toDouble());
     setShowMulti(settings.value("showMulti", 2).toInt());
     setOpacity(settings.value("opacity", 100).toInt());
     setAtomRadiusType(settings.value("radiusType", 1).toInt());
@@ -467,7 +479,7 @@ namespace Avogadro
     if (m_settingsWidget) {
       m_settingsWidget->atomRadiusSlider->setValue(int(50*m_atomRadiusPercentage));
       m_settingsWidget->combo_radius->setCurrentIndex(m_atomRadiusType);
-      m_settingsWidget->bondRadiusSlider->setValue(int(20*m_bondRadius));
+      m_settingsWidget->bondRadiusSlider->setValue(int(50*m_bondRadius));
       m_settingsWidget->showMulti->setCheckState((Qt::CheckState)m_showMulti);
       m_settingsWidget->opacitySlider->setValue(int(20*m_alpha));
       m_settingsWidget->combo_radius->setCurrentIndex(m_atomRadiusType);

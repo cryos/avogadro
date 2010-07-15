@@ -93,6 +93,11 @@ namespace Avogadro {
      * Set the aromaticity of the bond.
      */
     void setAromaticity(bool isAromatic) const;
+
+    /**
+     * Set the custom label for the bond
+     */
+    void setCustomLabel(const QString &label) {  m_customLabel = label; }
     /** @} */
 
     /** @name Get bonding information
@@ -158,6 +163,11 @@ namespace Avogadro {
      * @return the length of the bond.
      */
     double length() const;
+
+    /**
+     * @return the custom label of the bond
+     */
+    QString customLabel() const { return m_customLabel; }
     /** @} */
 
     /** @name OpenBabel conversion functions
@@ -186,6 +196,7 @@ namespace Avogadro {
     mutable bool m_isAromatic;
     mutable Eigen::Vector3d m_midPos;
     Molecule *m_molecule;
+    QString m_customLabel;
     /* shared d_ptr with Primitive */
     Q_DECLARE_PRIVATE(Bond)
   };

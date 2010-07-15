@@ -45,7 +45,8 @@ namespace Avogadro
   static const double BOHR_TO_ANGSTROM = 0.529177249;
   static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
 
-#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
+// New OB can resolve atomic number from IUPAC name
+#if (OB_VERSION < OB_VERSION_CHECK(2, 2, 99))
   int GetAtomicNum(string name, int &iso);
 #endif
   
@@ -58,7 +59,7 @@ namespace Avogadro
     readSettings();
     
     cartesianEdit->setTextColor(Qt::black);
-	cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
+    cartesianEdit->setFontPointSize(QApplication::font().pointSize()+1);
 
     connect(sortBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSort()));
     connect(unitsBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeUnits()));
@@ -262,7 +263,7 @@ namespace Avogadro
               QString s = data.at(i);
               while (s.length()!=0) { // recognize name with number
                 iso = 0;
-                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
+                #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
                   n = OpenBabel::etab.GetAtomicNum(s.toStdString(), iso);
                 #else
                   n = GetAtomicNum(s.toStdString(), iso);
@@ -320,7 +321,7 @@ namespace Avogadro
               QString _s = s_data.at(i);
               while (_s.length()!=0) { // recognize name with number
                 _iso=0;
-                #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99 
+                #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
                   _n = OpenBabel::etab.GetAtomicNum(_s.toStdString(), _iso);
                 #else
                   _n = GetAtomicNum(_s.toStdString(), _iso);
@@ -351,10 +352,10 @@ namespace Avogadro
           atom->SetAtomicNum(_n);
       }
       if (xform.determinant() == 0.0) { // fractional coordinates
-        #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-        atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
+        #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
+          atom->SetVector(m_molecule->OBUnitCell()->FractionalToCartesian(pos));
         #else
-        atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix() * pos);
+          atom->SetVector(m_molecule->OBUnitCell()->GetOrthoMatrix() * pos);
         #endif
       }         
       else {
@@ -436,10 +437,10 @@ namespace Avogadro
           //Atom *atom = m_molecule->atom(i);
           Atom *atom = localAtom.at(i);
           if (xform.determinant() == 0.0) { // fractional coordinates
-            #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
-            pos = m_molecule->OBUnitCell()->CartesianToFractional(atom->OBAtom().GetVector());
+            #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
+              pos = m_molecule->OBUnitCell()->CartesianToFractional(atom->OBAtom().GetVector());
             #else
-            pos = m_molecule->OBUnitCell()->GetFractionalMatrix() * atom->OBAtom().GetVector();
+              pos = m_molecule->OBUnitCell()->GetFractionalMatrix() * atom->OBAtom().GetVector();
             #endif
           }         
           else {
@@ -630,7 +631,7 @@ namespace Avogadro
   
 
   
-#ifndef OPENBABEL_IS_NEWER_THAN_2_2_99
+#if (OB_VERSION < OB_VERSION_CHECK(2, 2, 99))
   //int OBElementTable::GetAtomicNum(string name, int &iso)
   int GetAtomicNum(string name, int &iso)
   {

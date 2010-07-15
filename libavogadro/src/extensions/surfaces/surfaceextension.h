@@ -22,7 +22,7 @@
   02110-1301, USA.
  **********************************************************************/
 
-#ifndef SURAFCEEXTENSION_H
+#ifndef SURFACEEXTENSION_H
 #define SURFACEEXTENSION_H
 
 #include "surfacedialog.h"
@@ -37,7 +37,7 @@ class QProgressDialog;
 namespace Avogadro
 {
   class Cube;
-  class BasisSet;
+  class GaussianSet;
   class SlaterSet;
   class Mesh;
   class MeshGenerator;
@@ -70,7 +70,7 @@ namespace Avogadro
     SurfaceDialog *m_surfaceDialog;
     QList<QAction *> m_actions;
     Molecule *m_molecule;
-    BasisSet* m_basis;
+    GaussianSet *m_gaussian;
     SlaterSet *m_slater;
     QString m_loadedFileName;
     QProgressDialog *m_progress;

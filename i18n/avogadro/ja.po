@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 19:54+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-11 10:25+0000\n"
+"Last-Translator: hide D <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -25,13 +25,13 @@ msgstr "はい"
 #, qt-format
 msgctxt "%1 is the Git revision number."
 msgid "(Git revision: %1)"
-msgstr ""
+msgstr "(Gitのリビジョン番号: %1)"
 
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -39,18 +39,18 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -63,7 +63,7 @@ msgstr "原子の切り取り"
 
 #: src/editcommands.cpp:97
 msgid "Paste"
-msgstr "貼り付け"
+msgstr "貼り付け(P)"
 
 #: src/editcommands.cpp:132
 msgid "Clear Molecule"
@@ -78,7 +78,7 @@ msgstr "原子の消去"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "設定"
 
@@ -110,6 +110,13 @@ msgid ""
 "  -h, --help\t\tShow help options (this)\n"
 "  -v, --version\t\tShow version information\n"
 msgstr ""
+"使用法: %1 [オプション] [ファイル]\n"
+"\n"
+"Avogadro - 高機能な分子エディタ(version %2)\n"
+"\n"
+"オプション:\n"
+"  -h, --help\t\t使い方を表示します (現在の状態です)\n"
+"  -v, --version\t\tバージョン情報を表示します\n"
 
 #: src/mainwindow.cpp:303
 msgid "Messages"
@@ -445,7 +452,8 @@ msgstr "ツールがロードされていません"
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
-msgstr " アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
+msgstr ""
+" アプリケーションが正常に動作しなかったようです。エラーを修正してください。"
 
 #: src/mainwindow.cpp:3226
 msgid "Objects"
@@ -453,7 +461,7 @@ msgstr "オブジェクト"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "色"
 
@@ -530,7 +538,7 @@ msgstr "ラベルのみサブアイテムを設定することができます"
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr "アイテム"
 
@@ -545,7 +553,7 @@ msgstr "低"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "中"
@@ -562,7 +570,7 @@ msgstr "未定義"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "なし"
@@ -659,7 +667,7 @@ msgstr "選択済み基本要素のみを表示"
 #. i18n: file: src/engineprimitiveswidget.ui:86
 #. i18n: ectx: property (text), widget (QToolButton, fromSelectionButton)
 msgid "Assign to Selection"
-msgstr ""
+msgstr "選択要素に割り当て"
 
 #. i18n: file: src/importdialog.ui:13
 #. i18n: ectx: property (windowTitle), widget (QDialog, ImportFileDialog)
@@ -929,8 +937,8 @@ msgstr "ビューを閉じる"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "中央"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1151,7 +1159,7 @@ msgstr "アイテムを削除(&D)"
 #. i18n: file: src/projecttreeeditor.ui:103
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveItemLeftButton)
 msgid "Move Item Left (before Parent Item)"
-msgstr ""
+msgstr "アイテムを左 ( 親アイテムの前 ) に移動"
 
 #. i18n: file: src/projecttreeeditor.ui:106
 #. i18n: ectx: property (text), widget (QToolButton, moveItemLeftButton)
@@ -1225,23 +1233,24 @@ msgstr "フォグ効果 :"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, "
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro "
-"Team,Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo, "
-",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro "
-"Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,Andrzej MoST (Marcin "
-"Ostajewski),Avogadro Team,Geoff Hutchison,tomo"
+",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Geoff Hutchison, ,"
+"Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro Team,"
+"Geoff Hutchison, ,Launchpad Contributions:,Geoff Hutchison,tomo, ,Launchpad "
+"Contributions:,Andrzej MoST (Marcin Ostajewski),Avogadro Team,Geoff "
+"Hutchison,tomo, ,Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),"
+"Avogadro Team,Geoff Hutchison,tomo, ,Launchpad Contributions:,Andrzej MoST "
+"(Marcin Ostajewski),Avogadro Team,Geoff Hutchison,hide D,tomo"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,,,,,avogadro-devel@lists.sourceforge.net,,,,,,,,,avogadro-"
-"devel@lists.sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,"
+",,,,,,,avogadro-devel@lists.sourceforge.net,,,,,,,,,avogadro-devel@lists."
+"sourceforge.net,,,,,,avogadro-devel@lists.sourceforge.net,,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,"
 
 #~ msgid "Lithium"
 #~ msgstr "リチウム(Lithium）"
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
@@ -1262,6 +1271,3 @@ msgstr ""
 
 #~ msgid "Animation"
 #~ msgstr "アニメーション"
-
-#~ msgid "Center"
-#~ msgstr "中央"

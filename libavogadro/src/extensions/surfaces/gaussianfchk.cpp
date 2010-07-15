@@ -23,7 +23,7 @@
  **********************************************************************/
 
 #include "gaussianfchk.h"
-#include "basisset.h"
+#include "gaussianset.h"
 #include "qtiocompressor/qtiocompressor.h"
 
 #include <QFile>
@@ -36,7 +36,7 @@ using std::vector;
 namespace Avogadro
 {
 
-  GaussianFchk::GaussianFchk(const QString &filename, BasisSet* basis)
+  GaussianFchk::GaussianFchk(const QString &filename, GaussianSet* basis)
   {
     // Open the file for reading and process it
     QFile* file = new QFile(filename);
@@ -138,10 +138,10 @@ namespace Avogadro
     }
   }
 
-  void GaussianFchk::load(BasisSet* basis)
+  void GaussianFchk::load(GaussianSet* basis)
   {
     // Now load up our basis set
-    basis->setElectrons(m_electrons);
+    basis->setNumElectrons(m_electrons);
     int nAtom = 0;
     for (unsigned int i = 0; i < m_aPos.size(); i += 3)
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),

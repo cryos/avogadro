@@ -227,7 +227,7 @@ namespace Avogadro {
     else if (second->identifier() == "CustomColor")
       return true; // always the bottom!
 
-    // locale aware returns less-than, greater-than, or 0 
+    // locale aware returns less-than, greater-than, or 0
     // Required for sorting lists.
     return (QString::localeAwareCompare(first->name(), second->name()) < 0);
   }
@@ -572,7 +572,7 @@ namespace Avogadro {
     // If we are in a Mac build dir things are a little different - if the
     // expected relative path does not exist try the build dir path
     QFileInfo info(QCoreApplication::applicationDirPath()
-                   + "/../CMakeCache.txt");
+                   + "/../../../../CMakeCache.txt");
     if (info.exists()) {// In a build directory
         loadPluginDir(QCoreApplication::applicationDirPath()
                       + "/../../../../lib", settings);

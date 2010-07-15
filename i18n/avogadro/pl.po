@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-04-26 12:26-0400\n"
-"PO-Revision-Date: 2010-04-26 19:36+0000\n"
+"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"PO-Revision-Date: 2010-05-11 01:03+0000\n"
 "Last-Translator: Paweł Madej <nysander@quanteam.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 12:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -30,8 +30,8 @@ msgstr ""
 #: src/aboutdialog.cpp:69
 #, qt-format
 msgid ""
-"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: "
-"%3<br/><br/>Open Babel Version: %4"
+"<h3>%1</h3><br/><br/>Application Version: %2<br/><br/>Library Version: %3<br/"
+"><br/>Open Babel Version: %4"
 msgstr ""
 
 #. i18n: file: src/mainwindow.ui:14
@@ -39,18 +39,18 @@ msgstr ""
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
 #: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
 #: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185 :69
+#: src/mainwindow.cpp:3185:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
 #: src/aboutdialog.cpp:73
 #, qt-format
 msgid ""
-"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a "
-"href=\"http://avogadro.openmolecules.net/\">Avogadro "
-"homepage</a>.<br/><br/>The program is provided AS IS with NO WARRANTY OF ANY "
-"KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A "
-"PARTICULAR PURPOSE.<br/>"
+"<br/><br/>Qt Version: %1<br/><br/>For more information check the <a href="
+"\"http://avogadro.openmolecules.net/\">Avogadro homepage</a>.<br/><br/>The "
+"program is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE "
+"WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.<br/"
+">"
 msgstr ""
 
 #: src/editcommands.cpp:44
@@ -78,7 +78,7 @@ msgstr "Wyczyść Atom"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220 :381 rc.cpp:393
+#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
 msgid "Settings"
 msgstr "Ustawienia."
 
@@ -453,7 +453,7 @@ msgstr "Obiekty"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232 :321
+#: src/mainwindow.cpp:3232:321
 msgid "Colors"
 msgstr "Kolory"
 
@@ -530,7 +530,7 @@ msgstr ""
 
 #. i18n: file: src/projecttreeeditor.ui:168
 #. i18n: ectx: property (text), widget (QTreeWidget, treeWidget)
-#: src/projecttreemodel.cpp:65 :378
+#: src/projecttreemodel.cpp:65:378
 msgid "Item"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr "Niska"
 
 #. i18n: file: src/settingsdialog.ui:86
 #. i18n: ectx: property (text), widget (QLabel, qualityValueLabel)
-#: src/settingsdialog.cpp:107 :405
+#: src/settingsdialog.cpp:107:405
 msgctxt "Display quality setting"
 msgid "Medium"
 msgstr "Średnia"
@@ -562,7 +562,7 @@ msgstr "Nieokreślona"
 
 #. i18n: file: src/settingsdialog.ui:144
 #. i18n: ectx: property (text), widget (QLabel, fogValueLabel)
-#: src/settingsdialog.cpp:122 :414
+#: src/settingsdialog.cpp:122:414
 msgctxt "Level of fog in the scene"
 msgid "None"
 msgstr "Brak"
@@ -929,8 +929,8 @@ msgstr "Zamknij widok"
 
 #. i18n: file: src/mainwindow.ui:478
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
-msgid "Better View"
-msgstr ""
+msgid "Center"
+msgstr "Wyśrodkuj"
 
 #. i18n: file: src/mainwindow.ui:487
 #. i18n: ectx: property (text), widget (QToolBar, toolBar)
@@ -1226,25 +1226,26 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),Roman "
-"Skrzypiński, ,Launchpad Contributions:,Andrzej MoST (Marcin "
-"Ostajewski),Avogadro Team,Roman Skrzypiński, ,Launchpad "
-"Contributions:,Andrzej MoST (Marcin Ostajewski),Paweł Madej,Roman "
-"Skrzypiński, ,Launchpad Contributions:,Aare,Andrzej MoST (Marcin "
-"Ostajewski),Avogadro Team,Bartosz Kaszubowski,Krzysztof Wittek,Paweł "
-"Madej,Roman Skrzypiński, ,Launchpad Contributions:,Aare,Andrzej MoST (Marcin "
-"Ostajewski),Avogadro Team,Bartosz Kaszubowski,Krzysztof Wittek,Paweł "
-"Madej,Roman Skrzypiński"
+"Skrzypiński, ,Launchpad Contributions:,Andrzej MoST (Marcin Ostajewski),"
+"Avogadro Team,Roman Skrzypiński, ,Launchpad Contributions:,Andrzej MoST "
+"(Marcin Ostajewski),Paweł Madej,Roman Skrzypiński, ,Launchpad Contributions:,"
+"Aare,Andrzej MoST (Marcin Ostajewski),Avogadro Team,Bartosz Kaszubowski,"
+"Krzysztof Wittek,Paweł Madej,Roman Skrzypiński, ,Launchpad Contributions:,"
+"Aare,Andrzej MoST (Marcin Ostajewski),Avogadro Team,Bartosz Kaszubowski,"
+"Krzysztof Wittek,Paweł Madej,Roman Skrzypiński, ,Launchpad Contributions:,"
+"Aare,Andrzej MoST (Marcin Ostajewski),Avogadro Team,Bartosz Kaszubowski,"
+"Krzysztof Wittek,Paweł Madej,Roman Skrzypiński"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,,romano473@gmail.com,,,,avogadro-"
-"devel@lists.sourceforge.net,romano473@gmail.com,,,,nysander@quanteam.pl,roman"
-"o473@gmail.com,,,fblost@gmail.com,,avogadro-"
-"devel@lists.sourceforge.net,gosimek@gmail.com,,nysander@quanteam.pl,romano473"
-"@gmail.com,,,fblost@gmail.com,,avogadro-"
-"devel@lists.sourceforge.net,gosimek@gmail.com,,nysander@quanteam.pl,romano473"
-"@gmail.com"
+",,,romano473@gmail.com,,,,avogadro-devel@lists.sourceforge.net,"
+"romano473@gmail.com,,,,nysander@quanteam.pl,romano473@gmail.com,,,"
+"fblost@gmail.com,,avogadro-devel@lists.sourceforge.net,gosimek@gmail.com,,"
+"nysander@quanteam.pl,romano473@gmail.com,,,fblost@gmail.com,,avogadro-"
+"devel@lists.sourceforge.net,gosimek@gmail.com,,nysander@quanteam.pl,"
+"romano473@gmail.com,,,fblost@gmail.com,,avogadro-devel@lists.sourceforge.net,"
+"gosimek@gmail.com,,nysander@quanteam.pl,romano473@gmail.com"
 
 #~ msgid "Load File..."
 #~ msgstr "Wczytaj plik..."
@@ -1276,11 +1277,9 @@ msgstr ""
 #~ msgid "Animation..."
 #~ msgstr "Animacja..."
 
-#, qt-format
 #~ msgid "%1/%2"
 #~ msgstr "%1/%2"
 
-#, qt-format
 #~ msgid "Read trajectory file %1 failed."
 #~ msgstr "Odczytanie pliku trajektorii %1 nie powiodło się."
 
@@ -1317,15 +1316,12 @@ msgstr ""
 #~ msgid "AutoRotate"
 #~ msgstr "AutoObrót"
 
-#, qt-format
 #~ msgid "Distance (2->3): %1 %2"
 #~ msgstr "Odległość (2->3): %1 %2"
 
-#, qt-format
 #~ msgid "Angle: %1 %2"
 #~ msgstr "Kąt: %1 %2"
 
-#, qt-format
 #~ msgid "Distance (1->2): %1 %2"
 #~ msgstr "Odległość (1->2): %1 %2"
 
@@ -1338,7 +1334,6 @@ msgstr ""
 #~ msgid "Snap-to Threshold: "
 #~ msgstr "Przyciągnięcie do progu: "
 
-#, qt-format
 #~ msgid "Number of atoms: %1"
 #~ msgstr "Liczba atomów: %1"
 
@@ -1354,11 +1349,9 @@ msgstr ""
 #~ msgid "*1"
 #~ msgstr "*1"
 
-#, qt-format
 #~ msgid "Dihedral Angle: %1 %2"
 #~ msgstr "Kąt dwuścienny: %1 %2"
 
-#, qt-format
 #~ msgid "Distance (3->4): %1 %2"
 #~ msgstr "Odległość (3->4): %1 %2"
 
@@ -1759,8 +1752,8 @@ msgstr ""
 #~ "Prawy przycisk myszy: przesunięcie.\n"
 #~ "\n"
 #~ "Dodatkowe funkcje po uruchomieniu\n"
-#~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie pozwala na przemieszczanie "
-#~ "atomów"
+#~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie pozwala na "
+#~ "przemieszczanie atomów"
 
 #~ msgid "Force Field:"
 #~ msgstr "Pole sił:"
@@ -1806,10 +1799,10 @@ msgstr ""
 #~ "\n"
 #~ "Kliknięcie lewego przycisku myszy i przeciągnięcie powoduje ustawienie "
 #~ "płaszczyzny manipulacji:\n"
-#~ "- Lewy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-#~ "kąt\n"
-#~ "- Prawy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu zmienia "
-#~ "długość"
+#~ "- Lewy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu "
+#~ "zmienia kąt\n"
+#~ "- Prawy przycisk myszy i przeciągnięcie jednego z atomów w wiązaniu "
+#~ "zmienia długość"
 
 #~ msgid "Bond Centric Manipulate"
 #~ msgstr "Manipulacja przy wiązaniach"
@@ -1943,7 +1936,8 @@ msgstr ""
 #~ "Narzędzie do nawigacji (F9)\n"
 #~ "\n"
 #~ "Lewy przycisk myszy: kliknięcie i przeciągnięcie obraca widok\n"
-#~ "Środkowy przycisk myszy: kliknięcie i przeciągnięcie przybliża lub oddala\n"
+#~ "Środkowy przycisk myszy: kliknięcie i przeciągnięcie przybliża lub "
+#~ "oddala\n"
 #~ "Prawy przycisk myszy: kliknięcie i przeciągnięcie przesuwa widok"
 
 #~ msgid "Polygon"
@@ -1967,18 +1961,15 @@ msgstr ""
 #~ msgid "Start Atom"
 #~ msgstr "Atom początkowy"
 
-#, qt-format
 #~ msgid "Atom %1"
 #~ msgstr "Atom %1"
 
 #~ msgid "End Atom"
 #~ msgstr "Atom końcowy"
 
-#, qt-format
 #~ msgid "Bond %1"
 #~ msgstr "Wiązanie %1"
 
-#, qt-format
 #~ msgid "Energy = %1 %2"
 #~ msgstr "Energia = %1 %2"
 
@@ -1997,7 +1988,6 @@ msgstr ""
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Pliki Avogadro (*.*)"
 
-#, qt-format
 #~ msgid "Cannot write to the file %1."
 #~ msgstr "Nie mogę zapisać pliku %1."
 
@@ -2010,7 +2000,6 @@ msgstr ""
 #~ msgid "[*]Avogadro"
 #~ msgstr "[*]Avogadro"
 
-#, qt-format
 #~ msgid "%1[*] - %2"
 #~ msgstr "%1[*] - %2"
 
@@ -2020,7 +2009,6 @@ msgstr ""
 #~ msgid "Atomic Number"
 #~ msgstr "Liczba atomowa"
 
-#, qt-format
 #~ msgid "Angle %1"
 #~ msgstr "Kąt %1"
 
@@ -2080,6 +2068,3 @@ msgstr ""
 
 #~ msgid "Template"
 #~ msgstr "Szablon"
-
-#~ msgid "Center"
-#~ msgstr "Wyśrodkuj"
