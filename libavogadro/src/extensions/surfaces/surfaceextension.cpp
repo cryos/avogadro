@@ -211,21 +211,21 @@ namespace Avogadro
           delete m_slater;
           m_slater = 0;
         }
-        if (m_basis) {
-          delete m_basis;
-          m_basis = 0;
+        if (m_gaussian) {
+          delete m_gaussian;
+          m_gaussian = 0;
         }
-        m_basis = new BasisSet;
-        GamessukOut gukout(fullFileName, m_basis);
+        m_gaussian = new GaussianSet;
+        GamessukOut gukout(fullFileName, m_gaussian);
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;
-        m_surfaceDialog->setMOs(m_basis->numMOs());
-        m_moCubes.resize(m_basis->numMOs());
+        m_surfaceDialog->setMOs(m_gaussian->numMOs());
+        m_moCubes.resize(m_gaussian->numMOs());
         m_moCubes.fill(FALSE_ID);
-        for (int i = 0; i < m_basis->numMOs(); ++i) {
-          if (m_basis->HOMO(i)) m_surfaceDialog->setHOMO(i);
-          else if (m_basis->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        for (int i = 0; i < m_gaussian->numMOs(); ++i) {
+          if (m_gaussian->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_gaussian->LUMO(i)) m_surfaceDialog->setLUMO(i);
         }
         return true;
       }

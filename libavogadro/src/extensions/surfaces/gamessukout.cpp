@@ -194,7 +194,7 @@ namespace Avogadro
   }
 
 
-  GamessukOut::GamessukOut(const QString &qtfilename, BasisSet* basis)
+  GamessukOut::GamessukOut(const QString &qtfilename, GaussianSet* basis)
   {
     std::string filename;
     filename = qtfilename.toStdString();
@@ -206,7 +206,7 @@ namespace Avogadro
   {
   } // end ~GamessukOut
 
-  void GamessukOut::GamessukOutNoQt(const std::string &filename, BasisSet* basis)
+  void GamessukOut::GamessukOutNoQt(const std::string &filename, GaussianSet* basis)
   {
     
     bool ok;
@@ -342,7 +342,7 @@ namespace Avogadro
   void GamessukOut::readBasisSet(std::ifstream &ifs)
   {
 
-    std::cout << "readBasisSet\n";
+    //std::cout << "readBasisSet\n";
 
     bool ok, newAtom=true, gotAtom=false, firstAtom=true;
     std::string atomLabel;
@@ -733,7 +733,7 @@ namespace Avogadro
     
   } // end readMOVectors
 
-  void GamessukOut::addBasisForLabel( unsigned int atomIndex, std::string label,  BasisSet* basis )
+  void GamessukOut::addBasisForLabel( unsigned int atomIndex, std::string label,  GaussianSet* basis )
   {
     /*
       Add the basis functions for the atom label
@@ -766,7 +766,7 @@ namespace Avogadro
     
   } //end addBasisForLabel
 
-  void GamessukOut::load(BasisSet* basis)
+  void GamessukOut::load(GaussianSet* basis)
   {
     /*
       We will only have read in a basis set for atoms of each type
@@ -774,7 +774,7 @@ namespace Avogadro
 
     */
 
-    basis->setElectrons(gukBasis.nElectrons);
+    basis->setNumElectrons(gukBasis.nElectrons);
 
     // Add the basis for each atom
     for ( unsigned int i=0; i < gukBasis.atomLabels.size(); i++ )
@@ -833,7 +833,7 @@ int main() {
   QString qtfilename;
   qtfilename = qtfilename.fromStdString(filename);
 
-  Avogadro::BasisSet* mybasis = new Avogadro::BasisSet;
+  Avogadro::GaussianSet* mybasis = new Avogadro::GaussianSet;
 
   Avogadro::GamessukOut gukout(qtfilename,mybasis);
 

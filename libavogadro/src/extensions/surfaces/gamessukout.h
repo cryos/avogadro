@@ -25,7 +25,7 @@
 #ifndef GAMESSUKOUT_H
 #define GAMESSUKOUT_H
 
-#include "basisset.h"
+#include "gaussianset.h"
 
 #include <QString>
 #include <Eigen/Core>
@@ -37,11 +37,8 @@
 
 namespace Avogadro
 {
-  class BasisSet;
-
   class GUKBasisSet
   {
-
     /*
       This class is used to hold the data parsed from the GAMESS-UK output before we create the Avogadro basis set object
      */
@@ -83,9 +80,9 @@ namespace Avogadro
   class GamessukOut
   {
   public:
-    GamessukOut(const QString &filename, BasisSet *basis);
+    GamessukOut(const QString &filename, GaussianSet *basis);
     ~GamessukOut();
-    void GamessukOutNoQt(const std::string &filename, BasisSet *basis);
+    void GamessukOutNoQt(const std::string &filename, GaussianSet *basis);
     void outputParsedData();
 
   private:
@@ -99,9 +96,9 @@ namespace Avogadro
     void readMOs(std::ifstream &ifs);
     int readMOVectors(std::ifstream &ifs);
 
-    void load(BasisSet* basis);
+    void load(GaussianSet* basis);
 
-    void addBasisForLabel( unsigned int atomIndex, std::string label, BasisSet* basis );
+    void addBasisForLabel( unsigned int atomIndex, std::string label, GaussianSet* basis );
 
     // This holds the basis data parsed in from the file and which is used to create the BasisSet
     GUKBasisSet gukBasis;
