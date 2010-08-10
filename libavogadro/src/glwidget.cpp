@@ -2129,7 +2129,7 @@ static inline GLint gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
 #endif
 
   // Based on Qt code
-  void GLWidget::renderText(double x, double y, double z, const QString &str, const QFont &font, int i)
+  void GLWidget::renderText(double x, double y, double z, const QString &str, const QFont &font, int)
   {
     //QGLWidget::renderText(x,y,z,str,font, i);
     
