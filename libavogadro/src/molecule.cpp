@@ -1141,6 +1141,8 @@ namespace Avogadro{
       OpenBabel::OBAtom obatom = atom->OBAtom();
       *a = obatom;
     }
+    // we are copying partial charges above
+    obmol.SetPartialChargesPerceived();
     foreach(Bond *bond, m_bondList) {
       Atom *beginAtom = atomById(bond->beginAtomId());
       if (!beginAtom)
@@ -1401,6 +1403,9 @@ namespace Avogadro{
       m_dipoleMoment = new Vector3d(moment.x(), moment.y(), moment.z());
       m_estimatedDipoleMoment = false;
     }
+
+    // we set the partial charges above
+    m_invalidPartialCharges = false;
 
     blockSignals(false);
     return true;
