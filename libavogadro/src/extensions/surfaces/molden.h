@@ -34,11 +34,11 @@
 
 namespace Avogadro
 {
-  // Parsing mode: section of the file currently being parsed
-  enum mode { NotParsing, Atoms, GTO, STO, MO, SCF };
 
   class MoldenFile
   {
+  // Parsing mode: section of the file currently being parsed
+  enum mode { NotParsing, Atoms, GTO, STO, MO, SCF };
   public:
     MoldenFile(const QString &filename, GaussianSet *basis);
     ~MoldenFile();
