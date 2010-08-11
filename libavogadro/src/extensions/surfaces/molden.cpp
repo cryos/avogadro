@@ -88,7 +88,7 @@ namespace Avogadro
       m_currentMode = GTO;
     } else if (key.contains("[mo]", Qt::CaseInsensitive)) {
       m_currentMode = MO;
-    } else if (key.contains("[")) { // unkonwn section
+    } else if (key.contains("[")) { // unknown section
       m_currentMode = NotParsing;
     } else {
       QString shell;
@@ -101,9 +101,9 @@ namespace Avogadro
         if (list.size() < 6)
           return;
         m_aNums.push_back(list[2].toInt());
-        m_aPos.push_back(list[3].toDouble());
-        m_aPos.push_back(list[4].toDouble());
-        m_aPos.push_back(list[5].toDouble());
+        m_aPos.push_back(list[3].toDouble() * m_coordFactor);
+        m_aPos.push_back(list[4].toDouble() * m_coordFactor);
+        m_aPos.push_back(list[5].toDouble() * m_coordFactor);
 
         break;
       case GTO:
