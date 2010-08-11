@@ -98,11 +98,11 @@ namespace Avogadro
         m_numMOs += 5;
         break;
       case F:
-	m_numMOs += 8;
-	break;
+        m_numMOs += 8;
+        break;
       case F7:
-	m_numMOs += 7;
-	break;
+        m_numMOs += 7;
+        break;
       default:
         // Should never hit here
         ;
@@ -131,6 +131,8 @@ namespace Avogadro
   void GaussianSet::addMOs(const vector<double>& MOs)
   {
     m_init = false;
+
+    qDebug() << "num MOs: " << m_numMOs << " " << MOs.size();
 
     // The new way - initalise a matrix and read the data into it
     m_moMatrix.resize(m_numMOs, m_numMOs);

@@ -33,6 +33,7 @@
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
+#include "molden.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
@@ -600,6 +601,19 @@ namespace Avogadro
         }
         GaussianSet *gaussian = new GaussianSet;
         Molpro mpo(fullFileName, gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+      else if (completeSuffix.contains("molden", Qt::CaseInsensitive)
+          || completeSuffix.contains("mold", Qt::CaseInsensitive)
+          || completeSuffix.contains("molf", Qt::CaseInsensitive)) {
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        MoldenFile fchk(fullFileName, gaussian);
 
         m_basis = gaussian;
         return true;
