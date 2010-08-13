@@ -9,7 +9,7 @@ set(surfaceextension_SRCS
     surfaceextension.cpp
     surfacedialog.cpp
     basisset.cpp
-    gaussianset.cpp
+   gaussianset.cpp
     gaussianfchk.cpp
     slaterset.cpp
     mopacaux.cpp
@@ -24,6 +24,7 @@ set(orbitalextension_SRCS
     orbitaltablemodel.cpp
     orbitalwidget.cpp
     basisset.cpp
+    gamessus.cpp
     gaussianset.cpp
     gaussianfchk.cpp
     slaterset.cpp

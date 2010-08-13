@@ -131,11 +131,15 @@ namespace Avogadro
   {
     m_init = false;
 
-    // The new way - initalise a matrix and read the data into it
-    m_moMatrix.resize(m_numMOs, m_numMOs);
-    // Now read in the vector row by row
-    for (unsigned int i = 0; i < m_numMOs; ++i)
-      for (unsigned int j = 0; j < m_numMOs; ++j)
+    // Some programs don't output all MOs, so we take the amount of data
+    // and divide by the # of AO functions
+    unsigned int columns = MOs.size() / m_numMOs;
+    qDebug() << " add MOs: " << m_numMOs << columns;
+
+    m_moMatrix.resize(m_numMOs, columns);
+
+    for (unsigned int j = 0; j < columns; ++j)
+      for (unsigned int i = 0; i < m_numMOs; ++i)
         m_moMatrix.coeffRef(i, j) = MOs[i + j*m_numMOs];
   }
 

@@ -33,6 +33,7 @@
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
+#include "gamessus.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
@@ -596,6 +597,17 @@ namespace Avogadro
         }
         GaussianSet *gaussian = new GaussianSet;
         Molpro mpo(fullFileName, gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+      else if (completeSuffix.contains("gamout", Qt::CaseInsensitive)) {
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GAMESSUSOutput gamout(fullFileName, gaussian);
 
         m_basis = gaussian;
         return true;
