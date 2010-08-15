@@ -39,8 +39,8 @@
 
 namespace Avogadro{
 
-  ElementItem::ElementItem(int elementNumber) : m_width(26), m_height(26),
-    m_element(elementNumber), m_valid(false)
+  ElementItem::ElementItem(int elementNumber) : m_valid(false), m_width(26), m_height(26),
+                                                m_element(elementNumber)
   {
     // Want these items to be selectable
     setFlags(QGraphicsItem::ItemIsSelectable);
