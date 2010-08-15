@@ -463,13 +463,15 @@ namespace Avogadro
     qDebug() << "Attempting to render orbital " << orbital;
     // TODO Actually select the engine. For now, just use the first
     // surface engine
-    Engine *engine;
+    Engine *engine = 0;
 
     foreach (Engine *e, GLWidget::current()->engines()) {
       if (e->identifier() == "Surfaces") {
         engine = e;
       }
     }
+    if (!engine)
+      return; // prevent a crash if the surface engine isn't loaded
 
     // Find the most recent calc matching the selected orbital:
     calcInfo calc;
