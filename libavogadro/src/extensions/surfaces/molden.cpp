@@ -47,8 +47,6 @@ namespace Avogadro
     file->open(QIODevice::ReadOnly | QIODevice::Text);
     m_in = file;
 
-    qDebug() << "File" << filename << "opened.";
-
     // Process the formatted checkpoint and extract all the information we need
     while (!m_in->atEnd()) {
       processLine();
@@ -132,7 +130,7 @@ namespace Avogadro
           }
           else
             return;
-        
+
           int numGTOs = list[1].toInt();
           m_shellNums.push_back(numGTOs);
 
@@ -178,9 +176,10 @@ namespace Avogadro
     // Now load up our basis set
     basis->setNumElectrons(m_electrons);
     int nAtom = 0;
-    for (unsigned int i = 0; i < m_aPos.size(); i += 3)
+    for (unsigned int i = 0; i < m_aPos.size(); i += 3) {
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                      m_aNums.at(nAtom++));
+    }
 
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;

@@ -25,8 +25,6 @@
 #ifndef MOLDEN_H
 #define MOLDEN_H
 
-#include <QString>
-#include <QIODevice>
 #include <Eigen/Core>
 #include <vector>
 
