@@ -747,13 +747,16 @@ namespace Avogadro
       }
 #endif
 
-      // check to see if we already have an open window
-      MainWindow *existing = findMainWindow( fileName );
-      if ( existing ) {
-        existing->show();
-        existing->raise();
-        existing->activateWindow();
-        return;
+      // If current window is not empty or has non-default file name,
+      // check if we already have an open window with this file
+      if ( !isDefaultFileName(d->fileName) || molecule()->numAtoms() ) {
+        MainWindow *existing = findMainWindow( fileName );
+        if ( existing ) {
+          existing->show();
+          existing->raise();
+          existing->activateWindow();
+          return;
+        }
       }
 
       // if we have nothing open or modified
