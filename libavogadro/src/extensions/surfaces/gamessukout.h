@@ -37,25 +37,27 @@
 
 namespace Avogadro
 {
+  /**
+   * This class is used to hold the data parsed from the GAMESS-UK output
+   * before we create the Avogadro basis set object
+   */
   class GUKBasisSet
   {
-    /*
-      This class is used to hold the data parsed from the GAMESS-UK output before we create the Avogadro basis set object
-     */
   public:
     GUKBasisSet() {};
     ~GUKBasisSet() {};
 
     void outputCoord();
     void outputBasis();
-    /*
-      Return true if we have already processed an atom of this label type
-    */
+    /**
+     * Return true if we have already processed an atom of this label type
+     */
     bool labelIndex( std::string label );
-    /*
-      Return the enum from basis.h for the supplied label as a string
-      basisset.h: enum orbital { S, SP, P, D, D5, F, F7, UU };
-    */
+
+    /**
+     * Return the enum from basis.h for the supplied label as a string
+     * basisset.h: enum orbital { S, SP, P, D, D5, F, F7, UU };
+     */
     orbital shellTypeFromString(std::string label);
 
     std::vector<std::string> atomLabels; // ordered list of atom labels mapping to coordinates
@@ -70,10 +72,10 @@ namespace Avogadro
     std::vector<double> moEnergies; // list of the energies of the MOs
     std::vector< std::vector<double> > moVectors; // list of list of MO vectors in order of moEnergies
 
-    // These are read in after the basis is printed and used by readMOVectors - could use to check the basis 
-    // has been parsed correctly too
+    // These are read in after the basis is printed and used by readMOVectors -
+    // could use to check the basis has been parsed correctly too
     int nShell;
-    int nBasisFunctions; 
+    int nBasisFunctions;
     int nElectrons;
   };
 
@@ -90,17 +92,19 @@ namespace Avogadro
     void readInitialCoordinates(std::ifstream &ifs);
     void readBasisSet(std::ifstream &ifs);
     inline void addSpBasis(std::vector<double> s_coeff,
-			   std::vector<double> p_coeff,
-			   std::vector<double> sp_exponents);
+                           std::vector<double> p_coeff,
+                           std::vector<double> sp_exponents);
     void readOptimisedCoordinates(std::ifstream &ifs);
     void readMOs(std::ifstream &ifs);
     int readMOVectors(std::ifstream &ifs);
 
     void load(GaussianSet* basis);
 
-    void addBasisForLabel( unsigned int atomIndex, std::string label, GaussianSet* basis );
+    void addBasisForLabel(unsigned int atomIndex, std::string label,
+                          GaussianSet* basis );
 
-    // This holds the basis data parsed in from the file and which is used to create the BasisSet
+    // This holds the basis data parsed in from the file and which is used to
+    // create the BasisSet
     GUKBasisSet gukBasis;
 
     // For parsing the file
