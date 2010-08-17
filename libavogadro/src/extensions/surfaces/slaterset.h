@@ -41,9 +41,9 @@
  *
  * The SlaterSet class has a transparent data structure for storing the basis
  * sets output by many quantum mechanical codes. It has a certain hierarchy
- * where shells are built up from n primitives, in this case Gaussian Type
- * Orbitals (GTOs). Each shell has a type (S, P, D, F, etc) and is composed of
- * one or more GTOs. Each GTO has a contraction coefficient, c, and an exponent,
+ * where shells are built up from n primitives, in this case Slater Type
+ * Orbitals (STOs). Each shell has a type (S, P, D, F, etc) and is composed of
+ * one or more STOs. Each STO has a contraction coefficient, c, and an exponent,
  * a.
  *
  * When calculating Molecular Orbitals (MOs) each orthogonal shell has an
@@ -100,7 +100,7 @@ namespace Avogadro
     bool addSlaterTypes(const std::vector<int> &t);
 
     /**
-     * Add a GTO to the supplied basis.
+     * Add a STO to the supplied basis.
      * @param zetas The exponents of the STOs
      * @return True if successful.
      */

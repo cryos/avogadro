@@ -252,6 +252,7 @@ using Eigen::Vector3d;
      const Vector3d *v = m_molecule->atomPos(m_id);
      obatom.SetVector(v->x(), v->y(), v->z());
      obatom.SetAtomicNum(m_atomicNumber);
+     obatom.SetPartialCharge(m_partialCharge);
      obatom.SetFormalCharge(m_formalCharge);
 
      // Save custom label
@@ -331,6 +332,8 @@ using Eigen::Vector3d;
      // Copy all needed OBAtom data to our atom
      m_molecule->setAtomPos(m_id, Vector3d(obatom->x(), obatom->y(), obatom->z()));
      m_atomicNumber = obatom->GetAtomicNum();
+     m_partialCharge = obatom->GetPartialCharge();
+
      // #ifdef OPENBABEL_IS_NEWER_THAN_2_2_99
      // m_customLabel = obatom->GetCustomLabel();
      // #endif

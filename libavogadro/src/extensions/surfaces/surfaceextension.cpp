@@ -30,6 +30,7 @@
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
+#include "molden.h"
 #include "vdwsurface.h"
 #include "surfacedialog.h"
 
@@ -264,6 +265,31 @@ namespace Avogadro
         m_gaussian = new GaussianSet;
         Molpro mpo(fullFileName, m_gaussian);
         qDebug() << "numMOs: " << m_gaussian->numMOs();
+
+        // Set up the MOs along with the electron density maps
+        m_cubes << FALSE_ID;
+        m_surfaceDialog->setMOs(m_gaussian->numMOs());
+        m_moCubes.resize(m_gaussian->numMOs());
+        m_moCubes.fill(FALSE_ID);
+        for (int i = 0; i < m_gaussian->numMOs(); ++i) {
+          if (m_gaussian->HOMO(i)) m_surfaceDialog->setHOMO(i);
+          else if (m_gaussian->LUMO(i)) m_surfaceDialog->setLUMO(i);
+        }
+        return true;
+      }
+      else if (completeSuffix.contains("molden", Qt::CaseInsensitive)
+          || completeSuffix.contains("mold", Qt::CaseInsensitive)
+          || completeSuffix.contains("molf", Qt::CaseInsensitive)) {
+        if (m_slater) {
+          delete m_slater;
+          m_slater = 0;
+        }
+        if (m_gaussian) {
+          delete m_gaussian;
+          m_gaussian = 0;
+        }
+        m_gaussian = new GaussianSet;
+        MoldenFile fchk(fullFileName, m_gaussian);
 
         // Set up the MOs along with the electron density maps
         m_cubes << FALSE_ID;

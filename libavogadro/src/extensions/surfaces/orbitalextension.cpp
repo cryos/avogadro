@@ -33,6 +33,7 @@
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
+#include "molden.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
@@ -44,6 +45,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QTime>
 
 namespace Avogadro
 {
@@ -163,6 +165,7 @@ namespace Avogadro
       m_widget->fillTable(list);
     }
 
+    m_time.start();
     precalculateOrbitals();
   }
 
@@ -461,13 +464,15 @@ namespace Avogadro
     qDebug() << "Attempting to render orbital " << orbital;
     // TODO Actually select the engine. For now, just use the first
     // surface engine
-    Engine *engine;
+    Engine *engine = 0;
 
     foreach (Engine *e, GLWidget::current()->engines()) {
       if (e->identifier() == "Surfaces") {
         engine = e;
       }
     }
+    if (!engine)
+      return; // prevent a crash if the surface engine isn't loaded
 
     // Find the most recent calc matching the selected orbital:
     calcInfo calc;
@@ -529,7 +534,7 @@ namespace Avogadro
     // Do nothing if all calcs are finished.
     if (hash.size() == 0) {
       m_runningMutex->unlock();
-      qDebug() << "Finished queue.";
+      qDebug("Finished queue. Time elapsed: %10.4f s", (m_time.elapsed() / 1000.0f));
       return;
     }
 
@@ -596,6 +601,19 @@ namespace Avogadro
         }
         GaussianSet *gaussian = new GaussianSet;
         Molpro mpo(fullFileName, gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+      else if (completeSuffix.contains("molden", Qt::CaseInsensitive)
+          || completeSuffix.contains("mold", Qt::CaseInsensitive)
+          || completeSuffix.contains("molf", Qt::CaseInsensitive)) {
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        MoldenFile fchk(fullFileName, gaussian);
 
         m_basis = gaussian;
         return true;

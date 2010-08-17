@@ -85,9 +85,25 @@ namespace Avogadro
     return false;
   } */
 
+
+  // Protect globally declared functions in an anonymous namespace
+  namespace
+  {
+    double radiusCovalent(const Atom *atom)
+    {
+      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
+    }
+
+    double radiusVdW(const Atom *atom)
+    {
+      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
+    }
+  } // End of anonymous namespace
+
+
   BSDYEngine::BSDYEngine(QObject *parent) : Engine(parent),
       m_settingsWidget(0), m_atomRadiusPercentage(0.3), m_bondRadius(0.1),
-      m_atomRadiusType(1), m_showMulti(2), m_alpha(1.)
+      m_atomRadiusType(1), m_showMulti(2), m_alpha(1.), pRadius(radiusVdW)
   {  }
 
   Engine *BSDYEngine::clone() const
@@ -333,20 +349,6 @@ namespace Avogadro
     }
     return true;
   }
-
-  // Protect globally declared functions in an anonymous namespace
-  namespace
-  {
-    double radiusCovalent(const Atom *atom)
-    {
-      return OpenBabel::etab.GetCovalentRad(atom->atomicNumber());
-    }
-
-    double radiusVdW(const Atom *atom)
-    {
-      return OpenBabel::etab.GetVdwRad(atom->atomicNumber());
-    }
-  } // End of anonymous namespace
 
   inline double BSDYEngine::radius(const Atom *atom) const
   {

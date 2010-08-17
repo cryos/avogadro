@@ -14,6 +14,7 @@ set(surfaceextension_SRCS
     gaussianfchk.cpp
     slaterset.cpp
     mopacaux.cpp
+    molden.cpp
     molpro.cpp
     vdwsurface.cpp
     qtiocompressor/qtiocompressor.cpp
@@ -30,6 +31,7 @@ set(orbitalextension_SRCS
     gaussianfchk.cpp
     slaterset.cpp
     mopacaux.cpp
+    molden.cpp
     molpro.cpp
     vdwsurface.cpp
     qtiocompressor/qtiocompressor.cpp
