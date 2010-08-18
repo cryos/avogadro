@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-06-02 23:26+0000\n"
-"Last-Translator: Luke Hollins <Unknown>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 13:51+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr "Roentgenium"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cerium"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1036,11 +1035,10 @@ msgstr "&Molecular Mechanics"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Cannot set up the force field for this molecule."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1565,9 +1563,8 @@ msgstr ""
 "Dalton input file preview pane?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Save Dalton Input File"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1729,9 +1726,8 @@ msgstr ""
 "All changes will be lost!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "GAMESS Input"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1747,9 +1743,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Save MOPAC Input Deck"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1827,23 +1822,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Create input files for quantum chemistry packages"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem Input Deck Generator Warning"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Would you like to update the preview text, losing all changes made in the "
-"MOPAC input deck preview pane?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Save Molpro Input Deck"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1859,9 +1849,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Save MOPAC Input Deck"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1914,9 +1903,8 @@ msgstr ""
 "NWChem input deck preview pane?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Save NWChem Input Deck"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1931,9 +1919,8 @@ msgstr ""
 "Chem input deck preview pane?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Save QChem Input Deck"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2476,9 +2463,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Build and display crystallographic super cells"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Molecular Orbital"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2487,32 +2473,27 @@ msgstr "Orbitals"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Renders molecular orbitals"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbital:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Start"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3453,18 +3434,16 @@ msgid "Residue"
 msgstr "Residue"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Change Scheme Name"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Label"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3475,10 +3454,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Radius:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8116,33 +8095,28 @@ msgstr "Generate Cell"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianion"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Calculate"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Default &Quality:"
-msgstr "Grid Quality:"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Isosurface cutoff value"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "Low"
 
@@ -8150,7 +8124,6 @@ msgstr "Low"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Medium"
 
@@ -8158,7 +8131,6 @@ msgstr "Medium"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "High"
 
@@ -8166,9 +8138,8 @@ msgstr "High"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Very High"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8184,15 +8155,13 @@ msgstr "Form"
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Quality: "
-msgstr "Grid Quality:"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Continue"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8372,7 +8341,8 @@ msgstr ""
 "Molenaar, ,Launchpad Contributions:,Brian Burns,Itai Molenaar, ,Launchpad "
 "Contributions:,Brian Burns,Itai Molenaar, ,Launchpad Contributions:,Brian "
 "Burns,Itai Molenaar, ,Launchpad Contributions:,Brian Burns,Itai Molenaar,"
-"Luke Hollins"
+"Luke Hollins, ,Launchpad Contributions:,Avogadro Team,Brian Burns,Itai "
+"Molenaar,Ken Sharp,Luke Hollins"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8380,37 +8350,8 @@ msgstr ""
 ",,imolenaar28@gmail.com,,,imolenaar28@gmail.com,,,bburns@aundae.com,"
 "imolenaar28@gmail.com,,,bburns@aundae.com,imolenaar28@gmail.com,,,"
 "bburns@aundae.com,imolenaar28@gmail.com,,,bburns@aundae.com,"
-"imolenaar28@gmail.com,"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Dalton Input File (*.dal)"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Export Input Deck"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS Input Deck (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Save Gaussian Input Deck"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussian Input Deck (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro Input Deck (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC Input Deck (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem Input Deck (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem Input Deck (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "On:"
+"imolenaar28@gmail.com,,,,avogadro-devel@lists.sourceforge.net,bburns@aundae."
+"com,imolenaar28@gmail.com,,"
 
 #~ msgid "Caesium"
 #~ msgstr "Caesium"
@@ -8420,6 +8361,9 @@ msgstr ""
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Renders protein secondary structure"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Renders molecular orbitals"
 
 #~ msgid "Surface"
 #~ msgstr "Surface"
@@ -8435,6 +8379,12 @@ msgstr ""
 
 #~ msgid "QM Selection..."
 #~ msgstr "QM Selection..."
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Export Input Deck"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS Input Deck (*.inp)"
 
 #~ msgid "Gaussian Input..."
 #~ msgstr "Gaussian Input..."
@@ -8453,6 +8403,12 @@ msgstr ""
 
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr "Create input files for quantum chemistry packages like Gaussian"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Save Gaussian Input Deck"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian Input Deck (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Open ligand file"
@@ -8518,6 +8474,15 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Create linear interpolation for animations"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro Input Deck (*.qcin)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC Input Deck (*.mop)"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem Input Deck (*.nw)"
+
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
@@ -8548,6 +8513,9 @@ msgstr ""
 
 #~ msgid "Torsion %1"
 #~ msgstr "Torsion %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem Input Deck (*.qcin)"
 
 #~ msgid "Infrared"
 #~ msgstr "Infrared"
@@ -8856,9 +8824,6 @@ msgstr ""
 #~ msgid "Description:\n"
 #~ msgstr "Description:\n"
 
-#~ msgid "Plugin Manager"
-#~ msgstr "Plugin Manager"
-
 #~ msgid ""
 #~ "Avogadro needs to be restarted in order for the changes to take effect"
 #~ msgstr ""
@@ -9102,9 +9067,6 @@ msgstr ""
 #~ msgid "Avogadro Website"
 #~ msgstr "Avogadro Website"
 
-#~ msgid "Plugin Manager..."
-#~ msgstr "Plugin Manager..."
-
 #~ msgid "Project Tree Editor..."
 #~ msgstr "Project Tree Editor..."
 
@@ -9119,9 +9081,6 @@ msgstr ""
 
 #~ msgid "&Vector Graphics..."
 #~ msgstr "&Vector Graphics..."
-
-#~ msgid "Plugins"
-#~ msgstr "Plugins"
 
 #~ msgid "Details"
 #~ msgstr "Details"
@@ -9210,6 +9169,9 @@ msgstr ""
 
 #~ msgid "Cartesian Properties"
 #~ msgstr "Cartesian Properties"
+
+#~ msgid "On:"
+#~ msgstr "On:"
 
 #~ msgid "create ligand from current selection"
 #~ msgstr "create ligand from current selection"
@@ -9310,3 +9272,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Display visual cues</string>\n"
 #~ "     </property>"
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "Dalton Input File (*.dal)"

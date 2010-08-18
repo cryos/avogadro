@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 07:13+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:54+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:13+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -568,9 +568,8 @@ msgid "Roentgenium"
 msgstr "Roentgen"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cer"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -2434,9 +2433,8 @@ msgid "Build and display crystallographic super cells"
 msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Właściwości molekuły..."
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -3390,9 +3388,8 @@ msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Etykieta"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3403,10 +3400,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Promień:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8024,9 +8021,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Oblicz"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8049,9 +8045,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
-msgstr "Mendelew"
+msgstr "Średnia"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
@@ -8269,7 +8264,8 @@ msgstr ""
 "Avogadro Team,Bartosz Kaszubowski,Geoff Hutchison,Krzysztof Wittek, ,"
 "Launchpad Contributions:,Avogadro Team,Bartosz Kaszubowski,Geoff Hutchison,"
 "Krzysztof Wittek, ,Launchpad Contributions:,Avogadro Team,Bartosz "
-"Kaszubowski,Geoff Hutchison,Krzysztof Wittek"
+"Kaszubowski,Geoff Hutchison,Krzysztof Wittek, ,Launchpad Contributions:,"
+"Avogadro Team,Bartosz Kaszubowski,Geoff Hutchison,Krzysztof Wittek"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8277,7 +8273,8 @@ msgstr ""
 ",,,romano473@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,avogadro-"
 "devel@lists.sourceforge.net,,,,avogadro-devel@lists.sourceforge.net,"
 "gosimek@gmail.com,,,,,avogadro-devel@lists.sourceforge.net,gosimek@gmail."
-"com,,,,,avogadro-devel@lists.sourceforge.net,gosimek@gmail.com,,"
+"com,,,,,avogadro-devel@lists.sourceforge.net,gosimek@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,gosimek@gmail.com,,"
 
 #~ msgid "Caesium"
 #~ msgstr "Cez"

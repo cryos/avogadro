@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 04:03+0000\n"
-"Last-Translator: cuiweicui <cuiweicui1985@gmail.com>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-07-11 11:57+0000\n"
+"Last-Translator: Ye, Qing <allen19920930@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr "钅仑"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "铈"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1030,11 +1029,10 @@ msgstr "分子机理(&M)"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "无法为该分子建立力场"
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1428,7 +1426,7 @@ msgstr "化合价"
 
 #: src/extensions/propmodel.cpp:433
 msgid "Formal Charge"
-msgstr ""
+msgstr "有效电荷"
 
 #: src/extensions/propmodel.cpp:435
 msgid "Partial Charge"
@@ -1712,9 +1710,8 @@ msgstr ""
 "所有改动都将丢失!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "GAMESS输入"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1729,9 +1726,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "保存MOPAC输入卡片"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1808,22 +1804,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem输入卡片生成器警告"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"您是否希望更新预览文本，并丢失所有在MOPAC输入卡片预览面板中所做的修改？"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "保存Molpro输入卡片"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1838,9 +1830,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "保存MOPAC输入卡片"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1891,9 +1882,8 @@ msgstr ""
 "您是否希望更新预览文字，并丢失所有在NWChem输入卡片预览面板中所做的更改？"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "保存NWChem输入卡片"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1906,9 +1896,8 @@ msgid ""
 msgstr "您是否想更新预览文本，并丢失所有在Q-Chem输入卡片预览面板中所做的修改？"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "保存QChem输入卡片"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2446,9 +2435,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "构建并显示晶体学中的超晶胞"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "分子轨道"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2457,32 +2445,27 @@ msgstr "轨道"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "渲染原子轨道"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "轨道:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "开始"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3415,18 +3398,16 @@ msgid "Residue"
 msgstr "残基"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "改变原理图名称"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "标签"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3437,10 +3418,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "半径："
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8059,15 +8040,13 @@ msgstr "生成晶胞"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "二价阴离子"
+msgstr "对话"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "计算所有MO"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8076,15 +8055,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "等高面切断值"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "低"
 
@@ -8092,7 +8069,6 @@ msgstr "低"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "中"
 
@@ -8100,7 +8076,6 @@ msgstr "中"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "高"
 
@@ -8108,9 +8083,8 @@ msgstr "高"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "非常高"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8131,9 +8105,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "构象异构体"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8314,7 +8287,8 @@ msgstr ""
 "思涵, ,Launchpad Contributions:,Xinfeng,cuiweicui, ,Launchpad Contributions:,"
 "Xinfeng,cuiweicui,yjjart, ,Launchpad Contributions:,Xinfeng,Ye, Qing,"
 "cuiweicui,yjjart, ,Launchpad Contributions:,Xinfeng,Ye, Qing,cuiweicui,"
-"yjjart, ,Launchpad Contributions:,Xinfeng,Ye, Qing,cuiweicui,yjjart"
+"yjjart, ,Launchpad Contributions:,Xinfeng,Ye, Qing,cuiweicui,yjjart, ,"
+"Launchpad Contributions:,Xinfeng,Ye, Qing,cuiweicui,yjjart"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8325,34 +8299,8 @@ msgstr ""
 "cuiweicui1985@gmail.com,yjjart@gmail.com,,,,allen19920930@gmail.com,"
 "cuiweicui1985@gmail.com,yjjart@gmail.com,,,,allen19920930@gmail.com,"
 "cuiweicui1985@gmail.com,yjjart@gmail.com,,,,allen19920930@gmail.com,"
+"cuiweicui1985@gmail.com,yjjart@gmail.com,,,,allen19920930@gmail.com,"
 "cuiweicui1985@gmail.com,yjjart@gmail.com"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "导出输入卡片"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS输入卡片 (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "保存Gaussian输入卡片"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussian 输入卡片 (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro输入卡片 (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC输入卡片（*.mop）"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem输入卡片 (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Q-Chem输入卡片 (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "On:"
 
 #~ msgid "Caesium"
 #~ msgstr "铯"
@@ -8362,6 +8310,9 @@ msgstr ""
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "渲染蛋白质二级结构"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "渲染原子轨道"
 
 #~ msgid "Surface"
 #~ msgstr "表面"
@@ -8378,6 +8329,12 @@ msgstr ""
 #~ msgid "QM Selection..."
 #~ msgstr "量子力学选择..."
 
+#~ msgid "Export Input Deck"
+#~ msgstr "导出输入卡片"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS输入卡片 (*.inp)"
+
 #~ msgid "Gaussian Input..."
 #~ msgstr "Gaussian输入..."
 
@@ -8389,6 +8346,12 @@ msgstr ""
 
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr "为Gaussian那样的量子化学软件包创建输入文件"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "保存Gaussian输入卡片"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian 输入卡片 (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "打开配体文件"
@@ -8446,6 +8409,15 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "为动画创建线性插值"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro输入卡片 (*.qcin)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC输入卡片（*.mop）"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem输入卡片 (*.nw)"
+
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
@@ -8475,6 +8447,9 @@ msgstr ""
 
 #~ msgid "Torsion %1"
 #~ msgstr "扭转 %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Q-Chem输入卡片 (*.qcin)"
 
 #~ msgid "Infrared"
 #~ msgstr "红外线"
@@ -8529,6 +8504,9 @@ msgstr ""
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "静电势 (ESP)"
+
+#~ msgid "On:"
+#~ msgstr "On:"
 
 #~ msgid "Single Point Entry"
 #~ msgstr "单点进入"
@@ -8617,6 +8595,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "计算MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "计算所有MO"
 
 #~ msgid "Calculate Electron Density"
 #~ msgstr "计算电子密度"

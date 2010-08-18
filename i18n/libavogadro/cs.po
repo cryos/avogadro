@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 07:36+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:48+0000\n"
 "Last-Translator: fri <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:15+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -569,9 +569,8 @@ msgid "Roentgenium"
 msgstr "Roentgenium"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cer"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1046,11 +1045,10 @@ msgstr "&Molekulární mechanika"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "U této molekuly nelze nastavit silové pole."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1736,9 +1734,8 @@ msgstr ""
 "Všechny změny budou ztraceny!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "Vstup GAMESS"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1754,9 +1751,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Uložit MOPAC vstupní balíček"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1834,23 +1830,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Vytvořit vstupní soubory pro balíčky kvantové chemie"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Varování tvůrce Q-Chem vstupního balíčku"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Chtěl byste obnovit text náhledu? Všechny změny učiněné v části náhledu "
-"MOPAC vstupního balíčku budou ztraceny."
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Uložit Molpro vstupní balíček"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1866,9 +1857,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Uložit MOPAC vstupní balíček"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1921,9 +1911,8 @@ msgstr ""
 "NWChem vstupního balíčku budou ztraceny."
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Uložit NWChem vstupní balíček"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1938,9 +1927,8 @@ msgstr ""
 "Chem vstupního balíčku budou ztraceny."
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Uložit QChem vstupní balíček"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2482,9 +2470,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Sestavit a zobrazit krystalografické superbuňky"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Molekulový orbital"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2493,32 +2480,27 @@ msgstr "Orbitaly"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Vykresluje molekulové orbitaly"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbital:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Spustit"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3458,18 +3440,16 @@ msgid "Residue"
 msgstr "Zbytek"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Změnit název nákresu"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Popisek"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3480,10 +3460,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Poloměr:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8103,15 +8083,13 @@ msgstr "Vytvořit buňku"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianiont"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Vypočítat všechna MO"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8120,23 +8098,20 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Hodnota přerušení izopovrchu"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
-msgstr "Nízký"
+msgstr "Nízké"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Střední"
 
@@ -8144,17 +8119,15 @@ msgstr "Střední"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
-msgstr "Vysoký"
+msgstr "Vysoké"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Velmi vysoký"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8175,9 +8148,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Nastavit Avogadro..."
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8359,6 +8331,7 @@ msgstr ""
 "fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
 "fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
 "fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
+"fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,"
 "fri, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,Roman Horník,fri"
 
 msgctxt "EMAIL OF TRANSLATORS"
@@ -8371,34 +8344,8 @@ msgstr ""
 "pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,roman."
 "hornik@gmail.com,pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge."
 "net,,,pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,,"
+"pavelfric@seznam.cz,,,avogadro-devel@lists.sourceforge.net,,,"
 "pavelfric@seznam.cz"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Vstupní balíček vyvést do souboru"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS vstupní balíček (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Uložit Gaussovský vstupní balíček"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussovský vstupní balíček (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro vstupní balíček  (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC vstupní balíček (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem vstupní balíček (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem vstupní balíček  (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "Na:"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesium"
@@ -8871,6 +8818,9 @@ msgstr ""
 #~ msgid "Ctrl+Shift+A"
 #~ msgstr "Ctrl+Shift+A"
 
+#~ msgid "Configure Avogadro..."
+#~ msgstr "Nastavit Avogadro..."
+
 #~ msgid "Tutorials"
 #~ msgstr "Návody"
 
@@ -8916,11 +8866,20 @@ msgstr ""
 #~ msgid "Cannot save file %1."
 #~ msgstr "Nelze uložit soubor %1."
 
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Vykresluje molekulové orbitaly"
+
 #~ msgid "Renders computed molecular surfaces"
 #~ msgstr "Vykresluje molekuly jako povrchy"
 
 #~ msgid "Name"
 #~ msgstr "Název"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Vstupní balíček vyvést do souboru"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS vstupní balíček (*.inp)"
 
 #~ msgid "Gaussian Input..."
 #~ msgstr "Gaussovský vstup..."
@@ -8939,6 +8898,12 @@ msgstr ""
 
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr "Vytvořit vstupní soubory pro kvantovou chemii jako Gaussovský"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Uložit Gaussovský vstupní balíček"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussovský vstupní balíček (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Otevřít soubor s ligandem"
@@ -8989,6 +8954,15 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Vytvořit přímočaré interpolace pro vykreslování"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro vstupní balíček  (*.qcin)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC vstupní balíček (*.mop)"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem vstupní balíček (*.nw)"
+
 #~ msgid "VdW Cube"
 #~ msgstr "Krychle VdW"
 
@@ -8997,6 +8971,9 @@ msgstr ""
 
 #~ msgid "Atom Index %1"
 #~ msgstr "Index atomu %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem vstupní balíček  (*.qcin)"
 
 #~ msgid "Customi&ze <<"
 #~ msgstr "Uzpůso&bit <<"
@@ -9015,6 +8992,9 @@ msgstr ""
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Elektrostatický potenciál (ESP)"
+
+#~ msgid "On:"
+#~ msgstr "Na:"
 
 #~ msgid "Add Directory"
 #~ msgstr "Přidat adresář"
@@ -9071,6 +9051,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "Vypočítat MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Vypočítat všechna MO"
 
 #~ msgid "Calculate Electron Density"
 #~ msgstr "Vypočítat elektronovou hustotu"

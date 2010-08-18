@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-26 14:32+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 13:57+0000\n"
 "Last-Translator: Devrim Şahin <room449@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr "Röntgenyum"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Seryum"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1038,11 +1037,10 @@ msgstr "&Moleküler Mekanik"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Bu molekül için kuvvet alanı kurulamıyor."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1727,9 +1725,8 @@ msgstr ""
 "Bütün değişiklikler kaybedilecek!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "GAMESS Girdi Destesi (*.inp)"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1745,9 +1742,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "MOPAC Girdi Destesini Kaydet"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1824,23 +1820,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Kuantum kimya paketleri için girdi dosyaları yarat"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem Girdi Destesi Üreteci Uyarısı"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"MOPAC girdi destesi önizleme bölmesindeki değişiklikleri kaybederek, "
-"önizleme yazısını güncellemek istiyor musunuz ?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Molpro Girdi Destesini Kaydet"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1856,9 +1847,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "MOPAC Girdi Destesini Kaydet"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1910,9 +1900,8 @@ msgstr ""
 "bölmesinde yapılan değişikliklerin hepsi kaybedilecek ?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "NWChem Girdi Destesini Kaydet"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1927,9 +1916,8 @@ msgstr ""
 "önizleme yazısını güncellemek istiyor musunuz ?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "QChem Girdi Destesini Kaydet"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2467,9 +2455,8 @@ msgid "Build and display crystallographic super cells"
 msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Molekül yörüngelerini kaplar"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2489,14 +2476,12 @@ msgid "LUMO"
 msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Molekül yörüngelerini kaplar"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Yörüngeler"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
 msgid "Status"
@@ -3379,18 +3364,16 @@ msgid "Residue"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Şema Adını Değiştir"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Etiket"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -8046,17 +8029,15 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
-msgstr "Mendelevyum"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
-msgstr "Açık"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
@@ -8268,7 +8249,9 @@ msgstr ""
 "çevik,huseyinkozan, ,Launchpad Contributions:,Can Bülbül,Efe Çiftci,Mustafa "
 "Yılmaz,Osman Tosun,Serdar Delican,Yiğit Ateş,hayrettin çevik,huseyinkozan, ,"
 "Launchpad Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,"
-"Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan"
+"Osman Tosun,Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan, ,Launchpad "
+"Contributions:,Can Bülbül,Devrim Şahin,Efe Çiftci,Mustafa Yılmaz,Osman Tosun,"
+"Yiğit Ateş,efuyam,hayrettin çevik,huseyinkozan"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8282,28 +8265,9 @@ msgstr ""
 "yigitates52@gmail.com,hayros@gmail.com,huseyinkozan@gmail.com,,,a_bulbul@ug."
 "bilkent.edu.tr,room449@gmail.com,efe.ciftci@linux.org.tr,apshalasha@gmail."
 "com,rainman.neu@gmail.com,yigitates52@gmail.com,,hayros@gmail.com,"
-"huseyinkozan@gmail.com"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Giriş Destesini Dışa Aktar"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Gaussian Girdi Destesini Kaydet"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussian Girdi Destesi (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro Girdi Destesi (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC Girdi Destesi (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem Girdi Destesi (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem Girdi Destesi (*.qcin)"
+"huseyinkozan@gmail.com,,,a_bulbul@ug.bilkent.edu.tr,room449@gmail.com,efe."
+"ciftci@linux.org.tr,apshalasha@gmail.com,rainman.neu@gmail.com,"
+"yigitates@ceviri.ubuntu-tr.net,,hayros@gmail.com,huseyinkozan@gmail.com"
 
 #~ msgid "Clear Molecule"
 #~ msgstr "Molekülü temizle"
@@ -8357,6 +8321,9 @@ msgstr ""
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Proteinin ikinci yapısını kaplar"
 
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Molekül yörüngelerini kaplar"
+
 #~ msgid "Renders computed molecular surfaces"
 #~ msgstr "Hesaplanmış moleküler yüzeyler olarak kaplar"
 
@@ -8375,6 +8342,9 @@ msgstr ""
 #~ msgid "QM Selection..."
 #~ msgstr "QM Seçimi..."
 
+#~ msgid "Export Input Deck"
+#~ msgstr "Giriş Destesini Dışa Aktar"
+
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Q-Chem Girdisi..."
 
@@ -8392,6 +8362,12 @@ msgstr ""
 
 #~ msgid "&NWChem Input..."
 #~ msgstr "&NWChem Girdisi..."
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Gaussian Girdi Destesini Kaydet"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian Girdi Destesi (*.com)"
 
 #~ msgid "Avogadro files (*.*)"
 #~ msgstr "Avogadro dosyaları (*.*)"
@@ -8456,14 +8432,26 @@ msgstr ""
 #~ "Film dosya adı geçersiz. Dosya adı tam klasör yolunu ve dosya adını .avi "
 #~ "ile bitecek şekilde içermeli"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro Girdi Destesi (*.qcin)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC Girdi Destesi (*.mop)"
+
 #~ msgid "VdW Cube"
 #~ msgstr "VdW Kübü"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem Girdi Destesi (*.nw)"
 
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
 #~ msgid "Atom Index %1"
 #~ msgstr "Atom Indeksi %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem Girdi Destesi (*.qcin)"
 
 #~ msgid "Angle %1"
 #~ msgstr "Açı %1"

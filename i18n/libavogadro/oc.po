@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 04:22+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:33+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -123,15 +123,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:42
 msgid "Hydrogen"
-msgstr ""
+msgstr "Idrogèn"
 
 #: src/elementtranslator.cpp:45
 msgid "Helium"
-msgstr ""
+msgstr "Èli"
 
 #: src/elementtranslator.cpp:48
 msgid "Lithium"
-msgstr ""
+msgstr "Liti"
 
 #: src/elementtranslator.cpp:51
 msgid "Beryllium"
@@ -139,19 +139,19 @@ msgstr ""
 
 #: src/elementtranslator.cpp:54
 msgid "Boron"
-msgstr ""
+msgstr "Boròni"
 
 #: src/elementtranslator.cpp:57
 msgid "Carbon"
-msgstr ""
+msgstr "Carbòni"
 
 #: src/elementtranslator.cpp:60
 msgid "Nitrogen"
-msgstr ""
+msgstr "Nitrogèn"
 
 #: src/elementtranslator.cpp:63
 msgid "Oxygen"
-msgstr ""
+msgstr "Oxigèn"
 
 #: src/elementtranslator.cpp:66
 msgid "Fluorine"
@@ -159,23 +159,23 @@ msgstr ""
 
 #: src/elementtranslator.cpp:69
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #: src/elementtranslator.cpp:72
 msgid "Sodium"
-msgstr ""
+msgstr "Sòdi"
 
 #: src/elementtranslator.cpp:75
 msgid "Magnesium"
-msgstr ""
+msgstr "Magnèsi"
 
 #: src/elementtranslator.cpp:78
 msgid "Aluminum"
-msgstr ""
+msgstr "Alumini"
 
 #: src/elementtranslator.cpp:81
 msgid "Silicon"
-msgstr ""
+msgstr "Silicòn"
 
 #: src/elementtranslator.cpp:84
 msgid "Phosphorus"
@@ -191,15 +191,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:93
 msgid "Argon"
-msgstr ""
+msgstr "Argon"
 
 #: src/elementtranslator.cpp:96
 msgid "Potassium"
-msgstr ""
+msgstr "Potassi"
 
 #: src/elementtranslator.cpp:99
 msgid "Calcium"
-msgstr ""
+msgstr "Calci"
 
 #: src/elementtranslator.cpp:102
 msgid "Scandium"
@@ -227,7 +227,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:120
 msgid "Cobalt"
-msgstr ""
+msgstr "Cobalt"
 
 #: src/elementtranslator.cpp:123
 msgid "Nickel"
@@ -239,23 +239,23 @@ msgstr ""
 
 #: src/elementtranslator.cpp:129
 msgid "Zinc"
-msgstr ""
+msgstr "Zinc"
 
 #: src/elementtranslator.cpp:132
 msgid "Gallium"
-msgstr ""
+msgstr "Galli"
 
 #: src/elementtranslator.cpp:135
 msgid "Germanium"
-msgstr ""
+msgstr "Germani"
 
 #: src/elementtranslator.cpp:138
 msgid "Arsenic"
-msgstr ""
+msgstr "Arsenic"
 
 #: src/elementtranslator.cpp:141
 msgid "Selenium"
-msgstr ""
+msgstr "Selèni"
 
 #: src/elementtranslator.cpp:144
 msgid "Bromine"
@@ -267,7 +267,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:150
 msgid "Rubidium"
-msgstr ""
+msgstr "Rubidi"
 
 #: src/elementtranslator.cpp:153
 msgid "Strontium"
@@ -303,19 +303,19 @@ msgstr ""
 
 #: src/elementtranslator.cpp:177
 msgid "Palladium"
-msgstr ""
+msgstr "Palladi"
 
 #: src/elementtranslator.cpp:180
 msgid "Silver"
-msgstr ""
+msgstr "Argent"
 
 #: src/elementtranslator.cpp:183
 msgid "Cadmium"
-msgstr ""
+msgstr "Cadmi"
 
 #: src/elementtranslator.cpp:186
 msgid "Indium"
-msgstr ""
+msgstr "Indi"
 
 #: src/elementtranslator.cpp:189
 msgid "Tin"
@@ -335,7 +335,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:201
 msgid "Xenon"
-msgstr ""
+msgstr "Xenon"
 
 #: src/elementtranslator.cpp:204
 msgid "Cesium"
@@ -343,7 +343,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:207
 msgid "Barium"
-msgstr ""
+msgstr "Bari"
 
 #: src/elementtranslator.cpp:210
 msgid "Lanthanum"
@@ -351,7 +351,7 @@ msgstr ""
 
 #: src/elementtranslator.cpp:213
 msgid "Cerium"
-msgstr ""
+msgstr "Ceri"
 
 #: src/elementtranslator.cpp:216
 msgid "Praseodymium"
@@ -431,15 +431,15 @@ msgstr ""
 
 #: src/elementtranslator.cpp:273
 msgid "Platinum"
-msgstr ""
+msgstr "Platini"
 
 #: src/elementtranslator.cpp:276
 msgid "Gold"
-msgstr ""
+msgstr "Aur"
 
 #: src/elementtranslator.cpp:279
 msgid "Mercury"
-msgstr ""
+msgstr "Mercuri"
 
 #: src/elementtranslator.cpp:282
 msgid "Thallium"
@@ -471,11 +471,11 @@ msgstr ""
 
 #: src/elementtranslator.cpp:303
 msgid "Radium"
-msgstr ""
+msgstr "Radi"
 
 #: src/elementtranslator.cpp:306
 msgid "Actinium"
-msgstr ""
+msgstr "Actini"
 
 #: src/elementtranslator.cpp:309
 msgid "Thorium"
@@ -483,19 +483,19 @@ msgstr ""
 
 #: src/elementtranslator.cpp:312
 msgid "Protactinium"
-msgstr ""
+msgstr "Protactini"
 
 #: src/elementtranslator.cpp:315
 msgid "Uranium"
-msgstr ""
+msgstr "Urani"
 
 #: src/elementtranslator.cpp:318
 msgid "Neptunium"
-msgstr ""
+msgstr "Neptuni"
 
 #: src/elementtranslator.cpp:321
 msgid "Plutonium"
-msgstr ""
+msgstr "Plutoni"
 
 #: src/elementtranslator.cpp:324
 msgid "Americium"
@@ -8211,9 +8211,11 @@ msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Cédric VALMARY (Tot en òc), ,Launchpad "
+"Contributions:,Avogadro Team,Cédric VALMARY (Tot en òc), ,Launchpad "
 "Contributions:,Avogadro Team,Cédric VALMARY (Tot en òc)"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-",,cvalmary@yahoo.fr,,,avogadro-devel@lists.sourceforge.net,cvalmary@yahoo.fr"
+",,cvalmary@yahoo.fr,,,avogadro-devel@lists.sourceforge.net,cvalmary@yahoo."
+"fr,,,avogadro-devel@lists.sourceforge.net,cvalmary@yahoo.fr"

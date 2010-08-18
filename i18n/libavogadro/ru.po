@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-06-03 17:40+0000\n"
-"Last-Translator: dn2010 <dn2010@km.ru>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-07-15 13:58+0000\n"
+"Last-Translator: Konstantin Tokarev <annulen@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:13+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -572,9 +572,8 @@ msgid "Roentgenium"
 msgstr "Рентгений"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Церий"
+msgstr "Коперниций"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1048,11 +1047,12 @@ msgstr "&Молекулярная механика"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Не могу выбрать силовое поле для этой молекулы"
+msgstr ""
+"Не удалось использовать выбранное силовое поле для данной молекулы. "
+"Переключаюсь на UFF."
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1579,9 +1579,8 @@ msgstr ""
 "сделанные на панели предпросмотра?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Сохранить входной файл Dalton"
+msgstr "Входной файл Dalton"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1743,7 +1742,6 @@ msgstr ""
 "Все изменения будут потеряны!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
 msgstr "Входной файл GAMESS"
 
@@ -1761,15 +1759,13 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Сохранить входной файл MOPAC"
+msgstr "Сохранить входной файл"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
-#, fuzzy
 msgid "Gaussian Input Deck"
-msgstr "Сохранить входной файл Gaussian"
+msgstr "Входной файл Gaussian"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -1842,23 +1838,20 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Создает входные файлы для квантовохимических программ"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Предупреждение генератора входных файлов Q-Chem"
+msgstr "Предупреждение генератора входных файлов Molpro"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Вы хотите обновить текст входного файла MOPAC, теряя все изменения, "
-"сделанные на панели предпросмотра?"
+"Вы действительно хотите обновить текст, потеряв все изменения, внесенные в "
+"области предварительного просмотра?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Сохранить входной файл Molpro"
+msgstr "Входной файл Molpro"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1874,9 +1867,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Сохранить входной файл MOPAC"
+msgstr "Входной файл MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1928,9 +1920,8 @@ msgstr ""
 "сделанные на панели предпросмотра?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Сохранить входной файл NWChem"
+msgstr "Входной файл NWChem"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1945,9 +1936,8 @@ msgstr ""
 "сделанные на панели предпросмотра?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Сохранить входной файл Q-Chem"
+msgstr "Входной файл QChem"
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2489,44 +2479,37 @@ msgid "Build and display crystallographic super cells"
 msgstr "Строит и отображает кристаллографические надъячейки"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Молекулярная орбиталь"
+msgstr "Молекулярные орбитали..."
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
-#, fuzzy
 msgid "Orbitals"
-msgstr "Орбиталь:"
+msgstr "Орбитали"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(ВЗМО)"
+msgstr "ВЗМО"
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(НСМО)"
+msgstr "НСМО"
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Рассчитать молекулярные орбитали и другие поверхности"
+msgstr "Рассчитать и визуализировать молекулярные орбитали"
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Орбиталь:"
+msgstr "Орбиталь"
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Начать"
+msgstr "Состояние"
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3480,32 +3463,30 @@ msgid "Residue"
 msgstr "Аминокислотный остаток"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Изменить название схемы"
+msgstr "Изменить цвет атома"
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
-msgstr ""
+msgstr "Изменить надпись на атоме"
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Метка"
+msgstr "Новая надпись:"
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
-msgstr ""
+msgstr "Изменить надпись на связи"
 
 #: src/tools/selectrotatetool.cpp:577
 msgid "Change radius of the atom"
-msgstr ""
+msgstr "Изменить радиус атома"
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Радиус:"
+msgstr "Новый радиус, %1:"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -4965,11 +4946,13 @@ msgid ""
 "Adds what you type in the title line of the input file for your own\n"
 "informative purposes."
 msgstr ""
+"Добавляет то, что вы набираете в строку заголовка входного файла\n"
+"для информации"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:114
 #. i18n: ectx: property (text), widget (QLabel, calculate)
 msgid "Calculate:"
-msgstr ""
+msgstr "Расчитать:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
@@ -5093,12 +5076,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:268
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "Jensen's polarization consistent"
-msgstr ""
+msgstr "Поляризационно-согласованные Йенсена"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:273
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "Dunning's correlation consistent"
-msgstr ""
+msgstr "Корреляционно-согласованные"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:294
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
@@ -5247,7 +5230,7 @@ msgstr "6-311G"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:477
 #. i18n: ectx: property (text), widget (QCheckBox, basispolCheck)
 msgid "Polarization functions"
-msgstr ""
+msgstr "Поляризационные функции"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:494
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
@@ -5423,6 +5406,10 @@ msgid ""
 "correctly. The number of nodes are set by using the \"-N #\" option when "
 "executing the \"dalton\" script."
 msgstr ""
+"Выполнять параллельно по возможности. Это возможно только для\n"
+"волновых функций SCF и расчётов DFT. На данный момент Dalton \n"
+"поддерживает только MPI и должен быть корректно собран и установлен.\n"
+"Число узлов задается ключом \"-N #\" при запуске скрипта \"dalton\"."
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:750
 #. i18n: ectx: property (text), widget (QCheckBox, parallelCheck)
@@ -5920,7 +5907,7 @@ msgstr "Энергия возбуждения"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1503
 #. i18n: ectx: property (text), widget (QCheckBox, checkBox)
 msgid "Frequency Dependent"
-msgstr ""
+msgstr "Частотно-зависимый"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
@@ -7548,7 +7535,7 @@ msgstr "AUG-cc-pVTZ"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Molpro Version:"
-msgstr ""
+msgstr "Версия Molpro:"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
@@ -8139,33 +8126,28 @@ msgstr "Создать ячеку"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Дианион"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Рассчитать"
+msgstr "Пересчитать &все"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Default &Quality:"
-msgstr "Качество сетки:"
+msgstr "Качество по &умолчанию"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Параметр отсечения изоповерхности"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "Низкое"
 
@@ -8173,7 +8155,6 @@ msgstr "Низкое"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Среднее"
 
@@ -8181,7 +8162,6 @@ msgstr "Среднее"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "Высокое"
 
@@ -8189,14 +8169,13 @@ msgstr "Высокое"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Наивысшее"
+msgstr "Очень высокое"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
 msgid "Show occupied orbitals first"
-msgstr ""
+msgstr "Показывать занятые первыми"
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)
@@ -8207,15 +8186,13 @@ msgstr "Форма"
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Quality: "
-msgstr "Качество сетки:"
+msgstr "Качество: "
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Продолжить"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8401,7 +8378,9 @@ msgstr ""
 "Parukhin,Solodukhin D.,Vasily Astanin,dn2010, ,Launchpad Contributions:,"
 "Konstantin Tokarev,Nkolay Parukhin,Oleg,Solodukhin D.,Vasily Astanin,"
 "dn2010, ,Launchpad Contributions:,Avogadro Team,Konstantin Tokarev,Nkolay "
-"Parukhin,Oleg,Solodukhin D.,Vasily Astanin,dn2010"
+"Parukhin,Oleg,Solodukhin D.,Vasily Astanin,dn2010, ,Launchpad Contributions:,"
+"Avogadro Team,Konstantin Tokarev,Nkolay Parukhin,Oleg,Solodukhin D.,Vasily "
+"Astanin,dn2010"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8412,10 +8391,12 @@ msgstr ""
 "parukhin@gmail.com,hippi90ub@gmail.com,madcad@yandex.ru,dn2010@km.ru,,,"
 "annulen@yandex.ru,parukhin@gmail.com,,hippi90ub@gmail.com,madcad@yandex.ru,"
 "dn2010@km.ru,,,avogadro-devel@lists.sourceforge.net,annulen@yandex.ru,"
-"parukhin@gmail.com,,hippi90ub@gmail.com,madcad@yandex.ru,dn2010@km.ru"
+"parukhin@gmail.com,,hippi90ub@gmail.com,madcad@yandex.ru,dn2010@km.ru,,,"
+"avogadro-devel@lists.sourceforge.net,annulen@yandex.ru,parukhin@gmail.com,,"
+"hippi90ub@gmail.com,madcad@yandex.ru,dn2010@km.ru"
 
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Входной файл Dalton (*.dal)"
+#~ msgid "Ununbium"
+#~ msgstr "Унунбий"
 
 #~ msgid "Export Input Deck"
 #~ msgstr "Экспорт входного файла"
@@ -8425,24 +8406,6 @@ msgstr ""
 
 #~ msgid "Gaussian Input Deck (*.com)"
 #~ msgstr "Входной файл Gaussian (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Входной файл Molpro (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "Входной файл MOPAC (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "Входной файл NWChem (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Входной файл Q-Chem (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "Для:"
-
-#~ msgid "Ununbium"
-#~ msgstr "Унунбий"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Открыть файл лиганда"
@@ -8474,11 +8437,17 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Добавить линейную интерполяцию в анимации"
 
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Входной файл MOPAC (*.mop)"
+
 #~ msgid "Angle %1"
 #~ msgstr "Угол %1"
 
 #~ msgid "Atom Index %1"
 #~ msgstr "Номер атома %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Входной файл Q-Chem (*.qcin)"
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "Для этой молекулы не были рассчитаны колебания"
@@ -8521,14 +8490,23 @@ msgstr ""
 #~ "Неправильное имя файла анимации. Имя должно содержать полный путь и "
 #~ "название, оканчивающееся на .avi"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Входной файл Molpro (*.qcin)"
+
 #~ msgid "Cartesian Properties"
 #~ msgstr "Свойства декартовых координат"
 
 #~ msgid "Export Vibrational Data"
 #~ msgstr "Экспорт колебательных данных"
 
+#~ msgid "On:"
+#~ msgstr "Для:"
+
 #~ msgid "E&xport..."
 #~ msgstr "&Экспорт"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "Входной файл NWChem (*.nw)"
 
 #~ msgid "GL widget was not correctly initialized in order to save snapshots"
 #~ msgstr ""
@@ -8587,6 +8565,9 @@ msgstr ""
 
 #~ msgid "Read mol file %1 failed."
 #~ msgstr "Не удалось прочитать mol-файл %1."
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "Входной файл Dalton (*.dal)"
 
 #~ msgid "create ligand from residue name"
 #~ msgstr "создать название лиганда из названия аминокислотного остатка"

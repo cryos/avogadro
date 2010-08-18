@@ -3,19 +3,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-de\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-06-01 13:45+0000\n"
-"Last-Translator: Simon Janich <Unknown>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-07-30 01:57+0000\n"
+"Last-Translator: spaceflower <Unknown>\n"
 "Language-Team: <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:13+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
 msgid "First Action"
-msgstr ""
+msgstr "Erste Aktion"
 
 #: examples/c++/templateextension.cpp:47
 msgid "Second Action"
@@ -31,7 +31,7 @@ msgstr "Zweite Aktion"
 #: src/extensions/surfaces/surfaceextension.cpp:96
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
-msgstr "&Erweiterungen"
+msgstr "Erweiterungen"
 
 #: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
 msgid "&Template"
@@ -95,7 +95,7 @@ msgstr "Farbe nach Element (Kohlenstoff = grau, Sauerstoff = rot, ...)"
 
 #: src/colors/residuecolor.h:49
 msgid "Color by Residue"
-msgstr ""
+msgstr "Farbe nach Rest"
 
 #: src/colors/residuecolor.h:50
 msgid "Color by Residue (amino acid type, hydrophobicity, ..."
@@ -562,9 +562,8 @@ msgid "Roentgenium"
 msgstr "Roentgenium"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cer"
+msgstr "Copernicium"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1023,7 +1022,7 @@ msgstr "Berechne Energie"
 
 #: src/extensions/forcefieldextension.cpp:90
 msgid "Conformer Search..."
-msgstr ""
+msgstr "Konformerensuche..."
 
 #: src/extensions/forcefieldextension.cpp:100
 msgid "Constraints..."
@@ -1044,11 +1043,12 @@ msgstr "&Molekular-Mechanik"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Das Kraftfeld konnte für dieses Molekül nicht einrichten."
+msgstr ""
+"Kann die momentan ausgewählten Kraftfelder für dieses Molekül nicht "
+"erstellen. Bitte zu UFF wechseln."
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1575,9 +1575,8 @@ msgstr ""
 "die Sie auf der  Dal-tonischen Eingabedatei Vorschau Scheibe verlieren ?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Dal-Tonische Eingabedatei speichern"
+msgstr "Dalton Eingabedatei"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1737,9 +1736,8 @@ msgid ""
 msgstr "Grundeinstellungen zurücksetzen?Alle Änderungen gehen dabei verloren!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "GAMESS Eingabe"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1755,15 +1753,13 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Speichere MOPAC-Eingabestapel"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
-#, fuzzy
 msgid "Gaussian Input Deck"
-msgstr "Gaussian Eingabe-Deck speichern"
+msgstr "Gaussian Eingabe-Deck"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -1839,23 +1835,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Input-Dateien für Quantenchemie-Pakete erstellen"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem-Eingabestapelwarnung"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Soll der Vorschautext aktualisiert werden? Alle Änderungen am MOPAC-"
-"Eingabestapel-Vorschauabschnitt werden verloren gehen."
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Molpro Eingabedeck speichern"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1871,9 +1862,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Speichere MOPAC-Eingabestapel"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1928,9 +1918,8 @@ msgstr ""
 "NWChem Eingabedecks verloren."
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "NWChem Eingabedeck speichern"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1945,9 +1934,8 @@ msgstr ""
 "Eingabestapel-Vorschauabschnitt werden verloren gehen."
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Den Eingangsstapel von QChem speichern"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2490,9 +2478,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Erzeuge und zeige kristallographische Superzellen"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Molekülorbital"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2501,32 +2488,27 @@ msgstr "Orbitale"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Rendert Molekülorbitale"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Elektronenumlaufbahn:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Start"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3470,18 +3452,16 @@ msgid "Residue"
 msgstr "Rest"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Ändere Name des Schemas"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Beschriftung"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3492,10 +3472,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Radius:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8110,15 +8090,13 @@ msgstr "Erzeuge Zelle"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianion"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Berechne alle MOe"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8127,15 +8105,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Isooberflächen Wert für die Abschaltung"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "Niedrig"
 
@@ -8143,7 +8119,6 @@ msgstr "Niedrig"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Mittel"
 
@@ -8151,7 +8126,6 @@ msgstr "Mittel"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "Hoch"
 
@@ -8159,9 +8133,8 @@ msgstr "Hoch"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Sehr Hoch"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8182,9 +8155,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Konformer"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8373,7 +8345,10 @@ msgstr ""
 "Keruskerfuerst,MartinK,carsten,jochenheil,kuede,soc,ucn|, ,Launchpad "
 "Contributions:,Alexander Hausmann,Alexander Minges,Avogadro Team,Eduard "
 "Gotwig,Geoff Hutchison,Keruskerfuerst,MartinK,Simon Janich,carsten,"
-"jochenheil,kuede,soc,ucn|"
+"jochenheil,kuede,soc,ucn|, ,Launchpad Contributions:,Alexander Hausmann,"
+"Alexander Minges,Avogadro Team,Eduard Gotwig,Geoff Hutchison,Keruskerfuerst,"
+"MartinK,Matthias Mailänder,Simon Janich,carsten,jochenheil,kuede,soc,"
+"spaceflower,ucn|"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8389,34 +8364,9 @@ msgstr ""
 "eduardgotwig@gmail.com,,armin_mohring@web.de,,cniehaus@gmx.de,,,"
 "simon@ochsenreither.de,,,,alexander-hausmann@web.de,,avogadro-devel@lists."
 "sourceforge.net,eduardgotwig@gmail.com,,armin_mohring@web.de,,,cniehaus@gmx."
-"de,,,simon@ochsenreither.de,"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Dal-tonische Eingabedatei (*.dal)"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Eingabe-Deck exportieren"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS Eingabe-Deck (*.inp)"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussian Eingabe-Deck (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro Eingabdeck (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC-Eingabestapel (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem Eingabedeck (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem-Eingabestapel (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "Auf:"
+"de,,,simon@ochsenreither.de,,,,alexander-hausmann@web.de,,avogadro-"
+"devel@lists.sourceforge.net,eduardgotwig@gmail.com,,armin_mohring@web.de,,"
+"matthias@mailaender.name,,cniehaus@gmx.de,,,simon@ochsenreither.de,,"
 
 #~ msgid "Caesium"
 #~ msgstr "Cäsium"
@@ -8426,6 +8376,9 @@ msgstr ""
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Rendert sekundäre Proteinstruktur"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Rendert Molekülorbitale"
 
 #~ msgid "Surface"
 #~ msgstr "Oberfläche"
@@ -8441,6 +8394,12 @@ msgstr ""
 
 #~ msgid "QM Selection..."
 #~ msgstr "QM-Auswahl..."
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Eingabe-Deck exportieren"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS Eingabe-Deck (*.inp)"
 
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Q-Chem Eingabe..."
@@ -8516,6 +8475,9 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Kreiere eine lineare Interpolation für Animationen"
 
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC-Eingabestapel (*.mop)"
+
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
@@ -8546,6 +8508,9 @@ msgstr ""
 
 #~ msgid "Torsion %1"
 #~ msgstr "Torsion %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem-Eingabestapel (*.qcin)"
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "Für dieses Molekül wurden keine Vibrationen berechnet."
@@ -8591,6 +8556,9 @@ msgstr ""
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Elektrostatisches Potential"
+
+#~ msgid "On:"
+#~ msgstr "Auf:"
 
 #~ msgid "Single Point Entry"
 #~ msgstr "einzelner Eingangspunkt"
@@ -8683,6 +8651,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "Berechne MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Berechne alle MOe"
 
 #~ msgid "Calculate Electron Density"
 #~ msgstr "Berechne Elektronendichte"
@@ -9352,6 +9323,9 @@ msgstr ""
 #~ msgid "Create input files for quantum chemistry packages like Gaussian"
 #~ msgstr "Erstelle Eingabedateien für Quantenchemiepakete wie Gaussian"
 
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian Eingabe-Deck (*.com)"
+
 #~ msgid "&NWChem Input..."
 #~ msgstr "&NWChem-Eingabe..."
 
@@ -9392,6 +9366,12 @@ msgstr ""
 #~ "Lade die zweite Konformation und berechne eine lineare Interpolation mit "
 #~ "der aktuellen Konformation."
 
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem Eingabedeck (*.nw)"
+
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro Eingabdeck (*.qcin)"
+
 #~ msgctxt ""
 #~ "Should the navigate tool display visual cues about the action taking "
 #~ "place?"
@@ -9412,3 +9392,6 @@ msgstr ""
 #~ msgstr ""
 #~ "zeigt visuelle Hinweise </string>\n"
 #~ "     </property>"
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "Dal-tonische Eingabedatei (*.dal)"

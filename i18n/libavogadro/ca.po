@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _avogadro-ca\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 01:22+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:15+0000\n"
 "Last-Translator: el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD <el.libre@gmail.com>\n"
 "Language-Team: Catalan (Valencia) <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -569,9 +569,8 @@ msgid "Roentgenium"
 msgstr "Roentgueni"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Ceri"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1050,11 +1049,10 @@ msgstr "&Mecànica molecular"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "No es pot inicialitzar el camp de forces per esta molècula."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1737,9 +1735,8 @@ msgstr ""
 "Tot els canvis es perdran!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "Entrada GAMESS"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1755,9 +1752,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Alça l'entrada MOPAC"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1834,23 +1830,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Avís del generador d'entrades Q-Chem"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Voleu actualitzar el text d'abans, perdent tots els canvis fets al panell "
-"d'entrada de MOPAC ?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Exporta entrada"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1866,9 +1857,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Alça l'entrada MOPAC"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1919,9 +1909,8 @@ msgid ""
 msgstr ""
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Alça l'entrada Qchem"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1936,9 +1925,8 @@ msgstr ""
 "d'entrada de Q-Chem ?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Alça l'entrada Qchem"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2477,9 +2465,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Construeix i mostra super cel·les cristalogràfiques"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Fitxer molècula..."
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2499,19 +2486,16 @@ msgid "LUMO"
 msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Renderitza orbitals moleculars"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbital:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Inicia"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3456,18 +3440,16 @@ msgid "Residue"
 msgstr "Residu"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Canvia Nom d'esquema"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Etiqueta"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3478,10 +3460,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Radi:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8096,15 +8078,13 @@ msgstr "Genera cel·la"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianió"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Calcula tots els MO"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8113,15 +8093,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Valor Iso:"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "Baix"
 
@@ -8129,7 +8107,6 @@ msgstr "Baix"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Mitjà"
 
@@ -8137,7 +8114,6 @@ msgstr "Mitjà"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "Alt"
 
@@ -8145,9 +8121,8 @@ msgstr "Alt"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Molt Alt"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8168,9 +8143,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Concordança"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8356,6 +8330,8 @@ msgstr ""
 "David Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
 "Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
+"XDDDDDDDDDDDDDDDDDDDDDDDDDDD, ,Launchpad Contributions:,Avogadro Team,David "
+"Planella,Geoff Hutchison,el_libre - http://www.catmidia.cat  "
 "XDDDDDDDDDDDDDDDDDDDDDDDDDDD"
 
 msgctxt "EMAIL OF TRANSLATORS"
@@ -8366,25 +8342,8 @@ msgstr ""
 "devel@lists.sourceforge.net,,el.libre@gmail.com,,,avogadro-devel@lists."
 "sourceforge.net,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,,,"
 "el.libre@gmail.com,,,avogadro-devel@lists.sourceforge.net,david."
-"planella@ubuntu.com,,el.libre@gmail.com"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "Entrada GAMESS (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Alça l'entrada gaussiana"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Entrada gaussiana (*.com)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "Entrada MOPAC ( *.mop)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Entrada QChem (*qcin)"
-
-#~ msgid "On:"
-#~ msgstr "En:"
+"planella@ubuntu.com,,el.libre@gmail.com,,,avogadro-devel@lists.sourceforge."
+"net,david.planella@ubuntu.com,,el.libre@gmail.com"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesi"
@@ -8394,6 +8353,9 @@ msgstr ""
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Renderitza l'estructura de la proteïna secundaria"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Renderitza orbitals moleculars"
 
 #~ msgid "Surface"
 #~ msgstr "Superfície"
@@ -8410,6 +8372,9 @@ msgstr ""
 #~ msgid "QM Selection..."
 #~ msgstr "Selecció QM..."
 
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "Entrada GAMESS (*.inp)"
+
 #~ msgid "Gaussian Input..."
 #~ msgstr "Entrada gaussiana..."
 
@@ -8423,6 +8388,12 @@ msgstr ""
 #~ msgstr ""
 #~ "Crea fitxers d'entrada per al paquets químics quàntics semblants al "
 #~ "Gaussià"
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Alça l'entrada gaussiana"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Entrada gaussiana (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Obre un fitxer de lligand"
@@ -8492,6 +8463,9 @@ msgstr ""
 #~ msgid "Create linear interpolation for animations"
 #~ msgstr "Crea interpolació linial per les animacions"
 
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Entrada MOPAC ( *.mop)"
+
 #~ msgid "ESP"
 #~ msgstr "ESP"
 
@@ -8522,6 +8496,9 @@ msgstr ""
 
 #~ msgid "Torsion %1"
 #~ msgstr "Torsió %1"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Entrada QChem (*qcin)"
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "No s'han computat vibracions per esta molècula."
@@ -8567,6 +8544,9 @@ msgstr ""
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Potencial electrostàtic (ESP)"
+
+#~ msgid "On:"
+#~ msgstr "En:"
 
 #~ msgid "Single Point Entry"
 #~ msgstr "Punt d'entrada senzill"
@@ -8659,6 +8639,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "Càlcula el MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Calcula tots els MO"
 
 #~ msgid "Calculate Electron Density"
 #~ msgstr "Calcula la densitat electrònica"
@@ -9227,6 +9210,9 @@ msgstr ""
 
 #~ msgid "Detach View"
 #~ msgstr "Separa la visualització"
+
+#~ msgid "Molecule File..."
+#~ msgstr "Fitxer molècula..."
 
 #~ msgid "Use Quick Render"
 #~ msgstr "Utilitza el generador fàcil"

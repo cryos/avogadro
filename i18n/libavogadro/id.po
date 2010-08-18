@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 03:37+0000\n"
-"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-07-14 12:53+0000\n"
+"Last-Translator: Waluyo Adi Siswanto <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:13+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr "Roentgenium"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Serium"
+msgstr "Kopernisium"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1049,11 +1048,12 @@ msgstr "&Mekanika Molekuler"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Tidak bisa pengatur bidang gaya untuk molekul ini"
+msgstr ""
+"Tidak bisa menetapkan gaya bidang yang sekarang untuk molekul ini. "
+"Dipindahkan ke UFF."
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1580,9 +1580,8 @@ msgstr ""
 "perubahan pada pratampilan berkas masukan Dalton"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Simpan Berkas Masukuan Dalton"
+msgstr "Berkas Masukan Dalton"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1744,9 +1743,8 @@ msgstr ""
 "Semua perubahan akan terhapus!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "Masukan GAMESS"
+msgstr "Berkas Masukan GAMESS"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1762,9 +1760,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Simpan Masukan Program MOPAC"
+msgstr "Simpan Berkas Masukan"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1844,23 +1841,20 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Membuat berkas masukan untuk program kimia kuantum"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Pembuat Peringatan Masukan Program Q-Chem"
+msgstr "Peringatan Pembuat Berkas Masukan Molpro"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Apakah anda akan memperbarui teks pratampilan, semua perubahan pada masukan "
-"progam MOPAC di jendela pratampilan akan terhapus?"
+"Apakah anda akan memperbarui tampilan teks, semua perubahan yang ada dalam "
+"berkas masukan Molpro pada jendela pratampilan akan hilang?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Simpan Masukan Program Molpro"
+msgstr "Berkas Masukan Molpro"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1876,9 +1870,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Simpan Masukan Program MOPAC"
+msgstr "Berkas Masukan MOPAC"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1931,9 +1924,8 @@ msgstr ""
 "progam NWChem di jendela pratampilan akan terhapus?"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Simpan Masukan Program NWChem"
+msgstr "Berkas Masukan NWChem"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1948,9 +1940,8 @@ msgstr ""
 "progam Q-Chem di jendela pratampilan akan terhapus?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Simpan Masukan Program QChem"
+msgstr "Berkas Masukan QChem"
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2492,9 +2483,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Membangun dan menampilkan kristalografi super sel"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Orbit Molekuler"
+msgstr "Orbit molekuler..."
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2503,32 +2493,27 @@ msgstr "Orbit"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr "HOMO"
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr "LUMO"
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Menggambarkan orbit molekul"
+msgstr "Hitung dan visualisasikan orbit molekuler"
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbit:"
+msgstr "Orbit"
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Mulai"
+msgstr "Status"
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3471,32 +3456,30 @@ msgid "Residue"
 msgstr "Residu"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Merubah Nama Skema"
+msgstr "Ubah warna atom"
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
-msgstr ""
+msgstr "Ubah label atom"
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Label"
+msgstr "Label Baru:"
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
-msgstr ""
+msgstr "Ubah label ikatan"
 
 #: src/tools/selectrotatetool.cpp:577
 msgid "Change radius of the atom"
-msgstr ""
+msgstr "Ubah jejari atom"
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Jejari:"
+msgstr "Jejari Baru, %1:"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -7547,17 +7530,17 @@ msgstr "AUG-cc-pVTZ"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Molpro Version:"
-msgstr ""
+msgstr "Versi Molpro:"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "< 2009.1"
-msgstr ""
+msgstr "< 2009.1"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:434
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "2009.1"
-msgstr ""
+msgstr "2009.1"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
@@ -8137,33 +8120,28 @@ msgstr "Menghasilkan Sel"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianion"
+msgstr "Dialog"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Menghitung Semua MO"
+msgstr "Hitung ulang semuanya"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Default &Quality:"
-msgstr "Kualitas Grid:"
+msgstr "Kualitas Bawaan"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Angka potong Permukaan Iso"
+msgstr "Harga PermukaanISO:"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
 msgstr "Rendah"
 
@@ -8171,7 +8149,6 @@ msgstr "Rendah"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
 msgstr "Sedang"
 
@@ -8179,7 +8156,6 @@ msgstr "Sedang"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
 msgstr "Tinggi"
 
@@ -8187,14 +8163,13 @@ msgstr "Tinggi"
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
 msgstr "Sangat Tinggi"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
 msgid "Show occupied orbitals first"
-msgstr ""
+msgstr "Pertama tampilkan orbit yang ditempati"
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)
@@ -8205,15 +8180,13 @@ msgstr "Bentuk"
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Quality: "
-msgstr "Kualitas Grid:"
+msgstr "Kualitas: "
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Lanjutkan"
+msgstr "Konfigurasi"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8393,43 +8366,14 @@ msgstr ""
 "Geoff Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Geoff "
 "Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Avogadro Team,Geoff "
 "Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Avogadro Team,Geoff "
+"Hutchison,Waluyo Adi Siswanto, ,Launchpad Contributions:,Avogadro Team,Geoff "
 "Hutchison,Waluyo Adi Siswanto"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,,,,,,,,,,avogadro-devel@lists.sourceforge.net,,,,,avogadro-devel@lists."
-"sourceforge.net,,"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Berkas Masukan Dalton (*.dal)"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Ekspor Masukan Program"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "Masukan Program GAMESS (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Simpan Masukan Program Gaussian"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Masukan Program Gaussian (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Masukan Program Molpro (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "Masukan Program MOPAC (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "Masukan Program NWChem (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Masukan Program QChem (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "Aktif:"
+"sourceforge.net,,,,,avogadro-devel@lists.sourceforge.net,,"
 
 #~ msgid "Add Directory"
 #~ msgstr "Tambah Direktori"
@@ -8445,6 +8389,9 @@ msgstr ""
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Menggambarkan struktur protein sekunder"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Menggambarkan orbit molekul"
 
 #~ msgid "Surface"
 #~ msgstr "Permukaan"
@@ -8583,6 +8530,30 @@ msgstr ""
 #~ msgid "&Scale:"
 #~ msgstr "&Skala:"
 
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Simpan Masukan Program Gaussian"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "Masukan Program GAMESS (*.inp)"
+
+#~ msgid "Export Input Deck"
+#~ msgstr "Ekspor Masukan Program"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Masukan Program Gaussian (*.com)"
+
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Masukan Program Molpro (*.qcin)"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "Masukan Program NWChem (*.nw)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Masukan Program MOPAC (*.mop)"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Masukan Program QChem (*.qcin)"
+
 #~ msgid ""
 #~ "Windows for displaying atom, bond, angle and tosion properties. It also "
 #~ "includes a cartesian coordinate editor."
@@ -8607,6 +8578,9 @@ msgstr ""
 
 #~ msgid "Single Point Entry"
 #~ msgstr "Entri Satu Poin"
+
+#~ msgid "On:"
+#~ msgstr "Aktif:"
 
 #~ msgid "Seconds"
 #~ msgstr "Detik"
@@ -8685,6 +8659,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "Menghitung MO"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Menghitung Semua MO"
 
 #~ msgid "Van der Waals Surface"
 #~ msgstr "Permukaan Van der Waals"
@@ -8796,3 +8773,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Memuat conformation kedua dan menghitung dengan linier interpolasi "
 #~ "menggunakan conformation yang ada."
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "Berkas Masukan Dalton (*.dal)"

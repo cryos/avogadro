@@ -7,23 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-30 03:37+0000\n"
-"Last-Translator: JoseRoberto <Unknown>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-08-07 15:50+0000\n"
+"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
 msgid "First Action"
-msgstr "Primera Acción"
+msgstr "Primera acción"
 
 #: examples/c++/templateextension.cpp:47
 msgid "Second Action"
-msgstr "Segunda Acción"
+msgstr "Segunda acción"
 
 #: examples/c++/templateextension.cpp:69
 #: src/extensions/animationextension.cpp:75
@@ -111,7 +111,7 @@ msgstr ""
 
 #: src/colors/smartscolor.cpp:81
 msgid "Highlight Color:"
-msgstr ""
+msgstr "Resaltar color:"
 
 #: src/colors/smartscolor.h:49
 msgid "Color by SMARTS Pattern"
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr "Roentgenio"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cerio"
+msgstr "Copernicio"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -652,19 +651,19 @@ msgstr "Traza enlaces de hidrógeno"
 
 #: src/engines/labelengine.cpp:342
 msgid "Select Atom Labels Color"
-msgstr ""
+msgstr "Seleccionar el color de las etiquetas de los átomos"
 
 #: src/engines/labelengine.cpp:344
 msgid "Select Bond Labels Color"
-msgstr ""
+msgstr "Seleccionar el color de las etiquetas de los enlaces"
 
 #: src/engines/labelengine.cpp:384
 msgid "Select Atom Labels Font"
-msgstr ""
+msgstr "Seleccionar la tipografía de las etiquetas de los átomos"
 
 #: src/engines/labelengine.cpp:401
 msgid "Select Bond Labels Font"
-msgstr ""
+msgstr "Seleccionar la tipografía de las etiquetas de los enlaces"
 
 #: src/engines/labelengine.h:46
 msgid "Label"
@@ -1043,11 +1042,10 @@ msgstr "&Mecánica molecular"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "No se puede crear el campo de fuerza para esta molécula."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1574,9 +1572,8 @@ msgstr ""
 "realizados en el archivo de entrada Dalton del panel de previsualizacion?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Guardar archivo de entrada Dalton"
+msgstr "Archivo de entrada Dalton"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1738,9 +1735,8 @@ msgstr ""
 "¡Todos los cambios se perderán!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "Entrada de GAMESS"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1756,9 +1752,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Guardar Mopac de entrada en cubierta"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1838,23 +1833,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "Crear archivos de entrada para paquetes de química cuántica"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem Cubierta de entrada del generador de alerta"
+msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"¿Desea actualizar la vista previa de texto, de perder todos los cambios "
-"realizados en la cubierta de entrada Mopac panel de vista previa?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "Guardar Molpro de entrada en cubierta"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1870,9 +1860,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "Guardar Mopac de entrada en cubierta"
+msgstr ""
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1927,9 +1916,8 @@ msgstr ""
 "realizados en"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "Guardar fichero de entrada para NWChem"
+msgstr ""
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1944,9 +1932,8 @@ msgstr ""
 "realizados en el Q-Chem de entrada cubierta de panel de vista previa?"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "Guardar fichero de entrada para QChem"
+msgstr ""
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2246,11 +2233,11 @@ msgstr "Seleccionar el Color de primer plano"
 
 #: src/extensions/spectra/spectradialog.cpp:433
 msgid "Select Calculated Spectra Color"
-msgstr ""
+msgstr "Seleccionar espectro de color calculado"
 
 #: src/extensions/spectra/spectradialog.cpp:443
 msgid "Select Imported Spectra Color"
-msgstr ""
+msgstr "Seleccionar espectro de color importado"
 
 #: src/extensions/spectra/spectradialog.cpp:507
 msgid "Export Calculated Spectrum"
@@ -2489,9 +2476,8 @@ msgid "Build and display crystallographic super cells"
 msgstr "Crear y mostrar súper celdas cristalográficas"
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Orbital molecular"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
@@ -2500,32 +2486,27 @@ msgstr "Orbitales"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
-#, fuzzy
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
-msgstr "(HOMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:147
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
-#, fuzzy
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
-msgstr "(LUMO)"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Dibuja orbitales moleculares"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbital:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Iniciar"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3473,18 +3454,16 @@ msgid "Residue"
 msgstr "Residuo"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Cambiar nombre del esquema"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Etiqueta"
+msgstr "Etiqueta nueva:"
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3495,10 +3474,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Radio :"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -4086,12 +4065,12 @@ msgstr "Guardar como .avi"
 #. i18n: file: src/extensions/cartesianeditor.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
 msgid "Angstroms"
-msgstr ""
+msgstr "Angstroms"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
 msgid "Bohrs"
-msgstr ""
+msgstr "Bohrs"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:68
 #. i18n: ectx: property (text), item, widget (QComboBox, unitsBox)
@@ -4111,7 +4090,7 @@ msgstr "XYZ con numeros"
 #. i18n: file: src/extensions/cartesianeditor.ui:102
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
 msgid "XYZ, coords only"
-msgstr ""
+msgstr "XYZ, sólo coordenadas"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:107
 #. i18n: ectx: property (text), item, widget (QComboBox, formatBox)
@@ -4997,7 +4976,7 @@ msgstr "HF"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:178
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "KS-DFT"
-msgstr ""
+msgstr "KS-DFT"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:183
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -5050,22 +5029,22 @@ msgstr "cc-pVTZ"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:230
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
 msgid "cc-pVQZ"
-msgstr ""
+msgstr "cc-pVQZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:235
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
 msgid "cc-pV5Z"
-msgstr ""
+msgstr "cc-pV5Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:240
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
 msgid "cc-pV6Z"
-msgstr ""
+msgstr "cc-pV6Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:258
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 msgid "STO-nG"
-msgstr ""
+msgstr "STO-nG"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:263
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
@@ -5085,67 +5064,67 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:294
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
 msgid "aug-cc-pVDZ"
-msgstr ""
+msgstr "aug-cc-pVDZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:299
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
 msgid "aug-cc-pVTZ"
-msgstr ""
+msgstr "aug-cc-pVTZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:304
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
 msgid "aug-cc-pVQZ"
-msgstr ""
+msgstr "aug-cc-pVQZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:309
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
 msgid "aug-cc-pV5Z"
-msgstr ""
+msgstr "aug-cc-pV5Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:314
 #. i18n: ectx: property (text), item, widget (QComboBox, accpvxzCombo)
 msgid "aug-cc-pV6Z"
-msgstr ""
+msgstr "aug-cc-pV6Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:335
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pCVDZ"
-msgstr ""
+msgstr "cc-pCVDZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:340
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pCVTZ"
-msgstr ""
+msgstr "cc-pCVTZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:345
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pCVQZ"
-msgstr ""
+msgstr "cc-pCVQZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:350
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pCV5Z"
-msgstr ""
+msgstr "cc-pCV5Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:355
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pwCVDZ"
-msgstr ""
+msgstr "cc-pwCVDZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:360
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pwCVTZ"
-msgstr ""
+msgstr "cc-pwCVTZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:365
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pwCVQZ"
-msgstr ""
+msgstr "cc-pwCVQZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:370
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpcvxzCombo)
 msgid "cc-pwCV5Z"
-msgstr ""
+msgstr "cc-pwCV5Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:387
 #. i18n: ectx: property (text), widget (QCheckBox, basiscoreCheck)
@@ -5234,162 +5213,162 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:494
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
 msgid "3-21++G"
-msgstr ""
+msgstr "3-21++G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:499
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
 msgid "6-31+G"
-msgstr ""
+msgstr "6-31+G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:504
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffCombo)
 msgid "6-31++G"
-msgstr ""
+msgstr "6-31++G"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:522
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "3-21G*"
-msgstr ""
+msgstr "3-21G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:527
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-31G*"
-msgstr ""
+msgstr "6-31G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:532
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-31G**"
-msgstr ""
+msgstr "6-31G**"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:537
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-31G(3df,3pd)"
-msgstr ""
+msgstr "6-31G(3df,3pd)"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:542
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-311G*"
-msgstr ""
+msgstr "6-311G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:547
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-311G**"
-msgstr ""
+msgstr "6-311G**"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:552
 #. i18n: ectx: property (text), item, widget (QComboBox, poplepolCombo)
 msgid "6-311G(2df,2pd)"
-msgstr ""
+msgstr "6-311G(2df,2pd)"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:570
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "3-21++G*"
-msgstr ""
+msgstr "3-21++G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:575
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-31+G*"
-msgstr ""
+msgstr "6-31+G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:580
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-31++G*"
-msgstr ""
+msgstr "6-31++G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:585
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-31++G**"
-msgstr ""
+msgstr "6-31++G**"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:590
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-311+G*"
-msgstr ""
+msgstr "6-311+G*"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:595
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-311++G**"
-msgstr ""
+msgstr "6-311++G**"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:600
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-311++G(2d,2p)"
-msgstr ""
+msgstr "6-311++G(2d,2p)"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:605
 #. i18n: ectx: property (text), item, widget (QComboBox, poplediffpolCombo)
 msgid "6-311++G(3df,3pd)"
-msgstr ""
+msgstr "6-311++G(3df,3pd)"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:623
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
 msgid "pc-0"
-msgstr ""
+msgstr "pc-0"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:628
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
 msgid "pc-1"
-msgstr ""
+msgstr "pc-1"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:633
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
 msgid "pc-2"
-msgstr ""
+msgstr "pc-2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:638
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
 msgid "pc-3"
-msgstr ""
+msgstr "pc-3"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:643
 #. i18n: ectx: property (text), item, widget (QComboBox, pcCombo)
 msgid "pc-4"
-msgstr ""
+msgstr "pc-4"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:661
 #. i18n: ectx: property (text), item, widget (QComboBox, apcCombo)
 msgid "apc-0"
-msgstr ""
+msgstr "apc-0"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:666
 #. i18n: ectx: property (text), item, widget (QComboBox, apcCombo)
 msgid "apc-1"
-msgstr ""
+msgstr "apc-1"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:671
 #. i18n: ectx: property (text), item, widget (QComboBox, apcCombo)
 msgid "apc-2"
-msgstr ""
+msgstr "apc-2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:676
 #. i18n: ectx: property (text), item, widget (QComboBox, apcCombo)
 msgid "apc-3"
-msgstr ""
+msgstr "apc-3"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:681
 #. i18n: ectx: property (text), item, widget (QComboBox, apcCombo)
 msgid "apc-4"
-msgstr ""
+msgstr "apc-4"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:699
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
 msgid "aug-cc-pCVDZ"
-msgstr ""
+msgstr "aug-cc-pCVDZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:704
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
 msgid "aug-cc-pCVTZ"
-msgstr ""
+msgstr "aug-cc-pCVTZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:709
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
 msgid "aug-cc-pCVQZ"
-msgstr ""
+msgstr "aug-cc-pCVQZ"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:714
 #. i18n: ectx: property (text), item, widget (QComboBox, accpcvxzCombo)
 msgid "aug-cc-pCV5Z"
-msgstr ""
+msgstr "aug-cc-pCV5Z"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:731
 #. i18n: ectx: property (text), widget (QCheckBox, directCheck)
@@ -5409,22 +5388,22 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:750
 #. i18n: ectx: property (text), widget (QCheckBox, parallelCheck)
 msgid "Parallel"
-msgstr ""
+msgstr "Paralelo"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:772
 #. i18n: ectx: property (text), item, widget (QComboBox, xaugccCombo)
 msgid "d-"
-msgstr ""
+msgstr "d-"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:777
 #. i18n: ectx: property (text), item, widget (QComboBox, xaugccCombo)
 msgid "t-"
-msgstr ""
+msgstr "t-"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:782
 #. i18n: ectx: property (text), item, widget (QComboBox, xaugccCombo)
 msgid "q-"
-msgstr ""
+msgstr "q-"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:792
 #. i18n: ectx: attribute (title), widget (QWidget, dftTab)
@@ -5436,12 +5415,12 @@ msgstr "DFT"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:804
 #. i18n: ectx: property (text), widget (QLabel, functional)
 msgid "Functional:"
-msgstr ""
+msgstr "Funcional:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:827
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B2PLYP"
-msgstr ""
+msgstr "B2PLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:832
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5463,112 +5442,112 @@ msgstr "B3LYP"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:837
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B3LYPg"
-msgstr ""
+msgstr "B3LYPg"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:842
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B3P86"
-msgstr ""
+msgstr "B3P86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:847
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B3P86g"
-msgstr ""
+msgstr "B3P86g"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:852
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B3PW91"
-msgstr ""
+msgstr "B3PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:857
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B1LYP"
-msgstr ""
+msgstr "B1LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:862
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B1PW91"
-msgstr ""
+msgstr "B1PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:867
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BHandH"
-msgstr ""
+msgstr "BHandH"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:872
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BHandHLYP"
-msgstr ""
+msgstr "BHandHLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:877
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B86VWN"
-msgstr ""
+msgstr "B86VWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:882
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B86LYP"
-msgstr ""
+msgstr "B86LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:887
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B86P86"
-msgstr ""
+msgstr "B86P86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:892
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "B86PW91"
-msgstr ""
+msgstr "B86PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:897
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BVWN"
-msgstr ""
+msgstr "BVWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BLYP"
-msgstr ""
+msgstr "BLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:907
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BP86"
-msgstr ""
+msgstr "BP86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:912
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BPW91"
-msgstr ""
+msgstr "BPW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:917
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BW"
-msgstr ""
+msgstr "BW"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:922
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "BFW"
-msgstr ""
+msgstr "BFW"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:927
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "CAMB3LYP"
-msgstr ""
+msgstr "CAMB3LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:932
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "DBLYP"
-msgstr ""
+msgstr "DBLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:937
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "DBP86"
-msgstr ""
+msgstr "DBP86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:942
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "DBPW91"
-msgstr ""
+msgstr "DBPW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:947
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5580,132 +5559,132 @@ msgstr "EDF1"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:952
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "EDF2"
-msgstr ""
+msgstr "EDF2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:957
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "G96VWN"
-msgstr ""
+msgstr "G96VWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:962
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "G96LYP"
-msgstr ""
+msgstr "G96LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:967
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "G96P86"
-msgstr ""
+msgstr "G96P86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:972
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "G96PW91"
-msgstr ""
+msgstr "G96PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:977
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "G961LYP"
-msgstr ""
+msgstr "G961LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:982
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "KMLYP"
-msgstr ""
+msgstr "KMLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:987
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "KT1"
-msgstr ""
+msgstr "KT1"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:992
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "KT2"
-msgstr ""
+msgstr "KT2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:997
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "KT3"
-msgstr ""
+msgstr "KT3"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1002
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "LDA"
-msgstr ""
+msgstr "LDA"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1007
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "LG1LYP"
-msgstr ""
+msgstr "LG1LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1012
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "OVWN"
-msgstr ""
+msgstr "OVWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1017
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "OLYP"
-msgstr ""
+msgstr "OLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1022
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "OP86"
-msgstr ""
+msgstr "OP86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1027
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "OPW91"
-msgstr ""
+msgstr "OPW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1032
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPWVWN"
-msgstr ""
+msgstr "mPWVWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1037
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPWLYP"
-msgstr ""
+msgstr "mPWLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1042
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPWP86"
-msgstr ""
+msgstr "mPWP86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1047
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPWPW91"
-msgstr ""
+msgstr "mPWPW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1052
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW91"
-msgstr ""
+msgstr "mPW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1057
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW1PW91"
-msgstr ""
+msgstr "mPW1PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1062
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW3PW91"
-msgstr ""
+msgstr "mPW3PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1067
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW1K"
-msgstr ""
+msgstr "mPW1K"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1072
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW1N"
-msgstr ""
+msgstr "mPW1N"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1077
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPW1S"
-msgstr ""
+msgstr "mPW1S"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1082
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
@@ -5715,82 +5694,82 @@ msgstr "PBE0"
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1087
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PBE0PBE"
-msgstr ""
+msgstr "PBE0PBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1092
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PBE1PBE"
-msgstr ""
+msgstr "PBE1PBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1097
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PBE"
-msgstr ""
+msgstr "PBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1102
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PBEPBE"
-msgstr ""
+msgstr "PBEPBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1107
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "RPBE"
-msgstr ""
+msgstr "RPBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1112
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "revPBE"
-msgstr ""
+msgstr "revPBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1117
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "mPBE"
-msgstr ""
+msgstr "mPBE"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1122
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PW91"
-msgstr ""
+msgstr "PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1127
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PW91VWN"
-msgstr ""
+msgstr "PW91VWN"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1132
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PW91LYP"
-msgstr ""
+msgstr "PW91LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1137
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PW91P86"
-msgstr ""
+msgstr "PW91P86"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1142
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "PW91PW91"
-msgstr ""
+msgstr "PW91PW91"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1147
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "SVWN3"
-msgstr ""
+msgstr "SVWN3"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1152
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "SVWN5"
-msgstr ""
+msgstr "SVWN5"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1157
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "XLYP"
-msgstr ""
+msgstr "XLYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1162
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
 msgid "X3LYP"
-msgstr ""
+msgstr "X3LYP"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1184
 #. i18n: ectx: property (text), widget (QLabel, thresholds)
@@ -5800,14 +5779,14 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1197
 #. i18n: ectx: property (text), widget (QLabel, densitythresh)
 msgid "Density:"
-msgstr ""
+msgstr "Dendidad:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1213
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrdensSpin)
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1251
 #. i18n: ectx: property (prefix), widget (QSpinBox, dftthrorbSpin)
 msgid "1.0D-"
-msgstr ""
+msgstr "1.0D-"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1273
 #. i18n: ectx: property (text), widget (QLabel, chargeint)
@@ -5837,32 +5816,32 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1344
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridpartCombo)
 msgid "SSF"
-msgstr ""
+msgstr "SSF"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1358
 #. i18n: ectx: property (text), widget (QLabel, grid)
 msgid "Grid Quality:"
-msgstr ""
+msgstr "Calidad de la red:"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1375
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
 msgid "coarse"
-msgstr ""
+msgstr "grueso"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1380
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1385
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
 msgid "fine"
-msgstr ""
+msgstr "fino"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1390
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridCombo)
 msgid "ultrafine"
-msgstr ""
+msgstr "ultrafino"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1404
 #. i18n: ectx: property (text), widget (QLabel, radscheme)
@@ -5872,12 +5851,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1421
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
 msgid "LMG"
-msgstr ""
+msgstr "LMG"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1426
 #. i18n: ectx: property (text), item, widget (QComboBox, dftgridradCombo)
 msgid "GC2"
-msgstr ""
+msgstr "GC2"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1443
 #. i18n: ectx: property (text), widget (QCheckBox, allfunctionalsCheck)
@@ -5892,7 +5871,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1481
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
 msgid "Polarizability"
-msgstr ""
+msgstr "Polaridad"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1486
 #. i18n: ectx: property (text), item, widget (QComboBox, propCombo)
@@ -5907,7 +5886,7 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1541
 #. i18n: ectx: property (text), widget (QLabel, excitations)
 msgid "No. excitations:"
-msgstr ""
+msgstr "Nº de excitanciones"
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -7535,12 +7514,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "< 2009.1"
-msgstr ""
+msgstr "< 2009.1"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:434
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "2009.1"
-msgstr ""
+msgstr "2009.1"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
@@ -7871,12 +7850,12 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_dos.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Energy units:"
-msgstr ""
+msgstr "Unidades de energía:"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "Density units"
-msgstr ""
+msgstr "Unidades de densidad"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -7906,7 +7885,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_dos.ui:94
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_energy)
 msgid "eV"
-msgstr ""
+msgstr "eV"
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:102
 #. i18n: ectx: property (text), widget (QCheckBox, cb_fermi)
@@ -7926,7 +7905,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_dos.ui:139
 #. i18n: ectx: property (suffix), widget (QSpinBox, spin_valence)
 msgid " valence electrons"
-msgstr ""
+msgstr " electrones de valencia"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, Tab_IR_Raman)
@@ -7946,7 +7925,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:83
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
 msgid "Linear"
-msgstr ""
+msgstr "Lineal"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:88
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_scalingType)
@@ -7961,17 +7940,17 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:273
 #. i18n: ectx: property (title), widget (QGroupBox, group_ramanIntensities)
 msgid "Intensities"
-msgstr ""
+msgstr "Intensidades"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:284
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Temperature:"
-msgstr ""
+msgstr "Temperatura:"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:300
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_T)
 msgid " K"
-msgstr ""
+msgstr " K"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:332
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -7981,7 +7960,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:348
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, spin_W)
 msgid " cm⁻¹"
-msgstr ""
+msgstr " cm⁻¹"
 
 #. i18n: file: src/extensions/spectra/tab_ir_raman.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -8033,32 +8012,32 @@ msgstr "Vibraciones Moleculares"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Filter: "
-msgstr ""
+msgstr "Filtro: "
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:41
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "km/mol"
-msgstr ""
+msgstr "km/mol"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:90
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "ν (cm⁻¹)"
-msgstr ""
+msgstr "ν (cm⁻¹)"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:95
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "I (km/mol)"
-msgstr ""
+msgstr "I (km/mol)"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:100
 #. i18n: ectx: property (text), widget (QTableWidget, vibrationTable)
 msgid "Activity (A^4/amu)"
-msgstr ""
+msgstr "Actividad (A^4/amu)"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:108
 #. i18n: ectx: property (text), widget (QPushButton, spectraButton)
 msgid "&Show Spectra..."
-msgstr ""
+msgstr "&Mostrar espectro..."
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:133
 #. i18n: ectx: property (toolTip), widget (QCheckBox, animationSpeedCheckBox)
@@ -8079,7 +8058,7 @@ msgstr "Mostrar fuerza &vectores"
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:195
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Amplitude:"
-msgstr ""
+msgstr "Amplitud:"
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:229
 #. i18n: ectx: property (text), widget (QCheckBox, normalizeDispCheckBox)
@@ -8124,15 +8103,13 @@ msgstr "Generar Celda"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianión"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Calcular todos los OMs"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8141,41 +8118,36 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "&Isosurface Value:"
-msgstr "Valor de limíte de isosuperficie"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Low"
-msgstr "Baja"
+msgstr "Bajo"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
-msgstr "Media"
+msgstr "Medio"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
-msgstr "Alta"
+msgstr "Alto"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Very High"
-msgstr "Muy alta"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
 #. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
@@ -8196,9 +8168,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Continuar"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8304,7 +8275,7 @@ msgstr "Llenar Celda Unitaria"
 #. i18n: file: src/extensions/unitcellparamdialog.ui:119
 #. i18n: ectx: property (text), widget (QPushButton, changeColor)
 msgid "Change Color"
-msgstr ""
+msgstr "Cambiar color"
 
 #. i18n: file: src/extensions/unitcellparamdialog.ui:136
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -8399,7 +8370,11 @@ msgstr ""
 "Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro Team,Daniel "
 "Ferreira,DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder Sáiz,Francisco "
 "J. Aviles Noreña,Geoff Hutchison,JoseRoberto,Mauro de Carvalho,Nicolás M. "
-"Zahlut,Victor Herrero,memaljo,niniocompu"
+"Zahlut,Victor Herrero,memaljo,niniocompu, ,Launchpad Contributions:,"
+"Alejandro Del Rincón,Angel Herráez,Ariel Cabral,Avogadro Team,Daniel "
+"Ferreira,DiegoJ,DiegoSuarez uy,Edgardo Fredz,FJModrego,Feder Sáiz,Francisco "
+"J. Aviles Noreña,Geoff Hutchison,JoseRoberto,Mauro de Carvalho,Monkey,"
+"Nicolás M. Zahlut,Victor Herrero,memaljo,niniocompu"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8429,43 +8404,20 @@ msgstr ""
 "devel@lists.sourceforge.net,spanish_nerdo@hotmail.com,"
 "diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,,"
 "fjavilesn@gmail.com,,,mauro.dec@gmail.com,nzahlut@live.com,victorhera@gmail."
+"com,memaljo@yahoo.com,,,,,aherraez@users.sourceforge.net,,avogadro-"
+"devel@lists.sourceforge.net,spanish_nerdo@hotmail.com,"
+"diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,,"
+"fjavilesn@gmail.com,,,mauro.dec@gmail.com,,nzahlut@live.com,victorhera@gmail."
 "com,memaljo@yahoo.com,"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "Archivo de entrada Dalton(*.dal)"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "Exportar Entrada Deck"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS Entrada Deck (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "Guardar Gaussiana de Entrada Deck"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussiana de Entrada Deck (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Entrada Molpro cubierta (*. qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "Fichero de entrada MOPAC (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "Fichero de entrada de NWChem (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "Fichero entrad para QChem (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "En:"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesio"
 
 #~ msgid "Renders protein secundary structure"
 #~ msgstr "Renderiza la estructura secundaria de la proteína"
+
+#~ msgid "Renders molecular orbitals"
+#~ msgstr "Dibuja orbitales moleculares"
 
 #~ msgid "Surface"
 #~ msgstr "Superficie"
@@ -8482,11 +8434,23 @@ msgstr ""
 #~ msgid "QM Selection..."
 #~ msgstr "Selección de QM ..."
 
+#~ msgid "Export Input Deck"
+#~ msgstr "Exportar Entrada Deck"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS Entrada Deck (*.inp)"
+
 #~ msgid "Gaussian Input..."
 #~ msgstr "Entrada Gaussiana..."
 
 #~ msgid "Q-Chem Input..."
 #~ msgstr "Entrada Q-Chen..."
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "Guardar Gaussiana de Entrada Deck"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussiana de Entrada Deck (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "Abrir archivo de ligandos"
@@ -8612,6 +8576,9 @@ msgstr ""
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "Potencial electrostático (ESP)"
 
+#~ msgid "On:"
+#~ msgstr "En:"
+
 #~ msgid "Single Point Entry"
 #~ msgstr "Único punto de entrada"
 
@@ -8674,6 +8641,9 @@ msgstr ""
 
 #~ msgid "Calculate MO"
 #~ msgstr "Calcular OM (Orbital Molecular)"
+
+#~ msgid "Calculate All MOs"
+#~ msgstr "Calcular todos los OMs"
 
 #~ msgid "Calculate Electron Density"
 #~ msgstr "Calcular densidad electrónica"
@@ -9390,6 +9360,9 @@ msgstr ""
 #~ msgstr ""
 #~ "GL artilugio no se inicializa correctamente, a fin de guardar instantáneas"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Entrada Molpro cubierta (*. qcin)"
+
 #~ msgid "NMR &Type:"
 #~ msgstr "RMN y Tipo:"
 
@@ -9447,8 +9420,20 @@ msgstr ""
 #~ msgid "Export Vibrational Data"
 #~ msgstr "Exportar datos vibracionales"
 
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "Fichero de entrada MOPAC (*.mop)"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "Fichero de entrada de NWChem (*.nw)"
+
 #~ msgid "Atom Index %1"
 #~ msgstr "Indice atómico %1"
 
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "Fichero entrad para QChem (*.qcin)"
+
 #~ msgid "MO 666"
 #~ msgstr "OM 666"
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "Archivo de entrada Dalton(*.dal)"

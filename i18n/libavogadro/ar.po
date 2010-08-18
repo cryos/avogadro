@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-11 06:23+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 13:26+0000\n"
 "Last-Translator: Nizar Kerkeni <nizarus@nizarus.org>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:33+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:15+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -566,9 +566,8 @@ msgid "Roentgenium"
 msgstr ""
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "سيريوم"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -3341,9 +3340,8 @@ msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "تسمية"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -7975,9 +7973,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "حذف الكل"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8000,9 +7997,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
-msgstr "مندليفيوم"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
@@ -8219,7 +8215,7 @@ msgstr ""
 "Launchpad Contributions:,TheLight, ,Launchpad Contributions:,Nizar Kerkeni,"
 "TheLight, ,Launchpad Contributions:,Nizar Kerkeni,TheLight, ,Launchpad "
 "Contributions:,Nizar Kerkeni,TheLight, ,Launchpad Contributions:,Nizar "
-"Kerkeni,TheLight"
+"Kerkeni,TheLight, ,Launchpad Contributions:,Nizar Kerkeni,TheLight"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8227,7 +8223,7 @@ msgstr ""
 ",,shelhatem@gmail.com,sneetsher@gmail.com,,,shelhatem@gmail.com,houd."
 "ox@gmail.com,sneetsher@gmail.com,,,houd.ox@gmail.com,,,nizarus@nizarus.org,"
 "houd.ox@gmail.com,,,nizarus@nizarus.org,houd.ox@gmail.com,,,nizarus@nizarus."
-"org,houd.ox@gmail.com,,,nizarus@nizarus.org,"
+"org,houd.ox@gmail.com,,,nizarus@nizarus.org,,,,nizarus@nizarus.org,"
 
 #~ msgid "Surface"
 #~ msgstr "السطح"

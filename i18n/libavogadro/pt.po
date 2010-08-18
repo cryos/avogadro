@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 15:56-0400\n"
-"PO-Revision-Date: 2010-05-28 08:14+0000\n"
-"Last-Translator: Frederico Tavares <Unknown>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:37+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -567,9 +567,8 @@ msgid "Roentgenium"
 msgstr "Roentgénio"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cério"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -1047,11 +1046,10 @@ msgstr "&Mecanismos moleculares"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Não é possível definir o campo de força para esta molécula."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1570,9 +1568,8 @@ msgstr ""
 "ficheiro de entrada de dados Dalton?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Guardar Ficheiro de Entrada Dados Dalton"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1749,15 +1746,13 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Guardar Ficheiro de Entrada Dados Dalton"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
-#, fuzzy
 msgid "Gaussian Input Deck"
-msgstr "Gaussian Não Instalado."
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -1836,13 +1831,10 @@ msgid "Molpro Input Deck Generator Warning"
 msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Gostaria de actualizar o texto prévio, perdendo todas as mudanças feitas no "
-"ficheiro de entrada de dados Dalton?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
 msgid "Molpro Input Deck"
@@ -2472,15 +2464,13 @@ msgid "Build and display crystallographic super cells"
 msgstr "Desenhar e ver super células cristalográficas."
 
 #: src/extensions/surfaces/orbitalextension.cpp:64
-#, fuzzy
 msgid "Molecular Orbitals..."
-msgstr "Orbital Molecular"
+msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.cpp:86
 #: src/extensions/surfaces/orbitalextension.h:86
-#, fuzzy
 msgid "Orbitals"
-msgstr "Orbital:"
+msgstr "Orbitais"
 
 #: src/extensions/surfaces/orbitalextension.cpp:146
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
@@ -2495,19 +2485,16 @@ msgid "LUMO"
 msgstr ""
 
 #: src/extensions/surfaces/orbitalextension.h:87
-#, fuzzy
 msgid "Calculate and visualize molecular orbitals"
-msgstr "Calcular orbitais moleculares e outras superfícies"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:72
-#, fuzzy
 msgid "Orbital"
-msgstr "Orbital:"
+msgstr ""
 
 #: src/extensions/surfaces/orbitaltablemodel.cpp:76
-#, fuzzy
 msgid "Status"
-msgstr "Iniciar"
+msgstr ""
 
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
@@ -3442,18 +3429,16 @@ msgid "Residue"
 msgstr "Resíduo"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Mudar o nome do esquema"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Nome"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3464,10 +3449,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Raio:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -8080,15 +8065,13 @@ msgstr "Gerar Célula"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
-#, fuzzy
 msgid "Dialog"
-msgstr "Dianião"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
 #. i18n: ectx: property (text), widget (QPushButton, push_recalc)
-#, fuzzy
 msgid "&Recalculate All"
-msgstr "Eliminar tudo"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -8105,23 +8088,21 @@ msgstr ""
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 msgid "Low"
-msgstr ""
+msgstr "Baíxo"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "Medium"
-msgstr "Mendelévio"
+msgstr "Médio"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
-#, fuzzy
 msgid "High"
-msgstr "Claro"
+msgstr "Alto"
 
 #. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
@@ -8149,9 +8130,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
 #. i18n: ectx: property (text), widget (QPushButton, push_configure)
-#, fuzzy
 msgid "Configure"
-msgstr "Conformação"
+msgstr ""
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
@@ -8333,7 +8313,9 @@ msgstr ""
 "Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
 "Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago"
+"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
+"Fernandes,Tiago"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8341,10 +8323,8 @@ msgstr ""
 ",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,"
 "ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,"
-
-#~ msgid "On:"
-#~ msgstr "Em:"
 
 #~ msgid "Cannot save file %1."
 #~ msgstr "Não foi possível salvar o arquivo %1."
@@ -8542,6 +8522,9 @@ msgstr ""
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "Não foram calculadas vibrações para esta molécula."
+
+#~ msgid "On:"
+#~ msgstr "Em:"
 
 #~ msgid "&Scale:"
 #~ msgstr "&Escala"
