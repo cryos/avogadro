@@ -107,6 +107,7 @@ namespace Avogadro
 
         break;
       case GTO:
+        {
         // TODO: detect dead files and make bullet-proof
         int atom = list[0].toInt();
 
@@ -146,6 +147,7 @@ namespace Avogadro
               m_csp.push_back(list[2].toDouble());
           } // finished parsing a new GTO
           key = m_in->readLine().trimmed(); // start reading the next shell
+        }
         }
         break;
 
