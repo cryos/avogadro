@@ -470,14 +470,14 @@ namespace Avogadro {
     Engine::readSettings(settings);
     m_alpha = settings.value("alpha", 0.5).toDouble();
     // Default: Positive = blue
-    m_posColor.setFromRgba( settings.value("posColor/r", 0.0).toFloat(),
-                            settings.value("posColor/g", 0.0).toFloat(),
-                            settings.value("posColor/b", 1.0).toFloat(),
+    m_posColor.setFromRgba( settings.value("posColor/r", 0.0).toDouble(),
+                            settings.value("posColor/g", 0.0).toDouble(),
+                            settings.value("posColor/b", 1.0).toDouble(),
                             m_alpha );
     // Default: Negative = red
-    m_negColor.setFromRgba( settings.value("negColor/r", 1.0).toFloat(),
-                            settings.value("negColor/g", 0.0).toFloat(),
-                            settings.value("negColor/b", 0.0).toFloat(),
+    m_negColor.setFromRgba( settings.value("negColor/r", 1.0).toDouble(),
+                            settings.value("negColor/g", 0.0).toDouble(),
+                            settings.value("negColor/b", 0.0).toDouble(),
                             m_alpha );
     m_renderMode = settings.value("renderMode", 0).toInt();
     m_colored = settings.value("colorMode", false).toBool();
