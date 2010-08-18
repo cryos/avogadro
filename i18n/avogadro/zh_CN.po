@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-06-13 22:49-0400\n"
+"POT-Creation-Date: 2010-08-18 15:56-0400\n"
 "PO-Revision-Date: 2010-05-11 04:07+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -37,9 +37,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:921 src/mainwindow.cpp:1084 src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1260 src/mainwindow.cpp:1488 src/mainwindow.cpp:2685
+#: src/mainwindow.cpp:3186:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -78,7 +78,7 @@ msgstr "清除原子"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3204 src/mainwindow.cpp:3221:381 rc.cpp:393
 msgid "Settings"
 msgstr "设置"
 
@@ -86,7 +86,7 @@ msgstr "设置"
 msgid "Open File"
 msgstr "打开文件"
 
-#: src/main.cpp:255
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -98,7 +98,7 @@ msgstr ""
 "LibAvogadro: \t%3 (Hash %4)\n"
 "Qt: \t\t%5\n"
 
-#: src/main.cpp:271
+#: src/main.cpp:270
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -131,7 +131,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "缩放(&Z)"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1623
 msgid "Bring All to Front"
 msgstr "前置全部窗口"
 
@@ -153,16 +153,16 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1199
 msgid "Common molecule formats"
 msgstr "普通分子格式"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1196 src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1507
 msgid "All files"
 msgstr "所有文件"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:725 src/mainwindow.cpp:1193 src/mainwindow.cpp:1205
 msgid "CML"
 msgstr "CML"
 
@@ -198,15 +198,15 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr "NWChem输出"
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:734 src/mainwindow.cpp:1210
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:735 src/mainwindow.cpp:1212
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:736 src/mainwindow.cpp:1213
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -225,7 +225,7 @@ msgstr "载入%1..."
 msgid "Loading %1..."
 msgstr "载入 %1..."
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:850 src/mainwindow.cpp:1085
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr "读取分子文件失败，文件 %1."
@@ -258,206 +258,206 @@ msgstr "选择分子以查看"
 msgid "Molecule Title"
 msgstr "分子名称"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1077
 msgid "Atoms: "
 msgstr "原子: "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1078
 msgid " Bonds: "
 msgstr " 键: "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1094
 msgid "File Loaded..."
 msgstr "文件已载入..."
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1107
 msgid "Do you want to save the changes you made in the document?"
 msgstr "您是否希望保存文档中的修改？"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1116
 msgid "Your changes will be lost if you don't save them."
 msgstr "如果您不保存，您所做的修改会丢失。"
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1120
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1121
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1123
 msgid "Save..."
 msgstr "保存..."
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1123 src/savedialog.cpp:65
 msgid "Save"
 msgstr "保存"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1206
 msgid "GAMESS Input"
 msgstr "GAMESS输入"
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1207
 msgid "Gaussian Cartesian Input"
 msgstr "Gaussian笛卡尔坐标型输入"
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1208
 msgid "Gaussian Z-matrix Input"
 msgstr "Gaussian Z-矩阵输入"
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1209
 msgid "MDL SDfile"
 msgstr "MDL SD文件"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1211
 msgid "NWChem Input"
 msgstr "NWChem输入"
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1216
 msgid "Save Molecule As"
 msgstr "将分子保存为"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1418 src/mainwindow.cpp:1430
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1425
 msgid "Common image formats"
 msgstr "普通图像格式"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1429
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1431
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1437 src/mainwindow.cpp:1516
 msgid "Export Bitmap Graphics"
 msgstr "导出为位图"
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1489
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "不能保存文件 %1。"
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1497 src/mainwindow.cpp:1508
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1504
 msgid "Common vector image formats"
 msgstr "普通矢量图格式"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1509
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1510
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1655
 #, qt-format
 msgid "Untitled %1"
 msgstr "未命名 %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1760
 msgid "Unable to paste molecule."
 msgstr "不能粘贴分子。"
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1789
 msgid "Paste failed (format unavailable)."
 msgstr "粘贴失败 (格式不可用)"
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2072
 msgid "Copy failed (mdl unavailable)."
 msgstr "复制失败 (mdl不可用)"
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2198 src/mainwindow.cpp:2231 src/mainwindow.cpp:2298
+#: src/mainwindow.cpp:2828
 #, qt-format
 msgid "View %1"
 msgstr "视图 %1"
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2258
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "视图 %1"
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2267
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: 独立视图"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2433
 msgid "Normal Size"
 msgstr "普通大小"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2446
 msgid "Full Screen"
 msgstr "全屏"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2544
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2677
+#: src/mainwindow.cpp:2678
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2684
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3140
 msgid "Add"
 msgstr "添加"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3145
 msgid "Duplicate"
 msgstr "创建副本"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3150
 msgid "Remove"
 msgstr "删除"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3178
 msgid "No tools or engines loaded."
 msgstr "没有工具或引擎被载入。"
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3180
 msgid "No engines loaded."
 msgstr "没有引擎被载入。"
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3182
 msgid "No tools loaded."
 msgstr "没有工具被载入。"
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3183
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
 msgstr " 该程序似乎不会正确工作。请修正这个错误。"
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3227
 msgid "Objects"
 msgstr "对象"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3233:321
 msgid "Colors"
 msgstr "颜色"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3266
 msgid " copy"
 msgstr " 复制"
 
