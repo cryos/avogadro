@@ -1404,7 +1404,7 @@ namespace Avogadro {
     }
     // Find the navigate tool and set it
     foreach (Tool *tool, d->toolGroup->tools()) {
-      if (tool->name() == "Navigate") {
+      if (tool->identifier() == "Navigate") {
         m_navigateTool = tool;
       }
     }

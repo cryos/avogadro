@@ -683,9 +683,14 @@ namespace Avogadro
     connect(displaySettings, SIGNAL(released()), this, SLOT(toggleEngineSettingsDock()));
     ui.toolBar->addWidget(displaySettings);
 
+    // Call GLWidget::setToolGroup which will store a pointer to the navigate tool
+    foreach(GLWidget *glWidget, d->glWidgets)
+      glWidget->setToolGroup(d->toolGroup);
+
     // Now, set the active tool
     if (d->molecule)
       d->toolGroup->setActiveTool("Navigate");
+
   } // end reloadTools
 
   void MainWindow::newFile()
