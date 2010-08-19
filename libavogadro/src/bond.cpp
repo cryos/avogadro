@@ -154,6 +154,10 @@
   bool Bond::setOBBond(OpenBabel::OBBond *obbond)
   {
     m_order = obbond->GetBondOrder();
+
+    // Read custom label
+    if (obbond->HasData("label"))
+      m_customLabel = obbond->GetData("label")->GetValue().c_str();
     return true;
   }
 
@@ -162,6 +166,7 @@
     m_beginAtomId = other.m_beginAtomId;
     m_endAtomId = other.m_endAtomId;
     m_order = other.m_order;
+    m_customLabel = other.m_customLabel;
     return *this;
   }
 

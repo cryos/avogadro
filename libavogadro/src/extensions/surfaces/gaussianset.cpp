@@ -132,8 +132,6 @@ namespace Avogadro
   {
     m_init = false;
 
-    qDebug() << "num MOs: " << m_numMOs << " " << MOs.size();
-
     // The new way - initalise a matrix and read the data into it
     m_moMatrix.resize(m_numMOs, m_numMOs);
     // Now read in the vector row by row
@@ -221,9 +219,6 @@ namespace Avogadro
   void GaussianSet::calculationComplete()
   {
     disconnect(&m_watcher, SIGNAL(finished()), this, SLOT(calculationComplete()));
-    qDebug() << (*m_gaussianShells)[0].tCube->name()
-        << (*m_gaussianShells)[0].tCube->data()->at(0)
-        << (*m_gaussianShells)[0].tCube->data()->at(1);
     (*m_gaussianShells)[0].tCube->lock()->unlock();
     delete m_gaussianShells;
     m_gaussianShells = 0;

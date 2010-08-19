@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-06-13 22:49-0400\n"
-"PO-Revision-Date: 2010-05-11 07:54+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 13:32+0000\n"
 "Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/aboutdialog.cpp:47 src/updatedialog.cpp:41
@@ -37,9 +37,9 @@ msgstr ""
 #. i18n: file: src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/aboutdialog.cpp:72 src/mainwindow.cpp:849 src/mainwindow.cpp:899
-#: src/mainwindow.cpp:921 src/mainwindow.cpp:1083 src/mainwindow.cpp:1105
-#: src/mainwindow.cpp:1259 src/mainwindow.cpp:1487 src/mainwindow.cpp:2684
-#: src/mainwindow.cpp:3185:69
+#: src/mainwindow.cpp:921 src/mainwindow.cpp:1084 src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1260 src/mainwindow.cpp:1488 src/mainwindow.cpp:2685
+#: src/mainwindow.cpp:3186:69
 msgid "Avogadro"
 msgstr "Avogadro"
 
@@ -78,7 +78,7 @@ msgstr "Изчистване на атоми"
 #. i18n: file: src/settingsdialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SettingsDialog)
 #: src/engineitemdelegate.cpp:47 src/engineitemmodel.cpp:114
-#: src/mainwindow.cpp:3203 src/mainwindow.cpp:3220:381 rc.cpp:393
+#: src/mainwindow.cpp:3204 src/mainwindow.cpp:3221:381 rc.cpp:393
 msgid "Settings"
 msgstr "Настройки"
 
@@ -86,7 +86,7 @@ msgstr "Настройки"
 msgid "Open File"
 msgstr "Отваряне на файл"
 
-#: src/main.cpp:255
+#: src/main.cpp:254
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -95,7 +95,7 @@ msgid ""
 "Qt: \t\t%5\n"
 msgstr ""
 
-#: src/main.cpp:271
+#: src/main.cpp:270
 #, qt-format
 msgctxt "main.cpp"
 msgid ""
@@ -128,7 +128,7 @@ msgstr "Ctrl+M"
 msgid "&Zoom"
 msgstr "&Мащаб"
 
-#: src/mainwindow.cpp:390 src/mainwindow.cpp:1622
+#: src/mainwindow.cpp:390 src/mainwindow.cpp:1623
 msgid "Bring All to Front"
 msgstr "Всичко на преден план"
 
@@ -150,16 +150,16 @@ msgctxt "Display Settings shortcut"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:719 src/mainwindow.cpp:1198
+#: src/mainwindow.cpp:719 src/mainwindow.cpp:1199
 msgid "Common molecule formats"
 msgstr "Обичайни молекулни формати"
 
-#: src/mainwindow.cpp:724 src/mainwindow.cpp:1195 src/mainwindow.cpp:1427
-#: src/mainwindow.cpp:1506
+#: src/mainwindow.cpp:724 src/mainwindow.cpp:1196 src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1507
 msgid "All files"
 msgstr "Всички файлове"
 
-#: src/mainwindow.cpp:725 src/mainwindow.cpp:1192 src/mainwindow.cpp:1204
+#: src/mainwindow.cpp:725 src/mainwindow.cpp:1193 src/mainwindow.cpp:1205
 msgid "CML"
 msgstr "CML"
 
@@ -195,15 +195,15 @@ msgstr "MDL Mol"
 msgid "NWChem Output"
 msgstr ""
 
-#: src/mainwindow.cpp:734 src/mainwindow.cpp:1209
+#: src/mainwindow.cpp:734 src/mainwindow.cpp:1210
 msgid "PDB"
 msgstr "PDB"
 
-#: src/mainwindow.cpp:735 src/mainwindow.cpp:1211
+#: src/mainwindow.cpp:735 src/mainwindow.cpp:1212
 msgid "Sybyl Mol2"
 msgstr "Sybyl Mol2"
 
-#: src/mainwindow.cpp:736 src/mainwindow.cpp:1212
+#: src/mainwindow.cpp:736 src/mainwindow.cpp:1213
 msgid "XYZ"
 msgstr "XYZ"
 
@@ -222,7 +222,7 @@ msgstr "Зареждане на %1..."
 msgid "Loading %1..."
 msgstr "Зареждане на %1..."
 
-#: src/mainwindow.cpp:850 src/mainwindow.cpp:1084
+#: src/mainwindow.cpp:850 src/mainwindow.cpp:1085
 #, qt-format
 msgid "Reading molecular file failed, file %1."
 msgstr ""
@@ -255,190 +255,190 @@ msgstr "Изберете молекула за преглед"
 msgid "Molecule Title"
 msgstr "Заглавие на молекулата"
 
-#: src/mainwindow.cpp:1076
+#: src/mainwindow.cpp:1077
 msgid "Atoms: "
 msgstr "Атоми: "
 
-#: src/mainwindow.cpp:1077
+#: src/mainwindow.cpp:1078
 msgid " Bonds: "
 msgstr " Връзки: "
 
-#: src/mainwindow.cpp:1093
+#: src/mainwindow.cpp:1094
 msgid "File Loaded..."
 msgstr "Файлът е зареден..."
 
-#: src/mainwindow.cpp:1106
+#: src/mainwindow.cpp:1107
 msgid "Do you want to save the changes you made in the document?"
 msgstr "Желаете ли да запазите направените промени в документа?"
 
-#: src/mainwindow.cpp:1115
+#: src/mainwindow.cpp:1116
 msgid "Your changes will be lost if you don't save them."
 msgstr "Вашите промени ще бъдат изгубени, ако не ги запазите."
 
-#: src/mainwindow.cpp:1119
+#: src/mainwindow.cpp:1120
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: src/mainwindow.cpp:1120
+#: src/mainwindow.cpp:1121
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: src/mainwindow.cpp:1122
+#: src/mainwindow.cpp:1123
 msgid "Save..."
 msgstr "Запазване..."
 
-#: src/mainwindow.cpp:1122 src/savedialog.cpp:65
+#: src/mainwindow.cpp:1123 src/savedialog.cpp:65
 msgid "Save"
 msgstr "Запазване"
 
-#: src/mainwindow.cpp:1205
+#: src/mainwindow.cpp:1206
 msgid "GAMESS Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1206
+#: src/mainwindow.cpp:1207
 msgid "Gaussian Cartesian Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1207
+#: src/mainwindow.cpp:1208
 msgid "Gaussian Z-matrix Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1208
+#: src/mainwindow.cpp:1209
 msgid "MDL SDfile"
 msgstr "MDL SDfile"
 
-#: src/mainwindow.cpp:1210
+#: src/mainwindow.cpp:1211
 msgid "NWChem Input"
 msgstr ""
 
-#: src/mainwindow.cpp:1215
+#: src/mainwindow.cpp:1216
 msgid "Save Molecule As"
 msgstr "Запазване на молекулата като"
 
-#: src/mainwindow.cpp:1417 src/mainwindow.cpp:1429
+#: src/mainwindow.cpp:1418 src/mainwindow.cpp:1430
 msgid "PNG"
 msgstr "PNG"
 
-#: src/mainwindow.cpp:1424
+#: src/mainwindow.cpp:1425
 msgid "Common image formats"
 msgstr "Обичайни формати за изображения"
 
-#: src/mainwindow.cpp:1428
+#: src/mainwindow.cpp:1429
 msgid "BMP"
 msgstr "BMP"
 
-#: src/mainwindow.cpp:1430
+#: src/mainwindow.cpp:1431
 msgid "JPEG"
 msgstr "JPEG"
 
-#: src/mainwindow.cpp:1436 src/mainwindow.cpp:1515
+#: src/mainwindow.cpp:1437 src/mainwindow.cpp:1516
 msgid "Export Bitmap Graphics"
 msgstr ""
 
-#: src/mainwindow.cpp:1488
+#: src/mainwindow.cpp:1489
 #, qt-format
 msgid "Cannot save file %1."
 msgstr "Не може да бъде запазен файлът %1."
 
-#: src/mainwindow.cpp:1496 src/mainwindow.cpp:1507
+#: src/mainwindow.cpp:1497 src/mainwindow.cpp:1508
 msgid "PDF"
 msgstr "PDF"
 
-#: src/mainwindow.cpp:1503
+#: src/mainwindow.cpp:1504
 msgid "Common vector image formats"
 msgstr "Обичайни формати за векторни изображения"
 
-#: src/mainwindow.cpp:1508
+#: src/mainwindow.cpp:1509
 msgid "SVG"
 msgstr "SVG"
 
-#: src/mainwindow.cpp:1509
+#: src/mainwindow.cpp:1510
 msgid "EPS"
 msgstr "EPS"
 
-#: src/mainwindow.cpp:1654
+#: src/mainwindow.cpp:1655
 #, qt-format
 msgid "Untitled %1"
 msgstr "Безименен %1"
 
-#: src/mainwindow.cpp:1759
+#: src/mainwindow.cpp:1760
 msgid "Unable to paste molecule."
 msgstr "Молекулата не може да бъде поставена"
 
-#: src/mainwindow.cpp:1788
+#: src/mainwindow.cpp:1789
 msgid "Paste failed (format unavailable)."
 msgstr "Поставянето се провали (не е начин формат)"
 
-#: src/mainwindow.cpp:2071
+#: src/mainwindow.cpp:2072
 msgid "Copy failed (mdl unavailable)."
 msgstr "Копирането се провали (не е наличен mdl)"
 
-#: src/mainwindow.cpp:2197 src/mainwindow.cpp:2230 src/mainwindow.cpp:2297
-#: src/mainwindow.cpp:2827
+#: src/mainwindow.cpp:2198 src/mainwindow.cpp:2231 src/mainwindow.cpp:2298
+#: src/mainwindow.cpp:2828
 #, qt-format
 msgid "View %1"
 msgstr "Преглеждане на %1"
 
-#: src/mainwindow.cpp:2257
+#: src/mainwindow.cpp:2258
 #, qt-format
 msgctxt "View number (from 1 on)"
 msgid "View %1"
 msgstr "Преглеждане на %1"
 
-#: src/mainwindow.cpp:2266
+#: src/mainwindow.cpp:2267
 msgid "Avogadro: Detached View"
 msgstr "Avogadro: Отделен изглед"
 
-#: src/mainwindow.cpp:2432
+#: src/mainwindow.cpp:2433
 msgid "Normal Size"
 msgstr "Нормален размер"
 
-#: src/mainwindow.cpp:2445
+#: src/mainwindow.cpp:2446
 msgid "Full Screen"
 msgstr "Цял екран"
 
-#: src/mainwindow.cpp:2543
+#: src/mainwindow.cpp:2544
 msgid "Ctrl+Backspace"
 msgstr "Ctrl+Backspace"
 
-#: src/mainwindow.cpp:2677
+#: src/mainwindow.cpp:2678
 msgctxt "[*] indicates that this is a modified view...."
 msgid "[*]Avogadro"
 msgstr "[*]Avogadro"
 
-#: src/mainwindow.cpp:2683
+#: src/mainwindow.cpp:2684
 #, qt-format
 msgctxt "Window title: %1 is file name, %2 is Avogadro"
 msgid "%1[*] - %2"
 msgstr "%1[*] - %2"
 
-#: src/mainwindow.cpp:3139
+#: src/mainwindow.cpp:3140
 msgid "Add"
 msgstr "Добавяне"
 
-#: src/mainwindow.cpp:3144
+#: src/mainwindow.cpp:3145
 msgid "Duplicate"
 msgstr "Дублиране"
 
-#: src/mainwindow.cpp:3149
+#: src/mainwindow.cpp:3150
 msgid "Remove"
 msgstr "Премахване"
 
-#: src/mainwindow.cpp:3177
+#: src/mainwindow.cpp:3178
 msgid "No tools or engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3179
+#: src/mainwindow.cpp:3180
 msgid "No engines loaded."
 msgstr ""
 
-#: src/mainwindow.cpp:3181
+#: src/mainwindow.cpp:3182
 msgid "No tools loaded."
 msgstr "Не са заредени инструменти."
 
-#: src/mainwindow.cpp:3182
+#: src/mainwindow.cpp:3183
 msgid ""
 " It is unlikely this application will function correctly. Please correct "
 "this error."
@@ -446,17 +446,17 @@ msgstr ""
 " Най-вероятно това приложение няма да работи коректно. Моля оправете тази "
 "грешка."
 
-#: src/mainwindow.cpp:3226
+#: src/mainwindow.cpp:3227
 msgid "Objects"
 msgstr "Oбекти"
 
 #. i18n: file: src/pluginsettings.ui:38
 #. i18n: ectx: property (text), item, widget (QComboBox, comboBox)
-#: src/mainwindow.cpp:3232:321
+#: src/mainwindow.cpp:3233:321
 msgid "Colors"
 msgstr "Цветове"
 
-#: src/mainwindow.cpp:3265
+#: src/mainwindow.cpp:3266
 msgid " copy"
 msgstr " копиране"
 
@@ -1229,11 +1229,12 @@ msgstr ""
 ",Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,"
 "Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
 "Contributions:,Svetoslav Stefanov, ,Launchpad Contributions:,Svetoslav "
-"Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov"
+"Stefanov, ,Launchpad Contributions:,Svetoslav Stefanov, ,Launchpad "
+"Contributions:,Svetoslav Stefanov"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo."
 "com,,,svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com,,,"
-"svetlisashkov@yahoo.com"
+"svetlisashkov@yahoo.com,,,svetlisashkov@yahoo.com"

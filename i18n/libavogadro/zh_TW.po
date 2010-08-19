@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-06-13 22:50-0400\n"
-"PO-Revision-Date: 2010-05-17 03:53+0000\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-07-22 00:28+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -31,7 +31,8 @@ msgstr "第二步"
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/surfaceextension.cpp:94
+#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/surfaceextension.cpp:96
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "延伸功能"
@@ -565,9 +566,8 @@ msgid "Roentgenium"
 msgstr "Roentgenium (錀)"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cerium (鈰)"
+msgstr "Copernicium 鎶"
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -885,19 +885,19 @@ msgstr "使軌跡, 反應與振動變成動畫"
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
+#: src/extensions/cartesianextension.cpp:96:354
 msgid "Cartesian Editor"
 msgstr "直角坐標編輯器"
 
-#: src/extensions/cartesianextension.cpp:96
+#: src/extensions/cartesianextension.cpp:97
 msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr "尚未為分子定義單位晶格--無法使用比列坐標 (fractional coordinates)"
 
-#: src/extensions/cartesianextension.cpp:570
+#: src/extensions/cartesianextension.cpp:571
 msgid "Cartesian Editor..."
 msgstr "直角坐標 (笛卡兒坐標) 編輯"
 
-#: src/extensions/cartesianextension.cpp:585
+#: src/extensions/cartesianextension.cpp:586
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:81
@@ -1029,11 +1029,10 @@ msgstr "分子力學"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "無法設定這分子的力場"
+msgstr "無法在這分子上設定所選的力場. 切換到 UFF."
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1515,7 +1514,8 @@ msgstr "扭轉"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:844
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1727
+#: src/extensions/propmodel.cpp:511
+#: src/extensions/surfaces/orbitaltablemodel.cpp:74:1727
 msgid "Energy"
 msgstr "能量"
 
@@ -1548,9 +1548,8 @@ msgid ""
 msgstr "您要更新預覽文字嗎？將會失去在道耳頓輸入檔預覽處所做的改變。"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "儲存道耳頓輸入檔"
+msgstr "Dalton 輸入檔"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1712,9 +1711,8 @@ msgstr ""
 "將會失去原先的變更!"
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
-#, fuzzy
 msgid "GAMESS Input Deck"
-msgstr "GAMESS (原子分子之電子結構系統) 輸入"
+msgstr "GAMESS 輸入面板"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
 msgid "Gaussian Input Deck Generator Warning"
@@ -1729,9 +1727,8 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "儲存 MOPAC 輸入工具列"
+msgstr "儲存輸入面板"
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
@@ -1808,21 +1805,18 @@ msgid "Create input files for quantum chemistry packages"
 msgstr "為量子化學套件產生輸入檔案"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:122
-#, fuzzy
 msgid "Molpro Input Deck Generator Warning"
-msgstr "Q-Chem 輸入產生器警告"
+msgstr "Moloro 輸入面板產生器警告"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
-msgstr "您要更新預覽的文字嗎? 將會失去所有在 MOPAC 工具列 作的變更."
+msgstr "您想要更新預覽文字嗎, 將會失去在 Molpro 輸入面板預覽方格所作的變更?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
-#, fuzzy
 msgid "Molpro Input Deck"
-msgstr "儲存 Molpro 輸入工具列"
+msgstr "Molpro 輸入面板"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:137
 msgid "MOPAC Input Warning"
@@ -1836,9 +1830,8 @@ msgstr "您要更新預覽的文字嗎? 將會失去所有在 MOPAC 工具列 �
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:174
 #: src/extensions/quantuminput/mopacinputdialog.cpp:185
-#, fuzzy
 msgid "MOPAC Input Deck"
-msgstr "儲存 MOPAC 輸入工具列"
+msgstr "MOPAC 輸入面板"
 
 #: src/extensions/quantuminput/mopacinputdialog.cpp:180
 msgid "MOPAC Running."
@@ -1888,9 +1881,8 @@ msgid ""
 msgstr "您希望更新預覽的文字嗎? 將會失去所有在 NWChem 輸入工作區預覽框中的變更"
 
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:168
-#, fuzzy
 msgid "NWChem Input Deck"
-msgstr "儲存 NWChem 輸入工具列"
+msgstr "NWChem 輸入面板"
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:119
 msgid "Q-Chem Input Deck Generator Warning"
@@ -1903,9 +1895,8 @@ msgid ""
 msgstr "您要更新預覽的文字嗎? 將會失去所有在 Q-Chem 工具列所作的變更."
 
 #: src/extensions/quantuminput/qcheminputdialog.cpp:161
-#, fuzzy
 msgid "QChem Input Deck"
-msgstr "儲存 QChem 輸入平台"
+msgstr "QChem 輸入面板"
 
 #: src/extensions/selectextension.cpp:69
 msgid "&Invert Selection"
@@ -2019,27 +2010,27 @@ msgstr "GLSL Shaders"
 msgid "Load and use OpenGL 2.0 GLSL shaders"
 msgstr "載入及使用 OpenGL 2.0 GLSL shaders"
 
-#: src/extensions/spectra/cd.cpp:107 src/extensions/spectra/uv.cpp:91
+#: src/extensions/spectra/cd.cpp:108 src/extensions/spectra/uv.cpp:92
 msgid "Wavelength (nm)"
 msgstr "波長 (nm)"
 
-#: src/extensions/spectra/cd.cpp:108
+#: src/extensions/spectra/cd.cpp:109
 msgid "Intensity (arb. units)"
 msgstr "強度 (arb. 單位)"
 
-#: src/extensions/spectra/dos.cpp:135
+#: src/extensions/spectra/dos.cpp:136
 msgid "Energy (eV)"
 msgstr "能量 (eV)"
 
-#: src/extensions/spectra/dos.cpp:142
+#: src/extensions/spectra/dos.cpp:143
 msgid "Density of States (states/cell)"
 msgstr "態密度 (態/晶格)"
 
-#: src/extensions/spectra/dos.cpp:145
+#: src/extensions/spectra/dos.cpp:146
 msgid "Density of States (states/atom)"
 msgstr "態密度 (態/原子)"
 
-#: src/extensions/spectra/dos.cpp:148
+#: src/extensions/spectra/dos.cpp:149
 msgid "Density of States (states/valence electron)"
 msgstr "態密度 (態/價電子)"
 
@@ -2063,7 +2054,7 @@ msgid ""
 msgstr ""
 "您所載入的分子振動資料沒有任何強度的訊息. 為呈現圖形, 強度將設為任意的值."
 
-#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:140
+#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "波數 (cm<sup>-1</sup>)"
 
@@ -2071,11 +2062,11 @@ msgstr "波數 (cm<sup>-1</sup>)"
 msgid "Shift (ppm)"
 msgstr "化學位移 (ppm)"
 
-#: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
+#: src/extensions/spectra/raman.cpp:47 src/extensions/spectra/raman.cpp:81
 msgid "Activity"
 msgstr "活性"
 
-#: src/extensions/spectra/raman.cpp:47
+#: src/extensions/spectra/raman.cpp:48
 msgid "Intensity"
 msgstr "強度"
 
@@ -2366,7 +2357,7 @@ msgstr "光譜"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "從量子化學計算顯示光譜的資料"
 
-#: src/extensions/spectra/uv.cpp:92
+#: src/extensions/spectra/uv.cpp:93
 msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 
@@ -2443,9 +2434,42 @@ msgstr "超級晶格"
 msgid "Build and display crystallographic super cells"
 msgstr "建立及呈現結晶學上的超級晶格"
 
+#: src/extensions/surfaces/orbitalextension.cpp:64
+msgid "Molecular Orbitals..."
+msgstr "分子軌域..."
+
+#: src/extensions/surfaces/orbitalextension.cpp:86
+#: src/extensions/surfaces/orbitalextension.h:86
+msgid "Orbitals"
+msgstr "軌域"
+
+#: src/extensions/surfaces/orbitalextension.cpp:146
+#: src/extensions/surfaces/orbitaltablemodel.cpp:89
+msgctxt "Highest Occupied MO"
+msgid "HOMO"
+msgstr "HOMO"
+
+#: src/extensions/surfaces/orbitalextension.cpp:147
+#: src/extensions/surfaces/orbitaltablemodel.cpp:98
+msgctxt "Lowest Unoccupied MO"
+msgid "LUMO"
+msgstr "LUMO"
+
+#: src/extensions/surfaces/orbitalextension.h:87
+msgid "Calculate and visualize molecular orbitals"
+msgstr "計算及顯示分子軌域"
+
+#: src/extensions/surfaces/orbitaltablemodel.cpp:72
+msgid "Orbital"
+msgstr "軌域"
+
+#: src/extensions/surfaces/orbitaltablemodel.cpp:76
+msgid "Status"
+msgstr "狀態"
+
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
-#: src/extensions/surfaces/surfaceextension.cpp:624
+#: src/extensions/surfaces/surfaceextension.cpp:674
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2493,39 +2517,39 @@ msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr "錯誤-未定義之種類"
 
-#: src/extensions/surfaces/surfaceextension.cpp:69
+#: src/extensions/surfaces/surfaceextension.cpp:71
 msgid "Create Surfaces..."
 msgstr "產生外觀..."
 
-#: src/extensions/surfaces/surfaceextension.cpp:358
-#: src/extensions/surfaces/surfaceextension.cpp:388
-#: src/extensions/surfaces/surfaceextension.cpp:415
-#: src/extensions/surfaces/surfaceextension.cpp:449
-#: src/extensions/surfaces/surfaceextension.cpp:477
+#: src/extensions/surfaces/surfaceextension.cpp:408
+#: src/extensions/surfaces/surfaceextension.cpp:438
+#: src/extensions/surfaces/surfaceextension.cpp:465
+#: src/extensions/surfaces/surfaceextension.cpp:499
+#: src/extensions/surfaces/surfaceextension.cpp:527
 msgid "Abort Calculation"
 msgstr "停止計算"
 
-#: src/extensions/surfaces/surfaceextension.cpp:363
+#: src/extensions/surfaces/surfaceextension.cpp:413
 msgid "Calculating VdW Cube"
 msgstr "計算 VdW 立方"
 
-#: src/extensions/surfaces/surfaceextension.cpp:393
-#: src/extensions/surfaces/surfaceextension.cpp:419
+#: src/extensions/surfaces/surfaceextension.cpp:443
+#: src/extensions/surfaces/surfaceextension.cpp:469
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "計算 MO %L1"
 
-#: src/extensions/surfaces/surfaceextension.cpp:454
-#: src/extensions/surfaces/surfaceextension.cpp:482
+#: src/extensions/surfaces/surfaceextension.cpp:504
+#: src/extensions/surfaces/surfaceextension.cpp:532
 msgid "Calculating Electron Density"
 msgstr "計算電子密度"
 
-#: src/extensions/surfaces/surfaceextension.cpp:568
+#: src/extensions/surfaces/surfaceextension.cpp:618
 msgid "VdW"
 msgstr "VdW"
 
-#: src/extensions/surfaces/surfaceextension.cpp:596
+#: src/extensions/surfaces/surfaceextension.cpp:646
 msgid "Electron Density"
 msgstr "電子密度"
 
@@ -3204,7 +3228,7 @@ msgstr "測量功能設定"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3398
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3449
 msgid "Add Atom"
 msgstr "新增原子"
 
@@ -3374,32 +3398,30 @@ msgid "Residue"
 msgstr "殘基"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "改變方案名稱"
+msgstr "改變該原子的顏色"
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
-msgstr ""
+msgstr "改變該原子的標籤"
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "標記"
+msgstr "新的標籤:"
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
-msgstr ""
+msgstr "改變該鍵的標籤"
 
 #: src/tools/selectrotatetool.cpp:577
 msgid "Change radius of the atom"
-msgstr ""
+msgstr "改變該原子的半徑"
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "半徑:"
+msgstr "新的半徑, %1:"
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -3555,7 +3577,7 @@ msgstr "原子半徑："
 msgid "Bond Radius:"
 msgstr "鍵的半徑："
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:77
+#. i18n: file: src/engines/bsdysettingswidget.ui:80
 #. i18n: ectx: property (text), widget (QLabel, opacitySliderLabel)
 #. i18n: file: src/engines/ringsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel_2)
@@ -3564,19 +3586,19 @@ msgstr "鍵的半徑："
 msgid "Opacity:"
 msgstr "不透明度:"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:134
+#. i18n: file: src/engines/bsdysettingswidget.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 msgid "Covalent"
 msgstr "共價"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:139
+#. i18n: file: src/engines/bsdysettingswidget.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:41
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 msgid "Van der Waals"
 msgstr "凡得瓦"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:163
+#. i18n: file: src/engines/bsdysettingswidget.ui:166
 #. i18n: ectx: property (text), widget (QCheckBox, showMulti)
 #. i18n: file: src/engines/wiresettingswidget.ui:31
 #. i18n: ectx: property (text), widget (QCheckBox, showMultipleCheckBox)
@@ -4742,6 +4764,8 @@ msgstr "povray"
 
 #. i18n: file: src/extensions/povraydialog.ui:111
 #. i18n: ectx: property (text), widget (QPushButton, render)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:93
+#. i18n: ectx: property (text), widget (QPushButton, push_render)
 msgid "Render"
 msgstr "呈現"
 
@@ -7443,17 +7467,17 @@ msgstr "AUG-cc-pVTZ"
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:419
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Molpro Version:"
-msgstr ""
+msgstr "Molpro 版本:"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:429
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "< 2009.1"
-msgstr ""
+msgstr "< 2009.1"
 
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:434
 #. i18n: ectx: property (text), item, widget (QComboBox, versionCombo)
 msgid "2009.1"
-msgstr ""
+msgstr "2009.1"
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:20
 #. i18n: ectx: property (windowTitle), widget (QDialog, MOPACInputDialog)
@@ -8027,6 +8051,76 @@ msgstr "C 重複:"
 msgid "Generate Cell"
 msgstr "產生晶格"
 
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
+msgid "Dialog"
+msgstr "對話框"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
+#. i18n: ectx: property (text), widget (QPushButton, push_recalc)
+msgid "&Recalculate All"
+msgstr "全部重新計算"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Default &Quality:"
+msgstr "預設品質："
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&Isosurface Value:"
+msgstr "等曲面值"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Low"
+msgstr "低"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Medium"
+msgstr "中等"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "High"
+msgstr "高"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Very High"
+msgstr "很高"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
+#. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
+msgid "Show occupied orbitals first"
+msgstr "優先顯示已填入的軌域"
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)
+#. i18n: file: src/tools/navigatesettingswidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
+msgid "Form"
+msgstr "Form (表格/形成)"
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:62
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Quality: "
+msgstr "品質: "
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
+#. i18n: ectx: property (text), widget (QPushButton, push_configure)
+msgid "Configure"
+msgstr "設定"
+
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
 msgid "Create Surfaces"
@@ -8173,11 +8267,6 @@ msgstr "軸 (Å)"
 msgid "Angles (°)"
 msgstr "鍵角 (°)"
 
-#. i18n: file: src/tools/navigatesettingswidget.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
-msgid "Form"
-msgstr "Form (表格/形成)"
-
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
@@ -8209,44 +8298,14 @@ msgstr ""
 ",Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
 "Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
 "Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang, ,"
-"Launchpad Contributions:,iychiang"
+"Launchpad Contributions:,iychiang, ,Launchpad Contributions:,iychiang"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
-"iychiang1809@gmail.com"
-
-#~ msgid "Dalton Input File (*.dal)"
-#~ msgstr "道耳頓輸入檔 (*.dal)"
-
-#~ msgid "Export Input Deck"
-#~ msgstr "匯出輸入平台"
-
-#~ msgid "GAMESS Input Deck (*.inp)"
-#~ msgstr "GAMESS 輸入平台 (*.inp)"
-
-#~ msgid "Save Gaussian Input Deck"
-#~ msgstr "儲存 Gaussian 輸入平台"
-
-#~ msgid "Gaussian Input Deck (*.com)"
-#~ msgstr "Gaussian 輸入平台 (*.com)"
-
-#~ msgid "Molpro Input Deck (*.qcin)"
-#~ msgstr "Molpro 輸入工具列 (*.qcin)"
-
-#~ msgid "MOPAC Input Deck (*.mop)"
-#~ msgstr "MOPAC 輸入工具列 (*.mop)"
-
-#~ msgid "NWChem Input Deck (*.nw)"
-#~ msgstr "NWChem 輸入工具列 (*.nw)"
-
-#~ msgid "QChem Input Deck (*.qcin)"
-#~ msgstr "QChem 輸入工具列 (*.qcin)"
-
-#~ msgid "On:"
-#~ msgstr "On:"
+"iychiang1809@gmail.com,,,iychiang1809@gmail.com"
 
 #~ msgid "Caesium"
 #~ msgstr "Caesium (銫)"
@@ -8263,8 +8322,20 @@ msgstr ""
 #~ msgid "QM Selection..."
 #~ msgstr "QM 選項..."
 
+#~ msgid "Export Input Deck"
+#~ msgstr "匯出輸入平台"
+
+#~ msgid "GAMESS Input Deck (*.inp)"
+#~ msgstr "GAMESS 輸入平台 (*.inp)"
+
 #~ msgid "Gaussian Input..."
 #~ msgstr "輸入 Gaussian/計算化學軟體..."
+
+#~ msgid "Save Gaussian Input Deck"
+#~ msgstr "儲存 Gaussian 輸入平台"
+
+#~ msgid "Gaussian Input Deck (*.com)"
+#~ msgstr "Gaussian 輸入平台 (*.com)"
 
 #~ msgid "Open ligand file"
 #~ msgstr "開啟配位基檔案"
@@ -8322,6 +8393,9 @@ msgstr ""
 
 #~ msgid "Electrostatic Potential (ESP)"
 #~ msgstr "靜電力（ESP）"
+
+#~ msgid "On:"
+#~ msgstr "On:"
 
 #~ msgid "Single Point Entry"
 #~ msgstr "Single Point Entry"
@@ -8818,11 +8892,23 @@ msgstr ""
 #~ "ending with .avi"
 #~ msgstr "無效的影片檔名. 必須包含完整的字目錄路徑及檔名, 且以 .avi 結尾"
 
+#~ msgid "Molpro Input Deck (*.qcin)"
+#~ msgstr "Molpro 輸入工具列 (*.qcin)"
+
+#~ msgid "MOPAC Input Deck (*.mop)"
+#~ msgstr "MOPAC 輸入工具列 (*.mop)"
+
+#~ msgid "NWChem Input Deck (*.nw)"
+#~ msgstr "NWChem 輸入工具列 (*.nw)"
+
 #~ msgid "Atom Index %1"
 #~ msgstr "Atom Index (原子索引) %1"
 
 #~ msgid "Cartesian Properties"
 #~ msgstr "Cartesian (笛卡兒/直角) 性質"
+
+#~ msgid "QChem Input Deck (*.qcin)"
+#~ msgstr "QChem 輸入工具列 (*.qcin)"
 
 #~ msgid "Customi&ze <<"
 #~ msgstr "客製化 <<"
@@ -8908,3 +8994,6 @@ msgstr ""
 
 #~ msgid "trajectory file (*.xyz)"
 #~ msgstr "光跡追蹤檔 (*.xyz)"
+
+#~ msgid "Dalton Input File (*.dal)"
+#~ msgstr "道耳頓輸入檔 (*.dal)"

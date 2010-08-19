@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-06-13 22:50-0400\n"
-"PO-Revision-Date: 2010-05-28 08:14+0000\n"
-"Last-Translator: Frederico Tavares <Unknown>\n"
+"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"PO-Revision-Date: 2010-06-14 14:37+0000\n"
+"Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-14 02:32+0000\n"
+"X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: examples/c++/templateextension.cpp:41
@@ -31,7 +31,8 @@ msgstr "Segunda Acção"
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/surfaceextension.cpp:94
+#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/surfaceextension.cpp:96
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr "E&xtensões"
@@ -566,9 +567,8 @@ msgid "Roentgenium"
 msgstr "Roentgénio"
 
 #: src/elementtranslator.cpp:375
-#, fuzzy
 msgid "Copernicium"
-msgstr "Cério"
+msgstr ""
 
 #: src/elementtranslator.cpp:378
 msgid "Ununtrium"
@@ -893,21 +893,21 @@ msgstr "Animar trajectórias, reacções e vibrações."
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:95:354
+#: src/extensions/cartesianextension.cpp:96:354
 msgid "Cartesian Editor"
 msgstr "Editor Cartesiano"
 
-#: src/extensions/cartesianextension.cpp:96
+#: src/extensions/cartesianextension.cpp:97
 msgid "No unit cell defined for molecule -- cannot use fractional coordinates."
 msgstr ""
 "Sem células unitárias definidas para a molécula -- não pode usar coordenadas "
 "fraccionárias."
 
-#: src/extensions/cartesianextension.cpp:570
+#: src/extensions/cartesianextension.cpp:571
 msgid "Cartesian Editor..."
 msgstr "Editor Cartesiano"
 
-#: src/extensions/cartesianextension.cpp:585
+#: src/extensions/cartesianextension.cpp:586
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
 #: src/extensions/insertfragmentextension.cpp:81
@@ -1046,11 +1046,10 @@ msgstr "&Mecanismos moleculares"
 #: src/extensions/forcefieldextension.cpp:183
 #: src/extensions/forcefieldextension.cpp:208
 #: src/extensions/forcefieldextension.cpp:230
-#, fuzzy
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
-msgstr "Não é possível definir o campo de força para esta molécula."
+msgstr ""
 
 #: src/extensions/forcefieldextension.cpp:193
 #, qt-format
@@ -1533,7 +1532,8 @@ msgstr "Torção"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:844
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511:1727
+#: src/extensions/propmodel.cpp:511
+#: src/extensions/surfaces/orbitaltablemodel.cpp:74:1727
 msgid "Energy"
 msgstr "Energia"
 
@@ -1568,9 +1568,8 @@ msgstr ""
 "ficheiro de entrada de dados Dalton?"
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:348
-#, fuzzy
 msgid "Dalton Input File"
-msgstr "Guardar Ficheiro de Entrada Dados Dalton"
+msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1747,15 +1746,13 @@ msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:255
 #: src/extensions/quantuminput/inputdialog.cpp:61
-#, fuzzy
 msgid "Save Input Deck"
-msgstr "Guardar Ficheiro de Entrada Dados Dalton"
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:281
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:293
-#, fuzzy
 msgid "Gaussian Input Deck"
-msgstr "Gaussian Não Instalado."
+msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:287
 msgid "Gaussian Running."
@@ -1834,13 +1831,10 @@ msgid "Molpro Input Deck Generator Warning"
 msgstr ""
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:123
-#, fuzzy
 msgid ""
 "Would you like to update the preview text, losing all changes made in the "
 "Molpro input deck preview pane?"
 msgstr ""
-"Gostaria de actualizar o texto prévio, perdendo todas as mudanças feitas no "
-"ficheiro de entrada de dados Dalton?"
 
 #: src/extensions/quantuminput/molproinputdialog.cpp:164
 msgid "Molpro Input Deck"
@@ -2040,27 +2034,27 @@ msgstr ""
 msgid "Load and use OpenGL 2.0 GLSL shaders"
 msgstr ""
 
-#: src/extensions/spectra/cd.cpp:107 src/extensions/spectra/uv.cpp:91
+#: src/extensions/spectra/cd.cpp:108 src/extensions/spectra/uv.cpp:92
 msgid "Wavelength (nm)"
 msgstr ""
 
-#: src/extensions/spectra/cd.cpp:108
+#: src/extensions/spectra/cd.cpp:109
 msgid "Intensity (arb. units)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:135
+#: src/extensions/spectra/dos.cpp:136
 msgid "Energy (eV)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:142
+#: src/extensions/spectra/dos.cpp:143
 msgid "Density of States (states/cell)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:145
+#: src/extensions/spectra/dos.cpp:146
 msgid "Density of States (states/atom)"
 msgstr ""
 
-#: src/extensions/spectra/dos.cpp:148
+#: src/extensions/spectra/dos.cpp:149
 msgid "Density of States (states/valence electron)"
 msgstr ""
 
@@ -2086,7 +2080,7 @@ msgstr ""
 "intensidade de dados suficiente. Foram atribuídos valores arbitrários de "
 "intensidade para permitir a visualização."
 
-#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:140
+#: src/extensions/spectra/ir.cpp:125 src/extensions/spectra/raman.cpp:141
 msgid "Wavenumber (cm<sup>-1</sup>)"
 msgstr "Frequência (cm<sup>-1</sup>)"
 
@@ -2094,11 +2088,11 @@ msgstr "Frequência (cm<sup>-1</sup>)"
 msgid "Shift (ppm)"
 msgstr "Fase (ppm)"
 
-#: src/extensions/spectra/raman.cpp:46 src/extensions/spectra/raman.cpp:80
+#: src/extensions/spectra/raman.cpp:47 src/extensions/spectra/raman.cpp:81
 msgid "Activity"
 msgstr ""
 
-#: src/extensions/spectra/raman.cpp:47
+#: src/extensions/spectra/raman.cpp:48
 msgid "Intensity"
 msgstr ""
 
@@ -2389,7 +2383,7 @@ msgstr "Espectro"
 msgid "Visualize spectral data from quantum chemistry calculations"
 msgstr "Visualizar dados do espectro a partir de cálculos químicos quânticos"
 
-#: src/extensions/spectra/uv.cpp:92
+#: src/extensions/spectra/uv.cpp:93
 msgid "<HTML>&epsilon; (cm<sup>2</sup>/mmol)</HTML>"
 msgstr ""
 
@@ -2469,9 +2463,42 @@ msgstr "Super Célula"
 msgid "Build and display crystallographic super cells"
 msgstr "Desenhar e ver super células cristalográficas."
 
+#: src/extensions/surfaces/orbitalextension.cpp:64
+msgid "Molecular Orbitals..."
+msgstr ""
+
+#: src/extensions/surfaces/orbitalextension.cpp:86
+#: src/extensions/surfaces/orbitalextension.h:86
+msgid "Orbitals"
+msgstr "Orbitais"
+
+#: src/extensions/surfaces/orbitalextension.cpp:146
+#: src/extensions/surfaces/orbitaltablemodel.cpp:89
+msgctxt "Highest Occupied MO"
+msgid "HOMO"
+msgstr ""
+
+#: src/extensions/surfaces/orbitalextension.cpp:147
+#: src/extensions/surfaces/orbitaltablemodel.cpp:98
+msgctxt "Lowest Unoccupied MO"
+msgid "LUMO"
+msgstr ""
+
+#: src/extensions/surfaces/orbitalextension.h:87
+msgid "Calculate and visualize molecular orbitals"
+msgstr ""
+
+#: src/extensions/surfaces/orbitaltablemodel.cpp:72
+msgid "Orbital"
+msgstr ""
+
+#: src/extensions/surfaces/orbitaltablemodel.cpp:76
+msgid "Status"
+msgstr ""
+
 #: src/extensions/surfaces/surfacedialog.cpp:74
 #: src/extensions/surfaces/surfacedialog.cpp:75
-#: src/extensions/surfaces/surfaceextension.cpp:624
+#: src/extensions/surfaces/surfaceextension.cpp:674
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
@@ -2519,39 +2546,39 @@ msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr "Erro - tipo indefinido"
 
-#: src/extensions/surfaces/surfaceextension.cpp:69
+#: src/extensions/surfaces/surfaceextension.cpp:71
 msgid "Create Surfaces..."
 msgstr "Criar superfícies..."
 
-#: src/extensions/surfaces/surfaceextension.cpp:358
-#: src/extensions/surfaces/surfaceextension.cpp:388
-#: src/extensions/surfaces/surfaceextension.cpp:415
-#: src/extensions/surfaces/surfaceextension.cpp:449
-#: src/extensions/surfaces/surfaceextension.cpp:477
+#: src/extensions/surfaces/surfaceextension.cpp:408
+#: src/extensions/surfaces/surfaceextension.cpp:438
+#: src/extensions/surfaces/surfaceextension.cpp:465
+#: src/extensions/surfaces/surfaceextension.cpp:499
+#: src/extensions/surfaces/surfaceextension.cpp:527
 msgid "Abort Calculation"
 msgstr "Abortar cálculo"
 
-#: src/extensions/surfaces/surfaceextension.cpp:363
+#: src/extensions/surfaces/surfaceextension.cpp:413
 msgid "Calculating VdW Cube"
 msgstr ""
 
-#: src/extensions/surfaces/surfaceextension.cpp:393
-#: src/extensions/surfaces/surfaceextension.cpp:419
+#: src/extensions/surfaces/surfaceextension.cpp:443
+#: src/extensions/surfaces/surfaceextension.cpp:469
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "Calculando OM %L1"
 
-#: src/extensions/surfaces/surfaceextension.cpp:454
-#: src/extensions/surfaces/surfaceextension.cpp:482
+#: src/extensions/surfaces/surfaceextension.cpp:504
+#: src/extensions/surfaces/surfaceextension.cpp:532
 msgid "Calculating Electron Density"
 msgstr "Calculando Densidade Electrónica"
 
-#: src/extensions/surfaces/surfaceextension.cpp:568
+#: src/extensions/surfaces/surfaceextension.cpp:618
 msgid "VdW"
 msgstr ""
 
-#: src/extensions/surfaces/surfaceextension.cpp:596
+#: src/extensions/surfaces/surfaceextension.cpp:646
 msgid "Electron Density"
 msgstr "Densidade Electrónica"
 
@@ -3238,7 +3265,7 @@ msgstr "Definições de medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3398
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3449
 msgid "Add Atom"
 msgstr "Adicionar um Átomo"
 
@@ -3402,18 +3429,16 @@ msgid "Residue"
 msgstr "Resíduo"
 
 #: src/tools/selectrotatetool.cpp:520
-#, fuzzy
 msgid "Change color of the atom"
-msgstr "Mudar o nome do esquema"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:542
 msgid "Change label of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:543 src/tools/selectrotatetool.cpp:550
-#, fuzzy
 msgid "New Label:"
-msgstr "Nome"
+msgstr ""
 
 #: src/tools/selectrotatetool.cpp:549
 msgid "Change label of the bond"
@@ -3424,10 +3449,10 @@ msgid "Change radius of the atom"
 msgstr ""
 
 #: src/tools/selectrotatetool.cpp:578
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "in Angstrom"
 msgid "New Radius, %1:"
-msgstr "Raio:"
+msgstr ""
 
 #: src/tools/selectrotatetool.h:52
 msgid "Selection"
@@ -3583,7 +3608,7 @@ msgstr "Raio Atómico:"
 msgid "Bond Radius:"
 msgstr "Raio da Ligação:"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:77
+#. i18n: file: src/engines/bsdysettingswidget.ui:80
 #. i18n: ectx: property (text), widget (QLabel, opacitySliderLabel)
 #. i18n: file: src/engines/ringsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel_2)
@@ -3592,19 +3617,19 @@ msgstr "Raio da Ligação:"
 msgid "Opacity:"
 msgstr "Opacidade:"
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:134
+#. i18n: file: src/engines/bsdysettingswidget.ui:137
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 msgid "Covalent"
 msgstr ""
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:139
+#. i18n: file: src/engines/bsdysettingswidget.ui:142
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:41
 #. i18n: ectx: property (text), item, widget (QComboBox, surfaceCombo)
 msgid "Van der Waals"
 msgstr ""
 
-#. i18n: file: src/engines/bsdysettingswidget.ui:163
+#. i18n: file: src/engines/bsdysettingswidget.ui:166
 #. i18n: ectx: property (text), widget (QCheckBox, showMulti)
 #. i18n: file: src/engines/wiresettingswidget.ui:31
 #. i18n: ectx: property (text), widget (QCheckBox, showMultipleCheckBox)
@@ -4760,6 +4785,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/povraydialog.ui:111
 #. i18n: ectx: property (text), widget (QPushButton, render)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:93
+#. i18n: ectx: property (text), widget (QPushButton, push_render)
 msgid "Render"
 msgstr ""
 
@@ -8036,6 +8063,76 @@ msgstr ""
 msgid "Generate Cell"
 msgstr "Gerar Célula"
 
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, OrbitalSettingsDialog)
+msgid "Dialog"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:20
+#. i18n: ectx: property (text), widget (QPushButton, push_recalc)
+msgid "&Recalculate All"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:27
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Default &Quality:"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:37
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "&Isosurface Value:"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:48
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:70
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Low"
+msgstr "Baíxo"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:53
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:75
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Medium"
+msgstr "Médio"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:58
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:80
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "High"
+msgstr "Alto"
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:63
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:85
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_quality)
+msgid "Very High"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalsettingsdialog.ui:94
+#. i18n: ectx: property (text), widget (QCheckBox, cb_HOMOFirst)
+msgid "Show occupied orbitals first"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, OrbitalWidget)
+#. i18n: file: src/tools/navigatesettingswidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
+msgid "Form"
+msgstr "Formulário"
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:62
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Quality: "
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/orbitalwidget.ui:117
+#. i18n: ectx: property (text), widget (QPushButton, push_configure)
+msgid "Configure"
+msgstr ""
+
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, SurfaceDialog)
 msgid "Create Surfaces"
@@ -8182,11 +8279,6 @@ msgstr "Eixos (Å)"
 msgid "Angles (°)"
 msgstr "Ângulos (°)"
 
-#. i18n: file: src/tools/navigatesettingswidget.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, NavigateSettingsWidget)
-msgid "Form"
-msgstr "Formulário"
-
 #. i18n: file: src/tools/navigatesettingswidget.ui:23
 #. i18n: ectx: property (text), widget (QCheckBox, eyeCandyCheckBox)
 msgid "Display visual cues"
@@ -8221,7 +8313,9 @@ msgstr ""
 "Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago Silva, ,Launchpad "
 "Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
 "Fernandes,Tiago Silva, ,Launchpad Contributions:,Arrepiadd,Avogadro Team,"
-"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago"
+"Frederico Tavares,Geoff Hutchison,Ivo Fernandes,Tiago, ,Launchpad "
+"Contributions:,Arrepiadd,Avogadro Team,Frederico Tavares,Geoff Hutchison,Ivo "
+"Fernandes,Tiago"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -8229,10 +8323,8 @@ msgstr ""
 ",,ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,"
 "ivofernandes12@gmail.com,,,,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
+"devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,,,,,avogadro-"
 "devel@lists.sourceforge.net,,,ivofernandes12@gmail.com,"
-
-#~ msgid "On:"
-#~ msgstr "Em:"
 
 #~ msgid "Cannot save file %1."
 #~ msgstr "Não foi possível salvar o arquivo %1."
@@ -8430,6 +8522,9 @@ msgstr ""
 
 #~ msgid "No vibrations have been computed for this molecule."
 #~ msgstr "Não foram calculadas vibrações para esta molécula."
+
+#~ msgid "On:"
+#~ msgstr "Em:"
 
 #~ msgid "&Scale:"
 #~ msgstr "&Escala"
