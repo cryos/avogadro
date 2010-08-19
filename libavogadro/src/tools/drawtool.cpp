@@ -601,22 +601,30 @@ namespace Avogadro {
     int bondOrder = 0;
     switch (event->key()) {
     case Qt::Key_1:
+    case Qt::Key_hyphen: // -
+    case Qt::Key_AsciiTilde: // ~
       bondOrder = 1;
       break;
     case Qt::Key_2:
+    case Qt::Key_Equal: // =
       bondOrder = 2;
       break;
     case Qt::Key_3:
+    case Qt::Key_NumberSign: // #
       bondOrder = 3;
       break;
     case Qt::Key_4:
+    case Qt::Key_Dollar: // $
       bondOrder = 4;
       break;
     default:
       break;
     }
+
     if (bondOrder) {
       setBondOrder(bondOrder);
+      if (bondOrder < 4)
+        m_comboBondOrder->setCurrentIndex(bondOrder - 1);
       event->accept();
       return 0;
     }
