@@ -47,6 +47,8 @@ namespace Avogadro
     file->open(QIODevice::ReadOnly | QIODevice::Text);
     m_in = file;
 
+    qDebug() << "File" << filename << "opened.";
+
     // Process the formatted checkpoint and extract all the information we need
     while (!m_in->atEnd()) {
       processLine();
@@ -106,46 +108,46 @@ namespace Avogadro
         break;
       case GTO:
         {
-        // TODO: detect dead files and make bullet-proof
-        int atom = list[0].toInt();
+          // TODO: detect dead files and make bullet-proof
+          int atom = list[0].toInt();
 
-        key = m_in->readLine().trimmed();
-        while (!key.isEmpty()) { // read the shell types in this GTO
-          list = key.split(' ', QString::SkipEmptyParts);
-          shell = list[0].toLower();
-          shellType = UU;
-          if (shell.contains("sp"))
-            shellType = SP;
-          else if (shell.contains("s"))
-            shellType = S;
-          else if (shell.contains("p"))
-            shellType = P;
-          else if (shell.contains("d"))
-            shellType = D;
-          else if (shell.contains("f"))
-            shellType = F;
-
-          if (shellType != UU) {
-            m_shellTypes.push_back(shellType);
-            m_shelltoAtom.push_back(atom);
-          }
-          else
-            return;
-
-          int numGTOs = list[1].toInt();
-          m_shellNums.push_back(numGTOs);
-
-        // now read all the exponents and contraction coefficients
-          for (unsigned int gto = 0; gto < numGTOs; ++gto) {
-            key = m_in->readLine().trimmed();
+          key = m_in->readLine().trimmed();
+          while (!key.isEmpty()) { // read the shell types in this GTO
             list = key.split(' ', QString::SkipEmptyParts);
-            m_a.push_back(list[0].toDouble());
-            m_c.push_back(list[1].toDouble());
-            if (shellType == SP && list.size() > 2)
-              m_csp.push_back(list[2].toDouble());
-          } // finished parsing a new GTO
-          key = m_in->readLine().trimmed(); // start reading the next shell
-        }
+            shell = list[0].toLower();
+            shellType = UU;
+            if (shell.contains("sp"))
+              shellType = SP;
+            else if (shell.contains("s"))
+              shellType = S;
+            else if (shell.contains("p"))
+              shellType = P;
+            else if (shell.contains("d"))
+              shellType = D;
+            else if (shell.contains("f"))
+              shellType = F;
+
+            if (shellType != UU) {
+              m_shellTypes.push_back(shellType);
+              m_shelltoAtom.push_back(atom);
+            }
+            else
+              return;
+
+            int numGTOs = list[1].toInt();
+            m_shellNums.push_back(numGTOs);
+
+            // now read all the exponents and contraction coefficients
+            for (unsigned int gto = 0; gto < numGTOs; ++gto) {
+              key = m_in->readLine().trimmed();
+              list = key.split(' ', QString::SkipEmptyParts);
+              m_a.push_back(list[0].toDouble());
+              m_c.push_back(list[1].toDouble());
+              if (shellType == SP && list.size() > 2)
+                m_csp.push_back(list[2].toDouble());
+            } // finished parsing a new GTO
+            key = m_in->readLine().trimmed(); // start reading the next shell
+          }
         }
         break;
 
@@ -178,10 +180,9 @@ namespace Avogadro
     // Now load up our basis set
     basis->setNumElectrons(m_electrons);
     int nAtom = 0;
-    for (unsigned int i = 0; i < m_aPos.size(); i += 3) {
+    for (unsigned int i = 0; i < m_aPos.size(); i += 3)
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                      m_aNums.at(nAtom++));
-    }
 
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
