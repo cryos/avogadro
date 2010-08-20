@@ -311,25 +311,17 @@ namespace Avogadro
 
   void SurfaceExtension::calculateESP(Mesh *mesh)
   {
-    //                                          //
-    //     |    red    green     blue           //
-    // 1.0 |...--+       +       +--...         //
-    //     |      \     / \     /               //
-    //     |       \   /   \   /                //
-    //     |        \ /     \ /                 //
-    //     |         X       X                  //
-    //     |        / \     / \                 //
-    //     |       /   \   /   \                //
-    //     |      /     \ /     \               //
-    // 0.0 +...--+-------+-------+--...-->      //
-    //           a      0.0      b      energy
-    //
-    //  a = 20 * energy
-    //  b = 20 * energy
-    //
     // Calculate the ESP mapped onto the vertices of the Mesh supplied
     if (!m_molecule)
       return;
+
+    // Check to see if molecule has hydrogens
+    bool hasHydrogens = false;
+    foreach (Atom *atom, m_molecule->atoms())
+      if (atom->atomicNumber() == 1) {
+        hasHydrogens = true;
+        break;
+      }
 
     NeighborList *nbrList = new NeighborList(m_molecule, 7.0, false, 2);
 
@@ -337,40 +329,44 @@ namespace Avogadro
     for(unsigned int i=0; i < mesh->vertices().size(); ++i) {
       const Vector3f *v = mesh->vertex(i);
 
-      float red, green, blue;
       double energy = 0.0;
 
       QList<Atom*> nbrAtoms = nbrList->nbrs(v);
-      foreach(Atom *a, nbrAtoms) {
-        Vector3f dist = a->pos()->cast<float>() - v->cast<float>();
-        energy += a->partialCharge() / dist.squaredNorm();
+      // Include formal charges when there are hydrogens
+      if (hasHydrogens) {
+        foreach(Atom *a, nbrAtoms) {
+          Vector3f dist = a->pos()->cast<float>() - v->cast<float>();
+          energy += (a->formalCharge() + a->partialCharge()) / dist.squaredNorm();
+        }
+      } else {
+        foreach(Atom *a, nbrAtoms) {
+          Vector3f dist = a->pos()->cast<float>() - v->cast<float>();
+          energy += a->partialCharge() / dist.squaredNorm();
+        }
       }
 
       // Chemistry convention: red = negative, blue = positive
-      Color3f color;
-      if (energy < 0.0) {
-        red = -20.0*energy;
-        if (red >= 1.0) {
-          color.set(1.0, 0.0, 0.0);
-        }
-        else {
-          green = 1.0 - red;
-          color.set(red, green, 0.0);
-        }
-      }
-      else if (energy > 0.0) {
-        blue = 20.0*energy;
-        if (blue >= 1.0) {
-          color.set(0.0, 0.0, 1.0);
-        }
-        else {
-          green = 1.0 - blue;
-          color.set(0.0, green, blue);
-        }
-      }
-      else
-        color.set(0.0, 1.0, 0.0);
+      //
+      // Use HSV color model for smooth transitions
+      int red_hue = 0;
+      int blue_hue = 240;
+      int hue = 0; // meaningless if gray (i.e. low saturation)
+      int saturation = 0; // 0 = white, 0-40 = grayish, 40-255 colors from hue
+      int value = 255; // lightness or brightness (0 = black, 255 = white)
 
+      if (energy < 0.0) {
+        hue = red_hue;
+        saturation = -255 * 5 * energy;
+      } else if (energy > 0.0) {
+        hue = blue_hue;
+        saturation = 255 * 5 * energy;
+      }
+
+      if (saturation > 255)
+        saturation = 255;
+
+      QColor qcolor(QColor::fromHsv(hue, saturation, value));
+      Color3f color(qcolor.red(), qcolor.green(), qcolor.blue());
       colors.push_back(color);
     }
     mesh->setColors(colors);
