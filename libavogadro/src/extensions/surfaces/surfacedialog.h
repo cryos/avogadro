@@ -124,6 +124,7 @@ namespace Avogadro
 
     void surfaceComboChanged(int n);
     void colorByComboChanged(int n);
+    void resolutionComboChanged(int n);
 
   signals:
     void calculate();

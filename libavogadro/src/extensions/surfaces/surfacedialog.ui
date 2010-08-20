@@ -195,8 +195,13 @@
        <item>
         <widget class="QComboBox" name="resolutionCombo">
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
+         <item>
+          <property name="text">
+           <string comment="very low resolution">Very Low</string>
+          </property>
+         </item>
          <item>
           <property name="text">
            <string comment="low resolution">Low</string>
@@ -217,6 +222,33 @@
            <string comment="very high resolution">Very High</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>Custom</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="resolutionSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string>A</string>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>2.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.180000000000000</double>
+         </property>
         </widget>
        </item>
        <item>

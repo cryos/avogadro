@@ -52,6 +52,8 @@ namespace Avogadro {
             this, SLOT(surfaceComboChanged(int)));
     connect(ui.colorByCombo, SIGNAL(currentIndexChanged(int)),
             this, SLOT(colorByComboChanged(int)));
+    connect(ui.resolutionCombo, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(resolutionComboChanged(int)));
   }
 
   SurfaceDialog::~SurfaceDialog()
@@ -102,19 +104,7 @@ namespace Avogadro {
 
   double SurfaceDialog::stepSize()
   {
-    // Return the step size depending upon the resolution requested
-    switch (ui.resolutionCombo->currentIndex()) {
-      case 0: // Low resolution
-        return 0.35;
-      case 1: // Medium resolution
-        return 0.18;
-      case 2: // High resolution
-        return 0.10;
-      case 3: // Very high resolution
-        return 0.05;
-      default:
-        return 0.18;
-    }
+    return ui.resolutionSpinBox->value();
   }
 
   Engine * SurfaceDialog::currentEngine()
@@ -366,6 +356,40 @@ namespace Avogadro {
   {
     if (m_colorTypes.size() > 0 && n >= 0 && n < m_colorTypes.size())
       ui.moColorCombo->setEnabled(m_colorTypes.at(n) == Cube::MO);
+  }
+
+  void SurfaceDialog::resolutionComboChanged(int n)
+  {
+    switch (n) {
+      case 0: // Very low resolution
+        ui.resolutionSpinBox->setValue(0.5);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+      case 1: // Low resolution
+        ui.resolutionSpinBox->setValue(0.35);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+      case 2: // Medium resolution
+        ui.resolutionSpinBox->setValue(0.18);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+      case 3: // High resolution
+        ui.resolutionSpinBox->setValue(0.1);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+      case 4: // Very high resolution
+        ui.resolutionSpinBox->setValue(0.05);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+      case 5: // Custom resolution
+        ui.resolutionSpinBox->setValue(0.18);
+        ui.resolutionSpinBox->setEnabled(true);
+        break;
+      default:
+        ui.resolutionSpinBox->setValue(0.18);
+        ui.resolutionSpinBox->setEnabled(false);
+        break;
+    }
   }
 
 }
