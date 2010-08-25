@@ -30,6 +30,7 @@
 #include "basisset.h"
 #include "gaussianset.h"
 #include "slaterset.h"
+#include "gamessukout.h"
 #include "gaussianfchk.h"
 #include "molpro.h"
 #include "mopacaux.h"
@@ -570,7 +571,17 @@ namespace Avogadro
       QFileInfo info(fullFileName);
       QString completeSuffix = info.completeSuffix();
 
-      if (completeSuffix.contains("fchk", Qt::CaseInsensitive)
+      if (completeSuffix.contains("gukout", Qt::CaseInsensitive)) {
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GamessukOut gukout(fullFileName, gaussian);
+        m_basis = gaussian;
+        return true;
+      }
+      else if (completeSuffix.contains("fchk", Qt::CaseInsensitive)
           || completeSuffix.contains("fch", Qt::CaseInsensitive)
           || completeSuffix.contains("fck", Qt::CaseInsensitive)) {
         if (m_basis) {
