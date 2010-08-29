@@ -314,10 +314,71 @@ namespace Avogadro
     ui.menuOpenRecent->addAction( ui.actionClearRecent );
 
     QAction *undoAction = d->undoStack->createUndoAction( this );
-    undoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-undo.png" ) ) );
-    undoAction->setShortcuts( QKeySequence::Undo );
     QAction *redoAction = d->undoStack->createRedoAction( this );
-    redoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-redo.png" ) ) );
+    #if QT_VERSION >= QT_VERSION_CHECK(4, 6, 0)
+      // Load icons from desktop theme
+      // File
+      const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/icons/document-new.png"));
+      const QIcon openIcon = QIcon::fromTheme("document-open", QIcon(":/icons/document-open.png"));
+      const QIcon saveIcon = QIcon::fromTheme("document-save", QIcon(":/icons/document-save.png"));
+      const QIcon saveAsIcon = QIcon::fromTheme("document-save-as", QIcon(":/icons/document-save-as.png"));
+      const QIcon revertIcon = QIcon::fromTheme("document-revert", QIcon(":/icons/document-revert.png"));
+      const QIcon closeIcon = QIcon::fromTheme("document-close", QIcon(":/icons/document-close.png"));
+      const QIcon importIcon = QIcon::fromTheme("document-import", QIcon(":/icons/document-import.png"));
+      const QIcon exportIcon = QIcon::fromTheme("document-export", QIcon(":/icons/document-export.png"));
+      const QIcon quitIcon = QIcon::fromTheme("application-exit", QIcon(":/icons/application-exit.png"));
+      // Edit
+      const QIcon undoIcon = QIcon::fromTheme("edit-undo", QIcon(":/icons/edit-undo.png"));
+      const QIcon redoIcon = QIcon::fromTheme("edit-redo", QIcon(":/icons/edit-redo.png"));
+      const QIcon cutIcon = QIcon::fromTheme("edit-cut", QIcon(":/icons/edit-cut.png"));
+      const QIcon copyIcon = QIcon::fromTheme("edit-copy", QIcon(":/icons/edit-copy.png"));
+      const QIcon pasteIcon = QIcon::fromTheme("edit-paste", QIcon(":/icons/edit-paste.png"));
+      const QIcon clearIcon = QIcon::fromTheme("edit-clear", QIcon(":/icons/edit-clear.png"));
+    #else
+      // Load icons
+      // File
+      const QIcon newIcon = QIcon(":/icons/document-new.png");
+      const QIcon openIcon = QIcon(":/icons/document-open.png");
+      const QIcon saveIcon = QIcon(":/icons/document-save.png");
+      const QIcon saveAsIcon = QIcon(":/icons/document-save-as.png");
+      const QIcon revertIcon = QIcon(":/icons/document-revert.png");
+      const QIcon closeIcon = QIcon(":/icons/document-close.png");
+      const QIcon importIcon = QIcon(":/icons/document-import.png");
+      const QIcon exportIcon = QIcon(":/icons/document-export.png");
+      const QIcon quitIcon = QIcon(":/icons/application-exit.png");
+      // Edit
+      const QIcon undoIcon = QIcon(":/icons/edit-undo.png");
+      const QIcon redoIcon = QIcon(":/icons/edit-redo.png");
+      const QIcon cutIcon = QIcon(":/icons/edit-cut.png");
+      const QIcon copyIcon = QIcon(":/icons/edit-copy.png");
+      const QIcon pasteIcon = QIcon(":/icons/edit-paste.png");
+      const QIcon clearIcon = QIcon(":/icons/edit-clear.png");
+    #endif
+    // Set toolbar icons
+    ui.actionNewTool->setIcon(newIcon);
+    ui.actionOpenTool->setIcon(openIcon);
+    ui.actionSaveTool->setIcon(saveIcon);
+    ui.actionCloseTool->setIcon(closeIcon);
+    ui.actionQuitTool->setIcon(quitIcon);
+    // Set file menu icons
+    ui.actionNew->setIcon(newIcon);
+    ui.actionOpen->setIcon(openIcon);
+    ui.actionClose->setIcon(closeIcon);
+    ui.actionSave->setIcon(saveIcon);
+    ui.actionSaveAs->setIcon(saveAsIcon);
+    ui.actionRevert->setIcon(revertIcon);
+    ui.actionImport_File->setIcon(importIcon);
+    ui.actionExportGraphics->setIcon(exportIcon);
+    ui.actionExportGL2PS->setIcon(exportIcon);
+    // Set edit menu icons
+    undoAction->setIcon(undoIcon);
+    redoAction->setIcon(redoIcon);
+    ui.actionCut->setIcon(cutIcon);
+    ui.actionCopy->setIcon(copyIcon);
+    ui.actionPaste->setIcon(pasteIcon);
+    ui.actionClear->setIcon(clearIcon);
+
+    undoAction->setShortcuts( QKeySequence::Undo );
     redoAction->setShortcuts( QKeySequence::Redo );
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
@@ -2431,7 +2492,11 @@ namespace Avogadro
   {
     if ( !this->isFullScreen() ) {
       ui.actionFullScreen->setText( tr( "Normal Size" ) );
-      ui.actionFullScreen->setIcon( QIcon( QLatin1String( ":/icons/view-restore.png" ) ) );
+      #if QT_VERSION >= QT_VERSION_CHECK(4, 6, 0)
+        ui.actionFullScreen->setIcon( QIcon::fromTheme("view-restore", QIcon( ":/icons/view-restore.png" )) );
+      #else
+        ui.actionFullScreen->setIcon( QIcon( ":/icons/view-restore.png" ) );
+      #endif
       d->fileToolbar = ui.fileToolBar->isVisible();
       d->statusBar = statusBar()->isVisible();
       ui.fileToolBar->hide();
@@ -2444,7 +2509,11 @@ namespace Avogadro
       //      this->showNormal();
       this->setWindowState(this->windowState() & ~Qt::WindowFullScreen);
       ui.actionFullScreen->setText( tr( "Full Screen" ) );
-
+      #if QT_VERSION >= QT_VERSION_CHECK(4, 6, 0)
+        ui.actionFullScreen->setIcon( QIcon::fromTheme("view-fullscreen", QIcon( ":/icons/view-fullscreen.png" )) );
+      #else
+        ui.actionFullScreen->setIcon( QIcon( ":/icons/view-fullscreen.png" ) );
+      #endif
       ui.fileToolBar->setVisible(d->fileToolbar);
       statusBar()->setVisible(d->statusBar);
     }
