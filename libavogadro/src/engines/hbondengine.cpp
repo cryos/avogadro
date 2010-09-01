@@ -208,10 +208,13 @@ namespace Avogadro {
       return true;
     if (atom->atomicNumber() == 7) {
       int boSum = 0;
-      foreach (unsigned long id, atom->bonds())
-        boSum += static_cast<Molecule*>(atom->parent())->bondById(id)->order();
-      if (boSum != 4)
-        return true;
+      Molecule *mol = qobject_cast<Molecule*>(atom->parent());
+      if (mol) {
+        foreach (unsigned long id, atom->bonds())
+          boSum += mol->bondById(id)->order();
+        if (boSum != 4)
+          return true;
+      }
     }
     return false;
   }
