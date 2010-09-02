@@ -254,7 +254,7 @@ namespace Avogadro
           // Normalization of the S-type orbitals (normalization used in JMol)
           // (8 * alpha^3 / pi^3)^0.25 * exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 0.75) * 0.71270547);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 0.75) * 0.71270547);
           }
           break;
         case P:
@@ -264,7 +264,7 @@ namespace Avogadro
           // Normalization of the P-type orbitals (normalization used in JMol)
           // (128 alpha^5 / pi^3)^0.25 * [x|y|z]exp(-alpha * r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.25) * 1.425410941);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.25) * 1.425410941);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
           }
@@ -279,11 +279,11 @@ namespace Avogadro
           // xx|yy|zz: (2048 alpha^7/9pi^3)^0.25 [xx|yy|zz]exp(-alpha r^2)
           // xy|xz|yz: (2048 alpha^7/pi^3)^0.25 [xy|xz|yz]exp(-alpha r^2)
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.75) * 1.645922781);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.75) * 1.645922781);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
 
-            m_gtoCN.push_back(m_gtoC[j] * apow(m_gtoA[j], 1.75) * 2.850821881);
+            m_gtoCN.push_back(m_gtoC[j] * pow(m_gtoA[j], 1.75) * 2.850821881);
             m_gtoCN.push_back(m_gtoCN.back());
             m_gtoCN.push_back(m_gtoCN.back());
           }
@@ -296,15 +296,15 @@ namespace Avogadro
           indexMO += 5;
           m_cIndices.push_back(m_gtoCN.size());
           for(unsigned j = m_gtoIndices[i]; j < m_gtoIndices[i+1]; ++j) {
-            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * pow(2048 * apow(m_gtoA[j], 7.0)
                           / (9.0 * M_PI*M_PI*M_PI), 0.25));
-            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * pow(2048 * pow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
             m_gtoCN.push_back(m_gtoCN.back());
             // I think this is correct but reaally need to check...
-            m_gtoCN.push_back(m_gtoC[j] * apow(128 * apow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * pow(128 * pow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
-            m_gtoCN.push_back(m_gtoC[j] * apow(2048 * apow(m_gtoA[j], 7.0)
+            m_gtoCN.push_back(m_gtoC[j] * pow(2048 * pow(m_gtoA[j], 7.0)
                           / (M_PI*M_PI*M_PI), 0.25));
           }
           break;
