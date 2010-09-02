@@ -26,15 +26,22 @@
 #include <avogadro/molecule.h>
 
 #include <openbabel/mol.h>
+#include <openbabel/obconversion.h>
 
-#include <QAction>
-#include <QString>
+#include <QtGui/QAction>
+#include <QtGui/QMessageBox>
+#include <QtCore/QString>
+#include <QtCore/QDebug>
+
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkReply>
 
 using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MolecularPropertiesExtension::MolecularPropertiesExtension(QObject *parent) : Extension(parent), m_molecule(0), m_dialog(0)
+  MolecularPropertiesExtension::MolecularPropertiesExtension(QObject *parent) : Extension(parent), 
+                                                                                m_molecule(0), m_dialog(0), m_network(0)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Molecule Properties..."));
@@ -42,8 +49,7 @@ namespace Avogadro {
   }
 
   MolecularPropertiesExtension::~MolecularPropertiesExtension()
-  {
-  }
+  {  }
 
   QList<QAction *> MolecularPropertiesExtension::actions() const
   {
@@ -84,6 +90,11 @@ namespace Avogadro {
       connect(m_dialog, SIGNAL(accepted()), this, SLOT(disableUpdating()));
       connect(m_dialog, SIGNAL(rejected()), this, SLOT(disableUpdating()));
     }
+    if (!m_network) {
+      m_network = new QNetworkAccessManager(this);
+      connect(m_network, SIGNAL(finished(QNetworkReply*)),
+              this, SLOT(replyFinished(QNetworkReply*)));
+    }
 
     connect(m_molecule, SIGNAL(moleculeChanged()), this, SLOT(update()));
     connect(m_molecule, SIGNAL(primitiveAdded(Primitive *)),
@@ -107,6 +118,10 @@ namespace Avogadro {
     connect(m_molecule, SIGNAL(bondUpdated(Bond *)),
             this, SLOT(updateBonds(Bond*)));
 
+    // by default, hide the IUPAC name -- we populate it through the network
+    m_dialog->nameLabel->hide();
+    m_dialog->nameLine->hide();
+
     update();
     m_dialog->show();
 
@@ -118,14 +133,33 @@ namespace Avogadro {
     if (m_dialog == NULL || m_molecule == NULL)
       return;
 
-    QString format("%L1"); // localized numbers
+    // used multiple times below
     OpenBabel::OBMol obmol = m_molecule->OBMol();
+
+    // The molecule has changed, so we need to ask for a new name
+    // from the resolver
+    OBConversion conv;
+    conv.SetOutFormat("smi");
+    obmol.SetTitle("");
+    std::string smilesString = conv.WriteString(&obmol, true); // skip whitespace
+    qDebug() << " requesting name for: " << smilesString.c_str();
+
+    QString requestURL = QString("http://cactus.nci.nih.gov/chemical/structure/%1/iupac_name")
+      .arg(smilesString.c_str());
+
+    // TODO: we should throttle this, so that we only submit a request every X seconds, for example
+    //   unfortunately, we can't limit ourselves to just monitoring new/deleted atoms, bonds
+    //   because the stereochemistry might change with user manipulation of coordinates too
+    m_network->get(QNetworkRequest(QUrl(requestURL)));
+
+    QString format("%L1"); // localized numbers
     m_dialog->molecularWeightLine->setText(format.arg(obmol.GetMolWt(), 0, 'f', 3));
 
     // Copied from Kalzium
     QString formula(obmol.GetSpacedFormula(1,"").c_str());
     formula.replace( QRegExp( "(\\d+)" ), "<sub>\\1</sub>" );
     m_dialog->formulaLine->setText(formula);
+    // we should actually handle charges with superscripts too (e.g., [SO4]-2)
 
     m_dialog->energyLine->setText(format.arg(m_molecule->energy(), 0, 'f', 3));
     bool estimate = true; // estimated dipole
@@ -169,6 +203,43 @@ namespace Avogadro {
   {
     // don't ask for more updates
     disconnect( m_molecule, 0, this, 0 );
+  }
+
+  void MolecularPropertiesExtension::replyFinished(QNetworkReply *reply)
+  {
+    // Read in all the data
+    if (!reply->isReadable()) {
+      QMessageBox::warning(qobject_cast<QWidget*>(parent()),
+                           tr("Network Download Failed"),
+                           tr("Network timeout or other error."));
+      reply->deleteLater();
+      return;
+    }
+
+    QByteArray data = reply->readAll();
+
+    // check if the data came through
+    if (data.contains("Error report") || data.contains("<h1>")) {
+      reply->deleteLater();
+      return;
+    }
+
+    QString name = QString(data).trimmed().toLower();
+    if (!name.isEmpty()) {
+      m_dialog->nameLabel->show();
+      m_dialog->nameLine->show();
+      m_dialog->nameLine->setText(name);
+      if (m_molecule)
+        m_molecule->setProperty("name", QVariant(name)); // set an invalid name, since we don't have one
+    } else {
+      // if the labels are already shown, don't bother hiding them:
+      // it's better to show the user that we can't assign a name for it
+      m_dialog->nameLine->setText(tr("unknown", "Unknown molecule name"));
+      if (m_molecule)
+        m_molecule->setProperty("name", QVariant()); // set an invalid name, since we don't have one
+    }
+
+    reply->deleteLater();
   }
 
 } // end namespace Avogadro

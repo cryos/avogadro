@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>301</width>
-    <height>195</height>
+    <height>268</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,99 +16,113 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QLabel" name="molWeightLabel">
        <property name="text">
         <string>Molecular Weight (g/mol):</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="formulaLabel">
        <property name="text">
         <string>Chemical Formula:</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="atomsLabel">
        <property name="text">
         <string>Number of Atoms:</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="bondsLabel">
        <property name="text">
         <string>Number of Bonds:</string>
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
+     <item row="7" column="0">
       <widget class="QLabel" name="residuesLabel">
        <property name="text">
         <string>Number of Residues:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="energyLabel">
        <property name="text">
         <string>Energy (kJ/mol):</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="dipoleLabel">
        <property name="text">
         <string>Dipole Moment (D):</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item row="1" column="1">
       <widget class="QLabel" name="molecularWeightLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QLabel" name="formulaLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QLabel" name="energyLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QLabel" name="dipoleMomentLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="5" column="1">
       <widget class="QLabel" name="atomsLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="6" column="1">
       <widget class="QLabel" name="bondsLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="7" column="1">
       <widget class="QLabel" name="residuesLine">
+       <property name="readOnly" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="nameLabel">
+       <property name="text">
+        <string>IUPAC Molecule Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="nameLine">
        <property name="readOnly" stdset="0">
         <bool>true</bool>
        </property>

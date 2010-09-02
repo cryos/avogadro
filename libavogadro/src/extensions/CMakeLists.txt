@@ -26,6 +26,7 @@ avogadro_plugin_nogl(cartesianextension
 avogadro_plugin_nogl(molecularpropextension
   molecularpropextension.cpp
   molecularpropdialog.ui)
+target_link_libraries(molecularpropextension ${QT_QTNETWORK_LIBRARY})
 
 ### Molecular Mechanics force fields
 set(forcefieldextension_SRCS forcefieldextension.cpp forcefielddialog.cpp
