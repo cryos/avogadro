@@ -471,8 +471,12 @@ namespace Avogadro
         engine = e;
       }
     }
-    if (!engine)
+    if (!engine) {
+      qDebug() << "Engine is null - no engines of this type loaded.";
       return; // prevent a crash if the surface engine isn't loaded
+    }
+
+    engine->setMolecule(m_molecule); // prevent a crash after switching file
 
     // Find the most recent calc matching the selected orbital:
     calcInfo calc;
@@ -490,22 +494,18 @@ namespace Avogadro
       return;
     }
 
-    if (engine) {
-      QSettings settings;
-      engine->writeSettings(settings);
-      settings.setValue("colorMode", 1);
-      settings.setValue("mesh1Id",static_cast<int>(m_queue[index].posMesh->id()));
-      settings.setValue("mesh2Id",static_cast<int>(m_queue[index].negMesh->id()));
-      engine->readSettings(settings);
-      engine->setEnabled(true);
-      // Trigger a repaint with the new mesh
-      /// FIXME Should be using m_molecule->update() to trigger a repaint in
-      /// all open displays, this currently causes crashes - need to track
-      /// down the cause.
-      GLWidget::current()->update();
-    }
-    else
-      qDebug() << "Engine is null - no engines of this type loaded.";
+    QSettings settings;
+    engine->writeSettings(settings);
+    settings.setValue("colorMode", 1);
+    settings.setValue("mesh1Id",static_cast<int>(m_queue[index].posMesh->id()));
+    settings.setValue("mesh2Id",static_cast<int>(m_queue[index].negMesh->id()));
+    engine->readSettings(settings);
+    engine->setEnabled(true);
+    // Trigger a repaint with the new mesh
+    /// @todo Should be using m_molecule->update() to trigger a repaint in
+    /// all open displays, this currently causes crashes - need to track
+    /// down the cause.
+    GLWidget::current()->update();
   }
 
   void OrbitalExtension::checkQueue()
