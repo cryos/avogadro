@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"POT-Creation-Date: 2010-09-04 12:28-0400\n"
 "PO-Revision-Date: 2010-08-07 15:50+0000\n"
 "Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -16,42 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#: examples/c++/templateextension.cpp:41
-msgid "First Action"
-msgstr "Primera acción"
-
-#: examples/c++/templateextension.cpp:47
-msgid "Second Action"
-msgstr "Segunda acción"
-
-#: examples/c++/templateextension.cpp:69
-#: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:144
-#: src/extensions/quantuminput/gamessextension.cpp:97
-#: src/extensions/shaderextension.cpp:185
-#: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/orbitalextension.cpp:80
-#: src/extensions/surfaces/surfaceextension.cpp:96
-#: src/extensions/wiitrackextension.cpp:83
-msgid "E&xtensions"
-msgstr "E&xtensiones"
-
-#: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
-msgid "&Template"
-msgstr "&Plantilla"
-
-#: examples/c++/templateextension.cpp:72
-msgid "&Edit"
-msgstr "&Editar..."
-
-#: examples/c++/templateextension.h:34
-msgid "Template"
-msgstr "Plantilla"
-
-#: examples/c++/templateextension.h:35
-msgid "Example extension"
-msgstr "Extensión de ejemplo"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -827,6 +791,17 @@ msgstr "Añadiendo complemento .avi"
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
 msgstr "Animación..."
+
+#: src/extensions/animationextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:144
+#: src/extensions/quantuminput/gamessextension.cpp:97
+#: src/extensions/shaderextension.cpp:185
+#: src/extensions/spectra/spectraextension.cpp:78
+#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/surfaceextension.cpp:96
+#: src/extensions/wiitrackextension.cpp:83
+msgid "E&xtensions"
+msgstr "E&xtensiones"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/insertfragmentdialog.cpp:144
@@ -2508,52 +2483,52 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: src/extensions/surfaces/surfacedialog.cpp:74
-#: src/extensions/surfaces/surfacedialog.cpp:75
-#: src/extensions/surfaces/surfaceextension.cpp:674
+#: src/extensions/surfaces/surfacedialog.cpp:76
+#: src/extensions/surfaces/surfacedialog.cpp:77
+#: src/extensions/surfaces/surfaceextension.cpp:670
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
 msgstr "OM %L1"
 
-#: src/extensions/surfaces/surfacedialog.cpp:88
-#: src/extensions/surfaces/surfacedialog.cpp:91
+#: src/extensions/surfaces/surfacedialog.cpp:90
+#: src/extensions/surfaces/surfacedialog.cpp:93
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
 msgstr "(HOMO)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:98
 #: src/extensions/surfaces/surfacedialog.cpp:100
+#: src/extensions/surfaces/surfacedialog.cpp:102
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
 msgstr "(LUMO)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:251
+#: src/extensions/surfaces/surfacedialog.cpp:241
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
 msgstr "Nada"
 
-#: src/extensions/surfaces/surfacedialog.cpp:253
+#: src/extensions/surfaces/surfacedialog.cpp:243
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
 msgstr "Van der Waals"
 
-#: src/extensions/surfaces/surfacedialog.cpp:255
+#: src/extensions/surfaces/surfacedialog.cpp:245
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
 msgstr "Potencial Electrostático"
 
-#: src/extensions/surfaces/surfacedialog.cpp:258
+#: src/extensions/surfaces/surfacedialog.cpp:248
 msgctxt "Electron density surface type"
 msgid "Electron Density"
 msgstr "Densidad electrónica"
 
-#: src/extensions/surfaces/surfacedialog.cpp:260
+#: src/extensions/surfaces/surfacedialog.cpp:250
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
 msgstr "Orbital molecular"
 
-#: src/extensions/surfaces/surfacedialog.cpp:262
+#: src/extensions/surfaces/surfacedialog.cpp:252
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr "Error - tipo no definido"
@@ -2562,35 +2537,35 @@ msgstr "Error - tipo no definido"
 msgid "Create Surfaces..."
 msgstr "Crear superficies..."
 
-#: src/extensions/surfaces/surfaceextension.cpp:408
-#: src/extensions/surfaces/surfaceextension.cpp:438
-#: src/extensions/surfaces/surfaceextension.cpp:465
-#: src/extensions/surfaces/surfaceextension.cpp:499
-#: src/extensions/surfaces/surfaceextension.cpp:527
+#: src/extensions/surfaces/surfaceextension.cpp:404
+#: src/extensions/surfaces/surfaceextension.cpp:434
+#: src/extensions/surfaces/surfaceextension.cpp:461
+#: src/extensions/surfaces/surfaceextension.cpp:495
+#: src/extensions/surfaces/surfaceextension.cpp:523
 msgid "Abort Calculation"
 msgstr "Abortar cálculo"
 
-#: src/extensions/surfaces/surfaceextension.cpp:413
+#: src/extensions/surfaces/surfaceextension.cpp:409
 msgid "Calculating VdW Cube"
 msgstr "Calculando cubo de Van der Waals"
 
-#: src/extensions/surfaces/surfaceextension.cpp:443
-#: src/extensions/surfaces/surfaceextension.cpp:469
+#: src/extensions/surfaces/surfaceextension.cpp:439
+#: src/extensions/surfaces/surfaceextension.cpp:465
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "Calculando el OM %L1"
 
-#: src/extensions/surfaces/surfaceextension.cpp:504
-#: src/extensions/surfaces/surfaceextension.cpp:532
+#: src/extensions/surfaces/surfaceextension.cpp:500
+#: src/extensions/surfaces/surfaceextension.cpp:528
 msgid "Calculating Electron Density"
 msgstr "Calculando densidad electrónica"
 
-#: src/extensions/surfaces/surfaceextension.cpp:618
+#: src/extensions/surfaces/surfaceextension.cpp:614
 msgid "VdW"
 msgstr "VdW"
 
-#: src/extensions/surfaces/surfaceextension.cpp:646
+#: src/extensions/surfaces/surfaceextension.cpp:642
 msgid "Electron Density"
 msgstr "Densidad electrónica"
 
@@ -3289,7 +3264,7 @@ msgstr "Configuraciones de Medida"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3449
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3458
 msgid "Add Atom"
 msgstr "Añadir átomo"
 
@@ -3337,33 +3312,33 @@ msgstr "Dibujar enlace"
 msgid "Draw"
 msgstr "Dibujar"
 
-#: src/tools/drawtool.cpp:776
+#: src/tools/drawtool.cpp:784
 msgid "Element:"
 msgstr "Elemento:"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1241
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:803:1898
+#: src/tools/drawtool.cpp:811:1898
 msgid "Other..."
 msgstr "Otro..."
 
-#: src/tools/drawtool.cpp:807
+#: src/tools/drawtool.cpp:815
 msgid "Bond Order:"
 msgstr "Orden de Enlace:"
 
-#: src/tools/drawtool.cpp:812
+#: src/tools/drawtool.cpp:820
 msgid "Single"
 msgstr "Simple"
 
-#: src/tools/drawtool.cpp:813
+#: src/tools/drawtool.cpp:821
 msgid "Double"
 msgstr "Doble"
 
-#: src/tools/drawtool.cpp:814
+#: src/tools/drawtool.cpp:822
 msgid "Triple"
 msgstr "Triple"
 
-#: src/tools/drawtool.cpp:829
+#: src/tools/drawtool.cpp:837
 msgid "Adjust Hydrogens"
 msgstr "Ajustar Hidrógenos"
 
@@ -3753,6 +3728,8 @@ msgstr "Radio límite:"
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:464
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:238
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, resolutionSpinBox)
 msgid "A"
 msgstr "A"
 
@@ -6105,7 +6082,7 @@ msgstr "Agua"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2708
 #. i18n: ectx: property (text), widget (QRadioButton, statPointCalculateButton)
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:335
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:367
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
 msgstr "Calcular"
@@ -8200,39 +8177,51 @@ msgstr "Nada"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+msgctxt "very low resolution"
+msgid "Very Low"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
 msgstr "Baja"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Media"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
 msgstr "Alta"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Muy alta"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:240
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:227
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+#, fuzzy
+msgid "Custom"
+msgstr "Personalizado:"
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:272
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 msgid "Isosurface cutoff value"
 msgstr "Valor de limíte de isosuperficie"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:243
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:275
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
 msgstr "Iso valor:"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:276
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:308
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
@@ -8240,12 +8229,12 @@ msgctxt ""
 msgid "In Display Type:"
 msgstr "En tipo de presentación:"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:295
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:327
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
 msgid "New Display"
 msgstr "Nueva presentación"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:345
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:377
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
 msgstr "Avanzado..."
@@ -8409,6 +8398,24 @@ msgstr ""
 "diegojromerolopez@gmail.com,jdiegosuarez@hotmail.es,medeshago@gmail.com,,,"
 "fjavilesn@gmail.com,,,mauro.dec@gmail.com,,nzahlut@live.com,victorhera@gmail."
 "com,memaljo@yahoo.com,"
+
+#~ msgid "First Action"
+#~ msgstr "Primera acción"
+
+#~ msgid "Second Action"
+#~ msgstr "Segunda acción"
+
+#~ msgid "&Template"
+#~ msgstr "&Plantilla"
+
+#~ msgid "&Edit"
+#~ msgstr "&Editar..."
+
+#~ msgid "Template"
+#~ msgstr "Plantilla"
+
+#~ msgid "Example extension"
+#~ msgstr "Extensión de ejemplo"
 
 #~ msgid "Caesium"
 #~ msgstr "Cesio"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"POT-Creation-Date: 2010-09-04 12:28-0400\n"
 "PO-Revision-Date: 2010-06-14 14:44+0000\n"
 "Last-Translator: Balázs Attila <battila9@freemail.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -16,42 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-08-16 15:15+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#: examples/c++/templateextension.cpp:41
-msgid "First Action"
-msgstr "Első művelet"
-
-#: examples/c++/templateextension.cpp:47
-msgid "Second Action"
-msgstr "Második akció"
-
-#: examples/c++/templateextension.cpp:69
-#: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:144
-#: src/extensions/quantuminput/gamessextension.cpp:97
-#: src/extensions/shaderextension.cpp:185
-#: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/orbitalextension.cpp:80
-#: src/extensions/surfaces/surfaceextension.cpp:96
-#: src/extensions/wiitrackextension.cpp:83
-msgid "E&xtensions"
-msgstr "K&iterjesztések"
-
-#: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
-msgid "&Template"
-msgstr "&Sablon"
-
-#: examples/c++/templateextension.cpp:72
-msgid "&Edit"
-msgstr "Sze&rkesztés"
-
-#: examples/c++/templateextension.h:34
-msgid "Template"
-msgstr "Sablon"
-
-#: examples/c++/templateextension.h:35
-msgid "Example extension"
-msgstr "Kiterjesztés példa"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -828,6 +792,17 @@ msgstr ".avi fájl kiterjesztés hozzáadása"
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
 msgstr "Animáció"
+
+#: src/extensions/animationextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:144
+#: src/extensions/quantuminput/gamessextension.cpp:97
+#: src/extensions/shaderextension.cpp:185
+#: src/extensions/spectra/spectraextension.cpp:78
+#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/surfaceextension.cpp:96
+#: src/extensions/wiitrackextension.cpp:83
+msgid "E&xtensions"
+msgstr "K&iterjesztések"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/insertfragmentdialog.cpp:144
@@ -2488,52 +2463,52 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: src/extensions/surfaces/surfacedialog.cpp:74
-#: src/extensions/surfaces/surfacedialog.cpp:75
-#: src/extensions/surfaces/surfaceextension.cpp:674
+#: src/extensions/surfaces/surfacedialog.cpp:76
+#: src/extensions/surfaces/surfacedialog.cpp:77
+#: src/extensions/surfaces/surfaceextension.cpp:670
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
 msgstr "MO %L1"
 
-#: src/extensions/surfaces/surfacedialog.cpp:88
-#: src/extensions/surfaces/surfacedialog.cpp:91
+#: src/extensions/surfaces/surfacedialog.cpp:90
+#: src/extensions/surfaces/surfacedialog.cpp:93
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
 msgstr "(HOMO)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:98
 #: src/extensions/surfaces/surfacedialog.cpp:100
+#: src/extensions/surfaces/surfacedialog.cpp:102
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
 msgstr "(LUMO)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:251
+#: src/extensions/surfaces/surfacedialog.cpp:241
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
 msgstr "Semmi"
 
-#: src/extensions/surfaces/surfacedialog.cpp:253
+#: src/extensions/surfaces/surfacedialog.cpp:243
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
 msgstr "van der Waals"
 
-#: src/extensions/surfaces/surfacedialog.cpp:255
+#: src/extensions/surfaces/surfacedialog.cpp:245
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
 msgstr "Elektrosztatikus potenciál"
 
-#: src/extensions/surfaces/surfacedialog.cpp:258
+#: src/extensions/surfaces/surfacedialog.cpp:248
 msgctxt "Electron density surface type"
 msgid "Electron Density"
 msgstr "Elektronsűrűség"
 
-#: src/extensions/surfaces/surfacedialog.cpp:260
+#: src/extensions/surfaces/surfacedialog.cpp:250
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
 msgstr "Molekulapálya"
 
-#: src/extensions/surfaces/surfacedialog.cpp:262
+#: src/extensions/surfaces/surfacedialog.cpp:252
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr "Hiba - nem definiált típus"
@@ -2542,35 +2517,35 @@ msgstr "Hiba - nem definiált típus"
 msgid "Create Surfaces..."
 msgstr "Felszín létrehozása..."
 
-#: src/extensions/surfaces/surfaceextension.cpp:408
-#: src/extensions/surfaces/surfaceextension.cpp:438
-#: src/extensions/surfaces/surfaceextension.cpp:465
-#: src/extensions/surfaces/surfaceextension.cpp:499
-#: src/extensions/surfaces/surfaceextension.cpp:527
+#: src/extensions/surfaces/surfaceextension.cpp:404
+#: src/extensions/surfaces/surfaceextension.cpp:434
+#: src/extensions/surfaces/surfaceextension.cpp:461
+#: src/extensions/surfaces/surfaceextension.cpp:495
+#: src/extensions/surfaces/surfaceextension.cpp:523
 msgid "Abort Calculation"
 msgstr "Számítás megszakítása"
 
-#: src/extensions/surfaces/surfaceextension.cpp:413
+#: src/extensions/surfaces/surfaceextension.cpp:409
 msgid "Calculating VdW Cube"
 msgstr "VdW kocka számítása folyamatban"
 
-#: src/extensions/surfaces/surfaceextension.cpp:443
-#: src/extensions/surfaces/surfaceextension.cpp:469
+#: src/extensions/surfaces/surfaceextension.cpp:439
+#: src/extensions/surfaces/surfaceextension.cpp:465
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "MO %L1 számítása folyamatban"
 
-#: src/extensions/surfaces/surfaceextension.cpp:504
-#: src/extensions/surfaces/surfaceextension.cpp:532
+#: src/extensions/surfaces/surfaceextension.cpp:500
+#: src/extensions/surfaces/surfaceextension.cpp:528
 msgid "Calculating Electron Density"
 msgstr "Elektronsűrűség számítása"
 
-#: src/extensions/surfaces/surfaceextension.cpp:618
+#: src/extensions/surfaces/surfaceextension.cpp:614
 msgid "VdW"
 msgstr "VdW"
 
-#: src/extensions/surfaces/surfaceextension.cpp:646
+#: src/extensions/surfaces/surfaceextension.cpp:642
 msgid "Electron Density"
 msgstr "Elektronsűrűség"
 
@@ -3220,7 +3195,7 @@ msgstr "Mérési beállítások"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3449
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3458
 msgid "Add Atom"
 msgstr "Atom hozzáadása"
 
@@ -3264,33 +3239,33 @@ msgstr "Kötés rajzolása"
 msgid "Draw"
 msgstr "Rajzolás"
 
-#: src/tools/drawtool.cpp:776
+#: src/tools/drawtool.cpp:784
 msgid "Element:"
 msgstr "Elem"
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1241
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:803:1898
+#: src/tools/drawtool.cpp:811:1898
 msgid "Other..."
 msgstr "Egyéb..."
 
-#: src/tools/drawtool.cpp:807
+#: src/tools/drawtool.cpp:815
 msgid "Bond Order:"
 msgstr "Kötésrend:"
 
-#: src/tools/drawtool.cpp:812
+#: src/tools/drawtool.cpp:820
 msgid "Single"
 msgstr "Egyszeres"
 
-#: src/tools/drawtool.cpp:813
+#: src/tools/drawtool.cpp:821
 msgid "Double"
 msgstr "Kettős"
 
-#: src/tools/drawtool.cpp:814
+#: src/tools/drawtool.cpp:822
 msgid "Triple"
 msgstr "Hármas"
 
-#: src/tools/drawtool.cpp:829
+#: src/tools/drawtool.cpp:837
 msgid "Adjust Hydrogens"
 msgstr "Hidrogénatomok beállítása"
 
@@ -3669,6 +3644,8 @@ msgstr "Levágási sugár"
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:464
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:238
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, resolutionSpinBox)
 msgid "A"
 msgstr "A"
 
@@ -6021,7 +5998,7 @@ msgstr "Víz"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2708
 #. i18n: ectx: property (text), widget (QRadioButton, statPointCalculateButton)
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:335
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:367
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
 msgstr "Számítás"
@@ -8103,39 +8080,51 @@ msgstr "Semmi"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+msgctxt "very low resolution"
+msgid "Very Low"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
 msgstr "Alacsony"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "Közepes"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
 msgstr "Magas"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "Nagyon magas"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:240
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:227
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+#, fuzzy
+msgid "Custom"
+msgstr "Egyéni"
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:272
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 msgid "Isosurface cutoff value"
 msgstr "Izofelület levágási érték"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:243
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:275
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
 msgstr "Iso érték:"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:276
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:308
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
@@ -8143,12 +8132,12 @@ msgctxt ""
 msgid "In Display Type:"
 msgstr "Ebben a megjelenítés típusban:"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:295
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:327
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
 msgid "New Display"
 msgstr "Új megjelenítés"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:345
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:377
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
 msgstr "Haladó..."
@@ -8263,6 +8252,24 @@ msgstr ""
 "sourceforge.net,battila9@freemail.hu,szelmalomharc@gmail.com,zoltan."
 "krasznecz@gmail.com,,,avogadro-devel@lists.sourceforge.net,battila9@freemail."
 "hu,szelmalomharc@gmail.com,zoltan.krasznecz@gmail.com"
+
+#~ msgid "First Action"
+#~ msgstr "Első művelet"
+
+#~ msgid "Second Action"
+#~ msgstr "Második akció"
+
+#~ msgid "&Template"
+#~ msgstr "&Sablon"
+
+#~ msgid "&Edit"
+#~ msgstr "Sze&rkesztés"
+
+#~ msgid "Template"
+#~ msgstr "Sablon"
+
+#~ msgid "Example extension"
+#~ msgstr "Kiterjesztés példa"
 
 #~ msgid "Ununbium"
 #~ msgstr "Ununbium"

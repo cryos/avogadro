@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-08-18 17:01-0400\n"
+"POT-Creation-Date: 2010-09-04 12:28-0400\n"
 "PO-Revision-Date: 2010-07-22 00:28+0000\n"
 "Last-Translator: iychiang <iychiang1809@gmail.com>\n"
 "Language-Team: Traditional Chinese <zh_TW@li.org>\n"
@@ -16,42 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-08-16 15:14+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#: examples/c++/templateextension.cpp:41
-msgid "First Action"
-msgstr "第一步"
-
-#: examples/c++/templateextension.cpp:47
-msgid "Second Action"
-msgstr "第二步"
-
-#: examples/c++/templateextension.cpp:69
-#: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:144
-#: src/extensions/quantuminput/gamessextension.cpp:97
-#: src/extensions/shaderextension.cpp:185
-#: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/orbitalextension.cpp:80
-#: src/extensions/surfaces/surfaceextension.cpp:96
-#: src/extensions/wiitrackextension.cpp:83
-msgid "E&xtensions"
-msgstr "延伸功能"
-
-#: examples/c++/templateextension.cpp:69 examples/c++/templateextension.cpp:72
-msgid "&Template"
-msgstr "範本"
-
-#: examples/c++/templateextension.cpp:72
-msgid "&Edit"
-msgstr "編輯"
-
-#: examples/c++/templateextension.h:34
-msgid "Template"
-msgstr "樣本"
-
-#: examples/c++/templateextension.h:35
-msgid "Example extension"
-msgstr "範本延伸"
 
 #: src/colors/atomindexcolor.h:44
 msgid "Color by Index"
@@ -826,6 +790,17 @@ msgstr "加上附檔名 .avi"
 #: src/extensions/animationextension.cpp:48
 msgid "Animation..."
 msgstr "動畫"
+
+#: src/extensions/animationextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:144
+#: src/extensions/quantuminput/gamessextension.cpp:97
+#: src/extensions/shaderextension.cpp:185
+#: src/extensions/spectra/spectraextension.cpp:78
+#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/surfaceextension.cpp:96
+#: src/extensions/wiitrackextension.cpp:83
+msgid "E&xtensions"
+msgstr "延伸功能"
 
 #: src/extensions/animationextension.cpp:136
 #: src/extensions/insertfragmentdialog.cpp:144
@@ -2467,52 +2442,52 @@ msgstr "軌域"
 msgid "Status"
 msgstr "狀態"
 
-#: src/extensions/surfaces/surfacedialog.cpp:74
-#: src/extensions/surfaces/surfacedialog.cpp:75
-#: src/extensions/surfaces/surfaceextension.cpp:674
+#: src/extensions/surfaces/surfacedialog.cpp:76
+#: src/extensions/surfaces/surfacedialog.cpp:77
+#: src/extensions/surfaces/surfaceextension.cpp:670
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "MO %L1"
 msgstr "MO %L1"
 
-#: src/extensions/surfaces/surfacedialog.cpp:88
-#: src/extensions/surfaces/surfacedialog.cpp:91
+#: src/extensions/surfaces/surfacedialog.cpp:90
+#: src/extensions/surfaces/surfacedialog.cpp:93
 msgctxt "Highest occupied MO"
 msgid "(HOMO)"
 msgstr "(HOMO, 最高被佔有軌域)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:98
 #: src/extensions/surfaces/surfacedialog.cpp:100
+#: src/extensions/surfaces/surfacedialog.cpp:102
 msgctxt "Lowest unoccupied MO"
 msgid "(LUMO)"
 msgstr "(LUMO, 最低未被佔有軌域)"
 
-#: src/extensions/surfaces/surfacedialog.cpp:251
+#: src/extensions/surfaces/surfacedialog.cpp:241
 msgctxt "A cube type of nothing - empty cube"
 msgid "Nothing"
 msgstr "無"
 
-#: src/extensions/surfaces/surfacedialog.cpp:253
+#: src/extensions/surfaces/surfacedialog.cpp:243
 msgctxt "Van der Waals surface type"
 msgid "Van der Waals"
 msgstr "凡得瓦"
 
-#: src/extensions/surfaces/surfacedialog.cpp:255
+#: src/extensions/surfaces/surfacedialog.cpp:245
 msgctxt "Electrostatic potential surface type"
 msgid "Electrostatic Potential"
 msgstr "靜電位能"
 
-#: src/extensions/surfaces/surfacedialog.cpp:258
+#: src/extensions/surfaces/surfacedialog.cpp:248
 msgctxt "Electron density surface type"
 msgid "Electron Density"
 msgstr "電子密度"
 
-#: src/extensions/surfaces/surfacedialog.cpp:260
+#: src/extensions/surfaces/surfacedialog.cpp:250
 msgctxt "Molecular orbital surface type"
 msgid "Molecular Orbital"
 msgstr "分子軌域"
 
-#: src/extensions/surfaces/surfacedialog.cpp:262
+#: src/extensions/surfaces/surfacedialog.cpp:252
 msgctxt "Undefined cube type"
 msgid "Error - undefined type"
 msgstr "錯誤-未定義之種類"
@@ -2521,35 +2496,35 @@ msgstr "錯誤-未定義之種類"
 msgid "Create Surfaces..."
 msgstr "產生外觀..."
 
-#: src/extensions/surfaces/surfaceextension.cpp:408
-#: src/extensions/surfaces/surfaceextension.cpp:438
-#: src/extensions/surfaces/surfaceextension.cpp:465
-#: src/extensions/surfaces/surfaceextension.cpp:499
-#: src/extensions/surfaces/surfaceextension.cpp:527
+#: src/extensions/surfaces/surfaceextension.cpp:404
+#: src/extensions/surfaces/surfaceextension.cpp:434
+#: src/extensions/surfaces/surfaceextension.cpp:461
+#: src/extensions/surfaces/surfaceextension.cpp:495
+#: src/extensions/surfaces/surfaceextension.cpp:523
 msgid "Abort Calculation"
 msgstr "停止計算"
 
-#: src/extensions/surfaces/surfaceextension.cpp:413
+#: src/extensions/surfaces/surfaceextension.cpp:409
 msgid "Calculating VdW Cube"
 msgstr "計算 VdW 立方"
 
-#: src/extensions/surfaces/surfaceextension.cpp:443
-#: src/extensions/surfaces/surfaceextension.cpp:469
+#: src/extensions/surfaces/surfaceextension.cpp:439
+#: src/extensions/surfaces/surfaceextension.cpp:465
 #, qt-format
 msgctxt "Molecular Orbital"
 msgid "Calculating MO %L1"
 msgstr "計算 MO %L1"
 
-#: src/extensions/surfaces/surfaceextension.cpp:504
-#: src/extensions/surfaces/surfaceextension.cpp:532
+#: src/extensions/surfaces/surfaceextension.cpp:500
+#: src/extensions/surfaces/surfaceextension.cpp:528
 msgid "Calculating Electron Density"
 msgstr "計算電子密度"
 
-#: src/extensions/surfaces/surfaceextension.cpp:618
+#: src/extensions/surfaces/surfaceextension.cpp:614
 msgid "VdW"
 msgstr "VdW"
 
-#: src/extensions/surfaces/surfaceextension.cpp:646
+#: src/extensions/surfaces/surfaceextension.cpp:642
 msgid "Electron Density"
 msgstr "電子密度"
 
@@ -3228,7 +3203,7 @@ msgstr "測量功能設定"
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3449
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3458
 msgid "Add Atom"
 msgstr "新增原子"
 
@@ -3276,33 +3251,33 @@ msgstr "繪製鍵"
 msgid "Draw"
 msgstr "繪圖"
 
-#: src/tools/drawtool.cpp:776
+#: src/tools/drawtool.cpp:784
 msgid "Element:"
 msgstr "元素："
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1241
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:803:1898
+#: src/tools/drawtool.cpp:811:1898
 msgid "Other..."
 msgstr "其他..."
 
-#: src/tools/drawtool.cpp:807
+#: src/tools/drawtool.cpp:815
 msgid "Bond Order:"
 msgstr "鍵的級數:"
 
-#: src/tools/drawtool.cpp:812
+#: src/tools/drawtool.cpp:820
 msgid "Single"
 msgstr "單鍵"
 
-#: src/tools/drawtool.cpp:813
+#: src/tools/drawtool.cpp:821
 msgid "Double"
 msgstr "雙鍵"
 
-#: src/tools/drawtool.cpp:814
+#: src/tools/drawtool.cpp:822
 msgid "Triple"
 msgstr "三鍵"
 
-#: src/tools/drawtool.cpp:829
+#: src/tools/drawtool.cpp:837
 msgid "Adjust Hydrogens"
 msgstr "自動加上氫原子"
 
@@ -3697,6 +3672,8 @@ msgstr "截止半徑"
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, radiusSpin)
 #. i18n: file: src/extensions/insertpeptidedialog.ui:464
 #. i18n: ectx: property (text), item, widget (QComboBox, chainNumberCombo)
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:238
+#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, resolutionSpinBox)
 msgid "A"
 msgstr "A"
 
@@ -6063,7 +6040,7 @@ msgstr "水"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2708
 #. i18n: ectx: property (text), widget (QRadioButton, statPointCalculateButton)
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:335
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:367
 #. i18n: ectx: property (text), widget (QPushButton, calculateButton)
 msgid "Calculate"
 msgstr "計算"
@@ -8150,39 +8127,51 @@ msgstr "無"
 
 #. i18n: file: src/extensions/surfaces/surfacedialog.ui:202
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+msgctxt "very low resolution"
+msgid "Very Low"
+msgstr ""
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "low resolution"
 msgid "Low"
 msgstr "低"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:207
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "medium resolution"
 msgid "Medium"
 msgstr "中"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:212
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "high resolution"
 msgid "High"
 msgstr "高"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:217
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
 msgctxt "very high resolution"
 msgid "Very High"
 msgstr "極高"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:240
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:227
+#. i18n: ectx: property (text), item, widget (QComboBox, resolutionCombo)
+#, fuzzy
+msgid "Custom"
+msgstr "自訂:"
+
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:272
 #. i18n: ectx: property (toolTip), widget (QLabel, label_4)
 msgid "Isosurface cutoff value"
 msgstr "Isosurface cutoff value (等曲面截斷值)"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:243
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:275
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "Iso Value:"
 msgstr "Iso 值:"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:276
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:308
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 msgctxt ""
 "Add the new surface to this particular display type (i.e., orbital or "
@@ -8190,12 +8179,12 @@ msgctxt ""
 msgid "In Display Type:"
 msgstr "顯示的種類"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:295
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:327
 #. i18n: ectx: property (text), item, widget (QComboBox, engineCombo)
 msgid "New Display"
 msgstr "新的顯示"
 
-#. i18n: file: src/extensions/surfaces/surfacedialog.ui:345
+#. i18n: file: src/extensions/surfaces/surfacedialog.ui:377
 #. i18n: ectx: property (text), widget (QPushButton, advancedButton)
 msgid "Advanced..."
 msgstr "進階..."
@@ -8306,6 +8295,24 @@ msgstr ""
 ",,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,iychiang1809@gmail.com,,,"
 "iychiang1809@gmail.com,,,iychiang1809@gmail.com"
+
+#~ msgid "First Action"
+#~ msgstr "第一步"
+
+#~ msgid "Second Action"
+#~ msgstr "第二步"
+
+#~ msgid "&Template"
+#~ msgstr "範本"
+
+#~ msgid "&Edit"
+#~ msgstr "編輯"
+
+#~ msgid "Template"
+#~ msgstr "樣本"
+
+#~ msgid "Example extension"
+#~ msgstr "範本延伸"
 
 #~ msgid "Caesium"
 #~ msgstr "Caesium (銫)"
