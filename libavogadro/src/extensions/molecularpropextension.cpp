@@ -32,6 +32,7 @@
 #include <QtGui/QMessageBox>
 #include <QtCore/QString>
 #include <QtCore/QDebug>
+#include <QtCore/QTimer>
 
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -40,8 +41,8 @@ using namespace OpenBabel;
 
 namespace Avogadro {
 
-  MolecularPropertiesExtension::MolecularPropertiesExtension(QObject *parent) : Extension(parent), 
-                                                                                m_molecule(0), m_dialog(0), m_network(0)
+  MolecularPropertiesExtension::MolecularPropertiesExtension(QObject *parent) : Extension(parent),
+                                                                                m_molecule(0), m_dialog(0), m_network(0), m_nameRequestPending(false)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Molecule Properties..."));
@@ -136,21 +137,12 @@ namespace Avogadro {
     // used multiple times below
     OpenBabel::OBMol obmol = m_molecule->OBMol();
 
-    // The molecule has changed, so we need to ask for a new name
-    // from the resolver
-    OBConversion conv;
-    conv.SetOutFormat("smi");
-    obmol.SetTitle("");
-    std::string smilesString = conv.WriteString(&obmol, true); // skip whitespace
-    qDebug() << " requesting name for: " << smilesString.c_str();
-
-    QString requestURL = QString("http://cactus.nci.nih.gov/chemical/structure/%1/iupac_name")
-      .arg(smilesString.c_str());
-
-    // TODO: we should throttle this, so that we only submit a request every X seconds, for example
-    //   unfortunately, we can't limit ourselves to just monitoring new/deleted atoms, bonds
-    //   because the stereochemistry might change with user manipulation of coordinates too
-    m_network->get(QNetworkRequest(QUrl(requestURL)));
+    if (!m_nameRequestPending) {
+      m_nameRequestPending = true;
+      // Wait 3 seconds before requesting to limit number of requests
+      qDebug() << "Requesting IUPAC name in 3 seconds...";
+      QTimer::singleShot(3000, this, SLOT(requestIUPACName()));
+    }
 
     QString format("%L1"); // localized numbers
     m_dialog->molecularWeightLine->setText(format.arg(obmol.GetMolWt(), 0, 'f', 3));
@@ -198,7 +190,7 @@ namespace Avogadro {
   {
     update();
   }
-  
+
   void MolecularPropertiesExtension::disableUpdating()
   {
     // don't ask for more updates
@@ -240,6 +232,28 @@ namespace Avogadro {
     }
 
     reply->deleteLater();
+  }
+
+  void MolecularPropertiesExtension::requestIUPACName()
+  {
+    if (m_dialog == NULL || m_molecule == NULL)
+      return;
+
+    m_nameRequestPending = false;
+    OpenBabel::OBMol obmol = m_molecule->OBMol();
+
+    // The molecule has changed, so we need to ask for a new name
+    // from the resolver
+    OBConversion conv;
+    conv.SetOutFormat("smi");
+    obmol.SetTitle("");
+    std::string smilesString = conv.WriteString(&obmol, true); // skip whitespace
+    qDebug() << " requesting name for: " << smilesString.c_str();
+
+    QString requestURL = QString("http://cactus.nci.nih.gov/chemical/structure/%1/iupac_name")
+      .arg(smilesString.c_str());
+
+    m_network->get(QNetworkRequest(QUrl(requestURL)));
   }
 
 } // end namespace Avogadro
