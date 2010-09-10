@@ -147,6 +147,8 @@ namespace Avogadro
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                      m_aNums.at(nAtom++));
 
+    qDebug() << "loading basis: " << m_shellTypes.size() << m_shellNums.size() << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
+
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
     for (unsigned int i = 0; i < m_shellTypes.size(); ++i) {

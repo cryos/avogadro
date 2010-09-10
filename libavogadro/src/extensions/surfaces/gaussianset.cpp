@@ -136,7 +136,7 @@ namespace Avogadro
     unsigned int columns = MOs.size() / m_numMOs;
     qDebug() << " add MOs: " << m_numMOs << columns;
 
-    m_moMatrix.resize(m_numMOs, columns);
+    m_moMatrix.resize(m_numMOs, m_numMOs);
 
     for (unsigned int j = 0; j < columns; ++j)
       for (unsigned int i = 0; i < m_numMOs; ++i)
