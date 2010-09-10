@@ -545,9 +545,29 @@ namespace Avogadro
       return false;
     }
 
+    // Check to see if this molecule has been tagged with a file format
+    QVariant fileFormat = m_molecule->property("File Format");
+    if (fileFormat.isValid()) {
+      QString format = fileFormat.toString();
+
+      if (format == QLatin1String("gamout")) {
+        qDebug() << " deduced from format ";
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GAMESSUSOutput gamout(m_molecule->fileName(), gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+    }
+
+
     // Everything looks good, a new basis set needs to be loaded
     // Check for files in this directory -- first the file itself
-    // and then any other similar files
+    // and then any other similar file
 
     QFileInfo parentInfo(m_molecule->fileName());
     // Look for files with the same basename, but different extensions
