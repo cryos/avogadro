@@ -95,14 +95,14 @@ namespace Avogadro
       m_aNums.clear();
       m_aPos.clear();
 
-      m_coordFactor = BOHR_TO_ANGSTROM;
+      m_coordFactor = 1.0; // coordinates are supposed to be in bohr?!
       m_currentMode = Atoms;
       key = m_in->readLine().trimmed(); // skip the column titles
     } else if (key.contains("COORDINATES OF ALL ATOMS ARE (ANGS)", Qt::CaseInsensitive)) {
       m_aNums.clear();
       m_aPos.clear();
 
-      m_coordFactor = 1.0; // in Angstroms now
+      m_coordFactor = 1.0/BOHR_TO_ANGSTROM; // in Angstroms now
       m_currentMode = Atoms;
       key = m_in->readLine(); // skip column titles
       key = m_in->readLine(); // and ----- line
