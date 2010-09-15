@@ -121,4 +121,5 @@ target_link_libraries(networkfetchextension ${QT_QTNETWORK_LIBRARY})
 
 add_subdirectory(spectra)
 add_subdirectory(surfaces)
+add_subdirectory(qtaim)
 add_subdirectory(quantuminput)
