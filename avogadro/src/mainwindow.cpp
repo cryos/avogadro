@@ -955,6 +955,8 @@ namespace Avogadro
     if (!d->moleculeFile)
       return; // nothing to do
 
+    qDebug() << " selectMolecule " << index;
+
     OBMol *obMolecule =  d->moleculeFile->OBMol(index);
     if (!obMolecule)
       return; // bad index
@@ -1040,6 +1042,12 @@ namespace Avogadro
       Molecule *mol = new Molecule;
       mol->setOBMol(obMolecule);
       mol->setFileName(d->moleculeFile->fileName());
+      if (d->moleculeFile->isConformerFile()) {
+        // add in the conformers
+        mol->setAllConformers(d->moleculeFile->conformers());
+        qDebug() << " # of conformers " << mol->numConformers();
+      }
+        
       setMolecule(mol);
       // Now unroll any settings we saved in the file
       // This is disabled for version 1.0-release
