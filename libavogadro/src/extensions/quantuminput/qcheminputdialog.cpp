@@ -265,14 +265,21 @@ namespace Avogadro
     if (m_molecule && m_coordType == CARTESIAN)
     {
       QTextStream mol(&buffer);
-      QList<Atom *> atoms = m_molecule->atoms();
-      foreach (Atom *atom, atoms) {
-        mol << qSetFieldWidth(4) << right
-            << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
-            << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
-            << fixed << right << atom->pos()->x() << atom->pos()->y()
-            << atom->pos()->z()
-            << qSetFieldWidth(0) << '\n';
+
+      OpenBabel::OBMol obmol = m_molecule->OBMol();
+      std::vector<std::vector<int> > fragList;
+      obmol.ContigFragList(fragList);
+
+      for (unsigned int frag = 0; frag < fragList.size(); ++frag) {
+        for (unsigned int idx = 0; idx < fragList[frag].size(); ++idx) {
+          Atom *atom = m_molecule->atom(fragList[frag][idx] - 1);
+          mol << qSetFieldWidth(4) << right
+              << QString(OpenBabel::etab.GetSymbol(atom->atomicNumber()))
+              << qSetFieldWidth(15) << qSetRealNumberPrecision(5) << forcepoint
+              << fixed << right << atom->pos()->x() << atom->pos()->y()
+              << atom->pos()->z()
+              << qSetFieldWidth(0) << '\n';
+        }
       }
     }
     // Z-matrix
