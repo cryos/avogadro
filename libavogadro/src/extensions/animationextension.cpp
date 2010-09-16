@@ -122,10 +122,9 @@ namespace Avogadro {
     if (file.isEmpty())
       return;
 
-    if (file.endsWith(QLatin1String(".xyz"))) {
-      readTrajFromXyz(file);
+    if (file.endsWith(QLatin1String(".xyz")) || file.endsWith(QLatin1String("HISTORY")) ) {
+      readTrajFromFile(file);
     }
-
     else { //non xyz
 
       OBConversion conv;
@@ -225,17 +224,31 @@ namespace Avogadro {
 
   }
 
-  void AnimationExtension::readTrajFromXyz(QString xyzfile)
+  void AnimationExtension::readTrajFromFile(QString trajfile)
   {
+
+    const char *format;
+    if ( trajfile.endsWith(QLatin1String(".xyz")))
+      format="XYZ";
+    else if (trajfile.endsWith(QLatin1String("HISTORY")))
+      format="HISTORY";
+    else
+      {
+        QMessageBox::warning( NULL, tr( "Avogadro" ),
+                              tr( "Could not determine format from filename: %1").arg( trajfile ) );
+        return;
+      }
+      
     OBConversion conv;
-    if (!conv.SetInFormat("XYZ")) {
+    if (!conv.SetInFormat(format)) {
       QMessageBox::warning( NULL, tr( "Avogadro" ),
-                            tr( "could not set format to XYZ" ));
+                            tr( "Could not set format: %1").arg( format ));
+      return;
     }
 
     m_molecule->clearConformers();
 
-    std::ifstream file(QFile::encodeName(xyzfile));
+    std::ifstream file(QFile::encodeName(trajfile));
 
     OpenBabel::OBMol tmpMol;
     int i=0;
@@ -243,13 +256,13 @@ namespace Avogadro {
       double* tmpCoords = tmpMol.GetCoordinates();
       if (!tmpCoords) {
         QMessageBox::warning( NULL, tr( "Avogadro" ),
-                              tr( "Problem reading traj file %1").arg(xyzfile));
+                              tr( "Problem reading traj file %1").arg(trajfile));
         return;
       }
 
       if (tmpMol.NumAtoms() != m_molecule->numAtoms()) {
         QMessageBox::warning( NULL, tr( "Avogadro" ),
-          tr( "Trajectory file %1 disagrees on the number of atoms in the present molecule").arg(xyzfile));
+          tr( "Trajectory file %1 disagrees on the number of atoms in the present molecule").arg(trajfile));
         return;
       }
 
@@ -282,6 +295,7 @@ namespace Avogadro {
 
     return true;
   }
+
 
 } // end namespace Avogadro
 

@@ -109,6 +109,9 @@ namespace Avogadro {
 
   void Animation::setFrame(int i)
   {
+    if (i <= 0 || i > (int)m_molecule->numConformers())
+      return; // nothing to do
+
     m_molecule->lock()->lockForWrite();
     m_molecule->setConformer(i-1); // Frame counting starts from 1
 
