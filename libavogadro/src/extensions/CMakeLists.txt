@@ -43,6 +43,9 @@ endif()
 ### hydrogens
 avogadro_plugin_nogl(hydrogenextension hydrogensextension.cpp)
 
+### invertchirality
+avogadro_plugin_nogl(invertchiralextension invertchiralextension.cpp)
+
 ### Selections
 avogadro_plugin_nogl(selectextension selectextension.cpp)
 
