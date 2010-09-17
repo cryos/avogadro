@@ -891,7 +891,7 @@ namespace Avogadro {
 
   inline Atom * Molecule::atomById(unsigned long id) const
   {
-    if(id < m_atoms.size())
+    if(id < m_atoms.size() && id != FALSE_ID)
       return m_atoms[id];
     else
       return 0;
@@ -899,7 +899,7 @@ namespace Avogadro {
 
   inline const Eigen::Vector3d * Molecule::atomPos(unsigned long id) const
   {
-    if (id < m_atomPos->size())
+    if (id < m_atomPos->size() && id != FALSE_ID)
       return &(*m_atomPos)[id];
     else
       return 0;
@@ -915,7 +915,7 @@ namespace Avogadro {
 
   inline Bond * Molecule::bondById(unsigned long id) const
   {
-    if(id < m_bonds.size())
+    if(id < m_bonds.size() && id != FALSE_ID)
       return m_bonds[id];
     else
       return 0;
