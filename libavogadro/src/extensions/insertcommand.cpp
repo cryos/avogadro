@@ -95,30 +95,33 @@ namespace Avogadro {
     if (d->startAtom != -1 && !emptyMol) {
       // OK, first, we should see if this atom is a hydrogen
       Atom *startAtom = d->molecule->atomById(d->startAtom);
-      if (startAtom->atomicNumber() == 1) {
+      if (startAtom->isHydrogen()) {
         // get the bonded non-hydrogen and remove this atom
         Atom *hydrogen = startAtom;
         if (hydrogen->neighbors().size())
           startAtom = d->molecule->atomById(hydrogen->neighbors()[0]); // the first bonded atom to this "H"
         d->molecule->removeAtom(hydrogen);
+      } else { // heavy atom -- remove attached hydrogens
+        d->molecule->removeHydrogens(startAtom);
       }
 
       if (d->endAtom == -1) { // connect to the first atom of the fragment
         d->endAtom = initialAtoms + 1;
       }
       Atom *endAtom = d->molecule->atomById(d->endAtom);
+      d->molecule->removeHydrogens(endAtom); // make sure to adjust valence on this atom
 
       OpenBabel::OBMol mol = d->molecule->OBMol();
       // Open Babel indexes atoms from 1, not 0
       OpenBabel::OBBuilder::Connect(mol, startAtom->index() + 1, endAtom->index() + 1);
-      qDebug() << " trying to connect " << startAtom->index() + 1 << endAtom->index() + 1;
       d->molecule->setOBMol(&mol);
+      d->molecule->addHydrogens();
     }
 
     // now tell the molecule to update
     d->molecule->update();
 
-    if (d->widget) {
+    if (d->widget && d->startAtom == -1) {
       QList<Primitive *> matchedAtoms;
 
       if (emptyMol) // we'll miss atom 0, so add it now
@@ -131,10 +134,13 @@ namespace Avogadro {
 
       d->widget->clearSelected();
       d->widget->setSelected(matchedAtoms, true);
-      d->widget->update();
 
       d->widget->toolGroup()->setActiveTool("Manipulate");
     }
+
+    // in either case, update the widget
+    if (d->widget)
+      d->widget->update();
   }
 
 } // end namespace Avogadro

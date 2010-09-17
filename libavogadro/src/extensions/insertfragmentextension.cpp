@@ -129,7 +129,7 @@ namespace Avogadro {
             
             fragment.setOBMol(&obfragment);
             if (selectedAtom == -1) { // if we're not connecting to a specific atom, add Hs, center
-              fragment.addHydrogens();
+              fragment.addHydrogens(); // hydrogen addition is done by InsertCommand when connecting
               fragment.center();
             }
           }
@@ -177,7 +177,14 @@ namespace Avogadro {
   void InsertFragmentExtension::performInsert()
   {
     if (m_dialog) {
-      emit performCommand(new InsertFragmentCommand(m_molecule, m_dialog->fragment(), m_widget, tr("Insert Fragment")));
+      // check to see if we're going to connect to an existing atom using OBBuilder::Connect()
+      int selectedAtom = -1;
+      QList<Primitive *> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
+      if (selectedAtoms.size() == 1) { // TODO: Expand to handle multiple addition points
+        selectedAtom = selectedAtoms[0]->id();
+      }
+
+      emit performCommand(new InsertFragmentCommand(m_molecule, m_dialog->fragment(), m_widget, tr("Insert Fragment"), selectedAtom));
     }
   }
 
