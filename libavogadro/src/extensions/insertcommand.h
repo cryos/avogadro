@@ -40,7 +40,9 @@ namespace Avogadro {
     InsertFragmentCommand(Molecule *molecule, 
                           const Molecule &generatedMolecule,
                           GLWidget *widget,
-                          const QString commandName);
+                          const QString commandName,
+                          int startAtom = -1,
+                          int endAtom = -1);
     ~InsertFragmentCommand();
 
     virtual void undo();
