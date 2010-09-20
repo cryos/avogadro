@@ -1506,6 +1506,8 @@ namespace Avogadro
 
   void MainWindow::exportGL2PS()
   {
+// This is currently broken on windows, disabling until fixed.
+#ifndef WIN32
     QSettings settings;
     QString selectedFilter = settings.value("Export GL2PS Filter", tr("PDF")
                                             + " (*.pdf)").toString();
@@ -1571,6 +1573,7 @@ namespace Avogadro
     }
     fclose(fp);
     qDebug() << "Done...";
+#endif // not WIN32
   }
 
   void MainWindow::revert()
