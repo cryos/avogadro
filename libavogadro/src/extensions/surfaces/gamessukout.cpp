@@ -384,7 +384,7 @@ namespace Avogadro
       if ( line.size() == 0 ) continue;
 
       // Separate into tokens
-      if ( ! tokenize(tokens, line.c_str(), " ") or tokens.size() == 0 )
+      if ( ! tokenize(tokens, line.c_str(), " ") || tokens.size() == 0 )
       {
         // If the string couldn't be tokenised, set tokens[0] to the entire string
         tokens.clear();
@@ -670,7 +670,7 @@ namespace Avogadro
 
     orbitalsRead1=readMOVectors(ifs);
     orbitalsRead=orbitalsRead1;
-    while (orbitalsRead==orbitalsRead1 or orbitalsRead!=0)
+    while (orbitalsRead==orbitalsRead1 || orbitalsRead!=0)
       orbitalsRead = readMOVectors(ifs);
 
   } //end readMos
