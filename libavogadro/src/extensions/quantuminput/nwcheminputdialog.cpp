@@ -283,7 +283,8 @@ namespace Avogadro
     else if (m_molecule && m_coordType == ZMATRIX)
     {
       QTextStream mol(&buffer);
-      mol << " zmatrix\n";
+      mol.setFieldAlignment(QTextStream::AlignAccountingStyle);
+      mol << "\n zmatrix\n";
       OBAtom *a, *b, *c;
       double r, w, t;
 
@@ -301,24 +302,22 @@ namespace Avogadro
         b = vic[atom->GetIdx()]->_b;
         c = vic[atom->GetIdx()]->_c;
 
-        mol << qSetFieldWidth(4) << right
-            << QString(etab.GetSymbol(atom->GetAtomicNum())
-                       + QString::number(atom->GetIdx()))
-            << qSetFieldWidth(0);
+        mol << qSetFieldWidth(3) << QString(etab.GetSymbol(atom->GetAtomicNum()));
+
         if (atom->GetIdx() > 1)
-          mol << ' ' << QString(etab.GetSymbol(a->GetAtomicNum())
-                                + QString::number(a->GetIdx()))
-              << " r" << atom->GetIdx();
+          mol << qSetFieldWidth(0) << "  " << qSetFieldWidth(3) << QString::number(a->GetIdx())
+              << qSetFieldWidth(0) << "  "<< qSetFieldWidth(4) << QString("r") + QString::number(atom->GetIdx());
+
         if (atom->GetIdx() > 2)
-          mol << ' ' << QString(etab.GetSymbol(b->GetAtomicNum())
-                                + QString::number(b->GetIdx()))
-              << " a" << atom->GetIdx();
+          mol << qSetFieldWidth(0) << "  " << qSetFieldWidth(3) << QString::number(b->GetIdx())
+              << qSetFieldWidth(0) << "  "<< qSetFieldWidth(4) << QString("a") + QString::number(atom->GetIdx());
+
         if (atom->GetIdx() > 3)
-          mol << ' ' << QString(etab.GetSymbol(c->GetAtomicNum())
-                                + QString::number(c->GetIdx()))
-              << " d" << atom->GetIdx();
-        mol << '\n';
-      }
+          mol << qSetFieldWidth(0) << "  " << qSetFieldWidth(3) << QString::number(c->GetIdx())
+              << qSetFieldWidth(0) << "  "<< qSetFieldWidth(4) << QString("d") + QString::number(atom->GetIdx());
+
+        mol << qSetFieldWidth(0) << '\n';
+      }     
 
       mol << " variables\n";
       FOR_ATOMS_OF_MOL(atom, &obmol)
@@ -331,18 +330,19 @@ namespace Avogadro
         if (t < 0.0)
           t += 360.0;
         if (atom->GetIdx() > 1)
-          mol << "   r" << atom->GetIdx() << " = " << qSetFieldWidth(15)
+          mol << "   r" << atom->GetIdx() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << r << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 2)
-          mol << "   a" << atom->GetIdx() << " = " << qSetFieldWidth(15)
+          mol << "   a" << atom->GetIdx() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << w << qSetFieldWidth(0) << '\n';
         if (atom->GetIdx() > 3)
-          mol << "   d" << atom->GetIdx() << " = " << qSetFieldWidth(15)
+          mol << "   d" << atom->GetIdx() << qSetFieldWidth(15)
               << qSetRealNumberPrecision(5) << forcepoint << fixed << right
               << t << qSetFieldWidth(0) << '\n';
       }
+      mol << " end\n";
       foreach (OpenBabel::OBInternalCoord *c, vic)
         delete c;
     }

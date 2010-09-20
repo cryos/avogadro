@@ -413,11 +413,10 @@
    </item>
    <item>
     <widget class="QTextEdit" name="previewText">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
+     <property name="font">
+      <font>
+       <family>Monospace</family>
+      </font>
      </property>
      <property name="acceptRichText">
       <bool>false</bool>
