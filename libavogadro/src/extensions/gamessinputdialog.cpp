@@ -2067,6 +2067,10 @@ namespace Avogadro {
     m_inputData->System->SetConvertedTime( val );
   }
 
+#ifdef WIN32
+  double round(double d) {return floor(d+0.5);}
+#endif
+
   void GamessInputDialog::setTimeLimitUnits( int index )
   {
     long oldTimeLimit, newTimeLimit;
