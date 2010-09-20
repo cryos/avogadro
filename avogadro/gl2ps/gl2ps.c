@@ -42,6 +42,10 @@
 #include <time.h>
 #include <float.h>
 
+#ifdef WIN32
+#define M_PI 3.14159265
+#endif
+
 #if defined(GL2PS_HAVE_ZLIB)
 #include <zlib.h>
 #endif
