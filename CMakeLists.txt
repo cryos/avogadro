@@ -317,9 +317,9 @@ mark_as_advanced(ENABLE_VERSIONED_PLUGIN_DIR)
 # Set up our path handling, inspired by the path handling used in KDE
 set(LIB_SUFFIX "" CACHE STRING "Suffix of the directory name, e.g. 64 for lib64")
 set(SHARE_INSTALL_PREFIX "share"
-    CACHE PATH "Base directory for shared data")
+    CACHE STRING "Base directory for shared data")
 set(BIN_INSTALL_DIR      "bin"
-    CACHE PATH "Install dir for binaries")
+    CACHE STRING "Install dir for binaries")
 
 # Set up the plugin directory
 if(ENABLE_VERSIONED_PLUGIN_DIR)
@@ -330,25 +330,25 @@ endif()
 
 if(UNIX)
   set(LIB_INSTALL_DIR      "lib${LIB_SUFFIX}"
-      CACHE PATH "Install dir for libraries")
+      CACHE STRING "Install dir for libraries")
   set(Avogadro_PLUGIN_INSTALL_DIR
       "${LIB_INSTALL_DIR}/avogadro${Plugin_Version}"
-      CACHE PATH "Install dir for plugins")
+      CACHE STRING "Install dir for plugins")
 else()
   set(LIB_INSTALL_DIR      "${BIN_INSTALL_DIR}"
-      CACHE PATH "Install dir for libraries")
+      CACHE STRING "Install dir for libraries")
   set(Avogadro_PLUGIN_INSTALL_DIR
       "lib${LIB_SUFFIX}/avogadro${Plugin_Version}"
-      CACHE PATH "Install dir for plugins")
+      CACHE STRING "Install dir for plugins")
 endif()
 set(INCLUDE_INSTALL_DIR  "include"
-    CACHE PATH "Install dir for include files")
+    CACHE STRING "Install dir for include files")
 set(I18N_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/avogadro/i18n"
-    CACHE PATH "Install dir for i18n files")
+    CACHE STRING "Install dir for i18n files")
 set(XDG_APPS_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/applications"
-    CACHE PATH "Install dir for application files")
+    CACHE STRING "Install dir for application files")
 set(XDG_ICON_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/pixmaps"
-    CACHE PATH "Install dir for application icons")
+    CACHE STRING "Install dir for application icons")
 
 # Some rpath handling for Linux and Mac
 option(ENABLE_RPATH "Enable rpath support on Linux and Mac" ON)
