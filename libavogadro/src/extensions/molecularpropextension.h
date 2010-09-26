@@ -84,8 +84,11 @@ namespace Avogadro {
 
       MolecularPropertiesDialog *m_dialog;
       // to query the NIH chemical resolver for an IUPAC name
+      QString                m_inchi;
       QNetworkAccessManager *m_network;
       bool m_nameRequestPending;
+
+      void clearName();
 
       private Q_SLOTS:
       void requestIUPACName();

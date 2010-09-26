@@ -42,7 +42,10 @@ using namespace OpenBabel;
 namespace Avogadro {
 
   MolecularPropertiesExtension::MolecularPropertiesExtension(QObject *parent) : Extension(parent),
-                                                                                m_molecule(0), m_dialog(0), m_network(0), m_nameRequestPending(false)
+                                                                                m_molecule(0), m_dialog(0),
+                                                                                m_inchi(),
+                                                                                m_network(0),
+                                                                                m_nameRequestPending(false)
   {
     QAction *action = new QAction(this);
     action->setText(tr("Molecule Properties..."));
@@ -119,9 +122,7 @@ namespace Avogadro {
     connect(m_molecule, SIGNAL(bondUpdated(Bond *)),
             this, SLOT(updateBonds(Bond*)));
 
-    // by default, hide the IUPAC name -- we populate it through the network
-    m_dialog->nameLabel->hide();
-    m_dialog->nameLine->hide();
+    m_dialog->nameLine->setText(tr("unknown", "Unknown molecule name"));
 
     update();
     m_dialog->show();
@@ -139,9 +140,10 @@ namespace Avogadro {
 
     if (!m_nameRequestPending) {
       m_nameRequestPending = true;
-      // Wait 3 seconds before requesting to limit number of requests
-      qDebug() << "Requesting IUPAC name in 3 seconds...";
-      QTimer::singleShot(3000, this, SLOT(requestIUPACName()));
+      // Wait 250 msec before requesting to limit number of requests
+      // (Additional throttling is done by checking the InChI for each request)
+      qDebug() << "Requesting IUPAC name...";
+      QTimer::singleShot(250, this, SLOT(requestIUPACName()));
     }
 
     QString format("%L1"); // localized numbers
@@ -197,6 +199,14 @@ namespace Avogadro {
     disconnect( m_molecule, 0, this, 0 );
   }
 
+  void MolecularPropertiesExtension::clearName()
+  {
+    if (m_dialog)
+      m_dialog->nameLine->setText(tr("unknown", "Unknown molecule name"));
+    if (m_molecule)
+      m_molecule->setProperty("name", QVariant()); // set an invalid name, since we don't have one
+  }
+
   void MolecularPropertiesExtension::replyFinished(QNetworkReply *reply)
   {
     // Read in all the data
@@ -205,30 +215,26 @@ namespace Avogadro {
                            tr("Network Download Failed"),
                            tr("Network timeout or other error."));
       reply->deleteLater();
+      clearName();
       return;
     }
 
-    QByteArray data = reply->readAll();
-
     // check if the data came through
+    QByteArray data = reply->readAll();
     if (data.contains("Error report") || data.contains("<h1>")) {
       reply->deleteLater();
+      clearName();
       return;
     }
 
     QString name = QString(data).trimmed().toLower();
     if (!name.isEmpty()) {
-      m_dialog->nameLabel->show();
-      m_dialog->nameLine->show();
       m_dialog->nameLine->setText(name);
-      if (m_molecule)
-        m_molecule->setProperty("name", QVariant(name)); // set an invalid name, since we don't have one
+      if (m_molecule) {
+        m_molecule->setProperty("name", QVariant(name)); // set the name for future use by other code
+      }
     } else {
-      // if the labels are already shown, don't bother hiding them:
-      // it's better to show the user that we can't assign a name for it
-      m_dialog->nameLine->setText(tr("unknown", "Unknown molecule name"));
-      if (m_molecule)
-        m_molecule->setProperty("name", QVariant()); // set an invalid name, since we don't have one
+      clearName();
     }
 
     reply->deleteLater();
@@ -242,18 +248,22 @@ namespace Avogadro {
     m_nameRequestPending = false;
     OpenBabel::OBMol obmol = m_molecule->OBMol();
 
-    // The molecule has changed, so we need to ask for a new name
-    // from the resolver
+    // Check if the molecule has changed,
+    // so we need to ask for a new name from the resolver
     OBConversion conv;
-    conv.SetOutFormat("smi");
-    obmol.SetTitle("");
-    std::string smilesString = conv.WriteString(&obmol, true); // skip whitespace
-    qDebug() << " requesting name for: " << smilesString.c_str();
+    conv.SetOutFormat("inchi"); // use a standard InChI key (which avoids issues with URL escaping)
+    QString inchi = QString::fromStdString(conv.WriteString(&obmol, true)); // skip whitespace
+    if (m_inchi == inchi)
+      return; // no need to send a new query, since it's the same request
 
-    QString requestURL = QString("http://cactus.nci.nih.gov/chemical/structure/%1/iupac_name")
-      .arg(smilesString.c_str());
+    m_inchi = inchi; // cache for next use
+
+    QString requestURL = QLatin1String("http://cactus.nci.nih.gov/chemical/structure/") + m_inchi + QLatin1String("/iupac_name");
+    qDebug() << " requesting URL: " << requestURL;
 
     m_network->get(QNetworkRequest(QUrl(requestURL)));
+
+    m_dialog->nameLine->setText(tr("(pending)", "asking server for molecule name"));
   }
 
 } // end namespace Avogadro
