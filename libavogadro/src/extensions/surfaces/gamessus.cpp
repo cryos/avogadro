@@ -98,11 +98,20 @@ namespace Avogadro
       m_coordFactor = BOHR_TO_ANGSTROM;
       m_currentMode = Atoms;
       key = m_in->readLine().trimmed(); // skip the column titles
+    } else if (key.contains("COORDINATES OF ALL ATOMS ARE (ANGS)", Qt::CaseInsensitive)) {
+      m_aNums.clear();
+      m_aPos.clear();
+
+      m_coordFactor = 1.0; // in Angstroms now
+      m_currentMode = Atoms;
+      key = m_in->readLine(); // skip column titles
+      key = m_in->readLine(); // and ----- line
     } else if (key.contains("ATOMIC BASIS SET")) {
       m_currentMode = GTO;
       // ---
       // PRIMITIVE
       // BASIS FUNC
+      // blank
       // column header
       // blank
       // element
@@ -115,7 +124,7 @@ namespace Avogadro
       m_currentMode = NotParsing; // no longer reading GTOs
     } else if (key.contains("NUMBER OF ELECTRONS")) {
       m_electrons = list[4].toInt();
-    } else if (key.contains("EIGENVECTORS") || key.contains("MOLECULAR ORBITALS")) {
+    } else if (key.contains("EIGENVECTORS")) { //|| key.contains("MOLECULAR ORBITALS")) {
       m_currentMode = MO;
       key = m_in->readLine(); // ----
       key = m_in->readLine(); // blank line
@@ -129,12 +138,12 @@ namespace Avogadro
       switch (m_currentMode) {
       case Atoms:
         // element_name atomic_number x y z
-        if (list.size() < 6)
+        if (list.size() < 5)
           return;
-        m_aNums.push_back((int)list[2].toDouble());
+        m_aNums.push_back((int)list[1].toDouble());
+        m_aPos.push_back(list[2].toDouble() * m_coordFactor);
         m_aPos.push_back(list[3].toDouble() * m_coordFactor);
         m_aPos.push_back(list[4].toDouble() * m_coordFactor);
-        m_aPos.push_back(list[5].toDouble() * m_coordFactor);
 
         break;
       case GTO:
@@ -142,6 +151,7 @@ namespace Avogadro
         if (key.isEmpty())
           break;
         list = key.split(' ', QString::SkipEmptyParts);
+        numGTOs = 0;
         while (list.size() > 1) {
           numGTOs++;
           shell = list[1].toLower();
@@ -168,7 +178,7 @@ namespace Avogadro
           key = m_in->readLine().trimmed();
           if (key.isEmpty()) {
             key = m_in->readLine().trimmed();
-            m_shellNums.push_back(numGTOs - 1);
+            m_shellNums.push_back(numGTOs);
             m_shellTypes.push_back(shellType);
             m_shelltoAtom.push_back(m_currentAtom);
             numGTOs = 0;
@@ -196,13 +206,16 @@ namespace Avogadro
           }
           
           key = m_in->readLine();
+          if (key.contains(QLatin1String("END OF RHF")))
+            break;
           list = key.split(' ', QString::SkipEmptyParts);          
         } // ok, we've finished one batch of MO coeffs
         
-        // Now we need to re-order the MO coeffs, so we insert one atom at a time
+        // Now we need to re-order the MO coeffs, so we insert one MO at a time
         for (unsigned int i = 0; i < numColumns; ++i) {
           numRows = columns[i].size();
           for (unsigned int j = 0; j < numRows; ++j) {
+            qDebug() << "push back" << columns[i][j];
             m_MOcoeffs.push_back(columns[i][j]);
           }
         }
@@ -230,23 +243,26 @@ namespace Avogadro
       basis->addAtom(Vector3d(m_aPos.at(i), m_aPos.at(i+1), m_aPos.at(i+2)),
                      m_aNums.at(nAtom++));
 
-    qDebug() << m_shellTypes.size() << m_shellNums.size() << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
+    //    qDebug() << m_shellTypes.size() << m_shellNums.size() << m_shelltoAtom.size() << m_a.size() << m_c.size() << m_csp.size();
 
     // Set up the GTO primitive counter, go through the shells and add them
     int nGTO = 0;
     int nSP = 0; // number of SP shells
     for (unsigned int i = 0; i < m_shellTypes.size(); ++i) {
-      qDebug() << " Loop: " << i << nGTO << nSP;
       // Handle the SP case separately - this should possibly be a distinct type
       if (m_shellTypes.at(i) == SP)  {
         // SP orbital type - currently have to unroll into two shells
+        int tmpGTO = nGTO;
         int s = basis->addBasis(m_shelltoAtom.at(i) - 1, S);
-        int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
         for (int j = 0; j < m_shellNums.at(i); ++j) {
           basis->addGTO(s, m_c.at(nGTO), m_a.at(nGTO));
-          basis->addGTO(p, m_csp.at(nSP), m_a.at(nGTO));
-          ++nSP;
           ++nGTO;
+        }
+        int p = basis->addBasis(m_shelltoAtom.at(i) - 1, P);
+        for (int j = 0; j < m_shellNums.at(i); ++j) {
+          basis->addGTO(p, m_csp.at(nSP), m_a.at(tmpGTO));
+          ++tmpGTO;
+          ++nSP;
         }
       }
       else {
@@ -257,7 +273,7 @@ namespace Avogadro
         }
       }
     }
-    qDebug() << " loading MOs " << m_MOcoeffs.size();
+    //    qDebug() << " loading MOs " << m_MOcoeffs.size();
 
     // Now to load in the MO coefficients
     if (m_MOcoeffs.size())
