@@ -27,6 +27,7 @@ set(orbitalextension_SRCS
     orbitalwidget.cpp
     basisset.cpp
     gamessukout.cpp
+    gamessus.cpp
     gaussianset.cpp
     gaussianfchk.cpp
     slaterset.cpp

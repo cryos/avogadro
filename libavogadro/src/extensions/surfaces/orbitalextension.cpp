@@ -35,6 +35,7 @@
 #include "molpro.h"
 #include "mopacaux.h"
 #include "molden.h"
+#include "gamessus.h"
 
 #include <avogadro/molecule.h>
 #include <avogadro/cube.h>
@@ -46,7 +47,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QMessageBox>
-#include <QTime>
 
 namespace Avogadro
 {
@@ -166,7 +166,6 @@ namespace Avogadro
       m_widget->fillTable(list);
     }
 
-    m_time.start();
     precalculateOrbitals();
   }
 
@@ -495,18 +494,22 @@ namespace Avogadro
       return;
     }
 
-    QSettings settings;
-    engine->writeSettings(settings);
-    settings.setValue("colorMode", 1);
-    settings.setValue("mesh1Id",static_cast<int>(m_queue[index].posMesh->id()));
-    settings.setValue("mesh2Id",static_cast<int>(m_queue[index].negMesh->id()));
-    engine->readSettings(settings);
-    engine->setEnabled(true);
-    // Trigger a repaint with the new mesh
-    /// @todo Should be using m_molecule->update() to trigger a repaint in
-    /// all open displays, this currently causes crashes - need to track
-    /// down the cause.
-    GLWidget::current()->update();
+    if (engine) {
+      QSettings settings;
+      engine->writeSettings(settings);
+      settings.setValue("colorMode", 1);
+      settings.setValue("mesh1Id",static_cast<int>(m_queue[index].posMesh->id()));
+      settings.setValue("mesh2Id",static_cast<int>(m_queue[index].negMesh->id()));
+      engine->readSettings(settings);
+      engine->setEnabled(true);
+      // Trigger a repaint with the new mesh
+      /// FIXME Should be using m_molecule->update() to trigger a repaint in
+      /// all open displays, this currently causes crashes - need to track
+      /// down the cause.
+      GLWidget::current()->update();
+    }
+    else
+      qDebug() << "Engine is null - no engines of this type loaded.";
   }
 
   void OrbitalExtension::checkQueue()
@@ -535,7 +538,7 @@ namespace Avogadro
     // Do nothing if all calcs are finished.
     if (hash.size() == 0) {
       m_runningMutex->unlock();
-      qDebug("Finished queue. Time elapsed: %10.4f s", (m_time.elapsed() / 1000.0f));
+      qDebug() << "Finished queue.";
       return;
     }
 
@@ -550,9 +553,29 @@ namespace Avogadro
       return false;
     }
 
+    // Check to see if this molecule has been tagged with a file format
+    QVariant fileFormat = m_molecule->property("File Format");
+    if (fileFormat.isValid()) {
+      QString format = fileFormat.toString();
+
+      if (format == QLatin1String("gamout")) {
+        qDebug() << " deduced from format ";
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GAMESSUSOutput gamout(m_molecule->fileName(), gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+    }
+
+
     // Everything looks good, a new basis set needs to be loaded
     // Check for files in this directory -- first the file itself
-    // and then any other similar files
+    // and then any other similar file
 
     QFileInfo parentInfo(m_molecule->fileName());
     // Look for files with the same basename, but different extensions
@@ -629,6 +652,19 @@ namespace Avogadro
         m_basis = gaussian;
         return true;
       }
+
+      else if (completeSuffix.contains("gamout", Qt::CaseInsensitive)) {
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GAMESSUSOutput gamout(fullFileName, gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
+
     }
 
     return false;
