@@ -351,12 +351,12 @@ namespace Avogadro
 
   int POVPainter::drawText(const Vector3d &center, const QString &str)
   {
-      
+
        /*qDebug() << "text {\n"
         //<< "\t<" << center.x() << ", " << center.y() << ", " << center.z() << ">\n"
         << "\tttf " << "\"timrom.ttf\"" << str << "1, 0\n"
         << "\tpigment { White }" << "\n}\n\n";
-       *(d->output) << "text {\n"        
+       *(d->output) << "text {\n"
         << "\tttf " << "\"timrom.ttf\" \"" << str << "\" 1, 0\n"
         << "\tpigment { rgbt <" << d->color.red() << ", " << d->color.green()
       << ", " << d->color.blue() << "," << 1.0 - d->color.alpha() << "> }\n"
@@ -365,7 +365,9 @@ namespace Avogadro
   }
 
   int POVPainter::drawText(const Vector3d &center, const QString &str, const QFont &font)
-  {}
+  {
+    return 0;
+  }
 
   void POVPainter::drawBox(const Eigen::Vector3d &,
                            const Eigen::Vector3d &)
