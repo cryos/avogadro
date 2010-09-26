@@ -80,7 +80,10 @@ namespace Avogadro {
       progDialog.setValue(2*i);
 
       //make the png
-      runPovRay(workDirectory, povFileName);
+      if ( ! runPovRay(workDirectory, povFileName ) ) {
+        QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), QObject::tr("Could not run povray."));
+        return;
+      }
       progDialog.setValue(2*i+1);
 
       QString pngFileName = workDirectory + QString::number(i) + ".png";
@@ -111,7 +114,7 @@ namespace Avogadro {
     }
   }
 
-  void TrajVideoMaker::runPovRay(QString directory, QString povFileName)
+  bool TrajVideoMaker::runPovRay(QString directory, QString povFileName)
   {
     //executable for povray.  -D suppresses the popup image.
     const QString povrayexe = "povray -D ";
@@ -121,7 +124,9 @@ namespace Avogadro {
     //QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), povRayCommand);
     int ret = system(povRayCommand.toStdString().c_str());
     if (ret)
-      QMessageBox::warning( NULL, QObject::tr( "Avogadro" ), QObject::tr("Could not run povray."));
+      return false;
+    else
+      return true;
   }
 
   template <class QStringIterator>
