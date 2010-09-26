@@ -71,7 +71,9 @@ namespace Avogadro {
   private:
       //!support to read a trajectory from xyz as described here:
       //!http://www.ks.uiuc.edu/Research/vmd/plugins/molfile/xyzplugin.html
-      void readTrajFromXyz(QString filename);
+      //!and DL-POLY HISTORY files:
+      //!htp://www.cse.scitech.ac.uk/ccg/software/DL_POLY/MANUALS/USRMAN2.17.pdf
+      void readTrajFromFile(QString filename);
 
       //!support to write a trajectory to xyz as described here:
       //!http://www.ks.uiuc.edu/Research/vmd/plugins/molfile/xyzplugin.html

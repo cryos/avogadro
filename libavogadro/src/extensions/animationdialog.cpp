@@ -29,7 +29,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QProgressDialog>
-
+#include <QSettings>
 
 #include <openbabel/plugin.h>
 
@@ -51,7 +51,7 @@ namespace Avogadro {
     connect(ui.pauseButton, SIGNAL(clicked()), this, SIGNAL(pause()));
     connect(ui.stopButton, SIGNAL(clicked()), this, SIGNAL(stop()));
     connect(ui.saveVideoButton, SIGNAL(clicked()), this, SLOT(saveVideo()));
-      }
+  }
 
   AnimationDialog::~AnimationDialog()
   {
@@ -61,9 +61,18 @@ namespace Avogadro {
   void AnimationDialog::loadFile()
   {
     // Load a file
+    QSettings settings;
+    QString selectedFilter = settings.value("Open Trajectory Filter").toString();
+
+    QStringList filters;
+    filters << tr("Trajectory files") + " (*.xtc *.xyz)"
+            << tr("All files") + " (* *.*)"
+            << tr("DL-POLY HISTORY files") + " (HISTORY)";
+
     QString file = QFileDialog::getOpenFileName(this,
-      tr("Open trajectory file"), ui.fileEdit->text(),
-      tr("Trajectory files (*.xtc *.xyz)"));
+                                                tr("Open Trajectory File"), ui.fileEdit->text(), 
+                                                filters.join(";;"), &selectedFilter);
+    settings.setValue("Open Trajectory Filter", selectedFilter);
     ui.fileEdit->setText(file);
     
     emit fileName(file);
@@ -92,9 +101,9 @@ namespace Avogadro {
   void AnimationDialog::saveVideo()
   {
     QString sVideoFileName = QFileDialog::getSaveFileName(this, 
-							  tr("Save Video File"),
-							  ui.videoFileLine->text(),
-							  tr("video files (*.avi)"));
+                                                          tr("Save Video File"),
+                                                          ui.videoFileLine->text(),
+                                                          tr("video files (*.avi)"));
 
     
     if (!sVideoFileName.isEmpty() )  { 
