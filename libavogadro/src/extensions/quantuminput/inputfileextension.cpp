@@ -25,6 +25,7 @@
 #include "inputfileextension.h"
 
 #include "daltoninputdialog.h"
+#include "gamessukinputdialog.h"
 #include "gaussianinputdialog.h"
 #include "molproinputdialog.h"
 #include "mopacinputdialog.h"
@@ -50,10 +51,15 @@ namespace Avogadro
     m_molecule(0)
   {
     QAction* action;
-	
+
     action = new QAction(this);
     action->setText(tr("&Dalton..."));
     action->setData("Dalton");
+    m_actions.append(action);
+
+    action = new QAction(this);
+    action->setText(tr("&GAMESS-UK..."));
+    action->setData("GAMESS-UK");
     m_actions.append(action);
 
     action = new QAction(this);
@@ -86,12 +92,13 @@ namespace Avogadro
     m_actions.append(action);
 
     m_hasDialog["Dalton"] = false;
+    m_hasDialog["GAMESS-UK"] = false;
     m_hasDialog["Gaussian"] = false;
     m_hasDialog["Molpro"] = false;
     m_hasDialog["MOPAC"] = false;
     m_hasDialog["NWChem"] = false;
     m_hasDialog["QChem"] = false;
-    
+
     //connect(m_dialog["MOPAC"], SIGNAL(readOutput(QString)),
       //  this, SLOT(readOutputFile(QString)));
   }
@@ -190,6 +197,8 @@ namespace Avogadro
     // Returns 0 if dialog name is invalid
     if (name == "Dalton")
       return new DaltonInputDialog(static_cast<QWidget*>(parent()));;
+    if (name == "GAMESS-UK")
+      return new GAMESSUKInputDialog(static_cast<QWidget*>(parent()));;
     if (name == "Gaussian")
       return new GaussianInputDialog(static_cast<QWidget*>(parent()));;
     if (name == "Molpro")
@@ -202,7 +211,7 @@ namespace Avogadro
       return new QChemInputDialog(static_cast<QWidget*>(parent()));
     return 0;
   }
-  
+
 } // End namespace Avogadro
 
 Q_EXPORT_PLUGIN2(inputfileextension, Avogadro::InputFileExtensionFactory)

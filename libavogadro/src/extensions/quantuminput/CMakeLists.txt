@@ -9,6 +9,7 @@ set(inputfileextension_SRCS
     inputfileextension.cpp
     inputdialog.cpp
     daltoninputdialog.cpp
+    gamessukinputdialog.cpp
     gaussianinputdialog.cpp
     molproinputdialog.cpp
     mopacinputdialog.cpp
@@ -17,6 +18,7 @@ set(inputfileextension_SRCS
 set(inputfileextension_UIS
   gaussianinputdialog.ui
   daltoninputdialog.ui
+  gamessukinputdialog.ui
   molproinputdialog.ui
   mopacinputdialog.ui
   nwcheminputdialog.ui
