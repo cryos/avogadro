@@ -168,7 +168,7 @@ namespace Avogadro {
      * The index of the NCP in group of NCPs of the same element in Molecule
      */
     unsigned int groupIndex() const { return m_groupIndex; }
-    
+
     /**
      * @return True if the NCP is associated with hydrogen.
      */

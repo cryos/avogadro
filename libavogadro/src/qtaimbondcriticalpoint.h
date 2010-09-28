@@ -2,9 +2,9 @@
   Bond - Bond class derived from the base Primitive class
 
   Copyright (C) 2007 Donald Ephraim Curtis
-	Copyright (c) 2008-2009 Marcus D. Hanwell
-	Copyright (c) 2009 Tim Vandermeersch
-	Copyright (c) 2009 Geoff Hutchison
+        Copyright (c) 2008-2009 Marcus D. Hanwell
+        Copyright (c) 2009 Tim Vandermeersch
+        Copyright (c) 2009 Geoff Hutchison
 
   This file is part of the Avogadro molecular editor project.
   For more information, see <http://avogadro.openmolecules.net/>

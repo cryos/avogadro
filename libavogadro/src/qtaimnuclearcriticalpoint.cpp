@@ -173,7 +173,7 @@ using Eigen::Vector3d;
        valenceE = atomicNum - 86;
      else
        return 0; // I don't quite know what to do for TM or other elements
-	
+
      int formalcharge = 0;
      int totalBonds = 0;
      foreach(unsigned long id, m_bondCriticalPoints) {
@@ -209,9 +209,9 @@ using Eigen::Vector3d;
        if (totalBonds < valenceE)
          loneE = fullShell - (2*totalBonds);
      }
-		
+
      formalcharge = valenceE - (totalBonds + loneE);
-	
+
      return formalcharge;
    }
 
@@ -227,7 +227,7 @@ using Eigen::Vector3d;
 
    void QTAIMNuclearCriticalPoint::setGroupIndex(unsigned int index)
    {
-	 m_groupIndex = index;
+         m_groupIndex = index;
    }
 
    unsigned long QTAIMNuclearCriticalPoint::residueId() const
