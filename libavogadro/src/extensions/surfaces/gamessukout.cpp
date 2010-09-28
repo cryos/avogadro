@@ -44,30 +44,22 @@ namespace Avogadro
     if (!buf || !delimstr)
       return false;
 
-
     std::string s(buf);
     s += "\n";
     size_t startpos=0,endpos=0;
 
     for (;;)
-    {
-      startpos = s.find_first_not_of(delimstr,startpos);
-      endpos = s.find_first_of(delimstr,startpos);
+      {
+        startpos = s.find_first_not_of(delimstr,startpos);
+        endpos = s.find_first_of(delimstr,startpos);
 
-      // If we get to the end of the string and there is no delimiter npos is returned
-      // endpos is size-1 to remove the "\n" - not sure why it added anyway
-      if ( endpos == std::string::npos )
-        endpos=s.size()-1;
+        if (endpos <= s.size() && startpos <= s.size())
+          vcr.push_back(s.substr(startpos,endpos-startpos));
+        else
+          break;
 
-      if (endpos <= s.size() && startpos <= s.size())
-        vcr.push_back(s.substr(startpos,endpos-startpos));
-      else
-        break;
-
-      startpos = endpos+1;
-    }
-
-    //for (unsigned int i=0; i<vcr.size(); i++) std::cout << "Tokens " << i << " : " << vcr.at(i) << std::endl;
+        startpos = endpos+1;
+      }
 
     return(true);
   }
@@ -293,7 +285,8 @@ namespace Avogadro
       }
 
       // The molecular orbitals
-      if ( strstr(buffer,"                                                  eigenvectors") != NULL )
+      if ( strstr(buffer,"                                                  eigenvectors") != NULL ||
+           strstr(buffer,"          molecular orbitals") != NULL)
       {
         readMOs(ifs);
         gotMOs = true;
@@ -324,7 +317,7 @@ namespace Avogadro
     {
       //std::cout << "COORD line" << buffer << std::endl;
       //ifs.getline(buffer, BUFF_SIZE);
-      tokenize(tokens, buffer, " ");
+      tokenize(tokens, buffer, " \t\n");
 
       if ( tokens.size() == 8 )
       {
@@ -384,7 +377,7 @@ namespace Avogadro
       if ( line.size() == 0 ) continue;
 
       // Separate into tokens
-      if ( ! tokenize(tokens, line.c_str(), " ") || tokens.size() == 0 )
+      if ( ! tokenize(tokens, line.c_str(), " \t\n") || tokens.size() == 0 )
       {
         // If the string couldn't be tokenised, set tokens[0] to the entire string
         tokens.clear();
@@ -523,7 +516,7 @@ namespace Avogadro
     ifs.getline(buffer, BUFF_SIZE);
     if (strstr(buffer," total number of shells")==NULL) std::cerr << "Error reading nShell!: " << line << std::endl;
     // reuse nshell from above as temporary variable
-    tokenize(tokens, buffer, " ");
+    tokenize(tokens, buffer, " \t\n");
     ok = from_string<int>(nshell, tokens.at(4), std::dec);
     gukBasis.nShell=nshell;
 
@@ -531,7 +524,7 @@ namespace Avogadro
     // nBasisFunctions
     ifs.getline(buffer, BUFF_SIZE);
     if (strstr(buffer," total number of basis")==NULL) std::cerr << "Error reading nBasisFunctions!: " << line << std::endl;
-    tokenize(tokens, buffer, " ");
+    tokenize(tokens, buffer, " \t\n");
     // reuse nshell from above as temporary variable
     ok = from_string<int>(nshell, tokens.at(5), std::dec);
     gukBasis.nBasisFunctions=nshell;
@@ -539,7 +532,7 @@ namespace Avogadro
     // nElectrons
     ifs.getline(buffer, BUFF_SIZE);
     if (strstr(buffer," number of electrons")==NULL) std::cerr << "Error reading nElectrons!: " << line << std::endl;
-    tokenize(tokens, buffer, " ");
+    tokenize(tokens, buffer, " \t\n");
     // reuse nshell from above as temporary variable
     ok = from_string<int>(nshell, tokens.at(3), std::dec);
     gukBasis.nElectrons=nshell;
@@ -608,7 +601,7 @@ namespace Avogadro
           // End of geometry block
           if ( strstr(buffer, "  ============================================================") != NULL) return;
 
-          tokenize(tokens, buffer, " ");
+          tokenize(tokens, buffer, " \t\n");
 
           ok = from_string<double>(x, tokens.at(0), std::dec);
           ok = from_string<double>(y, tokens.at(1), std::dec);
@@ -635,7 +628,7 @@ namespace Avogadro
           if ( strstr(buffer, "*************************") != NULL) return;
 
 
-          tokenize(tokens, buffer, " ");
+          tokenize(tokens, buffer, " \t\n");
 
           gukBasis.atomLabels.push_back(tokens.at(0));
           ok = from_string<double>(x, tokens.at(3), std::dec);
@@ -693,8 +686,7 @@ namespace Avogadro
     // Check we're not at the end
     if ( strstr(buffer, "end of")!=0 ) return 0;
 
-    tokenize(tokens, buffer, " ");
-
+    tokenize(tokens, buffer, " \t\n");
     norbitals = tokens.size(); // How many orbital columns
 
     for ( unsigned int i=0; i < tokens.size() ; i++ )
@@ -704,16 +696,12 @@ namespace Avogadro
       gukBasis.moEnergies.push_back(energy);
     }
 
-
     // Add the lists to hold this set of coefficients
     norbitalsRead=gukBasis.moVectors.size(); // How many were read in previously
 
     // Create the arrays to hold the coefficients for each orbital
     for ( unsigned int i=0; i < norbitals ; i++ )
       gukBasis.moVectors.push_back( std::vector<double>() );
-
-    //std::cout << "norbitalsRead " << norbitalsRead << std::endl;
-    //std::cout <<  "norbitals " << norbitals  << std::endl;
 
     //skip 5 lines to just before where first set of orbitals are printed
     ifs.getline(buffer, BUFF_SIZE) &&
@@ -729,7 +717,7 @@ namespace Avogadro
       ifs.getline( buffer, BUFF_SIZE );
       //std::cout << "MO line " << buffer << std::endl;
 
-      tokenize(tokens, buffer, " ");
+      tokenize(tokens, buffer, " \t\n");
 
       for (unsigned int j=0; j < norbitals ; j++ )
       {
@@ -740,8 +728,13 @@ namespace Avogadro
       }
     }
 
-    // skip 3 lines to where the next set of headers are printed
-    ifs.getline(buffer, BUFF_SIZE) && ifs.getline(buffer, BUFF_SIZE);
+    // skip 2 lines to where the next set of headers are printed
+    ifs.getline(buffer, BUFF_SIZE);
+    ifs.getline(buffer, BUFF_SIZE);
+
+    // If we are printed out after an optimisation under the control of "iprint vectors",
+    // the next line with be filled with " =================" if we've finished
+    if ( strstr(buffer, " ===============================")!=0 ) return 0;
 
     return norbitals;
 
