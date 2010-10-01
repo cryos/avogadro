@@ -1047,7 +1047,7 @@ namespace Avogadro
         mol->setAllConformers(d->moleculeFile->conformers());
         qDebug() << " # of conformers " << mol->numConformers();
       }
-        
+
       setMolecule(mol);
       // Now unroll any settings we saved in the file
       // This is disabled for version 1.0-release
