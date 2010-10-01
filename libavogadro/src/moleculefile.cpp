@@ -590,7 +590,9 @@ namespace Avogadro {
       void addConformer(const OpenBabel::OBMol &conformer)
       {
         unsigned int numAtoms = conformer.NumAtoms();
-        std::vector<Eigen::Vector3d> *coords = new std::vector<Eigen::Vector3d>(numAtoms);
+        std::vector<Eigen::Vector3d> *coords = new std::vector<Eigen::Vector3d>;
+        coords->reserve(numAtoms); // pre-allocate room for all atoms.
+
         for (unsigned int i = 0; i < numAtoms; ++i)
           coords->push_back(Eigen::Vector3d(conformer.GetAtom(i+1)->GetVector().AsArray()));
         m_moleculeFile->m_conformers.push_back(coords);
@@ -712,7 +714,7 @@ namespace Avogadro {
         }
         m_moleculeFile->streamposRef().pop_back();
 
-        // signle molecule files are not conformer files
+        // single molecule files are not conformer files
         if (c == 1) {
           m_moleculeFile->setConformerFile(false);
           m_moleculeFile->m_conformers.clear();
