@@ -2437,6 +2437,71 @@ namespace Avogadro
     }
   }
 
+  void MainWindow::alignViewToAxes()
+  {
+    // do nothing if there is a timer running
+    if(d->centerTimer)
+      return;
+
+    Camera * camera = d->glWidget->camera();
+    if(!camera)
+      return;
+
+    // determine our goal matrix
+    Matrix3d linearGoal = Matrix3d::Identity();
+
+    // calculate the translation matrix
+    Transform3d goal(linearGoal);
+
+    goal.pretranslate(- 3.0 * (d->glWidget->radius() + CAMERA_NEAR_DISTANCE) * Vector3d::UnitZ());
+
+    // Support centering on a selection
+    QList<Primitive*> selectedAtoms = d->glWidget->selectedPrimitives().subList(Primitive::AtomType);
+    if (selectedAtoms.isEmpty()) { // no selected atoms, center on 0,0,0
+      goal.translate( Vector3d::Zero() );
+    } else {
+      // Calculate the centroid of the selection
+      Vector3d selectedCenter(0.0, 0.0, 0.0);
+      foreach(Primitive *item, selectedAtoms) {
+        // Atom::pos() returns a pointer to the position
+        selectedCenter += *(static_cast<Atom*>(item)->pos());
+      }
+      selectedCenter /= double(selectedAtoms.size());
+      goal.translate( -selectedCenter);
+    }
+
+    // if smooth transitions are disabled, center now and return
+    if( !d->molecule->numAtoms() >= 1000 ) {
+      camera->setModelview(goal);
+      d->glWidget->update();
+      return;
+    }
+
+    d->startTrans = camera->modelview().translation();
+    d->deltaTrans = goal.translation() - d->startTrans;
+
+    d->startOrientation = camera->modelview().linear();
+    d->endOrientation = goal.linear();
+
+    // Use QTimer for smooth transitions
+    d->centerTime = 0;
+
+    // use the rotation angle between the two orientations to calculate our animation time
+    double m = AngleAxisd(d->startOrientation.inverse() * d->endOrientation).angle();
+    d->rotationTime = int(m*300.0);
+
+    if(d->rotationTime < 300 && d->deltaTrans.squaredNorm() > 1)
+      d->rotationTime = 500;
+
+    // make sure we need to rotate
+    if(d->rotationTime > 0) {
+      d->centerTimer = new QTimer();
+      connect(d->centerTimer, SIGNAL(timeout()),
+          this, SLOT(centerStep()));
+      d->centerTimer->start(10);
+    }
+  }
+
   void MainWindow::showAndActivate()
   {
     setWindowState(windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -2575,6 +2640,8 @@ namespace Avogadro
              this, SLOT( closeView() ) );
     connect( ui.actionCenter, SIGNAL( triggered() ),
              this, SLOT( centerView() ) );
+    connect( ui.actionAlignViewToAxes, SIGNAL( triggered() ),
+             this, SLOT( alignViewToAxes() ) );
     connect( ui.actionFullScreen, SIGNAL( triggered() ),
              this, SLOT( fullScreen() ) );
     connect( ui.actionResetDisplayTypes, SIGNAL( triggered() ),

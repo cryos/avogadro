@@ -128,6 +128,7 @@ namespace Avogadro {
       void closeView();
       void closeView(int index);
       void centerView();
+      void alignViewToAxes();
       void setView(int index);
       void fullScreen();
       void resetDisplayTypes();
