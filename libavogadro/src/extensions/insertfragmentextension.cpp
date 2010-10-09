@@ -24,6 +24,7 @@
 
 #include <avogadro/glwidget.h>
 #include <avogadro/molecule.h>
+#include <avogadro/primitivelist.h>
 
 #include <openbabel/mol.h>
 #include <openbabel/builder.h>
@@ -89,7 +90,7 @@ namespace Avogadro {
   QUndoCommand* InsertFragmentExtension::performAction(QAction *action, 
                                                        GLWidget *widget)
   {
-    if (m_molecule == NULL)
+    if (m_molecule == NULL || widget == NULL)
       return NULL; // nothing we can do
 
     if (action->data() == SMILESIndex) {
@@ -99,6 +100,7 @@ namespace Avogadro {
       OBMol obfragment;
       OBConversion conv;
 
+      int selectedAtom = -1;
       bool ok;
       QString smiles = QInputDialog::getText((widget),
                                              tr("Insert SMILES"),
@@ -108,6 +110,11 @@ namespace Avogadro {
       if (ok && !smiles.isEmpty()) {
         m_smilesString = smiles; // save for settings
         std::string SmilesString(smiles.toAscii());
+
+        QList<Primitive *> selectedAtoms = widget->selectedPrimitives().subList(Primitive::AtomType);
+        if (selectedAtoms.size() == 1) { // TODO: Expand to handle multiple addition points
+          selectedAtom = selectedAtoms[0]->id();
+        }
 
         if(conv.SetInFormat("smi")
            && conv.ReadString(&obfragment, SmilesString))
@@ -121,12 +128,14 @@ namespace Avogadro {
             }
             
             fragment.setOBMol(&obfragment);
-            fragment.addHydrogens();
-            fragment.center();
+            if (selectedAtom == -1) { // if we're not connecting to a specific atom, add Hs, center
+              fragment.addHydrogens(); // hydrogen addition is done by InsertCommand when connecting
+              fragment.center();
+            }
           }
       }
 
-      return new InsertFragmentCommand(m_molecule, fragment, widget, tr("Insert SMILES"));
+      return new InsertFragmentCommand(m_molecule, fragment, widget, tr("Insert SMILES"), selectedAtom);
     }
     else if (action->data() == FragmentFromFileIndex) {
       m_widget = widget; // save for delayed response
@@ -168,7 +177,14 @@ namespace Avogadro {
   void InsertFragmentExtension::performInsert()
   {
     if (m_dialog) {
-      emit performCommand(new InsertFragmentCommand(m_molecule, m_dialog->fragment(), m_widget, tr("Insert Fragment")));
+      // check to see if we're going to connect to an existing atom using OBBuilder::Connect()
+      int selectedAtom = -1;
+      QList<Primitive *> selectedAtoms = m_widget->selectedPrimitives().subList(Primitive::AtomType);
+      if (selectedAtoms.size() == 1) { // TODO: Expand to handle multiple addition points
+        selectedAtom = selectedAtoms[0]->id();
+      }
+
+      emit performCommand(new InsertFragmentCommand(m_molecule, m_dialog->fragment(), m_widget, tr("Insert Fragment"), selectedAtom));
     }
   }
 
