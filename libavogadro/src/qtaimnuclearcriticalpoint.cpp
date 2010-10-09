@@ -34,7 +34,7 @@
 
 using Eigen::Vector3d;
 
- namespace Avogadro {
+namespace Avogadro {
 
    class QTAIMNuclearCriticalPointPrivate {
    public:

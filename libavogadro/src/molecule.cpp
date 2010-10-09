@@ -205,7 +205,7 @@ namespace Avogadro{
 void Molecule::removeAtom(Atom *atom)
   {
     if(atom) {
-      // When deleting an atom this also implicitly deletes any bonds to the atom		
+      // When deleting an atom this also implicitly deletes any bonds to the atom
       foreach (unsigned long bond, atom->bonds()) {
         removeBond(bond);
       }
@@ -518,27 +518,6 @@ void Molecule::removeAtom(Atom *atom)
       setNuclearCriticalPointPos(id, *vec);
   }
 
-  void Molecule::removeAtom(Atom *atom)
-  {
-    if(atom) {
-      // When deleting an atom this also implicitly deletes any bonds to the atom
-      foreach (unsigned long bond, atom->bonds()) {
-        removeBond(bond);
-      }
-
-      m_atoms[atom->id()] = 0;
-      // 1 based arrays stored/shown to user
-      int index = atom->index();
-      m_atomList.removeAt(index);
-      for (int i = index; i < m_atomList.size(); ++i)
-        m_atomList[i]->setIndex(i);
-      atom->deleteLater();
-
-      disconnect(atom, SIGNAL(updated()), this, SLOT(updateAtom()));
-      emit atomRemoved(atom);
-      calculateGroupIndices();
-    }
-  }
   QTAIMNuclearCriticalPoint *Molecule::addNuclearCriticalPoint()
   {
     // Add an atom with the next unique id
@@ -829,7 +808,7 @@ void Molecule::removeAtom(Atom *atom)
         obatom->SetImplicitValence(2);
         obatom->SetHyb(3);
         obmol.SetImplicitValencePerceived();
-        break;        
+        break;
 
       default: // do nothing
         break;
@@ -995,7 +974,7 @@ void Molecule::removeAtom(Atom *atom)
         atomGroupNumber[i] = 1;
       }
     }
-    
+
     for (unsigned int i = 0; i < numAtoms(); ++i) {
       bool match = false;
       for (unsigned int j=0; j<group_number.size(); j++) {
@@ -1007,8 +986,8 @@ void Molecule::removeAtom(Atom *atom)
       } else {
         atom(i)->setGroupIndex(atomGroupNumber.at(i));
       }
-    } 
-  }    
+    }
+  }
 
   unsigned int Molecule::numAtoms() const
   {
@@ -1612,7 +1591,7 @@ void Molecule::removeAtom(Atom *atom)
         for (unsigned int i = 0; i < energies.size(); ++i)
           energies[i] *= KCAL_TO_KJ;
         setEnergies(energies);
-        
+
         // check for validity (i.e., we have some forces, one for each atom
         std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
         if (allForces.size() && allForces[0].size() == numAtoms()) {
@@ -1640,7 +1619,7 @@ void Molecule::removeAtom(Atom *atom)
 
     // Copy electronic transition data
     if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicTransitionData)) {
-      OpenBabel::OBElectronicTransitionData *etd = 
+      OpenBabel::OBElectronicTransitionData *etd =
         static_cast<OpenBabel::OBElectronicTransitionData*>
         (obmol->GetData(OpenBabel::OBGenericDataType::ElectronicTransitionData));
       d->obelectronictransitiondata = etd;
@@ -1959,7 +1938,7 @@ void Molecule::removeAtom(Atom *atom)
           d->farthestAtom = atom;
         }
       }
-      
+
       calculateGroupIndices();
     }
     d->invalidGeomInfo = false;
