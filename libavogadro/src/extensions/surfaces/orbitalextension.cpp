@@ -570,6 +570,18 @@ namespace Avogadro
         m_basis = gaussian;
         return true;
       }
+      else if (format == QLatin1String("gukout")) {
+        qDebug() << " deduced from format ";
+        if (m_basis) {
+          delete m_basis;
+          m_basis = 0;
+        }
+        GaussianSet *gaussian = new GaussianSet;
+        GamessukOut gukout(m_molecule->fileName(), gaussian);
+
+        m_basis = gaussian;
+        return true;
+      }
     }
 
 
