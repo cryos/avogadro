@@ -63,6 +63,9 @@ avogadro_plugin(dipoleengine dipoleengine.cpp dipolesettingswidget.ui)
 # Simple wire engine - designed for efficiency with really big systems
 avogadro_plugin(simplewireengine simplewireengine.cpp)
 
+# QTAIM engine - Quantum Theory of Atoms In Molecules
+avogadro_plugin(qtaimengine qtaimengine.cpp qtaimsettingswidget.ui)
+
 if(ALL_PYTHON_FOUND)
   file(GLOB python_SCRIPTS "python/*.py")
   install(FILES ${python_SCRIPTS} DESTINATION share/libavogadro/engineScripts)

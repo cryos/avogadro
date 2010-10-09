@@ -33,6 +33,9 @@
 #include "residue.h"
 #include "zmatrix.h"
 
+#include "qtaimnuclearcriticalpoint.h"
+#include "qtaimbondcriticalpoint.h"
+
 #include <Eigen/Geometry>
 #include <Eigen/LeastSquares>
 
@@ -57,7 +60,7 @@ namespace Avogadro{
 
   class MoleculePrivate {
     public:
-      MoleculePrivate() : farthestAtom(0), invalidGeomInfo(true),
+      MoleculePrivate() : farthestAtom(0), farthestNuclearCriticalPoint(0), invalidGeomInfo(true),
                           invalidRings(true), obmol(0), obunitcell(0),
                           obvibdata(0)
 #if (OB_VERSION >= OB_VERSION_CHECK(2, 2, 99))
@@ -71,6 +74,7 @@ namespace Avogadro{
       mutable Eigen::Vector3d       normalVector;
       mutable double                radius;
       mutable Atom *                farthestAtom;
+      mutable QTAIMNuclearCriticalPoint * farthestNuclearCriticalPoint;
       mutable bool                  invalidGeomInfo;
       mutable bool                  invalidRings;
       mutable std::vector<double>   energies;
@@ -107,6 +111,8 @@ namespace Avogadro{
   Molecule::Molecule(QObject *parent) : Primitive(MoleculeType, parent),
                                         d_ptr(new MoleculePrivate),
                                         m_atomPos(0),
+                                        m_nuclearCriticalPointPos(0),
+                                        m_bondCriticalPointPos(0),
                                         m_currentConformer(0),
                                         m_estimatedDipoleMoment(true),
                                         m_dipoleMoment(0),
@@ -123,7 +129,7 @@ namespace Avogadro{
 
   Molecule::Molecule(const Molecule &other) :
     Primitive(MoleculeType, other.parent()), d_ptr(new MoleculePrivate),
-    m_atomPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
+    m_atomPos(0), m_nuclearCriticalPointPos(0), m_bondCriticalPointPos(0), m_dipoleMoment(0), m_invalidPartialCharges(true),
     m_invalidAromaticity(true), m_lock(new QReadWriteLock)
   {
     *this = other;
@@ -184,7 +190,6 @@ namespace Avogadro{
     calculateGroupIndices();
     return atom;
   }
-
   void Molecule::setAtomPos(unsigned long id, const Eigen::Vector3d& vec)
   {
     if (id < m_atomPos->size())
@@ -197,7 +202,7 @@ namespace Avogadro{
       setAtomPos(id, *vec);
   }
 
-  void Molecule::removeAtom(Atom *atom)
+void Molecule::removeAtom(Atom *atom)
   {
     if(atom) {
       // When deleting an atom this also implicitly deletes any bonds to the atom
@@ -292,6 +297,47 @@ namespace Avogadro{
     }
   }
 
+  void Molecule::removeBondCriticalPoint(unsigned long id)
+  {
+    if (id < m_bonds.size()) {
+      Q_D(Molecule);
+      if (m_bondCriticalPoints[id] == 0)
+        return;
+
+//      d->invalidRings = true;
+//      m_invalidPartialCharges = true;
+//      m_invalidAromaticity = true;
+      QTAIMBondCriticalPoint *bondCriticalPoint = m_bondCriticalPoints[id];
+      m_bondCriticalPoints[id] = 0;
+      // Delete the bond from the list and reorder the remaining bonds
+      int index = bondCriticalPoint->index();
+      m_bondCriticalPointList.removeAt(index);
+      for (int i = index; i < m_bondCriticalPointList.size(); ++i) {
+        m_bondCriticalPointList[i]->setIndex(i);
+      }
+
+      // Also delete the bond from the attached atoms
+      if (m_nuclearCriticalPoints.size() > bondCriticalPoint->beginNuclearCriticalPointId()) {
+        if (m_nuclearCriticalPoints[bondCriticalPoint->beginNuclearCriticalPointId()])
+          m_nuclearCriticalPoints[bondCriticalPoint->beginNuclearCriticalPointId()]->removeBondCriticalPoint(id);
+      }
+      if (m_nuclearCriticalPoints.size() > bondCriticalPoint->endNuclearCriticalPointId()) {
+        if (m_nuclearCriticalPoints[bondCriticalPoint->endNuclearCriticalPointId()])
+          m_nuclearCriticalPoints[bondCriticalPoint->endNuclearCriticalPointId()]->removeBondCriticalPoint(id);
+      }
+
+      disconnect(bondCriticalPoint, SIGNAL(updated()), this, SLOT(updateBondCriticalPoint()));
+      emit bondCriticalPointRemoved(bondCriticalPoint);
+      bondCriticalPoint->deleteLater();
+    }
+  }
+
+  void Molecule::setBondCriticalPointPos(unsigned long id, const Eigen::Vector3d& vec)
+  {
+    if (id < m_bondCriticalPointPos->size())
+      (*m_bondCriticalPointPos)[id] = vec;
+  }
+
   Residue *Molecule::residue(int index)
   {
     Q_D(Molecule);
@@ -364,6 +410,9 @@ namespace Avogadro{
     emit primitiveAdded(cube);
     return(cube);
   }
+
+
+
 
   void Molecule::removeCube(Cube *cube)
   {
@@ -455,6 +504,125 @@ namespace Avogadro{
       return d->meshes[id];
     else
       return 0;
+  }
+
+  void Molecule::setNuclearCriticalPointPos(unsigned long id, const Eigen::Vector3d& vec)
+  {
+    if (id < m_nuclearCriticalPointPos->size())
+      (*m_nuclearCriticalPointPos)[id] = vec;
+  }
+
+  void Molecule::setNuclearCriticalPointPos(unsigned long id, const Eigen::Vector3d *vec)
+  {
+    if (vec)
+      setNuclearCriticalPointPos(id, *vec);
+  }
+
+  QTAIMNuclearCriticalPoint *Molecule::addNuclearCriticalPoint()
+  {
+    // Add an atom with the next unique id
+    return addNuclearCriticalPoint(m_nuclearCriticalPoints.size());
+  }
+
+  QTAIMNuclearCriticalPoint *Molecule::addNuclearCriticalPoint(unsigned long id)
+  {
+    QTAIMNuclearCriticalPoint *nuclearCriticalPoint = new QTAIMNuclearCriticalPoint(this);
+
+    // TODO I have no idea what I did here, in this conformer section.  ECB
+
+    if (!m_nuclearCriticalPointPos) {
+      m_nuclearCriticalPointConformers.resize(1);
+      m_nuclearCriticalPointConformers[0] = new vector<Vector3d>;
+      m_nuclearCriticalPointPos = m_nuclearCriticalPointConformers[0];
+      m_nuclearCriticalPointPos->reserve(100);
+    }
+
+    if(id >= m_nuclearCriticalPoints.size()) {
+      m_nuclearCriticalPoints.resize(id+1,0);
+      m_nuclearCriticalPointPos->resize(id+1, Vector3d::Zero());
+    }
+    m_nuclearCriticalPoints[id] = nuclearCriticalPoint;
+    // Does this still want to have the same index as before somehow?
+    m_nuclearCriticalPointList.push_back(nuclearCriticalPoint);
+
+    nuclearCriticalPoint->setId(id);
+    nuclearCriticalPoint->setIndex(m_nuclearCriticalPointList.size()-1);
+    // now that the id is correct, emit the signal
+    connect(nuclearCriticalPoint, SIGNAL(updated()), this, SLOT(updateNuclearCriticalPoint()));
+    emit nuclearCriticalPointAdded(nuclearCriticalPoint);
+    calculateGroupIndices();
+    return nuclearCriticalPoint;
+  }
+
+  void Molecule::removeNuclearCriticalPoint(QTAIMNuclearCriticalPoint *nuclearCriticalPoint)
+  {
+    if(nuclearCriticalPoint) {
+      // When deleting an atom this also implicitly deletes any bonds to the atom
+      foreach (unsigned long bondCriticalPoint, nuclearCriticalPoint->bondCriticalPoints()) {
+        removeBondCriticalPoint(bondCriticalPoint);
+      }
+
+      m_nuclearCriticalPoints[nuclearCriticalPoint->id()] = 0;
+      // 1 based arrays stored/shown to user
+      int index = nuclearCriticalPoint->index();
+      m_nuclearCriticalPointList.removeAt(index);
+      for (int i = index; i < m_nuclearCriticalPointList.size(); ++i)
+        m_nuclearCriticalPointList[i]->setIndex(i);
+      nuclearCriticalPoint->deleteLater();
+
+      disconnect(nuclearCriticalPoint, SIGNAL(updated()), this, SLOT(updateAtom()));
+      emit nuclearCriticalPointRemoved(nuclearCriticalPoint);
+      calculateGroupIndices();
+    }
+  }
+
+  void Molecule::removeNuclearCriticalPoint(unsigned long id)
+  {
+    removeNuclearCriticalPoint(nuclearCriticalPointById(id));
+  }
+
+  QTAIMBondCriticalPoint *Molecule::addBondCriticalPoint()
+  {
+    return addBondCriticalPoint(m_bondCriticalPoints.size());
+  }
+
+  QTAIMBondCriticalPoint *Molecule::addBondCriticalPoint(unsigned long id)
+  {
+    Q_D(Molecule);
+    QTAIMBondCriticalPoint *bondCriticalPoint = new QTAIMBondCriticalPoint(this);
+
+    if (!m_bondCriticalPointPos) {
+      m_bondCriticalPointConformers.resize(1);
+      m_bondCriticalPointConformers[0] = new vector<Vector3d>;
+      m_bondCriticalPointPos = m_bondCriticalPointConformers[0];
+      m_bondCriticalPointPos->reserve(100);
+    }
+
+    d->invalidRings = true;
+    m_invalidPartialCharges = true;
+    m_invalidAromaticity = true;
+    if(id >= m_bondCriticalPoints.size()) {
+      m_bondCriticalPoints.resize(id+1,0);
+      m_bondCriticalPointPos->resize(id+1, Vector3d::Zero());
+    }
+    m_bondCriticalPoints[id] = bondCriticalPoint;
+    m_bondCriticalPointList.push_back(bondCriticalPoint);
+
+    bondCriticalPoint->setId(id);
+    bondCriticalPoint->setIndex(m_bondCriticalPointList.size()-1);
+    // now that the id is correct, emit the signal
+    connect(bondCriticalPoint, SIGNAL(updated()), this, SLOT(updateBondCriticalPoint()));
+    emit bondCriticalPointAdded(bondCriticalPoint);
+    return(bondCriticalPoint);
+  }
+
+
+
+  void Molecule::removeBondCriticalPoint(QTAIMBondCriticalPoint *bondCriticalPoint)
+  {
+    if(bondCriticalPoint) {
+      removeBondCriticalPoint(bondCriticalPoint->id());
+    }
   }
 
   Residue * Molecule::addResidue()
@@ -640,7 +808,7 @@ namespace Avogadro{
         obatom->SetImplicitValence(2);
         obatom->SetHyb(3);
         obmol.SetImplicitValencePerceived();
-        break;        
+        break;
 
       default: // do nothing
         break;
@@ -806,7 +974,7 @@ namespace Avogadro{
         atomGroupNumber[i] = 1;
       }
     }
-    
+
     for (unsigned int i = 0; i < numAtoms(); ++i) {
       bool match = false;
       for (unsigned int j=0; j<group_number.size(); j++) {
@@ -818,17 +986,27 @@ namespace Avogadro{
       } else {
         atom(i)->setGroupIndex(atomGroupNumber.at(i));
       }
-    } 
-  }    
+    }
+  }
 
   unsigned int Molecule::numAtoms() const
   {
     return m_atomList.size();
   }
 
+  unsigned int Molecule::numNuclearCriticalPoints() const
+  {
+    return m_nuclearCriticalPointList.size();
+  }
+
   unsigned int Molecule::numBonds() const
   {
     return m_bondList.size();
+  }
+
+  unsigned int Molecule::numBondCriticalPoints() const
+  {
+    return m_bondCriticalPointList.size();
   }
 
   unsigned int Molecule::numCubes() const
@@ -880,10 +1058,25 @@ namespace Avogadro{
     emit atomUpdated(atom);
   }
 
+  void Molecule::updateNuclearCriticalPoint()
+  {
+    Q_D(Molecule);
+    QTAIMNuclearCriticalPoint *nuclearCriticalPoint = qobject_cast<QTAIMNuclearCriticalPoint *>(sender());
+    d->invalidGeomInfo = true;
+    calculateGroupIndices();
+    emit nuclearCriticalPointUpdated(nuclearCriticalPoint);
+  }
+
   void Molecule::updateBond()
   {
     Bond *bond = qobject_cast<Bond *>(sender());
     emit bondUpdated(bond);
+  }
+
+  void Molecule::updateBondCriticalPoint()
+  {
+    QTAIMBondCriticalPoint *bondCriticalPoint = qobject_cast<QTAIMBondCriticalPoint *>(sender());
+    emit bondCriticalPointUpdated(bondCriticalPoint);
   }
 
   void Molecule::update()
@@ -908,10 +1101,38 @@ namespace Avogadro{
     return 0;
   }
 
+  QTAIMBondCriticalPoint* Molecule::bondCriticalPoint(unsigned long id1, unsigned long id2)
+  {
+    // Take two atom IDs and see if we have a bond between the two
+    if (nuclearCriticalPointById(id1)) {
+      QList<unsigned long> bondCriticalPoints = nuclearCriticalPointById(id1)->bondCriticalPoints();
+      foreach (unsigned long id, bondCriticalPoints) {
+        QTAIMBondCriticalPoint *bondCriticalPoint = bondCriticalPointById(id);
+        if (bondCriticalPoint) {
+          if (bondCriticalPoint->otherNuclearCriticalPoint(id1) == id2) {
+            return bondCriticalPoint;
+          }
+        }
+      }
+    }
+    return 0;
+  }
+
+
   Bond* Molecule::bond(const Atom *a1, const Atom *a2)
   {
     if (a1 && a2) {
       return bond(a1->id(), a2->id());
+    }
+    else {
+      return 0;
+    }
+  }
+
+  QTAIMBondCriticalPoint* Molecule::bondCriticalPoint(const QTAIMNuclearCriticalPoint *ncp1, const QTAIMNuclearCriticalPoint *ncp2)
+  {
+    if (ncp1 && ncp2) {
+      return bondCriticalPoint(ncp1->id(), ncp2->id());
     }
     else {
       return 0;
@@ -1083,10 +1304,21 @@ namespace Avogadro{
     return m_atomList;
   }
 
+  QList<QTAIMNuclearCriticalPoint *> Molecule::nuclearCriticalPoints() const
+  {
+    return m_nuclearCriticalPointList;
+  }
+
   QList<Bond *> Molecule::bonds() const
   {
     return m_bondList;
   }
+
+  QList<QTAIMBondCriticalPoint *> Molecule::bondCriticalPoints() const
+  {
+    return m_bondCriticalPointList;
+  }
+
 
   QList<Cube *> Molecule::cubes() const
   {
@@ -1268,7 +1500,6 @@ namespace Avogadro{
       bond->setAtoms(obbond->GetBeginAtom()->GetIdx()-1,
                      obbond->GetEndAtom()->GetIdx()-1,
                      obbond->GetBondOrder());
-
       if (obbond->HasData("label"))
         bond->setCustomLabel(obbond->GetData("label")->GetValue().c_str());
     }
@@ -1360,7 +1591,7 @@ namespace Avogadro{
         for (unsigned int i = 0; i < energies.size(); ++i)
           energies[i] *= KCAL_TO_KJ;
         setEnergies(energies);
-        
+
         // check for validity (i.e., we have some forces, one for each atom
         std::vector< std::vector<OpenBabel::vector3> > allForces = cd->GetForces();
         if (allForces.size() && allForces[0].size() == numAtoms()) {
@@ -1388,7 +1619,7 @@ namespace Avogadro{
 
     // Copy electronic transition data
     if (obmol->HasData(OpenBabel::OBGenericDataType::ElectronicTransitionData)) {
-      OpenBabel::OBElectronicTransitionData *etd = 
+      OpenBabel::OBElectronicTransitionData *etd =
         static_cast<OpenBabel::OBElectronicTransitionData*>
         (obmol->GetData(OpenBabel::OBGenericDataType::ElectronicTransitionData));
       d->obelectronictransitiondata = etd;
@@ -1532,6 +1763,27 @@ namespace Avogadro{
       emit primitiveRemoved(ring);
     }
     d->ringList.clear();
+
+    m_nuclearCriticalPoints.clear();
+    foreach (QTAIMNuclearCriticalPoint *ncp, m_nuclearCriticalPointList) {
+      ncp->deleteLater();
+      emit primitiveRemoved(ncp);
+    }
+    m_nuclearCriticalPointList.clear();
+//    clearConformers();
+    delete m_nuclearCriticalPointPos;
+    m_nuclearCriticalPointPos = 0;
+
+    m_bondCriticalPoints.clear();
+    foreach (QTAIMBondCriticalPoint *bcp, m_bondCriticalPointList) {
+      bcp->deleteLater();
+      emit primitiveRemoved(bcp);
+    }
+    m_bondCriticalPointList.clear();
+//    clearConformers();
+    delete m_bondCriticalPointPos;
+    m_bondCriticalPointPos = 0;
+
   }
 
   QReadWriteLock * Molecule::lock() const
@@ -1686,7 +1938,7 @@ namespace Avogadro{
           d->farthestAtom = atom;
         }
       }
-      
+
       calculateGroupIndices();
     }
     d->invalidGeomInfo = false;
