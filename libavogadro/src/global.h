@@ -29,6 +29,17 @@
 #include <QtCore/QTranslator>
 #include <QtCore/QPointer>
 
+/**
+ * Version check macro. Intended to be used in constructions like
+ * @code
+ * #if (LIBAVOGADRO_VERSION >= LIBAVOGADRO_VERSION_CHECK(1, 1, 0))
+ * @endcode
+ */
+#define LIBAVOGADRO_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
+
+// LIBAVOGADRO_VERSION is (major << 16) + (minor << 8) + patch
+#define LIBAVOGADRO_VERSION LIBAVOGADRO_VERSION_CHECK(@Avogadro_VERSION_MAJOR@, @Avogadro_VERSION_MINOR@, @Avogadro_VERSION_PATCH@)
+
 #define EIGEN_WORK_AROUND_QT_BUG_CALLING_WRONG_OPERATOR_NEW_FIXED_IN_QT_4_5
 
 #ifdef WIN32
