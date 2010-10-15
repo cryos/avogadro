@@ -24,7 +24,7 @@
      <x>0</x>
      <y>0</y>
      <width>621</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -103,6 +103,7 @@
     <addaction name="actionDetachView"/>
     <addaction name="actionCloseView"/>
     <addaction name="actionCenter"/>
+    <addaction name="actionAlignViewToAxes"/>
     <addaction name="separator"/>
     <addaction name="actionFullScreen"/>
     <addaction name="actionResetDisplayTypes"/>
@@ -476,6 +477,15 @@
    </property>
    <property name="text">
     <string>Center</string>
+   </property>
+  </action>
+  <action name="actionAlignViewToAxes">
+   <property name="icon">
+    <iconset resource="avogadro.qrc">
+     <normaloff>:/icons/navigateN.png</normaloff>:/icons/navigateN.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align View To Axes</string>
    </property>
   </action>
   <action name="actionPaste">
