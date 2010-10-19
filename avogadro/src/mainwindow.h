@@ -108,7 +108,6 @@ namespace Avogadro {
       void revert();
       void importFile();
       void exportGraphics();
-      void exportGL2PS();
 
       void closeFile();
 

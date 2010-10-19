@@ -65,7 +65,6 @@ set(libavogadro_HDRS
 )
 
 set(libavogadro_SRCS
-  ../gl2ps/gl2ps.c
   animation.cpp
   atom.cpp
   bond.cpp
