@@ -76,7 +76,7 @@ namespace Avogadro {
                                         m_prevAtomElement(0),
                                         m_prevBond(0),
                                         m_prevBondOrder(0),
-                                        m_addHydrogens(2),
+                                        m_addHydrogens(true),
                                         m_hydrogenCommand(0),
                                         m_comboElements(0),
                                         m_addHydrogensCheck(0),
@@ -769,7 +769,7 @@ namespace Avogadro {
 
   void DrawTool::setAddHydrogens( int state )
   {
-    m_addHydrogens = state;
+    m_addHydrogens = (state == Qt::Checked);
   }
 
   int DrawTool::addHydrogens() const
@@ -835,7 +835,7 @@ namespace Avogadro {
       grid->addLayout(tmp2, 1, 1);
 
       m_addHydrogensCheck = new QCheckBox(tr("Adjust Hydrogens"), m_settingsWidget);
-      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
+      m_addHydrogensCheck->setCheckState(m_addHydrogens ? Qt::Checked : Qt::Unchecked);
 
       m_layout = new QVBoxLayout();
       m_layout->addLayout(grid);
@@ -880,7 +880,7 @@ namespace Avogadro {
   void DrawTool::readSettings(QSettings &settings)
   {
     Tool::readSettings(settings);
-    setAddHydrogens(settings.value("addHydrogens", 2).toInt());
+    m_addHydrogens = settings.value("addHydrogens", true).toBool();
     setElement(settings.value("currentElement", 6).toInt());
     setBondOrder(settings.value("bondOrder", 1).toInt());
     if (m_comboElements)
@@ -891,7 +891,7 @@ namespace Avogadro {
       m_comboElements->setCurrentIndex(index);
     }
     if(m_addHydrogensCheck)
-      m_addHydrogensCheck->setCheckState((Qt::CheckState)m_addHydrogens);
+      m_addHydrogensCheck->setCheckState(m_addHydrogens ? Qt::Checked : Qt::Unchecked);
   }
 }
 

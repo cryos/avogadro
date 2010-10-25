@@ -124,7 +124,7 @@ namespace Avogadro {
   class DeleteAtomDrawCommand : public QUndoCommand
   {
   public:
-    DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustValence);
+    DeleteAtomDrawCommand(Molecule *molecule, int index, bool adjustValence);
     ~DeleteAtomDrawCommand();
 
     virtual void undo();
@@ -183,7 +183,7 @@ namespace Avogadro {
   class DeleteBondDrawCommand : public QUndoCommand
   {
   public:
-    DeleteBondDrawCommand(Molecule *molecule, int index, int adjustValence);
+    DeleteBondDrawCommand(Molecule *molecule, int index, bool adjustValence);
     ~DeleteBondDrawCommand();
 
     virtual void undo();
@@ -198,10 +198,10 @@ namespace Avogadro {
   {
   public:
     ChangeElementDrawCommand(Molecule *molecule, Atom *atom, 
-                             unsigned int element, int adjustValence);
+                             unsigned int element, bool adjustValence);
     ~ChangeElementDrawCommand();
 
-    void setAdjustHydrogens(int adjustHydrogens);
+    void setAdjustHydrogens(bool adjustHydrogens);
 
     virtual void undo();
     virtual void redo();
@@ -215,7 +215,7 @@ namespace Avogadro {
   {
   public:
     ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond,
-                               unsigned int bondOrder, int adjustValence);
+                               unsigned int bondOrder, bool adjustValence);
     ~ChangeBondOrderDrawCommand();
 
     virtual void undo();
