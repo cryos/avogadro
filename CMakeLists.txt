@@ -91,7 +91,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif()
-  
+
   if(NOT APPLE) # Mac GCC42 compiler has bug
     check_cxx_compiler_flag(-fvisibility=hidden HAVE_GCC_VISIBILITY)
     set(HAVE_GCC_VISIBILITY ${HAVE_GCC_VISIBILITY} CACHE BOOL "GCC support for hidden visibility")
@@ -183,7 +183,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     set(NO_RTTI_FLAG "")
     set(RTTI_FLAG "")
   endif()
-  
+
   check_cxx_compiler_flag(-fvisibility=hidden HAVE_INTEL_VISIBILITY)
   set(HAVE_INTEL_VISIBILITY ${HAVE_INTEL_VISIBILITY} CACHE BOOL "Intel Compiler support for hidden visibility")
   if(HAVE_INTEL_VISIBILITY)
@@ -195,7 +195,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
       set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
     endif()
   endif()
-  
+
   set(CMAKE_C_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ipo1 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
 
@@ -210,7 +210,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES Intel AND UNIX)
     #Further information: cmake/modules/TestIfWeNeedFPermissive.cmake
     set (CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fpermissive")
   endif()
-    
+
   # define WITH_SSE2 to enable the SSE2 instruction set.
   # Available on Pentium 4, Athlon 64, and newer CPUs.
   # If SSE2 is enabled, Eigen uses it by default; this can be disabled by
@@ -447,8 +447,8 @@ if (UNIX)
 #      install (LIBRARY ${ZLIB_LIBRARY}
 #        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
 #        )
-       set(about_files ${CMAKE_CURRENT_SOURCE_DIR}/README 
-                       ${CMAKE_CURRENT_SOURCE_DIR}/COPYING 
+       set(about_files ${CMAKE_CURRENT_SOURCE_DIR}/README
+                       ${CMAKE_CURRENT_SOURCE_DIR}/COPYING
                        ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS
          )
        install(FILES ${about_files}
@@ -514,7 +514,7 @@ if(UNIX)
   set(PC_FILES "${CMAKE_CURRENT_BINARY_DIR}/avogadro.pc")
   install(FILES ${PC_FILES} DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
 endif()
-  
+
 # avopkg
 if(UNIX)
   configure_file(
@@ -535,10 +535,10 @@ configure_file(
 option(INSTALL_QMAKE_PRF "Install QMake integration files to Qt prefix" ON)
 if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
 #  if ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
-#    string(REPLACE 
-#      "${CMAKE_INSTALL_PREFIX}" 
-#      "" 
-#      QT_MKSPECS_RELATIVE 
+#    string(REPLACE
+#      "${CMAKE_INSTALL_PREFIX}"
+#      ""
+#      QT_MKSPECS_RELATIVE
 #      "${QT_MKSPECS_DIR}"
 #    )
     install(FILES
@@ -551,7 +551,7 @@ else()
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
     DESTINATION "${SHARE_INSTALL_PREFIX}/avogadro/qmake"
-  ) 
+  )
 endif()
 
 # Use CPack to do some of our packaging
