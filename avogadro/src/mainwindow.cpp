@@ -380,6 +380,7 @@ namespace Avogadro
 
     undoAction->setShortcuts( QKeySequence::Undo );
     redoAction->setShortcuts( QKeySequence::Redo );
+    ui.actionClear->setShortcuts( QList<QKeySequence>() << QKeySequence("Backspace") << QKeySequence("Del"));
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
       ui.menuEdit->insertAction( firstAction, redoAction );
