@@ -522,9 +522,6 @@
    <property name="text">
     <string>Clear</string>
    </property>
-   <property name="shortcut">
-    <string>Backspace</string>
-   </property>
   </action>
   <action name="actionSelect_All">
    <property name="text">
