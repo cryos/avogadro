@@ -317,6 +317,7 @@ namespace Avogadro
     QAction *redoAction = d->undoStack->createRedoAction( this );
     redoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-redo.png" ) ) );
     redoAction->setShortcuts( QKeySequence::Redo );
+    ui.actionClear->setShortcuts( QList<QKeySequence>() << QKeySequence("Backspace") << QKeySequence("Del"));
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
       ui.menuEdit->insertAction( firstAction, redoAction );
