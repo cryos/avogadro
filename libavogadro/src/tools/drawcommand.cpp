@@ -403,13 +403,13 @@ namespace Avogadro {
       QList<unsigned long> neighbors;
       Eigen::Vector3d pos;
       unsigned int element;
-      int adjustHydrogens;
+      bool adjustHydrogens;
 
       QUndoCommand *preCommand;
       QUndoCommand *postCommand;
   };
 
-  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, int adjustHydrogens)
+  DeleteAtomDrawCommand::DeleteAtomDrawCommand(Molecule *molecule, int index, bool adjustHydrogens)
       : d(new DeleteAtomDrawCommandPrivate)
   {
     setText(QObject::tr("Delete Atom"));
@@ -749,10 +749,10 @@ namespace Avogadro {
       Molecule *molecule;
       Molecule moleculeCopy;
       unsigned long id;
-      int adjustHydrogens;
+      bool adjustHydrogens;
   };
 
-  DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index, int adjustHydrogens) : d(new DeleteBondDrawCommandPrivate)
+  DeleteBondDrawCommand::DeleteBondDrawCommand(Molecule *molecule, int index, bool adjustHydrogens) : d(new DeleteBondDrawCommandPrivate)
   {
     setText(QObject::tr("Delete Bond"));
     d->molecule = molecule;
@@ -816,14 +816,14 @@ namespace Avogadro {
       Molecule *molecule;
       unsigned int newElement, oldElement;
       unsigned long id;
-      int adjustHydrogens;
+      bool adjustHydrogens;
 
       QUndoCommand *preCommand;
       QUndoCommand *postCommand;
   };
 
   ChangeElementDrawCommand::ChangeElementDrawCommand(Molecule *molecule, Atom *atom, unsigned int oldElement,
-      int adjustHydrogens) : d(new ChangeElementDrawCommandPrivate)
+      bool adjustHydrogens) : d(new ChangeElementDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
     qDebug() << "ChangeElementDrawCommand(id = " << atom->id() << ", old = " << oldElement 
@@ -838,7 +838,7 @@ namespace Avogadro {
     d->adjustHydrogens = adjustHydrogens;
   }
     
-  void ChangeElementDrawCommand::setAdjustHydrogens(int adjustHydrogens)
+  void ChangeElementDrawCommand::setAdjustHydrogens(bool adjustHydrogens)
   {
     d->adjustHydrogens = adjustHydrogens;
   }
@@ -928,14 +928,14 @@ namespace Avogadro {
       Molecule *molecule;
       unsigned long id;
       unsigned int addBondOrder, oldBondOrder;
-      int adjustHydrogens;
+      bool adjustHydrogens;
 
       QUndoCommand *preCommand;
       QUndoCommand *postCommand;
   };
 
   ChangeBondOrderDrawCommand::ChangeBondOrderDrawCommand(Molecule *molecule, Bond *bond,
-      unsigned int oldBondOrder, int adjustHydrogens) : d(new ChangeBondOrderDrawCommandPrivate)
+      unsigned int oldBondOrder, bool adjustHydrogens) : d(new ChangeBondOrderDrawCommandPrivate)
   {
 #ifdef DEBUG_COMMANDS
     qDebug() << "ChangeBondOrderDrawCommand(id = " << bond->id() << ", old = " << oldBondOrder

@@ -135,7 +135,7 @@ namespace Avogadro {
       Bond *m_prevBond;
       int m_prevBondOrder;
 
-      int m_addHydrogens;
+      bool m_addHydrogens;
       QUndoCommand *m_hydrogenCommand;
 
       QList<GLHit> m_hits;
