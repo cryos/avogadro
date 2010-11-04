@@ -492,9 +492,10 @@ namespace Avogadro {
         if (!d->preCommand) {
           QList<unsigned long> ids;
           foreach (unsigned long id, atom->neighbors()) {
-            if (!d->molecule->atomById(id)->isHydrogen())
+            if (!d->molecule->atomById(id)->isHydrogen()) {
               neighbors.append(id);
               ids.append(id);
+            }
           }
 
           ids.append(atom->id());
