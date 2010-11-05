@@ -110,7 +110,7 @@ namespace Avogadro {
     void enableEyeCandy(int enable);
 
   protected:
-    Atom *              m_clickedAtom;
+    QPointer<Atom>      m_clickedAtom;
     Eigen::Vector3d     m_referencePoint; // the reference point for movement
                                           // i.e the center of the clicked atom,
                                           // or of the visible part of the molecule
