@@ -44,8 +44,8 @@
 
 #define AVOGADRO_TOOL_FACTORY(c)                             \
   public: \
-    Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    Plugin::Type type() const { return Plugin::ToolType; }   \
+    Avogadro::Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
+    Avogadro::Plugin::Type type() const { return Avogadro::Plugin::ToolType; } \
     QString identifier() const { return c::staticIdentifier(); } \
     QString name() const { return c::staticName(); }         \
     QString description() const { return c::staticDescription(); }
