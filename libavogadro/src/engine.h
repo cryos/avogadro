@@ -54,8 +54,8 @@
 
 #define AVOGADRO_ENGINE_FACTORY(c)                           \
   public: \
-    Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
-    Plugin::Type type() const { return Plugin::EngineType; } \
+    Avogadro::Plugin *createInstance(QObject *parent = 0) { return new c(parent); } \
+    Avogadro::Plugin::Type type() const { return Avogadro::Plugin::EngineType; } \
     QString identifier() const { return c::staticIdentifier(); } \
     QString name() const { return c::staticName(); }         \
     QString description() const { return c::staticDescription(); }
