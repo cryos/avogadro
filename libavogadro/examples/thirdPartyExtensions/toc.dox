@@ -19,7 +19,7 @@ of this page.
   - Simple dialog displaying static text
   - Shows basics of extension initialization
   - Shows how to launch a dialog from an extension
--# Dynamic Display
+-# \ref tpe-dynamic-display
   - Simple dialog that displays molecule-specific text that
     dynamically updates as the molecule changes
   - This example counts the number of hydrogen atoms in the currently
