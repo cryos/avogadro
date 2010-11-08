@@ -15,7 +15,7 @@ of this page.
 
 \section toc Table Of Contents
 
--# Hello World!
+-# \ref tpe-hello-world
   - Simple dialog displaying static text
   - Shows basics of extension initialization
   - Shows how to launch a dialog from an extension
