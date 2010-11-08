@@ -750,7 +750,8 @@ namespace Avogadro
 
       // If current window is not empty or has non-default file name,
       // check if we already have an open window with this file
-      if ( !isDefaultFileName(d->fileName) || molecule()->numAtoms() ) {
+      if ( !isDefaultFileName(d->fileName) ||
+           (d->molecule && d->molecule->numAtoms()) ) {
         MainWindow *existing = findMainWindow( fileName );
         if ( existing ) {
           existing->show();
