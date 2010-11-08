@@ -229,11 +229,17 @@ int main(int argc, char *argv[])
     QPoint p(100, 100), offset(40,40);
     QList<QString>::const_iterator i = arguments.constBegin();
     for (++i; i != arguments.constEnd(); ++i) {
-      window->openFile(*i);
-      // this costs us a few more function calls
-      // but makes our loading look nicer
-      window->show();
-      app.processEvents();
+      if (QFile::exists(*i)) {
+        window->openFile(*i);
+        // this costs us a few more function calls
+        // but makes our loading look nicer
+        window->show();
+        app.processEvents();
+      }
+      else {
+        std::cout << "Warning: file '" << (*i).toLocal8Bit().data()
+                  << "'' does not exist!\n";
+      }
     }
   }
   window->show();
