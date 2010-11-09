@@ -1,0 +1,58 @@
+namespace Avogadro {
+
+/**
+
+\page tpe-toc Developing Third Party Extensions
+
+\section intro Introduction
+
+This tutorial is designed to guide new developers who are interested
+in writing third party (e.g. out-of-source) extensions to Avogadro. It
+assumes that the reader has a working knowledge of C++ and is familiar
+with the basic usage of Qt Designer. If you are not familiar with
+Designer, a link to the Qt Designer tutorial is provided at the bottom
+of this page.
+
+\section toc Table Of Contents
+
+-# Hello World!
+  - Simple dialog displaying static text
+  - Shows basics of extension initialization
+  - Shows how to launch a dialog from an extension
+-# Dynamic Display
+  - Simple dialog that displays molecule-specific text that
+    dynamically updates as the molecule changes
+  - This example counts the number of hydrogen atoms in the currently
+    displayed molecule
+  - Shows how to use the Extension::setMolecule virtual function
+  - Shows how to connect slots in your extension to signals in the
+    molecule
+-# View Plane
+  - Move camera to view a plane formed by selecting three atoms
+  - Shows how to manipulate the camera
+  - Shows how to retrieve user selected atoms
+-# Rotate Selection
+  - Rotate selected atoms an arbitrary amount along an arbitrary
+    vector
+  - Shows how to modify the current molecule and update the GLWidget
+-# Conformer Plot
+  - Generate conformers for a molecule and plot them by energy
+  - Shows how to use OpenBabel's OBForceField implementation from
+    within Avogadro
+  - Shows how to generate a scatter plot using the PlotWidget
+  - Shows how to use the conformer support in Avogadro
+
+\section links Useful Links
+
+APIs:
+- Qt: http://doc.qt.nokia.com/4.5/classes.html
+- Avogadro: http://avogadro.openmolecules.net/api/dev/
+- OpenBabel: http://openbabel.org/api/2.2.0/
+- Eigen::MatrixBase: http://eigen.tuxfamily.org/dox/classEigen_1_1MatrixBase.html
+
+Tools:
+- Qt Designer: http://doc.qt.nokia.com/4.5/designer-quick-start.html
+
+**/
+
+}
