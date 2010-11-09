@@ -27,6 +27,8 @@
 #include <avogadro/atom.h>
 #include <avogadro/primitivelist.h>
 
+#include <openbabel/obconversion.h>
+
 #include <QProgressDialog>
 #include <QWriteLocker>
 #include <QMutex>
@@ -56,7 +58,11 @@ namespace Avogadro
     Extension( parent ), m_molecule(0)
   {
     QAction *action;
-    // If you change this, see forcefielddialog.cpp, where we need to set the popup menu
+    // An OBConverison object must be instantiated before the
+    // FindForceField call will work.
+    OBConversion conv; Q_UNUSED(conv);
+    // If you change this, see forcefielddialog.cpp, where we need to
+    // set the popup menu
     m_forceField = OBForceField::FindForceField( "MMFF94" );
     m_dialog = 0;
     m_conformerDialog = 0;
@@ -68,7 +74,8 @@ namespace Avogadro
       action = new QAction( this );
       action->setText( tr("&Optimize Geometry" ));
       action->setData(OptimizeGeometryIndex);
-      action->setShortcut( tr("Ctrl+Alt+O", "Shortcut key for optimize geometry") );
+      action->setShortcut( tr("Ctrl+Alt+O",
+                              "Shortcut key for optimize geometry") );
       m_actions.append( action );
 
       action = new QAction( this );
