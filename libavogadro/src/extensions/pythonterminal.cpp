@@ -135,7 +135,7 @@ namespace Avogadro
     QFont font;
     font.setFamily(QString::fromUtf8("Courier New"));
     setFont(font);
-         
+    m_interpreter.exec("import Avogadro");
     printPrompt();
 
 //    connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(setTextCursorToEnd()));
