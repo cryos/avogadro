@@ -204,7 +204,11 @@ struct QClass_converters
     sipWrapper *wrapper = reinterpret_cast<sipWrapper*>(obj_ptr);
 #endif
     // return the C++ pointer
+#if SIP_API_MAJOR_NR >= 8
+    return wrapper->data;
+#else
     return wrapper->u.cppPtr;
+#endif
   }
     
   QClass_converters()
