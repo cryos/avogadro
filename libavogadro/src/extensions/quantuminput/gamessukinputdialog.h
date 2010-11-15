@@ -68,8 +68,8 @@ namespace Avogadro
     basisType m_basisType;
     dftFunctionalType m_dftFunctionalType;
     bool m_direct;
-    QString m_output;
     coordType m_coordType;
+    QString m_output;
     bool m_dirty;
     bool m_warned;
 
