@@ -98,6 +98,7 @@ namespace Avogadro
         m_numMOs += 5;
         break;
       case F:
+        // TODO ECB I Think that there are 10 Cartesian F functions
         m_numMOs += 8;
         break;
       case F7:
@@ -313,17 +314,18 @@ namespace Avogadro
           }
           break;
         case F:
-          m_moIndices[i] = indexMO;	
+          m_moIndices[i] = indexMO;
+// TODO ECB I think this should be 10
           indexMO += 8;
           m_cIndices.push_back(m_gtoCN.size());
           qDebug() << "F Basis set not handled - results may be incorrect.";
           break;
-	case F7:
-	  m_moIndices[i] = indexMO;
-	  indexMO += 7;
-	  m_cIndices.push_back(m_gtoCN.size());
+        case F7:
+          m_moIndices[i] = indexMO;
+          indexMO += 7;
+          m_cIndices.push_back(m_gtoCN.size());
           qDebug() << "F7 Basis set not handled - results may be incorrect.";
-	  break;
+          break;
         default:
           qDebug() << "Basis set not handled - results may be incorrect.";
       }
@@ -745,6 +747,256 @@ namespace Avogadro
       }
     }
     qDebug() << '\n';
+  }
+
+  void GaussianSet::expandIntoPrimitives() {
+    // QTAIM: unfurl the wavefunction in normalized gaussian primitives
+
+    for( unsigned int mo=0 ; mo < m_numMOs ; ++mo )
+    {
+
+      qreal zero=0.0;
+      m_orbeList.append(zero);
+      m_occnoList.append(zero);
+
+      qint64 sctr=0;
+      qint64 pctr=0;
+      for(unsigned int a=0 ; a < m_atomIndices.size() ; ++a )
+      {
+
+        qint64 atomIndex=(m_atomIndices[a]);
+        // Already in Bohr, therefore do not convert
+        qreal xpos=(m_atomPos[ atomIndex ])[0];
+        qreal ypos=(m_atomPos[ atomIndex ])[1];
+        qreal zpos=(m_atomPos[ atomIndex ])[2];
+
+        qint64 symm;
+        switch( m_symmetry[a] )
+        {
+        case S:
+          symm=1;
+          break;
+        case SP:
+          symm=4;
+          break;
+        case P:
+          symm=3;
+          break;
+        case D:
+          symm=6;
+          break;
+        case F:
+          symm=10;
+          break;
+        default:
+          qDebug() << "Angular Momentum too large.";
+          break;
+        }
+
+        qint64 start=m_cIndices[a];
+        qint64 end;
+        if( a+1 == m_atomIndices.size() )
+        {
+          end=m_gtoCN.size();
+        }
+        else
+        {
+          end=m_cIndices[a+1];
+        }
+
+        end=(end-start)/symm + start;
+
+        for( qint64 p=start ; p < end ; ++p )
+        {
+          for( unsigned int s=0 ; s < symm ; ++s )
+          {
+            qint64 xamom=-1; // -1 for debugging purposes
+            qint64 yamom=-1; // -1 for debugging purposes
+            qint64 zamom=-1; // -1 for debugging purposes
+
+            if( symm == 1 ) // S
+            {
+              if( s == 0 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=0;
+              }
+            }
+            else if( symm == 4 ) // SP
+            {
+              if( s == 0 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=0;
+              }
+              else if( s == 1 )
+              {
+                xamom=1;
+                yamom=0;
+                zamom=0;
+              }
+              else if( s == 2 )
+              {
+                xamom=0;
+                yamom=1;
+                zamom=0;
+              }
+              else if( s == 3 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=1;
+              }
+            }
+            else if( symm == 3 ) // P
+            {
+              if( s == 0 )
+              {
+                xamom=1;
+                yamom=0;
+                zamom=0;
+              }
+              else if( s == 1 )
+              {
+                xamom=0;
+                yamom=1;
+                zamom=0;
+              }
+              else if( s == 2 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=1;
+              }
+            }
+            else if( symm == 6 ) // D
+            {
+              if( s == 0 )
+              {
+                xamom=2;
+                yamom=0;
+                zamom=0;
+              }
+              else if( s == 1 )
+              {
+                xamom=0;
+                yamom=2;
+                zamom=0;
+              }
+              else if( s == 2 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=2;
+              }
+              else if( s == 3 )
+              {
+                xamom=1;
+                yamom=1;
+                zamom=0;
+              }
+              else if( s == 4 )
+              {
+                xamom=1;
+                yamom=0;
+                zamom=1;
+              }
+              else if( s == 5 )
+              {
+                xamom=0;
+                yamom=1;
+                zamom=1;
+              }
+            }
+            else if( symm == 10 ) // F
+            {
+              if( s == 0 )
+              {
+                xamom=3;
+                yamom=0;
+                zamom=0;
+              }
+              else if( s == 1 )
+              {
+                xamom=0;
+                yamom=3;
+                zamom=0;
+              }
+              else if( s == 2 )
+              {
+                xamom=0;
+                yamom=0;
+                zamom=3;
+              }
+              else if( s == 3 )
+              {
+                xamom=1;
+                yamom=2;
+                zamom=0;
+              }
+              else if( s == 4 )
+              {
+                xamom=2;
+                yamom=1;
+                zamom=0;
+              }
+              else if( s == 5 )
+              {
+                xamom=2;
+                yamom=0;
+                zamom=1;
+              }
+              else if( s == 6 )
+              {
+                xamom=1;
+                yamom=0;
+                zamom=2;
+              }
+              else if( s == 7 )
+              {
+                xamom=0;
+                yamom=1;
+                zamom=2;
+              }
+              else if( s == 8 )
+              {
+                xamom=0;
+                yamom=2;
+                zamom=1;
+              }
+              else if( s == 9 )
+              {
+                xamom=1;
+                yamom=1;
+                zamom=1;
+              }
+            }
+
+            if( mo == 0 )
+            {
+              m_X0List.append(xpos);
+              m_Y0List.append(ypos);
+              m_Z0List.append(zpos);
+              m_xamomList.append(xamom);
+              m_yamomList.append(yamom);
+              m_zamomList.append(zamom);
+              m_alphaList.append( m_gtoA[sctr] );
+            }
+
+            m_coefList.append( m_gtoCN[pctr]*m_moMatrix(m_moIndices[a]+s ,mo) );
+            pctr++;
+
+          }
+
+          sctr++;
+        }
+      }
+    }
+
+    return;
+
   }
 
 }
