@@ -38,6 +38,7 @@
 #include "gamessus.h"
 
 #include <avogadro/molecule.h>
+#include <avogadro/atom.h>
 #include <avogadro/cube.h>
 #include <avogadro/mesh.h>
 #include <avogadro/meshgenerator.h>
@@ -127,6 +128,7 @@ namespace Avogadro
         m_dock->toggleViewAction()->activate(QAction::Trigger);
     }
 
+
     // Send MO data to table
     if (m_basis) {
       QList<Orbital> list;
@@ -166,7 +168,193 @@ namespace Avogadro
       m_widget->fillTable(list);
     }
 
+    qDebug() << "PreCalculate" ;
+
     precalculateOrbitals();
+
+    // Load Properties for QTAIM calculation
+    if(m_basis)
+    {
+
+      // QTAIM is only implemented for Cartesian Gaussians.
+      // 6D, 10F, 15G, etc...
+      QString basisSetType = m_basis->basisSetType();
+      QVariant basisSetTypeVariant(basisSetType);
+      m_molecule->setProperty("QTAIMBasisSetType",basisSetTypeVariant);
+
+      if( basisSetType == "Cartesian GTO")
+      {
+
+        qDebug() << "QTAIM: Expand Cartesian GTOs into Primitives";
+        m_basis->expandIntoPrimitives();
+
+        QString fileNameString(m_molecule->fileName());
+        QVariant fileNameVariant(fileNameString);
+        m_molecule->setProperty("QTAIMFileName",fileNameVariant);
+        QString commentString("Wavefunction from Surfaces extension");
+        QVariant commentVariant(commentString);
+        m_molecule->setProperty("QTAIMComment",commentVariant);
+
+        // only keep the occupied orbitals
+        unsigned int totalNumberOfMolecularOrbitals( static_cast<qint64>(m_basis->numMOs()) );
+        qint64 numberOfMolecularOrbitals=-1;
+        for( unsigned int i=0 ; i < totalNumberOfMolecularOrbitals ; ++i)
+        {
+          if( m_basis->HOMO(i) )
+            numberOfMolecularOrbitals=static_cast<qint64>(i) + 1;
+        }
+        QVariant numberOfMolecularOrbitalsVariant(numberOfMolecularOrbitals);
+        m_molecule->setProperty("QTAIMNumberOfMolecularOrbitals",numberOfMolecularOrbitalsVariant);
+
+        qint64 numberOfNuclei( static_cast<qint64>(m_molecule->numAtoms()) );
+        QVariant numberOfNucleiVariant(numberOfNuclei);
+        m_molecule->setProperty("QTAIMNumberOfNuclei",numberOfNucleiVariant);
+
+        // Nuclear Coordinates
+        QList<qreal> xcoordList;
+        QList<qreal> ycoordList;
+        QList<qreal> zcoordList;
+        QList<qint64> nucZList;
+        for( qint64 i=0 ; i < numberOfNuclei ; ++i )
+        {
+          static const double BOHR_TO_ANGSTROM = 0.529177249;
+          static const double ANGSTROM_TO_BOHR = 1.0 / 0.529177249;
+          Atom *atom=m_molecule->atoms().at(i);
+          const Eigen::Vector3d pos=*(atom->pos());
+          xcoordList.append(pos(0) * ANGSTROM_TO_BOHR );
+          ycoordList.append(pos(1) * ANGSTROM_TO_BOHR );
+          zcoordList.append(pos(2) * ANGSTROM_TO_BOHR );
+          nucZList.append(atom->atomicNumber());
+        }
+
+        QVariantList xcoordVariantList;
+        QVariantList ycoordVariantList;
+        QVariantList zcoordVariantList;
+        QVariantList nucZVariantList;
+        for( qint64 i=0 ; i < xcoordList.length() ; ++i )
+        {
+          xcoordVariantList.append( xcoordList.at(i) );
+          ycoordVariantList.append( ycoordList.at(i) );
+          zcoordVariantList.append( zcoordList.at(i) );
+          nucZVariantList.append( nucZList.at(i) );
+        }
+        m_molecule->setProperty("QTAIMXNuclearCoordinates",xcoordVariantList);
+        m_molecule->setProperty("QTAIMYNuclearCoordinates",ycoordVariantList);
+        m_molecule->setProperty("QTAIMZNuclearCoordinates",zcoordVariantList);
+        m_molecule->setProperty("QTAIMNuclearCharges",nucZVariantList);
+
+        // Primitive Centers
+        QList<qreal> X0List( m_basis->X0List() );
+        QVariantList X0VariantList;
+        for( qint64 i=0 ; i < X0List.length() ; ++i )
+        {
+          X0VariantList.append( X0List.at(i) );
+        }
+        m_molecule->setProperty("QTAIMXGaussianPrimitiveCenterCoordinates",X0VariantList);
+
+        QList<qreal> Y0List( m_basis->Y0List() );
+        QVariantList Y0VariantList;
+        for( qint64 i=0 ; i < Y0List.length() ; ++i )
+        {
+          Y0VariantList.append( Y0List.at(i) );
+        }
+        m_molecule->setProperty("QTAIMYGaussianPrimitiveCenterCoordinates",Y0VariantList);
+
+        QList<qreal> Z0List( m_basis->Z0List() );
+        QVariantList Z0VariantList;
+        for( qint64 i=0 ; i < Z0List.length() ; ++i )
+        {
+          Z0VariantList.append( Z0List.at(i) );
+        }
+        m_molecule->setProperty("QTAIMZGaussianPrimitiveCenterCoordinates",Z0VariantList);
+
+        // Angular Momenta
+        QList<qint64> xamomList( m_basis->xamomList() );
+        QVariantList xamomVariantList;
+        for( qint64 i=0 ; i < xamomList.length() ; ++i )
+        {
+          xamomVariantList.append( xamomList.at(i) );
+        }
+        m_molecule->setProperty("QTAIMXGaussianPrimitiveAngularMomenta",xamomVariantList);
+
+        QList<qint64> yamomList( m_basis->yamomList() );
+        QVariantList yamomVariantList;
+        for( qint64 i=0 ; i < yamomList.length() ; ++i )
+        {
+          yamomVariantList.append( yamomList.at(i) );
+        }
+        m_molecule->setProperty("QTAIMYGaussianPrimitiveAngularMomenta",yamomVariantList);
+
+        QList<qint64> zamomList( m_basis->zamomList() );
+        QVariantList zamomVariantList;
+        for( qint64 i=0 ; i < zamomList.length() ; ++i )
+        {
+          zamomVariantList.append( zamomList.at(i) );
+        }
+        m_molecule->setProperty("QTAIMZGaussianPrimitiveAngularMomenta",zamomVariantList);
+
+
+        QList<qreal> alphaList( m_basis->alphaList() );
+        QVariantList alphaVariantList;
+        for( qint64 i=0 ; i < alphaList.length() ; ++i )
+        {
+          alphaVariantList.append( alphaList.at(i) );
+        }
+        m_molecule->setProperty("QTAIMGaussianPrimitiveExponentCoefficients",alphaVariantList);
+
+        // Orbital Eigenvalues
+        QList<qreal> orbeList( m_basis->orbeList() );
+        QVariantList orbeVariantList;
+        for( qint64 i=0 ; i < numberOfMolecularOrbitals /* orbeList.length() */ ; ++i )
+        {
+          // orbeVariantList.append( orbeList.at(i) );
+          qreal zero=0.0;
+          orbeVariantList.append( zero );
+        }
+        m_molecule->setProperty("QTAIMMolecularOrbitalEigenvalues",orbeVariantList);
+
+
+        // Occupation Numbers (remember only non-zero)
+        QList<qreal> occnoList( m_basis->occnoList() );
+        QVariantList occnoVariantList;
+        for( qint64 i=0 ; i < numberOfMolecularOrbitals /* occnoList.length() */ ; ++i )
+        {
+//          occnoVariantList.append( occnoList.at(i) );
+          qreal two=2.0;
+          occnoVariantList.append( two );
+        }
+        m_molecule->setProperty("QTAIMMolecularOrbitalOccupationNumbers",occnoVariantList);
+
+        // Primitive Coefficients (remember only non-zero)
+
+        qint64 numberOfGaussianPrimitives( static_cast<qint64>( alphaList.length() ) );
+        QVariant numberOfGaussianPrimitivesVariant(numberOfGaussianPrimitives);
+        m_molecule->setProperty("QTAIMNumberOfGaussianPrimitives",numberOfGaussianPrimitivesVariant);
+
+        QList<qreal> coefList( m_basis->coefList() );
+        QVariantList coefVariantList;
+        for( qint64 m=0 ; m < numberOfMolecularOrbitals /* coefList.length() */ ; ++m )
+        {
+          for( qint64 p=0 ; p < numberOfGaussianPrimitives ; ++p )
+          {
+            coefVariantList.append( coefList.at( m*numberOfGaussianPrimitives + p ) );
+          }
+        }
+        m_molecule->setProperty("QTAIMMolecularOrbitalCoefficients",coefVariantList);
+
+        // Zero the Total Energy for now
+        qreal zero=0.0;
+        m_molecule->setProperty("QTAIMTotalEnergy", zero );
+
+        // Set the Virial Ratio (-V/T) to 2 for now
+        qreal two=2.0;
+        m_molecule->setProperty("QTAIMVirialRatio", two );
+
+      }
+
+    }
+
+
   }
 
   void OrbitalExtension::calculateOrbitalFromWidget(unsigned int orbital,

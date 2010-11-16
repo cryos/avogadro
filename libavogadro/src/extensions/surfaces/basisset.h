@@ -30,6 +30,7 @@
 #include <QObject>
 #include <QFuture>
 #include <QFutureWatcher>
+#include <QList>
 
 #include <Eigen/Core>
 #include <vector>
@@ -115,6 +116,22 @@ namespace Avogadro
      * to update a progress bar.
      */
     virtual QFutureWatcher<void> & watcher()=0;
+
+    /**
+     * Basis Set Type. Override with subclass methods.
+     */
+    virtual QString basisSetType() const { return QString("Unknown"); };
+    virtual void expandIntoPrimitives() { return; };
+    virtual QList<qreal> X0List() const { QList<qreal> value; return value; };
+    virtual QList<qreal> Y0List() const { QList<qreal> value; return value; };
+    virtual QList<qreal> Z0List() const { QList<qreal> value; return value; };
+    virtual QList<qint64> xamomList() const { QList<qint64> value; return value; };
+    virtual QList<qint64> yamomList() const { QList<qint64> value; return value; };
+    virtual QList<qint64> zamomList() const { QList<qint64> value; return value; };
+    virtual QList<qreal> alphaList() const { QList<qreal> value; return value; };
+    virtual QList<qreal> orbeList() const { QList<qreal> value; return value; };
+    virtual QList<qreal> occnoList() const { QList<qreal> value; return value; };
+    virtual QList<qreal> coefList() const { QList<qreal> value; return value; };
 
   protected:
     /// Total number of electrons
