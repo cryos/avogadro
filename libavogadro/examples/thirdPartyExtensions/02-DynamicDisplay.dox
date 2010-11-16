@@ -1,0 +1,89 @@
+namespace Avogadro {
+
+/**
+
+\page tpe-dynamic-display Dynamic Display example
+
+\section rationale Rationale
+
+The Dynamic Display extension implements a dialog box that counts the
+number of hydrogen atoms in the currently displayed molecule. It is
+designed as an example of how to extract data from the molecule when
+it is loaded, and also shows how to call functions when the user edits
+a molecule.
+
+\subsection note Note:
+
+This may give incorrect counts when the molecule is edited, especially
+when "Adjust Hydrogens" is enabled. This has been fixed in newer
+versions of Avogadro. See http://gold.cryos.net:8080/#change,257
+
+\section overview Overview
+
+The extension consists of five files located in
+libavogadro/examples/thirdPartyExtensions/02-DynamicDisplay/:
+- CMakeLists.txt:
+  - The CMake input file that sets up the build
+    environment.
+
+- dynamicdisplayextension.cpp
+- dynamicdisplayextension.h
+  - These contain the DynamicDisplayExtension class. This is where the
+    molecule is monitored and GUI updates are requested from the
+    DynamicDisplayDialog.
+
+- dynamicdisplaydialog.ui
+  - This is the Qt Designer input file that contains the GUI layout.
+- dynamicdisplaydialog.cpp
+- dynamicdisplaydialog.h
+  - These contain the DynamicDisplayDialog class, which implements support
+    for the GUI described by dynamicdisplaydialog.ui. The function to
+    count and update the number of hydrogens is of interest here.
+
+\section specifics Specifics
+
+- DynamicDisplayExtension::setMolecule
+
+This extension makes use of the Extension::setMolecule virtual to be
+notified when a new molecule is loaded in Avogadro. This function will
+update the cached Molecule pointer, disconnecting the old pointer and
+reconnecting the new pointer to call moleculeUpdated when atoms are
+added, removed, or modified.
+
+- DynamicDisplayExtension::moleculeUpdated
+
+Here, the cached Molecule pointer is inspected, and the appropriate
+signal is emitted -- either reset if the pointer is null, or update if
+the pointer if valid.
+
+- DynamicDisplayDialog::reset
+
+This function updates the label ui.label_numHydrogens with "N/A",
+indicating that there is not a valid molecule loaded.
+
+- DynamicDisplayDialog::update
+
+Here, the number of hydrogen atoms are count by iterating through the
+atoms in the passed Molecule using the QList of Atom pointers provided
+via Molecule::atoms(). The atomic number of each atom is checked, and
+if it is a hydrogen, the counter is incremented. Finally, the label is
+updated with the number of hydrogens found.
+
+\section next Next Steps
+
+If you're feeling adventurous, try out the following:
+- Have the dialog also display the total number of atoms. There are at
+  least three unique ways to do this.
+- Allow the user to change the atomic number that is checked for in
+  DynamicDisplayDialog::update.
+- This implementation can actually be rather inefficient; all atoms in
+  the molecule are counted each time an atom is
+  changed/added/removed. If there are a large number of atoms in the
+  molecule and a large change is enacted, this may cause problems,
+  including a temporarily non-responsive user interface. Try to
+  implement a QTimer from the QtCore module that will limit the
+  frequency of the update.
+
+**/
+
+}

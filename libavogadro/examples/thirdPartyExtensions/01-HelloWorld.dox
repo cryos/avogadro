@@ -1,0 +1,48 @@
+namespace Avogadro {
+
+/**
+
+\page tpe-hello-world Hello World! example
+
+\section rationale Rationale
+
+The Hello World! extension is an example of the simplest extension
+that implements its own GUI, in this case a dialog box with a button
+and a label.
+
+\section overview Overview
+
+The extension consists of five files located in
+libavogadro/examples/thirdPartyExtensions/01-HelloWorld/:
+- CMakeLists.txt:
+  - The CMake input file that sets up the build
+    environment.
+
+- helloworldextension.cpp
+- helloworldextension.h
+  - These contain the HelloWorldExtension class which inherits
+    Avogadro::Extension. This is where the actual work of the
+    extension is typically performed.
+
+- helloworlddialog.ui
+  - This is the Qt Designer input file that contains the GUI layout.
+- helloworlddialog.cpp
+- helloworlddialog.h
+  - These contain the HelloWorldDialog class, which implements support
+    for the GUI described by helloworld.ui
+
+\section specifics Specifics
+
+There is no algorithmic complexity to explain here, examining the
+comments in the source files should be sufficient. As a bare example
+of an Avogadro extension, the Hello World code serves as a basis for
+the more advanced examples in the tutorial.
+
+\section next Next Steps
+
+If you're feeling adventurous, try out the following:
+- Change the "Hello world!" text on the dialog.
+
+**/
+
+}
