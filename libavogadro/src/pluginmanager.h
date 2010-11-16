@@ -166,7 +166,7 @@ namespace Avogadro {
     void loadFactories(const QString& dir = "");
 
     /**
-     * Get all the PluginFactory obacjects for a given type.
+     * Get all the PluginFactory objects for a given type.
      */
     QList<PluginFactory *> factories( Plugin::Type type );
 
