@@ -68,7 +68,6 @@ namespace Avogadro {
   class A_EXPORT Molecule : public Primitive
   {
   Q_OBJECT
-
   public:
     /**
      * Constructor.
@@ -507,7 +506,7 @@ namespace Avogadro {
     /**
      * Calculate the indices of atoms in groups of atoms of the same element.
      */
-	void calculateGroupIndices() const;
+  void calculateGroupIndices() const;
 
     /**
      * @return The bond between the two supplied atom ids if one exists,

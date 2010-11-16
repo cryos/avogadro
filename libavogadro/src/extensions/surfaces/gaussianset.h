@@ -31,6 +31,7 @@
 #include <QObject>
 #include <QFuture>
 #include <QFutureWatcher>
+#include <QList>
 
 #include <Eigen/Core>
 #include <vector>
@@ -157,6 +158,75 @@ namespace Avogadro
      */
     QFutureWatcher<void> & watcher() { return m_watcher; }
 
+    /**
+     * Basis Set Type.
+     * "Cartesian GTO" if orbitals are S, P, D, F
+     * "Spherical GTO" if orbitals are S, P, D5, F7
+     * else
+     * "Unknown GTO"
+     */
+    QString basisSetType() const {
+      QString basisSetType("Cartesian GTO");
+      bool hasCartesianGaussians=false;
+      bool hasSphericalGaussians=false;
+      qint64 nprim=0;
+      for( unsigned int i=0 ; i < m_symmetry.size() ; ++i )
+      {
+        // { S, SP, P, D, D5, F, F7, UU }
+        switch( m_symmetry[i] )
+        {
+        case S:
+          nprim+=1;
+          break;
+        case SP:
+          nprim+=4;
+          break;
+        case P:
+          nprim+=3;
+          break;
+        case D:
+          nprim+=6;
+          break;
+        case F:
+          nprim+=10;
+          break;
+        default:
+          qDebug() << "Angular Momentum too large.";
+          break;
+        }
+
+        qDebug() << i <<  m_symmetry[i] ;
+        if( m_symmetry[i] == D5 || m_symmetry[i] == F7 )
+          hasSphericalGaussians=true;
+        if( m_symmetry[i] == D  || m_symmetry[i] == F  )
+          hasCartesianGaussians=true;
+      }
+
+      if( hasCartesianGaussians && hasSphericalGaussians )
+      {
+        basisSetType=QString("Unknown GTO");
+      }
+      else if ( (!hasCartesianGaussians) && hasSphericalGaussians )
+      {
+        basisSetType=QString("Spherical GTO");
+      }
+
+      return basisSetType;
+    };
+
+    void expandIntoPrimitives();
+
+    QList<qreal> X0List() const { return m_X0List; };
+    QList<qreal> Y0List() const { return m_Y0List; };
+    QList<qreal> Z0List() const { return m_Z0List; };
+    QList<qint64> xamomList() const { return m_xamomList; };
+    QList<qint64> yamomList() const { return m_yamomList; };
+    QList<qint64> zamomList() const { return m_zamomList; };
+    QList<qreal> alphaList() const { return m_alphaList; };
+    QList<qreal> orbeList() const { return m_orbeList; };
+    QList<qreal> occnoList() const { return m_occnoList; };
+    QList<qreal> coefList() const { return m_coefList; };
+
   signals:
     /**
      * Emitted when the calculation is complete.
@@ -218,6 +288,20 @@ namespace Avogadro
                        const double &dr2, int basis, Eigen::MatrixXd &out);
     static void pointD5(GaussianSet *set, const Eigen::Vector3d &delta,
                         const double &dr2, int basis, Eigen::MatrixXd &out);
+
+    QList<qreal> m_X0List;
+    QList<qreal> m_Y0List;
+    QList<qreal> m_Z0List;
+
+    QList<qint64> m_xamomList;
+    QList<qint64> m_yamomList;
+    QList<qint64> m_zamomList;
+
+    QList<qreal> m_alphaList;
+
+    QList<qreal> m_occnoList;
+    QList<qreal> m_orbeList;
+    QList<qreal> m_coefList;
   };
 
 } // End namespace Avogadro
