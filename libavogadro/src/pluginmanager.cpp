@@ -578,15 +578,16 @@ namespace Avogadro {
                       + "/../../../../lib", settings);
     }
 #endif
-
-    // Load the plugins
-    foreach (const QString& path, d->searchDirs) {
-      qDebug() << "Loading plugins:" << path;
-      loadPluginDir(path + "/colors", settings);
-      loadPluginDir(path + "/engines", settings);
-      loadPluginDir(path + "/extensions", settings);
-      loadPluginDir(path + "/tools", settings);
-      loadPluginDir(path + "/contrib", settings);
+    else {
+      // Load the plugins
+      foreach (const QString& path, d->searchDirs) {
+        qDebug() << "Loading plugins:" << path;
+        loadPluginDir(path + "/colors", settings);
+        loadPluginDir(path + "/engines", settings);
+        loadPluginDir(path + "/extensions", settings);
+        loadPluginDir(path + "/tools", settings);
+        loadPluginDir(path + "/contrib", settings);
+      }
     }
 
 #ifdef ENABLE_PYTHON
