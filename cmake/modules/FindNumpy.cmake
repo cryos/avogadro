@@ -11,13 +11,18 @@
 
 EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c 
     "import numpy; print numpy.get_include()"
-    OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
+    OUTPUT_VARIABLE NUMPY_INCLUDE_DIR
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 
 if (NUMPY_INCLUDE_DIR)
-  # successful
-  set (NUMPY_FOUND TRUE)
-  set (NUMPY_INCLUDE_DIR ${NUMPY_INCLUDE_DIR} CACHE STRING "Numpy include path")
+  if(EXISTS ${NUMPY_INCLUDE_DIR}/numpy/arrayobject.h)
+    # successful
+    set (NUMPY_FOUND TRUE)
+    set (NUMPY_INCLUDE_DIR ${NUMPY_INCLUDE_DIR} CACHE STRING "Numpy include path")
+  else()
+    set(NUMPY_FOUND FALSE)
+  endif()
 else (NUMPY_INCLUDE_DIR)
   # Did not successfully include numpy
   set(NUMPY_FOUND FALSE)
