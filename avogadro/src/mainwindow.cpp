@@ -317,6 +317,7 @@ namespace Avogadro
     QAction *redoAction = d->undoStack->createRedoAction( this );
     redoAction->setIcon( QIcon( QLatin1String( ":/icons/edit-redo.png" ) ) );
     redoAction->setShortcuts( QKeySequence::Redo );
+    ui.actionClear->setShortcuts( QList<QKeySequence>() << QKeySequence("Backspace") << QKeySequence("Del"));
     if ( ui.menuEdit->actions().count() ) {
       QAction *firstAction = ui.menuEdit->actions().at( 0 );
       ui.menuEdit->insertAction( firstAction, redoAction );
@@ -749,7 +750,8 @@ namespace Avogadro
 
       // If current window is not empty or has non-default file name,
       // check if we already have an open window with this file
-      if ( !isDefaultFileName(d->fileName) || molecule()->numAtoms() ) {
+      if ( !isDefaultFileName(d->fileName) ||
+           (d->molecule && d->molecule->numAtoms()) ) {
         MainWindow *existing = findMainWindow( fileName );
         if ( existing ) {
           existing->show();

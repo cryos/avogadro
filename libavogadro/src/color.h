@@ -51,8 +51,8 @@
 
 #define AVOGADRO_COLOR_FACTORY(c)         \
   public: \
-    Plugin *createInstance(QObject *parent = 0) { Q_UNUSED(parent); return new c(); } \
-    Plugin::Type type() const { return Plugin::ColorType; }; \
+    Avogadro::Plugin *createInstance(QObject *parent = 0) { Q_UNUSED(parent); return new c(); } \
+    Avogadro::Plugin::Type type() const { return Avogadro::Plugin::ColorType; }; \
     QString identifier() const { return c::staticIdentifier(); } \
     QString name() const { return c::staticName(); }         \
     QString description() const { return c::staticDescription(); }
