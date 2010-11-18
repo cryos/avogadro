@@ -767,7 +767,13 @@ namespace Avogadro {
   {
     QDir dir(directory);
     qDebug() << "Searching for plugins in" << dir.canonicalPath();
-    foreach (const QString& fileName, dir.entryList(QDir::Files)) {
+    loadPluginList(dir, dir.entryList(QDir::Files), settings);
+  }
+
+  void PluginManager::loadPluginList(const QDir &dir,
+                                const QStringList &plugins, QSettings &settings)
+  {
+    foreach (const QString& fileName, plugins) {
       if(!QLibrary::isLibrary(fileName))
         continue;
 #ifdef Q_WS_X11

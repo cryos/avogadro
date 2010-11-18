@@ -166,6 +166,12 @@ namespace Avogadro {
     void loadFactories(const QString& dir = "");
 
     /**
+     * Load plugins with file names listed in @a plugins from directory @a dir
+     * and enable/disable them using @a settings
+     */
+    static void loadPluginList(const QDir &dir, const QStringList &plugins, QSettings &settings);
+
+    /**
      * Get all the PluginFactory obacjects for a given type.
      */
     QList<PluginFactory *> factories( Plugin::Type type );
