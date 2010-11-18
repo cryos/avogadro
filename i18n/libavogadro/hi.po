@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: avogadro\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2010-09-04 12:28-0400\n"
-"PO-Revision-Date: 2010-06-14 14:38+0000\n"
+"POT-Creation-Date: 2010-11-17 20:58-0500\n"
+"PO-Revision-Date: 2010-08-19 04:49+0000\n"
 "Last-Translator: Avogadro Team <avogadro-devel@lists.sourceforge.net>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-16 15:15+0000\n"
+"X-Launchpad-Export-Date: 2010-11-18 01:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: src/colors/atomindexcolor.h:44
@@ -653,6 +653,17 @@ msgstr ""
 msgid "Renders atoms as tetrahedra, octahedra, and other polygons"
 msgstr ""
 
+#: src/engines/qtaimengine.h:45 src/extensions/qtaim/qtaimextension.cpp:102
+#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/extensions/qtaim/qtaimextension.cpp:108
+#: src/extensions/qtaim/qtaimextension.h:35
+msgid "QTAIM"
+msgstr ""
+
+#: src/engines/qtaimengine.h:46
+msgid "Renders primitives using QTAIM properties"
+msgstr ""
+
 #: src/engines/ribbonengine.h:41
 msgid "Ribbon"
 msgstr ""
@@ -732,58 +743,67 @@ msgstr ""
 msgid "Extensions"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:65
-msgid "Open trajectory file"
+#: src/extensions/animationdialog.cpp:68
+msgid "Trajectory files"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:66
-msgid "Trajectory files (*.xtc *.xyz)"
+#: src/extensions/animationdialog.cpp:69
+msgid "All files"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:74
+#: src/extensions/animationdialog.cpp:70
+msgid "DL-POLY HISTORY files"
+msgstr ""
+
+#: src/extensions/animationdialog.cpp:73
+msgid "Open Trajectory File"
+msgstr ""
+
+#: src/extensions/animationdialog.cpp:83
 #, qt-format
 msgid "%1/%2"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:95
+#: src/extensions/animationdialog.cpp:104
 msgid "Save Video File"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:97
+#: src/extensions/animationdialog.cpp:106
 msgid "video files (*.avi)"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:102
-#: src/extensions/animationextension.cpp:135
-#: src/extensions/animationextension.cpp:143
-#: src/extensions/animationextension.cpp:178
-#: src/extensions/animationextension.cpp:184
-#: src/extensions/animationextension.cpp:190
-#: src/extensions/animationextension.cpp:201
-#: src/extensions/animationextension.cpp:209
-#: src/extensions/animationextension.cpp:232
-#: src/extensions/animationextension.cpp:245
-#: src/extensions/animationextension.cpp:251
-#: src/extensions/forcefieldextension.cpp:182
-#: src/extensions/forcefieldextension.cpp:195
-#: src/extensions/forcefieldextension.cpp:207
-#: src/extensions/forcefieldextension.cpp:229
+#: src/extensions/animationdialog.cpp:111
+#: src/extensions/animationextension.cpp:134
+#: src/extensions/animationextension.cpp:142
+#: src/extensions/animationextension.cpp:177
+#: src/extensions/animationextension.cpp:183
+#: src/extensions/animationextension.cpp:189
+#: src/extensions/animationextension.cpp:200
+#: src/extensions/animationextension.cpp:208
+#: src/extensions/animationextension.cpp:237
+#: src/extensions/animationextension.cpp:244
+#: src/extensions/animationextension.cpp:258
+#: src/extensions/animationextension.cpp:264
+#: src/extensions/forcefieldextension.cpp:189
+#: src/extensions/forcefieldextension.cpp:202
+#: src/extensions/forcefieldextension.cpp:214
+#: src/extensions/forcefieldextension.cpp:236
 #: src/extensions/insertfragmentdialog.cpp:143
 #: src/extensions/insertfragmentdialog.cpp:151
-#: src/extensions/quantuminput/inputfileextension.cpp:151
-#: src/extensions/quantuminput/inputfileextension.cpp:161
+#: src/extensions/quantuminput/inputfileextension.cpp:158
+#: src/extensions/quantuminput/inputfileextension.cpp:168
 #: src/extensions/selectextension.cpp:276
 #: src/extensions/selectextension.cpp:288
 #: src/extensions/selectextension.cpp:294 src/extensions/trajvideomaker.cpp:47
-#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:105
-#: src/extensions/trajvideomaker.cpp:110 src/extensions/trajvideomaker.cpp:124
-#: src/extensions/trajvideomaker.cpp:147
+#: src/extensions/trajvideomaker.cpp:55 src/extensions/trajvideomaker.cpp:84
+#: src/extensions/trajvideomaker.cpp:108 src/extensions/trajvideomaker.cpp:113
+#: src/extensions/trajvideomaker.cpp:152
 #: src/extensions/unitcellextension.cpp:127
 #: src/extensions/unitcellextension.cpp:255
 msgid "Avogadro"
 msgstr ""
 
-#: src/extensions/animationdialog.cpp:103
+#: src/extensions/animationdialog.cpp:112
 msgid "Adding .avi extension"
 msgstr ""
 
@@ -792,57 +812,66 @@ msgid "Animation..."
 msgstr ""
 
 #: src/extensions/animationextension.cpp:75
-#: src/extensions/forcefieldextension.cpp:144
+#: src/extensions/forcefieldextension.cpp:151
+#: src/extensions/qtaim/qtaimextension.cpp:102
+#: src/extensions/qtaim/qtaimextension.cpp:105
+#: src/extensions/qtaim/qtaimextension.cpp:108
 #: src/extensions/quantuminput/gamessextension.cpp:97
 #: src/extensions/shaderextension.cpp:185
 #: src/extensions/spectra/spectraextension.cpp:78
-#: src/extensions/surfaces/orbitalextension.cpp:80
+#: src/extensions/surfaces/orbitalextension.cpp:82
 #: src/extensions/surfaces/surfaceextension.cpp:96
 #: src/extensions/wiitrackextension.cpp:83
 msgid "E&xtensions"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:136
+#: src/extensions/animationextension.cpp:135
 #: src/extensions/insertfragmentdialog.cpp:144
-#: src/extensions/quantuminput/inputfileextension.cpp:152
+#: src/extensions/quantuminput/inputfileextension.cpp:159
 #, qt-format
 msgid "Cannot read file format of file %1."
 msgstr ""
 
-#: src/extensions/animationextension.cpp:144
+#: src/extensions/animationextension.cpp:143
 #, qt-format
 msgid "Read trajectory file %1 failed."
 msgstr ""
 
-#: src/extensions/animationextension.cpp:179
-#: src/extensions/animationextension.cpp:185
+#: src/extensions/animationextension.cpp:178
+#: src/extensions/animationextension.cpp:184
 msgid "Must specify a valid .avi file name"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:191
+#: src/extensions/animationextension.cpp:190
 msgid "GL widget was not correctly initialized in order to save video"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:202
+#: src/extensions/animationextension.cpp:201
 msgid "Invalid video filename.  Must include full directory path"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:210
+#: src/extensions/animationextension.cpp:209
 msgid ""
 "Invalid video filename.  Must include full directory path and name, ending "
 "with .avi"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:233
-msgid "could not set format to XYZ"
+#: src/extensions/animationextension.cpp:238
+#, qt-format
+msgid "Could not determine format from filename: %1"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:246
+#: src/extensions/animationextension.cpp:245
+#, qt-format
+msgid "Could not set format: %1"
+msgstr ""
+
+#: src/extensions/animationextension.cpp:259
 #, qt-format
 msgid "Problem reading traj file %1"
 msgstr ""
 
-#: src/extensions/animationextension.cpp:252
+#: src/extensions/animationextension.cpp:265
 #, qt-format
 msgid ""
 "Trajectory file %1 disagrees on the number of atoms in the present molecule"
@@ -850,7 +879,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:121
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: src/extensions/animationextension.h:39:3234
+#: src/extensions/animationextension.h:39:3421
 msgid "Animation"
 msgstr ""
 
@@ -860,7 +889,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:14
 #. i18n: ectx: property (windowTitle), widget (QDialog, CartesianEditorDialog)
-#: src/extensions/cartesianextension.cpp:96:354
+#: src/extensions/cartesianextension.cpp:96:423
 msgid "Cartesian Editor"
 msgstr ""
 
@@ -875,8 +904,9 @@ msgstr ""
 #: src/extensions/cartesianextension.cpp:586
 #: src/extensions/h2methylextension.cpp:62
 #: src/extensions/hydrogensextension.cpp:71
-#: src/extensions/insertfragmentextension.cpp:81
+#: src/extensions/insertfragmentextension.cpp:82
 #: src/extensions/insertpeptideextension.cpp:75
+#: src/extensions/invertchiralextension.cpp:61
 #: src/extensions/supercellextension.cpp:72
 #: src/extensions/unitcellextension.cpp:70
 msgid "&Build"
@@ -964,81 +994,81 @@ msgstr ""
 msgid "Import trajectory files"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:69
+#: src/extensions/forcefieldextension.cpp:75
 msgid "&Optimize Geometry"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:71
+#: src/extensions/forcefieldextension.cpp:77
 msgctxt "Shortcut key for optimize geometry"
 msgid "Ctrl+Alt+O"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:75
+#: src/extensions/forcefieldextension.cpp:82
 msgid "Setup Force Field..."
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:85
+#: src/extensions/forcefieldextension.cpp:92
 msgid "Calculate Energy"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:90
+#: src/extensions/forcefieldextension.cpp:97
 msgid "Conformer Search..."
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:100
+#: src/extensions/forcefieldextension.cpp:107
 msgid "Constraints..."
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:105
+#: src/extensions/forcefieldextension.cpp:112
 msgid "Ignore Selection"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:110
+#: src/extensions/forcefieldextension.cpp:117
 msgid "Fix Selected Atoms"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:144
+#: src/extensions/forcefieldextension.cpp:151
 msgid "&Molecular Mechanics"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:183
-#: src/extensions/forcefieldextension.cpp:208
-#: src/extensions/forcefieldextension.cpp:230
+#: src/extensions/forcefieldextension.cpp:190
+#: src/extensions/forcefieldextension.cpp:215
+#: src/extensions/forcefieldextension.cpp:237
 msgid ""
 "Cannot set up the currently selected force field for this molecule. "
 "Switching to UFF."
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:193
+#: src/extensions/forcefieldextension.cpp:200
 #, qt-format
 msgid "Energy = %L1 %2"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:242
+#: src/extensions/forcefieldextension.cpp:249
 msgid "Geometric Optimization"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:569
+#: src/extensions/forcefieldextension.cpp:576
 msgid "Forcefield Optimization"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:570
-#: src/extensions/forcefieldextension.cpp:573
-#: src/extensions/forcefieldextension.cpp:576
-#: src/extensions/forcefieldextension.cpp:579
+#: src/extensions/forcefieldextension.cpp:577
+#: src/extensions/forcefieldextension.cpp:580
+#: src/extensions/forcefieldextension.cpp:583
+#: src/extensions/forcefieldextension.cpp:586
 #: src/extensions/trajvideomaker.cpp:63
 msgid "Cancel"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:572
+#: src/extensions/forcefieldextension.cpp:579
 msgid "Systematic Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:575
+#: src/extensions/forcefieldextension.cpp:582
 msgid "Random Rotor Search"
 msgstr ""
 
-#: src/extensions/forcefieldextension.cpp:578
+#: src/extensions/forcefieldextension.cpp:585
 msgid "Weighted Rotor Search"
 msgstr ""
 
@@ -1100,7 +1130,7 @@ msgid "Add or remove hydrogens"
 msgstr ""
 
 #: src/extensions/insertfragmentdialog.cpp:152
-#: src/extensions/quantuminput/inputfileextension.cpp:162
+#: src/extensions/quantuminput/inputfileextension.cpp:169
 #, qt-format
 msgid "Cannot read file %1."
 msgstr ""
@@ -1109,31 +1139,31 @@ msgstr ""
 msgid "Open Directory"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:53
+#: src/extensions/insertfragmentextension.cpp:54
 msgid "Fragment..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:58
+#: src/extensions/insertfragmentextension.cpp:59
 msgid "SMILES..."
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:81
+#: src/extensions/insertfragmentextension.cpp:82
 #: src/extensions/insertpeptideextension.cpp:75
 msgid "&Insert"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:104
-#: src/extensions/insertfragmentextension.cpp:129
+#: src/extensions/insertfragmentextension.cpp:106
+#: src/extensions/insertfragmentextension.cpp:138
 msgid "Insert SMILES"
 msgstr ""
 
-#: src/extensions/insertfragmentextension.cpp:105
+#: src/extensions/insertfragmentextension.cpp:107
 msgid "Insert SMILES fragment:"
 msgstr ""
 
 #. i18n: file: src/extensions/insertfragmentdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, insertFragmentButton)
-#: src/extensions/insertfragmentextension.cpp:171
+#: src/extensions/insertfragmentextension.cpp:187
 #: src/extensions/insertfragmentextension.h:34 src/tools/drawcommand.cpp:1041
 msgid "Insert Fragment"
 msgstr ""
@@ -1151,7 +1181,7 @@ msgstr ""
 #. i18n: file: src/extensions/insertpeptidedialog.ui:515
 #. i18n: ectx: property (text), widget (QPushButton, insertButton)
 #: src/extensions/insertpeptideextension.cpp:233
-#: src/extensions/insertpeptideextension.h:43:595 rc.cpp:814
+#: src/extensions/insertpeptideextension.h:43:664 rc.cpp:883
 msgid "Insert Peptide"
 msgstr ""
 
@@ -1159,29 +1189,64 @@ msgstr ""
 msgid "Insert oligopeptide sequences"
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:40
+#: src/extensions/invertchiralextension.cpp:42
+msgid "Invert Chirality"
+msgstr ""
+
+#: src/extensions/invertchiralextension.h:39
+msgid "InvertChiral"
+msgstr ""
+
+#: src/extensions/invertchiralextension.h:40
+msgid "Invert chiral centers"
+msgstr ""
+
+#: src/extensions/molecularpropextension.cpp:51
 msgid "Molecule Properties..."
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/molecularpropextension.cpp:65
 #: src/extensions/propextension.cpp:112 src/extensions/propextension.cpp:118
 msgid "&View"
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:55
+#: src/extensions/molecularpropextension.cpp:65
 #: src/extensions/propextension.cpp:118
 msgid "&Properties"
 msgstr ""
 
-#: src/extensions/molecularpropextension.cpp:134
+#: src/extensions/molecularpropextension.cpp:125
+#: src/extensions/molecularpropextension.cpp:205
+msgctxt "Unknown molecule name"
+msgid "unknown"
+msgstr ""
+
+#: src/extensions/molecularpropextension.cpp:162
 msgid "Estimated Dipole Moment (D):"
 msgstr ""
 
-#: src/extensions/molecularpropextension.h:49
+#: src/extensions/molecularpropextension.cpp:215
+#: src/extensions/networkfetchextension.cpp:168
+#: src/extensions/networkfetchextension.cpp:179
+#: src/extensions/networkfetchextension.cpp:211
+msgid "Network Download Failed"
+msgstr ""
+
+#: src/extensions/molecularpropextension.cpp:216
+#: src/extensions/networkfetchextension.cpp:169
+msgid "Network timeout or other error."
+msgstr ""
+
+#: src/extensions/molecularpropextension.cpp:266
+msgctxt "asking server for molecule name"
+msgid "(pending)"
+msgstr ""
+
+#: src/extensions/molecularpropextension.h:53
 msgid "Molecular Properties"
 msgstr ""
 
-#: src/extensions/molecularpropextension.h:50
+#: src/extensions/molecularpropextension.h:54
 msgid "Display standard molecular properties."
 msgstr ""
 
@@ -1219,16 +1284,6 @@ msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:131
 msgid "URL of molecule to download."
-msgstr ""
-
-#: src/extensions/networkfetchextension.cpp:168
-#: src/extensions/networkfetchextension.cpp:179
-#: src/extensions/networkfetchextension.cpp:211
-msgid "Network Download Failed"
-msgstr ""
-
-#: src/extensions/networkfetchextension.cpp:169
-msgid "Network timeout or other error."
 msgstr ""
 
 #: src/extensions/networkfetchextension.cpp:180
@@ -1361,7 +1416,7 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, propsTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:894
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propextension.h:43:917 rc.cpp:1418 rc.cpp:1757
+#: src/extensions/propextension.h:43:989 rc.cpp:1490 rc.cpp:1829
 msgid "Properties"
 msgstr ""
 
@@ -1371,92 +1426,92 @@ msgid ""
 "includes a cartesian coordinate editor."
 msgstr ""
 
-#: src/extensions/propmodel.cpp:269
+#: src/extensions/propmodel.cpp:274
 msgid "Yes"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:271
+#: src/extensions/propmodel.cpp:276
 msgid "No"
 msgstr ""
 
 #. i18n: file: src/extensions/cartesianeditor.ui:286
 #. i18n: ectx: property (text), item, widget (QComboBox, sortBox)
-#: src/extensions/propmodel.cpp:427:433
+#: src/extensions/propmodel.cpp:432:502
 msgid "Element"
 msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:40
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/extensions/propmodel.cpp:429 src/extensions/propmodel.cpp:449
-#: src/extensions/propmodel.cpp:468 src/extensions/propmodel.cpp:484
+#: src/extensions/propmodel.cpp:434 src/extensions/propmodel.cpp:454
+#: src/extensions/propmodel.cpp:473 src/extensions/propmodel.cpp:489
 msgid "Type"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:431
+#: src/extensions/propmodel.cpp:436
 msgid "Valence"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:433
+#: src/extensions/propmodel.cpp:438
 msgid "Formal Charge"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:435
+#: src/extensions/propmodel.cpp:440
 msgid "Partial Charge"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:437
+#: src/extensions/propmodel.cpp:442
 #, qt-format
 msgctxt "in Angstrom"
 msgid "X %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:439
+#: src/extensions/propmodel.cpp:444
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Y %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:441
+#: src/extensions/propmodel.cpp:446
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Z  %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:444
+#: src/extensions/propmodel.cpp:449
 msgid "Atom"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:451 src/extensions/propmodel.cpp:470
+#: src/extensions/propmodel.cpp:456 src/extensions/propmodel.cpp:475
 msgid "Start Atom"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:453 src/extensions/propmodel.cpp:474
+#: src/extensions/propmodel.cpp:458 src/extensions/propmodel.cpp:479
 msgid "End Atom"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:455
+#: src/extensions/propmodel.cpp:460
 msgid "Bond Order"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:457
+#: src/extensions/propmodel.cpp:462
 msgid "Rotatable"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:459
+#: src/extensions/propmodel.cpp:464
 #, qt-format
 msgctxt "in Angstrom"
 msgid "Length %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:463
+#: src/extensions/propmodel.cpp:468
 msgid "Bond"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:472
+#: src/extensions/propmodel.cpp:477
 msgid "Vertex"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:476
+#: src/extensions/propmodel.cpp:481
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Angle %1"
@@ -1464,33 +1519,33 @@ msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:78
 #. i18n: ectx: property (text), item, widget (QComboBox, comboType)
-#: src/extensions/propmodel.cpp:479:502
+#: src/extensions/propmodel.cpp:484:571
 msgid "Angle"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:489
+#: src/extensions/propmodel.cpp:494
 #, qt-format
 msgid "Atom %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:491
+#: src/extensions/propmodel.cpp:496
 #, qt-format
 msgctxt "Degree symbol"
 msgid "Torsion %1"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:494
+#: src/extensions/propmodel.cpp:499
 msgid "Torsion"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:844
 #. i18n: ectx: property (text), item, widget (QComboBox, controlRunCombo)
-#: src/extensions/propmodel.cpp:511
-#: src/extensions/surfaces/orbitaltablemodel.cpp:74:1727
+#: src/extensions/propmodel.cpp:516
+#: src/extensions/surfaces/orbitaltablemodel.cpp:74:1799
 msgid "Energy"
 msgstr ""
 
-#: src/extensions/propmodel.cpp:514
+#: src/extensions/propmodel.cpp:519
 msgid "Conformer"
 msgstr ""
 
@@ -1506,6 +1561,30 @@ msgstr ""
 
 #: src/extensions/pythonterminal.h:53
 msgid "Interactive python scripting terminal"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.cpp:70
+msgid "Molecular Graph"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.cpp:76
+msgid "Molecular Graph with Lone Pairs"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.cpp:82
+msgid "Atomic Charge"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.cpp:152
+msgid "Open WFN File"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.cpp:154
+msgid "WFN files (*.wfn);;All files (*.*)"
+msgstr ""
+
+#: src/extensions/qtaim/qtaimextension.h:36
+msgid "QTAIM extension"
 msgstr ""
 
 #: src/extensions/quantuminput/daltoninputdialog.cpp:289
@@ -1525,15 +1604,18 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:311
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #: src/extensions/quantuminput/daltoninputdialog.cpp:356
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:187
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:391
 #: src/extensions/quantuminput/molproinputdialog.cpp:172
 #: src/extensions/quantuminput/mopacinputdialog.cpp:268
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:176
-#: src/extensions/quantuminput/qcheminputdialog.cpp:169:2681
+#: src/extensions/quantuminput/qcheminputdialog.cpp:169:2868
 msgid "Show Preview"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1619
+#. i18n: ectx: property (text), widget (QPushButton, moreButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:463
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:473
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
@@ -1544,11 +1626,12 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:420
 #. i18n: ectx: property (text), widget (QPushButton, moreButton)
 #: src/extensions/quantuminput/daltoninputdialog.cpp:360
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:191
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:395
 #: src/extensions/quantuminput/molproinputdialog.cpp:176
 #: src/extensions/quantuminput/mopacinputdialog.cpp:273
 #: src/extensions/quantuminput/nwcheminputdialog.cpp:180
-#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1442
+#: src/extensions/quantuminput/qcheminputdialog.cpp:173:1514
 msgid "Hide Preview"
 msgstr ""
 
@@ -1641,7 +1724,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:41
 #. i18n: ectx: property (text), widget (QLineEdit, titleLine)
-#: src/extensions/quantuminput/gamessinputdialog.cpp:631:908
+#: src/extensions/quantuminput/gamessinputdialog.cpp:631:980
 msgid "Title"
 msgstr ""
 
@@ -1677,6 +1760,20 @@ msgstr ""
 
 #: src/extensions/quantuminput/gamessinputdialog.cpp:1645
 msgid "GAMESS Input Deck"
+msgstr ""
+
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:134
+msgid "GAMESS-UK Input Deck Generator Warning"
+msgstr ""
+
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:135
+msgid ""
+"Would you like to update the preview text, losing all changes made in the "
+"GAMESS-UK input deck preview pane?"
+msgstr ""
+
+#: src/extensions/quantuminput/gamessukinputdialog.cpp:179
+msgid "GAMESS-UK Input Deck"
 msgstr ""
 
 #: src/extensions/quantuminput/gaussianinputdialog.cpp:202
@@ -1736,27 +1833,31 @@ msgstr ""
 msgid "Gaussian did not run correctly. Perhaps it is not installed correctly."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:55
+#: src/extensions/quantuminput/inputfileextension.cpp:56
 msgid "&Dalton..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:60
+#: src/extensions/quantuminput/inputfileextension.cpp:61
+msgid "&GAMESS-UK..."
+msgstr ""
+
+#: src/extensions/quantuminput/inputfileextension.cpp:66
 msgid "&Gaussian..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:65
+#: src/extensions/quantuminput/inputfileextension.cpp:71
 msgid "&MOLPRO..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:70
+#: src/extensions/quantuminput/inputfileextension.cpp:76
 msgid "M&OPAC..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:75
+#: src/extensions/quantuminput/inputfileextension.cpp:81
 msgid "&NWChem..."
 msgstr ""
 
-#: src/extensions/quantuminput/inputfileextension.cpp:80
+#: src/extensions/quantuminput/inputfileextension.cpp:86
 msgid "&Q-Chem..."
 msgstr ""
 
@@ -1904,7 +2005,7 @@ msgstr ""
 
 #. i18n: file: src/engines/labelsettingswidget.ui:147
 #. i18n: ectx: property (text), item, widget (QComboBox, atomType)
-#: src/extensions/selectextension.cpp:231:198
+#: src/extensions/selectextension.cpp:231:252
 msgid "Residue name"
 msgstr ""
 
@@ -1966,7 +2067,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/shaderdialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, ShaderDialog)
-#: src/extensions/shaderextension.h:41:2912
+#: src/extensions/shaderextension.h:41:3099
 msgid "GLSL Shaders"
 msgstr ""
 
@@ -2043,13 +2144,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:133
 #. i18n: ectx: attribute (title), widget (QWidget, tab_appearance)
-#: src/extensions/spectra/spectradialog.cpp:196:2973
+#: src/extensions/spectra/spectradialog.cpp:196:3160
 msgid "&Appearance"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:432
 #. i18n: ectx: attribute (title), widget (QWidget, tab_imageExport)
-#: src/extensions/spectra/spectradialog.cpp:197:3039
+#: src/extensions/spectra/spectradialog.cpp:197:3226
 msgid "E&xport Image"
 msgstr ""
 
@@ -2304,7 +2405,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/spectra/spectradialog.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, push_advanced)
-#: src/extensions/spectra/spectradialog.cpp:1022:2967
+#: src/extensions/spectra/spectradialog.cpp:1022:3154
 msgid "&Advanced >>"
 msgstr ""
 
@@ -2330,7 +2431,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2583
 #. i18n: ectx: property (text), widget (QCheckBox, hessianVibrationalCheck)
-#: src/extensions/spectra/vibrationextension.cpp:202:2267
+#: src/extensions/spectra/vibrationextension.cpp:202:2339
 msgid "Vibrational Analysis"
 msgstr ""
 
@@ -2354,7 +2455,7 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/vibrationwidget.ui:162
 #. i18n: ectx: property (text), widget (QPushButton, animationButton)
 #: src/extensions/spectra/vibrationwidget.cpp:286
-#: src/extensions/spectra/vibrationwidget.cpp:296:3246
+#: src/extensions/spectra/vibrationwidget.cpp:296:3433
 msgid "Start &Animation"
 msgstr ""
 
@@ -2367,7 +2468,7 @@ msgstr ""
 #: src/extensions/spectra/vibrationwidget.cpp:289
 #: src/extensions/spectra/vibrationwidget.cpp:298
 #: src/extensions/spectra/vibrationwidget.cpp:307
-#: src/extensions/spectra/vibrationwidget.cpp:310:3249
+#: src/extensions/spectra/vibrationwidget.cpp:310:3436
 msgid "Pause"
 msgstr ""
 
@@ -2397,22 +2498,22 @@ msgstr ""
 msgid "Build and display crystallographic super cells"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:64
+#: src/extensions/surfaces/orbitalextension.cpp:66
 msgid "Molecular Orbitals..."
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:86
+#: src/extensions/surfaces/orbitalextension.cpp:88
 #: src/extensions/surfaces/orbitalextension.h:86
 msgid "Orbitals"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:146
+#: src/extensions/surfaces/orbitalextension.cpp:149
 #: src/extensions/surfaces/orbitaltablemodel.cpp:89
 msgctxt "Highest Occupied MO"
 msgid "HOMO"
 msgstr ""
 
-#: src/extensions/surfaces/orbitalextension.cpp:147
+#: src/extensions/surfaces/orbitalextension.cpp:150
 #: src/extensions/surfaces/orbitaltablemodel.cpp:98
 msgctxt "Lowest Unoccupied MO"
 msgid "LUMO"
@@ -2532,23 +2633,23 @@ msgstr ""
 msgid "Building video "
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:109
-msgid "Video file not written."
-msgstr ""
-
-#: src/extensions/trajvideomaker.cpp:124
+#: src/extensions/trajvideomaker.cpp:84
 msgid "Could not run povray."
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:147
+#: src/extensions/trajvideomaker.cpp:112
+msgid "Video file not written."
+msgstr ""
+
+#: src/extensions/trajvideomaker.cpp:152
 msgid "Could not run mencoder."
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:158
+#: src/extensions/trajvideomaker.cpp:163
 msgid "Set Aspect Ratio"
 msgstr ""
 
-#: src/extensions/trajvideomaker.cpp:159
+#: src/extensions/trajvideomaker.cpp:164
 #, qt-format
 msgid ""
 "The current Avogadro scene is %1x%2 pixels large, and therefore has aspect "
@@ -2590,13 +2691,13 @@ msgstr ""
 #. i18n: file: src/extensions/cartesianeditor.ui:145
 #. i18n: ectx: property (text), widget (QPushButton, applyButton)
 #: src/extensions/unitcellparamdialog.cpp:95
-#: src/extensions/unitcellparamdialog.cpp:100:390
+#: src/extensions/unitcellparamdialog.cpp:100:459
 msgid "Apply"
 msgstr ""
 
 #. i18n: file: src/extensions/constraintsdialog.ui:212
 #. i18n: ectx: property (text), widget (QPushButton, ConstraintsOK)
-#: src/extensions/unitcellparamdialog.cpp:98:532
+#: src/extensions/unitcellparamdialog.cpp:98:601
 msgid "OK"
 msgstr ""
 
@@ -2659,7 +2760,7 @@ msgstr ""
 msgid "Bonds: %L1"
 msgstr ""
 
-#: src/molecule.cpp:120
+#: src/molecule.cpp:126
 msgctxt "Name of a new, untitled molecule file"
 msgid "untitled"
 msgstr ""
@@ -2669,13 +2770,13 @@ msgstr ""
 msgid "OBMol: index %1 out of reach."
 msgstr ""
 
-#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:667
-#: src/moleculefile.cpp:762
+#: src/moleculefile.cpp:139 src/moleculefile.cpp:365 src/moleculefile.cpp:669
+#: src/moleculefile.cpp:764
 #, qt-format
 msgid "File type '%1' is not supported for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:673
+#: src/moleculefile.cpp:145 src/moleculefile.cpp:372 src/moleculefile.cpp:675
 #, qt-format
 msgid "File type for file '%1' is not supported for reading."
 msgstr ""
@@ -2715,12 +2816,12 @@ msgstr ""
 msgid "Replacing molecule with index %1 in file '%2' failed."
 msgstr ""
 
-#: src/moleculefile.cpp:355 src/moleculefile.cpp:656 src/moleculefile.cpp:751
+#: src/moleculefile.cpp:355 src/moleculefile.cpp:658 src/moleculefile.cpp:753
 #, qt-format
 msgid "File %1 cannot be opened for reading."
 msgstr ""
 
-#: src/moleculefile.cpp:398 src/moleculefile.cpp:777
+#: src/moleculefile.cpp:398 src/moleculefile.cpp:779
 #, qt-format
 msgid "Reading a molecule from file '%1' failed."
 msgstr ""
@@ -2757,12 +2858,12 @@ msgstr ""
 msgid "Writing conformers to file '%1' failed."
 msgstr ""
 
-#: src/moleculefile.cpp:728
+#: src/moleculefile.cpp:730
 #, qt-format
 msgid "Conformer %1"
 msgstr ""
 
-#: src/moleculefile.cpp:730 src/moleculefile.cpp:771
+#: src/moleculefile.cpp:732 src/moleculefile.cpp:773
 #, qt-format
 msgid "Molecule %1"
 msgstr ""
@@ -2846,7 +2947,9 @@ msgid ""
 "Right Mouse: \tReset alignment."
 msgstr ""
 
-#: src/tools/aligntool.cpp:257
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:29
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/tools/aligntool.cpp:257:27
 msgid "Axis:"
 msgstr ""
 
@@ -2915,13 +3018,13 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:287:577
+#: src/tools/autoopttool.cpp:287:646
 msgid "Steepest Descent"
 msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:95
 #. i18n: ectx: property (text), item, widget (QComboBox, AlgorithmComboBox)
-#: src/tools/autoopttool.cpp:288:580
+#: src/tools/autoopttool.cpp:288:649
 msgid "Conjugate Gradients"
 msgstr ""
 
@@ -3000,17 +3103,19 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1580
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:489
+#. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:502
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:480
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:351
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:435
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:434
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:449
 #. i18n: ectx: property (text), widget (QPushButton, resetButton)
-#: src/tools/autorotatetool.cpp:296:1436 rc.cpp:2480 rc.cpp:2597
+#: src/tools/autorotatetool.cpp:296:1508 rc.cpp:2556 rc.cpp:2667
 msgid "Reset"
 msgstr ""
 
@@ -3135,7 +3240,9 @@ msgstr ""
 msgid "Distance(s):"
 msgstr ""
 
-#: src/tools/clickmeasuretool.cpp:291
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:189
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/tools/clickmeasuretool.cpp:291:45
 msgid "Angle:"
 msgstr ""
 
@@ -3157,7 +3264,7 @@ msgstr ""
 
 #. i18n: file: src/tools/zmatrixdialog.ui:45
 #. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3458
+#: src/tools/drawcommand.cpp:298 src/tools/drawcommand.cpp:311:3645
 msgid "Add Atom"
 msgstr ""
 
@@ -3207,7 +3314,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1241
 #. i18n: ectx: property (text), item, widget (QComboBox, controlExecCombo)
-#: src/tools/drawtool.cpp:811:1898
+#: src/tools/drawtool.cpp:811:1970
 msgid "Other..."
 msgstr ""
 
@@ -3366,7 +3473,7 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1564
 #. i18n: ectx: property (text), item, widget (QComboBox, dataCoordinateCombo)
-#: src/tools/zmatrixtool.h:39:1985
+#: src/tools/zmatrixtool.h:39:2057
 msgid "Z-Matrix"
 msgstr ""
 
@@ -3376,6 +3483,85 @@ msgstr ""
 
 #: src/tools/zmatrixtool.h:41
 msgid "Z-Matrix Settings"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, HelloWorldDialog)
+msgid "Hello World Extension"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Hello World!"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/01-HelloWorld/helloworlddialog.ui:47
+#. i18n: ectx: property (text), widget (QPushButton, push_hide)
+#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:45
+#. i18n: ectx: property (text), widget (QPushButton, push_hide)
+msgid "Hide"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, DynamicDisplayDialog)
+msgid "Dynamic Display Extension"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:20
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Number of hydrogen atoms:"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/02-DynamicDisplay/dynamicdisplaydialog.ui:54
+#. i18n: ectx: property (text), widget (QLabel, label_numHydrogens)
+#. i18n: file: src/extensions/spectra/tab_dos.ui:67
+#. i18n: ectx: property (text), widget (QLabel, label_fermi)
+msgid "TextLabel"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, RotateSelectionDialog)
+msgid "Rotate Selection Extension"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:44
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "x:"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:57
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "y:"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:70
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "z:"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:155
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+msgid "Vector (Å)"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:165
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+msgid "Offset (Å)"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:225
+#. i18n: ectx: property (text), widget (QPushButton, push_apply)
+msgid "&Apply to selected atoms"
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/04-RotateSelection/rotateselectiondialog.ui:245
+#. i18n: ectx: property (text), widget (QPushButton, push_useBond)
+msgid "Use selected &bond..."
+msgstr ""
+
+#. i18n: file: examples/thirdPartyExtensions/05-ConformerPlot/conformerplotdialog.ui:14
+#. i18n: ectx: property (windowTitle), widget (QDialog, ConformerPlotDialog)
+msgid "Conformer Plot Extension"
 msgstr ""
 
 #. i18n: file: src/colors/residuecolorsettings.ui:13
@@ -3488,6 +3674,8 @@ msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:80
 #. i18n: ectx: property (text), widget (QLabel, opacitySliderLabel)
+#. i18n: file: src/engines/qtaimsettingswidget.ui:157
+#. i18n: ectx: property (text), widget (QLabel, opacitySliderLabel)
 #. i18n: file: src/engines/ringsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel_2)
 #. i18n: file: src/engines/surfacesettingswidget.ui:30
@@ -3496,6 +3684,8 @@ msgid "Opacity:"
 msgstr ""
 
 #. i18n: file: src/engines/bsdysettingswidget.ui:137
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
+#. i18n: file: src/engines/qtaimsettingswidget.ui:130
 #. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
 msgid "Covalent"
 msgstr ""
@@ -3785,6 +3975,21 @@ msgstr ""
 msgid "Bond order"
 msgstr ""
 
+#. i18n: file: src/engines/qtaimsettingswidget.ui:19
+#. i18n: ectx: property (text), widget (QLabel, atomRadiusLabel)
+msgid "Critical Point Radius:"
+msgstr ""
+
+#. i18n: file: src/engines/qtaimsettingswidget.ui:48
+#. i18n: ectx: property (text), widget (QLabel, bondRadiusLabel)
+msgid "Bond Path Radius:"
+msgstr ""
+
+#. i18n: file: src/engines/qtaimsettingswidget.ui:135
+#. i18n: ectx: property (text), item, widget (QComboBox, combo_radius)
+msgid "Constant Size"
+msgstr ""
+
 #. i18n: file: src/engines/ribbonsettingswidget.ui:16
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Rendering:"
@@ -3896,23 +4101,23 @@ msgstr ""
 msgid "0/0"
 msgstr ""
 
-#. i18n: file: src/extensions/animationdialog.ui:162
+#. i18n: file: src/extensions/animationdialog.ui:171
 #. i18n: ectx: property (text), widget (QCheckBox, dynBondsBox)
 msgid "Dynamic Bonds"
 msgstr ""
 
-#. i18n: file: src/extensions/animationdialog.ui:169
+#. i18n: file: src/extensions/animationdialog.ui:178
 #. i18n: ectx: property (text), widget (QCheckBox, loopBox)
 msgctxt "Continually re-run the animation in a loop"
 msgid "Loop"
 msgstr ""
 
-#. i18n: file: src/extensions/animationdialog.ui:189
+#. i18n: file: src/extensions/animationdialog.ui:198
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "fps"
 msgstr ""
 
-#. i18n: file: src/extensions/animationdialog.ui:216
+#. i18n: file: src/extensions/animationdialog.ui:225
 #. i18n: ectx: property (text), widget (QPushButton, saveVideoButton)
 msgid "Save as .avi..."
 msgstr ""
@@ -4228,6 +4433,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/forcefielddialog.ui:59
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:72
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:69
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:69
@@ -4648,6 +4855,11 @@ msgstr ""
 msgid "Dipole Moment (D):"
 msgstr ""
 
+#. i18n: file: src/extensions/molecularpropdialog.ui:120
+#. i18n: ectx: property (text), widget (QLabel, nameLabel)
+msgid "IUPAC Molecule Name:"
+msgstr ""
+
 #. i18n: file: src/extensions/povraydialog.ui:19
 #. i18n: ectx: property (windowTitle), widget (QDialog, POVRayDialog)
 msgid "POV-Ray Export"
@@ -4676,13 +4888,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3010
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:526
+#. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:546
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:517
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:395
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:472
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:471
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:493
 #. i18n: ectx: property (text), widget (QPushButton, closeButton)
@@ -4760,6 +4974,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, title)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1609
 #. i18n: ectx: property (text), widget (QLabel, label_10)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:30
+#. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:31
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:31
@@ -4791,6 +5007,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:185
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:67
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:64
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:64
@@ -4806,6 +5024,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:156
 #. i18n: ectx: property (text), widget (QLabel, theory)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:169
+#. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:134
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:114
@@ -4818,6 +5038,8 @@ msgid "Theory:"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:173
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:188
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:133
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -4839,6 +5061,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:412
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:198
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:170
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:138
@@ -4861,6 +5085,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:220
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:154
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:225
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:220
@@ -4872,6 +5098,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:225
 #. i18n: ectx: property (text), item, widget (QComboBox, ccpvxzCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:159
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:230
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:225
@@ -5004,6 +5232,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:603
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:134
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:217
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:195
@@ -5028,6 +5258,8 @@ msgstr ""
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:623
 #. i18n: ectx: property (text), item, widget (QComboBox, basisSetCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:139
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:222
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:200
@@ -5264,6 +5496,8 @@ msgstr ""
 #. i18n: ectx: attribute (title), widget (QWidget, dftTab)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:407
 #. i18n: ectx: property (text), item, widget (QTreeWidget, navigationTree)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:193
+#. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "DFT"
 msgstr ""
 
@@ -5282,6 +5516,8 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:48
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithLeftCombo)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2312
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:266
 #. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:165
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
@@ -5361,6 +5597,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:902
 #. i18n: ectx: property (text), item, widget (QComboBox, functionalCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:261
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
 msgid "BLYP"
 msgstr ""
 
@@ -5745,13 +5983,15 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/daltoninputdialog.ui:1590
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:499
+#. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:512
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:490
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:361
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:445
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:444
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:459
 #. i18n: ectx: property (text), widget (QPushButton, enableFormButton)
@@ -5762,13 +6002,15 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:3003
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:519
+#. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:539
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:510
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:388
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:465
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:464
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:486
 #. i18n: ectx: property (text), widget (QPushButton, generateButton)
@@ -5839,6 +6081,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:85
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:144
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:227
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:205
@@ -5852,6 +6096,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:90
 #. i18n: ectx: property (text), item, widget (QComboBox, basicWithRightCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:149
+#. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:232
 #. i18n: ectx: property (text), item, widget (QComboBox, basisCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:210
@@ -5908,6 +6154,8 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:1211
 #. i18n: ectx: property (text), widget (QLabel, label_25)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:331
+#. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:297
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:300
@@ -5933,6 +6181,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:200
 #. i18n: ectx: property (text), item, widget (QComboBox, basicCalculateCombo)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:82
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:74
 #. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:74
@@ -5977,6 +6227,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:300
 #. i18n: ectx: property (text), widget (QLabel, label_6)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:291
+#. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:260
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:263
@@ -6965,6 +7217,8 @@ msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gamessinputdialog.ui:2426
 #. i18n: ectx: property (text), widget (QLabel, label_41)
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:224
+#. i18n: ectx: property (text), widget (QLabel, dftFunctionalLabel)
 msgid "DFT Functional:"
 msgstr ""
 
@@ -7201,11 +7455,18 @@ msgstr ""
 msgid "Compute..."
 msgstr ""
 
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:20
-#. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
-msgid "Gaussian Input"
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, GAMESSUKInputDialog)
+msgid "GAMESS-UK Input"
 msgstr ""
 
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:40
+#. i18n: ectx: property (text), widget (QLineEdit, titleLine)
+msgid "GAMESS-UK input generated by Avogadro"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:51
+#. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:48
@@ -7217,6 +7478,106 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Calculation:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:77
+#. i18n: ectx: property (text), item, widget (QComboBox, calculationCombo)
+msgid "Transition State Search"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:105
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:198
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:171
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:186
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Basis:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:256
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+msgid "SVWN"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:271
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+msgid "B97"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:276
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+msgid "HCTH"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:281
+#. i18n: ectx: property (text), item, widget (QComboBox, dftFunctionalCombo)
+msgid "FT97"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:371
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:400
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:337
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:254
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:333
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:347
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+msgid "Format:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:387
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:419
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:356
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:273
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:352
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:366
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+msgid "Cartesian"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:392
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:424
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:361
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:278
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:357
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:371
+#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
+msgid "Z-matrix"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:418
+#. i18n: ectx: property (toolTip), widget (QCheckBox, directCheckBox)
+msgid ""
+"In direct mode, integrals are not stored on disk, but recalculated as "
+"needed.\n"
+"On modern systems with fast processors and slow disks, direct is often "
+"faster."
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gamessukinputdialog.ui:433
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+msgid "Run in direct mode:"
+msgstr ""
+
+#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:20
+#. i18n: ectx: property (windowTitle), widget (QDialog, GaussianInputDialog)
+msgid "Gaussian Input"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:97
@@ -7233,15 +7594,6 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:163
 #. i18n: ectx: property (text), item, widget (QComboBox, theoryCombo)
 msgid "CCSD"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:198
-#. i18n: ectx: property (text), widget (QLabel, label_5)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:171
-#. i18n: ectx: property (text), widget (QLabel, label_5)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:186
-#. i18n: ectx: property (text), widget (QLabel, label_5)
-msgid "Basis:"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:237
@@ -7276,45 +7628,6 @@ msgstr ""
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:383
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 msgid "Checkpoint:"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:400
-#. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:337
-#. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:254
-#. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:333
-#. i18n: ectx: property (text), widget (QLabel, label_10)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:347
-#. i18n: ectx: property (text), widget (QLabel, label_10)
-msgid "Format:"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:419
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:356
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:273
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:352
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:366
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-msgid "Cartesian"
-msgstr ""
-
-#. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:424
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/molproinputdialog.ui:361
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/mopacinputdialog.ui:278
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/nwcheminputdialog.ui:357
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-#. i18n: file: src/extensions/quantuminput/qcheminputdialog.ui:371
-#. i18n: ectx: property (text), item, widget (QComboBox, coordCombo)
-msgid "Z-matrix"
 msgstr ""
 
 #. i18n: file: src/extensions/quantuminput/gaussianinputdialog.ui:429
@@ -7703,11 +8016,6 @@ msgstr ""
 #. i18n: file: src/extensions/spectra/tab_dos.ui:47
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Fermi Energy: "
-msgstr ""
-
-#. i18n: file: src/extensions/spectra/tab_dos.ui:67
-#. i18n: ectx: property (text), widget (QLabel, label_fermi)
-msgid "TextLabel"
 msgstr ""
 
 #. i18n: file: src/extensions/spectra/tab_dos.ui:75
@@ -8200,12 +8508,14 @@ msgid "Your names"
 msgstr ""
 ",Launchpad Contributions:,Geoff Hutchison, ,Launchpad Contributions:,Geoff "
 "Hutchison,dlonie, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,"
-"dlonie, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,dlonie"
+"dlonie, ,Launchpad Contributions:,Avogadro Team,Geoff Hutchison,dlonie, ,"
+"Launchpad Contributions:,Avogadro Team,Geoff Hutchison,dlonie"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 ",,,,,,loniedavid@gmail.com,,,avogadro-devel@lists.sourceforge.net,,"
+"loniedavid@gmail.com,,,avogadro-devel@lists.sourceforge.net,,"
 "loniedavid@gmail.com,,,avogadro-devel@lists.sourceforge.net,,"
 "loniedavid@gmail.com"
 
